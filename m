@@ -1,41 +1,60 @@
-From: "Sean Rima" <sean@tcob1.net>
-Subject: yes, I'm a linux newbie
-Date: Friday, 31 Oct 2003 19:33:00 +000
+From: =?iso-8859-1?Q?rgomez=40bancomer=2Ecom?= <rgomez@bancomer.com>
+Subject: =?iso-8859-1?Q?Printing=20on=20Windows=20Printer=20with=20CUPS?=
+Date: Fri, 31 Oct 2003 13:51:22 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a100=2f1.0_d15c89b8@fidonet.org>
-References: <5.1.0.14.1.20031030195642.01fa7438@celine>
+Message-ID: <3FA1E3F9000004D6@mail-bcm01.alestra.net.mx>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031030195642.01fa7438@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Ray Olszewski
+Hi, I'm trying to print on a Windows Share printer using CUPS, my printer.conf
+file looks like this:
 
-Hello Ray,
+<printer smb>
+DeviceURI smb://user:password@150.100.56.16/V6E05IB1
+State Idle
+Accepting Yes
+JobSheets none none
+QuotaPeriod 0
+PageLimit 0
+KLimit 0
+</Printer>
 
-On 30/Oct/03 at 19:58 you wrote:
+When I send a print job I got this message in cups's log file:
 
- RO> At 06:14 PM 10/30/2003 -0500, Matt Gilbert wrote:
->Originally to: All
->
->Hi, I have been posting questions and recieving help in a group caled 
->linux bbs and everyone has been telling me to post my questions in the 
->linux echo instead of linux bbs, have i found my way?
+E [31/Oct/2003:13:32:07 -0600] cli_session_request() failed...
+E [31/Oct/2003:13:32:07 -0600] Unable to connect to SAMBA host, will retry
+in 60 seconds...: Success
 
- RO> Well ... I've never heard of either "linux bbs" or "linux echo", 
- RO> and I'm  not at all sure what you mean by "group" in this context. 
- RO> But this is a  mailing list where beginners post questions and 
- RO> (usually) get answers. So  give it a try.
+the command that CUPS use is:
+
+root      8851  8490  0 13:20 ?        00:00:00 smb://user:password@150.100.56.16/V6E05IB1
+1 root testprint.ps 1 page-top=36 pag
+
+I'm sure that the printer name and print server are correct because I can
+send data to the printer using smbclient like this:
+
+[pedsgrr2@edsgrr00 tmp]$ smbclient //150.100.56.16/V6E05IB1 -U user%password
+-P
+added interface ip=150.100.106.33 bcast=150.100.106.255 nmask=255.255.255.0
+session request to 150.100.56.16 failed (Called name not present)
+session request to 150 failed (Called name not present)
+Domain=[CB] OS=[Windows 5.0] Server=[Windows 2000 LAN Manager]
+smb: \> translate
+CR/LF<->LF and print text translation now on
+smb: \> put smbprint 
+putting file smbprint as \smbprint (33.8 kb/s) (average 33.8 kb/s)
+smb: \> 
 
 
-My fault, I run a BBS that is attached to Fidonet and I gate the mailing list to Fidonet styles echos to broaden the number getting the list :)
+I want to expand the use of linux in this place, but I can't do this if
+I can't print...
 
+Tks for your help and time...
 
-Cheers,
-\Sean
 
 
 -
