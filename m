@@ -1,48 +1,62 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: Mandrake 8.1??
-Date: Fri, 7 Mar 2003 09:42:34 -0600 (CST)
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Mandrake 8.1??
+Date: Fri, 7 Mar 2003 15:55:44 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0303070926080.16791-100000@vector>
-References: <20030307151530.GA753@localhost.localdomain>
+Message-ID: <20030307155544.A547@lnx2.w8mch.ampr.org>
+References: <20030307151530.GA753@localhost.localdomain> <Pine.LNX.4.44.0303070926080.16791-100000@vector>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030307151530.GA753@localhost.localdomain>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.44.0303070926080.16791-100000@vector>; from jamtat@mailandnews.com on Fri, Mar 07, 2003 at 09:42:34AM -0600
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "raihan@citech-bd.com" <raihan@citech-bd.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On 7 Mar 2003, raihan@citech-bd.com wrote:
->
-> Try maximizing the dialog box window, if possible.  This
-> should neatly sidestep the whole issue of ``virtual
-> monitors''.
->
-> I, also, have encountered the above problem, and have
-> attributed it to bad dialog box design.  The problem also
-> occasionally plagues Windows dialog boxes, as well.  I did
-> not know about the ``virtual monitor'' phenomenon, though.
->
-Maximizing the dialogue box does, occassionally take care of the problem.
-But I've had it happen, at times, that even this would not cause relevant
-portions of the dialogue box to appear (e.g., especially, at the bottom,
-where you have your "ok," "apply" and "cancel" click boxes). Regardless of
-maximizing, these are still sometimes cut off at the bottom of the screen
-- as is any scroll bar that may appear at the right edge! In that case,
-you are left to "tab and guess" when you're on the appropriate box before
-hitting "enter." This could be an exercise in alienation from Linux for a
-certain breed of newbie. I do seem to recall this happening
-occassionally under Win, though not with the frequency I encounter it
-under Linux. Anyway, let's see if this simple technique of maximizing the
-dialogue window (NOT a registered trademark!) works for Hal.
+Greetings James, Steven and Yawar and thanks for your input and
+comments.. I'm still struggling with this plus researching my many
+notes about X11R6 from months/years back.. I hit the Web for FAQ's,
+etc including the Mandrake site and nothing similar yet..
 
-In any case, it seems like we have another vote for bad dialogue box
-design. Anyone else care to cast their vote - or perhaps better yet - give
-a more authoritative analysis of Hal's (and, apparently, others') problem?
+The Desktop is maximized and the problem persists with the tool bar
+slid up or down.. When clicking on the Mandrake Control Centre there
+are no buttons in sight to do anything including maximizing..
 
-Thanks, James
+I looked at /etc/X11/XF86Config and the default entries under
+"Display" do NOT have the virtual entry.. I reconfigured another
+machine running Slackware and find that with "virtual 640 480" the
+screen is filled but if I happen to access a site that has drop down
+menus I can't "get" to them.. This is a BIG problem because "WV" is
+always at the "bottom" of the list. <grin> Commenting the virtual
+entry permits the scroll all over the place as James mentioned, and I
+can then select WV, etc...
 
+It seems to me the problem may be the bad dialogue design mentioned
+in that the Desktop itself, KDE, always fills the screen perfectly..
+It's just when you want to manipulate other screens like the Control
+Centre which is the worst of the lot.. Only half of it is viewable.
+Some of the others are better in that you can actually see the very
+top of the OK, Cancel, etc buttons.. It may be a non-compatible issue
+with this one box only and it's BIOS/MB.. I'm sure there are
+thousands of Mandrake 8.1 installs that are OK..
+
+In summation I have to conclude that a default, "recommended" install
+of Mandrake 8.1 is NOT for the M$ crowd especially since there are
+some other problems I found making it very unuser friendly compared
+to a Win95 or Win98 setup.. I will never change from Linux/Unix but
+my neighbours wont buy what I can offer as of now.. Not that I'm
+selling "anything." Of course we all know that once Linux is
+configured you wont need the reset button much again.. :^)
+
+I have ordered an updated book that may shed some light, at least on
+X11R6.. All my present books are from the early/mid nineties.. Ugh.
+
+Thanks again - appreciate!!
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
