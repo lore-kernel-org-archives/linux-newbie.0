@@ -1,25 +1,35 @@
-From: chuck gelm <nc8q@gelm.net>
-Subject: Re: local networking hostname
-Date: Tue, 23 Jul 2002 10:45:47 -0400
+From: dalgoda@ix.netcom.com (Mike Castle)
+Subject: Re: OGG vs. MP3
+Date: Wed, 24 Jul 2002 00:04:02 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D3D6C1B.D952DAC9@gelm.net>
-References: <B961C21C.1EB2%jimurl@montanaice.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <2hjlha.6fv.ln@thune.mrc-home.org>
+References: <20020715.114422.-455505.2.matthewstapleton@juno.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Jim Earl <jimurl@montanaice.com>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org, Joseph Jackson <skoidat@lvcm.com>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Jim Earl:
+In article <20020715.114422.-455505.2.matthewstapleton@juno.com>,
+Matthew Stapleton  <matthewstapleton@juno.com> wrote:
+>What is the benefit of using OGG over MP3?  Is it merely that one is open
+>source while the other is not?
 
-Please search your drives for a text file named 'hosts'.
+Also, for the same bits per second, ogg sounds better than mp3.
 
-HTH,  Chuck
+Far as ripping into ogg, just replace your mp3 encoder with the ogg
+encoder.
 
-Jim Earl wrote:
-<snip>
+Personally, I use mp3c to drive my ripping, and in the config file, I
+replaced lame with the appropriate ogg tools and went from there.
+
+mrc
+
+-- 
+     Mike Castle      dalgoda@ix.netcom.com      www.netcom.com/~dalgoda/
+    We are all of us living in the shadow of Manhattan.  -- Watchmen
+fatal ("You are in a maze of twisty compiler features, all different"); -- gcc
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
