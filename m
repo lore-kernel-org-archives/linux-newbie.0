@@ -1,8 +1,8 @@
 From: Peter <pfheiss@philonline.com>
 Subject: Re: Su & Security
-Date: Sun, 22 Dec 2002 12:31:23 +0800
+Date: Sun, 22 Dec 2002 13:04:35 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212220431.gBM4VNn03322@philonline.com>
+Message-ID: <200212220504.gBM54Zs13273@philonline.com>
 References: <5.1.0.14.1.20021221084621.020b1910@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -20,12 +20,13 @@ You guessed mostly right what I tried to ask.
 
 to a) a terminal is open under su
 
-When I need to be su I open an xterm with a blue color background and exit it 
-when I connect to the Internet. Now according to you I can leave it open.
+When I need to be su I open an xterm with a blue color background, so I know 
+it's su, and exit it when I connect to the Internet. Now according to you I 
+can leave it open.
 
 to b) an application like gtkdial must be opened as su to connect
 
-The "like" should better be "as" and your ansewer takes away by concern.
+The "like" should better be "as" and your answer takes away by concern.
 
 to c) an application like kppp needs the root password to be accessible
 
