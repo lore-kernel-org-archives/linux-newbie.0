@@ -1,39 +1,76 @@
-From: Peter Edstrom <peter.p3@home.se>
-Subject: Re: Procmail won't filter linux-newbie mail
-Date: Tue, 2 Sep 2003 16:47:32 +0200
+From: "Cristian CHIRILOV" <atmos@dreams.homelinux.net>
+Subject: Re: Creating virtual devices
+Date: Wed, 3 Sep 2003 16:30:51 +0300 (EEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030902144732.GA1086@linux>
-References: <5.1.0.14.1.20030831224453.01f41838@celine> <20030831091426.GB2273@linux> <5.1.0.14.1.20030831224453.01f41838@celine> <5.1.0.14.1.20030901081714.01f8d3a8@celine>
+Message-ID: <7262.193.226.6.51.1062595851.squirrel@www.cybernet-kfe.org>
+References: <36993D449C7FA647BF43568E0793AB3E061DBD@nevis_pune_xchg.pune.nevisnetworks.com>
+Reply-To: atmos@dreams.homelinux.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20030901081714.01f8d3a8@celine>
+In-Reply-To: <36993D449C7FA647BF43568E0793AB3E061DBD@nevis_pune_xchg.pune.nevisnetw
+     orks.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Sorry for not "RTFM:ing" before posting. I thought I had done that, but
-obviously I didn't read so hard.
+> Hi,
+>
+> I want to create virtual network devices using something like the
+> tun/tap driver.
+> Is there any limit on the number of such devices which can be created?
+>
+> Thanks,
+> Girish
 
-I believe that the filtering problem is fixed now; thank you all very 
-much for the help.
+mknod /dev/net/tun c 10 200
+chmod 0700 /dev/net/tun if you want the device only accesible by root.
+Giving regular users the right to assign network devices is NOT a good
+idea.
 
-> I wasn't complaining, just explaining why I asked. For a non-native 
-> speaker, your English is astoundingly good ... so much so that I surmised 
-> that you were a native speaker writing carelessly, rather than an ESL 
-> writer making a occasional, minor mistake (e.g., "tryed" for "tried"). In 
-> any case, when I see small errors in the text of a message, whatever the 
-> reason, I always wonder if there are similar errors in the critical parts 
-> of the same message ... in this case, the parts where you quoted the rules. 
-> Hence my actual question.
+Here the network device allocation:
 
-I didn't think you were complaining, either; I was just in an ironic
-mood. :-)
-It's good to hear that there wasn't any error in the text's coding.
-(It's also good to hear that you took me for a native speaker).
+ #include <linux/if.h>
+ #include <linux/if_tun.h>
 
-/Peter
+  int tun_alloc(char *dev)
+  {
+      struct ifreq ifr;
+      int fd, err;
+
+      if( (fd = open("/dev/net/tun", O_RDWR)) <  )
+         return tun_alloc_old(dev);
+
+      memset(&ifr, 0, sizeof(ifr));
+
+      /* Flags: IFF_TUN   - TUN device (no Ethernet headers)
+       *        IFF_TAP   - TAP device
+       *
+       *        IFF_NO_PI - Do not provide packet information
+       */
+      ifr.ifr_flags = IFF_TUN;
+      if( *dev )
+         strncpy(ifr.ifr_name, dev, IFNAMSIZ);
+
+      if( (err = ioctl(fd, TUNSETIFF, (void *) &ifr)) <  ){
+         close(fd);
+         return err;
+      }
+      strcpy(dev, ifr.ifr_name);
+      return fd;
+  }
+
+
+char *dev should be the name of the device with a format string (e.g.
+"tun%d"), but (as far as I can see) this can be ANY valid network device
+name.
+
+  Note that the character pointer becomes overwritten with the real device
+name (e.g. "tun0")
+
+
+-- 
+Be different. Think.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
