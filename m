@@ -1,59 +1,76 @@
-From: "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
-Subject: Hot-plugging Support in kernel 2.6.8 ??
-Date: Sat, 5 Feb 2005 07:05:39 +0530
-Message-ID: <267988DEACEC5A4D86D5FCD780313FBB041F8310@exch-03.noida.hcltech.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: wireless/wired bridge update
+Date: Sun, 6 Feb 2005 15:26:13 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0502061506570.21973@localhost.localdomain>
 Mime-Version: 1.0
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-india-help@lists.sourceforge.net
+To: linux-newbie@vger.kernel.org
 
+On the wired/wireless bridge query I made recently, and whether this
+should work under Linux as a way to sort of turn a wired NIC into a
+wireless connection: while in the computer store the other day, I decided
+to look at wireless bridges. Guess what: they didn't have any! But I did
+run across something called a "pocket router" that looked interesting.
+Reading about it, I understood it works in several modes--including one
+called "client mode." So, it seems like it can act like a wireless/wired
+bridge in this regard. Furthermore, it can plug into a USB port for power,
+thus decreasing the dreaded excess hardware syndrome. In other words, no
+need to carry around the power supply: just the pocket router itself (and
+it's USB and UTP cable). I'm going to have to think hard about getting one
+of these. They're costing around $70 right now, which is about the same as
+the latest, greatest (unsupported) wireless NIC's, and substantially less
+than really high quality but supported NIC's (e.g., Cisco aironet). Heck
+with this driver business. If this thing works under Linux, like it seems
+it should, it looks like the thing to get. It even serves more than one
+function to boot. Description appended below.
 
-Hi list,
- 
-I'm new to Linux / SCSI so please help me out on this one.
+James
 
-I'm investigating the "Hot Plugging" support in SCSI subsystem of linux
-kernel 2.6.8. I am working at the LLD level. I went through the "Hot Plug
-Initialisation Model" in Doumentation/scsi/scsi_mid_low_api.txt (which is
-not up to date) and code and concluded that :
+PS Dave, you said the bridge you had trouble using as a wireless NIC under
+Linux was a D-Link: please don't rain on my parade and tell me it was this
+one?!
 
-1) In case a new HBA is Hot plugged, the LLD needs to call
-scsi_host_alloc(), scsi_add_host(), scsi_scan_host().
-2) In case an existing HBA is Hot UN-plugged, the LLD needs to call
-scsi_remove_host(), scsi_host_put().
-3) In case a new SCSi device is hot plugged / Un plugged to an existing HBA,
-LLD needs to call scsi_add_device() / scsi_remove_device() respectively.
+D-Link Wireless Pocket Router/AP
+DWL-G730AP
 
-But what is not clear to me is that how exacly I (as an LLD writer) come to
-know that a new device has been detected? So where do I put these calls? Are
-there any specific functions in LLD that are called when a new device / HBA
-is added??  The documentation says this:
+The Pocket Router/AP might be small in size, but is huge in functionality.
+The DWL-G730AP supports multiple operation modes including: Access Point
+(AP) mode to create a wireless connection; Router mode to share an
+Internet connection; and Wireless Client mode to connect an existing
+wireless network. Easily switch between these modes by using the 3-way
+configuration switch located at the bottom.
 
-"Typically a driver will respond to a sysfs probe() callback that indicates
-an HBA has been detected". 
+In AP mode, the DWL-G730AP can be used to create a wireless network in a
+room where a single Ethernet port is provided. Now multiple wireless
+clients can connect to the network at the same time to share resources and
+files.
 
-What does this mean? Simply put, I have my own function that I want to be
-called when ever a new SCSI device is detected on an existing HBA. How do I
-do that? Or how can I achieve this functionality?
+In Router mode, the DWL-G730AP can be used to share a single broadband
+Internet connection, such as in a hotel room. The internal DHCP server
+automatically assigns IP addresses to ensure everyone in the room can
+connect to the Internet. In addition, the DWL-G730AP supports VPN
+Pass-through and firewall features including Network Address Translation
+(NAT) and MAC filtering to protect your wireless network from malicious
+attacks.
 
-Any pointers are welcome. 
- 
+When set in Wireless Client mode, the DWL-G730AP allows connection to an
+existing wireless network, without having to install complicated drivers
+or additional software. For added mobility, the DWL-G730AP can be powered
+over USB if power outlets are not available.
 
-Thanks & regards,
+The Pocket Router/AP supports WPA-PSK to secure your wireless data
+communications. In AP mode, the DWL-G730AP adds support for 802.1x user
+authentication with an external RADIUS server. For setup and configuration
+the DWL-G730AP can be accessed via D-Link's user-friendly Web-based
+utility.
 
-Rajat Jain 
-HCL Technologies, 
-A-11, Sector 16, Noida-201301. 
-Ph: +91-120-2510701/702/813 Extn.3019 
-rajatj@noida.hcltech.com 
-http://www.hcltech.com/
-	"...one of the main causes of the fall of the Roman Empire was that,
-lacking zero, they had no way to indicate successful termination of their C
-programs."
-	Robert Firth 
-
+Easy to pack and convenient for traveling, the DWL-G730AP comes with an
+attractive traveling case which also provides accessories including cables
+and a power adapter. Increase productivity and enjoy the benefits of
+wireless connectivity while on the road with D-Link's Pocket Router/AP.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
