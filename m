@@ -1,47 +1,38 @@
-From: "Sean Rima" <fido@tcob1.net>
-Subject: Re: small computer ?
-Date: Tuesday, 03 Sep 2002 19:24:48 +0000
+From: "Mike Miller" <mlmiller@charter.net>
+Subject: Re: driver via97
+Date: Tue, 3 Sep 2002 13:54:50 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_7223=3a9750=2f200_286e801e@fidonet.org>
-References: <20020903072944.26662.qmail@web40611.mail.yahoo.com>
-Mime-Version: 1.0
+Message-ID: <auto-000073030430@dc-mx04.cluster1.charter.net>
+Reply-To: mlmiller@charter.net
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020903072944.26662.qmail@web40611.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: szonyi calin
 
-Szonyi
 
->> with a Desktop
->> > environment on a linux system?
->>
->> I have used a basic 486 with a 2gb hd, but with a
->> small windowmanager (IceWM)
->> with no problems.
->>
->> Sean
+As a wild guess I'm assuming that  it AC97 sound and a VIA 
+chipset  mother board. Try here:
 
-> 486 12M Ram 540MB hd fvwm2 as wm (also working twm,
-> fvwm, mwm, qvwm and others)
+http://www.viaarena.com/?PageID=60
 
-> Aaaaaaaa, you mean desktop environment :-)
-> UDE i think is a small desktop environement.
-> If you want Gnome or Kde: go buy some ram.
+If I guessed wrong, sorry about that.
 
-I mentioned that my PC had a 2gb HD simply because I needed for Fidonet stuff, 
-not GUI. I refuse to use GUI as I much prefer console/command-line :)
+On 2 Sep 02, at 7:52, Ramzez wrote:
 
-Sean
-... BACKUP NOT FOUND: (A)bort (R)etry (P)anic, (O)h &*%$l|+@!
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> Hi...
+>   I have installed a sound card VIA97 and the driver for this is into 
+> OpenSound package; but the driver turn off each 20 min because it's shareware
+> 
+>   where do I find a driver like this??
+> 
+> thanks
 
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
 
 
 -
