@@ -1,36 +1,49 @@
-From: Bob Batson <rcb@kc.rr.com>
-Subject: Re: (fwd) .so, .a and .o-files
-Date: Fri, 16 Aug 2002 16:26:35 -0500
+From: John Porter <j.porter@starpower.net>
+Subject: Re: [SLE] Changing Text
+Date: Fri, 16 Aug 2002 17:49:05 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <p05111b00b9831e021b21@[65.31.217.219]>
-References: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
+Message-ID: <5236.48587191037$1029535169@news.gmane.org>
+References: <200208161802.56488.James.Hatridge@epost.de>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
+Content-Disposition: inline
+In-Reply-To: <200208161802.56488.James.Hatridge@epost.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <lists@tcob1.net>, linux-newbie@vger.kernel.org
+To: SuSE List <suse-linux-e@suse.com>, Linux Newbies <linux-newbie@vger.kernel.org>
 
-At 4:16 PM -0500 8/16/02, Ray Olszewski wrote:
+James Hatridge wrote:
+> Rates as of 2002.08.13 20:25:28 UTC (GMT). Base currency is EUR.
+> USD United States Dollars                 1.01756               0.982743    
+> GBP United Kingdom Pounds                 1.56297               0.639808    
+> AUD Australia Dollars                     0.546791              1.82885     
+> 
+> What I want is this;
+> 
+> 2002.08.13 	USD 	1.01756  	0.982743    
+> 2002.08.13 	GBP 	1.56297   	0.639808    
+> 2002.08.13 	AUD 	0.546791  	1.82885     
 
->Originally to: All
->
->
->If you have not seen your mail on the list, then almost certainly something
->is wrong at your end. This is the *third* time I have seen this message
->this morning.
+Here's a nifty little perl script that does it.
+(It's a filter: reads from stdin, writes to stdout.)
 
-[snip]
 
-I too am receiving multiple copies of more than one persons' message/question.
+  my $date = '(no date)';
+  $, = "\t";
+  $\ = "\n";
+  while (<>)
+  {
+    /^Rates as of (\S+)/
+      ? $date = $1
+      : print $date, /^(...).*(\d+\.\d+).*(\d+\.\d+)/
+  }
+
 
 
 -- 
-Bob Batson
-rcb@kc.rr.com
+John Douglas Porter
 
-Chocolate is the true opiate of the masses!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
