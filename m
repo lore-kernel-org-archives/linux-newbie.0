@@ -1,24 +1,35 @@
-From: "Amin" <raihan@citech-bd.com>
-Subject: Re: Newbie installation problem
-Date: Tue, 14 Jan 2003 19:34:08 +0600
+From: james niland <bareego@yahoo.com>
+Subject: RE: disk partitions
+Date: Tue, 14 Jan 2003 05:50:33 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001d01c2bbd1$a3102b20$eb6510ac@citechbd.com>
+Message-ID: <20030114135033.35108.qmail@web11401.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-E.N.:
+Jude DaShiell wrote :
 
-Since you're using Red Hat, try using Red Hat's network configuration
-wizard:
+<<I forgot, I set a partition in primary as type 83
+which makes it linux
+swap and gave it 128mb of memory since that's max
+memory on my
+computer.
 
-# neat &
+--
+Jude <dashielljt(at)gmpexpress-dot-net>
+>>
+As far as I remember type 83 is a linux native
+partition. Type 82 is linux swap.
 
-This is a nice graphical interface to get your NIC up and running.
+James 
 
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+http://mailplus.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
