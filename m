@@ -1,56 +1,48 @@
-From: "Tom Beer" <mailings@analogon.com>
-Subject: Re: nomore newbies??
-Date: Mon, 20 May 2002 00:59:31 +0200
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: tar question (was Re: nomore newbies??)
+Date: Sun, 19 May 2002 19:09:14 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002101c1ff88$d73fc3c0$0901a8c0@system>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200205192309.g4JN9Et17254@langhans.hartford-hwp.com>
+References: <20020519185527.14089.qmail@linux.ik5bcu.ampr.org>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020519185527.14089.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: ik5bcu@tin.it
+Cc: linux-newbie@vger.kernel.org
 
-3.2.  Message Rejection and Bouncing
+I'm trying to copy a directory tree from one mounted hard disk to
+another. I want to copy the contents of a directory named "backups" on
+a secondary SCSI HD to one of the same name on an external USB mass
+storage device.
 
-   MTAs and MSAs MAY implement message rejection rules that rely in part
-   on whether the message is a submission or a relay.
+The source is /mnt/sdb1/storage/backups
+The target is /mnt/mirror/storage/
 
-   For example, some sites might configure their MTA to reject all RCPT
-   TOs for messages that do not reference local users, and configure
-   their MSA to reject all message submissions that do not come from
-   authorized users, based on IP address, or authenticated identity.
+Root changes to the source "backups" directory and runs the
+following: 
 
-   NOTE:  It is better to reject a message than to risk sending one that
-   is damaged.  This is especially true for problems that are
-   correctable by the MUA, for example, an invalid 'From' field.
+    tar cf - . | (cd ../../../mirror/storage/backups tar xvf -) 
+    ./  
 
-   If an MSA is not able to determine a return path to the submitting
-   user, from a valid MAIL FROM, a valid source IP address, or based on
-   authenticated identity, then the MSA SHOULD immediately reject the
-   message.  A message can be immediately rejected by returning a 550
-   code to the MAIL FROM command.
+Nothing happens. No error message about not being able to navigate the
+path to find the directory, no sound of disk activity, no resulting
+files.  
 
-   Note that a null return path, that is, MAIL FROM:<>, is permitted
-   and MUST be accepted. (MUAs need to generate null return-path
-   messages for a variety of reasons, including disposition
-   notifications.)
+So I tried: 
 
-   Except in the case where the MSA is unable to determine a valid
-   return path for the message being submitted, text in this
-   specification which instructs an MSA to issue a rejection code MAY be
-   complied with by accepting the message and subsequently generating a
-   bounce message. (That is, if the MSA is going to reject a message for
-   any reason except being unable to determine a return path, it can
-   optionally do an immediate rejection or accept the message and then
-   mail a bounce.)
+   tar -l -cpf - /mnt/sdb1/storage/backups | tar -C
+   /mnt/mirror/storage/backups -pxf -
 
-   NOTE:  In the normal case of message submission, immediately
-   rejecting the message is preferred, as it gives the user and MUA
-   direct feedback.  To properly handle delayed bounces the client MUA
-   must maintain a queue of messages it has submitted, and match bounces
-   to them.
+This did create a backup, but reproduced the path (/mnt/mirror/
+storage/backups/mnt/sdb1/storage/backups) and gave me a lot of errors
+about not being able to copy symlinks and early on some errors about
+not being able to reproduce ownership. When I try to reduce the source
+to ".", tar complains about the empty source.
 
-http://www.faqs.org/rfcs/rfc2476.html
+Haines Brown 
 
 
 
