@@ -1,23 +1,49 @@
-From: Matthew Stapleton <matthewstapleton@juno.com>
+From: lawson_whitney@juno.com
 Subject: Re: inverting a list
-Date: Sat, 20 Jul 2002 23:30:19 -0400
+Date: Sat, 20 Jul 2002 23:37:57 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020720.233024.-315329.10.matthewstapleton@juno.com>
+Message-ID: <20020720.233931.134670352.1.lawson_whitney@juno.com>
+References: <3D3AA9A4.AD7C28E@ihug.co.nz>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3D3AA9A4.AD7C28E@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: ichi@ihug.co.nz
-Cc: linux-newbie@vger.kernel.org
+Cc: matthewstapleton@juno.com, linux-newbie@vger.kernel.org
 
-It worked ...much thanks
+On Sun, 21 Jul 2002 ichi@ihug.co.nz wrote:
 
-Matthew Stapleton
-============================
-To dare is to lose one's footing momentarily. Not to dare is to lose
-oneself. -SK
-============================
+> st:	linux-newbie@vger.kernel.org
+>
+> Matthew Stapleton wrote:
+> >
+> > Can I use linux text utilities to invert the lines of
+> > a text file?  Say that the lines of the file are 50.
+> > (1,2, ...50)  How can I change the order the of lines
+> > so that line 1 is now line 50?
+>
+> Here's one off the top of my head.  I'm sure
+> that somebody can come up with a better one.
+> ---------------------------
+> #!/bin/bash
+> i=`cat $1|wc -l`
+> until [ $i = 0 ]
+> do head -n $i $1|tail -n 1
+> let i=i-1
+> done
+> ---------------------------
+>
+> Cheers,
+> Steven
+
+If I understand the question, the answer is exactly, "tac".
+
+Lawson
+---oops---
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
