@@ -1,8 +1,8 @@
 From: "ramands" <ramands@indiatimes.com>
 Subject: Compiation Err:Derefercing pointer to incomplete type
-Date: Mon, 07 Apr 2003 17:15:10 +0530
+Date: Mon, 07 Apr 2003 17:16:10 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304071111.QAA25689@WS0005.indiatimes.com>
+Message-ID: <200304071112.QAA26141@WS0005.indiatimes.com>
 Reply-To: "ramands" <ramands@indiatimes.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -22,6 +22,13 @@ i am using redhat 8.0
 i have read that some distributions do not provide complete headers for module level programming 
 Is that the reason for error i am getting ?
 
+
+
+Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
+
+ Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
+
+Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
 
 
 Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
