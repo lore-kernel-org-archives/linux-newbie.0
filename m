@@ -1,38 +1,31 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Procmail won't filter linux-newbie mail
-Date: Tue, 02 Sep 2003 10:42:08 +0800
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: TFT display on Debian GNU/Linux
+Date: 02 Sep 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030902024213.E665910423@heisspf>
-References: <5.1.0.14.1.20030831224453.01f41838@celine>
-Mime-Version: 1.0
+Message-ID: <200309020853.h828r6j4017481@ev6.be.wanadoo.com>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 31 Aug 2003 23:05:42 MST." 
- <5.1.0.14.1.20030831224453.01f41838@celine>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-It does work in procmail. AT least with my setup
+Geoff -
 
-:0 w :Newbie/$LOCKEXT                   
-* ^X-mailing-list:.*linux-newbie@vger.kernel.org
-| $STORE +Newbie
+> Is there a simple reason why the "commercial distros" are able to do
+> this ?  Maybe they are using non-GPL  software that we would not wish to
+> see in Debian.
 
-Try it by sending a mail to yourself xxxxx@localhost placing "X-mailing-list: 
-linux-newbie@vger.kernel.org" above To:
-and it will go into the folder you designated.
+Me newbie cannot see the difference - it seems not a problem of proprietary
+drivers (many of the video cards' are that in any case, as the chips
+are firmware) - as much I can see is that both Debian and Mandrake, for
+instance, use the same "nv" driver for the Nvidia TNT2 chip (one of the
+bones of contention). Then why couldn't we arrive at having the full high
+resolution scale working with the monitor(s) ? There, the spec.s and
+interfaces are broadly open, so that's no so much of an issue. </sigh>
 
-I am using exmh as mailer BTW.
-
->   :0
->   * ^X-Mailing-List:.*linux-newbie@vger.kernel.org
->   IN.linux-newbie
-
-Regards
--- 
-Peter
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-09-01
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
