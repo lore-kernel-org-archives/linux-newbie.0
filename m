@@ -1,49 +1,53 @@
-From: Nathan <nate@nateworks.ca>
-Subject: Re: Throttling Bandwidth
-Date: Wed, 16 Oct 2002 10:57:33 -0700 (PDT)
+From: R S <linuxrocks94556@yahoo.com>
+Subject: Wi-Fi driver
+Date: Wed, 16 Oct 2002 11:44:23 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0210161052290.32731-100000@willy.nateworks.ca>
-References: <004601c27531$7eb7d7a0$64fea8c0@pkrausxp>
+Message-ID: <20021016184423.4085.qmail@web9401.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <004601c27531$7eb7d7a0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Hello All!
 
-> Is there a way to limit the bandwidth my Linux server uses when
-> downloading from ftp sites? It pretty much cripples the rest of the
-> company.
+I am running Redhat 6.2 and Linux 2.2.19 on a Dell
+Latitude LM Pentium 133 with 72 Mb RAM, and was
+wondering the best way to get a Lucent Orinoco Gold
+PCMCIA card to work. But I get the following:
 
-Hi Paul, thankfully the linux kernel rocks ! there are a few diffrent ways
-you can do it, but what worked for me is classed based queing.
+executing modprobe -r wvlan_cs
 
- Check out http://lartc.org/.
+initializing socket 1
 
-Cheers,
-Nathan
+socket 1: Lucent Technologies WaveLAN/IEEE Adapter
 
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
->
+executing: 'modprobe wvlan_cs network_name=## key=## 
+enable_encryption=Y
 
--- 
++ /lib/modules/2.2.19-6.2.12/pcmcia/wvlan_cs.o invalid
+parameter parm_key_1
 
-"Whoever undertakes to set himself up as a judge of Truth and Knowledge is
- shipwrecked by the laughter of the gods."
-   Albert Einstein
+insmod failed
 
-Chisolm's First Corollary to Murphy's Second Law:
-	When things just can't possibly get any worse, they will.
---
+modprobe exited with status 255
 
+insmod exited with status 1
+get dev info on socket 1 failed 
+resource temporarily unavailiable
+
+Can anyone tell me where I should begin looking in
+order to resolve this?
+
+thanks, 
+
+Richard Spencer
+
+__________________________________________________
+Do you Yahoo!?
+Faith Hill - Exclusive Performances, Videos & More
+http://faith.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
