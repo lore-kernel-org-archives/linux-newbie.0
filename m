@@ -1,49 +1,79 @@
-From: mike <mike@kevino.org>
-Subject: Re: Linux for Dummies?
-Date: Mon, 12 Jan 2004 19:45:12 -0700
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Long Gnome-session
+Date: Tue, 13 Jan 2004 13:25:05 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40035BB8.7020404@kevino.org>
-References: <btv950$i7m$1@sea.gmane.org> <40034516.7090104@kevino.org> <40035324.50802@vcss.k12.ca.us>
+Message-ID: <20040113132505.19344da7@skyinet.net>
+References: <20040112155340.0b7f58a6@skyinet.net>	<200401121235.34024.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <40035324.50802@vcss.k12.ca.us>
+In-Reply-To: <200401121235.34024.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Dave & Kim Howe wrote:
-> Thanks Mike. I'll look into the Nutshell book.
-> 
-> Dave
-> 
-> mike wrote:
-> 
->> Dave wrote:
->>
->>> Is there a good book out there to get me started with Linux? 
->>> Something like Linux for Dummies? I'm an old DOS and Windows guy and 
->>> I need to learn the basics. Even all the terminology is new. I'be 
->>> been reading the manual that came with SuSE 9.0 and the Net and the 
->>> Newsgroups, but I feel like I'm trying to piece it all together in 
->>> the dark.
->>>
->>> Any suggestions would be appreciated.
->>>
->> I can suggest LINUX IN A NUTSHELL by O'reilly. I have the 4th edition 
->> and it's a great reference for me in book form.
->> The online howto's are a help, also man and info pages but
->> sometimes a little tough to understand for us newbies.
->>
-Sorry about that Dave I meant to send the reply to the list.
-I think I click too fast :-)
+X-Mailer: Sylpheed version 0.9.8claws (GTK+ 1.2.10; i686-pc-linux-gnu)
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
+
+
+> On Monday 12 January 2004 08:53, Peter wrote:
+> > Hi,
+> >
+> > Among other strange things in RH9.0 is the long time it takes to > > open gnome-session. A full 2.5 minutes.
+> >
+> > Is this standard?
+>
+ 
+On Mon, 12 Jan 2004 12:35:34 +0100
+pa3gcu <pa3gcu@zeelandnet.nl> wrote:
+> No its not, something is wrong, i would check my logs to see if there >  are any hints, a possibility is that you have defined a hostname which > is unresolvable.
+
+There is nothing in the logs, however, on account of your hint I had a closer look at the console after logging-out and scrolling up it said somehing about /usr/local/bin/metacity. I deleted the file after I found another one in /usr/bin and swoop, gnome-session is now up in 8 seconds.
+
+After I had installed RH9.0 I copied my RH7.3 /usr/local directory into the new box not knowing that there was that metacity file in it.
+ 
+> > What is also surprising is that one has to look for a terminal and  > > finds it finally as the last item under system tools.
+> 
+> Well not so suprising as most users today dont even know what a > terminal session is.
+
+So Bill Gates has successfully played his part in the further cretinization of mankind.
+
+> You can of course add an icon to your pannel or desktop.
+
+I am aware of that yet have not used gnome as a desktop since after RH5.2. If I need a panel I just type gnome-panel, formerly just panel, in the terminal or kicker for kde. For the latter one it's nice to see that an icon for a terminal is still prominently placed on the panel.
+
+> >
+> > Is gnome going the way of MSWindows, users of which are mere        > > klickers?
+> 
+> I think you will find that many things are starting to look like      > MSwidows for the simple reason thats the way most folks want it to be > but, you as user can change the way it all works that is "UN"like     > MSwidows.
+
+And for that freedom of choice I do love Linux!!
+
+> >
+> > Luckily there is blackbox and my favored fvwm2.
+> 
+> Many others as well.
+> 
+> >
+> > Regards
+> 
+> -- 
+> If the Linux community is a bunch of theives because they
+> try to imitate windows programs, then the Windows community
+> is built on organized crime.
+> 
+> Regards Richard
+> pa3gcu@zeelandnet.nl
+> http://people.zeelandnet.nl/pa3gcu/
+> 
+> 
 
 
 -- 
-Mike
-
-
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
