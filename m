@@ -1,10 +1,10 @@
-From: Natarajan <knutties@indiainfo.com>
+From: Natarajan K <knutties@eth.net>
 Subject: Re: How to convert a MSDOS text file to Linux text file?
-Date: Sat, 1 Jun 2002 16:17:57 -0400
+Date: Sat, 1 Jun 2002 16:17:42 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206011617.42480.knutties@eth.net>
+Message-ID: <adakco$ans$2@main.gmane.org>
 References: <20020531141900.TDRO5116.mtiwmhc23.worldnet.att.net@alan>
-Reply-To: knutties@indiainfo.com
+Reply-To: knutties@eth.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -21,8 +21,6 @@ Sorry for the goof up.
 
 -- 
 Natarajan
-
-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
