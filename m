@@ -1,32 +1,30 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Script as root
-Date: Tue, 01 Oct 2002 08:52:47 -0700
+From: Carl <carl@anexia.co.uk>
+Subject: Re: Howto insert newlines in a file
+Date: Tue, 01 Oct 2002 17:04:14 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021001085016.02c818f0@celine>
-References: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
+Message-ID: <5.1.1.6.0.20021001165703.00b76758@interzone.anexia.co.uk>
+References: <20021001143012.78545.qmail@web40609.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
+In-Reply-To: <20021001143012.78545.qmail@web40609.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: szonyi calin <caszonyi@yahoo.com>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Yes. You want to set the suid bit on it and have it owned by root. "man 
-chmod" (or maybe other chmod documentation) for the details.
+At 16:30 01/10/2002 +0200, szonyi calin wrote:
+>Hello everybody
+>I want to insert a new line in a html file
+>after a </a> statement.
+>
+>Can i do this with sed or awk or another program ?
 
-At 09:55 AM 10/1/02 -0400, Paul Kraus wrote:
->I have a backup script that mounts a drive on my xp workstations. Is
->there a way I can set this script to run as root so that I do not have
->to su every time I want to run it?
+sed is fine for simple problems like yours.
 
+I use these 2 sites for help on examples and for the syntax:
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+http://www.softpanorama.org/Tools/sed.shtml
+http://main.rtfiber.com.tw/~changyj/sed/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
