@@ -1,142 +1,57 @@
-From: Alex LIU <alex.liu@st.com>
-Subject: RE: Syscall() vs _syscallN()
-Date: Fri, 1 Apr 2005 15:35:55 +0800
-Message-ID: <00aa01c5368d$71bfc8d0$90b3c68a@st.com>
-References: <Pine.LNX.4.21.0503301451460.559-100000@hestia>
+From: Tobias Hirning <Tobias.Hirning@gmx.de>
+Subject: Re: root password
+Date: Fri, 1 Apr 2005 18:23:04 +0200
+Message-ID: <200504011823.16115.Tobias.Hirning@gmx.de>
+References: <5.1.0.14.1.20050330063201.02035bd0@celine>
 Mime-Version: 1.0
+Content-Type: multipart/signed;
+  boundary="nextPart1837564.DQj45GX6RA";
+  protocol="application/pgp-signature";
+  micalg=pgp-sha1
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0503301451460.559-100000@hestia>
+In-Reply-To: <5.1.0.14.1.20050330063201.02035bd0@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: 'Linux Newbie' <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Thanks a lot for your detailed explanation and now I'm more clear...
+--nextPart1837564.DQj45GX6RA
+Content-Type: text/plain;
+  charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 
-I'm using RedHat9.0.
+Hi Ray!
+> [...]
+> Any other suggestion of how to become root without knowing the root
+> password is a technique for breaking into systems, and I (and I
+> hope everyone else) will not give advice on that publicly, in this
+> forum or anywhere else.
+Why shouldn't we know how the bad can break into our systems?
+I think it's always better to know exactly how they do it.
+Tobias
 
-Alex
-
-
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of J.
-Sent: Wednesday, March 30, 2005 9:05 PM
-To: 'Linux Newbie'
-Subject: RE: Syscall() vs _syscallN()
-
-
-On Wed, 30 Mar 2005, Alex LIU wrote:
-
-> Sorry for my unclear words...
-> I want to know the DIFFERENCE between SYSCALL() and _SYSCALLN()...
-> _syscallN() ( _syscall0(),_syscall1(),...._syscall6() ) is a macro 
-> defined in include/asm/unist.h while syscall() is a glibc function 
-> which I'm not sure. Thanks!
-> 
-> Alex
-
-One is a macro to call the NN'th systemcall directly by symbolic nr. 
-The other is a function in which you have to specify the call number
-yourself and then calls the NN'th systemcall or the systemcall if it's not
-defined in the glbic yet...
-
-What distro are u using ? There should be a manual-page that describes the
-difference quite clearly. Unfortunatly documentation of this level in the
-system is often omitted among newer distro's.
-
-The NN number you are refering to is nothing more than a symbolic Number. 
-
-############ man page....
-System calls like close() are implemented
-in the Linux libc. This implementation often involves:
-
-calling a macro        <---------#!#
-which eventually calls syscall(). Parameters passed to syscall() are the
-number of the system call followed by the needed arguments. The actual
-system call numbers can be found in <linux/unistd.h> while <sys/syscall.h>
-gets updated with a new libc. If new calls appear that don't have a stub in
-libc yet, you can use syscall(). As an example, you can close a file using
-syscall() like this (not advised):
-
-#include <syscall.h>
-
-extern int syscall(int, ...);
-
-int my_close(int filedescriptor)
-{
-   return syscall(SYS_close, filedescriptor);
-}
-
-Bit more clear or .. ?? 
-
-J.
-
-~: man -k syscall
-afs_syscall (2)      - unimplemented system calls
-syscalls (2)         - list of all system calls
-
- 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org
-> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of J.
-> Sent: Tuesday, March 29, 2005 5:36 PM
-> To: Linux Newbie
-> Subject: Re: Syscall() vs _syscallN()
-> 
-> 
-> On Tue, 29 Mar 2005, Alex LIU wrote:
-> 
-> > Hi:
-> > 
-> > With either of syscall() or _syscallN() we can define a system call 
-> > in
-> > the user space program.I think they do the same work.What's the 
-> > difference between them? Thanks!
-> > 
-> > Alex
-> 
-> This is described in the manual page for syscalss
-> 
-> ~: man syscalls
-> 
-> .... 164 system calls.. depending on your kernel version.. etc..
-> 
-> Roughly speaking, the code  belonging  to  the  system  call  with  
-> number __NR_xxx  defined  in /usr/include/asm/unistd.h can be found in 
-> the kernel source in the routine sys_xxx().  ...... etc...
-> 
-> ......
-> 
-> J.
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in the body of a message to majordomo@vger.kernel.org 
-> More majordomo info at http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in the body of a message to majordomo@vger.kernel.org 
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-
-Wednesday, March 30 14:51:46
+=2D-=20
+GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
+Registered Linux-User #367044
+Registered Linux-Machine #262062
+9x6=3D42
+Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
+Signatur nach =A72 2. d) SigG signiert.
 
 
+--nextPart1837564.DQj45GX6RA
+Content-Type: application/pgp-signature
 
---
-http://www.rdrs.net/
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.5 (GNU/Linux)
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org More majordomo info at
-http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+iD8DBQBCTXVzVPy429AtcIURArCRAJ97mMjChUaP8WFYNtH2R8EN+QGOpACgicvd
+b3u04GMg4zJAUZPxh5xKj0E=
+=giXw
+-----END PGP SIGNATURE-----
 
+--nextPart1837564.DQj45GX6RA--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
