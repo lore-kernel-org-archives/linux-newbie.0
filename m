@@ -1,36 +1,28 @@
-From: Amichai Rotman <amichai@iglu.org.il>
-Subject: Re: USB Hotplug??
-Date: Sun, 05 Oct 2003 18:00:15 +0200
+From: "Sean Rima" <sean@tcob1.net>
+Subject: Re: test after resubscribing
+Date: Sunday, 05 Oct 2003 20:22:46 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200310051800.16571.amichai@iglu.org.il>
-References: <20031005145055.GA882@lnx2.w8mch.ampr.org>
+Message-ID: <MSGID_110=3a100=2f1_3f14e3ae@fidonet.org>
+References: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <20031005145055.GA882@lnx2.w8mch.ampr.org>
-Content-Disposition: inline
+In-Reply-To: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 05 October 2003 16:50, Hal MacArgle wrote:
-> Seeing the hotplug directory and files I thought I might find an
-> answer to my basic query: Can the device actually be plugged in and
-> unplugged with the power on?? I read somewhere that firewire is
-> hotpluggable but "don't do it," in many cases.. No details.. I still
-> can't find the theory behind hot plugging.. As an EE you don't
-> connect anything to a live bus with impunity; unless the bus is
-> "dead" until it senses a load.. Maybe I can learn something here.
-> <grin>
->
-> Any comments? TIA & enjoying the list..
+Originally to: Marco Calistri
 
-It would e wise if you umount the device before yanking it from the plug. 
-Other than that - it is safe to unplug it while the power is on. If you 
-unplug it before umounting it, the data on it will become unreadable / 
-unaccessible and that's a shame... ;-)
+-=> Marco Calistri wrote to All <=-
 
-Amichai. 
+
+Looks good here
+
+Sean
+
+... TCOB1 telnet:\\tcob1.thebbs.org 1800-0000 BST/GMT
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
