@@ -1,54 +1,65 @@
-From: "Lee Chin" <leechin@mail.com>
-Subject: Re: suspending a thread and executing it later
-Date: Mon, 20 Jan 2003 00:29:49 -0500
+From: "Anant Aneja" <anantaneja@rediffmail.com>
+Subject: Re: Re: Re: Shutdown problem
+Date: 20 Jan 2003 06:11:08 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030120052949.31230.qmail@mail.com>
+Message-ID: <20030120061108.22650.qmail@webmail8.rediffmail.com>
+Reply-To: "Anant Aneja" <anantaneja@rediffmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: sos22@cam.ac.uk, linux-newbie@vger.kernel.org
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Do pthreads and getcontext/setcontext work nicely with each other?
 
-Thanks
-Lee
------ Original Message -----
-From: Steven Smith <sos22@cam.ac.uk> 
-Date: Sat, 18 Jan 2003 17:46:44 +0000
-To: Lee Chin <leechin@mail.com>
-Subject: Re: suspending a thread and executing it later
+shutdown -r now
+restarts the system.that i've done before.
+i'll try what u say.
+Anant
+On Sun, 19 Jan 2003 pa3gcu wrote :
+>On Sunday 19 January 2003 14:21, Anant Aneja wrote:
+> > heres more info :
+> > my kernel is of version 2.4.2-2.
+> > i couldnt locate the readme u mentioned.
+> > there are no files there (in that folder).
+> > does that mean that I havbe a improperly installed system.
+>
+>It maeans you dont have the kernel source installed nothing 
+>more.
+>I suggest you retrive either linux-2.4.2.tar.gz or update your 
+>kernel to
+>something more recent. Then when you have the source and unpacked 
+>it properly
+>you will then have the README in /usr/src/linux .
+>I suggest you do as i mentioned to hunt down your problem.
+>
+>According to your message about "its always been happening" that 
+>would
+>suggest a harware incompatabilty, why not sinply use shutdown -r 
+>and see if
+>that helps.
+>
+>
+> > Please help
+> > Anant
+>
+>--
+>Regards Richard
+>pa3gcu@zeelandnet.nl
+>http://people.zeelandnet.nl/pa3gcu/
+>
+>-
+>To unsubscribe from this list: send the line "unsubscribe 
+>linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  
+>http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
 
-> > Here is what I want to do... in my program, I want to arbitrarily in
-> > some function suspend the execution of the current (self) thread and
-> > schedule my self to resume from that point later.
-> Have a look at ``info libc "Non Local Exits" "System V Contexts"''.
-> The basic idea is to have one ucontext per thread.  When the running
-> thread wants to block, it picks some other thread, and then
-> swapcontext()s with it.
-> 
-> > In my program, I only have 2 threads... and lets say thread 1 ends
-> > up calling a function foo() that will block on IO.  I dont want to
-> > make the whole system block, so I want to resume the execution of
-> > foo() when the IO completes and restore thread state so that the
-> > stack (function call history and all) is maintained.
-> The easy way to do this is via pthreads, but if you really want to
-> do it yourself, you'll probably need to set every file descriptor
-> to non-block mode, and then swapcontext() whenever an IO
-> function returns EAGAIN.
-> 
-> Steven Smith,
-> sos22@cam.ac.uk.
 
--- 
-__________________________________________________________
-Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
 
-Meet Singles
-http://corp.mail.com/lavalife
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
