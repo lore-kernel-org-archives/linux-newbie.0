@@ -1,47 +1,27 @@
-From: John Kelly <bilbo@waitrose.com>
-Subject: Re: security training suggestions
-Date: Tue, 24 Feb 2004 22:23:13 +0000
+From: "Eve Atley" <eatley@wow-corp.com>
+Subject: Connecting externally via SSH
+Date: Tue, 24 Feb 2004 17:19:40 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040224222313.253ca77e.bilbo@waitrose.com>
-References: <fc.004c4e0000512903004c4e0000512903.512ab7@palmertrinity.org>
+Message-ID: <GNEPLLCIIBHICCOGIAKPOEFJCGAA.eatley@wow-corp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <fc.004c4e0000512903004c4e0000512903.512ab7@palmertrinity.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Hi,
 
-On Tue, 24 Feb 2004 14:54:29 -0500
-"William Stanard" <wstanard@palmertrinity.org> wrote:
+Hi folks,
 
-> We are about to add our Linux box to our school's intranet (a 10.x.x.x
-> network); our network manager is afraid that, by adding a Linux box, we
-> will be opening ourselves up to mischief from our (my) students. Does
-> anyone know of any security training offerings in the southeastern US that
-> I and my network manager could attend to bring us up to speed on security
-> issues surrounding Linux.
-> 
-> I am running Red Hat 8.0 (2.4.18-14) and plan to use Apache's httpd to
-> serve pages for the teachers and students within the school's intranet. I
-> will be teaching Linux to about ten students next fall.
-> 
-> Bill Stanard
+I'm trying to open up our Linux box for external SSH connections. We have a
+shared T1 line with another company. I know the DNS addresses, and it was
+indicated I should peek at the /etc/hosts.allow and /etc/hosts.deny files.
+So... what next? Do I add our DNS address as an SSHD entry and all is hunky
+dory? I tried this using the DNS address, and the server keeps asking for
+some password along with my own password.
 
-I don't know it this helps but O'Reilly publish a book, "Building
-Secure Servers with Linux". The isbn is 0-596-00217-3. My edition dates
-from 2002 and I found it useful. 
+- Eve
 
-Of course I would also recommend that you learn as much as possible
-about Linux and networking in general. Security is not a stand-alone
-issue.
-Just my $0.02 worth.
-
- regards,
-
-John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
