@@ -1,45 +1,39 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: howto configuring kernel and modules.conf for automatic loading of ide-scsi
-Date: Mon, 26 Jan 2004 20:41:41 +0100
+Subject: Re: two eth devices ...
+Date: Mon, 26 Jan 2004 20:45:09 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401262041.41932.pa3gcu@zeelandnet.nl>
-References: <20040125041110.22704715.agri@desnol.ru> <Pine.LNX.4.58.0401252359410.9280@ppg_penguin> <20040126124651.5c1aa170.agri@desnol.ru>
+Message-ID: <200401262045.09004.pa3gcu@zeelandnet.nl>
+References: <4011C87400000704@mail-bcm02.alestra.net.mx>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040126124651.5c1aa170.agri@desnol.ru>
+In-Reply-To: <4011C87400000704@mail-bcm02.alestra.net.mx>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Agri <agri@desnol.ru>, linux-newbie@vger.kernel.org
+To: "rgomez@bancomer.com" <rgomez@bancomer.com>, linux-newbie@vger.kernel.org
 
-On Monday 26 January 2004 10:46, Agri wrote:
-> Oh.... i did everything as you say many times before...
-> i get success only this time.
-> i have done a little investigation...
-> there is no need of
->   pre-install sg modprobe ide-scsi # load ide-scsi before sg
->   pre-install sr_mod modprobe ide-scsi
-> moreover these lines breaks loading after "rmmod -a"
-> lines from logs:
+On Monday 26 January 2004 19:29, rgomez@bancomer.com wrote:
+> Hi, I've been assigned a PC with two eth devices, What utility can I give
+> them? or is better if i unplug one, my network is configured
+> to assign an IP address via dhcp.
 
-I think you need to go back to "start" which means, no i will ask, just what 
-do you want to do and just what do you have;?
+If you dont need eth1 then dont use it, simply down it via ifconfig, i cant 
+say much more as you failed to say what distro you use, most possably answer 
+would be.
+edit /etc/rc.d/rc.local and place the following;
 
-I mean, what sort of cdrom, is it a writer.? or simply just a cdrom device.?
-There are many ways under linux of killing the cat, you have been given, 
-AFAIK, 3 different examples, all of which should work, however they may not 
-work for you because we have to fill in the gaps in the info you provided.
+/sbin/ifconfig eth1 down
+rmmod <module>
 
-In other words tell me/us what type of cdrom you have, your installed distro 
-its version and its kernel, i belive you mentioned 2.4.23-rc1 (BAD) never 
-experiment trying to do something you possably never have done before on a 
-kernel you built yourself, (unless you know what you are doing of course).
-Use the kernel from your distro, i can assure you it has ALL you need.
+See you did not even say what sort of card it is so module is unknown to me.!!
 
-On top of all that send us the commands used and thier corrisponding error 
-messages when there is a problem. 
+Next time be more informative, or better, be imaganative yourself.
+
+> As you can see I'm a Linux newbie in network thems...
+> TKS
+>
 
 -- 
 If the Linux community is a bunch of theives because they
