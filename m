@@ -1,33 +1,32 @@
-From: Jim Reimer <wa5rrh@arrl.net>
+From: ichi@ihug.co.nz
 Subject: Re: (X and other) basics (was: A few more things...)
-Date: Sun, 20 Oct 2002 13:39:46 -0500
+Date: Mon, 21 Oct 2002 07:55:53 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DB2F872.2090400@arrl.net>
-References: <200210201600.g9KG01q22591@ev6.be.wanadoo.com> <20021020202120.D1168@neutrino.particles.org>
+Message-ID: <3DB3B309.7DDDE492@ihug.co.nz>
+References: <200210201600.g9KG01q22591@ev6.be.wanadoo.com> <3DB3AD39.3E68F6A1@ihug.co.nz>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Elias Athanasopoulos wrote:
-> On Sun, Oct 20, 2002 at 05:09:55PM +0000, Heimo Claasen wrote:
+Heimo Claasen wrote:
 > 
->>The dependence on a GUI is indeed a bad thing. I did mention XBasic
->>because that seems to be the _only_ Basic dialect to be found for the
->>Linux environment at all.
-> 
-> 
-> No. There is a BASIC interpreter for Unix. Make some Google search.
-> Actually it was part of the standard installation of Slackware 3.0
-> system, but I can't recall the name.
+> And indeed I would like to find a textmode/comnandline 
+> Basic (or for that matter, just any other language but 
+> C_variant), in order to port some DOS stuff; 
 
+Have you considered using a BASH script?  I recently 
+ported an old Adventure game from Commodore BASIC to 
+BASH.  It works fine.  The only real difficulty was 
+untangling the BASIC spaghetti (the original code had 
+*many* GOTOs).  However, if your BASIC code is well 
+structured, it should not be too difficult to convert
+it to a BASH script.
 
-bwbasic?  Used to use that on a SCO Unix system.
-
--jdr-
-
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
