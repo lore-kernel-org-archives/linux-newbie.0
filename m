@@ -1,24 +1,34 @@
-From: JD <jd@sjcentral.net>
+From: "Tom Beer" <mailings@analogon.com>
 Subject: Re: vpn connection problem
-Date: Thu, 18 Apr 2002 16:36:56 +0100 (BST)
+Date: Thu, 18 Apr 2002 17:43:04 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0204181635490.16791-100000@enigma.sjcentral.net>
+Message-ID: <01c501c1e6ef$bb8c7080$0901a8c0@system>
 References: <3CBEE7A7.305A895B@yukthi.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3CBEE7A7.305A895B@yukthi.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Hanumanth Rao <ahrao@yukthi.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: ahrao@yukthi.com, linux-newbie@vger.kernel.org
 
-the vpn server has a true external IP? and you can access the rest of the
-internet from it?
+Hi,
 
-JD
+this is the newbie list, not the guru list :-)
 
-On Thu, 18 Apr 2002, Hanumanth Rao wrote:
+Can you provide a _little_ more information than
+I have a M$ and a M$ which I want to connect to a
+Linux gateway. What is your exact problem?
+Have you log files. What have you tryed, what
+failed. What's your assessment of the situation?
+
+Greets Tom
+
+----- Original Message -----
+From: Hanumanth Rao <ahrao@yukthi.com>
+To: <linux-newbie@vger.kernel.org>
+Sent: Thursday, April 18, 2002 5:35 PM
+Subject: vpn connection problem
+
 
 > Hi Gurus,
 >
