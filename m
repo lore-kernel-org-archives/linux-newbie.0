@@ -1,59 +1,31 @@
-From: Shane Mitchell <fragile@skynet.ie>
-Subject: Re: ping messages
-Date: Wed, 3 Dec 2003 15:54:28 +0000 (GMT)
+From: Peter <heisspf@skyinet.net>
+Subject: Gnomecard Program lost
+Date: Fri, 05 Dec 2003 16:32:52 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0312031553110.24767@skynet>
-References: <200312030825.59905.g38@rdsbv.ro>
-Reply-To: Shane Mitchell <fragile@skynet.ie>
+Message-ID: <200312050832.hB58Wq717871@skyinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200312030825.59905.g38@rdsbv.ro>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Petre Bandac <g38@rdsbv.ro>
-Cc: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-On Wed, 3 Dec 2003, Petre Bandac wrote:
+Hi,
 
-> Date: Wed, 3 Dec 2003 08:25:59 +0200
-> From: Petre Bandac <g38@rdsbv.ro>
-> To: linux-newbie@vger.kernel.org
-> Subject: ping messages
->
-> hello
->
-> I've googled around to find out EXACTLY what ping messages mean
->
-> like
-> icmp: time exceeded in-transit [tos 0xc0]
->
-> or
->
-> icmp: echo request [ttl 1]
->
-> first I went to check out rfc's, but didn't find much there
->
-> could you please give me any hints ?
->
-> thanks,
->
-> petre
->
->
+A weird thing happened. All of a sudden my / partition was 100% full when 
+normally and as it is now again only 30 % is used. I could not find any files 
+to delete so I had to reinstall RH73.
 
-This is a very good collection of links to documentation/RFC's etc..
+In the process I lost the program gnomecard for my adresses. I can't find it 
+on any of my old CDs, not in gnome.org and a google search put me back on 
+gnome; tocosw was negative as well.
 
-http://www.ethereal.com/links.html
+Does anyone know where it is hidden and guide me in my apparent blindness.
 
+Thanks & regards
 -- 
-Shane Mitchell
+Peter
 
-so sing just like him, fuckers
-it won't offend him
-just me
-because he's dead
-	-- Vedder '4/20/02'
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
