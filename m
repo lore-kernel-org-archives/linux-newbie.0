@@ -1,69 +1,54 @@
 From: lawson_whitney@juno.com
-Subject: Re: user can't read mail (rmail) in text mode (fwd)
-Date: Wed, 30 Oct 2002 19:44:45 -0500 (EST)
+Subject: Re: Trying to get GUI'ed
+Date: Wed, 30 Oct 2002 20:09:25 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021030.203356.134682184.0.lawson_whitney@juno.com>
+Message-ID: <20021030.203356.134682184.1.lawson_whitney@juno.com>
+References: <200210301840.g9UIeSL01894@hartford-hwp.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200210301840.g9UIeSL01894@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: brownh@hartford-hwp.com
-Cc: linux-newbie@vger.kernel.org
+Cc: paul.furness@vil.ite.mee.com, linux-newbie@vger.kernel.org
 
+On Wed, 30 Oct 2002, Haines Brown wrote:
 
----------- Forwarded message ----------
-
-On Tue, 29 Oct 2002, root wrote:
-
-> I'm in a real jam: can't run X server, and so trying to run rmail
-> out of emacs in text mode from a command prompt. But I'm having
-> trouble with rmail in this situation.
-
-It shouldn't happen, but bash will read different startup files
-depending on how it was started.  You might have the environment
-variable MAIL set wrong in one.  A console shell reads ~/.bash_profile,
-while an xterm reads ~/.bashrc.
+> Lawson,
 >
-> Fetchmail works (dumps new messages into /var/spool/mail/<username>).
-> However, even though I'm logged in as user and run rmail under emacs,
-> it says permission denied to access old stored mail (~/RMAIL), but
-> nevertheless then proceeds to load it properly. Rmail then works
-> normally with old messages. But when I try to access new messages from
-> /var/spool/mail/usrname, I get permission denied for /var/spool/mail
-> /root. I don't know why it tries to read root's mail, and chmod o+r
-> username does not help.
+> At this point I'm only trying to back out of my abortive nVidia driver
+> install and get back to the nv driver that came with my RedHat 7.3
+> distribution.
 >
-> The only way I can read my mail is to read /var/spool/mail/username
-> file directly with emacs, which is a pain (partly because for some
-> reason, in text mode, Ctl-home does not take me to the top of the
-> file).
+> To do that, I recovered my old XF86Config-4 file. The rpm install for
+> the driver commented out lib.GLcore.a and libglx.a, which I restored.
 >
-> First question. If I'm logged in as user and user starts emacs and
-> then rmail, why does rmail (when run from a command prompt in text
-> mode) fail to seek its own incoming mail spool file? Is there any
-> way to tell rmail what it's spool file is?
+> Third, I wanted to uninstall the driver RPM. First, I used rpm -ql on
+> NVIDIA_kernel to get the driver's name. The one return was
+> /lib/modules/2.4.18-10/kernel/drivers/video/NVdriver. Then I ran: rpm -Uvh
+> NVdriver. Unfortunately, "no such file." Apparently I can't run the x
+> server without this uninstall, and apparently I'm not going about it in
+> the right way.
 
-try 'source ~/.bashrc'
+Are you trying to uninstall that?  Not with -U you can't.  Mind I've
+never tried to uninstall an rpm, but uninstall is spelled -e or
+--uninstall
+  -U is upgrade, essentially the same as install.
 
-I am guessing, of course, but maybe rmail reads MAIL.
->
-> Second. I get hundreds of messages a day, and I'm already overwhelmed
-> by the size of user's mail spool file. To what extent can it be edited
-> directly (such as by cutting out undesirable messages)?
-
-There is nothing magic about a mail file.  It is just a file, and you
-can read it with any mail user agent, or - for a long time, I read mail
-with "less -ni" and comosed mail with joe.
->
-> If I could communicate properly, I could start addressing my basic
-> problems.
+> Unfortunately, nVidia's support list works through a web page, and
+> since I've lost my X server, it does me no good (I used to rely on
+> lynx, and now I see that I've got it on Linux! I'll try to use it to
+> reach nVidia). My gnus gets into a loop (no fun when it happens from a
+> terminal), and so I can't pursue these issues on an appropriate
+> newsgroup unless I can somehow telnet into the newsgroup (something
+> I've never tried). Wow; all this takes me back to my DOS days!
 >
 > Haines Brown
-
+>
 Lawson
+--
 ---oops---
-
 
 
 
