@@ -1,54 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: digest?
-Date: Sat, 04 Jan 2003 18:33:11 -0800
+From: r4mz3z <r4mz3z@yahoo.es>
+Subject: help me with awk
+Date: Sat, 4 Jan 2003 22:00:51 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030104182809.02112330@celine>
-References: <20030104002238.87450.qmail@web14305.mail.yahoo.com>
- <005201c2b450$504cf7c0$6400a8c0@00arc>
+Message-ID: <200301042200.59282.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E17973F.8C436F02@sympatico.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-This list is pretty much ignored by the folks who run things at vger, so I 
-doubt you'll get an authoritative answer to this question. But in my 
-several years on this list, I've never seen any mention of a digest version.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-OTOH, and to my surprise, I jusr discovered that there are two archives of 
-the list. They are listed at
+Hi friends...
+   I have a problem, maybe it is foolish for you but I can't do it ;-P
+   I wanna write a TAB after each field, something like:
+'{print $1 "\t" $2 ...}' but the problem is that the number of fields change. 
+If I use 'cut' it works, but the definition of delimiters are reduced.
+   For example I want to print since field 7 to end of this command:
+   ps -eo %cpu,longtname,pri,nice,user,args
 
-         http://vger.kernel.org/vger-lists.html
+  Thanks
 
-in the section on linux-newbie. The Sourceforge one is not current, but the 
-other one is up to date. I suppose that is an anternative for people who 
-find the individual messages to consritute too much traffic. Beware, though 
-... my expeirnec is that list archives for this list come and go, 
-unpredictably.
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-Of course, I could be wrong.
-
-At 09:23 PM 1/4/03 -0500, LL Phillips wrote:
->Hi Jonathan
->I haven't found one.
->If anyone knows of one I hope they answer to the list.
->Lorraine
->
->Jonathan Kallay wrote:
-> >
-> > Is there a way to get a daily digest from this mailing list, instead of
-> > getting each message individually?
-
-
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+iD8DBQE+F5/ps4dF9gl05swRAlWvAJ0fHsbakDrSowi8Jx4KOvBa0FT9VgCghlds
+mr6KrPMf8RKFbydgKsSbQAM=
+=royM
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
