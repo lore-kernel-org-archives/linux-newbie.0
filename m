@@ -1,34 +1,29 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Gnomecard Program lost
-Date: Fri, 05 Dec 2003 08:11:41 -0800
+Date: Sat, 06 Dec 2003 12:07:45 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031205080910.02014e18@celine>
-References: <200312050832.hB58Wq717871@skyinet.net>
+Message-ID: <200312060408.hB647kx01452@skyinet.net>
+References: <5.1.0.14.1.20031205080910.02014e18@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200312050832.hB58Wq717871@skyinet.net>
+In-Reply-To: Your message of "Fri, 05 Dec 2003 08:11:41 PST." 
+ <5.1.0.14.1.20031205080910.02014e18@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 04:32 PM 12/5/2003 +0800, Peter wrote:
->Hi,
->
->A weird thing happened. All of a sudden my / partition was 100% full when
->normally and as it is now again only 30 % is used. I could not find any files
->to delete so I had to reinstall RH73.
->
->In the process I lost the program gnomecard for my adresses. I can't find it
->on any of my old CDs, not in gnome.org and a google search put me back on
->gnome; tocosw was negative as well.
->
->Does anyone know where it is hidden and guide me in my apparent blindness.
+Thanks Ray, I found gnomecard  as you suggested in gnome-pim in RH7.1 and not 
+anymnore in RH7.3 of Krud Linux. Why would they leave-out such a nice program?
 
+I still wonder how my "/" partition could suddenly fill to 100% and not 
+showing any unusual large or duplicate files. Is there a virus around?
 
-In the Debian packaging system, this app is part of the package 
-"gnome-pim", along with gnomecal (the Calendar app). You might see if RH, 
-or gnome.org, packages it similarly.
+Regards
+
+-- 
+Peter
 
 
 
