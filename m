@@ -1,102 +1,60 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Thought I was mounting drive correctly, but backup failed
-Date: Fri, 11 Mar 2005 14:54:59 -0800
-Message-ID: <5.1.0.14.1.20050311144254.02050060@celine>
-References: <5.1.0.14.1.20050311131458.02051e80@celine> <00b501c5268a$a0771bf0$4f0aa8c0@lanadmin>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: RE: Some users locked out of ssh and sftp?
+Date: Fri, 11 Mar 2005 17:56:25 -0500
+Message-ID: <00be01c5268d$8e50a060$4f0aa8c0@lanadmin>
+References: <200503011926.04903.eric@cisu.net>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
-In-Reply-To: <00b501c5268a$a0771bf0$4f0aa8c0@lanadmin>
-References: <5.1.0.14.1.20050311131458.02051e80@celine>
+Content-Transfer-Encoding: 8BIT
+In-Reply-To: <200503011926.04903.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: eric@cisu.net
+Cc: linux-newbie@vger.kernel.org
 
-I've made several suggestions inline. But skip to the last one first, since 
-it's my best guess about what your actual problem is.
 
-At 05:35 PM 3/11/2005 -0500, Eve Atley wrote:
+Ok, let me see if I can narrow the problem down a bit. Using the GUI panel,
+I first create a user and password combination - let's use jean / password1.
+This autocreates a user home directory (jean) and gives them a bash shell
+(in this case). 
 
->Hi Ray, thanks for your usual excellent tips. Here's what I've done...
->
->1. mount -t smbfs -o username=linuxadmin,password=password,workgroup=wowcorp
->//backup/e /mnt/backup
->Result: no errors
->
->2. df shows:
->/dev/hda2             37334192   5252668  30185052  15% /
->/dev/hda1               101089     29129     66741  31% /boot
->/dev/hdb1             57669728  42343604  12396676  78% /home
->none                    256800         0    256800   0% /dev/shm
->//backup/e           120623104     69632 120553472   1% /mnt/backup
->
->So, it appears to be mounting...with correct partition size.
+Then, via terminal, I 'useradd jean'. Following this, I 'smbpasswd -a jean'
+and enter the password as prompted (twice). I return to the GUI and uncheck
+all account expiration, just in case. I then set the user up with access to
+the groups she should be permitted to (via the GUI).
 
-I agree. This part looks good.
+Now, I'm set up this way (eve), as is user Keyur (keyur) and Gagan (gagan).
+I just set up Jean (jean) this way. Gagan and I can log in; neither of us
+have a .ssh file located anywhere that we know of, for ourselves. Keyur and
+Jean cannot, they are prompted for a session password. Gagan and I never are
+prompted for such.
 
->3. cp mount_test.txt /mnt/backup
->Result: mount_test.txt resides on /mnt/backup
->
-> >If yes, can you do so as whatever userid the script runs from? If
-> >no, can you do so as root?
->
->Well, I logged in via ssh as root, mounted the drive, and copied the file.
+We log in using Winscp3. Locally, as an example, we put in address
+192.168.10.x, port 22, username: jean, password: password1. For most of us
+(I give only 3 examples here), the login is successful. No session password
+needed.
 
-I don't know if you answered the question or not, since I don't know what 
-userid the script runs under (I'm guessing that it is a daily cron job, but 
-I can't guess the uid). But if the script runs under a userid other than 
-root, it could still be a problem at the Linux end. So please check --
+> (BTW, what do you mean by "network" username/password? Does this host 
 
-         (a) permissions on this mounted directory as Linux sees them. That 
-is, what does "ls -l /mnt/backup" report?
+We have it set up so that once the user is logged into his computer with
+his/her user/pass combo, then accessing the network via samba uses the same
+credentials. Therefore, user/pass combo is same on Windows logon as well as
+Samba.
 
-         (b) if you can cp a file to this directory as the userid that runs 
-the script.
-> >If cp'ing by hand works, then you need to examine your script with a bit
-> >more skepticism. (BTW, does the script detect and log cp'ing failures? Or
-> >are its STDOUT and STDERR routed to /dev/null or someplace equally
->useless?)
->
->Well, I say it's not the script's fault because it all worked previously. :)
->Linuxadmin is set up as an administrator, so should have full read/write
->capabilities.
+> (Also, you say "most others" can log in. Is this just caution in 
+> reporting, or do you have other reports of unexplained failures?)
 
-Since the term "administrator" is not used on Linux and Unix systems, I 
-assume you refer here to privileges on the Windows end. I'll have to take 
-your word for that part. But whether permissions are OK on the Linux end is 
-not sorted out by this.
+See above.
 
->  At this point, the backup script shows:
+>Check the permissions on his/her ~/.ssh directory. If the permissions
+somehow 
 
->mount -t smbfs -o username=linuxadmin,password=password,workgroup=wowcorp
->//backup/e /mnt/backup &>/root/backup_scripts/logs/`date
->+"MOUNT-%y-%m-%d.log"`
->if [ -f /mnt/backup/connected ]; then
->         rm -rf /mnt/backup/`date +"%A/"`
->         mkdir /mnt/backup/`date +"%A/"`
->         cp -r /home/shared/* /mnt/backup/`date +"%A/"`
->1>/mnt/backup/logs/`date
->+"DAILY-%y-%m-%d.log"` 2>/mnt/backup/logs/`date +"DAILY-%y-%m-%d.err"`
->         umount /mnt/backup  &>/root/backup_scripts/logs/`date
->+"MOUNT-%y-%m-%d.log"`
->fi
+Again, I see no .ssh directory, at least not for /home/keyur, /home/gagan,
+/home/jean or /home/eve.
 
-Hmmm ... have you created (touch'ed) the file /mnt/backup/connected on the 
-backup drive? If not, the script is failing to perform the backup because 
-the conditional in its if statement  (if [ -f /mnt/backup/connected ];) 
-fails. And the script has no instructions for what to do if the if test 
-fails (no "else", that is), so nothing would get logged in this case.
 
->----------------
->
->The generated log appears completely empty, whereas the day before it
->indicated:
->SMB connection failed
->15538: session setup failed: ERRDOS - ERRnoaccess (Access denied.)
->...since I had nothing set up at that time.
->
->
->- Eve
+- Eve
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
