@@ -1,58 +1,78 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: process priority at 25
-Date: Sun, 19 May 2002 17:23:30 +0100
+From: =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>
+Subject: searching a mail solution
+Date: Sun, 19 May 2002 19:04:18 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020519162330.GA3150@cam.ac.uk>
-References: <20020519142943.GA9998@prester>
+Message-ID: <11924676928.20020519190418@chello.pl>
+Reply-To: =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="cNdxnHkX5QqsyA0e"
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020519142943.GA9998@prester>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
+Hello All,
 
---cNdxnHkX5QqsyA0e
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I have some idea and I have some questions:
 
-> I alway thought process priorities range from -20 to 19 (also according to
-> "man nice"). But under kernel 2.5.16 I run top and process is display with
-> priority 25..
-A process's nice value is not the same thing as its priority. niceness
-is used in the calculation of priority, but they're not bound together.
-In particular, a process's priority is liable to become numerically
-greater (-> lower priority) if it makes heavy use of the processor
-(this is supposed to stop something like ``while (1) ; '' bringing
-down the system), while a process which makes heavy use of the disk
-is likely to get slightly higher priority (because as soon as it hits
-the disk, it blocks, and something else can run).
+I'm using "CABLE MODEM" internet connection, I mean I have a small box
+(cable modem) which is connected with BNC cable comming from my ISP.
+My ISP is a bit popular in Europe (Austria, Poland, Germany etc.).
+It is called CHELLO.
 
-Under 2.4 kernels, priority is constrained between 0 and 20 (for non-realtime
-processes), but there's no reason why the same thing should apply to 2.5
-kernels.
+So, this ISP doesn't allow to run any server services.
+I know that I could run some servers (www, ftp, mail) with some tricks
+;) in order to be not visible (my services) for my ISP.
+Bay the way, could someone explain me, how to make services on my box
+unvisible for  my ISP ?
+I know that I can run, for example FTP server on different ports and
+so on, but I think that my ISP can make some monitoring of SYN packets
+going straigth to my server and check on which port someone try to
+connect with my server.
+What do you think, am I talking nonsense ?
 
-Steven Smith,
-sos22@cam.ac.uk.
+But, as I said  on the start, I;m going to not use tricks ;)
 
---cNdxnHkX5QqsyA0e
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+My local home network structure looks like this:
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+3 machines: 1x linux (Slackware), 2x Windows.
+Slackware runs as local network server: printer server, file server
+(with big HDD), backup server, and masq & firewall .
 
-iD8DBQE859GCO4S8/gLNrjcRAsWfAKC2SeWWLnRqR6WukM8DJ933j8G3vQCgrzZs
-eJLSMCFoLzf8Py4rT0/yVVM=
-=HfZ5
------END PGP SIGNATURE-----
+So, me and my Wife works on 2 Windows machines, we have e-mail and www
+accounts outside (in different ISP's).
+As I said, we have'nt any server on Linux machine.
 
---cNdxnHkX5QqsyA0e--
+I have some idea:
+
+I would like to treat my Linux as e-mail (pop3) server.
+Linux is running 24 hours per day, so it could fetch mail from our
+e-mail accounts and on windows machines, I could fetch e-mails
+straight from my Linux server (it could runs POP3 server).
+So, Linux may try to fetch e-mails every 15 minutes.
+This solution could prevent my e-mail accounts (which I have in
+different ISP's) to run out of free space, because my Linux (in my
+home, fetches this e-mails).
+When I'll send my e-mails, I will use SMTP servers from my ISP's
+(outside my home network).
+So, I have some question:
+
+Could someone try to explain me what software should I install ?
+I know that I have to install some POP3 server or/and fetchmail.
+
+Any suggestions, piece of advice ???
+
+Best regards,
+
+--
+
+Mateusz =A3oskot
+E-mail: m.loskot@chello.pl
+GG#: 792434
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
