@@ -1,17 +1,17 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: dma turned off
-Date: Thu, 11 Nov 2004 16:58:28 +0100
-Message-ID: <200411111658.28958.pa3gcu@zeelandnet.nl>
-References: <20041111031327.278F03F57C@heisspf>
+Date: Fri, 12 Nov 2004 16:19:43 +0800
+Message-ID: <20041112081943.33B1D480C6@heisspf>
+References: <200411111658.28958.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041111031327.278F03F57C@heisspf>
-Content-Disposition: inline
+In-Reply-To: Your message of "Thu, 11 Nov 2004 16:58:28 +0100."
+             <200411111658.28958.pa3gcu@zeelandnet.nl> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: "Peter H." <heisspf@skyinet.net>
+To: Richard Adams <pa3gcu@zeelandnet.nl>
 Cc: linux <linux-newbie@vger.kernel.org>
 
 On Thursday 11 November 2004 04:13, Peter H. wrote:
@@ -25,24 +25,39 @@ ot:
 > =A0* Warning: The dma on your hard drive is turned off. *
 > =A0* This may really slow down the fsck process. *
 
-I suggest you use www.google.com/linux and type in "2.6.7 DMA" (without=
-=20
-quotes), lots of hints there on 2.6.x kernels and DMA.
 
-I would go as far as saying its NOT you or your hardware at fault,many =
-have=20
-problems with DMA and friends at the minute.
-One draw back of using an up to date kernel which has not been widely t=
-ested.
+pa3gcu@zeelandnet.nl said:
+> I suggest you use www.google.com/linux and type in "2.6.7 DMA" (witho=
+ut
+> quotes), lots of hints there on 2.6.x kernels and DMA.
 
+> I would go as far as saying its NOT you or your hardware at fault,man=
+y have
+> problems with DMA and friends at the minute. One draw back of using a=
+n up to
+> date kernel which has not been widely tested.=20
+
+That's what I did before posting on the subject. That's why I asked whe=
+re to=20
+put hdparm -d 1 /dev/hda in /etc/rc.d since the error message comes ear=
+ly on=20
+booting and putting it into rc.local it will be executed at the end of =
+boot. I=20
+put it into rc.S and still get the error message:
+
+ setting using_dma to 1 (on)
+> >  HDIO_SET_DMA failed: Operation not permitted
+> >  using_dma    =3D  0 (off)
+
+=46urther when booted with 2.6.7 kppp takes again 22 seconds to come up=
+ against=20
+11 with 2.4.26. Therefore I resign from the idea of using kernel 2.6.7.
+
+Signing off. Thanks everybody for the help, much appreciated.
+
+Regards
 --=20
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
