@@ -1,47 +1,41 @@
-From: Kenneth Stephen <pgmr@austin.rr.com>
-Subject: Re: Exporting display
-Date: Sat, 21 Sep 2002 14:08:22 -0500 (CDT)
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: nice linux list
+Date: Sat, 21 Sep 2002 23:04:03 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.3.96.1020921140506.19970A-100000@trillian.megadodo.umb>
-References: <20020917124524.17274.qmail@web13407.mail.yahoo.com>
-Reply-To: kstephen@austin.rr.com
+Message-ID: <20020921230403.C1448@neutrino.particles.org>
+References: <000f01c26197$31cc8c40$70d8d6d2@heretic>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020917124524.17274.qmail@web13407.mail.yahoo.com>
+Content-Disposition: inline
+In-Reply-To: <000f01c26197$31cc8c40$70d8d6d2@heretic>; from sagar@mihira.net on Sat, Sep 21, 2002 at 11:19:06PM +0530
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Abhijit Vijay <abhijit_v@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: Sagar N Chand <sagar@mihira.net>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Tue, 17 Sep 2002, Abhijit Vijay wrote:
+On Sat, Sep 21, 2002 at 11:19:06PM +0530, Sagar N Chand wrote:
+> i have been subscribed to the php mailinglist at php.net since 2yrs.
+> I'll get atleast 200-400 mails per day on that list. But i hardly can find
+> 10 msgs here. I'm not comparing anything here. i just want to know 
+> whether is there any list out there on linux which has some mail 
+> traffic continuously.
 
-> 
-> 2. Execute "setenv DISPLAY ${REMOTEHOST}:0.0" after
-> connecting to my linux machine through SSH
-> 
-> 3. echo $REMOTEHOST gives me hughes08.biac.duke.edu
-> (my Windows NT workstation)
-> 
-> 4. echo $DISPLAY gives me hughes08.biac.duke.edu:0.0
-> 
-> However, when I type xbiff& after connecting to my
-> linux machine, I just get the process ID. The xbiff
-> window does not show up!
-> 
+I'll agree with the other folks who underlined that quality is more 
+important than quantity, but just for the record this list in 1996
+had 50-60 e-mails/day. 
 
-Abhijit,
+Amazingly, a large amount of the questions newbies sent in 1996 is the
+same as today (mostly partitioning problems, networking and the classic
+"which app does that?").
 
-	Did you try running it in the foreground first (without the
-'&')? Some applications require a terminal to work atleast during
-initialization and putting it in background mode may just stop the
-process. The other thing to check for is whether your .xsession-errors
-file shows any error messages. If it shows access denied type messages,
-perhap you need to run xhost or an equivalent program on your NT machine.
+ANW, if you want more e-mail traffic try Usenet.
 
-Regards,
-Kenneth
-
+Ciao,
+ Elias
+ 
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
