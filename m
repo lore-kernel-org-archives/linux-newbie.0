@@ -1,64 +1,50 @@
-From: "Korosi Akos" <korosiakos@mailbox.hu>
-Subject: Strange problem
-Date: Fri, 17 Jan 2003 17:06:52 +0100
+From: "Anant Aneja" <anantaneja@rediffmail.com>
+Subject: Shutdown problem
+Date: 17 Jan 2003 18:16:55 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030117160653.9480.qmail@web1.mailbox.hu>
-References: <20030116165541.8028.qmail@webmail30.rediffmail.com>
+Message-ID: <20030117181655.4776.qmail@webmail9.rediffmail.com>
+Reply-To: "Anant Aneja" <anantaneja@rediffmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030116165541.8028.qmail@webmail30.rediffmail.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi all!
+well i guess i was 0 on details last time.
+but heres another problem whose complete details I CAN supply.
+only problem is writing the exact o/p would mean actually WRITING 
+it down first.
 
-I have a strange problem.
+cos it comes when i shutdown the comp.
 
-Happened that the machine had been rebooted (hardly) for some times,
-and at the end the next happened:
+my comp has a feature by which when the os shuts down it shuts 
+down the comp completley. thus in windows i dont see a
+'Its safe to shutdown ......."
 
-Nobody can log in except the root. The message is that there is no
-/home/<user> (<user> is the appropriate user)!
-But in /home there is the <user> directory, and the <user> has
-rwx permissions on it. And everybody has x permission on /home.
-The other thing is that in sendmail sm-client can not be started,
-because: can not chdir to /var/spool/<somedir>, no permissions.
-BUT there are appropritate permissions on that dir, and everybody
-has x permission on /var and /var/spool. After that I changed
-/var/spool/<somedir> to 777 permissions, but sm-client says the same.
-I can log in as root. And if I try to #su - <user>, it wont start.
-I tried #strace su - <user> and saw, that su can open some files,
-but it can not open to read many files (in /etc), but the files are
-there, everybody has read permissions on them, and everybody has
-execute permissions on the parent directoryes.
+in linux(red hat 7.1 on a pentium 350 Mhz)i come down to the 
+foll.
+(from what i rem.,may not be exact) :
+stopping md devices.
+stopped md devices.
+halting system.
+POWER DOWN
+<error>
 
-What could this be?
-Could this be some virus (I forget to setup iptables correctly),
-or could this happen because of hard resets?
+its after this that i get a complete listing of the cpu's 
+registers and some more crap(i'll send this as soon as someone 
+asks)
 
-I thought that I will reinstall Linux (RH 8.0), because happily
-I use more partitions, and there isnt any important data
-on root partition.
+so any help i can get ?
 
-But I'm very curious about this problem.
-
-I use RedHat 8.0 and Ext3 file system on all data partitions.
-This is an older machine (K6-2 350 CPU).
-
-If you need any further info, just ask.
-
-TIA
-Akos
+Anant Aneja
 
 
-________________________________________________
-http://mailbox.hu - M=E1r SMS =E9rtes=EDt=E9ssel is!
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
