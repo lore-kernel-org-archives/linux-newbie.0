@@ -1,40 +1,34 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Can't connect to Internet
-Date: Sat, 28 Aug 2004 09:30:22 +0200
+Date: Sun, 29 Aug 2004 09:57:03 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200408280930.22863.pa3gcu@zeelandnet.nl>
-References: <20040828022115.8392B1C645@heisspf>
+Message-ID: <20040829015703.BB7883EB31@heisspf>
+References: <200408280930.22863.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040828022115.8392B1C645@heisspf>
-Content-Disposition: inline
+In-Reply-To: Your message of "Sat, 28 Aug 2004 09:30:22 +0200."
+             <200408280930.22863.pa3gcu@zeelandnet.nl> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <heisspf@skyinet.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Richard Adams <pa3gcu@zeelandnet.nl>
+Cc: linux-newbie@vger.kernel.org
 
-On Saturday 28 August 2004 04:21, Peter wrote:
-> On Slackware10 suddenly I cannot connect to the Internet with my major ISP
-> skyinet.net. I can login, however, cannot fetch or send mail nor open a web
-> page. I can ping successfully with no package loss.
+Thank you so much Richard!
 
-I bet you meant "packet loss", ok joke over, now i am not an expert at ppp but 
-a bell rings here when you say i can ping via ppp0 but not connect, it sounds 
-like a domainname problem to me, check that  /etc/resolv.conf is getting 
-updated by skynet, check the nameserver IP#'s for skynet and if need be add 
-them in by hand.
+pa3gcu@zeelandnet.nl said:
+>  it sounds  like a domainname problem to me, check that  /etc/resolv.conf is
+> getting  updated by skynet
 
-nameserver xxx.xxx.xxx
-search skynet.net
+I copied /etc/resolv.conf from RedHat into slackware and I was back in 
+business.
 
+This mail leaves now in slackware with skyinet.net.
+
+Regards
 -- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Peter
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 
 -
