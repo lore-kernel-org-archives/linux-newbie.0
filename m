@@ -1,59 +1,45 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Script
-Date: Tue, 12 Nov 2002 17:33:31 +0000
+From: Mike Ni <cba20032002@yahoo.com>
+Subject: Message delivery
+Date: Tue, 12 Nov 2002 10:45:16 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021112173331.GA1964@cam.ac.uk>
-References: <06d801c28a6e$4ce35e00$64fea8c0@pkrausxp>
+Message-ID: <20021112184516.32024.qmail@web40408.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="J/dobhs11T7y2rNN"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <06d801c28a6e$4ce35e00$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+Friends,
 
 
---J/dobhs11T7y2rNN
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Does anyone know where is a good place to look for
+information (such as developer guide/mailing list) for
+muticasting message?
 
->  for filestotar in `ls --almost-all --directory -x1 *`
->         do
->                 if ["$filestotar" !=3D "advserver"]; then
+There is a piece of application program that has been
+causing some performance pain. The application program
+was written to deliver messages to several clients at
+the same time.  This particular part of the program
+isn't function very well. 
 
-You need an extra space or two here:
-		  if [ "$filestotar" !=3D "advserver" ]; then
-Think of ``['' as a command, and the rest of the stuff as arguments
-to it.
+I would like to find out more what can be done such as
+alternative option. Therefore, It would be really
+helpful anyone know a good place to study/research
+mutilcasting message delivery system.
 
->                         #!tar --directory /backup/tar.archive --create
-> --verbose --file test.tar /backup/$filestotar/*
->                         counter=3D`expr $counter + 1`
->                 fi
->         done=20
+I heard "TIBCO" has some products that is designed to
+provide high performance message system. Does anyone
+have any thoughts/feeedback about Tibco's product? Or
+any other similira product?
 
-If I understand what you're trying to do correctly, then you might want
-to look up the --exclude option to tar.
+Thanks
+MIke
 
-Steven Smith,
-sos22@cam.ac.uk.
-
---J/dobhs11T7y2rNN
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.0 (GNU/Linux)
-
-iD8DBQE90TtqO4S8/gLNrjcRAhW7AKDFoTx5qFEdCEusH35YQi/YDrKiDQCfUHF0
-5VxyogqIGkpDVm7Vv/0G8pg=
-=y2yz
------END PGP SIGNATURE-----
-
---J/dobhs11T7y2rNN--
+__________________________________________________
+Do you Yahoo!?
+U2 on LAUNCH - Exclusive greatest hits videos
+http://launch.yahoo.com/u2
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
