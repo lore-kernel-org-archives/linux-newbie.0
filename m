@@ -1,50 +1,43 @@
-From: Riley Williams <rhw@InfraDead.Org>
+From: Matti Aarnio <matti.aarnio@zmailer.org>
 Subject: Re: newbie
-Date: Tue, 20 Aug 2002 06:42:44 +0100 (BST)
+Date: Tue, 20 Aug 2002 10:32:36 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208200631470.8397-100000@Consulate.UFP.CX>
+Message-ID: <20020820073236.GB32427@mea-ext.zmailer.org>
 References: <20020819223018.79961.qmail@web40015.mail.yahoo.com>
-Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <20020819223018.79961.qmail@web40015.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: Venkat Raghu <venkatraghu2002@yahoo.com>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-Hi Venkat.
+On Mon, Aug 19, 2002 at 03:30:18PM -0700, Venkat Raghu wrote:
+> Hi,
+> 
+> I have a bash script which modifies some environment
+> variables and does some other housekeeping things.
+> But problem is that when script finishes running,
+> new values of environment variables are no longer
+> visible in parent shell. So what should I do so that
+> these new values are visible in parent. I don't want
+> to run as ". file.sh". I have to run it as "file.sh"
+> only.
 
-> I have a bash script which modifies some environment variables and
-> does some other housekeeping things. But problem is that when script
-> finishes running, new values of environment variables are no longer
-> visible in parent shell. So what should I do so that these new
-> values are visible in parent.
+  The things you do in child process environments are
+  inheritable only to their childs, never to parent.
+  If they were, there would be massive security problems,
+  just to mention one consequence...
 
-Run your script using ". file.sh" or "source file.sh" to do that.
+  If you want your current shell to get the new values,
+  you have to do:  . file.sh
 
-> I don't want to run as ". file.sh".
-> I have to run it as "file.sh" only.
-
-Unfortunately, if you run it as "file.sh" only, you start up a new
-shell and lose the ability to change the settings in the parent shell. 
-This is a deliberate part of bash's design, and is to isolate the new
-shell from the existing one so the new shell can make changes to
-important environment variables to accomplish its task without causing
-problems for later commands.
-
-Another option would be for your script to drop the relevant commands
-into the keyboard buffer for the parent shell to execute when the new
-shell exits. Whilst that might be an interesting exercise, it's also a
-pointless one when the needed functionality is already present.
-
-If your script is one that you want executed every time you log in, then
-include the relevant source command in ~/.bashrc and it will be loaded
-at login time without problem.
-
-Best wishes from Riley.
-
+> Kindly mail me at venkatraghu2002@yahoo.com
+> 
+> Regards
+> Venkat.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
