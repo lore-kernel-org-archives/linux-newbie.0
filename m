@@ -1,128 +1,108 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: Re: Partitioning problem
-Date: Fri, 26 Jul 2002 10:39:16 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: No Boot Problem
+Date: Fri, 26 Jul 2002 09:57:10 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <107a26d107876a.107876a107a26d@homemail.nyu.edu>
+Message-ID: <5.1.0.14.1.20020726093031.0228aa80@celine>
+References: <5.1.0.14.1.20020725203925.022778d0@celine>
+ <3D406BBB.E208E07B@gelm.net>
+ <5.1.0.14.1.20020725203925.022778d0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
+In-Reply-To: <200207260844.34055.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
 
-Thanks for the response. 
-but the problem is that with the partition shown below i am never able 
-to boot using linux. so i cant edit the lilo.conf.
-or shud i change partition 1 (/dev/hda1) to type ext2 from current 
-vfat. coz that was the only way i cud boot into linux?
+In your followup, you haven't really told us much more about the problem.
 
------ Original Message -----
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Date: Thursday, July 25, 2002 2:22 am
-Subject: Re: Partitioning problem
+Based on your clarifications, I'd surmise a problem of some sort with the 
+hard disk connection -- either the controller itself,  which in modern 
+systems is usually part of the motherboard electronics (this is why I 
+characterized your problem as a mobo problem before), with the BIOS 
+settings for the hard disk(s), or possibly with the cable (is the CD drive 
+that you say works for booting on the same IDE channel as the hard disks? 
+I'd *guess* not from the BIOS report you provide below).
 
-> On Wednesday 24 July 2002 21:24, Anshuman Rawat wrote:
-> > Hi,
-> > I want to have both WinXP and Linux (RHL7.3) on my system but am 
-> having> trouble with the partitions. My partition table (i dunno 
-> whether thats the
-> > correct term) looks like this (as shown by linux installer ) -
+The alternative is that you have two separate problems, one with the old 
+(Windows) hda, the other with the replacement hard disk you attempted to 
+install to. Since you only examined the replacement drive under Windows, I 
+can't venture any real guess about what its problem might be (although it 
+*might* be as simple as a BIOS mismatch, if you didn't either set the BIOS 
+to autoprobe for IDE primary master or actually specify the new drive 
+geometry).
+
+A couple of specific comments are below.
+
+At 08:44 AM 7/26/02 -0400, Frank Roberts - SOTL wrote:
+[...]
+
+> > At this point, a description of the failure mode would belp more than
+> > "refused to boot".  Did LILO even begin to run?
+>
+>No
+>
+> > Did it display any messages on teh screen?
+>
+>This is going to take several boot and I dought that I get all the info
+>completely correct. It simply goes by on the screen too fast.
+>
+>1. CPU=Celeron 300 MHz
+>2. RAM is checked                  Passed
+>3. Extended RAM is checked  Passed
+>4. System BIOS Shadowed
+>5. Vidio BIOS Shadowed
+>6. Upper limit segmant address = F299
+>7. Fixed Disk 0: TD@ @06400L
+>8. Fixed Disk 1: WDC AC310200R
+>9. ATAPI CD-ROM: CDR-8240B
+>10. ATAPI CD-ROM: SONY CD-RW CRX175E2
+>11. System Configuration Data Updated
+>12. Blinking Currersor
+
+This is all information from the system's BIOS. You are right in inferring 
+that LILO does not appear ever to run.
+
+
+> > >I stuck Tomsrtd in and boot the box into Toms followed by a normal shut
+> > > down.
+> > >
+> > >I then stuck RH 7.3 install in and started an upgrade to see what would
+> > >happen. The box finally booted into RH after 5 or 6 tries.
 > >
-> >                                 Start   End        Size(MB)      
-> Type
-> > Mount point    Format
-> > /dev/hda
-> >     -Free                        1        1            8         
->   Free
-> > space
-> >     -/dev/hda1                 2        7            47          
-vfat
-> > No
-> >     -/dev/hda2                8        708        5499      NTFS
-> > No
-> >     -/dev/hda3               709     2432      13523    Extended
-> >         -/dev/hda5           709     1413      5530      NTFS
-> > No
-> >         -/dev/hda6           1414   1419      47          ext2
-> > /boot               Yes
-> >         -/dev/hda7           1420   1453      267        swap
-> > Yes
-> >         -/dev/hda8           1454    2432     7697      ext2
-> > /                       Yes
-> >
-> > the error message i get is -> Boot partition may not meet booting
-> > constraints for your architecture. Creation of boot disk is highly
-> > encouraged.
-> 
-> Thats not an error message but a warning from the install process, 
-> as you see lilo or grub was installed.
-> 
-> > The options I get is "modify partition" and "add anyway". If I 
-> proceed with
-> > 'add anyway' option installation is succesful but I dont get the 
-> option of
-> > selecting the OS for booting the PC and the PC boots using WinXP.
-> > I tried changing the /dev/hda1 partition to ext2 ,mount pt 
-> /boot. The
-> > installation was succesful and so was the boot, but then the 
-> option of
-> > starting with WinXP dissapeared. I could only boot with Linux
-> > Can anyone help me out here?
-> > btw I used Partition Magic from WinXP to partition the disc as I 
-> dont know
-> > how to work around usinf fdisk in Linux.
-> 
-> You need to change you lilo.conf file, or grub which ever you told 
-> redhat to 
-> install.
-> 
-> I do not use grub so someone else will need to give you and 
-> example for grub
-> lilo can be told to boot linux as default, it may be that in 
-> /etc/lilo.conf a 
-> line is presant
-> default = xxx
-> Simply change the xxx to the "name" stated in the linux portion 
-> lower down in 
-> the file, or if no default = is present place the linux entry as 
-> the first 
-> entry.
-> Save the file and run lilo with the -t option,
-> /sbin/lilo -t
-> If no errors are found you will see something like;
-> 
-> Added Linux *
-> Added dos
-> The boot sector and the map file have *NOT* been altered.
-> 
-> Now rerun lilo as is.
-> /sbin/lilo
-> reboot and linux is the default system.
-> 
-> Its all explained on my home page;
-> 
-> http://people.zeelandnet.nl/pa3gcu/kernel.htm
-> 
-> >
-> > -Anshu
-> >
-> >
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe linux-
-> newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> -- 
-> Regards Richard
-> pa3gcu@zeelandnet.nl
-> http://people.zeelandnet.nl/pa3gcu/
-> 
-> 
+> > This sounds more and more like a hardware failure, perhaps a mobo problem.
+> > The system as you described it has now had problems with a Windows boot
+> > floppy, some hard disk bootloader (I surmise lilo), and syslinux (I believe
+> > RH boot floppies use syslinux).
+>
+>Don't see that personally. The two normal systems HD were out of the system
+>with the third HD in the system and the system will boot and load from the
+>floppie and CD-Read after system restoration.
+
+
+What does this mean (specifically the phrase "system restoration")?
+
+You say the RH installer took 6 tries before it worked. I realize now that 
+you did not say if you were doing this from a floppy or a CD ... RH can 
+install either way ... but that is part of the reason I interpret your 
+report as a hardware failure -- even with the 2 original hard disks 
+removed, you have problems.
+
+In re-reading what you wrote, I also realize that I don't know for sure 
+what you mean by "The box finally booted into RH after 5 or 6 tries". I had 
+read it to mean that the RH installer itself took 6 tries to boot (get to 
+the install process), but perhaps you mean you had to try installing 6 
+times before the new hard disk would boot. In any case, you can see the 
+need to clarify your report.
+[...]
+
+
+--
+-----------------------------------------------"Never tell me the 
+odds!"--------------
+Ray Olszewski					     -- Han Solo
+Palo Alto, California, USA				ray@comarre.com
+-------------------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
