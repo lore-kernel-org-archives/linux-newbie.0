@@ -1,43 +1,31 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: process priority at 25
-Date: Mon, 20 May 2002 09:33:23 +0000
+From: Raider <raider@home.ro>
+Subject: Galeon problems
+Date: 20 May 2002 13:56:41 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02052009332316.27213@unix.pa3gcu>
-References: <20020519142943.GA9998@prester> <0205191540330V.27213@unix.pa3gcu> <006101c1ff84$963f95c0$0901a8c0@system>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <1021890347.2120.19.camel@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <006101c1ff84$963f95c0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Tom Beer <mailings@analogon.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sunday 19 May 2002 22:29, Tom Beer wrote:
-> Hi,
+Hello!
 
-> Kernel 2.4.18 won't run on my off-the-shelf athlon-asus motherboard
-> configuration. Mounting of disks during startup leads to seg faults.
-> 2.4.4 runs with small amounts of seg. faults, caused by an installation of
-> amanda, some month ago. I thought that the uneven numbers are experimental,
-> but the even numbers would be "stable"?
+I run MDK8.2 and Galeon just refuses to show anything.  It loads the
+page okay, but there's nothing to show.  The error it prints is like
+this:
 
-Well it should run ok or at least i have not heard of problems with disk's.
-Considering you say other kernels give simalar problems then i would say its 
-a local problem and not a kernel issue.
+**************************************************
+nsNativeComponentLoader:
+GetFactory(/usr/lib/mozilla/components/libtimer_gtk.so) Load FAILED with
+error: /usr/lib/mozilla/components/libtimer_gtk.so: cannot open shared
+object file: No such file or directory
+**************************************************
 
-No even or uneven make no differance.
-2.5.x are development.
-2.4.xx are considered stable.
-
->
-> Greets Tom
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+This seems to be a problem with Mozilla... but this is really strange as
+that lib never existed (it isn't packed with Galeon or Mozilla).  Does
+anybody know what is this libtimer_gtk.so do?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
