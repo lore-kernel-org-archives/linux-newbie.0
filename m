@@ -1,36 +1,23 @@
-From: "Calin Szonyi" <caszonyi@linuxmail.org>
-Subject: Re: A few more things and I can kiss windows good bye.
-Date: Fri, 18 Oct 2002 09:02:58 +0200
+From: Natarajan K <natarajan_k@vsnl.net>
+Subject: Font size difference
+Date: Fri, 18 Oct 2002 22:55:26 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021018070258.5336.qmail@linuxmail.org>
+Message-ID: <200210171951.42353.natarajan_k@vsnl.net>
+Reply-To: natarajan_k@vsnl.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: jdashiel@shellworld.net, pkraus@pelsupply.com
-Cc: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
+Hi,
+	I changed from KDE 2.2.2 to KDE 3.0.4 on a Debian Woody. The font sizes 9, 10 
+dont seem to differ in their sizes. Moreover there is a big increase in size 
+from size 8 to size 9. This happens for quite a few pairs. What could be the 
+problem??
+Natarajan
 
------ Original Message -----
-From: Jude DaShiell <jdashiel@shellworld.net>
-Date: 	Wed, 16 Oct 2002 00:26:27 -0400 (EDT)
-To: Paul Kraus <pkraus@pelsupply.com>
-Subject: Re: A few more things and I can kiss windows good bye.
-
-
-> Last year I read about a version of visualbasic available to run on linux
-> and think it was put under the gnu gpl license.  
-
-Anybody wants to port Nimda and Sircam to linux ?
-:-)))
-
--- 
-Get your free email from www.linuxmail.org 
-
-
-Powered by Outblaze
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
