@@ -1,41 +1,42 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: root password
-Date: Wed, 30 Mar 2005 06:36:32 -0800
-Message-ID: <5.1.0.14.1.20050330063201.02035bd0@celine>
-References: <20050330071611.44428.qmail@web52905.mail.yahoo.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: Skype and more
+Date: Wed, 30 Mar 2005 09:54:50 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0503300943430.4441@localhost.localdomain>
+References: <200503300719.j2U7JtHw001378@skyinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050330071611.44428.qmail@web52905.mail.yahoo.com>
+In-Reply-To: <200503300719.j2U7JtHw001378@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Peter <heisspf@skyinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-At 11:16 PM 3/29/2005 -0800, Ankit Jain wrote:
->hi
+On Wed, 30 Mar 2005, Peter wrote:
+
+> Slackware 10.1 kernel 2.4.29
+<snip>
 >
->i have forgotten my root pasword. i had installed
->redhat linux 9.0 kernel version 2.4 with grub loader.
->if somebody can tell me how to change the password
->without logging.
+> I just thought I will let the list know in case others have similar
+> experiences, there was one in skype forum.
 
+Thank you for posting this resolution, Peter. As someone who has to do
+alot of web searching to resolve Linux problems, I really appreciate it
+when someone posts a detailed resolution to a problem they've asked about.
+Too often it happens that some resolution is found, but no specifics are
+given, or maybe the original poster just abandons the thread. People like
+me are led down dead ends in such cases. If something is going to help
+Linux to filter down more to the level of the common man, it's going to be
+clueless users (sorry if it's an offense to group you in that category; I
+really have myself in mind mostly when I say this) searching for, finding,
+*then describing* resolutions to the problems they encounter.  Advanced
+users often presume a level of knowledge that makes their resolutions
+useless for less technically adept users (like me).  Clueless users often
+fill in important details those more knowledgeable are likely to leave out
+or pass over cursorily.
 
-The normal solution to this sort of problem is to boot the system using a 
-rescue disk (floppy or CD, depending on your hardware); mount the 
-filesystem with the password problem at some convenient mount point; and 
-delete the root password entry from /etc/shadow . Then reboot normally, log 
-in as root (with no password) and set a new root password. Do all of this 
-with the system disconnected from the Internet, of course, until you have a 
-new root password in place.
-
-Any other suggestion of how to become root without knowing the root 
-password is a technique for breaking into systems, and I (and I hope 
-everyone else) will not give advice on that publicly, in this forum or 
-anywhere else.
-
-
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
