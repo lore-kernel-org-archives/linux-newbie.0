@@ -1,41 +1,30 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Jeff Woods <kazrak+kernel@cesmail.net>
 Subject: Re: line printer line transport
-Date: Sat, 27 Sep 2003 07:57:40 +0200
+Date: Fri, 26 Sep 2003 23:16:25 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309270757.40913.pa3gcu@zeelandnet.nl>
+Message-ID: <5.2.1.1.0.20030926231345.02d76c40@no.incoming.mail>
 References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
-Reply-To: pa3gcu@zeelandnet.nl
+ <200309262050.h8QKo6O25459@oola.is.kpn.be> <200309270757.40913.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309262050.h8QKo6O25459@oola.is.kpn.be>
-Content-Disposition: inline
+In-Reply-To: <200309270757.40913.pa3gcu@zeelandnet.nl>
+References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
+ <200309262050.h8QKo6O25459@oola.is.kpn.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: pa3gcu@zeelandnet.nl
+Cc: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
 
-On Thursday 01 January 1970 01:00, Heimo Claasen wrote:
+At 9/27/2003 07:57 AM +0200, pa3gcu wrote:
+>todos < filename > newfile && cat newfile >/dev/lp0
 
-> Thus something like 'cat filename >/dev/lp0' should go through a
-> simple filter which inserts a CR in front of any LF.
-> Like, 'cat <{filter-prog <filename} >/dev/lp0
+Or even:
 
-Possably something like;
+< filename > /dev/lp0 todos
 
-todos < filename > newfile && cat newfile >/dev/lp0
-
-man todos
-man fromdos
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+--
+Jeff Woods <kazrak+kernel@cesmail.net> 
 
 
 -
