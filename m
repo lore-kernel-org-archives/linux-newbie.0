@@ -1,58 +1,36 @@
-From: "Lee Chin" <leechin@mail.com>
+From: Stephen Hemminger <shemminger@osdl.org>
 Subject: Re: is sendto and recvfrom thread safe?
-Date: Thu, 21 Aug 2003 15:02:26 -0500
-Sender: linux-net-owner@vger.kernel.org
-Message-ID: <20030821200226.59291.qmail@mail.com>
+Date: Thu, 21 Aug 2003 14:33:20 -0700
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <20030821143320.3b158fd6.shemminger@osdl.org>
+References: <20030821200226.59291.qmail@mail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-net-owner@vger.kernel.org>
-Content-Disposition: inline
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030821200226.59291.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Stephen Hemminger <shemminger@osdl.org>
+To: Lee Chin <leechin@mail.com>
 Cc: Mark Hahn <hahn@physics.mcmaster.ca>, linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
 
-This sort  of helps... my question is with respect to UDP sockets, for sendto and recvfrom, can I concurrently have two threads at the same time write (sendto) on a same file descriptor?  How about readfrom and sendt on the same file descriptor at the same time?
+On Thu, 21 Aug 2003 15:02:26 -0500
+"Lee Chin" <leechin@mail.com> wrote:
 
-Thanks
-Lee
------ Original Message -----
-From: Stephen Hemminger <shemminger@osdl.org>
-Date: Thu, 21 Aug 2003 09:16:49 -0700
-To: "Lee Chin" <leechin@mail.com>
-Subject: Re: is sendto and recvfrom thread safe?
+> This sort  of helps... my question is with respect to UDP sockets, for sendto and recvfrom, can I concurrently have two threads at the same time write (sendto) on a same file descriptor?  How about readfrom and sendt on the same file descriptor at the same time?
 
-> On Thu, 21 Aug 2003 01:06:45 -0500
-> "Lee Chin" <leechin@mail.com> wrote:
-> 
-> > Hi,
-> > If I have a global socket file descriptor, can I call sendto and recvfrom on that file descriptor concurrently with out using semaphores around the call to sendto and recvfrom?
-> > 
-> > What about for TCP sockets?
-> > 
-> > Thanks
-> > Lee
-> 
-> It depends on your definition of thread safe.
-> Sendto and recvfrom are for UDP which is a datagram protocol; therefore
-> each call sends and receives a separate data unit.  The application protocol
-> has to be atomic to work with UDP anyway. Your application has to deal
-> with out of order, and dropped packets.
-> 
-> If you use TCP sockets with threaded applications you better do application
-> level locking per socket and have enough information in your protocol to describe
-> the length of each operation.  TCP is a byte stream, and with multiple threads sending
-> it is possible to "mix the streams".  Multiple threads reading will get out of
-> order data.
-> 
-> This is true of all OS's that I know about that support threads 
-> (Windows, Solaris, Linux, ...).
+Yes, but assume two threads A (writes a one message containing "aaaa") 
+and B which (writes two messages "b" and "c").
 
--- 
-__________________________________________________________
-Sign-up for your own personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
+You can be assured that B's data won't show up inside A's message:
+	ie. never aabaa
+but you can not assume anything about the order they will be received.
 
-CareerBuilder.com has over 400,000 jobs. Be smarter about your job search
-http://corp.mail.com/careers
+If you want more detail read the book.
+ W. Richard Stevens, UNIX network programming, Volume 1
 
+http://www.kohala.com/start/
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
