@@ -1,9 +1,10 @@
-From: simon <simon.guinot@laposte.net>
+From: chuck gelm <chuck@gelm.net>
 Subject: Re: insmod: unresolved symbol
-Date: Thu, 16 Sep 2004 03:11:53 +0200
+Date: Wed, 15 Sep 2004 22:16:56 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4148E859.70303@laposte.net>
+Message-ID: <4148F798.3080009@gelm.net>
 References: <20040916001442.45760.qmail@web53605.mail.yahoo.com>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,13 +12,10 @@ In-Reply-To: <20040916001442.45760.qmail@web53605.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: Donald Duckie <schipperke2000@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
-
-
+Cc: Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
 
 Donald Duckie wrote:
 > hi!
-hello donie
 > 
 > has anyone ever tried compiling and running snull on
 > Linux2.4.18-sh?
@@ -47,20 +45,17 @@ hello donie
 > 
 > can someone please tell me what's wrong with this,
 > and how to fix this without chaning Linux versions?
-remove CONFIG_MODVERSIONS of your kernel is in my opinion a good idea...
+> 
+> 
+> thank you for you help in advance  :-) 
 
-are you using the original Makefile ?
+Did you run 'depmod -a' ?
 
-your compilation line must look like that...
-gcc -D MODVERSIONS -include /usr/src/linux/include/linux/modversion.h...
+HTH, Chuck
 
-if it is already the case... i suggest you to verify that "modversion.h"
-is compliant with your running kernel...
 
-you can take a look on the chapter 11 of "Device Driver 2nd edition"
-it is just talking about that...
 
-simon
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
