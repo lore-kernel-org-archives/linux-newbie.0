@@ -1,114 +1,48 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: No More Logrotate
-Date: Wed, 16 Apr 2003 09:29:26 +0800
+From: Steven Ackerman <steven@nvts.us>
+Subject: Re: Configuring lilo to boot from sda-Got it
+Date: Wed, 16 Apr 2003 00:31:04 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304160129.h3G1TQI02708@philonline.com>
-References: <5.1.0.14.1.20030414084230.01e990b8@celine>
+Message-ID: <3E9D06B8.6040309@nvts.us>
+References: <5.1.0.14.1.20030415121527.01e96f68@celine> <5.1.0.14.1.20030415155724.01e95958@celine>
+Reply-To: steven@nvts.us
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 14 Apr 2003 08:53:18 MST." 
- <5.1.0.14.1.20030414084230.01e990b8@celine>
-Content-ID: <2705.1050456566.1@philonline.com>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030415155724.01e95958@celine>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org, babydr@baby-dragons.com
 
-Thanks Ray. Just when I had finished all the stuff below, your hint that the 
-message comes from syslog made me look again and I found the file 
-/etc/logrotate.d/syslog which read among others /var/log/cron. I removed this 
-entry and logrotate went to work w/o error message and logrotating even that 
-cron file.
+Ray Olszewski wrote:
+> OK. It sounds to me like you do NOT have the lilo bootloader installed 
+> on sda. To do that, you should do the following (as root):
+> 
+>         1. Copy the file to the usual name, with "cp 
+> /etc/lilo.conf.anaconda /etc/lilo.conf".
+> 
+>         2. Edit lilo.conf so it works (I'll return to this).
+> 
+>         3. Run lilo.
+> 
 
-ray@comarre.com said:
-> 1. Is /var/log/cron a file or a directory? If the latter, what files
-> does  it contain?
+Did all that. Same problem. At this point I knew that something else was 
+going on. I know that lilo uses lilo.conf and even if between the 
+lilo.conf.anaconda file and lilo.conf it in the /etc directory it should 
+work.
 
- It's a file containing all the cron stuff from crontab, user and root.
+There's a SCSI utility that is ran during POST. The bios refers to it. 
+All bootable drives in the BIOS were floppy and CDROM. So I opened up 
+the SCSI util and found something referring to "Boot Target ID" it was 
+set to drive 1. That didn't sound right to me because it had an 
+installed drive 0. I set it to 0 and Linux booted right up. I sure am 
+curious about the whole lilo.conf.anaconda file though.
 
-# tail /var/log/cron
-Apr 15 08:45:01 philonline CROND[1812]: (pfheiss) CMD (cd 
-/usr/local/saytime/sounds/; ./saytime.sh)
-Apr 15 08:50:00 philonline CROND[1841]: (root) CMD (   /sbin/rmmod -as) 
-Apr 15 08:50:00 philonline CROND[1842]: (root) CMD (/usr/lib/sa/sa1 1 1) 
-Apr 15 09:00:00 philonline CROND[1966]: (root) CMD (   /sbin/rmmod -as) 
-Apr 15 09:00:00 philonline CROND[1967]: (root) CMD (/usr/lib/sa/sa1 1 1) 
-Apr 15 09:00:00 philonline CROND[1968]: (pfheiss) CMD (play 
-./sound/chimes.wav)
-Apr 15 09:01:00 philonline CROND[1978]: (root) CMD (run-parts 
-/etc/cron.hourly)
-Apr 15 09:10:00 philonline CROND[2012]: (root) CMD (   /sbin/rmmod -as) 
-Apr 15 09:10:00 philonline CROND[2013]: (root) CMD (/usr/lib/sa/sa1 1 1) 
-Apr 15 09:15:00 philonline CROND[2036]: (pfheiss) CMD (cd 
-/usr/local/saytime/sounds/; ./saytime.sh)
+Thanks for all the help. I really appreciate it. I now know a few more 
+things than I did. I'm so glad this list has stayed active. Hopefully 
+I'll be able to contribute at some point.
 
-ray@comarre.com said:
-> 2. Just to be sure -- when you run "logrotate --force /etc/
-> logrotate.conf",  you get an error at the console that reads *exactly*
-> "error: syslog:1  duplicate log entry for /var/log/cron"? That is, you
-> get an error from  syslog, not from logrotate (or even syslogd)? And
-> you get no other output  to the screen
-
-Correct that is the exact message with no other output to the screen.
-
-ray@comarre.com said:
-> 4. On my systems, logrotate runs as root.
-
-It only runs as root on my system as well.
--rwxr-xr-x    1 root     root        32840 Apr 16  2002 /usr/sbin/logrotate
-
-ray@comarre.com said:
-> 3. It is possible to run logrotate with a -d (debug) flag. Does that
-> generate any useful info?
-
-# /usr/sbin/logrotate -d /etc/logrotate.conf
-reading config file /etc/logrotate.conf
-including /etc/logrotate.d
-Ignoring named.rpmnew, because of .rpmnew ending
-Ignoring rpm.rpmnew, because of .rpmnew ending
-reading config file cron
-reading config info for /var/log/cron 
-reading config file ftpd
-reading config info for /var/log/xferlog 
-reading config file linuxconf
-reading config info for /var/log/htmlaccess.log 
-reading config info for /var/log/netconf.log 
-reading config file mgetty
-reading config info for /var/log/mgetty.log.tty* 
-reading config file named
-reading config info for /var/log/named.log 
-reading config file rpm
-reading config info for /var/log/rpmpkgs 
-reading config file sendfax
-reading config info for /var/log/sendfax.log 
-reading config file slrnpull
-reading config info for /var/spool/slrnpull/log 
-reading config file snmpd
-reading config info for /var/log/snmpd.log 
-reading config file sudo
-reading config info for /var/log/sudo.log 
-reading config file syslog
-error: syslog:1 duplicate log entry for /var/log/cron
-
-There is a file /etc/syslog.conf, however, no /var/log/syslog file as in 
-Slackware.
-I put one there now which did not change anything, it just stays empty.
-
-And to your final 5th question what is KRUD Linux somebody replied where to 
-find it. They produce monthly the latest versions for RedHat to which one can 
-subscribe for one year or order them as needed. This is very convenient if one 
-has slow phone lines which will make updates by downloading a near 
-impossibility.
-
-Regards
-
--- 
-Peter
--- 
-Peter
-
-
-
+-Steve
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
