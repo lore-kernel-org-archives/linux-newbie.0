@@ -1,58 +1,58 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: permission for alias file
-Date: Tue, 07 Jan 2003 17:24:28 +0000
+From: Jose Luis Alarcon <jlalarcon@linuxwaves.com>
+Subject: Set the "mail system".
+Date: Tue, 7 Jan 2003 11:02:03 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030107172131.01ee16a8@pop3.demon.co.uk>
-References: <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk>
- <200301061652.h06GqwTo000410@hartford-hwp.com>
- <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk>
+Message-ID: <20030107190203.26D873E2F@sitemail.everyone.net>
+Reply-To: jlalarcon@linuxwaves.com
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200301071531.h07FVDxN006826@hartford-hwp.com>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 10:31 07/01/2003 -0500, Haines Brown wrote:
->> I remember doing an :include: statement for a mate and we found that
->> 777 permissions on the file were OK but the directory must be set
->> correctly. I seem to remember it couldn't have root ownership.
->> 
->> Check the sendmail faq at:
->> http://www.sendmail.org/faq/section3.html#3.33
->
->Thanks, Carl. I took at look at the document and checked ownership and
->permissions, but it looks like I'm ok.
->
->I've an :include that points to ~/aliases/test.aliases, but I get the
->following error when using it:
->
->  Cannot open /home/brownh/aliases/test.aliases: Permission denied.
->
->The alias directory is owned by brownh and is rwx------. The
->test.aliases file is also owned by brownh and is rw-------. I believe
->this satisfies the permission requirements defined in the document.
->
->I have a vague sense that my problem arose when I upgraded
->sendmail. At the same time I began to get messed up headers so that a
->simple Reply to this message is sometimes sent to the invalid address
->"localhost@hartford-hwp.com." 
-> 
->
->Haines
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs 
+  Hi all in this place. No is later for say Happy New Year!!
+
+  I'm not really a newbie, i am for 4 years with Linux, but still there are
+areas in which i don't have any idea, cos never before worried about it.
+
+  I ever used webmail, but now i get a pop3 account and i want configure
+the Operating System for use it.
+
+  Of course, i don't find any difficult in the use of programs like mozilla
+or netscape. But... what about configure the whole system for use my new
+mail adress?. Any hint or advice?.
+
+  I don't know if i get express what i want in the correct way (my english
+need be improved). I am talking about, for example, the mail that appears in
+the first line of dmesg, now is root@Smeagol.org, this isn't my real adress,
+i am talking about can use Pine, or exim, or procmail or whatever program
+that you recommend me.
+
+  I hope my dude be clear.
+
+  Thanks you, very much, in advance.
+
+  Regards.
+
+  Jose.
 
 
-I spoke to my mate and we put his lists in a dir /etc/mail/lists with owner and group of root
-and permissions of 755 and the files themselves are again root owner/group with 777 permissions
+http://linuxespana.scripterz.org
 
- 
+Debian GNU/Linux 'Sid' Kernel 2.5.53 Ext3.
+ESware Linux 365 Kernel 2.5.49 ReiserFS.
+Registered Linux User #213309.
+Memories..... You are talking about memories. 
+Rick Deckard. Blade Runner.
 
+_____________________________________________________________
+Get your spam-free, Linux email now --> http://www.LinuxWaves.com
+Join Linux discussions --> http://Community.LinuxWaves.com
+
+_____________________________________________________________
+Select your own custom email address for FREE! Get you@yourchoice.com w/No Ads, 6MB, POP & more! http://www.everyone.net/selectmail?campaign=tag
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
