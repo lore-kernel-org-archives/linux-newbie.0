@@ -1,35 +1,39 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Wierd filesystem behavior
-Date: Sat, 1 Mar 2003 19:17:23 +0930
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Wierd filesystem behavior
+Date: Sat, 01 Mar 2003 08:40:59 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303011917.23179.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <5.1.0.14.1.20030301083629.01f91058@celine>
+References: <200303011917.23179.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200303011917.23179.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Output of df -hL
-Filesystem            Size  Used Avail Use% Mounted on
-/dev/hda12             23G   21G  271M  99% /
-/dev/hda7              61M  7.3M   51M  13% /auxboot
-/dev/hda11            2.0G  1.9G   22M  99% /home
-/dev/hda8             358M  2.0K  339M   1% /oldboot
-/dev/hda10            4.0G  3.7G   76M  99% /usr/share/workspace
-/dev/hda5             4.0G  3.6G  184M  96% /var/ftp
+At 07:17 PM 3/1/2003 +0930, Adam Luchjenbroers wrote:
+>Output of df -hL
+>Filesystem            Size  Used Avail Use% Mounted on
+>/dev/hda12             23G   21G  271M  99% /
+>/dev/hda7              61M  7.3M   51M  13% /auxboot
+>/dev/hda11            2.0G  1.9G   22M  99% /home
+>/dev/hda8             358M  2.0K  339M   1% /oldboot
+>/dev/hda10            4.0G  3.7G   76M  99% /usr/share/workspace
+>/dev/hda5             4.0G  3.6G  184M  96% /var/ftp
+>
+>In a few instances here, Used + Avail != Size.
+>
+>Where has the rest of the space gone?
 
-In a few instances here, Used + Avail != Size.
+When you create (via mke2fs, for example) a filesystem, you will usually 
+see a warning that some of its space (5% is typical) is being reserved for 
+the superuser. That reserved portion is not shown as "available" in a "df" 
+listing (whether it will show in "used" depends, naturally enough, on 
+whether it is being used).
 
-Where has the rest of the space gone?
+So what you are seeing is quite normal.
 
--- 
-"Unix is user-friendly. It just isn't promiscuous about which users it's 
-friendly with." - Steven King
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
 
 
 -
