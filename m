@@ -1,8 +1,8 @@
 From: Peter <pfheiss@philonline.com>
 Subject: Gnumeric foul-up
-Date: Wed, 7 Aug 2002 08:24:20 +0800
+Date: Tue, 6 Aug 2002 11:43:06 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0208041218000.1749@localhost.localdomain>
+Message-ID: <38503.9334455088$1028679911@news.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -14,7 +14,7 @@ Hi,
 after my disaster with RH7.3 re. keyboard and system lock I had to reinstall 
 RH7.1 after which among others gnumeric will not open any more the 
 spreadsheets I have worked with till now. No error messages, nothing, just 
-blank sheets. I uninstalled grumeric, reinstalled it, same same.
+blank sheets. I uninstalled gnumeric, reinstalled it, same same.
 
 Any comments?
 
