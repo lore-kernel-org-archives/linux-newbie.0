@@ -1,164 +1,70 @@
-From: RANDAZZO@ddc-web.com
-Subject: RE: two Ethernet cards in the same machine with xover cable..... 
-	[bcc]
-Date: Wed, 24 Mar 2004 08:30:58 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: switching to debian (... and installing the NVIDIA 
+  GeForce4)
+Date: Wed, 24 Mar 2004 08:55:37 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <89760D3F308BD41183B000508BAFAC4104B1702B@DDCNYNTD>
+Message-ID: <5.1.0.14.1.20040324084506.01f89290@celine>
+References: <405FAC4A.1000609@sancharnet.in>
+ <5.1.0.14.1.20040322210149.01fdd960@celine>
+ <5.1.0.14.1.20040323094003.01fc9810@celine> <40618A54.5050709@sancharnet.in>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <40618A54.5050709@sancharnet.in>
+References: <405FAC4A.1000609@sancharnet.in>
+ <5.1.0.14.1.20040322210149.01fdd960@celine>
+ <5.1.0.14.1.20040323094003.01fc9810@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com, linux-newbie@vger.kernel.org
-
-Ray/Chuck,
-
-Thanks for all your help.  Let me try a new approach, I have been vague on
-the details because I thought my problem was very simple......here is a
-detailed decryption of my problem...
-
-I have developed a network driver for a custom fibre channel card.  Though
-the physical interface is FC, according to Linux, I have selected Ethernet
-for the device classification....
-
-The Fibre channel device is a PCI card with 2 interfaces.
-
-The cabling setup is as follows....
-
-*********************
-*   Box #1 (RH 7.2) *
-*********************
-   * (fc0)       * (fc1)
-   |             |
-   |             |
-   |-------------|
-      fc cable
-
-The ifconfig information is as follows:
-fc0    Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
-            inet addr: 172.172.16.1  Bcast:172.172.255.255  Mask:255.255.0.0
-            UP BROADCAST RUNNING MULTICAST  MTU:2048 Metric:1
-
-fc1    Link encap:Ethernet  HWaddr yy:yy:yy:yy:yy:yy
-            inet addr: 172.172.17.1  Bcast:172.172.255.255  Mask:255.255.0.0
-            UP BROADCAST RUNNING MULTICAST  MTU:2048 Metric:1
-
-To avoid initial routing problems, I have disabled ARP, by using the
-IFF_NOARP flag.  Since I know the HW Addr of both channels, I temporarily
-set the hw addr to the opposite channel, when a packet asks for it.
-
-then a try to ping...
-> ping -c 1 -I fc0 172.172.17.1
-
-By putting debug messages inside the IP stack and an external network
-analyzer, I notice the following happen in order....
-
-1. Packet is transmitted out fc0
-2. Packet is received physically on fc1
-3. netif_rx is called on fc1
-4. ip_input_route_slow is called on fc1
-5. fib_validate_source is called on fc1
-6. fib_lookup is called on fc1
-7. fib_lookup returns, updated res
-8. res.type is RTN_LOCAL
-9. fib_validate_source returns e_inval_res is
-  res.type != RTN_UNICAST
-
-From that point on the functions fail all the way back through the
-stack.....it seems that the fib_lookup figures
-out the the destination and source addresses are local, which screws up
-everything....
-
-I know this is related to routing, possibly rules.......
-
-If you need anymore information, let me know..
-
-Regards,
-Mike
-
-
-
-
-
-
-
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of Ray Olszewski
-Sent: Tuesday, March 23, 2004 9:24 PM
 To: linux-newbie@vger.kernel.org
-Subject: Re: two Ethernet cards in the same machine with xover
-cable..... [bcc]
 
-
-At 06:38 PM 3/23/2004 -0500, chuck gelm wrote:
->RANDAZZO@ddc-web.com wrote:
+At 06:47 PM 3/24/2004 +0530, joy wrote:
+>Ray Olszewski wrote:
 >
->>All,
+>>I haven't myself switched to the 2.6.x kernel series yet, but I have seen 
+>>reports warning of problems with some external add-in modules, including 
+>>the nvidia drivers ... showing up as high CPU loads caused, I think, by 
+>>context switching not being handled efficiently. (Also problems with ivtv 
+>>and lirc, if memory serves, and maybe some of the wlan stuff.)
 >>
->>This may seem stupidly easy, but please here me out.....
+>>Caution ... or, better, patience, as this stuff will certainly get worked 
+>>out ... *may* be indicated here.
 >>
->>I have 2 pro100 nics (using eepro100 driver)
->>
->>currently my setup is..
->>
->>
->>
->>>>ifconfig
->>>>
->>eth0    Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
->>            inet addr: 172.172.16.1  Bcast:172.172.255.255
-Mask:255.255.0.0
->>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
->>
->>eth1    Link encap:Ethernet  HWaddr yy:yy:yy:yy:yy:yy
->>            inet addr: 172.172.16.1  Bcast:172.172.255.255
-Mask:255.255.0.0
->>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
->>
->>These nics are connected with an RJ-45 crossover cable......
->>
->>what do I need to do to get ftp communication between these
-devices.........
->Hi, Mike:
+>>Joy - do you actually have an nvidia framebudffer module running with 2.6.x?
 >
->You need to put them in different machines and give them different
->IP addresses.
->:-|
->HTH, Chuck
+>yes, have been using the 2.6 series almost as soon as it was released and 
+>used to use the patches from minion.de until the
+>5336 nvidia driver was released. I don't exactly understand your Q (too 
+>hitech for me ;-) however I figure you are asking
+>me about it's (kernel's) performance under heavy loads. well I ran 3 
+>instances of xine playing (what else) 'Highway Star'
+>at the same time on KDE which I think should put the cpu under load, Kde 
+>being the major load :) with no problems.
+>this was . 2.6.1or .2 maybe...........
 
-Well, Mike, you see what you get when you keep asking the same question 
-over and over, in increasingly vague terms.
+Hard to say from this description if you are seeing the problems I read 
+about or not. With a sufficiently fast CPU ... a 3 GHz P4, say ... I could 
+run xine this way using xshm, and that video method is a real CPU hog. A 
+better test would be something like this:
 
-Since I remember what your actual, original question was, I suggest you try 
-what I suggested back then -- look at the source code for ping 
-(specifically for a version of ping that implements the -I flag) and see 
-how it does it. I just did that for the stock ping that Debian distributes 
-(in netkit-base). It uses the setsockopt() call to assign to its socket an 
-a.b.c.d value contained a struct in_addr called ifaddr. This seems to force 
-the packets that ping sends to go out the specific interface you specify on 
-the command line, rather than following the routing table.
+1. run a single instance of xine in the current display, playing back 
+something suitable (I don't know what "Highway Star" is ... or, more 
+important to the test, how it is encoded (what resolution, what bitrate, 
+what codec)). Make sure xine is using xVideo ("xine -V xv 
+filename_to_play"). Have xine resizing the video ... double size if that 
+works to keep everything actually visible onscreen.
 
-This is *probably* what you need. The source provides what looks to me like 
-a good example, and the relevant man pages should fill in the rest.
+2. also in the current display, run "top". With the entire xie playback 
+visible onscreen, note both total CPU use and its components. The total 
+should be quite low, under 5% usually, if all is working smoothly. If the 
+total is high, and both the "system" and "user" components contribute 
+significantly to it, you are seeing the problem I've read about, even if 
+the system is managing to keep up.
 
-Oh, Chuck is right, though, that the two interfaces still do need distinct 
-IP addresses ... but I assume that part was just a typo in your message.
+3. Mention what CPU -- type and speed -- is involved. The faster the CPU, 
+the lower the number should be in step 2.
 
 
-
-
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
- 
-"This message may contain company proprietary information. If you are not
-the intended recipient, any disclosure, copying, distribution or reliance on
-the contents of this message is prohibited. If you received this message in
-error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
