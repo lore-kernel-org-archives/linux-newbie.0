@@ -1,8 +1,8 @@
 From: r4mz3z <r4mz3z@yahoo.es>
-Subject: help me with awk
-Date: Sat, 4 Jan 2003 22:00:51 -0500
+Subject: CASE tool --> database
+Date: Sat, 4 Jan 2003 14:19:38 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301042200.59282.r4mz3z@yahoo.es>
+Message-ID: <200301041419.45269.r4mz3z@yahoo.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -14,15 +14,20 @@ To: linux-newbie@vger.kernel.org
 Hash: SHA1
 
 Hi friends...
-   I have a problem, maybe it is foolish for you but I can't do it ;-P
-   I wanna write a TAB after each field, something like:
-'{print $1 "\t" $2 ...}' but the problem is that the number of fields change. 
-If I use 'cut' it works, but the definition of delimiters are reduced.
-   For example I want to print since field 7 to end of this command:
-   ps -eo %cpu,longtname,pri,nice,user,args
 
-  Thanks
+  I hope that you can help me... I need a tool that generate the java classes 
+since my database tables, I mean this tool have to see the tables on my 
+database (oracle, etc) and generate the java classes (or UML diagram) using 
+this tables.
 
+  The great opposite tool is Poseidon in which you can draw UML diagram and it 
+generates the java classes.
+
+  Other thing can be that the tool read sql scripts and generate the classes.
+
+  Thank you for everything.
+
+[Pepo]
 - -- 
   Linux User Registered #232544
 my GnuPG-key at www.keyserver.net
@@ -30,10 +35,11 @@ my GnuPG-key at www.keyserver.net
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.1 (GNU/Linux)
 
-iD8DBQE+F5/ps4dF9gl05swRAlWvAJ0fHsbakDrSowi8Jx4KOvBa0FT9VgCghlds
-mr6KrPMf8RKFbydgKsSbQAM=
-=royM
+iD8DBQE+FzPPs4dF9gl05swRAvAsAJ9gCyEOQg+mxYlB+GfKGjqhKPKIdgCfdre9
+21zQuB80eek1PbgjONNkcUU=
+=U8Oa
 -----END PGP SIGNATURE-----
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
