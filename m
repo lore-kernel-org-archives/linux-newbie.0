@@ -1,17 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
+From: RANDAZZO@ddc-web.com
 Subject: RE: connecting two nics.... [bcc]
-Date: Tue, 09 Mar 2004 14:57:53 -0800
+Date: Tue, 9 Mar 2004 18:07:47 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040309144617.01febc60@celine>
-References: <89760D3F308BD41183B000508BAFAC4104B16FE2@DDCNYNTD>
+Message-ID: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <89760D3F308BD41183B000508BAFAC4104B16FE2@DDCNYNTD>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: ray@comarre.com, RANDAZZO@ddc-web.com
+Cc: linux-newbie@vger.kernel.org
+
+I want to be able to communicate completely...
+
+ping, socket calls, udp, tcp, etc.....
+
+I was just using ping as a simple example.....
+
+even if I put the cards on the same network.......
+
+eth1 = 100.100.1.1 mask=255.255.255.0
+eth2 = 100.100.1.2 mask=255.255.255.0
+
+the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
+
+I havent tried socket calls yet because I assumed if I couldn't get ping
+to work, why try anything else......
+
+Mike
+
+ALL INFORMATION IN THIS EMAIL IS PUBLIC!
+
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com]
+Sent: Tuesday, March 09, 2004 5:58 PM
 To: RANDAZZO@ddc-web.com
 Cc: linux-newbie@vger.kernel.org
+Subject: RE: connecting two nics.... [bcc]
+
 
 At 05:29 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
 >I have tried putting the nics on the same network, with the same results...
@@ -45,6 +71,11 @@ Oh yes ... I give free advice only in the context of public lists like
 linux-newbie, so I'm cc'ing the list.
 
 
+ 
+"This message may contain company proprietary information. If you are not
+the intended recipient, any disclosure, copying, distribution or reliance on
+the contents of this message is prohibited. If you received this message in
+error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
