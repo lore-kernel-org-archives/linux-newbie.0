@@ -1,47 +1,56 @@
 From: Jay Maass <jay.maass@verizon.net>
-Subject: Re: Partitioning problem
-Date: Tue, 30 Jul 2002 15:14:26 -0400
+Subject: Re: LI -lilo booting problem
+Date: Tue, 30 Jul 2002 16:55:23 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020730191426.TZVR8715.out008.verizon.net@localhost>
+Message-ID: <20020730205523.VJOW17636.out010.verizon.net@localhost>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Anshuman Singh Rawat <asr245@nyu.edu>, Riley Williams <Riley@Williams.Name>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
 
-Anshu,
+Frank Roberts - SOTL sotl155360@earthlink.net:
 
-Are you doing okay with Linux fdisk in your partitioning?
-I could have mentioned that there are at least two parts
-to what you will be doing.
+> Date: 2002/07/29 Mon PM 07:11:28 EDT
+> To: linux-newbie@vger.kernel.org
+> Subject: Re: LI -lilo booting problem
+> 
+> Somewhere in my far distant past I had a dual boot RH 6.0 / MS Windows system. 
+> I now have a dual boot RH 7.3 box.
+> If I recall correctly all I did to R H 6.0 box to make it read and write to 
+> the Win side was add the following line to fstab:
+> 
+> /dev/hda1    /mnt/dos    vfat    user,noauto,rw     0 0
+> 
+> I have added the above to the RH7.3 box but the KDE mount User Tool does not 
+> show that dos is mountable.
+> 
+> I would appreciate what ideas and guidance the experts on this list may have 
+> to offer.
+> 
+> Thanks
+> Frank
 
-First, you will be using fdisk to set up your partitions.
-Linux boot and root partitions will be made native Linux
-(ext2) file systems. The swap partition will be made
-Linux swap. You will also be making a FAT partition for
-your Microsoft Windows XP operating system.
+Frank,
 
-Thus, Linux fdisk has been used to create the necessary
-partitions.
+I'm a perpetual newbie in Linux, so I do not have a specific
+answer for you. My experience, however, has been that I can
+read/write to/from an ms-dos partition in a dual-boot BasicLinux/MS-DOS 6.22/Windows 3.11 installation.
 
-Second, when installing RedHat Linux 7.3, you will be
-designating which partitions to use for boot, root, and
-swap. Disk Druid, if you use that tool, will ask you for
-these designations. You will enter:
-
-'/boot' for the Linux boot partition,
-and '/' for the Linux root partition
-
-I believe Disk Druid will recognize the swap partition
-and designate it as <swap> for you.
-
-I hope you are doing okay with Linux fdisk and lilo.
+However, this was without XWindows. I'm not
+familiar with the KDE mount Utility Tool you mention.
+Certainly you're on the right track with your fstab entry.
+Are you able to read/write to/from your ms-dos partition
+outside of XWindows, i.e., from your Bash shell?
 
 Regards,
-Jay Maass, k7jkz
+Jay Maass,
 suburban Philadelphia
+
+
+
+
 
 
 -
