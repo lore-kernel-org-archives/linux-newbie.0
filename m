@@ -1,77 +1,101 @@
-From: James Mohr <linux-newbie@jimmo.com>
-Subject: Re: Question about "find -exec"
-Date: Thu, 25 Jul 2002 08:05:02 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Partitioning problem
+Date: Thu, 25 Jul 2002 06:22:57 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207250805.02603.linux-newbie@jimmo.com>
-References: <Pine.LNX.4.21.0207250114250.2569-100000@hestia.rdrs.net>
-Reply-To: linux-newbie@jimmo.com
+Message-ID: <02072506225706.04469@unix.pa3gcu>
+References: <3D36DDA3.FA0F073C@gmx.net> <200207241807.06375.linux-newbie@jimmo.com> <001601c23358$7b5bd630$e908a8c0@Viper>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0207250114250.2569-100000@hestia.rdrs.net>
+In-Reply-To: <001601c23358$7b5bd630$e908a8c0@Viper>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Anshuman Rawat <asr245@nyu.edu>, linux-newbie@vger.kernel.org
 
-On Thursday 25 July 2002 01:26, mailing-lists@xs4all.nl wrote:
-> Hello,.....
+On Wednesday 24 July 2002 21:24, Anshuman Rawat wrote:
+> Hi,
+> I want to have both WinXP and Linux (RHL7.3) on my system but am having
+> trouble with the partitions. My partition table (i dunno whether thats the
+> correct term) looks like this (as shown by linux installer ) -
 >
-> On Wed, 24 Jul 2002, James Mohr wrote:
-> > On Wednesday 24 July 2002 09:07, Mike Castle wrote:
-> > > In article <200207190752.38161.linux-newbie@jimmo.com>,
-> > >
-> > > James Mohr  <linux-newbie@jimmo.com> wrote:
-> > > >You need to tell -exec which file to process. This is done with curly
-> > > > braces:
-> > > >
-> > > >find /mnt/c/ -name *.snm -exec ls {} \;
-> > > >
-> > > >However, without the -exec, your command will simply list the files
-> > > > anyway. I am assuming that this is just an example, and you would
-> > > > want to do more than just list the file name. You could exand this
-> > > > concept and use the curly
-> > >
-> > > Also, you should realize that for each file processed, there is the
-> > > overhead of fork()/exec() calls.
-> > >
-> > > You would probably find something like:
-> > >
-> > > find /mnt/c -name '*.snm' | xargs -r ls -l
+>                                 Start   End        Size(MB)       Type
+> Mount point    Format
+> /dev/hda
+>     -Free                        1        1            8            Free
+> space
+>     -dev/hda1                 2        7            47          vfat
+> No
+>     -/dev/hda2                8        708        5499      NTFS
+> No
+>     -/dev/hda3               709     2432      13523    Extended
+>         -/dev/hda5           709     1413      5530      NTFS
+> No
+>         -/dev/hda6           1414   1419      47          ext2
+> /boot               Yes
+>         -/dev/hda7           1420   1453      267        swap
+> Yes
+>         -/dev/hda8           1454    2432     7697      ext2
+> /                       Yes
 >
-> Why preform an extra call to `xargs' if you can use the `-printf format'
-> or `-ls' option with `find'? e.g
->     (find /mnt/c -name -regex ".*\.snm" -ls),
->     (find /mnt/c -name -regex ".*\.snm" -printf "%f %b\n")
+> the error message i get is -> Boot partition may not meet booting
+> constraints for your architecture. Creation of boot disk is highly
+> encouraged.
 
-You wouldn't. At least I wouldn't. As I said in my original answer:
+Thats not an error message but a warning from the install process, 
+as you see lilo or grub was installed.
 
-"I am assuming that this is just an example, and you would want to do more 
-than just list the file name."
+> The options I get is "modify partition" and "add anyway". If I proceed with
+> 'add anyway' option installation is succesful but I dont get the option of
+> selecting the OS for booting the PC and the PC boots using WinXP.
+> I tried changing the /dev/hda1 partition to ext2 ,mount pt /boot. The
+> installation was succesful and so was the boot, but then the option of
+> starting with WinXP dissapeared. I could only boot with Linux
+> Can anyone help me out here?
+> btw I used Partition Magic from WinXP to partition the disc as I dont know
+> how to work around usinf fdisk in Linux.
 
-I was simply trying to answer the question why the command was not working as 
-expected and provide additional information on the use of find -exec. Mike 
-was trying to explain why the find -exec is not always the best solution. I 
-don't think either of us would use either of these just to list the file 
-names.  
+You need to change you lilo.conf file, or grub which ever you told redhat to 
+install.
 
-Actually, I often use ls -lR or just ls -R and pipe to grep looking for files. 
-I don't think either way is intrinsically "better" (at least not in an 
-absolute sense). 
+I do not use grub so someone else will need to give you and example for grub
+lilo can be told to boot linux as default, it may be that in /etc/lilo.conf a 
+line is presant
+default = xxx
+Simply change the xxx to the "name" stated in the linux portion lower down in 
+the file, or if no default = is present place the linux entry as the first 
+entry.
+Save the file and run lilo with the -t option,
+/sbin/lilo -t
+If no errors are found you will see something like;
 
-Regards,
+Added Linux *
+Added dos
+The boot sector and the map file have *NOT* been altered.
 
-jimmo
+Now rerun lilo as is.
+/sbin/lilo
+reboot and linux is the default system.
+
+Its all explained on my home page;
+
+http://people.zeelandnet.nl/pa3gcu/kernel.htm
+
+>
+> -Anshu
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+
 -- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
----------------------------------------
-"Be more concerned with your character than with your reputation. Your
-character is what you really are while your reputation is merely what others
-thing you are." -- John Wooden
----------------------------------------
-Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
----------------------------------------
-NOTE: All messages sent to me in response to my posts to newsgroups or forums
-are subject to reposting.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
