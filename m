@@ -1,50 +1,44 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Polaroid BurnMAX24 CD-RW
-Date: Thu, 16 May 2002 20:25:18 -0700
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: lost in samba land
+Date: Thu, 16 May 2002 22:23:11 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020517032518.03d53ac0@[192.168.1.23]>
+Message-ID: <20020517052311.MLDY25501.mtiwmhc23.worldnet.att.net@alan>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: Mark Johnson <rmjohnson144@adelphia.net>, linux-newbie@vger.kernel.org
+Content-Type: Text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 08:02 PM 5/16/02 -0700, Mark Johnson wrote:
->
->I am once again in need of some help.  I just got a new CD-RW . It is a 
->Polaroid BurnMAX24.  I was wondoering if anyonr knew if there are 
->drivers available for this or if there is a generic driver used?  I 
->tried rpmfind.org but I couldn't connect for some odd reason, and I 
->thought there was a linuxdrivers.org or something but couldn't seem to 
->find it either.  The docs for the drive say it is a CD-WRITER IDE2410. 
-> I tried Polaroid but they don't even mention a cd of any type, and the 
->search program gave me nothing to.
+I have a sucessfully runing samba on redhat linix 7.2 as long as I use:
+
+security = share
+
+when I start to work on going to :
+
+security = user
+
+I get prompted from my windows boxes
+
+\\webby\ipc$ for a password, none ever make it happy.
+
+I think my problem lies in initial setup of samba for authentication.  I hope to get to the point I can use openldap for authentication, but got lost in the ideax how to page.
+
+when I try this on my linux box:
+
+[Alan@Webby Alan]$ smbclient //webby/tmp
+added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
+Password:
+session setup failed: NT_STATUS_LOGON_FAILURE
+
+I'm not sure of how to get debug turned on to help diagnose further.
+
+Thanks for the hints, prods, assistance!
+
+Alan
 
 
-I don't know the specific drive you mention, but typically IDE CD-R/W drives
-are standard. They are a bit tricky to use, however, in that Linux
-CD-writing software only knows about SCSI drives ... so you have to use
-SCSI-IDE emulation in the kernel to access the device. This basically
-requires loading a bunch of modules, plus passing a parameter to LILO that
-causes the appropriate IDE device NOT to be mounted as an IDE device (so the
-module can pick it up pater). Then software ike cdrecord can access the
-drive via its pseudo-SCSI parameters, and more standard software can access
-it via (usually) /dev/scd0 .
-
-If you don't already know about doing this part, post again and I'll give
-more details (or track down the URL of the pretty good HowTo I've seen) then
-I ccan dash off from memory. If you alrady know this part and are asking
-ONLY about the particulars of this drive ... then I apologize for wasting
-your time.
-
-
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
-
+Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
