@@ -1,16 +1,39 @@
-From: John Kelly <bilbo@waitrose.com>
-Subject: Re: bash scripting
-Date: Sat, 14 Aug 2004 13:36:41 +0100
+From: Rei Shinozuka <shino@panix.com>
+Subject: [bilbo@waitrose.com: Re: bash scripting]
+Date: Sat, 14 Aug 2004 10:07:45 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040814133641.204addb7.bilbo@waitrose.com>
-References: <1092465314.411db2a2ca286@webmail.dpomeroy.com>
+Message-ID: <20040814140745.GB9530@panix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1092465314.411db2a2ca286@webmail.dpomeroy.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+
+i agree, looks like bash is not in /bin.
+
+you can start scripts:
+
+#!/bin/env bash
+
+or 
+
+#!/bin/env perl
+
+to find the interpreter in your path.
+
+unfortunately, even this is not completely portable, as i have
+seen env in /bin and /usr/bin.  
+
+-rei
+
+----- Forwarded message from John Kelly <bilbo@waitrose.com> -----
+
+To: linux-newbie@vger.kernel.org
+Subject: Re: bash scripting
+Date: Sat, 14 Aug 2004 13:36:41 +0100
+From: John Kelly <bilbo@waitrose.com>
 
 Hi,
 On Fri, 13 Aug 2004 23:35:14 -0700
@@ -76,6 +99,18 @@ Hope this helps.
 regards,
 
 John Kelly
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+----- End forwarded message -----
+
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
