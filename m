@@ -1,50 +1,32 @@
-From: "Lab. Sist. Operativos 2" <operativos2@tutopia.com>
-Subject: RE: Undelete for linux
-Date: Sat, 27 Apr 2002 16:35:05 -0600
+From: "Marco Calistri" <ik5bcu@tin.it>
+Subject: Majordomo header/body analyis?
+Date: Sun, 28 Apr 2002 05:20:28 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000901c1ee3b$ca347080$0101a8c0@barneond>
-References: <013501c1ed12$3197a2e0$0101a8c0@barneond> <m3k7qthalx.fsf@wobble.eth.net>
+Message-ID: <20020428032028.17057.qmail@linux.ik5bcu.ampr.org>
+Reply-To: ik5bcu@tin.it
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-No I need make a project in the college
------ Original Message ----- 
-From: G Anna <drguruolai@eth.net>
-To: Lab. Sist. Operativos 2 <operativos2@tutopia.com>
-Cc: <linux-newbie@vger.kernel.org>
-Sent: Saturday, April 27, 2002 1:19 AM
-Subject: Re: Undelete for linux
+Hello my test message has arrived on this list and I've seen it,but I did three
+attempts (all failed) to send another message where the only "suspect" part
+could be the body.
+
+It is very strange because such message is in text-mode and it doesn't contains
+any attachments.
+
+I sent a copy to Ray,I won't copy again here because I think could fails again.
 
 
-> 
-> > Date: Fri, 26 Apr 2002 05:04:49 -0600
-> > From: "Lab. Sist. Operativos 2" <operativos2@tutopia.com>
-> > Subj: Undelete for linux 
-> > 
-> > Hi, I need to know howto make a undelete for linux, I need to use
-> > the library /usr/include/linux/ext2_fs.h or
-> > /usr/include/linux/ext3_fs.h.
-> 
-> Did you remove some file accidentally?  And do you want to recover it?
-> Is this what you want?
-> 
-> If that is the question, then the answer is its too difficult and
-> there are no guarantees.  Can you live without the file?
-> 
-> HTH
-> 
-> anna
-> 
-> -- 
-> 
-> (1) My Legions of Terror will have helmets with clear plexiglass
->     visors, not face-concealing ones. - Peter Anspach in his 
->     "The Top 100 Things I'd Do If I Ever Became An Evil Overlord"
-> 
+----------------------------------
+E-Mail: Marco Calistri <ik5bcu@tin.it>
+Date: 28-Apr-2002 Time: 05:19:44
+Red Hat Linux release 7.2 (Enigma) kernel 2.4.9-31
+This message was sent by XFMail
+----------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
