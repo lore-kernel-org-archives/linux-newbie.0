@@ -1,57 +1,52 @@
-From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-Subject: Re: Getting a warning with const
-Date: Mon, 28 Apr 2003 15:48:23 +0300
+From: Jamie Lokier <jamie@shareable.org>
+Subject: Re: Paging and system calls
+Date: Mon, 28 Apr 2003 14:14:18 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030428154823.P16619@neutrino.particles.org>
-References: <20030427231356.75AC.WOLFGANG127JP@ybb.ne.jp>
+Message-ID: <20030428131418.GB8906@mail.jlokier.co.uk>
+References: <20030428124808.M37677@bilmuh.ege.edu.tr>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20030427231356.75AC.WOLFGANG127JP@ybb.ne.jp>; from wolfgang127jp@ybb.ne.jp on Sun, Apr 27, 2003 at 11:13:58PM +0900
+In-Reply-To: <20030428124808.M37677@bilmuh.ege.edu.tr>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: wolfgang <wolfgang127jp@ybb.ne.jp>
-Cc: linux-newbie@vger.kernel.org
+To: Kasim Sinan Yildirim <yildirim@bilmuh.ege.edu.tr>
+Cc: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-On Sun, Apr 27, 2003 at 11:13:58PM +0900, wolfgang wrote:
-> Hi gurus,
-> I made a simple code(dos2unix.c) that changes dos formatted text to unix
-> or unix formatted text to dos. it's up to the code name.
-> If I change the argument of getBasename function to (const char *name),
-> I get a following warning.
-> dos2unix.c: In function `getBasename':
-> dos2unix.c:10: warning: assignment discards qualifiers from pointer
-> target type
-[snipped]
-> char* getBasename(char *name){
->    char* basename = 0;
->    if((basename = strrchr(name,'/')) != 0)
->       basename++;
->    else
->       basename = name;
-> }
-[snipped]
->    basename = getBasename(argv[0]);
+Kasim Sinan Yildirim wrote:
+> ?n my operating system, when a system call occurs, the user level code jumps 
+> to system level code by changing its selectors to KernelCS and KernelDS. But 
+> at this point, the cr3 register still points to the page directory of the 
+> user process. So, the actual code that is pointed by kernel level page 
+> directory is not equal to the user level page directory entry. As a result , 
+> the system fails.
 > 
+> How this problem is solved in Linux? Have you got any solution to my problem?
 
-You call getBasename by passing argv[0] which is char *, but you have declare
-getBasename so as to take a const char *. 
+In Linux, there is no separate kernel page directory.  The the upper
+1GB (configurable) of each process address space holds the same kernel
+level page mappings in _all_ page directories, so process context
+switches don't change those mappings.
 
-You can make the warning dissapear by:
+The exception is vmalloc() kernel mappings.  For these the kernel area
+of each process address spaceis filled in lazily by the page fault
+handler.  Once filled, these also have the same values in all contexts.
 
-	getBasename ((const char *) argv[0]);
+This is why user space can only address 0-3GB of address space in
+Linux.  It has the huge benefits that (a) system calls and interrupts
+don't need to switch page directories and incur TLB flush costs; (b)
+the kernel code can easily read and write user space.
 
-If I were you, I will just declare getBasename so as to take char * and make
-everything happy.
+It gets a bit more complex when dealing with more than about 1GB RAM
+(actually the threshold is some imprecise 10's of meg below that.
+Then PAE page tables are used instead, and you have kmap() mappings in
+the kernel area.  But you probably aren't using PAE in your operating
+system.
 
-Elias
+-- Jamie
 
--- 
-University of Athens			I bet the human brain 
-Physics Department				is a kludge --Marvin Minsky 
 
-	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
