@@ -1,49 +1,56 @@
-From: Jim Reimer - WA5RRH <wa5rrh@arrl.net>
-Subject: Re: trouble setting shell variable
-Date: Sun, 26 May 2002 11:44:34 -0500
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: Page Borders in Latex
+Date: Sun, 26 May 2002 18:07:44 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200205261644.g4QGi19N020836@franklin.icok.net>
-References: <200205261406.g4QE6b9N012213@franklin.icok.net> <200205262128.03049.mssnlayam@cs.annauniv.edu>
+Message-ID: <20020526170744.GA338@cam.ac.uk>
+References: <200205262029.21973.knutties@indiainfo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="WIyZ46R2i8wDzkSu"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200205262128.03049.mssnlayam@cs.annauniv.edu>
+Content-Disposition: inline
+In-Reply-To: <200205262029.21973.knutties@indiainfo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: mssnlayam@cs.annauniv.edu
-Cc: linux-newbie@vger.kernel.org
+To: Natarajan <knutties@indiainfo.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-forgot about formatting....  that makes it a LOT easier.
 
-thanks.
+--WIyZ46R2i8wDzkSu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Sunday 26 May 2002 10:58 am, Suriya Narayanan M S wrote:
-> On Sunday 26 May 2002 7:37 pm, Jim Reimer - WA5RRH wrote:
->   > echo `date` | cut -b 25-28,12-13,15-16,18-19
->   >
->   > gives me what I want to use for the file name, but I
->   > can't figure out how to get it into a variable for use
->   > later in the script when I rename the file.  I've tried
->   >
->   > variablename=
->
-> $ variablename=`echo \`date\` | cut -b 25-28,12-13,15-16,18-19`
-> $ vim ${variablename}
->
-> or
->
-> $ variablename=`date | cut -b 25-28,12-13,15-16,18-19`
-> $ vim ${variablename}
->
-> To make life simple use the formatting available with date.
-> eg.
-> $ variablename=`date +%d-%b-%Y`
-> $ echo ${variablename}
-> 26-May-2002
->
-> Hope that answers your question.
-> Bye,
-> Suriya Narayanan M S
+> 	 How do you draw borders for pages in Latex? Thanks in advance.
+There are probably better ways, but the fancybox package provides a way
+to do this. In the document preamble, go:
+
+\usepackage{fancybox}
+
+and then once you get into the document proper, go:
+
+\fancypage{\fbox}{}
+
+This needs to be one of the first things after the \begin{document}.
+
+As I said, there are probably better ways, but that's the first one
+which comes to mind.
+
+Steven Smith,
+sos22@cam.ac.uk.
+
+--WIyZ46R2i8wDzkSu
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE88RZfO4S8/gLNrjcRAiAfAKDM26qsutYNcAt11KSbRDA58+WQZgCdGRlO
+2rPGdG5MuwtrSPamfs0ap3A=
+=nK5I
+-----END PGP SIGNATURE-----
+
+--WIyZ46R2i8wDzkSu--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
