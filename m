@@ -1,55 +1,41 @@
-From: Kurt Sys <kurt.sys@rug.ac.be>
-Subject: Re: smbprint
-Date: Mon, 17 Feb 2003 12:25:19 +0100
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: File names with spaces
+Date: Mon, 17 Feb 2003 20:11:40 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <15952.50847.868235.714886@ksys.rug.ac.be>
-References: <15948.63078.810448.32226@ksys.rug.ac.be>
-	<20030214.215139.8.2.whitnl73@juno.com>
-Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
+Message-ID: <20030217191140.GA13495@teamfinders.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030214.215139.8.2.whitnl73@juno.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
 Hello,
 
-tnx, it seems to work now, at least, the variables are set. 
-Well, what I thought was: if you do 'cat $config_file', the config-file is 'shown', so I thought that the command 'eval cat $config_file' would result in:
-
-eval server=LABMETSERVER service=HPLaserJ user=kurts passwd=XXXXX
-
-and this would set the variables, no? I still don't understand why this is not ok...
-Anyway, the spaces, that was clearly an error. I removed these...
-
-tnx,
-Kurt.
+I am trying to write a bash shell script that will translate spaces in file names into underline characters.  This is the script as I have it now:
 
 
+for file in `ls`
+do
+	echo $file
+	newfile=`ls ${file} | tr '[:space:]' '[_*]'`
+	echo File is named ${file}
+	echo The new file is named ${newfile}
+	# [[ -s $newfile ]] || (mv $file $newfile)
+	sleep 2
+done
 
-Mail from whitnl73@juno.com, sent on Friday February 14 2003 at 20:15 (GMT-0500): 
+The lines that begin with echo and the sleep line are for debugging.  What they have shown me is that the $file is getting set to the first word in the file name on the first iteration, the second word on the second interation, etc.  (The file names look like "001 of 150 files", "002 of 150 files", etc.)  So, on the first iteration, $file is egual to "001", on the second iteration $file is equal to "of", etc.  Yet, if I go to the directory and issue `ls`, the filenames are shown as one would expect with the whole four word filename on one line.
 
-  > On Fri, 14 Feb 2003, Kurt Sys wrote:
-  > 
-  > >
-  > > spool_dir=/var/spool/lpd/smb0
-  > > config_file=$spool_dir/.config
-  > >
-  > > eval cat $config_file
-  > 
-  > Excuse me?  Why do you think this will set any shell variables?
-  > This is just going to copy your config file to stdout.
-  > See "help eval" and man cat.
-  > 
-  > I think you want something like
-  > 
-  > tn=`mktemp /tmp/x.XXXXXXX` && sed 's/ //g' $cf >$tn && source $tn && rm $tn
-  > unset tn
-  > 
-  > AFAIK, the way to set a shell variable is: "name=value",
-  > not "name = value", hence the sed
+Can anyone give me a hint on how to fix this so that the whole filename is loaded into $file?
+
+TIA,
+Sean
+
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
