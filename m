@@ -1,39 +1,40 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: RE: How to hide . folders (resolved)
-Date: Tue, 10 Aug 2004 14:16:22 -0400
+From: Peter <heisspf@skyinet.net>
+Subject: Gnome, KDE won't Open
+Date: Thu, 12 Aug 2004 14:05:34 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <GNEPLLCIIBHICCOGIAKPGEJMDCAA.eatley@wowcorp.com>
-References: <41147088.9050803@bcgreen.com>
-Reply-To: <eatley@wowcorp.com>
+Message-ID: <20040812060534.E17B83ECE5@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41147088.9050803@bcgreen.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Stephen Samuel <samuel@bcgreen.com>
-Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
+Hi,
 
-Just wanted to update folks on my solution to this problem of wanting to
-hide all but necessary folders to users logging in via an SSH GUI!
+RedHat 9.1, Kernel 2.2.20-20, 118 KRAM, 435 K swap
 
-What got me started in the right direction was sorting out permissions and
-finding out more about the sticky bit.
+On my motherboard the connection for the keyboard died for which reason I 
+could no longer boot.
 
-What eventually fixed my issue for this situation was adding a user like so:
-	useradd -M -d /home/shared/ [username] -p [password]
+I bought a USB adopter, connected keyboard and mouse to it and I could boot 
+again with kb and mouse working properly.
 
-The scenario in this case was to dump a user upon login to a particular
-directory, but NOT create any extraneous folders. -M eliminates the need for
-all those folders to be created in the first place. -d starts them out in
-the folder I request (in this case /home/shared). It appears to create a
-bash-history only, but I really don't mind if someone accidentally deletes
-this one, since these are logins from a GUI.
+However, now I cannot start gnome nor kde from the concole. Both crash just 
+before the panels should open. I can start twm and from there open 
+applications like abiword, gnumeric. When I open gnome-panel or kicker from 
+within twm causes a crash when then trying to open an application from those 
+panels.
 
-Thanks to all,
-Eve
+Opening gnome or kde via gdm or xdm causes a reboot.
 
+Has this strange behavior anything to do with this USB connection of the 
+kb/mouse and what would be needed then to correct it or is it just a 
+coincidence meaning further trouble?
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
