@@ -1,93 +1,62 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: Retrieving deleted files
-Date: Sat, 10 Apr 2004 23:29:18 -0700
+From: =?iso-8859-1?Q?Juan_Facundo_Su=E1rez?= <facundo.suarez@ensi.com.ar>
+Subject: Remote X
+Date: Sun, 11 Apr 2004 11:08:18 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4078E5BE.8030803@bcgreen.com>
-References: <GNEPLLCIIBHICCOGIAKPEEGLCJAA.eatley@wow-corp.com>
+Message-ID: <004501c41fce$712216c0$680410ac@pcinstru1>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPEEGLCJAA.eatley@wow-corp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Eve Atley <eatley@wow-corp.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-Eve Atley wrote:
-> Thanks so much for your help, Ray.
-> 
-> I have tried the instructions at:
-> http://recover.sourceforge.net/unix/
-> (one of the first things I did try)
-> ...and I got a whole lot of garbage spit back to my screen; so much so, I
-> had to quit.
-> 
-> I am attempting to do something along these lines:
-> 
-> 	grep -a -B10000 -A0 "wowerpresumes" /dev/hdfb
-> 
-> ...and since I'm not sure what to put for B and A, I may be doing something
-> wrong here. I don't recall how large the directory was 'before' things were
-> deleted.
+ Hi all.
 
-What you're doing is using the grep command to find some
-relatively unique string of data in  your file, and then
-printing the data before, and after, that string.
+ I am trying to set up a remote X conection. And i am reading about XFr=
+ee86.
+I will tell you what i understood, and you tell me if i am wrong.
+ I did some tests in my pc. i have started two or more Xfree86 server l=
+ike
+this:
 
--A and -B signiy the number of lines after (-A) and before (-B)
-tthe matched string to print...
+ $:XFree86 :(a) vt(b)
 
-The 'string' is actually a grep pattern, to look for, not a
-fixed string (unless you use fgrep instead of grep).
+ and after that, run wmaker like this:
 
-so, as an example -- if you'r trying to find a deleted /etc/passwd ,
-you might look for the entry for root, with:
+ $:wmaker -display :(a)
 
-   grep -A200 -B2 'root:[^:]*:0:0:'  /dev/hda3
+ and it worked fine. I think i can do something like this, but running
+wmaker in another pc on my lan, like:
 
-(presuming that the /etc/ driectory is on /dev/hda3)
+ $:wmaker -display 192.168.0.1:(a)
 
-note that I'm presuming that you understand grep regular
-expressions... It looks for  'root:' followed by any
-number of characterss other than colons ('[^:]*) followed
-by :0:0:  which are the userid and groupid of the root user.
+ where 192.168.0.1 is the ip from machine where i started XFree86. I th=
+ink
+this shoud start wmaker any pc from my lan, working in host 192.168.0.1=
+=2E Is
+this correct?, or need to change something?. what is it?.
 
-Since, for most incarnations of the /etc/passwd file the
-root entry is the first, I'm only printing 2 lines before (just in case),
-and 200 lines after (presuming I'm expecting the file to be
-less than 200 lines long.
+ Besides, i know about VNC. I have tried it, and it is great how it wor=
+ks
+windo$/linux platforms crossover. But, if you know about any other way =
+to
+make remotes X sessions, please, tell me. I will ask you, too, about an=
+y
+window$ X client to work with Xfree86, if there is any.
 
+ Thaks !!
 
-if you're lucky, you'll only find one copy of the file on
-your partition.
+     _____
+    / ___/
+   / /_  ____    ____   ____    Facundo Su=E1rez - facundo.suarez@ensi.=
+com.ar
+  / __/ / __ \  / ___\ / __ \   Instrumentos - ENSI SE
+ / /   / /_/ / / /___ / /_/ /   Arroyito - Argentina
+/_/    \_____\ \____/ \____/    Usuario Registrado Linux
 
-The upshot is that the ext3 filesystem does a pretty thorough
-job of deleting any residual metadate when it removes your
-files. (Unlike dos, which just zeroes the first byte of the name).
-
-Zherefore you're left hunting thru the raw disk, hoping that the
-file you're looking for hasn't been fragmented into 2 or
-more pieces (if it has, then you're going to have to do more
-searching for the second and subsequent pieces).
-
-you basically want to look for a string/pattern that will
-(hopefully) uniquely identify your file..  You want something
-that is guaranteed to be in the file, and something unlikely
-to be found in any  other random file.
-
-I guess, if somebody wanted to be really fancy, it might be
-possible to create a bitmap of allocated blocks on the disk,
-and only search in the unallocated space for your string
-
-I'll leave that as an exercise for the reader :-).
-
-
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-      the jewel within each person and bringing it to light.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
