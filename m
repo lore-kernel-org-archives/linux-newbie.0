@@ -1,105 +1,127 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Debian -> sound modules
-Date: Mon, 30 Dec 2002 08:35:54 -0800
+From: whitnl73@juno.com
+Subject: Re: commport settings
+Date: Mon, 30 Dec 2002 14:45:31 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021230082006.020ce7b0@celine>
-References: <5.1.0.14.1.20021226085851.020b2100@celine>
- <5.1.0.14.1.20021227083019.02107cd0@celine>
+Message-ID: <20021230.144829.134684296.0.whitnl73@juno.com>
+References: <200212300521.gBU5LBq22018@ev6.be.wanadoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E104742.5030500@rug.ac.be>
+In-Reply-To: <200212300521.gBU5LBq22018@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"; 
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: hammer@revobild.net
+Cc: linux-newbie@vger.kernel.org
 
-OK. Extracting the soundcard-specific info from what you posted gives u=
-s this:
+On 30 Dec 2002, Heimo Claasen wrote:
 
->SoundBlaster=AE and Windows=AE sound compatible (website Dell)
->Sigmatel 9700 audio controller (Laptop users manual)
->Integrated Intell Audio (Windows)
->82801CA/CAM AC'97 Audio controller (Windows)
+> Thanks, Lawson, for the detailed answers. BTW, I was searching all
+> over the systems here to find the chat script (and I'm used to it using
+> a DOS-chat all the time whdere precisely you set the modem's adrs and
+> irq) but couldn't _find_ the corresponding thing here, e.g. in that
+> Mdk-install: there is a chat script in it, but it does _not_ contain
+> anything related to modem initiation etc., only the dialogue and
+> messages when connected with the dial-in point already.
 
-The Soundblaster reference is marketing bafflegab, but the 82801CA/CAM=20
-tells us what you really have. And it seems that you have the correct s=
-ound=20
-module (i810_audio) for it, based on checking this URL:
-
-         http://www.systura.com/linux/thinkpadr31.html
-
-This is confirmed by your ability to send sound output to /dev/dsp ... =
-it=20
-believes it is connected to *something*.
-
-Now, with this in place, you report this "problem":
-
->Finally, the 'overdrive' sound, it's not 'double speed' (I guess), but
->it's a typical 'noise-signal' sound. So:
+Well, modem init strings are pretty much unique to individual modems,
+so a distro might not want to include one.  A wrong (or mIXed
+case) command will cause most modems to behave in an unspecified manner,
+often to hang.  Normally, the first thing you send from a chat script is
+the init string, then the dial command.  A chat script can be a separate
+file named in the connect parameter, or inline on the pppd command or
+options file.  man chat is a good man page, and so is man pppd - it is a
+bit long, but you can use pppd so many different ways.
 >
->cat /usr/share/sndconfig/sample.au > /dev/dsp
+> For instance, either on the DOS command line or in a chat.scr you
+> would have base address (in your script indeed referred to as
+> /dev/ttyS2) _and_ irq specified, besides of speed, crtscts, etc.
+
+Yes, but that is DOS.  DOS doesn't really have any comm support, it is
+up to the app to supply it, so it would have to know what to use for the
+IRQ.
 >
->gives such a noise-signal (overdrive). I really don't know how I can
->describe it another way... I'm sorry about that. The same is true for
->/usr/share/sndconfig/sample2.au and some small wav-files (not all of t=
-hem).
+> What I do not understand in the example of your second, bash script
+> is, where this one gets the variables "$6" and "$1" from, and the
+> specifications for the "$DNS1" and "$DNS2". Where are these set ?
 
-I *think* you are saying that sometimes this procedure plays .wav viles=
-=20
-correctly, but sometimes it does not ... and it "never" (in quotes beca=
-use=20
-I don't know how many different files you tried) plays .au files correc=
-tly.
+pppd sets them if you tell it "usepeerdns" - if the peer supplies them.
+it calls the ip-up script with positional parameters - ahh, just scan
+man pppd for the paragraph
+/etc/ppp/ip-up
+(you can scan man pages for strings like so:
 
-At this point, I would not rely on "cat" to get the details of sound ri=
-ght.=20
-"cat" is able to verify that the sound device is present and configured=
-,=20
-but it is, to put it mildly, not the best way to play music. The Linux=20
-Sound HowTo (http://www.tldp.org/HOWTO/Sound-HOWTO/index.html, section =
-6.2)=20
-notes this:
+/\/etc\/ppp\/ip-up
 
-"Sun workstation (.au) sound files can be played by sending them to the=
-=20
-/dev/audio device. Raw samples can be sent to /dev/dsp. This will gener=
-ally=20
-give poor results though, and using a program such as play is preferabl=
-e,=20
-as it will recognize most file types and set the sound card to the corr=
-ect=20
-sampling rate, etc."
+/ introduces the string, so to put it in the string, you must excape
+it.)
+>
+> (REM, using the Waterloo TCP/IP arrangement in DOS - which is a port
+> from *nix -, I get a bit confused with the fact that you have a
+> permanent "ip-up" script.  In the very similar DOS sequence of routines,
 
-So I'd suggest you install xmms (or mpg123 or something else you find=20
-congenial) and see if it plays sound files (probably .mp3 or .ogg files=
-,=20
-though I believe xmms can handle .wav too) properly. If not, look at (a=
-nd=20
-send us relevant portions of, if need be) the error output (run the app=
-=20
-from an xterm on the console, and redirect STDERR output someplace usef=
-ul).
+Well, the variables get passed to it as parameters and environment
+variables.
 
-At 02:16 PM 12/30/02 +0100, Kurt Sys wrote:
->OK, thanks, but apparently, I have to try again... So let's try sound =
-on
->my laptop. I don't have much information about the hardware, but this =
-is
->it (and I've added the 'source of the information' between brackets):
-[details deleted]
+> with chat running first and then a packet driver loading [with latter
+> using a configuration script which contains, e.g., name servers, packet
+> volume etc.] the "ip-up.bat" script gets written anew each time a
+> ppp-connection is done _by_ the driver and run from it. The WATTCP.CFG
+> there contain both permanent parts and what is appende into it by
+> ip-up.bat, like with resolve.conf in your example.)
+>
+> Well, I'll spend some more hours again to chase those scripts on the
+> two different installs here (haven't got a Sclackware active at the
+> moment). And it's always good to have examples of "weird" things as
+> these show more different options and syntax idiosynchracies.
+>
+> On some of the points you made:
+>
+> > ... trying to probe what IRQ it uses is not that easy.
+> Hmm, how come ? for at least fifteen years I use a little DOS utility
+> wich spits out the list of existing commports _and_ the irq.s related to
+> each. And there had been quite several of such little DOS helpers; a
+> bit more difficult to find them these days.
+>
+read man setserial on autoconfig and auto_irq.
 
+> > ...anything you don't specify to pppd on the command line or options file
+> > will be left as is.
+
+> There _is_ a "pppd.options" file but I couldn't find either there or in the
+> "man" any hint on how to use it for precisely the issue at hand.
+
+if you mean the IRQ, you can't.  pppd doesn't concern itself with port
+address or IRQ, but leaves them to the OS (and setserial).
+
+It is usually /etc/ppp/options.  They work essentially the same as
+options on the command line; some a nonroot user cannot specify on the
+command line.
+>
+> > What are pon and ifup?
+> These are bash commands in Debian and Mandrake, resp., for starting
+> ppp[n] from the console (I think it's "p-on pppN" in Slackware,  just
+> to add a bit to the confusion); in a way, the correspondings to kppp
+> which is used from X only.
+
+ifconfig ppp0 up?  I put that in /etc/ppp/ip-up.
+>
+> // Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-12-30
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+>
+Lawson
+>
 
 --
--------------------------------------------"Never tell me the odds!"---=
------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
------------------------------------------------------------------------=
---------
+---oops---
 
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
