@@ -1,98 +1,45 @@
-From: "rgomez@bancomer.com" <rgomez@bancomer.com>
-Subject: Re: Squid only on eth1
-Date: Tue, 27 Jan 2004 13:55:48 -0600
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: partitioning
+Date: Tue, 27 Jan 2004 21:19:47 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4011C8740000129C@mail-bcm02.alestra.net.mx>
-References: <010601c3e480$63c445e0$3401a8c0@iih.usyd.edu.au>
+Message-ID: <200401272119.47861.pa3gcu@zeelandnet.nl>
+References: <200401252137.39975.wheds8@ms66.hinet.net> <Pine.LNX.4.58.0401261707570.12559@ppg_penguin> <20040127191626.GA603@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <010601c3e480$63c445e0$3401a8c0@iih.usyd.edu.au>
+In-Reply-To: <20040127191626.GA603@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: james@lovedthanlost.net
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-It works, but one more, now it takes much time (close a minute) to get response
-from proxy, here are all info I think you would need...
-
-# nmap -sS XXX.XXX.XXX.XXX -p 8080 
-
-Starting nmap V. 3.00 ( www.insecure.org/nmap/ )
-The 1 scanned port on  (eth0) is: closed
-
-Nmap run completed -- 1 IP address (1 host up) scanned in 21 seconds
-
-# nmap -sS XXX.XXX.XXX.XXX -p 8080 
-
-Starting nmap V. 3.00 ( www.insecure.org/nmap/ )
-Interesting ports on  (eth1):
-Port       State       Service
-8080/tcp   open        http-proxy              
-
-Nmap run completed -- 1 IP address (1 host up) scanned in 21 seconds
-
-# echo $http_proxy
-http://localhost:8080/
-
-# wget www.tldp.com
---13:44:09--  http://www.tldp.com/
-           => `index.html'
-Resolving localhost... done.
-Connecting to localhost[127.0.0.1]:8080... failed: Connection refused.
-
-# echo $http_proxy
-http://eth1:8080/
-
-# wget www.ibm.com
---13:48:57--  http://www.ibm.com/
-           => `index.html.4'
-Connecting to eth1:8080... connected.
-Proxy request sent, awaiting response... 302 Moved Temporarily
-Location: http://www.ibm.com/us/ [following]
---13:49:44--  http://www.ibm.com/us/
-           => `index.html.4'
-Connecting to eth1:8080... connected.
-Proxy request sent, awaiting response... 200 OK
-Length: 27,087 [text/html]
-
-100%[====================================>] 27,087         5.02K/s    ETA
-00:00
-
-13:49:51 (5.02 KB/s) - `index.html.4' saved [27087/27087]
-
-$>-- Mensaje Original --
-$>From:	"James Turnbull" <james@lovedthanlost.net>
-$>To:	"linux-newbie" <linux-newbie@vger.kernel.org>
-$>Subject: Re: Squid only on eth1
-$>Date:	Tue, 27 Jan 2004 13:50:57 +1100
-$>
-$>
-$>> Hi:
->
-> I have 2 eth devices in my Linux box, I want that all squid traffic go
-throw
-> eth1 an not eth0, how do I configure it?
+On Tuesday 27 January 2004 20:16, Hal MacArgle wrote:
+> OK on the comments received by all.. I'll have to give this more
+> thought as to whether or not it's for me... Appreciate!!
 >
 
-If they have seperate IP addresses you can force squid to use a specific
-IP
-address in the squid.conf file.  Lo
-$>k at the http_port config option and
-specify an IP, i.e. http_port 10.0.0.5:3128
+To be honest i have not seen any replys to your mail, however in the days we 
+now live in which are;
+BIOS's which dont have limitations like the old < 1024 cyl's limit,
+Big H/D's 120GB is standard now, (plenty or room)
+Multi boot systems via BIOS (choose which drive one wants to boot from,
 
-Regards
+one must ask one's self, "Is is reallt nessacary to have a /boot prtition now 
+that bootloaders dont need it beneath the 1023 cylinder.?
 
-James
+I throw everything into one partition thesedays, 20 Gig on a 120Gig disk is 
+nothing.
+Just my thoughts.
 
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in
-the body of a message to majordomo@vger.kernel.org
-More majordomo
-$>info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
