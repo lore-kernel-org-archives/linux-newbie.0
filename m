@@ -1,73 +1,80 @@
-From: "John T. Williams" <jtwilliams@vt.edu>
-Subject: Re: Limiting download with Squid
-Date: Tue, 11 May 2004 11:59:01 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Optimizing I/O via kernel changes
+Date: Tue, 11 May 2004 09:52:16 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1084290969.14038.7.camel@scotus.fesnel.no-ip.org>
-References: <00db01c4373c$ca46a790$0532a8c0@sudhir>
+Message-ID: <5.1.0.14.1.20040511085919.01f14ad8@celine>
+References: <6CE6A442029B3347890ED9FCA94FAE0701EEAF57@nsxmail.netscout.
+ com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00db01c4373c$ca46a790$0532a8c0@sudhir>
+In-Reply-To: <6CE6A442029B3347890ED9FCA94FAE0701EEAF57@nsxmail.netscout.
+ com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Sudhir Barwal <sudhir@guj.nic.in>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-This is actually a well written about subject.  
+At 11:30 AM 5/11/2004 -0400, Gosselin, Mark wrote:
+>Hi List,
+>
+>I've been asked the following question by our VP of Development.
+>
+>Is there some kernel parameter (or parameters) that we can tweak to 
+>improve our I/O on a Linux Server??
+>
+>Since I'm new to Linux, I figured someone one one of these lists might 
+>have a concise answer to that
+>question. Can we use the kernel tomincrease I/O rates, or are we bound by 
+>hardware??
 
-From your description, I would recommend that you use what is called a
-token and bucket scheme.  Here is a link to some very good information
-about advance routing issues, including setting up bandwidth
-restrictions.  
+This question is too vague to elicit a meaningful answer. Even assuming you 
+mean Mbps on an Ethernet by "I/O rates" (there are other possible meanings, 
+of course), knowing whether your particular setup is hardware or software 
+bound requires knowledge of your hardware and software ...
 
-Chapter 9. Queueing Disciplines for Bandwidth Management
-http://www.tldp.org/HOWTO/Adv-Routing-HOWTO/lartc.qdisc.html
+         what NIC? (if not 100 Mbps, mention speed)
+         what CPU? (type and speed)
+         how much RAM?
+                 is the system *ever* using swap?
+         any relevant IRQ sharing?
 
-This gives step by step with good examples.  I actually have a similar
-setup in my apartment, to avoid exceeding upload limits set by my isp.  
+         what Linux distro and version?
+         what Linux kernel ("uname -a")?
+         custom or stock kernel?
+         what NIC module and parameters?
+         what (if any) iptables rules are you running?
+         does "ifconfig" show any appreciable error rate?
 
-On Tue, 2004-05-11 at 05:46, Sudhir Barwal wrote:
-> Hi everybody,
-> I have the following config :
-> Linux  : RedHat 8.0
-> Squid : 2.5STABLE1
-> The above system is working as a proxy server for all the local LAN clients.
-> The problem :
-> 
-> My ISP is allowing the total download say 1GB per month. If the download is
-> exceded that limit they are charging extra money for that.
-> 
-> My Question :
-> 
-> Is there a way so that I can restrict the client to say
-> 10 Mb for 1 group
-> 50 Mb for another group
-> and so on..
-> I want this restriction on IP basis( e.g. say for 192.168.50.1 to
-> 192.168.50.50 should be allowed to download 10Mb and after that they should
-> get the message ...something like ..."your download limit is over for the
-> current month" or simply they should not be allowed to download anything
-> beyond that limit, the same is true for other clients also and for
-> 192.168.50.55 to 192.168.50.90 permissible limit should be 50Mb)
-> 
-> I have looked into the "Delay pool" option of Squid but that will be
-> applicable to all the users.(Since there are some executives for whom I have
-> to allow unlimited download, I know that they are not downloading much, and
-> just surfing the net for 1-2 hours etc.)
-> 
-> Please guide me to the right pointers.
-> 
-> Sudhir Barwal
-> ------------------------------------
-> Network Administrator
-> sudhir@guj.nic.in
-> ------------------------------------
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+         what relevant services are you running?
+         what "I/O rates" are you currently seeing?
+         if the relevant connectivity is not just Ethernet (for example, if 
+it is a DSL connection to the Internet), what type and speed of connection 
+is it?
+         how "busy" is the system during normal operation?
+                 what % CPU use does "top" report?
+                 what blocking ("load averages") does "uptime" report?
+
+Depending on the details of the response, there could be ways to speed up 
+throughput, such as reducing the complexity of firewall rulesets,  tweaking 
+NIC module settings, rearranging IRQ assignments, conceivably doing some 
+tailoring to specific service needs, possibly tailoring packet size (MTU) 
+settings to a link layer other than Ethernet.
+
+  As a general matter, you may want to look at the settings described in 
+your kernel Documentation under ./Documentation/networking/ip-sysctl.txt 
+and at the doc file in the same directory for your NIC. But there is no 
+magic "faster" switch in the kernel (or at least none I know of) that is 
+turned off by default (why would there be?).
+
+In practice, 100 Mbps Ethernet NICs under Linux seem to deliver somewhere 
+between 50 Mbps and 80 Mbps on a sustained basis, depending on things I'm 
+not sure of (kernel version? specific NIC hardware?).
+
+And, of course, if I have misinterpreted your use of "I/O rates", this 
+entire response is meaningless for your purposes.
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
