@@ -1,76 +1,104 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Shutdown problem
-Date: Sat, 18 Jan 2003 09:14:50 +0000
+From: Kurt Sys <kurt.sys@rug.ac.be>
+Subject: samba -> some problems
+Date: Sat, 18 Jan 2003 13:07:36 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03011809145002.29837@unix.pa3gcu>
-References: <20030117181655.4776.qmail@webmail9.rediffmail.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3E294388.7050707@rug.ac.be>
+Reply-To: kurt.sys@rug.ac.be
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030117181655.4776.qmail@webmail9.rediffmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Anant Aneja <anantaneja@rediffmail.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Friday 17 January 2003 18:16, Anant Aneja wrote:
-> well i guess i was 0 on details last time.
-> but heres another problem whose complete details I CAN supply.
-> only problem is writing the exact o/p would mean actually WRITING
-> it down first.
+Hello,
 
-Well you explain what happens, but you dont say;
-1) What kernel is used.
-2) The command used. Or how you shutdown the system and from where, in X via  
-     KDM or some other manager. Or do you use ctrl-alt-delete.?
-3) Has this always happend, or did it simply start recently.
+I'm running Debian (kernel 2.4.16) now for some time, but I don't manage 
+to configure samba (2.2.3a) like it should (I guess). I'll try to 
+explain as good as possible what my problems are...
+I want to get on a Windows NT intranetserver, to access some data but 
+especially for the printers on the network. I have put in /etc/hosts the 
+following line:
 
->
-> cos it comes when i shutdown the comp.
->
-> my comp has a feature by which when the os shuts down it shuts
-> down the comp completley. thus in windows i dont see a
-> 'Its safe to shutdown ......."
->
-> in linux(red hat 7.1 on a pentium 350 Mhz)i come down to the
-> foll.
-> (from what i rem.,may not be exact) :
-> stopping md devices.
-> stopped md devices.
-> halting system.
-> POWER DOWN
-> <error>
->
-> its after this that i get a complete listing of the cpu's
-> registers and some more crap(i'll send this as soon as someone
-> asks)
+# 157.193.64.19		lmeserv.rug.ac.be	labmetserver
 
-Sounds like an "oops" to me, fi that is so then you are the one who needs to 
-study the oops, you have the tools on your system and the relavant system 
-files holding the information.
-To make an oops readable and to find out what caused the oops i suggest you 
-read the following and do as the files say.
+This works, since i can ping to 'labmetserver'.
 
-/usr/src/linux/README (part concerning)
-IF SOMETHING GOES WRONG:
-In the README it tells you what to do and which other files to read.
+Next, I'd like to connect to the server, so I do:
 
->
-> so any help i can get ?
+# mount -t smbfs //labmetserver/ /mnt/labmet/ -o 
+username=kurts/LMEDOM%xxxxxxxxxxxx
 
-Possable causes of an oops are processes left open or processes using system 
-resources left open, a system which uses "tainted modules" and they are not 
-being removed before shutdown, many other things, too many to mention, the 
-answer is in the oops.
+(xxxxxxxxx to replace by password) and next message appaers:
 
->
-> Anant Aneja
->
+# mount: only root can do that
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+I don't understand this, since I can mount other filesystems (floppy, 
+cdrom, zip, etc), so I actually can mount, but anyway, I go on:
+
+# su root
+# passwd:
+# mount -t smbfs //labmetserver/ /mnt/labmet/ -o 
+username=kurts/LMEDOM%xxxxxxxxxxxx
+
+# 1214: session request to LABMETSERVER failed (Called name not present)
+# 1214: tree connect failed: ERRDOS - ERRnosuchshare (You specified an 
+invalid share name)
+# SMB connection failed
+
+
+So apparently, I cannot connect to the server. But now, I can try 
+something else:
+
+# mount -t smbfs //labmetserver/information /mnt/labmet/information -o 
+username=kurts/LMEDOM%xxxxxxxxxxxx
+
+and this seems to work to some extend: the filesystem is mounted (so I 
+can read the 'information' directory of the server), but I receive a 
+message again (same as the first one above):
+
+# 1222: session request to LABMETSERVER failed (Called name not present)
+
+At this point, I'm already 'satisfied' that I can read the data, but I'm 
+not able to find the printer yet since I cannot mount the complete 
+filesystem properly (that's at least what I think...) I guess, I have to 
+be able to mount the server (smb) filesystem, before I try to print!?
+
+Anyway, I already tried some things with smbpasswd but I can't remember 
+exactly what I did. Anyway, here's some more information for you :-):
+as 'kurt', I run:
+
+# smbpasswd -U kurts
+(since kurts is my login name of the server)
+# Old SMB password:
+# New SMB password:
+# Retype new SMB password:
+# machine 127.0.0.1 rejected the password: error was : RAP86: the 
+specified password is invalid.
+# Failed to change password for kurts
+
+
+Finally, my smb.conf:
+
+[global]
+
+	workgroup=LMEDOM
+	ecrypt password=True
+	security = domain
+	password server = *
+
+
+
+I would like to be able to mount the filesystems when I'm not logged in 
+as root (fakeroot doesn't help...), but I really would like to be able 
+to mount the server filesystem (with printers etc). This is probably the 
+last 'necessary' thing that has to be solved to go completely for Linux.
+
+
+
+I really would appreciate any help,
+tnx,
+Kurt.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
