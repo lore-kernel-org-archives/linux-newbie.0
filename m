@@ -1,71 +1,53 @@
-From: mike <mike@kevino.org>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: partitons and proper order
-Date: Sun, 31 Oct 2004 15:14:08 -0700
-Message-ID: <418563B0.6060306@kevino.org>
-References: <41853B6B.5020903@kevino.org> <1099252931.2838.4.camel@localhost>
-Reply-To: linux-newbie@vger.kernel.org
+Date: Sun, 31 Oct 2004 14:39:22 -0800
+Message-ID: <5.1.0.14.1.20041031143246.01f2be00@celine>
+References: <1099252931.2838.4.camel@localhost>
+ <41853B6B.5020903@kevino.org>
+ <1099252931.2838.4.camel@localhost> <418563B0.6060306@kevino.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1099252931.2838.4.camel@localhost>
+In-Reply-To: <418563B0.6060306@kevino.org>
+References: <1099252931.2838.4.camel@localhost>
+ <41853B6B.5020903@kevino.org>
+ <1099252931.2838.4.camel@localhost>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Thorsten Alge wrote:
-> Hi Mike,
->=20
-> the order of the partitions doesnt really matter. Only if you want to
-> use lilo as your bootloader you should have your /boot partition unde=
-r
-> cylinder 1024 - if you use grub you do not need an /boot partition.
->=20
-> Am So, den 31.10.2004 schrieb mike um 20:22:
->=20
->>Hello,
->>I have installed linux a few times no real problems with my
->>installs. But going to move some drives around and do a fresh
->>install. I usually install with the below
->>
->>/
->>swap
->>/boot
->>/var
->>/usr
->>/home
->>/tmp
->>
->>I use ext3 and I am currently useing Mandrake distribution on an
->>intel compatible machine with ide drives.
->>
->>My question is does the order I create the partitions matter and if
->>so what would be the proper order, if there is one?
->>
->>
->>Mike
->>-
->=20
->=20
-> mit freundlichen Gr=C3=BC=C3=9Fen,
->=20
-> Thorsten Alge
->=20
->=20
+At 03:14 PM 10/31/2004 -0700, mike wrote:
+>[...]
+>I do use lilo. I have also been running a dual boot box with M$ and
+>lilo has been writing to the master boot record. But this time it's
+>all going to be Linux. I have a 30 gig harddrive so I would assume I
+>would be safe if I kept the /boot partition within the first 500
+>megabytes of the drive.
 
-Thanks Thorsten,
-I do use lilo. I have also been running a dual boot box with M$ and
-lilo has been writing to the master boot record. But this time it's
-all going to be Linux. I have a 30 gig harddrive so I would assume I
-would be safe if I kept the /boot partition within the first 500
-megabytes of the drive.
+That's a good bet, but the mappings on modern hard drives are so hard to 
+follow, and so idiosyncratic, that it's not a sure thing. It''s hard to 
+figure out where the BIOS thinks track 1024 ends ... and aside from  access 
+to the kernel,  know of no special benefit any partition gets from being at 
+the beginning of the drive.
 
-Mike
+My practice ... which has worked 100% reliably for me with drives up to 120 
+GB or so (I think I've even made it work with a 180 GB drive, and drives 
+over 134 GB or so have real BIOS problems)... is to make partitions in this 
+order:
+
+hda1 = /boot
+hda2 = swap
+hda3 = /  (root)
+hda4 = /home
+
+I'm not partial to using separate /var, /tmp, and /usr partitions ... but 
+if I were, I'd put them and /home in the extended partitions at hda5 and up.
+
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
