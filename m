@@ -1,37 +1,32 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Groff Print-out
-Date: Sun, 13 Oct 2002 16:48:59 +0800
+From: ichi@ihug.co.nz
+Subject: Re: Disk Image
+Date: Mon, 14 Oct 2002 07:23:53 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210130848.g9D8mx201981@philonline.com>
-References: <Pine.LNX.4.44.0210121215380.179-100000@darkstar.example.net>
+Message-ID: <3DAA7109.4FCFC88C@ihug.co.nz>
+References: <Pine.LNX.4.44.0210122215310.15563-100000@linuxDBA.brett.d2g.biz>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 12 Oct 2002 12:48:18 -0400."
-             <Pine.LNX.4.44.0210121215380.179-100000@darkstar.example.net> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Kurt Kehler <kmk@pa.net>, linux-newbie@vger.kernel.org
+To: Brett <brett@brett.d2g.biz>
+Cc: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-Thanks Kurt!
+Brett wrote:
+> 
+> I suppose if someone were clever, A boot floppy could be 
+> created that had just enough software on it to provide a 
+> console, connect to a NIC, mount a HD partition, mount a 
+> place on a Linux server and then, I suppose use dd to copy 
+> the partition to the server.
 
-Peter said:
-> Groff has 2 drawbacks, a) it does not number the pages and b) does
-> barely  advance at the end of the page. 
+All you really need is tomsrtbt (a one-floppy Linux).
+It includes dd, mount and networking for PLIP, SLIP 
+and several popular ethernet cards.  Don't leave home 
+without it.
 
-
-kmk@pa.net said:
-> Try: groff -ms file | lpr
-
-That works fine. I have to use dos2unix first otherwise I get for every line:
-...
-sseas10.txt:9947: warning: illegal input character code 13
-...
-before its put into the print queue.
-
-Regards
--- 
-Peter
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
