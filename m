@@ -1,38 +1,41 @@
-From: "Ray Olszewski" <lists@tcob1.net>
-Subject: Re: .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 12:31:18 +000
+From: "neil t" <lists@tcob1.net>
+Subject: CD distributor info
+Date: Monday, 12 Aug 2002 19:54:54 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_123118__0201a8e5@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020812_195454__9a604c23@fidonet.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
 Originally to: All
 
 
-At 07:25 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Hi Ray!
->
->What is the difference between the linking that gcc does i.e. to link many
->object files into an executable and  the linking that ld does?
->Is it really that gcc is just to link object files together to an executable
->and ld is there to link object files to an shared library?
+Greetings-
+Has anyone on the list dealt with "Best Linux CD's"?  I 
+ordered the latest Debian Distro the other day and have not
+really heard anything from them about shipping.  They did 
+mention something after I made the purchase but that was to
+say something about an illness.
+Thanks
+Neil 
+
+-- 
+Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
 
-gcc compiles; it does not link. It calls ld to link. ld  links multiple .o 
-files into an executable that includes the hooks to use the shared-library 
-functions. Then at runtime, ld.so does the runtime linking to the .so files.
 
+__________________________________________________________________
+Your favorite stores, helpful shopping tools and great gift ideas. Experience 
+the convenience of buying online with Shop@Netscape! 
+http://shopnow.netscape.com/
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Get your own FREE, personal Netscape Mail account today at 
+http://webmail.netscape.com/
 
 -
 
