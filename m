@@ -1,23 +1,26 @@
-From: Peter Edstrom <peter.p3@home.se>
-Subject: Re: Setting up DNS without domain
-Date: Wed, 13 Aug 2003 12:33:48 +0200
+From: Peter <heisspf@skyinet.net>
+Subject: Counter in .procmailrc ??
+Date: Sat, 16 Aug 2003 15:47:48 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030813103348.GA506@linux>
+Message-ID: <20030816074753.2F0E810429@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-Thanks for the help! 
-Now I'm almost sure how to do it. I will do as Jim Reimer said and go
-for a DNS of something big that's located in Sweden. However, Steven's
-solution of putting the common URLs in /etc/hosts would work for me I
-guess, since there's usually just a handful of domains I visit.
+Hi,
 
-/Peter
+How would I put a counter in .procmailrc ? Such as FOO=$(($FOO+1)). That 
+number I would then put into a file which tells me already the From: and 
+Subject: of incoming mails. My trials so far show $((+1)) among others in that 
+file and not an increasing number of incoming mail.
+
+Thanks & regards
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
