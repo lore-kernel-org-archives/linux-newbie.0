@@ -1,41 +1,42 @@
-From: Bob Swift <powerstation@shaw.ca>
-Subject: BASH Script Change Directory
-Date: Thu, 01 May 2003 23:08:02 -0600
+From: Ken Moffat <ken@kenmoffat.uklinux.net>
+Subject: Re: BASH Script Change Directory
+Date: Fri, 2 May 2003 07:22:54 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305011842.48087.powerstation@shaw.ca>
-Reply-To: powerstation@shaw.ca
+Message-ID: <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
+References: <200305011842.48087.powerstation@shaw.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200305011842.48087.powerstation@shaw.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: All <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Bob Swift <powerstation@shaw.ca>
+Cc: All <linux-newbie@vger.kernel.org>
 
-This is going to sound like a really dumb question, but is there any way to 
-have BASH leave the user in the current directory from the script, rather 
-than returning them to the directory they were in when the script was called?
+On Thu, 1 May 2003, Bob Swift wrote:
 
-For example...  the user is in their home directory and call the following 
-BASH script:
+> This is going to sound like a really dumb question, but is there any way to
+> have BASH leave the user in the current directory from the script, rather
+> than returning them to the directory they were in when the script was called?
+>
+> For example...  the user is in their home directory and call the following
+> BASH script:
+>
+>      #!/bin/bash
+>      cd /var/log
+>      ls
+>
+> When the script exits, the user is returned to their home directory.  Is there
+> a way to leave them in the /var/log directory?
+>
 
-     #!/bin/bash
-     cd /var/log
-     ls
+ The script runs in a subshell. What you can do in this case is
 
-When the script exits, the user is returned to their home directory.  Is there 
-a way to leave them in the /var/log directory?
+`source your-script'  or just `. your-script'
 
-I've tried the obvious things like:
-
-     trap 'cd /var/log' 0
-
-with no success.  I'm guessing that there's probably some really simple thing 
-that I'm missing.
-
-Thanks.
+Ken
 -- 
-Bob Swift
-
+Live Long or Prosper! No, wait, that wasn't it...
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
