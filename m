@@ -1,68 +1,46 @@
-From: Ray Olszewski <ray@comarre.com>
+From: docv <docv@sbcglobal.net>
 Subject: Re: Suggestion for help-page?
-Date: Sun, 28 Apr 2002 15:24:04 -0700
+Date: Sun, 28 Apr 2002 18:08:29 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020428222404.010b3648@[192.168.1.23]>
+Message-ID: <3CCC80ED.4050301@sbcglobal.net>
+References: <2.2.32.20020428222404.010b3648@[192.168.1.23]>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ray Olszewski <ray@comarre.com>
+Cc: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
 
-At 02:34 PM 4/28/02 -0700, Staci wrote:
->See, this is why I needed a help page.
+As one very newbie to another,
 
-Well ... it's why you need help, anyway. At this level, bash script syntax
-just isn't very tricky. Whatever is wrong with you "test" script isn't all
-that apparent, so I doubt that a "very VERY newbie-friendly help-page for
-beginners" would help you much in troubleshooting this problem.
+Wouldn't it be "safer" to use 'mv' instead of 'cp' and 'rm'? That way, 
+if the destination dir didn't exist (/industgoth/new) the script would 
+error out and not have removed any of the mp3 files from the original 
+location.
 
->I made one called test, it contained just this...
->
->#!/bin/bash
->cp /home/staci/*.mp3 /
->cp /*.mp3 /industgoth/new
->rm /*.mp3
->rm /home/staci/*.mp3
->
->That's the sequence I'd go thru if I did it by hand. 
->And I ran it as root cuz only root has access to that
->/industgoth dir.
->And they're GONE.  All 20 or so of them.
->They're not in /industgoth/new, not anywhere.  Why???
->:(
+Also, was there a special reason for the copying them to the root dir 
+instead of straight to the destination dir?
 
-They are gone from their old location because you rm'ed them. Same thing for
-the intermediate location (/). That's why they are "not anywhere". So one
-obvious change is to get rid of the two rm lines, then run a script with
-just the first 3 lines and see what happens. 
+Ray Olszewski responded to:
 
-The interesting question is why they are not in /industgoth/new/, not why
-they aren't "anywhere". Assuming the directory /industgoth/new/ exists, is
-writable, and has enough room on the filesystem, I'd expect the mp3 files to
-have made it there. (I would suggest changing the line to read
-/industgoth/new/, with a trailing /, just to be safe.) 
+>>I made one called test, it contained just this...
+>>
+>>#!/bin/bash
+>>cp /home/staci/*.mp3 /
+>>cp /*.mp3 /industgoth/new
+>>rm /*.mp3
+>>rm /home/staci/*.mp3
+>>
 
-In short, what you've written should work.
+-- 
+Steve
+docv@sbcglobal.net
 
-So why not offer up some details, like:
-
-        ls -l /home/staci/*.mp3         before you run the shorter script
-        ls -l /*.mp3                    after you run the shorter script
-        ls -l /industgoth/new/          after you run the shorter script
-        df                              after you run the shorter script
-        ls -l /industgoth/              before -AND- after you run
-                                                the shorter script
-
-All this after you put a few *.mp3 files in /home/staci/, of course.
+In a world without walls and fences there is no need for windows nor gates.
 
 
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
