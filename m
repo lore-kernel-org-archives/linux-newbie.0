@@ -1,69 +1,72 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: File-system Ext2 or Ext3??
-Date: Sun, 12 May 2002 17:54:21 +0100
+From: jason@netconnect.2y.net
+Subject: Software Raid
+Date: Sun, 12 May 2002 12:18:48 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020512165421.GA1066@cam.ac.uk>
-References: <20020512150909.GA596@cam.ac.uk> <20020512152519.38384.qmail@web12808.mail.yahoo.com>
+Message-ID: <1240.142.165.167.12.1021223928.squirrel@www.netconnect.2y.net>
+References: <1965.142.165.167.12.1021165968.squirrel@www.netconnect.2y.net>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="jI8keyz6grp/JLjh"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020512152519.38384.qmail@web12808.mail.yahoo.com>
+In-Reply-To: <1965.142.165.167.12.1021165968.squirrel@www.netconnect.2y.net>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+  I spent a couple of hours last weekend setting up a software raid on a 
+aging P100. The machine has 64MB of ram and is running RH 6.1. Because of 
+limited funds and resources I've done something a little strange in order to 
+play with the raid tools, which may be what's causing my troubles but I 
+thought I'd run it past you pros anyway.
 
---jI8keyz6grp/JLjh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+  The machine is sort of a development and testing machine for me which has 
+two drives. Drive one is a 4GB set up as a dual boot with Linux and Win98 
+each getting half the drive. The second drive is a 1GB (this is where I got 
+creative) that I've partitioned using fdisk into 4 partititions. I've used 
+these 4 partitions to create and test the various raid levels and generally  
+screw around with failures and such. 
 
-> > > still get forced fscks at startup,
-> > How many? ext3 should be fscked every 20 or so times
-> > it gets mounted,
-> > to find any errors which crept in from somewhere.
-> 20 boots at about average a week per boot, I shouldn't
-> be seeing a fsck for 5 months. :(
-> Instead I'm getting them more like every third bootup.
-Does fsck say why it's running? There will usually be messages saying
-(from memory) ``not cleanly unmounted'' or ``has been mounted ... times''
-just before fsck proper starts.
+  It was while playing with a raid5 array that I started to notice some stuff 
+that I have questions about.
 
-> > ``Linux native'' isn't terribly well defined,=20
-> YES! I'd noticed that before...how unhelpful is THAT,
-> of course it's Linux Native, duh it's /, it HAS to be
-> Linux Native to be mounted at startup!
-It might be UMSDOS...
+  1. I created a 4 disk raid5 with 3 active drives(partitions) and one spare 
+drive(partition). To simulate a failure, I would go into fdisk and delete one 
+of the partitions assuming (probably incorrectly) this would cause the raid 
+to see the missing partition as a failed disk and rebuild the array using the 
+spare. It didn't. It didn't notice the partition was missing unless I ran 
+raidstop then raidstart or rebooted the machine. It would rebuild to the 
+spare after either of those things were done, but not before. Is this normal, 
+or is there some kind of schedule that it runs on to check the integrity of 
+the drives and I just didn't wait long enough. The other possibility in my 
+mind was, because all the partitions making up the raid are really just one 
+drive, is something funky going on with the software causing it not to notice 
+anything unless it's forced to reread the raidtab.
 
-> > fdisk assumes ext2 is the One
-> > True Linux Filesystem, so gives the wrong answer if
-> > something else is used.
-> > It should probably just say Linux.
-> Yes...in a nutshell that sounds like I thought it
-> might be, oversimplication of fs.
-> There's so many apps that need to be upgraded and
-> rewritten....
-True, but it's far easier to just ignore the filesystem type field.
-It's only supposed to be a hint, anyway.
+  2. Question two is about CPU overhead. I realize this machine isn't exactly 
+a rocket, but while running the raid5 the raid software was eating up more 
+than half the CPU while copying, the copying was extremely slow with the 
+raid5d overshadowing cp. Once again this could be my odd little set up 
+coupled with a disk that's very busy trying to write to 3 partitions at the 
+same time, but I was just wondering if the software raid setup can be abit of 
+a hog when it comes to the processor.
 
-Steven Smith,
-sos22@cam.ac.uk.
+  3. My final question is about the fact I was able to corrupt the raid5 by 
+copying too much info to it. Basically I copied 500MB to the a raid with 
+400MB available....no error.....no warning......it just happily copied it. 
+The result was a corrupt raid that would not initialize on reboot. Not a good 
+thing for something that's supposed to be protecting data. Once again it 
+could be, and probably is, my goofy little setup but I thought I'd ask. 
+Interesting thing here is I did a "mkraid --force /dev/md0  to recreate the 
+array expecting to lose everything, and BOOM it came up complete with all 
+data intact except for the last copy that caused all the problems. 
 
---jI8keyz6grp/JLjh
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+  Thanks
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+  Jason  
 
-iD8DBQE83p49O4S8/gLNrjcRAnp1AKCR4fhXr/zw9g4uza13QPNW6vNxWQCdEXEo
-bV4fKQ/IlNPVD7QdWDe4Jq0=
-=Majd
------END PGP SIGNATURE-----
 
---jI8keyz6grp/JLjh--
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
