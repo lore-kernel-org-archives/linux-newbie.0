@@ -1,47 +1,37 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: problem mounting cdrom
-Date: Sun, 18 Aug 2002 11:09:59 -0700
+From: Robert Reif <reif@earthlink.net>
+Subject: block driver example needed for 2.4
+Date: Sun, 18 Aug 2002 23:48:34 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020818105747.020fe3d0@celine>
-References: <35e5a4362792.36279235e5a4@homemail.nyu.edu>
+Message-ID: <3D606A92.8EDACE75@earthlink.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <35e5a4362792.36279235e5a4@homemail.nyu.edu>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Anshuman Singh Rawat <asr245@nyu.edu>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 01:24 PM 8/18/02 -0400, Anshuman Singh Rawat wrote:
->hi,
->thanks for the quick response.
->i think, i had done what u recommended in ur "guess", but i would check it 
->again.
->another thing i just noticed is that, modeprobe does report something 
->missing while booting...
->dunno if it says the same thing u r ....
+I'm writing a block device driver for an IPI controller that has an
+onboard
+command queue.  I have the driver working for one command at a time but
+I would like to send it all pending requests in the request queue and
+handle
+the replies as they come back.  I'm having a hard time figuring out how
+to
+read multiple requests from the request queue properly and also remove
+the
+requests properly from the request queue in the interrupt routine.
 
-hew knead too tellus watt ewe sea hear. whee cant no watt the ,& "modprobe 
-some_unnamed_module" dozen yore colonel.
+Linux Device Drivers talks about this type of driver but doesn't give an
+example.
+Are there any examples or explanations  for a block driver like this?
 
->i use RHL 7.3 .
->and yeah,  hdc is the right /dev device for the cdrom ( or atleast i think 
->it is, coz i was able to mount it under the original kernel).
->also in my original kernel, i get an error "/usr/bin/python has crashed 
->(segmentation fault)", when i close my X-windows system(?) ... i use Gnome 
->windows manager here...
->any idea y that wud be happenning?
+The DAC960 code looks like it's doing what I want but it's hard to
+follow
+without hardware documentation.
 
-know. tellus moor, pleas.
+Thanks,
 
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Bob.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
