@@ -1,62 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: shared partition for dual boot
-Date: Fri, 11 Jul 2003 22:42:56 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: tune2fs configuration
+Date: Sat, 12 Jul 2003 09:09:49 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030711223708.020181c8@celine>
-References: <Email.pvHcaE4ibhs@lcsd.k12.wa.us>
- <Email.pvHcaE4ibhs@lcsd.k12.wa.us>
+Message-ID: <200307120909.49217.pa3gcu@zeelandnet.nl>
+References: <Pine.LNX.4.56.0307111445050.1107@homenet>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0307112258490.1107@homenet>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.56.0307111445050.1107@homenet>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: James Miller <jamtat@mailsnare.net>, Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-At 11:36 PM 7/11/2003 -0500, James Miller wrote:
->On Fri, 11 Jul 2003 dbentson@lcsd.k12.wa.us wrote:
-> >
-> > Thanks for the response. How would I determine what the desktop I am 
-> running
-> > is? I thought that Gnome was the desktop environment... I have a lot to 
-> learn I
-> > think.
-> >
-> > I will need to check on the etc/fstab information... I doubt that it is 
-> there
-> > though since I never added anything - and the partition was created after I
-> > installed Redhat.
-> >
-> > Just for kicks, what should I expect to see in etc/fstab?
-[...]
->Can others offer some help on this query?  I don't want to go on at too
->great length since I don't always know what the heck I'm talkin' 'bout.
+On Friday 11 July 2003 21:59, James Miller wrote:
+> Well, I have another not-too-profound Linux inquiry - this time about
+> configuring tune2fs (yes, this is for an older ext2 filesystem).  I have a
+> hard drive that's acting a bit punchy, and I'd like for the filesystem
+> integrity to be checked quite a bit more frequently than usual: say, every
+> 5 boots or so.  It was indicated to me that tune2fs is the utility to use
+> for this.  Looking over the man page has not exactly been helpful though.
+> From it, I've understood that the option "-c" is the one I'm probably
 
-James -- You do not need much help; you got it right as far as you went.
+You need to do ;
+tune2fs -c 20 /dev/hda1
 
-Basically, the original problem has 3 elements:
+20 and /dev/hda1 are examples change to suit your situation.
 
-1. Does his kernel support the vfat filesystem type? Answer: who knows? 
-Easiest way to find out is to try step 2 and if it fails with a suggestive 
-error message, come back to this step.
+> Thanks, the befuddled James
 
-2. Is the partition mounted? Answer: He can do this by hand or, as you 
-suggested, with an /etc/fstab entry of the form:
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
->/dev/hda3  /home/data   vfat   defaults   0      1
-
-After adding that entry, either reboot (not really needed in this case) or 
-enter (as root):
-         mount /home/data
-
-Then check (with "fstab", to pick one of many ways) to see that the 
-partition actually has mounted.
-
-3. Does the mounted partition show up on the desktop? Answer: Not being 
-familiar with Red Hat, and being accustomed to using a minimalist WM and no 
-desktop environment, I could not suggest what he needs to do here even if I 
-knew what desktop environment he was running.
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
