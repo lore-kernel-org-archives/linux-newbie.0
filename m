@@ -1,51 +1,53 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: RE: DNS Questions
-Date: Thu, 26 Sep 2002 09:10:53 -0700
+Subject: Re: xwindows login
+Date: Thu, 26 Sep 2002 09:22:06 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020926090455.025fa4b0@celine>
-References: <5.1.0.14.1.20020926075928.025fbd40@celine>
+Message-ID: <5.1.0.14.1.20020926091345.02621ec0@celine>
+References: <006501c26565$0bb74e60$08d9d6d2@heretic>
+ <006501c26565$0bb74e60$08d9d6d2@heretic>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c26570$93a9da80$64fea8c0@pkrausxp>
+In-Reply-To: <0209261603010A.09996@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: Sagar N Chand <sagar@mihira.net>, linux-newbie <linux-newbie@vger.kernel.org>
 
-At 11:22 AM 9/26/02 -0400, Paul Kraus wrote:
->Ok so from how I understand it. A request is made to the local DNS
->server. That server checks its DNS records if it does not know the
->address it passes the request to stated DNS servers if that server does
->not know then it sends it to the root server.
+At 04:03 PM 9/26/02 +0000, pa3gcu wrote:
+>On Thursday 26 September 2002 13:56, Sagar N Chand wrote:
+> > I've recently installed Mandrake on my system.
+> > Everything is well and good. But by default it is going
+> > into xwindows for the login. I changed the runlevel to 3 in the
+> > etc\inittab file and now it is showing the login in the console
+> > mode only. Is there any other way to do this???
 >
->So does it go request-localdns-ispdns-rootdns then reversed on the way
->back or does it go
->Request-localdns-ispdns FAILED
->        -localdns-rootdns
+>No that i know off, what is it you really want, you need to login one way or
+>the other.
 >
->I guess it doesn't matter but I am curious.
+>You can use both tho' simply use runlevel 4 or 5 (dont know what mandrake
+>uses for X) after startup you can go to console mode with ctrl-alt-F6 and
+>login on the console.
+>ctrl-alt-F2 to return to X.
 
-It depends on the particular DNS server you are running and how you have it 
-configured. Typically, though, if you have a forwarder set up (what you 
-call ispdns in your restating), the local DNS server will only go to the 
-forwarder. The forwarder will then do the work of tracking down the answer 
-via the root servers.
+I missed this one first time through. Richard's solution is a correct one, 
+but there may be another, depending on what *exactly* you mean by "do this".
 
+The other possible solution to running both consoles and X is to start in 
+runlevel 3, then log into a console and start X manually. You usually do 
+this with the command "startx", which is a shell script that sets up some 
+stuff, then calls xinit, the binary that actually starts X. I don't know if 
+a standard Mandrake install sets up startx or if you will need to do some 
+setup manually.
 
->Then if that address is good then the result is cached. Now lets say
->that a cached result is no longer good because the DNS entry has changed
->for that machine. Will the DNS server report it as down or will it go
->out again and see if it has been updated?
+If you do it this way, X will most likely be running on console 7, with tty 
+consoles running on 1-6. As with Richard's approach, you use CTRL-ALT-F7 
+(or just ALT-F7)  to get to X, and CTRL-ALT-F1 to -F6 to get back to the 
+consoles from the X display. (That is, if X is on the displa,y you need 
+CTRL-ALT-Fsomething to switch, but from a command-line tty you can use 
+either CRTL-ALT-Fsomething or ALT-Fsomething to switch consoles).
 
-Neither. The DNS server will just report the incorrect information in the 
-cache; there is no mechanism in DNS for telling a caching DNS server 
-"you're wrong, please try again". This is why it is important that the 
-authoritative DNS server supply sensible expiration times with its replies 
-... so that obsolete information is not sitting arouund the Internet in DNS 
-caches. (You will sometimes see this problem discussed in the context of 
-how long it takes for a DNS change to "propagate".)
-
-
+This is what I catually do on my workstations, BTW ... but I happen not to 
+like xdm as a login mechanism.
 --
 -------------------------------------------"Never tell me the odds!"--------
 Ray Olszewski					-- Han Solo
