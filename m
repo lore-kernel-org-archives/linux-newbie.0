@@ -1,45 +1,47 @@
-From: "Axel H. Siebenwirth" <axel@hh59.org>
-Subject: Re: Tcsh: Append output to a file
-Date: Wed, 15 May 2002 03:17:04 +0200
+From: G Anna <drguruolai@eth.net>
+Subject: make phone call
+Date: 14 May 2002 21:02:49 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020515011704.GC1047@neon>
-References: <2.2.32.20020515010844.00e0918c@[192.168.1.23]>
+Message-ID: <m33cwubv8e.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <2.2.32.20020515010844.00e0918c@[192.168.1.23]>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi!
+Dear All,
 
-On Tue, 14 May 2002, Ray Olszewski wrote:
+Is it possible to make a phone call from linux?  I have an external
+modem that is connected to the phone call.  I would like to be able to
+dial the local phone numbers (instead of using the phone) and talk.
 
-> At 03:01 AM 5/15/02 +0200, Axel H. Siebenwirth wrote:
-> >Hello!
-> >
-> >For example I use "/usr/local/sbin/dsniff >& dsniff.log &" in a start-up
-> >skript to log the output to a file. But everytime I start my computer a new
-> >file "dsniff.log" is created.
-> >
-> >My question is: How do I append to an existing file?
-> 
-> /usr/local/sbin/dsniff >>& dsniff.log &
-> 
-> The double >> is the "append" instruction.
+I have searched the web (google) using the phrases "telephone call
+from linux", "phone dial for linux", "make telephone call from linux",
+etc.  These lead me to "GnoPhone", and "linphone".  But they don't
+seem to be able to dial another phone.  They seem to need
+GnoPhone/linphone on the other side too.
 
-Okay. First off, thank you!
-I confused myself. Shell chaos. I'm using tcsh as all my login shells. But
-the startup scripts are all bash scripts. So I really asked my self why what
-you told me works on command line but not from the script.
+What I want is linux box (through modem-telephone line) to another
+phone.
 
-Can you please tell me how to the same thing for bash? :)
+Is this possible?  Kindly provide me with information.
 
-Thank you,
-Axel Siebenwirth
+Thank you for your time and energy.
+
+Cheers,
+anna
+
+-- 
+
+(8) After  I  kidnap  the  beautiful  princess,  we  will  be  married
+    immediately  in  a quiet civil ceremony, not a lavish spectacle in
+    three  weeks' time during which the final phase of my plan will be
+    carried out. - Peter Anspach in "The Top 100 Things I'd Do If I
+    Ever Became An Evil Overlord"
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
