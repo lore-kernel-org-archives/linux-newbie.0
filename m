@@ -1,30 +1,34 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: ? wireless 802.11b, D-Link DWL-520
-Date: Sun, 21 Apr 2002 18:00:07 -0400
+From: "Tom Beer" <mailings@analogon.com>
+Subject: Re: USB device installation
+Date: Mon, 22 Apr 2002 10:04:34 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CC33667.A8608CDB@gelm.net>
-References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <02042107041801.00604@unix.pa3gcu> <3CC2F39D.AC66E99C@gelm.net> <02042119580302.00604@unix.pa3gcu>
+Message-ID: <007f01c1e9d4$6bc07c80$0901a8c0@system>
+References: <20020417221621.7E4A052728@psybernet.co.nz> <20020418234908.A06CE5272A@psybernet.co.nz> <00a101c1e7ac$fae6b7a0$0901a8c0@system> <20020421153714.ACAA052721@psybernet.co.nz>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: walter@psybernet.co.nz
+Cc: linux-newbie@vger.kernel.org
 
-http://macdaddy.lists.linux-wlan.com/pipermail/linux-wlan-user/2002-April/005488.html
+Hi Walter,
 
-Perhaps some bad news (for me) came from the list.linux.wlan.org.
-The D-Link DWL-520 may require a PCI 2.2 compatible motherboard.
-:-(
+> It thought the modules i had esp usb-storage did it.  I have been 
+> trawling around for instructions and it seems many people get 
+> things going with just this module.  But hey, I am a newbie and 
+> have no idea.
 
- I see that the Linksys WMP11 is PCI 2.1 compliant, but that may
-mean it requires a PCI 2.1 motherboard.  I doubt that the ole
-cyrix workstation I am trying to use is either!  The workstation
-is a cyrix 80586x120 in a 3C49 motherboard.
+These are regular newbie probs (don't bother, I have similiar ones :-)
+That many people get things done with this module means - nothing.
+Try to find out which module you need, and then use this particular one.
+Picking one module a la carte _won't_ work. This won't work on any
+platform. Try to use a device driver designed for product x running
+product y under M$ or Apple.
 
-:-|
+Greets Tom
 
-Chuck
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
