@@ -1,65 +1,64 @@
-From: Ray Olszewski <ray@comarre.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: /cdrom fails to unmount
-Date: Tue, 22 Jul 2003 08:58:40 -0700
+Date: Tue, 22 Jul 2003 18:06:48 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030722084626.01eeb000@celine>
-References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
+Message-ID: <200307221806.48987.pa3gcu@zeelandnet.nl>
+References: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.cscl
- ub.uwaterloo.ca>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: dzlotnik@uwaterloo.ca, Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>, linux-newbie@vger.kernel.org
 
-At 11:19 AM 7/22/2003 -0400, Dan Zlotnikov wrote:
->In Deb.woody, kernel 2.4.18, I have the following problem:
+On Tuesday 22 July 2003 17:19, Dan Zlotnikov wrote:
+> In Deb.woody, kernel 2.4.18, I have the following problem:
 >
->mount /cdrom
->"sure," the computer says, "I will."
+> mount /cdrom
+> "sure," the computer says, "I will."
 >
->cd /cdrom
+> cd /cdrom
 >
->mplayer -fs whateverthehellI'mwatching
->"Okay," says the computer.
+> mplayer -fs whateverthehellI'mwatching
+> "Okay," says the computer.
 >
->cd
->"No problems," says the beast.
+> cd
+> "No problems," says the beast.
 >
->umount /cdrom
->umount: /cdrom: device is busy
->Or in other words, "*$^! you!"
+> umount /cdrom
+> umount: /cdrom: device is busy
+> Or in other words, "*$^! you!"
+
+
+No it says' sommat or someone started another program while you were in /cdrom
+'fuser' would be a good idea on this one.
+
+fuser /cdrom
+
+may help.
+
 >
->No processes that I could identify suggested themselves as the visible
->culprit. Rebooting works, but killing the x-session doesn't.
+> No processes that I could identify suggested themselves as the visible
+> culprit. Rebooting works, but killing the x-session doesn't.
+
+Let fuser decide that.
+
 >
->Help, anyone?
+> Help, anyone?
+>
+> Dan
 
-Your fanciful responses from the computer are cute but, in practice, 
-distracting and even a bit confusing. In particular, when you report ...
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
->mplayer -fs whateverthehellI'mwatching
->"Okay," says the computer.
-
-... does the "Okay" stand in for the fact that mplayer *begins* playing the 
-file or *finishes* playing the file?
-
-If the first ... if the file is still playing ... then the last message is 
-correct, in that mplayer is using the device. (But I'd be surprised to see 
-this survive killing X.)
-
-If the second ... after finishing playing, does mplayer exit? Or wait for a 
-command? If it waits, it may well retain access to /cdrom until you tell it 
-to play something located elsewhere. (But, again, I'd be surprised to see 
-this survive killing X.)
-
-Bottom line: *something* is using the device, and it is not clear 
-what.  (One wild guess: does the system make it available via NFS?) In any 
-case, try running "fuser /cdrom" to get the PIDs of the process(es) 
-currently accessing the filesystem. Then deal with the accesses however is 
-appropriate to what you find.
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
