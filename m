@@ -1,54 +1,59 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Skype wont't open
-Date: Wed, 02 Mar 2005 15:33:10 +0800
-Message-ID: <20050302073310.E9506207D8@heisspf>
-References: <200503020751.31499.pa3gcu@zeelandnet.nl>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Mail Filtering with Broadband
+Date: Wed, 02 Mar 2005 16:26:07 +0800
+Message-ID: <20050302082607.0FD5620862@heisspf>
 Mime-Version: 1.0
-In-Reply-To: Your message of "Wed, 02 Mar 2005 07:51:31 +0100."
-             <200503020751.31499.pa3gcu@zeelandnet.nl> 
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <12775.1109751966.1@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux <linux-newbie@vger.kernel.org>
 
-Thanks Adam!
+Problem solved. I still used the pid of pppd
+which is obsolete now.
 
-My /etc/ld.so.conf is practically the same:
+Hi,
 
-/usr/local/lib
-/usr/X11R6/lib
-/usr/i486-slackware-linux/lib
-/opt/kde/lib
-/usr/lib/qt/lib
-/usr/local/tmake/lib
-/usr/lib
-/usr/local/ActiveTcl/lib
-/usr/include
-/usr/local/lib/sigc++-1.2
-/lib
+I get my mail with getmail and I am using procmail for mail filtering and it 
+has worked well with my dial-up modem connection. Now with the broadband 
+connection it seems to miss some of the entries in .procmailrc such as:
 
-and ls -al /usr/lib/qt
-/usr/lib/qt -> qt-3.3.3
+:0 wc:${MAILDIR}/$LOCKEXT
+* ^From:
+* $^From:${GETTEXT}
+#| echo $FOO >> ~/Frommail
+| echo "From: ${MATCH}" >> ~/Frommail 
 
-After this installation of qt-3.3.3 I did ldconfig.
 
-I have no other version qt installed.
+:0 wc:${MAILDIR}/$LOCKEXT
+* ^Subject:
+* $^Subject:${GETTEXT}
+| echo "Subject: ${MATCH}" >> ~/Frommail
 
-ls /usr/lib/qt*
-/usr/lib/qt:
-README-QT.TXT  examples    lib      plugins
-bin            extensions  mkspecs  tutorial
-doc            include     pics
+Which then shows me on a small xterminal what mail is coming in,
+and most important my blacklist
 
-/usr/lib/qt-3.3.3:
-README-QT.TXT  examples    lib      plugins
-bin            extensions  mkspecs  tutorial
-doc            include     pics
+LOCKEXT=.lock
+:0 Whic :$BLACKLIST$LOCKEXT
+ | (formail -x received: -x X-Envelope-From: -x Message-id: -x from: -x 
+sender:
+-x reply-to: -x  return-path:| fgrep --quiet --ignore-case --file=$BLACKLIST)
+#
+:0 Wa 
+/dev/null
 
-Regards
+The filtering into various mail boxes of the mail program exmh is still 
+working properly. I have not touched .procmailrc since changing to broadband.
+
+Could is be that the mail comes in too fast now or what else could be the 
+reason?
+
+Thanks & regards
 -- 
 Peter
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
