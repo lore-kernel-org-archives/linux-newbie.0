@@ -1,18 +1,31 @@
-From: "brpoi" <brpoi2002@yahoo.co.uk>
-Subject: how to make a gprs connection.....
-Date: Thu, 26 Feb 2004 03:16:36 +0700
+From: Peter <peter@skyinet.net>
+Subject: Gutenbrowser Won't Open
+Date: Thu, 26 Feb 2004 16:17:10 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00d201c3fbdc$5daa13b0$1e685e3d@nc21>
+Message-ID: <20040226081710.493DD1C669@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-dear all, i'd like to make a gprs connection through my
-cell-phone..(nokia3100 n 9210i) in linux suse 90 pro.. anyone can help?
+Hi,
 
+In Slackware 9.1 the program gutenbrowser which I have used for years in 
+RedHat will not open.
+
+I get the error message:
+
+:$ gutenbrowser
+gutenbrowser: relocation error: gutenbrowser: undefined symbol: 
+qInitNetworkProtocols__Fv
+
+How could that be corrected?
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
