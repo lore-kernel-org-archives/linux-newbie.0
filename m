@@ -1,35 +1,41 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: core file
-Date: Thu, 11 Jul 2002 14:56:00 +0300
+From: "Korosi Akos" <korosiakos@mailbox.hu>
+Subject: Re[2]: core file
+Date: Thu, 11 Jul 2002 17:01:14 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020711145600.A1155@neutrino.particles.org>
-References: <20020711101522.10749.qmail@web2.mailbox.hu>
+Message-ID: <20020711150114.24478.qmail@web2.mailbox.hu>
+References: <20020711145600.A1155@neutrino.particles.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020711101522.10749.qmail@web2.mailbox.hu>; from korosiakos@mailbox.hu on Thu, Jul 11, 2002 at 12:15:22PM +0200
+In-Reply-To: <20020711145600.A1155@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Korosi Akos <korosiakos@mailbox.hu>
+To: Elias Athanasopoulos <eathan@otenet.gr>
 Cc: Newbie <linux-newbie@vger.kernel.org>
 
-On Thu, Jul 11, 2002 at 12:15:22PM +0200, Korosi Akos wrote:
-> I am just curious in the next thing:
-> What could one start with a core file, which was created
-> when a program crashed.
+Elias Athanasopoulos <eathan@otenet.gr> wrote
 
-% gdb ./foo ./core
-...
-% (gdb) where
+> > I am just curious in the next thing:
+> > What could one start with a core file, which was created
+> > when a program crashed.
+> 
+> % gdb ./foo ./core
+> ...
+> % (gdb) where
+> 
+> Assuming foo is the crashed app, the above will show you where it
+> crashed. A stack backtrace (bt) is also useful.
 
-Assuming foo is the crashed app, the above will show you where it
-crashed. A stack backtrace (bt) is also useful.
+Thanks a lot!
+I will try it out!
 
-Elias
+BR,
+Akos
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+
+--------------------------------------------------
+http://www.mailbox.hu - Mert levelezni kell...
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
