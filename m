@@ -1,25 +1,35 @@
 From: Jude DaShiell <jdashiel@shellworld.net>
-Subject: RE: Tar Backups
-Date: Mon, 30 Sep 2002 21:01:53 -0400 (EDT)
+Subject: Re: breaking up a zip file
+Date: Mon, 30 Sep 2002 21:33:07 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.BSF.4.44.0209302059580.20863-100000@server1.shellworld.net>
-References: <003901c268c0$ef7a3b90$64fea8c0@pkrausxp>
+Message-ID: <Pine.BSF.4.44.0209302132340.20863-100000@server1.shellworld.net>
+References: <Pine.BSF.4.44.0209301922230.20863-100000@server1.shellworld.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <003901c268c0$ef7a3b90$64fea8c0@pkrausxp>
+In-Reply-To: <Pine.BSF.4.44.0209301922230.20863-100000@server1.shellworld.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
+To: Paul Furness <paul.furness@vil.ite.mee.com>
+Cc: linux-newbie@vger.kernel.org
 
-What you need in your listing is the tape offset address for the beginning
-of each file saved in that tar listing.  I wonder if inodes would serve
-for this purpose.  Actually, linux-tape list on majordomo@vger.kernel.org
-might have the answer for you.
+let's try zipsplit.  It appears it's nearly time for a new keyboard.
 
 
 
+On Mon, 30 Sep 2002, Jude DaShiell wrote:
+
+> That would be ipsplit.
+>
+>
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
