@@ -1,65 +1,64 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: distribution choice
-Date: Fri, 28 Feb 2003 07:38:00 -0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: 2.5.59: Kernel: No module found in object
+Date: Fri, 28 Feb 2003 16:49:48 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030228071326.01f5d788@celine>
-References: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
- <20030228012551.81191.qmail@web11406.mail.yahoo.com>
+Message-ID: <03022816494803.00903@unix.pa3gcu>
+References: <720FB032F37C0D45A11085D881B03368A2B351@MBXSRV24.stu.nus.edu.sg>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302280830.44084.sotl155360@earthlink.net>
+In-Reply-To: <720FB032F37C0D45A11085D881B03368A2B351@MBXSRV24.stu.nus.edu.sg>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Eng Se-Hsieng <g0202512@nus.edu.sg>, linux-kernel@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-I'll venture to disagree with one detail of Frank's review.
+On Friday 28 February 2003 07:44, Eng Se-Hsieng wrote:
+> Dear all,
+>
+> I have to get the Nokia D211 working in the 2.5.59 kernel. I tweaked the
+> driver files (which are meant for 2.4.x kernels) and it compiles and
+> installs fine but when I insert the PCMCIA device, I get:
 
-At 08:30 AM 2/28/2003 -0500, Frank Roberts wrote:
-[...]
->It is recommended that one acquire the commercial box sets for the commercial
->distributions or a commercial generated CD set for Debian. For Debian try a
->company like Cheap Bites.
+I saw at least 4 decent answers to your origanal question on google.com
+thats the URL i told you to look in the last time you wrote here about 2.5 
+kernels.
+Using development kernels is called "Living on the edge", things work in one 
+kernel are are quite possably broken on another.
 
-While I cannot comment on the relative merits of the commercial box sets of 
-Red Hat, Mandrake, and SuSE, I have a lot of experience with Debian 
-installs, and I'm no fan of using its CD sets in normal installation 
-settings (where "normal" merans that a reasonably fast and reliable 
-Internet connection is available). One of Debian's relative strengths among 
-distros is its on-line installer system, which assures that the latest 
-versions of packages in a distro are loaded, not the ones that happened to 
-be included when CheapBytes (not "Cheap Bites") burned its master CDs or DVD.
+AFAIK no one can help you here on this list, we are NOT developers.
+If you really need the nokia stuff and cant do as other seem to have done, 
+then go back to kernel 2.4.xx.
 
-For Woody (Debian Stable, the one also called Debian 3.0, currently at 
-3.0r1, December 2002), this mostly means getting the security updates; the 
-price of using a Debian Stable distro is that you do not get frequent 
-updates to packages for non-security reasons.
+> cardmgr[1302]: get dev info on socket 0 failed: Resource temporarily
+> unavailable.
 
-For Sid (Debian Unstable), package updates are frequent (there are new 
-versions almost every day), and as far as I know, there is no CD option 
-anyway (though I admit I haven't looked for Debian CDs for a long time, I 
-just checked CheapBytes, and they only list 3.0 and the obsolete 2.2/Potato).
+AFAIK all module code has changed in 2.5 kernels, so what you are trying to 
+do is certainly not going to work even with a lot of tweeking.
 
-After a bit of practice, the "apt" tools used for on-line installs and 
-updates ... at least in my expeirnce ... become fairly easy to use, whereas 
-the "dselect" system used for managing CD files has been overwhelmed by the 
-increase in size of Debian and is very cumbersome to wotk with. This is 
-especially true now that Woody has gotten big enough that it ships on 8 CDs 
-(from CheapBytes, for example) or a DVD (for those of use with DVD drives 
-on our target systems) with CD supplements.
+>
+> I would really appreciate any help on this.
 
-Regarding laptop installs -- I haven't done one in years, but my memory is 
-that they are a nightmare for *any* distro, not just Debian. Laptops give 
-"non-standard component" a whole new meaning. What distro do you *like* for 
-user-level laptop installs (as contrasted to buying a laptop with Linux 
-pre-installed)?
+Ok then write a mail to;
+linux-kernel@vger.kernel.org
+Ask your question there, if one still can do that that is, i have a small 
+idea that you have to be subscribed to that list to be able to mail to it.
+So you may need to subscribe first, but be warned, that list has a VERY high 
+volume and answers you get may NOT suit your taste.
 
-Oh, and one stylistic comment: despite his use of phrasings like "It is/is 
-not recommended", everyone should read Frank's comments as his personal 
-opinions, not a summary of a general consensus. I doubt any general 
-consensus exists on these matters.
+>
+> Thank you.
+>
+> Regards,
+> Se-Hsieng
+> (linux-newbie)
 
 
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
