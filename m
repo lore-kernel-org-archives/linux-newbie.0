@@ -1,35 +1,52 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Skype wont't open
-Date: Wed, 02 Mar 2005 10:07:50 +0800
-Message-ID: <20050302020750.EF01617D14@heisspf>
-References: <200503010758.23060.pa3gcu@zeelandnet.nl>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Mail Filtering with Broadband
+Date: Wed, 02 Mar 2005 10:25:52 +0800
+Message-ID: <20050302022552.2EDFE17D14@heisspf>
 Mime-Version: 1.0
-In-Reply-To: Your message of "Tue, 01 Mar 2005 07:58:22 +0100."
-             <200503010758.23060.pa3gcu@zeelandnet.nl> 
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <937.1109730352.1@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: linux <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-Is it possible that the kernel has something to do that skype will not open in 
-slackware10 instead aborts with:
+Hi,
 
-skype: relocation error: /usr/lib/qt/lib/libqt-mt.so.3: undefined symbol: 
-XkbSetPerClientControls
+I get my mail with getmail and I am using procmail for mail filtering and it 
+has worked well with my dial-up modem connection. Now with the broadband 
+connection it seems to miss some of the entries in .procmailrc such as:
 
-My kernel in slackware10 is 2.4.26 whereas in Fedora2 where skype works 
-flawlessly the kernel is 2.6....
+:0 wc:${MAILDIR}/$LOCKEXT
+* ^From:
+* $^From:${GETTEXT}
+#| echo $FOO >> ~/Frommail
+| echo "From: ${MATCH}" >> ~/Frommail 
 
-What is that anyhow XkbSetPerClientControls ?
 
-Besides having tried the static and dynamic version I tried as well the rpm 
-version which I have in Fedora, made a tgz file with rpm2tgz and trying to run 
-it I get the identical error message.
+:0 wc:${MAILDIR}/$LOCKEXT
+* ^Subject:
+* $^Subject:${GETTEXT}
+| echo "Subject: ${MATCH}" >> ~/Frommail
 
-Regards
+Which then shows me on a small xterminal what mail is coming in,
+and most important my blacklist
 
+LOCKEXT=.lock
+:0 Whic :$BLACKLIST$LOCKEXT
+ | (formail -x received: -x X-Envelope-From: -x Message-id: -x from: -x 
+sender:
+-x reply-to: -x  return-path:| fgrep --quiet --ignore-case --file=$BLACKLIST)
+#
+:0 Wa 
+/dev/null
+
+The filtering into various mail boxes of the mail program exmh is still 
+working properly. I have not touched .procmailrc since changing to broadband.
+
+Could is be that the mail comes in too fast now or what else could be the 
+reason?
+
+Thanks & regards
 -- 
 Peter
 
