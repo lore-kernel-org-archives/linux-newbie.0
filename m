@@ -1,60 +1,48 @@
-From: "John T. Williams" <jtwilliams@vt.edu>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: About PID...???!!!
-Date: Wed, 10 Sep 2003 11:21:19 -0400
+Date: Wed, 10 Sep 2003 08:58:15 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001601c377af$2fedc680$ccc252c6@hume>
-References: <20030910142344.8594.qmail@web20008.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20030910084359.01f35750@celine>
+References: <20030910142344.8594.qmail@web20008.mail.yahoo.com> <001601c377af$2fedc680$ccc252c6@hume>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001601c377af$2fedc680$ccc252c6@hume>
+References: <20030910142344.8594.qmail@web20008.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-They are assigned linearly, however once a pid is used, it is never reused
-until the machine reboots.
+At 11:21 AM 9/10/2003 -0400, John T. Williams wrote:
+>They are assigned linearly, however once a pid is used, it is never reused
+>until the machine reboots.
 
-A pid of 413 means that when that process was fork()'ed there had been 412
-other processes already created. But remember every time you type ls, you've
-run a process.
+This is not quite correct. The pid assignment process wraps, I *think* at 
+32767 (or maybe 65535). Next time around, the kernel skips over any pids 
+that are still in use from the last round of assignment.
 
-413 isn't a large pid at all. My linux box which I very rarely reboot is at
-PIDs that start at 20000
-
-I'm surprised that any program you start after the boot process is as low as
-412.
-
-
-
------ Original Message -----
-From: "Silambu Chelvan" <silambu_mdu@yahoo.com>
-To: <linux-newbie@vger.kernel.org>
-Sent: Wednesday, September 10, 2003 10:23 AM
-Subject: About PID...???!!!
-
-
-> Hi All,
+>A pid of 413 means that when that process was fork()'ed there had been 412
+>other processes already created. But remember every time you type ls, you've
+>run a process.
 >
-> I have been using linux for quite some time. I wonder
-> how the PID is assigned by the kernel. Is there
-> anything like range of PID for each user? In my
-> machine I could see PIDs of 256, 389, 413 etc. Does
-> this mean that there are almost 413 processes running?
+>413 isn't a large pid at all. My linux box which I very rarely reboot is at
+>PIDs that start at 20000
 >
-> Please explain.....
->
-> with regards,
-> M. SilambuChelvan
->
-> __________________________________
-> Do you Yahoo!?
-> Yahoo! SiteBuilder - Free, easy-to-use web site design software
-> http://sitebuilder.yahoo.com
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+>I'm surprised that any program you start after the boot process is as low as
+>412.
+
+Whether that is surprising or not depends on what he uses the host for and, 
+naturally, on how recently it was rebooted. While my workstation is way up 
+there (30180), my Linux-based router, which does not start new processes 
+very much, is only at pid 828.
+
+And, of course, there are persistent processes on any Linux host that go 
+back to the boot/init process ... starting with init itself (always pid 1) 
+and including long-lived daemons such as syslogd, klogd, and portmap; 
+pseudo processes that are actually run in the kernel (mostly [k*] process 
+names); and getty proceses listening on VTs that never get logins.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
