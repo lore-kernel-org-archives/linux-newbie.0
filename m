@@ -1,8 +1,8 @@
 From: "a a" <xlsd@hotmail.com>
 Subject: Re: auto login
-Date: Mon, 16 Sep 2002 08:34:45 +0000
+Date: Mon, 16 Sep 2002 08:33:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F184AG7yWsktrqXPmDm00006d68@hotmail.com>
+Message-ID: <F9923qfuTGC7E9EzsiG000059ad@hotmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -56,7 +56,7 @@ thanks for the replies!
 
 
 _________________________________________________________________
-Chat with friends online, try MSN Messenger: http://messenger.msn.com
+Send and receive Hotmail on your mobile device: http://mobile.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
