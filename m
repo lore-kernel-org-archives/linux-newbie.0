@@ -1,69 +1,77 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: Configuring RH8.0 window manager
-Date: Sun, 24 Nov 2002 09:37:32 -0500
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: lilo questions.......
+Date: Sun, 24 Nov 2002 11:23:14 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211241437.gAOEbWL26578@hartford-hwp.com>
-References: <200211232133.gANLXFP02853@hartford-hwp.com> <200211250016.08885.genright@paradise.net.nz>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200211250016.08885.genright@paradise.net.nz> (message from glenn
-	on Mon, 25 Nov 2002 00:16:08 +1300)
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <3DE0FCF2.7404875@gelm.net>
+References: <3B60FCE9.0E186F1F.0006BEFC@netscape.net>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: genright@paradise.net.nz
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: neil t <wa4chq@netscape.net>
 Cc: linux-newbie@vger.kernel.org
 
-> > 1. I can delete any icon from the desktop except for two. How do I
-> > get rid of trash and home?
+
+
+neil t wrote:
 > 
-> Are you using KDE or Gnome? I think these icons may be somewhat
-> integral to the Window Manager like they are in windows. Other
-> Window managers I have avalible in Mandrake include sawfish and
-> blackbox. These are light options designed for speed rather than
-> integrated platforms but they may be more suitable for you.
-
-I'm running gnome. I need a developed window manager because of my
-question 3 re control of stacking. I can't dicker with the window
-manager code because it's compiled.
-
-I'm not using RH8.0 presently, but a copy of RH 7.3. I can set up
-sawfish not to raise windows when they are focused, but that does not
-seem to have the desired effect (if a window looses focus, it
-disappears to the bottom of the stack). Enlightenment, however, does
-have the behavior I want. But RH 8.0 does not come with
-Enlightenment. I suppose I could install Enlightenment on it (not
-sure).  I'm about to see if wmaker has what I need (For some reason
-I've got it on my system, although Gnome Control Center doesn't know
-it)
-
-> <snip unknown>
+> greetings and again tnx for the help---
 > 
-> >
-> > 3. Window stacking is tied to focus, so that the window on top of
-> > the stack is the focused window. I want to revert to my usual
-> > preference which is for stacking to be in order of window
-> > creation, so that what's on top is the newest window.
+> >I copied an installation guide for Debian Woody 3.0, but it seems to be
+> >geared to setting up a server.  I just want regular install.  I did use it
+> >as a guide when I first installed Debian, and it did seem to work, but I
+> >did have to tweak it a bit.  (any suggestions for a better installation
+> >guide?)
+
+Are you looking for a better Debian Woody 3.0 regular install
+than the one you copied?  Which one did you copy?
+
 > 
-> If you are using KDE then there should be a 'Control Center' in the
-> main programs menu. Otherwise you should look up the docs for a
-> configuartion utility which most of the desktops should have
-> provided with the install.
+> >When I installed it, I made a boot floppy and it worked ok, but was very
+> >slow.
+> 
+> >>>>>"Slow" and "fast" are in the eye of the beholder, so your telling me >>>>>this is "very slow" in your opinion doesn't let me know if you are describing the normal speed of floppy-based boots or a system with a problem.
+> 
+> I was describing booting from the floppy disk....
+> 
+> >>Getting the "lingo" down is less important then being careful about your
+> descriptions. For example, after noting at the beginning of this message
+> that you'd previously made a "typo", you continue to misname "lilo.conf"
+> "lilo.config" (unless Mandrake really does use a different name for this
+> file ... I know Debian still calls it lilo.conf). When asking for
+> configuration help, accurate reporting of the details is essential.
+> 
+> whoops!  yes it is "lilo.conf" !
 
-In RH 7.3, I had little difficulty changing and configuring window
-managers. RedHat 8.0 is not so straightforward. Things get hidden. I
-can run xinit on a winow manager to see how it works, and then figure
-out where to call it by default (xinitrc, xserverrc?)
+ But you never mentioned running /sbin/lilo  !!
 
-> > 4. I want to configure xterm, but ~/.Xdefaults no longer
-> > understands statements such as
-> >
-> > 	      XTerm*Font: 7x13bold xterm -geometry 20x5-0-0 &
-> >
-> >    Where now does one now define things like fn, bg, fg, etc.?
+> Ok, so I guess if I install Debian 3.0 or even Red Hat again, it will replace my existing bootloader but I will still have the option to make Mandrake the default.  This is determined when I edit /etc/lilo.conf.
 
-Haines Brown
+ ...and run /sbin/lilo.
 
+Debian/Red Hat/Mandrake are not boot loaders, per se.
+Perhaps those three distributions use the same boot loader. (?)
+
+You do not need to do an 'install' to change|alter a boot loader.
+
+The issue is not from which distribution a boot loader is re-written,
+it is what bootable partitions can be selected from the boot loader
+when the system is next booted.  (?)
+
+> Is there a standard format for adding other linux distro's to /etc/lilo.conf?  One of replies to my question explains it this way:
+> 
+> "It does not really make any differance which system installed lilo, the
+> secret is mounting all your disks/partitions where "lilo" can
+  reach them all in one go, you can define any partition "in use
+  or not" as long as it is mounted.
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+<snipped to end>
+So,
+ if all the partitions you want to choose to boot from are mounted,
+ run /sbin/lilo.
+
+HTH, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
