@@ -1,113 +1,50 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: RE: ssh setup: user 'locked out' daily
-Date: Thu, 19 Aug 2004 14:54:19 -0400
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Slack9.0 and Loadlin???
+Date: Thu, 19 Aug 2004 17:26:54 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <GNEPLLCIIBHICCOGIAKPEEEADDAA.eatley@wowcorp.com>
-References: <20040819171227.21e76e1c.bilbo@waitrose.com>
-Reply-To: <eatley@wowcorp.com>
+Message-ID: <20040819212654.GA809@lnx2.w8mch.ampr.org>
+References: <20040819184547.GA481@lnx2.w8mch.ampr.org> <20040820073610.595d8003.qwms-avib@dea.spamcon.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040819171227.21e76e1c.bilbo@waitrose.com>
+Content-Disposition: inline
+In-Reply-To: <20040820073610.595d8003.qwms-avib@dea.spamcon.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: John Kelly <bilbo@waitrose.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: qwms-avib@dea.spamcon.org
+Cc: linux-newbie@vger.kernel.org
 
+On 08-20, qwms-avib@dea.spamcon.org wrote:
+> Hal MacArgle wrote:
+> >
+> > loadlin e:\kernels\bare.i\bzimage initrd=e:\isolinux\initrd.img 
+> 
+> Normally I would expect to see an additional parameter:
+>    root=/dev/ram
 
-Thanks for the reply!
-
-Ok, I did some looking, and chage pulls up the following info (with user
-'emon' being one of the problematic ones,  and user 'eve' being an old
-account):
-[root@wow-rtr etc]# chage -l emon
-Minimum:        -1
-Maximum:        99999
-Warning:        -1
-Inactive:       -1
-Last Change:            Aug 19, 2004
-Password Expires:       Never
-Password Inactive:      Never
-Account Expires:        Never
-[root@wow-rtr etc]# chage -l eve
-Minimum:        0
-Maximum:        0
-Warning:        7
-Inactive:       0
-Last Change:            Feb 03, 2004
-Password Expires:       Never
-Password Inactive:      Never
-Account Expires:        Never
-[root@wow-rtr etc]#
-
-The odd thing is that previous to my change (using a kewl graphical tool) of
-removing the password expiration, user 'emon' looked just the same as user
-'eve' which was set up quite some time ago.
-
-I set up user 'emon' the same was as 2 previous users, and they have not
-expired!
-
-- Eve
+Greetings Steven: I tried that plus many others in the docs, both old
+and new.. <grin>
 
 
 
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of John Kelly
-Sent: Thursday, August 19, 2004 12:12 PM
-To: linux-newbie@vger.kernel.org
-Subject: Re: ssh setup: user 'locked out' daily
+> Also I believe loadlin expects a gzipped initrd.
 
+	I never got that far.. If I tried without the rd I got
+the same reply..
 
-Hi,
-On Thu, 19 Aug 2004 11:13:22 -0400
-"Eve Atley" <eatley@wowcorp.com> wrote:
+loadlin e:/kernels/bare.i/bzimage - still NG..
 
->
-> We have SSH running on our Linux Redhat 9 server. I set up new users
-> to dump them upon initial login to a common directory using the
-> following command:	useradd -M -d /home/shared username -p password
-> 	passwd username (for some reason, -p password doesn't work?)
->
-> On a daily basis, they are locked out. /var/log/secure indicates the
-> following:
-> 	fatal: monitor_read: unsupported request: 24
-> 	PAM rejected by account configuration[13]: User account has
-> 	expired
->
-> /var/log indicates the following:
-> Aug 19 10:38:15 wow-rtr sshd(pam_unix)[19144]: account emon has
-> expired(failed to change password)
->
-> They log in with winscp3 (graphical client) using sftp.
->
+copied the bzimage to c:/ - same directory as loadlin invoking:
 
-I haven't looked at RedHat since 7.3 but ...
+loadlin bzimage - still got the "loading............." stop, "Not an
+image file."
 
-The problem here seems simple enough - the user account has expired.
-Have a look at the man page for passwd and in particular the -x -n -w
--i options. There is also a program called chage which changes the
-account ageing details. Account expiry information is held in
-/etc/shadow - the manpage for shadow explains how it works.
+Mind boggling to me.. Seems like loadlin didn't like that bzimage,
+but I tried others - same problem..
 
-I believe that there is a file in /etc/system/ or /etc/sysconfig/ (I
-am not sure of the name) on RedHat which sets the default
-password/account ageing policy.  You may have to edit this file so
-that newly created accounts don't expire. There may even be a kewl
-graphical tool to do this - I haven't looked at RedHat recently and I
-don't use kewl graphically tools anyway :-).
-
-Hope this helps.
-
-regards,
-
-John Kelly
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
