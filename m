@@ -1,80 +1,29 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: How to mount CD-ROM?
-Date: Thu, 28 Nov 2002 01:01:51 +1300
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: smtp_auth using home server
+Date: Thu, 28 Nov 2002 10:21:36 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021128071039.614F410924D@smtp.orcon.net.nz>
-References: <20021125.215101.134684296.0.lawson_whitney@juno.com>
-Reply-To: cr@orcon.net.nz
+Message-ID: <20021128092136.GA9631@teamfinders.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021125.215101.134684296.0.lawson_whitney@juno.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: lawson_whitney@juno.com
-Cc: ray@comarre.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+Cc: tschulze@teamfinders.org
 
-There seem to be four copies of this message in my inbox.  Odd.
+Hello,
 
-On Saturday 23 November 2002 14:18, lawson_whitney@juno.com wrote:
-> On Mon, 18 Nov 2002, cr wrote:
+Does anyone have any advice they can offer on setting up smtp_auth on my SuSE 8.0 system at home?  The problem I am trying to solve is this.  My SuSE 8.0 system here at home (dragoon.nuthole.de/localhost) is set up to send my emails out as tschulze@temfinders.org.  Teamfinders.org is a domain that I have that is hosted by a hosting service, and that service is not my ISP.  My ISP is 1&1 here in Germany, and I have a separate domain there that they offered as part of my DSL package.  Several times now I have gotten email deliveries rejected because the dynamically assigned IP I receive from 1&1 is blackholed.  There appears to possibly be an issue with the machines at those addresses being open relays used for spamming.  I have checked my mail logs, and as far as I can tell, my machine is rejecting attempts to use it as an open relay.  Several of the rejection messages have suggested the possibility that the emails would have been accepted if I had been using smtp_auth.
 
-> > Doing /sbin/modprobe sr_mod brings a string of 'unresolved symbol'
-> > messages and  "insmod sr_mod failed", and  lsmod indicates no change.
-> >
-> > Trying to run X-CD-Roast gives an error message 'Failed to scan SCSI-bus'
-> > *but* lsmod indicates it's loaded a couple of modules:
-> >
-> > Module                  Size  Used by
-> > sg                     27488   0  (autoclean) (unused)
-> > scsi_mod               92208   1  (autoclean) [sg]
-> > esssolo1               25376   0  (autoclean)
-> > ..
-> > ..
->
-> Hmmm, has root never run /sbin/depmod for this kernel to set up the
-> modules.dep file?  Try having it do so and see if modprobe works better.
+I have read through SuSE's configuration file at /etc/sysconfig/sendmail, and shortly I will start working my way through /usr/share/doc/packages/sendmail/README and /usr/share/doc/packages/sendmail/op.txt.bz2.  I have also printed out several articles from www.sendmail.org/~ca/ and have begun to read through those.  (That's going to take several re-reads though before I've grokked all that.)  So, I have no shortage of information on the topic.  What I was hoping for was that if anyone on the list has some helpful hints or tips from having done something like this himself, particularly setting up a home server to climb out of the black hole, then that might help me get a step ahead.
 
-Apparently, root never has done that (root being me, with a plentiful supply 
-of ignorance :)     I'm surprised it wasn't covered in the RedHat 
-installation procedure.   
+Cheers,
+Sean
 
-So root (me) ran it, and then tried 
-
-modprobe scsi_mod
-mount /mnt/cdrom
-
-and it worked!
-
-> > Then (but not before), /sbin/insmod ide-scsi works, after which
-> > X-CD-Roast works.
-> >
-> > However, trying to mount /mnt/cdrom still brings up a 'wrong fs type'
-> > message.
->
-> Well, what is in the /etc/fstab line that mentions /mnt/cdrom?
->
-
-Just for the record - 
-
-/dev/cdrom              /mnt/cdrom              iso9660 noauto,owner,kudzu,ro 
-0 0
-
-However, now X-CD-roast has stopped working.   Even if I go and do a 
-/sbin/insmod ide-scsi,  which worked previously, it now still tells me 
-"Failed to scan the SCSI-bus"
-
-Am I asking too much to want to read CD-ROM's *and* use X-CD-Roast on the 
-same drive?   (Not simultaneously!)
-
-I'll check the CD-writing HOWTO as X-CD-Roast's error message suggests and 
-see if it gives any enlightenment.   I suspect I need to carefully figure out 
-just what I've got loaded.
-
-Regards
-
-Chris
-
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
