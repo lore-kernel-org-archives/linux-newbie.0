@@ -1,130 +1,58 @@
-From: <deepesh@india.tejasnetworks.com>
-Subject: Re: Terminal problems
-Date: Tue, 20 May 2003 12:27:50 +0530 (IST)
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: Text Reformatting
+Date: Tue, 20 May 2003 02:59:28 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0305201209440.7247-100000@deepesh.india.tejasnetworks.com>
-References: <BKEGKPICNAKILKJKMHCAAECBDBAA.Riley@Williams.Name>
+Message-ID: <3EC9FC80.7070407@bcgreen.com>
+References: <20030520024710.972F9103B1@pfheiss>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BKEGKPICNAKILKJKMHCAAECBDBAA.Riley@Williams.Name>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Riley Williams <Riley@Williams.Name>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030520024710.972F9103B1@pfheiss>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
-
-
-
-hi,
-
-
- i have two cards. one a good one and the other one, faulty. 
-
- the good card works well with both the terminal settings, ANSI and VT102.
-but the faulty one works only in ANSI. i assume that the switching to the
-extended character set doesn't happen in ANSI, since there is no provision
-of changing, may be that is how it works. But in case of VT102, there is a
-change from initial charater set to the extended one once the card sends
-some control charaters.
-
- what needs to be found out is, under what situation does a card send
-these "weird charaters", some problem with the clock or something in the
-faulty card. and how does a terminal distinguish between a control
-charater and a normal character. the UART of the host computer 
-will only see characters rather bits. that way if some how a normal
-charater is changed to a control charater (one bit pattern changed to
-another bit pattern, due to some problem with the clock), might be causing
-the whole problem.  
-
- is there anything like the number of stop bits, parity bits etc are
-getting altered. i am really confused about the whole stuff.
-
-
- i have done stuff like:
-
- stty -F /dev/ttyS0 -a 
- and found the serial port settings. there is no change between the
-initial settings and the one after i connect the faulty card. this means
-that only the terminal settings are altered. 
-
- please help. what i need is, what are the cases in which one bit pattern
-can change to another bit pattern, one reason i know is that the clock is
-not proper. in that case there should be problem with both the terminals.
-
-
-deepesh
-
-
-
-
-
-
-
-
-
-On Tue, 20 May 2003, Riley Williams wrote:
-
-> Hi Deepesh.
+Peter wrote:
+> Thanks Stephen,
 > 
->  >>> Please let me know the basic differences between the
->  >>> VT102 and the ANSI terminals.
+> sed 's/^[ \t]+//' file does not work, it changes nothing.
 > 
->  >> ANSI was based on the VT100 (predecessor to the VT102).
->  >> The VT102 has a couple of extensions not in ANSI.
->  >> Nothing really show-stopper for most people. ANSI is,
->  >> however, something of a least-common denominator. Just
->  >> about anything that supports vt102 (or vt200) protocols
->  >> should also work if you say that it's ANSI.
 > 
->  > There is a strange problem that I am facing, when I am
->  > connecting the diag port of my card to the minicom ttyS0
->  > of my host machine, and the terminal settings are ANSI,
->  > I do not have any problem. But when the terminal settings
->  > are VT102, I get strange characters on the screen. That
->  > is the reason I wanted to know the difference between the
->  > two.
->  >
->  > I think that the card is somehow sending some control
->  > characters which affects the terminal settings in VT102,
->  > but the ANSI doesn't support those extra features because
->  > of which there is no problem.
->  >
->  > Please give me some information how the control character
->  > related stuff works on terminals. This might help me
->  > solve my problem.
+> samuel@bcgreen.com said:
 > 
-> Part of the ANSI protocol, and thus also of the VT100 and
-> VT102 protocols, is the ability to switch between the
-> standard and alternative character sets. However, by
-> default, that alternative character set is undefined.
+>>Note that when you do the " tr [options] > somefile | fmt [options]
+>>somefile" , you're losing any advantage of using a pipe. 
 > 
-> My understanding is that the definition of ANSI used in Linux
-> disables this ability, but it is still implemented in most
-> definitions of VT100 and VT102.
 > 
-> To make use of this facility, you need to actually define
-> the alternative character set to use, otherwise you get a
-> set of weird characters defined by the current contents of
-> a random area of system memory - your "weird and wonderful"
-> characters sound just like that.
+> Well taken tip!
 > 
-> Best wishes from Riley.
-> ---
->  * Nothing as pretty as a smile, nothing as ugly as a frown.
-> 
-> ---
-> Outgoing mail is certified Virus Free.
-> Checked by AVG anti-virus system (http://www.grisoft.com).
-> Version: 6.0.481 / Virus Database: 277 - Release Date: 13-May-2003
-> 
+> Regards
+
+Grr... I forgot the backslash before the '+'   That should be:
+
+sed 's/^[ \t]\+//' file
+
+(you could also do
+	sed 's/^[ \t]*//' file
+
+
+The '+' construct is (technically) a bit more efficient -- it won't
+do a  null replacement for an unindented line.  It is, however, an
+extended pattern and I sometimes worry about it's portability to
+older (non-gnu) versions of sed. Ha! but never mind! Even that \t
+turns out not to be portable to BSD. you need to have the literal
+'tab' character.  It turns out that the most portable form is:
+
+sed 's/^[ 	]*//' file
+(with a space and a tabe between the sqquare brackets).  You might
+need to do a ctrl-v o get bash to accept the tab caracter.
 
 -- 
-
-D.Deepesh
-R&D Engineer,
-Tejas Networks
-
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+Powerful committed communication, reaching through fear, uncertainty and
+doubt to touch the jewel within each person and bring it to life.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
