@@ -1,23 +1,28 @@
-From: Natarajan K <natarajan_k@hotpop.com>
-Subject: How to post to Usenet groups
-Date: Sun, 11 Aug 2002 21:32:15 -0400
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: MySQL
+Date: Sun, 11 Aug 2002 20:03:01 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208112132.15668.natarajan_k@hotpop.com>
-Reply-To: natarajan_k@hotpop.com
+Message-ID: <Pine.LNX.4.21.0208112000380.8397-100000@Consulate.UFP.CX>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux Newbies <linux-newbie@vger.kernel.org>
 
-HI,
-	I am using Knode as my news client. I am not able to post to usenet groups 
-like comp.arch etc. I get a 440 error. I use newscache0.freenet.de as my 
-server. How do I post? Thanks for the help. It could be off topic but I am 
-helpless.
--- 
-Natarajan
+Hi there.
+
+Is there anybody here who knows how to configure MySQL for use both with
+a webpage and with applications running on computers elsewhere on the
+Internet?
+
+If so, would you mind giving me a one-on-one session to configure it
+here, and also to set up a web page to look up entries in it and display
+the results?
+
+Best wishes from Riley.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
