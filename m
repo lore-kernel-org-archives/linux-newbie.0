@@ -1,91 +1,58 @@
-From: Nilesh Sahita <nksahita@softhome.net>
-Subject: Re: How to make Apache webserver accessible from outside?
-Date: 17 Jun 2003 19:18:17 +0800
+From: cr <cr@orcon.net.nz>
+Subject: Re: disabling X display Manager
+Date: Tue, 17 Jun 2003 23:42:21 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1055848696.2372.1.camel@localhost.localdomain>
-References: <5.1.0.14.1.20030616212334.02047b40@celine>
-	 <courier.3EEEA9DB.00000B3D@softhome.net>
-	 <200306170817.05949.pa3gcu@zeelandnet.nl>
-	 <courier.3EEEBB83.00000A09@softhome.net>
+Message-ID: <200306171128.h5HBSYiZ005546@dbmail-mx2.orcon.co.nz>
+References: <20030611.160313.-280611.0.matthewstapleton@juno.com> <5.1.0.14.1.20030611133014.01f97628@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <courier.3EEEBB83.00000A09@softhome.net>
+In-Reply-To: <5.1.0.14.1.20030611133014.01f97628@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-All,
+On Thursday 12 June 2003 08:32, Ray Olszewski wrote:
 
-The problem is resolved.  It was due to RH9 security level setting - the
-incoming HTTP request was not enabled.  Once I set it ON - my webserver
-was accessible from outside network.
+(snip for bandwidth) 
 
-Thanks!
+> >2. /etc/inittab will always start *some* init script (this is as close to
+> >autoexec.bat as you will get with Linux), and that script in turn
+> >customarily runs a bunch of other init scripts, each of which sets up some
+> >piece of the OS or starts some background process. Locations vary, but one
+> >example of where they are is
+> >         /etc/init.d     for the actual scripts
+> >         /etc/rc2.d      for symlinks to the ones run at runlevel 2
+> >                         (there will be a corresponding /etc/rc?.d for
+> >                         each runlevel, including an /etc/rcS.d for
+> >                         single-user mode)
+> >
+> >Look in the directory for the default runlevel for a symlink with a name
+> >something like "S99xdm". To stop xdm from starting during boot/init,
+> >remove this symlink.
+> >(This is the less common method of starting xdm, but the one I am more
+> >familiar with, since Debian does it this way.)
 
-Regards,
-- Nilesh
+Picking up on that thread, I'm running Deb 3.0, logging into Gnome, and I'd 
+very much prefer a text login.   
+My /etc/inittab  contains
+# The default runlevel.
+id:2:initdefault:
 
+and /etc/rc2.d  contains 
+S99gdm -> ../init.d/gdm
 
-On Tue, 2003-06-17 at 14:56, nksahita@softhome.net wrote:
-> Nope xyz.dyndns.org is not actual domain name.  The actual domain name is 
-> nksahita.dyndns.org which is down at the moment (my home computer is down at 
-> the moment).  I will get it up in next few hours and then try out again. 
-> 
-> BTW, on related subject - is there any way to test if my webserver is 
-> accessible from elsewhere without asking someone's help to test?  The way I 
-> do right now is to change my settings and then call my friend to help to see 
-> if he can access my website from his computer. Is there any better way of 
-> testing this? 
-> 
-> 
-> TIA. 
-> 
->  
-> 
-> pa3gcu writes: 
-> 
-> > On Tuesday 17 June 2003 07:40, nksahita@softhome.net wrote:
-> >> Hello Ray, 
-> >>
-> >> Thanks so much for your tips below. Being a newbie, I don't exactly
-> >> understand all that you mentioned below but it gives me pointers - I will
-> >> try this out and let everyone know. 
-> >>
-> >> As for possibility 3 you mentioned below - the URL I tried from my Home PC
-> >> was http://xyz.dyndns.org and not the localhost.
-> >  
-> > 
-> > Is that your actual domainname.? if it is then your machine is filtering all 
-> > ports, only pings are returned from that machine which is listed as;
-> > 219.57.116.3 . 
-> > 
-> > nmap shows all ports filtered. 
-> > 
-> >> Thanks! 
-> >>
-> >> Regards. 
-> >>
-> > 
-> > -- 
-> > Regards Richard
-> > pa3gcu@zeelandnet.nl
-> > http://people.zeelandnet.nl/pa3gcu/
-> > 
-> >  
-> > 
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
->  
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+*Before* I change things I'd like to make absolutely sure - removing  (or 
+renaming)  S99gdm  will leave me with a text login, right?     (I don't wish 
+to remove it and then find I can't get back in!    :)
 
+And then, to start X, do I just use 'startx'  as I'm used to with RH?  (There 
+seems to be one in /usr/X11R6/bin  though its contents are somewhat cryptic 
+to me).
+
+Regards
+
+Chris
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
