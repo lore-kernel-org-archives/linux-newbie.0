@@ -1,117 +1,118 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: making a gateway with eth0 wired eth1 wireless
-Date: Thu, 30 Dec 2004 08:36:42 -0800
-Message-ID: <5.1.0.14.1.20041230080855.0217c410@celine>
-References: <Pine.LNX.4.58.0412300834100.7477@localhost.localdomain>
+Date: Thu, 30 Dec 2004 11:43:38 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0412301114280.7477@localhost.localdomain>
+References: <5.1.0.14.1.20041230080855.0217c410@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0412300834100.7477@localhost.localdomain>
+In-Reply-To: <5.1.0.14.1.20041230080855.0217c410@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-4908980"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 09:03 AM 12/30/2004 -0600, James Miller wrote:
+Sorry about the lack of details, Ray: it was because I already have both
+interfaces working in this laptop and so don't really need help with
+setting that up. If I take this laptop into an area with a wireless
+network, for example, and the network has a dhcp server, I turn on the
+computer, the module for the NIC loads, the dhcp client runs and I get on
+the network. It's an older card--Wavelan bronze--and doesn't do encryption
+of any form, I believe. The wired NIC works similarly: I plug in an
+ethernet cable, fire up the computer and the NIC module loads and a dhcp
+client runs on the interface to get an IP. I've never tried using both
+cards at once, though. But before going on at any greater length on that,
+I want to say that I'm now exploring more the Linksys access point
+possibility I mentioned in my initial post. Looking over documentation
+again, it seems to me like it might work and be the simpler solution. From
+what I gather thus far, if I know the MAC address of the access point to
+which my access point might serve as client, I might be able to use it, in
+effect, as a NIC (by hooking its rj45 plug to a wired NIC in a desktop
+computer). Let me append here some descriptions of the modes the access
+point is capable of, excerpted from the manual:
 
->I'm trying to make a temporary internet connection for a friend who's
->moving into and apt where they provide a wireless connection. Since I'm
->not sure whether she'll eventually buy a new computer or simply add
->necessary parts (mainly wireless adaptor) to some older machine I have, I
->want to expend a minimal amount of effort on this using stuff I have
->around that's pretty much already set up. One thing I have around is an
->old laptop with both wired and wireless cards (PCMCIA) that runs a Debian
->variant (DamnSmalLinux). Since it's got pretty paltry resources (P1 120,
->48MB RAM), I'm thinking maybe I could set it up as a sort of gateway to
->route the wireless signal the apt complex offers: eth1 gets on the
->wireless network and the computer routes the signal out eth0. To eth0 I
->hook another desktop computer I have via crossover cable which has a wired
->NIC and slightly better system resources (P2 233 96MB RAM) and runs
->Ubuntu. By doing some research online and experimentation, I could maybe
->eventualy figure all this out on my own. In the interest of saving me some
->time working on the project, since it's a temporary thing, I'd like to
->just see if I could get some suggestions and/or pointers to helpful
->documentation from anyone onlist first.
+------------BEGIN LINKSYS MANUAL EXCERPT-------------------------
 
-As outlined, all of this should work. But as you already seem to realize, 
-the devil is in the details. From what you've said, I can't really tell 
-what details you need help with, and trying to write a response that 
-explains everything you *might* need to know (or even the subset of 
-"everything" that I know) is simply too much work.
+  SETTING THE AP MODE:
+  The Access Point offers five modes of operation: Access Point, Access
+Point Client, Wireless Bridge, Wireless Bridge Point to MultiPoint, and
+Wireless Repeater. For all bridging modes, as well as Wireless Repeater
+mode, make sure the channel, SSID, and WEP keys are the same.
+  Note: For all modes of operation EXCEPT Access Point, the remote access
+point must be a second Linksys Wireless-B Access Point (WAP11). The Access
+Point will not communicate with any other kind of remote access
+     Access Point - The Operational Mode is set to Access Point by
+default. This connects your wireless PCs to a wired network. In most
+cases, no change is necessary.
+  Access Point Client - When set to Access Point Client mode, the Access
+Point Client is able to talk to one remote access point within its range.
+This mode allows the Access Point Client to act as a client of a remote
+access point. The Access Point Client cannot communicate directly with any
+wireless clients. A separate network attached to the Access Point Client
+can then be wirelessly bridged to the remote access point. Enter the
+required LAN MAC address of the remote access point in the Remote AP MAC
+Address field.
+  Wireless Bridge - If you are trying to make a wireless connection
+between two wired networks, as shown in Figure 6-5, select Wireless
+Bridge. This mode connects two physically separated wired networks with
+two access points.
+  To configure a Wireless Bridge environment, click Wireless Bridge and
+enter the LAN MAC address of the remote access point in the Remote Bridge
+MAC Address f ield. The remote access point also needs to be set up as a
+Wireless Bridge.
+  Note: All devices on each wired network must be connected through a hub
+or switch.
+  Note: In Wireless Bridge mode, the Access Point can ONLY be accessed by
+another access point in Wireless Bridge mode. In order for your other
+wireless devices to access the Access Point, you must reset it to Access
+Point mode. The two modes are mutually exclusive.
+  Wireless Bridge Point to MultiPoint - If you are trying to make a
+wireless connection between more than two wired networks, as shown in
+Figure 6-6, select Wireless Bridge Point to MultiPoint. This mode allows
+you to construct a network that has multiple access points bridging
+wirelessly.
+  To configure a Wireless Bridge Point to MultiPoint environment, click
+Wireless Bridge Point to MultiPoint for the Access Point that will connect
+to multiple access points (in Figure 6-6, it is the Access Point in LAN
+1).
+  Then, for the other bridged access points, click Wireless Bridge, and
+enter the Remote Bridge MAC Address of the Access Point set to Point to
+MultiPoint.
+  Note: Linksys recommends bridging no more than three remote LANs in
+Wireless Bridge Point to MultiPoint mode. Bridging additional remote LANs
+will result in a significant decrease in bandwidth.
+  Wireless Repeater - When set to Wireless Repeater mode, the Wireless
+Repeater is able to talk to one remote access point within its range and
+retransmit its signal. See Figure 6-7. To configure a Wireless Repeater
+environment, click Wireless Repeater and enter the LAN MAC address of the
+remote access point in the Remote AP MAC Address field.
 
-If there are any soup-to-nuts resources for this sort of exercise, I'd like 
-to know about them too ... so even suggesting for resources, it helps to 
-know which parts of this overall job you need help with.
+---------------END LINKSYS MANUAL EXCERPT----------------------------
 
-So, which of these pieces of the problem do you need help with?
+Sorry for any confusion regarding the diagrams, which I could not, of
+course, include. As I am reading this, it seems to me by using access
+point client mode I might be able to make a machine with a wired NIC
+hooked to the rj45 jack on the Linksys access point communicate on the
+wireless network in this building: the wired NIC and the Linksys access
+point act in concert like a wireless NIC. Am I reading/understanding
+correctly?
 
+As for the network in the building, I know nothing about it at this point.
+I assume it's some kind of cable connection that gets routed through a
+wireless router, which runs a dhcp server and gives out addresses to
+clients within range using class C addressing. But that's pure
+speculation. I have no idea if there will be any sort of security measures
+in place (e.g., authentication), but that seems something more
+software-oriented, while what I'm tackling at the moment is more
+hardware-oriented. Can't say anything more specific about the network
+until I actually get access to it (she'll move in tomorrow).
 
-1. Getting the laptop connected to the wireless network? For this, fill us 
-in on what the  apt's ISP says about how to do it (probably Windows-based 
-advice). No actual passwords, of couse, but be as specific as you can about 
-anything else.  You haven't even mentioned if the wireless side is b, a, or 
-g. This stuff is always network specific.
+In closing I'll just ask: shouldn't I be able to get the building's access
+point's MAC address using kismet or airsnort? I'm guessing if I ask them
+they'll either: 1) be so uninformed they won't have a clue; or 2) are
+going to be informed and thus become suspiscious.
 
-
-2. Getting the wireless NIC working with Linux? Again, what are the 
-details? What kernel driver does it use (or is that what you need help 
-with)? And BTW, wireless NICs usually are not eth* interfaces; they usually 
-are (I think) wlan* interfaces.
-
-
-3. Getting the laptop connected to the other workstation? This should work 
-out of the box, assuming you have compatible networking setups (IP address, 
-netmask, and so forth) on both machines. If it doesn't, please be as 
-specific as you can about what's not working. One thing to watch for 
-(whenever you use a crossover cable) is handshaking problems between the 
-NICs ... sometimes in these direct connections 10/100 NICs have trouble 
-agreeing on a speed. If you're seeing problems, try, at least for testing 
-purposes, using a small hub instead of the crossover cable. (You must have 
-an old, small hub and a couple of cables around, right? Don't we all, these 
-days?)
-
-
-4. Getting the laptop to route? This involves three basic steps:
-         (a) simply turning on routing, by setting 
-/proc/sys/net/ipv4/ip_forward to 1.
-         (b) setting up routing properly in the laptop's routing table. If 
-DSL is close enough to Debian for my guesses abut it to work, you do this 
-in /etc/network/interfaces, then restart networking (/etc/init.d/networking 
-restart).
-         (c) setting up NAT if you need to. Whether you need to depends on 
-how the apt's ISP provides IP addresses to the system that use it; see piece 1.
-
-
-5. Something else? If so, what?
-
-
-
->I should also mention that I have a Linksys wireless B access point laying
->around unused (given to me for some work I did for a friend), but so far
->as I can see, this is not going to help me get her computer on the
->wireless network she'll have access to. It's meant to route a wireless
->signal, and has an rj45 jack on which a dhcp client runs and into which a
->wired signal is to be fed, which then gets sent out the antennae to
->wireless NICs within range. From documentation I've looked at, this device
->can act as a bridge or can extend range in concert with a second access
->point like it. But looking into this earlier, I determined I could not use
->it as a sort of wireless NIC in itself, receiving a signal and routing it
->back and forth through the rj45 plug. But I'm not terribly knowledgeable
->about this, so maybe there is a way to use it for this project.
-
-Since we don't know anything about the apt's wireless LAN, I hesitate to 
-say there is no possibility of using the Linksys device to access it. But I 
-can't think of a way to make it do the job you want done.
-
-
-
-
--- 
-No virus found in this outgoing message.
-Checked by AVG Anti-Virus.
-Version: 7.0.296 / Virus Database: 265.6.6 - Release Date: 12/28/2004
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
