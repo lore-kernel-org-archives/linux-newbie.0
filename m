@@ -1,58 +1,45 @@
-From: Jay Maass <jay.maass@verizon.net>
-Subject: Re: LI -lilo booting problem
-Date: Tue, 30 Jul 2002 16:55:23 -0400
+From: dan ritter <k1dlr01@yahoo.com>
+Subject: Intel 830 video chip with RH 7.2
+Date: Wed, 31 Jul 2002 17:14:27 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020730205523.VJOW17636.out010.verizon.net@localhost>
+Message-ID: <20020801001427.80700.qmail@web10706.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Frank Roberts - SOTL sotl155360@earthlink.net:
+I have installed RH 7.2 on a VMWAre 3.1 running on a
+DELL c400 with an INTEL 830 video chip.
 
-> Date: 2002/07/29 Mon PM 07:11:28 EDT
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: LI -lilo booting problem
-> 
-> Somewhere in my far distant past I had a dual boot RH 6.0 / MS Windows system. 
-> I now have a dual boot RH 7.3 box.
-> If I recall correctly all I did to R H 6.0 box to make it read and write to 
-> the Win side was add the following line to fstab:
-> 
-> /dev/hda1    /mnt/dos    vfat    user,noauto,rw     0 0
-> 
-> I have added the above to the RH7.3 box but the KDE mount User Tool does not 
-> show that dos is mountable.
-> 
-> I would appreciate what ideas and guidance the experts on this list may have 
-> to offer.
-> 
-> Thanks
-> Frank
+XFree86 does not work
 
-Frank,
+My research indicates that I have the following
+options
 
-I'm a perpetual newbie in Linux, so I do not have a specific
-answer for you. My experience, however, has been that I can
-read/write to/from an ms-dos partition in a dual-boot BasicLinux/MS-DOS 6.22/Windows 3.11 installation.
+1. upgrade to RH 7.3
+2. find an RPM for XFree86 that is 4.2++
+3. install XFree86 via the make/install
 
-However, this was without XWindows. I'm not
-familiar with the KDE mount Utility Tool you mention.
-Certainly you're on the right track with your fstab entry.
-Are you able to read/write to/from your ms-dos partition
-outside of XWindows, i.e., from your Bash shell?
+My first guess is to wait and install RH7.3 - but what
+about the other 2 options.
 
-Regards,
-Jay Maass,
-suburban Philadelphia
+Is make/install Xfre86 4.2++  so dificult ?
+or
+Does Rh7.3 also come with anything else that I might
+need   Cisco 350 support or ....
+or 
+I could not find an RPM for RH 7.2 that has XFree
+4.2++
+
+thanks
 
 
-
-
-
-
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Health - Feel better, live better
+http://health.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
