@@ -1,49 +1,82 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: Re: multiple X displays and nvidia
-Date: Wed, 07 Apr 2004 10:03:43 +0200
+From: Rei Shinozuka <shino@panix.com>
+Subject: strange xcdroast bug solved
+Date: Wed, 7 Apr 2004 12:36:33 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4073B5DF.7080609@arrakis.es>
-References: <407279E5.9040805@arrakis.es> <40737D3D.7060606@comcast.net>
+Message-ID: <20040407163633.GE3523@panix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <40737D3D.7060606@comcast.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Beolach <beolach@comcast.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Newbie Linux Users <linux-newbie@vger.kernel.org>
 
+----- Forwarded message from Rei Shinozuka <shino@panix.com> -----
 
+Subject: strange xcdroast bug solved
+From: Rei Shinozuka <shino@panix.com>
+Date: Wed, 7 Apr 2004 12:35:28 -0400
+To: Thomas Niederreiter <tn@xcdroast.org>
 
-Beolach wrote:
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
+thanks, you da man.  i built my own version of cdrtools and it 
+no longer reports errors!!
+
+-rei
+
+On Apr07 10:01, Thomas Niederreiter wrote:
+> On Wed, Apr 07, 2004 at 05:29:11AM +0200, Rei Shinozuka wrote:
 > 
-> I want to rephrase your description, just to make sure I understand your
-> issue correctly.  On your PII machine you have a nVidia graphics card
-> with dual-head, connected to two monitors; configured using Xinerama.
-> One of the monitors was set to display a local X screen, and the other
-> was set to display an X screen exported from your PIV machine.  After
-> switching from the xfree86 nv driver to nVidia's propriatary nvidia
-> driver, you are able to start X on one display, but trying to start on
-> the second fails.
-No. I'm sorry, I didn't describe it too well. PII has two nVidia cards, 
-one for each monitor. Spread across the two monitors is the display 
-running locally. Switching to vt08 (Alt+ F8) I get the display which is 
-running on the PIV. This works fine with the nv driver, but not with 
-nVidia's proprietary nvidia driver. The error message again is
+> Hello Rei,
+> 
+> > i have been using 98alpha13 for years on my thinkpad, and recently
+> > went to a desktop with alpha14 and i also built alpha15.  
+> > 
+> > Linux tuxedo 2.4.22-1.2115.nptl #1 Wed Oct 29 15:31:21 EST 2003 i686 athlon i386 GNU/Linux
+> > 
+> > Cdrecord-Clone 2.01a19 (i686-redhat-linux-gnu) Copyright (C) 1995-2003 Jorg Schilling
+> > 
+> > the problem appears that xcdroast always reports errors when burning CDs,
+> > even though the logs do not show any evidence of trouble.
+> > 
+> 
+> The alpha14 had exactly such a problem - due a little typo in my code
+> the cdrecord error code was not evaluated correctly and some folks always
+> got "Error writing tracks". This is fixed in alpha15, so I dont know
+> whats happening.
+> 
+> I only note that you dont seem to use an official version of the cdrtools:
+> 
+> cdrecord: Warning: using inofficial libscg transport code version (schily - Red Hat-scsi-linux-sg.c-1.75-RH '@(#)scsi-linux-sg.c	1.75 02/10/21 Copyright 1997 J. Schilling').
+> 
+> Please compile cdrecord from the original sources and try again. I can just
+> guess it reports an illegal value.
+> 
+> Create full debug output (FAQ) and then its much easier to see..
+> 
+> Regards,
+> 
+> Thomas
+> 
+>   ___ ___
+>  /   |   \  ___________   | REAL   : Thomas Niederreiter: Munich, Germany
+> /    ~    \/  _ \_  __ \  | EMAIL  : tn@xcdroast.org
+> \    Y    (  <_> )  | \/  | WEB    : www.xcdroast.org
+>  \___|_  / \____/|__|     | 
+>        \/ All I want is a warm bed and a kind word and unlimited power
+>                       -- Ashleigh Brilliant
+> 
+> 
 
-(EE) NVIDIA(0): Failed to allocate external video decoder object
-(EE) NVIDIA(0):  *** Aborting ***
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
 
-Fatal server error:
-AddScreen/ScreenInit failed for driver 0
 
-So far as I could make it out, it's not related to the 'Twinview' 
-feature. Actually I can't see anything in the README that relates to it. 
-I think you're right that the nvidia forum might be more appropriate for 
-this question, but I just thought I'd try here first.
-Thanks for your time.
-Andrew
+----- End forwarded message -----
+
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
