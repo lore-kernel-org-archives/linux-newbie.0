@@ -1,68 +1,35 @@
-From: Boris Bezlaj <boris@gajba.net>
-Subject: Re: Sanyo CDR-H94A (non-atapi) Booting???
-Date: Sun, 30 Mar 2003 22:34:03 +0200
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Strange Mice Behavior
+Date: Mon, 31 Mar 2003 14:36:49 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030330203403.GA1222@gajba.net>
-References: <20030328131832.A249@lnx2.w8mch.ampr.org> <20030328214839.GB456@gajba.net> <20030330132929.D206@lnx2.w8mch.ampr.org>
+Message-ID: <200303310636.h2V6ant03112@philonline.com>
+References: <03033007191701.03588@unix.pa3gcu>  <200303300356.h2U3uEM03859@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030330132929.D206@lnx2.w8mch.ampr.org>
+In-Reply-To: Your message of "Sun, 30 Mar 2003 07:19:17 GMT." 
+ <03033007191701.03588@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Hal MacArgle <haltec@kvinet.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sun, Mar 30, 2003 at 01:29:29PM -0500, Hal MacArgle wrote:
-> Greetings and thanks for your input..
-> 
-> I'm still stuck.. I found the bootdisk  'isp16', the name of the
-> soundcard/cd-interface, and it found the drive at the proper port:
-> 0x340.. But it still wont mount the drive either as /dev/sjcd or when
-> I 'mknod /dev/isp16 b 0 6', which is "supposed" to be the major/minor
-> number of the device.. I, honestly, question that Major of zero, but
-> that's what I found in the src code, IIRC..
+Thanks Ray and Richard!
 
-Major 0?
-Maybe these have mislead you..from isp16.c source:
+I followed Ray's advice and mouse BenQ Model M500 behaves now properly in 
+SW8.0 on the console and in X and even that wheel which I didn't know what it 
+was for works for scrolling, big deal.
 
-#define ISP16_VERSION_MAJOR 0
-#define ISP16_VERSION_MINOR 6
-              ^^^^^^^
-Wrong ones i guess :)
+With this new setting in XF86Config for the mouse the Kensington mouse is now 
+the crazy one, meaning zipping erratically across the screen in X when touched 
+and not reacting to the touch of a button. Since I want to use the BenQ mouse 
+this is not anymore relevant
 
-From include/linux/major.h:
+Remains the question why is there no such mice problem with RH7.3?
 
-#define SANYO_CDROM_MAJOR 18
-
-> > > 7.1 distribution and I can't get "setup" to find the CDR.. The report
-> > > is always: "SJCD: Sanyo CDR-H94A Cdrom driver version 1.7
-> > >             SJCD: Resetting............ reset failed, no drive found."
-> 
-> 		For some reason the drive doesn't want to make up
-> it's mind whether it's a /dev/sjcd or /dev/isp16.. No amount of
-> parameter entries seem to solve the problem /or/ to force the kernel
-> to be able to mount the drive.. The boot image 'isp16' finds the
-> drive all right at port 0x340,0,0-Sanyo, but I can't get it mounted
-
-AFAIK, isp16.c enables the cdrom port on your soundblaster card, and
-sjcd.c manages the drive(i could be dead wrong here).
-/dev/sjcd (should have major 18) is the right device i guess..
-
-Do you have the drivers in the main kernel image or as modules? If they
-are in modules, try loading the isp16.o first, then sjcd.o..
-
-The last resort is to ask the maintainer or whoever was the last
-patching the driver(s).
-
-BTW, when asking for help on mail list, always leave the mail-list
-address in Cc field..might get some more brainpower 8)
-
-Best luck.
+Regards
 -- 
+Peter
 
-  Boris
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
