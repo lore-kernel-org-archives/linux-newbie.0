@@ -1,39 +1,38 @@
-From: ramzez <r4mzez@yahoo.com>
-Subject: divX
-Date: Fri, 19 Apr 2002 10:13:42 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: divX
+Date: Fri, 19 Apr 2002 18:38:13 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <a9psfg$9r4$2@main.gmane.org>
+Message-ID: <2.2.32.20020420013813.00ca6a24@[192.168.1.23]>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: redhat-list@redhat.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: ramzez <r4mzez@yahoo.com>, redhat-list@redhat.com, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+At 10:13 AM 4/19/02 -0500, ramzez wrote:
+>Hi...
+>  I have some movies in DivX format in CD, the files are .avi; Are there some 
+>free applications to see this movies??
 
-Hi...
-  I have some movies in DivX format in CD, the files are .avi; Are there some 
-free applications to see this movies??
+The two standard ones are xawtv and xine. There are probably others too. 
 
-A lot of thanks,
-bye
-- -- 
-Linux User
-Registered #232544
-http://counter.li.org/
-my GnuPG-key at
-www.keyserver.net
-- --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+All this stuff is a bit more hit-and-miss than one would like; there is
+quite a bit of variation in codecs (.avi is a file format standard, but not
+a codec standard), and you'll need to see if the specific encodings you have
+work with them. 
 
-iD8DBQE8wDQus4dF9gl05swRAuxEAJ9wiIcmjyoNZgSMu45ceyxphiMpLQCfYyV7
-QffTMPOx8LUwsND3H7tJOa0=
-=q7Ge
------END PGP SIGNATURE-----
+If not, there are apps that will convert formats; one is Mplayer ... but I
+haven't sued this stuff so can't help you more there, or even tell you how
+well Mplayer works.
+
+
+--
+------------------------------------"Never tell me the odds!"---
+Ray Olszewski                                        -- Han Solo
+Palo Alto, CA           	 	         ray@comarre.com        
+----------------------------------------------------------------
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
