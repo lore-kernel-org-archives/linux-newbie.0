@@ -1,31 +1,30 @@
-From: "Amin" <raihan@citech-bd.com>
-Subject: New module: kernel recompile?
-Date: Wed, 2 Apr 2003 20:43:22 +0600
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: ~/.Xclients permissions
+Date: Wed, 2 Apr 2003 13:23:29 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000601c2f926$3989c980$0100007f@localdomain>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200304021823.h32INTXv012945@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux@hartford-hwp.com
 
-Hi, I've installed a new RH8.0 system after losing the old one.  Problem is,
-the fresh installation doesn't support my (Myson) Ethernet card, and I have
-to load the ``fealnx'' module to get it to do so.  And that module isn't
-already compiled and insertable.  So: is it possible to compile the module
-and then insert it into the kernel, instead of recompiling the whole kernel,
-as I had to do the last time?  (Not that I don't like recompiling the
-kernel; it just gets a little boring during the 5  hours it takes.)
+I decided to add an ~/.Xclients file, but it hangs X (that is, the "X"
+loading symbol remains permanently and the desktop has a black
+background). However, the xterm in this file loads as well as do the
+other Xclients.
 
-I've got the ``.config'' file from my previous RH8.0 installation (on the
-same system) and can put it up for anyone who's interested.
+  #!/bin/bash 
+  # This is a comment 
+  xterm
 
-Thanks,
-Yawar
+This .Xclients file is owned by user, and has rwxr-xr-x permissions. I
+suspect that's where the problem may lie, but so far no luck
+straightening it out.
 
-
-
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
