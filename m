@@ -1,35 +1,51 @@
-From: Adwin <fox@sby.centrin.net.id>
-Subject: mozilla 1.1 on mandrake 9.0
-Date: Sat, 12 Oct 2002 22:23:42 +0700
+From: Kurt Kehler <kmk@pa.net>
+Subject: Re: Groff Print-out
+Date: Sat, 12 Oct 2002 12:48:18 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210122207.42959.fox@sby.centrin.net.id>
-Reply-To: fox@sby.centrin.net.id
+Message-ID: <Pine.LNX.4.44.0210121215380.179-100000@darkstar.example.net>
+References: <200210120805.g9C85Ce04963@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200210120805.g9C85Ce04963@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Peter <pfheiss@philonline.com>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-hello
 
-	I use mozilla 1.1 that came from Mandrake 9.0 Dolphin CD. 
-But I fell that mozilla 1.0 is more stable than this one. When I open [ 
-Edit]->[Preferences] my Mozilla windows close suddenly. 
-Sometimes, when I open some tabs (more than 6), mozilla windows close again 
-without reporting any error. 
+On Sat, 12 Oct 2002, Peter wrote:
 
-Is this a bug or something that only happen on my system (especially to you 
-who use mozilla from mandrake 9.0) ? 
-This is really annoying me.
+> Hi,
+>
+> I am using groff to print-out books I download with kgutenbook program since
+> groff has a pleasant font and most important prints longer lines than all
+> other text print programs I tried (emacs, vim, gedit, kedit, xedplus),
+> therefore, fewer pages to print.
+>
+> Groff has 2 drawbacks, a) it does not number the pages and b) does barely
+> advance at the end of the page.
+>
+> Can that be somehow corrected, may be with a script?
+>
+> The command I give is: groff file | lpr
 
-I have already solve this problems by deleting all my mozilla configuration 
-files in .mozilla/myaccount/
+Try: groff -ms file | lpr
 
--- 
-./me 
-adwin
+I found these downloadable documents to be helpful with groff:
 
+Troff User's Manual (Kernighan, Ossanna)
+A TROFF Tutorial (Kernighan)
+Typing Documents on the UNIX System: Using the -ms Macros with Troff
+    and Nroff (Lesk)
+Tbl -  A Program to Format Tables (Lesk)
+
+I don't have the URL anymore but they were all on the same web page.
+Perhaps adding Bell Laboratories to the search will help.
+
+Hope this helps.
+
+Kurt Kehler
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
