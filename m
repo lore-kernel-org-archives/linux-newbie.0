@@ -1,30 +1,61 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
-Subject: Re: name of xterm capture command
-Date: 16 Apr 2003 09:03:00 -0400
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1050498180.3469.4.camel@gryphon.nerds.net>
-References: <200304161136.h3GBaw2D004081@hartford-hwp.com>
+From: "Mathur, Shobhit" <Shobhit_mathur@adaptec.com>
+Subject: linux-source debugging with kgdb-patch
+Date: Thu, 17 Apr 2003 20:46:24 +0530
+Sender: linux-serial-owner@vger.kernel.org
+Message-ID: <3E9EC548.117005DD@adaptec.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304161136.h3GBaw2D004081@hartford-hwp.com>
+Return-path: <linux-serial-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-c-programming@vger.kernel.org, linux-serial@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org
 
-On Wed, 2003-04-16 at 07:36, Haines Brown wrote:
-> I apologize for inefficiency, but have lost my note on the capture
-> command for xterm. That is, after you issue the command, what appears
-> in xterm is captured to file.  
 
-script
 
--- 
-Brian P. Bilbrey <bilbrey@orbdesigns.com>
-Orb Designs
+Hello,
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+BACKGROUND:
+
+I was keen to see kgdb running  for  purely academic reasons. Thus,
+I made a setup of 2 machines for source-level debugging of the
+linux-kernel. The procedure mentioned on the web-site
+[ kgdb.sourceforge.net] has  been adhered to.  I was able to
+successfully configure the setup. Also, I decided to use "ddd" front-end
+on gdb [local m/c]  for debugging  the kgdb-patched kernel on the remote
+machine, which is the usual setup for such debugging-efforts.
+    The m/c to be debugged stops with the message "Waiting for
+connection from remote gdb..." until the "target remote" command is run
+from the "gdb" prompt of "ddd", upon which the m/c to be debugged
+continues it's bootup till it shows the command-prompt.
+
+PROBLEM:
+
+I was interested in setting a break-point in start_kernel thru' "ddd"
+such that the boot-up  of the m/c to be debugged could be analysed
+step-by-step remotely. Though, I am able to set the breakpoint in
+start_kernel(),
+the commands "run" or "continue" on the "gdb" prompt, only throw up the
+following errors :
+
+(gdb) info break
+Num Type           Disp Enb Address    What
+7   breakpoint      keep  y   0xc027e7f0 in start_kernel at
+init/main.c:614
+(gdb) run
+warning: shared library handler failed to enable breakpoint
+warning: Cannot insert breakpoint 7:
+Cannot access memory at address 0xc027e7f0
+
+QUESTION:
+
+I very strongly suspect that this exercise follows a particular sequence
+of steps to get it right. Either I am missing some step or I am not
+following the "order".  In either case, I would be glad to receive some
+help/comments on my academic endeavour to be able to remotely debug the
+kernel.
+
+- Kindly let me know a solution
+
+- TIA
+
+- Shobhit Mathur
