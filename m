@@ -1,64 +1,32 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Syslog - doubt
-Date: Wed, 5 Jun 2002 19:51:58 +0100
+From: Adam Luchjenbroers <adam@luchjenbroers.com>
+Subject: Re: 1024x768 SVGA Shell - won't work
+Date: Thu, 6 Jun 2002 21:08:29 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020605185158.GA749@cam.ac.uk>
-References: <200206051714.g55HE8u18108@cs.annauniv.edu>
+Message-ID: <20020606113605Z316933-22020+111@vger.kernel.org>
+References: <20020604080752Z316530-22651+74203@vger.kernel.org> <20020605155136.GA1429@cam.ac.uk>
+Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200206051714.g55HE8u18108@cs.annauniv.edu>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Got it compiled, worked it out before you pair replied (kinda good timing,
+I fix the problem THEN you give me some help)
 
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Although now trying to use VESAFB modes reboots my machine, one minute it
+is loading up, the next thing I see is BIOS.
 
-> If someone executes this program repeatedly
-> of from a loop, syslog would become too large.
-> Is something wrong?  Can access to syslog
-> be restrcted?
-Good question. I can't see any ways to limit the rate at which
-a given user can send messages, and the sysklogd man page lists this as
-a flaw in the current implementation. This is somewhat worrying.
+Any known causes for this (I'm having a great time here aren't I)
 
-On the other hand, you can quite easily prevent certain users from
-logging any messages at all, if you only log messages from the local
-machine. syslogd listens on a Unix socket, usually /dev/log, for incoming
-messages, and if a user doesn't have write permission on that socket,
-they can't put anything in the syslog. So, what I would do is this:
+But at least now I'm one step closer.
 
-1) Create a new group called logging
-2) Place all of the users and services which need to make entries in the
-   syslog in this group
-3) chgrp logging /dev/log
-4) chmod o-rw /dev/log
+> The dependency map used by the kernel itself is in arch/i386/config.in.
+> It isn't terribly easy to read, but it might be somewhat helpful.
 
-Of course, this doesn't help if you use network logging as well. The
-easiest way of restricting this is probably using the kernel packet
-filters.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE8/l3OO4S8/gLNrjcRArIWAJ0alFR0nvzeeQyRPhBQeFVXcb53JACePZoN
-WIVFy7r1ZT/8JMfHnG4riv0=
-=P6ne
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
+I'll take a look at it and see if I can't make an easier to read map using 
+kivio or gimp or something.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
