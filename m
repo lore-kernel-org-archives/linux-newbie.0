@@ -1,30 +1,34 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Fatal Server Error: no screens found
-Date: Sun, 20 Jun 2004 08:08:23 +0200
+Subject: Re: grub doesn't load
+Date: Sun, 20 Jun 2004 10:08:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200406200808.24065.pa3gcu@zeelandnet.nl>
-References: <20040620053948.11918.qmail@web14807.mail.yahoo.com>
+Message-ID: <200406201008.08268.pa3gcu@zeelandnet.nl>
+References: <851bbd852696.852696851bbd@homemail.nyu.edu>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040620053948.11918.qmail@web14807.mail.yahoo.com>
+In-Reply-To: <851bbd852696.852696851bbd@homemail.nyu.edu>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Steven Ackerman <ackerman_steven@yahoo.com>
-Cc: linux-newbie@vger.kernel.org, mike@kevino.org
+To: Anshuman Singh Rawat <asr245@nyu.edu>
+Cc: linux-newbie@vger.kernel.org
 
-On Sunday 20 June 2004 07:39, Steven Ackerman wrote:
-> Thanks alot. This list is awesome. I know it's basic
-> stuff, but not if you don't know. Is drakxconf, just a
-> Mandrake version of linuxconf?
+On Saturday 19 June 2004 23:43, Anshuman Singh Rawat wrote:
+> Thanks for the replies.
+>
+> I rescued it using the disk. On undoing what I had done (which screwed up
+> grub), Grub still didn't recover (I am sure that I undid correctly, as I
+> had only changed one parameter in grub.conf - 'default'). So I reinstalled
+> grub from the disk. But the problem still remains of changing the boot
+> order.
 
-Yes i suppose so, linuxconf itself is now obsolite i belive.
-All distro's have thier own configuration programs, they are all named 
-differently, some can be used on all platforms some cant.
+Just what commands did you give grub after the changes.?
+There is a command something like grub -install (don't have a grub machine 
+handy here at the moment to check) to make grub reread its config file.
 
-> -Steve
+'man grub' should help.
 
 -- 
 If the Linux community is a bunch of thieves because they
