@@ -1,69 +1,59 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: problem using keyboard and mouse
-Date: Thu, 20 Nov 2003 10:40:21 -0800
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Printing Garbage
+Date: Fri, 21 Nov 2003 10:38:34 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031120102816.01f8fb90@celine>
-References: <20031120133458.67144.qmail@web60601.mail.yahoo.com>
+Message-ID: <200311210238.hAL2cY201990@skyinet.net>
+References: <5.1.0.14.1.20031117101709.01f7afb8@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20031120133458.67144.qmail@web60601.mail.yahoo.com>
+In-Reply-To: Your message of "Mon, 17 Nov 2003 10:27:08 PST." 
+ <5.1.0.14.1.20031117101709.01f7afb8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 05:34 AM 11/20/2003 -0800, Ravi Kumar Munnangi wrote:
+Hi, my own worst suspicion turned out to be true. The motherboard had failed 
+which
+was a little less then 2 years old, yet old enough that this type can not be 
+found any longer and therefore all the sockets of the new boards are different 
+forcing me to buy as well a new processor and memories. Guess that keeps the 
+industry running.
 
->  Hi,
+The new board is P4VMM2 by ECS Elitegroup and I was unable to configure X in 
+RH7.3. The first time this happened since RH5.2. I then went over to Slackware 
+9.1, got X surprisingly working there, copied XF86config over to RH and all is 
+fine
+except I am $200 poorer.
+
+Thanks and regards
+
+Peter
+
+At 04:28 PM 11/17/2003 +0800, Peter wrote:
+
+>Hi,
 >
->   When Iam working on my computer, suddenly I face
->  problems using mouse and keyboard.
->   Iam not able to do scrolling using the mouse.
->   Though I keep hold a key down, the character is not
->  displayed repeatedly.
->   I don't why this is happening suddenly.
+>suddenly my printer Epson LQ 300 is only printing garbage characters. What
+>could be the reason.
+>
+>I am in RH 7.3. I went to DOS the same, only garbage printing.
+>
+>There are no error messages. Starting LPD says OK. Lprm, lpq etc function
+>normally.
+>
+>Running the printer self test performs flawlessly, meaning the printer does
+>work. I checked all the cables, can't find anything wrong.
+>
+>Any ideas, help?
 
-It could be happening for any number of reasons, ranging from physical 
-failure of the keyboard/mouse or motherboard, through BIOS problems, or X 
-problems (assuming this is happening in X), or problems specific to the 
-application where this happens, or even user error (for example, a focus 
-problem).
 
-To get help, you will have to tell us more. For example:
+ray@comarre.com said:
+> Were I to **guess**, it would be that you missed a bad cable. Only a
+> guess,  though.
 
-What version of Linux (what distro, what kernel)?
 
-Are the keyboard and mouse PS/2 devices, or USB? (Or AT and serial, if this 
-is an old system?)
 
-What version of X and what X driver (or if this is not an X problem, what 
-display setting it occurs in)?
-
-What application are you running when you see the problem? Has this 
-SPECIFIC application worked properly with the keyboard and the mouse 
-before? Is "suddenly" completely out of the blue, or did you just do a 
-system update that may have loaded a new version of the app or apps in 
-question?
-
-How are you "scrolling using the mouse"? Are you referring to a scrool 
-wheel or the use of scrollbars provided by the app?
-
-Is the keypress problem happening with all (or a lot of) keys, or did you 
-just encounter it with 1 or 2 keys (which ones)? Do single keypresses still 
-work?
-
-Is the system simply busy, so responding v-e-r-y s-l-o-w-l-y? Even though 
-it usually has high priority, the UI is still a process (actually, a whole 
-set of processes), and if the CPU is heavily loaded, it can bog down. You 
-might try running "top" in an xterm or over an ssh connection while this 
-problem is showing up, just to check for this (admittedly, long shot) 
-possibility.
-
-There are so many other possibilities that I can't really frame good 
-questions, so I'll end with a general one: Can you think of anything 
-different between the situations where keyboard and mouse work the way you 
-expect them to and situations where they do not? For *example*, are 
-different uid's involved?
 
 
 
