@@ -1,123 +1,53 @@
 From: "Enrique Nieves" <spanfax@charter.net>
 Subject: Re: Newbie installation problem
-Date: Sun, 4 Aug 2002 13:08:13 -0400
+Date: Sun, 4 Aug 2002 13:06:42 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001301c23bd9$848cb0b0$6401a8c0@ENRIQUE>
-References: <5.1.0.14.1.20020802181721.02153750@celine> <5.1.0.14.1.20020804005505.02187b30@celine>
+Message-ID: <001201c23bd9$4e6aa870$6401a8c0@ENRIQUE>
+References: <Pine.LNX.4.21.0208040725520.30515-100000@Consulate.UFP.CX>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: Riley Williams <Riley@Williams.Name>
+Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
 
+> Based on the information provided earlier, if the router can handle 100
+> speed, then you are attempting to use 100baseTX ethernet, if not, you
+> are attempting to use 10baseT ethernet.
+>
+> One final question: Am I right in assuming that you are trying to set it
+> up with the AMD under Linux as the system that connects to the Internet,
+> and both the WinXP machine and the laptop piggy-backing onto that
+> connection?
 
-> No no no. If RH cannot detect the NIC, then the problem is inside the
-> computer. Things like cabling come way later.  (But if the problem is NOT
-> NIC detection ... see below ... then the problem could be in the cabling,
-> evn if the lights indicate a connection. Do you ever see actual traffic
-> over the link?)
-
-
-I don't see any traffic.
-
+The XP is the system that is connected to the internet, and I'm trying to
+piggy back to that connection the AMD  box and the XP laptop.
 
 >
-> [...]
-> > > 1. What NIC do you have in the system?  Make and model.
-> >
-> >Netgear, 32 bit, PCI Adapter, 10/100 Mbps Fast Ethernet FA311
+> The reason I ask this is that on rereading your comments, I note your
+> repeated reference to "LinkSys router" and I'm wondering if that's an
+> ADSL router that forms your Internet connnection. If it is, then the
+> advice to be given is rather different to the above, and the above
+> advice should be ignored.
+
+I have a Linksys Ethernet 10/100 Cable/DSL Router (BEFSR41 ver.2) with four
+ports connected to a Shark Fin cable modem.
 >
-> It is *possible* that RH simply does not autodetect this one, perhaps
-> because does not include its module in the ones it automatically tries. I
-> don't use this NIC itself, but I seem to recall that it uses one fo the
-> less common modules (natsemi.o maybe? does anyone else recall?). You may
-> need to add it manually (however RH provides for that).
-
-
-I'll try adding the driver that came with the Netgear NIC manually.
-
-
+> In this event, please run the `netconfig` command but ensure that the
+> "Use dynamic IP configuration" box IS checked. In this case, the values
+> of the remaining fields are irrelevant and should be ignored. You also
+> need to configure your router to enable the DHCP server and the NAT
+> facilities therein, and it will then configure the IP addresses,etc, on
+> all the systems on your network.
 >
-> > > 2. At what stage does RH fail? (Technically, eth0 is an interface, not
-a
-> > > card; it does not get created until -AFTER- the card has been detected
-and
-> > > an appropriate kernel module loaded.)
-> >
-> >When booting up and detecting hardware it indicated that it can't detect
-IP
-> >settings
->
-> What do you mean by "IP settings"? This phrase usually means the systems's
-> own IP address and routing information (network, gateway, possibly DNS
-> servers). It would not be looked for at the hardware detection stage. So
-> either you have the place where the failure occurs wrong, or you mean
-> something different from what I use this phrase to mean.
->
-> > > 3. Quote the EXACT error message (not just the word "FAILED").
-> >
-> >After the error message FAILED it indicates that IP settings can't be
-> >detected
->
-> Once again I'd ask for the exact error message, not your interpretation of
-> what "it indicates". The paraphrase you provide reads like the NIC itself
-> it detected but the installer can't get an IP address and such. If that is
-> so, then please tell us what you are telling the system about how it
-should
-> get an IP address and related information (netmask, gateway, maybe DNS
-> servers ... whatever the installer asks about).
+> Best wishes from Riley.
 
-
-
-The exact message is:
-
-"Checking for New Hardware
-                .
-                .
-                .
-Bringing up interface Eth0:
-    Determining IP information for Eth0 . . . failed
-
-[FAILED]"
-
-
-This occurs when the RH 7.3 does the initial boot up.
-
-
-
-
-> After I wrote this, I saw that Riley replied with a lot of good advice ...
-> only it was based on guesses about what some unclear parts of what you
-> wrote mean. If he got it right, then that should take care of your
-> problems. If he guessed wrong, you need to describe the location and
-nature
-> of the error more clearly than you have so far.
-
-Thanks again for you patience.
+Thanks for your advice.
 
 Enrique
 
-
-
->
->
-> --
-> -------------------------------------------"Never tell me the
-odds!"--------
-> Ray Olszewski -- Han Solo
-> Palo Alto, California, USA   ray@comarre.com
-> --------------------------------------------------------------------------
------
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 
 
 -
