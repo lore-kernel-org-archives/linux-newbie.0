@@ -1,25 +1,41 @@
-From: Daniel Peter Cavanagh <nofsk@vtown.com.au>
-Subject: beep killing
-Date: Fri, 11 Oct 2002 22:15:21 +1000
+From: Don Petrowski <dpetrowski@ci.collierville.tn.us>
+Subject: Re: beep killing
+Date: 11 Oct 2002 08:04:05 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DA6C0D9.3040206@vtown.com.au>
+Message-ID: <1034341446.11653.2.camel@workwatcher>
+References: <3DA6C0D9.3040206@vtown.com.au>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
+	boundary="=-gVujt53+qXULjz7oZfBP"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3DA6C0D9.3040206@vtown.com.au>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: Daniel Peter Cavanagh <nofsk@vtown.com.au>
+Cc: linux-newbie@vger.kernel.org
 
-Howdy,
 
-Can anyone suggest a good command-line POP-readable mail client. 
-Preferrably one that comes with Slackware.
+--=-gVujt53+qXULjz7oZfBP
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Also, can anyone tell how to kill the beep in GNOME and across all 
-terminals. I have "setterm -bfreq 0" in my rc.local file but that only 
-kills the beep on terminal 1.
+On the email client you could configure fetchmail to pick up the POP3
+accounts and deliver it to local user mbox and then pine or mutt to read
+and send messages.
 
-Cheers, Daniel.
+--=-gVujt53+qXULjz7oZfBP
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iEYEABECAAYFAj2mzEUACgkQIUkeRg0nIiKaDgCfZ+KYVtLDvbNrRnf90a7VYp9s
+ZNUAmwaj5X12VF2fy5pzNL9hnjWiNJav
+=JDwB
+-----END PGP SIGNATURE-----
+
+--=-gVujt53+qXULjz7oZfBP--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
