@@ -1,35 +1,30 @@
-From: =?iso-8859-15?q?Ram=F3n?= <rafuean@ono.com>
-Subject: RE: with overclock dont boot
-Date: Sun, 21 Mar 2004 13:52:42 +0100
+From: caszonyi@rdslink.ro
+Subject: Linux 0.99.15 (historycal question)
+Date: Sun, 21 Mar 2004 23:11:36 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403211352.42160.rafuean@ono.com>
-Reply-To: rafuean@ono.com
+Message-ID: <Pine.LNX.4.53.0403212309440.705@grinch.ro>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-hi again,
+Hi
 
-	Now i wish to know the diference between booting from cd or from hd, because 
-the same image boots from cd but not from the hd.
-	
-	I think that must be because the cd does something to enable booting with 
-whatever hw, maybe autodetecting it?
+Does anybody on this list knows which is the maximum size of a harddrive
+that linux 0.99.15 can boot on ?
 
-About ur answers:
-	Some systems..: Is the same system, the same kernel, the same partition, all 
-the same :o, so i think there must be a way to boot from hd.
+Thanks
 
-	'unsuported': Yes, really don't understand very well 'unsupported', u mean I 
-must enable something in kernel?, or that i can't boot in any way?, I can 
-boot from cd...
+Bye
+Calin
 
-Maybe i'm being too much 'cabezon' (dont know the english for that), but 
-changing all hw will cost too much :'(
+--
+"A mouse is a device used to point at
+the xterm you want to type in".
+Kim Alm on a.s.r.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
