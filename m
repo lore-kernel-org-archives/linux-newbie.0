@@ -1,26 +1,46 @@
-From: Rei Shinozuka <shino@panix.com>
-Subject: xerox phaser 6100/DN
-Date: Sun, 27 Feb 2005 00:44:41 -0500
-Message-ID: <20050227054441.GE9778@panix.com>
+From: Jeremy Abbott <jkbullfrog@comcast.net>
+Subject: kernel errors on boot
+Date: Sun, 27 Feb 2005 00:23:30 +0000
+Message-ID: <42211302.1090908@comcast.net>
 Mime-Version: 1.0
-Content-Disposition: inline
+Content-Transfer-Encoding: 7bit
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Newbie Linux Users <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-just wondering if anyone has used this printer.  i was surprised to
-see it's a color laser printer that comes with linux drivers from xerox, 
-does duplex (two-sided) printing, and costs $599 with ethenet network
-built-in.
+I am getting strange error messages from the kernel as I boot ever since 
+I upgraded from 2.6.10-gentoo-r5 to 2.6.10-gentoo-r6. 
 
-tia
+Here is a sample from my log:
 
--rei
--- 
-Rei Shinozuka shino@panix.com
-Ridgewood, New Jersey
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/2
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcs2"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa2"_No such file or directory_
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/3
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcs3"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa3"_No such file or directory_
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/4
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcs4"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa4"_No such file or directory_
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/7
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcs7"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa7"_No such file or directory_
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/a9
+Feb 26 15:33:40 [kernel] devfs_mk_dev: could not append to parent for vcc/10
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa9"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcs10"_No such file or directory_
+Feb 26 15:33:40 [devfsd] action_compat: error unlinking: "vcsa10"_No such file or directory_
+Feb 26 15:33:40 [devfsd] error calling: "unlink" in "GLOBAL"_
+
+
+I am running Gentoo, as if that wasn't obvious from my kernel ver.
+
+I did recently emerge udev to eventually replace devfs since it is being 
+deprecated, but have not done so yet.  Could this be part of the problem?
+
+Thanks,
+Jeremy
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
