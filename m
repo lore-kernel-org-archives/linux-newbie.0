@@ -1,43 +1,60 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: bash script problem
-Date: Tue, 10 Dec 2002 16:19:07 -0500
+From: Jerry James Haumberger <jerryjh@imt.net>
+Subject: hard drive head parking in linux
+Date: Tue, 10 Dec 2002 21:22:34 +0000 (UTC)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF65A4B.E53E6BE4@gelm.net>
-References: <3DF54C86.7070908@vtown.com.au> <3DF61C86.51C4AD34@ihug.co.nz>
-Mime-Version: 1.0
+Message-ID: <200212102113.OAA21014@cu.imt.net>
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Check this bash script for me, please.
 
-#/bin/sh
-#
-# if a floppy can be formatted 1.68 megabytes
-#    with 0 bad blocks
-# else
-#    format 1.44 megabytes
-# fi
-# mkfs.msdos /dev/fd0
-#
-if   (superformat /dev/fd0u1680 && badblocks -c 512 -n /dev/fd0u1680);
-then
-     mkfs.msdos /dev/fd0u1680
-else superformat /dev/fd0u1440 
-     mkfs.msdos /dev/fd0u1440
-fi
-mdir
-#
+>> is this already an automatic feature of the 
+>> later hard drives... 
 
- I'm thinking that 'badblocks' can find bad blocks and still return
-a 'true' condition.  If this is true, is there any way to cause
-the smaller format?
+>Yes, AFAIK this is an automatic eature of all IDE drives.
 
- If 'superformat /dev/fd0u1680' fails, it drops back to '/dev/fd0u1440'.
+Good.  If I listen closely to this 486 DX2 system, I can
+hear the gentle "plunk" sound as the IDE drive heads move
+into or out of position.  For example, I suspect that when I
+hear this sound shortly after activating the screen (when it
+has been blanked by the screen saver under BasicLinux) and do
+something on the keyboard, the HD heads that were lifted off
+from above the hard drive surface during the quiet period are
+moving back closer into their normal active position -- just
+scarcely above the hard disk surface.
 
-Regards, Chuck
+>It's not a big issue (it will be a very rare bird that
+>runs Linux on an old XT HD).  If you want to protect the
+>HD, just reset to DOS and run the park utility before 
+>powering down.
+
+These older machines do just fine with DOS and the Internet
+without the need for something more complex, like Linux.  I
+keep pretty close to software/hardware combinations that were
+usual for the active period of each of my classic machines.  The
+Linux console-only installation on this 486 DX2 is altogether
+"normal", in my opinion, right along with its dual relationship
+alongside PC DOS 7.  I don't think it would have been a peculiar
+combination back in the early 1990's (this machine has a late
+1991 BIOS).  Around 1994, let's say, this would have been a
+very powerful and expensive machine, but not unattainable for
+those who could afford it, nor strange.
+
+All in all, though, I believe that Linux is easier on and kinder
+to old hardware; and for serious professional use of classic
+machines, folks should consider using Linux to prolong the
+productivity of such hardware -- and they should preferably
+begin with the most basic of distributions, such as your
+BasicLinux, with no less than the minimum hardware requirements
+you've mentioned.
+
+Jerry... on a 486 DX2-50MHz with 8MB RAM in BasicLinux 1.7
+and Midnight Commander at the lab of Classic Systems, Ltd.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
