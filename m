@@ -1,58 +1,33 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Subject:Mail Filtering with Broadband
-Date: Wed, 2 Mar 2005 16:30:20 +0800
-Message-ID: <20050302163020.7cd19b8a@skyinet.net>
+From: zavandi <zavandi@gmail.com>
+Subject: Re: bash problem
+Date: Wed, 2 Mar 2005 11:36:09 +0200
+Message-ID: <321aa0d2050302013660343499@mail.gmail.com>
+References: <321aa0d20503011009d1b9060@mail.gmail.com>
+	 <42250CA7.6080103@comcast.net>
+Reply-To: zavandi <zavandi@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
+In-Reply-To: <42250CA7.6080103@comcast.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+To: "Conway S. Smith" <beolach@comcast.net>, linux-newbie@vger.kernel.org
 
+Conway S. Smith <beolach@comcast.net> wrote:
+> [...]
+> So, that means either I'm wrong and it's not something to do with the
+> for loop being executed in a subshell, or else the bash script sets up
+> the subshell's environment so that RANDOM works correctly.
 
-Problem solved. I still used the pid of pppd
-which is obsolete now.
+It could very well be about the for loop being executed in a subshell,
+but it's also about the particular number 0. If I replace "0" with "1"
+(or any other 15-bit int) it works correctly.
 
-> Hi,
-> 
-> I get my mail with getmail and I am using procmail for mail filtering and it 
-> has worked well with my dial-up modem connection. Now with the broadband 
-> connection it seems to miss some of the entries in .procmailrc such as:
-> 
-> :0 wc:${MAILDIR}/$LOCKEXT
-> * ^From:
-> * $^From:${GETTEXT}
-> ##| echo $FOO >> ~/Frommail
-> | echo "From: ${MATCH}" >> ~/Frommail 
-> 
-> 
-> :0 wc:${MAILDIR}/$LOCKEXT
-> * ^Subject:
-> * $^Subject:${GETTEXT}
-> | echo "Subject: ${MATCH}" >> ~/Frommail
-> 
-> Which then shows me on a small xterminal what mail is coming in,
-> and most important my blacklist
-> 
-> LOCKEXT=.lock
-> :0 Whic :$BLACKLIST$LOCKEXT
->  | (formail -x received: -x X-Envelope-From: -x Message-id: -x from: -x 
-> sender:
-> - -x reply-to: -x  return-path:| fgrep --quiet --ignore-case --file=$BLACKLIST)
-> ##
-> :0 Wa 
-> /dev/null
-> 
-> The filtering into various mail boxes of the mail program exmh is still 
-> working properly. I have not touched .procmailrc since changing to broadband.
-> 
-> Could is be that the mail comes in too fast now or what else could be the 
-> reason?
-> 
-> Thanks & regards
+> Anyway, good luck with whatever you're doing that needs this.
 
--- 
-Peter
+Actually, I was trying to find the maximum value for $RANDOM. Then I
+read the man page and remembered I was never getting the minimum
+value.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
