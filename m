@@ -1,35 +1,49 @@
-From: "Christoph" <christoph23@charter.net>
-Subject: FTP Speed disparity
-Date: Thu, 21 Nov 2002 10:31:29 -0600
+From: Robin Doer <robin@robind.de>
+Subject: Re: iptables or ip6tables firewall
+Date: Thu, 21 Nov 2002 18:17:00 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001901c2917b$74016a90$8c01a8c0@ENTROPY>
-References: <200211211224.52173.Adam@Luchjenbroers.com>
+Message-ID: <20021121171655.4317E6D43D@basicbox3.server-home.net>
+References: <200211202045.59886.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200211202045.59886.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-I have a box that dual boots linux (RH7.3) and Win98.
-For linux I'm using  IPTables (set up for me by one of my 
-coworkers who is a sysadmin) firewall and for Win98   I'm 
-using Sygate's firewall.  On linux, I use the PureFTP
-server and on Win98 I use Cerebrus FTP server.  I'm
-connected to the 'net via Cable.
-Now, whenever I'm booted to Win98 and I transfer files to
-that box via FTP, I get speeds of anywhere between 90 to 
-120 kbps.  However, whenever I'm booted to linux and 
-transfer files to the box, I get speeds of anywhere between 
-20 to 60 kbps.  What might be causing that disparity?  What 
-might I be able to do, where might I check to try to bring
-the speed up while in linux?
+Am Donnerstag, 21. November 2002 02:45 schrieb r4mz3z:
+> Hi friends...
+>   I was going to make a firewall (just learning) when I see that in
+> RedHat7.3 not only there are iptables daemon, ip6tables daemon too.
+>
+>   Which is the diference between iptables and ip6tables and which is =
+better
+> to make a firewall?
 
-thnx,
-Chris
+man ip6tables tells me:
 
+NAME
+       ip6tables - IPv6 packet filter administration
+
+DESCRIPTION
+       ip6tables  is  the  IPv6  enabled  version of the iptables
+       packet filter management program. "ip6tables --help"  will
+       list  the available commands and options. They're a subset
+       of the iptables' commands and  options,  which  are  docu=AD
+       mented in iptables(8).
+
+SEE ALSO
+       iptables(8)
+
+IMHO, the functionalities of iptables and ip6tables are identical, ip6t=
+ables=20
+is the IPV6-version of iptables.
+
+Robin
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
