@@ -1,88 +1,42 @@
-From: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>
+From: Jos Lemmerling <jos@lemmerling.nl>
 Subject: Re: file transfer via telnet
-Date: Thu, 20 Feb 2003 18:44:04 -0300 (BRT)
+Date: Fri, 21 Feb 2003 09:27:59 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
-References: <3E55D572.1B60BF79@ihug.co.nz>
-        <Pine.LNX.4.33.0302201209340.32539-100000@willy.nateworks.ca>
+Message-ID: <Pine.LNX.4.21.0302210920420.11589-100000@orthanc.lemmerling.net>
+References: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.33.0302201209340.32539-100000@willy.nateworks.ca>
+In-Reply-To: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: nate@nateworks.ca
-Cc: ichi@ihug.co.nz, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-If I'm not mistaken, you cannot do that because telnet transfers only A=
-SCII caracters or
-something like that (terminal related caracters)... There isn't a way t=
-o tell it to
-transfer something in binary (like ftp's "binary").
+On Thu, 20 Feb 2003, Eckhardt, Rodolpho H. O. wrote:
 
-But if you find a way, please e-mail it to me!
+> If I'm not mistaken, you cannot do that because telnet transfers only ASCII caracters or
+> something like that (terminal related caracters)... There isn't a way to tell it to
+> transfer something in binary (like ftp's "binary").
 
-Best regards,
+Isn't there some way to solve this with uudecode and uuencode? I don't
+know how, but those programs make it possible to transfer binary files
+over ASCII-only mediums.
 
-Rodolpho Eckhardt
-S=E3o Paulo - Brazil
-
-It=B4s believed that the following words were said by Nathan:
->
-> Hi Steven,
->
->> I year or two back, I remember reading about a way to transfer
->> a file using telnet.  It think it involved redirection from one
->> tty to another, but I don't remember the details.  I now find
->> myself in a situation with telnet access, but no ftp (or anything el=
-se I could use
->> to upload files).  Do any of you guys know the
->> telnet method?
->
-> This might not help, but if you have ssh access you could use scp (se=
-cure copy).
->
-> Regards,
-> Nathan
->
->
->> Cheers,
->> Steven
->>
->>
->> -
->> To unsubscribe from this list: send the line "unsubscribe linux-newb=
-ie" in the body
->> of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html P=
-lease read the
->> FAQ at http://www.linux-learn.org/faqs
->>
->
-> --
->
-> I'm as confused as a baby in a topless bar !
->
-> --
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in the body of
-> a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html Pl=
-ease read the FAQ
-> at http://www.linux-learn.org/faqs
+From the man-page uudecode:
+Uuencode and uudecode are used to transmit binary files over transmission
+mediums that do not support other than simple ASCII data.
 
 
---=20
-Rodolpho H. O. Eckhardt
-reckhardt@mandic.com.br
-Cel: 11 9126-9107
+If someone knows *how* to do it, plz let the list know...
+
+HTH
+
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
