@@ -1,38 +1,55 @@
-From: raihan@citech-bd.com
+From: John Kelly <jkelly@ntlworld.com>
 Subject: Re: Text Reformatting
-Date: Sun, 18 May 2003 10:23:38 +0600
+Date: Sun, 18 May 2003 08:54:23 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1223.1053231818@localhost.localdomain>
-References: <pfheiss@philonline.com>
+Message-ID: <20030518075217.PQHM11246.mta03-svc.ntlworld.com@there>
+References: <20030518041124.07222103AE@pfheiss>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Message from Peter <pfheiss@philonline.com> 
-   of "Sun, 18 May 2003 12:11:19 +0800." <20030518041124.07222103AE@pfheiss> 
+In-Reply-To: <20030518041124.07222103AE@pfheiss>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
 Hi,
+On Sunday 18 May 2003 5:11 am, Peter wrote:
+> Hi,
+>
+> Some text I download for printing are formatted like:
+>
+>       Because of the publicity the Iraqi government has given to the
+>                       issue, Iraqis worry about DU.
+>
+> which adds more pages for printing.
+>
+> How can I with some command, left align the text to read
+>
+> Because of the publicity the Iraqi government has given to the
+> issue, Iraqis worry about DU.
+>
+> yet maintaining the paragraphs.
+>
+I often cut and paste webpages into files and they are often munged as in the 
+example you give.
 
-> cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w
-> 105 file1.txt > file2.txt
-> 
-> This does not maintain the paragraphs, however. Can sed do
-> it and how?
+My standard way of doing this is to use vi.
+Open the file in vi and do:
+Press <ESC> to ensure you are in command mode. 
+Then type:
+:%s/^\s*//
+<ENTER>
+If you are happy with the result, type:
+ZZ 
+to save the modified file
+else type:
+:q!
+to quit without saving.
 
-If there's a blank line between paragraphs, it should work.
-Otherwise it becomes more difficult.  Try opening the file
-in Vim and running the command
 
-	ggVG
+regards,
 
-which reformats the whole file similar to fmt.  If you don't
-like the result, quit without saving anything:
-
-	:q!
-
-Yawar
+John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
