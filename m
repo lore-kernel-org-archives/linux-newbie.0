@@ -1,35 +1,29 @@
-From: Shaggy Im-erbtham <shaggy@loxinfo.co.th>
-Subject: error: failed dependencies -----> rpmlib
-Date: Fri, 19 Apr 2002 09:16:21 +0700
+From: "Mike Chambers" <mike@netlyncs.com>
+Subject: Hiyas
+Date: Thu, 18 Apr 2002 23:07:15 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4.3.2.7.0.20020419091135.011a3f00@lox2.loxinfo.co.th>
+Message-ID: <006801c1e757$b0a13350$0301a8c0@netlyncs.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-I was attempting to install a package (specifically ltsp_core from 
-www.ltsp.org)
-on RedHat 6.2 with the following
+Hiyas all,
 
-rpm -ivh ltsp_core-3.0.0-1.i386.rpm
+Just found this list and thought I would check it out.  Maybe I can learn a
+thing or two as well as help out others.  Been using linux for almost 5
+years now total off and on.  Hopefully I can be of some help.
 
-and got this error
+Is this list active?  Hope to talk to you soon,
 
-error: failed dependencies
-rpmlib (PayloadFilesHavePrefix) <= 4.0.0 needed by ltsp_core-3.0.0-1
-rpmlib (CompressedFileNames) <= 3.0.4-1 needed by ltsp_core-3.0.0-1
+--------------------
+Mike Chambers
+Madisonville, KY
+Netlyncs
 
-
-I assume I have an out-of-date "rpmlib" package, tried searching the net
-for it, but came up with nothing I could download and upgrade.
-
-Could anybody help?
-
-TIA
-Shaggy 
+"It's always better to hurt a little now, then to hurt a lot later!"
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
