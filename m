@@ -1,22 +1,30 @@
-From: Jude DaShiell <jdashiel@shellworld.net>
-Subject: Re: Command line questions
-Date: Mon, 7 Oct 2002 06:46:45 -0400 (EDT)
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Re: Copying files to CD-ROM discs
+Date: Mon, 7 Oct 2002 07:36:29 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.BSF.4.44.0210070645590.59638-100000@server1.shellworld.net>
-References: <200210051935.48876.sotl155360@earthlink.net>
+Message-ID: <200210070736.29196.sotl155360@earthlink.net>
+References: <5.1.0.14.1.20020817104733.020ef510@celine> <5.1.0.14.1.20021006191538.02552e10@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210051935.48876.sotl155360@earthlink.net>
+In-Reply-To: <5.1.0.14.1.20021006191538.02552e10@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-sure, ls * | less <cr>
+On Sunday 06 October 2002 22:20, Ray Olszewski wrote:
+> Sorry, but you can't do it that way. To write to a CD, you actually have to
+> control the CD burner part of the CD device ... it's not just like writing
+> to a filesystem. 
 
+Thinks 
+It appears that I will have to try a different approach.
+Thanks for the input.
+Oh well back to the drawing board.
 
+Thanks
 
+Frank
 
 
 -
