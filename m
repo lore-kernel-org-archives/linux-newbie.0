@@ -1,37 +1,72 @@
-From: Silambu Chelvan <silambu_mdu@yahoo.com>
-Subject: Switching between foreground and background
-Date: Mon, 22 Sep 2003 03:48:25 -0700 (PDT)
+From: Markus Klotzbuecher <markus.klotzbuecher@creamnet.de>
+Subject: Re: Switching between foreground and background
+Date: Mon, 22 Sep 2003 13:55:51 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030922104825.81134.qmail@web20002.mail.yahoo.com>
+Message-ID: <200309221355.51014.markus.klotzbuecher@creamnet.de>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
- 
-I have written some program with signal handler. Is
-this possible, if 
-one of the signals registered with my program is
-raised, my program 
-should goto background and should come to foreground
-when some other of the 
-registered signal is raised. how to do it? 
- 
-Any function available to switch a process between
-foreground and 
-background at runtime?
- 
-with regards,
-M. SilambuChelvan
+On Monday 22 September 2003 12:48 pm, Silambu Chelvan wrote:
+> Hi all,
+>
+> I have written some program with signal handler. Is
+> this possible, if
+> one of the signals registered with my program is
+> raised, my program
+> should goto background and should come to foreground
+> when some other of the
+> registered signal is raised. how to do it?
+>
+> Any function available to switch a process between
+> foreground and
+> background at runtime?
 
+Hi 
 
-__________________________________
-Do you Yahoo!?
-Yahoo! SiteBuilder - Free, easy-to-use web site design software
-http://sitebuilder.yahoo.com
+Switching a task between forground and background is nothing else as 
+suspending and restarting. What i would try to do is, when you get the signal 
+you want to suspend on, call the pause() function (see pause(2) ). When you 
+get the signal you want to restart on, just do nothing as this will let the 
+pause() function return and continue doing what happend before suspend.
+
+Try something like this:
+
+***************************************
+#include <signal.h>
+#include <stdio.h>
+
+void suspend()
+{
+        printf("Suspending...\n");
+        pause();
+}
+
+void wake()
+{
+        printf("Woken up.\n");
+}
+
+int main()
+{
+
+        signal(SIGUSR1, suspend);
+        signal(SIGUSR2, wake);
+
+        while(1) {
+                /* do whatever */
+                printf("doing whatever...\n");
+                sleep(1);
+        }
+}
+
+Cheers
+
+        Markus
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
