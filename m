@@ -1,64 +1,32 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Large FTP transfers
-Date: Sun, 29 Sep 2002 10:44:38 +0000
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: block-major-33
+Date: Sun, 29 Sep 2002 15:09:40 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02092910443801.00280@unix.pa3gcu>
-References: <5.1.0.14.1.20020928075131.02675d00@celine> <5.1.0.14.1.20020928093421.024d14f0@celine> <200209291739.30520.adam@luchjenbroers.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020929150940.H1156@neutrino.particles.org>
+References: <200209282047.g8SKl3v06435@ev6.be.wanadoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209291739.30520.adam@luchjenbroers.com>
+Content-Disposition: inline
+In-Reply-To: <200209282047.g8SKl3v06435@ev6.be.wanadoo.com>; from hammer@revobild.net on Sun, Sep 29, 2002 at 09:31:25AM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Adam Luchjenbroers <adam@luchjenbroers.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Sunday 29 September 2002 08:09, Adam Luchjenbroers wrote:
-> I'm starting to suspect the NIC. It has twice recently (one instance before
-> my previous emails, one since) stopped being detected with Linux giving me
-> an "unable to access 64-bit address message"
->
-> I've retrieved them from /var/log/kernel/errors
->
-> Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for
-> device 00:09.0
-> Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for
-> device 00:09.0
-> Sep 28 22:09:21 ironclad kernel: Unknown bridge resource 0: assuming
-> transparent
-> Sep 28 22:09:21 ironclad kernel: PCI: Cannot allocate resource region 1 of
-> device 00:09.0
-> Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because
-> of resource collisions
-> Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because
-> of resource collisions
->
-> In both cases, applying pressure to the top of the card fixed the issue,
-> however it is properly screwed in. How can I verify that this part is at
-> fault as I do not have any other cards to test it with?
+On Sun, Sep 29, 2002 at 09:31:25AM +0000, Heimo Claasen wrote:
+> With that fstab line I would get a "[Failed]" message with booting,
+> but a manual 'mount /cf-card' when needed will indeed mount it, if it
+> wouldn't mount automatically when the card is inserted or taken out
+> (task of that "cs-mgr" which obviously watches one of those pins.)
 
-At a guess i would say your cable is at fault, the way cards fit into the 
-Mobo normally assure's a proper connection, unless your card foot is worn 
-down and fits losely into the socket i doubt that would be your problem 
-altho' it could be a mineute hair fracture in one of the solder joints in the 
-foot. Come to that a bad joint could be anywhere.
+The kernel hasn't load the appropriate module when fstab is parsed
+during the boot process, so you get the error.
 
-The last 2 messages above say resource collisions, either you have 2 cards 
-sharing one IRQ (see that with cat /proc/interruts) and one or the other is 
-misbehaving, or there is a wire lose in the cable plug.
-
-Check all the simple things before pointing a finger at the card.
-Things like this can have many causes, at least the messages all point to 
-00:09.0 which we are presuming is the ethernet card, lspci will tell you what 
-00:09.0 is.
-
-
+Elias
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
