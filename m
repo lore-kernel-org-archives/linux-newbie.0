@@ -1,66 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: lilo
-Date: Sat, 27 Apr 2002 11:46:35 -0700
+From: "Lab. Sist. Operativos 2" <operativos2@tutopia.com>
+Subject: RE: Undelete for linux
+Date: Sat, 27 Apr 2002 16:35:05 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020427184635.01091e64@[192.168.1.23]>
+Message-ID: <000901c1ee3b$ca347080$0101a8c0@barneond>
+References: <013501c1ed12$3197a2e0$0101a8c0@barneond> <m3k7qthalx.fsf@wobble.eth.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: Tom Beer <mailings@analogon.com>, Staci <spiritlover666@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Tom -- Your description of your problem is a bit too elliptic to get good
-answers. (I think the range of responses from others who have posted
-illustrates how unclear your questions are ... people are trying hard to
-guess your meaning.)
-
-At 06:56 PM 4/27/02 +0200, Tom Beer wrote:
->I'm using Redhat 7.0 and there
->should be a way to get it running.
-
-There certainly should. Many ways, usually.
-
->It fits on a disk. 
-
-What is "it" and what do you mean by "a disk" (a floppy, a hard disk
-partition, or a CD)? 
-
->I think that I
->can't get the lilo process in my head 
->(and I hope so). 
-
-Huh?
-
->I compiled many things
->as modules and the kernel 2542462 big.
-
-What do you mean by "the" kernel? That's a chubby kernel even *after* it is
-uncompressed to run. More to the point ... how large is the actual bzImage
-file you created?
-
->But isn't there a way to install the bzImage?
-
-Install it on what?
-
-On a floppy? Sure. You can just dd it to the floppy for a crude boot.
-
-On a hard disk partition? Well, not really; here you do require a bootloader
-like LILO or GRUB. The usual way to do it is to cp the bzImage file to a
-suitable place (/boot is the custom), edit /etc/lilo.conf so it identifies
-the new image as the one to boot from, and run lilo.
-
-Some kernel Makefiles have a "make install" option that puts the bzImage or
-zImage where it needs to be; I don't know if whatever kernel RH 7.0 used did
-this.
+No I need make a project in the college
+----- Original Message ----- 
+From: G Anna <drguruolai@eth.net>
+To: Lab. Sist. Operativos 2 <operativos2@tutopia.com>
+Cc: <linux-newbie@vger.kernel.org>
+Sent: Saturday, April 27, 2002 1:19 AM
+Subject: Re: Undelete for linux
 
 
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
+> 
+> > Date: Fri, 26 Apr 2002 05:04:49 -0600
+> > From: "Lab. Sist. Operativos 2" <operativos2@tutopia.com>
+> > Subj: Undelete for linux 
+> > 
+> > Hi, I need to know howto make a undelete for linux, I need to use
+> > the library /usr/include/linux/ext2_fs.h or
+> > /usr/include/linux/ext3_fs.h.
+> 
+> Did you remove some file accidentally?  And do you want to recover it?
+> Is this what you want?
+> 
+> If that is the question, then the answer is its too difficult and
+> there are no guarantees.  Can you live without the file?
+> 
+> HTH
+> 
+> anna
+> 
+> -- 
+> 
+> (1) My Legions of Terror will have helmets with clear plexiglass
+>     visors, not face-concealing ones. - Peter Anspach in his 
+>     "The Top 100 Things I'd Do If I Ever Became An Evil Overlord"
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
