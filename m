@@ -1,43 +1,35 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: failed scp with fortune
-Date: Wed, 11 Feb 2004 16:43:01 -0800
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Black Box Time
+Date: Thu, 12 Feb 2004 09:40:36 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040211163851.01f271a8@celine>
-References: <Pine.LNX.4.44.0402111604410.845-100000@legolas.personal.en
- gin.umich.edu>
+Message-ID: <20040212014036.37F991C955@heisspf>
+References: <4029D94C.4030907@comcast.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0402111604410.845-100000@legolas.personal.en
- gin.umich.edu>
+In-Reply-To: Your message of "Wed, 11 Feb 2004 00:27:08 MST." 
+ <4029D94C.4030907@comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Beolach <beolach@comcast.net>
+Cc: linux-newbie@vger.kernel.org
 
-At 04:07 PM 2/11/2004 -0500, Karthik Vishwanath wrote:
->Hello,
->
->scp fails to get files from a remote machine when the .bashrc in the
->remote machine runs /usr/games/fortune (or even just a plain echo). How
->can I fix this without removing the "offending" line from the .bashrc
->file?
+Thanks!
 
-I weas able to duplicate your problem here using the "date" command. The 
-workaround is to put this command (and any others) inside an if-statement 
-block that can distijnguish interactive from non-interactive connections. 
-My setup (Debian-Sid) sets the skeleton .bashrc file up this way be 
-default. To do it by hand, do something like this (taken from my .bashrc file):
+You must have a different man blackbox then mine. It only mentions:
 
-         # If running interactively, then:
-         if [ "$PS1" ]; then
-                 ... various other commands ...
-                 /usr/games/fortune
-         fi
+ session.screen0.strftimeFormat:
+              This  adjusts the way the current time is displayed in the tool-
+              bar.  The strftime(3) format is used.   The  default  value  is:
+              %I:%M %p
 
-Make sure *all* executable content of the file is inside the if block and 
-you should be set.
+I had check that and only realized now that strftime refers to another man 
+page.
 
+Regards
 
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
