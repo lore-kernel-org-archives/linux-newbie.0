@@ -1,26 +1,42 @@
-From: Thomas Williams <tlw1mac@earthlink.net>
-Subject: klipper error madness
-Date: Sat, 31 May 2003 22:02:53 -0400
+From: Peter <pfheiss@philonline.com>
+Subject: Sound Lost
+Date: Sun, 01 Jun 2003 16:01:25 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030531220253.00c92864.tlw1mac@earthlink.net>
+Message-ID: <20030601080130.340C0103F4@pfheiss>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-I'm running 2.2.1-7 of KDE and I have a problem with klipper. When the xsession starts up its launched and it never appears in kicker and it generates massive error messages to .xsession-errors. The message it generates is "QMenuData::removeItem Index -1 out of range" It does this to the point of filling up the user space with that one single file. It also takes most of the CPU time as well. I'm theorizing that there is a clipboard file somewhere that is somehow corrupt and that is what is causing this problem.
+Hi,
 
-The questions are:
+I upgraded RH7.3 and the sound is gone.
 
-Am I right about there being a clipboard file somewhere?
+Old kernel-2.4.18-24.7.x.i686; new kernel-2.4.20-13.7.i686
 
-If so, then where is the dumb thing?
+dmesg:
 
-If not, then what do I have to do to klipper to make it behave its self?
+Trident 4DWave/SiS 7018/ALi 5451,Tvia CyberPro 5050 PCI Audio, version 
+0.14.10h, 13:32:09 May 12 2003
+PCI: Found IRQ 11 for device 00:01.4
+PCI: Sharing IRQ 11 with 00:09.0
+trident: SiS 7018 PCI Audio found at IO 0xe000, IRQ 11
+ac97_codec: AC97  codec, id: CMI65 (CMedia)
+AC97 codec does not have proper volume support.
 
-Tom
+The last line of the message appears on the console every now and then.
+
+How do I get my sound back?
+
+Thanks & regards
+
+
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
