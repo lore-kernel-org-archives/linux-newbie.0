@@ -1,103 +1,83 @@
 From: cr <cr@orcon.net.nz>
 Subject: Re: How to mount CD-ROM?
-Date: Wed, 30 Oct 2002 20:51:52 +1300
+Date: Wed, 30 Oct 2002 21:46:58 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021030093223.7D78E71DAE@smtp.orcon.net.nz>
-References: <20021029101159.98A177519A@smtp.orcon.net.nz> <3DBEA1CE.7070108@gmx.net>
+Message-ID: <20021030093224.D37F971949@smtp.orcon.net.nz>
+References: <5.1.0.14.1.20021029083056.0215aec0@celine>
 Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DBEA1CE.7070108@gmx.net>
+In-Reply-To: <5.1.0.14.1.20021029083056.0215aec0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: arthurothieno@gmx.net
-Cc: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-On Wednesday 30 October 2002 03:57, Arthur Othieno wrote:
-> cr wrote:
-> > I'm having trouble reading my CD-ROM (actually a LG(Goldstar) 8080
-> > cd-writer) drive.
+On Wednesday 30 October 2002 05:52, Ray Olszewski wrote:
+> You are trying to mix two methods of accessing the CD drive, and you can't
+> do that.
+
+I know that, I was just trying to eliminate all possibilities.   ;)
+
+> If you use ide-scsi emulation, then you need to access the drive as a
+> pseudo-scsi device, probably at /dev/scd0. (These device designators are
+> sometimes distro-specific, though, so you should check if RH has changed
+> thinng on you in the last version switch.) .
+
+/dev/scd0 exists as a file.   But I can't mount it.   'unknown device'
+
+> I notice that in all the tests you report doing, you don't report trying
+> this one:
 >
-> You are having trouble reading CD-ROM discs in your CD-RW drive, am I
-> right?
+>          mount /dev/cdrom
 
-That's correct.   In other words, just using it as a CD-ROM drive.   (I can 
-write OK when I need to with X-cd-roast).
+Just tried it.  "unknown device"
 
-> > It's not a hardware problem, and it worked in previous RH versions.  (It
-> > also installed my current RH 7.2 system quite happily).
-> >
-> > My /etc/fstab reads
-> > /dev/cdrom     /mnt/cdrom    iso9660 noauto,owner,kudzu,ro 0 0
-> >
-> > But, even su root, trying to mount it with (from memory):
-> > mount  /dev/hdb  /mnt/cdrom
-> > gave (from memory)   'unknown block device'.
-> >
-> > Trying X-cd-roast told me that ide-scsi was missing.
-> >
-> > Trying   insmod sg    told me that  sg  was already installed, and
-> > 'insmod  ide-scsi'   successfully loaded  ide-scsi, after which
-> > X-cd-roast now reads a CD   OK (and presumably, would write).
-> >
-> > However, I *still* can't mount or read a CD-rom in the normal way, from
-> > the command line.
-> >
-> > This is what happens:
-> > [root@localhost /]# mount -t iso9660  /dev/hdb  /mnt/cdrom
-> > "mount: bad fs type, bad option, bad superblock on /dev/hdb, or too many
-> > mounted file systems
-> > (could this be the IDE device where you in fact use ide-scsi so that sr0
-> > or sda or so is needed?)"
+> which should cause the fstab entry you list below to be used to find the
+> right device. I don't know if that will work either, but if the
+> installation really did work correctly, then /mnt/cdrom should be a symlink
+> to the correct block device (easy to check).
+
+/mnt/cdrom is a directory, not a symlink.   Which I assume means the 
+installation hasn't worked?
+
+> cdroast uses the device's (pseudo-)LUN to access it (something like
+> dev=0,0,0), not its /dev/* entry, and I assume X-cd-roast is just an X
+> wrapper for this app, so it does not help you find the correct /dev/* entry
 >
-> You can't mount your CD-RW as hdb since it's now being emulated as a SCSI
-> device. 
-
-That's what I suspected.
-
-> Try
+> As to the error messages you report:
 >
-> mounting it with `mount /dev/scd0 /mnt/cdrom' and see if that works
-> (assuming this is
+>          "mount: special device  /dev/scsi0 does not exist" means what it
+> says -- the /dev/directory does not contains a device entry for /dev/scsi0
+> . Check with "ls -l /dev/scsi*" or something similar.
+
+Yes, there isn't a  scsi*   in /dev/
+
+>          'unknown device'  means that the device entry exists in /dev, but
+> it does not point to an actual, physical device on the system. Try mounting
+> /dev/scd0 instead.
+
+Tried that before -  "unknown device"   still
+
+> Finally, on my system, scsi-ide emulation requires 4 modules, not the 2 you
+> mentioned:
 >
-> done with ide-scsi et al currently loaded). 
+>          ide-scsi                7360    0
+>          sg                      23588           0
+>          sr_mod                  12760           0
+>          scsi_mod                79480           3  [ide-scsi sg sr_mod]
 
-OK, done that - 
-"mount: dev/scd0: unknown device"
-(there is a /dev/scd0 file, I looked, 11 bytes long)
+Hmm.  
 
-> You might also want to
-> change the symlink `cdrom' in /dev to point to `scd0', something like
-> (as root): `cd /dev ; rm cdrom ; ln -sf scd0 cdrom'
+lsmod showed  sg  and scsi-mod.   
+After  'insmod ide-scsi'   ide-scsi appeared in the list too.   
+But trying 'insmod sr_mod'   just gives four error messages of 
+'unresolved symbol unregister_cdrom_R94f2f104'   and similar.
 
-Hmm, /dev/cdrom is actually a link   -> /dev/hdb
+X-cd-roast seems to work quite happily without it, though.
 
-OK, done that,  now  /dev/cdrom  ->  /dev/scd0
-
-But mount /dev/cdrom  /mnt/cdrom   gives 'unknown device' again...
-
->
-> The only questions that remain to be answered are:
->
-> (1) Do you want to use your CD-RW drive *only* for reading CD-ROM media
-> (which I doubt is the case here), or
-> (2) Do you want to use it to read and write CD-ROM/CD-R(W) media (which
-> is a more practical use)?
-
-Yes, that's what I want to do.   
-
-> For the latter, you will have to tell the IDE CD-ROM driver to ignore
-> hdb all together, and assign ide-scsi to hdb at boot. More specific
-> details can be gleaned from the CD-Writing HOWTO ;)
-
-Well, the writing is (I expect) quite OK with X-cd-roast, and it will also 
-read CD-ROM images quite happily.   No problem there.
-
-But what I want to do, and can't do, is read files off the CD-ROM in the 
-usual way as if it's just another filing system.   Mount it, do a ls, copy a 
-file....      Can't do it from the command line, can't do with Nautilus or 
-the KDE file manager....
+Thanks for the suggestions so far.   It seems I've tried all the logically 
+obvious things.  
 
 cr
 
