@@ -1,48 +1,68 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: Multi-kernel in grub
-Date: 22 Jul 2003 21:43:13 +0600
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: /cdrom fails to unmount
+Date: Tue, 22 Jul 2003 08:58:40 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3ptk24lf2.fsf@localhost.localdomain>
+Message-ID: <5.1.0.14.1.20030722084626.01eeb000@celine>
 References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
+In-Reply-To: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.cscl
+ ub.uwaterloo.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: travis@wsor.net
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-"Travis" <travis@wsor.net> writes:
+At 11:19 AM 7/22/2003 -0400, Dan Zlotnikov wrote:
+>In Deb.woody, kernel 2.4.18, I have the following problem:
+>
+>mount /cdrom
+>"sure," the computer says, "I will."
+>
+>cd /cdrom
+>
+>mplayer -fs whateverthehellI'mwatching
+>"Okay," says the computer.
+>
+>cd
+>"No problems," says the beast.
+>
+>umount /cdrom
+>umount: /cdrom: device is busy
+>Or in other words, "*$^! you!"
+>
+>No processes that I could identify suggested themselves as the visible
+>culprit. Rebooting works, but killing the x-session doesn't.
+>
+>Help, anyone?
 
-> My problem came at "Next, you have to copy the appropriate files so that
-> linux can boot from the new kernel."  I copied the vmlinuz image created
-> by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
-> file by copy-and-pasting my current RH boot section and simply changing
-> the label and pointing the vmlinuz-matrox as the kernel to load.
-> 
-> When booting I got an error very quickly.  I have been searching for a
-> grub multi-boot kernel tutorial and have read most of the applicable
-> grub user-guide, but to no avail.  If someone could point out a good
-> tutorial or give a few things to try, I would appreciate it.  Thanks in
-> advance.
+Your fanciful responses from the computer are cute but, in practice, 
+distracting and even a bit confusing. In particular, when you report ...
 
-The problem is Red Hat is not satisfied by the files you've
-copied, etc. etc.  It's best to let Red Hat's built-in
-scripts do this.  After the compilation, do a
+>mplayer -fs whateverthehellI'mwatching
+>"Okay," says the computer.
 
-# make install
+... does the "Okay" stand in for the fact that mplayer *begins* playing the 
+file or *finishes* playing the file?
 
-This, according to the Official Red Hat Linux Customization
-Guide (p. 257), will copy your new kernel to its proper
-place, create an entry for it in the boot loader's menu, and
-if necessary, make an initrd image for you (initrd is
-necessary if you use ext3 or SCSI devices).
+If the first ... if the file is still playing ... then the last message is 
+correct, in that mplayer is using the device. (But I'd be surprised to see 
+this survive killing X.)
 
-You can get the Guide at www.redhat.com/docs/manuals/linux.
+If the second ... after finishing playing, does mplayer exit? Or wait for a 
+command? If it waits, it may well retain access to /cdrom until you tell it 
+to play something located elsewhere. (But, again, I'd be surprised to see 
+this survive killing X.)
 
-HTH,
-Yawar Amin
+Bottom line: *something* is using the device, and it is not clear 
+what.  (One wild guess: does the system make it available via NFS?) In any 
+case, try running "fuser /cdrom" to get the PIDs of the process(es) 
+currently accessing the filesystem. Then deal with the accesses however is 
+appropriate to what you find.
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
