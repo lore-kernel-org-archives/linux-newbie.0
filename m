@@ -1,45 +1,22 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Oversized kernel
-Date: Wed, 12 Mar 2003 08:19:55 -0800
+From: "Yoni Kallay" <Yoni@kallay.net>
+Subject: ssh or samba causing network problems?
+Date: Wed, 12 Mar 2003 10:41:44 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030312081531.01f4fd30@celine>
-References: <720FB032F37C0D45A11085D881B03368A2B496@MBXSRV24.stu.nus.ed
- u.sg>
+Message-ID: <200303121041.AA650576096@kallay.net>
+Reply-To: <Yoni@kallay.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <720FB032F37C0D45A11085D881B03368A2B496@MBXSRV24.stu.nus.ed
- u.sg>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Eng Se-Hsieng <g0202512@nus.edu.sg>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 05:59 PM 3/12/2003 +0800, Eng Se-Hsieng wrote:
->Dear all,
->
->I've just compiled a new kernel and the vmlinuz is over 2Mb in size.
->Since mkbootdisk returns : Not enough space and I don't have a CD writer
->on my system, I'm unable to create a boot disk and am a little wary
->about not having one.
+Hi all,
+  I was just asked by the "system administrator" at the school where I work to take down my Linux box and I'm looking for vindication:
 
-Is this a compressed kernel? I suspect not, since "make bzImage" usually 
-generates a kernel named bzImage, not vmlinuz.
-
->How does one know what are the minimum options to choose in order to
->reduce the size of the vmlinuz? My system is a Toshiba Satellite 4030CDT
->(Celeron 266 Mhz)
-
-There is no useful general answer to this question. Start from a sensible 
-.config file (one as-shipped with the kernel source is usually fairly 
-sensible) and do as much as you can as modules instead of compiling into 
-the kernel. But in the end, you really need to do a long march through one 
-of the make procedures (personally, I'm a fan of "make menuconfig", but 
-tastes vary), adding in only the parts you need. (Once you get a bit of 
-practice, this is not hard to do ... custom kernels are normally smaller 
-than stock kernel images, not bigger).
-
-
-
+  I put the words "system administrator" in quotes because the man unfortunately isn't even given the authority to create NT trust accounts for our NT domain- anything that involves real sysadmin is run centrally (and, of course, incompetently) by the school district.  We've been having all sorts of network problems at our location, and after months of troubleshooting someone noticed a non-Windows, non-school-supplied machine running on the network, which allegedly violates some rules (it would be pointless to bring up that there is no money for me to be given a computer, so if I want one at school I have to bring it in myself).  What I wonder, though, is if there is some possibility that the computer is responsible for the network problems, which was just described to me as 'something creating so much network traffic as to bring the network down.'  First, the machine had been running Samba.  The smbd settings relating to the machine acting as a Primary Domain Controller were
+  all set to either Auto or No.  I did notice, though, that one time that the network went down the nmbd process was using up a lot of processor time.  Is it possible that the machine was forcing domain controller elections and thus overloading the network?  Second, I've been using ssh to log in to my machine at home, (using an X client only on extremely rare occasions).  As I understand it, ssh does not generate a huge amount of data, it simply requires processing power on either end and should not affect the network.  Third, if there were a situation where password security on my machine were compromised, could it be a more dangerous tool for mischief than the Windows machines?  It hasn't been running any telnet or ssh daemons, although it has been running the exim MTA.  Obviously, on a well-run network this would not be an issue, but this is sort of situation where anything that is unfamiliar is automatically suspected. 
+             
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
