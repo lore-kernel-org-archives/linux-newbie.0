@@ -1,26 +1,20 @@
-From: cr <cr@orcon.net.nz>
-Subject: Special characters
-Date: Wed, 1 Jan 2003 14:07:08 +1300
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: commport settings
+Date: 01 Jan 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212312358.gBVNwVd01933@mail.orcon.net.nz>
-Reply-To: cr@orcon.net.nz
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200301010230.h012UPq21999@ev6.be.wanadoo.com>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-This is probably an elementary query, but I can't find the answer in any help 
-files!   
+No, Jude, it should read, and does read modem='/dev/ttyS3' (as address
+is 2e8, correactly read as that in /proc/ioports)
 
-How does one produce a special (i.e. non-keyboard) ASCII character in a Linux 
-or X application (like text editors etc)?    For example, the pounds sign, 
-chr$(163).
-
-Alt + <num keypad>  doesn't seem to work.
-
-cr
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-31
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
