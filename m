@@ -1,51 +1,72 @@
-From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: Mailer Connections
-Date: Sat, 17 Aug 2002 10:43:01 +0100 (BST)
+From: lawson_whitney@juno.com
+Subject: Re: stripping flies (was: Re: .so, .a and .o-files)
+Date: Sat, 17 Aug 2002 10:07:15 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208171037230.8397-100000@Consulate.UFP.CX>
-References: <200208170854.g7H8sdr06556@philonline.com>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <20020817.100901.134671024.0.lawson_whitney@juno.com>
+References: <Pine.LNX.4.21.0208170957360.8397-100000@Consulate.UFP.CX>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208170854.g7H8sdr06556@philonline.com>
+In-Reply-To: <Pine.LNX.4.21.0208170957360.8397-100000@Consulate.UFP.CX>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: Riley@Williams.Name
+Cc: lists@tcob1.net, linux-newbie@vger.kernel.org
 
-Hi Peter.
+On Sat, 17 Aug 2002, Riley Williams wrote:
 
->>> Did a programmer change something that one has to edit now
->>> /etc/sysconfig/network a file I did not even know it existed
->>> or did I miss something when installing RH7.1? 
+> Hi Ray.
+>
+>  1. Axel asked about stripping OBJECT files. These are the
+>     intermediate files created by the compiler and fed to
+>     the linker, and I'm not sure that it's even possible
+>     to strip those.
 
->> I would presume that for some reason, you provided the wrong value on
->> the relevant pre-iinstall screen, but it is almost impossible to work
->> out which screen was affected in this way. 
+You can strip object files.  Some options (including the default)
+will make them useless if you do.
 
-> Since I have installed RH many times of different versions, even at
-> friends' placex it is almost routine.
+Script started on Sat Aug 17 09:47:25 2002
+[whit@giftie whit]$ cat hw.c
+#include <stdio.h>
+int main(){printf("Hello world!\n");
+return 0;}
+[whit@giftie whit]$ gcc -g -c hw.c
+[whit@giftie whit]$ ls -l --color=no hw.o
+-rw-r--r--    1 whit     uucp        10572 Aug 17 09:49 hw.o
+[whit@giftie whit]$ strip --strip-unneeded hw.o
+[whit@giftie whit]$ ls -l --color=no hw.o
+-rw-r--r--    1 whit     uucp          868 Aug 17 09:50 hw.o
+[whit@giftie whit]$ gcc -o hw hw.o
+[whit@giftie whit]$ ./hw
+Hello world!
+[whit@giftie whit]$ ls -l --color=no hw
+-rwxr-xr-x    1 whit     uucp        13212 Aug 17 09:50 hw*
+[whit@giftie whit]$ strip hw
+[whit@giftie whit]$ ls -l --color=no hw
+-rwxr-xr-x    1 whit     uucp         2984 Aug 17 09:51 hw*
+[whit@giftie whit]$ ./hw
+Hello world!
+[whit@giftie whit]$ strip hw.o
+[whit@giftie whit]$ gcc -o hw hw.o
+/usr/lib/crt1.o: In function `_start':
+/usr/lib/crt1.o(.text+0x18): undefined reference to `main'
+collect2: ld returned 1 exit status
+[whit@giftie whit]$ exit
+Script done on Sat Aug 17 09:52:12 2002
 
-I've installed various versions of RHL several hundred times now, and
-like you, I've long since developed a routine for doing so. However, on
-occasion, I still make stupid mistakes when installing - I set one of my
-own systems up with a 168.192.* IP address rather than the 192.168.* one
-it should've had, and that was only yesterday !!!
+> Best wishes from Riley.
+>
+Lawson
+---oops---
 
-> I have a strong suspicion that the problem is with RH7.1. I did the
-> installation twice and was surprised to be called localhost instead
-> of Peter and on booting getting that long message on starting lpd.
 
-That is always possible. As it happens, I've only installed 7.1 once in
-my career, although I installed both 7.0 and 7.2 several dozen times. As
-a result, I probably would not have noticed a problem with 7.1 whereas
-problems with either 7.0 or 7.2 would've stood out like a sore thumb.
 
-The important detail is that you now have a system that works...
 
-Best wishes from Riley.
-
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
