@@ -1,44 +1,37 @@
-From: Bill Pleasants <Bill_Pleasants@pghmail.com>
-Subject: Printer error
-Date: Sun, 15 Dec 2002 22:14:49 -0500
+From: "Veggies Unite!" <vegweb@msn.com>
+Subject: sendmail
+Date: Mon, 16 Dec 2002 04:59:10 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DFD4529.1040700@pghmail.com>
+Message-ID: <F4bxgg8DUDEne3Ndrpu0000ba5a@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hello,
-After installing RH 8.0 in my HP Pentium II, my first successful installation,
-I installed a Brother HL-720 printer. I set it up local.  The Printer 
-Administration window shows:
- Command:    lpr
+I hope that this is the correct place to e-mail this question - if
+not, I would appreciate being re-directed. I've set up SuSe 8.0 on a
+computer running through a router and a cable modem.  I have a
+static IP, and I have a domain name pointing to the IP via a
+Registrar that also handles a POP3 account. I've set up Majordomo on
+my computer and would like to configure sendmail as a mail server so
+that it will handle mailing lists aliases for Majordomo.  Also, I
+would need to run a POP server to allow me to receive mail from my
+server instead of the Registar.
 
- Driver:          Generic Printer (SGENPRT)
+In order for the aliases for majordomo to work, do I have cancel my
+mail coming from the POP3 account via the Registrar?
 
- Location:  
+Please let me know of any documentation on this or if you have
+specific advice on what I would need to do.
 
-After printing 2 of 3 pages from
-Mapquest, the printer indicated toner out.  I replaced the cartridge and
-there was an error light which can be cleared by unplugging the printer
-cable and cycling the printer off.  I reset the print queue and the same
-2 pages printed and the error light flashed.  Rebooted - same error light.
-Attempts to print additional items failed.  Later I entered 
-"lprm" to cancel anything pending and got
-"local host IP not available."  When I entered
-"/etc/init.d/lpd stop" I got 
-"[FAILED]"
-I repeated it and got
-"[FAILED]"
-"local host IP not available"
-In the panel is a ? which when clicked gives
-"Temporary error in name resolution."
-So far I haven't learned what this IP is about. I would appreciate help.  
-Yours truly,
-Bill
+Thanks,
+Yvette
 
+_________________________________________________________________
+Add photos to your e-mail with MSN 8. Get 2 months FREE*. 
+http://join.msn.com/?page=features/featuredemail
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
