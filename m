@@ -1,8 +1,8 @@
-From: James Miller <jamtat@mailandnews.com>
+From: Jude DaShiell <jdashiel@shellworld.net>
 Subject: Re: A few more things and I can kiss windows good bye.
-Date: Tue, 15 Oct 2002 16:05:42 -0500 (CDT)
+Date: Wed, 16 Oct 2002 00:26:27 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0210151600220.6549-100000@localhost.localdomain>
+Message-ID: <Pine.BSF.4.44.0210160022420.84384-100000@server1.shellworld.net>
 References: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,17 +11,18 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: Paul Kraus <pkraus@pelsupply.com>
-Cc: Linux <linux-newbie@vger.kernel.org>
+Cc: linux-newbie@vger.kernel.org
 
-On 15 Oct 2002, Paul Kraus wrote:
+Last year I read about a version of visualbasic available to run on linux
+and think it was put under the gnu gpl license.  Thing is, I don't know if
+it runs only in the gui environment or can run in the text environment.
+If it runs in the text environment, the government could provide blind
+programmers with talking linux boxes and that visualbasic application then
+they'd be able to do development without the problems inherent with
+running windows for the blind and running vb6.
 
-> I know that it is supposed to be cross-platform combatable. 
 
-This sentence belongs in the M$ vs Linux freudian slips hall of fame.
-(Paul's spelling sensibilities turned the word "compatible" 
-[complementary, harmonious] into "combatable" [well-suited for combat?]).
 
-James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
