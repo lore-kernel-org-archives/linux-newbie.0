@@ -1,79 +1,91 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Long Gnome-session
-Date: Tue, 13 Jan 2004 13:25:05 +0800
+From: Lars Bungum <lars@bungum.no>
+Subject: Re: Machine to power off automatically.
+Date: Tue, 13 Jan 2004 09:29:32 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040113132505.19344da7@skyinet.net>
-References: <20040112155340.0b7f58a6@skyinet.net>	<200401121235.34024.pa3gcu@zeelandnet.nl>
+Message-ID: <1073982571.1899.5.camel@shostakovitsj.larsemann>
+References: <1073811986.2087.2.camel@shostakovitsj.larsemann>
+	 <20040111125045.49f04b65.bilbo@waitrose.com>
+	 <1073843852.2236.7.camel@shostakovitsj.larsemann>
+	 <4002130D.6050504@comcast.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200401121235.34024.pa3gcu@zeelandnet.nl>
+In-Reply-To: <4002130D.6050504@comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Beolach <beolach@comcast.net>
+Cc: linux-newbie@vger.kernel.org
 
-X-Mailer: Sylpheed version 0.9.8claws (GTK+ 1.2.10; i686-pc-linux-gnu)
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-
-
-
-> On Monday 12 January 2004 08:53, Peter wrote:
-> > Hi,
-> >
-> > Among other strange things in RH9.0 is the long time it takes to > > open gnome-session. A full 2.5 minutes.
-> >
-> > Is this standard?
->
- 
-On Mon, 12 Jan 2004 12:35:34 +0100
-pa3gcu <pa3gcu@zeelandnet.nl> wrote:
-> No its not, something is wrong, i would check my logs to see if there >  are any hints, a possibility is that you have defined a hostname which > is unresolvable.
-
-There is nothing in the logs, however, on account of your hint I had a closer look at the console after logging-out and scrolling up it said somehing about /usr/local/bin/metacity. I deleted the file after I found another one in /usr/bin and swoop, gnome-session is now up in 8 seconds.
-
-After I had installed RH9.0 I copied my RH7.3 /usr/local directory into the new box not knowing that there was that metacity file in it.
- 
-> > What is also surprising is that one has to look for a terminal and  > > finds it finally as the last item under system tools.
+On Mon, 2004-01-12 at 04:22, Beolach wrote:
+> Lars Bungum wrote:
+> > On Sun, 2004-01-11 at 13:50, John Kelly wrote:
+> > 
+> >>>I can't get my machine to turn itself off automatically (when I tell it
+> >>>to do so in KDE), it just hangs saying "Power Down".  Is there some
+> >>>option I have to enable in order to get this working?  Looked at the
+> >>>APM/ACPI sections, but felt that was more related to laptops and
+> >>>batteries, etc.  My BIOS was too old for ACPI, anyway.
+> >>
+> >>You don't say which distro or kernel you are using, which may help.
+> >>For what it is worth I had this problem a while ago. My Redhat box died and the 
+> >>only CD I had was debian. The new debian box (kernel2.4.18) would not power down 
+> >>automatically. I just loaded the apm module and things then worked as expected.
+> > 
+> > 
+> > John,
+> > 
+> > my system is based on RH9, with the kde-redhat project inside using
+> > apt-rpm.  However as shutting the machine off works with the exact same
+> > configuration only booting a different kernel (the 2.4.18 shipped with
+> > RH) I suspect some option/module must be set in the kernel to get this
+> > working.  The "apm" module is loaded, and the "apmd" daemon from the
+> > RedHat system is started and runs without error.
+> > 
+> > My problem is that I don't really know what is supposed to make this
+> > particular feature work.  Is it apm?  When I read the docs about
+> > APM/ACPI it seemd all to be about battieries and other laptop-related
+> > matters, and my machine is just a standing desktop.  So what software is
+> > it that is supposed to make this work?
+> > 
+> > --lars
+> > 
 > 
-> Well not so suprising as most users today dont even know what a > terminal session is.
-
-So Bill Gates has successfully played his part in the further cretinization of mankind.
-
-> You can of course add an icon to your pannel or desktop.
-
-I am aware of that yet have not used gnome as a desktop since after RH5.2. If I need a panel I just type gnome-panel, formerly just panel, in the terminal or kicker for kde. For the latter one it's nice to see that an icon for a terminal is still prominently placed on the panel.
-
-> >
-> > Is gnome going the way of MSWindows, users of which are mere        > > klickers?
+> APM = Advanced Power Managment
+> ACPI = Advanced Configuration and Power Interface
 > 
-> I think you will find that many things are starting to look like      > MSwidows for the simple reason thats the way most folks want it to be > but, you as user can change the way it all works that is "UN"like     > MSwidows.
+> It would be one of these options that would handle shutting down the 
+> power on your computer, most likely APM if you have an older BIOS.  It 
+> does also take care of batteries on laptops, but it is Power Managment 
+> in general, not just batteries that it handles.
+> 
+> As to fixing your problem, you did say the APM module is loaded & apmd 
+> is running without errors, so my best guess is that your APM module is 
+> missing some option required for it to work right on your machine.  Look 
+> through your kernel config and check a couple options that you think 
+> might have to do with this, such as "CONFIG_APM_REAL_MODE_POWER_OFF":
+> 
+> 	Use real mode APM BIOS call to power off
+> 
+> 	Use real mode APM BIOS calls to switch off the computer. This is 
+> 
+> 	a work-around for a number of buggy BIOSes. Switch this option
+> 	on if your computer crashes instead of powering off properly.
 
-And for that freedom of choice I do love Linux!!
+Con, 
 
-> >
-> > Luckily there is blackbox and my favored fvwm2.
-> 
-> Many others as well.
-> 
-> >
-> > Regards
-> 
-> -- 
-> If the Linux community is a bunch of theives because they
-> try to imitate windows programs, then the Windows community
-> is built on organized crime.
-> 
-> Regards Richard
-> pa3gcu@zeelandnet.nl
-> http://people.zeelandnet.nl/pa3gcu/
-> 
-> 
+thanks a bunch for your illuminating clarifications.  When I altered
+some options under APM, it worked.  (My BIOS was too old for ACPI).  As
+I enabled more functions, I can't really know what the trick was, but I
+suspect that it actually was compiling apm directly into the kernel
+instead of loading it as a module.  The
+"CONFIG_APM_REAL_MODE_POWER_OFF": was enabled all the time.
 
+BTW: Another "strange" thing I saw, is that my isapnp Soundblaster
+stopped working when I compiled a kernel with pnp BIOS.  Something to
+try if this is a problem, I guess.
 
--- 
-Peter
+--lars
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
