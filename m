@@ -1,33 +1,62 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Make a phone call (repeat)
-Date: Sun, 19 May 2002 17:50:47 -0700
+From: Rajesh Radhakrishnan <rajeshrk@mascon.co.in>
+Subject: RE: Visual Audio Tool, The ACE ORB and Linux
+Date: Mon, 20 May 2002 10:11:34 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020519174900.009e9170@celine>
-References: <2.2.32.20020518165939.03d27178@[192.168.1.23]>
+Message-ID: <33D492BAFECCD4118A2F001083FC3AB5820F58@GRMAIL>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <005301c1ff84$19311ea0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Tom Beer <mailings@analogon.com>, anna7sept@linuxmail.org, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Tom -- I think you missed earlier emssages in this thread. The original 
-poster is trying to use a modem equipped with *built-in* voice to make a 
-phone call. The mike connects directly to the modem, and all that's needed 
-(I think) is a command to turn it on. Nothing is being digitized, as I 
-understand it; the modem is simply acting as a normal (analog) telephone.
+Hi,
 
-At 12:17 AM 5/20/02 +0200, Tom Beer wrote:
->Hi,
->
-> > It's likely that the modem uses some non-standard AT command to turn the
-> > mike on and off (in contrast to the speaker, which turns on and off with a
-> > long-established, standard AT command).
->
->isn't it too much data on a maximum of 33.6kbit/s for h.323 data transfer?
->
->Greets Tom
+I am trying to adapt Visual Audio Tool for the TAO( the ACE ORB) framework.
+I had tried to communicate the authors of VAT at Berkeley Labs,
+unfortunately they are no longer there.
+
+I am trying to run VAT on RH7.2 and I have the following problem
+
+
+		I loaded the gsm files above the vat directory and the
+"configure" produced a "Makefile". However when i run the "make" i have the
+following message ....
+
+
+				In file included from inet.c:33
+				config.h:87:conflicting types for
+'gethostid'
+				/usr/include/unistd.h:805:previous
+declaration of "gethostid"
+				In file included from inet.c:34
+				inet.h:98:redefinition of 'struct msghdr'
+				make : *** [inet.o] Error 1
+
+Can somebody give some info on modifying the RTP specific components of VAT
+and how to adapt them to the TAO framework. I have a copy of the book
+"Pattern Oriented Software Architecture" by Doug Schmidt et.al which deals
+with the handles of TAO.
+
+Any help will be greatly appreciated.
+TIA,
+Raj
+
+
+
+ 
+****************************************************************************
+This e-mail and any files transmitted with it are for the sole use of the
+intended recipient(s) and may contain confidential and privileged
+information. If you are not the intended recipient, please contact the
+sender by reply e-mail and destroy all copies of the original message. Any
+unauthorised review, use, disclosure, dissemination, forwarding, printing or
+copying of this email or any action taken in reliance on this e-mail is
+strictly prohibited and may be unlawful.
+Visit us @ http://www.masconit.com
+****************************************************************************
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
