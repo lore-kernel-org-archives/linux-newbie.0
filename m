@@ -1,107 +1,95 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Slackware 8.1.01 Install????
-Date: Wed, 4 Jun 2003 21:01:56 +0200
+From: cr <cr@orcon.net.nz>
+Subject: Re: Questions on GRUB and RH7.2
+Date: Thu, 5 Jun 2003 09:45:36 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306042101.56986.pa3gcu@zeelandnet.nl>
-References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200305312214.21667.pa3gcu@zeelandnet.nl> <20030603164428.A161@lnx2.w8mch.ampr.org>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <200306050726.h557Q43Y020811@dbmail-mx2.orcon.co.nz>
+References: <1157.1054560617@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030603164428.A161@lnx2.w8mch.ampr.org>
-Content-Disposition: inline
+In-Reply-To: <1157.1054560617@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com
-Cc: linux-newbie@vger.kernel.org
+To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-On Tuesday 03 June 2003 22:44, Hal MacArgle wrote:
-> Greetings again Richard and I've found something that I'm hoping is
-> --IT--....
-
-Firstly, i cant remember if we started this as a personal matter, however i 
-have CC'ed this to the linux-newbie list, i saw some other mails with the 
-same header so i am sure i am doing the correct thing.
-
+On Tuesday 03 Jun 2003 1:30 am, Amin wrote:
+> On Tue, 3 Jun 2003 09:02:57 +1200, cr wrote:
+> > Can any kind person give some info on the following:
+> >
+> > I don't seem to have a 'initrd' file - does it matter?
 >
-> My mind is like Jello after an afternoon with this so forgive me if I
-> say something really stupid:
+> It does if you load a SCSI module at boot time, according to
+> the Red Hat Linux Customization Guide.  You can browse this
+> and other manuals:
+> http://www.redhat.com/support/resources/howto/rhl72.html
+
+Thanks, I've looked.   I guess I do need it.
+
+> If you decide you need one, look for mkinitrd(8).  The man
+> page says:
 >
-> I bought another IDE drive and fitted it to yet another machine..
-> Using Slack 8.0, 2.4.5 bare.i bootdisk and color.gz all seemed well
-> as the CD was found; partitions setup, etc.. Selected "a" only, menu
-> mode and then got the dreaded screen again "Your source device cannot
-> be accessed properly."
+> mkinitrd - creates initial ramdisk images for preloading
+> modules
+
+Thanks for the tip.   Now I can sit down and study the cryptic language of 
+man mkinitrd - but at least I now know where to look.
+
+> > I'm not quite sure how to address DOS.   If anyone has a dual boot
+> > Linux/DOS setup, the contents of their   /boot/grub/grub.conf  or   
+> > menu.lst  files would maybe give a guide.
 >
-> This time however I RTFM the rest of what it said. Dumbo me, before.
-> It said to be sure the Slackware distribution  is mounted on
-> /var/log/mount/slakware... Of course the drive was mounted properly
-> BUT the CD I have has the packages in the directory slackware. After
-
-Something wrong here, my slackware-8.1 cdrom obtained from a mirror site of 
-slackware.com so its a slackware disk period.
-
-I booted my machine a 650Mhz PIII machine with slack 8.0 bare.i and color.gz 
-disks, please NOTE, slack 8.0 boot disks.
-After doing the normal thing, fdisk(ing) typing 'setup' i get the dialog 
-install program just like one expects.
-
-I can then add swap, choose a partition to install on and let setup 
-'automaticly' mount my cdrom located on /dev/hdc.
-It gets mounted in /var/log/mount "thats it" no slackware directory to be 
-seen, AFAIK its always been that way.
-
-> all these years Patrick has decided to change the "normal" directory?
-> /Or/ perhaps when the distribution was made this happened somewhere
-> along the line. Dunno..
-
-Not as far as i know he has'nt. At least not as far as 8.1, however i cant 
-comment on slack 9 as i did not install from an iso image i installed from 
-HD, i simply ftp'ed the directory's a thro' y .
-
+> ############################################################
+> # Note that you do not have to rerun grub after making
+> # changes to this file
+> # NOTICE:  You have a /boot partition.  This means that
+> #          all kernel and initrd paths are relative to
+> #          /boot/, eg.
+> #          root (hd0,2)
+> #          kernel /vmlinuz-version ro root=/dev/hda6
+> #          initrd /initrd-version.img
+> #boot=/dev/hda
+> default=1
+> timeout=10
+> splashimage=(hd0,2)/grub/splash.xpm.gz
 >
-> I, actually, noted this all along but never gave it a 2nd thought..
+> title Red Hat Linux (2.4.18-14Apr06_2003)
+>  root (hd0,2)
+>  kernel /vmlinuz-2.4.18-14Apr06_2003 ro
+>  root=LABEL=/
+>  initrd /initrd-2.4.18-14Apr06_2003.img
 >
-> The problem now is: How in the hell can I go round this??
-
-What i ask is the following, if you mount the CD on another running linux 
-machine, what is the dir structrue after the mount point, you should see;
-"slackware" period, in otherwords if you mount the cdrom under /mnt you should 
-see;
-/mnt/(a lot of files and directorys) and one called slackware contianing dir's
-a, ap, d, e, so on and so forth.
-
-Another quiestion is what happens if you give a path to "setup" and mount the 
-cdrom manually. ??
-
+> title DOS
+>  rootnoverify (hd0,0)
+>  chainloader +1
+> ############################################################
 >
-> Not having the actual CD I have in my possession no one could have
-> possibly known about this except ME...
+> My partition layout is like this:
 >
-> Do I have to copy all the files from that CD directory to the HD in
-> the 'slakware' directory and then install from there?? Maybe this is
-> what you were talking about before.. I'm getting too old methinks.
-> At least I'm sure learning more and more.
- You certainly can do that yes, there is only the need for the contens of the 
-slackware directory to be copied to the HD no need for all the help readm's 
-and so on in the topdir of the cdrom.
-
-If all esle fails i could even send you a copy of my cdrom per POST, but i 
-dont really think that is nessasary at all, i have a small inclination you 
-are doing something fundementally wrong.
-
-> Tomorrows another day, eh? Vy 73,
+> DOS/Windows C: is	hda1
+> Linux /boot is		hda3
+> DOS/Windows D: is	hda5
+> Linux / is		hda6
 >
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
->                 Proprietary  Formats  Unacceptable
-> .
+> hda5 and hda6 are logical partitions within hda2, which is
+> an extended partition.  I know, a killer layout!  I was
+> desperate to get Linux on my computer then, somehow :-).
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+I've had partition layouts like that, more often than not.  
 
+> So, the gub.conf says to load DOS from (hd0,0), which is
+> hda1.  I'm a little foggy as to what the `rootnoverify'
+> does, but I'm sure it's all in the GRUB info file.
 
+It is.   'root' sets the current 'root device' to hd0,0  (hda1)   in your 
+case.   'noverify' means don't attempt to mount the partition.   
+
+The 'chainloader' command fails in my case, but at least your example has 
+confirmed for me that it's the correct term to use - so the problem isn't in 
+my  grub.conf  file, I'll need to look elsewhere.
+
+Thanks
+
+cr
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
