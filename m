@@ -1,46 +1,55 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: tune2fs configuration
-Date: Sat, 12 Jul 2003 09:09:49 +0200
+From: Jose Luis Alarcon <jlalarcon@linuxwaves.com>
+Subject: Re: difference between buffer and page caches?
+Date: Sat, 12 Jul 2003 02:37:41 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307120909.49217.pa3gcu@zeelandnet.nl>
-References: <Pine.LNX.4.56.0307111445050.1107@homenet>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030712093741.6D4193BAD@sitemail.everyone.net>
+Reply-To: jlalarcon@linuxwaves.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0307111445050.1107@homenet>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: James Miller <jamtat@mailsnare.net>, Linux-Newbie list <linux-newbie@vger.kernel.org>
+To: Mohammad Nayyer Zubair <mzubair@ic.sunysb.edu>, linux-newbie@vger.kernel.org
 
-On Friday 11 July 2003 21:59, James Miller wrote:
-> Well, I have another not-too-profound Linux inquiry - this time about
-> configuring tune2fs (yes, this is for an older ext2 filesystem).  I have a
-> hard drive that's acting a bit punchy, and I'd like for the filesystem
-> integrity to be checked quite a bit more frequently than usual: say, every
-> 5 boots or so.  It was indicated to me that tune2fs is the utility to use
-> for this.  Looking over the man page has not exactly been helpful though.
-> From it, I've understood that the option "-c" is the one I'm probably
+--- Mohammad Nayyer Zubair <mzubair@ic.sunysb.edu> wrote:
+>
+>Hi...
+>
+>Can anyone explain in as much detail as possible the difference between
+>the design, use, implementation and related of the buffer and page >caches in the linux 2.4.20 kernel?
+>
+>thanks
+>
 
-You need to do ;
-tune2fs -c 20 /dev/hda1
+  Hi Mohammad, Salam.
 
-20 and /dev/hda1 are examples change to suit your situation.
+  For this kind of questions the right mailing list is this:
 
-> Thanks, the befuddled James
+     https://mail.nl.linux.org/cgi-bin/lsg2.cgi
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+that is the list of this site: http://kernelnewbies.org
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+  There is sure that the guys can solve your dudes.
+
+  Very good luck.
+
+  Regards.
+
+  Jose.
 
 
+http://linuxespana.scripterz.org
 
+FreeBSD RELEASE 4.8.
+Mandrake Linux 9.1 Kernel 2.5.75 XFS.
+Registered Linux User #213309.
+Memories..... You are talking about memories. 
+Rick Deckard. Blade Runner.
+
+_____________________________________________________________
+Get your spam-free, Linux email now --> http://www.LinuxWaves.com
+Join Linux discussions --> http://Community.LinuxWaves.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
