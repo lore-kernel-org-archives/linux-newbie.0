@@ -1,59 +1,41 @@
-From: "Calin Szonyi" <caszonyi@linuxmail.org>
-Subject: Re: Page swap
-Date: Fri, 08 Nov 2002 09:39:31 +0200
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Tkdesk Segmentation Fault
+Date: Fri, 8 Nov 2002 11:53:06 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021108073931.25649.qmail@linuxmail.org>
+Message-ID: <20021108115306.B3759@neutrino.particles.org>
+References: <eathan@otenet.gr> <200211080213.gA82D7w02008@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <200211080213.gA82D7w02008@philonline.com>; from pfheiss@philonline.com on Fri, Nov 08, 2002 at 10:13:07AM +0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: cba20032002@yahoo.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
+On Fri, Nov 08, 2002 at 10:13:07AM +0800, Peter wrote:
+> I had to put the dash in front of # for the mailk to get out.
+> Does it say anything usefull?
+> Thanks for your patiences.
 
------ Original Message -----
-From: Mike Ni <cba20032002@yahoo.com>
-Date: 	Thu, 7 Nov 2002 21:16:26 -0800 (PST)
-To: linux-newbie@vger.kernel.org
-Subject: Page swap
+No. Sorry but I just realised that you have a problem with a Tcl/Tk 
+script. Actually, you have to use gdb with the Tcl/Tk interpreter (not
+sure which is that, it should be named in the first line of TkDesk).
 
+Assuming the interpreter has been build with debugging info, it is called
+'tcl' and it is in your path, do:
 
-> Folks,
-> 
-> I am having performance issue with one of the
-> application. It looks like it is running low on the
-> memory. 
-> 
-> In addition to add new memory to the system, is there
-> anything can be done while we are waiting for the
-> memory upgrade? 
-> 
+% gdb tcl
+% (gdb) run /path/to/tkdesk
 
-Yes. You could add a swap file if you have enough
- disk space:
+Normally, you'll get the segfault inside gdb, and using 'where' you'll get
+the stack backtrace.
 
-dd if=/dev/zero of=path_to_your_file bs=1024 count=number_of_MB_you_want_to_add
+Elias
 
-mkswap -v1 path_to_your_file
-swapon path_to_your_file
-
-Also keep in mind that when the physical memory is
- full and the application is alocating more and 
-mor memory your system will run at the speed of the hard drive 
-
-> Thanks in advance
-> MIke
-> 
-You're welcome
-Bye
-Calin
 -- 
-______________________________________________
-http://www.linuxmail.org/
-Now with POP3/IMAP access for only US$19.95/yr
-
-Powered by Outblaze
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
