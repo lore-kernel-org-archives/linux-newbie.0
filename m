@@ -1,50 +1,45 @@
-From: Axel Siebenwirth <axel@pearbough.net>
-Subject: Re: reiserfs
-Date: Sun, 25 Jan 2004 13:17:00 +0100
+From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+Subject: partitioning
+Date: Sun, 25 Jan 2004 21:37:39 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040125121700.GA14729@neon>
-References: <200401251640.31302.wheds8@ms66.hinet.net>
+Message-ID: <200401252137.39975.wheds8@ms66.hinet.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200401251640.31302.wheds8@ms66.hinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi S.!
+I am probably getting too picky about repartitioning my drive but I want it to 
+be set up for a long time. I never use all the space in my harddrive even 
+though it is relatively small. (I only use it for work and don't play any 
+games.)
 
-On Sun, 25 Jan 2004, S. Barret Dolph wrote:
+Questions......
 
-> I have looked at the various file system stuff for comparison. I have been 
-> using Reiserfs for some time now and had, until recently, no problems. 
-> 
-> ?s
-> 
-> Are Xfs and Jfs still too new to use?
-> 
-> I have used ext3 for my / partition. But I can't remember who told me I should 
-> do that or why. Is it a good idea or is Reiserfs fine. 
+My old setup
 
-An old article at freshmeat.net:
-http://freshmeat.net/articles/view/212/
-But still applies.
+sda1 	/ 		1g
+sda5		/swap	1024k  (512ram)
+sda6		/usr		6g
+sda7		/home	10g
 
-Axel
+I will be using Sourcemage which puts sources in /var so I have been thinking 
+about taking 3g out of home and making a /var of 3g.
 
+ I will probably take another 3 out of home and add it to usr/ but that is 
+probably overkill. Neither use too much.
 
-____________________________________________________________________________
-Axel Siebenwirth				      phone +49 3641 776807 |
-Am Birnstiel 3			 		  axel at pearbough dot net |
-07745 Jena								    |
-Germany________________________________________________http://pearbough.net |
+I am confused about where /swap should go. I have a SCSI drive and from what I 
+read that should be on the outside. So should I put /swap at sda8? (Given 
+that I have added /var.)
 
-Recent research has tended to show that the Abominable No-Man
-is being replaced by the Prohibitive Procrastinator.
-                -- C.N. Parkinson
-____________________________________________________________________________
+I had a /home because it was convenient to upgrade with CD's when I only had a 
+56 modem. Now that I am using a source based installation is the /home 
+unnecessary as I am the only user.
+
+Is having a /tmp partition necessary?
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
