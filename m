@@ -1,37 +1,46 @@
-From: "Colin Harris" <charis.g3orh@virgin.net>
-Subject: Re: Extra installation
-Date: Sun, 11 Aug 2002 11:10:46 +0100
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: boot floppy (mkbootdisk)
+Date: Sun, 11 Aug 2002 10:04:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002501c2411f$e0ecc480$14000a0a@p75>
-References: <Pine.LNX.4.21.0208110830010.8397-100000@Consulate.UFP.CX>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200208111404.g7BE49u19713@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Riley Williams <Riley@Williams.Name>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@hartford-hwp.com
 
-Hi Riley and Richard,
+I had a nice bootable floppy that was self-contained (held a kernel),
+but I inadvertantly overwrote it and need to create another. 
 
-I guess I was thinking along the right lines when I mounted
-the 7.2 version whilst running the 6.1 version except that I
-probably didn't mount it correctly because it didn't show up
-in the /mnt directory. I'd like to down all of it and
-restart ( to include a dos partition as first partition )
-but this is now impractical. I'll try again to get 7.2 to
-re-install and if it complies , then armed with both your
-suggestions ( for which I thank you ) perhaps this time I'll
-succeed.
+I used mkbootdisk <kernelVersion>, and it works in the sense that it
+holds a kernel that boots my machine and loads my operating system
+from hd.
 
-Luckily ( for other reasons ) this cluster box is off line
-and I have complete backups for both ax25 and cluster
-softwares so I *could* completely re-install the current
-stuff if necessary.
+However, I want to have it load a shell from which I can
+run various utilities I have placed on another diskette, such as
+fdisk. However, the diskette created by mkbootdisk instead
+automatically goes directly to the root partition on my hard disk and
+loads the operating system there. If I try to boot a Windows machine
+with it, for example, it just loops back to BIOS and starts again.
 
-- Regards Colin
+The mkbootdisk floppy holds four files, one of which is
+syslinux.cfg. It is a loader:
 
+  default linux
+  prompt 1
+  display boot.msg
+  timeout 100
+  label linux
+	kernel vmlinuz
+	append initrd=initrd.img root=/dev/sda6
 
+Is there any way to can change this so that instead of going to
+/dev/sda6 (root) it instead loads a shell (presumably located on
+the same diskette and thus less than 600 Kb)? My bash file would just
+fit, but can it run independently?
+
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
