@@ -1,65 +1,54 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: two eth devices ...
-Date: Mon, 26 Jan 2004 11:35:52 -0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: howto configuring kernel and modules.conf for automatic loading of ide-scsi
+Date: Mon, 26 Jan 2004 20:41:41 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040126112512.01f943f0@celine>
-References: <4011C87400000704@mail-bcm02.alestra.net.mx>
+Message-ID: <200401262041.41932.pa3gcu@zeelandnet.nl>
+References: <20040125041110.22704715.agri@desnol.ru> <Pine.LNX.4.58.0401252359410.9280@ppg_penguin> <20040126124651.5c1aa170.agri@desnol.ru>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4011C87400000704@mail-bcm02.alestra.net.mx>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040126124651.5c1aa170.agri@desnol.ru>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Agri <agri@desnol.ru>, linux-newbie@vger.kernel.org
 
-At 12:29 PM 1/26/2004 -0600, rgomez@bancomer.com wrote:
->Hi, I've been assigned a PC with two eth devices, What utility can I give
->them? or is better if i unplug one, my network is configured
->to assign an IP address via dhcp.
->
->As you can see I'm a Linux newbie in network thems...
->TKS
+On Monday 26 January 2004 10:46, Agri wrote:
+> Oh.... i did everything as you say many times before...
+> i get success only this time.
+> i have done a little investigation...
+> there is no need of
+>   pre-install sg modprobe ide-scsi # load ide-scsi before sg
+>   pre-install sr_mod modprobe ide-scsi
+> moreover these lines breaks loading after "rmmod -a"
+> lines from logs:
 
-I cannot know for certain what is installed on your system. The usual 
-command for checking eth* interfaces (not "devices") is
+I think you need to go back to "start" which means, no i will ask, just what 
+do you want to do and just what do you have;?
 
-         ifconfig -a
+I mean, what sort of cdrom, is it a writer.? or simply just a cdrom device.?
+There are many ways under linux of killing the cat, you have been given, 
+AFAIK, 3 different examples, all of which should work, however they may not 
+work for you because we have to fill in the gaps in the info you provided.
 
-Some newer, or stripped down, Linux systems may lack this command. In that 
-case, see if you have the command "ip" on your system. If you do, the command
+In other words tell me/us what type of cdrom you have, your installed distro 
+its version and its kernel, i belive you mentioned 2.4.23-rc1 (BAD) never 
+experiment trying to do something you possably never have done before on a 
+kernel you built yourself, (unless you know what you are doing of course).
+Use the kernel from your distro, i can assure you it has ALL you need.
 
-         ip link show
+On top of all that send us the commands used and thier corrisponding error 
+messages when there is a problem. 
 
-should give you information about the interfaces.
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-I am assunming here that your Linux kernel has in it, or loads modules that 
-provide, support for the actual NICs in your system. If not, you don't have 
-the eth* interfaces, and you'll need to do something to create them. I 
-cannot say what without knowing a few more things, namely ...
-
-         what sorts of NICs they are (you may have to open the case to find 
-out, or the command "lspci" may tell you)
-         what Linux distrubution and version you are using
-         what Linux kernel ("uname -a") you are running, and whether it is 
-a stock or a custom-compiled kernel.
-
-You should be logged on as root to execute any of the commands I listed above.
-
-As to whether you should "unplug" one ... it depends on unreported details 
-of your setup. Again, approaches vary a lot from one Linux distro to 
-another, but newer versions are tending to use /etc/network/interfaces as 
-the config file for the eth* (and some other) network interfaces. You might 
-see if you have such a file and, if you do, what it says about setup of 
-eth0 and eth1. Which of them (or are both) is set up here to get an IP 
-address via DHCP?
-
-And am I correct in inferring that both eth* interfaces are connected to 
-the *same* network (the same LAN, probably)?If they are, you probably want 
-to ask the sysadmin if the network is setup to allow the interfaces to be 
-bridged, so they can work together to double your connection speed. If they 
-are not, advising you as to what you should do depends enough on what they 
-are connected to that no advice can make sense without your providing more 
-information.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
