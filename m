@@ -1,40 +1,45 @@
-From: Dmitry Yusupov <dima@s2io.com>
-Subject: Re: zero copy issue while receiving the data (counter part of sen
-	dfil e)
-Date: Tue, 21 Dec 2004 11:43:10 -0800
-Message-ID: <1103658190.7217.121.camel@beastie>
-References: <267988DEACEC5A4D86D5FCD780313FBB02C66FCA@exch-03.noida.hcltech.com>
-	 <1103649767.7217.100.camel@beastie>  <41C879CB.3040600@pobox.com>
-Reply-To: dima@s2io.com
+From: ACario <acario@wanadoo.fr>
+Subject: Getting ls results in text file - Charset issue
+Date: Tue, 21 Dec 2004 23:25:42 +0100
+Message-ID: <cqa80n$6q6$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41C879CB.3040600@pobox.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jeff Garzik <jgarzik@pobox.com>
-Cc: "Rajat Jain, Noida" <rajatj@noida.hcltech.com>, linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, "Sanjay Kumar, Noida" <sanjayku@hcltech.com>, "Deepak Kumar Gupta, Noida" <dkumar@hcltech.com>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-indeed :)
-another words if you have modern NIC than you get "zero-copy"(except
-copy_to_user()) for free :)
+Hi,
 
-Regards,
-Dima
+I'm running following command in a console:
 
-On Tue, 2004-12-21 at 14:30 -0500, Jeff Garzik wrote:
-> Dmitry Yusupov wrote:
-> > Rajat,
-> > 
-> > small correction, if NIC supports DMA operation on receive, than no
-> > extra copy required. Therefore sock_recvmsg() and tcp_read_sock
-> 
-> large correction:  if NIC supports _checksum_ on receive, then no extra 
-> copy is required.
-> 
-> 	Jeff
-> 
+ls > out.csv
+
+Then I open the file "out.cvs" in vi and here is what I get, whith all 
+these strange characters (below is a copy/paste from vi screen):
+
+^[[00m^[[01;34mcxoffice^[[00m/
+^[[01;34mDesktop^[[00m/
+^[[01;34mGNUstep^[[00m/
+^[[01;34mkde^[[00m/
+^[[01;34mLogs^[[00m/
+^[[01;34mNntp^[[00m/
+^[[00mNOTEBOOK.DBF^[[00m
+^[[00mout.csv^[[00m
+^[[01;34mSw^[[00m/
+^[[01;34mSwWork^[[00m/
+^[[01;34mtmp^[[00m/
+^[[01;34mWorkspace^[[00m/
+
+My config: Mandrakelinux 10.1, bash
+My question: how can I get the results of my "ls" command in a plain 
+text file with ASCII or ISO-8891 character set instead of all this 
+unreadable characters?
+
+Thanks
+
+ACario
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
