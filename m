@@ -1,13 +1,13 @@
 From: Axel Siebenwirth <axel@pearbough.net>
-Subject: Re: found format 3.6 with standard jounal
-Date: Sun, 25 Jan 2004 12:30:01 +0100
+Subject: Re: reiserfs
+Date: Sun, 25 Jan 2004 12:44:35 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040125113001.GA12967@neon>
-References: <200401251614.38731.wheds8@ms66.hinet.net>
+Message-ID: <20040125114435.GB12967@neon>
+References: <200401251640.31302.wheds8@ms66.hinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200401251614.38731.wheds8@ms66.hinet.net>
+In-Reply-To: <200401251640.31302.wheds8@ms66.hinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -18,14 +18,32 @@ Hi S.!
 
 On Sun, 25 Jan 2004, S. Barret Dolph wrote:
 
-> What does this mean? How do I fix it? There is nothing on my disk so I don't 
-> have to worry about data. 
+> I have looked at the various file system stuff for comparison. I have been 
+> using Reiserfs for some time now and had, until recently, no problems. 
 
-It is an informational message telling you that your reiserfs partition is
-using version 3.5 disk layout.
+What problems exactly?
+
+> Are Xfs and Jfs still too new to use?
+
+No, they are quite mature filesystems and finally well integrated into the
+linux kernel.
+
+> 
+> I have used ext3 for my / partition. But I can't remember who told me I should 
+> do that or why. Is it a good idea or is Reiserfs fine.
+
+Ext3 is slower as far as I know. Reiserfs is quite stable.
+I've had the feeling that JFS was faster when it comes to accessing larger
+files and reading large directories, I mean with many files.
+I have never actually tried ext3 but have read that it has many problems as
+well and is quite slow. The On-disk-layout is very old already.
+
 
 Axel
 
+> 
+> (Other partitions are /swap, /usr, and /home. swap as swap, and the others are 
+> reiserfs.) 
 
 
 ____________________________________________________________________________
@@ -34,9 +52,8 @@ Am Birnstiel 3			 		  axel at pearbough dot net |
 07745 Jena								    |
 Germany________________________________________________http://pearbough.net |
 
-I know you believe you understand what you think this fortune says,
-but I'm not sure you realize that what you are reading is not what
-it means.
+Peeping Tom:
+        A window fan.
 ____________________________________________________________________________
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
