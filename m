@@ -1,53 +1,38 @@
-From: "pa3gcu" <lists@tcob1.net>
-Subject: Re: Port 20 blocked. How to unblock
-Date: Monday, 12 Aug 2002 21:36:35 +000
+From: "Ray Olszewski" <lists@tcob1.net>
+Subject: Re: .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 12:31:18 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020812_213635__b3f8733a@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_123118__0201a8e5@fidonet.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
 Originally to: All
 
 
-On Thursday 01 January 1970 00:00, Benny Pedersen wrote:
-> Originally to: Phillip Morgan
+At 07:25 PM 8/15/02 +0200, Axel Siebenwirth wrote:
+>Hi Ray!
 >
-> Hello Phillip.
->
-> 12 Jul 02 16:40, you wrote to all:
+>What is the difference between the linking that gcc does i.e. to link many
+>object files into an executable and  the linking that ld does?
+>Is it really that gcc is just to link object files together to an executable
+>and ld is there to link object files to an shared library?
 
-Today its; Aug 12 and you posted this message on Saturday 03 Aug, seems 
-something is wrong with your date(s) anyway most of the mail is snipped.
 
->  PM> So why would a connect to port 20 be refused?
->
-> ask your isp :-)
+gcc compiles; it does not link. It calls ld to link. ld  links multiple .o 
+files into an executable that includes the hooks to use the shared-library 
+functions. Then at runtime, ld.so does the runtime linking to the .so files.
 
-Huuh? no ftp program i know of will "accept connections" on port 20, unless i 
-suppose you tell it to via some or other config file, but what would be the 
-point of doing that.
 
-On any system simply try;
 
- ftp localhost 20
-
-If you get anything other than connection refused then you have one wierd 
-system.
-
-Port 21 accepts incomming ftp connections, port 20 is/can be used for 
-data-transfers.
-
->
-> Benny
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 
