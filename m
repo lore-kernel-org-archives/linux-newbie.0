@@ -1,8 +1,8 @@
 From: "Jonathan Kallay" <yoni@kallay.net>
-Subject: slightly off topic: remotely displaying Mac OS X applications
-Date: Sun, 12 Jan 2003 14:26:48 -0500
+Subject: X won't start, no errors in XFree86.0.log
+Date: Sun, 12 Jan 2003 14:38:18 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <013e01c2ba70$8e1d8d00$6400a8c0@00arc>
+Message-ID: <014601c2ba72$28d85720$6400a8c0@00arc>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,11 +10,19 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-My downstairs neighbor has a computer running Mac OS X, which as we all know
-has a UNIX backend.  For kicks, I started an X server, telnetted into his
-machine, changed the DISPLAY variable to my display, and tried launching a
-GUI application.  The application did in fact launch, but on his screen, not
-in my X server.  Any ideas as to why this happened?
+I have been able to start X Windows in the past, but after plugging in a
+different monitor (and changing the configuration file), startx will cause
+the screen to go blank and never come back.  CTRL-ALT-BKSP won't work.  The
+only way that I can see what is going on is by telnetting in from a
+different computer and running startx.  No errors appear in the log file,
+other than "Failed to load GLCore (module does not exist, 0)".  The very
+bottom of the output reads:
+ (II) [GLX]: Initializing GLX extension
+XIO:  fatal IO error 104 (Connection reset by peer) on X server ":0.0"
+      after 0 requests (0 known processed) with 0 events remaining.
+
+Any suggestions?
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
