@@ -1,50 +1,44 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: reinstall continued
-Date: Thu, 1 Apr 2004 10:55:27 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Noflushd usage
+Date: Thu, 1 Apr 2004 21:30:36 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040401155527.GC657@lnx2.w8mch.ampr.org>
-References: <200404011246.54599.wheds8@ms66.hinet.net> <200404010827.24196.pa3gcu@zeelandnet.nl>
-Reply-To: haltec@kvinet.com
+Message-ID: <200404012130.36792.pa3gcu@zeelandnet.nl>
+References: <406BA04F.3060503@hopper.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <406BA04F.3060503@hopper.net>
 Content-Disposition: inline
-In-Reply-To: <200404010827.24196.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Joshua Rogers <joshuarogers@hopper.net>, linux-newbie@vger.kernel.org
 
-On 04-01, pa3gcu wrote:
-> On Thursday 01 April 2004 06:46, S. Barret Dolph wrote:
-> > I used fdisk to clear all partitions. But when I boot up my box I still get
-> > a splash screen with two kernels listed. Where are those kernels?
-> 
-> The kernels are gone if you used fdisk but you did not clear the MBR.
-> http://www.computing.net/linux/wwwboard/forum/24422.html
-> 
+On Thursday 01 April 2004 06:53, Joshua Rogers wrote:
+> How can I (or can I not) make noflushd turn off the second hard drive
+> after about 15 minutes?
 
-	Good scheme Richard; Will try it in the future:
+Why use such a program when there is a linux command called 'hdparm'
 
-dd if=/dev/zero of=/dev/hda bs=512 count=1
+man hdparm
 
-	It may be of interest to try the boot and nuke scheme to
-"zero" the rest of the drive just to be sure:
+Should explain, or 
 
-http://dban.sourceforge.net (dban-1.0.1-i386.img)
+/usr/sbin/hdparm -Sxx /dev/hdb
 
-	It has a "quick" selection as well as other more thorough
-schemes approved by the US DoD, etc, booting from a 1.44 floppy.
+Where -Sxx is -S30 or whatever you choose for your noisy drive.
 
-	And the 'fdisk /mbr' route is good for replacing the MBR with
-the MBR of whatever the current boot system uses...
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-	I learn more and more every day.. Really enjoying the list..
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-           
-	     Anyone can pile complexity upon complexity;
-                  only a genius can truly simplify..
-.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
