@@ -1,45 +1,31 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: promiscus mode
-Date: Wed, 26 Jan 2005 23:22:23 -0800
-Message-ID: <5.1.0.14.1.20050126231618.02ac3940@celine>
-References: <ct4ppu$upv$1@sea.gmane.org>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: XMMS Distorted MP3 Sound
+Date: Thu, 27 Jan 2005 15:57:14 +0800
+Message-ID: <20050127075714.796A23B710@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <ct4ppu$upv$1@sea.gmane.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-71C24702"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-At 12:30 PM 1/25/2005 +0530, Muruganandam wrote:
+Hi,
 
->Hi all,
->
->   How to enable the Promiscus mode in the kernel,inorder to capture the
->packets.Advance Thanks
+In slackware10 for some time trying to play mp3 files I get a very distorted 
+sound with xmms-1.2.10. Whereas in Fedora2 mp3 files do not play at all with 
+xmms-1.2.10 in fact they don't enter the play list. In both the plugin for 
+mpeg is enabled. Playing from MusicCDs is no problem.
 
-It would be easier to answer this question if I better understood the level 
-you are asking it at.
+As far as I can remember xmms used to play mp3 files or am I deceived, and I 
+cannot tell when it exactly started
 
-The beginner-level answer to it is to use an application and associated 
-library (e.g, tcpdump or ethereal, and libpcap) that supports setting 
-promiscuous mode.
+Anyhow what could be the reason? Xine, gxine, totem, mpg321 and snack all play 
+mp3 files.
 
-For the details of how to set it in a NIC driver, I'd suggest referring to 
-the source for libpcap; my quick scan of it leads me to suggest checking 
-the pcap_open_live() function call.
-
-Of course, you need root access to do any of this.
-
-
-
-
+Thanks & regards
 -- 
-No virus found in this outgoing message.
-Checked by AVG Anti-Virus.
-Version: 7.0.300 / Virus Database: 265.7.4 - Release Date: 1/25/2005
-
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
