@@ -1,8 +1,8 @@
 From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
-Subject: running X programs as another user
-Date: Thu, 25 Mar 2004 09:45:25 -0500 (EST)
+Subject: Re: switching to debian (... and installing the NVIDIA GeForce4)
+Date: Thu, 25 Mar 2004 09:46:00 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0403250943280.26064-100000@legolas.personal.engin.umich.edu>
+Message-ID: <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.engin.umich.edu>
 Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,34 +11,49 @@ Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Sorry for the duplicate postings (if it does get duplicated) -- my first 
-message was not posted even after ~10 hrs. 
 
-----------
+I installed the 2.4.18 source by 'apt-get install kernel-source-2.4.18', 
+extracted the source and made a symbolic /usr/src/linux -> 
+/usr/src/kernel-source-2.4.18/, and followed all the instructions below
+as is. 
 
-Along the process of trying to recompile a personalized kernel for this 
-machine (following my previous posts and responses), I seem to be unable 
-to run any X-based programs as root from within an X-session started as a 
-regular user (karthik). I.e. I log in as karthik -> startx, open an xterm, 
-and su - root. Once there, any attempt to run an X based program gives an 
-error, for e.g.:
+sh NVIDIA-Linux-x86-1.0-5336-pkg1.run quits with an error. 
 
-# gandalf:~# whoami; gw
-root
-
-Gdk-WARNING **: locale not supported by C library
-
-Gtk-WARNING **: cannot open display: 
+# cat /var/log/nvidia-installer.log | grep ^ERROR
+ERROR: Unable to determine the NVIDIA kernel module filename.
 
 
-I am guessing this is some sort of security measure? 
-
-How can I circumvent this? What are good places to gain some basic
-understanding of X and related security concerns etc.
+How to proceed? 
 
 Thanks,
 
 -K
+
+On Tue, 23 Mar 2004, at 3:49pm, pa3gcu wrote:
+
+> If you installed the source for 2.4.18 then you should be able to do the 
+> following and get away with it;
+> 
+> cd /usr/src/linux
+> make mrproper
+> cp /boot/config-xx .config
+> edit Makefile
+> change line 4 from 
+> EXTRAVERSION =
+> To
+> EXTRAVERSION = -k7
+> save file;
+> make oldconfig
+> make dep
+> Thats it, now rerun
+> sh NVIDIA-Linux-x86-1.0-5336-pkg1.run
+> 
+> Note;
+> i am presuming that debian has the default kernel config in /boot, most 
+> systems do store it there for your convinance.
+> 
+> 
+
 
 
 -
