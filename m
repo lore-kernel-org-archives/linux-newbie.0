@@ -1,62 +1,31 @@
-From: G Anna <drguruolai@eth.net>
-Subject: Re: char-major-6
-Date: 20 Apr 2002 18:26:26 +0530
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: ? wireless 802.11b, D-Link DWL-520
+Date: Sat, 20 Apr 2002 11:52:59 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m34ri6wmth.fsf@wobble.eth.net>
-References: <m3662o5ol0.fsf@wobble.eth.net> <0204191440500C.04062@unix.pa3gcu>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <a9s368$i2s$2@main.gmane.org>
+References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <3CBD9E75.1030802@lvcm.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <0204191440500C.04062@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: nc8q@gelm.net
 
+Howdy, Ladies and Gentlemen newbie guru's"
 
-> Date: Fri, 19 Apr 2002 14:40:50 +0000
-> From: Richard Adams <pa3gcu@zeelandnet.nl>
-> Subj: Re: char-major-6
+ I'd would like a wireless (802.11b) link between two hosts:
+kernel-2.2.19 (Slackware-7.1) k6-266 
+kernel-2.4.17 (Slackware-8.0) 80586x120
 
-[snip]
+ I am installing D-Link DWL-520 PCI cards.
 
-> I've only seen one reply to this mail, i will try and explain whats
-> happening and possably shed some light on the other discussion about
-> devices not being found.
+How do I configure the cards, /usr/src/linux/.config ?
 
-That supposedly mean that I should have got one more mail on this.
-But I haven't.  Yours was the only mail I got and it had all the help
-I needed.  Thanks.
+How do I set them up for an 'ad-hoc' network?
 
-> The above message is saying that the program modprobe cannot find a
-> module called "lp" which is char-major-6 (to answer your question),
-> now either you configured your kernel without lp support or the
-> needed modules were not installed beforehand, those are; parport and
-> parport_pc if those are loaded (can be seen with the command
-> 'lsmod') then you did not configure your kernel with lp module
-> support.
+How do I configure the cards to use one channel among 1 through 6?
 
-I set the CONFIG_PARPORT, CONFIG_PARPORT_PC, CONFIG_PARPORT_PC_CML1
-and CONFIG_PRINTER to 'm' and recompiled the kernel.  Now everything
-is working fine.  ;-)
-
-Thank you very much for the help.
-
-> Or it could be that IRQ 7 is in use by some other device, check that
-> with the command 'cat /proc/interrupts'.
-
-Thankfully, my problem wasn't that difficult!
-
-(much snipped away)
-
-Cheers,
-anna
-
--- 
-
-Get your free e-mail account at http://www.linuxmail.org
-
+Kindest regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
