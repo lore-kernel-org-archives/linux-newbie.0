@@ -1,35 +1,43 @@
 From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: nVidia lockups
-Date: Sat, 27 Jul 2002 08:09:04 -0400
+Date: Sat, 27 Jul 2002 08:45:25 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207271209.g6RC94e17374@langhans.hartford-hwp.com>
-References: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX>
+Message-ID: <200207271245.g6RCjPT17529@langhans.hartford-hwp.com>
+References: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX> <02072709363903.00307@unix.pa3gcu>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX>
-	(message from Riley Williams on Sat, 27 Jul 2002 09:57:23 +0100 (BST))
+In-Reply-To: <02072709363903.00307@unix.pa3gcu> (message from pa3gcu on Sat,
+	27 Jul 2002 09:36:39 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Riley@Williams.Name
+To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-Riley,
+Sorry to follow up on my own message. However, I find that a wide
+range of new nVidia drivers are available. In fact, I need to ask a
+question in order to choose among them.
 
-Thanks for the informative reply. Since I have not recompiled my
-kernal since the original installation, I gather there's a possible
-conflict between my graphic card's (PNY Verto GeForce3 Ti 500) driver
-and the kernel as compiled during installation of Red Hat 7.2. 
+The page for nVidia Linux drivers is:
+http://www.nvidia.com/view.asp?PAGE=linux
 
-The graphics card is too new to expect a driver upgrade, but I suppose
-that would be an option, and I wonder if the graphics driver had RH7.3
-in mind, and if an upgrade from RH7.2 could make any difference.
+I run a machine with an Intel 1.9 GHz CPU and an Intel D850MVL MB. Does
+that make me i689 or i389? What is the difference bewtween i389 and
+i689? Is the latter the Itanium processor?
 
-I can't keep on hanging, and so must prepare myself for a possible
-future move to an alternative video card :-(. Any recommandations for
-cards that are both advanced, and yet run well under Linux?
+There is a difference between UP and SMP. I understand what the latter
+means, and the former is a single processor, but what does "UP" mean
+literally? 
 
-Haines Brown
+What is Red Hat "Enterprise?" A different version of Red Hat Linux?
+The Red Hat home page seems to refer to a server version of Red Hat
+that uses the word enterprise, but does not use that word as a formal
+label for it. 
+
+These are naive questions, but I've never had to deal with them until
+now. 
+
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
