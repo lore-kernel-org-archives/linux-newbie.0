@@ -1,105 +1,74 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Network and Apache Question
-Date: Tue, 21 May 2002 23:21:49 -0700
+From: Mark Johnson <rmjohnson@adelphia.net>
+Subject: Re: Polaroid BurnMAX24 CD-RW
+Date: Tue, 21 May 2002 23:35:48 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020521231413.027ca8c0@celine>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D13A1@ccdc-exchg.careerco
- mmunity.com>
+Message-ID: <3CEB3C44.8060403@adelphia.net>
+References: <3CE94665.8090104@adelphia.net> <5.1.0.14.1.20020521124101.020fcec0@celine> <5.1.0.14.1.20020521170358.020eb310@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D13A1@ccdc-exchg.careerco
- mmunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Sridhar J <sridharj.hyd@cxknetworks.com>
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-Preliminary comment: I added the list back in. Please, let's keep 
-discussions of this sort on the list.
 
-At 11:25 AM 5/22/02 +0530, Sridhar J wrote:
->Thanks Ray for that informative post.
->
->One more question: In my registration, I have put www.somename.com for the
->DNS resolution and have widely advertised it. Now when people type the name,
->the ISP is going to block them. Is there any way of getting around this
->problem?
 
-The DNS resolution is not a problem; that part should still work. To do 
-what I described, you do need to change the URL, which I suppose means 
-changing what you "advertised". The moral of this story is: don't 
-"advertise" a URL until you've tested it successfully.
+Ray Olszewski wrote:
 
-There may be other workarounds, involving redirection, but I believe they 
-require that http://www.somename.com resolve to some other IP address (one 
-without a port-80 restriction), where a server can redirect the traffic to 
-(for example) http://www2.somename.com:8080 .
+> Mark, let's keep this discussion on the list, please. I've added it 
+> back here in a Cc:.
 
->BTW, why do some ISPs block port 80?
+sorry about that, I noticed the other previous ones went straight to you 
+also.  I didn't catch it before, but I got this one:).  Usually when I 
+reply it automaticly goes back into the group instead of to the sender.
 
-Ask them, not me. I've seen many excuses offered for this practice, some of 
-which I believe, others of which I dismiss as self-serving claptrap ... but 
-that's just my opinions. Some ISPs include in their Terms of Service for 
-low-end plans a prohibition against running servers, and this is one way 
-they enforce that policy.
+>
+> If you run the command "ls -l /dev/cdrom", you will (almost certainly) 
+> find that it is not itself a pseudofile entry. Instead, it points to 
+> something else, probably /dev/hdc . That's what a symlink is, sort of 
+> (read "man ln" for the details).
+>
+> Once you moved the drive to the IDE-SCSI driver, it was no longer 
+> accessible through /dev/hdc, so the /dev/cdrom symlink no longer 
+> works. You now have to access it at ... well, I don't really know, but 
+> /dev/scd1 is a good bet.
+>
+> The mount points you are using are set in /etc/fstab . In there is 
+> (probably) a line that tells mount to mount /dev/hdc on mount point 
+> /mnt/cdrom, and to mount whatever the pseudoSCSI-CD-R/W device is 
+> (maybe /dev/scd0) on /mnt/cdrom1 . Or the mount points may use the 
+> symlinks /dev/cdrom and /dev/dvd instead.
+>
+> In any case, once you know where (in /dev) the device pesudofile 
+> entries are, you can edit /etc/fstab so the mount points connect to 
+> the right devices (or to suitable symlinks).
 
->Regards
->Sridhar
->
->-----Original Message-----
->From: Ray Olszewski [mailto:ray@comarre.com]
->Sent: Wednesday, May 22, 2002 11:10 AM
->To: Sridhar J
->Subject: RE: Network and Apache Question
->
->
->At 10:34 AM 5/22/02 +0530, Sridhar J wrote:
-> >Hi
-> >
-> >How do you set up a router to forward requests from one port to another,
-> >when the ISP itself is blocking all requests to port 80? I mean, the
->request
-> >to port 80 on the server wouldn't even reach it, since the ISP would block
-> >it before that, right?
-> >
-> >Since so many knowledgeable people are saying the same thing about port
-> >forwarding, its obvious that I am wrong. So how how does it work?.
-> >
-> >Regards
-> >Sridhar
->[old stuff deleted]
->
->If the ISP is blocking traffic to port 80, then the traffic has to be to a
->different port when the ISP sees it. To do thism, you change the URL so it
->reads (for example) http://www.kc4hw.homelinux.net:8080 .    This will
->cause browsers to try to connect to port 8080 instead of the normal port
->80. So the traffic will reach the router's *external* interface bound for
->port 8080, which the ISP probably does not block.
->
->  From the router, the destination has to be translated anyway, to whatever
->private IP address the actual server is using (in this instance, you say it
->is 192.168.1.114). Also translating the port from 8080 to 80 is no big
->trick; any Linux-based router can do it. Whether the Linksys you are using
->can or not ... that I don't know ... you'll have to get linksys help from
->Linksys support, not from Linux support.
->
->If the Linksys router cannot do this translation, then you just run your
->Apache server on the same non-standard port as the URL reports, probably by
->using the Port command in /etc/apache/httpd.conf (though you might have
->your system set up differently).
->
->Depending on the details of the Linksys firewall, you may have to do more
->than this. On a typical Linux router, you would also need explicitly to
->open the port to incoming traffic, and you *may* neeed to do something
->similar on the Linksys.
+you're right (except fstab uses /dev/cdrom as hdc and /dev/cdrom1 is 
+hdd), and that is why the dvd stopped working.  When I installed the 
+cd-rw it linked to cdrom, which is the dvd.  the cd-rw is cdrom1.  now 
+that I have dvd as ide-scsi it is now cdrom1.  will it mess up anything 
+if I just rename crom1 to cdrom and vice-versa so drive 0 is cdrom amd 
+drive 1 is cdrom1. it is confusing having drive 0(cdrom1) as 1.  as for 
+it not working after the changes, it was the burner programs wanting to 
+have the cd ejected, it resets the cd somehow, mad a bad cd curn as I 
+was burning too fast for the prgram and got data underflow.  I slowed 
+her down and everything is running pretty smoothly.  I've done about 5 
+tests so far with no glitches yet (fingers crossed).
 
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+>
+> As before, this includes a lot of guessing, based on teh way my Debian 
+> systems set themselves up out of the box. YMMV as to the dtails, but 
+> this should be enough to get you started in teh right direction.
+
+good guessing.  You were right on 100% both times with a couple minor 
+(obvious) changes on my end. The only problems I really had were a few 
+program glitches and me being in too big a hurry and missing a command 
+or two.
+
+Again, thanks for the help.
+-=Mark=-
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
