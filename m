@@ -1,54 +1,72 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: uname -r
-Date: Tue, 7 May 2002 00:04:31 +0300
+From: G Anna <drguruolai@eth.net>
+Subject: Mustek 1200 UB scanner
+Date: 09 May 2002 13:12:12 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200205062104.g46L4dW09187@g38.rdsbv.ro>
-References: <2.2.32.20020506203856.00e13c50@[192.168.1.23]>
+Message-ID: <m3vg9xu5rf.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <2.2.32.20020506203856.00e13c50@[192.168.1.23]>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-root@k:/usr/src/linux# more Makefile
-VERSION = 2
-PATCHLEVEL = 4
-SUBLEVEL = 16
-EXTRAVERSION =
+Dear All,
 
-KERNELRELEASE=$(VERSION).$(PATCHLEVEL).$(SUBLEVEL)$(EXTRAVERSION)
+Today I downloaded the linux driver for Mustek 1200 UB scanner (This
+is a USB scanner) from
 
+ftp://ftp.mustek.com.tw/pub/driver/1200UB/Linux/V1.0.3/1200ub.tar.gz 
 
-quite self-explanatory
+This package has a readme file (readme_English.txt).. In this file
+they have mentioned that
 
+(begin-quote)
 
-thanks, ray
+2. After the kernel upgrade, please mount the USB file system. You can
+login root, and type "mount -t usbdevfs none /proc/bus/usb/." If you
+would like to mount the file system automatically, add "action
+"Mounting USB File System" mount -t usbdevfs none /proc/bus/usb" to
+your etc/rc.d/rc.sysinit.
 
+(end-quote)
 
+When I tried to do the mount manually, I got the following error.
 
+# mount -t usbdevfs none /proc/bus/usb/
+mount: mount point /proc/bus/usb/ does not exist
 
-On Monday 06 May 2002 23:38, Ray Olszewski wrote using one of his keyboards:
-> At 11:30 PM 5/6/02 +0300, Petre Bandac wrote:
-> >yesterday I saw a slack 7.1.0 machine whose uname -r output was
-> >2.4.7-greased-turkey or something like that
-> >
-> >actually, kernels can have a name of their own given by the person who
-> >compiled it ?
-> >
-> >just being curious ...
->
-> Sure. It's a standard feature of the kernel Makefile. I think the variable
-> you set is EXTRAVERSION. I usually see it used in more useful ways than the
-> example you saw ... it's handy if you do a lot of kernel customizing and
-> need to keep track of several variants of the same base kernel. I find it
-> more useful to give them meaningful names ... say 2.4.7-router and
-> 2.4.7-workstation ... but that, like many Linux-related things, is a matter
-> of personal preference.
+And, sure enough, I didn't have the usb directory under /proc/bus/.  I
+tried to do
+
+# pwd
+/proc/bus
+# mkdir usb
+mkdir: cannot create directory `usb': No such file or directory
+
+What am I supposed to do now?  Does anyone have experience in making
+the Mustek 1200 UB scanner work under linux?
+
+BTW, I am using RH 7.1 and 
+
+$ uname -a
+Linux wobble 2.4.16 #4 Thu May 9 11:19:49 IST 2002 i686 unknown
+
+Thank you for all your help.
+
+Cheers,
+anna
+
 
 -- 
- 12:02am  up 37 min,  1 user,  load average: 0.52, 0.42, 0.36
+
+(7) When  I've  captured  my  adversary and he says, "Look, before you
+    kill  me,  will you at least tell me what this is all about?" I'll
+    say,  "No."  and  shoot  him. No, on second thought I'll shoot him
+    then say "No." - Peter Anspach in "The Top 100 Things I'd Do If I 
+    Ever Became An Evil Overlord"
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
