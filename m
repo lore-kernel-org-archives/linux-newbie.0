@@ -1,50 +1,98 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Cmedia support.....(Slack 10)
-Date: Sun, 24 Oct 2004 11:37:04 +0200
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: framebuffer console problems: not enough video RAM?
+Date: Sun, 24 Oct 2004 09:07:53 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200410241137.04197.pa3gcu@zeelandnet.nl>
-References: <4b0d6e0d041023212966424bf3@mail.gmail.com>
+Message-ID: <5.1.0.14.1.20041024085546.020676a8@celine>
+References: <5.1.0.14.1.20041023211235.01feb690@celine>
+ <5.1.0.14.1.20041023135516.01fefc38@celine>
+ <Pine.LNX.4.58.0410222229140.1287@debian-emach>
+ <Pine.LNX.4.58.0410221108580.1287@debian-emach>
+ <Pine.LNX.4.58.0410221351360.1287@debian-emach>
+ <417968FE.3070405@verizon.net>
+ <Pine.LNX.4.58.0410221604590.1287@debian-emach>
+ <41798CB8.4010701@verizon.net>
+ <Pine.LNX.4.58.0410222229140.1287@debian-emach>
+ <5.1.0.14.1.20041023135516.01fefc38@celine>
+ <5.1.0.14.1.20041023211235.01feb690@celine> <Pine.LNX.4.58.0410240025400.1287@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4b0d6e0d041023212966424bf3@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.58.0410240025400.1287@debian-emach>
+References: <5.1.0.14.1.20041023211235.01feb690@celine>
+ <5.1.0.14.1.20041023135516.01fefc38@celine>
+ <Pine.LNX.4.58.0410222229140.1287@debian-emach>
+ <Pine.LNX.4.58.0410221108580.1287@debian-emach>
+ <Pine.LNX.4.58.0410221351360.1287@debian-emach>
+ <417968FE.3070405@verizon.net>
+ <Pine.LNX.4.58.0410221604590.1287@debian-emach>
+ <41798CB8.4010701@verizon.net>
+ <Pine.LNX.4.58.0410222229140.1287@debian-emach>
+ <5.1.0.14.1.20041023135516.01fefc38@celine>
+ <5.1.0.14.1.20041023211235.01feb690@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: joy_mm@ieee.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 24 October 2004 06:29, joy merwin monteiro wrote:
-> Hi,
-> One of my friends has a comp with this config:
-> AsRock mobo with an intel 845g chipset running a celeron
-> an ac97 codec by cmedia.(cmedia 041 i think..)
+At 12:45 AM 10/24/2004 -0500, James Miller wrote:
+[...]
+>A final stray thought: don't know if you caught my earlier statement about
+>entering atyfb in /etc/modules.  I created an initrd that, so far as I can
+>tell, contains this module.  However when I boot with the video=atyfb:etc,
+>the module doesn't seem to load.
 
-One way to determine which audio chipset that mobo has is to use the command 
-'lspci -v -v' that will show you a lot of info about the chipset.
-Once you know which chipset it is take a look 
-into /usr/src/linux/Documentation/sound/ and see if that chipset is mentioned 
-there.
+No, I missed this before ... or actually, I saw it but didn't follow then 
+what you were saying.
 
-> when I run alsaconf , it says no device detected.
-> anyone else with this chip having problems
+initrd doesn't work that way. It loads modules *after* the kernel itself is 
+loaded, but *before* the "real" root filesystem is mounted. So it provides 
+a way to supply, for example, modules needs to mount disk drives to the 
+kernel before the kernel actuallt has to mount the drive. (You could, for 
+instance, make the ide stuff modules this way.)
 
-I have little experiance with alsa, what i did was use a search engine to 
-obtain some info.
-Use www.google.com/linux and type some keyword into the engine.
+I believe initrd module loading does *not* work with kernel arguments of 
+the sort you are using. Instead, those arguments need the relevant drivers 
+to be in the kernel itself. As a consequence, and since we (or I, at least) 
+don't know what is compiled in tht kernel you are using, it is hard to 
+guess how the kernel is trying to deal with the bootline agrument you are 
+passing it.
 
->
-> Thanks in advance,
-> Joy.M.Monteiro
+The way to do your approach is to use /etc/modules to load a framebuffer, 
+then use fbset (which you can put in an init script) to do the mode 
+selection. The way you are actually doing it, from a console, should be an 
+acceptable equivalent.
 
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+I do wonder, though, if trying to change framebuffer settings *after* X is 
+already using the framebuffer is introducing a problem. You might try 
+preventing X from loading (remove the symlink to /etc/init.d/xdm from your 
+default runlevel directory) and see if you can modify framebuffer settings 
+any more readily then.
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+>So I resorted to adding atyfb to
+>/etc/modules,
+
+Which one? The one on the root filesystem, or the one in the initrd image?
+
+Probably the second. In any case, it's being installed too late for 
+bootline parameters to affect it. That's why you need to use fbset.
+
+(Now, I wonder if the kernel itself is still trying to use vesafb, or maybe 
+even vgafb ... that's the trouble with using precompiled kernels, the need 
+to guess about what's in them ... during the init sequence, before xdm 
+comes on, do you get the modified display with the pengiun at the top? If 
+so, this is a sure indication that it is using *some* framebuffer at that 
+point. And if X is set up with Option "UseFBDev" "true.", it is looking for 
+a framebuffer when it loads )
+
+>after which it started loading and showing up in dmesg--such
+>as in portions I've included in previous messages.  Ideally, I should have
+>this module compiled into the kernel, I suppose.  But I'm trying to defer
+>anything like that in hopes that I can see if it even works first (e.g.,
+>if I have sufficient video RAM to support the resolution I need atyfb
+>for).
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
