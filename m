@@ -1,83 +1,62 @@
 From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: tar confined to partitions
-Date: Mon, 2 Sep 2002 14:23:39 -0400
+Date: Mon, 2 Sep 2002 14:37:14 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209021823.g82INdC09718@hartford-hwp.com>
-References: <5.1.1.6.0.20020902165237.00ba6ea0@interzone.anexia.co.uk>
+Message-ID: <200209021837.g82IbEK09801@hartford-hwp.com>
+References: <5.1.0.14.1.20020902094227.021b5bd0@celine>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.1.6.0.20020902165237.00ba6ea0@interzone.anexia.co.uk>
-	(message from Carl Lawton on Mon, 02 Sep 2002 17:24:27 +0100)
+In-Reply-To: <5.1.0.14.1.20020902094227.021b5bd0@celine> (message from Ray
+	Olszewski on Mon, 02 Sep 2002 09:50:49 -0700)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: carl@anexia.co.uk
-Cc: linux-newbie@vger.kernel.org
+To: ray@comarre.com
+Cc: linux-newbie@hartford-hwp.com
 
-> At 11:17 02/09/2002 -0400, you wrote:
-> >I have a tar script to back up all directories on my HD (/*) to a
-> >mirror disk. 
-> >
-> >But a puzzler. The script sees all directories mounted on / and backs
-> >up their content, but fails to back up the contents of directories
-> >that are presumably mounted under /, but are not in the same partition
-> >as /.
-> >
-> >For example, if I specify /* as source, the /bin directory contents
-> >are backed up because /bin is in the same partition as /. However,
-> >/home has its own partition, and so while tar script creates a /home
-> >directory,  it is empty. I have to back up /home explicitly.
-> >
-> >If I run # mount, I see:
-> >
-> >...
-> >/dev/sda6 on / type ext3 (rw)
-> >...
-> >/dev/sda12 on /home type ext3 (rw)
-> >
-> >Only the contents of sda6 are getting backed up.
+Ray,
 
-> What is the exact tar command/script commands ?
+>          -l, --one-file-system        stay in local file system when 
+> creating archive
+
+No, I'm not using that option. Someone suggested that perhaps tar only
+handles one partition at a time, but you seem to say that is not the case.
+ 
+> ... but it should not be the default ("file system" is what you surely mean 
+> by "partition" in the immediate context; technically, file systems can span 
+> multiple partitions, as in RAID setups, but that is unlikely here).
+> 
+> Might you have used this flag? If not, what is the EXACT tar command
 
 tar -C "$1" -cOl . | tar -C "$2" -xpf -
 
-If, as someone suggested, tar swallows only one partition at a time,
-then I'll have to rewrite this script. Help would be appreciated.
+> and what is the EXACT directory structure (as reported by "df", say)?
 
-> Has the script ever worked ?
+I'm beginning to worrry about the structure of my setup. Here is my
+df:
 
-Works fine. I'm backing up partition by partition as we speak. But I
-always had the problem of handling only one partition at a time. Also,
-now discover that under RH 7.3 the back up randomly hangs my keyboard
-(not mouse) for a random period of time on the order of minutes (I've
-1 Gb RAM), but that's OT (before my recent update to RH 7.3, I used
-the generic driver for my Logitech MouseMan+, but with the upgrade, I
-specified the drive more accurately).
+Filesystem           1k-blocks      Used Available Use% Mounted on
+/dev/sda6               497829    151450    320677  33% /
+/dev/sda1                54416      8963     42644  18% /boot
+/dev/sda12              248895    154687     81358  66% /home
+/dev/sda9              2016016    935280    978324  49% /info
+/dev/sda7              4538124   1879792   2427804  44% /opt
+none                    515636         0    515636   0% /dev/shm
+/dev/sda10             1011928     17128    943396   2% /tmp
+/dev/sda8              7566400   3531920   3650128  50% /usr
+/dev/sda11              497829    134261    337866  29% /var
+/dev/sdb1              7906164   3717652   3786892  50% /mnt/storage
+/dev/sdc1             39391848  30254364   7136488  81% /mnt/mirror
 
-> Is the script yours or is it taken from somewhere else and umounts
-> partitions before backing up ?
+I guess this is self-explanatory, although I don't know that the
+/dev/shm signifies."sdc" is a 40 Gb USB 2.0 external HD with one
+partition used to mirror the internal hard disks. The "sdb" is a
+single partition hard disk used for storage.
 
-Someone helped on the stript. Any mounting/unmounting needed for the
-backup I do manually in advance (I don't want to backup whatever cd
-rom happens to be mounted, but do want to back up other
-HDs that are mounted to a partion on my principal hard disk).
+Haines Brown
 
-> Do you use the verbose switch to tar so you can capture the files
-> tar is finding to backup ?
 
-No, for the need to get a backup interfered with rewriting my backup
-script. Once the current backup is done, I'll see if verbose is
-informative. 
-
-> Are the missing files in the list ?
-
-A big concern of mine, but as best as I can make out, the answer is
-no. My script always creates the top folders, but when it manages to
-backup the content of those folder at all, it seems to handle all
-subdirectories and files.
  
-> --
-> Carl
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
