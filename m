@@ -1,33 +1,30 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Keyboard Freeze
-Date: Thu, 06 Feb 2003 14:55:52 +0800
+From: McClain <McClain@uni.de>
+Subject: new computer - mainboard question
+Date: Thu, 6 Feb 2003 14:38:18 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302060656.h166tqq05806@philonline.com>
+Message-ID: <20030206143818.3414e8bc.McClain@uni.de>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Several months ago when I changed from RH7.2 to RH7.3 the keyboard would 
-freeze when trying to open certain games like tuxracer or invoking some 
-screensavers or doing 'blank screen now' in screensaver window.
+Hello ppl,
 
-A lot of suggestion I got from this list, none of which could solve the 
-problem. I then changed the built-in video chip SiS630 to my old video card 
-savage 4 and the spook was gone.
+I recently bought a new computer with a Asus A7N8x
+mainboard(nForce2 chipset). Everything worked well,
+except for one thing: every piece of hardware on the
+board, ethernet, ps/2 mouse and keyboard, graphics card etc,
+caused a slight noise on the sound channel(onboard as well). 
+Now I go and sell the board and want to buy a new one, what
+would you consider a good mainboard? ATA133 controller,
+usb2, ethernet onboard, if it isn't a realtek but a real
+ethernet card, should be supported by a stock kernel.
+What do you think of the KT400 chipset?
 
-Now I read in Linux Gazette the suggestion to somebody with a similar problem, 
-no type of video cards mentioned, to disable the line Load "dri" in 
-XF86Config-4. I did it, changed back to SiS630 and it seems to work. Tuxracer 
-comes up nicely and I can't produce any keyboard freeze with screensaver.
-
-Regards
-
--- 
-Peter
-
+Thanks in advance....
+	...Sebastian
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
