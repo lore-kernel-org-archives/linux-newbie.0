@@ -1,82 +1,31 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: How can I login with ssh in bash shell ?
-Date: Thu, 26 Jun 2003 10:02:38 -0700
+From: Alan Bort <333101@personal.net.py>
+Subject: XMMS always on top
+Date: 27 Jun 2003 12:41:02 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EFB272E.6060007@bcgreen.com>
-References: <20030625015518.A37B.WOLFGANG127JP@ybb.ne.jp> <200306241959.03361.robin@robind.de>
+Message-ID: <1056732062.28653.23.camel@gandalf.ciccio-net.cjb.net>
+Reply-To: 333101@personal.net.py
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200306241959.03361.robin@robind.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Robin Doer <robin@robind.de>
-Cc: wolfgang127jp@ybb.ne.jp, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
+Hi, I'm not THAT newbie, but I'm using RH9 with XD2 (ximian Desktop2)
+and I was andering if there was a way (plugin or something like that)
+for XMMS to stay always on top (I have the small bar, with he usual
+commands, and I want it to be always on top). The option always on top
+priveded by XMMS does not work. Is there a plugin such as in winamp so
+the play,next,prev,stop,pause,etc commands appear on the title bar of
+each window???
 
-the public key should go into authorized_keys2
-
-alsoe: I'd suggest using:
-	ssh-keygen -f nopw.key -t rsa
-
-you will end up with the private key in nopw.key
-and the public key in nopw.key.pub
-
-You can then do: ssh -i nopw.key remote_host
-
-The main difference here is that you don't end up with your
-passwordless key being your default (probably a bad idea).
-
-BTW: you can setup ssh so that the recipient machine, when
-it accepts the passwordless key can only execute one specific
-command. (makes it harder for a hacker to cause you damage
-if they get hold of the key).
-
-Robin Doer wrote:
-
- >>----------------------------------
- >>
- >>so I made a simple script(simple.sh) below.
- >>(abcdefg is the password of my_user)
- >>----------------------------------
- >>#!/bin/sh
- >>
- >>ssh my_user@my_server <<END
- >>abcdefg
- >>echo "It works !!" > does_this_script_work.txt
- >>exit
- >>END
- >>
- >>exit 0
- >>---------------------------------
- >>
- >>The result was....
- >>-----------------------------
- >>$ ./simple.sh
- >>Pseudo-terminal will not be allocated because stdin is not a terminal.
- >>my_user@my_server's password:
- >>-----------------------------
- >>Asking me the password ...
- >>
- >>Why doesn't it work ?
- >
- >
- > That will not work because, however, ssh doesn't read the passwort from stdin
- > (like ftp).
- >
- > But there's a way to use ssh without a password-request:
- >
- > On your local machine create a key with "ssh-keygen -t rsa" (use empty
- > passphrase). After that copy the public part of the key (located in
- > ~/.ssh/id_rsa.pub) to your remote machine under ~/.ssh/authorized_keys).
- > Now your script should work.
-
-
+Thanks a lot.
 -- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-        the jewel within each person and bring it to life.
+Alan Bort
+Linux Registered User 298277 -Country Manager- [http://counter.li.org]
+[ http://www.linuxquestions.org ] Username: Ciccio
+[ http://es.tldp.org ]
+Ciccio.-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
