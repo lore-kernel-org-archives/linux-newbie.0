@@ -1,39 +1,33 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: Re: su fails
-Date: Tue, 15 Jul 2003 20:20:31 +0200
+From: vh <vhlist@yandex.ru>
+Subject: Opti 82c931 ISA PnP sound card
+Date: Tue, 15 Jul 2003 22:32:00 +0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <oprsc6khvqhmmv6x@smtp.arrakis.es>
-References: <3F133105.7010309@bcgreen.com>  <5.1.0.14.1.20030714080202.01ef9e68@celine>  <oprsa696n7hmmv6x@smtp.arrakis.es> <oprsbalrywhmmv6x@smtp.arrakis.es> <200307142023.43039.pa3gcu@zeelandnet.nl>  <oprsbc6ofjhmmv6x@smtp.arrakis.es> <3F133105.7010309@bcgreen.com>  <5.1.0.14.1.20030715074706.01faa538@celine>  <oprsc1u8ichmmv6x@smtp.arrakis.es> <1058288791.4987.20.camel@gandalf.ciccio-net.cjb.net> <Pine.LNX.4.56.0307151320130.4165@filesrv1.baby-dragons.com>
+Message-ID: <98964296.20030715223200@yandex.ru>
+Reply-To: vh <vhlist@yandex.ru>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0307151320130.4165@filesrv1.baby-dragons.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Does anybody have experience in configuring Opti 82c931 chipset sound
+card in Slackware 8.1. Red Hat configuration utility automatic
+determines this one as "Opti Audio 16", but I'm able to hear only a part
+(for about a second) of sample sound (on my friend's computer with the
+same distro the sample was longer). The successful configuration from
+NT 4.0 WS is
+ IRQ7 IO 530h DMA1 (playback) and DMA0 (Record)
+ IRQ 2/9 (what does it mean?) and IO 330h for MPU-401
+I configured isapnp with such parameters (I set MPU-401 IRQ to 5), but
+setting this in Sound Configuration Utility failed.
 
-> 	Now here I'd probably agree IF there is even the slightest doubt
-> 	that the system may have been compromised ,  Clear it & start
-> 	fresh .  Be extremely careful of re-applying the user(s) data .
-> 		Hth ,  JimL
-> ...snip...
-I know this is a very wide-open question, but how likely really is it that 
-my system has been compromised? I use a coyote firewall on a dedicated 486 
-with a dial-up ppp connection. I connect a few hours every day and I 
-actually switch off the modem at night. There are two machines behind the 
-coyote and only one is giving signs of anything odd (the one I was messing 
-about on the other day just before the problems started).
-By the way, Lilo is behaving perfectly again.
-But what about the
-'stderr is not a tty - where are you?'
-???
-TY
-Andrew
-
+Can somebody help me with this Plug&Pray one?
 
 -- 
-Using M2, Opera's revolutionary e-mail client: http://www.opera.com/m2/
+Best regards,
+ Martchukov Anton aka VH                  mailto:vhlist@yandex.ru
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
