@@ -1,68 +1,50 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: 'nobody' is using my system !!!
-Date: Thu, 26 Sep 2002 15:55:27 -0400
+From: lawson_whitney@juno.com
+Subject: Re: xwindows  login
+Date: Thu, 26 Sep 2002 17:03:19 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D93662F.D81F567@gelm.net>
-References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp> <3D921A64.7DBA9BC6@gelm.net> <200209251722.26680.wfoo@linuxvoodoo.com> <3D92DBFD.5D95F544@gelm.net> <3D92F8D1.9010604@xts.ro>
+Message-ID: <20020926.174526.134671024.1.lawson_whitney@juno.com>
+References: <006501c26565$0bb74e60$08d9d6d2@heretic>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <006501c26565$0bb74e60$08d9d6d2@heretic>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Dragos LUNGU <rlug-list@xts.ro>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: sagar@mihira.net
 Cc: linux-newbie@vger.kernel.org
 
-Howdy, Dragos LUNGU:
+On Thu, 26 Sep 2002, Sagar N Chand wrote:
 
- Thanks.  You are right.  I did a 'cat'
-and that was the only line!
+> I've recently installed Mandrake on my system.
+> Everything is well and good. But by default it is going
+> into xwindows for the login. I changed the runlevel to 3 in the
+> etc\inittab file and now it is showing the login in the console
+> mode only. Is there any other way to do this???
+>
+> regards,
+> /sagar
 
- Geesh, I added 'updatedb' to rc.local thinking that I was
-updating my database.  It would have happened at the next
-04:40 anyway!  :-|
+Yes.  At runlevel 5, control-alt-F1 through F6 should bring you to a
+text login, unless Mandrake has gone off the deep end since I messed
+with it.  You know you can start X from runlevel 3 with startx or xinit,
+right?  The user who starts X owns that session(s).  Another user could
+start X on a different display (virtual console) with, say,
 
- I guess that I will remove that line from my rc.local from
-all my linux boxes. 
+xinit -- 1:
 
-Regards, Chuck
+That would typically run on tty8, reachable with control-alt-F8, instead
+of tty7.
 
-Dragos LUNGU wrote:
-> 
-> Hi,
-> 
-> Chuck Gelm wrote:
-> > G'day, Y'all:
-> [snip]
-> >
-> > Why was 'find' and 'sort' running at 4:40 AM ?
-> 
-> My guess is : updatedb
-> 
-> i did a grep on /var/spool/* and this is what came out :
-> 
-> /var/spool/cron/crontabs/nobody:40 04 * * *       cd / ; updatedb 1>
-> /dev/null 2> /dev/null
-> 
-> -> updatedb at 4.40 AM as nobody
-> 
-> slackware 8.0 here as well, and I'm sure I didn't write that cron job
-> myself.
-> 
-> hope it helps,
-> 
-> Dragos.
-> 
-> >
-> > Regards, Chuck
-> 
-> --
-> 
-> | Dragos LUNGU
-> |
-> | http://www.xts.ro
-> | dragos@xts.ro
-> | mobile (+40)745 379 734
-> | office (+40)251 190 561
+Lawson
+---oops---
+
+
+
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
