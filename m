@@ -1,15 +1,25 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: && - Help
-Date: Mon, 30 Sep 2002 13:30:50 -0400
+Subject: Re: && - Help
+Date: Mon, 30 Sep 2002 13:55:03 -0400
 Sender: hylafax-users-bounce@hylafax.org
-Message-ID: <000901c268a7$1f1bfbf0$64fea8c0@pkrausxp>
+Message-ID: <000b01c268aa$81564980$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <hylafax-users-bounce@hylafax.org>
+In-Reply-To: 
 Errors-To: hylafax-users-bounce@hylafax.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, hylafax-users@hylafax.org
+To: hylafax-users@hylafax.org, linux-newbie@vger.kernel.org
+
+&& refers to another command. The echo simply places a blank line.
+
+-----Original Message-----
+From: Paul Kraus [mailto:pkraus@pelsupply.com] 
+Sent: Monday, September 30, 2002 1:31 PM
+To: 'linux-newbie@vger.kernel.org'; 'hylafax-users@hylafax.org'
+Subject: && - Help
+
 
 What does && represent?
 
