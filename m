@@ -1,23 +1,19 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: John Kelly (bilbo) <bilbo@waitrose.com>
 Subject: Re: Compiler method of finding header.
-Date: Wed, 22 Oct 2003 15:17:45 +0200
+Date: Wed, 22 Oct 2003 19:38:49 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200310221517.45695.pa3gcu@zeelandnet.nl>
+Message-ID: <20031022183151.OHGN2197.mta05-svc.ntlworld.com@there>
 References: <200310220657.50794.Adam@Luchjenbroers.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Reply-To: bilbo@waitrose.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <200310220657.50794.Adam@Luchjenbroers.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Adam@Luchjenbroers.com, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Tuesday 21 October 2003 23:27, Adam Luchjenbroers wrote:
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
->
+On Tuesday 21 October 2003 10:27 pm, Adam Luchjenbroers wrote:
 > /usr/include/openssl/kssl.h:72:18: krb5.h: No such file or directory
 >
 > includes line:
@@ -29,41 +25,42 @@ On Tuesday 21 October 2003 23:27, Adam Luchjenbroers wrote:
 > /usr/kerberos/include/krb5.h
 >
 > How do I tell the compiler where to look for headers? OS is RedHat 9.
->
 
-Without knowing what you are trying to compile or being able to see the 
-Makefile it would be hard to say how you could do that in the makefile as 
-includes "include" header files that are located in /usr/include so your 
-Makefile is not at fault here, or so it seems to me.
+Hi,
+I am not quite sure I understand what you are trying to do here, but  this 
+might help.
 
-If this is a one file error then you could edit kssl.h and change the above 
-mentioned include to;
+If you put something like
 
-#include </usr/kerberos/include/krb5.h>
+#include <foobar.h> 
 
-I expect you would then find that your compile will go on a little and barf 
-again as it will miss another file, you can also create a sym link in /usr/
-include (possably a better idea).
+in a source file, then the compiler looks for foobar.h in the default 
+location(s) - usually /usr/include. 
+If you put something like
 
-cd /usr/include
-ln -s /usr/kerberos/include kerberos
-Or something to that effect.
+#include "/home/me/include/foobar.h"
 
-The most likly explanation for the problem is that your kerberos includes have 
-been installed one directory too high, header files belong in /usr/include 
-and not in /usr, that is what i have been taught.
+in the source,  the the compiler looks for that specific file. 
+Note that the first example uses angle brackets <> and the second uses double 
+quotes. 
+So you might try something like:
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+#include "/usr/kerberos/include/krb5.h"
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+You second option is to add /usr/kerberos/include/ to the list of places 
+checked for include files. You can do this on the command line for gcc with 
+to option:
 
+ gcc -I/usr/kerberos/include/ something.c
 
+You are probably using a Makefile, so you would have to hack that to make it 
+(the -I option) work.
 
+I hope this helps.
+
+regards,
+
+John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
