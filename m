@@ -1,33 +1,27 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Line Length Help
-Date: Thu, 24 Oct 2002 10:28:59 +0800
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: Re: (X and other) basics (was: A few more things...)
+Date: Wed, 23 Oct 2002 19:44:00 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210240229.g9O2SxL01399@philonline.com>
-References: <Pine.BSF.4.44.0210230737500.43337-100000@server1.shellworld.net>
+Message-ID: <09be500430518a2HNLMAIL2@hawaii.rr.com>
+References: <0d6f012081017a2HNLMAIL3@hawaii.rr.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Wed, 23 Oct 2002 07:38:24 -0400."
-             <Pine.BSF.4.44.0210230737500.43337-100000@server1.shellworld.net> 
+In-reply-to: <Pine.BSF.4.44.0210230825520.43337-100000@server1.shellworld.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Jude DaShiell <jdashiel@shellworld.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Thank you so much Jude! This will safe me up to 1/3rd of my print paper.
+On 23 Oct 02, at 8:27, Jude DaShiell wrote:
 
-jdashiel@shellworld.net said:
-> I think fmt and newfmt both have line length command line switches. 
+> Windows is a special case.  With windows there's no good
+> way to use anything.  The code efficiency on windows would
+> gagg any of the CP/M programmers that might audit it.
 
-This brings to question how does one know what are all the goodies
-hidden in the Linux box? By going thru all the Linux user commands in "Linux 
-In A Nutshell" and with luck find the right command. May be O'Reilly should 
-make an arrangement of the commands by function as well instead of only 
-alphabetically.
+Very true, very true! ;-)
 
-Regards
--- 
-Peter
+David
+gnome@hawaii.rr.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
