@@ -1,77 +1,66 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Floppy problem
-Date: Tue, 13 Apr 2004 08:03:30 +0200
+From: =?iso-8859-1?Q?Juan_Facundo_Su=E1rez?= <facundo.suarez@ensi.com.ar>
+Subject: RE: Remote X
+Date: Tue, 13 Apr 2004 11:55:20 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200404130803.30882.pa3gcu@zeelandnet.nl>
-References: <200404120733.45977.davidtief@abac.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <000c01c42167$57da7820$680410ac@pcinstru1>
+References: <407AD3BE.7080301@comcast.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200404120733.45977.davidtief@abac.com>
-Content-Disposition: inline
+In-Reply-To: <407AD3BE.7080301@comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: David Tiefenbrunn <davidtief@abac.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-On Monday 12 April 2004 13:33, David Tiefenbrunn wrote:
-> Hi All,
->
-> I now have my own complete Suse Linux Pro. install disks and manuals.
->
-> I am logged into root.
+Hi, i could do it. I am really happy about that.
 
-That you should not do, ( i am presuming you mean logging into X as root).
+ Now, what i need is to connect a window$ machine, as an X server, to a
+session / window manager on a remote linux machine. I have heared about
+cygwin / winx32. I am trying cygwin, but i dont understand how to set i=
+t up,
+to use it, as an X server. Running the cygwin application, it opens
+something too much like an "xterm". I can run many linux commands in th=
+ere.
+I tried to "XFree86" or "startx" commands, but nothing. Have i install =
+an x
+server on cygwin to make it work?. Any help?.
 
-> I want to make a bood floppy, but I keep getting errors:
-> selected image doesn't exist on instllation medium.
+ Besides, i will try xwin32 too. If anyone can tell me something to "ta=
+ke
+care" for using it, or any help, i will be very thaks.
 
-Whats the command and whats the "eaxcht error message", all one can say here 
-is;
+ See you !
 
-You dont have the correct install disk in the drive and/or the path is 
-incorrect.
-
-> Then another error about valid floppy medium or valid root permissions.
->
-> If I try to format it with Kfloppy, I get:
->  Cannot Format /dev/fd0u1440
-
-Should that not be /dev/fd0
-
->
-> No Such Device or Address.
->
-> The Floppy Device icon on the desktop opens a window, and lists the files
-> (DOS / win98) that are on it.
->
-> For a while, the eject button wouldn't work.
-
-SuSE uses devfs automount and several other (so called) new style plug and 
-pray effects, what you are experiancing is an effect of the new style.
-
-Why not do it the SuSE way, login as a normal user goto control center click 
-on yast (you will then be asked to enter the root password) now try and do 
-things the SuSE way.
-
->
-> Thak you,
-> Dave
->
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+| -----Mensaje original-----
+| De: linux-newbie-owner@vger.kernel.org
+| [mailto:linux-newbie-owner@vger.kernel.org]En nombre de Beolach
+| Enviado el: Lunes, 12 de Abril de 2004 02:37 p.m.
+| Para: Juan Facundo Su=E1rez
+| Cc: linux-newbie@vger.kernel.org
+| Asunto: Re: Remote X
+|
+|
+| -----BEGIN PGP SIGNED MESSAGE-----
+| Hash: SHA1
+|
+| That's correct.  The only step you left out, is you need to tell the
+| XServer to allow the remote computer to display on the
+| XServer, with xhost.
+|
+| For example:
+|
+| host1$:XFree86 :(a) vt(b)
+| host1$:xhost +host2
+|
+| host2$:wmaker -display host1:(a)
+|
+| HTH,
+| Conway S. Smith
+|
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
