@@ -1,34 +1,47 @@
-From: Stephen Hemminger <shemminger@osdl.org>
-Subject: Re: is sendto and recvfrom thread safe?
-Date: Thu, 21 Aug 2003 14:33:20 -0700
+From: Christopher Swope <swopecr@yahoo.com>
+Subject: Strange Boot behavior
+Date: Thu, 21 Aug 2003 18:09:17 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030821143320.3b158fd6.shemminger@osdl.org>
-References: <20030821200226.59291.qmail@mail.com>
+Message-ID: <20030822010917.50037.qmail@web13801.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030821200226.59291.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Lee Chin <leechin@mail.com>
-Cc: Mark Hahn <hahn@physics.mcmaster.ca>, linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thu, 21 Aug 2003 15:02:26 -0500
-"Lee Chin" <leechin@mail.com> wrote:
+Hello all,
 
-> This sort  of helps... my question is with respect to UDP sockets, for sendto and recvfrom, can I concurrently have two threads at the same time write (sendto) on a same file descriptor?  How about readfrom and sendt on the same file descriptor at the same time?
+I am currently having trouble getting my computer to boot.  I
+recently decided to install a larger, faster, hard drive.  Since this
+hard drive was larger and faster, I decided that I wanted to make it
+my master drive, and make my old drive my slave.  I took the old hard
+drive out, and installed Red Hat Linux 8.0.  I then reconnected the
+old drive, transferred files, etc.
 
-Yes, but assume two threads A (writes a one message containing "aaaa") 
-and B which (writes two messages "b" and "c").
+The problem is that when the new drive is connected, I never get the
+grub display screen.  The BIOS executes appropriately, and then the
+computer just sits there, like it is waiting for something.  When the
+old drive is not connected, the computer boots fine, however.  Even
+if the old drive is turned off in the BIOS Setup, if it is connected,
+I have this problem.
 
-You can be assured that B's data won't show up inside A's message:
-	ie. never aabaa
-but you can not assume anything about the order they will be received.
+I did make a boot diskette, and I can boot from that.
 
-If you want more detail read the book.
- W. Richard Stevens, UNIX network programming, Volume 1
+I have tried several things to fix the problem, including
+reinstalling grub, making the old /boot partition no longer bootable,
+and even changing the label of the old /boot partition.  I even tried
+to delete the old /boot partition altogether, but nothing has solved
+the problem yet.
 
-http://www.kohala.com/start/
+I am stumped as to what could be the problem.  It might very well be
+hardware/BIOS related, but I don't think it is.
+
+Does anyone have any ideas on what the problem could be and/or how I
+can fix it.
+
+Thanks much,
+Christopher Swope
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
