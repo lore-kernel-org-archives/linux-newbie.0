@@ -1,44 +1,61 @@
-From: lawson_whitney@juno.com
-Subject: Re: Want to strip some formatting out of a text file
-Date: Mon, 12 Aug 2002 21:22:25 -0400 (EDT)
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Mailer Connections
+Date: Tue, 13 Aug 2002 14:41:57 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020812.212824.135024592.0.lawson_whitney@juno.com>
-References: <200208122356.g7CNuuq29483@firebin.net>
+Message-ID: <200208130641.OAA01156@philonline.com>
+References: <rhw@InfraDead.Org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208122356.g7CNuuq29483@firebin.net>
+In-Reply-To: Message from Riley Williams <rhw@InfraDead.Org> 
+   of "Sun, 11 Aug 2002 08:29:52 +0100." <Pine.LNX.4.21.0208110815450.8397-100000@Consulate.UFP.CX> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: arwbackup@worldnet.att.net
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+Cc: rhw@InfraDead.Org, ray@comarre.com
 
-On Mon, 12 Aug 2002, Alan Womack wrote:
+Thanks Riley and Ray
 
-> I'm trying to download the text manuals for the linux pam modules to my palm pilot, but there is the appearance of old style double strike for emphasis text all over the docs.
->
-> e.g. a L(backspace)Li(backspace)in(backspace)n
->
-> What utility to remove this backspacing and doubling of characters so they would be over-written?
->
-> Alan
->
-> I dl'd the text file from the kernel.org website documentation of pam
-
-col -b
-
-I guess.
-
-Lawson
----oops---
+pfheiss said:
+>> How do I revert back that I can mail again with any mail program
+>> especially exmh and with any ISP?
 
 
+rhw@InfraDead.Org said:
+> As a result, the solution may be as simple as setting the hostname for
+> your machine to match that of your preferred ISP by editing the file /
+> etc/sysconfig/network and putting the full; hostname on the HOSTNAME=
+> line, then rebooting your system. 
 
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
+I did that now. It had localhost.localdomain. I changed if to "Peter".
+Can there be more than one name and if so how are they separated?
+
+
+rhw@InfraDead.Org said:
+> Incidentally, sendmail normally tries to send all outgoing emails
+> direct to the relevant delivery host, so the ISP you're dialled up
+> with should make no difference at all.
+
+That what I always thought and it always worked since RH5.2 w/o me doing 
+anything.
+
+ray@comarre.com said:
+>  Also please  mention which MTA you are using (either look for
+> something listening on  port 25 or find the smtp entry in /etc/
+> inetd.conf, depending on which way your system is set up)
+
+The file inetd.conf was absent. I found it as inetd.cof.rpmsave and copied it 
+to /etc/inetd.conf. There is no smtp entry in this file.
+
+This mail should go out now with my webcard ISP and using the program exmh.
+
+Regards
+
+-- 
+Peter
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
