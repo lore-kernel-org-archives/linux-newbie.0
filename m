@@ -1,65 +1,103 @@
-From: Alan Bort <333101@personal.net.py>
-Subject: RE: Red Hat Version 9
-Date: 26 Apr 2003 15:52:13 -0300
+From: wolfgang <wolfgang127jp@ybb.ne.jp>
+Subject: Getting a warning with const
+Date: Sun, 27 Apr 2003 23:13:58 +0900
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1051383133.13073.12.camel@Gandalf>
-References: <000001c30c27$fa515d40$1601a8c0@crypt>
-Reply-To: 333101@personal.net.py
+Message-ID: <20030427231356.75AC.WOLFGANG127JP@ybb.ne.jp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c30c27$fa515d40$1601a8c0@crypt>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: steven@nvts.us
-Cc: 'Mike Miller' <sean@tcob1.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-PLEASE... TRY TO APPLY NETTIQUETTE. AND SPECIALLY TRY TO AVOID REPEATED
-MESSAGES!!!!!!
+Hi gurus,
+I made a simple code(dos2unix.c) that changes dos formatted text to unix
+or unix formatted text to dos. it's up to the code name.
+If I change the argument of getBasename function to (const char *name),
+I get a following warning.
+dos2unix.c: In function `getBasename':
+dos2unix.c:10: warning: assignment discards qualifiers from pointer
+target type
+
+But without const, I don't get a warning.
+what's going on with my code ???
+
+% gcc -o dos2unix dos2unix.c
+% ln -s dos2unix unix2dos
+The following code is the dos2unix.c
+-------dos2unix.c--------
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+
+char* getBasename(char *name){
+   char* basename = 0;
+   if((basename = strrchr(name,'/')) != 0)
+      basename++;
+   else
+      basename = name;
+}
+
+void dos2unix(FILE* file){
+   int c;
+   int cr_flag = 0;
+   while((c = fgetc(file)) != EOF){
+     if(cr_flag && c != '\n')
+        putchar('\r');
+     if(!(cr_flag = c == '\r'))
+        putchar(c);
+   }
+}
+
+void unix2dos(FILE* file){
+   int c;
+   while((c = fgetc(file)) != EOF){
+      if( c == '\n' )
+         putchar('\r');
+      putchar(c);
+   }
+
+}
+
+int main(int argc, char** argv){
+   char* basename = 0;
+   FILE* file = 0;
+   void (*doit)(FILE* file);
+
+   if(argc != 2){
+      fprintf(stderr,"number of arguments must be 2\n");
+      exit(1);
+   }
+
+   basename = getBasename(argv[0]);
 
 
-El s=E1b, 26 de 04 de 2003 a las 16:13, Steven Ackerman escribi=F3:
-> I've installed it on one desktop and two servers. One server was Dell
-> PowerEdge 1600 and the other was some kind of rackmount, dual process=
-or, 5
-> drive scsi thing. Not being a Linux person it made the whole process =
-easy on
-> all machines. I've installed RH ver. 5.2, 6.1, and 6.2 but that's abo=
-ut all
-> I've done. This made it easy to configure network/ip settings and
-> everything. I understand that' how 7.3 and up are, too. This was just=
- easy
-> though. For someone that is not a Linux person, it made it nice. Now =
-I just
-> have to dig into the bare bones stuff. I need to setup iptables, snor=
-t and
-> some kind of web content filtering for it. I imagine I will not have =
-to ease
-> of gui stuff the more I get into it.
->=20
-> -Steve
->=20
-> >
-> >
-> > I'm already downloading it... I'll tell you as soon as I finish and
-> > install... But I've heard it's good.
-> >
-> > If you want a good Distro... go slackware... it's a little
-> > harder.. but
-> > it's the best one.... (I'm also downloading it... It's just one CD.=
-=2E.
-> > the rest I'm installing from source).
-> >
---=20
-Alan Bort
-Linux Registered User 298277 -Country Manager- [http://counter.li.org]
-[ http://www.linuxquestions.org ] Username: Ciccio
-[ http://es.tldp.org ]
-Ciccio.-
+   if((file = fopen(argv[1],"r")) == NULL){
+      fprintf(stderr,"file %s cannot be opened.\n",argv[1]);
+      exit(1);
+   }
+
+   if(strcmp(basename,"dos2unix") == 0){
+      puts("Dos to Unix conversion");
+      doit = dos2unix;
+   }else{
+      puts("Unix to Dos conversion");
+      doit = unix2dos;
+   }
+
+   doit(file);
+
+   fclose(file);
+   return 0;
+}
+
+Thanks in advance.
+
+wolfgang
+
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
