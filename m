@@ -1,37 +1,32 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: iptables or ip6tables firewall
-Date: Wed, 20 Nov 2002 20:45:52 -0500
+From: "Christoph" <christoph23@charter.net>
+Subject: FTP Speed disparity
+Date: Thu, 21 Nov 2002 10:31:29 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211202045.59886.r4mz3z@yahoo.es>
+Message-ID: <001901c2917b$74016a90$8c01a8c0@ENTROPY>
+References: <200211211224.52173.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I have a box that dual boots linux (RH7.3) and Win98.
+For linux I'm using  IPTables (set up for me by one of my 
+coworkers who is a sysadmin) firewall and for Win98   I'm 
+using Sygate's firewall.  On linux, I use the PureFTP
+server and on Win98 I use Cerebrus FTP server.  I'm
+connected to the 'net via Cable.
+Now, whenever I'm booted to Win98 and I transfer files to
+that box via FTP, I get speeds of anywhere between 90 to 
+120 kbps.  However, whenever I'm booted to linux and 
+transfer files to the box, I get speeds of anywhere between 
+20 to 60 kbps.  What might be causing that disparity?  What 
+might I be able to do, where might I check to try to bring
+the speed up while in linux?
 
-Hi friends...
-  I was going to make a firewall (just learning) when I see that in RedHat7.3 
-not only there are iptables daemon, ip6tables daemon too.
-
-  Which is the diference between iptables and ip6tables and which is better to 
-make a firewall?
-
-thanks
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQE93DrWs4dF9gl05swRAhjzAJ40/p2E9xwrS1ZYXkWhJCrFxxAJtQCfYnhL
-ZRVLx9kdk+c1PymXfD+g4nI=
-=Oxn0
------END PGP SIGNATURE-----
+thnx,
+Chris
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
