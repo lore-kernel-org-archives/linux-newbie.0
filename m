@@ -1,80 +1,83 @@
-From: Jacob Langley <j_langley@sbcglobal.net>
-Subject: Re: accessing USB memory stick
-Date: Wed, 04 Feb 2004 17:48:06 -0500
+From: heisspf@skyinet.net
+Subject: (unknown)
+Date: Thu,  5 Feb 2004 15:03:45 +0800 (PHT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1075934765.3589.22.camel@localhost>
-References: <Pine.LNX.4.44.0402041422210.17345-100000@legolas.personal.engin.umich.edu>
-Reply-To: j_langley@sbcglobal.net
+Message-ID: <20040205070345.B1D5E5BC46@smtp2.skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0402041422210.17345-100000@legolas.personal.engin.umich.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+--------
 Hi,
+Resent-Date: Thu, 5 Feb 2004 15:11:34 +0800
+Resent-From: Peter <heisspf@skyinet.net>
+Subject: Bad Sound in Slackware
+Resent-Message-Id: <20040205151134.416d3286@skyinet.net>
+Resent-To: linux-newbie@vger.kernel.org
 
-I know that when I got my 2 flash memory devices, I had to recompile me
-kernel with scsi support to be able to access them and then I could do a
+In Slackware 9.1 I have a very annoying distorted sound which I am unable to 
+correct.
 
-$ mount -t vfat /dev/sda1 /mnt/usbhd
+My RH9.0 and SW9.1 have the same kernel and the same settings in sound. Both 
+have the same /etc/module.conf.
 
-I added it to my fstab to make life easier.  
+SW lsmod gives:
 
-When I plug my stick in I see this from my dmesg:
+Module                  Size  Used by    Not tainted
+snd-pcm-oss            37252   0  (unused)
+snd-mixer-oss          11992   0  [snd-pcm-oss]
+uhci                   24496   0  (unused)
+ehci-hcd               16872   0  (unused)
+usbcore                58400   1  [uhci ehci-hcd]
+snd-via82xx            11712   0 
+snd-pcm                55904   0  [snd-pcm-oss snd-via82xx]
+snd-timer              13252   0  [snd-pcm]
+snd-ac97-codec         37240   0  [snd-via82xx]
+snd-page-alloc          6004   0  [snd-via82xx snd-pcm]
+snd-mpu401-uart         3136   0  [snd-via82xx]
+snd-rawmidi            12512   0  [snd-mpu401-uart]
+snd-seq-device          3920   0  [snd-rawmidi]
+snd                    27460   0  [snd-pcm-oss snd-mixer-oss snd-via82xx 
+snd-pcm snd-timer snd-ac97-codec snd-mpu401-uart snd-rawmidi snd-seq-device]
+soundcore               3332   4  [snd]
+pcmcia_core            40032   0 
+ide-scsi                9424   0 
+agpgart                39576   0  (unused)
 
-Feb  4 17:42:20 [kernel] sda: assuming Write Enabled
-Feb  4 17:42:20 [kernel] sda: assuming drive cache: write through
-Feb  4 17:42:20 [kernel] WARNING: USB Mass Storage data integrity not
-assured
-Feb  4 17:42:45 [kernel] usb 2-1: USB disconnect, address 3
-Feb  4 17:42:48 [kernel] hub 2-0:1.0: new USB device on port 1, assigned
-address 4
-Feb  4 17:42:48 [kernel] scsi2 : SCSI emulation for USB Mass Storage
-devices
-Feb  4 17:42:49 [kernel]   Vendor: LEXAR     Model: JUMPDRIVE        
-Rev: 1.20
-Feb  4 17:42:49 [kernel] SCSI device sda: 251904 512-byte hdwr sectors
-(129 MB)
-Feb  4 17:42:49 [kernel] WARNING: USB Mass Storage data integrity not
-assured
-Feb  4 17:42:49 [kernel] USB Mass Storage device found at 4
+RH lsmod gives:
 
-Hope that helps a little.
--j
-On Wed, 2004-02-04 at 14:46, Karthik Vishwanath wrote:
-> Hello,
-> 
-> How do I mount a usb memory stick? I do see something connected to usb on
-> the output mount (I am running Redhat 9):
-> $ mount | grep usb
-> usbdevfs on /proc/bus/usb type usbdevfs (rw)
-> 
-> On plugging the device into the machine and looking at dmesg, shows me 
-> stuff (which I think is connected to plugging in the usb stick):
-> 
-> hub.c: new USB device 00:1d.7-6, assigned address 3
-> WARNING: USB Mass Storage data integrity not assured
-> USB Mass Storage device found at 3
-> 
-> Is the device being recognized? How can I access it? 
-> 
-> Thanks,
-> 
-> -K
-> 
-> ---------------------
-> Genius may have its limitations, but stupidity is not thus handicapped.
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Module                  Size  Used by    Not tainted
+via82cxxx_audio        22136   0 (autoclean)
+ac97_codec             15464   0 (autoclean) [via82cxxx_audio]
+soundcore               5604   2 (autoclean) [via82cxxx_audio]
+parport_pc             17732   1 (autoclean)
+lp                      8128   0 (autoclean)
+parport                32064   1 (autoclean) [parport_pc lp]
+apm                    12264   2
+irlan                  24276   0 (unused)
+irda                  107568   0 [irlan]
+ipchains               48784  13
+keybdev                 2784   0 (unused)
+mousedev                5396   0 (unused)
+hid                    23972   0 (unused)
+input                   5184   0 [keybdev mousedev hid]
+ehci-hcd               19272   0 (unused)
+usbcore                71488   1 [hid ehci-hcd]
+
+
+What could be the reason for the distorted sound in SW and how could it be 
+corrected.
+
+Thanks & regards
+
 -- 
-Jacob Langley <j_langley@sbcglobal.net>
+Peter
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
