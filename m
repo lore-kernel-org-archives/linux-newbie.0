@@ -1,45 +1,25 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: LP - Cups - Samba - Print Command
-Date: Tue, 01 Oct 2002 09:04:59 -0700
+Subject: Re: Script as root
+Date: Tue, 01 Oct 2002 08:52:47 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021001085620.02cc9b70@celine>
-References: <000101c2695d$57b09320$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021001085016.02c818f0@celine>
+References: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000101c2695d$57b09320$64fea8c0@pkrausxp>
+In-Reply-To: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 11:15 AM 10/1/02 -0400, Paul Kraus wrote:
-[...]
+Yes. You want to set the suid bit on it and have it owned by root. "man 
+chmod" (or maybe other chmod documentation) for the details.
 
->*On a side note why can't I open Linux conf files with notepad? There
->are strange characters. I have to open it with WordPad. I can not save
->or edit using either notepad or WordPad because they seem to add strange
->characters also. Just curious.*
+At 09:55 AM 10/1/02 -0400, Paul Kraus wrote:
+>I have a backup script that mounts a drive on my xp workstations. Is
+>there a way I can set this script to run as root so that I do not have
+>to su every time I want to run it?
 
-
-The problem you are seeing has to do with difference in the ways different 
-operating systems mark the end of line (EOL) in text files. Unix/Linux 
-systems use ascii 10 (CTRL-J) to mark end of line, while Windows systems 
-use the two-character sequence ascii 13, ascii 10 (CTRL-M,CTRL-J) that was 
-established by MS-DOS. (I *think* Macs use yet another EOL label, just 
-CTRL-M, but I may be remembering that wrong, or OS-X may have switched it.)
-
-If you open a Linux text file on a Windows system without first concerting 
-it to Windows-format text, you run the risk that the program you open it in 
-will  not recognize the EOL markers. This is what happens to you with 
-Notepad. Wordpad is smarter and recognizes both possible EOL markers ... 
-but it you edit and save in Wordpad, it might change the EOL to Windows 
-style, which will cause it to look funny in Linux text editors (lotsa ^M 
-characters), and not work if it is an executable.
-
-Linux has programs called "todos" and "fromdos" to change the EOL markings. 
-This is also the fix that, for example,  http clients do when 
-downloading/uploading mime-type text files and ftp clients do when 
-transferring in text (A) mode.
 
 
 --
