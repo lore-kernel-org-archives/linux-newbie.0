@@ -1,79 +1,55 @@
 From: Frank Roberts - SOTL <sotl155360@earthlink.net>
 Subject: Re: RedHat 8
-Date: Wed, 23 Oct 2002 16:24:32 -0400
+Date: Wed, 23 Oct 2002 16:30:10 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210231624.32476.sotl155360@earthlink.net>
-References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+Message-ID: <200210231630.10921.sotl155360@earthlink.net>
+References: <002e01c27a90$5f956220$64fea8c0@pkrausxp> <1035377769.1920.60.camel@zebra.vil.ite.mee.com> <200210231333.g9NDXoF14774@hartford-hwp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+In-Reply-To: <200210231333.g9NDXoF14774@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: Haines Brown <brownh@hartford-hwp.com>, paul.furness@vil.ite.mee.com
+Cc: linux-newbie@vger.kernel.org
 
-First the major change in RH 5.0 to 6.0 to 7.0 to 8.0 appear to be major 
-changes in the RH side of the software meaning major changes in the 
-installation and configuration programs.
+If you think RH 7.2 is better than RH 7.3 
+then 
+YOU WILL DEFINITELY NOT BE HAPPY WITH RH 8.0.
 
-The changes in x.0 to x.2 to x.3 appear to be changes in the content and 
-progressive increases (sometimes) in stability. 
-
-For RH 7.3 to RH 8.0 the kernel was increased to 2.4.18 from 2.4.3 (I believe 
-2.4.3 is correct although it may be incorrect.).
-Open Office replaced Star Office
-and 
-a hatchet job was done to KDE and KDE programs. There is no more KDE.
-
-Considering if you had an official copy of RH7.3 installed you could then 
-automaticall update most programs then the only advantage RH 8.0 would bring 
-to your system would be the updated kernel and the new configuration program. 
-
-As for as the programs which you can not automatically update an inspection 
-shows most of the GUI programs appear to be KDE the very programs RH left out 
-of RH 8.0.
-
-Bottom line RH 8.0 Personal is not half as good as RH 7.3 Personal.
- 
-I have no idea the status of the profession edition is because it cost $150 
-versus $40 for the personal. Note RH 8.0 Personal is cheaper than RH 7.3 
-Personal which was $55.
-
-I would recommend switching to Suse which is in some ways a more advanced 
-distribution than RH except for Yast2. If you want to do a standard 
-configuration with Suse but if you have a oddball or personalized 
-configuration well you may experience certain difficulties.
-
-As far as RH new GUI it appears to be nothing more than a screwed up version 
-of Gnome.
-
-Fortunally I have 2 HDs for this computer a test HD and the normal operating 
-HD. I say fortunately because I installed RH 8.0 on the test HD for 
-verification of installation before updating the normal system. The above 
-comments come from that test. 
-
-There is only one other comment on this pitiful trash distribution - RH 8.0 I 
-wish to make. At our next Linux meeting I will give away the RH 8.0 complete 
-box as a boobie prize.
-
-Thanks
-
-Frank  
+Frank
 
 
-
-
-
-On Wednesday 23 October 2002 08:33, Paul Kraus wrote:
-> What does everyone think of RedHat 8.
+On Wednesday 23 October 2002 09:33, Haines Brown wrote:
+> I assume the answer to the question depends on one's work habits. What
+> worries me in terms of my own are three things, and I'd like feedback
+> on them if possible.
 >
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
+> First, I do most of my work from the keyboard rather than mouse, and
+> so fear a GUI that presumes I'm a mouseaholic. For example, I usually
+> delete icons from the desktop and hide the survivers under emacs, and
+> never use them. Does my keyboard dependency become a problem under RH
+> 8.0?
 >
+> Second, while far from a Linux expert, I am used to configuring
+> things, usually by editing rc files or sometimes by configuration
+> utilities. Does RH 8.0 in any way constrict one ability to custom
+> configure applications by hand?
+>
+> Third, as for installation, I hope there remains an expert procedure
+> that allows you to partition at will and install whatever applications
+> you want. I need assurance that this is so because of the emphasis on
+> automated installation is a little intimidating.
+>
+> I'm not a happy camper with RH 7.3 (7.2 was much better as far as I'm
+> concerned), and look to RH 8.0 to resolve some of the problems (so
+> many things just don't work right that I don't have the time to fix
+> them all). A null version of anything is risky, but I've not heard
+> horror stories about RH 8.0. I hope this side of things will be a part
+> of the discussion.
+>
+>
+> Haines Brown
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
