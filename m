@@ -1,31 +1,58 @@
-From: Amin <amin@siriusbb.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: problem with Real Tek RTL-8139, SMC EZ Card
-Date: Fri, 7 Nov 2003 10:07:59 +0600
+Date: Fri, 7 Nov 2003 07:49:46 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031107100759.28ff0f0d.amin@siriusbb.com>
+Message-ID: <200311070649.46620.pa3gcu@zeelandnet.nl>
 References: <20031106171124.64183.qmail@web80604.mail.yahoo.com>
-	<5.1.0.14.1.20031106100759.01fac768@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031106100759.01fac768@celine>
+In-Reply-To: <20031106171124.64183.qmail@web80604.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>, linux-newbie@vger.kernel.org
 
-On Thu, 06 Nov 2003 10:23:15 -0800
-Ray Olszewski <ray@comarre.com> wrote:
+On Thursday 06 November 2003 18:11, Ravi Kumar Munnangi wrote:
+> Hello,
+>
+>   I have just now installed RedHat Linux 8.0 on my
+> system. It has the Real Tek RTL-8139, SMC EZ Card.
+>
+>  After ifup eth0, it gave the message,
+>
+>  modprobe:Can't open dependencies file
+> /lib/modules/2.2.14-5.0/modules.dep(No such file or
+> directory)
 
-> BTW, the advice someone else posted was wrong in one detail. If modprobe is 
-> not finding modules.dep, then attempting "/sbin/modprobe 8139too" is 
-> pointless. Instead, try "/sbin/insmod 8139too", since insmod does NOT 
-> handle dependency issues so will not look for modules.dep . It may fail too 
-> (if, for example, the module itself is not present), but at least it will 
-> fail for a different reason.
+The normal way to cure that is to do as root,
 
-Ah, yes, sorry, I forgot about module dependencies.  I'm using RH8.0 with the shipping kernel, 2.4.18-14, and the same network card also.  Installing it was simply a matter of ``modprobe'', and then ``redhat-config-network'' (nice GUI network wizard).
+depmod -a
+modprobe 8139too
 
-Yawar Amin
+See what happens.
+
+>
+> The same message appeared even at the time of booting.
+>
+> Please help me come out of this problem!
+>
+> Thanking you,
+> Ravi Kumar
+>
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
