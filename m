@@ -1,8 +1,8 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: Debian Sid startup problems
-Date: Fri, 11 Jun 2004 20:05:25 -0500 (CDT)
+Date: Fri, 11 Jun 2004 20:36:24 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406111946550.2199@debian-emach>
+Message-ID: <Pine.LNX.4.58.0406112029320.2201@debian-emach>
 References: <5.1.0.14.1.20040611160033.01fa0948@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,81 +12,44 @@ Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Thanks for your input, Ray.
-
 On Fri, 11 Jun 2004, Ray Olszewski wrote:
 
-> The first thing you need to pin down is whether this is an X problem or
-> some sort of USB problem (possibly one involving a kernel module).
->
-> To do that, see if you can boot successfully to a command prompt. The
-> simplest way to do that is to use your emergency procedure to get access to
-> the hard disk, then rename the file /etc/rc2.d/S99xdm to something that
-> will not execute (I usually change it to No99xdm). Then see if the system
-> will boot/init successfully.
-
-The system boots successfully after having renamed S99xdm NoS99xdm.  I get
-a console I can log into the system with and do things in text mode.
-Having fired up Pine, I'm writing this message using the system.  When I
-issue startx from the command line, I get the dreaded "no signal" output
-on the monitor followed by blank screen and hung system.  So, it does look
-like an X problem.
-
-> If it does, then your problem is with X, and we need to explore that more
-> closely.
->
-> If not, then your problem is probably with the recent changes you made, and
-> we need to examine them more closely.
->
 > (Another option is to see if you can telnet or ssh to the system after it
 > boots/inits but apparently "hangs". This could work if the problem is just
 > an unusually nasty console error, but not if it is a kernel problem. Also,
 > I don't know if your system is on a LAN and runs the needed daemons for
 > these connections.)
 
-As soon as I send off this message, I'll issue startx, let the screen go
-blank and system freeze, then try to telnet from another machine (I am on
-a LAN and a telnet server is running).
+I was able to telnet into the hung system.  It reacted very sluggishly,
+which indicated to me there was a heavy processing load.  I fired up Top,
+which showed XFree86 taking 98+% of CPU.  I had trouble killing it with
+Top.  I finally issued "reboot" and the system eventually went down.
 
+In case it seems like the solution might be to upgrade/reinstall the
+xserver: I can't quite figure out what Debian is doing about the fork in
+the X project.  Are they sticking with XFree, or going with X.org?  I
+tried looking for X packages in hopes of determining something about this,
+but it didn't resolve much (no X11R7 packages, or whatever they're calling
+the new release.  sorry, but I just can't recall the name I searched under
+off the top of my head, but I did get the name from a reliable source).
+
+James
+
+>
 > (Another option, if your lilo setup permits it, is to boot into single-user
 > mode. This will not run the rc2 scripts so will not start xdm.)
-
-I would very much like to be able to do this.  When this problem first
-occured, I did a bit of web searching to see how I could make lilo do
-this.  That initial attempt at finding information failed: do you have any
-pointers on doing this?  I really should have that sort of "failsafe"
-option in my lilo menu.
-
+>
 > I cannot find any Sid package with the name "usbitem" or (if I check "usb")
 > anything close to it, so I suspect another paraphrase. If so, and if the
 > problem seems to be with usb, please be specific about which usb packages
 > you've installed.
-
-I think the problem is not with usb.  Nevertheless, I'll note that I
-installed (apt-get install) 4 usb packages: from memory these were 1)
-usb-utils; 2) hotplug; 3) usbmgr; and 4) usbview.  Since installing those
-had no evident effect on my attempt to make my usb flash-reader
-accessible, I added a line to /etc/fstab: usbdevfs /proc/bus/usb usbdevfs
-defaults 0 0 (found reference to this on the web).  After rebooting and
-having the problem, I accessed /etc/fstab and commented out that line, but
-I was nonetheless still unable to fully boot the system as described.
-
+>
 > In partlcular, since you quote log output referencing keyboard problems,
 > might you have installed (for example) "console-keymaps-usb"?
-
-Not by intent.  Could it have been installed as a dependency for one of
-the usb programs I installed?
-
+>
 > Or have you installed any "usb-modules-*" package ... these install kernel
 > modules that could cause problems ... a kernel has no real protection
 > against a module bug, since modules when run become part of the kernel.
-
-Again, I did not knowingly install such a thing.  Whether it got installed
-as a dependency of one of the other programs I installed remains a
-possibility.  Here goes a try at telnetting into the frozen system . . .
-
-James
-
 >
 > At 09:01 PM 6/11/2004 +0000, James Miller wrote:
 > >I've somehow managed to foul up my Debian system such that it won't "go
