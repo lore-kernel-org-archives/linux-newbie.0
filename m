@@ -1,65 +1,55 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Translating IP tables
-Date: Tue, 01 Feb 2005 17:30:58 -0800
-Message-ID: <5.1.0.14.1.20050201172540.04a37b58@celine>
-References: <5.1.0.14.1.20050201085653.02be6918@celine> <002e01c508b9$5807df10$1f0aa8c0@lanadmin>
+From: James Miller <jamtat@mailsnare.net>
+Subject: wired/wireless bridge: a more surefire Linux wireless solution?
+Date: Wed, 2 Feb 2005 14:51:49 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0502021428050.7624@localhost.localdomain>
 Mime-Version: 1.0
-In-Reply-To: <002e01c508b9$5807df10$1f0aa8c0@lanadmin>
-References: <5.1.0.14.1.20050201085653.02be6918@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-71C24702"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: eatley@wowcorp.com, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 06:54 PM 2/1/2005 -0500, Eve Atley wrote:
-[skipping a lot]
->2. I flushed the nasty port 23 away from the iptables, and attempted to add
->5901 using the following command:
->         iptables -A RH-Firewall-1-INPUT -m state --state NEW -p tcp
->--destination-port 5901 -j ACCEPT
->
->3. Now 'iptables -nvL' gives me this:
-[...]
->   172 29486 REJECT     all  --  *      *       0.0.0.0/0
->0.0.0.0/0          reject-with icmp-host-prohibited
->     0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
->0.0.0.0/0          state NEW tcp dpt:5901
-></snip>
->
->4. When I try to telnet to the machine's IP using port 5901, it still
->indicates Connection Failed, despite it being set up like everything else
->that works.
->
->Final thought: perhaps it makes a difference that it follows the REJECT?
+This question is not really Linux-specific, and is maybe more
+hardware-oriented than OS-oriented. But being a Linux user, I'd like to
+know if/how it might apply to me. It concerns a comment I read regarding
+an article on wireless networking with Linux, and it's really something I
+had earlier wondered about, though in less specific terms. So, to go on
+with my query.
 
+It seems widely accepted that Linux has spotty support for wireless
+networking--at least I read articles and comments to that effect with some
+regularity. I wondered, when I first confronted these sorts of problems:
+"why couldn't a wireless receiver-type-thing just be hooked up to a Linux
+machine's wired NIC to connect said machine to a wireless network?" I
+didn't really appreciate the technical aspects involved when I first
+thought of this, but now that I've read someone's suggestion about using a
+bridge to do just this sort of thing, I might understand better.  The
+person responding to the article I was reading was basically saying
+something like: "why bother with the software problems (lack of drivers
+and documentation on chipsets to write them) associated with hooking to a
+wireless network in Linux? Just get a wireless bridge and hook it to your
+wired NIC and get on the wireless network that way."
 
-Yes, you got it on the first try. Chains work from top to bottom; a packet 
-goes down the chain only until it finds a matching rule; then it follows 
-that rule without ever looking at subsequent rules (with a few exceptions 
-that are incidental in this context).
+So, let me just ask: is this really some sort of solution to the wireless
+support problem under Linux? People objected to that poster's suggestion
+on the basis that it was too bulky (extra pieces of hardware like the
+bridge and its power adaptor). Maybe it's a bit more expensive, too. But
+if this really would work--i.e., allow you to connect to a wireless
+network through your existing wired NIC--it could be a solution for at
+least some situations. Possible cons would be that a lousy old 10/100
+wired NIC can't match the throughput of the latest 801.11g wireless NIC's
+(to which I say; big whoop! 100mbps suits my all my needs and more).
+Certainly an enterprising hardware manufacturer could address the
+bulkiness problem: I have an external HD, for example, that draws 6 volt
+power from the ps2 port. Of course the possibility always exists--and is
+in fact quite likely--that there's already some device that does this,
+i.e., sort of augments your existing wired NIC with wirless capability
+and that I simply haven't run across it yet.
 
-You need to do one of two things:
+Feedback will be appreciated. I've probably overlooked or poorly
+understand many of the technical details.
 
-1. Find the script that creates the chain and add your new rule to it ahead 
-of the final REJECT rule. Where and what that script is is RH specific, and 
-I don't know Red Hat, so you need to find it on your own or get help from 
-someone else.
-
-2. Instead of adding the rule ("iptables -A"), insert the same rule 
-("iptables -I" or maybe "iptables -I 1" ... I forget if -I without a number 
-defaults to position 1), so it will go at the start of the chain rather 
-than the end.
-
-
-
-
--- 
-Internal Virus Database is out-of-date.
-Checked by AVG Anti-Virus.
-Version: 7.0.300 / Virus Database: 265.7.4 - Release Date: 1/25/2005
-
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
