@@ -1,77 +1,57 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: How to mount CD-ROM?
-Date: Thu, 31 Oct 2002 08:05:56 -0800
+From: Dragos LUNGU <rlug-list@xts.ro>
+Subject: Re: A way to transfer drives?
+Date: Thu, 31 Oct 2002 18:59:57 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021031075555.020ce520@celine>
-References: <5.1.0.14.1.20021030075115.020ef7a0@celine>
- <5.1.0.14.1.20021029083056.0215aec0@celine>
- <5.1.0.14.1.20021030075115.020ef7a0@celine>
+Message-ID: <3DC1618D.4060704@xts.ro>
+References: <200210310853.08719.1stflight@ameritech.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021031115622.E56C8759E5@smtp.orcon.net.nz>
+In-Reply-To: <200210310853.08719.1stflight@ameritech.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-At 02:29 AM 11/1/02 +1300, cr wrote:
->[...]
-
->I don't have enough info about your setup (kernel details,
-> > mostly) to know why you are getting ghe "unresolved symbol" errors, but the
-> > usual reasons are kernel-version mismatch or missing dependency. See what
-> > effect "modprobe sr_mod" has.
->
->Same list of four   "unresolved symbol" errors, then
->"insmod /lib/modules/2.4.7-10/kernel/drivers/scsi/sr_mod.o  failed"
->
->The module's there in /lib/....    , I looked.
-
-Yes, of course it is. The messages you are seeing say that some external 
-function calls *in* the module cannot be resolved.
-
-Usually this occurs because some other module that the one you are trying 
-to load provides the missing functionality; modprobe is supposed to handle 
-this for you (by consulting modules.dep and loading anything that is 
-needed). After the unsuccessful modprobe, what does "lsmod" tell you about 
-what is loaded? Is the module scsi_mod loaded, and what does the output say 
-about what other modules are using it (the stuff in [] after the size)?
-
-The other reason this occurs is because the module was compiled for a 
-different kernel than the one loaded. Did you compile (or otherwise change) 
-your kernel? If so, did you also compile (or otherwise change) modules, 
-including sr_mod specifically?
-
-> > >X-cd-roast seems to work quite happily without it, though.
-> >
-> > That's because it accesses the device by (pseudo-)LUN, not through the
-> > block device /dev/scd0.
->
->OK, so it's a useful confirmation that the hardware's all working, but that's
->all.   Though it certainly does seem to need ide-scsi to be present.
-
-Yes. A LUN is a scsi attribute, so you need ide-scsi to use it.
-
->How does one find what modules are working - does  lsmod   list them all?
-
-Yes.
-
->Is it possible to 'switch off'  modules once installed?   It occurs to me I
->could switch off  ide-scsi and sg and see if I can get my  IDE  CD-ROM
->reading back.
-
-Well, you can remove modules with "rmmod". I don't know how that interacts 
-with the lilo.conf settings that tell the kernel to use ide-scsi emulation 
-for an IDE device.
+To: 1stFlight <1stflight@ameritech.net>
+Cc: linux newbie <linux-newbie@vger.kernel.org>
 
 
 
+1stFlight wrote:
+>  I'm looking for a way to upgrade my HD and maintain file/directory structure. 
+> I've got a 20GB  with partitions for / /home /usr how can I copy/clone this 
+> drive over to it's 60B replacement? Thanks!
+Hi
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+just finished this  operation last night .
+setup :
+
+boot from /dev/hda
+
+/dev/hdb - 40GB (old disk)
+/dev/hdc - 60GB (new disk )
+
+# dd if=/dev/hdb of=/dev/hdc bs=2M
+
+it did a perfect,bit by bit, clone . then, i used cfdisk to set up an 
+additional 20Gb partition for the extra space.
+
+works like a charm .
+
+i always set bs (block size) close to the size of the HDD buffer (2048 
+in my case)
+
+hope it helps.
+
+dragos
+
+
+-- 
+
+| Dragos LUNGU
+|
+| http://www.xts.ro
+| dragos@xts.ro
+| mobile (+40)745 379 734
+| office (+40)251 190 561
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
