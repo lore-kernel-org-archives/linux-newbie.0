@@ -1,43 +1,26 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: video editing
-Date: Wed, 18 Sep 2002 17:12:51 -0700
+Subject: Re: lilo vs. grub
+Date: Wed, 18 Sep 2002 17:14:30 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020918170432.024ec8d0@celine>
-References: <6240DAD5.69D267D2.0006BEFC@netscape.net>
+Message-ID: <5.1.0.14.1.20020918171259.0248b440@celine>
+References: <70D2426B.531446B0.0006BEFC@netscape.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <6240DAD5.69D267D2.0006BEFC@netscape.net>
+In-Reply-To: <70D2426B.531446B0.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: neil t <wa4chq@netscape.net>, linux-newbie@vger.kernel.org
 
-At 07:13 PM 9/18/02 -0400, neil t wrote:
->Greetings-
->Is there hardware available for linux for grabbing video
->from my camcorder or vcr?  I have something already but it has
->to be used with .....(windoze....).......ugggg
+At 07:15 PM 9/18/02 -0400, neil t wrote:
+>Greetings all-
+>I have been using lilo since installing RH a year and a half
+>ago.  Is there a reason why I should switch and start using
+>grub?
 
-Yes. A lot of Windows vidcap hardware works with Linux. I use the Hauppauge 
-WinTVGo card here, with the video4linux kernel subsystem. It tunes and 
-captures TV, and it has a composite-video input as well. Linux supports 
-most (not quite all) of the Hauppauge and ATI vidcap cards, as well as others.
-
-I know from my reading that v4l also supports some of the cards that 
-interface digital cameras (USB? FireWire? not sure), but I don't know the 
-details (since I don't own that stuff). A search on "video4linux" will let 
-you track them down.
-
-There is also plenty of applications software. Here, I use the avifile 
-libraries with a (currently unsupported, unfortunately ... only the Debian 
-version for it is up to date, I believe) application called "vcr" to do 
-vidcaps. There are many to choose from ... xawtv is a well-known one, and 
-avifile itself has capture and playback utilities. For playback, I use 
-xine; mplayer is another popular application.
-
-This is just an outline of part of what is available. The usual searches, 
-both on google and (probably) in the database of your distro's package 
-list, will turn up plenty more. Hope this is enough to get you started.
+No. If LILO works, it works. For some users (especially ones with 
+complicated multiboot setups), GRUB offers a nicer UI and a bit more 
+flexibility. But both are good, mature applications.
 
 
 --
