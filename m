@@ -1,40 +1,37 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Minicom and Modem
-Date: Sun, 2 Feb 2003 13:37:29 +0000
+From: "Amin" <raihan@citech-bd.com>
+Subject: Network card and kernel module problems
+Date: Sun, 2 Feb 2003 21:56:26 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03020213372901.19519@unix.pa3gcu>
-References: <200302011710.46462.sotl155360@earthlink.net> <03020209383900.19519@unix.pa3gcu> <200302020745.13455.sotl155360@earthlink.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302020745.13455.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Frank Robers _ SOTL <sotl155360@earthlink.net>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Sunday 02 February 2003 12:45, Frank Robers _ SOTL wrote:
-> Hi
->
-> Thanks for the help. I greatly appreciate your taking the effort to
-> respond.
->
-> Now for the principal issue.
->
-> If I issue the above commands will that screw up Kppp from seeing the
-> builtin modem and stop normal Internet connections.
+Hi all,
 
-Why use minicom at all for simply transfering fies via a serial cable.?
+I use a Surecom EP-320X-S 100/10M Ethernet PCI adapter; I believe it's
+Myson MTD3xx compatible --- at least, I've used it before with Myson's
+fealnx.o module in Red Hat Linux 7.3.  The problem is I upgraded to RH8.0
+and find that the kernel does not already support the card.  I tried
+recompiling with built-in support (for the Myson module).  kudzu detected
+the card at startup and configured it.  I've set it up it using Red Hat's
+``neat'' tool (it uses DHCP), but it says it can't determine IP
+information, and to check the cables.
 
-Simply configure the device on both sides with slattach or dip and make sure 
-both have routes to each other, its a simple network then not a complicated 
-thing with minicom.
+Also, could anybody tell me of a way to check the various distros' kernels
+to see if they come with built-in support for my card?
 
+Help is much appreciated.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Yawar Amin
+
+--
+Why can't we just spell it orderves?
+(Get Witty Auto-Generated Signatures from http://SmartBee.org)
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
