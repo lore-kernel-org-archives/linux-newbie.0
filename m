@@ -1,67 +1,61 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: /etc/sudoers setup
-Date: Tue, 30 Apr 2002 01:15:44 +0300
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Phantom executables
+Date: Mon, 29 Apr 2002 20:43:13 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200204292215.g3TMFpl06118@g38.rdsbv.ro>
-References: <4.3.2.7.0.20020429090836.02480960@globalnet.hn>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200204300043.g3U0hDI07271@langhans.hartford-hwp.com>
+References: <m33cxj7gfk.fsf@wobble.eth.net> <20020426041540.47f8697f.nbhs2@i-2000.com> <200204262108.g3QL8w312580@langhans.hartford-hwp.com> <20020426215000.GA2765@cam.ac.uk>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4.3.2.7.0.20020429090836.02480960@globalnet.hn>
+In-Reply-To: <20020426215000.GA2765@cam.ac.uk> (message from Steven Smith on
+	Fri, 26 Apr 2002 22:50:00 +0100)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Ricardo Denis <r_denis@globalnet.hn>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: sos22@cam.ac.uk
+Cc: linux-newbie@vger.kernel.org
 
-root@k:~# more /etc/sudoers
-# sudoers file.
-#
-# This file MUST be edited with the 'visudo' command as root.
-#
-# See the sudoers man page for the details on how to write a sudoers file.
-#
+Steven,
 
-# Host alias specification
+You suggested that my executable that only returns the error, "File
+not found" is probably the result of a broken or misplaced
+intepreter. When I run (163nogui being the troublesone executable):
 
-# User alias specification
-User_Alias      JUPANI = petre, k
-# Cmnd alias specification
-Cmnd_Alias      SHUTDOWN = /sbin/shutdown -h now
-Cmnd_Alias      REBOOT = /sbin/reboot
-# User privilege specification
-root    ALL=(ALL) ALL
-JUPANI  ALL = NOPASSWD: SHUTDOWN, REBOOT
+	    [root@langhans tex2rtf]# ldd ./163nogui
+	    /usr/bin/ldd: ./163nogui: No such file or directory
+
+This means it can't find a library, and so the first question is the
+interpreter. I do have /lib/ld-linux.so.2, which is a symlink to
+ld-linux.2.2.4.so.
+
+Apparently I was previously also using an old interpreter that was
+located on my old hardware, so I copied over
+ld-linux.so.1->ld-linux.1.9.5. Now, instead of the error message, ldd
+tells me what I need, and this led mt to create a symlink from
+libm.so.5 to my new libm-2.2.2.so, after which I get:
+
+  [root@langhans tex2rtf]# ldd ./163nogui
+	libm.so.5 => /lib/libm.so.5 (0x40023000)
+	libstdc++.so.27 => not found
+	libc.so.5 => /lib/libc.so.5 (0x40046000)
+	libc.so.6 => /lib/libc.so.6 (0x40184000)
+	ld-linux.so.2 => /lib/ld-linux.so.2 (0x402c2000)
+	...
 
 
-good enough ?
+It looks like I'll have get the old libstdc++.so.27 and I should be in
+business. I see that in rpmfind there's a libc-5.4.46-2 RPM for i386
+that provides libstdc++.so.27. I've downloaded but not yet installed
+it.
 
-HTH,
+It looks like I should simply install this old libc-5, and it will
+provide the libstdc++.27 that I need. However, I hope this
+installation of old libraries won't upset my system.  
 
-petre
+I mention all this in the hope will confirm I'm on the right track and
+that I should not suffer ill effects from installing the RPM.
 
+Haines Brown
 
-
-
-On Monday 29 April 2002 17:12, Ricardo Denis wrote using one of his keyboards:
-> hi all,
->
-> i have read the sudo and sudoers man page but i still can't configure it to
-> work properly. the problem is that i don't know how to properly specify the
-> users in the /etc/sudoers file. would somebody be kind enough to send me a
-> copy of theirs so i can learn how to do mine please? thanks in advance.
->
-> rick
->
->
-> Donde esta Ricky? http://www.findu.com/cgi-bin/track.cgi?hr2kos-2
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
-  1:15am  up 6 min,  1 user,  load average: 0.01, 0.10, 0.06
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
