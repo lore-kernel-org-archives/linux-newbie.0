@@ -1,36 +1,39 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Burning iso to disk
-Date: Thu, 13 Mar 2003 10:21:45 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Burning iso to disk
+Date: Thu, 13 Mar 2003 15:58:57 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303131021.45642.sotl155360@earthlink.net>
+Message-ID: <03031315585702.09029@unix.pa3gcu>
+References: <200303131021.45642.sotl155360@earthlink.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200303131021.45642.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi All
+On Thursday 13 March 2003 15:21, Frank Roberts - SOTL wrote:
 
-I have downloaded the Mandrake 9.1rc2.iso to my HD.
-I have attempted to burn these iso to CD by both CDRoast and by command line.
+>
+> The command line command used was:
+> cdrecord -dev=0,2,0 -speed=12 -data MandrakeLinux-9.1rc2-CD1.i586.iso
 
-I did not ck sums but am assuming that they are good as iso were downloaded on 
-line better than t3.
+I normally use;
 
-After placing #1 burn CD in CD Reader to start installation computer did not 
-recognize CD as bootable.
+cdrecord -eject dev=1,0,0 speed=12  -isosize -pad name.iso
 
-Checking CD I find I have an image file on CD.
+Adjust -dev= accordingly.
 
-Is it possible for someone to inform me where I am making the mistake in 
-converting the iso images to the correct format on the CD.
 
-The command line command used was:
-cdrecord -dev=0,2,0 -speed=12 -data MandrakeLinux-9.1rc2-CD1.i586.iso
+> Thanks
+> Frank
 
-Thanks
-Frank
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
