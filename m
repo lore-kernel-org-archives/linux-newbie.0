@@ -1,28 +1,42 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: read-only file system
-Date: Sat, 5 Oct 2002 07:52:54 +0000
+Subject: Re: Make Linux bootdisk
+Date: Sat, 5 Oct 2002 08:08:18 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02100507525400.00234@unix.pa3gcu>
-References: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
+Message-ID: <02100508081801.00234@unix.pa3gcu>
+References: <20021004162638.55122.qmail@web13409.mail.yahoo.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
+In-Reply-To: <20021004162638.55122.qmail@web13409.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: a a <xlsd@hotmail.com>, linux-newbie@vger.kernel.org
+To: Abhijit Vijay <abhijit_v@yahoo.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Saturday 05 October 2002 03:02, a a wrote:
-> hello
-> im trying to edit a file in /etc/rc.d but it says "Read-only file system"
-> how do i change it to writeable?
+On Friday 04 October 2002 16:26, Abhijit Vijay wrote:
+> Hi All,
+>
+> Could anyone please tell me how to make a linux
+> bootdisk? Is it true that a linux bootdisk made for
+> one computer cannot be used to boot another linux
+> machine?
 
-Files in /etc/rc.d/ are owned by "root" so one would need to be root or have 
-root permissions to edit one of those files.
+Ray explained in great detail, however to expand on what he said about 
+booting other computers, the created bootdisk will only boot another machine 
+to start with if it has the same root partition, for example /dev/hda3 would 
+be the root partition, if another machine has /dev/hda2 as it root partition 
+then it would boot the other machine as is, you would need to use 'rdev' to 
+change the boot params of the disk.
+
+'man rdev' and 'rdev -h' will help you more.
+
+Then as Ray said the machines would need to be somewhat the same.
+
 
 >
-> thanks
+> Regards,
+> Thanks in Advance,
+> Abhijit.
 >
 
 -- 
