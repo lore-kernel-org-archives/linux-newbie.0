@@ -1,69 +1,102 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: to find disks/partitions and their names
-Date: Thu, 21 Aug 2003 21:17:37 -0700
+From: Christopher Swope <swopecr@yahoo.com>
+Subject: Strange Boot Behavior (cont.)
+Date: Thu, 21 Aug 2003 22:49:05 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030821211101.0207bcb8@celine>
-References: <200308220328.h7M3SRlq021963@pegasus.wanadoo.be>
+Message-ID: <20030822054905.11388.qmail@web13804.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200308220328.h7M3SRlq021963@pegasus.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At , Heimo Claasen wrote:
->A seemingly trivial question: how do I find what partitiona exist on a
->second HD, and what their names are ?
+Hello again,
 
-Not trivial at all, though you do seem to have most of the answer worked 
-out yourself.
+Can anyone tell me if there is an easy way to reply on-list.  Several
+people have responded to my first inquiry, and I expected the
+reply-to address to be the list email, but it was their personal
+emails instead.
 
-The piece you are missing is the name of the third standard Linux program 
-for partition manipulation: sfdisk. I haven't used it myself, but its man 
-page confirms my impression that it is written with an eye to being called 
-from a script or program. Using it, you should be able to get the partition 
-list for a drive in a form that can be parsed by (say) Perl's string 
-manipulation components, then used to "automatically" (that is, under the 
-script's control) mount the partitions (if they are of mountable types, of 
-course) on "generic" mount points like /mnt/drive1, mnt/drive2, etc. (or 
-any set of generic names you prefer, of course ... the script could even 
-mkdir mount points as needed).
+Anyway, I would like to address some of the concerns brought up in
+those emails.  My initial hunch was that there was a problem with the
+jumpers, but I checked several times to make sure they were okay. 
+Nonetheless, after three separate people replied suggesting that I
+check the jumpers, I went back just to be sure.  Sure enough, the
+jumpers were right.  I did run a little jumper experiment, however,
+and here are the results:
 
-I'm assuming here that you know some scripting language -- Perl, Python, 
-whatever -- well enough to write the relatively simple program that would 
-be involved here.
+If the settings are any of the following, the drives are not
+recognized at all.  (These results are not surprising).
+    Primary -- Master w/ Slave present
+    Secondary -- Cable Select
 
-I hope this is enough to get you started. If not, please don't hesitate to 
-post a followup.
+    Primary -- Master w/ Slave Present
+    Secondary -- Master
 
->The situation: A second hard disk is inserted - or changed there - in the
->exchange bay which is located as the "Second Primary" HD at the far end of
->the cable from the 2nd IDE plug of the motherboard. (The "First Primary"
->sits on the 1st. IDE connector and booting is from there.)
->
->A "manual" (console) 'fdisk /dev/hdc' will sure list the _partitions_,
->in Linux denmination, on that second HD (though this would not give
->the names which the partitions there have - for this, 'cfdisk hdc' is
->needed in addition.)
->
->It's wise to shut down the unit for inserting/changing such a second HD;
->only with booting up anew - I use/prefer LILO - , I'd like to:
->(a.) check for the existence of a second HD, and
->(b.) 'mount' - not necessarily with "fstab" but perhaps with an
->appropriate bash/batch command - all eventually existing partitions on
->this second HD under a generic mount point on the root tree (of the
->booting, first HD.)
->
->It gets a bit tedious to do that manually each time with half a dozen
->slightly differently organised "2nd" HDs.
+    Primary -- Anything other than "Master (Single Drive)"
+    Secondary -- Not installed
 
+If the settings are any of the following, I get the behavior I
+described earlier.
+    Primary -- Cable Select
+    Secondary -- Slave
 
+    Primary -- Master w/ Slave Present
+    Secondary -- Slave
 
+    Primary -- Master (Single Drive)
+    Secondary -- Slave
 
+Now, my line of thinking is as follows.
 
+If the second drive is not installed at all, the computer boots
+normally.  This would indicate the problem stems from connecting the
+second drive.
 
+The computer can be successfully booted from a floppy boot disk. 
+Then, both drives can be read from and written to.  This would
+indicate that there is nothing wrong with the Cables.
 
+Note also that I have tested nearly every jumper setting for the
+secondary drive.  The only option I did not try was setting the
+secondary drive to master w/ slave present.  That setting requires
+two jumpers, and I don't have an extra one.  I highly doubt, however,
+that  that configuration would work.  Thus, if I were setting the
+jumpers on the second drive wrong, one of the other options should
+have worked.
+
+Finally, I would like to provide some answers to questions that have
+come up or might come up:
+
+How old is the BIOS?
+
+I have the latest revision.  It was released sometime in 2000.
+
+Are you sure the BIOS is correct?
+
+Yes.
+
+Do you have confidence in the BIOS?
+
+Not really, but the computer does boot sometimes.
+
+How big is the new hard drive?
+
+80G
+
+The old one?
+
+4G
+
+Have you used two hard drives on the system before?
+
+Yes, but not with this revision of the BIOS.
+
+There is probably more information I could provide still, so if you
+want to know, please ask.
+
+Thanks again for your help,
+Christopher
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
