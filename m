@@ -1,53 +1,40 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Newbie or user?
-Date: Sat, 21 Sep 2002 11:40:16 +0300
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Lexmark Printer
+Date: Sat, 21 Sep 2002 16:56:25 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020921114016.C1134@neutrino.particles.org>
+Message-ID: <200209210856.g8L8uPR01053@philonline.com>
+References: <ray@comarre.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: Message from Ray Olszewski <ray@comarre.com> 
+   of "Fri, 20 Sep 2002 09:14:57 MST." <5.1.0.14.1.20020920090644.02511820@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-Cc: Bill_Pleasants@aaahawk.com
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
+
+Thanks Ray,
+
+No I did not consult that Database. Thanks for this good pointer.
+I will try my luck even so I am perfectly happy with my Epson LQ-300 which I 
+bought after the Lexmark cartridge had emptied. On the Epson a replacement 
+ribbon costs $2.00 and is good to print 2 Million characters. I do print a lot.
+
+Regards
+
+ray@comarre.com said:
+> When you say you did "all the necessary steps", did that include
+> consulting  the Linux Printer Compatibility Database? That database
+> lists the Lexmark  1100 as working "partially" with Linux and provides
+> some help about the  details of making it work, including a reference
+> to the lm1100 driver it  requires. See http://www.linuxprinting.org/
+> show_printer.cgi?recnum=59008  for the instructions. 
 
 
-> comprehended by the mind.  Any interpretation is valid because it allows
-> us to think about an aspect of the truth. Everything known with the mind
-> is an interpretation, from nuclear physics to M$ sucks.  I have greater
-
-I disagree. In Physics the truth is what you measure.
-
-> Where are we now?  My interpretation of "newbie" is non programmer or
-> non developer (I don't know the jargon well enough here).  If I am going
-> to make use of the software freely and generously provided and the
-> information and advice that you pros freely and patiently give, I have
-> to learn programming to the level of file structure and nomenclature;
-> installation procedures and organization; editing, file management and
-> various other utilities. From my experience with Fortran programming I
-> suspect this would take weeks or months of eight hour days.  Thus the
-> cost to individual users is greater than for MS.
-
-Newbie is someone that learns something (almost) completely new. If
-you were to learn the Superstrings theory, then you would be a newbie
-in Strings, but that doesn't mean that you have no clue about Physics.
-
-Pls, don't compare Linux OSes and Unices with Windows. They are 
-different things and thinking that one is developed for the substitution
-of the other is completely nonsense.
-
-> express their heart felt appreciation.  I don't know the legalities of
-> this.  Maybe Linux would have to be registered as a religion.  Hail
-> Linus! :)
-
-Linux is a kernel, i.e. a tool.
-
-Ciao, 
- Elias
- 
 -- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
