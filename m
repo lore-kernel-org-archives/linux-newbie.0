@@ -1,25 +1,24 @@
-From: Manish Regmi <regmi.manish@gmail.com>
-Subject: Proc structure standards.
-Date: Sat, 27 Nov 2004 13:44:26 +0545
-Message-ID: <652016d304112623595d8f6e76@mail.gmail.com>
-Reply-To: Manish Regmi <regmi.manish@gmail.com>
+From: Jim Reimer <jdr@wa5rrh.org>
+Subject: Need a network traffic monitor
+Date: Sat, 27 Nov 2004 19:27:16 -0600
+Message-ID: <10444189897.20041127192716@wa5rrh.org>
+Reply-To: Jim Reimer <jdr@wa5rrh.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi all,
- Is there any standard to the proc interface?
-Or Linux, Solaris, HPUX etc, etc... do their own way or follow some standards.
-
-Thanks in advance.
+How can I set up to monitor what's coming and going on my gateway?
+Network is all hubs, no switches, and all I need to do is count
+bytes going to and coming from 192.168.0.1 - don't care where it
+came from or where it's going, I just need to count it.
 
 -- 
-Manish Regmi
+-jdr-
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
