@@ -1,45 +1,44 @@
 From: James Miller <jamtat@mailsnare.net>
-Subject: Re: framebuffer console problems
-Date: Fri, 22 Oct 2004 23:40:06 -0500 (CDT)
+Subject: framebuffer console problems: not enough video RAM?
+Date: Sat, 23 Oct 2004 15:06:38 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410222229140.1287@debian-emach>
+Message-ID: <Pine.LNX.4.58.0410231453210.1287@debian-emach>
 References: <Pine.LNX.4.58.0410221108580.1287@debian-emach>
  <Pine.LNX.4.58.0410221351360.1287@debian-emach> <417968FE.3070405@verizon.net>
  <Pine.LNX.4.58.0410221604590.1287@debian-emach> <41798CB8.4010701@verizon.net>
+ <Pine.LNX.4.58.0410222229140.1287@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41798CB8.4010701@verizon.net>
+In-Reply-To: <Pine.LNX.4.58.0410222229140.1287@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-The framebuffer how to documentation actually gives two lilo arguments for
-the ati cards: vga=791 ("to make the display sane" as they say) and
-video=atyfb:1024x768@75 after the "append" argument.  They presume you've
-compiled the atyfb module into your kernel (which I haven't, though I made
-an initrd with that module in it).  I haven't quite understood a couple of
-things--one being how to adapt the lilo stuff to grub.  I see no "append"
-argument in my grub file, nor can I find much on the web about how lilo
-arguments translate to grub ones.  Overall the Grub documentation stinks:
-I've managed to turn up nearly nothing on the various possible video= vga=
-arguments and variants, how to use them and what they do.  The man page is
-kind of worthless.  Plenty of folks mention in passing such lines from
-their menu.lst files, but there's not alot of consistency.  The other
-thing that's confusing me is what the relation between vga= and video= is:
-are they two separate commands that don't interfere with one another or
-are they mututally exclusive?  The lilo.conf example given in the
-framebuffer how to seems to indicate that they are separate and do
-different things, not being mutually exclusive.  When I've tried vga=791
-and video=atyfb:1024x768 together in my menu.lst (vga= first) though, I
-see in /var/log/messages that the atyfb module doesn't load and get
-connected with my video hardware.  When I leave out vga= though, the
-module does load and get assigned to the hardware.  But an error appears
-there about not being able to initialize vesafb0.  So, can anyone help me
-figure out the relation between these two?  Do I need them both, and in
-some particular order?  Or is one or the other going to work for me?
+Latest on this problem is that I'm using only the video=atyfb:102x768-8@75
+argument (no vga=xxx argument) in menu.lst.  During the boot process the
+screen goes black for a time--with just a cursor at the very bottom, which
+starts scooting back and forth horizontally--then comes back just as it
+was at a 640x480 resolution.  Boot process continues and gdm fires up.  In
+all this fiddling around, I've somehow gotten fbset to work--maybe by
+adding atyfb to /etc/modules.  When I run fbset (no options) it tells me
+the console is set to 640x480-60.  Trying to reset it to 1024x768-75--or
+any other of the 1024x768 or 1280x1024 settings I've tried--makes the
+console go black and the "vga mode not support(ed)" message appear on it.
+Reading some further info on the web, I decided to try issuing some
+resolution setting options separately with fbset--i.e., specifying just
+the V or H resolutions.  yres at 768 "works" although the screen goes
+blank.  When I try to set xres at 1024, I get an IOCTL error though.  When
+I check dmesg output afterwards, I see "kernel: not enough video memory."
+Is my problem therefore--with atyfb just as with vesafb--not enough video
+memory to do 1024x768?  I would have guessed 8MB would suffice, but that's
+just a layman's conjecture.  I actually have 12MB--added an 8MB SGRAM
+module where a 4MB one was supposed to go--but BIOS seems only to see 8
+and that's what dmesg reports too.  So, is this the inglorious end of all
+this researching and tweaking?  Feedback appreciated.
 
-Thanks, James
+James
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
