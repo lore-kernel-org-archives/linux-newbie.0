@@ -1,101 +1,73 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: writing disk image to file
-Date: Tue, 10 Jun 2003 12:40:17 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Slackware 8.1.01 Install????
+Date: Tue, 10 Jun 2003 21:52:42 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EE63421.7060601@bcgreen.com>
-References: <Pine.LNX.4.53.0306082236190.1194@homenet>
+Message-ID: <200306102152.42580.pa3gcu@zeelandnet.nl>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306081036.08989.pa3gcu@zeelandnet.nl> <20030610113404.A157@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0306082236190.1194@homenet>
+In-Reply-To: <20030610113404.A157@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>
-Cc: Linux-Newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-James Miller wrote:
-> I've got a small disk whose contents I'd like to save as an image file, in
-> case I ever want to write it back to the disk it came from.  This is a 4MB
-> flash disk.  From what I gather in my Linux reading, I should do something
-> like the following: hook this tiny IDE disk up as, say /dev/hdb and the do
-> something like "dd if=/dev/hdb of=dev-hdb-image.img" ? ? ? (the question
-Yep. That would work fine as is.
+On Tuesday 10 June 2003 17:34, Hal MacArgle wrote:
 
-.....
-> what sort of file it is.  And, finally, the question marks: I see
-> sometimes "bs=512" or some such following the proposed file name which, as
-> I get it, refers to block size.  I'm not really clear on block sizes and
-> what they do, but I have run accross information indicating that, in the
-> case of an image file, it's not too important and can be left out.  Can
-> anyone illumine my benightedness on this matter?
+> 	OK - I went back to a completly new try using the 8.0
+> buslogic.s/colour.gz combination:/hda4 as swap and a clean /hda1 as
+> target. Swap on; quick format; Source Slackware CD-ROM - autoscan
+> found 2nd scsi cd ok; select 'a' only - report "Installing series
+> a".. Then the dreaded panel, seen so many times: "MOUNT ERROR -
+> Please be sure that it is mounted on /var/log/mount/slakware and that
+> the Slackware disks are found in sub dirs /var/log/mount/slakware
+> like specified." (Of course on the CD they are in slackware, not
+> slakware.. With OK I got the # command line again but with several
+> reports: "/usr/lib/setup/setup: cannot create /mnt/etc fstab:
+> directory non-existent."
 
-Block sizing indicates how big of a chunk DD will read and write the data
-in (dd can also split them up into ibs=___ and obs=___ -- in which case it
-will create separate input and output buffers of different sizes).
+Have you tryed thr "scsi.s" disk, buslogic.s is only for the MultiMaster or so 
+stated in the doc's from slack-8.0.
 
-The main purpose of the BS parameters was to take care of I/O devices for
-which the write size made a difference. tape drives with variable block
-sizes or streaming come to mind. Depending on the tape drive, you could
-sometimes end up with very different performance and even effective tape
-capacities depending on how big your write block sizes were.
+As of 8.1 there is no buslogic.s disk its now scsi.s because of known problems 
+with buslogic controllers.
 
-In the current day, the biggest value to bs= is taking advantage of the
-HD's caching capabilities. I.E. sometimes reading in chunks as big as (or
-much bigger than) the track/cylinder size can result in a notable performance
-increase.  It also cuts down on system overhead.
+>
+> 	I checked and /mnt exists but not etc, so I did a mkdir etc
+> there and went back to setup again.. This time I got the MOUNT ERROR
+> report again, but not the previous non-existent, and, actually got as
+> far as making a boot disk, selecting 'make lilo boot disk' but,
+> noting that the a files were really never installed.. Trying to make
+> the boot disk fd0 went into netherland and didn't stop running until
+> I ejected the disk (a no-no to me, normally) Tried whole routine
+> again making a 'simple' boot disk and it worked but, of course,
+> reported a Kernel Panic: because there were no files on the drive..
+>
+> 	In summation Richard, notwithstanding all the work you and
+> others have done with this - Who needs it??? Life is too short..
+> Apparently 8.1 has more than one messed up directory label, compared
+> to the previous versions..This version installs OK with an ATAPI-IDE
+> CD and HD with a BIOS that boots CD's, period.. IMHO. <grin> Since
+> some vendors are eliminating floppies from their boxes now - I guess
+> that's the way to go, eh?
 
-My quick test (below) showed a barely noticable performance increase, but a
-more noticable cut (percentage wise) in terms of CPU usage.  In this case,
-I'm comparing a 512byte buffer with a 5meg buffer:
+I dont quite know what you mean abot messed up directory labels.
+I have never noticed anything funny about 8.1..
 
-Note that I'm testing read performance only, not write perfromance (no spare
-disk partitions to mess with)
-[root etc]# time /usr/bin/time  dd if=/dev/hda5 of=/dev/null bs=512
-2056256+0 records in
-2056256+0 records out
-
-real    1m12.906s
-user    0m2.430s
-sys     0m11.050s
-
-[root etc]# time /usr/bin/time  dd if=/dev/hda5 of=/dev/null bs=5120k
-200+1 records in
-200+1 records out
-
-real    1m12.585s
-user    0m0.010s
-sys     0m10.020s
-
-In this case, the 10000 times factor in writes resulted in the user CPU time
-dropping from 2.4 seconds to 10miliseconds while the system CPU consumption
-only dropped by 10%
-
-> 
-> Thanks, James
-> 
-> PS Ray, I recall you asking at some point not long ago about copying
-> one disk to a disk of a different size.  In Rute User's Guide he writes
-> "If they (disks) are not the same size, you will have to use tar or
-> mirrordir to replicate the file system exactly."  I guess you got that
-> task accomplished, but did you do it using this means, or by some other?
-
-What will happen if you copy (say) a 1GB partition to a 4GB partition
-is that it will more or less work, but you still have a filesystem that
-has data indicating that there's only 1GB of disk space in the partition --
-in other words, it will ignore the extra 3GB of disk space. The main
-solutions to that problem are either:
-
-1) create (mkfs) a new (empty) partitions and then bit copy the FILES (at the
-    user level) onto the new partition (e.g. with tar), or
-2) bit-copy the partition over, and then manipulate the File System data directly
-    to be consistent with the extra available disk space. parted is the tool that
-    I usually use for things like that.
+>
+> APPRECIATE!!
+>
+>     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+>                 Proprietary  Formats  Unacceptable
 
 -- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-Powerful committed communication, reaching through fear, uncertainty and
-doubt to touch the jewel within each person and bring it to life.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
