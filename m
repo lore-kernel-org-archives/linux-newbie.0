@@ -1,51 +1,50 @@
-From: jdr@wa5rrh.org
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: crontab syntax ?
-Date: Sat, 07 Jun 2003 18:09:45 -0500
+Date: Sat, 07 Jun 2003 16:09:21 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EE22A69.1198.A50291A@localhost>
-References: <3EE265D9.56EA90D0@gelm.net>
+Message-ID: <5.1.0.14.1.20030607160253.01ed16a8@celine>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org>
+ <200306042101.56986.pa3gcu@zeelandnet.nl>
+ <20030605093027.A233@lnx2.w8mch.ampr.org>
+ <200306052108.36121.pa3gcu@zeelandnet.nl>
+ <20030607104727.A355@lnx2.w8mch.ampr.org>
+ <5.1.0.14.1.20030607131805.01fe8a60@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <3EE265D9.56EA90D0@gelm.net>
-Content-description: Mail message body
+In-Reply-To: <3EE265D9.56EA90D0@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On 7 Jun 2003 at 18:23, Chuck Gelm wrote:
+At 06:23 PM 6/7/2003 -0400, Chuck Gelm wrote:
+>Thanks, Ray:
+>
+>Odd, here is a segment of (*my*) 'man crontab' showing
+>the example lines. Every example has 'date' as the 6th field. :-|
 
-> Thanks, Ray:
-> 
-> Odd, here is a segment of (*my*) 'man crontab' showing
-> the example lines. Every example has 'date' as the 6th field. :-|
-> (*my* = slackware-8.0, kernel-2.2.19, firewall, ip-masq)
-> Maybe the examples show how to run the 'date' program?
-> 
-> # MIN HOUR DAY MONTH DAYOFWEEK   COMMAND
-> # at 6:10 a.m. every day
-> 10 6 * * * date
-> 
+Yes. But the proposed entry you asked us about originally --
 
-<snip>
+         5 6 7 * date /usr/local/src/ez/dyndns.conf
 
-Yeah, it's showing you how to run 'date' at various times and
-intervals.
+-- had "date" as the fifth field, NOT the sixth field. That is wrong. You 
+can't just skip a field; you need (in this case) the * entry for it.
 
-Here's a bit of what Red Hat's "man 5 crontab" says (for what it's worth):
+"date" is a standard Unix/Linux command, and the samples you referred to, 
+which have it in the sixth field, simply use it as the name of the program 
+to run ... just as you suspected.
 
-The time and date fields are:
-
-       field          allowed values
-       -----          --------------
-       minute         0-59
-       hour           0-23
-       day of month   1-31
-       month          1-12 (or names, see below)
-       day of week    0-7 (0 or 7 is Sun, or use names)
+>(*my* = slackware-8.0, kernel-2.2.19, firewall, ip-masq)
+>Maybe the examples show how to run the 'date' program?
+>
+># MIN HOUR DAY MONTH DAYOFWEEK   COMMAND
+># at 6:10 a.m. every day
+>10 6 * * * date
+[rest deleted]
 
 
--jdr-
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
