@@ -1,70 +1,48 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: accessing email via POP3
-Date: Thu, 2 Dec 2004 02:29:22 +0100 (CET)
-Message-ID: <Pine.LNX.4.21.0412020213010.21168-100000@hestia>
-References: <33117736@newdoc.Dartmouth.ORG>
-Reply-To: linux-newbie@vger.kernel.org
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: Locate Vs Find
+Date: Wed, 01 Dec 2004 21:07:51 -0800
+Message-ID: <41AEA327.6010007@bcgreen.com>
+References: <20041122165244.62360.qmail@web52904.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <33117736@newdoc.Dartmouth.ORG>
+In-Reply-To: <20041122165244.62360.qmail@web52904.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ankit Jain <ankitjain1580@yahoo.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-On 1 Dec 2004, Karthik Vishwanath Adv03 wrote:
+Locate only finds files by looking up the name in a database.
+Once a day it regenerates the database.
 
-> Thanks for all responses -- Ray, I had removed a couple of
-> comments from the pasted .fetchmailrc in the email composer.
-> Hence the discrepancy about line number errors. :-?
-> 
-> Following Amin's advice I tried to run fetchmail from the
-> cmd-line and I could'nt authenticate myself (I am 100% sure
-> about keying in the correct passwd):
-> 
-> $ fetchmail --keep --username "karthikv" newdoc.dartmouth.org
-> Enter password for karthikv@newdoc.dartmouth.org: 
-> fetchmail: Authorization failure on
-> karthikv@newdoc.dartmouth.org
-> fetchmail: Query status=3 (AUTHFAIL)
-> 
-> What is going on here? Please advice on how to proceed next. 
+If you're just looking for a filename, and you don't mind it being
+anywhere up to 24 hours old (sometimes more, but rarely), then
+ocate is a FAR faster way to do things.
 
-I checked dartmouth.org's email-admin section and it says you have to
-look up the corrosponding pop3 server for your username. So I did that for
-your name..
 
-SETTINGS: User: Karthik Vishwanath Adv03
-Incoming (POP3) Server: newdoc.dartmouth.org
-Outgoing (SMTP) Server: newdoc.dartmouth.org
+Find, on the other hand can do WAY more tests than just
+the filename, and it can do way more things with a file it
+finds than just print it.   The find command syntax is
+actually a primative programming language. and you can
+take actions based on the file type file syatem type
+mtime, ctime atime  file size, owner etc. etc.
 
-Ok, you seem to have the right pop3 server.
+Most, recent, versions of find can even tar up certain
+matched files.
 
-telnet newdoc.dartmouth.org 110
-Trying 129.170.16.86...
-Connected to newdoc.dartmouth.org.
-Escape character is '^]'.
-+OK BlitzMail POP3 Server Ready.
+'Man find` for nore info on what find is capable of.
 
-Ok, it's up to.. 
 
-fetchmail --proto pop3 --username "karthikv" newdoc.dartmouth.org
-Enter password for karthikv@newdoc.dartmouth.org:
-fetchmail: Authorization failure on karthikv@newdoc.dartmouth.org
-fetchmail: Query status=3 (AUTHFAIL)
+Ankit Jain wrote:
+> Which is more efficient? /if both perform the same
+> work and are not different then why shoudl we have 2 ?
 
-Ok, it works.. Now I really think it has todo with your password.. Either
-they forgot to update the system configuration or it's taking them a
-while. Orrr.. your keyboard isn't working properly.. [CAPSLOCK] maybe ?
-Or your connection is refused because you misspelled your username.
-Enter your password in your .fetchmailrc, and then try it again. That way
-you can be sure you typed the right password and it's not messed up.. 
-
-g00dlUcK.. 
-
-J.
-
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+    Powerful committed communication. Transformation touching
+      the jewel within each person and bringing it to light.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
