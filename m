@@ -1,36 +1,31 @@
-From: Mr MailingList <Mr.MailingList@ntlworld.com>
-Subject: Re: linux kernel: irq 11: nobody cared!
-Date: Wed, 21 Jul 2004 07:27:20 +0100
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Where are the minimized windows
+Date: Thu, 22 Jul 2004 10:19:57 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200407210727.20774.Mr.MailingList@ntlworld.com>
-References: <200407201939.30300.Mr.MailingList@ntlworld.com> <Pine.LNX.4.58.0407202138320.27512@ppg_penguin.kenmoffat.uklinux.net>
-Reply-To: Mr.MailingList@ntlworld.com
+Message-ID: <20040722021957.A2E3337737@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407202138320.27512@ppg_penguin.kenmoffat.uklinux.net>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-On Tuesday 20 Jul 2004 21:52, Ken Moffat wrote:
+Hi,
 
->  Possible workarounds, in increasing order of pain, might include
-> booting with whatever the option is to disable apic, using a non-smp
-> kernel (if you only have one cpu, of course), trying a newer kernel from
-> SuSe if there is one, or trying a newer kernel from kernel.org.  This
-> looks the sort of thing where you might need to try the latest 2.6.8-rc
-> or even -mm (if it isn't fixed in 2.6.7).  These aren't normally
-> recommended, particularly for production boxes, but I guess it isn't in
-> production if you telnet to it.
->
+I am using slackware 9.1 and have Dropline Gnome 2.6 installed even so I am 
+using fvwm2 as my desktop.
 
-Thanks Ken for your answer but I've tried all of them apart of new kernel and 
-unfortunately they did not work. Looks like the only option I have is to wait 
-for Suse to release new kernel.
+If I do use gnome-session and then minimize an open window I can't retrieve it 
+anymore no matter what combination of ctrl, alt, mouse clicks and Fx keys I 
+use. They have just vanished. They are not indicated on the taskbar as well.
 
-Tom
+Top tells me they are still open.
+
+Any suggestions how to get those minimized windows back?
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
