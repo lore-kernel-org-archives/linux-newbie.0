@@ -1,26 +1,35 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: How to convert a MSDOS text file to Linux text file?
-Date: Fri, 31 May 2002 07:18:19 -0700
+From: Natarajan <knutties@indiainfo.com>
+Subject: Re: How to convert a MSDOS text file to Linux text file?
+Date: Fri, 31 May 2002 20:17:24 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020531141900.TDRO5116.mtiwmhc23.worldnet.att.net@alan>
+Message-ID: <200205312016.50361.knutties@indiainfo.com>
+References: <20020531141900.TDRO5116.mtiwmhc23.worldnet.att.net@alan>
+Reply-To: knutties@indiainfo.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020531141900.TDRO5116.mtiwmhc23.worldnet.att.net@alan>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Alan Womack <arwbackup@worldnet.att.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-I have a ldap base.ldif I made in windows, then via a samba share placed it on my linux box.
+On Friday 31 May 2002 10:18, Alan Womack wrote:
 
-A post up on the ldap list on another problem, suggested this can cause a problem due to the MSDOS LF CR (CR LF?) appended to each line vs the LF in unix land.
+> A post up on the ldap list on another problem, suggested this can cause a
+> problem due to the MSDOS LF CR (CR LF?) appended to each line vs the LF in
+> unix land.
+>
+> What command line utility can I run on my txt files to fix this "problem"?
+>
+> Thanks
+> Alan
 
-What command line utility can I run on my txt files to fix this "problem"?
+Use unix2dos that come with most of the standard distributions.
+-- 
+Natarajan
 
-Thanks
-Alan
 
-
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
