@@ -1,34 +1,49 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: more X problems
-Date: Wed, 13 Nov 2002 22:36:26 -0600 (CST)
+From: "[ Jason ]" <jasonj@satx.rr.com>
+Subject: Re: Book Recommendations
+Date: 13 Nov 2002 07:10:45 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211132232080.21708-100000@localhost.localdomain>
-References: <3DD3D418.139760AD@ihug.co.nz>
+Message-ID: <1037189445.2812.10.camel@Shelbyville>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DD3D418.139760AD@ihug.co.nz>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "ichi@ihug.co.nz" <ichi@ihug.co.nz>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On 14 Nov 2002, ichi@ihug.co.nz wrote:
-> ----------------------------------------------------------
+
+
+On Wed, 2002-11-13 at 17:01, Elias Athanasopoulos wrote:
+> On Tue, Nov 12, 2002 at 01:24:07AM -0500, [ Jason ] wrote:
+> > 9) The C Programming Lang (ANSI Standard) (the white book, aka: the
+> >    bible to some, the k&R book)
 > 
-> Questions to James:  Have you tried xfree86setup?
->                      If so, what happened?
+> I guess it is the K&R book. The bible is the Art of Computer
+Programming
+> (D. Knuth), which I think noone mentioned and, IMHO, shouldn't be out
+of such 
+> a list. :-)
 > 
-Steven:
+> Elias
+> 
+> -- 
+> http://gnewtellium.sourceforge.net                    MP3 is not a
+crime.     
 
-Just now tried it. At the initial screen, it asks if you'd like it to 
-probe your video hardware and mouse so that it can write an initial 
-configuration file (/etc/X11/XF98Config). When I assent to its doing so, 
-the screen blanks, never to return to life until I reboot with 
-ctrl-alt-del. Apparently, it's having trouble probing the video hardware, 
-wouldn't you say?
+Oh damn! I totally overlooked that...wow..hard to believe I could
+overlook a publication by Knuth. I have a copy of Vol I on my
+shelf too...lol ever have one of those days/weeks? ;-D  It was
+going to be a 7 volume set if I remember right, but Knuth
+only did 3 volumes. But that doesn't take away from
+his contribution at all!
 
-James
+oh and I guess just in case people are in to Comp Arch. a 
+good collection of whitepapers/articles can be found 
+in "Readings in Computer Architecture" by Hill, Jouppi, Sohi.
+
+I guess I should also mention that if youu into C++ you
+should have a book by Bjorn Stoustrup !
+
+jason
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
