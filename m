@@ -1,61 +1,68 @@
-From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
+From: Chuck Gelm <nc8q@gelm.net>
 Subject: Re: tar for "full" floppy backup?
-Date: Sat, 7 Dec 2002 11:58:28 -0500 (EST)
+Date: Sat, 07 Dec 2002 13:34:15 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212071157090.5141-100000@filesrv1.baby-dragons.com>
+Message-ID: <3DF23F27.2C5EB0E7@gelm.net>
+References: <200212070919.CAA12532@cu.imt.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Jerry James Haumberger <jerryjh@imt.net>
+Cc: linux-newbie@vger.kernel.org
 
+ Hi, Jerry:
 
-	Hello Jerry & all ,
-	If it is Slackware the tar binary provided is Gnu-Tar .
-	Try doing a 'tar --help' & report the output from
-	'tar --version' .  There maybe issues with certain versions
-	of tar .  Another item to look at is can you read floppies on
-	your system if you don't have mtools avaiable , try
-	'dd if=/dev/fd0 count=10 | strings'
-	If that works , try (you will have to reforamt the flopy tho)
-	'dd if=/dev/zero of=/dev/fd0 count=10'
-	to see if you can Write to the floppy .
+ What version of 'tar' do you have?
+tar --version
 
-	Compressed you are not going to accomplish easily .
-	Maybe someone else can address a method of compressing the
-	input INLINE with the multi-volume archive issue .
-		Hth ,  JimL
+ Please show us your exact command line 
+  and the exact error message(s).
 
- -- Generic descriptions of options used (on my system)
+ I am guessing that your command line should be:
 
-tar --multi-volume \
-  --label="Some Label" \
-  --create \
-  --preserve-permissions \
-  --same-owner \
-  --file=/dev/fd0 \
-  "List Of Files To Backup"
+tar -cyvMf /dev/fd0 /directory_to_be_backed_up
+ ...
+tar -xyvMf /dev/fd0
 
+?
+'y'=bz2 compression, 'z'=gzip compression
 
-  -- The actual command that I used to creat a 4 Volume set tar archive
+ What I want to know is if/how the /dev/fd0 media
+  should be formatted.  :-|  Should it have a file system?
+? superformat /dev/fd0u1440 ? 
 
-tar --multi-volume --label="Root-Bin-test" --create --preserve-permissions --file=/dev/fd0 /root/bin
+HTH, Chuck
 
-
-  -- The output from the above command during execution .
-
-tar: Removing leading `/' from absolute path names in the archive
-Prepare volume #2 for /dev/fd0 and hit return:
-Prepare volume #3 for /dev/fd0 and hit return:
-Prepare volume #4 for /dev/fd0 and hit return:
-
--- 
-       +------------------------------------------------------------------+
-       | James   W.   Laferriere | System    Techniques | Give me VMS     |
-       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
-       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
-       +------------------------------------------------------------------+
+Jerry James Haumberger wrote:
+> 
+> Hello everyone --
+> 
+> Thank you for offering me various suggestions on how to possibly
+> get tar to make a backup archive on multiple floppies.  Sorry to
+> say, none of the suggestions worked.
+> 
+> The only result was that tar would make an archive in whatever
+> directory I happened to be in when creating the archive -- and
+> it would ignore the /dev/fd0 device.
+> 
+> When I used the "M" option, nothing occurred.  When I tried
+> adding the "z" option, I was told that multiple compressed archives
+> were not possible.
+> 
+> When I try to use the Slackware manual command (SAMS), it messes
+> up the floppy -- which has to be reformatted and so on.
+> 
+> The question remains:  How can I back up -- with tar or any other
+> Slackware 3.5 program -- my 9 MBs of files from the BasicLinux
+> console with multiple floppies?  And in compressed format?
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
