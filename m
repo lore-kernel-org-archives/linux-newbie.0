@@ -1,16 +1,29 @@
-From: "Kimmo Laine" <rise@mikropc.net>
-Subject: Update Mandarake 9.2
-Date: Fri, 23 Apr 2004 13:44:31 +0300 (EEST)
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: creating an ISO image of $HOME
+Date: Fri, 23 Apr 2004 18:33:35 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040423104431.3FB633B227@boori.mikropc.fi>
+Message-ID: <Pine.LNX.4.44.0404231827220.1505-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-How should I update my Mandrake 9.2 to 10.0? Do I have to have those Mandrake 10.0 cd's or can I do it from the net. I'm not a Mandrake club member. 
+Hello,
+
+I need to back up my home directory (from an account that I do not use
+frequently any more). I was thinking of creating an ISO image of the same.
+How can I do that? 
+
+While here I had another question relating to backups - whats a good
+way/tool to incremently back up my $HOME directory (on an active account)?
+
+
+Thanks,
+
+-K
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
