@@ -1,36 +1,38 @@
-From: Henrik Nordstrom <hno@marasystems.com>
-Subject: Re: TCP_KEEPIDLE
-Date: Sun, 14 Mar 2004 01:19:10 +0100 (CET)
+From: RANDAZZO@ddc-web.com
+Subject: Arp Implementation Example....
+Date: Wed, 17 Mar 2004 08:39:37 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0403140117040.17900-100000@filer.marasystems.com>
-References: <BAY1-F65ljWwY0VnkB400018cab@hotmail.com>
+Message-ID: <89760D3F308BD41183B000508BAFAC4104B17006@DDCNYNTD>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BAY1-F65ljWwY0VnkB400018cab@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Lyle Coder <x_coder@hotmail.com>
-Cc: linux-newbie@vger.kernel.org, linux-net@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-On Sat, 13 Mar 2004, Lyle Coder wrote:
+All;
 
-> Hi,
-> I have a case where my server accepts connections from clients that 
-> imporperly shit down, causing a large number of file descriptors to remain 
-> in use by my server program (the kernel has not notified me that the remote 
-> client is non existent anymore)
-> 
-> Can I use TCP_KEEPIDLE for this?
+I am developed a network driver for my fibre channel device.  I've used the
+O'Reilly Linux Device Driver's "snull.c and snull.h" as an
+example.
 
-You can use SO_KEEPALIVE for this, and optionally tune how it behaves with
-TCP_KEEPIDLE and friends or the similar global sysctl parameters..
+Problem is this example does not implement ARP.  After many attempts, I
+can't seem to pass an ARP packet successfully up
+the stack......
 
-   man 7 socket
-   man 7 tcp
+Does anyone know of an example driver / website that shows the formatting
+and responsibility of the network driver, with regards
+to ARP?
 
-Regards
-Henrik
+Any help is much appreciated...
+
+BTW, I'm using Linux 2.4....
+ 
+"This message may contain company proprietary information. If you are not
+the intended recipient, any disclosure, copying, distribution or reliance on
+the contents of this message is prohibited. If you received this message in
+error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
