@@ -1,78 +1,47 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: Console fonts and colors
-Date: Sun, 6 Oct 2002 23:51:46 +0100 (BST)
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Copying files to CD-ROM discs
+Date: Sun, 6 Oct 2002 22:03:21 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0210062331350.26206-100000@ppg_penguin.linux.bogus>
-References: <Pine.LNX.4.44.0210061300030.16559-100000@linuxDBA.brett.d2g.biz>
+Message-ID: <200210062203.21794.sotl155360@earthlink.net>
+References: <200208100843.50199.natarajan_k@hotpop.com> <5.1.0.14.1.20020817104733.020ef510@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0210061300030.16559-100000@linuxDBA.brett.d2g.biz>
+In-Reply-To: <5.1.0.14.1.20020817104733.020ef510@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: Brett <brett@brett.d2g.biz>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Sun, 6 Oct 2002, Brett wrote:
+First thanks for the previous help that several of you provided.
 
-> I use SuSE 8.0 and mostly use the KDE UI but find myself more and mor=
-e
-> using the standard text console either by doing a Alt+f2 or not even
-> starting X at all.
-> What I would like to do is change the color of the font and maybe the=
- font
-> it self.
-> Is this a hard thing?   If it involves setting up a fonts server or s=
-uch,
-> maybe I'll make do with what I have. It's not all that bad really.   =
-My
-> goal was to change the font color to green and maybe find a font that=
- I
-> could get a few more words on a line.
-> Thanks,
->=20
-> Brett
-> ___
-> Linux linuxDBA 2.4.18-4GB #1 Wed Mar 27 13:57:05 UTC 2002 i686 unknow=
-n
->  12:30pm  up 7 days, 14:17,  3 users,  load average: 2.01, 1.99, 1.92
+Since I have been sort of thinking along these lines I could have sworn that I 
+had saved a set of e-mail that told how to make a CD using the dd comand but 
+all I could find in my repository was a procedure for making an ISO from a 
+CD.
 
- I don't know about colours (I quite like white on black), but the way
-to change the font is to use either `consolechars' or `setfont',
-depending on whether your distro ships console-tools or kbdutils.
-Unfortunately, all this will really do is change which characters map t=
-o
-which ascii codes, for example for me =A4 maps as a euro symbol using
-latin-{0,9}. Your distro probably sets a font already, in Mandrake they
-use `setsysfont' which is a wrapper script.
+Any after the latest crash - crash in this case meaning refusing to boot - of 
+my MS clunker it has the idea of copying a certain set files to disk became 
+desirable but mot critical.  
 
- Now, if you want more characters on a line you either need SVGATextMod=
-e
-(never tried it, it's just an application) or a framebuffer. I use
-framebuffers, you have to recompile the kernel for your particular
-video card (or vesa will I suppose work) and then give the right
-options to grub or lilo. For lilo I use
+Anyway I tried to execute  
 
-video=3Dmatrox:vesa:0x117 # matrox, e.g. mystigue, 1024x768
-video=3Datyfb:1024x768    # old ati card, 1024x768
+dd if=/home/trunk/file_name of=/dev/cdrom1
 
-I've also used the following from an old Mandrake install -
-video=3Dvga:791           # vesa, I think this was maybe 800x600
+and a few variation of this on my Linux box as a test without success to see 
+if I could make a CD from a set of files. 
 
- This is documented to varying degrees in the kernel source.
+Usage of a program like CDRoast is not a feasibility as the linux distribution 
+I an using is on one floppie.
 
-Ken
---=20
- Out of the darkness a voice spake unto me, saying "smile, things could=
- be
-worse". So I smiled, and lo, things became worse.
+Any advice on how to proceed would be greatly appreciated. 
 
+Thanks
 
+Frank
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
