@@ -1,41 +1,50 @@
-From: Dan Zlotnikov <dzlotnik@artsmail.uwaterloo.ca>
+From: Jos Lemmerling <jos@lemmerling.nl>
 Subject: Re: group
-Date: Thu, 25 Dec 2003 08:52:14 -0500
+Date: Thu, 25 Dec 2003 15:20:30 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1072360334.3feaeb8e1ca4d@ecserv7.uwaterloo.ca>
-References: <Pine.LNX.4.21.0312251127290.32132-100000@orthanc.lemmerling.net>
+Message-ID: <Pine.LNX.4.21.0312251502520.448-100000@orthanc.lemmerling.net>
+References: <1072360334.3feaeb8e1ca4d@ecserv7.uwaterloo.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0312251127290.32132-100000@orthanc.lemmerling.net>
+In-Reply-To: <1072360334.3feaeb8e1ca4d@ecserv7.uwaterloo.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Quoting jos@lemmerling.nl:
+On Thu, 25 Dec 2003, Dan Zlotnikov wrote:
 
-> The last step is to change the default umask to 002 instead of 022 so all
-> files will have the permissions set correctly (-rw-rw-r-- instead of
-> -rw-r--r--). If you don't do this, user1 cannot change the files user2 has
-> created.
+> > The default umask can be set in the users profile
+> > (/home/user1/.bash_profile) with the line "umask 002".
 > 
-> The default umask can be set in the users profile
-> (/home/user1/.bash_profile) with the line "umask 002".
+> Pardon me if I'm confused, but does that mean that any user can change the 
+> default umask at will?
 
-Pardon me if I'm confused, but does that mean that any user can change the 
-default umask at will?
+Yes, that's correct. It's also possible to change the umask of all users
+in /etc/profile . I just checked the possibility to apply a umask to a
+single directory, but it doesn't seem to be possible (at least not on a
+ext2/3 filesystem.
 
-Not to mention, this will apply to all of that user's files, not just the ones 
-in /home/everyone/
+I came accross another option in the man-page:
+If the directory /home/everyone is mounted on a seperate partition, the
+option "grpid" can be used to avoid the use of the SST-bits.
 
-"Early to bed and early to rise makes a man stupid and blind in the eyes."
---Mazer Rakham, from Orson Scott Card's "Ender's Game"
+> Not to mention, this will apply to all of that user's files, not just the ones 
+> in /home/everyone/
+
+Should that be a problem then? On my (Debian) systems the default group on
+newly created files is the group of the user itself, so that doesn't make
+any difference. Obviously it's another story when the default group isn't
+its own usergroup.
+
+What other option do you recommend then?
 
 
+grtz
 
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
 
-----------------------------------------
-This mail sent through www.mywaterloo.ca
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
