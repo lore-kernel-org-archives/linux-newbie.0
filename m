@@ -1,43 +1,67 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: Trying to get GUI'ed
-Date: Wed, 30 Oct 2002 13:40:28 -0500
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: NIS Server
+Date: Wed, 30 Oct 2002 14:26:05 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210301840.g9UIeSL01894@hartford-hwp.com>
-References: <20021029.222550.134682184.2.lawson_whitney@juno.com>
+Message-ID: <00cf01c2804a$30d13f30$64fea8c0@pkrausxp>
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_00D0_01C28020.47FB3730"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <20021029.222550.134682184.2.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_00D0_01C28020.47FB3730
+Content-Type: text/plain;
+	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: lawson_whitney@juno.com
-Cc: paul.furness@vil.ite.mee.com, linux-newbie@vger.kernel.org
 
-Lawson,
+I am reading the NIS how-to and am a little unclear as to what NIS is
+capable of. If I understand this right then I can store usernames and
+password on the NIS server. Then whenever someone try's to login to a
+machine (windows, UNIX, or Linux) it will poll the database for
+authentication? For instance I try and telnet to my Linux box when I log
+in rather then the Linux machine checking its local user account info it
+would turn to the database? Sorry but this is kind of confusing me.
 
-At this point I'm only trying to back out of my abortive nVidia driver
-install and get back to the nv driver that came with my RedHat 7.3
-distribution. 
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
-To do that, I recovered my old XF86Config-4 file. The rpm install for
-the driver commented out lib.GLcore.a and libglx.a, which I restored. 
+------=_NextPart_000_00D0_01C28020.47FB3730
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
-Third, I wanted to uninstall the driver RPM. First, I used rpm -ql on
-NVIDIA_kernel to get the driver's name. The one return was
-/lib/modules/2.4.18-10/kernel/drivers/video/NVdriver. Then I ran: rpm -Uvh
-NVdriver. Unfortunately, "no such file." Apparently I can't run the x
-server without this uninstall, and apparently I'm not going about it in
-the right way. 
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
-Unfortunately, nVidia's support list works through a web page, and
-since I've lost my X server, it does me no good (I used to rely on
-lynx, and now I see that I've got it on Linux! I'll try to use it to
-reach nVidia). My gnus gets into a loop (no fun when it happens from a
-terminal), and so I can't pursue these issues on an appropriate
-newsgroup unless I can somehow telnet into the newsgroup (something 
-I've never tried). Wow; all this takes me back to my DOS days!
+------=_NextPart_000_00D0_01C28020.47FB3730--
 
-Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
