@@ -1,24 +1,49 @@
-From: Jim Nelson <james4765@verizon.net>
-Subject: Re: Linux on a G5 Boat anchor
-Date: Sun, 26 Dec 2004 11:00:53 -0500
-Message-ID: <41CEE035.3080107@verizon.net>
-References: <001301c4eb61$dbbe66a0$6601a8c0@crapper>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: CD-RW-Drive
+Date: Wed, 29 Dec 2004 15:06:43 +0800
+Message-ID: <20041229070643.E79E71737F@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001301c4eb61$dbbe66a0$6601a8c0@crapper>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "Dave B. Sharp" <daveb_sharp@softwareprotection.ca>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Dave B. Sharp wrote:
-> I have new dual g5 Mac that I have not been able to get working properly =
-> in 6 months. Apple has been of lillte or no use. Is there a working =
-> distribution for this machine? -
+Season Greetings,
 
-http://www.yellowdoglinux.com/
+Slackware 10, Kernel 2.4.26
+
+I got myself an Asus Atapi CD-RW-Drive and I am not sure if this was the right 
+choice for Linux. I was able to make it work following the instruction of the 
+program xcdroast, however, some things seem strange.
+
+I always get error messages telling not to use atapi instead scsi.
+
+I had a CD with picture files on. When I copied them to the HD I can't open 
+them and copying back to the CD I can't open them as well any longer. In fact 
+I can not mount the CD anymore. Only xcdroast can.
+$ mount /mnt/cdrom
+mount: Not a directory
+
+Trying too boot Knoppix 3.4 from the CD I get only a blank screen. Booting 
+from CD and then switching to HD, Knoppix works alright.
+
+It seems that xcdroast can only write .wav and .iso files?????
+
+Questions:
+
+Is there a better CD-RW-Drive for Linux than Asus? The shop is willing to 
+exxchange.
+
+Are there better programs than xcdroast to R+W and which?
+
+Thanks & regards
+ 
+   
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
