@@ -1,38 +1,36 @@
-From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: directory size measurement
-Date: Wed, 7 Aug 2002 19:02:30 +0100 (BST)
+From: Peter <pfheiss@philonline.com>
+Subject: RH7.3 keyborad lock-up
+Date: Thu, 8 Aug 2002 11:42:29 +0800 (PHT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208071900140.8397-100000@Consulate.UFP.CX>
-References: <200208062211.g76MBYk13820@hartford-hwp.com>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <Pine.LNX.4.33.0208081141440.2039-100000@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208062211.g76MBYk13820@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Haines Brown <brownh@hartford-hwp.com>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi Haines.
 
-> I need to address a situation in which somewhere, among thousands of
-> directories and subdirectories, there's something taking up a lot of
-> space.
-> 
-> What I need is a utility something like this: it reports the size of
-> the ten largest subdirectories of a specified directory. Seems to me
-> I did that with a pie chart utility under OS/2.
-> 
-> Is there such a thing for Linux? I'm running RH7.2.
+Hi,
 
-Here's the command that I use to do just that...
+When I recently upgraded to RH7.3 I got total keyboard locks when trying
+to run xscreensaver, tuxracer and chromium and may be others,
+necessitating dirty reboot by the reset botton.
 
-	( cd $BASEDIR ; du */ | fgrep -v / | sort -n ) | tail
+In order to go on working I had to reinstall RH7.1 where there is no such
+problem at all neither with xscreensaver, tuxracer nor any other program.
 
-...and this ignores any files in the current directory.
+I, therefore, conclude that the problem is somewhere whithin with RH7.3
+and possibly not with my video card which is SiS 630 since it works fine
+in RH7.1.
 
-Best wishes from Riley.
+Is this a known problem with RH7.3?
+
+If so are there corrective patches already and where do I find them?
+
+Regards
+ --
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
