@@ -1,33 +1,33 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: Bash will not start in Terminals
-Date: Thu, 10 Mar 2005 12:07:15 +0800
-Message-ID: <200503100407.j2A47Fla002077@skyinet.net>
+From: Marcus Furlong <furlongm@hotmail.com>
+Subject: Re: Running X programs from bash w/ framebuffer
+Date: Thu, 10 Mar 2005 06:35:55 +0200
+Message-ID: <d0oiqn$rqg$1@sea.gmane.org>
+References: <41E439F4.6030404@comcast.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7Bit
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Jeremy Abbott wrote:
 
-Slackware10 kernel 2.4.26
+> This may seem really newbieish, but I have been running Gentoo for quite
+> some time now.
+> 
+> Is it possible to forego X altogether, and run things like firefox,
+> thunderbird, etc through the framebuffer from a bashprompt, rather than
+> starting X and going from there.  The reason I ask, is I hate the bloat
 
-For me unknown reason suddenly bash will not start in terminals. Therefore no 
-PSI is set and commands I have in ~/.bashrc are not known unless I type bash 
-in
-xterm after which PSI is set as well.
+http://quingy.sf.net
 
-If I open xterm with: "xterm -e su -l" it opens with bash, w/o the -l flag 
-there is no bash.
+qingy is a replacement of getty. Written in C, it uses DirectFB to provide a
+fast, nice GUI without the overhead of the X Windows System. It allows the
+user to log in and start the session of his choice (text console, gnome,
+kde, wmaker, ...).
 
-How to resolve?
-
-Thanks & regards
-
-
--- 
-Peter
+emerge -a quingy
+emerge --newuse world
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
