@@ -1,36 +1,49 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: RE: RAM and swap partition
-Date: 13 Dec 2002
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: problems with ALSA
+Date: Fri, 13 Dec 2002 07:00:39 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212130451.gBD4pNUg019999@pegasus.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <02121307003901.00388@unix.pa3gcu>
+References: <200212110750.08044.r4mz3z@yahoo.es>
+Reply-To: pa3gcu@zeelandnet.nl
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212110750.08044.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: r4mz3z <r4mz3z@yahoo.es>, linux-newbie@vger.kernel.org
 
-It's still not really clear for my when and if, how much swap space is
-needed.
+On Wednesday 11 December 2002 07:49, r4mz3z wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> Hi friends...
+>   I have a VIA sound card and I've supossed ALSA drivers can give sound...
+> I follow the instructions but when (been root) run modprobe receive an
+> error... just like this:
 
-There had been two opinions in this thread which clearly pointed to
-none at all - surely qualified, one from own experience re
-"workstations", the other (and that was the first time I heard about
-this at all) that swap is (only?) needed when compiling and in order
-to save a crash log.
+> - -------------------------------------------------------------
+> [root@localhost root]# modprobe snd-via82xx
+> /lib/modules/.../snd.o: unresolved symbol __get_free_pages_Rsmp_4784e424
+> /lib/modules/.../snd.o: unresolved symbol try_inc_mod_count_Rsmp_e6105b23
+> /lib/modules/2.4.18-3/kernel/drivers/sound/snd.o: insmod snd-via82xx failed
+> [root@localhost root]#
+> - -------------------------------------------------------------
+>   The path complete is: /lib/modules/2.4.18-3/kernel/drivers/sound/
+>   I'm using RedHat 7.3.
+>
 
-The definition of "total (virtual) memory needed" for a/one programm
-appears logical (and "natural"); but then, there should be some means
-of measurement of precisely this, in order to do some reasonable -
-and economic - decision on that workspace indeed needed.
+Nowhere do you mention which version of alsa you are using, you need at least 
+0.9.0rc5 which can be obtained at;
+http://www.alsa-project.org/
 
-Furthermore, it seems rational to approach this in function of the
-actual use of (or installed) applications - i.e., to define, or even
-to resize if necessary (when a memory hog is added), the swap partition
-_after_ the otherwise complete installation of the "system".
+I had to use the above version to get my via8233 Southbridge working.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-12
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
