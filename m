@@ -1,30 +1,50 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: Howto insert newlines in a file
-Date: Tue, 01 Oct 2002 17:04:14 +0100
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Tar Extract from Tape
+Date: Tue, 1 Oct 2002 12:33:15 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20021001165703.00b76758@interzone.anexia.co.uk>
-References: <20021001143012.78545.qmail@web40609.mail.yahoo.com>
+Message-ID: <000001c26968$3dd96d90$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021001143012.78545.qmail@web40609.mail.yahoo.com>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
-To: szonyi calin <caszonyi@yahoo.com>, linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 16:30 01/10/2002 +0200, szonyi calin wrote:
->Hello everybody
->I want to insert a new line in a html file
->after a </a> statement.
->
->Can i do this with sed or awk or another program ?
+I am trying to extract the file P723.ind. Now this is on a Sco Box so I
+am crossing my fingers that the syntax is similar to Linux. Here is the
+sniped results for tar tvf /dev/rStp0.
 
-sed is fine for simple problems like yours.
+rw-r--r--  0/0   614400 Aug 08 16:39 2002 ./PM65/Orthotic Cat/Knee &
+Ankle/P722.indd
+rw-r--r--  0/0   712704 Aug 08 16:36 2002 ./PM65/Orthotic Cat/Knee &
+Ankle/P723.indd
+rw-r--r--  0/0   794624 Aug 06 16:38 2002 ./PM65/Orthotic Cat/Knee &
+Ankle/P724.indd
+rw-r--r--  0/0   856064 Aug 12 11:29 2002 ./PM65/Orthotic Cat/Knee &
+Ankle/P725.indd
 
-I use these 2 sites for help on examples and for the syntax:
+I have tried the following with the file never being found.
 
-http://www.softpanorama.org/Tools/sed.shtml
-http://main.rtfiber.com.tw/~changyj/sed/
+Tar xvf /dev/rStp0 ./PM65/Orthotic\ Cat/Knee\ &\ Ankle/*
+Tar xvf /dev/rStp0 ./PM65/Orthotic\ Cat/Knee\ &\ Ankle/P723.indd
+Tar xvf /dev/rStp0 ./PM65/Orthotic\ Cat/*
+Tar xvf /dev/rStp0 "./PM65/Orthotic Cat/Knee & Ankle/P723.indd"
+Tar xvf /dev/rStp0 "./PM65/Orthotic Cat/Knee & Ankle/*"
+
+I am thinking that tar is having a hard time with "&" which is why I
+tried Cat/*.
+
+Any insights would be good. I have searched google for anything relating
+to special characters and tar as well as long file names.  I have read
+the man pages for tar and the info page and can not seem to find out
+where my mistake is.
+
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
