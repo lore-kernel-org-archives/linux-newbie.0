@@ -1,41 +1,25 @@
-From: Eric <eric@cisu.net>
-Subject: Re: kernel error?
-Date: Thu, 1 Jan 2004 15:59:17 -0600
+From: jamtat@mailsnare.net
+Subject: Debian network reconfigure
+Date: Thu,  1 Jan 2004 23:44:04 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401011559.17882.eric@cisu.net>
-References: <3FF056EC.6020002@sancharnet.in>
+Message-ID: <1073000644.3ff4b0c4b3357@horde.mailsnare.net>
+References: <Pine.LNX.4.58.0312311325080.465@debian-box> <Pine.LNX.4.53.0401010532030.589@grinch.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3FF056EC.6020002@sancharnet.in>
-Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.53.0401010532030.589@grinch.ro>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: gracecott@sancharnet.in
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Monday 29 December 2003 10:31 am, joy wrote:
-> Hi,
->
-> I just compiled my new 2.6 kernel and when I boot thru it, I get an
-> error saying:
-> VFS : cannot open root device "345" or unknown-block (3,69)
-> OK.so I give an argument roo=/dev/hdb5 (that's my root partiton, I get
-> the message
-> VFS : cannot open root device "hdb5" or unknown-block (0,0)
-> anyone with an answer?
-> My old kernel worked fine w/o any lilo args.
-> and used to refer to my hdd as (03:05) when I had it as hda.
->
- Go through make menuconfig again, (or the kernel config you used) and make 
-sure you have support compiled in (not as a module (M) ) to the kernel for 
-both your hard drive controller and the filesystem you are mounting as your 
-root fs. ex. if your root FS is reiserfs, its imperiive you compile in 
-reiserfs support. 
--------------------------
-Eric Bambach
-Eric at cisu dot net
--------------------------
+I've tried various things I can think of on a Debian system and 
+searched the web a bit for information, but I'm still at a loss.  I've 
+moved a Debian machine that was on a dhcp network to a network that uses 
+static addressing.  I was hoping there is a way to rerun the network 
+setup dialogue so that I can assign eth0 a static address and tell it where 
+the gateway is.  Is there a way to rerun it?  If so, where and how?
+
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
