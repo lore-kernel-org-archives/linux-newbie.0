@@ -1,42 +1,49 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: /dev/cdrom is not a valid block device?
-Date: Fri, 4 Apr 2003 10:45:16 +0600
+From: Peter <pfheiss@philonline.com>
+Subject: Re: PPP in Slackware
+Date: Fri, 04 Apr 2003 15:59:41 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030404044516.GA866@localhost.localdomain>
-References: <20030403123500.GA749@localhost.localdomain> <5.1.0.14.1.20030403082113.01e99628@celine>
+Message-ID: <200304040759.h347xf702179@philonline.com>
+References: <03040315353900.01175@unix.pa3gcu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20030403082113.01e99628@celine>
+In-Reply-To: Your message of "Thu, 03 Apr 2003 15:35:39 GMT." 
+ <03040315353900.01175@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-On Thu, Apr 03, 2003 at 08:33:04AM -0800, Ray Olszewski
-wrote:
+Richard if you think only Dutchmen are stubborn you are mistaken. ;-)
 
-> The most likely cause is that you omitted some kernel
-> driver needed to access the device when you recompiled
-> your kernel.
+I now reinstalled SW8.0 and as I suspected kppp connected to the different 
+ISPs as I know it would since the time I had a SUSE 5.1 box, provided you do 
+not run pppsetup first. To make sure now not to make this mistake again I 
+deleted that program first thing. Gnome-ppp works just as well now.
 
-Ray, that was it exactly.  I did indeed somehow manage to
-leave out support for my CD-ROM drive during the creation of
-the kernel configuration file.  I guess this just goes to
-show that we have to be very careful when doing that.  The
-option I think I left out by mistake was ``ATA/IDE/MFM/RLL
-support ---> IDE, ATA and ATAPI Block devices ---> Include
-IDE/ATAPI CDROM support''.
+pa3gcu@zeelandnet.nl said:
+> pa3gcu@zeelandnet.nl said:
+>> As Ray has explained quite well i have no futher comments more as to
+>> say use  KPPP, it will do what you want.
 
-Anyway, I recompiled again, making doubly sure that
-everything was in order this time.  I had previously gone to
-the CDROM-HOWTO, as Richard suggested, and decided that
-recompilation was the first thing to do.
+> Unfortunately it is not the case.
 
-Barring a few hitches, I got the new kernel working, and now
-I've got CD-ROM support as well.  Thanks, everybody!
+> Unless i am missing some very spesific machine problems you may or
+> may not  have i can say, Yes, kppp WILL do what you want and need.
 
-Yawar Amin
+
+> I suspect the pppsetup is where the dog is buried. Before I used kppp or
+> for that matter gnome-ppp I had done a pppsetup. Only the ISP I choose in
+> pppsetup is the one I can connect with in kppp/gnome-ppp. If I want to use
+> another ISP I have to change it in pppsetup. I can't help it these are
+> the facts.
+
+Regards
+-- 
+Peter
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
