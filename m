@@ -1,46 +1,36 @@
-From: Michael Scondo <michael_scondo@gmx.de>
-Subject: Re: ascii code
-Date: Tue, 24 Sep 2002 21:50:32 +0200
+From: Ramzez <r4mz3z@yahoo.es>
+Subject: my linux connection is slow
+Date: Fri, 20 Sep 2002 11:01:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02092421483900.03996@betageuze>
-References: <F92IskOuN9JVxwNVBw00000365a@hotmail.com>
-Reply-To: michael_scondo@gmx.de
+Message-ID: <200209201102.05454.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F92IskOuN9JVxwNVBw00000365a@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-> Hi Michael,
->
-> I have 2 machines, a Windows one (from where I am writting right now, and
-> where I can use these characters) and a Linux machine (that I use to learn
-> Linux and C++; in a near future when I  will feel comfortable enought with
-> it, I will probably switch entirely to Linux). In Windows, almost anywhere
-> you can produce these characters if you use ALT + the code. I want to be
-> able to do that in Linux, too, if not everywhere, at least in the editors
-> (like the word from xWindows, or vi, or emacs), or in the email programs...
-> or directly at the prompt..
->
-> thanks,
-> -oana
->
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Hm, I don't  know which distribution you use, but if you install the codepage 
-iso-8859-1 (Western-Europe) you should be able to activate this one in 
-programs like kmail.
-Hitting the <'> or <^> and <e> or <u>  produce then the right chars,
-it's at least working at my pc.
-To use these chars in X-Editors is dependent on which font you selected, as 
-far I believe.
+Hi...
+  I use windows and linux (I prefer linux) but when I try to connect to 
+internet... my linux connection is slowest... why?
 
-For using these chars on the terminal there is also a config file somewhere; 
-something with locale ?
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
 
-Hope you feel soon comfortable with Linux,
-Michael
+iD8DBQE9i0Z7s4dF9gl05swRAgWtAJ0Qg2xYccmAsbwNjSSoiAlg0rIrPACeIPe+
+FL6HfLfjdpS6L/SjREcXMqU=
+=28jn
+-----END PGP SIGNATURE-----
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
