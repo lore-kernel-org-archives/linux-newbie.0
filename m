@@ -1,85 +1,58 @@
-From: Peter Garrett <peterg@fishinternet.com.au>
-Subject: Re: Re[8]: Linux Help
-Date: Wed, 21 Jul 2004 07:43:35 +1000
+From: Andy Biddle <andyb@chainsaw.com>
+Subject: Asus A7M266-D, Linux 2.6.7 and APIC (fwd)
+Date: Tue, 20 Jul 2004 22:42:16 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1090359814.1647.5.camel@DebiAnarchist>
-References: <20040720222206.16C0.SAVAGE-GARDEN@hanikamail.com>
-	 <5.1.0.14.1.20040720094640.01fc1668@celine>
-	 <20040720230038.16D4.SAVAGE-GARDEN@hanikamail.com>
+Message-ID: <20040720223850.C80982@sublime.winfirst.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040720230038.16D4.SAVAGE-GARDEN@hanikamail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-config@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-On Wed, 2004-07-21 at 03:01, Kev wrote:
-> >If memory serves (I'm not certain, though), the stock Debian install kernel 
-> >does NOT contain support for NICs that use the rtl8139 driver (or the newer 
-> >8139too driver). If that's the "comm one" you are referring to, you will 
-> >need to add a module for it to do an online install.
-> 
-> LAN cards are both, Realtek RTL8139
-> 
-> :(
-> 
-> 
-> On Tue, 20 Jul 2004 09:54:41 -0700
-> Ray Olszewski <ray@comarre.com> wrote:
-> 
-> >At 10:26 PM 7/20/2004 +0600, Kev wrote:
-> >[...]
-> >>LAN Card are Realtec both same model , a comm one but cant remember the
-> >>exact model tho, sorry
-> >
-> >If memory serves (I'm not certain, though), the stock Debian install kernel 
-> >does NOT contain support for NICs that use the rtl8139 driver (or the newer 
-> >8139too driver). If that's the "comm one" you are referring to, you will 
-> >need to add a module for it to do an online install.
-> >
-> >> >--> system. (Except I don't know what "some AV for the email relay" 
-> >> means ... I
-> >> >--> can't parse "AV" in this context.) The extra RAM should handle your Web
-> >>
-> >>AV = AntiVirus for the SMTP relay.
-> >>but not sure what i'm going to use.
-> >
-> >Ah. I guess that's why words communicate better than made-up abbreviations 
-> >(for me, AV = audio-visual, but that made no sense in context).
-> >
-> >I just skimmed the Debian package list (for Sid; Woody will be less 
-> >complete or current) and found that postfix has these associated packages:
-> >
-> >         amavis-ng - AMaViS "Next Generation"
-> >         amavisd-new - Interface between MTA and virus scanner/content filters
-> >         amavisd-new-milter - Interface between sendmail-milter and amavisd-new
-> >
-> >         postgrey - Greylisting implementation for Postfix
-> >         webmin-postfix - postfix control module for webmin
-> >
-> >Not having used any of this stuff myself, I can neither recommend nor 
-> >criticize it ... just let you know it is (probably) there, for you to take 
-> >a look at.
+I'm having what I suspect is a newbie-type problem, but I assure you I've
+looked around.
 
-If you are installing Debian, you might want to look here: 
+I have a dual-proc server that I've recently decided to overhaul.  It's an
+Asus A7M266-D motherboard.  It has been running with dual Athlon MP
+1800+s, RedHat and BIOS rev 1003 for at least a year with no real
+problems.
 
->http://www.osnews.com/story.php?news_id=2016&page=1
+First I decided to change the OS to Gentoo.  I built the system with no
+problem and built a custom kernel based on linux 2.6.7-gentoo-r11.
+Everything was working great.  Then I changed out the procs and went with
+dual Athlon MP 2800+s.  To support these, I needed to (according to Asus's
+website) upgrade the BIOS to 1011.002 or higher.  (Latest is 1011.003, so
+that's what I used.)
 
-and here:
+Now, when I boot to this custom kernel I get about 2 seconds into the boot
+process before the system starts spewing constant "APIC error on CPU0:
+04(04)" messages.   It stops booting at that point.
 
-http://www.debian.org/devel/debian-installer/
+I've done a little research and it seems that I'm supposed to do a couple
+of things:
+	1.  Disable "MPS 1.4 Support" in the BIOS.
+	2.  pass the kernel "noapic" as a parameter.
 
-and I would recommend:
+I've done both of these and I STILL get the APIC messages.  (Which leads
+me to suspect the "noapic" isn't working or I'm doing it wrong at the very
+least.)  My line from the grub.conf is:
 
-http://www.debian.org/doc/manuals/apt-howto/index.en.html
--
+kernel /kernel-2.6.7-gentoo-r11-smp root=/dev/hda3 noapic acpi=off apm=off
 
-> 
-> ------- 
--- 
-Windows belongs to Microsoft: Linux belongs to humanity
+I've build another custom kernel where the only difference is that SMP is
+disabled.  Sure enough, that works like a champ, but with only the single
+CPU.
 
+I've searched through the kernel "make menuconfig" menus and can't see
+that I'm missing anything.  In fact, I can't even FIND "APIC" options
+unless I disable SMP...
+
+I'm just about out of ideas here... Any suggestions?
+
+Thanks,
+AndyB
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
