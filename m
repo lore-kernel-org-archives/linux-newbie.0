@@ -1,32 +1,26 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
-Subject: Re: Problem Mounting a Windows partition
-Date: 08 Jul 2003 07:01:08 -0400
+From: Mohammad Nayyer Zubair <mzubair@ic.sunysb.edu>
+Subject: difference between buffer and page caches?
+Date: Tue, 8 Jul 2003 14:20:59 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1057662068.2074.5.camel@goldfinger.orbdesigns.com>
-References: <bee5au$qdl$1@main.gmane.org>
+Message-ID: <Pine.SOL.4.56.0307081415530.17402@sparky.ic.sunysb.edu>
+References: <S265177AbTGHR6n/20030708175843Z+21503@vger.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <bee5au$qdl$1@main.gmane.org>
+In-Reply-To: <S265177AbTGHR6n/20030708175843Z+21503@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 2003-07-08 at 06:11, Affan Qureshi wrote:
-> mount -t vfat /dev/hda6 /home/shared
- . . .
-> Can anyone tell me what the problem is?
 
-You might try with the uid= and gid= options to mount. Type man mount,
-then look for the section on "Mount options for fat".
+Hi...
 
-best wishes,
+Can anyone explain in as much detail as possible the difference between
+the design, use, implementation and related of the buffer and page caches
+in the linux 2.4.20 kernel?
 
-.brian
+thanks
 
--- 
-Brian P. Bilbrey <bilbrey@orbdesigns.com>
-Orb Designs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
