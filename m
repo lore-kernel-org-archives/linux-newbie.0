@@ -1,34 +1,52 @@
-From: Alexander Jenisch <Alexander_Jenisch@gmx.at>
-Subject: ADSL (pptp [ver BCAA]) and PPPD connection problem.
-Date: Sun, 12 May 2002 13:50:34 +0200
+From: Edgar Alwers <edgaralwers@gmx.de>
+Subject: Re: File-system Ext2 or Ext3??
+Date: Sun, 12 May 2002 14:44:02 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.2.20020512133801.009f9940@pop.gmx.net>
+Message-ID: <02051214440201.00732@edgar>
+References: <20020511204622.23285.qmail@web12806.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020511204622.23285.qmail@web12806.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
 
-hi all.
+On Saturday 11 May 2002 22:46, Staci wrote:
+> I still get forced fscks at startup, and they still find
+> lots of problems I thought would be eliminated with
+> ext3.
 
-i lately changed to adsl and encountered some problems with pptp and pppd 
-under debian (woody):
-pptp starts and stays in background, calling pptp_mgr (listed when typing 
-ps -uax) but pppd won't be started by pptp as inteded.
-to install both latest builds of pptp and pppd i got the sources and 
-compiled them myself. i configured pppd as written in various howtos and 
-don't think that i made any mistakes. though i cannot even check them 
-because pppd won't start. any guess how to set up pppd with a adsl modem 
-(alcatel speed touch) by hand? my kernel is 2.4.18 (with ppp), and the adsl 
-modem has 10.0.0.138 (default) as ip. it's connected to a switch and from 
-there to my linux machine.
-in windows me it works, though with some problems, when setting static dns.
-any guesses?
+You need to be more precise. What lots of problems is fsck finding ? Please 
+include the exact wording.
+And did you have the problems before changing the FS ? ( " I thought would be 
+eliminated with ext3" )
+If you have had an unclean shutdown ( power out for instance ), FS will get 
+checked on next bootup. You may get messages like "unexpected inconsistency; 
+run fsck manually "
+You also may need the newest version of e2fsprogs ( > 1.27 )
+Have you checked that your kernel supports ext3 ( normally > 2.4.18, but not 
+always the stock kernels ). 
 
----------------------------
-Alexander Jenisch
----------------------------
+> So I look at cfdisk for /dev/hdb, and it says those
+> partitions are ext2. 
+
+It happens in my system also, which is clean ext3. Perhaps cfdisk is not in 
+the last shape !
+
+> Is my cfdisk too old?  Did I do
+> something wrong?  Both my mtab and fstab have them
+> labeled (correctly?) as ext3.
+
+Include also /etc/fstab
+
+Regards,
+Edgar
+
+-- 
+-----------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto:edgaralwers@gmx.de
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
