@@ -1,145 +1,66 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: fetchmail and smtp problem
-Date: Wed, 11 Dec 2002 13:51:16 -0500
+Date: Wed, 11 Dec 2002 11:09:03 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212111851.gBBIpGB03369@hartford-hwp.com>
-References: <5.1.0.14.1.20021210115320.020c5d00@celine>
+Message-ID: <5.1.0.14.1.20021211110250.020d8d90@celine>
+References: <5.1.0.14.1.20021210171852.020d3150@celine>
+ <5.1.0.14.1.20021210115320.020c5d00@celine>
  <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
  <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
- <5.1.0.14.1.20021210115320.020c5d00@celine> <5.1.0.14.1.20021210171852.020d3150@celine>
+ <5.1.0.14.1.20021210115320.020c5d00@celine>
+ <5.1.0.14.1.20021210171852.020d3150@celine>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20021210171852.020d3150@celine> (message from Ray
-	Olszewski on Tue, 10 Dec 2002 17:21:10 -0800)
+In-Reply-To: <200212111851.gBBIpGB03369@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-I ran fetchmail -V to get the version and other info, and there's
-little difference from what I've got with my current (RH7.3)
-system. The only difference is that on my current (RH7.3) system, old
-messages are flushed before retrieval, while on new system (RH8.0)
---flush off. 
+Haines -- It is hard to diagnose anything from this bounce, without 
+information about what the original message looked like. A ways down in the 
+bounce report is this information:
 
-================================================================
+>Date: Tue, 10 Dec 2002 13:58:47 -0500
+>Message-Id: <200212101858.gBAIwl3h003184@hartford-hwp.com>
+>From: Haines Brown <brownh@hartford-hwp.com>
+>To: 127.0.0.1
+>Subject: test from lo 10 dec 13:58
+>Reply-to: brownh@hartford-hwp.com
 
-Here is a bounced message. It was rejected by my own mailserver:
+The first question you need to answer is -- how did 127.0.0.1 get into the 
+"To:" header? Was it an addressing error on your part, or did something 
+rewrite it to that value? I'd suggest you check the outbox of whatever 
+program you used to send the message. If the "To: 127.0.0.1" line appears 
+in your original, then it was just a typo and of no significance to your 
+troubleshooting (that is, the reject is correct). If the original has a 
+different To: line, then post a followup with the details -- what MUA, 
+which system (hard disk) you were using, and what the original To: line said.
 
-returned message:
+If it aids your memory, this message has a timestamp just 10 minutes before 
+the one on the telnet test you did (and reported on) yesterday.
 
-Date: Tue, 10 Dec 2002 17:42:16 -0500
-From: Mail Delivery Subsystem <MAILER-DAEMON@hartford-hwp.com>
-To: brownh@hartford-hwp.com
-Subject: Returned mail: see transcript for details
-Auto-Submitted: auto-generated (failure)
+At 01:51 PM 12/11/02 -0500, Haines Brown wrote:
+>I ran fetchmail -V to get the version and other info, and there's
+>little difference from what I've got with my current (RH7.3)
+>system. The only difference is that on my current (RH7.3) system, old
+>messages are flushed before retrieval, while on new system (RH8.0)
+>--flush off.
+>
+>================================================================
+>
+>Here is a bounced message. It was rejected by my own mailserver:
 
-   ----- The following addresses had permanent fatal errors -----
-127.0.0.1
-    (reason: 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown)
-    (expanded from: 127.0.0.1)
+[details deleted]
 
-   ----- Transcript of session follows -----
-... while talking to hartford-hwp.com.:
->>> DATA
-<<< 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown
-550 5.1.1 127.0.0.1... User unknown
 
---gBAMgENo000872.1039560136/hartford-hwp.com
-Content-Type: message/delivery-status
 
-Reporting-MTA: dns; hartford-hwp.com
-Arrival-Date: Tue, 10 Dec 2002 13:58:47 -0500
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
-Final-Recipient: RFC822; 127.0.0.1@hartford-hwp.com
-Action: failed
-Status: 5.1.1
-Remote-MTA: DNS; hartford-hwp.com
-Diagnostic-Code: SMTP; 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown
-Last-Attempt-Date: Tue, 10 Dec 2002 17:42:16 -0500
-
---gBAMgENo000872.1039560136/hartford-hwp.com
-Content-Type: message/rfc822
-
-Return-Path: <brownh>
-Received: (from brownh@localhost)
-	by hartford-hwp.com (8.12.5/8.12.5/Submit) id gBAIwl3h003184;
-	Tue, 10 Dec 2002 13:58:47 -0500
-Date: Tue, 10 Dec 2002 13:58:47 -0500
-Message-Id: <200212101858.gBAIwl3h003184@hartford-hwp.com>
-From: Haines Brown <brownh@hartford-hwp.com>
-To: 127.0.0.1
-Subject: test from lo 10 dec 13:58
-Reply-to: brownh@hartford-hwp.com
-...
-
----
-
-Something's messed up here with my identity. 127.0.0.1 is not a UID on
-my domain. I don't recall what "test from lo" means unless for some
-reason I mailed the message to the lo IP address, which perhaps
-explains it, but does not hint at what happened to messages mailed to
-myself. 
-
-=========================================================
-
-This is my ~/.fetchmailrc:
-
-  set postmaster "postmaster"
-  poll pop.registeredsite.com 
-  proto POP3
-  user "brownh@hartford-hwp.com" 
-  password "<password>" 
-  limit 100000	
-  flush  
-
-I also tried
-
-  poll pop.registeredsite.com 
-  proto POP3
-  user brownh@hartford-hwp.com 
-  password <password> 
- 
-but no difference. Mail files very slow to download, but then groups
-of several come in a burst in the midst of slow ones. That's the usual
-problem. 
-
-==========================================================
-
-I did a fetchmail --configdump dump and find that the only diff
-with the dump from my current (RH7i.3) machine is:
-
-9c9
-<     "idfile":"/home/brownh/.fetchids",
----
->     "idfile":"/root/.fetchids",
-46c46
-< 		    'localnames':["brownh"],
----
-> 		    'localnames':["root"],
-child process exited abnormally
-
-I assume (hope!) this diff only because I inadvertantly ran it as
-root. Obviously I'll need to verify that presumption.
-
-==========================================================
-
-I was going to regenerate a ~/.fetchmailrc file automatically with
-fetchmailconf, but find that utility is not included in RH8.0. The man
-fetchmail presumes it is present. The fetchmail web page says it comes
-packaged with fetchmail. Why it is missing, I don't know. In light of
-my damaged rp-pppoe, I worry that the fetchmail installation might be
-flawed. But rpm -V didn't report anything.
-
-I have a much newer fetchmail rpm for a i686 machine that I'm tempted
-to install, but my use of fetchmail takes advantage of a bug in the
-program (flushing messages over a certain size before downloading
-them, which is not supposed to be possible), and I hestitate for that
-reason to change things. But if fetchmailconf is supposed to work
-under RH8.0, I may have to reinstall fetchmail. 
-
-Haines Brown 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
