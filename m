@@ -1,38 +1,38 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Thu, 7 Nov 2002 12:41:19 +0200
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: RPM version of Alien around?
+Date: Wed, 6 Nov 2002 19:37:03 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021107124119.A1136@neutrino.particles.org>
-References: <200211070659.gA76wvp02557@philonline.com>
+Message-ID: <0306f31350507b2HNLMAIL3@hawaii.rr.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200211070659.gA76wvp02557@philonline.com>; from pfheiss@philonline.com on Thu, Nov 07, 2002 at 02:58:57PM +0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Thu, Nov 07, 2002 at 02:58:57PM +0800, Peter wrote:
-> > % ulimit -c 1000000 
-> > Rerun TkDesk and let it crash. You should have a core file now. 
-> 
-> $ tkdesk
-> Segmentation fault (core dumped)
-> 
-> except it's nowhere to be found. Wait, here it is now with ending numbers: 
-> core.1298
-> One of the new tricks of RH7.3?
+A friend has the newest release of Mandrake installed on 
+his Fujitsu Lifebook. He has a need to install a closed-
+source app that's available only in DEB form. Apparently 
+the GUI Mandrake app installer doesn't understand DEB 
+form. I suggested he use Alien to convert it to RPM. 
+Unfortunately, Alien seems to either be available only in 
+DEB form and/or requires other packages that are only 
+in DEB form. In his words, "I need to convert Alien to 
+RPM form so I can install it to convert its DEB package" 
+(or something like that, it's been a long day).
 
-% gdb tkdesk ./core.1298
-...
-% (gdb) where
+My friend (who is trying very hard to wean himself off of 
+Windows!) reacted to the idea of downloading and 
+compiling source by making choking sounds.
 
-Elias
+Anyone know where I could find Alien (and possibly its 
+required supporting packages) in RPM?
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Thanks.
+
+David
+gnome@hawaii.rr.com
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
