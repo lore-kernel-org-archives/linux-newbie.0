@@ -1,23 +1,32 @@
-From: Rodrigo Gesswein <rodri@chilesat.net>
-Subject: Directories in sync
-Date: Mon, 1 Mar 2004 15:31:57 -0300 (CLST)
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: vsftp permissions
+Date: Mon, 01 Mar 2004 14:08:44 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.56.0403011531290.12065@pluton.chilepac.com>
+Message-ID: <fc.004c4e000051a541004c4e000051a541.51a5db@palmertrinity.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi!
+I'm running Red Hat 8.0 (2.4.18-14). After consulting the usual suspects
+(Learning RH Linux, Running RH Linux, and Apache, the definitive guide)
+I've hit a blank wall on using vsftp to update and add files to my httpd's
+document root (/var/www/html, as defined in httpd.config). 
 
-   Does anybody know a good tool to keep 2 or more directories (local or
-remote) full synchronized ?
+Unless I am root, I do not have write permission to that directory. I
+don't mind reading to find the answer, but I seem to be missing a basic
+truth about connecting to the Linux box (via vsftp over a 10.x.x.x LAN) to
+update our web server. 
 
-   Thank you in advance..
+Do I create another directory and change the httpd.conf file? 
 
-Rodrigo...
+I really don't want to have to use a public_html directory and
+http://www.domain.com/~username as an address.
+
+Bill
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
