@@ -1,68 +1,39 @@
-From: Jim Reimer <jdr@wa5rrh.org>
-Subject: Re: File names with spaces
-Date: Tue, 18 Feb 2003 07:59:09 -0600
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: Re: X Windows
+Date: Tue, 18 Feb 2003 17:03:56 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E523C2D.2050101@wa5rrh.org>
-References: <20030218093623.1FB578D8FE@basicbox3.server-home.net>
+Message-ID: <20030218170356.A7177@neutrino.particles.org>
+References: <20030218072416.12243.qmail@webmail18.rediffmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20030218072416.12243.qmail@webmail18.rediffmail.com>; from mishra_nn@rediffmail.com on Tue, Feb 18, 2003 at 07:24:16AM -0000
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: robin@robind.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: n mishra <mishra_nn@rediffmail.com>
 Cc: linux-newbie@vger.kernel.org
 
-robin@robind.de wrote:
-> 
-> A solution should look like this:
-> 
-> for file in `ls -1`; do
->   newfile=`echo "$file" | sed 's/ /_/'`
->   echo "File is named ${file}"
->   echo "The new file is named ${newfile}"
-> 
->   mv "$file" "$newfile"
-> done
-> 
-> IHMO in the main-loop it is better to choose "ls -1", so the field
-> separator is \n and there's only one filename in each line.
-> The next <big> thing is to put the filename into quotations. Now a
-> filename, even with spaces, will be interpreted as one word.
+On Tue, Feb 18, 2003 at 07:24:16AM -0000, n  mishra wrote:
+>  	I am working on a project which requires a gui in Linux. I have 
+> been trying to work with XWindows. Could someone please refer me 
+> to a good site for an absolute newbie, maybe with tutorials.
+> Thanks in advance.
+> mishra.
 
-Robin, that still doesn't work right - try it and see:
+It's hard to utilize the X protocol directly but you can do it if you
+like; another guy posted some resources regarding Xfree86.
 
-$echo > file\ 001
-$echo > file\ 002
-$ ./test.sh
-File is named file
-The new file is named file
-File is named 001
-The new file is named 001
-File is named file
-The new file is named file
-File is named 002
-The new file is named 002
-$
+If you need something more programmer-friendly have a look at 
+http://www.gtk.org or search in Google for Qt.
 
-The previously referenced Bash Scripting Guide has the answer.
-Change the for statement to read:
-for file in *; do
-and it will work.
+Elias
 
-$ ./test.sh
-File is named file 001
-The new file is named file_001
-File is named file 002
-The new file is named file_002
-$
+-- 
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
--jdr-
-
-
-
-
-
-
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
