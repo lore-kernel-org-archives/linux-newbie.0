@@ -1,38 +1,26 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: BroadBand Connection
-Date: Sun, 27 Feb 2005 12:48:53 +0800
-Message-ID: <20050227044853.64B553AF0C@heisspf>
+From: Rei Shinozuka <shino@panix.com>
+Subject: xerox phaser 6100/DN
+Date: Sun, 27 Feb 2005 00:44:41 -0500
+Message-ID: <20050227054441.GE9778@panix.com>
 Mime-Version: 1.0
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Newbie Linux Users <linux-newbie@vger.kernel.org>
 
-Greetings,
+just wondering if anyone has used this printer.  i was surprised to
+see it's a color laser printer that comes with linux drivers from xerox, 
+does duplex (two-sided) printing, and costs $599 with ethenet network
+built-in.
 
-Slackware 10 kernel 2.4.26
+tia
 
-At last I will get tomorrow a broadband connection. The company which puts it 
-up informed me yesterday to buy a LAN card.
-
-Which I did today: CNet PRO200 100/10Mbps Fast Ethernet PCI-Bus Adapter.
-
-On the enclosed floppy in the package is a driver for Linux cnpro2~1.gz
-
-Where do I copy that driver to on my HD and what in the kernel will I have to 
-do to make things work for a broadband connection using make xconfig.
-
-This is a very new system here working over micro waves and I assume the 
-people installing it might not know Linux.
-
-I am quite excited getting away from my slow modem connection with average 
-speeds of 1.5 KB/sec also via micro waves so I hope I can make things work 
-with the help from this great list.
-
-Thanks & regards  
+-rei
 -- 
-Peter
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
