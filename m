@@ -1,89 +1,77 @@
-From: whitnl73@juno.com
-Subject: Re: dynamic linker?
-Date: Tue, 28 Jan 2003 22:32:43 -0500 (EST)
+From: "Lee Chin" <leechin@mail.com>
+Subject: Re: debate on 700 threads vs asynchronous code
+Date: Wed, 29 Jan 2003 12:26:30 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030129.113817.134688608.3.whitnl73@juno.com>
-References: <3E365FDB.1080502@rug.ac.be>
+Message-ID: <20030129172631.29782.qmail@mail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E365FDB.1080502@rug.ac.be>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: kurt.sys@rug.ac.be
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: terje.eggestad@scali.com, leechin@mail.com
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-On Tue, 28 Jan 2003, Kurt Sys wrote:
+Today I do method (C)... but many people seem to say that, hey, pthreads does almost just that with a constant memory overhead of remembering the stack per blocking thread... so there is no time difference, just that pthreads consumes slightly more memory.  That is the issue I am trying to get my head around.
 
-> Hi,
->
->
-> Here follows a problem I ran into. I tried to use an 'old' software
-> package cellstat. I got the package as a '.tar.gz', but it didn't seem
-> to unpack properly (tar xvfz cellstat_linux.tar.gz):
->
-> --
-> drwxr-xr-x 3007/30           0 1996-12-10 14:55:00 bin/
-> -rwxr-xr-x 3007/30       81430 1996-06-26 12:35:30 bin/xshow
-> -rwxr-xr-x 3007/30       49152 1996-04-25 10:41:12 bin/cellstat
-> -rwxr-xr-x 3007/30       20656 1996-12-10 14:55:00 bin/hips2tiff
-> -rwxr-xr-x 3007/30       24843 1996-12-10 14:55:00 bin/tiff2hips
-> drwxr-xr-x 3007/30           0 1996-11-19 10:54:01 doc/
-> -rw-r----- 3007/30        2326 1996-11-19 10:53:16 doc/README
-> -rw-r--r-- 3007/30        1175 1996-11-19 10:53:16 doc/cellstat.cfg
-> -rw-r----- 3007/30        3347 1996-11-19 10:53:16 doc/cellstat.n
-> -rw-r--r-- 3007/30        1692 1996-11-19 10:53:16 doc/hips2tiff.n
-> -rw-r--r-- 3007/30        1107 1996-11-19 10:53:16 doc/tiff2hips.n
-> -rw-r----- 3007/30        3456 1996-11-19 10:53:16 doc/xshow.n
-> drwxr-xr-x 3007/30           0 1996-12-10 14:53:28 samples/
-> drwxr-xr-x 3007/30           0 1996-11-19 10:54:22 samples/smo522/
-> -rw-r--r-- 3007/30         345 1996-12-10 14:53:05 samples/smo522/README
-> -rw-r--r-- 3007/30     2097244 1996-12-10 14:53:07
-> samples/smo522/smo522.hips
->
-> gzip: stdin: invalid compressed data--format violated
-> tar: Unexpected EOF in archive
-> tar: Unexpected EOF in archive
-> tar: Error is not recoverable: exiting now
-> --
->
-> OK, so far, some trouble, but I got the program itself and I copied it
-> into '/usr/local/bin' (as it was recommended by the authors). I thought
-> everythin would be ok, since I think the error only occurs with the
-> samples, and the bins and docs are uncompressed properly.
->
->
-> If i try to run the program (cellstat), I get the following:
->
-> --
-> cellstat: can't load dynamic linker '/lib/ld.so nor
-> /usr/i486-linux/lib/ld.so'
-> --
->
-> I tried to make a link to ld-2.3.1.so (ln -s ld-2.3.1.so ld.so), but
-> this didn't seem to change anything. I would like to know what's going
-> on... and it would be even nicer if it's possible to solve this problem.
->
->
->
-> thanks a lot in advance,
->
-> Kurt Sys.
->
-> -
-Links don't mean anything until root has run /sbin/ldconfig.
+That particular question, no one has answered... in Linux, the scheduler will not go around crazy trying to schedule prcosses that are all waiting on IO.  NOw the only time I see a degrade in threads would be if all are runnable.... in that case a async scheme with two threads would let each task run to completion, not thrashing the kernel.  Is that correct to say?
+----- Original Message -----
+From: Terje Eggestad <terje.eggestad@scali.com>
+Date: 27 Jan 2003 10:48:22 +0100
+To: Lee Chin <leechin@mail.com>
+Subject: Re: debate on 700 threads vs asynchronous code
 
-Lawson
+> Apart from the argument already given on other replies, you should
+> keep in mind that you probably need to give priority to doing receive.
+> THat include your clients, but if you don't you run into the risk of
+> significantly limiting your bandwidth since the send queues around your
+> system fill up. 
+> 
+> Try doing that with threads. 
+> 
+> 
+> Actually I would recommend the approach c)
+> 
+> c)  Write an asynchronous system with only 2 or three threads where I
+> manage the connections and keep the state of each connection in a data
+> structure.  
+> 
+> 
+> On fre, 2003-01-24 at 00:19, Lee Chin wrote:
+> > Hi
+> > I am discussing with a few people on different approaches to solving a scale problem I am having, and have gotten vastly different views
+> > 
+> > In a nutshell, as far as this debate is concerned, I can say I am writing a web server.
+> > 
+> > Now, to cater to 700 clients, I can
+> > a) launch 700 threads that each block on I/O to disk and to the client (in reading and writing on the socket)
+> > 
+> > OR
+> > 
+> > b) Write an asycnhrounous system with only 2 or three threads where I manage the connections and stack (via setcontext swapcontext etc), which is progromatically a little harder
+> > 
+> > Which way will yeild me better performance, considerng both approaches are implemented optimally?
+> > 
+> > Thanks
+> > Lee
+> -- 
+> _________________________________________________________________________
+> 
+> Terje Eggestad                  mailto:terje.eggestad@scali.no
+> Scali Scalable Linux Systems    http://www.scali.com
+> 
+> Olaf Helsets Vei 6              tel:    +47 22 62 89 61 (OFFICE)
+> P.O.Box 150, Oppsal                     +47 975 31 574  (MOBILE)
+> N-0619 Oslo                     fax:    +47 22 62 89 51
+> NORWAY            
+> _________________________________________________________________________
+> 
 
---
----oops---
+-- 
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
