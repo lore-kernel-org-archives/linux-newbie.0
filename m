@@ -1,94 +1,45 @@
-From: Kurt Sys <kurt.sys@rug.ac.be>
-Subject: Re: accessing my XP printer from Linux?
-Date: Wed, 26 Feb 2003 15:33:16 +0100
+From: "Eng Se-Hsieng" <g0202512@nus.edu.sg>
+Subject: 'Irq_vectors.h: No such file or directory' in 2.5.59
+Date: Wed, 26 Feb 2003 23:23:14 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <15964.53292.510412.155611@ksys.rug.ac.be>
-References: <1045726946.1229.26.camel@mark.localdomain>
-	<15956.36097.705979.573271@ksys.rug.ac.be>
-	<1046236784.2287.26.camel@mark.localdomain>
-Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
+Message-ID: <720FB032F37C0D45A11085D881B03368A2B30F@MBXSRV24.stu.nus.edu.sg>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1046236784.2287.26.camel@mark.localdomain>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hello again,
+Hello,
 
-I don't know a lot about CUPS, printer configuration etc. I just know how I managed to get it to work. Basically, I guess the following lines should work:
+While compiling the Nokia D211 driver on my computer, I received the
+following error message.
 
-$ gs -sDEVICE=ljet4 -sOutputFile=foo.hp foo.pdf 
+/usr/src/linux-2.5.59/include/asm/irq.h:16:75: irq_vectors.h: No such
+file or directory
 
-this will convert a pdf-file to 'printer format' (in this case, HP Laserjet 4)
+Line 15-16 of the above file is as follows:
+/* include comes from machine specific directory */
+#include "irq_vectors.h"
 
-$ smbclient //labmetserver/HPLaserJ -Ukurts 
+I've read some mails about how the file irq_vectors.h is actually found
+in usr/src/linux-2.5.59/arch/i386/mach-generic but the only mach*
+directories I have are 
 
-Connect to the server, use as 'service' the printer HPLaserJ. labmetserver is the name of the computer (or IP-number, whatever you prefer, but your computer has to be able to resolve any name, so you can use the IP-number to be sure). I have an entry '157.193.64.19 lmeserv.rug.ac.be labmetserver' in my '/etc/hosts'-file. labmetserver is actually 157.193.64.19
+mach-default, mach-visws and mach-voyager. 
 
-My password is asked (I don't know how to work with it if not password protected, I think it shouldn't ask for one...) so I give it... and I can use the service HPLaserJ. Then, I can use some commands on this service, and one of these is 'print', which sends a file to the printer (the service I'm in). This should be a text file or 'printer type'-file (that's way I run the gostscript in the first line):
+Did I forget to download something or compile something in my kernel?
 
-smb> print foo.hp
+Grateful if someone could help with where and how to find the
+irq_vectors file in the 2.5.59 kernel sources.
 
-Just try this, and see where exactly you're stuck. Is it when you run 'smbclient', while you try to connect to the computer which shares a printer? And what error messages and warnings do you get?
+Thank you.
 
-
-Kurt.
-
-
-
-Mail from Mark Johnson, sent on February 25 2003 at 21:19
-(GMT-0800):
-
-  > Thanks Kurt for the help, but I have been working on
-  > CUPS lately and almost have it working.  I found some
-  > help at HP.COM, as I have a HP 3820 printer, and got
-  > their latest drivers and used thier Red Hat install
-  > procedures.  Then I used the CUPS configurator
-  > (localhost:631) and have been trying to get that
-  > working, but after I get everything entered in, I press
-  > the Print Test button and it tells me I don't have
-  > permission.  I turned off the iptables (service iptables
-  > stop) and even disables the Norton firewall and still
-  > got no permission?  maybe you can help me out on the
-  > naming conventions. cups wants the
-  > smb://server/sharename but I'm unsure which names
-  > convert from windows?  is server the group name?  is
-  > share name the computername?  also I was asked by
-  > printtool what my name and password was, and there is no
-  > name or password setup on the XP box?  It just has my
-  > name that I used to install windows?  also do I use the
-  > XP's printer's share name in the path too? as in the
-  > sharename?  or do I use the IP address for the server
-  > instead of the XP group name.  As you can see I am
-  > starting to get a little confused :).  In fact I'm too
-  > confused to even attempt your suggestions yet.  I have
-  > too big of a headache right now.
-  > 
-  > If you or anyone else can help me get CUPS going or
-  > clarify the naming conventions I would really appreciate
-  > it.
-  > 
-  > Thanks in advance
-  >   -=Mark=-
-  > 
-  > > 
-  > > Things are not completely like I want them right now,
-  > > but at least, I can print. You can test some stuff,
-  > > before you try the 'printcap'-thing etc. I did these
-  > > things to test whether I could reach the printer:
-  > > 
-  > > $ gs -sDEVICE=ljet4 -sOutputFile=foo.hp foo.pdf $
-  > > smbclient //labmetserver/HPLaserJ -Ukurts passwd:
-  > > 
-  > > smb> print foo.hp smb> quit
+Regards,
+Se-Hsieng
 
 
--- 
-The difference between genius and stupidity is that genius
-has it's limits.
-		-- Albert Einstein
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
