@@ -1,78 +1,60 @@
-From: whitnl73@juno.com
-Subject: Re: cloning a system
-Date: Sat, 12 Apr 2003 18:33:33 -0400 (EDT)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: OT Hardware ideas for system consolidation
+Date: Sun, 13 Apr 2003 07:52:01 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030412.195848.8.2.whitnl73@juno.com>
-References: <20030412090618.A197@lnx2.w8mch.ampr.org>
+Message-ID: <03041307520100.20565@unix.pa3gcu>
+References: <0b1864406080c43HNLMAIL3@hnlmail3.hawaii.rr.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030412090618.A197@lnx2.w8mch.ampr.org>
+In-Reply-To: <0b1864406080c43HNLMAIL3@hnlmail3.hawaii.rr.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: haltec@kvinet.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: David Jones <gnome@hawaii.rr.com>, linux-newbie@vger.kernel.org
 
-On Sat, 12 Apr 2003, Hal MacArgle/usr/local/bin/tartar wrote:
-
-> Greetings: Years ago when HD's were less than 1gB I used the dd route
-> to clone a drive for backup but never had the reason to check and see
-> if it was a valid idea.. Later, I think on this list, someone pointed
-> out that the dd route was not a good idea - think it may have been
-> Lawson IIRC..
-
-If your BIOS doesn't support the Enhanced BIOS call and the packet-call
-interface (invented in 1998) lilo is going to have to use CHS
-addressing, and differeces in geometry and bad sectors are liable to
-play hob with it.
+On Saturday 12 April 2003 08:08, David Jones wrote:
+> Current situation: Running three PCs. One 450MHz K-
+> 6/2 with 384MB RAM and Linux. One 700MHz Duron
+> with 512MB RAM and OS/2. One 800MHz P3 with
+> 512MB RAM and Windows98SE.
 >
-> I did note that the cloned drive, even though formatted larger than
-> the source drive ended up the "same" size as the source.. I can't
-> find my notes but seem to remember using the following:
-> dd if=/dev/hda of=/dev/hdc bs=8192
+> Proposed situation: One PC running Linux with
+> VirtualPC for Linux to run the other two OSes.
 >
-> Approaching senility in the brain department I'm hoping someone will
-> pick up on this and write a mini-HOWTO as I think it's a needed
-> project.. At 0400 this morning I wondered if the best way would be to
-> boot the machine with BasicLinux, into ramdisk, and then invoke dd
-> from it - presuming Steven put dd in BL.. Not sure.
+> Question: What processor speed and memory would be
+> needed to get equivalent performance out of OS/2 and
+> W98 under VirtualPC on Linux? At the moment, I'm
+> assuming that maxing out the memory on the
+> motherboard would be a good place to start ...
 
-/usr/local/bin/tartar:
-#!/bin/bash
-##copy a directory or partition
-tar -C "$1" -cOl . | tar -C "$2" -xpf -
+No matter what speed the processor is you will never get a Virtual operating 
+system to run at the same speed it would do when run on its own.
+However i use a Atlon 1800 with 512 MB and run win98 under VMware.
+I find win98's speed acceptable considering the limitations.
 
-mount <source device> /mnt/source
-mount <target device> /mnt/targat
+> Related question: What Linux distro is considered the
+> fastest for desktop use, or are they all more-or-less the
+> same?
 
-tartar /mnt/source /mnt/target
-...
-if your BIOS is old enough to need a /boot partition, mount it on the
-target / (I'll call that /mnt/target) after you copy it, and install
-lilo:
+Its not a question of which linux-distro its a question of which window 
+manager one uses.
+KDE and GNOME are well know as being memory hogs and basicly hogging system 
+resources, they are of course the most widley used because they are very good 
+and have a very nice and easy handeling.
+There are many lighter window managers around, icewm blackbox fvwm95 to name 
+a few, but many are not as easy to use and configure as KDE and GNOME.
 
-lilo -r /mnt/target
 >
-> Somewhere along my former testing I seem to remember /proc giving a
-> problem but that may have been using another routine.. Sometime in
-> the future someone may figure a way to RAID our normal brain. <grin>
->
-> I hope someone keeps this thread alive..
->
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
->                 Proprietary  Formats  Unacceptable
+> David
+> gnome@hawaii.rr.com
 >
 
-Lawson
---
----oops---
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
