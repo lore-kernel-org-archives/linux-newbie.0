@@ -1,41 +1,41 @@
 From: chuck gelm <chuck@gelm.net>
 Subject: Re: Sype wont't open
-Date: Tue, 01 Mar 2005 04:46:56 -0500
-Message-ID: <42243A10.8000806@gelm.net>
-References: <20050301055006.4C53B4E6EC@heisspf>
+Date: Tue, 01 Mar 2005 08:37:48 -0500
+Message-ID: <4224702C.4090403@gelm.net>
+References: <20050301095729.18B354E707@heisspf>
 Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <20050301055006.4C53B4E6EC@heisspf>
+In-Reply-To: <20050301095729.18B354E707@heisspf>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "Peter H." <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+To: Peter <heisspf@skyinet.net>
+Cc: linux newbie <linux-newbie@vger.kernel.org>
 
-Peter H. wrote:
-> Hi,
+Peter wrote:
+> chuck@gelm.net said:
 > 
-> in slackware10 trying to open skype a program
-> for Internet telephony I get the following error:
+>>  Get the 'static' version. http://www.skype.com/products/skype/linux/
+>>"Static binary tar.bz2 with Qt 3.2 compiled in (8.0 MB)
 > 
-> relocation error: /usr/lib/qt/lib/libqt-mt.so.3: undefined symbol: 
-> XkbSetPerClientControls
 > 
-> and the program aborts.
 > 
-> How to resolve?
+> I did and get the same error message.
 > 
-> Thanks & regards
+> 
+> 
+I have the static version on a laptop with Slackware v10.0
+and I do not get an error.
 
-Dear Peter:
+  'locate libqt' yields ->
 
-  Get the 'static' version.
-http://www.skype.com/products/skype/linux/
-"Static binary tar.bz2 with Qt 3.2 compiled in (8.0 MB)"
-
-HTH, Chuck
-
+/usr/lib/qt-3.3.2/lib/libqt-mt.so.3
+/usr/lib/qt-3.3.2/lib/libqt-mt.prl
+/usr/lib/qt-3.3.2/lib/libqt-mt.la
+/usr/lib/qt-3.3.2/lib/libqt-mt.so
+/usr/lib/qt-3.3.2/lib/libqt-mt.so.3.3.2
+/usr/lib/qt-3.3.2/lib/libqt-mt.so.3.3
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
