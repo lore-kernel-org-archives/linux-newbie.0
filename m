@@ -1,35 +1,39 @@
-From: Axel Siebenwirth <axel@pearbough.net>
-Subject: Re: Mandrake 9.1 kernel
-Date: Thu, 27 Mar 2003 02:42:01 +0100
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030327014201.GA812@neon.pearbough.net>
-References: <1048719804.1758.1.camel@localhost.localdomain>
+From: "Oliver Ob [o.b./RSi/TRSi/NSD]" <ob_ok@gmx.net>
+Subject: WWW development - another good example against M$
+Date: Fri, 28 Mar 2003 17:11:22 +0100
+Message-ID: <3E84742A.FD7EE19D@gmx.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1048719804.1758.1.camel@localhost.localdomain>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <suse-multimedia-e-return-465-suse-multimedia-e=m.gmane.org@suse.com>
+List-Post: <mailto:suse-multimedia-e@suse.com>
+List-Help: <mailto:suse-multimedia-e-help@suse.com>
+List-Unsubscribe: <mailto:suse-multimedia-e-unsubscribe-suse-multimedia-e=m.gmane.org@suse.com>
+List-Subscribe: <mailto:suse-multimedia-e-subscribe@suse.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: J S <webnews@comcast.net>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: Lx Suse E <suse-linux-e@suse.com>
+Cc: Lx Newbie List <linux-newbie@vger.kernel.org>, Lx Suse MULTiMEDiA E <suse-multimedia-e@suse.com>, Lx SXS <linux-users@linux-sxs.org>
 
-Hi J!
+Hello folks,=20
 
-On Wed, 26 Mar 2003, J S wrote:
+short time, short go today: I need a web design program for Linux (I use
+Suse 7.3 here) which can use the files from NETOBJECTS FUSION 7 (Winsuck)
 
-> I noticed at the Mandrake website that Mandrake 9.1 claims to ship with
-> kernel 2.4.21.  The odd thing is that 2.4.21 hasn't been released as a
-> stable release yet.  Does anyone know what they are actually using?  Is
-> it Mandrake's policy to ship the latest prepatches instead of stable
+Explanation for those who are interested:
+I ran into installing the NOF 7 pack, and it requires that god-damn Win
+Internet Explorer 5.5 - and as I am moving away from Windoze, I will NOT
+get that thing. I run Win98 for whatever purposes that Linux is yet=20
+incapable to deal with, and Windoze98 does only include IE4.7.
 
-Mandrake 9.1 actually comes with a heavily modified 2.4.21-pre5. They are of
-the opinion that 2.4.20 misses some improvements/fixes that -pre5 does have,
-so they based their kernel on -pre5.
+Another good example that Windoze sucks major d...!!!
 
-Axel
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Please, can anyone point me into that direction?
+
+--=20
+   *=BA=A4.,___,.=A4=BA*=A8=A8=A8*=A4         =3DOliver@home=3D         *=
+=BA=A4.,=B8=B8=B8,.=A4=BA*=A8=A8*=A4
+   I   / __|__   http://www.bmw-roadster.de/Friends/Olli/olli.html  I
+   I  / /  |_/   http://www.bmw-roadster.de/Friends/friends.html    I
+   I  \ \__|_\   http://groups.yahoo.com/group/VGAP-93              I
+   I   \___|     mailto:VGAP-93-subscribe@yahoogroups.com           I
+   >>>  Telek0ma iBBMS - moving house, but online! +49....TRSi1   <<<
