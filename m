@@ -1,8 +1,8 @@
 From: Oliver Ob <ob_ok@gmx.net>
-Subject: Security
-Date: Tue, 09 Jul 2002 18:28:39 +0200
+Subject: ISO Image
+Date: Tue, 09 Jul 2002 19:00:28 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D2B0F37.E5857F34@gmx.net>
+Message-ID: <3D2B16AC.C7ADA30@gmx.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,14 +10,25 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
 To: Lx Newbie List <linux-newbie@vger.kernel.org>
 
-Hi Linuxers...
+This is what I would like to do: Updating a backup then burn new.
 
-I would like to learn more about "Linux and security".
+I copied the old cd using=20
+dd=3Dif... of=3D/image.iso
 
-What (useful links also appreciated) sources for reading
-and mailinglists can you advise?
+Now I mounted that iso
+mount -o loop -t iso9660 image.iso /mnt/image
 
-Thanks!
+It is there, no problems till here.
+
+Now it is mounted rw (according to mount)
+I want to copy one file INTO it.
+
+But I get "READ ONLY FS"
+
+So what do I do wrong here? It IS mounted rw
+
+Please help, I need to get that done for tomorrow.
+
 --=20
 *=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
  *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
