@@ -1,47 +1,54 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: Re: olivetti p100 with onboard ATI Mach64
-Date: Fri, 02 May 2003 11:21:50 +0200
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Netscape6.2/Slack8.1 Problem??
+Date: Fri, 2 May 2003 08:49:50 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EB238AE.4020506@arrakis.es>
-References: <5.1.0.14.1.20030430114653.01f79408@celine>
+Message-ID: <20030502084950.B147@lnx2.w8mch.ampr.org>
+References: <5.1.0.14.1.20030430101045.01f89a18@celine> <20030430130258.A152@lnx2.w8mch.ampr.org> <5.1.0.14.1.20030430101045.01f89a18@celine> <20030501113320.B165@lnx2.w8mch.ampr.org> <5.1.0.14.1.20030501090116.01ea5780@celine>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030430114653.01f79408@celine>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20030501090116.01ea5780@celine>; from ray@comarre.com on Thu, May 01, 2003 at 09:06:06AM -0700
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
->
->
->>
->> I have two machines as described above and both give me exactly the 
->> same problem. Soon after booting from a Linux floppy the screen goes 
->> blank.
->
->
-> You mention testing with tomsrtbt. As I recall, it uses a framebuffer 
-> device to let it set the video mode.
-> Offhand, I don't know whether any of the full-strength distros do not 
-> use the framebuffer by default, particularly in their installers 
-> (since you talk about testing with floppies). Offhand, I know that the 
-> router-oriented LEAF distros (leaf.sourceforge.net) do not use it, and 
-> probably other floppy-based distros (trinux? maybe) also omit this. So 
-> you might try one of them to see if this is your problem. If it is, 
-> you can easily compile a custom kernel that leaves out framebuffer 
-> support, assuming you are working toward a hard-disk install.
+On 05-01, Ray Olszewski wrote:
+> OK. This response pretty much eliminates RAM/swap as a possible cause.
+> 
+> I also asked about CPU use. That's the line in "top", near the top of the 
+> display, that looks like this:
+> 
+> Cpu(s):  30.6% user,   2.0% system,   0.0% nice,  67.4% idle
+> 
+> See if running the problem version of Netscape pushes your idle time to 0% 
+> or nearly that.
 
-Looks like you were right. Bering boots to a console prompt with no 
-trouble. (It must be great to know so much). Next step is indeed to go 
-for a hard-disk install, which means I can't put off learning to compile 
-a kernel any longer. Presumably I can do this on another machine and 
-then transfer it (?).
-I was thinking of installing something like Peanut. What do you reckon? 
-I can probably rustle up about 800 megas of disk space on two disks. The 
-machine will not be used for anything more ambitious than 
-text-processing, Internet, etc.
-Andrew
+		Sorry - I didn't mention  the top line but idle never
+goes below 90% with either Netscape 4.77 or 6.2..
 
+
+> But this too seems less likely, now that I understand that the problem is 
+> specific to a *particular* action on the Netscape you are running. I'd be 
+> looking for an app-specific bug, I think. For that you'll need help from 
+> someone shose setup is closer to yours than mine is.
+> 
+> Sorry I wasn't able to help.
+> 
+
+		No biggie we'll work around it and will keep trying
+to find someone with the almost exact lash up.. We use either 'lynx' or
+'links' 99% of the time only using a GUI when absolutely necessary,
+which is more than normal it seems..  Appreciate your help, I have
+learned more about 'top', etc.. I suspect I wont find anyone who
+doesn't run the whole nine yards of KDE, Gnome, Netscape, Mozilla,
+etc.. I just can't seem to get away from trying to be efficient and
+lean.. Oh well.. Thanks again.
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
