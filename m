@@ -1,33 +1,31 @@
-From: Peter <pfheiss@philonline.com>
-Subject: PPP Question
-Date: Tue, 24 Sep 2002 15:38:55 +0800
+From: "Oana Tudor" <oana_tudor@hotmail.com>
+Subject: ascii code
+Date: Tue, 24 Sep 2002 17:23:54 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209240738.g8O7ct403062@philonline.com>
+Message-ID: <F75FrFpNuWRKJuPkzjq00005595@hotmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; format=flowed; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Hi everybody,
 
-I have 3 ISPs of which one with 2 phone numbers (ppp1 and ppp2). Using the 
-command /sbin/ifup pppx I can connect only to ppp0 and ppp1; ppp2 and ppp3 
-will just sit doing nothing. The same happens using the guis rp3 and usernet, 
-on the window waiting the bar just moves for ever back and forth.
+I often use characters like =E2, =E0, =E7 and so on... I know how to make t=
+hem in=20
+Windows, using ALT+131, ALT+133, ALT+135 and so on... but when I try doing =
 
-Yet using rp3-config -debug or kppp I can dial-up and connect with all 4 
-numbers.
+this in Linux, it woun't work. Does anybody know how to make them without=20
+installing special word procesors? I know that my question is trivial... bu=
+t=20
+I've been searching the internet with no luck.
 
-Is there an explanation to this and can correction be made that command 
-/sbin/ifup which I prefer can be used for all ppps?
+Thanks a lot,
+-oana
 
-In wvdial.conf all looks correct the same in pap/chap-secret.
-
-Thanks & regards
--- 
-Peter
+_________________________________________________________________
+Chat with friends online, try MSN Messenger: http://messenger.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
