@@ -1,54 +1,44 @@
 From: Lee Chin <leechinus@yahoo.com>
 Subject: Re: Getting the IP address of a UDP client
-Date: Fri, 3 Jan 2003 16:22:38 -0800 (PST)
+Date: Fri, 3 Jan 2003 18:26:05 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030104002238.87450.qmail@web14305.mail.yahoo.com>
-References: <20030104021327.A4573@neutrino.particles.org>
+Message-ID: <20030104022605.22049.qmail@web14309.mail.yahoo.com>
+References: <Pine.LNX.4.44.0301031930470.29107-100000@coffee.psychology.mcmaster.ca>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030104021327.A4573@neutrino.particles.org>
+In-Reply-To: <Pine.LNX.4.44.0301031930470.29107-100000@coffee.psychology.mcmaster.ca>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Elias Athanasopoulos <eathan@otenet.gr>
-Cc: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
+To: Mark Hahn <hahn@physics.mcmaster.ca>
+Cc: Elias Athanasopoulos <eathan@otenet.gr>, linux-newbie@vger.kernel.org
 
-Hi,
-This is a UDP server ... so I do not use accept, I
-simply have a server loop that does a "recv" ...
+Hi Mark,
+I am not using recvfrom... I simply use recv
 
-So the server does a recvfrom and then a sendto on the
-same file descriptor... 
-
-When I try to do an accept, that system call fails
-because it is not a TCP socket...
+In other words, I create the server UDP socket, listen
+on a port then enter into a while loop just doing a
+recv.  Now the thing is, many different clients are
+sending packets to the server, and I need to reply to
+each of them at a later time, so I need to get their
+IP addresses and store it away so I can do a sendto at
+a later time
 
 Thanks
 Lee
---- Elias Athanasopoulos <eathan@otenet.gr> wrote:
-> On Fri, Jan 03, 2003 at 11:03:20AM -0800, Lee Chin
-> wrote:
-> > I can use getpeername to get the IP address of a
-> > client on a connected TCP socket, but when I have
-> a
-> > UDP client that just sent me a packet, how do I
-> get
-> > the IP address of that UDP client?
+--- Mark Hahn <hahn@physics.mcmaster.ca> wrote:
+> > This is a UDP server ... so I do not use accept, I
+> > simply have a server loop that does a "recv" ...
+> > 
+> > So the server does a recvfrom and then a sendto on
+> the
 > 
-> Forgive me if I have misunderstood you, but do you
-> use accept() to create
-> the new incoming connection? Then the second
-> argument to accept() is
-> a structure, which contains the information you
-> want.
+> if you're using recvfrom, why aren't you simply
+> providing 
+> a buffer for the "from" argument (and appropriate
+> fromlen).
+> read the fine man page!
 > 
-> Have a look at the man page of accept(2).
-> 
-> Elias
-> 
-> -- 
-> http://gnewtellium.sourceforge.net			MP3 is not a
-> crime.	
 
 
 __________________________________________________
