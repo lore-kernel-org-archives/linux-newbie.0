@@ -1,43 +1,47 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Jos Lemmerling <jos@lemmerling.nl>
 Subject: Re: iptables & a dhcpd question
-Date: Thu, 27 Feb 2003 20:56:24 +0000
+Date: Thu, 27 Feb 2003 22:09:25 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03022720562401.00903@unix.pa3gcu>
-References: <004101c2de99$eef21400$4800a8c0@neptune> <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.21.0302272158340.10476-100000@orthanc.lemmerling.net>
+References: <009901c2dea0$9bc86390$4800a8c0@neptune>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
+In-Reply-To: <009901c2dea0$9bc86390$4800a8c0@neptune>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>, paul@mnwebhost.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thursday 27 February 2003 20:00, Eckhardt, Rodolpho H. O. wrote:
-> I don't know if this is what you are asking but.
->
-> I've never worked with Slackware, but try this:
->
-> /etc/(PATH TO rc.firewall)/rc.firewall
->
-> and when they say dhcpd stop, you have to add the path to it in the front:
->
-> /etc/init.d/dhcpd stop (if /etc/init.d is the path)
->
-> I hope this works,
+On Thu, 27 Feb 2003, Paul wrote:
 
-Huum, its plain to see you have never seen slackware, slackware does not even 
-have a directory called /etc/init.d.
-Slackware is not of the sysv catagory sorry.
+> Thanks for all the info! Quick follow up question on the rc.firewall script.
+> I've tried running it, just by typing it's name when I'm in that folder at
+> root.  It says, "bash: rc.firewall-2.4: command not found"  It's actually
+> named, "rc.firewall-2.4" and I've made it executable already, it has a *
+> next to its name when I do a listing.  Any ideas??  TIA!
 
->
-> Rodolpho
+You'll have to tell bash where the script is; you could type the full path
+(/path/to/rc.firewall-2.4) or, if you're already in the directory where
+the script is type "./rc.firewall-2.4". That should work.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+The script is now probarly not in one of the directorys where bash finds
+it's executables. 
+You could see these directorys if you type "echo $PATH".
+
+Maybe you already have it, but it's good to flush your firewall-settings
+at the start of the script.
+
+And please... Try to quote like it should be; below the answers. It's much
+easier to read that way!
+But it seems to me, this list doesn't care about that... :(
+
+
+HTH
+
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
