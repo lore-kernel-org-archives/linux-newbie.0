@@ -1,65 +1,115 @@
-From: "Anant Aneja" <anantaneja@rediffmail.com>
-Subject: Re: Re: Re: Shutdown problem
-Date: 20 Jan 2003 06:11:08 -0000
+From: "Lee Chin" <leechin@mail.com>
+Subject: why does this program crash while using setcontext?
+Date: Mon, 20 Jan 2003 01:10:01 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030120061108.22650.qmail@webmail8.rediffmail.com>
-Reply-To: "Anant Aneja" <anantaneja@rediffmail.com>
+Message-ID: <20030120061001.72340.qmail@mail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain;
-	format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+#include <ucontext.h>
+#include <stdio.h>
 
-shutdown -r now
-restarts the system.that i've done before.
-i'll try what u say.
-Anant
-On Sun, 19 Jan 2003 pa3gcu wrote :
->On Sunday 19 January 2003 14:21, Anant Aneja wrote:
-> > heres more info :
-> > my kernel is of version 2.4.2-2.
-> > i couldnt locate the readme u mentioned.
-> > there are no files there (in that folder).
-> > does that mean that I havbe a improperly installed system.
->
->It maeans you dont have the kernel source installed nothing 
->more.
->I suggest you retrive either linux-2.4.2.tar.gz or update your 
->kernel to
->something more recent. Then when you have the source and unpacked 
->it properly
->you will then have the README in /usr/src/linux .
->I suggest you do as i mentioned to hunt down your problem.
->
->According to your message about "its always been happening" that 
->would
->suggest a harware incompatabilty, why not sinply use shutdown -r 
->and see if
->that helps.
->
->
-> > Please help
-> > Anant
->
->--
->Regards Richard
->pa3gcu@zeelandnet.nl
->http://people.zeelandnet.nl/pa3gcu/
->
->-
->To unsubscribe from this list: send the line "unsubscribe 
->linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  
->http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
+ucontext_t mainucp;
+ucontext_t fooucp;
+int flag = 0;
 
+int foo()
+{
+    printf("(2) foo setting context\n");
+    getcontext(&fooucp);
+    if (!flag)
+    {
+        flag = 1;
+        setcontext(&mainucp);
+    }
+    printf("(3) foo done\n");
+    return 0;
+}
 
+void eleven()
+{
+    printf("(1) calling foo\n");
+    foo();
+    printf("(4) foo now finished\n");
+}
 
+void ten()
+{
+    eleven();
+}
+
+void nine()
+{
+    ten();
+}
+
+void eight()
+{
+    nine();
+}
+
+void seven()
+{
+    eight();
+}
+
+void six()
+{
+    seven();
+}
+
+void five()
+{
+    six();
+}
+
+void four()
+{
+    five();
+}
+
+void three()
+{
+    four();
+}
+
+void two()
+{
+    three();
+}
+
+void one()
+{
+    two();
+}
+
+int main()
+{
+    getcontext(&mainucp);
+    if (!flag)
+    {
+        one();
+    }
+    else
+    {
+        printf("(2.5) main again\n");
+        setcontext(&fooucp);
+    }
+}
+
+~                                               
+-- 
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
+
+Meet Singles
+http://corp.mail.com/lavalife
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
