@@ -1,51 +1,71 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Freesco, old kernel lines, security
-Date: Mon, 02 Jun 2003 08:07:50 -0700
+From: Richard Dawson <rcdawson@att.net>
+Subject: Re: scrambled screen
+Date: Mon, 02 Jun 2003 20:13:03 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030602080040.01f74a30@celine>
-References: <Pine.LNX.4.53.0306020858070.6480@vector>
+Message-ID: <3EDC123F.1030309@att.net>
+References: <S264743AbTFAWHa/20030601220730Z+2199@vger.kernel.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0306020858070.6480@vector>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: qwms-avib@dea.spamcon.org, linux <linux-newbie@vger.kernel.org>
 
-At 09:08 AM 6/2/2003 -0500, James Miller (office) wrote:
->I understand that in the world of Linux network security, generally older
->= worser (more insecure).  So, I see that Freesco, a small Linux
->gateway/router distro that seems to be actively maintained, is using a
->kernel from the 2.0.x line - 2.0.38 (I understand that the most
->recent 2.0.x kernel is 2.0.39).  Is Freesco considered an insecure
->gateway/router distro because it uses this older kernel line, or can it be
->expected to provide adequate network security?  What would be the risks
->involved in using such a distro?  Would the security savants on this list
->recommend against using it?
+I have had the same problem!!!  You should see the mess you get in 
+X-windows if you try to use version 4.X!
 
+I was told that there is a program called vgareset that one can run to 
+get the command line console squared away.  I was never able to find 
+that probram, so I finally bought a different video card.
 
-I have not looked at Freesco in a long time (years, really). Were I to 
-consider using it, I would worry not about the old kernel but about old, 
-insecure apps. Since I don't know what apps it runs, I cannot be specific 
-here. But over the past 2 years, we've seen security updates to BIND 
-(named), ssh, ssl-libraries, I believe even libc6 (glibc), and a lot of 
-others I can't name off the top of my head.
+By the way, how did you get the sound card to run?  Mandrake 9.1's 
+autoprobe doesn't seem to be able to find the sound card.
 
-So I would look to see if Freesco is doing regular security updates to 
-applications and libraries that provide whatever services it makes available.
+Rich Dawson
+rcdawson@att.net
 
-The issue with 2.0.x kernels (the issue I know, anyway) is that they do not 
-support the fancier routing capabilities of 2.2.x and 2.4.x kernels ... for 
-example, their NAT'ing code is more primitive, they don't provide 
-connection tracking, they are less flexible in handling 3-NIC (e.g., DMZ) 
-setups, and they log less intelligently.  Whether these limitations matter 
-depends on the particulars of your routing needs.
+qwms-avib@dea.spamcon.org wrote:
 
-Here, I run a NAT'ing router using the 2.4.x kernel and built on 
-Debian-Woody. Were I to use a small-Linux rourer distro, I'd probably use 
-LEAF/Bering or LEAF-Dachstein (depending on the details of my requirements 
-... the two variants have different frop-in firewall packages available).
-
+>Over the years, I have used Linux on a dozen different computers 
+>and have never run into this problem before.  I've just installed 
+>Slackware 7.1 on a Compaq 400 (MMX) with S3 Virge video card.  
+>Everything is working OK (including the XFree 3.3.6 S3V server) 
+>except that when, I exit X and return to the console, the screen 
+>is scrambled. 
+>
+>I don't mean the messed-up characters you get when you cat a non-
+>text file (which is easily fixed).  That only affects the current 
+>tty.  The problem I am getting affects all ttys and isn't just a 
+>character problem.  The whole screen layout is stuffed.  Lines are 
+>fragmented and scattered all over the screen, and the cursor is 
+>way over on the right side of the screen.  I can type (and execute)
+>at the cursor, but everything I type appears in two or three 
+>different places around the screen.
+>
+>I have tried everything I can think of (clear, reset, exit and re-
+>logon) and nothing fixes the problem.  Switching ttys doesn't help.  
+>The only way to get a normal CLI screen is to reboot.  The X screen 
+>is not effected (even from the scrambled CLI screen I can startx).
+>
+>Some further data:  The problem occurs as soon as the S3V server 
+>starts -- if I CTRL-ALT-F4 while X is running, I see a scrambled 
+>screen.  The problem does *not* occur when I run the VGA16 server.  
+>Both of those servers work perfectly in every other respect.
+>
+>Any ideas?
+>
+>Cheers,
+>Steven
+>
+>
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>  
+>
 
 
 -
