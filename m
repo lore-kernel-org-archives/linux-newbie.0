@@ -1,71 +1,47 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: PPP in Slackware
-Date: Tue, 1 Apr 2003 19:37:17 +0000
+Subject: Re: adduser
+Date: Tue, 1 Apr 2003 19:40:20 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03040119371701.04891@unix.pa3gcu>
-References: <200304010847.h318lvW02484@philonline.com>
+Message-ID: <03040119402002.04891@unix.pa3gcu>
+References: <3E87FA51.3060100@arrakis.es> <03033119595605.04308@unix.pa3gcu> <3E8943C3.1080201@arrakis.es>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304010847.h318lvW02484@philonline.com>
+In-Reply-To: <3E8943C3.1080201@arrakis.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+To: Andrew Langdon-Davies <ald2@arrakis.es>, linux-newbie <linux-newbie@vger.kernel.org>
 
-On Tuesday 01 April 2003 08:47, Peter wrote:
-> Thanks Ray,
-               ^^^ Ray,? I belive i was the one who said i use multiple 
-sessions with KPPP and i did mention there is also a work alike program under 
-GNOME.
+On Tuesday 01 April 2003 07:46, Andrew Langdon-Davies wrote:
+> pa3gcu wrote:
+> >On Monday 31 March 2003 08:20, Andrew Langdon-Davies wrote:
+> >>Mandrake 9.0
+> >>
+> >>control center>system>users
+> >>"Cannot lock user lib,
+> >>file /etc/ptmp or /etc/gtmp exist".
+> >>
+> >>Yes, both exist.
+> >
+> >As far as i see it, that is the problem, they are presant in /etc.
+> >
+> >Maybe you could be a little more spesific in you explanation.!!
+>
+> They *were* there, yes. I wasn't sure if I could just get rid of them,
+> but in the end I did and everything works all right. According to
+> something I found via Google, they are temporary files 'left over' by
+> the Mandrake Control Centre. The thing is, they get 'left over' again
+> any time I reboot the machine. Presumably, this shouldn't happen. Could
+> it be a sign of something wrong that needs putting right?
 
-> I am aware of kppp as well as of gnome-ppp with both I can connect only to
-> one ISP in SW8.0. If I try to connect to the second ISP I get
+Ah!, ok like i said, this is a common problem with all distro's, i cannot say 
+if Mandrake has any spesific reasons for leaving them there, IMHO *tmp files 
+can normally be deleted without problems however caution is the word.
 
-As Ray has explained quite well i have no futher comments more as to say use 
-KPPP, it will do what you want.
-
+> Cheers,
+> Andrew
 >
-> tail messages:
->
-> Apr  1 10:33:19 philonline pppd[476]: pppd 2.4.1 started by pfheiss, uid
-> 500 Apr  1 10:33:19 philonline pppd[476]: Using interface ppp0
-> Apr  1 10:33:19 philonline pppd[476]: Connect: ppp0 <--> /dev/ttyS0
-> Apr  1 10:33:31 philonline pppd[476]: Remote message: Request Denied
-> Apr  1 10:33:32 philonline pppd[476]: Connection terminated.
-> Apr  1 10:33:32 philonline pppd[476]: Exit
->
-> tail syslog:
->
-> 1 10:33:31 philonline pppd[476]: PAP authentication failed
->
-> If I do a pppsetup for the second ISP I then can connect to this one,
-> however, not anymore to the first one and get the same messages.
->
-> I deleted all the files created with pppsetup in /etc/ppp edited pap- and
-> chap-secrets, the same, no conncetion to either the first or the second
-> ISP, same above messages using either kppp or gnome-ppp
->
-> Where is the dog buried?
->
-> Regards
->
-> Peter
->
->
->
->
->
->
->
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
 
 -- 
 Regards Richard
