@@ -1,48 +1,62 @@
-From: Armen Kaleshian <akaleshian@kriation.com>
-Subject: Re: IMAP Error
-Date: Thu, 12 Feb 2004 10:54:31 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: mouse not writing to device file.....
+Date: Thu, 12 Feb 2004 09:23:55 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040212155431.GA10727@sevoog.kriation.com>
+Message-ID: <5.1.0.14.1.20040212091018.01f91780@celine>
+References: <402AF6D8.4080702@sancharnet.in>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <402AF6D8.4080702@sancharnet.in>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'm sorry. I completely missed it in your previous e-mail.
+At 09:15 AM 2/12/2004 +0530, joy wrote:
+>Hi,
+>
+>I just had this problem after I reinstalled woody on my system. 
+>previously, I had the same problem with my mouse not working on startx
+>but I managed to correct it though it slipped my mind somehow. anyways, my 
+>XF86Config file says my input devices are /dev/psaux and /dev/input/mice.
+>However if I cat either of the file and start clicking away, there is no 
+>change in the file (I tried this on a SW Live distro and it worked there.
+>so if my mouse is not writing to either of the two device files, what 
+>should I do? I also checked the other /dev/input/ mouse files and they say 
+>no device..
 
-Configure is basically complaining that libgdbm can not be found; it has nothing
-to do with IMAP. If you were trying to build something else that was looking for
-the same library, it would probably have the same problem...
+The problem may be with your test rather than your mouse. I tried to 
+duplicate it here -- testing my mouse on a Debian-Sid system -- and could 
+not. That is, my mouse works fine in X, accessed through /dev/psaux ... but 
+if I try either "cat /dev/psaux" or "cat </dev/psaux" and "click away", I 
+too get nothing on the screen (I assume that's what you meant by "there is 
+no change in the file").
 
-You could do one of two things:
+I don't know *why* Debian and Slack seem to act differently with respect to 
+this test, but apparently they do.
 
-1) Check /etc/ld.so.conf for /usr/lib; if it doesn't exist, add it, remove your
-current /etc/ld.so.cache and run /sbin/ldconfig [OS dependent] to rebuild the
-library cache on your system. Run configure again, and that should fix it.
+So ... you might do better by focusing directly on the X problem.
 
-2) This solution is highly discouraged but might make it work... add whatever
-paths exist in /etc/ld.so.conf to an exported LD_LIBRARY_PATH environment
-variable, as well as /usr/lib delimited by a ':'. Run configure after you've
-exported the variable.
+Are there any messages of interest in X's output to STDERR?
 
-Good Luck!
+In X, what exactly does "my mouse not working" mean ... does the mouse 
+pointer simply not show up at all, or does it show up but move erratically 
+in response to mouse movement? Or something else?
 
---Armen
+Do you possibly have gdm (the mouse app for consoles) running? If so, kill 
+it ... it often interferes with access to the mouse by X.
 
-On Thu, Feb 12, 2004 at 04:58:27PM +0200, Ralica wrote:
-: Hi, Armen
-: As I writed before:
-: 
-: > : I have /usr/include/gdbm.h and /usr/lib/libgdbm.a         libgdbm.la
-: > : libgdbm.so        libgdbm.so.2      libgdbm.so.2.0.0
-: > : 
-: 
-: 
+What happens if you eliminate the reference to /dev/input/mouse in (I 
+suppose) /etc/X11/XF86Config-4? Leave just the one to /dev/psaux .
 
------ End forwarded message -----
+Am I correct in assuming that you have a PS/2 mouse? It normally uses the 
+/dev/psaux device ... I'm not sure if /dev/input/mouse also accesses this 
+physical device. If you have a different type of mouse (serial, USB), 
+please tell us what it is. All my earlier suggestions assume you are using 
+a PS/2 mouse.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
