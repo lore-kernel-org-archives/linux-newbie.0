@@ -1,57 +1,82 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Bash will not start in Terminals
-Date: Tue, 15 Mar 2005 06:37:09 -0500
-Message-ID: <4236C8E5.3090703@gelm.net>
-References: <200503150746.j2F7kBBm000590@skyinet.net>
-Reply-To: chuck@gelm.net
+From: SOTL <sotl155360@earthlink.net>
+Subject: Re: SOLVED: Some users locked out of ssh and sftp?
+Date: Tue, 15 Mar 2005 08:49:15 -0500
+Message-ID: <200503150849.16266.sotl155360@earthlink.net>
+References: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-In-Reply-To: <200503150746.j2F7kBBm000590@skyinet.net>
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+In-Reply-To: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Peter <heisspf@skyinet.net>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Donald Duckie <schipperke2000@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-Peter wrote:
-> Hi,
-> 
-> Peter said:
-> 
->>Slackware10 kernel 2.4.26
->>
->>>For me unknown reason suddenly bash will not
->>
->>start in terminals. 
-> 
-> 
-> The reason was that I had made a new slackware installation in which then in 
-> the /etc/passwd under my user name at the end of the line there was no 
-> :/bin/bash as it used to be.
-> 
-> I found it out when I added an arbitrary user in which then again bash was not 
-> started in the terminals. Again on his passwd line there was no :/bin/bash.
-> 
-> So it had nothing to do with me getting too old for Linux. It's a new 
-> "gimmick" in slackware which one has to find out first.
-> 
-> Regards
+On Tuesday 15 March 2005 04:23, Donald Duckie wrote:
+> I got this error message as shown below  . . .
+> How do I change the /root/.ssh/known_hosts file?
+> It seems encrypted . . .
+>
+>
+> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+> @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+>    @
+> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+> IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+> Someone could be eavesdropping on you right now
+> (man-in-the-middle attack)!
+> It is also possible that the RSA host key has just
+> been changed.
+> The fingerprint for the RSA key sent by the remote
+> host is
+> 23:52:d4:e8:6a:75:72:ed:78:cb:31:1f:6a:ff:b4:ea.
+> Please contact your system administrator.
+> Add correct host key in /root/.ssh/known_hosts to get
+> rid of this message.
+> Offending key in /root/.ssh/known_hosts:7
+> RSA host key for 192.168.0.1 has changed and you have
+> requested strict checking.
+> Host key verification failed.
+>
+I posted this to you several days ago.
 
-Hi, Peter:
+The file you are seeking is located in the computer you are loging in F=
+ROM not=20
+the server.
 
-  I use Slackware 10.0 on my laptop and I have added 4 users.
-Each has '/bin/bash' at the end of the entries of /etc/passwd.
+Look at my previous message:
 
-  I see the same in /etc/passwd on my Slackware 10.1 on another box.
+Hi All
 
-I seem to have no such gimmick ???
+I just spent half a day trying to fix this problem on the wrong compute=
+r. In=20
+justification of the time I was not using SSH directly but fish which u=
+ses=20
+SSH so I was not getting the error messages. Once I tried it connecting=
+ using=20
+SSH I fixed the problem in 5 minutes
 
-Regards, Chuck
+In Linux SSH has a computer verification file for computers that have=20
+permission to log in at /home/<user>/.ssh/known_hosts:2
 
+Explanation. I trashed the HD in one box [a test box with no data in it=
+].=20
+After re installation of HD, & configuration I found that I could SSH f=
+rom=20
+the =A0new system but could not SSH from computers which had previously=
+=20
+connected to the box with the new HD and system.=20
 
+I removed contents of above fine saved and was able to immediately log-=
+in.
 
+Hope this helps.
+
+=46rank
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
