@@ -1,85 +1,145 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: problems with ALSA
-Date: Wed, 11 Dec 2002 07:49:59 +0000
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: fetchmail and smtp problem
+Date: Wed, 11 Dec 2002 13:51:16 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212110750.08044.r4mz3z@yahoo.es>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Message-ID: <200212111851.gBBIpGB03369@hartford-hwp.com>
+References: <5.1.0.14.1.20021210115320.020c5d00@celine>
+ <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
+ <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
+ <5.1.0.14.1.20021210115320.020c5d00@celine> <5.1.0.14.1.20021210171852.020d3150@celine>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <5.1.0.14.1.20021210171852.020d3150@celine> (message from Ray
+	Olszewski on Tue, 10 Dec 2002 17:21:10 -0800)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: ray@comarre.com
+Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I ran fetchmail -V to get the version and other info, and there's
+little difference from what I've got with my current (RH7.3)
+system. The only difference is that on my current (RH7.3) system, old
+messages are flushed before retrieval, while on new system (RH8.0)
+--flush off. 
 
-Hi friends...
-  I have a VIA sound card and I've supossed ALSA drivers can give sound... I 
-follow the instructions but when (been root) run modprobe receive an error... 
-just like this:
-- -------------------------------------------------------------
-[root@localhost root]# modprobe snd-via82xx
-/lib/modules/.../snd.o: unresolved symbol __get_free_pages_Rsmp_4784e424
-/lib/modules/.../snd.o: unresolved symbol try_inc_mod_count_Rsmp_e6105b23
-/lib/modules/.../snd.o: unresolved symbol fasync_helper_Rsmp_0f820065
-/lib/modules/.../snd.o: unresolved symbol strstr_Rsmp_1e6d26a8
-/lib/modules/.../snd.o: unresolved symbol isa_dma_bridge_buggy_Rsmp_f82abc1d
-/lib/modules/.../snd.o: unresolved symbol remove_proc_entry_Rsmp_18199406
-/lib/modules/.../snd.o: unresolved symbol __write_lock_failed
-/lib/modules/.../snd.o: unresolved symbol kill_fasync_Rsmp_f866c12a
-/lib/modules/.../snd.o: unresolved symbol _ctype_Rsmp_8d3894f2
-/lib/modules/.../snd.o: unresolved symbol request_module_Rsmp_27e4dc04
-/lib/modules/.../snd.o: unresolved symbol proc_root_Rsmp_c79b35f0
-/lib/modules/.../snd.o: unresolved symbol register_chrdev_Rsmp_10735b95
-/lib/modules/.../snd.o: unresolved symbol create_proc_entry_Rsmp_9cfe096c
-/lib/modules/.../snd.o: unresolved symbol __generic_copy_to_user_Rsmp_d523fdd3
-/lib/modules/.../snd.o: unresolved symbol pci_alloc_consistent_Rsmp_d2217097
-/lib/modules/.../snd.o: unresolved symbol vsnprintf_Rsmp_57a6504e
-/lib/modules/.../snd.o: unresolved symbol unregister_chrdev_Rsmp_c192d491
-/lib/modules/.../snd.o: unresolved symbol dma_spin_lock_Rsmp_375c41f8
-/lib/modules/.../snd.o: unresolved symbol __vmalloc_Rsmp_79995c5b
-/lib/modules/./snd.o: unresolved symbol unregister_sound_special_Rsmp_99c95fa5
-/lib/modules/.../snd.o: unresolved symbol sprintf_Rsmp_1d26aa98
-/lib/modules/.../snd.o: unresolved symbol schedule_timeout_Rsmp_17d59d01
-/lib/modules/.../snd.o: unresolved symbol __read_lock_failed
-/lib/modules/.../snd.o: unresolved symbol __wake_up_Rsmp_127fda83
-/lib/modules/.../snd.o: unresolved symbol register_sound_special_Rsmp_3a650025
-/lib/modules/.../snd.o: unresolved symbol printk_Rsmp_1b7d4074
-/lib/modules/.../snd.o: unresolved symbol kfree_Rsmp_037a0cba
-/lib/modules/.../snd.o: unresolved symbol free_pages_Rsmp_9941ccb8
-/lib/modules/.../snd.o: unresolved symbol vfs_readlink_Rsmp_6502d84f
-/lib/modules/.../snd.o: unresolved symbol vfree_Rsmp_2fd1d81c
-/lib/modules/.../snd.o: unresolved symbol mem_map_Rsmp_ed75ce01
-/lib/modules/.../snd.o: unresolved symbol vfs_follow_link_Rsmp_9b5fde49
-/lib/modules/.../snd.o: unresolved symbol kmalloc_Rsmp_93d4cfe6
-/lib/modules/.../snd.o: unresolved symbol schedule_Rsmp_4292364c
-/lib/modules/.../snd.o: unresolved symbol remove_wait_queue_Rsmp_ca8842ea
-/lib/modules/.../snd.o: unresolved symbol pci_free_consistent_Rsmp_4a863b05
-/lib/modules/./snd.o: unresolved symbol __generic_copy_from_user_Rsmp_116166aa
-/lib/modules/.../snd.o: unresolved symbol system_utsname_Rsmp_b12cdfe7
-/lib/modules/.../snd.o: unresolved symbol add_wait_queue_Rsmp_2fd0ca84
-/lib/modules/.../snd.o: unresolved symbol __pollwait_Rsmp_4c541ea9
-/lib/modules/2.4.18-3/kernel/drivers/sound/snd.o: insmod 
-/lib/modules/2.4.18-3/kernel/drivers/sound/snd.o failed
-/lib/modules/2.4.18-3/kernel/drivers/sound/snd.o: insmod snd-via82xx failed
-[root@localhost root]#
-- -------------------------------------------------------------
-  The path complete is: /lib/modules/2.4.18-3/kernel/drivers/sound/
-  I'm using RedHat 7.3.
+================================================================
 
-  Please help me; thanh you very much
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
+Here is a bounced message. It was rejected by my own mailserver:
 
-iD8DBQE99u4us4dF9gl05swRAnmcAJ9k4FFmunJ+Ut+b2AFyXTEPZ9yurACggzSc
-hU4s0pK6xxGhhT859Qdw4i8=
-=kd/A
------END PGP SIGNATURE-----
+returned message:
 
+Date: Tue, 10 Dec 2002 17:42:16 -0500
+From: Mail Delivery Subsystem <MAILER-DAEMON@hartford-hwp.com>
+To: brownh@hartford-hwp.com
+Subject: Returned mail: see transcript for details
+Auto-Submitted: auto-generated (failure)
+
+   ----- The following addresses had permanent fatal errors -----
+127.0.0.1
+    (reason: 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown)
+    (expanded from: 127.0.0.1)
+
+   ----- Transcript of session follows -----
+... while talking to hartford-hwp.com.:
+>>> DATA
+<<< 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown
+550 5.1.1 127.0.0.1... User unknown
+
+--gBAMgENo000872.1039560136/hartford-hwp.com
+Content-Type: message/delivery-status
+
+Reporting-MTA: dns; hartford-hwp.com
+Arrival-Date: Tue, 10 Dec 2002 13:58:47 -0500
+
+Final-Recipient: RFC822; 127.0.0.1@hartford-hwp.com
+Action: failed
+Status: 5.1.1
+Remote-MTA: DNS; hartford-hwp.com
+Diagnostic-Code: SMTP; 550 5.1.1 <127.0.0.1@hartford-hwp.com>... User unknown
+Last-Attempt-Date: Tue, 10 Dec 2002 17:42:16 -0500
+
+--gBAMgENo000872.1039560136/hartford-hwp.com
+Content-Type: message/rfc822
+
+Return-Path: <brownh>
+Received: (from brownh@localhost)
+	by hartford-hwp.com (8.12.5/8.12.5/Submit) id gBAIwl3h003184;
+	Tue, 10 Dec 2002 13:58:47 -0500
+Date: Tue, 10 Dec 2002 13:58:47 -0500
+Message-Id: <200212101858.gBAIwl3h003184@hartford-hwp.com>
+From: Haines Brown <brownh@hartford-hwp.com>
+To: 127.0.0.1
+Subject: test from lo 10 dec 13:58
+Reply-to: brownh@hartford-hwp.com
+...
+
+---
+
+Something's messed up here with my identity. 127.0.0.1 is not a UID on
+my domain. I don't recall what "test from lo" means unless for some
+reason I mailed the message to the lo IP address, which perhaps
+explains it, but does not hint at what happened to messages mailed to
+myself. 
+
+=========================================================
+
+This is my ~/.fetchmailrc:
+
+  set postmaster "postmaster"
+  poll pop.registeredsite.com 
+  proto POP3
+  user "brownh@hartford-hwp.com" 
+  password "<password>" 
+  limit 100000	
+  flush  
+
+I also tried
+
+  poll pop.registeredsite.com 
+  proto POP3
+  user brownh@hartford-hwp.com 
+  password <password> 
+ 
+but no difference. Mail files very slow to download, but then groups
+of several come in a burst in the midst of slow ones. That's the usual
+problem. 
+
+==========================================================
+
+I did a fetchmail --configdump dump and find that the only diff
+with the dump from my current (RH7i.3) machine is:
+
+9c9
+<     "idfile":"/home/brownh/.fetchids",
+---
+>     "idfile":"/root/.fetchids",
+46c46
+< 		    'localnames':["brownh"],
+---
+> 		    'localnames':["root"],
+child process exited abnormally
+
+I assume (hope!) this diff only because I inadvertantly ran it as
+root. Obviously I'll need to verify that presumption.
+
+==========================================================
+
+I was going to regenerate a ~/.fetchmailrc file automatically with
+fetchmailconf, but find that utility is not included in RH8.0. The man
+fetchmail presumes it is present. The fetchmail web page says it comes
+packaged with fetchmail. Why it is missing, I don't know. In light of
+my damaged rp-pppoe, I worry that the fetchmail installation might be
+flawed. But rpm -V didn't report anything.
+
+I have a much newer fetchmail rpm for a i686 machine that I'm tempted
+to install, but my use of fetchmail takes advantage of a bug in the
+program (flushing messages over a certain size before downloading
+them, which is not supposed to be possible), and I hestitate for that
+reason to change things. But if fetchmailconf is supposed to work
+under RH8.0, I may have to reinstall fetchmail. 
+
+Haines Brown 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
