@@ -1,66 +1,53 @@
-From: Owen Ford <oford@arghblech.com>
-Subject: RE: keyword for rivafb in XF86Confige file
-Date: Wed, 29 Sep 2004 05:37:00 -0500
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: Re: unusual uniq results
+Date: Wed, 29 Sep 2004 07:07:08 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1096454220.27898.31.camel@spider.hotmonkeyporn.com>
-References: <4EE0CBA31942E547B99B3D4BFAB348111081AE@mail.esn.co.in>
-	 <1096454123.27898.29.camel@spider.hotmonkeyporn.com>
+Message-ID: <fc.004c4e00006491a0004c4e0000647133.6491aa@palmertrinity.org>
+References: <fc.004c4e0000647133004c4e0000647133.647263@palmertrinity.org>
+ <a5bcf5da04092809114ecbb13d@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-fveTnV4mOEPR/JxhDQbI"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1096454123.27898.29.camel@spider.hotmonkeyporn.com>
+In-Reply-To: <a5bcf5da04092809114ecbb13d@mail.gmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+I'm confused. To me the > has always meant to take what is to the left of
+the sign and redirect its output to whatever is to the right. In my case
+this would mean taking the output of uniq dup_num and redirecting it. Can
+you set me straight?
+-- Bill
 
---=-fveTnV4mOEPR/JxhDQbI
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Stone <xstonedogx@gmail.com> writes:
+>The redirection takes place before your command.  So basically what
+>you told the system to do was:
+>
+>1.  Create the file dup_num.  If the file exists overwrite it.
+>2.  Redirect stdout of "uniq dup_num" into dup_num.
+>
+>Since you'd already overwritten the data in dup_num, there was nothing
+>for uniq to process.
+>
+>On Tue, 28 Sep 2004 11:09:12 -0400, William Stanard
+><wstanard@palmertrinity.org> wrote:
+>> In doing a demo before a class (Linux Red-hat 2.4.18-14), I used the
+>uniq
+>> command on a file (dup_nums) that consisted of twelve lines, each line
+>> containing a number, from one to 9. I repeated the numbers, 6, 8, and 9.
+>> The std output showed the expected list of numbers, all duplicates
+>> removed. At a student's suggestion, I ran uniq again, but this time
+>> directed the output to the file itself....
+>> 
+>> uniq dup_num > dup_num
 
-On Wed, 2004-09-29 at 05:35, Owen Ford wrote:
-> On Wed, 2004-09-29 at 05:12, Mukund JB. wrote:
-> > > IIRC rivafb actually screws up the nvidia driver.  I've never gotten
-> > it
-> > > working with *any* nvidia card ever :)
-> > It is working for me.=20
-> > I have edited the Driver field in the device section as follows:-
-> > Driver "fbdev"=20
-> >=20
-> > After then the X server is using rivafb as I could see the debug
-> > messages.
-> > But it is not invoked when I switch between app ( ATL+TAB) or I open ne=
-w
-> > app.
-> > I don't know, why?
-> > Is the software take care of it, rather than the fb driver?
-> > Suggest, if u have any idea.
->=20
-> I recommend using the vesafb.  As I said before I've never got rivafb
-> working so YMMV.
->=20
-> I frequently see people on the gentoo forums having issues with rivafb
-> and the binary nvidia driver.  I am 95% certain that vesafb works with
-> the nv driver or the binary nvidia driver.
->=20
-> Just search for rivafb on forums.gentoo.org.  Many peaple have had
-> issues with it and most of the information you will find there isn't
-> completely specific to the gentoo distro.
->=20
-> Good luck :)
 
---=-fveTnV4mOEPR/JxhDQbI
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
+Bill Stanard
+Academic Computing
+Palmer Trinity School
+305.969.4239
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
 
-iD8DBQBBWpBM4bjUYpnk5/QRAk3LAJ9zGDDTSOg0Gjb1FpCK5gw08fl1oACaA2C1
-1XRGn7NlGzd9sz+HSkrNZ78=
-=nf2s
------END PGP SIGNATURE-----
-
---=-fveTnV4mOEPR/JxhDQbI--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
