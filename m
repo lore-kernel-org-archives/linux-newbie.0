@@ -1,24 +1,20 @@
-From: "Tom Beer" <mailings@analogon.com>
-Subject: Re: make error
-Date: Wed, 17 Apr 2002 08:40:56 +0200
+From: "Jerry T" <linuxl1@hotmail.com>
+Subject: firewalls on Linux 2.4.X
+Date: Wed, 17 Apr 2002 15:31:22 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <010b01c1e5da$d4d2caa0$0901a8c0@system>
-References: <20020416.212315.134669216.9.lawson_whitney@juno.com>
+Message-ID: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: lawson_whitney@juno.com, pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Thanks for your replies.
+What firewall is recommended on kernels 2.4.X? Any documentation that I read 
+about ipchains refers to version 2.2.X. What about iptables?
 
-I contacted the author of the prog and he 
-will commit a new / updated version that
-should work :-)
-
-Greets Tom
+_________________________________________________________________
+Chat with friends online, try MSN Messenger: http://messenger.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
