@@ -1,32 +1,22 @@
-From: Kilaru Sambaiah <sambaiah@thiru.vetri.com>
-Subject: Re: gcc
-Date: Wed, 26 Jun 2002 13:37:16 +0530
+From: azie <azie@kawan.net> (by way of azie <azie@kawan.net>)
+Subject: fonts
+Date: Wed, 26 Jun 2002 16:59:20 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206260812.NAA13140@thiru.vetri.com>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D15B5@ccdc-exchg.careercommunity.com>
-Reply-To: usamki01@thiru.vetri.com
+Message-ID: <200206261659.20929.azie@kawan.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D15B5@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 26 June 2002 01:03 pm, Sridhar J (june end) wrote:
-> Hello
->
-> When I compile a C program using gcc, I get an a.out file. But when I type
-> a.out, the error is "No such command"
->
-> How do I execute the file?
->
-> Regards
-> Sridhar
-> -
+hello there,
 
-pwd is not in your path. Add it. otherwise type ./a.out
-sam
+I'm just wondering how to install fonts for linux. Can we use ttf fonts? How
+do we make sure that all applications can use the installed fonts?
+
+Thank in advance for those who can help me.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
