@@ -1,8 +1,8 @@
 From: Abhijit Vijay <abhijit_v@yahoo.com>
 Subject: Unencrypted data over network?
-Date: Fri, 7 Feb 2003 08:20:41 -0800 (PST)
+Date: Fri, 7 Feb 2003 08:20:51 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030207162041.51458.qmail@web13401.mail.yahoo.com>
+Message-ID: <20030207162051.25337.qmail@web13405.mail.yahoo.com>
 References: <03020711533101.22365@unix.pa3gcu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
