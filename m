@@ -1,52 +1,49 @@
-From: 1stFlight <1stflight@ameritech.net>
-Subject: Re: Oversized kernel
-Date: Wed, 12 Mar 2003 06:04:45 -0500
+From: Amin <raihan@citech-bd.com>
+Subject: Re: Hiyas
+Date: Wed, 12 Mar 2003 17:42:49 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E6F144D.3090501@ameritech.net>
-References: <720FB032F37C0D45A11085D881B03368A2B496@MBXSRV24.stu.nus.edu.sg>
+Message-ID: <20030312114249.GA1112@localhost.localdomain>
+References: <006801c1e757$b0a13350$0301a8c0@netlyncs.com> <3E6EDD42.A2C9BC08@dsl-only.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <720FB032F37C0D45A11085D881B03368A2B496@MBXSRV24.stu.nus.edu.sg>
+Content-Disposition: inline
+In-Reply-To: <3E6EDD42.A2C9BC08@dsl-only.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Eng Se-Hsieng <g0202512@nus.edu.sg>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Are you using "make bzImage:" when you compile? It makes for a smaller 
-kernel
+On Tue, Mar 11, 2003 at 11:09:54PM -0800, pshook wrote:
 
-Eng Se-Hsieng wrote:
+[...]
 
->Dear all,
->
->I've just compiled a new kernel and the vmlinuz is over 2Mb in size.
->Since mkbootdisk returns : Not enough space and I don't have a CD writer
->on my system, I'm unable to create a boot disk and am a little wary
->about not having one.
->
->How does one know what are the minimum options to choose in order to
->reduce the size of the vmlinuz? My system is a Toshiba Satellite 4030CDT
->(Celeron 266 Mhz)
->
->Thank you.
->
->Regards,
->Se-Hsieng
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
->
->  
->
+> Is there a way to set the make xconfig back to a default
+> or what the original kernel on my system is? I can still
+> boot with the original
 
--- 
-  It's not that life is so short, it's that death is so long... 
-				
+[...]
 
+Try looking in /usr/src/linux-2.4/configs (I'm assuming
+you're using the 2.4-kernel series).  This directory
+contains lots of configuration files (these are the files
+that xconfig uses to store all the kernel module and
+built-in parts information).  These config files are
+defaults that were lovingly crafted by the folks at Red Hat,
+and include those modules that most people are most likely
+to need.  You probably need one of these.
 
+You're very lucky Red Hat provides great documentation at
+their website.  You need to read it!  Go to
+http://www.redhat.com/docs/manuals/linux/ and get the
+``Customization Guide'' for your version.  In that document,
+look for the appendix where they describe how to build a
+custom kernel, and read it through.  Note that I've got
+RH8.0, and can only speak for the ``Customization Guide''
+for that version.  However, I have no reason to believe
+it'll be that different from those of previous versions.
+
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
