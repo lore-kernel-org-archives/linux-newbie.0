@@ -1,42 +1,62 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: shrunken console on laptop problem
-Date: Wed, 26 May 2004 22:56:37 -0500 (CDT)
+From: rob <rob.rice@fuse.net>
+Subject: Re: 3Com NIC Driver?
+Date: Thu, 27 May 2004 20:36:58 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0405262241300.28951@debian-emach>
+Message-ID: <40B689AA.3070908@fuse.net>
+References: <20040526143311.GA790@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040526143311.GA790@lnx2.w8mch.ampr.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I'm having some display problems on a couple of laptops: one has Gentoo,
-the other Debian Sid.  The difference in the nature of the problem between
-the two laptops is that one has an Xwindows display that looks fine
-(Gentoo), while I'm still working on getting X going (hoping to set up
-Xfbdev) on the other.  But the aspect of the problem the two share
-concerns when the computers are in console mode - like when they're
-booting.  Until the Gentoo machine gets to the login window for X, the
-console part of the screen where text is showing as boot messages scroll
-by occupies only a small portion that the center of the screen, rather
-than taking up the whole screen.  It's not as though anything is cut off:
-I see all the text there that I think I should be seeing.  But it's as
-though the console has been shrunken down to occupy a small portion at the
-center of the screen, with just blank black surrounding it.  This display
-is meant to function at 1024x768, btw.  The other laptop does the exact
-same thing: there is a console in the center of the screen with just blank
-black surrounding it.  As I said, I haven't got any sort of X going on
-this machine yet, so I'm forced to use this small portion of the screen as
-a console when I'm trying to do things at the command line or using mc or
-whatever other console apps I run.  This laptop's screen does 800x600,
-btw.
 
-Can anyone onlist inform me as to the nature of the problem I'm
-confronting?  Just as well, can anyone offer suggestions about how I might
-make the console take up the entire screen, rather than just a portion of
-it?
+are you sure that you have the ports,irq,dma,mem settings right ?
+have you tryed isapnpdump yet to get the settings for this card?
+If you have windblows on this computer you could check the settings  
+with windblows device manager
+are you useing insmod or modprobe ? (try modprobe)
 
-Thanks, James
+Hal MacArgle wrote:
+
+>Greetings: I made the, probable, mistake of buying a 3Com 3C900B-TPC
+>PCI BNC NIC discovering that the module automatically installed by
+>Slackware 9.0, 2.4.20 - 3c59x.o - does not ping.. Checking the Web I
+>find that 3c59x.o is for the 3C900 (no suffix) models and that I may
+>need 3c90x.o instead..
+>
+>Downloaded the source for that but it wont compile under Slack9.0..
+>An attempt to -f (force) using a pre-compiled version didn't work
+>either..
+>
+>I may be stuck but was wondering if someone may have run into this
+>and solved the problem, and/or has a module compiled for 2.4.20..
+>
+>Rather than go into further details of what I did, suffice it to say
+>that I swapped a RealTec NIC into the same PCI slot, and it worked
+>perfectly with the ifconfig and route add entries, so I must presume
+>the cables, etc are OK.. dmesg listed the 3Com NIC, with the same
+>IRQ# and Port# that were assigned to the RealTec NIC..
+>
+>Appreciate and TIA.
+>
+>    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+>           
+>	     Anyone can pile complexity upon complexity;
+>                  only a genius can truly simplify..
+>.
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>  
+>
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
