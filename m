@@ -1,53 +1,51 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: I killed user's x server
-Date: Tue, 26 Nov 2002 09:38:15 -0500
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: HD Partitiona
+Date: Tue, 26 Nov 2002 15:16:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211261438.gAQEcFb11979@hartford-hwp.com>
-References: <200211202236.gAKMaIK05653@hartford-hwp.com> <02112408515605.00286@unix.pa3gcu> <200211251840.gAPIee103296@hartford-hwp.com> <02112521502707.00286@unix.pa3gcu>
+Message-ID: <200211261516.40320.sotl155360@earthlink.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <02112521502707.00286@unix.pa3gcu> (message from pa3gcu on Mon,
-	25 Nov 2002 21:50:27 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Richard,
+Hi All:
 
-My header in this reply looks clean, but I apologize if it does not go
-out that way. 
+I am sure you recall my triad against RH 8.0, Suse 8.2, and Mandrake 8.0 so 
+for info I finally got RH 8.0 on my laptop computer. I even managed to get 
+the Hard Drive partition the way I wanted as follows:
 
-> > I concluded from this that the boot process sets a value somewhere that
-> > prevents X from starting. Perhaps an authentification problem, but the
-> > log above sure offers no clue.
-> 
-> How's the hostname there,? 
+hda1    C:/      NTFS    10 GB   Containing MS Windows XP
+hda2    E:/      fat32     10 GB   Label = Data
+hda3    /boot  ext2      100 MB   Linux Boot
+hda4    extended
+hda5    /         ext2        10 GB
+hda6    swap                  1 GB
+hda7    /home    ext2     5 GB
 
-No, hostname was the first thing I checked. It's the same
-(hartford-hwp.com) for both root and user.
+and with both operation systems installed and functioning.
 
-> and do you have a DNS server active running before 
-> X starts up.?
+Then I configures Usermount with an icon on the desk top and attempted to 
+configure fstab so that hda2 was readable from RH 8.0.
 
-Nope
+Setting the file type for hda2 to fat32 in fstab I get a error message that 
+that file type is not supported by Linux.
 
-> I remember once (now i come to think of it) having a simalr problem, it was a 
-> bogus hostname, i placed it back to localhost and all was well.
+Changing the file type for hda2 to vfat I can read hda2 from linux but can not 
+adjust the partition above 2 GB with Partition Magic. This latter seems 
+strange to me as I have another dual boot with a vfat partition of 10 GB but 
+I must admit that that box uses 2 HD with the vfat partition encompassing one 
+(1) entire HD.
 
-I've suffered a lot from hostnames, but in this case, it was one of
-the things I didn't touch.
+Would appreciate any suggestions or comments on how I can increase hda2 to 10 
+GB and have this read by the linux side.
 
-I just installed Ximian, primarily to assess its functionality, but
-also because it might shake something loose with my problem. Not only
-didn't it do that, but despite all the signs of a successful install,
-I don't seem to have it. The only change I can see is that a Mozilla
-icon showed up in my panel. Otherwise there's no change in my desktop
-or menuing. I used startx to startx, but was not told to do anything
-else.  The whereis points only to /etc/ximian/ that holds a cookie.
+Thanks
 
-Haines 
+Frank 
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
