@@ -1,27 +1,31 @@
-From: "Facundo Suarez" <facundo.suarez@ensi.com.ar>
-Subject: OpenGL
-Date: Sat, 3 Apr 2004 20:16:58 -0300
+From: Rei Shinozuka <shino@panix.com>
+Subject: deleting a bad kernel
+Date: Sat, 3 Apr 2004 19:25:07 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <003701c419d1$c3ed8900$680410ac@pcinstru1>
+Message-ID: <20040404002506.GA606@panix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Newbie Linux Users <linux-newbie@vger.kernel.org>
 
-Hi all.
+i downloaded a new new kernel using Up2date (which was much MUCH
+better after finding suitable mirrors).  it downloaded without a hitch,
+but when it started, it deleted by nVideo Corporation/nForce2 ethernet
+controller (it asked me and i stupidly assented).  i can't seem to get it
+back, especially without any net access any longer.  so i booted to the
+old kernel which is fine.
 
- I have just bought my new nvidia fx 5200, 128 MB ddr 8x agp video card. And
-i have downloaded the drivers form nvidia home page. I installed it, an
-configured as the README says i have to do. But, running on gentoo 1.4, kde
-3.2.1, kernel 2.4.25, i cannot run my opengl screensaver. I thougth that
-with this card, it has to work, but, sometimes even hangs the system, other,
-it restarts my XFree86.
+i'd like to try loading the new kernel again, but i think i need to 
+delete it completely first.  how do i go about doing so?  thanks,
 
- Can you help me ?
+-rei
 
- Thanks.
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
