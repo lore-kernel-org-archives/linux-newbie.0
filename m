@@ -1,124 +1,57 @@
-From: "Amin" <raihan@citech-bd.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Network card and kernel module problems
-Date: Wed, 5 Feb 2003 10:47:33 +0600
+Date: Tue, 04 Feb 2003 22:21:09 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000001c2ccd7$bcfb0e80$eb6510ac@citechbd.com>
+Message-ID: <5.1.0.14.1.20030204220849.0215bd90@celine>
 References: <5.1.0.14.1.20030203091129.02140130@celine>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0032_01C2CD03.FCEECE60"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000001c2ccd7$bcfb0e80$eb6510ac@citechbd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0032_01C2CD03.FCEECE60
-Content-Type: text/plain;
-	charset="iso-8859-1"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-Hi people,
+At 10:47 AM 2/5/03 +0600, Amin wrote:
+>Hi people,
+>
+>First --- sorry about not including specific error messages earlier.  The
+>attached file is a (snipped) list of bootup messages, and contains the
+>messages I'm concerned with.
 
-First --- sorry about not including specific error messages earlier.  The
-attached file is a (snipped) list of bootup messages, and contains the
-messages I'm concerned with.
+All the modprobe messages your include in the edited log relate to the 
+"input.o" module. To be honest, I'd never even realized that module existed 
+in Linux. After reading its documentation (in 
+/usr/src/linux/Documentation/input/), I think it is just a prototype module 
+provided as an example for people who want to learn how to write modules. 
+Its described purpose seems unrelated to typical hardware configurations in 
+any case. Perhaps you can tell us why you are loading this module (or if it 
+is loaded as a dependency, what other module is causing modprobe to load it)?
 
-I've decided to reinstall, perhaps try a different distro, and see if that
-will do the trick.  And thanks
-to Lawson for pointing out the EXTRAVERSION point.  Just want to make sure
-about something --- you're talking about
-/usr/src/linux-2.4.18-14/Makefile, right?
+The other messages you quote are from ifup, and they say that it cannot 
+configure eth0. These messages viewed alone are not terribly informative, 
+and I would suggest again that you follow the troubleshooting procedure I 
+outlined in my prior message ... boot/init logs are neither the only or, 
+often, the best way to investigate problems. These message taken alone do 
+not tell us if (a) the kernel lacks support for DHCP address requests, (b) 
+the DHCP request works but you get no response from whatever eth0 is 
+connected to, or even, just conceivably, (c) the eth0 interface is not created.
 
-Yawar Amin
+>I've decided to reinstall, perhaps try a different distro, and see if that
+>will do the trick.  And thanks
+>to Lawson for pointing out the EXTRAVERSION point.  Just want to make sure
+>about something --- you're talking about
+>/usr/src/linux-2.4.18-14/Makefile, right?
 
-P.S.  Is it a good sign or a bad sign that I've got my kernel version
-memorized?
+The EXTRAVERSION shell variable is in that file, yes. For the kernel you 
+are describing, the "-14" at the end is the EXTRAVERSION part of the name.
 
 
-------=_NextPart_000_0032_01C2CD03.FCEECE60
-Content-Type: text/plain;
-	name="startup_errors.txt"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="startup_errors.txt"
-
-...=0A=
-=0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-try_inc_mod_count_Re6105b23 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-jiffies_R0da02d67 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-del_timer_Rfc62f16d =0A=
-Feb  4 15:41:26 localhost netfs: Mounting other filesystems:  succeeded=0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-sprintf_R1d26aa98 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-printk_R1b7d4074 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o failed =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod keybdev =
-failed =0A=
-Feb  4 15:40:45 localhost rc.sysinit: Initializing USB keyboard:  failed =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o:  =0A=
-Feb  4 15:40:45 localhost modprobe: unresolved symbol =
-mod_timer_R1f13d309 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-unregister_chrdev_Rc192d491 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-register_chrdev_R44b36f42 =0A=
-Feb  4 15:41:27 localhost autofs: automount startup succeeded=0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-request_module_R27e4dc04 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-try_inc_mod_count_Re6105b23 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-jiffies_R0da02d67 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-del_timer_Rfc62f16d =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-sprintf_R1d26aa98 =0A=
-Feb  4 15:41:27 localhost sshd: Starting sshd:=0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
-printk_R1b7d4074 =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o failed =0A=
-Feb  4 15:40:45 localhost modprobe: =
-/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod mousedev =
-failed =0A=
-=0A=
-... [snip]=0A=
-=0A=
-Feb  4 15:41:15 localhost network: Setting network parameters:  =
-succeeded =0A=
-Feb  4 15:41:16 localhost network: Bringing up loopback interface:  =
-succeeded =0A=
-Feb  4 15:41:17 localhost ifup:  =0A=
-Feb  4 15:41:17 localhost ifup: Determining IP information for eth0... =0A=
-Feb  4 15:41:22 localhost ifup:  failed; no link present.  Check cable? =0A=
-Feb  4 15:41:22 localhost network: Bringing up interface eth0:  failed =0A=
-=0A=
-...=0A=
-
-------=_NextPart_000_0032_01C2CD03.FCEECE60--
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
