@@ -1,51 +1,44 @@
-From: Peter <peterg@fishinternet.com.au>
-Subject: Re: Setting quota on user's home folders?
-Date: Fri, 18 Mar 2005 06:21:25 +1100
-Message-ID: <1111087285.25539.9.camel@localhost.localdomain>
-References: <20050316021308.55227.qmail@web53610.mail.yahoo.com>
-	 <5.1.0.14.1.20050316155238.01f4fb98@celine>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: RE: Setting quota on user's home folders?
+Date: Thu, 17 Mar 2005 15:00:42 -0500
+Message-ID: <007401c52b2c$0023aaa0$4f0aa8c0@lanadmin>
+References: <1111087285.25539.9.camel@localhost.localdomain>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <5.1.0.14.1.20050316155238.01f4fb98@celine>
+In-Reply-To: <1111087285.25539.9.camel@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
+To: 'Peter' <peterg@fishinternet.com.au>, 'Ray Olszewski' <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Wed, 2005-03-16 at 16:31 -0800, Ray Olszewski wrote:
-> 
-> For quotas to work, they have to be enabled in your kernel. Stock
-> kernels 
-> usually do not include quota capability, so this means a local
-> compile.
 
-I noticed, on running ` locate quota` , that these lines appear in my
+Sorry about not including system info: it's RedHat 9 ATM (to upgrade to RH
+Enterprise 3).
+
+>I noticed, on running ` locate quota` , that these lines appear in my
 output
 
-/lib/modules/2.6.8.1-4-386/kernel/fs/quota_v1.ko
-/lib/modules/2.6.8.1-4-386/kernel/fs/quota_v2.ko
+I ran this too, and it came back with this:
 
-I'm thinking this means quotas are supported by modules in this kernel,
-and thus a `modprobe quota* ` or similar would suffice, rather than a
-kernel recompile.
+(truncated)
+ /etc/warnquota.conf
+/usr/bin/quota
+/usr/sbin/edquota
+/usr/sbin/quotastats
+/usr/sbin/repquota
+/usr/sbin/rpc.rquotad
+/usr/sbin/setquota
+/usr/sbin/warnquota
+/sbin/convertquota
+/sbin/quotacheck
+/sbin/quotaoff
+/sbin/quotaon
 
-Is this correct? 
+So, I'm wondering if it's already in my system.
 
-Just thinking this could save Eve and others a *lot* of time...
-
-In Debian, I assume after using the modprobe command the module name
-could simply be put in /etc/modules to make loading persistent across
-reboots. ( Other distros like the Redhat variants would do this
-differently, I suppose)
-
-apt-get install quota
-
-would then install what's necessary for the quota command...
-
-
-
-Peter
+- Eve
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
