@@ -1,8 +1,8 @@
 From: "Oana Tudor" <oana_tudor@hotmail.com>
 Subject: Re: ascii code
-Date: Tue, 24 Sep 2002 21:31:24 +0300
+Date: Tue, 24 Sep 2002 21:34:58 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F92IskOuN9JVxwNVBw00000365a@hotmail.com>
+Message-ID: <F50JKVApwOLZCHusMjQ00000530@hotmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,21 +10,9 @@ Content-Type: text/plain; format=flowed; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 To: linux-newbie@vger.kernel.org
 
-Hi Michael,
-
-I have 2 machines, a Windows one (from where I am writting right now, and=20
-where I can use these characters) and a Linux machine (that I use to learn =
-
-Linux and C++; in a near future when I  will feel comfortable enought with =
-
-it, I will probably switch entirely to Linux). In Windows, almost anywhere =
-
-you can produce these characters if you use ALT + the code. I want to be=20
-able to do that in Linux, too, if not everywhere, at least in the editors=20
-(like the word from xWindows, or vi, or emacs), or in the email programs...=
-=20
-or directly at the prompt..
-
+Sorry, I forgot to mention the purpose: I need to write my french and=20
+spanish assignments using the accents. I also write emails in these=20
+languages, so I need them a lot!
 thanks,
 -oana
 
@@ -61,8 +49,10 @@ ke them=20
 >Please read the FAQ at http://www.linux-learn.org/faqs
 
 
+
+
 _________________________________________________________________
-Send and receive Hotmail on your mobile device: http://mobile.msn.com
+Chat with friends online, try MSN Messenger: http://messenger.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
