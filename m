@@ -1,32 +1,38 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Suse / Kmail setup
-Date: Mon, 26 Apr 2004 08:28:52 +0800
+From: Amin <amin@siriusbb.com>
+Subject: Re: mounting vfat partitions
+Date: Mon, 26 Apr 2004 09:26:10 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040426002852.F2A1530205@heisspf>
-References: <3.0.16.20040424211211.2f17be24@mail1.abac.com>
+Message-ID: <408C8152.7000802@siriusbb.com>
+References: <Pine.LNX.4.44.0404251822380.11721-100000@legolas.personal.engin.umich.edu>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 24 Apr 2004 18:38:51 MST."
-             <3.0.16.20040424211211.2f17be24@mail1.abac.com> 
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: David Tiefenbrunn <davidtief@abac.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44.0404251822380.11721-100000@legolas.personal.engin.umich.edu>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Cc: linux-newbie@vger.kernel.org
 
+Karthik Vishwanath wrote:
 
-davidtief@abac.com said:
-> The dumbest thing is, that before I did the re install, I had it working.
-> Since I had little trouble getting it to work the first time, I  wasn't
-> worried about doing it again, but I must have missed something.
+> /dev/hdb1	/dosd	vfat	defaults
+> /dev/hda1	/dosc	vfat	defaults
+> 
+> This mounts the partitions correctly. However, I am able to access these
+> mount points only as root, and not as a user.  I would prefer that these
+> vfat partitions be writable by root alone, but be readble for all users on
+> the machine. How can I fix that?
+> 
+> Thanks,
+> 
+> -K
 
-I have the same problem and gave up on kmail. Now after your mail I tried 
-again to no avail. My choice is Sylpheed after exmh.
+/dev/hdb1	/dosd	vfat	defaults,owner,user
+/dev/hda1	/dosc	vfat	defaults,owner,user
 
+HTH
 
--- 
-Peter
-
+Yawar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
