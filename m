@@ -1,90 +1,52 @@
-From: =?iso-8859-1?q?sumit=20kalra?= <i_am_sumit_kalra@yahoo.com>
-Subject: Re: alsamixer Doesn't save volume settings
-Date: Mon, 10 May 2004 05:44:21 +0100 (BST)
+From: "Sudhir Barwal" <sudhir@guj.nic.in>
+Subject: Limiting download with Squid
+Date: Tue, 11 May 2004 15:16:01 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040510044421.43902.qmail@web61005.mail.yahoo.com>
-References: <5.1.0.14.1.20040507062943.01f20198@celine>
+Message-ID: <00db01c4373c$ca46a790$0532a8c0@sudhir>
+Reply-To: "Sudhir Barwal" <sudhir@guj.nic.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040507062943.01f20198@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi Ray / Theo. Sean Schulze,
+Hi everybody,
+I have the following config :
+Linux  : RedHat 8.0
+Squid : 2.5STABLE1
+The above system is working as a proxy server for all the local LAN clients.
+The problem :
 
-I finally managed to get alsamixer to retain the
-volume settings across reboots. The problem was that
-"alsactl restore" was not being run at boot time. My
-initial thought was that this script doesn't need to
-be re-run on every boot - but I guess it does.
+My ISP is allowing the total download say 1GB per month. If the download is
+exceded that limit they are charging extra money for that.
 
-Thanks for your help,
-Regards,
-Sumit Kalra
+My Question :
 
+Is there a way so that I can restrict the client to say
+10 Mb for 1 group
+50 Mb for another group
+and so on..
+I want this restriction on IP basis( e.g. say for 192.168.50.1 to
+192.168.50.50 should be allowed to download 10Mb and after that they should
+get the message ...something like ..."your download limit is over for the
+current month" or simply they should not be allowed to download anything
+beyond that limit, the same is true for other clients also and for
+192.168.50.55 to 192.168.50.90 permissible limit should be 50Mb)
 
- --- Ray Olszewski <ray@comarre.com> wrote: > At 10:27
-AM 5/7/2004 +0100, sumit kalra wrote:
-> [...]
-> >The script /etc/init.d/alsasound is present but
-> >/etc/rc6.d/ and /etc/rc3.d/ directories don't have
-> >symlinks to it. I created these links by hand, but
-> it
-> >didn't help.
-> >[...]
-> >Interestingly, after rebooting if I run "alsactl
-> >restore" before runnign "alsamixer", my previous
-> >settings are restored. This means that the file
-> >/etc/asound.state is correctly storing the settings
-> >across reboots but alsamixer is somehow not
-> re-reading
-> >it after rebooting.
-> 
-> alsamixer is not supposed to re-read it. The
-> alsasound init script runs 
-> "alsactl restore" to handle this ... and includes
-> what looks like decent 
-> error handling, so it should log an error if it
-> itself runs but cannot for 
-> some reason run alsactl.  So make sure it is running
-> properly on init.
-> 
-> >How do we get around this?
-> 
-> Is 3 *really* the default runlevel on RH systems?
-> (Debian uses 2.)
-> 
-> Did you install alsactl as /usr/sbin/alsactl (that
-> is where the alsasound 
-> script expects to find it)?
-> 
-> Is the pseudo-directory /proc/asound present on your
-> system (dieing 
-> silently if it is not is the one error-reporting
-> weakness I can see in 
-> alsasound)?
-> 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-http://www.linux-learn.org/faqs 
+I have looked into the "Delay pool" option of Squid but that will be
+applicable to all the users.(Since there are some executives for whom I have
+to allow unlimited download, I know that they are not downloading much, and
+just surfing the net for 1-2 hours etc.)
 
+Please guide me to the right pointers.
 
-	
-	
-		
-____________________________________________________________
-Yahoo! Messenger - Communicate instantly..."Ping" 
-your friends today! Download Messenger Now 
-http://uk.messenger.yahoo.com/download/index.html
+Sudhir Barwal
+------------------------------------
+Network Administrator
+sudhir@guj.nic.in
+------------------------------------
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
