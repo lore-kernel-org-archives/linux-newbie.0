@@ -1,70 +1,42 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: What distributions support dual processors 'out of the box' ?
-Date: Mon, 25 Oct 2004 23:59:55 -0400
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: framebuffer console problems: not enough video RAM?
+Date: Wed, 27 Oct 2004 05:59:12 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <417DCBBB.5030603@gelm.net>
-References: <15DCB059E3814E448A1CFFF04F78F7A703917297@s99mail08>
-Reply-To: chuck@gelm.net
+Message-ID: <417F9BA0.70807@bcgreen.com>
+References: <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041023135516.01fefc38@celine> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <Pine.LNX.4.58.0410221108580.1287@debian-emach> <Pine.LNX.4.58.0410221351360.1287@debian-emach> <417968FE.3070405@verizon.net> <Pine.LNX.4.58.0410221604590.1287@debian-emach> <41798CB8.4010701@verizon.net> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <5.1.0.14.1.20041023135516.01fefc38@celine> <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041024085546.020676a8@celine> <Pine.LNX.4.58.0410241436410.1287@debian-emach>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <15DCB059E3814E448A1CFFF04F78F7A703917297@s99mail08>
+In-Reply-To: <Pine.LNX.4.58.0410241436410.1287@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-Little, Chris wrote:
+For knoppix, try booting with 'vga=normal'  That avoids booting
+with framebuffer text. (there are other vga=settings, but I haven't
+bothered to learn them).
 
->I don't know what the warning is, but a recompile and install of your kernel
->with SMP enabled should work fine.  The warning sounds as if the kernel that
->you build may not necessarily work or advisably be used on other non-pro
->systems (ie. III, IV, etc)
->
->-----Original Message-----
->From: chuck gelm [mailto:chuck@gelm.net]
->Sent: Monday, October 25, 2004 12:44 PM
->To: linux-newbie@vger.kernel.org
->Subject: What distributions support dual processors 'out of the box' ?
->
->
->Howdy:
->
-> I am trying to use an old dual pentium-pro motherboard as a file
->server for a local government supported student project.
->
-> The system has dual 200 MHz Pentium-Pro processors.
->I am currently attempting to enable SMP in a Slackware v9.1 distribution,
->but I am having some difficulty.  Instead, I am hoping to find
->a distribution with SMP already enabled.  Are there any?
->
-> Please, may I have some explanation or discussion about the warning
->from 'make [old]config about the PentiumPro and SMP:
->
->'Similarly, multiprocessor kernels for the "PPro" architecture may not
->work on all Pentium based boards.'
->
-> IOW, will my attempt to enable SMP with this PPro system
->probably fail or be very difficult?
->
->Regards, Chuck
->  
->
-Howdy, Chris and Owen:
+The VGA  text code for knoppix seems to go for the 'best possible' mode
+which can overwhelm the monitor.
 
- I have twice re-compiled the kernel and yet
-cat /proc/cpuinfo
-displays only 'cpu0'.  :-(
-
-(edit .config to enable SMP, make bzImage modules modules_install install)
-
- Elsewhere, someone suggested that I look to see if a
-VRM (voltage regulator module) is installed on the motherboard.
-I'll be returning to configure the system on Wednesday and I
-will check to see if there seems to be any missing items.
-
-Thanks, chuck
+James Miller wrote:
+> Hello Ray:
+>
+> No.  It's always been just a textmode console up until gdm kicks in--no
+> cute little penguins.  I'll reiterate that when I tried booting this
+> system with a Knoppix CD, I couldn't get any text mode output (black
+> screen with "vga mode not support(ed)") with all kinds of nice colors,
+> fine resolution and little penguin like I usually get when booting with a
+> Knoppix CD.  On the kernel: I could provide the config, if that would
+> help.  Here's a selection from it that may be relevant:
 
 
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+    Powerful committed communication. Transformation touching
+      the jewel within each person and bringing it to light.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
