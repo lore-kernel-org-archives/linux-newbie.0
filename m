@@ -1,113 +1,63 @@
-From: Silambu Chelvan <silambu_mdu@yahoo.com>
+From: Markus Klotzbuecher <markus.klotzbuecher@creamnet.de>
 Subject: Re: Switching between foreground and background
-Date: Mon, 22 Sep 2003 05:38:22 -0700 (PDT)
+Date: Mon, 22 Sep 2003 16:37:13 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030922123822.71099.qmail@web20003.mail.yahoo.com>
-References: <200309221355.51014.markus.klotzbuecher@creamnet.de>
+Message-ID: <200309221637.14000.markus.klotzbuecher@creamnet.de>
+References: <20030922123822.71099.qmail@web20003.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309221355.51014.markus.klotzbuecher@creamnet.de>
+In-Reply-To: <20030922123822.71099.qmail@web20003.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Silambu Chelvan <silambu_mdu@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+On Monday 22 September 2003 02:38 pm, Silambu Chelvan wrote:
+> Hi,
+>
+> Thanks for your information.
+>
+> The method you suggested works fine but I still have a
+> requirement. The control is still in the process and
+> could not see the command prompt. The thing is that I
+> should get the command prompt whenever the process is
+> put into background so that I can issue some other
+> command on the prompt.
 
-Thanks for your information. 
+Hi
 
-The method you suggested works fine but I still have a
-requirement. The control is still in the process and
-could not see the command prompt. The thing is that I
-should get the command prompt whenever the process is
-put into background so that I can issue some other
-command on the prompt.
+hmm, I see. You will have to actually stop the process to get the command 
+prompt, instead of letting it sleep as I suggested earlier. You can do this 
+by sending the SIGSTOP signal to it:
 
-Any clues??
+#include <signal.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-with regards,
-M. SilambuChelvan
+void suspend()
+{
+        printf("Suspending...\n");
+        pid_t pid = getpid();
+        kill(pid, SIGSTOP); /*send SIGSTOP to itself */
+}
+...
 
---- Markus Klotzbuecher
-<markus.klotzbuecher@creamnet.de> wrote:
-> On Monday 22 September 2003 12:48 pm, Silambu
-> Chelvan wrote:
-> > Hi all,
-> >
-> > I have written some program with signal handler.
-> Is
-> > this possible, if
-> > one of the signals registered with my program is
-> > raised, my program
-> > should goto background and should come to
-> foreground
-> > when some other of the
-> > registered signal is raised. how to do it?
-> >
-> > Any function available to switch a process between
-> > foreground and
-> > background at runtime?
-> 
-> Hi 
-> 
-> Switching a task between forground and background is
-> nothing else as 
-> suspending and restarting. What i would try to do
-> is, when you get the signal 
-> you want to suspend on, call the pause() function
-> (see pause(2) ). When you 
-> get the signal you want to restart on, just do
-> nothing as this will let the 
-> pause() function return and continue doing what
-> happend before suspend.
-> 
-> Try something like this:
-> 
-> ***************************************
-> #include <signal.h>
-> #include <stdio.h>
-> 
-> void suspend()
-> {
->         printf("Suspending...\n");
->         pause();
-> }
-> 
-> void wake()
-> {
->         printf("Woken up.\n");
-> }
-> 
-> int main()
-> {
-> 
->         signal(SIGUSR1, suspend);
->         signal(SIGUSR2, wake);
-> 
->         while(1) {
->                 /* do whatever */
->                 printf("doing whatever...\n");
->                 sleep(1);
->         }
-> }
-> 
-> Cheers
-> 
->         Markus
-> -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-http://www.linux-learn.org/faqs
+The problem arises, when you need to start it again. The stopped process needs 
+to be sent a SIGCONT signal, which will cause it to continue. Obviously a 
+stopped process can't catch any signals and can't start itself again. The 
+only way I see is to have a second process catch the signals and send the 
+appropriate SIGSTOP and SIGCONT signals to the, lets call it main process.
+
+I hope this helps...
+
+Cheers
+
+	Markus
 
 
-__________________________________
-Do you Yahoo!?
-Yahoo! SiteBuilder - Free, easy-to-use web site design software
-http://sitebuilder.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
