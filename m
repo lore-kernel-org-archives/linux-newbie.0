@@ -1,33 +1,30 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: NFS and umount problem again??
-Date: Wed, 10 Sep 2003 16:18:08 -0400
+From: "Lee Chin" <leechin@mail.com>
+Subject: getting the local port on a socket
+Date: Wed, 10 Sep 2003 17:03:23 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030910161808.B255@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <20030910220323.60773.qmail@mail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Mark Hahn <hahn@physics.mcmaster.ca>, linux-newbie@vger.kernel.org
+Cc: Lee Chin <leechin@mail.com>
 
-Greetings: With Slackware8.0/kernel 2.4.18 I had a problem umounting
-the servers Zip drive - always "busy", having to reboot.. This was
-solved by the exportfs -u flag - but now that I've changed most
-machines to Slackware9.0/kernel 2.4.20; I find that doesn't work and
-I have to kill -9 the ps <nfsd>, which means a reboot to run the
-loading script again.
+Hi 
+How can I get the local port on a socket I just created?  I do not want to bind this client socket to any port... I just want to know what port the system (kernel) will use when it sends packets out on this socket
 
-Don't know why this should happen with Slack9/2.4.20 so was wondering
-if anyone else ran into this with a possible fix or explanation as to
-what I'm doing wrong, etc?
+Thanks
+Lee
+-- 
+__________________________________________________________
+Sign-up for your own personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
-TIA and Cheers,
+CareerBuilder.com has over 400,000 jobs. Be smarter about your job search
+http://corp.mail.com/careers
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
