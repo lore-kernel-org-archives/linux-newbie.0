@@ -1,39 +1,37 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: stripping flies (was: Re: .so, .a and .o-files)
-Date: Thu, 15 Aug 2002 07:59:21 -0700
+From: Axel Siebenwirth <axel@hh59.org>
+Subject: (fwd) .so, .a and .o-files
+Date: Thu, 15 Aug 2002 17:34:20 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020815075652.02191e30@celine>
-References: <20020815131918.GA1033@diamond.ipht-jena.de>
- <20020815131918.GA1033@diamond.ipht-jena.de>
+Message-ID: <20020815153420.GA10981@prester.freenet.de>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020815134445.GA1217@diamond.ipht-jena.de>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Axel Siebenwirth <axel@hh59.org>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-I changed the Subject: line to refer to the question you actually asked.
+Sorry, I haven't seen my mail get to the list. So here goes it again.
 
-At 03:44 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Me again.
->
->Whats the use of stripping object files of their symbols. Symbols reflect
->the functions in an object file, right?
+----- Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
 
+Hi,
 
-Stripping makes the files smaller, which matters in some cases. The symbols 
-are valuable in debugging problems but are not needed simply to execute the 
-object code.
+I have some stupid questions.
 
+What makes the difference between .o and .so files? What is their use? Is it
+just a naming convention?
 
+When I want to link libraries to a program I am compiling, of what format do 
+the libraries have to be?
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+I have found out that .a files are archives created with ar. What is that
+for?
 
+Many thanks and my best regards,
+Axel Siebenwirth
+
+----- End forwarded message -----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
