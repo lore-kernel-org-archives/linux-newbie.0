@@ -1,53 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: how to use appl of one image in another
-Date: Wed, 18 Jun 2003 10:26:18 -0700
+From: "James Miller (office)" <jamtat@mailsnare.net>
+Subject: SCO suit and Linux kernel
+Date: Wed, 18 Jun 2003 12:39:11 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030618101820.02f53830@celine>
-References: <20030618165824.25095.qmail@web20512.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.53.0306181221130.312@veclin.office>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030618165824.25095.qmail@web20512.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-At 09:58 AM 6/18/2003 -0700, Ravi Kumar Munnangi wrote:
->I have installed RH8.0 in my system.
->
->Then I have downloaded the linux kernel 2.4.18 and
->configured it and compiled it to get new image.
->
->when I boot into the new image, Iam unable to use the
->applications of the original image.(like Xwindows)
->
->How can I access the packages which were installed
->with the original image in the newly created image?
+This may seem a bit off topic for this list, but for me, as a newbie, it
+does involve understanding some things about Linux.  I hope it doesn't
+cause any flame wars or anything.  Anyway: I understand that SCO's claims
+concern only the 2.4.x kernel and later (i.e., the 2.5.x and thus upcoming
+2.6 as well).  I just don't quite understand how this represents such a
+threat to Linux: Linux already has solid, working kernels in the 2.0.x
+branch and the 2.2.x branch.  If the very worst came about (I have a hard
+time seeing how anything worse than maybe removal of some code and some
+fines being issued, but, for the sake of discussion . . .) and the 2.4.x
+kernel series became off limits, couldn't development on the 2.2.x and
+maybe even 2.0.x kernels continue and perhaps fill the needs the 2.4.x
+kernel now fulfills?  I guess 2.0.x can't be made to support USB, so that
+kind of makes it a less feasible option.  If I could put my inquiry into
+the form of a succinct question it would be: what does the 2.4.x kernel do
+that 2.2.x can't do?  Isn't it kind of insignificant from the perspective
+of the average computer user whether they use a 2.2.x or 2.4.x kernel?
+And, relatedly: isn't alot of the stir over how this could adversely
+affect Linux based on consideration of Linux's adoption in the business or
+corporate worlds, where there are some very specialized computing needs?
+Or maybe it's seen as a setback for Linux running on the leading edge
+hardware, like 64 bit processors?  Thanks for any help in understanding
+how this could affect my world, i.e., the world of the average computer
+user/tinkerer.
 
-As a *general* matter, changing the kernel image you are using should not 
-affect your ability to run applications. Particular applications may be 
-incompatible with particular kernels, because they rely on features 
-(drivers, or even core capabilities) not present in the kernel you are 
-currently running.
-
-X (or X Window, not "Xwindows") can fall into this category, if you are 
-using an X deiver that depends on finding kernel framebuffer support for 
-it. If that is what you are encountering, you fix it by compiling in the 
-appropriate framebuffer support.
-
-But I offer that only as an example of a specific problem that a kernel and 
-a particular app may have. (Networking apps ... DHCP clients, ip 
-(iproute2), iptables, and netstat, to name a few specifics ... are another 
-common example, as they often rely on very specific networking options 
-being compiled in the kernel.)
-
-To get real help, you will need to explain what you mean by "unable to use" 
-and be more clear about what applications are involved (I don't know what 
-you consider to be "like Xwindows", so I can only answer about that actual 
-application).
-
-
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
