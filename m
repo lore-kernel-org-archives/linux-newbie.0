@@ -1,35 +1,49 @@
-From: lawson_whitney@juno.com
-Subject: Re: setting up X under Slackware
-Date: Fri, 16 Aug 2002 09:12:01 -0400 (EDT)
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Changing Text
+Date: Fri, 16 Aug 2002 18:02:56 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020816.094311.134670320.14.lawson_whitney@juno.com>
-References: <5.1.0.14.1.20020815230501.02105300@celine>
+Message-ID: <27787.5432432213$1029518281@news.gmane.org>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020815230501.02105300@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
-Cc: matthewstapleton@juno.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: SuSE List <suse-linux-e@suse.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
-> 3. What errors get reported when startx runs?
+Hi all..
 
-To see these, you are probably going to need to do something like:
+OK, here's the problem I've got a file that looks like this:
 
-startx >~/oops 2>&1
+Rates as of 2002.08.13 20:25:28 UTC (GMT). Base currency is EUR.
+USD United States Dollars                 1.01756               0.982743    
+GBP United Kingdom Pounds                 1.56297               0.639808    
+AUD Australia Dollars                     0.546791              1.82885     
 
-~/oops should then give the X version, driver used, and some interesting
-error messages.
+What I want is this;
 
-If your shell is bash, you can use
+2002.08.13 	USD 	1.01756  	0.982743    
+2002.08.13 	GBP 	1.56297   	0.639808    
+2002.08.13 	AUD 	0.546791  	1.82885     
 
-startx &>~/oops
+With tabs between each word. I think I can do this with sed but I can't see 
+how. 
 
-Lawson
----oops---
+Thanks
+
+JIM
+
+-- 
+Jim Hatridge
+Linux User #88484
+------------------------------------------------------
+                 BayerWulf
+	   Linux System # 129656
+         The Recycled Beowulf Project
+  Looking for throw-away or obsolete computers and parts
+   to recycle into a Linux super computer
 
 
 -
