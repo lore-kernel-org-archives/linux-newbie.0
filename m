@@ -1,43 +1,42 @@
-From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: Reinstallation
-Date: Wed, 31 Mar 2004 02:29:48 +0800
+Date: Tue, 30 Mar 2004 19:50:58 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403310229.48743.wheds8@ms66.hinet.net>
-References: <200403301320.10936.wheds8@ms66.hinet.net> <200403301511.20676.wheds8@ms66.hinet.net> <200403301144.29483.pa3gcu@zeelandnet.nl>
+Message-ID: <200403302050.58925.pa3gcu@zeelandnet.nl>
+References: <200403301320.10936.wheds8@ms66.hinet.net> <200403301144.29483.pa3gcu@zeelandnet.nl> <200403310229.48743.wheds8@ms66.hinet.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403301144.29483.pa3gcu@zeelandnet.nl>
+In-Reply-To: <200403310229.48743.wheds8@ms66.hinet.net>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
+To: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
 
-A more detailed approach.
+On Tuesday 30 March 2004 20:29, S. Barret Dolph wrote:
+> I would have guessed that reformatting the disk would wipe everything out
+> but it seems not to be the case.
 
-I made a mess of installing a custom kernal. (2.4x). I tried again with a new 
-kernel. 2.64. This didn't work so I decided to start again as there was 
-little installed. I downloaded the newest source mage (with the 2.63 
-kernetl), deleted all partitions, reformatted the partitions, transfered the 
-basic install. But when I got to the splash screen I was given the list of 
-2.4x or 2.64. I would have guessed that fdisk would have erased all that. I 
-still have problems with my cd as I can't even load Knoppix. 
+That is your MBR not your disk partitions working, your disk MBR is the first 
+512 bytes and is NOt a partition as such.
 
-I would have guessed that reformatting the disk would wipe everything out but 
-it seems not to be the case.
+If you boot from a CDrom or floppy then you will have no problems with your 
+disks MBR (Master Boot Record) as it will be ignored.
 
-On Tuesday March 30 2004 17:44, pa3gcu wrote:
-> On Tuesday 30 March 2004 09:11, S. Barret Dolph wrote:
-> > That doesn't work. The partitioning works but after that I nothing gets
-> > installed. Is there a way to remove the prior distribution before
-> > reinstalling?
->
-> Then you are doing it wrong as you have the choose of formating the
-> partitions via disk druid, its as easy as that.
->
-> If you want to you can delete the old stuff easily, simply start your old
-> distro and use fdisk to delete the partitions.
-> I can assure you there is no need to do that at all.
+Mandrake cdroms are bootable, you will possably need to set your BIOS to boot 
+from CDrom, is that your problem, you seem to be getting things all mixed up.
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
