@@ -1,38 +1,49 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: need to switch NICs... process?
-Date: Wed, 30 Apr 2003 11:46:46 -0700
+Subject: Re: olivetti p100 with onboard ATI Mach64
+Date: Wed, 30 Apr 2003 11:54:53 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030430114148.01f79ad8@celine>
-References: <5.1.0.14.1.20030430121655.02d2bb90@pop.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20030430114653.01f79408@celine>
+References: <3EB00CFD.5040100@arrakis.es>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030430121655.02d2bb90@pop.mail.yahoo.com>
+In-Reply-To: <3EB00CFD.5040100@arrakis.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-At 12:18 PM 4/30/2003 -0600, James Ferris wrote:
->Hello list,
->Is there a 'best process' for changing out a NIC?
->I would be going from a dlink 528 (10bT) to a dlink 530 (100bTX).
+See below.
 
+At 07:50 PM 4/30/2003 +0200, Andrew Langdon-Davies wrote:
+>Hello,
+>I have two machines as described above and both give me exactly the same 
+>problem. Soon after booting from a Linux floppy the screen goes blank. In 
+>the case of Tomsrtbt this happens just after the screen for choosing a 
+>video mode.
+>The manual describes the video controller as:
+>-Component ATI Mach64-CT with 1 MB or 2 MB of video memory, integrated on 
+>the motherboard, and the DPMS, DDC 1 features
+>-Board IN2052 with video connector output.
+>Is there a solution to this?
 
-I'm not sure what you are looking for in the way of a "process" (never mind 
-the "best" part). Usually, all I do is halt, power down, open the case, 
-remove the old NIC, insert the new NIC, close the case, and reboot. When 
-the system boots/inits, I log in as root and make any changes to NIC 
-modules that are needed to make the new NIC work (this can involve another 
-reboot, but it usually does not ... just rmmod the old module and modprobe 
-the new one, then restart networking. After this works (so I know I have 
-the right module), I edit /etc/modules ... you do whatever method your 
-distro uses (this is the Debian system) ... so the new required module 
-loads next time the system reboots.
+I'm unfamiliar with your hardware, and I can't recall ever seeing a system 
+that did not boot/init successfully to a console prompt. So I'm guessing 
+here quite a bit.
 
-I guess this is a process, but it all seems obvious to me. Is there 
-something I am missing about yor question? If so, please clarify it and 
-I'll try to be as helpful as I can.
+You mention testing with tomsrtbt. As I recall, it uses a framebuffer 
+device to let it set the video mode. You don't say what you have tested 
+with other than tomsrtbt. So I don't know if you've tried any distro that 
+does not default to using the framebuffer (in general, the small penguin 
+picture on the boot screen indicates use of the framebuffer).
 
+Offhand, I don't know whether any of the full-strength distros do not use 
+the framebuffer by default, particularly in their installers (since you 
+talk about testing with floppies). Offhand, I know that the router-oriented 
+LEAF distros (leaf.sourceforge.net) do not use it, and probably other 
+floppy-based distros (trinux? maybe) also omit this. So you might try one 
+of them to see if this is your problem. If it is, you can easily compile a 
+custom kernel that leaves out framebuffer support, assuming you are working 
+toward a hard-disk install.
 
 
 
