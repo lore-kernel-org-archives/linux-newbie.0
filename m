@@ -1,57 +1,33 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: +[SurvPC] a pro Linux article for those who need their bias reinforced on a regular basis :-)]
-Date: Sun, 26 Oct 2003 09:53:40 -0500
+From: Paul Medwell <paul.medwell@adelaide.edu.au>
+Subject: Inserting ASCII coded characters
+Date: Mon, 27 Oct 2003 12:16:43 +1030
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031026145340.GA768@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <bnhtd5$8mb$1@sea.gmane.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: survpc@tmonroe.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Greetings, and a fantastic piece from Cringely that should be
-mandatory reading for every computer user in the world. <g> IMHO.
+How can I insert ASCII characters by using their corresponding code?
 
-No disrespect to Linus, of course, but he should have also mentioned
-Richard Stallman, and so many others, plus the FSF, Free Software
-Foundation (GNU) and it's "copyleft" support, without which it would
-not have happened..
+In Windoze it used to be a case of simply pressing Alt and typing the=20
+ASCII code, for example Alt+179 for a =B3.
 
-We might also add Commodore Business Machines, Inc., a Micro$oft type
-wanabee, albeit only hardware, with it's one time try for complete
-domination but, at least, producing the Vic20 which waxed Linus's
-interest during the dawn of it all...
+They are accessable using 'gcharmap', but I have been unable to find a=20
+method using keystrokes in RedHat 7.2
 
-All in all, it's been an interesting ride that will continue.
+I guess that there is a really simple way of doing this, but have been=20
+unable to find it.
 
 Cheers,
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-                Proprietary  Formats  Unacceptable
+Paul
 
 
-On 10-25, cornelius wrote:
-> yeah, thanks for the picker-upper :-)
-> 
-> that really is an excellent an article. it should be abundantly
-> obvious by now that the new model has wings.
-> 
-> cornelius 
-> 
-> 
-> -----Original Message-----
-> From: JohnO <norami@unlimited.net>
-> Sent: Oct 25, 2003 6:37 AM
-> To: LifeRaft <survpc@tmonroe.com>
-> Subject: +[SurvPC] a pro Linux article for those who need their bias reinforced on a regular basis :-)
-> 
-> http://www.pbs.org/cringely/pulpit/pulpit20031023.html
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
