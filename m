@@ -1,74 +1,58 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: mbr dd'd
-Date: Mon, 13 Dec 2004 13:19:07 -0800
-Message-ID: <41BE074B.1000904@bcgreen.com>
-References: <1102944601.2248.31.camel@Kaushal>
+Subject: Re: getting a console prog to run on tty2 at bootup
+Date: Mon, 13 Dec 2004 13:36:59 -0800
+Message-ID: <41BE0B7B.60707@bcgreen.com>
+References: <Pine.LNX.4.58.0412100651320.8769@localhost.localdomain> <200412110007.54356.eric@cisu.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1102944601.2248.31.camel@Kaushal>
+In-Reply-To: <200412110007.54356.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie <linux-newbie@vger.kernel.org>
-Cc: kaushal <kaushal@rocsys.com>
+Cc: eric@cisu.net
 
-kaushal wrote:
-> hi,
->    My friends' system is in a critical situation.
-> 	Hdd. is /dev/hdc.
-> 	CD-WR is /dev/hdd.
-> created a bootable linux iso img.
-> 	MISTAKE part:
-> dd if=iso.img of=/dev/hdc.Instead of hdd.
-The problem here is that you stomped on the hard disk partition
-table (which is in the first few sectors of the disk)
-zzog you remember exactly where the various partitions started/ended,
-then you can repartition the system (just set the partition locations,
-don'tformat them) and then continue on.  If you're really lucky, your
-first partition was a SWAP partition, otherwise you WILL have data
-loss.
+Eric Bambach wrote:
+>># Note that on most Debian systems tty7 is used by the X Window System,
+>># so if you want to add more getty's go ahead but skip tty7 if you run X.
+>>#
+>>1:2345:respawn:/sbin/getty 38400 tty1
+>>2:23:respawn:/sbin/getty 38400 tty2
+>>3:23:respawn:/sbin/getty 38400 tty3
+>>4:23:respawn:/sbin/getty 38400 tty4
+>>5:23:respawn:/sbin/getty 38400 tty5
+>>6:23:respawn:/sbin/getty 38400 tty6
+>>
+>>I think the 23 refers to the port telnet runs on, right?  Seems I need to
+>>edit the line 2:23:respawn:/sbin/getty 38400 tty2, but the question is
+>>how?  Do I replace /sbin/getty with the path to twin and add any command
+>>line switches after (-hw=tty is what I use when I run it manually from a
+>>console)?  Does the 38400 need to be in there, and for that matter, the
+>>23?
+> 
+> 
+> Yes telnet DOES run on 23, but that has nothing to do with the file ;)
+> the first number is the virtual console # and the second number is the 
+> runlevels. Notice that VC 1 ALWAYS starts up: runlevels 2345.  Try something 
+> like this and make sure to comment out the original line:
 
-You might also want to check out things like knoppix (www.knoppix.org
-and the systemrescuecd http://www.sysresccd.org ) I'm pretty sure that
-at least one of those two can have a tool which can look for signs
-of partition boundaries to help you figure out where the partitions used
-to be.
+Close: The first field can be just about anything short. It's
+an identifier used for other init(8) tricks. In this case,
+numbers were chosen to represent the TTY that the program runs on.
 
-Of your first psrtition was an ext[23] filesystem, the ext filesystem
-has some capability of recovery under such conditions....
+The second field (as stated) indicates which runlevels the program
+runs on (In this case, the getty on tty1 runs at runlevels 2,3,4 and 5
+while the other ones (2-6) only run at runleels 2 and 3.
 
-Once you hae recreated the partition table, go something
-like (depending on the partition you're trying to recover:)
-  [root@me html]# mkfs -n -v /dev/hdc2
+the respawn in the 3rd field says to rerun the program when it dies.
 
-You will get output like:
-         mke2fs 1.35 (28-Feb-2004)
-         Filesystem label=
-         OS type: Linux
-         Block size=4096 (log=2)
-         Fragment size=4096 (log=2)
-         131616 inodes, 263056 blocks
-         13152 blocks (5.00%) reserved for the super user
-         First data block=0
-         9 block groups
-         32768 blocks per group, 32768 fragments per group
-         14624 inodes per group
-         Superblock backups stored on blocks:
-                 32768, 98304, 163840, 229376
-
-That last set of numbers is the important ones: they are backup
-copies of the superblock (critical info about the filesystem
-setup).   You can recover (parts of) a filesystem that has been
-trashed by a waywarddd via (in this case)
-
-fsck -n -f -B 229376 /dev/hdc2
-
-(
-   -n causes a dry run (does not actualy write to the disk)).If the results
-   look reasonable (you WILL get at least some errors), then you can remove
-   the -n to do a real repair attempt.
-)
+The last field is the command line that is run at the indicated
+run levels.
+What actually makes the programs run on their respective TTYs is the
+parameter to the getty program. There are a number of versions
+of the getty command for Linux.  `man -k getty ` for more info on
+which versions are available on your system).
 
 -- 
 Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
