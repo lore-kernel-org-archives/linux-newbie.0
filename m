@@ -1,37 +1,44 @@
 From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: Syscall() vs _syscallN()
-Date: Tue, 29 Mar 2005 11:36:02 +0200 (CEST)
-Message-ID: <Pine.LNX.4.21.0503291133250.560-100000@hestia>
-References: <001501c5342f$c61db4b0$90b3c68a@st.com>
-Reply-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Subject: Re: Elvis and crontab
+Date: Tue, 29 Mar 2005 11:42:47 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0503291137120.560-100000@hestia>
+References: <200503290541.j2T5f6HY001659@skyinet.net>
+Reply-To: linux <linux-newbie@vger.kernel.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001501c5342f$c61db4b0$90b3c68a@st.com>
+In-Reply-To: <200503290541.j2T5f6HY001659@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-On Tue, 29 Mar 2005, Alex LIU wrote:
+On Tue, 29 Mar 2005, Peter wrote:
 
-> Hi:
+> Hi,
 > 
-> With either of syscall() or _syscallN() we can define a system call in the user space program.I think they do the same work.What's the difference between them? Thanks!
+> In slackware, crontab is using elvis as the editor instead of vim and I can't 
+> make heads or tails out of it.
 > 
-> Alex
+> Does anybody know how to change this from elvis to vim or better yet to a more 
+> user friendly editor?
+> 
+> Thanks & regards
+> -- 
+> Peter
 
-This is described in the manual page for syscalss
+Change and export the appropiate EDITOR variable in the init files of
+your shell. For the bash shell, in your .bashrc .
+ export EDITOR=vim
 
-~: man syscalls
+After that either re login or source the change file:
+~: source .bashrc
 
-.... 164 system calls.. depending on your kernel version.. etc..
-
-Roughly speaking, the code  belonging  to  the  system  call  with  number
-__NR_xxx  defined  in /usr/include/asm/unistd.h can be found in the kernel
-source in the routine sys_xxx().  ...... etc...
-
-......
+Quality is nothing more then the demands someone has of something, same
+goes for user friendlyness. According to my def. of user-friendly VIM is
+very userfriendly. You only need to know three to four keystroke commands
+to make it all work. Surely those four commands can't be much of a problem
+?
 
 J.
 
