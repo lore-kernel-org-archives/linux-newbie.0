@@ -1,37 +1,97 @@
-From: "Calin Szonyi" <caszonyi@linuxmail.org>
-Subject: SSH + NIS
-Date: Thu, 08 May 2003 18:15:53 +0200
+From: kernel@slackuser.com
+Subject: Re: hiding my hostname (3)
+Date: Thu, 8 May 2003 13:07:52 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030508161554.12536.qmail@linuxmail.org>
+Message-ID: <Pine.LNX.4.44.0305081307290.7410-100000@kenny.slackuser.com>
+References: <20030508040141.75606.qmail@web10704.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20030508040141.75606.qmail@web10704.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Jesse Armand <matrix_rev2002@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hello
+Since he is logged in from the console there is no host information
+displayed.
 
-I have a NIS setup at home, a server and a client. 
-The problem is that when i connect to the client 
-via ssh, ssh uses the password from /etc/shadow
-(not the NIS password). Can I make ssh to use
-the NIS password ? If not, how can i test my NIS 
-instalation remotely ?
+-Chris W.
 
-If you need any more info I could provide it to you.
+On Wed, 7 May 2003, Jesse Armand wrote:
 
-Thanks 
+> OK..someone being logged in, i know that,
+> but how does he hide his hostname information ?
+>
+>
+>
+>
+> > That is caused by someone being logged in through
+> > the console.
+> >
+> > -Chris W.
+> >
+> > On Tue, 6 May 2003, Jesse Armand wrote:
+> >
+> > > well.. I think there is a way,
+> > > why ?
+> > > because i've just seen it.
+> > > when i'm logging in to a server,
+> > > i saw a client that hiding his hostname,
+> > > and it's not about the server not knowing my ip
+> > > address, it's about hiding my ip address from
+> > viewing
+> > > by other users.
+> > > I know a server must know an ip address of the
+> > client
+> > > that connects to it.
+> > >
+> > > when i use 'w' or 'who' command
+> > > the hostname table shows empty content
+> > >
+> > > USER    TTY   FROM    LOGIN@    IDLE    WHAT
+> > > woho    p1     -      10:09AM    -      - (pine)
+> > >
+> > > can u explain that ?
+> > >
+> > > btw by using .nofinger i can hide myself from
+> > > fingering,
+> > > that's one way,
+> > >
+> > > so anybody knows how to hide my hostname from
+> > 'who'
+> > > and 'w'
+> > >
+> > >
+> > > __________________________________
+> > > Do you Yahoo!?
+> > > The New Yahoo! Search - Faster. Easier. Bingo.
+> > > http://search.yahoo.com
+> > > -
+> > > To unsubscribe from this list: send the line
+> > "unsubscribe linux-newbie" in
+> > > the body of a message to majordomo@vger.kernel.org
+> > > More majordomo info at
+> > http://vger.kernel.org/majordomo-info.html
+> > > Please read the FAQ at
+> > http://www.linux-learn.org/faqs
+> > >
+> > >
+> >
+>
+>
+> __________________________________
+> Do you Yahoo!?
+> The New Yahoo! Search - Faster. Easier. Bingo.
+> http://search.yahoo.com
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>
 
-Bye
-Calin
--- 
-______________________________________________
-http://www.linuxmail.org/
-Now with e-mail forwarding for only US$5.95/yr
-
-Powered by Outblaze
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
