@@ -1,8 +1,8 @@
-From: whitnl73@juno.com
+From: lawson_whitney@juno.com
 Subject: Re: How to mount CD-ROM?
 Date: Fri, 22 Nov 2002 20:18:19 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021125.213454.134684296.0.whitnl73@juno.com>
+Message-ID: <20021125.215101.134684296.0.lawson_whitney@juno.com>
 References: <20021118092133.AFBB17FC17@smtp.orcon.net.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
