@@ -1,29 +1,32 @@
-From: G Anna <drguruolai@eth.net>
-Subject: a simple browser
-Date: 08 Apr 2002 19:27:28 +0530
+From: Ola Theander <ola.theander@connective.se>
+Subject: The best way to remote administer a Linux server?
+Date: Mon, 8 Apr 2002 16:39:59 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3ofgui987.fsf@wobble.eth.net>
-Reply-To: anna7sept@linuxmail.org
+Message-ID: <FC79D1F4C922D511983400104BC30388019556@DELL1>
 Mime-Version: 1.0
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-Dear All,
+Dear subscribers.
 
-Can anybody suggest a good and simple browser?  Netscape core dumps
-very often, Mozilla is very very slow and I do not know of any other
-browser.  (Most of the websites nowadays doesn't care about Lynx :-(
+I'm planning to host a server running Linux at a remote location, where I
+will need to administer it remotely. The problem is that it will be a bit of
+hassle to access the server physically, therefore I must find a solution
+where I can minimize the need of physical access to the server.
 
-Thanks for your time.
+The server will host web pages, run a PostgreSQL database, Q-Mail and some
+other stuff. I would like to be able to manage most (all) administrative
+tasks remotely, like starting a backup, adding/modifying web pages and
+performing database maintenance. All this must be in a secure way to prevent
+unauthorized administration.
 
-anna
+My question is, what's the best way to configure this king of remote
+administration? Is it using SSH or should I look at something like remote
+desktop software such as VNC?
 
--- 
-
-Get your free e-mail account at http://www.linuxmail.org
-
+Kind regards, Ola Theander
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
