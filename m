@@ -1,31 +1,56 @@
-From: Mike Dresser <mdresser_l@windsormachine.com>
-Subject: Re: Tar Exclude
-Date: Wed, 13 Nov 2002 10:22:04 -0500 (EST)
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: Tar Exclude
+Date: Wed, 13 Nov 2002 10:25:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0211131021190.29738-100000@router.windsormachine.com>
-References: <077901c28b27$c6fd7540$64fea8c0@pkrausxp>
+Message-ID: <078001c28b28$ee2a56a0$64fea8c0@pkrausxp>
+References: <Pine.LNX.4.33.0211131021190.29738-100000@router.windsormachine.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <077901c28b27$c6fd7540$64fea8c0@pkrausxp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.33.0211131021190.29738-100000@router.windsormachine.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: 'Mike Dresser' <mdresser_l@windsormachine.com>
 Cc: linux-newbie@vger.kernel.org
+
+Here is the script
+------------------
+ exceptions=/backup/scripts/archive.exclude
+        dt=`date +%A`
+        cd /backup
+        for filestotar in `ls --almost-all --directory -x1 *`
+        do
+                tar --directory /backup/tar.archive \
+                    --create --verbose  \
+                    --exclude-from $exceptions \
+                    --file /backup/tmp/$filestotar.$dt.tar \
+                    /backup/$filestotar/* 1>
+/backup/tmp/$filestotar.$dt.index
+        done
+
+-----Original Message-----
+From: Mike Dresser [mailto:mdresser_l@windsormachine.com] 
+Sent: Wednesday, November 13, 2002 10:22 AM
+To: Paul Kraus
+Cc: linux-newbie@vger.kernel.org
+Subject: Re: Tar Exclude
+
 
 On Wed, 13 Nov 2002, Paul Kraus wrote:
 
-> When running tar with the exclude set tar creates a 10k empty tar file.
+> When running tar with the exclude set tar creates a 10k empty tar 
+> file.
 >
-> I have a script that tars a all the sub directories of a directory into
-> individual tar files for each subdirectory. I have an exclude file that
-> is set to skip some of the folders I don't want tarred. This works but
-> it creates the empty tar files. Is this normal? Can it be set not to do
-> this?
+> I have a script that tars a all the sub directories of a directory 
+> into individual tar files for each subdirectory. I have an exclude 
+> file that is set to skip some of the folders I don't want tarred. This
+
+> works but it creates the empty tar files. Is this normal? Can it be 
+> set not to do this?
 
 How about showing us the line out of the script that calls tar, and a
-sample of your exclude line.  Tar can be... tempermental when it comes to
-exclude's.
+sample of your exclude line.  Tar can be... tempermental when it comes
+to exclude's.
 
 Mike
 
