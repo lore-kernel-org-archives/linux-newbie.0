@@ -1,64 +1,35 @@
-From: Arthur Kng <arthur_kng@yahoo.com>
-Subject: Sound Problem
-Date: Tue, 8 Apr 2003 20:06:58 -0700 (PDT)
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: At Loss with Mailing
+Date: Mon, 7 Apr 2003 14:10:24 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030409030658.76172.qmail@web20707.mail.yahoo.com>
+Message-ID: <20030407141024.B149@lnx2.w8mch.ampr.org>
+References: <200304070633.h376XdG04107@philonline.com> <5.1.0.14.1.20030407094724.01e9bd88@celine>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20030407094724.01e9bd88@celine>; from ray@comarre.com on Mon, Apr 07, 2003 at 10:03:10AM -0700
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hey,
-   its me again. a glitch guys. :(
+Greetings and excuse my butting in with a, probably, redundant
+remark:
 
-     am using Mandrake 9.1. linux found my sound card.
-i feel it even got the correct driver. but there is
-simply no sound. all i can hear in XMMS when i play my
-mp3s is a scratching, hissing noise and only when i
-make the vol full.
+Have you tried using the _same_ nameserver for both ISP's? Use the
+nameserver for the one that works of course..
 
-this is the info i found in the Mandrake Control
-Center in the Hardware section under the Soundcard
-tab:  
+Just a thought not following the thread that close. Ignore if I'm off
+base..
 
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+                Proprietary  Formats  Unacceptable
 
-Vendor: Fortemedia, Inc
-
-Alternative drivers: forte
-
-Bus: PCI
-
-Bus identification: 1319:801:1319:1319
-
-Location on the bus: 0:c:0
-
-Description: Xwave QS3000A [FM801]
-
-Module: snd-fm801
-
-Media class: MULTIMEDIA_AUDIO
-
-**********
-
-
-I have a XWAVE QS3000A PCI Sound Card.
-
-I am at loss as to how to go about this. Can anyone
-please tell me what could be the problem? if u need
-any more info let me know.
-Are there any HOWTOs or articles i should read for
-this?
-
-thank you for your help.
-
-A K
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Tax Center - File online, calculators, forms, and more
-http://tax.yahoo.com
+On 04-07, Ray Olszewski wrote:
+> Peter --- I cannot be sure from what you have sent, but it looks like some 
+> sort of DNS problem. Here's what I find out about the first two mail 
+> destinations you are testing:
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
