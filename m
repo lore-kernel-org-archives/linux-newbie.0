@@ -1,44 +1,47 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: messages in /var/log/
-Date: Tue, 03 Aug 2004 22:41:33 -0700
+From: "joaquin" <mmirtceli@yahoo.com>
+Subject: UPS Shipped Drugs!  No Prescription!
+Date: Wed, 04 Aug 2004 06:51:01 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040803223500.01f0d8e0@celine>
-References: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.e
- ngin.umich.edu>
+Message-ID: <1091602261-30089__34440.6866970987$1091602001$gmane$org@yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.e
- ngin.umich.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-kernel@vger.kernel.org
 
-At 10:15 PM 8/3/2004 -0400, Karthik Vishwanath wrote:
->I have a whole load of entries that look like:
->
->Aug  3 14:48:38 gandalf -- MARK --
->Aug  3 15:08:38 gandalf -- MARK --
->...
->
->
->These are repeated every 20 minutes. How can I determine where are they
->coming from and what they mean?
+What do you pay now?
 
-Second things first ... what they mean is that the system was operational 
-at the times associated with the timestamps. If you try to log on to your 
-system and find it dead as a doornail, needing a hard reboot, the last MARK 
-you find in the logs after a reboot will tell you the approximate time of 
-the failure.
+If you pay more than these prices, maybe you should click this link....
+http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/5
 
-As to where they are coming from ... on my Debian systems, it's a built-in 
-feature of syslogd. Check your man page for the -m option to see if yours 
-matches mine (I haven't seen a question from you in awhile, and I forget 
-what distro you are running). You can change the frequency with -m, and 20 
-minutes is the default.
+VALIUM - $2 a pill! (Anti-Depressant)
+SOMA - $3 a pill! (Pain Relief)
+XANAX - $1.70 a pill! (Anti-Depressant)
+LIPITOR - $3.50 a pill! (Cholesterol Control)
+ZYBAN - $3 a pill! (Stop Smoking)
+ZOLOFT - $2 a pill! (Anti-Depressant)
+PAXIL - $3 a pill! (Anti-Depressant)
+PROZAC - $2 a pill! (Anti-Depressant)
+GLUCOPHAGE - 70 cents a pill! (Diabetes)
+MERIDIA - $2.50 a pill! (Weight Loss)
+VIOXX - $1 a pill! (Pain Relief)
+CELEBREX - $2 a pill! (Pain Relief)
+XENICAL - $2.50 a pill! (Weight Loss)  
+
+http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/5
 
 
 
+
+
+
+
+
+
+master1 hornetmailman promethe kitty metallic bfi miranda 
+meow tintinmetallica lorraine safety
+orchid cutie fozzie 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
