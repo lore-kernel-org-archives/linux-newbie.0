@@ -1,8 +1,8 @@
 From: "Whitnl73@juno.com" <fido@tcob1.net>
-Subject: Re: Network card and kernel module problems
-Date: Wednesday, 05 Feb 2003 15:24:00 +000
+Subject: Re: ppp-go anomoly??
+Date: Wednesday, 05 Feb 2003 15:39:00 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_030205_152400__15795e4b@racenet>
+Message-ID: <NOMSGID_7223=3a9750=2f200_030205_153900__40f2580d@racenet>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,32 +12,33 @@ To: linux-newbie@vger.kernel.org
 
 Originally to: All
 
-On Wed, 5 Feb 2003, Amin wrote:
+On Wed, 5 Feb 2003, Ray Olszewski wrote:
 
-> Hi people,
+> Hal -- Look at the logs; usually, pppd (and chat, if your setup uses it)
+> reports more detail on failures there than what you are seeing at the
+> command line. It could be something like LCP negotiation timing out.
+> Speculating as to why it happens sometimes but not others is hopeless until
+> you get a better handle on what "it" is. If the logs aren't reporting
+> enough connection detail, raise temporarily the level of logging that pppd
+> does (the "debug" option).
 >
-> First --- sorry about not including specific error messages earlier.  The
-> attached file is a (snipped) list of bootup messages, and contains the
-> messages I'm concerned with.
->
-> I've decided to reinstall, perhaps try a different distro, and see if that
-> will do the trick.  And thanks
-> to Lawson for pointing out the EXTRAVERSION point.  Just want to make sure
-> about something --- you're talking about
-> /usr/src/linux-2.4.18-14/Makefile, right?
+Right, and chat -v for the chat script.  You might like something like
+this in /etc/syslogconf:
 
-Well, the README says not to put it in /usr/src/linux, that belongs to
-glibc for its <linux/xxxx.h>, so I have mine in /oof/linux-2.4.13, but
-yes, the top level Makefile for the kernel source tree you are working
-with.
->
-> Yawar Amin
->
-> P.S.  Is it a good sign or a bad sign that I've got my kernel version
-> memorized?
->
->
+daemon,local2.*						/dev/tty11
+daemon,local2.*						/var/log/ppp
+#that catches chat and pppd
 
+
+restart syslogd after.
+
+chat -v logs every thing sent and received by chat; sorry, I don't know
+where-all pppsetup puts scripts and options.  It is easier for me to
+write ppp options and chat scripts myself than to use some setup
+program.
+
+
+Lawson
 --
 ---oops---
 
