@@ -1,52 +1,83 @@
-From: vh <vhlist@yandex.ru>
-Subject: Linux for old PC
-Date: Sun, 15 Jun 2003 01:37:31 +0400
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Newbie Qt compiling
+Date: Sat, 14 Jun 2003 20:23:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <13727662937.20030615013731@yandex.ru>
-References: <5020070209.20030614233059@yandex.ru> <3EEB8EA4.4000808@bcgreen.com>
-Reply-To: vh <vhlist@yandex.ru>
+Message-ID: <200306142023.32931.sotl155360@earthlink.net>
+References: <200306141255.54711.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EEB8EA4.4000808@bcgreen.com>
+In-Reply-To: <200306141255.54711.sotl155360@earthlink.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Sunday, June 15, 2003, 1:07:48 AM, you wrote:
+Hi All
 
-SS> Make sure you do a text-only install, as opposed to an X-Windows
-SS> install. 24MB is a bit small to do X without swap. This may be the
-SS> source of your problems.  I'd also suggest that you make your swap file
-SS> reasonably large (a couple hundred meg).
+I have Md 9.1 installed on my Thinkpad which eliminates most of the issues
+that I had with Md 9.0.
 
-Yes, the problem is that several installators (like Mandrake one)
-can't (or I don't know how to) create a swap file for installation
-process. For example in ASP (this is Russian RH compatible distributive)
-swap is automatically created for installation if system detects a low
-amount of memory.
+Currently, I am trying to set up the Qt compiler so that I may again
+attempt to start to learn a little bit of programming.
 
-SS> You never really said what this is for. are you intending to
-SS> run twm and Firebird, a text-only box, or do you expect to
-SS> shoehorn KDE into that thing?
+-----
+In that light I have located Qt to be in the following directory.
 
-Yes, I'm going to run such GUI applications. I'm not sure that on my PC
-they'll be working stable. But I have experience with FBSD on a similar
-box and I have no complains even about GUI!
+bash-2.05b$ locate bin/designer
+/usr/lib/qt3/bin/designer-real
+/usr/lib/qt3/bin/designer
+/usr/bin/designer-qt3
 
-Thank everybody replied. Soon I'll be able to download and
-burn such staff like Vectorlinux (spasibo, nikogda ne slishal pro nego
-ranishe) or Slackware or maybe RH. I will probably need RTFM
-documentation again.
+-----
+From the above I adjusted the complier parameters to be as follows:
+gcc -I/usr/lib/qt3/include -L/usr/lib/qt3/lib -lqt -o 
+       helloworld helloworld.cpp
 
-----
-Martchukov Anton aka VH                   mailto:vhlist@yandex.ru
-ICQ: 155279978
+-----
+The Helloworld program that follows was copied from Worx's site of example 
+files for the O'Reilly "Programming with Qt" book follows: 
 
-"_Theory_ is when you know everything but nothing works.
-_Practice_ is when everything works but no one knows why.
-_IN THIS PLACE_ we're combining theory and practice - nothing works
- and no one knows why!"
+#include <qapplication.h
+#include <qlabel.h
+
+int main( int argc, char* argv[] )
+{
+   QApplication myapp( argc, argv );
+
+   QLabel* mylabel = new QLabel(NULL, "Hello World" );
+   mylabel-resize( 80, 30 );
+
+   myapp.setMainWidget( mylabel );
+   mylabel-show();
+   return myapp.exec();
+}
+
+-----
+When I attempt to compile  I get the following:
+
+/usr//bin/ld: cannot find -lqt/usr/lib/qt3/bin
+collect2: ld returned 1 exit status
+
+-----
+My objective with this example program is simply to verify that the Qt 
+compiler is working correctly.
+
+Thus to do this in as simple as possible format I DO NOT desire to use qmake 
+and make files as they only another layer of complexity making complier 
+verification even more difficult.
+
+Since this program is not compiling correctly I am assuming that I do not have 
+the gcc compile parameters correct. I was able at one point several years ago 
+to make the above complier procedure work with Qt 1.x so I strongly suspect 
+that there is something wrong in my path statement but I am unaware of how to 
+correct this.
+
+I would appreciate it if anybody who sees the problem and could furnish a wee
+bit of guidance.
+
+Thanks
+Frank
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
