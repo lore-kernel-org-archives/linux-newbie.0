@@ -1,29 +1,22 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: VIM syntax highlighting
-Date: Sun, 9 Jun 2002 21:47:15 -0700
+From: "Steven.Keuchel" <Steven.Keuchel@freenet.de> (by way of Steven.Keuchel
+	<Steven.Keuchel@freenet.de>)
+Subject: Re: 1024x768 SVGA Shell - won't work
+Date: Mon, 10 Jun 2002 20:37:34 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020610045124.DKTB5116.mtiwmhc23.worldnet.att.net@alan>
+Message-ID: <200206102037.34114.Steven.Keuchel@freenet.de>
+Reply-To: Steven.Keuchel@freenet.de
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I want to enable syntax highlighting in my vim sessions, especially for perl.
+Hi,
 
-after reading several faqs I edited a perl file and then did
-
-:syntax on
-
-to which vim replied:
-
-sorry, this command is not implemented
-
-How can I tell if the syntax checking was disabled at compile time?  Or if this message telling me something else?
-
-
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
+I think you can't use VESAFB modes for configuring the driver for your
+video-card. Take a look at "Documentation/fb/modedb.txt". This will help you
+setting the video mode for your video-card properly.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
