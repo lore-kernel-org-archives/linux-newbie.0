@@ -1,160 +1,87 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Cant get internet access on my router (sent again)
-Date: Thu, 21 Oct 2004 14:16:28 -0700
+From: James Miller <jamtat@mailsnare.net>
+Subject: framebuffer console problems
+Date: Fri, 22 Oct 2004 11:42:06 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20041021123557.01fc7e40@celine>
-References: <cl90vg$v7t$1@sea.gmane.org>
+Message-ID: <Pine.LNX.4.58.0410221108580.1287@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <cl90vg$v7t$1@sea.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 08:59 PM 10/21/2004 +0200, Ole Martin Handeland wrote:
+I'm having some problems with the console display under a new Debian
+variant (Ubuntu) I'm trying out and would like to ask for advice on
+troubleshooting and maybe fixing the problem.  The problem is that I
+cannot seem to get the console to display at a high enough resolution.  I
+understand that the framebuffer is typically used under Linux to get a
+finer console display, which is why I mention framebuffer in the subject
+line.  That said, I do not claim to have a very clear understanding of any
+of the finer technicalities involved.  Feel free to offer any corrections.
 
->sending this again, since im still having problems...
+I use a 17" LCD monitor, and under X it looks terrible at anything less
+than 1280x1024 resolution.  That's actually the resolution it is
+manufactured to operate at, as I understand it.  Using Debian Sid with
+this same monitor though using another computer, I entered vga=791 at the
+appropriate place in lilo.conf, and this gives me a 1024x768 console.  I'd
+like to do the same using another machine with this monitor (MAG monitor,
+btw).
 
-I'm sorry, but to get real help, you need to answer ALL of the questions, 
-not just some of them.
+On the other machine on which I've loaded Ubuntu, the vga=791 doesn't
+really work.  Ubuntu uses Grub as its bootloader, I should mention, but I
+don't think that figures into this problem.  Here's what I mean by "it
+doesn't really work:" when the booting process reaches the point where
+it's supposed to switch to this framebuffer console, the screen goes black
+and I get an "out of sync" message (comes from the monitor itself, rather
+than the OS) on the screen.  I can see nothing else until gdm comes up to
+let me log into X.  Hitting ctrl-alt-Fx after fully booting into X to get
+to the virtual terminal produces the same black screen.  I get the same
+results trying vga=773, vga=790 and vga=792.  If I enter vga=789 though, I
+get the framebuffer display--though at a lower resolution than I'd like
+(800x600): all the boot messages appear fine during the boot process using
+vga=789 and I can switch between (and see) virtual consoles once booted
+into X.  It would seem that maybe my video hardware has a problem
+displaying the console at 1024x768, doesn't it?  This is an integrated
+Rage ATI pro with either 8 or 12 MB video RAM, btw.
 
-The list below of INPUT chain rules has entries ONLY for an eth1 interface, 
-which you have not previously mentioned (but which I will guess is your LAN 
-interface). For that reason, it wil DROP all packets intended for a ppp0 
-interface. (Notice that its final rule, a DROP rule, has matched a lot of 
-packets.)
+I should mention in closing that, when I tried booting this machine using
+Knoppix I got the same result during boot: i.e., where I would expect to
+see Knoppix outputting boot messages to a color framebuffer console, I get
+a black screen with the out of sync message in the middle.
 
-Since you have no entries in the OUTPUT chain and (you previously said) its 
-default policy is DROP, no traffic will go out on ANY interface.
+My aim is not so much to see the boot messages, but just to be able to use
+console programs at an acceptable resolution once booted into X.  I found
+fbset among Debian packages, which seemed like it might offer further
+assistance in accomplishing this aim.  However upon installing and trying
+to run it I get a message saying "/dev/fb0: no such file or directory."
+Looking at things listed under /dev, I do see an entry for fb0.  So, I got
+stuck on that front as well.  Sort of a side issue, but if you have
+anything to say on this please do so.
 
-And if you have no entries in the FORWARD chain and its policy too is DROP 
-... well, you get the idea.
+Finally, I append here some /var/log/messages output relevant to the
+framebuffer at boot time.  The output seems to me to indicate that all is
+well, operating system-wise with the framebuffer:
 
-OK, this time around we need to know --
+Oct 16 14:01:02 localhost kernel: VFS: Mounted root (cramfs filesystem) readonly.
+Oct 16 14:01:02 localhost kernel: Freeing unused kernel memory: 204k freed
+Oct 16 14:01:02 localhost kernel: vesafb: framebuffer at 0xfd000000, mapped to 0xf0821000, size 1536k
+Oct 16 14:01:02 localhost kernel: vesafb: mode is 1024x768x8, linelength=1024, pages=9
+Oct 16 14:01:02 localhost kernel: vesafb: protected mode interface info at c000:4ac6
+Oct 16 14:01:02 localhost kernel: vesafb: scrolling: redraw
+Oct 16 14:01:02 localhost kernel: fb0: VESA VGA frame buffer device
+Oct 16 14:01:02 localhost kernel: Console: switching to colour frame buffer device 128x48
+. . . Goes on to the next step in the boot process . . .
 
-         1. How do you update your firewall ruleset when the PPPoE (ppp0) 
-interface is set up (or when it gets a new address)? The PPPoE daemon 
-probably calls a script for this, but you need to tell us the details, so 
-we can figure out why it (apparently) isn't working.
+Despite the success I see this output as representing, I nonetheless get
+the blank black screen with the out of sync message, and nothing else
+appears until the gdm login window comes up.  Is there maybe a way of
+specifying sync rate to the framebuffer?  This monitor does work within a
+rather limited sync range (hsync 48.38-60.02, vsync 60-75) at 1024x768.
 
-         2. Am I correct in assuming that you are NATing the LAN? If so, 
-the nat table (probably its POSTROUTING chain) is doing the SNAT or MASQ 
-needed. What does
-         iptables -nvL -t nat
-report about this? (This is probably OK, if your prior report that setting 
-the default-table policies to ACCEPT makes "everything" work.)
+Any advice/input would be appreciated.  That includes pointing me to other
+fora where I might ask about this.
 
-         3. More generally, what script is setting these rules up in the 
-firat place? Are you using some routing capability that comes as part of 
-FC2? Or are you using a drop-in firewall/router package of some sort (like 
-Shorewall -- though it is plain from the ruleset that you are not using 
-Shorewall, so I mention it only as an example)? Or did you craft something 
-yourself?
-
-         4. What actual failures are you encountering? "im still having 
-problems" is on the vague end of descriptions.
-
-         5. How do you *want* this router to operate? Just using default 
-ACCEPT policies isn't really very good firewalling ... but in practice, it 
-isn't usually all that vulnerable, since most breakins target Windows, not 
-Linux, and the NATing makes the Windows machines invisible to connections 
-that initiate from outside.
-
-
-
-
->  well... here comes my "iptables -nvL":
->
->Chain INPUT (policy DROP 980 packets, 127K bytes)
->  pkts bytes target     prot opt in     out     source destination
->  2061  408K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:10000
->15955 1602K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
->0.0.0.0/0           tcp dpt:22
->   853  111K ACCEPT     tcp  --  *      *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:80
->   991  150K ACCEPT     udp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           udp dpts:137:138
->  271K   37M ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:139
->     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:445
->     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:8080
->     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           tcp dpt:443
->     0     0 ACCEPT     udp  --  eth1   *       0.0.0.0/0 
-> 0.0.0.0/0           udp dpt:443
->67131 3090K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
->0.0.0.0/0           tcp dpts:5900:5902
->     0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0
->  2416  167K LOG_DROP   all  --  *      *       0.0.0.0/0 0.0.0.0/0
->
->and for my forward and output chains, there is no rules...
->
->thank you so much for your answers!
->
->Ray Olszewski wrote:
->
-> > At 12:29 PM 10/17/2004 +0200, Ole Martin Handeland wrote:
-> >
-> >> Hi,
-> >>
-> >> I cant seem to get internet access on my gateway machine, using fc2 and
-> >> iptables firewall. I have a eth0 connection (and a ppp0 connection using
-> >> eth0 to connect to my adsl provider) and a eth1 connection which i use
-> >> to connect to my local network (with a dhcp server on this gateway).
-> >>
-> >> i have gotten this gateway to connect to the net, and the network from
-> >> eth1 gets internet access. my problem is that my gateway dont get net
-> >> access itself. when i set default action to allow in my iptable,
-> >> everything works.
-> >> anyone knows which rule(s) i should apply to get internet access working
-> >> on this gateway?
-> >
-> >
-> >
-> > The core problem you face is that different chains, not just different 
-> rules, are involved.
-> >
-> > When other hosts on your LAN use this gateway to connect to the 
-> Internet, the packets are processed by the FORWARD chain in the default 
-> table (and by the  PREROUTING and POSTROUTING chains in the nat table).
-> >
-> > When the host itself tries to connect to the Internet, the packets are 
-> processed by the INPUT and OUTPUT chains in the default table.
-> >
-> > So ... if "everything works" when you set the default action to ACCEPT 
-> (there is no action "allow", so I assume you mean ACCEPT), then it 
-> probably means you do not have specific ACCEPT rules in suitable places 
-> in the INPUT and OUTPUT chains. That's not odd for a router ... mine is 
-> set up that way, allowing direct access for only a few things the router 
-> absolutely needs, like DNS resolution. But it is inconvenient for a 
-> general-purpose host that is also acting as a router.
-> >
-> > The exact rules you need to add, and where you need to add them, 
-> depends on what you do have in the INPUT and OUTPUT chains (which you can 
-> check best with "iptables -nvL"). If you want finer control than a 
-> genrealized ACCEPT policy, the actual rules need to be tailored to what 
-> you want to allow, what to disallow, and you haven't told us your 
-> situation in that regard.
-> >
-> > Describe more what you want to accomplish, and tell us the rules you 
-> currently have in the INPUT and OUTPUT chains, and I -- or someone here 
-> -- may be able to give you more specific advice that fits your needs. As 
-> it is, anything anybody suggests will be guesswork.
-> >
-> > Oh, one final thing. Since you are using PPPoE for your Internet 
-> connection, iptables does need to know to update its ruleset after PPPoE 
-> negotiation is complete. It also needs to know that ppp0, not eth0, is 
-> your external interface. It probably does all of this, since NATing the 
-> LAN works, but it is always *possible* that you have a problem there. 
-> Once again, only examination of the rulesets in the relevant 
-> tables/chains will tell.
-
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
