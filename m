@@ -1,22 +1,43 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Making USB storage devices work seamlessly under Linux
-Date: Wed, 10 Dec 2003 10:27:57 -0600 (CST)
+From: whitnl73@juno.com
+Subject: Re: Process information?
+Date: Wed, 10 Dec 2003 19:13:29 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0312101025010.1036@debian-box>
+Message-ID: <20031210.193742.8.0.whitnl73@juno.com>
+References: <20031210005506.8C0347268@sitemail.everyone.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20031210005506.8C0347268@sitemail.everyone.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: weeteck@linux.net
+Cc: linux-newbie@vger.kernel.org
 
-This subject has been brought up more than once on this list, and by
-persons other than me as well.  I saw an article today that seems to
-address some of the problems I've had.  Take a look at
-http://www.newsforge.com/software/03/12/05/2214256.shtml?tid=79&tid=82
-if interested.
+On Tue, 9 Dec 2003, Neo Wee Teck wrote:
 
-James
+> But in redhat's kernel, even with ps ax, it shows [httpd]
+>
+From man ps:
+
+       Programs swapped out to disk will be shown without command
+       line  arguments,  and  unless  the  c  option is given, in
+       brackets.
+
+Anything about the RedHat kernel that would cause httpd's to be swapped
+out?  Of course, if they are inactive, they will get swapped out
+eventually.
+
+Lawson
+
+--
+---oops---
+
+
+
+________________________________________________________________
+The best thing to hit the internet in years - Juno SpeedBand!
+Surf the web up to FIVE TIMES FASTER!
+Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
