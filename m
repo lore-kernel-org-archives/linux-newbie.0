@@ -1,57 +1,68 @@
-From: edgaralwers@t-online.de (Edgar Alwers)
-Subject: Re: Urgent help !
-Date: Wed, 10 Apr 2002 09:54:29 +0200
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Logging
+Date: Wed, 10 Apr 2002 18:23:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041009542900.01099@edgar>
-References: <20020408232526.122bd9b1.bbotero@gmx.de> <16ukfV-26ZTpgC@fwd01.sul.t-online.com>
+Message-ID: <02041018233304.00302@unix.pa3gcu>
+References: <5.1.0.14.0.20020409234447.0352bf68@shawmail.ed.shawcable.net> <5.1.0.14.0.20020410003520.0352ef78@shawmail.ed.shawcable.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <16ukfV-26ZTpgC@fwd01.sul.t-online.com>
+In-Reply-To: <5.1.0.14.0.20020410003520.0352ef78@shawmail.ed.shawcable.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Christoph Hammann <chammann@t-online.de>, linux-newbie@vger.kernel.org
+To: Chris Rose <offline@shaw.ca>, linux-newbie@vger.kernel.org
 
-Thank you, Christoph.
+On Wednesday 10 April 2002 06:36, Chris Rose wrote:
 
-I could boot the box in maintenance modus, edit /etc/fstab and exclude 
-/dev/hdb2 from booting. After that, I could at least boot up normally my 
-first hd.
-
-Now one question and one general remark.
-The question: how could I  try to rescue the /dev/hdb2 partition ? I mean, 
-do I have to formate the disk or what could be a better procedure ?
-
-The general remark: after this experience, I would strongly recomend _not_ 
-to_change a running ext2 partition in an ext3 one, as it seems that recovery 
-processes in the event of a crash and consequential forced check may have 
-catastrophal consequences. I had downloaded the newest e2fsprogs version 1.27 
-and even this program could not repair the partition. Not imaginable what 
-would have happened, if I would have also changed the partition containing 
-root !
-
-Edgar
-
-You wrote:
+> >Why would one want to ue a fancy program to read a simple text file, the
+> >program less allows the use of a search engine, hit the '/' key and a
+> > slash will appier at the bottom left of the screen, type a word to look
+> > for, then hit enter, to repeat hit the slash again and press enter or
+> > simply hit the space bar, the found word is highlighted.
 >
-> /dev/hdb2 seems to be definitely hosed, I'm not seeing any reasonable
-> method of getting at the data on this partition. But as you write this
-> partition seems to contain a backup only. Can you boot from CD-ROM or
-> diskette and when it halts in the bootup process while trying to fsck
-> /dev/hdb2 open another console (Ctrl-Alt-F2 to F{number of ttys+1})? If so,
-> I would try to umount this partition and go on with the boot process or
-> edit /etc/fstab so that it doesn't even touch it.
-> If, on the other hand, /dev/hdb2 contains the root filesystem, you really
-> are FUBAR. Wonder if one of the experts on this list can still help you out
-> of this.
-> So, what is the /etc/fstab of this system?
+> i think you're missing the point - what i'm looking for is not, per se, the
+> mechanism used to read the log, so much as i'm looking for the means to
+> make sense of what i'm seeing, and also which log files/settings of the
+> daemon will provide me with stats on uploads/downloads from my ftp site.
+
+I dont think i am, i meant what i said, what i can tell you futher is that 
+proftp.log does not really reveal much infomation at all, its "xferlog" in 
+/var/log that tells all, 'man xferlog' will explain all there is to be known.
+
+Just in case you may read my mail as being prudent here is what profftp log 
+shows.
+Aug 05 15:16:02 unix.pa3gcu proftpd[3839]
+
+Date and time i am sure we all now what that is, unix.pa3gcu = the server 
+name, proftpd[389] is the process number as would be shown by 'ps ax' when 
+the connection was presant. Further on the same line in the log one would see;
+
+unix.pa3gcu.ampr.org (192.168.1.160[192.168.1.160]): USER pa3gcu: Login 
+successful
+
+unix.pa3gcu.ampr.org is the fullservername (192.168.1.160[192.168.1.160]): is 
+the IP# of the remote computer who just opened the ftp connect,
+USER: pa3gcu = the user who logged in, that could be ftp or guest when 
+anoymous is used, Login succesful means a valid passwd was used.
+Any discrepancy's would be logged as well as the last entry on the line.
+No more info is given, you now would refer to xferlog to get details of what 
+was done in that connection.
+See 'man xferlog' to get all the details on those entries.
+
+I trust i have not missed the point in your eyes this time...
+
 >
-> Christoph
+>
+> Chris Rose
+> ==========
+> 1952 - 2001 = 42
 
 -- 
------------------------------------
-Dr.-Ing. Edgar Alwers
-Mailto:edgaralwers@gmx.de
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
