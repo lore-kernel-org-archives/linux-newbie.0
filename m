@@ -1,55 +1,40 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: XFree86 crash log
-Date: Tue, 12 Nov 2002 23:04:34 -0600 (CST)
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: Book Recommendations
+Date: Wed, 13 Nov 2002 05:27:06 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211122256450.21708-100000@localhost.localdomain>
-References: <3DD27DBE.4BA48F55@ihug.co.nz>
+Message-ID: <Pine.LNX.4.44.0211130517510.9909-100000@athame.gmpexpress.net>
+References: <5.1.0.14.1.20021112123254.020f5b60@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DD27DBE.4BA48F55@ihug.co.nz>
+In-Reply-To: <5.1.0.14.1.20021112123254.020f5b60@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "ichi@ihug.co.nz" <ichi@ihug.co.nz>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Ray:
+I've found a book called The Spirit Of C very useful for beginning
+programming in C.  I can't remember the rest of the information on it
+since it was a long time ago I used it.  This isn't strictly a book, but
+worth its weight in gold and this isn't just my opinion either, it's
+shared by other programmers I respect for their capabilities.  Mix
+Software wrote Power C which is a C compiler that's ansi standard and also
+sysv.  Even though it won't work on linux, you buy it say for dos you're
+not buying it for the compiler.  You're buying it for its manual.  Half
+the manual is tutorial and that's the front of the manual and it's best
+not to read it either.  It's the back half of the manual you bought the
+whole package for, and that's a functions library.  It has each function
+described like they'd be in linux man pages, so there's nothing special
+about that.  It also has worked example programs for each one of those
+functions so you can see by compiling and running the program how the
+function will work.  Now with all of that being said, cursor positioning
+is different in power C than it is in gcc.  with gcc you use
+goto(xy(row,col) and in Power C you use curspos(row,col) and they come
+from different libraries but other than that, it'll give you a good entry
+into C.
 
-I'm not using Basiclinux per se, but what, as I understand it, is 
-something that might qualify as a beta for the next release of Basiclinux. 
-It's pretty much just a straightforward, highly trimmed Slack 8.1 install. 
-Steven, who answers below, seems to have put his finger on the issue: I am 
-using a stock Slack 8.1 kernel, but it's the lowmem kernel, as Steven 
-mentions. As he points out, it probably doesn't support sockets. There was 
-a recommendation to use the more standard kernel if one does not have 
-really low memory (< 8MB) once the install was complete. I copied the 
-standard kernel from bare.i to the boot partition, but could not get it to 
-boot (would just keep rebooting, never getting to the Linux partition). It 
-looks like I'm getting into some issues here that are peculair to the 
-system I'm trying to use, so I'd probably better direct further inquiries 
-to the fashioner of this modified Slack 8.1 install.
+Jude <dashielljt@gmpexpress.net>
 
-Thanks, James
-
-On 13 Nov 2002, ichi@ihug.co.nz wrote:
-
-> james miller wrote:
-> > 
-> > Right now, I am trying to install a minimal Slackware (8.1) 
-> > The minimal install does not have X installed or configured, 
-> >
-> > Trio 64v+). When I try to run "startx," the X server crashes 
-> > with the following report dumped to /var/log/:
-> > ##############################################################
-> > _XSERVTransSocketOpen: socket() failed for tcp
-> 
-> Which kernel are you using?  The kernel used to install
-> Slackware 8.1 is the lowmem zimage, which (I think) does 
-> not support sockets.
-> 
-> Cheers,
-> Steven
-> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
