@@ -1,67 +1,73 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively
-  change all directories/files to 777
-Date: Thu, 09 Dec 2004 13:57:25 -0800
-Message-ID: <5.1.0.14.1.20041209133634.0208a928@celine>
-References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06> <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
-Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+From: Simon Valiquette <v.simon@ieee.org>
+Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively  change
+ all directories/files to 777
+Date: Thu, 09 Dec 2004 17:35:08 -0500
+Message-ID: <41B8D31C.3040305@ieee.org>
 References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
+ <5.1.0.14.1.20041209133634.0208a928@celine>
+Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <5.1.0.14.1.20041209133634.0208a928@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-At 04:11 PM 12/9/2004 -0500, Eve Atley wrote:
+Ray Olszewski a =E9crit :
+ >
+ > So you want an uploaded file to be mode 777, writable (and executabl=
+e,
+ > if you really mean 777, not 666) by any user on the system? OK. Chan=
+ge
+ > the account's umask, in ./.profile, or ./.bashrc, or whatever
+ > user-specific file is appropriate to your setup.
 
->First question...
->We have people SSHing into our Linux box from overseas (India to US, company
->access only). But files that are uploaded from these people become read-only
->to anyone else accessing them. We *require* that they be readable/writable
->by this side of the pond (US). How can I set this to occur? Otherwise, this
->method of transferring files will *not* work for us, and perhaps someone can
->point me to another solution.
+   I would also had done something likes that.  Then, if you want those
+users to be _forced_ to put all their files world readable, I don't kno=
+w
+how to do it.  The closest I know is with a cron that change back the
+permissions with chmod every 5 minutes or a script runned at logout tim=
+e
+(maybe scp also execute .logout).
 
-So you want an uploaded file to be mode 777, writable (and executable, if 
-you really mean 777, not 666) by any user on the system? OK. Change the 
-account's umask, in ./.profile, or ./.bashrc, or whatever user-specific 
-file is appropriate to your setup. (Or make the corresponding change in a 
-systemwide file, like /etc/profile or /etc/bash.bashrc or whatever ... the 
-specifics vary a bit from one distro to another, and even there I am 
-assuming your site uses bash). Usually the umask is 022, which generates 
-permissions 755; you want it to be 000.
+ >
+ > Since the relevant command is "chmod", not "Chmod" (case counts in
+ > Linux/Unix commands), I'm surprised you hit *anything* with the comm=
+and
+ > as written.
 
-Or, it may depend on how these usees are trensferring files after they ssh 
-in, something you don't actually mention. If we are discussing scp 
-transfers, it might be easier to have the users use the -p flag when they 
-do the transfers, so the transferred file will keep the permissions it had 
-on its source system (but I don't know that they are mode 777 either).
+   It surelly really was chmod.  Typo, or Outlook that automatically
+fixed the case (I remember seeing things likes that many years ago when
+I was still using Windows).
 
+ >         chmod -R 777 ./*
+ >
+ > (Even this will not chmod **all** files, because because by conventi=
+on
+ > almost all Linux/Unix commands treat files that begin with a dot
+ > character as special, so standard wildcards (*) will not match them.=
+ So
+ > this command will chmod files with names like filename and filename.=
+txt,
+ > but not one with names like .filename . I don't know a general way t=
+o
+ > include such files.)
+ >
 
->Second question...
->How can I recursively set all files/directories to 777?
->Chmod -R 777 *.* ... Didn't seem to hit everything.
+          chmod -R 777 .
 
+   Note the "." at the end.  That will do it for the current directory,
+and all files/directories that start from the inode represented by "."
 
-Since the relevant command is "chmod", not "Chmod" (case counts in 
-Linux/Unix commands), I'm surprised you hit *anything* with the command as 
-written. Your use of "all" is also a bit ambiguous .. but if you want to 
-chmod all the files in or below the PWD to mode 777, you'll need this command:
-
-         chmod -R 777 ./*
-
-(Even this will not chmod **all** files, because because by convention 
-almost all Linux/Unix commands treat files that begin with a dot character 
-as special, so standard wildcards (*) will not match them. So this command 
-will chmod files with names like filename and filename.txt, but not one 
-with names like .filename . I don't know a general way to include such files.)
+Simon Valiquette
+http://gulus.USherbrooke.ca
 
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
