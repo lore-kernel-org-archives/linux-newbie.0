@@ -1,33 +1,49 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: Re: Suggestions on Backups
-Date: Thu, 3 Oct 2002 11:48:38 -0500 (CDT)
+From: Ralph Gesler <rgesler@pacificnet.net>
+Subject: Re: CD-ROM Hell
+Date: Thu, 03 Oct 2002 10:38:33 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0210031143170.1285-100000@localhost.localdomain>
-References: <001501c26ad9$11865920$64fea8c0@pkrausxp>
+Message-ID: <3D9C8099.6477028C@pacificnet.net>
+References: <20021003110913.24497.qmail@linuxmail.org>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001501c26ad9$11865920$64fea8c0@pkrausxp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Calin Szonyi <caszonyi@linuxmail.org>
+Cc: linux-newbie@vger.kernel.org
 
-
-
-On 3 Oct 2002, Paul Kraus wrote:
-
-> ownerships. I am not sure about the space on the UNIX machine. It is
-> given in blocks and I don't really understand how blocks translate into
-> MB's if someone could explain I would be most appreciative. 
+Calin Szonyi wrote:
 > 
-Does df -h work on Unix, too? That will show you a drive's size and 
-useage in MB's, along with a percentage of used space (just df, without 
-the -h argument, will give the same info in blocks). I don't know Unix 
-at all, apart from those commonalities it has with Linux, so I just can't 
-say if this command works under Unix. But it might.
+> ----- Original Message -----
+> From: Ralph Gesler <rgesler@pacificnet.net>
+> Date:   Wed, 02 Oct 2002 14:35:57 -0700
+> To: Ray Olszewski <ray@comarre.com>
+> Subject: Re: CD-ROM Hell
+> >
+> > kernel 2.4.4, Pentium 133
+> >
+> 
+> Your kernel is too old and buggy.
+> Upgrading your kernel to a newer version may stop
+> your cd-rom problem
+> 
+> > Ralph Gesler
+> 
+> Calin
 
-James
+You misundrstood my first post. I was not implying that I have a
+problem  or a potential kernel bug. As I said, that due to my own
+carlessness in entering certain command line parameters related to the
+CD drive interface, I could generate a condition that may be related to
+the trouble experienced by the origional poster, Bryan Simmons, of this
+thread. 
 
+Unless the kernel developers have incorporated a psychic into the latest
+release to read the users mind and correct for blunders at the API, I
+soubt that the newest version, or any future version would or will catch
+such errors. 
+
+Ralph
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
