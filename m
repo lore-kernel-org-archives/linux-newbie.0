@@ -1,40 +1,48 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: chroot jail
-Date: Wed, 24 Apr 2002 15:21:24 +0000
+From: "Korosi Akos" <korosiakos@mailbox.hu>
+Subject: Re[2]: internal faxmodem...
+Date: Wed, 24 Apr 2002 17:30:09 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042415212404.04696@unix.pa3gcu>
-References: <200204241335.g3ODZj906318@g38.rdsbv.ro>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020424153010.27885.qmail@web2.mailbox.hu>
+References: <02042415133703.04696@unix.pa3gcu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200204241335.g3ODZj906318@g38.rdsbv.ro>
+References: 
+In-Reply-To: <02042415133703.04696@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Petre Bandac <g38@rdsbv.ro>, linux-newbie@vger.kernel.org
+To: pa3gcu@zeelandnet.nl
+Cc: Newbie <linux-newbie@vger.kernel.org>
 
-On Wednesday 24 April 2002 13:35, Petre Bandac wrote:
-> what's a chroot jail ?!
->
-> I ran into that while reading some howtoes about bind
+Hi!
 
-Well i cant say i have ever come across that in any bind doc's, however i 
-have not read them all.
-BUT.
-chroot is a program, 'man chroot' for details.
-I would imagen if i caught anyone using my system as root and leaving shuch a 
-script which would run as chroot, then i would send them to jail also..
+Thanks to Richard too, for giving me some other
+sources to search!
+
+Something else:
+
+After I reread my message I figured out that I didn't
+explained myself clearly at a place, and some could it
+understand wrongly:
+
+> > I bought an internal faxmodem...
+> > Now I know, it was a bad idea, because my linux distribution didn't
+> > idendtified it, and I heard that internal modems are not
+> > supported by linux very vell...
+
+I didn't meant it as a Linux fault.
+I knew that it could be around open source, and that
+manufacturers could be the source of the problem.
+But it is true, that I didn't knew anything about winmodems...
 
 
->
-> thanks,
->
-> petre
+Thanks again for all of you,
+Akos
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+
+--------------------------------------------------
+http://www.mailbox.hu - Mert levelezni kell...
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
