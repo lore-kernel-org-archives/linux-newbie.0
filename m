@@ -1,42 +1,30 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: DBCS ?
-Date: Tue, 8 Apr 2003 12:09:00 +1000
+From: Peter <pfheiss@philonline.com>
+Subject: Text Delimited Files
+Date: Tue, 08 Apr 2003 11:20:43 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <013f01c2fd73$d28a71b0$d700a8c0@iih.usyd.edu.au>
-References: <200304080656.04098.fox@sby.centrin.net.id>
+Message-ID: <200304080320.h383KhC03941@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: adwin <fox@sby.centrin.net.id>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
----- Original Message ----- 
-From: "adwin" <fox@sby.centrin.net.id>
-To: <linux-newbie@vger.kernel.org>
-Sent: Tuesday, April 08, 2003 9:56 AM
-Subject: DBCS ?
+Hi,
 
+I downloaded some text delimited data files and would not know how to open 
+them in Linux. I tried gnumeric, staroffice, applixware, nothing doing. They 
+all claim they can not handle this type of date. They are produced with some 
+Windows program.
 
-> hello ...
->
-> does anyone know what is DBCS ?
-> I need that to run Eclipse 2.1 on GTK 2.2 ....
->
+What I did now, I go to my good old QuattroPro in DOS. Open the files in a 
+jiffy safe them as *.wk1 and then I can access them with gnumeric.
 
-DBCS is short for double-byte character set.  It uses two-byte (16 bits)
-characters rather than one-byte (8 bit) characters.  It's needed for
-languages like Chinese/Japanese/Korean where characters can't nbe
-represented by single byte character sets like ASCII or IBM's EBCDIC.
+If there is a less complicated way with Linux I would like to know.
 
-You should only require it if you are using one of these type of languages.
-
-Most of the time - if available - it comes as an add on library for whatever
-software you are using.
-
-Regards
-
-James Turnbull
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
