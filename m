@@ -1,42 +1,61 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: SOLVED: Some users locked out of ssh and sftp?
-Date: Tue, 15 Mar 2005 09:54:10 -0500
-Message-ID: <4236F712.6000508@gelm.net>
-References: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
-Reply-To: chuck@gelm.net
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Cfdisk VS Fdisk??
+Date: Tue, 15 Mar 2005 10:21:23 -0500
+Message-ID: <20050315152123.GA763@lnx2.w8mch.ampr.org>
+References: <5.1.0.14.1.20050313094742.01fe9ba0@celine> <4234B915.4080503@gelm.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-In-Reply-To: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
+Content-Disposition: inline
+In-Reply-To: <4234B915.4080503@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Donald Duckie <schipperke2000@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Donald Duckie wrote:
-> I got this error message as shown below  . . . 
-> How do I change the /root/.ssh/known_hosts file?
-> It seems encrypted . . .
+Greetings Ray and Chuck; thanks for your input.. I'm using v 2.12 of
+both Fdisk and CFdisk, neither of which was the problem so the
+subject line was, actually, in error..
 
-Hi, Donald:
+Apprently I had three malfunctions at a time, masking the true
+problem: One bad HD, a flaky flat HD cable and me... Doing all this
+on a newly received MB didn't help.. Changing more than one
+parameter at a time not a good idea sometime..
 
-  The file is not encripted, but it contains an encription key for
-each remote hostname.  There is a line for each 'ssh' host that
-you have sucessfully connected.  If the remote 'host' has changed
-its encription key and you already have a line with the old
-encription key, 'ssh' will fail with that message.
+The HD is in the eCycle carton getting ready for Earth Day and the
+cable, either evaluated critically or in the copper recycle bin..
 
-Solution:
+All of the above coupled with me, somehow, losing the CMOS set up and
+having to restore defaults and go from there - didn't help... Messing
+with older, circa '92, drives didn't help either.. <grin>
 
-  Use a 'text' editor and open /root/.ssh/known_hosts.
-Delete the line that starts with the remote hostname.
-Save and exit.  (or 'rm known_hosts')
+Back to the drawing board, later, with a newer drive, etc...
 
-'ssh' to that hostname.
-Answer 'yes' when prompted.
+Appreciate!!. Enjoying the list that supplies much of my learning
+curve..
 
-HTH, Chuck
 
+On 03-13, chuck gelm wrote:
+> Ray Olszewski wrote:
+> <snip>
+> >I don't know what version of fdisk Slackware is shipping. MY Debian-Sid 
+> >system
+> >is perhaps six months out of date, and it has fdisk version 2.12 ("fdisk 
+> >-v") and cfdisk and cfdisk 2.12 (cfdisk -v"). With these versions, I've 
+> >seen no problems with drives up to 250 GB or so.
+> 
+> My Slackware v9.1, kernel 2.4.22, has
+> fdisk v2.12 &
+> cfdisk v 2.12
+> ;-)
+> 
+> HTH, Chuck
+> 
+
+-- 
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
