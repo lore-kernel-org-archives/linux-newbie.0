@@ -1,30 +1,38 @@
-From: Jude DaShiell <dashielljt@gmpexpress.net>
-Subject: Re: Set the "mail system".
-Date: Tue, 7 Jan 2003 20:05:49 -0500 (EST)
+From: Jens Schmidt <j.schmidt@paradise.net.nz>
+Subject: Re: Epson Stylus Color 300
+Date: Wed, 08 Jan 2003 18:09:10 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0301072001000.22192-100000@athame.gmpexpress.net>
-References: <20030107190203.26D873E2F@sitemail.everyone.net>
+Message-ID: <3E1BB276.69D7AAA@paradise.net.nz>
+References: <20030107112432.58794.qmail@web9607.mail.yahoo.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030107190203.26D873E2F@sitemail.everyone.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jose Luis Alarcon <jlalarcon@linuxwaves.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Shane McKeown <shane_mckeown@yahoo.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Sounds like both fetchmail and sendmail need configuring or alternatively
-to sendmail there's postfix or exim.  If the system runs sendmail the
-package will have to be turned off and possibly uninstalled if you go with
-one of the alternatives.  On this machine whenever I run as root one of
-the things that happens when I start that account up is the internet
-connection gets taken down then brought back up on reboot.  If you have
-the linux howtos installed on your system take a look at
-sendmail-address-rewriting-howto.  It has the necessary configuration
-steps you'll ned to get sendmail configured.
+Hi Shane,
 
--- 
-Jude <dashielljt(at)gmpexpress-dot-net>
+go to : http://www.epson.de/eng/support/download/index_drivers.htm
+
+that's the source for Epson drivers
+
+Good Luck, Jens
+
+
+Shane McKeown wrote:
+
+> I am trying to get my printer working under Linux
+> Mandrake 9, currently it is printing in black&white
+> only, cannot get colour printing at all.
+> I have installed the driver that comes with Mandrake 9
+> is there another driver that I can try, or what can
+> I try next
+>
+> Thanks for any help
+>
+> Shane McKeown
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
