@@ -1,53 +1,58 @@
-From: "Girish Kale" <girish.kale@nevisnetworks.com>
-Subject: RE: Question on initrd
-Date: Wed, 17 Sep 2003 11:59:03 +0530
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Question on initrd
+Date: Wed, 17 Sep 2003 09:51:56 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <36993D449C7FA647BF43568E0793AB3E061DF1@nevis_pune_xchg.pune.nevisnetworks.com>
+Message-ID: <200309170951.56066.pa3gcu@zeelandnet.nl>
+References: <36993D449C7FA647BF43568E0793AB3E061DF1@nevis_pune_xchg.pune.nevisnetworks.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-content-class: urn:content-classes:message
+In-Reply-To: <36993D449C7FA647BF43568E0793AB3E061DF1@nevis_pune_xchg.pune.nevisnetworks.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl, linux-newbie <linux-newbie@vger.kernel.org>
+To: Girish Kale <girish.kale@nevisnetworks.com>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
-
-My original grub.conf file has an initrd, so I am assuming it is
-required. I have a SCSI drive and so I think it is required. 
-I did make dep clean modules modules_install bzImage.
-I compiled the kernel without selecting BusLogic module also, but I got
-the same error, which I am unable to understand.
-
-Thanks,
-Girish
-
------Original Message-----
-From: pa3gcu [mailto:pa3gcu@zeelandnet.nl] 
-Sent: Wednesday, September 17, 2003 11:39 AM
-To: Girish Kale; linux-newbie
-Subject: Re: Question on initrd
-
-On Tuesday 16 September 2003 10:27, Girish Kale wrote:
+On Wednesday 17 September 2003 08:29, Girish Kale wrote:
 > Hi,
 >
-> I have compiled the kernel 2.6.0-test5. When I try to do build initrd
-> using /sbin/mkinitrd command, it gives me an error
-> "No module BusLogic found for kernel 2.6.0-test5"
-> I have selected the Buslogic as a module before compiling the kernel.
-> Can anyone help me on this.
+> My original grub.conf file has an initrd, so I am assuming it is
+> required.
 
-Firstly do you need initrd ?? i doubt it.
-Secondly did you do; 'make modules' and make 'modues_install' after
-compiling 
-the kernel and last but not least why compile the buslogic driver as a 
-module, things like that "should" be in your kernel espesialy if you
-intend 
-to boot from such a device.
+It possably is for that kernel, however not for a custom kernel with YOUR 
+booting requirments compiled into a kernel.
+ 
+> I have a SCSI drive and so I think it is required.
 
-If things you need for booting are in the kernel then really any need
-for 
-initrd goes away.
+If you use the default installed image YES, NO if as per above.
+
+> I did make dep clean modules modules_install bzImage.
+
+If you did it like that then you WILL get problems.
+
+make config
+make dep clean bzImage modules modules_install
+
+cp arch/i386/boot/bzImage /boot/vmlinuz-2.4.xx
+cp System.map /boot/System.map-2.4.xx
+edit grub.conf and add a new stanza for the new kernel.
+
+You may also want to edit the linux Makefile and define an EXTRAVERSTION as 
+well otherwise you may get into more trouble with old and new modules getting 
+mixed up in the same directorys.
+
+More info can be found in the Kernel-HOWTO on your system.
+A quick guide is on my website.
+
+> I compiled the kernel without selecting BusLogic module also, but I got
+> the same error, which I am unable to understand.
+
+Please read the manual page for initrd, it will explain what happens, please 
+note it says the following;
+"two phase boot-up operation" so cut out the middle man and compile needed 
+drivers and filesystems for booting INTO your kernel, that eliminates the 
+need for initrd.
 
 > Thanks,
 > Girish
