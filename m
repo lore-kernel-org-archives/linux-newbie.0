@@ -1,55 +1,58 @@
-From: Tim Kay <tim@dcs.qmul.ac.uk>
-Subject: Re: Firewall Configuration...
-Date: 10 Sep 2002 13:54:55 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Corrupt .deb file.
+Date: Tue, 10 Sep 2002 08:31:01 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1031662495.1427.26.camel@wasp-pc>
-References: <3D7C2DE1.4040601@tataelxsi.co.in>
+Message-ID: <5.1.0.14.1.20020910082303.0229d700@celine>
+References: <000f01c258a5$b0ec00a0$a830f7c2@gcb>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D7C2DE1.4040601@tataelxsi.co.in>
+In-Reply-To: <000f01c258a5$b0ec00a0$a830f7c2@gcb>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Sriram Narasimhan <nsri@tataelxsi.co.in>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: geoff <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
 
-Just as a quick addendum the firewall file lives in
-/etc/sysconfig/ip(chains/tables), this is chains for 7.2 IIRC - at least
-on 7.2 Alpha.
+"Possible"? Yes. *Likely*? No. Especially not such a core file as libc6, 
+the one library that nearly every application program uses.
 
-The most basic format, if you're in a hurry, is:
+OTOH, the current version of this package is 2.2.5-14 (in Sid, which I use 
+here, and probably in Woody too). And you don't way how either your CD or 
+your DVD was made. Occasionally, the Debian online pachage system contains 
+a bad backage. I've never seen this persist for more than a day ... but if 
+you or someone else constructed an .iso at just the wrong time, you could 
+have a bad package or two. Especially if you did it *before* Woody became 
+Debian-stable (back when it was Debian-testing).
 
--A/-I* CHAINNAME** -P PROTOCOL -s SOURCEADDRESS -d DESTINATION PORT -j
-what-to-do*** -l**** (if you want) 
+Assuming you have the target system set up with a connection to the 
+Internet, you might do better to download the Debian install floppies and 
+do an online installation (the installer on the CDs may even support this 
+... I haven't used Debian CDs is a very long time so don't really know). 
+This would get you the current versions of all the packages, including all 
+security updates.
 
-* ADD or INSERT or DELETE
-** usually INPUT or  OUTPUT 
-*** DENY or ACCEPT or MASQ or REDIRECT or RETURN - 1st 2 probably
-**** log to /var/log/messages if packet matching the rule arrives
+At 09:39 AM 9/10/02 +0100, geoff wrote:
+>I have two separate copies of the Debian GNU/Linux "Woody" 3.0 distro.
+>One is on CDROMs, the other is on a DVD-ROM.
+>
+>They both fail to install when the installation reaches
+>libc6_2.2.5-6_i386.deb
+>which is stated to be corrupt.
+>
+>Is it possible that a corrupt file is being distributed,  or must I look
+>closer to home ?
+>
+>My other distros (Mandrake,  Red Hat, SuSE 8.0  and FreeBSD4.4 Unix) all
+>install OK
+>including the SuSE DVD version.
+>
+>Anyone else had a similar experience ?
+>I particularly want to  test drive Debian and the .deb installation system.
 
-so to add a rule to deny ssh connections from anywhere to 192.168.0.1
-
--A INPUT -P tcp -s 0/0 -d 192.168.0.1/255.255.255.255 22 -j DENY -l
-
-
-Kind of short - better to read man ipchains (or, really, to use iptables
-but......)
-
-Tim
-
-On Mon, 2002-09-09 at 06:13, Sriram Narasimhan wrote: 
-> Hello,
-> 
-> I am using Red Hat 7.2 running 2.4.7-10
-> 
-> I seem to be having a problem changing the firewall configuration. When 
-> I installed Red Hat I didn't bother to set the firewall and it defaulted 
-> to the "High" Security level.
--- 
------------------------------
-Tim Kay
-Systems programmer
-Queen Mary University of London
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
