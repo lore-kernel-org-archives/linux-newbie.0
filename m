@@ -1,44 +1,34 @@
-From: ramzez <r4mz3z@yahoo.es>
-Subject: about cdrecord
-Date: 24 Mar 2003 21:42:26 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Strange Mice Behavior
+Date: Tue, 25 Mar 2003 14:20:20 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1048538589.1347.2.camel@localhost.localdomain>
+Message-ID: <200303250620.h2P6KKg02578@philonline.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-On534adf8vgTztMatTbS"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+Hi,
 
---=-On534adf8vgTztMatTbS
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+I recently bought a new mouse since the old one is graying. Both ps2 mice 
+behave properly under RH7.3 on the console and in X.
 
-Hi friends.
+In Slackware 8.0 each behaves differently. One, a Benq, functions correctly on 
+the console, however, goes crazy in X, which then I have to abort with 
+ctrl-alt-backspace.  The other mouse, a Kensington, is the reverse. It does 
+not work on the console, yet perfectly in X.
 
-  please, how do I import the last session of a CD-rw to write over it
-without blank it?
+When I have started X with the Kensington mouse in SW8.0 and then change to 
+the Benq mouse that one will then work in X.
 
-tanks
---=20
-  Linux User Registered #232544
-         ICQ : 337889406
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
+Is there any explanation and could it be corrected and how?
 
---=-On534adf8vgTztMatTbS
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Esta parte del mensaje esta firmada digitalmente
+Thanks & regards
+-- 
+Peter
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQA+f23dG3Fqyap52TERAswPAKCDqZKtXfPP1Ww/eFW8uYpMVi3jsACfdL6r
-E4KsCgTIQ5Gf2AM/d/OLYoE=
-=Foc2
------END PGP SIGNATURE-----
-
---=-On534adf8vgTztMatTbS--
 
 
 -
