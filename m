@@ -1,55 +1,45 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: [SLE] (OT) Video cable ..
-Date: Wed, 14 May 2003 16:54:22 +0200
-Message-ID: <200305141654.33928.James.Hatridge@epost.de>
-Reply-To: James.Hatridge@epost.de
+From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
+Subject: Re: repairing unstable mouse behavior
+Date: 14 May 2003 23:07:36 -0400
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <1052968056.8900.5.camel@goldfinger.orbdesigns.com>
+References: <200305131334.h4DDYvjs017212@hartford-hwp.com>
+	 <1052833600.6654.2.camel@goldfinger.orbdesigns.com>
+	 <200305150241.h4F2fNoq020922@hartford-hwp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Return-path: <suse-linux-e-return-145359-suse-linux-e=m.gmane.org@suse.com>
-list-help: <mailto:suse-linux-e-help@suse.com>
-list-unsubscribe: <mailto:suse-linux-e-unsubscribe-suse-linux-e=m.gmane.org@suse.com>
-list-post: <mailto:suse-linux-e@suse.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200305150241.h4F2fNoq020922@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Newbie <linux-newbie@vger.kernel.org>, Scanner <primax@linuxhacker.org>, Stamp Club <philatelic@philatelic.com>, SuSE <suse-linux-e@suse.com>
+To: brownh@hartford-hwp.com
+Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Wed, 2003-05-14 at 22:41, Haines Brown wrote:
+> When I log out, the erratic behavior subsides. It comes and goes in
+> severity. I have backups and would use them simply to overwrite files
+> if I knew what to overwrite. 
 
+Sorry I managed to omit the list in my reply to you earlier. Sigh.
 
-Hi all
+That's odd behaviour... and disabling GPM doesn't change the
+circumstance, mmmm. The other possibility that springs to mind is that
+the mouse driver spec is wrong. The file that controls how X operates is
+/etc/X11/XF86Config-4 (or in RH, omit the -4). If you have a known-good
+backup of that file, then checkpoint the system version, and copy yours
+in - see what happens.
 
-I was just given a Siemens Nixdorf MCM 1705 (NTD) Monitor. But there was =
-no=20
-video cable for it. IF someone has a video cable that will work with this=
-=20
-monitor, contact me off list and let's make a trade.
+Best of luck,
 
-Thanks
-
-JIM=20
-- --=20
-Jim Hatridge
-Linux User #88484
-- ------------------------------------------------------
-                 BayerWulf
-           Linux System # 129656
-         The Recycled Beowulf Project
-  Looking for throw-away or obsolete computers and parts
-   to recycle into a Linux super computer
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
-
-iD8DBQE+wlihv3Z9K7QSWt4RAiN1AKC96njKXWQb0FTfSbxEz5ImM/U5BgCeNnry
-YWUNUQsJKQIEgmqx4PddSLo=3D
-=3DydD4
------END PGP SIGNATURE-----
+.brian
 
 
 -- 
-Check the headers for your unsubscription address
-For additional commands send e-mail to suse-linux-e-help@suse.com
-Also check the archives at http://lists.suse.com
-Please read the FAQs: suse-linux-e-faq@suse.com
+Brian P. Bilbrey <bilbrey@orbdesigns.com>
+Orb Designs
 
-
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
