@@ -1,8 +1,8 @@
 From: "rob.rice" <rob.rice@fuse.com>
-Subject: (no subject)
-Date: Fri, 01 Aug 2003 11:36:19 -0700
+Subject: ICEwm
+Date: Fri, 01 Aug 2003 13:13:28 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F2AB323.1000409@fuse.com>
+Message-ID: <3F2AC9E8.4080503@fuse.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,10 +10,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I have the ICEwm and would like info on setting it up I have ben around 
-the web and cant find info on it
-I want to do things change my wall paper and add and remove  programs 
-from the menues
+I would like to add programs that are not on my path to the ICEwm menues 
+I know these programs will run with out being on the path 
+nbhs2@i-2000.com has tould me how to remove programs and how to add 
+prograns that are on the path ( thank you ) but how do I add the full 
+path to the program to the menues ?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
