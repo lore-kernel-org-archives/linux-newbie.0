@@ -1,55 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Physical Mac Address
-Date: Thu, 14 Oct 2004 10:50:27 -0700
+From: Jim Nelson <james4765@verizon.net>
+Subject: Re: any way to find which pci driver uses what memory region & Any
+ way to find which driver is attached to which device file
+Date: Thu, 14 Oct 2004 18:11:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20041014104344.07d144a8@celine>
-References: <20041014155021.96634.qmail@web41505.mail.yahoo.com>
- <20041014155021.96634.qmail@web41505.mail.yahoo.com> <416EB76C.5060404@comcast.net>
+Message-ID: <416EF97D.9050401@verizon.net>
+References: <025301c4b743$dd7a2d00$41c8a8c0@Eshwar>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <416EB76C.5060404@comcast.net>
-References: <20041014155021.96634.qmail@web41505.mail.yahoo.com>
- <20041014155021.96634.qmail@web41505.mail.yahoo.com>
+In-Reply-To: <025301c4b743$dd7a2d00$41c8a8c0@Eshwar>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: eshwar <eshwar@moschip.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-At 11:29 AM 10/14/2004 -0600, Conway S. Smith wrote:
->-----BEGIN PGP SIGNED MESSAGE-----
->Hash: SHA1
+eshwar wrote:
+
+>HI,
 >
->Dave B. Sharp wrote:
-> > Hi there,
-> >   I would like to access the physical Mac addr. from
-> > hardware (an immutable source). Do I need a specific
-> > implementation for each NIC card or is there a kernel
-> > call that calls each implementation. I have looked at
-> > server sample driver sources.
-> >   Thanx
-> >      Dave
-> >
+> Is there any way to find which pci driver uses what memroy regions and any
+>way to find which driver si attached to which device file
 >
->Not sure if I understand you exactly, but ifconfig shows the MAC address
->as HWaddr.
+>  
+>
 
-This is almost, but not completely true. ifconfig shows the assigned MAC 
-address ... but this *can* differ from the physical MAC address, if the 
-relevant NIC driver supports the software resetting of MAC addresses. (See 
-the "hw class address" option in the "ifconfig" man page for details.) So 
-this is not quite the "immutable source" the original poster asks for.
+"cat /proc/iomem".  That will list the memory addresses assigned to the 
+various PCI devices.  Some kernels have PCI name support compiled in 
+(most stock distro kernels do), but without it, you get the PCI bus 
+location numbers, and have to do a bit of work with lspci to identify 
+what each adapter is.
 
-To check the physical MAC address, it might suffice to check the dmesg 
-buffer right after boot/init. My system, as an example, saves this at 
-boot/init in the file /var/log/dmesg . Checking it, I find this line:
+I don't understand why you need to know PCI memory address regions - 
+they are remapped at device configuration time (unlike ISA) unless you 
+have a seriously broken adapter card.
 
-     eth0: Lite-On 82c168 PNIC rev 32 at 0xe000, 00:A0:CC:D0:80:CB, IRQ 11.
+What do you mean "any way to find which driver is attached to which 
+device file"?  You can use "cat /proc/devices" to get the major number 
+assigned to each block and char driver, and then do a "ls -l 
+/dev/[device file name]" to get the major and minor numbers assigned to 
+that device.  From there, things get more driver-specific - different 
+drivers use minor numbers in different ways.
 
-This value should be written before any software modifications to the MAC 
-address are possible (or at least likely), so it might be close enough to 
-"immutable" to meet the original poster's needs.
+More info about what you're actually trying to do would help.
 
-
+Jim
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
