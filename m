@@ -1,31 +1,44 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: How do I stop GUI from autoloading?
-Date: Tue, 20 May 2003 18:26:31 -0400
+From: Robert.Couture@p0.f2000.n229.z1.fidonet.org
+Subject: vsftpd
+Date: 20 May 2003 22:24:48 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3ECAAB97.2C45DF51@gelm.net>
-References: <5.1.0.14.1.20030519141159.01f205c8@celine>
-	 <3EC92B60.1000406@bcgreen.com>
-	 <5.1.0.14.1.20030519141159.01f205c8@celine> <5.1.0.14.1.20030519230639.01f88a80@celine>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <76c0f2.b4bb18@tcob1.net>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: sean@tcob1.net
 
-# These are the default runlevels in Slackware:
-#   0 = halt
-#   1 = single user mode
-#   2 = unused (but configured the same as runlevel 3)
-#   3 = multiuser mode (default Slackware runlevel)
-#   4 = X11 with KDM/GDM/XDM (session managers)
-#   5 = unused (but configured the same as runlevel 3)
-#   6 = reboot
+The following message is a courtesy copy of an article
+that has been posted to linux.newbies as well.
 
-# Default runlevel. (Do not set to 0 or 6)
-id:3:initdefault:
+Hello All!
 
-HTH, Chuck
+I am having a problem setting up vsftpd with anonymous access.  I keep getting
+the following error:
+
+500 OOPS: vsftpd: refusing to run with writable anonymous root
+
+I am stumped as to what this means.  I have tried all sorts of games with
+setting permissions, but nothing seems to work.
+
+The man pages do not address this issue and searches on the internet do not
+reveal anything to resolve the problem.  As a newbie user, I sure could use a
+detailed cure for this.  :)
+
+I am running RH 9.0 and the vsftpd root is the standard /var/ftp
+
+Thanks in advance!
+
+Regards,
+Robert
+
+--- Msged/UNX 6.1.2
+ * Origin: RuneKeep: Linux Hub 2000 (1:229/2000)
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
