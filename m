@@ -1,107 +1,58 @@
-From: Hadi <s2254504@cse.unsw.EDU.AU>
-Subject: Re: [LinuxIran] BeOS
-Date: Sat, 18 May 2002 15:44:59 +1000 (EST)
+From: G Anna <drguruolai@eth.net>
+Subject: gcide
+Date: 18 May 2002 12:21:39 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0205181537001.12567-100000@weill.orchestra.cse.unsw.EDU.AU>
-References: <F175MWZw0UX2REZTBqm00001bf9@hotmail.com>
+Message-ID: <m3vg9maqys.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F175MWZw0UX2REZTBqm00001bf9@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="windows-1252"
-To: linuxiran@lists.sharif.edu
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+Dear All,
+
+I have downloaded gcide-0.46.zip from ftp://ftp.gnu.org.  This zip
+archive contains the following files.
+
+CIDE     A       3,680,387  04-10-02  9:29a CIDE.A
+CIDE     B       3,154,243  04-10-02  9:32a CIDE.B
+...
+...
+
+/* The suffix goes from A to Z */
+...
+...
+
+CIDE     Y         182,838  01-17-02 11:38p CIDE.Y
+CIDE     Z         134,301  01-17-02 11:41p CIDE.Z
+
+How to make this work with dict?  For that I need to have something
+like 
+
+gcide.dict.dz
+gcide.index
+
+Given the above files, how to make these two files?  Kindly help me.  
+
+Thank you for your time and effort.
+
+Cheers,
+anna
 
 
+-- 
 
-here are some sites that might be a bit useful.
-As far as was it based on Unix? The following link clearly says no
+(11) I will be secure in my superiority. Therefore, I will feel no need
+     to  prove it by leaving clues in the form of riddles or leaving my
+     weaker enemies alive to show they pose no threat. - Peter Anspach 
+     in "The Top 100 Things I'd Do If I Ever Became An Evil Overlord"
 
-http://web.archive.org/web/20010603035418/www.benews.com/beos/
-
-This one is a link to an interview with some of BeOS developers
-http://technetcast.ddj.com/tnc_program.html?program_id=3D35
-
-And if u r also intrested about the financial side of Be Inc,
-http://news.com.com/2100-1040-271739.html
-
-
-happy reading...
-
-
-
-
-
-
-
-
-
-
-
-
-On Sat, 18 May 2002, Aryan Ameri wrote:
-
->
-> Hi there:
-> Please don=92t criticize me on saying that this email is not relative=
- to this
-> mailing list and etc. First I think it is relative to Unix/Linux and =
-the
-> main factor that I am posting it is that I had no other source to ask=
- this.
-> As I=92m very curios about the BE Operating system ( The OS that was =
-made by
-> Be Inc and officially died in 2001 ), I was taking a look at some
-> screenshots from it at http://gm.benews.com/archives/00000003.htm
-> In the screenshots I saw that BeOS had a terminal screen which is ver=
-y
-> similar to KDE=92s Konsol. Second thing, I noticed that it used Bash,=
- and most
-> important of all, I saw that the filesystem was very similar to UNIX.=
- I saw
-> the screenshot referring to a file by this path:   /dev/filename
-> The question that I want to ask is that was BeOS built on UNIX? Somet=
-hing
-> like BSD? I am writing an essay about the history of operating system=
-s.
-> Unfortunately I have a very limited knowledge about BeOS. If you can =
-also
-> provide me with any information about BeOS, That would be most welcom=
-e.
-> Thanks in advance
->
->
->
-> Linux Registered User # 266090
-> Aryan
->
->
-> _________________________________________________________________
-> Get your FREE download of MSN Explorer at http://explorer.msn.com/int=
-l.asp.
->
-> _______________________________________________
-> LinuxIran mailing list
-> LinuxIran@lists.sharif.edu
-> http://lists.sharif.edu/mailman/listinfo/linuxiran
->
-
-          '''
-         (O O)
-+----oOO--(_)------------+
-|Hadi                    |
-|s2254504@cse.unsw.edu.au|
-|University of NSW       |
-+--------------oOO-------+
-        |__|__|
-         || ||
-        ooO Ooo
-
+                                            http://www.eviloverlord.com
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
