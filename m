@@ -1,47 +1,30 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: permission for alias file
-Date: Tue, 07 Jan 2003 11:17:31 +0000
+From: Shane McKeown <shane_mckeown@yahoo.com>
+Subject: Epson Stylus Color 300
+Date: Tue, 7 Jan 2003 03:24:32 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk>
-References: <200301061652.h06GqwTo000410@hartford-hwp.com>
+Message-ID: <20030107112432.58794.qmail@web9607.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030106090035.021e3860@celine>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
+I am trying to get my printer working under Linux
+Mandrake 9, currently it is printing in black&white 
+only, cannot get colour printing at all.
+I have installed the driver that comes with Mandrake 9
+is there another driver that I can try, or what can 
+I try next
 
->>
->>
->>For example, in /etc/aliases, I have a pointer to
->>
->>    test: :include:/home/brownh/aliases/test.aliases
->>
->>But when I use it (after upgrading to RH 8.0), I get:
->>
->>     ----- The following addresses had permanent fatal errors -----
->>  :include:/home/brownh/aliases/test.aliases
->>    (expanded from: <test@hartford-hwp.com>)
->>
->>     ----- Transcript of session follows -----
->>  550 5.2.4 :include:/home/brownh/aliases/test.aliases... Cannot open
->>    /home/brownh/aliases/test.aliases: Permission denied
->>
->>Bothe the aliases directory and the test.aliases file are rwxrwxrwx
->>(wide open for test purposes).
->
+Thanks for any help
 
+Shane McKeown
 
-I remember doing an :include: statement for a mate and we found that 777 permissions on the file
-were OK but the directory must be set correctly. I seem to remember it couldn't have root ownership.
-
-Check the sendmail faq at: http://www.sendmail.org/faq/section3.html#3.33
-
---
-Carl
-
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+http://mailplus.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
