@@ -1,8 +1,8 @@
 From: dashielljt <dashielljt@gmpexpress.net>
 Subject: Re: tar for "full" floppy backup?
-Date: Fri, 6 Dec 2002 17:25:00 -0500 (EST)
+Date: Fri, 6 Dec 2002 17:26:05 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212061723130.1504-100000@athame.gmpexpress.net>
+Message-ID: <Pine.LNX.4.50.0212061725310.1504-100000@athame.gmpexpress.net>
 References: <200212062144.OAA17052@cu.imt.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,9 +13,7 @@ Content-Transfer-Encoding: 7bit
 To: Jerry James Haumberger <jerryjh@imt.net>
 Cc: linux-newbie@vger.kernel.org
 
-Whoever got that manual should be given a full refund by slackware if it
-is as you say.  The f in that command string has to precede a device name
-and file path.
+maybe tar cvbkf /dev ... will work.
 
 Jude <dashielljt(at)gmpexpress-dot-net>
 
