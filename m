@@ -1,47 +1,71 @@
-From: lawson_whitney@juno.com
+From: John E. Jay Maass <jay.maass@verizon.net>
 Subject: Re: 'nobody' is using my system !!!
-Date: Fri, 27 Sep 2002 20:09:04 -0400 (EDT)
+Date: Fri, 27 Sep 2002 21:02:51 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020927.203747.134671024.2.lawson_whitney@juno.com>
-References: <200209272147.g8RLlLv21054@ev6.be.wanadoo.com>
+Message-ID: <20020928010251.JJTA9549.out019.verizon.net@[127.0.0.1]>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209272147.g8RLlLv21054@ev6.be.wanadoo.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: hammer@revobild.net
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On 27 Sep 2002, Heimo Claasen wrote:
+I am enjoying your posts, Heimo. What I recently read
+somewhere about leaving computers on overnight related to
+prevention of thermal stress in components transitioning from
+relative hot to cold, and back. Isn't component failure rather
+rare these days in either case? When was the last time someone
+had to get out a soldering iron and replace an open resistor?
 
-> BTW, _once_ I stumbled (per pure chance and hazard) into the place where
-> this mount counter is set, gladly changed it from 20 (yes, that _was_
-> the default) to 99 (ouf, I dare say, still a "safe and secure" setting);
-> but one bad day I did a new install on that box: and _never_ever_ found
-> back the hint where this "secret" sacred place was, despite of dozens of
-> HOwTOs, hundreds of mans, thousand of scribbled notes and well-printed
-> articles to read. Anyone who knows and _dares_ to tell about ?!
+I shut down my systems at night because I must keep my utility
+expenses to a minimum, and because one of my machines creates
+considerable radio-frequency interference (RFI) to my night-time
+AM radio listening.
 
-tune2fs -c 99 <device>
+Your monitoring of electrical power consumption in specific watts
+is admirable. Good for you. So many people take energy for
+granted and waste it wantonly.
 
-man tune2fs
+Along these lines, please allow me to jump to a parallel track
+and go off topic:
 
-e2fsprogs package.
->
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-27
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
->
-Lawson
----oops---
+Why doesn't the Western World become as technologically energy
+independent of Mid-East oil as soon as possible? Workarounds
+abound. We could not become independent of Mid-East oil overnight.
+We could, however, practice ever-so-much-better conservation of
+existing energy, while developing yet untapped, alternative energy.
+
+One of the first things United States President George W. Bush
+did NOT do upon taking office was give a thought to the capture
+of alternative energy when the issue was up for conference.
+Bush is an oil man. However, would not the oil men be the
+entrepeneurs best positioned and most capable of leveraging
+new energy sources to their own advantage?
+
+One last thing. Many electrical devices these days run on little
+power supplies that plug into the wall and remain on 24/7. For
+instance, my indoor television rabbit ears rely on a relationship
+with the AC power lines. However, I refuse to leave the antenna's
+power supply on 24/7. I use power strips that are on/off switchable
+wherever possible. When I'm not watching the television, which is
+often (NOT watching it), off goes the supply to the antenna.
+
+Oh brother...
+
+Jay
+suburban Philadelphia
 
 
 
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
+
+
+
+
+
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
