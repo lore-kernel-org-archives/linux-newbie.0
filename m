@@ -1,49 +1,39 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Linux install error
-Date: Sun, 27 Jul 2003 17:37:08 +0200
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Genius Scanner
+Date: Sun, 27 Jul 2003 17:44:21 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307271737.08903.pa3gcu@zeelandnet.nl>
-References: <30ac01430adf65.30adf6530ac014@homemail.nyu.edu>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <200307271744.22009.James.Hatridge@epost.de>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <30ac01430adf65.30adf6530ac014@homemail.nyu.edu>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Anshuman Singh Rawat <asr245@nyu.edu>, linux-newbie@vger.kernel.org
+To: SuSE <suse-linux-e@suse.com>
+Cc: Newbie <linux-newbie@vger.kernel.org>
 
-On Sunday 27 July 2003 04:33, Anshuman Singh Rawat wrote:
-> Traceback (Innermost last)
->     File "/usr/bin/anaconda", line 487, in ?
->         from splashscreen import splashScreenShow
->     File "/usr/bin/anaconda/splashscreen.py", line 21, in ?
->         from gtk import *
->     File "/usr/lib/python1.5/site-packages/gtk.py", line 22, in ?
->         from _gtk
-> ImportError: /usr/lib/libgtk-1.2.so.0:invalid ELF header
-> install exited abnormally.
-> sending termination signals...done
-> sending kill signals...done
+Hi all...
 
-Are you sure that you installed "gtk" and its libs.??
-All the errors concern gtk.
+I was given an old Genius Scanner 1170 CS SCSI scanner. My buddy gave me 
+everything for it but the terminator. If anyone has a terminator and is 
+willing to let go of it, please email me off-list and we will make a deal.
 
-> Any idea what the problem mite be?
->
-> -Anshuman
+Thanks
 
+JIM
+
+
+Jim Hatridge
+Linux User #88484
 -- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Our country was colonized by the religious, political, economic, and criminal
+rejects of every country in the world. We have been carefully breeding insane, 
+obsessive, fanatic lunatics with each other for over 400 years, resulting in 
+the glorious strain of humanity known as "Americans". You have to expect 
+some... peculiarities. 
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Read about new German stamps each quarter:
+	 http:/www.fecundswamp.net/~hatridge/bulletin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
