@@ -1,30 +1,60 @@
-From: "Girish Kale" <girish.kale@nevisnetworks.com>
-Subject: Basic question on bootloader
-Date: Fri, 30 May 2003 12:57:05 +0530
+From: "John T. Williams" <jowillia@vt.edu>
+Subject: Re: Linux as a router and/or bridge
+Date: Fri, 30 May 2003 06:21:13 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <36993D449C7FA647BF43568E0793AB3E059B25@nevis_pune_xchg.pune.nevisnetworks.com>
+Message-ID: <003501c32695$47c39b10$ed64a8c0@descartes>
+References: <1054264112.4715.4.camel@jayhawk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: J S <webnews@comcast.net>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi, 
+if you look up
+NAT
+masq
+and iptables
 
-I am new to Linux.... 
-We are developing a device on which we plan to run Linux. The device
-will use some processor like MIPs, PowerPC, etc. 
-What I want to know is : 
-1) can the standard bootloader like LILO work with these devices also or
-do each device have their own bootloaders ? 
-2) how do the applications get compiled in a linux environment. Do the
-apps get compiled when the linux gets compiled and how is it downloaded
-to the target board. 
+you'll find all the information you need
 
-Regards, 
-Girish
+A good place to start is
+http://www.tldp.org/HOWTO/IP-Masquerade-HOWTO/
+
+Sincerely,
+John T. Williams
+jtwilliams@vt.edu
+
+
+----- Original Message ----- 
+From: "J S" <webnews@comcast.net>
+To: "linux-newbie" <linux-newbie@vger.kernel.org>
+Sent: Thursday, May 29, 2003 11:08 PM
+Subject: Linux as a router and/or bridge
+
+
+> Linux people,
+>
+> I'm trying to understand how to set up a Linux system as a router.  For
+> example, assume I have an interface with IP address 192.168.0.1(eth0)
+> and another with IP address 192.168.1.1(eth1).  What do I need to do to
+> allow traffic received on one interface to be automatically forwarded
+> out of the other interface?  To extend the example, assume eth0 receives
+> a packet from 192.168.0.25 that is destined for 192.168.2.40.  What is
+> the minimal set of steps I need to perform in order to get my kernel to
+> send that packet on its way?
+>
+> Second question, what exactly is network bridging and how might I use it
+> instead of setting up a Linux system as a router?
+>
+> Josh
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
