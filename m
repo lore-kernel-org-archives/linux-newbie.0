@@ -1,40 +1,41 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Gnome, KDE won't Open
-Date: Thu, 12 Aug 2004 14:05:34 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Gnome, KDE won't Open
+Date: Thu, 12 Aug 2004 08:23:21 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040812060534.E17B83ECE5@heisspf>
+Message-ID: <200408120823.21453.pa3gcu@zeelandnet.nl>
+References: <20040812060534.E17B83ECE5@heisspf>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040812060534.E17B83ECE5@heisspf>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Peter <heisspf@skyinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-Hi,
+On Thursday 12 August 2004 08:05, Peter wrote:
+> Has this strange behavior anything to do with this USB connection of the
+> kb/mouse and what would be needed then to correct it or is it just a
+> coincidence meaning further trouble?
 
-RedHat 9.1, Kernel 2.2.20-20, 118 KRAM, 435 K swap
+I would imagen it has everything to do with the problem, you would need to 
+edit your X configuration file and change the subsction(s) for at least your 
+mouse. Checl the keybpard entry as well altho' it should be ok.
 
-On my motherboard the connection for the keyboard died for which reason I 
-could no longer boot.
+> Thanks & regards
+> --
+> Peter
 
-I bought a USB adopter, connected keyboard and mouse to it and I could boot 
-again with kb and mouse working properly.
-
-However, now I cannot start gnome nor kde from the concole. Both crash just 
-before the panels should open. I can start twm and from there open 
-applications like abiword, gnumeric. When I open gnome-panel or kicker from 
-within twm causes a crash when then trying to open an application from those 
-panels.
-
-Opening gnome or kde via gdm or xdm causes a reboot.
-
-Has this strange behavior anything to do with this USB connection of the 
-kb/mouse and what would be needed then to correct it or is it just a 
-coincidence meaning further trouble?
-
-Thanks & regards
 -- 
-Peter
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
