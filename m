@@ -1,38 +1,38 @@
-From: Peter <pfheiss@philonline.com>
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
 Subject: Re: Minicom fails
-Date: Fri, 20 Dec 2002 15:00:04 +0800
+Date: Fri, 20 Dec 2002 07:55:38 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212200700.gBK704603967@philonline.com>
-References: <200212190804.04757.sotl155360@earthlink.net>
+Message-ID: <200212200755.38903.sotl155360@earthlink.net>
+References: <200212200700.gBK704603967@philonline.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Thu, 19 Dec 2002 08:04:04 EST."
-             <200212190804.04757.sotl155360@earthlink.net> 
+In-Reply-To: <200212200700.gBK704603967@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
+If it works you are correct.
 
- Peter said:
-> After I run a RH7.3 upgrade I can't access anymore minicom as a user.
-> I get the following message: ]$ minicom Device /dev/ttyS0 lock failed:
-> Operation not permitted.
+Frank
 
-
-Thanks Frank!
-
-The first thing I did was reading the man pages after the opening failure. I 
-got nothing out of it.
-
-What I did now was setting the group of /var/lock to user and I can open 
-minicom again.
-
-Was this the right way to do it?
-
-Regards
--- 
-Peter
+On Friday 20 December 2002 02:00, Peter wrote:
+>  Peter said:
+> > After I run a RH7.3 upgrade I can't access anymore minicom as a user.
+> > I get the following message: ]$ minicom Device /dev/ttyS0 lock failed:
+> > Operation not permitted.
+>
+> Thanks Frank!
+>
+> The first thing I did was reading the man pages after the opening failure.
+> I got nothing out of it.
+>
+> What I did now was setting the group of /var/lock to user and I can open
+> minicom again.
+>
+> Was this the right way to do it?
+>
+> Regards
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
