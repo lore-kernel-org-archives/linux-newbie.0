@@ -1,38 +1,35 @@
-From: Jerry James Haumberger <jerryjh@imt.net>
-Subject: tar for "full" floppy backup?
-Date: Sat, 7 Dec 2002 09:24:20 +0000 (UTC)
+From: wa4chq@netscape.net (neil t)
+Subject: Basiclinux and zgv
+Date: Sat, 07 Dec 2002 06:06:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212070919.CAA12532@cu.imt.net>
-Content-Transfer-Encoding: 7bit
+Message-ID: <075F4155.1664991B.0006BEFC@netscape.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
+Cc: survpc@tmonroe.com
 
-Hello everyone --
+Greetings
+I just installed the new 'add-on' ZGV for Basiclinux.  I untarred it as suggested and tried the command 'zgv' --- nothing.  So then I typed "chmod +x zgv " and tried the command 'zgv'....still nothing.  I located *zgv in my home directory under /usr/bin and tried (from mc) to execute from there.  I get the message " 
+$: ./zgv
+./zgv: can't load library 'libvgagl.so.1'
+I get the same result when I try 'seejpg' (not sure if that is the correct name, my laptop, which I was just looking at had its battery die!)
+Any suggestions?
+Cheers
+Neil T.
 
-Thank you for offering me various suggestions on how to possibly
-get tar to make a backup archive on multiple floppies.  Sorry to
-say, none of the suggestions worked.
-
-The only result was that tar would make an archive in whatever
-directory I happened to be in when creating the archive -- and
-it would ignore the /dev/fd0 device.
-
-When I used the "M" option, nothing occurred.  When I tried
-adding the "z" option, I was told that multiple compressed archives
-were not possible.
-
-When I try to use the Slackware manual command (SAMS), it messes
-up the floppy -- which has to be reformatted and so on.
-
-The question remains:  How can I back up -- with tar or any other
-Slackware 3.5 program -- my 9 MBs of files from the BasicLinux
-console with multiple floppies?  And in compressed format?
+-- 
+Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
 
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
