@@ -1,26 +1,53 @@
-From: robrice56@netscape.net
-Subject: XF86Config problem fixed
-Date: Tue, 09 Apr 2002 00:20:09 -0400
+From: "Dinesh K Subhraveti" <dinesh@cs.columbia.edu>
+Subject: isn't wait4 amenable to interception?
+Date: Fri, 9 Apr 1999 01:12:40 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <642088F0.175FCB51.0349D98D@netscape.net>
-Content-Transfer-Encoding: 8bit
+Message-ID: <009b01be8247$97659b60$13123b80@endo>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-THANK YOU to all who helped me 
-you guys were almost right and did point me in the right way.
-I set the h sync to 31.46 tryed startx.
-It came back with v sync needs to be 59.93
-reset vsync and IT WORKS 
-THANK YOU
+hello,
+
+i was trying to intercept various system calls and got stumped at wait4. the
+new syscall routine just returns original sys_wait4. i am able to insert the
+module. sytem works just fine after insertion. but when i rmmod the module,
+kernel 'oops'es with "bad eip" message and the shell gets killed. am just
+not able to figure why. i'd greatly appreciate any insight on this. am
+attaching the code below.
+
+thanks in advance
+
+-----------------------------------------------
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/resource.h>
+#include <sys/syscall.h>
+
+extern void *sys_call_table[];
+
+static int (*original_sys_wait4) (pid_t, int*, int, struct rusage*);
+
+asmlinkage int my_wait4 (pid_t a, int *b, int c, struct rusage *d)
+{
+   return original_sys_wait4 (a, b, c, d);
+}
+
+int init_module()
+{
+   original_sys_wait4 = sys_call_table[__NR_wait4];
+   sys_call_table[__NR_wait4] = my_wait4;
+   return 0;
+}
+
+void cleanup_module()
+{
+   sys_call_table[__NR_wait4] = original_sys_wait4;
+}
 
 
-__________________________________________________________________
-Your favorite stores, helpful shopping tools and great gift ideas. Experience the convenience of buying online with Shop@Netscape! http://shopnow.netscape.com/
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
