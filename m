@@ -1,40 +1,46 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Command line questions
-Date: Sat, 5 Oct 2002 19:35:48 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Command line questions
+Date: Sat, 05 Oct 2002 16:49:34 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210051935.48876.sotl155360@earthlink.net>
+Message-ID: <5.1.0.14.1.20021005164515.020a1ec0@celine>
+References: <200210051935.48876.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200210051935.48876.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-After studious consultation with several of my Linux books and an all day 
-experience in attempting to access the hard drive of a Windows box using 
-Tomsrtbt I have a couple of command line questions.
+At 07:35 PM 10/5/02 -0400, Frank Roberts - SOTL wrote:
+>[...]
+>1. Is there an option to the ls command that will allow the scroll to page
+>like the old dos command dir -p would? O'Reilly's Linux in a Nutshell does 
+>not
+>so indicate but I have a hard time believing that this is so; that just does
+>not seem logicall.
+
+No, there is not an option to "ls". You do this by piping the output of 
+"ls" to "more".
+
+>2.  I have no problem changing to any directory that does not have spaces in
+>it but I have no idea of how to account for a space in a directory like in
+>the command "cd My Document"?
+
+One trick is to use tab completion. If that doesn't work, you "escape" the 
+space character. Something like the following (for your example):
+
+         cd My\ Document
+
+>Thanks
+>Frank
 
 
-Background: Box was started on Tomsrtbt and HD was successful mounted.
-ls -a > Windors-C.txt under Toms produced the correct files when Windows-C was 
-printed out so Tomsrtbt is working correctly but the correct files do not 
-appear on the screen most likely to screen over run.
-
-
-1. Is there an option to the ls command that will allow the scroll to page 
-like the old dos command dir -p would? O'Reilly's Linux in a Nutshell does not 
-so indicate but I have a hard time believing that this is so; that just does 
-not seem logicall.
-
-
-2.  I have no problem changing to any directory that does not have spaces in 
-it but I have no idea of how to account for a space in a directory like in 
-the command "cd My Document"?
-
-
-Thanks
-Frank
-
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
