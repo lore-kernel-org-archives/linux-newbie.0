@@ -1,131 +1,118 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: sound problems on Debian unstable
-Date: Wed, 06 Apr 2005 09:53:50 -0700
-Message-ID: <5.1.0.14.1.20050406092225.02059310@celine>
-References: <Pine.LNX.4.61.0504060933430.5951@localhost.localdomain>
+Date: Wed, 6 Apr 2005 13:38:49 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504061257310.5863@localhost.localdomain>
+References: <5.1.0.14.1.20050406092225.02059310@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504060933430.5951@localhost.localdomain>
+In-Reply-To: <5.1.0.14.1.20050406092225.02059310@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 10:10 AM 4/6/2005 -0500, James Miller wrote:
->I'm having some perplexing sound problems on my Debian unstable system and 
->would like to ask for help, clarifications and sympathy :)
+Thanks for your response Ray. I've been able to get a little closer to 
+normal sound by following your advice. But it's not fully functional yet: 
+using mp3blaster I can get pretty much continuous sound playing 
+mp3's/ogg's. Pretty much meaning it is continuous and normal (maybe a bit 
+of scratchiness here and there) until I open an application, switch VT's 
+or someone sends me an instant message (gaim is running). Then, sound 
+stops or pauses, continuing where it left off before the other activity 
+started. I have pretty much the same results using Rhythmbox, but the 
+scratchiness and pausing seems more severe. So, it's not quite working 
+right yet. Here's what I did.
 
-I can at least offer the last. Getting sound right ... particularly with 
-offbeat hardware ... can be a real pain. I confess that about 1/3 of the 
-time, I end up giving in and buying a reasonably standard, well-supported 
-sound card, when I run into these messes (usually with on-mobo sound 
-hardware causing recording, not playback, problems).
+On Wed, 6 Apr 2005, Ray Olszewski wrote:
 
->The system is a Dell Optiplex GX1 that's been somewhat modified (BIOS 
->update, Powerleap processor, maxed out for RAM, extra hard drives, new 
->power supply). It's one of those institutional models with a daughterboard 
->that has some pci and isa slots in it. It has a "PnP BIOS" according to 
->dmesg output.
-
-Ah yes ... I remember these well. But not fondly. Had an old one 
-(PentiumPro) and it was nothing but trouble.
-
->It has onboard sound--Crystal Semiconductor--that I've had working fine 
->under other Linux installs to this machine. But in this case, I wanted to 
->add a sound card, since I'll be using unpowered speakers and need the 
->computer to output more amplified sound.
+> You might want to check that you are using the right parameters (the doc file 
+> that comes with kernel source offers sort of an example, in the form of a 
+> LILO append line to use with compiled-in sound, and it indicates the need to 
+> specify two distinct io ports:
 >
->I put in an ISA card--a Logitech Soundman 16. It is an older, though never 
->used, card. I tried isapnptools to get the thing recognized, but pnpdump 
->reports "no boards found." Searching the internet I finally found the 
->right module to load for the card--pas2.
+>        append="pas2=0x388,10,3,-1,0x220,5,1,-1 sb=0x220,5,1,-1 opl3=0x388"
 
->  After loading that module with necessary io/irq/dma specifications,
+I got the kernel source and took a look at that file. I'm not sure how to 
+translate this, though. I'm not using lilo, but Grub. Would Grub take such 
+parameters and in the exact same form? I've found Grub documentation in 
+the past to be pretty worthless for clarifying these sorts of things. I'll 
+see if I can find anything new.
 
-You might want to check that you are using the right parameters (the doc 
-file that comes with kernel source offers sort of an example, in the form 
-of a LILO append line to use with compiled-in sound, and it indicates the 
-need to specify two distinct io ports:
+Meantime, I had been specifying io/irq/dma in /etc/modules. Doing my own 
+sort of freeform adaptation of the information from the kernel 
+documentation I entered the following lines in /etc/modules:
 
-         append="pas2=0x388,10,3,-1,0x220,5,1,-1 sb=0x220,5,1,-1 opl3=0x388"
-).
+pas2 io=0x388 irq=3 dma=5
+sb io=0x230 irq=5 dma=1
 
->I was able to play a CD.
->  A tape deck and radio, played through the audio-in port on the card, 
-> worked fine as well. Nice sound.
+With these parameters I got the sorta kinda working sound situation I 
+described above. io=0x388 I took from the docs; nothing in my DOS setup 
+program indicates this as any kind of valid io for the card. The only io 
+the card documentation (as opposed to kernel documentation) allows for the 
+card is called "soundblaster port." It is set to 0x230. Likewise I've set 
+"soundblaster irq" to 5 using the DOS utility and "soundblaster dma" to 1 
+using the same. Hence the settings for the sb module above. I was 
+previously *not* loading the sb module, but only tried it this last time. 
+lsmod shows the sb_lib module loaded, but not the sb module.
 
-All of this has nothing to do with the Linux sound driver. It just confirms 
-that you have working hardware. But you know that from the DOS boots you 
-mention below.
-
->However, my sound apps, like Rhythmbox (I'm using the Gnome desktop on 
->this machine), will not really play. What I mean by "not really play" is 
->that I get some really choppy sound: split-second snippets of the actual 
->music interspersed with some clicking noises and punctuated by silence. 
->dmesg output shows some errors after trying Rhythmbox, as follows: "Sound: 
->DMA (output) timed out - IRQ/DRQ config error?" Kind of wierd.
-
-I'm more curious by what you mean by "like". It is probably not an issue, 
-but you might test using a more basic, CLI-oriented app (like mpg123 or 
-ogg123, depending on what format your source files are). Also, have you 
-used a sound setup app, for example rexima, to check the card/driver 
-settings as Linux sees them?
-
->cat /proc/interrupts shows the right interrupt assigned to the module (I 
->was using IRQ 7 but dmesg indicated that the parallel port was trying to 
->use 7 so I switched the sound card to IRQ 5 using the DOS utility that 
->came with the card).
-
-Is the assignment solo or shared? Did you disable the on-mobo sound in BIOS?
-
->cat /proc/ioports does not show the assigned io (230--it was 220 but I 
->assigned a different one last night using the DOS software that came with 
->the card in hopes this might resolve the problem) associated with the 
->module. This holds for both the 220 setting I used earlier as well as the 
->current 230 setting. I can include the full ouput from those commands in a 
->future post if that would be helpful in diagnosing.
-
-The ioport should be showing up, as you no doubt realize. Are you 
-specifying both  pas_io -AND- mss_io when you insmod (or modprobe) the 
-module? (I'm not familiar with this card or driver, so I don't know which 
-of them matters to sound playback.)
-
-Could there really be a DMA issue (I've never run into this myself)? What 
-does "more /proc/dma" tell you?
-
->I wondered if the PnP BIOS Linux identifies might not be the problem, and 
->whether it might be blocking Linux and isapnptools from dealing with the 
->card as specified or detecting it. But this doesn't seem to make sense 
->since I am able to run the test software under DOS provided with the card 
->with no problems. I boot from a DOS diskette that sets up a ramdisk, and I 
->install the soundman testing utilities in the ramdisk. I can hear all the 
->sounds fine, fiddle with IRQ's, IO's and DMA's, run the diagnostic which 
->tells me everything is ok. So it's a bit mystifying why Linux can't seem 
->to deal with the thing.
-
-As best as I can tell from what you write, this card does not support PnP 
-assignment. If you are running isapnptools, by all means do not do so ... 
-let the BIOS handle everything. But I doubt it is relevant.
-
->Maybe it's a sound server issue rather than a hardware issue? I don't 
->understand very well the various sound server schemes Linux uses, but can 
->try and answer some pointed questions or run some commands relevant to 
->this line of inquiry.
->
->Another confusing thing about the card itself is its available settings. 
->It has 2 possible sets of IRQ's, for example: a "soundman" IRQ and a 
->"soundblaster" IRQ. Same for DMA setting. But it has *only* a soundblaster 
->IO. It is said in the manual to be "soundblaster (and adlib) compatible," 
->whatever that means.
->
->Input on this problem will be appreciated. Can I make my sound apps play 
->through this thing, or should I give up and try to find a different card?
-
-Were it me, I'd give up and buy a more up-to-date card.  But I'm lazy and 
-live near Fry's, where this stuff is always cheap. YMMV.
+The settings I've entered for the pas2 module are the so-called "soundman" 
+settings. I selected a "soundman irq" of 3 using the DOS utility and a 
+"soundman dma" of 5. This gets it sorta kinda working. But I do still get 
+the "Sound: DMA (output) timed out - IRQ/DRQ config error" lines at the 
+end of dmesg output
 
 
+> I'm more curious by what you mean by "like". It is probably not an issue, but 
+> you might test using a more basic, CLI-oriented app (like mpg123 or ogg123, 
+> depending on what format your source files are). Also, have you used a sound 
+> setup app, for example rexima, to check the card/driver settings as Linux 
+> sees them?
+
+I tried mp3blaster, as indicated above. Should this suffice? I apt-get'd 
+rexima. The various controls show up when I start it and volume and other 
+levels look ok. Is this what you were after?
+
+> Is the assignment solo or shared? Did you disable the on-mobo sound in BIOS?
+
+The assignment is solo according to cat /proc/interrupts. I *did* disable 
+onboard sound in the BIOS, yes.
+
+> The ioport should be showing up, as you no doubt realize. Are you specifying 
+> both  pas_io -AND- mss_io when you insmod (or modprobe) the module? (I'm not 
+> familiar with this card or driver, so I don't know which of them matters to 
+> sound playback.)
+
+No. I specified io as above--io=XXX after the name of the module I load in 
+/etc/modules. I have no idea what mss is. I have not run across pas_io or 
+mss_io. Are you saying that I should put a line like pas_io=0x388 in my 
+/etc/modules file? And maybe a mss_io=??? there too? pas_io seems fairly 
+clear: it looks like the same acronym after which the module I load is 
+named. mss I'll have to look into some more. I wish I knew where to look 
+for this information. So far I've found bits and pieces scattered across 
+the internet: it doesn't add up to anything like a comprehensive 
+picture--much less a coherent solution.
+
+> Could there really be a DMA issue (I've never run into this myself)? What 
+> does "more /proc/dma" tell you?
+
+me@mymachine:~$ more /proc/dma
+  4: cascade
+  5: PAS16
+
+> As best as I can tell from what you write, this card does not support PnP 
+> assignment. If you are running isapnptools, by all means do not do so ... let 
+> the BIOS handle everything. But I doubt it is relevant.
+
+I'll go ahead and uninstall isapnptools. I don't have any other need for 
+it on this machine.
+
+> Were it me, I'd give up and buy a more up-to-date card.  But I'm lazy and 
+> live near Fry's, where this stuff is always cheap. YMMV.
+
+I'm moving somewhat closer to that option. Had I to lived closer to Fry's, 
+the scales might have been already tipped.
+
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
