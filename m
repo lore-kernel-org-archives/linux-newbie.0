@@ -1,38 +1,35 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: more X problems
-Date: Wed, 13 Nov 2002 15:37:21 -0600 (CST)
+From: ichi@ihug.co.nz
+Subject: Re: more X problems
+Date: Thu, 14 Nov 2002 12:22:27 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211131533100.21708-100000@localhost.localdomain>
-References: <5.1.0.14.1.20021113125618.021255b0@celine>
+Message-ID: <3DD39583.7CEF55E3@ihug.co.nz>
+References: <Pine.LNX.4.44.0211131533100.21708-100000@localhost.localdomain>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021113125618.021255b0@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: James Miller <jamtat@mailandnews.com>
+Cc: Linux <linux-newbie@vger.kernel.org>
 
-On 13 Nov 2002, Ray Olszewski wrote:
+James Miller wrote:
 > 
-> For hsync, try choice 1 (or maybe 2) from the list.
-> 
-> For vsync, try choice 1 from the list.
-> 
-> Do beware -- there is ALWAYS some risk of hardware damage when you guess 
-> about monitor settings. I've never experienced any problems with these 
-> choices, but my past experience does not translate into a guarantee about 
-> your future experience. So act at your own risk.
-> 
-Ray:
+> I'm beginning to think I may have overlooked something 
+> in installing X. I'll look and think that over a bit 
+> before posting further.
 
-I've tried both choices (1 & 2 from the list) for h-sync and choice 1 from 
-the second list, but to no avail. While I wouldn't be happy if I hosed 
-this monitor, since I got it for free it wouldn't be a big loss.
+Which X server are you using?  The default X server in
+Slackware 8.1 is designed for VESA cards -- but not the
+old VESA cards.  There is a cut-off point, but I don't
+remember what it is.  1.2 ?   2.0 ?
 
-I'm beginning to think I may have overlooked something in installing X. 
-I'll look and think that over a bit before posting further.
+You say you have an S3 Trio 64V+ video card.  I believe 
+this card is VESA 1.2.  That VESA may be too old to work
+with the default X server.  If so, try the S3 X server 
+from the /pasture directory of Slackware 8.1.
 
-Thanks, James
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
