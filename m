@@ -1,59 +1,33 @@
-From: "Calin Szonyi" <caszonyi@linuxmail.org>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: Thu, 07 Nov 2002 10:28:46 +0200
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Write to Windows partition from linux as ordinary user
+Date: Thu, 7 Nov 2002 12:52:11 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021107082846.18086.qmail@linuxmail.org>
+Message-ID: <20021107125211.B1136@neutrino.particles.org>
+References: <20021106225134.E1142@neutrino.particles.org> <20021106214656.16325.qmail@web13408.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20021106214656.16325.qmail@web13408.mail.yahoo.com>; from abhijit_v@yahoo.com on Wed, Nov 06, 2002 at 01:46:56PM -0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: bsimmo1@gl.umbc.edu, jbradford@dial.pipex.com
+Content-Transfer-Encoding: 7bit
+To: Abhijit Vijay <abhijit_v@yahoo.com>
 Cc: linux-newbie@vger.kernel.org
 
+On Wed, Nov 06, 2002 at 01:46:56PM -0800, Abhijit Vijay wrote:
+> I have a Windows 98 partition mounted on linux. The
+> directory, /win98 on which I have done the mount is
+> owned by me, as an ordinary user. However, I find that
+> I cannot write to the partition except as root. Is
+> there any way out, so that I do not need to su before
+> writing?
 
------ Original Message -----
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Date: 	24 Oct 2002 09:24:26 -0400
-To: jbradford@dial.pipex.com
-Subject: Re: CD-ROM settings and hardware resources...
+Read the man page of mount. Search for the options 'users' and 'rw'.
 
-
-> Shows how much I know about basic system design...
-> 
-> In fact, I was shocked to learn last night that ext2 uses linked lists
-> to keep track of files in a directory.  Why is this?  Did the guys who
-> wrote the file system specs go to school for computer science?  I can't
-> tell you how many times my cmsc professors have told us that the linked
-> list is totally inferior to the tree.  At least, it is when it comes to
-> large sets of data.  Perhaps the ext2 guys never saw the need for
-> extremely large sets of files in a single directory, but still, even
-> when hashing, it is suggested that you not handle collisions with linked
-> lists...
-> Stacks and queues are one thing (when used for temporary operations,
-> like iterators and memory management).  But persistent data is another. 
-> I would never want to store stuff in a list if it is always going to be
-> accessed, growing and shrinking...
-> 
-
-1. I think that one of the guys who wrote the ext2fs
-(Theodore T'so) works at MIT (so he probably knew
-what he was doing)
-2. The ext2 fs happens to be the fastest filesystem 
-in linux. 
-3. You can always come with a better solution 
-because linux is open source
-
-Bye 
-Calin
+Elias
 
 -- 
-______________________________________________
-http://www.linuxmail.org/
-Now with POP3/IMAP access for only US$19.95/yr
-
-Powered by Outblaze
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
