@@ -1,154 +1,56 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: Re: Partitioning problem
-Date: Sat, 10 Aug 2002 23:07:06 -0400
+From: Peter <pfheiss@philonline.com>
+Subject: Re: RH7.3 keyborad lock-up
+Date: Sun, 11 Aug 2002 11:25:36 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2ce2c32c8af0.2c8af02ce2c3@homemail.nyu.edu>
+Message-ID: <02081111253600.01574@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Riley Williams <Riley@Williams.Name>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
-this is coming in pretty late (as i was on vacation)...
-but Thanks Riley,David and Jay!
-I managed to get the job done...!
+In-Reply-To: Message from Ray Olszewski <ray@comarre.com> 
+   of "Fri, 09 Aug 2002 23:59:11 MST." 
+<5.1.0.14.1.20020809234007.0208bd20@celine>
 
------ Original Message -----
-From: Riley Williams <rhw@infradead.org>
-Date: Monday, July 29, 2002 3:20 am
-Subject: Re: Partitioning problem
+Thanks!
 
-> Hi Anshu.
-> 
-> > unfortunately i dont think WinXP recognises FAT32 system. it 
-> requires> NTFS and i can't create NTFS type partition using dos's 
-> fdisk!
-> All I know is, it installed as an UPGRADE to my Win98SE system 
-> that was
-> installed in a FAT32 partition, so the installer at least understands
-> FAT32 partitions, and that's all that matters. If it needs NTFS
-> partitions then it will create them itself.
-> 
-> Also, I specifically stated to use Linux fdisk because dos's fdisk 
-> can'tcreate ext2 partitions for Linux and you need to create them 
-> BEFORE you
-> install WinXP in my experience. I know from experience that Linux 
-> fdiskis capable of creating ANY type of partition, although it 
-> can't always
-> format them. However, in my experience, it's best to let each OS 
-> formatits own partitions, so that isn't a limitation.
-> 
-> Best wishes from Riley.
-> 
-> =========================================================================
-> 
-> >>>>> btw I used Partition Magic from WinXP to partition the disc 
-> as I
-> >>>>> dont know how to work around using fdisk in Linux.
-> >>
-> >> In the process, you probably caused this problem, and my advice
-> >> would be to scrap PartitionMagic and redo your system completely.
-> >> Here's the procedure I use to set up a system to dual-boot WIndows
-> >> (any version) and Linux:
-> >>
-> >> 1. Use the Linux fdisk to create the partitioning scheme I want.
-> >>    In my experience, NONE of the Windows-based partitioning
-> >>    software can correctly create partitions for Linux, and this
-> >>    includes PartitionMagic.
-> >>
-> >>    This is the partition layout I generally use:
-> >>
-> >>	Partition  Type  Cylinders  Notes
-> >>
-> >>	/dev/hda1  Swap     254     Anti-virus measure
-> >>	/dev/hda2  ext2      2      Mounted as /boot under Linux
-> >>	/dev/hda3  FAT32    50%     C: under Windows
-> >>	/dev/hda4  ext2     Rest    Mounted as / under Linux
-> >>
-> >>    The allocation of /dev/hda1 as the swap partition is because of
-> >>    the number of Windows viruses that overwrite the first so many
-> >>    Megabytes of the primary hard drive. Since there is nothing of
-> >>    importance in a Linux swap partition when Windows is running,
-> >>    this measure prevents those viruses from overwriting anything
-> >>    other than the partition table, and that is relatively easy to
-> >>    recreate.
-> >>
-> >> 2. Install one's favourite dialect of Windows into /dev/hda3 that
-> >>    was reserved for it in the above partition table. This writes
-> >>    the correct MBR record out, and marks /dev/hda3 as the bootable
-> >>    partition.
-> >>
-> >> 3. Install one's favourite Linux distribution specifying the mount
-> >>    points as listed above, and placing the boot loader in the boot
-> >>    record of /dev/hda2 and NOT in the MBR.
-> >>
-> >> 4. Use fdisk to set /dev/hda2 as the bootable partition. Either the
-> >>    Linux or Windows fdisk can be used for this without problems.
-> >>
-> >> Every distribution of Linux I've met auto-detects that Windows is
-> >> installed and automatically sets up the boot loader correctly.
-> >>
-> >> Incidentally, the reason for putting the Linux boot loader in the
-> >> boot sector of the /boot mount is because Windows has a habit of
-> >> overwritingthe MBR with its own boot loader, although it respects
-> >> the boot marker when doing so.
-> >>
-> >>> Thanks for the response, but the problem is that with the 
-> partition>>> shown below i am never able to boot using linux. so i 
-> cant edit the
-> >>> lilo.conf. or shud i change partition 1 (/dev/hda1) to type ext2
-> >>> from current vfat. coz that was the only way i cud boot into 
-> linux?>>
-> >> Before you do anything, you need to decide precicely what each
-> >> partitioncontains. The partition layout shown, taken together with
-> >> your comments, idnicates that the /boot mount point is probably
-> >> /dev/hda1 rather than the /dev/hda6 indicated, and this is probably
-> >> PartitionMagic's work.
-> >>
-> >>>>> I want to have both WinXP and Linux (RHL7.3) on my system 
-> but 
-> >>>>> am having trouble with the partitions. My partition table (i 
-> >>>>> dunno whether thats the correct term) looks like this (as shown
-> >>>>> by linux installer ) -
-> >>>>>
-> >>>>>                  Start    End  Size(MB)  Type      Mount point
-> >>>>> /dev/hda
-> >>>>>    Free              1      1      8     Free
-> >>>>>    /dev/hda1         2      7     47     vfat
-> >>>>>    /dev/hda2         8    708   5499     NTFS
-> >>>>>    /dev/hda3       709   2432  13523     Extended
-> >>>>>      /dev/hda5     709   1413  5530      NTFS
-> >>>>>      /dev/hda6    1414   1419    47      ext2      /boot
-> >>>>>      /dev/hda7    1420   1453   267      swap
-> >>>>>      /dev/hda8    1454   2432  7697      ext2      /
-> >>>>>
-> >>>>> the error message i get is -> Boot partition may not meet 
-> booting>>>>> constraints for your architecture. Creation of boot 
-> disk is 
-> >>>>> highly encouraged.
-> >>>>
-> >>>> Thats not an error message but a warning from the install 
-> process, 
-> >>>> as you see lilo or grub was installed.
-> >>>>
-> >>>>> The options I get is "modify partition" and "add anyway". If I
-> >>>>> proceed with 'add anyway' option installation is succesful 
-> but I
-> >>>>> dont get the option of selecting the OS for booting the PC 
-> and 
-> >>>>> the PC boots using WinXP. I tried changing the /dev/hda1 
-> partition>>>>> to ext2 ,mount pt /boot. The installation was 
-> succesful and so 
-> >>>>> was the boot, but then the option of starting with WinXP
-> >>>>> dissapeared. I could only boot with Linux Can anyone help me 
-> out?
-> 
+ray@comarre.com said:
+> The one characteristic I see as common to the three problem apps, but
+> absent in the OK apps, is speed and frequency of screen updating. They
+>  would be more likely to trip an infrequently occurring failure in the
+> X  server, simply because they make a lot more calls to it. 
 
+I came slowly to this conclusion myself that it must have something to do 
+with the graphics.
+
+ray@comarre.com said:
+> I'd bet that you are switching from XFree86-3.3.6 or so to
+> XFree86-4.something, and this is a big change. I'm not sure where RH
+> puts X  config info, but look for a file named XF86Config (maybe  /etc/
+> X11/XF86Config-4 for the new version) to see which X server you are
+> running.
+I made that switch with RH7.1 some time ago with no problems.
+7.1 runs on XFree86-4.0.3-5 and and 7.3 om XFree-4.2.0-8. It is there 
+/etc/X11/XF86Config-4 but I can not find anything specific as to what X 
+server I am running. Must be my ignorance.
+
+If you think that the problem might be in these XF86Config files and I have 
+no problem with RH7.1, how about installing the kernel of RH7.3, libraries 
+etc and then replacing the 7.3 XF86Config files with the ones of RH7.1.
+
+BTW I posted the problem as well to the redhat-install list and somebody 
+sugested
+to turn off the apmd system (advanced power management) by unmarking
+the "apmd" entry in ntsysv.
+What do you think about that? Would that have something to do with tuxracer 
+or chromium?
+
+Regards
+
+-- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
