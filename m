@@ -1,61 +1,59 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Tar Exclude
-Date: Wed, 13 Nov 2002 17:11:06 +0000
+From: James Miller <jamtat@mailandnews.com>
+Subject: more X problems
+Date: Wed, 13 Nov 2002 13:23:23 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021113171106.GA1287@cam.ac.uk>
-References: <077901c28b27$c6fd7540$64fea8c0@pkrausxp>
+Message-ID: <Pine.LNX.4.44.0211131215130.21708-100000@localhost.localdomain>
+References: <Pine.LNX.4.44.0211122256450.21708-100000@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="WIyZ46R2i8wDzkSu"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <077901c28b27$c6fd7540$64fea8c0@pkrausxp>
+In-Reply-To: <Pine.LNX.4.44.0211122256450.21708-100000@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
+Ok. I think I've now got my X problems down to more standard issues on 
+this mnimal Slack 8.1 install (2.4.18 kernel). I was able to get the 
+updated kernel to run, and I am no longer getting the crash with its log. 
+But something is still wrong. I got the new kernel going, went through 
+xf86config again. This time, I managed to find some sync values for my 
+monitor (14" epson extended vga -old!) which I entered in (30-35.5; 70) 
+and selected my S3 Trio 64V+ video card. There was a caveat about this 
+card being "basically unsupported" - whatever that means. So, now, when I 
+go "startx" from the command line, the HD runs and things seem to be 
+happening, but the screen goes blank and just sits there. By "blank" I 
+mean that it goes dark - like screen blanking when you have no screen 
+saver. And, it just sits there. I expect it to give some sort of 
+background - like crosshatching - and for an "X' to appear for the mouse 
+cursor. But no such thing ever happens. It just sits there blank (no 
+message about a server crash, no odd activity like HD churning). So, I'm 
+not quite sure where to go from here. Could someone advise me? I 
+should also mention that I don't have a window manager configured yet, 
+though I do have one installed - fvwm95. I assume that is a window manager 
+because it has the letters "wm" in its name (hope I'm right). But I 
+just don't know if I need a window manager to get any display at all out 
+of X.
 
---WIyZ46R2i8wDzkSu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+In closing, I'll just reaffirm my state of confusion regarding the way 
+the gui works under Linux. Despite Ray's helpful comments to some 
+questions I posed on this list earlier about how it all works, I've become 
+even more confused. There are things called, for example, "gdm" or "kdm". 
+I take the "dm" part to stand for "display manager." But I don't know how 
+display managers relate to window managers or the other things connected 
+with X that I asked about previously. Then, there are "session managers," 
+which are also a subject of confusion in all this. To top it all off, I 
+read an article at Linuxworld on X and Linux display that claimed that 
+Gnome and KDE are *not* window managers, but rather thay they *contain* a 
+window manager. So this seems some sort of meta-category with regard to 
+the 3 part scheme Ray provided in his helpful comments. I don't know if 
+I'll ever be able to grasp all this. But this can give an idea of how 
+little I know and thus what help might be suitable to offer with respect 
+to my X problems.
 
-> I have a script that tars a all the sub directories of a directory into
-> individual tar files for each subdirectory. I have an exclude file that
-> is set to skip some of the folders I don't want tarred. This works but
-> it creates the empty tar files. Is this normal?
-Yes.  It is, in fact, exactly what you've told tar to do: create
-a tar file containg everything in directory foo, excluding files
-in directory foo.  This gives us an empty tar file.
+Hopefully, you won't say "go back to Windows, you dummy!" :)
 
-> Can it be set not to do this?
-I can't see any immediately obvious way to stop tar making empty
-files, but you could try a script like this:
+Thanks, James
 
-tar --create ... # Whatever arguments you're currently using for tar.
-[ `tar -tf foo.tar | wc -l` -eq 0 ] && rm foo.tar
-
-replacing foo.tar with the filename of the generated tarball which
-might be empty.  (The second line checks whether the tar file is
-empty, and rm-s it if it is).
-
-This isn't a terribly pleasant solution, but it should work.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---WIyZ46R2i8wDzkSu
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.0 (GNU/Linux)
-
-iD8DBQE90oeqO4S8/gLNrjcRAs65AJ9UX5h3kUIsO7sPga14tEFOSqwrdwCeK8EG
-udn6vzWxwaNrvAdpkC/UpW0=
-=lOv4
------END PGP SIGNATURE-----
-
---WIyZ46R2i8wDzkSu--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
