@@ -1,62 +1,52 @@
-From: Don Petrowski <dpetrowski@ci.collierville.tn.us>
-Subject: Re: Bash Scripts
-Date: 10 Oct 2002 16:33:16 -0500
+From: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Subject: xemacs mousewheel problem
+Date: 10 Oct 2002 19:52:30 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034285597.3495.8.camel@workwatcher>
-References: <003301c2709c$7ac11b00$64fea8c0@pkrausxp>
+Message-ID: <1034293952.23443.40.camel@localhost.localdomain>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
-	boundary="=-rTe8fS1EKogNMAJboHjy"
+	boundary="=-YTLCcnrvmIH8BLii5RPx"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <003301c2709c$7ac11b00$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
 
---=-rTe8fS1EKogNMAJboHjy
+--=-YTLCcnrvmIH8BLii5RPx
 Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 
-Here is an example of a simple backup script I use to backup some files
-and copy them to another machine to be put on tape.
+Does anyone know how to define a button?
+I try to scroll my mousewheel up or down to scroll the page, but it
+beeps and says: button5 not defined (for down) or button4 not defined
+(for up).
+I set button4 and button5 to scroll-up and scroll-down and then the
+mousewheel works, but it never saves this to my custom.el file.
+How can I make my mousewheel config stick?
+--=20
+Regards,
 
-echo $HOSTNAME > /var/log/backup.log
-echo "Backup Started: " >> /var/log/backup.log
-date >> /var/log/backup.log
-tar --create --verbose --bzip2 --file /root/tuxtracker.tar.bz2 --files-from=
- /etc/backup-list --exclude-from /etc/backup-exclude >> /var/log/backup.log=
- 2>&1
-echo "Backup Stoped: " >> /var/log/backup.log
-date >> /var/log/backup.log
-echo "Transfer to Annex Started: " >> /var/log/backup.log
-date >> /var/log/backup.log
-if scp -q /root/tuxtracker.tar.bz2 tuxtracker@192.168.0.253:. >> /var/log/b=
-ackup.log 2>&1
-then
-   echo "Transfer to Annex Finished Successfully: " >> /var/log/backup.log
-   date >> /var/log/backup.log
-else
-   echo "Transfer to Annex was Interrupted: " >> /var/log/backup.log
-   date >> /var/log/backup.log
-fi
+Bryan Simmons=20
+=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
+-=3D-=3D-=3D-=3D-=3D=20
+ "All that's required for evil to flourish
+  is for good men to remain silent."=20
+    ---Edmund Burke
+=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
+-=3D-=3D-=3D-=3D-=3D=20
 
-The first line creates a log file and all other lines append to it.
-
---=-rTe8fS1EKogNMAJboHjy
+--=-YTLCcnrvmIH8BLii5RPx
 Content-Type: application/pgp-signature; name=signature.asc
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+Version: GnuPG v1.0.7 (GNU/Linux)
 
-iEYEABECAAYFAj2l8hwACgkQIUkeRg0nIiK9ugCfeW0dQNAvHmvqMn6IqYpxm+4y
-aIUAn0Gf/zkC9KzomoD4NR0lAtGLN55/
-=H0Jw
+iD8DBQA9phK+0dAWZ6zmr0ARAmVbAJ47ejRTWA0j0NoYsLc8J5kia3azsQCdEzNi
+7y+5Tc/RlphsFuRI3qGzCIg=
+=tuBs
 -----END PGP SIGNATURE-----
 
---=-rTe8fS1EKogNMAJboHjy--
+--=-YTLCcnrvmIH8BLii5RPx--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
