@@ -1,8 +1,8 @@
 From: Arthur Kng <arthur_kng@yahoo.com>
-Subject: Hard disk Repartitioning-III : Success!!
-Date: Tue, 8 Apr 2003 18:32:22 -0700 (PDT)
+Subject: Sound Problem
+Date: Tue, 8 Apr 2003 20:06:58 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030409013222.12238.qmail@web20704.mail.yahoo.com>
+Message-ID: <20030409030658.76172.qmail@web20707.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,21 +10,48 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi!!
-   this is a note of thanks to everyone on this list
-for your help. with all your help i could have a
-perfect install. the installer handled the resizing
-perfectly. i didnt lose a single file.  :)  
-    this is how my disk is partitioned now:
+Hey,
+   its me again. a glitch guys. :(
 
-       hda1: 10.7GB(win + shared data)
-       hda5:  3.9GB(/) 
-       hda6:  300MB(swap)
-       hda7:  4GB(/home) 
+     am using Mandrake 9.1. linux found my sound card.
+i feel it even got the correct driver. but there is
+simply no sound. all i can hear in XMMS when i play my
+mp3s is a scratching, hissing noise and only when i
+make the vol full.
 
-  thanks a lot again. 
+this is the info i found in the Mandrake Control
+Center in the Hardware section under the Soundcard
+tab:  
 
-cheers
+
+Vendor: Fortemedia, Inc
+
+Alternative drivers: forte
+
+Bus: PCI
+
+Bus identification: 1319:801:1319:1319
+
+Location on the bus: 0:c:0
+
+Description: Xwave QS3000A [FM801]
+
+Module: snd-fm801
+
+Media class: MULTIMEDIA_AUDIO
+
+**********
+
+
+I have a XWAVE QS3000A PCI Sound Card.
+
+I am at loss as to how to go about this. Can anyone
+please tell me what could be the problem? if u need
+any more info let me know.
+Are there any HOWTOs or articles i should read for
+this?
+
+thank you for your help.
 
 A K
 
