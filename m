@@ -1,144 +1,79 @@
-From: Sanjay Arora <skpobox@yahoo.com>
-Subject: Re: Linux newbie: Help requested in decoding the nature of  this Martian packet..
-Date: Sun, 15 Jun 2003 00:30:19 -0700 (PDT)
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Linux for old PC
+Date: Sun, 15 Jun 2003 10:39:33 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030615073019.43987.qmail@web21003.mail.yahoo.com>
-References: <5.1.0.14.1.20030614072454.039060a8@celine>
+Message-ID: <3EEC8525.9487949@gelm.net>
+References: <5020070209.20030614233059@yandex.ru>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030614072454.039060a8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: vh <vhlist@yandex.ru>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
+Any experience?
 
+Dear vh:
+
+ Does system have ATAPI IDE CD-ROM drive?
+
+ Yes.  I've installed Slackware in smaller resource systems.
+
+ SuSEv7.0 in Pentium-166-laptop with 16 M of RAM using fwvm95/fwvm2
+window manager(s), Xwindows, I can use Netscape Communicator v4.77
+with some swap thrashing. ;-)  I have since upgraded the laptop
+to 80 M of RAM.  ;-)
+
+I am currently working on installing SuSEv7.0 into
+Pentium-120 with 40 M of RAM and < 2 G hd space,
+ so far, I need more hd space for GUI.  ;-)
+
+If you wish a GUI system (Xwindows), you may be limited
+to a 'smallish' window manager; twm, fvwm2, fvwm95,...
+Not KDE or GNOME environment. :-|
+
+ I recommend setting up a swap partition of double your RAM.
+(if you need more virtual memory than this, you need more RAM ;-)
+
+ If you try Slackware, I will help.
+I recommend Slackware v8.0 to start:
+ftp://ftp.slackware.com/pub/slackware/slackware-8.0/
+
+HTH, Chuck
+
+vh wrote:
 > 
-> I'm not familiar with the sniffer you used (so the
-> *format* of the decoded 
-> data is not familiar to me),
-I used ethreal.
-
-> and I am not up to
-> decoding hex by hand this 
-> morning, but the decoded packet appears genuine.
-> Barring unusual setups, 
-> DHCP broadcast packets do not cross routers, so it
-> should be from the same 
-> ISP "LAN" as the one you are on. Here are two things
-> to check:
+> Hello List.
+> I want to run Linux on rather old PC.
+> The PC is Pentium MMX 166 with 24M RAM, S3 Trio Video and 2,5Gb WD Hard
+> Disk, motherboard is Intel 430 VX. I tried set up ASP Linux, but it
+> hangs up during installation of packages (on ASP forum I was told that this
+> distributive should work on my computer). Also I tried to set up
+> Mandrake, but of cause it's failed die to low amount of RAM. Do I
+> need older releases? But which ones should I try to use?
+> Yes, I was reading a lot of FAQs and HOW-TOs, but I can't install
+> anything at all. And I belive the problem is only in installation.
+> Do I think right? What should I do? What distribution should I use?
+> Can I setup Linux to my HDD on another PC so as it will be working
+> lately when I plug it into my one? Any configuration hacks is not so
+> terrible for me. I'm thinking now to run FBSD, but Linux certainly
+> will be preferable. Can no more work with windows... Any experience?
 > 
-> 1. How often are the Martians coming in?
->
-Very often...say more than five times second because
-my firewall is stopping logging so that it may not
-choke the logs.
- 
-> 2. Are they all coming from the same MAC address?
+> --
+> Martchukov Anton aka VH                   mailto:vhlist@yandex.ru
+> ICQ: 155279978
 > 
-Yes they are coming from the same MAC address.
-
-> If the answer to (2) is YES, then this machine
-> requests a DHCP lease from 
-> time to time. What then? Depends a bit on the answer
-> to (1); I see two 
-> possibilities.
-> 
->   One possibility: it never gets one. (Perhaps he is
-> trying to connect 2 
-> hosts but is restricted to 1 IP address. You don't
-> tell me enough about 
-> your ISP for me to guess about *how* your ISP might
-> restrict address 
-> assignment; ISPs who deliver their services over
-> Cat5 cable are not in my 
-> experience, so I could only guess wildly.) Since it
-> does not get a lease, 
-> it lacks a usable routing table and can only send
-> broadcast packets (which 
-> is why that is all you ever see).
-> 
-My ISP restricts the addressing to 172.16.0.0 netmasks
-255.255.255.0/252/240 and gives out a static IP
-address to each user. In fact his man comes in & sets
-it himself first time.
-
-GW is 172.16.0.1 and he gets his subscribers to put in
-two cards in their machine if they have an internal
-network and use ip forwarding/masquerading  to reach
-his net.
-
-Even in this case, if the internal network uses DHCP,
-I think that the packet coming on to the ISP's cable
-should be masqueraded (should be 172.16.x.x & not
-192.168.x.x), even if it is a broadcast. Am I correct?
-
-> Second possibility: it does get a lease, and its
-> further transmissions use 
-> a 172.16.1.d address so are no longer Martians. So
-> you don't see them until 
-> the next time it requests a lease from the Martian
-> address. (Why does it 
-> switch back to 192.168.1.101? Maybe it's a laptop
-> that moves between 2 
-> networks.)
-I'll check with the isp about the possibility of any
-client using dhcp for allocating internal ip & about
-laptop use. 
-> 
-> The "arp" command does not do what you think. It
-> checks your host's (in 
-> this case, I suppose your router's) arp table. It
-> does not itself generate 
-> arp queries. To check MAC addresses on a LAN, one
-> method is to broadcast 
-> ping the LAN (or run a program that quickly pings
-> each address), then use 
-> "arp" to check what IP addresses have valid MAC
-> addresses associated with 
-> them in the arp cache.
-> 
-also, i'll use ettercap in arp storm mode & check arp
-cache (thanks for the tip). I think windows does not
-respond to broadcast pings.
-
-> In any case, I would not worry about this problem.
-> Your firewall is 
-> stopping these packets, just as it should. Even if
-> it is an attack, it is 
-> one you are not vulnerable to, since your firewall
-> will not itself be 
-> listening on port 67 on its external interface, and
-> the RFC1918 firewall 
-> rule should be DENYing (not REJECTing) these
-> Martians, leaving you properly 
-> stealthy.
-> 
-No, the problem is ever growing logs. and thanks for
-this tip too...i'll check how exactly packets are
-being denied.
-
-IAC, thank you very much for your help. ;-))
-
-With best regards.
-Sanjay.
-
-> 
+> "_Theory_ is when you know everything but nothing works.
+> _Practice_ is when everything works but no one knows why.
+> _IN THIS PLACE_ we're combining theory and practice - nothing works
+>  and no one knows why!"
 > 
 > -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
-> More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-http://www.linux-learn.org/faqs
-
-
-__________________________________
-Do you Yahoo!?
-SBC Yahoo! DSL - Now only $29.95 per month!
-http://sbc.yahoo.com
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
