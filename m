@@ -1,8 +1,8 @@
 From: Peter <pfheiss@philonline.com>
 Subject: Minicom fails
-Date: Thu, 19 Dec 2002 16:48:56 +0800
+Date: Thu, 19 Dec 2002 16:50:41 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212190848.gBJ8muZ03825@philonline.com>
+Message-ID: <200212190850.gBJ8ofb04028@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -25,6 +25,8 @@ How will I get my minicom back as a user?
 Thanks & regards
 -- 
 Peter
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
