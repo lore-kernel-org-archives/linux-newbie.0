@@ -1,20 +1,28 @@
-From: Adam Schrotenboer <adam@tabris.net>
-Subject: Re: Fwd: Re: cdrom working! (almost)
-Date: Sun, 7 Apr 2002 22:05:32 -0500
+From: G Anna <drguruolai@eth.net>
+Subject: a simple browser
+Date: 08 Apr 2002 19:27:28 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020408030533.62E60FB911@tabriel.tabris.net>
-References: <F157l5sF78NalRnfN0R0000470a@hotmail.com>
+Message-ID: <m3ofgui987.fsf@wobble.eth.net>
+Reply-To: anna7sept@linuxmail.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-In-Reply-To: <F157l5sF78NalRnfN0R0000470a@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jerry T <linuxl1@hotmail.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 07 April 2002 20:49, Jerry T wrote:
-> How do I access the cdrom ioctls?
+Dear All,
 
-That's cdp and xmms and various programs are for.
+Can anybody suggest a good and simple browser?  Netscape core dumps
+very often, Mozilla is very very slow and I do not know of any other
+browser.  (Most of the websites nowadays doesn't care about Lynx :-(
+
+Thanks for your time.
+
+anna
+
+-- 
+
+Get your free e-mail account at http://www.linuxmail.org
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
