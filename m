@@ -1,33 +1,25 @@
-From: Mike Ni <cba20032002@yahoo.com>
-Subject: Question about TCP/IP
-Date: Mon, 24 Feb 2003 12:23:46 -0800 (PST)
+From: Peter Howell <p.howell74@rcn.com>
+Subject: scripting the "rec" function for a fixed time.
+Date: 24 Feb 2003 19:01:03 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030224202346.54528.qmail@web40406.mail.yahoo.com>
+Message-ID: <1046131264.10885.28.camel@smeagle>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi Everyone,
+I would like to be able to run the rec command unattended.  Right now
+when executed, it will record sound until I hit C-c.  I would really
+like to be able to right a script which will execute "rec ...", then
+wait a specified period of time, then pass the C-c to it.  Or is there a
+simpler way?
 
-I have a program running over the TCP/IP network. Yet,
-sometimes it would deliver slow response time. Is
-there any good way to isolate/identify what is causing
-this?
+Thanks
 
-What would happen when the line is cut during
-transmission? IS there any particular timeout error
-need to be looked for? 
+Peter
 
-Thanks in advance
-Mikey
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Tax Center - forms, calculators, tips, more
-http://taxes.yahoo.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
