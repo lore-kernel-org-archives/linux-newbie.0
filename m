@@ -1,45 +1,33 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: Wed, 23 Oct 2002 12:34:50 -0700
+From: Jos Lemmerling <jos@lemmerling.net>
+Subject: Re: Kernel
+Date: Wed, 23 Oct 2002 21:38:09 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021023122814.0215dac0@celine>
-References: <02102315493607.00497@unix.pa3gcu>
- <MSGID_110=3a260=2f1_3db551be@linuxnet>
- <1035315950.22123.76.camel@localhost.localdomain>
- <02102315493607.00497@unix.pa3gcu>
+Message-ID: <Pine.LNX.4.21.0210232134530.32460-100000@orthanc.lemmerling.net>
+References: <002d01c27a90$4d1d7290$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1035400822.31016.14.camel@localhost.localdomain>
+In-Reply-To: <002d01c27a90$4d1d7290$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-At 03:20 PM 10/23/02 -0400, Bryan Simmons wrote:
->The CD-ROM in question is a CD-RW.  The system set it up as /dev/scd0
->which is not accessible from hdparam.  if I turn it into an ide device,
->I will no longer be able to write CDs with it.
+On Wed, 23 Oct 2002, Paul Kraus wrote:
 
-The underlying ide device (/dev/hd*) remains accessable to hdparm (NOT 
-"hdparam"). You change the DMA setting on the "real" IDE device, not the 
-emulated SCSI device. (I'm assuming here that the drive really is an IDE 
-drive, and you are using the kernel's ide-scsi driver to "turn it into" a 
-scsi device for cdrecord or cdrdao or whatever you use to burn. Details 
-matter in troubleshooting discussions.)
+> On the Linux kernel archive they list 2.4.19 as the current stable
+> kernel. When I click on this it downloads patch-2.4.19.
 
->Does anyone know a way around this?  I can't hardly believe that all the
->millions of Linux users have been, and still are, stuck with CD-RWs that
->have to masquerade as SCSI devices.
+Just in case you didn't notice (and want to have the full source), just
+click on the "F" a bit to the right and you'll get the full source
+immediately. 
 
-Believe it. Or take it up with the folks who write the CD burning programs 
-(at least the two I named above, anyway).
+Otherwise forget that i mentioned it ;)
 
+
+HTH
 
 --
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
