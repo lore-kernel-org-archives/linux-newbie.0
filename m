@@ -1,62 +1,73 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: user/e-mail name
-Date: Wed, 3 Mar 2004 16:05:36 +0100
+Date: Wed, 3 Mar 2004 10:26:36 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403031605.36603.pa3gcu@zeelandnet.nl>
-References: <20040303074855.B8A553ACF@heisspf> <200403031505.52218.pa3gcu@zeelandnet.nl>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20040303152636.GA743@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403031505.52218.pa3gcu@zeelandnet.nl>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Wednesday 03 March 2004 15:05, pa3gcu wrote:
-> On Wednesday 03 March 2004 08:48, Peter wrote:
-> > Hi,
-> >
-> > In Slackware9.1 my user name is peter and my e-mail address is
-> > heisspf@isp.net
-> >
-> > Apparently mail I send arrives From: peter@isp.net. Therefore, when the
-> > recipient makes a "reply" the mail bounces since naturally peter@isp.net
-> > is not found.
->
-> Yes i know, i tryed to send you a reply to your mail to me but it got
-> bounced.
-
-Huum there is more going on here than you think Peter, 
-Below is the text from the bounce, i notice the name = not peter@isp.net but 
-peter@skyinet.net
-
-This is the Postfix program at host newpop.skyinet.net.
-
-I'm sorry to have to inform you that the message returned
-below could not be delivered to one or more destinations.
-
-For further assistance, please send mail to <postmaster>
-
-If you do so, please include this problem report. You can
-delete your own text from the message returned below.
-
-                        The Postfix program
-
+This bounced of course; your return address..
 <peter@skyinet.net>: unknown user: "peter@skyinet.net"
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Greetings:  Glad that some things, finally, go right... Re: your
+printer card arrival..
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Re: usernames, etc.. Richard has already replied..
+
+You're "suffering" with the same thing I have to fight every day..
+
+Don't know about exmh but, in my case, I have to set up the mailer,
+in my case Mutt, with Reply To: haltec@kvinet.com.. Then I have to
+compile Sendmail 8.11.x with the features of MASQUERADE_AS and
+MASQUERADE_ENVELOPE, so that the outgoing mail seems to be coming
+from kvinet.com, rather than my machines actual  hostname
+lnx2.w8mch.ampr.org... Since I have five user names and one ISP, each
+mailer for each user has to be set up with: <user>@kvinet.com, the
+MASQUERADE_AS taking care of the rest of the address.. Does this make
+any sense??
+
+I've noticed that the new Sendmail 8.12.XX series does not support
+MASQUERADE, probably because of security, whatever..
+
+Someone with more exmh smarts might help and they may call it
+something like ALIAS - dunno.... Is exmh a combination MUA and MTA??
+I'm not sure as I think I tried it years ago, for some reason, and it
+didn't click with me.. Usually the Mailer, MUA, and the Mail Transfer
+Agent are different programs.. 
+
+It's a tough nut and know I'm not much help but I spent several days
+trying PostFix and QMail to solve the Sendmail problem - to no
+avail.. I'm getting too old for this stuff, methinks.. <grin>
 
 
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+		Utrum Per Hebdomadem Perveniam
 
+On 03-03, Peter wrote:
+> Hi,
+> 
+> In Slackware9.1 my user name is peter and my e-mail address is heisspf@isp.net
+> 
+> Apparently mail I send arrives From: peter@isp.net. Therefore, when the 
+> recipient makes a "reply" the mail bounces since naturally peter@isp.net is 
+> not found.
+> 
+> My mail program is exmh.
+> 
+> Can that be corrected w/o changing my user name?
+> 
+> Thanks & regards
+> 
+> -- 
+> Peter
+> -- 
+> Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
