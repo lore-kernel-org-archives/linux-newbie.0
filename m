@@ -1,49 +1,39 @@
-From: Robin Doer <robin@robind.de>
-Subject: Re: iptables or ip6tables firewall
-Date: Thu, 21 Nov 2002 18:17:00 +0100
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: I killed user's x server
+Date: Thu, 21 Nov 2002 13:23:09 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021121171655.4317E6D43D@basicbox3.server-home.net>
-References: <200211202045.59886.r4mz3z@yahoo.es>
-Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Message-ID: <200211211823.gALIN9S03826@hartford-hwp.com>
+References: <200211202236.gAKMaIK05653@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211202045.59886.r4mz3z@yahoo.es>
+In-reply-to: <200211202236.gAKMaIK05653@hartford-hwp.com> (message from Haines
+	Brown on Wed, 20 Nov 2002 17:36:18 -0500)
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: brownh@hartford-hwp.com
+Cc: linux-newbie@hartford-hwp.com
 
-Am Donnerstag, 21. November 2002 02:45 schrieb r4mz3z:
-> Hi friends...
->   I was going to make a firewall (just learning) when I see that in
-> RedHat7.3 not only there are iptables daemon, ip6tables daemon too.
->
->   Which is the diference between iptables and ip6tables and which is =
-better
-> to make a firewall?
+User still unable to start X. Root can do it, but not user. When user
+tries, it reports not being able to load pex5 or xie. These modeles are
+present and I've run ldconfig.
 
-man ip6tables tells me:
+What's new is that I created a new user account, and found that it was
+able to start X. However, after rebooting, it suffers the same
+problem.
 
-NAME
-       ip6tables - IPv6 packet filter administration
+I new also see the error message that not only doe pex5 and xie fail
+to load. but the machine could not establish any listening sockets.
 
-DESCRIPTION
-       ip6tables  is  the  IPv6  enabled  version of the iptables
-       packet filter management program. "ip6tables --help"  will
-       list  the available commands and options. They're a subset
-       of the iptables' commands and  options,  which  are  docu=AD
-       mented in iptables(8).
+In /etc/services I have: xdmcp as port 177
+grep xdmcp /etc/services
+returns 177/tcp and 177/udp
 
-SEE ALSO
-       iptables(8)
+I don't know how to debug the X server other than this. 
 
-IMHO, the functionalities of iptables and ip6tables are identical, ip6t=
-ables=20
-is the IPV6-version of iptables.
-
-Robin
+Haines Brown 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
