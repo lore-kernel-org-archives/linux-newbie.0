@@ -1,28 +1,26 @@
-From: Pawan Deepika <pawan_deepika@yahoo.com>
-Subject: Is there any netgraph(FreeBSD) like facility in Linux?
-Date: Wed, 21 May 2003 09:18:13 -0700 (PDT)
+From: Eric <eric@cisu.net>
+Subject: Silly KDE Configuration Question
+Date: Wed, 21 May 2003 11:41:48 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030521161813.4760.qmail@web41611.mail.yahoo.com>
+Message-ID: <200305211141.48376.eric@cisu.net>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Does anyone know how I can remove the icons in my right-click context menu. 
+All those silly icons clutter the menu and I would like to turn them off or 
+remove them. 
+BTW - SuSE 8.2 and KDE 3.1
 
- Can anyone tell me if there is any implementation
-which provides the same/similar functionality what
-netgraph provides in FreeBSD?
-
-Thanks & regards,
-Deepika
-
-__________________________________
-Do you Yahoo!?
-The New Yahoo! Search - Faster. Easier. Bingo.
-http://search.yahoo.com
+----------------------
+Eric Bambach   
+Eric@CISU.net 
+----------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
