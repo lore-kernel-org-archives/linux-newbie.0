@@ -1,34 +1,70 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: nd other) basics (was: A few more things...)
-Date: 22 Oct 2002
+From: ichi@ihug.co.nz
+Subject: Re: Trying to get GUI'ed
+Date: Tue, 22 Oct 2002 12:42:45 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210212313.g9LNDHq02451@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <3DB547C5.12DF5341@ihug.co.nz>
+References: <200210212223.g9LMNrq15189@ev6.be.wanadoo.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-Aggree with both of Elias' statements.
+Heimo Claasen wrote:
+> 
+> I'm struggling since ages to make a specific SCSI device run 
+>
+> a new Debian-3.0 install first _did_ have it run 
 
-However, there's an additional element: Most of those Basic dialects
-earlier ran on "small" (mem) machines. And there _was_ a difference
-with using interpreter vs. compiler: while you could put eternally
-long spaghettis into the code for the interpreter (limited only by
-the editor's and the machine's live mem), the compilers' "development
-environment" - typically: QuickBasic - were rather limited in the
-amount of code they could digest at any one time, and this more or less
-forced to go a cleaner, modular design.
+Hurray!
 
-Anyway, that's more from a point of view looking at the practicalities;
-and cdertainly not an issue of flamewar.
-(Though I admit that I see some good occasion for that in it, looking
-at the extreme splitting-up of C[++etc] projects into hundreds of
-files, <bg>.)
+> For again some unrelated reason, there had to be a re-install 
+> of this very Debian; I used not the "frame buffer" but the 
+> "compact" kernel install that time, 
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+What?  After all the trouble you had getting your installation
+to work, you decide to change the kernel?
+
+> had later enormous difficulties to get X working at all, and 
+> it never accepted  the full range of the high-resoulution screen, 
+
+Looks like your experiment with the "compact" kernel was a mistake.
+
+> I haven't _got_ fifteen month of idle time to go through 
+> twentyseven docs and sources 
+
+Funny that.  Weren't you complaining last year about a lack of 
+documention in Linux (or was that some other newbie-from-hell).
+Now you say there is too much documentation. 
+
+> it would be nice to have some clearly worded information of 
+> what the differences _are_ between those window managers.
+
+I have read many articles comparing window managers.  They appear 
+pretty often.  There's also a web site devoted to different wms:  
+----------------------------
+http://www.plig.org/xwinman/
+---------------------------- 
+
+> I would never ever get the _functional_ information I need, 
+> namely to find the comparably "simplest" one 
+
+I found the above site in less than 60 seconds using google.
+It also gave me this:
+----------------------------------------------------
+http://www.windowmaker.org/features-performance.html
+----------------------------------------------------
+
+Google is your friend.  Before you complain about something 
+not being available, you should do a google search.
+--------------------------
+http://www.google.com/palm
+--------------------------
+
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
