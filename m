@@ -1,8 +1,8 @@
 From: Abhijit Vijay <abhijit_v@yahoo.com>
 Subject: Linux scripting problem
-Date: Wed, 26 Feb 2003 09:34:01 -0800 (PST)
+Date: Wed, 26 Feb 2003 09:45:25 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030226173401.63537.qmail@web13404.mail.yahoo.com>
+Message-ID: <20030226174525.48083.qmail@web13406.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
