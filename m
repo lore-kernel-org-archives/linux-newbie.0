@@ -1,71 +1,50 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Windows File Server
-Date: Mon, 25 Nov 2002 10:40:34 -0500
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Re: Audacity compile problems
+Date: Mon, 25 Nov 2002 18:41:36 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <007e01c29498$ff605b80$64fea8c0@pkrausxp>
+Message-ID: <20021125174136.GA6535@teamfinders.org>
+References: <20021122172858.GA28883@teamfinders.org> <20021124124558.A1415@neutrino.particles.org>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_007F_01C2946F.168A5380"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20021124124558.A1415@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_007F_01C2946F.168A5380
-Content-Type: text/plain;
-	charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+Cc: tschulze@teamfinders.org
 
-I am setting up a file server on a Linux box (probably debian I am
-downloading it now to check it out since all of my prior exp has been
-with some flavor of RedHat). I am going to use samba and wanted to know
-of any pit falls anyone might have had as well as recommend file system
-that I should run. I was thinking ext3 but that's just because its  the
-only file system I have ever used.
+On Sun, Nov 24, 2002 at 12:45:58PM +0200, Elias Athanasopoulos hunted and pecked out:
+> On Fri, Nov 22, 2002 at 06:28:58PM +0100, Theo. Sean Schulze wrote:
+> > 
+> > /usr/i486-suse-linux/bin/ld: cannot find -lartsc
+> > collect2: ld returned 1 exit status
+> > make: *** [audacity] Error 1
+> 
+> Find the artsc library. If you haven't it installed then you have to 
+> download the package that contains it (I don't know which is).
+> 
+> Then use the -L switch in LDFLAGS, so as to contain the directory of
+> the artsc lib. Your gcc command line should be something like:
+> 
+> % gcc ... -L/path/to/libartsc -lartsc ...
 
-The system will be being accessed by two users. All the files are either
-tiffs or pagemaker/indesign files.  There is over 13 gigs worth of files
-that these two users will be accessing and using all day. The files will
-be accessed from the server not being copied locally first.
+I did have /opt/kde3/include/artsc in the Makefile's CFLAGS line.  Unfortunately, that wasn't what ld was looking for.  But, your email jogged my memory about a problem I had had compiling a program I wrote that used libm. The line that mentions -lartsc means that ld is looking for libartsc.[oa].  That was actually in /opt/kde3/lib.  So, what I had to do was add -l/opt/kde3/lib to the Makefile's LIBS line.  That worked to get it to compile.  So far, I haven't gotten it to work yet though.  I tried calling audacity in the compile directory and it exited with a seg fault.  I am going to try doing a `make install` as root and see if that fares any better.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+> 
+> Elias
+> 
+> -- 
+> http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-------=_NextPart_000_007F_01C2946F.168A5380
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
-
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
-
-------=_NextPart_000_007F_01C2946F.168A5380--
-
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
