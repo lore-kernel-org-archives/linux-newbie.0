@@ -1,112 +1,53 @@
-From: "Brian Jackson" <brian-kernel-list@mdrx.com>
-Subject: Re: string manipulating?
-Date: Sun, 05 Jan 2003 19:22:30 -0600
+From: "James Maki" <jwmaki@att.net>
+Subject: Linux/Win XP network connection problem
+Date: Sun, 5 Jan 2003 19:06:59 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030106012231.3882.qmail@escalade.vistahp.com>
-References: <200212081837.LAA15273@cu.imt.net>
-            <3DF44FE9.69FB5E4D@ihug.co.nz>
-            <3E186154.D32669EB@gelm.net>
-            <20030105172002.1499.qmail@escalade.vistahp.com>
-            <20030105172330.1547.qmail@escalade.vistahp.com>
-            <3E18D2B9.1E3E415C@gelm.net>
+Message-ID: <MFELKLHOKICEIDOLMAGEMEFACBAA.jwmaki@att.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E18D2B9.1E3E415C@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Okay it goes like this: 
+I am just beginning to work with Red Hat Linux 8.0. I have the OS installed
+on a computer connected to a small network and the internet. I am able to
+connect to the internet via a broadband connection without problem. I
+purchased "Red Hat Linux 8 Bible" to learn more. One of my objectives was to
+be able to see and share files and printers between the Linux box and the
+Win XP box. No printers are connected to the Linux box. Linux is the only OS
+on this computer.
 
-grep $your_options | cut -f2 -d\( | cut -f1 -d\) 
+With the help of Red Hat Linux 8 Bible, I think I have SAMBA working on the
+Linux box. I can see MyGroup on the Win XP box in Network Places. If I
+select Mygroup, I get Samba Server (Localhost). If I double click, I get the
+following error message
 
-the second part -- cut -f2 -d\( -- says to cut what comes out of grep into 
-fields using ( as the delimiter -- remember, it has to be escaped 
+=======================
+\\Localhost in not accessible. You might not have permission to use this
+network resource. Contact the administrator of this server to find if you
+have access permissions.
 
-the third part -- cut -f1 -d\) -- says to cut the output of the second part 
-into fields using ) as the delimiter 
+You were not connected because a duplicate name exists on the network. Go to
+System in Control Panel to change the computer name and try again.
+=======================
 
-So if you start out grep'ing your file with output that looks like: 
+Reading Red Hat Linux 8.0 Bible indicates I "should" be able to see the
+linux file system at this time.
 
-...(123.45.67.89): 
+Also, how would I go about "seeing" the Win XP system from the Linux box
+(i.e., is there something comparable to network neighborhood in Linux). I
+boot the Linux box to Gnome. Very little experience with command line (but
+always willing to learn).
 
-feed that through -- cut -f2 -d\( -- and you get: 
+Have I just tried to do too much too early? I am reading chapter two of the
+book (covering the installation) and skipped forward to chapters 15 and 18
+to get the networking info. I learn best by doing -- picking an objective
+and working toward that objective. But the error message has me stopped in
+my tracks. Your patience and suggestions are most appreciated.
 
-123.45.67.89): 
-
-Which is the second field [-f2] after the cut [-d\(]
-You then feed that through -- cut -f1 -d\) -- and you get: 
-
-123.45.67.89 
-
-The first field[-f1] after the cut [-d\)] 
-
-I hope this didn't confuse you more. It is kind of hard to put this in 
-writing.(for me anyways) 
-
- --Brian Jackson 
-
-
-Chuck Gelm writes: 
-
-> Hi, Brian: 
-> 
->  Thanks.  Your suggestion is the similar to Jim's with
-> the arguments reversed. 
-> 
->  You and Jim have fed me. Thanks.
-> Please teach me to fish.  ;-) 
-> 
->  I don't understand the '-f1' and '-f2' arguments. 
-> 
-> IMHO, 'man cut' and 'info cut' are equally obfuscating: 
-> 
-> -f, --fields=LIST
->  output only these fields 
-> 
-> duh, what! 
-> 
-> Please briefly explain. 
-> 
-> Regards, Chuck 
-> 
-> 
-> Brian Jackson wrote:
->> 
->> Oops. I meant: 
->> 
->> grep $your_options | cut -f2 -d\( | cut -f1 -d\) 
->> 
->> Brian Jackson writes: 
->> 
->> > Maybe something like:
->> >
->> > grep $your_options | cut -f2 -d( | cut -f1 -d)
->> >
->> > That might work. Hard to say for sure, but it looks right. Should give you
->> > just the IP address. HTH
->> >
->> > --Brian Jackson
->> >
->> > Chuck Gelm writes:
->> >
->> >> Howdy, Y'all:
->> >>
->> >>  Using 'grep' I've parsed some stdout to lines ending in
->> >> ...(123.45.67.89):
->> >>  How can I either:
->> >>   extract the last 17 characters
->> >>   all characters after the first "("
->> >>   all characters from "(" to ")"
->> >>  ?
->> >>
->> >>  I tried
->> >> cut -c ".0123456789" filename.txt
->> >>  but it returns cut: invalid byte or field list.
->> >>  :-|
-<snip> 
+Jim
+jwmaki@att.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
