@@ -1,120 +1,152 @@
-From: James Miller <jamtat@mailsnare.net>
+From: Eric Bambach <eric@cisu.net>
 Subject: Re: booting from USB drive (without BIOS support)
-Date: Sat, 17 Jul 2004 20:57:27 -0500 (CDT)
+Date: Sat, 17 Jul 2004 23:13:54 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0407131124430.1337@debian-emach>
-References: <Pine.LNX.4.58.0407060808130.1337@debian-emach>
- <200407070023.52950.eric@cisu.net> <Pine.LNX.4.58.0407070850540.1337@debian-emach>
- <200407072234.44993.eric@cisu.net>
+Message-ID: <200407172313.54584.eric@cisu.net>
+References: <Pine.LNX.4.58.0407060808130.1337@debian-emach> <200407072234.44993.eric@cisu.net> <Pine.LNX.4.58.0407131124430.1337@debian-emach>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200407072234.44993.eric@cisu.net>
+In-Reply-To: <Pine.LNX.4.58.0407131124430.1337@debian-emach>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Eric Bambach <eric@cisu.net>
+Content-Type: text/plain; charset="iso-8859-1"
+To: James Miller <jamtat@mailsnare.net>
 Cc: linux-newbie@vger.kernel.org
 
-On Wed, 7 Jul 2004, Eric Bambach wrote:
+On Saturday 17 July 2004 08:57 pm, James Miller wrote:
 
-> On Wednesday 07 July 2004 09:37 am, you wrote:
-> > Just for reference, here's the code for the patch:
-> >
-> > --- linux-2.4.14-pre8-ext3/fs/super.c.orig      Fri Nov 16 00:59:18 2001
-> > +++ linux-2.4.14-pre8-ext3/fs/super.c   Fri Nov 16 01:07:26 2001
-> > @@ -1009,11 +1009,13 @@
-> >                  * Allow the user to distinguish between failed open
-> >                  * and bad superblock on root device.
-> >                  */
-> > -               printk ("VFS: Cannot open root device \"%s\" or %s\n",
-> > +               printk ("VFS: Cannot open root device \"%s\" or %s,
-> > retrying in 1s.\n",
-> >                         root_device_name, kdevname (ROOT_DEV));
-> > -               printk ("Please append a correct \"root=\" boot
-> > option\n");
-> > -               panic("VFS: Unable to mount root fs on %s",
-> > -                       kdevname(ROOT_DEV));
-> > +
-> > +               /* wait 1 second and try again */
-> > +               current->state = TASK_INTERRUPTIBLE;
-> > +               schedule_timeout(HZ);
-> > +               goto retry;
-> >         }
-> >
-> >         check_disk_change(ROOT_DEV);
-> >
-> > I've found some information on the 'net about how to apply it as well.  I
-> > suppose it does not work on 2.6.x kernels.
+> > Let me know if you want a patch for 2.6, I can give it a shot. Just=
+ have
+> > a fire extinguisher handy ;)
 >
-> Im no kernel hacker, but this is such a small easy change it would take only a
-> small amount of time to adapt it to 2.6.x. But apply cleanly as is....no way.
+> Yes, that would be interesting.  At the moment, I'm considering older
+> kernels, since the root filesystem for this install has to be pretty =
+small
+> (< 120MB).  The patch as is also doesn't work for the 2.2.26 kernel t=
+o
+> which I've tried applying it (results in a "rejected hunk" message). =
+ I
+> think maybe this is because the line number specifications aren't rig=
+ht
+> for this kernel.  Just a guess though: I have little experience compi=
+ling
+> kernels and none in patching them.  If you (or anyone else onlist) co=
+uld
+> offer tips for applying this patch to the 2.2.26 kernel, I'd be very
+> appreciative.
+
+2.2.26 eh? Ill take a look.
+> On a related, though more generic, note, I'm a bit confused by the pa=
+tches
+> that accompany kernel source at www.kernel.org .  It seems that, for =
+every
+> 2.2.x kernel source file there, there is a corresponding 2.2.x-patch =
+file.
+> What are these?  Is one supposed to download, along with the kernel o=
+ne
+> wants, also a patch and immediately apply it?
+
+The ones marked -prepatch? No, You shouldn't neccesarily apply these. T=
+hey are=20
+testing versions in between releases. If you are on a desktop or can st=
+and a=20
+few bugs, or need a new feature, then you can download the full source,=
+ and=20
+then apply the patch. However, generally you should wait for the full=20
+release. The numbering without the -preX at the end. eg. 2.2.26 not=20
+2.2.27-pre2.=20
+
+
+> As further follow up on this whole issue, I've discovered that the in=
+itrd
+> method of booting/running from USB is an entirely different option th=
+an
+> the kernel patch option.  If one sets up an initrd, one can use just =
+a
+> stock kernel.  One simply introduces a delay for mounting the root
+> filesystem into the file linuxrc in the initrd.  So the FAQ item real=
+ly
+> should say something like:
+--snip--
+> In all cases (BIOS-supported and non-BIOS-supported), the delay is
+> required either by means of a kernel patch, or by means of a "sleep"
+> argument in the requisite initrd file owing to the extra time it take=
+s for
+> the kernel to load modules for and initialize the USB device.  Once t=
+he
+> kernel has been delayed for the needed interval, it finds and mounts =
+the
+> root filesystem, running from it just as it would any more typical
+> mass-storage device (e.g., an IDE drive)."
 >
-> Let me know if you want a patch for 2.6, I can give it a shot. Just have a
-> fire extinguisher handy ;)
+> James
 
-Yes, that would be interesting.  At the moment, I'm considering older
-kernels, since the root filesystem for this install has to be pretty small
-(< 120MB).  The patch as is also doesn't work for the 2.2.26 kernel to
-which I've tried applying it (results in a "rejected hunk" message).  I
-think maybe this is because the line number specifications aren't right
-for this kernel.  Just a guess though: I have little experience compiling
-kernels and none in patching them.  If you (or anyone else onlist) could
-offer tips for applying this patch to the 2.2.26 kernel, I'd be very
-appreciative.
+Yep. Two ways to do the same thing. I think I remember hitting on that =
+or=20
+somewhere close in my explanations before.
 
-On a related, though more generic, note, I'm a bit confused by the patches
-that accompany kernel source at www.kernel.org .  It seems that, for every
-2.2.x kernel source file there, there is a corresponding 2.2.x-patch file.
-What are these?  Is one supposed to download, along with the kernel one
-wants, also a patch and immediately apply it?
+Anyways heres a quick hack for 2.2.26. I couldn't try it out because I =
+think =20
+my compiler is too new for 2.2.x so it gave alot of strange errors, how=
+ever=20
+let me know if it works. Seems safe. The structure of super.c in 2.2.26=
+ is=20
+much closer to the 2.4.14 version than the 2.6 version, its just 200 li=
+nes=20
+off and a little switched around so patch couldn't pick it up. Oh ya an=
+d BTW=20
+I am nowhere near a kernel hacker so keep that fire extinguisher handy =
+;)
 
-As further follow up on this whole issue, I've discovered that the initrd
-method of booting/running from USB is an entirely different option than
-the kernel patch option.  If one sets up an initrd, one can use just a
-stock kernel.  One simply introduces a delay for mounting the root
-filesystem into the file linuxrc in the initrd.  So the FAQ item really
-should say something like:
-
-"There are basically 2 options for "booting" from USB: BIOS-supported and
-non-BIOS-supported.  The first of these does involve actual booting Linux
-- as well as running it - from the USB device.  The second uses other
-media for the initial boot, but subsequently runs Linux from the USB
-device.  Some key details follow.
-
-If you want to really boot from a USB drive, you'll need a BIOS that
-supports booting from USB devices.  Additionally, you'll need either: 1) a
-kernel patched to delay loading of the root filesystem; or 2) a
-non-patched kernel that boots using an initrd in which the file linuxrc
-contains a delay argument (e.g., "sleep 4") for mounting the root
-filesystem.  Either of the two will work if your BIOS supports booting
-from USB devices and if you either compile needed USB and scsi modules
-into your kernel or make them available to the kernel in your initrd.
-
-A second option exists as well.  While this option does not really involve
-"booting" from the USB device, the final result is virtually
-indistinguishable from the BIOS-supported method described above.  In this
-scenario, booting happens from some other medium (e.g., a floppy disk)
-where the kernel and/or initrd is/are located.  The kernel is booted with
-an argument pointing it to the root filesystem on the USB device.  Using
-loadlin as an example, something like: loadlin vmlinuz initrd=initrd.gz
-root=/dev/sda1.  So, though one has booted from some other medium, once
-the kernel finds and mounts the root filesystem on the USB device, Linux
-runs from it in essentially the same way it would have had the USB device
-been booted to from the system's BIOS.  In this scenario, either the
-patched kernel mentioned above or the normal kernel with initrd are also
-required - just as in the BIOS-supported option.
-
-In all cases (BIOS-supported and non-BIOS-supported), the delay is
-required either by means of a kernel patch, or by means of a "sleep"
-argument in the requisite initrd file owing to the extra time it takes for
-the kernel to load modules for and initialize the USB device.  Once the
-kernel has been delayed for the needed interval, it finds and mounts the
-root filesystem, running from it just as it would any more typical
-mass-storage device (e.g., an IDE drive)."
-
-James
+--- linux-2.2.26-orig/fs/super.c	2001-11-02 10:39:08.000000000 -0600
++++ linux-2.2.26/fs/super.c	2004-07-17 22:31:57.605808136 -0500
+@@ -1146,7 +1146,9 @@
+ 	struct inode * d_inode =3D NULL;
+ 	struct file filp;
+ 	int retval;
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
++	int retry_count =3D 0; //Is this needed?
++	retry:
++	retry_count++;
+ #ifdef CONFIG_ROOT_NFS
+ 	if (MAJOR(ROOT_DEV) =3D=3D UNNAMED_MAJOR) {
+ 		ROOT_DEV =3D 0;
+@@ -1220,7 +1222,8 @@
+ 		 * Allow the user to distinguish between failed open
+ 		 * and bad superblock on root device.
+ 		 */
+-		printk("VFS: Cannot open root device %s\n",
++		printk("VFS: Cannot open root device %s \
++		retrying in 1s.\n",
+ 		       kdevname(ROOT_DEV));
+ 	else for (fs_type =3D file_systems ; fs_type ; fs_type =3D fs_type->n=
+ext) {
+   		if (!(fs_type->fs_flags & FS_REQUIRES_DEV))
+@@ -1239,8 +1242,15 @@
+ 			panic("VFS: add_vfsmnt failed for root fs");
+ 		}
+ 	}
++
++ =A0 =A0 =A0 =A0/* wait 1 second and try again */
++ =A0 =A0 =A0 =A0current->state =3D TASK_INTERRUPTIBLE;
++ =A0 =A0 =A0 =A0schedule_timeout(HZ);
++ =A0 =A0 =A0 =A0
++ 	if (retry_count < 7) //Retry for 6 seconds.
++ 		goto retry;
+ 	panic("VFS: Unable to mount root fs on %s",
+-		kdevname(ROOT_DEV));
++	kdevname(ROOT_DEV));
+ }
+
+
+--=20
+
+-EB
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
