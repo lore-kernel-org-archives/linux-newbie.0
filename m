@@ -1,7 +1,7 @@
 From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: kernel version mismatch peculiarity.
-Date: Tue, 21 Dec 2004 10:41:35 +0530
-Message-ID: <4EE0CBA31942E547B99B3D4BFAB34811258EEC@mail.esn.co.in>
+Subject: exported variable & usage problem
+Date: Tue, 21 Dec 2004 11:49:20 +0530
+Message-ID: <4EE0CBA31942E547B99B3D4BFAB34811258F09@mail.esn.co.in>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,30 +11,37 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-hello,
-=A0=A0=A0=A0=A0=A0=A0 I have compiled simple netfilter linux modules an=
-d when am trying to run it, i get the following error on saying:=20
 =A0
-insmod capture.o
+Hi all,
 =A0
- capture.o was compiled for kernel version 2.4.9-9
-=A0=A0=A0=A0=A0=A0=A0 while this kernel is version 2.4.18-14.
+Good morning.
 =A0
-I have encountered with this problem only after I have recompiled the k=
-ernel last night.
-There was no such error before recompilation of the kernel when I was u=
-sing the same module.
+I have a small problem & I searched enough for finding (resolving) it.
 =A0
-What might be the relevance?
-I think the previous kernel is using the latest build kernel headers.
-If this the problem I do I solve this?
+The problem is I have 2 modules.
+=46irst module exports some symbols to the symbol table using EXPORT_SY=
+MBOL. Second module uses the symbols exported by the first module when =
+loaded (at asynchronous time intervals) is giving an error saying=20
 =A0
-Any suggestions?
+=A0
+"capture.o: unresolved symbol glb_time"
+where glb_time is the exported variable of type "struct timeval".
+=A0
+Cat /proc/ksyms | grep glb_time=20
+is also working.
+=A0
+
+Why is this happening?
+Should I do some thing in a second module before just directly using an=
+ exported variable in it?=20
+Confused... Please help?
 =A0
 Regards,
 Mukund jampala
 =A0
-c
+=A0
+=A0
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
  in
