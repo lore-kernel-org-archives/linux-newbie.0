@@ -1,62 +1,31 @@
-From: Nilesh Sahita <nksahita@softhome.net>
-Subject: Problem running two domains on one Apache server
-Date: 18 Jun 2003 10:25:59 +0800
+From: "James Turnbull" <james@lovedthanlost.net>
+Subject: Re: Problem running two domains on one Apache server
+Date: Wed, 18 Jun 2003 13:06:36 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1055903157.9558.9.camel@localhost.localdomain>
+Message-ID: <008c01c33546$a1822670$d700a8c0@iih.usyd.edu.au>
+References: <1055903157.9558.9.camel@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Nilesh Sahita <nksahita@softhome.net>, linux-newbie@vger.kernel.org
 
-Hi,
+Nilesh Sahita wrote:
+> When I access http://nstest1.homedns.org, I serves up
+> test1/index.html - which is what I expected.  However, when I access
+> http://nstest2.homedns.org, it serves up test1/index.html instead of
+> test2/index.html.
 
-I am trying to run two domains on one Apache domain.
+Are you accessing the sites inside a local network?  Some routers and
+firewalls have issues with internal loopback and virtual domains.
 
-The system config is:  RH9, Apache 2.0.40
+If you are behind a router/firewall then try to connect from outside the
+network and see what happens.
 
-I setup two domains - nstest1.homedns.org and nstest2.homedns.org
+Hope that helps.
 
-In Apache configuration, I create two virtual servers - the entries from
-httpd.conf are:
-
-Quote
-
-...
-
-NameVirtualHost *
-
-<VirtualHost nstest1.homedns.org>
-DocumentRoot "/var/www/html/test1"
-ServerName nstest1.homedns.org
-DirectoryIndex index.html index.php index.htm
-</VirtualHost>
-
-<VirtualHost nstest2.homedns.org>
-DocumentRoot "/var/www/html/test2"
-ServerName nstest2.homedns.org
-DirectoryIndex index.html index.php index.htm
-LogLevel debug
-</VirtualHost>
-
-End-quote
-
-In /var/www/html/test1 and /var/www/html/test2, I have two simple
-index.html files.
-
-When I access http://nstest1.homedns.org, I serves up test1/index.html -
-which is what I expected.  However, when I access
-http://nstest2.homedns.org, it serves up test1/index.html instead of
-test2/index.html.
-
-I tried clearing browser cache, restarting apache but doesn't help.
-
-Anyone got idea what could be potentially going wrong?
-
-TIA for any pointers/help.
-
-Regards.
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
