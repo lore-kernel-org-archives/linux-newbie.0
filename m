@@ -1,32 +1,38 @@
-From: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Subject: Re: Query on SIGFPE handling
-Date: Mon, 22 Nov 2004 14:56:50 +0530
-Message-ID: <1101115610.5382.50.camel@myLinux>
-References: <1101104772.4527.7.camel@myLinux>
-	 <652016d3041121230031fe6094@mail.gmail.com>
-	 <1101107755.4527.18.camel@myLinux> <1101111876.5382.8.camel@myLinux>
-	 <01ca01c4d071$5b35f080$121aa8c0@ascindia.com>
-	 <1101114324.5382.42.camel@myLinux>
-	 <652016d30411220119f24be7@mail.gmail.com>
+From: "Robin Doer" <robin@robind.de>
+Subject: Re: translating web pages
+Date: Mon, 22 Nov 2004 11:01:47 +0100
+Message-ID: <20041122.ujc.51537300@192.168.0.6>
+References: <5.1.0.14.1.20041121150833.01f61748@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <652016d30411220119f24be7@mail.gmail.com>
+In-Reply-To: <5.1.0.14.1.20041121150833.01f61748@celine>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Manish Regmi <regmi.manish@gmail.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-On Mon, 2004-11-22 at 14:49, Manish Regmi wrote:
+Ray Olszewski (ray@comarre.com) schrieb:
+> Relative to your comments, James, I fear I can only echo your lack of
+> success. I recently was investigating, specifically, English-Spanish
+> translation. While I did find a couple of Linux apps that function at the
+> dictionary level ... translating words and short phrases, but with no
+> sensitivity to context ...
 
-> see man kill, raise
+For a pure dictionary (supports translations from/to English/German/French) I
+suggest using dict.leo.org. It also offers toolbars for Mozilla/Firefox, an a
+Konqueror-integration.
 
-Thank you. I got that!!
--- 
-With regards,
+> I found nothing in the way of babelfish-like
+> translation for Linux.
 
-Jagadeesh Bhaskar P
+Around babelfish I've a nice story. Some time ago a local radiostation (I come
+from Germany) carried out a quiz: They took the lyrics from a german song,
+translated it into English and finally back to German using
+babel.altavista.com. This is quite funny! Give it a try!
+
+Robin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
