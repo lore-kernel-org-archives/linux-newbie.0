@@ -1,91 +1,116 @@
 From: Jim Nelson <james4765@verizon.net>
-Subject: Re: LVM query
-Date: Wed, 13 Oct 2004 16:15:11 -0400
+Subject: Re: Fwd: Re: clock cycles
+Date: Wed, 13 Oct 2004 16:55:33 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <416D8CCF.6060906@verizon.net>
-References: <Pine.LNX.4.58.0410131346130.1347@debian-emach>
+Message-ID: <416D9645.6080707@verizon.net>
+References: <20041013131206.67214.qmail@web52902.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0410131346130.1347@debian-emach>
+In-Reply-To: <20041013131206.67214.qmail@web52902.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+To: Ankit Jain <ankitjain1580@yahoo.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-James Miller wrote:
 
->I tend to use somewhat older computers and older, smaller (and
->cheaper--sometimes free!) hard drives.  As a result, I end up with 2 or
->more hard drives in any given machine.  I've been manually partitioning
->and usually making / the mount point for smaller of the disks, /home the
->mount point for the larger (single user system, btw).  I suppose /usr
->might be a good mount point for a third disk.  Be that as it may, I've
->recently looked into LVM (logical volume management) and wondered whether
->it might not be a better option for setting up my system.
+>First of all Thanks a lot for help
 >
-
-Definitely - My fileserver at home has 3 50 GB SCSI drives and a 30 GB 
-IDE drive chained together - and my desktop machine uses LVM on its 
-single hard drive so that when I add another, it won't be hard to move 
-the filesystem over.
-
->  As I understand
->about the way it works, I would not run into problems such as I might have
->with my former scheme--for example running out of room on / (never
->happened before, but who knows).  With all disks being used as one large
->filesystem under LVM--if that is, indeed, the way it works--directories
->can increase to whatever size disk total allows.  So, a couple of
->questions in closing: have I understood correctly how LVM works and what
->it does?
+>see inline
 >
-
-Yes, essentially.  You can also set up RAID with LVM - check the man 
-pages for the proper setup and syntax.  Be aware though, that using 
-software RAID on IDE drives (especially older ones) sucks up great huge 
-amounts of processor time - SCSI makes much less of a CPU hit in 
-software RAID, though. 
-
->  Does it sound like a good solution for my scenario?  Is there
->any performance hit involved in using it as over against a traditional
->partitioning scheme?
->
-
-Standard LVM is almost unnoticeable.  RAID does take more CPU time, but 
-standard LVM is almost unnoticeable (unless you're running it on a 
-386-25 or something equally daft).
-
->  Any other comments on, criticisms, praises of LVM?
->Gotchas?  Thanks for any feedback on this.
->
->James
+> --- Jim Nelson <james4765@verizon.net> wrote: 
 >  
 >
-Unlike AIX, where LVM cane from, you cannot put the / filesystem on a 
-LVM partition AFAIK.  The way I set it up is:
-
-/ __   (on standard partition)
-    |
-    |
-    |___ /usr (on LVM partition)
-    |
-    |
-    |___ /home (on LVM partition)
-    |
-    |
-    |___ /boot (on standard partition, at least on Red-Hat based systems)
-
-
-most bootloaders have problems with shuffling around kernel images, so a 
-seperate partition for /boot is a good idea anyway.
-
-
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
+>>Not exactly.  The processor speed is an indication
+>>of how fast it can 
+>>carry out instructions, but on CISC (complex
+>>instruction set computing) 
+>>computers (x86, x86-64) some instructions take more
+>>than one clock cycle 
+>>to complete.  Intel has pushed the clock speed (as
+>>much for marketing as 
+>>for any other reason - AMD produces processors that
+>>can do comparable 
+>>work at a lower clock speed) 
+>>    
+>>
 >
+>Sorry could not understand this. What is making AMD
+>processors work faster than Intel processors at a
+>lower clock cycle. also i want to know how to prove
+>this that AMD 64 bit processors will work faster than
+>Intel 32 bit processor even if they have clock cycles
+>like 3.6 GHz....
+>
+>  
+>
+
+Say it takes an Intel processor 5 cycles to perform an instruction.  If 
+AMD figures out how to do the same thing in 4 cycles, the Intel 
+processor would have to be 20% faster in clock speed to keep up with the 
+AMD. 
+
+There are benchmarks done by some reputable companies that have proven 
+some performance gains.  To be fair, the Intel processors can beat the 
+Opterons in some situations, but they pay for it in others.  Processor 
+design is one of those areas that involve trade-offs - a good processor 
+design for one situation will be beat by another processor design made 
+for a different situation.
+
+Best way to prove the performance gains on a 64-bit platform - 
+benchmarks.  There are plenty out there - both the software and the results.
+
+>>just about as far as it
+>>can go - they are 
+>>having severe problems with manufaturing the 3.6 GHz
+>>chips.
+>>It is only an accurate speed comparison between
+>>chips in the same 
+>>processor family - the last of the Pentium 3 chips
+>>were actually faster 
+>>than the higher-clocked early Pentium 4 releases -
+>>and it's been that 
+>>    
+>>
+>
+>Hows that? /is it due to higher clock cycles in P3 and
+>less no. of transistor in early P4?
+>
+>  
+>
+
+Part of it had to do with larger L2 cache on the last P3's.  Part of it 
+was just that the first P4's were not all that good.  Par for the course 
+for Intel - the Itanium 1 chip was pretty much just an 
+engineering/developement prototype - but the Itanium 2 is a good, if 
+rather expensive, processor, and the Itanium 3 promises to be pretty 
+damn good, if Intel's track record stays firm.
+
+>Well definately PowerPC's are faster than Intel. i do
+>agree. Some what i feel a day will come when CISC
+>processors will find difficult to servive...
+>
+>  
+>
+
+All modern CISC processors have a RISC core.  There is an interpreter 
+built in to the processor that breaks down the instruction set into the 
+simpler language of the processor core.  We could get rid of all that 
+CISC crap if it wasn't for legacy applications - that's why PC's are 
+pretty much the only holdout in the RISC/CISC wars, since there's a 
+whole bunch of binary-only x86-only Microsoft-only applications out 
+there that too many companies use.  So long as there are proprietary 
+programs for a Microsoft platform, there will be CISC processors.
+
+>Thanks again
+>
+>ANkit Jain
+>
+>
+>________________________________________________________________________
+>Yahoo! Messenger - Communicate instantly..."Ping" 
+>your friends today! Download Messenger Now 
+>http://uk.messenger.yahoo.com/download/index.html
 >  
 >
 
