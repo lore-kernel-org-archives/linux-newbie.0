@@ -1,42 +1,62 @@
-From: Jim Reimer <wa5rrh@arrl.net>
-Subject: Re: samba problem - oops
-Date: Sun, 21 Jul 2002 10:39:28 -0500
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Re: Installation of sources
+Date: Sun, 21 Jul 2002 12:34:17 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207211537.g6LFbbOc004719@franklin.icok.net>
-References: <200207211315.g6LDFtOc028945@franklin.icok.net>
+Message-ID: <772267a00d.7a00d77226@homemail.nyu.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207211315.g6LDFtOc028945@franklin.icok.net>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Joseph Jackson <skoidat@lvcm.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-"hosts allow" line in smb.conf was wrong.  All fixed now.
+Does the files valhalla-SRPMS-disc1.iso/valhalla-SRPMS-disc2.iso 
+contain the source code? If yes, then do we have to burn them to cd as 
+iamge file and boot from that cdrom to install them, as done for 
+installing linux?
 
-On Sunday 21 July 2002 08:17 am, Jim Reimer wrote:
-> I'm having trouble geting samba going.  I can see the Linux
-> machine (pyro2) from a windows(95) machine (it shows up in
-> windows explorer) but when I try to connect from windows,
-> I get this error message:
->
-> \\pyro2 is not accessible.  The specified computer did not
-> receive your request.  Try again later.
->
-> And when I check from another Linux machine for available
-> shares, I get this:
->
-> [jdr@pyro jdr]$ /usr/bin/smbclient -L pyro2
-> added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
-> Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
-> session request to PYRO2 failed (Not listening for calling name)
-> Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
-> session request to *SMBSERVER failed (Not listening for calling name)
->
-> What do I need to do?
->
-> Thanks,
-> -jdr-
+----- Original Message -----
+From: Joseph Jackson <skoidat@lvcm.com>
+Date: Sunday, July 21, 2002 10:10 am
+Subject: Re: Installation of sources
+
+> Anshuman Singh Rawat wrote:
+> 
+> > Hi,
+> > I recently installed Linux (RHL 7.3) for the first time in my life.
+> > Now what do I do install/view the sources? I read in some book 
+> where i 
+> > cud find the sources but that directory is absolutely empty, so 
+> I 
+> > guess the sources have to be installed first.
+> > 
+> > -Anshu
+> > 
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-
+> newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> > 
+> > 
+> 
+> 
+> Installing from the iso version (the downloaded one or the one in 
+> the store) off 
+> the first cd does not install any of the source code for any of 
+> the packages. 
+> If you bought the box set there should be a cd that is full of all 
+> the source 
+> code.  If you didn't buy it you can also download the sources for 
+> it all from 
+> redhats ftp site.
+> 
+> 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
