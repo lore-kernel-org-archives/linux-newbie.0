@@ -1,55 +1,62 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: a trouble with OpenGL (additional information)
-Date: Mon, 16 Sep 2002 06:29:04 +0000
+From: "a a" <xlsd@hotmail.com>
+Subject: Re: auto login
+Date: Mon, 16 Sep 2002 08:34:45 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02091606290404.03392@unix.pa3gcu>
-References: <200209160910.49335.fox@sby.centrin.net.id> <5.1.0.14.1.20020915195458.0221ac70@celine> <200209161109.46972.fox@sby.centrin.net.id>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <F184AG7yWsktrqXPmDm00006d68@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209161109.46972.fox@sby.centrin.net.id>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Adwin <fox@sby.centrin.net.id>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Monday 16 September 2002 04:10, Adwin wrote:
-> On Monday 16 September 2002 09:58, Ray Olszewski wrote:
-> > It is difficult to say for certain, but probably not. On my system
-> > (Debian Sid), the equivalent libraries are located in /usr/X11R6/lib/,
-> > but /usr/lib contains symlinks to them. This arrangement implies that
-> > some applications expect to find them in one place, others in the other.
-> > So your safer course is to put symlinks in /usr/X11R6/lib that point to
-> > the actual libraries ("man ln" if you need to learn how to do this).
+ahh its not becuase im "too lazy", the reason i asked this was because
+i am running a pc/104 and attached to this is a gps receiver..i am using the 
+pc as a data logger for the receiver. it needs to be portable so i am 
+removing the keyboard, hence the question...
+
+thanks for the replies!
+
+
+
+>From: Gavin Laking <me@gavinlaking.co.uk>
+>To: "a a" <xlsd@hotmail.com>
+>Subject: Re: auto login
+>Date: Sun, 15 Sep 2002 17:30:51 +0100
 >
-> I have already make a ln (ln -s /usr/X11R6/lib/liGLU.so libGLU.so) in
-> /usr/lib.
+>At 16:19 15/09/2002 +0000, you wrote:
+>>Hello
+>>Is there a way i can automatically login as root when i boot up the 
+>>computer?
 >
-> when I try to compile / make a program, it compiled successfully. But, when
-> I try to run the program it always error :
+>If there was, would you really want to do that? I mean, stop. Think very 
+>carefully about what can happen if you are root and something goes wrong. 
+>Is it really worth compromising your entire system just because you are too 
+>lazy (and I think that is all that it comes down to in the end, pardon me) 
+>to type a password in every time you want to perform an operation that 
+>requires root privileges.
 >
-> Xlib:  extension "GLX" missing on display ":0.0".
-> Xlib:  extension "GLX" missing on display ":0.0".
-> Failed to Create Window : Couldn't find matching GLX visual
+>There are ways to log you in as a user by default in your session-managed 
+>window manager but they depend heavily on what system you are using. Since 
+>you haven't provided those details, it makes it next to impossible to 
+>advise you.
 >
-> Must I re-install Mesa3D & uninstall NVIDIA driver that I have just
-> installed ?
-
-I belive you need to read the documentation witch came with the NVIDIA 
-driver, further more if you read and interpret the error message above it 
-says, Xlibaray can't find the "GLX" extention module in your display 
-enviroment.
-
-In other words edit your XF86Config file as per the NVIDIA doc's.
-Under the "modules" section" you need;
-# This loads the GLX module
-    Load       "glx"
+>I hope you don't find my response too harsh, but I'm attempting to stir you 
+>into rational thinking. :-)
+>
+>GL
+>
+>--
+>Gavin Laking ~ Web Development Daemon
+>
+>http://www.gavinlaking.co.uk
+>--
 
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+
+_________________________________________________________________
+Chat with friends online, try MSN Messenger: http://messenger.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
