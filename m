@@ -1,110 +1,84 @@
-From: Rei Shinozuka <shino@panix.com>
-Subject: fedora and how to get mass storage devices (memory card readers) to work
-Date: Tue, 13 Apr 2004 22:34:55 -0400
+From: joy <gracecott@sancharnet.in>
+Subject: Re: kernel 2.6.4 report, further assistance requests
+Date: Wed, 14 Apr 2004 08:09:10 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040414023454.GA10063@panix.com>
-References: <20040413025903.GD3579@panix.com> <20040413171659.03c65dda.bilbo@waitrose.com>
+Message-ID: <407CA44E.5020900@sancharnet.in>
+References: <Pine.LNX.4.58.0404121355350.673@debian-emach>
+ <407B2158.6070702@jpl.nasa.gov> <Pine.LNX.4.58.0404122152500.688@debian-emach>
+ <407B7EE3.4000206@comcast.net> <Pine.LNX.4.58.0404130954380.1012@debian-emach>
+ <Pine.LNX.4.58.0404131215470.743@debian-emach>
+ <Pine.LNX.4.58.0404131814170.4215@debian-emach>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20040413171659.03c65dda.bilbo@waitrose.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Newbie Linux Users <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-well, lsmod did show:
+James Miller wrote:
+
+>Though I'd like to keep using this kernel, there are a couple of things
+>that stand in the way: one somewhat minor, but the other a real
+>show-stopper.  The show-stopper is vmware: for some reason, I can't get
+>its modules to compile under this kernel.  I've done these vmware
+>  
+>
+the modules for the 2.4 style kernels are different from the 2.6 ones 
+and I don't think they are
+compatible ,i.e, if they compile on a 2.4 they wouldn't compile on a 
+2.6. better check for a 2.6
+compatible version of vmware. also could you tell me where you can 
+download the same?
+I've heard a lot about it and want to see what it's about.
+
+>recompiles several times recently for the 2.4.x kernels I've been
+>upgrading to, so I know I have all the ingredients in place (e.g.,
+>compiler, header files etc).  I tried a very recent patch for vmware, but
+>the process continues to abort during make.  If I have to reboot into the
+>2.4.25 kernel just to run vmware, I'll have to abandon my 2.6.4 efforts
+>for now: it just won't be worth the added hassle.  The other, less serious
+>problem (though one that really bugs me), is loss of console beep under
+>the 2.6.4 kernel.  echo -e "\a" from the command line gives an extra blank
+>line, as though the system is doing something, but I hear no sound.  I ran
+>
+the system speaker is not governed by alsa. that would be like killing a 
+microbe with a road roller actually;-)
+cat your .config if you compiled your own kernel or the 
+System.map((?)not sure) and grep for speaker
+and check if it is enabled on your kernel.
+
+>into this problem on another 2.6.x system I was using and resolved it by
+>upping the volume on the PC speaker using alsamixer.  Seems kind of
+>backward to me that a sound system like alsa should govern the system
+>speaker, but if I could resolve things that easily on this system, I'd do
+>it.  alsamixer gives me error messages when I try to run it on this
+>machine ("alsamixer:  function snd_ctl_open failed for default: No such
+>device") and troubleshooting the whole sound system looks like a big
+>headache I just can't get involved in right now.  And besides, I really
+>don't care if I get any other sounds than the system speaker out of this
+>machine - at least for the time being.  Using alsa to get sound from the
+>system speaker looks in this case a bit like trying to kill a gnat with a
+>sledgehammer.
+>
+>Suggestions appreciated, as always.
+>
+>James
+>
+cheers,
+Joy.MM
+
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>  
+>
 
 
-Module                  Size  Used by    Tainted: P  
-usb-storage            75136   0 
-....
-
-and interestingly, usbview
-showed the the card reader is recognized:
-
-http://www.shinozuka-family.com/USBViewer.jpg
-
-but the last 2 commands return errors:
-
-[root@tuxedo root]# mount -t usbdevfs 0  /proc/bus/usb
-mount: 0 already mounted or /proc/bus/usb busy
-mount: according to mtab, usbdevfs is already mounted on /proc/bus/usb
-[root@tuxedo root]# mount -t vfat /dev/sda1 /mnt/usb/
-mount: /dev/sda1 is not a valid block device
-[root@tuxedo root]# 
-
-i feel we are getting closer!!
-
-thanks,
-
--rei
-
-
-On Apr13 17:16, John Kelly wrote:
-> On Mon, 12 Apr 2004 22:59:03 -0400
-> Rei Shinozuka <shino@panix.com> wrote:
-> 
-> > also, /var/log/messages reports:
-> > 
-> > [root@tuxedo shino]# tail -f /var/log/messages
-> > Apr 12 22:36:57 tuxedo kernel: cdrom: This disc doesn't have any
-> > tracks I recognize! Apr 12 22:37:01 tuxedo kernel: cdrom: This disc
-> > doesn't have any tracks I recognize! Apr 12 22:48:44 tuxedo kernel:
-> > spurious 8259A interrupt: IRQ7. Apr 12 22:50:54 tuxedo kernel:
-> > usb.c: USB disconnect on device 00:02.2-6 address 2 Apr 12 22:50:54
-> > tuxedo devlabel: devlabel service started/restarted Apr 12 22:50:56
-> > tuxedo kernel: hub.c: new USB device 00:02.2-6, assigned address 3
-> > Apr 12 22:50:56 tuxedo kernel: usb.c: USB device not accepting new
-> > address=3 (error=-71) Apr 12 22:50:56 tuxedo kernel: hub.c: new USB
-> > device 00:02.2-6, assigned address 4 Apr 12 22:50:59 tuxedo
-> > usb.agent[25333]: missing kernel or user mode driver usb-storage Apr
-> > 12 22:51:00 tuxedo devlabel: devlabel service started/restarted
-> >
-> < Rest deleted....>
-> 
-> Hi,
-> Here are the commands I use to view files on my camera.  I have
-> problems remembering how to do things so the commands are in a file.
-> :-)
-> 
-> 
-> jpk@debian:~$ cat mounting_a_usb_tingy.txt 
-> # usbview
-> # lsmod
-> # modprobe usb-storage
-> # mount -t usbdevfs 0  /proc/bus/usb
-> # mount -t vfat /dev/sda1 /mnt/usb/
-> 
-> usbview shows what usb devices are connected to the machine.
-> lsmod 
-> shows what modules are loaded.
-> You need the usb-storage modules (or have it compiled into the
-> kernel), so modprobe usb-storage loads the usb storage module.
-> I think you might also need the generic SCCI module too. If so you may
-> have to do: modprobe sg
-> I can't remember the details about the next command but it is
-> necessary on my machine mount -t usbdevfs 0 /proc/bus/usb 
-> And finally, I mount the filesystem manually with 
-> mount -t vfat /dev/sda1 /mnt/usb/
-> 
-> Hope this helps.
-> 
-> reagards,
-> 
-> John Kelly
-> 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
-Rei Shinozuka shino@panix.com
-Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
