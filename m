@@ -1,44 +1,31 @@
-From: Edgar Alwers <edgaralwers@gmx.de>
-Subject: Re: umount
-Date: Mon, 11 Nov 2002 16:58:39 +0100
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: Tkdesk Segmentation Fault
+Date: 12 Nov 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211111658.39126.edgaralwers@gmx.de>
-References: <5.1.0.14.1.20021108093105.021201f0@celine> <200211082227.46496.edgaralwers@gmx.de> <20021108220313.GA2231@cam.ac.uk>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200211120123.gAC1NihN005141@pyxis.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021108220313.GA2231@cam.ac.uk>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Steven Smith <sos22@cam.ac.uk>
-Cc: Ray Olszewski <ray@comarre.com>, newbies <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hallo, Ray and Steven,
+On a related note:
+Some accident/repair event apparently had the effect to trash what
+would be just one of the "Gdk" libraries.  (At least, this was the only
+fault discovered hitherto after the repair.)
 
-thank you very much for the help. Details as follows:
+Indication is that just one application complains, with some
+"Gtk-CRITICAL **" error, evidently some file is lacking.
 
-On Friday 08 November 2002 23:03, Steven Smith wrote:
->
-> The obvious thing to check is that the mounting user is being recorded
-> correctly in the mtab.  There should be something along the lines of
-> ``user=sos22'' (or whatever your username is) in the /etc/mtab line
-> for /dev/cdrom.  If not, or if it specifies a different username,
-> you'll be allowed to mount, but not unmount.
->
-This was the clue. After entering a line as given in mtab, I could also umount 
-cdrom as user.
+Searching through the pertinent distribution CDs I could not find
+anything apparenly relevant to reload/re-install.
 
-> If you have such a symlink, you should probably
-> ``rm /etc/mtab; cp /proc/mounts /etc/mtab'' and then reboot.
-I did this also. There was a symlink there, which I removed.
+What is the real name for those "Gtk-" libraries ?
 
-Thanks again
-Edgar
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-11-11
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
--- 
---------------------------------
-Dr.-Ing. Edgar Alwers
-Mailto: edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
