@@ -1,214 +1,57 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: APM not rebooting or shutting down machine
-Date: Sat, 24 Aug 2002 13:02:04 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: leading spaces in a text file.
+Date: Sat, 24 Aug 2002 22:35:16 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU08XOq3Jkr000012d9@cpimssmtpu08.email.msn.com>
+Message-ID: <Pine.LNX.4.21.0208242226220.8397-100000@Consulate.UFP.CX>
+References: <200208241646.g7OGkZi24408@hartford-hwp.com>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="nqp=nb64=()kB7fZp5Tm"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200208241646.g7OGkZi24408@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: matthewstapleton@juno.com, linux-newbie@vger.kernel.org
 
---nqp=nb64=()kB7fZp5Tm
-Content-Type: Text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi Matthew, Haines.
 
-I've made some progress on my APM issues for the 9100C motherboard in my LFS =
-server.
+>> i have been formatting some texts for an online archive of e-texts.  
+>> every once and a while i encounter a file that has leading spaces in
+>> front of each sentence.  to remedy this problem i have used the 'tr'
+>> utility to squeeze multiple occurrences of spaces.  this works very
+>> nicely with the exception that the output file has a single leading
+>> space at the beginning of each sentence. is there a better way of
+>> doing this or of finishing this job?
 
-I know can get the console to blank and then turn off the monitor for lack of =
-activity, however, actuallying getting a restart or a power off is proving =
-problematic.
+> I don't know what you use as a text editor, but if it has a search
+> and replace, you can readily remove multiple spaces. For example, I
+> run emacs and use replace-string to replace a fixed number of
+> multiple spaces at the beginning of each line with null.
+> 
+> This does not work with a single space at the start of each line,
+> for replacing a single space with null removes the spaces between
+> words. I don't know how to handle this situation.
 
-Through some other sources, I've gotten SMP out of my kernel (thought that was =
-gone before) and set a couple of other items in my bios.
+There is an easy way to preprocess any text file such that all strings
+of multiple tabs or spaces are replaced with a single space, and all
+leading and trailing spaces are stripped. Use the following sequence...
 
-Attached is my kernel log and my kernel config.
+    cat "$OLD" | tr -s '\t' ' ' | sed 's/^ //;s/ $//' > "$NEW"
 
-Any thoughts?
-Thanks
-Alan
---nqp=nb64=()kB7fZp5Tm
-Content-Type: application/x-zip-compressed; name="kern.zip"
-Content-Disposition: attachment; filename="kern.zip"
-Content-Transfer-Encoding: base64
+...where "$OLD" is the file as it currently stands, and "$NEW" is the
+file to create with the modified version in it. For reference...
 
-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
-BgAAAAABAAEANgAAAFUOAAAAAA==
+ 1. The command `tr -s '\t' ' '` says to replace all sequences of
+    spaces and/or tabs with a single space.
 
---nqp=nb64=()kB7fZp5Tm
-Content-Type: application/octet-stream; name="alan.kernel.bz2"
-Content-Disposition: attachment; filename="alan.kernel.bz2"
-Content-Transfer-Encoding: base64
+ 2. The command `sed 's/^ //;s/ $//'` says to remove a single
+    leading and/or trailing space from each line.
 
-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
+...and the combination does exactly what you want.
 
---nqp=nb64=()kB7fZp5Tm--
+Best wishes from Riley.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
