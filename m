@@ -1,57 +1,49 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Compiling kernel for a different machine.
-Date: Sat, 18 May 2002 14:21:14 +0000
+From: G Anna <drguruolai@eth.net>
+Subject: Make a phone call (repeat)
+Date: 18 May 2002 22:16:15 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0205181421140K.27213@unix.pa3gcu>
-References: <20020517160123.GB797@prester.hh59.org> <0205171921100I.27213@unix.pa3gcu> <20020518004050.GA1232@prester.hh59.org>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <m3sn4pe754.fsf@wobble.eth.net>
+Reply-To: anna7sept@linuxmail.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020518004050.GA1232@prester.hh59.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Axel H. Siebenwirth" <axel@hh59.org>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Saturday 18 May 2002 00:40, Axel H. Siebenwirth wrote:
-> Hi Richard!
->
-> On Fri, 17 May 2002, Richard Adams wrote:
->
-> First off thank you very much about the kernel help. That will prove very
-> helpful I guess :)
->
-> > > 2)
-> > > I have checked out X server from cvs. Can I use cvs to track changes
-> > > made to spefific files/directories? I have not got so much out of "cvs
-> > > log" or I made something wrong.
-> >
-> > When upgrading a kernel version you do not need to even think about
-> > changing or upgrading X, if i may say so, if you need to ask howto
-> > compile a kernel on a machine for another destination then i would
-> > certainly not advise you to go around updating your X server.
->
-> What I meant by my question is not at all related to the kernel thing. I
-> was just wondering how I can use cvs to show me the changes that have been
-> made to certain file in my cvs checkout. For example, if some cvs comitter
-> of XFree86 has change a Makefile in any subdirectory, I like to know what
-> exactly has been done. As far as I know cvs is capable of that. And I'd
-> also like to know how to find files in a cvs working directory that have
-> "recently" been changed..
+Dear All,
 
-Is the CHANGES file not enough,? i thought that was standard thesedays, its 
-an accepted thing that all changes be entered into a changes file.
-I rearly use cvs myself so i have never really thought about it all that much.
+I have asked this question before, but because of my problems with
+subscription to this list, I was not able to read any of your
+responses.  And since there are no official archives I am asking it
+again.  Kindly bear with me; and if necessary use the delete key
+judiciously.
 
->
-> Thank you,
-> Axel
+I have an Intex external modem (http://www.intextechnologies.com).  To
+go online, I dial my ISP using the phone line.
+
+What I want to do is to be able to make a phone call (and talk to the
+person at the other end) from my linux box, through the modem.  Kindly
+let me know if this is possible.
+
+Also pointers to other relevant information would be very useful.
+
+Thank you for your time.
+
+Cheers,
+anna
+
+PS: This time I have not set the Reply-to header to the list itself.
+Kindly consider Cc'ing to the list.
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+(11) I will be secure in my superiority. Therefore, I will feel no need
+     to  prove it by leaving clues in the form of riddles or leaving my
+     weaker enemies alive to show they pose no threat. - Peter Anspach 
+     in "The Top 100 Things I'd Do If I Ever Became An Evil Overlord"
+
+                                            http://www.eviloverlord.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
