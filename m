@@ -1,21 +1,30 @@
-From: Pacheco Jason NPRI <PachecoJ@Npt.NUWC.Navy.Mil>
-Subject: RE: kernel compilation problem
-Date: Wed, 24 Dec 2003 08:22:35 -0500
+From: "John T. Williams" <jowillia@vt.edu>
+Subject: DNS DHCP
+Date: 24 Dec 2003 17:21:08 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3BEEE23D31CAD2118D920008C75D8946059FF5A0@NPRI54EXC21.NPT.NUWC.NAVY.MIL>
+Message-ID: <1072304468.9715.11.camel@localhost>
+Reply-To: jtwilliams@vt.edu
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "Linux-Newbie (linux-newbie@vger.kernel.org)" <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-> The spurious 8259A interrupt error is an incredibly common and 
-> non-dangerous error message.  Most likely it is caused by the 
-> uniprocessor APIC (Advanced Programmable Interupt Conrtoller) linux 
-> code.  
+I have been trying to get a dns running in my father's intranet.  The
+situation is that he gets dsl severs witch is split by a belkin wireless
+router.  Using bind9, I have successfully configured one of the
+computers in the intra net as a dns server, and have manually created
+zone files which allow for the successful resolving of computer names in
+the intranet.  All of this is happy and good, however I fear greatly
+getting a call from my father asking me to fix it, every time the ip
+address changes on one of the computers.  The problem I'm having is
+figuring out how to update the zone files and reload the dns server when
+a change occurs to the dhcp table.  I was wondering if anyone had any
+suggestions, or am I doomed to fix this by hand forever more?  I realize
+that I'm am probably not providing enough information, but was unsure
+what else to include. 
 
-I blame the sunspots...
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
