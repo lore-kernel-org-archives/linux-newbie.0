@@ -1,37 +1,27 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: /cdrom fails to unmount
-Date: 22 Jul 2003 21:44:48 +0600
+From: <deepesh@india.tejasnetworks.com>
+Subject: MPC852 related Query.
+Date: Wed, 23 Jul 2003 18:00:26 +0530 (IST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3lluq4lcf.fsf@localhost.localdomain>
-References: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+Message-ID: <Pine.LNX.4.21.0307231758300.22403-100000@deepesh.india.tejasnetworks.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: dzlotnik@uwaterloo.ca
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca> writes:
 
-> umount /cdrom
-> umount: /cdrom: device is busy
-> Or in other words, "*$^! you!"
-> 
-> No processes that I could identify suggested themselves as the visible
-> culprit. Rebooting works, but killing the x-session doesn't.
-> 
-> Help, anyone?
-> 
-> Dan
 
-You could try a lazy unmount:
+Hi,
 
-$ umount -l /cdrom
+  I am getting a "Software Emulation Exception" on an MPC852. I want to
+disable this for some reason. Is it possible to do so?
 
-Cheers,
-Yawar Amin
+-- 
+
+D.Deepesh
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
