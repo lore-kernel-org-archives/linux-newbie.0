@@ -1,38 +1,42 @@
-From: Peter <heisspf@skyinet.net>
-Subject: X got bust
-Date: Sat, 27 Sep 2003 09:31:55 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: line printer line transport
+Date: Sat, 27 Sep 2003 07:57:40 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309270131.h8R1Vti02672@skyinet.net>
+Message-ID: <200309270757.40913.pa3gcu@zeelandnet.nl>
+References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200309262050.h8QKo6O25459@oola.is.kpn.be>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
 
-Hi,
+On Thursday 01 January 1970 01:00, Heimo Claasen wrote:
 
-When I switched my computer on this morning I could not start X instead got 
-the message: "fatal error, could not find fix fonts", or something like that.
+> Thus something like 'cat filename >/dev/lp0' should go through a
+> simple filter which inserts a CR in front of any LF.
+> Like, 'cat <{filter-prog <filename} >/dev/lp0
 
-Now the XF86Config-4 file has not been touched since installed last year 
-except for a change in the mouse device last March. I have some back-ups and 
-they all read the same.
+Possably something like;
 
-After the initial panic I then copied the Section Files from the XF86Config-4 
-in my Slackware box over to the one in RH73 and X came back to life.
+todos < filename > newfile && cat newfile >/dev/lp0
 
-Quetion: How can such a thing happen that X suddenly fails?
-
-All I did yesterday reinstall applixware and before logging out opened kfm and 
-gmc at the same time since I saw them in the Program Panel and had forgotten 
-what programs they were. I am using FVWM2.
-
-Regards
-
+man todos
+man fromdos
 
 -- 
-Peter
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
