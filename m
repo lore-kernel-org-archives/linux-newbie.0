@@ -1,28 +1,41 @@
-From: Juan Carlos Inostroza <jci@tux.cl>
-Subject: Re: PostFix -> masquerade_envelope???
-Date: Wed, 21 Jan 2004 09:35:18 -0300
+From: "Chadha, Devesh" <devesh.chadha@lehman.com>
+Subject: 2 NIC cards not talking
+Date: Wed, 21 Jan 2004 09:25:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1074688517.805.21.camel@zimba>
-References: <20040119144037.GA605@lnx2.w8mch.ampr.org>
+Message-ID: <5F84A09ECDD5D411973000508BE32470266024E3@exnyc07.lehman.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040119144037.GA605@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com, linux-newbie@vger.kernel.org
+To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-On Mon, 2004-01-19 at 11:40, Hal MacArgle wrote:
-> If PostFix does - I'll change to that but I can't seem to find any
-> information about this in their docs, etc..
+Hi,
 
-masquerade_domains = foo.example.com example.com
-(http://www.postfix.org/rewrite.html)
+I have a linux box with 2 NIC cards, both are properly configured. Both are
+on the same subnet, but still don't ping to one another!!
+
+I need to setup the box as the firewall/router that has eth0 set as external
+and eth1 as internal serving as DHCP server to other computers on the
+network. Both have static IPs assigned to them.
+
+Regards,
+Devesh
+6-6859
 
 
--- 
-Juan Carlos Inostroza <jci@tux.cl>
-Tux.cl
+------------------------------------------------------------------------------
+This message is intended only for the personal and confidential use of the
+designated recipient(s) named above.  If you are not the intended recipient of
+this message you are hereby notified that any review, dissemination,
+distribution or copying of this message is strictly prohibited.  This
+communication is for information purposes only and should not be regarded as
+an offer to sell or as a solicitation of an offer to buy any financial
+product, an official confirmation of any transaction, or as an official
+statement of Lehman Brothers.  Email transmission cannot be guaranteed to be
+secure or error-free.  Therefore, we do not represent that this information is
+complete or accurate and it should not be relied upon as such.  All
+information is subject to change without notice.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
