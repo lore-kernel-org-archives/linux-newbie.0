@@ -1,38 +1,44 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Moving Hard Drive
-Date: Sat, 17 Jan 2004 11:16:22 +0800
+From: Jeff Woods <kazrak+kernel@cesmail.net>
+Subject: Re: hardware advice for a PC moron
+Date: Fri, 16 Jan 2004 19:35:08 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040117031622.B31C01C900@heisspf>
-References: <200401162145.i0GLjZDu004162@dbmail-mx3.orcon.co.nz>
+Message-ID: <6.0.1.1.0.20040116193139.02692dc8@no.incoming.mail>
+References: <20040116103416.GA16542@panix.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 17 Jan 2004 09:49:07 +1300." 
- <200401162145.i0GLjZDu004162@dbmail-mx3.orcon.co.nz>
+In-Reply-To: <20040116103416.GA16542@panix.com>
+References: <20040116103416.GA16542@panix.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: cr <cr@orcon.net.nz>
+To: Rei Shinozuka <shino@panix.com>
 Cc: linux-newbie@vger.kernel.org
 
-Thanks!
+At 1/16/2004 05:34 AM -0500, Rei Shinozuka wrote:
+>i'd appreciate advice as to how to best buy/build an intel/amd system and 
+>build a linux workstation on top of.
 
-Peter said:
-> > Boot initially
-> > from a floppy into SW run lilo and I should be set with the new drive
-> >as master.
+While I haven't bought a Linux box from them, I've had good success with 
+hardware from Monarch Computer Systems and I believe they recently (Linux 
+World 2003 @SF) won some award(s) on their Linux bundles.  You can learn 
+more at http://tinyurl.com/24kpl which redirects to
+http://www.monarchcomputer.com/Merchant2/merchant.mv?Screen=CTGY&Store_Code=M&Category_Code=linuxsystems
 
+I've also heard good things about (but haven't personally dealt with)
+http://penguincomputing.com/
 
-cr@orcon.net.nz said:
-> Re the boot floppy, if it was created when you installed your system,
-> it may  be set to boot your system on hdc and may fail when you move
-> it to hda.
+You may also want to check out some of the other Linux-oriented hardware 
+vendor lists such as those found at:
+http://www.linux.org/vendor/system/
+http://www.rice.edu/IT/hwsw/hardware/pclinux.html
+http://www.linuxhardware.net/cgi-bin/viewvendor.cgi
+http://directory.google.com/Top/Computers/Hardware/Systems/Linux/
 
-I can tell the floppy to boot into hda* and in SlackWare (there is the SW) I 
-have anyhow a bootable live rescue disc.
+Good luck!  :)
 
-Regards
--- 
-Peter
+--
+Jeff Woods <kazrak+kernel@cesmail.net> 
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
