@@ -1,60 +1,69 @@
-From: Owen Ford <oford@arghblech.com>
+From: chuck gelm <chuck@gelm.net>
 Subject: Re: What distributions support dual processors 'out of the box' ?
-Date: Mon, 25 Oct 2004 15:26:24 -0500
+Date: Mon, 25 Oct 2004 23:59:55 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1098735984.9845.2.camel@spider.hotmonkeyporn.com>
-References: <5.1.0.14.1.20041023211235.01feb690@celine>
-	 <5.1.0.14.1.20041023135516.01fefc38@celine>
-	 <Pine.LNX.4.58.0410222229140.1287@debian-emach>
-	 <Pine.LNX.4.58.0410221108580.1287@debian-emach>
-	 <Pine.LNX.4.58.0410221351360.1287@debian-emach>
-	 <417968FE.3070405@verizon.net>
-	 <Pine.LNX.4.58.0410221604590.1287@debian-emach>
-	 <41798CB8.4010701@verizon.net>
-	 <Pine.LNX.4.58.0410222229140.1287@debian-emach>
-	 <5.1.0.14.1.20041023135516.01fefc38@celine>
-	 <5.1.0.14.1.20041023211235.01feb690@celine>
-	 <5.1.0.14.1.20041024085546.020676a8@celine>
-	 <Pine.LNX.4.58.0410241436410.1287@debian-emach> <417D3B4C.5080801@gelm.net>
+Message-ID: <417DCBBB.5030603@gelm.net>
+References: <15DCB059E3814E448A1CFFF04F78F7A703917297@s99mail08>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-QjvSixCQn0kQkm8XkXic"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <417D3B4C.5080801@gelm.net>
+In-Reply-To: <15DCB059E3814E448A1CFFF04F78F7A703917297@s99mail08>
 List-Id: <linux-newbie.vger.kernel.org>
-To: chuck@gelm.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
+Little, Chris wrote:
 
---=-QjvSixCQn0kQkm8XkXic
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+>I don't know what the warning is, but a recompile and install of your kernel
+>with SMP enabled should work fine.  The warning sounds as if the kernel that
+>you build may not necessarily work or advisably be used on other non-pro
+>systems (ie. III, IV, etc)
+>
+>-----Original Message-----
+>From: chuck gelm [mailto:chuck@gelm.net]
+>Sent: Monday, October 25, 2004 12:44 PM
+>To: linux-newbie@vger.kernel.org
+>Subject: What distributions support dual processors 'out of the box' ?
+>
+>
+>Howdy:
+>
+> I am trying to use an old dual pentium-pro motherboard as a file
+>server for a local government supported student project.
+>
+> The system has dual 200 MHz Pentium-Pro processors.
+>I am currently attempting to enable SMP in a Slackware v9.1 distribution,
+>but I am having some difficulty.  Instead, I am hoping to find
+>a distribution with SMP already enabled.  Are there any?
+>
+> Please, may I have some explanation or discussion about the warning
+>from 'make [old]config about the PentiumPro and SMP:
+>
+>'Similarly, multiprocessor kernels for the "PPro" architecture may not
+>work on all Pentium based boards.'
+>
+> IOW, will my attempt to enable SMP with this PPro system
+>probably fail or be very difficult?
+>
+>Regards, Chuck
+>  
+>
+Howdy, Chris and Owen:
 
-On Mon, 2004-10-25 at 13:43 -0400, chuck gelm wrote:
-> Howdy:
->  IOW, will my attempt to enable SMP with this PPro system
-> probably fail or be very difficult?
+ I have twice re-compiled the kernel and yet
+cat /proc/cpuinfo
+displays only 'cpu0'.  :-(
 
-The linux kernel handles the SMP bits and all modern distros that I know
-of have all the necessary tools for SMP.  The only ones that might not
-have that support would be some of the floppy distros but you can easily
-compile a kernel with SMP on any modern distro.
+(edit .config to enable SMP, make bzImage modules modules_install install)
 
---=20
-Owen Ford <oford@arghblech.com>
+ Elsewhere, someone suggested that I look to see if a
+VRM (voltage regulator module) is installed on the motherboard.
+I'll be returning to configure the system on Wednesday and I
+will check to see if there seems to be any missing items.
 
---=-QjvSixCQn0kQkm8XkXic
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
+Thanks, chuck
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQBBfWFw4bjUYpnk5/QRArBJAJ44Jx2tDAUJuYryfbMpEOzlyJW+tACgqu5+
-IkdaB56c5tDvM/xpxO792oo=
-=Bi7k
------END PGP SIGNATURE-----
-
---=-QjvSixCQn0kQkm8XkXic--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
