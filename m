@@ -1,67 +1,64 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Public & private IP addresses via IP Aliasing?
-Date: Thu, 18 Sep 2003 18:48:58 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: (OT) Re: Compiling sg.o only (2.4.20)
+Date: Fri, 19 Sep 2003 08:01:14 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030918183814.01fd46f8@celine>
-References: <20030918.182332.16221.402979@webmail11.lax.untd.com>
+Message-ID: <200309190801.14287.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20030918172743.01f7cfe8@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030918.182332.16221.402979@webmail11.lax.untd.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030918172743.01f7cfe8@celine>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 01:22 AM 9/19/2003 +0000, beolach@juno.com wrote:
-
->On my home network, I am currently using IP-masquerading (aka NAT)
->on my linux gateway to provide internet access for the local net.
->This has been working fine in general, but I have some problems
->with internet multiplayer in certain games that I believe are due
->to the IP-masqing.  My ISP provides public addresses via DHCP, but
->I prefer having static addresses on the local net.  I was wondering
->if I could use both public & private addresses via IP Aliasing.
+On Friday 19 September 2003 02:31, Ray Olszewski wrote:
+> At 12:10 AM 9/19/2003 +0000, beolach@juno.com wrote:
+> >What does EXTRAVERSION do?
+> >
+> >-- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
+> > > edit the Makefile change line 4 from;
+> > > EXTRAVERSION =
+> > > to
+> > > EXTRAVERSION = -1
+> > > save file;
 >
->Would this work?
+> It adds another "layer" of naming to the kernel. For example, if the kernel
+> is 2.4.21, and you edit the Makefile to read
+>          EXTRAVERSION=-mykernel
 >
->          Internet
->              |
->              |
->Gateway |- eth0 public dynamic address
->         |- eth1:0 bridged with eth0
->         |- eth1:1 private static address
->               |
->Local Net |- eth0:0 public dynamic address
->           |- eth0:1 private static address
+> then the compiled kernel will think its name is 2.4.21-mykernel . The
+> kernel's "true" name, that is, not the name of the file that holds the
+> kernel.
+>
+> This affects some minor things, like what the kernel reports in response to
+> "uname -a", and some bigger things, like the name of the directory in which
+> it looks for modules. This last one probably matters to you ... I don't
+> actually recall why Richard made this suggestion.
 
-Whether this would work or not depends on one detail that you were too 
-vague about. Do you have two public addresses or only one? That is, do you 
-want Local Net:eth0:0 to have the *same* IP address as Gateway:eth0 or a 
-different address?
+I suggested it because i consider it the done thing to do when compiling a 
+kernel-version-source which is running on the system.
+I advised it to Chuck because if he were to recompile his kernel as i 
+suggested and do it without an EXTRAVERSION defined and he made a mistake 
+during the configuration and or compiling stage which whent unnoticed and he 
+copied the new kernel over the old one overwrote the old modules or mixed new 
+or old modules toghter in the same modules directory, then he would possable 
+blame ME for rendering his system unbootable (at the worst).
 
-If they need to be the same address, then I do not know how to do it and 
-suspect that there is no way to do it.
+This way you end up with a new kernel and an old one if all went well they are 
+then both bootable.
 
-If they are different, the only piece that is not obvious is how to get the 
-dynamic-public address assigned to the Local Net host. Normally, DHCP 
-queries and replies do not cross routers, so you need a DHCP proxy running 
-on the Gateway. There is such an application for Linux, called dhcp-relay 
-... your distro's packaging system probably has it.
 
-You also have to get the routing table on Local Net right, so it knows 
-which interface/IP address to use for which traffic. And you probably have 
-to proxy-arp the Local Net dynamic address on Gateway, since yuor ISP will 
-not know that its public IP address is their route to the Local Net host. 
-(Your bridging approach may take care of that ... I haven't done bridging 
-recently enough to remember the details ... but I suspect that proxy arp 
-will prove easier to implement.)
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-Finally ... games do have problems with standard NAT; they often require 
-port forwarding to work. Also, sometimes the clients need to be told the 
-external IP address through their configuration menus (this is something of 
-a nuisance when dynamic addresses change). Depending on the specific games 
-you are concerned with, you might find it easier to implement port 
-forwarding for them.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
