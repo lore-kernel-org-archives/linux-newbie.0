@@ -1,54 +1,39 @@
-From: Frank Roberts <sotl155360@earthlink.net>
-Subject: Re: distribution choice
-Date: Fri, 28 Feb 2003 08:30:43 -0500
+From: Arthur Othieno <arthurothieno@gmx.net>
+Subject: Re: Lycoris
+Date: Fri, 28 Feb 2003 14:40:18 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302280830.44084.sotl155360@earthlink.net>
-References: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
+Message-ID: <3E5F66C2.1000303@gmx.net>
+References: <3E5F28F6.1010405@citech-bd.com>
+Reply-To: arthurothieno@gmx.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Amin <raihan@citech-bd.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi All
+Hello Amin,
 
-Hope I am not sticking my keyboard in my mouth but here are a few thoughts on 
-the latest version of the three major commercial distribution and Debian.
+I've heard about Lycoris but not used it. This URL from DistroWatch has 
+a couple of links to (user?) reviews, so hopefully that should provide 
+some more insight:
 
-Redhat - seems to be focused toward servers and uniform workstations for 
-corporate America. Single choice of desktop - The Bluecurve. Redhat seems to 
-be headed away from the individual. 
+http://www.distrowatch.com/table.php?distribution=Lycoris
 
-Mandrake - seems to be more focused toward individual choice than corporate 
-choice of content but be aware Mandrake appears to be a "me too" company in 
-regards to coping Redhat. 
+HTH,
 
-SuSE - Best distribution if you desire standard configuration and nothing 
-else. If you desire non standard configuration this is not the distribution 
-for you.
+Arthur
 
-Debian - Can be very difficult to install if you do not have standard 
-components - cards, hard drives, floppy drives, video cards, et. 
-Installation of Debian should not be tried by newbies. Installation of Debian 
-in a laptop is not recommend unless the installer is extremely advanced due 
-to manufacturers use of non stand components.
-
-It is recommended that one acquire the commercial box sets for the commercial 
-distributions or a commercial generated CD set for Debian. For Debian try a 
-company like Cheap Bites.
-
-For Redhat, Mandrake, and SuSE it is highly recommended that the most 
-expensive professional box set be acquired. The difference in cost is well 
-worth the additional funds.
-
-It is not recommend that one attempt to install, update, or replace system 
-components - this does not refer to individual programs - unless one is 
-extremely advanced. This especially applies to the core. 
-
-Frank
-
+Amin wrote:
+> Hi,
+> 
+> Has anyone used Lycoris?  What's the word on the vine about it?  The 
+> website would have us believe that it's bringing about a ``revolution'' 
+> in desktop Linux.  If it's as good as advertised, what's going on out 
+> there?
+> 
+> Yawar Amin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
