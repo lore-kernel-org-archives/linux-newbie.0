@@ -1,81 +1,92 @@
 From: Oliver Ob <ob_ok@gmx.net>
-Subject: [SLE] Windows emulator for Linux - here WINE again -6th try-
-Date: Sun, 09 Jun 2002 18:28:06 +0200
+Subject: [SLE] [AUDiO] ANDREW-SMITH's Mp3-Jukebox PM -6th and last try-
+Date: Sun, 09 Jun 2002 18:28:09 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <advvpk$kca$2@main.gmane.org>
-References: <01100420530801.00810@linux> <20011004205800.A22590@savior.morgancomputers.net> <3BBD1394.30508@ihug.co.nz>
+Message-ID: <3D038219.EF5E564D@gmx.net>
+References: <ACEFLOPOOIHPJCLNPJKCEEMPECAA.mail@andrewsmith.plus.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: "suse-linux-e@suse.com" <suse-linux-e@suse.com>, Lx Newbie List <linux-newbie@vger.kernel.org>, Lx Suse MULTiMEDiA E <suse-multimedia-e@suse.de>
+To: suse-linux-e@suse.com, Lx Newbie List <linux-newbie@vger.kernel.org>, Lx Suse MULTiMEDiA E <suse-multimedia-e@suse.de>, Lx SXS <linux-users@linux-sxs.org>
 
-Greek Geek schrieb:
+Hi folks,=20
+Andrew Smith, if you read this, your Email seems not to work
+or I might have got some old one.
+
+Please get back to me because of your mpg123-jukebox script
+for bash.
+
+Anyone else reading this: Has anyone of you also already
+done such a script? If you, send it via PM.
+
+Thanks ahead!
+
+
+
+
+
+
+
+Andrew, you Email does not work, please contact me via PM
+it is about your jukebox script. as below
 >=20
-> Hi All & Austin,
+> Hi
 >=20
-> who typed....
+> Sorry, I thought I had replied...  <<< Checks Sent Items Folder >>> .=
+=2E.  ah,
+> yes, I have replied, although I think that may have been when I was h=
+aving
+> mail server problems. Anyway, I have attached the email I attempted t=
+o send.
 >=20
-> It has been a while since I have tried WINE. Tell me/us, what games y=
-ou
-> are running & what tweaks yall made-if any?
+> I hope this helps,
 >=20
-> Will it run Civ II or Red Alert or WordPerfect 8/9???
+> Andrew
+>=20
+> -----Original Message-----
+> From: Oliver Ob [mailto:ob_ok@gmx.net]
+> Sent: 09 July 2001 12:19
+> To: Andrew Smith
+> Subject: [AUDiO] Mp3-Jukebox *** No answer?? ???? ***
+>=20
+> Andrew Smith schrieb:
+> >
+> > Hi
+> >
+> > mpg123 will run well on low spec machines (i.e. a 486). Will probab=
+ly go
+> > lower by changing some options.
+> >
+> > If you are interested, I have made a bash script to control mpg123 =
+as a
+> > jukebox. I also have a perl script that gives a web interface... it=
+ works
+> > surprisingly well! :o)
+> >
+> > Andrew
+>=20
+> hi andrew, simply attach it for me, tia
+>=20
+> next, i am not familiar with perl, what is it good for, is it easy to
+> learn (i code 6k assembler, PPE, Ansi-C and TP (both a bit)) and : is
+> perl usable from ANYWARE in linux (i.e. shell ?)
+>=20
+> please introduce me a little to perl if you still have some bytes fre=
+e.
+>=20
+thank you.
 
-I would like to run these applications which I have so far not=20
-found in the wine homepage to be supported:
+but what about the idea to add support for XM, IT, MOD, CD audio and al=
+l
+that in your script`?
 
-Rebirth 1.0
-	audio application, audio runs GOOD, but screen addressment
-Rebirth 2.01
-	audio application, audio runs GOOD, but screen addressment
-VGA Planets Winplan 3.5
-	front screen loads, but cannot play game
-Planets 4
-	front screen loads, but cannot play game
-Incubation (Battle Isle 4)
-	title loads, but no sound
-688i Hunter Killer
-	title loads from cd, but gets stuck on front screen,
-	no sound
-=20
-My versions are all registered and original so that is not sort
-of a shareware restriction, but a problem of tweak options for
-wine. i also stand in front of a wall when it comes to that the
-audio WORKS for the sound applications, but does not for the
-games. WONDER BIG TIME.
+what i need is some sonique/xmms for console use only, that supports th=
+e
+above formats #and# mp3, ogg, wav, s3m
 
-Hello Austin!! I am currently trying out Wine as well. The programs I
-use (Rebirth and VGA Planets/Winplan) do work in part, but sort of
-problem lies in the SCREEN ADDRESSING.
-
-how should I twiddle that?
-
-example:
-
-appearance of NTpassword is under native windoze:
-
-user1   password1       info1
-user2   password2       info2
-user3   password3       info3
-user4   password4       info4
-user5   password5       info5
-
-but under wine it is mixed up, sort of like this:
-
-user5   password2       info1
-user1   password3       info2
-user2   password4       info3
-user3   password5       info4
-user4   password1       info5
-
-how can i fix that? it appears to be not a program, but a wine
-error.
-
-
-hope we can work this out together!
-
+and ideas?
 --=20
 *=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
  *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
