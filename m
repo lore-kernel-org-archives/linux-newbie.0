@@ -1,126 +1,101 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Slackware 8.1.01 Install????
-Date: Tue, 10 Jun 2003 21:29:43 +0200
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: writing disk image to file
+Date: Tue, 10 Jun 2003 12:40:17 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306102129.43210.pa3gcu@zeelandnet.nl>
-References: <20030529165407.A446@lnx2.w8mch.ampr.org> <3EE5AC60.201B082D@gelm.net> <20030610095434.A166@lnx2.w8mch.ampr.org>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3EE63421.7060601@bcgreen.com>
+References: <Pine.LNX.4.53.0306082236190.1194@homenet>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030610095434.A166@lnx2.w8mch.ampr.org>
-Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.53.0306082236190.1194@homenet>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: James Miller <jamtat@mailsnare.net>
+Cc: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-On Tuesday 10 June 2003 15:54, Hal MacArgle wrote:
-> Greetings: Delay taking time out to visit the hospital taking me away
-> from this more interesting stuff. <grin> Comments below at request:
+James Miller wrote:
+> I've got a small disk whose contents I'd like to save as an image file, in
+> case I ever want to write it back to the disk it came from.  This is a 4MB
+> flash disk.  From what I gather in my Linux reading, I should do something
+> like the following: hook this tiny IDE disk up as, say /dev/hdb and the do
+> something like "dd if=/dev/hdb of=dev-hdb-image.img" ? ? ? (the question
+Yep. That would work fine as is.
 
-Hope all is now well then..
+.....
+> what sort of file it is.  And, finally, the question marks: I see
+> sometimes "bs=512" or some such following the proposed file name which, as
+> I get it, refers to block size.  I'm not really clear on block sizes and
+> what they do, but I have run accross information indicating that, in the
+> case of an image file, it's not too important and can be left out.  Can
+> anyone illumine my benightedness on this matter?
 
-> Hal
->
-> 	First off, to make matters worse, I note that my distribution
-> disk does NOT have the /rootdisks directory so that's _one_ reason
-> I've been in the dark so much.. The other, seemingly, big problem is
-> that the "reluctant" system has an IDE HD but both CD's are SCSI,
-> driven by a BusLogic controller.. There is, also, a SCSI scanner, but
-> I've disconnected it during this mess, and a ZIP250..
+Block sizing indicates how big of a chunk DD will read and write the data
+in (dd can also split them up into ibs=___ and obs=___ -- in which case it
+will create separate input and output buffers of different sizes).
 
-Just what is the model number of the Bislogic controller and what is the make 
-and type/model Nr, of the cdrom's. ???
+The main purpose of the BS parameters was to take care of I/O devices for
+which the write size made a difference. tape drives with variable block
+sizes or streaming come to mind. Depending on the tape drive, you could
+sometimes end up with very different performance and even effective tape
+capacities depending on how big your write block sizes were.
 
->
-> 	Re above; booting from a DRDos702 floppy the BIOS sees the
-> BusLogic controller OK but doesn't, automatically, assign a drive
-> letter to either CD.. The IDE HD on this machine does NOT have a Dos
-> partition, only 3 Linux native and 1 swap, so I'm shot down with
-> Stevens' instructions as the two images wont fit on a floppy.. Maybe
-> I'm missing something here - my mind has turned to Jello. :^)... I
-> have the Dos drivers for Atapi drives and the required mscdex, or
-> equivalent, but that's no use with a SCSI drive.. I've got to
-> research this somemore..
->
-> 	Trying to boot from the SlackCD with the disk in either of
-> the SCSI drives and the BIOS set to Boot: SCSI, A, C, it doesn't see
-> either and goes right into the normal LILO boot of /hda3.. I'm
-> guessing that the autoboot routine on the CD only works when you set
-> the BIOS to: CDROM,,,, and the drive is ATAPI-IDE.. So, bottom line,
-> is that the CD distribution I have installs OK on a pure ATAPI-IDE
-> machine - which I have already done on another machine.
+In the current day, the biggest value to bs= is taking advantage of the
+HD's caching capabilities. I.E. sometimes reading in chunks as big as (or
+much bigger than) the track/cylinder size can result in a notable performance
+increase.  It also cuts down on system overhead.
 
-That sounds more like a bios limitation than a slackware problem.
-Well you could swap disk's around then and install on the machine where it 
-does work, after installing you change the disk back.
+My quick test (below) showed a barely noticable performance increase, but a
+more noticable cut (percentage wise) in terms of CPU usage.  In this case,
+I'm comparing a 512byte buffer with a 5meg buffer:
 
->
-> 	Richard has installed using the boot/root combination from
-> Slack8.0, but I can't seem to get it working so far.. He's, kindly,
-> trying to solve that problem..
+Note that I'm testing read performance only, not write perfromance (no spare
+disk partitions to mess with)
+[root etc]# time /usr/bin/time  dd if=/dev/hda5 of=/dev/null bs=512
+2056256+0 records in
+2056256+0 records out
 
-What happens when you try and which disk do you use as the initial boot disk,?
-You should be using scsi.s from what i can gather.
+real    1m12.906s
+user    0m2.430s
+sys     0m11.050s
 
->
-> 	It's rather obvious, that the ./makedisk <filename>
-> <kernel.img> routine in the distribution doesn't work, even tho I've
-> tried formatting a floppy to 1720K and 1680K, which the routine is
-> supposed to do automatically.. Searching google/linux; "makedisk
-> slackware 8.1" brought several horror stories.. ./makedisk creates a
-> file in /tmp/xxxx.img - but what to do with that?? Load it with
-> loadlin? I still have so much to learn..
+[root etc]# time /usr/bin/time  dd if=/dev/hda5 of=/dev/null bs=5120k
+200+1 records in
+200+1 records out
 
-As i said before, i cant get that to work either, i also said things like that 
-i drop by the wayside thinking i'm just dumb, but it seems not to be the 
-case.
+real    1m12.585s
+user    0m0.010s
+sys     0m10.020s
 
->
-> 	To me the most unfortunate thing about this is: How can I,
-> with a straight face, recommend the neighbours switch to Linux??
+In this case, the 10000 times factor in writes resulted in the user CPU time
+dropping from 2.4 seconds to 10miliseconds while the system CPU consumption
+only dropped by 10%
 
-Have you reasd the Slackware-HOWTO and BOOTING.TXT files, there are quite a 
-few scsi FAQ's there and my just help.
+> 
+> Thanks, James
+> 
+> PS Ray, I recall you asking at some point not long ago about copying
+> one disk to a disk of a different size.  In Rute User's Guide he writes
+> "If they (disks) are not the same size, you will have to use tar or
+> mirrordir to replicate the file system exactly."  I guess you got that
+> task accomplished, but did you do it using this means, or by some other?
 
->
-> 	Sorry this is so long..
->
-> Hal
->
-> > > I've just executed that line (on a nearby system) and it is now
-> > > running the installation routine.  Note:  you may need to change
-> > > the d: to a different letter (depending on what letter was assigned
-> > > by DOS to your CDrom).
-> > >
-> > > > Is there a way to copy the CDROM's root filesystem to /dev/hdb1
-> > > > and alter the default 'scsi.s' bootdisk so that it loads the root
-> > > > image from /dev/hdb1?    rdev?
-> > >
-> > > Yes, but it should not be necessary.  Just try loadlin.exe
-> > > (get it from the loadlin zip file in the /kernels directory
-> > > of the CDrom).
+What will happen if you copy (say) a 1GB partition to a 4GB partition
+is that it will more or less work, but you still have a filesystem that
+has data indicating that there's only 1GB of disk space in the partition --
+in other words, it will ignore the extra 3GB of disk space. The main
+solutions to that problem are either:
 
-Maybe Steven could explain how he would copy the cdrom's root file system to a 
-blank partiton and get it to boot and allow one to install the complete 
-slackware disk series on the same HD.?
-AFAIK you cant but i could be missing something.!. Or should i say i have 
-never done such a uncommon thing and do say it should NOT be nessasay at all 
-to even think of doing it
-
-> >
-> >  The installation runs much faster from hard drive.  ;-)
-> >
-> > > Cheers,
-> > > Steven
->
+1) create (mkfs) a new (empty) partitions and then bit copy the FILES (at the
+    user level) onto the new partition (e.g. with tar), or
+2) bit-copy the partition over, and then manipulate the File System data directly
+    to be consistent with the extra available disk space. parted is the tool that
+    I usually use for things like that.
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+Powerful committed communication, reaching through fear, uncertainty and
+doubt to touch the jewel within each person and bring it to life.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
