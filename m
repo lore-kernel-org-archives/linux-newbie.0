@@ -1,116 +1,75 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: smtp_auth using home server
-Date: Thu, 28 Nov 2002 09:39:27 -0800
+From: wa4chq@netscape.net (neil t)
+Subject: RE: lilo questions and help
+Date: Thu, 28 Nov 2002 12:54:56 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021128082154.020c7050@celine>
-References: <20021128092136.GA9631@teamfinders.org>
+Message-ID: <10C1D546.06741CB8.0006BEFC@netscape.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021128092136.GA9631@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Toplician Adrian <adrian.toplician@siemens.com>
+Cc: linux-newbie@vger.kernel.org
 
-Let me begin by filling in some background to this problem ... though I 
-have to admit that much of this is guesswork, at least as regards its 
-applicability to your situation.
+Hello Adrian-
+I do sometimes use digital modes ie: Psk31, Hellschreiber, RTTY and SSTV, but not with Linux.  I know there are some programs for psk, rtty and I think sstv that are for linux users.  I tried a few of the Psk programs, but could never get them to recognize my soundcard.  So I continue to use all of them except psk with Dos.  From what I understand, Mandrake is perfect for PSK.  In fact someone from a Madison Wis. LUG gave me a cpy of Mandrake 9.0 and the latest version of KDE to try PSK31.  But like I said, I could never get it working right.
+73/72
+Neil wa4chq
 
-The usual reason for anti-spam programs to reject an address such as yours 
-is that it is assigned dynamically, so at any given moment, there is no way 
-to know what host is using it. The spamming opportunity that dynamic 
-assignment offers is most apparent with dial-up accounts, but it applies to 
-dynamic assignment methods like DHCP and PPPoE as well. May ISPs provide 
-(or the anti-spammers otherwise acquire) lists of their 
-dynamically-assigned IP addresses, and the anti-spam programs offer that as 
-one possible blackhole list (a different one from the "known open relay" 
-list ... the well-known one is the DUL or dial-up list).
 
-The antispammers take the position that people with dynamic IP addresses 
-should be forced to use their ISPs' mail relays. Those smarthost relays, if 
-properly configured, will allow outgoing mail only from authorized, 
-authenticated users (and if not properly configured, will be on the 
-open-relay list so blocked).
+Toplician Adrian <adrian.toplician@siemens.com> wrote:
 
-The only saving grace here is that not many sites use the DUL to block 
-e-mail, possibly because it is somewhat inaccurate (my static address, for 
-example, occasionally turns up on it), possibly because enough legitimate 
-users have setups like yours that using it blocks too much non-spam e-mail.
-
-So ... the context in which use of smtp_auth comes up is that it is a 
-device for authenticating your outgoing mail to your ISP for forwarding by 
-its mail forwarder (relay). The details here can vary a bit from ISP to 
-ISP, but one common mechanism is to require POP3 authentication (userid and 
-password, called POP before SMTP) before accepting e-mail for relaying. 
-There are also several SMTP-specific methods around, but I do not know how 
-often any of them is actually used.
-
-The standard implementation of smtp_auth in Linux MTAs does not appear to 
-handle this problem. It handles the other side of the problem ... that is, 
-it provides a way for you to require that your users authenticate 
-themselves before they are able to send mail. Its most important use (I 
-think) is to allow your offsite users with dynamic addresses (mobile users, 
-DHCP users, PPPoE and dial-up users) to use your SMTP server as a relay.
-
-Unfortunately, after a bit of looking, I could find no indication that 
-either sendmail or any of the other common Linux MTAs (exim, postfix) 
-implements a way to authenticate itself to a smarthost relay. I did find 
-this reference to a sendmail *variant* that provides client-side smtp_auth 
-in SuSE --
-
-         http://sdb.suse.de/en/sdb/html/sendmail_smtp_auth.html
-
-I also found a reference to an MTA called Masqmail that seems designed to 
-do what you want --
-
-         http://innominate.org/kurth/masqmail/
-
-Finally, this site lists a bouch of MTA alternatives, but of them, only the 
-two I mention above looked promising for your situation --
-
-         http://www.linuxlinks.com/Software/System/Daemons/SMTP/index.shtml
-
-In closing, I am sorry that this is not the sort of direct, focused help 
-you wanted. I hope it will still be of some use to you. Good luck.
-
-At 10:21 AM 11/28/02 +0100, Theo. Sean Schulze wrote:
->Hello,
+>Hello dr. OM,
 >
->Does anyone have any advice they can offer on setting up smtp_auth on my 
->SuSE 8.0 system at home?  The problem I am trying to solve is this.  My 
->SuSE 8.0 system here at home (dragoon.nuthole.de/localhost) is set up to 
->send my emails out as tschulze@temfinders.org.  Teamfinders.org is a 
->domain that I have that is hosted by a hosting service, and that service 
->is not my ISP.  My ISP is 1&1 here in Germany, and I have a separate 
->domain there that they offered as part of my DSL package.  Several times 
->now I have gotten email deliveries rejected because the dynamically 
->assigned IP I receive from 1&1 is blackholed.  There appears to possibly 
->be an issue with the machines at those addresses being open relays used 
->for spamming.  I have checked my mail logs, and as far as I can tell, my 
->machine is rejecting attempts to use it as an open relay.  Several of the 
->rejection messages have suggested the possibility that the emails would 
->have been accepted if I had been using smtp_auth.
+>I want to ask you which kind of Linux version do you use, and if you are familiar with digital modes.
+>If yes I'll be glad to know what programs do you use for Linux, of course if it's possible.I use Mandrake 8.2.
 >
->I have read through SuSE's configuration file at /etc/sysconfig/sendmail, 
->and shortly I will start working my way through 
->/usr/share/doc/packages/sendmail/README and 
->/usr/share/doc/packages/sendmail/op.txt.bz2.  I have also printed out 
->several articles from www.sendmail.org/~ca/ and have begun to read through 
->those.  (That's going to take several re-reads though before I've grokked 
->all that.)  So, I have no shortage of information on the topic.  What I 
->was hoping for was that if anyone on the list has some helpful hints or 
->tips from having done something like this himself, particularly setting up 
->a home server to climb out of the black hole, then that might help me get 
->a step ahead.
+>Mni tnx,
+>
+>73'  cuagn from YO2LIW, ADRIAN
+>
+>-----Original Message-----
+>From: wa4chq@netscape.net [mailto:wa4chq@netscape.net]
+>Sent: Donnerstag, 28. November 2002 04:04
+>To: linux-newbie@vger.kernel.org
+>Subject: re: lilo questions and help
+>
+>
+>Thanks guys for taking the time to explain LILO.  And apologizes to Chuck---
+>I thought you were a Ham (nc8q)....so assumed you knew what 'fb' meant.  It means 'fine business'.  Myself and other 'Hams' who communicate via 'CW' (morse code) use abbreviations for certain words or phrases.
+>Agn, mni tnx es cul 
+>Again, many thanks and see you later
+>Neil T. wa4chq
+>
+>-- 
+>Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
+>http://www.qsl.net/wa4chq
+> 
+>
+>
+>__________________________________________________________________
+>The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
+>
+>Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>,
+>
 
 
+-- 
+Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
+
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
