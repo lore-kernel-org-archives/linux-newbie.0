@@ -1,60 +1,48 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Sharing drives.
-Date: Wed, 02 Oct 2002 10:38:37 -0700
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Re: Tar Backups
+Date: Wed, 2 Oct 2002 18:38:24 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021002102745.02d0a0e0@celine>
-References: <002601c26a36$73b95820$ef32f7c2@gcb>
+Message-ID: <200210021838.24478.James.Hatridge@epost.de>
+References: <002601c268b6$a09f0d70$64fea8c0@pkrausxp>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002601c26a36$73b95820$ef32f7c2@gcb>
+In-Reply-To: <002601c268b6$a09f0d70$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: geoff <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
-
-At 06:08 PM 10/2/02 +0100, geoff wrote:
->Many thanks to Chuck and Ray for interesting replies.
->
->I am reminded that Debian Woody uses ext2, but SuSE 8.0 uses reiserfs.
-
-There is no requirement that all filesystems used by a kernel be the same 
-type; the ability to combine ext2 and iso9660 (CD-ROM) filesystems is the 
-most familiar example of this flexibility. I doubt Woody's stock kernel 
-contains support for reiserfs, but I believe a custom kernel can add it in 
-(Debian kernels are quite standard in most respects). I bet that the SuSE 
-kernel already supports ext2 as well as reiserfs (but if not, once again, a 
-custom kernel could fix this).
-
->I wonder if pushed to an extreme, could one kernel  work with  two
->(simultaneous/combined) distros, chosing the best bits of each :-)
-
-Well ... Lawson has for years talked here about his "SlackHat" system, 
-combining the part he likes of Slackware with the parts he likes of Red Hat 
-(I prefer "he likes" to "best bits" because "best" is not well defined). 
-And my Debian systems include some packages not distributed through the 
-Debian packaging system (though they come from the creators directly, not 
-via some other distro).
-
-Except when a particular distro is missing a particular package, I think 
-this "best bits" approach create more work then benefit for the everyday 
-Linux user. A principal strength of ANY modern Linux distro is its 
-packaging system, which does a lot of the work for you of handling 
-dependencies, simplifying security (and other) upgrades, and providing a 
-coherent framework for the boot/init process, filesystem organization, 
-application configuration, and the like.
-
-For the most common apps, the distros don't really differ all that much 
-anyway. For highly specialized apps, you will need from time to time to go 
-outside your distro's packaging system. (This is especially true for 
-non-rpm distros like Slackware and Debian, since some developers package 
-their stuff only as RPMs.)
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Hi Paul et al...
+On Monday 30 September 2002 21:21, Paul Kraus wrote:
+> Is there a way to have an index written? I am making 13gb backups and it
+> takes forever to simply restore because it has to read each and every
+> single file on the tape. This is actually on my sco box but the question
+> is relevant because I plan on moving the file server to a red hat
+> machine.
+
+I just wrote an article about how to backup with tar. It includes how to make 
+an index for your tape. 
+
+http://www.linuxjournal.com/article.php?sid=6270
+
+If you need any more help email me off list. 
+
+Hope this helps...
+
+
+JIM
+
+-- 
+Jim Hatridge
+Linux User #88484
+------------------------------------------------------
+                 BayerWulf
+	   Linux System # 129656
+         The Recycled Beowulf Project
+  Looking for throw-away or obsolete computers and parts
+   to recycle into a Linux super computer
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
