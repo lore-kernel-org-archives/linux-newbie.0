@@ -1,99 +1,127 @@
 From: "J." <mailing-lists@xs4all.nl>
-Subject: RE: Simple script to set permissions on folders daily - write script
+Subject: RE: Simple script to set permissions on folders daily - write  script
  and cron it?
-Date: Tue, 29 Mar 2005 18:51:20 +0200 (CEST)
-Message-ID: <Pine.LNX.4.21.0503291807440.1276-100000@hestia>
-References: <002f01c53477$9c88c9d0$580aa8c0@lanadmin>
+Date: Tue, 29 Mar 2005 19:02:53 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0503291853430.1276-100000@hestia>
+References: <C6FD667B200BDF4F964C1BA77B796CE20F5E4E@cnbmail2.city.north-bay.on.ca>
 Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002f01c53477$9c88c9d0$580aa8c0@lanadmin>
+In-Reply-To: <C6FD667B200BDF4F964C1BA77B796CE20F5E4E@cnbmail2.city.north-bay.on.ca>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 29 Mar 2005, Eve Atley wrote:
+On Tue, 29 Mar 2005, Mike Turcotte wrote:
 
-> That is my issue as well; Ray and others, I hadn't implemented umask because
-> it still appears Greek to me. 
+> That would be great if someone knew and could tell us how to set default
+> permissions on a specific directory.
 
-Eve I think ray's answer was very good. I think you have to look a bit
-more at how permissions work, and what happends when someone
-log's in [or program logins in] . I know it's a bit akward these
-permission bit's and bytes in the umask forrest.
+In the case if the directory is NOT a mount point:
+This is done either from the command-line with `chmod' or if you want this
+as a default, create a startup script in your /etc/init.d/
+directory and make sure it's executed at the right run-level. 
+[depends on your GNU/Linux distro]. That way everytime your
+system starts-up the directory is set to the right permissions.
 
-That is because it requires a fundemental understanding of
-nr. systems. Like octal, binary. Yes.. yuk.. Learning curve steep, but it
-makes or breakes your system, take it from me...
+If the directory is a mountpoint, umount and remount it with the
+permissions. /etc/fstab
 
-The Fundemental questions:
-1. What & Who is creating the files on your system ?
-2. What & Who needs to access them ?
+If you use samba, php, apache or any other deamon program to access your
+files set the file mask permissions in those programs correctly. And make
+sure the user & group settings under which these programs run on your
+system have the right permissions todo so.
 
-If you know that, you solved half your problem. Now you can pick the best
-approach.
-
-As for umask:
-
-New files are created with a default access mode to automatically set the
-permision levels. [umask] .
-
-When new files are created, the protection bits are set according to the
-users default setting. Like ray said . The default is established using
-the umask command in some sort of startup script either bash or
-another shell. `man umask' or `umask --help'
-
-If you are the sys-admin of your system then you can set the default umask
-value for all users, not just your self. 
-
-There are also programs which can set their own permission bits. Like
-for example in samba:
- create mask = 0700
- directory mask = 0700
- browseable = No
-
-Or ssh shell..
-....etc..
-
-That's why you need to know what, and who's creating the files and who
-want's to access them..
-
-> I'm not against use umask; 
-
-It's not if you are against it or not. You will have to use it.. No matter
-what. 
-
-> I just didn't 'get it' upon reading stuff
-> online. A link or two pointing to 'Umask for Idiots' would be great!
-
-Again, that's because the Nr.'s dont make any sense. And I can't blame you
-for that.
-
-http:/www.google.com/linux 
-
-search for octal, umask....
-
-> Thanks,
-> Eve
+> The info that has been given here has been a help though, so thanks
+> everyone for helping me out!
 > 
+> Michael Turcotte
+> Information Systems
+> City of North Bay
+> 200 McIntyre St. E
+> PO Box 360
+> North Bay, Ontario
+> P1B 8H8
+>  
+> Mike.Turcotte@cityofnorthbay.ca
+> http://www.cityofnorthbay.ca 
 > 
-> P.S. For additional info, my setup is something like this:
-> Directories 'accounting' and 'hr' are created.
-> Groups 'accounting' and 'hr' are active in the system.
-> Users have been assigned to accounting and hr group.
-> Directories are then locked to those users with access to accounting or hr,
-> respectively.
-> Accounting and HR are currently set up as 
-> drwxrwx--T accounting
-> drwxrwx--T hr
+> > -----Original Message-----
+> > From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
+> > owner@vger.kernel.org] On Behalf Of Ray Olszewski
+> > Sent: Tuesday, March 29, 2005 10:51 AM
+> > To: linux-newbie@vger.kernel.org
+> > Subject: RE: Simple script to set permissions on folders daily - write
+> > script and cron it?
+> > 
+> > At 09:31 AM 3/29/2005 -0500, Mike Turcotte wrote:
+> > >I am fairly new to the linux scene, and I am currently using Gentoo
+> > >Linux. How exactly do I go about setting a global default umask value
+> to
+> > >set 777 permissions on a particular folder and its contents?
+> > [...]
+> > 
+> > You don't. That's not how umask works. Instead, it sets default
+> > permissions
+> > for *all* files saved by a particular account (userid).
+> > 
+> > If you want to make this change for all userids (or all except root),
+> do
+> > it
+> > in some file that sets the environment globally. For the bash shell,
+> this
+> > is probably /etc/profile (that's the standard one, and I imagine
+> Gentoo
+> > follows the standard). For example, my /etc/profile file contains this
+> > line:
+> > 
+> >          umask 022
+> > 
+> > A umask is the (octal) inverse of permissions, so this sets the
+> default
+> > permissions to 755. For a default of 777, set the umask to 000.
+> > 
+> > If you want to make the change for specific accounts (userids), put a
+> line
+> > to reset the umash in that account's individual configuration file.
+> This
+> > varies in name a bitr more than systemwide files, but ones to look for
+> are
+> > (in the account's home directory) .profile, .bash_profile, or .bashrc
+> (use
+> > "ls -a" to display filenames that begin with a .).
+> > 
+> > I don't know of a way to set default permissions for a specific
+> directory
+> > only, which is why I didn't discourage Eve from taking the approach
+> she
+> > described for her problem. Perhaps someone else does, though ... we'll
+> > have
+> > to wait and see.
+> > 
+> > 
+> > 
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe
+> linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
-The program they use to access these files, does that program run under
-?? which user/group ?? My best guess is, Fix that, and you fixed your
-problem.. 
+Tuesday, March 29 18:53:43
 
-J.
+
+
+--
+http://www.rdrs.net/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
