@@ -1,43 +1,33 @@
-From: Edgar Alwers <edgaralwers@gmx.de>
-Subject: Re: umount
-Date: Fri, 8 Nov 2002 22:27:46 +0100
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: need method of backing up files
+Date: Fri, 8 Nov 2002 16:37:14 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211082227.46496.edgaralwers@gmx.de>
-References: <5.1.0.14.1.20021108093105.021201f0@celine>
+Message-ID: <05bb01c2876f$0104b300$64fea8c0@pkrausxp>
+References: <1036769889.20840.92.camel@zebra.vil.ite.mee.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021108093105.021201f0@celine>
+In-Reply-To: <1036769889.20840.92.camel@zebra.vil.ite.mee.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: newbies <linux-newbie@vger.kernel.org>
+To: 'Paul Furness' <paul.furness@vil.ite.mee.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Friday 08 November 2002 18:36, Ray Olszewski wrote:
+How can I add the machine name to the output. For instance...
+This command writes to the log file that a file is in use and was not
+backed up.
 
-> Well ... I'd guess there is a permissions difference between mount and
-> umount. Check both by using "ls -l /bin/mount" and "ls -l /bin/umount"
+cp --preserve --recursive --update "$source"/* $dest 2>> $log
 
-nope:  both are  -rwsr-xr-x, but both owned by root and group = root ?
+So if I have a variable called $machine and it equals the workstations
+name how can I have it written before the log entry.
 
-> The other possibility if an entry in /etc/fstab that makes mounting
-> possible but not umounting (though I can't offhand think of a setting that
-> will do this).
+Example
+Myworkstation: output from errors out.
 
-/devf/cdrom ro,noauto,user,exec 0 0
+Thanks in advance,
+Paul Kraus
 
-> BTW, is "klicking" some KDE idiom?
-
-hmm.... sorry Ray, german english for "to click" . I promise, I will try 
-harder !  ;-)
-
-Regards,
-Edgar
-
--- 
---------------------------------
-Dr.-Ing. Edgar Alwers
-Mailto: edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
