@@ -1,68 +1,75 @@
 From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: I killed user's x server
-Date: Fri, 22 Nov 2002 13:43:04 -0500
+Date: Fri, 22 Nov 2002 14:35:18 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211221843.gAMIh4W08194@hartford-hwp.com>
-References: <200211202236.gAKMaIK05653@hartford-hwp.com> <5.1.0.14.1.20021121103403.02116350@celine> <200211212046.gALKkTj04709@hartford-hwp.com> <02112121392100.00286@unix.pa3gcu>
+Message-ID: <200211221935.gAMJZIW09438@hartford-hwp.com>
+References: <5.1.0.14.1.20021121103403.02116350@celine>
+	 <200211202236.gAKMaIK05653@hartford-hwp.com>
+	 <200211202236.gAKMaIK05653@hartford-hwp.com>
+	 <5.1.0.14.1.20021121103403.02116350@celine>
+	 <5.1.0.14.1.20021121130840.0215f2a0@celine>
+	 <200211220010.gAM0A9b02546@hartford-hwp.com> <1037954445.1994.6.camel@zebra.vil.ite.mee.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <02112121392100.00286@unix.pa3gcu> (message from pa3gcu on Thu,
-	21 Nov 2002 21:39:21 +0000)
+In-reply-to: <1037954445.1994.6.camel@zebra.vil.ite.mee.com> (message from
+	Paul Furness on 22 Nov 2002 08:40:45 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
+To: paul.furness@vil.ite.mee.com
 Cc: linux-newbie@vger.kernel.org, brownh@hartford-hwp.com
 
-Richard,
+> Do you mean that you completely removed one hard disk, which
+> contained _all_ of the partitions on the system, and replaced it
+> with a completely different disk which had a different system
+> installed on it?
 
-> I belive from what i have read that you are using "sawfish", and
-> that a user cannot start X, i use slackware here and sawfish does
-> not use pex5.so or xie.so, if one uses 'ldd' one see's which libs
-> are needed.
+That's correct. Insurmountable problems were mounting up, and so I
+decided on a fresh start with a bigger HD. Completely fresh install of
+RH 8.0 on it.
 
-> if your swafish uses pex5.so and xie.so could it be that a program
-> started by sawfish uses them.????  If so then the "user" may need
-> special privs on that particular program.
+> It sounds like you are talking about a laptop. Is that true?
 
-You raise an interesting point, but my running ldd /usr/bin/sawfish
-suggests it does not need pex5 nor xie.
+Nope. I've got a desktop with a bunch of hard disks dangling on scci
+cables.
+ 
+> How about if you create a new account, start X from it, then quit X
+> and simply reboot (making no other changes at all in between)? Does
+> the new user still have the problem?
 
-The odd thing is, as I mentioned before, is that I can create a new
-user and start X for it and proceed without difficulty, but a reboot
-kills that user's ability to start X (to load the pex5 and xie
-modules).
+That was exactly what I did. I could start X for the new account and
+do anything I wanted with it, including loging out, into another
+account, and back in again. However, if I reboot, I no longer can
+start X for the user's account.
 
-If I run:
+Ray asked what damange I had recently done to my system. The answer is
+that I'm always doing damage ;-(. However, there's two thngs that do
+stand out, and I'll mention them here now,
 
-   # insmod /usr/X11R6/lib/modules/pex5.so
-   /usr/X11R6/lib/modules/pex5.so: ELF file
-          /usr/X11R6/lib/modules/pex5.so not a relocatable object
+About the time I experienced the problem I had just created the
+following ~/.xinitrc file (which does not exist in root's account na
+did not previously exist in user's account):
 
-Do you or any lurker happen to know what it means to say an object is
-not relocatable. For example, does it mean an application stub can't
-construct the module at the stub for its own use?
+xset s off
 
-Further, in my error log it says:
+My purpose here was to kill screen blanking. It didn't work, but I
+hadn't bother to remove it. So just how does one prevent any screen
+blanking? (I think there's a provision in RH8.0, but I don't see it in
+RH 7.3). Since this file is checked first by startx, it could be the
+culprit. Have not checked yet.
 
-(II) LoadModule: "pex5"
-(II) Loading /usr/X11R6/lib/modules/pex5.so
-        dlopen: /usr/X11R6/lib/modules/pex5.so: undefined symbol:
-        PexExtensionInitPtr 
-(EE) Failed to load /usr/X11R6/lib/modules/pex5.so
-(II) UnloadModule: "pex5" 
-(EE) Failed to load module "pex5" (loader failed, -1073743256)
+Also, my problems followed a disastrous attempt to install an nVidia
+driver in place of the generic nv driver in RedHat. I completely blew
+the X server in the process, and had to recover from the console. OK,
+but I'm (ie, user) is not using a /etc/X11/XF86Configure-4 rather than
+a XF86Configure configuration file. I have a funny feeling that the
+former was created by the abortive driver install, and my backing out
+left it there and in use. Can anyone tell me which is the correct
+configuration file for RH7.3 using the nv driver that comes with the
+distribution? If I'm using the wrong configuration, how do I switch
+it?
 
-I've a vague sense that dlopn seeks to load pex5, but encoungers an
-"undefined symbol," PexExtensionInitPtr.
-
-Can anyone tell what this PrxExtensionInitPtr is? Does it refer to a
-dependent library that fails to be accesses because that library is
-either missing, is not in the linker list, is a wrong version or has
-the wrong permissions?
-
-Haines Brown
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
