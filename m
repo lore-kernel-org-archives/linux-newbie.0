@@ -1,43 +1,46 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Bash will not start in Terminals
-Date: Tue, 15 Mar 2005 15:46:11 +0800
-Message-ID: <200503150746.j2F7kBBm000590@skyinet.net>
-References: <5.1.0.14.1.20050310183928.0293ee08@celine>
+From: Donald Duckie <schipperke2000@yahoo.com>
+Subject: Re: SOLVED: Some users locked out of ssh and sftp?
+Date: Tue, 15 Mar 2005 01:23:08 -0800 (PST)
+Message-ID: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
 Mime-Version: 1.0
-In-Reply-To: Your message of "Thu, 10 Mar 2005 18:55:46 PST."
-             <5.1.0.14.1.20050310183928.0293ee08@celine> 
+In-Reply-To: 6667
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
-
-Hi,
-
-Peter said:
-> Slackware10 kernel 2.4.26
-> >For me unknown reason suddenly bash will not
-> start in terminals. 
-
-The reason was that I had made a new slackware installation in which then in 
-the /etc/passwd under my user name at the end of the line there was no 
-:/bin/bash as it used to be.
-
-I found it out when I added an arbitrary user in which then again bash was not 
-started in the terminals. Again on his passwd line there was no :/bin/bash.
-
-So it had nothing to do with me getting too old for Linux. It's a new 
-"gimmick" in slackware which one has to find out first.
-
-Regards
+To: linux-newbie@vger.kernel.org
 
 
--- 
-Peter
+I got this error message as shown below  . . . 
+How do I change the /root/.ssh/known_hosts file?
+It seems encrypted . . .
 
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! 
+   @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now
+(man-in-the-middle attack)!
+It is also possible that the RSA host key has just
+been changed.
+The fingerprint for the RSA key sent by the remote
+host is
+23:52:d4:e8:6a:75:72:ed:78:cb:31:1f:6a:ff:b4:ea.
+Please contact your system administrator.
+Add correct host key in /root/.ssh/known_hosts to get
+rid of this message.
+Offending key in /root/.ssh/known_hosts:7
+RSA host key for 192.168.0.1 has changed and you have
+requested strict checking.
+Host key verification failed.
 
+
+__________________________________________________
+Do You Yahoo!?
+Tired of spam?  Yahoo! Mail has the best spam protection around 
+http://mail.yahoo.com 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
