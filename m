@@ -1,42 +1,61 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Moving Hard Drive
-Date: Mon, 19 Jan 2004 15:14:10 +0800
+From: =?iso-8859-1?Q?Juan_Facundo_Su=E1rez?= <facundo.suarez@ensi.com.ar>
+Subject: Re: 2 ethernet jacks -> single net connection?
+Date: Mon, 19 Jan 2004 06:45:34 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040119071411.35BEF1C902@heisspf>
-References: <200401171053.50808.pa3gcu@zeelandnet.nl>
+Message-ID: <002c01c3de70$fc58fe60$680410ac@pcinstru1>
+References: <015801c3d645$b4d2b0a0$680410ac@pcinstru1> <3FFE3E8C.4040801@comcast.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 17 Jan 2004 10:53:50 +0100." 
- <200401171053.50808.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie list <linux-newbie@vger.kernel.org>
 
-> Peter wrote:
-> > Is it correct then that before doing the switch I will have to change in 
-> > /etc/fstab and lilo.conf all what is labeled hdc to hda?
-> > Boot initially
-> > from a floppy into SLackWare run lilo and I should be set with the new drive
-> > as master.
+Never said anything, but thanks a lot, shortly i will be trying to do i=
+t,
+with two linux machines.
 
-gracecott@sancharnet.in said:
+--
+=46acundo Su=E1rez
+Neuqu=E9n - Argentina
+=46DSoft
+mail y jabber: faco@fdsoft.com.ar
+facundo.suarez@ensi.com.ar
 
-> Since you are on lilo, it would be easier to type on the lilo prompt
-
-Since hdc was moved to hda there is initially no more MBR before I run lilo. 
-
-Therefore what Peter wrote above correctly replaced the old 5 Gb 
-HD with the new 20 Gb HD as Master.
-
-
--- 
-Peter
+----- Original Message -----
+=46rom: "Beolach" <beolach@comcast.net>
+To: "Juan Facundo Su=E1rez" <facundo.suarez@ensi.com.ar>
+Cc: "linux-newbie list" <linux-newbie@vger.kernel.org>
+Sent: Friday, January 09, 2004 2:39 AM
+Subject: Re: 2 ethernet jacks -> single net connection?
 
 
+| See the file /usr/src/linux-2.6.0/Documentation/networking/bonding.tx=
+t
+| for more information on how to use ethernet bonding.  Quick summary i=
+s:
+|
+| 1: Compile kernel with bonding, or compile & insert the module.
+|
+| 2: Compile and install the userspace tool ifenslave as follows:
+| # cd /usr/src/linux-2.6.0/Documentation/networking
+| # gcc -Wall -Wstrict-prototypes -O -I/usr/src/linux/include \
+| ifenslave.c -o ifenslave
+| # cp ifenslave /sbin/ifenslave
+|
+| 3: Setup bonded interface & enslave ethernet interfaces:
+| # ifconfig bond0 192.168.0.1
+| # ifenslave bond0 eth0
+| # ifenslave bond0 eth1
+|
+| At this point the bonded interface should work.
+|
+| Have fun,
+| Conway S. Smith
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
