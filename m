@@ -1,31 +1,39 @@
-From: Ola Theander <ola.theander@connective.se>
-Subject: HowTo: Fortifying a internet connected Linux server?
-Date: Mon, 27 May 2002 16:57:07 +0200
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: which distribution to use?
+Date: Mon, 27 May 2002 15:14:27 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <FC79D1F4C922D511983400104BC303880195A1@DELL1>
+Message-ID: <02052715142703.01212@unix.pa3gcu>
+References: <20020526135114.4DEA536FA@sitemail.everyone.net> <3CF235DA.E4BE5D0E@gelm.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3CF235DA.E4BE5D0E@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
 
-Dear subscribers.
+On Monday 27 May 2002 13:34, Chuck Gelm wrote:
+> <snip>
+>
+> > install 2.5.17 kernel.
+>
+> <snip>
+>
+> IMHO, 2.5.x kernels should not be discussed in linux-newbie.
 
-I'm currently setting up a home network which will have a Linux box acting
-as a gateway/firewall, connected to the Internet, for my internal network.
-The gateway computer will also have servers for the following services:
-HTTP, SMTP and DNS.
+How correct you are in your humble opinion Chuck.
 
-My question is, is there any good documentation, books or on-line, about how
-to setup and secure an Internet exposed Linux server? The server will run
-SuSE Linux 8.0, kernel 2.4.18.
+>
+> :-|
+>
+> Chuck
 
-I'm aware that it's not the best solution from a security point of view to
-expose e.g. a WWW-server directly to the internet, but this is a home
-network and currently I can't afford a more sophisticated solution.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-Kind regards, Ola Theander
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
