@@ -1,36 +1,40 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: At Loss with Mailing
-Date: Fri, 2 May 2003 09:41:53 +0800
+From: Bob Swift <powerstation@shaw.ca>
+Subject: BASH Script Change Directory
+Date: Thu, 01 May 2003 23:08:02 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305020941.53139.pfheiss@philonline.com>
+Message-ID: <200305011842.48087.powerstation@shaw.ca>
+Reply-To: powerstation@shaw.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: All <linux-newbie@vger.kernel.org>
 
-Greetings Hal,
+This is going to sound like a really dumb question, but is there any way to 
+have BASH leave the user in the current directory from the script, rather 
+than returning them to the directory they were in when the script was called?
 
-In RH7.3 I just tried to simulate your setup just opening X with xterm only.
-startx /usr/X11R6/bin/xterm.
+For example...  the user is in their home directory and call the following 
+BASH script:
 
-Opening Netscape 4.79 I have no problem entering a URL, however, opening 
-Mozilla 5.0 I have as you call it the dog bone cursor yet cannot enter 
-anything into the URL window, like you say as if the keyboard is not 
-responding.  Opera works fine as well as dillo.
+     #!/bin/bash
+     cd /var/log
+     ls
 
-I am using xfce as window manager and there is no such problem.
+When the script exits, the user is returned to their home directory.  Is there 
+a way to leave them in the /var/log directory?
 
-I just checked with Slackware 8.0 using xterm only. Results are the same as in 
-RH7.3. No problem with Netscape 4.77, Mozilla 5.0 URL window does not 
-respond.
+I've tried the obvious things like:
 
- 
-Regards
+     trap 'cd /var/log' 0
 
+with no success.  I'm guessing that there's probably some really simple thing 
+that I'm missing.
+
+Thanks.
 -- 
-Peter
+Bob Swift
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
