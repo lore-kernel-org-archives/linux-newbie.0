@@ -1,84 +1,68 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: char-major-6
-Date: Fri, 19 Apr 2002 14:40:50 +0000
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Re: Slack8.0 - 2.4.XX - ftpd missing?
+Date: Fri, 19 Apr 2002 11:09:12 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0204191440500C.04062@unix.pa3gcu>
-References: <m3662o5ol0.fsf@wobble.eth.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020419110912.A375@lnx2.w8mch.ampr.org>
+References: <20020418152828.A172@lnx2.w8mch.ampr.org> <0204182057480B.04062@unix.pa3gcu>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <m3662o5ol0.fsf@wobble.eth.net>
+Content-Disposition: inline
+In-Reply-To: <0204182057480B.04062@unix.pa3gcu>; from pa3gcu@zeelandnet.nl on Thu, Apr 18, 2002 at 08:57:48PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, G Anna <drguruolai@eth.net>
+Content-Transfer-Encoding: 7bit
+To: Richard Adams <pa3gcu@zeelandnet.nl>
+Cc: linux-newbie@vger.kernel.org
 
-On Friday 19 April 2002 03:55, G Anna wrote:
-> Dear All,
+On Thu, Apr 18, 2002 at 08:57:48PM +0000, Richard Adams wrote:
+> On Thursday 18 April 2002 19:28, Hal MacArgle wrote:
+> > Greetings: Been running Slackware 8.0 - kernel 2.2.19 /or/ kernel
+> > 2.4.5 /or/ kernel 2.4.13 and find I can't FTP that machine via my eth
+> > lashup.
+> >
+> > Ping works; telnet works; NSFD works, etc but trying ftp the machine
+> > reports: "Connected to lnx2" then a wait, "421 Service not available,
+> > remote server has closed connection." The opposite direction from the
+> > problem machine to any other machine running Slack 7.1; Slack3.5;
+> > RH6.2, etc - all fine.. It seems obvious, to me, that FTPD is not in
+> > evidence. I looked at the Configure file and see no obvious entries.
+> 
+> Which configure file ????
+	I was looking at the generated file that lists the selections
+from 'make config'.. I didn't know that there were changes made in
+2.4, presuming the "old" default would work.
 
-I've only seen one reply to this mail, i will try and explain whats happening 
-and possably shed some light on the other discussion about devices not being 
-found.
+> The correct file would be /etc/inetd.conf and should contain one of the two 
+> following lines.
+> 
+> ftp    stream  tcp     nowait  root    /usr/sbin/tcpd  wu.ftpd -l -i -a
+> ftp     stream  tcp     nowait  root    /usr/sbin/tcpd  proftpd
+	The wu.ftpd line is commented out so this machine will be
+using proftpd.. (ftpd is no longer used I see.) THAT was the problem:
+When compiling 2.4.13 I passed by /n1/proftp.tgz, not knowing what it
+was - at the time... Installing it fixed the problem... APPRECIATE!!
+A big help was, also, finding 'tcpdchk' that pinned it down..
 
->
-> When I try to do
->
-> # /etc/rc.d/init.d/lpd start
-> Starting lpd: Warning - test: \
-> cannot open lp device '/dev/lp0' - No such device
+> and of course the programs should be resident in the mentioned directory's.
+> On the otherhand it sounds like you did not install ftp at all, if that is 
+> the case you can install it from your source(cdrom) ((or what ever)) with 
+> "setup" or "pkgtool".
+	I used: installpkg /cdrom/slakware/n1/proftp.tgz..
 
-Note here it says No such device, normally one can take that to mean there is 
-no hardware device found via /dev/lp0 (in this case) that in turn does not 
-mean one has to go hunting in /dev/ and (re)create /dev/lp0 because 99,9% of 
-the time its there but its only a file with No device attached.
+> Oops another point is; in /etc/ftpusers it states;
+> # To enable anonymous FTP, remove the "ftp" user:
+> In otherwords if a line exsists with 
+> ftp
+> remove it or comment it out.
+	Left it as is because am not interested, at this time, in
+anonymous users, although will file all this for the future. <grin>
 
-Redhat like most all distro's create those files at install time, my Redhat 
-system here has never had a printer attached to it nor have i configured a 
-printer, but the file /dev/lp0 is there..
+	Again: Thanks Richard for another "save".......
 
->
-> [I broke the line into two.]
->
-> And in the /var/log/messages file I have
->
-> Apr 19 09:19:05 wobble modprobe: modprobe: Can't locate module char-major-6
-> Apr 19 09:19:05 wobble lpd: lpd startup succeeded
-
-The above message is saying that the program modprobe cannot find a module 
-called "lp" which is char-major-6 (to answer your question), now either you 
-configured your kernel without lp support or the needed modules were not 
-installed beforehand, those are;
-parport and parport_pc
-if those are loaded (can be seen with the command 'lsmod') then you did not 
-configure your kernel with lp module support.
-Or it could be that IRQ 7 is in use by some other device, check that with the 
-command 'cat /proc/interrupts'.
-
-To see just what you configured (or did not configure) in your kernel you can 
-look at the file .config found in /usr/src/linux that is providing you have 
-not done a make distclean or make mrproper after you compiled the last kernel.
-
->
-> Can anybody tell me, which config option is this char-major-6?
-
-As above, "lp" printer.
-
->
-> I am using RH 7.1,
->
-> $ uname -a
-> Linux wobble 2.4.16 #2 Fri Apr 19 01:09:19 IST 2002 i686 unknown
->
-> Thanks for all the help.
->
-> Cheers,
-> anna
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+    Hal - in Terra Alta, WV,  -  Slackware Linux 8.0   (2.4.13)
+    haltec@iceweb.net | w8mch@iceweb.net..A M$ free environment     
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
