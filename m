@@ -1,48 +1,47 @@
-From: Peter Edstrom <peter.p3@home.se>
-Subject: Re: A "subject" rule for procmail
-Date: Sun, 14 Sep 2003 18:02:47 +0200
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030914160247.GA1074@linux>
-References: <XFMail.20030913224135.ik5bcu@tin.it> <20030914094137.GA442@linux> <Pine.LNX.4.58.0309140609200.1280@localhost>
+From: Eric <eric@cisu.net>
+Subject: Multithreaded /sbin.init? Is it possible?
+Date: Sun, 14 Sep 2003 12:40:55 -0500
+Sender: linux-c-programming-owner@vger.kernel.org
+Message-ID: <200309141240.55800.eric@cisu.net>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-c-programming-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.58.0309140609200.1280@localhost>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
 
-> With bmf, does it search a spam folder and learn from what you put into
-> it?  The thing is I delete good e-mail after I've finished reading it if
-> there's no further use for it but just because I deleted that e-mail
-> doesn't make it properly spam.
-
-This is kinda how it works:
-
-When your mail is sent to procmail, procmail pipes it to the bmf program
-to filter it. Bmf is looking at the headers as well as the message, and
-compares it with keywords given in a database. If the mail is spam, a
-new header 'X-Spam-Status' is set to 'Yes', and then the mail is
-returned to procmail. Now you can make procmail check the X-Spam-Status,
-and if spam it can either put the mail in a specific spam mailbox
-(recommended), or to /dev/null.
-
-If bmf misses a spam mail, you can mark the mail as spam which updates
-the badlist-database. (This is very easy to do with eg. mutt, where you
-can bind for instance F12 to do this). Similarly, if bmf happen to
-filter a mail which isn't spam, you can remove it from the database (in
-eg. mutt you can do this with for instance F11).
-
-If you just delete a mail, it will not be marked as spam.
-
-If there's something you don't understand, please let me know. I'm in a
-little hurry now - I'm supposed to cook potatoes. ;-)
-
-Hope this helps!
-/Peter
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Hello,
+	I have an interesting theory. I have beginning programming expereice and 
+would like the input of those that have more expereince than me. Please don't 
+flame if this is a waste of time. Rather I would like an open discussion on 
+the why's and why nots of this.
+	Wouldn't the Linux Boot process be speeded up if the init program was 
+multithreaded? I know a little about threads.. and I think there might be 
+some complication of PPID assignment coming from the threads which would 
+probably terminate instead of having a PPID of 1 which is init and will never 
+terminate. (i think?). Should init scripts have a parent PID of 1? Does this 
+even matter?  
+	If I am correct, whenever a programs parent dies, its parent becomes init 
+anyways. So when the thread finishes execution of the script, then its parent 
+would become init just as if it had started sequentially and directly from 
+init.
+	The script links in /etc/rc.d/x.d/ would be grouped according to their S and 
+K numbers. That is, if you have 5 scripts that are S5, each would be given to 
+a thread to execute and there would be 5 threads. The init process would wait 
+for each thread to clean up before proceeding to the next group. I know this 
+would happen in an undefined order, but if you want, for example, DHCPD to 
+start after network then you would assing S5network and S6dhcpd. There would 
+still be a defined order for differently numbered scripts, just the bootup 
+process wouldnt have to wait for each script to terminate sequentially.
+	 Each group would only take as long and the slowest script instead of the sum 
+of the execution time of the scripts. The init would start with the S1 
+scripts and maybe fork 3 times, wait for each to finish...., then fork maybe 
+twice for the S2 group if there are two scripts, wait for them to 
+finish...etc....
+	Is this even possible?
+----------------------
+Eric Bambach   
+Eric (at) CISU (dot) net 
+----------------------
