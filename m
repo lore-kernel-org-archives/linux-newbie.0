@@ -1,39 +1,48 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: switching window managers
-Date: Mon, 24 Mar 2003 09:26:34 -0500
+From: Kurt Sys <kurt.sys@rug.ac.be>
+Subject: safety/permissions
+Date: Mon, 24 Mar 2003 17:32:26 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303241426.h2OEQYnA017995@hartford-hwp.com>
-References: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org> <200303230453.h2N4rb3T024680@hartford-hwp.com> <20030323111001.GA1366@localhost.localdomain>
-Reply-To: brownh@hartford-hwp.com
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <20030323111001.GA1366@localhost.localdomain> (message from Amin
-	on Sun, 23 Mar 2003 17:10:01 +0600)
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <15999.13082.237069.193180@ksys.rug.ac.be>
+Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: raihan@citech-bd.com
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-> Try reinstalling the ``gnome-panel'' RPM, or if that doesn't
-> work, uninstalling and then reinstalling it.  This RPM
-> manages the Panel's basic stuff, including the desktop
-> switcher.
-> 
-> You'll need (to specify the location of the) the RPM file,
-> of course.
+Hello all,
 
-I tried that, but there was a large number of dependencies that would
-require me to uninstall a range of applications, and I've little hope
-that I could get things working again.  
+I don't know if there were (a lot) of responses to my last mail(s),
+since I again did some 'uncareful' things and I lost now and then some
+mail. Anyway, for the people who want to know, the problem is solved
+now completely. It was something with my fetchmail configuration. I
+don't fully understand why it used to work but it didn't work when I
+reinstalled Linux Debian, but ok... Here's the solution:
 
-It would be a lot cleaner just to uninstall the desktop
-switcher/pager. But I need the name of its executable. I've asked
-around, and no one seems to know. Is it an application, an applet, or
-integrated into gnome2? What is the gnome-panel configuration file
-that specifies whether the pager gets loaded? 
+My .fetchmailrc-file looks now like this:
+-----
+set postmaster "kurt"
+set bouncemail
+set spambounce
+set properties ""
+set daemon 500
+poll allserv.rug.ac.be with proto IMAP
+       user 'ksys' there with password 'xxxx' is 'kurt' here 
+       options smtphost 'ksys.rug.ac.be' forcecr ssl fetchall
+-----
 
-Haines Brown
+I had to add the option:
+smtphost 'ksys.rug.ac.be'
+
+I guess another config-file, somewhere is /etc is wrong and fetchmail
+reads that file if it doesn't find the 'smtphost'-option. Could this
+be right?
+
+
+Anyway,
+thanks for your help,
+Kurt.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
