@@ -1,55 +1,56 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: problem with Real Tek RTL-8139, SMC EZ Card
-Date: Fri, 7 Nov 2003 07:49:46 +0200
+From: "Robert S" <robert_schmidli@hotmail.com>
+Subject: Can't get into WM (KDE, TWM etc) from KDM or XDM
+Date: Fri, 7 Nov 2003 21:06:53 +1100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200311070649.46620.pa3gcu@zeelandnet.nl>
-References: <20031106171124.64183.qmail@web80604.mail.yahoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <bofqtj$cvu$1@sea.gmane.org>
+Reply-To: "Robert S" <robert_schmidli@hotmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20031106171124.64183.qmail@web80604.mail.yahoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thursday 06 November 2003 18:11, Ravi Kumar Munnangi wrote:
-> Hello,
->
->   I have just now installed RedHat Linux 8.0 on my
-> system. It has the Real Tek RTL-8139, SMC EZ Card.
->
->  After ifup eth0, it gave the message,
->
->  modprobe:Can't open dependencies file
-> /lib/modules/2.2.14-5.0/modules.dep(No such file or
-> directory)
+I'm running Slack 9.1.  Since I recently upgraded from slack 9.0 to my
+current version, I have no longer been able to get from kdm into any window
+managers (kde, twm etc).  My monitor goes momentarily blank then returns to
+the KDM/XDM prompt.
 
-The normal way to cure that is to do as root,
+I can however get into my WM using "startx" and I can also get into kdm with
+no problems (I am using konqueror to do this).  I therefore assume that my
+/etc/X11/XF86Config is OK.
 
-depmod -a
-modprobe 8139too
+my /root/.xsession_errors and /home/me/.xsession_errors do not display
+anything - ie presumably no errors.
 
-See what happens.
+My /var/log/XFree86.0.log does not show any errors (ie no (EE)) but there
+are a few warnings.
 
->
-> The same message appeared even at the time of booting.
->
-> Please help me come out of this problem!
->
-> Thanking you,
-> Ravi Kumar
->
+/var/log/kdm.log also does not show any errors.
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+If I enter # startkde I get the following message:
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+xset:  unable to open display ""
+xset:  unable to open display ""
+xset:  unable to open display ""
+xsetroot:  unable to open display ''
+startkde: Starting up...
+ksplash: cannot connect to X server
+kdeinit: Aborting. $DISPLAY is not set.
+Warning: connect() failed: : No such file or directory
+ksmserver: cannot connect to X server
+startkde: Shutting down...
+Warning: connect() failed: : No such file or directory
+Error: Can't contact kdeinit!
+X11GlobalComm: Can't connect to the XServer - Initial references won't
+work.
+bad md5 secret-cookie obtained from Arts::X11GlobalComm - replacing it
+startkde: Running shutdown scripts...
+startkde: Done.
+
+Can anybody help me out here?
+
+Robert S.
 
 
 
