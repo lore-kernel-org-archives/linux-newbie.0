@@ -1,75 +1,54 @@
-From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: really hidden hidden files
-Date: Sun, 25 Aug 2002 08:47:58 +0100 (BST)
+From: lawson_whitney@juno.com
+Subject: Re: sudo, SUID and SGID
+Date: Sun, 25 Aug 2002 03:54:03 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208250838540.8397-100000@Consulate.UFP.CX>
-References: <7A9A0C00.079CF921.7C182763@netscape.net>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <20020825.040319.134671024.11.lawson_whitney@juno.com>
+References: <200208241527.g7OFR8El003246@franklin.icok.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <7A9A0C00.079CF921.7C182763@netscape.net>
+In-Reply-To: <200208241527.g7OFR8El003246@franklin.icok.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Robert Haehnel <HaehnelRobert@netscape.net>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: wa5rrh@arrl.net
+Cc: linux-newbie@vger.kernel.org
 
-Hi Robert.
+On Sat, 24 Aug 2002, Jim Reimer wrote:
 
-> Hey out there. This is really a Dos/Windows question, but I'm trying
-> to fix a problem in windows using Linux.
+> I'm not sure I'm clear as to when I should use sudo, and
+> when I should use SUID and/or SGID.  It looks like I should
+> use sudo when I want only a limited number of users to
+> have access to a (normally root) program, and SUID/SGID
+> when I want to let everybody have it.  Is that all there
+> is to it?
 
-We all get to do that on occasion...
-
-> Here is the deal. My son trashed the windows 98 installation on our
-> home PC. So I formatted the Windows partition and started over with
-> a clean install. However, the install did not go smoothly. It
-> rebooted as part of the install process, and tried to reformat the
-> windows partition, but the installation is confused, and what it
-> thinks is the hard drive is actually the CD drive. Of course it
-> can't do that, and it is stuck right there and won't go any further.
-
-That sounds like typical Microsoft programming...
-
-> First I dropped out of the install process, and tried to clean it's
-> memory (on c:) of what it had done so far in the install process by
-> formatting the windows partition. This did not purge the partition
-> of the hidden files that are created during the install process to
-> keep the install information during reboot.
+You can use say group execute (g+x o-x) to control who may run a
+setuid/setgid program, but basically, yes.
 >
-> So ... I had a bright idea (anyway, I thought it was bright). Maybe
-> I can see these hidden files in Linux, and wipe the slate clean
-> there. Well I only had partial success. I booted into Linux, mounted
-> the windows partition, and typed...
+> If I want a script to run as root, I *must* use sudo?
+
+The linux exec[vle] call will not run a script for a nonroot user as
+root.  suidperl is a way around this if you write perl scripts.
 >
->	ls -la
+> Another thing is that if SUID/SGID is appropriate, which
+> is used?  Is it ever necessary to use both at the same time?
+
+Maybe.  suid exec's as the owner of the executable file, whicn is
+usually but not necessarily root.
 >
-> ...to see what was on the partition. It only showed "." and "..",
-> but it reported 5 files were present (Ha, a clue!, Maybe..). Anyway,
-> I think that what the ls command told me was it saw three hidden
-> files there even though it didn't list them.
+> Thanks for enlightening me.
+> -jdr-
 >
-> Unfortunately, an "rm *" doesn't remove them.
+Lawson
+---oops---
 
-You could try going back to the Windows command prompt and running
-scandisk on that drive - those three "files" could easily be strings
-of "lost clusters" rather than genuine files.
 
-> Does anyone have an idea of how I can see these hidden files and
-> more importantly remove them, so I can clean up and start over.
 
-What I would do is to use Linux to format that partition as ext2 with
-the mke2fs command, as that will overwrite everything in the partition
-with what Windows regards as gibberish. After that, Windows will say the
-partition is unformatted, and you should be able to start the whole
-procedure afresh with a clean format.
-
-> Thanks for your help in advance.
-
-NP.
-
-Best wishes from Riley.
-
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
