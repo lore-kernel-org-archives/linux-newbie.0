@@ -1,63 +1,86 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Diagnostic Traces and Security
-Date: Mon, 05 Aug 2002 09:32:08 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: Newbie installation problem
+Date: Mon, 5 Aug 2002 08:32:49 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020805091418.021b59e0@celine>
-References: <5.1.0.14.1.20020804132806.0211e4e0@celine>
+Message-ID: <Pine.LNX.4.21.0208050822550.8397-100000@Consulate.UFP.CX>
+References: <002301c23c41$7f442b70$6401a8c0@ENRIQUE>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0208050712110.8397-100000@Consulate.UFP.CX>
+In-Reply-To: <002301c23c41$7f442b70$6401a8c0@ENRIQUE>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Riley Williams <Riley@Williams.Name>
+To: Enrique Nieves <spanfax@charter.net>
 Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Riley -- Thank you for an excellent outline of the issues involved in the 
-professional troubleshooting of network connectivity. I won't argue with 
-the details, mainly because I agree with 99% of it, at least for the 
-context in which you developed it (paid troubleshooting).
+Hi Enrique.
 
-But I think they are less applicable to getting free help from mailing 
-lists, based on several years of experience here and elsewhere; I've 
-already given my reasons.
+>> First, just a detail -- does it really say "Eth0" eather than
+>> "eth0"? If so, then RH is introducing unnecessary confusion into the
+>> process (since interface names are normally all lower case). If not,
+>> then you are not quoting exactly.
 
-I do take actual exception to one thing you wrote. See below.
+> sorry, it says eth0
 
-At 08:21 AM 8/5/02 +0100, Riley Williams wrote:
->[...]Specifically, I believe that your statement that the approach you
-> > recommend results in "usually guaranteeing to provide all of the
-> > information needed to debug the problem" is incorrect, as is your
-> > conclusion that "the problem is almost always equally diagnosable
-> > with substituted IP addresses".
+>> Second, what *immediately* precedes the failure message? Are you
+>> *sure* the system is still in the New Hardware phase?
+
+> actually, what immediately precedes the message is "bringing up
+> loopback interface [OK]"
+
+>> Third, I had previously thought that this message was coming from a
+>> RH install. Now it sounds like part of the boot/init process of an
+>> installed RH 7.3. Could you clarify?
+
+> It is in the first boot/init after installation.
+
+>> Fourth, what happens next? If we are talking about an installed RH,
+>> does it complete initialization, then give you the login: prompt (or
+>> the X equivalent, depending on your setup)? If it does, may we see
+>> at this point the output of:
+>>
+>>          ifconfig -a
+>>          netstat -nr
+>>          lsmod
+>>          lspci
+
+> This is the output I get for:
 >
->I have corrected your first quote to be the one that I believe I
->gave (you missed the word "usually" from it), and I stand by the
->resulting claims as a result of long experience.
+>	ifconfig -a
+>	netstat -nr
+>	lsmod
 
-Here is the full paragraph I quoted from, as it appears in the copy of the 
-message I received from the list:
+The output was badly mangled. Can I suggest you do...
 
-"To avoid security problems whilst guaranteeing to provide all of the
-information needed to debug the problem, simply replace each specific IP
-address with a specific IP address from one of the "reserved ranges".
-There can be no security problems with those IP addresses since they are
-not routable outside of your own network."
+	ifconfig -a > /tmp/ifconfig.log
+	netstat -nr > /tmp/netstat.log
 
-You will note that you "corrected" my quoting of you by inserting a word 
-(and by doing so, a qualification) that was NOT present in your original 
-statement. I don't intentionally misquote people, nor did I do so 
-inadvertantly in this case.
+...and then just attach /tmp/ifconfig.log and /tmp/netstat.log to your
+email for reference if full output is needed.
 
-You did qualify the *second* statement I quoted with "almost always", words 
-that you will note I did include when quoting you.
+However, by reading through the mangled logs, I was able to work out
+that the interface is being brought up correctly, but the DHCP request
+is failing to locate a DHCP server on the network.
 
+>> Last, how do you *want* this system to get its IP address?
+>>
+>> Do you plan to assign a static address by hand? If so, you
+>> (probably) specify this by editing the file /etc/network/interfaces.
+>>
+>> Use a DHCP server?
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> Yes, I plan to use DHCP
+
+>> If so, then where on the LAN are you running one?
+
+> The Linksys
+
+At the moment, the DHCP server in the LinkSys is disabled and you will
+need to go in and enable it to solve this problem. Basically, your Linux
+setup is almost certainly fine.
+
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
