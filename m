@@ -1,20 +1,16 @@
 From: dave <dave@dpomeroy.com>
-Subject: mandrake
-Date: Sun, 02 Mar 2003 09:22:12 -0800
+Subject: Mandrake
+Date: Sun, 02 Mar 2003 09:28:49 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E623DC4.6050109@dpomeroy.com>
+Message-ID: <3E623F51.2050301@dpomeroy.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: Linus Newbie <linux-newbie@vger.kernel.org>
 
-I'm running mandrake.  My boot cd broke.  I have a SCSI CDread-writer 
-that I'm using.  It is labeled cdrom2.  I tried to use this in the 
-install software under software management.  For some reason it doesn't 
-work.  I tried to add the drive and that didn't work either.  Any 
-suggestions?  Thanks in advance.
+Never mind about my problems.  I figures it out.  Thanks again for you time.
 Dave Pomeroy K7DNP South Eastern Washington
 
 -
