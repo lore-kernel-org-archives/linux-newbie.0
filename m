@@ -1,35 +1,62 @@
-From: "ramands" <ramands@indiatimes.com>
-Subject: oops in kmalloc
-Date: Wed, 23 Apr 2003 09:11:39 +0530
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Redhat 9 Can't Compile a Kernel??
+Date: Wed, 23 Apr 2003 12:58:47 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304230308.IAA12636@WS0005.indiatimes.com>
-Reply-To: "ramands" <ramands@indiatimes.com>
+Message-ID: <03042312584700.02747@unix.pa3gcu>
+References: <200304222243.19905.1stflight@ameritech.net>
+Reply-To: pa3gcu@zeelandnet.nl
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200304222243.19905.1stflight@ameritech.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
-Cc: whitnl73@juno.com, ray@comarre.com, sneakums@zork.net, marcus@infa.abo.fi, martin.zwickel@technotrend.de
+To: 1stFlight <1stflight@ameritech.net>
+Cc: linux-newbie@vger.kernel.org
 
-Hello, 
-i am getting OOPS in Kmalloc .
-
-void **data;
-qset = 1000;
-
-dptr->data = kmalloc(qset * sizeof(char *), GFP_KERNEL);
-
-what could the possible the cause of the error 
-
-Raman
+On Wednesday 23 April 2003 02:43, 1stFlight wrote:
+>  I get this error message when trying to compile kernel 2.4.20 patched to
+> .21-rc1. What's gone wrong here? Thanks
 
 
-Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
+I did not CC to linux-admin as i think they dont have much to do with this 
+sort of thing (AFAIK).
 
- Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
+I get the same results so i dug into the source, it seems there are more than 
+just this problem, its not you its a software problem, as far as i can see 
+that is.
 
-Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
+You could check out the linux-kernel mailing list archives and/or 
+google.com/linux for a answer of howto get around it.
+This often happens with pre releases.
+http://www.geocrawler.com/lists/3/Linux/35/0/ is a good place to start as 
+well.
+
+> (please get rid of the tabs here) Darryl
+>
+> [root@localhost linux-2.4.20]# make xconfig
+> rm -f include/asm
+> ( cd include ; ln -sf asm-i386 asm)
+> make -C scripts kconfig.tk
+> make[1]: Entering directory `/usr/src/linux-2.4.20/scripts'
+> gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkparse.o
+> tkparse.c
+> gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkcond.o
+> tkcond.c gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o
+> tkgen.o tkgen.c gcc -o tkparse tkparse.o tkcond.o tkgen.o
+> cat header.tk >> ./kconfig.tk
+> ./tkparse < ../arch/i386/config.in >> kconfig.tk
+> drivers/ide/Config.in: 46: can't handle dep_bool/dep_mbool/dep_tristate
+> condition
+> make[1]: *** [kconfig.tk] Error 1
+> make[1]: Leaving directory `/usr/src/linux-2.4.20/scripts'
+> make: *** [xconfig] Error 2
+>
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
