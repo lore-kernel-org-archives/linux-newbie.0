@@ -1,38 +1,54 @@
-From: Kilaru Sambaiah <sambaiah@thiru.vetri.com>
-Subject: Re: Security
-Date: Thu, 11 Jul 2002 12:31:08 +0530
+From: Peter <pfheiss@philonline.com>
+Subject: Re: symbolic links
+Date: Thu, 11 Jul 2002 15:55:53 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207110706.MAA12257@thiru.vetri.com>
-References: <3D2B0F37.E5857F34@gmx.net>
-Reply-To: usamki01@thiru.vetri.com
+Message-ID: <200207110755.g6B7trw02464@philonline.com>
+References: <20020709205526.GB1736@cam.ac.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D2B0F37.E5857F34@gmx.net>
+In-Reply-To: Message from sos22@cam.ac.uk 
+   of "Tue, 09 Jul 2002 21:55:26 +0100." <20020709205526.GB1736@cam.ac.uk> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Oliver Ob <ob_ok@gmx.net>, Lx Newbie List <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: sos22@cam.ac.uk
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 09 July 2002 09:58 pm, Oliver Ob wrote:
-> Hi Linuxers...
->
-> I would like to learn more about "Linux and security".
->
-> What (useful links also appreciated) sources for reading
-> and mailinglists can you advise?
->
+Hi Steve,
 
-  First learn linux well. It takes 2 years to really learn linux.
-  (how it bootsup, inet, sendmail, dns, http server few of them)
-  To understand and implement any security on linux or
-   any other system you need to understand the system.
-   
-   Along with learning these issues you can read securing
-    and optimizing redhat linux  which is little outdate free copy
-   and you have to pay $$ for latest. Eventhough it is redhat
-    specific it has got good concepts you can grab.
-   all the best,
-Sam
+thanks for your elaborate explanation.
+
+sos22@cam.ac.uk said:
+> First: These errors are almost certainly not caused by problems with
+> binutils. They would be reported during the installation of binutils,
+> but they probably weren't caused by that.
+
+Correct, it is /sbin/ldconfig giving the errors which apparently is run after 
+the installation of binutils.
+
+sos22@cam.ac.uk said:
+> so it's probably safest just to ignore them unless they're leading to
+> problems elsewhere.
+
+That is what I am doing since there seem to be no problems.
+
+/usr/local/lib/libncurses.so.5 resides as well in /usr/lib as a symbolic link 
+to /usr/lib/libncurses.so.5.2.
+
+sos22@cam.ac.uk said:
+>  However, you only need to care about this if /usr or /usr/local are
+> on different partitions to /lib
+
+They are all on different partitions seeminly unhindered.
+
+I don't dare to play with libraries and leave their possitioning to RedHat 
+during installation or to some programs installed in /usr/local.
+
+Regards
+-- 
+Peter
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
