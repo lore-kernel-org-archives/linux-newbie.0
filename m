@@ -1,55 +1,48 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Emacs ????
-Date: Tue, 03 Dec 2002 10:56:29 -0800
+From: Thomas Jones <thomas.jones@i-null.com>
+Subject: Re: Project management
+Date: Tue, 3 Dec 2002 15:05:19 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021203104748.02231b70@celine>
-References: <012401c29afa$bb287ed0$64fea8c0@pkrausxp>
+Message-ID: <200212031505.25835.thomas.jones@i-null.com>
+References: <004901c29a0c$04d97380$64fea8c0@pkrausxp>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <012401c29afa$bb287ed0$64fea8c0@pkrausxp>
+In-Reply-To: <004901c29a0c$04d97380$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 01:35 PM 12/3/02 -0500, Paul Kraus wrote:
->I don't get it. Sometimes it will highlight text and color things and
->other times it does not. Some times it will indent the way it is
->supposed to (at least from how I understand it) if I enter either {}
->then it should line it up with the next one. All text After a curly
->brace that is indented then when I got to a new line and add the ; it is
->supposed to line back up with the line above it. Sometimes this works
->sometimes it does not. Using fundamental and perl-mode it doesn't
->matter. It appears almost completely random. This is using emacs from a
->terminal screen.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Not being an emacs user, I can't help here very much ... but is there 
-really NO pattern whatsoever to when emacs does and does not perform as you 
-expect? The kinds of things I would look for are
+On Monday 02 December 2002 08:06, Paul Kraus wrote:
+> Are there any good professional level project management tools for
+> Linux?
+>
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
 
-         it works one way with some uids, another with others (different 
-env settings or different user-specific config settings)
-         it works one way if you log in as root, another if you su to root 
-(the env settings are not being reset)
-         it works one way from some terminals, another from others (might 
-be a different env setting for TERM=)
-         it works one way for some file extensions, another for others
-         it works one way if a shebang (#!) line is present, another if it 
-is not
+If you are looking for a project management interface for all affected 
+parties........i suggest "phprojekt". It is a PHP web interface to project 
+management.
 
-These are the kinds of things that I see affecting other console apps, so 
-they might be relevant to emacs behavior as well.
+It does not provide the graphically superior printing and/or graphing 
+capabilities of mrproject; but it excels in project team usability.
 
-Paul ... I doubt there is any way to diagnose a problem with your setup if 
-you cannot associate it with *something*. I doubt emacs grabs a value from 
-/dev/urandom to decide how to initialize.
+- -- 
+Thomas Jones
+i-Null.com Network Administrator
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+iD8DBQE97RyR9w7alPkpvvsRArwdAJ46N1wB15LjnGLYYOFZ0aA8w+/dxACfYnBb
+O31tbque5hlCC5ByRsScb7c=
+=EiQQ
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
