@@ -1,48 +1,33 @@
-From: "Little, Chris" <Chris.Little@okdhs.org>
-Subject: RE: Debian install issue
-Date: Wed, 9 Oct 2002 13:18:50 -0500
+From: ichi@ihug.co.nz
+Subject: Re: Debian install issue
+Date: Thu, 10 Oct 2002 07:56:35 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <92091C60D5E2B74CB77C1FDB84F5FA76E963@s99mail02.okdhs.org>
+Message-ID: <3DA532B3.29A7FF20@ihug.co.nz>
+References: <Pine.LNX.4.44.0210091223130.6549-100000@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: 'Paul Kraus' <pkraus@pelsupply.com>, 'James Miller' <jamtat@mailandnews.com>, linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-stuff_to_redirect 2> file.out
+> On 9 Oct 2002, Ray Olszewski wrote:
+>
+> > As to Slackware (and btw, what does "survpc-friendly" mean?) 
 
-> -----Original Message-----
-> From: Paul Kraus [mailto:pkraus@pelsupply.com]
-> Sent: Wednesday, October 09, 2002 1:01 PM
-> To: 'James Miller'; linux-newbie@vger.kernel.org
-> Subject: RE: Debian install issue
-> 
-> 
-> I know you can redirect the standard output with > and then the file
-> name you want. But how do you also redirect the STRERR?
-> 
-> 
-> > Two -- pick one distro, install it, configure X, and if it 
-> fails, save
-> 
-> > the
-> > error output (by redirecting both STDIN and STRERR to a file). Use
-> this, 
-> > combined with XF86Config, to post a requrst for help that 
-> includes the
-> kind 
-> > of detail we need to do real troubleshooting.
-> > 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+survpc  =  survivor PC  =  sub-Pentium PC
+
+Slackware is survpc-friendly because even the latest version (8.1) 
+runs on a 386, provides a low-mem kernel for systems with less 
+than 8mb RAM and supports old non-IDE CDroms.  And (incredibly) 
+it even supports pre-IDE (two cable) harddrives and MicroChannel 
+systems.  I know of no other up-to-date, mainsteam distro that 
+provides that much upfront support for old hardware.
+
+Cheers,
+Steven
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
