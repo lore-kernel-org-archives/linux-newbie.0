@@ -1,41 +1,38 @@
-From: Peter Garrett <peterg@fishinternet.com.au>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Where are the minimized windows
-Date: Thu, 22 Jul 2004 17:30:05 +1000
+Date: Sun, 25 Jul 2004 12:10:28 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1090481404.1649.10.camel@DebiAnarchist>
-References: <20040722021957.A2E3337737@heisspf>
+Message-ID: <20040725041028.086F33772D@heisspf>
+References: <1090481404.1649.10.camel@DebiAnarchist>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040722021957.A2E3337737@heisspf>
+In-Reply-To: Your message of "Thu, 22 Jul 2004 17:30:05 +1000."
+             <1090481404.1649.10.camel@DebiAnarchist> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: Peter Garrett <peterg@fishinternet.com.au>
+Cc: linux-newbie list <linux-newbie@vger.kernel.org>
 
-On Thu, 2004-07-22 at 12:19, Peter H. wrote:
-> Hi,
-> 
-> I am using slackware 9.1 and have Dropline Gnome 2.6 installed even so I am 
-> using fvwm2 as my desktop.
-> 
-> If I do use gnome-session and then minimize an open window I can't retrieve it 
-> anymore no matter what combination of ctrl, alt, mouse clicks and Fx keys I 
-> use. They have just vanished. They are not indicated on the taskbar as well.
-> 
-> Top tells me they are still open.
-> 
-> Any suggestions how to get those minimized windows back?
 
-I had this problem in Gnome 2.4 and discoverd I had no "window list"
-applet on my taskbar/panel. 
+peterg@fishinternet.com.au said:
+> I had this problem in Gnome 2.4 and discoverd I had no "window list" applet
+> on my taskbar/panel. 
 
-Try right click on panel, Add to Panel --> Utility --> Window List.
+> Try right click on panel, Add to Panel --> Utility --> Window List.
 
-This creates the "area" where your minimised windows should appear
-(don't know if it's the same in 2.6) 
+> This creates the "area" where your minimised windows should appear (don't
+> know if it's the same in 2.6) 
 > 
-> Thanks & regards
+
+Thanks, it's the same in 2.6. There was no need in RedHat for a window list. 
+At the right end of the panel is an icon and left clicking it shows the 
+minimized windows. That makes more sense than guessing to have an unwanted 
+window list applet.
+
+
 -- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
