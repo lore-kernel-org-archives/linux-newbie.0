@@ -1,58 +1,63 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: TFT display on Debian GNU/Linux
-Date: Tue, 2 Sep 2003 10:54:33 +0200
+Date: Tue, 02 Sep 2003 07:39:07 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309021054.33372.pa3gcu@zeelandnet.nl>
+Message-ID: <5.1.0.14.1.20030902072443.01fb8f98@celine>
 References: <200309020853.h828r6j4017481@ev6.be.wanadoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <200309020853.h828r6j4017481@ev6.be.wanadoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Thursday 01 January 1970 01:00, Heimo Claasen wrote:
-> Geoff -
+At , Heimo Claasen wrote:
+>Geoff -
 >
 > > Is there a simple reason why the "commercial distros" are able to do
 > > this ?  Maybe they are using non-GPL  software that we would not wish to
 > > see in Debian.
+>
+>Me newbie cannot see the difference - it seems not a problem of proprietary
+>drivers (many of the video cards' are that in any case, as the chips
+>are firmware) - as much I can see is that both Debian and Mandrake, for
+>instance, use the same "nv" driver for the Nvidia TNT2 chip (one of the
+>bones of contention). Then why couldn't we arrive at having the full high
+>resolution scale working with the monitor(s) ? There, the spec.s and
+>interfaces are broadly open, so that's no so much of an issue. </sigh>
 
-One would be well advised here to check for differanies in the XF86Config 
-file,  it may well be XF86Config-4 on your system, there will be differancies 
-otherwise it "should" work in the same manor on both systems. 
 
-Check for things like;
+Since the original question in this thread involved a TFT flat-panel 
+display with an unnamed video card, I didn't focus before on your technical 
+comment (or, as you call it, your "bone of contention"), Heimo. As regards 
+it, you haven't described the problem in enough detail to get help with it.
 
-HorizSync rate
-VertRefresh rate
-ModeLine definions
+ From what you did write, I inferred that your problem (as distinct from 
+the original poster's) was with the setup script in the Debian X package 
+(probably xfree86-xserver), not with the underlying X server itself. And as 
+I said in response, it's well known that Debian installers are primitive 
+compared to the ones with many of the commercial distros (I think the 
+original poster was comparing Debian to Red Hat). Its something that Debian 
+users learn to live with, though not to brag about.
 
-Resolution sizes under "Section Screen".
+As regards the particular chipset you had trouble with, it is worth noting 
+that there are two choices for nVidia cards in X -- the "nv" driver that is 
+part of standard XFree86, and the "nvidia" driver that is available from 
+nVidia and is not free software. Debian does not ship the latter driver -- 
+despite its technical superiority with many nVidia cards (I don't know 
+specifically about yours; I use it here with several GeForce-based cards 
+that offer TV out), its failure to meet the DFSG means Debian does not 
+include it (but I'm told that some other distros do ship with it, and that 
+nVidia has licensed it in a way that permits some redistribution).
 
-Considering someone said "nv" driver, check that modiules such as;
-
-dbe
-clx
-and font modules are correct.
-
-If it works to your likeing on one system then it "should" work the same on 
-another system "providing" one configure's it properly.
-
-Another thing is i have not followed this thread fully so forgive me if 
-someone else has pointed this out.
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+But really, without a description of the problem that includes some 
+technical details, neither I nor anyone else can really give you good 
+advice about it. Was I wrong, for example, in thinking that the problem was 
+in the setup script (that is, that it creates an XF86Config-4 file with 
+errors)? What version of XFree86 (and of Debian, for that matter) was 
+involved in your attempts? How long ago did you try (like all distros, 
+Debian has transient problems, ones that get fixed, especially in Unstable)?
 
 
 
