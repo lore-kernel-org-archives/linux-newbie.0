@@ -1,58 +1,42 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: ISO Image
-Date: Tue, 09 Jul 2002 11:17:03 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Security
+Date: Tue, 9 Jul 2002 18:25:47 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020709111338.0247e5f0@celine>
-References: <3D2B16AC.C7ADA30@gmx.net>
+Message-ID: <02070918254701.02244@unix.pa3gcu>
+References: <3D2B0F37.E5857F34@gmx.net> <20020709174850.8853811D305@juggernaut.guardiandigital.com> <200207091405.48153.wfoo@linuxvoodoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D2B16AC.C7ADA30@gmx.net>
+In-Reply-To: <200207091405.48153.wfoo@linuxvoodoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Oliver Ob <ob_ok@gmx.net>, Lx Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: wfoo@linuxvoodoo.com
+Cc: linux-newbie@vger.kernel.org
 
-An iso9660 filesystem is intrinsically read only, as I recall. To do what 
-you want, you need to --
+On Tuesday 09 July 2002 18:05, Wladimir Foo wrote:
+> Take a look at our site as well... we have a few howto's on security
 
-         1. cp the contents of the filesystem to a directory on an ordinary 
-(e.g., ext2) filesystem.
+Ah!, i can duduce what you mean, you meant, take a look at 
 
-         2. Make the changes there.
+www.linuxvoodoo.com
 
-         3. Use a tool (such as mkisofs; I don't know if there are others) 
-to turn the updated directory into an iso9660 image file.
+I wonder how many are thinking right now, what site does he mean.
 
-         4. Put the new iso9660 image on a CD (for example, with cdrecord).
+It may be a good idea to announce the "full" URL so folks can simply click on 
+it and "see" what you mean without them having to think.
 
-At 07:00 PM 7/9/02 +0200, Oliver Ob wrote:
->This is what I would like to do: Updating a backup then burn new.
+
+> (iptables tutorials, logging etc etc). Might come in helpful.
 >
->I copied the old cd using
->dd=if... of=/image.iso
->
->Now I mounted that iso
->mount -o loop -t iso9660 image.iso /mnt/image
->
->It is there, no problems till here.
->
->Now it is mounted rw (according to mount)
->I want to copy one file INTO it.
->
->But I get "READ ONLY FS"
->
->So what do I do wrong here? It IS mounted rw
->
->Please help, I need to get that done for tomorrow.
+> On Tuesday 09 July 2002 01:48 pm, Jennifer Olson wrote:
+> > Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
 
 
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
