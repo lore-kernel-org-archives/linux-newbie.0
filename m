@@ -1,48 +1,42 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: line printer line transport
-Date: Fri, 26 Sep 2003 16:09:54 -0700
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: line printer line transport (fwd)
+Date: 27 Sep 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030926160804.033c3c10@celine>
-References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
-Mime-Version: 1.0
+Message-ID: <200309262326.h8QNQ6P26948@guri.is.kpn.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309262050.h8QKo6O25459@oola.is.kpn.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Heimo -- You sent this message to the list yesterday, and I replied to it 
-there (only on the list, that is, not also to you personally). This time, 
-I'm replying to both places, though more briefly -- look at a small 
-Unix/Linux program called "todos" to handle this requirement.
+James just made me attent to some strange condition - obviously my
+first posting of the question arrived at the list; but I never saw it
+there - and so it went with my repeated posting ! Thus please pardon
+the repetition, I have to look at what's happening here. In fact, I
+didn't receive _any_ post from this list yesterday and to-day. <???>
 
-At , Heimo Claasen wrote:
->I want to use some simple line printer for text and debug print-out.
->
->Problem is that that *nix (text) output gives solely LineFeed (LF)
->at a line break, not the needed additional Carriage Return (CR).
->
->No deal to fiddle with the dip switches of the printer(s) each time when
->some text has to be printed from a Linux on that units, as there are
->other OSs which duely give the CR+LF sequence by themselves (and besides,
->those [HP] printers can only add LFs to output-given CRs, not vice versa).
->So the solution must be soft.
->
->No question neither to reformat the files to print just for that
->purpose, they should be left intgeger; and this wouldn't be working with
->debugging output anyway.
->
->Thus something like 'cat filename >/dev/lp0' should go through a
->simple filter which inserts a CR in front of any LF.
->Like, 'cat <{filter-prog <filename} >/dev/lp0
->
->Is there something the like ?
->Could it perhaps done with a small bash script ?
+James forwarded (part of) an answer from Ray:
+> From: Ray Olszewski <ray@comarre.com>
+> ...
+> There's a standard Unix/Linux program for this. On my (Debian) systems,
+> it's called "todos". I've also seen it, or variants of it, called unix2dos
+> and some other things I forget right now. Because you can use it in a pipe,
+> as well as to output a modified file, it should serve your needs quite
+> well. (There is a corresponding "fromdos" that goes the other way.)
 
+Indeed I had an idea about this - being a tool to copy *nix-LF-only-
+formatted files to DOS filesystems, e.g. to a DOS-formatted floppy
+(there are various editions of it, including my own for use in DOS, <bg>.)
 
+But using that would leave the (otherwise completely useless) copy
+cluttering the disk (not to speak of that it would mean a rather
+wasteful intermediary disk writing/reading procedure.)
 
+Couldn't there be a more elegant way ?
 
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-09-26
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
