@@ -1,42 +1,44 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: (OT) Re: Compiling sg.o only (2.4.20)
-Date: Thu, 18 Sep 2003 17:31:43 -0700
+From: beolach@juno.com
+Subject: Public & private IP addresses via IP Aliasing?
+Date: Fri, 19 Sep 2003 01:22:25 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030918172743.01f7cfe8@celine>
-References: <20030918.171104.16221.402161@webmail11.lax.untd.com>
+Message-ID: <20030918.182332.16221.402979@webmail11.lax.untd.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030918.171104.16221.402161@webmail11.lax.untd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 12:10 AM 9/19/2003 +0000, beolach@juno.com wrote:
 
->What does EXTRAVERSION do?
->
->-- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
-> > edit the Makefile change line 4 from;
-> > EXTRAVERSION =
-> > to
-> > EXTRAVERSION = -1
-> > save file;
+On my home network, I am currently using IP-masquerading (aka NAT)
+on my linux gateway to provide internet access for the local net.
+This has been working fine in general, but I have some problems
+with internet multiplayer in certain games that I believe are due
+to the IP-masqing.  My ISP provides public addresses via DHCP, but
+I prefer having static addresses on the local net.  I was wondering
+if I could use both public & private addresses via IP Aliasing.
 
-It adds another "layer" of naming to the kernel. For example, if the kernel 
-is 2.4.21, and you edit the Makefile to read
-         EXTRAVERSION=-mykernel
+Would this work?
 
-then the compiled kernel will think its name is 2.4.21-mykernel . The 
-kernel's "true" name, that is, not the name of the file that holds the kernel.
-
-This affects some minor things, like what the kernel reports in response to 
-"uname -a", and some bigger things, like the name of the directory in which 
-it looks for modules. This last one probably matters to you ... I don't 
-actually recall why Richard made this suggestion.
+         Internet
+             |
+             |
+Gateway |- eth0 public dynamic address
+        |- eth1:0 bridged with eth0
+        |- eth1:1 private static address
+              |
+Local Net |- eth0:0 public dynamic address
+          |- eth0:1 private static address
 
 
+Thanks in advance,
+Conway S. Smith
 
+________________________________________________________________
+The best thing to hit the internet in years - Juno SpeedBand!
+Surf the web up to FIVE TIMES FASTER!
+Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
