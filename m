@@ -1,28 +1,27 @@
 From: Amin <raihan@citech-bd.com>
-Subject: /dev/cdrom is not a valid block device?
-Date: Thu, 3 Apr 2003 18:35:00 +0600
+Subject: Re: New module: kernel recompile?
+Date: Thu, 3 Apr 2003 17:19:29 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030403123500.GA749@localhost.localdomain>
+Message-ID: <20030403111929.GA922@localhost.localdomain>
+References: <20030403094704.B9A2744331@basicbox3.server-home.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20030403094704.B9A2744331@basicbox3.server-home.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
+Hi Robin:
 
-Shortly after recompiling my kernel (ignoring numerous
-warnings and errors therein), I tried to mount my CD drive
-in the normal way:
+Thanks very much indeed for your advice.  In the end, I did recompile
+the whole kernel, and it took me about 40 minutes.  I'm actually quite
+pleased with myself; this may be the first time I've been able to get
+``fealnx'' to work in a single day (I've gone through this process
+thrice before).
 
-mount /mnt/cdrom
-
-But I'm getting a ``mount: /dev/cdrom is not a valid block
-device''.  Does anyone have any idea why this is appearing?
-
-Thanks,
+With thanks,
 Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
