@@ -1,32 +1,43 @@
-From: Adam Luchjenbroers <adam@luchjenbroers.com>
-Subject: Re: 1024x768 SVGA Shell - won't work
-Date: Thu, 6 Jun 2002 21:08:29 +0930
+From: pericles@v35.com
+Subject: date alias
+Date: Fri, 7 Jun 2002 03:25:42 +0000 (UTC)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020606113605Z316933-22020+111@vger.kernel.org>
-References: <20020604080752Z316530-22651+74203@vger.kernel.org> <20020605155136.GA1429@cam.ac.uk>
-Reply-To: adam@luchjenbroers.com
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200206070311.g573BL429283@ns2.easy-pages.com>
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Got it compiled, worked it out before you pair replied (kinda good timing,
-I fix the problem THEN you give me some help)
+Steven, others,
 
-Although now trying to use VESAFB modes reboots my machine, one minute it
-is loading up, the next thing I see is BIOS.
+I've added the following to /root/.profile
 
-Any known causes for this (I'm having a great time here aren't I)
+alias date='date +'%cEST''
 
-But at least now I'm one step closer.
+and output is Thu Jun 06 13:33:14 2002EST
 
-> The dependency map used by the kernel itself is in arch/i386/config.in.
-> It isn't terribly easy to read, but it might be somewhat helpful.
+I have all the reference materials I need,
+but don't know where to begin looking. I'd
+like to include a space between the year
+and time zone (2002 EST).  Am I looking at
+a kind of variable?  What is the %c called
+in the above alias?  Am I looking for something
+similar to %c?
 
-I'll take a look at it and see if I can't make an easier to read map using 
-kivio or gimp or something.
+Thanks, and best regards,
+
+John E. Jay Maass, k7jkz
+suburban Philadelphia
+pericles@v35.com
+http://jaywire.members.tripod.com
+using Steven Darnold's BasicLinux Ver. 1.61
+
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
