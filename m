@@ -1,30 +1,56 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: TFT display on Debian GNU/Linux
-Date: 06 Sep 2003
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: USB-Wireless Mouse Issues with compiled kernel
+Date: Sat, 6 Sep 2003 22:06:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309061134.h86BYOO8026092@gallantin.skynet.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <200309062206.12942.pa3gcu@zeelandnet.nl>
+References: <200309051716.26918.weston_p@yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200309051716.26918.weston_p@yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: weston_p@yahoo.com, linux-newbie@vger.kernel.org
 
-It was indeed the Debian setup script that posed the problem, Ray.
-I think we tried just every combination of including/excluding any of
-the specific modules; doctored the X-configuration files etc. That was
-now some month ago (March/April); in the meantime I've thrown away most
-of the notes on all this. (Guarded the ones on the dubious video RAM
-entry: it's quite possible that the problem is there, as resolutions
-from a certain threshold on nay need sufficient video memory to allow for
-the corresponding mode-lines in the config.)
+On Friday 05 September 2003 19:16, Weston M. Price wrote:
+>      Any help or pointers on this issue would be appreciated. If more
+> information is needed please let me know. I didn't want to attach a whole
+> bunch of files (kernel configurations, log files etc) and clog the list.
 
-BTW, both Debian-3.0/Woody and Mandrake-8.2 used the generic "nv" driver.
-Thus the difference wasn't there either.  We just couldn't find out where
-the glitch was with Debian.
+What you need to do is compare your kernel configuration files and see what 
+differancies there are for USB, quite possably INPUT devices you would need 
+to look for, things to check..
+CONFIG_USB_MOUSE
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-09-05
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+Remember most distro's have USB stuff compiled as modules, you may need to 
+make sure you module is getting loaded.
+
+The motto is;
+If it works in Redhats distro kernel then it WILL work in your own compiled 
+kernel "providing" you configure accordingly.
+
+On another note, most all USB mouse from logitec will work in a PS/2 port, 
+simply obtain a plug with usb in PS/2 out, plug into your PS/2 mouse port and 
+away you go, BUT then again you would need a kernel with PS/2 support.
+Under Mice in the configuration file /usr/src/linux/.config you would need;
+CONFIG_MOUSE=m
+CONFIG_PSMOUSE=y
+
+Not much help i know, but considering noone else replyed i thought i would 
+mention it.
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
