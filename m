@@ -1,27 +1,36 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Using a URL to access a variable background image
-Date: Fri, 30 May 2003 06:54:20 -0400
+From: "Girish Kale" <girish.kale@nevisnetworks.com>
+Subject: Basic questions on the kernel
+Date: Fri, 30 May 2003 18:30:29 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305301054.h4UAsKHP015949@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <36993D449C7FA647BF43568E0793AB3E061CD9@nevis_pune_xchg.pune.nevisnetworks.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux@hartford-hwp.com
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Sorry for this petty question. 
+Hi,
 
-There's a web page that displays a jpeg image that changes every
-minute and would make an interesting background image for my monitor
-(obviously, I have a continuous connection).
+I have a few basic questions on the kernel performance:
 
-What I have is a url to a webpage that displays the .jpg and defines
-its size. How would I display this url image on a black background on
-my monitor?
+1) For embedded systems, even though standard linux may not have hard
+real-time performance unless real-time patch, low latency patch are
+applied, I would like to know if linux can give "deterministic"
+performance. Meaning can we be guaranteed that a particular process will
+be scheduled after a particular time. What are the these times or where
+do I find this data.  
 
-Haines Brown   
+2) When we are using linux on an embedded system, will there a memory
+management unit for this, since there will not be any swapping in/out of
+pages? Can we avoid a process from keeping on allocating memory thereby
+starving other applications? 
+
+Any pointers to the above topics will be appreciated.
+
+Thanks,
+Girish
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
