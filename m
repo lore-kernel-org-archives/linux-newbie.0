@@ -1,37 +1,32 @@
-From: "Affan Qureshi" <quereshi@etilize.com>
-Subject: Problem Mounting a Windows partition
-Date: Tue, 8 Jul 2003 15:11:08 +0500
+From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
+Subject: Re: Problem Mounting a Windows partition
+Date: 08 Jul 2003 07:01:08 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <bee5au$qdl$1@main.gmane.org>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <1057662068.2074.5.camel@goldfinger.orbdesigns.com>
+References: <bee5au$qdl$1@main.gmane.org>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <bee5au$qdl$1@main.gmane.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi All,
-I have RH9 and WinXP on a single hard drive dual-booting peacefully with
-GRUB. The problem is when I mount a WinXP FAT32 partition in linux using the
-following command:
-mount -t vfat /dev/hda6 /home/shared
+On Tue, 2003-07-08 at 06:11, Affan Qureshi wrote:
+> mount -t vfat /dev/hda6 /home/shared
+ . . .
+> Can anyone tell me what the problem is?
 
-I am unable to change the permission on that partition's filesystem even
-with the root user. By default i get root:root and the user:group. But I am
-unable to access it through other user. I have tried chmod and chgrp but
-nothing works and I get the error saying unable to perform operation or you
-do not have enough priveledges to perform the operation.
+You might try with the uid= and gid= options to mount. Type man mount,
+then look for the section on "Mount options for fat".
 
-I have also created an entry in the /etc/fstab file with defaults for
-options and vfat for the filesystem.
+best wishes,
 
-Can anyone tell me what the problem is?
+.brian
 
-Thanks in advance,
-
-Affan
-
-
+-- 
+Brian P. Bilbrey <bilbrey@orbdesigns.com>
+Orb Designs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
