@@ -1,60 +1,97 @@
-From: james niland <bareego@yahoo.com>
-Subject: RE: changing refresh rate.
-Date: Sun, 3 Oct 2004 18:31:10 -0700 (PDT)
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: Re: Accessing memory with /dev/port
+Date: Mon, 4 Oct 2004 06:29:26 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041004013110.46355.qmail@web11409.mail.yahoo.com>
+Message-ID: <20041004052926.79727.qmail@web52903.mail.yahoo.com>
+References: <35fb2e5904100219381fe06db9@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <35fb2e5904100219381fe06db9@mail.gmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: jonathan@jonmasters.org
 
-hi all,
-Manish wrote :
+hi
+ 
+-- Jon Masters <jonmasters@gmail.com> wrote: 
+> On Sun, 3 Oct 2004 01:17:22 +0900, aq
+> <aquynh@gmail.com> wrote:
+> 
+> > I heard that it is possible to modify the kernel
+> memory via some
+> > special devices like /dev/mem, /dev/kmem,
+> /dev/port and /dev/kcore.
+> > There are some papers about that techniques
+> concerning /dev/mem and
+> > /dev/kmem, but I cannot find any information
+> explaining how to do that
+> > (access and modify the memory of kernel) with
+> /dev/port and
+> > /dev/kcore.
+> > 
+> > Anybody knows about these methods, please tell me?
+> 
+> The best thing to do is to consult the documentation
+> for mmap and then
 
- How can i change the refresh Rate. I am using Fedora Core 2.
-The monitor settings(gdm) does not have refresh rate option. I
-want to
-make it exactly 100 HZ(My system supports this value in
-Windows). I
-have Geforce 2 MX 100/200 card and have installed propritary
-driver
-from nVidia.
+can u tell some place where i can go look for this
+mmap. i had seen some places but the concepts are
+theoretical. how to do things are nto told much
 
-I looked in the xorg.conf file. There is not any entry about
-refrash 
-rate.
+> experiment with mapping these devices and making
+> changes to the mapped
+> memory (make sure you perform any accesses to device
+> memory using
+> volatile keywords in your pointer declarations).
+> However I'd be really
+> very concerned if you want to actually modify kernel
+> memory this way.
 
-Thanks in advance.
-Manish
-*********************************************************
+well i would like to see if the kernel memory can be
+increased or in some way i can understand these
+concepts(do u know any document or link)
+> 
+> The best way to send information to or from the
+> kernel is to use a
+> file in /proc and use conventional read/write file
+> operations upon it.
+> The is the way we do things in UNIX.
 
-I have been in the same situation, and the settings pointed out
-in the other reply are the ones I've changed as well.
-However, the drive from nvidia will actually try to get the 
-maximum capabilites of your monitor and not overclock it.
+i want to know what is this file used for /proc/kcore
 
-This only works though with monitors that pass that information
-back to the video card when requested. All modern monitors
-should do this.
+> 
+> Having said that, there can be times when mapping
+> the raw memory is
+> useful - if for example you want to display the
+> contents of various
+> bits of kernel data structures. I'm mulling the idea
+> of writing a GUI
+> tool to visualise bits of kernel data graphically -
+> I'm not bothered
+> by keeping it all in sync and up to date, just a
+> view. I bet it's been
+> done.
+> 
 
-I found that out trying to run 120Hz on a high resolution on my
-monitor, which would work on the "nv" driver, but not the
-"nvidia" one. In the end it pays to be cautious, try to approach
-the refresh rate from the lower end.
+well my system is having all this
+128 Mb Ram and redhat linux 9.0 kernel 2.4
 
-Cheers
-James
+now i see even on system with 512 Mb RAM the most of
+the ram is occupied by GUI or xserver around 90% of
+memory
 
+there is no way to reduce this load? i want to tune it
+for better performance and i also want GUI
 
+thanks
 
+Ankit
 
-		
-_______________________________
-Do you Yahoo!?
-Declare Yourself - Register online to vote today!
-http://vote.yahoo.com
+________________________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
