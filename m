@@ -1,84 +1,181 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: framebuffer console problems
-Date: Fri, 22 Oct 2004 16:02:20 -0500 (CDT)
+From: Ole Martin Handeland <oli@oasenlan.com>
+Subject: Re: Cant get internet access on my router (sent again)
+Date: Sat, 23 Oct 2004 00:34:34 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410221533361.1287@debian-emach>
-References: <Pine.LNX.4.58.0410221108580.1287@debian-emach>
- <Pine.LNX.4.58.0410221108580.1287@debian-emach> <5.1.0.14.1.20041022123824.020548d8@celine>
+Message-ID: <clc1tr$ks4$1@sea.gmane.org>
+References: <cl90vg$v7t$1@sea.gmane.org> <5.1.0.14.1.20041021123557.01fc7e40@celine>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20041022123824.020548d8@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20041021123557.01fc7e40@celine>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hello Ray:
+well... i figured it out myself.... did a accept all from ppp0....
 
-On Fri, 22 Oct 2004, Ray Olszewski wrote:
+pretty embarrased...:P
 
-> The vesa framebuffer is pretty generic; almost any *modern* video card
-> should be able to drop back to its standards. But I do have older cards,
-> like the ancient S3 I use in one of my test systems, that does not support
-> the vesa framebuffer. If you have an older ATI card, you might have the
-> same problem. I can't find a list of cards that work with vesa, at least
-> not one that is less than 4 years old, so I can't check about your card for
+thanx anyway!
 
-Mine should be older than 4 years.  This was originally a P2 350 system
-that I've been upgrading.  So the (again, onboard) integrated ati rage pro
-in this was probably manufactured right around the 4 year limit.
-Originally had 4MB video RAM which I upgraded to 8-12.
+Ray Olszewski wrote:
+> At 08:59 PM 10/21/2004 +0200, Ole Martin Handeland wrote:
+> 
+>> sending this again, since im still having problems...
+> 
+> 
+> I'm sorry, but to get real help, you need to answer ALL of the 
+> questions, not just some of them.
+> 
+> The list below of INPUT chain rules has entries ONLY for an eth1 
+> interface, which you have not previously mentioned (but which I will 
+> guess is your LAN interface). For that reason, it wil DROP all packets 
+> intended for a ppp0 interface. (Notice that its final rule, a DROP rule, 
+> has matched a lot of packets.)
+> 
+> Since you have no entries in the OUTPUT chain and (you previously said) 
+> its default policy is DROP, no traffic will go out on ANY interface.
+> 
+> And if you have no entries in the FORWARD chain and its policy too is 
+> DROP ... well, you get the idea.
+> 
+> OK, this time around we need to know --
+> 
+>         1. How do you update your firewall ruleset when the PPPoE (ppp0) 
+> interface is set up (or when it gets a new address)? The PPPoE daemon 
+> probably calls a script for this, but you need to tell us the details, 
+> so we can figure out why it (apparently) isn't working.
+> 
+>         2. Am I correct in assuming that you are NATing the LAN? If so, 
+> the nat table (probably its POSTROUTING chain) is doing the SNAT or MASQ 
+> needed. What does
+>         iptables -nvL -t nat
+> report about this? (This is probably OK, if your prior report that 
+> setting the default-table policies to ACCEPT makes "everything" work.)
+> 
+>         3. More generally, what script is setting these rules up in the 
+> firat place? Are you using some routing capability that comes as part of 
+> FC2? Or are you using a drop-in firewall/router package of some sort 
+> (like Shorewall -- though it is plain from the ruleset that you are not 
+> using Shorewall, so I mention it only as an example)? Or did you craft 
+> something yourself?
+> 
+>         4. What actual failures are you encountering? "im still having 
+> problems" is on the vague end of descriptions.
+> 
+>         5. How do you *want* this router to operate? Just using default 
+> ACCEPT policies isn't really very good firewalling ... but in practice, 
+> it isn't usually all that vulnerable, since most breakins target 
+> Windows, not Linux, and the NATing makes the Windows machines invisible 
+> to connections that initiate from outside.
+> 
+> 
+> 
+> 
+>>  well... here comes my "iptables -nvL":
+>>
+>> Chain INPUT (policy DROP 980 packets, 127K bytes)
+>>  pkts bytes target     prot opt in     out     source destination
+>>  2061  408K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:10000
+>> 15955 1602K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:22
+>>   853  111K ACCEPT     tcp  --  *      *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:80
+>>   991  150K ACCEPT     udp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           udp dpts:137:138
+>>  271K   37M ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:139
+>>     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:445
+>>     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:8080
+>>     0     0 ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpt:443
+>>     0     0 ACCEPT     udp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           udp dpt:443
+>> 67131 3090K ACCEPT     tcp  --  eth1   *       0.0.0.0/0 
+>> 0.0.0.0/0           tcp dpts:5900:5902
+>>     0     0 ACCEPT     all  --  *      *       0.0.0.0/0            
+>> 0.0.0.0
+>>  2416  167K LOG_DROP   all  --  *      *       0.0.0.0/0 0.0.0.0/0
+>>
+>> and for my forward and output chains, there is no rules...
+>>
+>> thank you so much for your answers!
+>>
+>> Ray Olszewski wrote:
+>>
+>> > At 12:29 PM 10/17/2004 +0200, Ole Martin Handeland wrote:
+>> >
+>> >> Hi,
+>> >>
+>> >> I cant seem to get internet access on my gateway machine, using fc2 
+>> and
+>> >> iptables firewall. I have a eth0 connection (and a ppp0 connection 
+>> using
+>> >> eth0 to connect to my adsl provider) and a eth1 connection which i use
+>> >> to connect to my local network (with a dhcp server on this gateway).
+>> >>
+>> >> i have gotten this gateway to connect to the net, and the network from
+>> >> eth1 gets internet access. my problem is that my gateway dont get net
+>> >> access itself. when i set default action to allow in my iptable,
+>> >> everything works.
+>> >> anyone knows which rule(s) i should apply to get internet access 
+>> working
+>> >> on this gateway?
+>> >
+>> >
+>> >
+>> > The core problem you face is that different chains, not just 
+>> different rules, are involved.
+>> >
+>> > When other hosts on your LAN use this gateway to connect to the 
+>> Internet, the packets are processed by the FORWARD chain in the 
+>> default table (and by the  PREROUTING and POSTROUTING chains in the 
+>> nat table).
+>> >
+>> > When the host itself tries to connect to the Internet, the packets 
+>> are processed by the INPUT and OUTPUT chains in the default table.
+>> >
+>> > So ... if "everything works" when you set the default action to 
+>> ACCEPT (there is no action "allow", so I assume you mean ACCEPT), then 
+>> it probably means you do not have specific ACCEPT rules in suitable 
+>> places in the INPUT and OUTPUT chains. That's not odd for a router ... 
+>> mine is set up that way, allowing direct access for only a few things 
+>> the router absolutely needs, like DNS resolution. But it is 
+>> inconvenient for a general-purpose host that is also acting as a router.
+>> >
+>> > The exact rules you need to add, and where you need to add them, 
+>> depends on what you do have in the INPUT and OUTPUT chains (which you 
+>> can check best with "iptables -nvL"). If you want finer control than a 
+>> genrealized ACCEPT policy, the actual rules need to be tailored to 
+>> what you want to allow, what to disallow, and you haven't told us your 
+>> situation in that regard.
+>> >
+>> > Describe more what you want to accomplish, and tell us the rules you 
+>> currently have in the INPUT and OUTPUT chains, and I -- or someone 
+>> here -- may be able to give you more specific advice that fits your 
+>> needs. As it is, anything anybody suggests will be guesswork.
+>> >
+>> > Oh, one final thing. Since you are using PPPoE for your Internet 
+>> connection, iptables does need to know to update its ruleset after 
+>> PPPoE negotiation is complete. It also needs to know that ppp0, not 
+>> eth0, is your external interface. It probably does all of this, since 
+>> NATing the LAN works, but it is always *possible* that you have a 
+>> problem there. Once again, only examination of the rulesets in the 
+>> relevant tables/chains will tell.
+> 
+> 
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
-> If you have kernel source installed, look there in
-> ./Documentation/fb/vesafb.txt for some technical discussion of how vesa works.
-
-No source here, but I might try and take a look at that document somehow
-anyway.  Thanks.
-
-> You said, in your other message, that the display works with Debian-Sid.
-> What exactly do you mean? That is, what kernel and version are we talking
-> about here? Since one installs Sid (usually) by first installing Woody,
-> then doing a dist-upgrade, it is possible that you are actually running
-> some Woody kernel ... conceivably even the old 2.2.something that
-> theinstaller uses ... unless you've explicitly switched to a Sid kernel.
-
-2.6.5 kernel.  I upgraded a few times, but have been with the 2.6.5 kernel
-for a couple months now.
-
-> Your problem description, though, makes me think that your monitor won't
-> sync at 1024x768, and that xdm "fixes" the problem simply because it
-> switches to a supported 1280x1024 mode. (That *sort* of problem is not
-> rare; I've had several monitors that supported 640x480 and 1024x768 in X,
-> but made a mess of 800x600.)
-
-1024x768 is listed in the manual as one possible resolution, though they
-recommend 1280x1024.  I actually had a bit of trouble getting a 1280x1024
-display on this a little while back (insufficient video memory) and could
-only get it to do 1024x768.  So I know it will do 1024x768 under X, though
-the crispness of the display leaves things to be desired--to say the
-least.
-
-> You might want to try 1280x1024 in vesa to see if it works
-> there.  Depending on color depth, the values for that are:
->
->           8 bit          0x307   =       775
->          16 bit          0x31A   =       794
->          24 bit          0x31B   =       795
-
-Ok.  I figured if it would do 800x600 framebuffer but not 1024x768, it
-would be pointless to try anything yet finer.  But what do I know?  The
-imps that inhabit these things often have totally unexpected tricks up
-their sleeves, I've learned :)
-
-> Finally, I'm at a loss as to why fbset is not working for you. But I don't
-> have the only system with fbset installed here running at the moment. If
-> none of the rest of this helps, post again and I'll try to look at that
-> part of it.
-
-I'm at a loss, too.  Meantime, I'll do some more fiddling and spare
-you the bulk of the gory details, hopefully.
-
-Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
