@@ -1,154 +1,27 @@
-From: whitnl73@juno.com
-Subject: Re: RAM and swap partition
-Date: Sun, 8 Dec 2002 16:39:08 -0500 (EST)
+From: "Joseph D. Wagner" <wagnerjd@prodigy.net>
+Subject: RE: How does malloc tell the kernel to allocate more memory? -- CORRECTION
+Date: Sun, 8 Dec 2002 18:34:37 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021208.171438.135095688.1.whitnl73@juno.com>
-References: <3DF442A2.733E0A33@ihug.co.nz>
+Message-ID: <000801c29f1a$c2a9a8e0$e02c3a41@joe>
+References: <15859.47028.420364.128585@cerise.nosuchdomain.co.uk>
 Mime-Version: 1.0
-Content-Type: MULTIPART/MIXED; 
-	BOUNDARY="-1463810562-854367833-1039383548=:28441"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DF442A2.733E0A33@ihug.co.nz>
+In-Reply-To: <15859.47028.420364.128585@cerise.nosuchdomain.co.uk>
 List-Id: <linux-newbie.vger.kernel.org>
-To: ichi@ihug.co.nz
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: 'Glynn Clements' <glynn.clements@virgin.net>
+Cc: 'Linux C Programming' <linux-c-programming@vger.kernel.org>, 'Linux Newbie' <linux-newbie@vger.kernel.org>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-  Send mail to mime@docserver.cac.washington.edu for more info.
+>> I'm looking at glib-2.3.1 to try and find my answers.  After
+>> all, that's where malloc is defined, right?
 
----1463810562-854367833-1039383548=:28441
-Content-Type: TEXT/PLAIN; charset=US-ASCII
+> It's in glibc (GNU libc), not glib (the GNOME utility library).
 
-On Mon, 9 Dec 2002 ichi@ihug.co.nz wrote:
+Sorry, I meant to say glibc.  I double checked.  I am using glibc-2.3.1.
 
-> The latest Slackware (8.1) still provides a low-mem kernel.
-> However the standard installation scheme is too big to run
-> in 8mb RAM.  The instructions say 16mb RAM is required,
-> although 12mb is probably enough with the low-mem kernel.
-> For machines with less RAM than this, the instructions
-> recommend ZipSlack (which runs on a DOS filesystem).
->
-> There is, however, another option for computers with
-> 8mb RAM or less:
-> -------------------------------------------
-> http://www.volny.cz/basiclinux/slack81.html
-> -------------------------------------------
-> This uses a special low-RAM installation script that
-> installs Slackware 8.1 to an ext2 partition.
->
-> Cheers,
-> Steven
->
-I don't have a script for it, but the attached micro-howto is based
-on my experience putting slackware 7 onto an old 386 with 4mb, a little
-100mb harddrive, a floppy, a serial port, and nothing else.  I used it
-as an xterm when my monitor died.  X over a serial line is _slow_.
+Joseph Wagner
 
-Lawson
---
----oops---
-
----1463810562-854367833-1039383548=:28441
-Content-Type: TEXT/PLAIN; charset=US-ASCII; name=lowmem
-Content-Transfer-Encoding: BASE64
-Content-ID: <Pine.LNX.4.21.0212081639080.28441@giftie.alien.org>
-Content-Description: 
-Content-Disposition: attachment; filename=lowmem
-
-bG93bWVtLWluc3RhbGwgbWljcm8taG93dG8gdmVyc2lvbiAwLjAuMSA8bGF3
-c29uX3doaXRuZXlAanVuby5jb20+DQoxOSBGZWJydWFyeSAyMDAwICAgIFVz
-ZSwgZGlzdHJpYnV0ZSBvciBjaGFuZ2UgYXQgeW91ciBvd24gcmlzay4NCg0K
-LyogVG8gc3RhcnQgd2l0aCwgdGhpcyBpcyBiYXNlZCBvbiBzbGFja3dhcmUs
-IGJlY2F1c2UgdGhhdCBpcyB3aGF0IEkgYW0NCm1vc3QgZmFtaWxpYXIgd2l0
-aCwgYW5kIGl0IGlzIGVhc2llc3QgZm9yIG1lIHRvIHdvcmsgd2l0aCBhbmQg
-Y2hlY2sgdG8NCm1ha2Ugc3VyZSBJIGhhdmUgbXkgZmFjdHMgcmlnaHQuICBP
-dGhlciBkaXN0cm8ncyBkaWZmZXIgaW4gZGV0YWlsLCBidXQNCnRoZSBwcmlu
-Y2lwbGVzIGFyZSB0aGUgc2FtZS4gKi8NCg0KVGhlcmUgaXMgbm90aGluZyBt
-YWdpYyBvciBzZWNyZXQgYWJvdXQgaW5zdGFsbGluZyBhIGxpbnV4IHN5c3Rl
-bS4gIEVhY2gNCmRpc3RybyBoYXMgaXRzIG93biB3YXksIGJ1dCB0aGV5IGFs
-bCBhbW91bnQgdG8gdGhlIHNhbWUgdGhpbmc6ICB0bw0KaW5zdGFsbCBhIGxp
-bnV4IHN5c3RlbSwgYm9vdCB1cCBhIHRpbnksIHNlbGYtY29udGluZWQgbGlu
-dXggc3lzdGVtLA0KcHJlcGFyZSB0aGUgdGFyZ2V0IG1lZGl1bSAocGFydGl0
-aW9uLCBtYWtlIGZpbGVzeXN0ZW1zLC4uKSwgbW91bnQgaXQsDQphbmQgKGRp
-cmVjdGVkIGJ5IGEgc2hlbGwgc2NyaXB0KSB1c2Ugc3RhbmRhcmQgbGludXgg
-dG9vbHMgdG8gY29udmVydA0KYW5kIG1vdmUgZmlsZXMgZnJvbSB0aGUgc291
-cmNlIHRvIHRoZSB0YXJnZXQuDQoNCkJ1dCBoYW5nIG9uISAgTGludXggd2ls
-bCBpbnN0YWxsIG9udG8gYWxsIGtpbmRzIG9mIHN5c3RlbXMgd2hpY2ggbWF5
-IG9yDQptYXkgbm90IGhhdmUgYWxsIGtpbmRzIG9mIGRpZmZlcmVudCBzdG9y
-YWdlIG1lZGlhLiAgV2hhdCBkbyB0aGV5IGhhdmUNCmluIGNvbW1vbiwgd2hl
-cmUgdGhlIGluc3RhbGwgZmlsZXN5c3RlbSBjYW4gYmUgcm9vdGVkPyAgUkFN
-ISAgQW5kDQppbmRlZWQsIGFsbCBtb2Rlcm4gZGlzdHJvIGluc3RhbGxzIGxv
-YWQgdGhlIGluc3RhbGwgZnMgdG8gYSByYW1kaXNrLA0KbW91bnQgaXQgb24g
-LywgYW5kIHRha2Ugb2ZmIHJ1bm5pbmcuICBJZiB5b3UgaGF2ZSBhIHJlYXNv
-bmFibHkgbW9kZXJuDQpzeXN0ZW0gd2l0aCAxNm1iIG9yIG1vcmUsIG5vdGhp
-bmcgY291bGQgYmUgZWFzaWVyLiAgV2l0aCAxMm1iLCB5b3UgYXJlDQpwcm9i
-YWJseSBhbGxyaWdodC4gIFdpdGggOG1iIHlvdSBhcmUganVzdCBvbiB0aGUg
-ZWRnZSwgYW5kIHdpdGggNCB5b3UNCmFyZSBTT0wuICBUaGVyZSBqdXN0IGlz
-bid0IHJvb20gZm9yIDM4MjI1OTIgYnl0ZXMgb2YgY29sb3IuZ3ogKHRoYXQg
-aXMNCndoYXQgY29sb3IuZ3ogZnJvbSBzbGFja3dhcmUgNyBndW56aXBzIHRv
-KSBwbHVzIGEga2VybmVsLCBwbHVzIGJ1ZmZlcnMNCmluIDQxOTQzMDQgYnl0
-ZXMgKGxlc3Mgd2hhdGV2ZXIgdGhlIEJJT1MgaW5zaXN0cyBvbiB1c2luZyB0
-byBzaGFkb3cNCml0c2VsZiB3aXRoIFJBTSwgb2Z0ZW4gYXQgbGVhc3QgMTI4
-aywgcGVyaGFwcyBhcyBtdWNoIGFzIDQxMmspLg0KDQpObyB3b3JyeS4gIFdl
-IGp1c3QgbmVlZCB0byB1c2UgYSBkaWZmZXJlbnQgZGV2aWNlIGZvciAvIGZv
-ciB0aGUNCmluc3RhbGwuICBJbiB0aGUgZ29vZCBvbGQgZGF5cyBiZWZvcmUg
-c29mdHdhcmUgZ290IHNvIGZhbmN5LCBhbiBpbnN0YWxsDQpyb290IGZpbGVz
-eXN0ZW0gd291bGQgZml0IG9uIGEgZmxvcHB5LiAgSW5kZWVkLCBpbiBzbGFj
-a3dhcmUncw0Kcm9vdGRza3Mvb2Jzb2xldGUgZGlyZWN0b3J5IGFyZSBzb21l
-IHRoYXQgd2lsbC4gIFRoYXQgaXMgdGhlIHNpbXBsZXN0DQp3YXkgdG8gcnVu
-IGEgbG93IG1lbW9yeSBpbnN0YWxsOg0KanVzdCBnemlwIC1kYyA8eW91ciBw
-ZXQgb2Jzb2xldGUgcm9vdGRpc2s+Lmd6ID4vZGV2L2ZkMA0KKElmIHlvdSBk
-b24ndCBoYXZlIGEgbGludXggc3lzdGVtIHlldCwgaW4gdGhlIGluc3RhbGwg
-ZGlyZWN0b3J5IG9mIHRoZQ0KZGlzdHJvIGFyZSBnemlwLmV4ZSBhbmQgcmF3
-cml0ZS5leGUgdGhhdCBjYW4gY29tYmluZSB0byBkbyB0aGlzIHdpdGgNCndp
-bmRvc2UpDQoNCmFuZCBhdCB0aGUgbGlsbyBwcm9tcHQsDQoNCm1vdW50IHJv
-b3Q9L2Rldi9mZDANCg0KSWYgeW91IGhhdmUgc29tZSBvdGhlciBtZWRpdW0g
-dG8gaW5zdGFsbCBmcm9tLCBhIGNkIG9yIGEgTklDIG9yIGEgemlwDQpkcml2
-ZSwgeW91J3JlIGF3YXkuICBVc2luZyBhbiBvYnNvbGV0ZSBpbnN0YWxsIHBy
-b2dyYW0gZG9lc24ndCByZW5kZXINCnRoZSBwcm9ncmFtcyBpbnN0YWxsZWQg
-b2Jzb2xldGUuICA6LSkuICBUaGUgaW5zdGFsbCBpdHNlbGYgbWF5IG5vdCBi
-ZQ0KYXMgc2xpY2sgb3IgcHJldHR5LCBidXQgaWYgeW91IGNhcmVkIGFib3V0
-IHNsaWNrIG9yIHByZXR0eSB5b3Ugd291bGRuJ3QNCmJlIGluc3RhbGxpbmcg
-b24gdG8gYSBtYWNoaW5lIHdpdGggYWxtb3N0IG5vIFJBTSBub3csIHdvdWxk
-IHlvdT8NCg0KSWYgeW91IHdlcmUgcGxhbm5pbmcgdG8gaW5zdGFsbCBmcm9t
-IHRoZSBmbG9wcHksIGRvbid0IGdpdmUgdXAgaG9wZS4gDQpBbmQgaWYgeW91
-IHdhbnRlZCB0aGUgbmV3ZXIsIHNsaWNrZXIgY29sb3IuZ3osIHJlYWQgb24u
-DQoNCkdvIGFoZWFkIGFuZCBtb3VudCB0aGUgb2Jzb2xldGUgcm9vdCBmbG9w
-cHkuICBXZSBuZWVkIGl0IGZvciBhIGZldw0KbWludXRlcy4gIFdlIG5lZWQg
-YW5vdGhlciByb290IGRldmljZSBmb3IgdGhlIGluc3RhbGwuICBJZiB5b3Ug
-c3RpbGwNCmhhdmUgYSBbd2luXWRvc2UgcGFydGl0aW9uLCB5b3UgY2FuIHVz
-ZSBmaXBzIHRvIHNocmluayBvZmYgNG1iIHRvIG1ha2UNCmEgbmV3IHBhcnRp
-dGlvbi4gIE9yIHlvdSBjYW4gdXNlIGZkaXNrIHRvIHNwbGl0IG9mZiA0bWIg
-ZnJvbSB0aGUNCnBhcnRpdGlvbiB5b3Ugd2lsbCBpbnN0YWxsIHRvLCBhbmQg
-bWtmcyAtdCBleHQyIChvciBta2UyZnMpIHRvIHJlbWFrZQ0KdGhlIGZpbGVz
-eXN0ZW0geW91IHdyZWNrZWQgYnkgY2hhbmdpbmcgdGhlIHBhcnRpdGlvbiBz
-aXplLiAgR2V0IGEgYmxvY2sNCmRldmljZSB3aXRoIGFib3V0IDRtYiBmcm9t
-IHNvbWV3aGVyZS4gIEkgZG9uJ3QgY2FyZSB3aGVyZS4gIElmIHlvdSdyZQ0K
-cmVhbGx5IHN0cmFwcGVkIGZvciBzcGFjZSwgMTQ0MGsgd2lsbCBkbywgYnV0
-IHdlIHdpbGwgaGF2ZSB0byB1c2Ugb25lDQpvZiB0aGUgb2Jzb2xldGUgaW5z
-dGFsbCByb290cyBhZ2Fpbi4NCg0KTm93IGp1c3QgaW5zdGFsbCB5b3VyIGlu
-c3RhbGwgIHJvb3QgZmlsZXN5c3RlbSBvbnRvIHRoZSBuZXcgZGV2aWNlLiAg
-SWYNCnlvdSBjYW4gZ2V0IGF0IHRoZSBkaXN0cm8sIHNheSBvbiBhIHppcCBv
-ciBjZCBkcml2ZSwgeW91IGNhbiBqdXN0DQoNCmd6aXAgLWRjIGNvbG9yLmd6
-ID4vZGV2LzxpbnN0YWxsIHJvb3Q+DQpzeW5jDQoNCklmIHlvdSBjYW4ndCwg
-eW91IGNhbiBqdXN0IHVzZSB0aGUgcm9vdCBmbG9wcHkgd2UgaGF2ZSBiZWVu
-IHdvcmtpbmcNCmZyb206DQoNCmNwIC9kZXYvZmQwIC9kZXYvPGluc3RhbGwg
-cm9vdD4NCnN5bmMNCg0KaWYgeW91IGRvbid0IGxpa2UgY3AsIHVzZToNCntk
-ZHxjYXR9IDwvZGV2L2ZkMCA+L2Rldi88aW5zdGFsbCByb290Pg0Kc3luYw0K
-DQpOb3cgcmVib290OiAgc2h1dGRvd24gLXIgbm93DQpzd2l0Y2ggYmFjayB0
-byB0aGUgYm9vdCBmbG9wcHkuICBBdCB0aGUgTElMTyBib290OiBwcm9tcHQs
-DQoNCm1vdW50IHJvb3Q9L2Rldi88aW5zdGFsbCByb290Pg0KDQpOb3cgeW91
-IGhhdmUgYSBmbG9wcHkgZHJpdmUgZnJlZSB0byBpbnN0YWxsIGZyb20sIGFu
-ZCBlbm91Z2ggbWVtb3J5IGZvcg0KdGhlIGluc3RhbGwgcHJvZ3JhbXMgdG8g
-cnVuIGZyb20uDQoNCkhhdmUgZnVuISANCg==
----1463810562-854367833-1039383548=:28441--
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
