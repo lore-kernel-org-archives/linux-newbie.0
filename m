@@ -1,44 +1,37 @@
-From: Michael Scottaline <nbhs2@i-2000.com>
-Subject: Re: Good books for a linux newbie
-Date: Sun, 2 Mar 2003 07:44:20 -0500
+From: "Amin" <raihan@citech-bd.com>
+Subject: RE: pdf file creation using Linux apps
+Date: Sun, 02 Mar 2003 20:36:19 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030302074420.58072a31.nbhs2@i-2000.com>
-References: <200303021741.45141.Adam@Luchjenbroers.com>
+Message-ID: <3E626B43.7859.1EEA26@localhost>
+References: <Pine.LNX.4.21.0303011750230.28792-100000@ppg_penguin>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303021741.45141.Adam@Luchjenbroers.com>
+In-reply-to: <Pine.LNX.4.53.0303011903080.11087@homenet>
+Content-description: Mail message body
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Sun, 2 Mar 2003 17:41:44 +0930
-Adam Luchjenbroers <Adam@Luchjenbroers.com> insightfully noted:
+On 1 Mar 2003 at 19:17, James Miller wrote:
 
->
->	I have a friend who has started using Linux, and has found its stability and
->	
->reliability quite impressive. His one complaint is that the OS is unfamiliar 
->to him.
->
->	I told him I'd post here asking about books that may be of assistance to
->	him. 
->He is running Mandrake 9, and just wants to use it for word-processing, 
->email, music, etc (average desktop user). Games aren't a big issue, but it 
->would be good to help him with them too.
->
->	So, what books do you recommend?
-==============================================
-Running Linux by Welsh, Dalheimer, & Kaufman.  It's an O'Reilly publication
-and I believe it is now in its 4th edition.
+[snip]
 
-Mike
+> easily upgrade the KOffice I have. Does anyone know of other apps that
+> create/convert to pdf that are largely compatible with Adobe Acrobat Reader?
 
--- 
-'Deserves [death]? I daresay he does. Many that live deserve death. And some 
-that die deserve life. Can you give it to them? Then do not be too eager to 
-deal out death in judgement. For even the very wise cannot see all ends.'
-	--Tolkien, The Lord of the Rings
+If you're willing to invest some time in learning LaTeX, 
+you can use ``pdflatex'' to create PDF files that are 
+completely compatible/standard.  Here's a little insight: 
+Leslie Lamport, the creator of LaTeX, remarked that LaTeX 
+is for that 2% of computer users which thinks logically.
+
+> Is there another list where I should pose this sort of question?
+
+comp.text.tex has ongoing discussions on how to produce the 
+best-quality documents with TeX, or LaTeX.
+
+Regards, Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
