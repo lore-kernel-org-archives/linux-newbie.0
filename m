@@ -1,58 +1,66 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Corrupt .deb file.
-Date: Tue, 10 Sep 2002 08:31:01 -0700
+From: Jim Reimer <wa5rrh@arrl.net>
+Subject: problem installing rpm
+Date: Tue, 10 Sep 2002 12:37:36 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020910082303.0229d700@celine>
-References: <000f01c258a5$b0ec00a0$a830f7c2@gcb>
+Message-ID: <200209101737.g8AHbMEl000827@franklin.icok.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000f01c258a5$b0ec00a0$a830f7c2@gcb>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: geoff <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-"Possible"? Yes. *Likely*? No. Especially not such a core file as libc6, 
-the one library that nearly every application program uses.
+Can't get the fonttastic rpm included with Corel Photo-Paint to
+install:
 
-OTOH, the current version of this package is 2.2.5-14 (in Sid, which I use 
-here, and probably in Woody too). And you don't way how either your CD or 
-your DVD was made. Occasionally, the Debian online pachage system contains 
-a bad backage. I've never seen this persist for more than a day ... but if 
-you or someone else constructed an .iso at just the wrong time, you could 
-have a bad package or two. Especially if you did it *before* Woody became 
-Debian-stable (back when it was Debian-testing).
+[root@pyro2 i386]# rpm -iv fonttastic-glibc-2.1*
+Preparing packages for installation...
+package fonttastic-glibc-2.1-2000.06.22.14.00-1 is already installed
+file /etc/init.d from install of fonttastic-glibc-2.1-2000.06.22.14.00-1 
+conflicts with file from package chkconfig-1.2.24-1
+file /etc/init.d/fonttastic from install of 
+fonttastic-glibc-2.1-2000.06.22.14.00-1 conflicts with
+file from package fonttastic-glibc-2.1-2000.06.22.14.00-1
+file /etc/rc.d/init.d/fonttastic from install of 
+fonttastic-glibc-2.1-2000.06.22.14.00-1 conflicts
+with file from package fonttastic-glibc-2.1-2000.06.22.14.00-1
 
-Assuming you have the target system set up with a connection to the 
-Internet, you might do better to download the Debian install floppies and 
-do an online installation (the installer on the CDs may even support this 
-... I haven't used Debian CDs is a very long time so don't really know). 
-This would get you the current versions of all the packages, including all 
-security updates.
+(it says it's already installed, but it was not installed
+successfully - files are missing)
 
-At 09:39 AM 9/10/02 +0100, geoff wrote:
->I have two separate copies of the Debian GNU/Linux "Woody" 3.0 distro.
->One is on CDROMs, the other is on a DVD-ROM.
->
->They both fail to install when the installation reaches
->libc6_2.2.5-6_i386.deb
->which is stated to be corrupt.
->
->Is it possible that a corrupt file is being distributed,  or must I look
->closer to home ?
->
->My other distros (Mandrake,  Red Hat, SuSE 8.0  and FreeBSD4.4 Unix) all
->install OK
->including the SuSE DVD version.
->
->Anyone else had a similar experience ?
->I particularly want to  test drive Debian and the .deb installation system.
+Trying to force it doesn't work:
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+[root@pyro2 i386]# rpm -iv --force fonttastic-glibc-2.1*
+Preparing packages for installation...
+Stopping the font server (if any)
+fonttastic-glibc-2.1-2000.06.22.14.00-1
+Configuring for SysV-style init
+rmdir: `/etc/init.d': Not a directory
+Starting the font server
+/var/tmp/rpm-tmp.93989: /etc/rc.d/init.d/fonttastic: No such file or directory
+
+Package dump shows it trying to put files in /etc/init.d and
+/etc/rc.d/init.d (if I'm reading it correctly).  On this system,
+/etc/init.d is a link to /etc/rc.d/init.d if that makes any
+difference.
+
+[jdr@pyro2 i386]$ rpm -qp --dump fonttastic-glibc-2.1*
+/etc 1024 961700361  040755 root root 0 0 0 X
+/etc/init.d 1024 961700361  040755 root root 0 0 0 X
+/etc/init.d/fonttastic 592 961700361
+    ec5ab30ce453d2d99e3b44e083a271c0 0100555 root root 1 0 0 X
+/etc/rc.d/init.d/fonttastic 2309 961700361
+    fde59f08e770bf1c6ec73e0adaf7bd5b 0100555 root root 0 0 0 X
+
+(I wrapped the last two lines above, and the rest of the dump
+is not included here.)
+
+How do I go about getting this package to install?
+
+Thanks,
+-jdr-
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
