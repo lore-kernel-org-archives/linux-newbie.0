@@ -1,46 +1,37 @@
-From: joy <gracecott@sancharnet.in>
-Subject: frequent kernel freezes
-Date: Thu, 22 Jan 2004 09:41:25 +0530
+From: chuck <chuck@gelm.net>
+Subject: Re: 2 NIC cards not talking
+Date: Wed, 21 Jan 2004 23:16:34 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <400F4D6D.4070006@sancharnet.in>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <400F4EA2.24E814EB@gelm.net>
+References: <5F84A09ECDD5D411973000508BE32470266024F6@exnyc07.lehman.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: mailing list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: "Chadha, Devesh" <devesh.chadha@lehman.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hello,
+Dear Chadha:
 
-I recently got X working thanks to you guys <bow and worship>,
-but when I run X, everytime w/o fail I get a message -   Sound server 
-fatal error: cpu overload, aborting.
-I run on Alsa 1.0.1rc2 and have an athlon 2400+ with an nforce mobo and 
-a geforce vga card.
+In (4.) & (5.)...
 
-from the time I changed to the 2.6 kernel, My comp hangs every other 
-time I boot. Sometimes it hangs DURING BOOTING :-(
-I wanted to to know the state of the computer when it hangs so that I 
-could feed you guys that info (obviously ;-).
-I checked in /var/log/messages, but as soon as I startx, the log reads 
-unable to load  some charset ( which I assume is not fatal)
-and followed by garbage until  the next bootup message starts( I hope 
-Iam getting thru).I  run reiserfs ver 3.6 .is there any option to read 
-the reiser journal
-or a core dump or anything of  that sort to obtain the state of my 
-machine after it hangs? Also if I enable Sysrq in my kernel, will I be 
-able to get the kernel out of a hanging state?
-(the doc staes that it makes the "kernel sit up and listen" or somthing 
-of that sort....
+I know how to ping from a host with an 'eth0' or 'eth1' device.
+I do not know how to ping from 'eth0' or from 'eth1'.
 
-Thanks a lot in advance,
-Joy
+Sorry, I cannot help.
 
-> --------------------------------------------------------------------------------------------------------
-> A life without purpose is like a bird that never learnt to fly.......
-> I am the bird that regularly flies Lufthansa
+Chuck
 
+"Chadha, Devesh" wrote:
+<snip> 
+
+> 4.Pinging 192.168.1.1 from eth0 gave destnation host unreachable and pinging
+> xxx.xxx.xxx.xxx from eth1 gave the same.
+> 
+> 5. I can connect to internet using eth0 since I can browse the internet. I
+> can also ping the gateway from eth0
+<snip>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
