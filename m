@@ -1,37 +1,50 @@
-From: "Terry" <dasha21wombat@hotmail.com>
-Subject: This drug makes Vi-ag-ra look like the minor leagues!
-Date: Sat, 11 Sep 2004 11:55:20 GMT
+From: Donald Duckie <schipperke2000@yahoo.com>
+Subject: Invalid kernel header included in userspace; multi-line string literals are deprecated
+Date: Sun, 12 Sep 2004 23:52:43 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1094903720-30340__7162.4104319655$1094903569$gmane$org@excite.com>
+Message-ID: <20040913065243.40457.qmail@web53608.mail.yahoo.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain;; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org
+To: Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
+
+hi!
+
+can somebody please tell me what's going on with this.
+i have been changing my makefiles, in which i have
+been going in circles now.
 
 
-CIAL1S delivered discreetly to your door in an unmarked envelope
+gcc -Wall -D__KERNEL__ -DMODULE
+-I/usr/src/linux-sh-2.4.18//include -O -g
+-DSNULL_DEBUG  -I.. -M snull.c > .depend
+In file included from
+/usr/src/linux-sh-2.4.18/include/linux/config.h:4,
+                 from snull.c:25:
+/usr/include/linux/autoconf.h:1:2: #error Invalid
+kernel header included in userspace
+In file included from snull.c:51:
+/usr/src/linux-sh-2.4.18/include/asm/checksum.h:72:30:
+warning: multi-line string literals are deprecated
+/usr/src/linux-sh-2.4.18/include/asm/checksum.h:105:17:
+warning: multi-line string literals are deprecated
+/usr/src/linux-sh-2.4.18/include/asm/checksum.h:121:13:
+warning: multi-line string literals are deprecated
+/usr/src/linux-sh-2.4.18/include/asm/checksum.h:161:17:
+warning: multi-line string literals are deprecated
+make: *** [.depend] Error 1
 
-Lasts 8x times longer than V1AGRA, take one Friday, still working on Sunday!
 
-No one needs to know!
-
-Buy generic (exactly the same drug, but not with the big company prices..) to save 70%!!
-
-Check it out HERE!
-
-http://www.hfdabfdgsdf.info/c/?92
+thanks.
 
 
-
-
-
-
-
-julia planetflorida paula jeff naomi camping kitty 
-minou honda1jared obiwan strawber
-memory tracy metallic 
+		
+__________________________________
+Do you Yahoo!?
+Yahoo! Mail is new and improved - Check it out!
+http://promotions.yahoo.com/new_mail
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
