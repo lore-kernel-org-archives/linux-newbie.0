@@ -1,56 +1,65 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: Interpreting disk space and changing backup path
-Date: Wed, 22 Dec 2004 10:38:24 -0500
-Message-ID: <006001c4e83c$46486d50$1f0aa8c0@lanadmin>
-References: <20040223225259.GA11316@sevoog.kriation.com>
-Reply-To: <eatley@wowcorp.com>
+From: Martijn van Oosterhout <kleptog@svana.org>
+Subject: Re: zero copy issue while receiving the data (counter part of sendfil e)
+Date: Wed, 22 Dec 2004 16:50:05 +0100
+Message-ID: <20041222155003.GA29278@svana.org>
+References: <267988DEACEC5A4D86D5FCD780313FBB02C66FCA@exch-03.noida.hcltech.com> <1103649767.7217.100.camel@beastie> <41C879CB.3040600@pobox.com> <1103658190.7217.121.camel@beastie> <1103703718.3775.93.camel@samish.india.ascend.com>
+Reply-To: Martijn van Oosterhout <kleptog@svana.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040223225259.GA11316@sevoog.kriation.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
+Return-path: <linux-net-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1103703718.3775.93.camel@samish.india.ascend.com>
+Sender: linux-net-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Mandeep Sandhu <Mandeep_Sandhu@infosys.com>
+Cc: dima@s2io.com, Jeff Garzik <jgarzik@pobox.com>, linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
 
 
-I ran the df command on Redhat Linux 9, and came up with this...what exactly
-does it mean? Do I have space to backup part of this machine to another
-drive? Which is my main drive?
+--TB36FDmn/VVEgNH/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Filesystem           1K-blocks      Used Available Use% Mounted on
-/dev/hda2             37334192   5058672  30379048  15% /
-/dev/hda1               101089     29129     66741  31% /boot
-/dev/hdb1             57669728  38728096  16012184  71% /home
-none                    257160         0    257160   0% /dev/shm
+On Wed, Dec 22, 2004 at 01:51:58PM +0530, Mandeep Sandhu wrote:
+> On Wed, 2004-12-22 at 01:13, Dmitry Yusupov wrote:
+> > indeed :)
+> > another words if you have modern NIC than you get "zero-copy"(except
+> > copy_to_user()) for free :)
+> what does "checksum on rx" mean??? Don't most of the NIC's support
+> DMA-ing to mem on rx-ing a packet? so what does "zero-copy for free"
+> mean here?
 
-The backup script we have set up is as follows...I'd like to change the path
-to instead backup to where I may have space...not the backup machine which
-does NOT have enough space.
+It's if the network card will check the checksums of the packets on
+receiving. If it doesn't, the main CPU needs to read every byte in the
+packet to calculate the checksum itself. If the CPU is doing that
+anyway you can copy it elsewhere for free.=20
 
-#!/bin/sh
-#backup_main: simple backup routine to be used with samba and bash cp.
-#this one simply copies an entire directory recursively to an smb mount.
-#
-#written by RKL - 7/17/2003
-mount -t smbfs -o username=username,password=password,workgroup=somewkgrp
-//BACKUP/backup /mnt/backup &>/root/backup_scripts/logs/`date
-+"MOUNT-%y-%m-%d.log"`
-if [ -f /mnt/backup/connected ]; then
-	rm -rf /mnt/backup/`date +"%A/"`
-	mkdir /mnt/backup/`date +"%A/"`
-	cp -r /home/shared/* /mnt/backup/`date +"%A/"`
-1>/mnt/backup/logs/`date +"DAILY-%y-%m-%d.log"` 2>/mnt/backup/logs/`date
-+"DAILY-%y-%m-%d.err"`
-	umount /mnt/backup  &>/root/backup_scripts/logs/`date
-+"MOUNT-%y-%m-%d.log"`
-fi
+Generally, reading from memory takes time because the CPU has to wait,
+writing is free since it can be deferred in the cache (in theory
+indefinitly) until there's free cycle.
 
+In other words, if the card isn't checksumming but does DMA you're not
+really saving any time over a manual copy.
 
+Hope this helps,
+--=20
+Martijn van Oosterhout   <kleptog@svana.org>   http://svana.org/kleptog/
+> Patent. n. Genius is 5% inspiration and 95% perspiration. A patent is a
+> tool for doing 5% of the work and then sitting around waiting for someone
+> else to do the other 95% so you can sue them.
 
+--TB36FDmn/VVEgNH/
+Content-Type: application/pgp-signature
+Content-Disposition: inline
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQFByZeqY5Twig3Ge+YRAhqrAJ9xLO66LZpRLgD2D3wIzuUx0Jo1jgCgic+r
+NSxeItQ4wZKPxGjqv0VqGDo=
+=XEu8
+-----END PGP SIGNATURE-----
+
+--TB36FDmn/VVEgNH/--
