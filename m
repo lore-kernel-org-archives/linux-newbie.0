@@ -1,21 +1,42 @@
-From: Adam Saeed <adam.saeed@gmail.com>
-Subject: Re: booting error
-Date: Mon, 8 Nov 2004 23:20:43 +0500
-Message-ID: <6e9eecc804110810203adcfda7@mail.gmail.com>
-References: <6e9eecc804110618178f3a3dc@mail.gmail.com>
-	 <1099797571.2815.3.camel@localhost>
-Reply-To: Adam Saeed <adam.saeed@gmail.com>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: dma turned off
+Date: Thu, 11 Nov 2004 11:13:27 +0800
+Message-ID: <20041111031327.278F03F57C@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1099797571.2815.3.camel@localhost>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-its working , thanks antonio.. by the way...
-could you tell me why it s major type is 1 and minor type is 3?
+Hi,
+
+Slackware 10
+
+When I switch to kernel 2.6.7 I get the following error message on boot:
+
+ * Warning: The dma on your hard drive is turned off. *
+ * This may really slow down the fsck process. *
+
+Apparently with the command "hdparm -d /dev/hda" dma is turned on.
+
+Where in /etc/rc.d if that is the place do I put this command?
+
+However, giving the command from the console as root after booting I get:
+
+setting using_dma to 1 (on)
+ HDIO_SET_DMA failed: Operation not permitted
+ using_dma    =  0 (off)
+
+How to resolve?
+
+Thanks & regards
+-- 
+Peter
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
