@@ -1,8 +1,8 @@
 From: dave <dave@dpomeroy.com>
 Subject: bash scripting
-Date: Sat, 14 Aug 2004 19:00:19 -0800
+Date: Sat, 14 Aug 2004 19:12:27 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <411ED1C3.9030407@dpomeroy.com>
+Message-ID: <411ED49B.5080705@dpomeroy.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,21 +10,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I tried the same script with #!/bin/bash as the first line and get the 
-same error.  Then I cd to /bin and do a ls bash and this is what I get.
-
-[dave@dave bin]$ ls bash
-bash*
-[dave@dave bin]$ ./bash
-[dave@dave bin]$ /home/dave/scripts/new.sh
-: bad interpreter: No such file or directory
-[dave@dave bin]$
-
-Then I tried the samw script again and I get the same error.  I used 
-chmod and set the script file as 777.  Still no go.  I believe its not 
-finding bash but I sure can't tell why.  I ran a setup.sh script in 
-/usr/share/webmin today and it ran just fine.  I am confused   Any more 
-ideas?  Thanks again.
+Well I got it to run.  I browsed the web a bit and found this command 
+cat -v new.sh.  That showed lots of ^M at the end of each line.  Then I 
+used :set ff=unix to set the file format for unix.  It works now.  I 
+don't know how the ^M's got in the file.  I wrote it on my linux box.  
+Thanks everyone for the help.
 Dave
 
 -- 
