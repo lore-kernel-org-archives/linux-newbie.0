@@ -1,106 +1,78 @@
-From: Brian Jung Myeng Lee <bamboo@bamboonet.mine.nu>
-Subject: Re: new X = slow gnome
-Date: Thu, 11 Apr 2002 14:30:59 -0400 (EDT)
+From: DFW II <devon_wing@yahoo.com>
+Subject: Compaq Armada 100S
+Date: Fri, 12 Apr 2002 08:50:56 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0204111429120.1365-100000@bamboonet.mine.nu>
-References: <20020411191935.6741.qmail@web12206.mail.yahoo.com>
+Message-ID: <5.1.0.14.0.20020412084933.01f54100@pop.mail.yahoo.com>
+References: <5.1.0.14.0.20020410003520.0352ef78@shawmail.ed.shawcable.net>
+ <5.1.0.14.0.20020409234447.0352bf68@shawmail.ed.shawcable.net>
+ <5.1.0.14.0.20020410003520.0352ef78@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020411191935.6741.qmail@web12206.mail.yahoo.com>
+In-Reply-To: <02041018233304.00302@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: glen <inavaganza@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hello.
+I just inherited a Compaq Armada 100S laptop computer and am thinking about 
+installing Linux on the machine... Any recommendations for a distribution?
 
-You might as well try to get the latest kernel.
-Also, looks like you have xauth problems. When clients get rejected from
-X, it means that the client is not authorized in xauth configuration file.
-
-Hope this helps. :)
-
-On Thu, 11 Apr 2002, glen wrote:
-
-> Recently, I installed XFree86 4.2
+At 06:23 PM 4/10/02 +0000, Richard Adams wrote:
+>On Wednesday 10 April 2002 06:36, Chris Rose wrote:
 >
-> It seems to boot into a failsafe/default session
-> without a problem, but when I start Gnome or KDE it is
-> extremely slow.  I've tried reading the man pages to
-> no avail.
+> > >Why would one want to ue a fancy program to read a simple text file, the
+> > >program less allows the use of a search engine, hit the '/' key and a
+> > > slash will appier at the bottom left of the screen, type a word to look
+> > > for, then hit enter, to repeat hit the slash again and press enter or
+> > > simply hit the space bar, the found word is highlighted.
+> >
+> > i think you're missing the point - what i'm looking for is not, per se, the
+> > mechanism used to read the log, so much as i'm looking for the means to
+> > make sense of what i'm seeing, and also which log files/settings of the
+> > daemon will provide me with stats on uploads/downloads from my ftp site.
 >
-> here is what startx > /tmp/Xerrors 2>&1 gives me:
+>I dont think i am, i meant what i said, what i can tell you futher is that
+>proftp.log does not really reveal much infomation at all, its "xferlog" in
+>/var/log that tells all, 'man xferlog' will explain all there is to be known.
 >
+>Just in case you may read my mail as being prudent here is what profftp log
+>shows.
+>Aug 05 15:16:02 unix.pa3gcu proftpd[3839]
 >
-> XFree86 Version 4.2.0 / X Window System
-> (protocol Version 11, revision 0, vendor release
-> 6600)
-> Release Date: 18 January 2002
-> If the server is older than 6-12 months, or if your
-> card is
-> newer than the above date, look for a newer version
-> before
-> reporting problems.  (See http://www.XFree86.Org/)
-> Build Operating System: Linux 2.4.9-13smp i686 [ELF]
-> Module Loader present
-> Markers: (--) probed, (**) from config file, (==)
-> default setting,
->          (++) from command line, (!!) notice, (II)
-> informational,
->          (WW) warning, (EE) error, (NI) not
-> implemented, (??) unknown.
-> (==) Log file: "/var/log/XFree86.0.log", Time: Thu Apr
-> 11 13:44:08 2002
-> (==) Using config file: "/etc/X11/XF86Config-4"
-> SESSION_MANAGER=local/localhost.localdomain:/tmp/.ICE-unix/700
-> Xlib:  extension "XINERAMA" missing on display
-> ":0.0".
-> SetKbdSettings - type: 2 rate: 30 delay: 500 snumlk:
-> 0
-> SetKbdSettings - Succeeded
-> AUDIT: Thu Apr 11 13:45:17 2002: 696 X: client 5
-> rejected from local host
-> Xlib: connection to ":0.0" refused by server
-> Xlib: No protocol specified
+>Date and time i am sure we all now what that is, unix.pa3gcu = the server
+>name, proftpd[389] is the process number as would be shown by 'ps ax' when
+>the connection was presant. Further on the same line in the log one would see;
 >
-> xscreensaver: Can't open display: :0
-> xscreensaver: initial effective uid/gid was root/root
-> (0/0)
-> xscreensaver: running as nobody/nobody (99/99)
+>unix.pa3gcu.ampr.org (192.168.1.160[192.168.1.160]): USER pa3gcu: Login
+>successful
 >
-> xscreensaver: Errors at startup are usually
-> authorization problems.
->               Did you read the manual and the FAQ?
-> Specifically,
->               the parts of the manual that talk about
-> XAUTH, XDM,
->               and root logins?
+>unix.pa3gcu.ampr.org is the fullservername (192.168.1.160[192.168.1.160]): is
+>the IP# of the remote computer who just opened the ftp connect,
+>USER: pa3gcu = the user who logged in, that could be ftp or guest when
+>anoymous is used, Login succesful means a valid passwd was used.
+>Any discrepancy's would be logged as well as the last entry on the line.
+>No more info is given, you now would refer to xferlog to get details of what
+>was done in that connection.
+>See 'man xferlog' to get all the details on those entries.
 >
+>I trust i have not missed the point in your eyes this time...
 >
-> http://www.jwz.org/xscreensaver/man.html
+> >
+> >
+> > Chris Rose
+> > ==========
+> > 1952 - 2001 = 42
 >
-> rm: cannot remove `/root/.gnome//gmc-BukYmX': No such
-> file or directory
-> subshell.c: couldn't get terminal settings:
-> Inappropriate ioctl for device
+>--
+>Regards Richard
+>pa3gcu@zeelandnet.nl
+>http://people.zeelandnet.nl/pa3gcu/
 >
-> waiting for X server to shut down ..Gdk-ERROR **: X
-> connection to :0 broken (explicit kill or server
-> shutdown).
->
->
->
-> __________________________________________________
-> Do You Yahoo!?
-> Yahoo! Tax Center - online filing with TurboTax
-> http://taxes.yahoo.com/
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
