@@ -1,34 +1,47 @@
-From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: Howto insert newlines in a file
-Date: Tue, 1 Oct 2002 16:30:12 +0200 (CEST)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Script as root
+Date: Tue, 1 Oct 2002 14:38:15 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021001143012.78545.qmail@web40609.mail.yahoo.com>
+Message-ID: <0210011438150A.00233@unix.pa3gcu>
+References: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <003101c26952$2d7ebab0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-Hello everybody
-I want to insert a new line in a html file
-after a </a> statement.
+On Tuesday 01 October 2002 13:55, Paul Kraus wrote:
+> I have a backup script that mounts a drive on my xp workstations. Is
+> there a way I can set this script to run as root so that I do not have
+> to su every time I want to run it?
 
-Can i do this with sed or awk or another program ?
+You could automate the process via crond. As root;
+crontab -e
+add a line for your script an example;
+
+ 10 6 * * */home/pa3gcu/scripts/own-work/dynipcheck
+
+'man crontab' shows more examples.
 
 
-Thanks=20
-Bye
+>
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
 
-Calin
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-
-___________________________________________________________
-Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
-Yahoo! Mail : http://fr.mail.yahoo.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
