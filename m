@@ -1,27 +1,24 @@
-From: "Lee Chin" <leechin@mail.com>
-Subject: bigphysmem usage
-Date: Thu, 08 May 2003 13:12:29 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: HOWTO Restart LPD
+Date: Fri, 09 May 2003 09:30:46 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030508181229.85053.qmail@mail.com>
+Message-ID: <200305090130.h491UkO03509@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org, linux-net@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi
-Where can I find some sample code that uses zero copy in user land using the bigphysmem patch?
+Thanks Bryan,
 
-Basically, I want to open a socket and call the recv system call passing in a buffer that the kernel zeo copies into.... and then I read the data from there.  How can I do this?
+/sbin/service lpd or cups start/stop
 
-Thanks
-Lee
+does the trick.
+
+Regards
 -- 
-__________________________________________________________
-Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
