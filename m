@@ -1,43 +1,62 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: (X and other) basics (was: A few more things...)
-Date: Tue, 22 Oct 2002 11:34:16 +0300
+From: cr <cr@orcon.net.nz>
+Subject: More about Linux xbasic(s)
+Date: Tue, 22 Oct 2002 20:24:53 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021022113416.E24238@neutrino.particles.org>
-References: <200210212031.g9LKVM46014450@pyxis.wanadoo.be>; <20021022011206.D24238@neutrino.particles.org> <0a6a538010616a2HNLMAIL2@hawaii.rr.com>
+Message-ID: <20021022082132.8F42B71179@smtp.orcon.net.nz>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0a6a538010616a2HNLMAIL2@hawaii.rr.com>; from gnome@hawaii.rr.com on Mon, Oct 21, 2002 at 08:02:33PM -1000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: David Jones <gnome@hawaii.rr.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Mon, Oct 21, 2002 at 08:02:33PM -1000, David Jones wrote:
-> No, it has 100% to do with the way you code. You can 
+I've lost the original of the thread, but I asked on the Xbasic list and got 
+a reply from Steve Gunhouse, one of the maintainers, as follows:
 
-This is the criterion from the user/programmer perspective. It is
-well known that you can use almost everything in a bad manner...
+----------  Forwarded Message  ----------
 
-You can kill someone even using a pen, but it's kinda easier to do
-it with an M-16. :-)
 
-> write non-spaghetti code in BASIC. And personally, I 
-> find C's beloved pointers to be far more dangerous than 
-> BASIC's GOTO! ;-)
+On Mon, 21 Oct 2002 21:42:29 +1300 cr <cr@orcon.net.nz> writes:
+> I've been following a discussion on Linux basics on the Linux-newbie
+> list,
+> and Xbasic has come up, and a non-Xbasic user has said that they
+> have the
+> impression that  "even in Xbasic, the engine (the interpreter) can
+> be distinguished from the GUI".
+>
+> My impression is that this is incorrect, and that Xbasic can only
+> run under X
+> (or Windows) as applicable.    Before I make a comment on the Linux
+> list, can anyone here confirm that?
 
-Goto is a myth. C uses it, too. IMHO, it's quite useful. The goto becomes
-a problem when it is used a lot without a sane reason.
+Most likely, he isn't talking about our XBasic.
 
-As far as the pointers are concerned, pls don't mix "difficult to read
-code" with "spaghetti code". Pointers can give *elegant* solutions to many
-problems. That's the reason they are so popular.
+There's an interpreted BASIC which is compatible with the old Atari
+ST-based GFA-BASIC which goes under the name xbasic. I've mentioned us to
+the author and discussed our separate projects, in the end we decided
+that we'd both been using the name for some time and that there was no
+real conflict - his executable is actually xbasic while ours is xb, for
+example.
 
-Elias
+First clue, our XBasic isn't interpreted, there is no interpreter.
+Second, in fact his xbasic can even be used as a scripting language and
+yes, doesn't require X (though it does support X, which is why he named
+it xbasic).
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Our XBasic does require X, isn't interpreted, and can't be used for
+scripts (though actually that's redundant).
+
+(If you read a history of BASIC, it turns out there was a prior XBASIC
+which was a BASIC with built-in matrix operations, so neither of us can
+be said to have originated the name.)
+
+[End of quote]
+
+It looks as if *maybe* the 'other' xbasic might do what was asked for and be 
+capable of running non-GUI.
+
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
