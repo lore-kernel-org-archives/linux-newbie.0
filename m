@@ -1,8 +1,8 @@
-From: "Alan Womack" <lists@tcob1.net>
-Subject: Want to strip some formatting out of a text file
-Date: Monday, 12 Aug 2002 17:57:56 +000
+From: "Abhijit Vijay" <lists@tcob1.net>
+Subject: Query regarding linking...
+Date: Thursday, 15 Aug 2002 11:41:36 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020812_175756__b9961776@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_114136__ed7e8e9d@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,18 +13,21 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-I'm trying to download the text manuals for the linux pam modules to my palm 
-pilot, but there is the appearance of old style double strike for emphasis text 
-all over the docs.
+Hi All,
 
-e.g. a L(backspace)Li(backspace)in(backspace)n
+While on the topic of linking, could anyone tell me
+why a C source file compiles alright, but gives
+"Symbol not found" errors during linking? I mean, how
+is the error, "symbol _ABC not found" different from
+"function xyz not found"?
 
-What utility to remove this backspacing and doubling of characters so they 
-would be over-written?
+Regards,
+Abhijit.
 
-Alan
-
-I dl'd the text file from the kernel.org website documentation of pam
+__________________________________________________
+Do You Yahoo!?
+HotJobs - Search Thousands of New Jobs
+http://www.hotjobs.com
 -
 
 <-> Gateway Information.
