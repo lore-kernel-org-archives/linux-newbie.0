@@ -1,67 +1,73 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: (OT) Re: Compiling sg.o only (2.4.20)
-Date: Fri, 19 Sep 2003 08:01:14 +0200
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Compiling sg.o only (2.4.20)
+Date: Fri, 19 Sep 2003 09:46:19 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309190801.14287.pa3gcu@zeelandnet.nl>
-References: <5.1.0.14.1.20030918172743.01f7cfe8@celine>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030919134619.GC534@lnx2.w8mch.ampr.org>
+References: <20030915173911.GA1802@lnx2.w8mch.ampr.org> <200309152113.48288.pa3gcu@zeelandnet.nl> <20030917190122.GA463@lnx2.w8mch.ampr.org> <200309180947.02439.pa3gcu@zeelandnet.nl>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030918172743.01f7cfe8@celine>
 Content-Disposition: inline
+In-Reply-To: <200309180947.02439.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: pa3gcu <pa3gcu@zeelandnet.nl>
+Cc: linux-newbie@vger.kernel.org
 
-On Friday 19 September 2003 02:31, Ray Olszewski wrote:
-> At 12:10 AM 9/19/2003 +0000, beolach@juno.com wrote:
-> >What does EXTRAVERSION do?
-> >
-> >-- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
-> > > edit the Makefile change line 4 from;
-> > > EXTRAVERSION =
-> > > to
-> > > EXTRAVERSION = -1
-> > > save file;
->
-> It adds another "layer" of naming to the kernel. For example, if the kernel
-> is 2.4.21, and you edit the Makefile to read
->          EXTRAVERSION=-mykernel
->
-> then the compiled kernel will think its name is 2.4.21-mykernel . The
-> kernel's "true" name, that is, not the name of the file that holds the
-> kernel.
->
-> This affects some minor things, like what the kernel reports in response to
-> "uname -a", and some bigger things, like the name of the directory in which
-> it looks for modules. This last one probably matters to you ... I don't
-> actually recall why Richard made this suggestion.
+On 09-18, pa3gcu wrote:
+> 
+> I have read (somewhere) that when sg0 is compiled into the kernel starnge 
+> things can happen when one is expecting the same things to happen when he/she 
+> has it compiled as a module. That could explain the strange behviour.
 
-I suggested it because i consider it the done thing to do when compiling a 
-kernel-version-source which is running on the system.
-I advised it to Chuck because if he were to recompile his kernel as i 
-suggested and do it without an EXTRAVERSION defined and he made a mistake 
-during the configuration and or compiling stage which whent unnoticed and he 
-copied the new kernel over the old one overwrote the old modules or mixed new 
-or old modules toghter in the same modules directory, then he would possable 
-blame ME for rendering his system unbootable (at the worst).
+	Slack9.0, bare.i has it compiled in the kernel so the module
+is not available.. I will try a re-compile with SG as a module only
+and appreciate your tutoring on EXTRAVERSION.. Now I know where the
+"-n" comes from and Ray's pointing out that you can use "-anything"
+if you wish.. Nice touch that I wasn't familiar with previously..
 
-This way you end up with a new kernel and an old one if all went well they are 
-then both bootable.
-
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+	I may have a problem with ide-scsi though.. The Zip drive
+needs both the ide-scsi module PLUS append "hdc=ide-scsi" in LILO or
+at the LILO boot: prompt, or from LOADLIN.. I can't figure out how to
+disable that, if it is possible, once it's in the booted kernel..
+First things first though - the rebuild with EXTRAVERSION..
 
 
 
+> No idea i dont have a scanner, IMHO scanners are out of date if one has a 
+> digital camers, i use my camera as a scanner, simply take a photo and print 
+> it out.
+
+	Good idea but what do I do with the two SCSI scanners that
+were given to me - one a real expensive and  beautiful piece of
+machinery?? <grin>
+
+
+
+> KMOD is the kernel's automodprobe proceedure, meaning the kernel does modprobe 
+> for you when you do something like (for example) attach a device via 
+> hotpluging.
+> 
+> Read /usr/src/linux/Documentation/Configure.help 
+> Use the "/" node, type in KMOD and hit enter.
+
+	OK - got that under my belt now.. More "automation" has crept
+into Linux.. My learning curve never flattens..
+
+
+
+> It would be interesting to know what happens if you compiled another kernel 
+> defineing sg as a module, you could use the /boot/config file to do this.
+
+	That's next and it'll give me the opportunity to remove many
+"features" I don't need, eh? Never a dull moment..
+
+Appreciate!!!
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
