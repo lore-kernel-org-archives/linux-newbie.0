@@ -1,29 +1,35 @@
-From: "n  mishra" <mishra_nn@rediffmail.com>
-Subject: (unknown)
-Date: 27 Feb 2003 19:05:33 -0000
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: distribution choice
+Date: Thu, 27 Feb 2003 19:12:16 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030227190533.9852.qmail@webmail17.rediffmail.com>
-Reply-To: "n  mishra" <mishra_nn@rediffmail.com>
+Message-ID: <03022719121609.00677@unix.pa3gcu>
+References: <200302271859.h1RIxUE9026632@hartford-hwp.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <200302271859.h1RIxUE9026632@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain;
-	format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-gcc@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Haines Brown <brownh@hartford-hwp.com>, linux-newbie@vger.kernel.org
 
-Hi all,
-I am trying to write a program in c to be able to search a file 
-for any pattern which will be given by the user at 
-runtime.Basically a search tool.
-Could someone suggest a good way of doing this.I've heard of lex 
-and yacc and also awk.Which one is better or is there any other 
-option.
-Or is there any way i can use something like grep through a 'c' 
-program.
-Thanks
-mishra
+On Thursday 27 February 2003 18:59, Haines Brown wrote:
+
+Trim.
+
+> In light of this, which distributions should I be considering? Does
+> one of them stand out in your opinion as an obvious choice in light of
+> my criteria?
+
+Slackware.
+
+>
+> Haines
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
