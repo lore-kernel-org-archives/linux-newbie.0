@@ -1,80 +1,47 @@
-From: Chuck Gelm <nc8q@gelm.net>
+From: Hal MacArgle <haltec@iceweb.net>
 Subject: Re: Modem Identification
-Date: Sun, 15 Dec 2002 10:34:51 -0500
+Date: Sun, 15 Dec 2002 10:23:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DFCA11B.6D26D49A@gelm.net>
-References: <5.1.0.14.1.20021214171540.020e0cb0@celine> <200212150901.21290.sotl155360@earthlink.net>
+Message-ID: <20021215102346.A261@lnx2.w8mch.ampr.org>
+References: <200212142014.07963.sotl155360@earthlink.net>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200212142014.07963.sotl155360@earthlink.net>; from sotl155360@earthlink.net on Sat, Dec 14, 2002 at 08:14:07PM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi, Frank:
+Greetings: If you don't have Minicom, re Ray's suggestion, you can,
+if you have it in your distribution - use 'dip -t'...
 
- Is your modem internal or external?
-If it is a full modem and it is internal
- it will appear as a uart.
- If your BIOS displays hardware configuration at bootup,
- watch for the extra serial port in 'the box'.
+I used it years ago to talk to a modem but I don't have it on this
+machine.. Try 'man dip' for the syntax.. The '-t' flag means "test."
 
-If it is external, you may need to guess its speed, parity,
- and 7 or 8 bits.  Once you can communicate with an external
- modem send it
-ATI4
- and if it is Hayes Command Set compatible,
- it will tell you about itself.
+If you have the mfgr/model number and/or FCC ID number you can search
+on www.google.com to see if it's a WinModem or not.. The suggestions
+are to stay away from WinModems with Linux but there are drivers for
+the Motorola modem specifically for certain narrow distributions.
 
- I purchased an alleged 'full modem' some years ago
-only to find out it was a 'winmodem'. :-(
+HTH and good luck,
 
- The last one I bought was a 56k and cost about 34 USD.
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+	       haltec@iceweb.net | w8mch@iceweb.net
+                Proprietary  Formats  Unacceptable
+		    NON ILLEGITIMI CARBORUNDUM
 
-HTH, Chuck
-
-
-Frank Roberts - SOTL wrote:
+On 12-14, Frank Roberts - SOTL wrote:
+> Hi All
 > 
-> Thanks Ray
 > 
-> Actually your response is very close to my intent.
+> Question:
+> From the command line how does one determine which port a modem is on?
 > 
-> What I am trying to do is identify which port I have a modem which may or may
-> not be a win modem connected to.
-> It was purchased as a full modem but I sincerely question that it is.
-> 
-> As far as using minicom that is another slight problem there in that for some
-> reason I do not have minicom functioning correctly or something resulting in
-> that being the next major issue to be resolved since I need minicom for
-> another major reason.
-> 
-> Isn't there a command that allows one to "ping" a modem from the command line
-> and which returns the modem identification annd type? I seem to recall that
-> there is but I can not recall it but again this may be falty network memory.
 > 
 > Thanks
 > Frank
-> 
-> On Saturday 14 December 2002 20:19, Ray Olszewski wrote:
-> > At 08:14 PM 12/14/02 -0500, Frank Roberts - SOTL wrote:
-> > >Hi All
-> > >
-> > >Question:
-> > > >From the command line how does one determine which port a modem is on?
-> >
-> > It depends on exactly what you mean. I'm guessing that you intend to refer
-> > to a situation where you have 2 or more serial ports in a computer, and a
-> > modem conencted to one of them, but the ports are unlabeled so you dont
-> > know which one the modem is attached to. In that case, I would use a
-> > terminal app (such as minicom) to connect to each port, and see which port
-> > (actuall, its associated /dev/ttyS* entry) gets responses from the modem to
-> > typical AT commands.
-> >
-> > There are many more things you *might* mean, though. So if I've guessed
-> > wrong (and someone else does not guess right), please post a followup that
-> > asks the question in a different, more specific form.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
