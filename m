@@ -1,8 +1,8 @@
 From: Haines Brown <brownh@hartford-hwp.com>
-Subject: xterm: copy and paste
-Date: Mon, 6 Jan 2003 10:17:53 -0500
+Subject: permission for alias file
+Date: Mon, 6 Jan 2003 11:52:58 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301061517.h06FHrtJ032214@hartford-hwp.com>
+Message-ID: <200301061652.h06GqwTo000410@hartford-hwp.com>
 Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -11,18 +11,28 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@hartford-hwp.com
 
-When I upgraded to RH 8.0, I seem to have lost the ability to copy
-data displayed in xterm into a clipboard for pasting, say, into
-emacs. 
+When I use /etc/aliases for single address, it works ok (as I'm now
+doing), but if there is a pointer to a file of addresses, it fails
+because of permisions. 
 
-I need to do this from the keyboard, but mention that a mouse swipe
-does not put the text into the clipboard except within xterm. A Ctl-y
-causes a beep. A Ctl-c just restarts the shell. 
+For example, in /etc/aliases, I have a pointer to 
 
-Do I now have to do a keybind for xterm to tell it to copy? If so, any
-reason I couldn't use M-w and C-v to copy and paste?
+    test: :include:/home/brownh/aliases/test.aliases
 
-Haines Brown  
+But when I use it (after upgrading to RH 8.0), I get:
+
+     ----- The following addresses had permanent fatal errors ----- 
+  :include:/home/brownh/aliases/test.aliases
+    (expanded from: <test@hartford-hwp.com>)
+
+     ----- Transcript of session follows -----
+  550 5.2.4 :include:/home/brownh/aliases/test.aliases... Cannot open
+    /home/brownh/aliases/test.aliases: Permission denied 
+
+Bothe the aliases directory and the test.aliases file are rwxrwxrwx
+(wide open for test purposes). 
+
+Haines Brown
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
