@@ -1,138 +1,87 @@
 From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Sanyo CDR-H94A (non-atapi) Booting???
-Date: Mon, 31 Mar 2003 15:35:02 -0500
+Subject: Re: Sanyo CDR-H94A (non atapi) Booting???
+Date: Mon, 31 Mar 2003 15:41:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030331153502.C207@lnx2.w8mch.ampr.org>
-References: <20030328131832.A249@lnx2.w8mch.ampr.org> <3E84B89E.B782EB8F@gelm.net> <20030330131416.C206@lnx2.w8mch.ampr.org> <3E874A75.B953FBD6@gelm.net>
+Message-ID: <20030331154140.A287@lnx2.w8mch.ampr.org>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <3E874A75.B953FBD6@gelm.net>; from nc8q@gelm.net on Sun, Mar 30, 2003 at 02:50:13PM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Chuck Gelm <nc8q@gelm.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On 03-30, Chuck Gelm wrote:
-> Hi, Hal:
-> 
->  If you are going to receive suggestions from me,
-> we need to keep this discussion 'on the list'.
-> I prefer to respond here, on the linux-newbie list,
-> where others can spot my mistakes and correct them
-> before they harm others.  :-|
-
-		Sorry.. I didn't think the subject was of much
-interest to many due to the obsolete drive involved.. You have a good
-point however. I shall remember it. I believe Ray reminded me of this
-once before..
-
->  There seems to me to be several separate topics
-> that you mention.  At this time I am willing to
-> assist you in attempting to solve your installation
-> difficulties.  So, let us concentrate on installing
-> linux on this system.  I suggest that you start
-> separate messages for your other problems.
-> 
->  So, you mention attempting a NFS install and
-> "I ran into problems".
-> 
->  Please be more specific.
-> 
-		I didn't document the exact problem - probably most
-of it "cockpit trouble," - me.... Making small talk back-fired..
-
-
-
-> You mention attempting to install with the files
-> on "the Dos C: drive" and that this also
-> "ran into problems".
-> 
->  Please be more specific.
-> 
-> 'something like "fd2"' is not descriptive enough.
-> 
-		Again - Sorry: I wasn't, actually, looking for an
-"answer" to these.. Just - small talk again - probably thinking out
-loud with my foot in my mouth..
-
->  Comments on other items follow...
-> 
-> Hal MacArgle wrote:
+On 03-30, Boris Bezlaj wrote:
+> On Sun, Mar 30, 2003 at 01:29:29PM -0500, Hal MacArgle wrote:
+> > Greetings and thanks for your input..
 > > 
-> > Greetings OM and thanks for your input..
-> > 
-> > The problem has escalated into more than the CD drive it seems.. More
-> > or less giving up on the drive I did an install using NFS and also
-> > from the copied files to the Dos C: drive.. I ran into problems with
-> > both - something I've never had happen before, especially NFS which
-> > always works fine..
-> > 
-> > One thing that really bugs me is that the screen report says
-> > something like "fd2", where I think it should report the correct
-> > partition: /dev/hda2.. Maybe that's something that ramdisk does and
-> > I've never noticed it before..
-> > 
-> > During the many tries I even found a distribution of Slack3.5 that
-> > has the CD selection of the Sanyo Drive and ISPSound card driver..
-> > Even that didn't fly.. Setup couldn't find the drive.. It's confusing
-> > because that drive can't make up it's mind whether it's /dev/sjcd or
-> > /dev/isp16.. The bootdisk 'isp16.i' finds the drive and port OK but
-> > after that everything goes down hill.. The bootdisk 'sanyo.i' doesn't
-> > find the drive at all. Very confusing.
-> > 
-> > I found some excellent Docs pertaining to this exclusively but they
-> > may be out of date for the newer versions.. No joy in any case.. I
-> > find most of my Linux books including 'Running Linux' have mis-
-> > information - unless the bottom line is only ME... HI..
-> > 
-> > BTW - to digress, about NFS.. Have you ever experienced _not_ being
-> > able to umount a device after using it with NFS? 
+> > I'm still stuck.. I found the bootdisk  'isp16', the name of the
+> > soundcard/cd-interface, and it found the drive at the proper port:
+> > 0x340.. But it still wont mount the drive either as /dev/sjcd or when
+> > I 'mknod /dev/isp16 b 0 6', which is "supposed" to be the major/minor
+> > number of the device.. I, honestly, question that Major of zero, but
+> > that's what I found in the src code, IIRC..
 > 
->  Yes. When I have a console whose 'current working directory'
->  is on the mounted drive.
+> Major 0?
+> Maybe these have mislead you..from isp16.c source:
 > 
-> >                                                  Specifically, in my
-> > case, a Zip drive.. 
+> #define ISP16_VERSION_MAJOR 0
+> #define ISP16_VERSION_MINOR 6
+>               ^^^^^^^
+> Wrong ones i guess :)
 > 
->  No, I have never used a 'zip' drive.
-> 
-> >                     Usually 'exportfs -a' should "un busy" the drive
-> > so I can umount it - but, lately, I have to reboot the machine to
-> > umount the drive.. (I'm presuming you use the /etc/exports file to
-> > set up NFS..) No big deal but I'm sure curious, and I seem to
-> > remember it working "last week," whatever.. Maybe I need a brain
-> > transplant..
-> 
->  From the man page of exportfs on my firewall 
-> exportfs -a
->  seems to either update the export table (/var/lib/nfs/xtab)
->  or toggle the existence of available file systems.
->  :-|
->  Neither of these statements found in my man pages seem to suggest
->  that 'export -a' will 'umount' anything.  :-|
-> 
-		Snipped from man exportfs:
 
-		OPTIONS
-			-a Export or unexport all directories
-                                  ^^
+		Probably not but I seem to be comparing oranges to
+apples - whatever.. <grin>
 
-		I read this as a toggle and it did work before -
-necessary to "unbusy" the mount so the Zip disk could be removed,
-but no longer for some reason.. It's no biggie, really. Just
-curious.. It may or may not be peculiar to Zip drives because,
-possibly, of their scsi/ide emulation.. Don't know..
 
-		Boris, on a separate message listed to the group,
-said the magic phrase in that I may have needed both isp16.o and
-sjcd.o modules.. Trying BasicLinux2.02, this proved to be the case,
-but BL2.02 is installed from floppies.. The Catch22 situation still
-remains trying to install from the CD... At any rate, I have enough
-information to take it from here... Appreciate!! And I'll remember
-the proper returns in the future...
+> >From include/linux/major.h:
+> 
+> #define SANYO_CDROM_MAJOR 18
+> 
+
+		Major 18 proper for the drive itself but you hit the
+nail on the head - see later...
+
+
+> > > > 7.1 distribution and I can't get "setup" to find the CDR.. The report
+> > > > is always: "SJCD: Sanyo CDR-H94A Cdrom driver version 1.7
+> > > >             SJCD: Resetting............ reset failed, no drive found."
+> > 
+> > 		For some reason the drive doesn't want to make up
+> > it's mind whether it's a /dev/sjcd or /dev/isp16.. No amount of
+> > parameter entries seem to solve the problem /or/ to force the kernel
+> > to be able to mount the drive.. The boot image 'isp16' finds the
+> > drive all right at port 0x340,0,0-Sanyo, but I can't get it mounted
+> 
+> AFAIK, isp16.c enables the cdrom port on your soundblaster card, and
+> sjcd.c manages the drive(i could be dead wrong here).
+> /dev/sjcd (should have major 18) is the right device i guess..
+> 
+> Do you have the drivers in the main kernel image or as modules? If they
+> are in modules, try loading the isp16.o first, then sjcd.o..
+
+		This is where I went astray - not having, or finding a
+clue as to what was really needed... I installed Basic Linux 2.02 on
+the machine and then loaded isp16.o _and_ sjcd.o and the drive came
+to life, except for one comment: "bug: Kernel timer added twice at
+c28024d5" However, it was late but I was able to, then, talk to the
+drive OK.. I have enough ammunition now to start from scratch again,
+to attempt an original install.. I may find it easier to fit an ATAPI
+IDE drive to the machine temporarily, just for the install, and then
+re-fit the Sanyo for use - loading the two modules..
+
+
+
+> BTW, when asking for help on mail list, always leave the mail-list
+> address in Cc field..might get some more brainpower 8)
+
+		OK will do. I apologize, but I thought there would be
+very little interest in such old and "obsolete" hardware.. The drive
+is only 2X - puny by what I see vended today.. <grin>
+
+		Thanks again,
 
     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
                 Proprietary  Formats  Unacceptable
