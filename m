@@ -1,83 +1,54 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: vpn connection problem
-Date: Thu, 18 Apr 2002 20:32:24 +0000
+Subject: Re: ncurses
+Date: Thu, 18 Apr 2002 20:43:12 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041820322408.04062@unix.pa3gcu>
-References: <3CBEE7A7.305A895B@yukthi.com> <01c501c1e6ef$bb8c7080$0901a8c0@system>
+Message-ID: <02041820431209.04062@unix.pa3gcu>
+References: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <01c501c1e6ef$bb8c7080$0901a8c0@system>
+In-Reply-To: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Tom Beer <mailings@analogon.com>, ahrao@yukthi.com, linux-newbie@vger.kernel.org
+To: glen <inavaganza@yahoo.com>, linux-newbie@vger.kernel.org
 
-On Thursday 18 April 2002 15:43, Tom Beer wrote:
-> Hi,
->
-> this is the newbie list, not the guru list :-)
+On Thursday 18 April 2002 16:47, glen wrote:
+> I am trying to use the menuconfig command to upgrade
+> my kernel.  It returns the error that I need Ncurses
+> installed.  I installed Ncurses and ran ldconfig.  I
+> still get the error:
 
-Sure is "The newbie list", however this list has a reputation of having some 
-more experienced "LINUX" users floating around with (me for one) more than 10 
-years of linux usage, however i cannot claim to be a guru, just a more 
-advanced linux user willing to answer newbie questions when and if possable.
-
-As a matter of fact this VPN question is of great interest to me as i for one 
-tryed setting up a windows machine behind a linux firewall to a vpn server 
-behind another linux firewall, the problems i encored were many, mostly due 
-to cooperate firewalls.
-I gave up considering i do not like the M$ way of life, i convinced my boss 
-to do things in other ways, with windows XP thats easy, remote desktop, it is 
-much simpler to get throb' a decent linux firewall with a few simple firewall 
-commands added to the linux machine(s).
-
-If i can be of help this half guru will comment on anything i see that rings 
-bells with me, i can even try out ones configuration as my situation here 
-sounds like/similar to the question askers.
-Other than that i promise nothing.
+You failed to say how you installed ncurses and what the archive was called.
+Just what did you install, most folks mistakes are that they dont read the 
+INSTALL file before issuing ./configure --options where options are what you 
+choose from the README file also included in the ncurses archive(s).
 
 >
-> Can you provide a _little_ more information than
-> I have a M$ and a M$ which I want to connect to a
-> Linux gateway. What is your exact problem?
-> Have you log files. What have you tryed, what
-> failed. What's your assessment of the situation?
+> rm -f include/asm
+> ( cd include ; ln -sf asm-i386 asm)
+> make -C scripts/lxdialog all
+> make[1]: Entering directory
+> `/usr/src/linux/scripts/lxdialog'
+> /usr/bin/ld: cannot find -lncurses
+> collect2: ld returned 1 exit status
 >
-> Greets Tom
+> >> Unable to find the Ncurses libraries.
+
+This is saying i cant find the following which should be in /lib
+/lib/libncurses.so.5 -> libncurses.so.5.2*
+ /lib/libncurses.so.5.2*
+
+> >>
+> >> You must have Ncurses installed in order
+> >> to use 'make menuconfig'
 >
-> ----- Original Message -----
-> From: Hanumanth Rao <ahrao@yukthi.com>
-> To: <linux-newbie@vger.kernel.org>
-> Sent: Thursday, April 18, 2002 5:35 PM
-> Subject: vpn connection problem
->
-> > Hi Gurus,
-> >
-> > I have a situation for which i want a solution, hope somebody out there
-> > has got a solution.
-> >
-> > I have win98 and win2k professional vpn clients to be connected through
-> > a linux 6.1 box (gateway with ISDN connection) to a vpn server on the
-> > internet.  Im not able to get connected to the vpn server please
-> > suggest.
-> >
-> > Scenario
-> >
-> > Win98 & Win2K Professional (vpn clients)
-> >
-> >                   V
-> > Red Hat Linux 6.1 (Gateway, ISDN Connection,  MASQ enabled, IP_Forward
-> > enabled)
-> >
-> >                   V
-> > VPN Server (on Internet with real ip)
-> >
-> >
-> > Please let me know if anything to be done on the linux gateway.
-> >
-> > Regards
-> > Rao
+> make[1]: *** [ncurses] Error 1
+> make[1]: Leaving directory
+> `/usr/src/linux/scripts/lxdialog'
+> make: *** [menuconfig] Error 2
+
+If all else fails simply use 'make config' no ncurses needed then.
 
 -- 
 Regards Richard
