@@ -1,8 +1,8 @@
 From: dave <dave@dpomeroy.com>
 Subject: long resolve
-Date: Thu, 09 Sep 2004 19:28:20 -0800
+Date: Thu, 09 Sep 2004 19:55:35 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <41411F54.2070307@dpomeroy.com>
+Message-ID: <414125B7.60903@dpomeroy.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,14 +10,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-I'm having a problem with my network access.  It takes a long time to 
-resolve internet addresses.  I have a wireless bridge D-Link
-DWL 810+.  Its been working fine but the last week trouble.  If I boot 
-into windows (dual boot) I have no problems. 
-The system here is wireless and its issues ip addresses.  It also gives 
-me the dns addresses.  I can't seem to figure out whats going on.  Is 
-there a log that will tell me if something is taking a long time?  
-Thanks for the help.
+I pinged the 2 ip addresses in the network config for dns.  The first 
+one will not respond so I'm guessing there is a problem with this 
+server.  I'll call tomorrow and get it fixed.  I can't seem to figure 
+out how to disable the os from trying to use that first ip address.  I'm 
+mandrake 10.0 official.
 Dave
 
 -- 
