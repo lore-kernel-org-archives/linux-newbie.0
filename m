@@ -1,39 +1,38 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re: Spam from linux-newbie
-Date: Wed, 10 Mar 2004 12:45:18 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: connecting two nics.... [bcc]
+Date: Wed, 10 Mar 2004 20:14:27 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403101245.19105.sotl155360@earthlink.net>
-References: <5.1.0.14.1.20040310073443.02042150@celine> <5.1.0.14.1.20040310083229.02042008@celine>
+Message-ID: <200403102014.27090.pa3gcu@zeelandnet.nl>
+References: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040310083229.02042008@celine>
+In-Reply-To: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: RANDAZZO@ddc-web.com, ray@comarre.com, linux-newbie@vger.kernel.org
+
+On Wednesday 10 March 2004 14:50, RANDAZZO@ddc-web.com wrote:
+> Does anyone know how to duplicate the ping -I command for
+> socket-layer calls?
+
+Just what is it you want to achive.?
+
+Seems to me like you dont know what you are doing.
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
-> I use different filtering software but have the same limitations. Honestly,
-> I don't think the first one is a bad thing. My filtering is quite good, but
-> it generates 2 or 3 false positives per week (out of about 4000 messages
-> received per week). So about once a day, I skim the summary of trashed
-> messages, looking only at the From: and Subject entries, to spot (and
-> rescue) the couple of false positives. The second (matching with wildcards)
-> would be a nice improvement, though.
->
-Spam = unwanted e-mail
 
-With that ides there are two possible types of spam. One in which the sender 
-spoofs headers and attempts to hide who there are. A second type generally 
-sent to commercial organization started out originally as a desired news 
-letter by someone lone gong from the receiving firm, originates from origins 
-unknown, and has no apparent way to unsubscribe from. Of this second type our 
-firm receives upward of 300 such e-mails per day. It would be extremely nice 
-to pipe this directly to delete.
-
-Thanks
-Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
