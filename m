@@ -1,51 +1,54 @@
-From: "Travis" <travis@wsor.net>
-Subject: RE: RH 9 source
-Date: Thu, 31 Jul 2003 13:01:27 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: disabling graphical login
+Date: Thu, 31 Jul 2003 11:15:03 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F4A496DB9CACD64AB21D7B8F59540AE807FA86@iu-mssg-mbx01.exchange.iu.edu>
-References: <F4A496DB9CACD64AB21D7B8F59540AE8A1764A@iu-mssg-mbx01.exchange.iu.edu>
-Reply-To: <travis@wsor.net>
+Message-ID: <5.1.0.14.1.20030731110510.01fe1ec0@celine>
+References: <35dbee635de148.35de14835dbee6@homemail.nyu.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4A496DB9CACD64AB21D7B8F59540AE8A1764A@iu-mssg-mbx01.exchange.iu.edu>
+In-Reply-To: <35dbee635de148.35de14835dbee6@homemail.nyu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I've posted a few times regarding this.  My problem seemed to be related
-to xconfig.  I built a new kernel using menuconfig instead and
-everything went fine.
+At 01:53 PM 7/31/2003 -0400, Anshuman Singh Rawat wrote:
+>Hi,
+>I have a graphical login screen and I need to disable it as there is some 
+>problem with my X. How does one disable it?
 
--- Travis
+It depends on how you (your Linux distro, that is) enable(s) it in the 
+first place. That varies a bit by distro. The two most common ways are:
 
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Anshuman Singh
-Rawat
-Sent: Thursday, July 31, 2003 12:16 PM
-To: linux-newbie@vger.kernel.org
-Subject: RH 9 source
+1. Setting in /etc/inittab a default runlevel that causes xdm (or maybe 
+gdm) to start. To disable it this way, change from a runlevel that starts 
+xdm (or gdm) to one that does not. Most commonly, that involves changing 
+the line in /etc/inittab that reads
 
-Hi,
-I was trying to compile with kernel using the sources (v2.4.20-8) which
-came along with RH9, but there were some compilation errors!!
-I also tried with source I downloaded from rpmfind.net (for v2.4.20-20)
-with no luck.
-I gave up after that and switched to RHL7.3 (kernel v2.4.18-3)which
-works.
+         # The default runlevel.
+         id:5:initdefault:
 
-But has anybody else also had problems with sources in RHL9 ?
+to read
 
--Anshuman
+         # The default runlevel.
+         id:2:initdefault:
+
+2. Running an init script that starts xdm (or gdm). To disable it this way, 
+find the symlink to that script in the default runlevel and remove it. For 
+example, my Debian systems use the script /etc/init.d/xdm to start X and a 
+default runlevel 2. So I remove (or rename) the symlink /etc/r2.d/S99xdm .
+
+BTW, even with  a "graphical login screen" running, you probably have 
+consoles hidden away. So if the X stuff does not completely trash your 
+display, pressing CTRL-ALT-F1 (through -F6, usually) will probably give you 
+a text console where you can log in.
+
+If you need more specific help, in a followup tell us what Linux distro and 
+version you are using, which graphical login system you use (xdm or gdm), 
+and whatever you know about how your system now starts X.
 
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
