@@ -1,9 +1,8 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Which SQL server?
-Date: Thu, 21 Nov 2002 12:24:52 +0930
+From: r4mz3z <r4mz3z@yahoo.es>
+Subject: iptables or ip6tables firewall
+Date: Wed, 20 Nov 2002 20:45:52 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211211224.52173.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <200211202045.59886.r4mz3z@yahoo.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,24 +10,28 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I'm going to set up an SQL on a server box I'm building to host a database 
-that will hold a few tables. The database will probably contain 3 (possibly 
-4) tables, the largest of which having 9 fields and about 50 records.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-The main thing I'm interested in is minimal use of system resources, the 
-database will not be accessed frequently (possibly once every few minutes - 
-if that).
+Hi friends...
+  I was going to make a firewall (just learning) when I see that in RedHat7.3 
+not only there are iptables daemon, ip6tables daemon too.
 
-Which of those two (or a third, if you can point me towards it) would be able 
-to handle this task using minimal resources on the server (leaving resources 
-available for other programs)?
+  Which is the diference between iptables and ip6tables and which is better to 
+make a firewall?
 
---
-"Software is like sex: It's better when it's free." - Linus Torvalds
+thanks
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
+iD8DBQE93DrWs4dF9gl05swRAhjzAJ40/p2E9xwrS1ZYXkWhJCrFxxAJtQCfYnhL
+ZRVLx9kdk+c1PymXfD+g4nI=
+=Oxn0
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
