@@ -1,29 +1,34 @@
-From: Anupam <anupamg@iitk.ac.in>
-Subject: Routing b/w 2 ethernet cards.
-Date: Tue, 30 Mar 2004 17:14:40 +0000
+From: Jim Reimer <jdr@wa5rrh.org>
+Subject: Re: .prn to .txt conversion = ?
+Date: Tue, 30 Mar 2004 07:24:14 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4069AB00.5040707@iitk.ac.in>
-Reply-To: anupam.gupta@unix.net
+Message-ID: <17050938982.20040330072414@wa5rrh.org>
+References: <200403281732.18531.sotl155360@earthlink.net>
+ <5.1.0.14.1.20040329204727.01ef69d0@celine>
+Reply-To: Jim Reimer <jdr@wa5rrh.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20040329204727.01ef69d0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi all,
+Ray Olszewski wrote:
 
-I've 2 ethernet interfaces. I want the following scenario.
+> At 05:32 PM 3/28/2004 -0500, Frank Roberts - SOTL wrote:
 
-I want to control applications to use specific eth interfaces. Say, when 
-I use my IMAP e-mail client, I want it to use eth0, eth1 otherwise.
+> When you say "the content is all text", can you be a bit more exact? (I
+> haven't used DOS for years and I cannot recall what the.prn extension
+> signifies.)
 
-Can I set iptables rules deciding which remote port I want to connect to 
-using a particular NIC. If yes, I'd need an example. Otherwise let me 
-know some other way to do such thing.
+A .prn file is generated when the "print to file" option is
+used.  It's contents depend solely on the printer driver -
+could be text, could be PostScript, could be HPGL, could be
+lots of other completely useless things.
 
-Thanks and regards,
-Anupam.
+-- 
+-jdr-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
