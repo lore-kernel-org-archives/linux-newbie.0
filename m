@@ -1,41 +1,31 @@
-From: pshook <pshook@dsl-only.net>
-Subject: Re: a simple browser
-Date: Tue, 11 Mar 2003 23:02:16 -0800
+From: "Eng Se-Hsieng" <g0202512@nus.edu.sg>
+Subject: Oversized kernel
+Date: Wed, 12 Mar 2003 17:59:18 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E6EDB78.14415BBE@dsl-only.net>
-References: <m3ofgui987.fsf@wobble.eth.net>
+Message-ID: <720FB032F37C0D45A11085D881B03368A2B496@MBXSRV24.stu.nus.edu.sg>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Try opera, I think at  www.opera.com
+Dear all,
 
-G Anna wrote:
+I've just compiled a new kernel and the vmlinuz is over 2Mb in size.
+Since mkbootdisk returns : Not enough space and I don't have a CD writer
+on my system, I'm unable to create a boot disk and am a little wary
+about not having one.
 
-> Dear All,
->
-> Can anybody suggest a good and simple browser?  Netscape core dumps
-> very often, Mozilla is very very slow and I do not know of any other
-> browser.  (Most of the websites nowadays doesn't care about Lynx :-(
->
-> Thanks for your time.
->
-> anna
->
-> --
->
-> Get your free e-mail account at http://www.linuxmail.org
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+How does one know what are the minimum options to choose in order to
+reduce the size of the vmlinuz? My system is a Toshiba Satellite 4030CDT
+(Celeron 266 Mhz)
 
+Thank you.
 
+Regards,
+Se-Hsieng
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
