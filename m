@@ -1,86 +1,59 @@
-From: "Riley Williams" <Riley@Williams.Name>
-Subject: RE: kernel-module version mismatch
-Date: Mon, 30 Jun 2003 09:36:06 +0100
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Slack9.0/Atapi-ZIP250???
+Date: Mon, 30 Jun 2003 06:56:31 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BKEGKPICNAKILKJKMHCAKECGEIAA.Riley@Williams.Name>
-References: <Pine.GSO.4.21.0306300219300.13921-100000@nova19.cs.wisc.edu>
+Message-ID: <20030630065631.A148@lnx2.w8mch.ampr.org>
+References: <20030628151407.A244@lnx2.w8mch.ampr.org> <200306290954.38827.James.Hatridge@epost.de>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.GSO.4.21.0306300219300.13921-100000@nova19.cs.wisc.edu>
+Content-Disposition: inline
+In-Reply-To: <200306290954.38827.James.Hatridge@epost.de>; from James.Hatridge@epost.de on Sun, Jun 29, 2003 at 09:54:32AM +0200
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Christopher Sly <vaidyana@cs.wisc.edu>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi Christopher.
+On 06-29, James Hatridge wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> Hi all....
+> On Saturday 28 June 2003 21:14, Hal MacArgle wrote:
+> > Greetings: Several days; RTFM, FAQ's, HOW-TO's - no joy...
+> >
+> > This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
+> > internal, as /dev/sda4, as long as I insmod ide-scsi.o.. ( That file
+> > also installs sd_mod.o )..
+> 
+> You're doing this wrong. I have the Atapi Zip100 internal. It does not need 
+> the ide-scsi.co. Just set it up like this:
+> 
+> /dev/hdc4       /zip            auto    noauto,user 0 0
+> 
+> You only need the scsi stuff when using the external type Zip (which I also 
+> have). 
+> 
+> Hope this helps,
+> 
+> 
+> JIM
 
- > I'm trying to run the most simple Linux modules and I get the
- > following error on saying: 
- >
- > /sbin/insmod hello.o
- >
- >  hello.o was compiled for kernel version 2.4.9-9
- >          while this kernel is version 2.4.18-14.
- >
- > I also tried:
- >
- > gcc -c hello.c -I /usr/src/linux-2.4.18-14/include
- >
- > with the same consequences and:
- >
- > gcc -c -D__KERNEL__ -DMODULE -I/usr/src/linux-2.4.18-14/include 
- >        -o hello.o hello.c
- > hello.c:1:1: warning: "MODULE" redefined
- > hello.c:1:1: warning: this is the location of the previous
- >              definition
- >
- > again with the same consequence.
- >
- > any suggestions?
+	Greetings and - Gad Zooks.. Where did you discover the above?
+Everything I've read about ZIP drives say they _must_ use scsi
+emulation.. Adding the above to /etc/fstab and then mounting
+/dev/hdc4 on /zip worked with Slack9.0/2.4.20 but _not_ with
+Slack8.0/2.4.18, which required ide-scsi.o.. All disks formatted with
+ext2..
 
-IIRR, insmod looks for the module to insert in the standard
-modules directories, not in the current directory. Do you have
-an old version of the module in there that you're trying to
-insert instead of the one you've just compiled? Try...
+	I don't think I'll ever learn a thing about computers. Thanks
+for the solution. Now I hope it'll work with NFS..Appreciate!!
 
-    find /lib/modules/ -name hello.o
+Cheers,
 
-...to find out as it could be anywhere under /lib/modules and
-insmod would still find it. Also, if that finds nothing, try...
-
-    strace insmod hello.o 2>&1 | fgrep open
-
-...and analyse the resulting listing looking for where it loads
-that module from.
-
- > the code looks like so:
- >
- > #define MODULE
- > #include <linux/module.h>
- > 
- > int init_module (void) /* Loads a module in the kernel */
- > {
- >         printk("Hello kernel\n");
- >         return 0;
- > }
- > 
- > void cleanup_module(void) /* Removes module from kernel */
- > {
- >         printk("GoodBye Kernel\n");
- > }
-
-There's nothing obviously wrong with that code, at least not
-to me.
-
-Best wishes from Riley.
----
- * Nothing as pretty as a smile, nothing as ugly as a frown.
-
----
-Outgoing mail is certified Virus Free.
-Checked by AVG anti-virus system (http://www.grisoft.com).
-Version: 6.0.493 / Virus Database: 292 - Release Date: 25-Jun-2003
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
