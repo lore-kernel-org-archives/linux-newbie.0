@@ -1,38 +1,37 @@
-From: Frank Robers _ SOTL <sotl155360@earthlink.net>
-Subject: Tomsrtbt on A30P
-Date: Sun, 9 Feb 2003 16:44:12 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Kerberos and FTP login failure
+Date: Mon, 10 Feb 2003 11:07:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302091644.12782.sotl155360@earthlink.net>
-References: <200302091641.42072.sotl155360@earthlink.net> <200302091642.58012.sotl155360@earthlink.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200302101607.h1AG7gEI031340@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302091642.58012.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi All
+I've been struggling for some time to get a new web hosting service
+going. Since things really should be working, I began to suspect that
+my Kerberos V4 (RedHat 8.0) tokens are simply not recognized by the
+web hosting server. Here is the exchange:
 
-Has anyone used Tomsrtbt on an A30P?
+  $ ftp unix245.hosting-network.com
+  Connected to unix245.hosting-network.com.
+  220 unix245.hosting-network.com NcFTPd Server (licensed copy) ready.
+  500 Syntax error, command unrecognized.
+  500 Syntax error, command unrecognized.
+  KERBEROS_V4 rejected as an authentication type
+  Name (unix245.hosting-network.com:brownh): brown
+  331 User brown okay, need password.
+  Password:
+  530 Login incorrect.
+  Login failed.
+  ftp> bye
 
-I have a new copy of Tomsrtbt, downloaded it today, which works very well
-on my other two boxes but only boots halfway on my Thinkpad.
+Can anyone offer any insight here?
 
-My first help request was to Tom at Tomsrtbt but since he does not have an
-A30P he was unable to help.
-
-The problem appears to be that I am not setting the correct switches on
-boot.
-
-The following does NOT allow Tomsrtbt to boot. At the boot prompt:
-
-bootbz2bzImage floppy=thinkpad
-
-Thanks
-
-Frank
-
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
