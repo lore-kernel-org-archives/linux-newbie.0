@@ -1,32 +1,38 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Undelete for linux
-Date: Mon, 29 Apr 2002 08:34:06 +0800
+From: Edgar Alwers <edgaralwers@gmx.de>
+Subject: Re: Sending a FAX simply??
+Date: Mon, 29 Apr 2002 14:16:35 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200204290034.g3T0Y6701320@philonline.com>
-References: <20020428075920.A210@lnx2.w8mch.ampr.org>
+Message-ID: <02042914163501.01631@edgar>
+References: <20020428140103.A471@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 28 Apr 2002 07:59:20 -0400."
-             <20020428075920.A210@lnx2.w8mch.ampr.org> 
+In-Reply-To: <20020428140103.A471@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Hal MacArgle <haltec@iceweb.net>, linux-newbie@vger.kernel.org
 
-It's safedelete. Works fine, the rpm package is only 52 Kb.
+Hallo Hal,
 
-The binaries included are
+try "sendfax". It is very reliable, straight ahead and simple. There is a 
+mail list you might want to subscribe,  "mgetty@muc.de",   author of the 
+program is Gert Doering, gert@greenie.muc.de.
 
-safedelete the main program to safeldelete files
+Of course, you have to familiarize yourself to the program. I think, there is 
+nothing so simple as that you dont have to invest some time studying some 
+instructions, even not a real fax machine.
+Regards,
+Edgar
 
-undelete to retrive deleted files
 
-savedelchk to check the log and status of all comprssed, safely deleted files.
+On Sunday 28 April 2002 20:01, Hal MacArgle wrote:
+> Greetings: Does a simple fax program or script exist for sending
+> short, simple, text only faxes 
 
-Regards
 -- 
-Peter
-
+-----------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto:edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
