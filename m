@@ -1,51 +1,72 @@
-From: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Subject: Re: Frame pointer Vs Stack Pointer
-Date: Tue, 23 Nov 2004 15:52:56 +0530
-Message-ID: <1101205376.3786.63.camel@myLinux>
-References: <20041123092440.27562.qmail@web52908.mail.yahoo.com>
+From: Ratnadeep Joshi <ratn.josh@gmail.com>
+Subject: Re: are they physical address?
+Date: Thu, 25 Nov 2004 13:15:01 +0530
+Message-ID: <4bcb1f70041124234550630b23@mail.gmail.com>
+References: <20041008071425.96875.qmail@web52906.mail.yahoo.com>
+Reply-To: Ratnadeep Joshi <ratn.josh@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041123092440.27562.qmail@web52908.mail.yahoo.com>
+In-Reply-To: <20041008071425.96875.qmail@web52906.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-AFAIK, frame pointer points to the current activation record. Activation
-records, for example, are created when a function is called, or the
-program enters a different block of code. It can have details of the
-return address, local variables etc. Now for getting the variables under
-the current scope, a frame pointer is used.
+These are the I/O mem regions registered by (or reserved for) the
+driver modules (the "owners") so they don't interfere in each other's
+fields.
 
-A program will have an associated stack, to store values related to the
-program. At times even the activtion records are stored in the stack.
-The stack pointer points to the top of this stack.
+- Ratnadeep
 
-
-On Tue, 2004-11-23 at 14:54, Ankit Jain wrote:
-> Frame pointer, Stack Pointer....i want to understand
-> this concept w.r.t stack in a program
+On Fri, 8 Oct 2004 08:14:25 +0100 (BST), Ankit Jain
+<ankitjain1580@yahoo.com> wrote:
+> hi
 > 
-> how a program stores and understand by this
+> http://www.xml.com/ldd/chapter/book/ch02.html
+> 
+>  00000000-0009fbff : System RAM
+>  0009fc00-0009ffff : reserved
+>  000a0000-000bffff : Video RAM area
+>  000c0000-000c7fff : Video ROM
+>  000f0000-000fffff : System ROM
+>  00100000-03feffff : System RAM
+>   00100000-0022c557 : Kernel code
+>   0022c558-0024455f : Kernel data
+>  20000000-2fffffff : Intel Corporation 440BX/ZX -
+> 82443BX/ZX Host bridge
+>  68000000-68000fff : Texas Instruments PCI1225
+>  68001000-68001fff : Texas Instruments PCI1225 (#2)
+>  e0000000-e3ffffff : PCI Bus #01
+>  e4000000-e7ffffff : PCI Bus #01
+>   e4000000-e4ffffff : ATI Technologies Inc 3D Rage LT
+> Pro AGP-133
+>   e6000000-e6000fff : ATI Technologies Inc 3D Rage LT
+> Pro AGP-133
+>  fffc0000-ffffffff : reserved
+> what is it reserved for?
+> 
+> if somebody can explin me this:
+> 
+> "Once again, the values shown are hexadecimal ranges,
+> and the string after the colon is the name of the
+> "owner" of the I/O region. "
 > 
 > thanks
 > 
 > ankit
 > 
 > ________________________________________________________________________
-> Yahoo! Messenger - Communicate instantly..."Ping" 
-> your friends today! Download Messenger Now 
+> Yahoo! Messenger - Communicate instantly..."Ping"
+> your friends today! Download Messenger Now
 > http://uk.messenger.yahoo.com/download/index.html
 > -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
--- 
-Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-
+> Please read the FAQ at  http://www.tux.org/lkml/
+>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
