@@ -1,62 +1,30 @@
-From: chuck gelm <nc8q@gelm.net>
-Subject: Re: Sharing drives.
-Date: Wed, 02 Oct 2002 08:31:25 -0400
+From: Abhijit Vijay <abhijit_v@yahoo.com>
+Subject: Time problem
+Date: Wed, 2 Oct 2002 05:48:59 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D9AE71D.D509316F@gelm.net>
-References: <000501c269e8$b8ca73c0$af33f7c2@gcb>
+Message-ID: <20021002124859.54259.qmail@web13409.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: geoff <geoff@gcbagley.uklinux.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi, Geoff:
+Hi All,
 
- Yes.  Although the files (filesystem(s)) are not 'transferred'.
-The filesystem is 'mounted'.
-Each OS must be capable of mounting the filesystem's type:
-second extended, reiserfs, third extended, minix, fat, vfat,
- ...whatever.
+I have been having a peculiar problem with KDE.
+Whenever I reboot, the time on the control panel goes
+back by four hours. (I am in the EDT zone) Could
+anyone tell me why this is happening and the fix
+please?
 
- I get the impression that each of the two distributions you mention
-are on a separate physical hard drive. This is not necessary.
-One can have multiple operating systems on a single physical drive.
-Each would need a separate partition, AFAIK.
+Regards,
+Abhijit.
 
-HTH, Chuck
-
-geoff wrote:
-> 
-> I have a dual-boot Linux system.  Debian 3.0 (Woody), and SuSE 8.0 (Prof).,
-> on separate drives sharing a common machine  (Pentium III at 600 MHz).
-> 
-> Both work well, and I am enjoying learning the differences between them,
-> running
-> them as separate alternatives.
-> 
-> Would it be inadvisable to have a third hard disk drive  on the same shared
-> machine,
-> which is mountable on either distro, in order to enable files from (say)
-> Debian to be transfered
-> into SuSE,   (or vice-vers) or would I be asking for trouble ?
-> 
-> Can I use a common  device  (say)  /dev/hdc  as  a common part of two
-> partition systems ?
-> 
-> A possible use would be to YaST/ RPM into Debian, or APT/ DEB into SuSE.
-> 
-> Best regards,
-> 
-> Geoff Bagley
-> G3FHL.
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+__________________________________________________
+Do you Yahoo!?
+New DSL Internet Access from SBC & Yahoo!
+http://sbc.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
