@@ -1,8 +1,8 @@
-From: "Pa3gcu" <fido@tcob1.net>
-Subject: Re: How to install two linux OSes on the same PC
-Date: Wednesday, 05 Feb 2003 15:58:00 +000
+From: "Andrew Langdon-davies" <fido@tcob1.net>
+Subject: partition resides on first track
+Date: Wednesday, 05 Feb 2003 09:46:00 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_030205_155800__0d1ecd22@racenet>
+Message-ID: <NOMSGID_7223=3a9750=2f200_030205_094600__b9ffc243@racenet>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,62 +12,21 @@ To: linux-newbie@vger.kernel.org
 
 Originally to: All
 
-On Wednesday 05 February 2003 22:08, Narsimha Reddy CHALLA wrote:
-> Hi  All,
->
->     I want to do two different linux installations rh 7.2 and rh
-> 8.0 on the same pc with single hard disk. I installed the rh 7.2 in
-> partitions say  /dev/hda5 ( /) ,  /dev/hda6  (/home) ,  /dev/hda7 (
-> /usr) ,
-> /dev/hda8 ( /tmp),... /dev/hda11  etc.
->
->    But how can I install the rh 8.0 in partitions say  /dev/hda12
-> ( as "/" )  ... etc ??  Since the installer won't allow as there
-> already exists a  "/"  partition for the rh 7.2 and tries to override
-> it with the root partition of rh 8.0. So I tried giving a different
-> lable to the root partition of rh 8.0 say /root1 and other partitions
-> as /root1/usr, /root1/home, /root1/tmp etc. But here also the installer
-> is looking for the partition named "/" and without that the installation
-> is not happening.
->
->
-> Please give your suggestions on how to resolve this problem.
-
-Edit properly in that menu where it ask's for partition info for installing.
-
-I have Redhat 7.2, slackware gentoo and peanut all on one disk.
-
-Slackware was installed first, then redhat.
-
->
->
-> At present my partition table with single installation (rh 7.2)  is,
->
-> [root@creddy-pc root]# fdisk -l
->
-> Disk /dev/hda: 255 heads, 63 sectors, 2434 cylinders
-> Units = cylinders of 16065 * 512 bytes
->
->    Device Boot    Start       End    Blocks   Id  System
-> /dev/hda1   *         1       261   2096451    6  FAT16
-> /dev/hda2           262      2434  17454622+   5  Extended
-> /dev/hda5           262       522   2096451    6  FAT16
-> /dev/hda6           523       653   1052226   83  Linux
-> /dev/hda7           654      1175   4192933+  83  Linux
-> /dev/hda8          1176      1371   1574338+  83  Linux
-> /dev/hda9          1372      1436    522081   82  Linux swap
-> /dev/hda10         1437      1501    522081   83  Linux
-> /dev/hda11         1502      1566    522081   83  Linux
-> [root@creddy-pc root]#
->
->
-> TIA,
-> - Narsimha Reddy CH
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Above is returned by fdisk (more or less; I am at a different machine 
+and can't remember exactly). Presumably, this is why trying to install 
+Mandrake 9.0 failed repeatedly at the bootloader stage (with no way out 
+of the installation program) and eventually trashed the partition table 
+(now rebuilt).
+Q1: Am I right?
+Q2: Can I correct the situation? (With parted, e.g.)
+Q3: Otherwise, how else can I install Mandrake without losing the quaint 
+little Win98 system my girlfriend needs for work?
+The present setup is:
+first hd 2.4 G, one Win 98 partition, could be resized to 1 G to make 
+room for Mandrake;
+second hd 600M, probably for additional Win progs or storage.
+Very many TIA,
+Andrew
 
 -
 
