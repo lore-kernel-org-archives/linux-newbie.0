@@ -1,43 +1,41 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Re: Shutdown problem
-Date: Sun, 19 Jan 2003 14:44:48 +0000
+From: Ray Olszewski <ray@comarre.com>
+Subject: re: getting serial ports on STB4COM UP
+Date: Sun, 19 Jan 2003 08:06:29 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03011914444800.00586@unix.pa3gcu>
-References: <20030119142129.31936.qmail@webmail9.rediffmail.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20030119080202.021b9570@celine>
+References: <CPIMSSMTPU05QVjp3b6000002ae@cpimssmtpu05.email.msn.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030119142129.31936.qmail@webmail9.rediffmail.com>
+In-Reply-To: <CPIMSSMTPU05QVjp3b6000002ae@cpimssmtpu05.email.msn.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Anant Aneja <anantaneja@rediffmail.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Alan Womack <arwbackup@worldnet.att.net>, "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-On Sunday 19 January 2003 14:21, Anant Aneja wrote:
-> heres more info :
-> my kernel is of version 2.4.2-2.
-> i couldnt locate the readme u mentioned.
-> there are no files there (in that folder).
-> does that mean that I havbe a improperly installed system.
-
-It maeans you dont have the kernel source installed nothing more.
-I suggest you retrive either linux-2.4.2.tar.gz or update your kernel to 
-something more recent. Then when you have the source and unpacked it properly 
-you will then have the README in /usr/src/linux .
-I suggest you do as i mentioned to hunt down your problem.
-
-According to your message about "its always been happening" that would 
-suggest a harware incompatabilty, why not sinply use shutdown -r and see if 
-that helps.
+At 06:04 AM 1/19/03 -0800, Alan Womack wrote:
+>[...]
+>It appears one of those two modifications has port 2 working correctly 
+>now.  Port 3 and Port 4 still share IRQ 15, and although the pausing is 
+>noticebly shorter for port 3, it is still quite slow.  Therefore I have to 
+>conclude there is an issue with sharing 15 for some reason.  Next time I 
+>take my server down, I will move port 3 to share IRQ 3 and see what happens.
 
 
-> Please help
-> Anant
+D'oh! I should have asked this before: How many IDE devices do you have in 
+the system? The secondary IDE channel normally uses IRQ 15. Trying to have 
+serial ports share an IRQ with an IDE controller could eaily lead to long 
+delays (or even complete failure - I've never tried this). If you are not 
+actually using the secondary IDE channel, turn it off in the BIOS. If you 
+are using it, move the serial ports to some otherwise unused IRQ (look in 
+the 9-12 range for possibilities, though what's free depends on the 
+specifis of your system).
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
