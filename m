@@ -1,60 +1,27 @@
-From: "John T. Williams" <jowillia@vt.edu>
-Subject: Re: Linux as a router and/or bridge
-Date: Fri, 30 May 2003 06:21:13 -0400
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Using a URL to access a variable background image
+Date: Fri, 30 May 2003 06:54:20 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <003501c32695$47c39b10$ed64a8c0@descartes>
-References: <1054264112.4715.4.camel@jayhawk>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200305301054.h4UAsKHP015949@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: J S <webnews@comcast.net>, linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux@hartford-hwp.com
 
-if you look up
-NAT
-masq
-and iptables
+Sorry for this petty question. 
 
-you'll find all the information you need
+There's a web page that displays a jpeg image that changes every
+minute and would make an interesting background image for my monitor
+(obviously, I have a continuous connection).
 
-A good place to start is
-http://www.tldp.org/HOWTO/IP-Masquerade-HOWTO/
+What I have is a url to a webpage that displays the .jpg and defines
+its size. How would I display this url image on a black background on
+my monitor?
 
-Sincerely,
-John T. Williams
-jtwilliams@vt.edu
-
-
------ Original Message ----- 
-From: "J S" <webnews@comcast.net>
-To: "linux-newbie" <linux-newbie@vger.kernel.org>
-Sent: Thursday, May 29, 2003 11:08 PM
-Subject: Linux as a router and/or bridge
-
-
-> Linux people,
->
-> I'm trying to understand how to set up a Linux system as a router.  For
-> example, assume I have an interface with IP address 192.168.0.1(eth0)
-> and another with IP address 192.168.1.1(eth1).  What do I need to do to
-> allow traffic received on one interface to be automatically forwarded
-> out of the other interface?  To extend the example, assume eth0 receives
-> a packet from 192.168.0.25 that is destined for 192.168.2.40.  What is
-> the minimal set of steps I need to perform in order to get my kernel to
-> send that packet on its way?
->
-> Second question, what exactly is network bridging and how might I use it
-> instead of setting up a Linux system as a router?
->
-> Josh
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
+Haines Brown   
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
