@@ -1,42 +1,121 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Skype and more
-Date: Wed, 30 Mar 2005 15:19:55 +0800
-Message-ID: <200503300719.j2U7JtHw001378@skyinet.net>
+From: "J." <mailing-lists@xs4all.nl>
+Subject: RE: Syscall() vs _syscallN()
+Date: Wed, 30 Mar 2005 15:05:04 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0503301451460.559-100000@hestia>
+References: <000101c534c9$230750c0$90b3c68a@st.com>
+Reply-To: "'Linux Newbie'" <linux-newbie@vger.kernel.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000101c534c9$230750c0$90b3c68a@st.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: 'Linux Newbie' <linux-newbie@vger.kernel.org>
 
-Hi,
+On Wed, 30 Mar 2005, Alex LIU wrote:
 
-Slackware 10.1 kernel 2.4.29
+> Sorry for my unclear words...
+> I want to know the DIFFERENCE between SYSCALL() and _SYSCALLN()...
+> _syscallN() ( _syscall0(),_syscall1(),...._syscall6() ) is a macro defined
+> in include/asm/unist.h while syscall() is a glibc function which I'm not
+> sure. Thanks!
+> 
+> Alex
 
-Sometime ago I reported that skype would not open and at the same time after I 
-had reinstalled slackware 10, xine and totem did not open anymore. Richard 
-Adams then suggested to reinstall slackware w/o the old /usr/local and /home 
-mounted, instead mount them after the installation.
+One is a macro to call the NN'th systemcall directly by symbolic nr. 
+The other is a function in which you have to specify the call number
+yourself and then calls the NN'th systemcall or the systemcall if it's
+not defined in the glbic yet...
 
-Well that worked only until I installed additional programs such as efax after 
-which neither skype nor the other 2 mentioned programs would not open again.
+What distro are u using ? There should be a manual-page that describes the
+difference quite clearly. Unfortunatly documentation of this level in the
+system is often omitted among newer distro's.
 
-When slackware is installed it puts a number of library paths into 
-/etc/ld.so.conf. This list is headed by /usr/local/lib. Now I found that this 
-positioning was the cause of the problems. If I put /usr/local/lib at the end 
-of the list all programs open properly and I can install further new programs 
-w/o any change, meaning all programs keep on opening properly. If I just 
-deactivate /usr/local/lib then naturally programs looking at that path will 
-not open such as siag.
+The NN number you are refering to is nothing more than a symbolic
+Number. 
 
-I just thought I will let the list know in case others have similar 
-experiences, there was one in skype forum.
+############ man page....
+System calls like close() are implemented
+in the Linux libc. This implementation often involves:
 
-Regards
+calling a macro        <---------#!#
+which eventually calls syscall(). Parameters passed to syscall() are the
+number of the system call followed by the needed arguments. The actual
+system call numbers can be found in <linux/unistd.h> while <sys/syscall.h>
+gets updated with a new libc. If new calls appear that don't have a stub
+in libc yet, you can use syscall(). As an example, you can close a file
+using syscall() like this (not advised):
 
--- 
-Peter
+#include <syscall.h>
+
+extern int syscall(int, ...);
+
+int my_close(int filedescriptor)
+{
+   return syscall(SYS_close, filedescriptor);
+}
+
+Bit more clear or .. ?? 
+
+J.
+
+~: man -k syscall
+afs_syscall (2)      - unimplemented system calls
+syscalls (2)         - list of all system calls
+
+ 
+> -----Original Message-----
+> From: linux-newbie-owner@vger.kernel.org
+> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of J.
+> Sent: Tuesday, March 29, 2005 5:36 PM
+> To: Linux Newbie
+> Subject: Re: Syscall() vs _syscallN()
+> 
+> 
+> On Tue, 29 Mar 2005, Alex LIU wrote:
+> 
+> > Hi:
+> > 
+> > With either of syscall() or _syscallN() we can define a system call in 
+> > the user space program.I think they do the same work.What's the 
+> > difference between them? Thanks!
+> > 
+> > Alex
+> 
+> This is described in the manual page for syscalss
+> 
+> ~: man syscalls
+> 
+> .... 164 system calls.. depending on your kernel version.. etc..
+> 
+> Roughly speaking, the code  belonging  to  the  system  call  with  number
+> __NR_xxx  defined  in /usr/include/asm/unistd.h can be found in the kernel
+> source in the routine sys_xxx().  ...... etc...
+> 
+> ......
+> 
+> J.
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org More majordomo info at
+> http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+
+Wednesday, March 30 14:51:46
+
+
+
+--
+http://www.rdrs.net/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
