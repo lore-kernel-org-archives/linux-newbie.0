@@ -1,70 +1,59 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: char-major-6
-Date: Sat, 20 Apr 2002 18:02:20 +0000
+From: Walter Logeman <walter@psybernet.co.nz>
+Subject: Re: USB device installation
+Date: Mon, 22 Apr 2002 03:36:43 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042018022000.00604@unix.pa3gcu>
-References: <m3662o5ol0.fsf@wobble.eth.net> <0204191440500C.04062@unix.pa3gcu> <m34ri6wmth.fsf@wobble.eth.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020421153714.ACAA052721@psybernet.co.nz>
+References: <20020417221621.7E4A052728@psybernet.co.nz> <20020418234908.A06CE5272A@psybernet.co.nz> <00a101c1e7ac$fae6b7a0$0901a8c0@system>
+Reply-To: walter@psybernet.co.nz
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <m34ri6wmth.fsf@wobble.eth.net>
+In-Reply-To: <00a101c1e7ac$fae6b7a0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: G Anna <drguruolai@eth.net>, pa3gcu@zeelandnet.nl
+To: Tom Beer <mailings@analogon.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Saturday 20 April 2002 12:56, G Anna wrote:
-> > Date: Fri, 19 Apr 2002 14:40:50 +0000
-> > From: Richard Adams <pa3gcu@zeelandnet.nl>
-> > Subj: Re: char-major-6
->
-> [snip]
->
-> > I've only seen one reply to this mail, i will try and explain whats
-> > happening and possably shed some light on the other discussion about
-> > devices not being found.
->
-> That supposedly mean that I should have got one more mail on this.
-> But I haven't.  Yours was the only mail I got and it had all the help
-> I needed.  Thanks.
+In Re: USB device installation, on Sat, 20 Apr 2002 02:17, 
+ Tom Beer wrote:
 
-It seems this mailing list has problems at the minute, i suppose as always it 
-will get back to normal soon.
+> You should try to track down which modules are needed for the
+> smartcard drive. A quick web search leaded to no results (for
+> me). The usb modules you installed are for a mouse and a
+> keyboard, as far as I'm concerned.
 
->
-> > The above message is saying that the program modprobe cannot find a
-> > module called "lp" which is char-major-6 (to answer your question),
-> > now either you configured your kernel without lp support or the
-> > needed modules were not installed beforehand, those are; parport and
-> > parport_pc if those are loaded (can be seen with the command
-> > 'lsmod') then you did not configure your kernel with lp module
-> > support.
->
-> I set the CONFIG_PARPORT, CONFIG_PARPORT_PC, CONFIG_PARPORT_PC_CML1
-> and CONFIG_PRINTER to 'm' and recompiled the kernel.  Now everything
-> is working fine.  ;-)
->
-> Thank you very much for the help.
+Hmmm... I cant find a thing, not even to upgrade it for XP.  
+However i wonder if i need it?
 
-I am glad i hit the nail on the head, have a nice weekend.
+It thought the modules i had esp usb-storage did it.  I have been 
+trawling around for instructions and it seems many people get 
+things going with just this module.  But hey, I am a newbie and 
+have no idea.
 
->
-> > Or it could be that IRQ 7 is in use by some other device, check that
-> > with the command 'cat /proc/interrupts'.
->
-> Thankfully, my problem wasn't that difficult!
->
-> (much snipped away)
->
-> Cheers,
-> anna
+But I have the idea that usb-storage should have created the device 
+in dev/  and it did not.  
+
+Or should i link the sda1 (which i have now made to ... something 
+like with my dvd drive:
+
+dvd -> /dev/scd0  
+
+Which makes me think the sm card is a pseudo scsi card... it in 
+turn is linked thus:
+
+scd0 -> scsi/host0/bus0/target0/lun0/cd
+
+There is also a file n that directory called generic
+
+Could that be it?
+
+
+Walter
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Walter Logeman
+Psychotherapist
+http://www.psybernet.co.n
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
