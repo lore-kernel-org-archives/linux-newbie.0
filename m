@@ -1,51 +1,35 @@
-From: Stephen Samuel <samuel@bcgreen.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: How do I stop GUI from autoloading?
-Date: Mon, 19 May 2003 12:07:12 -0700
+Date: Mon, 19 May 2003 21:55:49 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EC92B60.1000406@bcgreen.com>
-References: <20030510100903.GA1586@localhost.localdomain> <20030510160917.GA890@localhost.localdomain> <3EC9198F.9080600@bcgreen.com> <200305192049.41645.pa3gcu@zeelandnet.nl>
+Message-ID: <200305192155.49553.pa3gcu@zeelandnet.nl>
+References: <20030510100903.GA1586@localhost.localdomain> <200305192049.41645.pa3gcu@zeelandnet.nl> <3EC92B60.1000406@bcgreen.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305192049.41645.pa3gcu@zeelandnet.nl>
+In-Reply-To: <3EC92B60.1000406@bcgreen.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Richard Adams <pa3gcu@zeelandnet.nl>
+Content-Type: text/plain; charset="us-ascii"
+To: Stephen Samuel <samuel@bcgreen.com>
 Cc: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-Richard Adams wrote:
-> On Monday 19 May 2003 19:51, Stephen Samuel wrote:
->>Amin wrote:
->>>On Sat, May 10, 2003 at 08:42:05AM -0700, Ray Olszewski
->>>wrote:
+On Monday 19 May 2003 21:07, Stephen Samuel wrote:
 
-> choose Linux it will be highlighted at the :Boot" prompt, add a "1" or a "3" 
-> after it, 1 or 3 is the runlevel if any askes...
-> When booted into one or 3 they are both console modes, do the following;
+> This solution presumes that X startup is controlled by the runlevel.
+> I presume that you know about TurboLinux. I really only know RedHat.
+> Apparently, some versions of Linux use methods other than run level
+> to control X-Windows startup.
 
-> cd /etc
-> vi inittab
-> (Got to something like line 20) a line which looks like);
-> id:4:initdefault:   
-> {OR}
-> id:5:initdefault:
-> Edit that line to;
-> id:3:initdefault:
-> save the file, now on the next boot linux will boot into console mode.
-> 
-> Find your problem at ease now and then when you are sure you can boot properly 
-> change /etc/inittab back to runlevel 4 or 5 which ever your distro uses.
-
-This solution presumes that X startup is controlled by the runlevel.
-I presume that you know about TurboLinux. I really only know RedHat.
-Apparently, some versions of Linux use methods other than run level
-to control X-Windows startup.
+Name one that does not use /etc/inittab, i do not posess to know everything, 
+but i have never seen one which does not use the inittab method.
 
 -- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-Powerful committed communication, reaching through fear, uncertainty and
-doubt to touch the jewel within each person and bring it to life.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
