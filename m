@@ -1,124 +1,64 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: sound problem (was: [no subject])
-Date: Fri, 06 Feb 2004 09:58:33 -0800
+Date: Sat, 07 Feb 2004 15:48:15 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040206093637.01fa5758@celine>
-References: <Your message of "Thu, 05 Feb 2004 08:36:19 PST."  <5.1.0.14.1.20040205081546.01f9a858@celine> <20040206065912.2EB3B1C946@heisspf>
+Message-ID: <20040207074815.935E51C945@heisspf>
+References: <5.1.0.14.1.20040206093637.01fa5758@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040206065912.2EB3B1C946@heisspf>
-References: <Your message of "Thu, 05 Feb 2004 08:36:19 PST."  <5.1.0.14.1.20040205081546.01f9a858@celine>
+In-Reply-To: Your message of "Fri, 06 Feb 2004 09:58:33 PST." 
+ <5.1.0.14.1.20040206093637.01fa5758@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 02:59 PM 2/6/2004 +0800, Peter wrote:
-[...]
->ray@comarre.com said:
-> > for that matter, what "in sound" means
->
->/usr/src/linux make xconfig, then klick on sound
+Thanks! I made it, I have now normal sound in Slackware 9.1
 
-This cannot be a complete description of what you did with respect to the 
-info you posted before  ... since the modules lists you showed us indicated 
-that Slack was using ALSA sound while RH was using OSS sound ... or if it 
-is complete, it hides some omission of consequence.
+First I did make modules, then make modules_install after which I had no more 
+sound. Doing /sbin/insmod soundcore it spit back no such file. Then I found 
+that there is no .../drivers/sound folder. I copied it over from RedHat9. Did 
+insmod soundcore, ac97_codec, via82cxxx_audio and all sounded normally. Then I 
+put those insmod commands into rc.local. Using modprobe I get error no such 
+file soundcore etc.
 
+I do not know if this is a professional solution, but it works.
 
->Well, when I had installed RH9.0 I could not open siam office which I could
->with SW9.1. So I installed the SW 2.4.22 kernel in RH and siam office opened.
->Having the distorted sound in SW to which distro I am planning to migrate
->eventually I put the same sound settings in SW found in RH using make xconfig
->sound. Then I copied the /etc/modules.conf of RH to SW /etc/. That did not
->change anuthing in SW as for distorted sound.
+Now to some of your questions:
 
-"put" them where? And what "sound settings" do you mean? Do you mean you 
-took the portion of the ./.config file created my "make xconfig" under RH 
-into the ./.config file for the Slackware system, then recompiled its 
-kernel? If you don't mean that, you need to be explicit about what you did 
-... all "make xconfig" affects is the ,/.config file used for kernel 
-(including module) conpilation.
+In RedHat xconfig Sound has only one setting, sound card support yes. That is 
+what I put in Slackware and put 'no' on all the other settings which were 
+there. When you mentioned OSS I put that on 'yes' in SW.
 
-After you used make xconfig to tedit ./.config (then recompiled the kernel, 
-then installed the new one, of course), did the list of modules installed 
-by Slackware (output of lsmod, I mean) change to match the RH list? If not, 
-you did something wrong or incomplete here ... your description is too 
-abbreviated for me to guess what.
+ray@comarre.com said:
+> Your problem in Slackware may simply be that you have not used amixer
+> or alsamixer to configure the sound modules correctly
 
-But put all that aside. Your problem in Slackware may simply be that you 
-have not used amixer or alsamixer to configure the sound modules correctly. 
-Out of the box, they typically accept input from too many sources, which 
-can cause the kinds of sound problems you are describing. Run alsamixer and 
-make sure that all inputs, except the ones you are actually using -- 
-probably either "line" or "PCM" -- are muted. Then see if that eliminates 
-your problem.
+I tried tried all kinds of different settings on alsamixer before I went on 
+the list. According to Richard of pa3gcu my problem is well know of ALSA 
+drivers.
 
+ray@comarre.com said:
+> though we customarily treat all 2.4.22 (for example)  kernel sources
+> as the same in these discussions, that is not exactly true
 
->ray@comarre.com said:
-> > Third, what sound card (or mobo sound) is involved?
->
->The motherboard is P4VMM2 ,
->the chipset P4M266/A Northbridge and VT8235 Southbridge,
->Audio - AC'97 Audio Codec on the mobo.
->Celeron 4 processor
->
->
->ray@comarre.com said:
-> > Finally, what use is producing the "very annoying distorted sound" and
-> > what  else can you tell us about its characteristics?
->
->All the .wav files I use for sounds such as opening, closing, iconify etc.
->windows.
->Playing a video CD is plain impossible whereas playing a music CD has no
->distortion.
->The distortion is a continuous scratching and a tapering-off really annoying
->sound.
->
->I went now back into SW9.1 did a make xconfig sound and klicked yes for OSS.
->Now the tapering-off sound is gone, however, the annoying scratch 
->persists. It
->is like an electrical static sound only harder on both speakers. I check the
->wires, the plug, changed speakers; they must be all fine since there is now
->such scratch with the RH9.0 sound system.
+As I mentioned I took the SW kernel 2.4.22 from the Slackware Installation 
+Disk and installed it in RH9 and even in RH7.3. Therefore, I assume that they 
+are the same.
 
-With this change in procedure, do the same modules now load in Slack as in 
-RH? How is this different from what you did the first time (and described 
-above as "I put the same sound settings in SW found in RH using make 
-xconfig") -- did "klicked yes for OSS" not count as part of "the same" the 
-first time around?
+In RH7.3 I had the kernel 2.4.18-7 and could open siag office. When I 
+installed RH9.0 with kernel 2.4.18-9 siag office would not open; don't ask me 
+why and by now I forgot the error message. Since siag office opens in SW9.1 
+with kernel 2.4.22 I put that kernel into RH9.0 and siag office runs again.
 
-Peter -- It's really hard to give you meaningful help when your messages 
-contain inconsistencies like that last one ... you really need to provide 
-more careful and exact descriptions. I've no doubt your actual problem is 
-simple to fix, and it's only this playing of an e-mail analog to blind 
-man's bluff that makes it seem hard or obscure.
+Thanks to your help and patience I am almost ready to fully switch to SW9.1. 
+Sorry for my sometimes not too professional descriptions of facts.
 
-First time around, it was clear that even if you thought you set the two 
-distros up "the same", they were loading different modules. The lsmod 
-output you provided before showed that beyond any debate. This time around, 
-we again need to know if they are now really both running the OSS modules, 
-or if Slack is still trying to use ALSA.
+Regards
 
-Assuming Slack is still using ALSA, you have two choices --
-
-         1. Recompile the Slack kernel, and modify Slack's init scripts, so 
-that Slack uses OSS. For this, you may need help from a Slack user, since 
-its init-script system is far more different from all the other main 
-distros than any two of them are from eaxh other.
-
-         2. Make ALSA work (probably by using alsamixer, as I said above).
-
-One minor aside ... though we customarily treat all 2.4.22 (for example) 
-kernel sources as the same in these discussions, that is not exactly true. 
-I know that Debian kernels ship with a set of standard Debian patches that 
-make them a bit different from "pure" kernel source obtained from, say, 
-kernel.org ... and I *think* the same is true of other big name distros too 
-... RH at least, if not also Slack. This probably does not affect today's 
-problem, but we should remember that kernel sources from different distros 
-are not always exactly the same.
-
-
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
