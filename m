@@ -1,99 +1,133 @@
-From: Eric Bambach <eric@cisu.net>
-Subject: Re: ssh as proxy?
-Date: Wed, 16 Feb 2005 07:40:10 -0600
-Message-ID: <200502160740.10682.eric@cisu.net>
-References: <Pine.LNX.4.58.0502151644180.14569@localhost.localdomain> <200502151847.34392.eric@cisu.net> <Pine.LNX.4.58.0502152144080.14569@localhost.localdomain>
-Reply-To: eric@cisu.net
+From: Ray Olszewski <ray@comarre.com>
+Subject: RE: ADSL connection via RHL 90
+Date: Wed, 16 Feb 2005 09:46:26 -0800
+Message-ID: <5.1.0.14.1.20050216092534.0ba26b78@celine>
+References: <5.1.0.14.1.20050215213034.0ba07d78@celine> <000601c5140a$d6398710$6510ea0a@acbi.local>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-In-Reply-To: <Pine.LNX.4.58.0502152144080.14569@localhost.localdomain>
-Content-Disposition: inline
+In-Reply-To: <000601c5140a$d6398710$6510ea0a@acbi.local>
+References: <5.1.0.14.1.20050215213034.0ba07d78@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: frans@acbi.co.id
+Cc: Linux newbie list <linux-newbie@vger.kernel.org>
 
-On Tuesday 15 February 2005 09:47 pm, you wrote:
-> On Tue, 15 Feb 2005, Eric Bambach wrote:
-> > Yep, you're 95% of the way there.
-> > Instead of the -L option try the -D option. This works to circumven=
-t IRC
-> > restrictions for me in school ;)
-> > Im not too well read on ssh forwarding so I dont know the technical
-> > difference between them, but it seems -D will get you by just fine =
-at
-> > least for web.
-> >
-> > Open console, type ssh -l username -D6667 mysshserver.com
-> >
-> > Then ssh will act as a socks4/socks5 proxy. Set up application
-> > appropriately and it will go!
+OK. In the list below, the ones that involve FQDNs are all returning errors 
+tha indicate a DNS problem. If I am right in recalling that you can ping 
+the ISP's DNS server themselves by their addresses, I would suggest you see 
+if removing the on-LAN DNS server from the list in /etc/resolv.conf fixes 
+this problem. In theory, a host is supposed to check all the DNS servers in 
+the list, but I've found the practice to be a bit less reliable. You 
+**might** simply be seeing a result where the on-LAN DNS server cannot 
+resolve off-LAN addresses.
+
+If that turns out to be the case, post again and I, or others, can suggest 
+options for dealing with this. (The easiest is to reconfigure the on-LAN 
+DNS server so it can do off-LAN name resolution as well as on-LAN, for 
+example by using the ISP's DNS servers as forwarders.)
+
+Below, I comment on the pings by address.
+
+At 04:35 PM 2/16/2005 +0700, frans toruan wrote:
+
+
+># fx > Please tell us the *exact* command you entered and the *exact*
+># fx > message ping
 >
-> Thanks for the feedback. I'm looking for ways to test this out, and i=
-n
-> order to do so I need to be able to close all ports on the test machi=
-ne
-> except 443. Is there some comand(s) I can issue that would do this? T=
-his
-> would be on a workstation, Debianish machine without any sort of fire=
-wall
-> running. Short of a command(s), what would be the simplest way to
-> accomplish this port blocking for testing purposes? Is there a system=
--wide
-> config I could edit?
+>Sorry, truly.
+>
+>These are exact results of ping via RHL :
+>
+>         ping 202.134.0.155 -c 1 :
+>PING 202.134.0.155(202.134.0.155) 56(84) bytes of data.
+>64 bytes from 202.134.0.155: icmp_seq=1 ttl=61 time=375 ms
+>
+>--- 202.134.0.155 ping statistics ---
+>1 packets transmitted, 1 received, 0% packet loss, time 0ms
+>rtt min/avg/max/mdev = 375.192/375.192/375.192/0.000 ms
+>( note : 202.134.0.155 is IP number of ISP's DNS server )
 
-Im not familiar with debian though usually you use iptables rules to cl=
-ose off=20
-your machine. Remember to do this locally! You will lose ssh connection=
-s if=20
-you play with  iptables remotely and without caution ;)
+OK. Good. This, BTW, is what you call in your first message "the external 
+IP number of my ISP". I'm glad to know what you meant by that term.
 
-If you are blocking ALL outbound traffic see below. If you are blocking=
-=20
-traffic coming in, change output to input and dport to sport. Man iptab=
-les=20
-will give you lots of info and there are MANY guides out there to get y=
-ou=20
-started with firewalling. In either case, closing all but one port will=
-=20
-require only two rules.
+If confirms that your system is able to use your LAN gateway 
+(10.234.16.99), as your routing table suggests it should.
 
-#Something like this...havent written iptables rules in a while
-#Set the default policy to REJECT all outgoing connections
-iptables -P output REJECT
-#Add a rule to allow outgoing port 443 traffic
-iptables -A output -p ip --dport 443 -j ACCEPT
+>         ping nsjkt1.telkom.net.id -c 1 :
+>ping: unknown host nsjkt1.telkom.net.id
+>
+>         ping 202.134.2.5 -c 1 :
+>PING 202.134.2.5(202.134.2.5) 56(84) bytes of data.
+>64 bytes from 202.134.2.5: icmp_seq=1 ttl=248 time=407 ms
+>
+>--- 202.134.2.5 ping statistics ---
+>1 packets transmitted, 1 received, 0% packet loss, time 0ms
+>rtt min/avg/max/mdev = 407.694/407.694/407.694/0.000 ms
+>( note : 202.134.2.5 is IP number of ISP's DNS server )
 
-HTH!=20
-> Thanks, James
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Same thing here.
 
---=20
-----------------------------------------
---EB
 
-> All is fine except that I can reliably "oops" it simply by trying to =
-read
-> from /proc/apm (e.g. cat /proc/apm).
-> oops output and ksymoops-2.3.4 output is attached.
-> Is there anything else I can contribute?
 
-The latitude and longtitude of the bios writers current position, and
-a ballistic missile.
+>         ping ns1.telkom.net.id -c 1 :
+>ping: unknown host ns1.telkom.net.id
+>
+>
+>         ping 203.130.196.6 -c 1 :
+>PING 203.130.196.6(203.130.196.6) 56(84) bytes of data.
+>
+>--- 203.130.196.6 ping statistics ---
+>1 packets transmitted, 0 received, 100% packet loss, time 0ms
+>( note : 202.134.196.6 is IP number of ISP's DNS server )
 
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0--Alan Cox LKML-Decembe=
-r 08,2000=20
+Same thing again.
 
-----------------------------------------
+
+>         ping ns2.telkom.net.id -c 1 :
+>ping: unknown host ns2.telkom.net.id
+>
+>
+>         ping 18.7.22.69 -c 1 :
+>PING 18.7.22.69(18.7.22.69) 56(84) bytes of data.
+>
+>--- 18.7.22.69 ping statistics ---
+>1 packets transmitted, 0 received, 100% packet loss, time 0ms
+
+Hmmm ... OK. No explicit error message from ping, just a failure to get a 
+response. (And, just to avoid uncertainty, I confirmed that I can ping this 
+address from here, so it's not a problem at the far end.)
+
+So ... your host *thinks* it has a route to this address.
+
+Can you verify that other hosts on your LAN are able to ping this address? 
+OR the router itself?
+
+You might try ping'ing with more than 1 packet (say -c 5) to make sure you 
+are not seeing some incidental loss.
+
+Definitely try a traceroute to this address and see where you lose 
+connectivity.
+
+Your LAN uses NAT to reach the Internet. (That follows from the subnet-10 
+addresses it uses.) I always assume that the router is set up correctly to 
+NAT the address of the test host, but is there any possible issue there? 
+I'd guess not, since you can reach the ISP's DNS servers, but this problem 
+is just odd enough to make me wonder.
+
+Can you verify that your host can ping the router's gateway address (not 
+its own external address; the default route in its routing table), whatever 
+that address is (you said you had access to the router, so I assume you can 
+check its routing table)?
+
+
+
+
+>         ping mit.edu -c 1 :
+>ping: unknown host mit.edu
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
