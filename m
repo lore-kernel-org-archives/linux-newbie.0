@@ -1,141 +1,89 @@
-From: "Axel H. Siebenwirth" <axel@hh59.org>
-Subject: Configure for a program that uses QT fails
-Date: Thu, 2 May 2002 15:24:17 +0200
+From: sadunn <sadunn@blue.weeg.uiowa.edu>
+Subject: Ethernet Questions
+Date: Thu, 2 May 2002 10:22:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020502132417.GA16613@neon>
+Message-ID: <3CD67364@itsnt5.its.uiowa.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+(I initially posted this to comp.os.linux.help, but none of the advice I 
+received was that helpful. Regardles, I am going to post the replies I 
+received, as well as my replies to them after this message)
 
-I=B4m completely desperate. Several times I have tried to build program=
-s from
-source that use the QT library. Now I again tried to configure kdevelop=
-, but
-it never succesfully finds the qt libraries. I have no idea whats wrong=
-=2E
-Everything should be ok. Every other source I want to configure for a b=
-uild
-and that uses qt fails as well.
+Hello. I am new to Linux, although I purchased Mandrake 7.0 quite a
+while ago. I recently began to desire to know how to operate Linux
+because I began to legitimately want to know about computers, as
+opposed to being a beginning programmer that liked to play around a
+little on them. However, I am unable to connect to the Internet on my
+terminal. I used to Lothar utility to detect my ethernet card, and I
+inputed all the values(Adapter Address, IP, Subnet mask, and Default
+Gateway) into the Network configuration available through DrakConfig.
+I got this data from the Winipcfg program in Win98. These were not
+enough. I went to the Linux ethernet HOW-TO, but none of the
+information  there was on software setup, but it directed me to the
+networking HOW-TO. That, as well, failed to provide me with the
+information that I needed. So then I went to my university Information
+Technology Services(ITS) office, but they told me that they couldn't
+give me any technical support on Linux directly(they appear to have
+some sort of deal with Gateway, Macintosh, and Windows, but not
+Linux-oriented companies), but they did have a small webpage they
+directed me to. I went there, and it was a meager collection of links.
+Through these links I found this newsgroup. Please, I really want to
+get my ethernet running as soon as possible so I can update my kernel
+and OS and begin to learn how Linux really works. Whatever other
+information you need I will try my very best to provide. Thanks!
 
-Please help me! Give me hints on what I could do or check for..
+Response one(by "John"):
 
-Thank you very much in advance,
-Axel Siebenwirth
+You also need your DNS servers' IP addresses, I didn't see that you 
+mentioned this. Without them you can access remote servers only by 
+number, not name. Without DNS, you cannot resolve anything and any 
+attempts to connect to a web site will fail (unless you use the IP 
+address, which is unlikely)
 
-	Here are the errors:
+Can you ping "localhost" or "127.0.0.1"? How about your "real" IP? For 
+example (at a command prompt):
 
-checking for Qt... configure: error: Qt (>=3D Qt 3.0.2) (library qt-mt)=
- not
-found. Please check your installation!
+ping localhost
+ping 127.0.0.1
+ping 12.34.56.78   <--- your real IP here
 
-	config.log:
+Response by "Alex" to response one:
 
-configure:19187: checking for Qt
-configure: 19249: /usr/lib/qt3/include/qstyle.h
-taking that
-tried NO
-configure:19354: rm -rf SunWS_cache; g++ -o conftest -Wnon-virtual-dtor
--Wno-long-long -Wbad-function-cast -Wundef -Wall -pedantic -W
--Wpointer-arith -Wmissing-prototypes -Wwrite-strings -ansi
--D_XOPEN_SOURCE=3D500 -D_BSD_SOURCE -Wcast-align -Wconversion -O2
--fno-exceptions -fno-check-new -I/usr/lib/qt3/include -I/usr/X11R6/incl=
-ude
--DQT_THREAD_SUPPORT  -D_REENTRANT  -L/usr/lib/qt3/lib -L/usr/X11R6/lib
-conftest.cc  -lqt-mt -lpng -lz -lm -ljpeg -ldl  -lXext -lX11 -lSM -lICE
--lresolv -lpthread 1>&5
-/tmp/cclqqmci.o: In function =0Dain':
-/tmp/cclqqmci.o(.text+0x12): undefined reference to =11String::null'
-/tmp/cclqqmci.o(.text+0x17): undefined reference to
-=11StyleFactory::create(QString const&)'
-/tmp/cclqqmci.o(.text+0x27): undefined reference to
-=11Cursor::QCursor[in-charge](int)'
-/tmp/cclqqmci.o(.text+0x2f): undefined reference to =11Cursor::~QCursor
-[in-charge]()'
-/usr/X11R6/lib/libfontconfig.so.1: undefined reference to =06T_Get_Next=
-_Char'
-collect2: ld returned 1 exit status
-configure:19357: $? =3D 1
-configure: failed program was:
-#include "confdefs.h"
-#include <qglobal.h>
-#include <qapplication.h>
-#include <qcursor.h>
-#include <qstylefactory.h>
-#include <private/qucomextra_p.h>
-#if ! (QT_VERSION >=3D 302)
-#error 1
-#endif
+Try to see if your ISP (or wherever you get your Net feed from) uses
+DHCP. This means Dynamic Host Configuration Protocol, and if properly
+set up will automatically assign you your own IP adress and DNS server
+addresses. The software that does this undex Linux is either dhcpcd or
+pump (I think there are perhaps others I have seen). If you use this,
+you do not need to manually configure your internet connection.
 
-int main() {
-    (void)QStyleFactory::create(QString::null);
-    QCursor c(Qt::WhatsThisCursor);
-    return 0;
-}
-configure:19396: error: Qt (>=3D Qt 3.0.2) (library qt-mt) not found. P=
-lease
-check your installation!
+My two responses(One to each person that tried to help me):
+
+My net feed does use dynamic IP's. In my settings, I can select DHCP,
+which was unknown to me before this message. So, after reading this, I
+selected it. I'm not sure if it helped. It didn't do anything with my
+DNS that I can see, and my error message when I try to access a
+webpage still says that it is unable to resolve a name server.
+
+I can ping localhost and 127.0.0.1, but my "real" IP returned a -1
+result. I am almost certain now, after some searching around, that it
+is my DNS that is to blame. The error message I get when I try to
+access a webpage tells me that it cannot resolve the name server,
+which seems to be in line with the DNS advice you gave me. I think
+that my IP is dynamic, not static, so I'm unable to ping the same one
+twice. Also, reading through some more help documentation, I've
+discovered that there is supposed to be a quick network setup wizard,
+but it isn't there.
+
+If anyone on this list can help me, I'd be very happy, indeed. Thanks!
 
 
-	my environment:
-
-QTDIR=3D/usr/lib/qt3
-KDEDIR=3D/opt/kde3
-
-	my libs:
-
-/usr/lib/libqt-mt.so.2 -> qt2/lib/libqt-mt.so.2
-/usr/lib/libqt-mt.so.3 -> ../lib/qt3/lib/libqt-mt.so.3
-
-lrwxrwxrwx    1 root     root            8 Apr 25 00:48 /usr/lib/qt2 ->=
-=20
-qt-2.3.2
-lrwxrwxrwx    1 root     root            8 Apr 15 17:34 /usr/lib/qt3 ->=
-=20
-qt-3.0.3
-
-/usr/lib/qt-2.3.2:
-total 14
-drwxr-xr-x    2 root     root          303 Apr 25 00:48 bin
-drwxr-xr-x    2 root     root           55 Apr 25 00:48 doc
-drwxr-xr-x   76 root     root         1838 Apr 25 00:48 examples
-drwxr-xr-x    4 root     root           77 Apr 25 00:49 extensions
-drwxr-xr-x    2 root     root         8187 Apr 25 00:49 include
-drwxr-xr-x    2 root     root          674 Apr 25 00:49 lib
-drwxr-xr-x    3 root     root           59 Apr 25 00:48 tools
-drwxr-xr-x   16 root     root          366 Apr 25 00:48 tutorial
-
-/usr/lib/qt-3.0.3:
-total 15
-drwxr-xr-x    2 root     root          392 Apr 25 00:50 bin
-drwxr-xr-x    5 root     root          103 Apr 15 17:35 doc
-drwxr-xr-x    3 root     root           59 Apr 21 17:45 etc
-drwxr-xr-x    3 root     root         9244 Apr 23 13:41 include
-drwxr-xr-x    2 root     root          576 Apr 25 00:50 lib
-drwxr-xr-x   52 root     root         1329 Apr 21 17:44 mkspecs
-drwxr-xr-x    6 root     root          135 Apr 21 17:45 plugins
-drwxr-xr-x    2 root     root          196 Apr 25 00:49 templates
-
-qt3/lib> l libqt-mt.*
--rwxr-xr-x    1 root     root     10282078 Apr 21 17:56 libqt-mt.a
-lrwxrwxrwx    1 root     root           17 Apr 15 17:34 libqt-mt.so ->
-libqt-mt.so.3.0.3
-lrwxrwxrwx    1 root     root           17 Apr 15 17:34 libqt-mt.so.3 -=
->
-libqt-mt.so.3.0.3
-lrwxrwxrwx    1 root     root           17 Apr 15 17:34 libqt-mt.so.3.0=
- ->
-libqt-mt.so.3.0.3
--rwxr-xr-x    1 root     root      7554895 Apr 21 17:45 libqt-mt.so.3.0=
-=2E3
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
