@@ -1,58 +1,85 @@
-From: Peter Garrett <peterg@fishinternet.com.au>
-Subject: Re: GTK
-Date: Wed, 21 Apr 2004 08:37:31 +1000
+From: chuck gelm <chuck@gelm.net>
+Subject: ping: unknown host ?
+Date: Tue, 20 Apr 2004 21:17:59 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1082500650.25073.25.camel@DebiAnarchist>
-References: <HBEJLOFMLEPBMAAEFNFDKEPECGAA.azapata@du.edu>
+Message-ID: <4085CBC7.9000908@gelm.net>
+References: <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed;
+ boundary="------------090101040903000702060002"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <HBEJLOFMLEPBMAAEFNFDKEPECGAA.azapata@du.edu>
+In-Reply-To: <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Anna:
+This is a multi-part message in MIME format.
+--------------090101040903000702060002
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
 
-On Wed, 2004-04-21 at 06:17, Anna G. Zapata wrote:
-> Hello all,
-> 
-> I am currently running RH enterprise work station.  Is GTK installed on there, because if it is, I can't manage to find
-> it.  If not, then how do I go about getting it and installed for use?
+Howdy, Y'all:
 
-> Redhat normally ships with GNOME desktop as default. If you have GNOME you have GTK:
-GNOME uses GTK.
+  My host, 'router', seems to not be resolving host names to IP addresses.
 
-If you need to find it and its bits, the easy start way is probably
+  I can ping by IP address, but not by domain name. i.e.
+ping 206.141.251.2
+  is find, whereas
+ping gelm.net
+  fails with error:
+ping: unknown host gelm.net.
 
-1. Run "updatedb" from the command line as root
-2. type "locate gtk | more"
+This is my router (DSL<>LAN) and is functioning as the local
+domain name server, but cannot serve its self. ?
 
-(those commands without the quotes, of course)
+Attached is the output of
+netstat -r
+route -n
+resolv.conf
 
-I suspect this will give you plenty of gtk related files to look at...
-*grins*. Hit the space bar to see "more"... I don't know if this is what
-you need to know, so please don't be insulted if I assumed you wouldn't
-know these things...
+  What is not working?
 
-Hope that helps, at least...
+Chuck
 
-Peter
+--------------090101040903000702060002
+Content-Type: text/plain;
+ name="netstat.txt"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="netstat.txt"
 
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+68.254.31.254   *               255.255.255.255 UH        0 0          0 ppp0
+localnet        *               255.255.255.0   U         0 0          0 eth0
+loopback        *               255.0.0.0       U         0 0          0 lo
+default         68.254.31.254   0.0.0.0         UG        0 0          0 ppp0
 
-> Thanks.  Please let me know if I forgot any other pertinent information.
-> 
-> Anna Zapata
-> UTS - Network Security
-> 303.871.2009
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
--- 
+--------------090101040903000702060002
+Content-Type: text/plain;
+ name="resolv.txt"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="resolv.txt"
+
+nameserver 206.141.251.2
+
+--------------090101040903000702060002
+Content-Type: text/plain;
+ name="route.txt"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="route.txt"
+
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+68.254.31.254   0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
+192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+127.0.0.0       0.0.0.0         255.0.0.0       U     0      0        0 lo
+0.0.0.0         68.254.31.254   0.0.0.0         UG    0      0        0 ppp0
+
+--------------090101040903000702060002--
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
