@@ -1,48 +1,43 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
-Subject: re: LVM, was RAID (was  Samba something)
-Date: 09 Oct 2002 20:41:42 -0400
+From: azie <azie@kawan.net>
+Subject: Setting up CD-RW
+Date: Thu, 10 Oct 2002 09:41:51 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034210503.32519.33.camel@goldfinger.orbdesigns.com>
-References: <200210092310.g99NA7d10263@firebin.net>
+Message-ID: <200210100941.51738.azie@kawan.net>
+Reply-To: azie@kawan.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210092310.g99NA7d10263@firebin.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-On Wed, 2002-10-09 at 19:11, Alan Womack wrote:
-> I assume you are using them in a raid, are you using an IDE controller, 
-> if so which one or are you using RAID within the kernel itself.  e.g.
-> software only raid.
+Hello,
 
-No, actually. This is just a staging server - we backup from production
-solaris and linux boxes to this one, then from the staging server to
-tape. So we did the easy thing to make sure we didn't run out of
-storage. Other than a 3 Gig root and a 1 gig swap, everything's in a
-single 464G LVM partition. Woo Hoo. Makes for an interesting df listing,
-rather startling to someone who doesn't know...
+I just bought a CD-RW and I can't seems to make it work with Linux. I'm=
+=20
+running RH7.3 dualboot with XP Home Edition. As for the CD-RW, it's a T=
+DK=20
+Cyclone with E-IDE/ATAPI Interface connected to secondary master (hdc).
 
-> Having 4 devices vs 2 devices is a tough decision, more possibility 
-> for individual failure, more power consumption vs. more and
-> flexibility. :)
+Everytime I tried the command "cdrecord -scanbus", the result would be =
+:
 
-Indeed. With everything in a large LVM, the MTPF is quartered. But then,
-it's set up just as the client directed, risks taken into consideration.
+[root@localhost root]# cdrecord -scanbus
+Cdrecord 1.10 (i686-pc-linux-gnu) Copyright (C) 1995-2001 J=F6rg Schill=
+ing
+cdrecord: No such file or directory. Cannot open SCSI driver.
+cdrecord: For possible targets try 'cdrecord -scanbus'. Make sure you a=
+re=20
+root.
 
-regards,
+Could anyone help me?
 
-.brian
+Thanks.
 
--- 
-Brian Bilbrey && bilbrey@orbdesigns.com && http://www.orbdesigns.com/
-	The guy has a reality distortion field generator 
-	the size of the state of Rhode Island. 
-                                 - Daniel Gray
-
+- azie -
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
