@@ -1,41 +1,47 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: RAM and swap partition
-Date: Sun, 08 Dec 2002 07:58:45 -0800
+Subject: Re: tar for "full" floppy backup?
+Date: Sun, 08 Dec 2002 08:05:39 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021208075330.020a30f0@celine>
-References: <20021208002415.24931.qmail@web11406.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20021208075857.020abb30@celine>
+References: <200212070919.CAA12532@cu.imt.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MSGID_110=3a301=2f11_3df34b71@linuxnet>
+In-Reply-To: <MSGID_110=3a301=2f11_3df25576@linuxnet>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 01:15 PM 12/8/02 +0000, Rolf Edlund wrote:
->Originally to: james niland
+At 08:08 PM 12/7/02 +0000, Rolf Edlund wrote:
+>Originally to: Jerry James Haumberger
 >
 >
->  jn> I know some people who run happily without a swap at all.
+>  JH> The question remains:  How can I back up -- with tar or any other
+>  JH> Slackware 3.5 program -- my 9 MBs of files from the BasicLinux
+>  JH> console with multiple floppies?  And in compressed format?
 >
->How low RAM can I use, without running a swap ? Can I for example do it on 
->a 486
->with 4 MB RAM ?
+>One of these commands..
+>
+>  # man tar
+>  # info tar
+>  # tar --help
+>
+>..will give you all information you need about your tar version.
 
+"all" information? Hardly. Neither "man tar" nor "tar --help" gave *me* 
+enough information to be able to answer his original question (though it 
+did point me to the -M option, which I suggested trying), and my system 
+(like many; it really has not caught on, despite pressure from the FSF 
+crowd) does not even have the "info" system installed. (Does BasicLinux 
+install it?)
 
-The way you ask this question, it has no real answer. How little memory a 
-system can run with depends on what tasks it is doing. And the choice of 
-CPU is pretty much irrelevant to this question (its only slight relevance 
-is in the smaller size of CPU-specific kernels).
+FSF does have a tar tutorial available online 
+(http://www.gnu.org/manual/tar-1.12/html_chapter/tar_toc.html), but even it 
+doesn not answer the original question very clearly.
 
-That said ... running any sort of Linux system in less than 8 MB of real 
-(not swap) RAM poses special challenges ... most modern distros can't even 
-install on such systems (only Slackware, I think, still offers a "low 
-memory" install option) and you won't be able to do much with such a 
-system. In practice, the smallest systems I've ever run without swap were 
-486s with 16 MB of RAM, and that was for special purpose systems like 
-routers. While these days I routinely run my workstations without a swap 
-partition, they have at least 256 MB of RAM.
+So this was almost a textbook example of a good question for this list ... 
+one that needs more than RTFM answers, but a response (which it eventually 
+elicited) from someone who could provide an example of how to do it.
 
 
 --
