@@ -1,35 +1,74 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: kernel 2.6.4 report, further assistance requests
-Date: Wed, 14 Apr 2004 09:26:07 -0500 (CDT)
+From: John Kelly <bilbo@waitrose.com>
+Subject: Re: fedora and how to get mass storage devices (memory card readers) to work
+Date: Wed, 14 Apr 2004 18:16:41 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0404140920200.2613@debian-emach>
-References: <Pine.LNX.4.58.0404121355350.673@debian-emach> <407B2158.6070702@jpl.nasa.gov>
- <Pine.LNX.4.58.0404122152500.688@debian-emach> <407B7EE3.4000206@comcast.net>
- <Pine.LNX.4.58.0404130954380.1012@debian-emach> <Pine.LNX.4.58.0404131215470.743@debian-emach>
- <Pine.LNX.4.58.0404131814170.4215@debian-emach> <407CA44E.5020900@sancharnet.in>
- <Pine.LNX.4.58.0404132144580.4215@debian-emach>
+Message-ID: <20040414181641.137a5e65.bilbo@waitrose.com>
+References: <20040413025903.GD3579@panix.com>
+	<20040413171659.03c65dda.bilbo@waitrose.com>
+	<20040414023454.GA10063@panix.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0404132144580.4215@debian-emach>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040414023454.GA10063@panix.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Just to bring to an end this gruesome tale, I offer the following.  The
-vmware developer who monitors the forum and lives in the Czech Republic
-mentioned that he had gotten vmware modules to compile using the latest
-patch under a 2.6.5 kernel.  Since the 2.6.5 kernel has now become
-available on Sid mirrors (don't know since when, but recently), I decided
-to test it and see if the compile would succeed under 2.6.5 where it had
-failed under 2.6.4.  Sure enough, it worked.  So, I now have vmware
-working, the PC speaker working - and everything else on the system, so
-far as I can tell - with better mouse action and a snappier system under
-the 2.6.x kernel.  I think I'll probably stick with it now.  Thanks for
-your input.
+Hi,
 
-Sincerely, James
+On Tue, 13 Apr 2004 22:34:55 -0400
+Rei Shinozuka <shino@panix.com> wrote:
 
+> well, lsmod did show:
+> 
+> 
+> Module                  Size  Used by    Tainted: P  
+> usb-storage            75136   0 
+> ....
+> 
+> and interestingly, usbview
+> showed the the card reader is recognized:
+> 
+> http://www.shinozuka-family.com/USBViewer.jpg
+> 
+> but the last 2 commands return errors:
+> 
+> [root@tuxedo root]# mount -t usbdevfs 0  /proc/bus/usb
+> mount: 0 already mounted or /proc/bus/usb busy
+> mount: according to mtab, usbdevfs is already mounted on
+> /proc/bus/usb[root@tuxedo root]# mount -t vfat /dev/sda1 /mnt/usb/
+> mount: /dev/sda1 is not a valid block device
+> [root@tuxedo root]# 
+> 
+> i feel we are getting closer!!
+> 
+> thanks,
+> 
+The error you get while trying to mount usbdevfs is a good thing - it
+shows ussbdevfs is already mounted. Well there is one other thing, is
+generic SCCI support enabled? This can be compiled into the kernel or
+loaded as a module. lsmod should show the generic SCCI module as sg.
+For example on my system, I get:
+
+jpk@debian:~$ /sbin/lsmod | grep sg
+sg                     24420   0 (unused)
+
+And if SCCI support is in the kernel (either as a module or compiled
+in) and you still get an error trying to mount /dev/sda1, then I would
+suggest trying to mount another SCCI drive. ie. Try
+mount -t vfat /dev/sda2 /mnt/usb/
+or 
+mount -t vfat /dev/sdb1 /mnt/usb/
+
+I am not sure but I seem to recall that with generic scci, the first
+'thingy' to use it gets the first scci device ie /dev/sda and the next
+'thingy' gets the next scci device. So if something is using /dev/sda1
+- for example a cd writer - then the usb device will be the next
+available scci device. 
+
+regards,
+
+John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
