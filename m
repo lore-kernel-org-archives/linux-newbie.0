@@ -1,65 +1,68 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: vsftpd
-Date: Wed, 21 May 2003 08:20:45 -0700
+From: Pawan Deepika <pawan_deepika@yahoo.com>
+Subject: [linux-2.4.18] some doubt in via-rhine.c
+Date: Wed, 21 May 2003 09:14:49 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030521081353.01e985f0@celine>
-References: <76c0f2.b4bb18@tcob1.net>
+Message-ID: <20030521161449.83488.qmail@web41610.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <76c0f2.b4bb18@tcob1.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Robert.Couture@p0.f2000.n229.z1.fidonet.org
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-There's a linux.newbie newsgroup? You learn something new every day. I'm 
-cc'ing the mailing list rather than the newsgroup, since that is how the 
-question reached me.
+Hi,
 
-Anyway ... you didn't search hard enough on the Internet. The vsftpd home 
-site (the first thing listed in a Google search on "vsftpd") has a FAQ (at 
-URL ftp://vsftpd.beasts.org/users/cevans/untar/vsftpd-1.1.3/FAQ) and this 
-is in it:
+ I am learning device driver only now. I was going
+through the source code in via-rhine.c. What I
+understand till now is that in Memory-mapped devices,
+I/O operation is performed using
+read(b/w/l)/write(b/w/l) functions while in IO mapped
+devices(port based device) it is done using
+in/out(b/w/l). Am I right?
 
->Q) Help! I'm getting the error message "refusing to run with writable 
->anonymous
->root".
->A) vsftpd is protecting against dangerous configurations. The cause of this
->message is usually dodgy ownership of the ftp home directory. The home
->directory should NOT be owned by the ftp user itself. Neither should it
->be writable by the ftp user. A way to fix this is:
->chown root ~ftp; chmod -w ~ftp
+But in via-rhine.c I notice use of inb and outb even
+in memory mapped case(code is shown below)
 
-I don't use vsftpd myself (in fact, I hadn't heard of it prior to this 
-message) ... so if that answer doesn't help you, I can't provide any 
-further assistance if you have trouble making this work, unless you provide 
-very clear details about what you tried and what went wrong.
+------------------------------------------------------
+#ifdef USE_MEM
+530 static void __devinit enable_mmio(long ioaddr, int
+chip_id)
+531 {
+532         int n;
+533         if (chip_id == VT3043 || chip_id ==
+VT86C100A) {
+534                 /* More recent docs say that this
+bit is reserved ... */
+535                 n = inb(ioaddr + ConfigA) | 0x20;
+536                 outb(n, ioaddr + ConfigA);
+537         } else if (chip_id == VT6102) {
+538                 n = inb(ioaddr + ConfigD) | 0x80;
+539                 outb(n, ioaddr + ConfigD);
+540         }
+541 }
+542 #endif
+-----------------------------------------------------
 
-At 10:24 PM 5/20/2003 +0000, Robert.Couture@p0.f2000.n229.z1.fidonet.org wrote:
->The following message is a courtesy copy of an article
->that has been posted to linux.newbies as well.
->
->Hello All!
->
->I am having a problem setting up vsftpd with anonymous access.  I keep getting
->the following error:
->
->500 OOPS: vsftpd: refusing to run with writable anonymous root
->
->I am stumped as to what this means.  I have tried all sorts of games with
->setting permissions, but nothing seems to work.
->
->The man pages do not address this issue and searches on the internet do not
->reveal anything to resolve the problem.  As a newbie user, I sure could use a
->detailed cure for this.  :)
->
->I am running RH 9.0 and the vsftpd root is the standard /var/ftp
->
->Thanks in advance!
+Can anyone tell me how does it work here? Also, don't
+we need to allocate I/O ports(using request_region() )
+before performing any inb/outb operations?
+
+Please advise.
+
+Can anyone also suggest me good pointers to get some
+detailed information about issues like what does
+happen when ioremap() is called and when is it
+neccessary to do this?
+
+Thanks & regards,
+Deepika
 
 
 
+__________________________________
+Do you Yahoo!?
+The New Yahoo! Search - Faster. Easier. Bingo.
+http://search.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
