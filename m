@@ -1,33 +1,61 @@
-From: "Yawar Amin" <yav_a@hotmail.com>
-Subject: Automatic window tiling
-Date: Mon, 02 Dec 2002 15:34:45 +0600
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Project management
+Date: Mon, 2 Dec 2002 09:06:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F173OBhuEvUoS3gQS730001ccab@hotmail.com>
+Message-ID: <004901c29a0c$04d97380$64fea8c0@pkrausxp>
 Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_004A_01C299E2.1C036B80"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hey all:
+This is a multi-part message in MIME format.
 
-Does anyone know how to set up the desktop environment in RH 7.3 using
-GNOME/Nautilus such that all the open windows automatically tile themselves 
-to cover up all the space on the desktop, so that the desktop itself is 
-never visible? This should work in such a way that the windows themselves 
-can be moved around and resized, but never so that the desktop is visible. 
-Is this possible? I think it's a pain having to tile windows "manually" all 
-the time, and I never use the desktop shortcuts anyway.
+------=_NextPart_000_004A_01C299E2.1C036B80
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 
-Yawar
+Are there any good professional level project management tools for
+Linux?
 
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
+------=_NextPart_000_004A_01C299E2.1C036B80
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
-_________________________________________________________________
-The new MSN 8: smart spam protection and 2 months FREE*  
-http://join.msn.com/?page=features/junkmail
+------=_NextPart_000_004A_01C299E2.1C036B80--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
