@@ -1,60 +1,36 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: bash scripts creating log files
-Date: Tue, 17 Sep 2002 14:13:24 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: very newbie
+Date: Tue, 17 Sep 2002 15:23:49 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020917140646.00b38818@interzone.anexia.co.uk>
-References: <1032261353.7489.17.camel@Zebra>
+Message-ID: <0209171523490B.03392@unix.pa3gcu>
+References: <0E253E40DC78F4499CEDDE9223099F43039CB6D6@xcgva040.northgrum.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1032261353.7489.17.camel@Zebra>
+In-Reply-To: <0E253E40DC78F4499CEDDE9223099F43039CB6D6@xcgva040.northgrum.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Yelland, Michael" <MYelland@northropgrumman.com>, "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-At 12:15 17/09/2002 +0100, Paul Furness wrote:
->Hi, everyone.
->
->I'm trying to write a bash script which is basically a wrapper around a
->number of other commands.
->
->What I _want_ to do is basically _copy_ stdout and stderr to a log file.
->
->Thus, when I run a command, I wans the stdout and stderr to go to
->wherever called the script (eg an interactive terminal) but I _also_
->want it to go to a log file.
->
->I can do it easily for things I'm echoing in my own script by writing a
->function like this:
->
->
->        function ECHO
->        {
->            echo $1
->            echo $1 >> ${Logfile}
->        }
->
->and then any messages which I generate I use ECHO instead of echo:
->
->        ECHO "This is a message"
->
->What I can't figure out is how do I redirect the output of the things
->I'm running to the same 2 places?
+On Monday 16 September 2002 21:53, Yelland, Michael wrote:
+> I installed RHS 7.1 but ifconfig has no idea where my 3Com eth III
+> is...what to do ?  I'm learning unix quickly :)
 
-There is a command called "tee" which will pipe data to a file and stdout/stderr at the same time
 
-you do:
+Is this card an ISA ethernet card as desribed in the Configure.help file in 
+the kernel source.?
+3c509/3c529 (MCA)/3c579 "EtherLink III"  support
+???
 
-         someprog | tee /tmp/some.log.file
+If so do you know the addresses of the card. IRQ and I/O ??
+Most problems with ISA cards happen not to be linux not finding the card but 
+because one did not resurve an IRQ for it in the motherboards BIOS.
 
-The output of someprog is sent to stdout/stderr and the file /tmp/some.log.file
-
-You can then do what you like with stdout/stderr as normal.
-
-tee should be installed as it comes with sh-utils package.
-
---
-Carl
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
