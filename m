@@ -1,37 +1,54 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: IRC Channels?
-Date: Wed, 18 Sep 2002 13:50:23 +0100
+From: Jim Reimer <wa5rrh@arrl.net>
+Subject: Re: IP command, was SuperNwebie.
+Date: Wed, 18 Sep 2002 09:02:49 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020918134801.00b99d30@interzone.anexia.co.uk>
-References: <006801c25f0c$31cb79a0$64fea8c0@pkrausxp>
+Message-ID: <200209181401.g8IE1bEl004511@franklin.icok.net>
+References: <5.1.0.14.1.20020917131025.026cf820@celine> <0209180552260D.03392@unix.pa3gcu> <3D885065.B7DB08C8@gelm.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <006801c25f0c$31cb79a0$64fea8c0@pkrausxp>
+In-Reply-To: <3D885065.B7DB08C8@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
 
-At 08:09 18/09/2002 -0400, Paul Kraus wrote:
->Are there any good newbie IRC servers:channels that will have relevant
->discussions for newbie's?
+It may be there but not in your path:
+
+[jdr@pyro2 jdr]$ ip -V
+bash: ip: command not found
+[jdr@pyro2 jdr]$ /sbin/ip -V
+ip utility, iproute2-ss001007
+
+-jdr-
+
+On Wednesday 18 September 2002 05:07 am, Chuck Gelm wrote:
+> :/share/tmp# ip -V
 >
->Paul Kraus
->Network Administrator
->PEL Supply Company
->216.267.5775 Voice
->216-267-6176 Fax
->www.pelsupply.com
-
-Debian have them for it's users.
-
-See http://www.debian.org/support#irc
-
-This page also mentions other linux based channels.
-
---
-Carl
-
+> bash: ip: command not found
+>
+>  on my Slackware v8.0 install
+>   (A-AP-D-K-N disksets).
+>
+> :-|
+>
+> Chuck
+> p.s. Thanks, Ray & Richard & others, for the years of helpful
+> advice on this list. :-)
+>
+> pa3gcu wrote:
+> > On Tuesday 17 September 2002 20:28, Ray Olszewski wrote:
+> > > Some distros use the command "ip" instead. I believe "ip link" is the
+> > > way to get interface info.
+> >
+> > Ray, i dont want to conradict you but, "ip" is a linux command so i cant
+> > see how it could be a distro spesific command, mind you i am not saying
+> > that it is not either.
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
