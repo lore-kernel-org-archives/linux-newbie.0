@@ -1,72 +1,41 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: telnet,rsh,rexec
-Date: Sun, 1 Feb 2004 20:10:53 +0100
+From: Thorsten Alge <mail@thorsten-alge.de>
+Subject: usb-storage
+Date: Mon, 02 Feb 2004 17:59:44 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402012010.53988.pa3gcu@zeelandnet.nl>
-References: <20040201163539.67005.qmail@web60607.mail.yahoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <1075668862.6528.4.camel@Abydos>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040201163539.67005.qmail@web60607.mail.yahoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>, linux-newbie@vger.kernel.org
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Sunday 01 February 2004 17:35, Ravi Kumar Munnangi wrote:
-> hi users,
->
->  My system IP is 172.31.19.22.
->  When I try to telnet to my system, I get
->
->    Trying 172.31.19.22...
-> Connected to localhost.localdomain (172.31.19.22).
-> Escape character is '^]'.
-> Connection closed by foreign host.
->
->
-> Can any one guess the reason.
+hi,
 
-I gave up guessing years ago, give us more infomation, that way we can help 
-you otheriwse no help is possable without guessing witch is AFAIK bad.
+i have some problems with my USB-Harddisk. When i plug it in, i got the
+following errors:
 
-1) Disto version and number.
-2) Output of netstat -l
-3) Output of ipchains -nL or iptables -nL (which ever is in use)
-     You see i have to guess and give more than one command because you did
-     not supply information.
-4) Relevant parts of /var/log/messages or syslog, once again you did not say 
-     which distro you use so i have to give multiple choose questions.
+hub.c: new USB device 00:09.3-6.1, assigned address 3
+usb.c: USB device 3 (vend/prod 0x5e3/0x702) is not claimed by any active
+driver.
+Initializing USB Mass Storage driver...
+usb.c: registered new driver usb-storage
+scsi1 : SCSI emulation for USB Mass Storage devices
+  Vendor: FUJITSU   Model: MHR2030AT         Rev: 0811
+  Type:   Direct-Access                      ANSI SCSI revision: 02
+Attached scsi disk sda at scsi1, channel 0, id 0, lun 0
+SCSI device sda: 58605120 512-byte hdwr sectors (30006 MB)
+ sda:<6>Device not ready.  Make sure there is a disc in the drive.
+usb_control/bulk_msg: timeout
+...
+usb_control/bulk_msg: timeout
 
-> Can the reason be something related to security.
+I dont know how to fix it. can anyone help??
 
-Possably.
 
-> How can I change the default security settings?
+thanks, 
 
-Who knows thats distro indeipendant..
-
-> ON my system the security level is always showing
->  as high and tried to change it to medium and
-> customise
-> But it is always at high level. How can I change this?
-
-God only knows, no info period.....
-
->
-> Thanks in advance,
-> ravikumar
->
---
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+thorsten
 
 
 -
