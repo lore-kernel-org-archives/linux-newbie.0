@@ -1,42 +1,69 @@
-From: lawson_whitney@juno.com
-Subject: Re: ncurses
-Date: Sat, 20 Apr 2002 12:03:17 -0400 (EDT)
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: char-major-6
+Date: Sat, 20 Apr 2002 18:02:20 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020420.123226.134669216.0.lawson_whitney@juno.com>
-References: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
+Message-ID: <02042018022000.00604@unix.pa3gcu>
+References: <m3662o5ol0.fsf@wobble.eth.net> <0204191440500C.04062@unix.pa3gcu> <m34ri6wmth.fsf@wobble.eth.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
+In-Reply-To: <m34ri6wmth.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: inavaganza@yahoo.com, lawson_whitney@juno.com
+Content-Type: text/plain; charset="us-ascii"
+To: G Anna <drguruolai@eth.net>, pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-On Thu, 18 Apr 2002, glen wrote:
-
-> I am trying to use the menuconfig command to upgrade
-> my kernel.  It returns the error that I need Ncurses
-> installed.  I installed Ncurses and ran ldconfig.  I
-> still get the error:
+On Saturday 20 April 2002 12:56, G Anna wrote:
+> > Date: Fri, 19 Apr 2002 14:40:50 +0000
+> > From: Richard Adams <pa3gcu@zeelandnet.nl>
+> > Subj: Re: char-major-6
 >
-> rm -f include/asm
-> ( cd include ; ln -sf asm-i386 asm)
-> make -C scripts/lxdialog all
-> make[1]: Entering directory
-> `/usr/src/linux/scripts/lxdialog'
-> /usr/bin/ld: cannot find -lncurses
-> collect2: ld returned 1 exit status
+> [snip]
 >
-make menuconfig compiles a program that uses ncurses.  To do that on an
-rpm-based system, you need to install both ncurses and ncurses-devel.
-You need ncurses to run a program that uses ncurses, and ncurses-devel
-to compile such a program on your system.
+> > I've only seen one reply to this mail, i will try and explain whats
+> > happening and possably shed some light on the other discussion about
+> > devices not being found.
+>
+> That supposedly mean that I should have got one more mail on this.
+> But I haven't.  Yours was the only mail I got and it had all the help
+> I needed.  Thanks.
 
-Lawson
+It seems this mailing list has problems at the minute, i suppose as always it 
+will get back to normal soon.
 
-Only guessing, of course.
+>
+> > The above message is saying that the program modprobe cannot find a
+> > module called "lp" which is char-major-6 (to answer your question),
+> > now either you configured your kernel without lp support or the
+> > needed modules were not installed beforehand, those are; parport and
+> > parport_pc if those are loaded (can be seen with the command
+> > 'lsmod') then you did not configure your kernel with lp module
+> > support.
+>
+> I set the CONFIG_PARPORT, CONFIG_PARPORT_PC, CONFIG_PARPORT_PC_CML1
+> and CONFIG_PRINTER to 'm' and recompiled the kernel.  Now everything
+> is working fine.  ;-)
+>
+> Thank you very much for the help.
 
+I am glad i hit the nail on the head, have a nice weekend.
+
+>
+> > Or it could be that IRQ 7 is in use by some other device, check that
+> > with the command 'cat /proc/interrupts'.
+>
+> Thankfully, my problem wasn't that difficult!
+>
+> (much snipped away)
+>
+> Cheers,
+> anna
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
