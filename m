@@ -1,43 +1,40 @@
 From: James Hatridge <James.Hatridge@epost.de>
-Subject: Re: Slack9.0/Atapi-ZIP250???
-Date: Sun, 29 Jun 2003 09:54:32 +0200
+Subject: Trading stuff SuSE 8.2 for.....
+Date: Sun, 29 Jun 2003 15:41:32 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306290954.38827.James.Hatridge@epost.de>
-References: <20030628151407.A244@lnx2.w8mch.ampr.org>
+Message-ID: <200306291541.43665.James.Hatridge@epost.de>
 Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030628151407.A244@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com, linux-newbie@vger.kernel.org
+To: Newbie <linux-newbie@vger.kernel.org>
 
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-Hi all....
-On Saturday 28 June 2003 21:14, Hal MacArgle wrote:
-> Greetings: Several days; RTFM, FAQ's, HOW-TO's - no joy...
->
-> This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
-> internal, as /dev/sda4, as long as I insmod ide-scsi.o.. ( That file
-> also installs sd_mod.o )..
+HI all...
 
-You're doing this wrong. I have the Atapi Zip100 internal. It does not need 
-the ide-scsi.co. Just set it up like this:
+I've got a copy of SuSE 8.2 (5 disks) that I would like to trade with someone. 
+I'm looking for these parts:
 
-/dev/hdc4       /zip            auto    noauto,user 0 0
+AMD K6 300mhz CPU
+or
+Mother Board for an AMD Athlon 500mhz CPU (this CPU I have)
+or
+any MoB/CPU combo of around 500mhz (or better)
+or
+Memory chips of at least 128mb each
+or
+IDE Hard Disks of over 10gb (bigger the better)
 
-You only need the scsi stuff when using the external type Zip (which I also 
-have). 
+IF you have anything that you think I might be interested in email me 
+off-list. 
 
-Hope this helps,
-
+Thanks
 
 JIM
-
-
 
 Jim Hatridge
 Linux User #88484
@@ -58,9 +55,9 @@ Read about new German stamps each quarter:
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.0.7 (GNU/Linux)
 
-iD8DBQE+/ps8v3Z9K7QSWt4RAlLKAJ4wfG1cibPhlPMUysTMu9YYEumpVQCg1s54
-YexYqQ8M5l6nspA3Fq62bL4=
-=nrxX
+iD8DBQE+/uyVv3Z9K7QSWt4RAkopAKC78ZtFXTOTrHCQ0umjL/iYEHGHQACePVrP
+FCAD62xEJ7eSphKMYbW+Cck=
+=y/T9
 -----END PGP SIGNATURE-----
 
 -
