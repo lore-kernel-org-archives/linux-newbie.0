@@ -1,55 +1,29 @@
-From: "Michael French" <mfrench@ashevillemail.com>
-Subject: Re: NT_STATUS_ACCESS_DENIED
-Date: Tue, 23 Sep 2003 16:01:38 -0700
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: fast and slow handlers
+Date: Wed, 24 Sep 2003 17:23:43 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001101c38226$a57b8690$0b9f0c0a@savvis.ad.savvis.net>
-References: <3F69538E0000279A@mail-bcm01.alestra.net.mx>
+Message-ID: <7f4ef27f970a.7f970a7f4ef2@homemail.nyu.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ricardo Gomez <rgomez@bancomer.com>
-Cc: linux-newbie@vger.kernel.org, linux-admin@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-    Not knowing all the variables to your system, the best thing I can do is
-point you at a couple of good tutorials that IBM put together.  The first
-one is on configuring Samba.  It favors AIX, but the principles are the
-same.  The second one is on setting up Samba as a PDC but it also has a
-section on configuring the Windows clients to connect to the Linux box.
-Hope they help you out some:
+Hi,
+I dont know if this is the right place to ask this question.
+I am confused by this explaination of fast and slow handlers.
 
-http://publib-b.boulder.ibm.com/Redbooks.nsf/RedbookAbstracts/sg246004.html?Open
-http://www-1.ibm.com/servers/esdd/tutorials/samba.html
+"A fast handler runs with interrupt reporting disabled in the microprocessor, and the interrupt being serviced is disabled in the interrupt controller. The handler can nonetheless enable reporting in the processor by calling sti.
 
-Michael
------ Original Message ----- 
-From: "Ricardo Gomez" <rgomez@bancomer.com>
-To: <unlisted-recipients:>; <no To-header on input>
-Cc: <linux-newbie@vger.kernel.org>; <linux-admin@vger.kernel.org>
-Sent: Tuesday, September 23, 2003 3:24 PM
-Subject: NT_STATUS_ACCESS_DENIED
+A slow handler runs with interrupt reporting enabled in the processor, and the interrupt being serviced is disabled in the interrupt controller."
 
+Is the interrupt controller some special device for handling all interrupts? why is the interrupt being serviced being disabled in it?
 
-> I'm trying to conect my Linux into a Windows Network with SAMBA,
-> but when I try to list shares fom  resource I recive this message
-> "Error returning browse list: NT_STATUS_ACCESS_DENIED" any idea.
->
-> My username an password in my linux are the same that I have in
-> the Windows Domain, I used smbpasswd to add my user and password.
->
->
-> Tks for your help and sorry about my English.
-> Ricardo
->
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-admin" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
+Thanks,
+Anshuman
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
