@@ -1,59 +1,69 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Gnumeric won't open
-Date: Fri, 19 Mar 2004 16:16:52 +0100
+Date: Fri, 19 Mar 2004 08:03:15 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403191616.52655.pa3gcu@zeelandnet.nl>
+Message-ID: <5.1.0.14.1.20040319073212.01fa6df0@celine>
 References: <20040319084348.6D5CD1CF1E@heisspf>
-Reply-To: pa3gcu@zeelandnet.nl
+ <20040319084348.6D5CD1CF1E@heisspf> <200403191616.52655.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040319084348.6D5CD1CF1E@heisspf>
-Content-Disposition: inline
+In-Reply-To: <200403191616.52655.pa3gcu@zeelandnet.nl>
+References: <20040319084348.6D5CD1CF1E@heisspf>
+ <20040319084348.6D5CD1CF1E@heisspf>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "Peter H." <heisspf@skyinet.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Friday 19 March 2004 09:43, Peter H. wrote:
-> Hi,
+At 04:16 PM 3/19/2004 +0100, pa3gcu wrote:
+>On Friday 19 March 2004 09:43, Peter H. wrote:
+> > Hi,
+> >
+> > in slackware 9.1 suddenly gnumeric-1.2.5-i686-1dl does not open. Typing
+> > gnumeric from the command line the CPU Load and Busy indicator start
+> > working till I do ^c to kill the pid.
+> >
+> > I rebooted, un-installed gnumeric, re-installed it, the same it will not
+> > open.
+> >
+> > There are no error messages. ldd /usr/bin/gnumeric shows no 'not found'.
+> >
+> > Is there any test to find out what is going on while gnumeric tries to
+> > open?
 >
-> in slackware 9.1 suddenly gnumeric-1.2.5-i686-1dl does not open. Typing
-> gnumeric from the command line the CPU Load and Busy indicator start
-> working till I do ^c to kill the pid.
+>You can use the program 'strace' to see whats happening, it may or may not
+>tell you directly whats wrong.
 >
-> I rebooted, un-installed gnumeric, re-installed it, the same it will not
-> open.
+>Do the following;
 >
-> There are no error messages. ldd /usr/bin/gnumeric shows no 'not found'.
+>strace-o file.name gnumeric
 >
-> Is there any test to find out what is going on while gnumeric tries to
-> open?
-
-You can use the program 'strace' to see whats happening, it may or may not 
-tell you directly whats wrong.
-
-Do the following;
-
-strace-o file.name gnumeric
-
-After 3 or 4 seconds hit ctrl-c and take a look at, file.name.
-It will be a large file so you may want to start at the bottom because the 
-chances are thats where the most important info will be, (ie the last few 
-lines).
-
-file.name can be just about anyname of course.
-
+>After 3 or 4 seconds hit ctrl-c and take a look at, file.name.
+>It will be a large file so you may want to start at the bottom because the
+>chances are thats where the most important info will be, (ie the last few
+>lines).
 >
-> Thanks & regards
+>file.name can be just about anyname of course.
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Richard's advice is a good start, except for a small typo -- it needs to read
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+         strace -o file.name gnumeric
+
+(a space between "strace" and "-o"). But the output may be hard to 
+interpret, especially if the problem lies in use of a shared library. So, 
+here are a couple of other things you might also try.
+
+First, run "top" in an xterm, or over a remote connection, while all this 
+is happening, and see what's going on under the hood in the way of CPU use, 
+memory and swap use, and high-use processes. (You may already be seeing 
+some of this, but I don't know what you mean by "the CPU Load and Busy 
+indicator" ... my guess is that this is some X process, but one that I'm 
+unfamiliar with.)
+
+Second, check what shared libraries gnumeric is using ("ldd 
+/usr/bin/gnumeric", as you did), then check the install date of each of 
+them. See if something you did (for example, install another app recently) 
+caused a mismatched version of one of them to be installed.
 
 
 
