@@ -1,48 +1,28 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re[2]: Want to strip some formatting out of a text file
-Date: Tue, 13 Aug 2002 07:12:43 -0700
+From: Matthew Stapleton <matthewstapleton@juno.com>
+Subject: converting pdfs
+Date: Tue, 13 Aug 2002 18:39:13 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU08FNpyLAP000002e8@cpimssmtpu08.email.msn.com>
+Message-ID: <20020813.183924.-265271.6.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-This is "what" the line looks like:
+How should I convert a pdf into individual image files?  I do not care
+what format the output is ...jpg...gif...pbm...tif
 
-LLiinnuuxx--PPAAMM library
-
-there is a Ctrl-H between each duplicate pair of letters..
-
-I think I can strip it with a perl script at work.
-
-$mystring=~/\cH.//g
-
-I think will do it, I'll read the whole file into an array and iterate through and see what happens..
-
- >>  > I'm trying to download the text manuals for the linux pam modules to my
- >>  palm pilot, but there is the appearance of old style double strike for
- >>  emphasis text all over the docs.
- >>  >
- >>  > e.g. a L(backspace)Li(backspace)in(backspace)n
- >>  >
- >>  > What utility to remove this backspacing and doubling of characters so
- >>  they would be over-written?
- >>  >
- >>  > Alan
- >>  >
- >>  > I dl'd the text file from the kernel.org website documentation of pam
-
- >>  col -b
-
- >>  I guess.
+Thanks,
 
 
 
-
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
+Matthew Stapleton
+============================
+http://webpages.marshall.edu/~staple12
+"What good fortune for those in power that people do not think!" --
+Adolph Hitler
+============================
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
