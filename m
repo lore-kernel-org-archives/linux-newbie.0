@@ -1,82 +1,50 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: Who is running Red Hat 8.0 and Roaring Penguin?
-Date: Fri, 29 Nov 2002 13:28:14 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Extract images from zipped .eve archives
+Date: Fri, 29 Nov 2002 13:27:12 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DE7B1BE.E7B971AD@gelm.net>
-References: <200211291206.gATC6rd28223@hartford-hwp.com> <3DE77DC1.AE1D5026@gelm.net> <200211291737.gATHbhP02431@hartford-hwp.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200211291827.gATIRCP02697@hartford-hwp.com>
+References: <5.1.0.14.1.20021129083149.02134d90@celine>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <5.1.0.14.1.20021129083149.02134d90@celine> (message from Ray
+	Olszewski on Fri, 29 Nov 2002 08:36:39 -0800)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Haines Brown <brownh@hartford-hwp.com>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: ray@comarre.com
+Cc: linux-newbie@vger.kernel.org
 
-I added linux-newbie back into the address field.
+> >The unzip utility does not extract the files, but simply lists the
+> >contents of the ZIP files.
+> 
+> It should extract them as its default behavior. How exactly are you running 
+> unzip and what exactly is it saying?
 
-Haines Brown wrote:
-> 
-> Chuck,
-> 
-> Thanks for your helpful reply. I'll respond to it more fully after
-> I've had a chance to visit the RH8.0 machine having the problem.
-> 
-> I did not include in my report that I originally had a problem getting
-> roaring penguin to build a configuration file. Because when I re-ran
-> adsl-setup it new my settings (apparently) previously entered, I
-> assumed that the configuration was stored elsewhere even though there
-> was no longer a /etc/ppp/pppoe.conf file.
+Here's an example. Root goes to the source directory and runs:
 
- Your previous responses to adsl-setup are stored.
- If adsl-setup never created a configuration file,
- re-running it with the same responses might not create one either.
- :-|
- Was there ever a /etc/ppp/pppoe.conf file?
- 
-> But I just now visited the roarding penguin site to download a new
-> version, and I see that the configuration file remains the same as
-> before. So I conclude my rppppoe is broken, did not install properly,
-> or there's a permission problem somewhere preventing the creation of
-> its configuration file.
-> 
-> I'll look at the script as you suggest and otherwise snoop around
-> roaring penguin.
-> 
-> Currently, my present (working) system has in its routing table the
-> line:
-> 
->   192.168.0.0   0.0.0.0   255.255.255.0   U   40   0   0   eth0
-> 
-> but on my present machine, I gave eth0 a static address because it was
-> once part of a LAN. On my other machine, as you point out, there's no
-> eth0 line, but what address should it have if it were present on a
-> stand-alone machine? 0.0.0.0?
-> 
-> I think I'll add eth0 to the routing table with that address to see
-> what happens. Some of the iptables problems may be resolved once I
-> resolve the two problems above. I'll get back to the list after I've
-> been able to explored this.
+  # unzip -v circuit-svg-gates*
+  Archive:  circuit-svg-gates_library.zip
+   Length   Method    Size  Ratio   Date   Time   CRC-32    Name
+  --------  ------  ------- -----   ----   ----   ------    ----
+      6830  Defl:N     3053  55%  01-26-02 17:52  19a125f7  gates_library.eve
+  --------          -------  ---                            -------
+      6830             3053  55%                            1 file
 
- I think I have said this before, several times before;
-the eth# device that connects to the DSL modem should
-not have an IP address (when you run adsl-start).
-
- rp-pppoe will not work if the eth# device already has an IP address.
-
- ppp0 gets the IP address (from adsl-start).
-
- The eth# device must be UP and RUNning and have no IP address.
-
- Suggestion:
- If you have both a DSL modem and a LAN, put another ethernet NIC
-in the computer. A few dollars for an old 3c509, NE2000, whatever
-card should be do-able.  Then let RedHat have its way with the eth0
-device and configure RP-pppoe to use the eth1 device.
-;-)
-HTH, Chuck
-
-> Haines
+> Never having heard of them, I tried a Google search. The only meaningful 
+> match I found was here --
 > 
->
+>          http://www.techtutorials.com/fileformats.shtml
+> 
+> -- which says "EVE - TTMaker Event Scheduling File.".
+
+I didn't have much luck with a search, which is why I wondered about a
+proprietary format. 
+
+These zip files serve a simple little proprietary graphics application
+that draws electroniic circuit schematics. Event scheduling seems
+irrelevant. 
+
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
