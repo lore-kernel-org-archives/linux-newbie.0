@@ -1,34 +1,25 @@
-From: Ray Olszewski <ray@comarre.com>
+From: lcollins <lcollins@gci.net>
 Subject: Re: new to Debian
-Date: Sat, 23 Nov 2002 08:49:31 -0800
+Date: Sat, 23 Nov 2002 07:54:44 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021123084809.02141030@celine>
-References: <20021123070206.A1156@linux>
+Message-ID: <20021123075444.B1156@linux>
+References: <20021123070206.A1156@linux> <5.1.0.14.1.20021123084809.02141030@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021123070206.A1156@linux>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20021123084809.02141030@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 07:02 AM 11/23/02 -0500, lcollins wrote:
->I am new to Debian and just installed Debian Woody.  What program do I
->use to view which programs are available for installation on my 7 cd
->installation set with a brief discription of each.  My SuSE has Yast2
->for this purpose. There must be something similar in Debian.
-
-dselect is the standard Debian package manager for CD installs. I 
-don't  use SuSE so don't know if this is sufficiently similar to Yast2 to 
-satisfy your needs.
+Looks like that's what I'm looking for. Thanks 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Ray Olszewski previously wrote:
+> dselect is the standard Debian package manager for CD installs. I 
+> don't  use SuSE so don't know if this is sufficiently similar to Yast2 to 
+> satisfy your needs.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
