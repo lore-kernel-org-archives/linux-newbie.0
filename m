@@ -1,42 +1,35 @@
-From: Marcus Furlong <furlongm@hotmail.com>
-Subject: Re: Some users locked out of ssh and sftp?
-Date: Sat, 12 Mar 2005 03:06:07 +0200
-Message-ID: <d0tf8p$8b3$1@sea.gmane.org>
-References: <5.1.0.14.1.20050228220147.01f4dec8@celine> <20050301162252.34857.qmail@web53710.mail.yahoo.com>
+From: Bob Batson <rcb@kc.rr.com>
+Subject: Should the tr command be run on text files ONLY?
+Date: Fri, 11 Mar 2005 19:49:38 -0600
+Message-ID: <p05111b00be57f9e8c6d9@[65.30.110.44]>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Eve Emshoff wrote:
+Should I run the command `tr \\r \\n <macfilename> <unixfilename>' 
+(minus the quotes) in A Terminal on textfiles ONLY or will tr harm 
+any binary files?
 
-> Thus far, I've run across 1 user who can't sftp OR
-> SSH. He's entirely locked out, despite having the
-> correct username and password. He appears to be set up
-> the same as well the others.
-> 
-> Is there a file or some such I should edit and/or
-> check to ensure he can get access? Anything to point
-> me to in terms of what I can check in that he may
-> *not* be set up the same as everyone else?
+After I migrate to Linux in a few months, I was planning to copy a 
+large folder of text files to my home directory from a Macintosh. I 
+was then going the open the terminal, cd to the directory of text 
+files  and enter `tr \\r \\n *'. But I just remembered that this 
+folder (and sub-folders) of text files (called N0TES) also contains 
+some pdf, jpeg, tiff, html, and mp3 files.
 
-Check if there is something like 
+I was going to do this because I want to use some of the *NIX editors 
+(Emacs, pico, hopefully NEDIT, and maybe nano) on some of these files.
 
-. ~/.bashrc
+Thanks in advance for any answers!
 
-or
+-- 
+Bob Batson
+rcb@kc.rr.com
 
-source .bashrc
-
-in his .bash_profile, and if there is, then comment it out.
-
-If that doesn't work, try temporarily renaming or deleting .bashrc
-and .bash_profile, and then try to ssh again.
-
-Marcus.
-
+"Chocolate is the true opiate of the masses!"
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
