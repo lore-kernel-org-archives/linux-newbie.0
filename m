@@ -1,43 +1,33 @@
-From: "Jamie Risk" <jamie_risk@yahoo.ca>
+From: "BEN RITCHEY" <linux-net@tcob1.net>
 Subject: copying file systems ...
-Date: Wed, 29 Jan 2003 12:35:23 -0500
+Date: Thursday, 30 Jan 2003 00:10:08 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <b19395$6c9$2@main.gmane.org>
-Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
+Message-ID: <MSGID_110=3a20=2f1_0993d1f9@linuxnet>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-How do I copy an entire file system, symlinks and all, to a temporarily
-mounted partition? (what are the pertinent 'cp' switches?)
+Originally to: JAMIE RISK
 
-I've got an extra harddrive (&PC) and I want to mirror my original system
-with as little work as possible.
+* An ongoing debate between Jamie Risk and All rages on ...
 
-I put the third harddrive in my system, and mounted it at "/mnt/new". Thus,
-the mounts are:
+ JR: > How do I copy an entire file system, symlinks and all, to a
+ JR: > temporarily mounted partition? (what are the pertinent 'cp' switches?)
+ JR: > I've got an extra harddrive (&PC) and I want to mirror my original
+ JR: > system with as little work as possible.
 
-/dev/hda2   /         ext2
-/dev/hda1   /boot     ext2
-/dev/hda3   /usr      ext3
-/dev/hda4   /home     ext3
-/dev/hdb1   /usr/doc  ext2
-/dev/hdb2   /usr/src  ext2
-/dev/hdc1   /mnt/new  ext2
+I use cp for backups as "cp -av /dir1/ /mnt/backup", etc. Just skip /proc <g>
 
-Can I simply use the following command?
+--
+Keep the faith,
 
-[bash-2.05]# cp -r / /mnt/new
-
-- Jamie
-p.s. (I'd then test the output using 'chroot')
-
-
-
-
+ : Ben        http://bellsouthpwp.net/c/m/cmech617/
+ :         ICQ #32457590  AIM/Yahoo:benritchey  Jabber:cMech
+ :
+ + WildCat! Board 24/7  (337) 232-4155  33.6kBps 8,N,1  Free Software!
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
