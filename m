@@ -1,61 +1,42 @@
-From: Kari Hurtta <hurtta+z1@leija.mh.fmi.fi>
-Subject: Re: reading links in proc - permission denied
-Date: Sat, 14 Jun 2003 22:05:07 +0300 (EEST)
+From: vh <vhlist@yandex.ru>
+Subject: Linux for old PC
+Date: Sat, 14 Jun 2003 23:30:59 +0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306141905.h5EJ57mE024740@leija.fmi.fi>
-References: <008501c32b98$cc7503f0$1403a8c0@sc.tlinx.org>
+Message-ID: <5020070209.20030614233059@yandex.ru>
+Reply-To: vh <vhlist@yandex.ru>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <008501c32b98$cc7503f0$1403a8c0@sc.tlinx.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "linda w." <linux-newbie@tlinx.org>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-> I'm misunderstanding something about links in proc.
-> 
-> I thought 'ps', 'top' et al used /proc to display processes, command lines,
-> etc.
-> 
-> Since neither ps nor top are suid root, they are running with my uid
-> permissions.
-> 
-> However, if I do "ls -l" on /proc/<number>/exe, I get a
-> 
-> "ls: cannot read symbolic link /proc/16714/exe: Permission denied"
-> 
-> message.
-
-Well, 'top' perhaps reads /proc/{number}/cmdline and not look about
-/proc/{number}/exe
-
-> Now the process is owned by 'named', but the entries in diriectory are
-> owned by root (is that right/logical?), thus:
- 
-> I can't read that link -- yet the permissions say rxw for group and other.
-> So why am I getting the *permission error*?  The binary it is pointing to
-> /usr/sbin/named is also publicly readable, so that can't be the problem.
-
-Well, perhaps /proc also uses some other criteria (and not only permission
-mask) to determine who can do readlink() 
-
-Perhaps extra condition is
-
-       if (current->fsuid != inode->i_uid && !capable(CAP_DAC_OVERRIDE))
-                goto out;
-
-(or I looked wrong function)
-
- 
-> 	So why can't I follow the link of 'exe' to see what image the process
-> is executing?  Programs like 'ps' and 'top' seem to not have this
-> difficulty.
-
-Are you sure that 'top' uses that 'exe' ?
+Hello List.
+I want to run Linux on rather old PC.
+The PC is Pentium MMX 166 with 24M RAM, S3 Trio Video and 2,5Gb WD Hard
+Disk, motherboard is Intel 430 VX. I tried set up ASP Linux, but it
+hangs up during installation of packages (on ASP forum I was told that this
+distributive should work on my computer). Also I tried to set up
+Mandrake, but of cause it's failed die to low amount of RAM. Do I
+need older releases? But which ones should I try to use?
+Yes, I was reading a lot of FAQs and HOW-TOs, but I can't install
+anything at all. And I belive the problem is only in installation.
+Do I think right? What should I do? What distribution should I use?
+Can I setup Linux to my HDD on another PC so as it will be working
+lately when I plug it into my one? Any configuration hacks is not so
+terrible for me. I'm thinking now to run FBSD, but Linux certainly
+will be preferable. Can no more work with windows... Any experience?
 
 
-/ Kari Hurtta
+-- 
+Martchukov Anton aka VH                   mailto:vhlist@yandex.ru
+ICQ: 155279978
+
+"_Theory_ is when you know everything but nothing works.
+_Practice_ is when everything works but no one knows why.
+_IN THIS PLACE_ we're combining theory and practice - nothing works
+ and no one knows why!"
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
