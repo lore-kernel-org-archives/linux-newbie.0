@@ -1,47 +1,130 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: ADSL connection via RHL 90
-Date: Tue, 15 Feb 2005 21:39:12 -0800
-Message-ID: <5.1.0.14.1.20050215213034.0ba07d78@celine>
-References: <5.1.0.14.1.20050215081628.01fcb8d0@celine> <000501c513dd$6b8007a0$6510ea0a@acbi.local>
+From: chuck gelm <chuck@gelm.net>
+Subject: Re: ADSL connection via RHL 90
+Date: Wed, 16 Feb 2005 03:29:49 -0500
+Message-ID: <4213047D.8020503@gelm.net>
+References: <000601c513dd$6e8bc100$6510ea0a@acbi.local>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
-In-Reply-To: <000501c513dd$6b8007a0$6510ea0a@acbi.local>
-References: <5.1.0.14.1.20050215081628.01fcb8d0@celine>
+Content-Transfer-Encoding: 7bit
+In-Reply-To: <000601c513dd$6e8bc100$6510ea0a@acbi.local>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Linux newbie list <linux-newbie@vger.kernel.org>
+To: frans@acbi.co.id
+Cc: Linux newbie list <linux-newbie@vger.kernel.org>
 
-At 11:09 AM 2/16/2005 +0700, frans toruan wrote:
->[...]
-># fx > Preliminary comment: When asking for technical help, never tell us
-># fx > what the
-># fx > response is "something like". Take the time to write it down and tell
-># fx > us
-># fx > what it actually is, and the exact command it is response to.
+Comments embedded.
+frans toruan wrote:
+> # fx > Hi, Frans:
+> # fx > 
+> # fx > 10.234.16.101	fxrhl90			workstation's LAN interface
+> # fx > 10.234.16.99	?			gateway's     LAN interface
+> # fx > 202.134.0.155	nsjkt1.telkom.net.id	gateway's     WAN interface
+> # fx > ?
+> # fx > 202.134.2.5	ns2.telkom.net.id	a DNS server
+> 
+> Yes, you are right.
 
-Please take to heart the comment I made above. Below, you say a ping 
-"failed", but you do not provide the sort of details I was trying to ask 
-you to provide.
+? No, I am not right. 202.134.0.155 is an external DNS server and
+   not the router's WAN interface IP address.
 
-Please tell us the *exact* command you entered and the *exact* message ping 
-provided when it failed. pings fail in at least 4 distinct ways I can think 
-of, *not* counting DNS issues, and the message you get from ping will help 
-me, or someone here, figure out what is going on in your case.
+> 10.234.16.99 is IP number of ADSL router ( = default gateway ) in our LAN
+> 202.134.0.155 and 202.134.2.5 are DNS servers of our ISP
+> 
+> # fx >   I assume that the host's (gateway, that has the DSL modem
+> # fx > attached?)
+> # fx > interfaces are
+> # fx >   10.234.16.99 on the LAN and
+> # fx >   202.134.0.155 on its ppp# interface and
+> # fx >   that it is routing 10.234.16.0<>0.0.0.0
+> # fx >   using a netmask of 255.x.x.0 or similar.
+> 
+> Yes . . .
 
-You might also try a traceroute and see how far it gets. If you want help 
-interpreting that, don't even think about providing anything short of the 
-complete output of the process.
+? No, 202.134.0.155 is an external DNS server and not the IP address
+   of the router's interface.
 
-># fx > Now ... you say first that you cannot ping to "any external IP
-># fx > number", but
-># fx > then refer to "external FQDN". Have you tested pinging an address ("(
-># fx > e.g.
-># fx > 18.7.22.69 )") or not? If not, please do ... in that case, James'
->
->Already tried to ping to other IP numbers, but failed. I could only ping to
->IP numbers of DNS servers of our ISP ( and even then, not to their names ).
-[...]
+> # fx > Can you ping the gateway's external interface by IP address?
+> # fx > "I can ping to the external IP number of my ISP ( i.e. 202.134.0.155
+> # fx > )"
+> # fx >   I assume that 202.134.0.155 is the IP address of the gateway's
+> # fx >   external interface and the answer is yes.
+> 
+> You already answered a yes.
+
+? No, I do not know what is the IP address of the router's external
+   interface.
+
+> # fx > Can you ping 202.134.2.5 or 203.130.196.6 ?
+> # fx >   (ns1.telkom.net.id or ns2.telkom.net.id)
+> 
+> Yes, to the number of the ISP ( 202.134.2.5 ).
+> No, to other numbers ( 203.130.196.6, and other numbers ).
+> Also, a big no to other names.
+
+I think that since you can ping your external DNS servers,
+your router is routing packets LAN<>WAN.
+
+> # fx > For ping'ing by FQDN you will need 202.134.2.5 (or similar)
+> # fx > in /etc/resolv.conf (or RedHat equivilant).
+> 
+> It's already there ! :
+> 	resolv.conf :
+> search telkom.net
+> nameserver 10.234.16.10
+> nameserver 202.134.0.155
+> nameserver 202.134.2.5
+
+Try:
+ping -c 1 202.134.0.12
+ping -c 1 66.94.234.13
+
+Try using only one of these DNSs at a time, then:
+ping -c 1 telkom.net.id
+ping -c 1 yahoo.com
+
+traceroute 202.134.0.12
+traceroute 66.94.234.13
+traceroute telkom.net.id
+traceroute yahoo.com
+
+> ( note : 10.234.16.10 is my internal DNS server )
+
+Whereas the Draytek router can DNS, using an internal DNS
+server inside the LAN wmay slow down (1st time) DNS
+queries and increase LAN traffic.
+
+> # fx > Do you have access to 10.234.16.99?
+
+Oh, I see below that it is a hardware box.
+
+> Of course, see above. I can also connect to it.
+
+http://10/234.16.99 ?
+
+> Thank you, anyway. But, I still can't see the world via my RHL90
+> ( Btw, my router is Draytek Vigor 2500, is it somehow incompatible with
+> Linux ? )
+
+( Why do you ask this, does it work with other operating systems and
+   not this RedHat workstation ? )
+
+http://www.draytek.co.uk/products/vigor2500.html
+
+(btw, No. It doesn't know or care what o/s is in use.)
+
+Is DNS enabled on the Draytek router?
+
+Is its web setup interface accessed via http://10.234.16.99:80
+  or similar?
+
+HTH, Chuck
+
+> Regards,
+> 
+> 
+> Frans T.
+
 
 
 -
