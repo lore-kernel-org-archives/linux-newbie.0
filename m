@@ -1,31 +1,34 @@
-From: Heimo Claasen <hammer@revobild.net>
+From: geoff bagley <geoff@gcbagley.demon.co.uk>
 Subject: Re: TFT display on Debian GNU/Linux
-Date: 31 Aug 2003
+Date: Sun, 31 Aug 2003 09:37:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200308310512.h7V5Brt2263091@www2.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <YzY47DAoWaU$EwEw@gcbagley.demon.co.uk>
+References: <200308310512.h7V5Brt2263091@www2.wanadoo.be>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200308310512.h7V5Brt2263091@www2.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-There#s a bug (sorry, Ray) win the Debian/Woody's standard "distro"
-installation routine: When it comes to the video card's memory to
-enter, anything else but "1024" (KB) wouldn't get you nowhere with
-whatever of the not-listed brands of card/monitor combines.
+>(After weeks of worktime wasted we gave up on making Debian/Woody work
+>with a combine of a quite renowned video card and ditto high-res monitor;
+>the "commercial" distros - Mandrake, SuSE, RH - hadn't any problem with
+>that.)
+Thanks to you both.  I  am sorry that your efforts were not rewarded.
+Is there a simple reason why the "commercial distros" are able to do
+this ?  Maybe they are using non-GPL  software that we would not wish to
+see in Debian.
 
-Inputting that value would eventually get X working - but definitely not
-at the best screen resolution.
+Is the problem only with Woody ?
+How will other versions of Debian cope with this ?
 
-(After weeks of worktime wasted we gave up on making Debian/Woody work
-with a combine of a quite renowned video card and ditto high-res monitor;
-the "commercial" distros - Mandrake, SuSE, RH - hadn't any problem with
-that.)
-
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-08-31
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
-
+Best regards
+-- 
+Geoff Bagley
+G3FHL
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
