@@ -1,35 +1,48 @@
 From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: file transfer via telnet
-Date: Fri, 21 Feb 2003 09:51:07 +0100 (CET)
+Subject: Re: [SOLVED] Re: File names with spaces
+Date: Fri, 21 Feb 2003 09:59:37 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0302210948010.4563-100000@hestia>
-References: <3E55D572.1B60BF79@ihug.co.nz>
+Message-ID: <Pine.LNX.4.21.0302210955390.4563-100000@hestia>
+References: <20030220171332.GA4937@teamfinders.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E55D572.1B60BF79@ihug.co.nz>
+In-Reply-To: <20030220171332.GA4937@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Fri, 21 Feb 2003 ichi@ihug.co.nz wrote:
+On Thu, 20 Feb 2003, Theo. Sean Schulze wrote:
 
-> I year or two back, I remember reading about a way to transfer 
-> a file using telnet.  It think it involved redirection from one 
-> tty to another, but I don't remember the details.  I now find
-> myself in a situation with telnet access, but no ftp (or anything
-> else I could use to upload files).  Do any of you guys know the
-> telnet method?
+> J.,
+> 
+> Thanks for your suggestions.  While googling comp.unix.shell today, I found yet another method.  I was not aware that "*" when used by itself matches every filename in a directory.  Apparently, part of the problem I was having was a side effect of ls and find.  Here is the script that I used:
+> 
+> #!/usr/bin/bash
+> for file in *
+> do
+> 	newfile="`echo "$file" | tr '[:blank:]' '[_*]'`"
+> 	mv "$file" "$newfile"
+> done
+> 
+> I also learned something important about tr.  I was using [:space:], but that is not appropriate here.  [:space:] includes horizontal as well as vertical whitespace.  That means I was transforming linefeeds as well as spaces.  [:blank:] is exclusively horizontal whitespace, which is what I needed.
+> 
+> Thanks to all of you who contributed.  I appreciate your help.
 > 
 > Cheers,
-> Steven
+> Sean
 
-Telnet is one of the oldest base proto's arround. So where you want to
-look is: http://www.rfc-editor.org
+BTW,
 
-Start at RFC856
+please remember that `blank' is a GNU extension, regarding portability
+issues.. etc..
+
+~$ man isblank
 
 J.
+
+p.s.
+Please use a more sane line-wrapping.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
