@@ -1,34 +1,68 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: RAM and swap partition
-Date: 07 Dec 2002
+From: whitnl73@juno.com
+Subject: Re: tar for "full" floppy backup?
+Date: Sat, 7 Dec 2002 21:10:58 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212080200.gB820cq03238@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20021207.211305.134684296.3.whitnl73@juno.com>
+References: <3DF253FB.FCE749BE@gelm.net>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3DF253FB.FCE749BE@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: nc8q@gelm.net
+Cc: linux-newbie@vger.kernel.org
 
-James - that's quite new to me:
-> ... that when your system has a crash it is
-> still capable of writing a core dump to the harddisk.
+On Sat, 7 Dec 2002, Chuck Gelm wrote:
 
-I understood it hitherto that it's needed for cases when a program needs
-more mem than is free and available ?
-Or asked the other way round - would any program which uses more RAM
-than is available at a moment, be respeonsible care for "swapping" its
-parts (or rather for instance, parts of its data) in/out by itself, and
-to some own swap file ?
+>  I did
+>
+> tar -cyvf /boot /dev/fd0
+>  and
+> /mnt# tar -xyvf /dev/fd0
+>  and it created
+> /mnt/boot/
+>  and all the files from /boot appeared in /mnt/boot
 
-The second part of James' reply is precisely what I hoped for:
-> (you) can make a new swap partition with eg fdisk and change
-> the entry for swap in /etc/fstab.
-Using an (emptied) partition to split off a part would be indeed much
-less risky than a real resizeing of the swap _partition_; and much less
-worksome, without GB-backups, <g>
+Yes, it will do that.  cd to where you want the files restored to first,
+or use -C:
 
--hc
+tar -C / -xyvf /dev/fd0
+>
+>  Next I tried
+> tar -cvMf /dev/fd0 /etc
+>  and after some floppy action, I was prompted:
+>
+> "Prepare volume #2 for /dev/fd0 and hit return:"
+>
+> I'd recommend running 'badblocks' on the diskettes
+> and using only those that report 0 bad blocks.
+> ;-)
+
+I don't like using a raw floppy for anything but mkfs.
+I'd rather make a filesystem on each one and save a named file on it.
+That way, if I can't read my writing on the label, all is not lost.
+Restore the files to their own [temporary] directory, cat them together,
+and untar them.
+You are trying to use a floppy as a tape, and it just isn't really a
+tape.  Come to think of it, a tape isn't a very good tape either.
+>
+> tar --version
+> tar (GNU tar) 1.13
+>  ...
+>
+> HTH, Chuck
+
+Lawson
+--
+---oops---
+
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
