@@ -1,62 +1,46 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: NIC cards
-Date: Mon, 12 Aug 2002 10:55:39 -0400
+Date: Mon, 12 Aug 2002 14:55:25 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208121455.g7CEtdO27111@hartford-hwp.com>
+Message-ID: <02081214552501.00319@unix.pa3gcu>
 References: <20020812131245.GA18564@enoor.com>
+Reply-To: pa3gcu@zeelandnet.nl
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020812131245.GA18564@enoor.com> (message from Majid Tahir on
-	Mon, 12 Aug 2002 08:12:45 -0500)
+In-Reply-To: <20020812131245.GA18564@enoor.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: majid@enoor.com
-Cc: linux-newbie@vger.kernel.org
+To: Majid Tahir <majid@enoor.com>, linux-newbie@vger.kernel.org
 
-Majid,
+On Monday 12 August 2002 13:12, Majid Tahir wrote:
+> hello all
+> i have just installed redhat 7.2 on a machine that needs to have 2 nic
+> cards...however neither of the two nic cards have been "found".  How would
+> i configure it so that the two cards are properly installed..also one other
+> problem is that i dont know the name of one of the nic cards, therefore it
+> is difficult to find the proper drivers
 
-I've suffered from the multiple NIC problem, and so stalted way the
-following notes. But keep in mind I've no expertise myself.
+Are they PCI or ISA cards.???
 
-It is especially tricky to configure more than one network of the same
-type, such as getting two NICS to co-exist. Sometimes the machine
-determines which NIC is eth0 and eth1, so that when the drivers are in
-the kernel or when two cards share a driver, whichever the machine
-sees first is labeled eth0. Therefore you may have to adapt your
-configuration to suit the machine.
+If they are PCI then the command 'lspci' or cat /proc/pci will show there 
+make and type.
+(I cant imagen them being PCI cards if the install did not find them).
 
-1. If adapters don't coexist, you can try just swapping eth0 and eth1.  
+If they are ISA cards and you have a windows machine handy then you may be 
+able to gain information on thier type/make via windows.
 
-2. Use NICs that use the same driver compiled into the
-kernel. Sometimes this works automatically, but sometimes you must
-include proper kernel options in LILO configuration so that the kernel
-looks for two NICs (add line: append = "ether=0,0,eth1" to tell Linux
-to look for a second card). This probably required if NICs are ISA
-cards.
+When you can tell us what the cards are, there make and type then we can help 
+you more.
 
-3. NICs that use the same driver which is compiled as a module. You can
-usually get good results by adding lines in /etc/conf.modules to tell
-the system you have two NICs. Add one alias line per NIC, as in:
+>
+> thanks for the help
 
-	alias eth0 tulip
-	alias eth1 tulip
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-This tells the system to use the tulip driver for both cards.
-	
-4. Different drivers compiled into the kernel. With PCI cards, which
-often work automatically, see (2) above.
-
-5. Two NICs using different drivers compiled as modules. This works
-like (3) above except that the lines refer to different modules.
-				   
-For more info on multiple cards, see 
-	http:/cesdis.gsfc.nasa.gov/linux/misc/multicard.html
-
-Hope this helps, but others will surely chim in with corrections and
-other suggestions.
-
-Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
