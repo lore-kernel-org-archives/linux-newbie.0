@@ -1,37 +1,28 @@
-From: =?iso-8859-1?q?Sastry=20Malladi?= <sastry05@yahoo.co.in>
-Subject: 'current' macro question
-Date: Fri, 20 Feb 2004 04:50:07 +0000 (GMT)
+From: Andrew Langdon-Davies <ald2@arrakis.es>
+Subject: Re: Generating SSH Keys
+Date: Fri, 20 Feb 2004 09:53:27 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040220045007.38193.qmail@web8312.mail.in.yahoo.com>
+Message-ID: <4035D917.1060308@arrakis.es>
+References: <GNEPLLCIIBHICCOGIAKPKEDMCCAA.eatley@wow-corp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <GNEPLLCIIBHICCOGIAKPKEDMCCAA.eatley@wow-corp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-hi,
+Eve Atley wrote:
+> I would like to have remote users connect to certain shares on a linux box,
+> but securely. I've been reading about SSH and generating keys, but I am
+> confused how to go about this.
 
-i have read that the "current" macro gets a pointer to
-the process descriptor of the current process by
-masking out the least significant 13 bits of esp. that
-means  the least significant 13 bits of the starting
-address of a process descriptor are always 0.is the
-process descriptor always aligned at an 8KB boudary?
-otherwise the masking does not give the correct base
-address of the process descriptor if (say) the process
-descriptor starts at 0x1534ff2f
+This may help
 
-when the kernel allocates a new process descriptor by
-using alloc_task_struct() how does it make sure that
-the new process descriptor is always at an 8KB
-boundary?
+http://linux.org.mt/article/ssh
 
-sastry
+Andrew
 
-________________________________________________________________________
-Yahoo! India Insurance Special: Be informed on the best policies, services, tools and more. 
-Go to: http://in.insurance.yahoo.com/licspecial/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
