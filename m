@@ -1,31 +1,58 @@
-From: "David Jones" <gnome@hawaii.rr.com>
-Subject: Re: is emacs considered a gui WP or cli?
-Date: Fri, 7 Jun 2002 08:37:00 -1000
+From: Suriya Narayanan M S <mssnlayam@cs.annauniv.edu>
+Subject: Re: date alias
+Date: Fri, 7 Jun 2002 15:59:19 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D0070AC.8369.1DFD45@localhost>
-References: <20020524.163134.-176941.0.matthewstapleton@juno.com>; from matthewstapleton@juno.com on Fri, May 24, 2002 at 04:31:33PM -0700
+Message-ID: <200206080018.g580Itu07934@cs.annauniv.edu>
+References: <200206070311.g573BL429283@ns2.easy-pages.com>
+Reply-To: mssnlayam@cs.annauniv.edu
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020525180357.B1158@neutrino.particles.org>
+In-Reply-To: <200206070311.g573BL429283@ns2.easy-pages.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-On 25 May 2002, at 18:03, Elias Athanasopoulos wrote:
+On Thursday 01 January 1970 05:30, pericles@v35.com wrote:
+  > Steven, others,
+  >=20
+  > I've added the following to /root/.profile
+  >=20
+  > alias date=3D'date +'%cEST''
+  >=20
+  > and output is Thu Jun 06 13:33:14 2002EST
+  >=20
+  > I have all the reference materials I need,
+  > but don't know where to begin looking. I'd
+  > like to include a space between the year
+  > and time zone (2002 EST). =A0Am I looking at
+  > a kind of variable? =A0What is the %c called
+  > in the above alias? =A0Am I looking for something
+  > similar to %c?
 
-> On Fri, May 24, 2002 at 04:31:33PM -0700, Matthew Stapleton wrote:
-> > I was wondering if Emacs was considered to be gui based WP or cli-based? 
-> 
-> Noone of it. Emacs is an OS which pretends to be an editor. :-)
+$ man date
+[snip]
 
-No, Emacs is a religion. ;-)
+%c     locale's date and time (Sat Nov 04 12:02:33 EST 1989)
 
-David
-gnome@hawaii.rr.com
+[snip]
 
+$ date +"%c EST"
+=46ri 07 Jun 2002 03:58:20 PM IST EST
+
+
+Bye,
+Suriya Narayanan M S
+--=20
+Guru Brahma Gurur Vishnu
+Gurur Dhevo Maheshwaraha
+Gurur Saakshaath Parabramha
+Thasmai Shree Gurave Namaha
+
+Public key at www.keyserver.net
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
