@@ -1,32 +1,38 @@
 From: ichi@ihug.co.nz
 Subject: Re: (X and other) basics (was: A few more things...)
-Date: Mon, 21 Oct 2002 07:55:53 +0000
+Date: Mon, 21 Oct 2002 07:54:41 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DB3B309.7DDDE492@ihug.co.nz>
-References: <200210201600.g9KG01q22591@ev6.be.wanadoo.com> <3DB3AD39.3E68F6A1@ihug.co.nz>
+Message-ID: <3DB3B2C1.1F7929A9@ihug.co.nz>
+References: <200210201600.g9KG01q22591@ev6.be.wanadoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
 Heimo Claasen wrote:
 > 
-> And indeed I would like to find a textmode/comnandline 
-> Basic (or for that matter, just any other language but 
-> C_variant), in order to port some DOS stuff; 
+> except for system (administration) utilities and some
+> editors there are miserably few textmode _applications_ 
+> in those Linux "distros".
 
-Have you considered using a BASH script?  I recently 
-ported an old Adventure game from Commodore BASIC to 
-BASH.  It works fine.  The only real difficulty was 
-untangling the BASIC spaghetti (the original code had 
-*many* GOTOs).  However, if your BASIC code is well 
-structured, it should not be too difficult to convert
-it to a BASH script.
+What _applications_ are you talking about?
+Browser?         lynx
+Mail reader?     pine
+File manager?    mc
+Spreadsheet?     sc
+
+You should find all of these (and more!) in your "distros".
+However, you should not be surprised that commercial distros
+are orientated toward point-and-click eye-candy.  That's
+where the market is these days and they naturally go with 
+the flow.  
 
 Cheers,
 Steven
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
