@@ -1,51 +1,28 @@
-From: whitnl73@juno.com
-Subject: Re: Modem Identification - Thanks
-Date: Mon, 16 Dec 2002 16:47:19 -0500 (EST)
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: USB PCI
+Date: Mon, 16 Dec 2002 21:04:11 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021216.164849.134684296.0.whitnl73@juno.com>
-References: <200212151455.13854.sotl155360@earthlink.net>
+Message-ID: <Pine.LNX.4.50.0212162100570.217-100000@athame.gmpexpress.net>
+References: <20021216094400.15813.qmail@web2.mailbox.hu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212151455.13854.sotl155360@earthlink.net>
+In-Reply-To: <20021216094400.15813.qmail@web2.mailbox.hu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: sotl155360@earthlink.net
-Cc: linux-newbie@vger.kernel.org
+To: Korosi Akos <korosiakos@mailbox.hu>
+Cc: Newbie <linux-newbie@vger.kernel.org>
 
-On Sun, 15 Dec 2002, Frank Roberts - SOTL wrote:
+Here's your problem.  You must have a bios on that computer that has a
+date on or after July 1, 1989.  If you don't have or can't get such a bios
+on that machine working happily it doesn't matter what you do with any usb
+technology it's simply not going to work for you.  Many unethical computer
+vendors were installing usb equipment before July 1999 and if the owners
+of that equipment didn't manage to get their bios upgraded they still
+haven't got their usb equipment working to date.
 
-> Hi All
->
-...
->
-> The only major outstanding item required for this box is minicom or its
-> replacement. Hopefully the latter as I find minicom a trite stuffy but
-> usable.
+Jude <dashielljt(at)gmpexpress-dot-net>
 
-I like cu - it is part of the uucp package, and a nice crude terminal
-emulator.
-
-cu -l <device name>
-
-FI /dev/ttyS1
-
-or if you have devfs, /dev/tts/1.
->
-> Thanks again for all the great help.
->
-> Frank
-
-Lawson
---
----oops---
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
