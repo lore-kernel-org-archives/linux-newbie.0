@@ -1,155 +1,89 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: At Loss with Mailing
-Date: Mon, 07 Apr 2003 20:50:17 -0700
+Subject: Re: Re: Compiation Err:Derefercing pointer to incomplete type
+Date: Mon, 07 Apr 2003 21:00:09 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030407203323.020407e0@celine>
-References: <Your message of "Mon, 07 Apr 2003 10:03:10 MST."  <5.1.0.14.1.20030407094724.01e9bd88@celine>
+Message-ID: <5.1.0.14.1.20030407205048.0203f590@celine>
+References: <200304080235.IAA04461@WS0005.indiatimes.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304080321.h383Kpr03949@philonline.com>
+In-Reply-To: <200304080235.IAA04461@WS0005.indiatimes.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
+To: ramands <ramands@indiatimes.com>
 Cc: linux-newbie@vger.kernel.org
 
-Peter --
+You sent this reply to me personally instead of to the list. Assuming that 
+was simply a typo, I've added the list back in via a Cc: entry.
 
-OK. First, kmail works because it is is set to use mail.philonline.com as a 
-"smarthost" relay. It generates no log entries because the log entries 
-you've reported here come from sendmail, your MTA, which kmail (as you 
-describe its setup) bypasses. This setup is sufficiently different from the 
-exmh setup that its success is irrelevant to diagnosis of your problem.
+At 08:37 AM 4/8/2003 +0530, ramands wrote:
+>hi Ray
+>I got the catch now .
+>The problem is with the header files provided by red hat 8.0
+>They are incomplete
+>i downloaded one kernel tree . include header files of that tree and it 
+>went smooth
+>But again i am facing one problem
+>Now i want to compile that sourse but it is throwing me some error in make 
+>bzImage
+>I think may be its due to the patch i havent downloaded or maybe its 
+>something else
+>Do u have any clue why make bzImage would fail
+>It says error in timer.c multiple types for times
 
-Second, is "philonline.com" the DNS server your system is set to use when 
-you are connected to that domain? I'm a bit rusty on "dig" and don't have 
-it installed here (I usually use "host"), so I don't know how to read the 
-"@philonline.com" and "@skynet.com" pieces of the command lines. In any 
-case, with these tests you've established that you can get the MX records 
-... but we already knew that from your log entries. The question is whether 
-dig  (or your system generally) can resolve the MX host FQNs to IP 
-addresses when connected to philonline.com . You didn't test that.
+"make bzImage" can fail for any number of reasons, many of which are the 
+direct resut of not following to the letter the procedure described in 
+/usr/src/linux/README (your path might vary a bit from this). Check to be 
+sure that you followed all the steps specified there.
 
-I'd suggest you do so, both with dig and with ping (that is, try to ping 
-the hosts by their FQNs, and see if ping can get IP addresses to ping). 
-Also, try the most direct test of all, using telnet to try to connect 
-directly to the remote mail servers, with commands like: "telnet 
-vger.kernel.org 25", using the appropriate MX FQNs. Do all this while 
-connected to philonline.com, since we know that skynet.com works.
+As to your specifics ... I don't even try to interpret paraphrased or 
+truncated error messages from make or gcc. Interpreting the actual output 
+is hard enough. If you want help at that level of detail, post the complete 
+error line(s), with enough context to let me (and others) see where in the 
+compile process you are. And please mention which kernel-source package is 
+involved (what kernel version and from what distro - are you getting your 
+source from RH rpms or are you downloading from elsewhere?), and whether 
+you've made any changes to the source.
 
-Finally ... is it possible that philonline.com blocks connections from 
-client IP addresses to port 25 on anything other than their smarthost 
-relays? (That is, that is forces you to use its mail server as a relay?) 
-The difference you see is broadly consistent with that possibility, though 
-the log entries seem a bit odd for this to be the cause ... but sometimes 
-apps write odd-looking log entries.
+Unpatched kernel trees from the big-name distros may contain bugs, but it's 
+rare for one not to compile if you follow the instructions in the README 
+file. (Rare but not impossible -- the Debian 2.4.20 source I downloaded 
+recently would not compile if SMP support was turned off; go figure.) So I 
+doubt a missing patch is your problem.
 
-
-
-At 11:20 AM 4/8/2003 +0800, Peter wrote:
->Thanks Ray!
->
->ray@comarre.com said:
-> > So, based on this, here are several questions:
-> > 1. How does your system handle DNS? When you switch ISPs, does its
-> > choice  of DNS servers change? How does your ability to revolve the
-> > various hosts  (using host or nslookup or dig) change when you switch
-> > between ISPs?
->
->When I switch IPSs the switch is reflected in /etc/resolv.conf, the NDS
->changes there.
->
->ray@comarre.com said:
-> > 2. How is kmail sending mail? Is it using the local MTA (sendmail, it
-> > seems  from your log entries) or is it somehow sending directly to a
-> > remote SMTP  server? If the second, does it change servers when the
-> > ISP changes, and if  yes, how?
->
->I have set kmail to use smtp for sending mail and have entered
->mail.philonline.com as the host. With kmail, therefore, I can only use this
->ISP to send mail. Using the alternate ISP I get:
->It said: sorry, that domain isn't allowed to be relayed thru this MTA 
->(#5.7.1)
->Normally I do not use kmail. I only checked it out this time when I noticed
->that in Slackware where I have not yet set-up exmh, kmail did send the mail.
->And as mentioned kmail leaves no messages in maillog.
+>"Ray Olszewski" wrote:
 >
 >
->ray@comarre.com said:
-> > 3. Did you make any system changes coincident to the start of the
-> > failures  2 weeks ago? Do you know if philonline changed anything at
-> > that time?
 >
->I have not made any changes at all and calling philonline, they claim they 
->did
->neither. They checked the @dw-world.de and claimed the mail is rejected
->because of SPAM. I checked with @dw-world.de they said neither me nor my ISP
->is on there banned list.
+>At 05:16 PM 4/7/2003 +0530, ramands wrote:
 >
->Here are the outputs of dig:
->
->; <<>> DiG 9.2.1 <<>> -t MX @philonline.com vger.kernel.org
->;; global options:  printcmd
->;; Got answer:
->
->;; ANSWER SECTION:
->vger.kernel.org.        3539    IN      MX      10 vger.kernel.org.
->vger.kernel.org.        3539    IN      MX      200 zeus.kernel.org.
->
->;; AUTHORITY SECTION:
->kernel.org.             3539    IN      NS      ns1.kernel.org.
->kernel.org.             3539    IN      NS      ns2.q.p80.net.
->kernel.org.             3539    IN      NS      ns2.kernel.org.
->kernel.org.             3539    IN      NS      zenii.linux.org.uk.
->kernel.org.             3539    IN      NS      ns.vger.kernel.org.
+>&gt;whenever i incude header uaccess.h for copy my compiler throws a lot of
+>&gt;compilation errors . They are generaly of nature
+>&gt;
+>&gt;uaccess.h&gt;dereferencing pointer to incomplete type
+>&gt;
+>&gt;sched.h&gt;dereferncing pointer to incomplete type
+>&gt;
+>&gt;i am using redhat 8.0
+>&gt;i have read that some distributions do not provide complete headers for
+>&gt;module level programming
+>&gt;Is that the reason for error i am getting ?
 >
 >
->; <<>> DiG 9.2.1 <<>> -t MX @skyinet.net vger.kernel.org
->;; global options:  printcmd
->;; Got answer:
+>1. What do you mean by "for copy"?
 >
->;; ANSWER SECTION:
->vger.kernel.org.        3587    IN      MX      10 vger.kernel.org.
->vger.kernel.org.        3587    IN      MX      200 zeus.kernel.org.
+>2. Are you #include'ing, in these cases, the uaccess.h that is located in
+>/usr/include/asm, or one that comes as part of kernel source? (I ask
+>because the context of your questions is "module level programming".) If
+>the second, what kernel, and are you compiling for i86 hardware?
 >
->;; AUTHORITY SECTION:
->kernel.org.             3587    IN      NS      ns.vger.kernel.org.
->kernel.org.             3587    IN      NS      ns1.kernel.org.
->kernel.org.             3587    IN      NS      ns2.q.p80.net.
->kernel.org.             3587    IN      NS      ns2.kernel.org.
->kernel.org.             3587    IN      NS      zenii.linux.org.uk.
+>3. The lines you (sort of) quote look more like warnings than errors, but
+>it is hard to be sure from the small fragments you provide. Could you
+>please post a complete "error" line or two?
 >
->
->; <<>> DiG 9.2.1 <<>> -t MX @philonline.com redhat.com
->;; global options:  printcmd
->;; Got answer:
->
->;; ANSWER SECTION:
->redhat.com.             580     IN      MX      20 mx2.redhat.com.
->redhat.com.             580     IN      MX      10 mx1.redhat.com.
->
->;; AUTHORITY SECTION:
->redhat.com.             580     IN      NS      ns3.redhat.com.
->redhat.com.             580     IN      NS      ns1.redhat.com.
->redhat.com.             580     IN      NS      ns2.redhat.com.
->
->
->; <<>> DiG 9.2.1 <<>> -t MX @skyinet.net redhat.com
->;; global options:  printcmd
->;; Got answer:
->
->;; ANSWER SECTION:
->redhat.com.             600     IN      MX      20 mx2.redhat.com.
->redhat.com.             600     IN      MX      10 mx1.redhat.com.
->
->;; AUTHORITY SECTION:
->redhat.com.             600     IN      NS      ns1.redhat.com.
->redhat.com.             600     IN      NS      ns2.redhat.com.
->redhat.com.             600     IN      NS      ns3.redhat.com.
->
->I would not know how to interpret this. I only see that there is a difference
->in sequence in the AUTHORITY SECTION.
-
+>4. What is "my compiler"? Some version (which) of gcc? Of g++? Or are you
+>using some other compiler?
+[rubbish removed]
 
 
 
