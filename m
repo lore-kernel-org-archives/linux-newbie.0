@@ -1,107 +1,154 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: help with iptables - squid
-Date: Sat, 20 Dec 2003 18:21:36 -0800
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Save data on DVD+R Drive??]
+Date: Sun, 21 Dec 2003 08:12:53 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031220175739.01fbf2a8@celine>
-References: <1071970584.3021.4.camel@localhost.localdomain>
+Message-ID: <20031221131253.GA472@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1071970584.3021.4.camel@localhost.localdomain>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 08:36 PM 12/20/2003 -0500, Ramzez wrote:
->Hi friends...
->
->   I've configure squid in a pentium (100Mhz, 98Mb-RAM, 1Gb-HD) to works
->as http_proxy for 10-15 users of my LAN (what do you think about that?
->is it enough?).
 
-Depends on what else the server does, what traffic levels your 10-15 users 
-generate, how fast your Internet conenction is, and what reason you have 
-for using a proxy. With that little RAM and HD space, squid's ability to 
-cache will be limited. But it still will provide the security features of a 
-proxy quite nicely.
+On 12-20, Ray Olszewski wrote:
+> At 10:21 AM 12/20/2003 -0500, Hal MacArgle wrote:
+> >Greetings: I just acquired a HP 300i DVD+R drive, learning the ropes
+> >with it..
+> >
+> >I've fetched Chris Stoddard's tome using the drive to burn video but
+> >I would like to use it for simple data storage, taking advantage of
+> >it's 4.7gB, using 'cdrecord' if possible..
+> >
+> >Can someone point me to where I may find something to get started
+> >with??
+> 
+> I don't have one of these myself yet, but ...
+> 
+> 1. The man page for mkisofs says the iso9660 image files it makes will work 
+> with DVDs.
 
->   Now, I wanna make a firewall in the same machine because it connects
->to internet (my ISP)... the services of my LAN are internet, and
->send/receive e-mails.
->
->   I'm newbie with iptables, so:
->   Can you help me and say me which rules I need?
-
-You haven't told us enough for a definitive answer. If, as I infer, this 
-host is currently also your router, then it probably has some iptables 
-rules running now ... at least rules to MASQ or SNAT LAN traffic to the 
-Internet (or do all your LAN hosts have routable IP addresses?). Check your 
-basic ruleset with
-
-         iptables -nvL
-
-Check your NAT'ing rules with
-
-         iptables -t nat -nvL
-
-Among the details you need to consider are:
-
-         1. What outgoing services from LAN hosts do you want to allow 
-("services of my LAN are internet" is meaningless)?
-
-         2. What outgoing services from LAN hosts do you want to force 
-users to use the proxy server for?
-
-         3. Are there any outgoing services that you specifically want to 
-diaallow and/or monitor?
-
-         4. When you say "send/receive e-mails" ... how? An SMTP server on 
-the router/firewall? One on another host on the LAN? One on a separate 
-"DMZ" network? Using your ISP's sparthost relay directly for outgoing mail 
-and its POP3/IMAP server for incoming mail? Something else?
-
-         5. How does your network do DNS? Specicially, how do hosts resolve 
-on-LAN addresses? How do they resolve off-LAN addresses? Do you run 
-authoritative DNS for any domain and, if yes, does it run on the 
-router/firewall, a LAN host, or a DMZ host?
-
-         6. Do other services (in addition to the possibilities we've 
-already covered) need to be port forwarded to LAN or DMZ hosts (or accepted 
-by the router itself)? The most common example are http, https, and 
-ssh.  Also remember that many online games and P2P applications require 
-port forwarding, and a few newer ones (e.g., SIP phones for VoIP) can be 
-real nightmares.
-
-         7. Is there anything unusual about your external connection? An 
-example of "unusual" would be a case where the ISP uses non-routable 
-addresses between you and it, then NATs them at its end.
-
-         8. Does the router/firewall have a static or a dynamic IP address? 
-If dynamic, assigned how (DHCP? PPPoE? something else?)?
-
-         9. Was my initial assumption -- that you have a single public IP 
-address and LAN hosts use NAT with it -- correct? If not, what are the 
-relevant details of your Internet access?
-
-I've probably left out some things, but that list is a good start.
-
-The best drop-in firewall I know of for iptables is Shorewall 
-(shorewall.sourceforge.net), though I think there are several others around 
-too. It, rather than bespoke rulesets,  might be the way to go for you ... 
-its guide and configuration options will take care of most of the likely 
-answers to my questions. That said, I personally prefer bespoke firewalls 
-... they are not much harder to set up than a complex package like 
-SHorewall, and you end up learning how iptables works, not just how a 
-specific front-end to iptables works.
-
-For learning iptables, I'd start by rounding up the usual suspects -- the 
-man page and the HowTo. Last time I looked at both (recently for the man 
-page, but some time ago for the HowTo), I though both were pretty good ... 
-much better than the corresponding stuff for ipchains, this despite 
-iptables being a somewhat more complex system.
+	As I understand it from a friend, he has removed his CDR
+drive and uses the DVD drive for _everything_ and, according to him,
+much better and easier.. I've got to sort out what he really means.
+<g>
 
 
 
+> 2. There is a Debian-Sid package called "dvd+rw-tools" that includes (from 
+> the package description) "a format utility for DVD+-RW media, a frontend to 
+> mkisofs for burning DVD+-RW/R and some associated tools". I forget what 
+> distro you use, but all the big ones are likely to have something similar.
+
+	I have a choice between the recommended Debian +rw tools and
+another version.. Another matter of sorting out what works for me
+using Slackware 9.0/2.4.20.. Have one recommendation to recompile to
+2.4.22 as being "better" but not sure why.. The learning curve has
+been fired up yet again, eh?
+
+
+
+> 3. There is also a Debian-Sid package dedrtools, described as: "dvdrtools 
+> allows you to create both CDs and DVDs using recorders for both formats. It 
+> supports writing data, audio mixed, multi-session, CD+, {insert DVD+RW, 
+> DVD+R, etc format war here} on most types of CD and DVD recorders".
+> 
+> 4. There ised to be a Debian package called dvdrecord. But I cannot find a 
+> current reference to it, so I infer that one of the above packages 
+> (probably dvdrtools) contains that app.
+
+	It seems like the distributions are getting further and
+further apart.. I guess that's "normal." Redmond has the distinct
+advantage along those lines but I find their "versions" just as
+bad..<g>
+
+
+
+> 5. As I read the man page for cdrecord (2.0+a19-6), it does not yet support 
+> any DVD burning hardware (+ or -, R or RW). Instead, you want the similar 
+> "dvdrecord" program that the above package provides.
+> 
+> I don't think there is very widespread experience with DVD burning on Linux 
+> yet -- the drives are still a bit pricey and, I believe, burning takes a 
+> very long time -- and the people who do it are, mostly, more interested in 
+> video DVDs than in data DVDs. You may have to go to the home sites for 
+> those applications to get more in the way of details, and even there it may 
+> be sketchy.
+
+	The experience will change as the price goes down.. Tiger has
+a NEC RW+ for $95US plus freight as well as a RW+ / RW- combo for
+$100US plus freight.. I bought a HP DVD300i, RW+ from eCost for $83US
+including S&H. Marked "refurbished" but came in a brand new sealed
+carton with two blank discs, 2 program discs (windoze, naturally) a
+cable, device screws and an extensive manual in multi languages.. All
+looked pristine.. The media discs prices have been reduced already..
+
+
+
+> I'm not sure what "Chris Stoddard's tome" refers to, but this short article 
+> by Stoddard about burning video DVDs --
+> 
+>         http://www.linuxgazette.com/issue83/stoddard.html
+> 
+> -- appears to be using (in the sample script at the end) the apps that I've 
+> referred to above (though with different arguments to mkisofs to make 
+> watchable DVDs rather than iso9660 ones).
+
+	I have that and it's very informative and well written for
+his particular RW+ device, but doesn't mention data storage, just
+video.. I now know why some shows on the telly are out of sync audio
+to video.. It's a whole new ball game with this old analog man..
+
+
+
+> Also, this URL --
+> 
+>         http://www.ccp14.ac.uk/ccp14admin/linux-server/iso_images_to_dvdram/
+> 
+> -- talks about using "dd" to make data DVDs in certain cases.
+> 
+> Finally, this URL --
+> 
+>         http://linuxathome.com/
+> 
+> -- makes passing reference to "some use a patched version of cdrecord, 
+> others use a program called prodvd", in the context of making video DVDs.
+
+	I have the former already which confuses me more because they
+talk about a "DVD-RAM" drive.. Is that different than RW+ or RW-??
+The file system on the drive is "udf" but the details still escape me
+at present.. Time will tell..
+
+
+
+> I know this is not very much help, but I feared you would get none at all 
+> here if I did not tell you the little I do know. From all of it, it appears 
+> to me that the difference between video and data DVDs lies entirely in the 
+> mkisofs step of the process, which is where you specify the filesystem type 
+> that will be built in the image file it produces.
+
+	Au contraire - very much help to prod the old grey cells as
+it'll be sorted out with a wee bit of time.. As of now it seems most
+of the leg work has been done by the RedHat and Mandrake camps with
+Debian coming up fast.. Slackware not in the running so far but will
+be I'm sure.. The streaming video capture gang seem to be favouring
+Slackware 9.0+ now - we'll just have to see, eh?
+
+
+
+> If you do get this working, I'd welcome the opportunityo to read about how 
+> you did it.
+
+	Will certainly share my leg work as I think this list is the
+greatest and still consider myself a "newbie." 
+
+Cheers,
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
