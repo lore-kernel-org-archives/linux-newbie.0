@@ -1,32 +1,41 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Using a URL to access a variable background image
-Date: Fri, 30 May 2003 19:56:13 -0400
+Date: Fri, 30 May 2003 17:08:46 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305302356.h4UNuDAm003297@hartford-hwp.com>
+Message-ID: <5.1.0.14.1.20030530170647.01f626f0@celine>
 References: <BKEGKPICNAKILKJKMHCAIEGAECAA.Riley@Williams.Name>
-Reply-To: brownh@hartford-hwp.com
+ <BKEGKPICNAKILKJKMHCAIEGAECAA.Riley@Williams.Name>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <BKEGKPICNAKILKJKMHCAIEGAECAA.Riley@Williams.Name>
+In-Reply-To: <200305302356.h4UNuDAm003297@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Riley@Williams.Name
-Cc: 333101@personal.net.py, linux@hartford-hwp.com
+To: linux-newbie@vger.kernel.org
 
-> If the image is an animated GIF rather than the JPEG you stated, it
-> will animate itself automatically if done as you describe. However,
-> an "animated JPEG" is usually a series of jpegs and some JavaScript
-> in the web page to switch between them.
+At 07:56 PM 5/30/2003 -0400, Haines Brown wrote:
+> > If the image is an animated GIF rather than the JPEG you stated, it
+> > will animate itself automatically if done as you describe. However,
+> > an "animated JPEG" is usually a series of jpegs and some JavaScript
+> > in the web page to switch between them.
+>
+>Riley,
+>
+>Yes, if the web page were displaying an animated graphic, then that's
+>like a slide show or gif animation, but this page displays the output
+>of a CCD detector, and so is more like a video camera. There's no
+>switching between images, but a periodic refreshing of the image.
 
-Riley,
 
-Yes, if the web page were displaying an animated graphic, then that's
-like a slide show or gif animation, but this page displays the output
-of a CCD detector, and so is more like a video camera. There's no
-switching between images, but a periodic refreshing of the image.
+Haines -- Maybe is makes sense for you (if you can) to tell us the URL of 
+the site, so folkd here don't have to guess about what it is doing. This is 
+probably one of those cases where the devil is in the details, and I'm 
+starting to doubt that you'll get useful feedback until someone here knows 
+more about the specifics.
 
-Haines  
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
