@@ -1,55 +1,23 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Script as root
-Date: Tue, 1 Oct 2002 21:10:02 +0000
+From: Jude DaShiell <jdashiel@shellworld.net>
+Subject: Re: CD-ROM Hell
+Date: Tue, 1 Oct 2002 17:24:33 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0210012110020B.00233@unix.pa3gcu>
-References: <5.1.0.14.1.20021001085016.02c818f0@celine> <3D99C948.9020704@arrl.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.BSF.4.44.0210011723470.57801-100000@server1.shellworld.net>
+References: <Pine.LNX.4.44.0209302316340.3705-100000@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D99C948.9020704@arrl.net>
+In-Reply-To: <Pine.LNX.4.44.0209302316340.3705-100000@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jim Reimer <wa5rrh@arrl.net>, Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: James Miller <jamtat@mailandnews.com>
+Cc: Bryan Simmons <bsimmo1@gl.umbc.edu>, linux-newbie <linux-newbie@vger.kernel.org>
 
-On Tuesday 01 October 2002 16:11, Jim Reimer wrote:
-> suid bit on a script is ignored, isn't it?
+Unless you've already done it and it failed, you could try umount
+/mnt/cdrom.
 
-AFAIK yes, and the saying is, never run a script as root, root is evil, one 
-small oversight and damage can be done period.
 
-I once was accused of destorying someones system because i said, "if" you 
-want to get all the information from the script then you will need to run it 
-as root, if it is run under a user it will not gain some vital information 
-from your /etc dir, a few days later a mail appierd on that particular 
-mailing list saying i had destroyed his system with my script.
-Many still use that script actually but thats asside the point, root is evil.
 
-> -jdr-
->
-> Ray Olszewski wrote:
-> > Yes. You want to set the suid bit on it and have it owned by root. "man
-> > chmod" (or maybe other chmod documentation) for the details.
-> >
-> > At 09:55 AM 10/1/02 -0400, Paul Kraus wrote:
-> >> I have a backup script that mounts a drive on my xp workstations. Is
-> >> there a way I can set this script to run as root so that I do not have
-> >> to su every time I want to run it?
-> >
-> > --
-> > -------------------------------------------"Never tell me the
-> > odds!"--------
-> > Ray Olszewski                    -- Han Solo
-> > Palo Alto, California, USA              ray@comarre.com
-> > -------------------------------------------------------------------------
-> >------
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
