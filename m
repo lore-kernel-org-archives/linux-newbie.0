@@ -1,192 +1,91 @@
-From: Sanjay Arora <skpobox@yahoo.com>
-Subject: Linux newbie: Help requested in decoding the nature of this
-  Martian packet..
-Date: Sat, 14 Jun 2003 14:04:58 +0530
+From: cr <cr@orcon.net.nz>
+Subject: Re: ppp ain't talking
+Date: Sun, 15 Jun 2003 00:05:56 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030614140245.00b50320@yahoo.com>
+Message-ID: <200306141152.h5EBqlvc016877@dbmail-mx3.orcon.co.nz>
+References: <200306140104.h5E144wo017689@pegasus.wanadoo.be> <5.1.0.14.1.20030613230654.0390ced0@celine> <200306140756.h5E7uENj010573@dbmail-mx1.orcon.co.nz>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200306140756.h5E7uENj010573@dbmail-mx1.orcon.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-I am a new user to this list from Amritsar, India.
+On Sunday 15 June 2003 07:45, cr wrote:
 
-I have a home network on internal IP 192.168.x.x, connected through GW 
-172.16.0.141 to a cable (Ethernet Cat 5 Cable) ISP having internal IP 
-network 172.16.x.x and giving Internet connectivity through GW 172.16.0.1, 
-which he claims is firewalled (though I doubt they are competent at it, as 
-they could not find mac address in a broadcast packet...IMHO they are using 
-a consultant, who they are unwilling to call again n again...maybe due to 
-his charges).
+> I see kppp in that list....
+>
+> I'll assume for the present that KPPP is now supported in Debian and carry
+> on with my debugging efforts.
+>
+> Thanks
+>
+> cr
 
-My GW 172.16.0.141 is a multihomed linux box with Linux Firewall Project 
-firewall on it (installed it a few days ago and am still in the process of 
-understanding it). Firewall is generating huge logs about a Martian packet 
-being detected having IP 192.16.1.101 on eth1 which is 172.16.0.141 ie 
-external interface. It also lists Ethernet II header giving hardware 
-address of the broadcast packet.
+Success!   (This message sent from Debian).
 
-I am not competent enough to compile a sniffer yet on Linux but I plugged a 
-windows machine directly on to the ISPs cable and sniffed the Martian 
-packets...I am listing them here, please advise if this packet is having a 
-spoofed IP address (ie is a virus or hacker transmission) or if seems to be 
-a genuine DHCP broadcast. If DHCP broadcast...how do I find out if it is 
-coming from the ISP's Internet GW or from his internal network.
+(Apologies for not quoting the original message, I haven't imported 
+the previous mailboxes yet).
 
-Maybe I am wrong but I don't think its a genuine DHCP broadcast (from 
-someone like myself who has connected an inner 192.168.x.x network to the 
-cable ISP's wire) as I am getting no other packets except these broadcast 
-ones...I am sure a leakage would not be discriminating and leak only DHCP 
-broadcast. But then I am a linux newbie.
+I checked /var/log/messages as suggested and found that a program 
+called  diald  seemed to have been remarkably active.   I don't use diald 
+so eventually, having found no 'nice' way to stop it starting up, I just 
+uninstalled it.   And KPPP immediately started working!
 
-I believe I can use the arp command to find out the MAC addresses of 
-machines on isp's network but i do not know the various issues involved and 
-the syntax.
+Many thanks for the help.
 
-Please help. One decoded & several undecoded packets are given below.
+I have quite a few things still to resolve, such as  KPPP will only start if 
+I type 'kppp' in a terminal window, not from the menu; but then there are 
+several other programs that will work or not depending which menu I select 
+them from. These look more like Debian-specific problems so I'll probably 
+find a Debian list to ask about them.
 
-With my thanks in advance
+Just in case it's of interest, here's a bit of /var/log/messages:
 
-Sanjay.
+Jun 14 22:13:39 alti kernel: PPP: version 2.3.7 (demand dialling)
+Jun 14 22:13:39 alti kernel: PPP line discipline registered.
+Jun 14 22:13:39 alti kernel: registered device ppp0
+Jun 14 22:13:39 alti pppd[418]: pppd 2.4.1 started by cr, uid 1000
+Jun 14 22:13:39 alti pppd[418]: Using interface ppp0
+Jun 14 22:13:39 alti pppd[418]: Connect: ppp0 <--> /dev/ttyS0
+Jun 14 22:13:39 alti kernel: PPP BSD Compression module registered
+Jun 14 22:13:40 alti kernel: PPP Deflate Compression module registered
+Jun 14 22:13:40 alti pppd[418]: local  IP address 219.88.128.163
+Jun 14 22:13:40 alti pppd[418]: remote IP address 210.55.12.202
+Jun 14 22:13:40 alti pppd[418]: primary   DNS address 210.55.12.205
+Jun 14 22:13:40 alti pppd[418]: secondary DNS address 210.55.12.1
+Jun 14 22:13:40 alti diald[232]: Trigger: udp       192.168.0.1/1025     
+210.55.12.205/53   
+Jun 14 22:13:40 alti diald[232]: Calling site 192.168.0.2 
+Jun 14 22:13:40 alti diald[232]: Device ttyS0 is locked by pid 414
+Jun 14 22:13:40 alti diald[232]: No devices free to call out on.
+Jun 14 22:13:40 alti diald[232]: Connect script failed.
+Jun 14 22:13:40 alti diald[232]: Delaying 1 seconds before clear to dial.
+Jun 14 22:13:43 alti diald[232]: Calling site 192.168.0.2 
+Jun 14 22:13:43 alti diald[232]: Device ttyS0 is locked by pid 414
+Jun 14 22:13:43 alti diald[232]: No devices free to call out on.
+Jun 14 22:13:44 alti diald[232]: Connect script failed.
+(snip)
+Jun 14 22:15:35 alti diald[232]: Delaying 1 seconds before clear to dial.
+Jun 14 22:15:37 alti diald[232]: Calling site 192.168.0.2 
+Jun 14 22:15:37 alti diald[232]: Device ttyS0 is locked by pid 414
+Jun 14 22:15:37 alti diald[232]: No devices free to call out on.
+Jun 14 22:15:38 alti pppd[418]: Terminating on signal 15.
+Jun 14 22:15:38 alti pppd[418]: Connection terminated.
+Jun 14 22:15:38 alti pppd[418]: Connect time 2.0 minutes.
+Jun 14 22:15:38 alti pppd[418]: Sent 346 bytes, received 424 bytes.
+Jun 14 22:15:38 alti diald[232]: Connect script failed.
+Jun 14 22:15:38 alti diald[232]: Delaying 1 seconds before clear to dial.
+Jun 14 22:15:39 alti pppd[418]: Exit.
+Jun 14 22:15:40 alti diald[232]: Calling site 192.168.0.2 
+Jun 14 22:15:41 alti diald[232]: connector: sh: option `-c' requires an 
+argument
+Jun 14 22:15:41 alti diald[232]: Connect script failed.
+Jun 14 22:15:42 alti diald[232]: Delaying 30 seconds before clear to dial.
+Jun 14 22:16:13 alti diald[232]: Calling site 192.168.0.2 
 
-Sniffer Decoded Packet
-
-
-Frame 11
-     Arrival Time: Jun  9, 2003 11:53:00.920314000
-     Time delta from previous packet: 0.396803000 seconds
-     Time relative to first packet: 2.136762000 seconds
-     Frame Number: 11
-     Packet Length: 342 bytes
-     Capture Length: 342 bytes
-Ethernet II, Src: 00:d0:b7:65:51:27, Dst: ff:ff:ff:ff:ff:ff
-     Destination: ff:ff:ff:ff:ff:ff (Broadcast)
-     Source: 00:d0:b7:65:51:27 (Intel_65:51:27)
-     Type: IP (0x0800)
-Internet Protocol, Src Addr: 192.168.1.101 (192.168.1.101), Dst Addr: 
-255.255.255.255 (255.255.255.255)
-     Version: 4
-     Header length: 20 bytes
-     Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00)
-         0000 00.. = Differentiated Services Codepoint: Default (0x00)
-         .... ..0. = ECN-Capable Transport (ECT): 0
-         .... ...0 = ECN-CE: 0
-     Total Length: 328
-     Identification: 0x790d
-     Flags: 0x00
-         .0.. = Don't fragment: Not set
-         ..0. = More fragments: Not set
-     Fragment offset: 0
-     Time to live: 64
-     Protocol: UDP (0x11)
-     Header checksum: 0x3e8b (correct)
-     Source: 192.168.1.101 (192.168.1.101)
-     Destination: 255.255.255.255 (255.255.255.255)
-User Datagram Protocol, Src Port: bootpc (68), Dst Port: bootps (67)
-     Source port: bootpc (68)
-     Destination port: bootps (67)
-     Length: 308
-     Checksum: 0xec81 (correct)
-Bootstrap Protocol
-     Message type: Boot Request (1)
-     Hardware type: Ethernet
-     Hardware address length: 16
-     Hops: 0
-     Transaction ID: 0x896e3f1d
-     Seconds elapsed: 6656
-Bootp flags: 0x8000 (Broadcast)
-         1... .... .... .... = Broadcast flag: Broadcast
-         .000 0000 0000 0000 = Reserved flags: 0x0000
-     Client IP address: 0.0.0.0 (0.0.0.0)
-     Your (client) IP address: 0.0.0.0 (0.0.0.0)
-     Next server IP address: 0.0.0.0 (0.0.0.0)
-     Relay agent IP address: 0.0.0.0 (0.0.0.0)
-     Client hardware address: 5241532090738FDC9987C20101000000
-     Server host name not given
-     Boot file name not given
-     Magic cookie: (OK)
-     Option 53: DHCP Message Type = DHCP Discover
-     Option 61: Client identifier (17 bytes)
-     Option 12: Host Name = "BBK"
-     End Option
-     Padding
-
-A few other packets in Hex
-
-45 00 01 48 FC 70 00 00 40 11 BB 27 C0 A8 01 65
-FF FF FF FF 00 44 00 43 01 34 33 6B 01 01 10 00
-5B 58 40 4A 00 00 80 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 52 41 53 20 90 73 8F DC
-99 87 C2 01 01 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 63 82 53 63 35 01 01 3D
-11 01 52 41 53 20 90 73 8F DC 99 87 C2 01 01 00
-00 00 0C 04 42 42 4B 00 FF 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00
-
-45 00 01 48 08 71 00 00 40 11 AF 27 C0 A8 01 65
-FF FF FF FF 00 44 00 43 01 34 2F 6B 01 01 10 00
-5B 58 40 4A 04 00 80 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 52 41 53 20 90 73 8F DC
-99 87 C2 01 01 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 63 82 53 63 35 01 01 3D
-11 01 52 41 53 20 90 73 8F DC 99 87 C2 01 01 00
-00 00 0C 04 42 42 4B 00 FF 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00
-
-45 00 01 48 1E 71 00 00 40 11 99 27 C0 A8 01 65
-FF FF FF FF 00 44 00 43 01 34 26 6B 01 01 10 00
-5B 58 40 4A 0D 00 80 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 52 41 53 20 90 73 8F DC
-99 87 C2 01 01 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 63 82 53 63 35 01 01 3D
-11 01 52 41 53 20 90 73 8F DC 99 87 C2 01 01 00
-00 00 0C 04 42 42 4B 00 FF 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-00 00 00 00 00 00 00 00
-
-
-
-
-
-
-
+Chris
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
