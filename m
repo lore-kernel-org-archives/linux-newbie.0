@@ -1,50 +1,49 @@
-From: Jim Nelson <james4765@verizon.net>
-Subject: Re: any way to find which pci driver uses what memory region & Any
- way to find which driver is attached to which device file
-Date: Thu, 14 Oct 2004 18:11:09 -0400
+From: pepo <pepo@linuxmail.org>
+Subject: My parallel port
+Date: Fri, 8 Oct 2004 09:17:54 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <416EF97D.9050401@verizon.net>
-References: <025301c4b743$dd7a2d00$41c8a8c0@Eshwar>
+Message-ID: <200410080918.03239.pepo@linuxmail.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <025301c4b743$dd7a2d00$41c8a8c0@Eshwar>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: eshwar <eshwar@moschip.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+Content-Type: Text/Plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-eshwar wrote:
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
->HI,
->
-> Is there any way to find which pci driver uses what memroy regions and any
->way to find which driver si attached to which device file
->
->  
->
+Hi FRiends...
 
-"cat /proc/iomem".  That will list the memory addresses assigned to the 
-various PCI devices.  Some kernels have PCI name support compiled in 
-(most stock distro kernels do), but without it, you get the PCI bus 
-location numbers, and have to do a bit of work with lspci to identify 
-what each adapter is.
+	I think that my parallel port is wrong; I had a dot printer (EPSON-FX1050) 
+that prints with fails, one of them is that stop in the middle of the page; I 
+thought that the printer was damaged; but now my ink printer (CANON-BJC2000) 
+have the same fail.
 
-I don't understand why you need to know PCI memory address regions - 
-they are remapped at device configuration time (unlike ISA) unless you 
-have a seriously broken adapter card.
+	Maybe the two printers are damaged, but is more probable my parallel port is 
+damaged.
 
-What do you mean "any way to find which driver is attached to which 
-device file"?  You can use "cat /proc/devices" to get the major number 
-assigned to each block and char driver, and then do a "ls -l 
-/dev/[device file name]" to get the major and minor numbers assigned to 
-that device.  From there, things get more driver-specific - different 
-drivers use minor numbers in different ways.
+	How do I check my parallel port? How do I know if all the pines are right?
 
-More info about what you're actually trying to do would help.
+Thanks.
 
-Jim
+- -- 
+  Linux User Registered #232544
+     Jabber : pepo@jabberes.org
+        ICQ : 337889406
+  GnuPG-key : www.keyserver.net
+ -------------------------------
+"Software is like sex,
+      it's better when it's free."
+                  [Linus Torvalds]
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
 
+iD8DBQFBZqGZ6DtppveuSQYRAtkvAJoCAULK6eXz3Fo0t7LQpq6cV/GTCACdEc76
+9IrSschia1pLQA+ngAHDAZc=
+=ZUPM
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
