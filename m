@@ -1,51 +1,37 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re[4]: lost in samba land
-Date: Sat, 18 May 2002 11:33:19 -0700
+From: "Mike Miller" <mlmiller@charter.net>
+Subject: Re: test mail
+Date: Sat, 18 May 2002 14:41:20 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020518183319.JSUI11146.mtiwmhc22.worldnet.att.net@alan>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <auto-000013523234@dc-mx03.cluster1.charter.net>
+References: <2.2.32.20020518180010.03a2c73c@[192.168.1.23]>
+Reply-To: mlmiller@charter.net
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <2.2.32.20020518180010.03a2c73c@[192.168.1.23]>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: Tom Beer <mailings@analogon.com>, linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-In general I like the kiss protocol..  But it appears I have to attack from two avenues
+You are probably correct. Charter.net has frequent short 
+outages for various  reasons. I thought it would take a day or 
+two to get dropped from the list. 
 
-when I go to security=user on the NT authentication side I get:
+It's not that hard to re-sub if I don't see any traffic for a few 
+days.
 
-[Alan@Webby Alan]$ smbclient //webby/WinShare -U Alan
-added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
-Password:
-session setup failed: NT_STATUS_LOGON_FAILURE
-[Alan@Webby Alan]$
+On 18 May 02, at 11:00, Ray Olszewski wrote:
+ 
+> Mike--
+> 
+> I doubt your problem with this list derives from being a lurker. It is more
+> likely that your e-mail address suffers, as many do, from short periods of
+> being unreachable.
+> 
 
-
-and on setting up ldap:
-
-[root@Webby openldap]# ldapadd -x -h localhost -D "cn=manager,dc=WEBBY,dc=com" -f base.ldif -W
-Enter LDAP Password:
-ldap_bind: Can't contact LDAP server
-
-
-re:
-
-don't try to walk different avenues at once. I would suggest that
-you may start with samba and NT password authentication.
-The reason is, that it is the straight forward problem. Ldap is a - at
-least for me - more complicated issue cause it is more complex
-to authenticate a user with. If you got it running with "normal"
-passwd authentication, then start to mingle the ldap issue. This
-reduced complexity to your approach and leads to easier recognition
-of errors. For the ldap issue I would recommend asking the openldap
-mailing list, if you haven't already.
-
-http://www.openldap.org/lists/openldap-general/200002/index.html
+> 
 
 
-
-
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
