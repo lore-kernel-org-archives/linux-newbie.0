@@ -1,38 +1,34 @@
-From: Kev <savage-garden@hanikamail.com>
-Subject: Clamav on Postfix (Happy Holidays to all)
-Date: Fri, 24 Dec 2004 22:55:11 +0600
-Message-ID: <20041224225433.1490.SAVAGE-GARDEN@hanikamail.com>
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: malloc and free
+Date: Fri, 24 Dec 2004 18:39:56 +0000 (GMT)
+Message-ID: <20041224183956.11788.qmail@web52909.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: newbie <linux-newbie@vger.kernel.org>
 
-Hi All,
+hi
 
-I have a RedHat 9 Box with Postfix, can any one tell me where can i
-download RPM installation for this, and with all the dependance. and a
-good documentation on how to.
+routine xyz uses malloc and free functions. it gives
+accurate and correct result if called once. 
 
- i tired the following url form the http://www.clamav.net
+but if the function is called in a loop N number of
+times then probably it gives segmentation fault.
 
-http://dag.wieers.com/packages/clamav/
-http://filelister.linux-kernel.at/?current=/packages/SRPMS/
+what is the reason?  can any body guess or test code
+is needed?
 
-but they all fail with dependance errors.
+thanks
 
-i only need to scan and block attachments.
+ankit jain
 
-
-plz advice, im new to clamav.
-
-------- 
-Web Hosting at a cheap price, starting at $1 per month with your own domain, .COM, .NET, .LK, .ORG etc..
-PHP, CGI, Perl, MySQL, Cpanel 9, POP3, POP3s, SMTP, IMAP, FTP,
-http://www.orbitsl.net
-
+________________________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
