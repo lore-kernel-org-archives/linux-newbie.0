@@ -1,38 +1,27 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: about news
-Date: Wed, 6 Nov 2002 12:58:04 -0500
+From: Joshua Lee <yid@softhome.net>
+Subject: Re: about news
+Date: Wed, 6 Nov 2002 14:59:01 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211061255.44520.r4mz3z@yahoo.es>
+Message-ID: <20021106195901.GA20662@softhome.net>
+References: <200211061255.44520.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200211061255.44520.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: r4mz3z <r4mz3z@yahoo.es>
+Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Wed, Nov 06, 2002 at 12:58:04PM -0500, r4mz3z wrote:
+>   where do I found news?? specially about linux, hackers, technology or
+> something like that ... one great site is cnn.com but technology section is
+> so poor
 
-Hi friends
-  where do I found news?? specially about linux, hackers, technology or
-something like that ... one great site is cnn.com but technology section is
-so poor
-
-thanks
-
-- --
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE9yVgys4dF9gl05swRAueCAJwOyjjJ2+lZWNcRkn9p0RPlVhSTuQCgox/r
-DekKrrwljKHl4U9DD9h1YNM=
-=sT/1
------END PGP SIGNATURE-----
-
+There are many good sites, linuxtoday.com, slashdot.org, linux.com, etc.
+If you want more, they should be mentioned in a search engine. dmoz.org
+and google.com are your friends. :-)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
