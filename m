@@ -1,38 +1,32 @@
-From: Amin <amin@siriusbb.com>
-Subject: Re: MSN Messenger clones keep failing
-Date: Tue, 04 Nov 2003 21:34:57 +0600
+From: Dennis Schridde <lindevel@gmx.net> (by way of Dennis Schridde
+	<lindevel@gmx.net>)
+Subject: Re: Can't write VFAT filesystem
+Date: Tue, 4 Nov 2003 17:36:14 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA7C721.9010507@siriusbb.com>
-References: <3FA79E82.3080204@siriusbb.com> <Pine.LNX.4.58.0311040913500.1488@box>
+Message-ID: <200311041736.14849.lindevel@gmx.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0311040913500.1488@box>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-James Miller (office) wrote:
-> 
-> Well, I don't have direct experience with any of those clients, nor with
-> trying to chat on MSN from Linux.  But I do read some computer news, and
-> have seen articles recently (within the last month?) that talk about an
-> impending M$ plan to cut off their network from other chat clients.  I
-> understood that this was to apply to all non-M$ clients as well as to
-> earlier versions of M$'s client as well.  Maybe this explains the trouble
-> you're having?
-> 
-> James
+> I've set up my /etc/fstab file as usual, so that I can
+> access my Windows C: and D: drives, as shown in the attachment.
+>
+> I can mount/unmount both these drives and read them.  I can
+> also write to the /mnt/c filesystem.  But for some reason I
+> can't write to the /mnt/d filesystem.  Specifically:
 
-This seems likely.  The latest version of one of the clones 
-I use tells me that MSN Messenger is using a new protocol 
-and new security, something about SSL, and would I like to 
-download a small patch to handle this?  I said yes, and got 
-the patch ... but even that seems to be a little behind the 
-curve.  Well then it's back to good ol' Yahoo Messenger for me.
+Perhaps your D: - drive is NTFS, not VFAT?
+I think the Kernelmodule for writing on NTFS is "dangerous" at the moment, so
+not installed by the most distributions...
+(if you have installed Windows XP, this is the standard (like on my own
+system))
 
-Thanks,
-Yawar Amin
+HTH,
+Dennis Schridde
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
