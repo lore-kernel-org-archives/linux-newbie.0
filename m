@@ -1,40 +1,64 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Shutdown / Halt Problem - Bad EIP Value
-Date: Tue, 28 May 2002 06:14:49 +0000
+Subject: Re: which distribution to use?
+Date: Tue, 28 May 2002 06:25:05 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0205280614490A.01212@unix.pa3gcu>
-References: <20020528033642.YJMP11659.rwcrmhc53.attbi.com@there>
+Message-ID: <0205280625050B.01212@unix.pa3gcu>
+References: <20020524.130028.-440295.7.matthewstapleton@juno.com> <20020528022710.GF705@raven.parts-unknown.org>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020528033642.YJMP11659.rwcrmhc53.attbi.com@there>
+In-Reply-To: <20020528022710.GF705@raven.parts-unknown.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Brent Eckhout <linuxworks@attbi.com>, Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
+To: David Benfell <benfell@parts-unknown.org>, linux-newbie@vger.kernel.org
 
-On Tuesday 28 May 2002 03:40, Brent Eckhout wrote:
-> I've just started using Red Hat 7.2 (Enigma).  It installed successfully
-> but whenever I shut down the system, I get an "oops" error--  Bad EIP
-> Value.  It looks like it's bombing on the command "halt -i -d -p".  Any
-> suggestions for fixing this problem?
->
-> If I need to turn off some auto shutdown functions, that's fine (BIOS or
-> others).  I tried a Google search-- there were several folks with similar
-> problems but no quick and dirty solutions.
+On Tuesday 28 May 2002 02:27, David Benfell wrote:
 
+> Red Hat, TurboLinux, and Caldera are really buggy.
 
-What you need to do is find out which process is causing the EIP, i suggest 
-you read /usr/src/linux/Documantation/oops-tracing.txt that will show you 
-howto find that out.
-
-Next time you require help please include your kernel version and as much 
-information as possable that will help us to help you.
-
-I have redhat-7.2 on my laptop and have no such problems.
+I certanly would not say that of redhat.
 
 >
-> Brent
+> My experience with Slackware was that it was simply too primitive.  It
+> probably has improved since, but when I tried it, you had to build too
+> much software to get the system into a usable state.  Some of the
+> required builds had booby traps that made it even more difficult.  I
+> never did get Netscape running on that version.
+
+Slackware is NOT primative, its the nearest to "unix" one can get which is 
+why it may seem primative to you.
+
+>
+> Does Slackware use glibc yet?
+
+Yes.
+
+> In a subsequent post, you say you want to learn the nuts and bolts.
+> This is good, but is really not dependent on the distribution you
+> choose.  Most distributions install with a default to come up in GUI
+> mode, but you can modify /etc/inittab, changing the default run level
+> to come up in text mode.  You can then use the startx command to bring
+> up X whenever you need the GUI.
+
+Looks like you have never "installed" slackware yourself as there is one big 
+differance, you start learning with the install of slackware, where as you 
+dont with most others.
+
+>
+> The final argument for SuSE, I believe, is that of all the major
+> distributions, SuSE comes closest to the File Hierarchy Standard.  All
+> the distributions are moving in that direction, so for learning
+> purposes, SuSE may offer you a bit of a head start.
+
+Which is what makes "once again" slackware uniq.
+
+I have said all of this many times here on this list, i have most distro's 
+running on different systems here and at my workplace, from what i have seen 
+here when the question is asked, which distro's is the best to learn linux, 
+slackware pops up.
+
+And BTW: 8.1 is out i see from www.slackware.com
 
 -- 
 Regards Richard
