@@ -1,48 +1,35 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: Setting up an IMAP server
-Date: Thu, 24 Apr 2003 09:33:47 +1000
+From: "ramands" <ramands@indiatimes.com>
+Subject: OOPS in Kmalloc
+Date: Thu, 24 Apr 2003 09:46:17 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00a801c309f0$c9d84220$0300000a@iih.usyd.edu.au>
-References: <001901c309e3$1a129f00$4b01a8c0@t9397.tjem.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200304240344.JAA29170@WS0005.indiatimes.com>
+Reply-To: "ramands" <ramands@indiatimes.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Chris Rose <offline@shaw.ca>, "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+Cc: whitnl73@juno.com, ray@comarre.com, sneakums@zork.net
 
-Chris Rose wrote:
-> I'm looking for the steps and instructions for setting up an IMAP
-> server on Redhat 9.  What i intend is for fetchmail (ideally running
-> as a service) fetch each user's pop3 mail from remote servers, and
-> then have it accessible via imap mailboxes from both inside and
-> outside the network.  In between these points, ideally i'd like to
-> have some degree of nondestructive (ie: flag and copy) spam filtering
-> and automated message filtering as well.
->
-> Outgoing mail is not necessary, though it'd be nice.  If it is
-> necessary, i don't have a domain per se, only a dynamic DNS service.
-> I'm of the impression that this sort of thing matters :)
+Hello, 
+i am getting OOPS in Kmalloc .
 
-This will give you a pretty good start:
+void **data;
+qset = 1000;
 
-http://www.firstpr.com.au/web-mail/RH71-Postfix-Courier-Maildrop-IMAP/
+dptr->data = kmalloc(qset * sizeof(char *), GFP_KERNEL);
 
-Postfix:  For mail
-Courier Maildrop:  For dropping mail into Maildir
-Courier IMAP:  For IMAP
+what could the possible the cause of the error 
 
-Fetchmail is easy - Google or RTFM for that.
+Raman
 
-Try SpamAssassin as part of Maildrop or integrated into Postfix for spam
-filtering.
 
-Think about a virus filtering solution and something to handle
-attachments/MIME - Anomy or the like.
+Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
 
-Regards
+ Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
 
-James Turnbull
+Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
