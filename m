@@ -1,93 +1,33 @@
-From: Kirk Bailey <idiot1@netzero.net>
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
 Subject: Re: Confirmation for subscribe linux-kernel
-Date: Mon, 18 Aug 2003 19:44:29 -0400
+Date: Tue, 19 Aug 2003 11:27:19 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F4164DD.30804@netzero.net>
-References: <Pine.LNX.4.56.0308181732280.1554@homenet>
+Message-ID: <200308191127.19411.Adam@Luchjenbroers.com>
+References: <004e01c365db$4743ba50$2b010a0a@MCABCORADM043>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0308181732280.1554@homenet>
+In-Reply-To: <004e01c365db$4743ba50$2b010a0a@MCABCORADM043>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-yuppers, sure did. In all due respect, WTF, over?
+On Tuesday 19 Aug 2003 8:21 am, Jaime Santana wrote:
+> It seems that someone tried tu subscribe "linux-newbie@vger.kernel.org"
+> to that list.
 
+The walls of spam that would have resulted if they succeeded :P
 
-James Miller wrote:
-
-> Did anyone else onlist get this email asking if you tried to sub to the
-> linux-kernel list?  I did, even though I did *not* try to sub to that
-> list.  The headers seem to indicate that the message was sent to the
-> linux-newbie list from linux-newbie-owner, which makes me believe that
-> probably everyone onlist got it.  If so, why?  Is this a mistake on the
-> part of the list admin, an indicatation that the list has been hacked, a
-> sick mockery of our paltry tech prowess, a result of the northeast power
-> outage, or what?
-> 
-> James
-> 
-> ---------- Forwarded message ----------
-> Date: Mon, 18 Aug 2003 18:28:08 -0400
-> From: Majordomo@vger.kernel.org
-> To: linux-newbie@vger.kernel.org
-> Subject: Confirmation for subscribe linux-kernel
-> 
-> --
-> 
-> Someone (possibly you) has requested that your email address be added
-> to or deleted from the mailing list "linux-kernel@vger.kernel.org".
-> 
-> If you really want this action to be taken, please send the following
-> commands (exactly as shown) back to "Majordomo@vger.kernel.org":
-> 
-> 	auth XXXXX subscribe linux-kernel linux-newbie@vger.kernel.org
-> 
-> If you do not want this action to be taken, simply ignore this message
-> and the request will be disregarded.
-> 
-> If your mailer will not allow you to send the entire command as a single
-> line, you may split it using backslashes, like so:
-> 
->         auth XXXXX subscribe linux-kernel \
->         linux-newbie@vger.kernel.org
-> 
-> If you have any questions about the policy of the list owner, please
-> contact "linux-kernel-approval@vger.kernel.org".
-> 
-> Thanks!
-> 
-> Majordomo@vger.kernel.org
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> 
+Looks like it's been prevented.
 
 -- 
+"They're just using religion as an excuse to be really crappy to each other." 
+- Dave Lister, Red Dwarf
 
--- 
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
 
-end
-
-Cheers!
-         Kirk D Bailey
-
-  +                              think                                +
-   http://www.howlermonkey.net  +-----+        http://www.tinylist.org
-   http://www.listville.net     | BOX |  http://www.sacredelectron.org
-   Thou art free"-ERIS          +-----+     'Got a light?'-Promethieus
-  +                              think                                +
-
-Fnord.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
