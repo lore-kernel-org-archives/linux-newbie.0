@@ -1,56 +1,52 @@
-From: "" <dave@dpomeroy.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: monitor
-Date: Tue, 27 Apr 2004 14:34:11 -0700
+Date: Wed, 28 Apr 2004 07:51:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1083101651.408ed1d3d7128@webmail.dpomeroy.com>
-References: <5.1.0.14.1.20040427135550.02d5a1c8@celine>
+Message-ID: <200404280751.08435.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040427135550.02d5a1c8@celine> <1083101651.408ed1d3d7128@webmail.dpomeroy.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040427135550.02d5a1c8@celine>
+In-Reply-To: <1083101651.408ed1d3d7128@webmail.dpomeroy.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: dave@dpomeroy.com
+Cc: linux-newbie@vger.kernel.org
 
-To put it simple, I want larger text and pictures keeping the lcd monitor
-resolution at 1280X1024.  I want a 1024X768 picture using a 1280X1024 screen
-resolution.  My monitor is a 17" Samsung lcd. Thanks for your time. 
+On Tuesday 27 April 2004 23:34,  wrote:
+> To put it simple, I want larger text and pictures keeping the lcd mon=
+itor
+> resolution at 1280X1024. =A0I want a 1024X768 picture using a 1280X10=
+24
+> screen resolution. =A0My monitor is a 17" Samsung lcd. Thanks for you=
+r time.
 
-Dave
+You need to enlarge your fonts.
 
-> At 01:20 PM 4/27/2004 -0700, dave wrote:
-> >I purchased a 17" monitor with 1280X1024 resolution.  That resolution 
-> >makes my text and pictures to small.  I need to run 1024X768.  However 
-> >1024X768 doesn't look very good.  The detail is not sharp.  Is ther anyway 
-> >to decrease the viewed resolution without reducing the video cards 
-> >resolution?  I'm having a tough time explaining this so if you don't 
-> >understand and maybe I can answer some questions.  Thanks for your time.
-> 
-> Well ... it's probably not quite what you mean, but you can set up X so the 
-> physical display is a window into a larger, virtual display ... so you can 
-> see (as an example) a 640x480 area of a 1280X1024 display. Exactly how you 
-> do it depends on how your distro installs X, but usually this option gets 
-> offered as part of a configuration dialog.
-> 
-> You would probably do better, though, to figure out why 1024x768 is 
-> unsatisfactory. With no information provided about the underlying hardware, 
-> it's hard even to ask meaningful questions beyond the obvious ones -- what 
-> video card, what physical display, what version of X, what X server, what 
-> Linux distro?
-> 
-> The other suggestion someone made, to fiddlg with the refresh rate, might 
-> be a good one ... but the problem description is so vague that it's hard to 
-> know.
-> 
-> 
-> 
-> 
+Cant say how because you dont say what you use.
+
+In KDE use control center select Apierance and theams <fonts>
+
+=46or a terminal under X you can simply click "settings" and go from th=
+ere.
+
+Linux is "very" versitile".
+
+--=20
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
