@@ -1,60 +1,61 @@
-From: Tobias Hirning <Tobias.Hirning@gmx.de>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: root password
-Date: Fri, 1 Apr 2005 20:03:04 +0200
-Message-ID: <200504012003.16580.Tobias.Hirning@gmx.de>
-References: <5.1.0.14.1.20050330063201.02035bd0@celine> <200504011823.16115.Tobias.Hirning@gmx.de> <200504011052.06961.eric@cisu.net>
+Date: Sat, 02 Apr 2005 10:53:24 -0800
+Message-ID: <5.1.0.14.1.20050402103749.01f72650@celine>
+References: <200504011052.06961.eric@cisu.net>
+ <5.1.0.14.1.20050330063201.02035bd0@celine>
+ <200504011823.16115.Tobias.Hirning@gmx.de>
+ <200504011052.06961.eric@cisu.net> <200504012003.16580.Tobias.Hirning@gmx.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed;
-  boundary="nextPart1776293.DOgchDIHn7";
-  protocol="application/pgp-signature";
-  micalg=pgp-sha1
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200504011052.06961.eric@cisu.net>
+In-Reply-To: <200504012003.16580.Tobias.Hirning@gmx.de>
+References: <200504011052.06961.eric@cisu.net>
+ <5.1.0.14.1.20050330063201.02035bd0@celine>
+ <200504011823.16115.Tobias.Hirning@gmx.de>
+ <200504011052.06961.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: eric@cisu.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
---nextPart1776293.DOgchDIHn7
-Content-Type: text/plain;
-  charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+At 08:03 PM 4/1/2005 +0200, Tobias Hirning wrote:
+>Hi Ray!
+>On Friday, 1. April 2005 18:52 Ray wrote:
+> >> [...]
+> > [..]
+> > Get the shadow file and crack
+>Yeah, I've done this on a big system and about 90% of the users used
+>weak passwords.
+> > [...]
+> > Sniff the password from telnet/unsecure services
+>Who is still using telnet? I wouldn't use telnet on a secure net
+>either.
+>Tobias
 
-Hi Ray!
-On Friday, 1. April 2005 18:52 Ray wrote:
->> [...]
-> [..]
-> Get the shadow file and crack
-Yeah, I've done this on a big system and about 90% of the users used=20
-weak passwords.
-> [...]
-> Sniff the password from telnet/unsecure services
-Who is still using telnet? I wouldn't use telnet on a secure net=20
-either.
-Tobias
+I don't, from these fragments, recognize what message you are replying to, 
+Tobias. But your quoting makes it appear that the two suggestions you 
+respond to are mine, and I just wanted to make it clear that they are not. 
+Neither would have been responsive to the message that started this thread 
+... a user who forgot his own root password looking for a workaround.
 
-=2D-=20
-GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
-Registered Linux-User #367044
-Registered Linux-Machine #262062
-http://counter.li.org
-Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
-Signatur nach =A72 2. d) SigG signiert.
+In a modern setting, neither of these suggestions is very useful ... only 
+amazingly insecure systems would be vulnerable to either approach.
 
---nextPart1776293.DOgchDIHn7
-Content-Type: application/pgp-signature
+"Get the shadow file" is not a trivial step in the instructions (How to 
+travel in time: 1. Purchase or construct a flux capacitor; 2. Install it in 
+a DeLorean); normally it requires root access.  So anyone who can get this 
+file has already figured out how to get root access, at least in a limited 
+way. I am a bit surprised at your 90% claim; when I've done this (in my 
+onetime role as a sysadmin), I found maybe 3-5% of users had weak passwords 
+(by the standards of the cracking software of the time).
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
+And while telnet continues to have very limited, specialized uses (for some 
+embedded systems, it is the only service available), you are right that no 
+host that pretends to be even minimally secure should be running a telnet 
+daemon.
 
-iD8DBQBCTYzkVPy429AtcIURAqE8AJ9kAh/6el9NiNuqGEMCVf9VC8zwtQCcCGix
-/vZn+aysPTRaqtYVYuVxvJQ=
-=ZK9C
------END PGP SIGNATURE-----
 
---nextPart1776293.DOgchDIHn7--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
