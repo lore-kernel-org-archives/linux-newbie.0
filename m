@@ -1,50 +1,65 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Securing my box
-Date: Fri, 15 Nov 2002 09:45:51 -0800
+Subject: Re: Print Queue Disappearing
+Date: Fri, 15 Nov 2002 09:58:01 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021115093714.02132e20@celine>
-References: <200211150619.49278.1stflight@ameritech.net>
+Message-ID: <5.1.0.14.1.20021115094654.02130c50@celine>
+References: <200211150642.gAF6g8F02109@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211150619.49278.1stflight@ameritech.net>
+In-Reply-To: <200211150642.gAF6g8F02109@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux newbie <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-At 06:19 AM 11/15/02 -0500, 1stFlight wrote:
->I recently had a friend port scan me as a test of my ip_tables based firewall
->And like I wanted he discovered there were no ports open. However if I do a
->"netstat -a | grep LISTEN" I see
+I didn't see any other responses, so let me at least tell you that no, 
+there is no "clock" aborting jobs.
+
+What actually is going on is impossible to tell from what you reported, but 
+I'd guess a communication failure between the host and the printer. Without 
+a fairly complete description of the printing setup, I can't really suggest 
+anything specific. If it only occurs with jobs that normally take a long 
+time to print, I'd look for a problem involving interfaction between the 
+printer's own memory and handshaking with the host.
+
+But ... just how slow is this printer? The queue listing you report below 
+says the job that fails is 861984 bytes, which isn't very big at all by 
+today's standards ... yes it is long if it is straight text, but it is 
+minuscule in memory requirements, and not much as a Postscript job. Is the 
+printer really printing this job for an hour and 40 minutes before the 
+problem occurs?
+
+At 02:42 PM 11/15/02 +0800, Peter wrote:
+>Hi,
 >
->tcp        0      0 localhost.localdom:1024 *:*                     LISTEN
->tcp        0      0 *:printer               *:*                     LISTEN
->tcp        0      0 *:sunrpc                *:*                     LISTEN
->tcp        0      0 *:x11                   *:*                     LISTEN
->tcp        0      0 *:ssh                   *:*                     LISTEN
+>In RH7.3 documents place for printing are being aborted after a certain time
+>and if large documents are being printed printing suddenly stops. When then
+>checking lpq it is empty which is annoying.
 >
+>This is what I get with lpq at 10:03:
+>Printer: lpd1@philonline
+>  Queue: 1 printable job
+>  Server: pid 1164 active
+>  Unspooler: pid 1165 active
+>  Status: IF filter 'mf_wrapper' filter msg - 'foomatic-gswrapper: gs
+>'-dBATCH' '-dSAFER' '-dQUIET' '-dNOPAUSE' '-sDEVICE=epsonc' '-r180x180'
+>'-sOutputFile=/dev/fd/3' '/dev/fd/0' 3>&1 1>&2' at 10:03:00.384
+>  Rank   Owner/ID                  Class Job Files                 Size Time
+>active pfheiss@philonline+163       A   163 (STDIN)             861984
+>10:02:59
 >
->What's going on here? Did I mess up my config? Thanks!
-
-What's "going on here" is that you have applications on the host that are 
-listening on those ports for incoming traffic. Offhand I can't say for sure 
-what, but probably you are running lpd, sshd, the portmapper (say for NFS 
-mounts) and XFree86 (I don't even have a guess for the 1024 entry).
-
- From what your friend found in his portscan, you have firewalling software 
-running somewhere between him and you that blocks his access to these same 
-ports. If the " ip_tables based firewall" is software (more accurately, 
-kernel configuration) running on this same host, -AND- it has only a single 
-network interface, then running the apps that listen on these ports may be 
-pointless (or not; X11 and lpd are surely providing local services as 
-well). Except for the memory they use, running them is harmless. And if you 
-have multiple interfaces (for example, a dial-up PPP connection and a NIC 
-connecting you to a LAN), the firewall *might* be blocking access from the 
-Internet while permitting it from the LAN ... that's one of the things 
-firewalls do, after all.
-
-So ... bottom line ... whether you "messed up" your config depends on 
-undescribed details of your overall setup, and your intent.
+>and later at 11:43
+>Printer: lpd1@philonline
+>  Queue: no printable jobs in queue
+>  Server: no server active
+>  Status: job 'pfheiss@philonline+163' error 'aborting operations' at
+>11:43:00.386
+>  Rank   Owner/ID                  Class Job Files                 Size Time
+>error  pfheiss@philonline+163       A   163 ERROR: aborting operations
+>
+>Why would that be? Is there somewhere a clock running to keep documents only
+>so long in the print queue and if so can that be stopped. I found nothing in
+>the HOWTO for printing.
 
 
 
