@@ -1,51 +1,48 @@
-From: Szekely-Benczedi Endre <bencze@science.uttgm.ro>
-Subject: Installing Galeon problem
-Date: Mon, 8 Jul 2002 08:41:11 +0300 (EEST)
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Installing Galeon problem
+Date: Mon, 8 Jul 2002 18:57:10 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0207080829080.11884-100000@davos.science.uttgm.ro>
+Message-ID: <20020708185710.F17532@neutrino.particles.org>
+References: <Pine.LNX.4.21.0207080829080.11884-100000@davos.science.uttgm.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.21.0207080829080.11884-100000@davos.science.uttgm.ro>; from bencze@science.uttgm.ro on Mon, Jul 08, 2002 at 08:41:11AM +0300
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Szekely-Benczedi Endre <bencze@science.uttgm.ro>
+Cc: linux-newbie@vger.kernel.org
 
+On Mon, Jul 08, 2002 at 08:41:11AM +0300, Szekely-Benczedi Endre wrote:
+> glib-1.2.8 files also. I changed some settings in the pkconfig's
+> Makefile so that some variables which pointed to the glib-1.2.8
+> subdirectory now point to the glib-2.0.4 one; I hoped that this will
+> solve the problem. Unfortunately, the compilation of pkgconfig
+> dies with an error: "make[2]: *** No rule to make target
+> `glib-2.0.4/glib.h', needed by `pkg.o'.  Stop."
 
-			Hello all,
+Make sure that the Makefile can see the header files of glib-2.0.4.
+Better install the new glib in /usr/local and tweak the Makefile
+to include /usr/local/include/glib (or something similar).
 
-	I have a problem installing Galeon (the browser). I am using
-SuSE 7.0 on an old system (P II at 300Mhz, 128Mb ram), and I wanted
-to install Galeon because Netscape 6.2 is moving way too slowly on
-my machine. (I tried Opera too, it was really nice, but at a moment
-it crashed and it's giving me segmentation fault every time I try
-to start it; I reinstalled it from another rpm, but same thing; and
-I haven't found the sources for it to recompile). Galeon required
-GLib 1.2.9 or higher, I had 1.2.8. GLib 2.0.4 required pkgconfig.
-I installed pkgconfig 0.12.0 which I downloaded from sourceforge.
-But as I installed pkgconfig and then GLib 2.0.4, the configure
-script of Galeon was still stopping with the message that I have
-GLib 1.2.8. It also says that I might have an older glib-config
-on my system which I should delete; but the only glib-config I
-found was one with version number 1.2.8. As I checked the
-pkgconfig installation directory, I seen that it contains a
-directory named glib-1.2.8, so I assume that it installs some
-glib-1.2.8 files also. I changed some settings in the pkconfig's
-Makefile so that some variables which pointed to the glib-1.2.8
-subdirectory now point to the glib-2.0.4 one; I hoped that this will
-solve the problem. Unfortunately, the compilation of pkgconfig
-dies with an error: "make[2]: *** No rule to make target
-`glib-2.0.4/glib.h', needed by `pkg.o'.  Stop."
-Now. What the hell should I do to be able to compile and use
-Galeon (I wouldn't want to reinstall the whole system)? Or, what
-else could I try with Opera to make it work? (as I said,
-reinstalling it won't work, I use(d) Opera 6).
+> Now. What the hell should I do to be able to compile and use
+> Galeon (I wouldn't want to reinstall the whole system)? Or, what
+> else could I try with Opera to make it work? (as I said,
+> reinstalling it won't work, I use(d) Opera 6).
 
-Thanks,
-Endre.
+Not that I have ever build Galeon, but I'm sure it needs a lot of things
+beside Gnome/GTK+ support, such as gtk+, glib, gdk. At least it needs
+the whole Mozilla engine.
 
-PS: Hope you managed to understand something from all this. :)
+OTOH, Opera crashes probably due to a configuration error. Have a short
+look at $HOME/.opera, or better check the core file with gdb; you might
+get a hint.
 
+Elias
 
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
