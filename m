@@ -1,59 +1,123 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Quinn Harris <quinn@nmt.edu>
 Subject: RE: Preventing signal interrupt in Kernel module code
-Date: Fri, 13 Sep 2002 09:40:02 -0700
+Date: 13 Sep 2002 11:22:27 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020913092838.023090c0@celine>
-References: <7C078C66B7752B438B88E11E5E20E72E0EF515@GENERAL.farsite.co.
- uk>
+Message-ID: <1031937747.6319.77.camel@quinn.rcn.nmt.edu>
+References: <7C078C66B7752B438B88E11E5E20E72E0EF514@GENERAL.farsite.co.uk>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <7C078C66B7752B438B88E11E5E20E72E0EF515@GENERAL.farsite.co.
- uk>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Kevin Curtis <kevin.curtis@farsite.co.uk>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <7C078C66B7752B438B88E11E5E20E72E0EF514@GENERAL.farsite.co.uk>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 05:02 PM 9/13/02 +0100, Kevin Curtis wrote:
->Ok - I will refrain from posting technical questions here.  I did also post
->it to the linux-kernel mail list too.  It's just that sometimes, a question
->like mine is too trivial for them and gets ignored.  However, Ray is right,
->don't let postings like mine put you off sending in your questions too.
->
->By the way, even though I'm writing Kernel modules, I still have problems
->with my Mandrake distro too.  The latest being that sound has stopped
->working when I installed my network card.
+It probably wouldn't be feasible to get a process to ignore every signal
+except SIGTERM when its waiting on a queue.  But I am not sure, I would
+need to look into it to get a good answer.
 
-Oh dear. I didn't mean to chastise you for your earlier posting. Especially 
-since someone else did offer a suggestion about your problem. All I meant 
-was what I actually said ... that your question was outside the range we 
-typically deal with here. Please understand that I am no one special, just 
-another member of the list. I wasn't trying to give people orders, just 
-convey a sense of the list as it has operated historically.
+If you plan to do a bit of kernel development I would recommend spending
+some time reading the kernel code.  This is an open source kernel and
+accordingly, the answers to all these types of questions can be found in
+the code.  The Linux Device Driver book is a good starting place (also
+look at Understanding the Linux Kernel) but there is no substitute for
+reading the code.  http://lxr.linux.no/ is a great tool for reading the
+kernel.
 
-As to your implied question ... when I experience similar problems, I 
-usually find that they are pci bus problems, not Linux problems as such. 
-(I've had both TV-tuner cards and NICs interfere with video cards, for 
-example.) Observe during the early (pre-LILO or -GRUB or whatever you use) 
-stages of the boot process to see if your BIOS still sees both the sound 
-and NIC devices. If it doesn't, fiddle around ... try changing the slots of 
-one of the other device (or just the NIC, if your mobo has on-board sound).
+I will say, it can be very daunting to make sense of the linux kernel
+code at first.  Expect to spend many hours before you gain any real
+understanding of how the pieces fit together.  Don't try to pick some
+part of the kernel and read it line by line trying to understand it. 
+This probably won't help much.  You might pick some general part of the
+kernel to study that can stand somewhat alone like the virtual file
+system or schedular.  Try to learn what the data structures represent
+and what the various functions do.  Don't get caught up in exactly how
+functions do what they do at first.
 
-On the Linux end, see if the sound hardware still shows up in the 
-"lspci"  listing. Check /proc/interrupts and /proc/ioports for a conflict 
-(yes, I know Linux is supposed to share interrupts, but the reality is that 
-it works imperfectly at best).
-
-That's about all I can suggest without some details -- what sound card 
-(what module), what NIC, and what "stopped working" means (what are you no 
-longer able to do that you used to be able to do?).
+I feel that learning about the linux kernel improved my skills both with
+the kernel and as a programmer.  It is good to see how other people
+solve problems and generally the kernel has reasonably good solutions to
+programming problems.
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+On Fri, 2002-09-13 at 09:49, Kevin Curtis wrote:
+> Thanks for the answer.  It was in the Linux Device Driver book too.  Should
+> have looked there first (this is available online at
+> http://www.xml.com/ldd/chapter/book/, very useful.
+> 
+> Just one more thing.  It would be nice to do something slightly different if
+> the signal was SIGTERM.  Is there anyway or seeing what signal caused the
+> interrupt?
+> 
+> 
+> Thanks again.
+> 
+> Kevin
+> 
+> -----Original Message-----
+> From: Quinn Harris [mailto:quinn@nmt.edu]
+> Sent: 13 September 2002 16:57
+> To: linux-newbie@vger.kernel.org
+> Subject: Re: Preventing signal interrupt in Kernel module code
+> 
+> 
+> Would placing the process waiting for the hardware in an
+> TASK_UNINTERRUPTIBLE state do what you want?  As far as I understand
+> it,  the TASK_UNINTERRUPTIBLE state is used to prevent anything from
+> waking up a process when it is waiting for something it can't be
+> interrupted by a signal from.  If you call wait_event(wq, condition);
+> (actually a define in sched.h) the process will be placed in a
+> TASK_UNINTERRUPTIBLE state until the wait queue is woken up and the
+> condition is met.  wait_event_interruptible(wq, condition) would allow a
+> process to be interrupted by a signal.  You might be doing essentially
+> what wait_event does without using it.  I have seen a bit of kernel code
+> (I think usually older code) that doesn't used wait_event when it could
+> to place the current process on a wait queue.
+> 
+> 
+> On Fri, 2002-09-13 at 07:54, Kevin Curtis wrote:
+> > Hi,
+> > 	I have written a Kernel module and I'm having a small problem with
+> > signals that I hope someone can steer me through.  The signal in question
+> > are SIGCHILD, but that is not really relevant.  I must be able to handle
+> any
+> > signal that the process has enabled.
+> > 
+> > 	My module has several wait queues, most of which I can cope with
+> > being interrupted by a signal (returning EINTR to the process).  However,
+> > there are some hardware operations that I need to wait for completion of,
+> as
+> > it would be impossible to restart them or pick up where we left off.  I
+> > still want to use a wait queue so other things can run.  Is there some
+> > system call I can make to mask signals until the operation has completed.
+> > Would I still call signal_pending() to see if one had occurred while they
+> > were blocked?
+> > 
+> > I'm sure the answer is really simple but I haven't stumbled across it yet.
+> > 
+> > TIA
+> > 
+> > Kevin
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> > 
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
