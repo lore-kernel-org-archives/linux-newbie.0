@@ -1,103 +1,79 @@
-From: Jeremy Abbott <jkbullfrog@comcast.net>
-Subject: Re: My first bash script.
-Date: Sat, 01 Jan 2005 22:58:27 +0000
-Message-ID: <41D72B13.8090305@comcast.net>
-References: <41D72A44.6090301@comcast.net>
+From: joy merwin monteiro <joy.merwin@gmail.com>
+Subject: Re: retrieval
+Date: Sun, 2 Jan 2005 13:31:28 +0530
+Message-ID: <4b0d6e0d05010200016a7c3abe@mail.gmail.com>
+References: <20041231045512.81128.qmail@web52901.mail.yahoo.com>
+	 <20050101060653.D86614E4F9@heisspf>
+	 <20050101135911.GA14555@imperial.ac.uk>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41D72A44.6090301@comcast.net>
+In-Reply-To: <20050101135911.GA14555@imperial.ac.uk>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Jeremy Abbott wrote:
+its really a trivial thing..... just alias rm to rm -i in your
+.bashrc
 
-> I wrote my first bash script the other day to automatically rip my CDs 
-> to 128k mp3s.  I was wondering if anyone had any idea or suggestions 
-> for the script to improve or streamline it.  Thanks in advance. Here 
-> it is:
->
-> #!/bin/bash
-> #
-> # The purpose of this script is to automatically rip CD's to wav format,
-> # ask for artist name, and track titles and then encoding them into mp3's
-> # with the following naming conventions:
-> #
-> # Track# - Artist - Track title.mp3
-> # eg. 01 - Metallica - Blackened.mp3 or 02 - Metallica - ...And 
-> Justice For All.mp3
->
->
-> # make a temp directory, and copy tracks off of /dev/cdrom into temp 
-> folder using
-> # cdparanoia
->
-> STARTING_DIR=`pwd`
->
-> if [ -d $HOME/TEMPRIPPER ]; then
->    cd $HOME/TEMPRIPPER
-> else
->    mkdir $HOME/TEMPRIPPER &
->    cd $HOME/TEMPRIPPER
-> fi
->
-> cdparanoia -B
->
-> # Ask user for artist name, then titles for provided track number, 
-> then encodes
-> # the correct track number into an mp3 using the naming conventions 
-> found in
-> # the header.
->
-> TRACKNUM=01
-> clear
->
-> echo -n "Who is the artist? "
-> read ARTIST
->
-> while [ -a track${TRACKNUM}.cdda.wav ]
-> do
->    if [ -a $HOME/TEMPRIPPER/track${TRACKNUM}.cdda.wav ]; then
->        echo -n "What is the title of track $TRACKNUM? "
->        read TITLE              lame -h 
-> $HOME/TEMPRIPPER/track${TRACKNUM}.cdda.wav $STARTING_DIR/"$TRACKNUM - 
-> $ARTIST - $TITLE.mp3"
->        TRACKNUM=`expr $TRACKNUM + 1`
->        if test $TRACKNUM -lt "10"; then
->            case $TRACKNUM in
->                2) TRACKNUM=02;;
->                3) TRACKNUM=03;;
->                4) TRACKNUM=04;;
->                5) TRACKNUM=05;;
->                6) TRACKNUM=06;;
->                7) TRACKNUM=07;;
->                8) TRACKNUM=08;;
->                9) TRACKNUM=09;;
->            esac
->        fi
->    fi
-> done
->
-> cd $STARTING_DIR
-> rm -rf $HOME/TEMPRIPPER
->
-> exit 0
->
+if you have deleted it one bruteforce method to retrieve it (if it was
+a text file)
+is to run 'strings'  on the partition that had the file, catch all output
+and sift through it to find your data (might be possible, a friend of
+mine had tried it...)
+
+regards, 
+Joy.M.Monteiro
+
+
+On Sat, 1 Jan 2005 13:59:11 +0000, Ohadi, Hamid
+<hamid.ohadi@imperial.ac.uk> wrote:
+> I've noticed that some distributions have the --interactive option
+> switched on by default and therefore the less would be the chance of
+> removing a file by mistake. I was wondering if it's possible to do
+> that in SuSE as well or not.
+> 
+> On 01-01-05 14:06, Peter wrote:
+> > Do a google for safedelete.
+> >
+> > DESCRIPTION
+> >        safedelete  provides  a way to safely delete files so they
+> >        can be undeleted on demand.  safedelete `deletes' files by
+> >        copying  them to a safedelete directory which is specified
+> >        at install time.  Files processed by safedelete are  given
+> >        a  new  unique  filename  after  they  are  placed  in the
+> >        safedelete directory.  This allows multiple copies of  the
+> >        same  file to be safedeleted without having to worry about
+> >        collisions with existing files.
+> >
+> > Regards
+> > --
+> > Peter
+> >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> --
+> Monday is an awful way to spend one seventh of your life.
 > -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
->
-One line was altered when I pasted it into Thunderbird. 
+> 
 
-lame -h $HOME/TEMPRIPPER/track${TRACKNUM}.cdda.wav 
-$STARTING_DIR/"$TRACKNUM - $ARTIST - $TITLE.mp3"
 
-^ should have been on it own line.
+-- 
+people always turn away,
+from the eyes of a stranger...
+Afraid to know
+what lies behind the stare.......
+    --QueensRyche
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
