@@ -1,65 +1,51 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: NIC cards
-Date: Mon, 12 Aug 2002 07:54:35 -0700
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Re: How to post to Usenet groups
+Date: Mon, 12 Aug 2002 16:33:55 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020812074517.0216c100@celine>
-References: <20020812131245.GA18564@enoor.com>
+Message-ID: <200208121633.55914.James.Hatridge@epost.de>
+References: <200208112132.15668.natarajan_k@hotpop.com>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020812131245.GA18564@enoor.com>
+In-Reply-To: <200208112132.15668.natarajan_k@hotpop.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Majid Tahir <majid@enoor.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: natarajan_k@hotpop.com, Linux Newbie <linux-newbie@vger.kernel.org>
 
-At 08:12 AM 8/12/02 -0500, Majid Tahir wrote:
->hello all
->i have just installed redhat 7.2 on a machine that needs to have 2 nic 
->cards...however neither of the two nic cards have been "found".  How would 
->i configure it so that the two cards are properly installed..also one 
->other problem is that i dont know the name of one of the nic cards, 
->therefore it is difficult to find the proper drivers
+On Monday 12 August 2002 03:32, Natarajan K wrote:
+> HI,
+> 	I am using Knode as my news client. I am not able to post to usenet groups
+> like comp.arch etc. I get a 440 error. I use newscache0.freenet.de as my
+> server. How do I post? Thanks for the help. It could be off topic but I am
+> helpless.
 
+HI Natarajan,
 
-Without knowing what the NICs are, it is difficult to give you a good answer.
+I don't use usenet, email lists are much nicer. But are you sure that 
+freenet's news groups are not "read-only"? There is a very good one in 
+Berlin, that's free. It has both the English groups and German speaking 
+groups.  If you are interested here's the address:
 
-If you really cannot determine the make and model, your only hope is brute 
-force -- try modprobe'ing the various NIC modules one by one, until you get 
-a hit. (I've actually had to do his once or twice myself, and it isn't as 
-bad as it sounds, at least with pci-based NICs, since most of them seem to 
-use tulip, rtl8139, or eepro100.)
+news://news.cis.dfn.de
 
-It is possible that RH 7.2 uses a kernel with modules too old for some 
-NICs. I've seen this sort of mismatch come and go with the tulip driver and 
-Linksys NICs, for example.
+You will have to signup and get a password. That takes 2-3 days, but it's 
+free.
 
-Finally, are you sure that the NICs are good? Are they detected by the BIOS 
-prior to Linux boot/init? Do they show up in /proc/interrupts? In the 
-"lspci" listing?
+Hope this helps
 
-If the NICs use isa slots ... did you configure them to use different IRQs 
-and IObase values? (If you put only one in the system, is it detected and 
-initialized properly?)
+JIM
 
-If none of this helps, please post again with the following additional info:
+-- 
+Jim Hatridge
+Linux User #88484
+------------------------------------------------------
+                 BayerWulf
+	   Linux System # 129656
+         The Recycled Beowulf Project
+  Looking for throw-away or obsolete computers and parts
+   to recycle into a Linux super computer
 
-1. Are the cards isa or pci?
-
-2. What is the make and model of the one NIC you *do* know?
-
-3. What can you figure out about the other one?
-
-4. What kernel version are you using?
-
-And answer for us the various questions I suggested you try to answer for 
-yourself.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
