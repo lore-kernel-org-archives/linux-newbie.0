@@ -1,70 +1,59 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: PPP in Slackware
-Date: Tue, 01 Apr 2003 08:56:10 -0800
+Subject: Re: Printing
+Date: Tue, 01 Apr 2003 09:08:15 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030401084558.01e9c2a0@celine>
-References: <200304010847.h318lvW02484@philonline.com>
+Message-ID: <5.1.0.14.1.20030401085644.01e9c520@celine>
+References: <1049189061.3522.1.camel@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304010847.h318lvW02484@philonline.com>
+In-Reply-To: <1049189061.3522.1.camel@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+To: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
 
-See below.
+At 05:23 PM 4/1/2003 +0800, S. Barret Dolph wrote:
+>Under Mandrake 9.0 my printing jobs just hang forever. After the
+>installation I was able to print and then sometimes printouts would come
+>through after turning on and off the computer. Now nothing....
+>Printer works fine as I tested it with my girlfriends laptop.
 
-At 04:47 PM 4/1/2003 +0800, Peter wrote:
->Thanks Ray,
->
->I am aware of kppp as well as of gnome-ppp with both I can connect only to 
->one
->ISP in SW8.0. If I try to connect to the second ISP I get
->
->tail messages:
->
->Apr  1 10:33:19 philonline pppd[476]: pppd 2.4.1 started by pfheiss, uid 500
->Apr  1 10:33:19 philonline pppd[476]: Using interface ppp0
->Apr  1 10:33:19 philonline pppd[476]: Connect: ppp0 <--> /dev/ttyS0
->Apr  1 10:33:31 philonline pppd[476]: Remote message: Request Denied
->Apr  1 10:33:32 philonline pppd[476]: Connection terminated.
->Apr  1 10:33:32 philonline pppd[476]: Exit
->
->tail syslog:
->
->1 10:33:31 philonline pppd[476]: PAP authentication failed
->
->If I do a pppsetup for the second ISP I then can connect to this one, 
->however,
->not anymore to the first one and get the same messages.
->
->I deleted all the files created with pppsetup in /etc/ppp edited pap- and
->chap-secrets, the same, no conncetion to either the first or the second ISP,
->same above messages using either kppp or gnome-ppp
->
->Where is the dog buried?
 
-Somewhere in your back yard, no doubt. But really, Peter, how do you expect 
-a helpful answer with so little information?
+1. How is your printer physically connected to the system? (parport, 
+serial, USB, network?) If it is a parport printer, do you have all the 
+right modules installed?
 
-For the unsucessful attempt, you characterize it only as"If I try to 
-connect to the second ISP". How? With what configuration file? What do the 
-messages from a *successful* connection look like to compare this to? Is 
-the syslog entry you provide the *only* one? Is the "failed" ISP even using 
-PAP?
+2. Which lpd daemon does Mandrake 9 use?
 
-Just to be clear ... if this were some familiar idiosyncracy of Slackware 
-8.0, I expect a Slackware user on this list would already have answered 
-your question. And if you are lucky, someone may yet do so.
+3. What printer is it? Does the Linux printer site (I've misplaced the URL, 
+so you'll need to search for it) report anything special about it and Linux?
 
-But the silence (aside from Richard's more general response) up till now 
-leads me to think this is a problem that involves some peculiarity of your 
-setup. To troubleshoot that, we need a good description of what you are 
-attempting ... the questions I asked in the prior paragraph *illustrate* 
-the kinds of info we need, but they are not an *exhaustive* list, so please 
-don't treat them as one. Instead, think what you would want to know about 
-this problem if someone were asking you for help, and use that to compose a 
-report to us.
+4. What does its entry in /etc/printcap look like?
+
+5. How are you trying to print under Linux? (What apps are you printing from?)
+
+6. What happens if you try to dump a file directly to the printer? (How you 
+do this depends on the answer to Q1, but an example would be: "cat 
+/etc/passwd >/dev/lp0").
+
+7. Assuming you are using a typical lpd daemon, what do these result in?
+
+         A. lpr -pdefault /etc/passwd
+         B. lpq
+
+(Change "default" if the printer use a different printcap entry.)
+
+8. Did this printer work under any other version fo Linux, or is this your 
+first try using it with a Linux system? If the first, please provide details.
+
+9. Does your general description of the problem conceal any pattern you've 
+seen? For example, after a boot/init, the first attempt to print works but 
+not later ones? Or power-cycling the printer causes printing temporarily to 
+resume? Or ... ???
+
+(BTW, there is nothing special about /etc/passwd except that it is a file 
+that I know must be present on your system. Feel free to substitute any 
+plain-text file that you prefer.)
 
 
 
