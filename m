@@ -1,58 +1,37 @@
-From: Andy Biddle <andyb@chainsaw.com>
-Subject: Asus A7M266-D, Linux 2.6.7 and APIC (fwd)
-Date: Tue, 20 Jul 2004 22:42:16 -0700 (PDT)
+From: Mr MailingList <Mr.MailingList@ntlworld.com>
+Subject: Re: linux kernel: irq 11: nobody cared!
+Date: Wed, 21 Jul 2004 07:27:20 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040720223850.C80982@sublime.winfirst.com>
+Message-ID: <200407210727.20774.Mr.MailingList@ntlworld.com>
+References: <200407201939.30300.Mr.MailingList@ntlworld.com> <Pine.LNX.4.58.0407202138320.27512@ppg_penguin.kenmoffat.uklinux.net>
+Reply-To: Mr.MailingList@ntlworld.com
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-config@vger.kernel.org
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.58.0407202138320.27512@ppg_penguin.kenmoffat.uklinux.net>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-I'm having what I suspect is a newbie-type problem, but I assure you I've
-looked around.
+On Tuesday 20 Jul 2004 21:52, Ken Moffat wrote:
 
-I have a dual-proc server that I've recently decided to overhaul.  It's an
-Asus A7M266-D motherboard.  It has been running with dual Athlon MP
-1800+s, RedHat and BIOS rev 1003 for at least a year with no real
-problems.
+>  Possible workarounds, in increasing order of pain, might include
+> booting with whatever the option is to disable apic, using a non-smp
+> kernel (if you only have one cpu, of course), trying a newer kernel from
+> SuSe if there is one, or trying a newer kernel from kernel.org.  This
+> looks the sort of thing where you might need to try the latest 2.6.8-rc
+> or even -mm (if it isn't fixed in 2.6.7).  These aren't normally
+> recommended, particularly for production boxes, but I guess it isn't in
+> production if you telnet to it.
+>
 
-First I decided to change the OS to Gentoo.  I built the system with no
-problem and built a custom kernel based on linux 2.6.7-gentoo-r11.
-Everything was working great.  Then I changed out the procs and went with
-dual Athlon MP 2800+s.  To support these, I needed to (according to Asus's
-website) upgrade the BIOS to 1011.002 or higher.  (Latest is 1011.003, so
-that's what I used.)
+Thanks Ken for your answer but I've tried all of them apart of new kernel and 
+unfortunately they did not work. Looks like the only option I have is to wait 
+for Suse to release new kernel.
 
-Now, when I boot to this custom kernel I get about 2 seconds into the boot
-process before the system starts spewing constant "APIC error on CPU0:
-04(04)" messages.   It stops booting at that point.
+Tom
 
-I've done a little research and it seems that I'm supposed to do a couple
-of things:
-	1.  Disable "MPS 1.4 Support" in the BIOS.
-	2.  pass the kernel "noapic" as a parameter.
-
-I've done both of these and I STILL get the APIC messages.  (Which leads
-me to suspect the "noapic" isn't working or I'm doing it wrong at the very
-least.)  My line from the grub.conf is:
-
-kernel /kernel-2.6.7-gentoo-r11-smp root=/dev/hda3 noapic acpi=off apm=off
-
-I've build another custom kernel where the only difference is that SMP is
-disabled.  Sure enough, that works like a champ, but with only the single
-CPU.
-
-I've searched through the kernel "make menuconfig" menus and can't see
-that I'm missing anything.  In fact, I can't even FIND "APIC" options
-unless I disable SMP...
-
-I'm just about out of ideas here... Any suggestions?
-
-Thanks,
-AndyB
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
