@@ -1,41 +1,44 @@
-From: Halil Demirezen <kernel@bilmuh.ege.edu.tr>
-Subject: FDC and compilation parameters.
-Date: Fri, 21 May 2004 08:39:58 +0300
+From: "Matthias U. Eifert" <Matthiaseifert@gmx.de>
+Subject: ghost users
+Date: Fri, 21 May 2004 18:33:53 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040521053958.GA31128@bilmuh.ege.edu.tr>
+Message-ID: <S265023AbUEUXCZ/20040522020651Z+1@vger.kernel.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I am trying to write some test kernels to get the
-whole concept concrete. I am writing *.s and *.c
-codes all together. However, I could not find the
-exact CFLAGS to compile. Should I use -O2 or 
--fomit-frame-pointer...
+Hi Listmembers!
 
-What do you offer me ? The kernel will be written in
-C ( some parts are asm) and there is no compression.
-I am linking it with using 
+Recently I found something odd (I think...).
+First: My machine is a single-user desktop, no network attached except a modem-dialup to the internet. Nobody else is using this machine. Distro is SuSE 8.1, Kernel 2.4.19, and KDE 3.0.3 (I know, sounds 'bit outdated, but this system is fantastic reliable and stable).
 
- ld -Ttext 0x10000 -s --oformat binary -o test.bin test.o
- 
-and writing it to the floppy as below:
+When I issue the finger command I get the following:
+	matthias@hpa878:~> finger
+	Login      Name                  Tty      Idle  Login Time   Where
+	matthias   Matthias Eifert       :0       254d     Fri 17:46console
+	matthias   Matthias Eifert       pts/0      18     Fri 17:46
+	matthias   Matthias Eifert      *pts/1       -     Fri 17:47
 
- dd obs=512 seek=6 if=test.bin of=/dev/fd0
+similar thing with who:
+	matthias@hpa878:~> who
+	matthias :0       May 21 17:46 (console)
+	matthias pts/0    May 21 17:46
+	matthias pts/1    May 21 17:47
 
+If I don't misinterpret the concept of 'finger' there _should_ be only one user matthias indicatet, right?
+And what about the idle-time of 254 days? (I'm confused).
 
-However, there are some unexpected faults and the machine reboot.
-I am using I386 by the way ;).
+So my simple question is if this is normal behaviour or not?
+Is my machine bewitched? Should I head for the local voodoo-master? ;-)
 
-And can anyone tell me where I can find a good document telling 
-how to program FDC. All the staff i found on net is confusing..
+Thanks for your patience,
+Matthias
 
-Thanks.
-
+Oh, P.S.
+All applications are running fine, I experience no problems with the matter mentioned above. I'm asking just for reasons of curiosity. Thanks.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
