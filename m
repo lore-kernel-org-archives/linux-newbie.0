@@ -1,33 +1,41 @@
-From: "doug7777" <doug7777@comcast.net>
-Subject: Re: [PC] looking for .....
-Date: Sun, 28 Dec 2003 12:30:27 -0500
+From: Richard Dawson <rcdawson@att.net>
+Subject: Re: looking for .....
+Date: Sun, 28 Dec 2003 10:23:03 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <003d01c3cd68$492721a0$e48db142@se1.client2.attbi.com>
+Message-ID: <200312281023.03431.rcdawson@att.net>
 References: <200312281755.06397.James.Hatridge@epost.de>
+Reply-To: rcdawson@att.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200312281755.06397.James.Hatridge@epost.de>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: James.Hatridge@epost.de, Newbie <linux-newbie@vger.kernel.org>, SUSE OT <suse-ot@suse.com>, Stamp Club <philatelic@philatelic.com>
+To: linux-newbie@vger.kernel.org
+Cc: James.Hatridge@epost.de
 
-Hi Jim and all,
-This is a good time to ask this question--
-I thought you could get virtually every radio station
-in the world directly over the Internet??  I have picked
-up 2 or 3 stations in my old hometown.  What does
-this "card" have to do with it?  Thanks, Doug Swisher
+I have several Cadet PC Radio cards.  8 bit, ISA bus.  ADS technologies, 
+Cerritos, CA.  These are antiques requiring a 486DX33 or better!  They also 
+"need" a separate sound card.  (The box says recommended.)  The box also says 
+it will work with Win 95, 98, or Linux.  One of these days I will have to try 
+them out.  I wanted to set up a box to record radio progams when I am away.
+
+I found them via google.  They were cheap enough that I bought more than the 
+one that I thought I could use.  As I recall, they were under $20 each.  
+
+When I bought these I also came across an external radio that plugged into a 
+serial port and came with Windows software.  That unit  was also under 
+$20.00.  Unfortunately the one I received worked only on AM.  The cost to 
+return it for refund was about 1/2 the cost of the unit!  
+
+I found all this, as I recall, by searching for PC radio card on google.  
+There were several companies selling the hardware.  They are probably better 
+equiped to send you the stuff than I, so try them first. 
 
 
 
------ Original Message ----- 
-From: "James Hatridge" <James.Hatridge@epost.de>
-To: "Newbie" <linux-newbie@vger.kernel.org>; "SUSE OT" <suse-ot@suse.com>;
-"Stamp Club" <philatelic@philatelic.com>
-Sent: Sunday, December 28, 2003 11:55 AM
-Subject: [PC] looking for .....
-
-
+On Sunday 28 December 2003 08:55 am, James Hatridge wrote:
 > Hi all...
 >
 > I'm looking for a used AM/FM radio card for my computer.  If you have one
@@ -36,36 +44,6 @@ Subject: [PC] looking for .....
 > Thanks
 >
 > JIM
-> -- 
-> Jim Hatridge
-> Linux User #88484
-> ------------------------------------------------------
->                  BayerWulf
->            Linux System # 129656
->          The Recycled Beowulf Project
->   Looking for throw-away or obsolete computers and parts
->    to recycle into a Linux super computer
->
-> WartHog Bulletin
->     Info about new German Stamps
->    http://www.fuzzybunnymilitia.org/~hatridge/bulletin
->
-> Viel Feind -- Viel Ehr'
-> Anti-US Propaganda stamp collection
->   http://www.fuzzybunnymilitia.org/~hatridge/collection
->
-> _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-> /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-> This is a posting to the philatelic Email list service
-> Philatelic.Net - The World's Largest Philatelic Email Network
-> For more information on the philatelic mailing list please visit
-> http://www.Philatelic.Net/
-> _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-> /_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
-> _______________________________________________
-> Philatelic mailing list
-> Philatelic@philatelic.net
-> http://list.boomspeed.com/mailman/listinfo/philatelic
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
