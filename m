@@ -1,48 +1,72 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Slackware 8.1.01 Install????
-Date: Fri, 30 May 2003 16:57:58 -0400
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Using a URL to access a variable background image
+Date: Sat, 31 May 2003 11:17:45 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030530165758.A275@lnx2.w8mch.ampr.org>
-References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200305292307.47642.pa3gcu@zeelandnet.nl> <Pine.LNX.4.53.0305291803080.1059@homenet>
-Reply-To: haltec@kvinet.com
-Mime-Version: 1.0
+Message-ID: <200305311517.h4VFHj75009802@hartford-hwp.com>
+References: <5.1.0.14.1.20030530170647.01f626f0@celine> <5.1.0.14.1.20030530173623.01f4ee30@celine>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.53.0305291803080.1059@homenet>; from jamtat@mailsnare.net on Thu, May 29, 2003 at 06:04:36PM -0500
+In-reply-to: <5.1.0.14.1.20030530173623.01f4ee30@celine> (message from Ray
+	Olszewski on Fri, 30 May 2003 17:50:53 -0700)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: ray@comarre.com
+Cc: linux-newbie@vger.kernel.org
 
-On 05-29, James Miller wrote:
-> On Thu, 29 May 2003, pa3gcu wrote:
-> > >
-> > > As of now I've concluded the only _easy_ way out is to termporarily
-> > > fit an IDE CD for the install and then re-fit the SCSI CD.. What do
-> > > YOU think??? Appreciate!!
-> >
-> > There could be another way;
-> > I have installed slackware 9 on a couple of machines using old slack 8.0 boot
-> > floppys.
-> > Simply try and boot with slack's 8.0 scsi.s and color.gz and then after
-> > booting place the slack 8.1 cdrom in the drive.
-> > Of course this may not work for you but it has worked for me on several
-> > occations.
-> >
-> Seems like this should work.  Isn't Slack the distro that asks you which
-> kernel image you want to install at the very end of the install process?
+Ray,
+
+An interesting puzzle, although perhaps a bit academic. The image I'm
+talking about are those put out by the National Solar Observatory at
+Sacramento Peak, I realized after raising the question that, not only
+is the sun not seen when it's cloudy, but not at night. So as a
+background image, it would be too often not available.
+
+The URL for the perversely curious is: http://solar.spacew.com/sunnow/
+
+But I could imagine that a resolution of the problem would have some
+interesting uses. For example, a video camera aimed at Times Square or
+goldfish would produce diversions. The reason for the sun image was
+that it displayed extraordinarily powerful solar flairs, the effects
+of which just reached earth yesterday and today. For many people,
+that's important to know.
+
+> OK. But having said that, what does Haines actually do?
 > 
-> James
+> If, for example, the image being fetched always has the same name
+> and is fetched by its name (something_or-other.jpg, for example,
+> rather than something_or_other.asp or something_or_other.cgi), then
+> Haines could probably imitate the functionality he sees faqirly
+> easily,
 
-		Greetings: Negative - the kernel image you select is
-on the boot floppy, Slack =<8.0, plus a "root" floppy to get into the
-install screens.. It was all changed with 8.1 in that the image is
-loaded via 'syslinux' from the bootable CD.. I'm still bogged down
-with this - more later for Richard and Chuck..
+The images are numbered in sequence. For example, Sun269169.jpg,
+Sun269170.jpg...
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
+> But the actual call may be to a changing image name (if it uses the
+> Javascript approach, or perhaps a Java applet, it might incorporate
+> a timecode, say), or it may require a cookie, or it may be a cgi or
+> asp call that requires get or post options. Any of this would be
+> harder to emulate ... and that's why I say the devil is in the
+> details.
+
+The web page offers no clue how the images are generated. Just an <img
+src=sun369177.jpg... tag for example.
+
+> Anyway ... my sense is that this problem is best split into two
+> parts.
+ 
+> Haines, in his second message, calls the image "constantly
+> changing", and that ("constantly") can't be right.
+
+True. I mispoke. It updates every minute, but since the site worries
+about whether the updating occurs, it seems to have an internal
+timer. I don't get the impression that the images are uploaded exactly
+every minute on the minute, but rather somewhat haphazardly.
+
+Haines 
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
