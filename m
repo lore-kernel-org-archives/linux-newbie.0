@@ -1,32 +1,39 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Make command line options
-Date: Fri, 26 Apr 2002 01:19:49 +0300
+From: G Anna <drguruolai@eth.net>
+Subject: Re: register_exec_domain
+Date: 25 Apr 2002 17:18:54 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020426011949.D1134@neutrino.particles.org>
-References: <3CC8036F.3020202@keyed-upsoftware.com>
+Message-ID: <m3adrsj8wp.fsf@wobble.eth.net>
+References: <20020422094901.57fc79e6.jeremy@kerneltrap.org>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3CC8036F.3020202@keyed-upsoftware.com>; from dstroupe@keyed-upsoftware.com on Thu, Apr 25, 2002 at 08:23:59AM -0500
+In-Reply-To: <20020422094901.57fc79e6.jeremy@kerneltrap.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: David Stroupe <dstroupe@keyed-upsoftware.com>
+To: Jeremy Andrews <jeremy@kerneltrap.org>
 Cc: linux-newbie@vger.kernel.org
 
-On Thu, Apr 25, 2002 at 08:23:59AM -0500, David Stroupe wrote:
 
-> Is there a command line option for make that will force all files to be 
-> recompiled and re linked?  I thought that -W would do that, but I can 
-> not seem to make it work.
+> Date: Mon, 22 Apr 2002 09:49:01 -0400
+> From: Jeremy Andrews <jeremy@kerneltrap.org>
+> Subj: register_exec_domain
 
-If your Makefile is correctly written, then a make clean; make all should
-be enough.
+(snip)
 
-Elias
+>   I've been unable to compile the kernel for a while now.  When I do
+> a 'make bzImage', it always bombs out in the file
+
+(snip)
+
+Did you do a 'make mrproper' before anything else?
+
+anna
 
 -- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+
+Get your free e-mail account at http://www.linuxmail.org
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
