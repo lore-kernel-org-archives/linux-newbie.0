@@ -1,58 +1,47 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Console fonts and colors
-Date: Wed, 9 Oct 2002 12:26:21 +0000
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Security Updates
+Date: Wed, 09 Oct 2002 09:00:21 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02100912262107.00235@unix.pa3gcu>
-References: <Pine.LNX.4.44.0210082010430.3063-100000@linuxDBA.brett.d2g.biz>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20021009085121.025d3810@celine>
+References: <00a801c26f8f$5d88fb60$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0210082010430.3063-100000@linuxDBA.brett.d2g.biz>
+In-Reply-To: <00a801c26f8f$5d88fb60$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Brett <brett@brett.d2g.biz>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-On Wednesday 09 October 2002 02:22, Brett wrote:
-> > Brett, go take a look at;
-> > http://people.zeelandnet.nl/pa3gcu/console_mode.htm
->
-> I was doing fine till I got to the part in your documentation:
->
-> ___________
-> make config
-> choose whatever you need for your kernel when you come across the
-> following;
-> ...
-> ___________
->
-> I have struggled a lot with this in the past. (ask Lawson! I bug him a
-> lot!)
-> I like the way the kernel I have is now running and generally can't make
-> my own do as well.  Is there a way to automatically configure the kernel
-> just the way it is now but add only the extra stuff I need?
->
-> I may have said before I am using SuSE 8.0 out of the box with their
-> kernel 2.4.18-4GB.  I do have the sources installed out of habbit. Seems I
-> remember some way to see only what was new compaired to what was running
-> but maybe that does not apply here.
+At 08:28 AM 10/9/02 -0400, Paul Kraus wrote:
+>What mailing list or web page do I want to check regularly for security
+>updates and kernel updates? Is there a way I can be notified without
+>having to check?
 
-Then as far as i know all you need is in your kernel, i dont use suse myself, 
-but i would imagen they would include the VESA drivers in thier kernels like 
-most all other distro's.
+The best known generic security list is bugtraq. I don't have the URL or 
+mailing-list FQN at hand, but I imagine Google will find them for you.
 
-Have you tryed adding 
-vga=ask 
-in your lilo.conf like it says in the page i pointed you too.
+Once you get past the generic level, this is a distro-specific question ... 
+getting prompt security updates is, to my mind, one of the top selling 
+points of any distro. Most of the major distros have security lists, and 
+related online package directories, for this purpose. (That's why I don't 
+recall how to access bugtraq, for example; I found that the debian-security 
+list covers my own needs very reliably.) I seem to recall that you use Red 
+Hat, and I've seen references to a Red Hat security list ... you probably 
+want to check the RH Web site.
 
->
-> Brett
+Kernels are trickier, since (usually) new kernels are released for reasons 
+other than to fix security problems, so don't get reported on the security 
+lists. Still, the major packages are all very good about making newer 
+stable (that is, 2.4.x right now) kernels available promptly, so I'd 
+recommend keeping track of this via your basic on-line package-management 
+system (whatever RH's analog to Debian's apt-* system is).
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
