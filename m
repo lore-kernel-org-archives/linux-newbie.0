@@ -1,41 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: how to assess occupied space
-Date: Sun, 15 Sep 2002 12:21:53 -0700
+From: ichi@ihug.co.nz
+Subject: Re: auto login
+Date: Mon, 16 Sep 2002 08:05:01 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020915122022.0227fd90@celine>
-References: <5.1.0.14.1.20020915120612.0228fd90@celine>
+Message-ID: <3D8590AD.46E320C6@ihug.co.nz>
+References: <F22LjQyKNRocEvBff6e0000a72a@hotmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.33.0209151515110.2321-100000@router.windsormach
- ine.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Mike Dresser <mdresser_l@windsormachine.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: a a <xlsd@hotmail.com>
 Cc: linux-newbie@vger.kernel.org
 
-At 03:16 PM 9/15/02 -0400, Mike Dresser wrote:
->On Sun, 15 Sep 2002, Ray Olszewski wrote:
->
-> > >Disk usage, according to the man pages.  But in a way, directory use is
-> > >accurate too.
-> >
-> > Where did you find this? It's not in my man page for du. (Just curious.)
->
->DESCRIPTION
->        Summarize  disk usage of each FILE, recursively for direc
->        tories.
+a a wrote:
+> 
+> Is there a way i can automatically login as 
+> root when i boot up the computer?
 
-Oh yes, that's in my man page too. I just don't read it as defining what 
-the abbreviation means ... merely as describing what the command does. 
-Thanks for the clarification.
+If you look in /etc/inittab, you will probably find
+(down near the bottom) a group of lines that look 
+something like this:
+---------------------------------------------
+c1:1235:respawn:/sbin/agetty 38400 tty1 linux
+c2:1235:respawn:/sbin/agetty 38400 tty2 linux
+c3:1235:respawn:/sbin/agetty 38400 tty3 linux
+---------------------------------------------
 
+It is the getty that prompts for the login name.
+To avoid the login prompt, you can edit the line 
+to go directly to bash:
+--------------------------------
+c1:1235:respawn:/bin/bash -login
+--------------------------------
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+I use this technique for a NFS server (no keyboard, no VDU) 
+that only gets turned on occasionally.  It runs in a ramdisk 
+(using a BasicLinux foundation) and automatically mounts and
+serves the target drive (read-only).  Turn it on when you 
+need it, turn it off when you're done, no worries.
+
+Cheers,
+Steven
+
+______________________________
+http://www.volny.cz/basiclinux
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
