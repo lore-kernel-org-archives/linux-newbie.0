@@ -1,51 +1,51 @@
 From: lawson_whitney@juno.com
-Subject: Re: Linux & Zip Drives.
-Date: Sat, 11 May 2002 20:29:28 -0400 (EDT)
+Subject: Re: Sending a FAX simply??
+Date: Sat, 11 May 2002 20:50:13 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020511.210407.134663624.0.lawson_whitney@juno.com>
-References: <20020511163432.A465@lnx2.w8mch.ampr.org>
+Message-ID: <20020511.210407.134663624.1.lawson_whitney@juno.com>
+References: <20020428140103.A471@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020511163432.A465@lnx2.w8mch.ampr.org>
+In-Reply-To: <20020428140103.A471@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: haltec@iceweb.net, lawson_whitney@juno.com
+To: haltec@iceweb.net
 Cc: linux-newbie@vger.kernel.org
 
-On Sat, 11 May 2002, Hal MacArgle wrote:
+On Sun, 28 Apr 2002, Hal MacArgle wrote:
 
-> Greetings: I just bought an internal SCSI Zip drive on eBay that was
-> sold as "Zip 100mB converted to 250mB." Purchasing only 250mB disks I
-> find the drive will not accept them - ejecting immediately after
-> inserting.
+> Greetings: Does a simple fax program or script exist for sending
+> short, simple, text only faxes to one recipient with no cover pages,
+> etc and so forth?? Possibly there is a book/manual that will let me
+> learn more about Faxing.. The modem manuals barely cover much of
+> anything. :^(...
 >
-> I believe the drive needs a disk before I can install the module and
-> use it..
+> Been using efax for years with almost perfect success until I
+> installed kernel 2.4.* on a machine with a USR Courier V-Everything
+> FaxModem.
 
-Why would this be?  It needs a disk with a filesystem on it before you
-can mount it, but the driver module should be able to initialize the
-empty drive.  Maybe the drive needs to be told to accept a disk?
-Mind, I don't know anything specific about these beasts, but I don't
-think a modprobe would do any harm.
-
-> Research tells me that some drives require that with Linux
-> and others don't... No details.. I, also, cannot find any information
-> as to whether that conversion is for real or not.. :^(..
+efax works fine with my old v.34 internal and 2.4.13, so I finally
+daisy-chained that with the V-Everything and use /dev/tts/3 for efax
+and /dev/tts/2 for pppd.
+> ...
+> Cheers,
 >
-> Any suggestions or comments??
-> TIA,
->
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
->     haltec@iceweb.net | w8mch@iceweb.net.. A M$ free environment
+>     Hal - in Terra Alta, WV,  -  Slackware Linux 8.0   (2.4.13)
+>     haltec@iceweb.net | w8mch@iceweb.net..A M$ free environment
 > .
+
 Lawson
 
-Everything comes from somewhere.  Everything has to go somewhere.
-There ain't no such thing as a free IRQ.
----cut here
+Constants aren't, and variables won't.
 
 
+
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
