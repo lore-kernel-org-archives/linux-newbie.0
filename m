@@ -1,8 +1,8 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: framebuffer console problems
-Date: Fri, 22 Oct 2004 16:49:12 -0500 (CDT)
+Date: Fri, 22 Oct 2004 16:02:20 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410221626290.1287@debian-emach>
+Message-ID: <Pine.LNX.4.58.0410221533361.1287@debian-emach>
 References: <Pine.LNX.4.58.0410221108580.1287@debian-emach>
  <Pine.LNX.4.58.0410221108580.1287@debian-emach> <5.1.0.14.1.20041022123824.020548d8@celine>
 Mime-Version: 1.0
@@ -13,7 +13,50 @@ Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+Hello Ray:
+
 On Fri, 22 Oct 2004, Ray Olszewski wrote:
+
+> The vesa framebuffer is pretty generic; almost any *modern* video card
+> should be able to drop back to its standards. But I do have older cards,
+> like the ancient S3 I use in one of my test systems, that does not support
+> the vesa framebuffer. If you have an older ATI card, you might have the
+> same problem. I can't find a list of cards that work with vesa, at least
+> not one that is less than 4 years old, so I can't check about your card for
+
+Mine should be older than 4 years.  This was originally a P2 350 system
+that I've been upgrading.  So the (again, onboard) integrated ati rage pro
+in this was probably manufactured right around the 4 year limit.
+Originally had 4MB video RAM which I upgraded to 8-12.
+
+> If you have kernel source installed, look there in
+> ./Documentation/fb/vesafb.txt for some technical discussion of how vesa works.
+
+No source here, but I might try and take a look at that document somehow
+anyway.  Thanks.
+
+> You said, in your other message, that the display works with Debian-Sid.
+> What exactly do you mean? That is, what kernel and version are we talking
+> about here? Since one installs Sid (usually) by first installing Woody,
+> then doing a dist-upgrade, it is possible that you are actually running
+> some Woody kernel ... conceivably even the old 2.2.something that
+> theinstaller uses ... unless you've explicitly switched to a Sid kernel.
+
+2.6.5 kernel.  I upgraded a few times, but have been with the 2.6.5 kernel
+for a couple months now.
+
+> Your problem description, though, makes me think that your monitor won't
+> sync at 1024x768, and that xdm "fixes" the problem simply because it
+> switches to a supported 1280x1024 mode. (That *sort* of problem is not
+> rare; I've had several monitors that supported 640x480 and 1024x768 in X,
+> but made a mess of 800x600.)
+
+1024x768 is listed in the manual as one possible resolution, though they
+recommend 1280x1024.  I actually had a bit of trouble getting a 1280x1024
+display on this a little while back (insufficient video memory) and could
+only get it to do 1024x768.  So I know it will do 1024x768 under X, though
+the crispness of the display leaves things to be desired--to say the
+least.
 
 > You might want to try 1280x1024 in vesa to see if it works
 > there.  Depending on color depth, the values for that are:
@@ -22,38 +65,20 @@ On Fri, 22 Oct 2004, Ray Olszewski wrote:
 >          16 bit          0x31A   =       794
 >          24 bit          0x31B   =       795
 
-vga=775 results in the same blank black screen with "vga mode not
-support(ed)" in the middle (I made a mistake earlier and said the message
-said "out of sync"--sorry).  Similar results when I try ctrl-alt-Fx to go
-to a virtual terminal.  Seems not worth trying the others.
+Ok.  I figured if it would do 800x600 framebuffer but not 1024x768, it
+would be pointless to try anything yet finer.  But what do I know?  The
+imps that inhabit these things often have totally unexpected tricks up
+their sleeves, I've learned :)
 
 > Finally, I'm at a loss as to why fbset is not working for you. But I don't
 > have the only system with fbset installed here running at the moment. If
 > none of the rest of this helps, post again and I'll try to look at that
 > part of it.
 
-I decided to take some additinal time out of my writing schedule and read
-the mkinitrd manpage.  Decided it wouldn't be so hard to make an initrd
-with this atyfb module in it, so I did.  Pointed the initrd.img symlink
-under / to it.  But it seemed to make no difference using the vga=xxx
-arguments in menu.lst.  Still the same blank black screen with "vga mode
-not support(ed)."  Then I tried entering atyfb into /etc/modules.  While
-this didn't help the boot screen display--it remained the same as with
-other settings I've tried apart from vga=789 (the one that actually works,
-though not giving a fine enough resolution)--it did cause fbset to work.
-Or at least it doesn't return error messages about /dev/fb0: no such file
-or directory.  Rather, it gives the resolution setting, sync rates and so
-forth.  I don't really feel any closer to a solution as a result, though.
+I'm at a loss, too.  Meantime, I'll do some more fiddling and spare
+you the bulk of the gory details, hopefully.
 
-I should probably mention that the "video mode not support(ed)" message
-has a red strip across the bottom in which are some numerical values and
-letters.  I think it's horizontal and vertical sync.  For example, when I
-try vga=773, that red strip has H 35.4 V 86.5.  If those are sync values
-the video is trying to use, then the display is, indeed, outside the sync
-range of the monitor.  At 1024x768 the manual says the sync values can be
-H 48.36 V 60; H 56.48 V 70.1; and H 60.02 V 75.
-
-Puzzled, James
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
