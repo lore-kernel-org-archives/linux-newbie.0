@@ -1,62 +1,50 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Gui - Gnome - Kde
-Date: Thu, 24 Oct 2002 11:10:31 -0400
+From: Gavin Laking <me@gavinlaking.co.uk>
+Subject: Re: Gui - Gnome - Kde
+Date: Thu, 24 Oct 2002 16:48:08 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <009601c27b6f$7ec289e0$64fea8c0@pkrausxp>
+Message-ID: <20021024164808.34499bc9.me@gavinlaking.co.uk>
+References: <009601c27b6f$7ec289e0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0097_01C27B4D.F7B0E9E0"
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0097_01C27B4D.F7B0E9E0
-Content-Type: text/plain;
-	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <009601c27b6f$7ec289e0$64fea8c0@pkrausxp>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-What is kde like. I always just install gnome with Xwindows. I even
-select Xwindows classic what is it and why are there two. 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+On Thu, 24 Oct 2002 11:10:31 -0400
+"Paul Kraus" <pkraus@pelsupply.com> wrote:
 
-------=_NextPart_000_0097_01C27B4D.F7B0E9E0
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+> What is kde like. I always just install gnome with Xwindows. I even
+> select Xwindows classic what is it and why are there two. 
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+KDE is another window manager for Linux. What Linux users tend to do
+when they are inquisitive about things, is to try it out, to experiment,
+and nothing is stopping you from doing so. If you are reluctant to
+installing KDE on a test machine, why not do a Google search for one of
+the thousands of KDE related websites- you'll find out more on those
+than we could ever imagine to cover here.
 
-------=_NextPart_000_0097_01C27B4D.F7B0E9E0--
+GL
 
+- -- 
+Gavin Laking - Web Development Daemon
+
+http://www.gavinlaking.co.uk
+- --
+
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+
+iD8DBQE9uBY4aMak7Ylvm3ARAsagAJ96NfKEp1Hdw0Ht6/vBei9pCzO9UQCeNhEy
+mPQCgKWwt26vvyTES7BlJV0=
+=lYnk
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
