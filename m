@@ -1,49 +1,29 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: Linux install error
-Date: Sat, 26 Jul 2003 22:33:49 -0400
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Extraction of PID
+Date: Sun, 27 Jul 2003 13:36:49 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <30ac01430adf65.30adf6530ac014@homemail.nyu.edu>
+Message-ID: <20030727053654.5F7001041E@heisspf>
+References: <200307261022.32234.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
+In-Reply-To: Your message of "Sat, 26 Jul 2003 10:22:32 +0200." 
+ <200307261022.32234.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
-I am trying to install RHL7.3 on my machine (WinXP is already there in it).
+Wonderful --who will ever fathom what hidden treasures there are in a Linux 
+box.
 
-I get the following error message -
+I needed this PID of pppd for my little script which shows in a terminal From: 
+and Subject: as mail is coming in; tail -f --pid PID file.
 
-Running anaconda - please wait...
-
-Probing for videao card: VESA driver(generic)
-Probing for Monitor type: Unable to probe
-Probing for Mouse type: Generic - 3 Button mouse(PS/2)
-
-Attempting to start framebuffer based  Server
-Waiting for Xserver to start... log located in /tmp/X.log
-1..2..3..4..5 Xserver started successfully
-Traceback (Innermost last)
-    File "/usr/bin/anaconda", line 487, in ?
-        from splashscreen import splashScreenShow
-    File "/usr/bin/anaconda/splashscreen.py", line 21, in ?
-        from gtk import *
-    File "/usr/lib/python1.5/site-packages/gtk.py", line 22, in ?
-        from _gtk
-ImportError: /usr/lib/libgtk-1.2.so.0:invalid ELF header
-install exited abnormally.
-sending termination signals...done
-sending kill signals...done
+Thanks again
 
 
-I had used the same set of CD's to install linux earlier on the same machine. A week ago i formatted my hard-disk and tried to reinstall but it didn;t work. 
-
-Any idea what the problem mite be?
-
--Anshuman
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
