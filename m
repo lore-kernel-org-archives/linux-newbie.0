@@ -1,45 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
+From: axel@pearbough.net
 Subject: Re: How do I see all my partitions?
-Date: Tue, 17 Dec 2002 22:21:19 -0800
+Date: Wed, 18 Dec 2002 11:47:22 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021217221548.02112180@celine>
+Message-ID: <20021218104722.GA3850@neon.pearbough.net>
 References: <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Chris <smarta55@comcast.net>
+Cc: linux-newbie@vger.kernel.org
 
-At 10:23 PM 12/17/02 -0500, Chris wrote:
->Hi, I'm a new Red Hat user and want to mount
->my winxp partition.  How do I display all the
->partitions, Win/Dos/Linux, in one place so I can
->give mount the correct partition name?
+Hi Chris!
 
-To look at all the partitions on one physical disk, you use "fdisk" pointed 
-to the physical device for the drive. or example, if your drive is the IDE 
-primary master, use "fdisk /dev/hda". Once in fdisk, choose "p" to "print" 
-(actually, to display onscreen) the list of partitions and their associated 
-device names. Then "q" to quit without saving. You'll need to be root to 
-run fdisk.
+On Tue, 17 Dec 2002, Chris wrote:
 
-If you have several hard disks, you need to do each separately, following 
-this pattern
+> my winxp partition.  How do I display all the
+> partitions, Win/Dos/Linux, in one place so I can
+> give mount the correct partition name?
 
-         IDE primary master      /dev/hda
-         IDE primary slave       /dev/hdb
-         IDE secondary master    /dev/hdc
-         IDE secondary slave     /dev/hdd
+You might already have heard of fdisk. It is a tool to partition your hard
+disks and also in fact the easiest way to see what partition is of what
+type and has what number/name.
+To call fdisk for your primary IDE slave call "fdisk /dev/hda" and you
+will get something like this:
+
+   Device Boot    Start       End    Blocks   Id  System
+/dev/hda1             1      9688   4882720+  83  Linux
+/dev/hda2   *      9689     48440  19531008    7  HPFS/NTFS
+/dev/hda3         48441    158816  55629504   83  Linux
+
+(For example for your second SCSI disk it would be "fdisk /dev/sdb")
+
+Here you can see that my windows partition is /dev/hda2 is of type NTFS.
+To mount it you'll need an empty directory (e.g. /windows or /mnt/win) and
+the necessary file system support for you kernel (in my case NTFS).
+
+Then "mount <device>  <mount directory>". In my case this looks like:
+     "mount /dev/hda2 /windows"
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Have fun,
+Axel
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
