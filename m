@@ -1,62 +1,25 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: retrieval
-Date: Fri, 07 Jan 2005 09:13:11 -0500
-Message-ID: <41DE98F7.9000206@gelm.net>
-References: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
-Reply-To: chuck@gelm.net
+From: "" <dave@dpomeroy.com>
+Subject: changing network card driver
+Date: Sat,  8 Jan 2005 09:37:32 -0800
+Message-ID: <1105205852.41e01a5cc7197@webmail.dpomeroy.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Ankit Jain wrote:
-> hi
-> 
-> sorry but i could not understand by unmounting the
-> partition. i dont use floppy drive or something like
-> that. if i am using hard disk then i cant unmopunt the
-> whole partition
-> 
-> so what to do
-> 
-> thanks
-> 
-> ankit jain
+I have a Nvidia network card.  I'm using the 64 bit Suse 9.2 and that uses the
+forcedeth driver.  I'm having problems with the network staying up.  I have to
+restart the computer or the network every few minutes.   I'm wondering how to
+remove the forcedeth driver and use the nvidia supplied driver.  Can anyone
+give me a general explanation on this.  I think if I can remove the forcedeth
+driver and I can go ahead and install the nvidia driver using nvidia's install
+script.
+  Thanks for your time.
+Dave
 
-Hi, ankit jain:
-
-  The syntax of the command is 'umount' rather than 'unmount'.
-Yes, you can 'umount' an entire partition and, actually,
-you must 'mount' and 'umount' entire partitions.
-
-  If the partition where the deleted files existed was '/',
-then you can (restart the system and) change the mount of
-the partition to be 'ro'; read only. This will keep the data
-area from being written over.  I think that there is a
-command to "re-mount ro" a partition, so you man not need
-to restart your system.
-
-  You may choose to shut down the system and reboot using
-your distribution install or a recovery CD-ROM disk or any
-other recovery media.  Using a boot media created from a
-KNOPPIX.iso is a popular way to recover data from many a
-operating system and distribution; even M$-Windoze.
-
-Perhaps,
-  if your '/' partition contained the deleted file and
-  it was mounted as partition /dev/hda1 and
-  its type of filesystem was second extended:
-
-mount -t ext2 -o remount,ro /dev/hda1 /
-
-would be syntactically correct.
-
-I hope this helps,  Chuck
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
