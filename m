@@ -1,43 +1,40 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Re: how do I execute a java program?
-Date: Tue, 4 Mar 2003 17:35:20 +0930
+From: wa4chq@netscape.net (neil t)
+Subject: checking for dependancies?
+Date: Tue, 04 Mar 2003 06:20:28 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303041735.20646.Adam@Luchjenbroers.com>
-References: <200303031037.22772.r4mz3z@yahoo.es>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <534FB294.79976AEE.0006BEFC@netscape.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303031037.22772.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Tuesday 04 Mar 2003 1:07 am, [ramzez] wrote:
-> Hi friends...
->
->   I made an application usign Java... How do I create a executable file to
-> run my application without the IDE (forte for java)?
->
-> thanks,
+Greetings all-
+Is there a way to learn or a command that you issue to
+determine if you have all the needed "stuff" for a 
+program to work?  I sometimes go to the Debian Package 
+site and I will see something I would like to try.  Some
+will say that in order for the program to work, you will need
+this, this and this.  In the past I would just try and see if
+it would work.  If it did, great! but if it didn't I would then
+find out what was lacking from the errors message.  I know there
+has to be a proper way to go about this.
+Thanks and all the best--
 
-Well, I haven't been using the IDE (just javac and a text editor :) but this 
-should help you.
-
-]$ ls
-ReportTest.class  ReportTest.java
-]$ java ReportTest
-
-runs the ReportTest program (use java to run the main module of your code)
+Neil T.
 
 -- 
-"The meek may inherit the earth, but they don't get write permission" - 
-Charlie Stross
+Arachne/DRdos/Debian3.0
+Basiclinux/QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
 
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
