@@ -1,33 +1,45 @@
-From: "William Stanard" <wstanard@palmertrinity.org>
-Subject: vsftp permissions
-Date: Mon, 01 Mar 2004 14:08:44 -0500
+From: Peter Gantner <peter.gantner@stud.uni-graz.at>
+Subject: Re: Directories in sync
+Date: Mon, 1 Mar 2004 20:46:02 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <fc.004c4e000051a541004c4e000051a541.51a5db@palmertrinity.org>
+Message-ID: <Pine.LNX.4.58.0403012041040.39876@scourge.crownest.net>
+References: <Pine.LNX.4.56.0403011531290.12065@pluton.chilepac.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.56.0403011531290.12065@pluton.chilepac.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Rodrigo Gesswein <rodri@chilesat.net>
+Cc: linux-newbie@vger.kernel.org
 
-I'm running Red Hat 8.0 (2.4.18-14). After consulting the usual suspects
-(Learning RH Linux, Running RH Linux, and Apache, the definitive guide)
-I've hit a blank wall on using vsftp to update and add files to my httpd's
-document root (/var/www/html, as defined in httpd.config). 
+On Monday, the 1st of March, Rodrigo Gesswein thusly spake:
 
-Unless I am root, I do not have write permission to that directory. I
-don't mind reading to find the answer, but I seem to be missing a basic
-truth about connecting to the Linux box (via vsftp over a 10.x.x.x LAN) to
-update our web server. 
+> Hi!
+> 
+>    Does anybody know a good tool to keep 2 or more directories (local or
+> remote) full synchronized ?
+> 
+>    Thank you in advance..
+> 
+> Rodrigo...
 
-Do I create another directory and change the httpd.conf file? 
+rsync [1] is really good at that.
+It only transfers the differences necessary, and features other nifty 
+things like transfer over ssh and on-the-fly compression.
 
-I really don't want to have to use a public_html directory and
-http://www.domain.com/~username as an address.
+Unison [2] seems to be popular too because of easy cross-platform 
+syncing.
 
-Bill
+hth,
+	Peter
 
+[1] http://rsync.samba.org
+[2] http://www.cis.upenn.edu/~bcpierce/unison/
 
+ -- 
+"I do not think the way you think I think." 
+    -- Kai, last of the Brunnen G
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
