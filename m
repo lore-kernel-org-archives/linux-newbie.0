@@ -1,56 +1,41 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: configuring sendmail to cope with AOL
-Date: Fri, 23 May 2003 07:17:37 -0700
+From: Robert.Couture@p0.f2000.n229.z1.fidonet.org
+Subject: Re: vsftpd
+Date: 23 May 2003 10:52:54 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030523070551.01eb8a90@celine>
-References: <200305230143.h4N1hhRp019819@hartford-hwp.com>
-Mime-Version: 1.0
+Message-ID: <66c108.b75e9b@tcob1.net>
+References: <76c0f2.b4bb18@tcob1.net> <5.2.1.1.0.20030521132415.01bbfec0@interzone.anexia.co.uk>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BKEGKPICNAKILKJKMHCAGELBDBAA.Riley@Williams.Name>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: sean@tcob1.net
 
-At 08:06 AM 5/23/2003 +0100, Riley Williams wrote:
->Hi Haines.
->
->  > Yes. Each time I connect, I have a different address. I configure
->  > my address to be 0.0.0.0.
->
->Is that the address you tell sendmail to use? If so, that's probably
->the real problem with AOL refusing to permit your emails.
-[remainder deleted]
+The following message is a courtesy copy of an article
+that has been posted to linux.newbies as well.
 
-Good thought, Riley. I don't think that is what he is doing, but you may 
-have hit on the real problem nonetheless.
+Hello Carl!
 
-If you look at the Received: headers, you'll see that Haines purports to be 
-sending mail from hartford-hwp.com, and that the actual IP address, being 
-assigned dynamically, changes. For example:
+May 21 13:38 03, Carl wrote to Robert.Couture@p0.f2000.n229.z1.fid:
 
->Received: from 69.0.54.70.adsl.snet.net ([69.0.54.70]:6042 "EHLO
->         hartford-hwp.com") by vger.kernel.org with ESMTP id S263571AbTEWBbI
->         (ORCPT <rfc822;linux-newbie@vger.kernel.org>);
+ C> I found this on the vsftpd website in the FAQ:
 
-But the IP address hartford-hwp.com resolves to is (or seems to be) static. 
-In any case, it is different from his actual IP address, and a reverse 
-lookup on it does not succeed. To wit:
 
->ray@kuryakin:~$ host hartford-hwp.com
->hartford-hwp.com        A       64.227.154.66
->ray@kuryakin:~$ host  64.227.154.66
->64.227.154.66 does not exist, try again
+ C> Q) Help! I'm getting the error message "refusing to run with writable
+ C> anonymous root".
+ C> A) vsftpd is protecting against dangerous configurations. The cause of
+ C> this message is usually dodgy ownership of the ftp home directory. The
+ C> home directory should NOT be owned by the ftp user itself. Neither
+ C> should it be writable by the ftp user. A way to fix this is: chown
+ C> root ~ftp; chmod -w ~ftp
 
-This means his outgoing mail will fail the spoofed-source test that is 
-commonly applied by MTAs to SMTP connections.
+Thanks a million!
 
-That said, going through his ISP's e-mail relay will fix that problem too.
+Regards,
+Robert
 
-(BTW, he gets by with this DNS, I think, because hartford-hwp.com has a 
-functional MX entry. This is also why i was surprised to see Haines say 
-that his address is dynamic ... I'd checked the DNS listing and the whois 
-record, but not the Received: headers.)
+--- Msged/UNX 6.1.2
+ * Origin: RuneKeep: Linux Hub 2000 (1:229/2000)
 
 
 
