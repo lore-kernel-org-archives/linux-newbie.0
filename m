@@ -1,76 +1,59 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Connecting externally via SSH
-Date: Tue, 24 Feb 2004 16:17:54 -0800
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: moving partion to newer drive
+Date: Tue, 24 Feb 2004 20:25:02 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040224160107.038640b8@celine>
-References: <GNEPLLCIIBHICCOGIAKPOEFJCGAA.eatley@wow-corp.com>
+Message-ID: <Pine.LNX.4.44.0402241946550.29525-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPOEFJCGAA.eatley@wow-corp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 05:19 PM 2/24/2004 -0800, Eve Atley wrote:
+Hello,
 
->Hi folks,
->
->I'm trying to open up our Linux box for external SSH connections. We have a
->shared T1 line with another company. I know the DNS addresses, and it was
->indicated I should peek at the /etc/hosts.allow and /etc/hosts.deny files.
->So... what next? Do I add our DNS address as an SSHD entry and all is hunky
->dory? I tried this using the DNS address, and the server keeps asking for
->some password along with my own password.
+I have a dual-boot system (with windows-98 and redhat 7.3) setup on an old
+hard disk. I recently obtained a new hard drive and have their order
+configured such that the old drive is /dev/hda and the new one is
+/dev/hdb. The partitions on /dev/hda are as follows:
 
-You are going to have to clarify the bit about "the server keeps asking for 
-some password along with my own password". For that matter, I am not very 
-sure of the "this" that you "tried", what you mean by "an SSHD entry", and 
-what you mean by "our DNS address" (the server's IP address, perhaps?) either.
+/dev/hda1   *         1       960   7703608+   c  Win95 FAT32 (LBA)
+/dev/hda2           960       963     30240   83  Linux
+/dev/hda3           963      1365   3228120   83  Linux
+/dev/hda4          1365      1653   2313360    5  Extended
+/dev/hda5          1365      1397    257008+  82  Linux swap
+/dev/hda6          1397      1653   2056288+  83  Linux
 
-Do you mean that you ssh to the server from some remote host, and you get 
-two different password queries? If so, is the one for "my own password" the 
-first or the second of them? What is the EXACT wording of the other one?
+with /dev/hda2 -> /boot, /dev/hda3 -> /, /dev/hda6 -> /home. 
 
-To make the server available for ssh connections, you need to do, roughly, 
-the following:
+The partitions on /dev/hdb are defined as:
 
-1. Install and run an sshd daemon. The sshd process itself needs a 
-public-private keypair, and if the install process doesn't generate one 
-automatically, you'll need to do that, using ssh-keygen .
-
-2. Have entries in /etc/hosts.allow and /etc/hosts.deny that are consistent 
-with the sshd daemon accepting connections from whatever host you want to 
-connect from.
-
-3. Make sure you have no firewalling in place (at either end) that blocks 
-sshd connections from wherever you are connecting from to the server.
-
-4. Decide on authentication scheme -- standard userid/password is the 
-easiest -- and make sure sshd is set up to use it (in its config file, 
-probably /etc/ssh/sshd_config).
-
-5. Make a connection using a compatible ssh client (there are many). The 
-first time you do this, you may get a warning from the client that this is 
-a new host you are connecting to, so you can confirm that you want to make 
-the connection. If you get that message -- it is asking you to accept 
-receipt of the server's public key, in effect -- say YES. Then is should 
-ask you for a regular Unix password.
-
-Having written this outline, I surmise that you are getting the "new host" 
-confirmation message in (5) and mistaking that confirmation request for a 
-request for "some password". The other possibility is that you are using 
-keypair authentication for users, and you are being asked for the 
-passphrase that protects your (user-level) private key ... but that would 
-be instead of, not in addition to, your regular password.
-
-In any case, if this ramble doesn't give you the clue you need, please post 
-a followup in which you descirbe things more completely and exactly, and 
-I'll see if I can help.
+/dev/hdb1             1      6684  53689198+   c  Win95 FAT32 (LBA)
+/dev/hdb2          6685      8143  11719417+  83  Linux
+/dev/hdb3          8144      9600  11703352+  83  Linux
+/dev/hdb4          9601      9729   1036192+  82  Linux swap
 
 
+I want to: install Fedora on /dev/hdb by making /dev/hdb2 -> /, copy
+/dev/hda6 to /dev/hdb3 (-> /home) and successfully dual-boot. I have the 
+following questions;
 
+1. Can I boot from the Fedora CD and get the installation going (with
+properly defined partitions) and subsequently mounting and copying /dev/hda6
+to /home, without disturbing anything on /dev/hda at all?
+	
+2. Is it preferred that I preserve the /boot partition - i.e. will it help
+if /boot remains on /dev/hda2? 
 
+3. What are the details I must watch out for in this process?
+
+4. Finally - if all goes well, can I delete partitions /dev/hda(2)3-6 and
+make /dev/hda available as one single partition, without hosing windows?
+
+Thanks in advance,
+
+-K
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
