@@ -1,37 +1,37 @@
-From: Oliver Ob <ob_ok@gmx.net>
-Subject: Multiple CD Changer
-Date: Sun, 21 Jul 2002 19:35:57 +0200
+From: Peter <pfheiss@philonline.com>
+Subject: Re:ext3 file system
+Date: Mon, 22 Jul 2002 08:43:31 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D3AF0FD.55410F4F@gmx.net>
+Message-ID: <200207220043.g6M0hVR01243@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Lx Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Hello,
+Many thanks to all the possitive answers. There I go ext3 file system.
 
-how can I mount a 6-CD-Changer into my tree?
 
-It is /dev/hdb
+>Hi,
 
-But how can I distinguish those 6 slots?
-Mount them each?
+>I got myself RH7.3 and it says it is recommended, but not required to move to 
+>ext3 file sytem.
+>
+>Is it safe to do?
 
-Best regards!
---=20
-*=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
- *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
-I       http://www.bmw-roadster.de/Friends/Olli/olli.html       I
-I       http://www.bmw-roadster.de/Friends/friends.html         I
-I       http://groups.yahoo.com/group/VGAP-93                   I
-I       mailto:VGAP-93-subscribe@yahoogroups.com                I
-I       http://home.t-online.de/home/spacecraft.portal          I
->>>  Telek0ma iBBMS - now back online +49.4504.TRSi1/TRSi2   <<<
+
+Regards
+
+-- 
+Peter
+
+
+
+
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
