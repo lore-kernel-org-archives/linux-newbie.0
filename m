@@ -1,51 +1,41 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: mouse setup
-Date: Wed, 3 Jul 2002 15:47:44 +0000
+From: adwin <fox@sby.centrin.net.id>
+Subject: Re[2]: mouse setup
+Date: Thu, 4 Jul 2002 00:21:51 +0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207031547.44350.pa3gcu@zeelandnet.nl>
+Message-ID: <155376841.20020704002151@sby.centrin.net.id>
 References: <50420696.20020703074009@sby.centrin.net.id>
-Reply-To: pa3gcu@zeelandnet.nl
+ <200207031547.44350.pa3gcu@zeelandnet.nl>
+Reply-To: adwin <fox@sby.centrin.net.id>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <50420696.20020703074009@sby.centrin.net.id>
+In-Reply-To: <200207031547.44350.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: adwin <fox@sby.centrin.net.id>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 03 July 2002 00:40, adwin wrote:
-> Hello,
->
->   my system is Mandrake 8.2 & KDE 3.0 in my system.
-> I got a problem with my ps2 mouse port so I use USB Mouse instead.
-> I got problem, because my mouse cannot be detected. I have been try
-> use mousedrake to detect my mouse. It is success to detect my mouse
-> but my mouse still cannot be used. Then I try to detect with kudzu, it
-> also doesn't work (it say like " cannot create /dev/usbmouse").
-> how to solve this problem ?
->
-> thanks
->
-> ps: my mouse is Logitech optical.
+Hello Richard,
+Wednesday, July 03, 2002, 10:47:44 PM, you wrote:
 
-Ah!, ok, well use the converter plug usb>ps2 which logitec supplied, plug the 
-thing into the mouse ps2 socket and tell gpm it has a ps2 mouse.
-gpm -m /dev/mouse -t ps2
-Make sure the device files are linked correctly, /dev/mouse should be linked 
-to psaux.
-You use kde3, PS/2 should be ok in XF86Config, users of kde2 need to define 
-this sort of mouse as IMPS/2.
+RA> Ah!, ok, well use the converter plug usb>ps2 which logitec supplied, plug the
+RA> thing into the mouse ps2 socket and tell gpm it has a ps2 mouse.
+RA> gpm -m /dev/mouse -t ps2
+RA> Make sure the device files are linked correctly, /dev/mouse should be linked 
+RA> to psaux.
+RA> You use kde3, PS/2 should be ok in XF86Config, users of kde2 need to define 
+RA> this sort of mouse as IMPS/2.
+RA> They say it can be made to work as an usb mouse, i had no luck, looks like
+RA> logitec knew what they were doing when they decided to supply a converter 
+RA> plug with those mice. ;-)
 
-They say it can be made to work as an usb mouse, i had no luck, looks like 
-logitec knew what they were doing when they decided to supply a converter 
-plug with those mice. ;-)
+yes ... if I use my ps2 port..it will work..but unfortunatly .. my ps2
+port is broken...so I cannot use any ps2 mouse anyomore...:(
+so the choice is .. use my usb port. :)
+
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Best regards,
+ adwin                            
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
