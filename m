@@ -1,39 +1,47 @@
-From: Joshua Rogers <joshuarogers@hopper.net>
-Subject: Boot Splash
-Date: Tue, 31 Aug 2004 22:29:08 -0500
+From: Donald Duckie <schipperke2000@yahoo.com>
+Subject: on sk_buff
+Date: Tue, 31 Aug 2004 22:06:42 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200408312229.09554.joshuarogers@hopper.net>
+Message-ID: <20040901050642.10265.qmail@web90105.mail.scd.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Well, I did some searching and couldn't find anything for my little problem.
+good day!
 
-I'm running Debian with a custom built Linux kernel (2.6.8-1).
+i am new to linux kernel, and came across with
+sk_buff. i have been reading about it for awhile now,
+but there are some questions which were not answered
+by any site that i came across:
 
-I want to set the console (maybe with something like vga= ) so that I have a 
-resolution between 800x600 and 1280x1024 at the console.  I plan on trying to 
-add a boot splash later, but back to the point at hand....
+(1) as what i have understood, sk_buff is just
+equivalent to a packet that can be passed from one
+layer/protocol to the other. how or in what way can it
+be passed? 
 
-My computer has two graphics cards, an onboard video and a nVidia GeForce II.  
-I can't disable the onboard graphics in the bios, I can only choose AUTO or 
-INTERGRATED.  Well, it considers my GeForce to be the second card.  This is 
-the only one that I actually have a monitor hooked up to.
+(2) the functionalities offered by sk_buff can be
+categorized into: memory management; data
+manipulation; list manipulation. what functions are
+supposed to be invoked in order for the skb to be sent
+or received?
 
-The kernel and X both handle the setup fine.  Until I add the vga bootparam.  
-Then it appears that while the kernel is booting (and anytime I switch to 
-console) that it tries to use the onboard video.  X however is still using 
-the correct display.
+(3) i know that i still have to read a lot, but where
+can i find/read resources about the sending/receiving
+of an sk_buff from one layer to another; one protocol
+to another? the net/core/skbuff.c does not offer much
+explanation on the above querries.
 
-Is there a way to make the kernel use a higher resolution in the console on 
-the second video card (so that I can have a boot splash.)
 
-Thanks,
-Josh Rogers
+
+
+		
+_______________________________
+Do you Yahoo!?
+Win 1 of 4,000 free domain names from Yahoo! Enter now.
+http://promotions.yahoo.com/goldrush
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
