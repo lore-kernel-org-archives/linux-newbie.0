@@ -1,46 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Mike Dresser <mdresser_l@windsormachine.com>
 Subject: Re: Samba issues
-Date: Mon, 17 Mar 2003 10:20:31 -0800
+Date: Mon, 17 Mar 2003 13:44:34 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030317101346.01ef5e10@celine>
-References: <1047900712.3e75b228b4b8b@mail.rug.ac.be>
+Message-ID: <Pine.LNX.4.33.0303171342320.26190-100000@router.windsormachine.com>
+References: <20030317180721.70272.qmail@web13403.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20030317180721.70272.qmail@web13403.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Abhijit Vijay <abhijit_v@yahoo.com>, linux-newbie@vger.kernel.org
+To: Abhijit Vijay <abhijit_v@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 10:07 AM 3/17/2003 -0800, Abhijit Vijay wrote:
->Hi All,
+On Mon, 17 Mar 2003, Abhijit Vijay wrote:
+
+> Hi All,
 >
->I came to know from some of my labmates who did a
->performance test, that Linux Samba access is
->*significantly* slower (order of three times) than
->Windows SMB. Is there any reason why this could be tru
->and can this problem be fixed at all?
+> I came to know from some of my labmates who did a
+> performance test, that Linux Samba access is
+> *significantly* slower (order of three times) than
+> Windows SMB. Is there any reason why this could be tru
+> and can this problem be fixed at all?
 
-I can think of any number of reasons as to why it *could* be true. Better 
-understanding, though, requires better information, such as ...
+If anything, I'd report the opposite.  I've seen pentium 200's on Linux
+walk all over high end P4's.
 
-1. What version of Windows versus what versions of Linux and Samba?
+Perhaps the Linux system has port 445 firewalled off, and the W2k server
+is attempting to connect to that and then timing out?
 
-2. Are there any hardware differences between the test servers? (For that 
-matter, is the comparisone even between servers and not clients?) Any load 
-differences? Any LAN differences?
+Please publish these test results, as I suspect there are major
+differences between the two test beds.
 
-3. What do you mean by "access" and "slower"? Does it mean, for example, 
-that that actual bps speed of a file transfer differs between the two 
-setups by a factor of three? Or that it takes 3 times as long to get a 
-listing of available hosts? Or are we even talking about file access (and 
-not print queueing)?
-
-I don't notice a similar performance difference here, but that's based just 
-on casual observation, not controlled tests. I'd be interested in the 
-details of a controlled test, so please do follow up with more information.
-
-
+Mike
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
