@@ -1,62 +1,26 @@
-From: whitnl73@juno.com
-Subject: Re: PC speaker 'alert'
-Date: Wed, 19 Feb 2003 21:33:41 -0500 (EST)
+From: Mark Johnson <mark260@adelphia.net>
+Subject: accessing my XP printer from Linux?
+Date: 19 Feb 2003 23:42:25 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030219.215413.8.0.whitnl73@juno.com>
-References: <3E540B98.190D9D8D@gelm.net>
+Message-ID: <1045726946.1229.26.camel@mark.localdomain>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E540B98.190D9D8D@gelm.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: nc8q@gelm.net
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Wed, 19 Feb 2003, Chuck Gelm wrote:
+I have my printer connected to my Windows XP machine so everyone in the
+house can use it.  But I can't access it from my Linux computer (Red Hat
+8.0).  I tried Samba but it only lets me share a local printer with
+others on the network.  I use a Cable modem 4 port router to network and
+share access to the Internet (Linksys BEFSR41).  Is there a way to
+configure Samba to allow me to access a printer on another computer, or
+is there any program that will accomplish this?
 
-> Howdy, Y'all:
->
->  I'm monitoring my /var/log/messages file and I'd
-> like to have the PC's speaker beep when there is a new
-> entry.  I am monitoring 'DENY'ed packets.  I am now
-> using 'cut' and 'grep' and 'tail' to show the last
-> 11 denied packets.  How can I cause the PC speaker to
-> beep when the last 11 lines are different the the
-> previous 11 lines.
->
-> Here is what I am using now:
->
-> #!/bin/sh
-> #
-> grep DENY /var/log/messages > t
-> cut -f2 -d\= t > u
-> cut -f2 -d" " u > v
-> cut -f1 -d: v > w
+Thanks in advance
+  -=Mark=-
 
-tail -n 11 w | diff -- - deny.txt >/dev/null 2>&1 || echo -ne "\a"
-
-> tail -n 11 w > deny.txt
-> clear
-> echo ""
-> cat deny.txt
-> echo ""
-> chmod 777 deny.txt   ; v
-> chgrp users deny.txt ; so that my other workstations can see
->
-> Regards, Chuck
-> -
-Lawson
-
---
----oops---
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
