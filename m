@@ -1,39 +1,66 @@
-From: Jos Lemmerling <jos@lemmerling.net>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: lilo
-Date: Sat, 27 Apr 2002 20:34:21 +0200 (CEST)
+Date: Sat, 27 Apr 2002 11:46:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0204272028050.13504-100000@orthanc.lemmerling.net>
-References: <00f601c1ee0c$7b757cc0$0901a8c0@system>
+Message-ID: <2.2.32.20020427184635.01091e64@[192.168.1.23]>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00f601c1ee0c$7b757cc0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Tom Beer <mailings@analogon.com>, Staci <spiritlover666@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Sat, 27 Apr 2002, Tom Beer wrote:
+Tom -- Your description of your problem is a bit too elliptic to get good
+answers. (I think the range of responses from others who have posted
+illustrates how unclear your questions are ... people are trying hard to
+guess your meaning.)
 
-> I'm using Redhat 7.0 and there
-> should be a way to get it running.
-> It fits on a disk. I think that I
-> can't get the lilo process in my head 
-> (and I hope so). I compiled many things
-> as modules and the kernel 2542462 big.
+At 06:56 PM 4/27/02 +0200, Tom Beer wrote:
+>I'm using Redhat 7.0 and there
+>should be a way to get it running.
 
-just to make sure: you did use "make bzImage" while compiling? _Normally_ 
-a kernel-image isn't much bigger than 1 MB.
+There certainly should. Many ways, usually.
 
-> But isn't there a way to install the bzImage?
+>It fits on a disk. 
 
-if it's really called bzImage, it should be compressed (at least on my
-system...) and there shouldn't have to be a problem with his size.
+What is "it" and what do you mean by "a disk" (a floppy, a hard disk
+partition, or a CD)? 
 
+>I think that I
+>can't get the lilo process in my head 
+>(and I hope so). 
 
-HTH
+Huh?
+
+>I compiled many things
+>as modules and the kernel 2542462 big.
+
+What do you mean by "the" kernel? That's a chubby kernel even *after* it is
+uncompressed to run. More to the point ... how large is the actual bzImage
+file you created?
+
+>But isn't there a way to install the bzImage?
+
+Install it on what?
+
+On a floppy? Sure. You can just dd it to the floppy for a crude boot.
+
+On a hard disk partition? Well, not really; here you do require a bootloader
+like LILO or GRUB. The usual way to do it is to cp the bzImage file to a
+suitable place (/boot is the custom), edit /etc/lilo.conf so it identifies
+the new image as the one to boot from, and run lilo.
+
+Some kernel Makefiles have a "make install" option that puts the bzImage or
+zImage where it needs to be; I don't know if whatever kernel RH 7.0 used did
+this.
+
 
 --
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
+------------------------------------"Never tell me the odds!"---
+Ray Olszewski                                        -- Han Solo
+Palo Alto, CA           	 	         ray@comarre.com        
+----------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
