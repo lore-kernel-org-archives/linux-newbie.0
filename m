@@ -1,12 +1,12 @@
 From: "Benny Pedersen" <linux-net@tcob1.net>
 Subject: Installation of sources
-Date: Saturday, 03 Aug 2002 20:51:12 +000
+Date: Saturday, 03 Aug 2002 20:47:04 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a300=2f15_3d4c266f@fidonet.org>
-References: <772267a00d.7a00d77226@homemail.nyu.edu>
+Message-ID: <MSGID_110=3a300=2f15_3d4c25e7@fidonet.org>
+References: <221321ff3c.1ff3c22132@homemail.nyu.edu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <772267a00d.7a00d77226@homemail.nyu.edu>
+In-Reply-To: <221321ff3c.1ff3c22132@homemail.nyu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -16,14 +16,16 @@ Originally to: Anshuman Singh Rawat
 
 Hello Anshuman.
 
-21 Jul 02 12:34, you wrote to all:
+21 Jul 02 01:14, you wrote to all:
 
- AR> Does the files valhalla-SRPMS-disc1.iso/valhalla-SRPMS-disc2.iso
- AR> contain the source code? If yes, then do we have to burn them to cd as
- AR> iamge file and boot from that cdrom to install them, as done for
- AR> installing linux?
+ AR> I recently installed Linux (RHL 7.3) for the first time in my life.
+ AR> Now what do I do install/view the sources? I read in some book where
+ AR> i cud find the sources but that directory is absolutely empty, so I
+ AR> guess the sources have to be installed first.
 
-no thay just need to be mounted :-)
+you can download the source iso files from ftp.redhat.com or any mirror, or get single src.rpm files, but i recoment to get the 2 iso files with have docoments on howto :-)
+
+fyi the complete 7.3 is 5 iso files
 
 Benny
 
