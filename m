@@ -1,63 +1,48 @@
 From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: Re: Who's using my files?
-Date: Fri, 12 Jul 2002 13:42:40 +0200 (CEST)
+Subject: Re: ISO Image
+Date: Fri, 12 Jul 2002 14:37:24 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020712114240.80552.qmail@web13108.mail.yahoo.com>
-References: <1026470980.6430.39.camel@Zebra>
+Message-ID: <20020712123724.19978.qmail@web13104.mail.yahoo.com>
+References: <3D2E76E2.A74A2D@gmx.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1026470980.6430.39.camel@Zebra>
+In-Reply-To: <3D2E76E2.A74A2D@gmx.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: Paul Furness <paul.furness@vil.ite.mee.com>, linux-newbie@vger.kernel.org
+To: Oliver Ob <ob_ok@gmx.net>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
- --- Paul Furness <paul.furness@vil.ite.mee.com> a
-=E9crit=A0: > Good morning / afternoon / night (delete as
-> appropriate for your
-> timezone)
+ --- Oliver Ob <ob_ok@gmx.net> a =E9crit=A0: > szonyi
+calin schrieb:
+> >=20
+> >  --- Oliver Ob <ob_ok@gmx.net> a =E9crit : > This is
+> > what I would like to do: Updating a backup
+> > > then burn new.
+> > >
+> > >
+> > > Now it is mounted rw (according to mount)
+> > > I want to copy one file INTO it.
+> > >
+> > > But I get "READ ONLY FS"
+> > >
+> > > So what do I do wrong here? It IS mounted rw
+> > >
+> >=20
+> > 1. You should RTFM before experimenting.
+> > 2. ISO9660 is _not_ a writable filesystem.
+> > It was developed for read only media.
 >=20
+> Even though it is mounted RW (!) according to mount
+> ?=20
 
-rm -f /etc/localtime ? :-)
+Well it's pretty strange that mount says it's rw
+because AFAIK you the ISO 9660 filesystem wasn't
+ designed as a normal filesystem
 
->=20
-> I have a very basic problem which is pretty much the
-> same under all the
-> versions of linux I use.
->=20
-> Occasionally, when I try and eject a CD, the system
-> complains that it is
-> in use, even although I have definitely stopped
-> using it and CD'd out to
-> somewhere else.
->=20
+Mount does pretty strange things. :-)
 
-automount ?=20
-
->=20
-> A while ago I sort of remember seeing mention
-> somewhere of a prog that
-> tells you who is using what files in a given
-> directory tree.
->=20
-
-lsof=20
-ftp://vic.cc.purdue.edu/pub/tools/unix/lsof/
-
->=20
-> Does anyone else know about this? What is it called?
-> Has it been here
-> all along and I just never saw it?
->=20
-
-it hasn't been in many linux distributions. Now it
- seems that many distributions have lsof because
-it's an important security tool
-
-> Paul.
->=20
->=20
-
+Calin
 
 =3D=3D=3D=3D=3D
 --
