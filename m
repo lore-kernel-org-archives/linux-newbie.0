@@ -1,32 +1,45 @@
-From: Bob Batson <rcb@kc.rr.com>
-Subject: RE: Proxy
-Date: Sat, 21 Sep 2002 14:55:12 -0500
+From: Brett <brett@brett.d2g.biz>
+Subject: Re: nice linux list
+Date: Sat, 21 Sep 2002 21:10:09 -0600 (MDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <p05111b04b9b27ecb7282@[65.31.217.219]>
-References: <5.1.0.14.1.20020920184355.024b06a0@celine>
+Message-ID: <Pine.LNX.4.44.0209212104180.14416-100000@linuxDBA.brett.d2g.biz>
+References: <000f01c26197$31cc8c40$70d8d6d2@heretic>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020920184355.024b06a0@celine>
+In-Reply-To: <000f01c26197$31cc8c40$70d8d6d2@heretic>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>, "Le, Paul [Contractor]" <ple02@sprintspectrum.com>, linux-newbie@vger.kernel.org
+To: Sagar N Chand <sagar@mihira.net>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-At 7:06 PM -0700 9/20/02, Ray Olszewski wrote:
+If lots a traffic is all your looking for then linux-kernel is the list
+for you! It's hosted on this same server. Sever hundred emails a day and a
+good flame once a week or so. :)
 
->At 08:38 PM 9/20/02 -0500, Le, Paul [Contractor] wrote:
->>May I ask what is iptables, and where can I get a how to for it.
->[old stuff deleted]
+If that is what your looking for of course....:)
+
+
+On Sat, 21 Sep 2002, Sagar N Chand wrote:
+
+> hi all,
+> i have been subscribed to the php mailinglist at php.net since 2yrs.
+> I'll get atleast 200-400 mails per day on that list. But i hardly can find
+> 10 msgs here. I'm not comparing anything here. i just want to know
+> whether is there any list out there on linux which has some mail
+> traffic continuously.
 >
->Oopf! A trickier question than it looks like, I'm sad to say.
+> /sagar
+>
 
-A lot of info on iptables is at http://www.netfilter.org/
 
--- 
-Bob Batson
-rcb@kc.rr.com
+Brett
 
-Chocolate is the true opiate of the masses!
+-----
+Linux linuxDBA 2.4.18-4GB #1 Wed Mar 27 13:57:05 UTC 2002 i686 unknown
+  9:08pm  up 3 days, 23:31,  4 users,  load average: 1.03, 1.03, 1.00
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
