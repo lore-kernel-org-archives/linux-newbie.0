@@ -1,35 +1,20 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Samba Mount File Corruption
-Date: Wed, 9 Oct 2002 20:35:10 +0000
+From: Dave Pomeory <dave@dpomeroy.com>
+Subject: javascript
+Date: Wed, 9 Oct 2002 13:53:03 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02100920351000.00236@unix.pa3gcu>
-References: <3F06C9859CA7D31194ED0000D1ECC4AB14C48BEA@pkcexv007.sprintspectrum.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20021009135303.6de06a8a.dave@dpomeroy.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3F06C9859CA7D31194ED0000D1ECC4AB14C48BEA@pkcexv007.sprintspectrum.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Le, Paul [Contractor]" <ple02@sprintspectrum.com>, linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Wednesday 09 October 2002 20:05, Le, Paul [Contractor] wrote:
-> I am looking a Unix command which allow me search & replace a string a an
-> ascii file.
-
-sed
-Help can be found here;
-www-106.ibm.com/developerworks/linux/library/l-sed1.html
-
->
-> Thanks,
-> Paul
-
+My business has a web page that uses javascript.  I can't seem to make it work in Mozilla, Netscape, or Korqurer.  When I boot into windows and use Internet Exployer it works fine.  Anyone have a clue as to what is going on?  Do I need a plugin for Javascript?  Thanks for your help.
+Mandrake 9.0
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Dave Pomeroy K7DNP South East Washington
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
