@@ -1,36 +1,33 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: gcc
-Date: Wed, 26 Jun 2002 16:52:40 +0300
+From: Jim Reimer <wa5rrh@arrl.net>
+Subject: process time limit?
+Date: Wed, 26 Jun 2002 18:39:11 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020626165240.C1131@neutrino.particles.org>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D15B5@ccdc-exchg.careercommunity.com> <200206260812.NAA13140@thiru.vetri.com>
+Message-ID: <200206262336.g5QNacfR020637@franklin.icok.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200206260812.NAA13140@thiru.vetri.com>; from sambaiah@thiru.vetri.com on Wed, Jun 26, 2002 at 01:37:16PM +0530
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: usamki01@thiru.vetri.com
-Cc: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wed, Jun 26, 2002 at 01:37:16PM +0530, Kilaru Sambaiah wrote:
-> On Wednesday 26 June 2002 01:03 pm, Sridhar J (june end) wrote:
-> > Hello
-> >
-> > When I compile a C program using gcc, I get an a.out file. But when I type
-> > a.out, the error is "No such command"
->
-> pwd is not in your path. Add it. otherwise type ./a.out
-> sam
+I have a script run by cron once every half hour which
+gets a RADAR image, does some manipulation on the file,
+and stores it.  It's been running fine for a few weeks
+now.
 
-Better do the the second. Adding the current directory to PATH can
-cause security problems.
+However, when I got home from work today, the computer
+was *very* sluggish, and 'ps' showed many many instances
+of both the script and 'giftopnm' (one of the programs
+used in the script).  I don't know what went wrong, but
+giftopnm was hanging and not allowing the script to
+complete.
 
-Elias
+So - is there any way to limit the amount of time a
+cronjob (or any other job) can live?
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Hints appreciated...
+
+-jdr-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
