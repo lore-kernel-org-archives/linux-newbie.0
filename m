@@ -1,48 +1,48 @@
-From: John Porter <j.porter@starpower.net>
-Subject: Re: [SLE] Changing Text
-Date: Fri, 16 Aug 2002 17:49:05 -0400
+From: "Sean Rima" <lists@tcob1.net>
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Saturday, 17 Aug 2002 00:01:28 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5236.48587191037$1029535169@news.gmane.org>
-References: <200208161802.56488.James.Hatridge@epost.de>
+Message-ID: <MSGID_7223=3a9750=2f200_c3e069b7@fidonet.org>
+References: <p05111b00b9831e021b21@[65.31.217.219]>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200208161802.56488.James.Hatridge@epost.de>
+In-Reply-To: <p05111b00b9831e021b21@[65.31.217.219]>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: SuSE List <suse-linux-e@suse.com>, Linux Newbies <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-James Hatridge wrote:
-> Rates as of 2002.08.13 20:25:28 UTC (GMT). Base currency is EUR.
-> USD United States Dollars                 1.01756               0.982743    
-> GBP United Kingdom Pounds                 1.56297               0.639808    
-> AUD Australia Dollars                     0.546791              1.82885     
-> 
-> What I want is this;
-> 
-> 2002.08.13 	USD 	1.01756  	0.982743    
-> 2002.08.13 	GBP 	1.56297   	0.639808    
-> 2002.08.13 	AUD 	0.546791  	1.82885     
+Originally to: Bob Batson
 
-Here's a nifty little perl script that does it.
-(It's a filter: reads from stdin, writes to stdout.)
+-=> Bob Batson wrote to All <=-
 
+ BB> At 4:16 PM -0500 8/16/02, Ray Olszewski wrote:
 
-  my $date = '(no date)';
-  $, = "\t";
-  $\ = "\n";
-  while (<>)
-  {
-    /^Rates as of (\S+)/
-      ? $date = $1
-      : print $date, /^(...).*(\d+\.\d+).*(\d+\.\d+)/
-  }
+ >Originally to: All
+ >
+ >
+ >If you have not seen your mail on the list, then almost certainly something
+ >is wrong at your end. This is the *third* time I have seen this message
+ >this morning.
+
+ BB> [snip]
+
+ BB> I too am receiving multiple copies of more than one persons'
+ BB> message/question.
 
 
+There was a problem with a gateway I have here, I have hit the damn thing with a brick to stop it happening again. Sorry folks
 
--- 
-John Douglas Porter
+Sean
+
+
+... Sea Anglers have "BIGGER" tackle
+
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
