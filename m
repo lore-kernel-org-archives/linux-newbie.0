@@ -1,49 +1,45 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively change
- all directories/files to 777
-Date: Mon, 13 Dec 2004 13:54:24 -0800
-Message-ID: <41BE0F90.9030905@bcgreen.com>
-References: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+Subject: Re: Different root passwords
+Date: Mon, 13 Dec 2004 14:10:08 -0800
+Message-ID: <41BE1340.4020108@bcgreen.com>
+References: <41B8B632.5060608@netual.pt> <20041209205720.GA20454@jbrown.mylinuxbox.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+In-Reply-To: <20041209205720.GA20454@jbrown.mylinuxbox.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
-Cc: eatley@wowcorp.com
+To: "Jim C. Brown" <jbrown106@phreaker.net>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Eve Atley wrote:
-> First question...
-> We have people SSHing into our Linux box from overseas (India to US, company
-> access only). But files that are uploaded from these people become read-only
-> to anyone else accessing them. We *require* that they be readable/writable
-> by this side of the pond (US). How can I set this to occur? Otherwise, this
-> method of transferring files will *not* work for us, and perhaps someone can
-> point me to another solution.
+Jim C. Brown wrote:
+> On Thu, Dec 09, 2004 at 08:31:46PM +0000, M?rio Gamito wrote:
 > 
-> Second question...
-> How can I recursively set all files/directories to 777?
-> Chmod -R 777 *.* ... Didn't seem to hit everything.
+>>Hi,
+>>
+>>Is it possible to have in Linux different root passwords, for the same 
+>>machine: one for accessing it inside the intranet and another for 
+>>accessing through the internet ?
+> 
+> 
+> I suppose one way to do this would be to set up 2 root accounts. This is done
+> by adding another user, and then manually changing the uid in /etc/passwd for
+> that user to 0. The 2 users (one of which will probably be called 'root') can
+> have different passwords.
 
-The problem is that permissions are preserved when using scp.
-(i.e. if the file is mode 700 on the source box, it will be
-mode 700 on the destination, independant of umask settings).
+or: useradd -o -u0 secondroot
 
-Your *.* wildcard is a holdover from your DOS days.  Not all UNIX
-files have a dot in them, but the dot will have to be explicitly
-matched since it was explicitly requested.
+Far better than allowing users to remotely login as root is to
+allow specific NON-root users to login and execute root-perm
+commands via the sudo command functionality.
 
-Chown -R 777 * will catch everything other than files/directories
-with a leading dot.
+Generally, if you allow remote root logins, you should do so via
+rsa key logins... This requires people doing remote logins to have
+both an authorized ssh key and the the password to decrypt it.
 
-chmod -R 777 . will get EVERYTHING (including resetting the
-permissions of the current directory).
-
-You can also use the find command to find files that aren't
-readable by others, and only change the permissions on them
-(I'll leave that as an exercise for the reader).
+When you have SSH keys, you can also permit that key to only execute
+specific commands (which makes life much safer).
+  ( `man sshd` for more info on the authorized_keys file)
 
 -- 
 Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
