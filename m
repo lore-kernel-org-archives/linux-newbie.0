@@ -1,67 +1,40 @@
-From: Steven Smith <sos22@cam.ac.uk>
+From: Jos Lemmerling <jos@lemmerling.net>
 Subject: Re: lilo
-Date: Sat, 27 Apr 2002 19:29:02 +0100
+Date: Sat, 27 Apr 2002 20:34:21 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020427182902.GA419@cam.ac.uk>
-References: <20020427165127.35238.qmail@web12801.mail.yahoo.com> <00f601c1ee0c$7b757cc0$0901a8c0@system>
+Message-ID: <Pine.LNX.4.21.0204272028050.13504-100000@orthanc.lemmerling.net>
+References: <00f601c1ee0c$7b757cc0$0901a8c0@system>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="PEIAKu/WMn1b1Hv9"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <00f601c1ee0c$7b757cc0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Tom Beer <mailings@analogon.com>
-Cc: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+On Sat, 27 Apr 2002, Tom Beer wrote:
 
---PEIAKu/WMn1b1Hv9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> I'm using Redhat 7.0 and there
+> should be a way to get it running.
+> It fits on a disk. I think that I
+> can't get the lilo process in my head 
+> (and I hope so). I compiled many things
+> as modules and the kernel 2542462 big.
 
-> It fits on a disk.
-Have you tried running the kernel off of a floppy? That would at
-least confirm it's working.
-
-> I compiled many things as modules and the kernel 2542462 big.
-That's a big kernel. Do you mean vmlinux (which could be that large)
-or bzImage (which shouldn't be)?
+just to make sure: you did use "make bzImage" while compiling? _Normally_ 
+a kernel-image isn't much bigger than 1 MB.
 
 > But isn't there a way to install the bzImage?
-Usually, you go:
 
-cp arch/i386/boot/bzImage /boot/bzImage.2.4.18
+if it's really called bzImage, it should be compressed (at least on my
+system...) and there shouldn't have to be a problem with his size.
 
-and add a section to lilo.conf:
 
-image = /boot/bzImage.2.4.18
-	label = some_label
-	read-only
+HTH
 
-before rerunning lilo:
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
-/sbin/lilo -v
-
-If that doesn't work, then please post the output and the contents of
-your lilo.conf to the list.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---PEIAKu/WMn1b1Hv9
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE8yu3uO4S8/gLNrjcRAnDyAJ4ryWVK2X20iSFc7fIA6XjrL2CSKQCgippj
-xbWl0oGGljf3wJlbLZjtyRk=
-=Oowv
------END PGP SIGNATURE-----
-
---PEIAKu/WMn1b1Hv9--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
