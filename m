@@ -1,76 +1,65 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: I killed user's x server
-Date: Sat, 23 Nov 2002 10:17:10 -0500
+Date: Sat, 23 Nov 2002 15:52:59 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211231517.gANFHAv17709@hartford-hwp.com>
-References: <200211202236.gAKMaIK05653@hartford-hwp.com> <200211221843.gAMIh4W08194@hartford-hwp.com> <200211222145.gAMLjcQ12678@hartford-hwp.com> <02112313295302.00286@unix.pa3gcu>
+Message-ID: <02112315525904.00286@unix.pa3gcu>
+References: <200211202236.gAKMaIK05653@hartford-hwp.com> <02112313295302.00286@unix.pa3gcu> <200211231517.gANFHAv17709@hartford-hwp.com>
+Reply-To: pa3gcu@zeelandnet.nl
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <02112313295302.00286@unix.pa3gcu> (message from pa3gcu on Sat,
-	23 Nov 2002 13:29:53 +0000)
+In-Reply-To: <200211231517.gANFHAv17709@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
+To: Haines Brown <brownh@hartford-hwp.com>, pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-> > When I inserted a new nVidia graphics card (and even after after
-> > replacing it with the old card of the same type), users could no
-> > longer start X because the configuration looked for decprecated
-> > libraries (pex5 and xie).  Root had no such trouble.
-> 
-> The NVidia driver i use does not has pex5 or xie, just what driver did you 
-> try.??
+On Saturday 23 November 2002 15:17, Haines Brown wrote:
+> > > When I inserted a new nVidia graphics card (and even after after
+> > > replacing it with the old card of the same type), users could no
+> > > longer start X because the configuration looked for decprecated
+> > > libraries (pex5 and xie).  Root had no such trouble.
+> >
+> > The NVidia driver i use does not has pex5 or xie, just what driver did
+> > you try.??
+>
+> The problem was that apparently I was using the wrong driver, and that
+> killed X server, and so I backed out. I'm currently using the nv
+> driver that comes with my RH distribution.
 
-The problem was that apparently I was using the wrong driver, and that
-killed X server, and so I backed out. I'm currently using the nv
-driver that comes with my RH distribution. 
+Why not use the script provided on nvidia web site called NVchooser.sh that 
+script tells you whihc 2 files you need, one called NVIDIA-kernel and one 
+called NVIDIA-glx, even tho' you are using Rehat there is no reason why you 
+cant use the provided NVIDIA-xx.tar.gz files.
 
-> man XF86Config states
-> "
-> XFree86  uses  a configuration file called XF86Config for its initial setup.  
-> This configuration file is searched for in the following places when the 
-> server is started as a normal user:
->  
->            /etc/X11/<cmdline>
->            /usr/X11R6/etc/X11/<cmdline>
->            /etc/X11/$XF86CONFIG
->            /usr/X11R6/etc/X11/$XF86CONFIG
->            /etc/X11/XF86Config-4
->            /etc/X11/XF86Config
->            /etc/XF86Config
->            /usr/X11R6/etc/X11/XF86Config.<hostname>
->            /usr/X11R6/etc/X11/XF86Config-4
->            /usr/X11R6/etc/X11/XF86Config
->            /usr/X11R6/lib/X11/XF86Config.<hostname>
->            /usr/X11R6/lib/X11/XF86Config-4
->            /usr/X11R6/lib/X11/XF86Config
-> "
-> 
-> So you see that XF86Config-4 will get "ignored" IF a file called XF86Config 
-> is found.
+And to the point the biggest mistake people make when installing the NVIDIA 
+drivers (which if i may say so are very good) is NOT editing 
+/etc/X11/XF86Config(-4) it s simple one line edit, details are to be found in 
+the README's of the archives.
+Or to the point;
 
-Yes, I see that now that you point it out. This is why I'm using
-XF86Config-4. So it seems the problem is not that I'm using the wrong
-configuration file, but that it tries to load depcrecated libraries.
+/etc/X11/XF86Config
 
-> > So my question is, how do I get XF86 to use XFConfig rather than
-> > XFConfig-4? Is there a utility to set this value?
-> 
-> Looks like you have "named" your files incorrectly, you keep making 
-> referancies to, "XFConfig" and "XFConfig-4" they are;
-> XF86Config
-> XF86Config-4
+    Load       "glx"
 
-Sorry. Typos. My head begins to swim. Also, because I'm running emacs
-to write, and doing so from a user xterm with root logged in, I don't
-have some of my configurations, and as a result, the type is
-microsopic. I can barely see it.
+In the modules scetion.
 
-I'm going to try simply to edit the XF86Config-4 to remove the
-statement that load the deprecated libraries and see what happens.
+>
+> I'm going to try simply to edit the XF86Config-4 to remove the
+> statement that load the deprecated libraries and see what happens.
 
-Haines
+May i suggest you remove notjing, simply comment out lines you dont want.
+Make sure there is no file called XF86Config in /etc/X11 otherwise the 
+changes you make to XF86Config-4 will have absolutly no effect.
+
+>
+> Haines
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
