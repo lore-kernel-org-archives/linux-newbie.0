@@ -1,32 +1,26 @@
-From: Raider <raider@home.ro>
-Subject: Galeon problems
-Date: 20 May 2002 13:56:41 +0300
+From: Sridhar J <sridharj.hyd@cxknetworks.com>
+Subject: Linux router
+Date: Mon, 20 May 2002 16:29:26 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1021890347.2120.19.camel@localhost.localdomain>
+Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hello!
+Hello
 
-I run MDK8.2 and Galeon just refuses to show anything.  It loads the
-page okay, but there's nothing to show.  The error it prints is like
-this:
+I have an old Cyrix system that I would like to turn into a router-firewall
+and put it before my Webserver. I would alos like to have my IDS running on
+this. No other service should run on this. No apps, nothing.
 
-**************************************************
-nsNativeComponentLoader:
-GetFactory(/usr/lib/mozilla/components/libtimer_gtk.so) Load FAILED with
-error: /usr/lib/mozilla/components/libtimer_gtk.so: cannot open shared
-object file: No such file or directory
-**************************************************
+How do I go about it? What distro should I choose? What files do I have to
+edit to make these changes?
 
-This seems to be a problem with Mozilla... but this is really strange as
-that lib never existed (it isn't packed with Galeon or Mozilla).  Does
-anybody know what is this libtimer_gtk.so do?
-
+Regards
+Sridhar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
