@@ -1,136 +1,51 @@
-From: Kurt Sys <kurt.sys@rug.ac.be>
-Subject: Re: unmet dependencies
-Date: Fri, 11 Apr 2003 09:52:26 +0200
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: synchronising two machines
+Date: 11 Apr 2003 10:04:45 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <16022.29754.130108.193173@ksys.rug.ac.be>
-References: <5.1.0.14.1.20030410074839.01ea3048@celine>
-	<16021.9949.471022.230213@ksys.rug.ac.be>
-	<5.1.0.14.1.20030410090850.01ea3240@celine>
-Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
+Message-ID: <1050051885.3493.16.camel@zebra.vil.ite.mee.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030410090850.01ea3240@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hello,
+Hi.
 
-First, sorry about my terminology... 
+Can anyone suggest a reliable yet simple way of synchronising two
+identical linux servers?
 
-I haven't got the problems anymore (due to some 'playing' with
-sources.list):
+I have a server (let's call it X1) which is serving desktops out to
+multiple clients using XDMCP. I then have a second server with identical
+hardware (X2) which does the same job. The idea is that if people find
+X1 is slow and busy they can use X2, and also if X1 fails then X2 is
+still there.
 
-Originally, I mixed stable and sarge and had dependency problems;
-I changed to stable and problems were solved (after updating,
-'upgrading' etc);
-I changed again and mixed stable and sid and I had no problems;
-I changed again to sarge and I have no problems.
+I want to duplicate everything between the two machines except stuff
+which has to be unique - network settings being the obvious. During
+building, this is easy; I have built X1, and then connect the hard disk
+from X2 into X1 and use dd to copy the image across. Then I put the disk
+back in X2, boot up and change the network settings and hostname.
 
-The reason why I didn't list my sources.list, is because I changed it
-a lot. Now, it looks like this:
+However, how do I keep them in sync after that? Ideally, I want to be
+able to apply updates to only one of them (say X1) and have it
+automatically propogate those changes to X2. 
 
-----
-#deb http://security.debian.org/ stable/updates main
-deb http://security.debian.org/ testing/updates main
+rsync is a possible answer, I know, but I have two issues there: 
+A. I want it to update everything _except_ a few selected files, and  
+B. I need to run it as root, so to use rsync I'd have to open up rlogin
+to root, which I'd rather not do if possible.
 
-#deb http://ftp.kulnet.kuleuven.ac.be/debian/ stable main non-free
-#contrib deb-src http://ftp.kulnet.kuleuven.ac.be/debian/ stable main non-free contrib
-deb http://ftp.kulnet.kuleuven.ac.be/debian testing main non-free contrib
-deb-src http://ftp.kulnet.kuleuven.ac.be/debian testing main non-free contrib
-#deb http://ftp.kulnet.kuleuven.ac.be/debian unstable main non-free contrib
-#deb-src http://ftp.kulnet.kuleuven.ac.be/debian unstable main non-free contrib
-
-deb http://non-us.debian.org/debian-non-US testing/non-US main contrib non-free
-deb-src http://non-us.debian.org/debian-non-US testing/non-US main contrib non-free
-
-deb http://smarden.org/pape/Debian sarge unofficial pape
-deb-src http://smarden.org/pape/Debian sarge unofficial pape
-----
-
-and everything works.
+Anyone got any ideas about what I should look at?
 
 
-Oh, just one thing, but I don't know if it's very important, there
-is one package kept back:
+Oh, as an aside I _don't_ want a cluster, and I'm not trying to create a
+single "virtual server".
 
-----
-# apt-get upgrade
-Reading Package Lists... Done
-Building Dependency Tree... Done
-The following packages have been kept back
-  libgd1 
-0 packages upgraded, 0 newly installed, 0 to remove and 1  not upgraded.
-# 
----- 
+Thanks.
 
-I actually don't bother, since everything works fine and I have also
-libgd2-noxpm (don't ask me why this is without xpm and version was
-installed with xpm), so I guess it doesn't matter a lot.
+Paul.
 
-
-
-I really appreciate these replies,
-
-Kurt.
-
-
---
-Mail from Ray Olszewski
-sent on Thursday April 10 2003 at 09:18 (GMT-0700):
-
-> First, your terminology is off. At this time ...
-> 
->          Woody = Stable 
->          Sarge = Testing
->          Sid = Unstable
-> 
->  From what you wrote, I *still* cannot tell which of these you are
-> running.  So I'll suggest explicitly what I hinted at before: let us
-> see the contents of /etc/apt/sources.list .
-> 
-> Mixing versions is always tough. Personally, I never do it. I also
-> don't run Sarge (only Woody on my servers and Sid on my development
-> systems) so can't easily check dependency details there.
-> 
-> One thought ... if you moved from Woody (Stable) to Sarge (Testing),
-> did you do an apt-get dist-upgrade as part of the process? If not, a
-> lot of stuff will have been "held back" at Woody level, and that
-> might cause the dependency problems you're seeing.
-> 
-> It's hard to tell from what you posted, since you didn't include the
-> "held back" list that apt-get normally displays. But you might check
-> to see if, for example, libmysqlclient6 is being held back, which
-> would (probably) create a conflict that would block installation of
-> libmysqlclient10.
-> 
-> BTW, it is unlikely (though not impossible) that a package you need
-> is *only* in Stable ... unless you are running packages that are not
-> part of Debian at all (in which case, who knows what they might need
-> in the way of old libraries).
-> 
-> At 05:51 PM 4/10/2003 +0200, Kurt Sys wrote:
-> >Hello,
-> >
-> >I try to gather as much information as possible and I read/hear
-> >much slightly different things, so I try to extract something that
-> >looks ok with me. And now I remember... Quite a lot of people
-> >(using Debian) state that the 'unstable' version (sarge) is
-> >actually still quite stable. 'testing' (sid) is more stable and
-> >yeah... 'stable' (woody) is really stable. In many cases, they add
-> >that they run testing, since it is quite stable already. So I
-> >decided to do things somewhat more secure and put 'testing' in my
-> >sources.list, and not 'unstable' (and I've been told that it's also
-> >not good to mix sid and sarge).
-> >
-> >So, mixing unstable and stable would probably give less problems?
-> >Or am i wrong (again :-) )? It's just, I can imagine that some
-> >packages I need are only in stable, but that there are more recent
-> >versions of other packages, and sometimes I like the more recent
-> >onces...
-> [old stuff deleted]
-> 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
