@@ -1,56 +1,48 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Can't Print
-Date: Thu, 29 Apr 2004 22:10:57 -0700
+Date: Sat, 01 May 2004 16:12:32 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040429220345.01efcb48@celine>
-References: <20040430040015.640AF333CC@heisspf>
+Message-ID: <20040501081232.9504E301F7@heisspf>
+References: <5.1.0.14.1.20040429220345.01efcb48@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040430040015.640AF333CC@heisspf>
+In-Reply-To: Your message of "Thu, 29 Apr 2004 22:10:57 MST."
+             <5.1.0.14.1.20040429220345.01efcb48@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-At 12:00 PM 4/30/2004 +0800, Peter H. wrote:
->Hi,
->
->On a standalone PC with no modem and therefore no Internet connection and
->RH 9.0 installed I am unable to get the printer to work.
->
->On booting starting lpd I get:
->
->--localhost Get_local_host: 'localhost' IP address not available!
->
->The same message I get when trying to print a test page in printer-config.
->
->I configured a simulated Internet connection, the problem remains.
->
->I am an old RedHat hand so-to-speak and this is the first time I can't get 
->the
->printer to work. On all previous installations the PCs had modems attached.
->
->Could this be the problem that there is none. Would be strange so.
->
->Thanks for any suggestions.
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
 
-Well ... your question makes me realize that I've never, in 10 years, set 
-up a Linux system that did not have a network connection (LAN or dialup). 
-But ... lpd is a daemon that listens on TCP port 515, so it does need a 
-TCP/IP stack running. Since you "configured a simulated Internet 
-connection", I infer you are running a kernel with the necessary TCP/IP 
-support.
+heisspf@skyinet.net said:
+> On a standalone PC with no modem and therefore no Internet connection and RH
+> 9.0 installed I am unable to get the printer to work. 
 
-Do you have an "lo" interface, and is it configured as 127.0.0.1/8 ?
+Thanks Ray!
 
-Do you have an entry in /etc/hosts that resolves "localhost" to that 
-address ... that is, a line like --
+In /etc/hosts I had to remove @localdomain from localhost@localdomain and lpd 
+started and placing the print jobs nicely into the print queue, however, 
+nothing is being printed.
 
-         127.0.0.1       localhost
+On booting I get: Starting lp: Warning printer: cannot open '/dev/lp0' 'No 
+such device or address'.
 
-Just fishing here, really. You probably skipped some required step, but if 
-it isn't one of the ones I mention, I cannot think what ti might be.
+dmesg gives: lp: driver loaded but no device found.
+
+lsmod shows: parport    2  (autoclean) [lp]
+
+I have not an onboard parport but a singel parallel PCI card with chipset 
+NM9805CV. It worked perfectly when I tried it on my other PC with slackware 
+9.1.
+
+What have I to do that the device /dev/lp0 is found. It is in /dev/:
+
+ls -l /dev/lp0
+crw-rw----    1 root     lp         6,   0 Apr 28  1995 /dev/lp0
+
+Regards
+-- 
+Peter
 
 
 
