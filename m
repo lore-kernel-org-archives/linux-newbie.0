@@ -1,52 +1,93 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Setting permissions via SSH upload to 777
-Date: Wed, 13 Oct 2004 12:23:14 -0700
+From: Jim Nelson <james4765@verizon.net>
+Subject: Re: LVM query
+Date: Wed, 13 Oct 2004 16:15:11 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20041013120622.01f2ecc8@celine>
-References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06> <000001c4b154$84fb7de0$500aa8c0@lanadmin>
+Message-ID: <416D8CCF.6060906@verizon.net>
+References: <Pine.LNX.4.58.0410131346130.1347@debian-emach>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c4b154$84fb7de0$500aa8c0@lanadmin>
-References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
+In-Reply-To: <Pine.LNX.4.58.0410131346130.1347@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: eatley@wowcorp.com, linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-At 02:43 PM 10/13/2004 -0400, Eve Atley wrote:
+James Miller wrote:
 
->When someone SSH's into our Redhat Linux box, all files that are
->uploaded are set to read-only. How can I set it so files are
->automatically set to 777, or 775 at the very least?
+>I tend to use somewhat older computers and older, smaller (and
+>cheaper--sometimes free!) hard drives.  As a result, I end up with 2 or
+>more hard drives in any given machine.  I've been manually partitioning
+>and usually making / the mount point for smaller of the disks, /home the
+>mount point for the larger (single user system, btw).  I suppose /usr
+>might be a good mount point for a third disk.  Be that as it may, I've
+>recently looked into LVM (logical volume management) and wondered whether
+>it might not be a better option for setting up my system.
+>
 
-First, you shouldn't. It is NEVER smart, from a security standpoint, to 
-create a *default* condition where a file is writable by someone other than 
-its owner. There are special situations in which you need to do this, of 
-course, but making it the system *default* for uploaded files -- especially 
-for executables, but even for config files -- is asking for trouble.
+Definitely - My fileserver at home has 3 50 GB SCSI drives and a 30 GB 
+IDE drive chained together - and my desktop machine uses LVM on its 
+single hard drive so that when I add another, it won't be hard to move 
+the filesystem over.
 
-Second, are you talking here about scp transfers or something else? On a 
-case-by-case basis, a user of scp can (on the client end) use the -p flag 
-to preserve permissions so they match the settings on the source system.
+>  As I understand
+>about the way it works, I would not run into problems such as I might have
+>with my former scheme--for example running out of room on / (never
+>happened before, but who knows).  With all disks being used as one large
+>filesystem under LVM--if that is, indeed, the way it works--directories
+>can increase to whatever size disk total allows.  So, a couple of
+>questions in closing: have I understood correctly how LVM works and what
+>it does?
+>
 
-Third, here I find that scp transfers default to 755 (or 644 if the source 
-file wasn't executable), a decent default setting. This is (or should be) 
-derived from the default umask setting, which on my system is set in 
-/etc/profile ... but can be modified on a user-by-user basis in 
-/etc/.bash_profile. The method of setting these defaults varies bit among 
-Linux distrbutions (I'm running Debian-Sid here), so Red Hat may use 
-.profile or  .bashrc or some other variant for the user-level settings, and 
-/etc/login.defs for the systemwide settings. This is also shell specific, 
-so the details will be different if you don't use bash.
+Yes, essentially.  You can also set up RAID with LVM - check the man 
+pages for the proper setup and syntax.  Be aware though, that using 
+software RAID on IDE drives (especially older ones) sucks up great huge 
+amounts of processor time - SCSI makes much less of a CPU hit in 
+software RAID, though. 
 
-There is also a command-line app "umask" you can use to set this value for 
-a user. The only man page I can find for umask is a section-2 (programming 
-calls) entry, but it does explain how umask values relate to permissions.
+>  Does it sound like a good solution for my scenario?  Is there
+>any performance hit involved in using it as over against a traditional
+>partitioning scheme?
+>
 
-BTW, I just saw your other message, and that respondant had write and 
-execute mixed up. 555 is r-xr-xr-x; 666 is rw-rw-rw-.
+Standard LVM is almost unnoticeable.  RAID does take more CPU time, but 
+standard LVM is almost unnoticeable (unless you're running it on a 
+386-25 or something equally daft).
+
+>  Any other comments on, criticisms, praises of LVM?
+>Gotchas?  Thanks for any feedback on this.
+>
+>James
+>  
+>
+Unlike AIX, where LVM cane from, you cannot put the / filesystem on a 
+LVM partition AFAIK.  The way I set it up is:
+
+/ __   (on standard partition)
+    |
+    |
+    |___ /usr (on LVM partition)
+    |
+    |
+    |___ /home (on LVM partition)
+    |
+    |
+    |___ /boot (on standard partition, at least on Red-Hat based systems)
 
 
+most bootloaders have problems with shuffling around kernel images, so a 
+seperate partition for /boot is a good idea anyway.
+
+
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>  
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
