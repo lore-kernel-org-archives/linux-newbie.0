@@ -1,52 +1,46 @@
-From: joy <gracecott@sancharnet.in>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: Moving Hard Drive
-Date: Mon, 19 Jan 2004 16:46:37 +0530
+Date: Mon, 19 Jan 2004 15:37:13 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <400BBC95.1020808@sancharnet.in>
-References: <20040119071411.35BEF1C902@heisspf>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <200401191537.13062.pa3gcu@zeelandnet.nl>
+References: <20040119071411.35BEF1C902@heisspf> <400BBC95.1020808@sancharnet.in>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <400BBC95.1020808@sancharnet.in>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: Peter <heisspf@skyinet.net>
+Content-Type: text/plain; charset="us-ascii"
+To: gracecott@sancharnet.in, Peter <heisspf@skyinet.net>
 Cc: linux-newbie@vger.kernel.org
 
-Peter wrote:
+On Monday 19 January 2004 12:16, joy wrote:
+> Yes, I got the catch. thanks for enlightening me about the matter.
+> But I have a doubt....
+> As pa3gcu said couldn't you use the bios' boot option to boot thru the
+> other drive and since it's lilo.conf is pointing to hdc, could'nt you
+> then pass the root= parameter?
 
->>Peter wrote:
->>    
->>
->>>Is it correct then that before doing the switch I will have to change in 
->>>/etc/fstab and lilo.conf all what is labeled hdc to hda?
->>>Boot initially
->>>from a floppy into SLackWare run lilo and I should be set with the new drive
->>>as master.
->>>      
->>>
->
->gracecott@sancharnet.in said:
->
->  
->
->>Since you are on lilo, it would be easier to type on the lilo prompt
->>    
->>
->
->Since hdc was moved to hda there is initially no more MBR before I run lilo. 
->
->Therefore what Peter wrote above correctly replaced the old 5 Gb 
->HD with the new 20 Gb HD as Master.
->
->
->  
->
-Yes, I got the catch. thanks for enlightening me about the matter.
-But I have a doubt....
-As pa3gcu said couldn't you use the bios' boot option to boot thru the 
-other drive and since it's lilo.conf is pointing to hdc, could'nt you
-then pass the root= parameter?
+When using the BIOS option to boot other disks one needs to install lilo on 
+that disk's MBR first, so that means trying to pass root= is not needed 
+because the BIOS swaps disks around for you. Rather like the lilo option when 
+tricking windows into thinking its installed on /dev/hdaX when in fact its 
+on /dev/hdbX as per section, "Booting a foreign operating system" of the lilo 
+README.
+So all that means we now need to have lilo installed on all bootable disks 
+MBR's. To do that simply edit lilo.conf and set;
+boot= to /dev/hd(whichever disk) in this case /dev/hdc .
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 
 
 -
