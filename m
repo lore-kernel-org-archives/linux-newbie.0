@@ -1,55 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Elias Athanasopoulos <eathan@otenet.gr>
 Subject: Re: Tkdesk Segmentation Fault
-Date: Mon, 04 Nov 2002 23:09:46 -0800
+Date: Tue, 5 Nov 2002 12:03:16 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021104230332.020ce060@celine>
+Message-ID: <20021105120316.F2076@neutrino.particles.org>
 References: <200211050126.gA51QMD01651@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211050126.gA51QMD01651@philonline.com>
+Content-Disposition: inline
+In-Reply-To: <200211050126.gA51QMD01651@philonline.com>; from pfheiss@philonline.com on Tue, Nov 05, 2002 at 09:26:22AM +0800
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Peter <pfheiss@philonline.com>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-At 09:26 AM 11/5/02 +0800, Peter wrote:
->Hi,
->
->In RH 7.3 the program tkdesk will not open any longer.
->
->Only the message 'Segmentation fault' shows up immediately after giving the
->command tkdesk.
->
->Why would that be and how could it be corrected?
+On Tue, Nov 05, 2002 at 09:26:22AM +0800, Peter wrote:
+> Only the message 'Segmentation fault' shows up immediately after giving the 
+> command tkdesk.
+> 
+> Why would that be and how could it be corrected?
 
+Inspect the core file using gdb:
 
-How basic is your question, Peter? I'll assume fairly basic.
+% gdb tkdesk ./core
 
-A segfault occurs when a process attempts to access a location in memory 
-that has not been assigned to it by the kernel. I don't know all the 
-reasons a process may segfault (or maybe I do, but in that case I don't 
-know that I know), but the ones I know of are --
+Or use strace:
 
-         a programming error in the application (for example, attempting to 
-read or write to an element of an array greater than the size of the array)
+$ strace tkdesk
 
-         a programming error in a shared library that the application uses
+And see if you can figure where it crashed. If yes, then you should pro-
+bably know why, too.
 
-         a hardware problem, typically bad RAM, that causes a memory 
-address to be corrupted
-
-         a swap-space problem, causing an error similar to the hardware 
-(RAM) problem above
-
-Each source has a distinct (and, I trust, obvious, though not trivial) 
-solution.
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
