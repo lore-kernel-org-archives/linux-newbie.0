@@ -1,99 +1,72 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Hard Drive
-Date: Fri, 17 May 2002 12:11:07 -0700
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Compiling kernel for a different machine.
+Date: Fri, 17 May 2002 19:21:10 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020517191107.0226f3b8@[192.168.1.23]>
+Message-ID: <0205171921100I.27213@unix.pa3gcu>
+References: <20020517160123.GB797@prester.hh59.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020517160123.GB797@prester.hh59.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: Tom Beer <mailings@analogon.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Axel H. Siebenwirth" <axel@hh59.org>, linux-newbie@vger.kernel.org
 
-See below.
-
-At 08:41 PM 5/17/02 +0200, Tom Beer wrote:
->Hi,
+On Friday 17 May 2002 16:01, Axel H. Siebenwirth wrote:
+> Hello,
 >
->first Ray, thanks for your reply, but Conditions have changed now.
->The problem is as follows:
->One drive (as mentioned in the other mail)
->is corrupt. On this drive resides the swap partition
->and another, for system purposes unimportant data
->partition. These are labeled in /etc/fstab
->/dev/hdb6 swap 
->/dev/hdb5 /unit
+> 1)
+> I guess it should be ok compiling a kernel for one machine on a second one?
+> So if I have done so, it there all I need to copy over to the other machine
+> System.map and bzImage. Am I right about that?
 
-I infer from this that the drive in question is not your boot drive, so you
-should still have a working /dev/hda . Please correct this if I am wrong ...
-but it does make me not understand why you "cant boot", since this failed
-drive appears to be neither your boot device nor your root (/) filesystem.
+You have had some hints from others but no one as yet has said the magic 
+word, "Will it boot",,,,,?????
+Answer Yes if made too or the two machines use the same device for there root 
+filesystem.
+Why the same device,?
+Details;
+Machine one where the compiling is done will compile an image, in that image 
+there is a defined "BOOT_DEVICE" if both machines have (say for the sake iof 
+easyness the same device) /dev/hda1 then there is no problem, if machine one 
+has /dev/hda1 and the target machine has /dev/hda2, NO it wont boot out of 
+the box.
 
->I replaced this disk with a new one with different size. However, I
->cant boot or start Yast or format the drive with a 
->swap partition. 
+How do we get it to boot, answer easy;
+rdev bzImage /dev/hdxx where xx is the drive and partition nr.
+Or define ROOT_DEV = /dev/xxx in the Topdir Makefile
 
-I try to give you some generic advice below, but really, to get good advice,
-you need to explain your situation better. Saying you "cant" do various
-things is much less helpful than explaining what you tried and how it is
-failing.
+Recap;
+use rdev # rdev -h or 'man rdev'
+copy the image to the new machine with ftp (for example)
+create /lib/modules/version number (on the destination machine)
+ftp the compelete /lib/modules/version-number tree to the destination machine.
+copy System.map to /boot
+Edit /etc/lilo.conf on the destination machine, presuming you use lilo,
+check all is ok with /sbin/lilo -t
+then if no errors occur /sbin/lilo
+Reboot.
 
->There I'm in a turning cycle. 
+>
+> 2)
+> I have checked out X server from cvs. Can I use cvs to track changes made
+> to spefific files/directories? I have not got so much out of "cvs log" or I
+> made something wrong.
 
-What is a "turning cycle"? 
+When upgrading a kernel version you do not need to even think about changing 
+or upgrading X, if i may say so, if you need to ask howto compile a kernel on 
+a machine for another destination then i would certainly not advise you to go 
+around updating your X server.
+ 
+>
+> Thank you and my best regards,
+> Axel Siebenwirth
 
-
->What advice I would need is how to
->format the new drive from the rescue mode (all
->commands availble dd, mkswap, and so on),
->place a swap partition of the size of 128MB on it
->and another partition with the rest of the free space.
->It would be great if anyone may provide me how to 
->accomplish this.
-
-First thing you need to tell us is what is going on with /dev/hda. I can't
-figure out what your basic setup is from the information here.
-
-Second, what do you mean by "the rescue mode"? A rescue floppy? Drop into
-single-user mode?
-
-I don't use Yast, so what follows is a basic decsription of how to set up a
-new hard drive using core Linux/GNU tools.
-
-1. Make sure the drive is set up properly for the IDE location you want it
-to occupy. For hdb, that means put it on the primary channel's cable and
-jumper it to be a slave. Also make sure your BIOS knows about the drive
-change (either have it probe the IDE entries or set primary-slave to AUTO
-... the details vary with BIOSs).
-
-2. Boot/init the system somehow.
-
-3. Use "fdisk /dev/hdb" to check the drive for existing partitions and
-remove any that might be there. Then add new ones, both the ordinary
-partition and the swap partition. You'll use the "n" command to add the
-partitions, and the "t" command to change the 128MB one from ext2 (type 83,
-which fdisk calls Linux) to swap (type 82, Linux swap). Then write the
-partition table and exit fdisk (the "w" command).
-
-4. On the ordinary partition, use "mke2fs /dev/hdbX" (replacing X with the
-appropriate number for the partition) to put a filesystem ("format") it.
-
-5. On the swap partition, run "mkswap /dev/hdbX" (replacing X as before) to
-"format" the swap partition.
-
-6. If the new /dev/hdbX partition numbers are not the same as the old ones
-were (they probably won't be, since partitions get dreated in order, and
-you've not said what previously occupied positions hdb1 to hdb4), edit
-/etc/fstab to use the new partition numbers.
-
-7. Reboot and see if everything works.
-
-
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
