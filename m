@@ -1,29 +1,48 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Book Recommendations
-Date: Tue, 12 Nov 2002 14:45:03 -0500
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Book Recommendations
+Date: Tue, 12 Nov 2002 23:34:53 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp>
+Message-ID: <20021112233453.L29343@neutrino.particles.org>
+References: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp>; from pkraus@pelsupply.com on Tue, Nov 12, 2002 at 02:45:03PM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-What books would you recommend?
+On Tue, Nov 12, 2002 at 02:45:03PM -0500, Paul Kraus wrote:
+> If it seems broad it is supposed to be :) I want recommendation on
+> newbie,
 
-If it seems broad it is supposed to be :) I want recommendation on
-newbie, intermediate, advanced, scripting, programming, and security :)
+Get an introduction to Unix. Try to find an old one and avoid
+Linux in 24h, etc.
 
-Thanks!
+> intermediate, advanced, 
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Modern Operating Systems (Tannenbaum).
 
+> scripting, 
+
+man _your_favourite_shell
+
+> programming, 
+
+K&R/The C Programming Language, the 2 volumes of Unix Programming by R. Stevens,
+the FAQ of comp.unix.programmer.
+
+> and security :)
+
+From a programmer's techincal view of point, read the article "Smashing the 
+stack for fun and profit" (Phrack).
+
+Elias
+
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
