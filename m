@@ -1,84 +1,77 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: switching to debian (... and installing the NVIDIA 
-  GeForce4)
-Date: Thu, 25 Mar 2004 10:25:24 -0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: switching to debian (... and installing the NVIDIA   GeForce4)
+Date: Thu, 25 Mar 2004 20:36:04 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040325092417.01f19cb8@celine>
-References: <5.1.0.14.1.20040325082305.01f8d7d0@celine> <Pine.LNX.4.44.0403251127320.26064-200000@legolas.personal.
- engin.umich.edu>
+Message-ID: <200403252036.04758.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040325072647.01f7bde8@celine> <5.1.0.14.1.20040325081101.01f76d88@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0403251127320.26064-200000@legolas.personal.
- engin.umich.edu>
-References: <5.1.0.14.1.20040325082305.01f8d7d0@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20040325081101.01f76d88@celine>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-At 11:46 AM 3/25/2004 -0500, Karthik Vishwanath wrote:
->I tried adding/removing spaces from the Makefile and I still cannot get
->'sh NVIDIA-Linux-x86-1.0-5336-pkg1.run' to function alright. I did
->download NVIDIA-Linux-x86-1.0-5336-pkg1.run from nvidia's website and have
->not installed the Debian package nvidia-kernel-source.
+On Thursday 25 March 2004 17:40, Ray Olszewski wrote:
+> At 05:07 PM 3/25/2004 +0100, pa3gcu wrote:
+> >On Thursday 25 March 2004 16:42, Ray Olszewski wrote:
+> > > In fact, it should read
+> > >
+> > >          EXTRAVERSION =-k7
+> > >
+> > > (without the space before the hyphen).
+> >
+> >No sorry Ray its not a typo, its how it should be a as matter of fact,
+> >It possably works without a white space but AFAIK white spaces are
+> > ignored.
+> >
+> >If for example you look into any Topdir Makefile you will note that lines
+> > 1, 2, and 3 have white spaces after the =  and the 4th line should comply
+> > as well or so i was once told.
 >
->'uname -r' gives 2.4.18-k7. The Makefile in /usr/src/linux at its top
->reads:
+> Have you tried it, though? I recall actually having that problem once,
+> though quite a few years ago (that is, back whenever it was I first used
+> the EXTRAVERSION setting with my kernels). The prior three lines did get
+> any spaces cleaned out, but as I recall, EXTRAVERSION was handled
+> differently.
+
+I always use that method, yes it works and whats more i always use it that 
+way, i use it that way because i was told to do so many moons ago when the 
+EXTRAVERTION was first introduced into the Makefile, i was told that by its 
+authour.
+
+> I specifically saw the problem as an inability to load modules, because the
+> embedded space in the modules directory didn't work with the Debian init
+> script that loads modules.
+
+Now that i cant understand, anyway strange things can and i suppose will 
+always happen.
+
 >
->VERSION = 2
->PATCHLEVEL = 4
->SUBLEVEL = 18
->EXTRAVERSION =-k7
+> It's been a long time since I saw this problem, though, and it is certainly
+> possible that my memory is wrong, or that Makefile processing has changed
+> along the way ... and I'm unwilling to take the time to compile a kernel
+> just to see what happens. I did look, though, and confirmed that all my
+> kernel Makefile entries for EXTRAVERSION follow the form I suggest.
+
+Like i said they both work.
+
 >
->I have attached the nvidia-installer.log as an attachment (as its about
->~2K). I could'nt spot anything significant in that log -- perhaps my eyes
->are unfamiliar wrt to what to seek...
->
->I did not follow Richards suggestion below since the untarring of the
->zipped source did create /usr/src/kernel-source-2.4.18/.
+> In any case, I don't actually know if this has anything to do with
+> Karthik's problem, whichever of us is correct.
 
-Hmmm ... the log itself is not very informative, and I find that the 
-specific error message you're getting does not appear anywhere in the older 
-nvidia package I have here ... at least not in any form that "grep" or 
-"strings" can find.
+No i dont think so as you can read in my reply to that mail later.
 
-Tracking this down involves looking at the source for the nvidia-installer. 
-It turns out that this is a 2.6 change ... apparently 2.4.x modules are 
-named nvidia.o, while 2.6.x modules are named nvidia.ko, and the installer 
-is trying to figure out which name to use. For some reason, the function 
-build_kernel_module() is not getting a usable value for this choice.
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-This is the code fragment that's burning you:
-
-     cmd = nvstrcat("cd ", p->kernel_module_build_directory,
-                    "; make print-module-filename", NULL);
-
-     ret = run_command(op, cmd, &p->kernel_module_filename, FALSE, 0, FALSE);
-
-     free(cmd);
-
-     if (ret != 0) {
-         ui_error(op, "Unable to determine the NVIDIA kernel module 
-filename.");
-         /* XXX need more descriptive error message */
-         return FALSE;
-
-(Note the comment near the end. I second it.)
-
-  Why this fails is not readily apparent. The first thing to check, I 
-suppose, is that you have "make" installed on your system. If not, install 
-it ("apt-get install make").
-
-If that's not it, try pecifying the kernel name as a command-line option. 
-It's something like the following:
-
-         sh NVIDIA-Linux-x86-1.0-5336-pkg1.run --kernel-name=[KERNELNAME]
-
-replacing [KERNELNAME] with the actual name.
-
-If neither of these tactica work, consider dropping back to an eariler 
-version of the NVIDIA package, one known to work with 2.4.x kernels (like 
-the 4363 I have working here with a bespoke 2.4.19 .
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
