@@ -1,34 +1,49 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Bad blocks on my hard drive
-Date: Thu, 24 Apr 2003 15:57:15 -0600
+From: Bob Swift <powerstation@shaw.ca>
+Subject: Re: Running fetchmail in daemon mode?
+Date: Thu, 24 Apr 2003 17:56:38 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000201c30aac$77ea6ad0$4b01a8c0@t9397.tjem.com>
+Message-ID: <200304241756.38904.powerstation@shaw.ca>
+References: <009101c30aa5$867d3520$4b01a8c0@t9397.tjem.com>
+Reply-To: powerstation@shaw.ca
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <009101c30aa5$867d3520$4b01a8c0@t9397.tjem.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "'Linux-Newbie (Linux Newbie)'" <linux-newbie@vger.kernel.org>
+To: Chris Rose <offline@shaw.ca>, linux-newbie list <linux-newbie@vger.kernel.org>
 
- 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Thursday 24 April 2003 15:07, Chris Rose wrote:
 
-In Redhat 9's install, i am choosing to format and test my partitions.  I find that - against all odds - i have bad blocks on one of the partitions.  Now what?  RH's install summarily reboots the system, giving me no idea how to go about repairing/working around the problem.  So what can i do?  How do i mark these blocks, or otherwise repair the issue?
+> My cron command looks like this:
+> 0,15,30,45 * * * * /usr/bin/fetchmail -s
 
-Chris R.
-======
-np: Evanescence - Fallen (Retail)(6) - Tourniquet
-- ------
-http://offline.pointclark.net/
+Looks okay to me...
 
------BEGIN PGP SIGNATURE-----
-Version: PGP 8.0
+> My fetchmailrc reads:
+> defaults
+> poll pop3.server.net
+>         proto pop3
+>         interface eth0/192.168.1.50/255.255.255.0
+>         user "<username>"
+>         pass "mypassword"
+>         is <username>
+>         keep
 
-iQA/AwUBPqhdu8FBXq9qNmWaEQINPQCgm5yJHig1LYbiHb5CY/RzageovU0An2nE
-Xxc6ItY7ULVTufxfTwp0J46u
-=gWYM
------END PGP SIGNATURE-----
+I'm guessing the "keep" option is what's causing your duplicate messages.  Try 
+removing this and see if that helps.
+
+I would also suggest removing the "interface" option unless you *really* need 
+it.  Judging from the error message you're getting when running it from the 
+command line, my guess would be that it's not doing anything for you anyway.
+
+For what it's worth, I run fetchmail in daemon mode here, picking up mail from 
+the 6 accounts I use, and have occasionally (about once a year) run into the 
+"hanging" problem that someone else mentioned.  It hasn't bothered me enough 
+(yet) to change it to a cron job.  <grin>
+
+-- 
+Bob Swift
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
