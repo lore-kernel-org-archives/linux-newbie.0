@@ -1,42 +1,50 @@
-From: G Anna <drguruolai@eth.net>
-Subject: Re: Sorry Ray
-Date: 26 May 2002 09:30:22 +0530
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: which distribution to use?
+Date: Sun, 26 May 2002 11:41:00 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3bsb3zhgp.fsf@wobble.eth.net>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D13A6@ccdc-exchg.careercommunity.com>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <02052611410000.00212@unix.pa3gcu>
+References: <20020526095859.5DEEF2755@sitemail.everyone.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D13A6@ccdc-exchg.careercommunity.com>
+In-Reply-To: <20020526095859.5DEEF2755@sitemail.everyone.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Jose Luis Alarcon <jlalarcon@linuxnobis.com>, linux-newbie@vger.kernel.org
 
+On Sunday 26 May 2002 09:58, Jose Luis Alarcon wrote:
+> --- Richard Adams <pa3gcu@zeelandnet.nl> wrote:
+> >On Friday 24 May 2002 21:40, Matthew Stapleton wrote:
+> >> Say someone, like myself, did not like windows and wanted a more Unix
+> >> type experience or environment.  Would you suggest Debian or Slackware?
+> >> I actually want to try to learn about the system and not just point and
+> >> click.
+> >
+> >Slackware
+>
+>   Debian. ;-).
 
-> Date: Wed, 22 May 2002 12:16:53 +0530
-> From: Sridhar J <sridharj.hyd@cxknetworks.com>
-> Subj: Sorry Ray
+I stand by my statement, if one wants to learn how linux works, use 
+slackware, its the only system that allows you to install what "you" want and 
+not what the system wants, try that with all other distro's.
 
-(snip)
+Try installing debian, redhat, mandrake, suse on a system with low memory.
+Slackware can be installed on an old machine with 8MB, others cant.
+Slackware is operator dependant, that means configure things like X yourself 
+if you want too, most all other distro's do it for you, so you see with those 
+other distro's you "dont" learn linux as good as you do when one uses 
+Slackware period.
 
-> I realised this only when I saw Mark Johnson's mail. Why does this
-> happen only with this list? On other lists, "reply" usually gets
-> addressed to the list.
-
-Because the Reply-to header is not set in this mailing list.  In this
-mail, I have set the Reply-to header myself.
-
-Cheers,
-anna
+>
+>   Best Regards.
+>
+>   Jose.
 
 -- 
-
-(14) The  hero is not entitled to a last kiss, a last cigarette, or any
-     other form of last request. - Peter Anspach in "The Top 100 Things
-     I'd Do If I Ever Became An Evil Overlord"
-
-                                            http://www.eviloverlord.com
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
