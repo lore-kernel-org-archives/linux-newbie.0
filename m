@@ -1,34 +1,44 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Xwindows defaults
-Date: Wed, 17 Jul 2002 12:36:44 +1200
+From: azie <azie@kawan.net>
+Subject: fdisk
+Date: Wed, 17 Jul 2002 11:36:14 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020716232542.9B5279D15@smtp.orcon.net.nz>
-References: <20020717.013525.88@orac.clear.net.nz>
-Reply-To: cr@orcon.net.nz
+Message-ID: <200207171136.14806.azie@kawan.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020717.013525.88@orac.clear.net.nz>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Wednesday 17 July 2002 13:35, Chris Rodliffe wrote:
-> This may not be quite the right list, but I'm getting desperate.
-> My Gnome desktop has gone catatonic.  
+I'm using Dell Dimension PIV 2.0 with 40GB harddisk. When I try to use fdisk 
+to repartition my harddisk, I got this error.
 
-(snipped)
+[begin]
 
-MANY thanks to those who took the trouble to answer my rather incoherent plea 
-for help, and who gave me the necessary encouragement and clues to fix it.
+# fdisk /dev/hda
 
-For the record, if anyone wants to note this, I'm running RedHat 7.2, Gnome 
-(and Kmail), and to 'kill' the desktop settings and restore the Gnome 
-defaults, just delete (or rename) the  .gnome   and  .gnome-xxx   directories 
-in /home/USERNAME/
+Command (m for help): p
 
-Chris
-"The answer, when found, will be obvious"   :)
+Disk /dev/hda: 255 heads, 63 sectors, 2491 cylinders
+Units = cylinders of 16065 * 512 bytes
+
+
+8 partitions:
+#       start       end      size     fstype   [fsize bsize   cpg]
+  a:        1         7*        6*    4.2BSD     1024  8192    16
+  b:        7*       40*       32*      swap
+  c:        1      2492*     2491*    unused        0     0
+  e:       40*       42*        2*    4.2BSD     1024  8192    16
+  f:       42*     2492*     2449*    4.2BSD     1024  8192    16
+
+Command (m for help): n
+Segmentation fault
+
+#
+
+[end]
+
+any idea why this happens and how to partition it using fdisk?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
