@@ -1,115 +1,65 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: LI -lilo booting problem
-Date: Sat, 27 Jul 2002 08:08:55 +0000
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: nVidia lockups
+Date: Sat, 27 Jul 2002 09:57:23 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02072708085502.00307@unix.pa3gcu>
-References: <3D36DDA3.FA0F073C@gmx.net> <02072606105100.00370@unix.pa3gcu> <3D41BCFB.390F2750@gelm.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX>
+References: <200207261106.g6QB6b510015@langhans.hartford-hwp.com>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D41BCFB.390F2750@gelm.net>
+In-Reply-To: <200207261106.g6QB6b510015@langhans.hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Friday 26 July 2002 21:19, Chuck Gelm wrote:
-> Hi, Ray, Richard, & Ramzez:
->
->  I use
-> /usr/src/linux/# make install
->  and
-> # lilo
->  (/sbin/lilo ?) to try to install a bootable system.
+Hi Haines.
 
-I pointed you to my home-page in my last mail, i will suggest it once more, i 
-can assure you it will help you.
+> A thread is running on comp.os.linux regarding a problem of system
+> hang (no keyboard; no mouse; system clock stops) perhaps every other
+> week or so.
+>
+> Three people so far have contributed to this recent thread which has
+> just begun, and the common element seems to be one of the nVidia
+> graphics cards, although otherwise the system differs.
+>
+> Although perhaps OT, could I ask if there are others on this list
+> who have the same kind of hang and if they rely on the nVidia?
 
->
-> Thanks.  I found the mention of adding lba32
-> to lilo.conf, although README.common.problems
-> does NOT show the syntax of the line.  :-|
+There have been a wide variety of problems reported on systems using
+nVidea video cards. I don't use such cards myself, so have no direct
+experience of them. However, from reading the messages I've seen that
+refer to this problem, the following appear to be the relevant factors:
 
-lba32 is, i belive "not" your problem, /dev/hda1 starts and ends within the  
-larger as1023 limit. (If applicable in your lilo version that is)
-As i mentioned, the cyl limit is not a problem anymore in presant day lilo 
-versions.
+ 1. The nVidea drivers are apparently binary-only drivers, if the
+    various threads I've seen are correct. As stated above, none
+    of my systems use nVidea cards so I have no direct experience
+    to confirm this one way or the other.
 
->
->  However, I'll plug 'lba32' & 'lilo' into google
-> or whatever and see if I can find an example.
->
->  I can install Slackware8.0, compile a new kernel,
-> and boot from floppies, either lilo or bzdisk,
-> yet I cannot boot from either of two hard drives.
+ 2. Most binary-only drivers are compiled for a particular set of
+    kernel options, and are unusable with almost any change to the
+    kernel options. This basically means that it is near enough
+    impossible to make any change to one's setup without causing
+    problems if one is using any binary-only driver whatsoever.
 
-Ray pointed out that you have boot = /dev/hda1 in /etc/lilo.conf
-have you tryed changing it to boot = /dev/hda
-??
+Because of the number of problems hidden in various binary-only drivers,
+the kernel developers are usually unable to make constructive use of any
+fault reports from systems using binary-only drivers, and are pretty
+much forced to respond with "Send this bug report to the authors of the
+XXXX module as it's a binary-only module that we can do nothing with."
 
-I always advise against the use of 'make install' when installing a new 
-kernel because one has problems like you are encountering.
+Also, if the report relates to a system using two or more different
+binary-only modules from different authors, then even that isn't
+appropriate as the authors of the different binary-only modules will
+just blame each other's modules for the problem.
 
-I will update the kernel.htm in my home page and explain more about the 
-use/missuse of make options and what they do/can do, help/ or hinder.
+Incidentally, the binary-only module with the biggest bug-ridden
+reputation is VMWARE and its reputation is such that the developers
+just ignore any bug report where it appears.
 
+Best wishes from Riley.
 
->
-> :-|
->
-> Here is the partition structure of the last two
-> HDs that I've tried to boot.
->
-> Device	Boot	Start	End	Blocks	Id	System
-> /dev/hda1 *	1	240    1927768	83	Linux system
-> /dev/hda2	241	256	128520	82	Linux swap
-> /dev/hda3	257	2491 179526378	83	Linux system
->
-> I tried this one in Primary master also:
->
-> Device	Boot	Start	End	Blocks	Id	System
-> /dev/hda1 *	1	128    1028128	83	Linux system
-> /dev/hda2	129	131	 24097	82	Linux swap
-> /dev/hda3	132    1048    7365802	83	Linux system
->
-> In all cases(2) system was:
->
-> (1)	/dev/hda1 mounted as /
-> 	/dev/hda3 mounted as /usr
->
-> (2)	/dev/hda1 mounted as /
-> 	/dev/hda3 mounted as /share
->
->  So, / (/boot) was always within the first 1024 cylinders.
->
-> :-|
->
-> I'm off to find "lba32".
->
-> Thanks again, Chuck
->
-> pa3gcu wrote:
-> > On Thursday 25 July 2002 21:20, Chuck Gelm wrote:
-> > > Howdy, Y'all:
-> > >
-> > >  Where can I find help with 'lilo'.
-> >
-> > /usr/doc/lilo-21.7.5 (slackware-8.0)
-> >
-> > > When I try to boot from hard disk, I get:
-> > >
-> > > LI
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
