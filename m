@@ -1,41 +1,18 @@
-From: prussian7@netzero.net
-Subject: Printing to W98 from SUSE 8.1
-Date: Fri, 04 Apr 2003 20:23:06 -0600
+From: Peter <pfheiss@philonline.com>
+Subject: Re: PPP in Slackware
+Date: Fri, 04 Apr 2003 15:52:17 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E8E3E0A.C83F22F@netzero.net>
+Message-ID: <200304040752.h347qHr01612@philonline.com>
+References: <03040315353900.01175@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Thu, 03 Apr 2003 15:35:39 GMT." 
+ <03040315353900.01175@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
-
-Problem:
-
-I am unable to print to the printer shared on my windows 98 computer
-(panther 192.168.1.2), from my SUSE 8.1 (192.168.1.254) running SAMBA
-2.2.5
-When I type in:
-
-smbclinent //panther/lp -P
-
-I get:
-
-added interface ip=192.168.1.254 bcast=192.168.1.255 nmask=255.255.255.0
-
-Got a positive name query response from 192.168.1.2 (192.168.1.2)
-Password:
-
-then no matter what password I try I get:
-
-tree connect failed:  ERRSRV  - ERRinvertname (Invalid network name in
-tree connect.)
-
-I don't know if this is related but I when I click on the LAN browser on
-the Konqueror  I get an error stating " protocol not supported"
-
-
-
+Content-Transfer-Encoding: 7bit
+To: pa3gcu@zeelandnet.nl
+Cc: linux-newbie@vger.kernel.org
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
