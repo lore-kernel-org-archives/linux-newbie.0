@@ -1,40 +1,38 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: Fwd: Re: ssh - connection refused
-Date: Sat, 13 Apr 2002 15:28:00 +0000
+Date: Sat, 13 Apr 2002 15:43:35 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0204131528000T.00302@unix.pa3gcu>
-References: <F81Vzajv1eXlMOHOpyk00001fe5@hotmail.com>
+Message-ID: <0204131543350U.00302@unix.pa3gcu>
+References: <F18sUZjEGuaYve5T7HV00000a68@hotmail.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F81Vzajv1eXlMOHOpyk00001fe5@hotmail.com>
+In-Reply-To: <F18sUZjEGuaYve5T7HV00000a68@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jerry T <linuxl1@hotmail.com>, linux-newbie@vger.kernel.org
+To: Jerry T <linuxl1@hotmail.com>, ray@comarre.com
+Cc: linux-newbie@vger.kernel.org
 
-On Saturday 13 April 2002 15:07, Jerry T wrote:
-> I used slogin while trying connect through Cygwin. When that didn't work I
-> downloaded Putty and tried the steps that you have listed. I am getting
-> Connection Refused.
-
-Lets ask the question here, what do you do to get connection refused, can you 
-enter a passwd,? do you need to enter a username.?
-Please show us your commands and thier returned error messages.
-
+On Saturday 13 April 2002 15:18, Jerry T wrote:
+> The /etc/ssh/sshd_config file already had the lines in it that you have
+> listed.
 >
-> The OpenSSH daemon (sshd) is running because I can ssh to my own box.
+> I have been able to successfully ssh from my Linux box back to itself. sshd
+> seems to be running fine. (sshd appears in the list of services that you
+> see during bootup, sshd comes on just before xinetd)
 
-I take that to mean you can do;
-ssh localhost
-
-An example from one of my boxes;
-
-pa3gcu@unix:~$ ssh localhost
-pa3gcu@localhost's password:
-Last login: Sun Mar 17 20:01:23 2002 from 172.16.164.130
-Linux 2.2.19-5.
-pa3gcu@unix:~$
+I hope you dont mind me butting in on Ray's reply, however if what you say is 
+correct, (to get it strait), your sshd is working as it should verified by 
+using localhost, yes;
+In that case then you must be using your windows loginname or something 
+simalar to try to logon to your linux machine, ssh will only allow (in a 
+normall standard install) a "valid" username and its valid user passwd 
+defined in /etc/passwd, yes it needs to be the same, i see no reason why you 
+cant login otherwise.
+Futher more there is no need to do anthing on the windows machine in the way 
+of copying or generating ssh files, it should be as easy as ftp'ing putty 
+execuctuing it as i explained in my last mail.
 
 -- 
 Regards Richard
