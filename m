@@ -1,47 +1,61 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: run scripts as other user
-Date: Fri, 28 Feb 2003 23:17:36 -0800
+From: wa4chq@netscape.net (neil t)
+Subject: Re: Debian questions
+Date: Sat, 01 Mar 2003 07:14:34 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030228230844.01f4a078@celine>
-References: <200302281140.51111."[ramzez]" <r4mz3z.yahoo.es>
+Message-ID: <288B825F.19E3465D.0006BEFC@netscape.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302281140.51111."[ramzez]" <r4mz3z.yahoo.es>>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 12:12 AM 3/1/2003 -0500, [ramzez] wrote:
->-----BEGIN PGP SIGNED MESSAGE-----
->Hash: SHA1
->
->Hi friends...
->   Which perms I have to give  to my script if I wanna that other users run it
->but just how if I run it.
->   I know that is something with suid but I can't do it
+Peter <pfheiss@philonline.com> wrote:
 
-This question is a bit hard to follow. (If, as I suspect from your e-mail 
-address, English is not your native language, you might do better to use 
-very standard English, rather than try to use informal constructions like 
-"perms" and "wanna". My actual problem, though, is needing to guess what 
-you mean by "but just how if I run it".)
+>I think when I upgraded from RH6.2 saytime would not work well anymore. What I 
+>did was change the bottom lines in saytime.sh as follows:
 
-If I guess your meaning correctly, you want others to be able too execute a 
-program, and have it run as though it were executed by you (the file's 
-owner).  For example, in order to be able to change their passwords, 
-ordinary users need to be able to run the program "passwd" as though they 
-were root so they can write to the /etc/shadow file.
+Hi Peter--
+Where can I find the saytime.sh file?  I would like to see what it
+says.  Here is what I get when I execute 'saytime':
+ Hello OM: ./saytime
+----------------------
+sox: Sound card appears to only support 2 channels.  Overriding format
 
-You accomplish that by setting the suid bit, which you can do with the command
+sox: Sound card appears to only support 2 channels.  Overriding format
 
-         chmod +s filename
+sox: Sound card appears to only support 2 channels.  Overriding format
 
-Try "man chmod" for the details. The program needs to be normally 
-executable by the user in question, for example.
+sox: Sound card appears to only support 2 channels.  Overriding format
+
+sox: Sound card appears to only support 2 channels.  Overriding format
+
+sox: Sound card appears to only support 2 channels.  Overriding format
+
+sox: Sound card appears to only support 2 channels.  Overriding format
+
+sox: Sound card appears to only support 2 channels.  Overriding format
+
+Press any key to continue...
+--------------------------------------------------
+I can hear scratchy noise as the message is scrolled down the page.
+All the best
+Neil T.
 
 
 
+-- 
+Arachne/DRdos/Debian3.0
+Basiclinux/QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
+
+
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
+
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
