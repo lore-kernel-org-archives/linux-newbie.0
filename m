@@ -1,63 +1,49 @@
-From: Mark Hahn <hahn@physics.mcmaster.ca>
+From: "Lee Chin" <leechin@mail.com>
 Subject: Re: usleep
-Date: Wed, 11 Jun 2003 21:02:17 -0400 (EDT)
+Date: Wed, 11 Jun 2003 20:04:58 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0306112056280.20310-100000@coffee.psychology.mcmaster.ca>
-References: <20030612005324.51946.qmail@mail.com>
+Message-ID: <20030612010459.63803.qmail@mail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030612005324.51946.qmail@mail.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Lee Chin <leechin@mail.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: cat@zip.com.au
 Cc: linux-newbie@vger.kernel.org
 
-> Any way... what is setrealtime?  I dont have it on my linux machine
+Sorry everyone, I had initially posed my for loop wrong... I meant to say for(i = 0; i < 1000; i++).
 
-it's a simple tool I wrote a long time ago, code below.
-***** N O T E *******
-it can effectively freeze your machine, since it gives you a process
-which will not be prempted!  it *is* useful, though, if you know
-what you're doing...
-***** N O T E *******
+Mark Hahn clarified the issue and usleep is not actually accurate (provably) and the man page actually has a disclaimer.  To me, it seems like usleep(2000) * 50 itterations actually gives a reasonably accurate 1 second delay on machines from 800 mgz to 2 ghz.
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <sched.h>
-/* setrealtime: run procs in realtime.
-   author: Mark Hahn <hahn@mcmaster.ca> */
+Mark Hahn actually gave me some more accurate code to do usleep too.  Thanks Mark!
+Thanks
+Lee
+----- Original Message -----
+From: CaT <cat@zip.com.au>
+Date: Thu, 12 Jun 2003 09:21:46 +1000
+To: Lee Chin <leechin@mail.com>
+Subject: Re: usleep
 
-int main(int argc, char *argv[]) {
-    static struct sched_param sched_parms;
-    int pid, wrapper=0;
+> On Wed, Jun 11, 2003 at 05:55:02PM -0500, Lee Chin wrote:
+> > I would think the following code would wait for 1 second each itteration
+> > before printing hello, but it waits way too long.  Replacing the for
+> > loop body with a usleep(1000000) works great... what am I missing here?
+> 
+> usleep = micro sleep = sleep in 1/1000000 second incrememnts.
+> 
+> -- 
+> Martin's distress was in contrast to the bitter satisfaction of some
+> of his fellow marines as they surveyed the scene. "The Iraqis are sick
+> people and we are the chemotherapy," said Corporal Ryan Dupre. "I am
+> starting to hate this country. Wait till I get hold of a friggin' Iraqi.
+> No, I won't get hold of one. I'll just kill him."
+> 	- http://www.informationclearinghouse.info/article2479.htm
 
-    if (argc <= 1)
-        return 1;
-
-    pid = atoi(argv[1]);
-
-    if (!pid || argc != 2) {
-        wrapper = 1;
-        pid = getpid();
-    }
-    if (!pid)
-        return 1;
- 
-    sched_parms.sched_priority = sched_get_priority_min(SCHED_FIFO);
-    if (sched_setscheduler(pid, SCHED_FIFO, &sched_parms) == -1) {
-        perror("cannot set realtime scheduling policy");
-        return 1;
-    }
-    if (wrapper) {
-        setuid(getuid());
-        execvp(argv[1],&argv[1]);
-        perror("exec failed");
-        return 1;
-    }
-    return 0;
-}
+-- 
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
