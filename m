@@ -1,8 +1,8 @@
 From: "John T. Williams" <jtwilliams@vt.edu>
 Subject: Re: Router spam
-Date: 24 Feb 2004 13:13:28 -0500
+Date: 24 Feb 2004 13:16:44 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1077646406.2277.19.camel@Marx.fesnel.no-ip.org>
+Message-ID: <1077646602.2279.21.camel@Marx.fesnel.no-ip.org>
 References: <20040224135401.GA28753@panix.com>
 	 <200402240957.53133.sotl155360@earthlink.net>
 Mime-Version: 1.0
@@ -11,8 +11,7 @@ Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <200402240957.53133.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: Rei Shinozuka <shino@panix.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 
 What if someone hacks belkin's web server and puts an browser exploit on
@@ -26,8 +25,6 @@ required to re-qualify for their engineering certification, making
 special point to re-read the ethics qualifications. If I designed a
 elevator that sometimes took you to the floor I wanted rather then the
 one you wanted, I'd still be in jail. 
-
-
 
 
 On Tue, 2004-02-24 at 09:57, Frank Roberts - SOTL wrote:
