@@ -1,21 +1,21 @@
 From: "rgomez@bancomer.com" <rgomez@bancomer.com>
-Subject: Squid only on eth1
-Date: Mon, 26 Jan 2004 12:01:00 -0600
+Subject: two eth devices ...
+Date: Mon, 26 Jan 2004 12:29:06 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4011C8740000069B@mail-bcm02.alestra.net.mx>
+Message-ID: <4011C87400000704@mail-bcm02.alestra.net.mx>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi:
+Hi, I've been assigned a PC with two eth devices, What utility can I give
+them? or is better if i unplug one, my network is configured
+to assign an IP address via dhcp.
 
-I have 2 eth devices in my Linux box, I want that all squid traffic go throw
-eth1 an not eth0, how do I configure it?
-
-tks for your time...
+As you can see I'm a Linux newbie in network thems...
+TKS
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
