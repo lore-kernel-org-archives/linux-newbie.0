@@ -1,52 +1,63 @@
 From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: state of Linux USB networking?
-Date: Wed, 14 Jan 2004 14:12:34 -0500
+Subject: Re: Can't Mail with Exmh
+Date: Wed, 14 Jan 2004 14:03:23 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040114191234.GB552@lnx2.w8mch.ampr.org>
-References: <Pine.LNX.4.58.0401131302020.3276@debian-box>
+Message-ID: <20040114190323.GA552@lnx2.w8mch.ampr.org>
+References: <200401140701.i0E71nh01583@skyinet.net>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.58.0401131302020.3276@debian-box>
+In-Reply-To: <200401140701.i0E71nh01583@skyinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: James Miller <jamtat@mailsnare.net>
+To: Peter <heisspf@skyinet.net>
 Cc: linux-newbie@vger.kernel.org
 
-Greetings: Can't answer your query completely only to say that
-Slackware 9.0 and 9.1, the default bare.i kernel, automatically sets
-up support for two USB channels and automatically installs the
-necessary modules to implement USB; as far as my lone USB device, a
-flash drive... All three machines have MB's that support USB or
-course.
+Greetings: Sendmail 8.12.X is a new ball game due to upgrading
+security, I read, not running suid root.. I found a few things so far
+the worst being the fact that 'mailq' couldn't find the queued mail
+because it was in /var/spool/clientmqueue instead of mqueue.. I,
+also, had to change sendmail.cf to reflect this and it now works
+except for my 'masquerading' problem, which is not supported in
+8.12.X... Since I'm running Slackware 9.0 or 9.1 exclusively I
+thought the problem was with Sendmail. Apparently it's with both it
+AND the distribution at odds with each other, whatever..
 
-Compare this to trying to get that drive working with Win98FE and
-Win95USB.. Even Win98SE needs a special driver and finally, after a
-few week, the vendor put a driver on their Web Site so that  Win98FE
-now supports the drive.. Odd, to me, that a device made for Windows
-took so long to implement, whereas Linux, in my case, found it right
-out of the box, and it worked like a charm... <grin>
+Never a dull moment.. I can't seem to find much, either, about what
+the new user 'smmsp' is all about, and the fact that Sendmail 8.12.X
+now uses two .cf files instead of the former one.. Cheers,
 
-I bought another vendors so called pen drive and couldn't get it to
-work, either automatically or frustration, with Linux.. Ringing the
-vendors tech support they said it can't work with Linux.. Go figure.
-
-HTH a wee bit.
 
     Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
 		Utrum Per Hebdomadem Perveniam
 
-On 01-13, James Miller wrote:
-> What's the state of USB networking under Linux?  Alot of USB network
-> adaptors are being sold these days, and I was just wondering if they can
-> be utilized under Linux and how easy or difficult they are to set up.
-> Feedback on this, anyone?  Anyone onlist have such working on their
-> machine(s)?
+On 01-14, Peter wrote:
+> >  >  Peter said:
+> >  > > In RedHat9.0 after I changed from kernel 2.4.20.20-9 to kernel
+> >  >  2.4.22 I can't send mail any longer with exmh or with pine. 
 > 
-> Thanks, James
-> -
+> To which I got only one reply.
+> 
+> >  > 
+> >  > I finally solved the problem. I made a "make upgrade" with postfix
+> >  > which  seems to have fixed it.
+> 
+> It did not solve it, it only stopped giving error messages and placed the mail 
+> in the queue from which it could not be mailed.
+> 
+> The culprit was sendmail-8.12.8-9.90.i386.rpm. I uninstalled it and went back 
+> to
+> sendmail-8.11.6-27.73.i386.rpm and this mail will go out with exmh.
+> 
+> I started to suspect sendmail when on booting I always got the error: 
+> sm-client failed, invalid option -- A.
+> 
+> Therefore RH9 seems to be buggy.  With the kernel 2.4.20.20-9 I can't open 
+> siag office and with sendmail-8.12.8-9.90 I can't send mail. This is the Krud 
+> Linux version of RH9.
+> 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
