@@ -1,37 +1,37 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: Debian Sid startup problems
-Date: Fri, 11 Jun 2004 22:12:41 -0500 (CDT)
+Date: Fri, 11 Jun 2004 23:36:12 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406112204310.2201@debian-emach>
+Message-ID: <Pine.LNX.4.58.0406112327150.1396@debian-emach>
 References: <5.1.0.14.1.20040611160033.01fa0948@celine>
  <5.1.0.14.1.20040611160033.01fa0948@celine> <5.1.0.14.1.20040611183923.01fc9dc0@celine>
- <Pine.LNX.4.58.0406112102240.2201@debian-emach>
+ <Pine.LNX.4.58.0406112102240.2201@debian-emach> <Pine.LNX.4.58.0406112204310.2201@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0406112102240.2201@debian-emach>
+In-Reply-To: <Pine.LNX.4.58.0406112204310.2201@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'm beginning to suspect some kind of wierd hardware failure, frankly.  I
-hadn't rebooted the computer for quite some time (more than a month, I
-think) prior to trying to work out this usb thing.  The first time I
-rebooted it after tinkering with usb stuff, I got a pause and the "no
-signal" message on the blank monitor for a second or two before xdm
-appeared.  I was actually a bit disturbed by it momentarily - sort of in
-preparation for an "oh no, what's wrong" feeling, though the eventual
-appearence of xdm preempted that.  But on subsequent reboots, xdm does not
-finally appear.  What kind of hardware problem this could be is beyond me:
-as I said, booting from Knoppix that display looks fine when the gui comes
-up - apart from being 1024x768 rather than the 1280x1024 this monitor is
-supposed to run at.  Just some further reflections on this strange
-situation.  Further feedback appreciated.
+On Fri, 11 Jun 2004, James Miller wrote:
+
+> PS I can still boot from a 2.4.x kernel on the system - though I'll be
+> without mouse support.  Maybe I should try that?
+
+This is really wierd.  Here I am, booted into a normally-working x
+session, having started the computer with the 2.4.25 kernel.  I don't know
+what to think of this.  I got to a command prompt, as I was getting to
+under the 2.6.5 kernel after taking Ray's advice about renaming
+/etc/rc2.d/S99xdm so it wouldn't boot into graphical mode.  When I logged
+in and issued startx, the window manager fired up normally.  No blank
+screen with "no signal" on it or anything.  Just the same old gui I've
+been using these last few months (and the mouse even works!).  Maybe I'm
+entering the twilight zone or something . . .  Anyway, enough for tonight.
+I'm going to bed on this one.  Maybe tomorrow I'll try this again with the
+2.6.5 kernel.  Maybe I'll upgrade xfree.  Suggestions welcome.
 
 James
-
-PS I can still boot from a 2.4.x kernel on the system - though I'll be
-without mouse support.  Maybe I should try that?
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
