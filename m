@@ -1,36 +1,31 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: A few more things and I can kiss windows good bye.
-Date: Sun, 20 Oct 2002 21:26:32 +1300
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Trying to get GUI'ed
+Date: Sun, 20 Oct 2002 10:15:35 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021020073532.6568F6E4EC@smtp.orcon.net.nz>
-References: <Pine.BSF.4.44.0210192235570.26747-100000@server1.shellworld.net>
-Reply-To: cr@orcon.net.nz
+Message-ID: <3DB2BA87.E2C47BDD@gelm.net>
+References: <200210190850.g9J8oBF04104@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.BSF.4.44.0210192235570.26747-100000@server1.shellworld.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jude DaShiell <jdashiel@shellworld.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-I actually rather doubt whether a GUI-based basic would ever be useable for 
-blind users.   Far too complex and the multiple windows are unnecessarily 
-confusing, I would have thought.    A single-tasking linear type of language 
-would, I imagine, be far preferable.  
+Howdy, Y'all:
 
-cr
+ I am trying to 'upgrade' from 'console' to GUI.
+I think I have successfully installed XFree86/4.2.1.
+I can 'startx' and I get a monochrome desktop with
+a tiny clock and three windows; 'login', 'xterm', and 'xterm'.
+I can toggle among three resolutions.
 
+I want to run a browser, preferably Netscape
+ (preferably v4.61 if available for linux).
 
-On Sunday 20 October 2002 15:40, Jude DaShiell wrote:
-> The xbasic wouldn't help at all.  The linux gui interface has a long way
-> to go to get accessible to the point where blind users can use it with
-> screen readers.  Even so, I don't ever expect I'll ever use the GUI under
-> linux since I installed linux to specifically use its text interface.
-> Too much windows at work being a work requirement for me and too many
-> problems with that operating system at work and for awhile at home until
-> the penguin ate Bill Gates and the mouse.
->
+What am I missing?
+Where do I go for help to get from where I am to where I want to be?
+
+Regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
