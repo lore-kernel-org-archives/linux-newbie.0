@@ -1,49 +1,59 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Print Queue Disappearing
-Date: Fri, 15 Nov 2002 14:42:07 +0800
+From: ichi@ihug.co.nz
+Subject: Re: FSpecs
+Date: Fri, 15 Nov 2002 20:42:37 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211150642.gAF6g8F02109@philonline.com>
+Message-ID: <3DD55C3D.27BB9BBF@ihug.co.nz>
+References: <MSGID_110=3a20=2f1_50638fc8@linuxnet> <5.1.0.14.1.20021114185333.020ca1d0@celine> <3DD54770.6EFEAF21@ihug.co.nz>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Ray Olszewski wrote:
+> 
+> > > In my case I need the first 8 characters and the
+> > > last 4 (.xxx)
+> >
+> >--------------------------------------------------
+> >example="long-filename.to.munge.txt"
+> >echo ${example%${example#????????}}.${example##*.}
+> >--------------------------------------------------
+> 
+> All the approaches suggested for this exercise assume that one 
+> need not worry about generating a UNIQUE 8.3 filename from the 
+> long filename. Is that assumption appropriate to Ben's real, 
+> underlying problem? Or does it risk overwriting a file with a 
+> later one 
 
-In RH7.3 documents place for printing are being aborted after a certain time 
-and if large documents are being printed printing suddenly stops. When then 
-checking lpq it is empty which is annoying.
+OK, Ray, here's one off the top of my head.  I'm sure it 
+can be improved, but it will do for a start.
+-------------------------------------------------------------
+#!/bin/bash
+from="/home/ichi"  to="/tmp"
+for i in `ls $from` ; do 
+front=${i%.*} ; back=""
+echo $i | grep "\." >/dev/null ; [ $? = 0 ] && back=.${i##*.}
+[ ${#front} -gt 8 ] && front=${front%${front#????????}}
+[ ${#back} -gt 4 ] && back=${back%${back#????}}
+front=`echo $front | tr " ." "__"`
+new=$front$back
+for j in `ls $to` ; do
+  case $j in $new) 
+     echo "$new already exists.  Input new name."
+     read new 
+  esac
+done
+echo $new  ### YOUR OUTPUT ROUTINE GOES HERE ### 
+done
+--------------------------------------------------------------
 
-This is what I get with lpq at 10:03:
-Printer: lpd1@philonline
- Queue: 1 printable job
- Server: pid 1164 active
- Unspooler: pid 1165 active
- Status: IF filter 'mf_wrapper' filter msg - 'foomatic-gswrapper: gs
-'-dBATCH' '-dSAFER' '-dQUIET' '-dNOPAUSE' '-sDEVICE=epsonc' '-r180x180'
-'-sOutputFile=/dev/fd/3' '/dev/fd/0' 3>&1 1>&2' at 10:03:00.384
- Rank   Owner/ID                  Class Job Files                 Size Time
-active pfheiss@philonline+163       A   163 (STDIN)             861984
-10:02:59
+I suppose somebody is going to tell that there is a built-in
+command that does this automatically.  Ah, well.
 
-and later at 11:43
-Printer: lpd1@philonline
- Queue: no printable jobs in queue
- Server: no server active
- Status: job 'pfheiss@philonline+163' error 'aborting operations' at
-11:43:00.386
- Rank   Owner/ID                  Class Job Files                 Size Time
-error  pfheiss@philonline+163       A   163 ERROR: aborting operations
-
-Why would that be? Is there somewhere a clock running to keep documents only 
-so long in the print queue and if so can that be stopped. I found nothing in 
-the HOWTO for printing.
-
-Regards
--- 
-Peter
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
