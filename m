@@ -1,25 +1,45 @@
-From: Arthur Nascimento <tureba@gmail.com>
-Subject: Re: System stops because /var/log not found after moving to new partition
-Date: Sun, 27 Feb 2005 12:45:44 -0300
-Message-ID: <bb529e4050227074525bfadeb@mail.gmail.com>
-References: <5.1.0.14.1.20050226185112.0c4db978@celine>
-	 <000201c51c84$ba33e0b0$0db3fea9@kath.state.gov>
-Reply-To: Arthur Nascimento <tureba@gmail.com>
+From: Ulrich =?ISO-8859-1?Q?F=FCrst?= <heimwill@compuserve.de>
+Subject: Re: BroadBand Connection
+Date: Sun, 27 Feb 2005 17:26:27 +0100
+Message-ID: <20050227172627.71add6a4@sarge>
+References: <20050227044853.64B553AF0C@heisspf>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <000201c51c84$ba33e0b0$0db3fea9@kath.state.gov>
+In-Reply-To: <20050227044853.64B553AF0C@heisspf>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: bhamal@wlink.com.np, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi
-Maybe you could try not to use symlinks for those folders. Keep them
-as real folders and use 'mount --bind /var /mnt/hda5/var' instead
-right after hda5 is mounted. Make similar commands for the other
-folders and partitions.
-I'm not sure it will work, but it is worth the shot.
-Good luck!
+"Peter H." <heisspf@skyinet.net> wrote: 
+> On the enclosed floppy in the package is a driver for Linux
+> cnpro2~1.gz
+> 
+> Where do I copy that driver to on my HD 
+
+I'd copy it to /usr/local/src/
+there upack it and cd into the new directory. Then compile it. But
+isnt't there a README nearby the cnpro2~1.gz file?
+
+> and what in the kernel will I
+> have to do to make things work for a broadband connection using make
+> xconfig.
+> 
+There's a driver with the kernel, I guess:
+on:
+http://www.linuxquestions.org/questions/showthread.php?s=&postid=857504#post857504
+There "maxut" writes:
+> with cnet pro200 ethernet. module for cnet pro 200 is called "dmfe"
+it's in the directory of your kernel source in (at least for the
+kernel 2.6.8.)
+/Documentation/networking/dmfe.txt
+./drivers/net/tulip/dmfe.c
+
+Just do a
+$ find ./ -iname dmfe*
+in your kernel source directory to find out for your kernel.
+
+Ulrich
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
