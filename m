@@ -1,33 +1,35 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Fetchpop
-Date: Sun, 20 Jul 2003 12:30:35 +0800
+From: Robin Doer <robin@robind.de>
+Subject: Re: bash_logout -> KDE
+Date: Sun, 20 Jul 2003 13:44:34 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030720043040.5B44610423@heisspf>
-References: <200307200154.h6K1ruph012360@pyxis.wanadoo.be>
+Message-ID: <200307201344.16825.robin@robind.de>
+References: <1058650465.1955.3.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "20 Jul 2003 00:00:00." 
- <200307200154.h6K1ruph012360@pyxis.wanadoo.be>
+In-Reply-To: <1058650465.1955.3.camel@localhost.localdomain>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>
-Cc: linux-newbie@vger.kernel.org
+To: ramzez <r4mz3z@yahoo.es>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Thanks Heimo,
+Hello!
 
-that was interesting. So FetchPop is to blame for conking-out on the LAST 
-command. I can't see a configuration setting for it and I do not know if the 
-program is still maintained. The given website is not reachable.
+Am Samstag, 19. Juli 2003 21:37 schrieb ramzez:
+> Hi friends...
+>
+>   How do I can always execute some script just before logout from any
+> KDE session (just like .bash_logout in text mode)?
+>
+> thanks
 
-The mail fetching programs such as poppy, fetchmail or getmail do not have 
-this problem.
+Well, It depends, like so often, on the display manager you are using.
+For example xdm supports a Xreset-script which runs after terminating an 
+user-session. Check the xdm-man page for more detailed information (section 
+RESET PROGRAM).
 
-Regards
-
--- 
-Peter
-
+So long,
+Robin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
