@@ -1,55 +1,69 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Extract images from zipped .eve archives
-Date: Fri, 29 Nov 2002 08:36:39 -0800
+From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
+Subject: Re: Samba mount not as root
+Date: Fri, 29 Nov 2002 11:39:17 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021129083149.02134d90@celine>
-References: <200211291406.gATE6GQ29554@hartford-hwp.com>
+Message-ID: <Pine.LNX.4.50.0211291122190.17955-100000@filesrv1.baby-dragons.com>
+References: <Pine.LNX.4.33.0211290958410.16324-100000@router.windsormachine.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211291406.gATE6GQ29554@hartford-hwp.com>
+In-Reply-To: <Pine.LNX.4.33.0211290958410.16324-100000@router.windsormachine.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Mike Dresser <mdresser_l@windsormachine.com>
+Cc: linux-newbie@vger.kernel.org
 
-I had to work around the bogus "To:     linux-newbie@hartford-hwp.com" line 
-yet again.
 
-At 09:06 AM 11/29/02 -0500, Haines Brown wrote:
->I have a set of ZIP files (Windows) that contain many small B&W
->drawings that I would like extract under Linux.
+	Hello Mike ,
+
+On Fri, 29 Nov 2002, Mike Dresser wrote:
+> On Fri, 29 Nov 2002, Mike Dresser wrote:
+> > On Fri, 29 Nov 2002, Paul Kraus wrote:
+> > > Have written some scripts that perform network backups. However I am
+> > > only able to run them as root. How can give mount permissions to another
+> > > user.
+> > Just a side note, have you seen smbtar?  Might be easier than mounting a
+> > directory and copying it, and then unmounting it.
+> > mdresser@monitor:~$ smbmount //mike/c test
+	Hmmm ,  My smbmount tool screams at me to use ...  This is with
+	version 2.2.7 .  Which is highly recomended due to a Security
+	issue .  Don't know how far back in versions the issue goes tho .
+---qoute.
+This command is designed to be run from within /bin/mount by giving
+the option '-t smbfs'. For example:
+  mount -t smbfs -o username=tridge,password=foobar //fjall/test /data/test
+---
+	More below .
+
+> > Password:
+> > mdresser@monitor:~$ df /home/mdresser/test
+> > Filesystem           1k-blocks      Used Available Use% Mounted on
+> > //mike/c              15498752   7959040   7539712  52% /home/mdresser/test
 >
->The unzip utility does not extract the files, but simply lists the
->contents of the ZIP files.
-
-It should extract them as its default behavior. How exactly are you running 
-unzip and what exactly is it saying?
-
->Each ZIP file has several archive files
->with an .eve extension, and these in turn hold collections of image
->files.
+> mdresser@monitor:~$ umount /home/mdresser/test
+> umount: //mike/c: not found
+> umount: /home/mdresser/test: must be superuser to umount
 >
->Why can't unzip extract the .eve files? What are .eve files? They may
->be proprietary executables, but if not, I could not find any utility
->to extract them into a format known to Linux.
+> Humm.  This is very interesting :)
+>
+> Bug in my mount program, I'd say.  Either shouldn't let me mount, or
+> should let me unmount.
+	The below is what I get when attempting to use it thru 'mount' as
+	a plain user . I also agree with you it's a bug in the tool being
+	used .  I have not even attempted to allow users to use 'mount' .
+	As with the best of local controls it can still be a dangerous
+	functionality .  Hth ,  JimL
 
-Never having heard of them, I tried a Google search. The only meaningful 
-match I found was here --
+~ $ mount -t smbfs -o username=james //jimmysplace/home ~/mount-here
+mount -t smbfs -o username=james //jimmysplace/home
+mount: only root can do that
 
-         http://www.techtutorials.com/fileformats.shtml
-
--- which says "EVE - TTMaker Event Scheduling File.".
-
-If that's not what you have, why not tell us something about the source of 
-the file in question?
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+-- 
+       +------------------------------------------------------------------+
+       | James   W.   Laferriere | System    Techniques | Give me VMS     |
+       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
+       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
+       +------------------------------------------------------------------+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
