@@ -1,34 +1,33 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: PPP in Slackware
-Date: Sun, 6 Apr 2003 09:56:10 +0000
+Subject: Re: Specify gcc version during make
+Date: Sun, 6 Apr 2003 09:58:17 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03040609561002.02940@unix.pa3gcu>
-References: <200304040759.h347xf702179@philonline.com>
+Message-ID: <03040609581703.02940@unix.pa3gcu>
+References: <720FB032F37C0D45A11085D881B03368A2B80B@MBXSRV24.stu.nus.edu.sg>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304040759.h347xf702179@philonline.com>
+In-Reply-To: <720FB032F37C0D45A11085D881B03368A2B80B@MBXSRV24.stu.nus.edu.sg>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org
+To: Eng Se-Hsieng <g0202512@nus.edu.sg>, linux-newbie@vger.kernel.org
 
-On Friday 04 April 2003 07:59, Peter wrote:
-> Richard if you think only Dutchmen are stubborn you are mistaken. ;-)
-
-Subborn,! well i suppose we all have our views and sometimes make them known.
-
+On Saturday 05 April 2003 09:35, Eng Se-Hsieng wrote:
+> Dear all,
 >
-> I now reinstalled SW8.0 and as I suspected kppp connected to the different
-> ISPs as I know it would since the time I had a SUSE 5.1 box, provided you
-> do not run pppsetup first. To make sure now not to make this mistake again
-> I deleted that program first thing. Gnome-ppp works just as well now.
+> I am running gcc version 2.96 and need to install gcc version 3.2.
+>
+> After this installation, how may I specify in make bzImage which
+> compiler version to use?
 
-I dont think a reinstall was nessasary at all, all you needed to do was 
-remove the pppsetup files in /etc/ppp .
+/usr/bin/gcc is a symbolic link to /usr/bin/gcc-version.
+I would imagen having multiple compilers is not such a handy thing to have.
 
-Anyway i am glad to hear your problems are now somewhat smaller.
+> Thank you.
+>
+> Regards,
+> Se-Hsieng
 
 
 -- 
