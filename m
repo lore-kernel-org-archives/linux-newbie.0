@@ -1,34 +1,37 @@
-From: joy <gracecott@sancharnet.in>
-Subject: mouse not writing to device file.....
-Date: Thu, 12 Feb 2004 09:15:28 +0530
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: device or resource busy error message - what to do?
+Date: Thu, 12 Feb 2004 06:43:42 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <402AF6D8.4080702@sancharnet.in>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <200402120643.42201.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040211105425.01fccef8@celine> <Pine.LNX.4.58.0402111417120.13970@debian-emach>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.58.0402111417120.13970@debian-emach>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: James Miller <jamtat@mailsnare.net>, linux-newbie@vger.kernel.org
 
-Hi,
+On Wednesday 11 February 2004 21:26, James Miller wrote:
 
-I just had this problem after I reinstalled woody on my system. 
-previously, I had the same problem with my mouse not working on startx
-but I managed to correct it though it slipped my mind somehow. anyways, 
-my XF86Config file says my input devices are /dev/psaux and /dev/input/mice.
-However if I cat either of the file and start clicking away, there is no 
-change in the file (I tried this on a SW Live distro and it worked there.
-so if my mouse is not writing to either of the two device files, what 
-should I do? I also checked the other /dev/input/ mouse files and they 
-say no device..
+> Looks like I'll have to save that analysis for some future occassion.
 
-Thanks a lot in advance,
-Joy.M.M
+Why not start vmware with the floppy disconneted, do that in the confugration 
+settings of the guest system. You may want to do that with your cdrom as well 
+as the same thing will happen when you want to use the cdrom on the host 
+system.
 
-> --------------------------------------------------------------------------------------------------------
-> A life without purpose is like a bird that never learnt to fly.......
-> I am the bird that regularly flies Lufthansa
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 
 
 -
