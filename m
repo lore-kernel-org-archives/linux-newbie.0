@@ -1,54 +1,32 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: 3 button optical mouse
-Date: Tue, 30 Mar 2004 07:40:38 +0100
+Subject: Re: Reinstallation
+Date: Tue, 30 Mar 2004 07:48:11 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403300840.38666.pa3gcu@zeelandnet.nl>
-References: <20040329231925.GC12375@panix.com>
+Message-ID: <200403300848.11683.pa3gcu@zeelandnet.nl>
+References: <200403301320.10936.wheds8@ms66.hinet.net>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040329231925.GC12375@panix.com>
+In-Reply-To: <200403301320.10936.wheds8@ms66.hinet.net>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Rei Shinozuka <shino@panix.com>, Newbie Linux Users <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
 
-On Tuesday 30 March 2004 01:19, Rei Shinozuka wrote:
-> is it possible to get a 3-button optical mouse to replace it? =A0all =
-of
-> the mice i can find have scroll wheels and i have no idea if they
-> work with linux, and they seem like they would be uncomfortable as
-> a 2nd mouse button. =A0advice?
+On Tuesday 30 March 2004 07:44, S. Barret Dolph wrote:
+> I tried installing Source Mage with custom kernels. I don't have the time
+> to figure this out now and would like to remove everything and start over
+> with Mandrake. (Whose evils I know how to cure.) What is the easiest way to
+> do this. I have absolutely no data on the hard drive.
 
-If you simply want a 3 button optical no problem, just plug it in and r=
-estart=20
-gpm.
+Simply tell mandrake to use all the disk or the use the partitions which are 
+in use with the old install.
 
-Wheel mouse work as well no problem, however you would need to reconfig=
-ure=20
-your system, possably using 'mouseconfig' depending on which system you=
- have=20
-of course.
-And secondly.
-You would also be better of editing /etc/X11/XF86Config(-4) by hand, th=
-en=20
-needed text is;
+> Cordially,
+> S. Barret Dolph
 
-Section "InputDevice"
-        Identifier  "Mouse1"
-        Driver      "mouse"
-        Option       "Corepointer"
-        Option      "Device" "/dev/psaux"
-        Option      "Protocol" "IMPS/2"
-        Option       "Buttons" "5"
-        Option      "Emulate3Buttons" "off"
-        Option      "ZAxisMapping" "4 5"
-EndSection
-
-That will make X use the scroll wheel.
-
---=20
+-- 
 If the Linux community is a bunch of theives because they
 try to imitate windows programs, then the Windows community
 is built on organized crime.
@@ -60,8 +38,7 @@ http://people.zeelandnet.nl/pa3gcu/
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
