@@ -1,8 +1,8 @@
-From: "Ray Olszewski" <lists@tcob1.net>
-Subject: Re: (fwd) .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 09:58:41 +000
+From: "Haines Brown" <lists@tcob1.net>
+Subject: gdict won't run
+Date: Wednesday, 14 Aug 2002 22:25:00 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020814_222500__f01bb26a@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,68 +13,19 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-If you have not seen your mail on the list, then almost certainly something 
-is wrong at your end. This is the *third* time I have seen this message 
-this morning.
+When I upgraded to RH 7.3, I lost gdict. I'd like to add it as an
+applet to my panel. But when I try, nothing except a default icon on
+the panel (black square with gnome foot).
 
-Are you sure you are subscribed?
+whereis tells me that gdict is at /usr/bin/gdict. When root tries to
+execute it, a pop up window says that dcit seems to have died
+unexpectedly. /var/message says nothing. How do I debug?
 
-Might your MTA or MUA be filtering out messages that are From: your own 
-address?
+rmp verify says that gdict-0.6.1 has no problems, and I uninstalled
+and reinstalled the rpm.
 
-At 05:34 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Sorry, I haven't seen my mail get to the list. So here goes it again.
->
->----- Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
->
->Hi,
->
->I have some stupid questions.
->
->What makes the difference between .o and .so files? What is their use? Is it
->just a naming convention?
+Haines Brown
 
-.o is an object file. It represents the intermediate step in the 
-compile-and-link process for a program. .so is a shared object file (i.e., 
-a library); their linking (at runtime) is managed by ld.so .
-
-I'm not sure if the naming differences are actually required or if the use 
-of .so is a naming convention (not "juet" a naming convention, though, 
-since if it is one, it is well established, hence important).
-
->When I want to link libraries to a program I am compiling, of what format do
->the libraries have to be?
-
-Depends on how you link. Modern linking is done dynamically (only one copy 
-of the library is loaded into memory and shared by all apps that use it), 
-using .so libraries. Older linking was done statically (each app loaded its 
-own personal copy of the library into memory), using .a libraries.
-
-Of course, you need the appropriate header files in /usr/include to do 
-either of these things. How to get them depends on which Linux distro you 
-use; in Debian, most every library_package_name.deb has a corresponding 
-library_package_name-dev.deb with the needed headers.
-
->I have found out that .a files are archives created with ar. What is that
->for?
-
-It's been so long since I used a .a libraries, I didn't recall how they 
-were created. They are the old-format libraries I referred to above. They 
-are kept around, at least on full-size Linux installs, mainly for legacy 
-reasons. Don't use them unless you have *very* unusual requirements (I 
-can't even think of an example).
-
->Many thanks and my best regards,
->Axel Siebenwirth
-
-
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
 -
 
