@@ -1,47 +1,33 @@
-From: Arthur Othieno <arthurothieno@gmx.net>
-Subject: Re: More on Startup Scripts
-Date: Wed, 18 Sep 2002 20:55:57 +0100
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: File Management
+Date: Wed, 18 Sep 2002 15:20:01 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D88DA4D.80502@gmx.net>
-References: <009101c25f3b$c47471b0$64fea8c0@pkrausxp>
-Reply-To: arthurothieno@gmx.net
+Message-ID: <00c301c25f48$62b94bf0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Well, if for example your default runlevel is 5, then in the /etc/rc5.d 
-directory (in Debian) (or /etc/rc.d/rc5/ in RedHat and RedHat-like 
-systems), you may have a listing like this (this is just an example)
+Obviously software is always better installed from source. This creates
+binaries that are system specific. However this represents the problem
+of software removal. I notice some software by default will install into
+/usr/local then dump everything under one directory (windows style-the
+source install for samba is a good example). You can uses switches to
+put these files in the correct bin lib etc folders. So if you follow the
+standard(usings the systems bin/etc/sbin/man/var folders) how can you
+effectively remove a piece of software without having a list of all the
+files and paths of every app you installed. This is the only drawback to
+Linux I have found. Of course RPMs/dpms are away around this but lets
+omit pre-packaged software.
 
-K12anacron  -> /etc/init.d/anacron
-S02portmap  -> /etc/init.d/portmap
-S11sshd     -> /etc/init.d/sshd
-S43sendmail -> /etc/init.d/sendmail
-
-...note that these are actually _not_ scripts but symbolic links to the 
-actual scripts that reside in /etc/init.d, thus, in the above example, 
-anacron will be killed, the portmapper started, followed by sshd and so 
-on. The numbers XX dictate the order in which services are started/stopped.
-
-Arthur
-
-Paul Kraus wrote:
-
-> I understand that in the runtime folders that the SXXscript stands for
-> startup and the KXXscript stands for kill. What do the XX stand for?
-> 
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
-> 
-
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
