@@ -1,32 +1,24 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: starting a program in the background and terminating it later
-Date: Sun, 29 Dec 2002 23:52:39 +0930
+From: Jude DaShiell <dashielljt@gmpexpress.net>
+Subject: Re: starting a program in the background and terminating it later
+Date: Sun, 29 Dec 2002 13:48:00 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212292352.39723.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <Pine.LNX.4.33.0212291345270.4478-100000@athame.gmpexpress.net>
+References: <200212292352.39723.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212292352.39723.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Cc: linux-newbie@vger.kernel.org
 
-
-Would the means of doing this be dependant on program or is there a simple way 
-I can always use.
-
-I want to write a SysV init script to start/stop the folding@home client 
-program (running within a specific directory and run by the user "folding")
-
-Further information would be useful.
+The at command allows you to specify a time and a program or script to run
+at that time.  at 13:46 script & I think will get done what you need or
+pretty close to it.
 
 -- 
-"Windows has detected that a gnat has farted near your computer. Press any key 
-to reboot." - Simon Oke
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
+Jude <dashielljt(at)gmpexpress-dot-net>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
