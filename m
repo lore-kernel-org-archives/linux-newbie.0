@@ -1,47 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: debugging a Segmentation fault
-Date: Thu, 07 Oct 2004 00:05:00 -0700
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: Re: VM Vs Swap space
+Date: Thu, 7 Oct 2004 10:15:15 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20041007000122.0207f680@celine>
-References: <Pine.LNX.4.44.0410062117530.13932-100000@legolas.personal.
- engin.umich.edu>
+Message-ID: <20041007091515.73785.qmail@web52904.mail.yahoo.com>
+References: <4164A287.4050207@gelm.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0410062117530.13932-100000@legolas.personal.
- engin.umich.edu>
+In-Reply-To: <4164A287.4050207@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: chuck@gelm.net
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-At 02:43 AM 10/7/2004 -0400, Karthik Vishwanath wrote:
->Hello,
->
->I develop a monte-carlo code written in standard C. I recently decided to
->"add features" to the previous stable version and now the code aborts with
->a Segmentation fault. I suspect the code is executing different parts of
->the code before crashing, on different runs (and therefore crashing at
->different points?).  There is no core dumped either.
->
->Can I discover which source-line caused the program to abort (or get
->information about which function it was, etc.), or trap the signal
->within the code and print out details -- how?
->
->Please excuse me if this post is off-topic for this list -- can some one
->please point me to a list where such questions are not, otherwise/as well?
+how will u differentiate virtual memory and swap area
 
-The usual tools for debugging Linux/Unix C and C++ programs are gdb and 
-strace. Do you need more specific direction than that? I haven't used gdb 
-all the much myself, bu I have used strace to track down segfaults in the 
-past ... messy output, hard to read, but tells you just about everything 
-the program is doing.
+thanks
 
-You do want to compile the program with debugging support in ... basically, 
-that means maintaining the symbol table (not "stripping" the executable), 
-which I believe is the default behavior of gcc anyway.
+ankit
+ --- chuck gelm <chuck@gelm.net> wrote: 
+> Ankit Jain wrote:
+> 
+> >hi
+> >
+> >if somebody can tell me that is this correct?
+> >
+> >(1)can i say that swap area created by linux is
+> nothign
+> >but virtual memory. (2)is it correct to use the
+> term
+> >interchangeably
+> >
+> >thanks
+> >
+> >ankit
+> >  
+> >
+> (1) A swap file or swap partition can be used as
+> virtual memory.
+> (2) I am not sure.  Why one would wish to use 'swap
+> area'
+> interchangeably with 'virtual memory'.
+> :-|
+> Chuck
+> 
+> 
+>  
 
-
-
+________________________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
