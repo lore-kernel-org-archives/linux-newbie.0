@@ -1,44 +1,73 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: 'nobody' is using my system !!!
-Date: Thu, 26 Sep 2002 07:58:46 -0700
+Subject: Re: DNS Questions
+Date: Thu, 26 Sep 2002 08:11:59 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020926075119.0261a580@celine>
-References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp>
- <3D921A64.7DBA9BC6@gelm.net>
- <200209251722.26680.wfoo@linuxvoodoo.com>
+Message-ID: <5.1.0.14.1.20020926075928.025fbd40@celine>
+References: <000a01c26567$557ac020$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D92DBFD.5D95F544@gelm.net>
+In-Reply-To: <000a01c26567$557ac020$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 06:05 AM 9/26/02 -0400, Chuck Gelm wrote:
->G'day, Y'all:
->
->  I awoke at 04:40 AM today when the internal speaker of my
->Win2k boxen started sounding a tone.  While I was up shutting
->it down, I noticed the HD activity lamp on my linux firewall
->was indicating activity.  I selected the console window where
->I leave 'top' running.  I found that 'find' and 'sort' were
->being run by 'nobody'.  I've installed no 'at' or 'cron' jobs.
->It is a Slackware v8.0, kernel 2.2.19, custom compile system.
->
->'who' showed my console logins only.
->
->Why was 'find' and 'sort' running at 4:40 AM ?
+At 10:16 AM 9/26/02 -0400, Paul Kraus wrote:
+>My internal network is connected to a router/firewall all address are
+>down with Nat. So no machines on my network have an outside ip. Our dns
+>is supplied by our ISP and we have 2 others we use that are supplied by
+>our web site hosting company these dns servers are not apart of our
+>internal network. If I wanted to setup a dns server on the internal
+>network what would be the benefit? Why would I want to do this?
 
-One can only guess. My guess would be that even though *you* didn't install 
-any cron jobs, the install itself did so.
+1. The same DNS server can resolve local (on-LAN) FQNs and Internet FQNs.
 
-The obvious candidate is an update of the locate database. See if 
-"updatedb" is also running at this time. See if there is  a cron script 
-that runs either find or updatedb or both (on my systems, it is 
-/etc/cron.daily/find, but I've no idea how standard this location is).
+2. Because the DNS server will cache results, frequently accessed FQNs will 
+resolve both faster and without using part of your external bandwidth.
 
-If that is not it, I'd look through the scripts in the /etc/cron.* 
-directories, or their analogs on our system, for a candidate.
+3. On-LAN communication is faster than off-LAN communication, so resolution 
+will be faster.
+
+(I'm assuming in this reply that you do not need a DNS server that is 
+authoritative, off LAN, for your domain. You can do that too, but it 
+involves a bit more work.)
+
+>I have
+>been reading a lot of books on Linux and all of them recommend running a
+>dns server. How would this server get/maintain a list of all the dns
+>records that our current dns servers have.
+
+Depends on how you set it up. Any user-level DNS server needs to know where 
+to go to get info on names. There are three asnwers to this question:
+
+1. It is itself authoritative for the name. In your case, this would apply 
+only to on-LAN resolution.
+
+2. If it does not already know the answer, it queries another DNS server 
+designated as a "forwarder". This could be your ISP's DNS server or the 
+Web-hoster's DNS servers.
+
+3. If it does not already know the answer, it queries the root DNS servers 
+(the ones that are authoritative for TLDs -- .com, .org, the country TLDs, 
+and so on). They refer it to DNS servers authoritative for the next name 
+level up, and so on, until the server gets an answer for the actual FQN.
+
+The standard for supplying a DNS record includes an expiration field in the 
+record. The normal behavior for DNS servers is to cache records until 
+either they reach their expiration time or the system runs out of cache 
+space. That's how they "maintain" the lists.
+
+>Is this what they even mean
+>or do they mean just to cover the internal machines. If that's the case
+>why bother. Any insights are greatly appreciated.
+
+
+Setting up a DNS server to cover *just* the LAN is possible, but it 
+introduces some problems for resolving off-LAN names. A combined (on- and 
+off-LAN) DNS server lets you skip having each on-LAN host contain 
+an/etc/hosts (or equivalent) file. (I believe an all-Windows LAN can avoid 
+this necessity because its SMB server acts as a sort of DNS server for the 
+LAN, but I really don't know the details of this.)
 
 
 --
