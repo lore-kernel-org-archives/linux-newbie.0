@@ -1,58 +1,53 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: switching to debian (... and installing the NVIDIA
+Subject: Re: switching to debian (... and installing the NVIDIA 
   GeForce4)
-Date: Thu, 25 Mar 2004 08:28:23 -0800
+Date: Thu, 25 Mar 2004 08:40:18 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040325082305.01f8d7d0@celine>
-References: <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.engin.umich.edu>
- <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.engin.umich.edu> <200403251715.12023.pa3gcu@zeelandnet.nl>
+Message-ID: <5.1.0.14.1.20040325081101.01f76d88@celine>
+References: <5.1.0.14.1.20040325072647.01f7bde8@celine>
+ <5.1.0.14.1.20040325072647.01f7bde8@celine> <200403251707.32557.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403251715.12023.pa3gcu@zeelandnet.nl>
-References: <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.engin.umich.edu>
- <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.engin.umich.edu>
+In-Reply-To: <200403251707.32557.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040325072647.01f7bde8@celine>
+ <5.1.0.14.1.20040325072647.01f7bde8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 05:15 PM 3/25/2004 +0100, pa3gcu wrote:
->On Thursday 25 March 2004 15:46, Karthik Vishwanath wrote:
-> > I installed the 2.4.18 source by 'apt-get install kernel-source-2.4.18',
-> > extracted the source and made a symbolic /usr/src/linux ->
-> > /usr/src/kernel-source-2.4.18/, and followed all the instructions below
-> > as is.
+At 05:07 PM 3/25/2004 +0100, pa3gcu wrote:
+>On Thursday 25 March 2004 16:42, Ray Olszewski wrote:
+> > In fact, it should read
 > >
-> > sh NVIDIA-Linux-x86-1.0-5336-pkg1.run quits with an error.
+> >          EXTRAVERSION =-k7
 > >
-> > # cat /var/log/nvidia-installer.log | grep ^ERROR
-> > ERROR: Unable to determine the NVIDIA kernel module filename.
+> > (without the space before the hyphen).
 >
+>No sorry Ray its not a typo, its how it should be a as matter of fact,
+>It possably works without a white space but AFAIK white spaces are ignored.
 >
->No No No, /usr/src/kernel-source-2.4.18/ is NOT what you want i can assure
->you.
->
->When you untarred the source a directory called linux-2.4.18 should have been
->created you then need to create a symlink to "linux" for my example
->underneat, so lets start again.
+>If for example you look into any Topdir Makefile you will note that lines 1,
+>2, and 3 have white spaces after the =  and the 4th line should comply as
+>well or so i was once told.
 
-Actually, Richard, this is just a Debian naming convention that you are 
-unfamiliar with. Here, for example, is a relevant portion of my /usr/src 
-directory:
+Have you tried it, though? I recall actually having that problem once, 
+though quite a few years ago (that is, back whenever it was I first used 
+the EXTRAVERSION setting with my kernels). The prior three lines did get 
+any spaces cleaned out, but as I recall, EXTRAVERSION was handled differently.
 
-autovcr@kuryakin:~$ ls -l /usr/src
-[...]
-drwxr-xr-x   15 root     root         4096 Mar  4 10:59 kernel-source-2.4.19
--rw-r--r--    1 root     root     25652223 Dec  5 15:59 
-kernel-source-2.4.19.tar.bz2
-lrwxrwxrwx    1 root     src            20 Aug 19  2002 linux -> 
-kernel-source-2.4.19
+I specifically saw the problem as an inability to load modules, because the 
+embedded space in the modules directory didn't work with the Debian init 
+script that loads modules.
 
-In Debian when you un'tar (for example) kernel-source-2.4.19.tar.bz2 you 
-get a directory tree named kernel-source-2.4.19, NOT one named linux-2.4.19.
+It's been a long time since I saw this problem, though, and it is certainly 
+possible that my memory is wrong, or that Makefile processing has changed 
+along the way ... and I'm unwilling to take the time to compile a kernel 
+just to see what happens. I did look, though, and confirmed that all my 
+kernel Makefile entries for EXTRAVERSION follow the form I suggest.
 
-I'm so used to this convention that I'd quite forgotten that other distros 
-don't follow it.
+In any case, I don't actually know if this has anything to do with 
+Karthik's problem, whichever of us is correct.
 
 
 
