@@ -1,45 +1,34 @@
-From: Peter Gantner <peter.gantner@stud.uni-graz.at>
-Subject: Re: Directories in sync
-Date: Mon, 1 Mar 2004 20:46:02 +0100 (CET)
+From: Peter <peter@skyinet.net>
+Subject: user/e-mail name
+Date: Wed, 03 Mar 2004 15:48:55 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0403012041040.39876@scourge.crownest.net>
-References: <Pine.LNX.4.56.0403011531290.12065@pluton.chilepac.com>
+Message-ID: <20040303074855.B8A553ACF@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0403011531290.12065@pluton.chilepac.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Rodrigo Gesswein <rodri@chilesat.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Monday, the 1st of March, Rodrigo Gesswein thusly spake:
+Hi,
 
-> Hi!
-> 
->    Does anybody know a good tool to keep 2 or more directories (local or
-> remote) full synchronized ?
-> 
->    Thank you in advance..
-> 
-> Rodrigo...
+In Slackware9.1 my user name is peter and my e-mail address is heisspf@isp.net
 
-rsync [1] is really good at that.
-It only transfers the differences necessary, and features other nifty 
-things like transfer over ssh and on-the-fly compression.
+Apparently mail I send arrives From: peter@isp.net. Therefore, when the 
+recipient makes a "reply" the mail bounces since naturally peter@isp.net is 
+not found.
 
-Unison [2] seems to be popular too because of easy cross-platform 
-syncing.
+My mail program is exmh.
 
-hth,
-	Peter
+Can that be corrected w/o changing my user name?
 
-[1] http://rsync.samba.org
-[2] http://www.cis.upenn.edu/~bcpierce/unison/
+Thanks & regards
 
- -- 
-"I do not think the way you think I think." 
-    -- Kai, last of the Brunnen G
+-- 
+Peter
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
