@@ -1,28 +1,44 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Repartitioning
-Date: Thu, 22 Aug 2002 15:54:14 +0800
+From: cr <cr@orcon.net.nz>
+Subject: Can't see my drives
+Date: Thu, 22 Aug 2002 23:05:03 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208220754.g7M7sEY02409@philonline.com>
+Message-ID: <20020822093900.3BBF650F9D@smtp.orcon.net.nz>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+I'm having trouble 'seeing' the floppy drive or the CD-ROM.
 
-I am contempleting to repartition my slave HD hdd on which I run RH7.2 since 
-my /home directory is becoming tied now that my daughter got into it and I 
-have plenty of extra space on /.
+I'm running RedHat 7.2, in all previous versions I had no trouble reading the 
+floppy or CD-ROM, for example just by going    cd /mnt/cdrom       ls
 
-I will use the program parted and do the repartitioning from my master HD hda 
-where my RH6.2 resides. Will this be a correct way of doing it?
+But now this doesn't work any more.   Doesn't matter whether I'm 'me' or 
+su root, 
+cd /mnt/cdrom  and   cd /mnt/floppy   apparently work, but 
+a following   ls    won't show the files.
 
-Thanks & regards
--- 
-Peter
+mdir   usually seems to work, though.
 
+Nautilus  and Konqueror  show /mnt/cdrom and /mnt/floppy  but not the 
+contents.     Konq in superuser mode shows a 'CDRom device' but then
+gives a message  
+"Could not mount device
+The reported error was
+mount:  /dev/cdrom:  unknown device"
+
+On the other hand,  /mnt/dosC  works fine.
+
+/etc/fstab says:
+/dev/fd0          /mnt/floppy      auto         noauto,owner,kudzu    0 0
+/dev/cdrom      /mnt/cdrom      iso9660    noauto,owner,kudzu,ro   0 0
+
+Any suggestions of what might be wrong?
+
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
