@@ -1,71 +1,78 @@
-From: Richard Dawson <rcdawson@att.net>
-Subject: another round of questions regarding modem
-Date: Sun, 08 Jun 2003 14:44:46 -0700
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: another round of questions regarding modem
+Date: Sun, 08 Jun 2003 15:25:58 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EE3AE4D.4090003@att.net>
+Message-ID: <5.1.0.14.1.20030608151145.01ebe180@celine>
+References: <3EE3AE4D.4090003@att.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3EE3AE4D.4090003@att.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Distribution:  Linux 9.1
+OK. Your dissatisfactions with the quality of USR's documentation are not 
+really a Linux problem. SO I'll limit myself to the part of your message 
+that is.
 
-System:  ALR Optima Pentium MMX, 116 MHz.   (Why bother?  Hey, with free 
-software this machine is worth something!  Besides, I'm trying to learn 
-here.)
+Assuming you do manage to get your modem configured to look like it is on 
+the right IRQ and IObase for the traditional COM2 ...I'm actually a bit 
+surprised to see that Mandrake does something to fiddle with the 
+conventional settings for /dev/ttyS1. But ...
 
-Modem  US Robotics V.everything internal , ISA board.  (Yup, a vastly 
-over-priced Cadillac. I bought it several years ago when I was 
-experiencing slow connections hoping it would help.  Seemed to help.) 
- The modem is plug-and-play or can be configured for specific  serial 
-port/interrupt.
+At 02:44 PM 6/8/2003 -0700, Richard Dawson wrote:
 
-Mandrake 9.1/s installation and hardware configuration tools don't probe 
-the ISA bus, so neither the sound board nor the modem were detected. 
- After a lot of googling I found that I needed to use sndconfig to 
-configure the ISA sound board.  Successful!  That leaves the modem.
+>Something that is complicated by the fact that I have to use setserial 
+>each time I boot in order to have Linux use the "standard" IRQ for 
+>ttyS1.  (ttyS0 is associated with IRQ3 as one might expect).
 
-Of course  sndconfig didn't find the modem or help with its 
-configuration.  I'm a little slow, but it finally dawned on me that 
-perhaps if I simply (1) configured the modem to a specific port and (2) 
-told kppp that the device was at that port I would be done.
+This "one" would expect no such thing. ttyS0 is supposed to be the Linux 
+analog to COM1, which means it should have these settings:
 
-The modem can be configured for com1, com2, com3, or com 4 
-(ttyS0, ttyS1, ttyS2, ttyS3) with the customary interrupts (4,3,4,3).  I 
-disabled Com 2 in the system BIOS, configured the modem for com2 (ttS1) 
-with interrupt 3.  I then checked the serial port (ttyS1) with setserial 
-and found that it was configured for interrupt 5!  Strange. 
-(Interestingly enough, this is the interrupt used by the sound board.) 
- Using setserial, I forced the interrupt to be interrupt 3.  Finally, 
-using the madrake configuration tool, I told kppp to use /dev/ttyS1 as 
-the device.  With all this done, the configuration tool offers me an 
-opprotunity to query the modem.  After a long pause it indicates there 
-is no response from the modem.  (Before running setserial, with linux 
-associating IRQ 5 with ttyS1, the response is "modem busy."  Recall, IRQ 
-5 is used by the sound card.)
+         kuryakin:~# setserial /dev/ttyS0
+         /dev/ttyS0, UART: 16550A, Port: 0x03f8, IRQ: 4
 
-So there is, of course, another wrinkle to this.  The modem manual's 
-depiction of the jumpers for setting com ports and IRQs is not consisten 
-with the board layout!  The date on the manual is several years earlier 
-than the date on the modem itself!  For the outrageous price of the 
-modem it should at least have an up-to-date manual, but of course it 
-doesn't.  The manual posted on US Robotics web site is even older, and 
-for the external modem only!  This reduces me to trying random 
-combinations of jumpers to try and get a response.
+Similarly, ttyS1 is the analog to COM2, with these default settings:
 
-Something that is complicated by the fact that I have to use setserial 
-each time I boot in order to have Linux use the "standard" IRQ for 
-ttyS1.  (ttyS0 is associated with IRQ3 as one might expect).
+         kuryakin:~# setserial /dev/ttyS1
+         /dev/ttyS1, UART: 16550A, Port: 0x02f8, IRQ: 3
 
-So my questions:
-(1)  Am I missing something?  Am I barking up entirely the wrong tree?
-(2)  Where can I put a setserial command in order that Linux boots up 
-with IRQ 4 associated with ttyS1?
-(3)  Has anyone else experienced this confusion with the modem that I am 
-using?  (I have submitted a rquest for ino to US Robotics)
-(4)  Anything else relevant that might help.
+(The UART entry is not part of the default; the presence of a UART entry 
+normally means that the kernel has actually found a serial device at that 
+IRQ/IObase location.)
+
+>So my questions:
+>(1)  Am I missing something?  Am I barking up entirely the wrong tree?
+
+If you are fiddling blindly with jumpers, it is likely that you are 
+changing the IObase assignments in unpredictable ways. Both IRQ -AND- 
+IObase have to match what setserial expects to access a serial device.
+
+>(2)  Where can I put a setserial command in order that Linux boots up with 
+>IRQ 4 associated with ttyS1?
+
+In an init script. On my Debian systems, I add this sort of local stuff to
+         /etc/init.d/rclocal
+
+and make a symlink pointing to that from
+         /etc/rc2.d/S99zlocal
+
+Init-directory setups vary a bit by distro, so you will have to check for 
+the exact locations Mandrake uses to correspond to these.
+
+(BTW, I assume you meant IRQ 3, not "IRQ 4", in the question.)
+
+>(3)  Has anyone else experienced this confusion with the modem that I am 
+>using?  (I have submitted a rquest for ino to US Robotics)
+>(4)  Anything else relevant that might help.
+
+I don't know your mobo, but if it has pci slots as well as isa alots, you 
+might check the BIOS to make sure that IRQ 3 is being made available to 
+isa-slot devices. Just disabling the on-mobo COM2 (IRQ3) serial port might 
+not be enough to accomplish this.
+
+
 
 
 
