@@ -1,30 +1,38 @@
 From: Simon <simon@highlyillogical.org>
 Subject: Re: Sharing bandwidth across multiple internet connections?
-Date: Thu, 17 Oct 2002 16:16:43 +0100
+Date: Thu, 17 Oct 2002 19:37:11 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210171616.43225.simon@highlyillogical.org>
-References: <CPIMSSMTPU04OlbcrYP000007f9@cpimssmtpu04.email.msn.com>
+Message-ID: <200210171937.11074.simon@highlyillogical.org>
+References: <200210171454.42606.simon@highlyillogical.org> <3DAED964.6030901@xts.ro>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <CPIMSSMTPU04OlbcrYP000007f9@cpimssmtpu04.email.msn.com>
+In-Reply-To: <3DAED964.6030901@xts.ro>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Thursday 17 October 2002 15:21, Alan Womack wrote:
-> There basically has to be a layer
-> someplace that reassembles the packets from two different sources.
+On Thursday 17 October 2002 16:38, Dragos LUNGU wrote:
+> http://www.lartc.org/howto/lartc.rpdb.multiple-links.html
 
-I had a look, but couldn't see any software that could do this. It would be a 
-'neat' solution though, as it would enable file downloads at 1.5Mb/s, as 
-opposed to the routing method. But I couldn't understand how this would work 
-without something clever going on at the other end of the connection.
+Okay, I'm trying to implement this atm... But I'm slightly confused about one 
+thing...
 
-Otherwise I could end up playing a game of quake, and some of my packets would 
-start coming from a different IP? I can't imagine a quake server liking that. 
-(For example)
+The document says:
+>>>
+Let us first set some symbolical names. Let $IF1 be the name of the first 
+interface (if1 in the picture above) and $IF2 the name of the second 
+interface. Then let $IP1 be the IP address associated with $IF1 and $IP2 the 
+IP address associated with $IF2. Next, let $P1 be the IP address of the 
+gateway at Provider 1, and $P2 the IP address of the gateway at provider 2. 
+Finally, let $P1_NET be the IP network $P1 is in, and $P2_NET the IP network 
+$P2 is in. 
+<<<
 
+How exactly do I determine $P1_NET and $P2_NET... I'm slightly confused about 
+what they are supposed to be.
+
+Thanks,
 Simon
 
 
