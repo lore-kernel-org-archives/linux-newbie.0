@@ -1,41 +1,104 @@
-From: Michael Scottaline <nbhs2@i-2000.com>
-Subject: Re: screen Refresh problem
-Date: Wed, 5 Jan 2005 04:34:30 -0500
-Message-ID: <20050105043430.0c568df5@localhost.localdomain>
-References: <652016d305010421307f245385@mail.gmail.com>
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: Re: retrieval
+Date: Fri, 7 Jan 2005 00:58:06 -0800 (PST)
+Message-ID: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
+References: <016001c4eef6$873b4330$9736a8c0@ispl091>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <652016d305010421307f245385@mail.gmail.com>
+In-Reply-To: <016001c4eef6$873b4330$9736a8c0@ispl091>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Manish Regmi <regmi.manish@gmail.com>, linux-newbie@vger.kernel.org
+To: Amit Dang <amit_dang@intersolutions.stpn.soft.net>, newbie <linux-newbie@vger.kernel.org>
 
-On Wed, 5 Jan 2005 11:15:12 +0545
-Manish Regmi <regmi.manish@gmail.com> insightfully noted:
+hi
 
-MR>hi all,
-MR>   I recently installed Fedora Core 3 but there is a problem with
-MR>screen refreshing.
-MR>I mean when I open a window, i can only see the bar at the top and
-MR>buttons only when hovering mouse over it.
-MR>I have intel i810 chip and Philips 14 inch Monitor(not detected, i
-MR>chose as generic 1024x768).
-MR>
-MR>What is the problem?
-==========================
-The problem is the FC3 driver for i810 chip is borked.  Do a quick google
-search on Fedora Core 3 and i810.  You should find a new driver that can
-be installed that will fix the problem.
-HTH,
-Mike
+sorry but i could not understand by unmounting the
+partition. i dont use floppy drive or something like
+that. if i am using hard disk then i cant unmopunt the
+whole partition
+
+so what to do
+
+thanks
+
+ankit jain
+--- Amit Dang <amit_dang@intersolutions.stpn.soft.net>
+wrote:
+
+> Hi Ankit, following link will guide you how to
+> undelete files on linux. Its
+> easy to undelete small files, I have tried and it
+> works. Never tried with a
+> long file.
+> http://www.tldp.org/HOWTO/Ext2fs-Undeletion.html
+> 
+> Hope this solves your problem.
+> Enjoy
+> Amit Dang
+> 
+> ----- Original Message ----- 
+> From: "Ankit Jain" <ankitjain1580@yahoo.com>
+> To: "newbie" <linux-newbie@vger.kernel.org>
+> Sent: Friday, December 31, 2004 10:25 AM
+> Subject: retrieval
+> 
+> 
+> > Hi
+> >
+> > i want to know if somebody can help me directly or
+> > indirectly on this topic by providing some source
+> > material to read etc.
+> >
+> > i want to retireve the lost file/files from my
+> system
+> > which are removed by rm command
+> >
+> > i dont have any backup for them
+> >
+> > tell me any way i.e if i want to retirive the file
+> > immediately after removal
+> >
+> > thanks in advance
+> >
+> > ankit jain
+> >
+> >
+> >
+> > __________________________________
+> > Do you Yahoo!?
+> > Yahoo! Mail - Easier than ever with enhanced
+> search. Learn more.
+> > http://info.mail.yahoo.com/mail_250
+> > -
+> > To unsubscribe from this list: send the line
+> "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at 
+> http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at
+> http://www.linux-learn.org/faqs
+> 
+> -
+> To unsubscribe from this list: send the line
+> "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at 
+> http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at
+> http://www.linux-learn.org/faqs
+> 
 
 
--- 
-"The man who views the world the same at 50 as he did at 20 has wasted 30 
-years of his life"
---Muhammad Ali
+
+		
+__________________________________ 
+Do you Yahoo!? 
+Meet the all-new My Yahoo! - Try it today! 
+http://my.yahoo.com 
+ 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
