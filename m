@@ -1,73 +1,53 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: The du and ls -l
-Date: Sun, 19 Dec 2004 15:24:44 +0100 (CET)
-Message-ID: <Pine.LNX.4.21.0412191520030.21477-100000@hestia>
-References: <1103340281.3800.15.camel@myLinux>
-Reply-To: Linux Newbie <linux-newbie@vger.kernel.org>
+From: SOTL <sotl155360@earthlink.net>
+Subject: Re: lilo boot problems with SATA and mandrake 10.1
+Date: Sun, 19 Dec 2004 09:27:56 -0500
+Message-ID: <200412190927.56158.sotl155360@earthlink.net>
+References: <1103190044.7183.12.camel@itanium> <41C20748.9080605@ieee.org> <20041218185604.GB611@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1103340281.3800.15.camel@myLinux>
+In-Reply-To: <20041218185604.GB611@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-On Sat, 18 Dec 2004, Jagadeesh Bhaskar P wrote:
+On Saturday 18 December 2004 01:56 pm, Hal MacArgle wrote:
+> On 12-16, Simon Valiquette wrote:
+> > Vladimir E. Rodriguez a ?crit :
+> > >Also I have windows XP on this system to dual boot.
+> > >After I have installed Fedora Core 3, It works normally, but with
+> > >mandrake 10.1 official I have problems to boot.
 
-> Hi,
-> 	In some cases, as have been mentioned in Advanced Programming in Unix
-> Environment, by Richard Stevens, files with holes report different sizes
-> with du -s and ls -l. But how does the reporting of du and ls -l
-> actually differ? What is the fundamental difference between them??
+That is normal with Mandrake 10.x. Infact the issue of half ass software is 
+normal from Mandrake. For some reason or another Mandrake ALWAYS leaves our a 
+few critical files. I have experienced this in 8.x, 9.x and 10.x. Different 
+files different times but always something left out or half ass put together.
 
-<QUOTE gnu-bob>
-The fundemental difference is: 
- Inbetween disk space used, and the actual file size.
+If you are looking for a corporate type distribution meaning one with the 
+programs that are applicable to small business go to SuSE but you must 
+realize that if you do not configure things their way or want to do something 
+oddball you may have negative issues but if what you want is the best source 
+of included proprietary programs then this should be your choice.
 
-The 'ls -l' lists out the size of the file.  That is the number of
-bytes that you would read if you opened the file and read it from
-beginning to end.  This should match what you see with 'wc -c' as
-well.  This is useful when talking about size of files.
+If you can roil your own then there is Gentoo.
 
-The 'du' listing is different.  It lists out how much disk space you
-have used.  It does not look at sizes of individual files.  It instead
-asks the filesystem how many disk blocks a file is consuming.
-Therefore du is useful when talking about disk space used.
+If you want somebody else to roil it but open source only then there id Debian 
+and Fedora.
 
-Why are they different?  Because no one has ever designed a filesystem
-that is 100% efficient.  Filesystems work in blocks and fragments of
-blocks.  Today fragments are usually 512 bytes.  The numbers here are
-not important and different filesystems do this differently.  But the
-fact that files cannot be stored exactly at their file size but must
-consume the entire fragment is the important concept.  The minimum
-file non-zero file size is 1 byte but the file still consumes one
-block which is 512 bytes and the storage ratio is inefficient.  But a
-8192 size file will consume 16 512 byte fragments and be perfectly
-efficient.  On average over all of the files on your disk things work
-pretty well.
+Frank
 
-Note that you specifically asked du to print out the result converted
-to bytes.  The natural units for du are the number of 512 byte
-blocks.  But this is not natural for most humans and so there are
-conversion options such as -b to bytes and -h and -H to larger units.
-
-Also consumed but not reported are the associated inode blocks which
-hold the ownership and mode information of the file.  So this as well
-contributes to the overhead needed when making a filesystem on a disk.
-</QUOTE gnu-bob>
-
-> Hoping for a help
-
-np m8
-
-> TIA
-> -- 
-> With regards,
-> 
-> Jagadeesh Bhaskar P
-
-J.
+> > >
+> > >Please anybody have experience with this thing?
+>
+> 	FWIW, I can't really help; only comment.. I tried setting up
+> a dual boot machine with WinXP for a neighbour, that was already
+> setup with Win98, 8gB partition and Linux...  Never got Win98
+> replaced with XP but XP managed to completly mess up the Linux
+> partition changing the device numbers.. It took several hours with
+> cfdisk to straighten out the partition table and then re install
+> Win98 for them... NEVER again... Hope you have better luck..
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
