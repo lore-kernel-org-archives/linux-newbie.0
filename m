@@ -1,56 +1,37 @@
-From: Peter Howell <p.howell74@rcn.com>
-Subject: Re: scripting the "rec" function for a fixed time.
-Date: 25 Feb 2003 19:44:08 -0500
+From: Ozz <ozzden@bellsouth.net>
+Subject: Please accept my apologies for the bounced mail
+Date: Tue, 25 Feb 2003 20:20:06 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1046220248.15520.27.camel@smeagle>
-References: <5.1.0.14.1.20030224184821.01eb7e30@celine> 
-	<03022506145301.00602@unix.pa3gcu>
+Message-ID: <03022520200600.10018@PennyIII>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <03022506145301.00602@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: ozzden@bellsouth.net
 
 
-On Tue, 2003-02-25 at 01:14, pa3gcu wrote:
-> > "rec" is not a stock linux command, and I cannot readily identify a package
-> > that includes that application (just trying to match on "rec" turns up
-> > several hundred hits in the Debian package database). So I'd suggest you
-> > tell us a bit more about your setup, including enough information that we
-> > can identify and take a look at the package that includes this command.
-> 
-> rec is an unix command altho' not well supported, slackware 8 has it included.
-> 
-> rec --help shows a lot but thses are relavant to the question;
->   -c, --channels=CHANNELS      specifies the number of sound channels in FILE
->   -d, --device=DEVICE          use DEVICE for input/output
->   -f, --format=FORMAT          specifies bit format of sample
->                                FORMAT is either s, u, U, A, a, or g
->   -r, --rate=RATE              sample rate in hertz of FILE
->   -s, --size=SIZE              interpret size of sample
-> 
-> I think this one could be an help -s xxxxxxxb
->                                SIZE is either b, w, l, f, d, or D
+Hi Guys.
 
-	Alas no :-(
-	size isn't the file size.  It's really the width of each sample.  eg b
-for 8 bits, w for 16 bits....
+For those who don't know, my e-mail box died late on Saturday evening (MAJOR 
+hardware failure), so my e-mail was down from then until Tuesday evening.
 
-It appears that rec does not buffer the sound, but instead writes it
-directly to the file.  
-It's inelegant, but I suppose I could kill the application after a
-specified delay.  There are two problems with implementing that for me. 
-Firstly, I don't think I could do that in perl, which I'm most familiar
-with because there doesn't appear to be an easy way to spawn a process
-and continue running the scipt.  Secondly, I don't know how to run a
-process and get it's process id, which I'd need to kill it. 
+I just got my e-mail machine back up and running by swapping the drives into 
+an old 233Mhz K6-2 with 48Mb RAM #:-( 
 
-	Ok, just did a little rtfm.  I guess I could use ps and extract the id.
-Now I guess I'd better learn some bash scripting
+When I downloaded my e-mail I found out the hard way that BellSouth.net only 
+allows a quota of 1200 messages in one's mailbox.  
 
+I had exceeded that by 23 messages.
+
+And I'd only been offline less than 3 days...
+
+Anyway, I've cleared down the mailbox, and all should now be fine.
+
+I apologize for the bounces that the list received.
+
+Regards,
+Ozz.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
