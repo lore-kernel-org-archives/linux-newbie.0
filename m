@@ -1,54 +1,46 @@
-From: Nathan <nate@nateworks.ca>
-Subject: Re: file transfer via telnet
-Date: Thu, 20 Feb 2003 12:10:21 -0800 (PST)
+From: Matthiaseifert@gmx.de
+Subject: setting Tab's in vi
+Date: Thu, 20 Feb 2003 21:46:36 +0100 (MET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0302201209340.32539-100000@willy.nateworks.ca>
-References: <3E55D572.1B60BF79@ihug.co.nz>
+Message-ID: <8789.1045773996@www29.gmx.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E55D572.1B60BF79@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ichi@ihug.co.nz
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
+Hi, Listmembers!
 
-Hi Steven,
+This is about configuring the vi editor.
 
-> I year or two back, I remember reading about a way to transfer
-> a file using telnet.  It think it involved redirection from one
-> tty to another, but I don't remember the details.  I now find
-> myself in a situation with telnet access, but no ftp (or anything
-> else I could use to upload files).  Do any of you guys know the
-> telnet method?
+I'd like to change the default TabStop (currently 8 whitespaces) to 4
+whitespaces (which will=20
+better suit my needs (at least, I think so)). I found out:
 
-This might not help, but if you have ssh access you could use scp (secure
-copy).
+	:ret4
+=09
+will do so for one vi-session but for reasons of convenience I'm lookin=
+g for
+a permanent setting.
 
-Regards,
-Nathan
+Any hints?
 
+Thank you,
+Matthias
+=46rankfurt am Main
 
-> Cheers,
-> Steven
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+ooh. B.T.W. don't want to be to inquisitive but... how to do the same w=
+ith
+emacs? tnx.
 
--- 
-
-I'm as confused as a baby in a topless bar !
-
---
+--=20
++++ GMX - Mail, Messaging & more  http://www.gmx.net +++
+Bitte l=E4cheln! Fotogalerie online mit GMX ohne eigene Homepage!
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
