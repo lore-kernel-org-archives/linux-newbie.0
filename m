@@ -1,8 +1,8 @@
 From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Extract images from zipped .eve archives
-Date: Fri, 29 Nov 2002 09:06:16 -0500
+Subject: Permission puzzler: world writable directory
+Date: Fri, 29 Nov 2002 11:03:07 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211291406.gATE6GQ29554@hartford-hwp.com>
+Message-ID: <200211291603.gATG37r01212@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
@@ -10,20 +10,36 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@hartford-hwp.com
 
-I have a set of ZIP files (Windows) that contain many small B&W
-drawings that I would like extract under Linux.
+I use an e-mail alias list: ~/.aliases/NARL.aliases. My individual
+aliases work OK (I'm using it for this message), but I'm having
+trouble using an alias list, or at least this NARL.aliases list.
 
-The unzip utility does not extract the files, but simply lists the
-contents of the ZIP files. Each ZIP file has several archive files
-with an .eve extension, and these in turn hold collections of image
-files.
+I now get the error message:
 
-Why can't unzip extract the .eve files? What are .eve files? They may
-be proprietary executables, but if not, I could not find any utility
-to extract them into a format known to Linux.
+   ----- The following addresses had permanent fatal errors -----
+   :include:/home/brownh/aliases/NARL.aliases
+    (expanded from: NARL)
 
-Haines Brown
- 
+   ----- Transcript of session follows -----
+   550 5.2.4 :include:/home/brownh/aliases/NARL.aliases...
+     Cannot open /home/brownh/aliases/NARL.aliases:
+     World writable directory
+
+I believe I know the source of the problem, but would appreciate an
+explanation and a possible work-around.
+
+User "brownh" uses rmail under emacs. However, for an OT reason,
+user brownh can't log in to his own account, but must access to it via
+an xterm in another account, in which is run the command su - brownh,
+and then emacs.
+
+Is this complicated procedure preventing the NARL.aliases file from
+being read? I've played with permissions for it and its directory,
+including any write permission at all from both directory and file,
+but to no avail. I have not yet tried running emacs with # emacs -u
+brownh, however.
+
+Haines Brown   
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
