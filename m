@@ -1,48 +1,81 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: error message interpretation help?
-Date: Wed, 4 Feb 2004 16:41:14 -0600 (CST)
+From: Jacob Langley <j_langley@sbcglobal.net>
+Subject: Re: accessing USB memory stick
+Date: Wed, 04 Feb 2004 17:48:06 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0402030855370.1027@debian-emach>
-References: <020320040856.27329.7c84@comcast.net>
+Message-ID: <1075934765.3589.22.camel@localhost>
+References: <Pine.LNX.4.44.0402041422210.17345-100000@legolas.personal.engin.umich.edu>
+Reply-To: j_langley@sbcglobal.net
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <020320040856.27329.7c84@comcast.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44.0402041422210.17345-100000@legolas.personal.engin.umich.edu>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Tue, 3 Feb 2004 beolach@comcast.net wrote:
+Hi,
 
-> The warning you are getting about the /proc/partition & /dev inconsistency
-> could be caused by devfs being compiled into the kernel (which would cause
-> /proc/partitions to use the devfs naming scheme), and either devfs being
-> mounted somewhere other than /dev, or devfs not being mounted at all (which
-> would cause the /dev directory NOT to use the devfs naming scheme). Because
-> in your second email you mention that /dev/cdrom links to /dev/cdrom0 which
-> in turn links to /dev/hdb, I'm guessing devfs is not mounted at all - devfs
-> will never make symlinks to symlinks, and also uses the naming scheme above.
-> Devfs not being mounted would be caused by the kernel being compiled with
-> CONFIG_DEVFS_FS=y, but CONFIG_DEVFS_MOUNT=n.  You can fix this by either
-> recompiling the kernel with CONFIG_DEVFS_MOUNT=y or by passing devfs=mount
-> to the boot prompt, or by running "mount -t devfs none /dev".  As soon as
-> you do get devfs mounted on /dev, you won't get that error when you run lilo.
+I know that when I got my 2 flash memory devices, I had to recompile me
+kernel with scsi support to be able to access them and then I could do a
 
-Thanks for the info on devfs, which helps to fill in a bit between the
-level of the documentation you provided a link for and what I'm currently
-capable of processing (which is to say that the documentation, though
-passing itself off as something basic, was over my head).  I followed your
-advice about doing "mount -t devfs none /dev", but I'm sorry to report
-that it has introduced another error.  I can't tell if it's fixed the
-one it was supposed to have, though.  After running that command, when I
-issue "lilo" at the command prompt, I get
------------------------------------
-Fatal: raid_setup: stat("/dev/hda")
------------------------------------
-The computer continues to function normally, so far as I can tell,
-notwithstanding.
+$ mount -t vfat /dev/sda1 /mnt/usbhd
 
-Thanks, James
+I added it to my fstab to make life easier.  
+
+When I plug my stick in I see this from my dmesg:
+
+Feb  4 17:42:20 [kernel] sda: assuming Write Enabled
+Feb  4 17:42:20 [kernel] sda: assuming drive cache: write through
+Feb  4 17:42:20 [kernel] WARNING: USB Mass Storage data integrity not
+assured
+Feb  4 17:42:45 [kernel] usb 2-1: USB disconnect, address 3
+Feb  4 17:42:48 [kernel] hub 2-0:1.0: new USB device on port 1, assigned
+address 4
+Feb  4 17:42:48 [kernel] scsi2 : SCSI emulation for USB Mass Storage
+devices
+Feb  4 17:42:49 [kernel]   Vendor: LEXAR     Model: JUMPDRIVE        
+Rev: 1.20
+Feb  4 17:42:49 [kernel] SCSI device sda: 251904 512-byte hdwr sectors
+(129 MB)
+Feb  4 17:42:49 [kernel] WARNING: USB Mass Storage data integrity not
+assured
+Feb  4 17:42:49 [kernel] USB Mass Storage device found at 4
+
+Hope that helps a little.
+-j
+On Wed, 2004-02-04 at 14:46, Karthik Vishwanath wrote:
+> Hello,
+> 
+> How do I mount a usb memory stick? I do see something connected to usb on
+> the output mount (I am running Redhat 9):
+> $ mount | grep usb
+> usbdevfs on /proc/bus/usb type usbdevfs (rw)
+> 
+> On plugging the device into the machine and looking at dmesg, shows me 
+> stuff (which I think is connected to plugging in the usb stick):
+> 
+> hub.c: new USB device 00:1d.7-6, assigned address 3
+> WARNING: USB Mass Storage data integrity not assured
+> USB Mass Storage device found at 3
+> 
+> Is the device being recognized? How can I access it? 
+> 
+> Thanks,
+> 
+> -K
+> 
+> ---------------------
+> Genius may have its limitations, but stupidity is not thus handicapped.
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+-- 
+Jacob Langley <j_langley@sbcglobal.net>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
