@@ -1,100 +1,74 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: make error
-Date: Tue, 16 Apr 2002 19:06:12 +0000
+Subject: Re: wave file to audio cd
+Date: Tue, 16 Apr 2002 19:34:30 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041619061203.04062@unix.pa3gcu>
-References: <00a701c1e575$ea0958e0$0901a8c0@system>
+Message-ID: <02041619343004.04062@unix.pa3gcu>
+References: <m33cxw6xyo.fsf@wobble.eth.net> <02041606110001.03753@unix.pa3gcu> <m37kn7pmxc.fsf@wobble.eth.net>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00a701c1e575$ea0958e0$0901a8c0@system>
+In-Reply-To: <m37kn7pmxc.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Thomas Beer <tbeer@analogon.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: G Anna <drguruolai@eth.net>, pa3gcu@zeelandnet.nl
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 16 April 2002 18:38, Thomas Beer wrote:
-> Hi,
+On Tuesday 16 April 2002 17:34, G Anna wrote:
+> > Date: Tue, 16 Apr 2002 06:11:00 +0000
+> > From: Richard Adams <pa3gcu@zeelandnet.nl>
+> > Subj: Re: wave file to audio cd
 >
-> I'm trying to install a radio clock software, which
-> issues make errors. Can anyone guess what may be
-> wrong. Tryed to modify the pcfclock.c with no positive
-> result. Any suggestions are highly appreciated.
+> [snip]
 >
-> Thanks Tom
+> > > Suppose I have a collection of .wav audio files and I want to prepare
+> > > an audio CD (that we can play from audio systems), how do I go about
+> > > it?
+> > >
+> > > Suggestions and pointers to information would be very valuable.
+> > > Thanks for your time.
+> >
+> > xcdroast
+> > Its included in most main distro's thesedays.
+>
+> That I am aware of.  I was thinking in terms of the format conversions
+> required.  Should I convert the .wav files to CDDA format before
+> writing to a CD?  Is this conversion automagically handled by
+> xcdroast?  If not, is there any software available for the said
+> conversions?
+>
+> Kindly enlighten me.  And thank you for helping me.
 
-The thing is with source is that quite often it will only compile with =
-a=20
-spesific kernel-verion-header files/and or spesific libs.
+Like i said xcdroast does everything for you, AFAIK it burns .wav files into 
+cdda, it will even do cddb query's for you if you are connected to inet.
 
-I suggest you check the doc's which i am presuming came with the source=
- and=20
-see if there is any mention of what the authour used to compile it.
+I do not record much music however as far as i can see it does what you want.
 
-It could also be that he/she used a different compiler than you have.
+There are other programs of course, xcdroast is but one program, i mentioned 
+it because it includes many smaller programs as well and is very robust.
+
+A small list i have here of other software, (somewhat out of date).
+cdparanoia-III-alpha9.6.src.tgz
+cdrecord-1.8a31.tar.gz
+cdrtoaster-1.04p2.tgz
+kcdwrite-0.0.1.tar.gz
+keasycd-0.1.8.tar.gz
+kisocd-0.5.0pre3.tar.gz
+mkisofs-1.12b5.tar.gz
+
+tucows.com is a fine place to look for software.
 
 >
-> make
-> cd . \
->   && CONFIG_FILES=3D CONFIG_HEADERS=3Dconfig.h \
->      /bin/sh ./config.status
-> config.status: creating config.h
-> config.status: config.h is unchanged
-> make  all-recursive
-> make[1]: Wechsel in das Verzeichnis Verzeichnis
-> =BB/big/download/pcfclock-0.29=AB
-> Making all in linux
-> make[2]: Wechsel in das Verzeichnis Verzeichnis
-> =BB/big/download/pcfclock-0.29/linux=AB
-> gcc -O2 -Wall -fomit-frame-pointer -I/lib/modules/2.4.4/build/include
-> -D__KERNEL__ -DMODULE -DMODVERSIONS -include
-> /lib/modules/2.4.4/build/include/linux/modversions.h -D__SMP__   -c -=
-o
-> pcfclock.o pcfclock.c
-> pcfclock.c:547: parse error before string constant
+> Cheers,
+> anna
 
-This could be a simple syntax error in the source, or it could be the r=
-esult=20
-of a header file mismatch.
-
-> pcfclock.c:547: warning: type defaults to `int' in declaration of
-> `MODULE_LICENSE'
-> pcfclock.c:547: warning: data definition has no type or storage class
-
-Looking at that i would take a wild guess and say that the software is =
-very=20
-old indeed and needs lib5 support, thesedays we have Glib's and they ar=
-e=20
-mostly not backwards compatable.
-
-Of course it could be something else intyrly...
-
-> make[2]: *** [pcfclock.o] Fehler 1
-> make[2]: Verlassen des Verzeichnisses Verzeichnis
-> =BB/big/download/pcfclock-0.29/linux=AB
-> make[1]: *** [all-recursive] Fehler 1
-> make[1]: Verlassen des Verzeichnisses Verzeichnis
-> =BB/big/download/pcfclock-0.29=AB
-> make: *** [all] Fehler 2
-> [tom@milestone pcfclock-0.29]$
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
---=20
+-- 
 Regards Richard
 pa3gcu@zeelandnet.nl
 http://people.zeelandnet.nl/pa3gcu/
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
