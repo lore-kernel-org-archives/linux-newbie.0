@@ -1,64 +1,60 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Finding things
-Date: Fri, 02 May 2003 12:43:35 -0700
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Netscape6.2/Slack8.1 Problem??
+Date: Fri, 2 May 2003 11:35:39 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030502123558.01fd7d68@celine>
-References: <5.1.0.14.2.20030502122424.02b2f3f8@mail.lcsd.k12.wa.us>
+Message-ID: <20030502113539.A242@lnx2.w8mch.ampr.org>
+References: <200305020941.53139.pfheiss@philonline.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.2.20030502122424.02b2f3f8@mail.lcsd.k12.wa.us>
+Content-Disposition: inline
+In-Reply-To: <200305020941.53139.pfheiss@philonline.com>; from pfheiss@philonline.com on Fri, May 02, 2003 at 09:41:53AM +0800
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 12:25 PM 5/2/2003 -0700, Dan Bentson-Royal wrote:
->I often cannot find where things are on my Linux box.
->
->What is the best way to look for something when I haven't a clue where (or 
->if) I have it? I think I saw Eric Harrison use "locate" but when I do that 
->it never finds things that I know are there. I did "man locate" and was 
->even more confused than ever.
+Greetings Peter and thanks for going to so much trouble as did Ray..
 
-Three possibilities, depending a bit on the nature of the "things" you want 
-to find, are:
+I did a clean new install in another partition only selecting the
+bare essential packages, using the simple fvwm2 window manager..
+Invoking netscape it needed two libraries I missed; libgtk and glib,
+that had libgmodules included.. If a fella did the full KDE/Gnome
+install as recommended by Patrick, the libraries would have been
+default installed, I suspect.
 
-locate -- this actually checks a database that is, in normal operation, 
-updated daily as a cron job. You don't say anything about your distro, 
-though, so I don't know if your system maintains the locate database or not.
+Once I got rid of the new, to me, Activation Screen stuff, it's now
+working fine as expected.. Don't know if it's really any better than
+4.77 for my use but we'll give it a whirl.. What happened the first
+time around I'll never know and wont ask. <grin> 'top' reports 91%
+idle so we're not straining anything IMHO.. :^)
 
-which -- this will find an executable that is in the PATH of the user 
-running it. Try it with "which which" to see what does. Remember that an 
-ordinary yser's PATH covers less ground than root's (on typical systems), 
-so this command will not find some common executables unless run by root.
+I went to the problem URL that started all this, ups.com, and it
+didn't balk - so I'm in business.. These new fangled programs are
+something. You not only don't have to type in 'http' but they don't
+need 'www' anymore.. Boy we're getting lazy...
 
-find -- this is the core capability, in that is searches all areas of all 
-mounted filesystems that the user has read rights for, using a starting 
-point the user specifies. The simplest way to use it is (as root, so you 
-have access to everything)
+Thanks again,
 
-         find / -name *filespec*
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
 
-Unwrapping this a bit:
-
-         the / says to start at the root (top) of the filesystem.
-         the -name says that the next thing listed will be what to look for.
-         *filespec* is a REGEX for what to look for. You can use wildcards 
-like * and ? here.
-
-For example, to find all gif files on a system, you would use
-
-         find / -name *.gif
-
-The man pages for locate, which, and find will tell you more. This should 
-be enough to get you started, though.
-
-BTW, I'm sorry that "man locate" confused you. But unless you say something 
-about *why* you found the man page confusing, I can't do more than sympathize.
-
-
-
-
+On 05-02, Peter wrote:
+> Greetings Hal,
+> 
+> In RH7.3 I just tried to simulate your setup just opening X with xterm only.
+> startx /usr/X11R6/bin/xterm.
+> 
+> Opening Netscape 4.79 I have no problem entering a URL, however, opening 
+> Mozilla 5.0 I have as you call it the dog bone cursor yet cannot enter 
+> anything into the URL window, like you say as if the keyboard is not 
+> responding.  Opera works fine as well as dillo.
+> 
+> I am using xfce as window manager and there is no such problem.
+> 
+> I just checked with Slackware 8.0 using xterm only. Results are the same as in 
+> RH7.3. No problem with Netscape 4.77, Mozilla 5.0 URL window does not 
+> respond.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
