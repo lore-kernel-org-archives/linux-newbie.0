@@ -1,7 +1,7 @@
 From: "Adam" <adam@luchjenbroers.com>
-Subject: IPv6 Routing question
-Date: Mon, 7 Feb 2005 1:04:39 -0500
-Message-ID: <20050207060439.13072.qmail@m1.name2host.com>
+Subject: Configuring mail\mailx to use an external smtp server.
+Date: Wed, 9 Feb 2005 0:21:37 -0500
+Message-ID: <20050209052138.15656.qmail@m1.name2host.com>
 Reply-To: "Adam" <adam@luchjenbroers.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
@@ -12,15 +12,15 @@ To: linux-newbie@vger.kernel.org
 
 
 
-I've got a server that's mapping all incoming IPs to IPv6 addresses of the
+I'm trying to configure either mail or mailx to use an external smtp server
 
-form ::ffff:(IP Address).
+(using sendmail locally is not an option).
 
 
 
-Will this interfere with IPtables\routing given that they are currently
+I'm trying to set the server up to send out sarg reports and AFAIK, it can
 
-working on TCP\IPv4? Will rules matching tcp or udp protocols still match?
+use either mail or mailx to send it out.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
