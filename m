@@ -1,44 +1,36 @@
-From: caszonyi@rdslink.ro
-Subject: Re: modules not found
-Date: Mon, 5 Jan 2004 23:39:01 +0200 (EET)
+From: chakkerz <chakkerz_dev@optusnet.com.au>
+Subject: Re: 2.6.0 kernel compile overview
+Date: Tue, 6 Jan 2004 08:45:20 +1100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0401052319560.660@grinch.ro>
-References: <3FF97BE0.4020404@sancharnet.in>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <200401060845.20257.chakkerz_dev@optusnet.com.au>
+Reply-To: chakkerz_dev@optusnet.com.au
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3FF97BE0.4020404@sancharnet.in>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: joy <gracecott@sancharnet.in>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 5 Jan 2004, joy wrote:
+dunno if that helps, but Linux Format had an article on how to do it in 
+November (the one with the baby on the cover). I'd copy the instructions out 
+(ahh ... plagerism), but someone at work nicked the magazine (darn MS 
+users)...
 
->
->
->
->
-> Hi,
->  I recently compiled the 2.6 kernel and when I run lsmod I get a meesage:
->  QM_MODULES function not implemented.
+mayhaps the local library (or the linux format web page) has the article.
+-- 
+with kind regards,
+  chakkerz
 
-you must install moduleinit-tools
-it used to be available from this page
-http://www.kernel.org/pub/linux/kernel/people/rusty/
-but now i get a 404
+"You don't need eyes to see, you need vision" (Faithless - Reverence)
 
-> I get the same when I run insmod too.
-> also the directory
->  /lib/modules/2.6.0.....
-> does not exist. should I create it myself?
->
->
-> Thanx in advance,
-> Joy
->
->
+  Internet:          http://naiv.sourceforge.net
+  NAIV Status:
+     Stable       Testing       Development
+      0.2.3r2      none          0.3.0 - Installation
+
+"May there be mercy on man and machine for their sins" (Animatrix)
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
