@@ -1,36 +1,24 @@
-From: wa4chq@netscape.net (neil t)
-Subject: CD distributor info
-Date: Mon, 12 Aug 2002 18:54:54 -0400
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: Want to strip some formatting out of a text file
+Date: Mon, 12 Aug 2002 16:57:56 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2A03F9E1.5D64F4B7.0006BEFC@netscape.net>
-Content-Transfer-Encoding: 8bit
+Message-ID: <200208122356.g7CNuuq29483@firebin.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: Text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Greetings-
-Has anyone on the list dealt with "Best Linux CD's"?  I 
-ordered the latest Debian Distro the other day and have not
-really heard anything from them about shipping.  They did 
-mention something after I made the purchase but that was to
-say something about an illness.
-Thanks
-Neil 
+I'm trying to download the text manuals for the linux pam modules to my palm pilot, but there is the appearance of old style double strike for emphasis text all over the docs.
 
--- 
-Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+e.g. a L(backspace)Li(backspace)in(backspace)n
 
+What utility to remove this backspacing and doubling of characters so they would be over-written?
 
+Alan
 
-__________________________________________________________________
-Your favorite stores, helpful shopping tools and great gift ideas. Experience the convenience of buying online with Shop@Netscape! http://shopnow.netscape.com/
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
-
+I dl'd the text file from the kernel.org website documentation of pam
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
