@@ -1,53 +1,28 @@
-From: Steven Smith <sos22@cam.ac.uk>
+From: Elias Athanasopoulos <eathan@otenet.gr>
 Subject: Re: is emacs considered a gui WP or cli?
-Date: Sat, 25 May 2002 09:43:15 +0100
+Date: Sat, 25 May 2002 18:03:57 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020525084315.GA323@cam.ac.uk>
+Message-ID: <20020525180357.B1158@neutrino.particles.org>
 References: <20020524.163134.-176941.0.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="tThc/1wpZn/ma/RB"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20020524.163134.-176941.0.matthewstapleton@juno.com>
+In-Reply-To: <20020524.163134.-176941.0.matthewstapleton@juno.com>; from matthewstapleton@juno.com on Fri, May 24, 2002 at 04:31:33PM -0700
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: Matthew Stapleton <matthewstapleton@juno.com>
 Cc: linux-newbie@vger.kernel.org
 
+On Fri, May 24, 2002 at 04:31:33PM -0700, Matthew Stapleton wrote:
+> I was wondering if Emacs was considered to be gui based WP or cli-based? 
 
---tThc/1wpZn/ma/RB
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Noone of it. Emacs is an OS which pretends to be an editor. :-)
 
-> I was wondering if Emacs was considered to be gui based WP or cli-based?=
-=20
-Does it matter a great deal? I normally classify it as CLI-based, because
-it runs fine on a virtual console without X running, but that's just
-an opinion.
+Elias
 
-> And is it stilled updated?
-Most definitely. They release a little slowly (Emacs 1 dates from 1976,
-and the current version is 21.2, so that's less than one release a year),
-but it is still being worked on.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---tThc/1wpZn/ma/RB
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE8706iO4S8/gLNrjcRAve0AJ9XIbXXT8I8Lanp7jlxEqIzoE9hBwCgzHym
-xp/j6NzMMZ7ch5cF9nrkZqQ=
-=SiVx
------END PGP SIGNATURE-----
-
---tThc/1wpZn/ma/RB--
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
