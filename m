@@ -1,8 +1,8 @@
 From: "Eve Atley" <eatley@wow-corp.com>
-Subject: Setting permissions in a public folder
-Date: Thu, 19 Feb 2004 10:46:00 -0800
+Subject: Generating SSH Keys
+Date: Thu, 19 Feb 2004 11:21:00 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <GNEPLLCIIBHICCOGIAKPGEDKCCAA.eatley@wow-corp.com>
+Message-ID: <GNEPLLCIIBHICCOGIAKPKEDMCCAA.eatley@wow-corp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,28 +11,27 @@ Content-Type: text/plain; charset="us-ascii"
 To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
 
-Michael et. al,
+I would like to have remote users connect to certain shares on a linux box,
+but securely. I've been reading about SSH and generating keys, but I am
+confused how to go about this. I am getting my info from here:
+http://www.cs.kuleuven.ac.be/system/security/ssh/setup.shtml
 
-Regarding yesterday's problem I am having with restricting user folders to
-each user under a public folder, I am still having questions about setting
-this one up. These are NOT the user folders automatically created in the
-HOME directory.
+First, I tried to run ssh-keygen, but it's asking me for options I don't
+understand.
 
-The config in my smb.conf file for the directory in question:
-[backup]
-        comment = Backup Folder
-        path = /home/shared/backup
-        read only = No
-        guest only = Yes
-        guest ok = Yes
-        force group = +backup
-        hosts allow = 192.168.10.
+So then I RTFM, and this went over my head; ie.
+a. do I use version 1 or 2 of the protocol?
+b. do I create this key on the server and then import to the Win boxes, or
+the other way around? Or must key pairs be generated at BOTH ends?
+c. Where exactly are the keys stored on the linux server? /etc/ssh I assume,
+but what files are most important to look at here?
 
-I'm looking for the correct config. Without the hosts allow (haven't tried
-it with), I am able to connect correctly via a Unix command line, but not
-through the Windows share, so it appears to be a Samba problem.
+Thanks,
+Eve
 
-- Eve
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
