@@ -1,40 +1,30 @@
-From: whitnl73@juno.com
-Subject: Re: GNU make: Where is the default database?
-Date: Fri, 21 Feb 2003 19:20:51 -0500 (EST)
+From: "Thiago F.G. Albuquerque" <tfga@terra.com.br>
+Subject: Re: file transfer via telnet
+Date: Sat, 22 Feb 2003 06:55:03 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030221.224324.8.0.whitnl73@juno.com>
-References: <b35st6$mbs$1@main.gmane.org>
+Message-ID: <5.1.0.14.1.20030222065155.00a194f0@pop.bsb.terra.com.br>
+References: <3E55D572.1B60BF79@ihug.co.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b35st6$mbs$1@main.gmane.org>
+In-Reply-To: <20030221.140308.8.0.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: jamie_risk@yahoo.ca
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Fri, 21 Feb 2003, Jamie Risk wrote:
 
-> Where's the source database for gnu make? I can view it with
-> "make -p -f/dev/null" which is, useful, but I wish to edit it.
-> - Jamie
+>However, to downoad a file by telnet, capture stdout so:
 >
-If you will look at the output so produced, you will see all values
-are default, from the environment, automatic, or builtin.
+>telnet hostname | tee logfile
+>....
+>uuencode remotefile remotefile
+>exit
+>tr -d "r" < logfile | uudecode
 
-Edit the environment values by editing your shell's startup files.
-Anything else you want to edit you have to put into a makefile
+Ok, I understand. But what is this 'tr -d "r"' for?
 
-Lawson
---
----oops---
+Thiago
 
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
