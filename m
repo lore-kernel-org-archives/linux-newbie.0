@@ -1,47 +1,43 @@
-From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: Re: User in multiple groups
-Date: Wed, 3 Jul 2002 20:32:42 +0200 (CEST)
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Re[2]: mouse setup
+Date: Wed, 3 Jul 2002 19:02:44 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020703183242.80771.qmail@web13103.mail.yahoo.com>
-References: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
+Message-ID: <200207031902.44210.pa3gcu@zeelandnet.nl>
+References: <50420696.20020703074009@sby.centrin.net.id> <200207031547.44350.pa3gcu@zeelandnet.nl> <155376841.20020704002151@sby.centrin.net.id>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
+In-Reply-To: <155376841.20020704002151@sby.centrin.net.id>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Chris Rose <offline@shaw.ca>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: adwin <fox@sby.centrin.net.id>, linux-newbie@vger.kernel.org
 
- --- Chris Rose <offline@shaw.ca> a =E9crit=A0: > I'm
-trying to get one user account to be in multiple
-> groups right now, and=20
-> i thought i had it licked (add the username to the
-> end of the line in=20
-> /etc/group).  Problem is, it doesn't seem to have
-> done the trick, since i=20
-> still can't write to files for which i have
-> permission.  Is there something=20
-> else i need to do?  logout, or reboot?  Or does all
-> that stuff take effect=20
-> immediately?
->=20
+On Wednesday 03 July 2002 17:21, adwin wrote:
+> Hello Richard,
 
-What distribution do you have ?
-It should take effect immediatelly.
+Hello.
 
->=20
-> Chris R.
+>
+> yes ... if I use my ps2 port..it will work..but unfortunatly .. my ps2
+> port is broken...so I cannot use any ps2 mouse anyomore...:(
+> so the choice is .. use my usb port. :)
 
-Calin
+What leads you to belive its broken, to be honest i have never seen or come 
+across a M/Board that had a broken ps/2 port, i would point fingers at a 
+disconneted plug or broken wird somewhere in its connector because to be 
+honest all a ps/2 port is is a resurved channel to IRQ12.
+Or have you setup your BIOS to allow other things/devices to use IRQ12.??
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
-___________________________________________________________
-Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
-Yahoo! Mail : http://fr.mail.yahoo.com
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
