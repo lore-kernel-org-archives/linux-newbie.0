@@ -1,9 +1,9 @@
 From: pshook <pshook@dsl-only.net>
-Subject: Re: Can Listen; Cannot Talk
-Date: Tue, 11 Mar 2003 23:32:04 -0800
+Subject: Re: a simple browser
+Date: Tue, 11 Mar 2003 23:02:16 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E6EE274.6CC6F48B@dsl-only.net>
-References: <m3sn4tzfa7.fsf@wobble.eth.net>
+Message-ID: <3E6EDB78.14415BBE@dsl-only.net>
+References: <m3ofgui987.fsf@wobble.eth.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,43 +11,23 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Might wanna make sure 1) that your modem is full-duplex capable adn 2) that it
-is set up in that mode.
+Try opera, I think at  www.opera.com
 
 G Anna wrote:
 
 > Dear All,
 >
-> I have an external modem.  It has, apart from the telepone plug and
-> the power plug, two plugs - one for speaker and the other for a mike.
-> I have connected my head-phone/mike to this.
+> Can anybody suggest a good and simple browser?  Netscape core dumps
+> very often, Mozilla is very very slow and I do not know of any other
+> browser.  (Most of the websites nowadays doesn't care about Lynx :-(
 >
-> Using minicom (with the help of AT commands) I am able to dial another
-> phone.  The phone rings at the other end.  When they answer the phone,
-> I can listen to their voice.  Its very clear too.  But they are not
-> able to hear my voice.  Can anybody help me understand why this is so?
+> Thanks for your time.
 >
-> Am I doing any silly mistakes anywhere?  Kindly help me.  Pointers to
-> relevant information would also be very helpful.
->
-> $ : using RH 7.1
-> $ uname -a
-> Linux wobble 2.4.16 #8 Tue May 14 14:15:58 IST 2002 i686 unknown
->
-> Thank you for your time and effort.
->
-> Cheers,
 > anna
 >
 > --
 >
-> (9) I will not include a self-destruct mechanism unless absolutely
->     necessary.  If  it is necessary, it will not be a large red button
->     labelled  "Danger: Do Not Push". The big red button marked "Do Not
->     Push"  will  instead  trigger  a spray of bullets on anyone stupid
->     enough  to  disregard  it.  Similarly,  the ON/OFF switch will not
->     clearly be labelled as such. - Peter Anspach in "The Top 100 Things
->     I'd Do If I Ever Became An Evil Overlord"
+> Get your free e-mail account at http://www.linuxmail.org
 >
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
