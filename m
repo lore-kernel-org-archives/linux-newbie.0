@@ -1,34 +1,47 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: related issue (was: Dvorak Console)
-Date: 28 Sep 2002
+From: lawson_whitney@juno.com
+Subject: Re: 'nobody' is using my system !!!
+Date: Fri, 27 Sep 2002 20:09:04 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209272309.g8RN9dv13160@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20020927.203747.134671024.2.lawson_whitney@juno.com>
+References: <200209272147.g8RLlLv21054@ev6.be.wanadoo.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200209272147.g8RLlLv21054@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: hammer@revobild.net
+Cc: linux-newbie@vger.kernel.org
 
-On a related issue - is there any means to switch charsets (for all
-sorts of screen printing), and this, back-&-forth "on the fly" ?
-At least, in text/console mode ?
+On 27 Sep 2002, Heimo Claasen wrote:
 
-REM: most "garbled" screen presentation of text has the simple cause
-in different charsets employed, sepectively, (a.) in the (txt) file,
-(b.) for the system/screen char setting to present it.
-(This concerns 8-bit charsets, and there, the full-8-bit range; most
-frequent is the problem of "text" from a Windows-machine - the
-M$-declaration of "ISO-8859-1" is false, it does _not_ comply - read on
-any other, _including_ those with correct ISO-8859-1 charsets set.)
+> BTW, _once_ I stumbled (per pure chance and hazard) into the place where
+> this mount counter is set, gladly changed it from 20 (yes, that _was_
+> the default) to 99 (ouf, I dare say, still a "safe and secure" setting);
+> but one bad day I did a new install on that box: and _never_ever_ found
+> back the hint where this "secret" sacred place was, despite of dozens of
+> HOwTOs, hundreds of mans, thousand of scribbled notes and well-printed
+> articles to read. Anyone who knows and _dares_ to tell about ?!
 
-Remapping could (and _should_, IMO) be an easy thing, with switching to
-the right charset with reading/screen-printing that one piece (and then
-switching back to the generally used charset).
+tune2fs -c 99 <device>
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-27
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+man tune2fs
 
+e2fsprogs package.
+>
+> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-27
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+>
+Lawson
+---oops---
+
+
+
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
