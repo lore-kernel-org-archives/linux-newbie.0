@@ -1,47 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: mac address change on an eth alias
-Date: Tue, 17 Dec 2002 14:53:48 -0800
+From: Bill Pleasants <Pleasants@myfreei.com>
+Subject: Re: Printer error
+Date: Tue, 17 Dec 2002 22:25:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021217144923.020a7bd0@celine>
-References: <200212172355.32568.g38@rdsbv.ro>
- <200212172207.22480.g38@rdsbv.ro>
- <02121721144904.00388@unix.pa3gcu>
- <200212172355.32568.g38@rdsbv.ro>
+Message-ID: <3DFFEAA4.5020904@myfreei.com>
+References: <5.1.0.14.1.20021216085528.02134570@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02121722061606.00388@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 10:06 PM 12/17/02 +0000, pa3gcu wrote:
->On Tuesday 17 December 2002 21:55, Petre Bandac wrote:
->[...]
-> > so I didn't get what I wanted - the mac of the alias being different than
-> > the interface's; should I presume "no can do" ?
+Ray Olszewski wrote:
+
+> You don't give us much to go on, but since the problems seem to be 
+> with name resolution, I'd suggest you tell us the details of your 
+> system as they relate to that.
 >
->I myself have never used aliasing, i do however need to spoof my MAC
->sometimes on my laptop to be able to use it on other locations for my work.
->However thats beside the point, as far as i can see if you set a different
->IP# then the need for another MAC is (AFAIK) not nessasary.
->If ARP's are a problem then setting static arps may be an answer, once more i
->have no experiance with alising, possably Ray may have some advise for you.
+> First is your networking setup. Are you connected to a LAN or directly 
+> to the internet? (I guess you must be if you are using MapQuest.) If 
+> so, how?
 
-Afraid not; I've never actually used aliasing (except in trivial test setups).
+This is a LANless computer connected to the internet by a 56K modem.
 
-Perhaps the best next step would be for you to explain  why you need the 
-interfaces to respond as though they were on different physical devices 
-(that is, NICs with distinct MAC addresses). With that information, then 
-maybe someone here could suggest a workaround. But as far as I know, NICs 
-only support a single MAC address at any moment, not multiple ones.
+>
+> More immediately, how does your system do name-to-address resolution? 
+> Does it rely on /etc/hosts? If so, what are the contents of that file? 
+> Or does it use a nameserver? If so, is it accessable? And what are the 
+> contents of the /etc/resolv.conf file? 
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+I have some notion of what name-to-address resolution is for the 
+internet but not what it is for the Linux OS.  /etc/hosts contains:
+    "# Do not remove the following line, or various programs
+    # that require network functionality will fail.
+    127.0.0.1    localhost.localdomain   
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
