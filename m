@@ -1,40 +1,52 @@
 From: whitnl73@juno.com
-Subject: Re: commport settings
-Date: Sun, 22 Dec 2002 22:23:11 -0500 (EST)
+Subject: Re: Where does installed software go?
+Date: Sun, 22 Dec 2002 22:07:10 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021222.222557.134684296.3.whitnl73@juno.com>
-References: <200212230108.gBN18368001576@pyxis.wanadoo.be>
+Message-ID: <20021222.222557.134684296.1.whitnl73@juno.com>
+References: <5.1.0.14.0.20021222212622.00bb8d08@mail.comcast.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212230108.gBN18368001576@pyxis.wanadoo.be>
+In-Reply-To: <5.1.0.14.0.20021222212622.00bb8d08@mail.comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: hammer@revobild.net
+To: smarta55@comcast.net
 Cc: linux-newbie@vger.kernel.org
 
-On 23 Dec 2002, Heimo Claasen wrote:
+On Sun, 22 Dec 2002, Chris wrote:
 
-...
-> I could not find any means, with "linuxconf" for instance, to have the
-> system accept the new setting. Only - restrictedly efficient - measure
-> is doing "setserial /dev/ttyS3 port 0x02e8 irq 7".
+> How do I know where software goes when I install it?
+> For instance, I just installed Opera on Red Hat 8.0, and
+> had to dig around to find it.
+>  From the root I ran "ls -al -R | grep opera"
+> This produced about 16,000 items!  Through trial and error I was
+> able to find the executable, and create a "launcher" on my desktop
+> to it.
 >
-Ray has already covered most of this.  One little clarification:
-
-The settings by setserial are all keyword and optional, so you need only
-say
-
-setserial /dev/ttyS3 irq 7
-
-port 2e8 is the default for that device.
+> Next I installed Wine.  I still have no idea where the executable is, but I
+> know it's not in my path.  Running "ls -al -R | grep wine" produces even
+> more results than when I looked for Opera.
 >
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-22
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+> Is there a default location for software installations via RPMs?
+>
+> Thank you,
+> Chris
+
+It is up to the rpm packager.
+
+rpm -ql opera | less
+rpm -ql wine
+
+to restrict the output to executables, I guess something like this would
+do:
+
+rpm -ql <package name> | grep '/bin/'
 
 Lawson
+
 --
 ---oops---
+
 
 
 
