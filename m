@@ -1,80 +1,103 @@
-From: Jerry James Haumberger <jerryjh@imt.net>
-Subject: hard drive head parking in linux
-Date: Tue, 10 Dec 2002 18:12:54 +0000 (UTC)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: fetchmail and smtp problem (was tuning iptables)
+Date: Tue, 10 Dec 2002 14:43:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212101811.LAA18667@cu.imt.net>
-Content-Transfer-Encoding: 7bit
+Message-ID: <200212101943.gBAJhgW03033@hartford-hwp.com>
+References: <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk> (message
+	from Carl on Tue, 10 Dec 2002 13:38:06 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: carl@anexia.co.uk
+Cc: linux-newbie@vger.kernel.org
 
+Here are some preliminary results on fetchmail.
 
-Hello, Steven --
+------------------
+When I originally ran netsat -l, I got: 
 
->> I understand that early PC hard drives had to have 
->> their heads parked when shut down, 
+  Active Internet connections (only servers)
 
->A blast from the past.  Yes, indeed, pre-IDE drives 
->(two data cables) needed parking.  Over the years I've 
->had several of these monsters.  I even installed a small
->Linux on one (it had to be small 'cause the HD was only
->20mb :-).  Did you know that the latest Slackware (8.1) 
->still provides a stock kernel (xt.i) for such drives?
->Imagine that: a 2.4.18 kernel on an old Seagate MFM.   
+    Proto Recv-Q Send-Q Local Address   Foreign Address   State      
+    tcp        0      0 127.0.0.1:smtp      *:*           LISTEN    
 
-But do you know whether or not Linux lifts the HD heads after a
-period of inactivity, or is this already an automatic feature
-of the later hard drives... say, my (approx.) 700MB HD on
-this machine?  I'm guessing Linux (including your BL 1.7)
-parks hard drive heads (if not done by the HD mechanism itself)
-upon shutdown... but I'm not certain about what happens to
-the hard drive heads during up time...
+But now for some reason it has changed to:
+    tcp        0      0 hartford-hwp.com:smtp *:*         LISTEN 
 
-Or are you implying that the "stock kernel (xt.i)" *does*
-support this hard drive head parking/"resting" feature... for
-XTs and later hard drives?
+Whatever the reason for the change, I gather this means something is
+listing on the smtp port (25).  
 
->You gotta give credit to Jerry.  He doesn't just talk the
->talk, he walks the walk.  A close reading of his message
->header reveals that he is indeed using a minimalist mailer
->for this list.
+--------------------
 
-Oh?  I thought that "mail" was the Standard Procedure for "Mr.
-BasicLinux" himself... ;-)
+Setting up /etc/mail/access. I have:
 
-This 486 DX2 is one of my more *powerful* machines... actually,
-it was "newly" constructed (with some used parts, but new case and
-monitor) only about five years ago.  This was done at my expense
-through Computer Renaissance in the USA.  I've intended it to be
-a showcase demonstration of the capabilities of a DOS-only computer
-system comprised largely of freeware and/or abandoned software
-(and some inexpensive shareware from my past purchases); it contains
-PC DOS 7 in its boot-up partition (thrown away -- still in the
-unbroken plastic-wrapped box).  Now, however, it also demonsrates
-the dual capabilities of DOS/Linux -- thanks to your wonderful
-distribution of BasicLinux 1.7.  I've wished for several years to
-have a console-only installation of Linux (without that enormous
-quantity of "X" material) from which I could have full textual
-style Internet services.  Your BasicLinux is installed in the
-larger area of this machine's hard drive (PC DOS has about 160 MBs,
-and BasicLinux 1.7 has two partitions in the remainder of the
-688 MB HD, minus around 16 MBs for its swap partition).  Originally,
-the Linux partition was RH 5.0, but I couldn't figure out how to
-install that without X, until your excellent distribution became
-available -- which only occupies (according to du) about 9.2 MBs of
-its ext2 partition (this includes several other add-ons from the
-Slackware 3.5 distribution site; your basic BL installation is only
-about half that size, I believe).
+	localhost.localdomain		RELAY
+	localhost			RELAY
+	127.0.0.1			RELAY You suggest inserting
+--------------------
 
-And I have other classic systems -- a venerable old IBM AT and XT,
-among others... all in splendid shape and Internet-ready...
+I also checked /etc/mail/local-host-names. It is empty by default.
+You suggest entering "mailserver.mydomain.com", but since my machine
+has neither a static IP address nor hame, I was not sure what to do. I
+instead just put in my hostname (hartford-hwp.com), figuring it would
+do no harm.
 
-Anyway, back to topic... ?!
+        # local-host-names - include all aliases for your machine here.
+        localhost
+        localhost.localdomain
+        hartford-hwp.com
 
-Jerry... on a 486 DX2-50MHz with 8MB RAM in BasicLinux 1.7
-and Midnight Commander at the lab of Classic Systems, Ltd.
+--------------------
+
+Next, I ran netstat -lp
+
+      # netstat -lp
+        tcp     0    0 *:smtp  *:*    LISTEN      856/sendmail: accep
+
+Port 25 accepts messages from sendmail?
+
+--------------------
+
+I started a telnet session, but didn't log in. Will do that, too, if
+useful. 
+
+  # telnet localhost 25
+  Trying 127.0.0.1...
+  Connected to hartford-hwp.com (127.0.0.1).
+  Escape character is '^]'.
+  220 hartford-hwp.com ESMTP Sendmail 8.12.5/8.12.5; Tue, 10 Dec 2002 
+	13:12:00 -0500
+ 
+-------------------
+I didn't know what might be useful from /etc/mail/sendmail.cf, but as
+I waited thinking about that, I saw that my fetchmail -k command
+actually carried through. It took about 20 seconds to start the first
+download. The next few messages took about 10 seconds each. Then a
+batch of about 8 downloaded normally (2-3 seconds for the batch), then
+slow again. Then fast again. The pattern was consistent for additional
+tries. 
+
+The first messages was an undeliverable notive from when I tried to
+send myself a test message almost a week ago:
+
+ brownh@hartford-hwp.com... Deferred: hartford-hwp.com.: Network is unreachable
+
+After five days, it was deleted from queue. The batch of test messages
+I sent myself (also 127.0.0.1, also localhost.localdomain) fell into a
+black hole. 
+
+I don't know where to look for a fechmail log, but I ran fetchmail -v
+-v > /opt/tmp/-fetchmail.log. Because it was just one new message that
+(successfully) downloaded, I'll here venture to paste the entire log:
+
+Oops. Left it on the wrong HD. Will have to retrieve it next time I
+boot the disk. But the message did not wave any red flags (but I may
+well not recognize one even if I saw it).
+
+Haines
 
 
 -
