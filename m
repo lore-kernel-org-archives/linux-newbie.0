@@ -1,79 +1,72 @@
-From: whitnl73@juno.com
-Subject: Re: smbprint
-Date: Fri, 14 Feb 2003 20:15:49 -0500 (EST)
+From: Jose Luis Alarcon <jlalarcon@linuxwaves.com>
+Subject: Re: Upgrading from 2.4.18 to 2.5.59
+Date: Sat, 15 Feb 2003 07:03:30 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030214.215139.8.2.whitnl73@juno.com>
-References: <15948.63078.810448.32226@ksys.rug.ac.be>
+Message-ID: <20030215150331.1DEC84044@sitemail.everyone.net>
+Reply-To: jlalarcon@linuxwaves.com
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <15948.63078.810448.32226@ksys.rug.ac.be>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: kurt.sys@rug.ac.be
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Eng Se-Hsieng <g0202512@nus.edu.sg>
 Cc: linux-newbie@vger.kernel.org
 
-On Fri, 14 Feb 2003, Kurt Sys wrote:
+--- "Eng Se-Hsieng" <g0202512@nus.edu.sg> wrote:
+>Dear all,
+>
+>I am currently running 2.4.18 (Redhat 7.3) but would like to upgrade to
+>2.5.59.
+>
+>This is because I would like to implement the SCTP transport protocol
+>which comes in the form of .patch.
+>
+>I am confused as to if I should upgrade and install the kernel before
+>applying the patch or do both together.
+>
+>Furthermore, may I use the kernel sources on this site since I can't
+>find 2.5.59 on redhat?
+>
+>Thank you.
+>
+>Eng Se-Hsieng
+>Singapore
+>
 
-> Hello,
->
-> I try to get samba to work, especially the printing to a windows NT network printer. I can print to the printer by using smbprint etc, but this always takes some time (first 'gs -sDEVICE=ljet -sOutputFile=file.hp file.pdf' followed by 'smbclient \\\\labmetserver\\HPLaserJ -Ukurts%xxxxx' and finally giving the command 'print file.hp'). So, I decided to try to make an entry in my printcap-file (I show it here, although I'm sure that this doesn't matter for the problem I have...):
+  Hello Eng.
 
-...
->
-> And then I had to make two more files (these are the important ones, I guess):
-> /var/spool/lpd/smb0/.config:
-> ----
-> server = LABMETSERVER
-> service = HPLaserJ
-> user = kurts
-> password = "xxxxxx"
-> ----
->
-> and the file /usr/local/bin/smbprint:
-> ----
-> #!/bin/sh -x
->
-> logfile=/tmp/smb-print.log
->
-> eval acct_file=\$$#
->
-> spool_dir=/var/spool/lpd/smb0
-> config_file=$spool_dir/.config
->
-> eval cat $config_file
+  You can do it in the two ways: first install the kernel and after apply patch
+or apply the patch to the kernel source and then compile it. But i think that in
+the second way you have a step less, cos ever after apply the patch you must
+compile again.
 
-Excuse me?  Why do you think this will set any shell variables?
-This is just going to copy your config file to stdout.
-See "help eval" and man cat.
+  You must know that today (february 15) kernel 2.5.61 is out. Why are you
+interested in 2.5.59?, this kernel is "old" talking in the development terms.
 
-I think you want something like
+  The best mirror for your download is:
 
-tn=`mktemp /tmp/x.XXXXXXX` && sed 's/ //g' $cf >$tn && source $tn && rm $tn
-unset tn
+http://www.averse.lkams.kernel.org/pub/linux/kernel/v2.5
 
-AFAIK, the way to set a shell variable is: "name=value",
-not "name = value", hence the sed
->
-> Apparently, the variables 'server', 'service', 'user' and 'password' are not read (since they are replaced by nothing). What am I doing wrong?
->
-why would cat be setting variables?
->
-> thanks in advance,
-> Kurt
-> -
->
-Lawson
+  Regards.
 
---
----oops---
+  Jose.
 
 
+http://linuxespana.scripterz.org
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+Debian GNU/Linux 'Sid' Kernel 2.5.61 Ext3.
+ESware Linux 365 Kernel 2.5.60 ReiserFS.
+Registered Linux User #213309.
+Memories..... You are talking about memories. 
+Rick Deckard. Blade Runner.
+
+_____________________________________________________________
+Get your spam-free, Linux email now --> http://www.LinuxWaves.com
+Join Linux discussions --> http://Community.LinuxWaves.com
+
+_____________________________________________________________
+Select your own custom email address for FREE! Get you@yourchoice.com w/No Ads, 6MB, POP & more! http://www.everyone.net/selectmail?campaign=tag
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
