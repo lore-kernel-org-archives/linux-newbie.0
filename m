@@ -1,31 +1,38 @@
-From: caszonyi@rdslink.ro
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: logging
-Date: Tue, 30 Dec 2003 04:39:28 +0200 (EET)
+Date: Mon, 29 Dec 2003 18:44:46 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0312300437290.762@grinch.ro>
+Message-ID: <5.1.0.14.1.20031229183911.01fecdf0@celine>
 References: <1072737808.10488.3.camel@darwin>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <1072737808.10488.3.camel@darwin>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: jtwilliams@vt.edu
-Cc: linux <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-On Tue, 29 Dec 2003, John T. Williams wrote:
-
-> I was wondering if there is a good method for logging all attempts to
-> connect to a port on my computer.  Basically, I was looking for
-> something that logged the port and ip and the destination port of
-> attempted connections.
+At 05:43 PM 12/29/2003 -0500, John T. Williams wrote:
+>I was wondering if there is a good method for logging all attempts to
+>connect to a port on my computer.  Basically, I was looking for
+>something that logged the port and ip and the destination port of
+>attempted connections.
 >
-> I'm running Mandrake 9.1
->
+>I'm running Mandrake 9.1
 
-iptables has a logging option but I can't tell you more.
-http://lartc.org and look for HOWTO on that page
+Presumably a 2.4.x kernel then.
+
+iptables itself (the kernel's built-in firewalling) will do this; LOG is a 
+predefined target that does not terminate (in the way that ACCEPT, REJECT, 
+and DENY do) but does log each matching packet before passing it on to the 
+next rule in the chain.
+
+The man page for iptables will at least get you started. If you need help 
+with specifics after reading it, don't hesitate to ask here.
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
