@@ -1,38 +1,38 @@
-From: Ramzez <r4mz3z@yahoo.es>
-Subject: driver via97
-Date: Mon, 2 Sep 2002 07:52:54 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: tar confined to partitions
+Date: Mon, 2 Sep 2002 11:17:41 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209020753.02487.r4mz3z@yahoo.es>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Message-ID: <200209021517.g82FHf908778@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@hartford-hwp.com
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I have a tar script to back up all directories on my HD (/*) to a
+mirror disk. 
 
-Hi...
-  I have installed a sound card VIA97 and the driver for this is into 
-OpenSound package; but the driver turn off each 20 min because it's shareware
+But a puzzler. The script sees all directories mounted on / and backs
+up their content, but fails to back up the contents of directories
+that are presumably mounted under /, but are not in the same partition
+as /.
 
-  where do I find a driver like this??
+For example, if I specify /* as source, the /bin directory contents
+are backed up because /bin is in the same partition as /. However,
+/home has its own partition, and so while tar script creates a /home
+directory,  it is empty. I have to back up /home explicitly.
 
-thanks
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+If I run # mount, I see:
 
-iD8DBQE9c18ss4dF9gl05swRAr2JAJwKbxgJ9CsZbOUWmCWkrtKJ6bsFKwCeIDUz
-p/tUW+TNkiFrQPZMeva5tuc=
-=SACi
------END PGP SIGNATURE-----
+...
+/dev/sda6 on / type ext3 (rw)
+...
+/dev/sda12 on /home type ext3 (rw)
 
+Only the contents of sda6 are getting backed up.
+
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
