@@ -1,52 +1,25 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Page Borders in Latex
-Date: Sat, 1 Jun 2002 09:30:33 +0100
+From: Matthew Stapleton <matthewstapleton@juno.com>
+Subject: Considerations to make in buying a portable computer
+Date: Sat, 1 Jun 2002 13:24:33 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020601083033.GA611@cam.ac.uk>
-References: <200205262029.21973.knutties@indiainfo.com> <20020526170744.GA338@cam.ac.uk> <200205280850.21794.mssnlayam@cs.annauniv.edu>
+Message-ID: <20020601.132435.-219045.2.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="zhXaljGHf11kAtnf"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200205280850.21794.mssnlayam@cs.annauniv.edu>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+I am thinking about buying a portable computer.  As of now I am
+titillating between the Psion 7 and a PC.  If I wanted to run Linux what
+considerations should I make before I buy?  I know Linux is very
+versatile, but, all the same, it does not support or is buggy on some
+hardware.  I would mostly be interested in writing documents, doing
+research on the net, and maybe some web design.
 
---zhXaljGHf11kAtnf
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thanks,
 
->   > \usepackage{fancybox}
-
->   > \fancypage{\fbox}{}
-> The above method works, but there is a problem.
-> The box is too close to the text. Is there some way to
-> have a gap between the box and the text.
-Try
-
-\fancypage{\setlength{\fboxsep}{32pt}\fbox}{}
-
-Change the ``32pt'' to suit.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---zhXaljGHf11kAtnf
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE8+IYpO4S8/gLNrjcRAh2IAKCeGKZX/+UVo2m94kv0YNohsSL1uACeJ4VZ
-kaJOMVsciZLO8jdXcH+Ddzo=
-=EeLY
------END PGP SIGNATURE-----
-
---zhXaljGHf11kAtnf--
+Matthew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
