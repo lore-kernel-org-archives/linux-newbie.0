@@ -1,8 +1,8 @@
-From: "Peter" <lists@tcob1.net>
-Subject: Re: Mailer Connections
-Date: Tuesday, 13 Aug 2002 15:41:57 +000
+From: "Ray Olszewski" <lists@tcob1.net>
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 09:58:41 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020813_154157__a7a33eb2@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,47 +13,68 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Thanks Riley and Ray
+If you have not seen your mail on the list, then almost certainly something 
+is wrong at your end. This is the *third* time I have seen this message 
+this morning.
 
-pfheiss said:
->> How do I revert back that I can mail again with any mail program
->> especially exmh and with any ISP?
+Are you sure you are subscribed?
+
+Might your MTA or MUA be filtering out messages that are From: your own 
+address?
+
+At 05:34 PM 8/15/02 +0200, Axel Siebenwirth wrote:
+>Sorry, I haven't seen my mail get to the list. So here goes it again.
+>
+>----- Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
+>
+>Hi,
+>
+>I have some stupid questions.
+>
+>What makes the difference between .o and .so files? What is their use? Is it
+>just a naming convention?
+
+.o is an object file. It represents the intermediate step in the 
+compile-and-link process for a program. .so is a shared object file (i.e., 
+a library); their linking (at runtime) is managed by ld.so .
+
+I'm not sure if the naming differences are actually required or if the use 
+of .so is a naming convention (not "juet" a naming convention, though, 
+since if it is one, it is well established, hence important).
+
+>When I want to link libraries to a program I am compiling, of what format do
+>the libraries have to be?
+
+Depends on how you link. Modern linking is done dynamically (only one copy 
+of the library is loaded into memory and shared by all apps that use it), 
+using .so libraries. Older linking was done statically (each app loaded its 
+own personal copy of the library into memory), using .a libraries.
+
+Of course, you need the appropriate header files in /usr/include to do 
+either of these things. How to get them depends on which Linux distro you 
+use; in Debian, most every library_package_name.deb has a corresponding 
+library_package_name-dev.deb with the needed headers.
+
+>I have found out that .a files are archives created with ar. What is that
+>for?
+
+It's been so long since I used a .a libraries, I didn't recall how they 
+were created. They are the old-format libraries I referred to above. They 
+are kept around, at least on full-size Linux installs, mainly for legacy 
+reasons. Don't use them unless you have *very* unusual requirements (I 
+can't even think of an example).
+
+>Many thanks and my best regards,
+>Axel Siebenwirth
 
 
-rhw@InfraDead.Org said:
-> As a result, the solution may be as simple as setting the hostname for
-> your machine to match that of your preferred ISP by editing the file /
-> etc/sysconfig/network and putting the full; hostname on the HOSTNAME=
-> line, then rebooting your system. 
-
-I did that now. It had localhost.localdomain. I changed if to "Peter".
-Can there be more than one name and if so how are they separated?
 
 
-rhw@InfraDead.Org said:
-> Incidentally, sendmail normally tries to send all outgoing emails
-> direct to the relevant delivery host, so the ISP you're dialled up
-> with should make no difference at all.
-
-That what I always thought and it always worked since RH5.2 w/o me doing 
-anything.
-
-ray@comarre.com said:
->  Also please  mention which MTA you are using (either look for
-> something listening on  port 25 or find the smtp entry in /etc/
-> inetd.conf, depending on which way your system is set up)
-
-The file inetd.conf was absent. I found it as inetd.cof.rpmsave and copied it 
-to /etc/inetd.conf. There is no smtp entry in this file.
-
-This mail should go out now with my webcard ISP and using the program exmh.
-
-Regards
-
--- 
-Peter
-
-
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 
