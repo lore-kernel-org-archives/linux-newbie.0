@@ -1,125 +1,103 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: unable to ping cable provider
-Date: Sat, 23 Nov 2002 09:10:24 -0800
+From: wa4chq@netscape.net (neil t)
+Subject: re: lilo questions.......
+Date: Sat, 23 Nov 2002 14:03:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021123085232.02126060@celine>
-References: <Pine.LNX.4.21.0211231208080.14036-100000@ppg_penguin.linux
- .bogus>
+Message-ID: <3B60FCE9.0E186F1F.0006BEFC@netscape.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0211231208080.14036-100000@ppg_penguin.linux
- .bogus>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Ken -- You may already have gotten the help you need from John Kelly's 
-response. The few details I can add may or may not be helpful.
+greetings and again tnx for the help---
 
-1. You are being assigned a private-range address (10.b.c.d) by your ISP. 
-This means one of two things:
+>I copied an installation guide for Debian Woody 3.0, but it seems to be
+>geared to setting up a server.  I just want regular install.  I did use it
+>as a guide when I first installed Debian, and it did seem to work, but I
+>did have to tweak it a bit.  (any suggestions for a better installation
+>guide?)
 
-         A. The ISP NAT's these addresses upstream of you.
-         B. The ISP assigns these addresses temporarily, until you register 
-with the ISP.
+>>>>>>Better than what? You don't tell me enough to know ahat you are using now.
 
-I'm guessing that you are in situation B, and you need somehow to register 
-your set-top box (or maybe your NIC MAC address) to get a real connection. 
-More on that later.
+It is called "Installing Woody (Debian Linux 3.0) and the url is:
+wysiwyg://17/http:www.aboutdebian.com/install3.htm  (that is what I see on the pages I printed.....)
 
-2. That you cannot ping your default gateway may not be significant, since 
-ISP's often disable ping responses from their routers. This makes user-end 
-troubleshooting harder, but I've never noticed that ISPs are much concerned 
-about helping their customers do anything that is not a vanilla connection. 
-I'd put this part of the analysis aside for now. (Oh, one question ... is 
-the "mybox" that you are pinging *from* the router itself or a LAN 
-workstation? If the latter, you won't be able to ping through the router, 
-except to its own external interface address, until you install an iptables 
-ruleset that NATs the LAN ... just enabling ip_forwarding is not 
-sufficient, since outside hosts do not know that your router's external 
-interface address is their route to 192.168.0.0/24 . Since I'm not familiar 
-with LFS-3.3, specifically how it sets up iptables rulesets, I can't 
-suggest details here.)
+>When I installed it, I made a boot floppy and it worked ok, but was very
+>slow.
 
-3. The approach you seem to have arrived at ... put the NIC in a Windows 
-box; register the NIC; move the NIC to your Linux router ... is the good, 
-conservative approach to making the connection work (assuming you are in 
-situation 1B, not 1A). You could also try connecting via your ISP's 
-preferred browser (IE, no doubt) running on a NAT'd Windows or Mac host on 
-the LAN. If you do this right, the connection should look to the ISP as 
-though it were coming from the router's IP and MAC address (unless the ISP 
-specifically has anti-NAT stuff in its system, an unlikely possibility ... 
-but one that will cause bigger problems than we've considered so far if 
-they somehow do it).
+>>>>>"Slow" and "fast" are in the eye of the beholder, so your telling me >>>>>this is "very slow" in your opinion doesn't let me know if you are describing the normal speed of floppy-based boots or a system with a problem.
 
-At 12:52 PM 11/23/02 +0000, Ken Moffat wrote:
->Hi,
->
->  I've just had a set-top box installed (by NTL) to give me a broadband
->connection, but I'm clearly out of my depth.
->
->My set-up is
->
->+---------------+            +----------------+       +-------------+
->| my net        |  +-----+   | firewall       |       |  NTL        |
->| 192.168.0.x   |--| hub |---| eth0           |       |             |
->| (several)     |  +-----+   | 192.168.0.254  |       |             |
->+---------------+            |================|       |             |
->                              |           eth1 |-------|             |
->                              | e.g.10.64.14.5 |       +-------------+
->                              +----------------+
->
->My own network is working fine - all the boxes talk to each other, using
->/etc/hosts for name lookups. The firewall is running LFS-3.3.
->
->My connection to NTL is using dhcp (I'm running dhclient-3.0pl1). I get
->assigned an address (10.64.14.5 at the moment) when I bring up the
->interface and I can see the lease data in
->/var/state/dhcp/dhclient.leases being updated at intervals. This same
->file shows the router is 10.64.14.1 and the dhcp-server is 10.0.138.70 .
->
->The first stage of making the connection usable is to register with
->NTL. Stuff on google suggests that all http requests are diverted to the
->sign-up server at this point, for a page start.html. I tried to use lynx
->to get this page, but it failed. Examination shows that I cannot ping
->any of the NTL addresses from the firewall. I'm using iptables, so I
->cleared out all the tables and re-enabled ip-forwarding in case the
->firewall script was the problem (I'm guessing this is safe for the
->moment because of the lack of connectivity).
->
->The routing table from netstat -rn shows
->
->Dest          Gateway     Genmask       Flags MSS Window irtt  Iface
->192.168.0.0   0.0.0.0     255.255.255.0 U      40 0       0    eth0
->10.64.14.0    0.0.0.0     255.255.255.0 U      40 0       0    eth1
->0.0.0.0       10.64.14.1  0.0.0.0       UG     40 0       0    eth1
->
->
->If I try to ping 10.64.14.1 (or any other NTL IP)  I get
->root@mybox~# ping -c 2 10.64.14.1
->PING 10.64.14.1 (10.64.14.1): 56 octets data
->
->--- 10.64.14.1 ping statistics ---
->2 packets transmitted, 0 packets received, 100% packet loss
->
->
->If I try to ping 10.64.14.255, only my firewall (10.64.14.5) responds -
->even if I give it a bigger count (on the internal network, only one box
->responds for counts of 1 or 2, but they all respond for counts of 5 or
->more).
->
->I'm hoping this is something fairly obvious. Any suggestions, please ?
+I was describing booting from the floppy disk....
+
+>>Getting the "lingo" down is less important then being careful about your
+descriptions. For example, after noting at the beginning of this message
+that you'd previously made a "typo", you continue to misname "lilo.conf"
+"lilo.config" (unless Mandrake really does use a different name for this
+file ... I know Debian still calls it lilo.conf). When asking for
+configuration help, accurate reporting of the details is essential.
+
+whoops!  yes it is "lilo.conf" !
+
+Ok, so I guess if I install Debian 3.0 or even Red Hat again, it will replace my existing bootloader but I will still have the option to make Mandrake the default.  This is determined when I edit /etc/lilo.conf.
+
+Is there a standard format for adding other linux distro's to /etc/lilo.conf?  One of replies to my question explains it this way:
+
+"It does not really make any differance which system installed lilo, the
+secret is mounting all your disks/partitions where "lilo" can reach them all in one go, you can define any partition "in use or not" as long as it is mounted.
+
+An example;
+dos = hda1
+redhat = hda5
+mandrake = hdc1
+slackware = hdd1
+
+You boot with mandrake, you then create some extra dirs'
+
+mkdir /hda5
+mkdir /hdc1
+mkdir /hdd1
+
+mount -t ext2 /dev/hda5 /hda5
+mount -t ext2 /dev/hdd1 /hdd1
+
+Edit /etc/lilo and reflect the above
+
+image = image-redhat
+label = redhat
+root = /hda5/boot/image-redhat
+read-only
+
+same idea for slack.
+
+run lilo with -t to check that all is ok, when all is ok /sbin/lilo
+reboot
+
+Another way is to copy all bootable images into one /boot dir and edit
+lilo.conf accordingly."
+
+I have seen some say:
+image=/boot/vmlinuz-2.2.0-ide pci<<<<<< is it /boot because all bootable 
+images are in /boot?
+      label=Debian (example)
+      read-only
+      root=/dev/hdd1
+Anyway....again thanks for helping me with this.....
+Cheers-
+Neil t.
 
 
+ 
+-- 
+Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
