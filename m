@@ -1,8 +1,8 @@
-From: "lawson_whitney@juno.com" <lists@tcob1.net>
-Subject: Re: Want to strip some formatting out of a text file
-Date: Monday, 12 Aug 2002 22:22:25 +000
+From: "Jim Roland" <lists@tcob1.net>
+Subject: Re: Port 20 blocked. How to unblock
+Date: Tuesday, 13 Aug 2002 03:11:24 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020812_222225__4dc190fe@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020813_031124__ef070ac7@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,36 +13,65 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-On Mon, 12 Aug 2002, Alan Womack wrote:
+Port 20 is used for the actual data transfer (directory listings, files,
+etc) after you have authenticated with port 21 (ftp control).  Port 20 will
+not be an open port and will not allow connections until port 21 tells it to
+(someone could hijack an active connection if port 20 was open to anything
+including a telnet diagnostic connect).
 
-> I'm trying to download the text manuals for the linux pam modules to my palm 
-pilot, but there is the appearance of old style double strike for emphasis text 
-all over the docs.
+
+----- Original Message -----
+From: "Benny Pedersen" <linux-net@tcob1.net>
+To: <linux-newbie@vger.kernel.org>
+Sent: Saturday, August 03, 2002 3:02 PM
+Subject: Port 20 blocked. How to unblock
+
+
+> Originally to: Phillip Morgan
 >
-> e.g. a L(backspace)Li(backspace)in(backspace)n
+> Hello Phillip.
 >
-> What utility to remove this backspacing and doubling of characters so they 
-would be over-written?
+> 12 Jul 02 16:40, you wrote to all:
 >
-> Alan
+>  PM> I tried to telnet to port 21 and found that works, but telnet'ing to
+>  PM> port 20 (ftp-data), fails (connection refused).
 >
-> I dl'd the text file from the kernel.org website documentation of pam
+> fix with using passive ftp, only non passive ftp use port 20
+>
+> and dont use host.* use proftpd.conf, man proftpd.conf find limith
+>
+> and make AllowStoreRestart on to enable resume upload, and have
+AllowStoreRestart off in your anon ftp config
+>
+> ask if you still need help
+>
+>  PM> So why would a connect to port 20 be refused?
+>
+> ask your isp :-)
+>
+> Benny
+>
+> <-> Gateway Information.
+> This message originated from a Fidonet System (http://www.fidonet.org)
+> and was gated at TCOB1 (http://www.tcob1.net)
+> Please do not respond direct to this message but via the list
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
-col -b
-
-I guess.
-
-Lawson
----oops---
-
-
-
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
 -
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+
+
 
 <-> Gateway Information.
 This message originated from a Fidonet System (http://www.fidonet.org)
