@@ -1,47 +1,43 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: messages in /var/log/
-Date: Wed, 4 Aug 2004 07:42:38 +0200
+Date: Tue, 03 Aug 2004 22:41:33 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200408040742.38045.pa3gcu@zeelandnet.nl>
-References: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.engin.umich.edu>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20040803223500.01f0d8e0@celine>
+References: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.e
+ ngin.umich.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.engin.umich.edu>
-Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.e
+ ngin.umich.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Karthik <karthikv@Alum.Dartmouth.ORG>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 04 August 2004 04:15, Karthik Vishwanath wrote:
-> I have a whole load of entries that look like:
+At 10:15 PM 8/3/2004 -0400, Karthik Vishwanath wrote:
+>I have a whole load of entries that look like:
 >
-> Aug  3 14:48:38 gandalf -- MARK --
-> Aug  3 15:08:38 gandalf -- MARK --
-> ...
-
-syslogd puts it in /var/log/messages, see 'man syslogd'
-The -m option is supposed to turn it off, i remember years ago it was not 
-possable to turn it off completly, as to it working now i have not tryed.
-
+>Aug  3 14:48:38 gandalf -- MARK --
+>Aug  3 15:08:38 gandalf -- MARK --
+>...
 >
-> These are repeated every 20 minutes. How can I determine where are they
-> coming from and what they mean?
 >
-> Thanks,
->
-> -K
+>These are repeated every 20 minutes. How can I determine where are they
+>coming from and what they mean?
 
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Second things first ... what they mean is that the system was operational 
+at the times associated with the timestamps. If you try to log on to your 
+system and find it dead as a doornail, needing a hard reboot, the last MARK 
+you find in the logs after a reboot will tell you the approximate time of 
+the failure.
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+As to where they are coming from ... on my Debian systems, it's a built-in 
+feature of syslogd. Check your man page for the -m option to see if yours 
+matches mine (I haven't seen a question from you in awhile, and I forget 
+what distro you are running). You can change the frequency with -m, and 20 
+minutes is the default.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
