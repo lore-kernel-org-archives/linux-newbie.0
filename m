@@ -1,50 +1,38 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: tar for "full" floppy backup?
-Date: Fri, 6 Dec 2002 19:53:40 -0500 (EST)
+From: Jerry James Haumberger <jerryjh@imt.net>
+Subject: tar for "full" floppy backup?
+Date: Sat, 7 Dec 2002 09:24:20 +0000 (UTC)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212061952490.1853-100000@athame.gmpexpress.net>
-References: <200212062144.OAA17052@cu.imt.net>
- <Pine.LNX.4.50.0212061725310.1504-100000@athame.gmpexpress.net>
- <3DF1344D.C82F5DB9@gelm.net>
-Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DF1344D.C82F5DB9@gelm.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Message-ID: <200212070919.CAA12532@cu.imt.net>
 Content-Transfer-Encoding: 7bit
-To: Chuck Gelm <nc8q@gelm.net>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Take the b option out of there completely I think.  Blocks are used for
-tapes but not normally disk devices such as floppy disks.
+Hello everyone --
 
-Jude <dashielljt(at)gmpexpress-dot-net>
+Thank you for offering me various suggestions on how to possibly
+get tar to make a backup archive on multiple floppies.  Sorry to
+say, none of the suggestions worked.
 
-On Fri, 6 Dec 2002, Chuck Gelm wrote:
+The only result was that tar would make an archive in whatever
+directory I happened to be in when creating the archive -- and
+it would ignore the /dev/fd0 device.
 
-> Howdy, dashielljt:
->
->  I was thinking along the same lines.  I am only familiar
-> with the last option being 'f'.  Yet I noticed that the 'b'
-> command needs an operator too.  Perhaps the operators are
-> appended in the same order they are requested by the options.
-> 'f' filename.ext or /dev/*
-> 'b' block size
-> 'k' ?
->  i.e.
-> tar cvfbk /dev/fd0 1440 4 /
->       \\\
->        \\k = 4
->         \b = 1440
->          f = /dev/fd0
-> ?
-> HTH, Chuck
->
-> dashielljt wrote:
-> >
-> > maybe tar cvbkf /dev ... will work.
-> <snip>
->
+When I used the "M" option, nothing occurred.  When I tried
+adding the "z" option, I was told that multiple compressed archives
+were not possible.
+
+When I try to use the Slackware manual command (SAMS), it messes
+up the floppy -- which has to be reformatted and so on.
+
+The question remains:  How can I back up -- with tar or any other
+Slackware 3.5 program -- my 9 MBs of files from the BasicLinux
+console with multiple floppies?  And in compressed format?
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
