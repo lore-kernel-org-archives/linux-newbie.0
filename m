@@ -1,77 +1,76 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Extra installation
-Date: Sun, 11 Aug 2002 07:06:54 +0000
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: RH7.3 keyborad lock-up
+Date: Sun, 11 Aug 2002 08:13:43 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02081107065400.00319@unix.pa3gcu>
-References: <001901c240f6$2a4395c0$14000a0a@p75>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.21.0208110754590.8397-100000@Consulate.UFP.CX>
+References: <5.1.0.14.1.20020810203328.0208ecf0@celine>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001901c240f6$2a4395c0$14000a0a@p75>
+In-Reply-To: <5.1.0.14.1.20020810203328.0208ecf0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Colin Harris <charis.g3orh@virgin.net>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Peter <pfheiss@philonline.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Sunday 11 August 2002 05:14, Colin Harris wrote:
-> Hi all,
->          New to this list. Could someone outline the
-> possibilities please. Problem as below :-
+Hi Peter.
+
+>> I made that switch with RH7.1 some time ago with no problems.
+>> 7.1 runs on XFree86-4.0.3-5 and 7.3 on XFree-4.2.0-8.
+
+> This move by Red Hat may be optimistic. Even Debian unstable (Sid)
+> still runs XFree86 4.1.0-17.
+
+That is certainly possible. What version does RH 7.2 use?
+
+XFree86 is extremely difficult to downgrade. However, one option may
+exist if you have a CD-writer, and that is to create a CDR set with the
+7.3 image, but with the XFree86 RPM's from 7.2 rather than the ones
+supplied with 7.3 and install from that.
+
+>> It is there /etc/X11/XF86Config-4 but I can not find anything
+>> specific as to what X server I am running. Must be my ignorance.
+
+> You want the "Driver" entry in the "Device" block.
+> Here is mine as an example:
 >
-> I have a 17Gb HDD. First 5 GB dedicated to Redhat 6.1 and
-> runs an ax25 system for a DX cluster and ax25 node system.
->
-> Want to try Redhat 7.2 - Tried a second install by creating
-> a new 5GB partition. First time it did install, subsequent
-> times it stops after 400 mb.    However , the plan was to
-> install this later version and run it from the existing
-> Lilo. After ( successfully) installing 7.2 and running from
-> a floppy , shut down 7.2 , booted 6.1 to include info into
-> lilo.conf , run lilo but of course it cannot find files on
-> an unmounted system (7.2).
+>	Section "Device"
+>		Identifier	"ATI OEM Card"
+>		Driver		"ati"
+>	EndSection
 
-You would need to mount the partition first before running lilo.
-Depending on how you plan to configure lilo of course.
-There are many ways of achiving what you want, i will explain how i do it.
+>> If you think that the problem might be in these XF86Config files
+>> and I have no problem with RH7.1, how about installing the kernel
+>> of RH7.3, libraries etc and then replacing the 7.3 XF86Config files
+>> with the ones of RH7.1.
 
->
-> Questions are :- How to run a second version selectable from
-> Lilo ? and are there still problems with installing between
-> 5 and 10 GB down a hdd ?. I thought this 1023 cylinder thing
-> had been overcome long ago.
+> Risky. Likely to encounter library incompatibilities.
 
-You describe adding the new 7.2 system into the old 6.2 lilo, i would advise 
-against doing that as newer versions of lilo have less problems with just 
-about everything, including the 1023 limit as you point out, i dont know what 
-limitations the version has included in 6.2.
+Probably impossible.
 
-I would place both systems under the latest version of lilo, that we can do 
-as follows.
+>> BTW I posted the problem as well to the redhat-install list and
+>> somebody sugested to turn off the apmd system (advanced power
+>> management) by unmarking the "apmd" entry in ntsysv. What do you
+>> think about that? Would that have something to do with tuxracer or
+>> chromium?
 
-Boot into 7.2 with your floppy.
-login as root
-mount the 6.2 root partition into /mnt
-mount -t ext2 /dev/hdxx /mnt
-cp /mnt/boot/boot_image /boot/vmlinuz-red-6.2
-cp /mnt/boot/System.map /boot/System.map-red-6.2
-umount /mnt
-edit /etc/lilo.conf
-Add a new section for the old 6.2 install.
-run lilo with the -t option to check if things are ok.
-If all is ok run lilo again to install the new configuration.
-reboot now you can choose which system you want.
+> Well outside my real expertise, but it seems farfetched, given that
+> the system is running and only the keyboard (and perhaps portions of
+> the display) has failed.
 
-If you need an example take a look at;
+I can't comment re tuxracer and chromium, but that could easily be a
+problem with xscreensaver as it kicks into operation is precicely the
+same circumstances as apmd does. However, it's easy to test for, as
+apmd is, after all, a piece of software. If apmd is the problem, then
+upgrading to the version of apmd supplied with 7.3 will cause the
+problem to start occurring on your 7.1 based system.
 
-http://people.zeelandnet.nl/pa3gcu/lilo.htm
+If that causes the problem to occur, then you can cure it either by
+downgrading to the 7.1 version again or, more simply, by disabling
+apmd with the `chkconfig apmd off` command.
 
->
-> - Regards Colin
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
