@@ -1,98 +1,37 @@
-From: parviz dey <parviz_linux@yahoo.com>
-Subject: Re: Newbie can't start ftpd
-Date: Tue, 11 Mar 2003 08:13:30 -0800 (PST)
+From: Theodore Ts'o <tytso@mit.edu>
+Subject: Re: devfs + PCI serial card = no extra serial ports
+Date: Tue, 11 Mar 2003 04:07:03 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030311161330.49859.qmail@web20511.mail.yahoo.com>
-References: <5.1.0.14.1.20030311071611.01f000c8@celine>
+Message-ID: <20030311090703.GA13389@think.thunk.org>
+References: <11E89240C407D311958800A0C9ACF7D1A33DD5@EXCHANGE>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030311071611.01f000c8@celine>
+Content-Disposition: inline
+In-Reply-To: <11E89240C407D311958800A0C9ACF7D1A33DD5@EXCHANGE>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: Ed Vance <EdV@macrolink.com>
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org, Bryan Whitehead <driver@jpl.nasa.gov>
 
-i think you should look into xinted, since new redhat
-versions has stopped using inted. do some reading on
-how to setup xinted on your linux system.
---- Ray Olszewski <ray@comarre.com> wrote:
-> At 05:49 PM 3/11/2003 +0800, Eng Se-Hsieng wrote:
-> >Hi,
-> >
-> >I installed a custom installation of Redhat 7.3 and
-> would like to get
-> >the simplest ftp server running.
-> >
-> >ftp localhost gives me "ftp: connect: Connection
-> refused"
-> >
-> >I would like to use the basic linux-ftpd-0.17 but
-> typing "ftpd" doesn't
-> >help. Please tell me how I may use the basic ftpd
-> command and not
-> >wu-ftpd, proftpd or others.
+On Fri, Mar 07, 2003 at 03:57:56PM -0800, Ed Vance wrote:
 > 
-> I'm not familiar with the package "linux-ftpd-0.17",
-> but I infer from your 
-> question that it includes an ftp daemon that runs
-> under the name "ftpd". 
-> (But this implied assumption on your part may be
-> your problem. I just 
-> looked up the Debian version of the package, and it
-> installs the daemon 
-> under the name in.ftpd.) The "Connection refused"
-> message does mean that 
-> nothing (neither any ftpd daemon nor inetd) is
-> listening on port 21.
-> 
-> We can't realistically provide here a tutorial that
-> addresses all of the 
-> many things you *may* be doing incorrectly --
-> instead, you need to describe 
-> the steps you followed when installing the package
-> so someone here can spot 
-> the mistake.
-> 
-> So, please tell us ...
-> 
-> 1. How you installed the RPM of  "linux-ftpd-0.17".
-> Afterwards, what does 
-> "which ftpd" (run as root) return?
-> 
-> 2. What DOES happen when you "type" ftpd (I assume
-> you mean by "type" that 
-> you run it, as root, from the command line).
-> "doesn't help" is not a 
-> description I (or anyone, really) can troubleshoot.
-> Afterwards, is ftpd 
-> running ("ps ax |grep ftpd")? Is it, or anything,
-> listening on port 21 
-> ("netstat -l |grep ftp")?
-> 
-> 3. Whether you are running inetd; if you are, what
-> entry is in 
-> /etc/inetd.conf for ftp?
-> 
-> 4. Whether there is anything in /etc/hosts.allow or
-> /etc/hosts.deny 
-> relevant to connections from localhost.
-> 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-http://www.linux-learn.org/faqs
+> Will Bryan get the proper devfs entries if he patches serial.c to 
+> recognize his card at kernel initialization, or is there more 
+> weirdness expected? 
 
+The point is that with devfs, it requires a kernel patch.  And if you
+have an ISA card, where you can't do this kind of autoconfiguration,
+and you're using devfs, you're *toast*.  Without devfs, you just use
+setserial to configure the necessary ports, and you're done.
 
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Web Hosting - establish your business online
-http://webhosting.yahoo.com
+(Granted, these days, the last point may not matter since ISA is
+getting killed off pretty effectively by Microsoft refusing the
+certify systems against recent Windows OS's if they contain ISA buses
+--- one of the good things Microsoft has done for the computer
+industry.  :-)
+
+						- Ted
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
