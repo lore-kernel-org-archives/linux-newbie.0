@@ -1,38 +1,32 @@
-From: Chuck Gelm <nc8q@gelm.net>
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
 Subject: Re: LI -lilo booting problem
-Date: Mon, 29 Jul 2002 17:01:28 -0400
+Date: Mon, 29 Jul 2002 19:11:28 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D45AD28.7623B094@gelm.net>
-References: <3D36DDA3.FA0F073C@gmx.net>
-		 <02072506225706.04469@unix.pa3gcu>
-		 <3D406BBB.E208E07B@gelm.net>
-		 <02072606105100.00370@unix.pa3gcu>
-		 <5.1.0.14.1.20020726164536.02296360@celine> <5.1.0.14.1.20020728140342.0228b3c0@celine> <3D4498AF.42DC0D8C@gelm.net>
+Message-ID: <200207291911.28871.sotl155360@earthlink.net>
+References: <3D36DDA3.FA0F073C@gmx.net> <3D4498AF.42DC0D8C@gelm.net> <3D45AD28.7623B094@gelm.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3D45AD28.7623B094@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-The drive is a Seagate ST38420A.
-I went to www.seagate.com
-and downloaded their 'OnTrack' software.
-Installed it on the drive.
-Now the system boots.
-:-)
-Yet, why didn't it boot before?
+Somewhere in my far distant past I had a dual boot RH 6.0 / MS Windows system. 
+I now have a dual boot RH 7.3 box.
+If I recall correctly all I did to R H 6.0 box to make it read and write to 
+the Win side was add the following line to fstab:
 
-Bewildered, Chuck
+/dev/hda1    /mnt/dos    vfat    user,noauto,rw     0 0
 
+I have added the above to the RH7.3 box but the KDE mount User Tool does not 
+show that dos is mountable.
 
-Chuck Gelm wrote:
+I would appreciate what ideas and guidance the experts on this list may have 
+to offer.
 
-> <snip>
-> > >part    boot    device  start   stop    size    mount
-> > >1       *       /hda1   1       64      528M    /
-> > >2               /hda2   65      96      257M    swap
-> > >3               /hda3   96      1048    7.9G    /usr
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
