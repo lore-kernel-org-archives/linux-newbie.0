@@ -1,20 +1,28 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: APM and a fresh linux box
-Date: Wed, 21 Aug 2002 16:33:49 -0700
+From: Peter <pfheiss@philonline.com>
+Subject: Repartitioning
+Date: Thu, 22 Aug 2002 15:54:14 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208212332.g7LNWa620537@firebin.net>
+Message-ID: <200208220754.g7M7sEY02409@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-I also tried, today a poweroff as root at the console, it resulted in the box stopping, but not turning off.
+Hi,
 
-Thoughts?
+I am contempleting to repartition my slave HD hdd on which I run RH7.2 since 
+my /home directory is becoming tied now that my daughter got into it and I 
+have plenty of extra space on /.
 
-Alan
+I will use the program parted and do the repartitioning from my master HD hda 
+where my RH6.2 resides. Will this be a correct way of doing it?
+
+Thanks & regards
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
