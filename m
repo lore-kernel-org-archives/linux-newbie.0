@@ -1,30 +1,38 @@
-From: Jeff Woods <kazrak+kernel@cesmail.net>
-Subject: Re: line printer line transport
-Date: Fri, 26 Sep 2003 23:16:25 -0700
+From: "Phillip Ames" <phillip.ames@uconn.edu>
+Subject: Advice about packages
+Date: Wed, 1 Oct 2003 17:18:28 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.2.1.1.0.20030926231345.02d76c40@no.incoming.mail>
-References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
- <200309262050.h8QKo6O25459@oola.is.kpn.be> <200309270757.40913.pa3gcu@zeelandnet.nl>
+Message-ID: <002901c38861$8ef4d0c0$0da16389@hyperion2>
+Reply-To: <phillip.ames@uconn.edu>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309270757.40913.pa3gcu@zeelandnet.nl>
-References: <200309262050.h8QKo6O25459@oola.is.kpn.be>
- <200309262050.h8QKo6O25459@oola.is.kpn.be>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 9/27/2003 07:57 AM +0200, pa3gcu wrote:
->todos < filename > newfile && cat newfile >/dev/lp0
+Hi,
+I'm relatively new to using Linux on a daily basis and I was looking for
+some information about what the "trends" are for production Linux
+machines.  I installed RedHat 9, and have mucked about with rpm and
+thought that packages were the greatest thing since sliced bread.
+However, in the course of my reading and playing I've noticed that many
+places recommend that the binary executables actually be compiled by
+your machine (with all its kernel options, etc.) which is sensible.
+Everything is well when I ./configure them and then "make install" but
+if there is an update to a particular product it seems very inconvenient
+to upgrade versions.  An example is the Apache httpd server - 1.3.xx
+stores its served files in /var/www/html/ and the actual httpd daemon in
+/usr/bin.  Apache 2, however, sets the DocumentRoot as
+/usr/local/apache2/htdocs/ and the binaries in /usr/local/apache2/bin/.
+I know it's just a simple matter of changing the DocumentRoot entry in
+the httpd.conf file for served documents but is there a better/easier
+way to go about upgrading the binaries?  Or is the de facto standard to
+simply run ./configure --with-prefix=/usr/bin?  Any advice would be
+appreciated.  Thanks,
 
-Or even:
 
-< filename > /dev/lp0 todos
-
---
-Jeff Woods <kazrak+kernel@cesmail.net> 
+-Phil
 
 
 -
