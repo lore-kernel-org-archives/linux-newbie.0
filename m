@@ -1,42 +1,102 @@
-From: "Cristian CHIRILOV" <atmos@dreams.homelinux.net>
-Subject: Re: Undeleting files on ReiserFS partition
-Date: Sat, 13 Sep 2003 00:50:41 +0300 (EEST)
+From: linux-newbie-owner@vger.kernel.org
+Subject: BURSLU  =?ISO-8859-1?Q?=20E=D0=DDT=DDM?=  =?ISO-8859-1?Q?=20OLANA=D0I?= 15
+Date: Sat, 13 Sep 2003 10:42:48 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <19849.193.226.6.51.1063403441.squirrel@www.cybernet-kfe.org>
-Reply-To: atmos@dreams.homelinux.net
+Message-ID: <S262076AbTIMHnA/20030913074300Z+6119@vger.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-Hello,
+                                =20
+LEFKE AVRUPA =DCN=DDVERS=DDTES=DD
+(KIBRIS B=DDL=DDM VAKFI)
+Y=D6K taraf=FDndan tan=FDnan, Avrupa ve Amerika'da ge=E7erli diplomaya =
+en kaliteli
+ve en uygun har=E7larla sahip olma olana=F0=FD ...
+=20
+=D6SS S=FDnav=FDndan 185 ve =FCzeri ham puan alm=FD=FE =F6=F0renciler 4=
+ y=FDll=FDk lisans
+programlar=FDna, 160 ve =FCzeri ham puan alan =F6=F0renciler ise 2 y=FD=
+ll=FDk meslek
+y=FCksek okullar=FDna kay=FDt yapabilirler.
 
-As far as i know reiserfs doesn't support undelete.
+=20
+      L=DDSANS PROGRAMLARI :
 
-However, if you run reiserfsck with option --rebuild-tree, it will rebuild
-the entire file system tree using leaf nodes found on the device and
-*probably* (i'm not 100% sure) relink your deleted files.
+=DDKT=DDSAD=DD VE =DDDAR=DD B=DDL=DDMLER FAK=DCLTES=DD
+* =DD=FEletme
+* Ekonomi
+* Pazarlama
+* Kamu Y=F6netimi
+* Uluslararas=FD =DDli=FEkiler
+* Bankac=FDl=FDk ve Finans
+* Bilgisayar ve Enformasyon Sistemleri
+=46EN-EDEB=DDYAT FAK=DCLTES=DD
+* =DDngilizce =D6=F0retmenli=F0i
+* T=FCrk Dili ve Edebiyat=FD
+* Tarih
+TARIM B=DDL=DDMLER=DD TEKNOLOJ=DDLER=DD FAK=DCLTES=DD
+* Bah=E7e Bitkileri =DCretimi ve Pazarlamas=FD
+* Tar=FDm =DD=FEletmecili=F0i
+M=DDMARLIK M=DCHEND=DDSL=DDK FAK=DCLTES=DD
+* Mimarl=FDk
+* =DD=E7 Mimarl=FDk
+* Elektrik ve Elektronik M=FChendisli=F0i
+* =DDn=FEaat M=FChendisli=F0i=20
+* Bilgisayar M=FChendisli=F0i
+=DDLET=DD=DE=DDM B=DDL=DDMLER=DD FAK=DCLTES=DD
+* Gazetecilik
+* Radyo, TV, Sinema
+* Halkla =DDli=FEkiler ve Reklam
+* G=F6rsel =DDleti=FEim Tasar=FDm=FD
 
-I advise you to backup the partition first.
+=20
+      MESLEK Y=DCKSEK OKULU:
 
-dd if=/dev/partition of=yourbackupfie
-losetup /dev/loop7 yourbackupfile
+* =DD=FEletmecilik
+* Bilgisayar programc=FDl=FD=F0=FD                                     =
+           =20
+* =DDn=FEaat
+* Halkla ili=FEkiler ve Tan=FDt=FDm
+* G=F6rsel =DDleti=FEim
+* TV Yap=FDm=FD ve Y=F6netimi
+=20
+=20
+      Y=DCKSEK L=DDSANS:
 
-reiserfsck --rebuild-tree --scan-whole-partition /dev/loop7
-mount /dev/loop7 <mountpoint>
+* =DD=FEletme (MBA)
+* Uluslararas=FD =DDli=FEkiler (MA)
+* =DDngilizce =D6=F0retmenli=F0i (MA)
+* Mimarl=FDk (MA)
+* =DDn=FEaat M=FChendisli=F0i (MSc)
+* Elektrik ve Elektronik M=FChendisli=F0i (MSc)
+* Bilgisayar Bilimleri (MSc)
+* Bilgisayar M=FChendisli=F0i (MSc)
 
-
-GOOD LUCK!
-
-
-
-
--- 
-Be different. Think.
+=20
+=20
+YURT DI=DEI =D6ZEL E=D0=DDT=DDM OLANAKLARI :
+SOAS =DCniversitesi, Luton =DCniversitesi, Westminister =DCniversitesi,
+Hudersfield =DCniversitesi (=DDngiltere), ESC Rouen =DCniversitesi (Fra=
+nsa).
+=20
+BURS OLANAKLARI :
+Emniyet mensubu, T=FCrk Silahl=FD Kuvvetleri mensubu ve =F6=F0retmen =E7=
+ocuklar=FDna  =20
+% 50, ikinci dereceden akrabalar=FDna % 33, karde=FElerden birine % 50 =
+ve
+ayr=FDca akademik ba=FEar=FD bursu, sporcu bursu ve  destek bursu.
+                                         =20
+                                                     =20
+=DDstanbul Kay=FDt Ofisi : =DE=DD=DEL=DD / =DDSTANBUL.
+Tel : 0212 219 83 50 (9 Hat)       E-Mail : bursluegitim1@superposta.co=
+m
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
