@@ -1,28 +1,30 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: how long before a timeout on a cdrom drive error?
-Date: Wed, 4 Sep 2002 21:11:21 -0700
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Making APM more accurate
+Date: Fri, 6 Sep 2002 19:32:48 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU08qLpHkat0000289d@cpimssmtpu08.email.msn.com>
+Message-ID: <20020906173248.GA24625@teamfinders.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I'm testing several CDrom's from an older server, I put a cd in the wrong drive and then tried to do:
+Hello,
 
-mount -t iso9660 -r /dev/scd2 /mnt/scd4
+Is there a way to make apm's or apmd's estimates of the time left on a battery charge more accurate?
 
-I am hung there..
+I just booted my laptop (a Sony VAIO PCG-C1XS with the stock hardware) after several days of not having used it.  APM reported as I logged in that I had 39% battery charge left and 136 minutes of use remaining.  I wish that were true, but based on experience, with this older battery I can expect about 20 to 25 minutes charge.  Since I am using a wireless card, the usable time is actually significantly lower, and I acknowledge and accept that.  That is not the issue.
 
-I meant to be scd1 and the scd4 is correct as two are currently disconnected from the power supply awaiting another y cable.
+The problem is, that as the charge decreases, the time remaining on the charge becomes more and more unrealistic.  For example, I know have 21% charge remaining and that equates out to 89 minutes, according to apm.  I have gone from 136 minutes remaining to 89 minutes remaining in the space of about 7 minutes.  Is there any way to get apm to accurately calculate the rate of discharge?  To what extent does this depend on my laptop's BIOS?
 
-I have tried a kill -9 pid which didn't kill it.  The first time I got, eventually, an error on console1, but the second time I ran it with the proper scd# it hung again and no errors.
+Cheers,
+Sean
 
-Killing the spawing shell has no effect on the mount that hangs out there in ps either.
-
-Alan
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
