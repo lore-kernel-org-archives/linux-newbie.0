@@ -1,42 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: keeping legitimate users out of public_html
-Date: Mon, 20 Sep 2004 10:31:54 -0700
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040920102828.01f3fba0@celine>
-References: <5.1.0.14.1.20040915100132.01f29c78@celine>
- <5.1.0.14.1.20040915100132.01f29c78@celine> <fc.004c4e0000637dea004c4e00006307dc.637dfd@palmertrinity.o
- rg>
+From: TEJAS VORA <voratejas@gmail.com>
+Subject: Network Statistics Collection
+Date: Mon, 20 Sep 2004 16:31:32 -0700
+Sender: linux-c-programming-owner@vger.kernel.org
+Message-ID: <88240e9404092016313ca56ca0@mail.gmail.com>
+Reply-To: TEJAS VORA <voratejas@gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <fc.004c4e0000637dea004c4e00006307dc.637dfd@palmertrinity.o
- rg>
-References: <5.1.0.14.1.20040915100132.01f29c78@celine>
- <5.1.0.14.1.20040915100132.01f29c78@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-c-programming-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-kernel@vger.kernel.org, linux-net@vger.kernel.org, linux-c-programming@vger.kernel.org, linux-admin@vger.kernel.org, linux-newbie@vger.kernel.org
 
-At 12:49 PM 9/20/2004 -0400, William Stanard wrote:
->[...]
->Thank you very much for the reply. I am using what you said and what
->Stephen posted to solve the problem.... but, and this seems so simple, I
->am embarrassed to ask, how do I determine what userid apache is running
->under?
+Hi All,
 
-Questions are always simple to people who already know the answers. To 
-others, they are often hard. In your case, you can check this with the "ps" 
-command. If the app name is actually apache (it usually is these days, 
-though older versions sometimes ran under the name httpd), this will find it:
+I am working on a company project and as a part of it - I have to
+collect and show some network information on the Monitoring utility.
+Please help to find out that how can I collect these information from
+a Linux Machine.
 
-         ps aux | grep apache
+1. Number of active TCP connection
+2. Information of Active connections (Source and Dest IP, Source and Dest Port)
+3. Retransmitted packets due to Duplicate ACK and SACK
+4. Connection Duration and RTT
+5. Transmission Troughput (in KB/Sec)
+6. Number of Newly Created TCP Connections
+7. Closed TCP Connections
+8. Total Data transmitted (in byte)
+9. Total Data Retransmitted (in byte)
 
-The userid will be the leftmost column.
+Also, does anybody have any information on Watchdaog or how to use
+watchdog and SOCKS and SNOOP Daemon?
+I am using RedHat 9.0 machine.
 
+Any help is apreciated. 
 
+Looking for an answer.
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Tejas Vora
