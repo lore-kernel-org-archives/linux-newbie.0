@@ -1,35 +1,24 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
-Subject: Re: usb web cam
-Date: 15 May 2003 07:05:36 -0400
+From: Carl <carl@anexia.co.uk>
+Subject: maximum number of Unix98 pty's
+Date: Thu, 15 May 2003 13:55:25 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1052996736.9332.5.camel@goldfinger.orbdesigns.com>
-References: <1052970400.1153.1.camel@localhost.localdomain>
+Message-ID: <5.1.1.6.0.20030515134918.01f98c28@interzone.anexia.co.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1052970400.1153.1.camel@localhost.localdomain>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux-Newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie list <linux-newbie@vger.kernel.org>
 
-On Wed, 2003-05-14 at 23:46, ramzez wrote:
-> HI friends...
->   I'm using Red Hat 8.0 and now I get a "creative go plus" USB webcam...
-> but I don't how use it over Linux
+Hi All,
 
-There were several models of this camera, IIRC. If your's is CT6840,
-then it's like mine. At the kernel level, I have Video4Linux and USB
-OV511 options built as *modules* (not built into the kernel,it doesn't
-work that way for me). At boottime,in my modules.autoload, I specify
-ov511, which autoloads the camera module and the dependency, videodev.
-Once those are in place, you should be able to use any reasonable V4L
-client to do captures, either motion or still.
+Does anybody know how to find out what the limit of PTYs is when you don't have the source and config
+that the kernel was compiled with. I'd rather not have to login x hundred times to find out when it falls over
+as i have to do this a fair number of servers.
 
-.brian
-
--- 
-Brian P. Bilbrey <bilbrey@orbdesigns.com>
-Orb Designs
+TIA
+Carl
+--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
