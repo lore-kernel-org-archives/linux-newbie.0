@@ -1,50 +1,50 @@
-From: "Sriram Narasimhan" <nsri@tataelxsi.co.in>
-Subject: ADS8260 Hang
-Date: Sun, 16 Mar 2003 15:58:44 +0530
+From: Kurt Sys <Kurt.Sys@rug.ac.be>
+Subject: safety/permissions
+Date: Mon, 17 Mar 2003 12:31:52 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E7451DC.3050902@tataelxsi.co.in>
+Message-ID: <1047900712.3e75b228b4b8b@mail.rug.ac.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hello,
+Hello all,
 
-[ If this is the wrong mailing list please point me to the right one. 
-Thank you]
+I have a quite serious problem (I guess) and I know, I can only blame myself.
+Anyway, I want to solve it in a 'nice', non-drastic way.
 
-I having been trying to bring up the ADS8260 board and incidentally ran 
-into some problems.
+I wanted to make my system somewhat safer, so I started, as it is recommended,
+changing the permissions and groups. This seemed to work and I thought my system
+was safe. But now, going online again, it seems as if I cannot mail... OK, this
+is contraditionary, since I'm mailing, but now, I'm using webmail, but may
+qmail-fetchmail won't work anymore.
 
-I initially tried using Linux 2.4.1 kernel and it worked fine and the 
-board was up.
-I upgraded to 2.4.17 and I found out that the system started hanging 
-during boot up.
+So, I have installed qmail and fetchmail on a Debian system (Woody). Things were
+ok before I changed (a lot of) permissions, since it is recommended here and
+there to make nothing world-wide readable, and also writable and/or executable.
+Initially, I had some problems other programs not working (due to wrong
+permissions and/or groups), but most of them, I could solve, except this mailing
+things.
 
-I compiled 2.4.17 for ppc boot. (I already have ppc boot on my ADS board 
-and I test my development by tftp boot'ing the kernel image.
+If I run:
+> echo "To: kurt.sys@rug.ac.be" | qmail-inject
+I don't get an error or warning message. I can find all the messages I send
+somewhere in /var/qmail/queue/mess/?? (?? to be replaced by a number), so they
+are queued, but not sent.
+> cat 155788 #This is a message I found in /var/qmail/queue/mess/9
+Received: (qmail 18953 invoked by uid 1000); 17 Mar 2003 11:30:59 -0000
+Date: 17 Mar 2003 11:30:59 -0000
+Message-ID: <20030317113059.18953.qmail@ksys.rug.ac.be>
+From: kurt@ksys.rug.ac.be
+To: kurt.sys@rug.ac.be
 
-I tried tracking down where the hang could be and ended up at the RFI 
-instruction where its waiting to complete the MMU initialization. The 
-system executes SYNC instruction and then hangs. (arch/ppc/kernel/head.S)
 
-I tried comparing the file head.S between 2.4.1 and 2.4.17. I found out 
-some patches done inside the 2.4.1 had been made generic. There were 
-patches for the BAT initialization and RAM mapping on the MPC8260.
+I can't receive or send any mail. Anyone any idea how to solve this?
 
-Is there an update on the files?
-Should the patches be done for 2.4.17 as well ?
-
-Any suggestions or pointers could be very helpful.
-
-[Running on x86 with Red Hat 8.0 and cross compiling for PPC.]
-
-Thank you.
-Regards,
-Sriram Narasimhan
-
+tnx a lot,
+Kurt
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
