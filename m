@@ -1,36 +1,31 @@
-From: "Sriram Narasimhan" <nsri@tataelxsi.co.in>
-Subject: Firewall Configuration...
-Date: Mon, 09 Sep 2002 10:43:05 +0530
+From: "David Lane" <jaypooh3@bellsouth.net>
+Subject: Re: Cable Modems??
+Date: Mon, 9 Sep 2002 03:11:59 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D7C2DE1.4040601@tataelxsi.co.in>
+Message-ID: <002401c257d0$312fb760$1d1c4ed8@POOHBEAR2>
+References: <20020908130053.A417@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@iceweb.net, linux-newbie@vger.kernel.org
 
-Hello,
+Ping is definitely NOT obsolete.Before I speculate too much you should post
+the IP address you are trying to ping or telnet to.Most cable and DSL modems
+contain their own IP's that are in the private range.If your trying to ping
+or telnet to one of those you can give it up,the user can but you on the
+outside can't.You can only ping or telnet to his public IP that he is
+assigned when he connects.
+    XP does have the capability to setup an incoming connection for VPN but
+unless your son has a static IP(not likely these days)this will be more of a
+hassle than it's worth as his IP  probably changes at least every three days
+even if he is connected 24/7.Have your son run "ipconfig" in a DOS window
+and that will/should give you his public IP.
+   Send the IP you were trying to ping and I'll try to give you a better
+answer.
 
-I am using Red Hat 7.2 running 2.4.7-10
-
-I seem to be having a problem changing the firewall configuration. When 
-I installed Red Hat I didn't bother to set the firewall and it defaulted 
-to the "High" Security level.
-
-I am trying to change this to a customized firewall configuration, by 
-running the 'setup' utility.
-
-But even after changing the configuration, there seems to be no effect 
-of the change. Every time I run 'setup' I keep seeing the setting at 
-"High" Security level.
-
-Am I doing something wrong, or should I do something else to change the 
-setting ?
-
-Many Thanks.
-
-nsri
+                            David Lane
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
