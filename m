@@ -1,68 +1,43 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Amin <amin@siriusbb.com>
 Subject: Re: grub doesn't load
-Date: Sun, 20 Jun 2004 21:47:49 +0200
+Date: Mon, 21 Jun 2004 18:06:16 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200406202147.50079.pa3gcu@zeelandnet.nl>
+Message-ID: <40D6CF38.6010705@siriusbb.com>
 References: <851bbd852696.852696851bbd@homemail.nyu.edu> <20040620152104.GA594@lnx2.w8mch.ampr.org>
-Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20040620152104.GA594@lnx2.w8mch.ampr.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: haltec@kvinet.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Sunday 20 June 2004 17:21, Hal MacArgle wrote:
+Hal MacArgle wrote:
+> Greetings: Missed most of this thread so forgive if I make a stupid
+> comment especially since I know nothing of WinXP:
+> 
 > Did you change /boot/grub/menu.lst?? Maybe your lashup doesn't use
 > that file? Also, read somewhere, that WinXP does some strange things
 > to the MBR, etc.. Don't know what, etc..
-
-If a linux bootloader is installed then AFAIK no version of dos or wind=
-ows has=20
-anything to do with the MBR.
-
+> 
 > I do have two machines booting with Grub, several versions of
 > Slackware 9.X as default, or selected, and Win9X as a selection
 > partition.. It does work well for us... HTH.
 
-May i ask the following, how did you get a slackware distribution with =
-grub,?=20
-if i remember correctly Patrick Volkerding once said, lilo is and will =
-be my=20
-choice of bootloader for slackware, i know for a fact that slackware in=
-stalls=20
-lilo by default so i imagen you must have installed grub yourself, may =
-i ask=20
-why.?
+Reading this post I was reminded of something I had once 
+done to recover me Linux installation (it was RH8) after I 
+had installed Windows XP and it had wiped the MBR clean. 
+Standard advice is to always install Windows first and then 
+Linux, but I figured I could do the opposite and still 
+recover everything.  I was right, but I went to this website 
+for instructions: 
+www.geocities.com/epark/linux/grub-w2k-HOWTO.html
 
->
-> =A0 =A0 Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0 =A0 (2.4.20=
-)
-> =A0 =A0 =A0 =A0 =A0 =A0
-> =A0=A0=A0=A0=A0=A0=A0=A0 =A0 =A0 Anyone can pile complexity upon comp=
-lexity;
-> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 only a genius can truly simplify.=
-=2E
+HTH,
 
-According to your sig, then you would use lilo as it is in complexity m=
-ore=20
-simple than grub.
-
---=20
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Yawar Amin
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
