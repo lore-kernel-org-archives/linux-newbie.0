@@ -1,49 +1,50 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: ? wireless 802.11b, D-Link DWL-520
-Date: Mon, 22 Apr 2002 18:44:45 +0000
+From: Staci <spiritlover666@yahoo.com>
+Subject: Introduction and Scanner Help
+Date: Tue, 23 Apr 2002 07:18:42 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042218444504.00604@unix.pa3gcu>
-References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <02042119580302.00604@unix.pa3gcu> <3CC33667.A8608CDB@gelm.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020423141842.35576.qmail@web12807.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3CC33667.A8608CDB@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 21 April 2002 22:00, Chuck Gelm wrote:
-> http://macdaddy.lists.linux-wlan.com/pipermail/linux-wlan-user/2002-April/0
->05488.html
->
-> Perhaps some bad news (for me) came from the list.linux.wlan.org.
-> The D-Link DWL-520 may require a PCI 2.2 compatible motherboard.
->
-> :-(
->
->  I see that the Linksys WMP11 is PCI 2.1 compliant, but that may
-> mean it requires a PCI 2.1 motherboard.  I doubt that the ole
-> cyrix workstation I am trying to use is either!  The workstation
-> is a cyrix 80586x120 in a 3C49 motherboard.
+Hello!
+I just joined this mailing list.
+I started with slackware in january, it died for about
+3-4 weeks, and i picked it up and have been learning
+madly ever since and making lots of progress. :)
 
-Well at the minute from what i have read i could belive "almost" anything, 
-however the device "seems" to me to be older than a motherbaord of that type, 
-so i would not stitch too much truth on that statement but who knows ;-)
+I have a couple ongoing problems involving my
+peripherals that I'm hoping someone can help me with.
 
-On another note how does one subscribe to list.linux.wlan.org as i am having 
-a lot of fun(troubles) here with my USB device.
+The first one is my scanner.  I've got the SANE back-
+and front-ends installed, but somehow SANE can't see
+it.  I had the same problem with Windows when I tried
+it under Windows.  
 
->
-> :-|
->
-> Chuck
+It's a Microtek Scanport 3000, connects thru USB.
+It LOOKS from the dmesg stuff that Linux DOES know
+that there's something plugged in.  But sane can't.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+If nobody can help me I'm going to write a very nasty
+letter to the company. :/
 
+Any assistance would be very much appreciated.
+
+Thanks!
+
+sl
+
+=====
+**************************
+In cyberspace nobody can hear you scream.
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Games - play chess, backgammon, pool and more
+http://games.yahoo.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
