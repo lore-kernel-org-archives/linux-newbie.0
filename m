@@ -1,41 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: stripping flies (was: Re: .so, .a and .o-files)
-Date: Sat, 17 Aug 2002 07:50:05 -0700
+From: Axel Siebenwirth <axel@hh59.org>
+Subject: Re: .so, .a and .o-files
+Date: Thu, 15 Aug 2002 19:19:50 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020817074703.0223adc0@celine>
-References: <NOMSGID_7223=3a9750=2f200_020815_085921__75f821c9@fidonet.org>
+Message-ID: <20020815171950.GA28935@prester.freenet.de>
+References: <20020815153420.GA10981@prester.freenet.de> <5.1.0.14.1.20020815083919.02181c50@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0208170957360.8397-100000@Consulate.UFP.CX>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20020815083919.02181c50@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Riley Williams <Riley@Williams.Name>, Ray Olszewski <lists@tcob1.net>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 10:02 AM 8/17/02 +0100, Riley Williams wrote:
->[...]
-> >> Whats the use of stripping object files of their symbols.
-> >> Symbols reflect the functions in an object file, right?
->[...]
->Ray: Can you clarify whether I have the situation right when
->      I state that it is only the binaries that can be stripped?
+Hi Ray!
 
+On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
-I am not 100% certain either, but I believe you are correct.
+> .o is an object file. It represents the intermediate step in the 
+> compile-and-link process for a program. .so is a shared object file (i.e., 
+> a library); their linking (at runtime) is managed by ld.so .
 
-Although the distinction you make between object files and binaries is 
-correct, I am so used to the (imprecise) dichotomy between source and 
-object code that I read the question to be about binaries, hence answered 
-as I did. Sorry if I mislead anyone.
+Ok. So I compile from sources many .o's and link them together into an .so
+and I have a shared library.
 
+> Depends on how you link. Modern linking is done dynamically (only one copy 
+> of the library is loaded into memory and shared by all apps that use it), 
+> using .so libraries. Older linking was done statically (each app loaded its 
+> own personal copy of the library into memory), using .a libraries.
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+I figured out that when a program is statically linked, the libraries are in
+the executable itself so no additional libraries are required...?
 
+Regards,
+Axel
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
