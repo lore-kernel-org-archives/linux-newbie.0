@@ -1,55 +1,33 @@
-From: John Kelly <jkelly@ntlworld.com>
-Subject: Re: Text Reformatting
-Date: Sun, 18 May 2003 08:54:23 +0100
+From: Eric <eric@cisu.net>
+Subject: Re: maximum number of Unix98 pty's
+Date: Sun, 18 May 2003 20:41:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030518075217.PQHM11246.mta03-svc.ntlworld.com@there>
-References: <20030518041124.07222103AE@pfheiss>
+Message-ID: <200305182041.24928.eric@cisu.net>
+References: <200305161629.h4GGTIPs017487@ev6.be.wanadoo.com>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030518041124.07222103AE@pfheiss>
+In-Reply-To: <200305161629.h4GGTIPs017487@ev6.be.wanadoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
 
-Hi,
-On Sunday 18 May 2003 5:11 am, Peter wrote:
-> Hi,
+On Wednesday 31 December 1969 06:00 pm, Heimo Claasen wrote:
+> what ist "PTY" ?
 >
-> Some text I download for printing are formatted like:
->
->       Because of the publicity the Iraqi government has given to the
->                       issue, Iraqis worry about DU.
->
-> which adds more pages for printing.
->
-> How can I with some command, left align the text to read
->
-> Because of the publicity the Iraqi government has given to the
-> issue, Iraqis worry about DU.
->
-> yet maintaining the paragraphs.
->
-I often cut and paste webpages into files and they are often munged as in the 
-example you give.
+> -hc
 
-My standard way of doing this is to use vi.
-Open the file in vi and do:
-Press <ESC> to ensure you are in command mode. 
-Then type:
-:%s/^\s*//
-<ENTER>
-If you are happy with the result, type:
-ZZ 
-to save the modified file
-else type:
-:q!
-to quit without saving.
-
-
-regards,
-
-John Kelly
+A pty is a psuedo-terminal. Linux creates these so you can log in and type 
+things on your computer. If you press ctr+alt+<#> where # is 1-5 then you 
+will see 5 pty's ready for login. Also SSH, telnet, and rlogin, and each 
+xterm uses up one PTY. Normal linux kernels are configured to support 
+256pty's and this is MORE than enough for desktop systems and small servers.
+----------------------
+Eric Bambach   
+Eric@CISU.net 
+----------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
