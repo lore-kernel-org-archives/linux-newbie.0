@@ -1,151 +1,82 @@
-From: Riley Williams <rhw@InfraDead.Org>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Newbie installation problem
-Date: Sun, 4 Aug 2002 07:56:36 +0100 (BST)
+Date: Sun, 04 Aug 2002 01:08:55 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208040725520.30515-100000@Consulate.UFP.CX>
-References: <002801c23b73$2b1a31d0$6401a8c0@ENRIQUE>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <5.1.0.14.1.20020804005505.02187b30@celine>
+References: <5.1.0.14.1.20020802181721.02153750@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <002801c23b73$2b1a31d0$6401a8c0@ENRIQUE>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: Enrique Nieves <spanfax@charter.net>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-Hi Enrique.
+At 12:55 AM 8/4/02 -0400, Enrique Nieves wrote:
+>Ray,
+>
+>Thanks for your query.  I've placed a response after each of your questions
+>below.
+>Another possibility may be the cable itself; however, the router lights
+>indicate the
+>cable is connected.
 
-I hope you don't mind my responding, but I'm sure Ray will ask the same
-questions...
+No no no. If RH cannot detect the NIC, then the problem is inside the 
+computer. Things like cabling come way later.  (But if the problem is NOT 
+NIC detection ... see below ... then the problem could be in the cabling, 
+evn if the lights indicate a connection. Do you ever see actual traffic 
+over the link?)
 
-> Thanks for your query.  I've placed a response after each of your
-> questions below. Another possibility may be the cable itself;
-> however, the router lights indicate the cable is connected.
+[...]
+> > 1. What NIC do you have in the system?  Make and model.
+>
+>Netgear, 32 bit, PCI Adapter, 10/100 Mbps Fast Ethernet FA311
 
-The router lights only indicate that the PC -> Router direction is
-working. To rule out the cable, you need to turn it round and see if the
-router lights still work with it plugged in the other way round.
+It is *possible* that RH simply does not autodetect this one, perhaps 
+because does not include its module in the ones it automatically tries. I 
+don't use this NIC itself, but I seem to recall that it uses one fo the 
+less common modules (natsemi.o maybe? does anyone else recall?). You may 
+need to add it manually (however RH provides for that).
 
->>> I'm a newbie with Linux and I'm trying to install Red Hat 7.3 in my
->>> AMD K6 box (128 mb RAM, 233 mhz, 6 gb hard drive) to be the sole OS
->>> for that box. When the installation program tries to detect the
->>> network card (eth0) it gives me a FAILED message.
 
->> Please be a bit clearer about the details here.
->>
->> 1. What NIC do you have in the system?  Make and model.
+> > 2. At what stage does RH fail? (Technically, eth0 is an interface, not a
+> > card; it does not get created until -AFTER- the card has been detected and
+> > an appropriate kernel module loaded.)
+>
+>When booting up and detecting hardware it indicated that it can't detect IP
+>settings
 
-> Netgear, 32 bit, PCI Adapter, 10/100 Mbps Fast Ethernet FA311
+What do you mean by "IP settings"? This phrase usually means the systems's 
+own IP address and routing information (network, gateway, possibly DNS 
+servers). It would not be looked for at the hardware detection stage. So 
+either you have the place where the failure occurs wrong, or you mean 
+something different from what I use this phrase to mean.
 
-Does this system finish booting after reporting the failure, or does it
-just lock up at that point?
+> > 3. Quote the EXACT error message (not just the word "FAILED").
+>
+>After the error message FAILED it indicates that IP settings can't be
+>detected
 
-If it finishes booting, can you log in as root and then attach the
-output of the `lspci -v` command?
+Once again I'd ask for the exact error message, not your interpretation of 
+what "it indicates". The paraphrase you provide reads like the NIC itself 
+it detected but the installer can't get an IP address and such. If that is 
+so, then please tell us what you are telling the system about how it should 
+get an IP address and related information (netmask, gateway, maybe DNS 
+servers ... whatever the installer asks about).
 
->> 2. At what stage does RH fail? (Technically, eth0 is an interface,
->>    not a card; it does not get created until -AFTER- the card has
->>    been detected and an appropriate kernel module loaded.)
+After I wrote this, I saw that Riley replied with a lot of good advice ... 
+only it was based on guesses about what some unclear parts of what you 
+wrote mean. If he got it right, then that should take care of your 
+problems. If he guessed wrong, you need to describe the location and nature 
+of the error more clearly than you have so far.
 
-> When booting up and detecting hardware it indicated that it can't
-> detect IP settings
 
->> 3. Quote the EXACT error message (not just the word "FAILED").
-
-> After the error message FAILED it indicates that IP settings can't
-> be detected
-
-Ah - now, that isn't a hardware failure but a case of no DHCP server on
-your network and you haven't statically allocated IP settings to the
-interface. You need to allocate an IP address to each machine on your
-network, so let's do that first.
-
-IP addresses in the 192.168.X.Y format are reserved for use on private
-networks, so I am going to assume you are using such a range of
-addresses. You thus need to make two decisions:
-
- 1. You need to select a number for your network as a whole. This
-    number is in the range 1 to 254 and must be the same for all
-    machines on your network, so choose your favourite number in
-    this range. This number forms the value X in the IP address.
-
- 2. You need to select a number for each machine on your network.
-    This is also in the range 1 to 254, but needs to be DIFFERENT
-    on each machine. There is a convention that the number 254 is
-    allocated to the system on your network that acts as a gateway
-    to other networks, but you do not need to follow this if you
-    prefer not to. This number forms the value Y in the IP address
-    for each machine, and there will be three different values,
-    which I will refer to as Y1, Y2 and Y3.
-
-Having selected the values X and Y for each machine, I suggest you jot
-them down in a table similar to the following:
-
-	IP Address	System Description	Sample IP Address
-	~~~~~~~~~~	~~~~~~~~~~~~~~~~~~	~~~~~~~~~~~~~~~~~
-	192.168.X.Y1	AMD K6 running Linux	192.168.99.254
-	192.168.X.Y2	Windows XP Desktop	192.168.99.1
-	192.168.X.Y3	Laptop			192.168.99.2
-
-When the AMD finishes booting Linux, log in as root, then run the
-`netconfig` command and specify that you would like to set up
-networking. On the next screen, make sure that the "Use dynamic IP
-configuration" checkbox is NOT selected, then enter the following values
-in the fields underneath:
-
-	IP address:		192.168.X.Y1
-	Netmask:		255.255.255.0
-	Default gateway:	(blank)
-	Primary nameserver:	127.0.0.1
-
-This will configure networking on that machine.
-
->> 4. Has the NIC worked previously, say with some version of Windows?
->>    Or is this a new NIC (from the hardware details, I'd guess it is
->>    not a completely new PC)?
-
-> It's a new NIC
-
->>> I'm trying to have a home network using a LinkSys router with a
->>> Windows XP box and this AMD PC connected peer to peer and another
->>> ethernet connection to use with my laptop.
-
->> What do you mean by "peer to peer"? In this context, the term
->> usually describes two hosts that are connected directly via
->> Ethernet, without a hub in between ... but your mention of the
->> Linksys router causes me to doubt that that is what you mean.
->> Do you just mean that the two hosts are on the same LAN?
-
-> As Riley Williams indicted, I'm trying to set up a home network with
-> three systems on it, my Windows XP box, the AMD I'm trying to set up
-> under Red Hat Linux and my laptop, and I'm not sure if I'm using a
-> 10baseT or 100baseTX ethernet with my LinkSys router, which is
-> acting as a routing hub for the three of them.
-
-Based on the information provided earlier, if the router can handle 100
-speed, then you are attempting to use 100baseTX ethernet, if not, you
-are attempting to use 10baseT ethernet.
-
-One final question: Am I right in assuming that you are trying to set it
-up with the AMD under Linux as the system that connects to the Internet,
-and both the WinXP machine and the laptop piggy-backing onto that
-connection?
-
-The reason I ask this is that on rereading your comments, I note your
-repeated reference to "LinkSys router" and I'm wondering if that's an
-ADSL router that forms your Internet connnection. If it is, then the
-advice to be given is rather different to the above, and the above
-advice should be ignored.
-
-In this event, please run the `netconfig` command but ensure that the
-"Use dynamic IP configuration" box IS checked. In this case, the values
-of the remaining fields are irrelevant and should be ignored. You also
-need to configure your router to enable the DHCP server and the NAT
-facilities therein, and it will then configure the IP addresses,etc, on
-all the systems on your network.
-
-Best wishes from Riley.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
