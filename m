@@ -1,40 +1,56 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Re: News Sources for Linux/Open Source
-Date: Tue, 11 Jun 2002 07:00:43 -0600
+From: "Benny Pedersen" <linux-net@tcob1.net>
+Subject: Re: which distribution to use?
+Date: Tuesday, 28 May 2002 04:27:04 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020611070032.034bd3c0@shawmail.ed.shawcable.net>
+Message-ID: <MSGID_110=3a300=2f15_6402634@fidonet.org>
+References: <02052611410000.00212@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <02052611410000.00212@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-i think that your best bet is www.lwn.net (The linux weekly news)
+Originally to: Richard Adams
 
-Not a mailing list, that i know of, but an all-round great source in 
-general.  www.osnews.com is another excellent site.  Covers, as you'd 
-expect, all the OS news that they feel like printing, with a decidedly Open 
-Source slant.  Not always my cup of tea, but still an excellent (if 
-infrequently-updated) source of news.  LWN is better, in terms of quality 
-of info provided, imho.
+Hi Richard Adams
 
-At 05:37 PM 11/06/2002 +0930, you wrote:
->It seems I will probably become the Open Source correspondent for my local
->gaming community. I am already subscribed to OSDN, ZDNet, InformIT and
->numerous announce mailing lists but I was wondering if anybody knew of any
->other sources of news.
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
+you wrote about "which distribution to use?":
 
 
-Chris R.
------
-Lumen Redundas
-"To Cast The Light Of Knowledge On The Already Well-Known"
+ RA> Try installing debian, redhat, mandrake, suse on a system with
+ RA> low memory. Slackware can be installed on an old machine with
+ RA> 8MB, others cant. Slackware is operator dependant, that means
+ RA> configure things like X yourself if you want too, most all other
+ RA> distro's do it for you, so you see with those other distro's you
+ RA> "dont" learn linux as good as you do when one uses Slackware
+ RA> period.
+
+well redhat can run on 8mb period !
+
+but you are right on the slackware, newer tryed it, do i need it ?
+
+how manu do use pc with only 8mb now a days ?
+
+well i have a 386 with just 4mb notebook :)
+
+it runs linux hehe 
+
+it was the only os thats runs with the build in netcard, it has build
+in modem 2, so its very powerfull, win3.11 have no suport for this,
+win95 is to big for it, i go for linux :)
+
+
+ Benny Pedersen  http://xpoint.ldnet.dk/  icq:36248146
+
+
+...Nobody really knows what is going on anywhere in your organization.
+
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
 
 
 -
