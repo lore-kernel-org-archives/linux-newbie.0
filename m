@@ -1,31 +1,36 @@
-From: G Anna <drguruolai@eth.net>
-Subject: mirror for ftp://ftp.dict.org
-Date: 05 May 2002 18:08:47 +0530
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: mirror for ftp://ftp.dict.org
+Date: Sun, 5 May 2002 12:38:01 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3bsbuu5uw.fsf@wobble.eth.net>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <02050512380108.19766@unix.pa3gcu>
+References: <m3bsbuu5uw.fsf@wobble.eth.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <m3bsbuu5uw.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, G Anna <drguruolai@eth.net>
 
-Dear All,
+On Sunday 05 May 2002 12:38, G Anna wrote:
+> Dear All,
+>
+> Do you people know a mirror for ftp://ftp.dict.org server?  I am
+> trying to access this ftp://ftp.dict.org but it seems to not work for
+> me.  Thank you for any help.
 
-Do you people know a mirror for ftp://ftp.dict.org server?  I am
-trying to access this ftp://ftp.dict.org but it seems to not work for
-me.  Thank you for any help.
+Works fine from here and from other computers i operate around the world, so 
+just why does it not work for you.???
 
-Cheers,
-anna
+>
+> Cheers,
+> anna
 
 -- 
-
-(6) I will not gloat over my enemies' predicament before killing them.
-    - Peter Anspach in "The Top 100 Things I'd Do If I Ever Became An
-      Evil Overlord"
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
