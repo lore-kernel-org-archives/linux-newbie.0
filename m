@@ -1,44 +1,26 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Modem Identification
-Date: Sat, 14 Dec 2002 17:19:56 -0800
+From: "R. Bal" <rbal@look.ca>
+Subject: how to launch downloaded files?
+Date: Sat, 14 Dec 2002 21:36:14 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021214171540.020e0cb0@celine>
-References: <200212142014.07963.sotl155360@earthlink.net>
+Message-ID: <3DFBEA9E.9000704@look.ca>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212142014.07963.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-At 08:14 PM 12/14/02 -0500, Frank Roberts - SOTL wrote:
->Hi All
->
->
->Question:
-> >From the command line how does one determine which port a modem is on?
+Hi All,
 
+I'm a day old Linux user, and am loving the system performance. 
+Everthing is great, except that I can't seem to get the files I download 
+off the net to "execute".  I know where the files are being saved.  How 
+do I "run" them?  I have a Netscape installer, but can't seem to get it 
+working.
 
-It depends on exactly what you mean. I'm guessing that you intend to refer 
-to a situation where you have 2 or more serial ports in a computer, and a 
-modem conencted to one of them, but the ports are unlabeled so you dont 
-know which one the modem is attached to. In that case, I would use a 
-terminal app (such as minicom) to connect to each port, and see which port 
-(actuall, its associated /dev/ttyS* entry) gets responses from the modem to 
-typical AT commands.
+Any suggestions?  I'm running Red Hat 8.0.
 
-There are many more things you *might* mean, though. So if I've guessed 
-wrong (and someone else does not guess right), please post a followup that 
-asks the question in a different, more specific form.
-
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+RB.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
