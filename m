@@ -1,16 +1,29 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: RedHat 8
-Date: 23 Oct 2002 13:56:08 +0100
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: RedHat 8
+Date: Wed, 23 Oct 2002 09:03:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035377769.1920.60.camel@zebra.vil.ite.mee.com>
-References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+Message-ID: <003601c27a94$8c75e400$64fea8c0@pkrausxp>
+References: <1035377769.1920.60.camel@zebra.vil.ite.mee.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+In-Reply-To: <1035377769.1920.60.camel@zebra.vil.ite.mee.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+To: 'Paul Furness' <paul.furness@vil.ite.mee.com>
+Cc: linux-newbie@vger.kernel.org
+
+What kind of system do you need to be able to run a full Linux
+distribution including X in a virtual machine? It seems like the
+overhead would kill you.
+
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Paul Furness
+Sent: Wednesday, October 23, 2002 8:56 AM
 To: linux-newbie@vger.kernel.org
+Subject: Re: RedHat 8
+
 
 > What does everyone think of RedHat 8.
 > 
@@ -57,6 +70,12 @@ Paul Furness
 Systems Manager
 
 2+2=5 for extremely large values of 2.
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+in the body of a message to majordomo@vger.kernel.org More majordomo
+info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
