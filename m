@@ -1,97 +1,74 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: synchronising two machines
-Date: Fri, 11 Apr 2003 08:32:34 -0700
+From: James Miller <jamtat@mailsnare.net>
+Subject: Intel 82595FX clone NIC problems
+Date: Fri, 11 Apr 2003 11:23:04 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030411081015.01ea54a8@celine>
-References: <1050051885.3493.16.camel@zebra.vil.ite.mee.com>
+Message-ID: <Pine.LNX.4.53.0304111044280.1064@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1050051885.3493.16.camel@zebra.vil.ite.mee.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Furness <paul.furness@vil.ite.mee.com>, linux-newbie@vger.kernel.org
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-First, there are two distinct issues you need to address:
+I'm having some trouble getting an Intel 82595 clone ISA NIC working on a
+computer on my small network.  I'm fairly new to networking, and not
+especially experienced in computing in general, so I may be doing
+something very simple wrong.  Let me provide a description of what I've
+done, the context and the problem to see if anyone here might help.
 
-(1) Keeping "system" content in sync.
-(2) Keeping local content in sync.
+The card is in an old 486 DX2 66 that I'm trying to get going on my
+network.  The network consists of a machine with a fairly up-to-date
+Debian variant installed on it, the 486 mentioned above, and another
+older machine (more on that).  The gateway machine has an external modem,
+and an onboard NIC (Realtek RTL 8XXX 10/100) that connects it to a DLink
+10/100 switch.  On the network is another 486, a DX4 100, with another
+Intel clone NIC, though this one is a PCI (forgot the chip #, but it's
+irrelevant since that machine works great on the network).
 
-(1) This part involves applying security patches and doing other updating 
-of the binaries your distro (Red Hat? I forget) supplies ... the equivalent 
-of Debian's "apt-get update/upgrade" system. For this part, since only two 
-hosts are involved, I would suggest not trying to sync in any automated 
-way. Just run your distro's updater on both machines at the same time. 
-Possibly set them up to use a Squid cache to avoid duplicate downloads. A 
-properly designed updating system should know enough to refrain from 
-replacing locally-edited config files with new default versions.
+All the research I've done on the Intel 82595FX ISA NIC indicates that it
+should use the eepro.o module.  Thus, I got that module and have set up
+the Slackish system on the DX2 66 to load the module by editing
+/etc/rc.d/rc.S accordingly (insmod eepro.o io=0x300).  The boot time
+report indicates that the card has been found and its irq, io, and MAC
+address found.  It is also assigned its correct address.  Subsequently, I
+can ping the gateway without problems - no dropped packets.  I can fire up
+Links and surf the 'net - for a while.  I can also telnet into the gateway
+successfully - for a while.  The problme is that, after about 1 minute,
+the connection just dies.  Links stops, and will not load further pages.
+The telnet session becomes immune to keystrokes (except keystrokes like
+ctrl-c).  Opening another terminal session and trying to ping the gateway
+results in the message "56 data bytes" and nothing more. Hitting ctrl-c
+subsequently displays how many packets were sent, and notifies of 100%
+packet loss.  In short, no further traffic can flow through the card.
+Trying to ping the other computer on the network gives the same response
+(56 data bytes . . . 100% packet loss).  I would guess that this means
+that either the card has somehow frozen up, or there is some problem at
+the switch.
 
-(2) The best approach here turns on three questions:
+Other possibly relevant factors.  The card can be tweaked with a utility
+(switching IO's/IRQ's, disabling things like plug and play and "concurrent
+processing" - whatever that is) that works under DOS called softset.  The
+card tests fine using this utility (i.e., passes the util's integrity
+test).  I've tried 2 different IRQ's (7 and 10) and 3 different IO's, but
+to no avail.  I've fiddled with the other settings too, but the problem
+persists (except disbaling plug and play, which I had to do to get the
+card working to begin with).  I've also tried another, identical card
+(I have several laying around), but with the same results.  The other 486
+on the network works great.  I've used it both as an xterminal to get
+xsessions from the gateway machine, as well as a standalone machine to
+surf the 'net and such.  No problems whatever with it using the network.
+I've tried switching cables between the two machines (the 2 486's), to no
+avail: the problems persist on the machine with the 82595FX ISA card, while
+the other one works fine.  Finally, I ran ifconfig on the gateway machine
+to see what that would tell me.  It shows 11 overruns for the gateway's
+interface (the Realtek onboard), though other things look normal (to my
+very untrained eye).
 
-A. How closely do the two machines need to be sync'd? (How rapidly does the 
-served content change?) Would an overnight sync be enough, or do you need 
-minute-to-minute updates? Or somewhere (where?) in between?
+Can someone give me some indication about the nature of this problem?
+What can I do to locate the trouble spot?  What can I do to fix it?  Let
+me know if I have left out any important details.
 
-B. Is the need to sync *really* 1-way, as you seem to be saying? Or is it 
-2-way, as the "The idea is that if people find X1 is slow and busy they can 
-use X2" comment seems to imply? This interacts with #1, of course, the core 
-question being whether connected users themselves make changes that need to 
-be propagated to the other server.
-
-C. How fast are the machines, including communication between them? How 
-much of their resources can they spend on synchronizing without 
-overburdening them?
-
-Offhand, I'd say your choices are rsync or a custom script (run through 
-cron, say).  Using slogin (or scp) rather than rlogin would help address 
-the security concerns with automated root logins. But if you run the 
-updater on X2 (the slave), it only needs *read* access to root-owned files 
-on X1, so you should be able to login to X1 as a less-privileged user. Only 
-a few files (such as /etc/shadow) then present special problems, and they 
-might be best handles on a case-by-case basis.
-
-But the real solution, I think, is to limit what the automatic updater does 
-so it updates only less-privileged files, rather than "almost everything". 
-Without a better understanding of what this server pair does, I can't 
-really suggest anything more specific.
-
-At 10:04 AM 4/11/2003 +0100, Paul Furness wrote:
->Hi.
->
->Can anyone suggest a reliable yet simple way of synchronising two
->identical linux servers?
->
->I have a server (let's call it X1) which is serving desktops out to
->multiple clients using XDMCP. I then have a second server with identical
->hardware (X2) which does the same job. The idea is that if people find
->X1 is slow and busy they can use X2, and also if X1 fails then X2 is
->still there.
->
->I want to duplicate everything between the two machines except stuff
->which has to be unique - network settings being the obvious. During
->building, this is easy; I have built X1, and then connect the hard disk
->from X2 into X1 and use dd to copy the image across. Then I put the disk
->back in X2, boot up and change the network settings and hostname.
->
->However, how do I keep them in sync after that? Ideally, I want to be
->able to apply updates to only one of them (say X1) and have it
->automatically propogate those changes to X2.
->
->rsync is a possible answer, I know, but I have two issues there:
->A. I want it to update everything _except_ a few selected files, and
->B. I need to run it as root, so to use rsync I'd have to open up rlogin
->to root, which I'd rather not do if possible.
->
->Anyone got any ideas about what I should look at?
->
->
->Oh, as an aside I _don't_ want a cluster, and I'm not trying to create a
->single "virtual server".
-
-
-
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
