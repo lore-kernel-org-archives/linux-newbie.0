@@ -1,38 +1,33 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: A few questions
-Date: Sun, 1 Dec 2002 20:32:22 +0930
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Extract images from zipped .eve archives
+Date: Sun, 1 Dec 2002 07:40:37 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212012032.22587.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Message-ID: <200212011240.gB1Ceb105023@hartford-hwp.com>
+References: <5.1.0.14.1.20021129083149.02134d90@celine> <200211291827.gATIRCP02697@hartford-hwp.com> <3DE7C76A.9040009@wa5rrh.org> <200211292204.gATM4f710000@hartford-hwp.com> <3DE7EB9B.8000107@wa5rrh.org>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <3DE7EB9B.8000107@wa5rrh.org> (message from Jim Reimer on Fri, 29
+	Nov 2002 16:35:07 -0600)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: jdr@wa5rrh.org
+Cc: linux-newbie@vger.kernel.org
 
+Jim,
 
-A few questions, two of which because I simply realise I don't know the 
-answers when I probably should, and a third because I'll need to know how.
+Thanks for pointing me to the .eve site. So the extension did turn out
+to be proprietary. 
 
-1) What is the intended method to edit the path for a user-account or 
-globally? I know hacking together a shell script to add a directory and 
-putting it in startup works, but I suspect there is a much more elegant and 
-effective solution.
+There are vector drawing facilities available for linux, and rather
+than run Eve with Wine, etc., it might be worth my trouble to create a
+set of vector drawings for one of the limux programs, and make them
+available. 
 
-2) How do I remount devfs?
+I'm only talking here about perhaps 2-3 dozen simple little electronic
+component symbols.
 
-3) How do I backup all user accounts and passwords. I want to be able to 
-re-install and have all the old user accounts + passwords restored, and also 
-just for general backup purposes.
-
--- 
-"Do not expose your LaserWriter to naked flame..." - Apple LaserWriter Manual
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
