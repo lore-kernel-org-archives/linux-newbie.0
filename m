@@ -1,38 +1,79 @@
-From: Glynn Clements <glynn.clements@virgin.net>
-Subject: Re: How does malloc tell the kernel to allocate more memory?
-Date: Sun, 8 Dec 2002 21:20:52 +0000
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: RAM and swap partition
+Date: Sun, 08 Dec 2002 16:43:50 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <15859.47028.420364.128585@cerise.nosuchdomain.co.uk>
-References: <000301c29eea$3107dd10$032a1c43@joe>
+Message-ID: <3DF3BD16.AEDD6560@gelm.net>
+References: <20021208002415.24931.qmail@web11406.mail.yahoo.com> <5.1.0.14.1.20021208075330.020a30f0@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000301c29eea$3107dd10$032a1c43@joe>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Joseph D. Wagner" <wagnerjd@prodigy.net>
-Cc: Linux C Programming <linux-c-programming@vger.kernel.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
+Ditto to what Ray said.
 
-Joseph D. Wagner wrote:
+ Perhaps you could run your system with a 'swap file' and see
+how big it ever gets.  Then make a swap partition just that size
+or a little larger.  ;-)
 
-> I'm trying to write a tracer on memory allocation, and I'm having a little
-> trouble figuring this out.
+ My current firewall-router (aDSL to 100 Mb LAN) has 32 megabytes
+  of RAM and has not used any swap memory, AFAICR.
+ Another workstation with 64 M of RAM has used 3 M of swap.
+ Another workstation with 160 M of RAM has used 2 M of swap.
+ Another laptop with 16 M of RAM, XFfree86 v4.0.3, and I just
+  ran Netscape v4.77 under fvwm95, loaded a small web page,
+  has used 2.6 M of swap.
+
+ IMHO, it depends.  ;-)
+
+HTH, Chuck
+
+Ray Olszewski wrote:
 > 
-> At some point, malloc has to call the kernel to tell it to allocate more
-> memory for this user process, right?  I can't figure out which function
-> malloc calls, or where in the code (line number) it's called.
-
-malloc can use either sbrk/brk or (anonymous) mmap to obtain more
-memory from the kernel.
-
-> I'm looking at glib-2.3.1 to try and find my answers.  After all, that's
-> where malloc is defined, right?
-
-It's in glibc (GNU libc), not glib (the GNOME utility library).
-
--- 
-Glynn Clements <glynn.clements@virgin.net>
+> At 01:15 PM 12/8/02 +0000, Rolf Edlund wrote:
+> >Originally to: james niland
+> >
+> >
+> >  jn> I know some people who run happily without a swap at all.
+> >
+> >How low RAM can I use, without running a swap ? Can I for example
+do it on
+> >a 486
+> >with 4 MB RAM ?
+> 
+> The way you ask this question, it has no real answer. How little
+memory a
+> system can run with depends on what tasks it is doing. And the
+choice of
+> CPU is pretty much irrelevant to this question (its only slight
+relevance
+> is in the smaller size of CPU-specific kernels).
+> 
+> That said ... running any sort of Linux system in less than 8 MB of
+real
+> (not swap) RAM poses special challenges ... most modern distros
+can't even
+> install on such systems (only Slackware, I think, still offers a
+"low
+> memory" install option) and you won't be able to do much with such
+a
+> system. In practice, the smallest systems I've ever run without
+swap were
+> 486s with 16 MB of RAM, and that was for special purpose systems
+like
+> routers. While these days I routinely run my workstations without a
+swap
+> partition, they have at least 256 MB of RAM.
+> 
+> --
+> -------------------------------------------"Never tell me the
+odds!"--------
+> Ray Olszewski                                   -- Han Solo
+> Palo Alto, California, USA                        ray@comarre.com
+>
+-------------------------------------------------------------------------------
+>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
