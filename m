@@ -1,52 +1,37 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: Re:  W$ 2K...
-Date: Thu, 31 Jul 2003 15:17:35 +0200
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: USB Flash Drive??
+Date: Thu, 31 Jul 2003 09:39:53 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307311517.35577.James.Hatridge@epost.de>
-References: <5.1.0.14.1.20030728115610.01ee9cd8@celine> <5.1.0.14.1.20030730121607.00b132c0@pop.mail.yahoo.com>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <20030731093953.A209@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030730121607.00b132c0@pop.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: James Ferris <james_e_ferris@yahoo.ca>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi James et al...
-On Wednesday 30 July 2003 20:26, James Ferris wrote:
-> hosts file is located at C:\WINNT\system32\drivers\etc\hosts
-> ... assuming your W2K is installed to C:\
+Greetings: Just getting my feet wet with USB on a Slackware9.0,
+2.4.20 box, and a 64mB Flash Disk "stick."
 
-This was what I was looking for! Thanks. As a side note I found that W$ only 
-says do it this way
+Enabling BIOS - 2.4.20 found it and loaded the necessary modules OK.
+Slick..
 
-192.168.17.41 Opus.epost.de
+However - mount reports the fstype as umsdos.. I note I can also
+mount the device as msdos or vfat OK and use mcopy to manipulate
+files.. cp also works but reports an error, copying the file anyway.
 
-But you can add a nickname like in Linux so that it looks like this
+I can find no information though as to if I can reformat the stick as
+ext2 or ext3..
 
-192.168.17.41 	Opus.epost.de 	Opus
+Has anyone done this? At this point I'm afraid to try.. <grin>
 
-It works just like in Linux and makes it easier.
+TIA and Cheers,
 
-Thanks
-
-JIM
-
-Jim Hatridge
-Linux User #88484
--- 
-Our country was colonized by the religious, political, economic, and criminal
-rejects of every country in the world. We have been carefully breeding insane, 
-obsessive, fanatic lunatics with each other for over 400 years, resulting in 
-the glorious strain of humanity known as "Americans". You have to expect 
-some... peculiarities. 
-
-Read about new German stamps each quarter:
-	 http:/www.fecundswamp.net/~hatridge/bulletin
-
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
