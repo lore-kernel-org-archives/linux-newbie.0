@@ -1,74 +1,57 @@
-From: "Anna G. Zapata" <azapata@du.edu>
-Subject: Id "x" respawning too fast: disabled for 5 minutes
-Date: Tue, 17 Feb 2004 16:17:00 -0700
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Id "x" respawning too fast: disabled for 5 minutes
+Date: Tue, 17 Feb 2004 16:15:56 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <HBEJLOFMLEPBMAAEFNFDCEAPCFAA.azapata@du.edu>
+Message-ID: <5.1.0.14.1.20040217160914.020297d8@celine>
+References: <HBEJLOFMLEPBMAAEFNFDCEAPCFAA.azapata@du.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <HBEJLOFMLEPBMAAEFNFDCEAPCFAA.azapata@du.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello all,
+At 04:17 PM 2/17/2004 -0700, Anna G. Zapata wrote:
+>Hello all,
+>
+>I just updated the fedora core with all it's new patches and now the 
+>machine seems to be hosed.  On reboot, I get the
+>following message:
+>
+>"Id "x" respawning too fast: disabled for 5 minutes" - Any ideas?  I have 
+>had nothing but problems with Fedora.
 
-I just updated the fedora core with all it's new patches and now the machine seems to be hosed.  On reboot, I get the
-following message:
+I can tell you what is happening, but not why it is happening. The above 
+message refers to this line in /etc/inittab --
 
-"Id "x" respawning too fast: disabled for 5 minutes" - Any ideas?  I have had nothing but problems with Fedora.
+         x:3:respawn:/etc/X11/prefdm -nodaemon
 
-I have no clue what is going on here.  I tried to get the machine in run level 3, but I still can't get it to work.
-Here is a copy of the /etc/inittab file:
+The app "prefdm" starts, then exits almost immediately. So the respawn part 
+of the entry tells init to start it again. It starts, exits ... and so on. 
+To keep continued respawns from typing up the system, init notices, stops 
+the cycle, and logs it.
 
-# Default runlevel. The runlevels used by RHS are:
-#   0 - halt (Do NOT set initdefault to this)
-#   1 - Single user mode
-#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)
-#   3 - Full multiuser mode
-#   4 - unused
-#   5 - X11
-#   6 - reboot (Do NOT set initdefault to this)
-#
-id:3:initdefault:
+That's the "what". The "why" is probably some sort of problem with prefdm, 
+whatever that is (some sort of X login app, similar to xdm or gdm, maybe?). 
+Make sure it is actually present on the system, and that you can run it 
+successfully from the command line. If it fails, notice why and fix it 
+(since you just did an update, I'd wonder about a shared-library 
+incompatibility, for example).
 
-# System initialization.
-si::sysinit:/etc/rc.d/rc.sysinit
-
-l0:0:wait:/etc/rc.d/rc 0
-l1:1:wait:/etc/rc.d/rc 1
-l2:2:wait:/etc/rc.d/rc 2
-l3:3:wait:/etc/rc.d/rc 3
-l4:4:wait:/etc/rc.d/rc 4
-l5:5:wait:/etc/rc.d/rc 5
-l6:6:wait:/etc/rc.d/rc 6
-
-# Trap CTRL-ALT-DELETE
-ca::ctrlaltdel:/sbin/shutdown -t3 -r now
-
-# When our UPS tells us power has failed, assume we have a few minutes
-# of power left.  Schedule a shutdown for 2 minutes from now.
-# This does, of course, assume you have powerd installed and your
-# UPS connected and working correctly.
-pf::powerfail:/sbin/shutdown -f -h +2 "Power Failure; System Shutting Down"
-
-# If power was restored before the shutdown kicked in, cancel it.
-pr:12345:powerokwait:/sbin/shutdown -c "Power Restored; Shutdown Cancelled"
+I confess I don't know why this particular failure would leave the machine 
+"hosed" ... but then, "hosed" is not a problem description, really. I'd 
+expect 6 terminals to be available on vt1 through vt6, for example, ready 
+for logins. If you write again, please describe the actual problem you are 
+experiencing, not just the message that si logged about a specific errant 
+process.
 
 
-# Run gettys in standard runlevels
-1:2345:respawn:/sbin/mingetty tty1
-2:2345:respawn:/sbin/mingetty tty2
-3:2345:respawn:/sbin/mingetty tty3
-4:2345:respawn:/sbin/mingetty tty4
-5:2345:respawn:/sbin/mingetty tty5
-6:2345:respawn:/sbin/mingetty tty6
+>I have no clue what is going on here.  I tried to get the machine in run 
+>level 3, but I still can't get it to work.
+>Here is a copy of the /etc/inittab file:
+[deleted]
 
-# Run xdm in runlevel 5
-x:3:respawn:/etc/X11/prefdm -nodaemon
-
-Anna Zapata
-UTS - Network Security
-303.871.2009
 
 
 -
