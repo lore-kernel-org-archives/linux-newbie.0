@@ -1,8 +1,9 @@
-From: Sridhar J <sridharj.hyd@cxknetworks.com>
-Subject: Red-Hat Hardening
-Date: Fri, 17 May 2002 11:17:04 +0530
+From: G Anna <drguruolai@eth.net>
+Subject: archives
+Date: 17 May 2002 17:35:34 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D132F@ccdc-exchg.careercommunity.com>
+Message-ID: <m3vg9ndlo1.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,26 +11,24 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi
+Dear All,
 
-I have installed RH 7.2 on a PIII system successfully. Now, I plan to run it
-as a webserver with Apache. Now, how do I harden the OS, so as to have the
-maximum security. Buffer overflows, DOS attacks etc have to be protected
-against. I don't know much abt Linux, although I am trying to learn. I
-especially become confused by the number of files that have to be changed,
-such as /usr etc.
+Where is the archive for this mailing list?  And is it searchable?  I
+searched at the http://www.linux.org website but its not mentioned
+over there.  Kindly point me in the right direction.
 
-If someone can write a step-by-step guide to setting up a firewall, install
-snort or a similar IDS, configure variuos options, I will jump with joy. I
-also will prominently display his name on my site,
-http://sridharj.focusindia.com and convert this guide into a tutorial,
-submit it to some of the best web sites in the world.
+Cheers,
+anna
 
-I am a Technical Analyst and Writer and have a good rapport with
-SecurityFocus.com and a couple of such sites.
 
-Regards
-Sridhar 
+-- 
+
+(10) I  will not interrogate my enemies in the inner sanctum -- a small
+     hotel well outside my borders will work just as well. - Peter Anspach 
+     in "The Top 100 Things I'd Do If I Ever Became An Evil Overlord"
+
+                                               http://www.eviloverlord.com
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
