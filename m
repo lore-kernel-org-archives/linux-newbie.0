@@ -1,57 +1,39 @@
-From: Simon <simon@highlyillogical.org>
-Subject: Re: Sharing bandwidth across multiple internet connections?
-Date: Thu, 17 Oct 2002 16:08:40 +0100
+From: Ramzez <r4mz3z@yahoo.es>
+Subject: cd-rom with udf
+Date: Thu, 17 Oct 2002 09:51:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210171608.40922.simon@highlyillogical.org>
+Message-ID: <200210170951.55533.r4mz3z@yahoo.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-On Thursday 17 October 2002 16:38, Dragos LUNGU wrote:
-> 4.2. Routing for multiple uplinks/providers
-> A common configuration is the following, in which there are two
-> providers that connect a local network (or even a single machine) to the
-> big Internet.
->
-> http://www.lartc.org/howto/lartc.rpdb.multiple-links.html
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Thanks! That's pretty much what I was looking for.
+Hi...
+  How do I can read a udf CDrom?... this format is used in operating systems 
+like windows... In other windows like, you see an application and later run 
+this app you can see all the contents in this type of CDs... but if I mount 
+this CD I can see this app... but i don't kwon how to see the other files in 
+the udf file system.
+  Please, give a hand ;-)
 
-On Thursday 17 October 2002 15:57, jbradford@dial.pipex.com wrote:
-> The alternative, is to have two completely separate connections, and
-> send out packets over them both fairly randomly.  These will get
-> answered, and sent back via whichever connection they came from.
-> Therefore sending data out randomly over two interfaces is a crude
-> form of load balancing.
+Ramzez
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
 
-I was thinking it would have to be done like this... I was thinking perhaps it 
-would be possible to route to odd-numbered addresses on one interface, and 
-even-numbered on the other. But the weighting idea looks better, now that I 
-know it's possible. :)
-
-On Thursday 17 October 2002 16:02, jbradford@dial.pipex.com wrote:
-> Assuming that you want to use this bandwidth primarily for
-> downloading applications, as opposed to running servers, make sure
-> that you weight the connections based on the downstream bandwidth.
-
-Well, I was thinking for both downloading, and running servers actually. But I 
-was thinking that I could play with something at the DNS level so that the 
-interface that was gotten hold of for clients making connections was fairly 
-random. Again, that wouldn't be perfect, and not proper load balancing, but 
-better than nothing.
-
-Might be overkill for the short amount of time I'm going to have both 
-connections for though. :)
-
-Simon
-
-
---
-This message has been scanned for viruses and dangerous content, and
-is believed to be clean.
+iD8DBQE9rs6Js4dF9gl05swRAmFXAJ9xNu5O/gcFWSSoQD3elNxUTtDaFQCfcKJT
++cIhgK8oTzUti4BqyvFDDak=
+=GkPc
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
