@@ -1,54 +1,45 @@
-From: Ray Olszewski <ray@comarre.com>
+From: "Jonathan Kallay" <yoni@kallay.net>
 Subject: Re: lpr problems with HP Deskjet 712C
-Date: Mon, 20 Jan 2003 13:11:38 -0800
+Date: Mon, 20 Jan 2003 16:24:52 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030120130241.02119210@celine>
-References: <5.1.0.14.1.20030120121028.02117b20@celine>
+Message-ID: <001d01c2c0ca$6068c180$6400a8c0@ngaruahoe>
+References: <5.1.0.14.1.20030120121028.02117b20@celine> <5.1.0.14.1.20030120130241.02119210@celine>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000f01c2c0c6$5e5547a0$6400a8c0@ngaruahoe>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Jonathan Kallay <yoni@kallay.net>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Thanks for the additional information. But I still need to see the answer 
-to one question you skipped:
+  I referred to PDQ simply as proof of an existing setup that does work.  I
+think it's mostly irrelevant when it comes to using the Linux box as a
+printserver over SMB.
 
-> > Second, what does the [printers] block in /etc/samba/smb.conf look like?
-> > Assuming it refrences a spool directory, what does the /etc/printcap entry
-> > corresponding to that spooler look like?
+here's my printcap file:
+lp:\
+  :lp=/dev/lp0
+  :sd=/var/spool/lpd/%P:\
+  :sh:
 
-Or, if Samba is (somehow) configured to use PDQ, rather than a spool 
-directory, what does that setup look like? As I said previously,
+and the smb.conf blocks:
+[printers]
+        comment = All Printers
+        path = /tmp
+        create mask = 0700
+        printable = Yes
+        browseable = No
 
-> > Fourth, when you say " I've got PDQ printing fine" ... how? PDQ appears to
-> > be (from the apt-cache package description; I don't use it myself)  just a
-> > frontend for workstation use; behind the curtain, lpr or LPRng still needs
-> > to be working to support Samba (but not necessarily PDQ) printing.
-
- From your response, it appears I was unclear. You wrote:
-
->PDQ isn't just a front end for lpr or Lprng.  PDQ stands for "Print, Don't
->Queue" and is a printing system that circumvents the printing queues
->altogether.  With my printer, it's configured to use the pnm2ppa driver as a
->filter.
-
-Yes, that part was clear from the package description. But how to tell 
-Samba to use a queueless printing system -- is there even a printing daemon 
-for Samba to use in PDQ? -- is not apparent. It's Samba, not PDQ, that (I 
-think) needs some lprd running ... at least that's the only way I know to 
-set up Samba ... sorry I was unclear about that before.
-
-At 03:56 PM 1/20/03 -0500, Jonathan Kallay wrote:
-[details deleted]
+[lp]
+        path = /tmp
+        read only = No
+        create mask = 0700
+        guest ok = Yes
+        printable = Yes
+        print command = lpr -P'%p' %s
+        printer name = lp
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
