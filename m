@@ -1,43 +1,52 @@
 From: Peter Garrett <peterg@fishinternet.com.au>
-Subject: Re: CD-RW-Drive
-Date: Wed, 29 Dec 2004 18:45:02 +1100
-Message-ID: <1104306301.8063.17.camel@debianarchist>
-References: <20041229070643.E79E71737F@heisspf>
-	 <200412290826.13631.pa3gcu@zeelandnet.nl>
+Subject: Re: Linux on a G5 Boat anchor
+Date: Wed, 29 Dec 2004 19:15:51 +1100
+Message-ID: <20041229191551.062d96d1.peterg@fishinternet.com.au>
+References: <001301c4eb61$dbbe66a0$6601a8c0@crapper>
+	<41CEE035.3080107@verizon.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200412290826.13631.pa3gcu@zeelandnet.nl>
+In-Reply-To: <41CEE035.3080107@verizon.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Just a quick follow-up to correct a typo:
+On Sun, 26 Dec 2004 11:00:53 -0500
+Jim Nelson <james4765@verizon.net> wrote:
 
-the command to run after editing /etc/lilo.conf is
+> Dave B. Sharp wrote:
+> > I have new dual g5 Mac that I have not been able to get working
+> > properly =
+> > in 6 months. Apple has been of lillte or no use. Is there a
+> > working =
+> > distribution for this machine? -
+> 
+> http://www.yellowdoglinux.com/
 
-/sbin/lilo -v
+Also: 
+ftp://ftp.ubuntulinux.org/cdimage/releases/warty/release/
 
-(I believe I ran two words together, which might have been confusing)
+where you will see a power PC .iso
 
-Also as to placement of the append line; it goes in the stanza that
-looks something like this one:
+or (if you can wait)
 
-image=/vmlinuz
-        label=Linux
-        initrd=/boot/initrd.gz
-        read-only
-        append="hdc=ide-scsi hdd=ide-scsi"
+http://www.shipit.ubuntulinux.org/
 
+where you can sign up for a bundle of free CDs with free shipping
+(yes, I'm not kidding)
 
-you may or may not have the initrd line, depending on your kernel. Don't
-change anything except the append line. And then after saving, run lilo
-as above. (this bears repeating as it is easy to forget!) I have two CD
-drives, hdc and hdd. You may have only one, in which case the two
-entries are unnecessary, although they won't harm anything.
+for Ubuntu info:
 
+http://ubuntulinux.org
 
+> -
+> To unsubscribe from this list: send the line "unsubscribe
+> linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
