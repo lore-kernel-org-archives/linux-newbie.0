@@ -1,76 +1,26 @@
-From: Thorsten Alge <mail@thorsten-alge.de>
-Subject: Dual Monitor
-Date: Wed, 22 Sep 2004 20:46:19 +0200
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: playing ogg files with xmms
+Date: Wed, 22 Sep 2004 17:08:48 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1095878779.6943.11.camel@localhost>
+Message-ID: <Pine.LNX.4.44.0409221705450.16536-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-0+f0rEKxXY0WGlkpshGa"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+I am unable to play ogg-vorbis encoded files under xmms. mp3s are fine, 
+however. What must I install to be able to listen to the ogg files? 
 
---=-0+f0rEKxXY0WGlkpshGa
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+System details: Athlon xp1500+ cpu, debian woody linux, 
+kernel-2.4.18-1-k7. 
 
-Hi,
+Thanks,
 
-i've a problem with my XFree86 on my T23 Notebook. I want to use a
-secound monitor. But i don't know, how to configure two monitors to work
-with only one graphic card.=20
-first i have tested a configuration for each monitor for its own and it
-works fine. then i created a XF86Config-4 with Sections for each monitor
-(monitor0 and monitor1), screen and display.
-at last i've created the following server layout section:
+-K
 
-        Section "ServerLayout"
-        	Identifier	"Multi Head"
-        	Screen	0	"screen0"	0	0
-        	Screen	1	"screen1" RightOf	"screen0"
-        	InputDevice	"Generic Keyboard"
-        	InputDevice	"Configured Mouse"
-        	InputDevice	"Generic Mouse"
-        EndSection
-
-that doesnt work and i cant figure out why. I've googled around and
-looked at xfree85.org, but i cant find a good help. If anyone had solved
-a similar problem at any time, it would be nice, if he could help me or
-tell me, where i cant find a good help.
-
-thanks,
-
-thorsten
---=20
-+---------------------------------------------------------+
-|  Auszubildender Fachinformatiker fr Systemintegration   |
-| - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|                                                         |
-|  Thorsten Alge       Mobil: +49 (0) 1 60 / 93 83 94 73  |
-|  Ringslebenstr. 2    Tel:   +49 (0) 30 / 66 86 82 27    |
-|  12353 Berlin        Fax:   +49 (0) 30 / 66 86 82 27    |
-|  Germany                                                |
-|                                                         |
-| - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
-|                                                         |
-|              http://www.thorsten-alge.de/               |
-|                 mail@thorsten-alge.de                   |
-|                                                         |
-+---------------------------------------------------------+
-
---=-0+f0rEKxXY0WGlkpshGa
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Dies ist ein digital signierter Nachrichtenteil
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
-
-iD8DBQBBUch6fqTT+g1FweURAmxLAKCwZMpvunLkLtt21WlT2j24xzn3wgCgrcVv
-GMNhuEpwtOkNUPJDyWteW/Q=
-=bWZP
------END PGP SIGNATURE-----
-
---=-0+f0rEKxXY0WGlkpshGa--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
