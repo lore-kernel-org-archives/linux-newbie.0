@@ -1,30 +1,45 @@
-From: wolfgang <wolfgang127jp@ybb.ne.jp>
-Subject: about LogWatch....
-Date: Mon, 21 Oct 2002 06:00:24 +0900
+From: "Ken Boyer" <kboyer@logicalimages.com>
+Subject: Re: Disk Image
+Date: Sun, 20 Oct 2002 17:24:27 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021021055217.0F68.WOLFGANG127JP@ybb.ne.jp>
+Message-ID: <65088.24.24.44.27.1035149067.squirrel@www.logicalimages.com>
+References: <3DB30557.3040705@perthel.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3DB30557.3040705@perthel.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi there.
+I believe the new version - Ghost 2003 - supports Linux file systems.
 
-I've installed sar(sar, sa1, sa2...) command to log system resource
-usage.
-Since I have to use crontab for those sa1 and sa2 , I'm(root user) getting
- a tons of mails from LogWatch.
-How can I make LogWatch not to send mails about sa1 and sa2 commands in
-crontab ??
+Ken
 
-Thank you.
-wolfgang
+> Hello Paul,
+>
+>
+> Just found on the web: http://www.partimage.org
+>
+> I think this is something like a Norton Ghost clone for Linux. I
+> haven't  tried this yet, but it looks very promising.
+>
+> Hope this helps a bit.
+>
+>
+> Regards,
+>
+> Carsten
+>
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+> in the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 
--- 
-wolfgang <wolfgang127jp@ybb.ne.jp>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
