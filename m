@@ -1,65 +1,46 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Networking issue
-Date: Thu, 02 Jan 2003 08:38:41 -0800
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: How can I move /usr/bin, /usr/lib (etc.) files?
+Date: Thu, 2 Jan 2003 11:54:51 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030102082846.021bb750@celine>
-References: <200301021906.13536.Adam@Luchjenbroers.com>
-Mime-Version: 1.0
+Message-ID: <av1qr4$hev$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200301021906.13536.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Your report is way too sketchy to let anyone spot the problem. Post a 
-followup with this information:
+Moving the contents of my "/usr/bin" directory is simple enough: "mv
+/usr/bin [newdirectory]" does the trick; but finding the programs in the new
+location seems to be the kicker.
 
-         1. Unedited output of "ifconfig -a"
-         2. Unedited output of "netstat -nr'
-         3. Unedited output of "iptables -nvL"
-         4. An EXACT description of what the ping failures look like. (Does 
-ping fail silently, or does it fail with an error message? If there's a 
-message, what is it). Do this for (a) 127.0.0.1 pinged from the Mandrake 
-host and (b) its eth0 IP address pinged from some other host (and mention 
-what OS that host is running, since that affects the wording of ping error 
-messages).
-         5. The unedited output of 
-"cat  /proc/sys/net/ipv4/icmp_echo_ignore_all"
-         6. An EXACT description of what the ssh failures look like. 
-Include info on how you run sshd (as a deamon by itself or through inetd), 
-any error messages sshd logs, and how long you wait before deciding that 
-sshd has failed (if you haven't been waiting for 5 minutes before giving 
-up, please do so, so we can rule out DNS-related logging errors).
+I'm using bash, so editting the ".profile" file in the user's home directory
+seems to have done the trick for the most part, although when I invoked
+"man" (as in "man bash") after moving the directory, updating ".profile" and
+re-login,  I get messages akin to "/usr/bin/nroff not found" and
+"/usr/bin/tr not found".
+ * Where, in general, do programs (such as man) get there path information
+from?
 
-Do all of this WITHOUT installing Shorewall. Let's fix the problems one at 
-a time ... get your basic conectivity working, then get the system properly 
-firewalled. Oh, also mention what kernel version you are using ("uname -a") 
-and whether you compiled it yourself or it is a stock Mandrake kernel.
+Similarily, I'd like to move the /usr/lib directory to another location.
+ * Should I download src for packages that I'm using and recompile with
+appropriate destinations chosen in the configure scripts?
 
-At 07:06 PM 1/2/03 +0930, Adam Luchjenbroers wrote:
+Some information about my system is available at
+"http://members.rogers.com/riskweb3/Linux/ibm_linux_box_info.html"
 
->I installed Mandrake 9.0 on a server box I'm putting together, I installed 
->the
->firewall shorewall. Couldn't connect to the ssh server or even ping the box
->(the inability to ping it, I assumed was the result of shorewall).
->
->Reconnected monitor and keyboard to server, server couldn't ping any of the
->other computers (sendmsg not permitted)
->
->So I turned off shorewall and even removed it from startup, can now ping from
->the server to other computers but it cannot be pinged (even ping 127.0.0.1
->doesn't work) or connected to using ssh (sshd is running)
->
->Any idea whats wrong?
+Let me know if you want to see more info ...
+
+Thanks,
+- Jamie
+
+p.s. I've been using unix systems for years and have always relied on
+services of others to administrate my environments. Recently I started using
+a minimalist Linux installation to catalyze my unix admin learning process.
 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
