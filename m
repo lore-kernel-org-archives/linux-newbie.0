@@ -1,52 +1,41 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: monitor
-Date: Wed, 28 Apr 2004 07:51:08 +0200
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Can't Print
+Date: Fri, 30 Apr 2004 12:00:15 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200404280751.08435.pa3gcu@zeelandnet.nl>
-References: <5.1.0.14.1.20040427135550.02d5a1c8@celine> <1083101651.408ed1d3d7128@webmail.dpomeroy.com>
+Message-ID: <20040430040015.640AF333CC@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1083101651.408ed1d3d7128@webmail.dpomeroy.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: dave@dpomeroy.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-On Tuesday 27 April 2004 23:34,  wrote:
-> To put it simple, I want larger text and pictures keeping the lcd mon=
-itor
-> resolution at 1280X1024. =A0I want a 1024X768 picture using a 1280X10=
-24
-> screen resolution. =A0My monitor is a 17" Samsung lcd. Thanks for you=
-r time.
+Hi,
 
-You need to enlarge your fonts.
+On a standalone PC with no modem and therefore no Internet connection and
+RH 9.0 installed I am unable to get the printer to work.
 
-Cant say how because you dont say what you use.
+On booting starting lpd I get:
 
-In KDE use control center select Apierance and theams <fonts>
+--localhost Get_local_host: 'localhost' IP address not available!
 
-=46or a terminal under X you can simply click "settings" and go from th=
-ere.
+The same message I get when trying to print a test page in printer-config.
 
-Linux is "very" versitile".
+I configured a simulated Internet connection, the problem remains.
 
---=20
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+I am an old RedHat hand so-to-speak and this is the first time I can't get the 
+printer to work. On all previous installations the PCs had modems attached.
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Could this be the problem that there is none. Would be strange so.
 
+Thanks for any suggestions.
 
+Regards
+-- 
+Peter
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
