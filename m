@@ -1,33 +1,45 @@
-From: Abhijit Vijay <abhijit_v@yahoo.com>
-Subject: Write to Windows partition from linux as ordinary user
-Date: Wed, 6 Nov 2002 13:46:56 -0800 (PST)
+From: "Christoph" <christoph23@charter.net>
+Subject: Re: Write to Windows partition from linux as ordinary user
+Date: Wed, 6 Nov 2002 16:43:46 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021106214656.16325.qmail@web13408.mail.yahoo.com>
-References: <20021106225134.E1142@neutrino.particles.org>
+Message-ID: <046901c285e5$f845e390$8c01a8c0@ENTROPY>
+References: <20021106214656.16325.qmail@web13408.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021106225134.E1142@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Abhijit Vijay <abhijit_v@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi All,
+> I have a Windows 98 partition mounted on linux. The
+> directory, /win98 on which I have done the mount is
+> owned by me, as an ordinary user. However, I find that
+> I cannot write to the partition except as root. Is
+> there any way out, so that I do not need to su before
+> writing?
 
-I have a Windows 98 partition mounted on linux. The
-directory, /win98 on which I have done the mount is
-owned by me, as an ordinary user. However, I find that
-I cannot write to the partition except as root. Is
-there any way out, so that I do not need to su before
-writing?
+I'm still very much a newbie so I could be totally off base
+here.  I had a problem very similar to yours.  I set up a
+local dos drive in fstab to be mounted.  And whenever it
+was mounted, all the directories (and files) were owned as
+root.  The way that I fixed that was to modify the entry in
+fstab to read as such:
 
-Regards,
-Abhijit.
+/dev/hdd1               /mnt/local_d            vfat    defaults,rw,gid=XXX,uid=XXX  0 0
 
-__________________________________________________
-Do you Yahoo!?
-HotJobs - Search new jobs daily now
-http://hotjobs.yahoo.com/
+so that it mounts the drive so it's own by group id XXX and 
+user XXX and that did the trick.
+If you are just using mount from the command line, there
+are switches that do the above.
+
+If a more experienced user knows a better way or can clarify
+as to whether or not there are problems with this solution, I'd
+be very happy to hear it!
+
+Christoph
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
