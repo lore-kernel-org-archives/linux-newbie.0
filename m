@@ -1,35 +1,27 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: how do i transmit data using snull?
-Date: Sat, 2 Oct 2004 07:51:06 +0200
+From: manish regmi <regmi.manish@gmail.com>
+Subject: changing refresh rate.
+Date: Sat, 2 Oct 2004 15:59:00 +0545
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200410020751.06896.pa3gcu@zeelandnet.nl>
-References: <20040930004212.44755.qmail@web53607.mail.yahoo.com>
+Message-ID: <652016d30410020314a67f701@mail.gmail.com>
+Reply-To: manish regmi <regmi.manish@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040930004212.44755.qmail@web53607.mail.yahoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Donald Duckie <schipperke2000@yahoo.com>
-Cc: Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org, linux@list.linuxnepal.com.np
 
-On Thursday 30 Sep 2004 02:42, Donald Duckie wrote:
-> can somebody please tell me where else can i refer to?
+hi all,
+ How can i change the refresh Rate. I am using Fedora Core 2.
+The monitor settings(gdm) does not have refresh rate option. I want to
+make it exactly 100 HZ(My system supports this value in Windows). I
+have Geforce 2 MX 100/200 card and have installed propritary driver
+from nVidia.
 
-http://google.com/linux
+I looked in the xorg.conf file. There is not any entry about refrash rate.
 
-Use "snull" as the search.
-
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Thanks in advance.
+Manish
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
