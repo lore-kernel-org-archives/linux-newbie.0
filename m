@@ -1,62 +1,82 @@
-From: Markus Klotzbuecher <markus.klotzbuecher@creamnet.de>
+From: "John T. Williams" <jowillia@vt.edu>
 Subject: Re: Switching between foreground and background
-Date: Mon, 22 Sep 2003 16:37:13 +0200
+Date: Mon, 22 Sep 2003 11:37:05 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309221637.14000.markus.klotzbuecher@creamnet.de>
-References: <20030922123822.71099.qmail@web20003.mail.yahoo.com>
+Message-ID: <003501c3811f$610395a0$ed64a8c0@descartes>
+References: <20030922104825.81134.qmail@web20002.mail.yahoo.com>
+Reply-To: "John T. Williams" <jtwilliams@vt.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030922123822.71099.qmail@web20003.mail.yahoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Silambu Chelvan <silambu_mdu@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: Silambu Chelvan <silambu_mdu@yahoo.com>, linux-newbie@vger.kernel.org
 
-On Monday 22 September 2003 02:38 pm, Silambu Chelvan wrote:
-> Hi,
->
-> Thanks for your information.
->
-> The method you suggested works fine but I still have a
-> requirement. The control is still in the process and
-> could not see the command prompt. The thing is that I
-> should get the command prompt whenever the process is
-> put into background so that I can issue some other
-> command on the prompt.
+I think part of the problem here might be conceptual.
 
-Hi
+If I understand what you want, you'd like, on a signal, for your program to
+go into the background (still running but no longer blocking the terminal
+input/output). On another signal you would like the program to come back to
+the foreground.
 
-hmm, I see. You will have to actually stop the process to get the command 
-prompt, instead of letting it sleep as I suggested earlier. You can do this 
-by sending the SIGSTOP signal to it:
+If this is the case, the problem you're facing is that the program being in
+the foreground and the background is actually part of the shell, not a
+property of the program running.  Most Shells provide a way to switch
+programs from the foreground to the background and back.
+BASH for example I could type
 
-#include <signal.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
+$>./myprogram
+(cntr + Z) //suspends the current program and prings the prompt back
+$>bg  (runs the program in the background)
 
-void suspend()
-{
-        printf("Suspending...\n");
-        pid_t pid = getpid();
-        kill(pid, SIGSTOP); /*send SIGSTOP to itself */
+The only way that I know of to force a program to run in the background in
+the code is to make it a daemon which is done by forking twice
+
+int main(  ) {
+   if(fork()==0)  {
+            if( fork() == 0 )  {
+                    program code starts here
+             }
+            exit(0);
+    }
+    exit(0);
 }
-...
 
-The problem arises, when you need to start it again. The stopped process needs 
-to be sent a SIGCONT signal, which will cause it to continue. Obviously a 
-stopped process can't catch any signals and can't start itself again. The 
-only way I see is to have a second process catch the signals and send the 
-appropriate SIGSTOP and SIGCONT signals to the, lets call it main process.
 
-I hope this helps...
+----- Original Message ----- 
+From: "Silambu Chelvan" <silambu_mdu@yahoo.com>
+To: <linux-newbie@vger.kernel.org>
+Sent: Monday, September 22, 2003 6:48 AM
+Subject: Switching between foreground and background
 
-Cheers
 
-	Markus
-
+> Hi all,
+>
+> I have written some program with signal handler. Is
+> this possible, if
+> one of the signals registered with my program is
+> raised, my program
+> should goto background and should come to foreground
+> when some other of the
+> registered signal is raised. how to do it?
+>
+> Any function available to switch a process between
+> foreground and
+> background at runtime?
+>
+> with regards,
+> M. SilambuChelvan
+>
+>
+> __________________________________
+> Do you Yahoo!?
+> Yahoo! SiteBuilder - Free, easy-to-use web site design software
+> http://sitebuilder.yahoo.com
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
