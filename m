@@ -1,37 +1,32 @@
-From: ichi@ihug.co.nz
-Subject: Re: running prog on start up
-Date: Thu, 19 Sep 2002 08:32:24 +0000
+From: wa4chq@netscape.net (neil t)
+Subject: lilo vs. grub
+Date: Wed, 18 Sep 2002 19:15:19 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D898B98.4B0EC85@ihug.co.nz>
-References: <F29WEEREhKlIKQcFWqX00008337@hotmail.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <70D2426B.531446B0.0006BEFC@netscape.net>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: a a <xlsd@hotmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-a a wrote:
-> 
-> I've written a program in c and want to run it as soon 
-> as BasicLinux boots up...
-> is there a startup stript that i can edit? 
+Greetings all-
+I have been using lilo since installing RH a year and a half
+ago.  Is there a reason why I should switch and start using
+grub?
+Tnx
+Neil T.
 
-The ramdisk version of BasicLinux uses a single startup
-scrip:  /etc/rc
+-- 
+Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
-When you install BasicLinux to its own HD partition, it
-uses several Slackware-type startup scripts.  You will
-find them in /etc/rc.d.  I suggest you execute your
-program at the end of /etc/rc.d/rc.M
 
-Cheers,
-Steven
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
-______________________________
-http://www.volny.cz/basiclinux
-
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
