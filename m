@@ -1,30 +1,38 @@
-From: pshook <pshook@dsl-only.net>
-Subject: Galeon/Glibc
-Date: Sun, 27 Apr 2003 21:14:19 -0700
+From: Mike Ni <cba20032002@yahoo.com>
+Subject: Firewall benchmark
+Date: Sun, 27 Apr 2003 22:30:23 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EACAA9B.59E72053@dsl-only.net>
+Message-ID: <20030428053023.75453.qmail@web40414.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I accidently deleted Galeon (with package manger) in RH7.3. I downloaded
-the file and tried to install it. it tells me I have  a lot of missing
-files (dependency problems). Most of these are glibc. I downloaded those
-and I get an ENORMOUS list of dependency problems. How do I fix this?? I
-just want Galeon back.
+Hi there, 
 
-I've tried Ximian's redcarpet to install and update the files I need but
-that doesnt' get it either. I'm at a loss.
+While back, I read a post about how to benchmark/judge
+a firewall. Is anyone out there know where to find
+such information? 
 
-Thanks
+I want to find out the right way determing firewall's
+performance. Is it right to judge a firewall simply
+based on the throuput/second as what the vendors seems
+be doing. 
 
-Parrish
+Yet, I am wondering how the "network state inspection"
+would impact firewall's performance. Is it more
+prudent to benchmak firewall's performance based on
+"session/second"? 
 
+Any input is appreciated! Thanks
+Mike
 
-
+__________________________________
+Do you Yahoo!?
+The New Yahoo! Search - Faster. Easier. Bingo.
+http://search.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
