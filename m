@@ -1,53 +1,35 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Linux firewall question
-Date: Tue, 16 Apr 2002 10:20:22 +0000
+From: Ralph Gesler <rgesler@pacificnet.net>
+Subject: Re: Strange shutdown problem with KDE2.2.2.
+Date: Tue, 16 Apr 2002 08:26:39 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041610202202.03753@unix.pa3gcu>
-References: <F4D3DB9A18752A4F99FD880ABC54071707027F@ccdc-exchg.careercommunity.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3CBC42AE.EF110DCC@pacificnet.net>
+References: <Pine.LNX.4.33.0204152254570.28074-100000@enigma.sjcentral.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC54071707027F@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Sridhar J <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+To: JD <jd@sjcentral.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 16 April 2002 06:50, Sridhar J wrote:
-> Hi
->
-> I read this somewhere. Can you tell me how to recompile the kernel. Assume
-> that I use Red Hat Linux.
->
-> "First of all, make sure that the Linux kernel supports Advanced Routing.
+JD wrote:
+> 
+> hmm, strange question, you're not using a TFT monitor are you? they have a
+> habit of displaying an image a bit like burning paper when there is a fast
+> mode switch, e.g. when a PC is shutting down. In which case, this event
+> would be intermittent, which it appears to be.
+> 
 
-CONFIG_IP_ADVANCED_ROUTER  say yes to it.
-You will also get a few more options, if you dont know what its all about hit 
-the ? key, a short description will then be presented, that is under 'make 
-config'
+First, in direct reply to yor question: no I am not running a TFT
+monitor. Secondly, I apologise for not being totaly clear in my first
+post. I do remember seeing the same symptons occur as described by the
+origional poster, Ola Theander ie. on shutdown of KDE.  However, I was
+trying to indicate that the same problem has occured at other times. 
+The point that I did not make clear was that this occurs when switching
+between vt's ie from, for example, tty1 back to an already running X on
+tty7 (F7).
 
-> The standard RedHat 2.2.14 kernel doesn't, so a recompile is necessary.
-> Configure the kernel as an Advanced Router and enable all the Quality of
-> Service options."
-
-I suggest you read /usr/src/linux/Documentation/Configure.help
-All options are explained there.
-
->
-> Also, what is ipchains and is it available on every distro?.
-
-ipchains is in every distro i know of, you can create and manipulate firewall 
-rules with it in 2.2.xx kernels.
-
->
-> Regards
-> Sridhar
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Ralhp Gesler
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
