@@ -1,16 +1,36 @@
-From: Mike Keithley <mkeithley@pobox.com>
-Subject: Cron
-Date: Tue, 20 Aug 2002 12:35:07 +0000 (UTC)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Cron
+Date: Tue, 20 Aug 2002 06:20:00 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0208210534310.363-100000@C893988-a.stcla1.sdba.home.com>
+Message-ID: <5.1.0.14.1.20020820061541.0224c250@celine>
+References: <Pine.LNX.4.33.0208210534310.363-100000@C893988-a.stcla1.sd
+ ba.home.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.33.0208210534310.363-100000@C893988-a.stcla1.sd
+ ba.home.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Mike Keithley <mkeithley@pobox.com>, linux-newbie@vger.kernel.org
 
-How does one get started using cron?  Thanks
+At 05:35 AM 8/21/02 -0700, Mike Keithley wrote:
+>How does one get started using cron?  Thanks
+
+
+Depends on what you mean. Assuming crond is running on your system (it 
+usually will be, with out-of-the-box installs of the major distros), the 
+usual way, on modern Linux systems at least, is for a user to create his or 
+her list of cron jobs using the command "crontab -e". The man page for the 
+crontab *file* (not the *app* -- access it with "man 5 crontab") will tell 
+you the format needed.
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
