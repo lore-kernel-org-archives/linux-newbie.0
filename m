@@ -1,24 +1,50 @@
-From: "B.J. Wilson" <analogkid01@mindspring.com>
-Subject: Re: Can't see my drives
-Date: Fri, 30 Aug 2002 13:30:56 -0400
+From: "Benny Pedersen" <linux-net@tcob1.net>
+Subject: bind conf
+Date: Friday, 30 Aug 2002 02:22:16 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <005901c2504b$005efe70$778fd943@laptop>
-References: <Pine.LNX.4.44.0208301217160.8975-100000@localhost.localdomain>
+Message-ID: <MSGID_110=3a300=2f15_3d6ed797@fidonet.org>
+References: <Pine.LNX.4.44L.0208291647100.3358-100000@labmetro.ufsc.br>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44L.0208291647100.3358-100000@labmetro.ufsc.br>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-> > (What is plural of 'guru'?)
->
-> It's "gurutavatimundiharistrasnivishumaximotiousnesses".
+Originally to: Daniel Provin
 
-Yeah - don't you remember singing that song from "Shiva Poppins" when you
-were a kid? ;-)
+Hello Daniel!
+
+29 Aug 02 16:49, Daniel Provin wrote to All:
+
+ DP> Is there a better way than CNAME entries to include subdomains for 
+ DP> a zone in the bind configuration?
+
+nope
+
+ DP> I am currently using CNAME entries for the www and the mail 
+ DP> subdomains
+
+the way it should be
+
+CNAME is for subdomains on the same ip
+
+A record is for subdomains on diffrent ip
+
+basicly the hostnames can be the same :)
+
+ DP> -+- Internet Rex 2.67 beta 1a
+
+closed beta ?
 
 
+Regards, Benny
+
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
 
 
 -
