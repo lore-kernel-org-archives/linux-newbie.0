@@ -1,89 +1,107 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Arthur Othieno <arthurothieno@gmx.net>
 Subject: Re: File Management
-Date: Thu, 19 Sep 2002 06:01:40 +0000
+Date: Thu, 19 Sep 2002 14:08:53 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02091906014001.18645@unix.pa3gcu>
-References: <200209190301.g8J31KFg007397@pegasus.wanadoo.be>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3D89CC65.1010301@gmx.net>
+References: <00c301c25f48$62b94bf0$64fea8c0@pkrausxp> <0209181930260H.03392@unix.pa3gcu>
+Reply-To: arthurothieno@gmx.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209190301.g8J31KFg007397@pegasus.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: pa3gcu@zeelandnet.nl
+Cc: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-On Thursday 01 January 1970 00:00, Heimo Claasen wrote:
-> This latgest on "uninstall" in this thread is bordering the question I
-> had earlier on "weeding out" unneeded things.
->
-> Uninstalling a program compiled on a machine seems to work like that
-> indeed.
->
-> BTW, I got another command (syntax) told:
->    > make clean
->    > make distclean
 
-It is not clear to me if you understand what 'make clean' and 'make 
-distclean' do, clean delete's mainly *.o files created when 'make' is 
-completed.
-distclean cleans out everything created by both ./configure and make.
- 
->
-> (this from in the dir from which it was installed or rather,
-> "./configure" was run.)
->
-> Next question then is where to find (and delete) obsolete files which
-> had been installed collaterally (however automatically, package
-> driven or not) earlier ?
->
-> For instance, "ldd <prog-name>" apparently lists a number of files
-> "referenced" [sic, <g>] by that _one_ program.
 
-O wait, dont delete what ldd says is used by a program, they are libarys of 
-which are shared by other programs as well, delete those and your system will 
-be brought to its knees.
+pa3gcu wrote:
 
->
-> But it's clearly a hassle to have this done for _all_ programs in order
-> to find out those some files the use of which is not shared.  (One of my
-> fatter, though far from complete installations has almost 60,000
-> files...)
+> On Wednesday 18 September 2002 19:20, Paul Kraus wrote:
+> 
+>>Obviously software is always better installed from source. This creates
+>>binaries that are system specific. However this represents the problem
+>>of software removal. I notice some software by default will install into
+>>/usr/local then dump everything under one directory (windows style-the
+>>source install for samba is a good example). You can uses switches to
+>>put these files in the correct bin lib etc folders. So if you follow the
+>>standard(usings the systems bin/etc/sbin/man/var folders) how can you
+>>effectively remove a piece of software without having a list of all the
+>>files and paths of every app you installed. This is the only drawback to
+>>Linux I have found. Of course RPMs/dpms are away around this but lets
+>>omit pre-packaged software.
+>>
+> 
+> If ones installes programs from *.tar.gz archives after compiling one can 
+> simply delete the source dir and its contents, you are then left with the 
+> executable of course, when you want to "uninstall" a program reinstall the 
+> source and simply type make uninstall, in some instancies it may be nessasary 
+> to exectute a file called ./configure or even ./autogen.sh those files create 
+> a Makefile, once the Makefile is created one can then do;
+> make uninstall .
+> 
+> Mind you some older archives did not have that approch, but i guess in the 
+> modern day kernels they would not compile anyway, so we can safely say;
+> 
+> cd /to/source/dir
+> make uninstall
 
-If you run a system where you constanly install "user" progams from tar 
-archives, then you the system operator (superuser) have control of where the 
-programs are placed, remember one thing it is normal practice for user 
-programs to be placed in /usr/local/bin or /usr/local/sbin, most archives do 
-just that if one simply uses ./configure without options, or the Makefile 
-which is supplied within the archive is used without editing it.
-That has always been Linux pratice, this allow's a better overview of 
-installed programs.
+Note that there are some programs distributed as tarballs that may not 
+have the `uninstall' rule in their Makefile. This makes them harder to 
+remove but not impossible (<- one word that doesn't deserve a place in 
+your vocabulary)...
 
-If a program uses a config file then "mainly" it will be placed into 
-/usr/local/etc altho' that is not always the case, the other place left over 
-for config files is then /etc which should not cause to many problems to find 
-config files you want to delete.
+Meet "checkinstall". This nifty program keeps a tab of all installed 
+programs on your system, making it easier for you to manage them 
+(Installing/Unistalling), by keeping a record of all write-actions 
+performed when you do a `make install' or similar. Get it at 
+http://proyectos.glo.mx/checkinstall/
 
-The use of /usr/local is/has and always be a point of discussion, some 
-distro's do not have /usr/local in ones path, one needs to edit ones $PATH 
-and add it otherwise programs installed in /usr/local/* will not be found.
+To install the package, do:
+	tar xvzf checkinstall-X.Y.Z.tg
 
-Other's say /usr/local is obsolite, remembering what i have mentioned above i 
-consider /usr/local "far from obsolite" and indeed the distribution slackware 
-also considers it "far" from obsolite.
+	cd checkinstall-X.Y.Z
 
-Its the place one installes his/her own programs and then knows where they 
-are instead of having them dropped in all over the system making a cleanup 
-almost impossable.
- 
->
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-18
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+	make
+	su (root passwd here)
+	make install
+	checkinstall
+	exit
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+To install a new package you would normally have to do
+	./configure
+	make
+	su (root passwd here)
+	make install
+	exit
+
+With checkinstall installed, you have to replace the `make install' step 
+with `checkinstall' so that it (checkinstall) knows what has been 
+installed andthus makes it easier to remove. So, you would have 
+something like:
+	./configure
+	make
+	su
+	checkinstall
+	exit
+
+Hope that helps ;)
+
+Arthur
+
+
+> 
+>>Paul Kraus
+>>Network Administrator
+>>PEL Supply Company
+>>216.267.5775 Voice
+>>216-267-6176 Fax
+>>www.pelsupply.com
+>>
+> 
+> 
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
