@@ -1,47 +1,53 @@
-From: "Marco Calistri" <ik5bcu@tin.it>
+From: Steven Smith <sos22@cam.ac.uk>
 Subject: Re: Marco's failed message: Help on scripting
-Date: Sun, 28 Apr 2002 18:51:47 +0200 (CEST)
+Date: Sun, 28 Apr 2002 20:20:24 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020428165147.1928.qmail@linux.ik5bcu.ampr.org>
-References: <20020428085906.GB361@cam.ac.uk>
-Reply-To: ik5bcu@tin.it
+Message-ID: <20020428192024.GA340@cam.ac.uk>
+References: <20020428085906.GB361@cam.ac.uk> <20020428165147.1928.qmail@linux.ik5bcu.ampr.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="h31gzZEtNLTqOjlF"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020428085906.GB361@cam.ac.uk>
+Content-Disposition: inline
+In-Reply-To: <20020428165147.1928.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Steven Smith <sos22@cam.ac.uk>
-Cc: linux-newbie@vger.kernel.org, Chris Rose <offline@shaw.ca>
+To: linux-newbie@vger.kernel.org, offline@shaw.ca
 
-I thank all of you:Ray,Steven,Chris...the mistery of my not accepted message
-still remains though.
 
-About the script example:
-all ok and thank you,but how can I set a variable so that I can use
-it with different file names and not just with jnos*.p?
+--h31gzZEtNLTqOjlF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-$f= ls -l...???
+> > > for i in `ls jnos*.p*`; do mail -s $i user@myhost.domain; done;
+> > for i in jnos*.p*; do mail -s $i user@myhost.domain; done
+> all ok and thank you,but how can I set a variable so that I can use
+> it with different file names and not just with jnos*.p?
+>=20
+> $f=3D ls -l...???
+Try:
 
-On 28-Apr-2002 Steven Smith wrote:
->> for i in `ls jnos*.p*`; do mail -s $i user@myhost.domain; done;
-> 
-> It might be easier to go:
-> 
-> for i in jnos*.p*; do mail -s $i user@myhost.domain; done
-> 
-> and get rid of the backticks. Both should do the same thing, though.
-> 
-> Steven Smith,
-> sos22@cam.ac.uk.
+foo=3D'some_pattern'
 
-----------------------------------
-E-Mail: Marco Calistri <ik5bcu@tin.it>
-Date: 28-Apr-2002 Time: 18:51:44
-Red Hat Linux release 7.2 (Enigma) kernel 2.4.9-31
-This message was sent by XFMail
-----------------------------------
+for i in $foo; do mail -s $i user@myhost.mydomain; done
 
+Steven Smith,
+sos22@cam.ac.uk.
+
+--h31gzZEtNLTqOjlF
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE8zEt4O4S8/gLNrjcRAik1AKDCDgUdSx+C4bNpoPIEbeimUVrtTACePwa+
+SlvC81ust4KfizuyA7zlS8U=
+=kAKO
+-----END PGP SIGNATURE-----
+
+--h31gzZEtNLTqOjlF--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
