@@ -1,39 +1,48 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Getting a valid display under Debian revisited
-Date: Wed, 10 Dec 2003 07:33:26 -0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: USB DSL modem
+Date: Wed, 10 Dec 2003 16:40:58 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031210073147.01f9c8e8@celine>
-References: <Pine.LNX.4.58.0312092206490.777@debian-box>
- <Pine.LNX.4.58.0312091843110.1018@debian-box>
- <Pine.LNX.4.58.0312092206490.777@debian-box> <1071046313.760.1.camel@DebiAnarchist>
+Message-ID: <200312101640.58399.pa3gcu@zeelandnet.nl>
+References: <1071056027.19327.35.camel@Zebra.vil.ite.mee.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1071046313.760.1.camel@DebiAnarchist>
-References: <Pine.LNX.4.58.0312092206490.777@debian-box>
- <Pine.LNX.4.58.0312091843110.1018@debian-box>
- <Pine.LNX.4.58.0312092206490.777@debian-box>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1071056027.19327.35.camel@Zebra.vil.ite.mee.com>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Furness <paul.furness@vil.ite.mee.com>, linux-newbie@vger.kernel.org
 
-At 07:51 PM 12/10/2003 +1100, Peter Garrett wrote:
+On Wednesday 10 December 2003 12:33, Paul Furness wrote:
+> I spent an age hunting around for HOWTOs and so on, and while there are
+> a few things written about how to configure the networking so it will
+> connect to a DHCP/DSL router and such like, I can't find anything at all
+> about how to make a USB modem wake up and connect.
 
->There are several S3 cards. I had a similar problem with the S3Trio
->dx/gx, I think it was ... apparently the drivers are quite specific for
->the model.
->
->On Wed, 2003-12-10 at 15:18, jamtat@mailsnare.net wrote:
-> > I was finally able to get a working display by using the vesa xserver.  I
-> > can get 1024x768 with 16 bit color with this.  Strange that the S3
-> > xserver, which is supposed to be for this card, would not work.  Any ideas
-> > why, anyone?
+I dont have one of these's things to be able to tell your howto do anything, 
+normally i would not even reply to any mail unless i have had experiance with 
+such a thing, however i will need to do the same as you very shortly so i 
+went hunting and found some nice URL's for you (and me then...)
 
-The original message was a bit more specifci than this, referring to 
-an  "S3Trio64v+ video card" ... but that identifier is for a chip, not a 
-card, and the X documentation (at www.xfree86.org) says that the current S3 
-server works only for S3Trio64v+ video cards that use specific RAMDAC 
-chips. So it *could* still be a hardware compatibility issue.
+I use www.google.com/linux and used ;
+ Alcatel 'Speedtouch' USB
+As the search words, one which may interest you is;
+http://linux-usb.sourceforge.net/SpeedTouch/
+There are more links there, i suggest;
+http://sourceforge.net/project/showfiles.php?group_id=3581
+
+I am not saying you "will" find what you need there but it seems a pretty good 
+place to start.
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
