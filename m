@@ -1,43 +1,31 @@
-From: Lars Bungum <lars@bungum.no>
-Subject: Re: mouse
-Date: Fri, 09 Jan 2004 22:35:02 +0100
+From: "Gosselin, Mark" <gosselinm@netscout.com>
+Subject: Connecting with Hyperterm
+Date: Fri, 9 Jan 2004 16:49:17 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1073684101.2268.1.camel@shostakovitsj.larsemann>
-References: <1073595430.2141.5.camel@shostakovitsj.larsemann>
-	 <Pine.LNX.4.53.0401082327460.520@grinch.ro>
+Message-ID: <6CE6A442029B3347890ED9FCA94FAE0701EEAB98@nsxmail.netscout.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0401082327460.520@grinch.ro>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Calin Szonyi <caszonyi@rdslink.ro>
-Cc: linux-newbie@vger.kernel.org
+To: "Linux Newbie (E-mail)" <linux-newbie@vger.kernel.org>
 
-On Thu, 2004-01-08 at 22:28, caszonyi@rdslink.ro wrote:
-> On Thu, 8 Jan 2004, Lars Bungum wrote:
-> 
-> > When I boot 2.6.0 the mouse is extremely sensitive, and although I set
-> > the driver to accelerate at the slowest available pace it still feels
-> > too fast.
-> >
-> > As nothing is different in the setup of XFree86 itself, the only
-> > difference is wheter I boot 2.4.18 or 2.6.0 I suspect this to be the
-> > reason.  But I don't really know where to start looking, is there some
-> > option I can give to the kernel at boot-time or something?
-> >
-> yes
-> use the following option when booting 2.6
-> psmouse_noext
+HI Guys,
 
-Calin,
+I'm trying to connect using Hyperterm via a serial port to a Linux Enterprise 3.0 server... 
+What do I need to do to make sur ethat the Linux box will accept connections through the
+serial ports?? Is there something that needs to be done in /etc/inittab regarding mingetty and/o
+mgetty??? How about mgetty.conf files???
 
-this certainly seemed to help the acceleration (thanks!), but the
-wheel/middle button on the mouse stopped working, too.  Is this a
-trade-off or can I get it working again?
+The server is a Dell 2650. My PC with the serail cable connected claims to be connected, but
+I can see no evidence of it on the screen....
 
---lars
+Any help would be most appreciated.
 
+Thanks,
+Mark Gosselin
+NetScout Systems
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
