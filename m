@@ -1,17 +1,26 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: What distributions support dual processors 'out of the box' ?
-Date: Mon, 25 Oct 2004 13:43:40 -0400
+From: "Little, Chris" <Chris.Little@okdhs.org>
+Subject: RE: What distributions support dual processors 'out of the box' ?
+Date: Mon, 25 Oct 2004 13:55:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <417D3B4C.5080801@gelm.net>
-References: <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041023135516.01fefc38@celine> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <Pine.LNX.4.58.0410221108580.1287@debian-emach> <Pine.LNX.4.58.0410221351360.1287@debian-emach> <417968FE.3070405@verizon.net> <Pine.LNX.4.58.0410221604590.1287@debian-emach> <41798CB8.4010701@verizon.net> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <5.1.0.14.1.20041023135516.01fefc38@celine> <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041024085546.020676a8@celine> <Pine.LNX.4.58.0410241436410.1287@debian-emach>
-Reply-To: chuck@gelm.net
+Message-ID: <15DCB059E3814E448A1CFFF04F78F7A703917297@s99mail08>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0410241436410.1287@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+
+I don't know what the warning is, but a recompile and install of your kernel
+with SMP enabled should work fine.  The warning sounds as if the kernel that
+you build may not necessarily work or advisably be used on other non-pro
+systems (ie. III, IV, etc)
+
+-----Original Message-----
+From: chuck gelm [mailto:chuck@gelm.net]
+Sent: Monday, October 25, 2004 12:44 PM
+To: linux-newbie@vger.kernel.org
+Subject: What distributions support dual processors 'out of the box' ?
+
 
 Howdy:
 
@@ -35,6 +44,11 @@ probably fail or be very difficult?
 Regards, Chuck
 
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
