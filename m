@@ -1,58 +1,45 @@
-From: "Robert S" <robert_schmidli@hotmail.com>
-Subject: Can't get into WM (KDE, TWM etc) from KDM or XDM
-Date: Fri, 7 Nov 2003 21:06:53 +1100
+From: John Aspinall <jgaspinall@rcn.com>
+Subject: modules: aliases and configuration
+Date: Sat, 08 Nov 2003 22:00:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <bofqtj$cvu$1@sea.gmane.org>
-Reply-To: "Robert S" <robert_schmidli@hotmail.com>
+Message-ID: <3FADADC8.3070904@rcn.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I'm running Slack 9.1.  Since I recently upgraded from slack 9.0 to my
-current version, I have no longer been able to get from kdm into any window
-managers (kde, twm etc).  My monitor goes momentarily blank then returns to
-the KDM/XDM prompt.
+Two questions, if I may, about modules, aliases, and configuration.
+(Perhaps they're even related!)
 
-I can however get into my WM using "startx" and I can also get into kdm with
-no problems (I am using konqueror to do this).  I therefore assume that my
-/etc/X11/XF86Config is OK.
+Question 1) Aliases with "formalized" names:
+In the BlueZ (bluetooth) How-To we are advised to add the following 
+aliases to /etc/modules.conf
+     alias net-pf-31         bluez
+     alias tty-ldisc-15      hci_uart
+     alias char-major-10-250 hci_vhci
+In the IrDA (infrared) How-To we are advised to add the following 
+aliases (as well as others) to /etc/modules.conf
+     alias tty-ldisc-11 irtty
+     alias char-major-161 ircomm-tty
+So what is it with these "formalized" (for want of a better word) alias 
+names?  If I see an alias char-major-<n> (for some number <n>), what is 
+the significance of <n>?
 
-my /root/.xsession_errors and /home/me/.xsession_errors do not display
-anything - ie presumably no errors.
+Question 2) Module configuration info:
+If I look in my system's /etc/modules.conf it consists of 2 lines.
+Yet if I do 'modprobe -c' I get a couple of hundred lines.  The man page 
+  for modprobe says that 'modprobe -c' shows the "currently used 
+configuration (default + configuration file)".  So where does this 
+"default" come from?  Presumably it's established somewhere during the 
+kernel build, but where?
 
-My /var/log/XFree86.0.log does not show any errors (ie no (EE)) but there
-are a few warnings.
+Thanks, in advance, for the info.  If there's a good reference for this 
+and other stuff, I'm sure many members of the list would like to hear 
+about it.
 
-/var/log/kdm.log also does not show any errors.
-
-If I enter # startkde I get the following message:
-
-xset:  unable to open display ""
-xset:  unable to open display ""
-xset:  unable to open display ""
-xsetroot:  unable to open display ''
-startkde: Starting up...
-ksplash: cannot connect to X server
-kdeinit: Aborting. $DISPLAY is not set.
-Warning: connect() failed: : No such file or directory
-ksmserver: cannot connect to X server
-startkde: Shutting down...
-Warning: connect() failed: : No such file or directory
-Error: Can't contact kdeinit!
-X11GlobalComm: Can't connect to the XServer - Initial references won't
-work.
-bad md5 secret-cookie obtained from Arts::X11GlobalComm - replacing it
-startkde: Running shutdown scripts...
-startkde: Done.
-
-Can anybody help me out here?
-
-Robert S.
-
-
+John Aspinall
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
