@@ -1,50 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Memory usage
-Date: Mon, 14 Apr 2003 09:16:23 -0700
+From: "Steven Ackerman" <steven@nvts.us>
+Subject: Configuring lilo to boot from sda after RH 9.0 install
+Date: Tue, 15 Apr 2003 00:18:51 +0000 (UTC)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030414091203.0200b570@celine>
-References: <200304150117.08844.Adam@Luchjenbroers.com>
+Message-ID: <000101c31a77$7597f830$1601a8c0@crypt>
+Reply-To: <steven@nvts.us>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304150117.08844.Adam@Luchjenbroers.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Adam@Luchjenbroers.com, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Date: Wed, 14 May 2003 17:18:06 -0700
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Where are you "noticing" this memory usage? If it is in the "Mem:" line in 
-top, probably all you are seeing is the kernel's use of RAM as cache and 
-buffer. In slightly simplified form, when a process finishes running, or a 
-file closes, the kernel leaves it in memory **if** it does not need that 
-memorr for something else. (This way, it can run or open faster if called 
-again.)
+Dear list,
 
-As a result, *any* Linux system will over time approach 100% memory usage 
-as reported by this measure. If you want to check use of RAM by active 
-processes, run "free" and look at the second line of its report.
+I read the faq for the list. Searched tldp.org
+(http://tldp.org/LDP/lame/LAME/linux-admin-made-easy/install-lilo.html) and
+read the linux faq (ftp://sunsite.unc.edu/pub/Linux/docs/faqs/!INDEX.html)
+before posting. I also read the faq for this list. At that point I got
+frustrated and am sending this message. I know this is easy but I can't
+figure it out. I am not a linux guru. Just an enthusiast and that makes me
+the best man for the job at hand.
 
-If you are "noticing" this problem somewhere else, please post a followup 
-that describes what you are seeing a bit more exactly.
+I installed RH 9.0 as a server and the machine only boots from floppy. In
+lilo.conf the boot= line in the first section says boot=/dev/sda. In the
+same section the install= line says install=/boot/boot.b. I don't even know
+what I should be posting to help anyone answer my question. This is a rack
+mount server with 4 SCSI drives. I don't know if that matters. If I remember
+right, the root directory is /dev/sda. Whatever the default is. I can give
+you whatever info you need. I may have to figure out how to do it, but
+usually I can do that.
 
-At 01:17 AM 4/15/2003 +0930, Adam Luchjenbroers wrote:
->OS: Linux Mandrake 9.0
->Kernel: 2.4.20
->Soltek SL-75DRV5
->512MB DDR
->Althon XP2100+
->
->I'm noticing memory usage that I cannot trace back to a process - alot of it
->too. I use top and the "M" command to list programs by memory usage - but
->what I see with it (or using other system monitoring tools) are only a few
->processes and none that can explain the memory usage.
->
->Even dropping down to runlevel 1 still displays RAM usage in excess of 300MB.
->Maybe I've still got alot to spare but I still want to fix this problem -
->currently running BlackBox under X (I use some KDE apps, but even after
->killing off all kdeinit processes the memory usage stays high).
->
->So, what would be the cause of this mysterious memory usage?
+I need help. I don't mind pointers to links, documentation, pointers to some
+documentation I missed, ect. All the doc's I found refer to using ide
+devices and pointing to the root directory or wherever lilo is installed or
+the root directory is or something like that. Not knowing all the linux
+internals, I don't even know how to find that out.
 
+-Steve
 
 
 -
