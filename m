@@ -1,38 +1,30 @@
-From: Jim Reimer <wa5rrh@arrl.net>
-Subject: Re: Synching directories at night
-Date: Thu, 10 Oct 2002 11:50:29 -0500
+From: "Lee Chin" <leechin@mail.com>
+Subject: Getting the MAC address of a client
+Date: Thu, 10 Oct 2002 12:56:05 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DA5AFD5.2030307@arrl.net>
-References: <002301c2707a$88da8ae0$64fea8c0@pkrausxp>
+Message-ID: <20021010175605.19028.qmail@mail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: hahn@physics.mcmaster.ca
+Cc: linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
 
-man cp
+Hello,
+When my server application accepts a client socket connection, what is the easiest way to obtain the MAC address of the peer?  I tried listing the ARP table but I did not see an entry for the IP address and MAC address of the client.
+I want to avoid having to ping the client to get the ARP table populated
 
-check out the -u option
+Thanks
+Lee
+-- 
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
--jdr-
-
-Paul Kraus wrote:
-> I want to be able to have my Linux server at night sych some folders
-> that are on some windows machines. I want it to be able to have exact
-> copies that are current as of the previous day. Is there a way to do
-> this so that only changed files are updated? I understand samba and
-> cron. I can copy the files and write the scripts to automate it. But how
-> can I go about only updating changed files?
-> 
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
-
+"Free price comparison tool gives you the best prices and cash back!"
+http://www.bestbuyfinder.com/download.htm
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
