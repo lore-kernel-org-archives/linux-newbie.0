@@ -1,41 +1,33 @@
-From: Jurriaan <thunder7@xs4all.nl>
-Subject: Re: Re: OOPS in Kmalloc
-Date: Thu, 24 Apr 2003 11:57:34 +0200
+From: Chris Rose <offline@shaw.ca>
+Subject: Running fetchmail in daemon mode?
+Date: Thu, 24 Apr 2003 08:33:01 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030424095734.GA13735@middle.of.nowhere>
-References: <200304240813.NAA23499@WS0005.indiatimes.com>
-Reply-To: thunder7@xs4all.nl
+Message-ID: <000801c30a6e$68d73340$4b01a8c0@t9397.tjem.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200304240813.NAA23499@WS0005.indiatimes.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ramands <ramands@indiatimes.com>
-Cc: "Randy.Dunlap" <rddunlap@osdl.org>, linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
 
-From: ramands <ramands@indiatimes.com>
-Date: Thu, Apr 24, 2003 at 02:15:06PM +0530
-> hello randy 
-> as i am new to kernel level programing 
-> i do not know how to decode a oops . could you tell me how to do it 
+ 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-read the (copious) documentation in /usr/src/linux/Documentation
+How do i get fetchmail to run in daemon mode?  Is it run on a per-user basis, or is it a system service that then checks all $HOME directories and performs the relevant fetchmalrc commands?
 
-> i will mail the exact oops messages in next mail 
+Chris R.
+=======
+http://offline.pointclark.net/
 
-no need for that, read the docs first.
+-----BEGIN PGP SIGNATURE-----
+Version: PGP 8.0
 
-> right now i am debugging by using printk only 
-> 
-Good luck,
-Jurriaan
--- 
-Because Hawk and Fisher were who you turned to when you'd tried every-
-thing else, including closing your eyes and hoping it would just go away.
-	Simon R Green - Beyond the Blue Moon
-Debian (Unstable) GNU/Linux 2.5.68 3940 bogomips load av: 0.10 0.05 0.06
+iQA/AwUBPqf1ncFBXq9qNmWaEQJzUgCfcBFO+fOnZ+DV5hNgNlYgU4q6ZBMAnio2
+RqUZEJO1/CxmaNCHKQ7mtc6e
+=M7II
+-----END PGP SIGNATURE-----
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
