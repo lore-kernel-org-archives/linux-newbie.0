@@ -1,57 +1,60 @@
-From: Nathan <nate@nateworks.ca>
-Subject: Re: eth0 promiscuous mode
-Date: Fri, 30 Aug 2002 09:33:23 -0700 (PDT)
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Can't see my drives
+Date: Fri, 30 Aug 2002 13:08:20 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0208300931500.20009-100000@willy.nateworks.ca>
-References: <3D6F9AC0.2030501@tulane.edu>
+Message-ID: <3D6FA684.A309CC6@gelm.net>
+References: <F665uAy0BYTxHwMQFLc00025135@hotmail.com> <20020830100130.8677B52897@smtp.orcon.net.nz>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D6F9AC0.2030501@tulane.edu>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: David Yeu <dyeu@tulane.edu>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: cr@orcon.net.nz
+Cc: grottoBoy rant <stylerzz@hotmail.com>, linux-newbie@vger.kernel.org
 
+Howdy, Y'all:
 
-Hi David,
+ I noticed that the poster never mentioned, explicitly,
+that they were mounting the filesystem as type iso9660.
+i.e.
+mount -t iso9660 /dev/sd0? /cdrom-rw
+      ^^^^^^^^^^
+Since I am a newbie, I didn't post, until now.
 
-> Will promiscuous mode work properly if my computer is plugged into a
-> switch? I've tried unsuccessfully to use tcpdump or tethereal to view
-> all the network traffic, but I'm always confined to traffic that either
-> originates or is destined to my machine (broadcasts too).  Or is it
-> perhaps the NIC?  Do all NICs have the ability to go into promiscuous
-> mode?
+I recall, time after time, the helpful guru's
+(What is plural of 'guru'?)
+ask for the explicit 'command' and the
+explicit 'error message'.
+;-)
+Chuck
 
-that is really the point of a switched network. Switches are supposed to
-be smart in that they learn about who is at what port and only repeat
-broadcast traffic to everyone.
-
-Cheers,
-Nathan
-
-
-> Thanks in advance.
->
-> Dave.
->
+cr wrote:
+> 
+> On Friday 30 August 2002 05:07, grottoBoy rant wrote:
+> > Don't know if you've fixed this already, I don't know about configuring for
+> > CDRW as scsi emulation or whatever, but were you specifying iso9660
+> > filesystem type when attempting to mount, ie.
+> > mount -t iso9660 /dev/(?) /mnt/cdrom
+> > man mount for syntax
+> >
+> > later
+> >
+> 
+> Yes, I was, exactly that.
+> 
+> I've shelved the problem for now as other things took up my time, however
+> I've managed to find the original instructions I used to configure the thing,
+> so I'll work through them (as soon as I have enough time) and see if that
+> fixes it.
+> 
+> Thanks
+> 
+> cr
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
->
-
--- 
-
-"Whoever undertakes to set himself up as a judge of Truth and Knowledge is
- shipwrecked by the laughter of the gods."
-   Albert Einstein
-
-Chisolm's First Corollary to Murphy's Second Law:
-	When things just can't possibly get any worse, they will.
---
-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
