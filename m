@@ -1,132 +1,80 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: Variable Quoting
-Date: Mon, 14 Oct 2002 14:38:07 -0400
+From: James Mohr <linux-newbie@jimmo.com>
+Subject: Re: Variable Quoting
+Date: Mon, 14 Oct 2002 21:58:20 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <004a01c273b0$d77a73c0$64fea8c0@pkrausxp>
-References: <200210142055.11942.linux-newbie@jimmo.com>
+Message-ID: <200210142158.20963.linux-newbie@jimmo.com>
+References: <004a01c273b0$d77a73c0$64fea8c0@pkrausxp>
+Reply-To: linux-newbie@jimmo.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210142055.11942.linux-newbie@jimmo.com>
+In-Reply-To: <004a01c273b0$d77a73c0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@jimmo.com, linux-newbie@vger.kernel.org
-
-That is what I did.
-
----Directory is real and does exist and path verified using file
-completion.
-Here is an example.
-string="/My Documents"
-ls "$string"
-
-Does work as it is intended.
-
-Now with this change
-string="My Documents/*"
-cp "$string" /tmp
-
-cp: cannot stat 'My Documents/*':no such file or directory
-So then I for kicks I tried.
-
-cp "My Documents/*" /tmp
-Produces the same error.
-
-So just to make sure that it was not a typo in path I tried.
-cp My\ Documents/* /tmp
-
-And this worked.
-
-So is the problem with cp? Since the same syntax seems to work with all
-other apps?
-Is cp not capable of taking a double quoted path with spaces?
-
-Redhat 7.3 in case it helps. 
+To: linux-newbie@vger.kernel.org
 
 
------Original Message-----
-From: James Mohr [mailto:linux-newbie@jimmo.com] 
-Sent: Monday, October 14, 2002 2:55 PM
-To: Paul Kraus
-Subject: Re: Variable Quoting
-
-
-On Monday 14 October 2002 19:59, Paul Kraus wrote:
-> Ok I found out how to prevent it for separating the words as different
-
-> arguments. I need to encapsulate the variable with quotes.
+On Monday 14 October 2002 20:38, Paul Kraus wrote:
+<SNIP>
+> Now with this change
+> string="My Documents/*"
+> cp "$string" /tmp
 >
-> How ever I am needing to do this with the cp command. When I try 
-> double quoting a path with spaces in it for cp I get an error. If I 
-> make the string somevariable="somediretory/somesubdirectory/some\ 
-> directory\ with\ spaces/*" Then when substition takes place
-> cp $somevarable $somedestination
-> Then it should read
-> cp /somedirectory/somesubdirectory/some\ directory\ with\ spaces/*
-/tmp
-> This is correct syntax for cp and if I type it out or use file name
-> completion that is the format the shell uses. However when done this
-way
-> I also get an error.
+> cp: cannot stat 'My Documents/*':no such file or directory
+
+Sure because the token that is passed to the cp command includes the asterisk, 
+it doesn't know that it should expand the asterisk (*) to the file names, so 
+it looks for a file with the literal name '*'. 
+
+> So then I for kicks I tried.
 >
-> It appears that substition is taking place but it is handling the 
-> escape sequence wrong.
+> cp "My Documents/*" /tmp
+> Produces the same error.
 
-Hi Paul!
-If you assign a value to a variable using quotes, then the value is
-assigned 
-** without** the quotes. This is because the shell gets ahold of it a
-reduces 
-each command to "tokens" and one of the tokens is the text **inside**
-the 
-quotes. Also the expansion takes place by the shell before it is passed
-on to 
-the copy command. 
+Same thing.
 
-Look at these examples:
-mdkir 'My Documents'
-DIR='My Documents'
-ls $DIR
-ls: My: No such file or directory
-ls: Documents: No such file or directory
+>
+> So just to make sure that it was not a typo in path I tried.
+> cp My\ Documents/* /tmp
+>
+> And this worked.
 
-Makes sense as the variable $DIR contains the literal text, including
-the 
-space. The command that is execute is:
+Makes sense as the shell is now expanding the asterisks to the names of the 
+files. You don't see this because it is expanded internally. Create a shell 
+script that just does this copy and put "set -x" on the first list. This 
+should show you the expanded form before it is passed to cp.
 
-ls My Documents
+> So is the problem with cp? Since the same syntax seems to work with all
+> other apps?
+> Is cp not capable of taking a double quoted path with spaces?
 
-and neither of these exists. If you try:
+No, it is the fact that cp does not know to expand the asterisk. Plus you are 
+passing different things to the cp depending on what sets of quotes you use.
 
-ls -ld "$DIR"
-drwxr-xr-x    2 root     root           48 Oct 14 20:44 My Documents
+> Redhat 7.3 in case it helps.
+Actually the Linux distriubtion is pretty irrelevant in this case. In fact the 
+behavior would be the same on most any *NIX system, as it is standard shell 
+stuff. 
 
-This works because the $DIR is expanded by the shell and it plus the
-quotes 
-become the "token" which is then passed to the the ls command. 
+See if these explain more of the details for you:
 
-Your examples will work as long as you ensure that the variables are
-include 
-inside of quotes, for example, this works:
+http://www.linux-tutorial.info/cgi-bin/display.pl?20&0&0&0&3
+http://www.linux-tutorial.info/cgi-bin/display.pl?22&0&0&0&3
 
-cp "$somevarable" "$somedestination"
-
-Regards,
+regards,
 
 jimmo
 
 -- 
 ---------------------------------------
 "Be more concerned with your character than with your reputation. Your
-character is what you really are while your reputation is merely what
-others think you are." -- John Wooden
+character is what you really are while your reputation is merely what others
+think you are." -- John Wooden
 ---------------------------------------
 Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
 ---------------------------------------
-NOTE: All messages sent to me in response to my posts to newsgroups or
-forums 
+NOTE: All messages sent to me in response to my posts to newsgroups or forums 
 are subject to reposting.
-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
