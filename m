@@ -1,34 +1,33 @@
-From: axel@pearbough.net
-Subject: Re: Setting standard arguments
-Date: Sat, 14 Dec 2002 00:52:18 +0100
+From: r4mz3z <r4mz3z@yahoo.es>
+Subject: how do i transform documents to ps
+Date: Fri, 13 Dec 2002 21:37:16 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021213235218.GB31994@neon.pearbough.net>
-References: <20021212161921.GA10853@neon.pearbough.net> <20021213.183853.134684296.0.whitnl73@juno.com>
+Message-ID: <200212132137.23141.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20021213.183853.134684296.0.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: whitnl73@juno.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi!
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-On Fri, 13 Dec 2002, whitnl73@juno.com wrote:
+Hi friends
+  How do I transform a OpenOffice document to postscript format using "gs"??
+thanks
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-> On Thu, 12 Dec 2002 axel@pearbough.net wrote:
-> > For example I call "checkinstall" and "checkinstall -S --nodoc --gzman
-> > --install=yes" shall be executed.
-> > Can this be done somehow with tcsh?
-> 
-> alias checkinstall='checkinstall -S --nodoc --gzman --install=yes'
+iD8DBQE9+lMSs4dF9gl05swRAnaXAJ9lQA7V/d9pJ0SS20f3na+o9MkdAACaAn0b
+9bI9UupqODRY4o8Q0rNbcM0=
+=URy/
+-----END PGP SIGNATURE-----
 
-Thank you very much!
-
-Best regards,
-Axel
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
