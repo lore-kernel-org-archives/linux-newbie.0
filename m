@@ -1,34 +1,36 @@
 From: whitnl73@juno.com
-Subject: Re: How do I see all my partitions?
-Date: Sun, 22 Dec 2002 22:11:45 -0500 (EST)
+Subject: Re: commport settings
+Date: Sun, 22 Dec 2002 22:23:11 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021222.222557.134684296.2.whitnl73@juno.com>
-References: <5.1.0.14.0.20021222212347.00bb77e8@mail.comcast.net>
+Message-ID: <20021222.222557.134684296.3.whitnl73@juno.com>
+References: <200212230108.gBN18368001576@pyxis.wanadoo.be>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.0.20021222212347.00bb77e8@mail.comcast.net>
+In-Reply-To: <200212230108.gBN18368001576@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: smarta55@comcast.net
+To: hammer@revobild.net
 Cc: linux-newbie@vger.kernel.org
 
-On Sun, 22 Dec 2002, Chris wrote:
+On 23 Dec 2002, Heimo Claasen wrote:
 
-> OK...now that I can see all my partitions, how do I mount an NTFS
-> partition?
-> When I try, I receive the error "fs now supported by kernel."
-> I'm running Red Hat 8.0 (sorry, no idea what the kernel version is - how
-> do I find this info?).
+...
+> I could not find any means, with "linuxconf" for instance, to have the
+> system accept the new setting. Only - restrictedly efficient - measure
+> is doing "setserial /dev/ttyS3 port 0x02e8 irq 7".
 >
-> Can the kernel be patched to support NTFS?
->
-> Thank you,
-> Chris
->
-Try /sbin/modprobe ntfs
+Ray has already covered most of this.  One little clarification:
 
-a stock distro kernel may already have it.
+The settings by setserial are all keyword and optional, so you need only
+say
+
+setserial /dev/ttyS3 irq 7
+
+port 2e8 is the default for that device.
+>
+> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-22
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 Lawson
 --
