@@ -1,47 +1,19 @@
-From: jos@lemmerling.nl
+From: Dan Zlotnikov <dzlotnik@artsmail.uwaterloo.ca>
 Subject: Re: group
-Date: Thu, 25 Dec 2003 12:07:12 +0100 (CET)
+Date: Thu, 25 Dec 2003 08:52:14 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0312251158060.32276-100000@orthanc.lemmerling.net>
+Message-ID: <1072360334.3feaeb8e1ca4d@ecserv7.uwaterloo.ca>
 References: <Pine.LNX.4.21.0312251127290.32132-100000@orthanc.lemmerling.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <Pine.LNX.4.21.0312251127290.32132-100000@orthanc.lemmerling.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Thu, 25 Dec 2003 jos@lemmerling.nl wrote:
+Quoting jos@lemmerling.nl:
 
-> On Wed, 24 Dec 2003, dave wrote:
-> 
-> > I've made a group called everyone.  It has its own Sub-directory, 
-> > "/home/everyone".  I have 3 users in the group.  Do I have to do 
-> > anything else so everyone can share that Sub-directory?  Mandrake 9.2. 
-> 
-> Most likely you'll have to make sure that the group is accessable
-> to the group everyone (chgrp everyone /home/everyone).
-
-oops! typo...
-
-This is what it should be:
-
-Most likely you'll have to make sure that the directory /home/everyone is
-accessable to the group everyone (chgrp everyone /home/everyone).
-
-
-> The next step is to make it writeable to "everyone" : chmod 2770 everyone/ 
-
-oops again! :(
-
-"chmod 2770 /home/everyone/" is the correct answer...
-
-
-> The "2" makes sure that all files and directories created in the directory
-> /home/everyone are set to the group everyone (otherwise they would be set
-> to the file-creators group and thus not writeable to other users).
-> 
 > The last step is to change the default umask to 002 instead of 022 so all
 > files will have the permissions set correctly (-rw-rw-r-- instead of
 > -rw-r--r--). If you don't do this, user1 cannot change the files user2 has
@@ -49,19 +21,21 @@ oops again! :(
 > 
 > The default umask can be set in the users profile
 > (/home/user1/.bash_profile) with the line "umask 002".
-> 
-> That should be all!
-> 
-> HTH
+
+Pardon me if I'm confused, but does that mean that any user can change the 
+default umask at will?
+
+Not to mention, this will apply to all of that user's files, not just the ones 
+in /home/everyone/
+
+"Early to bed and early to rise makes a man stupid and blind in the eyes."
+--Mazer Rakham, from Orson Scott Card's "Ender's Game"
 
 
-I'm going back to sleep now...  ;)
 
 
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
-
-
+----------------------------------------
+This mail sent through www.mywaterloo.ca
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
