@@ -1,30 +1,34 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Line Length
-Date: Sat, 19 Oct 2002 16:50:11 +0800
+From: "Sean Rima" <linux-net@tcob1.net>
+Subject: repartioning a reiserfs hd
+Date: Saturday, 19 Oct 2002 13:50:46 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210190850.g9J8oBF04104@philonline.com>
+Message-ID: <MSGID_110=3a10=2f1_4ce36142@linuxnet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Originally to: All
 
-If I safe with Lynx a text in html format to a file.txt the lines are at the 
-most 60 col long.
+Hi folks,
 
-How can I change that to let say 90 col in order to get more text on one page 
-for print-out?
+I have a 2 gb HD that is under reiserfs as /home. I want to re-partition it so 
+that half is /opt. Is this posible and is there a howto
 
-Would sed do the trick, but how?
+Sean
+... Click click click damn, out of ferret Taglines!
+--
+printk("; corrupted filesystem mounted read/write - your computer will explode 
+within 20 seconds ... but you wanted it so!\n");
+  2.4.3 linux/fs/hpfs/super.c
 
-Thanks and regards
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
 
-
--- 
-Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
