@@ -1,39 +1,38 @@
-From: CaT <cat@zip.com.au>
+From: raihan@citech-bd.com
 Subject: Re: Text Reformatting
-Date: Sun, 18 May 2003 14:23:18 +1000
+Date: Sun, 18 May 2003 10:23:38 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030518042318.GA1473@zip.com.au>
-References: <20030518041124.07222103AE@pfheiss>
-Mime-Version: 1.0
+Message-ID: <1223.1053231818@localhost.localdomain>
+References: <pfheiss@philonline.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030518041124.07222103AE@pfheiss>
+In-Reply-To: Message from Peter <pfheiss@philonline.com> 
+   of "Sun, 18 May 2003 12:11:19 +0800." <20030518041124.07222103AE@pfheiss> 
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sun, May 18, 2003 at 12:11:19PM +0800, Peter wrote:
-> I came up with the sausage
+Hi,
+
+> cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w
+> 105 file1.txt > file2.txt
 > 
-> cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w 105 file1.txt > 
-> file2.txt
-> 
-> This does not maintain the paragraphs, however. Can sed do it and how?
+> This does not maintain the paragraphs, however. Can sed do
+> it and how?
 
-sed -e 's/^[ 	]\+//' -e 's/[ 	]\+$//' <file.txt | fmt -u -w 105 >file1.txt
+If there's a blank line between paragraphs, it should work.
+Otherwise it becomes more difficult.  Try opening the file
+in Vim and running the command
 
-I added the 2nd regexp just to make sure there was nothing there. Tab and
-a space inside the square brackets.
+	ggVG
 
--- 
-Martin's distress was in contrast to the bitter satisfaction of some
-of his fellow marines as they surveyed the scene. "The Iraqis are sick
-people and we are the chemotherapy," said Corporal Ryan Dupre. "I am
-starting to hate this country. Wait till I get hold of a friggin' Iraqi.
-No, I won't get hold of one. I'll just kill him."
-	- http://www.informationclearinghouse.info/article2479.htm
+which reformats the whole file similar to fmt.  If you don't
+like the result, quit without saving anything:
+
+	:q!
+
+Yawar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
