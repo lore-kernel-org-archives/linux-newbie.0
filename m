@@ -1,135 +1,74 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: CMI-8330 On Board Sound?
-Date: Mon, 19 Jul 2004 15:52:24 -0400
+From: Kev <savage-garden@hanikamail.com>
+Subject: Re[3]: Linux Help
+Date: Tue, 20 Jul 2004 08:07:00 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040719195224.GA841@lnx2.w8mch.ampr.org>
-References: <20040714191958.GA904@lnx2.w8mch.ampr.org> <200407151728.44167.pa3gcu@zeelandnet.nl> <20040715184601.GA547@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <20040720080653.18AD.SAVAGE-GARDEN@hanikamail.com>
+References: <20040720000602.4847.SAVAGE-GARDEN@hanikamail.com> <5.1.0.14.1.20040719120622.01fb9448@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20040715184601.GA547@lnx2.w8mch.ampr.org>
+In-Reply-To: <5.1.0.14.1.20040719120622.01fb9448@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Getting excellent input from Ray and Richard, following, I've been
-prodded enough to get the machine playing CD's, after some more
-research.. Someone said I should explain a little for the archive in
-case anyone is interested.. The problem was: software!!
+> Well ... if you have an SMTP server on a LAN ("local") host, running an 
+> SMTP relay on the firewall/router is probably unnecessary. What you can do 
+> (this is what I do here) is DNAT (port forward) traffic coming to port 25 
+> on the router's external interface to port 25 on the existing SMTP server. 
+> Then you can run your greylist and virus checking on that server.
 
-The underlying problem seemed to be that this moboard fell between
-the cracks during a transitional period between Microsoft Sound
-System, MSS, now obsolete, and the defacto standard; SoundBlaster,
-SB.. The chip mfgrs must have been pulling their hair more than I
-during this period.. The bottom line seems to be that an existing
-driver, ad1948, configures the chip as 8 bit sound, with just one
-dma.. Using a 16 bit sb driver added or alone is accepted but turns
-off the CD play sound.. There may be a proper driver out there but I
-can't find it and wont worry about it..
+i got a windows 2000 with exchange as the mail server, 
+so i dont like to keep it as the SMTP coz of the virus. so i think its better to have a vires wall with the SMTP on the firewall.
 
-If more features are desired a sound card would, probably be the best
-answer... I understand the 430TX MB a low end board anyway..
 
-Thanks for all the help - the learning curve continues... And,
-Richard, had I read the SoundPro doco first and ignored the CMI8330
-one - this would have gone a lot faster...<grin>
+> As to outgoing SMTP traffic, there is no need to "relay" it from the LAN 
+> SMTP server. Ordinary NATing will handle outgoing SMTP traffic from that 
+> server 
 
-> On 07-15, pa3gcu wrote:
-> > On Wednesday 14 July 2004 21:19, Hal MacArgle wrote:
-> > > Greetings: Am in trouble with an on board CMI-8330 SoundPro feature
-> > > on a 430TX MB - (ISA/PCI). Slack9.1, bare.i install, kernel 2.4.22..
-> > >
-> > > No module by that designation so hit the Web coming up with AD1848;
-> > > modprobe ad1848 installs but doesn't work and the mixer rexima
-> > > doesn't like... Apparently AD1848 OK for an older SoundPro chip?
-> > 
-> > Huum, i wonder, did you read /usr/src/linux/Documentation/sound/CMI8330 ?
-> > 
-> > It says right at the start.
-> > ( Be sure to read Documentation/sound/SoundPro too )
+load is really on the mail server so we need a relay to take the load off the server. (mail server)
+
+On Mon, 19 Jul 2004 12:11:20 -0700
+Ray Olszewski <ray@comarre.com> wrote:
+
+> At 12:08 AM 7/20/2004 +0600, Kev wrote:
+> >Hi Ray...
+> >
+> >Thanks agane for the reply,
+> >
+> >Relay mean to relay mail to my local email server that will be running
+> >behind the gateway box. and to relay the email from the email server to
+> >the internet as a smart host.
 > 
-> 	Yes I printed and read both several times which confused me
-> more because I think the author was talking about a different
-> 'vintage' of CMI-8330.. I was, of course, hoping to not have to
-> re-compile the kernel but I will try that if all else fails.. I felt,
-> since there are so many MB's out there with that on board scheme,
-> there must be a set of modules somewhere... Maybe not... I still
-> can't understand why isapnp finds the chip yet the chip is marked
-> "pci."
+> Well ... if you have an SMTP server on a LAN ("local") host, running an 
+> SMTP relay on the firewall/router is probably unnecessary. What you can do 
+> (this is what I do here) is DNAT (port forward) traffic coming to port 25 
+> on the router's external interface to port 25 on the existing SMTP server. 
+> Then you can run your greylist and virus checking on that server. This 
+> approach minimizes the amount of stuff you have running on the 
+> firewall/router, always a good idea from a security standpoint.
 > 
-> 
-> 
-> > This adapter is now directly supported by the sb driver.
-> 
-> 	Yes it is and all looks well except when trying to play a
-> simple audio CD...
-> 
-> 	<snipped - repeat of the Doco>
-> 
-> 
-> > 
-> >  The only thing you have to do is to compile the kernel sound
-> > support as a module and to enable kernel ISAPnP support,
-> > as shown below.
-> 
-> 	Slack9.1 defaults on installation with isapnp tools..
-> 
-> > sb: CMI8330 detected.
-> > sb: CMI8330 sb base located at 0x220
-> > sb: CMI8330 mpu base located at 0x330
-> > sb: CMI8330 mail reports to Alessandro Zummo <azummo@ita.flashnet.it>
-> > sb: ISAPnP reports CMI 8330 SoundPRO at i/o 0x220, irq 7, dma 1,5
-> 
-> 	This I get with my modprobe sb entry, except for the irq..
+> As to outgoing SMTP traffic, there is no need to "relay" it from the LAN 
+> SMTP server. Ordinary NATing will handle outgoing SMTP traffic from that 
+> server (unless you have unusual requirments imposed by your ISP ... but if 
+> you do, you won't get intelligent advice about how to cope with them unless 
+> you mention them).
 > 
 > 
 > 
-> > > cat /proc/ioports - /interrupts - dma, all reported as expected:
-> > > 0x220, irq10, dma 1,5. "soundblaster".. (The usually normal IRQ5,
-> > > grabbed by PCI during boot.) I wonder??
-> > 
-> > You will need to resurve IRQ 10 in your bios just incase some other peice of 
-> > hardware grabs it before the sound module is loaded.
-> > (Or i would imagen that would be nessacary.
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 > 
-> 	I think, but not sure, I tried setting irq 10 to legacy but I
-> will double check.. Could it be so simple? I do know there are no
-> other devices using irq 10.. I'm confused with this too because where
-> does irq 10 come from except, what, isapnp?? I don't see irq 10
-> anywhere until I run modprobe sb... I do know the BIOS grabs irq 5
-> right off the bat way before Linux is run, for the NIC _and_ a pci
-> serial card that's needed because the onboard serial ports are dead..
-> Maybe I should shuffle some of this stuff around and get the sound
-> working FIRST?? The NIC is PCI, and IRQ 5 is shared by both serial
-> ports plus the NIC, and they all coexist and work this way... That
-> floored me..
-> 
-> 
-> 
-> > > Suspected the "SoundPro HT1869V+ chip," so tried play filename.wav
-> > > and it was perfect with the amplified speakers connected to
-> > > "line out." Could the chip be broke in one area only?? Maybe the AD
-> > > "section?"
-> > 
-> > Half broken,!, That i doubt.
-> 
-> 	Me too, but I've been around long enough to believe anything
-> can happen with these bloody things.. <grin>
-> 
-> 
-> 
-> > kmix if you run X will help i think.
-> 
-> 	The subject machine sans X because don't need and fairly
-> small HD.. I thought that maybe I should be installing Slack 9.0 or,
-> maybe, 7.1 instead due to it's age..
-> 
-> 	APPRECIATE!!
-> 
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
-> .
+
+------- 
+Web Hosting at cheep price, stating at $1 per moth with your own domain, .COM, .NET, .LK, .ORG etc..
+PHP, CGI, Perl, MySQL, Cpanel 9, POP3, POP3s, SMTP, IMAP, FTP,
+http://www.orbitsl.net
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
