@@ -1,41 +1,50 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: dump vs tar
-Date: Tue, 11 Feb 2003 15:06:17 +0000
+From: Paul_Ireland@amp.com.au
+Subject: XFree/Keyboard problems under Mandrake 9.0 and 9.1Beta
+Date: Tue, 11 Feb 2003 15:52:55 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03021115061703.00594@unix.pa3gcu>
-References: <200302101627.05932.r4mz3z@yahoo.es>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <OF95413BB8.6114E77C-ON80256CCA.00566D3E@LocalDomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302101627.05932.r4mz3z@yahoo.es>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: ramzez <r4mz3z@yahoo.es>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Monday 10 February 2003 16:26, ramzez wrote:
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
->
-> Hi friends...
->
->   When is advisable use dump, and when is advisable use tar? and How do I
-> can use these commands?
->
-> thanks
+Hi,
 
-I presume you mean dump for backing up files and idem dito with tar.
-To simply say use one or the other "without" knowing what you want to do 
-would be foolish.
+I'm having a slight problem with an installation of Mandrake on a Dell
+Lattiude GX50.  Everything is fine until I logout.  After that I loose all
+keyboard entry under X (Currently Xfree4 with HW accel.).  There are no
+problems using the mouse, and the keyboard still responds to caps-lock etc.
+keyboard entry whilst logged into the box and only goes south when I log
+out.The system spec is as follows:
 
-To see which one is for you info on dump i belive is to be found at;
-http://dump.sourceforge.net
-And 'man tar' for tar.
+Intel Cel. 800 with 256mb Ram
+Chipset is Intel 810i Chipset with 1mb memory.
+Default windows manager is KDE.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+The PC is connected via an 4port "Adderview" KVM switch box
+
+This is my 1st post to the newbies list so if I've neglected to give any
+information please let me know.
+
+Thanks
+
+Paul Ireland
+
+
+
+AMP (UK) Financial Services Ltd No. 3715118, NPI Ltd No. 3725037, National Provident Life Ltd No. 3641947, NPI Investment Managers Ltd No. 0962757, AMP Portfolio Managers
+Ltd No. 2238069, London Life Ltd No. 1179800, London Life Linked Assurances Ltd No. 1396188, Pearl Assurance plc No. 1419, Pearl Assurance (Unit Funds) Ltd No. 1027138, Pearl
+Assurance (Unit Linked Pensions) Ltd No. 1122485, Pearl Unit Trusts Ltd No. 958262, Pearl ISA Ltd No. 3597973, Pearlinvest Ltd No. 263381 are the companies that make up the AMP
+Marketing Group and are regulated by the Financial Services Authority for pensions, investments and life assurance. AMP (UK) PGI Ltd No. 2587380
+is a member of the General Insurance Standards Council. AMP (UK) Financial Services Ltd is registered with the Mortgage Board.  All companies are registered in England at AMP Lynch
+Wood, Peterborough PE2 6FY. Tel. 01733 470470. We may record or monitor telephone calls to improve service and protect customers.
+
+The information in this e-mail is confidential and may be legally privileged.  It is intended solely for the addressee and access to this
+e-mail by anyone else is unauthorised.   Although this message and any attachments are believed to be free of any virus or other defect that might affect any computer system into which
+it is received and opened, it is the responsibility of the recipient to ensure that it is virus free and no
+responsibility is accepted by any AMP Group company for any loss or damage in any way arising from its use.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
