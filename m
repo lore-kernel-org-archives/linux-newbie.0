@@ -1,47 +1,26 @@
-From: Sridhar J <sridharj.hyd@cxknetworks.com>
-Subject: RE: Hardware and soft modem
-Date: Fri, 31 May 2002 10:01:06 +0530
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: How to convert a MSDOS text file to Linux text file?
+Date: Fri, 31 May 2002 07:18:19 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D1488@ccdc-exchg.careercommunity.com>
+Message-ID: <20020531141900.TDRO5116.mtiwmhc23.worldnet.att.net@alan>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: Text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Satish
+I have a ldap base.ldif I made in windows, then via a samba share placed it on my linux box.
 
-Considering the fact stated here, you should have attached the file as a
-text file, not just a file. I run windows here and the file came up as an
-unknown format, since there was no file extensions. So better send such
-attachments as .txt, since mostly people don't reject .txt attachments.
+A post up on the ldap list on another problem, suggested this can cause a problem due to the MSDOS LF CR (CR LF?) appended to each line vs the LF in unix land.
 
-Regards
-Sridhar
+What command line utility can I run on my txt files to fix this "problem"?
 
------Original Message-----
-From: Haines Brown [mailto:brownh@hartford-hwp.com]
-Sent: Thursday, May 30, 2002 10:29 PM
-To: sathish.j@tatainfotech.com
-Cc: Sridhar J; linux-newbie@vger.kernel.org
-Subject: Re: Hardware and soft modem
+Thanks
+Alan
 
 
-satish,
-
-You send a mail attachment to the list related to the topic, but I
-suggest you consider alternatives. Because attachments are often
-carriers of virii or wormen, many people configure their mail readers
-to reject anything with attachments, and some mail servers block any
-mail with attachments for the same reason. Further, not everyone (like
-myself, who runs rmail) has a mail reader that can handle attachments.
-
-> This message is in MIME format.  The first part should be readable text,
-> while the remaining parts are likely unreadable without MIME-aware tools.
-> Send mail to mime@docserver.cac.washington.edu for more info.
-
-Haines Brown
+Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
