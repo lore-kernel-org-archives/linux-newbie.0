@@ -1,51 +1,43 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: 2 Displays
-Date: Mon, 21 Oct 2002 14:57:29 -0400
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: (X and other) basics (was: A few more things...)
+Date: 21 Oct 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <009901c27933$b4e4ed30$64fea8c0@pkrausxp>
-References: <3DB44D98.4010202@arrl.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200210212031.g9LKVM46014450@pyxis.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DB44D98.4010202@arrl.net>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: 'Jim Reimer' <wa5rrh@arrl.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-It is more like a port replicator. I can produces the same effect in
-windows without using the dock at all by just using the output for
-video. This is two independent displays not a clone. Thanks for any
-insights.
+Sorry, I should have made this a bit more explicit: as the sub-thread
+started from some exchange on XBasic v-a-v Quickbasic, I referred to the
+lack of a Basic _compiler_.
+(_interpreters_ use to be hotbeds for spaghetti code, indeed. And in
+any case, they are "slow"; which is the reason for having binaries
+progs at all.)
 
------Original Message-----
-From: Jim Reimer [mailto:wa5rrh@arrl.net] 
-Sent: Monday, October 21, 2002 2:55 PM
-To: Paul Kraus
-Subject: Re: 2 Displays
+As to apps: Yes, there's a number of net tools (I like and use Lynx in
+all its manifestations; there's WGET, FTP clients; I don't like Pine
+that much though - I would prefer other ways of handling mail
+archives, for instance.) Some sound tools do run from textmode command
+line, though with not-so-evident handling/command interfaces. And sure
+there's more.
 
+But I think of, for instance, a simple print output formatter just
+for line-printed text (no weird processor but something allowing
+less crude printer output), a stopwatch (TSR or not), a text tool like
+Buergh's LIST (quite a difference thing from a file handler like MC);
+things like that are _comparatively_ easy to craft, appropriate to your
+personal preferences, with a _comparably_ easy accessible language
+like Basic.
+(REM, I just _dislike_ C [syntax]; for just sentimental or whatever
+reasons; I want an alternative.)
+And I'd be a bit skeptical if you do that with Bash - is Midnight
+Commander written in bash ?
 
-Paul,
-
-If this is more of a "docking station" type setup, Linux should have no
-trouble with it since it's handled by hardware.  My Sony laptap supports
-using either the LCD or an external display, each of which can be turned
-on or off with BIOS settings.
-
--jdr-
-
-Paul Kraus wrote:
-> I am getting ready to install Linux on my laptop. Right now with it 
-> having xp I have the laptop lcd and a monitor attached as a second 
-> display. Can this be done with Linux?
-> 
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
-
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
