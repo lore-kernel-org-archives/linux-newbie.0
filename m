@@ -1,68 +1,46 @@
-From: John Kelly (bilbo) <bilbo@waitrose.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: Extraction of PID
-Date: Sat, 26 Jul 2003 09:11:54 +0100
+Date: Sat, 26 Jul 2003 10:22:32 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030726080844.SXTP2652.mta03-svc.ntlworld.com@there>
+Message-ID: <200307261022.32234.pa3gcu@zeelandnet.nl>
 References: <20030726065829.DD46B1041E@heisspf>
-Reply-To: bilbo@waitrose.com
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20030726065829.DD46B1041E@heisspf>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+To: Peter <heisspf@skyinet.net>, linux <linux-newbie@vger.kernel.org>
 
-On Saturday 26 July 2003 7:58 am, Peter wrote:
-
->Hi,
+On Saturday 26 July 2003 08:58, Peter wrote:
+> Hi,
 >
->How do I isolate from a line like
+> How do I isolate from a line like
 >
->1865 tty2 00:00:18 exmh
+> 1865 tty2 00:00:18 exmh
 >
->the first 4 numbers which is the PID. I get it with "ps -a --pid 1111 | grep 
->exmh".
-Hi,
-As usual in 'nix there are several different ways of doing this.
-My first guess was:
+> the first 4 numbers which is the PID. I get it with "ps -a --pid 1111 |
+> grep exmh".
 
-ps -a -pid 1111 | grep exmh | awk '{print $1}'
+If your system has "pidof" installed; then
 
-Which works fine for me on my Redhat box.
+'pidof exmh'
 
-Second guess was:
+> Thanks & regards
 
-ps -a -pid 1111 | awk '/exmh/{print $1}' 
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-Which also worked fine.
-
-Since not many people use awk, I though I would try a few examples with the 
-cut command.
-
-ps -a -pid 1111 | grep exmh | cut -d' ' -f1
-
-This example works but I had to use the -d option to specify the delimiter.
-If you were sure the pid was only going to be four characters long, you could 
-use:
-
-ps -a -pid 1111 | grep exmh | cut -c1-4
-
-I have just spent the past ten minutes messing about using sed to do this too 
-- but I don't think any sane person would used sed to do something like this. 
-But for what it is worth, here is my sed example
-
-ps -a -pid 1111 | sed -ne '/exmh/s/ tty.*$//'
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
-Your best bet is probably to use the 
-ps -a -pid 1111 | grep exmh | cut -d' ' -f1
-example. But rememeber that there is hours to fun to be had messing about 
-with obscure programs on nix systems. :-)
 
-regards
-
-John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
