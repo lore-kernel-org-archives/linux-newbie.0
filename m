@@ -1,35 +1,44 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: An easy home version of Linux
-Date: Tue, 19 Oct 2004 10:25:17 +0800
+From: "Robin Doer" <robin@robind.de>
+Subject: Re: Zipping files listed in a file
+Date: Tue, 19 Oct 2004 11:24:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041019022520.123F13EC95@heisspf>
-References: <HBEJLOFMLEPBMAAEFNFDKEPKCJAA.azapata@du.edu>
+Message-ID: <20041019.18S.00273900@192.168.0.6>
+References: <cl1ega$s77$1@sea.gmane.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 18 Oct 2004 11:58:02 CST."
-             <HBEJLOFMLEPBMAAEFNFDKEPKCJAA.azapata@du.edu> 
+In-Reply-To: <cl1ega$s77$1@sea.gmane.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "Anna G. Zapata" <azapata@du.edu>
-Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
+To: ACario <acario@wanadoo.fr>, linux-newbie@vger.kernel.org
 
-Hi Anna
+ACario (acario@wanadoo.fr) schrieb:
+>
+> Hi,
+> For backup purpose, I'd like to zip all files of a folder that have been
+> modified or created since a given date. I get the wanted list files by
+> running "find myrep -anewer aFileWithGivenDate". Now how can I pass this
+> list of files to the "zip" compresser?
+> Thanks in advance for your help,
+> ACario
 
-Slackware will surely do it as you control the installation. I installed and 
-run it on less than 2 Gb with only 124 Mb memory. You can even install 
-ZipSlack on a dos partition of which the basic installation w/o X uses only 
-around 80 Mb.
+Hey!
 
-And yes I find Knoppix great, either you run it entirely from the CD or what I 
-did copied some files to the HD. Now I boot with the CD and run it from the HD 
-that uses about 1.6 Gb disk space with the complete KDE jazz et all. That 
-frees the CD.
+Copied from the manpage (http://linux.math.tifr.res.in/manuals/man/zip.html)
 
-Regards
+If the file list is specified as -@, [Not on MacOS] zip takes the list of
+input files from standard input. Under UNIX, this option can be used to
+powerful effect in conjunction with the find(1) command. For example, to
+archive all the C source files in the current directory and its
+subdirectories:
 
--- 
-Peter
+    find . -name "*.[ch]" -print | zip source -@
+
+This should be exactly what you want!
+
+Bye,
+Robin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
