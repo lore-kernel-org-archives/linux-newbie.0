@@ -1,27 +1,21 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: Good books for a linux newbie
-Date: Sun, 2 Mar 2003 22:39:28 -0600 (CST)
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Redhat 7.3 Samba Start at startup
+Date: Mon, 3 Mar 2003 09:34:12 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0303022226040.11087@homenet>
-References: <200303021741.45141.Adam@Luchjenbroers.com> 
- <200303030404.h2344iY04489@philonline.com>
+Message-ID: <004201c2e191$f5acb840$cdfea8c0@pkraus>
+Reply-To: <pkraus@pelsupply.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303030404.h2344iY04489@philonline.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-I've recently come across the "Linux: Rute User's Guide," which is also in
-html (as well as downloadable in pdf). It is located at several site, e.g.
-http://www.pucmmsti.edu.do/materias/fnunez/RUTE_TUT/RUTE.html or
-http://www.intelinfo.com/sign-up/linux_rute_book.html (pdf at the homepage
-at http://www.icon.co.za/~psheer/book/index.html.gz ). I haven't had a
-chance to really look through this book yet, so I can't give a ringing
-endorsement. But it looks interesting.
+How can I set samba to start when the server starts.
+Every time I reboot the machine I have su, /sbin/service smb restart.
 
-James
+Paul Kraus
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
