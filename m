@@ -1,33 +1,30 @@
-From: Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-Subject: Re: a simple browser
-Date: Mon, 08 Apr 2002 18:32:52 +0200
+From: "Christoph" <christoph23@charter.net>
+Subject: Install location(s)
+Date: Mon, 8 Apr 2002 14:29:51 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CB1C634.80101@wanadoo.fr>
+Message-ID: <007a01c1df33$c2ee2e40$8c01a8c0@wild.net>
 References: <m3ofgui987.fsf@wobble.eth.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: anna7sept@linuxmail.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-G Anna wrote:
-> Dear All,
-> 
-> Can anybody suggest a good and simple browser?  Netscape core dumps
-> very often, Mozilla is very very slow and I do not know of any other
-> browser.
+Apologies if this is a stupid question.  And apologies for all
+the stupid questions that are sure to come from me in the
+weeks to follow. :p  I take heart that since this is a newbie
+list, I'm sure that you guys have fielded plenty.
 
-mozilla and netscape-6.x are the same. I've tried recently konqueror 
-(with kde-3.0), galeon, opera and keep using mozilla as a browser and 
-mail tool. The 0.9.9 version of mozilla is quite stable on my box (PIII 
-650).
+In any case, my question:  where should you typically install
+new software?  For example, I'm getting ready to look into
+and install Samba on my Linux (RH 7.2) box.  I've DL'd it
+already and have been reading the documentation but have
+yet to make and install it.  So, where should it (and anything
+else I plan to install) go to make it easier to manage and
+administer?
 
-Pierre
--- 
-------------------------------------------------
-  Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-------------------------------------------------
+thnx,
+Christoph
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
