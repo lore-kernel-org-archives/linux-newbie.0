@@ -1,46 +1,48 @@
 From: whitnl73@juno.com
-Subject: Re: mandrake installation
-Date: Sun, 9 Mar 2003 10:34:29 -0500 (EST)
+Subject: Re: stopping diald
+Date: Sun, 9 Mar 2003 10:40:17 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030309.104108.8.0.whitnl73@juno.com>
-References: <5.1.1.6.0.20030308080205.00a73ac8@mail.dpomeroy.com>
+Message-ID: <20030309.104108.8.1.whitnl73@juno.com>
+References: <Pine.LNX.4.53.0303081157280.18544@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.1.6.0.20030308080205.00a73ac8@mail.dpomeroy.com>
+In-Reply-To: <Pine.LNX.4.53.0303081157280.18544@homenet>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: dave@dpomeroy.com
+To: jamtat@mailandnews.com
 Cc: linux-newbie@vger.kernel.org
 
-On Sat, 8 Mar 2003, Dave Pomeroy wrote:
+On Sat, 8 Mar 2003, James Miller wrote:
 
-> My old scsi cdrom will not boot.  I'm installing from my windows hard
-> drive.  I've made a boot floppy and all goes as it should when I boot, it
-> asks me for the location of the files and I tell it the path to my windows
-> drive where the files for disk 1 are stored.  It never asks where disk 2 is
-> stored and when it needs the files off that it can't find them. I guess I'm
-> asking where do you put the "RPMS2" and "RPMS3" packages so the install
-> program can find them?  Thanks for all your help.
+> Newbie question:
 >
+> I've started experimenting with diald, since I'm planning on setting up a
+> small network from which more than one computer will be needing to access
+> the 'net. Diald works fine, in terms of connecting to the provider. My
+> question is about stopping the process. So far, I've been able to stop
+> diald only by opening a console and su'ing and issuing "poff." Trying to
+> run poff from a console as user results in the message "/usr/bin/poff:
+> /bin/kill failed. None stopped". I believe that this is because the
+> process is owned by root, as ps axu shows. I need a more elegant and less
+> restrictive process for stopping the diald connection than having to open
+> a console, su, then issue "poff." Can someone please suggest alternative
+> methods? Eventually, I plan on adding a poff item to my Icewm toolbar. But
+> understanding various ways to stop the process is prerequisite to that (I
+> know how to edit the toolbar config file, and have some understanding of
+> how the entries should look).
 >
-> Dave Pomeroy K7DNP South East Washington
-
-Bear in mind that I don't use _any_ distro installer, so I may be all
-wet.  By the time you have installed all you want from RPMS, you should
-have installed a kernel, a libc, a bootloader, a filesystem, the basic
-system utilities such as mount, mkdir, tar, cpio, gzip, bzip2,...and the
-rpm binary.
-
-just boot your new system, (make [some] convenient mount point[s]),
-mount RPMS2,... and use rpm to install what you like, disk space
-permitting.
-
-man rpm is long, but it's not all that bad to read.
+> Thanks for any help.
+>
+> James
+> -
+I don't know what diald is exactly - just a wrapper for pppd?  pppd
+itself doesn't _have_ to run as root, it's just that the user that runs
+it needs permission to read and write the modem device it is to use --
+pppd is normally installed as suid root -- and the user that runs it may
+stop it.
 
 Lawson
-
- --
 ---oops---
 
 
