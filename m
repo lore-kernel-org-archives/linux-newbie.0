@@ -1,30 +1,47 @@
-From: caszonyi@rdslink.ro
-Subject: Linux 0.99.15 (historycal question)
-Date: Sun, 21 Mar 2004 23:11:36 +0200 (EET)
+From: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
+Subject: http connection migration between two servers
+Date: Sun, 21 Mar 2004 21:27:09 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0403212309440.705@grinch.ro>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <20040322052709.49362.qmail@web60603.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
 
-Hi
+Hi users,
+  
+  I have a cluster of web servers.
+  Each server contains only a part of the whole web  
+  content.
+  All have a primary Virtual IP address(same for all)
+and 
+  secondary IP addresses for comunication within
+cluster.
+  Clients make requests on the VIP address.
+  Each server in cluster has to make content aware
+  dispatching of requests.
+  In order to save time, I want that the HTTP
+connection
+  established with the first server should be migrated
+  to the server which can serve the request.
+  
+  Iam using apache 1.3.29 with mod_backhand for
+communication wihtin cluster.
+  All the servers use Red Hat linux 2.4.18.
 
-Does anybody on this list knows which is the maximum size of a harddrive
-that linux 0.99.15 can boot on ?
+ Please guide me how I can achieve this. 
+ 
+ Thanks,
+ ravikumar
+  
+  
 
-Thanks
-
-Bye
-Calin
-
---
-"A mouse is a device used to point at
-the xterm you want to type in".
-Kim Alm on a.s.r.
+__________________________________
+Do you Yahoo!?
+Yahoo! Finance Tax Center - File online. File on time.
+http://taxes.yahoo.com/filing.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
