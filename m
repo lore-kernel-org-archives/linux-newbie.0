@@ -1,71 +1,46 @@
-From: whitnl73@juno.com
-Subject: Re: run scripts as other user
-Date: Sun, 2 Mar 2003 00:56:04 -0500 (EST)
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Re: pdf file creation using Linux apps
+Date: Sun, 2 Mar 2003 07:51:29 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030302.010513.8.0.whitnl73@juno.com>
-References: <5.1.0.14.1.20030228230844.01f4a078@celine>
+Message-ID: <20030302065129.GA20413@teamfinders.org>
+References: <Pine.LNX.4.21.0303011750230.28792-100000@ppg_penguin> <Pine.LNX.4.53.0303011903080.11087@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030228230844.01f4a078@celine>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.53.0303011903080.11087@homenet>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Fri, 28 Feb 2003, Ray Olszewski wrote:
+On Sat, Mar 01, 2003 at 07:17:42PM -0600, James Miller hunted and pecked out:
+[snip]
+> I have several pdf reading progs on my machine, so my concern is not so
+> much with being able to read pdfs. It's more with creating them, and,
+> specifically, creating files compatible with Adobe Reader. Most people who
+> will be reading such pdf files as I create will be viewing them with
+> Adobe's pdf product. So far, all documents I've created with KWord have
+> been compatible with Acrobat Reader (maybe 4 or 5 documents?). Those
+> created under OpenOffice and, if I recall correctly, Abiword, have not been
+> compatible. Since I'm running a system that is largely Debian Woody, I can't
+> easily upgrade the KOffice I have. Does anyone know of other apps that
+> create/convert to pdf that are largely compatible with Adobe Acrobat Reader?
+> Is there another list where I should pose this sort of question?
 
-> ce: bulk
-> X-Mailing-List:	linux-newbie@vger.kernel.org
->
-> At 12:12 AM 3/1/2003 -0500, [ramzez] wrote:
-> >-----BEGIN PGP SIGNED MESSAGE-----
-> >Hash: SHA1
-> >
-> >Hi friends...
-> >   Which perms I have to give  to my script if I wanna that other users run it
-> >but just how if I run it.
-> >   I know that is something with suid but I can't do it
->
-> This question is a bit hard to follow. (If, as I suspect from your e-mail
-> address, English is not your native language, you might do better to use
-> very standard English, rather than try to use informal constructions like
-> "perms" and "wanna". My actual problem, though, is needing to guess what
-> you mean by "but just how if I run it".)
->
-> If I guess your meaning correctly, you want others to be able too execute a
-> program, and have it run as though it were executed by you (the file's
-> owner).  For example, in order to be able to change their passwords,
-> ordinary users need to be able to run the program "passwd" as though they
-> were root so they can write to the /etc/shadow file.
->
-> You accomplish that by setting the suid bit, which you can do with the command
->
->          chmod +s filename
->
-> Try "man chmod" for the details. The program needs to be normally
-> executable by the user in question, for example.
->
-Try man execve (towards the end, in NOTES) to see why this probably
-won't work with a script.
-perl claims to handle setuid scripts, but I haven't had the need to
-figure out how to work it.  I think the perl interpreter itself has to
-be setuid, and then it gets very fussy about checking your script for
-booby-traps.
+If you don't mind using a command line tool, then you might want to save the documents as PostScript files and then use ps2pdf13 to convert to PDF format.  I have been using ps2pdf13 for a little while now to convert man pages to pdf format, and I have never had one not load in Acrobat Reader.  My thought is that PostScript is a well recognized format that each of the word processors you've mentioned should be able to master, and they may be able to do PostScript better than they can do PDF.
 
-You could write a binary program to call your script, and make it (the
-binary program) setuid, I guess, but be careful.
+Take one of your documents, save it as a PostScript file, and then convert it to see how well it works.  From the command line:
 
-Lawson
- --
----oops---
+ps2pdf13 mydocument.ps mydocument.pdf
 
+ps2pdf13 has several related applications giving varying levels of Acrobat compatibility.  Try `man ps2pdf` to get the full story.
 
+HTH,
+Sean
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
