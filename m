@@ -1,50 +1,31 @@
-From: kari Hurtta <hurtta+z1@leija.mh.fmi.fi>
-Subject: Re: reading links in proc - permission denied
-Date: Mon, 16 Jun 2003 09:19:28 +0300 (EEST)
+From: James Miller <jamtat@mailsnare.net>
+Subject: rename a "running" kernel?
+Date: Mon, 16 Jun 2003 08:43:10 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306160619.h5G6JS7S010990@leija.fmi.fi>
-References: <000b01c332b7$44c68250$1403a8c0@sc.tlinx.org>
+Message-ID: <Pine.LNX.4.56.0306160832420.1167@homenet>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000b01c332b7$44c68250$1403a8c0@sc.tlinx.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "linda w." <linux-newbie@tlinx.org>
-Cc: 'Kari Hurtta' <hurtta+z1@leija.mh.fmi.fi>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-> 
-> 
-> > -----Original Message-----
-> > From: hurtta@leija.mh.fmi.fi [mailto:hurtta@leija.mh.fmi.fi]
-> > Are you sure that 'top' uses that 'exe' ?
-> ---
-> 	Not at all...in fact was told it doesn't.  Apparently, though,
-> the listed permissions on the links are arbitrary and the system
-> fairly well ignores them.
-> 
-> 	I vaguely remember someone once saying that even if a symlink
-> had permissions lrxw------, it could still be used by group and
-> others.  I don't know if that was or is still true -- certainly doesn't
-> seem consistent, but when dealing with computer systems made by
-> many different humans, inconsistency seems inevitable -- even when
-> made by 1 human, that person can be inconsistent over time.
-> 
-> 	And people wonder why computer security is so hard to 'get right'.
+Here's a probably not too profound newbie question.  I just downloaded an
+updated kernel for my router.  I've copied the kernel over to the right
+dir and everything and need to rename it to the name of the current
+kernel, so that next time I boot it'll be used.  Before renaming it,
+though, I should rename the kernel I'm now using - to kernel.old or
+something like that.  My question is just whether I can do this safely
+with that machine and kernel running.  Seems to me like I can since, as I
+understand it, the kernel gets loaded into RAM and does not run from disk
+(I used quotation marks around "running" above since, as I see it, I'm
+not renaming the kernel that's loaded in RAM, i.e., really running, but
+the image of it which is stored on the HD).  But that's just my probably
+not-so-enlightened deduction.  I thought I should ask here first if it is
+ok to do this, i.e., I'm not taking any risks of system crashes or
+foul-ups by so doing.
 
-For _following_ symlink, permissions of symlink are not checked
-(at least not checked 'traditiomally' on unix -- I do not know about Linux.)
-
-
-On some systems for reading value of symlink if symlink is on NFS server,
-permissions of symlink are checked.
-
-
-I actually do not know is permissions of symlink checked (on various OSes)
-if sysmlink value is readed.
-
-
-/ Kari Hurtta
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
