@@ -1,70 +1,82 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Re: problems with dual boot
-Date: 24 Oct 2002 17:24:33 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Trying to get GUI'ed
+Date: Thu, 24 Oct 2002 23:22:50 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035494683.31016.116.camel@localhost.localdomain>
-References: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20021024230507.0215c7e0@celine>
+References: <200210250441.g9P4fEq30914@ev6.be.wanadoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
+In-Reply-To: <200210250441.g9P4fEq30914@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Abhijit Vijay <abhijit_v@yahoo.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-Hozed.
+You forgot to cc the list with your message; I added it back in this reply, 
+which includes your complete message at the end.
 
-It's my experience that it's better to install Linux last.
-Never trust a Windoze app to launch Linux...
+First, to avoid conflicts, you do not need to remove the various packages 
+from your filesystem. All you need to do is not run them (or in the case of 
+libraries, not run programs that link to them).
 
-One thing you might try.  Begin reinstallation of RedHat except
-look for an option that will allow you reinstal LILO or GRUB.
+In principle, you could run X with no Window Manager, just starting a 
+single xterm when the X server starts. I've never done this myself (I have 
+read about the procedure, in a *very* old book), but perhaps when he sees 
+this message, Lawson will sketch out the details of how he did it.
 
-On Thu, 2002-10-24 at 17:15, Abhijit Vijay wrote:
-> Hi All,
-> 
-> My computer (which has Windows 2000/Red Hat Linux 7.0)
-> Dual Boot with a WinNT loader, has developed problems.
-> Someone else was using it and now when I select the
-> Linux option at boot time, it says that some
-> kernel.exe file is missing and does not boot. Windows
-> boots fine. I tried using a linux boot floppy  from
-> another Linux machine (Redhat 6.2) to get into the
-> linux partition and install LILO (thinking that it
-> might be a problem with the loader), but could not
-> find the boot partition mounted. Doing fdisk /dev/hda
-> gives me the error "Unable to load /dev/hda"
-> 
-> Could someone suggest a way out?
-> 
-> Thanks in Advance,
-> Abhijit.
-> 
-> __________________________________________________
-> Do you Yahoo!?
-> Faith Hill - Exclusive Performances, Videos & More
-> http://faith.yahoo.com
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
--- 
-Regards,
+What I would suggest as a practical solution is for you to run X with one 
+of the lightweight Window Managers ... say blackbox or icewm, or maybe XFce 
+(I've not tried this last one myself) ... and once it starts, use its menu 
+system just to start a single xterm. From there, start the static version 
+of VueScan.
 
-Bryan Simmons 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+I would recommend that you do this (start the X server) from a console. 
+That is, you log in to a console and run the "startx" script to run the X 
+server, rather than using xdm or one of its cousins. By editing the config 
+files startx (and xinit, which the script runs) loads, you can select your 
+WM and the other items that are available in your pop-up menu.
 
- On Integrity:
+Although X itself is pretty standard, the setup details are somewhat 
+distribution specific, and you've reported trying so many distros hat I 
+don't know what you are running at the moment. With Debian, for example, 
+one way is to do a standard, minimal install, then disable the init-script 
+link that runs xdm. Then you can configure X in any of the usual ways (the 
+"dpkg --configure" choice works pretty well with X for me) and "startx" 
+will work fine.
 
- "I'm going to be as good as they let me and
-  as mean as they make me, and they all know
-  that.  I don't ever lie. If I tell you a
-  rooster can fly, get the harness."
+One last question ... I took a quick look at the (fairly brief) Linux notes 
+on the VueScan site. From what they write there, VueScan looks like a 
+command-line app, not a GUI app. If I am correct ... is there a reason why 
+you do not want to run this from a console? Why do you need X at all (for 
+this app)?
 
-   --Burl Cain, Louisiana State Pen Warden
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+At , Heimo Claasen wrote:
+>I try to put it simplistic: If you run X you get just the ("graphcical")
+>screen.
+>What is the absolute bare minimum to get this X screen _with_ some
+>possibility to input a command (e.g., for to run some application
+>program) - in fact, just an Xterm for instance ?
+>
+>An HOW would I set it up / launch it ?
+>
+>(The application program, Vuescan, is statically linked and wouldn't
+>need to access any additional shared libraries thus.)
+>
+>Next step: Which of the major (X window-) window management and GUI-
+>programm packages could be safely revomed from the "system", without
+>putting that "bare bones" X at risk ?
+>
+>(Can the whole load of Gtk/Qt go, for instance ?)
+
+
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
