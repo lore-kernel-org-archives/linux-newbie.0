@@ -1,65 +1,90 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: USB Flash Drive??
-Date: Sat, 2 Aug 2003 09:41:41 -0400
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Re: disabling graphical login
+Date: Sat, 02 Aug 2003 21:34:24 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030802094141.A149@lnx2.w8mch.ampr.org>
-References: <20030801.180756.6091.256911@webmail13.lax.untd.com>
-Reply-To: haltec@kvinet.com
+Message-ID: <5e7ce5b719.5b7195e7ce@homemail.nyu.edu>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
 Content-Disposition: inline
-In-Reply-To: <20030801.180756.6091.256911@webmail13.lax.untd.com>; from beolach@juno.com on Sat, Aug 02, 2003 at 01:07:20AM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 08-02, beolach@juno.com wrote:
+Ray,
+Thanks for the help so far.
+I am using RHL7.3 . I dont know if I am using xdm or gdm.
+The other info I can provide is that I use lilo for boot and KDE for X.
+
+Thanks,
+Anshuman
+
+----- Original Message -----
+From: Ray Olszewski <ray@comarre.com>
+Date: Thursday, July 31, 2003 2:15 pm
+Subject: Re: disabling graphical login
+
+> At 01:53 PM 7/31/2003 -0400, Anshuman Singh Rawat wrote:
+> >Hi,
+> >I have a graphical login screen and I need to disable it as there 
+> is some 
+> >problem with my X. How does one disable it?
 > 
-> Here are a couple more comments on filesystems. This may be getting a
-> little off-topic from your initial question, but I think it is still
-> relevant. Sorry if some of it is really common knowledge, I just like
-> building up from the basics.
+> It depends on how you (your Linux distro, that is) enable(s) it in 
+> the 
+> first place. That varies a bit by distro. The two most common ways 
+> are:
+> 1. Setting in /etc/inittab a default runlevel that causes xdm (or 
+> maybe 
+> gdm) to start. To disable it this way, change from a runlevel that 
+> starts 
+> xdm (or gdm) to one that does not. Most commonly, that involves 
+> changing 
+> the line in /etc/inittab that reads
+> 
+>         # The default runlevel.
+>         id:5:initdefault:
+> 
+> to read
+> 
+>         # The default runlevel.
+>         id:2:initdefault:
+> 
+> 2. Running an init script that starts xdm (or gdm). To disable it 
+> this way, 
+> find the symlink to that script in the default runlevel and remove 
+> it. For 
+> example, my Debian systems use the script /etc/init.d/xdm to start 
+> X and a 
+> default runlevel 2. So I remove (or rename) the symlink 
+> /etc/r2.d/S99xdm .
+> 
+> BTW, even with  a "graphical login screen" running, you probably 
+> have 
+> consoles hidden away. So if the X stuff does not completely trash 
+> your 
+> display, pressing CTRL-ALT-F1 (through -F6, usually) will probably 
+> give you 
+> a text console where you can log in.
+> 
+> If you need more specific help, in a followup tell us what Linux 
+> distro and 
+> version you are using, which graphical login system you use (xdm 
+> or gdm), 
+> and whatever you know about how your system now starts X.
+> 
+> 
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-
+> newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
-	<<Remainder snipped and archived in the _very informative_
-folder....>>
-
-	Greetings and not OT because Flash Drives are _the_ future
-and it's coming up _fast_.. Even the huge retailer MallWart has them
-on the shelves now.. I shall read the recommended HOW-TO's and your
-dissertation made complete sense..
-
-	If anyone is interested: The Link-Max USB Flash Drive works
-beautifully in two machines here; running Slackware9.0, 2.4.20, with
-_no_ user entries as long as the BIOS has USB enabled.. One a newer
-ATX Celeron and the other an older AT AMD with the USB ports on a
-header. Of course the devices manual lists wrong info about it's Linux
-support and that M$Windows is PnP...
-
-	I installed Win98 on another machine for kicks and couldn't
-get it to work.. It found the stick but catch22 surfaced in that the
-driver was in the stick but I couldn't read the stick.. A far cry
-from PnP I thought until I re-read the docs which said "Win98 _SE_",
-so I gather that Win98 plain vanilla is NG.. I don't run M$ stuff so
-I reformatted the flash drive as ext2, noting one caveat: The write
-protect switch works but you have to re-boot when changing it.
-Perhaps umount/mount the modules would work here..
-
-	Now I have to win the lottery in order to buy more flash
-drives, eh? <grin> I wonder what the, if any, down side there is to
-them? All that storage in so little space, blows my mind...
-
-Thanks again,
-
-Hal
-
-
-
-> Hope this makes sense,
-> Conway S. Smith
-
-	Completely!!!
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
