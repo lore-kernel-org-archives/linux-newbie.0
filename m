@@ -1,58 +1,46 @@
-From: Chris <smarta55@comcast.net>
-Subject: Thank you (Re: How do I see all my partitions?)
-Date: Wed, 18 Dec 2002 07:27:03 -0500
+From: james miller <jamtat@mailandnews.com>
+Subject: would this work as a thin client?
+Date: Wed, 18 Dec 2002 10:32:53 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.0.20021218072619.00b634e0@mail.comcast.net>
-References: <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
- <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
+Message-ID: <3E00C4CA@mailandnews.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <20021218104722.GA3850@neon.pearbough.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Thank you...
-Now I feel like I should have known to look there 1st.   Duh.
+Hello all. I'm pretty new to Linux and to the LTSP project, but I ran across 
+something on the web for really cheap ($12.95!) and wondered if it could work 
+as a thin client. Seems like, if it would, a bit of fiddling would be 
+involved. Sorry if this is a stupid question. Anyway, here's the link: 
+http://www.softwareandstuff.com/h_misc_webpal.html . Description follows:
 
-Hopefully I won't be a  newbie too long...
+#######################BEGIN PRODUCT DESCRIPTION########################
 
-Chris
+Product Description:  What the heck is a Webpal you ask??!?! This an Internet 
+Set-top box which was produced for Newcom, Inc.(Now defunct) by 
+Teknema(Teknema.com) and originally sold for over $400.  The WebPal Internet 
+Box converts a television set (or VGA monitor) into a device that can access 
+the Internet. The box is operated by its own hand-held remote control unit, 
+and a wireless keyboard is also included.
 
-At 11:47 AM Wednesday 12/18/2002, you wrote:
->Hi Chris!
->
->On Tue, 17 Dec 2002, Chris wrote:
->
-> > my winxp partition.  How do I display all the
-> > partitions, Win/Dos/Linux, in one place so I can
-> > give mount the correct partition name?
->
->You might already have heard of fdisk. It is a tool to partition your hard
->disks and also in fact the easiest way to see what partition is of what
->type and has what number/name.
->To call fdisk for your primary IDE slave call "fdisk /dev/hda" and you
->will get something like this:
->
->    Device Boot    Start       End    Blocks   Id  System
->/dev/hda1             1      9688   4882720+  83  Linux
->/dev/hda2   *      9689     48440  19531008    7  HPFS/NTFS
->/dev/hda3         48441    158816  55629504   83  Linux
->
->(For example for your second SCSI disk it would be "fdisk /dev/sdb")
->
->Here you can see that my windows partition is /dev/hda2 is of type NTFS.
->To mount it you'll need an empty directory (e.g. /windows or /mnt/win) and
->the necessary file system support for you kernel (in my case NTFS).
->
->Then "mount <device>  <mount directory>". In my case this looks like:
->      "mount /dev/hda2 /windows"
->
->
->Have fun,
->Axel
+WebPal's built-in 33.6Kbps modem lets you surf the net, through a regular 
+voice grade telephone line. You can use the Internet Service Provider 
+recommend by Necom(Earthlink) or specify your own PPP/PAP or CHAP provider.
 
+Good for emailing or simple surfing! Works with any ISP that uses one server 
+for inbound and outbound e-mail. Experience the Internet on Your TV! The 
+cheapest way to have email or browse the web on your TV! Wireless keyboard and 
+remote control Included! Originally retailed for over $399.95!
+
+You can either use the device as a Web-TV type device when connected to your 
+TV OR Computer monitor!..... OR you can hack it and use it as a Linux box!  
+This little unit has just about enough features to use it as a PC!!
+
+##########################END PRODUCT DESCRIPTION#########################
+
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
