@@ -1,71 +1,89 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: xcdroast errors
-Date: Sun, 04 Apr 2004 18:44:41 -0700
+From: Juan Facundo =?iso-8859-1?q?Su=E1rez?= <faco@fdsoft.com.ar>
+Subject: Re: OpenGL
+Date: Mon, 5 Apr 2004 00:32:29 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040404182705.01f3a678@celine>
-References: <200404022058.54255.pa3gcu@zeelandnet.nl>
- <20040402153836.GA27294@panix.com>
- <200404022058.54255.pa3gcu@zeelandnet.nl> <20040405005616.GA18489@panix.com>
+Message-ID: <200404050032.29769.faco@fdsoft.com.ar>
+References: <003701c419d1$c3ed8900$680410ac@pcinstru1> <40701BF8.6060405@ufrima.imag.fr>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040405005616.GA18489@panix.com>
-References: <200404022058.54255.pa3gcu@zeelandnet.nl>
- <20040402153836.GA27294@panix.com>
- <200404022058.54255.pa3gcu@zeelandnet.nl>
+In-Reply-To: <40701BF8.6060405@ufrima.imag.fr>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: aurelien.francillon@libertysurf.fr
+Cc: Facundo Suarez <facundo.suarez@ensi.com.ar>, linux-newbie@vger.kernel.org
 
-At 08:56 PM 4/4/2004 -0400, Rei Shinozuka wrote:
+Thanks guy, i made what you said, and it worked just fine. Very nice. T=
+he only=20
+thing i see, is that the version of nvidia-kernel driver is a bit out o=
+f=20
+date. But it works better like this.
 
->just a more complete rendering of the story.  i also built xcdroast
->from source and am running version 15 instead of 14, but i still get
->what looks like a spurious error:
+ I think gentoo people will update it closely.
+
+ Thanks again.
+
+El Sunday 04 April 2004 11:30, Aur=E9lien Francillon escribi=F3:
+> Facundo Suarez a =E9crit :
+> > Hi all.
+> >
+> >  I have just bought my new nvidia fx 5200, 128 MB ddr 8x agp video =
+card.
+> > And i have downloaded the drivers form nvidia home page. I installe=
+d it,
+> > an configured as the README says i have to do. But, running on gent=
+oo
+> > 1.4, kde 3.2.1, kernel 2.4.25, i cannot run my opengl screensaver. =
+I
+> > thougth that with this card, it has to work, but, sometimes even ha=
+ngs
+> > the system, other, it restarts my XFree86.
+> >
+> >  Can you help me ?
+> >
+> >  Thanks.
 >
->http://www.shinozuka-family.com/xcdroast/
+> hi,
+> have you use emerge for install it ?
+> something like :
+> emerge -av nvidia-kernel nvidia-glx
+> then
+> opengl-update nvidia
 >
->thanks,
-[old stuff deleted]
+> can you give the lsmod / XF86Config / glxinfo / /var/log/XFree86.0.lo=
+g
+> and /etc/XF86Config  and dmesg ?
+>
+> I think some could help you with this ...
+>
+> an other thing is that i think you sould use the agpgart from nvidia
+> as only 2.6 kernel supports agp 8x (unless a backport have been done)
+> or chage to kernel 2.6 (emerge applies the right patches to the nvidi=
+a
+> drivers for 2.6 kernel)
+>
+> you can also search on bugs.gentoo.org ...
+>
+> aurel
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
+e" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-What exactly are you referring to when you say "a spurious error"? If the 
-software neither reports nor logs any errors, where does a *spurious* error 
-appear?
-
-Does the CD work after burning or not? If it does not work, how does it 
-fail? If it does work, than what are you asking us about?
-
-In looking at your screenshots, I notice that xcdroast reports the ISO 
-source image as (I think - the text is a bit blurry so I may be misreading) 
-"803 MB / 79:38:16", requiring an 80-minute CD, not a standard 700 MB/ 
-70-minute CD. I also note that you are copying a CD from another drive, not 
-burning from an ISO, as I had previously assumed.
-
-Are you using appropriate media? If not, cdrecord is probably quitting when 
-it runs out of room on the target disk (after a bit over 700 MB, that is), 
-not when the ISO image is completedly written. If this is what's happening, 
-I'm a bit suprised that nothing -- not cdrecord or xcdroast -- generates an 
-error message ... but it's been a very long time since I tried to burn an 
-oversize ISO, so I don't actually recall how cdrecord deals with size overruns.
-
-In an earlier message, I asked you if the problem occurred with smaller ISO 
-images or only ones that pushed the allowable size. You said you'd test 
-that. Did you? To what effect?
-
-If you copy the existing CD to an ISO file, what is its size?
-
-Your earlier message also seemed to say that this hardware worked fine with 
-some CD writing software that ran on some version of Windows. If you can 
-still run that setup, will it copy the exact same Knoppix CD successfully?
-
-I did check and verified that standard Knoppix ISO images are 700 MB, so if 
-there is a size problem with this duplication, it is probably something 
-non-standard about the image on the source CD.
-
-
-
+--=20
+=46acundo Su=E1rez
+=46DSoft SA
+icq:121172697
+jabber:faco@fdsoft.com.ar
+msn:use_jabber@hotmail.com
+Neuqu=E9n-Argentina
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
