@@ -1,27 +1,54 @@
-From: Marek Michalkiewicz <marekm@amelek.gda.pl>
-Subject: Re: devfs + PCI serial card = no extra serial ports
-Date: Sat, 8 Mar 2003 01:15:17 +0100
-Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <20030308001517.GB20120@alf.amelek.gda.pl>
-References: <11E89240C407D311958800A0C9ACF7D1A33DD4@EXCHANGE>
+From: whitnl73@juno.com
+Subject: Re: scripting the "rec" function for a fixed time.
+Date: Fri, 7 Mar 2003 19:22:48 -0500 (EST)
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <20030307.192525.8.1.whitnl73@juno.com>
+References: <1046131264.10885.28.camel@smeagle>
 Mime-Version: 1.0
-Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <11E89240C407D311958800A0C9ACF7D1A33DD4@EXCHANGE>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1046131264.10885.28.camel@smeagle>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ed Vance <EdV@macrolink.com>
-Cc: 'Bryan Whitehead' <driver@jpl.nasa.gov>, linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+To: p.howell74@rcn.com
+Cc: linux-newbie@vger.kernel.org
 
-On Fri, Mar 07, 2003 at 03:40:31PM -0800, Ed Vance wrote:
-> Sure, go ahead and try the second patch that adds the Netmos cards to the
-> serial driver's device tables. It is for a somewhat newer rev, but you might
-> just get offsets with no failed hunks. It's worth a try.
+On 24 Feb 2003, Peter Howell wrote:
 
-Note that the second patch depends on the first one (link order fix),
-so please apply both patches in the order listed.
+> I would like to be able to run the rec command unattended.  Right now
+> when executed, it will record sound until I hit C-c.  I would really
+> like to be able to right a script which will execute "rec ...", then
+> wait a specified period of time, then pass the C-c to it.  Or is there a
+> simpler way?
+>
+> Thanks
+>
+> Peter
 
-After 2.4.21 is released, I'll try to remember to update the patches.
+I don't have rec or any hardware to do with sound, so I'll use "yes"
+to demonstrate a program that runs until interrupted.  Not I use SIGHUP
+rather than SIGINT, as bash provides a handler for SIGINT for background
+jobs.  stdout and stderr don't have to be null, but they have to be
+directed away from the terminal.
 
-Marek
+#!/bin/sh
+yes >/dev/null 2>/dev/null &
+sleep 1
+kill -HUP $!
+
+
+Lawson
+--
+---oops---
+
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
