@@ -1,45 +1,74 @@
-From: "Steven Smith" <sos22@cam.ac.uk>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: telnet,rsh,rexec
-Date: Sun, 1 Feb 2004 17:31:37 +0000
+Date: Sun, 1 Feb 2004 20:10:53 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040201173137.GA726@archibold.chu.cam.ac.uk>
+Message-ID: <200402012010.53988.pa3gcu@zeelandnet.nl>
 References: <20040201163539.67005.qmail@web60607.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="sm4nu43k4a2Rpi4c"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <20040201163539.67005.qmail@web60607.mail.yahoo.com>
-List-Id: <linux-newbie.vger.kernel.org>
-To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
-
-
---sm4nu43k4a2Rpi4c
-Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>, linux-newbie@vger.kernel.org
 
+On Sunday 01 February 2004 17:35, Ravi Kumar Munnangi wrote:
+> hi users,
+>
+>  My system IP is 172.31.19.22.
+>  When I try to telnet to my system, I get
+>
 >    Trying 172.31.19.22...
 > Connected to localhost.localdomain (172.31.19.22).
-That doesn't look promising; localhost.localdomain should be 127.0.0.1.
-What does /etc/hosts look like?
+> Escape character is '^]'.
+> Connection closed by foreign host.
+>
+>
+> Can any one guess the reason.
 
-Steven Smith,
-sos22@cam.ac.uk.
+I gave up guessing years ago, give us more infomation, that way we can help 
+you otheriwse no help is possable without guessing witch is AFAIK bad.
 
---sm4nu43k4a2Rpi4c
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+1) Disto version and number.
+2) Output of netstat -l
+3) Output of ipchains -nL or iptables -nL (which ever is in use)
+     You see i have to guess and give more than one command because you did
+     not supply information.
+4) Relevant parts of /var/log/messages or syslog, once again you did not say 
+     which distro you use so i have to give multiple choose questions.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (FreeBSD)
+> Can the reason be something related to security.
 
-iD8DBQFAHTf5O4S8/gLNrjcRAiNjAJ9vT52xPOWpefQrYboibuWCgMLEtwCgk0Pg
-m54p1jTKb5Mgy9eVWg/1G4s=
-=QBwq
------END PGP SIGNATURE-----
+Possably.
 
---sm4nu43k4a2Rpi4c--
+> How can I change the default security settings?
+
+Who knows thats distro indeipendant..
+
+> ON my system the security level is always showing
+>  as high and tried to change it to medium and
+> customise
+> But it is always at high level. How can I change this?
+
+God only knows, no info period.....
+
+>
+> Thanks in advance,
+> ravikumar
+>
+--
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
