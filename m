@@ -1,36 +1,38 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: xwindows login
-Date: Thu, 26 Sep 2002 16:03:01 +0000
+Subject: Re: 'nobody' is using my system !!!
+Date: Thu, 26 Sep 2002 15:54:03 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0209261603010A.09996@unix.pa3gcu>
-References: <006501c26565$0bb74e60$08d9d6d2@heretic>
+Message-ID: <02092615540307.09996@unix.pa3gcu>
+References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp> <200209251722.26680.wfoo@linuxvoodoo.com> <3D92DBFD.5D95F544@gelm.net>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <006501c26565$0bb74e60$08d9d6d2@heretic>
+In-Reply-To: <3D92DBFD.5D95F544@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Sagar N Chand <sagar@mihira.net>, linux-newbie <linux-newbie@vger.kernel.org>
+To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
 
-On Thursday 26 September 2002 13:56, Sagar N Chand wrote:
-> I've recently installed Mandrake on my system.
-> Everything is well and good. But by default it is going
-> into xwindows for the login. I changed the runlevel to 3 in the
-> etc\inittab file and now it is showing the login in the console
-> mode only. Is there any other way to do this???
+On Thursday 26 September 2002 10:05, Chuck Gelm wrote:
+> G'day, Y'all:
+>
+>  I awoke at 04:40 AM today when the internal speaker of my
+> Win2k boxen started sounding a tone.  While I was up shutting
+> it down, I noticed the HD activity lamp on my linux firewall
+> was indicating activity.  I selected the console window where
+> I leave 'top' running.  I found that 'find' and 'sort' were
+> being run by 'nobody'.  I've installed no 'at' or 'cron' jobs.
+> It is a Slackware v8.0, kernel 2.2.19, custom compile system.
+>
+> 'who' showed my console logins only.
+>
+> Why was 'find' and 'sort' running at 4:40 AM ?
 
-No that i know off, what is it you really want, you need to login one way or 
-the other.
-
-You can use both tho' simply use runlevel 4 or 5 (dont know what mandrake 
-uses for X) after startup you can go to console mode with ctrl-alt-F6 and 
-login on the console.
-ctrl-alt-F2 to return to X.
+Get up at the same time tommorow morning and it will be doing the same thing.
+Like Ray said, its a normal system update.
 
 >
-> regards,
-> /sagar
+> Regards, Chuck
 
 -- 
 Regards Richard
