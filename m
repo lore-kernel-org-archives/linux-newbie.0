@@ -1,8 +1,8 @@
 From: wa4chq@netscape.net (neil t)
-Subject: recording internet radio
-Date: Sat, 09 Nov 2002 07:15:00 -0500
+Subject: screensaver problem
+Date: Sat, 09 Nov 2002 07:22:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <16ABF1E8.4233D9B2.0006BEFC@netscape.net>
+Message-ID: <092EDE01.791CD657.0006BEFC@netscape.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,12 +10,10 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Greetings all
-I am listening to some good blues stations and this morning heard a song that I would have liked to copy.  I thought I would try typing 'rec *.wav' at the command line.  That did not work.  I guess that would only work if I have a microphone plugged in.  But is there a way to record a song off of internet radio?
-I am using Mandrake 9.0
+Greetings-
+I have been using Mandrake 9.0 for a few months now and am finally getting things set up the way I like it.  I am not using KDE or Gnome, but instead I am using Icewm.  One thing I have noticed is I don't have a screensaver.  I really didn't see anything about a screensaver or .xscreensaver in the Mandrake cd's (maybe I just overlooked them), but does anyone on the list have some tips for setting up a Mandrake screensaver?
 Thanks
 Neil T.
-
 
 -- 
 Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
