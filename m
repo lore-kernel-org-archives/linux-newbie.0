@@ -1,56 +1,55 @@
 From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: 24 Oct 2002 09:24:26 -0400
+Subject: Re: RedHat 8
+Date: 24 Oct 2002 09:25:44 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035465877.31480.100.camel@localhost.localdomain>
-References: <200210241111.g9OBBiFR000758@darkstar.example.net>
+Message-ID: <1035465955.31480.102.camel@localhost.localdomain>
+References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+	<200210231630.10921.sotl155360@earthlink.net>
+	<200210232057.g9NKviG17145@hartford-hwp.com> 
+	<200210240739.41271.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210241111.g9OBBiFR000758@darkstar.example.net>
+In-Reply-To: <200210240739.41271.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: jbradford@dial.pipex.com
-Cc: pa3gcu@zeelandnet.nl, linux-newbie <linux-newbie@vger.kernel.org>
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-Shows how much I know about basic system design...
+But you can download the other GUIs right?  And install them?
+Speaking of this, what do you guys think of the Ximian desktop?
 
-In fact, I was shocked to learn last night that ext2 uses linked lists
-to keep track of files in a directory.  Why is this?  Did the guys who
-wrote the file system specs go to school for computer science?  I can't
-tell you how many times my cmsc professors have told us that the linked
-list is totally inferior to the tree.  At least, it is when it comes to
-large sets of data.  Perhaps the ext2 guys never saw the need for
-extremely large sets of files in a single directory, but still, even
-when hashing, it is suggested that you not handle collisions with linked
-lists...
-Stacks and queues are one thing (when used for temporary operations,
-like iterators and memory management).  But persistent data is another. 
-I would never want to store stuff in a list if it is always going to be
-accessed, growing and shrinking...
 
-On Thu, 2002-10-24 at 07:11, jbradford@dial.pipex.com wrote:
-> > > Does anyone know a way around this?  I can't hardly believe that all the
-> > > millions of Linux users have been, and still are, stuck with CD-RWs that
-> > > have to masquerade as SCSI devices.
-> > 
-> > There is no way around it, simply read the proper documentation, in this case 
-> > the CD-Writing HOWTO.
-> > IDE-ATAPI CD-RW devices only work with SCSI emulation as they only do in 
-> > widows as well.
-> > If you find a better way you can tell us millions how you did it then.
+On Thu, 2002-10-24 at 07:39, Frank Roberts - SOTL wrote:
 > 
-> There will soon be a better way - Linus himself mentioned using the
-> standard IDE devices for cd recording, last Tuesday.
+> I am stating IN NO UNCERTANT TERNS THAT THERE IS NO GONOME GUI IN RH 8.0 just 
+> like ther is no KDE GUI.
 > 
-> Expect to see cd recording with native IDE devices once the 2.6 kernel
-> is ready.
+> RH 8.0 uses a new RH GUI which has appears to be 90% Gnome but is not Gnome. 
+> (Sorry I forgot the name of the GUI just like I am trying to forget RH 8.0)
 > 
-> Incidently, IDE devices masquerading as SCSI is not as unusual as it
-> might first appear - ATAPI is basically a way to send SCSI commands
-> over the IDE bus.
+> Frank 
 > 
-> John.
+>  
+> On Wednesday 23 October 2002 16:57, Haines Brown wrote:
+> > > If you think RH 7.2 is better than RH 7.3
+> > > then
+> > > YOU WILL DEFINITELY NOT BE HAPPY WITH RH 8.0.
+> >
+> > Frank,
+> >
+> > Your other post indicates that the personal version of RH 8.0 did a
+> > hatchet job on KDE, but "screwing up gnome" is a bit vague. My
+> > reaction to 7.3 was based entirely on stability issues, perhaps
+> > related to gnome (and a flakey video driver).
+> >
+> > Are you saying that gnome 2.0 in RH8.0 is inferior to gnome 1.4? If
+> > so, do mean you find it unstable or that its functionality is buggy?
+> >
+> > Haines Brown
+> 
+> 
+> 
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
