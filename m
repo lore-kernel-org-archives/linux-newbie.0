@@ -1,35 +1,31 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: RH7.3 keyborad lock-up
-Date: Thu, 15 Aug 2002 11:21:05 +0800
+From: Axel Siebenwirth <axel@hh59.org>
+Subject: .so, .a and .o-files
+Date: Thu, 15 Aug 2002 15:19:18 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208150321.LAA01585@philonline.com>
+Message-ID: <20020815131918.GA1033@diamond.ipht-jena.de>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
 Hi,
 
-once more on this subject before closing it.
+I have some stupid questions.
 
-Peter said:
->>I made that switch with RH7.1 some time ago with no problems.
->>7.1 runs on XFree86-4.0.3-5 and and 7.3 om XFree-4.2.0-8.
+What makes the difference between .o and .so files? What is their use? Is it
+just a naming convention?
 
-Ray Olszewski said:
-> This move by Red Hat may be optimistic. Even Debian unstable (Sid)
-> still runs XFree86 4.1.0-17. 
+When I want to link libraries to a program I am compiling, of what format do 
+the libraries have to be?
 
-And I think you were asking what RH7.2 is using. It's XFree86-4.1.0-3 on the 
-Cd I borrowed from a friend. I will upgrade to that one now and copy what is 
-useful from 7.3 to 7.2.
+I have found out that .a files are archives created with ar. What is that
+for?
 
-Thanks & regards
--- 
-Peter
-
+Many thanks and my best regards,
+Axel Siebenwirth
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
