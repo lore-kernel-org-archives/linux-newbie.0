@@ -1,113 +1,97 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Polaroid BurnMAX24 CD-RW
-Date: Tue, 21 May 2002 20:48:14 +0000
+Date: Tue, 21 May 2002 17:13:34 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0205212048141L.27213@unix.pa3gcu>
-References: <Pine.LNX.4.21.0205212006510.24300-100000@pppg_penguin.linux.bogus>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20020521170358.020eb310@celine>
+References: <3CE94665.8090104@adelphia.net>
+ <5.1.0.14.1.20020521124101.020fcec0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0205212006510.24300-100000@pppg_penguin.linux.bogus>
+In-Reply-To: <3CEAD413.3070104@adelphia.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ken Moffat <ken@kenmoffat.uklinux.net>
-Cc: linux-newbie@vger.kernel.org, Mark Johnson <rmjohnson144@adelphia.net>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Mark Johnson <rmjohnson@adelphia.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 21 May 2002 19:25, Ken Moffat wrote:
-> Copied back to the list.
+Mark, let's keep this discussion on the list, please. I've added it back 
+here in a Cc:.
+
+If you run the command "ls -l /dev/cdrom", you will (almost certainly) find 
+that it is not itself a pseudofile entry. Instead, it points to something 
+else, probably /dev/hdc . That's what a symlink is, sort of (read "man ln" 
+for the details).
+
+Once you moved the drive to the IDE-SCSI driver, it was no longer 
+accessible through /dev/hdc, so the /dev/cdrom symlink no longer works. You 
+now have to access it at ... well, I don't really know, but /dev/scd1 is a 
+good bet.
+
+The mount points you are using are set in /etc/fstab . In there is 
+(probably) a line that tells mount to mount /dev/hdc on mount point 
+/mnt/cdrom, and to mount whatever the pseudoSCSI-CD-R/W device is (maybe 
+/dev/scd0) on /mnt/cdrom1 . Or the mount points may use the symlinks 
+/dev/cdrom and /dev/dvd instead.
+
+In any case, once you know where (in /dev) the device pesudofile entries 
+are, you can edit /etc/fstab so the mount points connect to the right 
+devices (or to suitable symlinks).
+
+As before, this includes a lot of guessing, based on teh way my Debian 
+systems set themselves up out of the box. YMMV as to the dtails, but this 
+should be enough to get you started in teh right direction.
+
+At 04:11 PM 5/21/02 -0700, Mark Johnson wrote:
+
+
+>Ray Olszewski wrote:
 >
-> On Mon, 20 May 2002, Mark Johnson wrote:
-> > I seem to have everything working fine for the cd-rw, I found a
-> > modules.conf that was similar to the one Ray gave me and I tweaked it to
-> > fit my system.  But I couldn't seem to duplicate cd's?  I have a dvd
-> > already and it is not recognizing it, do I need to activate it with the
-> > ide-scsi?  I tried adding the one line below to activate it but it
-> > doesn't seem to show up.  I even tried to put hdc=ide-scsi in lilo.conf
-> > to help point at, but still no luck?  any clues as to how to activate it
-> > for the cd burner programs to read it.  here is my modules.conf:
-
-I may be jumping in the middle of a converstion here, however from experiance 
-my comments are pasted inbetween the lines below.
-
-> > options ide-cd ignore=hdd        # tell the ide-cd module to ignore hdd
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Why exclude an ide cdrom, if i do not exclude my cdrom which is also /dev/hdd 
-xcdroast finds it and i am able to use both cdroms.
-exclude it and i cant use it in xcdroast.
-
-
-> > alias scd0 sr_mod            # load sr_mod upon access of scd0
-> > alias scd1 sr_mod            # load sr_mod upon access of scd1 <----
-> > added from your file
-> > #pre-install ide-scsi modprobe imm    # uncomment for some zip drives
-> > only pre-install sg    modprobe ide-scsi    # load ide-scsi before sg
-> > pre-install sr_mod modprobe ide-scsi    # load ide-scsi before sr_mod
-> > pre-install ide-scsi modprobe ide-cd    # load ide-cd before ide-scsi
-> >
-> > I can access them both the dvd and cd-rw through linux ok, just not the
-> > dvd with the cd burner programs (KOnCD or X-CD-Roast).  if I type
-> > cdrecord --scanbus it only recognizes the cd-rw drive.
-
-It will only see the cd-rw because you have excluded /dev/hdd via 
-/etc/modules.conf
-
+>>If I read this right, the CD-R/W on hdd works fine, but a separate DVD 
+>>drive on hdc does not work (in SCSI-IDE emulation).
+>>
+>>If the DVD drive is an IDE drive, you can either access it as an IDE 
+>>device -OR- add it to this "ignore" line and let the SCSI-IDE stuff pick 
+>>it up. But you can't do both.
+>>
+>>But ... in the modules.conf file, you only have one IDE device in the 
+>>ignore line:
+>>
+>> > options ide-cd ignore=hdd        # tell the ide-cd module to ignore hdd
+>>
+>>You need to tell the IDE stuff to ignore the DVD drive as well 
+>>(apparently hdc from what you wrote below) if you want the SCSI-IDE 
+>>modules to manage it. (Once again, I'm not sure of the exact syntax, 
+>>since Debian handles modules a wee bit differently from the RH-descended 
+>>distros.)
 >
->  Strange, it's usually the writer that is the problem. I know nothing
-> about KOnCD, but I've used X-CD-Roast to copy audio tracks from _my_
-> CDROM, which is technically a DVD now that I think about it. I read you as
-> saying you're trying to copy audio tracks.
 >
->  Your modules.conf looks reasonable.
-
-except "exclude /dev/hdd"
-
+>oooops..  I don't know how I overlooked that, several times even.  It now 
+>works fine, I just burned a cd with X-CD-ROAST.  But now I can't seem to 
+>read my DVD?  I unmounted it and then accessed it again from my shortcut 
+>icon on my desktop but it just comes up blank.
 >
->  Both of my devices work through ide-scsi. If I want to mount a filesystem
-> from them, one of them is/dev/scd0 and the other /dev/scd1. You say you
-> can access the dvd ok through linux, except from the cdrecord or the
-> graphical front ends, so which device do you access ?
-
-You can indeed use ide-scsi for 2 cdrom devices, however xcdroast is somewhat 
-funny when it comes to 2 scsi devices.
-
+>>
+>>This is all a guess, of course, since I'm interpolating a lot to fill in 
+>>blanks. How, for example, do you now access the DVD for playback? I'm 
+>>guessing /dev/dvd symlinks to /dev/hdc, not to /dev/scd1 . If so, that's 
+>>a sure sign that you haven't moved it from IDE to SCSI-IDE.
 >
->  It's the best part of a year since I got my setup working, so the detail
-> is getting a little hazy. I'm assuming both the DVD and the CDRW are ATAPI
-> devices and using SCSI emulation, but your comment that you added the
-> alias for scd1 makes me question exactly how you have them, and the
-> kernel, configured. My memory says that if you compile ide-cd into the
-> kernel you will not be able to use a CDRW as a scsi CDROM. Hmm, apart from
-> writing to the CDRW, can you successfully mount an (iso) data CD in it
-> using /dev/scd0 ?
-
-Possably a question of having one ide device defined in /dev as (possably) 
-/dev/cdrom1 > /dev/hdd ???
-
+>I don't have any symlinks that I know of.  I have never used symlinks 
+>before.  I have been accessing my dvd as /mnt/cdrom and cd-rw as 
+>/mnt/cdrom1. but neither work now to read my cds. can I use symlink to 
+>give them a new name that I can access as ide to read them?  or is there a 
+>way to access them as scsi devices?
 >
->  Also, which kernel ?
-
-I dont think kernel version's come into this question, more a question of 
-what is compiled into ones kernel.
-I always say use a bog standard kernel (example of that is the distribution 
-kernel installed when you installed linux). Too find out whats going on of 
-course...
-
-O yes and if my comments are considered unvalid, sorry..
-
+>-=Mark=-
 >
-> > -=Mark=-
-> >
-> > Ken Moffat wrote:
-> > [snip my original posting]
 >
-> Ken
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+--
+-----------------------------------------------"Never tell me the 
+odds!"--------------
+Ray Olszewski					     -- Han Solo
+Palo Alto, California, USA				ray@comarre.com
+-------------------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
