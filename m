@@ -1,8 +1,8 @@
 From: "Ray Olszewski" <lists@tcob1.net>
-Subject: Re: .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 12:28:57 +000
+Subject: stripping flies (was: Re: .so, .a and .o-files)
+Date: Thursday, 15 Aug 2002 08:59:21 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_122857__0201a8e5@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_085921__75f821c9@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,42 +13,19 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-As I indicated in my message to Lawson, "static" is a tricky term, with an 
-assortment of context-dependent meanings. It is messy enough that you 
-should take what I write next with a grain of salt, since it is easy to get 
-mixed up here.
+I changed the Subject: line to refer to the question you actually asked.
 
-Both .a and .so libraries get linked at runtime. .a linking was called 
-static, but not in the sense you mean (at least as best I can recall). In 
-that context, static meant that a dedicated copy of the needed library was 
-loaded into memory and used just with that process. The .so approach was an 
-improbvement on this runtime linking, loading just one copy of the library 
-memory into memory and sharing it among all the processes that need those 
-routines.
+At 03:44 PM 8/15/02 +0200, Axel Siebenwirth wrote:
+>Me again.
+>
+>Whats the use of stripping object files of their symbols. Symbols reflect
+>the functions in an object file, right?
 
-But when the linker ld is used with the --static option, an actual copy of 
-any needed library function is incorporated into the executable, allowing 
-it to run standalone (without access to the .so libraries).
 
-At 07:31 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Hi Ray!
->
->On Thu, 15 Aug 2002, Ray Olszewski wrote:
->
-> > Depends on how you link. Modern linking is done dynamically (only one copy
-> > of the library is loaded into memory and shared by all apps that use it),
-> > using .so libraries. Older linking was done statically (each app loaded 
-> its
-> > own personal copy of the library into memory), using .a libraries.
->
->Does this mean what I think? that when an executable is linked statically
->all the libraries are in the executable? So none of the required libraries
->are required when executing?
->
->Is there a difference between statically linking object files to a library
->and statically linking libraries to an executable?
->I'm really sorry about such fundamental questions but I want to get
->clarity about all that.
+Stripping makes the files smaller, which matters in some cases. The symbols 
+are valuable in debugging problems but are not needed simply to execute the 
+object code.
+
 
 
 --
