@@ -1,81 +1,25 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
+From: Don Petrowski <dpetrowski@ci.collierville.tn.us>
 Subject: RE: RedHat 8
-Date: Wed, 23 Oct 2002 09:03:09 -0400
+Date: 23 Oct 2002 08:32:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <003601c27a94$8c75e400$64fea8c0@pkrausxp>
-References: <1035377769.1920.60.camel@zebra.vil.ite.mee.com>
+Message-ID: <1035379970.6190.3.camel@workwatcher>
+References: <001601c27a92$b17c9160$7b01010a@zeus>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1035377769.1920.60.camel@zebra.vil.ite.mee.com>
+In-Reply-To: <001601c27a92$b17c9160$7b01010a@zeus>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 'Paul Furness' <paul.furness@vil.ite.mee.com>
+To: Ken Boyer <kboyer@logicalimages.com>
 Cc: linux-newbie@vger.kernel.org
 
-What kind of system do you need to be able to run a full Linux
-distribution including X in a virtual machine? It seems like the
-overhead would kill you.
-
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Paul Furness
-Sent: Wednesday, October 23, 2002 8:56 AM
-To: linux-newbie@vger.kernel.org
-Subject: Re: RedHat 8
-
-
-> What does everyone think of RedHat 8.
+On Wed, 2002-10-23 at 07:49, Ken Boyer wrote:
 > 
-
-I have negative feelings about it.
-
-I nuked my workstation and installed RH8.0 from scratch. The
-installation was a lot nicer than previous versions, but once it had
-installed I found that, for me at least, there was a lot missing. The
-window manager had changed again (I'm not entirely sure why). Lots of
-apps seemed to be missing, and the impression I got was that a lot of
-multimedia stuff particularly had been removed from the default set up.
-I did a custom install and still found it lacking a lot of nice
-multi-media stuff.
-
-On the flip side, Gnome 2 is nice, and definitely performs better on my
-workstation that 1.4. OpenOffice.org 1.0.1 ships with it as well, which
-is nice, and the icons look lovely.
-
-I struggled against RH8 for about 3 days before giving up, wiping my
-hard disk, and putting 7.3 back on here. That's not to say that RH8 is
-no good, and it could be that I was just expecting it to behave in a
-different way. I had only minor gripes, really, but in my job of
-supporting everyone else in the company, I couldn't really afford to be
-messing around with my workstation for hours.
-
-If you aren't particularly used to previous versions of Red Hat as a
-desktop O/S, you'll probably not find much fault with Red Hat 8.
-Personally, I felt (possibly incorrectly) that the customisations which
-I likes were not available, so I stopped using it.
-
-I fully intend to build a second machine (or probably a VMWare virtual
-machine) using 8 to give it a proper, fair hearing.
-
-Of course, other people may agree with me, so I might not be completely
-wrong... :)
-
-Paul.
-
-
--- 
-Paul Furness
-
-Systems Manager
-
-2+2=5 for extremely large values of 2.
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in the body of a message to majordomo@vger.kernel.org More majordomo
-info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+> No disk partition tool.
+> 
+Disk Druid and fdisk are on the install as always.  You have to use
+custom install to set them up manually, otherwise install sets it up for
+you.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
