@@ -1,59 +1,37 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: olivetti p100 with onboard ATI Mach64
-Date: Fri, 02 May 2003 07:39:33 -0700
+From: Bob Swift <powerstation@shaw.ca>
+Subject: Re: BASH Script Change Directory
+Date: Fri, 02 May 2003 10:24:10 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030502073136.01ea60d8@celine>
-References: <5.1.0.14.1.20030430114653.01f79408@celine>
- <5.1.0.14.1.20030430114653.01f79408@celine>
+Message-ID: <200305021024.10933.powerstation@shaw.ca>
+References: <200305011842.48087.powerstation@shaw.ca>
+ <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
+Reply-To: powerstation@shaw.ca
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EB238AE.4020506@arrakis.es>
+In-reply-to: <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ken Moffat <ken@kenmoffat.uklinux.net>
+Cc: linux-newbie list <linux-newbie@vger.kernel.org>
 
-See below.
+On Friday 02 May 2003 00:22, Ken Moffat wrote:
 
-At 11:21 AM 5/2/2003 +0200, Andrew Langdon-Davies wrote:
-[...]
->>You mention testing with tomsrtbt. As I recall, it uses a framebuffer 
->>device to let it set the video mode.
->>Offhand, I don't know whether any of the full-strength distros do not use 
->>the framebuffer by default, particularly in their installers (since you 
->>talk about testing with floppies). Offhand, I know that the 
->>router-oriented LEAF distros (leaf.sourceforge.net) do not use it, and 
->>probably other floppy-based distros (trinux? maybe) also omit this. So 
->>you might try one of them to see if this is your problem. If it is, you 
->>can easily compile a custom kernel that leaves out framebuffer support, 
->>assuming you are working toward a hard-disk install.
->
->Looks like you were right. Bering boots to a console prompt with no 
->trouble. (It must be great to know so much).
+>  The script runs in a subshell. What you can do in this case is
 
-I'm sure it would be, if I did. <sigh> It is easy to sound knowledgeable 
-when you can pick and choose which questions you answer.
+Okay, I understood the subshell part, and figured that's what was resetting 
+everything.
 
->  Next step is indeed to go for a hard-disk install, which means I can't 
-> put off learning to compile a kernel any longer. Presumably I can do this 
-> on another machine and then transfer it (?).
+> `source your-script'  or just `. your-script'
 
-Yes.
+That's what I was missing!  I had completely forgotten about the "source" 
+command.  I also learned something because I didn't know about the "dot" 
+trick.
 
->I was thinking of installing something like Peanut. What do you reckon? I 
->can probably rustle up about 800 megas of disk space on two disks. The 
->machine will not be used for anything more ambitious than text-processing, 
->Internet, etc.
->Andrew
+Thanks.
 
-I don't know what you intend "etc." to cover, so I don't know the range of 
-your ambitions. But you say you will connect to the Internet, so I would 
-encourage you to select from among the distributions that stay current with 
-respect to security patches. Whether this includes Peanut or not I do not 
-know, but you should look into that before you commit to it (or any distro, 
-though you can count on the half-dozen or so "big names" all passing this 
-test).
-
+-- 
+Bob Swift
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
