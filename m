@@ -1,39 +1,28 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: Linux Redhat Enterprise 3.0 = no support for firewire HD?
-Date: Fri, 11 Feb 2005 20:00:46 -0500
-Message-ID: <00af01c5109e$4964b0e0$260aa8c0@lanadmin>
-References: <5.1.0.14.1.20050210133240.01f6cb28@celine>
-Reply-To: <eatley@wowcorp.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: smtp alternatives
+Date: Sat, 12 Feb 2005 12:34:31 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0502121224530.14569@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-In-reply-to: <5.1.0.14.1.20050210133240.01f6cb28@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+In setting up a system for a friend (Mepis installation) and finding him a
+cheap ISP (dialin), I've discovered his provider does not run an smtp
+server. So, I'm looking for alternatives so he'll be able to send mail
+from his machine. I've always only ever used smtp, and it's the only sort
+of mail transport scheme I can profess to have much of a grasp on (how it
+works, how to set it up). I've heard about things like sendmail and maybe
+qmail: aren't these alternatives for someone who can't, or doesn't want
+to, use an smtp server? Should I be looking to these as potential
+solutions to the problem of not having access to an smtp server? Are there
+other alternatives for sending email? I think I've heard that mail not
+sent through an smtp server has a greater chance of getting blocked by
+spam filters: is this true? Feedback on this query will be appreciated.
 
-I have been tasked with adding a hot swap drive to our Redhat Linux 9 box as
-our backup solution, then upgrading to Linux Enterprise 3.0. I'm researching
-how best to format and mount these drives in Redhat 9 before upgrading. Then
-I ran across this article:
-
-Using the Granite Digital Firewire Drive Bay with Red Hat Linux
-http://www.nber.org/sys-admin/granite-digital-linux.html
-
-..and it states near the bottom,
-"(Note added June 13, 2004) I have just "upgraded" our system to Red Hat
-Enterprise Linux 3.0, and find that it has no support whatsover for firewire
-hard drives. We were able to find some information about adding support at
-Dell which seems to work. A recently obtained Fedora does have similar
-support to RH9."
-
-Can anyone verify if this is true? (!)
-
-Thanks,
-Eve
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
