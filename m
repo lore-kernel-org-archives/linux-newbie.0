@@ -1,8 +1,9 @@
 From: sean@tcob1.net
-Subject: Strange problem
-Date: 12 May 2003 03:45:34 GMT
+Subject: Re: How do I stop GUI from autoloading?
+Date: 11 May 2003 13:51:24 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <n2m-g.f6c0b3.ac25b1@tcob1.net>
+Message-ID: <n2m-g.06c0b2.ab766c@tcob1.net>
+References: <5.1.0.14.1.20030510082110.01eae2b0@celine> <20030510100903.GA1586@localhost.localdomain> <5.1.0.14.1.20030510082110.01eae2b0@celine> <5.1.0.14.1.20030510091650.01eae530@celine>
 Reply-To: sean@tcob1.net
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -11,21 +12,22 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I've been using Mandrake for awhile now, and have recently encountered a
-strange problem.
+> BTW, it is possible that the "hidden console" is on some other vt, not F1, so
+> this experiment should try at least all of F1-F6 before giving up. (I seem to
+>recall that Slackware used to put it on F6, but I'm not sure, and it has been
+> long time since I switched away from Slackware).
 
- When viewing my various mount points under X (KDE 3.1 or Icewm), I cannot see
-the contents of any of my mount points however, when viewind them in a console
-window, I can see everything as I should be able to.
+   Actually, it's not unusual to have six differnt console screens available;
+it depends on the settings in inittab, at least on the distros I'm currently
+familiar with...  (X Windows comes up on the next available screen...)
 
- Has anyone else encountered this problem?  If so, what can be cone to fix it?
 
-Hawk (Rob Ireland)  E-Mail roc-addict@rogers.com
-Fidonet:   1:2401/0 (NC/NEC/Treasurer)
-Official Renegade FAQ author
 
----
- * Origin:  (1:2401/0)
+Jame
+
+
+--- BBBS/LiI v4.01 Flag-4
+ * Origin: http://bbs.rocasa.org (1:120/546)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
