@@ -1,51 +1,58 @@
 From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: error message interpretation help?
-Date: Tue, 3 Feb 2004 15:14:36 +0000 (GMT)
+Subject: Re: devfs
+Date: Tue, 3 Feb 2004 15:26:02 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0402031459010.24791@ppg_penguin>
-References: <020320040856.27329.7c84@comcast.net>
+Message-ID: <Pine.LNX.4.58.0402031515530.24791@ppg_penguin>
+References: <401F1A29.80107@kevino.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <020320040856.27329.7c84@comcast.net>
+In-Reply-To: <401F1A29.80107@kevino.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: beolach@comcast.net
-Cc: jamtat@mailsnare.net, linux-newbie@vger.kernel.org
+To: mike <mike@kevino.org>
+Cc: linux-newbie@vger.kernel.org
 
-On Tue, 3 Feb 2004 beolach@comcast.net wrote:
+On Mon, 2 Feb 2004, mike wrote:
 
-> > 1) whether the /proc/partitions and /dev directory structure inconsistency
-> > could be related to renaming the fstab entry for the CD drive
+> Hello all,
+> I was reading the thread subject=(error message interpretation
+> help?) and the reference to "devfs". I have a stock installation of
+> MDK9.2 and my understanding is that "devfs" is in the kernel or
+> (module maybe?) by default.
+> I should say right off the bat that I am a major newbie so bare with
+> me. I've heard complaints about "devfs" before, for one thing the
+> naming convention I noticed on my "df" output alittle long and hard
+> to read for instance.
 >
-[snip useful explanations of how devfs is affecting /proc/partitions,
-and symlinks for the cd]
+> Filesystem            Size  Used Avail Use% Mounted on
+> /dev/ide/host0/bus0/target0/lun0/part5
+>                        380M  115M  246M  32% /
+>
+> Someone told me that was because I had "devfs" I did some reading
+> and I think I can change that part on my system with
+> /etc/devfsd.conf but my question is do I really need "devfs" and if
+> not how can I remove it or disable it, and do I need to replace it
+> with something else?
+>
+>
 
- Can I just say that I agree with all of this, apart from the
-advice to mount / use devfs.  Seems to me that if devfs has never been
-mounted in the past, adding it to the kernel config now is a bug - it's
-no longer maintained (certain race conditions are believed to be
-unfixable, although many people run it without trouble).  But see below.
+Based on past experience with mdk8.2, which used devfs and worked
+extremely badly for me, I'd recommend doing without.  However, that's a
+lot easier said than done.  You'll need to create static devices, and
+you won't be able to do this while devfs is blocking access to the real
+underlying /dev, which means booting from a recovery CD as well as
+knowing which devices you need, and which groups should own them.
 
- As to why the cdrom was not accessible via /dev/cdrom, I've no idea.
-Two levels of symlinks isn't a problem (look at shared libraries
-sometime, foo.so -> foo.so.4 -> foo.so.4.0).  If you've got strace
-installed, you could always try
+I also take the view that most people don't change their underlying
+hardware and peripherals very often, so for me manually adding a device
+when I add a usb printer is par for the course.  If you don't want that
+level of involvement and you don't have any problems with it, keep it.
 
-strace mount /dev/cdrom 2>trace
-
-when you've got a CD in the drive, then look in the trace to work out
-which of the errors is the one that matters.  You might think banging
-your head against a brick wall is easier and less painful, it depends a
-bit on what is in the particular trace, some have a lot of error
-messages for things that you wouldn't normally expect to succeed :)
-
- But, turning this around, if /dev/cdrom was pointing to
-/dev/cdroms/cdrom0, surely at least the installation kernel _was_ using
-devfs ?  In which case, maybe devfs _is_ appropriate to your setup.
-Perhaps upgrading to Sid broke this.  I'd be particularly concerned at
-the lack of /dev/pts in your fstab, you'll need it if you either access
-this machine via ssh, or if you open xterms.
+Funnily enough, based on an email a little while ago on lkml about udev,
+I thought Mandrake had already moved away from devfs.  [ udev
+reimplements some of what devfs does, with 2.6 kernels, but its still at
+an early stage and certainly not intended as a drop-in replacement. ]
 
 Ken
 -- 
