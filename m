@@ -1,54 +1,47 @@
-From: Burton Samograd <kruhft@hotmail.com>
-Subject: Re: Basic questions on the kernel
-Date: 30 May 2003 08:21:32 -0700
+From: Ray Olszewski <ray@comarre.com>
+Subject: RE: Basic questions on the kernel
+Date: Fri, 30 May 2003 11:56:38 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <87ptm0zchv.fsf@kruhft.vc.shawcable.net>
-References: <36993D449C7FA647BF43568E0793AB3E061CD9@nevis_pune_xchg.pune.nevisnetworks.com>
+Message-ID: <5.1.0.14.1.20030530114851.01eb73f0@celine>
+References: <3ED7A000.80103@bcgreen.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001001c326d7$cba92570$64fea8c0@pkraus>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: pkraus@pelsupply.com, linux-newbie@vger.kernel.org
 
-"Girish Kale" <girish.kale@nevisnetworks.com> writes:
-> I have a few basic questions on the kernel performance:
-> 
-> 1) For embedded systems, even though standard linux may not have hard
-> real-time performance unless real-time patch, low latency patch are
-> applied, I would like to know if linux can give "deterministic"
-> performance. Meaning can we be guaranteed that a particular process will
-> be scheduled after a particular time. What are the these times or where
-> do I find this data.
+At 02:17 PM 5/30/2003 -0400, Paul Kraus wrote:
+>I unsubbed from this list a month ago and I still get messages. Not as
+>many but I still get them.
 
-There is no performance "guarantee" for any version of linux kernel
-other than the branches which are geared toward real time use (such as
-RTLinux).  
+I'm sorry this is happening to you, Paul. But as you probably remember from 
+when you were subscribed and asking questions here, no one actually *on* 
+this list is its administrator, so nobody who is seeing this complaint can 
+fix the underlying problem (whatever it might be) that is causing the 
+annoyance.
 
-> 2) When we are using linux on an embedded system, will there a memory
-> management unit for this, since there will not be any swapping in/out of
-> pages? Can we avoid a process from keeping on allocating memory thereby
-> starving other applications?
+The customary majordomo address for a list administrator is list_name-owner 
+(in this instance, linux-newbie-owner@vger.kernel.org). I suggest you write 
+there ... though this list is, to my knowledge, pretty much ignored by 
+whoever its admin is, so you may not get any help that way either ... but I 
+don't know of any alternative, except perhaps autobouncing the messages 
+(preferably in a way that gets the admin's attention but does not come back 
+to the list) or spam-filtering them without bouncing.
 
-You still need a memory managment unit for handling protection between
-running processes. You might not need swap on your system, but you'll
-need that.
+Note that I'm cc'ing you on this reply directly, so you *should* get it (at 
+least once).
 
-As an aside, I've never been a fan of using something like linux (or
-any unix for that matter) for embedded systems.  There are plenty of
-other real-time operating systems which do the job better in a smaller
-space, and a lot of times even lowly DOS is good enough for the job
-(and it's even decent soft real-time as well).
+>-----Original Message-----
+>From: linux-newbie-owner@vger.kernel.org
+>[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Stephen Samuel
+>Sent: Friday, May 30, 2003 1:17 PM
+>To: Girish Kale; linux-newbie@vger.kernel.org
+>Subject: Re: Basic questions on the kernel
+[old stuff deleted]
 
-> Any pointers to the above topics will be appreciated.
 
-Try searching for 'embedded linux' on google and you'll find some more
-good information I'm sure.
-
--- 
-burton samograd
-kruhft@kruhft.dyndns.org
-http://kruhftwerk.dyndns.org
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
