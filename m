@@ -1,37 +1,43 @@
-From: "geoff" <geoff@gcbagley.uklinux.net>
-Subject: Laptop GUI.
-Date: Mon, 21 Oct 2002 14:55:04 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: about LogWatch....
+Date: Mon, 21 Oct 2002 14:46:55 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001f01c27909$878fa5c0$bd33f7c2@gcb>
-Reply-To: "geoff" <geoff@gcbagley.uklinux.net>
+Message-ID: <02102114465501.00497@unix.pa3gcu>
+References: <20021021055217.0F68.WOLFGANG127JP@ybb.ne.jp>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20021021055217.0F68.WOLFGANG127JP@ybb.ne.jp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: wolfgang <wolfgang127jp@ybb.ne.jp>, linux-newbie@vger.kernel.org
 
-I have been trying to install Linux on an Evesham Voyager 2700 Notebook with
-a 15 inch TFT/LCD display
-and Trident TGUI9660  bios video.
+On Sunday 20 October 2002 21:00, wolfgang wrote:
+> Hi there.
+>
+> I've installed sar(sar, sa1, sa2...) command to log system resource
+> usage.
+> Since I have to use crontab for those sa1 and sa2 , I'm(root user) getting
+>  a tons of mails from LogWatch.
+> How can I make LogWatch not to send mails about sa1 and sa2 commands in
+> crontab ??
 
-I have tried both SuSE Linux 8.0,  and Debian 3.9 (Woody).
+Its not logwatch but crontab thats sending you messages i would think.
 
-They both install  and even work OK from a CLI,  but I have KDE problems.
+man crontab
 
-The background colour of the pop-up panels is BLACK,  and black print
-doesn't show up
-very well !
-
-How can I configure the nitty-gritty details of the GUI ?
-
-I have no problems on my other Linux machines (which use CRT Monitors).
-
-Best regards.
-
-Geoff.
+Read the part right after the examples.
 
 
+>
+> Thank you.
+> wolfgang
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
