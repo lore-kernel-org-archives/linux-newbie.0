@@ -1,31 +1,30 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: rename a "running" kernel?
-Date: Mon, 16 Jun 2003 08:43:10 -0500 (CDT)
+From: "Anna G. Zapata" <azapata@du.edu>
+Subject: RPMs
+Date: Mon, 16 Jun 2003 09:10:14 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.56.0306160832420.1167@homenet>
+Message-ID: <HBEJLOFMLEPBMAAEFNFDKEBGCAAA.azapata@du.edu>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Linux-Newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Here's a probably not too profound newbie question.  I just downloaded an
-updated kernel for my router.  I've copied the kernel over to the right
-dir and everything and need to rename it to the name of the current
-kernel, so that next time I boot it'll be used.  Before renaming it,
-though, I should rename the kernel I'm now using - to kernel.old or
-something like that.  My question is just whether I can do this safely
-with that machine and kernel running.  Seems to me like I can since, as I
-understand it, the kernel gets loaded into RAM and does not run from disk
-(I used quotation marks around "running" above since, as I see it, I'm
-not renaming the kernel that's loaded in RAM, i.e., really running, but
-the image of it which is stored on the HD).  But that's just my probably
-not-so-enlightened deduction.  I thought I should ask here first if it is
-ok to do this, i.e., I'm not taking any risks of system crashes or
-foul-ups by so doing.
+I need more information on RPMs.  I know there are many security updates
+every week.  However, I am running out of disk space on my linux box and
+can't get all those RPM updates on there.  Do I need all of them?  How do I
+know what I need and what I don't?
 
-Thanks, James
+Thanks!
+
+Anna G. Zapata - GSEC, MCIS
+University of Denver
+University Technology Services - Network Security
+(303) 871-2009 (phone)
+(303) 871-4135 (fax)
+azapata@du.edu (email)
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
