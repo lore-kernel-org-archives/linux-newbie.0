@@ -1,31 +1,40 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re: Need some help getting DSL connected in
-Date: Mon, 1 Jul 2002 22:00:55 -0700
+From: Michael Scottaline <nbhs2@i-2000.com>
+Subject: Re: Window manager in Gnome 2.0
+Date: Tue, 2 Jul 2002 05:16:35 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU11hkeTxtf000009f7@cpimssmtpu11.email.msn.com>
+Message-ID: <20020702051635.36f78ec3.nbhs2@i-2000.com>
+References: <5.1.1.6.0.20020701211959.034a8968@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.1.6.0.20020701211959.034a8968@shawmail.ed.shawcable.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-I now have iptables up and running, the net connection is shared throughout the house again!
+On Mon, 01 Jul 2002 21:21:45 -0600
+Chris Rose <offline@shaw.ca> scribbled intuitively:
 
-Between your hints, a couple of files sent my a friend, some issues with the bash shell, some pam.d issues, and the ip masq howto it is working just fine.
+>i've got a Gentoo linux box here, i figure it'll teach me a lot, and i
+>have a question about Gnome 2
+>
+>How in the heck do i change my window manager?  i installed metacity, 
+>intending to try it out, but i can't find a facility in Gnome to alter
+>the settings for the WM.  In my old Mandrake install, it was simple -
+>just go to the Mandrake config utility, and there it was.  Now, it's not
+>so simple, and it has me lost.  What should i be looking for?
+====================================
+I haven't tried Gnome 2 myself (and lkely won't for sometime), but isn't
+there still a Gnome config utility (looked like a toolbox in older
+versions).  the wm should be selectable there (used to be).
 
-Next few days will try to figure out how to tighten it  up a bit more, for now will just pull the plug on the modem when not going to be using it.
+Mike
 
-Alan
+-- 
+"He may look like an idiot and talk like an idiot but don't let that
+fool you....., he really is an idiot."
 
- >>  OK. This additional info makes it pretty easy to advise you. (In contrast 
- >>  to your practice, my responses below follow each item, not precede prior 
- >>  discussion of it.)
-
-
-
-
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
+-Groucho Marx
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
