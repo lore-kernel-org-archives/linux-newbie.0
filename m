@@ -1,51 +1,32 @@
-From: "Jose Luis Alarcon Sanchez" <jlalarcon@madera.zzn.com>
-Subject: Re: discrepancies in partition size
-Date: Sat, 25 Oct 2003 11:51:59 +0200
+From: Thorsten Alge <mailing@thorsten-alge.de>
+Subject: USB Mass Storage Devices
+Date: 25 Oct 2003 18:02:34 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <E91592E39353D7840BE3F3EA1B1821E4@jlalarcon.madera.zzn.com>
+Message-ID: <1067097757.10057.15.camel@Abydos>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Kernel mailing list - linux newbie <linux-newbie@vger.kernel.org>
 
----- Begin Original Message ----
+Hi, 
 
-Mandrake 9.0
-Output from 'df' says hda1 is 9.7G, whereas Mandrake Control Centre says 
-it is 6G. The latter is correct, the former is the old size before I 
-resized it. This worries me. ('fdisk' gives the correct size.).
-Unmounting 
-and remounting makes no difference.
-Any explanation?
-TIA
-Andrew
--
+I want to use my usb hd and my usb mp3-player an my linux computer. if i
+plug them on on after one, they will assigned as sda (i.e. my usb hd)
+and sdb (my mp3-player) . so i can add them to /etc/fstab. the problem
+is; if i plug on only one of them or in another order, the device files
+are changed to and the mount points are not correct. 
 
----- End Original Message ----
+my first idea was to use volume labels. that works fine with my ext2
+partition but i don't helps on my vfat partitions. the compactflash
+cards an two of my partitions on my usb-hd must be vfat partitions. 
 
+any ideas how to fix? 
 
-  Hi Andrew.
+mfg 
 
-  I can recommend you to read 'man df'. What parameters has add
-you with 'df' command?. Or you only type 'df'?.
-
-  I ever use 'df -Th'. It explain a lot of good information.
-
-  Regards.
-
-  Jose.
-
-
-http://linuxespana.scripterz.org
-
-FreeBSD RELEASE 4.8.
-Mandrake Linux 9.2 Kernel 2.6.0-test5 XFS.
-Registered BSD User 51101.
-Registered Linux User #213309.
-Memories..... You are talking about memories. 
-Rick Deckard. Blade Runner.
+thorsten
 
 
 -
