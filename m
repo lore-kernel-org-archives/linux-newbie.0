@@ -1,62 +1,34 @@
-From: ichi@ihug.co.nz
-Subject: Re: more X problems
-Date: Thu, 14 Nov 2002 16:49:28 +0000
+From: James Miller <jamtat@mailandnews.com>
+Subject: RE: more X problems
+Date: Wed, 13 Nov 2002 22:36:26 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DD3D418.139760AD@ihug.co.nz>
-References: <Pine.LNX.4.44.0211132030330.21708-100000@localhost.localdomain> <3DD3CE1D.3CC4333A@ihug.co.nz>
+Message-ID: <Pine.LNX.4.44.0211132232080.21708-100000@localhost.localdomain>
+References: <3DD3D418.139760AD@ihug.co.nz>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3DD3D418.139760AD@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: "ichi@ihug.co.nz" <ichi@ihug.co.nz>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-In an earlier message I wrote:
+On 14 Nov 2002, ichi@ihug.co.nz wrote:
+> ----------------------------------------------------------
 > 
-> However, I also found (elsewhere) that the framebuffer (fb)
-> requires VESA 2.0.  It does not work with VESA 1.2 (which
-> is what the Trio V64+ is).  What effect (if any) this has
-> on XFree 4.2.0, I do not know.
+> Questions to James:  Have you tried xfree86setup?
+>                      If so, what happened?
+> 
+Steven:
 
-The follow passage from the HOWTO in Slackware 8.1:
---------------------------------------------------------------
-Configuring X can be a complex task.  The reason for this 
-is the vast numbers of video cards available for the PC 
-architecture, most of which use different programming 
-interfaces.  Luckily, most cards today support basic video 
-standards known as VESA, and if your card is among them you'll
-be able to start X using the "startx" command right out of 
-the box.
---------------------------------------------------------------
+Just now tried it. At the initial screen, it asks if you'd like it to 
+probe your video hardware and mouse so that it can write an initial 
+configuration file (/etc/X11/XF98Config). When I assent to its doing so, 
+the screen blanks, never to return to life until I reboot with 
+ctrl-alt-del. Apparently, it's having trouble probing the video hardware, 
+wouldn't you say?
 
-I deduce from this that it comes pre-configured for the
-framebuffer.  So, if you have a VESA (2.0) video card,
-you simply type 'startx' without the need to configure.
-The HOWTO continues:
---------------------------------------------------------
-If this doesn't work with your card, then you'll need to 
-reconfigure X.  To configure X, you'll need to make an 
-/etc/XF86Config file.  It's a very complex configuration 
-file, but fortunately there are several programs to help 
-create one for you.  We'll mention a few of them here:
-------------
-xfree86setup
-------------
-This is a simple menu driven frontend that's similar in 
-feel to the Slackware installer.  It simply tells the X 
-server to take a look at the card, and then set up the 
-best initial configuration file it can make based on the 
-information it gathers.  The generated /etc/X11/XF86Config
-file should be a good starting point for most systems (and 
-should work without modification).
-----------------------------------------------------------
-
-Questions to James:  Have you tried xfree86setup?
-                     If so, what happened?
-
-
-Cheers,
-Steven
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
