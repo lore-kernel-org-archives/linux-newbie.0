@@ -1,42 +1,49 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: framebuffer console problems: not enough video RAM?
-Date: Wed, 27 Oct 2004 05:59:12 -0700
+From: "Peter H." <heisspf@skyinet.net>
+Subject: No init found
+Date: Fri, 29 Oct 2004 14:58:19 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <417F9BA0.70807@bcgreen.com>
-References: <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041023135516.01fefc38@celine> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <Pine.LNX.4.58.0410221108580.1287@debian-emach> <Pine.LNX.4.58.0410221351360.1287@debian-emach> <417968FE.3070405@verizon.net> <Pine.LNX.4.58.0410221604590.1287@debian-emach> <41798CB8.4010701@verizon.net> <Pine.LNX.4.58.0410222229140.1287@debian-emach> <5.1.0.14.1.20041023135516.01fefc38@celine> <5.1.0.14.1.20041023211235.01feb690@celine> <5.1.0.14.1.20041024085546.020676a8@celine> <Pine.LNX.4.58.0410241436410.1287@debian-emach>
+Message-ID: <20041029065819.2178A44BBB@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0410241436410.1287@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-For knoppix, try booting with 'vga=normal'  That avoids booting
-with framebuffer text. (there are other vga=settings, but I haven't
-bothered to learn them).
+Hi,
 
-The VGA  text code for knoppix seems to go for the 'best possible' mode
-which can overwhelm the monitor.
+Slackware 10.
 
-James Miller wrote:
-> Hello Ray:
->
-> No.  It's always been just a textmode console up until gdm kicks in--no
-> cute little penguins.  I'll reiterate that when I tried booting this
-> system with a Knoppix CD, I couldn't get any text mode output (black
-> screen with "vga mode not support(ed)") with all kinds of nice colors,
-> fine resolution and little penguin like I usually get when booting with a
-> Knoppix CD.  On the kernel: I could provide the config, if that would
-> help.  Here's a selection from it that may be relevant:
+I am trying to change my hard drive. I duly copied all partitions and 
+files to the new drive with 'tar -C "$1" -cOl . | tar -C "$2" -xpf - '. Now 
+when I boot I get:
 
+....
+Freeing unused kernel memory: 120 K freed.
+Warning unable to open an initial console.
+Kernel panic: no init found. Try passing init= option to kernel.
+
+When I boot using the rescue disk after
+
+....
+Freeing unused kernel memory: 120 K freed.
+
+it continues with
+INIT: version 2.84 booting ...
+
+to fully boot and I can use the installation flawlessly.
+
+init is at /sbin/init.
+
+Where is the hang-up ?
+
+Thanks & regards 
 
 -- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-      the jewel within each person and bringing it to light.
+Peter
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
