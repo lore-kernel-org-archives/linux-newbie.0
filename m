@@ -1,56 +1,48 @@
-From: "Karl W. Weigel" <kww@gmx.de>
-Subject: Re: samba -> some problems
-Date: Sat, 18 Jan 2003 18:19:09 +0100
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: re: getting serial ports on STB4COM UP
+Date: Sun, 19 Jan 2003 06:04:56 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301181819.09684.kww@gmx.de>
-References: <3E294388.7050707@rug.ac.be>
+Message-ID: <CPIMSSMTPU05QVjp3b6000002ae@cpimssmtpu05.email.msn.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E294388.7050707@rug.ac.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: kurt.sys@rug.ac.be
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: Text/plain; charset="us-ascii"
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-Hi Kurt,
+ >>  Alan -- In your kernel, have you compiled in support for serial ports 
+ >>  sharing interrupts? It's an option (in "make menuconfig") under
 
-as far as I can see, you just have to update your /etc/fstab, which translates 
-the device to a mount point. This file holds already the configuration for 
-your cdrom and floppy. In my configuration there is
+ >>  Character Devices
+ >>  Extended dumb serial options
+ >>  Support for sharing serial interrupts
 
-/etc/fstab:
-/dev/fd0		/media/floppy	auto	noauto,user,sync      0 0
+ >>  The fact that you have problems only on a port that shares an IRQ suggests
+ >>  
+ >>  that this may be the cause.
 
-which has the meaning: use /dev/fd0 als device, /media/floppy as mount point, 
-auto: use any filesystem you can detect, noauto: do not mount at start, user: 
-allow the user to do this.
+ >>  You might also want to enable "Support more than 4 serial ports" in the 
+ >>  same location.
 
-To solve your problem, you have to create entries for the filesystems you want 
-to mount.
+I found in my kernel I did have:
+CONFIG_PARPORT_SERIAL=y
+CONFIG_SERIAL=y
+# CONFIG_SERIAL_CONSOLE is not set
+# CONFIG_SERIAL_ACPI is not set
+CONFIG_SERIAL_EXTENDED=y
+CONFIG_SERIAL_MANY_PORTS=y
+CONFIG_SERIAL_SHARE_IRQ=y
+# CONFIG_SERIAL_DETECT_IRQ is not set
 
-/etc/fstab:
-//labmetserver/information /mnt/labmet/information smbfs
-	username=kurts/LMEDOM%xxxxxxxxxxxx 0 0
+I did not have this one set:
 
-(This should be written in one line)
+CONFIG_SERIAL_MULTIPORT=y
 
+Last night I set it and set off a rebuild of my kernel.  I also changed port 2 of the STB4Com card to share interrupt 3 with port 1.
 
-The second problem is, that you need to use the share-name for mounting, you 
-can not mount "everything" on the smb-server. Maybe there is a way with 
-automounting, but I am not shure about this.
+It appears one of those two modifications has port 2 working correctly now.  Port 3 and Port 4 still share IRQ 15, and although the pausing is noticebly shorter for port 3, it is still quite slow.  Therefore I have to conclude there is an issue with sharing 15 for some reason.  Next time I take my server down, I will move port 3 to share IRQ 3 and see what happens.
 
-For your remaining problems I can offer only little help. I have the 
-impression, that you are setting up a samba server of your own, but I am not 
-shure, whether you want or need to do this. For mounting remote filesystems 
-this should not be necessary.
-
-It would be nice to know, whether this answered some of your questions.
-
-
-Kind regards
-Karl
-
+Alan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
