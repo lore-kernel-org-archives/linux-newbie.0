@@ -1,47 +1,42 @@
-From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: Re: small computer ?
-Date: Tue, 3 Sep 2002 09:29:44 +0200 (CEST)
+From: Carl Lawton <carl@anexia.co.uk>
+Subject: Re: tar confined to partitions
+Date: Tue, 03 Sep 2002 10:45:02 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020903072944.26662.qmail@web40611.mail.yahoo.com>
-References: <MSGID_7223=3a9750=2f200_dadc6b7c@fidonet.org>
+Message-ID: <5.1.1.6.0.20020903102834.00b7ff88@interzone.anexia.co.uk>
+References: <5.1.0.14.1.20020902094227.021b5bd0@celine>
+ <5.1.0.14.1.20020902094227.021b5bd0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MSGID_7223=3a9750=2f200_dadc6b7c@fidonet.org>
+In-Reply-To: <200209021837.g82IbEK09801@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Haines Brown <brownh@hartford-hwp.com>, linux-newbie@vger.kernel.org
+Cc: linux-newbie@hartford-hwp.com
 
- --- Sean Rima <fido@tcob1.net> a =E9crit=A0: > Originally
-to: Robert R Stephens
->=20
-> Robert
->=20
-> > How small of a computer does one need to run a GUI
-> with a Desktop
-> > environment on a linux system?
->=20
-> I have used a basic 486 with a 2gb hd, but with a
-> small windowmanager (IceWM)=20
-> with no problems.
->=20
-> Sean
 
-486 12M Ram 540MB hd fvwm2 as wm (also working twm,
- fvwm, mwm, qvwm and others)
+>
+>tar -C "$1" -cOl . | tar -C "$2" -xpf -
 
-Aaaaaaaa, you mean desktop environment :-)
-UDE i think is a small desktop environement.
-If you want Gnome or Kde: go buy some ram.
+Haines,
 
-Calin
+If Ray hasn't sorted you out by now you could try cpio to copy the files.
 
-___________________________________________________________
-Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
-Yahoo! Mail : http://fr.mail.yahoo.com
+If i have it right you are just trying to copy everything to /mnt/mirror
+
+In which case you could just do:
+
+        find / -print | egrep -v "^/mnt/mirror|^/proc" | cpio -pdmuv /mnt/mirror
+
+
+the egrep just takes out everything in /mnt/mirror ( so you don't backup your backup)
+and /proc
+
+--
+Carl
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
