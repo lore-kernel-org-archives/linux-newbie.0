@@ -1,30 +1,33 @@
-From: wa4chq@netscape.net (neil t)
-Subject: screensaver
-Date: Sun, 10 Nov 2002 20:46:09 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Tkdesk Segmentation Fault
+Date: Mon, 11 Nov 2002 11:35:48 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <497DCBD4.6C5E1E65.0006BEFC@netscape.net>
+Message-ID: <200211110335.gAB3Zmu02766@philonline.com>
+References: <20021110122250.A25979@neutrino.particles.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sun, 10 Nov 2002 12:22:50 +0200."
+             <20021110122250.A25979@neutrino.particles.org> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Elias Athanasopoulos <eathan@otenet.gr>, linux-newbie@vger.kernel.org
 
 
-Greetings all
-Thanks for the info about Xscreensaver.  It was there right under my nose, as usual.  I searched the Mandrake cd's and found the Xscreensaver RPM.  
-Thanks again.
-Neil
+eathan@otenet.gr said:
+> Just a guess. Your X libs are incompatible with your Tcl/Tk.
+
+Thank you so much and Lawson for the lead!!!
+
+You guessed it right. Copying libX11.so.6.1 into /usr/X11R6/lib/ made tkdesk 
+coming up instantly.
+
+Hurray!
+
+Regards
 -- 
-Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+Peter
 
-
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
