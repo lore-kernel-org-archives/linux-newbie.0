@@ -1,86 +1,79 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: How to mount CD-ROM?
-Date: Wed, 30 Oct 2002 21:46:58 +1300
+From: Kevin Curtis <kevin.curtis@farsite.co.uk>
+Subject: RE: Getting c/assembler listings
+Date: Wed, 30 Oct 2002 13:54:39 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021030093224.D37F971949@smtp.orcon.net.nz>
-References: <5.1.0.14.1.20021029083056.0215aec0@celine>
-Reply-To: cr@orcon.net.nz
+Message-ID: <7C078C66B7752B438B88E11E5E20E72E0EF5AA@GENERAL.farsite.co.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021029083056.0215aec0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: "'lawson_whitney@juno.com'" <lawson_whitney@juno.com>, pa3gcu@zeelandnet.nl
+Cc: Kevin Curtis <kevin.curtis@farsite.co.uk>, linux-newbie@vger.kernel.org
 
-On Wednesday 30 October 2002 05:52, Ray Olszewski wrote:
-> You are trying to mix two methods of accessing the CD drive, and you can't
-> do that.
+Thanks,
+	I managed to get an assembler output file, but it was just raw
+assembler not "assembled".  I'll try this out later today.
 
-I know that, I was just trying to eliminate all possibilities.   ;)
+Kevin
 
-> If you use ide-scsi emulation, then you need to access the drive as a
-> pseudo-scsi device, probably at /dev/scd0. (These device designators are
-> sometimes distro-specific, though, so you should check if RH has changed
-> thinng on you in the last version switch.) .
+-----Original Message-----
+From: lawson_whitney@juno.com [mailto:lawson_whitney@juno.com]
+Sent: 30 October 2002 02:45
+To: pa3gcu@zeelandnet.nl
+Cc: kevin.curtis@farsite.co.uk; linux-newbie@vger.kernel.org
+Subject: Re: Getting c/assembler listings
 
-/dev/scd0 exists as a file.   But I can't mount it.   'unknown device'
 
-> I notice that in all the tests you report doing, you don't report trying
-> this one:
+On Tue, 29 Oct 2002, pa3gcu wrote:
+
+> On Tuesday 29 October 2002 12:03, Kevin Curtis wrote:
+> > Hi,
+> > 	I hope this question is not too technical.  When an oops message is
+> > generated and decoded with ksymoops, how do I get an assembler listing
+of
+> > the module that caused the problem so I can see where in my program the
+> > error occurred.  The ksymoops output seems to be bytes of code offset
+from
+> > the start of a function.  Do I use a switch in my makefile?  Will the
+
+Yes.  The gcc flag to get an assembly listing is -Wa,-a
+so you could put that in your makefile, if you like.  That causes gcc to
+pass the option -a to the assembler.
+
+> > listing have offsets in it from the start of the module or the start of
+> > each function?  Is there any correlation to line numbers in the original
+.c
+> > file?
+
+The start of each function.  If the C was compiled with the -g option,
+source line numbers are - in fact the entire source is - available to
+gdb or any other runtime debugger.
 >
->          mount /dev/cdrom
-
-Just tried it.  "unknown device"
-
-> which should cause the fstab entry you list below to be used to find the
-> right device. I don't know if that will work either, but if the
-> installation really did work correctly, then /mnt/cdrom should be a symlink
-> to the correct block device (easy to check).
-
-/mnt/cdrom is a directory, not a symlink.   Which I assume means the 
-installation hasn't worked?
-
-> cdroast uses the device's (pseudo-)LUN to access it (something like
-> dev=0,0,0), not its /dev/* entry, and I assume X-cd-roast is just an X
-> wrapper for this app, so it does not help you find the correct /dev/* entry
+> You can run 'gdb' on your running kernel.
+> You will need to do some things beforehand, its all explained in
+> /usr/src/linux/README, the part about "If something goes wrong".
 >
-> As to the error messages you report:
+> I am not so well up on gdb but i belive you can run it on a module itself
+> altho' i have never tryed dthat.
 >
->          "mount: special device  /dev/scsi0 does not exist" means what it
-> says -- the /dev/directory does not contains a device entry for /dev/scsi0
-> . Check with "ls -l /dev/scsi*" or something similar.
-
-Yes, there isn't a  scsi*   in /dev/
-
->          'unknown device'  means that the device entry exists in /dev, but
-> it does not point to an actual, physical device on the system. Try mounting
-> /dev/scd0 instead.
-
-Tried that before -  "unknown device"   still
-
-> Finally, on my system, scsi-ide emulation requires 4 modules, not the 2 you
-> mentioned:
+> >
+> >
+> > Thanks
+> >
+> > Kevin
 >
->          ide-scsi                7360    0
->          sg                      23588           0
->          sr_mod                  12760           0
->          scsi_mod                79480           3  [ide-scsi sg sr_mod]
+>
 
-Hmm.  
+--
+---oops---
 
-lsmod showed  sg  and scsi-mod.   
-After  'insmod ide-scsi'   ide-scsi appeared in the list too.   
-But trying 'insmod sr_mod'   just gives four error messages of 
-'unresolved symbol unregister_cdrom_R94f2f104'   and similar.
 
-X-cd-roast seems to work quite happily without it, though.
 
-Thanks for the suggestions so far.   It seems I've tried all the logically 
-obvious things.  
-
-cr
-
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
