@@ -1,53 +1,38 @@
 From: lawson_whitney@juno.com
-Subject: Re: problems with dual boot
-Date: Thu, 24 Oct 2002 21:45:03 -0400 (EDT)
+Subject: Re: Trying to get GUI'ed
+Date: Fri, 25 Oct 2002 12:58:07 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021025.133927.134682184.1.lawson_whitney@juno.com>
-References: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
+Message-ID: <20021025.133927.134682184.2.lawson_whitney@juno.com>
+References: <5.1.0.14.1.20021024230507.0215c7e0@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
+In-Reply-To: <5.1.0.14.1.20021024230507.0215c7e0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: abhijit_v@yahoo.com
-Cc: linux-newbie@vger.kernel.org
+To: ray@comarre.com
+Cc: hammer@revobild.net, linux-newbie@vger.kernel.org
 
-On Thu, 24 Oct 2002, Abhijit Vijay wrote:
+On Thu, 24 Oct 2002, Ray Olszewski wrote:
 
-> Hi All,
->
-> My computer (which has Windows 2000/Red Hat Linux 7.0)
-> Dual Boot with a WinNT loader, has developed problems.
-> Someone else was using it and now when I select the
-> Linux option at boot time, it says that some
-> kernel.exe file is missing and does not boot. Windows
-> boots fine. I tried using a linux boot floppy  from
-> another Linux machine (Redhat 6.2) to get into the
-> linux partition and install LILO (thinking that it
-> might be a problem with the loader), but could not
-> find the boot partition mounted.
+> In principle, you could run X with no Window Manager, just starting a
+> single xterm when the X server starts. I've never done this myself (I have
+> read about the procedure, in a *very* old book), but perhaps when he sees
+> this message, Lawson will sketch out the details of how he did it.
 
-Why would a boot floppy from one machine know where is the /boot
-partition on another to mount it, unless you made it on purpose to do
-that?  Make a mount point if you don't already have one handy
-(mkdir /mountpoint)
-and mount it yourself
-mount /dev/hda? /mountpoint
+[whit@giftie whit]$ cat .xinitrc
+xsetroot -solid SteelBlue
+icewm &
+xterm
+[whit@giftie whit]$ cat .xsession
+#!/bin/sh
+icewm &
+xterm
 
-> Doing fdisk /dev/hda
-> gives me the error "Unable to load /dev/hda"
+You only use .xsession for GUI login.  Get rid of icewm if you want your
+xterm bare and immovable, or remove the entire file and xinit will start
+a single xterm.
 
-if this                         ^^^^ is a typo for open,
-maybe you were not root and had not permission?
-
-Why do you need fdisk?  Do you not know where is /boot?
->
-> Could someone suggest a way out?
->
-> Thanks in Advance,
-> Abhijit.
->
 Lawson
 ---oops---
 
