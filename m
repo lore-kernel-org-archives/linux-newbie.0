@@ -1,75 +1,43 @@
-From: "Marco Calistri" <ik5bcu@tin.it>
+From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: switching window managers
-Date: Sat, 22 Mar 2003 23:55:59 +0100 (CET)
+Date: Sat, 22 Mar 2003 23:53:37 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org>
-References: <200303191558.h2JFwvF4007542@hartford-hwp.com>
-Reply-To: ik5bcu@tin.it
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200303230453.h2N4rb3T024680@hartford-hwp.com>
+References: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303191558.h2JFwvF4007542@hartford-hwp.com>
+In-reply-to: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Haines Brown <brownh@hartford-hwp.com>
+Content-Transfer-Encoding: 7bit
+To: ik5bcu@tin.it
 Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-
-On 19-Mar-2003 Haines Brown wrote:
-> Simon,
+> Hello Haines,Im using IceWm as well from very few days and I simply run:
 > 
->> Hi, I think redhat has the "switchdesk" utility, you can choose whether
->> it is for current session or permanent change.
->> 
->> Give it a whirl.
+> xinit /usr/local/bin/icewm --:0 
 > 
-> Thanks. RH8.0 indeed does have a destop switching tool, but it seems
-> to conflate desktop environments (gnome vs kde) and window managers
-> (WindowMaker vs. twm). This left me feeling uncomfortable. 
-> 
-> Since I'm planning a migration from RedHat to gentoo or debian, I
-> don't want to become reliant on gui utilities any more than I have
-> to. If I were to reconfigure the desktop switcher to recognize icewm,
-> I suspect it would be easier to modify a rc file to call icewm in
-> the first place. 
-> 
-> Haines
+> from terminal when I'am here on my RHL-7.3 box,or even run:
 
-Hello Haines,Im using IceWm as well from very few days and I simply run:
+Thanks Marco, but I managed to get myself into trouble. When runing
+IceWM, I was using its panel at the same time as gnome's desktop
+switcher. They seemed to get along, but unfortunately, they had
+conflicing keybindings, and as soon as I typed a key that had
+conflicting purposes, X crashed.
 
-xinit /usr/local/bin/icewm --:0 
+I got X working and am now back in gnome to start again. However, I
+seem to have damaged gnome desktop switcher because panel crashes as
+it is loaded. I need to configure gnome not to run the desktop switcher,
+but don't know how to do it.
 
-from terminal when I'am here on my RHL-7.3 box,or even run:
+Do you happen to know the name of the gnome desktop switcher
+executable and its configuration file? Do you know which panel file
+calls the desktop switcher? I'm caught in a gnome panel crash loop,
+and so was forced to use another account (root has same trouble as
+regular user) in order to use X apps.  
 
-icewm
-
-which contains
-
-#!/bin/sh
-startx /usr/local/bin/icewm --:0
-exit 0
-
-from my job companion Compaq E500 running RHL8.0
-
-By the way suggested documentation contains a lot of stuff for a more deep
-customization of IceWM.
-
-Best Regards
-
-Marco
-
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQE+fOmas0ru0Kz1knARApA7AKCy4lgaDxzvVt/0wxdBZaBlPs4+HgCcCwi0
-p2ztfJiohMrFiZVsqW+h9P8=
-=z+9V
------END PGP SIGNATURE-----
-
+Haines Brown 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
