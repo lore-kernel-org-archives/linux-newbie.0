@@ -1,57 +1,66 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: tftpd problem (was: [no subject line])
-Date: Sat, 07 Jun 2003 07:16:35 -0700
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Slackware 8.1.01 Install????
+Date: Sat, 7 Jun 2003 10:47:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030607065956.02005d18@celine>
-References: <1054971913.3ee1980970d54@pop-mail.india.tejasnetworks.com>
+Message-ID: <20030607104727.A355@lnx2.w8mch.ampr.org>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306042101.56986.pa3gcu@zeelandnet.nl> <20030605093027.A233@lnx2.w8mch.ampr.org> <200306052108.36121.pa3gcu@zeelandnet.nl>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1054971913.3ee1980970d54@pop-mail.india.tejasnetworks.com>
+Content-Disposition: inline
+In-Reply-To: <200306052108.36121.pa3gcu@zeelandnet.nl>; from pa3gcu@zeelandnet.nl on Thu, Jun 05, 2003 at 09:08:36PM +0200
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Please use a Subject: line in the future. I added one.
+On 06-05, pa3gcu wrote:
+> 
+> So it sounds like you can mount the CD manually during install, is that 
+> correct,?? If so then you MUST be able to use it to install period, what you 
+> may be doing is FORGETTING to ""UNMOUNT"" it before proceeding with the 
+> install, i say that be cause i can get the same error message you mention if 
+> i mount the cdrom by hand in a console and then proceed with "setup" to 
+> install slackware, it does not then work, one needs to UNMOUNT the cdrom 
+> first....
+> 
+> Is that your problem.?????
 
-At 01:15 PM 6/7/2003 +0600, deepesh@india.tejasnetworks.com wrote:
->
->  Hi,
->
->     I am having some problem setting up the tftp server. I am using Red Hat
->     6.2.
-
-This is quite old. It would not surprise me if no one here is using such an 
-old version of Red Hat, so you may not be able to get version-specific 
-help. The ramainder of my comments assume this version is reasonably 
-standard Linux.
-
->I have uncommented the "tftp" line in the inetd.conf file in
->     "/etc". but the tftpd daemon did not get started.
-
-inetd.conf does not start daemons; it tells inetd to listen on ports, 
-starting the relevant daemon only when a connection is received. Also, 
-after editing inetd.conf, you need to restart or re-HUP inetd, to get it to 
-read and act on the revised file.
-
-Finally, the daemon needs to be present on the system; is it? (Apparently 
-yes, from the error you report below, but see my comment with respect to it.)
-
->then i tried executing
->     /usr/sbin/in.ftpd, but got an error
->
->       "tftpd[25618]: recvfrom: Socket operation on non-socket"
-
-This is very puzzling, because in.ftpd is not (usually) the name of the 
-tftpd server. (Is this the daemon name that appears on the line in 
-inetd.conf that you uncommented?) Are you sure this message is a response 
-to executing the file you name above?
-
-In any case, how *exactly* did you attempt to run this daemon? (Quote the 
-line.) Is networking set up properly on this host?
+	Not sure I understand the above completely.. Slackware has a
+source selection including sth like "Install from a mounted
+directory." I tried that by creating an empty directory, /slack, and
+then mounting the CD drive.. So that means, to me, that setup should
+find the files at /slack/slackware.. I tried all combinations to no
+avail, including trailing "/"s...
 
 
 
+> Get on a plane, travel to EU is much easier than Europeens traveling to the 
+> USA theresdays, our rules and regulations on travel seem to vary a lot, i 
+> will install it for you.
+
+	Boy wouldn't that be overkill?? I guess Americans are good at
+that so maybe it's not too far fetched.. I don't do aeroplanes
+anymore.. <grin>
+
+
+
+> O i am thinking of making the following my sig...
+> 
+> "If the Linux community is a bunch of theives because they
+> try to imitate windows programs, then the Windows community
+> is built on organized crime."
+> 
+> Comments.??
+
+	Well - sounds good to me except I would say MSWindows because
+we have our XWindows. With M$ and AOL now joining up together we had
+better hunker down for the long run.. At least it's interesting, eh?
+Vy 73,
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
