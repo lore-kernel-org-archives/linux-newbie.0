@@ -1,25 +1,29 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Filtering Email to Delete Without Using POP Filters
-Date: Sun, 10 Aug 2003 10:49:09 +0800
+From: Peter Edstrom <peter.p3@home.se>
+Subject: Setting up DNS without domain
+Date: Wed, 13 Aug 2003 00:35:45 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030810024914.B5CF410422@heisspf>
-References: <200308091403.18490.sotl155360@earthlink.net>
+Message-ID: <20030812223545.GA1046@linux>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 09 Aug 2003 14:03:18 -0400." 
- <200308091403.18490.sotl155360@earthlink.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-www.beedub.com/cgi-bin/wiki.cgi/27 and /29
+Hello!
 
--- 
-Peter
+Since the DNS's of my ISP is constantly going down, I want to set up my
+own using BIND (except if you have any other recommendations). The
+problem is that all howtos I've found is based around having a domain,
+which I don't. Is this a prerequisite of running a DNS, or can
+you use a bogus domain (like youareamunch.kinlloyd which probably isn't 
+already in use) or perhaps just your IP?
 
+Another question: Do you recommend chrooting BIND?
 
-
+Thanks in advance!
+/Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
