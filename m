@@ -1,33 +1,28 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Text Reformatting
-Date: Mon, 19 May 2003 10:25:50 +0800
+From: <deepesh@india.tejasnetworks.com>
+Subject: Re: Confirmation for subscribe linux-newbie
+Date: Mon, 19 May 2003 15:18:13 +0530 (IST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030519022555.DE918103AE@pfheiss>
+Message-ID: <Pine.LNX.4.21.0305191517170.2601-100000@deepesh.india.tejasnetworks.com>
+References: <S261842AbTESJPD/20030519091503Z+11790@vger.kernel.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <S261842AbTESJPD/20030519091503Z+11790@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Beautiful!
-Thanks to all. sed and vim work perfect. I read up on sed and tried vim before 
-posting the question. It's just remains Greek to me.
 
-vim -ggVG gives error -G command unknown. vim -ggVg file just opens the file 
-as is.
 
-Peter said:
-> Some text I download for printing are formatted like: >
->       Because of the publicity the Iraqi government has given to the
->                       issue, Iraqis worry about DU. >
-> which adds more pages for printing. >
-> How can I with some command, left align the text
 
-Regards
+Hi,
+ 
+  Please let me know the basic differences between the VT102 and the ANSI
+terminals.
 
 -- 
-Peter
+
+D.Deepesh
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
