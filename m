@@ -1,83 +1,37 @@
-From: "Whitnl73@juno.com" <fido@tcob1.net>
-Subject: Re: How to install two linux OSes on the same PC
-Date: Wednesday, 05 Feb 2003 15:43:00 +000
+From: "Hal Macargle" <fido@tcob1.net>
+Subject: ppp-go anomoly??
+Date: Wednesday, 05 Feb 2003 10:27:00 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_030205_154300__fdbc828b@racenet>
+Message-ID: <NOMSGID_7223=3a9750=2f200_030205_102700__8b2561e7@racenet>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
 Originally to: All
 
-On Wed, 5 Feb 2003, Narsimha Reddy CHALLA wrote:
+configure - working perfectly for several months.. All of a sudden,
+for no apparent reason; when invoking 'ppp-go', I get the screen report 
+"Connect script failed" and no cursor.. Entering a ^C, then invoking
+ppp-go again - starts the dialup normally.
 
-> Hi  All,
->
->     I want to do two different linux installations rh 7.2 and rh
-> 8.0 on the same pc with single hard disk. I installed the rh 7.2 in
-> partitions say  /dev/hda5 ( /) ,  /dev/hda6  (/home) ,  /dev/hda7 (
-> /usr) ,
-> /dev/hda8 ( /tmp),... /dev/hda11  etc.
->
->    But how can I install the rh 8.0 in partitions say  /dev/hda12
-> ( as "/" )  ... etc ??  Since the installer won't allow as there
-> already exists a  "/"  partition for the rh 7.2 and tries to override
-> it with the root partition of rh 8.0. So I tried giving a different
-> lable to the root partition of rh 8.0 say /root1 and other partitions
-> as /root1/usr, /root1/home, /root1/tmp etc. But here also the installer
-> is looking for the partition named "/" and without that the installation
-> is not happening.
->
->
-> Please give your suggestions on how to resolve this problem.
->
->
-> At present my partition table with single installation (rh 7.2)  is,
->
-> [root@creddy-pc root]# fdisk -l
->
-> Disk /dev/hda: 255 heads, 63 sectors, 2434 cylinders
-> Units = cylinders of 16065 * 512 bytes
->
->    Device Boot    Start       End    Blocks   Id  System
-> /dev/hda1   *         1       261   2096451    6  FAT16
-> /dev/hda2           262      2434  17454622+   5  Extended
-> /dev/hda5           262       522   2096451    6  FAT16
-> /dev/hda6           523       653   1052226   83  Linux
-> /dev/hda7           654      1175   4192933+  83  Linux
-> /dev/hda8          1176      1371   1574338+  83  Linux
-> /dev/hda9          1372      1436    522081   82  Linux swap
-> /dev/hda10         1437      1501    522081   83  Linux
-> /dev/hda11         1502      1566    522081   83  Linux
-> [root@creddy-pc root]#
->
->
-> TIA,
-> - Narsimha Reddy CH
-> -
+Oddly enough; when turning the machine on in the morning the first
+invocation of ppp-go dials OK.. However, any trys later in the day
+return the script failure message..
 
-Well, you could change the partition type of the existing installation,
-in hope that the installer will ignore it.  It doesn't matter to linux
-what the partition type is as long as it has a filesystem of the type
-expected in /etc/fstab.
+This first happened a few weeks ago but, in the middle of this, I
+changed ISP's so had to run pppsetup again for that configuration..
+I thought this would clear up the problem but it's still with me with
+the new ISP..
 
-Lawson
+A minor bother but I'm sure bloody curious as to what happened and
+how to fix it.. Any suggestions/comments??	TIA!!
 
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+                Proprietary  Formats  Unacceptable
 
---
----oops---
-
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
--
 
 
 -
