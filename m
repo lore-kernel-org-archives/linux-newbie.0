@@ -1,39 +1,69 @@
-From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-Subject: Re: X Windows
-Date: Tue, 18 Feb 2003 17:03:56 +0200
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Re: File names with spaces
+Date: Tue, 18 Feb 2003 22:37:21 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030218170356.A7177@neutrino.particles.org>
-References: <20030218072416.12243.qmail@webmail18.rediffmail.com>
+Message-ID: <20030218213721.GA11729@teamfinders.org>
+References: <20030217191140.GA13495@teamfinders.org> <200302171434.16323.brian@mdrx.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20030218072416.12243.qmail@webmail18.rediffmail.com>; from mishra_nn@rediffmail.com on Tue, Feb 18, 2003 at 07:24:16AM -0000
+In-Reply-To: <200302171434.16323.brian@mdrx.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: n mishra <mishra_nn@rediffmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Tue, Feb 18, 2003 at 07:24:16AM -0000, n  mishra wrote:
->  	I am working on a project which requires a gui in Linux. I have 
-> been trying to work with XWindows. Could someone please refer me 
-> to a good site for an absolute newbie, maybe with tutorials.
-> Thanks in advance.
-> mishra.
+Thanks, that did help, although it didn't solve the problem.  I now recognize that the problem is in assigning the variable.  Both my version with ls and the version with find in the example give the expected results when printing to the console, but they both fail when used to assign a string including spaces to a variable.
 
-It's hard to utilize the X protocol directly but you can do it if you
-like; another guy posted some resources regarding Xfree86.
+I need to find a way to maintain the integrity of the string as I assign it to the file variable.  I tried `echo (ls -1)` and `echo "(ls -1)"`, but neither works.  Changing the parentheses to brackets doesn't help either.
 
-If you need something more programmer-friendly have a look at 
-http://www.gtk.org or search in Google for Qt.
+Cheers,
+Sean
 
-Elias
+On Mon, Feb 17, 2003 at 02:34:16PM -0600, Brian Jackson hunted and pecked out:
+> You can try to adapt this example from The Advanced Bash Scripting Guide:
+> http://www.tldp.org/LDP/abs/html/moreadv.html#EX57
+> 
+> It deletes the file, but it shouldn't be too hard to adapt to your needs.
+> 
+> --Brian
+> 
+> On Monday 17 February 2003 01:11 pm, Theo. Sean Schulze wrote:
+> > Hello,
+> >
+> > I am trying to write a bash shell script that will translate spaces in file
+> > names into underline characters.  This is the script as I have it now:
+> >
+> >
+> > for file in `ls`
+> > do
+> > 	echo $file
+> > 	newfile=`ls ${file} | tr '[:space:]' '[_*]'`
+> > 	echo File is named ${file}
+> > 	echo The new file is named ${newfile}
+> > 	# [[ -s $newfile ]] || (mv $file $newfile)
+> > 	sleep 2
+> > done
+> >
+> > The lines that begin with echo and the sleep line are for debugging.  What
+> > they have shown me is that the $file is getting set to the first word in
+> > the file name on the first iteration, the second word on the second
+> > interation, etc.  (The file names look like "001 of 150 files", "002 of 150
+> > files", etc.)  So, on the first iteration, $file is egual to "001", on the
+> > second iteration $file is equal to "of", etc.  Yet, if I go to the
+> > directory and issue `ls`, the filenames are shown as one would expect with
+> > the whole four word filename on one line.
+> >
+> > Can anyone give me a hint on how to fix this so that the whole filename is
+> > loaded into $file?
+> >
+> > TIA,
+> > Sean
+> 
 
 -- 
-University of Athens			I bet the human brain 
-Physics Department				is a kludge --Marvin Minsky 
-
-	
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
