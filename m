@@ -1,8 +1,8 @@
-From: Amin <raihan@citech-bd.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: cleaning up disk space
-Date: Mon, 09 Jun 2003 21:24:49 +0600
+Date: Mon, 09 Jun 2003 08:29:07 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <oprqiafnb7yuy227@mail.citech-bd.com>
+Message-ID: <5.1.0.14.1.20030609082419.01e9c8d8@celine>
 References: <AKEILINJHJBKDJLADJENCEIHDHAA.azapata@du.edu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,34 +12,30 @@ Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Mon, 09 Jun 2003 08:50:31 -0600, Anna Grace Zapata <azapata@du.edu> 
-wrote:
-
-> Hello all,
+At 08:50 AM 6/9/2003 -0600, Anna Grace Zapata wrote:
+>Hello all,
 >
-> I tried patching my Linux box with the latest RPMs.  However, the machine
-> said that there was not enough room.  How should I proceed?  How do I go
-> about knowing how much disk space is available and how to clean up the
-> machine to make more room.
+>I tried patching my Linux box with the latest RPMs.  However, the machine
+>said that there was not enough room.  How should I proceed?  How do I go
+>about knowing how much disk space is available and how to clean up the
+>machine to make more room.
 
-Available disk space:  Use the `df' command.  E.g.:
+The command to check filesystem utilization is "df". It reports the size of 
+each filesystem, the space used, and the space available (after subtracting 
+the reserve, usually 5%, for root).
 
-$ df -h
-Filesystem            Size  Used Avail Use% Mounted on
-/dev/hda6             6.5G  3.6G  2.6G  58% /
-/dev/hda3             1.8G   39M  1.6G   3% /boot
-none                   61M     0   61M   0% /dev/shm
+There is no *general* answer to your second question ("how to clean up the 
+machine to make more room"). If your system is too full for an update, you 
+need to remove something ... but the best choice of "something" depends on 
+what you already have installed and what you actually use the system for. 
+You know that information; we don't.
 
-The ``-h'' option is to get human-readable sizes (in MB and GB).
+The details of how to proceed may also depend a bit on what distro and 
+version you are using. SInce you mention RPMs, I can rule out Slackware and 
+Debian, but most of the other big-name distros use RPM packaging.
 
-Cleaning up the machine:  Uninstall as many packages as you can do without. 
- All sorts of things can go, from big stuff like GNOME or KDE to many far- 
-flung apps like web server, Samba, print servers, mail servers, many ``eye- 
-candy'' graphical programs.  The list goes on.  You might like to consult 
-with any others who use the computer, though.
 
-Regards,
-Yawar Amin
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
