@@ -1,52 +1,43 @@
-From: "ramands" <ramands@indiatimes.com>
+From: Jurriaan <thunder7@xs4all.nl>
 Subject: Re: Re: OOPS in Kmalloc
-Date: Thu, 24 Apr 2003 14:15:06 +0530
-Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <200304240813.NAA23499@WS0005.indiatimes.com>
-Reply-To: "ramands" <ramands@indiatimes.com>
-Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
+Date: Thu, 24 Apr 2003 11:57:34 +0200
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <20030424095734.GA13735@middle.of.nowhere>
+References: <200304240813.NAA23499@WS0005.indiatimes.com>
+Reply-To: thunder7@xs4all.nl
+Mime-Version: 1.0
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200304240813.NAA23499@WS0005.indiatimes.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "Randy.Dunlap" <rddunlap@osdl.org>
-Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+To: ramands <ramands@indiatimes.com>
+Cc: "Randy.Dunlap" <rddunlap@osdl.org>, linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-hello randy 
-as i am new to kernel level programing 
-i do not know how to decode a oops . could you tell me how to do it 
-i will mail the exact oops messages in next mail 
-right now i am debugging by using printk only 
+From: ramands <ramands@indiatimes.com>
+Date: Thu, Apr 24, 2003 at 02:15:06PM +0530
+> hello randy 
+> as i am new to kernel level programing 
+> i do not know how to decode a oops . could you tell me how to do it 
 
-raman 
-"Randy.Dunlap" wrote:
+read the (copious) documentation in /usr/src/linux/Documentation
 
+> i will mail the exact oops messages in next mail 
 
+no need for that, read the docs first.
 
-&gt; Hello,
-&gt; i am getting OOPS in Kmalloc .
-&gt;
-&gt; void **data;
-&gt; qset = 1000;
-&gt;
-&gt; dptr-&gt;data = kmalloc(qset * sizeof(char *), GFP_KERNEL);
-&gt;
-&gt; what could the possible the cause of the error
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As I am so fond of saying, it's almost always correct to indicate what
-kernel version one if referring to in a problem report.
-
-Please decode the oops output and post it here.
-
-~Randy
-
-
-
-
-
-
-Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
-
- Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
-
-Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
+> right now i am debugging by using printk only 
+> 
+Good luck,
+Jurriaan
+-- 
+Because Hawk and Fisher were who you turned to when you'd tried every-
+thing else, including closing your eyes and hoping it would just go away.
+	Simon R Green - Beyond the Blue Moon
+Debian (Unstable) GNU/Linux 2.5.68 3940 bogomips load av: 0.10 0.05 0.06
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
