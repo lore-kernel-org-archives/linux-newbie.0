@@ -1,8 +1,8 @@
 From: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>
-Subject: Apache in Linux
-Date: Thu, 4 Jul 2002 12:11:52 +0530
+Subject: Java and Apache
+Date: Thu, 4 Jul 2002 12:38:44 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D15D6@ccdc-exchg.careercommunity.com>
+Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D15D8@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -12,13 +12,12 @@ To: linux-newbie@vger.kernel.org
 
 Hi
 
-1. I have installed Mandrake Linux 8.2 with all server tools. But I couldn't
-find where Apache was put in. I know that we have to untar and then install
-apache, but the gzip file could not be found. Can someone help me?
+I am installing Linux for the first time and hence the storm of questions.
+Sorry abt that
 
-2. Is there any equivalent in Linux for the "File find" utility in windows.
-I have nautilus, but it didn't show up Apache. It took up a huge amount of
-time seaching only /usr.
+1. I want to use Java with Apache on Mandrake Linux 8.2. How do I go abt it?
+2. Where are PHP and MySQL installed by default?
+
 
 Regards
 Sridhar
