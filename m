@@ -1,58 +1,49 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: getting a console prog to run on tty2 at bootup
-Date: Mon, 13 Dec 2004 13:36:59 -0800
-Message-ID: <41BE0B7B.60707@bcgreen.com>
-References: <Pine.LNX.4.58.0412100651320.8769@localhost.localdomain> <200412110007.54356.eric@cisu.net>
+Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively change
+ all directories/files to 777
+Date: Mon, 13 Dec 2004 13:54:24 -0800
+Message-ID: <41BE0F90.9030905@bcgreen.com>
+References: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200412110007.54356.eric@cisu.net>
+In-Reply-To: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie <linux-newbie@vger.kernel.org>
-Cc: eric@cisu.net
+Cc: eatley@wowcorp.com
 
-Eric Bambach wrote:
->># Note that on most Debian systems tty7 is used by the X Window System,
->># so if you want to add more getty's go ahead but skip tty7 if you run X.
->>#
->>1:2345:respawn:/sbin/getty 38400 tty1
->>2:23:respawn:/sbin/getty 38400 tty2
->>3:23:respawn:/sbin/getty 38400 tty3
->>4:23:respawn:/sbin/getty 38400 tty4
->>5:23:respawn:/sbin/getty 38400 tty5
->>6:23:respawn:/sbin/getty 38400 tty6
->>
->>I think the 23 refers to the port telnet runs on, right?  Seems I need to
->>edit the line 2:23:respawn:/sbin/getty 38400 tty2, but the question is
->>how?  Do I replace /sbin/getty with the path to twin and add any command
->>line switches after (-hw=tty is what I use when I run it manually from a
->>console)?  Does the 38400 need to be in there, and for that matter, the
->>23?
+Eve Atley wrote:
+> First question...
+> We have people SSHing into our Linux box from overseas (India to US, company
+> access only). But files that are uploaded from these people become read-only
+> to anyone else accessing them. We *require* that they be readable/writable
+> by this side of the pond (US). How can I set this to occur? Otherwise, this
+> method of transferring files will *not* work for us, and perhaps someone can
+> point me to another solution.
 > 
-> 
-> Yes telnet DOES run on 23, but that has nothing to do with the file ;)
-> the first number is the virtual console # and the second number is the 
-> runlevels. Notice that VC 1 ALWAYS starts up: runlevels 2345.  Try something 
-> like this and make sure to comment out the original line:
+> Second question...
+> How can I recursively set all files/directories to 777?
+> Chmod -R 777 *.* ... Didn't seem to hit everything.
 
-Close: The first field can be just about anything short. It's
-an identifier used for other init(8) tricks. In this case,
-numbers were chosen to represent the TTY that the program runs on.
+The problem is that permissions are preserved when using scp.
+(i.e. if the file is mode 700 on the source box, it will be
+mode 700 on the destination, independant of umask settings).
 
-The second field (as stated) indicates which runlevels the program
-runs on (In this case, the getty on tty1 runs at runlevels 2,3,4 and 5
-while the other ones (2-6) only run at runleels 2 and 3.
+Your *.* wildcard is a holdover from your DOS days.  Not all UNIX
+files have a dot in them, but the dot will have to be explicitly
+matched since it was explicitly requested.
 
-the respawn in the 3rd field says to rerun the program when it dies.
+Chown -R 777 * will catch everything other than files/directories
+with a leading dot.
 
-The last field is the command line that is run at the indicated
-run levels.
-What actually makes the programs run on their respective TTYs is the
-parameter to the getty program. There are a number of versions
-of the getty command for Linux.  `man -k getty ` for more info on
-which versions are available on your system).
+chmod -R 777 . will get EVERYTHING (including resetting the
+permissions of the current directory).
+
+You can also use the find command to find files that aren't
+readable by others, and only change the permissions on them
+(I'll leave that as an exercise for the reader).
 
 -- 
 Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
