@@ -1,45 +1,41 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Configuring RH8.0 window manager
-Date: Sat, 23 Nov 2002 16:33:15 -0500
+From: "Brandon George" <bmg143@cometlink.com>
+Subject: Re: Emacs
+Date: Sat, 23 Nov 2002 17:40:45 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211232133.gANLXFP02853@hartford-hwp.com>
+Message-ID: <000f01c29349$bf3fa470$3df56dd1@MIKESPC>
+References: <026b01c29328$6f797180$64fea8c0@pkrausxp>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@hartford-hwp.com
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-I'm trying to set up RedHat 8.0 and ran into some difficulties. 
+emacs has a very good built in help system that's accessible thru <CTRL>-<h>
+<t>, or if you want to spend $29.95 (US) O'Reilly has a great book called
+"Learning GNU Emacs"...  The second edition book is sorta centered around
+version 19.30.
 
-1. I can delete any icon from the desktop except for two. How do I get
-   rid of trash and home?
+HTH
 
-2. Although DEL is mapped to "remove," the window manager catches it
-   and instead pops up a window menu window. How do I kill that
-   behavior and get the DEL key to delete?
+----- Original Message -----
+From: "Paul Kraus" <pkraus@pelsupply.com>
+To: <linux-newbie@vger.kernel.org>
+Sent: Saturday, November 23, 2002 1:42 PM
+Subject: Emacs
 
-3. Window stacking is tied to focus, so that the window on top of the
-   stack is the focused window. I want to revert to my usual
-   preference which is for stacking to be in order of window creation,
-   so that what's on top is the newest window.
 
-4. I want to configure xterm, but ~/.Xdefaults no longer understands
-   statements such as 
-	      
-	      XTerm*Font: 7x13bold
-	      xterm -geometry 20x5-0-0 &
+> Can someone point me to some guides on how to use emacs?
+>
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
+>
 
-   Where now does one now define things like fn, bg, fg, etc.?
-
-   Ideally I'd like to customize an xterm by which user invoked
-   it. For example, if I issue the su - user command in an xterm, the
-   xterm would use user's xterm configuraiton. As things now stand, I
-   can achieve this only by creating a second xterm icon, and
-   configure its xterm command to pass its own set of options to the
-   xterm command.
-
-Haines Brown 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
