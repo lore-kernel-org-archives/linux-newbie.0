@@ -1,92 +1,113 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: nVidia lockups
-Date: Sat, 27 Jul 2002 09:36:39 +0000
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: Partitioning problem
+Date: Sat, 27 Jul 2002 10:41:02 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02072709363903.00307@unix.pa3gcu>
-References: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.21.0207271005040.30515-100000@Consulate.UFP.CX>
+References: <107a26d107876a.107876a107a26d@homemail.nyu.edu>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX>
+In-Reply-To: <107a26d107876a.107876a107a26d@homemail.nyu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Anshuman Singh Rawat <asr245@nyu.edu>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Saturday 27 July 2002 08:57, Riley Williams wrote:
-> Hi Haines.
+Hi.
 
-Hi All, i did not know Riley was watching here as well, Hi Riley.
+>>> btw I used Partition Magic from WinXP to partition the disc as I
+>>> dont know how to work around using fdisk in Linux.
 
-I have not snipped this mail, i figured the point would be lost if i did.
-So sorry for its lengh.
+In the process, you probably caused this problem, and my advice would be
+to scrap PartitionMagic and redo your system completely. Here's the
+procedure I use to set up a system to dual-boot WIndows (any version)
+and Linux:
 
-I have a  Nvida card, i tryed the driver in question, i had problems with 2 
-things, VMWARE and BTTV (V4L using a wintv card bt878 chipset), both
-would  lock up the machine solid.
-So i simply use the 'nv' driver from xfree and all works like a charm.
-Another thing which was not mentioned was a kernel version where the
-problems are/were occuring, i use 2.2.19 and/or 2.2.20.
+ 1. Use the Linux fdisk to create the partitioning scheme I want.
+    In my experience, NONE of the Windows-based partitioning
+    software can correctly create partitions for Linux, and this
+    includes PartitionMagic.
 
-I could not agree with Riley more, he has stated the problem at hand very 
-well IMHO.
+    This is the partition layout I generally use:
 
->
-> > A thread is running on comp.os.linux regarding a problem of system
-> > hang (no keyboard; no mouse; system clock stops) perhaps every other
-> > week or so.
-> >
-> > Three people so far have contributed to this recent thread which has
-> > just begun, and the common element seems to be one of the nVidia
-> > graphics cards, although otherwise the system differs.
-> >
-> > Although perhaps OT, could I ask if there are others on this list
-> > who have the same kind of hang and if they rely on the nVidia?
->
-> There have been a wide variety of problems reported on systems using
-> nVidea video cards. I don't use such cards myself, so have no direct
-> experience of them. However, from reading the messages I've seen that
-> refer to this problem, the following appear to be the relevant factors:
->
->  1. The nVidea drivers are apparently binary-only drivers, if the
->     various threads I've seen are correct. As stated above, none
->     of my systems use nVidea cards so I have no direct experience
->     to confirm this one way or the other.
->
->  2. Most binary-only drivers are compiled for a particular set of
->     kernel options, and are unusable with almost any change to the
->     kernel options. This basically means that it is near enough
->     impossible to make any change to one's setup without causing
->     problems if one is using any binary-only driver whatsoever.
->
-> Because of the number of problems hidden in various binary-only drivers,
-> the kernel developers are usually unable to make constructive use of any
-> fault reports from systems using binary-only drivers, and are pretty
-> much forced to respond with "Send this bug report to the authors of the
-> XXXX module as it's a binary-only module that we can do nothing with."
->
-> Also, if the report relates to a system using two or more different
-> binary-only modules from different authors, then even that isn't
-> appropriate as the authors of the different binary-only modules will
-> just blame each other's modules for the problem.
->
-> Incidentally, the binary-only module with the biggest bug-ridden
-> reputation is VMWARE and its reputation is such that the developers
-> just ignore any bug report where it appears.
->
-> Best wishes from Riley.
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+	Partition  Type  Cylinders  Notes
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+	/dev/hda1  Swap     254     Anti-virus measure
+        /dev/hda2  ext2      2      Mounted as /boot under Linux
+        /dev/hda3  FAT32    50%     C: under Windows
+        /dev/hda4  ext2     Rest    Mounted as / under Linux
+
+    The allocation of /dev/hda1 as the swap partition is because of
+    the number of Windows viruses that overwrite the first so many
+    Megabytes of the primary hard drive. Since there is nothing of
+    importance in a Linux swap partition when Windows is running,
+    this measure prevents those viruses from overwriting anything
+    other than the partition table, and that is relatively easy to
+    recreate.
+
+ 2. Install one's favourite dialect of Windows into /dev/hda3 that
+    was reserved for it in the above partition table. This writes
+    the correct MBR record out, and marks /dev/hda3 as the bootable
+    partition.
+
+ 3. Install one's favourite Linux distribution specifying the mount
+    points as listed above, and placing the boot loader in the boot
+    record of /dev/hda2 and NOT in the MBR.
+
+ 4. Use fdisk to set /dev/hda2 as the bootable partition. Either the
+    Linux or Windows fdisk can be used for this without problems.
+
+Every distribution of Linux I've met auto-detects that Windows is
+installed and automatically sets up the boot loader correctly.
+
+Incidentally, the reason for putting the Linux boot loader in the boot
+sector of the /boot mount is because Windows has a habit of overwriting
+the MBR with its own boot loader, although it respects the boot marker
+when doing so.
+
+> Thanks for the response, but the problem is that with the partition
+> shown below i am never able to boot using linux. so i cant edit the
+> lilo.conf. or shud i change partition 1 (/dev/hda1) to type ext2
+> from current vfat. coz that was the only way i cud boot into linux?
+
+Before you do anything, you need to decide precicely what each partition
+contains. The partition layout shown, taken together with your comments,
+idnicates that the /boot mount point is probably /dev/hda1 rather than
+the /dev/hda6 indicated, and this is probably PartitionMagic's work.
+
+>>> I want to have both WinXP and Linux (RHL7.3) on my system but am 
+>>> having trouble with the partitions. My partition table (i dunno 
+>>> whether thats the correct term) looks like this (as shown by linux
+>>> installer ) -
+>>>
+>>>                  Start    End  Size(MB)  Type      Mount point
+>>> /dev/hda
+>>>    Free              1      1      8     Free
+>>>    /dev/hda1         2      7     47     vfat
+>>>    /dev/hda2         8    708   5499     NTFS
+>>>    /dev/hda3       709   2432  13523     Extended
+>>>      /dev/hda5     709   1413  5530      NTFS
+>>>      /dev/hda6    1414   1419    47      ext2      /boot
+>>>      /dev/hda7    1420   1453   267      swap
+>>>      /dev/hda8    1454   2432  7697      ext2      /
+>>>
+>>> the error message i get is -> Boot partition may not meet booting
+>>> constraints for your architecture. Creation of boot disk is highly
+>>> encouraged.
+
+>> Thats not an error message but a warning from the install process, 
+>> as you see lilo or grub was installed.
+
+>>> The options I get is "modify partition" and "add anyway". If I
+>>> proceed with 'add anyway' option installation is succesful but I
+>>> dont get the option of selecting the OS for booting the PC and the
+>>> PC boots using WinXP. I tried changing the /dev/hda1 partition to
+>>> ext2 ,mount pt /boot. The installation was succesful and so was the
+>>> boot, but then the option of starting with WinXP dissapeared. I
+>>> could only boot with Linux Can anyone help me out here?
+
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
