@@ -1,52 +1,64 @@
-From: Heinrich du Toit <hdutoit@tlabs.ac.za>
-Subject: Re: How does malloc tell the kernel to allocate more memory?
-Date: Mon, 09 Dec 2002 08:55:27 +0200
+From: Jerry James Haumberger <jerryjh@imt.net>
+Subject: tar for "full" floppy backup?
+Date: Mon, 9 Dec 2002 07:00:11 +0000 (UTC)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF43E5F.8050707@tlabs.ac.za>
-References: <000301c29eea$3107dd10$032a1c43@joe>
-Reply-To: hdutoit@tlabs.ac.za
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200212090658.XAA16146@cu.imt.net>
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: "Joseph D. Wagner" <wagnerjd@prodigy.net>
-Cc: Linux C Programming <linux-c-programming@vger.kernel.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Joseph D. Wagner wrote:
+>> As it stands, it's possible to backup to multiple floppy 
+>> disks with tar, but these cannot be compressed during the 
+>> archival process.  
 
->I'm trying to write a tracer on memory allocation, and I'm having a little
->trouble figuring this out.
->
->At some point, malloc has to call the kernel to tell it to allocate more
->memory for this user process, right?  I can't figure out which function
->malloc calls, or where in the code (line number) it's called.
->
->I'm looking at glib-2.3.1 to try and find my answers.  After all, that's
->where malloc is defined, right?
->
->TIA.
->
->Joseph Wagner
->
->-
->To unsubscribe from this list: send the line "unsubscribe linux-c-programming" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->
->  
->
-I don't have the answer. But look at something that already does this.
-electric-fence detects illegal memory access (great for debugging)
-ccmalloc is also a memory debugging library. It detects memory leaks and 
-stuff like that.
+>Why not use tar twice:  first with -zcf to make a compressed
+>archive and then with --multi-volume to write the archive
+>to floppy.  Of course to retrieve it, you will also have
+>to use tar twice:  first with --multi-volume to reconstruct
+>the archive and then with -cvf to unpack it.
 
-Maybe after you checked this out you can rather work on improving these 
-library's or extending them to do exactly what you want rather than 
-reinventing the weel :-)
+What result would you get with that method if you wanted to
+review the multiple archive's details with -->
 
-Good luck
--Heinrich
+tar --multi-volume -tv --file=/dev/fd0 > backup.log
+
+-->?  Not that much detail.  Just that one big file.
+
+The tar backup routine I've described with your BasicLinux
+distribution barely took over six floppy disks, yet I still want
+to check out the results, or at least have them available.  (And
+I've done just that -- I can review the results of that backup
+from a file that had the results directed to it while using the
+tar command above.)
+
+For quick backup of important files, though, I'm using the following
+script -- perhaps a little "busier" than it needs to be, but then
+I'm just a "linux-newbie"... ;-)
+
+-----------------------
+
+cd /home
+mount /dev/fd0 /fd14
+tar cvpf hot_backup.tar /etc /home /root /var/eznet
+gzip hot_backup.tar
+rm /fd14/hot_backup/hot_backup.tar.gz
+mv hot_backup.tar.gz /fd14/hot_backup
+umount /fd14
+echo "***FINISHED***"
+
+-----------------------
+
+This works nicely to backup all of my important files, which I can
+do much more frequently and easily than the full backup routine with
+tar.  What's more, I can also view the results of this file under mc.
+
+This "hot_backup" routine created a tar/gzip file only about 132k in
+size.  My rule of thumb is that, when my important file backup exceeds
+the size of a 1.44MB floppy disk, it's time to fully backup my system.
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
