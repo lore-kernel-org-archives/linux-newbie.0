@@ -1,21 +1,40 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: boot sequence
-Date: Tue, 10 Dec 2002 21:00:47 -0500 (EST)
+From: r4mz3z <r4mz3z@yahoo.es>
+Subject: something like cron
+Date: Tue, 10 Dec 2002 22:37:39 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212102100130.2996-100000@athame.gmpexpress.net>
-References: <200212101157.15232.dave@dpomeroy.com>
+Message-ID: <200212102237.46881.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212101157.15232.dave@dpomeroy.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: dave <dave@dpomeroy.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-ARG!  I can't get mysql to do anything useful no matter how I start it up.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Jude <dashielljt(at)gmpexpress-dot-net>
+Hi friends...
+  I'm trying to run an application each XX time, I'm using cron but with it I 
+can't do it... I have a script to send a email to my admin but I need to use 
+this script since I connect and each 5 minutes.
+  Example:
+	10:32 -> connect --> run this script
+	10:37 -> run the script
+	10:42 -> run the script
+	...
+  Thank you very much
+
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQE99my5s4dF9gl05swRAsxOAKCQcXP4d6flmxFnR1UbTGgc+mJw5wCfQsom
+SxcM0SL9h3W+o/h2KfqKlwU=
+=qGYI
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
