@@ -1,8 +1,8 @@
-From: "neil t" <lists@tcob1.net>
-Subject: CD distributor info
-Date: Monday, 12 Aug 2002 19:54:54 +000
+From: "lawson_whitney@juno.com" <lists@tcob1.net>
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 13:17:55 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020812_195454__9a604c23@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_131755__fc70ee94@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,30 +13,41 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Greetings-
-Has anyone on the list dealt with "Best Linux CD's"?  I 
-ordered the latest Debian Distro the other day and have not
-really heard anything from them about shipping.  They did 
-mention something after I made the purchase but that was to
-say something about an illness.
-Thanks
-Neil 
+On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
--- 
-Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+> It's been so long since I used a .a libraries, I didn't recall how they
+> were created. They are the old-format libraries I referred to above. They
+> are kept around, at least on full-size Linux installs, mainly for legacy
+> reasons. Don't use them unless you have *very* unusual requirements (I
+> can't even think of an example).
+
+In case you want to make a static executable (one that does not require
+dynamic linking.  Nost distro's link /sbin/ldconfig static so you can
+use it to recover when you mess up your libraries and nothing woorks,
+say when you try to upgrade libc and don't know how.
+
+Some distros keep a /bin/ash.static or other small shell for use in
+rescue root floppies and initrd images.
+
+>
+> >Many thanks and my best regards,
+> >Axel Siebenwirth
+>
+> -------------------------------------------"Never tell me the odds!"--------
+> Ray Olszewski					-- Han Solo
+> Palo Alto, California, USA			  ray@comarre.com
+> -------------------------------------------------------------------------------
+
+Lawson
+---oops---
 
 
 
-__________________________________________________________________
-Your favorite stores, helpful shopping tools and great gift ideas. Experience 
-the convenience of buying online with Shop@Netscape! 
-http://shopnow.netscape.com/
-
-Get your own FREE, personal Netscape Mail account today at 
-http://webmail.netscape.com/
-
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 
 <-> Gateway Information.
