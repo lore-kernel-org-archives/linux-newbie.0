@@ -1,46 +1,38 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Gui - Gnome - Kde
-Date: Sat, 26 Oct 2002 03:19:57 +1300
+From: Abhijit Vijay <abhijit_v@yahoo.com>
+Subject: Linux Mount Partitions
+Date: Fri, 25 Oct 2002 06:04:34 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021025124546.34CF872EA7@smtp.orcon.net.nz>
-References: <Pine.LNX.4.44.0210240005440.18662-100000@localhost.localdomain> <200210242118.33361.g38@rdsbv.ro>
-Reply-To: cr@orcon.net.nz
+Message-ID: <20021025130434.49227.qmail@web13402.mail.yahoo.com>
+References: <Pine.BSF.4.44.0210250441590.3791-100000@server1.shellworld.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210242118.33361.g38@rdsbv.ro>
+In-Reply-To: <Pine.BSF.4.44.0210250441590.3791-100000@server1.shellworld.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-KDE is a bit too 'Windows-like' for my tastes.   Which is why I run Gnome, 
-but with Kmail as my email client (haven't tried the latest Balsa, but last 
-time I went looking Kmail was way ahead of any other that I could find).   
-And Kppp.   And for a browser I use Opera, or sometimes Netscape, Mozilla, 
-Galeon or Konqueror, depending how I feel at the time.   
+Hi All,
 
-And they all work pretty well together, even the clipboard works most of the 
-time.   
+I had a query regarding linux mount partitions, which
+I was trying to understand. I understand that Linux
+mounts certain partitions by default at certain
+locations. You have the kernel image which is located
+at /boot (?) and the root partition /root mounted at /
+But why is it that /dev/cdrom is mounted by default on
+/mnt/cdrom? Why not reduce confusion and mount it on
+/dev/cdrom itself? Also, what are the other partitions
+that are mounted by default and their default
+locations?
 
-I reckon that's a big credit to the application writers.
+Thanks in advance,
+Regards,
+Abhijit.
 
-I do that when I log in as me.    When I log in as Root, I use KDE.   Why?   
-Because I can   ;)     If you happen to have loaded the necessary files at 
-install time, and if you have the Desktop switching tool installed, it's dead 
-easy to change between KDE and Gnome  (though you might want to set up 
-another 'user' and try it under his login, in case something screws up).
-
-I'm running RH7.2,  if (as has been stated) RH8 doesn't have a wide choice of 
-window managers, then I'm in no hurry to upgrade.
-
-cr
-
-
-> > > "Paul Kraus" <pkraus@pelsupply.com> wrote:
-> > > > What is kde like. I always just install gnome with Xwindows. I even
-> > > > select Xwindows classic what is it and why are there two.
-> > >
-
+__________________________________________________
+Do you Yahoo!?
+Y! Web Hosting - Let the expert host your web site
+http://webhosting.yahoo.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
