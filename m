@@ -1,46 +1,45 @@
-From: caszonyi@rdslink.ro
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: upgrading open ssh
-Date: Mon, 23 Feb 2004 23:45:05 +0200 (EET)
+Date: Mon, 23 Feb 2004 13:44:51 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0402232343260.1619@grinch.ro>
+Message-ID: <5.1.0.14.1.20040223133553.02004c38@celine>
 References: <HBEJLOFMLEPBMAAEFNFDMECICFAA.azapata@du.edu>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <HBEJLOFMLEPBMAAEFNFDMECICFAA.azapata@du.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: "Anna G. Zapata" <azapata@du.edu>
-Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Mon, 23 Feb 2004, Anna G. Zapata wrote:
-
-> Hi all,
+At 02:12 PM 2/23/2004 -0700, Anna G. Zapata wrote:
+>Hi all,
 >
-> I downloaded and installed the latest version of open ssh.  I was running openssh-3.6.1p2-19 on a Fedora box.  However,
-> how do I know that the new install took and that the old open ssh has been done away with?  I did the ./configure, make,
-> and make install, but I think I'm missing some steps.
->
+>I downloaded and installed the latest version of open ssh.  I was running 
+>openssh-3.6.1p2-19 on a Fedora box.  However,
+>how do I know that the new install took and that the old open ssh has been 
+>done away with?  I did the ./configure, make,
+>and make install, but I think I'm missing some steps.
 
-ls -l `which sshd`  `which ssh`
-and look at time field
-they should have the date you installed them
+You may be missing something, but those are the usual steps for installing 
+apps from source (assuming they all completed with no errors reported ... 
+and not all source uses the autoconfigure approach).
 
-> Thank you as always.
->
-> Anna Zapata
-> UTS - Network Security
-> 303.871.2009
->
->
+I don't know if there is something specific to Fedora that helps with this, 
+but if not, the usual suspects to round up are:
+
+1. Timestamps on the app files. After you do a "which ssh" to find the one 
+that will actually run , do "ls -l " on it and see if the timestamp matches 
+the compile (or install) time.  With some apps, you'll need to chase down a 
+line of symlinks to get the actual executable, but I don't think that's so 
+with ssh.
+
+2. Version number. The command for this can vary from app to app, but ssh 
+uses the most common choice, "ssh -V".
 
 
 
---
-"A mouse is a device used to point at
-the xterm you want to type in".
-Kim Alm on a.s.r.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
