@@ -1,40 +1,29 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: wave file to audio cd
-Date: Tue, 16 Apr 2002 06:11:00 +0000
+From: Sridhar J <sridharj.hyd@cxknetworks.com>
+Subject: Linux firewall question
+Date: Tue, 16 Apr 2002 12:20:21 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041606110001.03753@unix.pa3gcu>
-References: <m33cxw6xyo.fsf@wobble.eth.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <F4D3DB9A18752A4F99FD880ABC54071707027F@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <m33cxw6xyo.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, G Anna <drguruolai@eth.net>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Tuesday 16 April 2002 04:58, G Anna wrote:
-> Dear All,
->
-> Suppose I have a collection of .wav audio files and I want to prepare
-> an audio CD (that we can play from audio systems), how do I go about
-> it?
->
-> Suggestions and pointers to information would be very valuable.
-> Thanks for your time.
+Hi
 
-xcdroast
-Its included in most main distro's thesedays.
+I read this somewhere. Can you tell me how to recompile the kernel. Assume
+that I use Red Hat Linux.
 
->
-> Cheers,
-> anna
+"First of all, make sure that the Linux kernel supports Advanced Routing.
+The standard RedHat 2.2.14 kernel doesn't, so a recompile is necessary.
+Configure the kernel as an Advanced Router and enable all the Quality of
+Service options."
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Also, what is ipchains and is it available on every distro?.
 
+Regards
+Sridhar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
