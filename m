@@ -1,35 +1,38 @@
-From: linux-newbie-owner@vger.kernel.org
-Subject: Re: kernel 2.6.0, error on 1024x768 console
-Date: Wed, 7 Jan 2004 21:19:10 -0300
+From: dante@virtualblueness.net
+Subject: Mandrake kernel-secure
+Date: Wed, 7 Jan 2004 19:26:45 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00ba01c3d57d$09c2de60$680410ac@pcinstru1>
-References: <00de01c3d563$72234ae0$680410ac@pcinstru1> <20040108013715.0a789d48.onur@delipenguen.net>
+Message-ID: <Pine.LNX.4.44.0401071918470.15166-100000@reddevil.virtualblueness.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
-
-You mean, to copy and paste de .config file, and what "lspci -v" and
-"dmesg" says ?
- I didn't do it, because i thought it is too much words in a mail. :-s
-
------ Original Message ----- 
-From: "Onur Kucuk" <onur@delipenguen.net>
-To: <linux-newbie@vger.kernel.org>
-Sent: Wednesday, January 07, 2004 8:37 PM
-Subject: Re: kernel 2.6.0, error on 1024x768 console
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
 
-| 
-|  ".config"  and output of "lspci -v" and "dmesg" give more information.
-|  
-| 
-| 
-| -- 
-|  Onur Kucuk
-|  <onur@delipenguen.net>
+Hi everyone,
+
+I'm new to Mandrake but old to Linux/Unix.  Does anyone out there know 
+what goes into the Mandrake kernel-secure rpm package that doesn't go 
+into the vanilla kernel?  Is there some patch or set of patches that are 
+applied to the kernel sources?  I'm particularly interested in how /proc 
+only reports processes belong to the user and not to other users 
+(except root who can see all processes), among other securities I've 
+noticed in Mandrake's kernel-secure.
+
+Also, does anyone know the status of Mandrake 7.1 on the UltraSparc 
+platform?  Is it still being supported?
+
+Thanks in advance.
+
+Anthony G. Basile, Ph.D.
+Chairperson of IT
+D'Youville College
+Buffalo, NY 14213
+(716) 881-8197
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
