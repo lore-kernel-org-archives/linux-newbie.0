@@ -1,52 +1,75 @@
-From: Peter Edstrom <peter.p3@home.se>
-Subject: Re: (F)A "subject" rule for procmail
-Date: Mon, 15 Sep 2003 13:25:21 +0200
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030915112521.GA2169@linux>
-References: <20030914094953.GA571@archibold.chu.cam.ac.uk> <XFMail.20030914215635.ik5bcu@tin.it>
+From: Tabris <tabris@tabris.net>
+Subject: Re: Multithreaded /sbin.init? Is it possible?
+Date: Mon, 15 Sep 2003 12:49:27 -0400
+Sender: linux-c-programming-owner@vger.kernel.org
+Message-ID: <200309151249.29525.tabris@tabris.net>
+References: <200309141240.55800.eric@cisu.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-c-programming-owner@vger.kernel.org>
+In-Reply-To: <200309141240.55800.eric@cisu.net>
+Content-Description: clearsigned data
 Content-Disposition: inline
-In-Reply-To: <XFMail.20030914215635.ik5bcu@tin.it>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-Cc: sos22@cam.ac.uk
+Content-Type: Text/Plain; charset="us-ascii"
+To: eric@cisu.net, linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
+Cc: rei_0000@arklinux.org
 
-> With this I want to reply both to you,to Peter Edstrom and to dashielljt.
-> Well first of all many thanks to all of you for interesting answers,however I
-> think I solved a lot of problems by upgrading my SpamAssassin from 2.20 to 2.55
-> which includes bayesan filter and a DNS-RBL check against possible spam sources.
-> I am testing it at present and I cannot yet say "it works perfectly" but at
-> least I can affirm that it works much better respect the older version.
-> I'd like to read and learn more about the RBL feature and run some tests on
-> this to see if it really works.
-> 
-> Many thanks again and best Regards.
-> 
-> Marco
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-In case you want to learn more about spam in general, there are great
-articles on the subject at www.paulgraham.com. "A Plan For Spam"
-(http://www.paulgraham.com/spam.html) covers the Bayesian approach. For
-information on blacklist, including RBL, you can read the "Filters vs.
-Blacklists" article (http://www.paulgraham.com/falsepositives.html).
-There are also lots of interesting links at the bottom of these pages -
-time is the only thing that stops you for learning all there is to know.
-:-)
+On Sunday 14 September 2003 01:40 pm, Eric wrote:
+> Hello,
+> 	I have an interesting theory. I have beginning programming expereice
+> and would like the input of those that have more expereince than me.
+> Please don't flame if this is a waste of time. Rather I would like an
+> open discussion on the why's and why nots of this.
+> 	Wouldn't the Linux Boot process be speeded up if the init program was
+> multithreaded? I know a little about threads.. and I think there might
+> be some complication of PPID assignment coming from the threads which
+> would probably terminate instead of having a PPID of 1 which is init
+> and will never terminate. (i think?). Should init scripts have a parent
+> PID of 1? Does this even matter?
+> 	If I am correct, whenever a programs parent dies, its parent becomes
+> init anyways. So when the thread finishes execution of the script, then
+> its parent would become init just as if it had started sequentially and
+> directly from init.
+> 	The script links in /etc/rc.d/x.d/ would be grouped according to their
+> S and K numbers. That is, if you have 5 scripts that are S5, each would
+> be given to a thread to execute and there would be 5 threads. The init
+> process would wait for each thread to clean up before proceeding to the
+> next group. I know this would happen in an undefined order, but if you
+> want, for example, DHCPD to start after network then you would assing
+> S5network and S6dhcpd. There would still be a defined order for
+> differently numbered scripts, just the bootup process wouldnt have to
+> wait for each script to terminate sequentially. Each group would only
+> take as long and the slowest script instead of the sum of the execution
+> time of the scripts. The init would start with the S1 scripts and maybe
+> fork 3 times, wait for each to finish...., then fork maybe twice for
+> the S2 group if there are two scripts, wait for them to
+> finish...etc....
+> 	Is this even possible?
+> ----------------------
+> Eric Bambach
+> Eric (at) CISU (dot) net
+> ----------------------
+Fwiw, there is a project ongoing with this very concept in arklinux, and 
+it HAS shown some improvements in boot speed. I don't know exactly how 
+much, but the goal is to boot (get to a login screen) in under 30 seconds 
+on a desktop type system.
 
-Just FYI, I've heard many people having problem with SpamAssassin but
-are more than satisfied with bmf. Bmf is more lightweight than SA and
-known for being easy to configure and so. But the choice if yours, and I
-won't propagate for bmf... (ehum..) :-)
+cc:d to the current project maintainer.
 
-Happy spam-hunting!
+- --
+tabris
+- -- 
+Space tells matter how to move and matter tells space how to curve.
+		-- Wheeler
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.2 (GNU/Linux)
 
-Best regards,
-Peter
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+iD8DBQE/Ze2YtTgrITXtL+8RAiKdAJ9+3AnkmMdbRiWIwUIP6EYxzAymVACbBAkQ
+KWUtU3Gu9+cjcc5jg668pAs=
+=gRe5
+-----END PGP SIGNATURE-----
+
