@@ -1,41 +1,53 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: about startup logo in RedHat 7.3
-Date: Sun, 1 Dec 2002 13:39:47 -0500
+From: "Yawar Amin" <yav_a@hotmail.com>
+Subject: Re: a little help about vi or vim
+Date: Tue, 3 Dec 2002 14:18:35 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212011339.56870.r4mz3z@yahoo.es>
+Message-ID: <OE17AXY1TtRRa4xpOtx0000cdf6@hotmail.com>
+References: <200211142008.34206.r4mz3z@yahoo.es> <OE22X0nmR1sjVfuscsE00000f73@hotmail.com> <200212011359.11350.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
+
+Okay, now that you've located the file "justify.vim," the rest should be
+easy. Just open the file you want to justify, run the script by entering
+":so /usr/share/vim/vim61/macros/justify.vim" in VIM, and then you have
+several choices for running the actual justify command. To justify a single
+line, the command you should use is ":[line]Justify" where [line] is the
+line number of the line you want to justify. To justify the line you're on
+currently, just leave out [line]. To justify the entire file, press "_j."
+There are other options as well, which are well documented within the
+"justify.vim" file itself. Just open that file in VIM (using the ":e"
+command) and you'll see what I mean.
+
+Yawar
+
+
+----- Original Message -----
+From: "r4mz3z" <r4mz3z@yahoo.es>
+To: "Yawar Amin" <yav_a@hotmail.com>
+Sent: Monday, 02 December, 2002 00:59
+Subject: Re: a little help about vi or vim
+
 
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-Hi friends...
-  I was playing, looking for something about logo and I find that there are a 
-file that contain parameters for "xsri" program that put the logo in your 
-screen when start the XWindow mode  ... it is "xsrirc" and in my RedHat7.3 is 
-in "/etc/X11" ... some scripts look for this file, if this file existe and is 
-normal execute his.
-  So you can erase (rename) this file if u don't want this logo everything or 
-change it
-  I think that it is interesting for a lot of newbies in RedHat like me
+Hi...
+  your help have been so useful for me... I can set textwidth in any value
+depend of the document in which i'm working.
+  But I can execute the macro justify, please help me with one little
+sample... I located this macro at: "/usr/share/vim/vim61/macros/justify.vim"
+  I hope don't hurt you, so very thanks.
 
 [Pepo]
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
 
-iD8DBQE96ld5s4dF9gl05swRAjRTAKCRLthwlRw4pJzlceEGHkkw3kEgYgCgmaQ4
-FpZAaYc1KfmFAlIqlSqeZ50=
-=pdzf
+iD8DBQE96lv+s4dF9gl05swRAopaAJ40xEggop2QJfSbM3lYdFqrmiCRoACfcK2R
+aDUPKRqAM5JLTeZ8sb9jTH8=
+=Uujz
 -----END PGP SIGNATURE-----
-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
