@@ -1,37 +1,33 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: IP command, was SuperNwebie.
-Date: Wed, 18 Sep 2002 11:26:10 +0000
+Subject: Re: running prog on start up
+Date: Wed, 18 Sep 2002 11:47:55 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0209181126100E.03392@unix.pa3gcu>
-References: <5.1.0.14.1.20020917131025.026cf820@celine> <0209180552260D.03392@unix.pa3gcu> <3D885065.B7DB08C8@gelm.net>
+Message-ID: <0209181147550F.03392@unix.pa3gcu>
+References: <F29WEEREhKlIKQcFWqX00008337@hotmail.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D885065.B7DB08C8@gelm.net>
+In-Reply-To: <F29WEEREhKlIKQcFWqX00008337@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+To: a a <xlsd@hotmail.com>, linux-newbie@vger.kernel.org
 
-On Wednesday 18 September 2002 10:07, Chuck Gelm wrote:
-> :/share/tmp# ip -V
+On Wednesday 18 September 2002 06:14, a a wrote:
+> Hello,
+> I've written a program in c and want to run it as soon as BasicLinux boots
+> up...
+> the program is in /cr09 and i run the program using ./serialport
 >
-> bash: ip: command not found
+> is there a startup stript that i can edit? what will i need to change?
 >
->  on my Slackware v8.0 install
->   (A-AP-D-K-N disksets).
+> thanks again
 >
-> :-|
->
-> Chuck
-> p.s. Thanks, Ray & Richard & others, for the years of helpful
-> advice on this list. :-)
 
-You wont find it on slackware-8.0 if i remember correctly, it was first 
-included in the most recent release, 8.1.
-
-Cheers.
-
+I have no knowlage of Basiclinux, however most all distro's have a file 
+called rc.local which is mostly located under /etc/rc.d
+That file is the last file to be called in the boot chian, so thats the place 
+to place commands to start local stuff.
 
 -- 
 Regards Richard
