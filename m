@@ -1,48 +1,42 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Fwd: problems with recsue disk (was: Re: [no subject])
-Date: Sun, 11 Aug 2002 17:14:22 -0700
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: boot floppy
+Date: Sun, 11 Aug 2002 22:08:10 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020811170804.0212cd00@celine>
-Mime-Version: 1.0
+Message-ID: <200208120208.g7C28AH23608@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Haines Brown <brownh@hartford-hwp.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Quick followup ... I wasn't thinking carefully enough before. Since you're 
-using syslinux, the floppy must be a DOS floppy. You can't mount a DOS 
-filesystem as root. One way to do what you want is to incorporate the 
-mini-shell into a .tgz package that initrd.img can load into a RAM disk it 
-creates, then making the RAMdisk the root filesystem. Another is to put an 
-ext2 filesystem on the floppy, but I don't think syslinus will work with 
-that (you'll need LILO instead). A third option is to leave the limited 
-shell on the hard disk somewhere, then mount an hd** or sd** partition as 
-root and run the shell as init from it.
+Ray,
 
-To see how the RAMdisk stuff works, get one of the standard rescue disks 
-like tomsrtbt or trinux (actually a disk set). A Google search will track 
-down the URLs easily.
+Thanks, but no progress yet. I used dd to copy to an unmounted
+ext2-formatted floppy the files created by mkbootdisk: boot.msg,
+initrd.msg, ldlinux.sys, syslinux.cfg, and vmlinuz. I also copied lsh
+(Little Shell, which I can run and get a "C" type prompt). The
+syslinux.cfg files was edited as follows:
 
->Date: Sun, 11 Aug 2002 17:02:59 -0700
->To: Haines Brown <brownh@hartford-hwp.com>
->From: Ray Olszewski <ray@comarre.com>
->Subject: problems with recsue disk (was: Re: [no subject])
->Cc: linux-newbie@vger.kernel.org
->
->Sorry, Haines. Perhaps someone else can help you with a definitive answer. 
->As I said, I was just telling you what to try based on the man-page 
->assertion that syslinux used this line the same way as LILO.
-[rest deleted]
+label linux
+	kernel vmlinuz
+	append initrd=initrd.img root=/dev/fd0 init=/lsh
 
+I stuck the diskette into a (SCSI) Windows machine, and after the
+machine's SCCI BIOS loaded, the diskette is accessed and I get:
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Loading.......................................................
+Unpacking. Loading kernel
 
+Hoever, instead of starting lsh, it simply resets the machine and I'm
+in a boot loop.
+
+Since runing ./lsh does lead to a prompt, I assume that binary is
+workable. Therefore, something may be wrong with the script
+above. I don't understand init, but why the forward slash in
+init=/lsh? 
+
+Haines Brown 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
