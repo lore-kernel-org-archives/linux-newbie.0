@@ -1,56 +1,118 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: Debian Sid startup problems
-Date: Sat, 12 Jun 2004 13:47:20 -0500 (CDT)
+Date: Sat, 12 Jun 2004 14:04:54 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406121333170.1825@debian-emach>
-References: <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611160033.01fa0948@celine> <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611183923.01fc9dc0@celine> <Pine.LNX.4.58.0406112102240.2201@debian-emach>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach> <5.1.0.14.1.20040611215205.01faf760@celine>
- <Pine.LNX.4.58.0406121104520.1489@debian-emach> <40CB459C.6050509@gelm.net>
- <Pine.LNX.4.58.0406121307380.1504@debian-emach>
+Message-ID: <Pine.LNX.4.58.0406121354120.1825@debian-emach>
+References: <5.1.0.14.1.20040611215205.01faf760@celine>
+ <Pine.LNX.4.58.0406112204310.2201@debian-emach> <5.1.0.14.1.20040611160033.01fa0948@celine>
+ <5.1.0.14.1.20040611160033.01fa0948@celine> <5.1.0.14.1.20040611183923.01fc9dc0@celine>
+ <Pine.LNX.4.58.0406112102240.2201@debian-emach> <Pine.LNX.4.58.0406112204310.2201@debian-emach>
+ <5.1.0.14.1.20040611215205.01faf760@celine> <5.1.0.14.1.20040612111803.01fd5808@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0406121307380.1504@debian-emach>
+In-Reply-To: <5.1.0.14.1.20040612111803.01fd5808@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Well, I don't know if I can claim to have resolved my problems or not - I
-guess you'll have to be the judge of that.  But the display is back to
-working normally with the 2.6.5 kernel and I seem to have usb (at least my
-multi-reader) working as well.  So, here's what I've done.
+On Sat, 12 Jun 2004, Ray Olszewski wrote:
 
-I changed NoS15usbmgr back to S15usbmgr and rebooted the computer into
-console mode.  I issues startx, got a very brief blank screen with "no
-signal"  which quickly gave way to my normally-working gui.  I guess that
-means hotplug is the culprit here (left it commented out as NoS40hotplug
-in /etc/rcS.d).  Trying to find out if there were any conflicts between
-framebuffer and usb under the 2.6 kernel I googled framebuffer, restricted
-by usb, restricted by 2.6.  That gave me this article
-http://linux.derkeiler.com/Mailing-Lists/Debian/2003-07/0048.html , which
-didn't seem all that relevant.  However information contained at the end
-("load usbcore, uhci-hcd, usb-storage" and "mount -t usbfs none
-/proc/bus/usb"), I was able to get my multicard reader to show up in
-usbview.  I even formatted a flash disk, and successfully mounted and
-unmounted one.  The display continues to work normally.  Guessing that
-some wierd problems I was having while attempting to toubleshoot all this
-were related to a line I earlier inserted into /etc/fstab (the line was
-usbdevfs /proc/bus/usb usbdevfs defaults 0 0), I removed that line.  So,
-usb seems now to be working, as is the display.  I hate to just kind of
-thrash around and take wild stabs like this, but it did get me a few steps
-forward (got usb going) in this case.  I'm not quite clear on how to
-implement usb more coherently (maybe write a script?), but I suppose I'll
-ask more about that later.
+> This is a symlink to a script (in /etc/init.d). The next step (after the
+> one you suggest) is to read the script and see what it does ... most
+> likely, what kernel module(s) it installs. That should isolate the
+> conflicting item (daemon, kernel module, or whatever).
 
-Further feedback appreciated.
+I've appended the script to the end of this email: I don't understand very
+well what it does, but I don't see any module loading going on there.
+Could I ask you to take a look and see if you see anything troublesome?
 
-James
+>  From your earlier descriptions, it sounds like X is being stalled
+> somewhere in its initialization stage. What is the last thing X reports
+> doing in the log?
 
-PS  I have yet to uncomment NoS99xdm so that the machine boots straight
-into the xdm login window like it used to, but am guessing that will work
-fine, since startx from the command line works now.
+It seems to overwrite the previous log on every boot, doesn't it?  If so,
+I've lost the error messages from previous boots (it hasn't hung the last
+7 or 8 times I've rebooted, since I've commented out those things).
+Should I make it hang so as to get the output?
+
+> is not just the result of a glitch in a package that has been fixed. In
+> fact, I'd go so far as to recommend a full upgrade or dist-upgrade, not
+> just upgrading to the current version of xserver-xfree86 (and any
+> dependencies it automatically upgrades).
+
+I'll take that under consideration.  One question regarding this: since
+I've been apt-get install(ing) kernels, does this mean when I do a
+dist-upgrade I get a new kernel as well?
+
+Thanks, James
+
+--------------------BEGIN HOTPLUG SCRIPT-------------------------------
+#!/bin/sh -e
+#
+# description:  Starts and stops each hotpluggable subsystem.
+#               On startup, may simulate hotplug events for devices
+#               that were present at boot time, before filesystems
+#               used by /sbin/hotplug became available.
+
+PATH=/sbin:/bin
+
+[ -x /sbin/hotplug ] || exit 0
+
+if [ ! -f /proc/sys/kernel/hotplug ]; then
+   echo "Kernel hotplug support not enabled"
+   exit 0
+fi
+
+[ -e /etc/default/hotplug ] && . /etc/default/hotplug
+
+run_rcs() {
+    for RC in /etc/hotplug/*.rc; do
+        basename=${RC#/etc/hotplug/}
+        name=${basename%.rc}
+        if [ "$1" != status ]; then
+            if [ "$(eval echo \$HOTPLUG_RC_$name)" = no ]; then
+                continue
+            fi
+            echo "   $name"
+        fi
+        $RC $1 || echo -n " [failed]"
+    done
+}
+
+
+case "$1" in
+start)
+    echo "Starting hotplug subsystem:"
+    echo /sbin/hotplug > /proc/sys/kernel/hotplug
+    run_rcs $1
+    echo "done"
+    ;;
+
+stop)
+    echo "Stopping hotplug subsystem:"
+    run_rcs $1
+    echo /bin/true > /proc/sys/kernel/hotplug
+    echo "done"
+    ;;
+
+restart|force-reload)
+    echo -n "Restarting hotplug subsystem:"
+    run_rcs stop
+    run_rcs start
+    echo "."
+    ;;
+
+status)
+    run_rcs $1
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart|status|force-reload}" >&2
+    exit 1
+    ;;
+esac
+exit 0
+------------------END HOTPLUG SCRIPT-----------------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
