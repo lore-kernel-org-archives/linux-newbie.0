@@ -1,15 +1,38 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Router spam
-Date: Tue, 24 Feb 2004 07:47:41 -0500
+From: Rei Shinozuka <shino@panix.com>
+Subject: re: Router spam
+Date: Tue, 24 Feb 2004 08:54:01 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402240747.41112.sotl155360@earthlink.net>
+Message-ID: <20040224135401.GA28753@panix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, SCADA Mailing List <scada@lists.iinet.net.au>, slug@nks.net
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+that is a *horrifying* story.  i'll certainly join you in boycotting
+belkin products while they maintain such a heinous policy and 
+unapologetic tone.  the mind boggles when you consider that the maker
+of a NIC chip could do something similar, or a video card maker could
+paint pop-up ads right into the frame buffer, a keyboard maker could 
+make the keyboard change "http:..." strings to other URLs.
+
+i think the ghastliest line was that "The router would grab a random HTTP
+connection every eight hours and redirect it to Belkin's (push) advertised 
+web page."  you would really begin to suspect your devices were consipiring
+against you--and in this case, you'd be right!!
+
+the following  page has more info, including belkin's weak response: 
+http://www.marco.org/content/phpBB2/viewtopic.php?t=36
+
+just do a google search on "boycott belkin"
+
+thanks for sharing, frank
+
+-rei
+
+----- Forwarded message from Frank Roberts - SOTL <sotl155360@earthlink.net> -----
 
 Hi All
 
@@ -36,6 +59,14 @@ Belkin products expects spam from Belkin.
 
 Thanks
 Frank
+-
+
+----- End forwarded message -----
+
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
