@@ -1,23 +1,26 @@
-From: "eshwar" <eshwar@moschip.com>
-Subject: any way to find which pci driver uses what memory region & Any way to find which driver is attached to which device file
-Date: Thu, 14 Oct 2004 08:15:38 +0000 (UTC)
+From: "Dave B. Sharp" <daveb_sharp@yahoo.ca>
+Subject: Physical Mac Address
+Date: Thu, 14 Oct 2004 11:50:21 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <025301c4b743$dd7a2d00$41c8a8c0@Eshwar>
+Message-ID: <20041014155021.96634.qmail@web41505.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Date: Thu, 21 Oct 2004 13:29:17 +0530
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-HI,
+Hi there, 
+  I would like to access the physical Mac addr. from
+hardware (an immutable source). Do I need a specific
+implementation for each NIC card or is there a kernel
+call that calls each implementation. I have looked at
+server sample driver sources.
+  Thanx
+     Dave
 
- Is there any way to find which pci driver uses what memroy regions and any
-way to find which driver si attached to which device file
-
-Eshwar
-
+______________________________________________________________________ 
+Post your free ad now! http://personals.yahoo.ca
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
