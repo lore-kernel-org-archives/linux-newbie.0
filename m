@@ -1,60 +1,49 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: RAM and swap partition
-Date: Fri, 13 Dec 2002 17:31:06 -0500
+From: whitnl73@juno.com
+Subject: Re: Setting standard arguments
+Date: Fri, 13 Dec 2002 17:51:28 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DFA5FAA.56E26548@gelm.net>
-References: <200212130451.gBD4pNUg019999@pegasus.wanadoo.be>
+Message-ID: <20021213.183853.134684296.0.whitnl73@juno.com>
+References: <20021212161921.GA10853@neon.pearbough.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20021212161921.GA10853@neon.pearbough.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: axel@pearbough.net
+Cc: linux-newbie@vger.kernel.org
 
-Dear Heimo:
+On Thu, 12 Dec 2002 axel@pearbough.net wrote:
 
- If you will tell the list:
-EXACTLY which distribution and version of linux and
-EXACTLY which kernel and
-EXACTLY which applications you will be using concurrently and
-EXACTLY what your system's bogo MIPS is and
-EXACTLY how fast your hard drive is and
-EXACTLY how much RAM you have and
-EXACTLY how much data your applications will be processing,
- it may be suggested EXACTLY how much swap space you will need.
+> Hi,
+>
+> I have an Slackware installation and I'm using checkinstall to create and
+> install slackware packages from sources.
+> Now there are some options I use checkinstall with that I'd like
+> checkinstall always to use.
+> For example I call "checkinstall" and "checkinstall -S --nodoc --gzman
+> --install=yes" shall be executed.
+> Can this be done somehow with tcsh?
 
- Until then, IMHO, the answer to this topic is,
+alias checkinstall='checkinstall -S --nodoc --gzman --install=yes'
 
- it depends.
+would be one way.  put it in your shell startup file /etc/csh.cshrc
+or ~/.tcshrc or so.  it won't take effect until the next shell startup
+or you source the file you put it in.
+>
+> Thank you for your help,
+> Axel Siebenwirth
+> -
+Lawson
+--
+---oops---
 
- Tell us what you have and what you want to do with it,
-and probably several fellows will suggest how much.
-;-)
 
-HTH, Chuck
 
-Heimo Claasen wrote:
-> 
-> It's still not really clear for my when and if, how much swap space is
-> needed.
-> 
-> There had been two opinions in this thread which clearly pointed to
-> none at all - surely qualified, one from own experience re
-> "workstations", the other (and that was the first time I heard about
-> this at all) that swap is (only?) needed when compiling and in order
-> to save a crash log.
-> 
-> The definition of "total (virtual) memory needed" for a/one programm
-> appears logical (and "natural"); but then, there should be some means
-> of measurement of precisely this, in order to do some reasonable -
-> and economic - decision on that workspace indeed needed.
-> 
-> Furthermore, it seems rational to approach this in function of the
-> actual use of (or installed) applications - i.e., to define, or even
-> to resize if necessary (when a memory hog is added), the swap partition
-> _after_ the otherwise complete installation of the "system".
-> 
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-12
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
