@@ -1,58 +1,60 @@
 From: Chuck Gelm <nc8q@gelm.net>
 Subject: Re: Slackware 8.1.01 Install????
-Date: Mon, 09 Jun 2003 21:32:12 -0400
+Date: Tue, 10 Jun 2003 06:01:04 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EE5351C.E23B6FEC@gelm.net>
-References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306081036.08989.pa3gcu@zeelandnet.nl> <3EE45A69.9E6662C5@gelm.net> <200306091449.12908.pa3gcu@zeelandnet.nl>
+Message-ID: <3EE5AC60.201B082D@gelm.net>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306052108.36121.pa3gcu@zeelandnet.nl> <20030607104727.A355@lnx2.w8mch.ampr.org> <200306081036.08989.pa3gcu@zeelandnet.nl> <3EE45A69.9E6662C5@gelm.net> <3EE614A6.1CBE57ED@actrix.co.nz>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: qwms-avib@dea.spamcon.org, haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-I just booted the slackware-9.0-iso on a rather old
-Compaq Deskpro 2000 (pentium 120 MHz with f00f bug),
-did a 'dmesg|head' and found this:
+Hi, Steven
 
-Kernel command line:
-BOOT_IMAGE=/kernels/bare.i/bzImage initrd=initrd.img load_ramdisk=1 \
-prompt_ramdisk=0 ramdisk_size=6464 rw root=/dev/ram SLACK_KERNEL=bare.i
-
- So, somehow, when the system boots from CDROM, its pwd=/isolinux/
-because there is no path in 'initrd=initrd.img', but there is a path
-in 'BOOT_IMAGE=/kernels/bare.i/bzImage'.
-
- Is there a way to copy the CDROM's root filesystem to /dev/hdb1
-and alter the default 'scsi.s' bootdisk so that it loads the root
-image from /dev/hdb1?    rdev?
-
- Can the boot files be copied to /dev/hdb1 and the 'scsi.s'
-bootdisk be altered to boot /dev/hdb1/kernels/scsi.s/bzImage
-and the root /dev/hdb1/isolinux/initrd.img?
-
- Then the CDROM and be mounted on the SCSI CDROM drive and
-the install begun. 
-
- Heck, why not copy /isolinux/*, /kernels/scsi.s/*, & /slackware/*
-to /dev/hdb1?
-
-Wondering... Chuck
-
-
-pa3gcu wrote:
+qwms-avib@dea.spamcon.org wrote:
 > 
-> On Monday 09 June 2003 11:59, Chuck Gelm wrote:
-> > Hal:
+> Chuck Gelm wrote:
 > >
-> >  I've created slackware-8.1-iso & slackware-9.0-iso CDROMs.
+> > I've created slackware-8.1-iso & slackware-9.0-iso CDROMs.
 > > I have exhausted attempts to use them as install media
 > > while booting from a single floppy.
+<snip>
+> Now you are getting close to a solution.  You take the kernel
+> from the CDrom (bzImage) and the image of the installation
+> filesystem (initrd.img) and boot them (from DOS) using loadlin.exe:
+> ---------------------------------------------------------------
+> loadlin d:\kernels\scsi.s\bzImage initrd=d:\isolinux\initrd.img
+> ---------------------------------------------------------------
+ 
+ Provided that your boot floppy's o/s can recognize the CDROM drive.
+;-)
+
+ Thanks, Steven, this should work for me.
+
+ Hal:  Does your reluctant system, if booted from a DOS diskette,
+have its SCSI CDROM drive recognized?
+
+Regards, Chuck
+
+> I've just executed that line (on a nearby system) and it is now
+> running the installation routine.  Note:  you may need to change
+> the d: to a different letter (depending on what letter was assigned
+> by DOS to your CDrom).
 > 
-> The idea that has been adopted by Slack for booting from a cdrom is very easy
-> and AFAIK is going to be keep that way.
-> Are you saying that your cdrom does not boot the system and/or not find your
-> hardware properly.??
+> > Is there a way to copy the CDROM's root filesystem to /dev/hdb1
+> > and alter the default 'scsi.s' bootdisk so that it loads the root
+> > image from /dev/hdb1?    rdev?
+> 
+> Yes, but it should not be necessary.  Just try loadlin.exe
+> (get it from the loadlin zip file in the /kernels directory
+> of the CDrom).
+
+ The installation runs much faster from hard drive.  ;-)
+
+> Cheers,
+> Steven
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
