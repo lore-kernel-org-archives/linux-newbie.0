@@ -1,34 +1,36 @@
-From: James Miller <jamtat@mailsnare.net>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: An easy home version of Linux
-Date: Mon, 18 Oct 2004 18:12:15 -0500 (CDT)
+Date: Tue, 19 Oct 2004 10:25:17 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410181808190.1287@debian-emach>
-References: <5.1.0.14.1.20041018131010.07cea3a0@celine>
+Message-ID: <20041019022520.123F13EC95@heisspf>
+References: <HBEJLOFMLEPBMAAEFNFDKEPKCJAA.azapata@du.edu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20041018131010.07cea3a0@celine>
+In-Reply-To: Your message of "Mon, 18 Oct 2004 11:58:02 CST."
+             <HBEJLOFMLEPBMAAEFNFDKEPKCJAA.azapata@du.edu> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
+To: "Anna G. Zapata" <azapata@du.edu>
 Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-On Mon, 18 Oct 2004, Ray Olszewski wrote:
+Hi Anna
 
-> somebody comes to seem easy after a time. I use Debian myself; its online
-> installs (using a set of boot/root floppies or an install CD, but getting
-> most packages from an up-to-date package repository) make it "easy" in a
-> way that matters to me, though it is pretty weak on identifying hardware
-> for you, so that part can be hard. Others like Slackware, which also has
+Slackware will surely do it as you control the installation. I installed and 
+run it on less than 2 Gb with only 124 Mb memory. You can even install 
+ZipSlack on a dos partition of which the basic installation w/o X uses only 
+around 80 Mb.
 
-Not so with the new installer, which I've tried.  It does a very good job
-of hardware ID.  The new installer is what some of the newer Debianish
-distros (Userlinux, Ubuntu) use.  However Debian still doesn't seem to
-have something like kudzu's ability to detect the presence of new hardware
-in an already-setup system.  But I'm still evaluating Ubuntu: I have yet
-to offer it some new hardware to see what happens.
+And yes I find Knoppix great, either you run it entirely from the CD or what I 
+did copied some files to the HD. Now I boot with the CD and run it from the HD 
+that uses about 1.6 Gb disk space with the complete KDE jazz et all. That 
+frees the CD.
 
-James
+Regards
+
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
