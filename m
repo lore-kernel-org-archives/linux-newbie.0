@@ -1,33 +1,38 @@
-From: wa4chq@netscape.net (neil t)
-Subject: tnx re: dependancies
-Date: Tue, 04 Mar 2003 17:46:55 -0500
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3159EBE7.756CD87C.0006BEFC@netscape.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: warnings appearing during preprocessor string concatenation (##)
+Date: Wed, 5 Mar 2003 15:34:39 -0500
+Sender: linux-gcc-owner@vger.kernel.org
+Message-ID: <b45mva$re8$2@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
+Return-path: <linux-gcc-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-gcc@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
 
-Greetings all
-Steven and Ray...thanks for the help.  You both answered my question.
-All the best
-Neil T.
+I have the following line in my code,
 
--- 
-Arachne/DRdos/Debian3.0
-Basiclinux/QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+#define FEATURE(select)     feature_structure. ## select ## .member
+  ...
+   FEATURE(test);
+
+and when I run it through the compiler (gcc 3.2.2 on Linux x86) I get the
+_warning_
+
+  file.c:111:32: warning: pasting "." and "test" does not give a valid
+preprocessing token
+  file.c:111:32: warning: pasting "test" and "." does not give a valid
+preprocessing token
+
+If I look at the preprocessor output, (gcc's -E option) it produces what I'm
+hoping for, although I'd like to avoid the warning.  Suggestions?
+
+- Jamie
+
+Reply to "gmane.linux.c-programming" or me directly.
 
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
