@@ -1,38 +1,31 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Separate Boot Partition
-Date: Tue, 27 Jan 2004 11:15:54 +0800
+From: Joshua Rogers <joshuarogers@hopper.net>
+Subject: Re: Adding Fonts in SuSE Linux?
+Date: Mon, 26 Jan 2004 22:24:29 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040127031554.6CE141C920@heisspf>
+Message-ID: <4015E7FD.3010905@hopper.net>
+References: <bv4ast$ppr$1@sea.gmane.org>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <bv4ast$ppr$1@sea.gmane.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Dave wrote:
 
-Presently my boot folder resides under root as /boot. If I decide to make a 
-separate boot partition on my hard drive are then the following steps the 
-right way?
+> How does Linux handle fonts?  Can I install True Type Fonts like the 
+> ones I use in Win... (Sorry...) that inferior OS?
+>
+> Dave
 
--- Make a partition on the hard drive of 50 MB and format it.
+If I recall, it handles it quite well (of course I could be getting my 
+distros confused)
 
--- in fstab put "/dev/hda3  /boot  ext3  defaults  0 0
+I believe it has an area in either the control center or yast dedicated 
+to fonts.  You can add or remove them from there. 
 
--- move /boot to /tmp/boot
-
--- mount /boot
-
--- move files of /tmp/boot to /boot
-
-If so do i have to make a new mkbootdisk?
-
-Thanks & regards
-
--- 
-Peter
-
+(If I was anymore vague about this...... oh boy.....)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
