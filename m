@@ -1,97 +1,55 @@
-From: "John T. Williams" <jowillia@vt.edu>
-Subject: Re: Spam from linux-newbie
-Date: Wed, 10 Mar 2004 18:03:46 -0500
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Convert PBM to ascii text??
+Date: Thu, 11 Mar 2004 10:16:48 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00ad01c406f3$f14c8540$ed64a8c0@descartes>
-References: <20040310091756.16C8ED84C@heisspf> <5.1.0.14.1.20040310070630.02022008@celine> <004f01c406f2$49c9f100$ed64a8c0@descartes>
-Reply-To: "John T. Williams" <jtwilliams@vt.edu>
+Message-ID: <20040311151648.GA599@lnx2.w8mch.ampr.org>
+References: <5.1.0.14.1.20040308130547.01f63e50@celine> <20040308204535.GA1010@lnx2.w8mch.ampr.org> <5.1.0.14.1.20040308130547.01f63e50@celine> <5.1.0.14.1.20040309070617.01fde278@celine> <20040310135900.GA614@lnx2.w8mch.ampr.org> <Pine.LNX.4.58.0403100842190.1024@debian-emach>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.58.0403100842190.1024@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "John T. Williams" <jtwilliams@vt.edu>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-Wow, if I had made any more grammatical or spelling mistakes in that last
-post I would have set some sort of record.  I'm still seeing matching rules
-dancing before my eyes.
+On 03-10, James Miller wrote:
+> Sounds like a good alternate solution for you, Hal - but one which is
+> likely only available for proprietary operating systems produced by
+> corporations bent on world market domination - would be speech recognition
+> software.  Read your friend's note into the computer, and have it produce
+> typed and formatted text.  I guess it'll be a few years before I can say:
+> "Hal, why don't you look into speech recognition software for Linux as a
+> solution to this problem?"  Meantime, we can at least dream about it and
+> identify it as a need, can't we?
+> 
+> James
 
-- John
+	Greetings: Good suggestion - never thought of that, but I've
+found it easier to confront him with the query of why he insists on
+snail mail when he has all kinds of computer power, etc.. <grin>
 
+> 
+> PS  This presumes you've got audio-in working on your Linux box, which can
+> be another challenge in itself.
 
+	Simple audio for this kind of thing no real problem according
+to my notes which I wont confirm.. And have to presume the levels are
+default OK and that the mic input isn't muted.. <g>
 
------ Original Message ----- 
-From: "John T. Williams" <jowillia@vt.edu>
-To: <linux-newbie@vger.kernel.org>
-Sent: Wednesday, March 10, 2004 5:51 PM
-Subject: Re: Spam from linux-newbie
+dd bs=8k count=(n in seconds) < /dev/audio > sample.voc  #[record]
 
+cat sample.voc > /dev/audio	#[listen]
 
-> just a general statement, I don't actually have a problem with the spam i
-> get from any of the 4 or 5 majordomo listservs I'm subscribed to.  I
-filter
-> at mind end, and don't even notice most of it.
->
-> I was just thinking aloud that the a possible solution for spam on a open
-> listserv like this, would be that before people are primitted to post at
-> will, they have to send 1 message that gets approved by some supervisor or
-> list controller, but I've been spending all day making firewall rulls so
-my
-> mind is probably rattled :)
->
-> ----- Original Message ----- 
-> From: "Ray Olszewski" <ray@comarre.com>
-> To: <linux-newbie@vger.kernel.org>
-> Sent: Wednesday, March 10, 2004 10:34 AM
-> Subject: Re: Spam from linux-newbie
->
->
-> > At 08:50 AM 3/10/2004 -0500, John T. Williams wrote:
-> > >You could have a first message approval policy;
-> > >by this I mean, before I can send messages to the listserv, you would
-> have
-> > >to approve of my first one.
-> > >
-> > >Sort of like packet filtering, but with e-mails.
-> >
-> > Who is the "you" in this sentence? I aseume you mean the list owner, the
-> > only person in a position to do something like this.
-> >
-> > If that is the case, you, John, and everyone here needs to understand
-that
-> > the lis owner, whoever he or she is, neglects this list. I doubt he or
-she
-> > reads its traffic or participates in any way in its activity. I already
-> > suggested the customary way to reach the list owner, but I doubt if that
-> > would accomplish anything either.
-> >
-> > Beyond that ... do you (does anyone) know of mailing-list software that
-> > actually implements this idea? How well it would work in practice is not
-> > clear to me, but it is not a bad idea ... though the possibility of
-> > spoofing From: addresses restricts its usefulness. My impression is that
-> > the usual restriction method is to restrict posting to addresses that
-are
-> > signed up for the list ... also imperfect, but good enough to screen out
-a
-> > lot of the common SPAM styles.
-> >
-> >
-> >
-> >
-> >
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Oh but the file lengths. <grin> Thanks again.. (Don't know where I
+got the above but it did work when I tried using it for a singing
+"telegram." HI..
 
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+		Utrum Per Hebdomadem Perveniam
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
