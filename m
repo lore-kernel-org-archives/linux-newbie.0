@@ -1,28 +1,26 @@
-From: dalgoda@ix.netcom.com (Mike Castle)
-Subject: Re: CDDA ->MP3 Conversion
-Date: Sun, 14 Jul 2002 22:28:01 -0700
+From: "Ola Theander" <ola.theander@otsystem.com>
+Subject: Wanted: A good external USB/Firewire CD-RW compatible with Linux?
+Date: Mon, 15 Jul 2002 10:07:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1hmtga.sf4.ln@thune.mrc-home.org>
-References: <20020712.142607.-314991.0.matthewstapleton@juno.com>
+Message-ID: <000801c22bd6$9d4cffa0$c8000a0a@stowks14>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-In article <20020712.142607.-314991.0.matthewstapleton@juno.com>,
-Matthew Stapleton  <matthewstapleton@juno.com> wrote:
->cdda2wav and BladeEnc seemed to work well for me.
+Dear subscribers.
 
-You may also consider lame and also switching from mp3 to ogg.
+I try to find a good external CD-RW unit with either an USB or Firewire
+interface that works well with Linux. Unfortunately the resellers I've
+contacted didn't know very much about the Linux compability of their
+devices. Therefore I turn to you, all good subscribers, to see if I can
+get some help. So, if there is anyone out there who knows of a CD-RW
+unit that fit my needs, I'll be glad to know.
 
-mrc
+Kind regards, Ola Theander
 
--- 
-     Mike Castle      dalgoda@ix.netcom.com      www.netcom.com/~dalgoda/
-    We are all of us living in the shadow of Manhattan.  -- Watchmen
-fatal ("You are in a maze of twisty compiler features, all different"); -- gcc
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
