@@ -1,28 +1,34 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: gdict won't run
-Date: Wed, 14 Aug 2002 21:25:00 -0400
+From: Peter <pfheiss@philonline.com>
+Subject: Re: RH7.3 keyborad lock-up
+Date: Thu, 15 Aug 2002 11:21:05 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208150125.g7F1P0423494@hartford-hwp.com>
+Message-ID: <200208150321.LAA01585@philonline.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@hartford-hwp.com
+To: linux <linux-newbie@vger.kernel.org>
 
-When I upgraded to RH 7.3, I lost gdict. I'd like to add it as an
-applet to my panel. But when I try, nothing except a default icon on
-the panel (black square with gnome foot).
+Hi,
 
-whereis tells me that gdict is at /usr/bin/gdict. When root tries to
-execute it, a pop up window says that dcit seems to have died
-unexpectedly. /var/message says nothing. How do I debug?
+once more on this subject before closing it.
 
-rmp verify says that gdict-0.6.1 has no problems, and I uninstalled
-and reinstalled the rpm.
+Peter said:
+>>I made that switch with RH7.1 some time ago with no problems.
+>>7.1 runs on XFree86-4.0.3-5 and and 7.3 om XFree-4.2.0-8.
 
-Haines Brown
+Ray Olszewski said:
+> This move by Red Hat may be optimistic. Even Debian unstable (Sid)
+> still runs XFree86 4.1.0-17. 
 
+And I think you were asking what RH7.2 is using. It's XFree86-4.1.0-3 on the 
+Cd I borrowed from a friend. I will upgrade to that one now and copy what is 
+useful from 7.3 to 7.2.
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
