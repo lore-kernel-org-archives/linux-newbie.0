@@ -1,30 +1,67 @@
-From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Subject: reiserfs
-Date: Sun, 25 Jan 2004 16:40:31 +0800
+From: Agri <agri@desnol.ru>
+Subject: Re: howto configuring kernel and modules.conf for automatic loading
+ of ide-scsi
+Date: Sun, 25 Jan 2004 14:06:56 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401251640.31302.wheds8@ms66.hinet.net>
+Message-ID: <20040125140656.023f0ced.agri@desnol.ru>
+References: <20040125041110.22704715.agri@desnol.ru>
+	<5.1.0.14.1.20040124202304.01f31308@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20040124202304.01f31308@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I have looked at the various file system stuff for comparison. I have been 
-using Reiserfs for some time now and had, until recently, no problems. 
+thanks for answers, but....
+the only thing i get: there is no way to configure loading of ide-scsi "ON DEMAND".
+Am i right?
 
-?s
+Agri
 
-Are Xfs and Jfs still too new to use?
+On Sat, 24 Jan 2004 20:31:06 -0800
+Ray Olszewski <ray@comarre.com> wrote:
 
-I have used ext3 for my / partition. But I can't remember who told me I should 
-do that or why. Is it a good idea or is Reiserfs fine. 
-
-(Other partitions are /swap, /usr, and /home. swap as swap, and the others are 
-reiserfs.) 
-
-
+> At 04:11 AM 1/25/2004 +0300, Agri wrote:
+> >i'm  confused with module loading.
+> >
+> >i have cdrw and configure ide-scsi emulation for it.
+> >doing "modprobe ide-scsi; mount /dev/scd0" is fine.
+> >
+> >but, how to configure automatic loading of ide-scsi?
+> >it seems that just "touching" for /dev/scd0 do not
+> >cause kmod to exec modprobe at all. What to do?
+> 
+> You load them as part of the boot/init process. Exactly how you do that 
+> depends quite a bit on which Linux distrobution you are using. The advice 
+> someone else posted, for example, looked like it was for Slackware. In 
+> Debian, you'd add the module names to /etc/modules . Probably the 
+> assortment of distros descended from Red Hat has yet another procedure for 
+> this.
+> 
+> >i think that loading several modules at boottime are not the best idea,
+> >in that case - why do i use modules at all?
+> 
+> There are many reasons to use modules. The specific reasons depend on the 
+> specific modules in question. In this instance, though, you should feel 
+> free to recompile your kernel to incorporate ide-scsi support (of course, 
+> also compiling in the other modules that ide-scsi needs in order to function).
+> 
+> You are entitled to your opinion ... it is your system after all ... but 
+> personally I think it is smart to load during init, or compile in, support 
+> for devices that hold filesystems.
+> 
+> 
+> 
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
