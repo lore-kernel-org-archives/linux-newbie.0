@@ -1,27 +1,28 @@
-From: "Sean Rima" <gateway@tcob1.net>
-Subject: Linux Newsleters from me.
-Date: Tuesday, 18 Mar 2003 01:02:48 +0000
+From: "geoff bagley" <geoff@gcbagley.uklinux.net>
+Subject: Digests.
+Date: Tue, 18 Mar 2003 13:41:41 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_7223=3a9750=2f200_a221c5f8@fidonet.org>
+Message-ID: <000001c2ed54$694d3ae0$b630f7c2@gcbagley>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: All
+Please can you tell me how to find a "digest #4930" ?
 
-I must say sorry to all the members of the Linux Newbies list for the off topic 
-newsletters that arrived on the list from my system. I run a BBS and gate the 
-list so that Fidonet newbies to Linux have access to the list. As a secondary 
-aid, I also placed the newsletters in the echo and forgot to filter them out, 
-which I have now done. I will also check all outgoing posts to the list to make 
-sure this never happens again
+I am trying to track down linux drivers for a Mitac 6031 Notebook.
 
-Sean Rima
-Sysop TCOB1.net BBS and Fidonet System Ireland's only active BBS.
+Particularly for the Trident 9660 VGA display.
 
+Any help appreciated.
+
+
+Best regards.
+
+Geoff
+G3FHL
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
