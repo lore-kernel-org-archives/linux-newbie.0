@@ -1,37 +1,50 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: Delete /home/shared Samba directory; need better SSH solution!
-Date: Wed, 9 Feb 2005 10:53:17 -0500
-Message-ID: <010a01c50ebf$79999d60$260aa8c0@lanadmin>
-References: <20050203213557.GA868@lnx2.w8mch.ampr.org>
-Reply-To: <eatley@wowcorp.com>
+From: "Cristian CHIRILOV" <Cristian.Chirilov@ipsec.ro>
+Subject: Re: Configuring mail\mailx to use an external smtp server.
+Date: Wed, 9 Feb 2005 18:33:21 +0200
+Message-ID: <002c01c50ec5$11dc3ec0$140319ac@atmos>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-In-Reply-To: <20050203213557.GA868@lnx2.w8mch.ampr.org>
+Content-Transfer-Encoding: 7bit
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
 To: linux-newbie@vger.kernel.org
 
+Hello,
 
-We have people remotely SSH into our box from our overseas branch in India,
-and I didn't want to create a home directory for every user at that branch.
-So, I plopped them into /home/shared so they could view our network shares,
-and therefore gain access to the folders for which they had permission
-(having set up groups and put each user into a group). Yesterday, I ended up
-deleting our Samba shares directory (/home/shared) because I was attempting
-to get rid of a user; Linux prompted me if I wanted to get rid of that
-user's files, and I hit ok without thinking, thereby wiping out most of our
-network.
+I don't know for sure if it's possible to configure mail/mailx to use an
+external SMTP server.
 
-I'm slowly but surely restoring everything, but I'm wondering how to
-approach remote SSH a bit more safely. I was thinking of having 1 SSH user
-only for our users to work with.
+You can use nail instead.
 
-Let me know if you require more information. OS is RedHat Linux 9, soon to
-be upgraded to RH Enterprise WS 3.0.
+ls -all /usr/bin/mail
 
-- Eve
+lrwxrwxrwx    1 root     root            4 Jan  1  1996 /usr/bin/mail ->
+nail*
 
+man nail
+
+smtp Normally, nail invokes sendmail(8) directly  to  transfer messages.
+If the smtp variable is set, a SMTP connection  to the server specified
+by the value of this variable is used instead. If the SMTP server does
+not use the stan-dard port, a value of server:port can be given, with
+port  as a name or as a number.
+
+cat ~/.mailrc
+set smtp=mail.example.com
+
+bye.
+
+
+From: "Adam" <adam@luchjenbroers.com>
+
+To: <linux-newbie@vger.kernel.org>
+Sent: Wednesday, February 09, 2005 7:21 AM
+Subject: Configuring mail\mailx to use an external smtp server.
+
+>
+> I'm trying to configure either mail or mailx to use an external smtp
+> server
+> (using sendmail locally is not an option).
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
