@@ -1,61 +1,78 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Cfdisk VS Fdisk??
-Date: Tue, 15 Mar 2005 10:21:23 -0500
-Message-ID: <20050315152123.GA763@lnx2.w8mch.ampr.org>
-References: <5.1.0.14.1.20050313094742.01fe9ba0@celine> <4234B915.4080503@gelm.net>
-Reply-To: haltec@kvinet.com
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: SOLVED: Some users locked out of ssh and sftp?
+Date: Tue, 15 Mar 2005 08:02:59 -0800
+Message-ID: <5.1.0.14.1.20050315074423.02005bc8@celine>
+References: <6667> <20050315092308.63122.qmail@web53603.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4234B915.4080503@gelm.net>
+In-Reply-To: <20050315092308.63122.qmail@web53603.mail.yahoo.com>
+References: <6667>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings Ray and Chuck; thanks for your input.. I'm using v 2.12 of
-both Fdisk and CFdisk, neither of which was the problem so the
-subject line was, actually, in error..
+If this still you, Eve, just from a different e-mail address? Or is this 
+someone new with (almost) the same problem as Eve?
 
-Apprently I had three malfunctions at a time, masking the true
-problem: One bad HD, a flaky flat HD cable and me... Doing all this
-on a newly received MB didn't help.. Changing more than one
-parameter at a time not a good idea sometime..
+At 01:23 AM 3/15/2005 -0800, Donald Duckie wrote:
 
-The HD is in the eCycle carton getting ready for Earth Day and the
-cable, either evaluated critically or in the copper recycle bin..
+>I got this error message as shown below  . . .
+>How do I change the /root/.ssh/known_hosts file?
+>It seems encrypted . . .
 
-All of the above coupled with me, somehow, losing the CMOS set up and
-having to restore defaults and go from there - didn't help... Messing
-with older, circa '92, drives didn't help either.. <grin>
+Chuck identified the right first-pass fix here. To expand a bit: go into 
+the known_hosts file (on the client end, NOT the server end), find the 
+entry for the target sshd server's system (at the START of each long entry 
+is one or more identifiers, which could be hostnames, FQDNs, or IP 
+addresses ... look for 192.168.0.1) and simply delete it. Then your ssh 
+client will see the connection attempt as a first connection to a new host 
+and ask you to confirm it manually ... at which point it will do the 
+required update to known_hosts for you.
 
-Back to the drawing board, later, with a newer drive, etc...
+The above may not work in your setup, though; as I read the man page, it is 
+unclear how ssh handles new connections when set to "StrictHostKeyChecking 
+Yes". If this does NOT work, I suggest a second approach below.
 
-Appreciate!!. Enjoying the list that supplies much of my learning
-curve..
+
+>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+>@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+>    @
+>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+>IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+>Someone could be eavesdropping on you right now
+>(man-in-the-middle attack)!
+>It is also possible that the RSA host key has just
+>been changed.
+>The fingerprint for the RSA key sent by the remote
+>host is
+>23:52:d4:e8:6a:75:72:ed:78:cb:31:1f:6a:ff:b4:ea.
+>Please contact your system administrator.
+>Add correct host key in /root/.ssh/known_hosts to get
+>rid of this message.
+>Offending key in /root/.ssh/known_hosts:7
+>RSA host key for 192.168.0.1 has changed and you have
+>requested strict checking.
+>Host key verification failed.
+
+What is causing your problem is that you (probably) have
+
+         StrictHostKeyChecking Yes
+
+in your ssh **client's** config file (/etc/ssh/ssh_config for systemwide 
+settings,  $HOME/.ssh/config for user-specific setting). Change this 
+setting to
+
+         StrictHostKeyChecking Ask
+
+and ssh will ask you if you want to update the key when it sees this sort 
+of thing, which occurred either because you reinstalled sshd on the host in 
+question (thereby generating a new server key in 
+/etc/ssh/ssh_host_rsa_key), or you replaced the host at that hostname, 
+FQDN, or IP address (whichever way you attempted to connect to it ... 
+probably IP address, since the message refers to 192.168.0.1).
 
 
-On 03-13, chuck gelm wrote:
-> Ray Olszewski wrote:
-> <snip>
-> >I don't know what version of fdisk Slackware is shipping. MY Debian-Sid 
-> >system
-> >is perhaps six months out of date, and it has fdisk version 2.12 ("fdisk 
-> >-v") and cfdisk and cfdisk 2.12 (cfdisk -v"). With these versions, I've 
-> >seen no problems with drives up to 250 GB or so.
-> 
-> My Slackware v9.1, kernel 2.4.22, has
-> fdisk v2.12 &
-> cfdisk v 2.12
-> ;-)
-> 
-> HTH, Chuck
-> 
-
--- 
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
