@@ -1,71 +1,61 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: Text Reformatting
-Date: Mon, 19 May 2003 08:44:13 -0700
+Subject: Re: renaming really long filenames
+Date: Mon, 19 May 2003 09:11:43 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EC8FBCD.1030804@bcgreen.com>
-References: <20030518041124.07222103AE@pfheiss>
+Message-ID: <3EC9023F.5080203@bcgreen.com>
+References: <5.1.0.14.1.20030510082110.01eae2b0@celine>	 <20030510100903.GA1586@localhost.localdomain>	 <5.1.0.14.1.20030510082110.01eae2b0@celine> <5.1.0.14.1.20030510091650.01eae530@celine> <3EBEBD49.2D45C5FE@gelm.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030518041124.07222103AE@pfheiss>
+In-Reply-To: <3EBEBD49.2D45C5FE@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+To: Chuck Gelm <nc8q@gelm.net>
+Cc: linux-newbie@vger.kernel.org, ray@comarre.com
 
-Peter wrote:
-> Hi,
+My solution would be something like:
+
+for i in * ;   do  mv "./$i" "`echo ./$i | tr -d '\00-\042\173-\377<>|' `" ; done
+
+
+Note: I'm deleting characters starting at 7bH, not 6fH -- 6F is in the middle
+of the lower case alphabet, so  it doesn't make sense.
+
+Other things to note:
+   I'm using octal (base 8) characters in the string, not hex
+   the backquote (`)  says to run the command and use the output as the
+   parameter to (in this case) the 'mv' command.
+
+   I'm using './filename' to handle the possibility of a filename starting with
+   a '-' and being mistaken for an option.   './' says "in the current directory",
+   so it's something of a no-op, but guarantees that the name won't start with a '-'.
+
+   the double quotes around "./$i" make sure that spaces (and other greeblies) in the
+   original filename don't get interpreted as work breaks.
+
+
+Chuck Gelm wrote:
+>  Howdy, Y'all:
 > 
-> Some text I download for printing are formatted like:
+>  I have some very long filenames that I would like to shorten.
+> The filenames contain 'spaces' and some characters with tics or
+> apostrophes, and tildes over them.  I tried to change them from
+> a console session, but I don't know how to generate those special
+> characters from the keyboard...and I really don't want to type
+> the long filenames anyway.  :-|
+> OBTW, I have no GUI (X windows) on this computer.
 > 
->       Because of the publicity the Iraqi government has given to the
->                       issue, Iraqis worry about DU.
+>  Is there a way to remove all characters < 023h && > 06fh
+> from these filenames?
 > 
-> which adds more pages for printing.
+> find - sed - mv  ???
 > 
-> How can I with some command, left align the text to read
-> 
-> Because of the publicity the Iraqi government has given to the
-> issue, Iraqis worry about DU.
-> 
-> yet maintaining the paragraphs.
-> 
-> When looking at the text with a word processor they are all left aligned and 
-> can only be changed manually line by line.
-> 
-> I came up with the sausage
-> 
-> cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w 105 file1.txt > 
-> file2.txt
-> 
-> This does not maintain the paragraphs, however. Can sed do it and how?
-> 
-> Thanks & regards
-
-Mostly what you want to do is delete the leading spaces then reformat.
-As long as paragraphs are separated by blank lines, the following should
-work:
-
-sed 's/^[ \t]+//' file | fmt -u -w105 > file2.txt
-
-
-----------------------------------
-
-Note that when you do the " tr [options] > somefile | fmt [options] somefile" ,
-you're losing any advantage of using a pipe.  The output for the
-tr file is redirected into somefile, and fmt is reading explicitly
-from there.   The pipe is essentially unused...  Either :
-
-tr [options]  | fmt [options]
-
-or:
-
-tr [options] > somefile ; fmt [options] somefile
-
-The main difference:  The former properly uses pipes
-The later simply acknowledges that the pipe really isn't being used.
-
-
-
+> Regards, Chuck
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 
 -- 
