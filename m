@@ -1,35 +1,39 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: "Peter H." <heisspf@skyinet.net>
 Subject: Re: user/e-mail name
-Date: Sun, 7 Mar 2004 17:12:48 +0100
+Date: Mon, 08 Mar 2004 10:51:24 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403071712.48576.pa3gcu@zeelandnet.nl>
-References: <Your message of "Fri, 05 Mar 2004 08:20:45 PST."  <5.1.0.14.1.20040305070344.01fc8e70@celine> <5.1.0.14.1.20040305070344.01fc8e70@celine> <5.1.0.14.1.20040307072153.01ef1480@celine>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20040308025124.87051D821@heisspf>
+References: <5.1.0.14.1.20040307072153.01ef1480@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040307072153.01ef1480@celine>
-Content-Disposition: inline
+In-Reply-To: Your message of "Sun, 07 Mar 2004 07:46:11 PST." 
+ <5.1.0.14.1.20040307072153.01ef1480@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Sunday 07 March 2004 16:46, Ray Olszewski wrote:
-> The man page for elm (found at the same site as above) says that it uses an
-> environmant variable "REPLYTO", so I infer it supports a Reply-To: header,
-> and "USER", which is described unclearly but may affect the From: header.
+OK we can say then that in Linux an e-mail program will use the login name as 
+the host name for e-mailing unless a program like sylpheed has it built-in not 
+to do so or one takes special efforts to pinch a program not to do it. Which 
+means the easiest way out is to use ones 'login name' as 'host name' or 
+vis-versa.
 
-I used to use this , simply add REPLYTO in your .profile or .bash_profile .
-I belive the USER is effective in the same mannor.
 
+ray@comarre.com said:
+> the man page for exmh includes this vague reference:
+> "Aliases  User Interface.  A browser for your MH aliases lets you define
+>         new aliases and insert aliases into mail messages."
+
+I am aware of this feature and use it when I put the From: alias in the 
+header. And I was mistaken earlier that exmh will not accept Reply-To:. I must 
+have made a typo when I tried it. Then based on your earlier mail it is better 
+to use Reply-To: than From: in the mail header.
+
+Thanks & regards
 -- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Peter
 
 
 
