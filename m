@@ -1,87 +1,111 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Configuring lilo to boot from sda after RH 9.0 install
-Date: Tue, 15 Apr 2003 16:08:05 -0700
+From: Peter <pfheiss@philonline.com>
+Subject: Re: No More Logrotate
+Date: Wed, 16 Apr 2003 09:29:26 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030415155724.01e95958@celine>
-References: <5.1.0.14.1.20030415121527.01e96f68@celine>
+Message-ID: <200304160129.h3G1TQI02708@philonline.com>
+References: <5.1.0.14.1.20030414084230.01e990b8@celine>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001001c31b32$d9b6daa0$1601a8c0@crypt>
+In-Reply-To: Your message of "Mon, 14 Apr 2003 08:53:18 MST." 
+ <5.1.0.14.1.20030414084230.01e990b8@celine>
+Content-ID: <2705.1050456566.1@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: steven@nvts.us, linux-newbie@vger.kernel.org
-Cc: babydr@baby-dragons.com
+To: linux-newbie@vger.kernel.org
 
-OK. It sounds to me like you do NOT have the lilo bootloader installed on 
-sda. To do that, you should do the following (as root):
+Thanks Ray. Just when I had finished all the stuff below, your hint that the 
+message comes from syslog made me look again and I found the file 
+/etc/logrotate.d/syslog which read among others /var/log/cron. I removed this 
+entry and logrotate went to work w/o error message and logrotating even that 
+cron file.
 
-         1. Copy the file to the usual name, with "cp 
-/etc/lilo.conf.anaconda /etc/lilo.conf".
+ray@comarre.com said:
+> 1. Is /var/log/cron a file or a directory? If the latter, what files
+> does  it contain?
 
-         2. Edit lilo.conf so it works (I'll return to this).
+ It's a file containing all the cron stuff from crontab, user and root.
 
-         3. Run lilo.
+# tail /var/log/cron
+Apr 15 08:45:01 philonline CROND[1812]: (pfheiss) CMD (cd 
+/usr/local/saytime/sounds/; ./saytime.sh)
+Apr 15 08:50:00 philonline CROND[1841]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 08:50:00 philonline CROND[1842]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:00:00 philonline CROND[1966]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 09:00:00 philonline CROND[1967]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:00:00 philonline CROND[1968]: (pfheiss) CMD (play 
+./sound/chimes.wav)
+Apr 15 09:01:00 philonline CROND[1978]: (root) CMD (run-parts 
+/etc/cron.hourly)
+Apr 15 09:10:00 philonline CROND[2012]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 09:10:00 philonline CROND[2013]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:15:00 philonline CROND[2036]: (pfheiss) CMD (cd 
+/usr/local/saytime/sounds/; ./saytime.sh)
 
-The lilo.conf.anaconda has (relative to the lilo.conf files I am used to) a 
-couple of errors, a couple of omissions, and one thing I do not understand. 
-Going through it:
+ray@comarre.com said:
+> 2. Just to be sure -- when you run "logrotate --force /etc/
+> logrotate.conf",  you get an error at the console that reads *exactly*
+> "error: syslog:1  duplicate log entry for /var/log/cron"? That is, you
+> get an error from  syslog, not from logrotate (or even syslogd)? And
+> you get no other output  to the screen
 
->prompt
->timout=50
->boot=/dev/sda
->map=/boot/map
->install=boot/boot.b
->message=/boot/message
->linear
+Correct that is the exact message with no other output to the screen.
 
-These are the general settings and look fine (you may or may not need the 
-"linear" entry, but it shouldn't hurt). You probably want to add this line:
+ray@comarre.com said:
+> 4. On my systems, logrotate runs as root.
 
-         default=linux
+It only runs as root on my system as well.
+-rwxr-xr-x    1 root     root        32840 Apr 16  2002 /usr/sbin/logrotate
 
-to tell lilo which kernel to boot if you don't interrput the boot proces to 
-select one manually. (I'm only guessing, of course, which is your default 
-kernel, but it is customary to label that one Linux or linux.
+ray@comarre.com said:
+> 3. It is possible to run logrotate with a -d (debug) flag. Does that
+> generate any useful info?
 
->image=/boot/vm-linuz-2.4.20-8smp
->lable=linux
+# /usr/sbin/logrotate -d /etc/logrotate.conf
+reading config file /etc/logrotate.conf
+including /etc/logrotate.d
+Ignoring named.rpmnew, because of .rpmnew ending
+Ignoring rpm.rpmnew, because of .rpmnew ending
+reading config file cron
+reading config info for /var/log/cron 
+reading config file ftpd
+reading config info for /var/log/xferlog 
+reading config file linuxconf
+reading config info for /var/log/htmlaccess.log 
+reading config info for /var/log/netconf.log 
+reading config file mgetty
+reading config info for /var/log/mgetty.log.tty* 
+reading config file named
+reading config info for /var/log/named.log 
+reading config file rpm
+reading config info for /var/log/rpmpkgs 
+reading config file sendfax
+reading config info for /var/log/sendfax.log 
+reading config file slrnpull
+reading config info for /var/spool/slrnpull/log 
+reading config file snmpd
+reading config info for /var/log/snmpd.log 
+reading config file sudo
+reading config info for /var/log/sudo.log 
+reading config file syslog
+error: syslog:1 duplicate log entry for /var/log/cron
 
-should read "label", not "lable"
+There is a file /etc/syslog.conf, however, no /var/log/syslog file as in 
+Slackware.
+I put one there now which did not change anything, it just stays empty.
 
->initrd=/boot/initrd-2.4.20-8smp.img
->read-only
->append="root=LABEL=1"
+And to your final 5th question what is KRUD Linux somebody replied where to 
+find it. They produce monthly the latest versions for RedHat to which one can 
+subscribe for one year or order them as needed. This is very convenient if one 
+has slow phone lines which will make updates by downloading a near 
+impossibility.
 
-This is the line I do not understand. I suppose it interacts with the entry 
-in /etc/fstab, but I've never done it that way so I do not know if the two, 
-together, are OK or not. A more conservative approach would be to specify:
+Regards
 
-         root=/dev/sda1
-
-or whatever sda? partition has the root filesystem on it.
-
->image=/boot/vmlinux-2.4.20-8
->lable=linux-up
-
-label, not lable
-
->initrd=/boot/initrd-2.4.20-8.img
->read-only
->append="root=LABEL=/
-
-Same comment as above.
-
-As I said, there are some details in what you are doing that are different 
-from my usual practice, and RH 9 is new enough that even experienced RH 
-users (I'm not one) won't yet be familiar with whatever new quirks RH has 
-added this time around.
-
-So I'm not sure if these suggestions will work as written or require a bit 
-of fiddling at your end. But they should get you on the right track at least.
-
-At 03:39 PM 5/15/2003 -0700, Steven Ackerman wrote:
-[old stuff deleted]
+-- 
+Peter
+-- 
+Peter
 
 
 
