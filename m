@@ -1,46 +1,54 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: IRQ conflict
-Date: Thu, 8 Aug 2002 18:28:28 -0400
+From: Peter <pfheiss@philonline.com>
+Subject: Re: RH7.3 keyborad lock-up
+Date: Fri, 9 Aug 2002 15:13:33 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208081828.28793.sotl155360@earthlink.net>
-References: <5.1.0.14.1.20020801231040.021a3080@celine>
+Message-ID: <02080915133300.07686@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020801231040.021a3080@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi All;
+Thanks Riley
 
-Hope some one understands what I am saying more than I do and can explain what 
-procedures I should utilize to correct the problem.
+pfheiss@philonline said:
 
-I have added a scsi card back into this box (It was in the box once before) 
-and I am getting a IRQ conflict as follows: 
-
-PCI: Found IRQ 11 for device 00:0e.0
-IRQ routing conflict for 00:07.2, have irq 5, want irq 11
-IRQ routing conflict for 00:07.3, have irq 5, want irq 11
-scsi0 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.5
-        <Adaptec 2902/04/10/15/20/30C SCSI adapter>
-        aic7850: Single Channel A, SCSI Id=7, 3/253 SCBs
-
-I know that this box has worked with its current bios configuration under RH 
-7.2 and that the modification made to the system at that time were not in the 
-bios. The box was upgraded to RH 7.3 due to a massive human generated system 
-failure.
-
-What I would appreciate help with is how does one go about resolving IRQ 
-conflicts.
-
-Thanks
-Frank
+>.....
+> When I recently upgraded to RH7.3 I got total keyboard locks when
+> trying to run xscreensaver, tuxracer and chromium and may be others,
+> necessitating dirty reboot by the reset botton. >
+>.....
+> I, therefore, conclude that the problem is somewhere whithin with
+> RH7.3 and possibly not with my video card which is SiS 630 since it
+> works fine in RH7.1. >
 
 
+rhw@InfraDead.Org said:
+>  2. For each program where those versions are different, please see
+>     if you can install a copy of the same version used under RH 7.3
+>     on your RH 7.1 based system. If you can, please determine if it
+>     is stable under 7.1 or if it also fails there. 
+
+I tried it with xscreensaver. The version in RH7.1 is/was 3.29-3.i386.rpm and 
+the one of RH7.3 is 3.33-4.i386.rpm. It upgraded flawlessly and seems to be 
+stable. No hang no keyboard lock-up which I could induce in RH7.3 by clicking 
+on Blank Screen Now in xscreensaver-demo or when the display at set time 
+would change. 
+
+If I recall correctly I tried to install the xsceensaver of RH7.1 in Rh7.3 
+and it would lock-up as well, however, I am not so sure anymore if it did 
+install at all. 
+
+So the problem does not semm to be with the particular programs it must be 
+most likely within the kernel of RH7.3.
+
+Regards
 
 
+
+-- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
