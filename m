@@ -1,50 +1,36 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: Redhat 7.3 Samba Start at startup
-Date: Mon, 03 Mar 2003 15:25:54 +0000
+From: "[ramzez]" <r4mz3z@yahoo.es>
+Subject: how do I execute a java program?
+Date: Mon, 3 Mar 2003 10:37:16 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030303152122.01f0b438@pop3.demon.co.uk>
-References: <004201c2e191$f5acb840$cdfea8c0@pkraus>
+Message-ID: <200303031037.22772.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <004201c2e191$f5acb840$cdfea8c0@pkraus>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: pkraus@pelsupply.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 09:34 03/03/2003 -0500, Paul Kraus wrote:
->How can I set samba to start when the server starts.
->Every time I reboot the machine I have su, /sbin/service smb restart.
->
->Paul Kraus
->
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
+Hi friends...
 
-Paul,
+  I made an application usign Java... How do I create a executable file to run 
+my application without the IDE (forte for java)?
 
-use the command "chkconfig" as root
+thanks,
+- -- 
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-For samba it would be:
-
-        chkconfig --level 2345 smb on
-
-Where "2345" are the run-levels you want it to start in, "on" is to set it to start at entry to the run level.
-"off" would be to turn it off.
-
-You can check what gets started in each runlevel with:
-
-        chkconfig --list
-
-See "man chkconfig" for full details.
-
-Regards
-Carl
---
+iD8DBQE+Y3ayG3Fqyap52TERAutyAKDpt/wkLXyJT2MdHYnQ42UsR+xjIwCeKOVY
+otXTsLFGGhI0lr8wUu+fP3U=
+=w28O
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
