@@ -1,60 +1,74 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: getting a valid display under Debian
-Date: Tue, 11 Nov 2003 18:50:41 -0600 (CST)
+Date: Wed, 12 Nov 2003 06:54:59 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0311111846120.3176@homenet>
+Message-ID: <Pine.LNX.4.58.0311120631140.3176@homenet>
 References: <5.1.0.14.1.20031111121913.01fa3d58@celine>
+ <Pine.LNX.4.58.0311111846120.3176@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031111121913.01fa3d58@celine>
+In-Reply-To: <Pine.LNX.4.58.0311111846120.3176@homenet>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: 
 Cc: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-On Tue, 11 Nov 2003, Ray Olszewski wrote:
+I found something on the web concerning directing STDERR to a file at
+http://www.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html .  I'll post the
+relevant segment here for the benefit of other newbies who may not know
+what it means or how to do it, and also in hopes that it may help me
+remember how.  Excerpt follows:
 
-> Last thought ... the X 4.x.x did, I believe, drop support for some older
-> hardware. You might be getting snagged by that (with respect to the video
-> card). I don't *think* this applies to S3Virge, but I'd have to check at
-> xfree86.org to be certain, and you can check there as easily as I can.
->
-From www.xfree86.org:
-------------------------------------------------------------------
-3.3.6:
-Support (accelerated) for the S3 911, 924, 801, 805, 928, 864, 868, 964,
-968, Trio32, Trio64, Trio64V+, Trio64UV+, Aurora64V+, Trio64V2, and
-PLATO/PX is provided by the XF86_S3 server and the XF86_SVGA server with
-the s3_svga driver. Support (accelerated) for the ViRGE, ViRGE/VX,
-ViRGE/DX, ViRGE/GX, ViRGE/GX2, ViRGE/MX, ViRGE/MX+ is provided by the
-XF86_S3V server. Support (accelerated) for the ViRGE chipsets, as well as
-the Trio3D and Trio3D/2X, is provided by the XF86_SVGA server with the s3v
-driver. Support (accelerated) for the Savage3D, Savage3D/MV, Savage4, and
-Savage2000, is provided by the XF86_SVGA server with the s3_savage driver
-on some OSes (Linux, *BSD).
+------------------------------------------------------------
+3.3 Sample: stderr 2 file
 
-4.3.0:
-Support (accelerated) for the 964 (revisions 0 and 1), 968, Trio32,
-Trio64, Trio64, Trio64V+, Trio64UV+, Aurora64V+, Trio64V2, and PLATO/PX is
-provided by the "s3" driver (however, only models using the IBM RGB 524,
-Texas Instruments 3025, or an internal TrioDAC RAMDAC chip are supported).
-Support (accelerated) for the ViRGE, ViRGE/VX, ViRGE/DX, ViRGE/GX,
-ViRGE/GX2, ViRGE/MX, ViRGE/MX+, Trio3D and Trio3D/2X is provided by the
-"s3virge" driver. Support (accelerated) for the Savage3D, Savage3D/MV,
-Savage4, Savage2000, and SuperSavage, is provided by the "savage" driver.
-Support for the other S3 chipsets has not yet been ported.
+This will cause the stderr ouput of a program to be written to a file.
 
-Summary:
-All hardware supported in 3.3.6 is also supported in 4.3.0 except for the
-911, 924, 801, 805, 928, 864, and 868, and versions of the 964 and 968
-that do not use the RAMDAC chips listed above. The SuperSavage chipset is
-supported only in 4.3.0.
----------------------------------------------------------------------
+        grep da * 2> grep-errors.txt
 
-My card is the S3 ViRGE/VX 86C988.  I interpret the above to mean that my
-card should be supported under the version of xfree86 that's on my system,
-don't you?
+Here, a file called 'grep-errors.txt' will be created and it will contain
+what you would see the stderr portion of the output of the 'grep da *'
+command.
+---------------------------------------------------------
+
+Issuing "startx 2> xerrs.txt" at the command line seems to have worked for
+me - i.e., it generated a file with some content (other things I tried,
+guessing at the right text to type, generated files, but the files had no
+content).
+
+In any case, here is the content of the xerrs.txt file that resulted:
+
+-------------------------------------------------------------------
+X: warning; process set to priority -11 instead of requested priority -10
+
+This is a pre-release version of XFree86, and is not supported in any
+way.  Bugs may be reported to XFree86@XFree86.Org and patches submitted
+to fixes@XFree86.Org.  Before reporting bugs in pre-release versions,
+please check the latest version in the XFree86 CVS repository
+(http://www.XFree86.Org/cvs)
+
+XFree86 Version 4.2.1.1 (Debian 4.2.1-13 20031030071229
+root@newraff.debian.org) / X Window System
+(protocol Version 11, revision 0, vendor release 6600)
+Release Date: 18 October 2002
+	If the server is older than 6-12 months, or if your card is
+	newer than the above date, look for a newer version before
+	reporting problems.  (See http://www.XFree86.Org/)
+Build Operating System: Linux 2.4.22-rc2 i686 [ELF]
+Module Loader present
+Markers: (--) probed, (**) from config file, (==) default setting,
+         (++) from command line, (!!) notice, (II) informational,
+         (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+(==) Log file: "/var/log/XFree86.0.log", Time: Fri Jun 20 01:41:55 2003
+(==) Using config file: "/etc/X11/XF86Config-4"
+----------------------------------------------------------------
+
+That doesn't seem particularly helpful to me, but it may hold some hidden
+meaning for Ray and others trying to help out with this problem.
+
+I also note the XFree86.0.log file in /var/log.  Could that also contain
+something relevant to diagnosing the problem?
 
 Thanks, James
 -
