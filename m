@@ -1,43 +1,29 @@
-From: Neo Wee Teck <weeteck@linux.net>
-Subject: Process information?
-Date: Mon, 8 Dec 2003 17:37:32 -0800 (PST)
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: multiple X sessions
+Date: Mon, 8 Dec 2003 20:46:41 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031209013732.D92B03965@sitemail.everyone.net>
-Reply-To: weeteck@linux.net
+Message-ID: <Pine.LNX.4.44.0312082044420.26204-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Hello,
 
-  I saw some difference in the process info when using RedHat kernel 2.4.20-8 and the kernel from kernel.org (2.4.23)
+Could someone point out how I could setup my machine so that a second user
+may log in to the machine and run a 'startx' even though the first user is
+logged in and has an active X session running, without killing the first
+user's X session?
 
-With Redhat's kernel, process show something like this
 
-www      10186  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
-www      10187  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
-www      10188  0.0  0.1  2536 1276 ?        S    Dec08   0:01 [httpd]
+Thanks,
 
-But with 2.4.23 kernel it shows
+-K
 
-www      5673  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
-www      5674  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
-www      5675  0.0  0.1  2536 1276 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
 
-Any configuration in the kernel that i missed out? I prefer the way processes are shown in Redhat's kernel but would like to use the 2.4.23's kernel.
-
-Cheers
-
-    Neo
-
-_____________________________________________________________
-Linux.Net -->Open Source to everyone
-Powered by Linare Corporation
-http://www.linare.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
