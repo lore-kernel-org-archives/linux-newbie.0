@@ -1,36 +1,41 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: block-major-33
-Date: Mon, 7 Oct 2002 17:02:43 +0300
+From: Ramzez <r4mz3z@yahoo.es>
+Subject: free JSP host
+Date: Fri, 27 Sep 2002 11:46:45 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021007170243.A1174@neutrino.particles.org>
-References: <200210071243.g97Ch2802232@ev6.be.wanadoo.com>
+Message-ID: <200209271146.52762.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200210071243.g97Ch2802232@ev6.be.wanadoo.com>; from hammer@revobild.net on Mon, Oct 07, 2002 at 01:54:11PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-On Mon, Oct 07, 2002 at 01:54:11PM +0000, Heimo Claasen wrote:
-> So why starting up Linux _does_ demand to have them insterted ?
-> I found numbers of such indications in articles, Howtos etc.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-From the man page of mount:
+ Hi...
 
-The mount command serves to attach the file system found on some  device  to
-the  big file tree. Conversely, the umount(8) command will detach it again.
-		   
-So, as you can see you have to have a *file system* to mount. Keep in mind,
-that mount has nothing to do with hardware identification of the device 
-(this is done by the kernel using probe routines).
+  first excuse me for this off-topic... but I need some FREE host to support 
+JSP ( it'll be better if support DataBase too) Somebody know something about 
+this type of hosting?
 
-Elias
+  I find mycgiserver.com but I need other too
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+so thanks
+- --
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE9lIt7s4dF9gl05swRAnPLAJ9DCbYtFlQOkTnAFraOLzKPf0Gt2gCeKKY1
+R0cK311Iz0ixs92GwF9MNkA=
+=a1aM
+-----END PGP SIGNATURE-----
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
