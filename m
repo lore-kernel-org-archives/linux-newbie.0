@@ -1,34 +1,32 @@
-From: "Eve Atley" <eatley@wow-corp.com>
-Subject: Graphical client for SSH2?
-Date: Fri, 20 Feb 2004 18:39:13 -0800
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: DNS server
+Date: Fri, 20 Feb 2004 18:52:50 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <GNEPLLCIIBHICCOGIAKPOECFCGAA.eatley@wow-corp.com>
-References: <5F84A09ECDD5D411973000508BE32470266025BA@exnyc07.lehman.com>
+Message-ID: <4607acb4606bd1.4606bd14607acb@homemail.nyu.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5F84A09ECDD5D411973000508BE32470266025BA@exnyc07.lehman.com>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-
 Hi,
+How does one enter preferred DNS addresses to be used in linux?
 
-I currently have Cygwin running on my Windows laptop as a test enviroment to
-log in with SSH2. Now, sure you can run it from the command line in Cygwin,
-but these are users who aren't real savvy with technology, and probably
-won't have the patience to learn the CLI.
+I found that IP address, netmask, network address can be assigned in this file /etc/sysconfig/network-scripts/ifcfg-eth0 for interface eth0.
 
-Therefore, I tried installing WinSCP. While I am asked for my passphrase in
-Cygwin, the same doesn't occur in WinSCP - I can log in with my user
-password, even when I have loaded my public key.
+Can DNS server list be added here too? If yes, what name is given for it?
 
-Anyone?
+DEVICE=eth0
+IPADDR=208.164.186.4
+NETMASK=255.255.255.248
+NETWORK=208.164.186.1
 
-Thanks,
-Eve
+What would the name be for DNS server?
 
+Thanks.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
