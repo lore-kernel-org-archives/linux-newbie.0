@@ -1,8 +1,8 @@
 From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: Type II PCMCIA SLOT, how can I tell?
-Date: Wed, 04 Dec 2002 17:08:54 -0500
+Subject: Belkin F5D6020: Is this a prism card?
+Date: Wed, 04 Dec 2002 17:56:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DEE7CF6.A3ACE0D7@gelm.net>
+Message-ID: <3DEE8818.14942C06@gelm.net>
 References: <20021204170342.DLHH12667.smtp02.fuse.net@smtp.fuse.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -11,13 +11,21 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-was Re: Type II PCMCIA, how can I tell?
+Howdy, Y'all:
 
- It is not the PC-CARD that I am in question about.
-It is the PCMCIA interface in an old laptop.
+ I plugged a Belkin F5D6020 PC card into a slackware 8.0
+kernel 2.2.19 laptop and this is what it reported:
 
- Is there some program I can run to check the interface
-to see if it is PCMCIA Type II ?
+cardmgr[49] initializing socket 1
+cardmgr[49] unsupported socket 1 product info "Belkin",
+            "11Mbps-Wireless-Notebook-Network-Adapter
+cardmgr[49] manfid, 0x01bf, 0x3302  function: 6 (network)
+
+ I'm building a kernel now, but ..
+
+ When I first ran linux-wlan-ng-0.1.16-pre7/.Configure
+it complained about not finding /usr/src/pcmcia-cs-3.1.26 (IIRC).
+Where/how do I obtain /usr/src/pcmcia-cs-3.1.26/*  ?
 
 Thanks, Chuck
 -
