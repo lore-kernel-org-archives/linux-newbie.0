@@ -1,38 +1,27 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: recursively removing directories
-Date: Sun, 30 Jun 2002 18:57:17 +1200
+From: Adam Luchjenbroers <adam@luchjenbroers.com>
+Subject: Highly unusual crashes.
+Date: Sun, 30 Jun 2002 17:27:45 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206300548.g5U5m6O27285@virtualmail.orcon.net.nz>
-References: <20020629.214414.-257403.0.matthewstapleton@juno.com> <3D1E63F7.1050200@lvcm.com>
-Reply-To: cr@orcon.net.nz
+Message-ID: <20020630075334Z314596-685+1086@vger.kernel.org>
+Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D1E63F7.1050200@lvcm.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Joseph Jackson <skoidat@lvcm.com>, Matthew Stapleton <matthewstapleton@juno.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sunday 30 June 2002 13:50, Joseph Jackson wrote:
-> Matthew Stapleton wrote:
-> > How do I recursively remove all the subdirectories and contents of a
-> > particular directory in Linux? I know of 'rmdir', but this only works for
-> > empty directories.  I need something like DOS's 'deltree'.
-> >
-> > Thanks,
-> > Matthew Stapleton
-> >
->
-> Like this rm -rf /whatever  the -r is ofcourse recursive and the -f is
-> force is it won't ask you.
->
 
-... and be VERY CAREFUL using it!!!!
+Screen just goes black or locks up.
 
-(man rm   will give you the syntax).
+Under X it locks up with a blue screen and a white line.
 
-cr
+No apparent cause, I did nothing that could've caused it. I'm surprised I can 
+get in as it was doing it on boot (yes, even to failsafe). I have no idea 
+what could've caused it or what the problem might be.
+
+Will try another reboot and see what happens. Perhaps this has gone as 
+mysteriously as it came. Got me puzzled.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
