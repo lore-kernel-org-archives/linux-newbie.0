@@ -1,46 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Network and Apache Question
-Date: Wed, 22 May 2002 09:44:42 -0700
+From: Ken Moffat <ken@kenmoffat.uklinux.net>
+Subject: Re: Polaroid BurnMAX24 CD-RW
+Date: Wed, 22 May 2002 17:33:28 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020522094113.02746ad0@celine>
-References: <5.1.0.14.1.20020521192809.020f4600@celine>
- <200205220156.g4M1uKDn028220@smtp-server6.tampabay.rr.com>
+Message-ID: <Pine.LNX.4.21.0205221731540.28967-100000@pppg_penguin.linux.bogus>
+References: <5.1.0.14.1.20020521124101.020fcec0@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200205221021.g4MALrCk004010@smtp-server1.tampabay.rr.com>
+In-Reply-To: <5.1.0.14.1.20020521124101.020fcec0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: jim@kc4hw.net, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 06:21 AM 5/22/02 -0400, Jim Johnson wrote:
-[...]
-> > If the problem is with rr.com, try running the service on a high port (8080
-> > is a common choice) and port-forwarding that port to apache (either port 80
-> > or port 8080 internally, depending on how flexible the Linksys router is
-> > about port forwarding).
->
->The Linksys allows port forwarding.  But this machine is enable as a DMZ
->Host in the router.
->
->So if I enabled port 8080 (or another port) in httpd.conf, then it would
->serve pages upon request to http://www.kc4hw.homelinux.net:8080?
+On Tue, 21 May 2002, Ray Olszewski wrote:
 
+> 
+> BTW, Ken, I have IDE-CD compiled in my 2.4.17 kernel, and I can access my 
+> CD-R/W just fine. I do need to include an append= line in lilo.conf telling 
+> the IDE stuff to ignore hdd, so the SCSI-IDE modules can later grab it. I 
+> don't know if Mark's use of ignore in modules.conf completely substitutes 
+> for this, or if his method only works when ide-cd is a module.
+> 
 
-It should, if the Linksys is not set to block port 8080 and if all the 
-other Apache settings are correct. At least the requests should *reach* the 
-Apache server, and if they fail, you can consult the Apache logs (and this 
-list) to figure out any remaining problems.
+ Thanks, Ray. I always find the interactions between ide and
+scsi-emulation confusing.
 
-
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+Ken
+-- 
+Listen to others, even to the dull and ignorant;
+     for you too may be a Manager some day.
+-- from the BFOH Desidoreplicator.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
