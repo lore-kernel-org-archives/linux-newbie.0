@@ -1,36 +1,31 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: disabling X display Manager
-Date: Wed, 18 Jun 2003 07:24:57 -0700
+From: Master_PE <my@masterpe.nl>
+Subject: Re: IP aliasing
+Date: Wed, 18 Jun 2003 16:37:50 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030618072219.02f42c60@celine>
-References: <5.1.0.14.1.20030617061959.0201dcd0@celine>
- <5.1.0.14.1.20030611133014.01f97628@celine>
- <5.1.0.14.1.20030617061959.0201dcd0@celine>
+Message-ID: <200306181637.50423.my@masterpe.nl>
+References: <20030618140305.73398.qmail@web20512.mail.yahoo.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200306181212.h5ICC4gu019704@dbmail-mx1.orcon.co.nz>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030618140305.73398.qmail@web20512.mail.yahoo.com>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 11:29 PM 6/18/2003 +1200, cr wrote:
-[...]
-> >          1:2345:respawn:/sbin/getty 38400 tty1
->Yep, they're there.    Would the '2345' be runlevels?
+On Wednesday 18 June 2003 16:03, Ravi Kumar Munnangi wrote:
+> I want to give more than one IP addresses to my NIC.
+> For this we have to enable the feature of IP alias
+> when configuring the kernel and recompile it.
+> Is there any way to check if the option is already
+> checked or not?
+> My next question is,
+>   After reconfiguring and recompiling, how can I give
+> IP addresses(aliases) to NIC?
+>   please tell me the commands to be used.
 
-Yes.
-[...]
-> > The other thing to do is to check that when you do start X via gdm, the
-> > consoles are present. From the gdm display, you should be able to access
-> > them by pressing CTRL-ALT-F1 through CTRL-ALT-F6.
->
->Yes, they do.    But then I didn't know how to get the gdm back :)
->Never mind, I just rebooted it.
 
-CTRL-ALT-F7 (typically - technically, it is the first VT not occupied by a 
-console, and that is typically F7).
-[...]
+Look for 7.4. IP Aliasing at Linux Networking HOWTO
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
