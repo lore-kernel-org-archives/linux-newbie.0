@@ -1,100 +1,138 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: browser errors
-Date: Sun, 04 Aug 2002 13:49:05 -0700
+From: "Enrique Nieves" <spanfax@charter.net>
+Subject: Re: Newbie installation problem
+Date: Mon, 5 Aug 2002 01:32:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020804132806.0211e4e0@celine>
-References: <200208041817.57248.korosi@eunet.yu>
+Message-ID: <002301c23c41$7f442b70$6401a8c0@ENRIQUE>
+References: <5.1.0.14.1.20020802181721.02153750@celine> <5.1.0.14.1.20020804005505.02187b30@celine> <5.1.0.14.1.20020804101233.0211bb00@celine>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0208042035170.30515-100000@Consulate.UFP.CX>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Linux Newbies <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Riley -- I would like to disagree with your recommendation here, 
-particularly with the general form in which you present it ("simply replace 
-each specific IP address with a specific IP address from one of the 
-"reserved ranges"").
+Hello Ray,
 
-Specifically, I believe that your statement that the approach you recommend 
-results in "guaranteeing to provide all of the information needed to debug 
-the problem" is incorrect, as is your conclusion that "the problem is 
-almost always equally diagnosable with substituted IP addresses".
-
-Knowing the actual IP addresses involved is not likely to be relevant in 
-Korosi's *specific* case, but there are many cases when it is vital to know 
-the actual addresses involved (or at least important properties of them). A 
-lot of the troubleshooting I do, here and elsewhere, involves connectivity 
-(address acquisition, routing, firewalling), and in these cases, you 
-usually want to know
-
-         if the host with the problem is using "real" or private-range IP 
-addresses (*especially* if
-                 the ISP is using private-range addreses, since a lot of 
-firewalling software blocks
-                 them by default)
-         if the local network (especially the netmask) makes sense; I often 
-see routing problems caused
-                 by specifying a netmask that puts the default gateway 
-outside the external network
-         any number of things about the routing table
-
-Another example: often, MAC-address authentication failures with 
-cable-modem ISPs are indicated by the symptom of the host being assigned a 
-10.b.c.d address instead of a "real" IP address. Your advice conceals this 
-symptom.
-
-My core answer to this sort of question always is: As a general 
-proposition, beginners do not know enough to decide what to include and 
-what to leave out; they need to post the complete output of commands, not 
-edited output. Only passwords (and perhaps other personal information, 
-though I can't offhand think of a diagnostic that provides anything secret 
-except for passwords) are secret enough to be an exception to this.
-
-Korosi -- I'm afraid that I too am stumped by your symptoms. As you 
-describe them this time around, they sound like a bug in Opera, an 
-application I do not use. Or perhaps Opera has a problem with some specific 
-URL; you don't mention if the problem was always associated witht he same 
-URL , or always with a Javascript page, or something similar.
-
-I'm sorry that I cannot offer any better suggestions than those, admittedly 
-trivial, ones.
-
-At 08:44 PM 8/4/02 +0100, Riley Williams wrote:
->Hi Korosi.
+> Several things confuse me here.
 >
->I can't help with your general problem, but there is one point in here
->that I can clarify...
+> First, just a detail -- does it really say "Eth0" eather than "eth0"? If
+> so, then RH is introducing unnecessary confusion into the process (since
+> interface names are normally all lower case). If not, then you are not
+> quoting exactly.
+
+sorry, it says eth0
+
+
+> Second, what *immediately* precedes the failure message? Are you *sure*
+the
+> system is still in the New Hardware phase?
+
+
+actually, what immediately precedes the message is "bringing up loopback
+interface       [OK]"
+
+
 >
-> > And here is the /var/log/messages with messages generated at the
-> > that time: (I put X-es to ip addresses, because I don't know if it
-> > is a security problem if I tell you. Ray wrote previously that I
-> > should cut off passwords, and I don't know if I should do the same
-> > with ip-s...)
+> Third, I had previously thought that this message was coming from a RH
+> install. Now it sounds like part of the boot/init process of an installed
+> RH 7.3. Could you clarify?
+
+It is in the first boot/init after installation.
+
 >
->To avoid security problems whilst guaranteeing to provide all of the
->information needed to debug the problem, simply replace each specific IP
->address with a specific IP address from one of the "reserved ranges".
->There can be no security problems with those IP addresses since they are
->not routable outside of your own network.
+> Fourth, what happens next? If we are talking about an installed RH, does
+it
+> complete initialization, then give you the login: prompt (or the X
+> equivalent, depending on your setup)? If it does, may we see at this point
+> the output of:
 >
->The important detail is that each IP address must be replaced with the
->same one each time, and the results must indicate whether the originals
->were on the same or different subnets. Providing you can guarantee that,
->the problem is almost always equally diagnosable with substituted IP
->addresses.
->
->Often, the simplest way is just to replace the first number in each quad
->with 10 as the entire 10.* range is reserved in this way.
+>          ifconfig -a
+>          netstat -nr
+>          lsmod
+>          lspci
+
+
+This is the output I get for:
+ifconfig -a
+netstat -nr
+lsmod
+I will send lspci output next.
+
+[root@localhost  root] # ifconfig -a
+eth0    Link encap:Ethernet    HWaddr    00:40:F4:70:3E:F3
+
+           BROADCAST MULTICAST MTU:1500 Metric:1
+me:0
+            TX packets:0  errors:0  dropped:0  overruns:0  car
+rier:0
+            collisions:0  txqueuelen:100
+            RX bytes:0 (0.0 b)    TX bytes:0    (0:0 b)
+            Interrupt:10  Base address:0x3000
+
+lo        Link encap: Local Loopback
+           inet addr:127.0.0.1    Mask:255.0.0.0
+           UP LOOPBACK RUNNING MTU:16436    Metric:1
+            RX     packets:8    errors:0  dropped:0   overruns:0    fra
+            TX     packets:8    errors:0  dropped:0   overruns:0    car
+0
+            collisions:0    txqueuelen:0
+            RX bytes:560    (560.0 b)        TX bytes:560    (560.0 b)
+
+[root@localhost  root] # netstat -nr
+Kernel IP routing table
+Destination    Gateway    Genmask    Flags MSS    Window    irtt Iface
+127.0.0.0       0.0.0.0      255.0.0.0   U      40        0               0
+lo
+
+[root@localhost  root] # lsmod
+Module            Size            Used    by            Not    tainted
+es1371            29728         0        (autoclean)
+ac97_codec    11872          0        (autoclean)        [es1371]
+gameport            3392         0        (autoclean)        [es1371]
 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> Last, how do you *want* this system to get its IP address?
+>
+>          Do you plan to assign a static address by hand? If so, you
+> (probably) specify this by editing the file /etc/network/interfaces .
+>
+>          Use a DHCP server?
+
+
+Yes, I plan to use DHCP
+
+
+If so, then where on the LAN are you running
+> one? The Linksys? The XP system?
+
+
+The Linksys
+
+Do you see network traffic (in the form of
+> appropriate blinking lights on the NIC and the hub) just before you get
+the
+> failure message you quote above (if you don't, then the system isn't
+> managing to connect to the LAN to look for a DHCP server).
+
+
+No, I'm not seeing network traffic
+
+
+
+>
+>          Those are the only real alternatives (technically there are some
+> others, but no one uses them in small home setups).
+
+
+Thanks again for your time and patience.
+
+Enrique
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
