@@ -1,8 +1,8 @@
 From: RimeGate@rime.org (cusachs@bellsouth.net )
-Subject: Re: Linux newbie in deep doo-doo.
-Date: Sat, 03 Aug 2002 12:12:33 GMT
+Subject: Re: HELP This can't be!
+Date: Sat, 03 Aug 2002 12:16:44 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BAG2SMTP.3d4bc7fa.39002587@news.fonix.org>
+Message-ID: <BAG2SMTP.3d4bc944.39332227@news.fonix.org>
 Reply-To: RimeGate@rime.org (cusachs@bellsouth.net )
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -13,22 +13,25 @@ To: linux-newbie@vger.kernel.org
 
 
 
-There is a patch for Windows 95 for use with faster AMD processors.
-Used to use it on one around here before upgrading to Windows98SE.
-Don't think I have a copy of it or I would offer to send it.
+Using a normal keyboard should fix the problem.   I've seen several
+reports of problems using USB keyboards/mice in Linux.
 
 Choppy
 
-On 2 Aug 2002 14:34:28 -0700, phobos2@hotmail.com (phobos) wrote:
+On 2 Aug 2002 08:22:46 -0700, Alberto.Spagnoli@lycos.com (Alberto)
+wrote:
 
->mjt <mjtobler@removethis_consultant.com> wrote in message news:
->  <Ozi29.113$q_.46391364@newssvr30.news.prodigy.com>...
+>I install mandrake 8.1 on my home machine sharing the hard drive with
+>windoz 2000, the installation was pretty straight forward and i got no
+>complication at all.
+>Then i reboot i was just so excited when i got to Lilo but it didn't
+>last long,
+>The keyboard didn't work i actually couldn't type wich operating
+>sistem i wanted the computer to boot from.
 
-> . . . . . Unfortunately this broke Win95, which
->seems to have problems with AMD processors over about 300MHz. Crashed
->an average of three out of four times on bootup, and set me looking
->for an Alternative that didn't cost hundreds of quid and would run
->merrily on a K6/2 400.
+>Now i know i should try with a normal keyboard but i am sure this is
+>not the problem, but still have no idea what to do now.
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
