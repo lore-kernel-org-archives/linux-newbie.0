@@ -1,16 +1,25 @@
-From: Yawar Amin <raihan@citech-bd.com>
-Subject: Re: Going to GNOME from twm
-Date: Thu, 16 Jan 2003 14:21:55 +0600
+From: "Anant Aneja" <anantaneja@rediffmail.com>
+Subject: GNOME help
+Date: 16 Jan 2003 16:55:41 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301160821.h0G8LtW01180@localhost.localdomain>
+Message-ID: <20030116165541.8028.qmail@webmail30.rediffmail.com>
+Reply-To: "Anant Aneja" <anantaneja@rediffmail.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-switchdesk very helpfully recommended I delete my ~/.Xclients file, which I did. That got me back to GNOME.
+I've made some changes somehow in GNOME and now all programs load 
+only 10 seconds after double clicking.
+Any suggestions how can i rectify this.
+Anant
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
