@@ -1,44 +1,51 @@
-From: Thorsten Alge <mail@thorsten-alge.de>
-Subject: nic wount work with 10baseT-FD
-Date: Thu, 17 Mar 2005 17:58:48 +0100
-Message-ID: <1111078728.4377.15.camel@localhost.localdomain>
+From: Peter <peterg@fishinternet.com.au>
+Subject: Re: Setting quota on user's home folders?
+Date: Fri, 18 Mar 2005 06:21:25 +1100
+Message-ID: <1111087285.25539.9.camel@localhost.localdomain>
+References: <20050316021308.55227.qmail@web53610.mail.yahoo.com>
+	 <5.1.0.14.1.20050316155238.01f4fb98@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
+In-Reply-To: <5.1.0.14.1.20050316155238.01f4fb98@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>, alge@ip-exchange.de
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+On Wed, 2005-03-16 at 16:31 -0800, Ray Olszewski wrote:
+> 
+> For quotas to work, they have to be enabled in your kernel. Stock
+> kernels 
+> usually do not include quota capability, so this means a local
+> compile.
 
-we have some problems with some of our servers. We have pcchips
-motherboard with sis900 nics. the problem is, they are standardly set to
-autonegociate and will work with 10mbps half-duplex but we do need
-10mbps full-duplex.
-we can set it to 10baseT-FD with "mii-tool" or "ethtool" but after
-link-loss the will do autonegociate to 10baseT-HD again. we cant ever
-change this by hand on a few hundred computers. Is there any way to
-configure this on our debian machines by an option
-in /etc/network/interfaces (/etc/sysconfig/network/ifcfg-eth0 on suse)
-or the sis900 module option? I tried the opt. "media 10baseT-FD" but
-that wount work.
-on our suse linux boxes it is more difficult. some of these haves a 2.6
-kernel and there mii-tool or ethtool wount work too!
-has anywone experience with running a 
-        debian linux / 2.4.28 kernel
-        suse linux 9.0 / 2.4.. kernel
-        suse linux 9.1 / 2.6.. kernel
-and a static configuration for sis900 on 10mbps and full-duplex
-(10baseT-FD)?
-if anyone could help,  it would be very nice if you could give me a hint
-how to solve this problem - maybe it ist very easy to configure?
+I noticed, on running ` locate quota` , that these lines appear in my
+output
 
-Kind regards,
+/lib/modules/2.6.8.1-4-386/kernel/fs/quota_v1.ko
+/lib/modules/2.6.8.1-4-386/kernel/fs/quota_v2.ko
 
-Thorsten 
-                                  ,,,,,
-                                 ( o ~ )
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~.oooO~~(_)~~Oooo.~~~
+I'm thinking this means quotas are supported by modules in this kernel,
+and thus a `modprobe quota* ` or similar would suffice, rather than a
+kernel recompile.
+
+Is this correct? 
+
+Just thinking this could save Eve and others a *lot* of time...
+
+In Debian, I assume after using the modprobe command the module name
+could simply be put in /etc/modules to make loading persistent across
+reboots. ( Other distros like the Redhat variants would do this
+differently, I suppose)
+
+apt-get install quota
+
+would then install what's necessary for the quota command...
+
+
+
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
