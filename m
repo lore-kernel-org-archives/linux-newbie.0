@@ -1,38 +1,25 @@
-From: Mike Dresser <mdresser_l@windsormachine.com>
-Subject: Re: Passing the entire command line
-Date: Fri, 15 Nov 2002 22:13:20 -0500 (EST)
+From: Pepo <pepo@linuxmail.org>
+Subject: how do I change the RedHat logo?
+Date: Sat, 16 Nov 2002 07:44:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0211152211530.22398-100000@router.windsormachine.com>
-References: <200211161235.37309.Adam@Luchjenbroers.com>
+Message-ID: <200211160744.37329.pepo@linuxmail.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211161235.37309.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
+Hi friends...
 
+  I want to change the logo of KDE login; because always there are a RedHat... 
+im using RedHat7.3... how do I change this??
 
-On Sat, 16 Nov 2002, Adam Luchjenbroers wrote:
-
->
-> While bash can retrieve the different commandline values using the variables
-> $1, $2, $3, etc - is there a way to just read out them all at once (with
-> spaces between the values).
->
-> I use startup scripts for many of my games, and I want the script to pass
-> through command line options at the end (for connecting to servers, etc).
-
-mdresser@router:~$ cat testingforadam
-echo $*
-mdresser@router:~$ ./testingforadam hello adam how are you today
-hello adam how are you today
-
-=)
-
-Mike
+thanks
+-- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
