@@ -1,56 +1,67 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: usleep
-Date: Thu, 12 Jun 2003 00:46:57 -0700
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: usleep
+Date: Thu, 12 Jun 2003 12:47:02 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030612003054.01fafa38@celine>
-References: <5.1.0.14.1.20030611173054.01f9d9a0@celine>
+Message-ID: <20030612114702.GA2295@cam.ac.uk>
+References: <20030611225502.29651.qmail@mail.com>
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="qMm9M+Fa2AknHoGS"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BKEGKPICNAKILKJKMHCAGEMIEEAA.Riley@Williams.Name>
+Content-Disposition: inline
+In-Reply-To: <20030611225502.29651.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-At 05:14 AM 6/12/2003 +0100, Riley Williams wrote:
->Hi Ray.
->
->  > Now 500 x 10 = 5000 usec, or 1/200 seconds. But the loop
->  > actually takes 10 seconds to iterate. This implies that
->  > usleep() has a minimum delay of 10/500 seconds, or 20
->  > msec, built into it (at least on my test system).
->
->The standard PC BIOS sets up the hardware timer with a tick
->interval of 18.2 ms which is probably what you are seeing.
->Memory says that the reason for this is that there are 2^16
->(65,536) such ticks per hour, and that apparently made the
->original IBM PC BIOS somewhat simpler as a result.
->
->Best wishes from Riley.
-
-Thanks, Riley. This is indeed what I was remembering, albeit imperfectly.
-
-Having done a bit more reading, I find that the standard Linux kernel 
-causes modern computers (Pentium or newer) to generate "heartbeat" 
-interrupts on IRQ0 at the rate of 100 per second, that is, every 10 msec. 
-(This is separate from the RTC, which generates interrupts on IRQ8 at a 
-rate that can be controlled more readily than by editing kernel source.) 
-You can verify this by hand, by comparing uptime (in seconds) to the IRQ0 
-entry in /proc/interrupts. (I actually get 99.998 per second this way, 
-perhaps because ntp reseting of real time affects uptime reports.)
-
-For that reason, on a standard kernel (and a customized one is apparently a 
-big deal, because a lot of stuff assumes the kernel gets ticks at this 
-rate) nothing can be timed at a finer timing than 10 msec using kernel time 
-facilities ... for finer timing, you have to use the more flexible facility 
-of the IRQ8 RTC, which can be programmed to provide up to 8192 beats per 
-second.
-
-386s and 486s might still,  I think, have the coarser timing you describe 
-from DOS days. I no longer have any running here to check, though.
+To: Lee Chin <leechin@mail.com>
+Cc: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
 
 
+--qMm9M+Fa2AknHoGS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+> I would think the following code would wait for 1 second each
+> itteration before printing hello, but it waits way too long.
+> Replacing the for loop body with a usleep(1000000) works
+> great... what am I missing here?
+Essentially, that usleep() isn't actually terribly accurate for short
+waits.  First, you always give up the rest of your timeslice, which
+delays you a few milliseconds (more if there's contention for the
+processor).  Second, kernel timers will always fire a short period
+after the actual specified time, which gives you a further small,
+roughly constant delay.  Third, you aren't actually woken up
+immediately after the timer goes off; you simply become eligible for
+scheduling again.
+
+This means that when you call usleep(x), you actually end up sleeping
+for x + n us, where n is a few thousand.  If you call usleep(1000000),
+this will probably be less than one percent of the total time slept,
+so nobody really cares.  If you call usleep(1000), it's likely to be
+several times the actual sleep time required, which you almost
+certainly do care about.
+
+If you really can't call usleep() or nanosleep() with a big number,
+the only option is probably to spin: the kernel can't cope with really
+fine-grained scheduling.  If you're root, you can use a real time
+process, in which case the kernel will do the spinning for you for
+delays of less than 2ms.  Depending on the exact delay being used and
+how you calibrate the busy wait, this may be slightly more accurate.
+
+Steven Smith,
+sos22@cam.ac.uk.
+
+--qMm9M+Fa2AknHoGS
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQE+6Gg2O4S8/gLNrjcRArAdAKCe5ONK14SGCOQOk9snyMUkoG64qgCfek2V
+fA3aWrhc+aGw8xC0A4UMJvU=
+=dpyI
+-----END PGP SIGNATURE-----
+
+--qMm9M+Fa2AknHoGS--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
