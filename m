@@ -1,95 +1,107 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: -p option for useradd ( was Re: ssh setup: user 'locked out' daily
- )
-Date: Tue, 07 Sep 2004 22:27:08 -0700
+From: James Miller <jamtat@mailsnare.net>
+Subject: font display problems after chmod
+Date: Wed, 8 Sep 2004 15:32:24 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <413E982C.2080508@bcgreen.com>
-References: <GNEPLLCIIBHICCOGIAKPCEDJDDAA.eatley@wowcorp.com>
+Message-ID: <Pine.LNX.4.58.0409081458260.1371@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPCEDJDDAA.eatley@wowcorp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: eatley@wowcorp.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Eve Atley wrote:
-> We have SSH running on our Linux Redhat 9 server. I set up new users to dump
-> them upon initial login to a common directory using the following command:
-> 	useradd -M -d /home/shared username -p password
-> 	passwd username (for some reason, -p password doesn't work?)
+Ok.  It's finally time to confront this problem and attempt to resolve it.
+I've been sort of limping along with improperly displaying fonts for some
+time now, but now some pdf documents I really need to view are displaying
+with invisible text.  I need to finally figure out what is causing this
+font wierdness on this Debian Sid system and try to fix it.  First,
+symptoms: when I use Opera browser, it displays with really wierd fonts
+(e.g., something meant to look like hand written scrawl).  Previously, it
+displayed with more normal-looking fonts.  When I try to view pdf
+documents, they can appear as largely blank pages, except where, for
+example, an underline occurs.  This refers to the program xpdf.  ps2pdf
+has been failing for me as well, with output like the following:
 
--p password     is expecting the ENCRYPTED password (as you see it
-in /etc/shadow), not the cleartext password...
+me@mymachine:~$ ps2pdf pentateu.ps pentateu.pdf
+Error: /invalidfont in findfont
+Operand stack:
+   F0   Times-Roman   Font   Times-Roman   272297   Times-Roman
+--nostringval--   Courier   NimbusMonL-Regu   (NimbusMonL-Regu)
+NimbusMonL-Regu   (NimbusMonL-Regu)   NimbusMonL-Regu
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval--
+--nostringval--   false   1   %stopped_push   1   3   %oparray_pop   1   3
+%oparray_pop   1   3   %oparray_pop   1   3   %oparray_pop   .runexec2
+--nostringval--   --nostringval--   --nostringval--   2   %stopped_push
+--nostringval--   --nostringval--   2   3   %oparray_pop   3   3
+%oparray_pop   --nostringval--   --nostringval--   --nostringval--
+--nostringval--   --nostringval--   false   1   %stopped_push   6   4
+%oparray_pop   --nostringval--   --nostringval--   --nostringval--   5
+-1   1   --nostringval--   %for_neg_int_continue   --nostringval--
+--nostringval--
+Dictionary stack:
+   --dict:1050/1123(ro)(G)--   --dict:0/20(G)--   --dict:72/200(L)--
+--dict:17/17(ro)(G)--   --dict:1050/1123(ro)(G)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 2801
+GPL Ghostscript 8.01: Unrecoverable error, exit code 1
 
-Inother words:
-   useradd -p hello_there brickie
-is going to create a user brickie with an unknown password.
+When I try to open a pdf file with GV, I get the following:
 
-you need a program to produce an encrypted password (either in
-crypt form (8 character limit) or the md5-sum format (roughly unlimited).
+GPL Ghostscript 8.01: Unrecoverable error, exit code 1
+Error: /invalidfont in findfont
+Operand stack:
+   --dict:7/7(L)--   F1   20   --dict:9/9(L)--   --dict:9/9(L)--
+TimesNewRomanPSMT   --dict:15/15(L)--   Times-Roman   Times-Roman   Font
+Times-Roman   397215   Times-Roman   --nostringval--   Courier
+NimbusMonL-Regu   (NimbusMonL-Regu)   NimbusMonL-Regu   (NimbusMonL-Regu)
+NimbusMonL-Regu
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval--
+--nostrin
 
+Here's where I believe the source of the problem lies.  Some time ago, I
+was having trouble getting Mozilla browser and Firefox to run on this
+machine after apt-get dist-upgrad(ing).  Basically, each would segfault.
+Someone advised me to run the programs through strace to see where the
+problem lay ("strace mozilla" at the command line).  Doing so revealed
+that the segfault occurred after a certain font could not be loaded.  In
+good newbie fashion, I decided that some fonts I had imported into the
+system had not had their permissions set corrrectly - i.e., that the
+mozilla problem was traceable to newbie error.  Since I had way too many
+fonts to examine manually for permissions I decided I should "correct"
+them en masse by cd'ing to their directory and issuing "chmod 644 * -r",
+then issuing "chown root * -r" (I may have recounted those commands
+slightly wrong: I did this some weeks ago and would have to execute the
+steps all over again to recall precisely).  I got these settings by
+examining fonts at random and determining that most of them were set to
+644 and owned by root.  Running those commands had an adverse effect at
+first since the subdirectories' permissions also got changed to 644, but
+changing them back to 755 largely took care of that.  But it was after
+this, as I recall, that the wierd fonts began to display in Opera and I
+began to get blank documents when opening pdf's using xpdf.
 
-If you have grub on your system, grub-md5-crypt   will
-read a password (twice) and then produce an encrypted version
-of it.. Unfortunately, it also generates a good bit of other output.
-the following, howeveer seems to work, OK:
+Let me ask: does it seem modifying font permissions and ownership as I've
+done could be the source of these font display problems?  If so, what are
+the correct font permissions and ownership, and how should I go about
+modifying them?  Input will be much appreciated: this problem must finally
+be confronted and resolved for this machine to fulfill my needs.
 
-  ( echo hello_there ; usleep 50000 ; echo hello_there) |
-      grub-md5-crypt 2> /dev/null | tail -1
+Thanks, James
 
-(the above is all on one line)
-
-It essentially throws out all the errors on stderr, and only saves
-the last line of output on stdout.
-
-The result is now usable as a -p parameter for .useradd.
-
-useradd -p ` ( echo hello_there ; usleep 50000 ; echo hello_there) |
-      grub-md5-crypt 2> /dev/null | tail -1  ` brickie
-
-if you want to put that script into a file:
-
-% cat bin/pwcrypt
-@!/bin/bash
-read line
-[ -n "$line" ] || { echo " $0: Password missing ; exit 1 ";  }
-( echo "$line" ; usleep 50000 ; echo "$line" ) |
-	grub-md5-crypt 2> /dev/null | tail -1
-
-
-@! useradd -p 'echo  my new password | pwcrypt` brickie2
-
-Would then create the user brickie2 with the password "my new password"
-
-I also have a perl script that produces the old 'crypt' form
-output -- but if you can use the md5sum format, I strongly
-recommend it. Somebody has already done up a dictionary attack on
-the 2 billion most likely 8 character passwords.
-
-The reason why passwd will NOT accept cleartext passwords
-on the command line is that (however sort the command runs),
-command parameters are visible in the output of 'ps'.
-If a not-nice user sees the useradd command when he is
-doing a random 'ps' (or it shows up in the output of 'top'.
-a cleartext password on the command line would then give
-random users the password for the new user (bad!).
-
-This is why I'm still not accepting a commandline password
-for pwcrypt. somebody might see it and realize what it's
-likely to be used for. This way it only shows up as a
-parameter on an echo command (which is usually  a shell
-builtin).  This is basically security by obscurity, but
-it's the best you can hope for if you INSIST on being
-able to sepecify the password on the commandline.
-
-
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-      the jewel within each person and bringing it to light.
+PS  I've learned a harsh lesson about Mozilla under Sid, it seems.
+Someone from the Debian users list advised me to avoid these packages,
+since they are plagued with problems.  Another observed that a program
+should not segfault on font problems.  The first-mentioned fellow advised
+me to use downloads directly from Mozilla and avoid the Debian packages.
+Much as I want to avoid by-passing the package management system, it seems
+like it may come to this: I simply must have a useable graphical browser
+on this system.  Seems like my assumption of newbie error was wrong in
+this case, and that my problems were actually caused by flaky
+maintainership.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
