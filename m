@@ -1,14 +1,54 @@
-From: "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
-Subject: When & how is the SCSI strategy routine called?
-Date: Tue, 22 Mar 2005 22:00:38 +0530
-Message-ID: <267988DEACEC5A4D86D5FCD780313FBB05FA9AE1@exch-03.noida.hcltech.com>
+From: "lk" <linux_kernel@patni.com>
+Subject: Re:When & how is the SCSI strategy routine called?
+Date: Tue, 22 Mar 2005 23:58:54 -0800
+Message-ID: <01a701c52f7e$290d9d30$5e91a8c0@patni.com>
+Reply-To: "lk" <linux_kernel@patni.com>
 Mime-Version: 1.0
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Sender: linux-scsi-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org
-Cc: "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
+To: linux-scsi@vger.kernel.org, rajatj@noida.hcltech.com, linux-newbie@vger.kernel.org
+
+This is my understanding.
+scsi_request_fn is the scsi's request function which performs the actual
+data
+transfer. clean up the queue and loop back to fetch next request.
+
+About the Question:WHEN and HOW is the strategy routine "scsi_request_fn()"
+called ?
+
+Every request queue have a few members to decide whether to call
+scsi_request_fn() or not. scsi_request_fn is called after the queue is
+unplugged.
+
+  request_queue_t->unplug_thresh
+  Whenever request queue is about to get full. which is the number of
+  requests after which the queue should be unplugged. unplugging of request
+  will in turn call scsi_request_fn().
+
+  request_queue_t->unplug_timer
+  After this much time the queue will be unplugged to rip the IO in turn
+  it will call scsi_request_fn().
+
+  Also in case of Async Direct IO the block layer will unplug the queue
+after
+  submission of  bios to queue by calling blk_run_address_space function.
+
+  scsi_request_fn will be called whenever the block layer calls queue unplug
+or
+  queue is about to get full or after a certain unplug timer value.
+
+   Hope it helps.
+
+
+-----Original Message-----
+From: linux-scsi-owner@vger.kernel.org
+[mailto:linux-scsi-owner@vger.kernel.org]On Behalf Of Rajat Jain, Noida
+Sent: Tuesday, March 22, 2005 8:31 AM
+To: linux-scsi@vger.kernel.org; linux-newbie@vger.kernel.org
+Cc: Rajat Jain, Noida
+Subject: When & how is the SCSI strategy routine called?
 
 
 Hi list,
@@ -29,20 +69,4 @@ TIA,
 Rajat
 
 
-Disclaimer: 
 
-This message and any attachment(s) contained here are information that is
-confidential,proprietary to HCL Technologies and its customers, privileged
-or otherwise protected by law.The information is solely intended for the
-individual or the entity it is addressed to. If you are not the intended
-recipient of this message, you are not authorized to read, forward,
-print,retain, copy or disseminate this message or any part of it. If you
-have received this e-mail in error, please notify the sender immediately by
-return e-mail and delete it from your computer.
-
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
