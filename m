@@ -1,48 +1,30 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: celeron and laptop / Linux
-Date: Sat, 15 Jun 2002 07:39:12 +0000
+From: Oliver Ob <ob_ok@gmx.net>
+Subject: A _small_ replacement for midnite commander / mc
+Date: Sat, 15 Jun 2002 11:11:28 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02061507391200.00275@unix.pa3gcu>
-References: <20020615020809Z314835-22020+4846@vger.kernel.org>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3D0B04C0.F6290EFC@gmx.net>
+References: <3B3F2D3A.AD169CAF@gmx.net> <01070115554301.00386@unix.pa3gcu.ampr.org> <3B3F5556.9C7B49CD@gmx.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020615020809Z314835-22020+4846@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "suse-linux-e@suse.com" <suse-linux-e@suse.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Saturday 15 June 2002 02:11, Adam Luchjenbroers wrote:
+I am fiddling with boot diskettes and found that the entire MC
+is a little large, isn't there a SMALL clone?
 
-> Also make sure that if it has an internal LAN card that it is supported and
-> beware internal modems as they are almost invariably winmodems and are
-> therefore unsupported (winmodems are not true modems, as they use their own
-> proprietary interface instead of the standard one).
+A small one that uses SHORT libraries is needed!
 
-Many laptops thesedays leave you a choise, no internal lan or modem, those 
-laptops have PCMCIA slots of course a better choise for those who are not so
-technicly minded, other laptops have internal hardware for lan and modem.
-Those with internal modem and lan have much the same chipsets, eepro100 is a 
-common chipset for a lan and is fully supported in all linux distro's.
+like under dos in the 90s: we had norton c., sure, but loads
+of clones with less than 100 kilobytes doing _almost_ the
+same.
 
-The chipset for the modem can vary as Adam pointed out, however i do not 
-completly agree with Adam here, there are quite a lot of winmodems which can 
-be made to work, a good and common example here is the Lucent chipset.
-Information of which can be found here;
-http://www.linuxdocs.org/HOWTOs/Winmodems-and-Linux-HOWTO.html
-A full list of win/linux-modems can be found at;
-http://www.idir.net/~gromitkc/winmodem.html#drivers
+i find lynx a little large as well.
 
-I personaly have a winmodem in my laptop and use the lucent driver, it works 
-well, it is not part of any linux distro because it is non-gpl but is freely 
-available for all, it is listed in the above URL. 
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+best greetings
+Olli
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
