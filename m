@@ -1,44 +1,57 @@
-From: caszonyi@rdslink.ro
-Subject: Re: disabling all video
-Date: Sat, 7 Aug 2004 01:19:47 +0300 (EEST)
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: How to hide . folders
+Date: Fri, 06 Aug 2004 23:02:48 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0408070119200.695@grinch.ro>
-References: <4113FDCB.2030307@networkstreaming.com>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <41147088.9050803@bcgreen.com>
+References: <BD385D76.3EE4%eatley@wow-corp.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4113FDCB.2030307@networkstreaming.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Davy Durham <davy@networkstreaming.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <BD385D76.3EE4%eatley@wow-corp.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Eve Atley <eatley@wow-corp.com>
+Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-On Fri, 6 Aug 2004, Davy Durham wrote:
+Eve Atley wrote:
+> Ken, thanks for the reply.
 
-> Sorry if this is the wrong list to ask this.. direct me to the correct
-> list if so...
->
-> Question: I would like the kernel not to use any of the video hardware
-> on the machine.  Is there any run-time kernel parameter I can pass to
-> disable all video?  (I tried console= to direct output to the serial
-> port, but ttys were still using the vga hardware.)  My video card is
-> built onto the mother board, and there is no way I see to disable it
-> from the BIOS.
-> I was hoping there was an option such as vga=disable or video=null or
-> something like that, but I've looked thru the docs and cannot find
-> anything.
->
-> Thanks,
->  Davy
+> Is my question better stated, then, as how to prevent users from deleting
+> any of the directories they encounter? If that's the correct question, then
+> is my solution to set a read-only on any folders that I don't wish deleted?
 
-you can compile a kernel without virtual terminal support
+There are a couple of things here:
 
+if you set the sticky bit ( u+t ) then users will only be able to delete
+files that they own unless they own the sticky
 
---
-"A mouse is a device used to point at
-the xterm you want to type in".
-Kim Alm on a.s.r.
+The ability to delete files depends on the permissions of the directory
+they are in. Removing a directory requires permission to the directory that
+contains it as well as that the directory be empty. If a directory is
+readonly to a user and contains *anything* (other than . and ..) then it
+is effectively un-removable regardless of parent directory permisions.
+It is still renameable if the directory is rw with no sticky bit set.
+
+> 
+> 
+>>something : system directories show up if you go too far up the
+>>hierarchy, but permissions should prevent you writing in them.
+> 
+> 
+> Is it possible to keep users from proceeding up further in the hierarchy, by
+> chance? 
+
+If you lave the execute bit on but turn off the read bit, then
+programs (including GUIs) will be unable to search the directory.
+Any program which knows the name of the file it's looking for
+will still work fine.  I think that this may be close enough to
+what you want.
+
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+    Powerful committed communication. Transformation touching
+      the jewel within each person and bringing it to light.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
