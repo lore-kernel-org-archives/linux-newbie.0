@@ -1,35 +1,45 @@
-From: "Sean Rima" <gateway@tcob1.net>
-Subject: Re: Linux Newsleters from me.
-Date: Wednesday, 19 Mar 2003 21:20:20 +0000
+From: Amin <raihan@citech-bd.com>
+Subject: Re: switching window managers
+Date: Thu, 20 Mar 2003 15:04:31 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_7223=3a9750=2f200_cf110099@fidonet.org>
-References: <20030318092836.A1873@neutrino.particles.org>
+Message-ID: <20030320090431.GB838@localhost.localdomain>
+References: <001001c2ee0a$0fd7cdc0$1803a8c0@ets.enterasys.com> <200303191558.h2JFwvF4007542@hartford-hwp.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030318092836.A1873@neutrino.particles.org>
+Content-Disposition: inline
+In-Reply-To: <200303191558.h2JFwvF4007542@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+Cc: simon.doyle@applysystems.co.uk, linux@hartford-hwp.com
 
-Originally to: Elias Athanasopoulos
+On Wed, Mar 19, 2003 at 10:58:57AM -0500, Haines Brown
+wrote:
 
-> From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-> On Tue, Mar 18, 2003 at 01:02:48AM +0000, Sean Rima wrote:
->> I must say sorry to all the members of the Linux Newbies list for the off
-> topic
->>newsletters that arrived on the list from my system. I run a BBS and gate the
-> Do you offer access in your BBS via telnet or only by phone call?
-> Also, if your BBS runs on Linux, what software do you use?
+> don't want to become reliant on gui utilities any more
+> than I have
 
+``switchdesk'' also works in text-only mode, I believe.
+True, though, that it does not show you any choices in that
+mode, so you have to supply your desktop environment/window
+manager as the argument.
 
-It is avilable mainly via telephone but best if you live in Ireland :) You can 
-get through to the BBS sometimes during GMT 1800-2300 at tcob1.no-ip.com. Until 
-last week the bbs was MBSE (mbse.sf.net) but I also used BBBS (www.bbbs.net) Due 
-to a MB failure, the BBS is running on a XP box.
+> I suspect it would be easier to modify a rc file to call
+> icewm in the first place. 
 
-Sean
+I use a bash script called ``ice'', which contains:
 
+#!/bin/bash
+startx /usr/bin/icewm -- :0
+
+Take a look at Steve Litt's ``Linux Productivity Magazine''
+issue about IceWM at
+http://www.troubleshooters.com/lpm/200209/200209.htm.  It's
+what convinced me to switch to IceWM.
+
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
