@@ -1,31 +1,61 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: Thu, 24 Oct 2002 14:04:11 +0000
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Gui - Gnome - Kde
+Date: Thu, 24 Oct 2002 11:10:31 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0210241404110I.00497@unix.pa3gcu>
-References: <MSGID_110=3a260=2f1_3db551be@linuxnet> <0210240640220D.00497@unix.pa3gcu> <1035455725.31480.71.camel@localhost.localdomain>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <009601c27b6f$7ec289e0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0097_01C27B4D.F7B0E9E0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1035455725.31480.71.camel@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Bryan Simmons <bsimmo1@gl.umbc.edu>, pa3gcu@zeelandnet.nl
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Thursday 24 October 2002 10:35, Bryan Simmons wrote:
-> OK, but doesn't a CD-ROM have a read-ahead setting?
+This is a multi-part message in MIME format.
 
-Yes, but unfortunatly not when SCSI emu is used.
-So if you use you cdr for both writing and reading then you could always use 
-ide for reading and then scsi for writing, not very efficent but i see no 
-other option at the present time.
+------=_NextPart_000_0097_01C27B4D.F7B0E9E0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+What is kde like. I always just install gnome with Xwindows. I even
+select Xwindows classic what is it and why are there two. 
+
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
+
+------=_NextPart_000_0097_01C27B4D.F7B0E9E0
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
+
+------=_NextPart_000_0097_01C27B4D.F7B0E9E0--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
