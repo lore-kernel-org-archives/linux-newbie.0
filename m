@@ -1,22 +1,33 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Linux for Dummies?
-Date: Wed, 14 Jan 2004 15:13:55 +0800
+From: joy <gracecott@sancharnet.in>
+Subject: Re: X not starting at all
+Date: Thu, 15 Jan 2004 09:56:13 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401140713.i0E7DtD01739@skyinet.net>
-References: <40035BB8.7020404@kevino.org>
+Message-ID: <40061665.6000407@sancharnet.in>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 12 Jan 2004 19:45:12 MST." 
- <40035BB8.7020404@kevino.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: mailing list <linux-newbie@vger.kernel.org>
 
-My first 2 books were Linux in 24 Hours and Discover Linux.
+Hi,
+I did what was told of me (i.e apply the minion.de patch) and install to 
+my 2.6.1.I tried installing using the modified nvidia installer but it 
+would'nt.
+So, I  did a make install . the nvidia module was loaded and my 
+Xf86config-4 (using debconf) was modified to nvidia.
+Now it says could not find module 'nvidia'. the nvidia.o module is in my 
+/root/Nvidia/..... folder .sholud I declare this path in the XF86 config-4?
+'coz it is still trying to load the modules from 
+/usr/X11R6/lib/modules/drivers.
 
-I still consult them every now and then, even so I have now Linux in a 
-Nutshell and Running Linux.
+Thanx in adv.,
+Joy.
+
+> --------------------------------------------------------------------------------------------------------
+> A life without purpose is like a bird that never learnt to fly.......
+> I am the bird that regularly flies Lufthansa
 
 
 
