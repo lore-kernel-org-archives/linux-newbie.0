@@ -1,63 +1,58 @@
-From: kernel@slackuser.com
-Subject: Re: hiding my hostname (2)
-Date: Wed, 7 May 2003 11:29:10 -0400 (EDT)
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: strange freeze
+Date: Wed, 7 May 2003 21:11:56 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0305071128350.5564-100000@kenny.slackuser.com>
-References: <20030507035842.42941.qmail@web10704.mail.yahoo.com>
+Message-ID: <20030507211156.A1120@neutrino.particles.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030507035842.42941.qmail@web10704.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jesse Armand <matrix_rev2002@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-That is caused by someone being logged in through the console.
+Hello!
 
--Chris W.
+I know this is a little bit off topic, but I also know that the list is
+being followed by some very skillfull admins, whose experience might help. :-)
 
-On Tue, 6 May 2003, Jesse Armand wrote:
+I have a dual box with Windows XP and SuSE Linux 8.2. Each operating system
+has its own hard disk. Both of the hard disks are IDE.
 
-> well.. I think there is a way,
-> why ?
-> because i've just seen it.
-> when i'm logging in to a server,
-> i saw a client that hiding his hostname,
-> and it's not about the server not knowing my ip
-> address, it's about hiding my ip address from viewing
-> by other users.
-> I know a server must know an ip address of the client
-> that connects to it.
->
-> when i use 'w' or 'who' command
-> the hostname table shows empty content
->
-> USER    TTY   FROM    LOGIN@    IDLE    WHAT
-> woho    p1     -      10:09AM    -      - (pine)
->
-> can u explain that ?
->
-> btw by using .nofinger i can hide myself from
-> fingering,
-> that's one way,
->
-> so anybody knows how to hide my hostname from 'who'
-> and 'w'
->
->
-> __________________________________
-> Do you Yahoo!?
-> The New Yahoo! Search - Faster. Easier. Bingo.
-> http://search.yahoo.com
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
->
+The problem is that the box suddenly freezes. If it is on Windows it 
+freezes (i.e. no mouse movement, no disk activity, num-lock can't change
+state, i.e. the keyboard is dead [*]) and after 10-15 secs it gets back to
+normal. On Linux it freezes (exactly the same symptoms) forever.
 
+My guess is that it's a hardware or a power supply related problem. I 
+exclude the last case, because noone else in the office has faced such a
+problem and I even changed the cable.
+
+So, I have to find if it has to do with the CPU, memory, hard disk or even
+the graphics card's memory. As far as the hard disk case is concerned, I have
+noticed that Windows get frozen, randomly, but *mostly* when a file request is 
+opened. OTOH, on Linux I can reproduce the problem when I run the updatedb program. 
+But, each OS is in a separate disk! Of course during the updatedb process the
+Windows fs (FAT32 not NTFS) is beeing read (it is mounted at boot time), but I 
+hardly can believe a damaged fs can freeze the whole system.
+
+ANW, if anyone has anything to suggest I'll be happy to hear him/her. I'm looking
+for a way to find the root of a problem by using some Linux diagnostic tools (I'll
+start with memcheck86), because I know quite a little about Windows. So, suggestions
+for hardware diagnosis via Linux software is welcomed, too. :-)
+
+Thank you for your time!
+
+Regards,
+Elias
+
+[*] The CPU cooler works.
+
+-- 
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
+
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
