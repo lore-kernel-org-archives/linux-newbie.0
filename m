@@ -1,32 +1,40 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: XFree86 crash log
-Date: Wed, 13 Nov 2002 20:45:54 -0600 (CST)
+From: ichi@ihug.co.nz
+Subject: Re: more X problems
+Date: Thu, 14 Nov 2002 16:23:57 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211132043350.21708-100000@localhost.localdomain>
-References: <200211140213.gAE2D9x01644@philonline.com>
+Message-ID: <3DD3CE1D.3CC4333A@ihug.co.nz>
+References: <Pine.LNX.4.44.0211132030330.21708-100000@localhost.localdomain>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211140213.gAE2D9x01644@philonline.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: James Miller <jamtat@mailandnews.com>
+Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-On 13 Nov 2002, Peter wrote:
-
-> When I upgraded on my old PS1 from RH7.0 to RH7.1 I had a lot of problems, 
-> like system hangs, X not opening and a lot of exchanges on this forum. I had 
-> also SW7.? running and could not make SW8.0 run at all.
-> Finally someone asked what computer I have and I said PS1 and he said no 
-> wonder those new kernels will not run on those old machines. I bought a new 
-> PS2 motherboard and all problems were solved till I encountered RH7.3. But 
-> that's another story.
+James Miller wrote:
 > 
-So far, the only problem has been getting X running - but this *is* a 
-minimal Slack 8.1 install (probably up to about 50-70MB with X installed). 
-The kernel boots fine. Maybe further problems await, though. We'll see.
+> The text file that accompanies the xserver file Steven 
+> suggested does, in fact, mention support for the S3Trio 64+ 
+> (not V+, as my card is supposed to be). But then, if 
+> XFree86 4.2.0 does not support this card, why is it listed 
+> in the database of cards one can choose when running xf86config
+> under XFree86 4.2.0? Doesn't make much sense to me.
 
-James
+False alarm.  Your card is supported.  I found this 
+at http://www.xfree86.org/4.2.0/Status28.html#28 
+-----------------------------------------------
+4.2.0: Support for the 964 (revisions 0 and 1), 
+968, Trio32, Trio64, Trio64, Trio64V+,
+-----------------------------------------------
+
+However, I also found (elsewhere) that the framebuffer (fb) 
+requires VESA 2.0.  It does not work with VESA 1.2 (which 
+is what the Trio ^64+ is).  What effect (if any) this has 
+on XFree 4.2.0, I do not know.
+
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
