@@ -1,29 +1,48 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: gq<motion> not reformatting quote chars
-Date: Sat, 22 Mar 2003 10:29:58 +0600
-Message-ID: <20030322042958.GA907@localhost.localdomain>
-References: <Pine.OSX.4.51.0303211820070.520@ackema.apple.com>
+From: ramzez <r4mz3z@yahoo.es>
+Subject: how do I use other than UTF8
+Date: 22 Mar 2003 17:14:01 -0500
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <1048357229.1140.4.camel@localhost.localdomain>
 Mime-Version: 1.0
-Return-path: <vim-return-33757-vim=quimby.gnus.org@vim.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.OSX.4.51.0303211820070.520@ackema.apple.com>
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-nl6veDp2rkZDSy+i17DQ"
+Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-Cc: vim@vim.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Fri, Mar 21, 2003 at 06:22:57PM -0800, Matt Ackeret
-wrote:
 
-> I seem to remember there's a variable to set for the
-> various quote chars, but I don't see that set on my other
-> system.
+--=-nl6veDp2rkZDSy+i17DQ
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Try ``:h fo-table''.  You might find something relevant
-there.  Vim, as I'm using it right now, is reformatting
-quoted text quite nicely.  My ``formatoptions'' are:
-``tcql''.
+Hi friends...
 
-HTH,
-Yawar Amin
+  I'm using RedHat 8.0 and for default it use UTF8 but I want to use
+only code charset "ISO-8859-1"... how do I do that?
+
+thanks.
+--=20
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+
+--=-nl6veDp2rkZDSy+i17DQ
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: Esta parte del mensaje esta firmada digitalmente
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQA+fKltG3Fqyap52TERAioUAKDlG6DevxkjSNcg1JGD7RYlNIQdWgCfRpFy
+BWMwm9glqqZcXx+TAS9c6fE=
+=SQ3O
+-----END PGP SIGNATURE-----
+
+--=-nl6veDp2rkZDSy+i17DQ--
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
