@@ -1,43 +1,59 @@
-From: Ray Olszewski <ray@comarre.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: startx
-Date: Wed, 16 Jul 2003 11:29:23 -0700
+Date: Wed, 16 Jul 2003 21:00:36 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030716112332.01ff0c30@celine>
+Message-ID: <200307162100.36307.pa3gcu@zeelandnet.nl>
 References: <HBEJLOFMLEPBMAAEFNFDOELNCAAA.azapata@du.edu>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <HBEJLOFMLEPBMAAEFNFDOELNCAAA.azapata@du.edu>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Anna G. Zapata" <azapata@du.edu>, Linux-Newbie <linux-newbie@vger.kernel.org>
 
-At 12:09 PM 7/16/2003 -0600, Anna G. Zapata wrote:
->Hi all,
+On Wednesday 16 July 2003 20:09, Anna G. Zapata wrote:
+> Hi all,
 >
->I have startx configured to startup when I boot the machine, however, it
->doesn't work.  I still have to type startx at the command line.  Any ideas
->as to what's going on here?
+> I have startx configured to startup when I boot the machine, however, it
+> doesn't work.  I still have to type startx at the command line.  Any ideas
+> as to what's going on here?
 
-"it doesn't work" is not a problem description. Try again, and this time 
-tell us:
+You make no mention of what distro you use and further more who are you,? root 
+a normal user.??
+Anyway most distros have a file called inittab and its found in /etc edit the 
+line which looks like;
 
-1. What Linux distro and version you are using.
+id:3:initdefault:
+To which ever runlevel is defined as X11 with KDM/GDM/XDM (session managers)
+that should be found (or something like it at the top of inittab.
 
-2. What you actually did that you summarize here as "I have startx 
-configured to startup when I boot the machine". For example, are you 
-running "startx" from an init script? If so, what script, and how is it 
-symlinked to the default runlevel?
+type init X (as root) after inittab has been changed to start X.
 
-3. What errors (if any) does startx (or the init script or whatever you do) 
-report? Where this might be depends on how you are doing it. Maybe in a log 
-file. Maybe in an e-mail to root. Maybe someplace else.
+X = the runlevel nember of your distro for X.
 
-4. What userid do you intend X to be running as? How do you make it do that?
+If that sounds and looks strange to you, then you know how your question 
+looked to me and others here on the list, please give more info to get a 
+decent answer.
 
-All that said ... the *usual* way to boot directly into X is not with 
-startx, but with a display manager like xdm or gdm. Do you have some reason 
-for not doing it that way?
+> Anna G. Zapata - GSEC, MCIS
+> University of Denver
+> University Technology Services - Network Security
+> (303) 871-2009 (phone)
+> (303) 871-4135 (fax)
+> azapata@du.edu (email)
+>
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
