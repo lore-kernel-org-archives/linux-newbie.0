@@ -1,20 +1,32 @@
-From: "Jerry T" <linuxl1@hotmail.com>
-Subject: firewalls on Linux 2.4.X
-Date: Wed, 17 Apr 2002 15:31:22 +0000
+From: David Stroupe <dstroupe@keyed-upsoftware.com>
+Subject: Error message when insmodding
+Date: Wed, 17 Apr 2002 11:03:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com>
+Message-ID: <3CBD9CDC.2070202@keyed-upsoftware.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-What firewall is recommended on kernels 2.4.X? Any documentation that I read 
-about ipchains refers to version 2.2.X. What about iptables?
+When I load a device driver I get the message:
 
-_________________________________________________________________
-Chat with friends online, try MSN Messenger: http://messenger.msn.com
+Warning:  loading driver.o will taint the kernel : no license
+
+This is a driver that I created myself and it seems to load and function 
+properly regardless of this message.
+
+What does this mean?
+
+How do I resolve it?
+TIA
+
+-- 
+Best regards,
+David Stroupe
+Keyed-Up Software
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
