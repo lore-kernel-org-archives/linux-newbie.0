@@ -1,73 +1,72 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: dma turned off
-Date: Thu, 11 Nov 2004 15:33:17 -0500
-Message-ID: <20041111153317.41d12e62@Knoppix>
-References: <20041111031327.278F03F57C@heisspf>
-	<4192EAD8.3070400@verizon.net>
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: Re: No Sound with Kernel 2.6.7
+Date: Thu, 11 Nov 2004 23:57:19 +0930
+Message-ID: <200411112357.25724.Adam@Luchjenbroers.com>
+References: <20041111031359.589E83F580@heisspf>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4192EAD8.3070400@verizon.net>
+In-Reply-To: <20041111031359.589E83F580@heisspf>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jim Nelson <james4765@verizon.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Type: Text/Plain; charset="us-ascii"
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
-Thanks Jim!
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-On Wed, 10 Nov 2004 23:30:16 -0500
-Jim Nelson <james4765@verizon.net> wrote:
+> I did what you have recommended but the sound continues to be elusive with
+> kernel 2.6.7. On boot I get the following messages:
+>
+> Loading ALSA mixer settings:  /usr/sbin/alsactl restore
+> No state is present for card Dummy
 
-> Peter H. wrote:
-> > Hi,
-> > 
-> > Slackware 10
-> > 
-> > When I switch to kernel 2.6.7 I get the following error message on boot:
-> > 
-> >  * Warning: The dma on your hard drive is turned off. *
-> >  * This may really slow down the fsck process. *
-> > 
-> > Apparently with the command "hdparm -d /dev/hda" dma is turned on.
-> > 
-> > Where in /etc/rc.d if that is the place do I put this command?
-> > 
-> > However, giving the command from the console as root after booting I get:
-> > 
-> > setting using_dma to 1 (on)
-> >  HDIO_SET_DMA failed: Operation not permitted
-> >  using_dma    =  0 (off)
-> > 
-> > How to resolve?
-> > 
-> > Thanks & regards
-> 
-> What kind of hard drive and IDE chipset does it have?  I know some drives were 
-> recently added to a no-DMA blacklist for behaving badly.  Normally, dma is 
-> supposed to be enabled by default, and only disabled when a known-bad hard drive 
-> or IDE controller is found.
-> 
-hdparm -i /dev/hda
+Should go away after the first one, just means it has no settings to restore. 
+If you keep seeing this, then it's a bigger issue. If you haven't already run 
+alsamixer do so.
 
- Model=Maxtor 2F040L0, FwRev=VAM51JJ0, SerialNo=F1J91XNE
- Config={ Fixed }
- RawCHS=16383/16/63, TrkSize=0, SectSize=0, ECCbytes=57
- BuffType=DualPortCache, BuffSize=2048kB, MaxMultSect=16, MultSect=16
- CurCHS=4047/16/255, CurSects=16511760, LBA=yes, LBAsects=80293248
- IORDY=on/off, tPIO={min:120,w/IORDY:120}, tDMA={min:120,rec:120}
- PIO modes:  pio0 pio1 pio2 pio3 pio4 
- DMA modes:  mdma0 mdma1 mdma2 
- UDMA modes: udma0 udma1 udma2 udma3 udma4 udma5 *udma6 
- AdvancedPM=yes: disabled (255) WriteCache=enabled
- Drive conforms to: (null): 
+> Loading OSS compatibility modules for ALSA.
+> FATAL: Module snd_pcm_oss not found.
+> FATAL: Module snd_mixer_oss not found.
 
-I think it is kernel related since with kernel 2.4.26 in slackware I do not get those error messages neither in Fedora Core2 with kernel 2.6.5.... on the same HD.
+What this means is that it failed to load the OSS emulation modules. There are 
+two sound architectures in use in Linux, 2.4 uses OSS (Open Sound System), 
+whereas 2.6 uses ALSA (Advanced Linux Sound Architecture) to provide sound. 
+ALSA includes the ability to emulate OSS so that applications which use it 
+for sound function correctly. This significant change is also why your old 
+settings work fine in 2.4 but not in 2.6 (they load the OSS drivers).
 
-Regards
+If you want to test if ALSA is working ok, try running XMMS and changing the 
+audio output plugin to ALSA to see if that works. You could also try 
+playing .wav files with the aplay command.
 
--- 
-Peter
+> In kernel 2.4.26 all the settings are the same in /etc/rc.d  as well as for
+> modprobe.conf and modules.conf and the sound is no problem.
+>
+> What would be the next step?
+
+Probably try enabling the following in your kernel (either as modules or right 
+in the kernel).
+
+OSS Mixer API
+OSS PCM API
+OSS Sequencer API
+
+They're right under the ALSA settings with make xconfig, and will provide the 
+OSS emulation you will need for OSS based apps.
+
+- -- 
+"It should be illegal to yell "Y2K" in a crowded economy. :-)" - Larry Wall
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQFBk3bK94zI/zB2CYURAubgAJ4wxRXdNZA5HYCarUofg4rKVI4DAwCfUCfe
+0mRs/wlA6UDmFBbzvn8uoAE=
+=jPWf
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
