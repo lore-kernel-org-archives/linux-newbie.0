@@ -1,44 +1,34 @@
 From: Jude DaShiell <jdashiel@shellworld.net>
-Subject: Re: A few more things and I can kiss windows good bye.
-Date: Sun, 20 Oct 2002 01:21:15 -0400 (EDT)
+Subject: Re: Netgear FA312TX - Is it supported?
+Date: Sun, 20 Oct 2002 01:29:11 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.BSF.4.44.0210200120080.26747-100000@server1.shellworld.net>
-References: <200210182013.g9IKDrq17098@ev6.be.wanadoo.com>
+Message-ID: <Pine.BSF.4.44.0210200127020.26747-100000@server1.shellworld.net>
+References: <200210190915.03651.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210182013.g9IKDrq17098@ev6.be.wanadoo.com>
+In-Reply-To: <200210190915.03651.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>
+To: Adam Luchjenbroers <Adam@Luchjenbroers.com>
 Cc: linux-newbie@vger.kernel.org
 
-Do any good versions of basic exist for linux that can compile on
-slackware 8.0 but are text interface versions exist?
+You need to get the netdrivers package from
+ftp://ftp.scyld.com/pub/networks/ once you've got that, install and
+compile it.  Once done, modprobe natsemi should wake up that ethernet card
+for you.
 
 
 
-On 18 Oct 2002, Heimo Claasen wrote:
+On Sat, 19 Oct 2002, Adam Luchjenbroers wrote:
 
-> As Ray Olszewski <ray@comarre.com> wrote:
-> > There ae some implementations of BASIC for Linux, but I know of no working
-> > VB implementation. If you do, a reference to a URL would be helpful.
 >
-> Yes, there is a quite advanced Basic version (XBasic) but it suffers
-> from a basic *nix (and thus Linux) structural property: just the best
-> qualities of Basic - to control input and output on a rather low,
-> hardware-near level - cannot be implemented because of this. Which is a
-> real PITA as Basic is a great language when it comes to all sorts of
-> string/text handling and screen/printer/comport output of such.
+> Just want to know if this card is supported.
 >
-> Which in turn is a direct consequence of the paranoid "security"
-> approach - "Oh My God Don't Let a 'user' Ever Get Near the Real Stuff
-> (there has to be a SysAdmin for this who KNOWS about the tricks and
-> will never tell and allow)". In fact, rather paternalistic. Which
-> irritates me.
->
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-17
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+> --
+> "Well you know, C isn't that hard, void (*(*f[])())() for instance declares f
+> as an array of unspecified size, of pointers to functions that return
+> pointers to functions that return void... I think" - Sigurdur Asgeirsson
 >
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
