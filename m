@@ -1,65 +1,43 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: setting my path
-Date: Mon, 8 Sep 2003 21:17:59 +0200
+Date: Mon, 8 Sep 2003 22:02:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309082117.59502.pa3gcu@zeelandnet.nl>
-References: <HBEJLOFMLEPBMAAEFNFDKEHGCBAA.azapata@du.edu>
+Message-ID: <200309082202.12314.pa3gcu@zeelandnet.nl>
+References: <HBEJLOFMLEPBMAAEFNFDKEHGCBAA.azapata@du.edu> <200309082117.59502.pa3gcu@zeelandnet.nl> <001601c37648$fd593270$6e17a8c0@Wellwisher>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <HBEJLOFMLEPBMAAEFNFDKEHGCBAA.azapata@du.edu>
+In-Reply-To: <001601c37648$fd593270$6e17a8c0@Wellwisher>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Anna G. Zapata" <azapata@du.edu>, Linux-Newbie <linux-newbie@vger.kernel.org>
+To: Alan Bort <333101@personal.net.py>, "Anna G. Zapata" <azapata@du.edu>, Linux-Newbie <linux-newbie@vger.kernel.org>
 
-On Monday 08 September 2003 18:35, Anna G. Zapata wrote:
-> Hello,
->
-> I am running Red Hat 8.0.  When I run ifconfig as a user, I cannot see what
-> the IP address is of my box.  However, when I switch to being a root user
-> (su -) and run ifconfig, I can see the IP address.  How do I set my $PATH
-> so I can run ifconfig as a regular user?  Or is this possible?
+On Monday 08 September 2003 22:36, Alan Bort wrote:
+> Anyway, in RedHat the ifconfig is in /sbin/ifconfig
 
-The main reason for a user not having access to programs like ifconfig is 
-basicly a user has no need to use programs a admin would normally use so 
-those programs are not in a users path, however i am sure if you type;
-/usr/sbin/ifconfig as a user {Note the full path is given on the command line} 
-then it shuld produce the desired results.
+Ah!, yes how correct you are, my mistake.
 
-> Here is the user path:
->
-> -bash: /usr/local/bin:/bin:/usr/bin:/usr/X11R6/bin:/home/azapata/bin
->
-> Root path:
->
-> -bash:
-> /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin/X11:/
->u sr/X11R6/bin:/root/bin
+> If you want a certain user to have access to ifconfig, you should give the
+> right permissions and then add to the .bashrc or .bash_profile the line:
+> alias ifconfig="/sbin/ifconfig" and then log out and in again (so that the
+> RC file will be run again. You can also run another shell /bin/sh. But
+> logging out and back in is better.
 
-Yes thats basicly as it should be, /usr/sbin and /sbin are System spesific and 
-normally speaking are for the system operator.
+HuH!!
 
-There is nothig stopping you adding /sbin and /usr/sbin to a users path, 
-however it is not a nix done thing as per the above mentioned reason.
-I am sure others will point out other reasons as well.
+1) No not at all, there is no need to give a user permissions to use ifconfig 
+as he HAS permission to use it as is, what a normall user cannot do with 
+ifconfig is up or down interfaces, a normal user can only see the details of 
+ifconfig output, but giving a normall user permission to use ifconfig in its 
+entirity you WILL comprimise your system to hackers, in otherwords you
+open a closed door for them period.
 
->
-> Let me know if I am missing any useful information.
+2) A normall user can do the alias him/herself by using the following;
+alias ifconfig='/sbin/ifconfig'
 
-No i think is more a need to understand that there is a "root" user and a 
-"normal" user on all linux systems.
-
-root = the superuser and therefor can do what he wants.
-user = a normal user and cant do what he wants, he can only do what "root" 
-lets him/her do.
-
->
-> Thanks.
->
-> Anna Zapata
->
+Thats it.. 
 
 -- 
 If the Linux community is a bunch of theives because they
