@@ -1,124 +1,112 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Ethernet Questions
-Date: Thu, 02 May 2002 08:49:17 -0700
+From: Ravi Wijayaratne <ravi_wija@yahoo.com>
+Subject: Peculiar oops message
+Date: Thu, 2 May 2002 09:51:32 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020502154917.010ab6fc@[192.168.1.23]>
+Message-ID: <20020502165132.81328.qmail@web13102.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: sadunn <sadunn@blue.weeg.uiowa.edu>, linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-OK. Networking 101. Your system needs a valid IP address, a routing table
-that includes a route to a working gateway to the Internet, and access to
-DNS servers that can resolve names for you. (It may need other things too,
-but this is the base.) To let us help you figure out what it wrong, report
-the following (from your machine, AFTER it has received its DHCP lease):
+Hi,
 
-        1. The complete, exact output of "ifconfig -a"
-        2. The complete, exact output of  "netstat -nr"
-        3. Try to ping the IP address reported in step 1.
-                Tell us either that the ping works or EXACTLY
-                how it fails ("-1" isn't enough; we need to see
-                the text that precedes the -1).
-        4. Try to ping the gateway address reported in step 2 --
-                the routing table (assuming there is one).
-        5. The contents of the file /etc/resolv.conf .
-        6. The results of pinging the first address listed in
-                /etc/resolv.conf .
+I am trying to make sense of an Oops I got (attached
+at the end).
+After running ksymoops on the oops with the correct
+system map I get the follwing call trace as follows
 
-You may also have a hardware problem. I don't want to take the time to write
-out those tests right now; if the results of this first set suggest a
-hardware problem, I'll return to it. Oh, one more thing ...
+>>EIP; c011a320 <flush_sigqueue+24/44>   <=====
+Trace; c011a3a3 <exit_sighand+47/50>
+Trace; c0115b75 <do_exit+159/1c4>
+Trace; c0115c06 <sys_exit+e/10>
+Trace; c0106dfb <system_call+33/38>
+Trace; c0105726 <kernel_thread+2a/30>
 
-        7. The output of "uname -a"
+I am wondering how a system_call handler got in to the
+stack in a kernel thread. I traced the nfsd code and
+could not find a kernel_thread calling sys_exit. 
+Why would a system call be needed for a kernel thread
+anyway since we are already in kernel context.
+Does this make sense to anyone or am I missing
+something obvious ?
 
-In responding, please don't paraphrase or summarize the results. From what
-you have written,I'd say you don't know enough to decide what is and isn't
-important in the output. Provide the details, though, and I (or someone else
-here) can probably help you.
+Thanks
+Ravi
 
-At 10:22 AM 5/2/02 -0500, sadunn wrote:
->(I initially posted this to comp.os.linux.help, but none of the advice I 
->received was that helpful. Regardles, I am going to post the replies I 
->received, as well as my replies to them after this message)
->
->Hello. I am new to Linux, although I purchased Mandrake 7.0 quite a
->while ago. I recently began to desire to know how to operate Linux
->because I began to legitimately want to know about computers, as
->opposed to being a beginning programmer that liked to play around a
->little on them. However, I am unable to connect to the Internet on my
->terminal. I used to Lothar utility to detect my ethernet card, and I
->inputed all the values(Adapter Address, IP, Subnet mask, and Default
->Gateway) into the Network configuration available through DrakConfig.
->I got this data from the Winipcfg program in Win98. These were not
->enough. I went to the Linux ethernet HOW-TO, but none of the
->information  there was on software setup, but it directed me to the
->networking HOW-TO. That, as well, failed to provide me with the
->information that I needed. So then I went to my university Information
->Technology Services(ITS) office, but they told me that they couldn't
->give me any technical support on Linux directly(they appear to have
->some sort of deal with Gateway, Macintosh, and Windows, but not
->Linux-oriented companies), but they did have a small webpage they
->directed me to. I went there, and it was a meager collection of links.
->Through these links I found this newsgroup. Please, I really want to
->get my ethernet running as soon as possible so I can update my kernel
->and OS and begin to learn how Linux really works. Whatever other
->information you need I will try my very best to provide. Thanks!
->
->Response one(by "John"):
->
->You also need your DNS servers' IP addresses, I didn't see that you 
->mentioned this. Without them you can access remote servers only by 
->number, not name. Without DNS, you cannot resolve anything and any 
->attempts to connect to a web site will fail (unless you use the IP 
->address, which is unlikely)
->
->Can you ping "localhost" or "127.0.0.1"? How about your "real" IP? For 
->example (at a command prompt):
->
->ping localhost
->ping 127.0.0.1
->ping 12.34.56.78   <--- your real IP here
->
->Response by "Alex" to response one:
->
->Try to see if your ISP (or wherever you get your Net feed from) uses
->DHCP. This means Dynamic Host Configuration Protocol, and if properly
->set up will automatically assign you your own IP adress and DNS server
->addresses. The software that does this undex Linux is either dhcpcd or
->pump (I think there are perhaps others I have seen). If you use this,
->you do not need to manually configure your internet connection.
->
->My two responses(One to each person that tried to help me):
->
->My net feed does use dynamic IP's. In my settings, I can select DHCP,
->which was unknown to me before this message. So, after reading this, I
->selected it. I'm not sure if it helped. It didn't do anything with my
->DNS that I can see, and my error message when I try to access a
->webpage still says that it is unable to resolve a name server.
->
->I can ping localhost and 127.0.0.1, but my "real" IP returned a -1
->result. I am almost certain now, after some searching around, that it
->is my DNS that is to blame. The error message I get when I try to
->access a webpage tells me that it cannot resolve the name server,
->which seems to be in line with the DNS advice you gave me. I think
->that my IP is dynamic, not static, so I'm unable to ping the same one
->twice. Also, reading through some more help documentation, I've
->discovered that there is supposed to be a quick network setup wizard,
->but it isn't there.
->
->If anyone on this list can help me, I'd be very happy, indeed. Thanks!
+------------- ksymoops output ------------------
+Oops: 0000          
+CPU:    0         
+EIP:    0010:[<c011a320>]    Not tainted              
+                         
+Using defaults from ksymoops -t elf32-i386 -a i386
+EFLAGS: 00010006                
+eax: ed356568   ebx: ed356000   ecx: 00000000   edx:
+0000000a                   
+                                          
+esi: ed356000   edi: 00000000   ebp: cf542a00   esp:
+ed357f90                   
+                                          
+ds: 0018   es: 0018   ss: 0018                        
+     
+Process nfsd (pid: 1045, stackpage=ed35               
+                     
+Stack: ed356000 c011a3a3 ed356568 00000000 c0115b75
+ed356000 ed356000 ed381f10  
+                                                      
+                     
+       00000130 c0115c06 00000000 c0106dfb 00000100
+ed356560 00000104 ed381f10  
+                                                      
+                     
+       00000130 cf542a00 00000001 ed350018 ed5a0018
+00000001 c0105726 00000010  
+                                                      
+                     
+Call Trace: [<c011a3a3>] [<c0115b75>] [<c0115c06>]
+[<c0106dfb>] [<c0105726>]    
+                                                      
+                 
+Code: 8b 1a 52 a1 40 7e 33 c0 50 e8 ae c7 00 00 83 c4
+08 ff 0d 44               
+
+>>EIP; c011a320 <flush_sigqueue+24/44>   <=====
+Trace; c011a3a3 <exit_sighand+47/50>
+Trace; c0115b75 <do_exit+159/1c4>
+Trace; c0115c06 <sys_exit+e/10>
+Trace; c0106dfb <system_call+33/38>
+Trace; c0105726 <kernel_thread+2a/30>
+Code;  c011a320 <flush_sigqueue+24/44>
+00000000 <_EIP>:
+Code;  c011a320 <flush_sigqueue+24/44>   <=====
+   0:   8b 1a                     mov    (%edx),%ebx  
+<=====
+Code;  c011a322 <flush_sigqueue+26/44>
+   2:   52                        push   %edx
+Code;  c011a323 <flush_sigqueue+27/44>
+   3:   a1 40 7e 33 c0            mov   
+0xc0337e40,%eax
+Code;  c011a328 <flush_sigqueue+2c/44>
+   8:   50                        push   %eax
+Code;  c011a329 <flush_sigqueue+2d/44>
+   9:   e8 ae c7 00 00            call   c7bc
+<_EIP+0xc7bc> c0126adc <kmem_cache
+_free+0/94>
+Code;  c011a32e <flush_sigqueue+32/44>
+   e:   83 c4 08                  add    $0x8,%esp
+Code;  c011a331 <flush_sigqueue+35/44>
+  11:   ff 0d 44 00 00 00         decl   0x44
 
 
+=====
+------------------------------
+Ravi Wijayaratne
 
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
-
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Health - your guide to health and wellness
+http://health.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
