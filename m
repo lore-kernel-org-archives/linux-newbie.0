@@ -1,70 +1,65 @@
 From: Chris <smarta55@comcast.net>
-Subject: Re: How do I see all my partitions?
-Date: Mon, 23 Dec 2002 20:43:58 -0500
+Subject: Re: Where does installed software go?
+Date: Mon, 23 Dec 2002 20:47:21 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.0.20021223204021.00b61df8@mail.comcast.net>
-References: <5.1.0.14.0.20021222212347.00bb77e8@mail.comcast.net>
- <5.1.0.14.1.20021218091629.02111760@celine>
- <20021218104722.GA3850@neon.pearbough.net>
- <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
- <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
+Message-ID: <5.1.0.14.0.20021223204655.00bb5920@mail.comcast.net>
+References: <5.1.0.14.0.20021222212622.00bb8d08@mail.comcast.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20021222185608.020b29b0@celine>
+In-reply-to: <20021222.222557.134684296.1.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: whitnl73@juno.com
+Cc: linux-newbie@vger.kernel.org
 
-Yep, I meant "not" not "now."  It was a tpyo.
+Thank you,
+I'll give it a shot ...once I reboot my PC to linux, that is.
 
-As far as compiling a kernel goes, I don't believe I'm ready for that.  I'm 
-still at the
-point of staring at the PC for 20 minutes, and banging away on the keyboard 
-for another
-20 minutes, trying to accomplish something, before giving up and looking in 
-my "dummies" book.
-
-Thanks for your help,
 Chris
 
-At 07:04 PM Sunday 12/22/2002, Ray Olszewski wrote:
->At 09:26 PM 12/22/02 -0500, Chris wrote:
->>OK...now that I can see all my partitions, how do I mount an NTFS
->>partition?
->>When I try, I receive the error "fs now supported by kernel."
+At 10:07 PM Sunday 12/22/2002, whitnl73@juno.com wrote:
+>On Sun, 22 Dec 2002, Chris wrote:
 >
->I suspect it says "not" rather than "now". (Sorry to seem picky, and the 
->mistake is easy to spot here, but in troubleshooting, details matter, and 
->a seemling harmless mistake in reporting error messages can lead to the 
->wrong diagnosis.)
+> > How do I know where software goes when I install it?
+> > For instance, I just installed Opera on Red Hat 8.0, and
+> > had to dig around to find it.
+> >  From the root I ran "ls -al -R | grep opera"
+> > This produced about 16,000 items!  Through trial and error I was
+> > able to find the executable, and create a "launcher" on my desktop
+> > to it.
+> >
+> > Next I installed Wine.  I still have no idea where the executable is, but I
+> > know it's not in my path.  Running "ls -al -R | grep wine" produces even
+> > more results than when I looked for Opera.
+> >
+> > Is there a default location for software installations via RPMs?
+> >
+> > Thank you,
+> > Chris
 >
->And I'm assuming your try consists of a command like "mount -t ntfs 
->/dev/hdXX /mnt/some_mount_point", with suitable choices for XX and 
->some_mount_point .If not, plase tell us the exact command you enter and 
->the exact error you get.
+>It is up to the rpm packager.
 >
->>I'm running Red Hat 8.0 (sorry, no idea what the kernel version is - how
->>do I find this info?).
+>rpm -ql opera | less
+>rpm -ql wine
 >
->"uname -a" normally reports it.
+>to restrict the output to executables, I guess something like this would
+>do:
 >
->>Can the kernel be patched to support NTFS?
+>rpm -ql <package name> | grep '/bin/'
 >
->Probably ... though it does depend on the kernel version, RH8 is unlikely 
->to use an old kernel by default. Recent kernels support read-only access 
->to NTFS filesystems. If yours has the ntfs.o moule compiled, you can add 
->it with "insmod ntfs" or (better) "modprobe ntfs". If it doesn't come with 
->that module, you'll need to compile or get a kernel that does have it 
->(either the module or actuallt compiled into the kernel).
->
+>Lawson
 >
 >--
->-------------------------------------------"Never tell me the odds!"--------
->Ray Olszewski                                   -- Han Solo
->Palo Alto, California, USA                        ray@comarre.com
->-------------------------------------------------------------------------------
+>---oops---
 >
+>
+>
+>
+>________________________________________________________________
+>Sign Up for Juno Platinum Internet Access Today
+>Only $9.95 per month!
+>Visit www.juno.com
 >-
 >To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 >the body of a message to majordomo@vger.kernel.org
