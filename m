@@ -1,56 +1,80 @@
-From: Jim Nelson <james4765@cwazy.co.uk>
-Subject: Re: USB Flash/Jump Drives-Linux??
-Date: Sat, 29 Jan 2005 13:40:13 -0500
-Message-ID: <41FBD88D.4010009@cwazy.co.uk>
-References: <5.1.0.14.1.20050129075916.02be0cc0@celine>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: RE: Translating IP tables
+Date: Tue, 1 Feb 2005 18:54:15 -0500
+Message-ID: <002e01c508b9$5807df10$1f0aa8c0@lanadmin>
+References: <5.1.0.14.1.20050201085653.02be6918@celine>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <5.1.0.14.1.20050129075916.02be0cc0@celine>
+In-Reply-To: <5.1.0.14.1.20050201085653.02be6918@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org, haltec@kvinet.com
+Content-Type: text/plain; charset="us-ascii"
+To: 'Ray Olszewski' <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
-> At 09:03 AM 1/29/2005 -0500, Hal MacArgle wrote:
-> 
-> 
->> Greetings: Running Slackware 9.0 and 9.1; kernels 2.4.20 or 2.4.22,
->> bare.i installation, I've experienced good support for all USB
->> devices except Flash Drives.
->>
->> First one bought was a Link-Max UL-641 that, plugged in, was
->> immediately accessible by the kernel with no configuring by me..
->>
->> Later attempts with other brands, no such luck.. As I look at the
->> retail boxes not a single one mentions Linux, so was wondering what
->> others have discovered.. It's no fun buying then returning just to
->> see what works or doesn't... <grin>
->>
->> Most of the comments on the Web seem to indicate this is not a
->> problem but I've found otherwise.. One vendor, Kingston, said flat
->> out that Linux is not supported by their devices..
->>
->> Best and TIA.
-> 
-> 
-> 
-> I've only used one of these drives, a Lexar 256 MB JunpDrive Secure. 
-> Since I compile my own kernels, I did have to recompile (2.4.21, I 
-> think), turning on several USB options and SCSI (the standard way to 
-> access USB drives uses SCSI emulation), but then had no difficulty on my 
-> own systems ... and a couple of embedded Linux systems, using their 
-> manufacturers' stock kernels, also accessed the drive with no difficulty.
-> 
 
-I have also had good success with my Lexar 128MB JumpDrive.  Just tested my 
-brother's PNY Attache 128MB with a 2.6.10 kernel - works fine as well.
+Thanks, Ray, for your info so far. Here's what I've discerned...
 
-You may want to try a 2.6 kernel - Fedora core 3 or Slackware 10.  A lot of USB 
-stuff has been merged into 2.6.
+1. Netstat does show 5901 is running (with much snipped)...
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
 
-Jim
+tcp        0      0 0.0.0.0:5801            0.0.0.0:*               LISTEN
+
+tcp        0      0 0.0.0.0:5901            0.0.0.0:*               LISTEN
+
+
+2. I flushed the nasty port 23 away from the iptables, and attempted to add
+5901 using the following command:
+	iptables -A RH-Firewall-1-INPUT -m state --state NEW -p tcp
+--destination-port 5901 -j ACCEPT
+
+3. Now 'iptables -nvL' gives me this:
+<snip>
+Chain RH-Firewall-1-INPUT (2 references)
+ pkts bytes target     prot opt in     out     source
+destination         
+ 2964  320K ACCEPT     all  --  lo     *       0.0.0.0/0
+0.0.0.0/0          
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0
+0.0.0.0/0          icmp type 255 
+    0     0 ACCEPT     esp  --  *      *       0.0.0.0/0
+0.0.0.0/0          
+    0     0 ACCEPT     ah   --  *      *       0.0.0.0/0
+0.0.0.0/0          
+   44 34271 ACCEPT     all  --  *      *       0.0.0.0/0
+0.0.0.0/0          state RELATED,ESTABLISHED 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:25 
+    1    48 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:80 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:21 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:22 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:7886 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:8080 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:2401 
+  172 29486 REJECT     all  --  *      *       0.0.0.0/0
+0.0.0.0/0          reject-with icmp-host-prohibited 
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0
+0.0.0.0/0          state NEW tcp dpt:5901
+</snip>
+
+4. When I try to telnet to the machine's IP using port 5901, it still
+indicates Connection Failed, despite it being set up like everything else
+that works. 
+
+Final thought: perhaps it makes a difference that it follows the REJECT? 
+
+
+Thanks again,
+Eve
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
