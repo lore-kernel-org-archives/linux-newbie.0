@@ -1,69 +1,100 @@
-From: ramzez <r4mz3z@yahoo.es>
-Subject: Re: bash_logout -> KDE
-Date: 22 Jul 2003 12:33:22 -0500
+From: Travis Osterman <travis@wsor.net>
+Subject: Re: Multi-kernel in grub
+Date: 22 Jul 2003 16:54:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1058810375.2014.2.camel@localhost.localdomain>
-References: <1058650465.1955.3.camel@localhost.localdomain> 
-	<200307201344.16825.robin@robind.de>
+Message-ID: <1058910886.2992.10.camel@localhost.localdomain>
+References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
+Reply-To: travis@wsor.net
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-6Rkxaog8tqoY8TMMzBtO"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200307201344.16825.robin@robind.de>
+In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Robin Doer <robin@robind.de>
+Content-Type: text/plain; charset="us-ascii"
+To: newbie list <linux-newbie@vger.kernel.org>
 
+I tried to compile my kernel again and here are the results.  I'm really
+new to this, and thank you for your patience.
 
---=-6Rkxaog8tqoY8TMMzBtO
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: quoted-printable
+# make dep // no errors
+# make clean: // no errors
+# make bzImage // below
 
-Hi...
-   I can't manipulate using xreset ... but I modified
-"/usr/bin/startkde" and it works for me
+make[3]: *** No rule to make target
+`/usr/src/linux-2.4.20-8/drivers/pci/devlist
+.h', needed by `names.o'.  Stop.
+make[3]: Leaving directory `/usr/src/linux-2.4.20-8/drivers/pci'
+make[2]: *** [first_rule] Error 2
+make[2]: Leaving directory `/usr/src/linux-2.4.20-8/drivers/pci'
+make[1]: *** [_subdir_pci] Error 2
+make[1]: Leaving directory `/usr/src/linux-2.4.20-8/drivers'
+make: *** [_dir_drivers] Error 2
 
+# make modules // below
 
-El dom, 20-07-2003 a las 08:44, Robin Doer escribi=F3:
-    Hello!
-   =20
-    Am Samstag, 19. Juli 2003 21:37 schrieb ramzez:
-    > Hi friends...
-    >
-    >   How do I can always execute some script just before logout from any
-    > KDE session (just like .bash_logout in text mode)?
-    >
-    > thanks
-   =20
-    Well, It depends, like so often, on the display manager you are using.
-    For example xdm supports a Xreset-script which runs after terminating a=
-n=20
-    user-session. Check the xdm-man page for more detailed information (sec=
-tion=20
-    RESET PROGRAM).
-   =20
-    So long,
-    Robin
---=20
-  Linux User Registered #232544
-        ICQ : 337889406
-  GnuPG-key : www.keyserver.net
- -------------------------------
-"Software is like sex,
-      it's better when it's free."
-                  [Linus Torvalds]
+/usr/src/linux-2.4.20-8/include/linux/module.h:187: warning: function
+declaration isn't a prototype
+/usr/src/linux-2.4.20-8/include/linux/module.h:196:
+`try_inc_mod_count_R_ver_str' declared as function returning a function
+/usr/src/linux-2.4.20-8/include/linux/module.h:196: warning: parameter
+names (without types) in function declaration
+make[2]: *** [dummy.o] Error 1
+make[2]: Leaving directory `/usr/src/linux-2.4.20-8/drivers/net'
+make[1]: *** [_modsubdir_net] Error 2
+make[1]: Leaving directory `/usr/src/linux-2.4.20-8/drivers'
+make: *** [_mod_drivers] Error 2
 
---=-6Rkxaog8tqoY8TMMzBtO
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Esta parte del mensaje esta firmada digitalmente
+# make install // below
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
+make[3]: *** No rule to make target
+`/usr/src/linux-2.4.20-8/drivers/pci/devlist.h', needed by `names.o'. 
+Stop.
+make[3]: Leaving directory `/usr/src/linux-2.4.20-8/drivers/pci'
+make[2]: *** [first_rule] Error 2
+make[2]: Leaving directory `/usr/src/linux-2.4.20-8/drivers/pci'
+make[1]: *** [_subdir_pci] Error 2
+make[1]: Leaving directory `/usr/src/linux-2.4.20-8/drivers'
+make: *** [_dir_drivers] Error 2
 
-iD8DBQA/HCoGG3Fqyap52TERAs8AAJ9h66QHrI2cTwnnFPapVpItD97TfgCdH95S
-ATITl0UFbP7r6Zaq7FYTbPY=
-=lbNe
------END PGP SIGNATURE-----
+Thanks again.
 
---=-6Rkxaog8tqoY8TMMzBtO--
+-- Travis
+
+On Tue, 2003-07-22 at 10:15, Travis wrote:
+> I am a recent convert to RH9 and have been trying to compile a kernel to
+> allow dual head video support for my matrox g400-tv card.  Here is the
+> main tutorial I was following:
+> http://www.intel.com/support/platform/pentium4/linux.htm
+> 
+> I used xconfig , and the compilation process seemed to go fine (no
+> errors were display when I got the command prompt back) from running the
+> following.
+> 
+> make dep
+> make clean
+> make bzImage
+> make modules
+> 
+> My problem came at "Next, you have to copy the appropriate files so that
+> linux can boot from the new kernel."  I copied the vmlinuz image created
+> by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
+> file by copy-and-pasting my current RH boot section and simply changing
+> the label and pointing the vmlinuz-matrox as the kernel to load.
+> 
+> When booting I got an error very quickly.  I have been searching for a
+> grub multi-boot kernel tutorial and have read most of the applicable
+> grub user-guide, but to no avail.  If someone could point out a good
+> tutorial or give a few things to try, I would appreciate it.  Thanks in
+> advance.
+> 
+> -- Travis
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+-- 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
