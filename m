@@ -1,28 +1,29 @@
-From: Lee Chin <leechinus@yahoo.com>
+From: "Lee Chin" <leechin@mail.com>
 Subject: Getting the IP address of a UDP client
-Date: Fri, 3 Jan 2003 11:03:20 -0800 (PST)
+Date: Fri, 03 Jan 2003 13:43:26 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030103190320.45393.qmail@web14302.mail.yahoo.com>
+Message-ID: <20030103184326.96367.qmail@mail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
+To: hahn@physics.mcmaster.ca, leechin@mail.com, linux-newbie@vger.kernel.org
 
 Hi
-I can use getpeername to get the IP address of a
-client on a connected TCP socket, but when I have a
-UDP client that just sent me a packet, how do I get
-the IP address of that UDP client?
+I can use getpeername to get the IP address of a client on a connected TCP socket, but when I have a UDP client that just sent me a packet, how do I get the IP address of that UDP client?
 
 Thanks
 Lee
+-- 
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
-http://mailplus.yahoo.com
+Meet Singles
+http://corp.mail.com/lavalife
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
