@@ -1,28 +1,42 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: PPP in Slackware
-Date: 03 Apr 2003
+From: Amin <raihan@citech-bd.com>
+Subject: Re: /dev/cdrom is not a valid block device?
+Date: Fri, 4 Apr 2003 10:45:16 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <202304032058.333KwBq14663@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20030404044516.GA866@localhost.localdomain>
+References: <20030403123500.GA749@localhost.localdomain> <5.1.0.14.1.20030403082113.01e99628@celine>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20030403082113.01e99628@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Cc: linux-newbie@vger.kernel.org
 
-Richard - how do you make Kppp work in an exclusively Gnome environment ?
-(Gnome-ppp is not at all the same thing re functionalities.)
-Note that for other reasons, I cannot install any of the Qt/KDE (GUI-
-providing) libraries; it's all Gtk.
+On Thu, Apr 03, 2003 at 08:33:04AM -0800, Ray Olszewski
+wrote:
 
-Another problem is that I cannot find a "kppp" package by itself, it's
-part of a whole bundel of KDE utilities wrapped together insto one
-package in (some of) the RPM-based distros/installations.
+> The most likely cause is that you omitted some kernel
+> driver needed to access the device when you recompiled
+> your kernel.
 
+Ray, that was it exactly.  I did indeed somehow manage to
+leave out support for my CD-ROM drive during the creation of
+the kernel configuration file.  I guess this just goes to
+show that we have to be very careful when doing that.  The
+option I think I left out by mistake was ``ATA/IDE/MFM/RLL
+support ---> IDE, ATA and ATAPI Block devices ---> Include
+IDE/ATAPI CDROM support''.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-04-03
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+Anyway, I recompiled again, making doubly sure that
+everything was in order this time.  I had previously gone to
+the CDROM-HOWTO, as Richard suggested, and decided that
+recompilation was the first thing to do.
 
+Barring a few hitches, I got the new kernel working, and now
+I've got CD-ROM support as well.  Thanks, everybody!
+
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
