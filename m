@@ -1,47 +1,27 @@
-From: whitnl73@juno.com
-Subject: Re: commport settings
-Date: Tue, 31 Dec 2002 15:11:15 -0500 (EST)
+From: cr <cr@orcon.net.nz>
+Subject: Special characters
+Date: Wed, 1 Jan 2003 14:07:08 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021231.151212.134684296.0.whitnl73@juno.com>
-References: <200212310626.gBV6QNq18496@ev6.be.wanadoo.com>
+Message-ID: <200212312358.gBVNwVd01933@mail.orcon.net.nz>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212310626.gBV6QNq18496@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: hammer@revobild.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On 31 Dec 2002, Heimo Claasen wrote:
+This is probably an elementary query, but I can't find the answer in any help 
+files!   
 
-> A propos ifup/pon/p-pon, Lawson:
->
-> It is "ifup pppN" (and correspondingly), thus not "ifconfig.."
->
-> -heimo
+How does one produce a special (i.e. non-keyboard) ASCII character in a Linux 
+or X application (like text editors etc)?    For example, the pounds sign, 
+chr$(163).
 
-Well, then, try putting your modem init string and dial command
-in /etc/sysconfig/network-scripts/chat-ppp (Mandrake), like so:
+Alt + <num keypad>  doesn't seem to work.
 
-"" "<modem init strine>" "OK" "<modem dial strine>"
+cr
 
-prepend it to the file if it is there, or create it if it is not.
-
-Once you have run the setserial command, the IRQ is not the issue,
-but the modem won't dial until somebody tells it to.
-
-Lawson
-
----oops---
-
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
