@@ -1,36 +1,27 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Can't connect to Internet
-Date: Sun, 29 Aug 2004 09:57:03 +0800
+From: Kumaresh Perumal <kumaresh.perumal@gmail.com>
+Subject: Having problem in playing audio CD
+Date: Sun, 29 Aug 2004 18:27:17 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040829015703.BB7883EB31@heisspf>
-References: <200408280930.22863.pa3gcu@zeelandnet.nl>
+Message-ID: <ef2116a9040829055765a7f55b@mail.gmail.com>
+Reply-To: Kumaresh Perumal <kumaresh.perumal@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sat, 28 Aug 2004 09:30:22 +0200."
-             <200408280930.22863.pa3gcu@zeelandnet.nl> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Richard Adams <pa3gcu@zeelandnet.nl>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Thank you so much Richard!
+Hi,
 
-pa3gcu@zeelandnet.nl said:
->  it sounds  like a domainname problem to me, check that  /etc/resolv.conf is
-> getting  updated by skynet
+I recently installed redhat linux and I couldn't play audio CD. I
+didn't get any error, but the toolbar says audio is playing with
+volume 40% and I couldn't hear any sound. I verified my soundcard and
+it works perfectly with the test sound.
 
-I copied /etc/resolv.conf from RedHat into slackware and I was back in 
-business.
+Let me know if I need to configure anythings.
 
-This mail leaves now in slackware with skyinet.net.
-
-Regards
--- 
-Peter
-
-
-
+Thanks and regards,
+kumaresh
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
