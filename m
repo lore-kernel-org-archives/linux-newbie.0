@@ -1,44 +1,32 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: block-major-33
-Date: 28 Sep 2002
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: Re: Large FTP transfers
+Date: Sat, 28 Sep 2002 12:35:01 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209282047.g8SKl3v06435@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <03f275434221c92HNLMAIL1@hawaii.rr.com>
+References: <200209281757.06861.adam@luchjenbroers.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <5.1.0.14.1.20020928075131.02675d00@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-With configuring a not-so-quite-new laptop I strugled with precisely
-this problem. In the 2.2.x kernel based system it was rather a hassle,
-the 2.4.x have the PCMCIA 'card service' management (IIRR it was the
-earlier cs_mgr module) integrated. All what was needed on that laptop
-then was to write a pertinent line for that CF card adapter into the
-configuration file for mounting of the various filesystems, fstab.
-I have it there as
-/def/hde1    /[cf-card]    msdos   ...(noauto and olther spec.s)
-    ^^^^^                  ^^^^^
-Basicly, CF cards _would_ behave like vfat formatted hard disks - and
-do that, if wanted, in a CF-to-IDE _adapter_(*) - but for whatever
-reason don't do that when used in those PCMCIA slots.
+On 28 Sep 02, at 8:01, Ray Olszewski wrote:
 
-With that fstab line I would get a "[Failed]" message with booting,
-but a manual 'mount /cf-card' when needed will indeed mount it, if it
-wouldn't mount automatically when the card is inserted or taken out
-(task of that "cs-mgr" which obviously watches one of those pins.)
+> I'd imagine it could also turn up problems with the NIC or
+> with the filesystem partition, but I haven't actually
+> experienced either.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+I used to have hard crashes during long network 
+transfers (not simply FTP transfers) that disappeared 
+after I updated the driver for my 3COM 905Cs.
 
-(*) Those CF cards have specifications which make them rather directly
-pin-compatible with HD or floppy drive connectors on the mainboard.
-Theoretically they then behave like just any "(hard) disk drive" -
-though note that this is very _different_ from the PCMCIA setup !
-I'm just ordering one (<20 USD) and will be curous how it behaves
-in the Linux box. That one is even announced as "hot swappable";
-though I assume this is comparable to "media changes" with floppies
-and Zipdrives, so it would mean to mount/umount the cards with swapping.
+David
+gnome@hawaii.rr.com
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
