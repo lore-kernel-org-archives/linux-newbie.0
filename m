@@ -1,76 +1,45 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: mounting cdrom
-Date: Wed, 24 Jul 2002 07:03:31 -0700
+From: Daniel Mose <mdomo@extra.netlink.se>
+Subject: Re: Package managers.
+Date: Wed, 24 Jul 2002 06:53:20 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020724064649.023af170@celine>
-References: <004b01c21bc8$61710080$148e1ec4@jantar.co.za>
+Message-ID: <20020724065320.A13199@extra.netlink.se>
+References: <000101c23167$995b86a0$4d32f7c2@geoff>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <004b01c21bc8$61710080$148e1ec4@jantar.co.za>
+In-Reply-To: <000101c23167$995b86a0$4d32f7c2@geoff>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Hendrik Fourie <hendrikf@jantar.co.za>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 02:44 PM 6/24/02 -0700, Hendrik Fourie wrote:
->i am using redhat 7.2 and kde and when i try to mount the cdrom within kde
->it gives the error message that "/dev/cdrom is not a valid block device".
+geoff wrote:
+> I am considering getting a copy of the new Debian 3.0 release,  but I
+> understand that they
+> use  "deb" rather than "rpm"  for package installation.
+> 
+> Please can anyone  on the list who has made the transition from rpm to deb
+> tell me
+> how they got on ?    Is the deb system as easy and as convenient as rpm ?
 
-What is the output of "ls -l /dev/cdrom"? Is the symlink set up correctly?
+I found rpm to be easy and convenient for about one month...
+After two years with it I can't bare with it any more. This is the 
+main reason for my own switch to Debian. I find slackwares tgz format
+to be much more convenient and easy to use than rpm.
+ 
+I'm not qualified to answer this question yet, but I think that 
+you will find more persons that are if you go to www.debian.org, 
+and subscribe to the mailing list: debian-user.
+A warning is in place here: The Debian User Mailing list has a huge
+throughput ( 300 articles a day per mimimum or so )
 
->using kde terminal window i tried  running "su" and entering the root
->password, then i run the command "mount  -t iso9660 /dev/hda  /mnt/cdrom and
->it gives me the exact same error message.
+This question does however come up very often there, so I think you
+will probably find more, and better answers by looking through the 
+mailing list archives at www.debian.org
 
-Surely not the *exact* same error message (since this command does not make 
-use of /dev/cdrom).
+I think though that the most difficult problem with switching from
+RPM based to Debian is finding a good Debian CD retailer nearby.
 
-Please post the exact command you enter and the exact response from the system.
-
->however when i change the runlevel from 5 to 3 in inittab, and then run the
->exact same command as above, the cdrom is mounted and i can access it.
->
->am i using te mount command the wrong way?, and why does it sometimes work?
-
-No to the first part (assuming hda really is a CD drive, as you indicate 
-below). As to the second, you need to tell us more if we are to figure that 
-out; my *guess* is that you have misreported some detail, but I am not 
-really sure.
-
->i also read somewhere that the ide devices are named in the following way:
->primary master on 1st ide controller = /dev/hda
->primary slave on 1st ide controller = /dev/hdb
-
-These two are correct.
-
->secondary master 2nd ide = dev/hdd
->secondary slave 2nd ide = dev/hdc
-
-These two you have reversed. Secondary *master* is hdc, secondary *slave* hdd.
-
->however, i have two hard drives connected as primary master and primary
->slave on the 1st  ide controller. the first hdd is a windows98 fat32
->partition and it is called /dev/hdc1 in linux while my second hard drive is
->the linux one, and it is called /dev/hdd1(boot),  /dev/hdd2(swap) and
->/dev/hdd3(root), while my 2 cdroms are /dev/hda and /dev/hdb. is this wrong
->? and could this be why i cannot mount the cdrom while using X?
-
-This is an unusual setup. Usually, a system needs to be able to boot (at 
-least run the bootloader) from the IDE primary master; if you can run a 
-bootloader from the IDE secondary, you must have a more flexible BIOS than 
-most. Either that or your RH devices (the /dev/hd* entries) were modified 
-in some way unfamiliar to me. But if that part works for you for booting 
-and mounting the hard disks, it should not affect your ability to mount the 
-CD drives.
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+kind regards, Daniel Mose
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
