@@ -1,37 +1,65 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
+From: ichi@ihug.co.nz
 Subject: Re: (X and other) basics (was: A few more things...)
-Date: Tue, 22 Oct 2002 01:12:06 +0300
+Date: Tue, 22 Oct 2002 11:27:03 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021022011206.D24238@neutrino.particles.org>
+Message-ID: <3DB53607.45140978@ihug.co.nz>
 References: <200210212031.g9LKVM46014450@pyxis.wanadoo.be>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200210212031.g9LKVM46014450@pyxis.wanadoo.be>; from hammer@revobild.net on Mon, Oct 21, 2002 at 10:04:30PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: Heimo Claasen <hammer@revobild.net>
 Cc: linux-newbie@vger.kernel.org
 
-On Mon, Oct 21, 2002 at 10:04:30PM +0000, Heimo Claasen wrote:
-> Sorry, I should have made this a bit more explicit: as the sub-thread
-> started from some exchange on XBasic v-a-v Quickbasic, I referred to the
-> lack of a Basic _compiler_.
-> (_interpreters_ use to be hotbeds for spaghetti code, indeed. And in
-> any case, they are "slow"; which is the reason for having binaries
-> progs at all.)
+Heimo Claasen wrote:
+> 
+> As to apps: Yes, there's a number of net tools; there's 
+> WGET, FTP clients; I don't like Pine that much though 
 
-Excuse me, I don't want to start a flamewar, but compilers/interpreters have
-nothing to do with the aesthitic result of your code. This has to do 100%
-with the grammar/syntax of the language you are coding.
+Have you tried Elm?
 
-And BASIC is number 1 candidate for spaghetti code...
+> Some sound tools do run from textmode command line, 
+> And sure there's more.
 
-Elias
+Then why did you say the following?
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+> > > there are miserably few textmode _applications_  
+
+> But I think of, for instance, a simple print output 
+> formatter just for line-printed text (no weird processor 
+> but something allowing less crude printer output), 
+
+I've seen a BASH script that does this.  It's part of
+the muLinux distro.
+
+> a stopwatch (TSR or not), 
+
+It would be simple to write a BASH script to do this.
+
+> a text tool like Buergh's LIST 
+
+This has been done.  I tried LIST (the ELF executable)
+a couple of years ago.  I preferred mc.
+
+> things like that are _comparatively_ easy to craft, 
+
+Indeed.
+
+> with a _comparably_ easy accessible language like Basic.
+
+Or BASH.  Or Perl.  Or Python.  Or whatever.
+
+> I just _dislike_ C [syntax]; for just sentimental or whatever
+> reasons; I want an alternative.
+
+Fine, go for it.  You have plenty of options to choose from.
+Instead of complaining about a lack of options in Linux, you 
+really should take a good look at what is available.  
+
+Cheers,
+Steven
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
