@@ -1,58 +1,46 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: grep for ip address on boot
-Date: 19 Nov 2002 14:11:07 -0500
+From: Mike Dresser <mdresser_l@windsormachine.com>
+Subject: Re: grep for ip address on boot
+Date: Tue, 19 Nov 2002 14:23:38 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1037733067.3110.10.camel@brainpress.verizon.net>
+Message-ID: <Pine.LNX.4.33.0211191421120.15767-100000@router.windsormachine.com>
+References: <1037733067.3110.10.camel@brainpress.verizon.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1037733067.3110.10.camel@brainpress.verizon.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-I have an adsl connection that uses a dynamic IP from my ISP.  I use the
-adsl-status script to find out what my IP is at any time.
-What I want to do is parse the response I get from adsl-status to
-isolate my IP.  Here is the output of the adsl-status script:
+On 19 Nov 2002, Bryan Simmons wrote:
 
-adsl-status: Link is up and running on interface ppp0
-ppp0      Link encap:Point-to-Point Protocol  
-          inet addr:151.196.10.63  P-t-P:10.4.25.1  Mask:255.255.255.255
-          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1492  Metric:1
-          RX packets:1962 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:1987 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:3 
-          RX bytes:1600510 (1.5 Mb)  TX bytes:362634 (354.1 Kb)
+> I have an adsl connection that uses a dynamic IP from my ISP.  I use the
+> adsl-status script to find out what my IP is at any time.
+> What I want to do is parse the response I get from adsl-status to
+> isolate my IP.  Here is the output of the adsl-status script:
+>
+> adsl-status: Link is up and running on interface ppp0
+> ppp0      Link encap:Point-to-Point Protocol
+>           inet addr:151.196.10.63  P-t-P:10.4.25.1  Mask:255.255.255.255
+>           UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1492  Metric:1
+>           RX packets:1962 errors:0 dropped:0 overruns:0 frame:0
+>           TX packets:1987 errors:0 dropped:0 overruns:0 carrier:0
+>           collisions:0 txqueuelen:3
+>           RX bytes:1600510 (1.5 Mb)  TX bytes:362634 (354.1 Kb)
+>
+> I figured that by using this command:  adsl-status | grep -o
+> addr:['0'-'9']
 
-I figured that by using this command:  adsl-status | grep -o
-addr:['0'-'9']
+adsl-status | grep inet | awk '{print $2}' | awk -F\: '{print $2}'
 
-Or some combination thereof, I would be able to get the full IP
-isolated.  I realize that the problem is that an IP can have from 1-3
-digits between each dot, and this screws up my regexp.  Can anyone
-suggest a web site or some sort of regexp that better suits this
-pursuit?  
+This grep's for the inet addr line.  Then awk takes word #2.  Then tells
+awk that : is the seperator instead of space, and take word #2 again.
 
-The purpose of this is to parse out my IP address and write it into a
-'header(Location:http://)' command in an index.php script that will be
-automatically ftp'd to another web server to simulate a bound domain
-name for my dynamic IP web site.  I got the site and the redirect
-working, I just want the site to be able to remain up if there is an
-unattended reboot.  Obviously I will put all necessary scripting in an
-init file to handle the IP parsing and ftp to allow the site to remain
-accessible to all.
+This _should_ work, it worked with ifconfig ppp0 here, which is what that
+adsl-status seems to be calling.
 
-Thanks guys!
--- 
-Regards,
-
-Bryan Simmons
-
-=-=-=-=-==-=-=-=-==-=-=-=-==-=-=-=-=-=
- "More hay Trigger?", "No thanks Roy,
-  I'm stuffed."
-=-=-=-=-==-=-=-=-==-=-=-=-==-=-=-=-=-=
-http://www.sarcastic-bastard.com
+Mike
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
