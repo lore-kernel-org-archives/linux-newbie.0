@@ -1,42 +1,64 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: GNOME help
-Date: Thu, 16 Jan 2003 19:40:51 +0000
+From: "Korosi Akos" <korosiakos@mailbox.hu>
+Subject: Strange problem
+Date: Fri, 17 Jan 2003 17:06:52 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03011619405101.29837@unix.pa3gcu>
+Message-ID: <20030117160653.9480.qmail@web1.mailbox.hu>
 References: <20030116165541.8028.qmail@webmail30.rediffmail.com>
-Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20030116165541.8028.qmail@webmail30.rediffmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Anant Aneja <anantaneja@rediffmail.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Newbie <linux-newbie@vger.kernel.org>
 
-On Thursday 16 January 2003 16:55, Anant Aneja wrote:
-> I've made some changes somehow in GNOME and now all programs load
-> only 10 seconds after double clicking.
-> Any suggestions how can i rectify this.
-> Anant
->
+Hi all!
 
-Without being cheeky, how in the name of (you know who) could anyone possably 
-give you an answer to this question, you dont say what you changed, when you 
-changed what and what you were trying to achive.
+I have a strange problem.
 
-I am not a glass ball reader, as a matter of fact i do belive that all the 
-folks here that answer questions are in the same class as me, "Not Glass Ball 
-Readers" period.
+Happened that the machine had been rebooted (hardly) for some times,
+and at the end the next happened:
 
-Shed some light on your problem and we will look into our glass balls.
+Nobody can log in except the root. The message is that there is no
+/home/<user> (<user> is the appropriate user)!
+But in /home there is the <user> directory, and the <user> has
+rwx permissions on it. And everybody has x permission on /home.
+The other thing is that in sendmail sm-client can not be started,
+because: can not chdir to /var/spool/<somedir>, no permissions.
+BUT there are appropritate permissions on that dir, and everybody
+has x permission on /var and /var/spool. After that I changed
+/var/spool/<somedir> to 777 permissions, but sm-client says the same.
+I can log in as root. And if I try to #su - <user>, it wont start.
+I tried #strace su - <user> and saw, that su can open some files,
+but it can not open to read many files (in /etc), but the files are
+there, everybody has read permissions on them, and everybody has
+execute permissions on the parent directoryes.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+What could this be?
+Could this be some virus (I forget to setup iptables correctly),
+or could this happen because of hard resets?
+
+I thought that I will reinstall Linux (RH 8.0), because happily
+I use more partitions, and there isnt any important data
+on root partition.
+
+But I'm very curious about this problem.
+
+I use RedHat 8.0 and Ext3 file system on all data partitions.
+This is an older machine (K6-2 350 CPU).
+
+If you need any further info, just ask.
+
+TIA
+Akos
+
+
+________________________________________________
+http://mailbox.hu - M=E1r SMS =E9rtes=EDt=E9ssel is!
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
