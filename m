@@ -1,55 +1,101 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: partitioning
-Date: Tue, 27 Jan 2004 14:16:26 -0500
+From: "rgomez@bancomer.com" <rgomez@bancomer.com>
+Subject: Re: Squid only on eth1
+Date: Tue, 27 Jan 2004 13:55:48 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040127191626.GA603@lnx2.w8mch.ampr.org>
-References: <200401252137.39975.wheds8@ms66.hinet.net> <Pine.LNX.4.58.0401260017210.9502@ppg_penguin> <20040126150458.GA559@lnx2.w8mch.ampr.org> <Pine.LNX.4.58.0401261707570.12559@ppg_penguin>
-Reply-To: haltec@kvinet.com
+Message-ID: <4011C8740000129C@mail-bcm02.alestra.net.mx>
+References: <010601c3e480$63c445e0$3401a8c0@iih.usyd.edu.au>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.58.0401261707570.12559@ppg_penguin>
+In-Reply-To: <010601c3e480$63c445e0$3401a8c0@iih.usyd.edu.au>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+Cc: james@lovedthanlost.net
 
-OK on the comments received by all.. I'll have to give this more
-thought as to whether or not it's for me... Appreciate!!
+It works, but one more, now it takes much time (close a minute) to get response
+from proxy, here are all info I think you would need...
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-		Utrum Per Hebdomadem Perveniam
+# nmap -sS XXX.XXX.XXX.XXX -p 8080 
 
-On 01-26, Ken Moffat wrote:
-> > >
-> >
-> > 	Care to comment on the reasons for putting /usr in it's
-> > separate partition??
-> >
-> 
-> Not particularly, but I'll do my best ;)
-> 
-> > 	For the many personal and home office work stations wouldn't
-> > that be overkill and not within the KISS philosophy??
-> >
-> 
-> Yes to overkill.  If it's a simple way of making it harder to damage
-> things then perhaps it's not outwith the spirit of KISS.
-> 
-> > 	Just curious. Cheers. <grin>
+Starting nmap V. 3.00 ( www.insecure.org/nmap/ )
+The 1 scanned port on  (eth0) is: closed
 
-> 
-> As far as I understand, the main reason to separate /usr is to do with
-> permissions - if it's separate, you can mount it r/o.  However, you can
-> also mount '/' r/o with (quite a lot of planning and) messing about.
-> I'm sure I've read about people mounting an nfs export at /usr, but that
-> does assume that all clients are on a similar architecture.  My security
-> knowledge isn't great. I'm sure I've missed out other advantages.
-> 
-> Ken
-> -- 
-> This is a job for Riviera Kid!
-> -
+Nmap run completed -- 1 IP address (1 host up) scanned in 21 seconds
+
+# nmap -sS XXX.XXX.XXX.XXX -p 8080 
+
+Starting nmap V. 3.00 ( www.insecure.org/nmap/ )
+Interesting ports on  (eth1):
+Port       State       Service
+8080/tcp   open        http-proxy              
+
+Nmap run completed -- 1 IP address (1 host up) scanned in 21 seconds
+
+# echo $http_proxy
+http://localhost:8080/
+
+# wget www.tldp.com
+--13:44:09--  http://www.tldp.com/
+           => `index.html'
+Resolving localhost... done.
+Connecting to localhost[127.0.0.1]:8080... failed: Connection refused.
+
+# echo $http_proxy
+http://eth1:8080/
+
+# wget www.ibm.com
+--13:48:57--  http://www.ibm.com/
+           => `index.html.4'
+Connecting to eth1:8080... connected.
+Proxy request sent, awaiting response... 302 Moved Temporarily
+Location: http://www.ibm.com/us/ [following]
+--13:49:44--  http://www.ibm.com/us/
+           => `index.html.4'
+Connecting to eth1:8080... connected.
+Proxy request sent, awaiting response... 200 OK
+Length: 27,087 [text/html]
+
+100%[====================================>] 27,087         5.02K/s    ETA
+00:00
+
+13:49:51 (5.02 KB/s) - `index.html.4' saved [27087/27087]
+
+$>-- Mensaje Original --
+$>From:	"James Turnbull" <james@lovedthanlost.net>
+$>To:	"linux-newbie" <linux-newbie@vger.kernel.org>
+$>Subject: Re: Squid only on eth1
+$>Date:	Tue, 27 Jan 2004 13:50:57 +1100
+$>
+$>
+$>> Hi:
+>
+> I have 2 eth devices in my Linux box, I want that all squid traffic go
+throw
+> eth1 an not eth0, how do I configure it?
+>
+
+If they have seperate IP addresses you can force squid to use a specific
+IP
+address in the squid.conf file.  Lo
+$>k at the http_port config option and
+specify an IP, i.e. http_port 10.0.0.5:3128
+
+Regards
+
+James
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+in
+the body of a message to majordomo@vger.kernel.org
+More majordomo
+$>info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
