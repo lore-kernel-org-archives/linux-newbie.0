@@ -1,67 +1,42 @@
-From: Staci <spiritlover666@yahoo.com>
-Subject: Re: Self-starting NAIM??
-Date: Mon, 20 May 2002 12:29:24 -0700 (PDT)
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: Re: Linux router
+Date: Mon, 20 May 2002 23:38:36 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020520192924.39588.qmail@web12803.mail.yahoo.com>
-References: <0205201840331A.27213@unix.pa3gcu>
+Message-ID: <200205202038.g4KKchI12995@g38.rdsbv.ro>
+References: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <0205201840331A.27213@unix.pa3gcu>
+In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Sridhar J <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+
+<advertise>
+get slackware !!!
+</advertise>
 
 
---- Richard Adams <pa3gcu@zeelandnet.nl> wrote:
-> > I double-checked my process-list last night to
-> make
-> > sure.  Then I woke up this morning and it'd been
-> > running for 304:06 minutes.  I ALWAYS shut it
-> down,
-> > this isn't me.
-> I have absolutly no experiance with this program,
-> however if a program
-> restarts itself then 2 things come to mind, it is
-> told to do so in 
-> /etc/inittab with a respawn command or via crontab,
-> altho, i doubt it would 
-> be crontab.
+On Monday 20 May 2002 13:59, Sridhar J wrote using one of his keyboards:
+> Hello
+>
+> I have an old Cyrix system that I would like to turn into a router-firewall
+> and put it before my Webserver. I would alos like to have my IDS running on
+> this. No other service should run on this. No apps, nothing.
+>
+> How do I go about it? What distro should I choose? What files do I have to
+> edit to make these changes?
+>
+> Regards
+> Sridhar
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Well, I just checked inittab and it's not there,
-although I did figure out one other inconsistency
-that'd been puzzling me. ;)
-(namely, when a particular bad-happening occurred I
-got locked out of all ttys except 6...turns out 6 is
-..I guess the way I understand it is : 6 is a
-text-console independent of X so when X goes crunch
-BAD, 6 still works).
- 
-anyway!
-How do I check crontab?  I've never used it, I've
-never set a cron-job although I know what they are.
-
-> I have "yet" to see a program that starts itself.
-
-<heh> Well you have now. ;)
-
-Thanks for the info....
-sl
-
-PS Bah, now you guys got me doin it!
-At least for me, please send responses only to
-linux-newbie@vger.kernel.org so I don't get duplicates
-like I just sent Richard! :/
-
-
-=====
-**************************
-In cyberspace nobody can hear you scream.
-
-__________________________________________________
-Do You Yahoo!?
-LAUNCH - Your Yahoo! Music Experience
-http://launch.yahoo.com
+-- 
+ 11:37pm  up 7 min,  1 user,  load average: 0.01, 0.11, 0.08
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
