@@ -1,108 +1,69 @@
-From: Staci <spiritlover666@yahoo.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Suggestion for help-page?
-Date: Sun, 28 Apr 2002 14:34:27 -0700 (PDT)
+Date: Sun, 28 Apr 2002 15:24:04 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020428213427.47447.qmail@web12805.mail.yahoo.com>
-References: <200204281704.40861.1stflight@ameritech.net>
+Message-ID: <2.2.32.20020428222404.010b3648@[192.168.1.23]>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200204281704.40861.1stflight@ameritech.net>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
 
-See, this is why I needed a help page.
+At 02:34 PM 4/28/02 -0700, Staci wrote:
+>See, this is why I needed a help page.
 
-I made one called test, it contained just this...
+Well ... it's why you need help, anyway. At this level, bash script syntax
+just isn't very tricky. Whatever is wrong with you "test" script isn't all
+that apparent, so I doubt that a "very VERY newbie-friendly help-page for
+beginners" would help you much in troubleshooting this problem.
 
-#!/bin/bash
-cp /home/staci/*.mp3 /
-cp /*.mp3 /industgoth/new
-rm /*.mp3
-rm /home/staci/*.mp3
+>I made one called test, it contained just this...
+>
+>#!/bin/bash
+>cp /home/staci/*.mp3 /
+>cp /*.mp3 /industgoth/new
+>rm /*.mp3
+>rm /home/staci/*.mp3
+>
+>That's the sequence I'd go thru if I did it by hand. 
+>And I ran it as root cuz only root has access to that
+>/industgoth dir.
+>And they're GONE.  All 20 or so of them.
+>They're not in /industgoth/new, not anywhere.  Why???
+>:(
 
-That's the sequence I'd go thru if I did it by hand. 
-And I ran it as root cuz only root has access to that
-/industgoth dir.
-And they're GONE.  All 20 or so of them.
-They're not in /industgoth/new, not anywhere.  Why???
-:(
+They are gone from their old location because you rm'ed them. Same thing for
+the intermediate location (/). That's why they are "not anywhere". So one
+obvious change is to get rid of the two rm lines, then run a script with
+just the first 3 lines and see what happens. 
 
-sl
+The interesting question is why they are not in /industgoth/new/, not why
+they aren't "anywhere". Assuming the directory /industgoth/new/ exists, is
+writable, and has enough room on the filesystem, I'd expect the mp3 files to
+have made it there. (I would suggest changing the line to read
+/industgoth/new/, with a trailing /, just to be safe.) 
 
+In short, what you've written should work.
 
---- 1stFlight <1stflight@ameritech.net> wrote:
-> try this 
-> 
-> --begin--
->    #!/bin/bash
-> 
-> cp -uv /home/me/*.mp3  /music/
-> 
-> --end--
-> 
-> All it's will do is copy any file ending in .mp3 to
-> your /music directory. 
-> Note: Linux is case senstive and Windows is not, so
-> the limit this script has 
-> is that it wont copy a MP3 file. Easily fixed and I
-> know there's neater way 
-> of doing it, but I don't how to do it. Also when you
-> create the file don't 
-> forget to make it executable, meaning...   "chmod
-> u+x filename "
-> 
-> 					Darryl
-> 
-> P.S. No worries about permissions, fat32 doesn't
-> support them. Note: leave out 
-> the "begin" and "end" lines
-> 
-> On Sunday 28 April 2002 04:45 pm, Staci wrote:
-> > Hi!
-> >
-> > I want to write a tiny simple bash script for
-> moving
-> > downloaded mp3s from my /home/me directory to my
-> > /music directory.
-> > (Due to /music being fat32, it's actually a
-> process,
-> > cuz permissions with winFSs are goofy)
-> >
-> > Can someone suggest a very VERY newbie-friendly
-> > help-page for beginners trying to write a script?
-> >
-> > Thanks!
-> > sl
-> >
-> > =====
-> > **************************
-> > In cyberspace nobody can hear you scream.
-> >
-> > __________________________________________________
-> > Do You Yahoo!?
-> > Yahoo! Health - your guide to health and wellness
-> > http://health.yahoo.com
-> > -
-> > To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at
-> http://www.linux-learn.org/faqs
-> 
+So why not offer up some details, like:
+
+        ls -l /home/staci/*.mp3         before you run the shorter script
+        ls -l /*.mp3                    after you run the shorter script
+        ls -l /industgoth/new/          after you run the shorter script
+        df                              after you run the shorter script
+        ls -l /industgoth/              before -AND- after you run
+                                                the shorter script
+
+All this after you put a few *.mp3 files in /home/staci/, of course.
 
 
-=====
-**************************
-In cyberspace nobody can hear you scream.
+--
+------------------------------------"Never tell me the odds!"---
+Ray Olszewski                                        -- Han Solo
+Palo Alto, CA           	 	         ray@comarre.com        
+----------------------------------------------------------------
 
-__________________________________________________
-Do You Yahoo!?
-Yahoo! Health - your guide to health and wellness
-http://health.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
