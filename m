@@ -1,64 +1,90 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: I killed user's x server
-Date: Thu, 21 Nov 2002 21:39:21 +0000
+Date: Thu, 21 Nov 2002 19:10:09 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02112121392100.00286@unix.pa3gcu>
-References: <200211202236.gAKMaIK05653@hartford-hwp.com> <5.1.0.14.1.20021121103403.02116350@celine> <200211212046.gALKkTj04709@hartford-hwp.com>
-Reply-To: pa3gcu@zeelandnet.nl
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200211220010.gAM0A9b02546@hartford-hwp.com>
+References: <5.1.0.14.1.20021121103403.02116350@celine>
+ <200211202236.gAKMaIK05653@hartford-hwp.com>
+ <200211202236.gAKMaIK05653@hartford-hwp.com>
+ <5.1.0.14.1.20021121103403.02116350@celine> <5.1.0.14.1.20021121130840.0215f2a0@celine>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211212046.gALKkTj04709@hartford-hwp.com>
+In-reply-to: <5.1.0.14.1.20021121130840.0215f2a0@celine> (message from Ray
+	Olszewski on Thu, 21 Nov 2002 13:20:00 -0800)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Haines Brown <brownh@hartford-hwp.com>
+Content-Transfer-Encoding: 7bit
+To: ray@comarre.com
 Cc: linux-newbie@vger.kernel.org
 
-On Thursday 21 November 2002 20:46, Haines Brown wrote:
+Ray,
 
-> > A permissions problem, perhaps. What mode are they?
->
-> -rwxr-xr-x    1 root     root       597369 Aug 13  2001 pex5.so
-> -rwxr-xr-x    1 root     root       600739 Aug 13  2001 xie.so
+> At 03:46 PM 11/21/02 -0500, Haines Brown wrote:
+> >Thanks, Ray. I'm currently using a usre xterm in a root session, and
+> >that's reduces functionality a lot. I've appended two BIG logs, and so
+> >this message is long.
+> 
+> The copy that got here did not include any attachments or quoted text.
 
-I have not followed this thread so my comments may be wrong and unfounded, 
-however,!
+Sprry. When I figured I could not append the logs, I forgot to edit
+this first line. You should have the logs by now. 
 
-I belive from what i have read that you are using "sawfish", and that a user 
-cannot start X, i use slackware here and sawfish does not use pex5.so or 
-xie.so, if one uses 'ldd' one see's which libs are needed.
+Incidentally, I logged out of the new account, brought the machine
+down, played with another HD for a while, plugged my old HD back in,
+and booted to the new account. Now can't start X from it. 
 
-pa3gcu@unix:~$ ldd /opt/gnome/bin/sawfish
-        librep.so.9 => /opt/gnome/lib/librep.so.9 (0x40017000)
-        libdl.so.2 => /lib/libdl.so.2 (0x4006e000)
-        libgmp.so.3 => /usr/lib/libgmp.so.3 (0x40072000)
-        libm.so.6 => /lib/libm.so.6 (0x40093000)
-        libImlib.so.1 => /usr/lib/libImlib.so.1 (0x400b5000)
-        libjpeg.so.62 => /usr/lib/libjpeg.so.62 (0x400e0000)
-        libtiff.so.3 => /usr/lib/libtiff.so.3 (0x40100000)
-        libz.so.1 => /usr/lib/libz.so.1 (0x4013f000)
-        libungif.so.4 => /usr/lib/libungif.so.4 (0x4014e000)
-        libpng.so.2 => /usr/lib/libpng.so.2 (0x40156000)
-        libXext.so.6 => /usr/X11R6/lib/libXext.so.6 (0x40180000)
-        libSM.so.6 => /usr/X11R6/lib/libSM.so.6 (0x4018e000)
-        libICE.so.6 => /usr/X11R6/lib/libICE.so.6 (0x40197000)
-        libX11.so.6 => /usr/X11R6/lib/libX11.so.6 (0x401ad000)
-        libnsl.so.1 => /lib/libnsl.so.1 (0x40286000)
-        libc.so.6 => /lib/libc.so.6 (0x4029b000)
-        /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
+> 
+> > > >User still unable to start X. Root can do it, but not user. When user
+> > > >tries, it reports not being able to load pex5 or xie. These modeles are
+> > > >present and I've run ldconfig.
+> > >
+> > > A permissions problem, perhaps. What mode are they?
+> >
+> >-rwxr-xr-x    1 root     root       597369 Aug 13  2001 pex5.so
+> >-rwxr-xr-x    1 root     root       600739 Aug 13  2001 xie.so
+> 
+> I still think this is not your key problem. When root starts X 
+> successfully, do these modules load (check the log)?
 
-Thats the list i get, now if your swafish uses pex5.so and xie.so could it be 
-that a program started by sawfish uses them.????
-If so then the "user" may need special privs on that particular program.
+?? I got a log when I initially tried to start from the user, but not
+when I successfully started X as root. The former has
 
-As i said i am possably out of line for answering to a thread which i have 
-not followed, however it may point somewhere.
+(II) LoadModule: "pex5"
+(II) Loading /usr/X11R6/lib/modules/pex5.so
+dlopen: /usr/X11R6/lib/modules/pex5.so: undefined symbol: PexExtensionInitPtr
+(EE) Failed to load /usr/X11R6/lib/modules/pex5.so
+(II) UnloadModule: "pex5"
+(EE) Failed to load module "pex5" (loader failed, -1073743256)
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+etc. 
 
+If pex is suppoed to show up when I'm running X as root, if I run
+lsmod, there's no reference to it there, but I suspect I'm looking in
+the wrong place. 
+
+> Not by modern standards, with today's large hard disks. In any case, it is 
+> apparently not your problem (unless you have an inode shortage - what does 
+> "df -i /tmp" report about inode availability?).
+
+[root@hartford-hwp root]# df -i /tmp
+Filesystem            Inodes   IUsed   IFree IUse% Mounted on
+/dev/sda10            128768     744  128024    1% /tmp
+
+> So ... I'm left guessing. really. What does "ls -l /tmp/.*" tell you about 
+> permissions for .X11-unix?
+
+/tmp/.X11-unix:
+total 0
+srwxrwxrwx    1 root     root            0 Nov 21 18:53 X0
+
+> Unless the complete failure log has something helpful, or the post-creation 
+> changes you make to a user account are significant, I'm stumped. Sorry.
+
+I certainly appreicate your effort. As I indeicated, this last new
+user account I simplyi entered and exited, and it didn't cease to work
+until after I had actually changed hard disks and back again. 
+
+Haines 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
