@@ -1,42 +1,62 @@
 From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Debian Sid startup problems
-Date: Sat, 12 Jun 2004 14:50:54 -0500 (CDT)
+Subject: net (& module, I guess) problems after dist-upgrade
+Date: Sat, 12 Jun 2004 17:36:43 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406121445360.1825@debian-emach>
+Message-ID: <Pine.LNX.4.58.0406121719540.1071@debian-emach>
 References: <5.1.0.14.1.20040612111803.01fd5808@celine>
  <5.1.0.14.1.20040611215205.01faf760@celine> <Pine.LNX.4.58.0406112204310.2201@debian-emach>
  <5.1.0.14.1.20040611160033.01fa0948@celine> <5.1.0.14.1.20040611160033.01fa0948@celine>
  <5.1.0.14.1.20040611183923.01fc9dc0@celine> <Pine.LNX.4.58.0406112102240.2201@debian-emach>
  <Pine.LNX.4.58.0406112204310.2201@debian-emach> <5.1.0.14.1.20040611215205.01faf760@celine>
  <5.1.0.14.1.20040612111803.01fd5808@celine> <5.1.0.14.1.20040612121108.01fc9a80@celine>
+ <Pine.LNX.4.58.0406121445360.1825@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040612121108.01fc9a80@celine>
+In-Reply-To: <Pine.LNX.4.58.0406121445360.1825@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Sat, 12 Jun 2004, Ray Olszewski wrote:
+Well, I took your advice and dist-upgraded Ray.  Now I know why I was not
+very anxious to do it :).  A problem occured with kernel modules during
+the dist-upgrade.  From memory, it was something like the new modules
+couldn't be configured until after the system was rebooted: somehow the
+fact that the running kernel was using modules was going to interfere.
+The message made it sound like this generation was going to be done
+automatically on next boot (and it was pretty stern about warning me to
+reboot).  I took that advice: however, also in the wake of the
+dist-upgrade there was a lilo problem.  I've got sort of a complex boot
+menu, and decided I'd need to get in there and hand-edit it.  I did.
+But, as fate would have it, I made a minor goof-up and couldn't fully boot
+when I sent the system down (the initrd.img symlink wasn't pointing to the
+right initrd.img).  But I did manage to reboot with the old kernel after
+the new one rebooting failed and to straighten out that mistake.  It was
+at that point that I spotted the fearful message "eth0 ERROR while getting
+interface flags: no such device."  And, sure enough, there was no net
+connection.  And there was no process automatically running to straighten
+out whatever module problem had occured in the dist-upgrade.  Tried
+booting a yet older kernel, but with the same eth0 error.  Thinking maybe
+the card had gone south, I booted Knoppix (can someone send that guy a
+purple heart or something?).  eth0 came up fine under Knoppix.  I ran
+lsmod there to see what modules my NIC is using.  Booted back to the
+dist-upgraded Debian, modprobed those modules and ran ifup -a - and here I
+am on the 'net again.  But this is obviously not the real solution to the
+problem.  This has all been a long-winded preface to the question: what
+the heck I gotta do to get my NIC modules back to loading on boot? Am I
+gonna run into other module problems as well?  What's the way to start
+this process that gets the module loading routine working as it should be?
+I think there was a reference to modules.dep or maybe modules.conf in that
+message I saw during dist-upgrade.  But there was definitely nothing there
+telling me how I could manually start the process that couldn't finish
+during dist-upgrade.  Any pointers, please?
 
-> in the kernel) called /proc/sys/kernel/hotplug . You might want to run
-> /sbin/hotplug from the command line to see what its output is.
+Thanks, James
 
-No output.  Doesn't generate any error report or anything.  Just returns
-to the root command prompt (ran it as root, of course).  My inclination
-would be to just stick with usbmgr, since it does seem to be working.
-I'll undoubtedly need to remove hotplug from the system before doing any
-dist-upgrades.
-
-> installing  a kernel as (for example) "kernel-image-2.6-386" or as (for
-> example) "kernel-image-2.6.5-1-386"? There isn't a "right" or wrong" answer
-> to this ... both choices are reasonable ... but they cause upgrades to work
-> differntly.
-
-The former.  Looks like I'm in for another kernel upgrade if I do apt-get
-dist-upgrade.
-
-James
+PS Most of the above refers to having booted using the new kernel (2.6.6,
+though some of those boots were with the old 2.6.5 kernel and one was even
+with the 2.4.22 kernel).  None of those were able to use eth0 and gave the
+same error message during the boot process.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
