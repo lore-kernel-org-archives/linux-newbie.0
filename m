@@ -1,76 +1,50 @@
 From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Large FTP transfers
-Date: Sun, 29 Sep 2002 09:21:00 -0700
+Date: Mon, 30 Sep 2002 06:28:19 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020929090857.024f4300@celine>
-References: <5.1.0.14.1.20020928093421.024d14f0@celine>
- <5.1.0.14.1.20020928075131.02675d00@celine>
+Message-ID: <5.1.0.14.1.20020930062210.02cacbf0@celine>
+References: <5.1.0.14.1.20020929090857.024f4300@celine>
  <5.1.0.14.1.20020928093421.024d14f0@celine>
+ <5.1.0.14.1.20020929090857.024f4300@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209291739.30520.adam@luchjenbroers.com>
+In-Reply-To: <200209301909.25896.adam@luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: adam@luchjenbroers.com, linux-newbie@vger.kernel.org
+To: adam@luchjenbroers.com
+Cc: linux-newbie@vger.kernel.org
 
-First thing ... "properly screwed in" is not a magic fix for cardedge 
-problems. A combination of small misalignments ... the technical term is 
-"tolerance stacking" ... or some other assembly error could be causing an 
-alignment problem. So you might try unscrewing the card, seating it 
-carefully, and seing if that improves the situation.
+As I think I said once before, troubleshooting exchanges are better kept on 
+the list, not moved to private communications. I've Cc'd the list here.
 
-As to testing ... the easiest way is, as you already realize, to swap in a 
-new NIC and see if that makes the problem go away. As someone else already 
-pointed out, this is a cheap enough solution (at least here in the USA) 
-that it should at least be considered. If you can't replace the NIC for 
-cost reasons, you should at least try moving it to a different slot, and 
-perhaps cleaning the cardedge (ideally, with a proper solvent; in a pinch, 
-with a pencil eraser, though this is a risky strategy for long-term 
-maintenance). I would guess that all the errors you found in your logs are 
-related to cardedge problems (assuming the device they refer to is the NIC).
+At 07:09 PM 9/30/02 +0930, Adam Luchjenbroers wrote:
 
-The alternative is to try a different system "stress test", this time one 
-that does NOT involve networking, and see if the problem occurs or goes 
-away. Without the details of your system, I can't be sure what will stress 
-test its non-networking components. But the usual other one I run is a 
-large compile -- say a custom kernel.
-
-Finally, you might try running a diagnostic progrem for the NIC. I don't 
-recall what type of NIC it is (or even if you reported that in a prior 
-message ... I've seen about a half dozen different NIC-related threads in 
-the last day, and my memory just isn't good enough to retain the details of 
-each), but most manufacturers supply DOS-based NIC configuration and 
-testing programs. For awhile, Don Becker was releasing Linux config/test 
-programs for some NICs, and you might see if he covered yours. (Use the 
-usual search engines to track this down.)
-
-At 05:39 PM 9/29/02 +0930, Adam Luchjenbroers wrote:
->I'm starting to suspect the NIC. It has twice recently (one instance 
->before my
->previous emails, one since) stopped being detected with Linux giving me an
->"unable to access 64-bit address message"
+> > Finally, you might try running a diagnostic progrem for the NIC. I don't
+> > recall what type of NIC it is (or even if you reported that in a prior
+> > message ... I've seen about a half dozen different NIC-related threads in
+> > the last day, and my memory just isn't good enough to retain the details of
+> > each), but most manufacturers supply DOS-based NIC configuration and
+> > testing programs. For awhile, Don Becker was releasing Linux config/test
+> > programs for some NICs, and you might see if he covered yours. (Use the
+> > usual search engines to track this down.)
 >
->I've retrieved them from /var/log/kernel/errors
+>I did mention it in a prior message, 3Com 905B-TX.
+>And yes, he does have a
+>diagnostics program, which comes as a C source file.
 >
->Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for
->device 00:09.0
->Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for
->device 00:09.0
->Sep 28 22:09:21 ironclad kernel: Unknown bridge resource 0: assuming
->transparent
->Sep 28 22:09:21 ironclad kernel: PCI: Cannot allocate resource region 1 of
->device 00:09.0
->Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because of
->resource collisions
->Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because of
->resource collisions
->
->In both cases, applying pressure to the top of the card fixed the issue,
->however it is properly screwed in. How can I verify that this part is at
->fault as I do not have any other cards to test it with?
+>do I just type "gcc vortex-diag.c" or what?
 
+Probably (assuming you have gcc and all needed header files installed on 
+your system). A tidier approach might be
 
+         gcc -o vortex-diag vortex-diag.c
+
+so you can control the name of the executable that gcc creates.
+
+But without examining the source, I can't be certain. Look at the top of 
+the source; these standalone files (by which I mean ones that do not have 
+accompanying Makefiles) usually have "how to compile me" comments near the top.
 
 
 --
