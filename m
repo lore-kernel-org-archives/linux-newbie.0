@@ -1,65 +1,30 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: sound problems on Debian unstable
-Date: Wed, 06 Apr 2005 16:18:03 -0700
-Message-ID: <5.1.0.14.1.20050406160353.02035e98@celine>
-References: <5.1.0.14.1.20050406120016.0201f1f8@celine>
- <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406120016.0201f1f8@celine> <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
+From: smertz <smertens@mho.com>
+Subject: Linux Backup
+Date: Wed, 06 Apr 2005 17:59:05 -0600
+Message-ID: <d31t0b$a1v$1@sea.gmane.org>
+Reply-To: smertens@mho.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
-References: <5.1.0.14.1.20050406120016.0201f1f8@celine>
- <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406120016.0201f1f8@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 04:13 PM 4/6/2005 -0500, James Miller wrote:
-[...]
->With sb_irq=XXX (and so forth) in the same line as pas2, I do not get 
->these sorts of error messages. Just a clean:
->Pro Audio Spectrum driver Copyright (C) by Hannu Savolainen 1993-1996
->
->But sound still works very poorly. Very scratchy when I play mp3's/ogg's 
->with pauses when I open an application, switch terminals or some other 
->computer activity takes place.
+I have spent a great deal of time on simple things in Linux as I am new 
+over the last week (No better way to learn)  But I don't want to 
+re-learn in case the proverbial Hard Drive dies, so what is a good way 
+to back up my system? On my 2 Windows XP machines I use Ghost 9.  Is 
+there similar thing to copy a Linux drive?
 
-One thing you don't mention trying is using a different audio device. I 
-suggest you try directing output to /dev/audio1 or /dev/dsp1 and see if 
-that improves the result. I don't know how to do that with mp3blaster; with 
-mpg123 you would do
+Or can I simply do something like an XCOPY from one drive to a second 
+one as a backup?
 
-         mpg123 -a /dev/dsp1 nameoffile.mp3
+I am using Red Hat Enterprise Linux ES release 4 (Nahant)
+on a home Workgroup as a File and print server - If I ever get Samba set 
+up correctly. Any suggestions appriciated.
 
-With ogg123, you'd do:
-
-         ogg123 -d oss -o dsp:/dev/dsp1 nameoffile.ogg
-
-BTW, the other poster who suggested a problem with your use of IRQ3 may be 
-right. If so, the use of dsp1 may fix that too, since you have SB emulation 
-associated with IRQ5.
-
-[...]
->A trip over to Frys (or the local equivalent) is getting more tempting all 
->the time. Any recommendations for reasonably-priced, Linux-compatible 
->cards? I'm no kind of audiophile: heck, if I were, I wouldn't be using a 
->computer to listen to sound. Just something serviceable. I'm happy with 
->the "sound quality" (I being a former audiophile I use that phrase 
->loosely) I get out of a Soundblaster awe 64 on my other machine.
-
-It's been almost 2 years since I set up a Linux system using new hardware, 
-but back then, I tried to get SoundBlaster16 cards (usually around $25 back 
-then). They use the OSS es1371 driver (usually compiled in stock kernels, I 
-think) and work pretty well for both recording and playback. I've also used 
-a Yamaha card and been happy with it.
-
-
-
+Thanks
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
