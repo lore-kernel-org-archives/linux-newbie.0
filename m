@@ -1,40 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Hard disk repartitioning
-Date: Wed, 02 Apr 2003 23:09:16 -0800
+From: robin@robind.de
+Subject: Re: New module: kernel recompile?
+Date: Thu,  3 Apr 2003 11:47:04 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030402230311.01ef9bb0@celine>
-References: <20030403041632.54806.qmail@web20711.mail.yahoo.com>
+Message-ID: <20030403094704.B9A2744331@basicbox3.server-home.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030403041632.54806.qmail@web20711.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Arthur Kng <arthur_kng@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Amin <raihan@citech-bd.com>
+Cc: linux-newbie@vger.kernel.org
 
-While you got a lot of feedback on the disk repartitioning question, 
-responses to your other question seemed cursory.
+> Hi, I've installed a new RH8.0 system after
+> losing the old one. 
+> Problem is,
+> the fresh installation doesn't support my
+> (Myson) Ethernet card,
+> and I have
+> to load the ``fealnx'' module to get it to do
+> so.  And that module
+> isn't
+> already compiled and insertable.  So: is it
+> possible to compile the
+> module
+> and then insert it into the kernel, instead of
+> recompiling the
+> whole kernel,
 
-At 08:16 PM 4/2/2003 -0800, Arthur Kng wrote:
-[...]
->    also i have 128MB RAM. so what should be the size
->of my Swap partition?
+IMHO, yes.
 
+make mrproper
+make menuconfig <-- Insert your missing module
+!! Don't forget to load the configuration from file because 'make
+mrproper' will delete your '.config'.
+make dep &&
+make modules &&
+make modules_install
 
-Anywhere between 0 and 256 MB, depending on things you haven't told us. 
-Relative to real RAM, swap is very slow, and you'll want to avoid using it 
-for anything that is time sensitive. So to know whether you need swap, you 
-need to think about what actual uses you will be making of the system, so 
-you can figure out what is appropriate. And honestly, these days I find RAM 
-cheap enough that if I see a system that actually makes use of its swap 
-partition, I just put more RAM in it.
+Please tell me when I'm wrong!!! 'make bzImage' will build the
+kernel-binary, you don't need it, so you can leave it.
 
-In practice, I've run systems with as little as 64 MB of RAM with no swap, 
-and I no longer ever bother with swap on systems that have 256 MB or more 
-of real RAM.
+> as I had to do the last time?  (Not that I
+> don't like recompiling
+> the
+> kernel; it just gets a little boring during
+> the 5  hours it takes.)
 
+Wow!!! The last time I built a kernel I need approx. 45 minutes! Ok,
+but the time depends on your system.
 
-
+Goold look,
+Robin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
