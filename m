@@ -1,135 +1,119 @@
-From: Eric Bambach <eric@cisu.net>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: booting from USB drive (without BIOS support)
-Date: Wed, 7 Jul 2004 00:23:52 -0500
+Date: Wed, 7 Jul 2004 09:37:05 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200407070023.52950.eric@cisu.net>
+Message-ID: <Pine.LNX.4.58.0407070850540.1337@debian-emach>
 References: <Pine.LNX.4.58.0407060808130.1337@debian-emach>
-Reply-To: eric@cisu.net
+ <200407070023.52950.eric@cisu.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407060808130.1337@debian-emach>
-Content-Disposition: inline
+In-Reply-To: <200407070023.52950.eric@cisu.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: James Miller <jamtat@mailsnare.net>
-Cc: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Tuesday 06 July 2004 08:37 am, you wrote:
-> I've been recently investigating booting Linux from USB drives.  From past
-> experience, this list is not the ideal place to pose USB related
-> questions, but I think at this stage my questions concern such fundamental
-> issues that I can pose some here just asking that others more
-> knowledgeable about Linux and computer operation offer corrections or
-> clarification of my understanding of what's involved.  Let me start by
-> pasting here an item on booting Linux from USB from the FAQ at
-> http://www.linux-usb.org/ :
+Thanks for your feedback, Eric.  I was hoping someone would jump in on
+this, since I have limited time (and ability!) for puzzling these things
+out on my own.
+
+On Wed, 7 Jul 2004, Eric Bambach wrote:
+
+> On Tuesday 06 July 2004 08:37 am, you wrote:
+> > limit.  The patch causes the kernel to wait some longer period of time
+> > before giving the error or failure message regarding the root filesystem.
+> > Do I understand that part correctly?
 >
-> "Q: Is it possible to boot off a USB Device?
+> Yes. Thats correct. I know nothing about the patch, but your description
+> sounds accurate. The patch is needed to let the USB subsystem initialize the
+> disk. Something akin to sleep(10) or some number, before trying to move into
+> the root fs. My SCSI disks have the same issue as your USB disk would have.
+> It takes several seconds before the kernel detects and initializes all the
+> disks on the controller. The difference between this and your USB system is
+> that the kernel will wait until intializing the SCSI bus is complete before
+> moving on. You need a patch to accomplish the same thing.
+
+Just for reference, here's the code for the patch:
+
+--- linux-2.4.14-pre8-ext3/fs/super.c.orig      Fri Nov 16 00:59:18 2001
++++ linux-2.4.14-pre8-ext3/fs/super.c   Fri Nov 16 01:07:26 2001
+@@ -1009,11 +1009,13 @@
+                 * Allow the user to distinguish between failed open
+                 * and bad superblock on root device.
+                 */
+-               printk ("VFS: Cannot open root device \"%s\" or %s\n",
++               printk ("VFS: Cannot open root device \"%s\" or %s,
+retrying in 1s.\n",
+                        root_device_name, kdevname (ROOT_DEV));
+-               printk ("Please append a correct \"root=\" boot
+option\n");
+-               panic("VFS: Unable to mount root fs on %s",
+-                       kdevname(ROOT_DEV));
++
++               /* wait 1 second and try again */
++               current->state = TASK_INTERRUPTIBLE;
++               schedule_timeout(HZ);
++               goto retry;
+        }
+
+        check_disk_change(ROOT_DEV);
+
+I've found some information on the 'net about how to apply it as well.  I
+suppose it does not work on 2.6.x kernels.
+
+> Initrd should only be needed if you compile support for your usb
+> disk/controller as a module. If you can just compile it in, then initrd isnt
+> needed.
 >
-> A:There are (at least) three things you need for this to be able to
-> happen.
->
->    1. BIOS Support to boot from USB
->    2. Kernel support for USB Storage (including SCSI)
->    3. A patch to delay boot process
->
-> The first of these is something outside your control, either your BIOS
-> supports it or not. However, you could put your kernel and initrd on a
-> floppy and then use a USB root file system to get around this.
->
-> In your boot kernel or initial RAM disk you need to include support for
-> all the needed items to support using a USB disk. These are documented in
-> the Linux USB User Guide.
->
-> You also need to patch this kernel to delay when it tries to open the root
-> file system, as the USB subsystem takes longer than is allowed to
-> initialise and make the device available to the kernel. You'll find a
-> patch suitable for 2.2 and 2.4 here (although the 2.4 patch could be put
-> in init/do_mounts.c:mount_block_root() instead of fs/super.c which would
-> be cleaner). A patch may be added to kernels later than 2.4.20 (latest
-> current released version as I type this) to remove the need for this
-> patch, but this hasn't happened yet." (hyperlinks removed in pasting)
->
-> First, the "three things . . . need(ed)" are not really all needed.  From
-> the explanation following the list, I understand that if you don't have
-> number 1, you might still be able to boot from USB with the aid of 2 and
-> 3.  Am I correct in that understanding?  Doesn't the explanation seem to
-> imply this?
+> Initrd has one purpose, helping the kernel get the rootfs. Really the biggest
+> thing it does is modules...I know of no other use, other than POSSIBLY aiding
+> network booting, which you are not doing.
 
-Yes. The key to understanding is realizing that you arent really BOOTING off a 
-USB device then, you are booting off another device and using the USB drive 
-as the root filesystem. This poses two distinct problems:
+This has been my common-sense deduction as well. Yet virtually
+*everything* I've read on the web about this talks about using an initrd.
+They don't say why, of course, or talk about the relative merits of one
+method over the other.  If it's possible, I would certainly prefer
+compiling in the modules I need (though that could involve alot of time
+for experimentation and some guesswork) over using an initrd.  What I'm
+trying to do at the moment is just understand whether I should even invest
+the time and effort in compiling a kernel in case - for whatever reason -
+that solution to running Linux from USB storage media might not be
+feasible.  But it's beginning to look like it is feasible.
 
-1. How can I boot a kernel with USB support from x media? x being whatever 
-your bios supports booting from that you want to fiddle with and install a 
-kernel+bootloader on.
+> Again, no you wouldn't need an initrd. Just configure /dev/sd(x) as the root,
+> as USB hard drives are given a SCSI device name like that. Once you give the
+> USB system enough time to initialize the disks, /dev/sd(x) will be available
+> and read/writeable like any other hard disk.
 
-2. How can I make a USB device my root fs?
+As a way of testing out how this works, I've been trying to boot various
+kernels - some of which are supposed to be built for running from USB
+media - and directing them to the USB disk, realizing that, since there's
+no Linux system installed there, they will panic at some point.  None of
+these kernels have thus far "found" /dev/sdax.   Looking at the final
+output before the panic, I see that at least one of them is initializing
+the USB stuff.  But it seems like the key point of failure for all of them
+is at the following line: "kmod: failed to exec /sbin/modprobe -s -k
+block-major-8, errno = 2".  I suppose the initrd would have an /sbin
+directory with the modprobe binary in it, so that's an additional function
+the initrd would perform.  I'm still trying to work out what module it's
+trying to load.
 
-Once both of those problems are addressed you should have attained your goal. 
+> Just make sure you understand the pitfalls of USB! The mapping of the actual
+> hard disk to a /dev entry is predictable, but not at all stable depending on
+> what other devices you might put into your system. And the obligitory dont
+> unplug the rootfs while its running ;)
 
-> If so, then some further questions on that.  I can't understand from the
-> description whether the initrd is really necessary.  I think I understand
-> about the kernel patch: the kernel is written to give some error or
-> failure message if the root filesystem cannot be found within a certain
-> timeframe.  The time it takes for USB handling components to load or
-> initialize and for scsi emulation to start exceeds that built-in time
-> limit.  The patch causes the kernel to wait some longer period of time
-> before giving the error or failure message regarding the root filesystem.
-> Do I understand that part correctly?
+Yes, I do understand those pitfalls.  In this particular instance, running
+Linux from USB mass storage is attractive because the machine I'm thinking
+of doing this on has no real HD: it's one of those ThinkNIC, thin client
+thingies that's supposed to run its OS from CD/RAM.  The only "HD" is
+actually a little 4MB flash chip on an IDE connector where system settings
+are supposed to get saved.  As you might guess, the machine does have USB.
+I'm hoping to get a windowsy-looking distro installed on a USB drive so my
+wife can use it when she needs to access the 'net and such like.  I don't
+think I would ever plug any other USB device into it.
 
-Yes. Thats correct. I know nothing about the patch, but your description 
-sounds accurate. The patch is needed to let the USB subsystem initialize the 
-disk. Something akin to sleep(10) or some number, before trying to move into 
-the root fs. My SCSI disks have the same issue as your USB disk would have. 
-It takes several seconds before the kernel detects and initializes all the 
-disks on the controller. The difference between this and your USB system is 
-that the kernel will wait until intializing the SCSI bus is complete before 
-moving on. You need a patch to accomplish the same thing.
-
-> If so, then the one remaining 
-> unclarity concerns the initrd.  I know vaguely what an initrd is, and why
-> it could be helpful in booting from USB: it is some initial filesystem and
-> files that can be loaded into a ramdisk on bootup and that contains things
-> like loadable kernel modules that the kernel could use to get USB going.
-> Is that right?  In other words, there would be some USB module like
-> usb-storage there, so when the kernel began loading and found a USB mass
-> storage device, it could load the module in order to be able to use it.
-> Does this sound correct?  Assuming it is, I would just further like to ask
-> whether, given the right circumstances, the initrd is really necessary?
-
-Initrd should only be needed if you compile support for your usb 
-disk/controller as a module. If you can just compile it in, then initrd isnt 
-needed.
-
-Initrd has one purpose, helping the kernel get the rootfs. Really the biggest 
-thing it does is modules...I know of no other use, other than POSSIBLY aiding 
-network booting, which you are not doing.
-
-> By "right circumstances" I mean the following: suppose I were to compile a
-> kernel for a particular system that I wanted to boot from USB, and that I
-> compiled it with all the necessary USB components (e.g., ohci,
-> usb-storage, usbcore - and whatever else might be relevant) *not* as
-> loadable modules, but as part of the kernel (i.e., select "y" instead of
-> "m" for those items in the kernel config).  Suppose I did that, as well as
-> applying the time-delay patch to the kernel.  Were I to do that, would I
-> really still need to have an initrd?  Feedback appreciated.
->
-
-Again, no you wouldn't need an initrd. Just configure /dev/sd(x) as the root, 
-as USB hard drives are given a SCSI device name like that. Once you give the 
-USB system enough time to initialize the disks, /dev/sd(x) will be available 
-and read/writeable like any other hard disk.
-
-Just make sure you understand the pitfalls of USB! The mapping of the actual 
-hard disk to a /dev entry is predictable, but not at all stable depending on 
-what other devices you might put into your system. And the obligitory dont 
-unplug the rootfs while its running ;)
-
--- 
-
--EB
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
