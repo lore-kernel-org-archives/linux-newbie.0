@@ -1,58 +1,37 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Java Plugin - Poor Mozilla Install?
-Date: Sun, 15 Feb 2004 21:55:43 +0100
+From: dave <dave@dpomeroy.com>
+Subject: security
+Date: Tue, 17 Feb 2004 09:55:34 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402152155.43892.pa3gcu@zeelandnet.nl>
-References: <c0o8vh$65c$1@sea.gmane.org> <200402160202.07157.amin@siriusbb.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <40325596.6090805@dpomeroy.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200402160202.07157.amin@siriusbb.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Amin <amin@siriusbb.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Sunday 15 February 2004 21:02, Amin wrote:
-> By the way, can you tell us where exactly on your machine you can see
-> the Java plugin file(s). =A0On my machine I didn't use the Netscape
-> plugins page but rather got the Java Runtime Environment + Software
-> Development Kit from Sun. =A0So I don't know exactly what happens whe=
-n
-> someone does get the Java plugin from the Netscape plugins page.
+I've been runing Mandrake for a couple of years and I'm still having 
+problems with groups. 
+This is the procedure for making a group and sharing a subdirectory that 
+I use.  Can someone tell me where I'm screwing up?  Thanks in advance
 
-One note from me, i always had problems with java untill i installed sl=
-ack-9.1=20
-which installed it for me, now all my problems are gone, at least i hav=
-e not=20
-yet found a URL which makes nescape or mozilla magicly dissapier like i=
-t used=20
-to.
+Make a folder:   mkdir /home/everyone
+make group: groupadd everyone
+add users gpasswd -a dave everyone
+add users gpasswd -a laura everyone
+change the group for the folder chgrp -R everyone /home/everyone
+add write for group everyone chmod g+r /home/everyone
+When I'm done with this I still can not make a folder in /home/everyone 
+logged on as dave.
 
-I must agree with the suggestions so far, its bad to have any program i=
-n "/" .
-One needs to link the plugin to ones $HOME .mozilla or .netscape plugin=
-s dir.
-I did all that and still i had problems, as i said, they are now gone.
-Even someone like me with 12 years of linux do have problems... ;-)
-Or better "did" have.
-As to why it was,? quite possably the lack of a good RTFM on my part.
+again thanks for your help
 
---=20
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+-- 
+Dave Pomeroy K7DNP South Eastern Washington
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
