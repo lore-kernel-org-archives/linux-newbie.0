@@ -1,132 +1,76 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: RedHat 8
-Date: 24 Oct 2002 14:13:07 +0100
+From: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Subject: Re: CD-ROM settings and hardware resources...
+Date: 24 Oct 2002 09:24:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035465187.15381.69.camel@zebra.vil.ite.mee.com>
-References: <007001c27ad3$398c0140$64fea8c0@pkrausxp> 
-	<200210240733.32542.sotl155360@earthlink.net>
+Message-ID: <1035465877.31480.100.camel@localhost.localdomain>
+References: <200210241111.g9OBBiFR000758@darkstar.example.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210240733.32542.sotl155360@earthlink.net>
+In-Reply-To: <200210241111.g9OBBiFR000758@darkstar.example.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: linux-newbie@vger.kernel.org
+To: jbradford@dial.pipex.com
+Cc: pa3gcu@zeelandnet.nl, linux-newbie <linux-newbie@vger.kernel.org>
 
-Hmm, not sure about what Red Hat are trying to do. The reason I ditched
-8.0 was that it felt like I was using something from MS. By that I mean
-that although it looks pretty at the front, there seems to be a distinct
-lack of stuff behind. It also felt a lot more like "This is our product,
-this is what you want to do with it" rather than "This is our product,
-how would you like it to work for you?" I'll probably get shot down for
-saying this without giving specific examples, but isn't it the case that
-a GUI is _all_ about look and feel. The look is good, but I really don't
-like the feel.
+Shows how much I know about basic system design...
 
-Don't get me wrong, 7.3 is by no means perfect. There are a number of
-things about it that give me problems (eg. X crashes every single time I
-switch away to a VT and back. This is apparently a drive problem with
-DRI graphics cards, and there is no fix). 
+In fact, I was shocked to learn last night that ext2 uses linked lists
+to keep track of files in a directory.  Why is this?  Did the guys who
+wrote the file system specs go to school for computer science?  I can't
+tell you how many times my cmsc professors have told us that the linked
+list is totally inferior to the tree.  At least, it is when it comes to
+large sets of data.  Perhaps the ext2 guys never saw the need for
+extremely large sets of files in a single directory, but still, even
+when hashing, it is suggested that you not handle collisions with linked
+lists...
+Stacks and queues are one thing (when used for temporary operations,
+like iterators and memory management).  But persistent data is another. 
+I would never want to store stuff in a list if it is always going to be
+accessed, growing and shrinking...
 
-But at least I can make 7.3 work for the most part in the way I want it
-to. Putting all the Ximian stuff on top of it really makes a huge
-difference; Red Hat could pick up a lot of really helpful ideas from
-Ximian (mind you, they have their faults too). Ximian's Evolution mail
-client is superb, though; it wipes the floor with anything else on
-Linux.
-
-I guess it's time to look again at Debian and Mandrake (I haven't played
-with them for a couple of years...)
-
-Paul.
-
-On Thu, 2002-10-24 at 12:33, Frank Roberts - SOTL wrote:
-> On Wednesday 23 October 2002 16:31, Paul Krause wrote:
-> > 4 for and 1 against. You really slammed it. Can I inquire as to why you
-> >  like suse?
->  
-> Sorry but being pro Suse was not the intended meaning. In fact that is the 
-> very inverse of intent.
+On Thu, 2002-10-24 at 07:11, jbradford@dial.pipex.com wrote:
+> > > Does anyone know a way around this?  I can't hardly believe that all the
+> > > millions of Linux users have been, and still are, stuck with CD-RWs that
+> > > have to masquerade as SCSI devices.
+> > 
+> > There is no way around it, simply read the proper documentation, in this case 
+> > the CD-Writing HOWTO.
+> > IDE-ATAPI CD-RW devices only work with SCSI emulation as they only do in 
+> > widows as well.
+> > If you find a better way you can tell us millions how you did it then.
 > 
-> For Suse
-> The best set of programs
-> Against Suse 
-> The most screwed up configuration program possible.
-> As I said when I got my first Suse distribution back in the 5.3 days "It is a 
-> very good European distribution - - - and it should stay in Europe." Major 
-> point to this is I could not then configure ppp correctly. Well I acquired 
-> Suse 8.1 and guess what I still can not configure the modem correctly. Also 
-> it seems that they left kppp out and used some of their weird setup programs 
-> again. 
-> Another point setting up my scanner on Suse is so complicated that the whole 
-> linux club gave up in total complete flustration. By comarsion settion it up 
-> on RH is a 2 minute command line exercise if you know what you are doing; I 
-> do not.
+> There will soon be a better way - Linus himself mentioned using the
+> standard IDE devices for cd recording, last Tuesday.
 > 
-> For Mandrake 7
-> I like it but the versions I had were 2 distributions behind times. I got them 
-> free at our linux club to test.
-> It seems like a very nice distribution but at the time I thought RH was headed 
-> in the right direction - that was when RH came out with 7.2.
-> It looks loke this is where I am heades unless RH strightens itself out. Since 
-> none of the distributions bring anything major program improvements to the 
-> part at this time this decision will probable be at least a year into the 
-> future meaning after the 2.5 core, KDE 3.1 etc.
+> Expect to see cd recording with native IDE devices once the 2.6 kernel
+> is ready.
 > 
-> Why do I trash RH 8.0 so much? 
-> Well it is because of my expectations.
-> I expected 8.0 to simply correct the bad parts of RH 7.3 which I think is 
-> approaching a very decent distribution. 
-> I did not expect RH to go bonkers and trash KDE.
-> In general I like the KDE GUI on which I utilize what I feel is the best 
-> selection of KDE and the Gnome programs.
+> Incidently, IDE devices masquerading as SCSI is not as unusual as it
+> might first appear - ATAPI is basically a way to send SCSI commands
+> over the IDE bus.
 > 
-> By correct I mean the following.
-> Correct the printer problems. When the printer works it it works great in B&W 
-> but not color. It is a color HP Deskjet. But! If for some reason you have a 
-> bad print file it will spit out reams of paper and is impossible to reset 
-> from the GUI. You must go to command line and remember the correct commands.
-> 
-> There is a major set up problems with my HP 6100 scanners. Not a clue what the 
-> problem all I know is it is a scanner recognition problem. The scanner is an 
-> HP 6100. RH says it is an HP 2464 or some such.
-> 
-> There is setup problems with XCDRoast. I have this one working.
->  
-> As for the people who like RH I am willing to bet that they also like the 
-> Gnome GUI.
-> 
-> On this I am willing to make a guess that the real problem is the licensing 
-> agreement KDE uses and the fact that American industry is so fed up with MS 
-> and their licensing agreements that RH is removing all vestages of 
-> commercialization from RH as fast as possible. That being said I find it 
-> strange that RH used Mozelle which is 95% Netscape which is owned now by AOL. 
-> I know about the change in licensing for Mozelle but there are probable a 
-> number of court cases there if push comes to shove. What I suspect the 
-> situation there is that the equivalent browser, email, et in Gnome are not up 
-> to Mozelle level yet. If that is true then one should suspect that when they 
-> are at that level Mozelle will depart. I note this in particular because 
-> Netscape in my MS box has a nasty habit of reporting in to Net Central 
-> Command (now part of AOL). Point is I utterly hate programs that utilizes 
-> large amounts of band width to down load a bunch of commercial crap and which 
-> one has the suspicion that is being used as a Trojan Horse to scan and report 
-> which programs are legally on a computer. 
-> 
-> How does this interlate with  RH 8.0?
-> Well I think it is all related by attitudes on licensing agreements and that 
-> that attitude is what the real problem with RH 8.0 distribution really is.
-> 
-> Thanks
-> Frank
-> 
-
+> John.
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -- 
-Paul Furness
+Regards,
 
-Systems Manager
+Bryan Simmons 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-2+2=5 for extremely moderate values of 2.
+ On Integrity:
+
+ "I'm going to be as good as they let me and
+  as mean as they make me, and they all know
+  that.  I don't ever lie. If I tell you a
+  rooster can fly, get the harness."
+
+   --Burl Cain, Louisiana State Pen Warden
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
