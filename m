@@ -1,51 +1,23 @@
-From: G Anna <drguruolai@eth.net>
-Subject: Re: Kernel error
-Date: 27 May 2002 10:05:41 +0530
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: which distribution to use?
+Date: Mon, 27 May 2002 09:34:18 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3n0um5hsy.fsf@wobble.eth.net>
-References: <A1F41DE771DCD5119FE30060089343500A58C6@NET-ARCH>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <3CF235DA.E4BE5D0E@gelm.net>
+References: <20020526135114.4DEA536FA@sitemail.everyone.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <A1F41DE771DCD5119FE30060089343500A58C6@NET-ARCH>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Shaun Bryant <sbryant@ThePit.org>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+<snip>
+> install 2.5.17 kernel.
+<snip> 
 
-> Date: Sun, 26 May 2002 07:57:59 -0700
-> From: Shaun Bryant <sbryant@ThePit.org>
-> Subj: RE: Kernel error
-
-(snip)
-
-> depmod: *** Unresolved symbols in
-> /lib/modules/2.4.5/kernel/arch/i386/kernel/microcode.o.gz
-> depmod: *** Unresolved symbols in
-
-(snipped depmod error listing)
-
-I am just guessing.  While compiling the kernel did you do
-
-$ make mrproper
-
-before anything else?  I had a similar problem and it was because of
-not making the above mentioned target.
-
-Of any help?
-
-anna
-
--- 
-
-(14) The  hero is not entitled to a last kiss, a last cigarette, or any
-     other form of last request. - Peter Anspach in "The Top 100 Things
-     I'd Do If I Ever Became An Evil Overlord"
-
-                                            http://www.eviloverlord.com
-
+IMHO, 2.5.x kernels should not be discussed in linux-newbie.
+:-|
+Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
