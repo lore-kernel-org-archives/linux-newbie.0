@@ -1,8 +1,8 @@
-From: "Axel Siebenwirth" <lists@tcob1.net>
-Subject: (fwd) .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 18:34:20 +000
+From: "Ray Olszewski" <lists@tcob1.net>
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 10:45:32 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_183420__818c2ddb@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_104532__b3f411ac@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,27 +13,45 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Sorry, I haven't seen my mail get to the list. So here goes it again.
+At 12:17 PM 8/15/02 -0400, lawson_whitney@juno.com wrote:
+>On Thu, 15 Aug 2002, Ray Olszewski wrote:
+>
+> > It's been so long since I used a .a libraries, I didn't recall how they
+> > were created. They are the old-format libraries I referred to above. They
+> > are kept around, at least on full-size Linux installs, mainly for legacy
+> > reasons. Don't use them unless you have *very* unusual requirements (I
+> > can't even think of an example).
+>
+>In case you want to make a static executable (one that does not require
+>dynamic linking.  Nost distro's link /sbin/ldconfig static so you can
+>use it to recover when you mess up your libraries and nothing woorks,
+>say when you try to upgrade libc and don't know how.
 
------ Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
+I don't really want to argue with you, Lawson, but I do want to ask how 
+certain you are of this interpretation. "static" is a word that means 
+different things in different contexts, and I think you and I may have 
+crossed two of its meanings.
 
-Hi,
+The ld option "--static" links in an actual copy of any needed library code 
+to the executable during linking (instead of at runtime, via ld.so). But 
+does ld use (or need) .a libraries to do this? Or does it just override the 
+normal (dymanic) use of the .so libraries? I'd always assumed the latter.
 
-I have some stupid questions.
+While the man page for ld doesn't clear this up, the Makefile for busybox 
+includes a static option (for the exact reason you suggest above -- it's 
+basically a rescue-disk app), but its docs only mention compiling against 
+glibc, uClibc, and libc5, with no explicit mention of .a libraries.
 
-What makes the difference between .o and .so files? What is their use? Is it
-just a naming convention?
+I could easily be the one here who is mixed up. But we should get it clear 
+and correct on the list to protect the innocent victims, no?
 
-When I want to link libraries to a program I am compiling, of what format do 
-the libraries have to be?
 
-I have found out that .a files are archives created with ar. What is that
-for?
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
-Many thanks and my best regards,
-Axel Siebenwirth
-
------ End forwarded message -----
 -
 
 <-> Gateway Information.
