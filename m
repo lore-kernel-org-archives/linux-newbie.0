@@ -1,32 +1,36 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: configure ohci1394 driver
-Date: 18 Oct 2002 00:31:29 -0400
+From: "Calin Szonyi" <caszonyi@linuxmail.org>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: Fri, 18 Oct 2002 09:02:58 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034915491.2251.6.camel@localhost.localdomain>
+Message-ID: <20021018070258.5336.qmail@linuxmail.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: jdashiel@shellworld.net, pkraus@pelsupply.com
+Cc: linux-newbie@vger.kernel.org
 
-I have Mandrake 9.0.  I'm trying to run Broadcast 2000 with my firewire
-card.  I know that Mandrake knows about the card and loads a module for
-it (ohci1394) but harddrake2 refuses to see it.  What, if anything, can
-I do to get the information on my firewire card to set the settings in
-Broadcast 2000?  I know little about module configs and such.
 
-Thanks in advance.
+----- Original Message -----
+From: Jude DaShiell <jdashiel@shellworld.net>
+Date: 	Wed, 16 Oct 2002 00:26:27 -0400 (EDT)
+To: Paul Kraus <pkraus@pelsupply.com>
+Subject: Re: A few more things and I can kiss windows good bye.
+
+
+> Last year I read about a version of visualbasic available to run on linux
+> and think it was put under the gnu gpl license.  
+
+Anybody wants to port Nimda and Sircam to linux ?
+:-)))
+
 -- 
-Regards,
+Get your free email from www.linuxmail.org 
 
-Bryan Simmons 
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
- "All that's required for evil to flourish
-  is for good men to remain silent." 
-    ---Edmund Burke
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
 
+Powered by Outblaze
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
