@@ -1,51 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
+From: simon <simon.guinot@laposte.net>
 Subject: Re: partitons and proper order
-Date: Sun, 31 Oct 2004 14:39:22 -0800
-Message-ID: <5.1.0.14.1.20041031143246.01f2be00@celine>
-References: <1099252931.2838.4.camel@localhost>
- <41853B6B.5020903@kevino.org>
- <1099252931.2838.4.camel@localhost> <418563B0.6060306@kevino.org>
+Date: Mon, 01 Nov 2004 00:37:18 +0100
+Message-ID: <4185772E.6030106@laposte.net>
+References: <41853B6B.5020903@kevino.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <418563B0.6060306@kevino.org>
-References: <1099252931.2838.4.camel@localhost>
- <41853B6B.5020903@kevino.org>
- <1099252931.2838.4.camel@localhost>
+In-Reply-To: <41853B6B.5020903@kevino.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 03:14 PM 10/31/2004 -0700, mike wrote:
->[...]
->I do use lilo. I have also been running a dual boot box with M$ and
->lilo has been writing to the master boot record. But this time it's
->all going to be Linux. I have a 30 gig harddrive so I would assume I
->would be safe if I kept the /boot partition within the first 500
->megabytes of the drive.
+hello
 
-That's a good bet, but the mappings on modern hard drives are so hard to 
-follow, and so idiosyncratic, that it's not a sure thing. It''s hard to 
-figure out where the BIOS thinks track 1024 ends ... and aside from  access 
-to the kernel,  know of no special benefit any partition gets from being at 
-the beginning of the drive.
+mike wrote:
+> Hello,
+> I have installed linux a few times no real problems with my
+> installs. But going to move some drives around and do a fresh
+> install. I usually install with the below
+> 
+> /
+> swap
+> /boot
+> /var
+> /usr
+> /home
+> /tmp
+> 
+> I use ext3 and I am currently useing Mandrake distribution on an
+> intel compatible machine with ide drives.
+> 
+> My question is does the order I create the partitions matter and if
+> so what would be the proper order, if there is one?
 
-My practice ... which has worked 100% reliably for me with drives up to 120 
-GB or so (I think I've even made it work with a 180 GB drive, and drives 
-over 134 GB or so have real BIOS problems)... is to make partitions in this 
-order:
+the partitions order has some effects on your disk access time...
+a partition at the middle of the disk will have the best access time...
+it's generaly a good idea to place the swap here...
+a partition at the outside of the disk will increase the speed for long 
+read/write operations... /, /usr or /home may be well placed... 
+depending what you intend to do with your installation...
 
-hda1 = /boot
-hda2 = swap
-hda3 = /  (root)
-hda4 = /home
+for more informations take a look on the multi-disk howto... even if you 
+have only one disk :)
 
-I'm not partial to using separate /var, /tmp, and /usr partitions ... but 
-if I were, I'd put them and /home in the extended partitions at hda5 and up.
-
-
-
+simon
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
