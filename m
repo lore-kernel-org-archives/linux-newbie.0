@@ -1,62 +1,42 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: 2 Displays
-Date: Mon, 21 Oct 2002 13:32:48 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: 2 Displays
+Date: Mon, 21 Oct 2002 10:44:46 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <007e01c27927$e2532360$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021021104011.02486500@celine>
+References: <007e01c27927$e2532360$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_007F_01C27906.5B418360"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <007e01c27927$e2532360$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-This is a multi-part message in MIME format.
+At 01:32 PM 10/21/02 -0400, Paul Kraus wrote:
+>I am getting ready to install Linux on my laptop. Right now with it
+>having xp I have the laptop lcd and a monitor attached as a second
+>display. Can this be done with Linux?
 
-------=_NextPart_000_007F_01C27906.5B418360
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+In principle it can, at least for Linux running XFree86. In X, the 
+capability you use is called "Xinerama".
 
-I am getting ready to install Linux on my laptop. Right now with it
-having xp I have the laptop lcd and a monitor attached as a second
-display. Can this be done with Linux?
+I say "in principle" because while I know that this capability supports 
+multiple displays on desktop machines with 2 (or more) video cards in them, 
+I don't know anything about the hardware on your laptop, and laptops always 
+present special issues for Linux (especially for X). For the details, you 
+will have to investigate the specific compatibility of your particular 
+laptop and Linux.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+BTW, I've assumed here that by "second display" you mean that under WinXP, 
+you have two *independent* displays (not two copies of the same screen on 
+two different displays).
 
-------=_NextPart_000_007F_01C27906.5B418360
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
-
-------=_NextPart_000_007F_01C27906.5B418360--
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
