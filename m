@@ -1,62 +1,83 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Multi-kernel in grub
-Date: Thu, 24 Jul 2003 14:32:46 +0200
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: Re: CD formats
+Date: Thu, 24 Jul 2003 08:48:06 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307241432.46851.pa3gcu@zeelandnet.nl>
-References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu> <200307230824.35748.pa3gcu@zeelandnet.nl> <1059016812.21561.72.camel@localhost.localdomain>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.43.0307240846550.27339-100000@perpugilliam.csclub.uwaterloo.ca>
+References: <200307241112.h6OBCCg9030784@dbmail-mx2.orcon.co.nz>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1059016812.21561.72.camel@localhost.localdomain>
-Content-Disposition: inline
+In-Reply-To: <200307241112.h6OBCCg9030784@dbmail-mx2.orcon.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: travis@wsor.net, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thursday 24 July 2003 05:20, Travis Osterman wrote:
-> I thank everyone again for their patience with me.  I have tried to
-> methodically note everything I have done during the kernel compilation
-> below.  Everything seems fine until the make install step.
+You did just say "OSX," didn't you? OSX is, effectively, an excellent GUI
+shell attached to a BSD kernel. Anything you can read/use on a BSD box
+will be accessible, and as far as I remember, BSD supports Joliet.
 
-The copy the image to /boot by hand and update your bootloader config file 
-accordingly and if lilo is used rerun lilo. I belive you mentioned grub tho'.
+Dan
 
-> make modules // no errors
-> make modules_install // no errors
-> make install // errors, see below
+On Thu, 24 Jul 2003, cr wrote:
+
+> Well, if it works for W2K, I expect it'll work for Linux too.    From the
+> little I found on the subject, I think Linux and W2K are more similar
+> than the Mac.
 >
-> warning: kernel is too big for standalone boot from floppy
-> sh -x ./install.sh 2.4.20-first-try bzImage
-> /usr/src/linux-2.4.20-8/System.map ""
-> + '[' -x /root/bin/installkernel ']'
-> + '[' -x /sbin/installkernel ']'
-> + exec /sbin/installkernel 2.4.20-first-try bzImage
-> /usr/src/linux-2.4.20-8/System.map ''
-> No module aic7xxx found for kernel 2.4.20-first-try
-> mkinitrd failed
-> make[1]: *** [install] Error 1
-> make[1]: Leaving directory `/usr/src/linux-2.4.20-8/arch/i386/boot'
-> make: *** [install] Error 2
+> I guess I can just give it a go and see if it works, it'll take me a week to
+> find out (snail mail time for the CD).
 >
->   Will these errors cause problems if I bypass the 'make install' and
-> copy files to my /boot dir?  Thanks again for the help.
-
-If you dont need the aic7xxx scsi driver no.
-
+> cr
 >
-> -- Travis
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+> On Thursday 24 July 2003 21:24, Tim Fletcher wrote:
+> > hi,
+> >
+> > i'm realy  no expert on this subject, but one of my freinds how was living
+> > at my place for 6 months had a mac with OSX. it didn't cause any problems
+> > to have long file names. i burnt the CDs on Win2k and used them on his mac.
+> > having sayed that, i've never burnt them on a linux box.
+> >
+> > --Tim
+> >
+> > > -----Message d'origine-----
+> > > De : linux-newbie-owner@vger.kernel.org
+> > > [mailto:linux-newbie-owner@vger.kernel.org]De la part de cr
+> > > Envoye : jeudi 24 juillet 2003 10:04
+> > > A : linux-newbie@vger.kernel.org
+> > > Objet : CD formats
+> > >
+> > >
+> > > I hope this isn't too OT -
+> > >
+> > > I'm going to use X-cd-roast on this Debian box to make a CD to send to an
+> > > acquaintance who has a Mac  (mostly scanned JPG's of photos).
+> > >
+> > > If I understand correctly, I could use long filenames (Joliet) if
+> > > intended for a Windoze machine, but for a Mac I can only use 8.3
+> > > filenames.    Is that correct, or is there any way around that?
+> > >
+> > > Regards
+> > >
+> > > Chris
+> > > -
+> > > To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+> > > in the body of a message to majordomo@vger.kernel.org
+> > > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > > Please read the FAQ at http://www.linux-learn.org/faqs
+> >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
