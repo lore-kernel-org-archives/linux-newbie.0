@@ -1,27 +1,39 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Red Hat Version 9
-Date: Mon, 31 Mar 2003 19:36:23 +0000
+Subject: Re: adduser
+Date: Mon, 31 Mar 2003 19:59:56 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03033119362302.04308@unix.pa3gcu>
-References: <678FF08CF467D4118DA400508BD9365706684EE5@mail02.adt1.com>
+Message-ID: <03033119595605.04308@unix.pa3gcu>
+References: <3E87FA51.3060100@arrakis.es>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <678FF08CF467D4118DA400508BD9365706684EE5@mail02.adt1.com>
+In-Reply-To: <3E87FA51.3060100@arrakis.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Linovitz, Scott" <slinovitz@adt.com>, linux-newbie@vger.kernel.org
+To: Andrew Langdon-Davies <ald2@arrakis.es>, linux-newbie <linux-newbie@vger.kernel.org>
 
-On Monday 31 March 2003 19:20, Linovitz, Scott wrote:
-> Does anyone have any comments on the new Red Hat version 9??
-
-Not as yet as only paying guest's get access to it for the first week, or at 
-least thats what i was informed would be the case in a Redhat Newsletter i 
-received.
-
+On Monday 31 March 2003 08:20, Andrew Langdon-Davies wrote:
+> Mandrake 9.0
 >
-> Scott
+> control center>system>users
+> "Cannot lock user lib,
+> file /etc/ptmp or /etc/gtmp exist".
+>
+> Yes, both exist.
+
+As far as i see it, that is the problem, they are presant in /etc.
+
+Maybe you could be a little more spesific in you explanation.!!
+
+> clm (as root)>
+> adduser (or useradd, the result is the  same. Which command is preferred?)
+> "vipw lockfile (/etc/ptmp) is present!"
+>
+> I cannot find an explanation in the manual.
+>
+> TIA
+> Andrew
 
 -- 
 Regards Richard
