@@ -1,38 +1,31 @@
 From: G Anna <drguruolai@eth.net>
-Subject: Re: is emacs considered a gui WP or cli?
-Date: 26 May 2002 09:46:12 +0530
+Subject: Re: Sorry Ray
+Date: 26 May 2002 09:30:22 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3661bzgqb.fsf@wobble.eth.net>
-References: <20020524.163134.-176941.0.matthewstapleton@juno.com>
+Message-ID: <m3bsb3zhgp.fsf@wobble.eth.net>
+References: <F4D3DB9A18752A4F99FD880ABC5407179D13A6@ccdc-exchg.careercommunity.com>
 Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020524.163134.-176941.0.matthewstapleton@juno.com>
+In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D13A6@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Matthew Stapleton <matthewstapleton@juno.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 
-> Date: Fri, 24 May 2002 16:31:33 -0700
-> From: Matthew Stapleton <matthewstapleton@juno.com>
-> Subj: is emacs considered a gui WP or cli?
-> 
-> I was wondering if Emacs was considered to be gui based WP or
-> cli-based?  And is it stilled updated?
+> Date: Wed, 22 May 2002 12:16:53 +0530
+> From: Sridhar J <sridharj.hyd@cxknetworks.com>
+> Subj: Sorry Ray
 
 (snip)
 
-I use GNU Emacs all the time.  And I love it.  I use the viper mode,
-in which you can use the vi commands to edit.
+> I realised this only when I saw Mark Johnson's mail. Why does this
+> happen only with this list? On other lists, "reply" usually gets
+> addressed to the list.
 
-Anyway you could probably ask your question at
-
-help-gnu-emacs@gnu.org
-
-To ask a question you don't need to subscribe to that mailing list (I
-think so).
+Because the Reply-to header is not set in this mailing list.  In this
+mail, I have set the Reply-to header myself.
 
 Cheers,
 anna
