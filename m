@@ -1,66 +1,88 @@
-From: Ray Olszewski <ray@comarre.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: partitioning drive
-Date: Tue, 23 Mar 2004 13:48:01 -0800
+Date: Tue, 23 Mar 2004 23:03:14 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040323133331.01fdbaa0@celine>
-References: <20040323180912.GC25879@panix.com>
- <20040323130248.GA10357@panix.com>
- <200403231539.55433.pa3gcu@zeelandnet.nl>
- <20040323180912.GC25879@panix.com> <200403232210.53732.pa3gcu@zeelandnet.nl>
+Message-ID: <200403232303.14481.pa3gcu@zeelandnet.nl>
+References: <20040323180912.GC25879@panix.com> <5.1.0.14.1.20040323133331.01fdbaa0@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403232210.53732.pa3gcu@zeelandnet.nl>
-References: <20040323180912.GC25879@panix.com>
- <20040323130248.GA10357@panix.com>
- <200403231539.55433.pa3gcu@zeelandnet.nl>
- <20040323180912.GC25879@panix.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20040323133331.01fdbaa0@celine>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-At 10:10 PM 3/23/2004 +0100, pa3gcu wrote:\
-[...]
->Ok then considering unix dates back to 1970 and was given the name by Brian
->Kernighan and that unix as such only got a name in 1973 when Dennis Ritchie
->invented C, i guess you must have worked for Bell Labs back then or a
->development group composed of at least the above 2 named persons.
->Anyway, Unix is AFAIK 24 years old i am 53 (for what its worth) and claim to
->have used most operting systems out there for some or little lenth of time
->which is why i choose to say what i going to.
+On Tuesday 23 March 2004 22:48, Ray Olszewski wrote:
+> At 10:10 PM 3/23/2004 +0100, pa3gcu wrote:\
+> [...]
+>
+> You need to brush up on your arithmetic, Richard.
+>
+>          2004 - 1970 != 24
+>          2004 - 1970 = 34
 
-You need to brush up on your arithmetic, Richard.
+AH!, well i did say i was 53 ;-), i am not going to say it wa say typo, i 
+simply did not do my sums correctly, thanks for the point out.
 
-         2004 - 1970 != 24
-         2004 - 1970 = 34
+> I first used a Unix system around 1981 myself. There were some (PDP-11s, I
+> think ... for me, just whatever was at the other end of the terminal's
+> serial line)  at Stanford, where I was doing graduate work.
+>
+> And at about the same time, I had a friend at Tymshare who did development
+> work on Unix systems, implementing some ideas of Doug Englebart's under the
+> name Augment.
+>
+> So 20 years of Unix experience is, while no doubt rare, not implausible.
 
-I first used a Unix system around 1981 myself. There were some (PDP-11s, I 
-think ... for me, just whatever was at the other end of the terminal's 
-serial line)  at Stanford, where I was doing graduate work.
+I dont think i said it was not, i think i said if one has that sort of 
+experiance why ask such questions. ;-)
 
-And at about the same time, I had a friend at Tymshare who did development 
-work on Unix systems, implementing some ideas of Doug Englebart's under the 
-name Augment.
+>
+> BTW, on the partitioning question .. I find I prefer to partition my boot
+> drives, at least the big ones we use these days, into four partitions:
+>
+>          hda1 = /boot, a small partition
+>          hda2 = /, usually around 10 GB
+>          hda3 = swap, size varies
+>          hda4 = /home, whatever is left
+>
+> Set up this way, it means I can do a complete Linux reinstall without
+> worrying about accidental overwriting of anything on the /home partition
+> (since I don't mount it until after the system is installed on /). It also
+> simplifies recovery after a crash, in that I can "cheat" and just fsck
+> hda2, or I can run hda2 as ext2 and hda4 as a journaling filesystem.
+>
+> But all that is just personal preference ... there is no single right
+> answer to the partitioning question.
 
-So 20 years of Unix experience is, while no doubt rare, not implausible.
+I go for the one big partition thesdays with reiserfs, my 120Gb disks are 
+slpit into +/- 40Gb, so i can install a new system and copy what i want 
+afterwards.
+One small problem with simply using say /home from an old install can cause 
+hell when something like KDE changes things like it did from 3.0 to 3.2, i 
+had many wired effects when i mounted my old /home dir.
+ /boot well in thesdays of no problems with the 1023 cyls mark /boot is really 
+a luxe and nothing more.
 
-BTW, on the partitioning question .. I find I prefer to partition my boot 
-drives, at least the big ones we use these days, into four partitions:
+Anyway i must agree with you Ray, its a question of taste and really press 
+home that in thesedays of big drives and reiserfs the need for other 
+partitions becomes a point of discussion.
 
-         hda1 = /boot, a small partition
-         hda2 = /, usually around 10 GB
-         hda3 = swap, size varies
-         hda4 = /home, whatever is left
+Now i am going to go and knock off those 10 years i just forgot about in my 
+last mail, boy i wish i was 43 again..... At least i would have gotten my 
+sums correct ;-(
 
-Set up this way, it means I can do a complete Linux reinstall without 
-worrying about accidental overwriting of anything on the /home partition 
-(since I don't mount it until after the system is installed on /). It also 
-simplifies recovery after a crash, in that I can "cheat" and just fsck 
-hda2, or I can run hda2 as ext2 and hda4 as a journaling filesystem.
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-But all that is just personal preference ... there is no single right 
-answer to the partitioning question.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
