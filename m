@@ -1,66 +1,34 @@
-From: Beolach <beolach@comcast.net>
-Subject: Re: Black Box Time
-Date: Wed, 11 Feb 2004 00:27:08 -0700
+From: James Miller <jamtat@mailsnare.net>
+Subject: device or resource busy error message - what to do?
+Date: Wed, 11 Feb 2004 12:28:26 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4029D94C.4030907@comcast.net>
-References: <20040211065922.D4D881C954@heisspf>
+Message-ID: <Pine.LNX.4.58.0402111215370.13970@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040211065922.D4D881C954@heisspf>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Peter <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Edit your ~/.blackboxrc file so that it has a line like this:
-session.screen0.strftimeFormat %H:%M
+I've recently written a floppy disk image to a floppy using the command
+(as suggested by the image's creator) cat nameofimgfile.144 > /dev/fd0 .
+It did, in fact, write the image file to a floppy.  I decided to try it
+with another, different floppy image - this one called something like
+nameoffile1440.img.  This one also wrote to floppy correctly (created a
+bootable floppy with that img file on it).  Now, however, I am unable to
+mount the floppy drive again, or to write another image file.  I get the
+message: cat: (or dd:) /dev/fd0: Device or resource busy.  mount /dev/fd0
+/floppy gets the response: mount: /dev/fd0 already mounted or /floppy
+busy.  umount -l /floppy gets the response: umount: /floppy: not mounted.
+Using MC to look under the directory /floppy shows an empty directory.
+I'm sort of curious as to how access to the floppy drive has been
+apparently disabled now.  Just as importantly, I'm wondering how I might
+re-enable access?  Can I kill some process that is occupying /dev/fd0?
+If so, how?  Any tips on re-enabling floppy access, short of rebooting?
 
---------<From the blackbox (1) manpage>--------
-session.screen<num>.strftimeFormat [string]
-     A C language date format string, any combination of specifiers can
-     be used.  The default is %I:%M %p which generates a 12 hour clock
-     with minutes and an am/pm indicator appropriate to the locale.
+System: Debian Sid with newest 2.4 kernel and probably devfs.
 
-	24 hours and minutes	%H:%M
-	12 hours and minute	%I:%M %p
-	month/day/year		%m/%d/%y
-	day/month/year		%d/%m/%y
-
-	Default is hours:minutes am/pm
-	see
-	strftime 3
-	for more details.
---------</From the blackbox (1) manpage>--------
-
-Note that rather than %H:%M, you could use any combination of strings
-from the strftime (3) manpage.  My .blackboxrc has this line:
-session.screen0.strftimeFormat:	%a, %d %b %Y %R
-where %a = The abbreviated weekday name according to the current locale,
-%d = The day of the mont as a decimal number (range 01 to 31)
-%b = The abbreviated month name according to the current locale
-%Y = The year as a decimal number including the century
-%R = The time in 24 hour notation (%H:%M)
-
-Also note that in blackbox you don't want the clock to include the
-seconds, as blackbox only updates it once a minute.
-
-Also also note that, if by some strange freaky circumstance you don't
-have the strftime() function, you would use different options, but I
-really doubt that you wouldn't have it.
-
-HTH,
-Conway S. Smith
-
-Peter wrote:
-> Hi,
-> 
-> does any body know hot to tweak Blackbox to display time on the toolbar in 24 
-> hour format instead of am and pm?
-> 
-> Thanks
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
