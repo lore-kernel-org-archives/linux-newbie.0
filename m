@@ -1,39 +1,30 @@
-From: TEJAS VORA <voratejas@gmail.com>
-Subject: Network Statistics Collection
-Date: Mon, 20 Sep 2004 16:31:32 -0700
-Sender: linux-c-programming-owner@vger.kernel.org
-Message-ID: <88240e9404092016313ca56ca0@mail.gmail.com>
-Reply-To: TEJAS VORA <voratejas@gmail.com>
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: linux box hacked ?
+Date: Mon, 20 Sep 2004 19:42:51 -0400
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <9765ac97d150.97d1509765ac@nyu.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-c-programming-owner@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-kernel@vger.kernel.org, linux-net@vger.kernel.org, linux-c-programming@vger.kernel.org, linux-admin@vger.kernel.org, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi All,
+Hi,
+I want to know how one can know for sure if a linux box has been hacked. This morning a linux box in our lab was behaving funny. More clearly, i was executing some commands and on doing a 'grep', 'grep' threw a segmentation fault!! Also, I saw (with a 'ps -A') there were several processes running with names like'xscan', 'pscan'. There were several 'cat' commands running; some of them were dead (if that's  what defunct means). Also, I noticed that the executables for 'cat', 'grep' and a few others showed a modification date of today. I tried to reboot the system, but that never happenned. The boot loader complained about /etc/fstab being corrupted or missing, and ofcourse as booting procedure uses the 'grep' command (which was throwing segmentation faults), the machine couldn't boot.
 
-I am working on a company project and as a part of it - I have to
-collect and show some network information on the Monitoring utility.
-Please help to find out that how can I collect these information from
-a Linux Machine.
+We really couldn't figure out for sure what happenned but do any of these symptoms indicate that somebody could have hacked into it?
 
-1. Number of active TCP connection
-2. Information of Active connections (Source and Dest IP, Source and Dest Port)
-3. Retransmitted packets due to Duplicate ACK and SACK
-4. Connection Duration and RTT
-5. Transmission Troughput (in KB/Sec)
-6. Number of Newly Created TCP Connections
-7. Closed TCP Connections
-8. Total Data transmitted (in byte)
-9. Total Data Retransmitted (in byte)
+Thanks,
+Anshuman
 
-Also, does anybody have any information on Watchdaog or how to use
-watchdog and SOCKS and SNOOP Daemon?
-I am using RedHat 9.0 machine.
+PS: We had Apache web server running on this machine and we didn't have a firewall installed (other than linux's basic firewall install).
 
-Any help is apreciated. 
 
-Looking for an answer.
-
-Tejas Vora
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
