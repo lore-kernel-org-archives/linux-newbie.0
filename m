@@ -1,49 +1,25 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Elvis and crontab
-Date: Mon, 28 Mar 2005 22:03:11 -0800
-Message-ID: <5.1.0.14.1.20050328215440.02015c80@celine>
-References: <200503290541.j2T5f6HY001659@skyinet.net>
+Date: Tue, 29 Mar 2005 14:12:44 +0800
+Message-ID: <200503290612.j2T6CiE3001782@skyinet.net>
+References: <5.1.0.14.1.20050328215440.02015c80@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200503290541.j2T5f6HY001659@skyinet.net>
+In-Reply-To: Your message of "Mon, 28 Mar 2005 22:03:11 PST."
+             <5.1.0.14.1.20050328215440.02015c80@celine> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-At 01:41 PM 3/29/2005 +0800, Peter wrote:
->Hi,
->
->In slackware, crontab is using elvis as the editor instead of vim and I can't
->make heads or tails out of it.
->
->Does anybody know how to change this from elvis to vim or better yet to a 
->more
->user friendly editor?
+Thanks Ray,
 
+symlink to vim instead of elvis did it.
 
-I don't know about Slackware specifically, but the usual way applications 
-get the identity of your editor is from an environment variable called 
-(duh) "EDITOR". Check your setting for this with the "env" command. If you 
-need to change it, do so in any convenient config script (e.g., .bashrc) 
-the usual way. User friendliness is, to a degree, in the eye of the user, 
-so I don't really know what you have in mind, but a wide range of editors 
-can work this way.
-
-You might also want to check what "vi" on your system is a symlink to. I 
-seem to recall that Slackware, way back when (I probably quit using 
-Slackware 8 years ago, around the time of 4.0), used elvis as its stock vi 
-replacement. You can make any other vi-like app "your" vi simply by 
-changing this symlink. (I did this on my Debian systems, replacing the 
-annoying, at least to me, nvi with vim. The Debian setup is a bit more 
-involved than what I described here, so it is possible you will find that 
-Slack too has become more tangled than it once was, perhaps requiring you 
-to follow a string os symlinks instead of the single layer I described.)
-
-
-
-
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
