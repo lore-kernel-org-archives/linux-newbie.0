@@ -1,90 +1,66 @@
-From: Beolach <beolach@comcast.net>
-Subject: Re: inittab
-Date: Wed, 31 Mar 2004 21:24:07 -0700
+From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+Subject: Re: Reinstallation
+Date: Thu, 1 Apr 2004 12:36:54 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <406B9967.40803@comcast.net>
-References: <406AA2BA.7020209@arrakis.es> <406B96A0.9080107@comcast.net>
+Message-ID: <200404011236.55329.wheds8@ms66.hinet.net>
+References: <200403302101.44326.pa3gcu@zeelandnet.nl> <5.1.0.14.1.20040330115239.01f82bc8@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <406B96A0.9080107@comcast.net>
+In-Reply-To: <5.1.0.14.1.20040330115239.01f82bc8@celine>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 
-Cc: Andrew Langdon-Davies <ald2@arrakis.es>, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+The message reads, from a Mandrake installation, ....There was an error 
+installing packages XXX. Do you wish to continue. This goes through every 
+package I selected.
 
-On other thing I want to mention: the way you have it now, you're
-running the `XFree86 -query 192.168.0.1 :1 vt08` command on all
-runlevels 1-5, you may only want to run it on runlevel 4 (Slackware's X
-runlevel).
+File partitions. I used fdisk to partition and then put Reseirfs on them. 
 
-If you do only want it on runlevel 4, change the inittab line to:
-c7:4:respawn:/usr/X11/bin/XFree86 -query 192.168.0.1 :1 vt08
+Then I let Mandrake do  the partitioning automatically. 
 
-Good luck,
-Conway S. Smith
+The result was the same.
 
-Beolach wrote:
-> Andrew Langdon-Davies wrote:
 >
->>>Good morning,
->>>
->>>Following is from /etc/inittab on a client running Slackware-9.0.
->>>
->>># These are the standard console login getties in multiuser mode:
->>>c1:1235:respawn:/sbin/agetty 38400 tty1 linux
->>>c2:1235:respawn:/sbin/agetty 38400 tty2 linux
->>>c3:1235:respawn:/sbin/agetty 38400 tty3 linux
->>>c4:1235:respawn:/sbin/agetty 38400 tty4 linux
->>>c5:1235:respawn:/sbin/agetty 38400 tty5 linux
->>>c6:12345:respawn:/sbin/agetty 38400 tty6 linux
->>>c7:12345:respawn:/usr/X11/bin/XFree86 -query 192.168.0.1 :1 vt08
->>>
->>>The last line is added by me. Sure enough, I get a display on vt08 from
->>>the server, which is running Mandrake-9.2. So far, so good. The two
->>>things I cannot work out, however many times I re-read man inittab, are
->>>1. How do I stop the local X system from giving me a login screen? (it
->>>comes up on vt02)
->
->
-> Assuming you actually do want to have X running, but only want to login
-> screen to be on the remote system & not the local, edit /etc/rc.4 so
-> that you don't start [kgx]dm on the local machine.
->
->
->>>2. Why have I not got any text consoles? (they are all just black with a
->>>blinking cursor).
->>>Thank-you all very much in advance,
->>>Andrew
->>>
->
->
-> You actually do have text consoles, just not on vt's 1-5.  If you want
-> these text consoles, change your inittab to something like this:
->
-> # These are the standard console login getties in multiuser mode:
-> # consoleN:runlevels:what_to_do_on_exit:program_to_run_and_options
-> c1:12345:respawn:/sbin/agetty 38400 tty1 linux
-> c2:12345:respawn:/sbin/agetty 38400 tty2 linux
-> c3:12345:respawn:/sbin/agetty 38400 tty3 linux
-> c4:12345:respawn:/sbin/agetty 38400 tty4 linux
-> c5:12345:respawn:/sbin/agetty 38400 tty5 linux
-> c6:12345:respawn:/sbin/agetty 38400 tty6 linux
-> c7:12345:respawn:/usr/X11/bin/XFree86 -query 192.168.0.1 :1 vt08
->
-> HTH,
-> Conway S. Smith
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.3 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org
+> "xxx program had  problems do you want to continue" is not an example. It
+> is a paraphrase, and rather an uninformative one. Does the message really
+> say nothing more informative than "had problems"? Does it really call each
+> a "program", not a "package"? I doubt it ... I recall Knoppix as a Debian
+> derivative, and the Debian style of messages is very different from what
+> you are reporting ... but the best way to tell is to see an actual,
+> complete example.
 
-iD8DBQFAa5lnGL3AU+cCPDERAlC1AJ9xx9YTH270JxuASORzhYF5Ns1XhgCcDWdj
-1j6LSWishzdTdHUnzIVxuFE=
-=FLV4
------END PGP SIGNATURE-----
+
+>
+> I haven't installed Knoppix here, so I'm fishing a bit to think of what
+> might be causing problems.
+>
+> Does the install kernel support Reiserfs out of the box? Might the root (/)
+> partition need to be ext2 or ext3, for example? Or might you need to load a
+> kernel module before doing package installation?
+>
+> Technically, Linux users do not "format" partitions ... we create
+> partitions with fdisk (or a relative) and put filesystems on them with
+> mke2fs (or the one appropriate for your filesystem type). Did you do both
+> steps?
+>
+> Please describe the steps you are taking a bit more exactly, provide actual
+> examples of error messages, and give us the structure of the system (such
+> as the output of "df" and "uname -a" and "ls -l /" ... at this point, the
+> description is so vague that I'm not really sure what else to ask for).
+>
+> PS - Kernels have names like 2.6.4 and 2.4.x, not 2.64 and 2.4x.
+>
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
