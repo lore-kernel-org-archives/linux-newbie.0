@@ -1,41 +1,71 @@
-From: Ola Theander <ola.theander@connective.se>
-Subject: The relation between Jakarta/Tomcat and Apache web server?
-Date: Mon, 27 May 2002 17:48:46 +0200
+From: Jim Hatridge <James.Hatridge@epost.de>
+Subject: Trading for parts.....
+Date: Mon, 27 May 2002 14:19:29 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <FC79D1F4C922D511983400104BC303880195A2@DELL1>
+Message-ID: <actnlr$oh0$2@main.gmane.org>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: suse-linux-e@suse.com
+Cc: linux-newbie@vger.kernel.org
 
-Dear subscribers.
+Hi all
 
-I have a question about one issue where I feel a bit disoriented about and
-that is the relation between Jakarta/Tomcat and the Apache web server? How
-is Jakarta/Tomcat related to Apache. I know that they are both developed
-under the apache.org foundation, but I'm referring to a more technical
-relation.
+I'm looking for:
 
-Does Jakarta/Tomcat require the Apache web server to be installed to work
-properly? If that's the case, how does Tomcat work which Apache 2.0.x?
+Memory sticks of at least 64mb (can use upto 128mb) for a Toshiba Satellite
+220CS laptop
 
-If they are unrelated, can they co-exist on the same server both serving
-port 80? If not, to what extent does the Tomcat support features like
-Virtual Server i.e. serving more than one domain on the same ip-address and
-port?
+PCMCIA 56k modem card (not ISDN) for my Toshiba laptop
 
-Can Apache process jsp-pages without Tomcat?
+I don't have much cash, but I'm a stamp collector and have some neat things 
+you can collect yourself, sell, or give as a gift to someone. Here is what I 
+can offer you
 
-What I would like to be able to do is to publish both html- and jsp pages
-from the same server, for multiple domains i.e. using Apache's virtual
-servers e.g. domain1.com, domain2.com etc.
+***************************
+1992 German Post year book Mint with all the issues of that year
 
-Many questions but hopefully some of them will be answered by some of all
-you knowledgeable subscribers out there.
+OR
+1993 German Post "Jahressammlung Der Postwertzeichen Der Deutschen
+Bundespost" -- This is the boxed set of special First Day Cards with the Bonn
+cancels. There were only 35,000 of these made. Mine is numbered 2703.
 
-Kind regards, Ola Theander
+OR
+1986 DDR year book Mint -- This book has all the DDR issues of that year with
+postal stationary. It also has that year's Black print. There were 60,000 of
+these books issued, mine is numbered 43873.
+
+OR
+
+1990 DDR/West German Post year book -- The stamps have been taken out of this
+book, but all the DDR postal stationary is there. There are holders for all
+the DDR issues of that year in East marks and in D marks. Also from October 3
+there is holders for all the West German Post issues. This book is numbered
+61080.
+
+
+Email me off list if you have anything and are interested.
+
+
+
+Thanks
+
+
+JIM
+
+
+--
+Jim Hatridge
+Linux User #88484
+------------------------------------------------------
+                 BayerWulf
+	   Linux System # 129656
+         The Recycled Beowulf Project
+  Looking for throw-away or obsolete computers and parts
+   to recycle into a Linux super computer
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
