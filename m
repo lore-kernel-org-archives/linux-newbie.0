@@ -1,39 +1,55 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: BroadBand Connection
-Date: Tue, 1 Mar 2005 07:37:20 +0100
-Message-ID: <200503010737.20279.pa3gcu@zeelandnet.nl>
-References: <91380-22005212891016604@M2W048.mail2web.com>
+Subject: Re: Sype wont't open
+Date: Tue, 1 Mar 2005 07:58:22 +0100
+Message-ID: <200503010758.23060.pa3gcu@zeelandnet.nl>
+References: <20050301055006.4C53B4E6EC@heisspf>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-In-Reply-To: <91380-22005212891016604@M2W048.mail2web.com>
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+In-Reply-To: <20050301055006.4C53B4E6EC@heisspf>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: heisspf@skyinet.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: "Peter H." <heisspf@skyinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-On Monday 28 February 2005 10:10, heisspf@skyinet.net wrote:
-> in-Reply-To: Your message of "Sun, 27 Feb 2005 17:26:27 +0100."
->              <20050227172627.71add6a4@sarge>
+On Tuesday 01 March 2005 06:50, Peter H. wrote:
+> Hi,
 >
+> in slackware10 trying to open skype a program
+> for Internet telephony I get the following error:
 >
-> Thanks Ulrich,
->
-> In slackware10 netconfig took care of everything, found the driver
-> installed
-> it etc and I have now a connection at a dizzying speed of close to 300
-> KB/sec
-> 200 times faster than what I had for the past many years.
+> relocation error: /usr/lib/qt/lib/libqt-mt.so.3: undefined symbol:
+> XkbSetPerClientControls
 
-It would be helpfull to others if you told us which driver is used by this 
-card considering that was your origanal question.
-That way you help others as well.
+I did not get confronted with this problem when i tryed skype with=20
+slackware-10, i found all sorts of problems tho'.
 
-> Regards
+The following URL may well help you;
+
+https://www.redhat.com/archives/fedora-list/2004-May/msg04589.html
+
+If that helps then your problems are not over as you will meet many pro=
+blems=20
+with skype and slackware-10. I may well be able to help you tho=B4.
+
+I did manage to get skype started but performance was lousy and to be h=
+onest i=20
+was very dissapointed with it.
+
+I have it running under fedora 3, performance is fine and it was not to=
+ much=20
+hassel to get going.
+
+> and the program aborts.
+>
+> How to resolve?
+>
+> Thanks & regards
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
