@@ -1,90 +1,39 @@
-From: "peter schoch" <pschoch@sussex.cc.nj.us>
-Subject: Re: RH 7.3 and tripwire
-Date: Mon, 25 Nov 2002 13:31:26 -0500
+From: lcollins <lcollins@gci.net>
+Subject: Re: new to Debian
+Date: Mon, 25 Nov 2002 10:21:27 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <sde22631.055@mail.sussex.edu>
+Message-ID: <20021125102127.A1302@linux>
+References: <20021123070206.A1156@linux> <5.1.0.14.1.20021123084809.02141030@celine> <20021123075444.B1156@linux> <20021125060508.GA3215@softhome.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20021125060508.GA3215@softhome.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: paul.furness@vil.ite.mee.com
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Paul,
+Thanks Josh I will give each of these a try and see what works best for
+me.  
 
-I am using the machine for a 'developmental' web server for the science and computer science departments, and for listservs (mailman).
+> On Sat, Nov 23, 2002 at 07:54:44AM -0500, lcollins wrote:
+> > Looks like that's what I'm looking for. Thanks 
+> > 
+> > Ray Olszewski previously wrote:
+> > > dselect is the standard Debian package manager for CD installs. I 
 
-It was a bugger to upgrade from RH6.2 to RH7.3.  I don't remember having tripwire on the 6.2 box, and getting the mailman to work was a trial in pain on 7.3.
-
-Since I will be outside a firewall, it sounds as if I should be using tripwire.  Now, when the cron runs, I get:
-
-Parsing policy file: /etc/tripwire/tw.pol
-  this is followed by a string of Warnings about file system erors in  /proc and /sbin files.  Some even state that there is no file or subdirectory.
-
-It then generates the report and states that huge numbers of files have been modified, but it lists the same files every time the cron runs the check.
-
-I would think it's a config problem, but I'm not sure what I should be looking to change.
-
-Thanks for the help,
-Peter Schoch
-
-<<< Paul Furness <paul.furness@vil.ite.mee.com> 11/25  4:14a >>>
-Peter, 
-
-Firstly, do you actually need / want to run tripwire? It is mostly
-useful for intrusion detection type things, which may not matter if your
-PC is either on a secure network, or standalone. In which case, I'd just
-remove tripwire from your system.
-
-I don't run tripwire on my workstations, but I _do_ run it on the
-machines in my DMZ (such as web server) since they are at a much higher
-risk of hack attack than those inside my firewall on my internal
-network.
-
-
-If you decide that you _do_ need tripwire, it could well be that it's
-not configured for your system's setup. Can you give us a little more
-detail about the errors that tripwire is reporting?
-
-As for documentation: I haven't found anything that is better than the
-man page for explaining how it works. In principal it's very simple: you
-create a list of files to watch, and tripwire takes a note of various
-attributes of the files (such as size, date and so on). At a later time
-(usually from a cron job) tripwire compares the file against the
-information it has, and reports any discrepancy. You can tell it the
-level at which to check the file and the kind of warning it gives.
-
-Paul.
-
-
-
-On Fri, 2002-11-22 at 20:14, peter schoch wrote:
-> Greetings,
-> 
-> I just upgraded from RH6.2 to RH7.3.  I've been fighting with it for several days now.
-> 
-> My last, big 'fight' is with tripwire.  I keep getting cron mail that tripwire had all sorts of troubles.  It gives me commands to 'fix' the trouble, and have run them; however the problems apparently persist.  I don't remember using tripwire in 6.2, so is there a good resource for finding out what to do?
-> 
-> Peter Schoch
-> Sussex County Community College
+Joshua Lee previously wrote: 
+> Dselect is useful but it has a very odd interface. Aptitude is somewhat
+> more friendly and does some of the same things, though it doesnt have
+> all of dselect's features, I used to use it until I got more used to
+> dselect. For apt-get there is a GUI front-end synaptic you might also
+> want to take a look at, though I like to use apt-cache to search and
+> then apt-get to install, since apt-get is quite easy to use.
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
--- 
-Paul Furness <paul.furness@vil.ite.mee.com>
-Mitsubishi Electric ITE BV VIL
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
-                        
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
