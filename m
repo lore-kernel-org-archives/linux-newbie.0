@@ -1,33 +1,44 @@
-From: Jim Earl <jimurl@montanaice.com>
-Subject: local networking hostname
-Date: Mon, 22 Jul 2002 09:03:07 -0600
+From: Joseph Jackson <skoidat@lvcm.com>
+Subject: Re: local networking hostname
+Date: Mon, 22 Jul 2002 08:16:37 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <B9617ACB.1E8C%jimurl@montanaice.com>
+Message-ID: <3D3C21D5.5080605@lvcm.com>
+References: <B9617ACB.1E8C%jimurl@montanaice.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Jim Earl <jimurl@montanaice.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hello!
+Jim Earl wrote:
 
-I am setting up a small network of one Linux and one non-Linux box.  The
-network is established via Ethernet; ifconfig and route report verify this.
-I am able to telnet from the non-linux to the Linux box but only using the
-IP address - NOT using the hostname.  However, when I try to telnet from the
-Linux box to itself ( using the loopback interface ), it works fine.  My
-/etc/hosts , /etc/resolv.conf and /etc/networks seem to be ok.
+> Hello!
+> 
+> I am setting up a small network of one Linux and one non-Linux box.  The
+> network is established via Ethernet; ifconfig and route report verify this.
+> I am able to telnet from the non-linux to the Linux box but only using the
+> IP address - NOT using the hostname.  However, when I try to telnet from the
+> Linux box to itself ( using the loopback interface ), it works fine.  My
+> /etc/hosts , /etc/resolv.conf and /etc/networks seem to be ok.
+> 
+> I don't have 'named' running, but it looks like I might need to ( though I
+> had wanted to avoid it ).
+> 
+> Any ideas are appreciated.
+> 
 
-I don't have 'named' running, but it looks like I might need to ( though I
-had wanted to avoid it ).
+What os is the other machine? that would help to know.  if it is a windows 
+machine you will need to edit the file lmhosts in the folder c:\windows just 
+open that file in note pad and enter in the info (it is alot like /etc/hosts 
+file on linux) that will let you use the machines name instead of the ip address 
+to connect to it.  unless you want to use a dns server on your network and since 
+its only 2 machines I see no need to.  Just edit the lmhosts file.
 
-Any ideas are appreciated.
--- 
-Jim Earl
 
+Joseph Jackson
 
-jimurl@MontanaIce.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
