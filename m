@@ -1,41 +1,46 @@
-From: <Stuart_Hayes@Dell.com>
-Subject: kernel stack on i386
-Date: Wed, 24 Mar 2004 17:16:46 -0600
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: running X programs as another user
+Date: Thu, 25 Mar 2004 09:45:25 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CE41BFEF2481C246A8DE0D2B4DBACF4F128AB5@ausx2kmpc106.aus.amer.dell.com>
+Message-ID: <Pine.LNX.4.44.0403250943280.26064-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+Sorry for the duplicate postings (if it does get duplicated) -- my first 
+message was not posted even after ~10 hrs. 
 
-I have noticed that the kernel stack space in Linux is very small--
-only 5300-odd bytes with the x86_64 kernel that I'm using right now.  
-I have run into problems with this, most notably with the deeply-
-nested and recursive ACPI "driver" code.  When I mentioned enlarging 
-the kernel stack on the linux-kernel mailing list, I got a lot of 
-responses that indicated that increasing the kernel stack is a bad 
-idea.  I've also heard that the stack is going down to only 4K soon.
+----------
 
-My question is:  Why is Linux bothering to try to get by with such a 
-small kernel stack?  Just to save page table entries/TLBs?
+Along the process of trying to recompile a personalized kernel for this 
+machine (following my previous posts and responses), I seem to be unable 
+to run any X-based programs as root from within an X-session started as a 
+regular user (karthik). I.e. I log in as karthik -> startx, open an xterm, 
+and su - root. Once there, any attempt to run an X based program gives an 
+error, for e.g.:
 
-If this is the reason, is the kernel code put into 2M/4M pages to 
-save page table entries and TLBs?  If not, why not?
+# gandalf:~# whoami; gw
+root
 
-Also, I'm kind of curious why the task_struct is put in the stack 
-area, just begging to get overwritten without warning in the case of
-a stack overflow... and why isn't the stack segment in it's own
-protected segment, such that a stack overflow will result in an 
-exception of some sort?
+Gdk-WARNING **: locale not supported by C library
 
-Any insight would be appreciated!
+Gtk-WARNING **: cannot open display: 
 
-Thanks
-Stuart
+
+I am guessing this is some sort of security measure? 
+
+How can I circumvent this? What are good places to gain some basic
+understanding of X and related security concerns etc.
+
+Thanks,
+
+-K
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
