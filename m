@@ -1,48 +1,56 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Intel 82595FX clone NIC problems
-Date: Fri, 11 Apr 2003 15:24:51 -0500 (CDT)
+From: "Sriram Narasimhan" <nsri@tataelxsi.co.in>
+Subject: kmalloc (GFP_KERNEL) doubt!!
+Date: Sat, 12 Apr 2003 02:13:37 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0304111514010.1064@homenet>
-References: <5.1.0.14.1.20030411110849.01ea73e8@celine>
- <5.1.0.14.1.20030411094900.01ea5030@celine> <5.1.0.14.1.20030411094900.01ea5030@celine>
- <5.1.0.14.1.20030411110849.01ea73e8@celine> <5.1.0.14.1.20030411125405.01fbde78@celine>
+Message-ID: <3E9728F9.6080107@tataelxsi.co.in>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030411125405.01fbde78@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux-Newbie list <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Ray:
+Hello,
 
-Thanks so much for your help on this.  Taking a bit of initiative based on
-your second to last post, it seems I have determined the nature of the
-problem.  It seems the module I'm trying to use is buggy.  Here's why I
-think so.
+I am trying to allocate memory from a driver module and kmalloc 
+(GFP_KERNEL) is failing.
+I am running 2.4.7-10 RH 7.2 on i386 with 64 MB Physical Memory.
 
-I created a dir on the root called /module.  In that dir, I placed the
-eepro.o module from the Slack 8.0 CD (2.2.19 kernel).  I edited
-/etc/rc.d/rc.S to reflect the location of that module (insmod
-/module/eepro.o io=0x300).  When I booted next I got, of course, a
-complaint that this module was compiled for the 2.2.19 kernel (whereas I
-am using 2.2.16).  So, I edited /etc/rc.d/rcS again to force the module to
-load (insmod -f /module/eepro.o 0x300).  Next boot, I got an ominous
-looking complaint, stating that this module would "taint" the kernel.
-Undaunted, I tried the network.  No lockups.  It now works normally.  I
-used it for about 5 minutes, surfing with Links and telnetting to the
-gateway.  Hasn't locked up yet.  This is already much longer than I could
-ever use the connection before without it dieing.  Sounds like a buggy
-module I was using previously, no?
+The first time I ran my module, it failed at the 2.5 MB limit.
+I restarted the system and tried it again, and I was able to allocate 5 
+MB successfully.
+I restarted the system and ran "free".
+The report is as follows:
+            total       used       free     shared    buffers     cached
+Mem:         62264      30624      31640          0       8072      16096
+-/+ buffers/cache:       6456      55808
+Swap:       192772          0     192772
 
-Questions, of course, remain.  What exactly does "tainting" the kernel
-entail?  What risks am I taking by using this module?  Have I gone about
-loading the new module correctly (putting it in that dir and loading it
-with a comment including the -f switch in rc.S)?  What are other ways?
+Then I ran gcc and compiled my code and then for the "free" report again.
+The report is as follows:
+            total       used       free     shared    buffers     cached
+Mem:         62264      45320      16944          0       9256      28384
+-/+ buffers/cache:       7680      54584
+Swap:       192772          0     192772
 
-Further pointers would be appreciated.
+I was able to notice that the physical memory had gone down though "gcc" 
+had completed.
+The time I ran my application, I had about 2.5M physical memory left, so 
+I was able to allocate 2.5M.
 
-Thanks, James
+What is happening ? What is the buffers/cache column and is there any 
+way I could force the kernel to release the cached memory back to free 
+physical ?
+Is there any way I can allocate more than what is left free from the 
+physical memory ?
+
+Any pointers or suggestions would be very helpful.
+
+Thank you.
+Regards,
+Sriram
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
