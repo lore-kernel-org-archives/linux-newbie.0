@@ -1,64 +1,37 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: At Loss with Mailing
-Date: Thu, 08 May 2003 20:54:46 -0700
+From: sean@tcob1.net
+Subject: Re: hiding my hostname (2)
+Date: 7 May 2003 19:50:28 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030508204848.01f7ad00@celine>
-References: <Your message of "Wed, 07 May 2003 07:45:37 MST."  <5.1.0.14.1.20030507073022.01f3e020@celine>
- <5.1.0.14.1.20030507073022.01f3e020@celine>
-Mime-Version: 1.0
+Message-ID: <n2m-g.46c0a3.a7a64e@tcob1.net>
+References: <5.1.0.14.1.20030506201353.01eb8ea0@celine> <20030507035842.42941.qmail@web10704.mail.yahoo.com>
+Reply-To: sean@tcob1.net
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305090130.h491Uvb03516@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 09:30 AM 5/9/2003 +0800, Peter wrote:
-
->ray@comarre.com said:
-> > What does "difficulties making a connection" mean?
->
->If I dial an ISP using i.e. kppp the window will show "logging on to 
->network",
->will sit for a while, then disconnects from the modem and shows an error
->window with timeout message. Or using ifup pppx it stops with failed to
->activate with error 35.
->
->If it does connect to the ISP then there is now data flow. Trying to open a
->website I get the error, unable to connect to remote host.
->
->If during such condition I try to send an e-mail I get those errors, host
->unknown etc.
->
->Two days ago before I sent the last message on this subject using kmail I
->tried to send 3 mails to individuals using exmh. All 3 ISPs I am using could
->not sent the messages except for one to @hotmail.com. This then shows up in
->/var/log/maillog as: queued for delivery.
->
->These conditions exist usually in mid morning and mid afternoon when most
->likely the lines must be just jammed.
+Jesse,
 
 
-OK. Well, I think it is stating the obvious, but if you are having trouble 
-connecting to your ISP, doing DNS resolution, and reaching Web sites ... 
-asking what the problem is with your e-mail seems kind of the wrong place 
-to be focusing your attention. You need to concentrate on the actual 
-problem, which may be with the phone service, the ISPs, or your router or 
-host (unlikely but just barely possible). Your guess about the source of 
-the problem is a plausible one.
+> the hostname table shows empty content
 
-The one message to hotmail was, from your description, not really sent out. 
-Your on-host MTA accepted it from the MUA you use. But it could not connect 
-to hotmail so queued it up to try to reend later (that's how SMTP MTAs are 
-supposed to work, since the protocol dates back to a time when connections 
-routinely were not 24/7, even for the major sites of the time).
+> USER    TTY   FROM    LOGIN@    IDLE    WHAT
+> woho    p1     -      10:09AM    -      - (pine)
+> can u explain that ?
 
-In any case, Peter, this certainly does not describe a problem with e-mail 
-as such.
+   From what I've seen, that dash in the "From" column usually means a local
+(to that machine) login...
 
 
 
+Jame
 
+
+
+--- BBBS/LiI v4.01 Flag-4
+ * Origin: http://bbs.rocasa.org (1:120/546)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
