@@ -1,35 +1,34 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Black Box Time
-Date: Thu, 12 Feb 2004 09:40:36 +0800
+From: Dave <howek@vcss.k12.ca.us>
+Subject: Java and Mozilla problem
+Date: Wed, 11 Feb 2004 18:50:35 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040212014036.37F991C955@heisspf>
-References: <4029D94C.4030907@comcast.net>
+Message-ID: <c0eop1$j1l$1@sea.gmane.org>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Wed, 11 Feb 2004 00:27:08 MST." 
- <4029D94C.4030907@comcast.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Beolach <beolach@comcast.net>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Thanks!
+Several web sites have told me that I need x-java-vm plugin installed in 
+my Mozilla 1.6.  I downloaded it and it says it installed properly. 
+However, when I put about:plugins in the URL of Mozilla, it is not 
+listed and the pages still won't load.
 
-You must have a different man blackbox then mine. It only mentions:
+I think the issue is that my Mozilla was loaded a Root and I'm trying to 
+  install the plugin as a user.  I'm afraid I'm too new to know where to 
+turn next.
 
- session.screen0.strftimeFormat:
-              This  adjusts the way the current time is displayed in the tool-
-              bar.  The strftime(3) format is used.   The  default  value  is:
-              %I:%M %p
+Any tips would be greatly appreciated.
 
-I had check that and only realized now that strftime refers to another man 
-page.
-
-Regards
+Dave
 
 -- 
-Peter
+
+SuSE Linux 9.0 2.4.21-166-Athlon
+i686 Athlon i386 GNU/Linux
+73 K6DBH Dave . .
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
