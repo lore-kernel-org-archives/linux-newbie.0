@@ -1,8 +1,8 @@
-From: "lawson_whitney@juno.com" <lists@tcob1.net>
-Subject: Re: (fwd) .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 13:17:55 +000
+From: "Peter" <lists@tcob1.net>
+Subject: Re: RH7.3 keyborad lock-up
+Date: Thursday, 15 Aug 2002 12:21:05 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_131755__fc70ee94@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_122105__224936f6@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,41 +13,26 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-On Thu, 15 Aug 2002, Ray Olszewski wrote:
+Hi,
 
-> It's been so long since I used a .a libraries, I didn't recall how they
-> were created. They are the old-format libraries I referred to above. They
-> are kept around, at least on full-size Linux installs, mainly for legacy
-> reasons. Don't use them unless you have *very* unusual requirements (I
-> can't even think of an example).
+once more on this subject before closing it.
 
-In case you want to make a static executable (one that does not require
-dynamic linking.  Nost distro's link /sbin/ldconfig static so you can
-use it to recover when you mess up your libraries and nothing woorks,
-say when you try to upgrade libc and don't know how.
+Peter said:
+>>I made that switch with RH7.1 some time ago with no problems.
+>>7.1 runs on XFree86-4.0.3-5 and and 7.3 om XFree-4.2.0-8.
 
-Some distros keep a /bin/ash.static or other small shell for use in
-rescue root floppies and initrd images.
+Ray Olszewski said:
+> This move by Red Hat may be optimistic. Even Debian unstable (Sid)
+> still runs XFree86 4.1.0-17. 
 
->
-> >Many thanks and my best regards,
-> >Axel Siebenwirth
->
-> -------------------------------------------"Never tell me the odds!"--------
-> Ray Olszewski					-- Han Solo
-> Palo Alto, California, USA			  ray@comarre.com
-> -------------------------------------------------------------------------------
+And I think you were asking what RH7.2 is using. It's XFree86-4.1.0-3 on the 
+Cd I borrowed from a friend. I will upgrade to that one now and copy what is 
+useful from 7.3 to 7.2.
 
-Lawson
----oops---
+Thanks & regards
+-- 
+Peter
 
-
-
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
 -
 
 <-> Gateway Information.
