@@ -1,65 +1,41 @@
-From: "Marty Enslow" <menslow@WILLVISION.com>
-Subject: RE: Super Newbie Questions Please provide Linux/windows translations :)
-Date: Tue, 17 Sep 2002 14:30:49 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: IP command, was SuperNwebie.
+Date: Wed, 18 Sep 2002 05:52:26 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <9564E054EBAABA4AAA995C4C2B3EA3F310B25A@EXCHG_SERVER.WILLVISION.COM>
+Message-ID: <0209180552260D.03392@unix.pa3gcu>
+References: <5.1.0.14.1.20020917131025.026cf820@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Class: urn:content-classes:message
+In-Reply-To: <5.1.0.14.1.20020917131025.026cf820@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: Paul Kraus <pkraus@pelsupply.com>
+To: Ray Olszewski <ray@comarre.com>, Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-Most likely you would use ifconfig to view IP address info. 
+On Tuesday 17 September 2002 20:28, Ray Olszewski wrote:
 
-If you are using a windows machine on the same subnet you can reference
-the Samba host name for most services. The Samba host name is what is
-reported to the windows master browser, be it PDC or other. It is also
-the name that you will see in the network neighborhood when browsing to
-your server.
+> Some distros use the command "ip" instead. I believe "ip link" is the way
+> to get interface info.
 
-If you would provide which version of linux you are using I'm guessing
-the rest of your questions could be easily answered by myself or some
-other resident guru :-)
+Ray, i dont want to conradict you but, "ip" is a linux command so i cant see 
+how it could be a distro spesific command, mind you i am not saying that it 
+is not either.
 
+ip which used to be a seperate linux routing command it was first implimented 
+in an archive called iproute2 it is now included in slackware and AFAIK some 
+other distro's.
 
-Marty Enslow
-Network Administrator
-WillVision.com
+One uses 'ip' mainly for routing via tunnels. 
 
------Original Message-----
-From: Paul Kraus [mailto:pkraus@pelsupply.com] 
-Sent: Tuesday, September 17, 2002 12:48 PM
-To: linux-newbie@vger.kernel.org
-Subject: FW: Super Newbie Questions Please provide Linux/windows
-translations :)
+ip -V returns;
+ip utility, iproute2-ss990824
 
+--
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-How can I see my servers ip address. (it is handed out dhcp). Windows is
-ipconfig /all. Linux is.......
-
-Why is the system name localhost.localhost. Why the dot abbreviated
-name. Can I change this? How can I reference it. For instance from a M$
-workstation if I wanted to ping it how could I ping without having to
-enter the IP.
-
-Samba lets me set a server name up but is this just for samba or can I
-then reference this same name for telnet, ftp, mail settings????
-
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in the body of a message to majordomo@vger.kernel.org More majordomo
-info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
