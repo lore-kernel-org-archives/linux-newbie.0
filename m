@@ -1,84 +1,62 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Vbox
-Date: Fri, 25 Oct 2002 07:55:13 -0700
+From: lawson_whitney@juno.com
+Subject: Re: problems with dual boot
+Date: Thu, 24 Oct 2002 21:45:03 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021025073755.0218a360@celine>
-References: <200210250830.g9P8U0c01961@philonline.com>
+Message-ID: <20021025.133927.134682184.1.lawson_whitney@juno.com>
+References: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210250830.g9P8U0c01961@philonline.com>
+In-Reply-To: <20021024211548.8355.qmail@web13404.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux <linux-newbie@vger.kernel.org>
+To: abhijit_v@yahoo.com
+Cc: linux-newbie@vger.kernel.org
 
-Tough one, Peter, with so little info to work with.
+On Thu, 24 Oct 2002, Abhijit Vijay wrote:
 
-The usual source of respawn problems is an attempt to access a device that 
-is not accessable in some way (for example, a serial port that does not 
-have handshaking set up properly). Since ttyI5 is not a standard device, 
-you might do well to tell us (or check for yourself) both its actual entry 
-in /dev and whatever it is supposed to be connected to (some isdn device, I 
-imagine) to look for configuration problems. You might also see if the 
-"respawn" message is preceded in the logs by any more specific message 
-about the process ... such messages usually are.
-
-If neither telnet nor vbox can connect to port 20012, the fist thing to 
-check is whether anything is listening on that port. Does vboxd run 
-directly as a daemon or through inetd? If the first, is it actually 
-running? If the second, is inetd.conf configured proprely? Does either 
-vboxd or inetd log anything in connection with these failed attempts?
-
-Beyond those specific thoughts ... the Debian package notes for vbox3 
-(which I assume is the same app) mention that it is no longer being 
-maintained by its creator, and that opens the door to the possibility of an 
-uncorrected bug. So it you post again, you might want to include some 
-details about what version (distro) of Linux you are running, what version 
-of vbox, and how you got vbox (your distro's packaging system? comipled it 
-yourself from source?). Oh, and what your hardware (idsn) setup is.
-
-This URL -- http://www.linuxnetmag.com/en/issue2/m2vbox1.html -- (found in 
-2 minutes using Google) has some troubleshooting advice for vboxgetty  and 
-vboxd.
-
-At 04:30 PM 10/25/02 +0800, Peter wrote:
->Hi,
+> Hi All,
 >
->on trying to set-up vbox I get the following messages:
+> My computer (which has Windows 2000/Red Hat Linux 7.0)
+> Dual Boot with a WinNT loader, has developed problems.
+> Someone else was using it and now when I select the
+> Linux option at boot time, it says that some
+> kernel.exe file is missing and does not boot. Windows
+> boots fine. I tried using a linux boot floppy  from
+> another Linux machine (Redhat 6.2) to get into the
+> linux partition and install LILO (thinking that it
+> might be a problem with the loader), but could not
+> find the boot partition mounted.
+
+Why would a boot floppy from one machine know where is the /boot
+partition on another to mount it, unless you made it on purpose to do
+that?  Make a mount point if you don't already have one handy
+(mkdir /mountpoint)
+and mount it yourself
+mount /dev/hda? /mountpoint
+
+> Doing fdisk /dev/hda
+> gives me the error "Unable to load /dev/hda"
+
+if this                         ^^^^ is a typo for open,
+maybe you were not root and had not permission?
+
+Why do you need fdisk?  Do you not know where is /boot?
 >
->on booting:
->INIT: Id "I5" respawning too fast: disabled for 5 minutes
+> Could someone suggest a way out?
 >
->My entry in inittab is:
->I5:2345:respawn:/usr/sbin/vboxgetty -d /dev/ttyI5
+> Thanks in Advance,
+> Abhijit.
 >
->with command
->telnet localhost vboxd
->I get:
->Trying 127.0.0.1...
->telnet: connect to address 127.0.0.1: Connection refused
->
->and command vbox gives:
->Connecting to 'localhost:20012'...
->vbox: can't connect to 'localhost:20012
->
->that number 20012 comes from the file /etc/services
->vboxd           20012/tcp                       # voice box system
->vboxd           20012/udp
->
->What could be wrong?
->
->Thanks & regards
+Lawson
+---oops---
 
 
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
