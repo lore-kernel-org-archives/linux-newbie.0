@@ -1,60 +1,43 @@
-From: Travis Osterman <travis@wsor.net>
-Subject: Re: Multi-kernel in grub
-Date: 23 Jul 2003 22:20:12 -0500
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: /cdrom fails to unmount
+Date: 24 Jul 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1059016812.21561.72.camel@localhost.localdomain>
-References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
-	 <5.1.0.14.1.20030722181649.0201cdf0@celine>
-	 <1058935906.2992.31.camel@localhost.localdomain>
-	 <200307230824.35748.pa3gcu@zeelandnet.nl>
-Reply-To: travis@wsor.net
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200307240457.h6O4v5qR009233@pyxis.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200307230824.35748.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I thank everyone again for their patience with me.  I have tried to methodically note everything I have done during the kernel compilation below.  Everything seems fine until the make install step.
+Maybe, and I think, the thing is much more trivial - but for the reason
+of typical specialised blindness, you never get it explained from the
+*nix gurus: It has to do with the current "location" where you are when
+trying to "umount /cdrom" - if one of the applications in any one of the
+desktop windows "is" still "in" the /cdrom directory, for instance after
+having done some task there, you cannot umount it from there nor from
+another task, because it's "busy" (not with a process - there duely is
+none to find -, but simply because the directory=device is accessed.)
 
-make distclean // no errors
-make clean // (probably redudant) no errors
-emacs Makefile & // changed 'EXTRAVERSION = -first-try'
-make mrproper // no errors
-make xconfig // didn't change anything
-make dep // no errors
-make bzImage // seems fine, see below
+I have this nuisance time and again because after a while doing this or
+that I tend to forget that some earlier activity delocated the "working
+directory" (for its own purpose), and when I then want to change media in
+a CDROM or ZIP drive I promptly get that friendly "device is busy"
+harassment.
 
-Root device is (8, 7)
-Boot sector 512 bytes.
-Setup is 2623 bytes.
-System is 1156 kB
-warning: kernel is too big for standalone boot from floppy
-make[1]: Leaving directory `/usr/src/linux-2.4.20-8/arch/i386/boot'
+A good illustration is the behaviour of the Midnight Commander: you
+start it somwhere on some branch on the directory tree, then you
+navigate _inside_ the prog to _look_ at some other branch/files, and if
+you exit MC then your're quite somewhere else from where you started.
 
+Maybe that's natural for everyone who grew up with *nixish mother's
+milk; for all others, and certainly for mewbies like me, it's a bit more
+diffcult to understand why "The System" would change your current/working
+directory with, say, just reading-in data for an application, from a data
+file which is situated quite somewhere else.
 
-make modules // no errors
-make modules_install // no errors
-make install // errors, see below
-
-warning: kernel is too big for standalone boot from floppy
-sh -x ./install.sh 2.4.20-first-try bzImage
-/usr/src/linux-2.4.20-8/System.map ""
-+ '[' -x /root/bin/installkernel ']'
-+ '[' -x /sbin/installkernel ']'
-+ exec /sbin/installkernel 2.4.20-first-try bzImage
-/usr/src/linux-2.4.20-8/System.map ''
-No module aic7xxx found for kernel 2.4.20-first-try
-mkinitrd failed
-make[1]: *** [install] Error 1
-make[1]: Leaving directory `/usr/src/linux-2.4.20-8/arch/i386/boot'
-make: *** [install] Error 2
-
-  Will these errors cause problems if I bypass the 'make install' and
-copy files to my /boot dir?  Thanks again for the help.
-
--- Travis
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-07-23
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
