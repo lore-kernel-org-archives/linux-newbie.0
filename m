@@ -1,8 +1,8 @@
 From: "Jamie Risk" <jamie_risk@yahoo.ca>
-Subject: Last file access time ...
-Date: Wed, 8 Jan 2003 15:18:55 -0500
+Subject: /dev/random, /dev/urandom
+Date: Wed, 8 Jan 2003 15:27:39 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <avi115$en0$1@main.gmane.org>
+Message-ID: <avi1hh$hai$1@main.gmane.org>
 Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -11,13 +11,11 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-This is a bit circular, but here goes ...
+I'm compiling OpenSSH, and to access /dev/random, and /dev/urandom, the
+configure script needs to be run as root.
 
-Is there a way to determine when a file was last accessed, without actually
-refreshing the access time when reading the access time?
-
-Using the different time tests with 'find' doesn't seem to do what I'm
-looking for.
+What sort of trauma am I in for if I make those device permissions read
+accessible by everyone?
 
 
 
