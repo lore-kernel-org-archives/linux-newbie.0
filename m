@@ -1,48 +1,36 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: RedHat 8
-Date: Wed, 23 Oct 2002 16:39:35 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: CD-ROM settings and hardware resources...
+Date: Wed, 23 Oct 2002 15:49:36 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20021023163010.00bc7e48@interzone.anexia.co.uk>
-References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+Message-ID: <02102315493607.00497@unix.pa3gcu>
+References: <MSGID_110=3a260=2f1_3db551be@linuxnet> <1035315950.22123.76.camel@localhost.localdomain>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+In-Reply-To: <1035315950.22123.76.camel@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Bryan Simmons <bsimmo1@gl.umbc.edu>, Robert Couture <linux-net@tcob1.net>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-I did a fresh install last night on an Athlon 700Mhz with 256Mb and it seems ok.
-
-I managed to install and get apache, php, bind, mysql, pop3, sendmail all setup within
-a few hours so i was pleased.
-
-I noted that the desktops have been pared back a bit but some digging in the bin dirs
-i found some of the "missing" apps like term emulators etc...
-
-Evolution was easy to setup a simple pop3 account. Although it is a  little slow
-to load (possibly cloned outlook a little to closely).
-
-First Impressions are good for me.
-
---
-Carl
-
-At 08:33 23/10/2002 -0400, Paul Kraus wrote:
->What does everyone think of RedHat 8.
+On Tuesday 22 October 2002 19:45, Bryan Simmons wrote:
+> You missed the part where I said the only way to retrieve the files was
+> in Windows and that I wanted to enable whatever error correction or
+> multiple read settings that Windows has but while I'm in Linux.
 >
->Paul Kraus
->Network Administrator
->PEL Supply Company
->216.267.5775 Voice
->216-267-6176 Fax
->www.pelsupply.com
->
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs 
+> Any ideas?
+
+It sounds to me like you dont have dma set for the cdrom.
+
+man hdparm will explain howto turn it on.
+
+If thats not it then please disregard this mail.
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
