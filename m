@@ -1,33 +1,36 @@
-From: Jos Lemmerling <jos@lemmerling.net>
-Subject: Re: Kernel
-Date: Wed, 23 Oct 2002 21:38:09 +0200 (CEST)
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: Trying to get GUI'ed
+Date: 23 Oct 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0210232134530.32460-100000@orthanc.lemmerling.net>
-References: <002d01c27a90$4d1d7290$64fea8c0@pkrausxp>
-Mime-Version: 1.0
+Message-ID: <200210231953.g9NJrFdC012165@pyxis.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002d01c27a90$4d1d7290$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Wed, 23 Oct 2002, Paul Kraus wrote:
+Ray's "first draft to a window manager how-to" did (finally!) give me
+some insight.
+(I would like to go longer in reading and putting other bits and pieces
+in there too - just haven*'t got the time right now, woner when ever...)
 
-> On the Linux kernel archive they list 2.4.19 as the current stable
-> kernel. When I click on this it downloads patch-2.4.19.
+Practical question: is it possible, and how then, to run X and some
+application in it at a very "low level", for instance _without_ as
+much as could be cut off from the libraries (both Gtk and Qt) needed
+for the "higher level" managers/desktops ?
+And how to de-install these latter cleanly without creating new problems ?
 
-Just in case you didn't notice (and want to have the full source), just
-click on the "F" a bit to the right and you'll get the full source
-immediately. 
+(The problem I have with that SCSI device and the application for it is
+not the deveice's functioning, which works Ok., but this application's
+screen GUI - it's definitely some conflict there with both Gtk and Qt
+"families", i.e. using either KDE or Gnome. The one occasion it did
+run well was with a "just window maker" install of X. Thus banning the
+additional presence of those Gnome/KDE could perhaps avoid that
+collision, whatever it is.)
 
-Otherwise forget that i mentioned it ;)
-
-
-HTH
-
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-23
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
