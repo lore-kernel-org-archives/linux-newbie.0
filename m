@@ -1,28 +1,33 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Term Font
-Date: Tue, 22 Oct 2002 08:24:29 -0400
+Subject: Mail
+Date: Tue, 22 Oct 2002 11:15:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002101c279c5$f875e7b0$64fea8c0@pkrausxp>
+Message-ID: <005601c279dd$da9f1ff0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0022_01C279A4.716447B0"
+	boundary="----=_NextPart_000_0057_01C279BC.538D7FF0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 To: linux-newbie@vger.kernel.org
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_0022_01C279A4.716447B0
+------=_NextPart_000_0057_01C279BC.538D7FF0
 Content-Type: text/plain;
 	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 
-I use an application called Tiny Term by century. I run this using wine.
-The default font is called TERM and is not a TTF. I have tried
-converting all of the fon files to bdf and the pcf but it still does not
-show up in the app as a choose able font. It is also in its native fon
-format in the fonts folder for wine and the directory of the app like it
-is on my windows workstation. Any ideas?
+I want to set up one of our servers as a mail server for internal mail
+and external mail. But I wont external mail forwarded to our real mail
+server which is hosted by a 3rd party. That part is easy. But I also
+want all incoming mail to filter through this server. Do I  need to run
+fetchmail to have it get the mail from our isp or is there a better way?
+
+Red Hat 7.3
+Qmail
+
+This server is also running Hylafax as a fax server and I have it
+running backups at night.
 
 Paul Kraus
 Network Administrator
@@ -31,7 +36,7 @@ PEL Supply Company
 216-267-6176 Fax
 www.pelsupply.com
 
-------=_NextPart_000_0022_01C279A4.716447B0
+------=_NextPart_000_0057_01C279BC.538D7FF0
 Content-Type: text/x-vcard;
 	name="Paul Kraus (pkraus@pelsupply.com).vcf"
 Content-Transfer-Encoding: quoted-printable
@@ -59,7 +64,7 @@ EMAIL;PREF;INTERNET:pkraus@pelsupply.com
 REV:20020416T182124Z
 END:VCARD
 
-------=_NextPart_000_0022_01C279A4.716447B0--
+------=_NextPart_000_0057_01C279BC.538D7FF0--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
