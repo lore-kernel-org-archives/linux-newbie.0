@@ -1,38 +1,25 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Console fonts and colors
-Date: Tue, 8 Oct 2002 21:15:55 +0000
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Security Updates
+Date: Wed, 9 Oct 2002 08:28:25 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02100821155506.00235@unix.pa3gcu>
-References: <20021008.170202.134920296.0.lawson_whitney@juno.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <00a801c26f8f$5d88fb60$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021008.170202.134920296.0.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: brett@brett.d2g.biz
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Tuesday 08 October 2002 20:57, lawson_whitney@juno.com wrote:
+What mailing list or web page do I want to check regularly for security
+updates and kernel updates? Is there a way I can be notified without
+having to check?
 
-> > maybe I'll make do with what I have. It's not all that bad really.   My
-> > goal was to change the font color to green and maybe find a font that I
-> > could get a few more words on a line.
->
-> Easier to get a few more lines on a screen.
-
-Brett, go take a look at;
-http://people.zeelandnet.nl/pa3gcu/console_mode.htm
-
-> > Thanks,
-> >
-> > Brett
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
