@@ -1,43 +1,27 @@
-From: "Christoph" <christoph23@charter.net>
-Subject: Re: Write to Windows partition from linux as ordinary user
-Date: Wed, 6 Nov 2002 16:43:46 -0600
+From: "Robert Couture" <linux-net@tcob1.net>
+Subject: High ASCII in a terminal.
+Date: Wednesday, 06 Nov 2002 19:38:28 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <046901c285e5$f845e390$8c01a8c0@ENTROPY>
-References: <20021106214656.16325.qmail@web13408.mail.yahoo.com>
+Message-ID: <MSGID_110=3a260=2f1_3dc96fb4@linuxnet>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Abhijit Vijay <abhijit_v@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> I have a Windows 98 partition mounted on linux. The
-> directory, /win98 on which I have done the mount is
-> owned by me, as an ordinary user. However, I find that
-> I cannot write to the partition except as root. Is
-> there any way out, so that I do not need to su before
-> writing?
+Originally to: All
 
-I'm still very much a newbie so I could be totally off base
-here.  I had a problem very similar to yours.  I set up a
-local dos drive in fstab to be mounted.  And whenever it
-was mounted, all the directories (and files) were owned as
-root.  The way that I fixed that was to modify the entry in
-fstab to read as such:
+Hello All!
 
-/dev/hdd1               /mnt/local_d            vfat    defaults,rw,gid=XXX,uid=XXX  0 0
+What needs to be configured in order to display traditional High ASCII via
+Telnet or at the console?  (gnome-terminal or command prompt.)
 
-so that it mounts the drive so it's own by group id XXX and 
-user XXX and that did the trick.
-If you are just using mount from the command line, there
-are switches that do the above.
+All I get is the foreign character set  (accented letters and stuff)
 
-If a more experienced user knows a better way or can clarify
-as to whether or not there are problems with this solution, I'd
-be very happy to hear it!
+Thanks in advance!
 
-Christoph
+Robert.
 
 
 -
