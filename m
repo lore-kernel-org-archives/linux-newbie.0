@@ -1,59 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Which Debian to use?
-Date: Sun, 09 Feb 2003 08:11:00 -0800
+From: ramzez <r4mz3z@yahoo.es>
+Subject: trivial question about script
+Date: Sun, 9 Feb 2003 11:32:59 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030209080356.020c3930@celine>
-References: <200302091030.h19AU7q28455@mail.orcon.net.nz>
+Message-ID: <200302091133.07720.r4mz3z@yahoo.es>
+Reply-To: r4mz3z@yahoo.es
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0302091529490.18173-100000@orthanc.lemmerlin
- g.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 03:39 PM 2/9/03 +0100, Jos Lemmerling wrote:
->On Sun, 9 Feb 2003, cr wrote:
->
-> > The time has come for an upgrade (oh, okay, a reinstall) and I think
-> > Debian sounds promising   (I'm currently on RH7.2).
-> >
-> > I'm sure there are Debian users on this list, which version would you
-> > recommend?   I want something reasonably up-to-date (doesn't need to be 
-> the
-> > very latest) but solid and reliable and preferably easy to handle.
-> > Also one that will work well with Gnome and KDE apps.
->
->I'd recommend the latest stable release; 3.0r1 (Woody). It works fine with
->the gnome and kde-proggies I run, is very solid and easy to handle.
->
->More info on this release:
->http://www.debian.org/News/2002/20020719
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
+Hi friends...
+  How do I can output each fiel below other in his column? I mean; when use 
+somethin like: "cat /etc/fstab |  awk '{print $1"\t\t\t"$2"\t\t\t"$3}'" y 
+recieve this output:
+- ----real output -------------
+LABEL=/                 /                       ext3
+LABEL=/boot                     /boot                   ext3
+none                    /dev/pts                        devpts
+none                    /proc                   proc
+none                    /dev/shm                        tmpfs
+/dev/hda5                       swap                    swap
+/dev/cdrom                      /mnt/cdrom                      iso9660
+/dev/cdrom1                     /mnt/cdrom1                     iso9660
+/dev/fd0                        /mnt/floppy                     auto
+- -----end ------------------------------------
+  But I hope to receive like this:
+- ---desired output ------------------
+LABEL=/                /                       ext3
+LABEL=/boot          /boot                 ext3
+none                     /dev/pts             devpts
+none                     /proc                 proc
+none                     /dev/shm            tmpfs
+/dev/hda5              swap                 swap
+/dev/cdrom            /mnt/cdrom          iso9660
+/dev/cdrom1          /mnt/cdrom1         iso9660
+/dev/fd0                /mnt/floppy          auto
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-Jos is probably right in his recommendation (especially as advice for a 
-beginner), but I want to add a note of caution: Woody does pay a price for 
-being "stable" in that (a) many newer apps are completely missing from it 
-and (b) the apps present are often well back of the latest versions.
-
-Here, I use Woody (stable) on servers that need to run reliably 24/7 and 
-that do not offer "bleeding edge" services. But the development work I do 
-involves applications for processing of video, and that area is changing 
-far too rapidly for use of Woody to work ... so my workstations all use Sid 
-(unstable), and I occasionally pay the price that some app stops running 
-after an update, while the Debian maintainers sort out compatibility issues.
-
-In the end, you need to look at the details to move from the vague notion 
-of "something reasonably up-to-date" to a more precise one of "able to do 
-the tasks I need to do".
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+iD8DBQE+RjxxG3Fqyap52TERAmzoAJ9RN/1azFmLKOLseWCKwpNxRFRR7ACgk5Ng
+c6zSQi6FYhCYVD8gnLaOf40=
+=TNbP
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
