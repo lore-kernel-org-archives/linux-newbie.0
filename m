@@ -1,24 +1,57 @@
-From: "Anna G. Zapata" <azapata@du.edu>
-Subject: mouse and keyboard with Fedora
-Date: Fri, 13 Feb 2004 11:57:43 -0700
+From: Peter <peter@skyinet.net>
+Subject: Re: Bad Sound in Slackware
+Date: Sat, 14 Feb 2004 16:07:29 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <HBEJLOFMLEPBMAAEFNFDAEABCFAA.azapata@du.edu>
+Message-ID: <20040214080729.3D85230504@heisspf>
+References: <200402072025.34606.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sat, 07 Feb 2004 20:25:34 +0100." 
+ <200402072025.34606.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello,
 
-Is anyone using the Fedora core?  I am and have been experiencing problems on two different machines where they mouse
-and keyboard just stop responding.  I have tried using several other mice and keyboards and they don't work either.  Any
-suggestions?
+pa3gcu@zeelandnet.nl said:
+> He possably after copying those modules to the destination dir, did not do;
+> depmod -a If he did i am sure he would have gotten a lot of error messages
+> about,  "Unresolved symbols".
 
-Thank you
+Correct I did not make depmod -a. I did now and got a few error messages in 
+.../net. After that modprobe worked.
 
-Anna Zapata
+
+pa3gcu@zeelandnet.nl said:
+>  i would  not even recomend using modules from another kernel version, let
+> alone  another distro.
+
+Then I copied all the .../modules/drivers from the SW Install Disk into SW 
+made again depmod -a and got no error messages.
+
+I removed /sbin/insmod via82cxxx_audio, etc. in rc.local and enabled in 
+rc.modules  /sbin/modprobe/via82cxxx_audio.
+
+How I had lost the folder .../kernel/sound in SW beats me.
+
+What did Lawson sometimes write: beware, rogue system administrator on the 
+loose.
+
+pa3gcu@zeelandnet.nl said:
+>  if Peter wants he can have a copy of my presant .config  file from which he
+> can then see just
+
+Thanks, it's very kind. I seem to be OK for the moment.
+
+Regards
+-- 
+Peter
+
+
+--6397E30459.1076664313/heisspf--
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
