@@ -1,48 +1,21 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: [SOLVED] Re: File names with spaces
-Date: Fri, 21 Feb 2003 09:59:37 +0100 (CET)
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: GNU make: Where is the default database?
+Date: Fri, 21 Feb 2003 13:59:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0302210955390.4563-100000@hestia>
-References: <20030220171332.GA4937@teamfinders.org>
-Mime-Version: 1.0
+Message-ID: <b35st6$mbs$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030220171332.GA4937@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Thu, 20 Feb 2003, Theo. Sean Schulze wrote:
+Where's the source database for gnu make? I can view it with
+"make -p -f/dev/null" which is, useful, but I wish to edit it.
+- Jamie
 
-> J.,
-> 
-> Thanks for your suggestions.  While googling comp.unix.shell today, I found yet another method.  I was not aware that "*" when used by itself matches every filename in a directory.  Apparently, part of the problem I was having was a side effect of ls and find.  Here is the script that I used:
-> 
-> #!/usr/bin/bash
-> for file in *
-> do
-> 	newfile="`echo "$file" | tr '[:blank:]' '[_*]'`"
-> 	mv "$file" "$newfile"
-> done
-> 
-> I also learned something important about tr.  I was using [:space:], but that is not appropriate here.  [:space:] includes horizontal as well as vertical whitespace.  That means I was transforming linefeeds as well as spaces.  [:blank:] is exclusively horizontal whitespace, which is what I needed.
-> 
-> Thanks to all of you who contributed.  I appreciate your help.
-> 
-> Cheers,
-> Sean
 
-BTW,
-
-please remember that `blank' is a GNU extension, regarding portability
-issues.. etc..
-
-~$ man isblank
-
-J.
-
-p.s.
-Please use a more sane line-wrapping.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
