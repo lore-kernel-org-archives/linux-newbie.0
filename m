@@ -1,41 +1,49 @@
-From: Robert.Couture@p0.f2000.n229.z1.fidonet.org
-Subject: vsftpd
-Date: 20 May 2003 22:24:48 GMT
+From: ik5bcu@tin.it
+Subject: PPPD SETUID??
+Date: Wed, 21 May 2003 10:12:52 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <76c0f2.b4bb18@tcob1.net>
+Message-ID: <3EC19ADF0000C470@ims3c.cp.tin.it>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: sean@tcob1.net
+To: linux-newbie@vger.kernel.org
 
-The following message is a courtesy copy of an article
-that has been posted to linux.newbies as well.
+Hello all,
+I activated my Motorola T260 gprs mobile phone to work with my linux-box
+acting
+as the default Modem.
 
-Hello All!
+By the way I cannot use RH Dialer since (may be) something is different
+on the
+internal commands of the mobile telephone's modem,for this reason I realized
+a
+script that I can use *only* by setting /usr/sbin/pppd with the following
+permissions:
 
-I am having a problem setting up vsftpd with anonymous access.  I keep getting
-the following error:
+[root linux run]# ls -la /usr/sbin/pppd
+-rwsr-xr-x    1 root     root       213202 lug 22  2002 /usr/sbin/pppd
 
-500 OOPS: vsftpd: refusing to run with writable anonymous root
+permissions= 104755
 
-I am stumped as to what this means.  I have tried all sorts of games with
-setting permissions, but nothing seems to work.
+I now have two problems/questions:
 
-The man pages do not address this issue and searches on the internet do not
-reveal anything to resolve the problem.  As a newbie user, I sure could use a
-detailed cure for this.  :)
+1) Is there another way to activate /dev/ttyS0 with ppp without using SETUID
+?
 
-I am running RH 9.0 and the vsftpd root is the standard /var/ftp
+2) Whenever I activate the interface,which command should I run to shut-down
+it?
 
-Thanks in advance!
+Note that I WANT use this interface as user and not as ROOT!
 
-Regards,
-Robert
+Many Thanks,See U
 
---- Msged/UNX 6.1.2
- * Origin: RuneKeep: Linux Hub 2000 (1:229/2000)
+---
+http://www.qsl.net/ik5bcu
+Red Hat Linux release 7.3 (Valhalla) kernel 2.4.18-27.7.x
+This message was sent by XFMail
+
 
 
 
