@@ -1,40 +1,33 @@
-From: wa4chq@netscape.net (neil t)
-Subject: re: start error
-Date: Sun, 15 Sep 2002 08:07:30 -0400
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: how to assess occupied space
+Date: Sun, 15 Sep 2002 08:12:22 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5F6623DB.485F7029.0006BEFC@netscape.net>
-Content-Transfer-Encoding: 8bit
+Message-ID: <200209151212.g8FCCMF10511@hartford-hwp.com>
+References: <Pine.LNX.4.33.0209150039410.15231-100000@router.windsormachine.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <Pine.LNX.4.33.0209150039410.15231-100000@router.windsormachine.com>
+	(message from Mike Dresser on Sun, 15 Sep 2002 00:40:38 -0400 (EDT))
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: mdresser_l@windsormachine.com
+Cc: revobild@revobild.net, linux-newbie@vger.kernel.org
 
-hey bill
-I am not sure if this is any help, but when I tried installing
-a simple but effective linux called 'basiclinux', I had problems
-with startx too.  I found I was getting an error message like 
-yours.  (I don't remember it exactly, but it looked very close).
-My problem turned out to be how I set up the mouse configuration.
-I am still fairly new to linux too.  I have been using it for 
-about a year and a half now.  Maybe someone else on the list
-can add to this about the mouse.  When I edited the xf86config file
-and redid the mouse, all worked.  Could have just been luck!
-Anyway thought I would let you know I had the same problem and
-you will get the thing working for sure.
-cheers
-neil t.
+Mike,
 
--- 
-Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+While du will provide that, you might want to control its output. I
+put together a little command to pin down an enormous file, the name
+and location of which I did not know. I've not used it enough to know
+how reliable it is:
 
+du -a <path and target directory> | sort -nr | head
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
+This includes directories to help me locate the bloated file. The
+output is sorted by size in reverse order, and that output is limited
+to the ten biggest files. 
 
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
+Haines Brown  
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
