@@ -1,52 +1,44 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Keyboard Freeze
-Date: Fri, 7 Feb 2003 11:53:31 +0000
+From: Abhijit Vijay <abhijit_v@yahoo.com>
+Subject: Unencrypted data over network?
+Date: Fri, 7 Feb 2003 08:20:41 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03020711533101.22365@unix.pa3gcu>
-References: <03020616441800.22365@unix.pa3gcu> <200302060656.h166tqq05806@philonline.com> <200302070954.h179s8o08078@philonline.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030207162041.51458.qmail@web13401.mail.yahoo.com>
+References: <03020711533101.22365@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302070954.h179s8o08078@philonline.com>
+In-Reply-To: <03020711533101.22365@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, pa3gcu@zeelandnet.nl
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-On Friday 07 February 2003 09:54, Peter wrote:
-> The question still remains unsolved: why only in RH7.3 and not in RH7.2
+Hi Guys,
 
-Possably because widow managers are of difference, its not only Redhat but 
-other distro's as well.
-Obviously some peice of code changed and upsets X when dri is used.
-Its a thing i have personaly have never had an issue with.
-But then i dont use dri.
+I need to run graphics windows remotely from a linux
+machine on a windows machine. I have been using XWin32
+and "setenv DISPLAY ${REMOTEHOST}:0.0" in my login
+shell after logging in through Secure Shell. 
 
->
-> Peter said:
-> >> Several months ago when I changed from RH7.2 to RH7.3 the keyboard
-> >> would
-> >> freeze when trying to open certain games like tuxracer or invoking
-> >> some
-> >> screensavers or doing 'blank screen now' in screensaver window. >
-> >>
-> >> Now I read in Linux Gazette the suggestion to somebody with a similar
-> >> problem, no type of video cards mentioned, to disable the line Load
-> >> "dri" in XF86Config-4. I did it, changed back to SiS630 and it seems to
-> >> work. Tuxracer comes up nicely and I can't produce any keyboard freeze
-> >> with screensaver.
->
-> pa3gcu@zeelandnet.nl said:
-> > Yes, that is one of the biggest problems when using the drivers from
-> > nvidia  as well, i had a friend with the same problem as you had, he
-> > had the sis630  as well after disabling dri all was well.
+My question is this: I need to do remote processing of
+images (on the linux machine) and show them up on my
+windows machine. However, it takes several seconds to
+pull up an image through the windows machine while it
+takes almost neglible time to do the same on the linux
+machine direclty (which is on the same high speed
+network on a different floor as the windows machine)
+Is this because of the encryption done on the data as
+it is sent over the network? Is there a way to specify
+that the graphics data be sent unencrypted? 
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Appreciate all help!
 
+Regards,
+Abhijit.
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+http://mailplus.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
