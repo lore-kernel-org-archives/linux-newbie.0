@@ -1,12 +1,11 @@
 From: "Peter H." <heisspf@skyinet.net>
 Subject: Mail Filtering with Broadband
-Date: Wed, 02 Mar 2005 16:27:27 +0800
-Message-ID: <20050302082727.BAE3D20862@heisspf>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <12796.1109752047.1@skyinet.net>
+Date: Wed, 02 Mar 2005 16:27:33 +0800
+Message-ID: <20050302082733.3F01920862@heisspf>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux <linux-newbie@vger.kernel.org>
 
@@ -22,7 +21,7 @@ connection it seems to miss some of the entries in .procmailrc such as:
 :0 wc:${MAILDIR}/$LOCKEXT
 * ^From:
 * $^From:${GETTEXT}
-#| echo $FOO >> ~/Frommail
+##| echo $FOO >> ~/Frommail
 | echo "From: ${MATCH}" >> ~/Frommail 
 
 
@@ -39,7 +38,7 @@ LOCKEXT=.lock
  | (formail -x received: -x X-Envelope-From: -x Message-id: -x from: -x 
 sender:
 -x reply-to: -x  return-path:| fgrep --quiet --ignore-case --file=$BLACKLIST)
-#
+##
 :0 Wa 
 /dev/null
 
