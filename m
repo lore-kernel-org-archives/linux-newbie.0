@@ -1,102 +1,129 @@
-From: Kurt sys <kurt.sys@UGent.be>
-Subject: D-link DFE-530tx
-Date: Fri, 31 Oct 2003 17:09:46 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: D-link DFE-530tx
+Date: Fri, 31 Oct 2003 08:51:50 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA2894A.2030906@UGent.be>
-Reply-To: kurt.sys@UGent.be
+Message-ID: <5.1.0.14.1.20031031083826.01f28c10@celine>
+References: <3FA2894A.2030906@UGent.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3FA2894A.2030906@UGent.be>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
+I have several suggestions, Kurt, but nothing definitive to offer.
 
-I'm installing Debian Woody on a new computer. I did already installed 
-Woody before with no problem, but now, I have problems configuring the 
-network card ('till now, I had other network cards). As you could have 
-guessed, it's a D-link DFE-530tx card. It seems none of the 'drivers' 
-work for that card. I already checked the web, and it seems I should use 
-'VIA Rhine' chipsets. If I try this (or another possibility, I also 
-tried 'real-tek 8136' and 'tulip' and some others, but this one is the 
-one that I should use), I get a 'device or resource is busy'-message. 
-Anyone any idea what the possible cause can be or how I can check what's 
-wrong?
+1. Switch to an up-to-date kernel. 2.2.20 is an antique. Debian-Woody, 
+being very conservative, does still use it on install disks, but you should 
+replace it with the current kernel-image-2.4.whatever package Woody 
+provides (on Sid, it is 2.4.22) or with a locally-compiled 2.4.x kernel.
 
-tnx,
-Kurt
+2. Your setup as you report it is a bit unusual, in that the IDE controller 
+is on the same IRQ (10) as the D-Link NIC. Even though kernels are supposed 
+to support IRQ sharing, I occasionally run into problems with it, 
+especially when the devices sharing an IRQ are both high-activity devices. 
+So you might see if you can move one or the other of these devices to a 
+different IRQ.
 
------ modprobe via-rhine -----
-/lib/modules/2.2.20-idepci/net/via-rhine.o: init_module: Device or 
-resource busy
-/lib/modules/2.2.20-idepci/net/via-rhine.o: insmod 
-/lib/modules/2.2.20-idepci/net/via-rhine.o failed
-/lib/modules/2.2.20-idepci/net/via-rhine.o: Can't locate module 2
-Hint: insmod errors can be caused by incorrect module parameters, 
-including invalid IO or IRQ parameters
------
+3. Remember that lspci also has a -vv option that gives even more info than 
+v does. You might try it for clues.
 
+I looked quickly at the source (in 2.4.20) for via-rhine.c and nothing 
+jumped out at me. I don't have the corresponding source for 2.2.20 to 
+check, though.
 
------ lspci -v -----
-[... upper part cutted ...]
-00:1f.0 ISA bridge: Intel Corp.: Unknown device 24d0 (rev 02)
-        Flags: bus master, medium devsel, latency 0
+The "device or resourse busy" message is, in my experience, not verty 
+specific. It can mean the wrong driver, the wrond IRQ, or a physically 
+defective NIC (or, probably, other things I have not actually experienced).
 
-00:1f.1 IDE interface: Intel Corp.: Unknown device 24db (rev 02) 
-(prog-if 8a [Master SecP PriP])
-        Subsystem: Intel Corp.: Unknown device 524c
-        Flags: bus master, medium devsel, latency 0
-        I/O ports at <unassigned>
-        I/O ports at <unassigned>
-        I/O ports at <unassigned>
-        I/O ports at <unassigned>
-        I/O ports at ffa0
+Sorry I cannot offer more specific help. I hope some of this is of value. 
+Good luck.
 
-00:1f.2 IDE interface: Intel Corp.: Unknown device 24d1 (rev 02) 
-(prog-if 8f [Master SecP SecO PriP PriO])
-        Subsystem: Intel Corp.: Unknown device 524c
-        Flags: bus master, 66Mhz, medium devsel, latency 0, IRQ 10
-        I/O ports at ec00
-        I/O ports at e800
-        I/O ports at e400
-        I/O ports at e000
-        I/O ports at dc00
-
-00:1f.3 SMBus: Intel Corp.: Unknown device 24d3 (rev 02)
-        Subsystem: Intel Corp.: Unknown device 524c
-        Flags: medium devsel, IRQ 3
-        I/O ports at c800
-
-00:1f.5 Multimedia audio controller: Intel Corp.: Unknown device 24d5 
-(rev 02)
-        Subsystem: Intel Corp.: Unknown device e000
-        Flags: bus master, medium devsel, latency 0, IRQ 3
-        Memory at ffaff800 (32-bit, non-prefetchable)
-        Memory at ffaff400 (32-bit, non-prefetchable)
-        Capabilities: [50] Power Management version 2
-
-01:00.0 VGA compatible controller: ATI Technologies Inc Rage 128 Pro TF 
-(prog-if 00 [VGA])
-        Subsystem: Unknown device 1787:0100
-        Flags: bus master, stepping, 66Mhz, medium devsel, latency 32, 
-IRQ 11
-        Memory at f0000000 (32-bit, prefetchable)
-        I/O ports at a800
-        Memory at ff8fc000 (32-bit, non-prefetchable)
-        Expansion ROM at ff8c0000 [disabled]
-        Capabilities: [50] AGP version 2.0
-        Capabilities: [5c] Power Management version 2
-
-02:01.0 Ethernet controller: VIA Technologies, Inc.: Unknown device 3106 
-(rev 86)
-        Subsystem: D-Link System Inc: Unknown device 1403
-        Flags: bus master, medium devsel, latency 32, IRQ 10
-        I/O ports at b800
-        Memory at ff9ffc00 (32-bit, non-prefetchable)
-        Expansion ROM at ff9e0000 [disabled]
-        Capabilities: [40] Power Management version 2
------
+At 05:09 PM 10/31/2003 +0100, Kurt sys wrote:
+>Hi all,
+>
+>I'm installing Debian Woody on a new computer. I did already installed 
+>Woody before with no problem, but now, I have problems configuring the 
+>network card ('till now, I had other network cards). As you could have 
+>guessed, it's a D-link DFE-530tx card. It seems none of the 'drivers' work 
+>for that card. I already checked the web, and it seems I should use 'VIA 
+>Rhine' chipsets. If I try this (or another possibility, I also tried 
+>'real-tek 8136' and 'tulip' and some others, but this one is the one that 
+>I should use), I get a 'device or resource is busy'-message. Anyone any 
+>idea what the possible cause can be or how I can check what's wrong?
+>
+>tnx,
+>Kurt
+>
+>----- modprobe via-rhine -----
+>/lib/modules/2.2.20-idepci/net/via-rhine.o: init_module: Device or 
+>resource busy
+>/lib/modules/2.2.20-idepci/net/via-rhine.o: insmod 
+>/lib/modules/2.2.20-idepci/net/via-rhine.o failed
+>/lib/modules/2.2.20-idepci/net/via-rhine.o: Can't locate module 2
+>Hint: insmod errors can be caused by incorrect module parameters, 
+>including invalid IO or IRQ parameters
+>-----
+>
+>
+>----- lspci -v -----
+>[... upper part cutted ...]
+>00:1f.0 ISA bridge: Intel Corp.: Unknown device 24d0 (rev 02)
+>        Flags: bus master, medium devsel, latency 0
+>
+>00:1f.1 IDE interface: Intel Corp.: Unknown device 24db (rev 02) (prog-if 
+>8a [Master SecP PriP])
+>        Subsystem: Intel Corp.: Unknown device 524c
+>        Flags: bus master, medium devsel, latency 0
+>        I/O ports at <unassigned>
+>        I/O ports at <unassigned>
+>        I/O ports at <unassigned>
+>        I/O ports at <unassigned>
+>        I/O ports at ffa0
+>
+>00:1f.2 IDE interface: Intel Corp.: Unknown device 24d1 (rev 02) (prog-if 
+>8f [Master SecP SecO PriP PriO])
+>        Subsystem: Intel Corp.: Unknown device 524c
+>        Flags: bus master, 66Mhz, medium devsel, latency 0, IRQ 10
+>        I/O ports at ec00
+>        I/O ports at e800
+>        I/O ports at e400
+>        I/O ports at e000
+>        I/O ports at dc00
+>
+>00:1f.3 SMBus: Intel Corp.: Unknown device 24d3 (rev 02)
+>        Subsystem: Intel Corp.: Unknown device 524c
+>        Flags: medium devsel, IRQ 3
+>        I/O ports at c800
+>
+>00:1f.5 Multimedia audio controller: Intel Corp.: Unknown device 24d5 (rev 02)
+>        Subsystem: Intel Corp.: Unknown device e000
+>        Flags: bus master, medium devsel, latency 0, IRQ 3
+>        Memory at ffaff800 (32-bit, non-prefetchable)
+>        Memory at ffaff400 (32-bit, non-prefetchable)
+>        Capabilities: [50] Power Management version 2
+>
+>01:00.0 VGA compatible controller: ATI Technologies Inc Rage 128 Pro TF 
+>(prog-if 00 [VGA])
+>        Subsystem: Unknown device 1787:0100
+>        Flags: bus master, stepping, 66Mhz, medium devsel, latency 32, IRQ 11
+>        Memory at f0000000 (32-bit, prefetchable)
+>        I/O ports at a800
+>        Memory at ff8fc000 (32-bit, non-prefetchable)
+>        Expansion ROM at ff8c0000 [disabled]
+>        Capabilities: [50] AGP version 2.0
+>        Capabilities: [5c] Power Management version 2
+>
+>02:01.0 Ethernet controller: VIA Technologies, Inc.: Unknown device 3106 
+>(rev 86)
+>        Subsystem: D-Link System Inc: Unknown device 1403
+>        Flags: bus master, medium devsel, latency 32, IRQ 10
+>        I/O ports at b800
+>        Memory at ff9ffc00 (32-bit, non-prefetchable)
+>        Expansion ROM at ff9e0000 [disabled]
+>        Capabilities: [40] Power Management version 2
+>-
 
 
 -
