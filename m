@@ -1,54 +1,62 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Multi-kernel in grub
-Date: Tue, 22 Jul 2003 18:11:13 +0200
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: Re: /cdrom fails to unmount
+Date: Tue, 22 Jul 2003 12:28:25 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307221811.13462.pa3gcu@zeelandnet.nl>
-References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.43.0307221209260.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+References: <5.1.0.14.1.20030722084626.01eeb000@celine>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20030722084626.01eeb000@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: travis@wsor.net, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Tuesday 22 July 2003 17:15, Travis wrote:
+> Your fanciful responses from the computer are cute but, in practice,
+> distracting and even a bit confusing. In particular, when you report ...
 
-> My problem came at "Next, you have to copy the appropriate files so that
-> linux can boot from the new kernel."  I copied the vmlinuz image created
-> by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
-> file by copy-and-pasting my current RH boot section and simply changing
-> the label and pointing the vmlinuz-matrox as the kernel to load.
->
-> When booting I got an error very quickly.  I have been searching for a
-> grub multi-boot kernel tutorial and have read most of the applicable
-> grub user-guide, but to no avail.  If someone could point out a good
-> tutorial or give a few things to try, I would appreciate it.  Thanks in
-> advance.
+Well, at least they were cute...
 
-It would have been a "very" good idea to have mentioned the error you got or 
-are getting.
-The way you word things i get the impression the kernel starts to boot, that 
-means grub did its work and you forgot some or other important kernel compile 
-option, just what was the error message.???
-
-BTW; I'm no grub expert, once again i read it to be a kernel compile problem 
-and not a bootloader problem. I've been wrong before however with the error 
-we can go from there.
+> ... does the "Okay" stand in for the fact that mplayer *begins* playing the
+> file or *finishes* playing the file?
 
 
-> -- Travis
+First of all, thank you for your suggestions and help, everyone. I
+got it unmounted (fuser helped).
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Second, has anyone ever encountered the following:
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+ADSL service dies (connection reset).
+
+I proceed to do the following (cdrom is mounted, accord. to fuser no
+processes are using it)
+alpha:/cdrom# adsl-start
+. Connected!
+
+alpha:/cdrom#fuser /cdrom/
+/cdrom/:              2176c  2485c  2513c  2515c
+
+The processes are: (incidentally, this is all being done as root)
+
+root      2176  0.0  0.4  2308 1392 pts/2    S    10:42   0:00 bash
+root      2485  0.0  0.3  2080 1048 pts/2    S    12:18   0:00 /bin/sh
+/usr/sbin/adsl-connect
+root      2513  0.0  0.2  1936  912 ?        S    12:18   0:00
+/usr/sbin/pppd pty /usr/sbin/pppoe -p /var/run/pppoe.conf-adsl.pid.pppoe
+-I eth0 -T 80 -U  -m 1412    noi
+root      2515  0.0  0.1  1212  440 ?        S    12:18   0:00
+/usr/sbin/pppoe -p /var/run/pppoe.conf-adsl.pid.pppoe -I eth0 -T 80 -U -m
+1412
+
+For some obscure reason, my running adsl-start from /cdrom has mated the
+processes to the directory.
+
+Is that supposed to happen?
+
+Additional info: System is standalone, no NFS or other users present.
+
+Dan
 
 
 
