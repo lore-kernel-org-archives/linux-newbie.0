@@ -1,37 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: logging
-Date: Mon, 29 Dec 2003 18:44:46 -0800
+From: Jos Lemmerling <jos@lemmerling.nl>
+Subject: Re: setgid: Operation not permitted
+Date: Tue, 30 Dec 2003 19:26:36 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031229183911.01fecdf0@celine>
-References: <1072737808.10488.3.camel@darwin>
+Message-ID: <Pine.LNX.4.21.0312301922460.18267-100000@orthanc.lemmerling.net>
+References: <3FF07574.9077E589@gelm.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1072737808.10488.3.camel@darwin>
+In-Reply-To: <3FF07574.9077E589@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
+Cc: chuck gelm net <chuck@gelm.net>
 
-At 05:43 PM 12/29/2003 -0500, John T. Williams wrote:
->I was wondering if there is a good method for logging all attempts to
->connect to a port on my computer.  Basically, I was looking for
->something that logged the port and ip and the destination port of
->attempted connections.
->
->I'm running Mandrake 9.1
+On Mon, 29 Dec 2003, chuck gelm net wrote:
 
-Presumably a 2.4.x kernel then.
+> I am not familiar with 'su -'.  :-|
 
-iptables itself (the kernel's built-in firewalling) will do this; LOG is a 
-predefined target that does not terminate (in the way that ACCEPT, REJECT, 
-and DENY do) but does log each matching packet before passing it on to the 
-next rule in the chain.
+From the manpage of "su":
 
-The man page for iptables will at least get you started. If you need help 
-with specifics after reading it, don't hesitate to ask here.
+If the first argument to su is a dash (-), the environment will be 
+changed to what would be expected if the user actually logged in
+as the specified user. Otherwise, the environment is passed along,
+with the exception of $PATH, which  is controlled  by PATH and SUPATH in
+/etc/default/su. Additionally, the user's project ID is set if the dash
+argument is present. See settaskid(2).
 
 
+In most cases it's better to use the little dash... :)
 
+
+grtz
+
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
 
 
 -
