@@ -1,73 +1,53 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Firewall Configuration...
-Date: Mon, 09 Sep 2002 09:37:49 -0700
+From: John Amdor III <johnmxl@radiks.net>
+Subject: Re: Cable Modems??
+Date: Mon, 09 Sep 2002 14:49:54 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020909092541.022c9a40@celine>
-References: <3D7C2DE1.4040601@tataelxsi.co.in>
+Message-ID: <3D7CFB62.4070202@radiks.net>
+References: <20020908130053.A417@lnx2.w8mch.ampr.org> <002401c257d0$312fb760$1d1c4ed8@POOHBEAR2>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D7C2DE1.4040601@tataelxsi.co.in>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Sriram Narasimhan <nsri@tataelxsi.co.in>, linux-newbie@vger.kernel.org
+To: David Lane <jaypooh3@bellsouth.net>
+Cc: haltec@iceweb.net, linux-newbie@vger.kernel.org
 
-I'm only replying because I haven't seen any other replies, and the limited 
-advice I can offer may be bit bit better than nothing. I don't use Red Hat, 
-and so I do not know what "setup' program you are referring to.With that 
-disclaimer ...
+On the other hand, if he DOES have a non-private routable IP address, by 
+posting it to the list he will invite all manner of 'helpful' attempts 
+to crack his network.
 
-... to see what firewalling setup you currently have, you can list your 
-current ruleset with the command "ipchains -nvl". (Since you are running 
-2.4.x, RH might be using iptables rather than ipchains; in that case, you 
-want to use "iptables -nvL" or something close to that syntax.)
+The non-routeable addresses or private IP addresses  according to RFC 
+1918 fall in the ranges of:
 
-... your firewalling is probably set up by an init script, in whateve 
-directory RH uses for init scripts (perhaps /etc/init.d/). That script 
-probably calls a separate firewalling script, perhaps located in 
-/etc/network ... but you will have to look around for that.
+10.0.0.0 - 10.255.255.255
+172.16.0.0 - 172.31.255.255
+192.168.0.0 - 192.168.255.255
 
-... to set up a customized firewall, you'll want to disable whatever 
-automatic firewalling is installed, then create an init program that 
-executes the ipchains (and perhaps ipmasqadm, if you are doing any port 
-forwarding) -OR- iptables commands -- whichever RH is set up to use -- you 
-want to run. Or you can simply have your bespoke firewall script run after 
-the RH one, and let it start by clearing the chains/tables of the rules 
-that the RH script has installed.
+If the IP you are trying to ping is in one of these ranges, it shouldn't 
+be reachable across the Internet - at a minimum your ISP's routers are 
+programmed to ignore requests to route to these addresses.
 
-Without a greater understanding of what you want to do, the only other 
-thing I can suggest is that you read the appropriate HowTos (Firewalling; 
-Ipchains; I think there is a separate one for Ipmasqadm; by now there is 
-probably one for Iptables). Good luck.
+Just because this is a linux list doesn't mean the script kiddies 
+haven't figured out how to read these messages.
 
-At 10:43 AM 9/9/02 +0530, Sriram Narasimhan wrote:
->Hello,
->
->I am using Red Hat 7.2 running 2.4.7-10
->
->I seem to be having a problem changing the firewall configuration. When I 
->installed Red Hat I didn't bother to set the firewall and it defaulted to 
->the "High" Security level.
->
->I am trying to change this to a customized firewall configuration, by 
->running the 'setup' utility.
->
->But even after changing the configuration, there seems to be no effect of 
->the change. Every time I run 'setup' I keep seeing the setting at "High" 
->Security level.
->
->Am I doing something wrong, or should I do something else to change the 
->setting ?
->
->Many Thanks.
+John Amdor
 
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+David Lane wrote:
+> Ping is definitely NOT obsolete.Before I speculate too much you should post
+> the IP address you are trying to ping or telnet to.Most cable and DSL modems
+> contain their own IP's that are in the private range.If your trying to ping
+> or telnet to one of those you can give it up,the user can but you on the
+> outside can't.You can only ping or telnet to his public IP that he is
+> assigned when he connects.
+>     XP does have the capability to setup an incoming connection for VPN but
+> unless your son has a static IP(not likely these days)this will be more of a
+> hassle than it's worth as his IP  probably changes at least every three days
+> even if he is connected 24/7.Have your son run "ipconfig" in a DOS window
+> and that will/should give you his public IP.
+>    Send the IP you were trying to ping and I'll try to give you a better
+> answer.
+> 
+>                             David Lane
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
