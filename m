@@ -1,33 +1,41 @@
-From: sean@tcob1.net
-Subject: Re: How do I stop GUI from autoloading?
-Date: 11 May 2003 13:51:24 GMT
+From: Jesse Armand <matrix_rev2002@yahoo.com>
+Subject: Re: hiding my hostname (3)
+Date: Tue, 13 May 2003 00:58:00 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <n2m-g.06c0b2.ab766c@tcob1.net>
-References: <5.1.0.14.1.20030510082110.01eae2b0@celine> <20030510100903.GA1586@localhost.localdomain> <5.1.0.14.1.20030510082110.01eae2b0@celine> <5.1.0.14.1.20030510091650.01eae530@celine>
-Reply-To: sean@tcob1.net
+Message-ID: <20030513075800.66675.qmail@web10704.mail.yahoo.com>
+References: <n2m-g.46c0a3.a7a64e@tcob1.net>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <n2m-g.46c0a3.a7a64e@tcob1.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: sean@tcob1.net
+Cc: linux-newbie@vger.kernel.org
 
-> BTW, it is possible that the "hidden console" is on some other vt, not F1, so
-> this experiment should try at least all of F1-F6 before giving up. (I seem to
->recall that Slackware used to put it on F6, but I'm not sure, and it has been
-> long time since I switched away from Slackware).
+Let me tell u again..
+it's not connecting from local machine
 
-   Actually, it's not unusual to have six differnt console screens available;
-it depends on the settings in inittab, at least on the distros I'm currently
-familiar with...  (X Windows comes up on the next available screen...)
+but it's connecting from remote machine..
+i know that
 
+at first it's not empty, it shows 
+bs165.tpb.itb.ac.id
 
+after i 'w' again
 
-Jame
+the 'from' is empty, and i'm definitely sure, because
+i see the person connecting in remote machine.
+but...
+he don't know why that happen.. quite weird
+he said that it was set by his friend
 
+and anybody knows how to set it up ???
 
---- BBBS/LiI v4.01 Flag-4
- * Origin: http://bbs.rocasa.org (1:120/546)
+__________________________________
+Do you Yahoo!?
+The New Yahoo! Search - Faster. Easier. Bingo.
+http://search.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
