@@ -1,60 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Jos Lemmerling <jos@lemmerling.nl>
 Subject: Re: group
-Date: Fri, 26 Dec 2003 14:17:03 -0800
+Date: Sat, 27 Dec 2003 00:32:48 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031226135536.01f9f780@celine>
+Message-ID: <Pine.LNX.4.21.0312270019460.24014-100000@orthanc.lemmerling.net>
 References: <3FEC9C39.60007@dpomeroy.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <3FEC9C39.60007@dpomeroy.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: dave <dave@dpomeroy.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 12:38 PM 12/26/2003 -0800, dave wrote:
->I made a subdirectory called "everyone", "/home/everyone".  I want to use 
->this folder for sharing files from my windows clients as well as 
->myself.  I used chgrp to make the folders owner group everyone.  I added 
->the users to this group.  I changed the group permissions to rwx with 
->chmod.  When I reboot, the subdirectory reverts back to r-x.  My group 
->members cannot write to the directory.  I'm running Mandrake 9.2.
+On Fri, 26 Dec 2003, dave wrote:
 
-I don't *quite* understand what you are describing. Is it only after the 
-reboot that users are unable to write to the directory? Or are they always 
-unable to write to it?
+> I made a subdirectory called "everyone", "/home/everyone".  I want to 
+> use this folder for sharing files from my windows clients as well as 
+> myself.  I used chgrp to make the folders owner group everyone.  I added 
+> the users to this group.  I changed the group permissions to rwx with 
+> chmod.  When I reboot, the subdirectory reverts back to r-x.  My group 
 
-Just to be sure we are all talking about the same thing, please send us the 
-output of this sequence of commands (run as root):
+This is probarly a mandrake-thingy.. Some googling tells me something
+about the "mandrake security level" aka "msec level". 
 
-         ls -l /home/everyone
-         chmod 775 /home/everyone
-         chgrp everyone /home/everyone
-         ls -l /home/everyone
-         grep everyone /etc/group
+You'll have to do some more digging on your mandrake-box yourself I
+guess... ;)
 
-What test are you using for "cannot write" and what is an example of the 
-actual failure? Are we talking about users unable to save to the directory 
-from login shells? Or Samba failures? Or what? Can root save to the 
-directory (just trying to eliminate here the possibility of a RO filesystem)?
-
-There is probably some error of detail in your procedure. With the above 
-output, I (or someone else here, perhaps even you yourself) may be able to 
-spot it. (For example,. you write: "I used chgrp to make the folders owner 
-group everyone". The term *owner* applies to a userid, not a groupid. This 
-may just be a terminology imprecision, or it may reflect an error in what 
-you are actually doing.)
-
-I don't use Konquerer so cannot help with your second problem.
-
->Another problem is when I start Konquerer as a file manager.  I enter the 
->root password and tell it to save the password.  the next time I start 
->Konquerer I have to enter the root password again.  I'm confused, Does 
->anyone have some light to shed on these issues?  Thanks in advance.
->Dave
+Maybe as a "quick and dirty-fix", you could try to move the directory to
+another place like for instance /  (/everyone).
 
 
+> members cannot write to the directory.  I'm running Mandrake 9.2.  
+> Another problem is when I start Konquerer as a file manager.  I enter 
+> the root password and tell it to save the password.  the next time I 
+> start Konquerer I have to enter the root password again.  I'm confused, 
+> Does anyone have some light to shed on these issues?  Thanks in advance.
 
+This also *could* have to do with the above; it's very easy to make a
+mistake with an accidental "mouse-move". These kind of mistakes *as root*
+aren't very funny... :(
+
+Maybe it's just a way of letting you know/confirm you're running konquerer
+as root.
+
+But I don't use Konquerer either...
+
+
+HTH
+
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
