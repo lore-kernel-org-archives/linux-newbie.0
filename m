@@ -1,36 +1,28 @@
 From: Hal MacArgle <haltec@iceweb.net>
-Subject: Sending a FAX simply??
-Date: Sun, 28 Apr 2002 14:01:03 -0400
+Subject: Re: Undelete for linux
+Date: Sun, 28 Apr 2002 07:59:20 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020428140103.A471@lnx2.w8mch.ampr.org>
+Message-ID: <20020428075920.A210@lnx2.w8mch.ampr.org>
+References: <013501c1ed12$3197a2e0$0101a8c0@barneond> <m3k7qthalx.fsf@wobble.eth.net> <000901c1ee3b$ca347080$0101a8c0@barneond> <20020428085534.GA361@cam.ac.uk>
 Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20020428085534.GA361@cam.ac.uk>; from sos22@cam.ac.uk on Sun, Apr 28, 2002 at 09:55:34AM +0100
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: Does a simple fax program or script exist for sending
-short, simple, text only faxes to one recipient with no cover pages,
-etc and so forth?? Possibly there is a book/manual that will let me
-learn more about Faxing.. The modem manuals barely cover much of
-anything. :^(...
+> > > > Hi, I need to know howto make a undelete for linux, I need to use
 
-Been using efax for years with almost perfect success until I
-installed kernel 2.4.* on a machine with a USR Courier V-Everything
-FaxModem.
+Greetings: There used to be a program called 'saferm' or 'rmsafe' or
+something like that, if invoked, moved the file to a temporary buffer
+that could be finally deleted later..
 
-I looked at mgetty+sendfax and HylaFax - both super programs but way
-too complicated for my use.. Using dosemu with simple Dos Fax
-programs also ran into a snag.. BTW an external Zoom modem works fine
-and the Courier works fine with the 2.2.x kernel.. Subscribed to the
-efax list server but no response..
+Sorry I have no other information about it.
 
-Any suggestions? TIA.
-
-Cheers,
+HTH
 
     Hal - in Terra Alta, WV,  -  Slackware Linux 8.0   (2.4.13)
     haltec@iceweb.net | w8mch@iceweb.net..A M$ free environment     
