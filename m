@@ -1,18 +1,45 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: maximum number of Unix98 pty's
-Date: 16 May 2003
+From: Peter <pfheiss@philonline.com>
+Subject: Text Reformatting
+Date: Sun, 18 May 2003 12:11:19 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305161629.h4GGTIPs017487@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20030518041124.07222103AE@pfheiss>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-what ist "PTY" ?
+Hi,
 
--hc
+Some text I download for printing are formatted like:
+
+      Because of the publicity the Iraqi government has given to the
+                      issue, Iraqis worry about DU.
+
+which adds more pages for printing.
+
+How can I with some command, left align the text to read
+
+Because of the publicity the Iraqi government has given to the
+issue, Iraqis worry about DU.
+
+yet maintaining the paragraphs.
+
+When looking at the text with a word processor they are all left aligned and 
+can only be changed manually line by line.
+
+I came up with the sausage
+
+cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w 105 file1.txt > 
+file2.txt
+
+This does not maintain the paragraphs, however. Can sed do it and how?
+
+Thanks & regards
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
