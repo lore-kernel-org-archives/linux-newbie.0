@@ -1,9 +1,10 @@
-From: Jim Nelson <james4765@verizon.net>
+From: chuck gelm <chuck@gelm.net>
 Subject: Re: No init found
-Date: Fri, 29 Oct 2004 05:30:14 -0400
+Date: Fri, 29 Oct 2004 07:39:49 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <41820DA6.3050708@verizon.net>
+Message-ID: <41822C05.6090703@gelm.net>
 References: <20041029065819.2178A44BBB@heisspf>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -14,46 +15,62 @@ To: "Peter H." <heisspf@skyinet.net>
 Cc: linux <linux-newbie@vger.kernel.org>
 
 Peter H. wrote:
-> Hi,
-> 
-> Slackware 10.
-> 
-> I am trying to change my hard drive. I duly copied all partitions and 
-> files to the new drive with 'tar -C "$1" -cOl . | tar -C "$2" -xpf - '. Now 
-> when I boot I get:
-> 
-> ....
-> Freeing unused kernel memory: 120 K freed.
-> Warning unable to open an initial console.
-> Kernel panic: no init found. Try passing init= option to kernel.
-> 
-> When I boot using the rescue disk after
-> 
-> ....
-> Freeing unused kernel memory: 120 K freed.
-> 
-> it continues with
-> INIT: version 2.84 booting ...
-> 
-> to fully boot and I can use the installation flawlessly.
-> 
-> init is at /sbin/init.
-> 
-> Where is the hang-up ?
-> 
-> Thanks & regards 
-> 
 
-Is the new hard drive in the same location as the old one?  i.e. on IDE drives, 
-both the old and new hard drives were master drives on the primary interface, and 
-for SCSI drives, does the new hard drive have the same SCSI ID on the same adapter 
-card in the same PCI slot as the old one?
+>Hi,
+>
+>Slackware 10.
+>
+>I am trying to change my hard drive. I duly copied all partitions and 
+>files to the new drive with 'tar -C "$1" -cOl . | tar -C "$2" -xpf - '. Now 
+>when I boot I get:
+>
+>....
+>Freeing unused kernel memory: 120 K freed.
+>Warning unable to open an initial console.
+>Kernel panic: no init found. Try passing init= option to kernel.
+>
+>When I boot using the rescue disk after
+>
+>....
+>Freeing unused kernel memory: 120 K freed.
+>
+>it continues with
+>INIT: version 2.84 booting ...
+>
+>to fully boot and I can use the installation flawlessly.
+>
+>init is at /sbin/init.
+>
+>Where is the hang-up ?
+>
+>Thanks & regards 
+>
+Looks like Jim is on the correct item; lilo.conf.
 
-If not, you will have to modify lilo.conf to reflect the location of the new hard 
-drive. "man lilo.conf" and "info lilo.conf" have a great deal of information about 
-how to set the root partition configuration in lilo.  Make sure you run the "lilo" 
-command as root before rebooting, since just modifying lilo.conf will not change 
-the configuration in the boot sector.
+Here is an except from a web page containing a hint at your error message:
+from: http://linux.omnipotent.net/article.php?article_id=12464
+<snip>
+
+
+    Kernel will not Boot
+
+You have created a new Custom Linux Kernel, made an entry in 
+/etc/lilo.conf and then rebooted the computer system. But, your new 
+Kernel won't boot, and instead you get:
+
+|Warning: unable to open an initial console Kernel panic: no init found. 
+Try passing init= option to kernel |
+
+The most likely problem is that you didn't set the "root=" parameter in 
+/etc/lilo.conf properly. For example, on my system, I have 
+root=/dev/hdc5, which is sets the root partition: "/". The Kernel looks 
+for the init command is located in /sbin/init and the /sbin directory 
+resides on /. Thus, when the / is not set correctly, the Kernel cannot 
+initiate the init process, and as a result we get a "Kernel panic".
+<end snip>
+
+HTH, Chuck
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
