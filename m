@@ -1,44 +1,51 @@
-From: Joseph Jackson <skoidat@lvcm.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: local networking hostname
-Date: Mon, 22 Jul 2002 08:16:37 -0700
+Date: Mon, 22 Jul 2002 08:19:00 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D3C21D5.5080605@lvcm.com>
+Message-ID: <5.1.0.14.1.20020722081403.02197720@celine>
 References: <B9617ACB.1E8C%jimurl@montanaice.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <B9617ACB.1E8C%jimurl@montanaice.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Jim Earl <jimurl@montanaice.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Jim Earl <jimurl@montanaice.com>, linux-newbie@vger.kernel.org
 
-Jim Earl wrote:
+At 09:03 AM 7/22/02 -0600, Jim Earl wrote:
+>Hello!
+>
+>I am setting up a small network of one Linux and one non-Linux box.  The
+>network is established via Ethernet; ifconfig and route report verify this.
+>I am able to telnet from the non-linux to the Linux box but only using the
+>IP address - NOT using the hostname.  However, when I try to telnet from the
+>Linux box to itself ( using the loopback interface ), it works fine.  My
+>/etc/hosts , /etc/resolv.conf and /etc/networks seem to be ok.
+>
+>I don't have 'named' running, but it looks like I might need to ( though I
+>had wanted to avoid it ).
+>
+>Any ideas are appreciated.
 
-> Hello!
-> 
-> I am setting up a small network of one Linux and one non-Linux box.  The
-> network is established via Ethernet; ifconfig and route report verify this.
-> I am able to telnet from the non-linux to the Linux box but only using the
-> IP address - NOT using the hostname.  However, when I try to telnet from the
-> Linux box to itself ( using the loopback interface ), it works fine.  My
-> /etc/hosts , /etc/resolv.conf and /etc/networks seem to be ok.
-> 
-> I don't have 'named' running, but it looks like I might need to ( though I
-> had wanted to avoid it ).
-> 
-> Any ideas are appreciated.
-> 
+The files that you say "seem to be ok" affect the ability of the Linux host 
+itself to resolve names, but they have nothing to do with the ability of 
+the "non-linux" host to resolve names. Your options are:
 
-What os is the other machine? that would help to know.  if it is a windows 
-machine you will need to edit the file lmhosts in the folder c:\windows just 
-open that file in note pad and enter in the info (it is alot like /etc/hosts 
-file on linux) that will let you use the machines name instead of the ip address 
-to connect to it.  unless you want to use a dns server on your network and since 
-its only 2 machines I see no need to.  Just edit the lmhosts file.
+1. Run an on-LAN nameserver and tell the non-Linux host to use it to 
+resolve names. Running BIND (named) on the Linux host is one way to do this.
+
+2. Set up the non-Linux host to do local name resolution using its 
+equivalent of /etc/hosts . Knowing nothing about this host, execpt that it 
+is a computer and it does not run Linux, I can't tell you how to do this.
 
 
-Joseph Jackson
 
+--
+-----------------------------------------------"Never tell me the 
+odds!"--------------
+Ray Olszewski					     -- Han Solo
+Palo Alto, California, USA				ray@comarre.com
+-------------------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
