@@ -1,36 +1,72 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: New article on tape drives....
-Date: Thu, 19 Sep 2002 22:31:23 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: checkinstall.
+Date: Thu, 19 Sep 2002 19:29:43 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209192231.23665.James.Hatridge@epost.de>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <02091919294303.18645@unix.pa3gcu>
+References: <20020919165651.4703598f.erik@urbakken.dk>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020919165651.4703598f.erik@urbakken.dk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbies <linux-newbie@vger.kernel.org>
+To: Erik Jakobsen <erik@urbakken.dk>, linux-newbie@vger.kernel.org
 
-Hi all..
+On Thursday 19 September 2002 14:56, Erik Jakobsen wrote:
+> Hi.
+>
+> I saw the nice software checkinstall, and would having it installed.
+>
+> Here is the first results.
+>
+> eurit:/home/erik/check/usr/local/sbin # ./checkinstall
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-I've got a new article just up today. The address is:
+Thats your problem, run ./checkinstall in its source directory.
 
-http://www.linuxjournal.com/article.php?sid=6270
+As far as i am concerned i will stick to what i wrote yesterday about using 
+/usr/local/* for software that i install, i know then where to look.
 
-Let me know what you think!
+I find it misleading when one issues a normal nix command and gets confronted 
+with what Erik got, BUT we all know what the old saying is dont we, "RTFM" 
+even if the README is 21740 bytes long.
 
-JIM
+Other than that it seems a handy program for those who want something to do 
+for them that they can really do themselfs.
 
+>
+> checkinstall 1.5.3, Copyright 2001 Felipe Eduardo Sanchez Diaz Duran
+>            This software is released under the GNU GPL.
+>
+>
+> The package documentation directory ./doc-pak does not exist.
+> Should I create a default set of package docs?  [y]: y
+>
+> Preparing package documentation...OK
+>
+> *** No known documentation files were found. The new package
+> *** won't include a documentation directory.
+>
+> Installing with "make install"...
+>
+> ========================= Installation results ===========================
+> make: *** No rule to make target `install'.  Stop.
+>
+> ****  Installation failed. Aborting package creation.
+>
+> Cleaning up...OK
+>
+> Bye.
+>
+> What is to be done now ?.
+
+Read the manual ?.
 
 -- 
-Jim Hatridge
-Linux User #88484
-------------------------------------------------------
-                 BayerWulf
-	   Linux System # 129656
-         The Recycled Beowulf Project
-  Looking for throw-away or obsolete computers and parts
-   to recycle into a Linux super computer
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
