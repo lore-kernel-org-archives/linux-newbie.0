@@ -1,60 +1,43 @@
-From: chuck <chuck@gelm.net>
-Subject: Re: partitioning
-Date: Sun, 25 Jan 2004 11:08:47 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: howto configuring kernel and modules.conf for automatic
+  loading of ide-scsi
+Date: Sun, 25 Jan 2004 08:28:31 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4013EA0F.F19D521D@gelm.net>
-References: <200401252137.39975.wheds8@ms66.hinet.net>
+Message-ID: <5.1.0.14.1.20040125082404.01f99be0@celine>
+References: <5.1.0.14.1.20040124202304.01f31308@celine>
+ <20040125041110.22704715.agri@desnol.ru>
+ <5.1.0.14.1.20040124202304.01f31308@celine> <20040125140656.023f0ced.agri@desnol.ru>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040125140656.023f0ced.agri@desnol.ru>
+References: <5.1.0.14.1.20040124202304.01f31308@celine>
+ <20040125041110.22704715.agri@desnol.ru>
+ <5.1.0.14.1.20040124202304.01f31308@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi, S.:
+At 02:06 PM 1/25/2004 +0300, Agri wrote:
+>thanks for answers, but....
+>the only thing i get: there is no way to configure loading of ide-scsi "ON 
+>DEMAND".
+>Am i right?
+[old stuff deleted]
 
- The output of 'df' might be more meaningful.
+I alswys hate to say that a statement like yours is correct ... there are 
+so many different ways of doing things on Linux/Unix systems, it may be 
+merely that I do not know the one that will solve your problem ... but I do 
+believe that there is no way to use "on demand" loading in this case ... 
+or, in fact, any case that involves access to filesystems. The only way for 
+you to be certain of that, though, it to wait and see whether someone else, 
+someone who knows a different bag of tricks from mine, suggests a method 
+that works for you.
 
-If you mounted sda7 as /
- and mounted sda1 as /boot
- Would it satisfy all your free space concerns?
-:-|
-HTH, Chuck
+I am also sorry if my prior response was so poorly phrased that that is the 
+"only thing [you] get" from it. I was attempting to be more helpful than that.
 
-"S. Barret Dolph" wrote:
-> 
-> I am probably getting too picky about repartitioning my drive but I want it to
-> be set up for a long time. I never use all the space in my harddrive even
-> though it is relatively small. (I only use it for work and don't play any
-> games.)
-> 
-> Questions......
-> 
-> My old setup
-> 
-> sda1    /               1g
-> sda5            /swap   1024k  (512ram)
-> sda6            /usr            6g
-> sda7            /home   10g
-> 
-> I will be using Sourcemage which puts sources in /var so I have been thinking
-> about taking 3g out of home and making a /var of 3g.
-> 
->  I will probably take another 3 out of home and add it to usr/ but that is
-> probably overkill. Neither use too much.
-> 
-> I am confused about where /swap should go. I have a SCSI drive and from what I
-> read that should be on the outside. So should I put /swap at sda8? (Given
-> that I have added /var.)
-> 
-> I had a /home because it was convenient to upgrade with CD's when I only had a
-> 56 modem. Now that I am using a source based installation is the /home
-> unnecessary as I am the only user.
-> 
-> Is having a /tmp partition necessary?
 
-probably
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
