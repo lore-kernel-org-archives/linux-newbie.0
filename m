@@ -1,45 +1,65 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: NIC cards
-Date: Mon, 12 Aug 2002 14:55:25 +0000
+Date: Mon, 12 Aug 2002 07:54:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02081214552501.00319@unix.pa3gcu>
+Message-ID: <5.1.0.14.1.20020812074517.0216c100@celine>
 References: <20020812131245.GA18564@enoor.com>
-Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20020812131245.GA18564@enoor.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: Majid Tahir <majid@enoor.com>, linux-newbie@vger.kernel.org
 
-On Monday 12 August 2002 13:12, Majid Tahir wrote:
-> hello all
-> i have just installed redhat 7.2 on a machine that needs to have 2 nic
-> cards...however neither of the two nic cards have been "found".  How would
-> i configure it so that the two cards are properly installed..also one other
-> problem is that i dont know the name of one of the nic cards, therefore it
-> is difficult to find the proper drivers
+At 08:12 AM 8/12/02 -0500, Majid Tahir wrote:
+>hello all
+>i have just installed redhat 7.2 on a machine that needs to have 2 nic 
+>cards...however neither of the two nic cards have been "found".  How would 
+>i configure it so that the two cards are properly installed..also one 
+>other problem is that i dont know the name of one of the nic cards, 
+>therefore it is difficult to find the proper drivers
 
-Are they PCI or ISA cards.???
 
-If they are PCI then the command 'lspci' or cat /proc/pci will show there 
-make and type.
-(I cant imagen them being PCI cards if the install did not find them).
+Without knowing what the NICs are, it is difficult to give you a good answer.
 
-If they are ISA cards and you have a windows machine handy then you may be 
-able to gain information on thier type/make via windows.
+If you really cannot determine the make and model, your only hope is brute 
+force -- try modprobe'ing the various NIC modules one by one, until you get 
+a hit. (I've actually had to do his once or twice myself, and it isn't as 
+bad as it sounds, at least with pci-based NICs, since most of them seem to 
+use tulip, rtl8139, or eepro100.)
 
-When you can tell us what the cards are, there make and type then we can help 
-you more.
+It is possible that RH 7.2 uses a kernel with modules too old for some 
+NICs. I've seen this sort of mismatch come and go with the tulip driver and 
+Linksys NICs, for example.
 
->
-> thanks for the help
+Finally, are you sure that the NICs are good? Are they detected by the BIOS 
+prior to Linux boot/init? Do they show up in /proc/interrupts? In the 
+"lspci" listing?
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+If the NICs use isa slots ... did you configure them to use different IRQs 
+and IObase values? (If you put only one in the system, is it detected and 
+initialized properly?)
+
+If none of this helps, please post again with the following additional info:
+
+1. Are the cards isa or pci?
+
+2. What is the make and model of the one NIC you *do* know?
+
+3. What can you figure out about the other one?
+
+4. What kernel version are you using?
+
+And answer for us the various questions I suggested you try to answer for 
+yourself.
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
