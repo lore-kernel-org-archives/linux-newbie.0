@@ -1,16 +1,31 @@
-From: Bryan Whitehead <driver@jpl.nasa.gov>
-Subject: Re: devfs + PCI serial card = no extra serial ports
-Date: Fri, 07 Mar 2003 14:55:18 -0800
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E692356.2070705@jpl.nasa.gov>
-References: <3E692281.10906@jpl.nasa.gov>
+From: Ed Vance <EdV@macrolink.com>
+Subject: RE: devfs + PCI serial card = no extra serial ports
+Date: Fri, 7 Mar 2003 15:04:33 -0800
+Sender: linux-kernel-owner@vger.kernel.org
+Message-ID: <11E89240C407D311958800A0C9ACF7D1A33DD3@EXCHANGE>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: 'Bryan Whitehead' <driver@jpl.nasa.gov>
+Cc: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+
+Hi Bryan,
+
+What serial driver initialization messages do you get from dmesg?
+Is the "MANY_PORTS" flag present in the list of enabled options?
+Which distribution and rev level are you using?
+
+Ed
+
+-----Original Message-----
+From: Bryan Whitehead [mailto:driver@jpl.nasa.gov]
+Sent: Friday, March 07, 2003 2:55 PM
 To: linux-kernel@vger.kernel.org
 Cc: linux-newbie@vger.kernel.org
+Subject: Re: devfs + PCI serial card = no extra serial ports
+
 
 
 BTW, this is with 2.4.19 (kernel shipped with distro).... I'm willing to 
@@ -63,8 +78,3 @@ SysAdmin - JPL - Interferometry Systems and Technology
 Phone: 818 354 2903
 driver@jpl.nasa.gov
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
