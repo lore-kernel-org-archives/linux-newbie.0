@@ -1,54 +1,41 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Big dummy lost SU password...
-Date: Fri, 11 Jul 2003 08:52:13 -0700
+From: James Miller <jamtat@mailsnare.net>
+Subject: tune2fs configuration
+Date: Fri, 11 Jul 2003 14:59:40 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030711084149.02076e78@celine>
-References: <bemkju$ou$1@main.gmane.org>
+Message-ID: <Pine.LNX.4.56.0307111445050.1107@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <bemkju$ou$1@main.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jamie Risk <risk@advancedbioelectric.com>, linux-newbie@vger.kernel.org
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-At 11:28 AM 7/11/2003 -0400, Jamie Risk wrote:
->Due in parts to brain fog and the remarkable stability of Linux, I've not
->had to adminster my Linux box for over 8 months.  Because of Windows Admin
->tinkering, my samba server has stopped working and I need to modify it's
->configuration.
->
->Is there a way I can mount mylinux box (say from a bootable ISO image I'd
->make) to reset the root user password and not goof up the other accounts
->that I've been so happily been using?
->
->I'm hoping that combinations of commands like chroot and such will allow me
->to avoid rebuilding my system.
->
->- Jamie (if I rember correctly)
+Well, I have another not-too-profound Linux inquiry - this time about
+configuring tune2fs (yes, this is for an older ext2 filesystem).  I have a
+hard drive that's acting a bit punchy, and I'd like for the filesystem
+integrity to be checked quite a bit more frequently than usual: say, every
+5 boots or so.  It was indicated to me that tune2fs is the utility to use
+for this.  Looking over the man page has not exactly been helpful though.
+From it, I've understood that the option "-c" is the one I'm probably
+after.  I think there should probably be some numerical value following
+"-c" (with an intervening space).  But my attempt to get it working seems
+to be unsuccessful: nothing gives me any indication that the setting I'm
+trying to get tune2fs to use is taking.  To the contrary, when I type what
+seems to me the correct command sequence (tune2fs -c 5), I get a sort of
+mini-help menu.  In other cases using Linux, this has been the
+machine's/coder's indication that something was not done right, and the
+way they want to let you know is by providing some help, apparently under
+the assumption that the mini help menu is going to address your confusion.
+It hasn't addressed mine so far: I may be denser than the average lot,
+though.  In any case, the manpage, unlike other, more thoughtful manpages,
+doesn't give any examples.  For these reasons, I'm sort of at a loss.  Can
+someone chip in with some helpful suggestions?  E.g., how can I know that
+tune2fs has "taken" the settings I'm trying to enter?  If it's not, how
+can I determine what I'm doing wrong?  Are there other applications or
+utilities besides tune2fs that can do what I want, and if so, what are
+they?
 
-I hope I am not misunderstanding your question.
-
-The easiest way to fix this problem, with a machine you have physical 
-access to and can reboot, is to reboot it (itself a bit of a problem if you 
-do not know the root password, but possibly the CTRL-ALT-DEL method will 
-work ... this depends *entirely* on specifics of your install, though) and 
-use any suitable rescue disk (tomsrtbt, your distro's rescue floppy, most 
-any bootable iso image) that you find convenient. (What is "suitable" 
-depends on details you haven't told us, like whether the hard disk with the 
-root (/) partition is IDE or SCSI and whether the system even has a floppy 
-drive.)
-
-Then mount the "real" root (/) partition at some handy location (like /mnt) 
-on the "rescue"  root partition and use vi (or any suitable text editor) to 
-edit /mnt/etc/passwd and/or /mnt/etc/shadow to remove the old root password.
-
-Then reboot the "real" version of Linux (ideally without network access, 
-since it is momentarily VERY insecure), become root (no password required, 
-if you did the prior part right), and set a new root password the usual way.
-
-
-
+Thanks, the befuddled James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
