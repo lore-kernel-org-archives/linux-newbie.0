@@ -1,54 +1,31 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Sound Lost
-Date: Mon, 09 Jun 2003 17:15:37 +0800
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Slackware 8.1.01 Install????
+Date: Mon, 09 Jun 2003 05:59:05 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030609091542.9BD0D1041E@pfheiss>
-References: <3EDA09CA.3090901@bcgreen.com>
+Message-ID: <3EE45A69.9E6662C5@gelm.net>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306052108.36121.pa3gcu@zeelandnet.nl> <20030607104727.A355@lnx2.w8mch.ampr.org> <200306081036.08989.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 01 Jun 2003 07:12:26 MST." 
- <3EDA09CA.3090901@bcgreen.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Since I did not hear any further on subject I reinstalled old Kernel and sound 
-is back w/o further ado.
+Hal:
 
-samuel@bcgreen.com said:
-> Have you tried running sndconfig again? Have you rebooted since you
-> updated? (I presume so, but I have to ask) -- 
+ I've created slackware-8.1-iso & slackware-9.0-iso CDROMs.
+I have exhausted attempts to use them as install media
+while booting from a single floppy.
 
-Yes I have run sndconfig, hear nothing from the test and get the message:
+ There ought to be a way to copy files from the CDROM to
+an existing hard drive partition (root file system). Then
+using a single boot floppy (selecting one that matches
+your scsi devices) to start an install.  However, it is
+beyond my knowledge.
 
-"AC97 codec does not have proper volume support".
+I am baffled.
 
-I have rebooted a few time since, as I was trying to fix the problem before 
-going to the list.
-
-Peter said:
-> I upgraded RH7.3 and the sound is gone.
-> Old kernel-2.4.18-24.7.x.i686; new kernel-2.4.20-13.7.i686
-> dmesg:
-> Trident 4DWave/SiS 7018/ALi 5451,Tvia CyberPro 5050 PCI Audio, version
->  0.14.10h, 13:32:09 May 12 2003 PCI: Found IRQ 11 for device 00:01.4
-> PCI: Sharing IRQ 11 with 00:09.0 trident: SiS 7018 PCI Audio found at
-> IO 0xe000, IRQ 11 ac97_codec:
-> AC97  codec, id: CMI65 (CMedia)
-> AC97 codec does not have proper volume support.
-
-> The last line of the message appears on the console every now and
-> then when time should be announced.
-
-
--- 
-Peter
-
-
-
-
-
+Regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
