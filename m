@@ -1,67 +1,66 @@
-From: Simon Valiquette <v.simon@ieee.org>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: lilo boot problems with SATA and mandrake 10.1
-Date: Thu, 16 Dec 2004 17:08:08 -0500
-Message-ID: <41C20748.9080605@ieee.org>
+Date: Fri, 17 Dec 2004 07:35:53 +0100
+Message-ID: <200412170735.53419.pa3gcu@zeelandnet.nl>
 References: <1103190044.7183.12.camel@itanium>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <1103190044.7183.12.camel@itanium>
+In-Reply-To: <1103190044.7183.12.camel@itanium>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: vrodriguez@municipiodeloja.gov.ec
 Cc: linux-newbie@vger.kernel.org
 
-Vladimir E. Rodriguez a =E9crit :
+On Thursday 16 December 2004 10:40, Vladimir E. Rodriguez wrote:
 > Hello!
->=20
+>
 > Please, someone could help me with the following problem:
->=20
+>
 > I have  a system with the following specifications:
 >     Intel 865G Chipset
 >     SATA Maxtor 120GB
 >     P4 2.8 Ghz
->=20
+>
 > When I trying to install Mandrake 10.1 on it, it intalls it normally,
-> but when I boot I have only "L" letter instead Lilo Boot Menu, I trie=
-d
+> but when I boot I have only "L" letter instead Lilo Boot Menu, I tried
 > GRUB Bootloader, and get "G" letter instead GRUB Boot Menu
->=20
 
-   I would have expected to see a number just after the "L", likes L 01=
-=20
-01 01 01 01
+Normally when only an "L" is shown at boot time you would also get some error 
+codes, The lilo README normally found in /usr/share/lilo-xx-xx/ directory 
+explanes what the error codes mean.
 
-   Maybe lilo installed itself at the starting of the partition instead=
-=20
-of at the starting of the disk, and you see the Lilo from the old Redha=
-t=20
-installation, or something related.  In such case you have to ajust the=
-=20
-lilo file (/etc/lilo.conf) to be sure it install itself directly in the=
-=20
-boot sector and check the files at the good place, and then type=20
-/usr/sbin/lilo -v
+I found one answer to a simalar problem via www.google.com/linux
+http://lists.ssc.com/pipermail/linux-list/2001-March/008203.html
 
-   Without seeing your lilo file, it is difficult to help more.  Perhap=
-s=20
-you can find your problem by reading this document:
+Its an old mail but i think well worth a try.
 
-http://user.fundy.net/cyclist/linux/troubleshoot-LILO.html
-
-Simon Valiquette
-http://www.gulus.org
+Use your install medium to boot and mount the disk partition manually, 
 
 > Also I have windows XP on this system to dual boot.
 > After I have installed Fedora Core 3, It works normally, but with
 > mandrake 10.1 official I have problems to boot.
->=20
+>
 > Please anybody have experience with this thing?
->=20
+>
+> Thanks
+>
+> Vladimir
+>
+
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
