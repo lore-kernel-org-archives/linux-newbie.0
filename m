@@ -1,37 +1,57 @@
 From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: tar confined to partitions
-Date: Tue, 3 Sep 2002 09:54:33 -0400
+Date: Tue, 3 Sep 2002 10:50:42 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209031354.g83DsX516599@hartford-hwp.com>
-References: <20020903062042.25752.qmail@web40610.mail.yahoo.com>
+Message-ID: <200209031450.g83Eogs17031@hartford-hwp.com>
+References: <5.1.0.14.1.20020902094227.021b5bd0@celine>
+ <5.1.0.14.1.20020902094227.021b5bd0@celine> <5.1.1.6.0.20020903102834.00b7ff88@interzone.anexia.co.uk>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020903062042.25752.qmail@web40610.mail.yahoo.com> (message
-	from =?iso-8859-1?q?szonyi=20calin?= on Tue, 3 Sep 2002 08:20:42 +0200
-	(CEST))
+In-Reply-To: <5.1.1.6.0.20020903102834.00b7ff88@interzone.anexia.co.uk>
+	(message from Carl Lawton on Tue, 03 Sep 2002 10:45:02 +0100)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: caszonyi@yahoo.com
-Cc: linux-newbie@hartford-hwp.com
+To: carl@anexia.co.uk
+Cc: linux-newbie@vger.kernel.org, linux-newbie@hartford-hwp.com
 
-Calin,
+Carl,
 
-> What tar do you have because i want it too.
-> Mine is GNU tar and it seems to disregard the
-> -exclude comand line switch.
+> If i have it right you are just trying to copy everything to /mnt/mirror
+> 
+> In which case you could just do:
+> 
+>         find / -print | egrep -v "^/mnt/mirror|^/proc" | cpio -pdmuv /mnt/mirror
 
-This is my tar version: tar-1.13.25-4, which I assume is GNU.
+I get the sense that cpio is a more straightforwared way to do a copy,
+and the script you kindly pass along may well do the job. However, I'd
+like to ask three questions about it.
 
-As for my problem of tar seeing only one partition, someone pointed
-out that my tar command: 
+First, I've often heard of measures taken not to backup /proc, and
+indeed it makes no sense to do so. However, what would be the
+consequence of a restoration from a mirror that copied over old /proc
+info? Would it do any harm?      
 
-tar -C "$1" -cOl . | tar -C "$2" -xpf -
+Second. This script prevents backing up the backup, which seems off
+hand like a way to avoid an infinite recursion. However, such a
+recursion did not actually seem to happen, and I don't know why. That
+is, using tar (tar -C "$1" -cOl . | tar -C "$2" -xpf -), the /proc and
+/mnt/mirror directories in the backup copy appear to be empty. Why
+empty directories?
 
-in fact has a -l option in it (combination of senility and failing
-eyesight associated with advanged age, I suspect). I have not had an
-opportunity to test whether simply leaving it out will resolve the
-problem. 
+Third, the target is not just a mirror drive, but a set of dated
+directories on it, and so I'd like to pass a command line argument to
+the script to name the target directory. For example, would this work?
+
+find / -print | egrep -v "^/mnt/mirror|^/proc" | cpio -pdmuv
+/mnt/mirror/"$1"
+
+[above line is wrapped]. Even better, it would be nice to create the
+target directory as part of the mirroring process:
+
+mkdir /mnt/mirror/"$1"
+find / -print | egrep -v "^/mnt/mirror|^/proc" | cpio -pdmuv
+/mnt/mirror/"$1"
 
 Haines
 -
