@@ -1,42 +1,40 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Memory usage
-Date: Tue, 15 Apr 2003 01:17:08 +0930
+From: Bob Batson <rcb@kc.rr.com>
+Subject: Re: No More Logrotate
+Date: Mon, 14 Apr 2003 11:18:41 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304150117.08844.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <p05111b05bac08f5eb866@[65.30.98.121]>
+References: <5.1.0.14.1.20030414084230.01e990b8@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030414084230.01e990b8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>, Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
-OS: Linux Mandrake 9.0
-Kernel: 2.4.20
-Soltek SL-75DRV5
-512MB DDR
-Althon XP2100+
+At 8:53 AM -0700 4/14/03, Ray Olszewski wrote:
 
-I'm noticing memory usage that I cannot trace back to a process - alot of it 
-too. I use top and the "M" command to list programs by memory usage - but 
-what I see with it (or using other system monitoring tools) are only a few 
-processes and none that can explain the memory usage.
+>Peter --
+>
+>Unfortunately, organization of logs is one of the more 
+>distro-dependant things in Linux. Debian doesn't have a file (or 
+>directory) called /var/log/cron, so I can't immediately diagnose 
+>your problem from the information you provided. Another RH 7.3 user 
+>may be able to, though, you you might want to wait a bit to see if 
+>you get a more useful response from someone else  before bothering 
+>with these questions.
 
-Even dropping down to runlevel 1 still displays RAM usage in excess of 300MB. 
-Maybe I've still got alot to spare but I still want to fix this problem - 
-currently running BlackBox under X (I use some KDE apps, but even after 
-killing off all kdeinit processes the memory usage stays high).
+[SNIP]
 
-So, what would be the cause of this mysterious memory usage?
+>5. What is "KRUD Linux"?
+
+A Red-Hat based distro. The home-page is at http://www.tummy.com/krud/
 
 -- 
-"taking advice on what the GPL means from Microsoft is like taking Stalin's 
-word on the meaning of the US Constitution." - Eben Moglen
+Bob Batson
+rcb@kc.rr.com
 
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
-
+"Chocolate is the true opiate of the masses!"
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
