@@ -1,52 +1,40 @@
-From: Jing Xu <xujing_cn2001@yahoo.com>
-Subject: irqmask doesn't work
-Date: Wed, 26 Nov 2003 13:50:12 -0800 (PST)
+From: Ramzez <r4mz3z@yahoo.es>
+Subject: How do I install my own service
+Date: 02 Dec 2003 22:43:27 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031126215012.86010.qmail@web41311.mail.yahoo.com>
+Message-ID: <1070306845.2760.4.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hello, 
+HI friends...
 
-I'm having some trouble with PCI IRQ's and I was
-hoping someone here could help. 
+  please, how can I install my own service (i'm using RH9.0).
 
-I'm running linux 2.4.20 and rtai 24.1.11. My linux
-kernel module needs to use IRQ 9 10 11 for AGP graphic
-card, sound card and PCI-Dio24 IO card. These irqs are
-also shared by USB controllers. My module hangs when
-it tries to request the above irqs used by USB
-devices. I figured it would be a good idea to remove
-this apparent conflict. I have scoured the web and
-found that I can reserve these IRQs by specifying
-pci=irqmask=0xxxxx on the kernel boot line.
+  I make my script in /etc/rc.d/init.d ... something like this:
+-------------------------- killMyTemp -----------------------
+	#!/bin/sh
+	rm -rf /home/FamilyGroup/tmp/*
+--------------------------
+  then I make a soft-link in /etc/rc.d/rc5.d ... 
+  again, something like: ln -s ../init.d/killMyTemp K99killMyTemp ...
 
-I have tried to set "pci=irqmask=0xf1e8" to reserve
-Irq 9 10 11 4 from my driver, and it hasn't had any
-effect - those irqs are still used by usb controllers
-on initialization. 
+  But when I turn-off my PC, this script didn't run; why?
 
-How do I change these IRQ's?  Is there some other
-configuration file I haven't found? If anyone can
-provide any insight into this, I would appreciate it
-greatly. Let me know what/if any details you need - I
-am by no means an expert in this area and didn't want
-to post reams of irrelevant information, but if there
-is something I'm missing let me know and I'll get
-it...
+thanks
 
-Thanks in advance,
+-- 
+  Linux User Registered #232544
+        ICQ : 337889406
+  GnuPG-key : www.keyserver.net
+ -------------------------------
+"Software is like sex,
+      it's better when it's free."
+                  [Linus Torvalds]
 
-jing 
-
-__________________________________
-Do you Yahoo!?
-Free Pop-Up Blocker - Get it now
-http://companion.yahoo.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
