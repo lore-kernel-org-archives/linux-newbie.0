@@ -1,30 +1,26 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: [SOLVED] Re: File names with spaces
-Date: Thu, 20 Feb 2003 20:43:40 +0100 (CET)
+From: ichi@ihug.co.nz
+Subject: file transfer via telnet
+Date: Fri, 21 Feb 2003 07:29:54 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0302202040520.3777-100000@hestia>
-References: <20030220171332.GA4937@teamfinders.org>
+Message-ID: <3E55D572.1B60BF79@ihug.co.nz>
+References: <Pine.LNX.4.21.0302201111260.32557-100000@hestia>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030220171332.GA4937@teamfinders.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Thu, 20 Feb 2003, Theo. Sean Schulze wrote:
+I year or two back, I remember reading about a way to transfer 
+a file using telnet.  It think it involved redirection from one 
+tty to another, but I don't remember the details.  I now find
+myself in a situation with telnet access, but no ftp (or anything
+else I could use to upload files).  Do any of you guys know the
+telnet method?
 
-> J.,
-> 
-> Thanks for your suggestions.  
+Cheers,
+Steven
 
-No problemo,
-
-btw: 4 out of 5 pages on teamfinders.org are generating http 404 not found 
-messages. I think you should have a critical look at all the http links in
-the main page.
-
-J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
