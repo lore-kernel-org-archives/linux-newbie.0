@@ -1,47 +1,50 @@
-From: Thorsten Alge <mail@thorsten-alge.de>
-Subject: Time-Zones
-Date: Wed, 19 Jan 2005 09:02:23 +0000
-Message-ID: <1106125343.4183.7.camel@localhost.localdomain>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: Cannot load mysql extension; don't want to disturb mysql installed
+Date: Thu, 20 Jan 2005 13:33:09 -0500
+Message-ID: <006501c4ff1e$7da31cc0$500aa8c0@lanadmin>
+References: <1106125343.4183.7.camel@localhost.localdomain>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-tddmhqocwAaG82+uvj2a"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1106125343.4183.7.camel@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: 'Linux Newbie' <linux-newbie@vger.kernel.org>
 
 
---=-tddmhqocwAaG82+uvj2a
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Platform: Redhat Linux Enterprise WS 3
+PHP installed: 4.3.2
+MySQL installed: 4.0.21
+Apache installed: 2.0.46
 
-Hi,
+When setting up PhpMyAdmin today, I got the error:
+Cannot load mysql extension,
+Please check PHP configuration
 
-i'm using Debian Linux on my notebook. I've set up the system to use the
-UTC because better filesystem syncronisation. To get the local time on
-the console i added "export TZ=3DEurope/Berlin" to ~/.bash_profile. But i
-dont know how to configure gnome to translate the UTC to the local time;
-can anyone help?
+My phpinfo() shows:
+'with-mysql=shared,/usr' (yes, the comma is not a mistake)
+- This looks like a glitch; should I fix, and if so where?
 
-thx,
+Mysql.so was found in:
+/usr/lib/php4/
 
-thorsten
-                                  ,,,,,
-                                 ( o ~ )
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~.oooO~~(_)~~Oooo.~~~
+My php.ini has been editted to read:
+extension=mysql.so
+...and I also tried:
+extension="/usr/lib/php4/mysql.so"
 
---=-tddmhqocwAaG82+uvj2a
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
+Any clues on remedying this problem, without upgrading MySQL? I have read
+the problem is solved by installing a PHP-MySQL package, but when I
+attempted to do so via up2date, I was notified that a dependency was
+required for a MySQL-client. But Mysql 4.0.21 is already installed and
+running.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
+Any clues out there?
 
-iD8DBQBB7iIefqTT+g1FweURAjzCAJ9bE40l5XmFmaO1D6/6s5RNSLheDgCaAgRF
-Nc5DUhhgEZ61ClY2Mp+Vgb0=
-=5/mI
------END PGP SIGNATURE-----
-
---=-tddmhqocwAaG82+uvj2a--
+Thanks,
+Eve
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
