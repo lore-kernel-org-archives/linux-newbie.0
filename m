@@ -1,63 +1,60 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Throttling Bandwidth
-Date: Wed, 16 Oct 2002 12:31:35 -0400
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: Wed, 16 Oct 2002 17:46:51 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <004601c27531$7eb7d7a0$64fea8c0@pkrausxp>
+Message-ID: <20021016164651.GA4265@cam.ac.uk>
+References: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0047_01C2750F.F7A637A0"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="0F1p//8PRICkK4MW"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-This is a multi-part message in MIME format.
 
-------=_NextPart_000_0047_01C2750F.F7A637A0
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+--0F1p//8PRICkK4MW
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Is there a way to limit the bandwidth my Linux server uses when
-downloading from ftp sites? It pretty much cripples the rest of the
-company.
+> 1. Microsoft .NET framework. I know Microsoft is a bad word in most of
+> these forums/lists but it is a great web development package. Allowing
+> for true object oriented programming. I am also already familiar with
+> it. Will the framework run on a Linux machine.
+The Microsoft one doesn't, as far as I know, and it seems unlikely that
+it ever will.  There is a FreeBSD version, though.  Look for Rotor, of
+you're interested.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Having said that, Mono.NET have a C# compiler, JIT, and most of a class
+framework available from www.go-mono.com.  There's also an early-stage
+vb.net interpreter, but I haven't tried it.
 
-------=_NextPart_000_0047_01C2750F.F7A637A0
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+DotGNU were also aiming towards a C# implementation.  The last time I
+checked, they were a long way behind Mono, however.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+> What editors can I use.
+Emacs works, as does vi.  If you want a friendlier interface, jEdit,
+kDevelop, and CoolEdit are fairly popular.
 
-------=_NextPart_000_0047_01C2750F.F7A637A0--
+Steven Smith,
+sos22@cam.ac.uk.
 
+--0F1p//8PRICkK4MW
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE9rZf6O4S8/gLNrjcRAq/mAJ9dzcGPfYgkZcm4zplZOFElvJRfsQCgqSyL
+sw/dd0CVuYgKX+puQEpyD1o=
+=VoLI
+-----END PGP SIGNATURE-----
+
+--0F1p//8PRICkK4MW--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
