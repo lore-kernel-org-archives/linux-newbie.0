@@ -1,50 +1,24 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: No Sound with Kernel 2.6.7
-Date: Fri, 12 Nov 2004 16:19:34 +0800
-Message-ID: <20041112081934.9EB5547FD3@heisspf>
-References: <200411112357.25724.Adam@Luchjenbroers.com>
+From: Peter STIEGLITZ <peter.stieglitz@st.com>
+Subject: Inter-module communication
+Date: Fri, 12 Nov 2004 16:05:56 -0000
+Message-ID: <000001c4c8d1$82a92620$340d81a4@benin>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Thu, 11 Nov 2004 23:57:19 +0930."
-             <200411112357.25724.Adam@Luchjenbroers.com> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Thanks!
+Hi folks,
+I have a requirement using 2.6 to notify more than one kernel module following the receipt of an interrupt.
 
+I've heard of module unloading becoming a problem with other modules assuming they are still there.
 
-Peter said:
->> In kernel 2.4.26 all the settings are the same in /etc/rc.d  as well as for
->> modprobe.conf and modules.conf and the sound is no problem. 
->> What would be the next step?
-
-Adam@Luchjenbroers.com
-> Probably try enabling the following in your kernel (either as modules or
-> right  in the kernel).
-
-> OSS Mixer API OSS PCM API OSS Sequencer API
-
-> They're right under the ALSA settings with make xconfig, and will provide the
->  OSS emulation you will need for OSS based apps. 
-
-I did all that in the kernel, did make, copied bzImage to vmlinuz, did lilo 
-and on boot I get the same error and no sound:
-
-> Loading OSS compatibility modules for ALSA.
-> FATAL: Module snd_pcm_oss not found.
-> FATAL: Module snd_mixer_oss not found.
-
-I will stop by that now playing with 2.6.7 and wait till slackware will come 
-up with a correct version.
+What do people think is the best approach?
 
 Regards
-
-
--- 
-Peter
+Pete
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
