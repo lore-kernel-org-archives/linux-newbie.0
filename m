@@ -1,49 +1,44 @@
-From: ichi@ihug.co.nz
-Subject: Re: auto login
-Date: Mon, 16 Sep 2002 08:05:01 +0000
+From: Adwin <fox@sby.centrin.net.id>
+Subject: a trouble with OpenGL
+Date: Mon, 16 Sep 2002 09:11:35 +0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D8590AD.46E320C6@ihug.co.nz>
-References: <F22LjQyKNRocEvBff6e0000a72a@hotmail.com>
+Message-ID: <200209160910.49335.fox@sby.centrin.net.id>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: a a <xlsd@hotmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+Cc: Learn-linux@yahoogroups.com
 
-a a wrote:
-> 
-> Is there a way i can automatically login as 
-> root when i boot up the computer?
+hello.
 
-If you look in /etc/inittab, you will probably find
-(down near the bottom) a group of lines that look 
-something like this:
----------------------------------------------
-c1:1235:respawn:/sbin/agetty 38400 tty1 linux
-c2:1235:respawn:/sbin/agetty 38400 tty2 linux
-c3:1235:respawn:/sbin/agetty 38400 tty3 linux
----------------------------------------------
+	I am using Mandrake 8.2 with KDE 3.02. Every time I run a qt program (even it 
+is a helloworld) from my console, it always display "Loading Required 
+libGL.so.1.3.401" on console. The program run as usually.
+I have been checked my /usr/X11R6/lib/ and I can found a libGL.so.1.3.401. 
+I have been try to make a link (ln -s libGL.so.1.3.401 libGL.so), and it still 
+doesn't work.
 
-It is the getty that prompts for the login name.
-To avoid the login prompt, you can edit the line 
-to go directly to bash:
---------------------------------
-c1:1235:respawn:/bin/bash -login
---------------------------------
+I have another problem, I tried to install NVIDIA graphic driver for Linux 
+(driver for : RivaTNT2). The drivers (rpm)  that I installed are :
+1. NVIDIA_GLX-1.0-3123.i386.rpm (GLX)
+2. NVIDIA_kernel-1.0-3123.mdk82up.i586.rpm ( kernel driver)
+After I restart my X Server, now I completly cannot run any openGL application 
+on Linux. It always said : "  OpenGL not supported " 
 
-I use this technique for a NFS server (no keyboard, no VDU) 
-that only gets turned on occasionally.  It runs in a ramdisk 
-(using a BasicLinux foundation) and automatically mounts and
-serves the target drive (read-only).  Turn it on when you 
-need it, turn it off when you're done, no worries.
+I checked on /usr/X11R6/lib again, and I found that 
+all libGL* was renamed become 
+xxx.libGL.so.1.2.RPMSAVE*
+xxx.libGL.so.1.3.401.RPMSAVE*
+xxx.libGL.so.x.RPMSAVE*
+xxx.libGL.so.1.0.RPMSAVE*
 
-Cheers,
-Steven
+What should I do to make my system work well again (especially OpenGL)? 
 
-______________________________
-http://www.volny.cz/basiclinux
+
+thxs 
+adwin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
