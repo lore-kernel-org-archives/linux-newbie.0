@@ -1,35 +1,37 @@
-From: Jerry James Haumberger <jerryjh@imt.net>
-Subject: Need fdformat from Slackware 3.5
-Date: Wed, 4 Dec 2002 17:44:05 +0000 (UTC)
+From: ichi@ihug.co.nz
+Subject: Re: Perl
+Date: Thu, 05 Dec 2002 06:56:20 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212041734.KAA25803@cu.imt.net>
+Message-ID: <3DEEF894.77939240@ihug.co.nz>
+References: <019001c29bac$8f711bf0$64fea8c0@pkrausxp>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hal --
+Paul Kraus wrote:
+> 
+> How can I make this assignment in one statement. 
+> I know its going to be something easy.
+> $path=$5;
+> $path=~s/ /\\ /g;
 
-It's odd, yes.  At least on the surface.  You would expect (at least
-I would, as a relative newcomer to Linux) that formatting floppies
-for ext2 use is a process unrelated to DOS -- yet, in order to use
-mke2fs on an unformatted floppy (for example), it will work if the
-floppy is first formatted from DOS.
+I don't understand.  Is this part of a bash script?
+It looks like you a trying to assign the fifth parameter 
+(path=$5) to a variable named path (which BTW is not the
+PATH) and then manipulate it in some way (something to do 
+with \ I think).
 
-Although I could format all my floppies first with DOS and then
-prepare them for use with mke2fs under BasicLinux (which doesn't
-have the fdformat utility available), I'd prefer to skip the
-DOS dependency while using Linux (and save a bit more time) by
-having fdformat available.  And since I'm interested in a "minimalist"
-distribution of Linux (BasicLinux), I'd prefer to manipulate DOS
-files without adding Mtools under such circumstances.
+Perhaps this is some language that I am unfamiliar with?
+If so, I apologize.  However, if is bash, I suggest you 
+explain in words what you want to do, and I will try to
+script it.
 
->Trying superformat then dosfsck -tvr confirms that superformat does,
->in fact, put a dos fs on the disk.. Interesting.... We learn
->something new every day, eh?  Just a thought..
-
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
