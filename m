@@ -1,73 +1,73 @@
-From: Simon Valiquette <v.simon@ieee.org>
-Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively  change
+From: Jim Nelson <james4765@verizon.net>
+Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively change
  all directories/files to 777
-Date: Thu, 09 Dec 2004 17:35:08 -0500
-Message-ID: <41B8D31C.3040305@ieee.org>
-References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
- <5.1.0.14.1.20041209133634.0208a928@celine>
+Date: Fri, 10 Dec 2004 05:37:54 -0500
+Message-ID: <41B97C82.8060409@verizon.net>
+References: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20041209133634.0208a928@celine>
+In-Reply-To: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: eatley@wowcorp.com
+Cc: linux-newbie@vger.kernel.org
 
-Ray Olszewski a =E9crit :
- >
- > So you want an uploaded file to be mode 777, writable (and executabl=
-e,
- > if you really mean 777, not 666) by any user on the system? OK. Chan=
-ge
- > the account's umask, in ./.profile, or ./.bashrc, or whatever
- > user-specific file is appropriate to your setup.
+Eve Atley wrote:
+> First question...
+> We have people SSHing into our Linux box from overseas (India to US, company
+> access only). But files that are uploaded from these people become read-only
+> to anyone else accessing them. We *require* that they be readable/writable
+> by this side of the pond (US). How can I set this to occur? Otherwise, this
+> method of transferring files will *not* work for us, and perhaps someone can
+> point me to another solution.
+> 
+> Second question...
+> How can I recursively set all files/directories to 777?
+> Chmod -R 777 *.* ... Didn't seem to hit everything.
+> 
+> Thanks!
+> 
+> -Eve
+> 
+Question 1:
+Try setting the umask in the .profile for the people ssh'ing in.
 
-   I would also had done something likes that.  Then, if you want those
-users to be _forced_ to put all their files world readable, I don't kno=
-w
-how to do it.  The closest I know is with a cron that change back the
-permissions with chmod every 5 minutes or a script runned at logout tim=
-e
-(maybe scp also execute .logout).
+Question 2:
+Try the following:
 
- >
- > Since the relevant command is "chmod", not "Chmod" (case counts in
- > Linux/Unix commands), I'm surprised you hit *anything* with the comm=
-and
- > as written.
+-----------------------------------[cut]--------------------------------------------
+#!/bin/bash
 
-   It surelly really was chmod.  Typo, or Outlook that automatically
-fixed the case (I remember seeing things likes that many years ago when
-I was still using Windows).
+echo "Chowning files to jim:users..."
 
- >         chmod -R 777 ./*
- >
- > (Even this will not chmod **all** files, because because by conventi=
-on
- > almost all Linux/Unix commands treat files that begin with a dot
- > character as special, so standard wildcards (*) will not match them.=
- So
- > this command will chmod files with names like filename and filename.=
-txt,
- > but not one with names like .filename . I don't know a general way t=
-o
- > include such files.)
- >
+find -name \* | sed 's/^/"/' | sed 's/$/"/' | xargs chown jim:users $1
 
-          chmod -R 777 .
+echo " done."
 
-   Note the "." at the end.  That will do it for the current directory,
-and all files/directories that start from the inode represented by "."
+echo "Fixing directory permissions..."
 
-Simon Valiquette
-http://gulus.USherbrooke.ca
+find -type d | sed 's/^/"/' | sed 's/$/"/' | xargs chmod 775 $1
 
+echo " done."
 
+echo "Fixing file permissions..."
 
+find -type f | sed 's/^/"/' | sed 's/$/"/' | xargs chmod 664 $1
+echo " done."
+
+-----------------------------------[cut]--------------------------------------------
+
+I use this to fix permissions on a Samba box - you will have to modify or drop the 
+chown line to leave the ownership properties alone.
+
+The sed lines enclose the file names in quotes - necessary if there are spaces or 
+metacharacters in the file names.  The only thing that breaks the script is 
+filenames with doublequotes in them - the only way I can fix them is a manual 
+search and repair.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
