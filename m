@@ -1,32 +1,46 @@
-From: Alan Bort <333101@personal.net.py>
-Subject: XMMS always on top
-Date: 27 Jun 2003 12:41:02 -0400
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Slack9.0/Atapi-ZIP250???
+Date: Sat, 28 Jun 2003 15:14:07 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1056732062.28653.23.camel@gandalf.ciccio-net.cjb.net>
-Reply-To: 333101@personal.net.py
+Message-ID: <20030628151407.A244@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi, I'm not THAT newbie, but I'm using RH9 with XD2 (ximian Desktop2)
-and I was andering if there was a way (plugin or something like that)
-for XMMS to stay always on top (I have the small bar, with he usual
-commands, and I want it to be always on top). The option always on top
-priveded by XMMS does not work. Is there a plugin such as in winamp so
-the play,next,prev,stop,pause,etc commands appear on the title bar of
-each window???
+Greetings: Several days; RTFM, FAQ's, HOW-TO's - no joy...
 
-Thanks a lot.
--- 
-Alan Bort
-Linux Registered User 298277 -Country Manager- [http://counter.li.org]
-[ http://www.linuxquestions.org ] Username: Ciccio
-[ http://es.tldp.org ]
-Ciccio.-
+This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
+internal, as /dev/sda4, as long as I insmod ide-scsi.o.. ( That file
+also installs sd_mod.o )..
 
+Installing Slackware9.0/2.4.20, on another partition, a different
+story, reporting the dreaded "mount: /dev/sda4 is not a valid block
+device," meaning, AFAIK, the kernel can't see it.. I note that 2.4.20
+does _not_ load, or even have, sd_mod.o, or anything similar.. Please
+note the permissions, etc, are the same on both partitions..
+
+There must be another module that I can't seem to find.. Of course
+the HOWTOs and Mini HOWTOs, are correct for earlier kernels, but no
+help here..
+
+Installing Slack9.0/2.4.20 on another machine with a parallel port
+ZIP250 finds the drive OK w/ insmod imm.o and ide-scsi.o - as per
+normal, so that scheme seems OK.. (imm.o, of course, is only for
+parallel port devices.)
+
+Any suggestions, comments, etc?? I've looked at all the modules
+available and I can't find anything that rings a bell so far...
+
+Cheers,
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
