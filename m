@@ -1,78 +1,52 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: Screen size
-Date: Tue, 27 Aug 2002 05:47:31 +0000
+Date: Tue, 27 Aug 2002 05:55:53 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0208270547310C.02211@unix.pa3gcu>
-References: <Pine.LNX.4.21.0208261501060.8397-100000@Consulate.UFP.CX> <20020827051426.GA28677@teamfinders.org>
+Message-ID: <0208270555530D.02211@unix.pa3gcu>
+References: <5.1.0.14.1.20020826192017.025d7d90@celine>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020827051426.GA28677@teamfinders.org>
+In-Reply-To: <5.1.0.14.1.20020826192017.025d7d90@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Theo. Sean Schulze" <tschulze@teamfinders.org>, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, Riley Williams <Riley@Williams.Name>, Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Tuesday 27 August 2002 05:14, Theo. Sean Schulze wrote:
-> I also experience that mysterious "something" after I boot my SuSE Linux
-> system.As far as I can figure out, I have all the configuration files set
-> correctly for an 80x50x9 screen, but I still get an 80x25 screen after a
-> boot.  What I do now is enter the command 'SVGATextMode 80x50x8' as root
-> after I boot.  That clears it up rather nicely, and since I don't reboot
-> all that often, it is only a minor irritation.
+On Tuesday 27 August 2002 02:28, Ray Olszewski wrote:
+>
+> Richard said more about the framebuffer than I know, but that is, I think,
+> not what you are asking about. The man page for lilo.conf includes this bit
+> (about the vga= parameter)--
+>
+>                If this variable is omitted, the VGA  mode  setting
+>                contained in the kernel image is used. (And that is
+>                set at compile time using the SVGA_MODE variable in
+>                the  kernel Makefile, and can later be changed with
+>                the rdev(8) program.)
 
-The mysterious something, i dont seem to have, however what i think is 
-happening is the following, of course i could be wrong.
-
-At bootime lilo loads the kernel, the kernel starts to detect hardware and 
-set things up the way one has the kernel configured, just after kswapd is 
-started the framebuffer comes to life, a small except from dmesg shows.
-
-Linux IP multicast router 0.06 plus PIM-SM
-Initializing RT netlink socket
-Starting kswapd v 1.5
-vesafb: framebuffer at 0xd0000000, mapped to 0xe0000000, size 32768k
-vesafb: mode is 1024x768x16, linelength=2048, pages=0
-vesafb: protected mode interface info at c000:c200
-vesafb: scrolling: redraw
-vesafb: directcolor: size=0:5:6:5, shift=0:11:5:0
-Console: switching to colour frame buffer device 128x48
-fb0: VESA VGA frame buffer device
-Detected PS/2 Mouse Port.
-
-I would imagen this is where the strange something happens on the systems in 
-question.
-
-> Actually, what is more irritating is that I would prefer Richard's 1024x768
-> screen or something close to that.  It seems like a waste of monitor real
-> estate on a 19" monitor to have it set to 80x50x9.  'Course I will never go
-> blind from squinting at the screen. :-)
-
-I have a 21 inch monitor and it makes things look very nice in 1024x768.
-If you need more examples of how i do it take a look at;
-
-http://people.zeelandnet.nl/pa3gcu/kernel.htm
-
-It includes a sample lilo.conf and a sample .config .
+Yes vga= works that way however it has to be turned on in the kernel 
+otherwise it wont work like it should at boottime. That option is;
+CONFIG_VIDEO_SELECT
+I think most distro's have it in thier standard included kernel.
+If that is the case one can define vga=xxx in lilo.conf and rerun lilo.
 
 >
-> I have done some reading into using SVGATextMode and experimented with some
-> better settings.  But, when I set them up, the text gets stair-stepped down
-> the screen, and it becomes unusable.  Then I just blind type the command
-> above, and I am back in business.  Seems that it is a lot harder to find
-> good info on setting up the text console now that everybody and his brother
-> wants a GUI of some sort or another.
+>  From the man page for rdev, it *appears* that it can change the SVGA
+> setting while Linux is running if invoked as vidmode. Take a look and see
+> if this is what you are looking for (I didn't test it here). You might also
+> check if one of RH's init scripts is executing a vidmode command ... it is
+> certainly a candidate for your mysterious "something".
 
-SVGATextMode must be a distro spesific program as AFAIK slackware does not 
-have it included.
+Nope, vidmode AFAIK does not do that.
 
 >
-> By the way, you might also want to look at man SVGATextMode and at
-> /etc/TextConfig.
 >
-> Cheers,
-> Sean
->
+> --
+> -------------------------------------------"Never tell me the
+> odds!"-------- Ray Olszewski					-- Han Solo
+> Palo Alto, California, USA			  ray@comarre.com
+> ---------------------------------------------------------------------------
 
 -- 
 Regards Richard
