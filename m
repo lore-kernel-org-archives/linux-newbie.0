@@ -1,63 +1,59 @@
-From: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>
-Subject: Re: Question about TCP/IP
-Date: Tue, 25 Feb 2003 10:03:02 -0300 (BRT)
+From: Peter Howell <p.howell74@rcn.com>
+Subject: Re: scripting the "rec" function for a fixed time.
+Date: 25 Feb 2003 19:44:08 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <62694.200.136.52.249.1046178182.squirrel@www.mandic.com.br>
-References: <20030224202346.54528.qmail@web40406.mail.yahoo.com>
+Message-ID: <1046220248.15520.27.camel@smeagle>
+References: <5.1.0.14.1.20030224184821.01eb7e30@celine> 
+	<03022506145301.00602@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030224202346.54528.qmail@web40406.mail.yahoo.com>
+In-Reply-To: <03022506145301.00602@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: cba20032002@yahoo.com
+Content-Type: text/plain; charset="us-ascii"
+To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-Hello Mikey,
 
-> Is
-> there any good way to isolate/identify what is causing
-> this?
+On Tue, 2003-02-25 at 01:14, pa3gcu wrote:
+> > "rec" is not a stock linux command, and I cannot readily identify a package
+> > that includes that application (just trying to match on "rec" turns up
+> > several hundred hits in the Debian package database). So I'd suggest you
+> > tell us a bit more about your setup, including enough information that we
+> > can identify and take a look at the package that includes this command.
+> 
+> rec is an unix command altho' not well supported, slackware 8 has it included.
+> 
+> rec --help shows a lot but thses are relavant to the question;
+>   -c, --channels=CHANNELS      specifies the number of sound channels in FILE
+>   -d, --device=DEVICE          use DEVICE for input/output
+>   -f, --format=FORMAT          specifies bit format of sample
+>                                FORMAT is either s, u, U, A, a, or g
+>   -r, --rate=RATE              sample rate in hertz of FILE
+>   -s, --size=SIZE              interpret size of sample
+> 
+> I think this one could be an help -s xxxxxxxb
+>                                SIZE is either b, w, l, f, d, or D
 
-It could be many things. From congestion of the network to bad programm=
-ing. If you are
-sure the problem is with the net, discover if it's half or full-duplex.=
- If it's
-half-duplex, go to your hub or switch and discover if there are too man=
-y collisions
-going on (there should be a yellow or orange light flashing everytime a=
- collision
-happens).
+	Alas no :-(
+	size isn't the file size.  It's really the width of each sample.  eg b
+for 8 bits, w for 16 bits....
 
-Try using a sniffer or a traffic analyzer to find out how much bandwidt=
-h is being used.
+It appears that rec does not buffer the sound, but instead writes it
+directly to the file.  
+It's inelegant, but I suppose I could kill the application after a
+specified delay.  There are two problems with implementing that for me. 
+Firstly, I don't think I could do that in perl, which I'm most familiar
+with because there doesn't appear to be an easy way to spawn a process
+and continue running the scipt.  Secondly, I don't know how to run a
+process and get it's process id, which I'd need to kill it. 
 
-If there's enough bandwidth left, there are no collisions going on, it =
-could be a
-computer set up problem (MTU etc).
-
-> What would happen when the line is cut during
-> transmission? IS there any particular timeout error
-> need to be looked for?
-
-No. If the line is cut during a transmission, the receiver won't be abl=
-e to check things
-like checksums with an incomplete packet. So, it will drop it.
-
-(I'm not sure if it won=B4t send out an icmp message with parameter pro=
-blem. But I think
-not.)
-
-Rodolpho
---=20
-Rodolpho H. O. Eckhardt
-reckhardt@mandic.com.br
-Cel: 11 9126-9107
+	Ok, just did a little rtfm.  I guess I could use ps and extract the id.
+Now I guess I'd better learn some bash scripting
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
