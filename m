@@ -1,52 +1,38 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Installing same o/s across different hardware
-Date: Tue, 09 Sep 2003 17:15:33 +0100
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: kernel configuration
+Date: Tue, 9 Sep 2003 11:29:45 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.2.1.1.0.20030909164900.049e0ab8@interzone.anexia.co.uk>
+Message-ID: <Pine.LNX.4.56.0309091122450.1048@homenet>
+References: <200309091456.UAA09789@WS0005.indiatimes.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200309091456.UAA09789@WS0005.indiatimes.com>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Hi All,
+On Tue, 9 Sep 2003, atticclaw wrote:
 
-Can anybody help with the following.
+> Hi,
+>    Well I have vmware 4.0 in which I have installed RH 9.0 it comes with kernel 2.4.20-8 . I have downloaded fresh kernel 2.4.18 . I am tryibg to configure the kerne l but it is giving me an error saying tht my module sd_mod.o is compile for kernel 2.4.22 while I am using kernel 2.4.18 .
+>             Why is this is happeneing ?
+> Pls help me out
 
-I am building systems based on RedHat8 with a 2.2.40 kernel that has had some tweaks.
-I have patched in support for Ultra320 hard drives and made some tweaks to the max sizes
-of the ipc message queues.
+Mmmm.  I think it's because add-on modules are compiled for a given
+kernel.  They're not supposed to work with kernels for which they were not
+compiled.  That said, I've forced one to run with the -f switch and had it
+work ok (a NIC module) for me - I think others will advise you against
+trying this though, and if you have alot of modules it might not work for
+you like it did for me anyway.  So, assuming you've compiled your own
+2.4.18 kernel, I'm pretty sure you'll need to compile a new set of modules
+for it.  If you didn't compile your own kernel, you'll need to do that
+first, since I think to compile the modules you'll need to have kernel
+headers available (they only appear in your system if you've compiled your
+own kernel).  Please wait for others to respond to your question too,
+since I'm not any kind of big authority on this list.
 
-My general build hardware is an intel m/board with u320 drives and a megaraid card.
-
-With these options my current setup is fine. I build the system with all the software that is required then
-backup the whole system (excluding /proc) onto tape. When i build the next system i install a minimalist
-version of redhat, then boot into single user and restore the tape backup over the top, make sure fstab is correct
-and re-run lilo to update the boot loader. Everything is fine.
-
-I have now come to a system that will have no ultra 320 drives and no megaraid card. I have gone through
-my normal install process and restored my tape and while the system is fully operable there are a couple
-of errors on booting the kernel.
-
-Namely an adaptec message that i can't catch as it is too quick and the following
-which i can get from /var/log/boot.log:
-
-Sep  9 16:42:16 machine1 kernel: megaraid: v1.18 (Release Date: Thu Oct 11 15:02
-:53 EDT 2001)
-Sep  9 16:42:16 machine1 kernel: megaraid: no BIOS enabled.
-
-The crux is i would like to get rid of these messages.
-
-/etc/modules.conf has aliases for the megaraid.o and aic79xx.o modules that are not required for this
-system but just commenting them out does nothing.
-
-Anybody know what is required to stop the kernel looking for these devices and hence get rid of the errors ? 
-
-TIA
-Carl
---
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
