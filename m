@@ -1,59 +1,28 @@
-From: "Steven Smith" <sos22@cam.ac.uk>
-Subject: Re: Generating SSH Keys
-Date: Fri, 20 Feb 2004 14:27:24 +0000
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: keeping static ip address alive between restarts
+Date: Fri, 20 Feb 2004 10:30:50 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040220142724.GA4025@archibold.chu.cam.ac.uk>
-References: <20040219175356.GA6101@archibold.chu.cam.ac.uk> <GNEPLLCIIBHICCOGIAKPAEEACCAA.eatley@wow-corp.com>
+Message-ID: <fc.004c4e000050d4a1004c4e000050d4a1.50d523@palmertrinity.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="82I3+IH0IqGh5yIs"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPAEEACCAA.eatley@wow-corp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Eve Atley <eatley@wow-corp.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
+
+Running Red Hat 8.0 (2.4.18-14) on an old Acer I have keyed
+ ifconfig eth0 192.168.0.1
+to set my box's ip address for my small LAN. What additional command
+should I use to write that address permanently, so that I do not have to
+ifconfig each time I restart? I have read and reread O'Reilly's Running
+Linux and Learning Red Hat Linux; is there no process whereby the settings
+are written to the correct files for startup, or must I (using vi, for
+example) edit certain files myself? 
+
+Bill Stanard
 
 
---82I3+IH0IqGh5yIs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-> So I've SSHed into my home machine from work (running OpenSSH on Mac OS X).
-> Of course it comes up with the prompt about the machine not being found in
-> the list and hit no if you don't trust it, etc. I generally, before this,
-> have hit 'yes'.
-Just to clear something up: the host key (which is what you're being
-prompted about here) isn't the same as the user key (which will be
-used for authentication).  The host key is used by the client to make
-sure that it's talking to the right server; the user key is used by
-the server to make sure that it's talking to the right user.
-
-> So if I create a keypair on my Windows machine from work, and put
-> the public key on my Macintosh, because I've logged in before
-> without a keypair, will it ignore that keypair?
-Whether you've logged in before using some other scheme should have no
-effect.  If the private key is available on the client and the public
-key is authorized for the account on the server, then everything
-should work.
-
-I'm not sure how Apple set up the ssh server by default, but I
-wouldn't expect there to be any problems with this.
-
-Steven.
---82I3+IH0IqGh5yIs
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (FreeBSD)
-
-iD8DBQFANhlMO4S8/gLNrjcRAnWGAJ0Tv57+rHW6w2mO6ibDRiqmjuxoeACdG70s
-wdmRaJPO3tMo+KO962TkmKE=
-=MQ1h
------END PGP SIGNATURE-----
-
---82I3+IH0IqGh5yIs--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
