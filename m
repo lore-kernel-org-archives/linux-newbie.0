@@ -1,31 +1,28 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: adduser
-Date: Mon, 31 Mar 2003 10:20:33 +0200
+From: "n  mishra" <mishra_nn@rediffmail.com>
+Subject: recovering files after rm
+Date: 31 Mar 2003 08:36:33 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E87FA51.3060100@arrakis.es>
+Message-ID: <20030331083633.29504.qmail@webmail35.rediffmail.com>
+Reply-To: "n  mishra" <mishra_nn@rediffmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Mandrake 9.0
-
-control center>system>users
-"Cannot lock user lib,
-file /etc/ptmp or /etc/gtmp exist".
-
-Yes, both exist.
-
-clm (as root)>
-adduser (or useradd, the result is the  same. Which command is preferred?)
-"vipw lockfile (/etc/ptmp) is present!"
-
-I cannot find an explanation in the manual.
-
-TIA
-Andrew
+Hi all,
+This probably sounds really silly but could someone please tell me 
+if there is any way of recovering files which have been deleted 
+using the rm command.
+Thanks in advance.
+mishra.
+_______________________________________________________________________
+Odomos - the only  mosquito protection outside 4 walls -
+Click here to know more!
+http://r.rediff.com/r?http://clients.rediff.com/odomos/Odomos.htm&&odomos&&wn
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
