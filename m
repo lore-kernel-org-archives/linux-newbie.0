@@ -1,56 +1,30 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Kernel 2.6
-Date: Sat, 11 May 2002 08:12:28 +0100
+From: Staci <spiritlover666@yahoo.com>
+Subject: General non-problem-solving question!
+Date: Sat, 11 May 2002 10:25:14 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020511071228.GA322@cam.ac.uk>
-References: <200205100330.41843.davidsmind@linuxbasics.com>
+Message-ID: <20020511172514.53180.qmail@web12805.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="SLDf9lqlvOQaIe6s"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200205100330.41843.davidsmind@linuxbasics.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: david mattatall <davidsmind@linuxbasics.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+What's CVS?
+And what's it used on and for, generally?
 
---SLDf9lqlvOQaIe6s
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Thanks!
 
-> When is it schedualed to be released?
-It's still far too early for a release date to be set. For comparison,
-going from 2.3.0 to 2.4.0 took eighteen months or so, and 2.5 has
-been going for about five months.
+sl
 
-> Are there certain new features that the end user will notice? If so
-> what are they?
--- Better support for hot pluggable USB devices
--- a different configuration system (possibly including device autodection)
--- the enhanced security work from the NSA
--- better power management (especialy ACPI)
--- better performance, hopefully.
+=====
+**************************
+In cyberspace nobody can hear you scream.
 
-plus any other interesting stuff which gets written in the meantime.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---SLDf9lqlvOQaIe6s
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE83MRcO4S8/gLNrjcRAsPyAJ9K6HcqPCg1SszURoFJ+eltdeIIowCgtyje
-lUPgSHeamuWEh6mH92B+fKI=
-=w6uE
------END PGP SIGNATURE-----
-
---SLDf9lqlvOQaIe6s--
+__________________________________________________
+Do You Yahoo!?
+LAUNCH - Your Yahoo! Music Experience
+http://launch.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
