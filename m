@@ -1,68 +1,62 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Time problem
-Date: Wed, 02 Oct 2002 08:59:27 -0700
+Subject: Re: Sharing drives.
+Date: Wed, 02 Oct 2002 09:09:42 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021002083354.02d04980@celine>
-References: <20021002124859.54259.qmail@web13409.mail.yahoo.com>
- <20021002124859.54259.qmail@web13409.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20021002090054.02d0a9d0@celine>
+References: <000501c269e8$b8ca73c0$af33f7c2@gcb>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02100214434101.02975@unix.pa3gcu>
+In-Reply-To: <000501c269e8$b8ca73c0$af33f7c2@gcb>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Abhijit Vijay <abhijit_v@yahoo.com>, linux-newbie@vger.kernel.org
+To: geoff <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
 
-At 02:43 PM 10/2/02 +0000, pa3gcu wrote:
->On Wednesday 02 October 2002 12:48, Abhijit Vijay wrote:
-> > Hi All,
-> >
-> > I have been having a peculiar problem with KDE.
-> > Whenever I reboot, the time on the control panel goes
-> > back by four hours. (I am in the EDT zone) Could
-> > anyone tell me why this is happening and the fix
-> > please?
+I can't speak to "inadvisable", but the approach you ask about is perfectly 
+feasible. A common use of this sort of setup is to have a /home partition 
+that is common to the two distros.
+
+It is more than you need, though. Each distro can mount the other's root 
+partition (and its other partitions, depending on what you created) 
+directly on any convenient mount point(s).
+
+For example, if you have Debian's root (/) partition on /dev/hda1 and 
+SuSE's on /dev/hdb1, you can mount the SuSE partition on Debian with these 
+two commands (run as root):
+
+         mkdir /mnt/SuSE_root
+         mount -t ext2 /dev/hdb1 /mnt/SuSE_root
+
+The first line just creates the mount point (assuming /mnt already exists, 
+as it usually does) and need be done only once. The second does the actual 
+mount and needs to be done whenever you reboot (modify the -t argument if 
+you use a different filesystem type). Or, once you've created the mount 
+point, you can add a line to /etc/fstab to automount it every time (a look 
+at /etc/fstab will probably be enough for you to figure this part out).
+
+BTW, for converting packages between .rpm and .deb, you might want to look 
+at "alien".
+
+At 08:52 AM 10/2/02 +0100, geoff wrote:
+>I have a dual-boot Linux system.  Debian 3.0 (Woody), and SuSE 8.0 (Prof).,
+>on separate drives sharing a common machine  (Pentium III at 600 MHz).
 >
->Could it be that you have set the clock to GMT.?
+>Both work well, and I am enjoying learning the differences between them,
+>running
+>them as separate alternatives.
 >
->You dont say which distro, in slacklware t change defaults use the command
->'timeconfig'.
->I dont have access to any other machines at the minute to give you more
->pointers.
+>Would it be inadvisable to have a third hard disk drive  on the same shared
+>machine,
+>which is mountable on either distro, in order to enable files from (say)
+>Debian to be transfered
+>into SuSE,   (or vice-vers) or would I be asking for trouble ?
+>
+>Can I use a common  device  (say)  /dev/hdc  as  a common part of two
+>partition systems ?
+>
+>A possible use would be to YaST/ RPM into Debian, or APT/ DEB into SuSE.
 
-Richard's guess is a good one, but it might be a bit off in the details. It 
-depends a bit on what you mean by "back". I think he is right that the 
-hardware and software clocks have a mismatch, but I can't tell from what 
-you wrote which way the mismatch goes.
 
-By convention, GMT (or UT) is 0, and EDT is -4 (4 hours earlier).  If (for 
-example) you boot/init your machine at noon, and the time displayed is 8 AM 
-(this is what I would describe as "back by four hours"), then
-
-         your hardware clock is set to local time
-         your software clock thinks the hardware clock is set to GMT
-
-In contrast, if  (for example) you boot/init your machine at noon, and the 
-time displayed is 4 PM, then
-
-         your hardware clock is set to GMT
-         your software clock thinks the hardware clock is set to local time
-
-You can get them beck into sync by changing either half.
-
-         To change the hardware clock, the usual tool is "hwclock".  The 
-command "hwclock --systohc" will use the current system time (first reset 
-this using "date", or maybe KDE has some thingie to do it) to reset the 
-hardware clock.
-
-         To change what the software clock expects to get from the hardware 
-clock ... well, this part seems to be quite distro specific, so if you want 
-to do it this way, tell us what distro you are using. In Debian, for 
-example, all you would need to change is a line in /etc/defaults/rdS (a 
-line which says either "UTC=yes" or "UTC=no", recording which way the 
-hardware clock is set); "man tzsetup" for more details here (if you don't 
-use Debian, you might see if "man tzconfig" rerurns a man-page listing). 
-But I don't know how Debian-specific this approach is.
 
 
 --
