@@ -1,33 +1,27 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Wo Ist @
-Date: Mon, 26 May 2003 18:24:53 +0800
+From: "Robert" <robert_schmidli@hotmail.com>
+Subject: How do you apply patches to source code?
+Date: Mon, 26 May 2003 21:03:14 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030526102458.5AF88103AF@pfheiss>
-References: <200305260728.08526.linux-newbie@jimmo.com>
-Mime-Version: 1.0
+Message-ID: <bass5l$5fk$1@main.gmane.org>
+Reply-To: "Robert" <robert_schmidli@hotmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 26 May 2003 07:28:08 +0200." 
- <200305260728.08526.linux-newbie@jimmo.com>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@jimmo.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Thanks!
+I have recently obtained the source code to an application as a .src.rpm
+file.  I have unbundled the code into /usr/src/RPMS/SOURCES.  There are a
+whole lot of .patch.bz2 files in the directory, as well as the main .tar.bz2
+file.
 
-I had tried all possible combinations with left site Ctrl, Alt, Shift not 
-realizing that the right Alt/Shift have different functions and I can see now 
-that there are about 30 odd more characters to get out with those two keys, 
-not found on US keyboard setting.
+How do I compile the program with the patches?
 
-What I have not found yet is "|". How do you pipe in German? No that I need 
-it, just curious.
+I realise this is probably an easy one, but I can't find any documentation
+about applying patches.
 
-Regards
-
--- 
-Peter
+Robert.
 
 
 
