@@ -1,52 +1,40 @@
-From: Dave <howek@vcss.k12.ca.us>
-Subject: Java Plugin - Poor Mozilla Install?
-Date: Sun, 15 Feb 2004 09:08:13 -0800
+From: Amin <amin@siriusbb.com>
+Subject: Re: Java Plugin - Poor Mozilla Install?
+Date: Mon, 16 Feb 2004 02:02:06 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <c0o8vh$65c$1@sea.gmane.org>
+Message-ID: <200402160202.07157.amin@siriusbb.com>
+References: <c0o8vh$65c$1@sea.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <c0o8vh$65c$1@sea.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I have posted my problem here recently and many people have tried to 
-help me.  Thanks!  But the problem remains.  I have a theory I would 
-appreciate your opinion on.
+On Sunday 15 Feb 2004 23:08, Dave wrote:
+> For some reason (Newbie issue probably) I have Mozilla in a directory
+> called /mozilla and a .mozilla directory.  When I look at the
+> Bookmarks file, I see that the date in the .mozilla directory is the
+> most recent. So, I'm assuming that I'm using the Mozilla in the
+> .mozilla directory. Is that normal? Or, have I messed up the install
+> of Mozilla and that's why the plugins won't work properly?
+>
+> Would I be smart to take Mozilla off my machine (saving my Inbox,
+> Bookmarks, etc.) and then reinstall?  The reason I ask, is that my
 
-I can not get my Mozilla 1.6 to recognize the Java Plugin X-JAVA-VM.  It 
-auto installs from the Netscape Plugin page and says it successful.  I 
-can see it on my machine, but I can't seem to put it where Mozilla wants it.
+Absolutely.  Having Mozilla in the root directory just introduces too 
+many unknowns.  Better to make things as simple as possible by 
+reinstalling in a default location, like ``/usr/local/mozilla''.
 
-For some reason (Newbie issue probably) I have Mozilla in a directory 
-called /mozilla and a .mozilla directory.  When I look at the Bookmarks 
-file, I see that the date in the .mozilla directory is the most recent. 
-  So, I'm assuming that I'm using the Mozilla in the .mozilla directory. 
-  Is that normal? Or, have I messed up the install of Mozilla and that's 
-why the plugins won't work properly?
+By the way, can you tell us where exactly on your machine you can see 
+the Java plugin file(s).  On my machine I didn't use the Netscape 
+plugins page but rather got the Java Runtime Environment + Software 
+Development Kit from Sun.  So I don't know exactly what happens when 
+someone does get the Java plugin from the Netscape plugins page.
 
-Would I be smart to take Mozilla off my machine (saving my Inbox, 
-Bookmarks, etc.) and then reinstall?  The reason I ask, is that my 
-nephew helped me set this up last December and he was surprised that 
-Mozilla installed to the Root.
-
-My Mozilla functions fine in all other regards, but I just can't add 
-plugins.  With the about:plugins in command, I do see that two plugins 
-are installed;
-
-application/x-shockwave-flash 	Shockwave Flash 	swf 	Yes
-application/futuresplash 	FutureSplash Player 	spl 	Yes
-
-Any ideas?
-
-Dave
--- 
-
-SuSE Linux 2.4.21-166-Athlon
-i686 Athlon i386 GNU/Linux
-73 K6DBH Dave . .
-
-
+Good luck,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
