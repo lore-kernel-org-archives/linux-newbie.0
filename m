@@ -1,32 +1,35 @@
-From: "Jamie Risk" <jamie_risk@yahoo.ca>
-Subject: Re: How can I move /usr/bin, /usr/lib (etc.) files?
-Date: Thu, 2 Jan 2003 12:24:11 -0500
+From: glenn <genright@paradise.net.nz>
+Subject: Re: how to remove Grub
+Date: Fri, 3 Jan 2003 08:38:24 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <av1si4$oq4$1@main.gmane.org>
-References: <av1qr4$hev$1@main.gmane.org>
-Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
+Message-ID: <200301030838.24728.genright@paradise.net.nz>
+References: <5.1.0.14.0.20030102071047.00bb7e88@mail.comcast.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.0.20030102071047.00bb7e88@mail.comcast.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-"Chris" wrote:
->bad bad idea. ... why would you want to do this?
+On Fri, 03 Jan 2003 1:18 am, Chris wrote:
+> Does anyone know how to remove/uninstall the Grub loader from Red Hat 8.0?
+>
+> I've been dual booting my PC between WinXP and RH8, but have now set
+> up a separate PC in an attempt to learn Linux without fear of destroying
+> what I have on my XP box, and would like to restore it back to XP only.
+>
+> With DOS/Win9x I'd just use "FDISK /MBR" to remove LILO, but I'm not sure
+> what to do with XP and Grub.  Is it the same procedure?
+>
+> Thank you,
+> Chris
 
-The reasons _are_ fickle but:
- * I'm trying to develop an understanding of how linux operates...
- * Most unix environments I've worked on were set up with /usr/local/bin
-etc. so I'm used to this
- * I'm having fun compiling all the src packages anyway, so if it's just a
-case of specifying in the "configure" process of make and header file
-generation, then I'd give it a whirl.
+Firstly, is XP on the same physical disk drive as linux or a seperate disk.
 
-
-
-
-
+If they are on the same drive then using the /mbr option will prevent you 
+booting onto XP as well. However if the drive is phisically seperate then go 
+ahead and clean it up.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
