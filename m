@@ -1,37 +1,65 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: device or resource busy error message - what to do?
-Date: Thu, 12 Feb 2004 06:43:42 +0100
+From: "Ralica Kirilova" <larry@podovinastilki.com>
+Subject: IMAP Error
+Date: Thu, 12 Feb 2004 14:08:41 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402120643.42201.pa3gcu@zeelandnet.nl>
-References: <5.1.0.14.1.20040211105425.01fccef8@celine> <Pine.LNX.4.58.0402111417120.13970@debian-emach>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <002101c3f160$f4a0a8f0$0500a8c0@sea>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0402111417120.13970@debian-emach>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: James Miller <jamtat@mailsnare.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 11 February 2004 21:26, James Miller wrote:
+Hi all,
+I have a problem with running courier-IMAP server.
+My system is Linux Slackware 9.1, uname -r --> 2.4.22
+I have qmail running.
+I'm trying to run ./configure [options] like described in
+http://www.inter7.com/courierimap/INSTALL.html#install
 
-> Looks like I'll have to save that analysis for some future occassion.
+And I get this error:
+----------------------------------------------------------------------------
+-----------
+checking for gdbm_open in -lgdbm... yes
+checking for gdbm_open... no
+checking for dbopen in -ldb... no
+checking for db_open in -ldb... no
+checking for db_env_create in -ldb... yes
+checking for dbopen... no
+checking for db_open... no
+checking for db_env_create... no
+configure: error: Cannot find either the gdbm or the db library.
+----------------------------------------------------------------------------
+------------
+I google for it and I find here
+http://www.inter7.com/courierimap/FAQ.html#libs
+an answer. But it didn't solve the problem.
+I have /usr/include/gdbm.h and /usr/lib/libgdbm.a         libgdbm.la
+libgdbm.so        libgdbm.so.2      libgdbm.so.2.0.0
 
-Why not start vmware with the floppy disconneted, do that in the confugration 
-settings of the guest system. You may want to do that with your cdrom as well 
-as the same thing will happen when you want to use the cdrom on the host 
-system.
+In file config.log I've found that I'm maybe missing some libraries. It's a
+cut from this file
+----------------------------------------------------------------------------
+-------------
+configure:3026: checking for gdbm_open
+configure:3076: gcc -o conftest -g -O2   conftest.c -lgdbm  >&5
+In file included from
+/usr/lib/gcc-lib/i386-slackware-linux/3.2.2/include/limits.h:132,
+                 from
+/usr/lib/gcc-lib/i386-slackware-linux/3.2.2/include/syslimits.h:7,
+                 from
+/usr/lib/gcc-lib/i386-slackware-linux/3.2.2/include/limits.h:11,
+                 from configure:3046:
+/usr/include/limits.h:132:75: no include path in which to find limits.h
+configure:3079: $? = 1
+configure: failed program was:
+| #line 3031 "configure"
+----------------------------------------------------------------------------
+-------------
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Maybe the question is very stupid, I'm sorry if it is so.
+Thanks for answers in advance!
+P.S. Excuse me for my bad english
 
 
 -
