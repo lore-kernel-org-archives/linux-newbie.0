@@ -1,25 +1,49 @@
-From: Ola Theander <ola.theander@connective.se>
-Subject: Q: Security creditals and automatically started services?
-Date: Sun, 21 Apr 2002 18:46:53 +0200
+From: Suriya Narayanan M S <mssnlayam@cs.annauniv.edu>
+Subject: CD writing in ext2 filesystem
+Date: Sun, 21 Apr 2002 22:21:13 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <FC79D1F4C922D511983400104BC30388019566@DELL1>
+Message-ID: <200204211916.05442.mssnlayam@cs.annauniv.edu>
+Reply-To: mssnlayam@cs.annauniv.edu
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: GNU/Linux Newbie <linux-newbie@vger.kernel.org>
 
-Dear subscribers.
+Hi all,
+	I wrote a CD in ext2 filesystem (that is what I 
+thought I did) but now I am unable to read the CD.
+What I did was
+$ dd if=/dev/zero of=file.ext2 bs=400M count=1
+$ mkfs.ext2 file.ext2
+# mount file.ext2 /mnt/fileimage -t ext2 -o loop
+# cp something /mnt/fileimage
+# umount /mnt/fileimage
+# cdrecord -v speed=4 dev=0,0,0 -data file.ext2
 
-My question is regarding services that start automatically when Linux boots
-i.e. a SXXstartup and KXXshutdown script is put in the RC.X runlevel
-folders. What I would like to know is which user account these services will
-run as and how to change that account? E.g. if I start Apache and/or
-PostgreSQL at startup, how do I set the user account under which they should
-execute?
+I was unabe to mount the CD with the command
+# mount -t ext2 -o ro /dev/cdrom /mnt/cdrom 
 
-Kind regards, Ola Theander
+Some observations I made were
+$ file file.ext2
+file.ext2: Linux rev 1.0 ext2 filesystem data
+$ cat /dev/cdrom | file -
+standard input:              Linux rev 1.0 ext2 filesystem data
+$ dd if=/dev/cdrom of=newfile.ext2
+Now I am able to mount newfile.ext2
+
+Could somebody please help me on what could have gone wrong.
+
+Thanks in advance
+Suriya Narayanan M S
+-- 
+Guru Brahma Gurur Vishnu
+Gurur Dhevo Maheshwaraha
+Gurur Saakshaath Parabramha
+Thasmai Shree Gurave Namaha
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
