@@ -1,60 +1,44 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: booting from USB drive (without BIOS support)
-Date: Sun, 18 Jul 2004 20:14:23 +0100 (BST)
+From: Kev <savage-garden@hanikamail.com>
+Subject: Linux Help
+Date: Mon, 19 Jul 2004 23:09:49 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0407182010390.30519@ppg_penguin.kenmoffat.uklinux.net>
-References: <Pine.LNX.4.58.0407060808130.1337@debian-emach>
- <200407072234.44993.eric@cisu.net> <Pine.LNX.4.58.0407131124430.1337@debian-emach>
- <200407172313.54584.eric@cisu.net> <Pine.LNX.4.58.0407181009140.1363@debian-emach>
+Message-ID: <20040719230846.4833.SAVAGE-GARDEN@hanikamail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407181009140.1363@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Sun, 18 Jul 2004, James Miller wrote:
+Hi,
 
-> On Sat, 17 Jul 2004, Eric Bambach wrote:
->
-> > 2.2.26 eh? Ill take a look.
->
-> Thanks.  Much appreciated.
->
-> > The ones marked -prepatch? No, You shouldn't neccesarily apply thes=
-e. They are
-> > testing versions in between releases. If you are on a desktop or ca=
-n stand a
-> > few bugs, or need a new feature, then you can download the full sou=
-rce, and
-> > then apply the patch. However, generally you should wait for the fu=
-ll
-> > release. The numbering without the -preX at the end. eg. 2.2.26 not
-> > 2.2.27-pre2.
->
-> The ones I'm talking about - taking the case of the kernel I've menti=
-oned
-> as an example - are listed like this: patch-2.2.26.gz.  Is this the
-> prepatch of which you speak, or something else?  They're right in the=
- same
-> directory with the kernels, down toward the bottom.
->
+I'm new to Linux, so i'm paling to install a gateway, with the following,
 
- You use patch-2.x.n to go from linux-2.x.{n-1} to linux-2.x.n : e.g. i=
-f
-you are running linux-2.6.6, you apply patch-2.6.7 to upgrade to
-linux-2.6.7.  The -pre and -rc patches are only for those who play with
-development or test kernels.
+1. Firewall
+2. DNS
+3. DHCP
+4. SMTP (relay only)
+5. Email Virus Scaning
+6. Gray Listing (email)
+7. NAT
+8 Web Cashing
+9. Web Based Configuration tool for all above.
 
-Ken
---=20
- das eine Mal als Trag=F6die, das andere Mal als Farce
+can any one tell me the best Linux version to use, (RedHat, Debian, etc)
+and the software i can use, like DNS = BIND, some thing simple to use...
+
+the Box will be a P2 with 256MB ram but if i can get it to work on a P1
+166Mhz that would be great....
+
+thanks
+Kev
+------- 
+Web Hosting at cheep price, stating at $1 per moth with your own domain, .COM, .NET, .LK, .ORG etc..
+PHP, CGI, Perl, MySQL, Cpanel 9, POP3, POP3s, SMTP, IMAP, FTP,
+http://www.orbitsl.net
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
