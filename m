@@ -1,54 +1,75 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: a sound problem solution?
-Date: Mon, 10 Jan 2005 23:33:09 -0600 (CST)
-Message-ID: <Pine.LNX.4.58.0501102258510.7477@localhost.localdomain>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: a sound problem solution?
+Date: Tue, 11 Jan 2005 06:31:00 -0800
+Message-ID: <5.1.0.14.1.20050111061853.02a9ea30@celine>
+References: <Pine.LNX.4.58.0501102258510.7477@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.58.0501102258510.7477@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-55E46069"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Back in the day, I was something of an audiophile and was interested in
-expensive sound systems. But that interest ended quite some time ago when
-I realized how fettering sinking alot of money (and the time it takes to
-earn it) into such things is. Nowadays, we have this notion of getting
-sound from our computers, which otherwise would be limited to producing
-for us various calculations, text compositions and graphical renderings.
-It's a bit odd to me that someone would want to get quality sound out of
-their computer: it's kind of like expecting your washing machine to double
-as a sports car. Can't one machine just do one job, and a separate machine
-another? Why this quest for the renaissance machine that does it all?
+At 11:33 PM 1/10/2005 -0600, James Miller wrote:
+[...]
+  So, all would be fine if I could
+>just keep my computer from suddenly ceasing to output sound for unknown
+>reasons. I'm not really interested in troubleshooting the sound server so
+>much as I am in a way of possibly resetting it short of rebooting the
+>machine. Is there a way to do this, i.e., to shutdown, then restart the
+>sound server to see if I can get the sound back without a reboot?
+>
+>A few details, in case it's helpful. This is Ubuntu, a Debian variant.
+>Sound hardware uses the snd_via82xx module--auto-detected and set up by
+>the OS on installation. Things I've noted that cause sound output to
+>cease: plugging/unplugging the speakers while the computer is running;
+>plugging a usb device into a hub mounted on top of the computer case; and
+>today I can't say that anything in particular caused this. The symptom is
+>an end to all sounds: no music will play, nor will system sounds. Only the
+>PC speaker remains operational. Sound comes back after a reboot. I'm
+>hoping there's a way to stop, then restart the sound server and that this
+>might resolve the problem when it occurs. I think this distro must use the
+>ALSA sound server, if I've understood correctly these technical details.
+>
+>Any advice? Go back to using a stereo-type device for sound and just use
+>my computer for computing, perhaps?
 
-But, I wax philosophical. I finally decided to give in and listen to some
-music through my computer. Mainly a satellite radio I've gotten to run
-through it. I'm satisfied with the barest semblance of audio reproduction
-these days: it sounds a little better than an old mono phonograph playing
-45's, which is fine. If I want better sound I'll visit a friend with a
-real stereo or go to a live performance. So, all would be fine if I could
-just keep my computer from suddenly ceasing to output sound for unknown
-reasons. I'm not really interested in troubleshooting the sound server so
-much as I am in a way of possibly resetting it short of rebooting the
-machine. Is there a way to do this, i.e., to shutdown, then restart the
-sound server to see if I can get the sound back without a reboot?
 
-A few details, in case it's helpful. This is Ubuntu, a Debian variant.
-Sound hardware uses the snd_via82xx module--auto-detected and set up by
-the OS on installation. Things I've noted that cause sound output to
-cease: plugging/unplugging the speakers while the computer is running;
-plugging a usb device into a hub mounted on top of the computer case; and
-today I can't say that anything in particular caused this. The symptom is
-an end to all sounds: no music will play, nor will system sounds. Only the
-PC speaker remains operational. Sound comes back after a reboot. I'm
-hoping there's a way to stop, then restart the sound server and that this
-might resolve the problem when it occurs. I think this distro must use the
-ALSA sound server, if I've understood correctly these technical details.
+The sound "server"? It's not completely clear what you are referring to.
 
-Any advice? Go back to using a stereo-type device for sound and just use
-my computer for computing, perhaps?
+If you mean the kernel module, the usual way to "restart" it is to rmmod 
+it, then modprobe it. If you want more specific advice here, then please 
+provide the output of lsmod, as well as identification of the kernel 
+involved (uname -a usually provides this).
 
-James
+If you mean whatever app you use to play things ... xmms, as an example ... 
+please tell us what you are playing (music? sound accompanying video?) and 
+what you are playing it with (xmms? mpg123? xine? mplayer?).
+
+You mention "system sounds". What system sounds does the host generate when 
+sound is working? (I ask because my own Linux systems here do not use the 
+sound card for anything other than audio playback, including the audio 
+associated with video.)
+
+More fundamentally, if the problem is generated by unplugging, then 
+replugging a speaker connection to the sound card (or on-mobo sound 
+interface), then that suggests a hardware problem ... the connection to 
+external speakers is one way only, and the kernel really has no way to 
+detect the presense or absence of speakers. What kind of "reboot" restores 
+sound (one caused by entering the "reboot" command or an equivalent, or a 
+power-cycle reboot)? What hardware is involved?
+
+
+
+
+-- 
+No virus found in this outgoing message.
+Checked by AVG Anti-Virus.
+Version: 7.0.300 / Virus Database: 265.6.10 - Release Date: 1/10/2005
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
