@@ -1,54 +1,72 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: zero-sized /dev/dsp after forced shutdown
-Date: Tue, 19 Oct 2004 20:03:24 -0400 (EDT)
+From: kernel kernel <unix.hacker@gmail.com>
+Subject: Re: Unable to make kernel 2.6.8 up
+Date: Wed, 20 Oct 2004 09:22:43 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0410191926490.10176-100000@legolas.personal.engin.umich.edu>
-References: <5.1.0.14.1.20040425142611.02d29f00@celine>
-Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
+Message-ID: <104ee7a5041019205249198045@mail.gmail.com>
+References: <104ee7a50410190917496bc175@mail.gmail.com>
+	 <200410192136.58935.pa3gcu@zeelandnet.nl>
+Reply-To: kernel kernel <unix.hacker@gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040425142611.02d29f00@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200410192136.58935.pa3gcu@zeelandnet.nl>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Richard Adams <pa3gcu@zeelandnet.nl>, newbie <linux-newbie@vger.kernel.org>
 
-Hello,
+Hi  Richard,
+Thanks for your fast response.
 
-Experimenting with xmms-plugins on a debian (sid) machine running 2.4.18
-on an athlon 2100 chip caused the machine to hang within X while xmms was
-running. I had to resort to rebooting the machine after logging in
-remotely. After the machine rebooted, I am unable to hear audio. I am able
-to set the mixer controls with aumix and load/play songs in xmms, but hear
-no sound output (the cables are connected and fine). lsmod did not show my
-sound-card module (emu10k1) loaded, so I modprob'd for it. Post modprobe
-heres the output of lsmod | grep emu10k1:
+I am furnishing the following details.
+Motherboard : Intel 865
+Processor    : P4 2.4GHz
+SCSI           : Samsung Hard disk
 
-emu10k1                55648   0
-ac97_codec              9696   0 [emu10k1]
-sound                  54508   0 [emu10k1]
-soundcore               3652   7 [emu10k1 sound]
+I am trying to use 2.6.8 kernel from the GNU (downloaded from kernel.org)
 
-ls -lF /dev/dsp* shows:
-crw-rw-rw-  1 root audio 14,  0 Mar 14  2002 /dev/dsp
-crw-rw-rw-  1 root audio 14, 19 Mar 14  2002 /dev/dsp1
-crw-rw-rw-  1 root audio 14, 35 Mar 14  2002 /dev/dsp2
-crw-rw-rw-  1 root audio 14, 51 Mar 14  2002 /dev/dsp3
-
-ls -lF /dev/mixer* gives: 
-crw-rw-rw-  1 root audio 14,  0 Mar 14  2002 /dev/mixer
-crw-rw-rw-  1 root audio 14, 16 Mar 14  2002 /dev/mixer1
-crw-rw-rw-  1 root audio 14, 32 Mar 14  2002 /dev/mixer2
-crw-rw-rw-  1 root audio 14, 48 Mar 14  2002 /dev/mixer3
-
-I thought there was something strange about the sizes being 0 bytes. What 
-may be happening, and how can I fix this? 
-
-Thanks,
-
--K
+Thanks 
+Amrith
 
 
+
+On Tue, 19 Oct 2004 21:36:58 +0200, Richard Adams <pa3gcu@zeelandnet.nl> wrote:
+> On Tuesday 19 October 2004 18:17, kernel kernel wrote:
+> > Hi all
+> > While booting with 2.6.8 kernel. giving error no ata_piix module found.
+> 
+> Unless you have an Intel SATA contoler on your mobo, (and possably SATA disks)
+> then i would imagen you could ignore this message, if you do have the above
+> then "please" supply the needed info in your next reply.
+> 
+> What motherboard.
+> What chipsets does it have.
+> What disks do you have, make and model numbers please.
+> Name of distro would also help.
+> 
+> It all comes down you you forgetting to include support for Intel SATA
+> contolers which is to be found under;
+> SCSI low-level drivers
+> sub section;
+> CONFIG_SCSI_SATA
+> When chosing the above you will automaticly get the following "option";
+> CONFIG_SCSI_ATA_PIIX
+> 
+> >
+> > How to solve it.
+> >
+> > Thank
+> > kh
+> 
+> --
+> If the Linux community is a bunch of thieves because they
+> try to imitate windows programs, then the Windows community
+> is built on organized crime.
+> 
+> Regards Richard
+> pa3gcu@zeelandnet.nl
+> http://people.zeelandnet.nl/pa3gcu/
+> 
+>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
