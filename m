@@ -1,74 +1,42 @@
-From: whitnl73@juno.com
-Subject: Re: distribution choice
-Date: Fri, 28 Feb 2003 01:17:05 -0500 (EST)
+From: "Eng Se-Hsieng" <g0202512@nus.edu.sg>
+Subject: 2.5.59: Kernel: No module found in object
+Date: Fri, 28 Feb 2003 15:44:57 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030228.012503.8.0.whitnl73@juno.com>
-References: <5.1.0.14.1.20030227152314.01f2e110@celine>
+Message-ID: <720FB032F37C0D45A11085D881B03368A2B351@MBXSRV24.stu.nus.edu.sg>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030227152314.01f2e110@celine>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
+Content-Type: text/plain; charset="us-ascii"
+To: linux-kernel@vger.kernel.org
 Cc: linux-newbie@vger.kernel.org
 
-On Thu, 27 Feb 2003, Ray Olszewski wrote:
+Dear all,
 
-> Probably about as informative as RPMs are. That is to say, good but not
-> great. Package names usually make sense, and searchig the package cache
-> usually finds what you want. But sometimes your search terms are too vague
-> to work ... you recall recently a question here about "rec", for example.
-> Trying to search the package archive for "rec" matched 100+ packages ... a
-> hopeless screening task. The real lack I find is my inability to query the
-> database about what package contains a particular file ... there is a way
-> to do this if the package is installed on the host, but not if you want the
-> app and need to find out which package contains it. (In this respect, I was
-> spoiled by Slackware, which always included a complete list, easily
-> grep'able, of the complete contents of of every package.)
->
-rpm keeps a database of rpm's it has installed, which can be queried by
-rpm -qf <filename>
-right, I guess you said the debian package manager has an equivalent;
-you can make a database of all packages with something like
+I have to get the Nokia D211 working in the 2.5.59 kernel. I tweaked the
+driver files (which are meant for 2.4.x kernels) and it compiles and
+installs fine but when I insert the PCMCIA device, I get:
 
-rpm -qlip /where/the/rpms/are/* >rpmlist
+cardmgr[1302]: socket 0: Nokia D211
+cardmgr[1302]: executing: 'modprobe nokia_cs'
+cardmgr[1302]: +FATAL: Module nokia_cs not found
+cardmgr[1302]: modprobe exited with status 1
+cardmgr[1302]: executing: 'insmod /lib/modules/2.5.59/pcmcia/nokia_cs.o'
+kernel: No module found in object
+cardmgr[1302]: +Error inserting '/lib/modules/2.5.59/pcmcia/nokia_cs.o':
+-1 Invalid module format
+cardmgr[1302]: insmod exited with status 1
+cardmgr[1302]: get dev info on socket 0 failed: Resource temporarily
+unavailable.
 
-although this is not exactly grep'able, you are better off using
- less -ni
-on it, so you can scan for the filename and then back up to the -i entry
-for that package which has the package name.  I guess if somebody really
-cares I could come up with a way to make a grep'able rpmlist.  I bet you
-could do the same with the debian package manager.
+I would really appreciate any help on this. 
 
-You don't _have_ to use any distro, and you can drop packages from one
-distro on top of another distro, as long as you are willing to keep
-track of the dependencies yourself.  that is what
-rpm --nodeps <package file name>
-is for, FI.
+Thank you.
 
-Of course, if you get the source and compile/install the package
-yourself, it isn't known to any package manager...
-
-If you want to use Wine, you do better to get the source, uninstall any
-packages of it you may have, and build it yourself.  Distros that carry
-it put it in different places, and you may get version problems I don't
-want to debug again otherwise.
-
-Lawson
----oops---
-
-
-
-
-
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+Regards,
+Se-Hsieng
+(linux-newbie)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
