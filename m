@@ -1,8 +1,8 @@
-From: John E. Jay Maass <jay.maass@verizon.net>
-Subject: Was: Trying to get GUI'ed
-Date: Sat, 26 Oct 2002 7:01:08 -0400
+From: "geoff bagley" <geoff@gcbagley.uklinux.net>
+Subject: Console settings.
+Date: Sat, 26 Oct 2002 13:33:11 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021026110108.EOTG9549.out019.verizon.net@[127.0.0.1]>
+Message-ID: <000101c27ceb$e7805020$4733f7c2@gcbagley>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,28 +10,21 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Bryan Simmons <bsimmo1@gl.umbc.edu> writes:
+I have a dual-boot system with Debian Woody on hda,  and SuSE 8.0 on hdb.
+They both work well,  and share a common hdc.
 
-> Think that was informative?  Learn assembly on x86 Linux.
-> You have NO idea what a computer goes through just to add
-> two numbers, let alone manage network traffic...  The most
-> shocking part is the idea of virtual memory.
+When I set up the  Konsole settings, changing for example, the Schema and
+the font size,
+and then hit the  Save Setting button  on Debian,  they STAY  saved, and are
+there next
+time I boot up.   On SuSE I have to re-set them each time.
 
-Bryan,
+Is this a bug,  and can I fix it ?
 
-I thought my little RAM thing was informative, yeah. It was
-intended as practical, nothing esoteric or high minded. About
-assembly language, a friend of mine worked with it and I took
-a peek. I would love to know a little assembly. What I read
-of it was impossible for me to grasp. Somehow I get by. With
-great perseverance I manage to eventually grasp a little of
-what others take for granted. Certainly nothing like assembly,
-though <grins>.
+Best regards,
 
-All best,
-Jay
-
- 
+Geoff
+G3FHL
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
