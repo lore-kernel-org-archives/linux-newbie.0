@@ -1,48 +1,33 @@
 From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: howto configuring kernel and modules.conf for automatic loading
- of ide-scsi
-Date: Mon, 26 Jan 2004 00:08:29 +0000 (GMT)
+Subject: Re: reiserfs
+Date: Mon, 26 Jan 2004 00:14:51 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0401252359410.9280@ppg_penguin>
-References: <20040125041110.22704715.agri@desnol.ru> <5.1.0.14.1.20040124202304.01f31308@celine>
- <20040125140656.023f0ced.agri@desnol.ru>
+Message-ID: <Pine.LNX.4.58.0401260009340.9502@ppg_penguin>
+References: <200401251640.31302.wheds8@ms66.hinet.net> <20040125114435.GB12967@neon>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040125140656.023f0ced.agri@desnol.ru>
+In-Reply-To: <20040125114435.GB12967@neon>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Agri <agri@desnol.ru>
-Cc: linux-newbie@vger.kernel.org
+To: Axel Siebenwirth <axel@pearbough.net>
+Cc: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
 
-On Sun, 25 Jan 2004, Agri wrote:
+On Sun, 25 Jan 2004, Axel Siebenwirth wrote:
 
-> thanks for answers, but....
-> the only thing i get: there is no way to configure loading of ide-scsi "ON DEMAND".
-> Am i right?
+>
+> Ext3 is slower as far as I know. Reiserfs is quite stable.
+> I've had the feeling that JFS was faster when it comes to accessing larger
+> files and reading large directories, I mean with many files.
+> I have never actually tried ext3 but have read that it has many problems as
+> well and is quite slow. The On-disk-layout is very old already.
 >
 
-Following are from my modules.conf.
+Ooh, almost FUD!  I remember reading a sound-recording HOWTO suggesting
+ext2 was slow, but I use it on all my machines, I've had no problems
+with it, and I've seen no speed problems attributable to the filesystem
 
-First, make sure there is a path pointing to the directory where the
-actual modules are found (maybe not necessary), such as
-
-path[scsi]=/lib/modules/`uname -r`/kernel/drivers/scsi
-
-The following let me use /dev/scd0 to access the CD for reading, and sg
-(I guess) for writing from cdrecord:
-
-alias scsi_hostadapter ide-scsi
-alias scd0 sr_mod # load sr_mod upon access of scd0
-pre-install sg modprobe ide-scsi # load ide-scsi before sg
-pre-install sr_mod modprobe ide-scsi
-pre-install ide-scsi modprobe scsi_mod
-
-You'll probably need to rerun depmod after changing modules.conf.
-Of course, unless your distro runs a cron job to unload unused modules,
-once they've been loaded they stay loaded.
-
-HTH,
+:)
 
 Ken
 -- 
