@@ -1,57 +1,46 @@
 From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: firewall blocks ppp0?
-Date: Sun, 24 Nov 2002 13:01:32 -0500
+Date: Sun, 24 Nov 2002 13:14:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211241801.gAOI1Wa28470@hartford-hwp.com>
-References: <200211232355.gANNtx703441@hartford-hwp.com> <3DE102FA.85D8F85D@gelm.net>
+Message-ID: <200211241814.gAOIEMl28622@hartford-hwp.com>
+References: <3DE10641.5A70C2DF@gelm.net>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <3DE102FA.85D8F85D@gelm.net> (message from Chuck Gelm on Sun, 24
-	Nov 2002 11:48:58 -0500)
+In-reply-to: <3DE10641.5A70C2DF@gelm.net> (message from Chuck Gelm on Sun, 24
+	Nov 2002 12:02:57 -0500)
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: nc8q@gelm.net
-Cc: linux-newbie@hartford-hwp.com
+Cc: linux-newbie@vger.kernel.org
 
-Chuck,
-
->  I use Roaring Penguin PPPOE. http://www.roaringpenguin.com/pppoe/ I
-> selected permanent connection, but I am unsure if this applies to
-> eth# or ppp#. :-| 'adsl-setup' and 'adsl-start' are script names
-> with my application (Roaring Penguin).  I am assuming that your
-> using the same or similar.
+> Date: 	Sun, 24 Nov 2002 12:02:57 -0500
+> From: Chuck Gelm <nc8q@gelm.net>
+> X-Accept-Language: en
+> Sender: linux-newbie-owner@vger.kernel.org
+> X-Mailing-List: 	linux-newbie@vger.kernel.org
 > 
->  How do you know "I definitely have eth0 set to be permanently up" ?
->  Actually, I'm betting that it is ppp# that is set to demand or
->  permanent.
+> This is a multi-part message in MIME format.
+> --------------3637FA4FE80086AB2A08BE64
+> Content-Type: text/plain; charset=us-ascii
+> Content-Transfer-Encoding: 7bit
+> 
+> How/why did your message arrive as
+> 
+> From:    Haines Brown <brownh@hartford-hwp.com>  Sat 6:55 PM
+> Subject: firewall blocks ppp0?
+>      To: linux-newbie@hartford-hwp.com
+>                      ^^^^^^^^^^^^^^^^^
+>                       ???????????????
+> 
+> This does not allow a 'reply all'    :-(
 
-Yes, I also use the roaring penguin, My eth0 is made active during
-boot, for I can run ifconfig and see that it is up as soon as I've
-finished booting. The ppp0, on the other hand, is not up until
-adsl-start is run. That is, ppp0 is on demand, while eth0 is
-permanent. That's my impression, anyway. pppd is a daemon which I
-assume is meant normally to be on demand.
+Wow! Never noticed that before. I'm having a terrible time with users
+being unable to start X, and thought an identity conflict might be the
+cause. However, when I run # hostname, I'm whom I think I am 
 
-Actually, when I run redhat-configuration-network, I see not only
-eth0, but also ppp0 (trying to be active). That's not right. ppp0
-should not appear (or at least it does not show up under RH7.3 as I
-speak to you). I may have some kind of problem in that pppd is trying
-to start ppp, rather than my starting pppoe by means of adsl-start
-
->  It seems that your dsl connection (PPPOE?) application is setting
-> up IPCHAINS, but your kernel is using IPTABLES.
-
-That may be, but then a good percentage of folks who get RedHat 8.0
-must reconfigure and recompile their kernel, which I doubt.
-
-> - configure IPTABLES to replace your dsl-connection application's
-> attempt to use IPCHAINS.
-
-This was my inclination, for I gather IPTables are better. I've got a
-copy of Bastille, which should make my life a lot easier, not only
-spotting the source of any difficulty, but setting up a secure set of
-rules.
+But sentmail is here doing something strange. I"ve no idea what could
+cause this.
 
 Haines
 -
