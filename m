@@ -1,8 +1,8 @@
-From: "Axel Siebenwirth" <lists@tcob1.net>
-Subject: .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 16:19:18 +000
+From: "lawson_whitney@juno.com" <lists@tcob1.net>
+Subject: Re: Want to strip some formatting out of a text file
+Date: Monday, 12 Aug 2002 22:22:25 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_161918__af9304b7@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020812_222225__4dc190fe@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,21 +13,35 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Hi,
+On Mon, 12 Aug 2002, Alan Womack wrote:
 
-I have some stupid questions.
+> I'm trying to download the text manuals for the linux pam modules to my palm 
+pilot, but there is the appearance of old style double strike for emphasis text 
+all over the docs.
+>
+> e.g. a L(backspace)Li(backspace)in(backspace)n
+>
+> What utility to remove this backspacing and doubling of characters so they 
+would be over-written?
+>
+> Alan
+>
+> I dl'd the text file from the kernel.org website documentation of pam
 
-What makes the difference between .o and .so files? What is their use? Is it
-just a naming convention?
+col -b
 
-When I want to link libraries to a program I am compiling, of what format do 
-the libraries have to be?
+I guess.
 
-I have found out that .a files are archives created with ar. What is that
-for?
+Lawson
+---oops---
 
-Many thanks and my best regards,
-Axel Siebenwirth
+
+
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 
 <-> Gateway Information.
