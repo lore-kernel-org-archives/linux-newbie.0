@@ -1,40 +1,29 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Samba as DC
-Date: Sun, 27 Apr 2003 20:12:14 -0600
+From: pshook <pshook@dsl-only.net>
+Subject: Galeon/Glibc
+Date: Sun, 27 Apr 2003 21:14:19 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000201c30d2b$968e0330$4b01a8c0@deadbox>
+Message-ID: <3EACAA9B.59E72053@dsl-only.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
- 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I accidently deleted Galeon (with package manger) in RH7.3. I downloaded
+the file and tried to install it. it tells me I have  a lot of missing
+files (dependency problems). Most of these are glibc. I downloaded those
+and I get an ENORMOUS list of dependency problems. How do I fix this?? I
+just want Galeon back.
 
-First off, i'll confess that i know very little about exactly what a domain controller does, so i might be barking up the wrong tree, here, and there may be a much simpler solution.
+I've tried Ximian's redcarpet to install and update the files I need but
+that doesnt' get it either. I'm at a loss.
 
-I have a firewall (Clarkconnect - they're really good) that acts as a router for my home network/cable internet.  It currently provides DHCP services and NAT.
+Thanks
 
-I just bought a wireless router, though, and now i have a problem.  My laptop is now on the router's subnet (192.168.0.*) while the rest of the systems are on the firewall's internal subnet, along with the WAN side of the wireless router (192.168.1.*)
+Parrish
 
-What i want is to get filesharing working again between all these systems...  Is it as simple as changing the subnet masks from 255.255.255.0 to 255.255.0.0?  Or do i have to set up DC services on the firewall?  And if i do, how do i do it?
 
-Thanks in advance...
-
-Chris R.
-=======
-http://offline.pointclark.net/
-
------BEGIN PGP SIGNATURE-----
-Version: PGP 8.0
-
-iQA/AwUBPqyN/sFBXq9qNmWaEQIdtQCg8UQQlciDALhY+umt3s+IETsf4oQAoI5t
-hCXNA4GT+gAmMMOT87ZqQyf3
-=vxfO
------END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
