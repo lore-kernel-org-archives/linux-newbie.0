@@ -1,57 +1,27 @@
-From: Jos Lemmerling <jos@lemmerling.nl>
-Subject: Re: group
-Date: Sat, 27 Dec 2003 00:32:48 +0100 (CET)
+From: Amin <amin@siriusbb.com>
+Subject: Re: WYSIWYG editor
+Date: Sat, 27 Dec 2003 12:52:44 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0312270019460.24014-100000@orthanc.lemmerling.net>
-References: <3FEC9C39.60007@dpomeroy.com>
+Message-ID: <200312271252.45096.amin@siriusbb.com>
+References: <1072362418.3feaf3b285fa0@ecserv7.uwaterloo.ca>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3FEC9C39.60007@dpomeroy.com>
+In-Reply-To: <1072362418.3feaf3b285fa0@ecserv7.uwaterloo.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: dave <dave@dpomeroy.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Fri, 26 Dec 2003, dave wrote:
+On Thursday 25 Dec 2003 20:26, Dan Zlotnikov wrote:
+> I've been unable to google up anything worthwhile, so I figured I'd
+> ask here. Are you aware of a WYSIWYG web editor for linux? Ideally
+> one that does CSS as well as HTML.
 
-> I made a subdirectory called "everyone", "/home/everyone".  I want to 
-> use this folder for sharing files from my windows clients as well as 
-> myself.  I used chgrp to make the folders owner group everyone.  I added 
-> the users to this group.  I changed the group permissions to rwx with 
-> chmod.  When I reboot, the subdirectory reverts back to r-x.  My group 
+The only thing that comes immediately to mind is Mozilla's Composer 
+application.  You could also try OpenOffice.org's Web page editor.
 
-This is probarly a mandrake-thingy.. Some googling tells me something
-about the "mandrake security level" aka "msec level". 
-
-You'll have to do some more digging on your mandrake-box yourself I
-guess... ;)
-
-Maybe as a "quick and dirty-fix", you could try to move the directory to
-another place like for instance /  (/everyone).
-
-
-> members cannot write to the directory.  I'm running Mandrake 9.2.  
-> Another problem is when I start Konquerer as a file manager.  I enter 
-> the root password and tell it to save the password.  the next time I 
-> start Konquerer I have to enter the root password again.  I'm confused, 
-> Does anyone have some light to shed on these issues?  Thanks in advance.
-
-This also *could* have to do with the above; it's very easy to make a
-mistake with an accidental "mouse-move". These kind of mistakes *as root*
-aren't very funny... :(
-
-Maybe it's just a way of letting you know/confirm you're running konquerer
-as root.
-
-But I don't use Konquerer either...
-
-
-HTH
-
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
-
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
