@@ -1,34 +1,40 @@
-From: Halil Demirezen <halil@debian-tr.org>
-Subject: Re: about upgrading the kernel.
-Date: Sun, 27 Apr 2003 20:52:23 +0300
+From: Chris Rose <offline@shaw.ca>
+Subject: Samba as DC
+Date: Sun, 27 Apr 2003 20:12:14 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030427175223.GA1259@storm.armateknik.com.tr>
-References: <20030427172040.GA6928@storm.armateknik.com.tr> <5.1.0.14.1.20030427103023.01f12610@celine>
+Message-ID: <000201c30d2b$968e0330$4b01a8c0@deadbox>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20030427103023.01f12610@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
 
-> As to "any easy way" ... what do you find difficult about doing a kernel 
-> compile? On my machines, it takes a lot of machine time, but only small bit 
+ 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Compiling kernel a few times a day to see the effects of the new upgraded kernel is ok for me.
-However, doing it 20 times a day is little difficult, isnt it?
+First off, i'll confess that i know very little about exactly what a domain controller does, so i might be barking up the wrong tree, here, and there may be a much simpler solution.
 
-never mind. I got the procedure each developer does in doing so.
+I have a firewall (Clarkconnect - they're really good) that acts as a router for my home network/cable internet.  It currently provides DHCP services and NAT.
 
-Thank you.
+I just bought a wireless router, though, and now i have a problem.  My laptop is now on the router's subnet (192.168.0.*) while the rest of the systems are on the firewall's internal subnet, along with the WAN side of the wireless router (192.168.1.*)
 
+What i want is to get filesharing working again between all these systems...  Is it as simple as changing the subnet masks from 255.255.255.0 to 255.255.0.0?  Or do i have to set up DC services on the firewall?  And if i do, how do i do it?
 
+Thanks in advance...
 
+Chris R.
+=======
+http://offline.pointclark.net/
 
+-----BEGIN PGP SIGNATURE-----
+Version: PGP 8.0
 
-
+iQA/AwUBPqyN/sFBXq9qNmWaEQIdtQCg8UQQlciDALhY+umt3s+IETsf4oQAoI5t
+hCXNA4GT+gAmMMOT87ZqQyf3
+=vxfO
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
