@@ -1,75 +1,40 @@
-From: wa4chq@netscape.net (neil t)
-Subject: Re: lilo question...again
-Date: Mon, 25 Nov 2002 07:03:21 -0500
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: Emacs
+Date: Mon, 25 Nov 2002 08:07:25 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4C84F818.6EE10F59.0006BEFC@netscape.net>
+Message-ID: <000f01c29483$9cd4bed0$64fea8c0@pkrausxp>
+References: <026b01c29328$6f797180$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <026b01c29328$6f797180$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: rob <rob.rice@fuse.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-rob <rob.rice@fuse.net> wrote:
-Hey Rob-
-I guess some Distros are better then others and I am still searching....
-and besides....it's been very helpful for me with learning some of this stuff!!!
-cheers
-Neil
+Does anyone use emacs vie ssh on a winxp machine? The C sequences don't
+work right. For instance C-h does not open help. Also the pgup and
+pgdown keys do not work either. Is there a keyboard map I can get so
+that  they keyboard would work the same way it does when sitting at the
+console?
 
->may I ask a stuped question ? why waste the space and effort on haveing
->a bunch of distros insted of loading every thing you can get on one
->distro ?
->
->
->neil t wrote:
->> 
->> Thanks for the info about lilo.  It was a typo...I did edit /etc/lilo.config but I still get many, many error messages when I try to boot RedHat.  So I think I will go ahead and forget about it and install Debian.  I have copied all the things I want to save and stored them on my /dos partion and even copied important stuff from Mandrake to the /dos partion.
->> Ray, you mention:
->> "If you install Debian, it will replace your existing bootloader with a lilo install that boots only Debian. After it does that, you can edit its
->> /etc/lilo.conf, then run lilo, to restore the options to boot DOS or
->> Mandrake, but the Debian installer itself won't add those choices for you."
->> I understand that the Debian installer won't add the choices, but do I need to replace my existing bootloader?  Can't I just install Debian and then edit the Mandrake bootloader to reflect Debian on /dev/hda3?
->> 
->> 
->> When I installed it, I made a boot floppy and it worked ok, but was very slow.  Which brings me back to my original question.  I would rather have the option on the gui lilo box when I boot.  I don't mind the way things boot now, I just don't want to mess up what I have.  The Mandrake gui LILO box at boot is fine with me as long as I can boot Debian from it.  (I am sure I messed up the RedHat because I forgot to execute lilo after editing /etc/lilo.config).
->> 
->> I apologize for the way some of the stuff is phrased, I still haven't quite got the Linux lingo down!
->> 
->> All the best-
->> 
->> Neil T.
->> --
->
->
->
->> Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
->> http://www.qsl.net/wa4chq
->> 
->> 
->> __________________________________________________________________
->> The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp
->> 
->> Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
->> -
->> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at http://www.linux-learn.org/faqs
->
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Paul Kraus
+Sent: Saturday, November 23, 2002 2:42 PM
+To: linux-newbie@vger.kernel.org
+Subject: Emacs
 
 
--- 
-Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+Can someone point me to some guides on how to use emacs?
 
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
