@@ -1,78 +1,69 @@
-From: Stephen Samuel <samuel@bcgreen.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: How do I stop GUI from autoloading?
-Date: Mon, 19 May 2003 10:51:11 -0700
+Date: Mon, 19 May 2003 20:49:41 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EC9198F.9080600@bcgreen.com>
-References: <20030510100903.GA1586@localhost.localdomain> <5.1.0.14.1.20030510082110.01eae2b0@celine> <20030510160917.GA890@localhost.localdomain>
+Message-ID: <200305192049.41645.pa3gcu@zeelandnet.nl>
+References: <20030510100903.GA1586@localhost.localdomain> <20030510160917.GA890@localhost.localdomain> <3EC9198F.9080600@bcgreen.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030510160917.GA890@localhost.localdomain>
+In-Reply-To: <3EC9198F.9080600@bcgreen.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Stephen Samuel <samuel@bcgreen.com>, Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-Amin wrote:
-> On Sat, May 10, 2003 at 08:42:05AM -0700, Ray Olszewski
-> wrote:
-> 
-> 
->>I did not see the original posting, and I can't find it
->>anywhere. Amin's response does not indicate whether the
->>original posting mentioned the Linux distro involved, and
->>he does not do so. And Amin's advice is not
-> 
-> 
-> Sorry, I found the original post in Google Groups:
-> http://groups.google.com/groups?q=mlist.linux.newbie&ie=UTF-8&oe=UTF-8&hl=en&btnG=Google+Search
-> 
-> And here it is:
-> 
->     From: Workman (david.rust@watkinsmfg.com)
->     Subject: How do I stop GUI from autoloading?
->     Newsgroups: mlist.linux.newbie
->     This is the only article in this thread
->     View: Original Format
->     Date: 2003-03-30 08:00:16 PST
+On Monday 19 May 2003 19:51, Stephen Samuel wrote:
+> Amin wrote:
+> > On Sat, May 10, 2003 at 08:42:05AM -0700, Ray Olszewski
+> >
+> > wrote:
+> >>I did not see the original posting, and I can't find it
+> >>anywhere. Amin's response does not indicate whether the
+> >>original posting mentioned the Linux distro involved, and
+> >>he does not do so. And Amin's advice is not
+> >
+> > Sorry, I found the original post in Google Groups:
+> > http://groups.google.com/groups?q=mlist.linux.newbie&ie=UTF-8&oe=UTF-8&hl
+> >=en&btnG=Google+Search
 
-.....
+NOt having been around much latly i missed ost of this thread, however i did 
+read the above message in google, As Far As I Can See, the best thing to do 
+here is to boot into either runlevel 1 or 3, as mentioned there will be a 
+boot loader presant, be it lilo or grub, (i dont use grub) but i can give an 
+example of howto do it with lilo.
 
->>log in). In that case ... typically, distros that run xdm
->>also open a hidden console on /dev/tty1, which one can
->>access by pressing CTRL-ALT-F1 when the xdm display is
->>active. You can then log in, make any needed changes, and
->>reboot.
-> 
-> 
-> That is a good idea, but I was afraid that it would mess
-> around with X.  I tried it once (I'm using RH8.0), and it
-> seemed to hose my X server.
+At the lilo boot prompt "Hit any key" to stop the boot(ing) timer, you now 
+have time to think, what one needs to do is to choose the "linux Option" and 
+enter either a "1" or  "3" after it, example;
 
-ctrl-alt-F1 should not mess with X (It's messed up,
-anyways, so who cares). It simply moves you to a different
-virtual terminal.  X is still running.  ctrl-altF7 (on redhat)
-will move you back to the X screen.  It might be a differnt
-screen number for Turbo Linux... (just go through all 12
-ctrl-alt-F[n] sequences if you can't find it).
+You can choose from 
+Linux
+ or
+Dos
 
->>Finally, if even that does not work, at the lilo prompt
->>(assuming we're talking about an install that uses lilo),
->>instead of accepting the default load, you can usually
->>enter "linux single" to boot/init into single-user mode
->>with a console rather than X presented.
-> 
-> 
-> I assumed Linux was the lone OS on the PC, so there was no
-> bootloader.
+choose Linux it will be highlighted at the :Boot" prompt, add a "1" or a "3" 
+after it, 1 or 3 is the runlevel if any askes...
+When booted into one or 3 they are both console modes, do the following;
 
-There will be a boot loader... be it Lilo, GRUB, or whatever.
-watch the boot sequence closely.
+cd /etc
+vi inittab
+(Got to something like line 20) a line which looks like);
+id:4:initdefault:   
+{OR}
+id:5:initdefault:
+Edit that line to;
+id:3:initdefault:
+save the file, now on the next boot linux will boot into console mode.
 
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-Powerful committed communication, reaching through fear, uncertainty and
-doubt to touch the jewel within each person and bring it to life.
+Find your problem at ease now and then when you are sure you can boot properly 
+change /etc/inittab back to runlevel 4 or 5 which ever your distro uses.
+
+--
+Regards Richard.
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
