@@ -1,53 +1,49 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: USB Flash/Jump Drives-Linux??
-Date: Thu, 3 Feb 2005 16:35:57 -0500
-Message-ID: <20050203213557.GA868@lnx2.w8mch.ampr.org>
-References: <20050129140343.GA599@lnx2.w8mch.ampr.org> <41FC5929.70409@gelm.net>
-Reply-To: haltec@kvinet.com
+From: James Miller <jamtat@mailsnare.net>
+Subject: 3rd install failed hardware setup
+Date: Fri, 4 Feb 2005 08:50:28 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0502040829270.7624@localhost.localdomain>
 Mime-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <41FC5929.70409@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings Ray, Chuck, Joshua and all who replied.. Apparently my
-original problem was getting two flash/jump drives that "happened" to
-not work with Linux.. So be it. <grin>
+This query refers to a Mepis (Debian variant) install I've done, as well
+as to the live-CD version of that distro, from which the installation
+runs. I'm setting up a computer for a friend who is not very
+computer-literate, but who also can't afford XP, so I wanted a fairly
+user-friendly distro, but something not too far removed from what I know
+better (Debian). The choice really was decided by the fact that, of those
+distros I tried on the target hardware (P3 500, 128MB RAM, 4GB HD--found
+in the garbage), Mepis was the only one that autoconfigured the Lucent
+winmodem the thing has. Because the machine was a bit tight on space, I
+added a second drive--1.2GB. Unfortunately the automated install Mepis
+runs does not allow for much in the way of partition tweaking: in fact,
+it's set up to only install to a single drive. So, I installed it to the
+4GB drive, planning on moving some large dir over to the second drive and
+creating a mount point and fstab entry for it. It took me a couple of
+install attempts to get that right. In both of my previous attempts, as
+well as during sessions run from the live-CD, the modem was working fine.
+On the third attempt, before actually booting into the newly-installed
+system, I found a suitably large directory to move over to the second
+drive--/usr/lib (640+ MB). I copied it's contents over to the second drive
+(as root cp -R /usr/lib/* /mnt/hdb2), renamed the original dir to
+/usr/slib on the main drive, created a new /usr/lib (using Konqueror as
+root) on the main drive, and edited /etc/fstab to mount the second drive
+at /usr/lib. On boot, it all seemed to go successfully. The drive mounts
+at the specified place, and files are accessible. But I was greeted on KDE
+startup with the message "/dev/dsp not found." I didn't see that on
+previous install attempts or on running from the live-CD. And when I tried
+to query the modem, it told me the modem cannot be opened. I'm trying to
+find out what went wrong.
 
-Anyway it seems, at least the Lexar brands are no problem and,
-probably with kernel 2.6.X, the others might not be either.. At any
-rate I visited the only "computer store" we have in this rural area
-finding they stocked three Lexar models; one called "sport" the
-others "secure." They also had an "Impact" 256mB that turned out to
-be a Lexar sans the "secure?" software.. Plugged into this box it
-works like a charm.. It was $10 less than the Lexar price but with a
-90 day warranty vice sth like 4 years for the "genuine" Lexar...
+Could moving the directory /usr/lib to the second drive have caused this
+problem? Did I maybe screw up some permissions in copying? Any
+suggestions--short of another install--for fixing it if it does seem like
+this is where the problem lies?
 
-We learn something every day, eh?  APPRECIATE one and all..
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
-
-> Hal MacArgle wrote:
-> >Greetings: Running Slackware 9.0 and 9.1; kernels 2.4.20 or 2.4.22,
-> >bare.i installation, I've experienced good support for all USB
-> >devices except Flash Drives.
-> >
-> >First one bought was a Link-Max UL-641 that, plugged in, was
-> >immediately accessible by the kernel with no configuring by me..
-> >
-> >Later attempts with other brands, no such luck.. As I look at the
-> >retail boxes not a single one mentions Linux, so was wondering what
-> >others have discovered.. It's no fun buying then returning just to
-> >see what works or doesn't... <grin>
-> >
-> >Most of the comments on the Web seem to indicate this is not a
-> >problem but I've found otherwise.. One vendor, Kingston, said flat
-> >out that Linux is not supported by their devices..
-> >
-> >Best and TIA.
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
