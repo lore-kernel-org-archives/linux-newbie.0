@@ -1,20 +1,19 @@
-From: Adam Luchjenbroers <adam@luchjenbroers.com>
-Subject: Disk Quotas -> trying to read file //quota.conf
-Date: Sun, 23 Jun 2002 23:04:42 +0930
+From: 1stFlight <1stflight@ameritech.net>
+Subject: Creating a Safeweb like Server?
+Date: Sun, 23 Jun 2002 14:52:01 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020623133206Z317023-22020+9134@vger.kernel.org>
-Reply-To: adam@luchjenbroers.com
+Message-ID: <200206231452.01865.1stflight@ameritech.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux newbie <linux-newbie@vger.kernel.org>
 
-When I setup disk quotas on my root drive it writes the config file to 
-/quota.conf.
+ Anyone know of any how to's that would help be create and anonymizing proxy 
+server, that'd be totally web based? Thanks! 
 
-At startup I get errors trying th read from //quota.conf. How do I fix this
+																		Darryl
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
