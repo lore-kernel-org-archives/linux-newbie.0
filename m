@@ -1,18 +1,25 @@
-From: Adam <adam_src@fastmail.fm>
-Subject: Microsoft devices
-Date: Wed, 10 Apr 2002 00:52:44 -0400 (EDT)
+From: Chris Rose <offline@shaw.ca>
+Subject: Logging
+Date: Tue, 09 Apr 2002 23:46:04 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.WNT.4.44.0204100050440.-362463@cata05.roadrunner.nf.net>
+Message-ID: <5.1.0.14.0.20020409234447.0352bf68@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
+Can anyone on the list suggest some tools for log reading?  i'm trying to 
+audit my ftp server (proftpd) and i have no idea how to configure its 
+logging, nor how best to view what it puts out.  i have Webmin, but the 
+logging interface in there is pretty unclear to someone who's got nothing 
+to start from, knowledge-wise.
 
-Do all Microsoft devices function entirely in Linux.  Like Intellimouse
-Explorer, Sidewinder FF2.
+
+Chris Rose
+==========
+1952 - 2001 = 42
 
 
 -
