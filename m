@@ -1,90 +1,71 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: mounting cdrom
-Date: Wed, 24 Jul 2002 07:59:13 -0700
+From: James Mohr <linux-newbie@jimmo.com>
+Subject: Re: Question about "find -exec"
+Date: Wed, 24 Jul 2002 18:07:06 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020724074713.023973a0@celine>
-References: <007601c21bd7$2ec116c0$148e1ec4@jantar.co.za>
+Message-ID: <200207241807.06375.linux-newbie@jimmo.com>
+References: <3D36DDA3.FA0F073C@gmx.net> <200207190752.38161.linux-newbie@jimmo.com> <pnjlha.6fv.ln@thune.mrc-home.org>
+Reply-To: linux-newbie@jimmo.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <007601c21bd7$2ec116c0$148e1ec4@jantar.co.za>
+In-Reply-To: <pnjlha.6fv.ln@thune.mrc-home.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Hendrik Fourie <hendrikf@jantar.co.za>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 04:30 PM 6/24/02 -0700, Hendrik Fourie wrote:
-> > At 02:44 PM 6/24/02 -0700, Hendrik Fourie wrote:
-> > >i am using redhat 7.2 and kde and when i try to mount the cdrom within
->kde
-> > >it gives the error message that "/dev/cdrom is not a valid block device".
-> >
-> > What is the output of "ls -l /dev/cdrom"? Is the symlink set up correctly?
+On Wednesday 24 July 2002 09:07, Mike Castle wrote:
+> In article <200207190752.38161.linux-newbie@jimmo.com>,
 >
->i havent run "ls -l /dev/cdrom", but by the symlink i assume you mean the
->entries in the fstab file which allows me to mount the cdrom  by using
->"mount /dev/cdrom" only  as opposed to having to enter the entire "mount  -t
->iso9660 /dev/hda  /mnt/cdrom" command?,  i only have a vague idea what
->symlinks are and how to set them up :),
->anyway, the entries in the fstab file is correct.
-
-Nope, bad assumption; that is not what I mean. Please do as I ask and I'll 
-explain after I see the result. Or read "man ls" to learn what symlinks are.
-
+> James Mohr  <linux-newbie@jimmo.com> wrote:
+> >You need to tell -exec which file to process. This is done with curly
+> > braces:
 > >
-> > >using kde terminal window i tried  running "su" and entering the root
-> > >password, then i run the command "mount  -t iso9660 /dev/hda  /mnt/cdrom
->and
-> > >it gives me the exact same error message.
+> >find /mnt/c/ -name *.snm -exec ls {} \;
 > >
-> > Surely not the *exact* same error message (since this command does not
->make
-> > use of /dev/cdrom).
+> >However, without the -exec, your command will simply list the files
+> > anyway. I am assuming that this is just an example, and you would want to
+> > do more than just list the file name. You could exand this concept and
+> > use the curly
 >
+> Also, you should realize that for each file processed, there is the
+> overhead of fork()/exec() calls.
 >
->no, instead of "/dev/cdrom" it shows "/dev/hda"  is not a valid block
->device.
+> You would probably find something like:
+>
+> find /mnt/c -name '*.snm' | xargs -r ls -l
+>
+> to be significantly faster.
+>
+> If you expect that there will be any spaces involved, consider using
+> -print0/-0 in addition:
+>
+> find /mnt/c -name '*.snm' -print0 | xargs -0 -r ls -l
+>
+> mrc
 
-Did you recheck this just now, or are you correcting your prior posting 
-from memory? If the first, then why didn't you run the other command I 
-asked you to do above (since doing so would take about 10 seconds, less 
-time than I am spending writing this sentence)? If the second, please 
-recheck your work (that is, do what I request below) ... you will 
-understand, I hope, that I am hesitant to rely on your demonstrably faulty 
-memory.
+Valid point. However, I typically don't find it an issue unless you are 
+running the -exec on 10K files. If it takes 0.1 second with xargs and 1 
+second with -exec (which is 10 times as long), I don't see it is worth 
+arguing about. 
 
-Or did you have the actual text saved somewhere to check? If so, then 
-please post it here.
+However, it is **definately** worth mentioning and I have made a note to add 
+it to my Linux Tutorial.
 
-> >
-> > Please post the exact command you enter and the exact response from the
->system.
+Regards,
 
-[...]
+jimmo
 
->i am using the grub bootloader which is written to the mbr of the first
->hdd.( i think)
->hda and hdb really are the cdrom drives, and i can mount the fat32 partition
->and acces it in linux by using "mount -t vfat /dev/hdc1 /dev/mnt/windows"
->and it shows the content of my windows hdd. i don't know if and how the
->/dev/hd* entries were modified, since i installed rh7.2 with the default
->options an i certainly never changed it myself.
+-- 
 
-
-This description is puzzling. Unless RH changed to using grub as its 
-default bootloader and I missed that news ... possible, I suppose, but 
-surely not way back in 7.2 ...the system you describe is not using *all* 
-the default options. In any case, this is unlikely to be the source or your 
-problem.
-
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+---------------------------------------
+"Be more concerned with your character than with your reputation. Your
+character is what you really are while your reputation is merely what others
+thing you are." -- John Wooden
+---------------------------------------
+Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
+---------------------------------------
+NOTE: All messages sent to me in response to my posts to newsgroups or forums
+are subject to reposting.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
