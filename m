@@ -1,86 +1,81 @@
-From: Nathan Clayton <nathanclayton@daftwazzock.com>
-Subject: Re: Advice about packages
-Date: Wed, 01 Oct 2003 23:58:44 -0700
+From: Marco Calistri <ik5bcu@tin.it>
+Subject: Configuring BIND on dynamic IP??
+Date: Thu, 02 Oct 2003 22:30:40 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F7BCCA4.4030900@daftwazzock.com>
-References: <002901c38861$8ef4d0c0$0da16389@hyperion2>
+Message-ID: <20031002203040.5274.qmail@linux.ik5bcu.ampr.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: multipart/signed;
+ boundary="_=XFMail.1.5.4.Linux:20031002223037:1390=_";
+ micalg=pgp-md5; protocol="application/pgp-signature"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002901c38861$8ef4d0c0$0da16389@hyperion2>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="macroman"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Phillip Ames wrote:
+This message is in MIME format
+--_=XFMail.1.5.4.Linux:20031002223037:1390=_
+Content-Type: text/plain; charset=iso-8859-15
 
->Hi,
->I'm relatively new to using Linux on a daily basis and I was looking f=
-or
->some information about what the "trends" are for production Linux
->machines.  I installed RedHat 9, and have mucked about with rpm and
->thought that packages were the greatest thing since sliced bread.
->However, in the course of my reading and playing I've noticed that man=
-y
->places recommend that the binary executables actually be compiled by
->your machine (with all its kernel options, etc.) which is sensible.
->Everything is well when I ./configure them and then "make install" but
->if there is an update to a particular product it seems very inconvenie=
-nt
->to upgrade versions.  An example is the Apache httpd server - 1.3.xx
->stores its served files in /var/www/html/ and the actual httpd daemon =
-in
->/usr/bin.  Apache 2, however, sets the DocumentRoot as
->/usr/local/apache2/htdocs/ and the binaries in /usr/local/apache2/bin/=
-=2E
->I know it's just a simple matter of changing the DocumentRoot entry in
->the httpd.conf file for served documents but is there a better/easier
->way to go about upgrading the binaries?  Or is the de facto standard t=
-o
->simply run ./configure --with-prefix=3D/usr/bin?  Any advice would be
->appreciated.  Thanks,
->
->
->-Phil
->
-> =20
->
-Ok, first off, are you using this for just a desktop? If that's the=20
-case, you really don't need to compile everything for your computer.=20
-While there will be a bit of a preformance hit, it really won't be too=20
-large, and almost negligible when compared to the processing speeds of=20
-modern computers. For the most part nowdays, you will only really need=20
-to compile something if: your distribution doesn't support it and=20
-there's no RPM/DEB files for it, there are some kernel modules which yo=
-u=20
-need but aren't in your distribution's source tree, you want to try to=20
-eke out the most preformance possible, or you need to dsable some=20
-features for security reasons.
+Hello to all,my request here is directed to everyone with experience on network
+administration and in particular to somebody with enough skill on BIND.
 
-My suggestion would be to just be lazy and let the package manager deal=
-=20
-with the big stuff that can be a total pain (like X, KDE, or GNOME), an=
-d=20
-just compile the little things that you need to customize your system=20
-(i.e. the version of Xine with lib-decss support built in :). Granted=20
-you won't be at the bleeding edge of things, but that's never stable,=20
-and if this is your desktop or production system you can easily loose=20
-data (I've had this happen, and it really sucks). Keep your system up t=
-o=20
-date with whatever update tool Redhat provides (I can't remember, I use=
-=20
-SuSE).
+Foreword:
 
-Nathan
+My network is very strange,or at least atipical and,briefly speaking,structured
+as follows...
 
---=20
-"Man mu=DF nicht gro=DF sein, um gro=DF zu sein."
-http://www.claytondevelopment.com
+I have a registered hostname which is ik5bcu.cjb.net with CNAME
+linux.ik5bcu.ampr.org:
 
+[marco@linux marco]$ dig linux.ik5bcu.ampr.org
+
+; <<>> DiG 9.2.2-P1 <<>> linux.ik5bcu.ampr.org
+;; global options:  printcmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 61183
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 2
+
+;; QUESTION SECTION:
+;linux.ik5bcu.ampr.org.         IN      A
+
+;; ANSWER SECTION:
+linux.ik5bcu.ampr.org.  169916  IN      CNAME   ik5bcu.cjb.net.
+ik5bcu.cjb.net.         60      IN      A       212.141.182.207
+
+I use a dynamic DNS service offered by www.cjb.net so my IP address changes
+every time I issue a new dial-up connection.
+
+What I would like to know is if can I have any chances to configure BIND
+so that it works as DNS for my network;I don't pretend to have a public and
+performing DNS server,but a functional DNS expecially to serve the
+requirements of my SMTP server:QMAIL.
+
+I have installed the latest release:bind-9.2.2-23 along with caching-nameserver.
+
+This last (caching),tested just yesterday,already gave me proof of very good
+performer for its speed in comparison to my old /etc/hosts /etc/resolv.conf only
+system.
+
+Thanks for reading.
+
+Regards,Marco
+
+
+--_=XFMail.1.5.4.Linux:20031002223037:1390=_
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQE/fIrts0ru0Kz1knARAjC5AKDIXa7d8M+m7Ynrs3w2135XYhdIAgCfcXha
+v0fudWoaSnPvEDhxDkgbvCM=
+=JilH
+-----END PGP SIGNATURE-----
+
+--_=XFMail.1.5.4.Linux:20031002223037:1390=_--
+End of MIME message
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
