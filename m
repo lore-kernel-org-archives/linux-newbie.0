@@ -1,54 +1,63 @@
-From: "Linovitz, Scott" <slinovitz@adt.com>
-Subject: Free BSD 5.0 - Installation Error
-Date: Fri, 2 May 2003 16:58:02 -0600
+From: Chris Rose <offline@shaw.ca>
+Subject: Re: Maildrop doesn't filter or log filters
+Date: Sat, 03 May 2003 01:58:42 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <678FF08CF467D4118DA400508BD9365706B43BC8@mail02.adt1.com>
+Message-ID: <3EB376B2.5090007@shaw.ca>
+References: <n2m-g.428061.a14921@tcob1.net>
+ <00da01c31037$5ffe1a80$0300000a@iih.usyd.edu.au>
+ <n2m-g.uwuh9av6a.fsf@tcob1.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <n2m-g.uwuh9av6a.fsf@tcob1.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: sean@tcob1.net
+Cc: linux-newbie@vger.kernel.org
 
-Any help will be appreciated, thanks in advance. Scott.
+Speaking from experience (sorry, should have posted my found fix on this 
+a while ago), maildrop may not log that itself, but in the 
+/var/log/maillog file you can find its output to stderr that indicated a 
+permissions problem.  Once i found this, all of it fell into place.
 
-Hardware relevant to problem
-**********************************
-PC = Compaq Deskpro EN, Series SFF
-CPU = Celeron 466, 810 Chipset
-Hard Drive = Western Digital 40gig (Model #WD400BB)
+sean@tcob1.net wrote:
+> "James Turnbull" <james@lovedthanlost.net> writes:
+> 
+> 
+>>sean@tcob1.net wrote:
+>>
+>>>On 26.04.2003 09:19:10, Chris Rose wrote:
+>>>
+>>>
+>>>>Here's how i have things:  I'm using postfix as a local MTA, and it's
+>>>>calling maildrop with
+>>>>mailbox_command = /usr/bin/maildrop
+>>>>
+>>>>I have only one user that receives mail on my system, and that user
+>>>>account has/d a ~/.mailfilter file.  The problem is, whenever that
+>>>>file exists, no mail whatsoever makes it into my Maildir.  I've
+>>>>tested this - i send a message to myself, and i receive nothing as
+>>>>long as there's a mailfilter file existing.  As soon as i rename it,
+>>>>i'm fine.
+>>>>
+>>>
+>>>What are the permissions on the .mailfilter file, they must be 0600.
+>>>I had problems like this and this caused problems similar
+>>
+>>Look in your mail logs / syslogs.  Postfix / Maildrop is usualy pretty good
+>>about telling you what the problem is.
+>>
+> 
+> 
+> I cannot comment about Postfix as I never used it but Maildrop will not write to a log file if there is a permissions problem.
+> 
+> Sean
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Problem
-**********
-Note: If I install Free BSD v4.7 from CD on the exact same system I don't
-get the following error.
-
-
-While installing Free BSD v5 from CD I get the following error when the
-Sysinstall utility probes the hard disk:
-
-".....Warning: a geomerty of 77504/16/63 for ad0 is incorrect.......enter
-what your BIOS thinks the geometry is"
-
-The BIOS will only show the hard disk as 40, no additional information.
-
-Sysinstall will still let the installation continue and the fdisk window
-appears and reports a hard drive geometry of:
-
-cyls = 4863 / heads = 255 / sectors = 63
-
-The actual hard disk geomerty from the Western Digital Website is:
-
-cyl = 16,383 / heads = 16 / sectors-tracks = 63
-
-
-
-I'm trying to understand the issues/interactions between the OS and the BIOS
-that may be present. Can anybody help?
-
-
-Thanks
-Scott
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
