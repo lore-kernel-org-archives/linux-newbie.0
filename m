@@ -1,32 +1,44 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: 2.6.0 kernel compile overview
-Date: Tue, 6 Jan 2004 08:36:31 +1100
+From: caszonyi@rdslink.ro
+Subject: Re: modules not found
+Date: Mon, 5 Jan 2004 23:39:01 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <01db01c3d3d3$fc09b280$0800000a@iih.usyd.edu.au>
-References: <Pine.LNX.4.58.0401050850220.3345@localhost>
+Message-ID: <Pine.LNX.4.53.0401052319560.660@grinch.ro>
+References: <3FF97BE0.4020404@sancharnet.in>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3FF97BE0.4020404@sancharnet.in>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: joy <gracecott@sancharnet.in>
+Cc: linux-newbie@vger.kernel.org
 
-James Miller wrote:
-> to 2.4.x kernels and earlier. I just did a quick 'net search and
-> couldn't find anything specific on 
-> 2.6.x kernel compiling.  At the same time, I have understood from the
-> friend that 2.6.x kernel compiling differs somewhat.  So, can anyone
-> direct me to any sources on 2.6.x kernel compiling?  I have an overall
+On Mon, 5 Jan 2004, joy wrote:
 
-This is a good site for this info:
+>
+>
+>
+>
+> Hi,
+>  I recently compiled the 2.6 kernel and when I run lsmod I get a meesage:
+>  QM_MODULES function not implemented.
 
-http://www.digitalhermit.com/~kwan/kernel.html
+you must install moduleinit-tools
+it used to be available from this page
+http://www.kernel.org/pub/linux/kernel/people/rusty/
+but now i get a 404
 
-HTH
-
-Regards
-
-James Turnbull
+> I get the same when I run insmod too.
+> also the directory
+>  /lib/modules/2.6.0.....
+> does not exist. should I create it myself?
+>
+>
+> Thanx in advance,
+> Joy
+>
+>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
