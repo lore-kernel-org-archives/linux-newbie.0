@@ -1,43 +1,32 @@
-From: lawson_whitney@juno.com
+From: Peter <pfheiss@philonline.com>
 Subject: Re: ssh error message
-Date: Mon, 9 Sep 2002 22:25:45 -0400 (EDT)
+Date: Wed, 11 Sep 2002 18:07:50 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020910.205536.134671024.0.lawson_whitney@juno.com>
-References: <200209090046.g890kY001155@philonline.com>
+Message-ID: <200209111007.g8BA7pN03380@philonline.com>
+References: <CPIMSSMTPU02DqSkcJs00001c50@cpimssmtpu02.email.msn.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209090046.g890kY001155@philonline.com>
+In-Reply-To: Your message of "Mon, 09 Sep 2002 21:47:46 MST."
+             <CPIMSSMTPU02DqSkcJs00001c50@cpimssmtpu02.email.msn.com> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pfheiss@philonline.com
-Cc: arwbackup@worldnet.att.net, linux-newbie@vger.kernel.org
-
-On Mon, 9 Sep 2002, Peter wrote:
->
-> Sep  8 09:52:46 philonline apmd: apmd startup succeeded
-> Sep  8 09:52:46 philonline sshd: Starting sshd:
-> Sep  8 09:52:46 philonline sshd: execvp: No such file or directory
-
-Aha! sshd.  I thought it was odd to try to run ssh as a daemon.
-
-try "file /usr/sbin/sshd"
-"ldd /usr/sbin/sshd" for details on shared library problems;
-see if user 0 can run it from the command line:
-"/usr/sbin/sshd"
-
-Lawson
----oops---
+To: linux-newbie@vger.kernel.org, arwbackup@worldnet.att.net
 
 
+arwbackup@worldnet.att.net said:
+> It appears you will have to compile sshd.  Mine resides in /usr/local/
+> sbin
 
+> are you running redhat where you can use a binary rpm or do you need
+> to compile from source?
 
+I am running RH72. I can't find a file called sshd in any of the CDs there is 
+only openssh.
 
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
