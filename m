@@ -1,39 +1,36 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: adduser
-Date: Mon, 31 Mar 2003 19:59:56 +0000
+Subject: Re: recovering files after rm
+Date: Mon, 31 Mar 2003 20:02:44 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03033119595605.04308@unix.pa3gcu>
-References: <3E87FA51.3060100@arrakis.es>
+Message-ID: <03033120024406.04308@unix.pa3gcu>
+References: <03033113143200.04308@unix.pa3gcu> <5.1.0.14.1.20030331091344.01e9b318@celine> <20030331220338.C1195@neutrino.particles.org>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E87FA51.3060100@arrakis.es>
+In-Reply-To: <20030331220338.C1195@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Andrew Langdon-Davies <ald2@arrakis.es>, linux-newbie <linux-newbie@vger.kernel.org>
+To: Elias Athanasopoulos <elathan@phys.uoa.gr>, Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Monday 31 March 2003 08:20, Andrew Langdon-Davies wrote:
-> Mandrake 9.0
+On Monday 31 March 2003 19:03, Elias Athanasopoulos wrote:
+> On Mon, Mar 31, 2003 at 09:15:36AM -0800, Ray Olszewski wrote:
+> > At 04:28 PM 3/31/2003 +0300, Elias Athanasopoulos wrote:
+> > >He asked for rm.
+> >
+> > ... and Richard gave him a good answer. In particular, this link (turns
+> > up as #2 when I actually try what Richard suggested)
+> >
+> >          http://sdb.suselinux.hu/en/sdb/html/cg_rmfiles.html
+> >
+> > gives advice that should work fine for files deleted using rm.
 >
-> control center>system>users
-> "Cannot lock user lib,
-> file /etc/ptmp or /etc/gtmp exist".
->
-> Yes, both exist.
+> It's what I said in the paragraph Richard didn't (probably) read.
 
-As far as i see it, that is the problem, they are presant in /etc.
+Enlighten me/us please !!!!!.
 
-Maybe you could be a little more spesific in you explanation.!!
-
-> clm (as root)>
-> adduser (or useradd, the result is the  same. Which command is preferred?)
-> "vipw lockfile (/etc/ptmp) is present!"
->
-> I cannot find an explanation in the manual.
->
-> TIA
-> Andrew
+> Elias
 
 -- 
 Regards Richard
