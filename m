@@ -1,32 +1,49 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re: LI -lilo booting problem
-Date: Mon, 29 Jul 2002 19:11:28 -0400
+From: Jay Maass <jay.maass@verizon.net>
+Subject: Re: Partitioning problem
+Date: Tue, 30 Jul 2002 15:14:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207291911.28871.sotl155360@earthlink.net>
-References: <3D36DDA3.FA0F073C@gmx.net> <3D4498AF.42DC0D8C@gelm.net> <3D45AD28.7623B094@gelm.net>
+Message-ID: <20020730191426.TZVR8715.out008.verizon.net@localhost>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D45AD28.7623B094@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Anshuman Singh Rawat <asr245@nyu.edu>, Riley Williams <Riley@Williams.Name>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Somewhere in my far distant past I had a dual boot RH 6.0 / MS Windows system. 
-I now have a dual boot RH 7.3 box.
-If I recall correctly all I did to R H 6.0 box to make it read and write to 
-the Win side was add the following line to fstab:
+Anshu,
 
-/dev/hda1    /mnt/dos    vfat    user,noauto,rw     0 0
+Are you doing okay with Linux fdisk in your partitioning?
+I could have mentioned that there are at least two parts
+to what you will be doing.
 
-I have added the above to the RH7.3 box but the KDE mount User Tool does not 
-show that dos is mountable.
+First, you will be using fdisk to set up your partitions.
+Linux boot and root partitions will be made native Linux
+(ext2) file systems. The swap partition will be made
+Linux swap. You will also be making a FAT partition for
+your Microsoft Windows XP operating system.
 
-I would appreciate what ideas and guidance the experts on this list may have 
-to offer.
+Thus, Linux fdisk has been used to create the necessary
+partitions.
 
-Thanks
-Frank
+Second, when installing RedHat Linux 7.3, you will be
+designating which partitions to use for boot, root, and
+swap. Disk Druid, if you use that tool, will ask you for
+these designations. You will enter:
+
+'/boot' for the Linux boot partition,
+and '/' for the Linux root partition
+
+I believe Disk Druid will recognize the swap partition
+and designate it as <swap> for you.
+
+I hope you are doing okay with Linux fdisk and lilo.
+
+Regards,
+Jay Maass, k7jkz
+suburban Philadelphia
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
