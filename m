@@ -1,60 +1,44 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Netscape6.2/Slack8.1 Problem??
-Date: Fri, 2 May 2003 11:35:39 -0400
+From: sean@tcob1.net
+Subject: Re: Maildrop doesn't filter or log filters
+Date: 02 May 2003 22:35:41 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030502113539.A242@lnx2.w8mch.ampr.org>
-References: <200305020941.53139.pfheiss@philonline.com>
-Reply-To: haltec@kvinet.com
+Message-ID: <n2m-g.uwuh9av6a.fsf@tcob1.net>
+References: <n2m-g.428061.a14921@tcob1.net> <00da01c31037$5ffe1a80$0300000a@iih.usyd.edu.au>
+Reply-To: sean@tcob1.net
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200305020941.53139.pfheiss@philonline.com>; from pfheiss@philonline.com on Fri, May 02, 2003 at 09:41:53AM +0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings Peter and thanks for going to so much trouble as did Ray..
+"James Turnbull" <james@lovedthanlost.net> writes:
 
-I did a clean new install in another partition only selecting the
-bare essential packages, using the simple fvwm2 window manager..
-Invoking netscape it needed two libraries I missed; libgtk and glib,
-that had libgmodules included.. If a fella did the full KDE/Gnome
-install as recommended by Patrick, the libraries would have been
-default installed, I suspect.
-
-Once I got rid of the new, to me, Activation Screen stuff, it's now
-working fine as expected.. Don't know if it's really any better than
-4.77 for my use but we'll give it a whirl.. What happened the first
-time around I'll never know and wont ask. <grin> 'top' reports 91%
-idle so we're not straining anything IMHO.. :^)
-
-I went to the problem URL that started all this, ups.com, and it
-didn't balk - so I'm in business.. These new fangled programs are
-something. You not only don't have to type in 'http' but they don't
-need 'www' anymore.. Boy we're getting lazy...
-
-Thanks again,
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-
-On 05-02, Peter wrote:
-> Greetings Hal,
+> sean@tcob1.net wrote:
+> > On 26.04.2003 09:19:10, Chris Rose wrote:
+> >
+> >> Here's how i have things:  I'm using postfix as a local MTA, and it's
+> >> calling maildrop with
+> >> mailbox_command = /usr/bin/maildrop
+> >>
+> >> I have only one user that receives mail on my system, and that user
+> >> account has/d a ~/.mailfilter file.  The problem is, whenever that
+> >> file exists, no mail whatsoever makes it into my Maildir.  I've
+> >> tested this - i send a message to myself, and i receive nothing as
+> >> long as there's a mailfilter file existing.  As soon as i rename it,
+> >> i'm fine.
+> >>
+> >
+> > What are the permissions on the .mailfilter file, they must be 0600.
+> > I had problems like this and this caused problems similar
 > 
-> In RH7.3 I just tried to simulate your setup just opening X with xterm only.
-> startx /usr/X11R6/bin/xterm.
+> Look in your mail logs / syslogs.  Postfix / Maildrop is usualy pretty good
+> about telling you what the problem is.
 > 
-> Opening Netscape 4.79 I have no problem entering a URL, however, opening 
-> Mozilla 5.0 I have as you call it the dog bone cursor yet cannot enter 
-> anything into the URL window, like you say as if the keyboard is not 
-> responding.  Opera works fine as well as dillo.
-> 
-> I am using xfce as window manager and there is no such problem.
-> 
-> I just checked with Slackware 8.0 using xterm only. Results are the same as in 
-> RH7.3. No problem with Netscape 4.77, Mozilla 5.0 URL window does not 
-> respond.
+
+I cannot comment about Postfix as I never used it but Maildrop will not write to a log file if there is a permissions problem.
+
+Sean
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
