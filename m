@@ -1,36 +1,32 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: CD writing in ext2 filesystem
-Date: Thu, 25 Apr 2002 19:29:33 +0000
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Make command line options
+Date: Fri, 26 Apr 2002 01:19:49 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042519293308.04696@unix.pa3gcu>
-References: <200204232318.55166.mssnlayam@cs.annauniv.edu> <02042518344606.04696@unix.pa3gcu> <20020425191207.GA533@cam.ac.uk>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020426011949.D1134@neutrino.particles.org>
+References: <3CC8036F.3020202@keyed-upsoftware.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020425191207.GA533@cam.ac.uk>
+Content-Disposition: inline
+In-Reply-To: <3CC8036F.3020202@keyed-upsoftware.com>; from dstroupe@keyed-upsoftware.com on Thu, Apr 25, 2002 at 08:23:59AM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Steven Smith <sos22@cam.ac.uk>
-Cc: Suriya Narayanan M S <mssnlayam@cs.annauniv.edu>, Paul Furness <paul.furness@vil.ite.mee.com>, GNU/Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: David Stroupe <dstroupe@keyed-upsoftware.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Thursday 25 April 2002 19:12, Steven Smith wrote:
+On Thu, Apr 25, 2002 at 08:23:59AM -0500, David Stroupe wrote:
 
-> Burning an ext2 image onto a CD is a strange thing to do, but not without
-> its merit.
+> Is there a command line option for make that will force all files to be 
+> recompiled and re linked?  I thought that -W would do that, but I can 
+> not seem to make it work.
 
-As this is a newbie list and most folks will not even see the point of any 
-further disscussion on this matter i will rest my case.
+If your Makefile is correctly written, then a make clean; make all should
+be enough.
 
->
-> Steven Smith,
-> sos22@cam.ac.uk.
+Elias
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
