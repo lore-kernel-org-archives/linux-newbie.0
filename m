@@ -1,63 +1,98 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: extra ordinary installation
-Date: Wed, 15 May 2002 10:50:42 -0700
+Subject: Re: Re[2]: extra ordinary installation
+Date: Wed, 15 May 2002 17:46:46 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020515175042.00ebc114@[192.168.1.23]>
+Message-ID: <2.2.32.20020516004646.00e5fd68@[192.168.1.23]>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
-To: =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>, linux-newbie@vger.kernel.org
+To: =?Windows-1250?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>
+Cc: linux-newbie@vger.kernel.org
 
-Were I in your shoes, I would do one of two things:
+Replies interepersed below.
 
-1. Don't reinstall at all. Instead, put the new HD on the other IDE channel,
-make some partitions and put filesystems on them, and mount those partitions
-in useful places (like /home) after copying the current contents of those
-mount points to the corresponding partitions (mounted for this purpose at
-some temporary mount points) on the new drive.
+At 01:10 AM 5/16/02 +0200, =?Windows-1250?B?TWF0ZXVzeiCjb3Nrb3Q=?= wrote:
+>Hello Ray,
+>
+>Wednesday, May 15, 2002, 7:50:42 PM, you wrote:
+>RO> Were I in your shoes, I would do one of two things:
+>RO> 1. Don't reinstall at all.
+>
+>So, you suggest to make some FRESH installation ?
 
-2. Do a fresh install of Linux on the new HD, then mount the old one (either
-temporarily or permanently) on the other IDE channel. Copy over from the old
-HD only local content and customization stuff.
+No, as what immediately followed this sentance should have made clear. I'm
+suggesting you use the existing install on the existing hard disk.
 
-As a loyal Debian user, I have no recommendation between RH and Slackware
-... except that whatever distro you choose, you should use the latest
-version (for RH, that's 7.3; for Slackware, 8.0), including ALL security
-patches that are available online for it.
+>RO> Instead, put the new HD on the other IDE channel,
+>RO> make some partitions and put filesystems on them, and mount those
+partitions
+>RO> in useful places (like /home) after copying the current contents of those
+>RO> mount points to the corresponding partitions (mounted for this purpose at
+>RO> some temporary mount points) on the new drive.
+>
+>You mean, that I have to move my current content (/home and other data)
+>to new HD ?
 
-At 07:27 PM 5/15/02 +0200, =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= wrote:
->Hello,
+Well, if you want to *use* the new HD, you certainly need to put *something*
+on it. If you use an existing directory as a mount point for a partition,
+the actual content of that directory will no longer be accessible. 
+
+To be precise, I suggested *copying* the content, not *moving* it. That's
+just cowardice on my part ... I find it safer to cp then rm then to mv ...
+though others will disagree here.
+
+>RO> 2. Do a fresh install of Linux on the new HD,
 >
->I have some question:
+>That's right - Fresh Install, I got it.
 >
->I have some machine with  RH 7.2 on 10 GB hard drive.
->But I would like to change this HDD to 60 GB (I have 60 GB samsung
->drive).
+>RO> then mount the old one (either
+>RO> temporarily or permanently) on the other IDE channel. Copy over from
+the old
+>RO> HD only local content and customization stuff.
 >
->I think there are two ways to do it:
+>What you mean under "local content and customization stuff" ?
+>It could be some /etc/ files, configuraton and so on, for example
+>named, dhcp config files for using it on new Fresh Instllation ?
+
+I mean whatever you've created locally. That might be custom config files,
+or applications you've written, or apps that you installed that did not come
+with the distro. Or content -- text, images, video ... whatever you're
+actually using the computer for.
+
+>RO> As a loyal Debian user,
 >
->1) Export RH7.2 from  10 GB drive to 60 GB drive using PartImage
->software (www.partimage.org).
+>Debian....It was My First Linux Distro ;)
+>But...I gave up ;),Debaian is beautiful,but fall in love with
+>Slackware  ;)))/
 >
->2) Install new OS (I prefer Slackware)
+>RO> I have no recommendation between RH and Slackware
+>RO> ... except that whatever distro you choose, you should use the latest
+>RO> version (for RH, that's 7.3; for Slackware, 8.0), including ALL security
+>RO> patches that are available online for it.
 >
->What do you think,which solutin is the best ?
->Which solution has most chances to work fine ?
+>Yes. you're right.
+>So, could You recommend me some palces with kernel security patches ?
+>I'm using actually 2.4.18, what kind of patches should I put into my
+>kernel ?
+
+That's one of the "downsides" of using Debian ... the distro's security
+practices are pretty good, so I rely on the apt tools to keep my security up
+to date. So I can't readily suggest sources other than the online update
+site for whichever distro you use. (I know RH posts security patches, and I
+assume Slackware does too.)
+
+>Thanks a lot
 >
->I could choose First one, because there are many services and software
->installed on RH 7.2 (dhcp, named, www, mysql, etc.)
+>Regards
 >
->But I prefer Slackware.
->But I know that it is a lot of work to install this services etc.
->I haven't a lot of time.
->
->What do you recommend ?
->I'm affraid of First solution because I didn't export any OS by
->PartImage.
->
->Any advice ?
+>p.s. Ray, Are you from Poland ?
+>Sorry for my straight question, but your last name seems to be like
+>polish.
+
+No. My grandfather emigrated from Poland to the USA around 1890, as a very
+young child.
 
 
 --
