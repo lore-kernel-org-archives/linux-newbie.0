@@ -1,31 +1,31 @@
 From: "Benny Pedersen" <linux-net@tcob1.net>
-Subject: Installation of sources
-Date: Saturday, 03 Aug 2002 20:47:04 +000
+Subject: ext3 file system
+Date: Saturday, 03 Aug 2002 20:24:58 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a300=2f15_3d4c25e7@fidonet.org>
-References: <221321ff3c.1ff3c22132@homemail.nyu.edu>
+Message-ID: <MSGID_110=3a300=2f15_3d4c20a5@fidonet.org>
+References: <200207200613.g6K6Dv601096@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <221321ff3c.1ff3c22132@homemail.nyu.edu>
+In-Reply-To: <200207200613.g6K6Dv601096@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Anshuman Singh Rawat
+Originally to: Peter
 
-Hello Anshuman.
+Hello Peter.
 
-21 Jul 02 01:14, you wrote to all:
+20 Jul 02 14:13, you wrote to all:
 
- AR> I recently installed Linux (RHL 7.3) for the first time in my life.
- AR> Now what do I do install/view the sources? I read in some book where
- AR> i cud find the sources but that directory is absolutely empty, so I
- AR> guess the sources have to be installed first.
+ P> I got myself RH7.3 and it says it is recommended, but not required to
+ P> move to ext3 file sytem.
 
-you can download the source iso files from ftp.redhat.com or any mirror, or get single src.rpm files, but i recoment to get the 2 iso files with have docoments on howto :-)
+ P> Is it safe to do?
 
-fyi the complete 7.3 is 5 iso files
+you need 10% more free space on all partions, other then that the update is safe if you doit from a redhat 7.3 disk upgrade
+
+if you try to doit manuely, no :-)
 
 Benny
 
