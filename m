@@ -1,35 +1,44 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re: Modem Identification - Thanks
-Date: Sun, 15 Dec 2002 18:21:44 -0500
+From: Bill Pleasants <Bill_Pleasants@pghmail.com>
+Subject: Printer error
+Date: Sun, 15 Dec 2002 22:14:49 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212151821.44022.sotl155360@earthlink.net>
-References: <5.1.0.14.1.20021214171540.020e0cb0@celine> <200212151455.13854.sotl155360@earthlink.net> <Pine.LNX.4.50.0212151527590.856-100000@athame.gmpexpress.net>
+Message-ID: <3DFD4529.1040700@pghmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.50.0212151527590.856-100000@athame.gmpexpress.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: dashielljt <dashielljt@gmpexpress.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Thanks for the info.
+Hello,
+After installing RH 8.0 in my HP Pentium II, my first successful installation,
+I installed a Brother HL-720 printer. I set it up local.  The Printer 
+Administration window shows:
+ Command:    lpr
 
-By the way there is a Thinkpad user group and news group at:
+ Driver:          Generic Printer (SGENPRT)
 
-linux-thinkpad@linux-thinkpad.org
+ Location:  
 
-Thanks
+After printing 2 of 3 pages from
+Mapquest, the printer indicated toner out.  I replaced the cartridge and
+there was an error light which can be cleared by unplugging the printer
+cable and cycling the printer off.  I reset the print queue and the same
+2 pages printed and the error light flashed.  Rebooted - same error light.
+Attempts to print additional items failed.  Later I entered 
+"lprm" to cancel anything pending and got
+"local host IP not available."  When I entered
+"/etc/init.d/lpd stop" I got 
+"[FAILED]"
+I repeated it and got
+"[FAILED]"
+"local host IP not available"
+In the panel is a ? which when clicked gives
+"Temporary error in name resolution."
+So far I haven't learned what this IP is about. I would appreciate help.  
+Yours truly,
+Bill
 
-Frank
-On Sunday 15 December 2002 15:29, dashielljt wrote:
-> Well you should know that on freshmeat newsletter in the last couple days
-> a package was released for the thinkpad which would allow you to program
-> the thinkpad's buttons to do certain linux tasks.  It's
-> thinkpad_buttons-x.y.z.tar.gz I think.
->
-> Jude <dashielljt(at)gmpexpress-dot-net>
->
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
