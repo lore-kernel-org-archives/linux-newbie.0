@@ -1,53 +1,173 @@
-From: "Robert Couture" <linux-net@tcob1.net>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: Tuesday, 22 Oct 2002 13:25:18 +000
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Trying to get GUI'ed
+Date: Tue, 22 Oct 2002 16:00:57 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a260=2f1_3db551be@linuxnet>
-References: <MSGID_110=3a10=2f1.2_8d16c3d8@linuxnet>
+Message-ID: <3DB5AE79.9087C859@gelm.net>
+References: <200210212223.g9LMNrq15189@ev6.be.wanadoo.com> <1035282533.1744.23.camel@zebra.vil.ite.mee.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MSGID_110=3a10=2f1.2_8d16c3d8@linuxnet>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Bryan Simmons
+Hi, Paul:
 
-Hello Bryan!
+ Lovely.  Your story sounds like what I want to do. :-)
 
-On 20/10/2002, Bryan Simmons was caught whispering to All about
-Re: CD-ROM settings and hardware resources....
+ I have RedHat8.0 ('tho I see that this distro is not liked! :-|).
+I'll try a few GUI install choices and what I can learn.
 
- BS> The CDs I'm trying to read were made in Windows (98, 2000, XP) with this
- BS> very same drive about a year ago.  They all contain home-made movies
- BS> that I created in XP.  The range in sizes is 9MB to 200MB.  Now, I have
- BS> never been able to play any of them directly off of the disk in Windows,
- BS> but I have always been able to transfer them from CD to hard disk.  My
- BS> problem in Linux is that the drive "stalls" during a copy or a read of
- BS> the media during playback in xine or kaboodle or xmovie, etc...  It
- BS> would play the first 30 seconds of the film and then stall out.  The
- BS> media program freezes and the drive is locked until I kill the processes
- BS> accessing it.  The same is true when I attempt a copy from CD to hard
- BS> drive in Konqueror.  The copy window says it transfered 4MB and then the
- BS> drive status windows says "stalled" and that's as far as I can get.
+Although I am still confused about who is doing what,
+with which, and to whom.
 
-To be honest, the symptoms you describe sounds more like a bad CD than
-anything to do with Linux itself.  This is based on you needing to copy the
-files to play them in Windows.  There are likely bad "sectors" that re
-recoverable with multiple reads and error correction.  That would explain it
-not working in the Windows and Linux media players.
+IOW, I do not understand the difference among:
+Xwindows, Gnome, & Sawfish.
 
-Just a thought.
+ To me, windows is windows, windows is what a GUI application needs
+for I/O; a text console is what a text console application needs.
+Sawfish, twm, Gnome, KDE, fvwm, fvwm95, are meaningless to me.
+I don't see the difference. :-|
+ Why cannot any GUI application run on any 'window'?
+Why is not Xwindows a 'window manager'?
+Why is not fvwm a 'Xwindow'?
 
-Robert.
+ Please don't bother trying to answer these now.  I'll probably
+get the gist by trying different things.  ;-)
 
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
+Regards, Chuck
 
-
+Paul Furness wrote:
+> 
+> Linux is slowly getting better and easier for people who don't want to
+> spend hours fiddling with it, but it isn't quite there yet.
+> 
+> Ok, here's what I use:
+> 
+> I currently have Red Hat 7.3 installed on my workstation. I have been
+> using Red Hat precisely because the installation is pretty friendly - I
+> can chose to take one of the default installs, or I can customise most
+> of the package choices.
+> 
+> At initial install, Red Hat doesn't give me 37 choices of which window
+> manager to use. If I'm installing Red Hat and using their desktop (which
+> is Gnome by default) then I'll get Sawfish as the window manager. I
+> _can_ change that during the install if I really want to, but I don't
+> actually _need_ to think about it to make it work. It works fairly well
+> for most things, and although I am thinking of trying something else,
+> it's partly because it's my _job_ to try different versions of things so
+> that I can advise the people at my company what they should use.
+> 
+> If you want an easy install that includes a (relatively) nice GUI, then
+> Red Hat may well be what you want.
+> 
+> By the way, I have found the Ximian Destop (which you install after X,
+> window manger and Gnome/KDE) to be really quite reliable and useful. It
+> seems to fix a lot of problems which I was having with Red Hat's default
+> setup.
+> 
+> If you don't want to do that, then you are _choosing_ to do it the
+> manual way, and that implies that you either have to install each option
+> and try it, or read a load of documentation.
+> 
+> The reason I ended up with the window manager I have is that previous
+> ones I've tried (like Afterstep, Enlightenment, gdm) all had something
+> in them that I didn't like, couldn't do or didn't work with something
+> else I was using. I can't tell you which ones are right for you
+> precisely because I am not you. If you want to use Gnome, Sawfish is a
+> good choice because it's _compatible_ with gnome right out of the box.
+> Afterstep, for example, has some lovely graphical things it can do, but
+> didn't work well with the menus I wanted to use - so I stopped using it.
+> This was some time ago, though, so it may have changed by now. I promise
+> that the best way to decide what you want is to try some.
+> 
+> If you don't have time to read lots, then chose a distribution that
+> gives you useful defaults (I liked Red Hat until version 8 which is all
+> strange and lacks most of what I like). If you don't have time to either
+> read lots or get a different distribution or try different options, go
+> and buy a Mac which gives you only a very few options and needs almost
+> no setting up, but is proprietary and expensive.
+> 
+> Paul.
+> 
+> On Tue, 2002-10-22 at 01:00, Heimo Claasen wrote:
+> > It would be interesting to go into more details with this, especially
+> > in _comparing_ different window managers:
+> >
+> > > Incidentally, you don't _need_ a lot of the software you can get this
+> > > way - just directly configuring X will give you access to most of the
+> > > stuff. But you certainly need _some_ kind of window manager for it to be
+> > > useful.
+> >
+> > Which is precisely what I'm looking for.
+> >
+> > Actual example: that most recent Debian-3 install gave me a choice of
+> > three of them (gdm, kdm, xdm), and sure I was (newbie, thanks) at a loss
+> > for what to do. _No_ usefull description/help what the heck the
+> > difference would be.
+> >
+> > But there are differences, and crucial ones: I'm struggling since ages
+> > to make a specific SCSI device run which quite obviously has some
+> > collision course with "some" of the X (windows?) management components.
+> > For instance, it would just not run under any of various Mandrake/KDE
+> > installs; it did run (shortly) with a tweaked Debian-2.2 and and what I
+> > was told was "window maker" (for some unrelated reason, that install had
+> > to be changed, and the SCSI device never ran again there).  Finally, a
+> > new Debian-3.0 install first _did_ have it run (there I was sure it was
+> > xdm which was used, but on the "frame buffer" kernel _without_ the
+> > XF86-..."4" install !) For again some unrelated reason, there had to
+> > be a re-install of this very Debian; I used not the "frame buffer" but
+> > the "compact" kernel install that time (more out of a feeling: there
+> > is no intelligible info joined to these procedures), had later enormous
+> > difficulties to get X working at all, and it never accepted the full
+> > range of the high-resoulution screen, _despite_ it's use of the
+> > XF86-.."4" version.  (Didn't manage to have it using the highest
+> > resolution; which is the one exactly needed for photo jobs _as_well_as
+> > the SCSI-connected film scanner.) But I chose "gdm" that time, and lo
+> > and behold, the dang SCSI device worked.  No real use though, as the
+> > full resolution screen is not available. Thank you.
+> >
+> > I haven't _got_ fifteen month of idle time to go through twentyseven
+> > docs and sources in search of that ephemeral X screen handling detail
+> > (and there I'm sure that its something like this, because te device
+> > as such _does_ work) which collides with the device's output.
+> >
+> > Thus, instead of sending people from one wall to the other, like in
+> > best kafkaesques traditions, it would be nice to have some clearly
+> > worded information of what the differences _are_ between those window
+> > managers.
+> > At looking at each one of their own specific doc-novels separately I
+> > would never ever get the _functional_ information I need, namely to find
+> > the comparably "simplest" one with the least potential of skrewing up
+> > the relation between the pixel output from that dang device and the wm's
+> > (not-too- broad-integration-of-most-sophisticated) screen handling
+> > elements.
+> > (By now I'm quite sure that it's one of those thousand files-bits of the
+> > Gtk environment which might be the culprit but to find that out would
+> > mean another fifteen months more of work and missed pay for not done
+> > real work.)
+> >
+> > // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-21
+> > The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+> >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> >
+> --
+> Paul Furness
+> 
+> Systems Manager
+> 
+> 2+2=5 for extremely large values of 2.
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
