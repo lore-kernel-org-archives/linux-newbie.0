@@ -1,26 +1,28 @@
 From: Peter <pfheiss@philonline.com>
 Subject: Re: Text Reformatting
-Date: Tue, 20 May 2003 10:46:00 +0800
+Date: Tue, 20 May 2003 10:47:05 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030520024605.4ED69103B1@pfheiss>
-References: <2414.1053346670@localhost.localdomain>
+Message-ID: <20030520024710.972F9103B1@pfheiss>
+References: <3EC8FBCD.1030804@bcgreen.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 19 May 2003 18:17:50 +0600." 
- <2414.1053346670@localhost.localdomain>
+In-Reply-To: Your message of "Mon, 19 May 2003 08:44:13 MST." 
+ <3EC8FBCD.1030804@bcgreen.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
+To: Stephen Samuel <samuel@bcgreen.com>, linux-newbie@vger.kernel.org
 
-Thanks Amin,
+Thanks Stephen,
 
-gggqG works; ggVG in your first mail did not work, then I tried it with :ggVG 
-and got the error that it is not a command after which I tried vim ggVG file. 
-Now it's all clear even so still strange.
+sed 's/^[ \t]+//' file does not work, it changes nothing.
 
-I am well aware that vim is a text editor made somewhat easier to use now with 
-gvim.
+
+samuel@bcgreen.com said:
+> Note that when you do the " tr [options] > somefile | fmt [options]
+> somefile" , you're losing any advantage of using a pipe. 
+
+Well taken tip!
 
 Regards
 -- 
