@@ -1,31 +1,36 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: new X = slow gnome
-Date: Fri, 12 Apr 2002 19:03:49 +0000
+From: "Jerry T" <linuxl1@hotmail.com>
+Subject: ssh - connection refused
+Date: Sat, 13 Apr 2002 03:59:10 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0204121903490M.00302@unix.pa3gcu>
-References: <20020411191935.6741.qmail@web12206.mail.yahoo.com> <0204111927270G.00302@unix.pa3gcu> <001e01c1e21f$d35f0d50$b6cefea9@jesus12>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <F117ylW9wWDV81Ze8P300020b87@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001e01c1e21f$d35f0d50$b6cefea9@jesus12>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Glen Rubin <glenrubin@earthlink.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Friday 12 April 2002 12:44, you wrote:
-> Yeah I tried starting KDE as a user and it started up REAL SLOW in a
-> similar manner and then had all sorts of problems shutting down.
 
-"Starting KDE" ? i start X and have KDE as my Window Manager.
 
-If you dont say and show what the problems are how can anyone help you.?
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+
+I have sshd running on a Redhat 7.2 box. Am able to telnet & ftp the box 
+from a win2000 box. To try ssh I set up the following: On the win2000 box 
+under Cygwin I ran "ssh-keygen -t rsa" to generate my key and used ftp to 
+move the id_rsa.pub file to my Linux box. (I copied the file to 
+.ssh/authorized_keys). From Cygwin on win2000 I tried to use slogin to get 
+to my Linux box but I get "Connection Refused."
+
+Also tried to rename authorized_keys to authorized_keys2.
+
+The sshd process starts up when I boot up.
+
+Also tried Putty instead of Cygwin. Same "connection refused" error.
+
+Any ideas on what I am missing?
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
