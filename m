@@ -1,86 +1,60 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: unable to ping cable provider
-Date: Sat, 23 Nov 2002 19:37:23 +0000 (GMT)
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Emacs
+Date: Sat, 23 Nov 2002 14:42:19 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0211231926380.15555-100000@ppg_penguin.linux.bogus>
-References: <5.1.0.14.1.20021123085232.02126060@celine>
+Message-ID: <026b01c29328$6f797180$64fea8c0@pkrausxp>
 Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_026C_01C292FE.86A36980"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021123085232.02126060@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_026C_01C292FE.86A36980
+Content-Type: text/plain;
+	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
 
-Ray, thanks for this advice.
+Can someone point me to some guides on how to use emacs?
 
-On Sat, 23 Nov 2002, Ray Olszewski wrote:
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
-> Ken -- You may already have gotten the help you need from John Kelly's 
-> response. The few details I can add may or may not be helpful.
-> 
-> 1. You are being assigned a private-range address (10.b.c.d) by your ISP. 
-> This means one of two things:
-> 
->          A. The ISP NAT's these addresses upstream of you.
->          B. The ISP assigns these addresses temporarily, until you register 
-> with the ISP.
-> 
-> I'm guessing that you are in situation B, and you need somehow to register 
-> your set-top box (or maybe your NIC MAC address) to get a real connection. 
-> More on that later.
->
- I tend to agree.
- 
-> 2. That you cannot ping your default gateway may not be significant, since 
-> ISP's often disable ping responses from their routers. This makes user-end 
-> troubleshooting harder, but I've never noticed that ISPs are much concerned 
-> about helping their customers do anything that is not a vanilla connection. 
-> I'd put this part of the analysis aside for now. (Oh, one question ... is 
-> the "mybox" that you are pinging *from* the router itself or a LAN 
-> workstation? If the latter, you won't be able to ping through the router, 
-> except to its own external interface address, until you install an iptables 
-> ruleset that NATs the LAN ... just enabling ip_forwarding is not 
-> sufficient, since outside hosts do not know that your router's external 
-> interface address is their route to 192.168.0.0/24 . Since I'm not familiar 
-> with LFS-3.3, specifically how it sets up iptables rulesets, I can't 
-> suggest details here.)
->
+------=_NextPart_000_026C_01C292FE.86A36980
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
- I've been using ssh to access the firewall from my internal network
-when I tried pinging. I might have to come back to the iptables setup
-later (actually, it's based a ruleset from Linux Journal that I've been
-using for dial-up connections, with adaptations). LFS itself is as
-little (or as much) as you want, and I don't want a lot on that box. 
-  
-> 3. The approach you seem to have arrived at ... put the NIC in a Windows 
-> box; register the NIC; move the NIC to your Linux router ... is the good, 
-> conservative approach to making the connection work (assuming you are in 
-> situation 1B, not 1A). You could also try connecting via your ISP's 
-> preferred browser (IE, no doubt) running on a NAT'd Windows or Mac host on 
-> the LAN. If you do this right, the connection should look to the ISP as 
-> though it were coming from the router's IP and MAC address (unless the ISP 
-> specifically has anti-NAT stuff in its system, an unlikely possibility ... 
-> but one that will cause bigger problems than we've considered so far if 
-> they somehow do it).
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
- Thanks, I think this is what I did from the iBook. Trouble is, it fails
-to negotiate an ip address from the server (either it ignores the
-specification to use my `router', or it's asking the firewall for the
-address.) It then falls back to trying ping (but doesn't specify who or
-where). Hence my original question.
-
- Looks like I've got to dig out an old Win98 CD. Oh, the shame of it
-(and of using a "conservative" solution, too) <grins>. Thanks.
-
-Ken
-
--- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
-
+------=_NextPart_000_026C_01C292FE.86A36980--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
