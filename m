@@ -1,34 +1,37 @@
-From: dave <dave@dpomeroy.com>
-Subject: msec
-Date: Thu, 19 Feb 2004 11:09:15 -0800
+From: =?iso-8859-1?q?Sastry=20Malladi?= <sastry05@yahoo.co.in>
+Subject: 'current' macro question
+Date: Fri, 20 Feb 2004 04:50:07 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <403509DB.4020306@dpomeroy.com>
+Message-ID: <20040220045007.38193.qmail@web8312.mail.in.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-I think I figured it out on my Mandrake 9.1 system.  It seems msec runs 
-everyone once in a while and resets the permissions for files and 
-subdirectorys back to the level as listed in perm.2 file.  When I 
-changed the perm.2 file, msec changed the permissions on 
-/home/everyone.  So then I added a perm.local file and made the 
-permissions on /home/everyone 1775.  Took it out of perm.2 and it seems 
-to work correctly.  So any local change you want in the permmissions 
-need to be made in perm.local.  When I grep msec messages msec is 
-reading perm.2 and then perm.local.  When I change secruity to level 3.  
-msec reads perm.3 and then perm.local.  verygood.  The question for 
-today is:  Is Mandrake the only distribution that uses msec?  If so what 
-does the other distributions use?  Thanks again to all of you for your 
-help and expecially to Ray.
-Thanks for your time
+hi,
 
--- 
-Dave Pomeroy K7DNP South Eastern Washington
+i have read that the "current" macro gets a pointer to
+the process descriptor of the current process by
+masking out the least significant 13 bits of esp. that
+means  the least significant 13 bits of the starting
+address of a process descriptor are always 0.is the
+process descriptor always aligned at an 8KB boudary?
+otherwise the masking does not give the correct base
+address of the process descriptor if (say) the process
+descriptor starts at 0x1534ff2f
 
+when the kernel allocates a new process descriptor by
+using alloc_task_struct() how does it make sure that
+the new process descriptor is always at an 8KB
+boundary?
 
+sastry
+
+________________________________________________________________________
+Yahoo! India Insurance Special: Be informed on the best policies, services, tools and more. 
+Go to: http://in.insurance.yahoo.com/licspecial/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
