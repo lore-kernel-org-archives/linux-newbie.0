@@ -1,42 +1,23 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Sound Lost
-Date: Sun, 01 Jun 2003 16:01:25 +0800
+From: Amin <raihan@citech-bd.com>
+Subject: Where is `banner'?
+Date: Sun, 01 Jun 2003 14:07:28 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030601080130.340C0103F4@pfheiss>
-Mime-Version: 1.0
+Message-ID: <1130.1054454848@localhost.localdomain>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
 Hi,
 
-I upgraded RH7.3 and the sound is gone.
+I'm using Red Hat Linux 8.0 and I just noticed --- I don't have
+`banner', the old Unix tool for creating large characters out of small
+ones.  Anyone have any idea where I can get it?
 
-Old kernel-2.4.18-24.7.x.i686; new kernel-2.4.20-13.7.i686
-
-dmesg:
-
-Trident 4DWave/SiS 7018/ALi 5451,Tvia CyberPro 5050 PCI Audio, version 
-0.14.10h, 13:32:09 May 12 2003
-PCI: Found IRQ 11 for device 00:01.4
-PCI: Sharing IRQ 11 with 00:09.0
-trident: SiS 7018 PCI Audio found at IO 0xe000, IRQ 11
-ac97_codec: AC97  codec, id: CMI65 (CMedia)
-AC97 codec does not have proper volume support.
-
-The last line of the message appears on the console every now and then.
-
-How do I get my sound back?
-
-Thanks & regards
-
-
-
-
-
-
+Thanks in advance,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
