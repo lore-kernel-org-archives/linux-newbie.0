@@ -1,31 +1,71 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: permission for alias file
-Date: Tue, 7 Jan 2003 16:01:25 -0500
+From: "Michael Scottaline" <nbhs2@i-2000.com>
+Subject: Re: Set the "mail system".
+Date: Tue, 07 Jan 2003 18:22:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301072101.h07L1PQs008657@hartford-hwp.com>
-References: <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk>
- <200301061652.h06GqwTo000410@hartford-hwp.com>
- <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk> <5.1.1.6.0.20030107172131.01ee16a8@pop3.demon.co.uk> <200301071939.h07JdeWi008146@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <1041963753_PM_BeOS.nbhs2@i-2000.com>
+References: <20030107190203.26D873E2F@sitemail.everyone.net>
+Reply-To: nbhs2@i-2000.com
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200301071939.h07JdeWi008146@hartford-hwp.com> (message from
-	Haines Brown on Tue, 7 Jan 2003 14:39:40 -0500)
+In-Reply-To: <20030107190203.26D873E2F@sitemail.everyone.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: brownh@hartford-hwp.com
-Cc: carl@anexia.co.uk, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-> If I understand you correctly here, the "mail" directory is owned by
-> root/root and has a 755 permission, while the *.aliases files it
-> contains have 777 permissions. 
+>  Hi all in this place. No is later for say Happy New Year!!
+>
+>  I'm not really a newbie, i am for 4 years with Linux, but still there 
+are
+>areas in which i don't have any idea, cos never before worried about 
+it.
+>
+>  I ever used webmail, but now i get a pop3 account and i want 
+configure
+>the Operating System for use it.
+>
+>  Of course, i don't find any difficult in the use of programs like 
+mozilla
+>or netscape. But... what about configure the whole system for use my 
+new
+>mail adress?. Any hint or advice?.
+>
+>  I don't know if i get express what i want in the correct way (my 
+english
+>need be improved). I am talking about, for example, the mail that 
+appears in
+>the first line of dmesg, now is root@Smeagol.org, this isn't my real 
+adress,
+>i am talking about can use Pine, or exim, or procmail or whatever 
+program
+>that you recommend me.
+===============================
+For ease of set up and use, I'm going to recommend sylpheed with linux.  
+In the setup dialogue box you'll add all required info:  for pop server 
+(incoming mail) you'll likely need to put pop.your-isp-domain.com.  For 
+outgoing, choose smtp server and put (most likely) 
+smtp.your-isp-domain.com.
+The rest is likely to be self explanatory.  you can download sylpheed 
+from:
+sylpheed.good-day.net
+If you take the tar file, just: "tar zxvf sylpheed-0.8.8.tar.gz" (w/o 
+quotes)
+cd to the new directory
+./configure
+make 
+su
+password
+make install
+If kmail is already on your system (I don't like it nearly as much as 
+Sylpheed) you could try that first and just add the info I suggested 
+above.
+HTH,
+Mike
+-- 
+"Always remember, I've taken more out of alcohol than alcohol has taken
+out of me."
+	--Winston Churchill
 
-No good. Still get the permission error.
-
-Thanks for trying.
-
-Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
