@@ -1,39 +1,51 @@
 From: beolach@comcast.net
-Subject: Cooperative Linux
-Date: Tue, 27 Jan 2004 04:56:01 +0000
+Subject: Re: Samba
+Date: Tue, 27 Jan 2004 05:21:58 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <012720040456.21261.3e4c@comcast.net>
+Message-ID: <012720040521.24769.4967@comcast.net>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: jlamb03@elitemail.org
+Cc: linux-newbie@vger.kernel.org
 
-There was a thread on this list recently on running Linux inside windows;
-to which the general consensus was that it can't really be done.  However
-I was reading through the weekends articles on /. <http://slashdot.org>
-and found this article about a program that does exactly that:
-<http://developers.slashdot.org/article.pl?sid=04/01/25/2124237&mode=thread&tid=106&tid=185&tid=190&tid=201>
+> Hello,
+> 
+> I recently switched to linux because I was curious what else was out there
+> and was very annoyed with windows's mismanaged multitasking.  So I went and
+> bought Slackware after trying knoppix for a short while. I know Slack is
+> sometimes not recommended for newbies, but I think it is the best way to
+> learn linux because it really forced me to learn new things.
+> 
 
-(Quote from /.):
-"Posted by timothy on 15:03 Sunday 25 January 2004
-from the it's-real-friendly-like dept.
-evilmf writes "Well... I was on my daily "relaxing" read of the LKML when I've found an interesting announce about "Cooperative Linux", in this message from Dan Aloni. It allows you to run Linux on an unmodified Win2000/XP system, just launching another app. Dan says that Cooperative Linux is 'is stable enough (on some common hardware configurations) for running a fully functional KNOPPIX/Debian system on Windows,' and provides some screenshots in the project homepage.""
+My opinion exactly.  I started the same way back Slackware 7.1.
 
-Related links:
-Project Homepages:
-<http://www.colinux.org/>
-<http://sourceforge.net/projects/colinux>
+> My question: Can you recommend any books that deal more with networking, I
+> am having troubles trying to set up a Samba server? I also want to be able
+> to set up Apache and BIND? OH, and one more, does anyone have a good text on
+> using a good linux server to serve a lot of thin clients?
 
-Original LKML (Linux Kernel Mailing List) Post:
-<http://lkml.org/lkml/2004/1/25/96>
+As has been pointed out, a lot of great info on just about every subject
+is available in The Linux Documentation Project <http://tldp.org>.  I also
+want to point out that all of the HOWTOs & FAQs from TLDP are included in Slackware in /usr/doc/Linux-HOWTOs & /usr/doc/Linux-FAQs.
 
-Slashdot Article:
-<http://developers.slashdot.org/article.pl?sid=04/01/25/2124237&mode=thread&tid=106&tid=185&tid=190&tid=201>
+Also, the SAMBA package for Slackware includes a ton of documentation on
+setup SAMBA, including the book "Using Samba, 2nd Edition".  The easiest way
+to get to this using SWAT (Samba Web Administration Tool), which is also the
+best way to administer SAMBA.  To enable SWAT, edit /etc/inetd.conf &
+uncomment the line for swat.  Then find inetd's PID with 'ps -A' & send it
+SIGHUP with `kill -HUP <pid>`.  Then open your preferred webbrowser & go to
+<http://localhost:901>.
 
-Just thought this was of interest,
+> 
+> thanks for your time
+> 
+
+My pleasure, hope it helps.
 Conway S. Smith
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
