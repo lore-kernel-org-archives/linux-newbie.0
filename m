@@ -1,42 +1,46 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
 Subject: Re: recovering files after rm
-Date: Mon, 31 Mar 2003 20:02:44 +0000
+Date: Mon, 31 Mar 2003 23:07:59 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03033120024406.04308@unix.pa3gcu>
-References: <03033113143200.04308@unix.pa3gcu> <5.1.0.14.1.20030331091344.01e9b318@celine> <20030331220338.C1195@neutrino.particles.org>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030331230759.D1195@neutrino.particles.org>
+References: <20030331083633.29504.qmail@webmail35.rediffmail.com> <03033113143200.04308@unix.pa3gcu> <20030331162800.B1195@neutrino.particles.org> <03033119343201.04308@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030331220338.C1195@neutrino.particles.org>
+Content-Disposition: inline
+In-Reply-To: <03033119343201.04308@unix.pa3gcu>; from pa3gcu@zeelandnet.nl on Mon, Mar 31, 2003 at 07:34:32PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Elias Athanasopoulos <elathan@phys.uoa.gr>, Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: pa3gcu <pa3gcu@zeelandnet.nl>
+Cc: n mishra <mishra_nn@rediffmail.com>, linux-newbie@vger.kernel.org
 
-On Monday 31 March 2003 19:03, Elias Athanasopoulos wrote:
-> On Mon, Mar 31, 2003 at 09:15:36AM -0800, Ray Olszewski wrote:
-> > At 04:28 PM 3/31/2003 +0300, Elias Athanasopoulos wrote:
-> > >He asked for rm.
+On Mon, Mar 31, 2003 at 07:34:32PM +0000, pa3gcu wrote:
+> On Monday 31 March 2003 13:28, Elias Athanasopoulos wrote:
 > >
-> > ... and Richard gave him a good answer. In particular, this link (turns
-> > up as #2 when I actually try what Richard suggested)
-> >
-> >          http://sdb.suselinux.hu/en/sdb/html/cg_rmfiles.html
-> >
-> > gives advice that should work fine for files deleted using rm.
->
-> It's what I said in the paragraph Richard didn't (probably) read.
+> > He asked for rm.
+> 
+> Yes indeed he did, i gave an answer concerning "files" deleted with the 'rm' 
+> command. So what is your point,?????
+> 
+> Most all of the hits one gets in google from "deleted files" concerns files 
+> deleted with the 'rm' command. Now what did i misread and where did i go 
+> wrong.??? Please enlighten me.!!!!!
 
-Enlighten me/us please !!!!!.
+The google's hits you mention do what I said in my last paragraph (first
+post).
 
-> Elias
+Recall that I said: In *general* there is no way. Noone of these tools can
+succeed in all cases. And this is becuase Unix - and Linux based OSes in
+our case - are multi-user Operating Systems. A free i-node can be used by 
+another user's process the next second you rm your file.
+
+Elias
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
