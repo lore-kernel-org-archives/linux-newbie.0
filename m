@@ -1,39 +1,29 @@
 From: caszonyi@rdslink.ro
-Subject: Re: boot partitions
-Date: Wed, 28 Jan 2004 23:37:19 +0200 (EET)
+Subject: Re: Who is listening on port xxx?
+Date: Wed, 28 Jan 2004 23:20:27 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0401282335380.807@grinch.ro>
-References: <200401290325.00669.wheds8@ms66.hinet.net>
+Message-ID: <Pine.LNX.4.53.0401282318370.698@grinch.ro>
+References: <4011C87400001C22@mail-bcm02.alestra.net.mx>
 Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200401290325.00669.wheds8@ms66.hinet.net>
+In-Reply-To: <4011C87400001C22@mail-bcm02.alestra.net.mx>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Cc: linux-newbie@vger.kernel.org
+To: "rgomez@bancomer.com" <rgomez@bancomer.com>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Thu, 29 Jan 2004, S. Barret Dolph wrote:
+yOn Wed, 28 Jan 2004, rgomez@bancomer.com wrote:
 
-> Are these really necessary? I never had problems without one but I only have
-> Linux on my box and no other users.
+> Hi, here's the network newbie again...
+>
+> How or Where can I find which process is listening on specific port?
 >
 
-no
-usually it's better to have a separate boot partition in a multiuser
-environment
+netstat -a
 
-> How about Swapfiles instead of a swap partition? Does this really work?
->
 
-yes
-you can even have a combination of swap files and swap partitions
-
-> Cordially,
-> S. Barret Dolph
-> Taipei Taiwan
-> -
 
 --
 "A mouse is a device used to point at
