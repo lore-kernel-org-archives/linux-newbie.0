@@ -1,66 +1,69 @@
 From: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>
-Subject: Re: setting Tab's in vi
-Date: Thu, 20 Feb 2003 18:41:25 -0300 (BRT)
+Subject: Re: file transfer via telnet
+Date: Thu, 20 Feb 2003 18:44:04 -0300 (BRT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <62234.200.136.52.249.1045777285.squirrel@www.mandic.com.br>
-References: <8789.1045773996@www29.gmx.net>
+Message-ID: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
+References: <3E55D572.1B60BF79@ihug.co.nz>
+        <Pine.LNX.4.33.0302201209340.32539-100000@willy.nateworks.ca>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <8789.1045773996@www29.gmx.net>
+In-Reply-To: <Pine.LNX.4.33.0302201209340.32539-100000@willy.nateworks.ca>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: Matthiaseifert@gmx.de
-Cc: linux-newbie@vger.kernel.org
+To: nate@nateworks.ca
+Cc: ichi@ihug.co.nz, linux-newbie@vger.kernel.org
 
-Hi,
+If I'm not mistaken, you cannot do that because telnet transfers only A=
+SCII caracters or
+something like that (terminal related caracters)... There isn't a way t=
+o tell it to
+transfer something in binary (like ftp's "binary").
 
-I don=B4t know how you can do that with emacs, since I only use vi...
-
-You can add the following lines to /etc/vimrc or /.vimrc:
-
-set tabstop=3D4
-
-If you don't want vi to expand your tabs into spaces, you can also add =
-this:
-
-set noexpandtab
-
-
-I hope this works!
+But if you find a way, please e-mail it to me!
 
 Best regards,
 
 Rodolpho Eckhardt
 S=E3o Paulo - Brazil
 
-> Hi, Listmembers!
+It=B4s believed that the following words were said by Nathan:
 >
-> This is about configuring the vi editor.
+> Hi Steven,
 >
-> I'd like to change the default TabStop (currently 8 whitespaces) to 4=
- whitespaces
-> (which will
-> better suit my needs (at least, I think so)). I found out:
+>> I year or two back, I remember reading about a way to transfer
+>> a file using telnet.  It think it involved redirection from one
+>> tty to another, but I don't remember the details.  I now find
+>> myself in a situation with telnet access, but no ftp (or anything el=
+se I could use
+>> to upload files).  Do any of you guys know the
+>> telnet method?
 >
-> 	:ret4
+> This might not help, but if you have ssh access you could use scp (se=
+cure copy).
 >
-> will do so for one vi-session but for reasons of convenience I'm look=
-ing for a
-> permanent setting.
+> Regards,
+> Nathan
 >
-> Any hints?
 >
-> Thank you,
-> Matthias
-> Frankfurt am Main
->
-> ooh. B.T.W. don't want to be to inquisitive but... how to do the same=
- with emacs? tnx.
+>> Cheers,
+>> Steven
+>>
+>>
+>> -
+>> To unsubscribe from this list: send the line "unsubscribe linux-newb=
+ie" in the body
+>> of a message to majordomo@vger.kernel.org
+>> More majordomo info at  http://vger.kernel.org/majordomo-info.html P=
+lease read the
+>> FAQ at http://www.linux-learn.org/faqs
+>>
 >
 > --
-> +++ GMX - Mail, Messaging & more  http://www.gmx.net +++
-> Bitte l=E4cheln! Fotogalerie online mit GMX ohne eigene Homepage!
+>
+> I'm as confused as a baby in a topless bar !
+>
+> --
 >
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbi=
