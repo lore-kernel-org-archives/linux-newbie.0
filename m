@@ -1,44 +1,47 @@
-From: adwin <fox@sby.centrin.net.id>
-Subject: Re[2]: mouse setup
-Date: Thu, 4 Jul 2002 00:21:51 +0700
+From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
+Subject: Re: User in multiple groups
+Date: Wed, 3 Jul 2002 20:32:42 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <155376841.20020704002151@sby.centrin.net.id>
-References: <50420696.20020703074009@sby.centrin.net.id>
- <200207031547.44350.pa3gcu@zeelandnet.nl>
-Reply-To: adwin <fox@sby.centrin.net.id>
+Message-ID: <20020703183242.80771.qmail@web13103.mail.yahoo.com>
+References: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207031547.44350.pa3gcu@zeelandnet.nl>
+In-Reply-To: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Chris Rose <offline@shaw.ca>
+Cc: linux-newbie@vger.kernel.org
 
-Hello Richard,
-Wednesday, July 03, 2002, 10:47:44 PM, you wrote:
+ --- Chris Rose <offline@shaw.ca> a =E9crit=A0: > I'm
+trying to get one user account to be in multiple
+> groups right now, and=20
+> i thought i had it licked (add the username to the
+> end of the line in=20
+> /etc/group).  Problem is, it doesn't seem to have
+> done the trick, since i=20
+> still can't write to files for which i have
+> permission.  Is there something=20
+> else i need to do?  logout, or reboot?  Or does all
+> that stuff take effect=20
+> immediately?
+>=20
 
-RA> Ah!, ok, well use the converter plug usb>ps2 which logitec supplied, plug the
-RA> thing into the mouse ps2 socket and tell gpm it has a ps2 mouse.
-RA> gpm -m /dev/mouse -t ps2
-RA> Make sure the device files are linked correctly, /dev/mouse should be linked 
-RA> to psaux.
-RA> You use kde3, PS/2 should be ok in XF86Config, users of kde2 need to define 
-RA> this sort of mouse as IMPS/2.
-RA> They say it can be made to work as an usb mouse, i had no luck, looks like
-RA> logitec knew what they were doing when they decided to supply a converter 
-RA> plug with those mice. ;-)
+What distribution do you have ?
+It should take effect immediatelly.
 
-yes ... if I use my ps2 port..it will work..but unfortunatly .. my ps2
-port is broken...so I cannot use any ps2 mouse anyomore...:(
-so the choice is .. use my usb port. :)
+>=20
+> Chris R.
+
+Calin
 
 
--- 
-Best regards,
- adwin                            
-
+___________________________________________________________
+Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
+Yahoo! Mail : http://fr.mail.yahoo.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
