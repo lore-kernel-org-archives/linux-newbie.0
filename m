@@ -1,41 +1,77 @@
-From: "Tom Beer" <mailings@analogon.com>
+From: Walter Logeman <walter@psybernet.co.nz>
 Subject: Re: USB device installation
-Date: Thu, 18 Apr 2002 11:19:04 +0200
+Date: Fri, 19 Apr 2002 00:13:55 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <022101c1e6ba$18302b00$0901a8c0@system>
-References: <20020417221621.7E4A052728@psybernet.co.nz> <010001c1e6a2$41bbc640$0901a8c0@system> <20020418081641.757F752728@psybernet.co.nz>
+Message-ID: <20020418121355.C487352729@psybernet.co.nz>
+References: <20020417221621.7E4A052728@psybernet.co.nz> <20020418081641.757F752728@psybernet.co.nz> <022101c1e6ba$18302b00$0901a8c0@system>
+Reply-To: walter@psybernet.co.nz
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <022101c1e6ba$18302b00$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: walter@psybernet.co.nz, linux-newbie@vger.kernel.org
+To: Tom Beer <mailings@analogon.com>, linux-newbie@vger.kernel.org
 
-> I have searched around and found this page:  
-> http://www.tldp.org/HOWTO/SCSI-2.4-HOWTO/dnamesdevfs.html
-> 
-> But i am still not sure what to enter  for char-major-NUMBER 1
-> 
-> Also you corrected the command to  mknod 660 -n /dev/sda1  but it 
-> seems n does not work here m= mode?  n 
-> 
-> # mknod 660 -n /dev/sda1 c [b,8,0]
-> mknod: invalid option -- n
-> 
+Tom 
 
-Probably is the -m flag right. try man 8 mknod. After reading
-this I would recommend using
 
-mknod 660 -m /dev/sda1 -b 8 0
+> Probably is the -m flag right. try man 8 mknod. After reading
+> this I would recommend using
+>
+> mknod 660 -m /dev/sda1 -b 8 0
 
-But be cautions. I won't - as ever - not guarantee that
-this will work. Check it out and if it won't work delete 
-the device node. .
+Great to get your help here... I cld not find man 8 for mkmod on my 
+PC or the net only man 2.
 
-rm -i /dev/sda1.
+I kept getting invalid mode with your line... tried some other 
+options with no luck.
 
-Greets Tom
+However mknod created the device in dev when I did not specify a 
+mode... that is probably what is wrong now?  (just tried chmod to 
+implement the 660 - I think that worked, but the final result is 
+the same.)
 
+At least the sda1 is *there* but ... 
+
+see results below...
+
+Where to from here i wonder?
+
+
+Walter
+
+~~~
+
+
+# mknod 660 -m /dev/sda1 b 8 0
+mknod: invalid mode
+1047 root@psybernet:/dev (11:54:45)
+# mknod    /dev/sda1 b 8 0
+1048 root@psybernet:/dev (11:55:00)
+# ls -al | grep sda1
+brw-r--r--    1 root     root       8,   0 Apr 18 23:49 sda1
+1049 root@psybernet:/dev (11:55:30)
+# mount -t vfat /dev/sda1 /mnt/smedia
+mount: /dev/sda1: unknown device
+1050 root@psybernet:/dev (11:55:51)
+#
+
+~~~
+
+1052 root@psybernet:/dev (00:06:21)
+# chmod 660 sda1
+1053 root@psybernet:/dev (00:06:54)
+# mount -t vfat /dev/sda1 /mnt/smedia
+mount: /dev/sda1: unknown device
+1055 root@psybernet:/dev (00:09:08)
+# ls -al | grep sda1
+brw-rw----    1 root     root       8,   0 Apr 18 23:49 sda1
+
+-- 
+Walter Logeman
+Psychotherapist
+http://www.psybernet.co.nz
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
