@@ -1,31 +1,31 @@
-From: ichi@ihug.co.nz
-Subject: Re: a simple browser
-Date: Thu, 13 Mar 2003 08:10:46 +0000
+From: "Gabe Schenz" <jgschenz@yahoo.com>
+Subject: fan not coming on.
+Date: Wed, 12 Mar 2003 20:55:36 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E703D06.3E0E0B91@ihug.co.nz>
-References: <m3ofgui987.fsf@wobble.eth.net> <3E6EDB78.14415BBE@dsl-only.net> <200303121916.h2CJGhUK009404@hartford-hwp.com>
+Message-ID: <00d101c2e8d1$601e1bb0$3324d988@EAG6D4BE>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: brownh@hartford-hwp.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Haines Brown wrote:
-> 
-> I'm slowly migrating to Galeon, which is also a full 
-> featured browser, but is faster than Opera 
+Hello all.
 
-Really?  That is not my experience (on a P166 with 64mb RAM).
-I found Galeon slower and larger (much larger) than Opera.
+I am running SuSE 8.1 professional and it seems that the fan will not turn
+on.
 
-Cheers,
-Steven
+The details:
 
+PIII 1.26 GHz
+512 MB RAM
+Sager Laptop
 
-______________________________
-http://www.volny.cz/basiclinux
+If more info is needed, please specify.
+
+Thanks for your help.
+
+-Gabe
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
