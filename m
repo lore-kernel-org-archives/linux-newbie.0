@@ -1,45 +1,50 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: router/firewall log interpretation help
-Date: Wed, 18 Feb 2004 13:46:39 -0600 (CST)
+From: Armen Kaleshian <akaleshian@kriation.com>
+Subject: Re: router/firewall log interpretation help
+Date: Wed, 18 Feb 2004 16:39:12 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0402181323100.1034@debian-emach>
+Message-ID: <20040218213912.GA7837@sevoog.kriation.com>
+References: <Pine.LNX.4.58.0402181323100.1034@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.58.0402181323100.1034@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-I've set up a Freesco router/firewall (university LAN/WAN) that does
-logging, and I'd like some help interpreting something I saw in the log.
-Hopefully, with some help I get here and scattered reading here and there,
-I'll get a better idea of log entries and how to interpret them.  I look
-at the log once a day or so, just to see what sorts of activity it's
-logging and to see if I can understand any of it.  Some strange entries
-showed up yesterday, and I'd just like to get some input on what they
-mean.  Here's the relevant excerpt:
+Good start James!
 
------------BEGIN FREESCO LOG EXCERPT-----------------
-Feb 17 15:08:13 - kernel: IP fw-in deny eth0 UDP 192.168.1.101:68
-255.255.255.255:67 L=328 S=0x00 I=391 F=0x0000 T=128
-<snip>
-Feb 17 15:46:09 - kernel: IP fw-in deny eth0 UDP 192.168.1.100:68
-255.255.255.255:67 L=328 S=0x00 I=183 F=0x0000 T=128
-Feb 17 16:29:14 - kernel: IP fw-in deny eth0 UDP 192.168.1.100:68
-255.255.255.255:67 L=328 S=0x00 I=17186 F=0x0000 T=128
-----------------END FREESCO LOG EXCERPT-----------------
+I've tried to clarify, piece by piece the output log for you below...
 
-If I understand correctly, a UDP packet is coming from 192.168.1.101 port
-68 to 255.255.255.255 port 67.  Have I got that part right?  If so, it's
-sort of like a machine with a local address (192.168.x.x is class c
-addressing, right?) is making a dhcp request (I understood from something
-I read that port 68 is for dhcp) to any computer listening on port 67.
-Doesn't 255.255.255.255 include all machines with any IP address?
-Couldn't find much in the little bit of searching I did on port 67.  And
-I'm at a total loss on what L=328 and the like means.  Clarifications,
-observations, corrections and comments welcomed.
+: Feb 17 15:08:13 - kernel: IP fw-in deny eth0 UDP 192.168.1.101:68
+: 255.255.255.255:67 L=328 S=0x00 I=391 F=0x0000 T=128
 
-Thanks, James
+Date
+What did the logging
+What chain the packet came in on
+What the firewall did to the packet
+What interface it came in on
+What protocol
+The source address:source port
+The destination address:destination port
+The length of the packet
+The service descriptor
+<Unsure of the rest>
+
+DHCP works by sending out a broadcast packet, because in essence, it's a
+broadcast service. All machines connected to the same line need to know that
+there's a DHCP server running, and when they see the initial DHCP packet, and
+they're set to accept the service, they ask for an IP, and the server send one
+out to that physical address.
+
+Let me know if you need more clarification. There are a ton of resources on the
+web regarding the common log format. Try googling common log format for
+firewalls, and you should get some more information about the above.
+
+--Armen
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
