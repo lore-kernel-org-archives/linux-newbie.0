@@ -1,8 +1,8 @@
 From: Pratik Solanki <pratik.solanki.ml@gmail.com>
 Subject: Re: VM Vs Swap space
-Date: Thu, 7 Oct 2004 12:05:39 -0400
+Date: Thu, 7 Oct 2004 12:07:21 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <9cb08bfa0410070905188b0197@mail.gmail.com>
+Message-ID: <9cb08bfa04100709075243ce1c@mail.gmail.com>
 References: <104ee7a5041007022541759421@mail.gmail.com>
 	 <20041007093740.79630.qmail@web52904.mail.yahoo.com>
 Reply-To: Pratik Solanki <pratik.solanki.ml@gmail.com>
@@ -20,7 +20,7 @@ On Thu, 7 Oct 2004 10:37:40 +0100 (BST), Ankit Jain
 > system dosent have virtual memory
 
 No.
- 
+
 > is this correct? because i feel even if this swap area
 > is not there then also virtual memory concept exists?
 
@@ -34,6 +34,8 @@ physical memory pages (from 0 to however much RAM you have). Swapping
 is the process of using the disk to store physical memory pages when
 they are not in use, and then restoring them when an application
 accesses them.
+
+Pratik.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
