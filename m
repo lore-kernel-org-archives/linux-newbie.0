@@ -1,26 +1,24 @@
-From: ichi@ihug.co.nz
-Subject: Re: How to check for 0 byte file in bash script
-Date: Tue, 25 Jun 2002 17:07:52 +0000
+From: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>
+Subject: gcc
+Date: Wed, 26 Jun 2002 13:03:20 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D18A368.4FF4F4F6@ihug.co.nz>
-References: <200206250004.g5P04S300842@qpbd999.quickpages.net.au>
+Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D15B5@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Phillip Morgan <pmorgan@qpbd999.quickpages.net.au>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Phillip Morgan wrote:
-> 
-> How do you check if a file is 0 bytes in size in a bash script.
+Hello
 
-[ -s filename ]
+When I compile a C program using gcc, I get an a.out file. But when I type
+a.out, the error is "No such command"
 
-Cheers,
-Steven
+How do I execute the file?
 
+Regards
+Sridhar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
