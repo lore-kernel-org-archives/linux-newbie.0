@@ -1,52 +1,52 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: question regarding GPL
-Date: Thu, 25 Sep 2003 23:11:30 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: undefined reference to `_fxstat'
+Date: Fri, 26 Sep 2003 11:45:51 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030925230149.01f1e358@celine>
-References: <3F73AD8A.6010301@hq.ntsp.nec.co.jp>
+Message-ID: <200309261145.51640.pa3gcu@zeelandnet.nl>
+References: <3F69538E00003E10@mail-bcm01.alestra.net.mx>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3F73AD8A.6010301@hq.ntsp.nec.co.jp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3F69538E00003E10@mail-bcm01.alestra.net.mx>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ricardo Gomez <rgomez@bancomer.com>, linux-newbie@vger.kernel.org
 
-At 11:07 AM 9/26/2003 +0800, ronkhu wrote:
->Hi!
+On Friday 26 September 2003 01:50, Ricardo Gomez wrote:
+> I don't know if this is the right place to make this question, but I'm
+> having some problems compiling wterm.
 >
->Is it safe to use GPL'ed api's in ur code? safe in the sense that one is 
->not required to attach the GPL agreement in the code header..
+> When I make ./configure it's seems to be all ok but in the make steep I
+> get this:
 >
->A fellow programmer raised it once, saying that we need to refrain from 
->using GPL'ed api's because ultimately the code will become GPL'ed too..
+> gcc -o wterm command.o graphics.o grkelot.o main.o menubar.o misc.o
+> netdisp.o rmemset.o screen.o scrollbar2.o utmp.o xdefaults.o xpm.o
+> -L/usr/X11R6/lib -lSM -lICE -L/usr/X11R6/lib -lXpm -lX11 -lWMaker -lutil
+> /usr/X11R6/lib/libXpm.so: undefined reference to `_fxstat'
+> collect2: ld returned 1 exit status
 >
->But i thought the code only becomes(or is required to be) GPL'ed  when it 
->contains modifications of  gpl'ed code... or direct variations of it?
->
->I thought it was safe to use GPL api's when u use them only as separate 
->imported modules(without mods)?
+> I'm sure I have libXpm:
+> [pedsgrr2@edsrgr00 wterm-6.2.9]$ ll /usr/X11R6/lib/libXpm.so
+> -rwxr-xr-x 1 root root 81K sep 17 16:05 /usr/X11R6/lib/libXpm.so*
 
-The questions you ask are legal questions, and you do not even indicate 
-what country's law you are asking about. Only an attorney familiar with 
-both the GPL and your country's laws can give informed answers to your 
-questions. We are a bunch of techies here and, while we may have opinions 
-about what the GPL means, no one here (to my knowlege) is qualified to give 
-you legal advice.
+Sounds more like an incompatablity problem, in otherwords wrong or too old lib 
+versions for the code you are trying to compile.
 
-I believe that if you go to www.gnu.org and look around, you will find a 
-link to a page in which someone involved with FSF discusses the questions 
-you asked and offers his or her (or, perhaps, FSF's official) opinion on 
-how the GPL should be interpreted in these situations. I suggest you look 
-for a page that urges programmers of shared libraries to license them under 
-the GPL rather than the LGPL, and that explains why the difference matters.
+>
+>
+> Any idea, TKS.
+>
 
-One technical, not legal, thing: you need to be more clear than you are 
-about what you are asking about. The term "api" is not synonomous with 
-"imported modules", and I am guessing that when you refer to "GPL api's" 
-you mean what are commonly called shared libraries (libraries that other 
-code links to only at runtime). In any case, you need to be clear as to 
-what you are asking about.
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
