@@ -1,53 +1,79 @@
-From: Amin <raihan@citech-bd.com>
+From: Stephen Samuel <samuel@bcgreen.com>
 Subject: Re: Text Reformatting
-Date: Mon, 19 May 2003 18:17:50 +0600
+Date: Mon, 19 May 2003 08:44:13 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2414.1053346670@localhost.localdomain>
-References: <pfheiss@philonline.com>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Message from Peter <pfheiss@philonline.com> 
-   of "Mon, 19 May 2003 10:25:50 +0800." <20030519022555.DE918103AE@pfheiss> 
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <3EC8FBCD.1030804@bcgreen.com>
+References: <20030518041124.07222103AE@pfheiss>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org, raihan@citech-bd.com
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030518041124.07222103AE@pfheiss>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
-Hi,
-
-> posting the question. It's just remains Greek to me.
+Peter wrote:
+> Hi,
 > 
-> vim -ggVG gives error -G command unknown. vim -ggVg file just opens the file 
-> as is.
+> Some text I download for printing are formatted like:
+> 
+>       Because of the publicity the Iraqi government has given to the
+>                       issue, Iraqis worry about DU.
+> 
+> which adds more pages for printing.
+> 
+> How can I with some command, left align the text to read
+> 
+> Because of the publicity the Iraqi government has given to the
+> issue, Iraqis worry about DU.
+> 
+> yet maintaining the paragraphs.
+> 
+> When looking at the text with a word processor they are all left aligned and 
+> can only be changed manually line by line.
+> 
+> I came up with the sausage
+> 
+> cat file.txt | tr -s " "  "\012" > file1.txt | fmt -u -w 105 file1.txt > 
+> file2.txt
+> 
+> This does not maintain the paragraphs, however. Can sed do it and how?
+> 
+> Thanks & regards
 
-Sorry --- I should have given a little more background on
-Vim.  When I said to ``run a command'', I meant open your
-file in Vim (preferably from the command line):
+Mostly what you want to do is delete the leading spaces then reformat.
+As long as paragraphs are separated by blank lines, the following should
+work:
 
-     vim file.txt
+sed 's/^[ \t]+//' file | fmt -u -w105 > file2.txt
 
-Then, running the Vim commands.  This involves typing a
-sequence of characters in quick succession, one after the
-other:
 
-	gggqG
+----------------------------------
 
-These will hopefully format your file correctly.  If you
-don't like the result, you can easily abort by typing:
+Note that when you do the " tr [options] > somefile | fmt [options] somefile" ,
+you're losing any advantage of using a pipe.  The output for the
+tr file is redirected into somefile, and fmt is reading explicitly
+from there.   The pipe is essentially unused...  Either :
 
-      :q! [ENTER]
+tr [options]  | fmt [options]
 
-And by [ENTER] I mean the [ENTER] key on the keyboard.  You
-might have [RETURN] or whatever.  Same effect.
+or:
 
-Again, sorry about my earlier brevity.  You naturally
-assumed Vim was a simple command-line tool like ``sed'', and
-tried to pass it the command as an argument.  It is actually
-a text editor.
+tr [options] > somefile ; fmt [options] somefile
 
-HTH,
-Yawar
+The main difference:  The former properly uses pipes
+The later simply acknowledges that the pipe really isn't being used.
+
+
+
+
+
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+Powerful committed communication, reaching through fear, uncertainty and
+doubt to touch the jewel within each person and bring it to life.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
