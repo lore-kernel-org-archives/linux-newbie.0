@@ -1,47 +1,68 @@
-From: "DFW II" <devon_wing@yahoo.com>
-Subject: RE: Email encryption
-Date: Thu, 26 Sep 2002 15:18:10 -0400
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: 'nobody' is using my system !!!
+Date: Thu, 26 Sep 2002 15:55:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NGBBKJCJCPIOGIIOJIHBGENJDBAA.devon_wing@yahoo.com>
-References: <000201c26584$8469a640$64fea8c0@pkrausxp>
+Message-ID: <3D93662F.D81F567@gelm.net>
+References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp> <3D921A64.7DBA9BC6@gelm.net> <200209251722.26680.wfoo@linuxvoodoo.com> <3D92DBFD.5D95F544@gelm.net> <3D92F8D1.9010604@xts.ro>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000201c26584$8469a640$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Paul Kraus <pkraus@pelsupply.com>
+To: Dragos LUNGU <rlug-list@xts.ro>
 Cc: linux-newbie@vger.kernel.org
 
-There is... for Outlook and I think Eudora.  I have the outlook setup file
-on my computer.  When I figure out a way to get it on to a public drive... I
-will email the link to the list so people can download it when they want it.
+Howdy, Dragos LUNGU:
 
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of Paul Kraus
-Sent: Thursday, September 26, 2002 1:46 PM
-To:
-Subject: Email encryption
+ Thanks.  You are right.  I did a 'cat'
+and that was the only line!
 
+ Geesh, I added 'updatedb' to rc.local thinking that I was
+updating my database.  It would have happened at the next
+04:40 anyway!  :-|
 
-What is the best way to secure mail. I thought it was PGP but looking at
-there site there does not seem to be a version with windows. Is there a
-cross platform standard?
+ I guess that I will remove that line from my rc.local from
+all my linux boxes. 
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Regards, Chuck
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
+Dragos LUNGU wrote:
+> 
+> Hi,
+> 
+> Chuck Gelm wrote:
+> > G'day, Y'all:
+> [snip]
+> >
+> > Why was 'find' and 'sort' running at 4:40 AM ?
+> 
+> My guess is : updatedb
+> 
+> i did a grep on /var/spool/* and this is what came out :
+> 
+> /var/spool/cron/crontabs/nobody:40 04 * * *       cd / ; updatedb 1>
+> /dev/null 2> /dev/null
+> 
+> -> updatedb at 4.40 AM as nobody
+> 
+> slackware 8.0 here as well, and I'm sure I didn't write that cron job
+> myself.
+> 
+> hope it helps,
+> 
+> Dragos.
+> 
+> >
+> > Regards, Chuck
+> 
+> --
+> 
+> | Dragos LUNGU
+> |
+> | http://www.xts.ro
+> | dragos@xts.ro
+> | mobile (+40)745 379 734
+> | office (+40)251 190 561
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
