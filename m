@@ -1,27 +1,74 @@
-From: manish regmi <regmi.manish@gmail.com>
-Subject: changing refresh rate.
-Date: Sat, 2 Oct 2004 15:59:00 +0545
+From: dave <dave@dpomeroy.com>
+Subject: Re: cdrom
+Date: Sun, 03 Oct 2004 05:16:00 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <652016d30410020314a67f701@mail.gmail.com>
-Reply-To: manish regmi <regmi.manish@gmail.com>
+Message-ID: <415FED80.2050505@dpomeroy.com>
+References: <5.1.0.14.1.20041001082059.01faeff8@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20041001082059.01faeff8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, linux@list.linuxnepal.com.np
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-hi all,
- How can i change the refresh Rate. I am using Fedora Core 2.
-The monitor settings(gdm) does not have refresh rate option. I want to
-make it exactly 100 HZ(My system supports this value in Windows). I
-have Geforce 2 MX 100/200 card and have installed propritary driver
-from nVidia.
+Ray and all,
+  I decided that it must be a hardware problem.  I ordered a new burner 
+and so I will try that.  It just happened out of the blue, I haven't 
+tried it in windows xp as I can't install vmware cause the cd burner 
+won't read the vmware cd.  I should have the new burner in a couple of 
+days.  Thanks for your help and I'll post after I try the new burner.
+Dave
 
-I looked in the xorg.conf file. There is not any entry about refrash rate.
 
-Thanks in advance.
-Manish
+Ray Olszewski wrote:
+
+> At 06:17 AM 10/1/2004 -0700, dave wrote:
+>
+>> I have a samsung cdrom.  The last couple of weeks it quit working or 
+>> only partially works.  It works great for booting mandrake 10 and 
+>> installing.  It works great for burning.  It just doesn't work trying 
+>> to read a cd.  I have a cd full of pictures, my vmware disk,  windows 
+>> xp that it reads a little.  On the windows cd it show 3 icons with 
+>> question marks where the file name is ususally.  I'm at a loss.  
+>> Anyone have any ideas?  Thanks for your time.
+>> Dave Pomeroy K7DNP South Eastern Washington
+>
+>
+>
+> Since you write "It works great for booting mandrake 10 and 
+> installing", I surmise that the failures are associated with a fresh 
+> install of Linux. Please correct me if I am wrong. My immediate 
+> thought is that you are using a kernel that does not support Joliet 
+> extensions ... check this in the kernel source .config file if you can 
+> (it's under Filesystems in the "make menuconfig" menus).
+>
+> If that's not it, and if no one else comes up with something, you're 
+> going to need to give us a more detailed report about the failures 
+> indicating what else changed contemporaneously with the "quit 
+> working", if the drive reads properly non-Windows CDs written on it, 
+> if it works properly under Windows (I ask this only becaus you mention 
+> a Windows XP CD, causing me to surmise that this system dual boots), 
+> and what "reads a little" means with respect to the "cd full of 
+> pictures" you mention.
+>
+> If all this happened simply out of the blue, with no other changes in 
+> your Linux setup, then I would suspect a hardware problem with the 
+> drive. I've had drives fail before, but the usual symptom I see, under 
+> either Linux or Windows, is a complete inability to read disks (my 
+> failed drives were read-only drives, not RW drives).
+>
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe 
+> linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
