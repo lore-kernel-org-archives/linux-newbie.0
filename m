@@ -1,39 +1,95 @@
-From: "Robin Doer" <robin@robind.de>
-Subject: Re: translating web pages
-Date: Mon, 22 Nov 2004 11:01:47 +0100
-Message-ID: <20041122.ujc.51537300@192.168.0.6>
-References: <5.1.0.14.1.20041121150833.01f61748@celine>
+From: joy merwin monteiro <joy.merwin@gmail.com>
+Subject: Re: Query on SIGFPE handling
+Date: Mon, 22 Nov 2004 16:45:33 +0530
+Message-ID: <4b0d6e0d04112203153a163031@mail.gmail.com>
+References: <1101104772.4527.7.camel@myLinux>
+	 <652016d3041121230031fe6094@mail.gmail.com>
+	 <1101107755.4527.18.camel@myLinux> <1101111876.5382.8.camel@myLinux>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20041121150833.01f61748@celine>
-Content-Disposition: inline
+In-Reply-To: <1101111876.5382.8.camel@myLinux>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
+Cc: Manish Regmi <regmi.manish@gmail.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Ray Olszewski (ray@comarre.com) schrieb:
-> Relative to your comments, James, I fear I can only echo your lack of
-> success. I recently was investigating, specifically, English-Spanish
-> translation. While I did find a couple of Linux apps that function at the
-> dictionary level ... translating words and short phrases, but with no
-> sensitivity to context ...
+The basic mistake is that the variable values have not changed.
+1/0 will generate a FPE no matter what you do.
+use variables like a=0;b=1;
+and if b/a generates an FPE,
+change its value.(bit hazy how to implement this... google around)
+the reason for giving you a signal handler
+is obviously to help you correct the error,
+not commit it over and over again!
 
-For a pure dictionary (supports translations from/to English/German/French) I
-suggest using dict.leo.org. It also offers toolbars for Mozilla/Firefox, an a
-Konqueror-integration.
+reagrds,
 
-> I found nothing in the way of babelfish-like
-> translation for Linux.
+Joy.M.Monteiro
 
-Around babelfish I've a nice story. Some time ago a local radiostation (I come
-from Germany) carried out a quiz: They took the lyrics from a german song,
-translated it into English and finally back to German using
-babel.altavista.com. This is quite funny! Give it a try!
+PS: Such questions will be better answered on linux-cprogramming list....
+try it.
 
-Robin
 
+
+On Mon, 22 Nov 2004 13:54:36 +0530, Jagadeesh Bhaskar P
+<jbhaskar@hclinsys.com> wrote:
+> Hi Manish,
+> 
+>   As suggested, I rewrote the C program using sigaction, as follows:
+> 
+> /****** start of code **********/
+> 
+> #include <stdio.h>
+> #include <signal.h>
+> 
+> void fe(int x){
+>         printf("floating pt exception:\n");
+> }
+> 
+> int main(void){
+>         struct sigaction p;
+>         p.sa_handler = fe;
+>         sigaction(SIGFPE, &p, NULL);
+>         printf("%f\n", (1/0));
+>         return 0;
+> }
+> 
+> /********* end of code *******/
+> 
+> But then again the signal is being caught by the program infinitely. Why
+> is that happening, if last time it was a problem with the signal()
+> function.
+> 
+> Please do help!!
+> 
+> 
+> 
+> --
+> With regards,
+> 
+> Jagadeesh Bhaskar P
+> R&D Engineer
+> HCL Infosystems Ltd
+> Pondicherry
+> INDIA
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+
+
+-- 
+people always turn away,
+from the eyes of a stranger...
+Afraid to know
+what lies behind the stare.......
+    --QueensRyche
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
