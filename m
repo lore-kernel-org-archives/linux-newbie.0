@@ -1,36 +1,52 @@
-From: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: iptables & a dhcpd question
-Date: Thu, 27 Feb 2003 17:00:18 -0300 (BRT)
+Date: Thu, 27 Feb 2003 12:16:21 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
+Message-ID: <5.1.0.14.1.20030227120359.01f56808@celine>
 References: <004101c2de99$eef21400$4800a8c0@neptune>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <004101c2de99$eef21400$4800a8c0@neptune>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: paul@mnwebhost.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I don't know if this is what you are asking but.
+At 01:53 PM 2/27/2003 -0600, Paul wrote:
+>two genuine newbie questions :)
+>
+>FYI: I'm running Slackware 8.1, (kernel = 2.4.18, iptables = 1.2.6a, dhcpd
+>ISC v3.0pl1)
+>
+>Q1. I've been tweaking my rc.firewall script a bit lately and am wondering
+>if there is a way to have my new one take effect without rebooting?
 
-I've never worked with Slackware, but try this:
+It's been some time since I last looked at an rc.firewall script ... but 
+usually they are written so you can just run them from the command line (as 
+root, of course). They pretty much have to be able to reinstall themselves 
+this way, as a change in DHCP lease address usually requires running them 
+to regenerate the rulesets for use with the new IP address, and you don't 
+want to reboot every time your DHCP lease changes (even Windows isn't 
+*that* stupid).
 
-/etc/(PATH TO rc.firewall)/rc.firewall
 
-and when they say dhcpd stop, you have to add the path to it in the front:
+>Q2. Second, I'm still trying to get my dhcp server running, and am wondering
+>what is the best way to stop the service and restart it.  I've been killing
+>the process, but there has to be a better way.  In looking for the answer to
+>this, I've seen postings saying to run, "dhcpd stop" but that doesn't seem
+>to work with this one.
 
-/etc/init.d/dhcpd stop (if /etc/init.d is the path)
 
-I hope this works,
+I'd be surprised to see any postings that say simply  "dhcpd stop". More 
+likely, they say something like "/etc/init.d/dhcpd stop", explaining how to 
+do it on distros (the example I just typed is for Debian; RH and others are 
+slightly different) that use init scripts with the start/stop/restart 
+structure. The script just sends a SIGTERM to the daemon (the same signal 
+kill sends by default).
 
-Rodolpho
+Slackware doesn't do it this way (or didn't used to, back when I used it), 
+so you pretty much are limited to kill'ing it, then starting it directly.
 
--- 
-Rodolpho H. O. Eckhardt
-reckhardt@mandic.com.br
-Cel: 11 9126-9107
 
 
 -
