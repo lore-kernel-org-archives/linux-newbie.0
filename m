@@ -1,41 +1,34 @@
-From: "xxxx xxxxxxx" <dijabola@comunista.zzn.com>
-Subject: re: Command line questions
-Date: Sat, 5 Oct 2002 20:24:36 -0400
+From: Brett <brett@brett.d2g.biz>
+Subject: Console fonts and colors
+Date: Sun, 6 Oct 2002 13:07:22 -0600 (MDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <B3743686C994D8A418D1CE0A9DD2D5E2@dijabola.comunista.zzn.com>
+Message-ID: <Pine.LNX.4.44.0210061300030.16559-100000@linuxDBA.brett.d2g.biz>
+References: <200210051904.09629.g38@rdsbv.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200210051904.09629.g38@rdsbv.ro>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: sotl155360@earthlink.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> 2.  I have no problem changing to any directory that does not have 
-spaces in 
-> it but I have no idea of how to account for a space in a directory 
-like in 
-> the command "cd My Document"?
+I use SuSE 8.0 and mostly use the KDE UI but find myself more and more
+using the standard text console either by doing a Alt+f2 or not even
+starting X at all.
+What I would like to do is change the color of the font and maybe the font
+it self.
+Is this a hard thing?   If it involves setting up a fonts server or such,
+maybe I'll make do with what I have. It's not all that bad really.   My
+goal was to change the font color to green and maybe find a font that I
+could get a few more words on a line.
+Thanks,
 
-You could also try this:
-$ cd "My Document"
-
-It works on my system, but might not on yours.  Hope this helps.
-
-~dijabola
+Brett
+___
+Linux linuxDBA 2.4.18-4GB #1 Wed Mar 27 13:57:05 UTC 2002 i686 unknown
+ 12:30pm  up 7 days, 14:17,  3 users,  load average: 2.01, 1.99, 1.92
 
 
-------------------------------
-Macintosh: Drink upstream 
- from the herd.
-------------------------------
-"Eagles may soar, but weasels 
-don't get sucked into jet 
-engines".
-------------------------------
-Obtenga su E-mail GRATUITO en http://comunista.zzn.com
-____________________________________________________________
-Get your own Free Web Email Service with POP access at http://www.zzn.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
