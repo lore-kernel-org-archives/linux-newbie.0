@@ -1,21 +1,45 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Lock-ups with 2.4.19 kernel
-Date: Tue, 27 Aug 2002 21:45:24 -0700
+From: Kevin Curtis <kevin.curtis@farsite.co.uk>
+Subject: Swapping between Mice on my laptop
+Date: Wed, 28 Aug 2002 11:49:39 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020827212914.024bb360@celine>
-References: <200208281328.39807.adam@luchjenbroers.com>
+Message-ID: <7C078C66B7752B438B88E11E5E20E72E0EF4D5@GENERAL.farsite.co.uk>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208281328.39807.adam@luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: adam@luchjenbroers.com, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+
+Hi,
+	I have a Toshiba Satellite laptop with a touch pad mouse.  It has no
+PS/2 port, so I now have a USB mouse.  At the moment I swap between the mice
+by editing the /etc/X11/XF86Config-4 file and reversing the following
+statements
+
+InputDevice "Mouse1" "CorePointer"
+InputDevice "Mouse2" "CorePointer"
+
+Where Mouse1 is the touch pad and Mouse2 is the USB mouse.
+
+There must be a better way than this?
+
+
+Kevin
+
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com]
+Sent: 28 August 2002 05:45
+To: adam@luchjenbroers.com; linux-newbie@vger.kernel.org
+Subject: Re: Lock-ups with 2.4.19 kernel
+
 
 At 01:28 PM 8/28/02 +0930, Adam Luchjenbroers wrote:
-> >          1. Run top on a remote console (one the telnets or ssh's in). When
-> > the system hangs, the console will still display the last "top" output, so
-> > you can see (a) what CPU usage was, (b) how much memory had been used, and
+> >          1. Run top on a remote console (one the telnets or ssh's in).
+When
+> > the system hangs, the console will still display the last "top" output,
+so
+> > you can see (a) what CPU usage was, (b) how much memory had been used,
+and
 > > (c) what the top processes were. That may give you a hint about what is
 > > going on.
 >
@@ -36,7 +60,8 @@ lose the last data since sync'ing would fail, making that an ugly solution.
 
 
 >It does seem to happen during processor intensive situations (eg. large
->battles in Kohan), what programs can I use to test this (memory testers would
+>battles in Kohan), what programs can I use to test this (memory testers
+would
 >also be useful).
 
 The best way to simulate high CPU usage is with a program that uses the CPU 
@@ -50,7 +75,8 @@ but about 64 K or RAM. There is a memtest Linux app too, but I haven't used
 it. We Debian users gets them in .deb packages (memtest and sysutils), and 
 I imagine there are RPMs with similar names around too.
 
-> >          2. If you can, use another remote console to cause the crash, but
+> >          2. If you can, use another remote console to cause the crash,
+but
 > > leave the system with a vt (not X) on its console. A crash message (a
 > > kernel oops, for example) may show on the screen when the crash happens,
 > > and that will give you at least a little info.
@@ -58,11 +84,15 @@ I imagine there are RPMs with similar names around too.
 >Useful, I'll probably write down anything that comes up.
 >
 > > Having said all of that ... when I ecperienced similar crashes (or what
-> > might be similar crashes; hard to be sure from a sketchy description), they
-> > were caused not by Linux, but by hardware problems. In one case, inadequate
+> > might be similar crashes; hard to be sure from a sketchy description),
+they
+> > were caused not by Linux, but by hardware problems. In one case,
+inadequate
 > > CPU cooling (too small a heatsink-fan combo) caused to the CPU (a P3) to
-> > shut down for its own safety. In the other, the power supply had some sort
-> > of problem that only showed up under high loads. In both casesd, replacing
+> > shut down for its own safety. In the other, the power supply had some
+sort
+> > of problem that only showed up under high loads. In both casesd,
+replacing
 > > the offending hardware eliminated the problem.
 >
 >Damn, software can be fixed, hardware costs money. Is there any form of
@@ -82,8 +112,14 @@ situation may well be different.
 -------------------------------------------"Never tell me the odds!"--------
 Ray Olszewski					-- Han Solo
 Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+----------------------------------------------------------------------------
+---
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
