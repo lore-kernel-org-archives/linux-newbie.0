@@ -1,34 +1,30 @@
 From: G Anna <drguruolai@eth.net>
-Subject: Re: register_exec_domain
-Date: 25 Apr 2002 17:18:54 +0530
+Subject: DVI to RTF
+Date: 26 Apr 2002 00:29:27 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3adrsj8wp.fsf@wobble.eth.net>
-References: <20020422094901.57fc79e6.jeremy@kerneltrap.org>
+Message-ID: <m33cxj7gfk.fsf@wobble.eth.net>
 Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020422094901.57fc79e6.jeremy@kerneltrap.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jeremy Andrews <jeremy@kerneltrap.org>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Dear All,
 
-> Date: Mon, 22 Apr 2002 09:49:01 -0400
-> From: Jeremy Andrews <jeremy@kerneltrap.org>
-> Subj: register_exec_domain
+Is it possible to convert from the DVI format to RTF format?  Or PDF
+to RTF? Or PS to RTF?  Or DSC to RTF?
 
-(snip)
+Basically I have the LaTeX source file and would like to have the
+document in RTF format too.  Is this possible?  BTW, I can view the
+RTF format using AbiWord.  Is there any other RTF viewer?
 
->   I've been unable to compile the kernel for a while now.  When I do
-> a 'make bzImage', it always bombs out in the file
+Thank you for your time.
 
-(snip)
-
-Did you do a 'make mrproper' before anything else?
-
+Cheers,
 anna
+
 
 -- 
 
