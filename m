@@ -1,43 +1,41 @@
-From: "Travis" <travis@wsor.net>
-Subject: Multi-kernel in grub
-Date: Tue, 22 Jul 2003 10:15:09 -0500
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: /cdrom fails to unmount
+Date: Tue, 22 Jul 2003 11:19:59 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
-Reply-To: <travis@wsor.net>
+Message-ID: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I am a recent convert to RH9 and have been trying to compile a kernel to
-allow dual head video support for my matrox g400-tv card.  Here is the
-main tutorial I was following:
-http://www.intel.com/support/platform/pentium4/linux.htm
+In Deb.woody, kernel 2.4.18, I have the following problem:
 
-I used xconfig , and the compilation process seemed to go fine (no
-errors were display when I got the command prompt back) from running the
-following.
+mount /cdrom
+"sure," the computer says, "I will."
 
-make dep
-make clean
-make bzImage
-make modules
+cd /cdrom
 
-My problem came at "Next, you have to copy the appropriate files so that
-linux can boot from the new kernel."  I copied the vmlinuz image created
-by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
-file by copy-and-pasting my current RH boot section and simply changing
-the label and pointing the vmlinuz-matrox as the kernel to load.
+mplayer -fs whateverthehellI'mwatching
+"Okay," says the computer.
 
-When booting I got an error very quickly.  I have been searching for a
-grub multi-boot kernel tutorial and have read most of the applicable
-grub user-guide, but to no avail.  If someone could point out a good
-tutorial or give a few things to try, I would appreciate it.  Thanks in
-advance.
+cd
+"No problems," says the beast.
 
--- Travis
+umount /cdrom
+umount: /cdrom: device is busy
+Or in other words, "*$^! you!"
+
+No processes that I could identify suggested themselves as the visible
+culprit. Rebooting works, but killing the x-session doesn't.
+
+Help, anyone?
+
+Dan
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
