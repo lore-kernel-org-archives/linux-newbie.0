@@ -1,73 +1,33 @@
-From: lawson_whitney@juno.com
-Subject: Re: tar question (was Re: nomore newbies??)
-Date: Sun, 19 May 2002 19:42:45 -0400 (EDT)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Make a phone call (repeat)
+Date: Sun, 19 May 2002 17:50:47 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020519.194756.134663624.0.lawson_whitney@juno.com>
-References: <200205192309.g4JN9Et17254@langhans.hartford-hwp.com>
+Message-ID: <5.1.0.14.1.20020519174900.009e9170@celine>
+References: <2.2.32.20020518165939.03d27178@[192.168.1.23]>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200205192309.g4JN9Et17254@langhans.hartford-hwp.com>
+In-Reply-To: <005301c1ff84$19311ea0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: brownh@hartford-hwp.com, lawson_whitney@juno.com
-Cc: ik5bcu@tin.it, linux-newbie@vger.kernel.org
+To: Tom Beer <mailings@analogon.com>, anna7sept@linuxmail.org, linux-newbie@vger.kernel.org
 
-On Sun, 19 May 2002, Haines Brown wrote:
+Tom -- I think you missed earlier emssages in this thread. The original 
+poster is trying to use a modem equipped with *built-in* voice to make a 
+phone call. The mike connects directly to the modem, and all that's needed 
+(I think) is a command to turn it on. Nothing is being digitized, as I 
+understand it; the modem is simply acting as a normal (analog) telephone.
 
-> I'm trying to copy a directory tree from one mounted hard disk to
-> another. I want to copy the contents of a directory named "backups" on
-> a secondary SCSI HD to one of the same name on an external USB mass
-> storage device.
+At 12:17 AM 5/20/02 +0200, Tom Beer wrote:
+>Hi,
 >
-> The source is /mnt/sdb1/storage/backups
-> The target is /mnt/mirror/storage/
+> > It's likely that the modem uses some non-standard AT command to turn the
+> > mike on and off (in contrast to the speaker, which turns on and off with a
+> > long-established, standard AT command).
 >
-> Root changes to the source "backups" directory and runs the
-> following:
+>isn't it too much data on a maximum of 33.6kbit/s for h.323 data transfer?
 >
->     tar cf - . | (cd ../../../mirror/storage/backups tar xvf -)
->     ./
->
-> Nothing happens. No error message about not being able to navigate the
-> path to find the directory, no sound of disk activity, no resulting
-> files.
-
-You are piping tar -cf - into cd, which does nothing with it and writes
-an empty stdout.
->
-> So I tried:
->
->    tar -l -cpf - /mnt/sdb1/storage/backups | tar -C
->    /mnt/mirror/storage/backups -pxf -
->
-> This did create a backup, but reproduced the path (/mnt/mirror/
-> storage/backups/mnt/sdb1/storage/backups) and gave me a lot of errors
-> about not being able to copy symlinks and early on some errors about
-> not being able to reproduce ownership. When I try to reduce the source
-> to ".", tar complains about the empty source.
->
-> Haines Brown
->
-Feel free to use tartar (I keep one in /usr/local/bin):
-
-#!/bin/bash
-tar -C "$1" -cOl . | tar -C "$2" -xpf -
-
-This requires the destination directory exists, but it will do what you
-want, I think, if invoked:
-
-[mkdir /mnt/mirror/storage/backups]
-tartar /mnt/sdb1/storage/backups /mnt/mirror/storage/backups
-
-tar copies any directories named in the place it expects directories,
-but not those named in -C dir.
-
-Lawson
----oops---
-
-
-
+>Greets Tom
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
