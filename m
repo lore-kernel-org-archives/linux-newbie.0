@@ -1,40 +1,39 @@
-From: Carl Lawton <carl@anexia.co.uk>
+From: Haines Brown <brownh@hartford-hwp.com>
 Subject: Re: tar confined to partitions
-Date: Tue, 03 Sep 2002 10:45:02 +0100
+Date: Tue, 3 Sep 2002 09:54:33 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020903102834.00b7ff88@interzone.anexia.co.uk>
-References: <5.1.0.14.1.20020902094227.021b5bd0@celine>
- <5.1.0.14.1.20020902094227.021b5bd0@celine>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <200209031354.g83DsX516599@hartford-hwp.com>
+References: <20020903062042.25752.qmail@web40610.mail.yahoo.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209021837.g82IbEK09801@hartford-hwp.com>
+In-Reply-To: <20020903062042.25752.qmail@web40610.mail.yahoo.com> (message
+	from =?iso-8859-1?q?szonyi=20calin?= on Tue, 3 Sep 2002 08:20:42 +0200
+	(CEST))
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Haines Brown <brownh@hartford-hwp.com>, linux-newbie@vger.kernel.org
+To: caszonyi@yahoo.com
 Cc: linux-newbie@hartford-hwp.com
 
+Calin,
 
->
->tar -C "$1" -cOl . | tar -C "$2" -xpf -
+> What tar do you have because i want it too.
+> Mine is GNU tar and it seems to disregard the
+> -exclude comand line switch.
 
-Haines,
+This is my tar version: tar-1.13.25-4, which I assume is GNU.
 
-If Ray hasn't sorted you out by now you could try cpio to copy the files.
+As for my problem of tar seeing only one partition, someone pointed
+out that my tar command: 
 
-If i have it right you are just trying to copy everything to /mnt/mirror
+tar -C "$1" -cOl . | tar -C "$2" -xpf -
 
-In which case you could just do:
+in fact has a -l option in it (combination of senility and failing
+eyesight associated with advanged age, I suspect). I have not had an
+opportunity to test whether simply leaving it out will resolve the
+problem. 
 
-        find / -print | egrep -v "^/mnt/mirror|^/proc" | cpio -pdmuv /mnt/mirror
-
-
-the egrep just takes out everything in /mnt/mirror ( so you don't backup your backup)
-and /proc
-
---
-Carl
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
