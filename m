@@ -1,97 +1,92 @@
-From: joy merwin monteiro <joy.merwin@gmail.com>
-Subject: Re: Query on SIGFPE handling
-Date: Mon, 22 Nov 2004 16:45:33 +0530
-Message-ID: <4b0d6e0d04112203153a163031@mail.gmail.com>
-References: <1101104772.4527.7.camel@myLinux>
-	 <652016d3041121230031fe6094@mail.gmail.com>
-	 <1101107755.4527.18.camel@myLinux> <1101111876.5382.8.camel@myLinux>
-Reply-To: joy_mm@ieee.org
+From: Simon Valiquette <v.simon@ieee.org>
+Subject: Re: Query regarding Copy-on-write
+Date: Mon, 22 Nov 2004 06:48:00 -0500
+Message-ID: <41A1D1F0.40109@ieee.org>
+References: <1100947162.4038.43.camel@myLinux> <419F4DA7.1070606@ieee.org>
+ <1101094465.3783.19.camel@myLinux> <41A187A6.4000300@ieee.org>
+ <1101106158.4527.14.camel@myLinux>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1101111876.5382.8.camel@myLinux>
+In-reply-to: <1101106158.4527.14.camel@myLinux>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Cc: Manish Regmi <regmi.manish@gmail.com>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-The basic mistake is that the variable values have not changed.
-1/0 will generate a FPE no matter what you do.
-use variables like a=0;b=1;
-and if b/a generates an FPE,
-change its value.(bit hazy how to implement this... google around)
-the reason for giving you a signal handler
-is obviously to help you correct the error,
-not commit it over and over again!
+Jagadeesh Bhaskar P a =E9crit :
+>=20
+>>and also made a minimalist OS for a MC68000 microcontroler=20
+>>(only basic process support without even support for a filesystem).=20
+>=20
+>=20
+>=20
+> I too want to learn something like a minimalist OS. Where to start
+> digging?
+>=20
 
-reagrds,
-
-Joy.M.Monteiro
-
-PS: Such questions will be better answered on linux-cprogramming list....
-try it.
+   I'm not too sure.  In my case, I started mixing assembly language an=
+d=20
+Pascal about 15 years ago while quite young.  It really helps :o)
 
 
 
-On Mon, 22 Nov 2004 13:54:36 +0530, Jagadeesh Bhaskar P
-<jbhaskar@hclinsys.com> wrote:
-> Hi Manish,
-> 
->   As suggested, I rewrote the C program using sigaction, as follows:
-> 
-> /****** start of code **********/
-> 
-> #include <stdio.h>
-> #include <signal.h>
-> 
-> void fe(int x){
->         printf("floating pt exception:\n");
-> }
-> 
-> int main(void){
->         struct sigaction p;
->         p.sa_handler = fe;
->         sigaction(SIGFPE, &p, NULL);
->         printf("%f\n", (1/0));
->         return 0;
-> }
-> 
-> /********* end of code *******/
-> 
-> But then again the signal is being caught by the program infinitely. Why
-> is that happening, if last time it was a problem with the signal()
-> function.
-> 
-> Please do help!!
-> 
-> 
-> 
-> --
-> With regards,
-> 
-> Jagadeesh Bhaskar P
-> R&D Engineer
-> HCL Infosystems Ltd
-> Pondicherry
-> INDIA
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+   I know there is things likes Nachos, OSP or Minix (yes, that's the=20
+one used by Linus) for learning how to write operating systems.  I=20
+personnally prefer a real OS like Hurd, but if you have a teacher or=20
+someone to assist you, I guess they can be usefull.
 
 
--- 
-people always turn away,
-from the eyes of a stranger...
-Afraid to know
-what lies behind the stare.......
-    --QueensRyche
+   To write a real OS, you need to understant how your hardware is=20
+working and to have the documentation book to know how to program it an=
+d=20
+manage it's interruptions.  Beeing efficient in assembly language is a=20
+must, even if you do most of your coding in C language, as it helps you=
+=20
+to understand your computer.
+
+   A book that might help you saving time, and that I found both very=20
+informative and interesting is this one:
+
+   "Operating systems" from William Stallings, Prentice Hall.
+
+   It won't tell you how to code everythings, but it will explain the=20
+algorithmes and ideas of differents Operating systems for doing similar=
+=20
+tasks.  For example, it compares Posix threads with Linux, Windows and=20
+Solaris threads.  I found it quite complete; it even talk about RAID-6,=
+=20
+and my book is many years old.
+
+
+   Understanding as many OS as possible will certainly helps you=20
+understanding differents concepts and improve your skills.  OS likes=20
+Inferno, QNX and Plan 9 are probably good for that.
+
+
+   For going back to your question, once you feel ready, you should=20
+probably start by trying to write a small OS.  At first, all you will=20
+need to write is a sheduler, a way to start programs and a way to kill=20
+them.  Writing something similar to /sbin/init with a couple of built-i=
+n=20
+commands (for starting, showing and stoping processes) will also=20
+simplify things.
+
+
+   Eventually, you could add (or emulate) a file system.  By the way,=20
+the sheduler should be activated by interruptions, otherwise you will=20
+just have an improved version of DOS 1.0  ;o)
+
+
+Simon Valiquette
+
+---
+win-nt from the people who invented edlin
+(By mwikholm@at8.abo.fi, MaDsen Wikholm)
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
