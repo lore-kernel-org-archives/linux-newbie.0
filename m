@@ -1,104 +1,64 @@
-From: Ankit Jain <ankitjain1580@yahoo.com>
-Subject: Re: retrieval
-Date: Fri, 7 Jan 2005 00:58:06 -0800 (PST)
-Message-ID: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
-References: <016001c4eef6$873b4330$9736a8c0@ispl091>
+From: Kumaresh Perumal <kumaresh.perumal@gmail.com>
+Subject: RPC response reception
+Date: Fri, 7 Jan 2005 16:27:58 +0530
+Message-ID: <ef2116a905010702572c6e244a@mail.gmail.com>
+Reply-To: Kumaresh Perumal <kumaresh.perumal@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <016001c4eef6$873b4330$9736a8c0@ispl091>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Amit Dang <amit_dang@intersolutions.stpn.soft.net>, newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-hi
+Hi,
 
-sorry but i could not understand by unmounting the
-partition. i dont use floppy drive or something like
-that. if i am using hard disk then i cant unmopunt the
-whole partition
+I am running two RPC servers in a linux box where two different RPC
+program numbers are registered in each servers. RPC server A gets an
+asynchronous call from a client, after processing, RPC server A makes
+another client_call using clnt_call to RPC server B. A function
+registered to that particular RPC prognum executes in RPC server B and
+returns a response structure. But I am not seeing the response
+structure values at the RPC server A side.
 
-so what to do
+Client----> RPC A ---> RPC B
 
-thanks
+In RPC A, following is the code:
 
-ankit jain
---- Amit Dang <amit_dang@intersolutions.stpn.soft.net>
-wrote:
+clnt = clnt_create("host", PROCB, 1, "udp")
+clnt_stat = clnt_call(clnt, procnum, inproc, inargument,
+(xdrproc_t)xdr_void, outresult, timeout)
 
-> Hi Ankit, following link will guide you how to
-> undelete files on linux. Its
-> easy to undelete small files, I have tried and it
-> works. Never tried with a
-> long file.
-> http://www.tldp.org/HOWTO/Ext2fs-Undeletion.html
-> 
-> Hope this solves your problem.
-> Enjoy
-> Amit Dang
-> 
-> ----- Original Message ----- 
-> From: "Ankit Jain" <ankitjain1580@yahoo.com>
-> To: "newbie" <linux-newbie@vger.kernel.org>
-> Sent: Friday, December 31, 2004 10:25 AM
-> Subject: retrieval
-> 
-> 
-> > Hi
-> >
-> > i want to know if somebody can help me directly or
-> > indirectly on this topic by providing some source
-> > material to read etc.
-> >
-> > i want to retireve the lost file/files from my
-> system
-> > which are removed by rm command
-> >
-> > i dont have any backup for them
-> >
-> > tell me any way i.e if i want to retirive the file
-> > immediately after removal
-> >
-> > thanks in advance
-> >
-> > ankit jain
-> >
-> >
-> >
-> > __________________________________
-> > Do you Yahoo!?
-> > Yahoo! Mail - Easier than ever with enhanced
-> search. Learn more.
-> > http://info.mail.yahoo.com/mail_250
-> > -
-> > To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at
-> http://www.linux-learn.org/faqs
-> 
-> -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at 
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-> http://www.linux-learn.org/faqs
-> 
+In RPC B, following is the snippet of the code:
 
+register SVCXPRT *transp;
+transp = svcudp_create(RPC_ANYSOCK);
+svc_register(transp, PROCB, 1, create_response, IPPROTO_UDP);
+svc_run();
 
+PROCB(struct svc_req *rqstp, register SVCXPRT *transp)
+{
+switch (rqstp->rq_proc)
+case 1:
+_xdr_argument = <>;
+_xdr_result = <>;
+break;
 
-		
-__________________________________ 
-Do you Yahoo!? 
-Meet the all-new My Yahoo! - Try it today! 
-http://my.yahoo.com 
- 
+<form the response structure>
+svc_sendreply(transp, _xdr_result, (char *)result);
+}
 
+At the client side, I am getting RPC_SUCCESS.
+
+I could see the response structure values in the RPC B after executing
+the PROCB program. But at the RPC A side, I am not getting the
+response structure that I am passing from the RPC B side. I guess the
+response structure should be stored in outresult structure in the RPCA
+side. I think, I am missing some part of RPC code at RPC B side to
+send the response, please let me know the problem and clarify to me.
+
+Thanks and Regards,
+Kumaresh
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
