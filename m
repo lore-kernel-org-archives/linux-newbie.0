@@ -1,34 +1,35 @@
-From: Peter <heisspf@skyinet.net>
+From: joy <gracecott@sancharnet.in>
 Subject: Re: Moving Hard Drive
-Date: Tue, 20 Jan 2004 10:14:11 +0800
+Date: Tue, 20 Jan 2004 09:14:44 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040120021411.0C9D91C905@heisspf>
-References: <200401191537.13062.pa3gcu@zeelandnet.nl>
+Message-ID: <400CA42C.2040807@sancharnet.in>
+References: <20040120021411.0C9D91C905@heisspf>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 19 Jan 2004 15:37:13 +0100." 
- <200401191537.13062.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
+Peter wrote:
 
-pa3gcu@zeelandnet.nl said:
-> So all that means we now need to have lilo installed on all bootable
-> disks  MBR's. To do that simply edit lilo.conf and set; boot= to /dev/
-> hd(whichever disk) in this case /dev/hdc 
+>It's that simple and I should have figured it out myself. However, I remember 
+>in my early Linux days somebody had told that the boot must be on hda.
+>
+>Since I removed my old drive, going back to me old machine, would it then not 
+>be necessary to move hdc to hda, instead just leave it where it is? Thus the 
+>secondary master becomes primary master or not?
+>
+>  
+>
+As long the connection on the mobo is the secondary, it wont be moved to 
+hda.
+you would know wether it is a primary or secondary master during the h/w 
+check bfore
+lilo is loaded
 
-
-It's that simple and I should have figured it out myself. However, I remember 
-in my early Linux days somebody had told that the boot must be on hda.
-
-Since I removed my old drive, going back to me old machine, would it then not 
-be necessary to move hdc to hda, instead just leave it where it is? Thus the 
-secondary master becomes primary master or not?
-
--- 
-Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
