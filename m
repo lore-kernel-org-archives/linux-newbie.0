@@ -1,33 +1,25 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: framebuffer console
-Date: Mon, 15 Dec 2003 11:37:39 -0500
+From: James Miller <jamtat@mailsnare.net>
+Subject: alternate Debian kernels
+Date: Mon, 15 Dec 2003 12:55:35 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031215163739.GB585@lnx2.w8mch.ampr.org>
-References: <Pine.LNX.4.58.0312150920510.1041@debian-box>
-Reply-To: haltec@kvinet.com
+Message-ID: <Pine.LNX.4.58.0312151246510.603@debian-box>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.58.0312150920510.1041@debian-box>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 12-15, James Miller wrote:
-> I hope this is the right place to ask this sort of newbie question. 
+Maybe one of the Debian users on this list can help me understand
+something about the kernels offered on the unstable branch.  Specifically,
+I have a question about 2.4.x kernels.  There are two 2.4.x kernels
+available there, and I'm trying to understand the difference between them.
+One is listed as kernel-image-2.4-(CPUarchitecture), while the other is
+listed as kernel-image-2.4.22-1-(CPUarchitecture).  It's clear what the
+second one is, but what's the first in relation to it?  Is it the 2.4.0
+kernel?
 
-	FWIW, and others will comment more, I read the frame buffer
-as catch all code that permits one to run X11 with an unsupported or
-obsolete or brand new video card that has no driver yet..
-
-	If you use a supported card best to use its server.. I don't
-use it because all my various cards have their own drivers.. HTH.
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-                Proprietary  Formats  Unacceptable
-.
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
