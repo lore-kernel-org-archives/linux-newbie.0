@@ -1,58 +1,51 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Linux 0.99.15 (historycal question)
-Date: Mon, 22 Mar 2004 16:45:50 -0500
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: switching to debian (... and installing the NVIDIA GeForce4)
+Date: Mon, 22 Mar 2004 21:32:45 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <405F5E8E.8050607@gelm.net>
-References: <Pine.LNX.4.53.0403212309440.705@grinch.ro> <Pine.LNX.4.53.0403212309440.705@grinch.ro> <5.1.0.14.1.20040322085546.01f07548@celine> <Pine.LNX.4.53.0403222216130.583@grinch.ro>
+Message-ID: <Pine.LNX.4.44.0403221802240.23259-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0403222216130.583@grinch.ro>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Calin Szonyi <caszonyi@rdslink.ro>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-<snip>
+Hello,
 
->I found a site http://linux.ka.nu/ which has slackware 1.1.2 and i thought
->to give it a try on my 486 machine. The problem is that i have a 6.4GB
->hard drive :-)
->  
->
-If you are simply trying to run linux on an 80486 why not try
-a current kernel.  I ran kernel 2.2.19 on an 80486dx33 with
-32 MB of RAM and a 40 Gigabyte Maxtor.  BIOS would
-recognize 2.1 GB through Maxtor's EZ-DISK utility.  Linux
-recognizes the rest of the 38 GB as it boots.  I am now
-running kernel 2.4.22 (Slackware9.1) on this 80486dx33.
-It is my firewall and router. 
+I recently installed the 3.0 debian linux (on an AMD 1500 pc) and am
+learning the ways of debian packaging. I obtained a netinst iso, burned
+the image and successfully rebooted back into debian. Next, I used tasksel
+get all the packages that seemed relevant. Somehow I missed choosing
+XFree86 (I think), initially. dselect along with the debian reference
+manual helped me fix that (by installing x-window-system-core,
+xfree86-common, etc). During the setup process I selected GeForce as my
+video card. startx did work - XFree86.0.log told me the error was:  (EE)
+No devices detected. Googling for "GeForce4 debian configuration" gave me 
+hits - the first one indicated that I must:
 
-HTH, Chuck
+# cd /usr/src
+# apt-get install nvidia-glx-src nvidia-kernel-src
+# tar -zxf nvidia-kernel-src.tar.gz
+# cd linux
+# make-kpkg clean
+# make-kpkg modules_image
 
->>In any case, what will limit you is, most likely, not Linux itself, but
->>either LILO or fdisk. Old versions of LILO will be subject to the
->>1024-cylinder limit, requiring that you place a small /dev/hda1 partition
->>on the drive and use it as /boot .
->>
->>    
->>
->
->I booted the kernel from slackware 1.1.2 distribution (linux 0.99.15) and
->it says that my harddrive has too many heads (255) ;-) but that's on a
->40GB maxtor :-))
->
->Thanks again
->
->
->
->--
->"A mouse is a device used to point at
->the xterm you want to type in".
->Kim Alm on a.s.r.
->  
->
+I do not have the kernel source (I installed a pre-configured kernel -
+kernel-image-2.4.18-k7) installed, and therefore do not have a
+/usr/src/linux. Must I download the kernel source and follow the
+instructions above? Is there an alternative way of enabling this card by
+inserting a (precompiled?) module (is the above asking me to do exactly
+that?)?
 
+Require guidance...
+
+Thanks,
+
+-K
+
+PS: Must I have my /etc/sources.list updated periodically? Is there a 
+utility to have it updated automatically? 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
