@@ -1,78 +1,41 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Strange Messages
-Date: Thu, 29 Aug 2002 11:01:29 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Looking for a WLAN PC-Card (IEEE 802.11b) compatible with Linux.
+Date: Thu, 29 Aug 2002 06:33:03 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208290301.g7T31T501568@philonline.com>
+Message-ID: <0208290633030N.02211@unix.pa3gcu>
+References: <001401c24ed9$40602df0$c5000a0a@c0002>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001401c24ed9$40602df0$c5000a0a@c0002>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Ola Theander <ola.theander@otsystem.com>, linux-newbie@vger.kernel.org
 
-Thanks!
+On Wednesday 28 August 2002 21:24, Ola Theander wrote:
+> Hi again Richard.
+>
+> Do you mean that the radio properties are better for USB devices, i.e.
+> the range for access is better?
 
-ray@comarre.com said:
-> To stop it, find and fix the problem in some crontab file.
+Yes that is what i am saying, the power output AFAIK is the same, the 
+advantage of USB is that one can point them around and find the signal 
+strength, with pcmica cards you often see folks walking around with thier 
+laptop holding it up dand down to find a signal in some small corner, that 
+when an USB adaptor is very handy.
 
-I tried to do this by creating files /usr/lib/sa/sa1 and /usr/lib/sa/sa2.
+The USB device i tryed from Aktiontec was no larger than a pcmica card is and 
+has +/- 60cms of cable.
 
-Now I get: "/bin/sh: /usr/lib/sa/sa1: Permission denied"
-
-$ ll /usr/lib/sa/sa1                   
--rwxrw-rw-    1 root     root            0 Aug 27 10:57 /usr/lib/sa/sa1
-
-Wy is this permission denied?
-
-After further thinking:
-
-It started to show-up when I added in /etc/aliases the last line
-person who should get root's mail
-root:		pfheiss
-pfheiss:	Peter
-		  
-I deleted now "pfheiss:	Peter" and the spook is gone.
-
-The file causing the messages is in /etc/cron.d sysstat
-
- run system activity accounting tool every 10 minutes
-*/10 * * * * root /usr/lib/sa/sa1 1 1
- generate a daily summary of process accounting at 16:53
-53 16 * * * root /usr/lib/sa/sa2 -A
-
-If I mark (#) the lines in question would that have any adverse effect?
+>
+> /ola
 
 
-
-> <root@philonline.com> >Received: (from root@localhost)
->         by philonline.com (8.11.6/8.11.6) id g7R200m01274
->         for root; Tue, 27 Aug 2002 10:00:00 +0800 >Date: Tue, 27 Aug
-> 2002 10:00:00 +0800 >Message-Id: <200208270200.g7R200m01274@philonline.
-> com> >From: root@philonline.com (Cron Daemon) >To: root@philonline.com
-> >Subject: Cron <root@Peter> /usr/lib/sa/sa1 1 1 >X-Cron-Env: <SHELL=/
-> bin/sh> >X-Cron-Env: <HOME=/root> >X-Cron-Env: <PATH=/usr/bin:/bin> >
-> X-Cron-Env: <LOGNAME=root>
-
->Peter wrote:
->Hi,
-> >As of late I am
-> receiving every 10 minutes in my exmh-mail-program-inbox the
-> following message:
-> >$ cat ./ExMail/inbox/msg.ygB
-> >From root  Tue Aug 27 10:00:00 2002 >Return-Path:
-> >/bin/sh: /usr/lib/sa/sa1: No such file
-> >or directory
-
-> >What's the meaning of it and how can it be stopped? 
-
-Regards
 -- 
-Peter
-
-
-
-
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
