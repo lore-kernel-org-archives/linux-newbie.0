@@ -1,50 +1,39 @@
-From: whitnl73@juno.com
-Subject: Re: Tartar
-Date: Sun, 13 Apr 2003 21:33:37 -0400 (EDT)
+From: Peter <pfheiss@philonline.com> (by way of Peter
+	<pfheiss@philonline.com>)
+Subject: No More Logrotate
+Date: Mon, 14 Apr 2003 16:16:08 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030413.221707.8.0.whitnl73@juno.com>
-References: <200304140111.h3E1BHi02260@philonline.com>
+Message-ID: <200304141616.08613.pfheiss@philonline.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304140111.h3E1BHi02260@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pfheiss@philonline.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 14 Apr 2003, Peter wrote:
+Hi,
 
-> Hi,
->
-> when you first mentioned tartar it was:  tar -C $1 -cOl . | tar -C $2 -xpf ,
->
-> This time you put quotations:  tar -C "$1" -cOl . | tar -C "$2" -xpf .
->
-> Which is correct.
->
-> Regards
->
-Well, IIRC the first version won't work if the directory name contains
-spaces.  That's why I changed it.  Guess I'll have to start versioning
-it.
+after I upgraded to a newer RH7.3 version from KRUD Linux logrotate will not
+rotate the log files any longer.
 
-#!/bin/sh
-## copy a directory or partition
-## tartar version 0.0.3 Lawson Whitrney <whitnl73@juno.com>
-## 13 April 2003 	Use, distribute or change at your own risk.
-tar -C "$1" -cOl . | tar -C "$2" -xpf -
+Instead I get the following error message in my mail:
 
-Lawson
- --
----oops---
+error: syslog:1 duplicate log entry for /var/log/cron
 
+Giving the command logrotate --force /etc/logrotate.conf I get the same error
+message.
 
+I have not changed /etc/logrotate.conf or crontab of root.
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+I checked the pertinent cron.daily/weekly files and can't find anything
+ wrong.
+
+How could this be resolved?
+
+Thanks & regards
+--
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
