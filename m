@@ -1,54 +1,82 @@
-From: "Enrique Nieves" <spanfax@charter.net>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Newbie installation problem
-Date: Sun, 4 Aug 2002 13:06:42 -0400
+Date: Sun, 04 Aug 2002 10:30:07 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001201c23bd9$4e6aa870$6401a8c0@ENRIQUE>
-References: <Pine.LNX.4.21.0208040725520.30515-100000@Consulate.UFP.CX>
+Message-ID: <5.1.0.14.1.20020804101233.0211bb00@celine>
+References: <5.1.0.14.1.20020802181721.02153750@celine>
+ <5.1.0.14.1.20020804005505.02187b30@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001301c23bd9$848cb0b0$6401a8c0@ENRIQUE>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Riley Williams <Riley@Williams.Name>
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Enrique Nieves <spanfax@charter.net>
+Cc: linux-newbie@vger.kernel.org
 
+Oh. From what you sent this time, it does look like the NIC is being 
+detected, but RH cannot assign an IP address to the interface. I'm not 
+entirely sure of this, though, based on the details of what you quote, namely:
 
-> Based on the information provided earlier, if the router can handle 100
-> speed, then you are attempting to use 100baseTX ethernet, if not, you
-> are attempting to use 10baseT ethernet.
+>"Checking for New Hardware
+>                 .
+>                 .
+>                 .
+>Bringing up interface Eth0:
+>     Determining IP information for Eth0 . . . failed
 >
-> One final question: Am I right in assuming that you are trying to set it
-> up with the AMD under Linux as the system that connects to the Internet,
-> and both the WinXP machine and the laptop piggy-backing onto that
-> connection?
-
-The XP is the system that is connected to the internet, and I'm trying to
-piggy back to that connection the AMD  box and the XP laptop.
-
+>[FAILED]"
 >
-> The reason I ask this is that on rereading your comments, I note your
-> repeated reference to "LinkSys router" and I'm wondering if that's an
-> ADSL router that forms your Internet connnection. If it is, then the
-> advice to be given is rather different to the above, and the above
-> advice should be ignored.
-
-I have a Linksys Ethernet 10/100 Cable/DSL Router (BEFSR41 ver.2) with four
-ports connected to a Shark Fin cable modem.
 >
-> In this event, please run the `netconfig` command but ensure that the
-> "Use dynamic IP configuration" box IS checked. In this case, the values
-> of the remaining fields are irrelevant and should be ignored. You also
-> need to configure your router to enable the DHCP server and the NAT
-> facilities therein, and it will then configure the IP addresses,etc, on
-> all the systems on your network.
->
-> Best wishes from Riley.
+>This occurs when the RH 7.3 does the initial boot up.
 
-Thanks for your advice.
+Several things confuse me here.
 
-Enrique
+First, just a detail -- does it really say "Eth0" eather than "eth0"? If 
+so, then RH is introducing unnecessary confusion into the process (since 
+interface names are normally all lower case). If not, then you are not 
+quoting exactly.
+
+Second, what *immediately* precedes the failure message? Are you *sure* the 
+system is still in the New Hardware phase?
+
+Third, I had previously thought that this message was coming from a RH 
+install. Now it sounds like part of the boot/init process of an installed 
+RH 7.3. Could you clarify?
+
+Fourth, what happens next? If we are talking about an installed RH, does it 
+complete initialization, then give you the login: prompt (or the X 
+equivalent, depending on your setup)? If it does, may we see at this point 
+the output of:
+
+         ifconfig -a
+         netstat -nr
+         lsmod
+         lspci
+
+Last, how do you *want* this system to get its IP address?
+
+         Do you plan to assign a static address by hand? If so, you 
+(probably) specify this by editing the file /etc/network/interfaces .
+
+         Use a DHCP server? If so, then where on the LAN are you running 
+one? The Linksys? The XP system? Do you see network traffic (in the form of 
+appropriate blinking lights on the NIC and the hub) just before you get the 
+failure message you quote above (if you don't, then the system isn't 
+managing to connect to the LAN to look for a DHCP server).
+
+         Those are the only real alternatives (technically there are some 
+others, but no one uses them in small home setups).
+
+At 01:08 PM 8/4/02 -0400, Enrique Nieves wrote:
+[details deleted]
 
 
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
