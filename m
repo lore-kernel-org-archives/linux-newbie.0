@@ -1,102 +1,57 @@
-From: Ola Theander <ola.theander@connective.se>
-Subject: RE: Strange shutdown problem with KDE2.2.2.
-Date: Mon, 15 Apr 2002 16:13:02 +0200
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Win4Lin 2 & RH 7.2
+Date: Mon, 15 Apr 2002 14:20:48 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <FC79D1F4C922D511983400104BC3038801955C@DELL1>
+Message-ID: <0204151420480Z.00302@unix.pa3gcu>
+References: <000001c1e3a0$cb27a4d0$fd00a8c0@computer2>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000001c1e3a0$cb27a4d0$fd00a8c0@computer2>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: Phil <laingp@tpg.com.au>, linux-newbie@vger.kernel.org
 
-Hi Richard & Ray.
+On Sunday 14 April 2002 10:40, Phil wrote:
+> Hi Fellow Linux users
+>
+> Is it possible to install Win4Lin V2 onto RedHat 7.2?  I have two default
+> kernels installed which are :-
 
-Perhaps I've figured out what's causing the problem but I'm not sure yet
-since it's an intermittent problem. It may have something to do with that
-I've had sound enabled in KDE. I've searched for this problem on various
-places and found some information that having the sound enabled could cause
-random shutdown problems, at least with earlier versions of KDE. But I have
-to run my system a bit more to be sure.
+According to the doc's i see no reason why it should not be possable.
+I dont have win4lin but i do have experiance with vmware and so to see they 
+require much the same in the way of resources.
 
-I'll try the different tests you suggested and get back with the result, if
-the problem occurs again.
+>
+> Kernel 2.4.7-9 (I think) and Kernel 2.4.10-31
+>
+> I wonder whether I need to step back a few kernels to successfully install
+> Win4Lin 2
 
-Regarding technical data for my computer:
-Kernel: 2.4.18
-RAM: 512 MB
-Swap: 384 MB (if I remeber correctly)
+With vmware when its installed it will look for the kernel sources of the 
+"presant kernel" which means if you have not compiled a kernel on your redhat 
+system then you would need to do so because i suspect win4lin would do the 
+same as vmware, thats look for files like autoconf.h and a few others created 
+when one configures and compiles a kernel.
 
-Kind regards, Ola Theander
+Please note, once again i am only comparing vmware and win4lin, so my notes 
+may not be totaly correct.
 
-> -----Original Message-----
-> From: Ray Olszewski [mailto:ray@comarre.com] 
-> Sent: den 14 april 2002 21:23
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: Strange shutdown problem with KDE2.2.2.
-> 
-> 
-> At 07:13 PM 4/14/02 +0000, Richard Adams wrote:
-> >On Sunday 14 April 2002 13:02, Ola Theander wrote:
-> >> Dear subscribers.
-> >>
-> >> I'm running a SuSE 7.3 Professional Linux installation 
-> with KDE 2.2.2 
-> >> on my Dell Inspiron 8000. Unfortunately I have a problem when I'm 
-> >> shutting down KDE somtimes the shutdown result in some 
-> very strange 
-> >> graphical effect, it looks pretty much like a sheet of 
-> papper burning 
-> >> into ashes. After that the computer locks and I have to 
-> turn of the 
-> >> power. The problem occurs pretty unprovoked, I could have runned a 
-> >> normal KDE session and when I turn of the KDE the problem occurs.
-> >>
-> >> Any help on this matter would be greatly appciciated.
-> >
-> >You say locks, have you tryed ctrl-alt-backspace to escape 
-> from X.?? If 
-> >you have a network, can you ping the (locked)-machine from another 
-> >host.? And forall what kernel do you have running.??
-> 
-> The symption as described doesn't suggest anything to me, 
-> but, like Richard, I wonder how thoroughly "locked" the 
-> computer is. Beyond his question:
-> 
->         can you CRTL-ALT-F* to a command-line vt (assuming 
->                 you have some running)?
-> 
->         can you establish a telnet or ssh connection (assuming
->                 you have the relevant servers running)? [This may
->                 be the most important one, since if you can do a
->                 remote connection, you can find out all the usual
->                 things about the state of the host.]
-> 
->         can you still connect to any other services you have running
->                 (e.g., SMTP, DNS, HTTP, ident ... I don't really know
->                 what you use the host for so these are wild guesses)?
-> 
->         does the host still respond to pings (I guess Richard already
->                 asked this one)?
-> 
-> After you reboot, do the logs contain any useful information 
-> from KDE or from X itself?
-> 
-> How much memory does the system have? (Actual RAM and swap)
-> 
-> 
-> --
-> ------------------------------------"Never tell me the odds!"---
-> Ray Olszewski                                        -- Han Solo
-> Palo Alto, CA           	 	         ray@comarre.com        
-> ----------------------------------------------------------------
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in the body of a message to 
-> majordomo@vger.kernel.org More majordomo info at  
-http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+>
+> Any thoughts would be appreciated
+>
+> Thanks in advance
+>
+> Phil Laing
+> Port Macquarie NSW
+> Australia
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
