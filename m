@@ -1,33 +1,55 @@
-From: Pawan Deepika <pawan_deepika@yahoo.com>
-Subject: New to device drivers!!
-Date: Tue, 13 May 2003 11:17:36 -0700 (PDT)
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030513181736.76142.qmail@web41613.mail.yahoo.com>
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: [SLE] (OT) Video cable ..
+Date: Wed, 14 May 2003 16:54:22 +0200
+Message-ID: <200305141654.33928.James.Hatridge@epost.de>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <suse-linux-e-return-145359-suse-linux-e=m.gmane.org@suse.com>
+list-help: <mailto:suse-linux-e-help@suse.com>
+list-unsubscribe: <mailto:suse-linux-e-unsubscribe-suse-linux-e=m.gmane.org@suse.com>
+list-post: <mailto:suse-linux-e@suse.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Newbie <linux-newbie@vger.kernel.org>, Scanner <primax@linuxhacker.org>, Stamp Club <philatelic@philatelic.com>, SuSE <suse-linux-e@suse.com>
 
-Hi all,
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
- I am new to device drivers. Can anyone suggest me
-some simple network driver examples(which deal with
-real interface)to start with. What H/W details I need
-to know to write a driver on my own.
 
-Any help in this regard is highly appreciated.
+Hi all
 
-Thanks & regards,
-Deepika
+I was just given a Siemens Nixdorf MCM 1705 (NTD) Monitor. But there was =
+no=20
+video cable for it. IF someone has a video cable that will work with this=
+=20
+monitor, contact me off list and let's make a trade.
 
-__________________________________
-Do you Yahoo!?
-The New Yahoo! Search - Faster. Easier. Bingo.
-http://search.yahoo.com
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks
+
+JIM=20
+- --=20
+Jim Hatridge
+Linux User #88484
+- ------------------------------------------------------
+                 BayerWulf
+           Linux System # 129656
+         The Recycled Beowulf Project
+  Looking for throw-away or obsolete computers and parts
+   to recycle into a Linux super computer
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+
+iD8DBQE+wlihv3Z9K7QSWt4RAiN1AKC96njKXWQb0FTfSbxEz5ImM/U5BgCeNnry
+YWUNUQsJKQIEgmqx4PddSLo=3D
+=3DydD4
+-----END PGP SIGNATURE-----
+
+
+-- 
+Check the headers for your unsubscription address
+For additional commands send e-mail to suse-linux-e-help@suse.com
+Also check the archives at http://lists.suse.com
+Please read the FAQs: suse-linux-e-faq@suse.com
+
+
