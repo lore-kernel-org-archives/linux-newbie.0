@@ -1,48 +1,59 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: framebuffer console problems
-Date: Fri, 22 Oct 2004 16:14:00 -0500 (CDT)
+Date: Fri, 22 Oct 2004 16:49:12 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410221604590.1287@debian-emach>
+Message-ID: <Pine.LNX.4.58.0410221626290.1287@debian-emach>
 References: <Pine.LNX.4.58.0410221108580.1287@debian-emach>
- <Pine.LNX.4.58.0410221351360.1287@debian-emach> <417968FE.3070405@verizon.net>
+ <Pine.LNX.4.58.0410221108580.1287@debian-emach> <5.1.0.14.1.20041022123824.020548d8@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <417968FE.3070405@verizon.net>
+In-Reply-To: <5.1.0.14.1.20041022123824.020548d8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Fri, 22 Oct 2004, Jim Nelson wrote:
+On Fri, 22 Oct 2004, Ray Olszewski wrote:
 
-> If you are using a 2.6 kernel (and maybe the 2.4), the kernel module for
-> the ATI Rage series of graphics systems is aty128fb, not atyfb.  I've
-> had problems with vesafb myself, but with really old hardware (Trident
-> TGUI 9660 on an old Thinkpad).
+> You might want to try 1280x1024 in vesa to see if it works
+> there.  Depending on color depth, the values for that are:
+>
+>           8 bit          0x307   =       775
+>          16 bit          0x31A   =       794
+>          24 bit          0x31B   =       795
 
-Thanks for your response, Jim.  Not sure if you recall what sort of card I
-mentioned, but it's an older, onboard one with low memory.  According to
-an infomrational page I found at
-www.sharplabs.com:8668/space/video+boot+arguments , I should be using the
-atyfb module (and they do list the aty128fb there for other ATI Rage
-models).  So, do you still think I"m using the wrong module?  I really
-don't know.  I consider myself a total neophyte at this
+vga=775 results in the same blank black screen with "vga mode not
+support(ed)" in the middle (I made a mistake earlier and said the message
+said "out of sync"--sorry).  Similar results when I try ctrl-alt-Fx to go
+to a virtual terminal.  Seems not worth trying the others.
 
-> If you are always going to use the framebuffer, go ahead and compile it
-> into the kernel.  Saves a bit of trouble, and if you don't need modules
-> to load for accessing any of the devices necessary for reaching the init
-> scripts, you can probably dump the initrd altogether.  It's crucial on
-> distro-provided kernels, since they have to support a broad array of
-> equipment, but if this is a one-off kernel for your own personal
-> equipment, and you don't need modules (i. e. nforce drivers from Nvidia,
-> etc.) to access the boot disk, an initrd is not necessary.  None of my
-> systems use them.
+> Finally, I'm at a loss as to why fbset is not working for you. But I don't
+> have the only system with fbset installed here running at the moment. If
+> none of the rest of this helps, post again and I'll try to look at that
+> part of it.
 
-Yes, I have in mind to compile myself a kernel at some point.  Just trying
-to defer it until I have some more basic problems solved.  But they seem
-to appear at least as fast as I can solve them :).
+I decided to take some additinal time out of my writing schedule and read
+the mkinitrd manpage.  Decided it wouldn't be so hard to make an initrd
+with this atyfb module in it, so I did.  Pointed the initrd.img symlink
+under / to it.  But it seemed to make no difference using the vga=xxx
+arguments in menu.lst.  Still the same blank black screen with "vga mode
+not support(ed)."  Then I tried entering atyfb into /etc/modules.  While
+this didn't help the boot screen display--it remained the same as with
+other settings I've tried apart from vga=789 (the one that actually works,
+though not giving a fine enough resolution)--it did cause fbset to work.
+Or at least it doesn't return error messages about /dev/fb0: no such file
+or directory.  Rather, it gives the resolution setting, sync rates and so
+forth.  I don't really feel any closer to a solution as a result, though.
 
-James
+I should probably mention that the "video mode not support(ed)" message
+has a red strip across the bottom in which are some numerical values and
+letters.  I think it's horizontal and vertical sync.  For example, when I
+try vga=773, that red strip has H 35.4 V 86.5.  If those are sync values
+the video is trying to use, then the display is, indeed, outside the sync
+range of the monitor.  At 1024x768 the manual says the sync values can be
+H 48.36 V 60; H 56.48 V 70.1; and H 60.02 V 75.
+
+Puzzled, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
