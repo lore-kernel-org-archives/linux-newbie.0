@@ -1,62 +1,75 @@
-From: =?iso-8859-1?Q?rgomez=40bancomer=2Ecom?= <rgomez@bancomer.com>
-Subject: =?iso-8859-1?Q?Printing=20on=20Windows=20Printer=20with=20CUPS?=
-Date: Fri, 31 Oct 2003 13:51:22 -0600
+From: beolach@juno.com
+Subject: Re: boot with numlock?
+Date: Sat, 1 Nov 2003 02:28:44 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA1E3F9000004D6@mail-bcm01.alestra.net.mx>
+Message-ID: <20031031.182850.28675.541204@webmail10.lax.untd.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-
-Hi, I'm trying to print on a Windows Share printer using CUPS, my printer.conf
-file looks like this:
-
-<printer smb>
-DeviceURI smb://user:password@150.100.56.16/V6E05IB1
-State Idle
-Accepting Yes
-JobSheets none none
-QuotaPeriod 0
-PageLimit 0
-KLimit 0
-</Printer>
-
-When I send a print job I got this message in cups's log file:
-
-E [31/Oct/2003:13:32:07 -0600] cli_session_request() failed...
-E [31/Oct/2003:13:32:07 -0600] Unable to connect to SAMBA host, will retry
-in 60 seconds...: Success
-
-the command that CUPS use is:
-
-root      8851  8490  0 13:20 ?        00:00:00 smb://user:password@150.100.56.16/V6E05IB1
-1 root testprint.ps 1 page-top=36 pag
-
-I'm sure that the printer name and print server are correct because I can
-send data to the printer using smbclient like this:
-
-[pedsgrr2@edsgrr00 tmp]$ smbclient //150.100.56.16/V6E05IB1 -U user%password
--P
-added interface ip=150.100.106.33 bcast=150.100.106.255 nmask=255.255.255.0
-session request to 150.100.56.16 failed (Called name not present)
-session request to 150 failed (Called name not present)
-Domain=[CB] OS=[Windows 5.0] Server=[Windows 2000 LAN Manager]
-smb: \> translate
-CR/LF<->LF and print text translation now on
-smb: \> put smbprint 
-putting file smbprint as \smbprint (33.8 kb/s) (average 33.8 kb/s)
-smb: \> 
+Content-Transfer-Encoding: 7bit
+To: pete@shinners.org
+Cc: linux-newbie@vger.kernel.org
 
 
-I want to expand the use of linux in this place, but I can't do this if
-I can't print...
+Hi, Pete
 
-Tks for your help and time...
+For brief answer just skip to the down to the indented part.
+
+This question is addressed in The Linux Documentation Project at
+<http://www.tldp.org/> (which turns ten years old today! Hurray!).
+There are two HOWTOs that pertain too your question:
+The Linux Keyboard and Console HOWTO in more technical and abstract
+(and less helpful, IMO) terms at:
+<http://www.tldp.org/HOWTO/Keyboard-and-Console-HOWTO.html>.
+The HOWTO covers a ton of info on linux keyboard & console; the
+section on numlock is Section 10 "The keyboard LEDs" at:
+<http://www.tldp.org/HOWTO/Keyboard-and-Console-HOWTO-10.html>.
+
+A briefer (and better IMO) answer is in the Configuration HOWTO at
+<http://www.tldp.org/HOWTO/Config-HOWTO/index.html>.  It's keyboard
+section is at <http://www.tldp.org/HOWTO/Config-HOWTO/x43.html#AEN64>.
+To quote this Configuration HOWTO:
+
+    To enable NumLock on by default, add these lines to the startup
+    script /etc/rc.d/rc.sysinit:
+    
+    for tty in /dev/tty[1-9]*; do
+      setleds -D +num < $tty
+    done
+
+In this example, change the /dev/tty[1-9]* to however many consoles
+you have on startup; for example my distro (Slackware) defaults to
+having 6 initial consoles, so I would use: /dev/tty[1-6]*
+
+Also note that (AFAIK) you can only set the default numlock status
+for consoles that have been created; so if I boot up with the default
+of 6 consoles, but later create a new virtual terminal (with openvt),
+the new console would default to having numlock off.  This also means
+that when you start X Windows, the numlock will most likely default to
+off as well.  For X, I'm not sure how to set it to startup with numlock
+on. Probably simple, but I haven't taken the time to research it.
+
+Hope this helps,
+Conway S. Smith
+
+--------- .sig ---------
+Why do programmers confuse Halloween with Christmas?
+Because 31 OCT == 25 DEC.
+--------- .sig ---------
 
 
+-- Pete Shinners <pete@shinners.org> wrote:
+>i have my bios set to boot with numlock on. i always want numlock on. 
+>linux seems to default to numlock off on all the terminals. if i could 
+>just fix the X terminal that would be good enough, but is there a way 
+>for all the terminals to have the numlock on?
 
+
+________________________________________________________________
+The best thing to hit the internet in years - Juno SpeedBand!
+Surf the web up to FIVE TIMES FASTER!
+Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
