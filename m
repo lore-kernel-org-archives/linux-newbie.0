@@ -1,34 +1,30 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: lilo vs. grub
-Date: Wed, 18 Sep 2002 17:14:30 -0700
+From: james niland <bareego@yahoo.com>
+Subject: Re: Distros
+Date: Wed, 18 Sep 2002 18:49:48 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020918171259.0248b440@celine>
-References: <70D2426B.531446B0.0006BEFC@netscape.net>
+Message-ID: <20020919014948.42459.qmail@web11404.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <70D2426B.531446B0.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: neil t <wa4chq@netscape.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 07:15 PM 9/18/02 -0400, neil t wrote:
->Greetings all-
->I have been using lilo since installing RH a year and a half
->ago.  Is there a reason why I should switch and start using
->grub?
+I find that many of the bigger distros are not that
+different really. But if you want a decent small one
+ofr newbies which is also easy to setup there are not
+so many. I went through half a dozen of them until I
+found PEANUT linux. By far the best for it's size (The
+small distro is about 220MB iso download) and comes
+with kde3,koffice,mmxx,etcetcetc preconfigured. VERY
+nice...I was about to give up on Linux until I found
+this distro.
 
-No. If LILO works, it works. For some users (especially ones with 
-complicated multiboot setups), GRUB offers a nicer UI and a bit more 
-flexibility. But both are good, mature applications.
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+__________________________________________________
+Do you Yahoo!?
+New DSL Internet Access from SBC & Yahoo!
+http://sbc.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
