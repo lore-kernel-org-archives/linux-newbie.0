@@ -1,41 +1,39 @@
-From: Heimo Claasen <hammer@revobild.net>
+From: Mike Dresser <mdresser_l@windsormachine.com>
 Subject: Re: how to assess occupied space
-Date: 15 Sep 2002
+Date: Sun, 15 Sep 2002 14:51:45 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209151843.g8FIhZPc006695@pegasus.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <Pine.LNX.4.33.0209151447040.23713-100000@router.windsormachine.com>
+References: <200209151843.g8FIhZPc006695@pegasus.wanadoo.be>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200209151843.g8FIhZPc006695@pegasus.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-Thanks for the hints; I didn't know some of the 'du' subtelties.
-(BTW, is 'du' for _disk_ or for _directory_ use ?)
+On 15 Sep 2002, Heimo Claasen wrote:
 
-The question for "space occupied" is particularl important with the
-Zip-disks, and sometimes 'du' or 'df' didn't seem to give reliable
-answers.
-(And in any case to know how much space is left demands some mental gym.)
+> Thanks for the hints; I didn't know some of the 'du' subtelties.
+> (BTW, is 'du' for _disk_ or for _directory_ use ?)
+>
 
-The "weeding out" of needless stuff is linked to this - I'd like to
-know which are the most (unused, space) wasters.
-"Package", incidentally, was meant precisely as that:
+Disk usage, according to the man pages.  But in a way, directory use is
+accurate too.
 
-> But since a package typically installs stuff in several separate places
-> ... there is no good way, at
-> least not that I know of, to figure out how much space a package takes up
-> by examining directories in the filesystem.
+> The question for "space occupied" is particularl important with the
+> Zip-disks, and sometimes 'du' or 'df' didn't seem to give reliable
+> answers.
+> (And in any case to know how much space is left demands some mental gym.)
 
-The various package managers give some help, but it's not very
-transparent. After I spent full days on de-installing not needed
-packages (and some notes kept would indicate a considerable volume),
-the final result was only a small diminuation of occupied disk space,
-according to those 'du'/'df's.
-Hmm.
+if it's ext2 format(default), there's typically 5% reserved to the
+superuser.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-15
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+So your disk space, minus your disk used, will be less than the available
+space.
+
+Mike
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
