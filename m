@@ -1,83 +1,82 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: How to forward port 80 on Linux Redhat 9?
-Date: Wed, 28 Jul 2004 21:18:00 +0200
+From: Ray Olszewski <ray@comarre.com>
+Subject: RE: How to forward port 80 on Linux Redhat 9?
+Date: Wed, 28 Jul 2004 22:56:21 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200407282118.00390.pa3gcu@zeelandnet.nl>
-References: <GNEPLLCIIBHICCOGIAKPGELODBAA.eatley@wowcorp.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20040728224121.01fecee8@celine>
+References: <5.1.0.14.1.20040728093522.01fc0610@celine> <GNEPLLCIIBHICCOGIAKPCEMBDBAA.eatley@wowcorp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPGELODBAA.eatley@wowcorp.com>
-Content-Disposition: inline
+In-Reply-To: <GNEPLLCIIBHICCOGIAKPCEMBDBAA.eatley@wowcorp.com>
+References: <5.1.0.14.1.20040728093522.01fc0610@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: eatley@wowcorp.com
-Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 28 July 2004 17:58, Eve Atley wrote:
-> Hello all,
+At 01:48 PM 7/28/2004 -0400, Eve Atley wrote:
+
+>Ray, thanks for the assistance. Some questions...
 >
-> We use Redhat 9 as our server and router, and Bastille as our firewall on
-> that box. I have set up Bastille so it allows port 80 requests from our
-> external IP (ie. 209.158.555.123). However, I can't figure out how to
-> forward port 80 to an internal machine (ie. 192.168.10.28).
+> >iptables -t nat -A PREROUTING -p tcp --destination 209.158.555.123 \
+>   --destination-port 80 -j DNAT --to-destination 192.168.10.28
 >
-> I have been reading online articles first, and I guess it has something to
-> do with iptables? I have seen the /etc/rc.d/rc.local file, and it looks
-> like greek to me. I believe I need to do something like this:
+>I'll implement this. I'm not aware of how to make it 'stick'; doesn't this
+>change after I reboot Redhat? Does this require a save?
+
+I don't know what you mean by "a save". This is not standard Unix/Linux 
+jargon. But yes, a change you make from the command line will not survive a 
+reboot.
+
+Since I don't know how you are installing your existing firewall ruleset, I 
+cannot tell you *exactly* how to "make it 'stick'". As a general matter, 
+you put the command in some script that runs as part of the boot/init process.
+
+Just as an example, on our router here (running Debian/Woody), all the 
+commands to create (or recreate) the firewall ruleset are in a file 
+/etc/network/fwrules . It begins by clearing all the chains, then adds 
+rules in the proper order to get them to work. We then added to the init 
+script /etc/init.d/networking a line that runs the fwrules script whenever 
+the networking script is run with the "start" or "restart" option.
+
+If you are using some existing firewall package (for example, Shorewall) to 
+create your basic firewall, you should consult that package's documentation 
+to see how it wants you to add custom, site-specific rules.
+
+
+> >You also need a rule in the default table that ACCEPTs incoming port-80
+> >traffic. Our actual ruleset here is sufficiently nonstandard that it will
 >
-> iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to
-> 10.0.4.2:80
+>And where might this default table be, so I can edit it?
+
+The table is in the kernel, like all the tables. You "edit it" with 
+iptables commands, just like the change you make to the nat table.
+
+You want to find the script that creates it during boot/init, and I have no 
+way of knowing where on your system a particular script is located ... not 
+only am I unfamiliar with REd Hat at that level of detail, but Linux in 
+general has an assortment of drop-in firewall packages, and I cannot know 
+what you are using.
+
+
+> >One moe clarification: iptables rules function as a set, not in isolation.
 >
-> But it all has [0.0] and such before it, with a final line of COMMIT.
+>So does this mean I must make a particular IP table for this case?
+>iptables -L gives me a whole lot of info, for which I see nothing specific
+>to port 80. I'll send the iptables listing if needed.
 
-I certainly don't understand what you mean here, however, if one does not know 
-what do to one can do;
+No, it does not mean that. It means that you need to look at the entire 
+ruleset for the default chain (the one that "iptables -nL", or, better, 
+"iptables -nvL", lists) to make sure the rule you add is in the proper 
+place. Similarly, you need to check the rules that precede the one you add 
+to the nat table (PREROUTING chain) to make sure that that rule will have 
+an actual effect.
 
-www.google.com/linux
-Type in the search engine something like "iptables portforward 80"
-You get from the above 40+ hits one which i think explains most of what you 
-need is;
-http://www.linuxquestions.org/questions/archive/3/2002/10/4/32933
+If you cannot do these things yourself, the only option is to show them to 
+someone who can interpret them. If you do so, please use the more complete 
+form I specified above ("iptables -nvL") and the corresponding one for the 
+nat table (I think "iptables -t nat -nvL", but I may have that slightly wrong).
 
 
-> I have examined /etc/sysctl.conf and see that port forwarding is turned on.
-
-The simple linux command here is;
-cat /proc/sys/net/ipv4/ip_forward 
-It should say
-1
-If it is 0 (zero) then one can do;
-echo 1> /proc/sys/net/ipv4/ip_forward
-to turn it on, the proc interface is a wonderfull place.
-
->
-> Can somebody point me in the right direction as to what file I must
-> configure, or what commands I must use to forward port 80 to 192.168.10.28?
->
-> I have tried from an external terminal, and I can't even access the server
-> (ie. 209.185.555.123). I have no entry in hosts.allow for HTTPD as I wasn't
-> sure what syntax to be using. Is it:
-> httpd: ALL ?
->
-> Thanks,
-> Eve
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
