@@ -1,68 +1,52 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: Who's using my files?
-Date: 15 Jul 2002 10:16:09 +0100
+From: Matthew Stapleton <matthewstapleton@juno.com>
+Subject: Re: CDDA ->MP3 Conversion
+Date: Mon, 15 Jul 2002 08:02:49 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1026724569.29738.6.camel@Zebra>
-References: <1026470980.6430.39.camel@Zebra>
+Message-ID: <20020715.080250.-455505.0.matthewstapleton@juno.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1026470980.6430.39.camel@Zebra>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: dalgoda@ix.netcom.com
+Cc: linux-newbie@vger.kernel.org
 
-Thanks, everyone.
+Excuse my ignorance but what is "ogg"?  Is it a new sound format?
 
-The best tool in the end has turned out to be 'lsof' which does, indeed,
-ship with many current distros. 
-
-P.
+-MS
 
 
-
-
-
-
-On Fri, 2002-07-12 at 11:49, Paul Furness wrote:
-> Good morning / afternoon / night (delete as appropriate for your
-> timezone)
+On Sun, 14 Jul 2002 22:28:01 -0700 dalgoda@ix.netcom.com (Mike Castle)
+writes:
+> In article <20020712.142607.-314991.0.matthewstapleton@juno.com>,
+> Matthew Stapleton  <matthewstapleton@juno.com> wrote:
+> >cdda2wav and BladeEnc seemed to work well for me.
 > 
+> You may also consider lame and also switching from mp3 to ogg.
 > 
-> I have a very basic problem which is pretty much the same under all the
-> versions of linux I use.
+> mrc
 > 
-> Occasionally, when I try and eject a CD, the system complains that it is
-> in use, even although I have definitely stopped using it and CD'd out to
-> somewhere else.
-> 
-> 
-> A while ago I sort of remember seeing mention somewhere of a prog that
-> tells you who is using what files in a given directory tree.
-> 
-> 
-> Does anyone else know about this? What is it called? Has it been here
-> all along and I just never saw it?
-> 
-> Paul.
-> 
-> 
-> 
+> -- 
+>      Mike Castle      dalgoda@ix.netcom.com      
+> www.netcom.com/~dalgoda/
+>     We are all of us living in the shadow of Manhattan.  -- 
+> Watchmen
+> fatal ("You are in a maze of twisty compiler features, all 
+> different"); -- gcc
 > -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> To unsubscribe from this list: send the line "unsubscribe 
+> linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
 > 
--- 
-Paul Furness
-
-Systems Manager
-
-Visual Information Laboratory
-Mitsubishi Electric ITE BV 
 
 
+Matthew Stapleton
+============================
+To dare is to lose one's footing momentarily. Not to dare is to lose
+oneself. -SK
+============================
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
