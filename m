@@ -1,69 +1,100 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: unicode input success report - final?
-Date: Wed, 6 Oct 2004 12:26:34 -0500 (CDT)
+From: Jim Nelson <james4765@verizon.net>
+Subject: Re: Heavy load of graphics
+Date: Wed, 06 Oct 2004 17:02:05 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410061156210.2933@debian-emach>
-References: <Pine.LNX.4.58.0409301946510.25984@debian-emach>
+Message-ID: <41645D4D.9050902@verizon.net>
+References: <20041006063539.6889.qmail@web52909.mail.yahoo.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0409301946510.25984@debian-emach>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20041006063539.6889.qmail@web52909.mail.yahoo.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ankit Jain <ankitjain1580@yahoo.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-Maybe this will be a final report on this issue.  Most importantly, since
-my last post I've been in contact with the author of xwingreek - a Russian
-fellow who programs in Java and Python who also has an interest in
-polytonic Greek (Greek with diacritical marks) input.  He's been a great
-help.  Xwingreek is actually a bit deprecated.  He's written new keyboard
-switching programs that integrate into OpenOffice.org and M$Word: these
-allow switching between up to 3 keyboard maps/fonts.  He refers to the
-programs as "Thessalonic" and "PyUNO" (the latter being the one written in
-Python).  I did not succeed in finding either in the Debian repositories I
-have or in the OOo user interface - despite the fact that he thinks PyUNO
-is already incorprated into Debian's OOo release.  But that's not too
-important to me since I'm taking the other approach I mentioned earlier
-(editing XF86Config-4 to allow for keyboard map/font switching for X
-apps).  He's also helped me out with this.  He's pointed out to me that
-there is an additional line possible in the keyboard stanza of
-XF86Config-4 (this refers to 4.3.0something and may not apply to earlier
-releases): the "XkbVariant" line.  In order to get the phonetic Russian
-and polytonic layouts (or at least a semblance of polytonic) I want, I've
-added the "XkbVariant" line with ",phonetic,polytonic" following.  That
-has gotten me most of the way to where I need to be in entering unicode
-input into Xapps.  It also works in a console if you have the right fonts
-installed.  As an additional detail, I should mention that I think you
-must have a unicode locale specified in your system for this to work.  In
-my case, I've set locale to en_US.UTF-8 (how to set that varies by
-distribution: dpkg-reconfigure locales is how Debian does it).  I'll
-provide the relevant section of my XF86Config-4 for those interested:
+Ankit Jain wrote:
 
-Section "InputDevice"
-Identifier      "Generic Keyboard"
-Driver          "keyboard"
-Option          "CoreKeyboard"
-Option          "XkbRules"      "xfree86"
-Option          "XkbModel"      "pc104"
-Option          "XkbLayout" "us,ru,el"
-Option          "XkbVariant" ",phonetic,polytonic"
-Option          "XKbOptions" "grp:alt_shift_toggle,grp_led:scroll"
-EndSection
+>thanks
+>
+>this is the output
+>
+>i am using redhat linux 9.0
+>
+>"I know Red Hat has a lot of standard daemons (PCMCIA,
+>ISDN, etc) that are started by default - have you used
+>chkconfig or redhat-config-services to shut off
+>unneded services?" as u said...how to do this. i am
+>intrested in closing these services
+>
+>thanks again
+>
+>  
+>
+Easiest way to do this is to start an xterm, su to root, and type 
+"redhat-config-services &".  That will give you a GUI to select the 
+services you wish to run.  Depending on how much you selected when 
+installing, it could be quite a bit.
 
-Note the "grp_led:scroll" segment too, which causes the scroll lock LED
-on the keyboard to light up when I'm in one of the alternate keyboard/font
-mappings.  In summary, I've written this in the hope it may help someone
-else wanting to do this under Linux.  Having researched and written it up,
-I can't say I feel much sense of accomplishment.  The reason there is a
-need for such a description as I've written is because Linux is lacking in
-certain user-friendliness features that a certain, non-geekish segment of
-the population needs.  The real need is for programmers to fill that gap
-by writing programs that will do this sort of thing: already the Russian
-fellow I've mentioned above is doing this and I've heard of others.  Thus,
-my little research/how to project here could likely be itself obsoleted
-pretty shortly.
+Runlevel 3 is the Red Hat standard for booting into command-line mode, 
+and runlevel 5 is the standard graphical login level.
 
-James
+The only critical services controlled by this are network, syslog, 
+xinetd, and nfslock (if you are using NFS).  Do not disable those unless 
+you know what you're doing it for.  iptables is the firewall control 
+(only disable if you are in a very well protected network).
+
+Most everything else can be turned off.
+
+>[ankit@Ankit ankit]$ cat /proc/meminfo
+>        total:    used:    free:  shared: buffers: 
+>cached:
+>Mem:  120741888 118902784  1839104        0  1695744
+>74162176
+>Swap: 534601728 69509120 465092608
+>MemTotal:       117912 kB
+>MemFree:          1796 kB
+>MemShared:           0 kB
+>Buffers:          1656 kB
+>Cached:          36536 kB
+>SwapCached:      35888 kB
+>Active:          65144 kB
+>ActiveAnon:      37092 kB
+>ActiveCache:     28052 kB
+>Inact_dirty:      4852 kB
+>Inact_laundry:    6728 kB
+>Inact_clean:      1068 kB
+>Inact_target:    15556 kB
+>HighTotal:           0 kB
+>HighFree:            0 kB
+>LowTotal:       117912 kB
+>LowFree:          1796 kB
+>SwapTotal:      522072 kB
+>SwapFree:       454192 kB
+>  
+>
+
+128 MB RAM is marginal for using KDE or Gnome on RH9.  You can do it 
+(that's all I had on my first Linux box) but it's a pig.
+
+You've got almost 70 MB in swap - over 30% of your total process 
+memory.  BTW - what kind of computer is it?  If it's not some oddball 
+hardware, your best solution is some RAM.  256 MB is enough to make X happy.
+
+
+>[ankit@Ankit ankit]$ ps -al
+>F S   UID   PID  PPID  C PRI  NI ADDR    SZ WCHAN  TTY
+>         TIME CMD
+>0 R   501  4306  4279  0  75   0    -   778 -     
+>pts/0    00:00:00 ps
+>  
+>
+
+The difference between 'ps -al' and 'ps -Al' (note the uppercase A) is 
+that ps -Al shows all of the processes running on the computer - whereas 
+ps -al only shows the processes running on the terminal that ran the 
+command. 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
