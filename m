@@ -1,35 +1,34 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: Running fetchmail in daemon mode?
-Date: Fri, 25 Apr 2003 09:34:43 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Redhat 9 Can't Compile a Kernel??
+Date: Fri, 25 Apr 2003 09:21:32 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030425093215.01f6c380@interzone.anexia.co.uk>
-References: <009101c30aa5$867d3520$4b01a8c0@t9397.tjem.com>
- <009101c30aa5$867d3520$4b01a8c0@t9397.tjem.com>
+Message-ID: <03042509213200.03446@unix.pa3gcu>
+References: <200304222243.19905.1stflight@ameritech.net> <03042312584700.02747@unix.pa3gcu> <Pine.LNX.4.53.0304241710300.2396@freeslack.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304241756.38904.powerstation@shaw.ca>
+In-Reply-To: <Pine.LNX.4.53.0304241710300.2396@freeslack.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: k3rnel@freeslack.com
+Cc: 1stFlight <1stflight@ameritech.net>, linux-newbie@vger.kernel.org
 
-At 17:56 24/04/2003 -0600, Bob Swift wrote:
->On Thursday 24 April 2003 15:07, Chris Rose wrote:
->
->
->For what it's worth, I run fetchmail in daemon mode here, picking up mail from 
->the 6 accounts I use, and have occasionally (about once a year) run into the 
->"hanging" problem that someone else mentioned.  It hasn't bothered me enough 
->(yet) to change it to a cron job.  <grin>
->
+On Thursday 24 April 2003 21:11, k3rnel@freeslack.com wrote:
+> Well, cc has some known issues...
+> Try gcc ?
 
-I should add that the hanging problem is normally caused by an over worked pop3 server.
-The ISP in question has seen it's pop3 server service drop dramatically and it gives out lots
-of auth fails - server too busy messages.
+Well i was under the impresstion that "cc" IS "gcc".
+cc is mearly a symbolic link to gcc AFAIK that is.
 
-Regards
-Carl
---
+Just what are the known issues according to you then.???
+
+> || -k3rnel ||
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
