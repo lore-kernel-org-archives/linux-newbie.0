@@ -1,8 +1,8 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Suse 8.1
-Date: Wed, 19 Mar 2003 08:47:22 -0500
+Subject: Suse 8.1 (passwords, install of packages)
+Date: Wed, 19 Mar 2003 08:55:51 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <026801c2ee1e$11e97fa0$cdfea8c0@pkraus>
+Message-ID: <026b01c2ee1f$41100140$cdfea8c0@pkraus>
 Reply-To: <pkraus@pelsupply.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -11,13 +11,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I just installed suse 8.1. However it not able to connect to anything
-outside of the local network. I can ping all local address but if I try
-to ping an internet address or even our name servers (outside of local
-network) I get an immediate host unreachable meggase. Under the yoost
-network module I have configured its ip (static) and the name servers. I
-have not entered anything in the domain search fields. Any help would be
-greatly appreciated.
+When I created my user account it truncated my password to 8 characters.
+Any way around this?
+
+Playing with the suse tool I wanted to install some packages but it asks
+me for the cd. I installed via ftp. 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
