@@ -1,44 +1,47 @@
-From: Arno Seitzinger <spam2_arno@lucienet.de>
-Subject: Re: autologon of a certain user at startup
-Date: Sat, 28 Dec 2002 17:39:15 +0100
+From: "Korosi Akos" <korosiakos@mailbox.hu>
+Subject: Re: USB PCI (Final)
+Date: Sat, 28 Dec 2002 18:24:58 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <aukk2e$ffk$1@main.gmane.org>
-References: <auiksr$qec$1@main.gmane.org>
-Reply-To: spam2_arno@lucienet.de
+Message-ID: <20021228172459.11392.qmail@web1.mailbox.hu>
+References: <Pine.LNX.4.50.0212172225140.2352-100000@athame.gmpexpress.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.50.0212172225140.2352-100000@athame.gmpexpress.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Newbie <linux-newbie@vger.kernel.org>
 
-Arno Seitzinger wrote:
+Hi everybody!
 
-> Hi NG,
-> 
-> on one of my Linux Machines running SuSe 8.1, I would like to
-> automatically log on one certain user on boot-up so X and KDE starts
-> without the necessity to enter username or password (preferrably w/
-> time-slot to enter a differend username but this is not a must...)
-> 
-> I'm sure I read somewhere how to configure the system for this behaviour
-> but can neither remember nor find it...
-> 
-> Any hint would be appreciated.
-> 
-> Arno Seitzinger
-> 
+=46inally I have an USB port!
 
-Thanks for the hints.
+This happened:
+I searched for the date of the BIOS. The only
+date I could see was a date at the bottom of the
+screen, when the memory has been checked.
+This was 22.06.1999 (this is before July 1. 1999),
+and I became sad...
+BUT I found in the BIOS an "Enable USB Support" option,
+and if I enabled it, then an "Enable USB Keyboard" support!
+And I became hopefull...
+And then I took the machine to a serviceman, and he found
+a USB port preparation on the maindboard, and put an USB
+port on it.
 
-Sure, I am not going to automatically log on root. The feature is needed for 
-an audio system in my living room where ease of use is prio 1.
+So thanks for the advices.
+I'm very happy!
 
-Arno
+Best wishes,
+Akos
 
+
+________________________________________________
+http://mailbox.hu - M=E1r SMS =E9rtes=EDt=E9ssel is!
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
