@@ -1,31 +1,31 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Filtering Email to Delete Without Using POP Filters
-Date: Sat, 9 Aug 2003 14:03:18 -0400
+From: jude dashiell <dashielljt@gmpexpress.net>
+Subject: Re: Filtering Email to Delete Without Using POP Filters
+Date: Sat, 9 Aug 2003 15:24:36 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200308091403.18490.sotl155360@earthlink.net>
+Message-ID: <Pine.LNX.4.53.0308091520360.32702@localhost>
+References: <200308091403.18490.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <200308091403.18490.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi All 
+Any number of ways exist to do what you want in Linux.  If you use pine,
+under setup and rules you'll find filters and you want to add a filter.
+Then name the filter and fill in your criteria.  Save it and exit and the
+e-mail is gone.  There's procmail but it like sendmail is a major bitch in
+terms of getting operational and you have to keep on adding filters to it.
+I may go back to procmail though having used pine because procmail can
+forward spam to different mailing addresses very easily once you get it
+set up correctly.  mailfilter is another package that can do much the same
+thing as well.
 
-Using Kmail is there a way to set a filter such that any mail from a 
-particular source is deleted automatically.
-
-I an aware that this can be done with pop filters but that takes place before 
-the mail is downloaded. This also requires a good bit more knowledge of what 
-the email contents are than I current possess.
-
-What I want to do is filter the mail first to substract what I want and then 
-set up a filter to automaticall send selected mail to the general inbox and 
-other selected mail directly to delete.
-
-Thanks
-Frank
+-- 
+Registered as user #315636 with the Linux Counter,
+http://counter.li.org/!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
