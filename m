@@ -1,36 +1,28 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Lycoris
-Date: Tue, 1 Apr 2003 23:18:01 -0600 (CST)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: recovering files after rm
+Date: Wed, 2 Apr 2003 04:00:56 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0304012314380.1804@homenet>
-References: <MSGID_110=3a202=2f1_19a64792@fidonet.org>
-Mime-Version: 1.0
+Message-ID: <200304020900.h3290utf007499@hartford-hwp.com>
+References: <200304011516.h31FGxO2000493@hartford-hwp.com>  
+ <200304010146.h311kNs02265@philonline.com> <200304020356.h323uc203288@philonline.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MSGID_110=3a202=2f1_19a64792@fidonet.org>
+In-reply-to: <200304020356.h323uc203288@philonline.com> (message from Peter on
+	Wed, 02 Apr 2003 11:56:38 +0800)
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Robert Todd <linux-net@tcob1.net>
+To: pfheiss@philonline.com
 Cc: linux-newbie@vger.kernel.org
 
-On Tue, 1 Apr 2003, Robert Todd wrote:
+Peter,
 
-> Originally to: James Miller
->
-> On Sun, 16 Mar 2003 11:39:46 -0500, JAMES MILLER wrote:
->
-> >I've used Lycoris. It's one of those *real* newbie distros. Automated
-> >install, with no choices for packages during install. Comes with KDE
-> >desktop - no other choices. Comes with a pretty good selection of apps -
->
-> James, do you have a URL so that one can download this?  TIA!
->
-Try http://www.lycoris.org/download.php?op=viewdownload&cid=8 . If you run
-into problems downloading or don't have a fast enough connection, the
-latest Lycoris release (build 46, I believe) is available on CD for .99 plus
-$1.50 shipping from Edmunds Enterprises.
+Interesting. "SafeDelete" is simultaneously a linux program to support
+undeleting files and at the same time a company that makes software to
+make it impossible to undelete files!
 
-James
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
