@@ -1,37 +1,45 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: path Setting
-Date: Sun, 13 Jul 2003 13:41:03 -0400
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030713134103.A472@lnx2.w8mch.ampr.org>
-References: <200307121952.17152.sotl155360@earthlink.net> <5.1.0.14.1.20030712195144.02087a90@celine> <200307130912.13918.sotl155360@earthlink.net>
-Reply-To: haltec@kvinet.com
+From: Sanjay Arora <skpobox@yahoo.com>
+Subject: Linux Networking problem...please help..
+Date: Mon, 14 Jul 2003 00:11:21 +0530
+Sender: linux-net-owner@vger.kernel.org
+Message-ID: <5.1.1.6.0.20030713233516.00b45080@hotmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200307130912.13918.sotl155360@earthlink.net>; from sotl155360@earthlink.net on Sun, Jul 13, 2003 at 09:12:13AM -0400
+Return-path: <linux-net-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+To: linux-net@vger.kernel.org
 Cc: linux-newbie@vger.kernel.org
 
-On 07-13, Frank Roberts - SOTL wrote:
-> 
-> but when I close the terminal and reopen the terminal to check the path has 
-> reurned to its original form.
-> 
-> Would some one please enlightnment me as to the corrrect procedure for 
-> changing this path.
-> 
-	Greetings: Haven't been following the thread but was
-wondering if your distribution uses '/etc/profile'... On my machines,
-what I enter as environment variables are global.. Just a thought.
+Network Scenario: RH 8 Linux Firewall Server using three ethernet cards, 
+IPs 172.16.0.141 (connected to Cable Ethernet ISP doing NAT), 192.168.200.1 
+connected to an ethernet hub, & 192.168.100.1 (presently not being used). 
+Using a hub two lans are connected to 192.168.200.1, each presently having 
+one machine each having IP addresses 192.168.200.2 (Windows XP machine, 
+having Gateway address of 192.168.200.1 in TCP/IP settings) and 
+192.168.250.1 (RH8 Linux Server, again having 192.168.200.1 as GW address).
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+1. When I ftp from 192.168.200.2 (WinXP) to 192.168.250.1 (RH Linux File 
+Server), the firewall shows an error message saying that WinXP machine is 
+ignoring redirects to 192.168.250.1 The transfer speed is also around 3.5 
+MB instead of full 10 MB which I get between the two Linux Servers. What's 
+the reason? What do I do to correct this behaviour?
+
+2. The RH fileserver machine is very underutilized. I am thinking of 
+putting another ethernet card in it and connect is to the cable ISP and 
+Firewall server using a hub. I plan to put a firewall on the new 
+ethernet/IP address denying all outgoing packets and put a sniffer on it. 
+What are the security implications of this? Mind the IP that sniffer is 
+running on is denying all outgoing traffic and dropping all incoming 
+traffic and providing no services at all. On the other hand the machine is 
+inside the firewall.... a compromise here would provide direct access to 
+all local network resources. Is a compromise possible on an IP that denies 
+all traffic inbound and outbound? Should I waste one machine for this task 
+on my proposed small network (less than 20 machines)?
+
+With thanks in advance ;-))
+Sanjay.
+
+
+
+
