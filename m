@@ -1,49 +1,50 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Noflushd usage
-Date: Thu, 01 Apr 2004 11:03:23 -0500
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: reinstall continued
+Date: Thu, 1 Apr 2004 10:55:27 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <406C3D4B.9070502@gelm.net>
-References: <406BA04F.3060503@hopper.net> <1080832995.4645.0.camel@localhost.localdomain>
-Reply-To: chuck@gelm.net
+Message-ID: <20040401155527.GC657@lnx2.w8mch.ampr.org>
+References: <200404011246.54599.wheds8@ms66.hinet.net> <200404010827.24196.pa3gcu@zeelandnet.nl>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1080832995.4645.0.camel@localhost.localdomain>
+Content-Disposition: inline
+In-Reply-To: <200404010827.24196.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Matthew Frederico <matt@ultrize.com>
-Cc: Joshua Rogers <joshuarogers@hopper.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Matthew Frederico wrote:
+On 04-01, pa3gcu wrote:
+> On Thursday 01 April 2004 06:46, S. Barret Dolph wrote:
+> > I used fdisk to clear all partitions. But when I boot up my box I still get
+> > a splash screen with two kernels listed. Where are those kernels?
+> 
+> The kernels are gone if you used fdisk but you did not clear the MBR.
+> http://www.computing.net/linux/wwwboard/forum/24422.html
+> 
 
->On Wed, 2004-03-31 at 22:53, Joshua Rogers wrote:
->  
->
->>Slightly curious here.  I have fairly new computer here that I got from 
->>walmart.com maybe 4 months ago.  I decided to install linux and windows 
->>on  it.  Ok.  I installed a 100Gb harddrive into the computer that has 
->>all my data on it.  And the drive sounds like a jet plane.
->>
->>How can I (or can I not) make noflushd turn off the second hard drive 
->>after about 15 minutes?
->>    
->>
->
->I believe "hdparm" is the command you are looking for.
->
->something like:
->
->"hdparm -s 30 /dev/hdb"
->
-I think that argument is uppercase, i.e.:
+	Good scheme Richard; Will try it in the future:
 
-hdparm -S 240 /dev/hdb
+dd if=/dev/zero of=/dev/hda bs=512 count=1
 
-;-)
-Chuck
-p.s. man hdparm for details.
+	It may be of interest to try the boot and nuke scheme to
+"zero" the rest of the drive just to be sure:
 
+http://dban.sourceforge.net (dban-1.0.1-i386.img)
 
+	It has a "quick" selection as well as other more thorough
+schemes approved by the US DoD, etc, booting from a 1.44 floppy.
+
+	And the 'fdisk /mbr' route is good for replacing the MBR with
+the MBR of whatever the current boot system uses...
+
+	I learn more and more every day.. Really enjoying the list..
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+           
+	     Anyone can pile complexity upon complexity;
+                  only a genius can truly simplify..
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
