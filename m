@@ -1,43 +1,37 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: copy and paste with xterm
-Date: Fri, 17 Jan 2003 14:41:22 -0500
+From: ramzez <r4mz3z@yahoo.es>
+Subject: clisp
+Date: Fri, 17 Jan 2003 13:23:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301171941.h0HJfMND011447@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <200301171323.41303.r4mz3z@yahoo.es>
+Reply-To: r4mz3z@yahoo.es
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-When I upgraded to RH8.0 I encounted a problem with copy and pasting
-between to and from xterm.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-I understand there are two clipboards, one for use by the mouse, and
-the other the normal clipboard controlled from the keyboard. I can use
-the mouse clipboard as a backup, but my main interest is in the
-keyboard clipboard.
+Hi friends...
+  I wanna make an AI app; and need some resources (tutorials, papers, etc) 
+about CLISP... where do I can get examples (source code) about applications 
+made in CLISP?
 
-If I select text in xterm with the mouse and try to past it to another
-xterm, it suceeds, but that text won't paste with the MMB into any
-other app. However, text selected by mouse elsewhere (such as emacs),
-does paste into xterm with the MMB. 
+thanks
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-In xterm, Ctl-Shft-HOME allows me to jump to beginning of a line, but
-Ctl-Shft-<- does not select text; it does not do anything. I don't
-know how to select text in xterm from the keyboard.
+iD4DBQE+KAPbs4dF9gl05swRAs0DAJoCQJJ06nyccs9UO0Fr3tZaUWdecACXXFLA
+mzAXCq0IIaWy3iHUa/Sc1A==
+=BGI/
+-----END PGP SIGNATURE-----
 
-I assume that I can change keybindings in xterm so that it can be
-controlled from the keyboard. I prefer the unix-emacs bindings to the
-CUA-PC bindings. Is there a handy list of bindings so that my brain
-does not have to remember what my fingers know?
-
-While my preference is for keyboard control, given the above scenarios
-there's no way at all form me to copy anything by any means from
-xterm for pasting elsewhere.
-
-Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
