@@ -1,21 +1,26 @@
-From: Natarajan K <natarajan_k@hotpop.com>
-Subject: .db Files
-Date: Sun, 21 Jul 2002 10:05:51 -0400
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Installation of sources
+Date: Sun, 21 Jul 2002 01:14:01 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207211005.51855.natarajan_k@hotpop.com>
-Reply-To: natarajan_k@hotpop.com
+Message-ID: <221321ff3c.1ff3c22132@homemail.nyu.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+To: 
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-HI,
-	I am using ntop to monitor my network. It creates files with extension .db. 
-Is there any open source utility to read them? Are they DB2 database files?
--- 
-Natarajan
+Hi,
+I recently installed Linux (RHL 7.3) for the first time in my life.
+Now what do I do install/view the sources? I read in some book where i 
+cud find the sources but that directory is absolutely empty, so I 
+guess the sources have to be installed first.
+
+-Anshu
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
