@@ -1,39 +1,59 @@
-From: Riley Williams <rhw@InfraDead.Org>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: nVidia lockups
-Date: Sat, 27 Jul 2002 17:57:27 +0100 (BST)
+Date: Sat, 27 Jul 2002 18:12:04 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0207271753130.30515-100000@Consulate.UFP.CX>
-References: <200207271245.g6RCjPT17529@langhans.hartford-hwp.com>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <02072718120406.00307@unix.pa3gcu>
+References: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX> <02072713034305.00307@unix.pa3gcu> <200207271441.g6REfRZ18361@langhans.hartford-hwp.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207271245.g6RCjPT17529@langhans.hartford-hwp.com>
+In-Reply-To: <200207271441.g6REfRZ18361@langhans.hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: Haines Brown <brownh@hartford-hwp.com>
-Cc: pa3gcu@zeelandnet.nl, Linux Newbies <linux-newbie@vger.kernel.org>
+Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
 
-Hi Haines.
+On Saturday 27 July 2002 14:41, Haines Brown wrote:
+> Richard,
+>
+> > > The page for nVidia Linux drivers is:
+> > > http://www.nvidia.com/view.asp?PAGE=linux
+> >
+> > On that page you will find a shell script called NVchoose.sh, if you
+> > download it and run it it should tell you which driver you need.
+>
+> Thanks, that worked. I'd still like to know what the difference is
+> between i386 and i686. Perhaps someone will chime in.
 
-The other points have all been dealt with by others in other emails,
-so I'll just clear the one remaining item for you...
+Remember the old machines we used to have a 8086, then came 286 machines, 
+then came 386 machines, then came the wonderfull 486, i still have 2 
+486DX/100 machines here.
+Then came the P1 machines, P2 machines P3 and now we have P4.
+This all possably sounds like rubbish to you, but i would advise you to look 
+at /usr/src/linux/Documentation/Configure.help and look for "Processor family"
+that will give you more indication of what it is.
 
-> There is a difference between UP and SMP. I understand what the
-> latter means, and the former is a single processor, but what does
-> "UP" mean literally?
+One small point, a kernel compiled for a i386 will run on "most" machines, a 
+kernel compiled for i686 support will "NOT" run on an old i386 machine.
+I have somewhere an URL explaining about machine arch's, however i cant seem 
+to find it at this minute.
 
-Here's the literal translation of both, as well as the missing one...
+>
+> > Enterprise = Redhat version.
+> > All i know is that Seawolf = 7.1
+>
+> Well, that's what I would have assumed, but there are "Enterprise"
+> drivers for different versions of Red Hat. That is, Red Hat 7.1 has an
+> Enterprise driver, but no mention of Seawolf. In any case, the script
+> you pointed me two knows that I'm not running Enterprise.
+>
+> Haines
 
-	UP	UniProcessor
-	AMP	Asynchronous MultiProcessor
-	SMP	Synchronous MultiProcessor
-
-The Transputer is based on AMP technology, but I don't know whether
-anybody is still working on AMP as SMP appears to have taken over
-from it.
-
-Best wishes from Riley.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
