@@ -1,62 +1,76 @@
-From: Rajesh Radhakrishnan <rajeshrk@mascon.co.in>
-Subject: RE: Visual Audio Tool, The ACE ORB and Linux
-Date: Mon, 20 May 2002 10:11:34 +0530
+From: G Anna <drguruolai@eth.net>
+Subject: Re: tar question
+Date: 20 May 2002 10:32:14 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <33D492BAFECCD4118A2F001083FC3AB5820F58@GRMAIL>
+Message-ID: <m31yc7mmy1.fsf_-_@wobble.eth.net>
+References: <20020519185527.14089.qmail@linux.ik5bcu.ampr.org>
+	<200205192309.g4JN9Et17254@langhans.hartford-hwp.com>
+Reply-To: anna7sept@linuxmail.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200205192309.g4JN9Et17254@langhans.hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-Hi,
-
-I am trying to adapt Visual Audio Tool for the TAO( the ACE ORB) framework.
-I had tried to communicate the authors of VAT at Berkeley Labs,
-unfortunately they are no longer there.
-
-I am trying to run VAT on RH7.2 and I have the following problem
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: linux-newbie@vger.kernel.org
 
 
-		I loaded the gsm files above the vat directory and the
-"configure" produced a "Makefile". However when i run the "make" i have the
-following message ....
+> Date: Sun, 19 May 2002 19:09:14 -0400
+> From: Haines Brown <brownh@hartford-hwp.com>
+> Subj: tar question (was Re: nomore newbies??)
 
+(snip)
 
-				In file included from inet.c:33
-				config.h:87:conflicting types for
-'gethostid'
-				/usr/include/unistd.h:805:previous
-declaration of "gethostid"
-				In file included from inet.c:34
-				inet.h:98:redefinition of 'struct msghdr'
-				make : *** [inet.o] Error 1
+> 
+> I'm trying to copy a directory tree from one mounted hard disk to
+> another. I want to copy the contents of a directory named "backups" on
+> a secondary SCSI HD to one of the same name on an external USB mass
+> storage device.
+> 
+> The source is /mnt/sdb1/storage/backups
+> The target is /mnt/mirror/storage/
 
-Can somebody give some info on modifying the RTP specific components of VAT
-and how to adapt them to the TAO framework. I have a copy of the book
-"Pattern Oriented Software Architecture" by Doug Schmidt et.al which deals
-with the handles of TAO.
+(snip)
 
-Any help will be greatly appreciated.
-TIA,
-Raj
+> Root changes to the source "backups" directory and runs the
+> following:
+> 
+>     tar cf - . | (cd ../../../mirror/storage/backups tar xvf -) 
+                                                     ^^^^
+                                semicolon missing ----^
 
+If I see it correctly, what you are trying to do is to tar the files
+in the source directory, copy it to the destination directory, and
+then untar it.  The question is why are you simply tar'ing without any
+compression?
 
+You should probably consider using the -z option (or --gzip) or -j
+(--bzip) option.
 
- 
-****************************************************************************
-This e-mail and any files transmitted with it are for the sole use of the
-intended recipient(s) and may contain confidential and privileged
-information. If you are not the intended recipient, please contact the
-sender by reply e-mail and destroy all copies of the original message. Any
-unauthorised review, use, disclosure, dissemination, forwarding, printing or
-copying of this email or any action taken in reliance on this e-mail is
-strictly prohibited and may be unlawful.
-Visit us @ http://www.masconit.com
-****************************************************************************
+Probably,
 
+# s=/mnt/sdb1/storage/backups
+# d=/mnt/mirror/storage
+# cd $s
+# tar cvjf - . | (cd $d; tar xjf -)
 
+(or)
+
+# tar cvzf - . | (cd $d; tar xzf -)
+
+HTHs
+
+anna
+
+-- 
+
+(12) One  of  my  advisors  will be an average five-year-old child. Any
+     flaws  in my plan that he is able to spot will be corrected before
+     implementation. - Peter Anspach in "The Top 100 Things I'd Do If I 
+     Ever Became An Evil Overlord"
+
+                                            http://www.eviloverlord.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
