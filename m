@@ -1,43 +1,32 @@
 From: James Mohr <linux-newbie@jimmo.com>
-Subject: Re: Tar Backups
-Date: Tue, 1 Oct 2002 22:01:18 +0200
+Subject: Re: defrag
+Date: Tue, 1 Oct 2002 22:27:15 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210012200.59129.linux-newbie@jimmo.com>
-References: <5.1.0.14.1.20020930123403.02c7c350@celine> <02093020125307.00233@unix.pa3gcu>
+Message-ID: <200210012227.15188.linux-newbie@jimmo.com>
+References: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
 Reply-To: linux-newbie@jimmo.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02093020125307.00233@unix.pa3gcu>
+In-Reply-To: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Monday 30 September 2002 22:12, pa3gcu wrote:
-<snip>
-> Network Admin ????? and he needs to ask this.!!!!
+On Tuesday 01 October 2002 21:35, Paul Kraus wrote:
+> Can you defrag a Linux drive I think the partition is ext3. Do they need
+> deframenting?
 >
-> Several mails a day and if i may say so most of the questions are solvable
-> with a simple reading of the manuals.
->
-> One would think, if one is a Network Administrator, then he/she would know
-> about simple things which are asked here.
-> Well i suppose someone will do his work for him then, at least he is
-> getting paid for the answers he gets here, note, but not from me, i have to
-> earn my money.
 
-Woah!  Hold on a minute there! Just because a person is a "Network Admin" does 
-not mean they are Unix **system** admins. Further, there are other operating 
-systems in the world other than *nix. Even if all they used was NT/2000, the 
-person who administered that network would still be a "Network 
-Administrator", having never seen a *nix system. 
+Typically there is no reason to defragement any *nix filesystem. Many are 
+designed to keep fragmentation at a minimum and do to the nature of a 
+multi-user system, you are not going to be reading the whole file at once. 
+Therefore, when you do need to go re-read the harddisk, it doesn't matter if 
+you go back to the place where you last read or someplace compeltely 
+different.
 
-Yes, one **might** say that Paul doesn't ask the right questions. However, 
-being a ***newbie*** to *nix he apparently does not have the familiarity with 
-the terminology that others do. That gives none of us the right to insult 
-him.
-
-You definately owe him an apology.
+If memory serves me right, there was a defrag tool for the ext2 FS, but I 
+don't have it on my system and have never used it.
 
 Regards,
 
