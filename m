@@ -1,29 +1,29 @@
 From: "Tom Beer" <mailings@analogon.com>
 Subject: Re: lilo
-Date: Sat, 27 Apr 2002 18:56:31 +0200
+Date: Sat, 27 Apr 2002 19:06:33 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00f601c1ee0c$7b757cc0$0901a8c0@system>
-References: <20020427165127.35238.qmail@web12801.mail.yahoo.com>
+Message-ID: <012801c1ee0d$e2ca9f80$0901a8c0@system>
+References: <00c901c1ee09$09da43a0$0901a8c0@system> <20020427165520.GA1395@cam.ac.uk>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Staci <spiritlover666@yahoo.com>
+To: Steven Smith <sos22@cam.ac.uk>
 Cc: linux-newbie@vger.kernel.org
 
-I'm using Redhat 7.0 and there
-should be a way to get it running.
-It fits on a disk. I think that I
-can't get the lilo process in my head 
-(and I hope so). I compiled many things
-as modules and the kernel 2542462 big.
-But isn't there a way to install the bzImage?
+Two follow ups, if I may.
 
-Greets Tom
+I can't locate the relevant initrd. 
+Where can I find it, just to get everything
+correct.
+The second is under /usr/src
+is, as normally, a symbolic link to
+my old kernel. Should I change this to the
+new one, if this is the primary, or is this
+not relevant?
 
-
-
+Thanks Tom
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
