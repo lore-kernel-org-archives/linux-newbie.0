@@ -1,20 +1,32 @@
-From: sadunn <sadunn@blue.weeg.uiowa.edu>
-Subject: RE: Ethernet Questions
-Date: Sat, 4 May 2002 20:27:12 -0500
+From: G Anna <drguruolai@eth.net>
+Subject: dict server/client
+Date: 05 May 2002 10:53:57 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CD48B17@itsnt5.its.uiowa.edu>
+Message-ID: <m3offvrwuq.fsf@wobble.eth.net>
+Reply-To: anna7sept@linuxmail.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I would like to thank you for helping me get my ethernet configured! I finally 
-got everything to work correctly, and I'm currently writing to this list from 
-my Linux partition. I know I had no idea what I was doing, and I'm sorry if I 
-was too annoying, but once again I'd just like to thank you for helping.
+Dear All,
+
+I would like to install the "dict" server and client in my machine.
+Can anybody tell me its home page?
+
+Thank you for your time.
+
+Cheers,
+anna
+
+
+-- 
+
+(6) I will not gloat over my enemies' predicament before killing them.
+    - Peter Anspach in "The Top 100 Things I'd Do If I Ever Became An
+      Evil Overlord"
 
 
 -
