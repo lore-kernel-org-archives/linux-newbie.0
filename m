@@ -1,47 +1,40 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: Help with Roaring Penguin & Red Hat 8.0?
-Date: Tue, 26 Nov 2002 21:28:42 -0500
+From: james miller <jamtat@mailandnews.com>
+Subject: freesco as dialin server?
+Date: Tue, 26 Nov 2002 23:06:14 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211270228.gAR2SgW05100@hartford-hwp.com>
-References: <200211232355.gANNtx703441@hartford-hwp.com> <3DE102FA.85D8F85D@gelm.net> <200211241801.gAOI1Wa28470@hartford-hwp.com> <3DE1208F.F3D58506@gelm.net> <200211242237.gAOMbjD02367@hartford-hwp.com> <3DE16550.FD5B402E@gelm.net> <200211252153.gAPLr4904660@hartford-hwp.com> <3DE2C664.41479620@gelm.net> <200211262150.gAQLoiC02556@hartford-hwp.com> <3DE3FD89.C9DC25B@gelm.net>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <3DE3FD89.C9DC25B@gelm.net> (message from Chuck Gelm on Tue, 26
-	Nov 2002 18:02:34 -0500)
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <3DE43D12@mailandnews.com>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: nc8q@gelm.net
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-> > Well, made some progress, but not quite there yet.  <snip> >
-> Unfortunately, though, that's as far as I get. For example, when I
-> try > to ping something, ping just hangs. adsl-status tells me the
-> link is ^^^^^^^^^ ^^^^^^^^^^^^^^^ What are you trying to ping, an IP
-> address or a domain name?  This could be a routing problem.
+Dear List:
 
-I first tried a common domain name, and when that didn't work, the IP
-address of my DNS, which is valid for sure.
+This is a preliminary inquiry regarding the freesco router and the possibility 
+of using it as a dialin server, since I am considering getting DSL but still 
+need dialin access to the 'net from another local number. The router is 
+envisioned to resolve a dilemma with which I'm confronted regarding dialin 
+internet service: since the companies in my area that offer dialin service 
+either have problematic time constraints or very slow speeds, I'm being forced 
+to consider DSL. Problem is, at one of the two numbers from which I need 'net 
+access, DSL service is not offerred. Therefore, I am considering getting DSL 
+at my home, and using freesco (or some other routerish OS) as to serve the DSL 
+connection to computers in my home. It also seems to me from the freesco 
+documentation that one can dial in to a freesco router/server and join the 
+intranet. It therefore stands to reason that I could get the web connection to 
+be served to me at work over a dialin connection - becoming, in effect, my own 
+ISP to myself. Any comments on this sort of scheme from anyone? 
+Recommendations of alternative routers? Pitfalls to beware of?
 
-> > down, even though ppp0 has a valid IP address.  <snip> > eth0 has
-> the address 168.192.0.1 on my present machine because at one > time
-> eto0 was the intrface for a LAN. That it comes up with that >
-> address one my this machine, even though it is stand-alone, > does
-> not seem to prevent DSL from working. In any case, on the new
-> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ What does work?
+As usual, I need to state that my understanding of these matters is a bit 
+sketchy. I'm trying, at this point, to get a better idea of what's involved 
+and thus hoping to arrive at a decision about whether I can devote the time 
+and effort to such a project.
 
-Simply having a handshake with the DSL server and obtaining from it an
-IP address. So hardware (and port, I assume) work.
-> 
-> > machine I'm trying to get to work, the eth0 now comes up with no
-> > address.
-> 
->  What version of rp-pppoe are you trying to run?
+Thanks, James
 
-I'll find out when I manage to boot the other HD, but it is the
-default roaring penguin packaged with RH 8.0.
-
-Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
