@@ -1,65 +1,57 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Qmail SMTP issues
-Date: Thu, 17 Oct 2002 16:01:22 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Qmail SMTP issues
+Date: Thu, 17 Oct 2002 13:16:56 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000001c27617$f7b19150$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021017130340.0213fab0@celine>
+References: <000001c27617$f7b19150$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0001_01C275F6.70A177F0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000001c27617$f7b19150$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0001_01C275F6.70A177F0
-Content-Type: text/plain;
-	charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-I have installed qmail and it appears to be working correctly. I can
-send messages using qmail-inject to accounts on the system. However the
-SMTP part does not seem to be working correctly. When I telnet (locally
-or remotely) to port 25 it hangs. It connects but then sits with no
-greeting messages. When I try to issue SMTP commands it does not
-respond. I am unusable to exit or quit and have to kill the telnet
-process. Any ideas?
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+1. Are you running qmail as a daemon or through inetd? If through inetd, 
+what does the actual line in /etc/inetd.conf look like?
 
-------=_NextPart_000_0001_01C275F6.70A177F0
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+2. When you attempt to telnet to port 25 on the machine and fail, does 
+anything turn up in the server's logs? Either from qmail itself or from any 
+firewall you may have on the system (or, conceivably, from tcpd or an 
+equivalent)?
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+3. When you say "kill the telnet process", do you really mean that you need 
+to use the kill command to terminate it? (That is, the CTRL-] "escape" 
+command does not work, or does not let you do a local quit?)
 
-------=_NextPart_000_0001_01C275F6.70A177F0--
+4. How local is "locally"? Do you mean a telnet from the server itself, 
+from another host on the same Ethernet, from a host that goes through a 
+local router to reach the server, or something else? I'm fishing here for 
+the possibility that either a routing or a firewalling problem is 
+interfering with mail transmission.
+
+5. Given its seeming total inability to receive mail via SMTP, what do you 
+mean by "it appears to be working correctly"? (Its ability to be invoked by 
+a batch processor like qmail-inject has nothing to do with its functioning 
+as a daemon; with ANY MTA, sending and receiving mail have completely 
+different requirements.)
+
+At 04:01 PM 10/17/02 -0400, Paul Kraus wrote:
+>I have installed qmail and it appears to be working correctly. I can
+>send messages using qmail-inject to accounts on the system. However the
+>SMTP part does not seem to be working correctly. When I telnet (locally
+>or remotely) to port 25 it hangs. It connects but then sits with no
+>greeting messages. When I try to issue SMTP commands it does not
+>respond. I am unusable to exit or quit and have to kill the telnet
+>process. Any ideas?
+>Paul Kraus
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
