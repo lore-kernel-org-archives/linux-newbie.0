@@ -1,31 +1,30 @@
-From: dante@virtualblueness.net
-Subject: Documentation for int 0x80
-Date: Tue, 19 Aug 2003 15:40:22 -0400 (EDT)
+From: "Lee Chin" <leechin@mail.com>
+Subject: is sendto and recvfrom thread safe?
+Date: Thu, 21 Aug 2003 01:06:45 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0308191537220.20091-100000@reddevil.virtualblueness.net>
-References: <Pine.LNX.4.56.0308061510010.1066@homenet>
+Message-ID: <20030821060645.49319.qmail@mail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0308061510010.1066@homenet>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Mark Hahn <hahn@physics.mcmaster.ca>, linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
 
 Hi,
+If I have a global socket file descriptor, can I call sendto and recvfrom on that file descriptor concurrently with out using semaphores around the call to sendto and recvfrom?
 
-Does anyone know of any good documentation for writing assembly level 
-system calls on i386 arch?  I'd like to see something with lots of 
-examples.
+What about for TCP sockets?
 
-Anthony G. Basile
-Directory of Information Technology
-D'Youville College
-Buffalo NY, 14201
-(716) 881-8197
+Thanks
+Lee
+-- 
+__________________________________________________________
+Sign-up for your own personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
-
+CareerBuilder.com has over 400,000 jobs. Be smarter about your job search
+http://corp.mail.com/careers
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
