@@ -1,81 +1,67 @@
-From: RANDAZZO@ddc-web.com
+From: Ray Olszewski <ray@comarre.com>
 Subject: RE: connecting two nics.... [bcc]
-Date: Tue, 9 Mar 2004 18:07:47 -0500
+Date: Tue, 09 Mar 2004 16:07:07 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
+Message-ID: <5.1.0.14.1.20040309154514.01fed7d8@celine>
+References: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com, RANDAZZO@ddc-web.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-I want to be able to communicate completely...
-
-ping, socket calls, udp, tcp, etc.....
-
-I was just using ping as a simple example.....
-
-even if I put the cards on the same network.......
-
-eth1 = 100.100.1.1 mask=255.255.255.0
-eth2 = 100.100.1.2 mask=255.255.255.0
-
-the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
-
-I havent tried socket calls yet because I assumed if I couldn't get ping
-to work, why try anything else......
-
-Mike
-
-ALL INFORMATION IN THIS EMAIL IS PUBLIC!
-
------Original Message-----
-From: Ray Olszewski [mailto:ray@comarre.com]
-Sent: Tuesday, March 09, 2004 5:58 PM
-To: RANDAZZO@ddc-web.com
-Cc: linux-newbie@vger.kernel.org
-Subject: RE: connecting two nics.... [bcc]
-
-
-At 05:29 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
->I have tried putting the nics on the same network, with the same results...
+At 06:07 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
+>I want to be able to communicate completely...
 >
->the ping -I command works fine, but what about when I open a socket and do
->UDP/TCP transfers?
+>ping, socket calls, udp, tcp, etc.....
+>
+>I was just using ping as a simple example.....
+>
+>even if I put the cards on the same network.......
+>
+>eth1 = 100.100.1.1 mask=255.255.255.0
+>eth2 = 100.100.1.2 mask=255.255.255.0
+>
+>the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
+>
+>I havent tried socket calls yet because I assumed if I couldn't get ping
+>to work, why try anything else......
+>
+>Mike
+>
+>ALL INFORMATION IN THIS EMAIL IS PUBLIC!
+[rest deleted]
 
-What about it?
+"communicate completely" is a meaningless specification in this context.
 
-Your entire prior question was focused around the result of ping and its 
-diagnostics. So I gave you an answer for pinging, one that (apparently) 
-works there ... or were you saying you already knew that answer but didn't 
-mention it?
+It is not possible to tell the kernel that ALL traffic to 100.100.1.1 has 
+to be routed through 100.100.1.2 ... because there will be reply traffic to 
+anything that comes in from 100.100.1.2 to 100.100.1.1, and the kernel 
+needs to be able to reply directly out the 100.100.1.1 interface. Or at 
+least I imagine it does.
 
-As the ping answer illustrates, the solution here is an application-level 
-solution. If you want help, describe your problem in more detail. How are 
-you opening a socket, for example?
+So you need to arrange for *specific* traffic to go the "long" way. The way 
+to do that is at the application level, for example with the -I option in 
+ping. That approach will (or should; have you actually tested it?) allow 
+you and your customers to verify that an installed device is working at the 
+hardware level, the original problem you posed.
 
-Putting the two NICs on the same network is not a general solution to your 
-problem, nor did I offer it as one. It is the simple solution to making 
-sure each of the two interfaces has a route to the other ... your fiddling 
-with the routing table, if done correctly, would serve the same purpose, a 
-bit more awkwardly.
+Aside from such testing, I can't really think of a reason why a host would 
+want to communicate with itself the "long" way around ... so I'm having a 
+hard time trying to translate your general desire to specific things that 
+application-level solutions might address. Now we really are, probably, 
+getting into the sensitive business aspects of what your company does ... 
+but I think that only someone with that information will be able to come up 
+with solutions that work for you.
 
-If you don't want to, or can't, go into details on a public list, or even 
-privately with someone who will not accept any proprietary information from 
-you  ... then look at the source code for ping, see how it implements the 
--I flag, and do the same thing in whatever setting you are working.
-
-Oh yes ... I give free advice only in the context of public lists like 
-linux-newbie, so I'm cc'ing the list.
+As I said before, you probably want to see how ping implements the -I 
+option. I'm a bit rusty on this stuff right now, but I recall that bind() 
+allows you to specify a local address to use. This may force the use of the 
+indirect interface ... I'm really not certain.
 
 
- 
-"This message may contain company proprietary information. If you are not
-the intended recipient, any disclosure, copying, distribution or reliance on
-the contents of this message is prohibited. If you received this message in
-error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
