@@ -1,64 +1,48 @@
 From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Re: scanf and stdin having multiple ints
-Date: 19 Nov 2002 14:02:43 -0500
+Subject: grep for ip address on boot
+Date: 19 Nov 2002 14:11:07 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1037732563.3111.0.camel@brainpress.verizon.net>
-References: <5.1.0.14.1.20021118123532.020d9aa0@celine>
+Message-ID: <1037733067.3110.10.camel@brainpress.verizon.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021118123532.020d9aa0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Thanks, it turns out that %n doesn't do what I need and that %i works
-just fine.  
+I have an adsl connection that uses a dynamic IP from my ISP.  I use the
+adsl-status script to find out what my IP is at any time.
+What I want to do is parse the response I get from adsl-status to
+isolate my IP.  Here is the output of the adsl-status script:
 
-On Mon, 2002-11-18 at 15:46, Ray Olszewski wrote:
-> I didn't see any other responses to this, so let me say what I can. I can't 
-> help with anything specific to nasm, but as to scanf ... did you consult 
-> its man page?
-> 
-> A quick read of it confirms that %n is, at best, unpredictable in how it 
-> will be interpreted (or perhaps "at worst", since I think "unpredictable" 
-> is scarier than "does nothing"). %i reads an "optionally signed" integer, 
-> and %u an unsigned integer. To be sure you are reading a 32-bit long, you 
-> might want to use %l [L, not one].
-> 
-> At 01:14 PM 11/18/02 -0500, Bryan Simmons wrote:
-> >Supose I write a program in nasm that does this:
-> >
-> >Enter a set of integers separated by spaces:
-> >22 31 456 87
-> >
-> >Suppose that in the module I am calling scanf to repeatedly parse the
-> >ints from stdin to place in an array, each index of which is 32 bits in
-> >size to hold a 32 bit unsigned int.
-> >
-> >I've been told that using the format string "%n" does nothing in scanf.
-> >I'm going to try "%i" next, but I don't know if it'll work...
-> >
-> >By the way, eax should be 0 when scanf stops getting data from stdin
-> >right?  And incrementing my pointer to the array should be like "add
-> >esi, 4" right?  Documentation is scarce for this type of thing.  All
-> >I've been told is that fgets is the right function to use, but scanf is
-> >faster because it does parsing and conversion in one call...
-> 
-> 
-> 
-> --
-> -------------------------------------------"Never tell me the odds!"--------
-> Ray Olszewski					-- Han Solo
-> Palo Alto, California, USA			  ray@comarre.com
-> -------------------------------------------------------------------------------
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+adsl-status: Link is up and running on interface ppp0
+ppp0      Link encap:Point-to-Point Protocol  
+          inet addr:151.196.10.63  P-t-P:10.4.25.1  Mask:255.255.255.255
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1492  Metric:1
+          RX packets:1962 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1987 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:3 
+          RX bytes:1600510 (1.5 Mb)  TX bytes:362634 (354.1 Kb)
+
+I figured that by using this command:  adsl-status | grep -o
+addr:['0'-'9']
+
+Or some combination thereof, I would be able to get the full IP
+isolated.  I realize that the problem is that an IP can have from 1-3
+digits between each dot, and this screws up my regexp.  Can anyone
+suggest a web site or some sort of regexp that better suits this
+pursuit?  
+
+The purpose of this is to parse out my IP address and write it into a
+'header(Location:http://)' command in an index.php script that will be
+automatically ftp'd to another web server to simulate a bound domain
+name for my dynamic IP web site.  I got the site and the redirect
+working, I just want the site to be able to remain up if there is an
+unattended reboot.  Obviously I will put all necessary scripting in an
+init file to handle the IP parsing and ftp to allow the site to remain
+accessible to all.
+
+Thanks guys!
 -- 
 Regards,
 
