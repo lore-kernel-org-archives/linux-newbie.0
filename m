@@ -1,45 +1,48 @@
 From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: stripping flies (was: Re: .so, .a and .o-files)
-Date: Sat, 17 Aug 2002 10:02:56 +0100 (BST)
+Subject: Re: Mailer Connections
+Date: Sat, 17 Aug 2002 10:43:01 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208170957360.8397-100000@Consulate.UFP.CX>
-References: <NOMSGID_7223=3a9750=2f200_020815_085921__75f821c9@fidonet.org>
+Message-ID: <Pine.LNX.4.21.0208171037230.8397-100000@Consulate.UFP.CX>
+References: <200208170854.g7H8sdr06556@philonline.com>
 Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <NOMSGID_7223=3a9750=2f200_020815_085921__75f821c9@fidonet.org>
+In-Reply-To: <200208170854.g7H8sdr06556@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <lists@tcob1.net>
+To: Peter <pfheiss@philonline.com>
 Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Hi Ray.
+Hi Peter.
 
->> Whats the use of stripping object files of their symbols.
->> Symbols reflect the functions in an object file, right?
+>>> Did a programmer change something that one has to edit now
+>>> /etc/sysconfig/network a file I did not even know it existed
+>>> or did I miss something when installing RH7.1? 
 
-> Stripping makes the files smaller, which matters in some
-> cases. The symbols are valuable in debugging problems but
-> are not needed simply to execute the object code.
+>> I would presume that for some reason, you provided the wrong value on
+>> the relevant pre-iinstall screen, but it is almost impossible to work
+>> out which screen was affected in this way. 
 
-I'm not sure you two are talking about the same thing, so can
-I state what I think is being asked and answered.
+> Since I have installed RH many times of different versions, even at
+> friends' placex it is almost routine.
 
- 1. Axel asked about stripping OBJECT files. These are the
-    intermediate files created by the compiler and fed to
-    the linker, and I'm not sure that it's even possible
-    to strip those.
+I've installed various versions of RHL several hundred times now, and
+like you, I've long since developed a routine for doing so. However, on
+occasion, I still make stupid mistakes when installing - I set one of my
+own systems up with a 168.192.* IP address rather than the 192.168.* one
+it should've had, and that was only yesterday !!!
 
-    Also, the way he describes them, I think Axel is actually
-    referring to LIBRARIES rather than object files as such.
+> I have a strong suspicion that the problem is with RH7.1. I did the
+> installation twice and was surprised to be called localhost instead
+> of Peter and on booting getting that long message on starting lpd.
 
- 2. Ray replied about stripping BINARIES. These are the
-    object files after they have been fed through the linker
-    and the result is programs that can be run.
+That is always possible. As it happens, I've only installed 7.1 once in
+my career, although I installed both 7.0 and 7.2 several dozen times. As
+a result, I probably would not have noticed a problem with 7.1 whereas
+problems with either 7.0 or 7.2 would've stood out like a sore thumb.
 
-Ray: Can you clarify whether I have the situation right when
-     I state that it is only the binaries that can be stripped?
+The important detail is that you now have a system that works...
 
 Best wishes from Riley.
 
