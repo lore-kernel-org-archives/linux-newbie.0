@@ -1,44 +1,43 @@
-From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: mozilla
-Date: Thu, 11 Dec 2003 22:51:10 +0100 (CET)
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: sharing X displays
+Date: Thu, 11 Dec 2003 23:29:53 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031211215110.67996.qmail@web40609.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.44.0312112321490.29121-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi
-Sorry if this is off-topic.
-I need to change the fonts in mozilla's menus because they=20
-are too small. Any ideea how can i do this ?
-I'm not using gnome or kde (only fvwm2).
-Mozilla's version is 1.3:
-Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3) Gecko/20030313
+Hello,
 
-Thanks
+On trying to run xcdroast (or any program that requires X display) after
+su'ing in as root, I get the following error:
 
-Bye
-Calin
+-------
+[root @gandalf karthik]$ xcdroast 
+Xlib: connection to ":0.0" refused by server
+Xlib: Invalid MIT-MAGIC-COOKIE-1 key
 
-P.S. Please cc any reply to me because i'm not subscribed to the
+Gtk-WARNING **: cannot open display: :0.0
+-------
 
-list.
+On executing xhost +127.0.0.1, and trying the same, I am able to run 
+the application without any problems. 
 
-=3D=3D=3D=3D=3D
---
-A mouse is a device used to point at=20
-the xterm you want to type in.
-Kim Alm on a.s.r.
+Why does this happen? Is'nt localhost allowed to connect to the Xserver by
+default (am I being protected from something bad here?) ? What can I do to
+resolve this so that I don't need to xhost prior to executing an
+X-application?
 
-_________________________________________________________________
-Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
-Yahoo! Mail : http://fr.mail.yahoo.com
+Thanks,
+
+-K
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
