@@ -1,56 +1,52 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: Updating automake and autoconfig-How?
-Date: Tue, 15 Jun 2004 20:32:39 +0100 (BST)
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: dereferencing pointer to incomplete type
+Date: Wed, 16 Jun 2004 14:29:29 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406152024090.5776@ppg_penguin>
-References: <20040615034440.11531.qmail@web14810.mail.yahoo.com>
- <200406150811.37979.pa3gcu@zeelandnet.nl>
+Message-ID: <3aa6093abd75.3abd753aa609@homemail.nyu.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200406150811.37979.pa3gcu@zeelandnet.nl>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: pa3gcu <pa3gcu@zeelandnet.nl>
-Cc: Steven Ackerman <ackerman_steven@yahoo.com>, LinuxNewbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Tue, 15 Jun 2004, pa3gcu wrote:
+Hi,
+This might be the wrong question for this list, but I am giving it a shot.
 
->
-> On another note, you may well have reasons for using such an old vers=
-ion of
-> redhat however its very old and to be honest way out of date for prog=
-rams and
-> utilitys from recent times, therefor its maybe time to start thinking=
- about
-> upgrading your 7.3 to a more recent version, or if you have a spare p=
-artition
-> or a spare disk then simply install a more recent version on that spa=
-ce and
-> leave the old version intact allowing you to compare the two.
-> Having said that Redhat upgrade's are quite easy and keeps your old s=
-tuff.
->
+I got the following error while compiling some module -
 
- 7.3 is still supported by the fedora legacy project
-(http://www.fedoralegacy.org) although I've no experience of them.  A
-quick look in my local mirror suggests they have _somewhat_ newer
-versions of automake and autoconf for 7.3.  Presumably, your error
-messages will tell you _which_ minimum versions you need.
+Arping.xs:153: dereferencing pointer to incomplete type
+make: *** [Arping.o] Error 1
 
- And maybe I should add that RH itself has moved out of this market -
-even RH 9 is no longer supported.  The fedora project (not the same as
-fedora legacy!) trials things before they get into RH enterprise, but
-may be a bumpy ride for some users (e.g. people trying to dual-boot, as
-of earlier this month).
 
-Ken
---=20
- das eine Mal als Trag=F6die, das andere Mal als Farce
+Now line 153 in the source is - 
+
+memcpy(enet_src, src_mac->ether_addr_octet,6);
+
+where
+
+u_char enet_src[6] = {0x00, 0x00, 0x00, 0x00, 0x00,0x00};
+
+struct ether_addr *src_mac;
+
+
+struct ether_addr
+{
+    u_char  ether_addr_octet[6];
+};
+
+are the definitions.
+
+I haven't been able to figure out what the problem is.
+Can anyone help me with this ?
+
+Thanks.
+Anshuman
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
