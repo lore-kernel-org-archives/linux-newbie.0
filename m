@@ -1,43 +1,29 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: Dvorak Console
-Date: Fri, 27 Sep 2002 08:36:28 -0400
+From: "Mojo Jojo" <nacht@widerstand.org>
+Subject: RE: Email encryption
+Date: Fri, 27 Sep 2002 13:56:54 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002e01c26622$814e2aa0$64fea8c0@pkrausxp>
+Message-ID: <GJEFIFJJJFEKABEMHGFCEEGFEAAA.nacht@widerstand.org>
+References: <000201c26584$8469a640$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: 
+In-Reply-To: <000201c26584$8469a640$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-I figured this out. loadkeys dovark.
+i use pgp on both my windows and linux boxes...
 
-How can I make this the default map for console so that even at login
-prompt it is set to dvorak?
-Is the processes the same for xwindows?
+you can find the windows version 
+http://www.pgpi.org/products/pgp/versions/freeware/win2k/
 
------Original Message-----
-From: Paul Kraus [mailto:pkraus@pelsupply.com] 
-Sent: Friday, September 27, 2002 8:13 AM
-To: 'linux-newbie@vger.kernel.org'
-Subject: Dvorak Console
+and the linux version
+http://www.pgpi.org/cgi/download.cgi?filename=pgp-6.5.1i-beta2.tar.gz
 
 
-I use the dvorak keyboard layout. I was able to find the keyboard map
-for xwindows and I can use the xmodmap app to set it to dvorak. However
-this does not effect console. I am assuming the xmodmap is only for
-xwindows. There was another program I read about and tried to use (I
-can't recall the file name) but I got an error when I tried to use the
-same keyboard map. Where can I get the map for console and what file do
-I use to load it?
-
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+> What is the best way to secure mail. I thought it was PGP but looking at
+> there site there does not seem to be a version with windows. Is there a
+> cross platform standard?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
