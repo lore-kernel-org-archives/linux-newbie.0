@@ -1,57 +1,38 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: benchmarks
-Date: Mon, 19 Jan 2004 15:26:50 +0100
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: PostFix -> masquerade_envelope???
+Date: Mon, 19 Jan 2004 09:40:37 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401191526.50078.pa3gcu@zeelandnet.nl>
-References: <003401c3de71$f5e06360$680410ac@pcinstru1>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20040119144037.GA605@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <003401c3de71$f5e06360$680410ac@pcinstru1>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Juan Facundo =?iso-8859-1?q?Su=E1rez?= <facundo.suarez@ensi.com.ar>, linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Monday 19 January 2004 10:52, Juan Facundo Su=E1rez wrote:
->  Hi list !
->
->  Can you tell me about some good benchmarks to work with?, it doesn't
-> matters if it is console based or X based. Need someone to test whole
-> machine status, mem speedy, disk speedy, cpu, etc ...
->
->  Thanks !
+Greetings: Does PostFix support masquerade_envelope like Sendmail
+before 8.12.XX used to??
 
-Bonnie is a program which is used by most kernel developers to test=20
-filesystems i/o and disk reads and writes, it does not AFAIK do much el=
-se,=20
-having said that its just about all one needs.
+In other words: All my machines have hostnames that do not match the
+dial up ISP's domain name, therefore my sent message envelope
+normally isn't the same as the Return To:, etc - throwing some sites
+a curve plus not having a real return address for bounces..
 
-http://www.garloff.de/kurt/linux/bonnie/
+Using Sendmail 8.11.X or before, I used masquerade_envelope which
+works fine but the new 8.12.XX doesn't support this, AFAIK...
 
-> --
-> Facundo Su=E1rez
-> Neuqu=E9n - Argentina
-> FDSoft
-> mail y jabber: faco@fdsoft.com.ar
-> facundo.suarez@ensi.com.ar
->
+If PostFix does - I'll change to that but I can't seem to find any
+information about this in their docs, etc..
 
---=20
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Maybe there's another way to solve this problem.. I'm all eyes..<g>
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+		Utrum Per Hebdomadem Perveniam
+.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
