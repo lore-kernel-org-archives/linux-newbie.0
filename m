@@ -1,82 +1,46 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Newbie installation problem
-Date: Sun, 04 Aug 2002 10:30:07 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: browser errors
+Date: Sun, 4 Aug 2002 20:44:52 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020804101233.0211bb00@celine>
-References: <5.1.0.14.1.20020802181721.02153750@celine>
- <5.1.0.14.1.20020804005505.02187b30@celine>
+Message-ID: <Pine.LNX.4.21.0208042035170.30515-100000@Consulate.UFP.CX>
+References: <200208041817.57248.korosi@eunet.yu>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001301c23bd9$848cb0b0$6401a8c0@ENRIQUE>
+In-Reply-To: <200208041817.57248.korosi@eunet.yu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Enrique Nieves <spanfax@charter.net>
-Cc: linux-newbie@vger.kernel.org
+To: Korosi Akos <korosi@eunet.yu>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Oh. From what you sent this time, it does look like the NIC is being 
-detected, but RH cannot assign an IP address to the interface. I'm not 
-entirely sure of this, though, based on the details of what you quote, namely:
+Hi Korosi.
 
->"Checking for New Hardware
->                 .
->                 .
->                 .
->Bringing up interface Eth0:
->     Determining IP information for Eth0 . . . failed
->
->[FAILED]"
->
->
->This occurs when the RH 7.3 does the initial boot up.
+I can't help with your general problem, but there is one point in here
+that I can clarify...
 
-Several things confuse me here.
+> And here is the /var/log/messages with messages generated at the
+> that time: (I put X-es to ip addresses, because I don't know if it
+> is a security problem if I tell you. Ray wrote previously that I
+> should cut off passwords, and I don't know if I should do the same
+> with ip-s...)
 
-First, just a detail -- does it really say "Eth0" eather than "eth0"? If 
-so, then RH is introducing unnecessary confusion into the process (since 
-interface names are normally all lower case). If not, then you are not 
-quoting exactly.
+To avoid security problems whilst guaranteeing to provide all of the
+information needed to debug the problem, simply replace each specific IP
+address with a specific IP address from one of the "reserved ranges".
+There can be no security problems with those IP addresses since they are
+not routable outside of your own network.
 
-Second, what *immediately* precedes the failure message? Are you *sure* the 
-system is still in the New Hardware phase?
+The important detail is that each IP address must be replaced with the
+same one each time, and the results must indicate whether the originals
+were on the same or different subnets. Providing you can guarantee that,
+the problem is almost always equally diagnosable with substituted IP
+addresses.
 
-Third, I had previously thought that this message was coming from a RH 
-install. Now it sounds like part of the boot/init process of an installed 
-RH 7.3. Could you clarify?
+Often, the simplest way is just to replace the first number in each quad
+with 10 as the entire 10.* range is reserved in this way.
 
-Fourth, what happens next? If we are talking about an installed RH, does it 
-complete initialization, then give you the login: prompt (or the X 
-equivalent, depending on your setup)? If it does, may we see at this point 
-the output of:
-
-         ifconfig -a
-         netstat -nr
-         lsmod
-         lspci
-
-Last, how do you *want* this system to get its IP address?
-
-         Do you plan to assign a static address by hand? If so, you 
-(probably) specify this by editing the file /etc/network/interfaces .
-
-         Use a DHCP server? If so, then where on the LAN are you running 
-one? The Linksys? The XP system? Do you see network traffic (in the form of 
-appropriate blinking lights on the NIC and the hub) just before you get the 
-failure message you quote above (if you don't, then the system isn't 
-managing to connect to the LAN to look for a DHCP server).
-
-         Those are the only real alternatives (technically there are some 
-others, but no one uses them in small home setups).
-
-At 01:08 PM 8/4/02 -0400, Enrique Nieves wrote:
-[details deleted]
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
