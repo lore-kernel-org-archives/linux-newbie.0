@@ -1,39 +1,43 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Sanyo CDR-H94A (non-atapi) Booting???
-Date: Fri, 28 Mar 2003 13:18:32 -0500
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: Sanyo CDR-H94A (non-atapi) Booting???
+Date: Fri, 28 Mar 2003 12:41:20 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030328131832.A249@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <Pine.LNX.4.53.0303281230280.1029@homenet>
+References: <20030328131832.A249@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20030328131832.A249@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>, Hal MacArgle <haltec@kvinet.com>
 
-Greetings: Trying to install Slackware 8.0 in a AM586-P75 box with
-32mB RAM - I can't find the magic entry/ies to install the packages
-from the CD.. The CD is working OK from the Dos5.0 partition of
-course. :^)..
+On Fri, 28 Mar 2003, Hal MacArgle wrote:
 
-I've tried the Slackware boot image - sanyo.i - from both the 8.0 and
-7.1 distribution and I can't get "setup" to find the CDR.. The report
-is always: "SJCD: Sanyo CDR-H94A Cdrom driver version 1.7
-            SJCD: Resetting............ reset failed, no drive found."
+> Greetings: Trying to install Slackware 8.0 in a AM586-P75 box with
+> 32mB RAM - I can't find the magic entry/ies to install the packages
+> from the CD.. The CD is working OK from the Dos5.0 partition of
+> course. :^)..
+>
+Hal:
 
-Ignoring that and forging ahead still no joy as later probing for the
-drive fails too.. I've also tried entering parameters in the lilo
-boot: but none I've tried seem to work.. (The drive port is: 0x340)
+I can't help much on the CD problem, since I don't have a very good grasp
+on the nature of the problem you're having. But I do have a suggestion for
+what distro to install on a P75. And this may help with the CD problem as
+well. I advise you to use Vectorlinux on this machine. It is based on
+Slackware, and is geared specifically to older machines like the one you
+reference. It's done wonders for my P90. It really automates the install
+process. I too had problems with the CD on my P90 when I tried to install
+(not sure if they were the same as those you're now confronting).
+But the automated install routine Vectorlinux uses was able to find the CD
+and do the installation. Vectorlinux gives no choices for what packages to
+install: it just gives you a pretty complete set of apps, with the low
+resource desktops Icewm and XFCE. The installation size is about 350MB -
+just right for such older machines that often have a 1GB or smaller HD. I
+can't say enough good things about this distro. I will always recommend it
+for low resource machines.
 
-Perhaps the only answer is to copy the basic files from the CD to the
-HD and then install from there but was hoping a better way.. The BIOS
-of the machine does not support CD booting, so I'm stuck from that
-angle.. Any suggestions?? TIA and cheers.
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-                Proprietary  Formats  Unacceptable
-.
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
