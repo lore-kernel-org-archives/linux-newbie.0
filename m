@@ -1,30 +1,28 @@
-From: "Petras, Martin [Ontario]" <Martin.Petras@ec.gc.ca>
-Subject: RE: Konsole
-Date: Fri, 12 Jul 2002 15:53:21 -0400
+From: "Ola Theander" <ola.theander@otsystem.com>
+Subject: Wanted: A good external USB/Firewire CD-RW compatible with Linux?
+Date: Sun, 14 Jul 2002 00:07:18 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <79D8CC9C0F21D611A0C900805FBBC3AC74822C@mgtserver3.tor.ec.gc.ca>
+Message-ID: <000001c22ab9$a8224610$c8000a0a@stowks14>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-konsole --ls &
+Dear subscribers.
 
-or modify the shortcut to execute with --ls	=09
+I try to find a good external CD-RW unit with either an USB or Firewire
+interface that works well with Linux. Unfortunately the resellers I've
+contacted didn't know very much about the Linux compability of their
+devices. Therefore I turn to you, all good subscribers, to see if I can
+get some help. So, if there is anyone out there who knows of a CD-RW
+unit that fit my needs, I'll be glad to know.
 
- --- azie <azie@kawan.net> a =E9crit=A0: > Hi,
->=20
-> I hope you can help me with this. I wanted to set
-> aliases like 'ls=3Dls=20
-> --color=3Dauto' permanently in X Konsole. It seems
-> that all aliases in .bashrc=20
-> did not apply in X Konsole. How can I do this?
->=20
+Kind regards, Ola Theander
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
