@@ -1,193 +1,45 @@
-From: "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
-Subject: RE: zero copy issue while receiving the data (counter part of sen
-	dfil e)
-Date: Fri, 17 Dec 2004 21:54:01 +0530
-Message-ID: <267988DEACEC5A4D86D5FCD780313FBB02AF7AF7@exch-03.noida.hcltech.com>
+From: Arthur Nascimento <tureba@gmail.com>
+Subject: Re: lilo boot problems with SATA and mandrake 10.1
+Date: Fri, 17 Dec 2004 14:31:12 -0200
+Message-ID: <bb529e4041217083118a229d3@mail.gmail.com>
+References: <1103190044.7183.12.camel@itanium>
+Reply-To: Arthur Nascimento <tureba@gmail.com>
 Mime-Version: 1.0
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org
-Cc: dima@s2io.com, "Sanjay Kumar, Noida" <sanjayku@hcltech.com>, "Deepak Kumar Gupta, Noida" <dkumar@hcltech.com>, "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1103190044.7183.12.camel@itanium>
+Sender: linux-newbie-owner@vger.kernel.org
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: vrodriguez@municipiodeloja.gov.ec, linux-newbie@vger.kernel.org
 
- 
-
-Hi,
-
-Thanks for the reply.
-
-Actually I am developing a loadable kernel module. I agree that at the bare
-minimum, I need to copy from the NIC's device buffer to kernel's allocated
-sk_buff (socket buffer). What I want is to avoid FURTHER coying of data from
-the sk_buffs to the buffers allocated by the module. 
-
-And hence I expected to pass the address of a buffer pointer to
-tcp_read_sock(). And I expected this function to set it to socket buffer.
-Any pointers on the functionality of tcp_read_sock()??
-
-Rajat
-
-
------Original Message-----
-From: Dmitry Yusupov [mailto:dima@s2io.com] 
-Sent: Friday, December 17, 2004 7:07 AM
-To: Rajat Jain, Noida
-Cc: linux-net@vger.kernel.org; Sanjay Kumar, Noida; Deepak Kumar Gupta,
-Noida
-Subject: Re: zero copy issue while receiving the data (counter part of
-sendfil e)
-
-Hi Rajat,
-
-I was using this function some times back... It's been working for me just
-fine. Also kernel's RPC (see xprt* files) uses it. So you might want to take
-a look.
-
-In general, it is not possible to fully avoid copying. You need at least
-copy data from NIC's skb to the destination. It might be user buffer or
-kernel buffer(depends on application).
-
-Regards,
-Dmitry
-
-
-On Thu, 2004-12-16 at 19:38 +0530, Rajat Jain, Noida wrote:
->  
-> Hi,
-> 
-> I'm experimenting on stock kernel 2.6.8
-> 
-> I was looking for an interface that could directly receive data from a 
-> network socket, WITHOUT coying from kernel space to user space. (Like 
-> for sending data, "sendfile" provides to send data to network socket 
-> without copying it to kernel space). I came across tcp_read_sock() 
-> interface in net/ipv4/tcp.c.
-> 
-> Has anybody tried tcp_read_sock()?? Is there any known issue with it 
-> ?? If somebody has some idea, I would appreciate if you can share.
-> 
-> I might be wrong, but what I perceive is that I will pass a pointer to 
-> this function. And when the function returns, I expect it to be set to 
-> the kernel buffer (corresponding to socket).
-> 
-> 1) To fulfill this objective, I expect to pass a pointer to pointer & 
-> only then it can be done. (If we have to modify a pointer's value, we 
-> have to pass its address ... Right??). However, this function expects 
-> a char * buf (in read_descriptor_t argument). Any ideas ?????????
-> 
-> 2) This code also frees the space allocated to sk_buffs etc using 
-> sk_eat_skb(sk, skb) and cleanup_rbuf(sk, copied) etc. But this 
-> function is supposed to return these locations to the calling code ...
-Right???
-> 
-> Any pointers are more than welcome. I have provided the code for
-reference.
-> Please cc the reply to me as I'm not on the list.
-> 
-> Thanks & regards,
-> 
-> Rajat Jain
-> 
-> ----------------------------------------------------------------------
-> -
-> /* net/ipv4/tcp.c
->  * This routine provides an alternative to tcp_recvmsg() for routines
->  * that would like to handle copying from skbuffs directly in 'sendfile'
->  * fashion.
->  * Note:
->  *      - It is assumed that the socket was locked by the caller.
->  *      - The routine does not block.
->  *      - At present, there is no support for reading OOB data
->  *        or for 'peeking' the socket using this routine
->  *        (although both would be easy to implement).
->  */
-> int tcp_read_sock(struct sock *sk, read_descriptor_t *desc,
->                   sk_read_actor_t recv_actor) {
->         struct sk_buff *skb;
->         struct tcp_opt *tp = tcp_sk(sk);
->         u32 seq = tp->copied_seq;
->         u32 offset;
->         int copied = 0;
-> 
->         if (sk->sk_state == TCP_LISTEN)
->                 return -ENOTCONN;
->         while ((skb = tcp_recv_skb(sk, seq, &offset)) != NULL) {
->                 if (offset < skb->len) {
->                         size_t used, len;
-> 
->                         len = skb->len - offset;
->                         /* Stop reading if we hit a patch of urgent data
-*/
->                         if (tp->urg_data) {
->                                 u32 urg_offset = tp->urg_seq - seq;
->                                 if (urg_offset < len)
->                                         len = urg_offset;
->                                 if (!len)
->                                         break;
->                         }
->                         used = recv_actor(desc, skb, offset, len);
->                         if (used <= len) {
->                                 seq += used;
->                                 copied += used;
->                                 offset += used;
->                         }
->                         if (offset != skb->len)
->                                 break;
->                 }
->                 if (skb->h.th->fin) {
->                         sk_eat_skb(sk, skb);
->                         ++seq;
->                         break;
->                 }
->                 sk_eat_skb(sk, skb);
->                 if (!desc->count)
->                         break;
->         }
->         tp->copied_seq = seq;
-> 
->         tcp_rcv_space_adjust(sk);
-> 
->         /* Clean up data we have read: This will do ACK frames. */
->         if (copied)
->                 cleanup_rbuf(sk, copied);
->         return copied;
-> }---------------------------------------------------------------------
-> --
-> 
-> read_descriptor_t is defined as:
-> 
-> /*
->  * include/linux/fs.h
->  */
-> typedef struct {
->         size_t written;
->         size_t count;
->         union {
->                 char __user * buf;
->                 void *data;
->         } arg;
->         int error;
-> } read_descriptor_t;
-> ----------------------------------------------------------------------
-> -
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-net" 
-> in the body of a message to majordomo@vger.kernel.org More majordomo 
-> info at  http://vger.kernel.org/majordomo-info.html
-
---
-Kernelnewbies: Help each other learn about the Linux kernel.
-Archive:       http://mail.nl.linux.org/kernelnewbies/
-FAQ:           http://kernelnewbies.org/faq/
-
+I had that problem too a long time ago - it would show only a L but no
+error code. (I didn't try with GRUB.) I have no idea whatsoever of
+what machine it was, but I do know it had winxp on a dual boot too. I
+was a mere mortal back then (win user) and believed that on a crash
+the best thing was to reinstall everything all over again (as all win
+users believe), so I don't know how to fix it since I used to just
+blindly overwrite it. I tryed other distributions at the time (as well
+as different versions of the same one) and this failure occured only
+on some of them (don't remember which of them).
+You could try updating your boot loader and bios to newer versions,
+but i doubt it will make a difference.
+I would imagine that this error happens when we install win on a
+partition and it's loader on MBR and after try to put LILO/GRUB over
+win's loader on MBR. Win must have some sort of self-healing mechanism
+to repair the MBR when it is damaged (or in this case, fully altered).
+That would explain why no error code is being shown - our boot loader
+has been partially overwritten by win's loader, and I doubt a damaged
+LILO/GRUB can do anything at all (such as shout an error).
+You should try to reinstall win on a partition and tell it to put it's
+loader on the begining of the same partition instead of on the MBR.
+After that you can reinstall LILO/GRUB on the MBR (or perhaps
+reinstall your distro - your call) and you should be all set. I'm sure
+I sound like a win user, telling you to reinstall everything, but if I
+am right, this will be the last time you will have to do that.
+Good luck!
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
