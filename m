@@ -1,19 +1,27 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: PPP in Slackware
-Date: Fri, 04 Apr 2003 15:52:17 +0800
+From: "Eng Se-Hsieng" <g0202512@nus.edu.sg>
+Subject: Specify gcc version during make
+Date: Sat, 5 Apr 2003 17:35:52 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304040752.h347qHr01612@philonline.com>
-References: <03040315353900.01175@unix.pa3gcu>
+Message-ID: <720FB032F37C0D45A11085D881B03368A2B80B@MBXSRV24.stu.nus.edu.sg>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Thu, 03 Apr 2003 15:35:39 GMT." 
- <03040315353900.01175@unix.pa3gcu>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Dear all,
+
+I am running gcc version 2.96 and need to install gcc version 3.2.
+
+After this installation, how may I specify in make bzImage which
+compiler version to use?
+
+Thank you.
+
+Regards,
+Se-Hsieng
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
