@@ -1,62 +1,112 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Configuring lilo to boot from sda after RH 9.0 install
-Date: Mon, 14 Apr 2003 17:46:21 -0700
+From: Peter <pfheiss@philonline.com>
+Subject: Re: No More Logrotate
+Date: Tue, 15 Apr 2003 10:07:42 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030414173840.020022e8@celine>
-References: <000101c31a77$7597f830$1601a8c0@crypt>
+Message-ID: <200304150207.h3F27gD03158@philonline.com>
+References: <5.1.0.14.1.20030414084230.01e990b8@celine>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000101c31a77$7597f830$1601a8c0@crypt>
+In-Reply-To: Your message of "Mon, 14 Apr 2003 08:53:18 MST." 
+ <5.1.0.14.1.20030414084230.01e990b8@celine>
+Content-ID: <3155.1050372462.1@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: steven@nvts.us, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-OK. We probably need to see a bit more than James asked for. Please provide:
+Thanks Ray. Just when I had finished all the stuff below, your hint that the 
+message comes from syslog made me look again and I found the file 
+/etc/logrotate.d/syslog which read among others /var/log/cron. I removed this 
+entry and logrotate went to work w/o error message and logrotating even that 
+cron file.
 
-1. The complete /etc/lilo.conf
-2. The contents of /etc/fstab
-3. A description of what does happen if you try to boot from sda.
-4. Do you know that the hardware is capable of booting from a SCSI drive? How?
-5. If you boot from floppy, log in as root, and run the command "lilo", 
-what is the result? What gets printed to the screen?
+ray@comarre.com said:
+> 1. Is /var/log/cron a file or a directory? If the latter, what files
+> does  it contain?
 
-The root directory (almost) surely is NOT /dev/sda. It will be something 
-like /dev/sda1 or /dev/sda2 (the numbers identify partitions on a drive, 
-while the matching entry without a number is the drive itself).
+ It's a file containing all the cron stuff from crontab, user and root.
 
-Finally, is this by any chance a RAID server? If so, and if the boot device 
-is part of the RAID cluster, there are special problems getting it to boot. 
-I fear I do not recall the details, but you might look through the various 
-RAID HowTos at tldp to find the one that discusses boot procedures.
+# tail /var/log/cron
+Apr 15 08:45:01 philonline CROND[1812]: (pfheiss) CMD (cd 
+/usr/local/saytime/sounds/; ./saytime.sh)
+Apr 15 08:50:00 philonline CROND[1841]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 08:50:00 philonline CROND[1842]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:00:00 philonline CROND[1966]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 09:00:00 philonline CROND[1967]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:00:00 philonline CROND[1968]: (pfheiss) CMD (play 
+./sound/chimes.wav)
+Apr 15 09:01:00 philonline CROND[1978]: (root) CMD (run-parts 
+/etc/cron.hourly)
+Apr 15 09:10:00 philonline CROND[2012]: (root) CMD (   /sbin/rmmod -as) 
+Apr 15 09:10:00 philonline CROND[2013]: (root) CMD (/usr/lib/sa/sa1 1 1) 
+Apr 15 09:15:00 philonline CROND[2036]: (pfheiss) CMD (cd 
+/usr/local/saytime/sounds/; ./saytime.sh)
 
-At 05:18 PM 5/14/2003 -0700, Steven Ackerman wrote:
->Dear list,
->
->I read the faq for the list. Searched tldp.org
->(http://tldp.org/LDP/lame/LAME/linux-admin-made-easy/install-lilo.html) and
->read the linux faq (ftp://sunsite.unc.edu/pub/Linux/docs/faqs/!INDEX.html)
->before posting. I also read the faq for this list. At that point I got
->frustrated and am sending this message. I know this is easy but I can't
->figure it out. I am not a linux guru. Just an enthusiast and that makes me
->the best man for the job at hand.
->
->I installed RH 9.0 as a server and the machine only boots from floppy. In
->lilo.conf the boot= line in the first section says boot=/dev/sda. In the
->same section the install= line says install=/boot/boot.b. I don't even know
->what I should be posting to help anyone answer my question. This is a rack
->mount server with 4 SCSI drives. I don't know if that matters. If I remember
->right, the root directory is /dev/sda. Whatever the default is. I can give
->you whatever info you need. I may have to figure out how to do it, but
->usually I can do that.
->
->I need help. I don't mind pointers to links, documentation, pointers to some
->documentation I missed, ect. All the doc's I found refer to using ide
->devices and pointing to the root directory or wherever lilo is installed or
->the root directory is or something like that. Not knowing all the linux
->internals, I don't even know how to find that out.
+ray@comarre.com said:
+> 2. Just to be sure -- when you run "logrotate --force /etc/
+> logrotate.conf",  you get an error at the console that reads *exactly*
+> "error: syslog:1  duplicate log entry for /var/log/cron"? That is, you
+> get an error from  syslog, not from logrotate (or even syslogd)? And
+> you get no other output  to the screen
 
+Correct that is the exact message with no other output to the screen.
 
+ray@comarre.com said:
+> 4. On my systems, logrotate runs as root.
+
+It only runs as root on my system as well.
+-rwxr-xr-x    1 root     root        32840 Apr 16  2002 /usr/sbin/logrotate
+
+ray@comarre.com said:
+> 3. It is possible to run logrotate with a -d (debug) flag. Does that
+> generate any useful info?
+
+# /usr/sbin/logrotate -d /etc/logrotate.conf
+reading config file /etc/logrotate.conf
+including /etc/logrotate.d
+Ignoring named.rpmnew, because of .rpmnew ending
+Ignoring rpm.rpmnew, because of .rpmnew ending
+reading config file cron
+reading config info for /var/log/cron 
+reading config file ftpd
+reading config info for /var/log/xferlog 
+reading config file linuxconf
+reading config info for /var/log/htmlaccess.log 
+reading config info for /var/log/netconf.log 
+reading config file mgetty
+reading config info for /var/log/mgetty.log.tty* 
+reading config file named
+reading config info for /var/log/named.log 
+reading config file rpm
+reading config info for /var/log/rpmpkgs 
+reading config file sendfax
+reading config info for /var/log/sendfax.log 
+reading config file slrnpull
+reading config info for /var/spool/slrnpull/log 
+reading config file snmpd
+reading config info for /var/log/snmpd.log 
+reading config file sudo
+reading config info for /var/log/sudo.log 
+reading config file syslog
+error: syslog:1 duplicate log entry for /var/log/cron
+
+There is a file /etc/syslog.conf, however, no /var/log/syslog file as in 
+Slackware.
+I put one there now which did not change anything, it just stays empty.
+
+And to your final 5th question what is KRUD Linux somebody replied where to 
+find it. They produce monthly the latest versions for RedHat to which one can 
+subscribe for one year or order them as needed. This is very convenient if one 
+has slow phone lines which will make updates by downloading a near 
+impossibility.
+
+Regards
+
+-- 
+Peter
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
