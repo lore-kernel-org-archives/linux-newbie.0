@@ -1,56 +1,44 @@
-From: whitnl73@juno.com
-Subject: Re: send messages to console
-Date: Thu, 11 Dec 2003 10:42:42 -0500 (EST)
+From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
+Subject: mozilla
+Date: Thu, 11 Dec 2003 22:51:10 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031211.104424.8.0.whitnl73@juno.com>
-References: <200312111354.hBBDsWf04822@smtp.sunflower.com>
+Message-ID: <20031211215110.67996.qmail@web40609.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200312111354.hBBDsWf04822@smtp.sunflower.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: rspr@sunflower.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-On Thu, 11 Dec 2003 rspr@sunflower.com wrote:
+Hi
+Sorry if this is off-topic.
+I need to change the fonts in mozilla's menus because they=20
+are too small. Any ideea how can i do this ?
+I'm not using gnome or kde (only fvwm2).
+Mozilla's version is 1.3:
+Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.3) Gecko/20030313
 
-> Lawson,
->
-> I recall you telling us how to send all [kernel?] messages to the console,
-> so that when you do left alt+f8 if I recall correctly, would provide
-> you with a lot of real-time information.
->
-> Would you refresh my memory? What do I need to write, and where?
->
-> I am running Debian 3, rel. 2 on a Dell Latitude LM laptop with a Pentium, 8 gb hdd, and 74 Mb RAM.
-> -
-Where is /etc/syslog.conf (described in man syslog.conf).  Here is what
-I use to catch all syslog messages on tty12, and pppd/chat traffic on
-tty11:
+Thanks
 
-*.*							/dev/tty12
-daemon,local2.*						/dev/tty11
-daemon,local2.*						/var/log/ppp
+Bye
+Calin
 
-# to catch only kernel messages to tty8:
-kern.*							/dev/tty8
+P.S. Please cc any reply to me because i'm not subscribed to the
 
-Probably the file /etc/syslog.conf has some examples too if you can't
-make sense of the man page or don't have it handy.
+list.
 
-Lawson
+=3D=3D=3D=3D=3D
 --
----oops---
+A mouse is a device used to point at=20
+the xterm you want to type in.
+Kim Alm on a.s.r.
 
-
-
-________________________________________________________________
-The best thing to hit the internet in years - Juno SpeedBand!
-Surf the web up to FIVE TIMES FASTER!
-Only $14.95/ month - visit www.juno.com to sign up today!
+_________________________________________________________________
+Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
+Yahoo! Mail : http://fr.mail.yahoo.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
