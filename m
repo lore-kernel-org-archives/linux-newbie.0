@@ -1,48 +1,32 @@
-From: Jos Lemmerling <jos@lemmerling.nl>
-Subject: Re: iptables & a dhcpd question
-Date: Thu, 27 Feb 2003 22:09:25 +0100 (CET)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: distribution choice
+Date: Thu, 27 Feb 2003 17:19:11 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0302272158340.10476-100000@orthanc.lemmerling.net>
-References: <009901c2dea0$9bc86390$4800a8c0@neptune>
-Mime-Version: 1.0
+Message-ID: <200302272219.h1RMJBLZ002629@hartford-hwp.com>
+References: <200302271859.h1RIxUE9026632@hartford-hwp.com> <200302271324.35128.brian@mdrx.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <009901c2dea0$9bc86390$4800a8c0@neptune>
+In-reply-to: <200302271324.35128.brian@mdrx.com> (message from Brian Jackson
+	on Thu, 27 Feb 2003 13:24:35 -0600)
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: brian@mdrx.com
+Cc: linux-newbie@vger.kernel.org
 
-On Thu, 27 Feb 2003, Paul wrote:
+Yes, it is usually kind of a pointless question, for basically, all
+the main distrubutions are the same, and the differences may be nothing
+more than a matter of personal choice.
 
-> Thanks for all the info! Quick follow up question on the rc.firewall script.
-> I've tried running it, just by typing it's name when I'm in that folder at
-> root.  It says, "bash: rc.firewall-2.4: command not found"  It's actually
-> named, "rc.firewall-2.4" and I've made it executable already, it has a *
-> next to its name when I do a listing.  Any ideas??  TIA!
+I'm inclined toward Debian, for I don't care for the direction I think
+Red Hat is headed. The alternative to it might be gentoo, but I've
+heard too many horror stories about installation, and don't feel any
+compunction to endure it myself. As someone said, Slackware is more a
+hobby than an operating system, and since I have a life, I'm more
+inclined to Debian. 
 
-You'll have to tell bash where the script is; you could type the full path
-(/path/to/rc.firewall-2.4) or, if you're already in the directory where
-the script is type "./rc.firewall-2.4". That should work.
-
-The script is now probarly not in one of the directorys where bash finds
-it's executables. 
-You could see these directorys if you type "echo $PATH".
-
-Maybe you already have it, but it's good to flush your firewall-settings
-at the start of the script.
-
-And please... Try to quote like it should be; below the answers. It's much
-easier to read that way!
-But it seems to me, this list doesn't care about that... :(
-
-
-HTH
-
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
-
-
-
+Haines 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
