@@ -1,46 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Edgar Alwers <edgaralwers@gmx.de>
 Subject: Re: umount
-Date: Fri, 08 Nov 2002 09:36:24 -0800
+Date: Fri, 8 Nov 2002 22:27:46 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021108093105.021201f0@celine>
-References: <200211081750.01300.edgaralwers@gmx.de>
+Message-ID: <200211082227.46496.edgaralwers@gmx.de>
+References: <5.1.0.14.1.20021108093105.021201f0@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211081750.01300.edgaralwers@gmx.de>
+In-Reply-To: <5.1.0.14.1.20021108093105.021201f0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: newbies <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
+Cc: newbies <linux-newbie@vger.kernel.org>
 
-At 05:50 PM 11/8/02 +0100, Edgar Alwers wrote:
->Hallo,
->in my KDE 3.0.3 (linux from the scratch ) I installed an CD-ROM Icon on the
->desk, which mounts /dev/cdrom on the mount point /media/cdrom.
->Klicking on the Icon ( as user ) mounts the CD-ROM perfectly. But if I then
->try to umount the device klicking with the right mouse on the icon and
->selecting "umount",  I get an error message: only root can umount /dev/cdrom
->from /media/cdrom.
->What should I do to enable the "umount" ? ( why is by the way "mount"
->functioning ? )
+On Friday 08 November 2002 18:36, Ray Olszewski wrote:
 
-Well ... I'd guess there is a permissions difference between mount and 
-umount. Check both by using "ls -l /bin/mount" and "ls -l /bin/umount" and 
-see what the difference is. It might be simply the mode, or it might also 
-involve group each is "owned" by.
+> Well ... I'd guess there is a permissions difference between mount and
+> umount. Check both by using "ls -l /bin/mount" and "ls -l /bin/umount"
 
-The other possibility if an entry in /etc/fstab that makes mounting 
-possible but not umounting (though I can't offhand think of a setting that 
-will do this).
+nope:  both are  -rwsr-xr-x, but both owned by root and group = root ?
 
-BTW, is "klicking" some KDE idiom?
+> The other possibility if an entry in /etc/fstab that makes mounting
+> possible but not umounting (though I can't offhand think of a setting that
+> will do this).
 
+/devf/cdrom ro,noauto,user,exec 0 0
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> BTW, is "klicking" some KDE idiom?
 
+hmm.... sorry Ray, german english for "to click" . I promise, I will try 
+harder !  ;-)
+
+Regards,
+Edgar
+
+-- 
+--------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto: edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
