@@ -1,42 +1,38 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Skype and more
-Date: Wed, 30 Mar 2005 09:54:50 -0600 (CST)
-Message-ID: <Pine.LNX.4.58.0503300943430.4441@localhost.localdomain>
-References: <200503300719.j2U7JtHw001378@skyinet.net>
+From: Manish Regmi <regmi.manish@gmail.com>
+Subject: Re: Syscall() vs _syscallN()
+Date: Wed, 30 Mar 2005 22:41:53 +0545
+Message-ID: <652016d305033008562e969e7f@mail.gmail.com>
+References: <Pine.LNX.4.21.0503291133250.560-100000@hestia>
+	 <000101c534c9$230750c0$90b3c68a@st.com>
+Reply-To: Manish Regmi <regmi.manish@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200503300719.j2U7JtHw001378@skyinet.net>
+In-Reply-To: <000101c534c9$230750c0$90b3c68a@st.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Wed, 30 Mar 2005, Peter wrote:
-
-> Slackware 10.1 kernel 2.4.29
-<snip>
+On Wed, 30 Mar 2005 09:38:09 +0800, Alex LIU <alex.liu@st.com> wrote:
+> Sorry for my unclear words...
+> I want to know the DIFFERENCE between SYSCALL() and _SYSCALLN()...
+> _syscallN() ( _syscall0(),_syscall1(),...._syscall6() ) is a macro defined
+> in include/asm/unist.h while syscall() is a glibc function which I'm not
+> sure. Thanks!
 >
-> I just thought I will let the list know in case others have similar
-> experiences, there was one in skype forum.
+> Alex
+>
 
-Thank you for posting this resolution, Peter. As someone who has to do
-alot of web searching to resolve Linux problems, I really appreciate it
-when someone posts a detailed resolution to a problem they've asked about.
-Too often it happens that some resolution is found, but no specifics are
-given, or maybe the original poster just abandons the thread. People like
-me are led down dead ends in such cases. If something is going to help
-Linux to filter down more to the level of the common man, it's going to be
-clueless users (sorry if it's an offense to group you in that category; I
-really have myself in mind mostly when I say this) searching for, finding,
-*then describing* resolutions to the problems they encounter.  Advanced
-users often presume a level of knowledge that makes their resolutions
-useless for less technically adept users (like me).  Clueless users often
-fill in important details those more knowledgeable are likely to leave out
-or pass over cursorily.
+You are absolutely correct.
+_syscallN is a macro on unistd.h whah takes no of parameters according
+to the value of N. i.e _syscall0() does not take any parameters
+whereas _syscall6() takes 6 parameters.
+_syscallN calls calls the glibc function syscall which is an assembly
+entry in  sysdeps\unix\sysv\linux\i386\syscall.S (glibc source).
 
-James
+regards
+Manish Regmi
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
