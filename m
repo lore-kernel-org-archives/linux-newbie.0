@@ -1,36 +1,26 @@
-From: Peter <heisspf@skyinet.net>
-Subject: C Compiler
-Date: Sat, 27 Dec 2003 16:20:40 +0800
+From: Amin <amin@siriusbb.com>
+Subject: Re: C Compiler
+Date: Sat, 27 Dec 2003 16:18:13 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200312270820.hBR8Ked01366@skyinet.net>
+Message-ID: <200312271618.13241.amin@siriusbb.com>
+References: <200312270820.hBR8Ked01366@skyinet.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200312270820.hBR8Ked01366@skyinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Season Greetings!
+On Saturday 27 Dec 2003 14:20, Peter wrote:
+> checking for C compiler default output... configure: error: C
+> compiler cannot create executables
 
-Trying to install a program I get:
+Try searching for this exact phrase, with quotation marks surrounding 
+it, on Google.
 
-checking for C compiler default output... configure: error: C compiler cannot 
-create executables
-
-when doing ./configure in RH9.
-
-How do I correct this error?
-
-Thanks & regards
--- 
-Peter
-
-
-
-
-
-
-
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
