@@ -1,80 +1,51 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Accessing NTFS partition
-Date: 02 Oct 2002 14:57:54 -0400
+From: Ralph Gesler <rgesler@pacificnet.net>
+Subject: Re: CD-ROM Hell
+Date: Wed, 02 Oct 2002 14:35:57 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1033585076.18809.57.camel@localhost.localdomain>
+Message-ID: <3D9B66BD.101284FA@pacificnet.net>
+References: <5.1.0.14.1.20020930220638.02c84c60@celine>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
-	boundary="=-tnDt1p5PjGTD6xFbB5O4"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
+Cc: Bryan Simmons <bsimmo1@gl.umbc.edu>, linux-newbie <linux-newbie@vger.kernel.org>
 
+Ray Olszewski wrote:
+<snip> 
+> The mere act of putting a CD in a drive shouldn't cause Linux to try to
+> read the CD. You normally have to execute a "mount" command for the device
+> (or mount point, if it is in /etc/fstab). You should be able to kill the
+> process running the mount command to halt attempts to access the CD. If
+> that option isn't available to you, you'll need to tell us how you have the
+> system set up to mount CDs.
+> 
+> BTW, I assume we are talking about iso9660 CDs here, not music CDs. If I'm
+> mistaken in that assumption, please tell us what app you are using to rip
+> the music CD (and you should probably tell us the basics of which Linux
+> distro and version you are using). Here too, you should be able to get free
+> by killing the process, whatever it might be.
+> 
+A little bit late to this thread, but some symptoms that I have recently
+seen that may point to Bryan's problem ( assuming it is not a bad CDROM
+drive )which may point to a misconfiguration, e.g. driver, device
+linkage. Experimenting with the CD dump program cdda2wav I find that if
+I carelessly misstep or omit a command line device parameter, the
+process hangs and can not be killed with SIGKILL ,i.e.. -9, even by the
+super user. I am making a wild guess that this condition is caused by
+some kernel io process, as yet unidentified: it does time-out and the
+calling process, cdda2wav, dies. 
 
---=-tnDt1p5PjGTD6xFbB5O4
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+I make this assumption because of the large amount of cpu usage used by
+system at this time as shown by top. So far I have only observed this
+with a music cd in the drive, but I have no reason to believe that the
+same problem would not occur with a data, iso9660, cd. It may be
+possible that a misconfiguration could cause the same symptoms.
 
-Here's the situation, as detailed as I can think to present it.
+kernel 2.4.4, Pentium 133
 
-1.  I have 2 hard drives.  They look as follows:
-/dev/hda / (windows partition: fat32)4GB / (linux partition: ext2)4GB /
-(linux swap) 1GB/
-
-/dev/hdb / (linux partition: ext2)5GB / (windows partition: ntfs) 15GB /
-
-2.  I can mount everything with no problem and change rights to
-everything no problem except for the last partition on the second
-drive.  This is because it is ntfs and should only be mounted READ ONLY.
-See /etc/fstab and /etc/mtab entries for this drive below:
-
-/etc/fsab:
-/dev/hdb5 /mnt/ibm2 ntfs user,ro 0 0
-
-/etc/mtab
-/dev/hdb5 /mnt/ibm2 ntfs ro,noexec,nosuid,nodev 0 0
-
-3.  Documentation suggests that changing ownership of the folder that
-this drive is mounted under will allow that user access to the contents
-of the drive.  So the owner is bsimmo1 and the group is bsimmo1.  Yet
-bsimmo1 cannot access the drive.
-
-4.  The problem seems to be the fact that I cannot write entries to the
-ntfs volume.  This is because the drivers are not yet mature enough to
-allow "safe" writes to the file system. =20
-
-
-Can anyone suggest a way that I can use my ordinary, non-root, account
-to read files from this volume?  My only alternative is to burn the
-drive to CD (God forbid) and format it with ext2 fs.
---=20
-Regards,
-
-Bryan Simmons=20
-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
--=3D-=3D-=3D-=3D-=3D=20
- "Sometimes I wonder whether the world is being=20
-  run by smart people who are putting us on or=20
-  by imbeciles who really mean it".=20
-    ---Mark Twain=20
-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
--=3D-=3D-=3D-=3D-=3D=20
-
---=-tnDt1p5PjGTD6xFbB5O4
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQA9m0Gy0dAWZ6zmr0ARAhtXAJwNl/TS1VOA6aqrfFZtPXQJ1m6JggCgj+cd
-5seHmegMiU+h6i8SO5RNs5E=
-=YBV8
------END PGP SIGNATURE-----
-
---=-tnDt1p5PjGTD6xFbB5O4--
-
+Ralph Gesler
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
