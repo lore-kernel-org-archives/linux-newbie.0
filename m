@@ -1,58 +1,78 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: .prn to .txt conversion = ?
-Date: Tue, 30 Mar 2004 10:09:11 -0500
+Date: Tue, 30 Mar 2004 08:19:06 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403301009.12383.sotl155360@earthlink.net>
-References: <200403281732.18531.sotl155360@earthlink.net> <5.1.0.14.1.20040329204727.01ef69d0@celine> <17050938982.20040330072414@wa5rrh.org>
+Message-ID: <5.1.0.14.1.20040330081217.01ef6c28@celine>
+References: <17050938982.20040330072414@wa5rrh.org>
+ <200403281732.18531.sotl155360@earthlink.net>
+ <5.1.0.14.1.20040329204727.01ef69d0@celine>
+ <17050938982.20040330072414@wa5rrh.org> <200403301009.12383.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <17050938982.20040330072414@wa5rrh.org>
-Content-Disposition: inline
+In-Reply-To: <200403301009.12383.sotl155360@earthlink.net>
+References: <17050938982.20040330072414@wa5rrh.org>
+ <200403281732.18531.sotl155360@earthlink.net>
+ <5.1.0.14.1.20040329204727.01ef69d0@celine>
+ <17050938982.20040330072414@wa5rrh.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jim Reimer <jdr@wa5rrh.org>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Tuesday 30 March 2004 08:24, Jim Reimer wrote:
-> Ray Olszewski wrote:
-> > At 05:32 PM 3/28/2004 -0500, Frank Roberts - SOTL wrote:
+At 10:09 AM 3/30/2004 -0500, Frank Roberts - SOTL wrote:
+>On Tuesday 30 March 2004 08:24, Jim Reimer wrote:
+> > Ray Olszewski wrote:
+> > > At 05:32 PM 3/28/2004 -0500, Frank Roberts - SOTL wrote:
+> > >
+> > > When you say "the content is all text", can you be a bit more exact? (I
+> > > haven't used DOS for years and I cannot recall what the.prn extension
+> > > signifies.)
 > >
-> > When you say "the content is all text", can you be a bit more exact? (I
-> > haven't used DOS for years and I cannot recall what the.prn extension
-> > signifies.)
+> > A .prn file is generated when the "print to file" option is
+> > used.  It's contents depend solely on the printer driver -
+> > could be text, could be PostScript, could be HPGL, could be
+> > lots of other completely useless things.
+>Hi All
 >
-> A .prn file is generated when the "print to file" option is
-> used.  It's contents depend solely on the printer driver -
-> could be text, could be PostScript, could be HPGL, could be
-> lots of other completely useless things.
-Hi All
+>Thanks for the help.
+>
+>As far the above I was referring to was that the original file being exported
+>was all text.
+>
+>But in all fairness I solved the print to file issue.
+>
+>In Win 98 if one set printer to generic and type to generic/text Only with
+>continuous paper one will receive a continuous output of text in text format
+>in a file named <file name>.prn which can then be renamed .txt
+>
+>BUT! For me this really does not do what I need although it is the best that
+>can be done by this method.
+>
+>What I really need is a method of reading a .nfo file with unknown format 
+>most
+>probably encrypted. Although I am certain there are people on this list who
+>can open this file  I do not believe that this list [or any for that matter
+>list] can help me with this as I most probably would not understand what was
+>being said.
 
-Thanks for the help.
+In one sense, there is no general method of reading "a .nfo file with 
+unknown format most probably encrypted". Even if your question is really 
+about how to break an unknown encryption format, there are really only 
+techniques and strategies, not general methods that always work (if there 
+were, we probably wouldn't even all it encrypted).
 
-As far the above I was referring to was that the original file being exported 
-was all text.
+In a different sense, perhaps a trivial one, you can "read" such a file 
+with the hexdump utility or similar commands. Some test editors have 
+hex-display option. Also remember the "strings" command, in case the file 
+really isn't encrypted, just in a proprietary format. In some cases 
+(non-encrypted ones, though), these programs can server to get the info you 
+need out of the file.
 
-But in all fairness I solved the print to file issue.
-
-In Win 98 if one set printer to generic and type to generic/text Only with 
-continuous paper one will receive a continuous output of text in text format 
-in a file named <file name>.prn which can then be renamed .txt
-
-BUT! For me this really does not do what I need although it is the best that 
-can be done by this method.
-
-What I really need is a method of reading a .nfo file with unknown format most 
-probably encrypted. Although I am certain there are people on this list who 
-can open this file  I do not believe that this list [or any for that matter 
-list] can help me with this as I most probably would not understand what was 
-being said.
-
-Thus thanks for the help again.
-
-Frank
+If you do want help here, the best way to start is by telling us what you 
+know about the software that created the file. And perhaps provide a sample 
+to examine.
 
 
- 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
