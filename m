@@ -1,34 +1,36 @@
-From: Karthik Vishwanath <karthik@northstar.dartmouth.edu>
-Subject: Re: VI Problems
-Date: Sun, 14 Apr 2002 02:44:29 -0400 (EDT)
+From: "Phil" <laingp@tpg.com.au>
+Subject: Win4Lin 2 & RH 7.2
+Date: Sun, 14 Apr 2002 20:40:26 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.SGI.3.91.1020414024323.24713A-100000@angstrom.dartmouth.edu>
-References: <000701c1e36d$75c63930$0100a8c0@study>
+Message-ID: <000001c1e3a0$cb27a4d0$fd00a8c0@computer2>
+References: <ETHFRVSAl4QKLLlrr2q00000084@ethfrvs.eth.net>
+Reply-To: <laingp@tpg.com.au>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000701c1e36d$75c63930$0100a8c0@study>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Matt Grill <matt.grill@bigpond.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <ETHFRVSAl4QKLLlrr2q00000084@ethfrvs.eth.net>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Sun, 14 Apr 2002, Matt Grill wrote:
+Hi Fellow Linux users
 
-> 2) How would you change all instances of multiple consecutive spaces to
-> a single space in vi?
+Is it possible to install Win4Lin V2 onto RedHat 7.2?  I have two default
+kernels installed which are :-
 
-:%s/\s\+/ /g
+Kernel 2.4.7-9 (I think) and Kernel 2.4.10-31
 
-> 
-> 3) How do you search for a word without regard to use of uppercase or
-> lowercase letters?
-> 
+I wonder whether I need to step back a few kernels to successfully install
+Win4Lin 2
 
-:set ignorecase
+Any thoughts would be appreciated
 
+Thanks in advance
 
--Karthik.
+Phil Laing
+Port Macquarie NSW
+Australia
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
