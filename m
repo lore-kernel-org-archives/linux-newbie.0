@@ -1,34 +1,33 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: Where is `banner'?
-Date: Sun, 01 Jun 2003 15:03:49 +0600
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: Sound Lost
+Date: Sun, 01 Jun 2003 07:12:26 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1519.1054458229@localhost.localdomain>
-References: <james@lovedthanlost.net>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Message from "James Turnbull" <james@lovedthanlost.net> 
-   of "Sun, 01 Jun 2003 18:15:23 +1000." <012001c32815$f3654370$0300000a@iih.usyd.edu.au> 
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <3EDA09CA.3090901@bcgreen.com>
+References: <20030601080130.340C0103F4@pfheiss>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030601080130.340C0103F4@pfheiss>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <pfheiss@philonline.com>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-On Sun, 1 Jun 2003 18:15:23 +1000, "James Turnbull" wrote:
-> Don't know about banner but you can find Figlet here -
-> http://www.figlet.org/
+Peter wrote:
+> Hi,
 > 
-> It's pretty much the same functionality.
+> I upgraded RH7.3 and the sound is gone.
 > 
-> Regards
-> 
-> James Turnbull
+> Old kernel-2.4.18-24.7.x.i686; new kernel-2.4.20-13.7.i686
 
-Wow, this is great!  And I'd gone and written a `banner.pl' with the Perl Text::Banner
-module!  Just goes to show ... if you can't find the original, don't rewrite it ---
-find something better!
+Have you tried running sndconfig again?
+Have you rebooted since you updated? (I presume so, but I have to ask)
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+Powerful committed communication, reaching through fear, uncertainty and
+doubt to touch the jewel within each person and bring it to life.
 
-Thanks!
-Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
