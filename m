@@ -1,37 +1,26 @@
-From: Boris Bezlaj <boris@bandit.kista.gajba.net>
-Subject: Re: How does malloc tell the kernel to allocate more memory?
-Date: Sun, 8 Dec 2002 20:29:14 +0100
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: tar for "full" floppy backup?
+Date: Sun, 8 Dec 2002 16:07:02 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021208192914.GA4262@bandit.kista.gajba.net>
-References: <000301c29eea$3107dd10$032a1c43@joe>
+Message-ID: <Pine.LNX.4.50.0212081603350.2573-100000@athame.gmpexpress.net>
+References: <200212081837.LAA15273@cu.imt.net> <3DF44FE9.69FB5E4D@ihug.co.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <000301c29eea$3107dd10$032a1c43@joe>
+In-Reply-To: <3DF44FE9.69FB5E4D@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "Joseph D. Wagner" <wagnerjd@prodigy.net>
-Cc: Linux C Programming <linux-c-programming@vger.kernel.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: ichi@ihug.co.nz
+Cc: Jerry James Haumberger <jerryjh@imt.net>, linux-newbie@vger.kernel.org
 
-On Sun, Dec 08, 2002 at 12:46:57PM -0600, Joseph D. Wagner wrote:
-> I'm trying to write a tracer on memory allocation, and I'm having a little
-> trouble figuring this out.
+I wouldn't try that in that way, but the basic idea might work.  I say
+might because I've never tried this and have never heard of any success
+with this idea either.  One might do something like: tar czf * | tar cmvf
+- /dev/fdd0/backup.tar.gz.  This pipes the compressed result into a
+multivolume media result if it works.
 
-You sure this has not been done before?
-> 
-> At some point, malloc has to call the kernel to tell it to allocate more
-> memory for this user process, right?  I can't figure out which function
-> malloc calls, or where in the code (line number) it's called.
+Jude <dashielljt(at)gmpexpress-dot-net>
 
-I dont know much about memory management, but there is some documentation
-at lkdp.tk  ..you might want to check it out, although AFAIK it's not finished yet..
-
--- 
-
-With best regards,
-
-		Boris B.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
