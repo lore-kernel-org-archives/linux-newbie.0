@@ -1,44 +1,48 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re:Solved: Newbie installation problem
-Date: Tue, 27 Aug 2002 21:58:32 -0400
+From: Adam Luchjenbroers <adam@luchjenbroers.com> (by way of Adam
+	Luchjenbroers <adam@luchjenbroers.com>)
+Subject: Re: Lock-ups with 2.4.19 kernel
+Date: Wed, 28 Aug 2002 13:28:39 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208272158.32273.sotl155360@earthlink.net>
-References: <001701c23a81$c565a3c0$6401a8c0@ENRIQUE> <001901c24e2d$4876b830$6401a8c0@FAMILY>
+Message-ID: <200208281328.39807.adam@luchjenbroers.com>
+Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <001901c24e2d$4876b830$6401a8c0@FAMILY>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
->
-> I changed the NIC to another PCI slot that I had skipped.  Either the PCI
-> slots are read in sequence, or the PCI slot my NIC was occupying was
-> damaged.  
-Due to problems with my system which were solved by moving cards to a 
-different location I would like to ask in general - because I assume that 
-each manufacture may do something differently - how are PCI slots read on a 
-motherboard?
+>          1. Run top on a remote console (one the telnets or ssh's in). When
+> the system hangs, the console will still display the last "top" output, so
+> you can see (a) what CPU usage was, (b) how much memory had been used, and
+> (c) what the top processes were. That may give you a hint about what is
+> going on.
 
-Does each slot receive an individual address or do slots share addresses?
+Is there any way I can get that outputted to somewhere else? Doesn't look
+ like it would go well in a log file.
 
-Assuming that there is no sound card or video card on the mother board what 
-other devices that are standard would be have interrupts that could interfer 
-with the interrupts on the slots?
+It does seem to happen during processor intensive situations (eg. large
+battles in Kohan), what programs can I use to test this (memory testers would
+also be useful).
 
-I recall reading numerous places that the interrupt on most cards were 
-hardware or software chainable how does this coinside with fixed interrupt 
-address on the mother board? Note if one can change interrupt address to a 
-card by either action then the slot could not have a fixed address implying 
-that movement of the card from one slot to another would accomplish nothing 
-but since movement solved the problem and the slot in my case was not 
-corrupted that would imply that each slot had fixed addresses. This is not 
-logically consistant.
+>          2. If you can, use another remote console to cause the crash, but
+> leave the system with a vt (not X) on its console. A crash message (a
+> kernel oops, for example) may show on the screen when the crash happens,
+> and that will give you at least a little info.
 
-Thank
-Frank
+Useful, I'll probably write down anything that comes up.
 
+> Having said all of that ... when I ecperienced similar crashes (or what
+> might be similar crashes; hard to be sure from a sketchy description), they
+> were caused not by Linux, but by hardware problems. In one case, inadequate
+> CPU cooling (too small a heatsink-fan combo) caused to the CPU (a P3) to
+> shut down for its own safety. In the other, the power supply had some sort
+> of problem that only showed up under high loads. In both casesd, replacing
+> the offending hardware eliminated the problem.
+
+Damn, software can be fixed, hardware costs money. Is there any form of
+temporary workarounds I could employ (eg. put a cap on CPU usage at about
+80%?) while I save up to replace the hardware.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
