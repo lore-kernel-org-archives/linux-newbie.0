@@ -1,45 +1,33 @@
 From: Peter Edstrom <peter.p3@home.se>
 Subject: Re: Setting up DNS without domain
-Date: Wed, 13 Aug 2003 01:07:07 +0200
+Date: Wed, 13 Aug 2003 01:19:42 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030812230707.GA1174@linux>
-References: <20030812223545.GA1046@linux> <5.1.0.14.1.20030812155116.030d0b88@celine>
+Message-ID: <20030812231942.GA1223@linux>
+References: <20030812223545.GA1046@linux> <3F396E1C.6010401@wa5rrh.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20030812155116.030d0b88@celine>
+In-Reply-To: <3F396E1C.6010401@wa5rrh.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, Aug 12, 2003 at 03:59:51PM -0700, Ray Olszewski wrote:
- 
-> No, you can run BIND (named) without your own domain, just to resolve 
-> offsite FQNs that your local hosts need to resolve. Just run it and provide 
-> only the file that identifies root server (on my Debian system, 
-> /etc/bind/db.root). You do this by configuring named.conf to provide only 
-> that db file (as a "hint"), probably something like this:
-> 
->         // prime the server with knowledge of the root servers
->         zone "." {
->                         type hint;
->                         file "/etc/bind/db.root";
->         };
-> 
-> If you have a significant number of hosts on your LAN, you might want to 
-> make this instance of BIND locally (on-LAN only) authoritative for a dummy 
-> domain that the hosts can use to find each other. (That's what I do here, 
-> for example.) In that case, the stuff you've seen about using BIND with 
-> real (registered) domains should guide you.
-> 
-> >Another question: Do you recommend chrooting BIND?
-> 
-> I offer no recommendation, but I do not do so myself.
+On Tue, Aug 12, 2003 at 05:45:48PM -0500, Jim Reimer wrote:
 
-Thanks for the quick reply, Ray! I will try that ASAP.
+> Don't let me discourage you from setting up your own, but if the only
+> reason is that your ISP has problems, it's not necessary.
+> 
+> -jdr-
+
+Could you please explain yourself?
+The reason why I've decided to set up my own DNS instead of using 
+someone else's is to avoid any problems in the future. The problem,
+however, could be performance since I'll be running it on my
+workstation. Do you think this is a bad move?
 
 /Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
