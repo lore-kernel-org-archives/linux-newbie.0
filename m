@@ -1,55 +1,46 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Linux router
-Date: Mon, 20 May 2002 10:49:33 -0700
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Self-starting NAIM??
+Date: Mon, 20 May 2002 18:40:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020520103910.009f5cf0@celine>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careerco
- mmunity.com>
+Message-ID: <0205201840331A.27213@unix.pa3gcu>
+References: <20020520162705.66704.qmail@web12807.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careerco
- mmunity.com>
+In-Reply-To: <20020520162705.66704.qmail@web12807.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Sridhar J <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
 
-At 04:29 PM 5/20/02 +0530, Sridhar J wrote:
->Hello
+On Monday 20 May 2002 16:27, Staci wrote:
+> This is bizaare.
+> For the last day or so, NAIM has been starting itself
+> as a background process.
+> (for those of you who don't know, NAIM is a
+> console-based instant-messenger)
 >
->I have an old Cyrix system that I would like to turn into a router-firewall
->and put it before my Webserver. I would alos like to have my IDS running on
->this. No other service should run on this. No apps, nothing.
+> I double-checked my process-list last night to make
+> sure.  Then I woke up this morning and it'd been
+> running for 304:06 minutes.  I ALWAYS shut it down,
+> this isn't me.
 >
->How do I go about it? What distro should I choose? What files do I have to
->edit to make these changes?
+> How is this happening???
 
+I have absolutly no experiance with this program, however if a program
+restarts itself then 2 things come to mind, it is told to do so in 
+/etc/inittab with a respawn command or via crontab, altho, i doubt it would 
+be crontab.
 
-There are far too many possibilities for me (or anyone) to give you a 
-single, definitive answer. The two options I personally like are:
+I have "yet" to see a program that starts itself.
 
-1. Strip down a standard distro so it does what you want. I've personally 
-done this with Debian, and I know of others who have done it with Red Hat.
+>
+> thanks,
 
-2. Use one of the mini-distros customized for router/firewall setups. The 
-one I personally like is LEAF/Dachstein, which you can find out about at 
-leaf.sourceforge.net . There are many others.
-
-You say "No other service should run on this". I'm not sure what IDS means 
-(DNS, perhaps?), but the services you *may* want to run on the router are 
-ssh (so you can do remote troubleshooting), DNS (so it acts as a forwarder 
-for the LAN), ident/auth (if you need it for any of the services your 
-clients run), and maybe SMTP (depending on how the system logs). You also 
-say "No apps, nothing", but systems like this typically run syslogd and 
-cron (for obvious reasons), a time client like ntpdate (so timestamps are 
-accurate), and some process that watches for local logins (getty or a 
-cousin). You'll also need the configuration tools that the required startup 
-scripts and troubleshooting situations expect -- bash, ifconfig, route, 
-netstat, and others.
-
-Mini-distros like LEAF are a good starting place for this sort of 
-customization, because experienced people have done the work of cutting 
-back to what is still needed, but not to less than what is really needed.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
