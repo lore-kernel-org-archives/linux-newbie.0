@@ -1,8 +1,8 @@
-From: Daniel Peter Cavanagh <nofsk@vtown.com.au>
-Subject: bash script problem
-Date: Tue, 10 Dec 2002 12:08:06 +1000
+From: James Miller <jamtat@mailandnews.com>
+Subject: general Debian questions
+Date: Mon, 09 Dec 2002 21:48:11 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF54C86.7070908@vtown.com.au>
+Message-ID: <3DF5018B.4050802@mailandnews.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,21 +10,30 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+I've begun using Debian after having spent most of my Linux "career"
+(all 18 month of it!) on mostly Mandrake and Red Hat. I've come to
+really like Debian, especially the apt-get installation and update
+routine. I'm considering defecting to Debian. True, I was spared the
+majority of Debian install problems by using the install-to-hard-disk
+utility that was written for Knoppix. It worked quite well, actually. I
+think it was the least painful Linux install I've been through - and
+I've been through more than I can count. At any rate, before devoting
+full alegiance to Debian, I thought I'd ask onlist some general feedback
+on the distro, both pro and con. I use my computer strictly as a
+workstation, though I am considering setting up a tiny home network on
+the LTSP model - something about the "target system." I guess I'd like
+to start off on Debian feedback asking some particulars about how and
+how often packages are updated? I understand Debian tends to "run
+behind" with respect to the other distros. As I understand it, new
+releases of the OS itself occur with far less frequency than the distros
+I'm used to. But the packages (what, under M$ systems, would be called
+"3rd party apps," as I understand it), surely, must be upgraded with
+greater frequency, are they not?
 
-I'd like to write a script that will run a command, and if successful 
-run another command otherwise echo a message.
+Thanks in advance for feedback on this issue.
 
-This is what I have but it doesn't work (I've never written a bash 
-script before):
+James
 
-if [ `fetchmail -su nofsk pop.vtown.com.au` ]; then
-    pine
-else
-    echo failed fetch
-fi
-
-Could something please fix this up. Thanks for your help, Daniel.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
