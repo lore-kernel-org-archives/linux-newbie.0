@@ -1,31 +1,25 @@
-From: Eric <eric@cisu.net>
-Subject: C Programming Mailing list
-Date: Fri, 8 Aug 2003 23:11:56 -0500
+From: jude dashiell <dashielljt@gmpexpress.net>
+Subject: Re: C Programming Mailing list
+Date: Sat, 9 Aug 2003 00:36:52 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200308082311.56970.eric@cisu.net>
-Reply-To: eric@cisu.net
+Message-ID: <Pine.LNX.4.53.0308090035350.19112@localhost>
+References: <200308082311.56970.eric@cisu.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <200308082311.56970.eric@cisu.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Eric <eric@cisu.net>
+Cc: linux-newbie@vger.kernel.org
 
-Greetings,
+comp.lang.c moderated on the usenet newsgroups would appear to be a good
+place for you to be.  You might also check out the rest of the comp.lang.
+hierarchy for other languages too.
 
-	I am a beginning C programmer who desperatly needs help teching himself. I am 
-looking for a good forumn/mailing list where I can ask questions, post code 
-snippets, and generally glean information from people who have more 
-experience than me for those moments when I am really stuck. 
-	Does anyone know of a good C programming mailing list/forumn/website/etc 
-where I could ask questions?
-
-	Thanks in advance.
-----------------------
-Eric Bambach   
-Eric (at) CISU (dot) net 
-----------------------
+-- 
+Registered as user #315636 with the Linux Counter,
+http://counter.li.org/!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
