@@ -1,74 +1,36 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: VM Vs Swap space
-Date: Thu, 07 Oct 2004 06:41:38 -0400
+From: network_gauner <network_gauner@seznam.cz>
+Subject: Re: JEdit install
+Date: Tue, 05 Oct 2004 20:26:00 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <41651D62.1010001@gelm.net>
-References: <20041007091515.73785.qmail@web52904.mail.yahoo.com>
-Reply-To: chuck@gelm.net
+Message-ID: <ck37b6$g0q$1@sea.gmane.org>
+References: <4147DDF5.8000601@pobox.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041007091515.73785.qmail@web52904.mail.yahoo.com>
+In-Reply-To: <4147DDF5.8000601@pobox.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Ankit Jain wrote:
+> I'd like to install and use jedit on Fedora Core 2.
+> 
+> I understand that it requires that java be installed first. When I yum 
+> for either java or jedit, neither package is found.
+> 
+> I went to Sun's site to get java but it was too confusing for a newbie. 
+> Can anyone explain how to install these packages from the command line 
+> in Fedora Core 2?
 
->how will u differentiate virtual memory and swap area
->
->thanks
->
->ankit
->  
->
-Virtual memory is swap area in use.
+1) Download package jedit-4.0.3-1.noarch.rpm
+    (google will find it)
 
-Regards, Chuck
+2) make yourself a superuser (the simplest way is typing 'su' /without 
+aphostrophes/ and enter root password) and type
+rpm -Uvh jedit-4.0.3-1.noarch.rpm
 
-> --- chuck gelm <chuck@gelm.net> wrote: 
->  
->
->>Ankit Jain wrote:
->>
->>    
->>
->>>hi
->>>
->>>if somebody can tell me that is this correct?
->>>
->>>(1)can i say that swap area created by linux is
->>>      
->>>
->>nothign
->>    
->>
->>>but virtual memory. (2)is it correct to use the
->>>      
->>>
->>term
->>    
->>
->>>interchangeably
->>>
->>>thanks
->>>
->>>ankit
->>> 
->>>
->>>      
->>>
->>(1) A swap file or swap partition can be used as
->>virtual memory.
->>(2) I am not sure.  Why one would wish to use 'swap
->>area'
->>interchangeably with 'virtual memory'.
->>:-|
->>Chuck
->>    
->>
+That's all! Now you can run it typing 'jedit'
 
+Zdenek
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
