@@ -1,34 +1,35 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: USB devices, mount points and fstab
-Date: Tue, 27 May 2003 21:04:43 -0500 (CDT)
+From: J S <webnews@comcast.net>
+Subject: Need some help understanding Gnome
+Date: Tue, 27 May 2003 23:28:34 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0305272052130.1059@homenet>
+Message-ID: <1054092514.4635.4.camel@jayhawk>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Linux-Newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Well, something I never thought would happen to me is happening: I have
-more than 1 USB drive hooked to my computer!  That's because I just bought
-one of those 6 in 1 card readers for flash memory cards.  Prior to that, I
-had only 1 external USB hard drive I would hook to the computer from time
-to time.  It seems that I've got at least a major part of the issue of
-getting the computer (Libranet [Debian variant] with 2.4.19 kernel) to
-recognize the new drive out of the way: like with my other external hard
-drive, the flash disks get recognized as scsi drives.  They can therefore
-be found at /dev/sdxx, and assigned mount points from there.  But I am a
-little confused about how this relates to fstab.  I put an entry there
-some time ago for my external HD, which I always mounted at /usb-hd as
-/dev/sda1.  But now that I have this reader, it will not always be found
-at /dev/sda1.  Thus, my question: beyond doing a fully manual mount (e.g.,
-mount /dev/sdxx /mnt/flash-cf) of each drive, how should this be done?  Is
-there some simpler way of mounting these USB drives?  I can't think of an
-fstab entry that would work.  Advice on how to more easily mount my USB
-drives will be appreciated.
+Newbies and Non-newbies,
 
-James
+I need some help with Gnome under RH 9.0.  I'm trying to figure out what
+exactly is being executed when I right-click on the desktop background,
+select disks->CD-ROM.
+
+I'm also trying to figure out what directory/directories gnome looks in
+for determining it's menu structure.  Is there a nice utility out there
+to modify the gnome menu structure easily?
+
+Does anybody know how Gnome decides to ruun metacity instead of some
+other window-manager such as sawfish?
+
+If anyone knows of a good gnoem reference that puts the whole picture
+together that would be great.  I'm trying to understand the way
+everything works.
+
+Thanks,
+	Josh
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
