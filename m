@@ -1,78 +1,96 @@
-From: Tabris <tabris@tabris.net>
-Subject: [resend] Re: Multithreaded /sbin.init? Is it possible?
-Date: Mon, 15 Sep 2003 14:13:55 -0400
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Compiling sg.o only (2.4.20)
+Date: Mon, 15 Sep 2003 21:13:48 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309151413.57198.tabris@tabris.net>
-References: <200309141240.55800.eric@cisu.net>
+Message-ID: <200309152113.48288.pa3gcu@zeelandnet.nl>
+References: <20030915173911.GA1802@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309141240.55800.eric@cisu.net>
-Content-Description: clearsigned data
+In-Reply-To: <20030915173911.GA1802@lnx2.w8mch.ampr.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/Plain; charset="us-ascii"
-To: eric@cisu.net, linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
-Cc: greeneg@student.gvsu.edu
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Monday 15 September 2003 19:39, Hal MacArgle wrote:
+> Greetings: Changing to Slackware 9.0, 2.4.20, I discovered the
+> default kernel, bare.i, does not have the module; sg.o, but sg.c and
+> sg.h are in the src.. Therefore my HP scanner that worked with 2.4.18
+> is found OK but has no kernel support.. (At least I think that's the
+> problem so far.) (The scanner is a scsi job and I have the BusLogic
+> module, sane-backend, etc, installed.) (With 2.4.18, 'insmod sg', set
+> up the kernel support for this scanner.)
 
-On Sunday 14 September 2003 01:40 pm, Eric wrote:
-> Hello,
-> 	I have an interesting theory. I have beginning programming expereice
-> and would like the input of those that have more expereince than me.
-> Please don't flame if this is a waste of time. Rather I would like an
-> open discussion on the why's and why nots of this.
-> 	Wouldn't the Linux Boot process be speeded up if the init program was
-> multithreaded? I know a little about threads.. and I think there might
-> be some complication of PPID assignment coming from the threads which
-> would probably terminate instead of having a PPID of 1 which is init
-> and will never terminate. (i think?). Should init scripts have a parent
-> PID of 1? Does this even matter?
-> 	If I am correct, whenever a programs parent dies, its parent becomes
-> init anyways. So when the thread finishes execution of the script, then
-> its parent would become init just as if it had started sequentially and
-> directly from init.
-> 	The script links in /etc/rc.d/x.d/ would be grouped according to their
-> S and K numbers. That is, if you have 5 scripts that are S5, each would
-> be given to a thread to execute and there would be 5 threads. The init
-> process would wait for each thread to clean up before proceeding to the
-> next group. I know this would happen in an undefined order, but if you
-> want, for example, DHCPD to start after network then you would assing
-> S5network and S6dhcpd. There would still be a defined order for
-> differently numbered scripts, just the bootup process wouldnt have to
-> wait for each script to terminate sequentially. Each group would only
-> take as long and the slowest script instead of the sum of the execution
-> time of the scripts. The init would start with the S1 scripts and maybe
-> fork 3 times, wait for each to finish...., then fork maybe twice for
-> the S2 group if there are two scripts, wait for them to
-> finish...etc....
-> 	Is this even possible?
-> ----------------------
-> Eric Bambach
-> Eric (at) CISU (dot) net
-> ----------------------
-Fwiw, there is a project ongoing with this very concept in arklinux, and
-it HAS shown some improvements in boot speed. I don't know exactly how
-much, but the goal is to boot (get to a login screen) in under 30 seconds
-on a desktop type system.
+sg is in the kernel bare.i that is.
 
-cc:d to the current project maintainer.
+> Perhaps I should know this but; is there a way to compile sg.o
+> without going through a complete build, since everything else I need
+> is working fine?
 
-- --
-tabris
-- --
-Space tells matter how to move and matter tells space how to curve.
-		-- Wheeler
+Yes there is a way, but i dont think you need to do it, if the support is in 
+the kernel then all should work ok like it would as if it were compiled as a 
+module.
+Anyway, there is a file called config-ide-2.4.20 in your /boot directory, you 
+can use that to get an almost identical compile.
+Copy it to /usr/src/linux-2.4.20 or if you have a symlink called linux 
+pointing to linux-2.4.20 cp to linux makes little differance.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (GNU/Linux)
+Call it .config rename it or copy it to .config, one way;
+cd /usr/src/linux
+cp /boot/config-ide-2.4.20 .config
+Now edit the Makefile, line 4 change from;
+EXTRAVERSION = 
+to
+EXTRAVERSION = -1
+save file;
+edit .config
+change line 454 from;
+CONFIG_CHR_DEV_SG=y
+to
+CONFIG_CHR_DEV_SG=m
+save file
+do;
+make oldconfig
+make dep clean bzImage modules modules_install
+After its all finished do;
+cp arch/i386/boot/bzImage /boot/vmlinuz-2.4.20-1
+cp System.map /boot/System.map-2.4.20-1
+Place a stanza in /etc/lilo.conf
+image=/boot/vmlinuz-2.4.20-1
+        label=2.4.20-1
+#       append="hdc=ide-scsi"
+#       vga=791
+        read-only
+        root=/dev/hdXx
+Commented lines are what i use, they are examples only.
+replace hdXx with your root device.
+save file;
+run lilo WITH -t option, if no errors rerun lilo.
+reboot
+Most of the above is simply a cut and paste job so spelling mistakes should be 
+few (i hope).
+I am sure you knew all that anyway, hope it helps...
 
-iD8DBQE/ZgFjtTgrITXtL+8RAjkcAJ44kZWsPjze6CJaw6NeJrbgSX82cQCglZ76
-O4wmF1xgOMiBYKYfxtUlOxc=
-=oqzs
------END PGP SIGNATURE-----
+73's.
+
+>
+> TIA and cheers,
+>
+>     Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+>                 Proprietary  Formats  Unacceptable
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
