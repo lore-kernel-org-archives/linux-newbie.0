@@ -1,29 +1,44 @@
-From: "Robert Todd" <linux-net@tcob1.net>
-Subject: Automount
-Date: Tuesday, 11 Jun 2002 00:36:44 -0500
+From: Jose Luis Alarcon <jlalarcon@linuxnobis.com>
+Subject: US Robotics USB ADSL Modem.
+Date: Tue, 11 Jun 2002 13:54:56 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a202=2f1_130DB3A0@fidonet.org>
+Message-ID: <20020611205456.A58F92757@sitemail.everyone.net>
+Reply-To: jlalarcon@linuxnobis.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: All
+  Hi friends.
 
-Hey folks!  My first post to the echo so here goes...
+  An ISP gift me the ADSL modem of the subject.
 
-Is it just me or did they put automount "back into" Mandrake 8.2 by
-default?  I know 8.1 had it disabled by default.
+  Anyone of you knows if this modem work with Linux?.
 
-... EMail: wolf@bbs.linux-dude.com -OR- wolf@todd.bungi.com
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
+  Nomore things for today.
 
+  Thanks very much, in advance.
 
+  Regards.
+
+  Jose.
+
+Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
+Mandrake Linux 8.2 Kernel 2.5.20 ReiserFS.
+Registered Linux User #213309.
+Memories..... You are talking about memories. 
+Rick Deckard. Blade Runner.
+
+_____________________________________________________________
+Linux for the Desktop
+Software, Setup, chat & email.
+http://www.linuxnobis.com
+
+_____________________________________________________________
+Promote your group and strengthen ties to your members with email@yourgroup.org by Everyone.net  http://www.everyone.net/?btn=tag
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
