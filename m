@@ -1,66 +1,64 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Networking issue
-Date: Fri, 03 Jan 2003 08:20:09 -0800
+From: Tabris <tabris@tabris.net>
+Subject: Re: how to remove Grub
+Date: Fri, 3 Jan 2003 13:29:09 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030103080553.0211e270@celine>
-References: <5.1.0.14.1.20030102230450.0211b230@celine>
- <5.1.0.14.1.20030102230450.0211b230@celine>
+Message-ID: <200301031329.11129.tabris@tabris.net>
+References: <5.1.0.14.0.20030102071047.00bb7e88@mail.comcast.net> <200301030838.24728.genright@paradise.net.nz>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200301032101.07628.Adam@Luchjenbroers.com>
+In-Reply-To: <200301030838.24728.genright@paradise.net.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: glenn <genright@paradise.net.nz>
+Cc: linux-newbie@vger.kernel.org
 
-At 09:01 PM 1/3/03 +0930, Adam Luchjenbroers wrote:
->On Friday 03 Jan 2003 4:39 pm, Ray Olszewski wrote:
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+On Thursday 02 January 2003 02:38 pm, glenn wrote:
+> On Fri, 03 Jan 2003 1:18 am, Chris wrote:
+> > Does anyone know how to remove/uninstall the Grub loader from Red
+> > Hat 8.0?
+> >
+> > I've been dual booting my PC between WinXP and RH8, but have now
+> > set up a separate PC in an attempt to learn Linux without fear of
+> > destroying what I have on my XP box, and would like to restore it
+> > back to XP only.
+> >
+> > With DOS/Win9x I'd just use "FDISK /MBR" to remove LILO, but I'm
+> > not sure what to do with XP and Grub.  Is it the same procedure?
+> >
+> > Thank you,
+> > Chris
 >
->Got everything pretty much fixed, except for one thing.
+> Firstly, is XP on the same physical disk drive as linux or a seperate
+> disk.
 >
->Something perioically seems to re-add a line to hosts.deny that forbids
->connections from everything but localhost.
->/proc/sys/net/ipv4/icmp_echo_ignore_all also gets reset to 1 (but this
->happened at a different time)
->
->/var/spool/cron has no entries
+> If they are on the same drive then using the /mbr option will prevent
+> you booting onto XP as well. However if the drive is phisically
+> seperate then go ahead and clean it up.
 
-I infer (from the comment about cron) that these changes occur while the 
-server is running, rather than as the result of a reboot. And when you say 
-"/var/spool/cron has no entries", I understand you to mean that it does not 
-have the usual subdirectories (since /var/spool/cron is a directory, not a 
-file). Beyond that ... you'd get better help from someone who uses Mandrake 
-than from a Debian user like me, since this behavior most likely reflects 
-something idiosyncratic to Mandrake.
+w00t the fuque? howso? the only problem will be that the windows 
+partition needs to be set bootable.
 
-So ... all I can offer is some reflection on how I'd try to investigate an 
-unknown problem of this sort. Putting aside obvious things like a Google 
-search,  I'd first try to ping down "periodically" to a more precise value.
+otherwise, i don't see the problem. care to enlighten me?
+> -
+> To unsubscribe from this list: send the line "unsubscribe
+> linux-newbie" in the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-When you discover the change in /etc/hosts.deny, what is the timestamp on 
-the file?
+- -- 
+The help people need most urgently is help in admitting that they need 
+help.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
 
-Look through your process list and see if there is some daemon running that 
-might do things like this. Have you installed a firewall package (though 
-I'd be astounded if Shorewall, the one you mentioned trying, did anything 
-this silly ... it is a well-designed app)?
-
-Might one of the other cron-job files (the ones in /etc) be running 
-something that makes these changes?
-
-For example, is something running one of your init scripts with the 
-"restart" switch? Check (using "grep") all the init scripts (does Mandrake 
-keep these in /etc/init.d or somewhere else?) for any references to 
-hosts.deny or "icmp_echo".
-
-That's about all I can think of for starters.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+iD8DBQE+FdZ1tTgrITXtL+8RAo9OAJwJ3HFJWbGAf7mIFlQbWqgic3d7kACeLje4
+WlEyZXVxUAlvhNG6zGKZgmQ=
+=3ORK
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
