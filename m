@@ -1,33 +1,26 @@
-From: Jesse Armand <matrix_rev2002@yahoo.com>
-Subject: Re: remote login
-Date: Mon, 10 Mar 2003 01:02:26 -0800 (PST)
+From: ramzez <r4mz3z@yahoo.es>
+Subject: how do I can hear mp3 with alsa?
+Date: 10 Mar 2003 05:31:31 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030310090226.75523.qmail@web10702.mail.yahoo.com>
-References: <5.1.0.14.1.20030309223939.01f09a58@celine>
+Message-ID: <1047292295.2797.3.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030309223939.01f09a58@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-OK, let me explain,
-i'm using FreeBSD 3.5 on my remote server.
-and i realize that some client is able to hide their
-ip adress and hostname from viewing by other client.
+HI friends... 
+  I recently install alsa drivers and works very well with ogg files,
+but It doesn't work with mp3 files... how do I can listen mp3 files? 
 
-when i use the "w" command, the FROM column shows
-nothing or blank, and when i use "finger", the client
-username don't show up. the same results happen with
-"who" command
+thanks 
+-- 
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
 
-I ask this because I want to know, nothing more
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Tax Center - forms, calculators, tips, more
-http://taxes.yahoo.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
