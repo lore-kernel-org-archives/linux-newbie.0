@@ -1,66 +1,34 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: tcpdump: How do I filter 'bootp' packets?
-Date: Wed, 08 Dec 2004 17:56:22 -0500
-Message-ID: <41B78696.7000500@gelm.net>
-References: <Pine.LNX.4.21.0412080338310.623-100000@hestia> <Pine.LNX.4.21.0412080338310.623-100000@hestia> <5.1.0.14.1.20041207220544.01f98370@celine> <41B6FDFC.3070309@gelm.net> <41B77BE5.6000001@verizon.net>
-Reply-To: chuck@gelm.net
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: 2 questions: 1. ssh permissions to 777 and 2. recursively change all directories/files to 777
+Date: Thu, 9 Dec 2004 16:11:50 -0500
+Message-ID: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41B77BE5.6000001@verizon.net>
+In-Reply-To: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Jim Nelson <james4765@verizon.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Jim Nelson wrote:
-> chuck gelm wrote:
-> 
->> Howdy:
->>
->>  I have cable modem access to the internet now and the download speed is
->> double my original DSL speed.  :-)    However, I am concerned about
->> security.
->>
->>  Can other cable modem subscribers see my packets?
->>
-> 
-> IIRC, most modern cable modems filter anything not addressed to them - 
-> you'd have to hack your modem to get it to go into promiscuous mode.
-> 
-> It's not easy to do, and it relies on brain-dead network admins to leave 
-> some back doors in.
-> 
-> OTOH, you could probably find hardware to do just this - if you were in 
-> law enforcement.
-> 
->>  To test this, I am trying to use tcpdump to monitor packets that my
->> cable modem is sending to my 'router'.
->>
->>  I am using these arguments:
->> tcpdump -i eth1 -c 9 -nt not arp and not host W.X.Y.Z > \ 
->> http://gelm.net/tcpdump.txt
->>
->>
->>  (<W.X.Y.Z> == My assigned IP address)
->>
->>  I am still seeing many 'bootp' packets.
->>
->> How do filter out 'bootp' packets with tcpdump?
->>
->> Regards, Chuck
 
-  Hi, Jim:
+First question...
+We have people SSHing into our Linux box from overseas (India to US, company
+access only). But files that are uploaded from these people become read-only
+to anyone else accessing them. We *require* that they be readable/writable
+by this side of the pond (US). How can I set this to occur? Otherwise, this
+method of transferring files will *not* work for us, and perhaps someone can
+point me to another solution.
 
-  I am filtering 'my ip', port 67, and 'arp' and, for several minutes
-now, tcpdump has displayed zero packets.  So, I seems that...
+Second question...
+How can I recursively set all files/directories to 777?
+Chmod -R 777 *.* ... Didn't seem to hit everything.
 
-  It would require special hardware for others to view my  packets.
+Thanks!
 
-  I wanted to be sure that it wouldn't be easy.
-
-Regards, Chuck
+-Eve
 
 
 -
