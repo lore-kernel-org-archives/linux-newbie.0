@@ -1,38 +1,75 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: keeping static ip address alive between restarts
-Date: Sat, 21 Feb 2004 07:34:56 +0100
+From: Paulo Jorge de Oliveira Cantante de Matos <pocm@netvisao.pt>
+Subject: Re: Kernel seems to be blocking messages
+Date: Sat, 21 Feb 2004 14:03:31 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402210734.56215.pa3gcu@zeelandnet.nl>
-References: <fc.004c4e000050d4a1004c4e000050d4a1.50d523@palmertrinity.org> <20040220182421.GA865@lnx2.w8mch.ampr.org> <40365BE7.8070408@rbcmail.ru>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <1077372211.8540.18.camel@localhost>
+References: <Pine.BSF.4.21.0402211221570.194-100000@hephaestus.sera.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <40365BE7.8070408@rbcmail.ru>
-Content-Disposition: inline
+In-Reply-To: <Pine.BSF.4.21.0402211221570.194-100000@hephaestus.sera.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: asterr <asterr@pobox.com>
+Cc: linux-admin@vger.kernel.org, linux-newbie@vger.kernel.org
 
-On Friday 20 February 2004 20:11, Andrey V. Romanchev wrote:
-> OMG :)
-> There is more proper place in Slackware to set static ip address
-> /etc/rc.d/rc.inet1.conf (only since 9.1)
->
-> or just run netconfig
+Hummm, that's very possible. I'm using iptables and I did tried
+somethings with them... I'll see what's happening when I get home from
+work.
 
-The question was concerning Redhat NOT Slackware.
+Thanks a lot... :)
+I'll then tell you if you were right.
 
+Cheers,
+
+Paulo Matos
+
+On Sat, 2004-02-21 at 03:22, asterr wrote:
+> I have seen this when iptables is running and pings are not permissioned.
+> 
+> On Sat, 21 Feb 2004, Paulo Jorge de Oliveira Cantante de Matos wrote:
+> 
+> > Hi all, 
+> > I have a server running 2.6.2-rc1, and I was happily installing
+> > vpopmail and reading the vpopmail gentoo guide (www.gentoo.org). Somehow
+> > (don't ask me
+> > why) every net connections seem to stop and get blocked. Now I cannot
+> > make any socket connection. For example: 
+> > 
+> > # ping localhost 
+> > PING descartes.geniousdomain (127.0.0.1) 56(84) bytes of data. 
+> > ping: sendmsg: Operation not permitted 
+> > ...
+> > 
+> > Any ideas on how to unblock the situation? 
+> > 
+> > Cheers,
+> > -- 
+> > 
+> > Paulo J. Matos : pocm [_at_] mega . ist . utl . pt
+> > Instituto Superior Tecnico - Lisbon
+> > Computer and Software Eng. - A.I.
+> >  - > http://mega.ist.utl.pt/~pocm
+> > ---
+> >         -> God had a deadline...
+> >                 So, he wrote it all in Lisp!
+> > 
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-admin" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > 
+> > 
+> > 
 -- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Paulo J. Matos : pocm [_at_] mega . ist . utl . pt
+Instituto Superior Tecnico - Lisbon
+Computer and Software Eng. - A.I.
+ - > http://mega.ist.utl.pt/~pocm
+---
+        -> God had a deadline...
+                So, he wrote it all in Lisp!
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
