@@ -1,43 +1,33 @@
-From: caszonyi@rdslink.ro
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: sound problems on Debian unstable
-Date: Thu, 7 Apr 2005 00:23:30 +0300 (EEST)
-Message-ID: <Pine.LNX.4.60.0504070022080.852@grinch.ro>
+Date: Wed, 6 Apr 2005 16:53:37 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504061649470.5570@localhost.localdomain>
 References: <5.1.0.14.1.20050406092225.02059310@celine>
  <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
  <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+ <Pine.LNX.4.60.0504070022080.852@grinch.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
+In-Reply-To: <Pine.LNX.4.60.0504070022080.852@grinch.ro>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wed, 6 Apr 2005, James Miller wrote:
+On Thu, 7 Apr 2005 caszonyi@rdslink.ro wrote:
 
-> On Wed, 6 Apr 2005, Ray Olszewski wrote:
+> On Wed, 6 Apr 2005, James Miller wrote:
 >
->
-> With sb_irq=XXX (and so forth) in the same line as pas2, I do not get these 
-> sorts of error messages. Just a clean:
-> Pro Audio Spectrum driver Copyright (C) by Hannu Savolainen 1993-1996
->
-> But sound still works very poorly. Very scratchy when I play mp3's/ogg's with 
-> pauses when I open an application, switch terminals or some other computer 
-> activity takes place.
->
+> Are you sure your soundcard is not sharing interrupts with other device ?
 
-Are you sure your soundcard is not sharing interrupts with other device ?
+Not totally, no. cat /pro/interrupts shows only PAS16 assigned to IRQ 3. 
+But dmesg output has ttyS1 using IRQ 3. It's a bit confusing to me. I 
+assigned it IRQ 3 because previously, when checking cat /proc/interrupts 
+output I was not even seeing 3 listed. There's nothing hooked to ttyS1 
+btw. I suppose it's one of the machine's 2 serial ports.
 
-
-
---
-?
-
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
