@@ -1,59 +1,34 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Screen size
-Date: Mon, 26 Aug 2002 19:28:35 -0700
+From: HaehnelRobert@netscape.net (Robert Haehnel)
+Subject: Solved: really hidden hidden files
+Date: Mon, 26 Aug 2002 22:26:59 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020826192017.025d7d90@celine>
-References: <Pine.LNX.4.21.0208261501060.8397-100000@Consulate.UFP.CX>
-Mime-Version: 1.0
+Message-ID: <614DC669.2269ADD6.7C182763@netscape.net>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0208261501060.8397-100000@Consulate.UFP.CX>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Riley Williams <Riley@Williams.Name>, Linux Newbies <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-See below.
+Thanks to all, I was able to cure the problem in an unexpected way. I tried downloading one of those dos utils to view and kill the files (not LIST 'cuase it cost something, and I don't need that kind of help often) and they couldn't find the files either. I also tried attrib and still no luck.
 
-At 03:08 PM 8/26/02 +0100, Riley Williams wrote:
->Hi there.
->
->We're talking about a Red Hat 7.3 system here, but the question is
->probably equally relevant both to earlier Red Hat systems and to
->other distributions as well. We are also NOT talking about X-Windows
->but about the virtual text consoles.
->
->When one is booting into Linux, one can specify "vga=1" on the kernel
->command line to specify that one wishes to have an 80x50 text screen.
->How does one specify this after Linux has finished booting?
->
->The reason I ask is that although it's specified on the command line,
->something during the init process switches it back to 80x25 lines. I'd
->prefer to have it in 80x50 mode on this computer though.
+I inserted the win98 CDROM and ran Setup.exe from the CD and it ignored all of that garbage about formatting a CD drive and successfully installed. Go figure!
 
-Hmmm ... "something"?
+I know this was not a Linux problem (rarely do I have problems in Linux come to think of it) but thanks for your help. 
 
-Richard said more about the framebuffer than I know, but that is, I think, 
-not what you are asking about. The man page for lilo.conf includes this bit 
-(about the vga= parameter)--
-
-               If this variable is omitted, the VGA  mode  setting
-               contained in the kernel image is used. (And that is
-               set at compile time using the SVGA_MODE variable in
-               the  kernel Makefile, and can later be changed with
-               the rdev(8) program.)
-
- From the man page for rdev, it *appears* that it can change the SVGA 
-setting while Linux is running if invoked as vidmode. Take a look and see 
-if this is what you are looking for (I didn't test it here). You might also 
-check if one of RH's init scripts is executing a vidmode command ... it is 
-certainly a candidate for your mysterious "something".
-
-
+Hopefully my son won't trash the computer again anytime soon ...
+ 
 --
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+
+R. Haehnel
+
+
+
+
+__________________________________________________________________
+Your favorite stores, helpful shopping tools and great gift ideas. Experience the convenience of buying online with Shop@Netscape! http://shopnow.netscape.com/
+
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
