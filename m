@@ -1,34 +1,73 @@
-From: Richard Spencer <rspr@sunflower.com>
-Subject: unable to make dep; limit.h
-Date: Sun, 2 Feb 2003 21:12:10 -0500
+From: whitnl73@juno.com
+Subject: Re: Minicom and Modem
+Date: Sun, 2 Feb 2003 22:30:24 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030202211210.A2446@jetty>
+Message-ID: <20030202.223939.8.0.whitnl73@juno.com>
+References: <03020220113803.19519@unix.pa3gcu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <03020220113803.19519@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: pa3gcu@zeelandnet.nl
+Cc: sotl155360@earthlink.net, linux-newbie@vger.kernel.org
+
+On Sun, 2 Feb 2003, pa3gcu wrote:
+
+> On Sunday 02 February 2003 17:52, Frank Robers _ SOTL wrote:
+>
+> > Please I don't want to get into the configuration of a Sweitzer system (the
+> > system being controlled) on this list. Suffice it to say that it is not
+> > Linux nor MS.
+>
+> Sorry i was under the impresstion that both machines were linux.
+>
+> >
+> > I only want to configure Minicom under linux in the format in which I
+> > previously had it before I lost the Minicom installation instructions.
+>
+> Simply start as root, minicom and use -s
+> minicom -s
+> change the port setting to /dev/ttyS0 (i belive you said com1)
+> make sure the speed is correct and it should work.
+>
+Right.  The two programs at either end of a null modem cable must agree
+beforehand exactly what speed the line is to run at, otherwise neither
+will see what the other is sending.  If you get parity, data bits,or
+stop bits wrong, you should at least see garbage.  Oh, windows tends not
+to work the control lines according to RS-232, so you might need to set
+minicom to ignore Carrier Detect, by default I think it expects carrier
+detect to be on if something is at the other end, otherwise it shows a
+status of Offline and waits.  stty(1) or termios(3) setting would be
+clocal/CLOCAL, sorry I don't remember the minicom setting and don't have
+minicom installed just now.  Hardware flow control might not work right
+with a windows program either; null modem cables made for windows tend
+not to have those lines even present.  You might need to turn off
+hardware flow control in minicom.
+> >
+> > What I would appreciate knowing is if I issue the commands you suggest will
+> > that change the operation of Kppp such that I can not then connect to the
+> > Internet.
+>
+> Yes it possably would, disregard what i said about /dev/modem.
+>
+> >
+> >
+> > Thanks
+> > Frank
+>
+>
+Lawson
+--
+---oops---
 
 
-I hope someone can point me in the right direction. I tried to compile a new kernel (version 2.4.20) and I ended up with the following error message:
 
-[root@jetty linux-2.4.20]# make dep
-gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -o scripts/mkdep scripts/mkdep.c
-In file included from /usr/include/bits/posix1_lim.h:126,
-                 from /usr/include/limits.h:30,
-                 from /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:117,
-                 from /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/syslimits.h:7,
-                 from /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:11,
-                 from scripts/mkdep.c:35:
-/usr/include/bits/local_lim.h:27: linux/limits.h: No such file or directory
-make: *** [scripts/mkdep] Error 1
-
-I currently run Linux kernel 2.2.22 on a pentium laptop and RedHat 6.2 and I would appreciate any help or suggestions as to where to look. Thank you!
-
-
-
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
