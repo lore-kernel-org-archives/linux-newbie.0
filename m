@@ -1,39 +1,34 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: PPP Question
-Date: Wed, 25 Sep 2002 08:21:09 -0700
+Subject: Re: Dumb Questions
+Date: Wed, 25 Sep 2002 08:28:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020925082025.025f05e0@celine>
-References: <Your message of "Tue, 24 Sep 2002 19:46:30 MST." <5.1.0.14.1.20020924194522.025f49a0@celine>
+Message-ID: <5.1.0.14.1.20020925082351.025f3b60@celine>
+References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209250800.g8P80cK04820@philonline.com>
+In-Reply-To: <000401c26496$bf7d7f20$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 04:00 PM 9/25/02 +0800, Peter wrote:
->Thanks Ray!
->
->ray@comarre.com said:
-> > Glad you got it working. One small correction on what I sent you
-> > before.
->
-> > At 10:31 AM 9/25/02 +0800, Peter wrote: [...]
->
-> > >There is no such file as /etc/interfaces
->
-> > Sorry. Make that /etc/network/interfaces .
->
->There are no interfaces files in my RH7.2 box /etc/. I had checked it 
->before I
->sent the message. There is only a /etc/networks which is empty and there is
->/etc/sysconfig/network.
+At 09:23 AM 9/25/02 -0400, Paul Kraus wrote:
+>What does foo stand for. It is used everywhere. I understand its just a
+>placeholder for the file name or what ever is pertinent to the context
+>it is used but I would still like to know what it means.
 
 
-Curious. What does your man page for "ifup" say about where it looks for 
-its default interfaces file?
+These days it doesn't "stand for" anything. It's just one of those 
+placeholder words, like "widget" or  "gismo", just as you note.
 
+Its history, though, has two pieces that I can think of.
+
+First, F00 is a hex number; in the real old (punch-card) days, I recall 
+system operators talking about F00F errors, for example. The step from F00F 
+to FOO is small.
+
+Second, you will often see Foo used in conjunction with Bar. Put them 
+together and  ... well, I trust you can figure that one out without my help.
 
 
 --
