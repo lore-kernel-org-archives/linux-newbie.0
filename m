@@ -1,52 +1,22 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: Re: Suse 8.1 (passwords, install of packages)
-Date: Wed, 26 Mar 2003 17:18:44 +0100
+From: J S <webnews@comcast.net>
+Subject: Mandrake 9.1 kernel
+Date: Wed, 26 Mar 2003 18:03:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303261718.54084.James.Hatridge@epost.de>
-References: <026b01c2ee1f$41100140$cdfea8c0@pkraus>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <1048719804.1758.1.camel@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <026b01c2ee1f$41100140$cdfea8c0@pkraus>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pkraus@pelsupply.com, linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I noticed at the Mandrake website that Mandrake 9.1 claims to ship with
+kernel 2.4.21.  The odd thing is that 2.4.21 hasn't been released as a
+stable release yet.  Does anyone know what they are actually using?  Is
+it Mandrake's policy to ship the latest prepatches instead of stable
+versions?
 
-HI Paul et al...
-On Wednesday 19 March 2003 14:55, Paul Kraus wrote:
-> When I created my user account it truncated my password to 8 characters.
-> Any way around this?
-
-As root start YAST
-
-Security -> settings
-go to second screen
-Password length
-
-Hope this helps,
-
-JIM
-- -- 
-Jim Hatridge
-Linux User #88484
-- ------------------------------------------------------
-                 BayerWulf
-           Linux System # 129656
-         The Recycled Beowulf Project
-  Looking for throw-away or obsolete computers and parts
-   to recycle into a Linux super computer
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
-
-iD8DBQE+gdLpv3Z9K7QSWt4RArMkAJ9WmIku8HsR1hjHOWNANZn6Av3rSACg9Z+I
-/cDbXcmwXzkIDzDV6rZlT/g=
-=Uqeu
------END PGP SIGNATURE-----
-
+Josh
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
