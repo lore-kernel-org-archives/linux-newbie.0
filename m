@@ -1,31 +1,41 @@
-From: jude dashiell <dashielljt@gmpexpress.net>
+From: Peter Edstrom <peter.p3@home.se>
 Subject: Re: Filtering Email to Delete Without Using POP Filters
-Date: Sat, 9 Aug 2003 15:24:36 -0400 (EDT)
+Date: Sat, 9 Aug 2003 23:40:55 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0308091520360.32702@localhost>
-References: <200308091403.18490.sotl155360@earthlink.net>
+Message-ID: <20030809214055.GA7283@linux>
+References: <200308091403.18490.sotl155360@earthlink.net> <Pine.LNX.4.53.0308091520360.32702@localhost>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200308091403.18490.sotl155360@earthlink.net>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.53.0308091520360.32702@localhost>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Any number of ways exist to do what you want in Linux.  If you use pine,
-under setup and rules you'll find filters and you want to add a filter.
-Then name the filter and fill in your criteria.  Save it and exit and the
-e-mail is gone.  There's procmail but it like sendmail is a major bitch in
-terms of getting operational and you have to keep on adding filters to it.
-I may go back to procmail though having used pine because procmail can
-forward spam to different mailing addresses very easily once you get it
-set up correctly.  mailfilter is another package that can do much the same
-thing as well.
+Using procmail is a very good way of handling mail filtering, in my
+opinion. You can easily combine it with a spam filter (ie. bmf; take a
+look at http://sourceforge.net/projects/bmf/ for more info) to limit the
+amount of spam you receive. I think setting up new filters is not that a 
+big deal, if you consider the great usage and portability of procmail
+(you're not limited to any specific MUA).
 
--- 
-Registered as user #315636 with the Linux Counter,
-http://counter.li.org/!
+If you find it frustrating manually adding mail filters, why don't you
+write a li'l bash script? :)
+
+Well, just my .2 SEK worth.
+
+On Sat, Aug 09, 2003 at 03:24:36PM -0400, jude dashiell wrote:
+> Any number of ways exist to do what you want in Linux.  If you use pine,
+> under setup and rules you'll find filters and you want to add a filter.
+> Then name the filter and fill in your criteria.  Save it and exit and the
+> e-mail is gone.  There's procmail but it like sendmail is a major bitch in
+> terms of getting operational and you have to keep on adding filters to it.
+> I may go back to procmail though having used pine because procmail can
+> forward spam to different mailing addresses very easily once you get it
+> set up correctly.  mailfilter is another package that can do much the same
+> thing as well.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
