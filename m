@@ -1,33 +1,101 @@
-From: "BEN RITCHEY" <linux-net@tcob1.net>
-Subject: copying file systems ...
-Date: Thursday, 30 Jan 2003 00:10:08 +000
+From: Terje Eggestad <terje.eggestad@scali.com>
+Subject: Re: debate on 700 threads vs asynchronous code
+Date: 30 Jan 2003 10:36:24 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a20=2f1_0993d1f9@linuxnet>
+Message-ID: <1043919384.857.3.camel@pc-16.office.scali.no>
+References: <20030129172631.29782.qmail@mail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030129172631.29782.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Lee Chin <leechin@mail.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
 
-Originally to: JAMIE RISK
+On ons, 2003-01-29 at 18:26, Lee Chin wrote:
+> Today I do method (C)... but many people seem to say that, hey,
+> pthreads does almost just that with a constant memory overhead of
+> remembering the stack per blocking thread... so there is no time
+> difference, just that pthreads consumes slightly more memory.  That is
+> the issue I am trying to get my head around.
+> 
+> That particular question, no one has answered... in Linux, the
+> scheduler will not go around crazy trying to schedule prcosses that
+> are all waiting on IO.  NOw the only time I see a degrade in threads
+> would be if all are runnable.... in that case a async scheme with two
+> threads would let each task run to completion, not thrashing the
+> kernel.  Is that correct to say?
 
-* An ongoing debate between Jamie Risk and All rages on ...
 
- JR: > How do I copy an entire file system, symlinks and all, to a
- JR: > temporarily mounted partition? (what are the pertinent 'cp' switches?)
- JR: > I've got an extra harddrive (&PC) and I want to mirror my original
- JR: > system with as little work as possible.
+Yes
 
-I use cp for backups as "cp -av /dir1/ /mnt/backup", etc. Just skip /proc <g>
+And you can add that if you have many runnable threads, there will be an
+extra overhead doing context switching.
 
---
-Keep the faith,
 
- : Ben        http://bellsouthpwp.net/c/m/cmech617/
- :         ICQ #32457590  AIM/Yahoo:benritchey  Jabber:cMech
- :
- + WildCat! Board 24/7  (337) 232-4155  33.6kBps 8,N,1  Free Software!
+> ----- Original Message -----
+> From: Terje Eggestad <terje.eggestad@scali.com>
+> Date: 27 Jan 2003 10:48:22 +0100
+> To: Lee Chin <leechin@mail.com>
+> Subject: Re: debate on 700 threads vs asynchronous code
+> 
+> > Apart from the argument already given on other replies, you should
+> > keep in mind that you probably need to give priority to doing receive.
+> > THat include your clients, but if you don't you run into the risk of
+> > significantly limiting your bandwidth since the send queues around your
+> > system fill up. 
+> > 
+> > Try doing that with threads. 
+> > 
+> > 
+> > Actually I would recommend the approach c)
+> > 
+> > c)  Write an asynchronous system with only 2 or three threads where I
+> > manage the connections and keep the state of each connection in a data
+> > structure.  
+> > 
+> > 
+> > On fre, 2003-01-24 at 00:19, Lee Chin wrote:
+> > > Hi
+> > > I am discussing with a few people on different approaches to solving a scale problem I am having, and have gotten vastly different views
+> > > 
+> > > In a nutshell, as far as this debate is concerned, I can say I am writing a web server.
+> > > 
+> > > Now, to cater to 700 clients, I can
+> > > a) launch 700 threads that each block on I/O to disk and to the client (in reading and writing on the socket)
+> > > 
+> > > OR
+> > > 
+> > > b) Write an asycnhrounous system with only 2 or three threads where I manage the connections and stack (via setcontext swapcontext etc), which is progromatically a little harder
+> > > 
+> > > Which way will yeild me better performance, considerng both approaches are implemented optimally?
+> > > 
+> > > Thanks
+> > > Lee
+> > -- 
+> > _________________________________________________________________________
+> > 
+> > Terje Eggestad                  mailto:terje.eggestad@scali.no
+> > Scali Scalable Linux Systems    http://www.scali.com
+> > 
+> > Olaf Helsets Vei 6              tel:    +47 22 62 89 61 (OFFICE)
+> > P.O.Box 150, Oppsal                     +47 975 31 574  (MOBILE)
+> > N-0619 Oslo                     fax:    +47 22 62 89 51
+> > NORWAY            
+> > _________________________________________________________________________
+> > 
+-- 
+_________________________________________________________________________
+
+Terje Eggestad                  mailto:terje.eggestad@scali.no
+Scali Scalable Linux Systems    http://www.scali.com
+
+Olaf Helsets Vei 6              tel:    +47 22 62 89 61 (OFFICE)
+P.O.Box 150, Oppsal                     +47 975 31 574  (MOBILE)
+N-0619 Oslo                     fax:    +47 22 62 89 51
+NORWAY            
+_________________________________________________________________________
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
