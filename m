@@ -1,49 +1,48 @@
-From: Colin Charles <byte@aeon.com.my>
-Subject: RE: Kernel 2.6.10 Can't Open Initial Console on FC3
-Date: Mon, 03 Jan 2005 11:09:28 +0800
-Message-ID: <1104721768.32006.180.camel@localhost.localdomain>
-References: <3k77vr$fs05t3@mxip08a.cluster1.charter.net>
-Reply-To: Development discussions related to Fedora Core <fedora-devel-list@redhat.com>
+From: Ulrich =?ISO-8859-15?Q?F=FCrst?= <heimwill@compuserve.de>
+Subject: Re: Do not delete files by mistake (was Re: retrieval)
+Date: Mon, 3 Jan 2005 19:14:36 +0100
+Message-ID: <20050103191436.63d4d8ab@sarge>
+References: <20041231045512.81128.qmail@web52901.mail.yahoo.com>
+	<4b0d6e0d05010200016a7c3abe@mail.gmail.com>
+	<20050102093240.1675fba2@sarge>
+	<200501030733.09945.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <fedora-devel-list-bounces@redhat.com>
-In-Reply-To: <3k77vr$fs05t3@mxip08a.cluster1.charter.net>
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200501030733.09945.pa3gcu@zeelandnet.nl>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-Unsubscribe: <http://www.redhat.com/mailman/listinfo/fedora-devel-list>, 
-	<mailto:fedora-devel-list-request@redhat.com?subject=unsubscribe>
-List-Archive: <https://www.redhat.com/archives/fedora-devel-list>
-List-Post: <mailto:fedora-devel-list@redhat.com>
-List-Help: <mailto:fedora-devel-list-request@redhat.com?subject=help>
-List-Subscribe: <http://www.redhat.com/mailman/listinfo/fedora-devel-list>,
-	<mailto:fedora-devel-list-request@redhat.com?subject=subscribe>
-Sender: fedora-devel-list-bounces@redhat.com
-Errors-To: fedora-devel-list-bounces@redhat.com
-Content-Type: text/plain; charset="us-ascii"
-To: Development discussions related to Fedora Core <fedora-devel-list@redhat.com>
-Cc: mikeserv@bmts.com, Fedora List <fedora-list@redhat.com>, jwendel10@comcast.net, zaitcev@redhat.com, Linux Newbie <linux-newbie@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-On Sat, 2005-01-01 at 10:05 -0600, Joseph D. Wagner wrote:
-> They tell me there's a way to make it work without initrd, but it's
-> ugly, messy, and not recommended:
-> 
-> http://fedora.redhat.com/docs/udev/
-> 
-> I haven't yet tested to see if it works with initrd and without
-> support for hotplug devices, but from the documentation I've read my
-> money is on no.
+Richard Adams <pa3gcu@zeelandnet.nl> wrote:=20
+> On Sunday 02 January 2005 09:32, Ulrich F=FCrst wrote:
+> > or you can put the following into your .bashrc
+> > alias rm=3D'mv --target-directory=3D/root/Desktop/Trash $1 '
+>=20
+> I dont have the origanal message anymore to check, but i thought the
+> thread was about a "user" deleting files, if that is correct then the
+> above will not work as a normal user cannot write to /root (s)
+> directory.
+He didn't write about user or root. And I took the example out of root'=
+s
+bashrc by random. I've got the same in the bashrc of each user.
+>=20
+> It is a good idea to do the same for root and users tho'.
+> On another note many distro's dont have a trash directory, so the nee=
+d
+> to create one arises as well.
+But that's no problem. You can take $HOME/.trash or whatever. I also
+created a script running as cron job to keep the size of the directory
+(it's contents) below a defined size.
 
-It does work. For quite a while on the PPC tree, we ended up doing some
-manual MAKEDEVs to make it work. IIRC, booting with selinux=0 might have
-been required as well
+Ulrich
 
-(this was in the pre-FC-3 rawhide days)
--- 
-Colin Charles, byte@aeon.com.my
-http://www.bytebot.net/
-"First they ignore you, then they laugh at you, then they fight you, 
-then you win." -- Mohandas Gandhi
-
--- 
-fedora-devel-list mailing list
-fedora-devel-list@redhat.com
-http://www.redhat.com/mailman/listinfo/fedora-devel-list
+By the way: You could also tell KDE to use any directory as a trash
+directory.
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
