@@ -1,8 +1,8 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: Mozilla update - EZ question
-Date: Thu, 23 May 2002 06:13:13 +0000
+Date: Thu, 23 May 2002 06:15:20 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0205230613131S.27213@unix.pa3gcu>
+Message-ID: <aci1b2$phc$2@main.gmane.org>
 References: <5.1.0.14.1.20020521231413.027ca8c0@celine> <1022097748.11803.7.camel@ltsp1> <1022109312.11952.22.camel@ltsp1>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
@@ -11,10 +11,13 @@ Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <1022109312.11952.22.camel@ltsp1>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Dan Bentson-Royal <dbentson@lcsd.k12.wa.us>, 
+To: Dan Bentson-Royal <dbentson@lcsd.k12.wa.us>
 Cc: linux-newbie@vger.kernel.org
 
 On Wednesday 22 May 2002 23:15, Dan Bentson-Royal wrote:
+
+BTW your origanal mail had an invalid header in the To field.
+
 > I just re-read my earlier post and saw it was less than clear. I will
 > repost again to try and clean it up a bit...
 >
