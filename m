@@ -1,39 +1,29 @@
-From: "Phillip Morgan" <pmorgan@qpbd999.quickpages.net.au>
-Subject: Majordomo fails to send : error 524
-Date: Tue, 18 Jun 2002 17:09:02 +1000
+From: Mark Johnson <rmjohnson@adelphia.net>
+Subject: re-setting up LILO?
+Date: Tue, 18 Jun 2002 13:16:06 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206180709.g5I792R09437@qpbd999.quickpages.net.au>
+Message-ID: <3D0F9506.3000408@adelphia.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I'm setting up majordomo 1.94.5 for a single list, and have installed 
-it as per the docs. This used to work on another machine using sendmail 
-8.9.3 on slackware 2.2.6. I'm now using a new machine with sendmail 
-8.11.4, and linix 2.2.19 and I get messages sent to the list returned..
+Hello all,
+    I recently installed Windows XP and reformatted to NTFS.  I then 
+Installed my partition magic and bootmagic, and boot magic wouldn't 
+install to the ntfs partition.  well, my problem is that boot magic said 
+to not use lilo in the mbr so I told lilo to boot from ext2 partition 
+and bootmagic booted lilo from the partition.  now that I don't have 
+bootmagic I have to boot from floppy as Lilo doesn't come up.  I read 
+through the man pages and the help from "lilo --help" and I can't figure 
+out how to get Lilo to boot from the MBR again?  does anyone know which 
+option tells LILO to boot from the MBR instaed of the ext2 partition?
 
-What is a 5.2.4 error? I can't find it listed on RFC821, or its 
-successor RFC2821... This is the error header...
+Thanks
+    -=Mark=-
 
->From: Mail Delivery Subsystem <MAILER-DAEMON@qpbd999.quickpages.net.au>
->To: owner-quantumleap@quantumleap.org.au
->Subject: Returned mail: see transcript for details  All headers  
->This is a MIME-encapsulated message
->
->Reporting-MTA: dns; qpbd999.quickpages.net.au
->Arrival-Date: Tue, 18 Jun 2002 17:01:06 +1000
->
->Final-Recipient: RFC822; quantumleap-list@qpbd999.quickpages.net.au
->X-Actual-Recipient: rfc822; /usr/local/majordomo-
-1.94.5/lists/quantumleap@qpbd999.quickpages.net.au
->Action: failed
->Status: 5.2.4
->Last-Attempt-Date: Tue, 18 Jun 2002 17:01:06 +1000 
-
--- 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
