@@ -1,27 +1,26 @@
-From: "Ohadi, Hamid" <hamid.ohadi@imperial.ac.uk>
-Subject: logon by LDAP only for local users
-Date: Tue, 18 Jan 2005 00:45:52 +0000
-Message-ID: <20050118004552.GA1837@imperial.ac.uk>
+From: Jeremy Abbott <jkbullfrog@comcast.net>
+Subject: aterm pseudo transparancy tint
+Date: Tue, 18 Jan 2005 13:48:37 +0000
+Message-ID: <41ED13B5.8000903@comcast.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi all,
+Does anyone know if there is a way to set the tint color of an aterm to 
+be random?  Right now I am executing the following:
 
-We have a huge central LDAP server which is listing all users and their passwords.
-I have my own SUSE linux server on that domain. What I need to do is to enable my 
-users to be verified by that LDAP server so that I don't ask them to type their
-passwords everytime I create a new user. The problem is that I don't want to enable
-all other users of the LDAP server to logon my machine. Is it possible to do such a
-thing?
+aterm -tr -tint blue -trsb -rv -geometry 179x33 --font4
 
-regards
-Hamid
+I know I can write a script to randomize the color if I need to, I'm 
+just not sure how to implement it with the -tint switch.
+
+Thanks,
+Jeremy Abbott
+jkbullfrog@comcast.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
