@@ -1,56 +1,70 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Ogle and slow DVD playing.
-Date: Mon, 30 Sep 2002 20:03:45 +0000
+Subject: Re: Tar Backups
+Date: Mon, 30 Sep 2002 20:12:53 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02093020034506.00233@unix.pa3gcu>
-References: <20020930191336.C2A2D3C02@sitemail.everyone.net>
+Message-ID: <02093020125307.00233@unix.pa3gcu>
+References: <5.1.0.14.1.20020930123403.02c7c350@celine>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020930191336.C2A2D3C02@sitemail.everyone.net>
+In-Reply-To: <5.1.0.14.1.20020930123403.02c7c350@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jose Luis Alarcon <jlalarcon@linuxnobis.com>, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-On Monday 30 September 2002 19:13, Jose Luis Alarcon wrote:
->   Hi all. Long time since i was here last time.
+On Monday 30 September 2002 19:39, Ray Olszewski wrote:
+> At 03:21 PM 9/30/02 -0400, Paul Kraus wrote:
+> >Is there a way to have an index written? I am making 13gb backups and it
+> >takes forever to simply restore because it has to read each and every
+> >single file on the tape. This is actually on my sco box but the question
+> >is relevant because I plan on moving the file server to a red hat
+> >machine.
 >
->   Anybody can tell me what can are the reasons why ogle play the DVD movies
-> very slow?.
-
-
-Have you read the FAQ at www.dtek.chalmers.se/groups/dvd/faq.shtml 
-espestialy FAQ Nr, 20.
-
-Just how do you invoke ogle?
-What video card do you have?
-What driver is the Video card using.?
-What version of Xv are you using.? (xvinfo)
-What options do you pass to Xv "before" you play a DVD.?
-Do you use an MPEG2 decoder card like a DRX2 or DRX3.???
-Where does the output go too, TVout or Monitor.?
-What CPU do you use?
-How much Ram do you have.?
-What device does the audio go thro' (make and model please).
-
-There are a lot of factors which apply here, if i were to ask them all i 
-would need more bandwidth, its the last day of the month and my limit of 
-2.5Gb is just about used up.
-
-Help me/us to help you by supling the nessasary info.
-
->   TIA.
+> Do you mean that you want to use tar to make a tape backup, and at the same
+> time write a separate file that contains a list of all of the files on the
+> tape?
 >
->   Best regards.
+> If you do mean that ... then just run tar in verbose mode and redirect the
+> output to a file. Something like this (though this example saves to a .tar
+> file rather than tape):
 >
->   Jose.
+>          tar -cvf somename.tar filespec > index.txt
 >
-> Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
-> ESware Linux 365 Kernel 2.4.17 ReiserFS.
-> Registered Linux User #213309.
-> Memories..... You are talking about memories.
-> Rick Deckard. Blade Runner.
+> If you mean something more specific by "index", please describe in more
+> detail what you need.
+
+A good suggestion Ray, but what beats me is the "askers" signature,
+
+Quote;
+
+"
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
+"
+Network Admin ????? and he needs to ask this.!!!!
+
+Several mails a day and if i may say so most of the questions are solvable 
+with a simple reading of the manuals.
+
+One would think, if one is a Network Administrator, then he/she would know 
+about simple things which are asked here.
+Well i suppose someone will do his work for him then, at least he is getting 
+paid for the answers he gets here, note, but not from me, i have to earn my 
+money.
+
+>
+>
+> --
+> -------------------------------------------"Never tell me the
+> odds!"-------- Ray Olszewski					-- Han Solo
+> Palo Alto, California, USA			  ray@comarre.com
+> ---------------------------------------------------------------------------
+>----
 
 -- 
 Regards Richard
