@@ -1,102 +1,39 @@
-From: linux-newbie-owner@vger.kernel.org
-Subject: BURSLU  =?ISO-8859-1?Q?=20E=D0=DDT=DDM?=  =?ISO-8859-1?Q?=20OLANA=D0I?= 24
-Date: Sun, 21 Sep 2003 01:30:10 +0300
+From: Silambu Chelvan <silambu_mdu@yahoo.com>
+Subject: Switching between foreground and background
+Date: Mon, 22 Sep 2003 03:48:25 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S261984AbTITWaL/20030920223011Z+2903@vger.kernel.org>
+Message-ID: <20030922104825.81134.qmail@web20002.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-                                =20
-LEFKE AVRUPA =DCN=DDVERS=DDTES=DD
-(KIBRIS B=DDL=DDM VAKFI)
-Y=D6K taraf=FDndan tan=FDnan, Avrupa ve Amerika'da ge=E7erli diplomaya =
-en kaliteli
-ve en uygun har=E7larla sahip olma olana=F0=FD ...
-=20
-=D6SS S=FDnav=FDndan 185 ve =FCzeri ham puan alm=FD=FE =F6=F0renciler 4=
- y=FDll=FDk lisans
-programlar=FDna, 160 ve =FCzeri ham puan alan =F6=F0renciler ise 2 y=FD=
-ll=FDk meslek
-y=FCksek okullar=FDna kay=FDt yapabilirler.
+Hi all,
+ 
+I have written some program with signal handler. Is
+this possible, if 
+one of the signals registered with my program is
+raised, my program 
+should goto background and should come to foreground
+when some other of the 
+registered signal is raised. how to do it? 
+ 
+Any function available to switch a process between
+foreground and 
+background at runtime?
+ 
+with regards,
+M. SilambuChelvan
 
-=20
-      L=DDSANS PROGRAMLARI :
 
-=DDKT=DDSAD=DD VE =DDDAR=DD B=DDL=DDMLER FAK=DCLTES=DD
-* =DD=FEletme
-* Ekonomi
-* Pazarlama
-* Kamu Y=F6netimi
-* Uluslararas=FD =DDli=FEkiler
-* Bankac=FDl=FDk ve Finans
-* Bilgisayar ve Enformasyon Sistemleri
-=46EN-EDEB=DDYAT FAK=DCLTES=DD
-* =DDngilizce =D6=F0retmenli=F0i
-* T=FCrk Dili ve Edebiyat=FD
-* Tarih
-TARIM B=DDL=DDMLER=DD TEKNOLOJ=DDLER=DD FAK=DCLTES=DD
-* Bah=E7e Bitkileri =DCretimi ve Pazarlamas=FD
-* Tar=FDm =DD=FEletmecili=F0i
-M=DDMARLIK M=DCHEND=DDSL=DDK FAK=DCLTES=DD
-* Mimarl=FDk
-* =DD=E7 Mimarl=FDk
-* Elektrik ve Elektronik M=FChendisli=F0i
-* =DDn=FEaat M=FChendisli=F0i=20
-* Bilgisayar M=FChendisli=F0i
-=DDLET=DD=DE=DDM B=DDL=DDMLER=DD FAK=DCLTES=DD
-* Gazetecilik
-* Radyo, TV, Sinema
-* Halkla =DDli=FEkiler ve Reklam
-* G=F6rsel =DDleti=FEim Tasar=FDm=FD
-
-=20
-      MESLEK Y=DCKSEK OKULU:
-
-* =DD=FEletmecilik
-* Bilgisayar programc=FDl=FD=F0=FD                                     =
-           =20
-* =DDn=FEaat
-* Halkla ili=FEkiler ve Tan=FDt=FDm
-* G=F6rsel =DDleti=FEim
-* TV Yap=FDm=FD ve Y=F6netimi
-=20
-=20
-      Y=DCKSEK L=DDSANS:
-
-* =DD=FEletme (MBA)
-* Uluslararas=FD =DDli=FEkiler (MA)
-* =DDngilizce =D6=F0retmenli=F0i (MA)
-* Mimarl=FDk (MA)
-* =DDn=FEaat M=FChendisli=F0i (MSc)
-* Elektrik ve Elektronik M=FChendisli=F0i (MSc)
-* Bilgisayar Bilimleri (MSc)
-* Bilgisayar M=FChendisli=F0i (MSc)
-
-=20
-=20
-YURT DI=DEI =D6ZEL E=D0=DDT=DDM OLANAKLARI :
-SOAS =DCniversitesi, Luton =DCniversitesi, Westminister =DCniversitesi,
-Hudersfield =DCniversitesi (=DDngiltere), ESC Rouen =DCniversitesi (Fra=
-nsa).
-=20
-BURS OLANAKLARI :
-Emniyet mensubu, T=FCrk Silahl=FD Kuvvetleri mensubu ve =F6=F0retmen =E7=
-ocuklar=FDna  =20
-% 50, ikinci dereceden akrabalar=FDna % 33, karde=FElerden birine % 50 =
-ve
-ayr=FDca akademik ba=FEar=FD bursu, sporcu bursu ve  destek bursu.
-                                         =20
-                                                     =20
-=DDstanbul Kay=FDt Ofisi : =DE=DD=DEL=DD / =DDSTANBUL.
-Tel : 0212 219 83 50 (9 Hat)       E-Mail : bursluegitim1@superposta.co=
-m
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+http://sitebuilder.yahoo.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
