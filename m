@@ -1,65 +1,52 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Displaying 'ping' data with 'tcpdump' ?
-Date: Fri, 13 Aug 2004 20:40:35 -0400
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Gnome, KDE won't Open
+Date: Sat, 14 Aug 2004 10:50:24 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <411D5F83.4030409@gelm.net>
-References: <5.1.0.14.1.20040813093835.01fe0dc0@celine> <5.1.0.14.1.20040813093835.01fe0dc0@celine> <5.1.0.14.1.20040813130631.01f9fd58@celine>
-Reply-To: chuck@gelm.net
+Message-ID: <20040814025024.B354E3ECF0@heisspf>
+References: <5.1.0.14.1.20040813093835.01fe0dc0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040813130631.01f9fd58@celine>
+In-Reply-To: Your message of "Fri, 13 Aug 2004 10:07:05 MST."
+             <5.1.0.14.1.20040813093835.01fe0dc0@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
-> At 03:46 PM 8/13/2004 -0400, chuck gelm wrote:
-> 
->> Hi, Everyone:
->>
->>  I am having difficulty displaying the pattern data
->> inside a 'ping' packet using 'tcpdump'.
->>
->>  I am sending a periodic 'broadcast' padded with 'data':
->> ping -f -i 3600 -p 204445204E43385120   #" DE NC8Q "
->>
->>  I want to display this data on a console.  I am using
->> 'tcpdump -i eth1 -v -X'
->> but this shows too much data/activity.
->>
->> 'tcpdump -i eth1 -v -X port 7'  displays nothing.
->>
->> Perhaps something other than 'tcpdump' would be more suitable?
->>
->> 1. How can I display only the 'echo request' packets?
-> 
-> 
->         tcpdump icmp[icmptype]=icmp-echo -v -X
-> 
->> 2. How can I display only the 'echo reply'   packets?
-> 
-> 
->         tcpdump icmp[icmptype]=icmp-echoreply -v -X
+Thanks Ray! I just solved the problem.
 
-:-)  Thanks, Ray.
+ray@comarre.com said:
+>  Might this be a memory (or swap partition) problem? What does  "free" report
+> about memory and swap usage just before you try to start  Gnome or KDE? Are
+> you able to use swap successfully in other ways?
 
-  Now I see it in the man page. :-|
+The bloke in the computer shop had the System Share Memory Size in the BIOS 
+set to 8. When I now reset it to the original 32 everything is working again 
+fine. I saw him fumbling around the BIOS, however he was so fast that I could 
+not follow.
 
-I am 'playing' with some 802.11b (USA FCC Part 15) devices
-and configuring them to use frequencies inside the USA Amateur
-Radio assignment (USA FCC part 97).
-Then I can legally use antennas other than the ones that came
-with the device.  I have some 24dbi gain dish antennas and I
-want to try to use passive reflectors to overcome the
-limitations of 'line of sight'.
+I got the idea after your hint above when I noticed that the swap memory was 
+not really used after having opened in twm via xterm applications like 
+abiword, gnumeric, konqueror, gkrellm simultaneously, then trying to open 
+other applications I would get segmentation fault. After closing abiword, 
+gnumeric, etc they could not be reopened, segmentation fault. Even rebooting 
+would not completely finish and end with segmentation fault.
 
-  This 'ping - tcpdump' will show that I am compling with the
-'Station Identification' requirements.
+ray@comarre.com said:
+> Have I correctly identified your mobo as the following?
+>          http://www.baber.com/baber/411/ecs_p6stmt.htm 
+yes
 
-Many thanks,
-Chuck
+ray@comarre.com said:
+> what do you mean by "I bought an USB adopter"?
+
+That should naturally read adapter.
+It plugs on one end into the USB socket of the mobo and has 2 sockets on the 
+other end, one for kb and one for mouse.
+
+Regards
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
