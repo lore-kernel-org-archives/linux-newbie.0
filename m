@@ -1,46 +1,37 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: breaking up a zip file
-Date: Mon, 30 Sep 2002 15:15:52 +0000
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02093015155203.00233@unix.pa3gcu>
-References: <1033392605.3245.44.camel@Zebra>
-Reply-To: pa3gcu@zeelandnet.nl
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: && - Help
+Date: Mon, 30 Sep 2002 13:30:50 -0400
+Sender: hylafax-users-bounce@hylafax.org
+Message-ID: <000901c268a7$1f1bfbf0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1033392605.3245.44.camel@Zebra>
+Return-path: <hylafax-users-bounce@hylafax.org>
+Errors-To: hylafax-users-bounce@hylafax.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Paul Furness <paul.furness@vil.ite.mee.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org, hylafax-users@hylafax.org
 
-On Monday 30 September 2002 13:30, Paul Furness wrote:
-> Hi, everyone.
->
-> I seem to remember seeing somewhere a handy Linux prog that will take a
-> gz or zip file, and re-package it into a number of smaller zip files. I
-> don't remember the command, but it was used something like:
->
-> Command  -s chunk-size archive.zip
->
-> and it would produce archive01.zip, archive02.zip etc, each of size
-> "chunk-size".
->
-> Can anyone point me at this util?
+What does && represent?
 
-I have never done it but i think 'split' is what you are looking for.
+Here is the command that I saw it in.
+watch -n 1 "/hylafax/etc/errorstats.sh /hylafax/etc/xferfaxlog &&
+faxstat -asl && echo && tail /var/log/messages"
 
->
-> Thanks,
->
-> Paul.
+Also why is the echo necessary.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Cross Posted due to relevancy.
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
+
+
+____________________ HylaFAX(tm) Users Mailing List _______________________
+  To subscribe/unsubscribe, click http://lists.hylafax.org/cgi-bin/lsg2.cgi
+ On UNIX: mail -s unsubscribe hylafax-users-request@hylafax.org < /dev/null
+  *To learn about commercial HylaFAX(tm) support, mail sales@hylafax.org.*
+
