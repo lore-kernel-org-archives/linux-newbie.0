@@ -1,60 +1,31 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Wireless Mouse/ USB selection
-Date: Fri, 18 Jun 2004 07:19:43 +0200
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: grub doesn't load
+Date: Fri, 18 Jun 2004 20:33:10 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200406180719.43075.pa3gcu@zeelandnet.nl>
-References: <20040618005958.93202.qmail@web14808.mail.yahoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <7ca9db7c8818.7c88187ca9db@homemail.nyu.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040618005958.93202.qmail@web14808.mail.yahoo.com>
+Content-Language: en
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Steven Ackerman <ackerman_steven@yahoo.com>, LinuxNewbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Friday 18 June 2004 02:59, Steven Ackerman wrote:
-> Greetings list. I hope this message finds everyone
-> enjoying their day.
->
-> I have just installed Mandrake 9.1. I chose tty0
-> (com1?) during installation for the mouse.
+Hi,
+I have a dual boot system with grub as the loader.
+I wanted to change the default from WinXP to linux.
+So I changed the 'default' from 1 to 0 in grub.conf.
+1 = Win (the second entry in grub.conf. linux was the first).
 
-I am sure you mean /dev/ttyS0 not /dev/tty0
+Now the big problem is grub doesn't load any of the 2 OSes. Infact,
+it doesn;t even reach that startup screen. It just freezes!!
 
-> I have installed M9.1 previously and I believe that I chose
-> USB mouse during the installation.
+Any clue how to fix this without a rescue disk (this PC doesn't have a floppy drive) ?
 
-It depends on where your mouse is actualy connected too and quite possably 
-what type of mouse it is.
-
->
-> I need to change this and don't know how. I looked at
-> tldp.org and didn't find anything. It was somewhat
-> cumbersome using entirely the keyboard anyway.
-> Hopefully someone can help.
-
-USB mice do not  normally connect to a seriel port, they connect to a USB 
-port, some USB mice can even be connected to a PS2 port when a USB to PS2 
-plug is used.
-
-Not knowing what type of mouse you have and or where it needs to be connected 
-one cannot really comment, on top of all that one needs to know which 
-protocol it uses as well because it all depends on where its connected.
-
->
-> Steve
-
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+A quick help will really be appreciated!
+Thanks.
+Anshuman
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
