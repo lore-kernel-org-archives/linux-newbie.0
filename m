@@ -1,50 +1,53 @@
-From: "abel" <speedo21front242@hotmail.com>
-Subject: Anonymous Drug Delivery, no prescription!!
-Date: Wed, 04 Aug 2004 09:25:11 GMT
+From: chuck gelm <chuck@gelm.net>
+Subject: Re: messages in /var/log/
+Date: Wed, 04 Aug 2004 11:54:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1091611511-31366__42374.0124366761$1091611578$gmane$org@excite.com>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain;; charset="us-ascii"
+Message-ID: <411106B3.2040807@gelm.net>
+References: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.engin.umich.edu>
+Reply-To: chuck@gelm.net
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44.0408032211350.1084-100000@legolas.personal.engin.umich.edu>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Karthik <karthikv@Alum.Dartmouth.ORG>
+Cc: linux-newbie@vger.kernel.org
+
+Karthik Vishwanath wrote:
+> I have a whole load of entries that look like: 
+> 
+> Aug  3 14:48:38 gandalf -- MARK --
+> Aug  3 15:08:38 gandalf -- MARK --
+> ...
+> 
+> 
+> These are repeated every 20 minutes. How can I determine where are they
+> coming from and what they mean? 
+> 
+> Thanks,
+> 
+> -K
+
+Hi, K:
+
+Tell us which distribution-release, and kernel version.
+On my Slackware-9.1, 2.4.22, it comes from
+  /etc/rc.d/rc.syslog
+in the line
+  /usr/sbin/syslogd
+the default 'argument value' is 20 minutes
+  -m 20
+and can be set to zero (never) with
+  -m 0
+
+See 'man syslogd'.
+
+  It may be used to determine, approximately, when a system 'died'.
+
+HTH, Chuck
 
 
-What do you pay now?
-
-If you pay more than these prices, maybe you should click this link....
-http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/7
-
-VALIUM - $2 a pill! (Anti-Depressant)
-SOMA - $3 a pill! (Pain Relief)
-XANAX - $1.70 a pill! (Anti-Depressant)
-LIPITOR - $3.50 a pill! (Cholesterol Control)
-ZYBAN - $3 a pill! (Stop Smoking)
-ZOLOFT - $2 a pill! (Anti-Depressant)
-PAXIL - $3 a pill! (Anti-Depressant)
-PROZAC - $2 a pill! (Anti-Depressant)
-GLUCOPHAGE - 70 cents a pill! (Diabetes)
-MERIDIA - $2.50 a pill! (Weight Loss)
-VIOXX - $1 a pill! (Pain Relief)
-CELEBREX - $2 a pill! (Pain Relief)
-XENICAL - $2.50 a pill! (Weight Loss)  
-
-http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/7
-
-
-
-
-
-
-
-
-
-
-
-light abcdefactive camping ruby scuba1 dodgers zhongguo 
-public guessmeow cynthia valentin
-fiona racoon tarzan 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
