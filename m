@@ -1,62 +1,74 @@
-From: james niland <bareego@yahoo.com>
+From: whitnl73@juno.com
 Subject: Re: distribution choice
-Date: Thu, 27 Feb 2003 17:25:51 -0800 (PST)
+Date: Fri, 28 Feb 2003 01:17:05 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
+Message-ID: <20030228.012503.8.0.whitnl73@juno.com>
 References: <5.1.0.14.1.20030227152314.01f2e110@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <5.1.0.14.1.20030227152314.01f2e110@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: ray@comarre.com
+Cc: linux-newbie@vger.kernel.org
 
-As all posters before have been quite wholesome on
-your questions,so I don't want add much more to that.
+On Thu, 27 Feb 2003, Ray Olszewski wrote:
 
-Debian seems to be a good choice, especially the
-packet manager apt-get can make your life a lot easier
-than rpm based distributions can.
+> Probably about as informative as RPMs are. That is to say, good but not
+> great. Package names usually make sense, and searchig the package cache
+> usually finds what you want. But sometimes your search terms are too vague
+> to work ... you recall recently a question here about "rec", for example.
+> Trying to search the package archive for "rec" matched 100+ packages ... a
+> hopeless screening task. The real lack I find is my inability to query the
+> database about what package contains a particular file ... there is a way
+> to do this if the package is installed on the host, but not if you want the
+> app and need to find out which package contains it. (In this respect, I was
+> spoiled by Slackware, which always included a complete list, easily
+> grep'able, of the complete contents of of every package.)
+>
+rpm keeps a database of rpm's it has installed, which can be queried by
+rpm -qf <filename>
+right, I guess you said the debian package manager has an equivalent;
+you can make a database of all packages with something like
 
-I thought I might just mention my favourite/pet
-distribtuion called Peanut-Linux as another option for
-some reasons :
+rpm -qlip /where/the/rpms/are/* >rpmlist
 
-It comes with enlightenment preconfigured as default
-wm but also has a nice choice of other wm rpms.
+although this is not exactly grep'able, you are better off using
+ less -ni
+on it, so you can scan for the filename and then back up to the -i entry
+for that package which has the package name.  I guess if somebody really
+cares I could come up with a way to make a grep'able rpmlist.  I bet you
+could do the same with the debian package manager.
 
-It still lets you change everything in config files
-(or requires it) so it doesn't "dumb you down" too
-much, the basic hardware detection / setup is easy
-though.
+You don't _have_ to use any distro, and you can drop packages from one
+distro on top of another distro, as long as you are willing to keep
+track of the dependencies yourself.  that is what
+rpm --nodeps <package file name>
+is for, FI.
 
-The hardware detection is pretty good (it uses the
-same as redhat, kudzu IIRC)
+Of course, if you get the source and compile/install the package
+yourself, it isn't known to any package manager...
 
-You don't have to chose any packages at install time.
-It rather works by install basic set then add RPMs
-later. (First rpm I get is gcc)
+If you want to use Wine, you do better to get the source, uninstall any
+packages of it you may have, and build it yourself.  Distros that carry
+it put it in different places, and you may get version problems I don't
+want to debug again otherwise.
 
-Drawback/Advantage ? 
-Uses RPMs for packages. Which can be a pain at times,
-but also enables you to use a host of packages out
-there.
+Lawson
+---oops---
 
-The Peanut community is VERY helpful, although small.
-So if you want to troubleshoot more involved problems
-with certain apps you might have to go to the
-application's BBS.
 
-Have a look at it on www.ibilio.org/peanut
 
-Whatever you go for, I wish you lots of fun :D
-James Niland
 
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Tax Center - forms, calculators, tips, more
-http://taxes.yahoo.com/
+
+
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
