@@ -1,51 +1,61 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: INFO REQ: Clarification of Memory Management
-Date: Sat, 7 Dec 2002 12:58:36 +0000 (GMT)
+From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
+Subject: Re: tar for "full" floppy backup?
+Date: Sat, 7 Dec 2002 11:58:28 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0212071255270.15712-100000@ppg_penguin>
-References: <000101c29d67$f50ce310$670b3941@joe>
+Message-ID: <Pine.LNX.4.50.0212071157090.5141-100000@filesrv1.baby-dragons.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000101c29d67$f50ce310$670b3941@joe>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "Joseph D. Wagner" <wagnerjd@prodigy.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Fri, 6 Dec 2002, Joseph D. Wagner wrote:
 
-> I'm a little confused about the way the Linux kernel allocates memory, and
-> I'm hoping someone could clarify this for me.
-> 
-> Does the __get_free_pages() function eventually call the kmalloc() function?
-> Or does the kmalloc() function eventually call the __get_free_pages()
-> function?  Or are these two totally separate functions for different
-> purposes?
-> 
-> Which of these functions can be called by user process for the purpose of
-> allocating memory for that user process?
->
+	Hello Jerry & all ,
+	If it is Slackware the tar binary provided is Gnu-Tar .
+	Try doing a 'tar --help' & report the output from
+	'tar --version' .  There maybe issues with certain versions
+	of tar .  Another item to look at is can you read floppies on
+	your system if you don't have mtools avaiable , try
+	'dd if=/dev/fd0 count=10 | strings'
+	If that works , try (you will have to reforamt the flopy tho)
+	'dd if=/dev/zero of=/dev/fd0 count=10'
+	to see if you can Write to the floppy .
 
- Unless *I'm* totally lost here (which is very possible) you are asking
-about functions which are internal to the kernel and not for direct use
-from userspace.
+	Compressed you are not going to accomplish easily .
+	Maybe someone else can address a method of compressing the
+	input INLINE with the multi-volume archive issue .
+		Hth ,  JimL
 
-Ken
- 
-> TIA
-> 
-> Joseph Wagner
-> 
-> Flames will be directed to /dev/null
-> 
+ -- Generic descriptions of options used (on my system)
+
+tar --multi-volume \
+  --label="Some Label" \
+  --create \
+  --preserve-permissions \
+  --same-owner \
+  --file=/dev/fd0 \
+  "List Of Files To Backup"
+
+
+  -- The actual command that I used to creat a 4 Volume set tar archive
+
+tar --multi-volume --label="Root-Bin-test" --create --preserve-permissions --file=/dev/fd0 /root/bin
+
+
+  -- The output from the above command during execution .
+
+tar: Removing leading `/' from absolute path names in the archive
+Prepare volume #2 for /dev/fd0 and hit return:
+Prepare volume #3 for /dev/fd0 and hit return:
+Prepare volume #4 for /dev/fd0 and hit return:
 
 -- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
-
-
+       +------------------------------------------------------------------+
+       | James   W.   Laferriere | System    Techniques | Give me VMS     |
+       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
+       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
+       +------------------------------------------------------------------+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
