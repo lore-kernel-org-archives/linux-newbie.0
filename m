@@ -1,57 +1,66 @@
-From: Dragos LUNGU <rlug-list@xts.ro>
-Subject: Re: A way to transfer drives?
-Date: Thu, 31 Oct 2002 18:59:57 +0200
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RedHat 8 - Code weavers Wine
+Date: Thu, 31 Oct 2002 13:45:34 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DC1618D.4060704@xts.ro>
-References: <200210310853.08719.1stflight@ameritech.net>
+Message-ID: <019401c2810d$b384fbb0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0195_01C280E3.CAAEF3B0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210310853.08719.1stflight@ameritech.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: 1stFlight <1stflight@ameritech.net>
-Cc: linux newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
+This is a multi-part message in MIME format.
 
+------=_NextPart_000_0195_01C280E3.CAAEF3B0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 
-1stFlight wrote:
->  I'm looking for a way to upgrade my HD and maintain file/directory structure. 
-> I've got a 20GB  with partitions for / /home /usr how can I copy/clone this 
-> drive over to it's 60B replacement? Thanks!
-Hi
+I am trying to install code weavers wine by rpm. When it installs I get
+an error stating that it can't find gnome or kde. However when
+installing RedHat 8 I made sure to select both of these during the
+install.
 
-just finished this  operation last night .
-setup :
+What is new in RedHat 8 besides the "pretty" gui that 7.3 does not have?
+I am going to go back to it but was curious.
 
-boot from /dev/hda
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
-/dev/hdb - 40GB (old disk)
-/dev/hdc - 60GB (new disk )
+------=_NextPart_000_0195_01C280E3.CAAEF3B0
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
-# dd if=/dev/hdb of=/dev/hdc bs=2M
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
-it did a perfect,bit by bit, clone . then, i used cfdisk to set up an 
-additional 20Gb partition for the extra space.
-
-works like a charm .
-
-i always set bs (block size) close to the size of the HDD buffer (2048 
-in my case)
-
-hope it helps.
-
-dragos
-
-
--- 
-
-| Dragos LUNGU
-|
-| http://www.xts.ro
-| dragos@xts.ro
-| mobile (+40)745 379 734
-| office (+40)251 190 561
+------=_NextPart_000_0195_01C280E3.CAAEF3B0--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
