@@ -1,94 +1,89 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: ping: unknown host ?
-Date: Tue, 20 Apr 2004 19:05:42 -0700
+From: "Anna G. Zapata" <azapata@du.edu>
+Subject: RE: GTK
+Date: Wed, 21 Apr 2004 11:21:13 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040420184849.01efb810@celine>
-References: <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com>
- <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com> <4085CBC7.9000908@gelm.net>
+Message-ID: <HBEJLOFMLEPBMAAEFNFDOEPLCGAA.azapata@du.edu>
+References: <1082500650.25073.25.camel@DebiAnarchist>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4085CBC7.9000908@gelm.net>
-References: <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com>
- <GNEPLLCIIBHICCOGIAKPOEDDCKAA.eatley@wow-corp.com>
+In-reply-to: <1082500650.25073.25.camel@DebiAnarchist>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Peter Garrett <peterg@fishinternet.com.au>, linux-newbie list <linux-newbie@vger.kernel.org>
 
-At 09:17 PM 4/20/2004 -0400, chuck gelm wrote:
->Howdy, Y'all:
+Hello Peter,
+
+Thanks for you help.  I did install GNOME, I know that for sure.  My problems with GTK is that I'm trying to install
+Nessus.  Keep in mind that I never had a problem running the GUI for nessus, but now that I've moved to RH Enterprise
+for the workstation, it can't find GTK (this is a fresh install).  This is the error I get:
+
+# sh nessus-installer.sh
+The command 'gtk-config' was not found in your $PATH.
+The nessus client will be built without its GUI...
+
+I am not sure what I'm doing wrong.  GTK looks far to complicated for me to even begin to understand.  I tried to
+install GTK from their main website, but the make file doesn't exist and it won't install.  I'm very confused.
+
+Thanks,
+
+Anna
+
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of Peter Garrett
+Sent: Tuesday, April 20, 2004 4:38 PM
+To: linux-newbie list
+Subject: Re: GTK
+
+
+Anna:
+
+On Wed, 2004-04-21 at 06:17, Anna G. Zapata wrote:
+> Hello all,
 >
->  My host, 'router', seems to not be resolving host names to IP addresses.
+> I am currently running RH enterprise work station.  Is GTK installed on there, because if it is, I can't manage to
+find
+> it.  If not, then how do I go about getting it and installed for use?
+
+> Redhat normally ships with GNOME desktop as default. If you have GNOME you have GTK:
+GNOME uses GTK.
+
+If you need to find it and its bits, the easy start way is probably
+
+1. Run "updatedb" from the command line as root
+2. type "locate gtk | more"
+
+(those commands without the quotes, of course)
+
+I suspect this will give you plenty of gtk related files to look at...
+*grins*. Hit the space bar to see "more"... I don't know if this is what
+you need to know, so please don't be insulted if I assumed you wouldn't
+know these things...
+
+Hope that helps, at least...
+
+Peter
+
+
+> Thanks.  Please let me know if I forgot any other pertinent information.
 >
->  I can ping by IP address, but not by domain name. i.e.
->ping 206.141.251.2
->  is find, whereas
->ping gelm.net
->  fails with error:
->ping: unknown host gelm.net.
->
->This is my router (DSL<>LAN) and is functioning as the local
->domain name server, but cannot serve its self. ?
->
->Attached is the output of
->netstat -r
->route -n
->resolv.conf
->
->  What is not working?
-
-Well, /etc/resolv.conf says that the router is to use 206.141.251.2 as a 
-resolver. And you seem to say above that the router can ping that IP 
-address, which tells us that routing to it is OK. Possibilities I can think 
-of are:
-
-1. What is 206.141.251.2 ? I'm surmising that it is your ISP's nameserver. 
-Do you know that it is a working resolver (to ask the most basic detail 
-question, does it ACCEPT traffic to port 53/UDP)?
-
-2. Are you running any firewalling on your host that might be interfering 
-with traffic to or from the resolver? Checking this is somewhat kernel 
-specific; if you are running 2.4.x, then check with
-
-         iptables -nvL
-         iptables -t nat -nvL
-
-It is quite possible that your default table DENYs or REJECTs DNS traffic 
-to and from the router itself, while your nat table ACCEPTs it to and from 
-LAN hosts.
-
-3. HOW is the router "functioning as the local domain name server"? Is it 
-running BIND (named)? dnscache? Something else? However it provides DNS to 
-the LAN, you do not have it set up to use that method for itself, since the 
-entry (below) in /etc/resolv.conf points to what I assume is an off-LAN 
-nameserver.
-
-One other detail: please ALWAYS report the routing table with "netstat 
--nr", or an equivalent that reports addresses, not names. YOU know what IP 
-address network "localnet" translates too, but WE do not ... I've been 
-assuming that this router NATs a private-address LAN (e.g., 
-192.168.1.0/24), but your reporting by network name conceals that 
-information. And if my guess is wrong, a lot else that I said could easily 
-also be wrong.
-
-
->Chuck
+> Anna Zapata
+> UTS - Network Security
+> 303.871.2009
 >
 >
->Kernel IP routing table
->Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
->68.254.31.254   *               255.255.255.255 UH        0 0          0 ppp0
->localnet        *               255.255.255.0   U         0 0          0 eth0
->loopback        *               255.0.0.0       U         0 0          0 lo
->default         68.254.31.254   0.0.0.0         UG        0 0          0 ppp0
->nameserver 206.141.251.2
->Kernel IP routing table
->Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
->68.254.31.254   0.0.0.0         255.255.255.255 UH    0      0        0 ppp0
->192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
->127.0.0.0       0.0.0.0         255.0.0.0       U     0      0        0 lo
->0.0.0.0         68.254.31.254   0.0.0.0         UG    0      0        0 ppp0
-
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+--
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
