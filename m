@@ -1,190 +1,95 @@
-From: Learner <ruxyz@yahoo.com>
-Subject: RE: RAM or "empty"?
-Date: Wed, 6 Oct 2004 02:50:34 -0700 (PDT)
+From: Robin Doer <robin@robind.de>
+Subject: Re: Mutual Exclusion in Kernel
+Date: Wed, 6 Oct 2004 16:04:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041006095034.91931.qmail@web41126.mail.yahoo.com>
-References: <20041006092919.54698.qmail@web52903.mail.yahoo.com>
-Reply-To: ruxyz@yahoo.com
+Message-ID: <200410061604.16497.robin@robind.de>
+References: <20041006085523.35414.qmail@web52903.mail.yahoo.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041006092919.54698.qmail@web52903.mail.yahoo.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: multipart/signed;
+  boundary="nextPart4039598.kJuqzZUPym";
+  protocol="application/pgp-signature";
+  micalg=pgp-sha1
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20041006085523.35414.qmail@web52903.mail.yahoo.com>
+List-Id: <linux-newbie.vger.kernel.org>
 To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+--nextPart4039598.kJuqzZUPym
+Content-Type: text/plain;
+  charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 
-Reply Inline 
+No!
 
---- Ankit Jain <ankitjain1580@yahoo.com> wrote:
+You have to write your own busy-waiting-algorithm while the operating syste=
+m=20
+provides you a semaphore.
 
-> well it is really unique. actually i could not
-> understand in this what is this reseved address
-> space.
-> 
-> 
-> rest reply inline
-> 
-> 
->  --- Learner <ruxyz@yahoo.com> wrote: 
-> > Hi ,
-> > 
-> > Reply Inline .
-> > 
-> > --- "Thekkedath, Gopakumar"
-> > <Gopakumar.Thekkedath@fci.com> wrote:
-> > 
-> > > 
-> > > 
-> > > 
-> > > 
-> > > >Is there a way to find the PHYSICAL ADDRESSES
-> of
-> > > all
-> > > >the devices used in a Computer ? 
-> > > 
-> > >    does cat /proc/iomem serves the purpose ?
-> > > 
-> > 
-> > Well , if /proc/iomem gives the PHYSICAL address
-> > range of devices , then why is the  System RAM 
-> > split into 3 different address ranges as seen
-> below 
-> > (marked by arrows ) ? Is it bcoz the Motherboard
-> is
-> > designed in this manner ? 
-> > 
-> > ~> cat /proc/iomem
-> > 00000000-0009fbff : System RAM  <--- 1
-> 
-> basically this hex range represents 2^32
-> 
-> how much memory area can be accessed by this and
-> what
-> about rest. 1 mopre ques. suppose i have 1Mb of RAM
-> for that how many address lines i need
+A busy-waiting-algorithm can be compared with a two-state-semaphore (lock o=
+r=20
+unlock) but the concept of the semaphore is must more powerful. In theory a=
+n=20
+infinite number of states is possible. Thus you can control the access to a=
+=20
+resource in different levels.
 
-The Hex range is 2^32 since the output is taken 
-on a 32-bit processor based computer , where in 
-you can address 0 - 4 GB addresses ( i.e. 0 - 2^32 ) .
-
-> 
-> > 0009fc00-0009ffff : reserved
-> 
-> whats this reserve says and why and for what it is
-> reserved?
+Am Mittwoch, 6. Oktober 2004 10:55 schrieben Sie:
+> but this is like semaphore?
 >
-
-Not sure about this , maybe Intel manual docs will 
-help you on this .
- 
-> > 000a0000-000bffff : Video RAM area
-> > 000c0000-000c7fff : Video ROM
-> 
-> why do we need to seprate all these areas?
-> 
-
-Becoz Video RAM area is read + write capabable area,
-but Video ROM is a read only area.
-
-
-> > 000e0000-000effff : Extension ROM
-> > 000f0000-000fffff : System ROM
-> > 00100000-1fecffff : System RAM  <---- 2
-> >   00100000-0028dadf : Kernel code
-> >   0028dae0-00324f63 : Kernel data
-> > 1fed0000-1feeffff : ACPI Non-volatile Storage
-> > 1fef0000-1fefffff : System RAM  <---- 3
-> > 40000000-40000fff : Intel Corp. 82801BA/BAM/CA/CAM
-> > Ethernet Controller
-> >   40000000-40000fff : eepro100
-> > 40300000-4037ffff : Intel Corp. 82815 CGC [Chipset
-> > Graphics Controller]
-> > 44000000-47ffffff : Intel Corp. 82815 CGC [Chipset
-> > Graphics Controller]
-> > feea0000-ffffffff : reserved
-> > 
-> > Are these memory address ranges dynamically 
-> > determined ? Which kernel code file does this ?
-> > 
-> > Also , does  /proc/ioports represent IO-mapped 
-> > PHYSICAL memory addresses ,
-> > similar to the  the Memory-mapped PHYSICAL memory 
-> > addresses in /proc/iomem ?
-> > 
-> > ~> cat /proc/ioports
-> > 0000-001f : dma1
-> > 0020-003f : pic1
-> > 0040-005f : timer
-> > 0060-006f : keyboard
-> > 0070-007f : rtc
-> > 0080-008f : dma page reg
-> > 00a0-00bf : pic2
-> > 00c0-00df : dma2
-> > 00f0-00ff : fpu
-> > 0170-0177 : ide1
-> > 01f0-01f7 : ide0
-> > 02f8-02ff : serial(auto)
-> > 0376-0376 : ide1
-> > 03c0-03df : vga+
-> > 03f6-03f6 : ide0
-> > 03f8-03ff : serial(auto)
-> > 0cf8-0cff : PCI conf1
-> > 1000-103f : Intel Corp. 82801BA/BAM/CA/CAM
-> Ethernet
-> > Controller
-> >   1000-103f : eepro100
-> > 2000-20ff : Intel Corp. 82801BA/BAM AC'97 Audio
-> >   2000-20ff : Intel 82801BA-ICH2 - AC'97
-> > 2400-243f : Intel Corp. 82801BA/BAM AC'97 Audio
-> >   2400-243f : Intel 82801BA-ICH2 - Controller
-> > 2440-245f : Intel Corp. 82801BA/BAM USB (Hub #2)
-> >   2440-245f : usb-uhci
-> > 2460-246f : Intel Corp. 82801BA IDE U100
-> >   2460-2467 : ide0
-> >   2468-246f : ide1
-> > 
-> > > >Also , does the VM in linux translate the
-> memory 
-> > > >address of programs into actual Physical
-> > addresses 
-> > > >of RAM , or is it that Hardware does the actual
-> > > >translation to Physical addresses  ( since the
-> > RAM 
-> > > >addresses would differ across different
-> Computers
-> > 
-> > > >depending on the amount of RAM & also the
-> > > Motherboard
-> > > >design ) .
-> 
-> does it really depend on motherboard? or does it
-> depend on the hardwares stuffs we have on system?
-> 
-
-I think motherboard , since the point to add
-additional
-H/W is fixed .  
-
-Cheers !
-
-> thanks
-> 
+> thanks again
+>
 > ankit
-> 
 >
-________________________________________________________________________
-> Yahoo! Messenger - Communicate instantly..."Ping" 
-> your friends today! Download Messenger Now 
+>  --- Robin Doer <robin@robind.de> wrote:
+> > Good morning!
+> >
+> > Ankit Jain (ankitjain1580@yahoo.com) schrieb:
+> > > hi
+> > >
+> > > what is spin lock?
+> >
+> > http://en.wikipedia.org/wiki/Spin_lock
+> >
+> > aka "busy waiting". A thread is polling <something>
+> > until <something> says
+> > "ok" and the thread continues working.
+> >
+> > > thanks
+> > >
+> > > ankit
+> >
+> > Have fun,
+> > Robin
+> >
+> > -
+> > To unsubscribe from this list: send the line
+> > "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at
+> > http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at
+> > http://www.linux-learn.org/faqs
+>
+> ________________________________________________________________________
+> Yahoo! Messenger - Communicate instantly..."Ping"
+> your friends today! Download Messenger Now
 > http://uk.messenger.yahoo.com/download/index.html
-> 
 
+--nextPart4039598.kJuqzZUPym
+Content-Type: application/pgp-signature
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
 
-		
+iD8DBQBBY/tgwnZkqspVX/oRAjB4AJ9tS5TKQJhFtz5eR26qxMF272FsUgCfeEEw
+4CLi2/8k9f6jhfnhLbFzb/c=
+=mfs0
+-----END PGP SIGNATURE-----
 
+--nextPart4039598.kJuqzZUPym--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
