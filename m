@@ -1,73 +1,55 @@
-From: Ray Olszewski <ray@comarre.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: LAN
-Date: Thu, 25 Dec 2003 23:40:01 -0800
+Date: Fri, 26 Dec 2003 09:32:56 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031225232557.01f06748@celine>
+Message-ID: <200312260932.56772.pa3gcu@zeelandnet.nl>
 References: <20031226064427.267.qmail@web21403.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20031226064427.267.qmail@web21403.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-At 12:44 AM 12/26/2003 -0600, Jose Colmenares wrote:
->I just installed Slackware. It's working fine and
->smooth. I also have three machines runing Windows (one
->XP and two 98). These are conected through a LAN. =BFHow
->do I configure my new linux system to recognize the
->network and comunicate to it? it does not even
->recognize the LAN card. =BFdid I miss something during
->the configuration?
+On Friday 26 December 2003 07:44, Jose Colmenares wrote:
+> I just installed Slackware. It's working fine and
+> smooth. I also have three machines runing Windows (one
+> XP and two 98). These are conected through a LAN. =BFHow
+> do I configure my new linux system to recognize the
+> network and comunicate to it? it does not even
+> recognize the LAN card. =BFdid I miss something during
+> the configuration?
 
-Most likely you did. Exactly what you missed is hard to say. For more=20
-specific help, please tell us:
+Yes possably you did miss configuring the LAN when you installed slack,=
+ you=20
+also missed providing us with helpfull information.
+Name and type of card. ?
+{Slack version, 9.1 has a different config file for LAN networking.}
+Results of ifconfig -a
+Does your lan use a dhcp server for configuration, or do you set your o=
+wn=20
+address?.
 
-1. What version of Slackware?
+The command 'netconfig' may help you.
+Setting your device driver in /etc/rc.d/rc.netdevice should take care o=
+f=20
+loading the module for the card.
 
-2. What version of the Linux kernel? ("uname -a")
+Thats about all i can say because you failed to provide the info needed=
+ to=20
+give a direct answer.
 
-3. What network interface card (NIC) are you using in the system?
+>
+> thanks.
 
-4. How do you know "it does not even recognize the LAN card"? Just so *=
-we*=20
-can be sure, what is the complete output of "ifconfig -a" (run it as ro=
-ot)?
 
-I'm not a Slackware user myself, but there are many Slackware users her=
-e=20
-(though the holidays may keep them away from email for the next little=20
-while). If I can't answer you after you provide the additional informat=
-ion,=20
-I'm sure one of them will be able to after seeing it. I should mention =
-that=20
-Slackware is in many ways different from the other main Linux distros, =
-so=20
-the remainder of what follows is something of a guess on my part, based=
- on=20
-the way Debian, the distro I use, does things.
-
-I'm not sure how Slackware sets up networking these days, but the usual=
- way=20
-with Linux is to put the information needed to set up an interface in=20
-/etc/networks/interfaces ... your NIC would be entered there as eth0.=20
-You'll enter either the usual sorts of info about IP address, netmask,=20
-gateway, and such, or you will enter here that the interface gets=20
-configured by DHCP (depending on how your network is actually set up).
-
-If you are entering the information by hand, then you'll also want to e=
-nter=20
-the IP addresses of the DNS servers in /etc/resolv.conf ... if you are=20
-using DHCP, then the DHCP client (which might be pump, dhclient, or dhc=
-pcd)=20
-can update this file from the lease info it gets.
-
-The boot/init process should use this information to set up your=20
-networking. If not, you can (usually) use the command, as root, "ifup -=
-a"=20
-to start networking manually.
-
+--=20
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
 
 -
