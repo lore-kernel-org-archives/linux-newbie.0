@@ -1,60 +1,45 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: dual boot
-Date: Thu, 17 Jul 2003 11:57:19 -0700
+From: ramzez <r4mz3z@yahoo.es>
+Subject: port 6000
+Date: 17 Jul 2003 21:13:21 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030717114414.0200d278@celine>
-References: <HBEJLOFMLEPBMAAEFNFDCEMLCAAA.azapata@du.edu>
+Message-ID: <1058407622.1173.3.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-T3v/VNt49WK3jrFO0wkP"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <HBEJLOFMLEPBMAAEFNFDCEMLCAAA.azapata@du.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Linux-Newbie <linux-newbie@vger.kernel.org>
-
-At 09:34 AM 7/17/2003 -0600, Anna G. Zapata wrote:
->Hello all,
->
->I would like to install RH 8.0 on my W2K laptop (a dual boot).  I entered
->the installation program without a problem and finally came upon the
->partioning section of the setup.  I clicked to use an automatic partition
->and clicked next.  I was told that there wasn't enough disk space, but I
->know that I have a little over 2G on the drive.  Does anyone have any
->suggestions as to what I'm doing wrong?
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
 
-Others have offered some guesses about what your problem might be. No one 
-can do mroe than guess, however, because " I have a little over 2G on the 
-drive" is not very clear. Are you referring to the size of the drive, the 
-unused space in a Windows partition, or the unused space not currently in 
-any partition? If the first, your situation is probably hopeless. If the 
-second, you will need to do some work, or switch to a different distro (as 
-someone else suggested). If the third, then I'm surprised that you are 
-having problems.
+--=-T3v/VNt49WK3jrFO0wkP
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Offhand, I do not know how much space RH 8.0 requires to install, but I 
-would expect 2 GB to be enough for a basic install (I can install a minimal 
-Debian in about 200 MB, for example). If RH needs more space than that, 
-shame on Red Hat ... it is using an awfully demanding and inflexible 
-installer. But you do need the 2 GB in the form of unpartitioned space, so 
-the RH installer can create an ext2 partition (and probably a swap 
-partition too, unless your laptop has unusually generous RAM) for Linux to use.
+Hi friends...
 
-RH used to ship with a partition resizer, an app that allowed you to make 
-an existing (Windows, usually) partition smaller to make room for a Linux 
-(ext2) partition. You might see if whatever version of RH you have offers 
-this capability (I think it was called Partition Magic or something similar 
-to that).
+  I'm using RH8.0, why do my X11 open the port number 6000?; what is the
+use? and How do I can close this port?
 
-Even if you get RH to install on this system, you are likely to be limited 
-in what it will be able to do. I'm not sure what Frank means by "realtime 
-data", but certainly some data (e.g., mpeg or DivX video) is sufficiently 
-demanding of disk space that a 2 GB partition would be woefully inadequate 
-(for perspective, the system that I store edited video on has about 450 GB 
-of storage). Still, 2 GB should be enough to give you a system that is 
-usable for many purposes.
+thanks
 
+--=20
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
 
+--=-T3v/VNt49WK3jrFO0wkP
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: Esta parte del mensaje esta firmada digitalmente
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQA/FgTGG3Fqyap52TERAm1cAKDZ/VmVR8cGRKeF0eztojCaUxJytwCfWPJD
+2hLFM6nGCV4tTO0tJJpq/SQ=
+=ox3a
+-----END PGP SIGNATURE-----
+
+--=-T3v/VNt49WK3jrFO0wkP--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
