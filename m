@@ -1,43 +1,24 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: modutils 2.4.19/20 and kernel 2.5.48/49 errors
-Date: Mon, 25 Nov 2002 20:12:47 -0500
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: RE: Emacs
+Date: Mon, 25 Nov 2002 20:07:13 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DE2CA8F.B3F8441E@gelm.net>
-References: <3DE2B9E1.30209@jpl.nasa.gov>
+Message-ID: <Pine.LNX.4.44.0211252006120.25557-100000@athame.gmpexpress.net>
+References: <000f01c29483$9cd4bed0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000f01c29483$9cd4bed0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-Dear Bryan:
+Try hitting the backspace key and se if that doesn't bring up help.  Also
+control-v is pagedown in emacs and alt-v is pageup in emacs.
 
-IMHO, discussion of 'beta' releases are
-inappropriate in a 'newbie' list.
+Jude <dashielljt(at)gmpexpress-dot-net>
 
-Regards, Chuck
 
-Bryan Whitehead wrote:
-> 
-> I can't get modutils to work with the 2.5.48/49 kernel.
-> 
-> I get an error about QM_MODULES not being supported.
-> 
-> I've tried many versions of modutils all with the same problem...
-> 
-> I atached my .config.
-> 
-> --
-> Bryan Whitehead
-> SysAdmin - JPL - Interferometry Systems and Technology
-> Phone: 818 354 2903
-> driver@jpl.nasa.gov
-> 
->   ------------------------------------------------------------------------
->               Name: .config
->    .config    Type: application/x-java-vm
->           Encoding: base64
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
