@@ -1,8 +1,8 @@
 From: "Axel Siebenwirth" <lists@tcob1.net>
-Subject: Re: .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 20:25:40 +000
+Subject: (fwd) .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 18:34:20 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_202540__a46609a1@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_183420__818c2ddb@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,15 +13,27 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Hi Ray!
+Sorry, I haven't seen my mail get to the list. So here goes it again.
 
-What is the difference between the linking that gcc does i.e. to link many
-object files into an executable and  the linking that ld does?
-Is it really that gcc is just to link object files together to an executable
-and ld is there to link object files to an shared library?
+----- Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
 
-Thank you,
-Axel
+Hi,
+
+I have some stupid questions.
+
+What makes the difference between .o and .so files? What is their use? Is it
+just a naming convention?
+
+When I want to link libraries to a program I am compiling, of what format do 
+the libraries have to be?
+
+I have found out that .a files are archives created with ar. What is that
+for?
+
+Many thanks and my best regards,
+Axel Siebenwirth
+
+----- End forwarded message -----
 -
 
 <-> Gateway Information.
