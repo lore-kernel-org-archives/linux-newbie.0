@@ -1,45 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: HowTo: Mount a volume over Internet?
-Date: Tue, 10 Sep 2002 14:10:45 -0700
+From: lawson_whitney@juno.com
+Subject: Re: ssh error message
+Date: Mon, 9 Sep 2002 22:25:45 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020910140752.02285ec0@celine>
-References: <002101c25909$821b4c40$c5000a0a@c0002>
+Message-ID: <20020910.205536.134671024.0.lawson_whitney@juno.com>
+References: <200209090046.g890kY001155@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002101c25909$821b4c40$c5000a0a@c0002>
+In-Reply-To: <200209090046.g890kY001155@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ola Theander <ola.theander@otsystem.com>, linux-newbie@vger.kernel.org
+To: pfheiss@philonline.com
+Cc: arwbackup@worldnet.att.net, linux-newbie@vger.kernel.org
 
-In principle it is possible to do this with NFS mounts. In practice, doing 
-it raises significant security risks. And the firewalling present at either 
-end might (should, if the firewalls are configured to do a good job) 
-interfere with it.
-
-If you really need to do this, I'd recommend your looking into doing it 
-over an encryped link (a true VPN, or at least an SSH tunnel).
-
-At 10:34 PM 9/10/02 +0200, Ola Theander wrote:
->Dear subscribers.
+On Mon, 9 Sep 2002, Peter wrote:
 >
->I would like to know if it's possible to mount a volume over the
->Internet? I study at a University here in Sweden where they use SUN
->computers as workstations. The file system is AFS (Andrew File System).
->What I would like to do is to mount my home directory at the University
->on my local computer at home, instead of connecting with SSH and coping
->files back and forth. Of course, it doesn't need to be a permanent
->mount, only as needed.
+> Sep  8 09:52:46 philonline apmd: apmd startup succeeded
+> Sep  8 09:52:46 philonline sshd: Starting sshd:
+> Sep  8 09:52:46 philonline sshd: execvp: No such file or directory
+
+Aha! sshd.  I thought it was odd to try to run ssh as a daemon.
+
+try "file /usr/sbin/sshd"
+"ldd /usr/sbin/sshd" for details on shared library problems;
+see if user 0 can run it from the command line:
+"/usr/sbin/sshd"
+
+Lawson
+---oops---
 
 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
