@@ -1,34 +1,51 @@
-From: Jos Lemmerling <jos@lemmerling.net>
-Subject: Re: User in multiple groups
-Date: Wed, 3 Jul 2002 12:21:55 +0200 (CEST)
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: mouse setup
+Date: Wed, 3 Jul 2002 15:47:44 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0207031218080.19064-100000@orthanc.lemmerling.net>
-References: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
+Message-ID: <200207031547.44350.pa3gcu@zeelandnet.nl>
+References: <50420696.20020703074009@sby.centrin.net.id>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
+In-Reply-To: <50420696.20020703074009@sby.centrin.net.id>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: adwin <fox@sby.centrin.net.id>, linux-newbie@vger.kernel.org
 
-On Wed, 3 Jul 2002, Chris Rose wrote:
+On Wednesday 03 July 2002 00:40, adwin wrote:
+> Hello,
+>
+>   my system is Mandrake 8.2 & KDE 3.0 in my system.
+> I got a problem with my ps2 mouse port so I use USB Mouse instead.
+> I got problem, because my mouse cannot be detected. I have been try
+> use mousedrake to detect my mouse. It is success to detect my mouse
+> but my mouse still cannot be used. Then I try to detect with kudzu, it
+> also doesn't work (it say like " cannot create /dev/usbmouse").
+> how to solve this problem ?
+>
+> thanks
+>
+> ps: my mouse is Logitech optical.
 
-> I'm trying to get one user account to be in multiple groups right now, and 
-> i thought i had it licked (add the username to the end of the line in 
-> /etc/group).  Problem is, it doesn't seem to have done the trick, since i 
-> still can't write to files for which i have permission.  Is there something 
-> else i need to do?  logout, or reboot?  Or does all that stuff take effect 
-> immediately?
+Ah!, ok, well use the converter plug usb>ps2 which logitec supplied, plug the 
+thing into the mouse ps2 socket and tell gpm it has a ps2 mouse.
+gpm -m /dev/mouse -t ps2
+Make sure the device files are linked correctly, /dev/mouse should be linked 
+to psaux.
+You use kde3, PS/2 should be ok in XF86Config, users of kde2 need to define 
+this sort of mouse as IMPS/2.
 
-You'll just have to re-login. The file is interpreted on login.
+They say it can be made to work as an usb mouse, i had no luck, looks like 
+logitec knew what they were doing when they decided to supply a converter 
+plug with those mice. ;-)
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
-
-Grtz
-
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
