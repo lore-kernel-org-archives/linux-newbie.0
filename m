@@ -1,48 +1,36 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: a simple browser
-Date: Wed, 12 Mar 2003 20:25:08 -0500
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Burning iso to disk
+Date: Thu, 13 Mar 2003 10:21:45 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303130125.h2D1P8X4012382@hartford-hwp.com>
-References: <m3ofgui987.fsf@wobble.eth.net> <3E6EDB78.14415BBE@dsl-only.net> <200303121916.h2CJGhUK009404@hartford-hwp.com> <3E703D06.3E0E0B91@ihug.co.nz>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <200303131021.45642.sotl155360@earthlink.net>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <3E703D06.3E0E0B91@ihug.co.nz> (ichi@ihug.co.nz)
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ichi@ihug.co.nz
-Cc: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Steven,
+Hi All
 
-I reply not to disagree, but to flesh out some of the specifics. 
+I have downloaded the Mandrake 9.1rc2.iso to my HD.
+I have attempted to burn these iso to CD by both CDRoast and by command line.
 
-First, I'm running 1.9GHz with 1 Gb RAM. While that would perhaps run
-apps a little faster, I don't see how it would cause us to have quite
-opposite experience in comparing Opera and Galeon speed.
+I did not ck sums but am assuming that they are good as iso were downloaded on 
+line better than t3.
 
-Let me give an example of my frustrations with Opera. If I hit K2 to
-bring up the Go to Page dialog, it pops up a bit slowly, but it takes
-a couple additional seconds for the window to gain content and even
-more to acquire the focus. If I have a URL in my clipboard to paste,
-bringing up the dialog empties the clipboard. If instead I type the
-URL, the first letter goes not type. I waste a lot of time playing
-games just to visit a URL. 
+After placing #1 burn CD in CD Reader to start installation computer did not 
+recognize CD as bootable.
 
-Another problem is web page loading hangs. I'll click on a link, and
-the load hangs. I go and do something else for a few more minutes and
-come back to find the page has finally loaded.
+Checking CD I find I have an image file on CD.
 
-Another petty example. I go to use the Search text field. If there is
-a string still there from my previous search, I select it, but DEL
-won't get rid of it, more often than not. I have to delete it letter
-by letter and type in what I want.
+Is it possible for someone to inform me where I am making the mistake in 
+converting the iso images to the correct format on the CD.
 
-It's the accumulation of these annoyances that are driving me away
-from Opera.   
+The command line command used was:
+cdrecord -dev=0,2,0 -speed=12 -data MandrakeLinux-9.1rc2-CD1.i586.iso
 
-Haines
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
