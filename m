@@ -1,103 +1,87 @@
-From: wa4chq@netscape.net (neil t)
-Subject: re: lilo questions.......
-Date: Sat, 23 Nov 2002 14:03:42 -0500
+From: Ken Moffat <ken@kenmoffat.uklinux.net>
+Subject: Re: unable to ping cable provider
+Date: Sat, 23 Nov 2002 19:37:23 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3B60FCE9.0E186F1F.0006BEFC@netscape.net>
+Message-ID: <Pine.LNX.4.21.0211231926380.15555-100000@ppg_penguin.linux.bogus>
+References: <5.1.0.14.1.20021123085232.02126060@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20021123085232.02126060@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-greetings and again tnx for the help---
+Ray, thanks for this advice.
 
->I copied an installation guide for Debian Woody 3.0, but it seems to be
->geared to setting up a server.  I just want regular install.  I did use it
->as a guide when I first installed Debian, and it did seem to work, but I
->did have to tweak it a bit.  (any suggestions for a better installation
->guide?)
+On Sat, 23 Nov 2002, Ray Olszewski wrote:
 
->>>>>>Better than what? You don't tell me enough to know ahat you are using now.
-
-It is called "Installing Woody (Debian Linux 3.0) and the url is:
-wysiwyg://17/http:www.aboutdebian.com/install3.htm  (that is what I see on the pages I printed.....)
-
->When I installed it, I made a boot floppy and it worked ok, but was very
->slow.
-
->>>>>"Slow" and "fast" are in the eye of the beholder, so your telling me >>>>>this is "very slow" in your opinion doesn't let me know if you are describing the normal speed of floppy-based boots or a system with a problem.
-
-I was describing booting from the floppy disk....
-
->>Getting the "lingo" down is less important then being careful about your
-descriptions. For example, after noting at the beginning of this message
-that you'd previously made a "typo", you continue to misname "lilo.conf"
-"lilo.config" (unless Mandrake really does use a different name for this
-file ... I know Debian still calls it lilo.conf). When asking for
-configuration help, accurate reporting of the details is essential.
-
-whoops!  yes it is "lilo.conf" !
-
-Ok, so I guess if I install Debian 3.0 or even Red Hat again, it will replace my existing bootloader but I will still have the option to make Mandrake the default.  This is determined when I edit /etc/lilo.conf.
-
-Is there a standard format for adding other linux distro's to /etc/lilo.conf?  One of replies to my question explains it this way:
-
-"It does not really make any differance which system installed lilo, the
-secret is mounting all your disks/partitions where "lilo" can reach them all in one go, you can define any partition "in use or not" as long as it is mounted.
-
-An example;
-dos = hda1
-redhat = hda5
-mandrake = hdc1
-slackware = hdd1
-
-You boot with mandrake, you then create some extra dirs'
-
-mkdir /hda5
-mkdir /hdc1
-mkdir /hdd1
-
-mount -t ext2 /dev/hda5 /hda5
-mount -t ext2 /dev/hdd1 /hdd1
-
-Edit /etc/lilo and reflect the above
-
-image = image-redhat
-label = redhat
-root = /hda5/boot/image-redhat
-read-only
-
-same idea for slack.
-
-run lilo with -t to check that all is ok, when all is ok /sbin/lilo
-reboot
-
-Another way is to copy all bootable images into one /boot dir and edit
-lilo.conf accordingly."
-
-I have seen some say:
-image=/boot/vmlinuz-2.2.0-ide pci<<<<<< is it /boot because all bootable 
-images are in /boot?
-      label=Debian (example)
-      read-only
-      root=/dev/hdd1
-Anyway....again thanks for helping me with this.....
-Cheers-
-Neil t.
-
-
+> Ken -- You may already have gotten the help you need from John Kelly's 
+> response. The few details I can add may or may not be helpful.
+> 
+> 1. You are being assigned a private-range address (10.b.c.d) by your ISP. 
+> This means one of two things:
+> 
+>          A. The ISP NAT's these addresses upstream of you.
+>          B. The ISP assigns these addresses temporarily, until you register 
+> with the ISP.
+> 
+> I'm guessing that you are in situation B, and you need somehow to register 
+> your set-top box (or maybe your NIC MAC address) to get a real connection. 
+> More on that later.
+>
+ I tend to agree.
  
+> 2. That you cannot ping your default gateway may not be significant, since 
+> ISP's often disable ping responses from their routers. This makes user-end 
+> troubleshooting harder, but I've never noticed that ISPs are much concerned 
+> about helping their customers do anything that is not a vanilla connection. 
+> I'd put this part of the analysis aside for now. (Oh, one question ... is 
+> the "mybox" that you are pinging *from* the router itself or a LAN 
+> workstation? If the latter, you won't be able to ping through the router, 
+> except to its own external interface address, until you install an iptables 
+> ruleset that NATs the LAN ... just enabling ip_forwarding is not 
+> sufficient, since outside hosts do not know that your router's external 
+> interface address is their route to 192.168.0.0/24 . Since I'm not familiar 
+> with LFS-3.3, specifically how it sets up iptables rulesets, I can't 
+> suggest details here.)
+>
+
+ I've been using ssh to access the firewall from my internal network
+when I tried pinging. I might have to come back to the iptables setup
+later (actually, it's based a ruleset from Linux Journal that I've been
+using for dial-up connections, with adaptations). LFS itself is as
+little (or as much) as you want, and I don't want a lot on that box. 
+  
+> 3. The approach you seem to have arrived at ... put the NIC in a Windows 
+> box; register the NIC; move the NIC to your Linux router ... is the good, 
+> conservative approach to making the connection work (assuming you are in 
+> situation 1B, not 1A). You could also try connecting via your ISP's 
+> preferred browser (IE, no doubt) running on a NAT'd Windows or Mac host on 
+> the LAN. If you do this right, the connection should look to the ISP as 
+> though it were coming from the router's IP and MAC address (unless the ISP 
+> specifically has anti-NAT stuff in its system, an unlikely possibility ... 
+> but one that will cause bigger problems than we've considered so far if 
+> they somehow do it).
+
+ Thanks, I think this is what I did from the iBook. Trouble is, it fails
+to negotiate an ip address from the server (either it ignores the
+specification to use my `router', or it's asking the firewall for the
+address.) It then falls back to trying ping (but doesn't specify who or
+where). Hence my original question.
+
+ Looks like I've got to dig out an old Win98 CD. Oh, the shame of it
+(and of using a "conservative" solution, too) <grins>. Thanks.
+
+Ken
+
 -- 
-Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+ Out of the darkness a voice spake unto me, saying "smile, things could be
+worse". So I smiled, and lo, things became worse.
 
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
