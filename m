@@ -1,36 +1,33 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Re: A few questions
-Date: Mon, 2 Dec 2002 16:26:08 +0930
+From: "Yawar Amin" <yav_a@hotmail.com>
+Subject: Automatic window tiling
+Date: Mon, 02 Dec 2002 15:34:45 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212021626.08487.Adam@Luchjenbroers.com>
-References: <200212012032.22587.Adam@Luchjenbroers.com> <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <F173OBhuEvUoS3gQS730001ccab@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Sunday 01 Dec 2002 10:36 pm, dashielljt wrote:
-> By way of answering question 3, have a look at the sysback script below.
-> Understand I'm going to patch it a little so another version that puts
-> dates in file names for the .log file and the actual backup files as well
-> so another version will appear.
+Hey all:
 
-Nice, but I only wanted to back-up the specific files that held the user 
-accounts. I suspect right now that alot of my disk-space is being used up by 
-assorted junk and I figure backing up the important stuff and re-installing 
-will help me recover it.
+Does anyone know how to set up the desktop environment in RH 7.3 using
+GNOME/Nautilus such that all the open windows automatically tile themselves 
+to cover up all the space on the desktop, so that the desktop itself is 
+never visible? This should work in such a way that the windows themselves 
+can be moved around and resized, but never so that the desktop is visible. 
+Is this possible? I think it's a pain having to tile windows "manually" all 
+the time, and I never use the desktop shortcuts anyway.
 
--- 
-"There is no such thing as sleep deprivation, only caffeine deficiency." - 
-Simmons
+Yawar
 
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
 
+
+
+_________________________________________________________________
+The new MSN 8: smart spam protection and 2 months FREE*  
+http://join.msn.com/?page=features/junkmail
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
