@@ -1,29 +1,48 @@
-From: "Thiago F.G. Albuquerque" <tfga@terra.com.br>
+From: "J." <mailing-lists@xs4all.nl>
 Subject: Re: file transfer via telnet
-Date: Sat, 22 Feb 2003 06:55:03 -0300
+Date: Sat, 22 Feb 2003 11:16:06 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030222065155.00a194f0@pop.bsb.terra.com.br>
-References: <3E55D572.1B60BF79@ihug.co.nz>
+Message-ID: <Pine.LNX.4.21.0302221107140.6891-100000@hestia>
+References: <5.1.0.14.1.20030222065155.00a194f0@pop.bsb.terra.com.br>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030221.140308.8.0.whitnl73@juno.com>
+In-Reply-To: <5.1.0.14.1.20030222065155.00a194f0@pop.bsb.terra.com.br>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+On Sat, 22 Feb 2003, Thiago F.G. Albuquerque wrote:
 
->However, to downoad a file by telnet, capture stdout so:
->
->telnet hostname | tee logfile
->....
->uuencode remotefile remotefile
->exit
->tr -d "r" < logfile | uudecode
+> 
+> >However, to downoad a file by telnet, capture stdout so:
+> >
+> >telnet hostname | tee logfile
+> >....
+> >uuencode remotefile remotefile
+> >exit
+> >tr -d "r" < logfile | uudecode
+> 
+> Ok, I understand. But what is this 'tr -d "r"' for?
+> 
+> Thiago
 
-Ok, I understand. But what is this 'tr -d "r"' for?
+He's trying to remove the octal '\015' or '\r' newline terminator. BUT the
+tr -d 'r' command removes the ascii character 'r' as in octal '\162'.
 
-Thiago
+Little mistake.. I guess. This could disrupt potentialy the encode file.
+
+references:
+man ascii
+
+B.T.W.
+tr -d '\015' works also als a DOS to UNIX newline converter. I have it as
+a handy alias in my .bashrc.
+   alias nodos="tr -d '\015'"
+
+nodos < my_msdos_newline.txt > my_unix_newline.txt
+
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
