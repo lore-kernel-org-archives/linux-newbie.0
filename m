@@ -1,49 +1,62 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Sound Lost
-Date: Mon, 02 Jun 2003 09:12:50 +0800
+From: "Riley Williams" <Riley@Williams.Name>
+Subject: RE: scrambled screen
+Date: Mon, 2 Jun 2003 06:19:05 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030602011255.160AE1037B@pfheiss>
-References: <3EDA09CA.3090901@bcgreen.com>
+Message-ID: <BKEGKPICNAKILKJKMHCAAELPECAA.Riley@Williams.Name>
+References: <S264743AbTFAWHa/20030601220730Z+2199@vger.kernel.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 01 Jun 2003 07:12:26 MST." 
- <3EDA09CA.3090901@bcgreen.com>
+In-Reply-To: <S264743AbTFAWHa/20030601220730Z+2199@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: qwms-avib@dea.spamcon.org, linux-newbie@vger.kernel.org
 
+Hi Stephen.
 
-samuel@bcgreen.com said:
-> Have you tried running sndconfig again? Have you rebooted since you
-> updated? (I presume so, but I have to ask) -- 
+ > Over the years, I have used Linux on a dozen different computers
+ > and have never run into this problem before. I've just installed
+ > Slackware 7.1 on a Compaq 400 (MMX) with S3 ViRGE video card.
+ > Everything is working OK (including the XFree 3.3.6 S3V server)
+ > except that when, I exit X and return to the console, the screen
+ > is scrambled.
+ >
+ > I don't mean the messed-up characters you get when you cat a non-
+ > text file (which is easily fixed). That only affects the current
+ > tty. The problem I am getting affects all ttys and isn't just a
+ > character problem. The whole screen layout is stuffed. Lines are
+ > fragmented and scattered all over the screen, and the cursor is
+ > way over on the right side of the screen. I can type (and execute)
+ > at the cursor, but everything I type appears in two or three
+ > different places around the screen.
+ >
+ > I have tried everything I can think of (clear, reset, exit and re-
+ > logon) and nothing fixes the problem. Switching ttys doesn't help.  
+ > The only way to get a normal CLI screen is to reboot. The X screen 
+ > is not affected (even from the scrambled CLI screen I can startx).
+ >
+ > Some further data: The problem occurs as soon as the S3V server 
+ > starts -- if I CTRL-ALT-F4 while X is running, I see a scrambled 
+ > screen. The problem does *not* occur when I run the VGA16 server.  
+ > Both of those servers work perfectly in every other respect.
+ >
+ > Any ideas?
 
-Yes I have run sndconfig, hear nothing from the test and get the message:
+Is that by any chance the S3 ViRGE/GX ??? If so, I reported exactly
+the same problem to this list about two years ago, and the ONLY
+response I got was a post stating that the symptoms as reported
+indicated a faulty video card, and claiming that there were a large
+number of faulty GX cards on the market. The problem apparently
+doesn't affect the other ViRGE models as I understand it.
 
-"AC97 codec does not have proper volume support".
+Best wishes from Riley.
+---
+ * Nothing as pretty as a smile, nothing as ugly as a frown.
 
-I have rebooted a few time since, as I was trying to fix the problem before 
-going to the list.
-
-Peter said:
-> I upgraded RH7.3 and the sound is gone.
-> Old kernel-2.4.18-24.7.x.i686; new kernel-2.4.20-13.7.i686
-> dmesg:
-> Trident 4DWave/SiS 7018/ALi 5451,Tvia CyberPro 5050 PCI Audio, version
->  0.14.10h, 13:32:09 May 12 2003 PCI: Found IRQ 11 for device 00:01.4
-> PCI: Sharing IRQ 11 with 00:09.0 trident: SiS 7018 PCI Audio found at
-> IO 0xe000, IRQ 11 ac97_codec:
-> AC97  codec, id: CMI65 (CMedia)
-> AC97 codec does not have proper volume support.
-
-> The last line of the message appears on the console every now and
-> then when time should be announced.
-
-
--- 
-Peter
-
-
+---
+Outgoing mail is certified Virus Free.
+Checked by AVG anti-virus system (http://www.grisoft.com).
+Version: 6.0.487 / Virus Database: 286 - Release Date: 1-Jun-2003
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
