@@ -1,67 +1,61 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: How to mount CD-ROM?
-Date: Wed, 30 Oct 2002 08:11:31 -0800
+Subject: Re: Firewall / Web Monitor
+Date: Wed, 30 Oct 2002 08:34:18 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021030075115.020ef7a0@celine>
-References: <5.1.0.14.1.20021029083056.0215aec0@celine>
- <5.1.0.14.1.20021029083056.0215aec0@celine>
+Message-ID: <5.1.0.14.1.20021030082408.02119b60@celine>
+References: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021030093224.D37F971949@smtp.orcon.net.nz>
+In-Reply-To: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 09:46 PM 10/30/02 +1300, cr wrote:
-[...]
->  if the
-> > installation really did work correctly, then /mnt/cdrom should be a symlink
-> > to the correct block device (easy to check).
->
->/mnt/cdrom is a directory, not a symlink.   Which I assume means the
->installation hasn't worked?
+At 08:54 AM 10/30/02 -0500, Paul Kraus wrote:
+>I have a network of about 25 pcs and 4 servers. With moderate internet
+>traffic. What kind of machine do you think I would need for a firewall
+>only box? Ipchains or Iptables ( I have some experience with the latter
+>and non with Ipchains). I would also like to be able to log where
+>everyone is going. Such as what sites they are visiting, the time, and
+>the pc that is making the request. Then if we see fit I would like to
+>come up with a list of sites that they can visit while restricting all
+>others. I would like to have this list be able to be split based on the
+>different departments. One list for Accounts Payable one for inventory
+>control, ect. Thanks for info. From what I have been reading squid can
+>do this but squid says it's a caching server. I don't really think I
+>need to cache pages though.
 
-Nope.  It was a typo on my part. It is /dev/cdrom that should be a symlink 
-(probably to /dev/scd0)
-[...]
-> >          'unknown device'  means that the device entry exists in /dev, but
-> > it does not point to an actual, physical device on the system. Try mounting
-> > /dev/scd0 instead.
->
->Tried that before -  "unknown device"   still
+Choice of hardware depends on how fast your Internet connection is, and how 
+busy it is. "moderate Internet traffic" is a bit too vague here. If your 
+external connection is DS-1 speed or lower, then even a 486-40 will be fast 
+enough to handle routing; in practice, though, I'd use the slowest Pentium 
+machine I had in my "spares" pile, just so I could use pci-based NICs. If 
+you do use a proxy server, that requires a bit more muscle, but not all 
+that much (a moderate Pentium still will handle DS-1 speeds, but you'll 
+want more memory and scratch disk space for the caching).
 
-Your other message said that /dev/scd0 is a file that is 11 bytes long. It 
-shouldn't be; it should be a pseudo-file entry -- in this case, a block 
-device -- that provides an interface to the hardware. If you do "ls -l 
-/dev/scd0", the result should be approximately this (this one is from my 
-workstation):
+For tracking connections, you have two basic options:
 
-         brw-rw----    1 root     cdrom     11,   0 Jun 13  2001 /dev/scd0
+1. Allow direct connections to the Internet (the next option will clarify 
+what "direct" means) and use ipchains or iptables logging to keep track of 
+who is going where.
 
-The "11" here is not a size; it is a device-major number. Make sure your 
-corresponding entry has the initial "b" (the indicator of a block device) 
-as well as the 11, 0.
-[...]
+2. Require use of a proxy server and use its logs to keep track of who is 
+going where.
 
->lsmod showed  sg  and scsi-mod.
->After  'insmod ide-scsi'   ide-scsi appeared in the list too.
->But trying 'insmod sr_mod'   just gives four error messages of
->'unresolved symbol unregister_cdrom_R94f2f104'   and similar.
+Whether you need to cache pages, a la Squid, depends on a lot of things. 
+Basically it is a tradeoff between local, scratch storage and load on your 
+Internet connection, and that requires cas-by-case analysis. How many 
+cache-able pages your users access also matters.
 
-The absence of this module is probably the source of your problem, as it is 
-the device driver for scsi CD-ROMs. modules.dep ssys it depends only on 
-scsi_mod. I don't have enough info about your setup (kernel details, 
-mostly) to know why you are getting ghe "unresolved symbol" errors, but the 
-usual reasons are kernel-version mismatch or missing dependency. See what 
-effect "modprobe sr_mod" has.
+I am unclear on what you mean by "have this list be able to be split". Once 
+created, either an iptables or a Squid log can be analyzed based on 
+anything that it includes. That means you can sort (or group) by source IP 
+address, and if sensible address ranges are associated with the different 
+departments, that should allow you to do what you want on that score.
 
->X-cd-roast seems to work quite happily without it, though.
 
-That's because it accesses the device by (pseudo-)LUN, not through the 
-block device /dev/scd0.
-
-[...]
 --
 -------------------------------------------"Never tell me the odds!"--------
 Ray Olszewski					-- Han Solo
