@@ -1,35 +1,71 @@
-From: Bryan Whitehead <driver@jpl.nasa.gov>
-Subject: Re: converting pdfs
-Date: Wed, 14 Aug 2002 10:48:56 -0700
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: can't open lp0 device file
+Date: Wed, 14 Aug 2002 14:18:38 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D5A9808.7060802@jpl.nasa.gov>
-References: <20020813.183924.-265271.6.matthewstapleton@juno.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200208141818.g7EIIcf20339@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Matthew Stapleton <matthewstapleton@juno.com>
-Cc: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@hartford-hwp.com
 
-Matthew Stapleton wrote:
-> How should I convert a pdf into individual image files?  I do not care
-> what format the output is ...jpg...gif...pbm...tif
+I'm no longer able to print to my USB printer because jobs get stuck
+in queue. I run printtool and print a test page, and nothing happens.
 
+Then run lpc status:
 
-Most linux distros come with a program called "convert". It's a program 
-that is part of ImageMagick.
-
-just type convert <file>.pdf <file>.[jpg,giv,png,tif]
-
-very easy! :)
+     Printer               Printing Spooling Jobs  Server Subserver 
+     Lexmark@hartford-hwp  enabled  enabled    1    none   19758
 
 
--- 
-Bryan Whitehead
-SysAdmin - JPL - Interferometry Systems and Technology
-Phone: 818 354 2903
-driver@jpl.nasa.gov
+I try:
+
+  # lpq
+  Printer: Lexmark@hartford-hwp
+  Queue: no printable jobs in queue
+  Server: no server active
+  Status: keeping error job 'root@hartford-hwp+215' at 13:59:33.318
+  Rank   Owner/ID                  Class Job Files                 
+  error  brownh@hartford-hwp+378      A   378 ERROR: aborting operations
+  error  root@hartford-hwp+215        A   215 ERROR: job removal requested
+
+It seems I'm unable to access the device interface:
+
+     # test.doc > /dev/usb/lp0
+     bash: /dev/usb/lp0: No such device
+
+or:
+
+     [root@hartford-hwp brownh]# checkpc -f
+     Warning - Lexmark: cannot open lp device '/dev/usb/lp0' - No such
+       device
+
+The file /dev/usb/lp0 does exist and user has rw permission. The lp
+and usbcore modules are loaded.
+
+In my /var/message I find (don't know how to interpret):
+
+Aug 14 ... kernel: usb.c: USB disconnect on device 5
+Aug 14 ... kernel: hub.c: USB new device connect on bus2/2/1, assigned
+   device number 6 
+Aug 14 ... kernel: usb.c: USB device 6 (vend/prod 0x43d/0x52) is not
+   claimed by any active driver. 
+Aug 14 ... /etc/hotplug/usb.agent: ... no modules for USB product
+   43d/52/100
+
+
+One difference may be that previosly I had this statement in
+/etc/modules.conf:
+
+	alias usb-controller usb-uhci 
+
+but now it is in /etc/rc.d/rc.local:
+
+	modprobe usb-uhci
+
+
+Haines Brown
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
