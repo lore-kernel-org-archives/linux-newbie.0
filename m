@@ -1,39 +1,33 @@
-From: Peter Howell <p.howell74@rcn.com>
-Subject: animated gif creation
-Date: 28 Feb 2003 20:28:29 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Debian questions
+Date: Sat, 01 Mar 2003 10:52:12 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1046482109.4602.6.camel@smeagle>
-References: <004101c2de99$eef21400$4800a8c0@neptune> 
-	<61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
+Message-ID: <200303010252.h212qCc03103@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Fri, 28 Feb 2003 07:10:24 EST." 
+Content-ID: <3100.1046487132.1@philonline.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: neil t <wa4chq@netscape.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-I've just been full of problems this week.  Now here is another one. 
-I've captured a series of short avis which I'd like to import into an
-openoffice presentation.  Unfortunately, openoffice will only accept
-animated gifs.  My choices are now
+I think when I upgraded from RH6.2 saytime would not work well anymore. What I 
+did was change the bottom lines in saytime.sh as follows:
 
-1)	Find a conversion package to let me create the animated gifs, or
+cat $SAYFILES > saytemp
+# cat $SAYFILES > /dev/audio  (original disabled)
+play -t ul -r 8000 saytemp
 
-2)	Import the movies one $&%*# frame at a time and use the openoffice
-animation tool.  
+and it worked ever since thru RH7.3.
 
-Needless to say, I thought I'd check with you folks before I spent to
-much time on option 2.  Does anyone know of software which can either
+Regards 
 
-1) convert jpeg to gif.  Then I could assemble the gifs with gifsicle,
-or
 
-2) covert avi files (raw data or riff) directly to animated gifs.
-
-Thanks for all the help,
-
+-- 
 Peter
+
 
 
 -
