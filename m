@@ -1,39 +1,47 @@
-From: ichi@ihug.co.nz
-Subject: Re: FSpecs
-Date: Fri, 15 Nov 2002 14:43:13 +0000
+From: lawson_whitney@juno.com
+Subject: Re: Tkdesk Segmentation Fault
+Date: Thu, 14 Nov 2002 19:35:36 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DD50801.55ACE0D@ihug.co.nz>
-References: <MSGID_110=3a20=2f1_50638fc8@linuxnet>
+Message-ID: <20021114.204908.134684296.0.lawson_whitney@juno.com>
+References: <200211120123.gAC1NihN005141@pyxis.wanadoo.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200211120123.gAC1NihN005141@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: BEN RITCHEY <linux-net@tcob1.net>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: hammer@revobild.net
 Cc: linux-newbie@vger.kernel.org
 
-BEN RITCHEY wrote:
-> 
-> Would it be possible in a Bash script to munge a 
-> Long File Name to the older DOS 8.3 format?
-> In my case I need the first 8 characters and the 
-> last 4 (.xxx) 
+On 12 Nov 2002, Heimo Claasen wrote:
 
-To which Paul Kraus replied:
-> It would be a lot easier to do it with gawk or perl.
+> On a related note:
+> Some accident/repair event apparently had the effect to trash what
+> would be just one of the "Gdk" libraries.  (At least, this was the only
+> fault discovered hitherto after the repair.)
+>
+> Indication is that just one application complains, with some
+> "Gtk-CRITICAL **" error, evidently some file is lacking.
+>
+> Searching through the pertinent distribution CDs I could not find
+> anything apparenly relevant to reload/re-install.
+>
+> What is the real name for those "Gtk-" libraries ?
+>
+> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-11-11
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+>
+You'll probably find them in the gnome-libs package.  That or gtk+, I
+guess.
+--
+---oops---
 
-And hackob said:
-> Use cut and/or gawk
 
-Actually guys, all you need is bash:
---------------------------------------------------
-example="long-filename.to.munge.txt"
-echo ${example%${example#????????}}.${example##*.}
---------------------------------------------------
 
-Cheers,
-Steven
-
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
