@@ -1,39 +1,101 @@
-From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
-Subject: Re: tar for "full" floppy backup?
-Date: Mon, 9 Dec 2002 07:38:23 -0500 (EST)
+From: james miller <jamtat@mailandnews.com>
+Subject: RE: RAM and swap partition
+Date: Mon, 9 Dec 2002 13:22:53 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212090737360.10206-100000@filesrv1.baby-dragons.com>
-References: <200212081837.LAA15273@cu.imt.net> <3DF44FE9.69FB5E4D@ihug.co.nz>
- <Pine.LNX.4.50.0212081603350.2573-100000@athame.gmpexpress.net>
- <3DF4DCC3.95931C1@ihug.co.nz>
+Message-ID: <3DF4FBF0@mailandnews.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DF4DCC3.95931C1@ihug.co.nz>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ichi@ihug.co.nz
-Cc: dashielljt <dashielljt@gmpexpress.net>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
+Let me pose the RAM question in another way to see if it can elicit a 
+generic, "rule-of-thumb" response this way. If a person uses their 
+computer as a sort of personal workstation using a fairly recent distro 
+and requires that it have an Xwindows gui, using applications like web 
+browsers, email clients, wordprocessing software and maybe Gimp on 
+occassion, at what point would such a person need to have a swap 
+partition? In other words, can it be stated in somewhat generic terms 
+"if said user had less than X MB RAM, they will definitely need a swap 
+partition"? And what about guidelines for swap partition size in such a 
+case: can such be stated as well? Like, say, "if this individual has 
+only 32 MB RAM, he should have a 64 MB swap partition" or "if he has 64 
+MB RAM he'll only need a 64 MB swap partition"?
 
-	Hello Gents ,  One word ,  df .  Hth ,  JimL
+Thanks, James
 
-On Mon, 9 Dec 2002 ichi@ihug.co.nz wrote:
-> dashielljt wrote:
-> > I've never tried this and have never heard of
-> > any success with this idea either.
-> I do not see the problem.  It is easy to create a
-> compressed archive file (let's call it backup.tgz).
-> Tar happily tars a single file, so why can't it
-> tar backup.tgz (multi-volume)?
-> Cheers,
-> Steven
--- 
-       +------------------------------------------------------------------+
-       | James   W.   Laferriere | System    Techniques | Give me VMS     |
-       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
-       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
-       +------------------------------------------------------------------+
+>===== Original Message From Chuck Gelm <nc8q@gelm.net> =====
+>Ditto to what Ray said.
+>
+> Perhaps you could run your system with a 'swap file' and see
+>how big it ever gets.  Then make a swap partition just that size
+>or a little larger.  ;-)
+>
+> My current firewall-router (aDSL to 100 Mb LAN) has 32 megabytes
+>  of RAM and has not used any swap memory, AFAICR.
+> Another workstation with 64 M of RAM has used 3 M of swap.
+> Another workstation with 160 M of RAM has used 2 M of swap.
+> Another laptop with 16 M of RAM, XFfree86 v4.0.3, and I just
+>  ran Netscape v4.77 under fvwm95, loaded a small web page,
+>  has used 2.6 M of swap.
+>
+> IMHO, it depends.  ;-)
+>
+>HTH, Chuck
+>
+>Ray Olszewski wrote:
+>>
+>> At 01:15 PM 12/8/02 +0000, Rolf Edlund wrote:
+>> >Originally to: james niland
+>> >
+>> >
+>> >  jn> I know some people who run happily without a swap at all.
+>> >
+>> >How low RAM can I use, without running a swap ? Can I for example
+>do it on
+>> >a 486
+>> >with 4 MB RAM ?
+>>
+>> The way you ask this question, it has no real answer. How little
+>memory a
+>> system can run with depends on what tasks it is doing. And the
+>choice of
+>> CPU is pretty much irrelevant to this question (its only slight
+>relevance
+>> is in the smaller size of CPU-specific kernels).
+>>
+>> That said ... running any sort of Linux system in less than 8 MB of
+>real
+>> (not swap) RAM poses special challenges ... most modern distros
+>can't even
+>> install on such systems (only Slackware, I think, still offers a
+>"low
+>> memory" install option) and you won't be able to do much with such
+>a
+>> system. In practice, the smallest systems I've ever run without
+>swap were
+>> 486s with 16 MB of RAM, and that was for special purpose systems
+>like
+>> routers. While these days I routinely run my workstations without a
+>swap
+>> partition, they have at least 256 MB of RAM.
+>>
+>> --
+>> -------------------------------------------"Never tell me the
+>odds!"--------
+>> Ray Olszewski                                   -- Han Solo
+>> Palo Alto, California, USA                        ray@comarre.com
+>>
+>-----------------------------------------------------------------------------
+--
+>>
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
