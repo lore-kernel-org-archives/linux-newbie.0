@@ -1,34 +1,22 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: /dev/random, /dev/urandom
-Date: Wed, 08 Jan 2003 13:22:54 -0800
+From: "Jonathan Kallay" <yoni@kallay.net>
+Subject: gcc version conflict
+Date: Thu, 9 Jan 2003 22:30:41 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030108131706.02135ec0@celine>
-References: <avi1hh$hai$1@main.gmane.org>
+Message-ID: <00f901c2b858$a725cb60$6400a8c0@00arc>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <avi1hh$hai$1@main.gmane.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 03:27 PM 1/8/03 -0500, Jamie Risk wrote:
->I'm compiling OpenSSH, and to access /dev/random, and /dev/urandom, the
->configure script needs to be run as root.
->
->What sort of trauma am I in for if I make those device permissions read
->accessible by everyone?
-
-Nothing serious that I can think of (though I suppose a malicious user 
-might "use up" the system's entropy). The man page for "random" recommends 
-mode 644 for both devices. Standard Debian installs make them world readable.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Hi all,
+  I'm trying to compile the kernel module for some NVidia drivers.  I'm
+getting an error message saying that I'm compiling a module with a different
+version of the compiler than the one used to compile the kernel (gcc 2.95.4
+is what's installed; the kernel version is 2.2.20 and at one point I was
+able to check the compiler version that compiled it but I can't remember how
+I did it).  What's the best way to work around this problem?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
