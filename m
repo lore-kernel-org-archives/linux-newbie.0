@@ -1,44 +1,48 @@
-From: J S <webnews@comcast.net>
-Subject: Re: HOWTO Restart LPD
-Date: Tue, 06 May 2003 23:50:39 -0400
+From: Jesse Armand <matrix_rev2002@yahoo.com>
+Subject: Re: hiding my hostname (2)
+Date: Tue, 6 May 2003 20:58:42 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1052279439.8304.1.camel@jayhawk>
-References: <200305070940.44823.pfheiss@philonline.com>
+Message-ID: <20030507035842.42941.qmail@web10704.mail.yahoo.com>
+References: <5.1.0.14.1.20030506201353.01eb8ea0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200305070940.44823.pfheiss@philonline.com>
+In-Reply-To: <5.1.0.14.1.20030506201353.01eb8ea0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Under RH 9.0 and most recent versions of RedHat as well as Mandrake,
-just use the script in /etc/init.d
+well.. I think there is a way,
+why ?
+because i've just seen it.
+when i'm logging in to a server, 
+i saw a client that hiding his hostname,
+and it's not about the server not knowing my ip
+address, it's about hiding my ip address from viewing
+by other users. 
+I know a server must know an ip address of the client
+that connects to it.
+
+when i use 'w' or 'who' command
+the hostname table shows empty content
+
+USER    TTY   FROM    LOGIN@    IDLE    WHAT
+woho    p1     -      10:09AM    -      - (pine) 
+
+can u explain that ?
+
+btw by using .nofinger i can hide myself from
+fingering,
+that's one way,
+
+so anybody knows how to hide my hostname from 'who'
+and 'w'
 
 
-For example...
-
-/etc/init.d/lpd restart
-
-
-The other scripts in /etc/init.d are helpful for other services.  Most
-of the scripts take as an argument on of the following: start, stop,
-restart, and status.  These are very helpful at times.  I'm sure there
-are some other options as well, but I've never used them.
-
-J
-
-On Tue, 2003-05-06 at 21:40, Peter wrote:
-> Hi,
-> When cups has been activated for printing, then on rebooting lpd is not 
-> started anymore.
-> 
-> How can I restart lpd from the command line instead of using printtool or 
-> printconf-tui? I can't find anything in man lpd.
-> 
-> Thanks & regards
-
+__________________________________
+Do you Yahoo!?
+The New Yahoo! Search - Faster. Easier. Bingo.
+http://search.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
