@@ -1,38 +1,31 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re: Minicom fails
-Date: Fri, 20 Dec 2002 07:55:38 -0500
+From: "Paulo Jorge O. C. Matos" <pocm@mega.ist.utl.pt>
+Subject: Copying an audio CD
+Date: Fri, 20 Dec 2002 14:49:32 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212200755.38903.sotl155360@earthlink.net>
-References: <200212200700.gBK704603967@philonline.com>
+Message-ID: <3E032DFC.30209@mega.ist.utl.pt>
+Reply-To: pocm@mega.ist.utl.pt
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212200700.gBK704603967@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-If it works you are correct.
+Hi all,
 
-Frank
+What's the best way to copy an audio cd under Linux? Is it possible with 
+cdrecord? what do I need?
 
-On Friday 20 December 2002 02:00, Peter wrote:
->  Peter said:
-> > After I run a RH7.3 upgrade I can't access anymore minicom as a user.
-> > I get the following message: ]$ minicom Device /dev/ttyS0 lock failed:
-> > Operation not permitted.
->
-> Thanks Frank!
->
-> The first thing I did was reading the man pages after the opening failure.
-> I got nothing out of it.
->
-> What I did now was setting the group of /var/lock to user and I can open
-> minicom again.
->
-> Was this the right way to do it?
->
-> Regards
+Best regards,
+
+-- 
+Paulo J. Matos : pocm(_at_)mega.ist.utl.pt
+Instituto Superior Tecnico - Lisbon          WISHING YOU A MERRY
+Software & Computer Engineering - A.I.        CHRISTMAS, AND A GREAT
+  - > http://mega.ist.utl.pt/~pocm                               2003!!!
+  ---	
+	Yes, God had a deadline...
+		So, He wrote it all in Lisp!
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
