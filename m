@@ -1,27 +1,39 @@
-From: "Robert Todd" <linux-net@tcob1.net>
-Subject: RE:Redhat 7.3 Samba Start at startup
-Date: Tuesday, 18 Mar 2003 15:03:24 +000
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: gnome-panel crash loop
+Date: Thu, 20 Mar 2003 18:04:19 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a202=2f1_4dcf132c@fidonet.org>
-Mime-Version: 1.0
+Message-ID: <200303202304.h2KN4Jpl002362@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux@hartford-hwp.com
 
-Originally to: Paul Kraus
+I'm running RedHat 8.0, and while using IceWM window manager, hit
+Alt-F4. It should have been to move a window, but instead X crashed. I
+couldn't restart X, and so got rid of my ~/.Xclient files to get back
+to my default gnome window manager. 
 
-->How can I set samba to start when the server starts. 
-->Every time I reboot the machine I have su, /sbin/service smb restart. 
- 
-Paul you have it set to start in your /etc/init.rc (or something similar)
-files? 
- 
- 
- 
-...On a tombstone: "I TOLD YOU I WAS SICK" 
+While this allowed me to start X, when the desktop loads, logged on as
+either user or root, when it gets part way through loading
+gnome-panel, the gnome-panel crashes. A dialog comes up telling me to
+look at the log (nothing of interest there), and when I dismiss the
+dialog, the gnome-panel starts to reload, and crashes again, and I'm
+in a loop. I'm forced to work from the console.
 
+If I had stepped on my gnome configuration, I should think it would
+affect use or root, but not both. I could run IceWM and use its panel,
+but I don't know how to configure gnome not to run gnome-panel. I've
+no .xinitrc in HOME, but in /etc/X11/xinit, but nothing in it or in
+xinitrc about gnome applications.
+
+Haines Brown 
+
+
+
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
