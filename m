@@ -1,49 +1,54 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Network card and kernel module problems
-Date: Sun, 2 Feb 2003 16:15:13 +0000
+From: Frank Robers _ SOTL <sotl155360@earthlink.net>
+Subject: Re: Minicom and Modem
+Date: Sun, 2 Feb 2003 12:52:30 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03020216151302.19519@unix.pa3gcu>
-References: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <200302021252.30505.sotl155360@earthlink.net>
+References: <200302011710.46462.sotl155360@earthlink.net> <200302020745.13455.sotl155360@earthlink.net> <03020213372901.19519@unix.pa3gcu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
+In-Reply-To: <03020213372901.19519@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
+To: pa3gcu@zeelandnet.nl, Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Sunday 02 February 2003 15:56, Amin wrote:
-> Hi all,
+On Sunday 02 February 2003 08:37, pa3gcu wrote:
+> On Sunday 02 February 2003 12:45, Frank Robers _ SOTL wrote:
+> > Hi
+> >
+> > Thanks for the help. I greatly appreciate your taking the effort to
+> > respond.
+> >
+> > Now for the principal issue.
+> >
+> > If I issue the above commands will that screw up Kppp from seeing the
+> > built in modem and stop normal Internet connections.
 >
-> I use a Surecom EP-320X-S 100/10M Ethernet PCI adapter; I believe it's
-> Myson MTD3xx compatible --- at least, I've used it before with Myson's
-> fealnx.o module in Red Hat Linux 7.3.  The problem is I upgraded to RH8.0
-> and find that the kernel does not already support the card.  I tried
-> recompiling with built-in support (for the Myson module).  kudzu detected
-> the card at startup and configured it.  I've set it up it using Red Hat's
-> ``neat'' tool (it uses DHCP), but it says it can't determine IP
-> information, and to check the cables.
+> Why use Minicom at all for simply transferring flies via a serial cable.?
 
-Then that means the card was detected and the module was loaded, have you 
-done what it says.????
+Because that is the only way to make the transfers unless you know of a better 
+Linux replacement of MS's Hyper Terminal than Minicom.
 
-You may need to use dhcpcd with options to obtain a IP# from your isp.
-IE, hostname ??.
+The second computer is NOT a Linux box or a MS box but is a specialized 
+process control computer whose only access is by Hyper terminal under MS 
+Windows. I am attempting to using Linux in this computer (the command 
+computer) with the objective of replace MS's Hyper Terminal with Minicom 
+under Linux.
 
->
-> Also, could anybody tell me of a way to check the various distros' kernels
-> to see if they come with built-in support for my card?
->
-> Help is much appreciated.
->
-> Yawar Amin
+Please I don't want to get into the configuration of a Sweitzer system (the 
+system being controlled) on this list. Suffice it to say that it is not Linux 
+nor MS.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+I only want to configure Minicom under linux in the format in which I 
+previously had it before I lost the Minicom installation instructions.
 
+What I would appreciate knowing is if I issue the commands you suggest will 
+that change the operation of Kppp such that I can not then connect to the 
+Internet.
+
+
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
