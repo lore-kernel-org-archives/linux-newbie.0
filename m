@@ -1,29 +1,36 @@
-From: "Anna G. Zapata" <azapata@du.edu>
-Subject: up2date
-Date: Tue, 01 Jul 2003 14:32:58 -0600
+From: "Linovitz, Scott" <slinovitz@adt.com>
+Subject: General Guidance - "Drive Mapping"
+Date: Tue, 1 Jul 2003 14:49:44 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <HBEJLOFMLEPBMAAEFNFDCEGNCAAA.azapata@du.edu>
+Message-ID: <678FF08CF467D4118DA400508BD9365707431BEA@mail02.adt1.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux-Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I have a question on up2date for Red Hat.  When we get prompted for a
-possible vulnerability on the machine (the red dot with the !), does that
-machine actually have that package installed or is the vulnerability for
-everyone.  How do I know what needs to be installed?  This looks like it can
-take up a lot of space.
+I'm looking for general guidance on the following and any help is much
+appreciated.
 
-Anna G. Zapata - GSEC, MCIS
-University of Denver
-University Technology Services - Network Security
-(303) 871-2009 (phone)
-(303) 871-4135 (fax)
-azapata@du.edu (email)
+My Situation
+-------------------
+I have two PC's. PC #1 is running WinXP Pro and PC #2 is running RedHat 9.
+
+Goal
+-------
+I have a "shared" folder on PC #1 that I would like to "map" (mount) on PC
+#2.
+
+Question
+-------------
+Which linux service(s) and/or application(s) handle this type of file
+sharing? Is it the Samba service and if so is this the only method to "map"
+(mount) a drive on PC#2 from PC#1?
 
 
+Thanks
+Scott
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
