@@ -1,42 +1,22 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: Linux router
-Date: Mon, 20 May 2002 23:38:36 +0300
+From: Jim Reimer - WA5RRH <wa5rrh@arrl.net>
+Subject: List archive
+Date: Mon, 20 May 2002 16:33:53 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200205202038.g4KKchI12995@g38.rdsbv.ro>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careercommunity.com>
+Message-ID: <200205202133.g4KLXB9N018005@franklin.icok.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D136B@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Sridhar J <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-<advertise>
-get slackware !!!
-</advertise>
+List is being archived at
+http://marc.theaimsgroup.com/?l=linux-newbie&r=1&w=2
 
+and (again) at
+http://www.mail-archive.com/linux-newbie%40vger.kernel.org/
 
-On Monday 20 May 2002 13:59, Sridhar J wrote using one of his keyboards:
-> Hello
->
-> I have an old Cyrix system that I would like to turn into a router-firewall
-> and put it before my Webserver. I would alos like to have my IDS running on
-> this. No other service should run on this. No apps, nothing.
->
-> How do I go about it? What distro should I choose? What files do I have to
-> edit to make these changes?
->
-> Regards
-> Sridhar
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
- 11:37pm  up 7 min,  1 user,  load average: 0.01, 0.11, 0.08
+-jdr-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
