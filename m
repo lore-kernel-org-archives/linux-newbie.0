@@ -1,63 +1,65 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: how to remove Grub
-Date: Thu, 2 Jan 2003 10:17:24 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Networking issue
+Date: Thu, 02 Jan 2003 08:38:41 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <005a01c2b272$0e40aa50$64fea8c0@pkrausxp>
-References: <03010215100300.02345@unix.pa3gcu>
+Message-ID: <5.1.0.14.1.20030102082846.021bb750@celine>
+References: <200301021906.13536.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <03010215100300.02345@unix.pa3gcu>
+In-Reply-To: <200301021906.13536.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl, 'Chris' <smarta55@comcast.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I just did this yesterday. I had to use a windows 98 startup disk in
-order to do the fdisk /mbr. But everything worked fine afterwards.
+Your report is way too sketchy to let anyone spot the problem. Post a 
+followup with this information:
 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org 
-> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of pa3gcu
-> Sent: Thursday, January 02, 2003 10:10 AM
-> To: Chris; linux-newbie@vger.kernel.org
-> Subject: Re: how to remove Grub
-> 
-> 
-> On Thursday 02 January 2003 12:18, Chris wrote:
-> > Does anyone know how to remove/uninstall the Grub loader 
-> from Red Hat 
-> > 8.0?
-> >
-> > I've been dual booting my PC between WinXP and RH8, but 
-> have now set 
-> > up a separate PC in an attempt to learn Linux without fear of 
-> > destroying what I have on my XP box, and would like to 
-> restore it back 
-> > to XP only.
-> >
-> > With DOS/Win9x I'd just use "FDISK /MBR" to remove LILO, 
-> but I'm not 
-> > sure what to do with XP and Grub.  Is it the same procedure?
-> 
-> They say its the same.
-> I have never tryed it with XP tho.
-> 
-> >
-> > Thank you,
-> > Chris
-> >
-> 
-> -- 
-> Regards Richard
-> pa3gcu@zeelandnet.nl
-> http://people.zeelandnet.nl/pa3gcu/
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in the body of a message to 
-> majordomo@vger.kernel.org More majordomo info at  
-http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+         1. Unedited output of "ifconfig -a"
+         2. Unedited output of "netstat -nr'
+         3. Unedited output of "iptables -nvL"
+         4. An EXACT description of what the ping failures look like. (Does 
+ping fail silently, or does it fail with an error message? If there's a 
+message, what is it). Do this for (a) 127.0.0.1 pinged from the Mandrake 
+host and (b) its eth0 IP address pinged from some other host (and mention 
+what OS that host is running, since that affects the wording of ping error 
+messages).
+         5. The unedited output of 
+"cat  /proc/sys/net/ipv4/icmp_echo_ignore_all"
+         6. An EXACT description of what the ssh failures look like. 
+Include info on how you run sshd (as a deamon by itself or through inetd), 
+any error messages sshd logs, and how long you wait before deciding that 
+sshd has failed (if you haven't been waiting for 5 minutes before giving 
+up, please do so, so we can rule out DNS-related logging errors).
+
+Do all of this WITHOUT installing Shorewall. Let's fix the problems one at 
+a time ... get your basic conectivity working, then get the system properly 
+firewalled. Oh, also mention what kernel version you are using ("uname -a") 
+and whether you compiled it yourself or it is a stock Mandrake kernel.
+
+At 07:06 PM 1/2/03 +0930, Adam Luchjenbroers wrote:
+
+>I installed Mandrake 9.0 on a server box I'm putting together, I installed 
+>the
+>firewall shorewall. Couldn't connect to the ssh server or even ping the box
+>(the inability to ping it, I assumed was the result of shorewall).
+>
+>Reconnected monitor and keyboard to server, server couldn't ping any of the
+>other computers (sendmsg not permitted)
+>
+>So I turned off shorewall and even removed it from startup, can now ping from
+>the server to other computers but it cannot be pinged (even ping 127.0.0.1
+>doesn't work) or connected to using ssh (sshd is running)
+>
+>Any idea whats wrong?
+
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
