@@ -1,42 +1,39 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: LP - Cups - Samba - Print Command
-Date: Tue, 01 Oct 2002 17:18:43 +0100
+From: Mike Dresser <mdresser_l@windsormachine.com>
+Subject: Re: Tar Extract from Tape
+Date: Tue, 1 Oct 2002 12:45:55 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20021001170558.00bbc528@interzone.anexia.co.uk>
-References: <000101c2695d$57b09320$64fea8c0@pkrausxp>
+Message-ID: <Pine.LNX.4.33.0210011244070.13726-100000@router.windsormachine.com>
+References: <000001c26968$3dd96d90$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000101c2695d$57b09320$64fea8c0@pkrausxp>
+In-Reply-To: <000001c26968$3dd96d90$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
+On Tue, 1 Oct 2002, Paul Kraus wrote:
 
+> I am trying to extract the file P723.ind. Now this is on a Sco Box so I
+> am crossing my fingers that the syntax is similar to Linux. Here is the
+> sniped results for tar tvf /dev/rStp0.
 >
->*On a side note why can't I open Linux conf files with notepad? There
->are strange characters. I have to open it with WordPad. I can not save
->or edit using either notepad or WordPad because they seem to add strange
->characters also. Just curious.*
+> rw-r--r--  0/0   614400 Aug 08 16:39 2002 ./PM65/Orthotic Cat/Knee &
+> Ankle/P722.indd
+> rw-r--r--  0/0   712704 Aug 08 16:36 2002 ./PM65/Orthotic Cat/Knee &
+> Ankle/P723.indd
+> rw-r--r--  0/0   794624 Aug 06 16:38 2002 ./PM65/Orthotic Cat/Knee &
+> Ankle/P724.indd
+> rw-r--r--  0/0   856064 Aug 12 11:29 2002 ./PM65/Orthotic Cat/Knee &
+> Ankle/P725.indd
+>
 
-Its the Line Feed/Carriage Return problem.
+tar xvf /dev/rStp0 PM65/Orthotic\ Cat/Knee\ \&\ Ankle/P723.indd
 
-*nix does it one way MS another.
+Your tar might be stripping off the ./ part, or need it stripped off.
+Also, escape the & character.
 
-Notepad doesn't like displaying it.
-
-The answer is to get a decent editor that can open/save files in its native format.
-If your used to vi on *nix then the latest MS version is a great relief.
-
-See www.vim.org for all things vim.
-I think Notetab at www.notetab.com is good at native file support if you don't want vi.
-
-
-On my own side note most conf file reside in /etc and you want to be careful about sharing
-conf files even in a trustworthy network.
-
---
-Carl
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
