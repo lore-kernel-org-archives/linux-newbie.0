@@ -1,65 +1,28 @@
-From: Bryan Whitehead <driver@jpl.nasa.gov>
+From: Theodore Ts'o <tytso@mit.edu>
 Subject: Re: devfs + PCI serial card = no extra serial ports
-Date: Fri, 07 Mar 2003 15:28:28 -0800
+Date: Fri, 7 Mar 2003 18:38:39 -0500
 Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <3E692B1C.5010607@jpl.nasa.gov>
+Message-ID: <20030307233839.GB24572@think.thunk.org>
 References: <3E692281.10906@jpl.nasa.gov>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <3E692281.10906@jpl.nasa.gov>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: Bryan Whitehead <driver@jpl.nasa.gov>
-Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org, marekm@amelek.gda.pl
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-I just found this:
-http://www.uwsg.iu.edu/hypermail/linux/kernel/0212.2/0845.html
-
-Has this patch been accepted into the new kernel series? Or should I 
-just toss this card (the NetMos PCI I/O card)?
-
-Bryan Whitehead wrote:
+On Fri, Mar 07, 2003 at 02:51:45PM -0800, Bryan Whitehead wrote:
 > It seems devfsd has an annoying "feature". I bought a PCI card to get a 
 > couple (2) more serial ports. The kernel doesn't seem to set up the 
 > serial ports at boot, so devfs never creates an entry. However, post 
 > boot, since there is no entries, I cannot configure the serial ports 
 > with setserial. So basically devfsd = no PCI based serial add on?
-> 
-> 03:05.0 Serial controller: NetMos Technology 222N-2 I/O Card (2S+1P) 
-> (rev 01) (prog-if 02 [16550])
->     Subsystem: LSI Logic / Symbios Logic (formerly NCR): Unknown device 
-> 0002
->     Flags: medium devsel, IRQ 17
->     I/O ports at ecf8 [size=8]
->     I/O ports at ece8 [size=8]
->     I/O ports at ecd8 [size=8]
->     I/O ports at ecc8 [size=8]
->     I/O ports at ecb8 [size=8]
->     I/O ports at eca0 [size=16]
-> 
-> 
-> mknod ttyS2 c 4 66
-> mknod ttyS3 c 4 67
-> setserial ttyS2 port 0xecf8 UART 16550A irq 17 Baud_base 9600
-> setserial ttyS3 port 0xece8 UART 16550A irq 17 Baud_base 9600
-> 
-> I hoped after "setting up" the serial ports with setserial some magic 
-> would happen and they would apear in /dev/tts... but I was wrong.
-> 
-> gets me working serial ports... but it's not in /dev... :O
-> 
-> Am I just screwed?
-> 
-> If so, what would be a good add on PCI based solution for more serial 
-> ports that WORKS with devfsd? (I don't want to disable devfs as this 
-> opens up a different set of problems)
-> 
-> Thanks for any replay!
-> 
 
+Yep.  This I pointed this out as a flaw to devfs a long, long time
+(years!) ago, but Richard chose not to listen to me.  Personally, I
+solve this (and other) problems by simply refusing to use devfs.
 
--- 
-Bryan Whitehead
-SysAdmin - JPL - Interferometry Systems and Technology
-Phone: 818 354 2903
-driver@jpl.nasa.gov
+						- Ted
