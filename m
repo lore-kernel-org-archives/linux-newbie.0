@@ -1,41 +1,28 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: fetchmail and smtp problem
-Date: Wed, 11 Dec 2002 19:15:23 -0500
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: problems with ALSA
+Date: Wed, 11 Dec 2002 20:46:17 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212120015.gBC0FNf03106@hartford-hwp.com>
-References: <5.1.0.14.1.20021210171852.020d3150@celine>
- <5.1.0.14.1.20021210115320.020c5d00@celine>
- <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
- <5.1.1.6.0.20021210124205.01f826f0@pop3.demon.co.uk>
- <5.1.0.14.1.20021210115320.020c5d00@celine>
- <5.1.0.14.1.20021210171852.020d3150@celine> <5.1.0.14.1.20021211110250.020d8d90@celine>
+Message-ID: <Pine.LNX.4.50.0212112042140.4071-100000@athame.gmpexpress.net>
+References: <200212110750.08044.r4mz3z@yahoo.es>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20021211110250.020d8d90@celine> (message from Ray
-	Olszewski on Wed, 11 Dec 2002 11:09:03 -0800)
+In-Reply-To: <200212110750.08044.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
+To: r4mz3z <r4mz3z@yahoo.es>
 Cc: linux-newbie@vger.kernel.org
 
-> Haines -- It is hard to diagnose anything from this bounce, without
-> information about what the original message looked like. A ways down
-> in the bounce report is this information:
+Have you tried: lspci -v >lspci.log <cr> then had a look inside of
+lspci.log to see if you could find your sound card?  If it's a p&P sound
+card only this won't work, but if it's in a pci slot it's possible lspci
+-v can give you the vendor and type of card which may be enough to get
+alsa going correctly.  That should also provide you port info, but even
+before that perhaps dmesg >dmesg.log as root and reading down that file to
+see if the system even finds a sound card would be useful.
 
-Unfortunately, I can't reproduce the error. I repeated what I had done
-earlier, which I believe was to send a test message to a) my email
-address, b) to an alias on another server that is redirected back to
-myself, c) localhost.localdomain, d) localhost
+Jude <dashielljt(at)gmpexpress-dot-net>
 
-None of these messages was received within a period of at least 15
-minutes, even though they all had a BCC: back to myself.
-
-I've no problem receiving messages from the mail server (despite the
-inordinate delays), and so it appears that my outgoing mail is just
-not getting there.
-
-Haines 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
