@@ -1,39 +1,40 @@
-From: "Axel H. Siebenwirth" <axel@hh59.org>
-Subject: Re: process priority at 25
-Date: Mon, 20 May 2002 16:46:12 +0200
+From: Staci <spiritlover666@yahoo.com>
+Subject: Self-starting NAIM??
+Date: Mon, 20 May 2002 09:27:05 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020520144612.GA489@prester>
-References: <20020519142943.GA9998@prester> <0205191540330V.27213@unix.pa3gcu> <006101c1ff84$963f95c0$0901a8c0@system>
+Message-ID: <20020520162705.66704.qmail@web12807.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <006101c1ff84$963f95c0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Tom Beer <mailings@analogon.com>
-Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi Tom!
+This is bizaare.
+For the last day or so, NAIM has been starting itself
+as a background process.
+(for those of you who don't know, NAIM is a
+console-based instant-messenger)
 
-On Mon, 20 May 2002, Tom Beer wrote:
+I double-checked my process-list last night to make
+sure.  Then I woke up this morning and it'd been
+running for 304:06 minutes.  I ALWAYS shut it down,
+this isn't me.
 
-> amanda, some month ago. I thought that the uneven numbers are experimental, but
-> the even numbers would be "stable"?
+How is this happening???
 
-For example in kernel version number 2.4.18
-				     2 is the VERSION
-				       4 is the PATCHLEVEL and
-					 18 is the SUBLEVEL.
+thanks,
 
-I believe since kernel version 2, kernel development was arranged in a way
-that even PATCHLEVELs are regarded as a "stable" branch and an uneven
-PATCHLEVEL is a "development" branch that regular linux users should not
-work with. It is only for kernel developers for working out a "better
-kernel". So 2.5 is not for regular use.
+sl
 
-Regards,
-Axel
+=====
+**************************
+In cyberspace nobody can hear you scream.
+
+__________________________________________________
+Do You Yahoo!?
+LAUNCH - Your Yahoo! Music Experience
+http://launch.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
