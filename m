@@ -1,59 +1,42 @@
-From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
-Subject: Re: Firewall benchmark
-Date: Mon, 28 Apr 2003 07:22:57 -0400 (EDT)
+From: "Kasim Sinan Yildirim" <yildirim@bilmuh.ege.edu.tr>
+Subject: Paging and system calls
+Date: Mon, 28 Apr 2003 14:48:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0304280722280.6790@filesrv1.baby-dragons.com>
-References: <20030428053023.75453.qmail@web40414.mail.yahoo.com>
+Message-ID: <20030428124808.M37677@bilmuh.ege.edu.tr>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030428053023.75453.qmail@web40414.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Mike Ni <cba20032002@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-	Hello Mike ,  Try ...  Hth ,  JimL
-http://www.ietf.org/internet-drafts/draft-ietf-bmwg-firewall-08.txt
+Hi,
 
-On Sun, 27 Apr 2003, Mike Ni wrote:
+I am working on a small kernel and i am examining the source code of the=20
+linux.
 
-> Hi there,
->
-> While back, I read a post about how to benchmark/judge
-> a firewall. Is anyone out there know where to find
-> such information?
->
-> I want to find out the right way determing firewall's
-> performance. Is it right to judge a firewall simply
-> based on the throuput/second as what the vendors seems
-> be doing.
->
-> Yet, I am wondering how the "network state inspection"
-> would impact firewall's performance. Is it more
-> prudent to benchmak firewall's performance based on
-> "session/second"?
->
-> Any input is appreciated! Thanks
-> Mike
->
-> __________________________________
-> Do you Yahoo!?
-> The New Yahoo! Search - Faster. Easier. Bingo.
-> http://search.yahoo.com
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+Since every task has its own page tables, when task switching occurs,  the =
 
--- 
-       +------------------------------------------------------------------+
-       | James   W.   Laferriere | System    Techniques | Give me VMS     |
-       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
-       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
-       +------------------------------------------------------------------+
+cr3 field of the TSS is put to the cr3 register which is page directory bas=
+e=20
+register.
+
+=DDn my operating system, when a system call occurs, the user level code ju=
+mps=20
+to system level code by changing its selectors to KernelCS and KernelDS. Bu=
+t=20
+at this point, the cr3 register still points to the page directory of the=20
+user process. So, the actual code that is pointed by kernel level page=20
+directory is not equal to the user level page directory entry. As a result =
+,=20
+the system fails.
+
+How this problem is solved in Linux? Have you got any solution to my proble=
+m?
+
+Thanks...
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
