@@ -1,42 +1,44 @@
-From: Experience Sharing Alert 
-	<experience.sharing.alert@sharingopinions.biz>
-Subject: A member at our website is looking for experiences about: linux-newbie@vger.kernel.org
-Date: Mon, 26 Jul 2004 20:03:10 -0400
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: How to forward port 80 on Linux Redhat 9?
+Date: Wed, 28 Jul 2004 11:58:43 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200407270003.i6R03Agb009360@mail.sharingopinions.biz>
+Message-ID: <GNEPLLCIIBHICCOGIAKPGELODBAA.eatley@wowcorp.com>
+Reply-To: <eatley@wowcorp.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-########POSTING ABOUT YOU########
+Hello all,
 
-Someone is trying to share Opinions and Experiences about you in our online community. 
+We use Redhat 9 as our server and router, and Bastille as our firewall on
+that box. I have set up Bastille so it allows port 80 requests from our
+external IP (ie. 209.158.555.123). However, I can't figure out how to
+forward port 80 to an internal machine (ie. 192.168.10.28).
 
-The purpose of this email is to inform you that a submission has been made about you at our website.  This is email is not commercial in nature.  
+I have been reading online articles first, and I guess it has something to
+do with iptables? I have seen the /etc/rc.d/rc.local file, and it looks like
+greek to me. I believe I need to do something like this:
 
-If this email message was delivered to your spam or bulk email folder please notify your ISP or spam filtering company regarding this mistake on their part.
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to
+10.0.4.2:80
 
-To view all of the submissions made at our website about you use this link:
+But it all has [0.0] and such before it, with a final line of COMMIT.
 
-http://1.share1.us/lx.php?a=search&b=5&c=linux-newbie@vger.kernel.org
+I have examined /etc/sysctl.conf and see that port forwarding is turned on.
 
-ShareYourExperiences.com members are always anonymous. By this we mean that ShareYourExperiences.com will not release your identity to other members. This way you can freely share the experiences that you have had with an individual or business without fear of retribution.
+Can somebody point me in the right direction as to what file I must
+configure, or what commands I must use to forward port 80 to 192.168.10.28?
 
-IMPORTANT - If you prefer not to be notified by our website in the future when  submissions are mode about you, just add your email address to our Do Not Email List.  
+I have tried from an external terminal, and I can't even access the server
+(ie. 209.185.555.123). I have no entry in hosts.allow for HTTPD as I wasn't
+sure what syntax to be using. Is it:
+httpd: ALL ?
 
-Our website will never send email to an address that appears on our Do Not Email List.
-
-To add to Do Not Email List click here:
-
-http://3.share2.us/lx.php?a=donotemail&b=linux-newbie@vger.kernel.org
-
-Regards,
-
-SYEC Support Department
-
+Thanks,
+Eve
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
