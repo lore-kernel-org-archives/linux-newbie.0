@@ -1,44 +1,43 @@
-From: John Kelly <bilbo@waitrose.com>
-Subject: Re: C Compiler
-Date: Sat, 27 Dec 2003 11:10:42 +0000
+From: Amin <amin@siriusbb.com>
+Subject: Fwd: Re: WYSIWYG editor
+Date: Sat, 27 Dec 2003 17:07:49 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031227111042.48ffc559.bilbo@waitrose.com>
-References: <200312270820.hBR8Ked01366@skyinet.net>
+Message-ID: <200312271707.49692.amin@siriusbb.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200312270820.hBR8Ked01366@skyinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Sat, 27 Dec 2003 16:20:40 +0800
-Peter wrote:
-> 
-> Trying to install a program I get:
-> 
-> checking for C compiler default output... configure: error: C compiler cannot 
-> create executables
-> 
-> when doing ./configure in RH9.
-> 
-> How do I correct this error?
- 
-I can't be of much help here since I stopped using RedHat at version 7.3. However it sounds like 
-your C compiler may be broken.
-What do you get from the following commands:
+----------  Forwarded Message  ----------
 
-rpm -qa | grep gcc
-gcc --version
+Subject: Re: WYSIWYG editor
+Date: Sat, 27 Dec 2003 21:19:53 +1100
+From: chakkerz <chakkerz_dev@optusnet.com.au>
+To: Amin <amin@siriusbb.com>
 
-Can you write a hello world program and compile it by hand?
+try quanta for KDE
 
-If gcc is installed and working, perhaps the configure script is not finding it. 
-Try ./configure --help. You can usually pass ./configure an option to force it to use your gcc. 
+http://quanta.sourceforge.net
 
-Hth.
+--
+with kind regards,
+  chakkerz
 
-John 
+"You don't need eyes to see, you need vision" (Faithless - Reverence)
+
+  Internet:          http://naiv.sourceforge.net
+  NAIV Status:
+     Stable       Testing       Development
+      0.2.3r2      none          0.3.0 - Startup / FLB
+
+"May there be mercy on man and machine for their sins" (Animatrix)
+
+-------------------------------------------------------
+
+-- 
+Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
