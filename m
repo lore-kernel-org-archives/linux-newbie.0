@@ -1,10 +1,10 @@
 From: "Peter H." <heisspf@skyinet.net>
 Subject: Mail Filtering with Broadband
-Date: Wed, 02 Mar 2005 16:26:07 +0800
-Message-ID: <20050302082607.0FD5620862@heisspf>
+Date: Wed, 02 Mar 2005 16:26:39 +0800
+Message-ID: <20050302082639.50C5E20862@heisspf>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-ID: <12775.1109751966.1@skyinet.net>
+Content-ID: <12787.1109751999.1@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Transfer-Encoding: 7bit
@@ -52,6 +52,8 @@ reason?
 Thanks & regards
 -- 
 Peter
+
+
 
 
 
