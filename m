@@ -1,48 +1,89 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Vbox
-Date: Fri, 25 Oct 2002 16:30:00 +0800
+From: Jude DaShiell <jdashiel@shellworld.net>
+Subject: Re: CD-ROM settings and hardware resources...
+Date: Fri, 25 Oct 2002 04:42:35 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210250830.g9P8U0c01961@philonline.com>
+Message-ID: <Pine.BSF.4.44.0210250441590.3791-100000@server1.shellworld.net>
+References: <1035465877.31480.100.camel@localhost.localdomain>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1035465877.31480.100.camel@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Cc: jbradford@dial.pipex.com, pa3gcu@zeelandnet.nl, linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
-
-on trying to set-up vbox I get the following messages:
-
-on booting:
-INIT: Id "I5" respawning too fast: disabled for 5 minutes
-
-My entry in inittab is:
-I5:2345:respawn:/usr/sbin/vboxgetty -d /dev/ttyI5
-
-with command 
-telnet localhost vboxd
-I get:
-Trying 127.0.0.1...
-telnet: connect to address 127.0.0.1: Connection refused
-
-and command vbox gives:
-Connecting to 'localhost:20012'...
-vbox: can't connect to 'localhost:20012
-
-that number 20012 comes from the file /etc/services
-vboxd           20012/tcp                       # voice box system
-vboxd           20012/udp
-
-What could be wrong?
-
-Thanks & regards
+Do any of the Linux file systems use a tree rather than linked lists?
 
 
 
+On 24 Oct 2002, Bryan Simmons wrote:
 
--- 
-Peter
+> Shows how much I know about basic system design...
+>
+> In fact, I was shocked to learn last night that ext2 uses linked lists
+> to keep track of files in a directory.  Why is this?  Did the guys who
+> wrote the file system specs go to school for computer science?  I can't
+> tell you how many times my cmsc professors have told us that the linked
+> list is totally inferior to the tree.  At least, it is when it comes to
+> large sets of data.  Perhaps the ext2 guys never saw the need for
+> extremely large sets of files in a single directory, but still, even
+> when hashing, it is suggested that you not handle collisions with linked
+> lists...
+> Stacks and queues are one thing (when used for temporary operations,
+> like iterators and memory management).  But persistent data is another.
+> I would never want to store stuff in a list if it is always going to be
+> accessed, growing and shrinking...
+>
+> On Thu, 2002-10-24 at 07:11, jbradford@dial.pipex.com wrote:
+> > > > Does anyone know a way around this?  I can't hardly believe that all the
+> > > > millions of Linux users have been, and still are, stuck with CD-RWs that
+> > > > have to masquerade as SCSI devices.
+> > >
+> > > There is no way around it, simply read the proper documentation, in this case
+> > > the CD-Writing HOWTO.
+> > > IDE-ATAPI CD-RW devices only work with SCSI emulation as they only do in
+> > > widows as well.
+> > > If you find a better way you can tell us millions how you did it then.
+> >
+> > There will soon be a better way - Linus himself mentioned using the
+> > standard IDE devices for cd recording, last Tuesday.
+> >
+> > Expect to see cd recording with native IDE devices once the 2.6 kernel
+> > is ready.
+> >
+> > Incidently, IDE devices masquerading as SCSI is not as unusual as it
+> > might first appear - ATAPI is basically a way to send SCSI commands
+> > over the IDE bus.
+> >
+> > John.
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> --
+> Regards,
+>
+> Bryan Simmons
+> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+>
+>  On Integrity:
+>
+>  "I'm going to be as good as they let me and
+>   as mean as they make me, and they all know
+>   that.  I don't ever lie. If I tell you a
+>   rooster can fly, get the harness."
+>
+>    --Burl Cain, Louisiana State Pen Warden
+> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
