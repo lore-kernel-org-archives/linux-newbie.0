@@ -1,59 +1,25 @@
-From: walter@psybernet.co.nz
-Subject: Re: USB device installation
-Date: Sun, 21 Apr 2002 12:42:46 GMT
+From: Ola Theander <ola.theander@connective.se>
+Subject: Q: Security creditals and automatically started services?
+Date: Sun, 21 Apr 2002 18:46:53 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <E16zGor-00028V-00@smtp4.ihug.co.nz>
+Message-ID: <FC79D1F4C922D511983400104BC30388019566@DELL1>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Tom Beer <mailings@analogon.com>
-Cc: linux-newbie@vger.kernel.org
+To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
- In Re: USB device installation, on Sat, 20 Apr 2002 02:17, 
- Tom Beer wrote:
+Dear subscribers.
 
-> You should try to track down which modules are needed for the
-> smartcard drive. A quick web search leaded to no results (for
-> me). The usb modules you installed are for a mouse and a
-> keyboard, as far as I'm concerned.
+My question is regarding services that start automatically when Linux boots
+i.e. a SXXstartup and KXXshutdown script is put in the RC.X runlevel
+folders. What I would like to know is which user account these services will
+run as and how to change that account? E.g. if I start Apache and/or
+PostgreSQL at startup, how do I set the user account under which they should
+execute?
 
-Hmmm... I cant find a thing, not even to upgrade it for XP.  
-However i wonder if i need it?
-
-It thought the modules i had, especially usb-storage, did it. I have been
-trawling around for instructions and it seems many people get things going with
-just this module. But hey, I am a newbie and have no idea.
-
-But I have the idea that usb-storage should have created the device 
-in dev/  and it did not.  
-
-Or should i link the sda1 (which i have now made to ... something 
-like with my dvd drive:
-
-dvd -> /dev/scd0  
-
-it in turn is linked thus:
-
-scd0 -> scsi/host0/bus0/target0/lun0/cd
-
-Which makes me recall that the sm card is a pseudo scsi card...
-
-There is also a file n that directory called generic
-
-Could that be it?  Something it needs to be linked to.  ??
-
-
-Walter
-
--- 
-Walter Logeman
-Psychotherapist
-http://www.psybernet.co.n
-
-
-
+Kind regards, Ola Theander
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
