@@ -1,8 +1,8 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
 Subject: RE: Variable Quoting
-Date: Mon, 14 Oct 2002 15:53:20 -0400
+Date: Mon, 14 Oct 2002 15:55:10 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <005201c273bb$594e0880$64fea8c0@pkrausxp>
+Message-ID: <005301c273bb$9b13cd40$64fea8c0@pkrausxp>
 References: <200210142158.20963.linux-newbie@jimmo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -12,17 +12,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@jimmo.com, linux-newbie@vger.kernel.org
 
-Ok I lied. I understand why its not working but how should I workaround
-it?
-Do I have to have my script gather a list of the files and the pass it
-the variable?
-That sucks that I can not use a wildcard to just get all.
+GOT IT!!!
 
-I have made these changes. Which I though would fix my problem.
-string="My Documents/"
-cp "${string}*" Which I thought would eliminate the problem. I guess I
-am not understanding.
+Cp "$variable"* 
 
+Thanks again!
 
 -----Original Message-----
 From: linux-newbie-owner@vger.kernel.org
