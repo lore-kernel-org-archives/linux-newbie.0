@@ -1,50 +1,31 @@
-From: Flemming Greve Skovengaard <dsl58893@vip.cybercity.dk>
-Subject: Re: C Programming Mailing list
-Date: Sat, 09 Aug 2003 11:05:45 +0200
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Filtering Email to Delete Without Using POP Filters
+Date: Sat, 9 Aug 2003 14:03:18 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F34B969.7080008@vip.cybercity.dk>
-References: <200308082311.56970.eric@cisu.net>
+Message-ID: <200308091403.18490.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200308082311.56970.eric@cisu.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: eric@cisu.net
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Eric wrote:
-> Greetings,
-> 
-> 	I am a beginning C programmer who desperatly needs help teching himself. I am 
-> looking for a good forumn/mailing list where I can ask questions, post code 
-> snippets, and generally glean information from people who have more 
-> experience than me for those moments when I am really stuck. 
-> 	Does anyone know of a good C programming mailing list/forumn/website/etc 
-> where I could ask questions?
-> 
-> 	Thanks in advance.
-> ----------------------
-> Eric Bambach   
-> Eric (at) CISU (dot) net 
-> ----------------------
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> .
-> 
+Hi All 
 
-Try linux-c-programming@vger.kernel.org
+Using Kmail is there a way to set a filter such that any mail from a 
+particular source is deleted automatically.
 
--- 
-Flemming Greve Skovengaard               Be it the Devil or be it him
-a.k.a Greven                             You can count on just one thing
-<dsl58893@vip.cybercity.dk>              When the time is up, you'll know
-4168.08 BogoMIPS                         Not just one power runs the show
+I an aware that this can be done with pop filters but that takes place before 
+the mail is downloaded. This also requires a good bit more knowledge of what 
+the email contents are than I current possess.
 
+What I want to do is filter the mail first to substract what I want and then 
+set up a filter to automaticall send selected mail to the general inbox and 
+other selected mail directly to delete.
+
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
