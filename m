@@ -1,38 +1,50 @@
-From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
-Subject: Re: TCP as a module
-Date: Sun, 27 Jul 2003 11:29:19 -0400 (EDT)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Linux install error
+Date: Sun, 27 Jul 2003 17:37:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.56.0307271126060.15018@filesrv1.baby-dragons.com>
-References: <000501c3538a$2cd22e30$6400a8c0@bombay> <200307271019.19111.eric@cisu.net>
+Message-ID: <200307271737.08903.pa3gcu@zeelandnet.nl>
+References: <30ac01430adf65.30adf6530ac014@homemail.nyu.edu>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200307271019.19111.eric@cisu.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Eric <eric@cisu.net>
-Cc: sks@alum.mit.edu, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <30ac01430adf65.30adf6530ac014@homemail.nyu.edu>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Anshuman Singh Rawat <asr245@nyu.edu>, linux-newbie@vger.kernel.org
 
-	Hello Eric ,  If a question has to do with Networking please
-	forward the person to netdev or linux-net maillists .  DaveM
-	(& others) will be ranting at the person for posting a network
-	question on the kernel list otherwise .  JimL
+On Sunday 27 July 2003 04:33, Anshuman Singh Rawat wrote:
+> Traceback (Innermost last)
+>     File "/usr/bin/anaconda", line 487, in ?
+>         from splashscreen import splashScreenShow
+>     File "/usr/bin/anaconda/splashscreen.py", line 21, in ?
+>         from gtk import *
+>     File "/usr/lib/python1.5/site-packages/gtk.py", line 22, in ?
+>         from _gtk
+> ImportError: /usr/lib/libgtk-1.2.so.0:invalid ELF header
+> install exited abnormally.
+> sending termination signals...done
+> sending kill signals...done
 
-On Sun, 27 Jul 2003, Eric wrote:
-> Have you tried CC'ing linux-kernel mailing list?
-> I could be wrong but linux-newbie seems a bit out of place for a post
-> dealing with kernel code development.
-> the address is
-> linux-kernel@vger.kernel.org
-> and you can subscribe at www.kernel.org
-> Just a suggestion, I hope you find the answers you're looking for there.
+Are you sure that you installed "gtk" and its libs.??
+All the errors concern gtk.
+
+> Any idea what the problem mite be?
+>
+> -Anshuman
 
 -- 
-       +------------------------------------------------------------------+
-       | James   W.   Laferriere | System    Techniques | Give me VMS     |
-       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
-       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
-       +------------------------------------------------------------------+
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
