@@ -1,39 +1,35 @@
-From: Jos Lemmerling <jos@lemmerling.nl>
+From: "J." <mailing-lists@xs4all.nl>
 Subject: Re: file transfer via telnet
-Date: Fri, 21 Feb 2003 09:27:59 +0100 (CET)
+Date: Fri, 21 Feb 2003 09:51:07 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0302210920420.11589-100000@orthanc.lemmerling.net>
-References: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
+Message-ID: <Pine.LNX.4.21.0302210948010.4563-100000@hestia>
+References: <3E55D572.1B60BF79@ihug.co.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <63338.200.136.52.249.1045777444.squirrel@www.mandic.com.br>
+In-Reply-To: <3E55D572.1B60BF79@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Thu, 20 Feb 2003, Eckhardt, Rodolpho H. O. wrote:
+On Fri, 21 Feb 2003 ichi@ihug.co.nz wrote:
 
-> If I'm not mistaken, you cannot do that because telnet transfers only ASCII caracters or
-> something like that (terminal related caracters)... There isn't a way to tell it to
-> transfer something in binary (like ftp's "binary").
+> I year or two back, I remember reading about a way to transfer 
+> a file using telnet.  It think it involved redirection from one 
+> tty to another, but I don't remember the details.  I now find
+> myself in a situation with telnet access, but no ftp (or anything
+> else I could use to upload files).  Do any of you guys know the
+> telnet method?
+> 
+> Cheers,
+> Steven
 
-Isn't there some way to solve this with uudecode and uuencode? I don't
-know how, but those programs make it possible to transfer binary files
-over ASCII-only mediums.
+Telnet is one of the oldest base proto's arround. So where you want to
+look is: http://www.rfc-editor.org
 
-From the man-page uudecode:
-Uuencode and uudecode are used to transmit binary files over transmission
-mediums that do not support other than simple ASCII data.
+Start at RFC856
 
-
-If someone knows *how* to do it, plz let the list know...
-
-HTH
-
---
-Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.nl)
-
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
