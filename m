@@ -1,61 +1,28 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Project management
-Date: Mon, 2 Dec 2002 09:06:32 -0500
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: A few questions
+Date: Mon, 2 Dec 2002 09:26:50 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <004901c29a0c$04d97380$64fea8c0@pkrausxp>
+Message-ID: <Pine.LNX.4.50.0212020923080.900-100000@athame.gmpexpress.net>
+References: <200212012032.22587.Adam@Luchjenbroers.com>
+ <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
+ <200212021626.08487.Adam@Luchjenbroers.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_004A_01C299E2.1C036B80"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212021626.08487.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_004A_01C299E2.1C036B80
-Content-Type: text/plain;
-	charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Cc: linux-newbie@vger.kernel.org
 
-Are there any good professional level project management tools for
-Linux?
+You'd want to do more than one tar command of the form:
+tar zcvf user1.tar.gz /home/user1/
+tar zcvf user2.tar.gz /home/user2/
+and so on.  You'd have to specify the path of user1.tar.gz like where it
+was going to go and the same for the other archive files too.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
 
-------=_NextPart_000_004A_01C299E2.1C036B80
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
-
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
-
-------=_NextPart_000_004A_01C299E2.1C036B80--
+Jude <dashielljt(at)gmpexpress-dot-net>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
