@@ -1,80 +1,70 @@
-From: Arthur Kng <arthur_kng@yahoo.com>
-Subject: Hard disk repartitioning-II
-Date: Fri, 4 Apr 2003 06:51:34 -0800 (PST)
+From: Amin <raihan@citech-bd.com>
+Subject: Re: Hard disk repartitioning-II
+Date: Fri, 4 Apr 2003 22:29:07 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
+Message-ID: <20030404162907.GA4866@localhost.localdomain>
+References: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hey all,
- 
-      First up, thank you everyone for your prompt
-help. you've really made it easier for me.
-reading all your posts i've come up with a plan which
-goes like this:
+On Fri, Apr 04, 2003 at 06:51:34AM -0800, Arthur Kng wrote:
 
-(  just to remind you, i have a 20GB disk, C drive:5GB
-having WinME(FAT32), D drive: 15GB having all my
-data(FAT32), 128MB RAM )
+>    1)back up all my data at a friends place. fdisk and
+> delete all existing partitions. make a          
+> primary partition of 10GB on which i'll load the
+> Windows OS and which will also have the         data
+> which i want to access from Win and Linux.
+> 
+>    2)in the 10GB thats left i'll have 4GB for '/'
+> where i'll load Linux.
+> 
+>    3)the remaining 6GB will be the '/home' partition,
+> which will have the linux only data.
+> 
+>    4)mine is a desktop machine for normal home use. at
+> any given time i run atmost                     
+> (browser+mp3player) or (a programming IDE + mp3player)
+> etc. now i have 128MB of RAM so 
+>        i'm thinking of doing away with the swap
+> partition but i'm not too sure about this. so if      
+>  i'm wrong please do tell me.
 
-   1)back up all my data at a friends place. fdisk and
-delete all existing partitions. make a          
-primary partition of 10GB on which i'll load the
-Windows OS and which will also have the         data
-which i want to access from Win and Linux.
+I think there's an issue here about Linux needing its boot
+partition within the first 1024 cylinders of the hard disk,
+or something like that.  In any case, here's what I'd
+recommend:
 
-   2)in the 10GB thats left i'll have 4GB for '/'
-where i'll load Linux.
+hda1: 4 GB FAT Primary
+hda3: 100 MB ext3 Primary
+hda4: 150 MB linux-swap
+hda2: Extended
+ hda5: 7 GB logical FAT
+ hda6: 7 GB logical ext3 Growable
 
-   3)the remaining 6GB will be the '/home' partition,
-which will have the linux only data.
+hda1 is to house Windows' system files (the C: drive); hda3
+for Linux's ``/boot'' directory; and hda2 being the extended
+partition that holds hda5 and hda6.  hda5 you can use to
+store non-system Windows stuff (the D: drive); and hda6 for
+your ``/'' directory in Linux.
 
-   4)mine is a desktop machine for normal home use. at
-any given time i run atmost                     
-(browser+mp3player) or (a programming IDE + mp3player)
-etc. now i have 128MB of RAM so 
-       i'm thinking of doing away with the swap
-partition but i'm not too sure about this. so if      
- i'm wrong please do tell me.
+About the swap space --- call me old-fashioned but I think
+it really is necessary.
 
+About hda6 being ``growable'': you may or may not choose to
+make it so, depending on how much expertise you're able to
+garner on the subject.  If you do make it so, you'll be able
+to use every last megabyte of your hard disk.  If not,
+you'll ``lose'' about 1.76 MB, because I rounded off space
+to the nearest integer.
 
-so in short:
-
-    PRIMARY PARTITION: Windows (FAT32)-10GB
-      /dev/hda1
-
-    EXTENDED PARTITION
-      /dev/hda2
-              LOGICAL PARTITION 1 LINUX OS-4GB
-               /dev/hda5
-
-              LOGICAL PARTITION 2 LINUX /home-6GB
-               /dev/hda6
-
-   i know this is a long way to do it but this way i
-avoid having 2 FAT32 partitions (one for Win OS and
-the other for my data) and have a substantial space
-for the 'Linux only data' partition.
-
-now i would like to know what you all think about
-this. if i'm doing wrong please do tell as i'm just
-starting out on Linux.
-
-thank you for your help.
-
-AK
-
-
-
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Tax Center - File online, calculators, forms, and more
-http://tax.yahoo.com
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
