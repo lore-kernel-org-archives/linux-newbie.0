@@ -1,32 +1,37 @@
-From: "ramands" <ramands@indiatimes.com>
-Subject: Device Driver :Error struct file_operations incomplete
-Date: Mon, 31 Mar 2003 14:27:18 +0530
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: Re: recovering files after rm
+Date: Mon, 31 Mar 2003 11:54:00 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303310823.NAA14060@WS0005.indiatimes.com>
-Reply-To: "ramands" <ramands@indiatimes.com>
+Message-ID: <20030331115400.A1195@neutrino.particles.org>
+References: <20030331083633.29504.qmail@webmail35.rediffmail.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20030331083633.29504.qmail@webmail35.rediffmail.com>; from mishra_nn@rediffmail.com on Mon, Mar 31, 2003 at 08:36:33AM -0000
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: n mishra <mishra_nn@rediffmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi ,
-I am trying to write a small Device driver 
-I am including fs.h
-But compiler is throwing an error 
-struct file_operations incomplete .
-Can anyone help me with what this error actually is and how to rectify it 
-Thanks
-Raman
+On Mon, Mar 31, 2003 at 08:36:33AM -0000, n  mishra wrote:
+> This probably sounds really silly but could someone please tell me 
+> if there is any way of recovering files which have been deleted 
+> using the rm command.
 
+In general: there is no way.
 
-Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
+If you are lucky, you can dump using dd your partition's data in a file
+and then search in the file for the missing data, but again this is not
+trivial and doesn't work 100%.
 
- Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
+Elias
 
-Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
+-- 
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
