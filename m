@@ -1,81 +1,39 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: gcc version conflict
-Date: Fri, 10 Jan 2003 07:00:41 +0000
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Ping a DNS???
+Date: Fri, 10 Jan 2003 09:09:52 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03011007004101.31603@unix.pa3gcu>
-References: <00f901c2b858$a725cb60$6400a8c0@00arc>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030110090952.A303@lnx2.w8mch.ampr.org>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00f901c2b858$a725cb60$6400a8c0@00arc>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jonathan Kallay <yoni@kallay.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Friday 10 January 2003 03:30, Jonathan Kallay wrote:
-> Hi all,
->   I'm trying to compile the kernel module for some NVidia drivers.  I'm
-> getting an error message saying that I'm compiling a module with a
-> different version of the compiler than the one used to compile the kernel
-> (gcc 2.95.4 is what's installed; the kernel version is 2.2.20 and at one
-> point I was able to check the compiler version that compiled it but I can't
-> remember how I did it).  What's the best way to work around this problem?
+Greetings: Contemplating an ISP change I thought I'd ping the present
+thence the proposed DNS's to evaluate the round trip time..
 
-This is a FAQ and is in the README you received with the driver/source.
-Here is an excrpt;
+The present, 204.97.4.2, returned it's RTT to be expected.. The
+proposed, 65.196.16.3, returned "100% packet loss" - not expected.
 
+Both addresses are in /etc/resolv.conf, but that shouldn't make a
+difference here - IMHO. <grin> Also; since I'm connected to the INet
+via the present ISP my ping testing idea might be a dumb one.
 
-Q: Compiling the NVdriver kernel module gives this error:
+Invoking 'dig' for both addresses I find a difference in the report:
+"ANSWER" is set = 1, on the working site and = 0 on the non-working.
+This is obvious, to me, what's happening but I can't help but
+wonder if that might mean I wont be able to use that site? /Or/ why
+would a SysAdm set his/her site to not support ping? I'm confused.
 
-        You appear to be compiling the NVdriver kernel module with
-        a compiler different from the one that was used to compile
-        the running kernel. This may be perfectly fine, but there
-        are cases where this can lead to unexpected behaviour and
-        system crashes.
+TIA and thanks,
 
-        If you know what you are doing and want to override this
-        check, you can do so by setting IGNORE_CC_MISMATCH.
-
-        In any other case, set the CC environment variable to the
-        name of the compiler that was used to compile the kernel.
-
-A: You should compile the NVdriver kernel module with the same compiler
-   version that was used to compile your kernel.  Some Linux kernel data
-   structures are dependent on the version of gcc used to compile it;
-   for example, in include/linux/spinlock.h:
-
-        ...
-        * Most gcc versions have a nasty bug with empty initializers.
-        */
-        #if (__GNUC__ > 2)
-          typedef struct { } rwlock_t;
-          #define RW_LOCK_UNLOCKED (rwlock_t) { }
-        #else
-          typedef struct { int gcc_is_buggy; } rwlock_t;
-          #define RW_LOCK_UNLOCKED (rwlock_t) { 0 }
-        #endif
-
-   If the kernel is compiled with gcc 2.x, but gcc 3.x is used when the
-   open files in NVdriver are built (or vice versa), the size of rwlock_t
-   will vary, and things like ioremap will fail.
-
-   To check what version of gcc was used to compile your kernel, you
-   can examine the output of:
-
-        cat /proc/version
-
-   To check what version of gcc is currently in your $PATH, you can
-   examine the output of:
-
-        gcc -v
-
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+	       haltec@iceweb.net | w8mch@iceweb.net
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
