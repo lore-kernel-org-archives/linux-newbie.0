@@ -1,47 +1,42 @@
-From: ramzez <r4mz3z@yahoo.es>
-Subject: bash_logout -> KDE
-Date: 19 Jul 2003 16:37:38 -0500
+From: qwms-avib@dea.spamcon.org
+Subject: weird keyboard problem
+Date: Sun, 20 Jul 2003 13:01:18 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1058650465.1955.3.camel@localhost.localdomain>
+Message-ID: <20030720130118.4352e3be.qwms-avib@dea.spamcon.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-HBuvCyWj5uc2KJEqczkZ"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Received: from BasicLinux (202-154-142-177-tollfree.connections.net.nz [202.154.142.177])
+	by desire.actrix.co.nz (Postfix) with SMTP id 2AB2A1500D
+	for <*Email Address Suppressed*>; Sun, 20 Jul 2003 13:01:19 +1200 (NZST)
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
+I have just installed AbiWord to my modified Slackware system.
+Everything is working fine, EXCEPT the letters/numbers on the
+keyboard.  When I press a letter/number key nothing happens.
+All the other keys work:  Space, Backspace, Home, End, UpArrow,
+DownArrow, LeftArrow, RightArrow, keys, PageUp, PageDown, Enter.  
+Even the Ctrl and Alt combinations work (eg. I can exit AbiWork 
+using Ctrl-Q).  Mouse is fine: I can click on drop-down menus 
+and select options.  I can use the symbol tool (with the mouse) 
+to enter letters/numbers.  They show up on the screen just fine 
+(it's just their keys that don't work).  I can load documents 
+and edit them using the keys that work (space, backspace, etc.).
 
---=-HBuvCyWj5uc2KJEqczkZ
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+And here's the weirdest part:  if I click on File->Save As,
+the letter/number keys all work in the little box.  But as 
+soon as I close the window and return to the main AbiWord
+text-entry area, the keys do nothing.
 
-Hi friends...
+I have never seen this problem before.  The Ted wordprocessor
+is working fine on this system (and I've also run a couple of
+other wordprocessors without this problem).  Mozilla runs fine.
+What's with AbiWord????
 
-  How do I can always execute some script just before logout from any
-KDE session (just like .bash_logout in text mode)?
-
-thanks
-
---=20
-  Linux User Registered #232544
-         ICQ : 337889406
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
-
---=-HBuvCyWj5uc2KJEqczkZ
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Esta parte del mensaje esta firmada digitalmente
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQA/GblgG3Fqyap52TERAuysAKCe+ZQGMJNw9/PtFHxMhk+XWh6iyQCePGYF
-D7l2FfIr7cLvkNvIbd0xfHg=
-=vEnU
------END PGP SIGNATURE-----
-
---=-HBuvCyWj5uc2KJEqczkZ--
-
-
+Cheers,
+Steven
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
