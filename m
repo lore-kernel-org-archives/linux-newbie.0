@@ -1,42 +1,47 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: BASH Script Change Directory
-Date: Fri, 2 May 2003 07:22:54 +0100 (BST)
+From: Andrew Langdon-Davies <ald2@arrakis.es>
+Subject: Re: olivetti p100 with onboard ATI Mach64
+Date: Fri, 02 May 2003 11:21:50 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
-References: <200305011842.48087.powerstation@shaw.ca>
+Message-ID: <3EB238AE.4020506@arrakis.es>
+References: <5.1.0.14.1.20030430114653.01f79408@celine>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305011842.48087.powerstation@shaw.ca>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Bob Swift <powerstation@shaw.ca>
-Cc: All <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030430114653.01f79408@celine>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Thu, 1 May 2003, Bob Swift wrote:
-
-> This is going to sound like a really dumb question, but is there any way to
-> have BASH leave the user in the current directory from the script, rather
-> than returning them to the directory they were in when the script was called?
 >
-> For example...  the user is in their home directory and call the following
-> BASH script:
 >
->      #!/bin/bash
->      cd /var/log
->      ls
+>>
+>> I have two machines as described above and both give me exactly the 
+>> same problem. Soon after booting from a Linux floppy the screen goes 
+>> blank.
 >
-> When the script exits, the user is returned to their home directory.  Is there
-> a way to leave them in the /var/log directory?
 >
+> You mention testing with tomsrtbt. As I recall, it uses a framebuffer 
+> device to let it set the video mode.
+> Offhand, I don't know whether any of the full-strength distros do not 
+> use the framebuffer by default, particularly in their installers 
+> (since you talk about testing with floppies). Offhand, I know that the 
+> router-oriented LEAF distros (leaf.sourceforge.net) do not use it, and 
+> probably other floppy-based distros (trinux? maybe) also omit this. So 
+> you might try one of them to see if this is your problem. If it is, 
+> you can easily compile a custom kernel that leaves out framebuffer 
+> support, assuming you are working toward a hard-disk install.
 
- The script runs in a subshell. What you can do in this case is
+Looks like you were right. Bering boots to a console prompt with no 
+trouble. (It must be great to know so much). Next step is indeed to go 
+for a hard-disk install, which means I can't put off learning to compile 
+a kernel any longer. Presumably I can do this on another machine and 
+then transfer it (?).
+I was thinking of installing something like Peanut. What do you reckon? 
+I can probably rustle up about 800 megas of disk space on two disks. The 
+machine will not be used for anything more ambitious than 
+text-processing, Internet, etc.
+Andrew
 
-`source your-script'  or just `. your-script'
-
-Ken
--- 
-Live Long or Prosper! No, wait, that wasn't it...
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
