@@ -1,40 +1,34 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: Linux distributions
-Date: Sun, 17 Nov 2002 07:38:09 -0500 (EST)
+From: r4mz3z <r4mz3z@yahoo.es>
+Subject: wich app is the best to share files
+Date: Sun, 17 Nov 2002 09:50:27 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211170728400.29134-100000@athame.gmpexpress.net>
-References: <200211162129.42677.sotl155360@earthlink.net>
+Message-ID: <200211170950.41342.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211162129.42677.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Okay, when you buy an operating system in Linux, you buy an operating
-system.  Other software is available for download and perhaps more
-winmodem stuff ought to have been put on the distributions.  Nonetheless,
-linux works lots better with ethernet cards and cable modems than the
-older slower modems.  I use slackware 8.0 myself and like it.  For one
-thing, when you tell slackware 8.0 to install everything, itdoes exactly
-that.  Redhat does not.  You'll find on the redhat CD's packages available
-for installation that the distribution doesn't install.  Also, I use
-console ext mode only and a speech synthesizer since I'm totally blind and
-don't have the colors problem and also don't care what Redhat did with kde
-and gnome.  Both of those window managers can probaly be downloaded and
-installed but it'll be a matter for disabling the Redhat interface and I
-don't know how to do that.  I gave up on Redhat at 7.2 when my computer
-got knocked over by a hacker and it was only on a dial up modem too.
-Redhat has on a security front closed everything down and what you open
-you do at your own risk and hopefully with knowledge of consequences and
-precautions needed.  I don't ever expect I'll be using any gui under
-linux, it's a work requirement for me to use windows 2000 but this
-computer is at home and I don't choose to use any gui stuff on it.
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Jude <dashielljt@gmpexpress.net>
+Hi friends...
+  Wich app do you recommend men to share and find files? like naspter for 
+music (mp3)
 
+thanks
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQE916y/s4dF9gl05swRAtW8AKCGno5Shaed0QxP63USMA0w7i/RwQCglZz4
+9tQWtOiHZdoITesPznDiyIg=
+=hwRx
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
