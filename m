@@ -1,76 +1,71 @@
 From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: Journaling File Systems...
-Date: Thu, 24 Oct 2002 21:21:32 +0300
+Subject: Re: Gui - Gnome - Kde
+Date: Thu, 24 Oct 2002 21:18:33 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210242121.32961.g38@rdsbv.ro>
-References: <1035456374.31016.84.camel@localhost.localdomain> <1035468047.15381.81.camel@zebra.vil.ite.mee.com>
+Message-ID: <200210242118.33361.g38@rdsbv.ro>
+References: <Pine.LNX.4.44.0210240005440.18662-100000@localhost.localdomain>
 Reply-To: g38@rdsbv.ro
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1035468047.15381.81.camel@zebra.vil.ite.mee.com>
+In-Reply-To: <Pine.LNX.4.44.0210240005440.18662-100000@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-use reiserfs - I use it since slackware 8.0 appeared and have no complaints
+kde is "creme de la creme" (IMHO)
+
+though I'm beginning to like enlightenment (which I use on my freebsd 
+machine), kde is amazing with its utilities (I cannot live without kdict, 
+kcalc is as easy to use as the calc from windows and kmail is the state of 
+the art in mail-client business [again, IMHO])
+
+and it's very customizable
+
+gnome is ok with me - though I used it to few times to make an opinion; I 
+began with kde and I stick to it
+
+
+HTH,
 
 petre
 
-On Thursday 24 October 2002 17:00 Anno Domini, Paul Furness wrote using one of 
+
+
+
+On Thursday 24 October 2002 08:10 Anno Domini, James Miller wrote using one of 
 his keyboards:
-> Ext 3 has some slowness, I guess, but I use it without any real
-> headaches for my workstation and a couple of servers (not particularly
-> I/O intensive servers, mind you).
+> On Thu, 24 Oct 2002, Gavin Laking wrote:
+> > On Thu, 24 Oct 2002 11:10:31 -0400
+> >
+> > "Paul Kraus" <pkraus@pelsupply.com> wrote:
+> > > What is kde like. I always just install gnome with Xwindows. I even
+> > > select Xwindows classic what is it and why are there two.
+> >
+> > KDE is another window manager for Linux. What Linux users tend to do
+> > when they are inquisitive about things, is to try it out, to experiment,
+> > and nothing is stopping you from doing so. If you are reluctant to
+> > installing KDE on a test machine, why not do a Google search for one of
+> > the thousands of KDE related websites- you'll find out more on those
+> > than we could ever imagine to cover here.
 >
-> Want to have a play with ReiserFS because of the speed. Don't know about
-> the others.
+> Or you could download and burn the Knoppix ISO, which is a really neat
+> (Debian based) distro that runs from CD - doesn't install anything but
+> will automagically recognize and use any Linux swap partition on your
+> machine. It has KDE (3.0) as the default (only?) desktop - plus a whole
+> lot of other neat utilities you can try. Highly recommended! Does a great
+> job of hardware PnP, too. Try it! You'll like it!
 >
-> From what I've read, ReiserFS might be worth going for, depending on
-> what you are doing on your workstation.
+> James
 >
-> P.
->
-> On Thu, 2002-10-24 at 11:46, Bryan Simmons wrote:
-> > When I first installed Linux in 1998, I don't remember there being any
-> > other file system to use other than Ext2.  After 2000, I went a few
-> > years without Linux.  This time around, when installing Linux, I noticed
-> > I could use anything from Ext3 to ReiserFS to JFS etc... I steered clear
-> > of these and chose Ext2 because it was all that I knew.  Now, after
-> > reading an article on journaling file-systems in Linux Magazine, I am
-> > convinced I need to use this technology on my next system (which should
-> > arrive Friday).
-> >
-> > Here's my question:  what would you guys suggest as a good file system
-> > for a client?  I use my system for programming, multimedia (home movies,
-> > mp3s, pics, etc...).  So far, it seems good to go with Reiser.  JFS and
-> > XFS seem like overkill for a client and Ext3 is not efficient enough.
-> >
-> > What are your opinions?
-> > --
-> > Regards,
-> >
-> > Bryan Simmons
-> > =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-> >
-> >  On Integrity:
-> >
-> >  "I'm going to be as good as they let me and
-> >   as mean as they make me, and they all know
-> >   that.  I don't ever lie. If I tell you a
-> >   rooster can fly, get the harness."
-> >
-> >    --Burl Cain, Louisiana State Pen Warden
-> > =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-> >
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-> > in the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 -- 
- 21:19:41 up  2:32,  1 user,  load average: 0.08, 0.12, 0.18
+ 21:12:55 up  2:25,  1 user,  load average: 0.17, 0.13, 0.23
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
