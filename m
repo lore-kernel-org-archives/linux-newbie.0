@@ -1,77 +1,29 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: unable to ping cable provider
-Date: Sat, 23 Nov 2002 12:52:25 +0000 (GMT)
+From: "Ola Theander" <ola.theander@otsystem.com>
+Subject: HowTo: Set enviroment variables to be availiable during boot?
+Date: Sat, 23 Nov 2002 14:16:15 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0211231208080.14036-100000@ppg_penguin.linux.bogus>
+Message-ID: <000001c292f2$83e57870$6efdfea9@c0002>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Dear subscribers.
 
- I've just had a set-top box installed (by NTL) to give me a broadband
-connection, but I'm clearly out of my depth.
+On my Linux server I try to start the Tomcat server during boot. The
+problem is that Tomcat requires the JAVA_HOME environment variable to be
+set. I've tried to set this variable in the profile.local file but it
+seems like this file isn't evaluated until I log on to the server.
+Therefore I searched on the Internet and found that the environment
+variable should probably be stored in the rc.local file which is
+evaluated during boot. The problem is that my SuSE 8.1 installation
+doesn't have an rc.local file, so I'm kind of stuck.
 
-My set-up is
+Any help on this matter would be greatly appreciated.
 
-+---------------+            +----------------+       +-------------+
-| my net        |  +-----+   | firewall       |       |  NTL        |
-| 192.168.0.x   |--| hub |---| eth0           |       |             |
-| (several)     |  +-----+   | 192.168.0.254  |       |             |
-+---------------+            |================|       |             |
-                             |           eth1 |-------|             |
-                             | e.g.10.64.14.5 |       +-------------+
-                             +----------------+
-
-My own network is working fine - all the boxes talk to each other, using
-/etc/hosts for name lookups. The firewall is running LFS-3.3.
-
-My connection to NTL is using dhcp (I'm running dhclient-3.0pl1). I get
-assigned an address (10.64.14.5 at the moment) when I bring up the
-interface and I can see the lease data in
-/var/state/dhcp/dhclient.leases being updated at intervals. This same
-file shows the router is 10.64.14.1 and the dhcp-server is 10.0.138.70 .
-
-The first stage of making the connection usable is to register with
-NTL. Stuff on google suggests that all http requests are diverted to the
-sign-up server at this point, for a page start.html. I tried to use lynx
-to get this page, but it failed. Examination shows that I cannot ping
-any of the NTL addresses from the firewall. I'm using iptables, so I
-cleared out all the tables and re-enabled ip-forwarding in case the
-firewall script was the problem (I'm guessing this is safe for the
-moment because of the lack of connectivity).
-
-The routing table from netstat -rn shows
-
-Dest          Gateway     Genmask       Flags MSS Window irtt  Iface
-192.168.0.0   0.0.0.0     255.255.255.0 U      40 0       0    eth0
-10.64.14.0    0.0.0.0     255.255.255.0 U      40 0       0    eth1
-0.0.0.0       10.64.14.1  0.0.0.0       UG     40 0       0    eth1
-
-
-If I try to ping 10.64.14.1 (or any other NTL IP)  I get
-root@mybox~# ping -c 2 10.64.14.1
-PING 10.64.14.1 (10.64.14.1): 56 octets data
-
---- 10.64.14.1 ping statistics ---
-2 packets transmitted, 0 packets received, 100% packet loss
-
-
-If I try to ping 10.64.14.255, only my firewall (10.64.14.5) responds -
-even if I give it a bigger count (on the internal network, only one box
-responds for counts of 1 or 2, but they all respond for counts of 5 or
-more).
-
-I'm hoping this is something fairly obvious. Any suggestions, please ?
-
-Ken
--- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
+Kind regards, Ola Theander
 
 
 -
