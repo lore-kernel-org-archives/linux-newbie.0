@@ -1,42 +1,69 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: How do I stop GUI from autoloading?
-Date: Tue, 20 May 2003 07:23:18 +0200
+From: <deepesh@india.tejasnetworks.com>
+Subject: Re: Confirmation for subscribe linux-newbie (fwd)
+Date: Tue, 20 May 2003 11:18:18 +0530 (IST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305200723.18633.pa3gcu@zeelandnet.nl>
-References: <3EC92B60.1000406@bcgreen.com> <5.1.0.14.1.20030519141159.01f205c8@celine>
+Message-ID: <Pine.LNX.4.21.0305201116570.7186-100000@deepesh.india.tejasnetworks.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030519141159.01f205c8@celine>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Monday 19 May 2003 23:14, Ray Olszewski wrote:
-> At 09:55 PM 5/19/2003 +0200, Richard Adams wrote:
-> >On Monday 19 May 2003 21:07, Stephen Samuel wrote:
-> > > This solution presumes that X startup is controlled by the runlevel.
-> > > I presume that you know about TurboLinux. I really only know RedHat.
-> > > Apparently, some versions of Linux use methods other than run level
-> > > to control X-Windows startup.
-> >
-> >Name one that does not use /etc/inittab, i do not posess to know
-> > everything, but i have never seen one which does not use the inittab
-> > method.
->
-> A normal Debian install (Woody or Sid, maybe older versions too) starts xdm
-> from an /etc/init.d script that is symlinked to runlevels the usual way.
-> The standard practice is to leave the system at runlevel 2 and run an
-> S99xdm .
 
-But does Debian define the runlevel in /etc/inittab ?.
+
+
+Hi,
+
+
+there is a strange problem that i am facing. when i am connecting the diag
+port of my card to the minicom ttyS0 of my host machine, and the terminal
+settings are ANSI, i do not have any problem. But when the terminal
+settings are VT102, I get strange characters on the screen. That is the
+reason I wanted to know the difference between the two.
+
+
+i think that the card is some how sending some control charaters which
+affects the terminal settings in VT102, but the ANSI doesn't support those
+extra features because of which there is no problem.
+
+
+please give me some information how the control charater related stuff
+works on terminals. this might help me solve my problem.
+
+
+deepesh
+
+
+
+
+
+
+
+
+On Mon, 19 May 2003, Stephen Samuel wrote:
+
+> deepesh@india.tejasnetworks.com wrote:
+> > 
+> > 
+> > Hi,
+> >  
+> >   Please let me know the basic differences between the VT102 and the ANSI
+> > terminals.
+> > 
+
+
+> ANSI was based on the VT100 (predecessor to the VT102).  The VT102 has
+> a couple of extensions not in ANSI. Nothing really show-stopper for
+> most people. ANSI is, however, something of a least-common denominator.
+> Just about anything that supports vt102 (or vt200) protocols should also
+> work if you say that it's ansi.
+> 
+> 
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
+D.Deepesh
 
 
 -
