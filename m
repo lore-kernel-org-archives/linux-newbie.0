@@ -1,36 +1,38 @@
-From: "Phillip Morgan" <pmorgan@qpbd999.quickpages.net.au>
-Subject: Port 20 blocked. How to unblock
-Date: Fri, 12 Jul 2002 16:40:09 +1000
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Who's using my files?
+Date: 12 Jul 2002 11:49:40 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207120640.g6C6e9b18711@qpbd999.quickpages.net.au>
+Message-ID: <1026470980.6430.39.camel@Zebra>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi All,
+Good morning / afternoon / night (delete as appropriate for your
+timezone)
 
-When trying to ftp from offsite I can connect to my proftpd-1.2.5 
-server but cannot upload or download. I'm told file does not exist or 
-no permission, but the files and directories do exist, and I've even 
-tried chainging owners and permissions to 777, with no luck.
 
-I tried to telnet to port 21 and found that works, but telnet'ing to 
-port 20 (ftp-data), fails (connection refused).
+I have a very basic problem which is pretty much the same under all the
+versions of linux I use.
 
-I looked in /etc/services and port 20 is defined (both tcp and udp).
+Occasionally, when I try and eject a CD, the system complains that it is
+in use, even although I have definitely stopped using it and CD'd out to
+somewhere else.
 
-I'm running proftpd-1.2.5 via inetd and tcp wrapper. I'm using the 
-wrapper so I can implement the hosts.allow and hosts.deny functions. I 
-have nothing in either of these files that blocks ftp or ports 20/21.
 
-So why would a connect to port 20 be refused?
+A while ago I sort of remember seeing mention somewhere of a prog that
+tells you who is using what files in a given directory tree.
 
-TIA
--- 
-Quickpages Technical Support
+
+Does anyone else know about this? What is it called? Has it been here
+all along and I just never saw it?
+
+Paul.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
