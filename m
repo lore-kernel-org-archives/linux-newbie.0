@@ -1,47 +1,55 @@
-From: "cedric" <kisseugene@backtomyplace.com>
-Subject: Save a ton on Microsoft Office!
-Date: Mon, 07 Jun 2004 18:18:51 GMT
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: New article on LJ!
+Date: Tue, 8 Jun 2004 20:44:35 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1086632331-14647__25391.0063919195$1086632400@excite.com>
+Message-ID: <200406082044.36043.James.Hatridge@epost.de>
+Reply-To: James.Hatridge@epost.de
+Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain;; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+To: SuSE <suse-linux-e@suse.com>
 
-Need software but not the price that comes with it?
-We sell OEM software at major discounts.
-Don't pay the department store markups, buy on the internet.
+Hi all...
 
-Free Delivery and Extra Discounts on orders over $200!
+I just got a new article published on the Linux Journal web site. I wro=
+te a=20
+"how to" to get data out of an email and put it into a Mysql database. =
+Check=20
+it out at:
 
-Save yourself or your company thousands of dollars, reap the rewards!
+http://www.linuxjournal.com/article/7619
 
-Q:  How can you sell this software as OEM ? It seems too good to be true - is there a catch?
+:)
 
-A:  There is no catch - the software versions that we sell are OEM (Original Equipment Manufacturer) which means you will receive the installation CDs only (they do not come in their original retail packing and do not include the manual). We do guarantee that all programs are the 100% full working retail versions - no demos or academic versions! When you order, you will receive all materials required for a complete installation - or your money back! Why pay hundreds of dollars more when you can get exactly the same but OEM-CD? You don't have to pay that much for the fancy box and manuals. 
+JIM
 
+--=20
+Jim Hatridge
+Linux User #88484
+   "Lighting the fires of Liberty, one heart at a time!"
+                 Badnarik for President
+                http://www.badnarik.org
+------------------------------------------------------
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0BayerWulf
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =C2=A0 Linux System # =
+129656
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0The Recycled Beowulf Project
+=C2=A0 Looking for throw-away or obsolete computers and parts
+=C2=A0 =C2=A0to recycle into a Linux super computer
 
+		WartHog Bulletin
+	    Info about new German Stamps
+   http://www.fuzzybunnymilitia.org/~hatridge/bulletin
 
-Click here!!
-http://allpackages.com/index.php?s=7555
-
-
-
-
-
-
-
-
-
-bullet softballgenius shit politics bigmac horizon barry 
-gambit reznorscuba1 tequila gordon
-hanna warriors timber 
-
-REMOV3: http://mycomp.biz/soft/chair.php
+		Viel Feind -- Viel Ehr'
+	Anti-US Propaganda stamp collection
+  http://www.fuzzybunnymilitia.org/~hatridge/collection
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
