@@ -1,50 +1,35 @@
-From: Brian Jackson <brian@mdrx.com>
-Subject: Re: new computer - mainboard question
-Date: Thu, 6 Feb 2003 11:37:48 -0600
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Keyboard Freeze
+Date: Thu, 6 Feb 2003 16:03:00 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302061137.48355.brian@mdrx.com>
-References: <20030206143818.3414e8bc.McClain@uni.de>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200302062103.h16L30Kg023687@hartford-hwp.com>
+References: <200302060656.h166tqq05806@philonline.com> <03020616441800.22365@unix.pa3gcu>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030206143818.3414e8bc.McClain@uni.de>
-Content-Disposition: inline
+In-reply-to: <03020616441800.22365@unix.pa3gcu> (message from pa3gcu on Thu, 6
+	Feb 2003 16:44:18 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: McClain <McClain@uni.de>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: pa3gcu@zeelandnet.nl
+Cc: pfheiss@philonline.com, linux-newbie@vger.kernel.org
 
-I am having pretty good luck with Gigabyte boards(ga-7vrxp & ga-7vaxp i 
-believe). All the onbaord hardware, even the NIC's just work (with 2.4.20 
-anyways). AGP 8x support still isnt there, but that is okay since I don't 
-have any 8x cards. One thing to watch out for on the kt400 boards is that AGP 
-8x slots aren't backward compatible with 1x/2x cards.(At least the 7vrxp 
-isn't)
+On the keyboard freeze, I was one that complained about it a month or
+two ago. Irregular freezes every few hours or few days forced dirtry
+RESETs to escape. MOre often than not the freeze also included the mouse.
 
---Brian
+My nVidia card had a manufacturing flaw (heat sink adhesive), and so I
+obtained a new one under the warrantee. To look at it, you can see
+that it was redesigned to take care fo the physical problem.
 
+Since I replaced the card, I had one single freeze very soon after, but
+since then, none whatsoever. 
 
-On Thursday 06 February 2003 08:38 am, McClain wrote:
-> Hello ppl,
->
-> I recently bought a new computer with a Asus A7N8x
-> mainboard(nForce2 chipset). Everything worked well,
-> except for one thing: every piece of hardware on the
-> board, ethernet, ps/2 mouse and keyboard, graphics card etc,
-> caused a slight noise on the sound channel(onboard as well).
-> Now I go and sell the board and want to buy a new one, what
-> would you consider a good mainboard? ATA133 controller,
-> usb2, ethernet onboard, if it isn't a realtek but a real
-> ethernet card, should be supported by a stock kernel.
-> What do you think of the KT400 chipset?
->
-> Thanks in advance....
-> 	...Sebastian
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Don't know that this sheds any light on the issue. I'm still using the
+nv driver that came with the RH7.3 and then 8.0 distribution. 
 
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
