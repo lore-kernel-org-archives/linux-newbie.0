@@ -1,42 +1,43 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: iptables & a dhcpd question
-Date: 27 Feb 2003 16:02:47 -0500
+Date: Thu, 27 Feb 2003 20:56:24 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1046379767.25031.5.camel@goldfinger.orbdesigns.com>
-References: <5.1.0.14.1.20030227120359.01f56808@celine>
-	 <009901c2dea0$9bc86390$4800a8c0@neptune>
+Message-ID: <03022720562401.00903@unix.pa3gcu>
+References: <004101c2de99$eef21400$4800a8c0@neptune> <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <009901c2dea0$9bc86390$4800a8c0@neptune>
+In-Reply-To: <61644.200.136.52.249.1046376018.squirrel@www.mandic.com.br>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>, paul@mnwebhost.net
+Cc: linux-newbie@vger.kernel.org
 
-On Thu, 2003-02-27 at 15:41, Paul wrote:
-> Thanks for all the info! Quick follow up question on the rc.firewall script.
-> I've tried running it, just by typing it's name when I'm in that folder at
-> root.  It says, "bash: rc.firewall-2.4: command not found"  It's actually
-> named, "rc.firewall-2.4" and I've made it executable already, it has a *
-> next to its name when I do a listing.  Any ideas??  TIA!
+On Thursday 27 February 2003 20:00, Eckhardt, Rodolpho H. O. wrote:
+> I don't know if this is what you are asking but.
+>
+> I've never worked with Slackware, but try this:
+>
+> /etc/(PATH TO rc.firewall)/rc.firewall
+>
+> and when they say dhcpd stop, you have to add the path to it in the front:
+>
+> /etc/init.d/dhcpd stop (if /etc/init.d is the path)
+>
+> I hope this works,
 
-Yah. You can't run an executable unless it's in your path, or if you
-specify the path to the executable. So if you are in /etc/init.d, and
-you have a script there called rc.firewall-2.4, then type
+Huum, its plain to see you have never seen slackware, slackware does not even 
+have a directory called /etc/init.d.
+Slackware is not of the sysv catagory sorry.
 
-./rc.firewall-2.4
-
-The leading ./ is a path specification that satisfies the requirement.
-
-HTH,
-
-.brian
-
-
+>
+> Rodolpho
 
 -- 
-Brian P. Bilbrey <bilbrey@orbdesigns.com>
-Orb Designs
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
