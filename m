@@ -1,28 +1,35 @@
-From: "Sean Rima" <sean@tcob1.net>
+From: Marco Calistri <ik5bcu@tin.it>
 Subject: Re: test after resubscribing
-Date: Sunday, 05 Oct 2003 20:22:46 +0000
+Date: Sun, 05 Oct 2003 21:55:17 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a100=2f1_3f14e3ae@fidonet.org>
-References: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <20031005195518.17676.qmail@linux.ik5bcu.ampr.org>
+References: <MSGID_110=3a100=2f1_3f14e3ae@fidonet.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
+In-Reply-To: <MSGID_110=3a100=2f1_3f14e3ae@fidonet.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-Originally to: Marco Calistri
-
--=> Marco Calistri wrote to All <=-
+To: Sean Rima <sean@tcob1.net>
+Cc: linux-newbie@vger.kernel.org
 
 
-Looks good here
+On 05-Oct-2003 Sean Rima wrote:
+> Originally to: Marco Calistri
+> 
+> -=> Marco Calistri wrote to All <=-
+> 
+> 
+> Looks good here
+> 
+> Sean
+> 
+> ... TCOB1 telnet:\\tcob1.thebbs.org 1800-0000 BST/GMT
 
-Sean
+Same here :-)
 
-... TCOB1 telnet:\\tcob1.thebbs.org 1800-0000 BST/GMT
-
+Regards,Marco
+ 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
