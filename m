@@ -1,33 +1,27 @@
-From: adwin <fox@sby.centrin.net.id>
-Subject: mouse setup
-Date: Wed, 3 Jul 2002 07:40:09 +0700
+From: Chris Rose <offline@shaw.ca>
+Subject: User in multiple groups
+Date: Wed, 03 Jul 2002 02:14:09 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <50420696.20020703074009@sby.centrin.net.id>
-Reply-To: adwin <fox@sby.centrin.net.id>
+Message-ID: <5.1.1.6.0.20020703021225.033b2200@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hello,
+I'm trying to get one user account to be in multiple groups right now, and 
+i thought i had it licked (add the username to the end of the line in 
+/etc/group).  Problem is, it doesn't seem to have done the trick, since i 
+still can't write to files for which i have permission.  Is there something 
+else i need to do?  logout, or reboot?  Or does all that stuff take effect 
+immediately?
 
-  my system is Mandrake 8.2 & KDE 3.0 in my system.
-I got a problem with my ps2 mouse port so I use USB Mouse instead.
-I got problem, because my mouse cannot be detected. I have been try
-use mousedrake to detect my mouse. It is success to detect my mouse
-but my mouse still cannot be used. Then I try to detect with kudzu, it
-also doesn't work (it say like " cannot create /dev/usbmouse").
-how to solve this problem ?
 
-thanks
+Chris R.
+========
+Listening to the sound of silence
 
-ps: my mouse is Logitech optical.
-
--- 
-Best regards,
- adwin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
