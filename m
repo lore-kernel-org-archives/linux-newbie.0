@@ -1,75 +1,51 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Retrieving deleted files
-Date: Wed, 07 Apr 2004 14:36:42 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Retrieving deleted files
+Date: Thu, 8 Apr 2004 07:38:18 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040407141625.01f94748@celine>
-References: <5.1.0.14.1.20040407132750.01efa2b0@celine> <GNEPLLCIIBHICCOGIAKPEEGLCJAA.eatley@wow-corp.com>
+Message-ID: <200404080738.18623.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040407114459.01efa728@celine> <5.1.0.14.1.20040407132750.01efa2b0@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPEEGLCJAA.eatley@wow-corp.com>
-References: <5.1.0.14.1.20040407132750.01efa2b0@celine>
+In-Reply-To: <5.1.0.14.1.20040407132750.01efa2b0@celine>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Eve Atley <eatley@wow-corp.com>
+Content-Type: text/plain; charset="iso-8859-1"
+To: Ray Olszewski <ray@comarre.com>, Eve Atley <eatley@wow-corp.com>
 Cc: linux-newbie@vger.kernel.org
 
-At 05:06 PM 4/7/2004 -0400, Eve Atley wrote:
-
->Thanks so much for your help, Ray.
+On Wednesday 07 April 2004 22:42, Ray Olszewski wrote:
+> As to the install itself ... either there is a problem with the RPM o=
+r it
+> places recover in some truly odd location (Debian installs it in /usr=
+/sbin,
+> BTW, the usual place for this sort of app). I'm cc'ing this back to t=
+he
+> list in case someone more used to working with RPM-based distros can =
+help
+> you here.
 >
->I have tried the instructions at:
->http://recover.sourceforge.net/unix/
->(one of the first things I did try)
->...and I got a whole lot of garbage spit back to my screen; so much so, I
->had to quit.
->
->I am attempting to do something along these lines:
->
->         grep -a -B10000 -A0 "wowerpresumes" /dev/hdfb
->
->...and since I'm not sure what to put for B and A, I may be doing something
->wrong here. I don't recall how large the directory was 'before' things were
->deleted.
+> Sorry I =A0do not have better news for you.
 
-You do not need to know how large the directory was. This approach, as I 
-read it (I've never actually used it myself), is limited to recovering text 
-files. The trick is that you need to know something about the contents of 
-some line of the file you want to recover. Then, you use grep to examine 
-the raw partition (in this case, /dev/hdfb) as a single file (the -a switch 
-tells grep to pretend the file is text), and it will turn up each instance 
-of what you entered, reporting back  the  preceding "B" lines of text, the 
-line itself, and "A" lines of following text.
+AFAIK you cant undelete with ext3.
 
-Since you selected a very large value for B and 0 for A, you get a mess to 
-the screen when you try this.
+http://www.linuxmafia.com/faq/Filesystems/ext3-no-undeletion.html
 
-There is no general way to specify "right" values for A and B. You simply 
-have to know something about the structure of the file. And since this 
-approach will (I think) examine the filesystem linearly, a fragmented file 
-will not be recoverable this way. Nor will a directory, which is really 
-just a list of inode entries, which themselves can be scattered anywhere 
-convenient on the filesystem. (And what I read about ext3 says the inode 
-tables will be zero'd on deletion anyway.)
+--=20
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-I did a bit more searching and still cannot find any undelete program 
-tailored to ext3. I did find this one for ext2 -- 
-http://www.data-recovery-software.net/Linux_Recovery.shtml -- that MIGHT be 
-worth a look, since its description seems to indicate that it does not 
-depend on the inode table to recover. And this one -- 
-http://www.securiteam.com/tools/6R00T0K06S.html -- is not specific about 
-what filesystems it will work on. The Debian package tct (Coroner's 
-Toolkit) also includes a program called unrm, but I don't know if it is the 
-same one.
-
-Finally, my search turned up a couple of references to 
-www.experts-exchange.com, a site that requires registration. You might want 
-to check its resources.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
