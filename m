@@ -1,52 +1,32 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: Locate Vs Find
-Date: Sun, 28 Nov 2004 15:13:16 +0100 (CET)
-Message-ID: <Pine.LNX.4.21.0411281438060.16146-100000@hestia>
-References: <41A647E2.1080302@tlinx.org>
-Reply-To: Linux Newbie <linux-newbie@vger.kernel.org>
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: uname -a
+Date: Mon, 29 Nov 2004 09:46:52 +0000 (GMT)
+Message-ID: <20041129094652.73203.qmail@web52902.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41A647E2.1080302@tlinx.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: newbie <linux-newbie@vger.kernel.org>
 
-Sunday, November 28 14:38:06
+uname -a
+Linux Ankit 2.4.20-8 #1 Thu Mar 13 17:54:28 EST 2003
+i686 i686 i386 GNU/Linux
 
-> On Mon, 2004-11-22 at 22:22, Ankit Jain wrote:
->
-> Which is more efficient? /if both perform the same
-> work and are not different then why shoudl we have 2 ?
+prints this
 
-That's not true, they do not preform the same task.
-`find' doesn't find files, it's just a side effect of
-the program. `Find's' real occupation is to evaluate files.
-a.k.a. to preform tests on them. For example:
-find / -atime +1 -fstype ext2 -name core -exec rm '{}' \;
-find . \( -fstype nfs -prune\) -o \
-       \( -type d -a -exec chmod 771 '{}' \; \) -o \
-       \( -name "*.BAK" -a -exec /bin/rm '{}' \; \) -o \
-       \( -name "*.sh" -a -exec chmod 755 '{}' \; \)
-find /home -xdev -size +500k -ls > blabla
-find /usr/include -xtype f -exec grep foobar \ 
-     /dev/null '{}' \;
-Find recurses down a structure and preforms a stat() system call for each
-regular file it encounters.. I advise you to read man page or stat(),
-lstat(), readdir and the dirent.h header file..
+i want to know how is it possible that machine &
+processor is 686 and hardware platform is 386
 
-`Locate's' only purpose is to find files. It builds a database of all
-files which then later on can be searched..
+thanks
 
-There are no. examples of c code directory handeling available in the
-snippits section at rdrs.net or more `find' examples in 
-http://www.rdrs.net/docs/src/reminder.txt
+ankit jain
 
-Greetzz.. 
-
-J.
-
+________________________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
