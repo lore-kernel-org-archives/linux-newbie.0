@@ -1,22 +1,39 @@
 From: "Lee Chin" <leechin@mail.com>
-Subject: getting the local port on a socket
-Date: Wed, 10 Sep 2003 17:03:23 -0500
+Subject: Re: getting the local port on a socket
+Date: Wed, 10 Sep 2003 19:57:54 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030910220323.60773.qmail@mail.com>
+Message-ID: <20030911005754.4122.qmail@mail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Mark Hahn <hahn@physics.mcmaster.ca>, linux-newbie@vger.kernel.org
+To: Lee Chin <leechin@mail.com>, Mark Hahn <hahn@physics.mcmaster.ca>, linux-newbie@vger.kernel.org
 Cc: Lee Chin <leechin@mail.com>
 
-Hi 
-How can I get the local port on a socket I just created?  I do not want to bind this client socket to any port... I just want to know what port the system (kernel) will use when it sends packets out on this socket
+I now change my question to 
+"why doesent getsockname work unless I call bind?  Does this mean, unless I call bind I cannot get the port the system will use to xmit the packet?"
+----- Original Message -----
+From: "Lee Chin" <leechin@mail.com>
+Date: Wed, 10 Sep 2003 17:03:23 -0500
+To: "Mark Hahn" <hahn@physics.mcmaster.ca>,linux-newbie@vger.kernel.org
+Subject: getting the local port on a socket
 
-Thanks
-Lee
+> Hi 
+> How can I get the local port on a socket I just created?  I do not want to bind this client socket to any port... I just want to know what port the system (kernel) will use when it sends packets out on this socket
+> 
+> Thanks
+> Lee
+> -- 
+> __________________________________________________________
+> Sign-up for your own personalized E-mail at Mail.com
+> http://www.mail.com/?sr=signup
+> 
+> CareerBuilder.com has over 400,000 jobs. Be smarter about your job search
+> http://corp.mail.com/careers
+> 
+
 -- 
 __________________________________________________________
 Sign-up for your own personalized E-mail at Mail.com
