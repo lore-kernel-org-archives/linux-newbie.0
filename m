@@ -1,28 +1,31 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: recovering files after rm
-Date: Wed, 2 Apr 2003 04:00:56 -0500
+From: "Amin" <raihan@citech-bd.com>
+Subject: New module: kernel recompile?
+Date: Wed, 2 Apr 2003 20:43:22 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304020900.h3290utf007499@hartford-hwp.com>
-References: <200304011516.h31FGxO2000493@hartford-hwp.com>  
- <200304010146.h311kNs02265@philonline.com> <200304020356.h323uc203288@philonline.com>
-Reply-To: brownh@hartford-hwp.com
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200304020356.h323uc203288@philonline.com> (message from Peter on
-	Wed, 02 Apr 2003 11:56:38 +0800)
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <000601c2f926$3989c980$0100007f@localdomain>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: pfheiss@philonline.com
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Peter,
+Hi, I've installed a new RH8.0 system after losing the old one.  Problem is,
+the fresh installation doesn't support my (Myson) Ethernet card, and I have
+to load the ``fealnx'' module to get it to do so.  And that module isn't
+already compiled and insertable.  So: is it possible to compile the module
+and then insert it into the kernel, instead of recompiling the whole kernel,
+as I had to do the last time?  (Not that I don't like recompiling the
+kernel; it just gets a little boring during the 5  hours it takes.)
 
-Interesting. "SafeDelete" is simultaneously a linux program to support
-undeleting files and at the same time a company that makes software to
-make it impossible to undelete files!
+I've got the ``.config'' file from my previous RH8.0 installation (on the
+same system) and can put it up for anyone who's interested.
 
-Haines
+Thanks,
+Yawar
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
