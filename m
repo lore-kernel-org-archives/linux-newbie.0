@@ -1,60 +1,54 @@
-From: "Adam Luchjenbroers" <adam@luchjenbroers.com>
-Subject: skystar2\mt312 driver does not timeout under kernel 2.6.6
-Date: Thu, 20 May 2004 0:35:47 -0500
+From: Halil Demirezen <kernel@bilmuh.ege.edu.tr>
+Subject: Re: FDC and compilation parameters.
+Date: Sat, 22 May 2004 21:45:29 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200405200435.AAA87673@m1.name2host.com>
-Reply-To: "Adam Luchjenbroers" <adam@luchjenbroers.com>
+Message-ID: <20040522184529.GA9545@bilmuh.ege.edu.tr>
+References: <20040521053958.GA31128@bilmuh.ege.edu.tr>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20040521053958.GA31128@bilmuh.ege.edu.tr>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Under kernel 2.6.6 (modules dvbcore, mt312, skystar2 loaded) dvbtune enters
-an infinite polling loop, as shown below.
+Anyone there?
 
-polling....
-Getting frontend event
-FE_STATUS:
-polling....
-Getting frontend event
-FE_STATUS: FE_HAS_CARRIER
-polling....
-Getting frontend event
-FE_STATUS:
-polling....
-Getting frontend event
-FE_STATUS: FE_HAS_CARRIER
-polling....
-Getting frontend event
-...
 
-Under 2.4.20 it simply pauses a few seconds then
-receives an FE_TIMEDOUT and stops.
 
-The following code has been identified in dvbtune, and it looks simply like
-the driver is not responding with an FE_TIMEDOUT where perhaps it should be.
+On Fri, May 21, 2004 at 08:39:58AM +0300, Halil Demirezen wrote:
+> I am trying to write some test kernels to get the
+> whole concept concrete. I am writing *.s and *.c
+> codes all together. However, I could not find the
+> exact CFLAGS to compile. Should I use -O2 or 
+> -fomit-frame-pointer...
+> 
+> What do you offer me ? The kernel will be written in
+> C ( some parts are asm) and there is no compression.
+> I am linking it with using 
+> 
+>  ld -Ttext 0x10000 -s --oformat binary -o test.bin test.o
+>  
+> and writing it to the floppy as below:
+> 
+>  dd obs=512 seek=6 if=test.bin of=/dev/fd0
+> 
+> 
+> However, there are some unexpected faults and the machine reboot.
+> I am using I386 by the way ;).
+> 
+> And can anyone tell me where I can find a good document telling 
+> how to program FDC. All the staff i found on net is confusing..
+> 
+> Thanks.
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-while (((event.status & FE_TIMEDOUT)==0) && ((event.status &
-FE_HAS_LOCK)==0)) {
-fprintf(stderr,"polling....\n");
-if (poll(pfd,1,10000)){
-if (pfd[0].revents & POLLIN){
-fprintf(stderr,"Getting frontend event\n");
-if ((status = ioctl(fd_frontend, FE_GET_EVENT, &event)) < 0){
-if (errno != EOVERFLOW) {
-perror("FE_GET_EVENT");
-fprintf(stderr,"status = %d\n", status);
-fprintf(stderr,"errno = %d\n", errno);
-return -1;
-}
-else fprintf(stderr,"Overflow error, trying again (status = %d, errno =
-%d)", status, errno);
-}
-}
-print_status(stderr,event.status);
-}
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
