@@ -1,32 +1,26 @@
 From: "William Stanard" <wstanard@palmertrinity.org>
-Subject: keeping legitimate users out of public_html
-Date: Wed, 15 Sep 2004 08:15:08 -0400
+Subject: Re: keeping legitimate users out of public_html
+Date: Wed, 15 Sep 2004 08:20:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <fc.004c4e00006307dc004c4e00006307dc.6308bf@palmertrinity.org>
+Message-ID: <fc.004c4e00006308d5004c4e00006307dc.6308ec@palmertrinity.org>
+References: <fc.004c4e00006307dc004c4e00006307dc.6308bf@palmertrinity.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <fc.004c4e00006307dc004c4e00006307dc.6308bf@palmertrinity.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I help students manage a school intranet website on a machine running Red
-Hat 2.4.18-14 and Apache 2.0.40.
+"William Stanard" <wstanard@palmertrinity.org> writes:
+> I can password protect, using .htaccess, specific directories from
+>"unauthorized" access
+I need to amend the above to read: ...protect, using .htaccess, specific
+directories from "unauthorized" intranet (via http) access.
 
-How do I keep my student users with accounts on the machine from being
-able to access, via Putty, /home/bobo/public_html, the directory in which
-I keep all of the content for the site, including tests and quizzes for my
-students' online use?
-
- I can password protect, using .htaccess, specific directories from
-"unauthorized" access, but I would like to provide similar protection for
-the /home/bobo/public_html/Prog/tests directory.  If I change permissions
-via chmod, however, then Apache will not be able to serve the pages to the
-intranet.
+ Apologies.
 
 Bill Stanard
-Academic Computing
-Palmer Trinity School
 
 
 
