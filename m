@@ -1,34 +1,35 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: man page formatting problem?
-Date: Thu, 22 May 2003 23:29:21 +0600
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: configuring sendmail to cope with AOL
+Date: Thu, 22 May 2003 15:52:30 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1271.1053624561@localhost.localdomain>
-References: <samuel@bcgreen.com>
+Message-ID: <200305221952.h4MJqU8n017518@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Message from Stephen Samuel <samuel@bcgreen.com> 
-   of "Thu, 22 May 2003 05:35:24 MST." <3ECCC40C.3020605@bcgreen.com> 
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux@hartford-hwp.com
 
-In message <3ECCC40C.3020605@bcgreen.com>, Stephen Samuel writes:
-> try
-> 
-> export LC_ALL=C
-> 
-> it seems to be a locale problem with man
+I'm using sendmail as my mta, but recently experienced AOL's refusal
+to accept mail from "residential" sources having dynamic IP
+addresses. This primitive method to cope with spam has apparently been
+causing pain for several years, but for some reason it's only now
+biting me.
 
-Thanks --- it worked.  I've put that line into my
-``.bash_profile''.  And I've also looked at the man page for
-``setlocale''.  Just for kicks, I set LC_ALL to
-``en_US.utf8''.  xterm messed up the dashes, so I set it
-back to ``C''.  The dashes were perfect.  So, thanks,
-although I'm just a little bemystified :-) about the whole
-locale thing.
+I get the impression that the way around this is to reroute outgoing
+mail to *@aol.com (and perhaps *@netscape.com) to my ISP's mail
+server.
 
-Yawar
+I've heard of people configuring their qmail and postfix to do this,
+but I'm runnng sendmail and haven't a clue on what to do. Hand-holding
+would be appreciated.
+
+A simple question: What's involved in using an ISP's mail server? Do
+all ISP's have such a server available for their customers? Do I need
+permission to use it? Is it likely to involve an additional charge?
+
+Haines Brown  
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
