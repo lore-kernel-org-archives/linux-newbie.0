@@ -1,46 +1,44 @@
-From: Jeremy Andrews <jeremy@kerneltrap.org>
-Subject: Re: register_exec_domain
-Date: Fri, 26 Apr 2002 07:52:45 -0400
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: DVI to RTF
+Date: Fri, 26 Apr 2002 16:50:11 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020426075245.696d977d.jeremy@kerneltrap.org>
-References: <20020422094901.57fc79e6.jeremy@kerneltrap.org>
-	<m3adrsj8wp.fsf@wobble.eth.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200204262050.g3QKoBS12478@langhans.hartford-hwp.com>
+References: <m33cxj7gfk.fsf@wobble.eth.net> <20020426041540.47f8697f.nbhs2@i-2000.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <m3adrsj8wp.fsf@wobble.eth.net>
+In-Reply-To: <20020426041540.47f8697f.nbhs2@i-2000.com> (message from Michael
+	Scottaline on Fri, 26 Apr 2002 04:15:40 -0400)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: drguruolai@eth.net
+Content-Transfer-Encoding: 7bit
+To: nbhs2@i-2000.com
+Cc: linux-newbie@vger.kernel.org
 
-Yeah, thanks...  Turns out the problem was my gcc.  I reinstalled 2.95.2 and the
-problem went away.
+Mike,
 
-On 25 Apr 2002 17:18:54 +0530
-G Anna <drguruolai@eth.net> wrote:
+> >Is it possible to convert from the DVI format to RTF format?  Or PDF
+> >to RTF? Or PS to RTF?  Or DSC to RTF?
+> >
+> >Basically I have the LaTeX source file and would like to have the
+> >document in RTF format too.  Is this possible?  BTW, I can view the
+> >RTF format using AbiWord.  Is there any other RTF viewer?
+> =================================
+> StarOffice, OpenOffice, Applixware, all have wordprocessors that should
+> handle rtf well.  WordPerfect 8.0 will as well.
 
-> 
-> > Date: Mon, 22 Apr 2002 09:49:01 -0400
-> > From: Jeremy Andrews <jeremy@kerneltrap.org>
-> > Subj: register_exec_domain
-> 
-> (snip)
-> 
-> >   I've been unable to compile the kernel for a while now.  When I do
-> > a 'make bzImage', it always bombs out in the file
-> 
-> (snip)
-> 
-> Did you do a 'make mrproper' before anything else?
-> 
-> anna
-> 
+Well, yes, you may be correct, but the original question remains
+valid. A double conversion greatly increases the problems, and so a
+direct conversion from LaTeX to RTF would be better. 
+
+Although I lack experience with it, there is a tex2rtf utility, which
+converts to rtf, HTML, etc. Here's the home page:
+www.anthemion.co.uk/tex2rtf/contents.htm You can get the source to
+compile it yourself for unix, or you can get binaries for Linux, HP,
+Windows, etc. 
+
+Haines Brown
 
 
---
- Jeremy Andrews    <mailto:jeremy@kerneltrap.org>
- PGP Key ID: 8F8B617A  http://www.kerneltrap.org/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
