@@ -1,61 +1,37 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: Peter <pfheiss@philonline.com>
 Subject: Re: gnome-search-tool database updating
-Date: Wed, 12 Feb 2003 12:24:11 -0500
+Date: Thu, 13 Feb 2003 10:05:55 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302121724.h1CHOBTA015000@hartford-hwp.com>
-References: <5.1.0.14.1.20030211115354.020f95c0@celine>
- <5.1.0.14.1.20030211080840.020f3ba0@celine>
- <5.1.0.14.1.20030211080840.020f3ba0@celine>
- <5.1.0.14.1.20030211115354.020f95c0@celine> <5.1.0.14.1.20030212080530.0213a580@celine>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <200302130205.h1D25tl02307@philonline.com>
+References: <200302121401.h1CE1kFQ013620@hartford-hwp.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20030212080530.0213a580@celine> (message from Ray
-	Olszewski on Wed, 12 Feb 2003 08:26:40 -0800)
+In-Reply-To: Your message of "Wed, 12 Feb 2003 09:01:46 EST." 
+ <200302121401.h1CE1kFQ013620@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com
-Cc: linux-newbie@vger.kernel.org
+To: brownh@hartford-hwp.com, linux <linux-newbie@vger.kernel.org>
 
-Sorry, Ray, I misunderstood you on two counts.
+Yes it seems the updatedb is not done automatically in RH up to 7.3. 
+Therefore, I put in my su (root) crontab (crontab -e) the following lines:
 
-> First, updatedb *is* the command to update the locate database. I
-> already told you this, so asking *me* again what command you are
-> looking for is a pointless exercise.
+00 13 * * * updatedb -e /mnt/dos,/mnt/window
 
-> Not having slocate on my systems, I have no way to check this
-> ... but what does *its* man page tell you?)
+25 17 * * 1 mount /mnt/window; updatedb -U /mnt/window -e 
+/mnt/dos,/,/usr,/usr/local,/home -o /home/peter/windowdb >> /dev/null
 
-Nothing about updating the database or how its done
-automatically. That was the first thing I checked.
+30 17 * * 1 updatedb -U /mnt/dos -e /mnt/window,/,/usr,/usr/local,/home -o 
+/home/peter/dosdb >> /dev/null
 
-> Third, contrary to what you write below, you DID find a reference
-> (either a script or an entry) to updatedb when you checked the cron
-> scripts.
+That way every day the data base is updated at 13 hour, except the dos and 
+window partition and every Monday dos and window only are updated and put into 
+a separate dos/window data base file.
 
-My second misunderstanding.
+Regards
+-- 
+Peter
 
-> Fourth, not knowing how you ran updatedb manually (what arguments?),
-> or how you determined that you "wiped out the database",
-
-Well, none of the options seemed relevant, and so ran the command bare
-bones. I concluded that the database had been damaged because I reran
-the same command in gnome find and now it returned nothing (rather
-than a long list of hits as before). However, when I redid it again an
-hour or two later, it worked, so my test was premature.
-
-In short, the updatedb without option seems to update slocate,
-although there's no feedback, and the effect is not immediately seen. 
-
-I no longer get the error message, but my manual update probably just
-obscures the original problem of no automatic update. At least I now
-have a better idea of where to begin looking if and when the warning
-pops up again. 
-
-Thanks for your patience. 
-
-Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
