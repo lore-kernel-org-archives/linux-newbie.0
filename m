@@ -1,40 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: which distribution to use?
-Date: Tue, 28 May 2002 08:47:59 -0700
+From: G Anna <drguruolai@eth.net>
+Subject: Re: ftp
+Date: 28 May 2002 20:52:30 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020528084649.020741b0@celine>
-References: <5.1.0.14.1.20020527232606.02756510@celine>
- <20020528022710.GF705@raven.parts-unknown.org>
- <5.1.0.14.1.20020527232606.02756510@celine>
+Message-ID: <m3u1ose1qh.fsf@wobble.eth.net>
+References: <Pine.SGI.4.05.10205272156430.34077-100000@angstrom.dartmouth.edu>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <0205281250150C.01212@unix.pa3gcu>
+In-Reply-To: <Pine.SGI.4.05.10205272156430.34077-100000@angstrom.dartmouth.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-At 12:50 PM 5/28/02 +0000, Richard Adams wrote:
->On Tuesday 28 May 2002 06:40, Ray Olszewski wrote:
-> > I usually ignore these threads, but this one is starting to get an
-> > unpleasant tone, so let me try to encourage the proponents of the various
-> > distros to moderate their insistance before we get to a flame war.
->
->So do i, but the thread was which one "learns" you the most and as we all
->seem to agree in one way or another Slackware is best for that.
+To: Karthik Vishwanath <karthik@northstar.dartmouth.edu>
+Cc: linux-newbie@vger.kernel.org
 
 
-Actually we don't all agree to this. I just see no benefit in extending the 
-debate.
+> Date: Mon, 27 May 2002 21:57:51 -0400
+> From: Karthik Vishwanath <karthik@northstar.dartmouth.edu>
+> Subj: Re: ftp
+> 
+> try gftp, has a gui and options for sub-directory
+> tranfers. Alternatively, ncftp is another great non-gui ftp client.
 
+wget
 
+Cheers,
+anna
 
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+-- 
+
+(16) I  will  never  utter the sentence "But before I kill you, there's
+     just one thing I want to know." - Peter Anspach in "The Top 100 
+     Things I'd Do If I Ever Became An Evil Overlord"
+
+                                            http://www.eviloverlord.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
