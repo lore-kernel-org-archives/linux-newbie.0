@@ -1,52 +1,139 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: would this work as a thin client?
-Date: Wed, 18 Dec 2002 15:25:17 -0800
+From: Bill Pleasants <Bill_Pleasants@aaahawk.com>
+Subject: Re: Printer error
+Date: Wed, 18 Dec 2002 23:33:13 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021218151622.02104860@celine>
-References: <3E00C4CA@mailandnews.com>
+Message-ID: <3E017639.57A68A01@aaahawk.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E00C4CA@mailandnews.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-At 10:32 AM 12/18/02 -0500, james miller wrote:
->Hello all. I'm pretty new to Linux and to the LTSP project, but I ran across
->something on the web for really cheap ($12.95!) and wondered if it could work
->as a thin client. Seems like, if it would, a bit of fiddling would be
->involved. Sorry if this is a stupid question. Anyway, here's the link:
->http://www.softwareandstuff.com/h_misc_webpal.html . Description follows:
-[deleted]
+Ray Olszewski wrote:
 
-I took a look at the URL, and I followed some of the links there, which 
-included info on converting the box to Linux. I'd say it is doable, but far 
-more than a "bit" of fiddling is needed. The instructions for how to switch 
-it to Linux seem pretty clear, but highlight three weak spots --
+> You did not provide some of the information I asked for (namely, the
+> contents of /etc/resolv.conf), but from what you did provide, the
+> likely source of the lprm problem is an inconsistency between your lpr
+> setup and /etc/hosts . As you report below, your /etc/hosts file only
+> identifies the machine as localhost.localdomain and not also as just
+> localhost. Consequently, the resolver cannot associate localhost with
+> your machine, as is illustrated by the ping failure you also report.
 
-         1. The system uses an ARM CPU, not an i86 one, so you need to cope 
-with the added complixities of using an non-i86 distro. This isn't fatal, 
-but it does involve learning new tricks of the trade.
+I failed to mention there is no resolv.conf file.
 
-         2. The system has only one expansion slot, an isa slot, and that 
-is limited to NE2K NICs running on IRQ3 (if you use it for a NIC, that is). 
-NE2K means 10 Mbps, not 100 Mbps. Usable for a thin client, but just one 
-more thing to have to fiddle with.
+>
+> Probably you can fix the lprm problem by editing the entry (yeah, I
+> know it says "Do not remove", but this is editing, not removing) so it
+> reads:
+>
+>         127.0.0.1    localhost.localdomain localhost
+>
+> Do that and see if lprm now works. If not, tell us what the problem
+> now loks like.
 
-         3. This is more s judgment call on my part, but I expect you would 
-see poor performance with X on this system, making it a weak candidate for 
-common thin client uses (at least the ones that interest me).
+    "[bill@localhost bill]$ lprm
+    Printer 'Print@localhost' - cannot open connection - No such file or
+directory
+    Make sure the remote host supports the LPD protocol
+    and accepts connections from this host and from non-privileged
+(>1023) ports"
 
-Good luck if you decide to give this a try, and please let us know how it 
-goes if you do.
+>
+> As to the underlying problem ... by "Additional attempts to print", do
+> you mean trying to print different files? Preferably something nice
+> and easy, like a short text file (/etc/hosts itself will do for a
+> test)? Does "lpq" show anything significant? If you power-cycle the
+> printer, does it now start to print? DId the printer successfully
+> print other files prior to failing with the final page of the MapQuest
+> one?
 
+After the change in the hosts file, I tried printing the hosts file from
+gedit, another file from Open Office and your email from Mozilla.  (I
+did not reboot.)
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
+    "[bill@localhost bill]$ lpq
+    Printer 'Print@localhost' - cannot open connection - No such file or
+directory
+    Make sure the remote host supports the LPD protocol
+    and accepts connections from this host and from non-privileged
+(>1023) ports"
+
+Power cycling the printer did not print.  There is no error light
+showing.  I don't remember if more than 2 pages printed.  It was a while
+ago.  While I was logged on as root, I also changed the boot run level
+from 3 to 5.
+
+And then .. the Network Device Control failed to function so I rebooted.
+And then .... the printer started and printed the 2 MapQuest pages (from
+10/15 I see) and stopped with the "toner out" light flashing.  I pulled
+the parallel plug, cycled the power, got the "ready" light, plugged the
+parallel back and got the error light again.  clicking to print this
+message did not change the printer.
+And then ...... The NDC failed again so I changed the hosts file back,
+rebooted and still no go.  So I copied this message to a floppy to take
+to my MS computer to send.  So that's what the problem looks like.
+
+>
+> At 10:44 PM 12/17/02 -0500, Bill Pleasants wrote:
+> [...]
+>
+>>> More immediately, how does your system do name-to-address
+>>> resolution? Does it rely on /etc/hosts? If so, what are the contents
+>>> of that file? Or does it use a nameserver? If so, is it accessable?
+>>> And what are the contents of the /etc/resolv.conf file?
+>>
+>>
+>> I have some notion of what name-to-address resolution is for the
+>> internet but not what it is for the Linux OS.  /etc/hosts contains:
+>>   "# Do not remove the following line, or various programs
+>>   # that require network functionality will fail.
+>>   127.0.0.1    localhost.localdomain
+>>
+>>>
+>>> Does the message really say "local host" rather than "localhost"?
+>>> What result do you get if (from the command line) you try "ping
+>>> localhost"?
+>>
+>>
+>> This is cut and paste:
+>>    "[bill@localhost bill]$ lprm
+>>    Get_local_host: 'localhost' IP address not available!"
+>>
+>>    "[bill@localhost bill]$ ping localhost
+>>    ping: unknown host localhost"
+>
+> [...]
+>
+>>> Finally, as to your immediate problem ... if the third page of a
+>>> epecific document continues to fail to print, while other docs print
+>>> fine (do they? you haven't said), i'd suspect something odd about
+>>> the specific document. Generically, you need to investigate how
+>>> general the printing problem is before we can tackle it systematically.
+>>
+>>
+>> I did not retain the file I first tried to print.  Additional
+>> attempts to print have produced no response from the printer.  Thank
+>> you for your offer to help.
+>
+> [...]
+> --
+> -------------------------------------------"Never tell me the
+> odds!"--------
+> Ray Olszewski                    -- Han Solo
+> Palo Alto, California, USA              ray@comarre.com
+>
 -------------------------------------------------------------------------------
+
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe
+> linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
