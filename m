@@ -1,33 +1,23 @@
-From: Mike Ni <cba20032002@yahoo.com>
-Subject: Performance measurement tool
-Date: Wed, 19 Feb 2003 10:02:42 -0800 (PST)
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: colour directory listings ...
+Date: Wed, 19 Feb 2003 14:25:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030219180242.78550.qmail@web40406.mail.yahoo.com>
-Mime-Version: 1.0
+Message-ID: <b30lmn$mu7$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Good morning everyone, 
+I appreciate the colour that gcc's "ls --color=auto" gives me, although I'd
+like to change some of the colours. I didn't see it the man/info pages.
+
+Ideas?
 
 
-I am looking for a commercial package tool/ share ware
-that is capable to monitor and isolate performance
-issue. I have heard some good things about solution
-from BMC software, CA, NetIQ & compuware.  
 
-Does anyone out there can give me some feedback or
-suggestion? 
-
-Thanks in advance. 
-Mikey
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Shopping - Send Flowers for Valentine's Day
-http://shopping.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
