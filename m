@@ -1,34 +1,24 @@
-From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
-Subject: Re: Tape emulation
-Date: Fri, 13 Jun 2003 12:31:36 -0400 (EDT)
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: ppp ain't talking
+Date: 14 Jun 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.56.0306131228430.3625@filesrv1.baby-dragons.com>
-References: <bcbs64$p2n$1@main.gmane.org>
-Mime-Version: 1.0
+Message-ID: <200306140104.h5E144wo017689@pegasus.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <bcbs64$p2n$1@main.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Philippe Marmillod <philippe.marmillod@epfl.ch>
-Cc: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-	Hello Philippe ,  1) Please wrap line when send to mail lists to
-	less than 80 coloumns .  2) Huh ? ,  in general "Everything is a
-	file ,  Files are how everything is done" .  3) what are you
-	trying to accomplish ?  Hth ,  JimL
+Kppp is a really good utility - but it just wouldn't work without the
+full installation of KDE, including most QT libraries ... and this is a
+no-no for the Debian 3.0 "distro".
 
-On Fri, 13 Jun 2003, Philippe Marmillod wrote:
-> Dose sombody know if the exist a driver emulating a tape device and writing data
-> to a file on disk ?
-> It is possible to use the loopback device ?
->      Philippe Marmillod
--- 
-       +------------------------------------------------------------------+
-       | James   W.   Laferriere | System    Techniques | Give me VMS     |
-       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
-       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
-       +------------------------------------------------------------------+
+So there you (we) are.
+
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-06-13
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
