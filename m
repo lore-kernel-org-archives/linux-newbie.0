@@ -1,63 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Strange shutdown problem with KDE2.2.2.
-Date: Sun, 14 Apr 2002 12:22:56 -0700
+From: DFW II <devon_wing@yahoo.com>
+Subject: Re: Compaq Armada 100S
+Date: Sun, 14 Apr 2002 16:18:29 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020414192256.00ca4358@[192.168.1.23]>
+Message-ID: <5.1.0.14.0.20020414161742.01f58c00@pop.mail.yahoo.com>
+References: <5.1.0.14.0.20020412084933.01f54100@pop.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44.0204121201210.4381-100000@bamboonet.mine.nu>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 07:13 PM 4/14/02 +0000, Richard Adams wrote:
->On Sunday 14 April 2002 13:02, Ola Theander wrote:
->> Dear subscribers.
->>
->> I'm running a SuSE 7.3 Professional Linux installation with KDE 2.2.2 on my
->> Dell Inspiron 8000. Unfortunately I have a problem when I'm shutting down
->> KDE somtimes the shutdown result in some very strange graphical effect, it
->> looks pretty much like a sheet of papper burning into ashes. After that the
->> computer locks and I have to turn of the power. The problem occurs pretty
->> unprovoked, I could have runned a normal KDE session and when I turn of the
->> KDE the problem occurs.
->>
->> Any help on this matter would be greatly appciciated.
+The only problem I can see is that it has a winmodem built into it.... May 
+have to get a combo card for it.  Thanks for the opinions on the topic.
+
+At 12:04 PM 4/12/02 -0400, Brian Jung Myeng Lee wrote:
+>Hello.
 >
->You say locks, have you tryed ctrl-alt-backspace to escape from X.??
->If you have a network, can you ping the (locked)-machine from another host.?
->And forall what kernel do you have running.??
-
-The symption as described doesn't suggest anything to me, but, like Richard,
-I wonder how thoroughly "locked" the computer is. Beyond his question:
-
-        can you CRTL-ALT-F* to a command-line vt (assuming 
-                you have some running)?
-
-        can you establish a telnet or ssh connection (assuming
-                you have the relevant servers running)? [This may
-                be the most important one, since if you can do a
-                remote connection, you can find out all the usual
-                things about the state of the host.]
-
-        can you still connect to any other services you have running
-                (e.g., SMTP, DNS, HTTP, ident ... I don't really know
-                what you use the host for so these are wild guesses)?
-
-        does the host still respond to pings (I guess Richard already
-                asked this one)?
-
-After you reboot, do the logs contain any useful information from KDE or
-from X itself?
-
-How much memory does the system have? (Actual RAM and swap)
-
-
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
+>Hmm.. This could be a war between what distro's the best. =)
+>In my opinion, if you are a newbie, get Mandrake or RedHat then swtich
+>over to Slackware or Debian as soon as possible. (That is when you know
+>how to manage/run/fix stuff) I started with RH then switched to Slack,
+>then LFS. But I think it doesn't take a lot to learn those 'hard' distros.
+>They are all Linux (This is the word, but...) anyway.
+>
+>Bye bye.
+>
+>On Fri, 12 Apr 2002, DFW II wrote:
+>
+> > I just inherited a Compaq Armada 100S laptop computer and am thinking about
+> > installing Linux on the machine... Any recommendations for a distribution?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
