@@ -1,57 +1,35 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Reinstallation
-Date: Thu, 1 Apr 2004 08:31:10 +0200
+From: Matthew Frederico <matt@ultrize.com>
+Subject: Re: Noflushd usage
+Date: Thu, 01 Apr 2004 09:23:15 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200404010831.10688.pa3gcu@zeelandnet.nl>
-References: <200403302101.44326.pa3gcu@zeelandnet.nl> <5.1.0.14.1.20040330115239.01f82bc8@celine> <200404011236.55329.wheds8@ms66.hinet.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <1080832995.4645.0.camel@localhost.localdomain>
+References: <406BA04F.3060503@hopper.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200404011236.55329.wheds8@ms66.hinet.net>
-Content-Disposition: inline
+In-Reply-To: <406BA04F.3060503@hopper.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+Content-Type: text/plain; charset="us-ascii"
+To: Joshua Rogers <joshuarogers@hopper.net>
 Cc: linux-newbie@vger.kernel.org
 
-On Thursday 01 April 2004 06:36, S. Barret Dolph wrote:
-> The message reads, from a Mandrake installation, ....There was an err=
-or
-> installing packages XXX. Do you wish to continue. This goes through e=
-very
-> package I selected.
->
-> File partitions. I used fdisk to partition and then put Reseirfs on t=
-hem.
->
-> Then I let Mandrake do =A0the partitioning automatically.
->
-> The result was the same.
+On Wed, 2004-03-31 at 22:53, Joshua Rogers wrote:
+> Slightly curious here.  I have fairly new computer here that I got from 
+> walmart.com maybe 4 months ago.  I decided to install linux and windows 
+> on  it.  Ok.  I installed a 100Gb harddrive into the computer that has 
+> all my data on it.  And the drive sounds like a jet plane.
+> 
+> How can I (or can I not) make noflushd turn off the second hard drive 
+> after about 15 minutes?
 
-If you used fdisk as you say and oyu created a reiserfs filesystem, the=
-n its=20
-madness to let Mandrake do it again.
+I believe "hdparm" is the command you are looking for.
 
-The error message you are getting can be caused by two things.
+something like:
 
-1) No mount point defined in the partitions section of the install.
-2) You source medium is corrupt, use MD5 to check it.
-
---=20
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+"hdparm -s 30 /dev/hdb"
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
