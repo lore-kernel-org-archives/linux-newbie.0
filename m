@@ -1,87 +1,32 @@
-From: RANDAZZO@ddc-web.com
-Subject: RE: connecting two nics.... [bcc]
-Date: Wed, 10 Mar 2004 08:50:59 -0500
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: Convert PBM to ascii text??
+Date: Wed, 10 Mar 2004 08:49:22 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
+Message-ID: <Pine.LNX.4.58.0403100842190.1024@debian-emach>
+References: <5.1.0.14.1.20040308130547.01f63e50@celine>
+ <20040308204535.GA1010@lnx2.w8mch.ampr.org> <5.1.0.14.1.20040308130547.01f63e50@celine>
+ <5.1.0.14.1.20040309070617.01fde278@celine> <20040310135900.GA614@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040310135900.GA614@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ray@comarre.com, linux-newbie@vger.kernel.org
-
-Does anyone know how to duplicate the ping -I command for
-socket-layer calls?
-
------Original Message-----
-From: Ray Olszewski [mailto:ray@comarre.com]
-Sent: Tuesday, March 09, 2004 7:07 PM
 To: linux-newbie@vger.kernel.org
-Subject: RE: connecting two nics.... [bcc]
 
+Sounds like a good alternate solution for you, Hal - but one which is
+likely only available for proprietary operating systems produced by
+corporations bent on world market domination - would be speech recognition
+software.  Read your friend's note into the computer, and have it produce
+typed and formatted text.  I guess it'll be a few years before I can say:
+"Hal, why don't you look into speech recognition software for Linux as a
+solution to this problem?"  Meantime, we can at least dream about it and
+identify it as a need, can't we?
 
-At 06:07 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
->I want to be able to communicate completely...
->
->ping, socket calls, udp, tcp, etc.....
->
->I was just using ping as a simple example.....
->
->even if I put the cards on the same network.......
->
->eth1 = 100.100.1.1 mask=255.255.255.0
->eth2 = 100.100.1.2 mask=255.255.255.0
->
->the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
->
->I havent tried socket calls yet because I assumed if I couldn't get ping
->to work, why try anything else......
->
->Mike
->
->ALL INFORMATION IN THIS EMAIL IS PUBLIC!
-[rest deleted]
+James
 
-"communicate completely" is a meaningless specification in this context.
-
-It is not possible to tell the kernel that ALL traffic to 100.100.1.1 has 
-to be routed through 100.100.1.2 ... because there will be reply traffic to 
-anything that comes in from 100.100.1.2 to 100.100.1.1, and the kernel 
-needs to be able to reply directly out the 100.100.1.1 interface. Or at 
-least I imagine it does.
-
-So you need to arrange for *specific* traffic to go the "long" way. The way 
-to do that is at the application level, for example with the -I option in 
-ping. That approach will (or should; have you actually tested it?) allow 
-you and your customers to verify that an installed device is working at the 
-hardware level, the original problem you posed.
-
-Aside from such testing, I can't really think of a reason why a host would 
-want to communicate with itself the "long" way around ... so I'm having a 
-hard time trying to translate your general desire to specific things that 
-application-level solutions might address. Now we really are, probably, 
-getting into the sensitive business aspects of what your company does ... 
-but I think that only someone with that information will be able to come up 
-with solutions that work for you.
-
-As I said before, you probably want to see how ping implements the -I 
-option. I'm a bit rusty on this stuff right now, but I recall that bind() 
-allows you to specify a local address to use. This may force the use of the 
-indirect interface ... I'm really not certain.
-
-
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
- 
-"This message may contain company proprietary information. If you are not
-the intended recipient, any disclosure, copying, distribution or reliance on
-the contents of this message is prohibited. If you received this message in
-error, please delete and notify me."
-
+PS  This presumes you've got audio-in working on your Linux box, which can
+be another challenge in itself.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
