@@ -1,87 +1,103 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: 'Irq_vectors.h: No such file or directory' in 2.5.59
-Date: Wed, 26 Feb 2003 16:24:35 +0000
+From: Eric <eric@cisu.net>
+Subject: Re: scripting the "rec" function for a fixed time.
+Date: Wed, 26 Feb 2003 11:26:27 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03022616243501.00603@unix.pa3gcu>
-References: <720FB032F37C0D45A11085D881B03368A2B30F@MBXSRV24.stu.nus.edu.sg>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <200302261126.27248.eric@cisu.net>
+References: <03022506145301.00602@unix.pa3gcu> <5.1.1.6.0.20030226100528.01edc598@pop3.demon.co.uk>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <720FB032F37C0D45A11085D881B03368A2B30F@MBXSRV24.stu.nus.edu.sg>
+In-Reply-To: <5.1.1.6.0.20030226100528.01edc598@pop3.demon.co.uk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Eng Se-Hsieng <g0202512@nus.edu.sg>, linux-newbie@vger.kernel.org
+To: Carl <carl@anexia.co.uk>, Peter Howell <p.howell74@rcn.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Wednesday 26 February 2003 15:23, Eng Se-Hsieng wrote:
-> Hello,
-
-Firstly this list is for mewbies, a development kernel is not for newbies as 
-you see with your problem, however i will try and shed some light.
-
+On Wednesday 26 February 2003 04:19 am, Carl wrote:
+> At 19:44 25/02/2003 -0500, Peter Howell wrote:
+> >On Tue, 2003-02-25 at 01:14, pa3gcu wrote:
+> >> > "rec" is not a stock linux command, and I cannot readily identify a
+> >> > package that includes that application (just trying to match on "rec"
+> >> > turns up several hundred hits in the Debian package database). So I'd
+> >> > suggest you tell us a bit more about your setup, including enough
+> >> > information that we can identify and take a look at the package that
+> >> > includes this command.
+> >>
+> >> rec is an unix command altho' not well supported, slackware 8 has it
+> >> included.
+> >>
+> >> rec --help shows a lot but thses are relavant to the question;
+> >>   -c, --channels=CHANNELS      specifies the number of sound channels in
+> >> FILE -d, --device=DEVICE          use DEVICE for input/output
+> >>   -f, --format=FORMAT          specifies bit format of sample
+> >>                                FORMAT is either s, u, U, A, a, or g
+> >>   -r, --rate=RATE              sample rate in hertz of FILE
+> >>   -s, --size=SIZE              interpret size of sample
+> >>
+> >> I think this one could be an help -s xxxxxxxb
+> >>                                SIZE is either b, w, l, f, d, or D
+> >
+> >        Alas no :-(
+> >        size isn't the file size.  It's really the width of each sample. 
+> > eg b for 8 bits, w for 16 bits....
+> >
+> >It appears that rec does not buffer the sound, but instead writes it
+> >directly to the file.
+> >It's inelegant, but I suppose I could kill the application after a
+> >specified delay.  There are two problems with implementing that for me.
+> >Firstly, I don't think I could do that in perl, which I'm most familiar
+> >with because there doesn't appear to be an easy way to spawn a process
+> >and continue running the scipt.  Secondly, I don't know how to run a
+> >process and get it's process id, which I'd need to kill it.
+> >
+> >        Ok, just did a little rtfm.  I guess I could use ps and extract
+> > the id. Now I guess I'd better learn some bash scripting
 >
-> While compiling the Nokia D211 driver on my computer, I received the
-> following error message.
+> There is a tcl based interpreter called expect which lets you spawn
+> processes and gives you it's pid easily. If you have any programming or
+> scripting experience then it will be easy.
 >
-> /usr/src/linux-2.5.59/include/asm/irq.h:16:75: irq_vectors.h: No such
-> file or directory
+> Or there is a program called timelimit which is part of the netpipes
+> package that spawns a process and kills it if it doesn't return after a
+> specified time.
 >
-> Line 15-16 of the above file is as follows:
-> /* include comes from machine specific directory */
-> #include "irq_vectors.h"
+> I don't know how accurate these are and i have no experience of timelimit.
 
-The above means irq_vectors.h is to be found in the present directory.
-Or i belive something to that effect, if it were to be in say asm then it 
-would be;
-#include <asm/irq_vectors.h>
+I am not sure if I am correct, but its worth a try:
 
-> I've read some mails about how the file irq_vectors.h is actually found
-> in usr/src/linux-2.5.59/arch/i386/mach-generic but the only mach*
-> directories I have are
->
-> mach-default, mach-visws and mach-voyager.
->
-> Did I forget to download something or compile something in my kernel?
+If you are interested in scripting it I once had to do something similiar in 
+BASH. By creating a function, it will execute the function commands in a 
+subshell while continuing with the current script. Try something like this
 
-No a source tarball is a surce tarball, thats all i have as well.
+#!/bin/bash
+function boot ()
+{
+	*RecordProgram Command Here*&
+}
+boot 			#calls the funtion boot.
+let PID = $!	#returns PID of last executed background command.
+wait 9000  		#let it run for 9000 seconds
+kill $PID
 
-So you have some choises.
+Something like that. this is opposed to the example below where the background 
+ampersand will hang the script. If $! doesnt return the correct pid then you 
+might be able to fake it using awk.grep and the ps command to isolate the pid 
+column.
 
-1) copy /usr/src/linux-2.5.59/arch/i386/mach-generic/irq_vetors.h 
-to
-/usr/src/linux-2.5.59/include/asm/ # which is possably a symlink to asm-i386 
+#!/bin/bash
+Recordprogram&
+letPID = $!
+wait 9000
+kill $PID
 
-2) edit /usr/src/linux-2.5.59/include/asm/irq.h # alter
-#include "irq_vectors.h"
-#include <mach-default/irq_vectors.h>
-
-3) seek advise elsewhere, not being rude but as i said this is a newbie group 
-and writing mails like this could lead a newbie to render his system unusable 
-at the most remote off-chance of course.
-(No offence meant).
-
-4) Try google.com/linux use irq_vectors.h as the search, i did i got 40 hits.
-I must say there are some good examples there also.
-
-> Grateful if someone could help with where and how to find the
-> irq_vectors file in the 2.5.59 kernel sources.
-
-O why 2.5.59 latest is 2.5.63
-
->
-> Thank you.
-
-Your welcome.
-
->
-> Regards,
-> Se-Hsieng
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+I believe the function wont hang the script waiting for input like the above 
+example. Let me know if this sounds logical. I would appreciate input from 
+any real bash programmers to see if I am correct. As always, best of luck!
+#------------------------
+#Eric Bambach   
+#Eric@CISU.net 
+#------------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
