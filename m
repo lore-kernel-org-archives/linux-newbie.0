@@ -1,32 +1,26 @@
-From: eja@urbakken.dk
-Subject: Re: [copied-newbie] Clarkconnect.
-Date: Tue, 6 May 2003 20:25:50 +0200
+From: Peter <pfheiss@philonline.com>
+Subject: HOWTO Restart LPD
+Date: Wed, 7 May 2003 09:40:44 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EB81A4E.16350.1385167@localhost>
-References: <3EB7C542.26068.6497EA1@localhost>
+Message-ID: <200305070940.44823.pfheiss@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <3EB7E7F6.6010806@shaw.ca>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi and thanks Chris.
+Hi,
+When cups has been activated for printing, then on rebooting lpd is not 
+started anymore.
 
-> Speaking for myself, i've been using the package for a year and more.
-> If you need help, i'd recommend their excellent forums at
-> http://www.clarckconnect.org/
+How can I restart lpd from the command line instead of using printtool or 
+printconf-tui? I can't find anything in man lpd.
 
-Ok Chris. I've been looking much on this site, and also I have 
-asked a pair of questions without any response.
+Thanks & regards
 
-Could be nice if we could write a little direct maybe ?.
-
-What say ?.
- 
-
-Erik Jakobsen
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
