@@ -1,8 +1,8 @@
 From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: PPP Question
-Date: 27 Sep 2002
+Subject: Re: related issue (was: Dvorak Console)
+Date: 28 Sep 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209272147.g8RLlMv21064@ev6.be.wanadoo.com>
+Message-ID: <200209272309.g8RN9dv13160@ev6.be.wanadoo.com>
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,19 +10,23 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Mandrake (and a number of other distributions), "ifup pppN" and
-"Ifdown pppN" indeed are (basch-) scripts.
+On a related issue - is there any means to switch charsets (for all
+sorts of screen printing), and this, back-&-forth "on the fly" ?
+At least, in text/console mode ?
 
-Well, I had two Debian installations, at one time, where the same
-(scipt, bash-function) was called "p-on/p-off" and "pon/poff" (without
-arguments), respectively.
+REM: most "garbled" screen presentation of text has the simple cause
+in different charsets employed, sepectively, (a.) in the (txt) file,
+(b.) for the system/screen char setting to present it.
+(This concerns 8-bit charsets, and there, the full-8-bit range; most
+frequent is the problem of "text" from a Windows-machine - the
+M$-declaration of "ISO-8859-1" is false, it does _not_ comply - read on
+any other, _including_ those with correct ISO-8859-1 charsets set.)
 
-> I hate it when stuff this basic becomes both distribution specific -AND-
-> named in ways that invite confusion. Pfui!
+Remapping could (and _should_, IMO) be an easy thing, with switching to
+the right charset with reading/screen-printing that one piece (and then
+switching back to the generally used charset).
 
-Now go tell me.
-
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-26
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-27
 The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
