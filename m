@@ -1,17 +1,45 @@
-From: "John T. Williams" <jowillia@vt.edu>
-Subject: Re: Switching between foreground and background
-Date: Tue, 23 Sep 2003 12:07:24 -0400
+From: "Mariano Moreyra" <moremari@aca.org.ar>
+Subject: RE: Switching between foreground and background
+Date: Tue, 23 Sep 2003 14:24:05 -0300
 Sender: linux-c-programming-owner@vger.kernel.org
-Message-ID: <003e01c381ec$c76473a0$ed64a8c0@descartes>
-References: <20030922104825.81134.qmail@web20002.mail.yahoo.com> <003501c3811f$610395a0$ed64a8c0@descartes> <3F702813.8030200@gsecone.com>
-Reply-To: "John T. Williams" <jtwilliams@vt.edu>
+Message-ID: <000301c381f7$7d7487c0$0b04a8c0@aca.org.ar>
+References: <003e01c381ec$c76473a0$ed64a8c0@descartes>
+Reply-To: <mariano_moreyra@aca.org.ar>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-c-programming-owner@vger.kernel.org>
+In-Reply-To: <003e01c381ec$c76473a0$ed64a8c0@descartes>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: rvk@gsecone.com, "John T. Williams" <jtwilliams@vt.edu>
-Cc: Silambu Chelvan <silambu_mdu@yahoo.com>, linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
+To: "'John T. Williams'" <jtwilliams@vt.edu>, rvk@gsecone.com
+Cc: 'Silambu Chelvan' <silambu_mdu@yahoo.com>, linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
+
+I don't know if that's the way to gain daemon behavior. If you fork twice,
+your process stills attached to the controlling terminal.
+I guess you could finish that terminal session without problem. But I think
+that a real daemon has to detach him self from the controlling tty.
+You can do that, like Raghu said, calling setpgrp and setsid and closing
+stdout an err.
+There is also a function in unistd that does all of this for you.
+
+int daemon(int nochdir,int noclose); (see "man daemon")
+
+Don't know if exists in all unix or linux distros. But it seems to work.
+Saludos.
+
+Manuk
+
+
+-----Mensaje original-----
+De: linux-c-programming-owner@vger.kernel.org
+[mailto:linux-c-programming-owner@vger.kernel.org]En nombre de John T.
+Williams
+Enviado el: Martes, 23 de Septiembre de 2003 13:07
+Para: rvk@gsecone.com; John T. Williams
+CC: Silambu Chelvan; linux-newbie@vger.kernel.org;
+linux-c-programming@vger.kernel.org
+Asunto: Re: Switching between foreground and background
+
 
 I have to admit that I don't know why, but every resource I've ever read
 about causing programs to gain daemon behavior has involved forking 2 times
@@ -20,7 +48,7 @@ be happy to hear it.
 
 
 
------ Original Message ----- 
+----- Original Message -----
 From: "Raghuveer" <rvk@gsecone.com>
 To: "John T. Williams" <jtwilliams@vt.edu>
 Cc: "Silambu Chelvan" <silambu_mdu@yahoo.com>;
@@ -73,7 +101,7 @@ in
 > -Raghu
 >
 > >
-> >----- Original Message ----- 
+> >----- Original Message -----
 > >From: "Silambu Chelvan" <silambu_mdu@yahoo.com>
 > >To: <linux-newbie@vger.kernel.org>
 > >Sent: Monday, September 22, 2003 6:48 AM
@@ -129,4 +157,10 @@ in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
+
+-
+To unsubscribe from this list: send the line "unsubscribe
+linux-c-programming" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
 
