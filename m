@@ -1,35 +1,40 @@
 From: whitnl73@juno.com
-Subject: Re: slightly off topic: remotely displaying Mac OS X applications (fwd)
-Date: Sun, 12 Jan 2003 22:18:28 -0500 (EST)
+Subject: Re: slightly off topic: remotely displaying Mac OS X applications
+Date: Sun, 12 Jan 2003 22:20:20 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030112.223118.134688608.0.whitnl73@juno.com>
+Message-ID: <20030112.223118.134688608.1.whitnl73@juno.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Cc: yoni@kallay.net
+Cc: hammer@revobild.net
 
 
-On Sun, 12 Jan 2003, Jonathan Kallay wrote:
+On 13 Jan 2003, Heimo Claasen wrote:
 
-> I changed the display variable with the command "setenv DISPLAY
-> xxx.xxx.xxx.xxx:0.0" (OS X's tcsh doesn't use set/export commands).  I added
-> the host to the list of allowed hosts by running xhost.  I've successfully
-> launched remote applications on another computer that have appeared on my
-> screen, so the steps should be the right ones...
+> How _do_ you "change the DISPLAY variable?"
+>
+> Searching through my wise Debian book I cannot even find it mentioned
+> at all.
+>
+> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-01-13
+>
+Depends on your shell.
 
-Hmmm, that should be right.  Does xxx.xxx.xxx.xxx resolve to your own
-machine?  Can you FI telnet back to it?  Does the client display any
-error messages?  (capture them with:  "app  >& filename", I guess).
-Does it maybe have a config file where the DISPLAY is set that overrides
-the environment, as Wine does, FI?
+bash:
+export DISPLAY=machine.you.want_to_display.on:0.0
+tcsh:
+setenv DISPLAY machine.you.want_to_display.on:0.0
+
+If you use some other shell, see the man page for it, or at least tell
+us what it is.
 
 Lawson
+
 --
 ---oops---
-
 
 
 
