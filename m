@@ -1,43 +1,31 @@
-From: Mike Dresser <mdresser_l@windsormachine.com>
-Subject: Re: strange freeze
-Date: Tue, 13 May 2003 13:06:17 -0400 (EDT)
+From: Pawan Deepika <pawan_deepika@yahoo.com>
+Subject: New to device drivers!!
+Date: Tue, 13 May 2003 11:17:36 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0305131300000.1525-100000@router.windsormachine.com>
-References: <200305131134.12197.eric@cisu.net>
+Message-ID: <20030513181736.76142.qmail@web41613.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305131134.12197.eric@cisu.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 13 May 2003, Eric wrote:
+Hi all,
 
-> How can you exclude the power supply just becuase no-one else in the office
-> has the same problem? Unless I mis-understood you the power supply should
-> still be held in suspect. If you can get away with it, swap out the PS with
-> someone elses in the office or bring one from home. Is it a terribly
-> low-wattage supply 150-200? Try unpluging one of the disks when botting to
-> the other OS, its not much of a power drai, but its still something.
+ I am new to device drivers. Can anyone suggest me
+some simple network driver examples(which deal with
+real interface)to start with. What H/W details I need
+to know to write a driver on my own.
 
-Indeed, I've got a system at the office running W2k that would freeze, p4
-2.4.
+Any help in this regard is highly appreciated.
 
-I even brought over Linux on a spare hard drive, and booted off that,
-still locked up.(ruling out software)
+Thanks & regards,
+Deepika
 
-Replaced all the hardware with spares, and tried again.  Machine still
-locked up same as before.
-
-Turns out that it looks like the battery backup is likely defective,
-causing voltage spikes/drops that are locking up the system.
-
-Next time I grab the Fluke and leave that plugged into the output of
-the UPS overnight!
-
-Mike
-
+__________________________________
+Do you Yahoo!?
+The New Yahoo! Search - Faster. Easier. Bingo.
+http://search.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
