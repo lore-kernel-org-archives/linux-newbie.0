@@ -1,48 +1,36 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: Locate Vs Find
-Date: Wed, 01 Dec 2004 21:07:51 -0800
-Message-ID: <41AEA327.6010007@bcgreen.com>
-References: <20041122165244.62360.qmail@web52904.mail.yahoo.com>
+From: SOTL <sotl155360@earthlink.net>
+Subject: Checking File System
+Date: Sun, 5 Dec 2004 21:24:31 -0500
+Message-ID: <200412052124.31027.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041122165244.62360.qmail@web52904.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Locate only finds files by looking up the name in a database.
-Once a day it regenerates the database.
+Hi All
 
-If you're just looking for a filename, and you don't mind it being
-anywhere up to 24 hours old (sometimes more, but rarely), then
-ocate is a FAR faster way to do things.
+I have an old system that I am trying to boot that will not boot.
 
+As originally setup there were two HD in the system.
+One with data and one with the operating system.
 
-Find, on the other hand can do WAY more tests than just
-the filename, and it can do way more things with a file it
-finds than just print it.   The find command syntax is
-actually a primative programming language. and you can
-take actions based on the file type file syatem type
-mtime, ctime atime  file size, owner etc. etc.
+The HD with data has long since been removed and current location is unknown.
 
-Most, recent, versions of find can even tar up certain
-matched files.
+The system boots to Finding Modular dependencies: OK
+Checking file systems
+Couldn't find matching file system: Label=/mnt/Snoopie
+This was the name of the old second HD.
 
-'Man find` for nore info on what find is capable of.
+I have removed LABEL=/mnt/Snoopie from stab.
+I know there is at least one other place I need to remove this LABEL from.
 
+Does anyone have any suggestions where that may be.
 
-Ankit Jain wrote:
-> Which is more efficient? /if both perform the same
-> work and are not different then why shoudl we have 2 ?
-
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-      the jewel within each person and bringing it to light.
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
