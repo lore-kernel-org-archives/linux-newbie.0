@@ -1,45 +1,33 @@
-From: Joseph Jackson <skoidat@lvcm.com>
-Subject: Re: hiding my hostname
-Date: Wed, 07 May 2003 14:23:22 -0700
+From: Chris Rose <offline@shaw.ca>
+Subject: LDAP address books
+Date: Wed, 07 May 2003 17:17:28 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EB9794A.1040609@lvcm.com>
-References: <20030507030656.94940.qmail@web10701.mail.yahoo.com>
+Message-ID: <3EB99408.90102@shaw.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Jesse Armand <matrix_rev2002@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Sorry you can't do it.  The machine you are connecting to will ALWAYS 
-know the machines ip address of the machine you are connecting from.  
+I'm trying to centralize all my personal e-mail.  I've gotten an IMAP 
+server working, but now i want to set up an ldap server so that my 
+addresses will be similarly available.  The thing is, i can't seem to 
+find a setup howto for ldap that doesn't seem - as far as i'm able to 
+interpret the wordings - that i run a company.  Most of the contacts 
+that i want in the directory won't have any affiliation with me other 
+than being in my addressbook.  I'm hoping that someone here has set up 
+ldap - or something comparable - for this purpose, and can set me up 
+with a solution for it...
 
-Jesse Armand wrote:
+Thanks.
 
->I want to find out how to hide my hostname or IP
->address,
->from viewing by other people by using who, finger, or
->w, 
->while i was connected to a server via remote login 
->(like ssh or telnet).
->
->can anybody help me ?
->
->
->__________________________________
->Do you Yahoo!?
->The New Yahoo! Search - Faster. Easier. Bingo.
->http://search.yahoo.com
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
->
->  
->
-
+-- 
+Chris R.
+======
+np: Evanescence - 2002 Demo CD(10) - Before The Dawn
+------
+http://offline.pointclark.net/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
