@@ -1,102 +1,40 @@
-From: linux-newbie-owner@vger.kernel.org
-Subject: BURSLU  =?ISO-8859-1?Q?=20E=D0=DDT=DDM?=  =?ISO-8859-1?Q?=20OLANA=D0I?= 15
-Date: Sat, 13 Sep 2003 10:42:48 +0300
+From: Marco Calistri <ik5bcu@tin.it>
+Subject: A "subject" rule for procmail
+Date: Sat, 13 Sep 2003 22:41:35 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S262076AbTIMHnA/20030913074300Z+6119@vger.kernel.org>
+Message-ID: <XFMail.20030913224135.ik5bcu@tin.it>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-                                =20
-LEFKE AVRUPA =DCN=DDVERS=DDTES=DD
-(KIBRIS B=DDL=DDM VAKFI)
-Y=D6K taraf=FDndan tan=FDnan, Avrupa ve Amerika'da ge=E7erli diplomaya =
-en kaliteli
-ve en uygun har=E7larla sahip olma olana=F0=FD ...
-=20
-=D6SS S=FDnav=FDndan 185 ve =FCzeri ham puan alm=FD=FE =F6=F0renciler 4=
- y=FDll=FDk lisans
-programlar=FDna, 160 ve =FCzeri ham puan alan =F6=F0renciler ise 2 y=FD=
-ll=FDk meslek
-y=FCksek okullar=FDna kay=FDt yapabilirler.
+Hello I am receiving some spam with the following subject topic:
 
-=20
-      L=DDSANS PROGRAMLARI :
+Sildenafil
 
-=DDKT=DDSAD=DD VE =DDDAR=DD B=DDL=DDMLER FAK=DCLTES=DD
-* =DD=FEletme
-* Ekonomi
-* Pazarlama
-* Kamu Y=F6netimi
-* Uluslararas=FD =DDli=FEkiler
-* Bankac=FDl=FDk ve Finans
-* Bilgisayar ve Enformasyon Sistemleri
-=46EN-EDEB=DDYAT FAK=DCLTES=DD
-* =DDngilizce =D6=F0retmenli=F0i
-* T=FCrk Dili ve Edebiyat=FD
-* Tarih
-TARIM B=DDL=DDMLER=DD TEKNOLOJ=DDLER=DD FAK=DCLTES=DD
-* Bah=E7e Bitkileri =DCretimi ve Pazarlamas=FD
-* Tar=FDm =DD=FEletmecili=F0i
-M=DDMARLIK M=DCHEND=DDSL=DDK FAK=DCLTES=DD
-* Mimarl=FDk
-* =DD=E7 Mimarl=FDk
-* Elektrik ve Elektronik M=FChendisli=F0i
-* =DDn=FEaat M=FChendisli=F0i=20
-* Bilgisayar M=FChendisli=F0i
-=DDLET=DD=DE=DDM B=DDL=DDMLER=DD FAK=DCLTES=DD
-* Gazetecilik
-* Radyo, TV, Sinema
-* Halkla =DDli=FEkiler ve Reklam
-* G=F6rsel =DDleti=FEim Tasar=FDm=FD
+so I tried to add the following rule into my .procmailrc file:
 
-=20
-      MESLEK Y=DCKSEK OKULU:
+ :0
+       * ^Subject:.*Sildenafil
+       spam/.   
 
-* =DD=FEletmecilik
-* Bilgisayar programc=FDl=FD=F0=FD                                     =
-           =20
-* =DDn=FEaat
-* Halkla ili=FEkiler ve Tan=FDt=FDm
-* G=F6rsel =DDleti=FEim
-* TV Yap=FDm=FD ve Y=F6netimi
-=20
-=20
-      Y=DCKSEK L=DDSANS:
+but only if the subject is exactly Sildenafil then message is moved to my spam
+folder,infact if subject is a bit diffferent as for example:
 
-* =DD=FEletme (MBA)
-* Uluslararas=FD =DDli=FEkiler (MA)
-* =DDngilizce =D6=F0retmenli=F0i (MA)
-* Mimarl=FDk (MA)
-* =DDn=FEaat M=FChendisli=F0i (MSc)
-* Elektrik ve Elektronik M=FChendisli=F0i (MSc)
-* Bilgisayar Bilimleri (MSc)
-* Bilgisayar M=FChendisli=F0i (MSc)
+RE:Sildenafil Citrate
 
-=20
-=20
-YURT DI=DEI =D6ZEL E=D0=DDT=DDM OLANAKLARI :
-SOAS =DCniversitesi, Luton =DCniversitesi, Westminister =DCniversitesi,
-Hudersfield =DCniversitesi (=DDngiltere), ESC Rouen =DCniversitesi (Fra=
-nsa).
-=20
-BURS OLANAKLARI :
-Emniyet mensubu, T=FCrk Silahl=FD Kuvvetleri mensubu ve =F6=F0retmen =E7=
-ocuklar=FDna  =20
-% 50, ikinci dereceden akrabalar=FDna % 33, karde=FElerden birine % 50 =
-ve
-ayr=FDca akademik ba=FEar=FD bursu, sporcu bursu ve  destek bursu.
-                                         =20
-                                                     =20
-=DDstanbul Kay=FDt Ofisi : =DE=DD=DEL=DD / =DDSTANBUL.
-Tel : 0212 219 83 50 (9 Hat)       E-Mail : bursluegitim1@superposta.co=
-m
+then message pass through the inbox without any filtering.
+
+How can I set the rule into procmailrc to block ALL Sildenafil topic subject ?
+
+Thanks
+
+Regards,Marco
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
