@@ -1,51 +1,80 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: grub doesn't load
-Date: Fri, 18 Jun 2004 21:11:01 -0500 (CDT)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Wireless Mouse/ USB selection
+Date: Sat, 19 Jun 2004 09:47:39 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406182100400.1112@debian-emach>
-References: <7ca9db7c8818.7c88187ca9db@homemail.nyu.edu>
+Message-ID: <200406190947.40159.pa3gcu@zeelandnet.nl>
+References: <20040619005813.67483.qmail@web14812.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <7ca9db7c8818.7c88187ca9db@homemail.nyu.edu>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040619005813.67483.qmail@web14812.mail.yahoo.com>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Steven Ackerman <ackerman_steven@yahoo.com>
+Cc: LinuxNewbie <linux-newbie@vger.kernel.org>
 
-On Fri, 18 Jun 2004, Anshuman Singh Rawat wrote:
-
-> I have a dual boot system with grub as the loader.
-> I wanted to change the default from WinXP to linux.
-> So I changed the 'default' from 1 to 0 in grub.conf.
-> 1 = Win (the second entry in grub.conf. linux was the first).
+On Saturday 19 June 2004 02:58, Steven Ackerman wrote:
+> Please see inline comments:
 >
-> Now the big problem is grub doesn't load any of the 2 OSes. Infact,
-> it doesn;t even reach that startup screen. It just freezes!!
+> --- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
+> > > I have just installed Mandrake 9.1. I chose tty0
+> > > (com1?
+> >
+> > I am sure you mean /dev/ttyS0 not /dev/tty0
 >
-> Any clue how to fix this without a rescue disk (this PC doesn't have a floppy drive) ?
+> I guess so. Whatever it was doesn't really matter. It
+> wasn't right. I believe it was the linux equivelant of
+> Com port 1. You would probably know better than I.
 >
-> A quick help will really be appreciated!
+> > > I have installed M9.1 previously and I believe
 
-One word: Knoppix.  Well, actually a few more.  Yes, Knoppix is a rescue
-disk of sorts, so I've given an answer you don't want (because I don't
-know any other).  With a Knoppix bootable CD, you could get a pretty full
-Linux gui you could then use to locate and edit the file you changed, in
-hopes that changing it back would fix the problem.  Note that I have
-little expereince with grub, so I'm only guessing changing it back would
-fix things.  DamnSmallLinux could work too, and is a much smaller
-download.  This all presumes you can somehow access the 'net and download
-and burn a CD though.  I don't know how possible that might be for you
-with a non-working computer.  If you do manage to do this, note that
-you'll need to get to a root console and mount your machine's HD manually:
-the automated method Knoppix gives you (i.e., an icon on the desktop)
-mounts the drive read only.  You need it mounted read/write, so the manual
-method from a root console is the way to do it.  Don't know offhand how
-DamnSmall mounts (i.e., whether read only or not).  Hope that helps.
+I did some searching on google for your computer, i could not find any site 
+which actually stated what protocol the mouse use's, however my impression is 
+that it is a normal ps2 mouse.
 
-James
+I would do the following;
 
-PS  Then, there are things like Tom's rtboot (or whatever it's called),
-that run from floppy.  A smaller download yet, but no nice gui.
+Start mandrake into init 3
+I cant remember which bootloader mandrake 9.1 used, if its lilo you need to 
+type the name of the boot image and 3 after it asin;
+linux 3
+replace linux with the name of the boot image.
+If its grub i belive all you need to do is select the boot image with the 
+arrow up/down keys and then type in 3 in the "options" box.
+Hit enter of course.
+
+After booting login as root and type 'mouseconfig'
+Select "Generic PS2 Wheel Mouse"
+That takes care of the symlinks in /dev/
+
+Your XF86Config(-4) file found in /etc/X11 may also need editing, a typical 
+entry for a wheel mouse is;
+
+Section "InputDevice"
+        Identifier  "Mouse1"
+        Driver      "mouse"
+        Option       "Corepointer"
+        Option      "Device" "/dev/psaux"
+        Option      "Protocol" "IMPS/2"
+        Option       "Buttons" "5"
+        Option      "Emulate3Buttons" "off"
+        Option      "ZAxisMapping" "4 5"
+EndSection
+
+After all that type init 5 to start X and see what happens.
+
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
