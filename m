@@ -1,83 +1,57 @@
-From: "Riley Williams" <Riley@Williams.Name>
-Subject: RE: Slack9.0/Atapi-ZIP250???
-Date: Mon, 30 Jun 2003 19:37:10 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Switching between KDE and GNOME
+Date: Mon, 30 Jun 2003 11:50:54 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BKEGKPICNAKILKJKMHCAGEDPEIAA.Riley@Williams.Name>
-References: <20030630065631.A148@lnx2.w8mch.ampr.org>
+Message-ID: <5.1.0.14.1.20030630114417.02777b38@celine>
+References: <Pine.LNX.4.43.0306300946190.20894-100000@perpugilliam.csclub.uwaterloo.ca>
+ <Pine.LNX.4.43.0306300946190.20894-100000@perpugilliam.csclub.uwaterloo.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030630065631.A148@lnx2.w8mch.ampr.org>
+In-Reply-To: <3F006B81.9020201@vip.cybercity.dk>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: haltec@kvinet.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi Hal.
+I don't run either KDE or Gnome here, so I can help only a little with the 
+DEbian parts.
 
- >>> This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
- >>> internal, as /dev/sda4, as long as I insmod ide-scsi.o..
- >>> (That file also installs sd_mod.o )..
+Assuming you are using the apt-* tools for package management, you probably 
+want to apt-get install kdebase . (At least this is right for Sid; Woody is 
+probably the same in this respect.) If its installer is any good, it will 
+either ask appropriate questions to get you to replace Gnome with KDE, or 
+it will do so without asking (less likely but possible). Once the base 
+stuff is installed, you'll need to install appropriate specific 
+applications for kde.
 
- >> You're doing this wrong. I have the Atapi Zip100 internal. It 
- >> does not need the ide-scsi.co. Just set it up like this:
- >>
- >> /dev/hdc4       /zip            auto    noauto,user 0 0
- >>
- >> You only need the scsi stuff when using the external type Zip 
- >> (which I also have). 
+This procedure will leave all the Gnome and Sawfish stuff on you hard disk 
+(good thing too, since you are quite likely to be running apps that use the 
+GTK libraries), but will probably work to get rid of them as X defaults. If 
+not, once you have the Debian part handled, anyone who knows Gnome and KDE 
+should be able to help you with further specifics.
 
- > Greetings and - Gad Zooks.. Where did you discover the above?
- > Everything I've read about ZIP drives say they _must_ use scsi
- > emulation..
+BTW, I really hope you are not running kernel 2.4.1 ... you are more likely 
+to be running 2.4.19 or 2.4.20, if your installation is reasonably current 
+and you remembered to update from the limited installer kernel.
 
-SCSI emulation is needed for PARALLEL PORT and SCSI INTERFACE zip
-drives only - and NOT for ATAPI IDE zip drives - UNLESS you included
-the string "hdc=ide-scsi" as a kernel parameter. If you did that,
-then you told the kernel to use the ide-scsi driver to access the
-drive in the secondary master IDE position independent of whether
-such was necessary or not.
+At 06:55 PM 6/30/2003 +0200, Flemming Greve Skovengaard wrote:
+>Dan Zlotnikov wrote:
+>>Hello everyone, and good morning where appropriate.
+>>I'm currently running GNOME/Sawfish, but have decided to switch to KDE.
+>>This is proving to be somewhat beyond me. Can anyone point me in the right
+>>direction with some really short steps and using two-syllable words at
+>>most?
+>>Running Debian/Woody kernel 2.4.1
+>>Thanks!
+>>Dan
+[...]
 
-I bought my IDE ZIP-250 drive when the 2.3 kernel series was the
-current development series, and I've always used the standard IDE
-driver to access it. The only difference from your setup is that
-I have mine set to use hdc1 rather than hdc4 since I normally buy
-the MAC formatted zip-250 disks rather than the PC formatted ones
-as they are 10% cheaper locally. Since I always reformat them as
-ext3 the original format is irrelevant to me.
+>If you already have KDE installed you can run 'xwmconfig'.
+>You can now choose xinitrc.kde (if you have KDE installed).
+>If you don't have KDE installed, I can't help (not yet anyway).
 
-Indeed, it was only when I bought a PC formatted one due to the
-shop being out of MAC formatted ones that I discovered that the
-PC formatted ones use hdc4 whereas the MAC formatted ones use hdc1
-instead !!!
 
- > Adding the above to /etc/fstab and then mounting /dev/hdc4 on
- > /zip worked with Slack9.0/2.4.20 but _not_ with Slack8.0/2.4.18,
- > which required ide-scsi.o.. All disks formatted with ext2..
 
-That is either a configuration error with Slack8.0 or one of the
-bugs in the 2.4.18 kernel that was fixed by 2.4.20.
-
- > I don't think I'll ever learn a thing about computers. Thanks
- > for the solution. Now I hope it'll work with NFS.. Appreciate!!
-
-The best thing to learn from this saga is simply that if a device
-(other than a CD-Writer or DVD-Writer) is labelled as IDE, then one
-should expect to use the IDE driver to access it. The writers are
-excluded because the cd writing software all expects to be talking
-to a SCSI writer, and in general won't talk to an IDE one directly,
-so one has to use the ide-scsi driver to let it talk to them. Note
-that the IDE CD-writers and IDE DVD-writers can all be successfully
-READ from using the IDE driver, and this problem is entirely due to
-the cd writing software, not to the drives themselves.
-
-Best wishes from Riley.
----
- * Nothing as pretty as a smile, nothing as ugly as a frown.
-
----
-Outgoing mail is certified Virus Free.
-Checked by AVG anti-virus system (http://www.grisoft.com).
-Version: 6.0.493 / Virus Database: 292 - Release Date: 25-Jun-2003
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
