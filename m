@@ -1,37 +1,31 @@
-From: Peter <pfheiss@philonline.com>
-Subject: PPP in Slackware
-Date: Mon, 31 Mar 2003 14:36:55 +0800
+From: Andrew Langdon-Davies <ald2@arrakis.es>
+Subject: adduser
+Date: Mon, 31 Mar 2003 10:20:33 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303310637.h2V6atH03122@philonline.com>
+Message-ID: <3E87FA51.3060100@arrakis.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+Mandrake 9.0
 
-In Slackware 8.0 it seems to me that I can have only one ISP 
-installed at a time unlike in RedHat where I have 
-3 different ISPs to be called with /sbin/ifup ppp#.
+control center>system>users
+"Cannot lock user lib,
+file /etc/ptmp or /etc/gtmp exist".
 
-I read all the HOWTO on ppp and can't find a reference.
+Yes, both exist.
 
-What would I have to do in Slackware to be able to access more then one ISP 
-w/o doing pppsetup first every time I change the ISP ?
+clm (as root)>
+adduser (or useradd, the result is the  same. Which command is preferred?)
+"vipw lockfile (/etc/ptmp) is present!"
 
+I cannot find an explanation in the manual.
 
-Thanks & regards
-
--- 
-Peter
-
-
-
-
-
-
+TIA
+Andrew
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
