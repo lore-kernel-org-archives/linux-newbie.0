@@ -1,39 +1,40 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: striking X server
-Date: 02 Nov 2002
+From: Chris Rose <offline@shaw.ca>
+Subject: MySQL not getting along with MovableType in RH8
+Date: Sat, 02 Nov 2002 13:20:45 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211021744.gA2HiTPq017274@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <000001c282ad$5319fb80$4b01a8c0@deadbox>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
 
-On a perfectly well running installation (Mdk 8.2), all of a sudden
-the X server - installed as the "-4" version - does not want to start
-up any more, quits with "font 'fixed' not found".  Bizarre. The attempt
-to re-install the basic XFree86-fontfile packages (for shure they _had_
-been installed, and the machine _was_ running with this X the day
-before, but a rpm-check said "package[s] not installed": bizarre too)
-results in a lot of errro-messages, all claiming "not enopugh space on
-device". Puzzled control gives indeed, the 2 (!) GB root-"/" partition
-being "100 % used" - ultimate bezarrerie, as quite lately before, it
-was checked (precisely in view of an eventual, and quite bulky addition
-of Java) and found filled up to 73 % only; but nothing, _absolutely_
-nothing had been changed, re- or newly installed since.
+I'm trying to get MovableType 2.51 installed on my Redhat 8 server at
+the moment, and I'm running into a problem with the MySQL interface.
+When I try to run mt-load.cgi I get the following error output:
 
-AND X had run perfectly as usual at the last boot before.
+Loading initial data into system...
+Loading database schema...
 
-?!?
+   Loading blog...
 
-(And note that the machine boots up well into command line mode as
-usual; all filesystemchecks therewith indicate "clean", etc.)
+An error occurred while loading data:
 
-:(((
+Unknown column 'blog_ping_blogs' in 'field list
 
-// Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-11-02
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+A fellow on the MovableType support forum suggested that I might have an
+"outdated schemas/mysql.dump file", and that I update it with the latest
+distribution, but I don't know how to go about doing that, since when I
+try to apt-get install mysql, I'm informed that I already have the
+latest version offered by Redhat. (yes, I have apt-rpm installed)
+
+Any suggestions, folks?
+
+
+Chris R.
+======
+Listening to the sound of silence
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
