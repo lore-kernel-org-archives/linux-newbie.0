@@ -1,35 +1,34 @@
-From: Peter <pfheiss@philonline.com>
-Subject: MC Not Opening HTML Files
-Date: Tue, 27 May 2003 17:03:21 +0800
+From: James Miller <jamtat@mailsnare.net>
+Subject: USB devices, mount points and fstab
+Date: Tue, 27 May 2003 21:04:43 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030527090326.71661103AE@pfheiss>
+Message-ID: <Pine.LNX.4.53.0305272052130.1059@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-Hi,
+Well, something I never thought would happen to me is happening: I have
+more than 1 USB drive hooked to my computer!  That's because I just bought
+one of those 6 in 1 card readers for flash memory cards.  Prior to that, I
+had only 1 external USB hard drive I would hook to the computer from time
+to time.  It seems that I've got at least a major part of the issue of
+getting the computer (Libranet [Debian variant] with 2.4.19 kernel) to
+recognize the new drive out of the way: like with my other external hard
+drive, the flash disks get recognized as scsi drives.  They can therefore
+be found at /dev/sdxx, and assigned mount points from there.  But I am a
+little confused about how this relates to fstab.  I put an entry there
+some time ago for my external HD, which I always mounted at /usb-hd as
+/dev/sda1.  But now that I have this reader, it will not always be found
+at /dev/sda1.  Thus, my question: beyond doing a fully manual mount (e.g.,
+mount /dev/sdxx /mnt/flash-cf) of each drive, how should this be done?  Is
+there some simpler way of mounting these USB drives?  I can't think of an
+fstab entry that would work.  Advice on how to more easily mount my USB
+drives will be appreciated.
 
-In RH7.3 for quite some time suddenly mc, my main file manager, would not open 
-html files any longer within xterm, however, still from the console. Now I 
-discovered that if I change in ~/.mc/bindings the line  "Open=if [ x$DISPLAY = 
-x ];" to "Open=if [ x$DISPLAY = x:0.0 ];" all works well again.
-
-I have never looked at this file since RH5.2 and mc always opened html files. 
-What could have caused such a change that now apparently DISPLAY has a 
-different setting? It could be that this change coincided with an upgrade of 
-7.3 I had made, which incidentally had a faulty entry in /etc/sysconfig/syslog 
-causing logrotate to abort, yet I am not so sure about it.
-
-Have others had similar experiences?
-
-Regards
-
--- 
-Peter
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
