@@ -1,34 +1,37 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+From: cr <cr@orcon.net.nz>
 Subject: Re: Confirmation for subscribe linux-kernel
-Date: Tue, 19 Aug 2003 11:27:19 +0930
+Date: Tue, 19 Aug 2003 18:18:19 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200308191127.19411.Adam@Luchjenbroers.com>
+Message-ID: <200308190747.h7J7lQHi028049@dbmail-mx2.orcon.co.nz>
 References: <004e01c365db$4743ba50$2b010a0a@MCABCORADM043>
-Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <004e01c365db$4743ba50$2b010a0a@MCABCORADM043>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: 'Linux-Newbie list' <linux-newbie@vger.kernel.org>
 
-On Tuesday 19 Aug 2003 8:21 am, Jaime Santana wrote:
+Umm.   [Checks date].     Nope, it isn't April 1st in any time zone, is it?  
+;)
+
+cr
+
+
+On Tuesday 19 August 2003 10:51, Jaime Santana wrote:
 > It seems that someone tried tu subscribe "linux-newbie@vger.kernel.org"
 > to that list.
-
-The walls of spam that would have resulted if they succeeded :P
-
-Looks like it's been prevented.
-
--- 
-"They're just using religion as an excuse to be really crappy to each other." 
-- Dave Lister, Red Dwarf
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
-
+>
+> Jaime.
+>
+> -----Mensaje original-----
+> De: linux-newbie-owner@vger.kernel.org
+> [mailto:linux-newbie-owner@vger.kernel.org] En nombre de Anshuman S
+> Rawat
+> Enviado el: Lunes, 18 de Agosto de 2003 17:48
+> Para: Linux-Newbie list
+> Asunto: Re: Confirmation for subscribe linux-kernel
+>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
