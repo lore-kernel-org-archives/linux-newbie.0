@@ -1,55 +1,51 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Can't boot :(
-Date: Thu, 24 Jul 2003 14:27:30 +0200
+Subject: Re: Multi-kernel in grub
+Date: Thu, 24 Jul 2003 14:32:46 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307241427.30321.pa3gcu@zeelandnet.nl>
-References: <NGBBLGNMLJPKEPIFPKLHKEABGAAA.tfletcher@netfactoriel.com>
+Message-ID: <200307241432.46851.pa3gcu@zeelandnet.nl>
+References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu> <200307230824.35748.pa3gcu@zeelandnet.nl> <1059016812.21561.72.camel@localhost.localdomain>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <NGBBLGNMLJPKEPIFPKLHKEABGAAA.tfletcher@netfactoriel.com>
+In-Reply-To: <1059016812.21561.72.camel@localhost.localdomain>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: tfletcher@netfactoriel.com, linux-newbie@vger.kernel.org
+To: travis@wsor.net, linux-newbie@vger.kernel.org
 
-On Thursday 24 July 2003 11:37, Tim Fletcher wrote:
-> Hi,
+On Thursday 24 July 2003 05:20, Travis Osterman wrote:
+> I thank everyone again for their patience with me.  I have tried to
+> methodically note everything I have done during the kernel compilation
+> below.  Everything seems fine until the make install step.
+
+The copy the image to /boot by hand and update your bootloader config file 
+accordingly and if lilo is used rerun lilo. I belive you mentioned grub tho'.
+
+> make modules // no errors
+> make modules_install // no errors
+> make install // errors, see below
 >
-> i have just installed a new Debian GNU/Linux distrib on my i386 PC. i had
-> to move the machine by car to it's new location, and when i plugged it in,
-> all i got at boot time was
-> LI
-> and it just hangs there!
-> the machine worked fine before i moved it. i was very carefull with the box
-> as it was being moved so, i'm rather suprised that it's not working.
+> warning: kernel is too big for standalone boot from floppy
+> sh -x ./install.sh 2.4.20-first-try bzImage
+> /usr/src/linux-2.4.20-8/System.map ""
+> + '[' -x /root/bin/installkernel ']'
+> + '[' -x /sbin/installkernel ']'
+> + exec /sbin/installkernel 2.4.20-first-try bzImage
+> /usr/src/linux-2.4.20-8/System.map ''
+> No module aic7xxx found for kernel 2.4.20-first-try
+> mkinitrd failed
+> make[1]: *** [install] Error 1
+> make[1]: Leaving directory `/usr/src/linux-2.4.20-8/arch/i386/boot'
+> make: *** [install] Error 2
 >
-> could this be something else than a HD problem? could it be software?
+>   Will these errors cause problems if I bypass the 'make install' and
+> copy files to my /boot dir?  Thanks again for the help.
 
-The fact that you moved the computer by car has absolutly no bearing on the LI 
-problem, this is a very common and well documented problem.
+If you dont need the aic7xxx scsi driver no.
 
-Its mostly caused by installing anew kernel and not running the bootloader 
-properly, in most cases this is caused by not rerunning lilo after you 
-installed the new kernel and edited /etc/lilo.conf .
-
-If you are using lilo then here is what the lilo README says about "LI".
-
-   LI   The first stage boot loader was able to load the second stage boot
-    loader, but has failed to execute it. This can either be caused by a
-    geometry mismatch or by moving /boot/boot.b without running the map
-    installer.
-
-Make sure you have a valid stanza in /etc/lilo.conf for the new kernel.
-Run /sbin/lilo -t to test if all is ok, if all ok the /sbin/lilo to install 
-properly. With errors correct them accordingly the issue /sbin/lilo .
-
-> I would realy appreciate any help you could offer me
 >
-> Thanks and have a nice day
->
-> --Tim
+> -- Travis
 
 -- 
 If the Linux community is a bunch of theives because they
