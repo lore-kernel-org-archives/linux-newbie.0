@@ -1,25 +1,34 @@
-From: k3rnel@freeslack.com
-Subject: Re: Redhat 9 Can't Compile a Kernel??
-Date: Thu, 24 Apr 2003 17:11:25 -0400 (EDT)
+From: Chris Rose <offline@shaw.ca>
+Subject: Bad blocks on my hard drive
+Date: Thu, 24 Apr 2003 15:57:15 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0304241710300.2396@freeslack.com>
-References: <200304222243.19905.1stflight@ameritech.net> <03042312584700.02747@unix.pa3gcu>
+Message-ID: <000201c30aac$77ea6ad0$4b01a8c0@t9397.tjem.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <03042312584700.02747@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: pa3gcu <pa3gcu@zeelandnet.nl>
-Cc: 1stFlight <1stflight@ameritech.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "'Linux-Newbie (Linux Newbie)'" <linux-newbie@vger.kernel.org>
 
-Well, cc has some known issues...
-Try gcc ?
+ 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
+In Redhat 9's install, i am choosing to format and test my partitions.  I find that - against all odds - i have bad blocks on one of the partitions.  Now what?  RH's install summarily reboots the system, giving me no idea how to go about repairing/working around the problem.  So what can i do?  How do i mark these blocks, or otherwise repair the issue?
 
-||=========||
-|| -k3rnel ||
-\\-_-_-_-_-||
+Chris R.
+======
+np: Evanescence - Fallen (Retail)(6) - Tourniquet
+- ------
+http://offline.pointclark.net/
+
+-----BEGIN PGP SIGNATURE-----
+Version: PGP 8.0
+
+iQA/AwUBPqhdu8FBXq9qNmWaEQINPQCgm5yJHig1LYbiHb5CY/RzageovU0An2nE
+Xxc6ItY7ULVTufxfTwp0J46u
+=gWYM
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
