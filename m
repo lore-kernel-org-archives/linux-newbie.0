@@ -1,45 +1,43 @@
-From: wa4chq@netscape.net (neil t)
-Subject: RE: lilo questions and help
-Date: Thu, 28 Nov 2002 20:10:16 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: lilo questions and help
+Date: Fri, 29 Nov 2002 06:43:03 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E5D25FA.7A07315C.0006BEFC@netscape.net>
+Message-ID: <0211290643030C.00286@unix.pa3gcu>
+References: <3E5D25FA.7A07315C.0006BEFC@netscape.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3E5D25FA.7A07315C.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: dashielljt <dashielljt@gmpexpress.net>
+To: neil t <wa4chq@netscape.net>, dashielljt <dashielljt@gmpexpress.net>
 Cc: linux-newbie@vger.kernel.org
 
-Apologizes to the list about the Ham radio q/a
-A google search for cw/morse abbreviations would be a good start.
-Email me direct for more info.
-Cheers 
-Neil t.
+On Friday 29 November 2002 01:10, neil t wrote:
+> Apologizes to the list about the Ham radio q/a
+> A google search for cw/morse abbreviations would be a good start.
+> Email me direct for more info.
+> Cheers
+> Neil t.
 
-ashielljt <dashielljt@gmpexpress.net> wrote:
+A very good start would be;
 
->Where would a list of those cw shorthand abbreviations be located?  I'm
->thinking about getting into amateur radio myself but will probably go
->through the hdndy hams program to do it.
->
->Jude <dashielljt(at)gmpexpress-dot-net>
->
->
+ http://www.arrl.org
 
+>
+> ashielljt <dashielljt@gmpexpress.net> wrote:
+> >Where would a list of those cw shorthand abbreviations be located?  I'm
+> >thinking about getting into amateur radio myself but will probably go
+> >through the hdndy hams program to do it.
+> >
+> >Jude <dashielljt(at)gmpexpress-dot-net>
 
 -- 
-Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-
-
-
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
