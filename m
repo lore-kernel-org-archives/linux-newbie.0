@@ -1,60 +1,50 @@
-From: Wladimir Foo <wfoo@linuxvoodoo.com>
-Subject: Re: how do I make a bootable cd with cdrecord
-Date: Sun, 14 Jul 2002 09:22:12 -0400
+From: Jos Lemmerling <jos@lemmerling.net>
+Subject: Re: Something funny in Mail
+Date: Sun, 14 Jul 2002 16:58:48 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207140922.12133.wfoo@linuxvoodoo.com>
-References: <20020714130543.27462.qmail@web21006.mail.yahoo.com>
-Reply-To: wfoo@linuxvoodoo.com
+Message-ID: <Pine.LNX.4.21.0207141653270.2281-100000@orthanc.lemmerling.net>
+References: <200207140215.g6E2Fpc01975@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020714130543.27462.qmail@web21006.mail.yahoo.com>
+In-Reply-To: <200207140215.g6E2Fpc01975@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Ramzez <r4mz3z@yahoo.es>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Here you go. A complete, easy to follow document on how to get it all d=
-one.
+On Sun, 14 Jul 2002, Peter wrote:
 
-http://linuxworks.com.au/redhat-installer-howto.html
+> Hi,
+> 
+> 
+> for more than 2 years when I give the <italic>mail</italic> command I would 
+> get the following message first: Unknown command: "Albert"; now all of a 
+> sudden I get: Unknown command: "Jim".
+> 
+> 
+> After that command proceeds as expected. So it's no bother I now just wonder 
+> how that happens. Both Albert and Jim are friends of mine.
+
+Look into your '.mailrc' in your home-directory; it's probarly containing
+the names Albert and Jim. 
+
+I've tried some and i got this:
+bash-2.05a$ mail
+Unknown command: "jopie"
+No mail for jos
+
+On that moment the file '.mailrc' was containing 'jopie'. When i deleted
+the name it works fine again.
 
 
-On Sunday 14 July 2002 09:05 am, Ramzez wrote:
-> HI, I like use cdrecord to save or burn my info; but
-> Can you write me,
-> how do I make a bootable cd with this app ??
->
-> I need this help because I have the iso images of RH
-> 7.3 and need that the cd result be bootable.
->
-> A lot of thanks and I'll waiting  your answers.
->
->
-> _______________________________________________________________
-> Yahoo! Messenger
-> Nueva versi=F3n: Webcam, voz, y mucho m=E1s =A1Gratis!
-> Desc=E1rgalo ya desde http://messenger.yahoo.es
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+HTH
 
---=20
-Linux hardware help		Linux News
-Searchable HOWTO database	Linux gaming=20
-24-hour technical support	Linux Systems=20
-Linux compatible hardware/sales
-http://www.linuxvoodoo.com    =20
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
-perl -le '$_=3D"75>42833<33.=3D3?,13406577073890:;90833<330690<3!!";tr[=
-0-?][=20
-YXOUIWLVETHDCNM];print'
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
