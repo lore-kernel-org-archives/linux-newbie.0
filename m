@@ -1,55 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: how to assess occupied space
-Date: Sat, 14 Sep 2002 22:13:28 -0700
+From: wa4chq@netscape.net (neil t)
+Subject: re: start error
+Date: Sun, 15 Sep 2002 08:07:30 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020914220401.0227f0a0@celine>
-References: <200209150354.g8F3sYPR007105@pyxis.wanadoo.be>
-Mime-Version: 1.0
+Message-ID: <5F6623DB.485F7029.0006BEFC@netscape.net>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209150354.g8F3sYPR007105@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Revobild / Heimo Claasen <revobild@revobild.net>, linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-The command you want for checking directory sizes is "du". Its man page 
-will teach you the details, but as a simple example, the command
+hey bill
+I am not sure if this is any help, but when I tried installing
+a simple but effective linux called 'basiclinux', I had problems
+with startx too.  I found I was getting an error message like 
+yours.  (I don't remember it exactly, but it looked very close).
+My problem turned out to be how I set up the mouse configuration.
+I am still fairly new to linux too.  I have been using it for 
+about a year and a half now.  Maybe someone else on the list
+can add to this about the mouse.  When I edited the xf86config file
+and redid the mouse, all worked.  Could have just been luck!
+Anyway thought I would let you know I had the same problem and
+you will get the thing working for sure.
+cheers
+neil t.
 
-         du -sh /home/*
-
-will give you the amount of space being used by each home directory on the 
-system.
-
-In this context, your use of "package" is unclear.  A package is usually a 
-portmanteau file that contains a set of related files, most often (putting 
-aside source packages for the moment) an executable and associated stuff -- 
-that is, a package is an .rpm, or .deb, or .tgz file. If that is what you 
-mean, the more developed packaging systems have commands that tell you a 
-lot about the package, including how much space it takes up when installed. 
-For help with that, ask about whichever packaging system you use (or 
-consult ithe man page for the package manager, if it has one).
-
-But since a package typically installs stuff in several separate places 
-(for example, an executable in /usr/bin, a man page somewhere else, 
-possibly other documentation in /usr/share/doc, configuration stuff in 
-/etc, and maybe boot/init stuff in /etc/init.d), there is no good way, at 
-least not that I know of, to figure out how much space a package takes up 
-by examining directories in the filesystem.
-
-At , Revobild / Heimo Claasen wrote:
->Is there a practical way to get a sum-up of HD space occupied by one
->dir (including subdirs) and then, especially of a package ?
->
->I'd like to weed out never used stuff and recover scarce disk place.
->Is there a good, or any, "strategy" for this ?
+-- 
+Arachne/DRdos-RHLinux/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
 
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
