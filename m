@@ -1,76 +1,57 @@
-From: "Cristian CHIRILOV" <atmos@dreams.homelinux.net>
-Subject: Re: Creating virtual devices
-Date: Wed, 3 Sep 2003 16:30:51 +0300 (EEST)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Aligning a HP printer.
+Date: Wed, 3 Sep 2003 22:04:05 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <7262.193.226.6.51.1062595851.squirrel@www.cybernet-kfe.org>
-References: <36993D449C7FA647BF43568E0793AB3E061DBD@nevis_pune_xchg.pune.nevisnetworks.com>
-Reply-To: atmos@dreams.homelinux.net
+Message-ID: <200309032204.05217.pa3gcu@zeelandnet.nl>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <36993D449C7FA647BF43568E0793AB3E061DBD@nevis_pune_xchg.pune.nevisnetw
-     orks.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-> Hi,
->
-> I want to create virtual network devices using something like the
-> tun/tap driver.
-> Is there any limit on the number of such devices which can be created?
->
-> Thanks,
-> Girish
+Hello All.
 
-mknod /dev/net/tun c 10 200
-chmod 0700 /dev/net/tun if you want the device only accesible by root.
-Giving regular users the right to assign network devices is NOT a good
-idea.
+Now i have a question maybe someone could help me for a change.
 
-Here the network device allocation:
+I have never used printers under linux other than an old matrix printer which 
+worked flawlessly for years when i needed it.
+I have now got a HP-3420 (cheapo thing) but it works well execpt i need to get 
+it aligned properly.
 
- #include <linux/if.h>
- #include <linux/if_tun.h>
+I did align it under windows XP but Linux prints on the page with a left 
+margin (as it were) of 0.6cm. which means i need to get the printer to print 
+to the left by 0.3cm.
+Also the vertical postion needs lowering by 1,5cm's.
+The test page prints evenly from top to botton, no offset top right to botton 
+right.
 
-  int tun_alloc(char *dev)
-  {
-      struct ifreq ifr;
-      int fd, err;
+I tryed the align.ps script but that changed nothing i used the lpotions 
+program as adised to set the values but no go i'm afraid, yes it was done as 
+root, no permissions problems.
 
-      if( (fd = open("/dev/net/tun", O_RDWR)) <  )
-         return tun_alloc_old(dev);
+Other than the alignment problem its perfect.
 
-      memset(&ifr, 0, sizeof(ifr));
+I wonder who can help, please dont point me to google as i have been there
+done that of course and been to linuxprinting, obviously i am missing 
+something, but what.??
 
-      /* Flags: IFF_TUN   - TUN device (no Ethernet headers)
-       *        IFF_TAP   - TAP device
-       *
-       *        IFF_NO_PI - Do not provide packet information
-       */
-      ifr.ifr_flags = IFF_TUN;
-      if( *dev )
-         strncpy(ifr.ifr_name, dev, IFNAMSIZ);
-
-      if( (err = ioctl(fd, TUNSETIFF, (void *) &ifr)) <  ){
-         close(fd);
-         return err;
-      }
-      strcpy(dev, ifr.ifr_name);
-      return fd;
-  }
-
-
-char *dev should be the name of the device with a format string (e.g.
-"tun%d"), but (as far as I can see) this can be ANY valid network device
-name.
-
-  Note that the character pointer becomes overwritten with the real device
-name (e.g. "tun0")
-
+Cups version 1.1.18 (standard slackware 9.0 install).
+hpijs version 1.4.1
 
 -- 
-Be different. Think.
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
