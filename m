@@ -1,41 +1,45 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: File Management
-Date: 26 Sep 2002
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: auto login
+Date: Thu, 26 Sep 2002 11:10:42 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209260252.g8Q2qR6J017434@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20020926111042.A1153@neutrino.particles.org>
+References: <F22LjQyKNRocEvBff6e0000a72a@hotmail.com> <20020915200537.C1134@neutrino.particles.org> <3D9204F0.F636F42E@sympatico.ca> <02092519232902.09996@unix.pa3gcu>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <02092519232902.09996@unix.pa3gcu>; from pa3gcu@zeelandnet.nl on Wed, Sep 25, 2002 at 07:23:29PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: "e.a./CC" <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: pa3gcu <pa3gcu@zeelandnet.nl>
+Cc: LL Phillips <lilo.phillips@sympatico.ca>, linux-newbie@vger.kernel.org
 
-Thanks, Steven and others who replied to this thread.
+On Wed, Sep 25, 2002 at 07:23:29PM +0000, pa3gcu wrote:
+> On Wednesday 25 September 2002 18:48, LL Phillips wrote:
+> > If you buy LINDOWS root is the default user.
+> > Lorraine
+> 
+> What Elias wants is a protentioal security hole in his system by asking for a 
+> "root autologin".
 
-I suspect I have to go with this indeed:
-> Your best bet would probably be to just rely on your package manager.
-Hmm.
+Just for the record, it wasn't me who asked for such a thing.
 
-Interesting, nevertheless:
-> This initially sounds like a good idea.  In fact, I once went as far as
-> actually writing such a script.  Unfortunately, you quite quickly
-> hit a problem: ldd doesn't actually report all of the libraries
-> used by a particular program.  You've said you're not a programmer, so
-> I'll spare you the details, but it is possible for a program to
-> specify while it's running that additional libraries should be linked
-> in. This is used by most programs which support plug ins, for instance.
-> Unfortunately, it isn't possible in general to get a complete list of
-> such libraries just by looking at the program in question, and so you
-> can't build an accurate list of which libraries are in use.
+> > Elias Athanasopoulos wrote:
+> > > On Sun, Sep 15, 2002 at 04:19:10PM +0000, a a wrote:
+> > > > Hello
+> > > > Is there a way i can automatically login as root when i boot up the
+> > > > computer?
+> > >
+> > > Maybe, but I hope there isn't. This is totally insecure.
+> > >
+> > > Elias
 
-Which latter condition explains some of the never-ending troubles with
-installing (application) programs.
 
-Understandable, sure, that one wouldn't like to re-invent all those
-wheels.
-Less understandable that there is no (at least, moral) obligation to
-"declare" used bits and pieces from somewhere else in a/the "system".
-Result is lots of newbie frustration.
+Ciao,
+ Elias
+ 
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
