@@ -1,24 +1,23 @@
-From: dave <dave@dpomeroy.com>
-Subject: bash scripting
-Date: Sat, 14 Aug 2004 19:12:27 -0800
+From: "Pankaj Agarwal" <pankaj@pnpexports.com>
+Subject: how to identify filesystem type
+Date: Thu, 19 Aug 2004 08:52:37 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <411ED49B.5080705@dpomeroy.com>
+Message-ID: <005e01c485a0$69631820$5c59023d@dreammachine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Well I got it to run.  I browsed the web a bit and found this command 
-cat -v new.sh.  That showed lots of ^M at the end of each line.  Then I 
-used :set ff=unix to set the file format for unix.  It works now.  I 
-don't know how the ^M's got in the file.  I wrote it on my linux box.  
-Thanks everyone for the help.
-Dave
+Hi,
 
--- 
-Dave Pomeroy K7DNP SouthEastern Washington
+I need your help, in understanding filesystems. Kindly let me know how to
+identify the filesystem in an image file or block device.
+
+thanks in advance and regards,
+
+Pankaj Agarwal
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
