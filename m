@@ -1,37 +1,34 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: striking X server
-Date: Sun, 10 Nov 2002 12:32:40 +0200
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: rsync backup of a working linux host
+Date: Sun, 10 Nov 2002 13:51:59 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021110123240.B25979@neutrino.particles.org>
-References: <200211100419.gAA4Jpq08040@ev6.be.wanadoo.com>
+Message-ID: <200211101351.59556.g38@rdsbv.ro>
+Reply-To: g38@rdsbv.ro
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200211100419.gAA4Jpq08040@ev6.be.wanadoo.com>; from hammer@revobild.net on Sun, Nov 10, 2002 at 10:18:19AM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sun, Nov 10, 2002 at 10:18:19AM +0000, Heimo Claasen wrote:
-> AND - I almost forgot - there was indeed a nearly 600 M(!)B large
-> "core.nnnn" file somewhere on that HD's system ... only that, as far
-> as I could remember, THERE HAS NOT BEEN ANY program crash I _remember_
-> of with that system in the time preceding the sudden strike of the
-> X server.
+I want to have a backup of a linux system which currently works ok (better to 
+prevent than to cure :-))
 
-Just do:
+my idea is to have a image of the working system somewhere and in case the hdd 
+fails - restore it on another hdd
 
-% gdb --core=/path/to/core.nnnn
+right now I am playing with rsync, but is this the tool I need, or something 
+like dd ?  the goal is to have a image of the working system which can be 
+restored on another hdd at anytime.
 
-And you'll get the name of the application that crashed (most probably it
-is your X Server). 
 
-Elias
+thanks,
+
+petre
 
 -- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+ 13:11:27 up 1 day,  4:22,  1 user,  load average: 0.51, 0.41, 0.25
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
