@@ -1,29 +1,41 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: ntp - how?
-Date: Fri, 02 Aug 2002 06:07:29 -0400
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: nVidia
+Date: Fri, 2 Aug 2002 06:15:49 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D4A59E1.DAFE9F79@gelm.net>
-References: <3D36DDA3.FA0F073C@gmx.net>
-			 <02072506225706.04469@unix.pa3gcu>
-			 <3D406BBB.E208E07B@gelm.net>
-			 <02072606105100.00370@unix.pa3gcu>
-			 <5.1.0.14.1.20020726164536.02296360@celine> <5.1.0.14.1.20020728140342.0228b3c0@celine> <3D4498AF.42DC0D8C@gelm.net> <3D45AD28.7623B094@gelm.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200208021015.g72AFnY04232@langhans.hartford-hwp.com>
+References: <02080209511800.00914@localhost.localdomain>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <02080209511800.00914@localhost.localdomain> (message from Peter
+	on Fri, 2 Aug 2002 10:33:04 +0800)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: pfheiss@philonline.com
+Cc: linux-newbie@vger.kernel.org
 
-Howdy, Y'all:
+Peter,
 
- I stuck trying to run ntpd.  I don't see any updates
-when I run 'ntpq -p'.  When I run 'ntpdate host',
-all of the hosts I've tried return
-"[date] : no server suitable for synchronization found"
-What is wrong?
+> What have I to do to fix this problem which is starting to mess-up
+> my drives.  I just had to go into rescue mode to do fsck in order to
+> boot.
 
-Regards, Chuck
+I can't offer advice, but merely point you to a discussion forum
+archive in which it appears off hand that the nVidia problem is
+widespread and that there's no consensus as to cause or correction:
+
+www.mcdownloads.com/
+
+In yourcase, you are sensitive to which app is running, and someone
+did suggest that the hang occurred whenever an application requested a
+resolution change. 
+
+Apparently different drivers are problematic to different degrees,
+some people upgrading them and others downgrading. The most recent
+driver I found was 1.0-2960, but I don't know where my old driver was
+stored by RedHat 7.2 so that I can find out my current version.
+
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
