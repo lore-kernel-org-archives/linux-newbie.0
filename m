@@ -1,42 +1,58 @@
-From: Adwin <fox@sby.centrin.net.id>
-Subject: Re: a trouble with OpenGL (additional information)
-Date: Tue, 17 Sep 2002 16:49:04 +0700
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: bash scripts creating log files
+Date: 17 Sep 2002 12:15:53 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209171648.33279.fox@sby.centrin.net.id>
-References: <200209170236.g8H2adRA019956@pegasus.wanadoo.be>
+Message-ID: <1032261353.7489.17.camel@Zebra>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209170236.g8H2adRA019956@pegasus.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Heimo Claasen <hammer@revobild.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Thursday 01 January 1970 07:00, Heimo Claasen wrote:
-> Had similar trouble with the Nvidia driver: despite a good - and,
-> according to the Nvidia cocumentation, complete and compatible -
-> installation of Mdk 8.2 the Nvidia driver refuses to install.
->
-> It complains about the kernel versin - the Nvidia driver wants
-> "kernel = 2.4.8-16mdk" while for its "Mdk 8.1"-compliant installation:
-> while Mdk 8.1 and 8.2 have higher kernel versions (2.4.18-6mdk for the
-> latter).
->
-> Clearly a (Nividia) bug.
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-16
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+Hi, everyone.
 
-I don't think so.... I use Mandrake 8.2 and I can install it on my system. 
-But, may be rather buggy, sometimes I got hang when playing tuxracer or just 
-run a opengl application.  I don't know why this happen, may be the drivers 
-is not stable yet.
+I'm trying to write a bash script which is basically a wrapper around a
+number of other commands.
+
+What I _want_ to do is basically _copy_ stdout and stderr to a log file.
+
+Thus, when I run a command, I wans the stdout and stderr to go to
+wherever called the script (eg an interactive terminal) but I _also_
+want it to go to a log file.
+
+I can do it easily for things I'm echoing in my own script by writing a
+function like this:
+
+
+	function ECHO
+	{
+	    echo $1
+	    echo $1 >> ${Logfile}
+	}
+
+and then any messages which I generate I use ECHO instead of echo:
+
+	ECHO "This is a message"
+
+What I can't figure out is how do I redirect the output of the things
+I'm running to the same 2 places?
+
+Anyone know a nice easy way to do this?
+
+Tnx.
+
+Paul.
+
+
 
 
 -- 
-./me
-adwin
+Paul Furness
 
+Systems Manager
+
+2+2=5 for extremely large values of 2.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
