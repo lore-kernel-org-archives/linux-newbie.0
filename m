@@ -1,69 +1,39 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: unresolved symbols
-Date: Wed, 9 Apr 2003 21:14:19 +0100 (BST)
+From: Peter <pfheiss@philonline.com>
+Subject: Re: At Loss with Mailing
+Date: Thu, 10 Apr 2003 11:10:46 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0304092102090.4038-100000@ppg_penguin>
-References: <002301c2fece$c315d060$0a01a8c0@sascha.de>
+Message-ID: <200304100310.h3A3Alh03221@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002301c2fece$c315d060$0a01a8c0@sascha.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Sascha Hartmann <sharty@web.de>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wed, 9 Apr 2003, Sascha Hartmann wrote:
+Thanks Ray! 
 
-> Hi,
-> 
-> I have often compiled my kernel 2.4.19 without having problems. Recently I
-> upgraded my glibc (2.1 -> 2.2) and it is now my new primary c library. Then
-> I compiled the kernel again and as result of "make modules_install" I
-> received a list of unresolved Symbols. (Caused by "depmod -ae -F
-> System.map") But "depmod -ae -F /proc/ksyms" returns no unresolved symbol.
-> Further my system seems to be ok completely. I have had no trouble since I
-> use this kernel. Now, 60 compiled and installed programs later, an
-> installation instruction wants me to resolve all unresolved symbols in
-> kernel and modules. I don't know anything what I have to do at this point
-> but somebody of you perhaps.
-> 
-> depmod -ae -F System.map
-> depmod: *** Unresolved symbols in
-> /lib/modules/2.4.19/kernel/drivers/block/rd.o
-> depmod:  __free_pages_R6c90edb0
-> depmod:  refile_buffer_R8347a649
-[ and so forth ]
+ray@comarre.com said:
+>  BY not providing reverse lookup, philonline.com is, in practice,
+> forcing you to use its smarthost relay for outgoing mail. 
 
-Sascha,
+I suspected all along that the problem is with philonline. I will talk to them 
+again once they have fixed their phone line for custom care.
 
- upgrading glibc is not a minor undertaking, and many people do a fresh
-install.  If I understand you correctly, you've got instructions from
-somewhere, I wonder if something else has changed ?
+ray@comarre.com said:
+> If it matters to any *future* posting you make, though ... in  the
+> ping part, what is "Peter"? What host are you actyually trying to ping
+>  there?
 
- You say you've recompiled the kernel, is it possible you've got a
-mixture of old and new modules installed in /lib/modules/2.4.19 ?  I'm
-wondering if maybe the .config has been changed between old and new
-versions ?
+it's in /etc/hosts:
+202.95.238.2    philonline.com  Peter
+202.78.74.68    webcard.skyinet.net     Pedro
 
- The kernel and its modules don't link against libc, so I can't see any
-reason why you would now get errors.  Alternatively, did you upgrade gcc
-at the same time ?
+that way I do not have to remember the dot DN
 
- Ultimately, I'm guessing you need to rebuild the kernel to get full
-functionality.  If so, set the EXTRAVERSION in the Makefile, e.g.
+Regards
 
-SUBLEVEL = 19
-EXTRAVERSION = -second
-
-would install the modules into /lib/modules/2.4.19-second/ .
-
-Ken
 -- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
-
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
