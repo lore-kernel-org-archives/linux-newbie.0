@@ -1,42 +1,44 @@
-From: beolach@comcast.net
-Subject: Re: state of Linux USB networking?
-Date: Thu, 15 Jan 2004 05:07:11 +0000
+From: Dave <howek@vcss.k12.ca.us>
+Subject: Re: Linux for Dummies?
+Date: Wed, 14 Jan 2004 21:16:37 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <011520040507.3566.1e95@comcast.net>
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <bu57eh$rtt$1@sea.gmane.org>
+References: <40035BB8.7020404@kevino.org> <200401140713.i0E7DtD01739@skyinet.net>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-To: jamtat@mailsnare.net
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200401140713.i0E7DtD01739@skyinet.net>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Sorry if this is a repost, I thought I had sent it, but I never saw it come
-through the list.
-
-Here's a good site talking about alot of the different USB networking options:
-<http://www.linux-usb.org/usbnet/>
-
-Beyond that I don't have anything elso to tell you.  I personally don't much
-care for networking via USB; I know most of the early problems are worked out
-by now, but USB networking had a heck of a lot of problems when it was first
-introduced.  And I don't see any real advantage for using USB in networking
-(except for maybe laptops, but then PCMCIA would be a better option).
-
-My 2 cents,
-Conway S. Smith
-> What's the state of USB networking under Linux?  Alot of USB network
-> adaptors are being sold these days, and I was just wondering if they can
-> be utilized under Linux and how easy or difficult they are to set up.
-> Feedback on this, anyone?  Anyone onlist have such working on their
-> machine(s)?
+Peter wrote:
+> My first 2 books were Linux in 24 Hours and Discover Linux.
 > 
-> Thanks, James
+> I still consult them every now and then, even so I have now Linux in a 
+> Nutshell and Running Linux.
+> 
+> 
+> 
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+Thanks... I'll look into them.  Everyone's suggestions really help.
+
+Dave
+
+-- 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"So many electrons and so little time!!"
+                73   K6DBH   Dave
+         Also at, K6DBH@ARRL.net
+                             . .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
