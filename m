@@ -1,112 +1,37 @@
-From: Dominic L Hilsbos <dhilsboslfs@sbcglobal.net>
-Subject: Re: Setting permissions in a public folder
-Date: Sat, 21 Feb 2004 00:57:17 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: keeping static ip address alive between restarts
+Date: Sat, 21 Feb 2004 07:34:56 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4036F33D.3050801@sbcglobal.net>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <200402210734.56215.pa3gcu@zeelandnet.nl>
+References: <fc.004c4e000050d4a1004c4e000050d4a1.50d523@palmertrinity.org> <20040220182421.GA865@lnx2.w8mch.ampr.org> <40365BE7.8070408@rbcmail.ru>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <40365BE7.8070408@rbcmail.ru>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Ok, as I understand it you have a (set) of folders:
-
-/home/shared/backup/<user-name>/, where <user-name> is the (Linux?) user 
-name of the person you want to be able to connect to these, correct?  
-These folders (even though /home/shared/backup/ is owned and write able 
-only to root) are owned and read/write able by their own users, correct?
-If that is the case your smb.conf entry 'should' look like this, I think 
-:-):
-
-[backup]
-                  comment = Backup Folder
-                  path = /home/shared/backup/%u/   # %u expands to 
-<user-name> (the Linux user that samba generated from
-                                                                       
-            # the login information it was given)
-                  browsable = no                                     # 
-this makes it so the share isn't listed with the SMB browse servers
-                  read only = no                                       
-# this allows people to write to this share (note: only a user that has 
-Linux
-                                                                        
-           # permissions to write to the directory will actually be 
-able to)
-
-I don't 'think' you need the host allow option, or maybe set it as such:
-
-                  host allow = ALL
-
-which will allow the users to connect to the share from any machine, as 
-long as they authenticate correctly.
-
-You certainly DO NOT want the guest ok, or guest only, options, that's 
-basically saying: allow ONLY the guest account (however that is setup) 
-to access this share (BTW, samba will use it's status as a root running 
-program to over-ride the read/write permissions a share to allow this).
-
-I haven't tried this kind of thing, and I'd recommend testing it before 
-deploying it.
-
-For more information I would recommend (the quite complete) "Using 
-Samba," especially Chapter 6, which, incidentally, is available as part 
-of the source tarball.  Download the newest version of the sources for 
-www.samba.org, untar it, then go into the docs/htmldocs/ussing_samba/ 
-directory and start reading :).
-
-Eve Atley wrote:
-
->Michael et. al,
+On Friday 20 February 2004 20:11, Andrey V. Romanchev wrote:
+> OMG :)
+> There is more proper place in Slackware to set static ip address
+> /etc/rc.d/rc.inet1.conf (only since 9.1)
 >
->Regarding yesterday's problem I am having with restricting user folders to
->each user under a public folder, I am still having questions about setting
->this one up. These are NOT the user folders automatically created in the
->HOME directory.
->
->The config in my smb.conf file for the directory in question:
->[backup]
->        comment = Backup Folder
->        path = /home/shared/backup
->        read only = No
->        guest only = Yes
->        guest ok = Yes
->        force group = +backup
->        hosts allow = 192.168.10.
->
->I'm looking for the correct config. Without the hosts allow (haven't tried
->it with), I am able to connect correctly via a Unix command line, but not
->through the Windows share, so it appears to be a Samba problem.
->
->- Eve
+> or just run netconfig
+
+The question was concerning Redhat NOT Slackware.
 
 -- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-Dominic L Hilsbos
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-"Peace can not be kept by force.  It can only be achieved through understanding"
-Albert Einstein
-
-Linux registered user: 283861		http://counter.li.org/
-LFS 5.0 ID:12136			http://linuxfromscratch.org/cgi-bin/lfscounter.cgi
-Linux-Mandrake 9.2
-Windows XP
-
-
-
-
--- 
-
-Dominic L Hilsbos
-
-"Peace can not be kept by force.  It can only be achieved through understanding"
-Albert Einstein
-
-Linux registered user: 283861		http://counter.li.org/
-LFS 5.0 ID:12136			http://linuxfromscratch.org/cgi-bin/lfscounter.cgi
-Linux-Mandrake 9.2
-Windows XP
 
 
 -
