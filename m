@@ -1,82 +1,56 @@
 From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: usr1,home1 after hdd cloning?
-Date: 25 Nov 2002 08:43:22 +0000
+Subject: Re: RH 7.3 and tripwire
+Date: 25 Nov 2002 09:12:40 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1038213801.20654.8.camel@zebra.vil.ite.mee.com>
-References: <20021122224955.8911.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <1038215558.20988.38.camel@zebra.vil.ite.mee.com>
+References: <sdde49fa.036@mail.sussex.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021122224955.8911.qmail@linux.ik5bcu.ampr.org>
+In-Reply-To: <sdde49fa.036@mail.sussex.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: ik5bcu@tin.it
-Cc: valhalla-list@redhat.com, linux-newbie@vger.kernel.org
+To: peter schoch <pschoch@sussex.cc.nj.us>
+Cc: linux-newbie@vger.kernel.org
 
-How did you clone the disk?
+Peter, 
 
-I believe (although I might be wrong) that the volume labels you are
-seeing are just that - volume labels. These are names you can give the
-partition itself (not the place where it's mounted) and if present are
-displayed instead of "/dev/hda1" etc.
+Firstly, do you actually need / want to run tripwire? It is mostly
+useful for intrusion detection type things, which may not matter if your
+PC is either on a secure network, or standalone. In which case, I'd just
+remove tripwire from your system.
 
-I would guess that when you cloned the original disk, the running system
-saw that the volume labels "/" "/usr" and "/home" were already in use,
-so appended 1 to each of them.
+I don't run tripwire on my workstations, but I _do_ run it on the
+machines in my DMZ (such as web server) since they are at a much higher
+risk of hack attack than those inside my firewall on my internal
+network.
 
 
-Having said all that, I don't manipulate partition labels - if the OS
-install uses them, I leave them there, and if it doesn't I don't add
-them. Therefore, I don't actually know how to change them. I'm sure
-someone else around this list will, though...  :)
+If you decide that you _do_ need tripwire, it could well be that it's
+not configured for your system's setup. Can you give us a little more
+detail about the errors that tripwire is reporting?
 
-Might be worth a look at google for "volume labels" or "partition
-labels" under linux.
+As for documentation: I haven't found anything that is better than the
+man page for explaining how it works. In principal it's very simple: you
+create a list of files to watch, and tripwire takes a note of various
+attributes of the files (such as size, date and so on). At a later time
+(usually from a cron job) tripwire compares the file against the
+information it has, and reports any discrepancy. You can tell it the
+level at which to check the file and the kind of warning it gives.
 
 Paul.
 
 
 
-On Fri, 2002-11-22 at 22:49, Marco Calistri wrote:
-> Hello listmembers,I cloned a new disk due badblocks on the old root hd
-> (/dev/hda).
+On Fri, 2002-11-22 at 20:14, peter schoch wrote:
+> Greetings,
 > 
-> All seems ok now that new one is on place on first IDE channel but I noticed
-> during boot that message "Checking filesystem..." is reporting:
+> I just upgraded from RH6.2 to RH7.3.  I've been fighting with it for several days now.
 > 
-> /1....clean...
-> /usr1........clean...
-> /home1.......clean...
+> My last, big 'fight' is with tripwire.  I keep getting cron mail that tripwire had all sorts of troubles.  It gives me commands to 'fix' the trouble, and have run them; however the problems apparently persist.  I don't remember using tripwire in 6.2, so is there a good resource for finding out what to do?
 > 
-> instead of /; /usr ;and /home.
-> 
-> Wonder why this happened and how to ged rid of this problem...
-> a "df" is not showing any /usr1 or /1 neither /home1:
-> 
-> [marco@linux marco]$ df
-> Filesystem           1k-blocks      Used Available Use% Mounted on
-> /dev/hda3              5039592    366684   4416904   8% /
-> /dev/hda1                24853      9898     13672  42% /boot
-> /dev/hda2             10079356   2635440   6931904  28% /usr
-> /dev/hda5              1007960     16520    940236   2% /tmp
-> /dev/hda7              5039560    262932   4520624   6% /var
-> /dev/hda8             11122592   2199636   8357952  21% /home
-> /dev/hdb1              4208784   2819588   1389196  67% /mnt/win
-> /dev/hdd1               778012    335636    402216  46% /mnt/slack
-> none                     30920         0     30920   0% /dev/shm
-> 
-> I tried to trim /etc/fstab and to reinstall grub since now my root partition is
-> on /dev/hda3 and not on /dev/hda1 as the previous install.
-> Hope someone of you could point me on the solution.
-> Thanks for readind,cheers.
-> 
-> ----------------------------------
-> E-Mail: Marco Calistri <ik5bcu@tin.it>
-> Date: 22-Nov-2002 Time: 23:48:34
-> Red Hat Linux release 7.3 (Valhalla) kernel 2.4.18-18.7.x
-> This message was sent by XFMail
-> ----------------------------------
-> 
+> Peter Schoch
+> Sussex County Community College
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
