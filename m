@@ -1,47 +1,33 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: insmod at system startup - where?
-Date: Wed, 21 May 2003 09:05:44 +0100
+From: Amin <raihan@citech-bd.com>
+Subject: man page formatting problem?
+Date: Wed, 21 May 2003 15:16:01 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030521080544.GA5526@cam.ac.uk>
-References: <Pine.LNX.4.53.0305201426560.959@homenet>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="8t9RHnE3ZwKMSgU+"
+Message-ID: <1362.1053508561@localhost.localdomain>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.53.0305201426560.959@homenet>
 List-Id: <linux-newbie.vger.kernel.org>
-To: James Miller <jamtat@mailsnare.net>
-Cc: Linux-Newbie list <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+Hi,
 
---8t9RHnE3ZwKMSgU+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I've noticed this about man pages displayed in an X terminal
+application such as xterm, etc. --- the dashes (hyphens) and
+quotation marks don't show up (in xterm), and when they do
+(in Konsole), it's sporadic --- some show, and others show
+up as weird-looking characters.
 
-> From the command line I wrote (as instructed): insmod usbserial
-> vendor=0x0XXX product=0x0XXXX.  Under standard Debian, what file
-> would one edit with the insmod command in order for the system to do
-> this serial/USB switcheroo on startup?
-Shoving ``usbserial vendor=... product=...'' at the end of
-/etc/modules ought to work.
+I think this is a problem with GNU nroff, which formats the
+man pages, but I don't know where to go from there.  This
+hasn't been a problem for me until recently, because I've
+just started copying examples from man pages.
 
-Steven Smith,
-sos22@cam.ac.uk.
+I was hoping someone here could give me a couple of
+pointers.
 
---8t9RHnE3ZwKMSgU+
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQE+yzNYO4S8/gLNrjcRAn6VAKC0FoFi4OoGdkfnSzpkwzUnCgRZrgCgwYS/
-p+anRwJp7/nM0IjxJ79YK8I=
-=/rZs
------END PGP SIGNATURE-----
-
---8t9RHnE3ZwKMSgU+--
+Thanks,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
