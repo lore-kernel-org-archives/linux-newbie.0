@@ -1,69 +1,45 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Wireless Mouse/ USB selection
-Date: Sat, 19 Jun 2004 09:47:39 +0200
+Subject: Re: grub doesn't load
+Date: Sat, 19 Jun 2004 09:56:16 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200406190947.40159.pa3gcu@zeelandnet.nl>
-References: <20040619005813.67483.qmail@web14812.mail.yahoo.com>
+Message-ID: <200406190956.16710.pa3gcu@zeelandnet.nl>
+References: <7ca9db7c8818.7c88187ca9db@homemail.nyu.edu>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040619005813.67483.qmail@web14812.mail.yahoo.com>
+In-Reply-To: <7ca9db7c8818.7c88187ca9db@homemail.nyu.edu>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Steven Ackerman <ackerman_steven@yahoo.com>
-Cc: LinuxNewbie <linux-newbie@vger.kernel.org>
+To: Anshuman Singh Rawat <asr245@nyu.edu>, linux-newbie@vger.kernel.org
 
-On Saturday 19 June 2004 02:58, Steven Ackerman wrote:
-> Please see inline comments:
+On Saturday 19 June 2004 02:33, Anshuman Singh Rawat wrote:
+> Hi,
+> I have a dual boot system with grub as the loader.
+> I wanted to change the default from WinXP to linux.
+> So I changed the 'default' from 1 to 0 in grub.conf.
+> 1 = Win (the second entry in grub.conf. linux was the first).
 >
-> --- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
-> > > I have just installed Mandrake 9.1. I chose tty0
-> > > (com1?
-> >
-> > I am sure you mean /dev/ttyS0 not /dev/tty0
+> Now the big problem is grub doesn't load any of the 2 OSes. Infact,
+> it doesn;t even reach that startup screen. It just freezes!!
 >
-> I guess so. Whatever it was doesn't really matter. It
-> wasn't right. I believe it was the linux equivelant of
-> Com port 1. You would probably know better than I.
->
-> > > I have installed M9.1 previously and I believe
+> Any clue how to fix this without a rescue disk (this PC doesn't have a
+> floppy drive) ?
 
-I did some searching on google for your computer, i could not find any site 
-which actually stated what protocol the mouse use's, however my impression is 
-that it is a normal ps2 mouse.
+One must presume you installed via a cdrom then as you have no floppy,
+so use your install cdrom as a rescue medium.
+Most distro's have a rescue option.
+You made no mention of which distro so i cant say.
 
-I would do the following;
+> A quick help will really be appreciated!
 
-Start mandrake into init 3
-I cant remember which bootloader mandrake 9.1 used, if its lilo you need to 
-type the name of the boot image and 3 after it asin;
-linux 3
-replace linux with the name of the boot image.
-If its grub i belive all you need to do is select the boot image with the 
-arrow up/down keys and then type in 3 in the "options" box.
-Hit enter of course.
+To get proper help one needs to know _details_ of course you forgot the 
+details so the reply's may well be quick but if they are helpful is another 
+matter.
 
-After booting login as root and type 'mouseconfig'
-Select "Generic PS2 Wheel Mouse"
-That takes care of the symlinks in /dev/
-
-Your XF86Config(-4) file found in /etc/X11 may also need editing, a typical 
-entry for a wheel mouse is;
-
-Section "InputDevice"
-        Identifier  "Mouse1"
-        Driver      "mouse"
-        Option       "Corepointer"
-        Option      "Device" "/dev/psaux"
-        Option      "Protocol" "IMPS/2"
-        Option       "Buttons" "5"
-        Option      "Emulate3Buttons" "off"
-        Option      "ZAxisMapping" "4 5"
-EndSection
-
-After all that type init 5 to start X and see what happens.
+> Thanks.
+> Anshuman
 
 -- 
 If the Linux community is a bunch of thieves because they
