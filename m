@@ -1,28 +1,37 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: is emacs considered a gui WP or cli?
-Date: Sat, 25 May 2002 18:03:57 +0300
+From: Shaun Bryant <sbryant@ThePit.org>
+Subject: Kernel error
+Date: Sat, 25 May 2002 10:47:16 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020525180357.B1158@neutrino.particles.org>
-References: <20020524.163134.-176941.0.matthewstapleton@juno.com>
+Message-ID: <A1F41DE771DCD5119FE30060089343500A58C3@NET-ARCH>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020524.163134.-176941.0.matthewstapleton@juno.com>; from matthewstapleton@juno.com on Fri, May 24, 2002 at 04:31:33PM -0700
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Matthew Stapleton <matthewstapleton@juno.com>
-Cc: linux-newbie@vger.kernel.org
+To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-On Fri, May 24, 2002 at 04:31:33PM -0700, Matthew Stapleton wrote:
-> I was wondering if Emacs was considered to be gui based WP or cli-based? 
+Hi all,
 
-Noone of it. Emacs is an OS which pretends to be an editor. :-)
+This recently starting popping up in my syslog log, about once every 5 hours
+or so. Does anyone of a idea of a course of action to correct this problem?
 
-Elias
+May 20 08:14:38 Illusion kernel: Symbol table has incorrect version number.
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Thanks
+Shaun
+
+ 
+ 
+ 
+-------------------------------------
+Shaun Bryant
+E-Mail: sbryant@thepit.org <mailto:sbryant@thepit.org> 
+ 
+**** The best way to predict the future is to create it.
+**** The biggest problems happen when one of the little things that we take
+for granted stops working for a second
+-------------------------------------
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
