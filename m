@@ -1,67 +1,80 @@
-From: cr <cr@orcon.net.nz>
-Subject: Questions on GRUB and RH7.2
-Date: Tue, 3 Jun 2003 09:02:57 +1200
+From: Amin <raihan@citech-bd.com>
+Subject: Re: Questions on GRUB and RH7.2
+Date: Mon, 02 Jun 2003 19:30:17 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306020907.h5297J1Y027705@dbmail-mx3.orcon.co.nz>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <1157.1054560617@localhost.localdomain>
+References: <cr@orcon.net.nz>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Message from cr <cr@orcon.net.nz> 
+   of "Tue, 03 Jun 2003 09:02:57 +1200." <200306020907.h5297J1Y027705@dbmail-mx3.orcon.co.nz> 
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Can any kind person give some info on the following:
+On Tue, 3 Jun 2003 09:02:57 +1200, cr wrote:
+> Can any kind person give some info on the following:
+> 
+> I don't seem to have a 'initrd' file - does it matter?
 
-I don't seem to have a 'initrd' file - does it matter?
-Should I use the   'syslinux.cfg'  off the backup boot floppy instead?
-How do I boot DOS  usind GRUB?
+It does if you load a SCSI module at boot time, according to
+the Red Hat Linux Customization Guide.  You can browse this
+and other manuals:
+http://www.redhat.com/support/resources/howto/rhl72.html
 
-Background is:
+If you decide you need one, look for mkinitrd(8).  The man
+page says:
 
-When I installed Red Hat 7.2, it wouldn't boot off the hard drive - it only 
-ever got as far as 'LI' or 'GR' and there it would hang.   I've been booting 
-successfully off floppy, but I decided to fix it.
+mkinitrd - creates initial ramdisk images for preloading
+modules
 
-So, following the GRUB manual and various HOWTOs, I've just reinstalled GRUB 
-and created a (/hda1) /boot/grub partition in which I put a copy of vmlinuz 
-off my boot floppy (there was no vmlinuz on my hard drive).   I also created 
-a   grub.conf  file following the examples of menu.lst  and  grub.conf  in 
-the GRUB-RESTORE and  Linux+Win9x+GRUB   HOWTOs, and now it seems to boot 
-fine.
+> I'm not quite sure how to address DOS.   If anyone has a dual boot Linux/DOS 
+> setup, the contents of their   /boot/grub/grub.conf  or    menu.lst  files 
+> would maybe give a guide.
 
-Those examples also include a mention of a  initrd   file thus:
+############################################################
+# Note that you do not have to rerun grub after making
+# changes to this file
+# NOTICE:  You have a /boot partition.  This means that
+#          all kernel and initrd paths are relative to
+#          /boot/, eg.
+#          root (hd0,2)
+#          kernel /vmlinuz-version ro root=/dev/hda6
+#          initrd /initrd-version.img
+#boot=/dev/hda
+default=1
+timeout=10
+splashimage=(hd0,2)/grub/splash.xpm.gz
 
-title Red hat Linux
-root (hd0,0)
-kernel /vmlinuz  ro   root=/dev/hda2
-initrd  /initrd.img
+title Red Hat Linux (2.4.18-14Apr06_2003)
+ root (hd0,2)
+ kernel /vmlinuz-2.4.18-14Apr06_2003 ro
+ root=LABEL=/
+ initrd /initrd-2.4.18-14Apr06_2003.img
 
-I can't find a   'initrd' file anywhere.    Everything seems to work without 
-it though.   Does it matter if I leave it off?
+title DOS
+ rootnoverify (hd0,0)
+ chainloader +1
+############################################################
 
-Next, there's also a  syslinux.cfg   file on the Linux boot floppy - should I 
-copy that into   /boot/grub    and add line in grub.conf of:
-initrd  syslinux.cfg       or similar?
+My partition layout is like this:
 
-Third, I'd like to also boot to a DOS partition (on drive /hdc)  - but I 
-can't find the right command to invoke DOS.   So far I've got as far as
+DOS/Windows C: is	hda1
+Linux /boot is		hda3
+DOS/Windows D: is	hda5
+Linux / is		hda6
 
-title  DOS
-map (hd0) (hd2)
-map (hd2) (hd0)
+hda5 and hda6 are logical partitions within hda2, which is
+an extended partition.  I know, a killer layout!  I was
+desperate to get Linux on my computer then, somehow :-).
 
-chainloader +1   
+So, the gub.conf says to load DOS from (hd0,0), which is
+hda1.  I'm a little foggy as to what the `rootnoverify'
+does, but I'm sure it's all in the GRUB info file.
 
-but I get a message   'invalid or unsupported executable format'.
-I'm not quite sure how to address DOS.   If anyone has a dual boot Linux/DOS 
-setup, the contents of their   /boot/grub/grub.conf  or    menu.lst  files 
-would maybe give a guide.
-
-Thanks
-
-Chris
-
-
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
