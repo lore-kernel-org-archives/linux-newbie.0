@@ -1,47 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Elias Athanasopoulos <eathan@otenet.gr>
 Subject: Re: Command line questions
-Date: Sat, 05 Oct 2002 16:49:34 -0700
+Date: Sun, 6 Oct 2002 03:09:28 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021005164515.020a1ec0@celine>
+Message-ID: <20021006030928.A3197@neutrino.particles.org>
 References: <200210051935.48876.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210051935.48876.sotl155360@earthlink.net>
+Content-Disposition: inline
+In-Reply-To: <200210051935.48876.sotl155360@earthlink.net>; from sotl155360@earthlink.net on Sat, Oct 05, 2002 at 07:35:48PM -0400
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-At 07:35 PM 10/5/02 -0400, Frank Roberts - SOTL wrote:
->[...]
->1. Is there an option to the ls command that will allow the scroll to page
->like the old dos command dir -p would? O'Reilly's Linux in a Nutshell does 
->not
->so indicate but I have a hard time believing that this is so; that just does
->not seem logicall.
+On Sat, Oct 05, 2002 at 07:35:48PM -0400, Frank Roberts - SOTL wrote:
+> 1. Is there an option to the ls command that will allow the scroll to page 
+> like the old dos command dir -p would? O'Reilly's Linux in a Nutshell does not 
+> so indicate but I have a hard time believing that this is so; that just does 
+> not seem logicall.
 
-No, there is not an option to "ls". You do this by piping the output of 
-"ls" to "more".
+% ls -a | more
 
->2.  I have no problem changing to any directory that does not have spaces in
->it but I have no idea of how to account for a space in a directory like in
->the command "cd My Document"?
+(this works in DOS, too, using dir instead of ls)
 
-One trick is to use tab completion. If that doesn't work, you "escape" the 
-space character. Something like the following (for your example):
+> 2.  I have no problem changing to any directory that does not have spaces in 
+> it but I have no idea of how to account for a space in a directory like in 
+> the command "cd My Document"?
 
-         cd My\ Document
+% cd My\ Documents
 
->Thanks
->Frank
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Ciao,
+ Elias
+ 
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
