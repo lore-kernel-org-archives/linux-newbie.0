@@ -1,57 +1,164 @@
-From: joy <gracecott@sancharnet.in>
-Subject: Re: switching to debian (... and installing the NVIDIA  GeForce4)
-Date: Wed, 24 Mar 2004 18:47:08 +0530
+From: RANDAZZO@ddc-web.com
+Subject: RE: two Ethernet cards in the same machine with xover cable..... 
+	[bcc]
+Date: Wed, 24 Mar 2004 08:30:58 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40618A54.5050709@sancharnet.in>
-References: <405FAC4A.1000609@sancharnet.in>
- <5.1.0.14.1.20040322210149.01fdd960@celine>
- <5.1.0.14.1.20040323094003.01fc9810@celine>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <89760D3F308BD41183B000508BAFAC4104B1702B@DDCNYNTD>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: ray@comarre.com, linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
+Ray/Chuck,
 
-> I haven't myself switched to the 2.6.x kernel series yet, but I have 
-> seen reports warning of problems with some external add-in modules, 
-> including the nvidia drivers ... showing up as high CPU loads caused, 
-> I think, by context switching not being handled efficiently. (Also 
-> problems with ivtv and lirc, if memory serves, and maybe some of the 
-> wlan stuff.)
->
-> Caution ... or, better, patience, as this stuff will certainly get 
-> worked out ... *may* be indicated here.
->
-> Joy - do you actually have an nvidia framebudffer module running with 
-> 2.6.x?
+Thanks for all your help.  Let me try a new approach, I have been vague on
+the details because I thought my problem was very simple......here is a
+detailed decryption of my problem...
 
-yes, have been using the 2.6 series almost as soon as it was released 
-and used to use the patches from minion.de until the
-5336 nvidia driver was released. I don't exactly understand your Q (too 
-hitech for me ;-) however I figure you are asking
- me about it's (kernel's) performance under heavy loads. well I ran 3 
-instances of xine playing (what else) 'Highway Star'
-at the same time on KDE which I think should put the cpu under load, Kde 
-being the major load :) with no problems.
-this was . 2.6.1or .2 maybe...........
+I have developed a network driver for a custom fibre channel card.  Though
+the physical interface is FC, according to Linux, I have selected Ethernet
+for the device classification....
 
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+The Fibre channel device is a PCI card with 2 interfaces.
+
+The cabling setup is as follows....
+
+*********************
+*   Box #1 (RH 7.2) *
+*********************
+   * (fc0)       * (fc1)
+   |             |
+   |             |
+   |-------------|
+      fc cable
+
+The ifconfig information is as follows:
+fc0    Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
+            inet addr: 172.172.16.1  Bcast:172.172.255.255  Mask:255.255.0.0
+            UP BROADCAST RUNNING MULTICAST  MTU:2048 Metric:1
+
+fc1    Link encap:Ethernet  HWaddr yy:yy:yy:yy:yy:yy
+            inet addr: 172.172.17.1  Bcast:172.172.255.255  Mask:255.255.0.0
+            UP BROADCAST RUNNING MULTICAST  MTU:2048 Metric:1
+
+To avoid initial routing problems, I have disabled ARP, by using the
+IFF_NOARP flag.  Since I know the HW Addr of both channels, I temporarily
+set the hw addr to the opposite channel, when a packet asks for it.
+
+then a try to ping...
+> ping -c 1 -I fc0 172.172.17.1
+
+By putting debug messages inside the IP stack and an external network
+analyzer, I notice the following happen in order....
+
+1. Packet is transmitted out fc0
+2. Packet is received physically on fc1
+3. netif_rx is called on fc1
+4. ip_input_route_slow is called on fc1
+5. fib_validate_source is called on fc1
+6. fib_lookup is called on fc1
+7. fib_lookup returns, updated res
+8. res.type is RTN_LOCAL
+9. fib_validate_source returns e_inval_res is
+  res.type != RTN_UNICAST
+
+From that point on the functions fail all the way back through the
+stack.....it seems that the fib_lookup figures
+out the the destination and source addresses are local, which screws up
+everything....
+
+I know this is related to routing, possibly rules.......
+
+If you need anymore information, let me know..
+
+Regards,
+Mike
 
 
+
+
+
+
+
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of Ray Olszewski
+Sent: Tuesday, March 23, 2004 9:24 PM
+To: linux-newbie@vger.kernel.org
+Subject: Re: two Ethernet cards in the same machine with xover
+cable..... [bcc]
+
+
+At 06:38 PM 3/23/2004 -0500, chuck gelm wrote:
+>RANDAZZO@ddc-web.com wrote:
+>
+>>All,
+>>
+>>This may seem stupidly easy, but please here me out.....
+>>
+>>I have 2 pro100 nics (using eepro100 driver)
+>>
+>>currently my setup is..
+>>
+>>
+>>
+>>>>ifconfig
+>>>>
+>>eth0    Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
+>>            inet addr: 172.172.16.1  Bcast:172.172.255.255
+Mask:255.255.0.0
+>>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
+>>
+>>eth1    Link encap:Ethernet  HWaddr yy:yy:yy:yy:yy:yy
+>>            inet addr: 172.172.16.1  Bcast:172.172.255.255
+Mask:255.255.0.0
+>>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
+>>
+>>These nics are connected with an RJ-45 crossover cable......
+>>
+>>what do I need to do to get ftp communication between these
+devices.........
+>Hi, Mike:
+>
+>You need to put them in different machines and give them different
+>IP addresses.
+>:-|
+>HTH, Chuck
+
+Well, Mike, you see what you get when you keep asking the same question 
+over and over, in increasingly vague terms.
+
+Since I remember what your actual, original question was, I suggest you try 
+what I suggested back then -- look at the source code for ping 
+(specifically for a version of ping that implements the -I flag) and see 
+how it does it. I just did that for the stock ping that Debian distributes 
+(in netkit-base). It uses the setsockopt() call to assign to its socket an 
+a.b.c.d value contained a struct in_addr called ifaddr. This seems to force 
+the packets that ping sends to go out the specific interface you specify on 
+the command line, rather than following the routing table.
+
+This is *probably* what you need. The source provides what looks to me like 
+a good example, and the relevant man pages should fill in the rest.
+
+Oh, Chuck is right, though, that the two interfaces still do need distinct 
+IP addresses ... but I assume that part was just a typo in your message.
+
+
+
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+ 
+"This message may contain company proprietary information. If you are not
+the intended recipient, any disclosure, copying, distribution or reliance on
+the contents of this message is prohibited. If you received this message in
+error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
