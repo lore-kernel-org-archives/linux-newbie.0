@@ -1,62 +1,72 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: renaming really long filenames
-Date: Mon, 19 May 2003 09:11:43 -0700
+Subject: Re: How do I stop GUI from autoloading?
+Date: Mon, 19 May 2003 10:51:11 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EC9023F.5080203@bcgreen.com>
-References: <5.1.0.14.1.20030510082110.01eae2b0@celine>	 <20030510100903.GA1586@localhost.localdomain>	 <5.1.0.14.1.20030510082110.01eae2b0@celine> <5.1.0.14.1.20030510091650.01eae530@celine> <3EBEBD49.2D45C5FE@gelm.net>
+Message-ID: <3EC9198F.9080600@bcgreen.com>
+References: <20030510100903.GA1586@localhost.localdomain> <5.1.0.14.1.20030510082110.01eae2b0@celine> <20030510160917.GA890@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EBEBD49.2D45C5FE@gelm.net>
+In-Reply-To: <20030510160917.GA890@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Chuck Gelm <nc8q@gelm.net>
-Cc: linux-newbie@vger.kernel.org, ray@comarre.com
+To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-My solution would be something like:
-
-for i in * ;   do  mv "./$i" "`echo ./$i | tr -d '\00-\042\173-\377<>|' `" ; done
-
-
-Note: I'm deleting characters starting at 7bH, not 6fH -- 6F is in the middle
-of the lower case alphabet, so  it doesn't make sense.
-
-Other things to note:
-   I'm using octal (base 8) characters in the string, not hex
-   the backquote (`)  says to run the command and use the output as the
-   parameter to (in this case) the 'mv' command.
-
-   I'm using './filename' to handle the possibility of a filename starting with
-   a '-' and being mistaken for an option.   './' says "in the current directory",
-   so it's something of a no-op, but guarantees that the name won't start with a '-'.
-
-   the double quotes around "./$i" make sure that spaces (and other greeblies) in the
-   original filename don't get interpreted as work breaks.
-
-
-Chuck Gelm wrote:
->  Howdy, Y'all:
+Amin wrote:
+> On Sat, May 10, 2003 at 08:42:05AM -0700, Ray Olszewski
+> wrote:
 > 
->  I have some very long filenames that I would like to shorten.
-> The filenames contain 'spaces' and some characters with tics or
-> apostrophes, and tildes over them.  I tried to change them from
-> a console session, but I don't know how to generate those special
-> characters from the keyboard...and I really don't want to type
-> the long filenames anyway.  :-|
-> OBTW, I have no GUI (X windows) on this computer.
 > 
->  Is there a way to remove all characters < 023h && > 06fh
-> from these filenames?
+>>I did not see the original posting, and I can't find it
+>>anywhere. Amin's response does not indicate whether the
+>>original posting mentioned the Linux distro involved, and
+>>he does not do so. And Amin's advice is not
 > 
-> find - sed - mv  ???
 > 
-> Regards, Chuck
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+> Sorry, I found the original post in Google Groups:
+> http://groups.google.com/groups?q=mlist.linux.newbie&ie=UTF-8&oe=UTF-8&hl=en&btnG=Google+Search
+> 
+> And here it is:
+> 
+>     From: Workman (david.rust@watkinsmfg.com)
+>     Subject: How do I stop GUI from autoloading?
+>     Newsgroups: mlist.linux.newbie
+>     This is the only article in this thread
+>     View: Original Format
+>     Date: 2003-03-30 08:00:16 PST
 
+.....
+
+>>log in). In that case ... typically, distros that run xdm
+>>also open a hidden console on /dev/tty1, which one can
+>>access by pressing CTRL-ALT-F1 when the xdm display is
+>>active. You can then log in, make any needed changes, and
+>>reboot.
+> 
+> 
+> That is a good idea, but I was afraid that it would mess
+> around with X.  I tried it once (I'm using RH8.0), and it
+> seemed to hose my X server.
+
+ctrl-alt-F1 should not mess with X (It's messed up,
+anyways, so who cares). It simply moves you to a different
+virtual terminal.  X is still running.  ctrl-altF7 (on redhat)
+will move you back to the X screen.  It might be a differnt
+screen number for Turbo Linux... (just go through all 12
+ctrl-alt-F[n] sequences if you can't find it).
+
+>>Finally, if even that does not work, at the lilo prompt
+>>(assuming we're talking about an install that uses lilo),
+>>instead of accepting the default load, you can usually
+>>enter "linux single" to boot/init into single-user mode
+>>with a console rather than X presented.
+> 
+> 
+> I assumed Linux was the lone OS on the PC, so there was no
+> bootloader.
+
+There will be a boot loader... be it Lilo, GRUB, or whatever.
+watch the boot sequence closely.
 
 -- 
 Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
