@@ -1,43 +1,64 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: DNS server
-Date: Fri, 20 Feb 2004 16:22:36 -0800
+Subject: Re: Graphical client for SSH2?
+Date: Fri, 20 Feb 2004 16:29:56 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040220161839.01f7d178@celine>
-References: <4607acb4606bd1.4606bd14607acb@homemail.nyu.edu>
+Message-ID: <5.1.0.14.1.20040220160443.01f9ede8@celine>
+References: <5F84A09ECDD5D411973000508BE32470266025BA@exnyc07.lehman.com> <GNEPLLCIIBHICCOGIAKPOECFCGAA.eatley@wow-corp.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4607acb4606bd1.4606bd14607acb@homemail.nyu.edu>
+In-Reply-To: <GNEPLLCIIBHICCOGIAKPOECFCGAA.eatley@wow-corp.com>
+References: <5F84A09ECDD5D411973000508BE32470266025BA@exnyc07.lehman.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Anshuman Singh Rawat <asr245@nyu.edu>, Linux-Newbie <linux-newbie@vger.kernel.org>
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-At 06:52 PM 2/20/2004 -0500, Anshuman Singh Rawat wrote:
+At 06:39 PM 2/20/2004 -0800, Eve Atley wrote:
+
 >Hi,
->How does one enter preferred DNS addresses to be used in linux?
+>I currently have Cygwin running on my Windows laptop as a test enviroment to
+>log in with SSH2. Now, sure you can run it from the command line in Cygwin,
+>but these are users who aren't real savvy with technology, and probably
+>won't have the patience to learn the CLI.
 >
->I found that IP address, netmask, network address can be assigned in this 
->file /etc/sysconfig/network-scripts/ifcfg-eth0 for interface eth0.
+>Therefore, I tried installing WinSCP. While I am asked for my passphrase in
+>Cygwin, the same doesn't occur in WinSCP - I can log in with my user
+>password, even when I have loaded my public key.
 >
->Can DNS server list be added here too? If yes, what name is given for it?
->
->DEVICE=eth0
->IPADDR=208.164.186.4
->NETMASK=255.255.255.248
->NETWORK=208.164.186.1
->
->What would the name be for DNS server?
+>Anyone?
 
-The usual place to enter the DNS server addresses is in the file 
-/etc/resolv.conf . This file has a man page you can consult for the 
-details, but the simplest version just has lines like these:
+What's the question? Since this is a Linux list, not a Windows list, I'll 
+start with the ssh server on the far end, presumably on a Linux machine.
 
-         nameserver 192.168.1.40
-         nameserver 192.168.1.2
+An ssh server can permit multiple login options. The common Linux sshd uses 
+a config file (probably /etc/ssh/sshd_config ... I don't know if this 
+location is standard or varies from distro to distro) to specify what login 
+options are available. Standard userid/password authentication is governed 
+by this line:
 
-Some configuration tools will modify or overwrite this file, and DHCP 
-clients can modify it if they get DNS-server info as part of a lease ... so 
-there are distro-specific and site-specific elements to this question.
+         # To disable tunneled clear text passwords, change to no here!
+         PasswordAuthentication yes
+
+I believe public-key authentication is governed by these lines (which one 
+matters depends on which type of key you are using):
+
+         RSAAuthentication yes
+         PubkeyAuthentication yes
+         #AuthorizedKeysFile     %h/.ssh/authorized_keys
+
+In your case, I expect that what is happening behind the curtain is that 
+WinSCP tries to make a connection, does not find a private key to send, so 
+asks the remote sshd to permit userid/password login ... which it does.
+
+I looked quickly at the Website for WInSCP 
+(http://winscp.sourceforge.net/eng/) and it says that WinSCP does support 
+both RSA and DSA keys. it doesn't include the details of how to set up keys 
+with this app ... only a general reference to using the keygen program from 
+PuTTY ... but I imagine the docs that come with the WinSCP download have 
+this information ... I would not assume WinSCP can find keyfiles generated 
+by Cygwin apps.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
