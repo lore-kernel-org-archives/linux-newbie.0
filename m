@@ -1,44 +1,40 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: A few questions
-Date: Sun, 1 Dec 2002 08:06:21 -0500 (EST)
+From: Jim Reimer <jdr@wa5rrh.org>
+Subject: Re: Extract images from zipped .eve archives
+Date: Sun, 01 Dec 2002 07:20:03 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
-References: <200212012032.22587.Adam@Luchjenbroers.com>
+Message-ID: <3DEA0C83.8020705@wa5rrh.org>
+References: <5.1.0.14.1.20021129083149.02134d90@celine> <200211291827.gATIRCP02697@hartford-hwp.com> <3DE7C76A.9040009@wa5rrh.org> <200211292204.gATM4f710000@hartford-hwp.com> <3DE7EB9B.8000107@wa5rrh.org> <200212011240.gB1Ceb105023@hartford-hwp.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212012032.22587.Adam@Luchjenbroers.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212011240.gB1Ceb105023@hartford-hwp.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Haines Brown <brownh@hartford-hwp.com>
 Cc: linux-newbie@vger.kernel.org
 
-By way of answering question 3, have a look at the sysback script below.
-Understand I'm going to patch it a little so another version that puts
-dates in file names for the .log file and the actual backup files as well
-so another version will appear.
+You might find gEDA useful.  http://www.geda.seul.org  Very nice set
+of tools for drawing schematics.
 
-cut here.
-#!/bin/sh
-# system backup script
-# uses tar to do a system backup to zip disks in /dev/hdd4
-# excluded directories are: /proc/ and /tmp/
-echo "put a zip disk in drive for system backup"
-read
-cd /
-echo "system backup log started:" >/tmp/sysback.log
-date >>/tmp/sysback.log
-mount -t vfat /dev/hdd4 /zip
-tar zcMpPv --exclude=/proc,/tmp --file=/zip/sysback.tar / 2>&1 >>/root/sysback.log
-mv /tmp/sysback.log /root/sysback.log
-cp /root/sysback.log /var/adm/archive/sysback.log
-umount /zip
+-jdr
 
 
+Haines Brown wrote:
+> Jim,
+> 
+> Thanks for pointing me to the .eve site. So the extension did turn out
+> to be proprietary. 
+> 
+> There are vector drawing facilities available for linux, and rather
+> than run Eve with Wine, etc., it might be worth my trouble to create a
+> set of vector drawings for one of the limux programs, and make them
+> available. 
+> 
+> I'm only talking here about perhaps 2-3 dozen simple little electronic
+> component symbols.
+> 
+> Haines
 
-
-cut here.
-Jude <dashielljt(at)gmpexpress-dot-net>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
