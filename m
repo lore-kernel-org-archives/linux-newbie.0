@@ -1,86 +1,109 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Simple script to set permissions on folders daily - write
-  script and cron it?
-Date: Mon, 28 Mar 2005 13:35:31 -0800
-Message-ID: <5.1.0.14.1.20050328131004.01f6a620@celine>
-References: <570AB64E31B69C44BFC5A097E5F3EEA501745826@ausx2kmpc116.aus.amer.dell.com> <00f401c533d9$68f0ab90$580aa8c0@lanadmin>
+From: "J." <mailing-lists@xs4all.nl>
+Subject: Re: Simple script to set permissions on folders daily - write script
+ and cron it?
+Date: Tue, 29 Mar 2005 01:11:06 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0503290042130.2085-100000@hestia>
+References: <00f401c533d9$68f0ab90$580aa8c0@lanadmin>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <00f401c533d9$68f0ab90$580aa8c0@lanadmin>
-References: <570AB64E31B69C44BFC5A097E5F3EEA501745826@ausx2kmpc116.aus.amer.dell.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 04:02 PM 3/28/2005 -0500, Eve Atley wrote:
+On Mon, 28 Mar 2005, Eve Atley wrote:
+ 
+> Hello! I want to write a very simple script that once daily (via cron) will
+> set permissions to 777. This is to override any permissions set on files
+> uploaded by other people, so everyone who already has access to the group
+> will have rwx access to the file(s).
 
->Hello! I want to write a very simple script that once daily (via cron) will
->set permissions to 777. This is to override any permissions set on files
->uploaded by other people, so everyone who already has access to the group
->will have rwx access to the file(s).
->
->So I'm double-checking if the best route is to create my script, then run it
->in cron as necessary. Or is there another way I should be handling it?
->
->Here's the script:
->
->#!/bin/sh
->#set_permissions: simple routine to set permissions of directories to be
->#accessible by everyone who already has specific group access.
->#
->#written by EMM - 3/28/2005
+You should do that by setting the `umask value' or configuring the
+programs that store the files correctly . No need for a
+cronscript. That is if they are only uploading and not accessing the
+shell interactively, even then you should go for a systemwide default
+`umask' value.
+
+> So I'm double-checking if the best route is to create my script, then run it
+> in cron as necessary. Or is there another way I should be handling it?
+> 
+> Here's the script:
+> 
+> #!/bin/sh
+> #set_permissions: simple routine to set permissions of directories to be
+> #accessible by everyone who already has specific group access.
+> #
+> #written by EMM - 3/28/2005
 >       cd /home/shared/hr/
->         chmod 777 -R *
->         cd /home/shared/public
->         chmod 777 -R *
->#put an exception here for /scans and /cd however
->#????
->         cd /home/shared/accounting
->         chmod 777 -R *
->Fi
->
->Thanks much,
->Eve
 
-Eve --
+Does the directory exsist you `cd' to ? 
+test -d /home/shared/hr/ || echo "Error - .... and exittttt.. "
+or
+if [ ! -d /home/shared/hr/ ] ; then
+ print error..
+fi
 
-I'm not quite sure what you mean by "has access to the group" ... 
-specifically, what the "group" is. In normal Unix/Linux terminology, user 
-accounts (userids) are associated with one or more groups, through either 
-the /etc/passwd entry (for an account's main group) or /etc/group (for 
-secondary group affiliations).
+> 	chmod 777 -R *
 
-If that's what you are talking about, you shouldn't be using mode 777 ... 
-which gives read-write-execure access to *anyone* with an account on the 
-system, not just to members of a specific group. You should be using 770, 
-or maybe 775, depending on your specifics. Maybe you also need to change 
-the group settings of the files to the common group, again depending on 
-details you have but I don't.
+You say, `permissions of directorys' The above will set permissions of
+all files except for the dotted files.
 
-I assume you've decided for some reason that handling this by changing 
-umask entries (I think we discussed that in an earlier thread you started) 
-is unsuitable for your site for some reason I've forgotten.
+You could walk the directory structure by means of `find' and evaluate if 
+the file is a directory file by `-type d'.
+find /home/shared/hr/ -type d -exec chmod 0755 '{}' \;
 
-Aside from that, the script looks fine (unless the "Fi" line is meant to be 
-part of it; that won't work) ... since I don't know what the comment about 
-exceptions means, I can't suggest how to implement it. You could shorted 
-nit by skipping the "cd" lines and just writing (for example) "chmod 777 -R 
-/home/shared/hr/*".
+Then there is overhead, since every file no matter what the permissions
+are is set. Check if the file needs permissions 777 and what the current
+permissions are.. 
 
-The script will probably need to run as root (or perhaps some other account 
-that has the ability to change permissions for all the files involved, if 
-you have such an account). If Red Hat (you use RH, right?) has the ability 
-to run scripts from  /etc/cron.daily, you can do it that way ... otherwise, 
-use crontab as root to set t ups as a root cron job.
+Other..., Maybe there are files that no matter what shouldn't be world
+readable and writable.. If multiple users are on your system they could
+put a file in a certain directory, your cronscript goes over
+it, maybe as user root.. and.. makes it world readable/writable.. Not a
+good thing. There is also a time gap inbetween the two different
+permissions, users can't access their files until your cronscript has set
+the correct permissions. Yes running your cronscript every X sec's will
+fix that, but that's not the way... 
 
-(BTW, if the details of modes are not already clear to you, "man chmod" 
-will tell you a bit. "man 2 chmod" will (or should, if it is on your 
-system) tell you a good bit more, albeit in harder to read form.)
+ > 	cd /home/shared/public
+> 	chmod 777 -R *
+> #put an exception here for /scans and /cd however
+> #????
+> 	cd /home/shared/accounting
+> 	chmod 777 -R *
+> Fi
 
-Hope this helps.
+There is no error wrapper in your script, it will keep running after
+errors or notifying messages have occurred. Cron takes also the exit value
+of your script to determine if it's successful or not..  
 
+> Thanks much,
+> Eve
+
+You should take more effort doing the `Unix filosofy', Do one thing
+and do it well.. [Right from the beginning in your case].
+
+You are fixing symptoms, after the problem has occurred. E.G.
+
+From the moment a file is stored on your system, it should have the right
+permissions. That takes good configuration of the basics of your system.
+
+Before looking at these type of problems, try to imagine if you are
+running an ISP with 1000+ users. Who are constantly accessing their files.
+
+You surely don't want to run constantly cronscripts to fix every
+user/group rights management problem ?
+
+GNU/Linux , Unix are multitasking, multiuser operatingsystems and they
+should be treated like that.. Otherwise you will loose all the advantages
+of that at a certain given point..
+
+GoodLuck..
+
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
