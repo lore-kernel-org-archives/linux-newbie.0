@@ -1,7 +1,7 @@
 From: Manish Regmi <regmi.manish@gmail.com>
 Subject: Re: Query on SIGFPE handling
-Date: Mon, 22 Nov 2004 15:04:43 +0545
-Message-ID: <652016d30411220119f24be7@mail.gmail.com>
+Date: Mon, 22 Nov 2004 15:11:10 +0545
+Message-ID: <652016d3041122012643ea7ffe@mail.gmail.com>
 References: <1101104772.4527.7.camel@myLinux>
 	 <652016d3041121230031fe6094@mail.gmail.com>
 	 <1101107755.4527.18.camel@myLinux> <1101111876.5382.8.camel@myLinux>
@@ -16,23 +16,25 @@ Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Cc: linux-newbie@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org, yogeshb@ascindia.com
 
-> How can I generate and send a signal from a function of mine? Is it
-> possible from a userlevel C program, using some functions like
-> signal()??
-> 
-> Please do help
-> --
-> With regards,
-> 
-> Jagadeesh Bhaskar P
-> 
-yes,
-see man kill, raise
+On Mon, 22 Nov 2004 14:35:24 +0530, Jagadeesh Bhaskar P
+<jbhaskar@hclinsys.com> wrote:
+> On Mon, 2004-11-22 at 14:27, Yogesh Bute wrote:
+> > hi,
+> >     u need to inform the shell that the signal is handled - so u need to
+> > SIG_IGN the singal ie. signal (signum, SIG_IGN) once u have done with
+> > handling the signal
+> >     or u could send SIG_DFL, so that default singal handler will handle the
+> > signal, after your specific signal handler code.
 
-regards manish
+Doing that will probably put you in infinite loop.
 
+Infact, the is no way to go further unless you resolve the cause of
+the exception.
+
+For playing with Signals,
+you can generate SIGUSR1 kill(pid, SIGUSR1)  and catch.
 
 -- 
 Manish Regmi
