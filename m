@@ -1,53 +1,53 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: ppp-go anomoly??
-Date: Wed, 05 Feb 2003 08:43:17 -0800
+From: whitnl73@juno.com
+Subject: Re: Network card and kernel module problems
+Date: Wed, 5 Feb 2003 15:24:54 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030205083654.02143b90@celine>
-References: <20030205102715.A231@lnx2.w8mch.ampr.org>
+Message-ID: <20030205.160000.8.0.whitnl73@juno.com>
+References: <000001c2ccd7$bcfb0e80$eb6510ac@citechbd.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030205102715.A231@lnx2.w8mch.ampr.org>
+In-Reply-To: <000001c2ccd7$bcfb0e80$eb6510ac@citechbd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: raihan@citech-bd.com
+Cc: linux-newbie@vger.kernel.org
 
-Hal -- Look at the logs; usually, pppd (and chat, if your setup uses it) 
-reports more detail on failures there than what you are seeing at the 
-command line. It could be something like LCP negotiation timing out. 
-Speculating as to why it happens sometimes but not others is hopeless until 
-you get a better handle on what "it" is. If the logs aren't reporting 
-enough connection detail, raise temporarily the level of logging that pppd 
-does (the "debug" option).
+On Wed, 5 Feb 2003, Amin wrote:
 
-At 10:27 AM 2/5/03 -0500, Hal MacArgle wrote:
->Greetings:  Slackware 8.0 w/2.4.13 kernel, using 'pppsetup' to
->configure - working perfectly for several months.. All of a sudden,
->for no apparent reason; when invoking 'ppp-go', I get the screen report
->"Connect script failed" and no cursor.. Entering a ^C, then invoking
->ppp-go again - starts the dialup normally.
+> Hi people,
 >
->Oddly enough; when turning the machine on in the morning the first
->invocation of ppp-go dials OK.. However, any trys later in the day
->return the script failure message..
+> First --- sorry about not including specific error messages earlier.  The
+> attached file is a (snipped) list of bootup messages, and contains the
+> messages I'm concerned with.
 >
->This first happened a few weeks ago but, in the middle of this, I
->changed ISP's so had to run pppsetup again for that configuration..
->I thought this would clear up the problem but it's still with me with
->the new ISP..
+> I've decided to reinstall, perhaps try a different distro, and see if that
+> will do the trick.  And thanks
+> to Lawson for pointing out the EXTRAVERSION point.  Just want to make sure
+> about something --- you're talking about
+> /usr/src/linux-2.4.18-14/Makefile, right?
+
+Well, the README says not to put it in /usr/src/linux, that belongs to
+glibc for its <linux/xxxx.h>, so I have mine in /oof/linux-2.4.13, but
+yes, the top level Makefile for the kernel source tree you are working
+with.
 >
->A minor bother but I'm sure bloody curious as to what happened and
->how to fix it.. Any suggestions/comments??      TIA!!
-
-
-
+> Yawar Amin
+>
+> P.S.  Is it a good sign or a bad sign that I've got my kernel version
+> memorized?
+>
+>
 
 --
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+---oops---
 
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
