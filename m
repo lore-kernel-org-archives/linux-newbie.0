@@ -1,48 +1,23 @@
-From: Steven Ackerman <steven@nvts.us>
-Subject: Re: Configuring lilo to boot from sda-Got it
-Date: Wed, 16 Apr 2003 00:31:04 -0700
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: name of xterm capture command
+Date: Wed, 16 Apr 2003 07:36:58 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E9D06B8.6040309@nvts.us>
-References: <5.1.0.14.1.20030415121527.01e96f68@celine> <5.1.0.14.1.20030415155724.01e95958@celine>
-Reply-To: steven@nvts.us
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200304161136.h3GBaw2D004081@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030415155724.01e95958@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org, babydr@baby-dragons.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux@hartford-hwp.com
 
-Ray Olszewski wrote:
-> OK. It sounds to me like you do NOT have the lilo bootloader installed 
-> on sda. To do that, you should do the following (as root):
-> 
->         1. Copy the file to the usual name, with "cp 
-> /etc/lilo.conf.anaconda /etc/lilo.conf".
-> 
->         2. Edit lilo.conf so it works (I'll return to this).
-> 
->         3. Run lilo.
-> 
+I apologize for inefficiency, but have lost my note on the capture
+command for xterm. That is, after you issue the command, what appears
+in xterm is captured to file.  
 
-Did all that. Same problem. At this point I knew that something else was 
-going on. I know that lilo uses lilo.conf and even if between the 
-lilo.conf.anaconda file and lilo.conf it in the /etc directory it should 
-work.
+Would someone remind me of its name? Thanks.
 
-There's a SCSI utility that is ran during POST. The bios refers to it. 
-All bootable drives in the BIOS were floppy and CDROM. So I opened up 
-the SCSI util and found something referring to "Boot Target ID" it was 
-set to drive 1. That didn't sound right to me because it had an 
-installed drive 0. I set it to 0 and Linux booted right up. I sure am 
-curious about the whole lilo.conf.anaconda file though.
-
-Thanks for all the help. I really appreciate it. I now know a few more 
-things than I did. I'm so glad this list has stayed active. Hopefully 
-I'll be able to contribute at some point.
-
--Steve
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
