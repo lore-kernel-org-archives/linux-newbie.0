@@ -1,75 +1,93 @@
 From: "Lee Chin" <leechin@mail.com>
 Subject: Re: usleep
-Date: Wed, 11 Jun 2003 19:42:28 -0500
+Date: Wed, 11 Jun 2003 19:53:24 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030612004228.40595.qmail@mail.com>
+Message-ID: <20030612005324.51946.qmail@mail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: 333101@personal.net.py
-Cc: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: hahn@physics.mcmaster.ca
+Cc: linux-newbie@vger.kernel.org
 
-I'm not sure what you are saying, but yes there are 1 million microseconds =
-in a second.... 1000000 micro seconds that is.  So my loop seems correct.  =
-Also, I am running this on a 2 GhZ processor, so I doubt the 1000 calls to =
-usleep can add that much overhead.  I think something is wrong with the lib=
-rary or the kernel.
+Thanks... that helpes (I initially posed my code wrong... my loop I intended to post was a for(i = 0; i < 1000; i++)
+
+Any way... what is setrealtime?  I dont have it on my linux machine
+
+Thanks
+Lee
 ----- Original Message -----
-From: Alan Bort <333101@personal.net.py>
-Date: 11 Jun 2003 19:08:34 +0300
+From: Mark Hahn <hahn@physics.mcmaster.ca>
+Date: Wed, 11 Jun 2003 19:45:17 -0400 (EDT)
 To: Lee Chin <leechin@mail.com>
 Subject: Re: usleep
 
-> for the #include statemen I assume you are using some sort of C
-> languagbe (even C, C++ or C#) Well... my man of usleep says that it
-> makes the system wait for any number of microseconds... make the maths.
->=20
-> Anyway... I really don't remebmer the value of a microsecond... I THINK
-> it was something like "1 x 10 ^ -6" or something alike... (excuse the
-> quotation aberration).
->=20
->=20
-> El jue, 12-06-2003 a las 01:55, Lee Chin escribi=F3:
-> > I would think the following code would wait for 1 second each itteratio=
-n before printing hello, but it waits way too long.  Replacing the for loop=
- body with a=20
-> > usleep(1000000) works great... what am I missing here?
-> >=20
-> > Thanks
-> > Lee
-> >=20
-> > #include <unistd.h>
-> >=20
-> > int main()
-> > {
-> >     while (1)
-> >     {
-> >         int i;
-> >=20
-> >         printf("hello\n");
-> >         for(i =3D 0; i < 50; i++)
-> >         {
-> >             usleep(1000);
-> >         }
-> >=20
-> >     }
-> >=20
-> > }
-> --=20
-> Alan Bort
-> Linux Registered User 298277 -Country Manager- [http://counter.li.org]
-> [ http://www.linuxquestions.org ] Username: Ciccio
-> [ http://es.tldp.org ]
-> Ciccio.-
->=20
+> > I would think the following code would wait for 1 second each itteration
+> > before printing hello,
+> 
+> well, usleep takes microseconds, so as you've written it,
+> you should expect it to take 1ms per usleep or 50ms between hello's.
+> further, the man page doesn't claim that it'll actually sleep
+> for exactly the specified microseconds.
+> 
+> here:
+> #include <unistd.h>
+> #include <stdio.h>
+> int main() {
+>     int c = 20;
+>     while (c--) {
+>         int i;
+>         printf("hello\n");
+>         for(i = 0; i < 50; i++) {
+>             usleep(1000);
+>         }
+>     }
+>     return 0;
+> }
+> 
+> (not that a correct program needs both the stdio and a return from main.)
+> 
+> | [hahn@hahn hahn]$ /usr/bin/time ./chin
+> | hello
+> ...
+> | hello
+> | 0.00user 0.00system 0:19.99elapsed 0%CPU (0avgtext+0avgdata 0maxresident)k
+> | 0inputs+0outputs (71major+10minor)pagefaults 0swaps
+> | [hahn@hahn hahn]$ setrealtime time ./chin
+> | hello
+> ...
+> | hello
+> | 0.13user 0.87system 0:01.00elapsed 100%CPU (0avgtext+0avgdata 0maxresident)k
+> | 0inputs+0outputs (71major+10minor)pagefaults 0swaps
+> 
+> hmm, so on its own, 20 iterations of your loop take 20 seconds,
+> one second per iteration, and the usleep is actually lasting 20ms.
+> this is the traditional behavior (and correct, since the man page 
+> permits this kind of fuzziness).
+> 
+> if run in realtime mode, 20*50 usleep(1000)'s take 1.00 seconds, cool.
+> 
+> also, if I add:
+> #include <sys/time.h>
+> 
+> void myusleep(unsigned us) {
+>     struct timeval tv;
+>     tv.tv_sec = 0;
+>     tv.tv_usec = us;
+>     select(0,0,0,0,&tv);
+> }
+> 
+> then it behaves pretty much exactly as expected.  (good code would handle
+> the case where us>1000000 and where select is interrupted by a signal.)
+> 
+> 
 
---=20
+-- 
 __________________________________________________________
 Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=3Dsignup
+http://www.mail.com/?sr=signup
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
