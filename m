@@ -1,37 +1,24 @@
-From: Bob Swift <powerstation@shaw.ca>
-Subject: Re: BASH Script Change Directory
-Date: Fri, 02 May 2003 10:24:10 -0600
+From: Dan Bentson-Royal <dbentson@lcsd.k12.wa.us>
+Subject: Finding things
+Date: Fri, 02 May 2003 12:25:17 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305021024.10933.powerstation@shaw.ca>
-References: <200305011842.48087.powerstation@shaw.ca>
- <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
-Reply-To: powerstation@shaw.ca
+Message-ID: <5.1.0.14.2.20030502122424.02b2f3f8@mail.lcsd.k12.wa.us>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <Pine.LNX.4.53.0305020715190.22000@reg_kipling>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ken Moffat <ken@kenmoffat.uklinux.net>
-Cc: linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Friday 02 May 2003 00:22, Ken Moffat wrote:
+I often cannot find where things are on my Linux box.
 
->  The script runs in a subshell. What you can do in this case is
+What is the best way to look for something when I haven't a clue where (or 
+if) I have it? I think I saw Eric Harrison use "locate" but when I do that 
+it never finds things that I know are there. I did "man locate" and was 
+even more confused than ever.
 
-Okay, I understood the subshell part, and figured that's what was resetting 
-everything.
 
-> `source your-script'  or just `. your-script'
-
-That's what I was missing!  I had completely forgotten about the "source" 
-command.  I also learned something because I didn't know about the "dot" 
-trick.
-
-Thanks.
-
--- 
-Bob Swift
+Dan Bentson-Royal
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
