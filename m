@@ -1,37 +1,27 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: USB Flash Drive??
-Date: Thu, 31 Jul 2003 09:39:53 -0400
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: RH 9 source
+Date: Thu, 31 Jul 2003 13:15:47 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030731093953.A209@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <35cbfda35cba8e.35cba8e35cbfda@homemail.nyu.edu>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: Just getting my feet wet with USB on a Slackware9.0,
-2.4.20 box, and a 64mB Flash Disk "stick."
+Hi,
+I was trying to compile with kernel using the sources (v2.4.20-8) which came along with RH9, but there were some compilation errors!!
+I also tried with source I downloaded from rpmfind.net (for v2.4.20-20) with no luck.
+I gave up after that and switched to RHL7.3 (kernel v2.4.18-3)which works.
 
-Enabling BIOS - 2.4.20 found it and loaded the necessary modules OK.
-Slick..
+But has anybody else also had problems with sources in RHL9 ?
 
-However - mount reports the fstype as umsdos.. I note I can also
-mount the device as msdos or vfat OK and use mcopy to manipulate
-files.. cp also works but reports an error, copying the file anyway.
+-Anshuman
 
-I can find no information though as to if I can reformat the stick as
-ext2 or ext3..
 
-Has anyone done this? At this point I'm afraid to try.. <grin>
-
-TIA and Cheers,
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
