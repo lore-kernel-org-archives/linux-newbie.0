@@ -1,31 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: More on Startup Scripts
-Date: Wed, 18 Sep 2002 11:14:45 -0700
+From: Arthur Othieno <arthurothieno@gmx.net>
+Subject: Re: IRC Channels?
+Date: Wed, 18 Sep 2002 20:47:57 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020918111344.024d1ad0@celine>
-References: <009101c25f3b$c47471b0$64fea8c0@pkrausxp>
+Message-ID: <3D88D86D.9070605@gmx.net>
+References: <5.1.1.6.0.20020918134801.00b99d30@interzone.anexia.co.uk>
+Reply-To: arthurothieno@gmx.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <009101c25f3b$c47471b0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: Carl <carl@anexia.co.uk>
+Cc: linux-newbie@vger.kernel.org
 
-At 01:49 PM 9/18/02 -0400, Paul Kraus wrote:
->I understand that in the runtime folders that the SXXscript stands for
->startup and the KXXscript stands for kill. What do the XX stand for?
+You can also stop by #linuxhelp on OpenProjects.net. There is a Debian 
+specific channel there as well, and many others...
 
-The scripts run in sort order, so their execution order is determined by 
-the numbers in the XX locations.
+Arthur
 
+Carl wrote:
 
+> At 08:09 18/09/2002 -0400, Paul Kraus wrote:
+> 
+>>Are there any good newbie IRC servers:channels that will have relevant
+>>discussions for newbie's?
+>>
+>>Paul Kraus
+>>Network Administrator
+>>PEL Supply Company
+>>216.267.5775 Voice
+>>216-267-6176 Fax
+>>www.pelsupply.com
+>>
+> 
+> Debian have them for it's users.
+> 
+> See http://www.debian.org/support#irc
+> 
+> This page also mentions other linux based channels.
+> 
+> --
+> Carl
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> 
+> 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
