@@ -1,24 +1,35 @@
-From: c.lina@gmx.net
-Subject: newbies question about tv
-Date: Fri, 31 Oct 2003 08:47:37 +0100
+From: "Warren Hrach" <sean@tcob1.net>
+Subject: yes, I'm a linux newbie
+Date: Thursday, 30 Oct 2003 19:57:50 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031031084737.53477fdb.c.lina@gmx.net>
+Message-ID: <MSGID_1=3a202=2f745_94174dab@fidonet.org>
+References: <MSGID_1=3a120=2f546_5d8d1223@fidonet.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <MSGID_1=3a120=2f546_5d8d1223@fidonet.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
+Originally to: Matt Gilbert
 
-I am a *real* newbie to linux, so please have mercy ....
+>Hi, I have been posting questions and recieving help in a group caled linux bb
+>and everyone has been telling me to post my questions in the linux echo instea
+> of linux bbs, have i found my way?
 
-I have a tv-card and watching tv with motv works fine. Is there a tool
-with which I can record shows and later watch the recorded shows?
-(I have suse8.0)
+Matt,
+    You found your way to the Lists.Linux.Newbie echo.
+It is one of the echos that I pick up from Janis Kracht's bbbs hub. It may well be an internet news group but haven't checked.
 
-Regards, Catherine.
+One of the things a sysop can do with most bbs software packages is name an echo whatever he wants.  I choose mine just to be same as the official Fido name.  So depends on what bbs you call where or
+ what echos you can read.
+
+Remember on bbbs software systems to just enter j to see a list of echos.
+
+Warren
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
