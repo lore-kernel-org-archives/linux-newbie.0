@@ -1,121 +1,40 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: RE: Syscall() vs _syscallN()
-Date: Wed, 30 Mar 2005 15:05:04 +0200 (CEST)
-Message-ID: <Pine.LNX.4.21.0503301451460.559-100000@hestia>
-References: <000101c534c9$230750c0$90b3c68a@st.com>
-Reply-To: "'Linux Newbie'" <linux-newbie@vger.kernel.org>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: root password
+Date: Wed, 30 Mar 2005 06:36:32 -0800
+Message-ID: <5.1.0.14.1.20050330063201.02035bd0@celine>
+References: <20050330071611.44428.qmail@web52905.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000101c534c9$230750c0$90b3c68a@st.com>
+In-Reply-To: <20050330071611.44428.qmail@web52905.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: 'Linux Newbie' <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Wed, 30 Mar 2005, Alex LIU wrote:
-
-> Sorry for my unclear words...
-> I want to know the DIFFERENCE between SYSCALL() and _SYSCALLN()...
-> _syscallN() ( _syscall0(),_syscall1(),...._syscall6() ) is a macro defined
-> in include/asm/unist.h while syscall() is a glibc function which I'm not
-> sure. Thanks!
-> 
-> Alex
-
-One is a macro to call the NN'th systemcall directly by symbolic nr. 
-The other is a function in which you have to specify the call number
-yourself and then calls the NN'th systemcall or the systemcall if it's
-not defined in the glbic yet...
-
-What distro are u using ? There should be a manual-page that describes the
-difference quite clearly. Unfortunatly documentation of this level in the
-system is often omitted among newer distro's.
-
-The NN number you are refering to is nothing more than a symbolic
-Number. 
-
-############ man page....
-System calls like close() are implemented
-in the Linux libc. This implementation often involves:
-
-calling a macro        <---------#!#
-which eventually calls syscall(). Parameters passed to syscall() are the
-number of the system call followed by the needed arguments. The actual
-system call numbers can be found in <linux/unistd.h> while <sys/syscall.h>
-gets updated with a new libc. If new calls appear that don't have a stub
-in libc yet, you can use syscall(). As an example, you can close a file
-using syscall() like this (not advised):
-
-#include <syscall.h>
-
-extern int syscall(int, ...);
-
-int my_close(int filedescriptor)
-{
-   return syscall(SYS_close, filedescriptor);
-}
-
-Bit more clear or .. ?? 
-
-J.
-
-~: man -k syscall
-afs_syscall (2)      - unimplemented system calls
-syscalls (2)         - list of all system calls
-
- 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org
-> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of J.
-> Sent: Tuesday, March 29, 2005 5:36 PM
-> To: Linux Newbie
-> Subject: Re: Syscall() vs _syscallN()
-> 
-> 
-> On Tue, 29 Mar 2005, Alex LIU wrote:
-> 
-> > Hi:
-> > 
-> > With either of syscall() or _syscallN() we can define a system call in 
-> > the user space program.I think they do the same work.What's the 
-> > difference between them? Thanks!
-> > 
-> > Alex
-> 
-> This is described in the manual page for syscalss
-> 
-> ~: man syscalls
-> 
-> .... 164 system calls.. depending on your kernel version.. etc..
-> 
-> Roughly speaking, the code  belonging  to  the  system  call  with  number
-> __NR_xxx  defined  in /usr/include/asm/unistd.h can be found in the kernel
-> source in the routine sys_xxx().  ...... etc...
-> 
-> ......
-> 
-> J.
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org More majordomo info at
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-
-Wednesday, March 30 14:51:46
+At 11:16 PM 3/29/2005 -0800, Ankit Jain wrote:
+>hi
+>
+>i have forgotten my root pasword. i had installed
+>redhat linux 9.0 kernel version 2.4 with grub loader.
+>if somebody can tell me how to change the password
+>without logging.
 
 
+The normal solution to this sort of problem is to boot the system using a 
+rescue disk (floppy or CD, depending on your hardware); mount the 
+filesystem with the password problem at some convenient mount point; and 
+delete the root password entry from /etc/shadow . Then reboot normally, log 
+in as root (with no password) and set a new root password. Do all of this 
+with the system disconnected from the Internet, of course, until you have a 
+new root password in place.
 
---
-http://www.rdrs.net/
+Any other suggestion of how to become root without knowing the root 
+password is a technique for breaking into systems, and I (and I hope 
+everyone else) will not give advice on that publicly, in this forum or 
+anywhere else.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
