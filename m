@@ -1,18 +1,27 @@
-From: LEWIS KIMBLE <lfkimble1@earthlink.net>
-Subject: no key board
-Date: Sat, 26 Jul 2003 00:37:12 -0400
+From: Peter <heisspf@skyinet.net>
+Subject: Extraction of PID
+Date: Sat, 26 Jul 2003 14:58:24 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F220578.1030207@earthlink.net>
+Message-ID: <20030726065829.DD46B1041E@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: LINUX NEWBIE <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-have solved keyboard problem now running mandrake 9.1 on hp ze 5170
-thanks lew
+Hi,
 
+How do I isolate from a line like
+
+1865 tty2 00:00:18 exmh
+
+the first 4 numbers which is the PID. I get it with "ps -a --pid 1111 | grep 
+exmh".
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
