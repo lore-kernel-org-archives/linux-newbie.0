@@ -1,48 +1,36 @@
 From: lawson_whitney@juno.com
-Subject: Re: striking X server
-Date: Sat, 2 Nov 2002 19:29:11 -0500 (EST)
+Subject: Re: A way to transfer drives?
+Date: Sat, 2 Nov 2002 19:57:35 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021103.170821.134684296.0.lawson_whitney@juno.com>
-References: <200211021744.gA2HiTPq017274@pyxis.wanadoo.be>
+Message-ID: <20021103.170822.134684296.1.lawson_whitney@juno.com>
+References: <02110222531300.01093@betageuze>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211021744.gA2HiTPq017274@pyxis.wanadoo.be>
+In-Reply-To: <02110222531300.01093@betageuze>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: hammer@revobild.net
+To: michael_scondo@gmx.de
 Cc: linux-newbie@vger.kernel.org
 
-On 2 Nov 2002, Heimo Claasen wrote:
+On Sat, 2 Nov 2002, Michael Scondo wrote:
 
-...
+> > #!/bin/bash
+> > ##copy a directory or partition
+> > tar -C "$1" -cOl . | tar -C "$2" -xpf -
+> >
 >
-> AND X had run perfectly as usual at the last boot before.
+> That's an idea, but I believe parted should be much faster.
+> I think compressing and decompressing would be a little bit slow ?
 >
-> ?!?
+It's not compressing and decompressing.  Tar only does that if you tell
+it (with an option I,y,z,Z or the corresponding long names or
+--use-compress-program).  Saving and restoring this way will also
+defragment the filesystem.
 
-Try something like
-
-startx 2>&1 |tee ~/oops
-
-and read on ~/oops what it used as a FontPath.
-Maybe it has only
-
-unix/:7101
-
-or so and xfs is not running?
-This is also a good way to see where it gets the XF86Config file in case
-you want to get root to change it.
->
-> (And note that the machine boots up well into command line mode as
-> usual; all filesystemchecks therewith indicate "clean", etc.)
->
-> :(((
->
-> // Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-11-02
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
-
-Lawson
+> Regarding,
+> Michael
+> -
 --
 ---oops---
 
