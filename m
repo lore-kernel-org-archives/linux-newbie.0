@@ -1,47 +1,33 @@
-From: Heimo Claasen <hammer@revobild.net>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Fetchpop
-Date: 20 Jul 2003
+Date: Sun, 20 Jul 2003 12:30:35 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307200154.h6K1ruph012360@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20030720043040.5B44610423@heisspf>
+References: <200307200154.h6K1ruph012360@pyxis.wanadoo.be>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "20 Jul 2003 00:00:00." 
+ <200307200154.h6K1ruph012360@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-Among the restricted set of commands of POP3 servers some are even only
-"optional", according to the RFC ("standards"); the LAST command is such
-- most probably, the new ISP did not implement it.(*) So if Fetchpop does
-send this command it gets an "Error" back. (Though it behaves not well
-if it freaks out on that instead of doing all the rest.) I don't know
-the prog but supposedly there is some sort of configuration/preferences
-setting which would allow to suppress that command (or functionality)
-to be used. At least, there should be, seen the "optional" character of
-it.
+Thanks Heimo,
 
-BTW, using that "last" command is highly unreliable if you base decisions
-to delete all "(up to) last (read)" mail items on it - the order of them
-at the POP3 server is stable only while you are actively locked-in to it;
-in-between fetchmail sessions, the server may shuffle everything around -
-and only the number of the "last" item read the last time remained the
-same. This from own bad experience.
+that was interesting. So FetchPop is to blame for conking-out on the LAST 
+command. I can't see a configuration setting for it and I do not know if the 
+program is still maintained. The given website is not reachable.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-07-19
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+The mail fetching programs such as poppy, fetchmail or getmail do not have 
+this problem.
 
-(*) You can test the command set in force by TELNETting to the pop3
-server and sending the "help" command.  The server lists its effective
-commands then.
+Regards
 
-REM - while the usefulness of "last" is doubtful, the equally "optional"
-"top n m" command (n=order number of stored item, m=number of lines from
-mail body, with m=>1) could be highly useful to kill spam at the
-server, and before paying the download fee/time - regrettably, even
-less ISPs have implemented that one. Argh.
+-- 
+Peter
 
-Thus, it's again to look at the "small print" before chosing an ISP.
--hc
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
