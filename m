@@ -1,67 +1,53 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: connecting two nics.... [bcc]
-Date: Tue, 09 Mar 2004 16:07:07 -0800
+From: Peter <peter@skyinet.net>
+Subject: Re: Spam from linux-newbie
+Date: Wed, 10 Mar 2004 17:17:56 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040309154514.01fed7d8@celine>
-References: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
+Message-ID: <20040310091756.16C8ED84C@heisspf>
+References: <5.1.0.14.1.20040309064723.01f8cf48@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <89760D3F308BD41183B000508BAFAC4104B16FE7@DDCNYNTD>
+In-Reply-To: Your message of "Tue, 09 Mar 2004 07:05:59 PST."
+             <5.1.0.14.1.20040309064723.01f8cf48@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-At 06:07 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
->I want to be able to communicate completely...
->
->ping, socket calls, udp, tcp, etc.....
->
->I was just using ping as a simple example.....
->
->even if I put the cards on the same network.......
->
->eth1 = 100.100.1.1 mask=255.255.255.0
->eth2 = 100.100.1.2 mask=255.255.255.0
->
->the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
->
->I havent tried socket calls yet because I assumed if I couldn't get ping
->to work, why try anything else......
->
->Mike
->
->ALL INFORMATION IN THIS EMAIL IS PUBLIC!
-[rest deleted]
-
-"communicate completely" is a meaningless specification in this context.
-
-It is not possible to tell the kernel that ALL traffic to 100.100.1.1 has 
-to be routed through 100.100.1.2 ... because there will be reply traffic to 
-anything that comes in from 100.100.1.2 to 100.100.1.1, and the kernel 
-needs to be able to reply directly out the 100.100.1.1 interface. Or at 
-least I imagine it does.
-
-So you need to arrange for *specific* traffic to go the "long" way. The way 
-to do that is at the application level, for example with the -I option in 
-ping. That approach will (or should; have you actually tested it?) allow 
-you and your customers to verify that an installed device is working at the 
-hardware level, the original problem you posed.
-
-Aside from such testing, I can't really think of a reason why a host would 
-want to communicate with itself the "long" way around ... so I'm having a 
-hard time trying to translate your general desire to specific things that 
-application-level solutions might address. Now we really are, probably, 
-getting into the sensitive business aspects of what your company does ... 
-but I think that only someone with that information will be able to come up 
-with solutions that work for you.
-
-As I said before, you probably want to see how ping implements the -I 
-option. I'm a bit rusty on this stuff right now, but I recall that bind() 
-allows you to specify a local address to use. This may force the use of the 
-indirect interface ... I'm really not certain.
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
 
+ray@comarre.com said:
+> This is simply too vague to permit a decent reply
+
+I wanted to be vague just not to make it easier for the spammer and to see the 
+reaction of other subscribers.
+
+heisspf@skyinet.net said:
+> .... spam by apparently a subscriber to this list linux-newbie.
+
+ray@comarre.com said:
+> "apparently"? What does that mean?
+
+It means the mail comes in just as it comes from a regular (no-spammer) 
+subscriber.
+
+The spammer continuously changes the hostname and uses somewhere along hotmail 
+and that isp showing in  Message-Id:.
+
+So the spammer must continuously register with this list under continuously 
+changing names.
+
+I sent an abuse to hotmail, however, since it is not from them they can't do 
+anything they said. To send an abuse to the isp appearing in the  Message-Id: 
+would most likely be futile since by the name of it it must be the spammers 
+own isp. (see Jim's mail)
+
+The spam Jim cited and your example seem to come from the same source as my 
+spam which I had a little problem of filtering out due to its chameleon style 
+posting.
+
+Regards
+
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
