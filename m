@@ -1,49 +1,60 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: unable to make dep; limit.h
-Date: Mon, 3 Feb 2003 19:58:10 +0000
+From: whitnl73@juno.com
+Subject: Re: Network card and kernel module problems
+Date: Tue, 4 Feb 2003 16:52:57 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03020319581005.19519@unix.pa3gcu>
-References: <20030202211210.A2446@jetty>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030204.180710.8.0.whitnl73@juno.com>
+References: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030202211210.A2446@jetty>
+In-Reply-To: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Richard Spencer <rspr@sunflower.com>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: raihan@citech-bd.com
+Cc: linux-newbie@vger.kernel.org
 
-On Monday 03 February 2003 02:12, Richard Spencer wrote:
-> I hope someone can point me in the right direction. I tried to compile a
-> new kernel (version 2.4.20) and I ended up with the following error
-> message:
+On Mon, 3 Feb 2003, Amin wrote:
+
+> I'm beginning to think I've mixed up different kernel module dependencies.
+> The short story is I need help sorting out the modules for use with my two
+> kernels: 2.4.18-14 and 2.4.18-14custom.  The long story is: when I
+> originally installed RH8.0 and found it didn't already support my NIC, I
+> recompiled the kernel with
 >
-> [root@jetty linux-2.4.20]# make dep
-> gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -o scripts/mkdep
-> scripts/mkdep.c In file included from /usr/include/bits/posix1_lim.h:126,
->                  from /usr/include/limits.h:30,
->                  from
-> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:117, from
-> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/syslimits.h:7, from
-> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:11, from
-> scripts/mkdep.c:35:
-> /usr/include/bits/local_lim.h:27: linux/limits.h: No such file or directory
-> make: *** [scripts/mkdep] Error 1
+> make xconfig; make dep; make modules; make modules_install; make bzImage
 >
-> I currently run Linux kernel 2.2.22 on a pentium laptop and RedHat 6.2 and
-> I would appreciate any help or suggestions as to where to look. Thank you!
+> and tried to boot the new kernel.  Eventually I got it to boot, but it
+> failed to detect/insert a lot of modules, which seems strange in
+> retrospect because I think I actually specified only one loadable module;
+> all the others were built-in.  I recompiled again, with the same results.
 
-To add to Ray's advice, try running make mrproper before anthing else, it 
-only needs to be run once after installing the source.
-Before you do that now, copy .config into /usr/src otherwise it will get 
-deleted.
-mrproper creates the needed symlinks.
+If you didn't change EXTRAVERSION in the Makefile, you will have the
+leftover modules from the modular kernel in /lib/modules/`uname -r`
+but they will not be able to load with the kernel that has them builtin.
+I'd use a unique EXTRAVERSION for each new custom configuration.
+When you get it right you can remove all the false starts.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+> A lot of error messages courtesy of depmod as it tries to find module
+> dependencies --- things like input.o, soundcore.o, etc.  I've recompiled
+> twice after that, with a slightly different command order:
+>
+> make xconfig; make dep; make bzImage; make modules; make modules_install
+>
+> But still I get the same module dependency problems during boot.  Help!
+>
+> Yawar Amin
+>
+Lawson
+--
+---oops---
 
+
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
