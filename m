@@ -1,41 +1,27 @@
 From: James Hatridge <James.Hatridge@epost.de>
-Subject: Re: How to post to Usenet groups
-Date: Mon, 12 Aug 2002 16:33:55 +0200
+Subject: (TO?) Toshiba Trade ..
+Date: Mon, 12 Aug 2002 18:48:06 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208121633.55914.James.Hatridge@epost.de>
-References: <200208112132.15668.natarajan_k@hotpop.com>
+Message-ID: <46088.9002577916$1029172349@news.gmane.org>
 Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208112132.15668.natarajan_k@hotpop.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: natarajan_k@hotpop.com, Linux Newbie <linux-newbie@vger.kernel.org>
+To: SuSE List <suse-linux-e@suse.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Monday 12 August 2002 03:32, Natarajan K wrote:
-> HI,
-> 	I am using Knode as my news client. I am not able to post to usenet groups
-> like comp.arch etc. I get a 440 error. I use newscache0.freenet.de as my
-> server. How do I post? Thanks for the help. It could be off topic but I am
-> helpless.
+HI all...
 
-HI Natarajan,
+I've got two hard drives made for laptops,  2.5" I believe. One is a Seagate 
+Marathon 1.35gb and the other is a Hitachi 1.0gb. I have no need of them. But 
+I do need 64mb(or bigger) memeory stick for a Toshiba Satellite 220CS.
 
-I don't use usenet, email lists are much nicer. But are you sure that 
-freenet's news groups are not "read-only"? There is a very good one in 
-Berlin, that's free. It has both the English groups and German speaking 
-groups.  If you are interested here's the address:
+If anyone has this type memory and is interested in a trade email me off-list. 
 
-news://news.cis.dfn.de
-
-You will have to signup and get a password. That takes 2-3 days, but it's 
-free.
-
-Hope this helps
-
+Thanks
 JIM
-
 -- 
 Jim Hatridge
 Linux User #88484
