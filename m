@@ -1,35 +1,60 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: Hiyas
-Date: Wed, 12 Mar 2003 17:49:22 +0600
+From: Rodrigo Gesswein <rodri@chilesat.net>
+Subject: Re: a simple browser
+Date: Wed, 12 Mar 2003 08:30:07 -0400 (CLT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030312114922.GB1112@localhost.localdomain>
-References: <006801c1e757$b0a13350$0301a8c0@netlyncs.com> <3E6EDD42.A2C9BC08@dsl-only.net>
+Message-ID: <Pine.LNX.4.44.0303120829070.1325-100000@pluton.chilepac.com>
+References: <3E6EDB78.14415BBE@dsl-only.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3E6EDD42.A2C9BC08@dsl-only.net>
+In-Reply-To: <3E6EDB78.14415BBE@dsl-only.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, Mar 11, 2003 at 11:09:54PM -0800, pshook wrote:
+Hi!
 
-[...]
+   Also try Dillo! at http://dillo.auriga.wearlab.de/
 
-> Is there a way to set the make xconfig back to a default or what the
-> original kernel on my system is? I can still boot with the original
+   Regards!
 
-[...]
+Rodrigo...
+-- 
+On Tue, 11 Mar 2003, pshook wrote:
 
-I just read the documentation myself, in fact, and
-discovered that one command will do exactly what you want:
+> Try opera, I think at  www.opera.com
+>
+> G Anna wrote:
+>
+> > Dear All,
+> >
+> > Can anybody suggest a good and simple browser?  Netscape core dumps
+> > very often, Mozilla is very very slow and I do not know of any other
+> > browser.  (Most of the websites nowadays doesn't care about Lynx :-(
+> >
+> > Thanks for your time.
+> >
+> > anna
+> >
+> > --
+> >
+> > Get your free e-mail account at http://www.linuxmail.org
+> >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
-make oldconfig
 
-It'll restore everything to the ``old'' settings.
-
-Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
