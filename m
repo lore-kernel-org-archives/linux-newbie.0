@@ -1,71 +1,74 @@
-From: dave <dave@dpomeroy.com>
-Subject: Re: security
-Date: Tue, 17 Feb 2004 13:22:45 -0800
+From: "Anna G. Zapata" <azapata@du.edu>
+Subject: Id "x" respawning too fast: disabled for 5 minutes
+Date: Tue, 17 Feb 2004 16:17:00 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40328625.4080403@dpomeroy.com>
-References: <40325596.6090805@dpomeroy.com> <20040217191000.GA30689@teamfinders.org>
+Message-ID: <HBEJLOFMLEPBMAAEFNFDCEAPCFAA.azapata@du.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040217191000.GA30689@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "Theo. Sean Schulze" <tschulze@teamfinders.org>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Theo. Sean Schulze wrote:
+Hello all,
 
->On Tue, Feb 17, 2004 at 09:55:34AM -0800, dave hunted and pecked out:
->  
->
->>I've been runing Mandrake for a couple of years and I'm still having 
->>problems with groups. 
->>This is the procedure for making a group and sharing a subdirectory that 
->>I use.  Can someone tell me where I'm screwing up?  Thanks in advance
->>
->>Make a folder:   mkdir /home/everyone
->>make group: groupadd everyone
->>add users gpasswd -a dave everyone
->>add users gpasswd -a laura everyone
->>change the group for the folder chgrp -R everyone /home/everyone
->>add write for group everyone chmod g+r /home/everyone
->>    
->>
->
->Could just be a typo, but r adds read privileges.  g+w would add write
->privileges.
->
->  
->
->>When I'm done with this I still can not make a folder in /home/everyone 
->>logged on as dave.
->>    
->>
->
->If that wasn't a typo, then it would explain why you can't write a new
->directory in the /home/everyone folder.
->
->  
->
->>again thanks for your help
->>
->>-- 
->>Dave Pomeroy K7DNP South Eastern Washington
->>
->>    
->>
->Cheers,
->Sean
->  
->
-Sean,
-  That was a typo.  I've made some progress with Rays help.  It appears 
-msec is causing the problem.  It keeps running and revoking the write on 
-the /home/everyone subdirectory for the group.  I'll work on msec.
- Thanks for the help
+I just updated the fedora core with all it's new patches and now the machine seems to be hosed.  On reboot, I get the
+following message:
 
--- 
-Dave Pomeroy K7DNP South Eastern Washington
+"Id "x" respawning too fast: disabled for 5 minutes" - Any ideas?  I have had nothing but problems with Fedora.
+
+I have no clue what is going on here.  I tried to get the machine in run level 3, but I still can't get it to work.
+Here is a copy of the /etc/inittab file:
+
+# Default runlevel. The runlevels used by RHS are:
+#   0 - halt (Do NOT set initdefault to this)
+#   1 - Single user mode
+#   2 - Multiuser, without NFS (The same as 3, if you do not have networking)
+#   3 - Full multiuser mode
+#   4 - unused
+#   5 - X11
+#   6 - reboot (Do NOT set initdefault to this)
+#
+id:3:initdefault:
+
+# System initialization.
+si::sysinit:/etc/rc.d/rc.sysinit
+
+l0:0:wait:/etc/rc.d/rc 0
+l1:1:wait:/etc/rc.d/rc 1
+l2:2:wait:/etc/rc.d/rc 2
+l3:3:wait:/etc/rc.d/rc 3
+l4:4:wait:/etc/rc.d/rc 4
+l5:5:wait:/etc/rc.d/rc 5
+l6:6:wait:/etc/rc.d/rc 6
+
+# Trap CTRL-ALT-DELETE
+ca::ctrlaltdel:/sbin/shutdown -t3 -r now
+
+# When our UPS tells us power has failed, assume we have a few minutes
+# of power left.  Schedule a shutdown for 2 minutes from now.
+# This does, of course, assume you have powerd installed and your
+# UPS connected and working correctly.
+pf::powerfail:/sbin/shutdown -f -h +2 "Power Failure; System Shutting Down"
+
+# If power was restored before the shutdown kicked in, cancel it.
+pr:12345:powerokwait:/sbin/shutdown -c "Power Restored; Shutdown Cancelled"
+
+
+# Run gettys in standard runlevels
+1:2345:respawn:/sbin/mingetty tty1
+2:2345:respawn:/sbin/mingetty tty2
+3:2345:respawn:/sbin/mingetty tty3
+4:2345:respawn:/sbin/mingetty tty4
+5:2345:respawn:/sbin/mingetty tty5
+6:2345:respawn:/sbin/mingetty tty6
+
+# Run xdm in runlevel 5
+x:3:respawn:/etc/X11/prefdm -nodaemon
+
+Anna Zapata
+UTS - Network Security
+303.871.2009
 
 
 -
