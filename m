@@ -1,67 +1,32 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: NIS Server
-Date: Wed, 30 Oct 2002 14:26:05 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Tripwire and LogWatch general info
+Date: Wed, 30 Oct 2002 14:41:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00cf01c2804a$30d13f30$64fea8c0@pkrausxp>
-Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_00D0_01C28020.47FB3730"
+Message-ID: <200210301941.g9UJfW502355@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_00D0_01C28020.47FB3730
-Content-Type: text/plain;
-	charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: linux-newbie@hartford-hwp.com
 
-I am reading the NIS how-to and am a little unclear as to what NIS is
-capable of. If I understand this right then I can store usernames and
-password on the NIS server. Then whenever someone try's to login to a
-machine (windows, UNIX, or Linux) it will poll the database for
-authentication? For instance I try and telnet to my Linux box when I log
-in rather then the Linux machine checking its local user account info it
-would turn to the database? Sorry but this is kind of confusing me.
+Root cron every day runs to programs, Tripwire and LogWatch. I'd like
+to know more about them.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Tripwire apparently compares certain files against a database to
+ensure file integrity. What files are checked? What's the point? Is it
+to help protect against viruses? Is it entirely safe for me to enable
+Tripwire? (root's cron tries to run it daily, but it says it has not
+been initiated).
 
-------=_NextPart_000_00D0_01C28020.47FB3730
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+The LogWatch does report denied packets. I'd like to know what it all
+means. Denial is good, but I don't know what's denied. What good is it
+to know what IP tried without success to access my system. Usually
+there is just one attempt, and I suppose that can be ignored. But at
+what point should one become concerned? Or is the fact that LogWatch
+is reporting it mean that I don't have to be concerned?
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
-
-------=_NextPart_000_00D0_01C28020.47FB3730--
-
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
