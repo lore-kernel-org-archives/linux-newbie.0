@@ -1,120 +1,66 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: PPP server doesn't work
-Date: Sat, 27 Mar 2004 06:20:14 -0800
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Continous buzzing sound in kde
+Date: Sun, 28 Mar 2004 09:26:04 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040327055706.01f263a0@celine>
-References: <200403271346.23320.vhlist@yandex.ru>
+Message-ID: <20040328012604.5B27120868@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403271346.23320.vhlist@yandex.ru>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-You are going to have to say a bit more about the setup to get good help. 
-For now ...
+Hi,
 
-1. Your routing table is hard to read (due to the "ppp" entry on the first 
-line). But your ifconfig output says that both ends of the ppp link are in 
-netwotk 192.168.0.0/16, which the routing talbe says is in eth0, not ppp0. 
-Usually host routes supersede network routes, but the use of "ppp" conceals 
-the actual address set. When reporting routing tables, ALWAYS use a flag to 
-force reporting by address (e.g., "netstat -nr" or "route -n").
+In slackware 9.1 where I had to change from alsa to OSS sound system due to 
+distorted sounds with alsa I still can not open kde desktop.
 
-2. Since you are familiar with tcpdump ... are the ping packets going out 
-ANY interface? (Answer with respect both to the host you are ping'ing from 
-AND the "ppp server", if they are different hosts.)
+Trying to do so I get a continuous, annoying buzz, necessitating a quick 
+ctrl-alt-backspace retreat.
 
-3. here are you ping'ing FROM? The server itself? Some other host on 
-192.168.0.0/16? Since you talk about proxyarp, I'd guess the second. If so, 
-after you try and fail to ping, does this third host's arp table have an 
-entry for the "ppp server "host? Does the ping fail silently, or is there 
-some error message?
+This shows on the console:
 
-4. Can you ping the "ppp server" from the "ppp client"? If not, how does 
-that ping fail (silently, or is there an error message)?
+AudioIO::close(): entering
+AudioIOOSSThreaded::stopThread() entering
+waiting for writerThread to finish
+AudioIOOSSTHreaded::writerThread() fatal error writing to a audio_fd
+AudioIOOSSThreaded::writerThread() thread stopped
+AudioIOOSSTHreaded::readerThread() fatal error reading from audio_fd
+AudioIOOSSThreaded::readerThread() thread stopped
+waiting for readerThread to finish
+AudioIOOSSThreaded::stopThread(): leaving
+AudioIO::close(): leaving
 
-5. Next time please be very exact about which machine is which.
+Any suggestions to stop this buzzing sound?
 
-         You say you put "a small PPP server on my home machine".
+There is no sound problem anymore with gnome or fvwm2.
 
-         Later, you talk about "local" and "remote" machines, but I am 
-unclear as to which of these is the ppp "server" (since you said it was 
-your "home" machine, does that mean it is "local"?).
+lsmod gives:
 
-         Then you tell us which IP address is "vhcastle", which "ppp", 
-without explaining what the hostnames refer to.
+Module                  Size  Used by    Not tainted
+bsd_comp                4312   0 (autoclean)
+ppp_async               7552   0 (autoclean)
+ppp_generic            15452   0 (autoclean) [bsd_comp ppp_async]
+slhc                    5040   0 (autoclean) [ppp_generic]
+pcmcia_core            40032   0
+ide-scsi                9424   0
+via82cxxx_audio        19704   0
+ac97_codec             12296   0 [via82cxxx_audio]
+soundcore               3332   2 [via82cxxx_audio]
+agpgart                39576   0 (unused)
 
-         Similarly, later switching to referring to the "server" and the 
-"other end" leaves me confused ... pick one way to refer to each host and 
-stick with it, please.
+Chipset: P4M266/A Northbridge and VT8235 Southbridge
 
-In addition to clarifying the above items, next time please provide for 
-BOTH hosts (or all 3, if you are ping'ing from yet a different host), the 
-unedited output of
+AC'97 Audio Codec: Compliant with AC'97 2.1 specs.
+                   16-bit stereo full-duplex CODEC with fixed 48KHz sampling   
+                    rate.
+                   Sound Blaster, Sound Blaster Pro Compatible
 
-         ifconfig -a
-         netstat -nr
-         cat /proc/net/arp [this AFTER an unsuccessful ping]
 
-labeling them very clearly as to which is which.
+Regards
+-- 
+Peter
 
-At 01:46 PM 3/27/2004 +0300, Anton Martchukov wrote:
->I did install a small PPP server on my home machine in order to play
->FreeCiv etc., but can't figure out why it refuses to run. According to
->pppd debug logs all goes right, here is the options I use for pppd:
->
->auth
->-chap
->+pap
->login
->debug
->proxyarp
->ktune
->asyncmap 0
->netmask 255.255.0.0
->lock
->crtscts
->modem
->vhcastle:ppp
->ms-dns 192.168.1.1
->mtu 576
->mru 576
->logfile /var/log/pppd.log
->
->I use proxyarp and pppd tells that allright in logs:
->
->found interface eth0 for proxy arp
->local  IP address 192.168.1.1 (this is vhcastle)
->remote IP address 192.168.10.1 (this is ppp)
->
->But anyway I can't ping remote machine, none of packets are sent thru
->the link, I've checked it with tcpdump. IP forwarding is enabled via
->sysctl.
->
->ifconfig ppp0:
->ppp0   Link encap:Point-to-Point Protocol
->           inet addr:192.168.1.1  P-t-P:192.168.10.1 Mask:255.255.255.255
->           UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:576  Metric:1
->           RX packets:5 errors:0 dropped:0 overruns:0 frame:0
->           TX packets:5 errors:0 dropped:0 overruns:0 carrier:0
->           collisions:0
->           RX bytes:102 (102.0 b)  TX bytes:96 (96.0 b)
->
->route on server:
->ppp                 *      255.255.255.255 UH  0      0        0 ppp0
->169.254.0.0     *      255.255.0.0        U     0      0        0 eth0
->192.168.0.0     *      255.255.0.0        U     0      0        0 eth0
->127.0.0.0         *       255.0.0.0          U     0      0        0 lo
->
->So, I completely stuck with this. Some points confusing me are NOARP for
->ppp0 in the output of ifconfig (is this a problem?). Also, I can't
->pinpoint where the net 169.254.0.0 is assigned to eth0 in configs, I
->did not specify it anywhere.
->
->I use RedHat 9 (ASP 9) with pppd 2.4.2, same on the other end + KPPP
->from KDE 3.1. Any ideas will be greatly appreciated.
 
 
 -
