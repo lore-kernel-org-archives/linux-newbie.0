@@ -1,8 +1,8 @@
-From: Peter Garrett <peterg@fishinternet.com.au>
+From: John Kelly <bilbo@waitrose.com>
 Subject: Re: error: premature end of script headers in cgi
-Date: Wed, 01 Sep 2004 07:04:02 +1000
+Date: Tue, 31 Aug 2004 23:02:53 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1093986242.15255.10.camel@DebiAnarchist>
+Message-ID: <20040831230253.4c8c6091.bilbo@waitrose.com>
 References: <fc.004c4e000061b03e004c4e000061b03e.61b099@palmertrinity.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -10,50 +10,59 @@ Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <fc.004c4e000061b03e004c4e000061b03e.61b099@palmertrinity.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+Cc: linux-newbie@vger.kernel.org
 
-On Wed, 2004-09-01 at 00:47, William Stanard wrote:
+Hi,
+On Tue, 31 Aug 2004 10:47:44 -0400
+"William Stanard" <wstanard@palmertrinity.org> wrote:
 
+> I'm running Linux 2.4.18-14smp on a Compaq Proliant. When trying to
+> run gm.cgi (correctly chmod-ed, I believe) to start using Greymatter
+> blogging, I receive the following error when I look at the httpd
+> error_log:
 > 
 > [error] [client 10.0.4.126] Premature end of script headers: gm.cgi
 > 
 > I am guessing that in moving the cgi scripts to my Linux box via
-> Dreamweaver, I "added" some bogus carriage returns or some such... How can
-> I (first) see if that is what I did and (two) edit same...
+> Dreamweaver, I "added" some bogus carriage returns or some such...
+> How can I (first) see if that is what I did and (two) edit same...
+> 
+There are a few methods to see non printing characters in a file.
+Try 
+cat -v filename 
 
-Bill: I'm no expert, and perhaps someone more knowledgeable might be
-able to explain better, but I believe your guess may be correct. The
-carriage returns for DOS/Windows are different from those in UNIX (which
-Linux more closely resembles, of course.) 
+In vi, in command mode you can do:
+: set list
+and all the 'funny' characters will be displayed.
+Do:
+: set nolist 
+to make the file appear normal.
 
-The program you want is probably the command-line utility dos2unix.
-Seems to be pretty standard on most Linux installations. From "man
-dos2unix":
+Personally whenever I come across an MS-dos file on Unix, I first
+check it in vi with the :set list command and then I do a vi command
+like:
 
-" tofrodos - Converts text files between DOS and Unix formats.
+:%s/<CTRL>v<CTRL>M//g
 
-SYNOPSIS
-       fromdos [ options ] [file...]
-       todos [ options ] [file...]
+This is a substitute command. 
+The % sign means apply the command to the whole file
+s means substitute.
+/ is the delimiter
+<CTRL>v means dont interpret the next keystroke
+<CTRL>M is the 'funny' character you want to get rid of. In this case
+it is control M, though you may find something else in your
+particuliar file. g means do the command globally ie do it as many
+times as necessary on each line.
 
-DESCRIPTION
-       DOS  text  files traditionally have carriage return and line feed
-pairs
-       as their newline characters while Unix text files have the line
-feed as
-       their newline character.  fromdos converts text files from the
-DOS for-
-       mat to the Unix format, while todos converts text files from 
-the  Unix
-       format to the DOS format. ...."
+Of course if it all goes wrong, you can type u in command mode and the
+change will be undone :-)
 
+Hope this helps.
 
-Hope this helps...
+regards,
 
-Peter
+John Kelly
 
--- 
-Windows belongs to Microsoft: Linux belongs to humanity
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
