@@ -1,48 +1,33 @@
-From: "Steven" <sos22@cam.ac.uk>
-Subject: Re: (F)A "subject" rule for procmail
-Date: Sun, 14 Sep 2003 10:49:53 +0100
+From: Peter Edstrom <peter.p3@home.se>
+Subject: Re: A "subject" rule for procmail
+Date: Sun, 14 Sep 2003 11:41:37 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030914094953.GA571@archibold.chu.cam.ac.uk>
+Message-ID: <20030914094137.GA442@linux>
 References: <XFMail.20030913224135.ik5bcu@tin.it>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="9jxsPFA5p3P2qPhR"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 In-Reply-To: <XFMail.20030913224135.ik5bcu@tin.it>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+Hello, Marco.
 
---9jxsPFA5p3P2qPhR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+As have already been implied, subject filtering isn't the most reliable
+way of handling spam. If spam is getting on you, then I really recommend
+installing a bayesian spam filter, especially the one called 'bmf'. The
+filter learns what is spam and what isn't, by analyzing your mail and
+listen to your commands. After a while, you'll be totally spam free
+(which I am now).
 
-> How can I set the rule into procmailrc to block ALL Sildenafil topic subj=
-ect ?
-Try:
+A real plus if you happen to use mutt as MUA.
 
-:0
-* ^Subject:.*Sildenafil.*
-spam/.  =20
+You can find bmf at http://www.sourceforge.net/projects/bmf. Let me know
+if you're having problem getting it to work, and I'll try to help you.
 
-Steven Smith,
-sos22@cam.ac.uk.
-
---9jxsPFA5p3P2qPhR
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.3 (FreeBSD)
-
-iD8DBQE/ZDnBO4S8/gLNrjcRAvAmAJ4q2wztLcriUjdQtxe93ZyjqzA+zQCgjt18
-7wBZAnmh2ok+wrtcAchnnvM=
-=o1ya
------END PGP SIGNATURE-----
-
---9jxsPFA5p3P2qPhR--
+/Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
