@@ -1,47 +1,58 @@
-From: "Sean Rima" <lists@tcob1.net>
-Subject: Re: (fwd) .so, .a and .o-files
-Date: Saturday, 17 Aug 2002 00:01:28 +0000
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Mailer Connections
+Date: Sat, 17 Aug 2002 16:54:39 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_7223=3a9750=2f200_c3e069b7@fidonet.org>
-References: <p05111b00b9831e021b21@[65.31.217.219]>
+Message-ID: <200208170854.g7H8sdr06556@philonline.com>
+References: <rhw@InfraDead.Org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <p05111b00b9831e021b21@[65.31.217.219]>
+In-Reply-To: Message from Riley Williams <rhw@InfraDead.Org> 
+   of "Fri, 16 Aug 2002 06:59:30 +0100." <Pine.LNX.4.21.0208160639100.8397-100000@Consulate.UFP.CX> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Riley Williams <Riley@Williams.Name>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Originally to: Bob Batson
+Hi Riley,
 
--=> Bob Batson wrote to All <=-
+rhw@InfraDead.Org said:
+> If you mean "living" rather than "leaving", then yes.
 
- BB> At 4:16 PM -0500 8/16/02, Ray Olszewski wrote:
+Darn English!
 
- >Originally to: All
- >
- >
- >If you have not seen your mail on the list, then almost certainly something
- >is wrong at your end. This is the *third* time I have seen this message
- >this morning.
+Peter said:
+>> 127.0.0.1       localhost
+>> 202.95.238.2    philonline.com  Peter
+>> 202.78.74.68    webcard.skyinet.net     Pedro
 
- BB> [snip]
+rhw@InfraDead.Org said:
+> If you are with an ISP that gives you Dynamic IP addresses (as many
+> do), then the above could cause other problems when you are allocated
+> other than the addresses you have quoted, so be careful.
 
- BB> I too am receiving multiple copies of more than one persons'
- BB> message/question.
+I will remember that, -hopefully.
 
+Peter said:
+>> Did a programmer change something that one has to edit now
+>> /etc/sysconfig/network a file I did not even know it existed or did
+>> I miss something when installing RH7.1? 
 
-There was a problem with a gateway I have here, I have hit the damn thing with a brick to stop it happening again. Sorry folks
+rhw@InfraDead.Org said:
+> I would presume that for some reason, you provided the wrong value on
+> the relevant pre-iinstall screen, but it is almost impossible to work
+> out which screen was affected in this way. 
 
-Sean
+Since I have installed RH many times of different versions, even at friends' 
+placex it is almost routine. I have a strong suspicion that the problem is 
+with
+RH7.1. I did the installation twice and was surprised to be called localhost 
+instead of Peter and on booting getting that long message on starting lpd.
+ 
+Many thanks and best regards
+-- 
+Peter
 
-
-... Sea Anglers have "BIGGER" tackle
-
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
 
 
 -
