@@ -1,8 +1,8 @@
 From: Richard Dawson <rcdawson@att.net>
-Subject: Mandrake 9.1 internet connection
-Date: Sun, 01 Jun 2003 11:18:32 -0700
+Subject: more compaq 4000 / linux questions.
+Date: Sun, 01 Jun 2003 14:52:21 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EDA4378.6070007@att.net>
+Message-ID: <3EDA7595.3090202@att.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,37 +10,32 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux <linux-newbie@vger.kernel.org>
 
-I have managed to get linux 9.1 running on my Compaq 4000 (Pentium MMX) 
-machine.  After a bit of a struggle I got it to recognize the 
-linux-compatible U.S. Robotics modem and assign it to ttyS4.  Through 
-the Mandrake Control Center (MDC) I used DrakConnect to set up the 
-internet connection through the modem.  I can now connect to the 
-internet, but only by logging in as root and using DrakConnect.
+As long as I have asked one question about getting this Compaq deskpro 
+4000 (5200MMX) computer with its 200 MHz pentium processor, I might as 
+well go whole-hog and try to get everything working.
 
-When I open the browser (Konquerer) and request a non-local URL, it 
-doesn't automatically fire up the dialer and activate the modem.  I 
-don't seem to find a program in the start applications menu or an icon 
-for a dialer.  
+Mandrake 9.1 didn't seem to find the ESS 1868 based. Compaq sound card. 
+ The Compaq card is a quasi-ISA card.  There is a slightly extended ISA 
+socket on the board (labeled Compaq) in which it is installed.  I 
+removed that card, put a "vanilla" sound card in the adjacent ISA slot, 
+and rebooted.  The Mandrake Control Center (MDC) Hardware tab doesn't 
+seem to find it either.
 
-I was first inspired to try Linux when a non-profit organization with 
-which I am associated was given several of these machines -- with no 
-software.  I thought this the perfect application (excuse to 
-experiment?) for Linux.  Of course, they needed bigger hard drives, more 
-memory, the video cards were incompatible, the sound cards 
-unrecognized.........  I, an engineer who has put together and updated 
-several DOS/Windows machines, but who is not a computer or software 
-engineer, thought I would be able to muddle through.   --  and I have, 
-but after having taken a couple of Linux classes, purchased bits and 
-pieces of hardware, purchased different distributions of Linux (I do 
-believe that we users should support the community that provides the 
-software), and spent numerous hours chasing a solution, I think I would 
-have been money ahead to buy the several new Windows machines for the 
-organization!  
+It does find The PCI video card.
 
-But I don't want to do that.  I want to get these machines running and 
-set a precedent for using Linux -- with its lower cost of ownership!
+It finds two things that it classifies as "unknown/others":  (1) 56K 
+FaxModem Model 5610 --this is the U.S. Robotics "hardware" modem.  Why, 
+one might ask, does it say it is unknown when it calls it by name and, 
+with a serial port assigned and a link installed, is able to use it? 
+ (2) VT82C586/A/B PCI to ISA (Apollo VP)  This on bus 1106:586 at 
+location 0:14:0.
 
-So......  Can anyone help me solve this immediate problem?
+It finds one thing it classifies as "(E)IDE/ATA controllers":  VT82C586 
+IDE (Apollo)"  I presume this is for the hard drive.
+
+All of this seems to be there even if I pull the sound cards, so (1) can 
+I get this thing to use the sound card that came with it, or (2) can I 
+get it to acknowledge the installation of some other card?
 
 
 -
