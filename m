@@ -1,65 +1,51 @@
-From: "Armen Kaleshian" <akaleshian@kriation.com>
-Subject: RE: Graphical client for SSH2?
-Date: Sat, 21 Feb 2004 10:08:28 -0500
+From: Juan Facundo =?iso-8859-1?q?Su=E1rez?= <faco@fdsoft.com.ar>
+Subject: Re: Graphical client for SSH2?
+Date: Sat, 21 Feb 2004 12:19:10 -0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S261570AbUBUPF4/20040221150556Z+23694@vger.kernel.org>
-References: <GNEPLLCIIBHICCOGIAKPOECFCGAA.eatley@wow-corp.com>
+Message-ID: <200402211219.10501.faco@fdsoft.com.ar>
+References: <S261570AbUBUPF4/20040221150556Z+23694@vger.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPOECFCGAA.eatley@wow-corp.com>
+In-reply-to: <S261570AbUBUPF4/20040221150556Z+23694@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: 'Eve Atley' <eatley@wow-corp.com>
-Cc: 'Linux-Newbie' <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: 'Linux-Newbie' <linux-newbie@vger.kernel.org>
 
-Use Putty http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+Exactly, it is simply amazing !!
 
-It's the easiest Windows SSH client to use with zero installation overhead,
-etc.
 
-Good Luck! =D
+El S=E1b 21 Feb 2004 12:08, Armen Kaleshian escribi=F3:
+> Use Putty http://www.chiark.greenend.org.uk/~sgtatham/putty/download.=
+html
+>
+> It's the easiest Windows SSH client to use with zero installation ove=
+rhead,
+> etc.
+>
+> Good Luck! =3DD
+>
+> --Armen
+>
+> : -----Original Message-----
+> : From: linux-newbie-owner@vger.kernel.org
+> : [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Eve Atley
+> : Sent: Friday, 20 February, 2004 21:39
+> : To: Linux-Newbie
+> : Subject: Graphical client for SSH2?
 
---Armen 
-
-: -----Original Message-----
-: From: linux-newbie-owner@vger.kernel.org 
-: [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Eve Atley
-: Sent: Friday, 20 February, 2004 21:39
-: To: Linux-Newbie
-: Subject: Graphical client for SSH2?
-: 
-: 
-: Hi,
-: 
-: I currently have Cygwin running on my Windows laptop as a 
-: test enviroment to log in with SSH2. Now, sure you can run it 
-: from the command line in Cygwin, but these are users who 
-: aren't real savvy with technology, and probably won't have 
-: the patience to learn the CLI.
-: 
-: Therefore, I tried installing WinSCP. While I am asked for my 
-: passphrase in Cygwin, the same doesn't occur in WinSCP - I 
-: can log in with my user password, even when I have loaded my 
-: public key.
-: 
-: Anyone?
-: 
-: Thanks,
-: Eve
-: 
-: 
-: -
-: To unsubscribe from this list: send the line "unsubscribe 
-: linux-newbie" in the body of a message to 
-: majordomo@vger.kernel.org More majordomo info at  
-: http://vger.kernel.org/majordomo-info.html
-: Please read the FAQ at http://www.linux-learn.org/faqs
-: 
-
+--=20
+=46acundo Su=E1rez
+=46DSoft SA
+icq:121172697
+jabber:faco@fdsoft.com.ar
+msn:use_jabber@hotmail.com
+Neuqu=E9n-Argentina
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
