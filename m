@@ -1,45 +1,54 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: ppp ain't talking
-Date: Sun, 15 Jun 2003 17:17:57 +1200
+From: James Ferris <james_e_ferris@yahoo.ca>
+Subject: Fwd: Re: Linux for old PC + a caveat
+Date: Sun, 15 Jun 2003 01:04:11 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306150543.h5F5hnZ4017422@dbmail-mx3.orcon.co.nz>
-References: <5.1.0.14.1.20030613230654.0390ced0@celine> <5.1.0.14.1.20030614085856.01eccbf0@celine>
+Message-ID: <5.1.0.14.1.20030615005724.02d10588@pop.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030614085856.01eccbf0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 15 June 2003 04:04, Ray Olszewski wrote:
+One quick caveat for disk-swapping.
+Watch your BIOS settings for the drive.
+Different BIOS' detect any drive distinctly, and having one BIOS use
+w sectors and x heads may give the same MB as y sectors and z heads
+... but the drive will not always read correctly with an alternate setup.
 
-[...]
+>On Sunday 15 June 2003 07:30, vh wrote:
+> > Hello List.
+> > I want to run Linux on rather old PC.
+> > The PC is Pentium MMX 166 with 24M RAM, S3 Trio Video and 2,5Gb WD Hard
+> > Disk, motherboard is Intel 430 VX. I tried set up ASP Linux, but it
+> > hangs up during installation of packages (on ASP forum I was told that this
+> > distributive should work on my computer). Also I tried to set up
+> > Mandrake, but of cause it's failed die to low amount of RAM. Do I
+> > need older releases? But which ones should I try to use?
+> > Yes, I was reading a lot of FAQs and HOW-TOs, but I can't install
+> > anything at all. And I belive the problem is only in installation.
+> > Do I think right? What should I do? What distribution should I use?
+> > Can I setup Linux to my HDD on another PC so as it will be working
+> > lately when I plug it into my one? Any configuration hacks is not so
+> > terrible for me. I'm thinking now to run FBSD, but Linux certainly
+> > will be preferable. Can no more work with windows... Any experience?
 >
-> >My preferred browser is Opera, which I believe uses Qt  (and I notice
-> > doesn't come with Debian, but that may be because of Opera's own
-> > licensing terms).
->
-> It definitely is a license issue. Opera isn't Open Source or Free Software
-> by any stretch of the imagination, so it is not even close to DFSG
-> compliant.
->
-> If commercial distros like Red Hat and Mandrake do include it, I'd be
-> curious as to the terms under which it is provided (since Opera appears to
-> be shareware, with an ad-ware sort-of-free-price variant).
-> [...]
+>If you do decide to go the disk-swapping route, then I'd say it's certainly
+>possible to set up Linux on a hard drive on another PC, then swap the drive
+>over, so long as the hardware in yours is fairly compatible with the other
+>one.   You may need to 'hack' some of the config files, in particular
+>/etc/XF86Config (or XF86Config-4) that drives the 'X' (GUI)
+>windowing system, before X will work.
+---snipped---
+----------------------------------------------------------------------
+JAMES E. FERRIS, B.Sc. Eng., MCSE
+Edmonton, Alberta
+Tel: (780)473-6517
+email: jeferris@shaw.ca
+or: james_e_ferris@yahoo.ca
+resume: http://members.shaw.ca/jeferris
+links: http://members.shaw.ca/jeferris/links
 
-I don't think RedHat include it in their latest distro, Debian certainly 
-don't, but it can be downloaded as a RPM or DEB from Opera's site.   
-I currently use the adware version (and put up with the ads) simply because I 
-like the way the browser works.   In the old days under Windows 3.1, I 
-infinitely preferred to *pay* for a registered copy of Opera rather than use 
-MSIE   ;)
-When I converted to Linux, I was stuck with using Netscape (which I found 
-very clunky) until Opera ported to Linux (since Galeon, Mozilla and Konq 
-weren't around/developed at that time).
-
-cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
