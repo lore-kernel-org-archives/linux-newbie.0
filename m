@@ -1,95 +1,81 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: make burner operating
-Date: Fri, 23 Aug 2002 09:08:03 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: Can't see my drives
+Date: Fri, 23 Aug 2002 23:47:33 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020823085930.02276550@celine>
-References: <19588.1030108314@www26.gmx.net>
+Message-ID: <Pine.LNX.4.21.0208232340290.8397-100000@Consulate.UFP.CX>
+References: <5.1.0.14.1.20020823084240.02277630@celine>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <19588.1030108314@www26.gmx.net>
+In-Reply-To: <5.1.0.14.1.20020823084240.02277630@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Matthiaseifert@gmx.de, linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: cr@orcon.net.nz, Linux Newbies <linux-newbie@vger.kernel.org>
 
-I am not certain of what your problem is. I see two candidates.
+Hi Ray, CR.
 
-First, the entry in /etc/lilo/conf should read:
-
-         append="hdc=ide-scsi"
-
-Not what you entered:
-         hdc = ide-scsi
-
-The corresponding entry for the DVD drive doesn't matter here. And you do 
-know to *run* lilo after making this change, right?
-
-Second, on my (Debian Sid) system, I had to load a series of kernel modules 
-explicitly, not rely on modprobe to get the dependencies right. The 
-sequence I loaded was:
-
-         # the stuff to enable ide-scsi emulation for the CD-ROM
-         scsi_mod
-         sr_mod scd0
-         sg
-         ide-scsi
-
-This may be overkill ... but check using "lsmod" to see if your procedure 
-loads all of these modules. (The error message you get from cdrecord makes 
-me think you missed something.)
-
-BTW, you should need to use ide-scsi emulation *only* for the writer, not 
-also for the DVD (at least that is how I do it, and I encounter no problems 
-accessing the DVD drive).
-
-Finally, kernel 2.4.0 is old and probably flaky. I run 2.4.17 on my 
-workstation.
-
-At 03:11 PM 8/23/02 +0200, Matthiaseifert@gmx.de wrote:
-
->I'd like to make my CD-ROM burning device working but failed as yet.
+> Selected responses only (though the additional detail in your reply
+> helped).
 >
->This is what I have:
+> You say your /dev/cdrom symlink is to /dec/scd0 . That's a scsi
+> device, and you have an IDE drive (apparently as the secondary
+> slave, since that is what /dev/hdd is). Unless you are running
+> scsi-ide emulation (see below), your immediate problem is simply
+> that the synmlink is wrong. Try removing it by hand and repointing
+> it to the right place, that is (as root)
 >
->    Distro:    SuSE 7.1 Kernel 2.4.0
->    Writer:    Samsung CD-R/RW SW-208 F ATAPI    ( = /dev/hdc/ )
->    CD-ROM:    Toshiba DVD-ROM SD-M1502 ATAPI    ( = /dev/hdb/ )
+>          rm /dev/cdrom
+>          ln -s /dev/hdd /dev/cdrom
 >
->This is what I've tried:
+> Then see if you can mount an iso9660 CD successfully.
 >
->    1) added the following lines into /etc/lilo.conf/
->       hdb = ide-scsi
->       hdc = ide-scsi
->
->    2) added the following line into /etc/init.d/boot.local
->       /sbin/modprobe ide-scsi
->
->    3) made the following links
->       ln -sf /dev/scd0 /dev/cdrecorder     // this is the burning device
->       ln -sf /dev/scd1 /dev/cdrom          // and the regular CD-ROM drive
->
->    4) rebooted the machine
->
->and as a result i lost both drives (either of the drives can't be mounted).
->:-(
->
->cdrecord -scanbus gives me the following errmsg:
->
->    Cdrecord 1.9 (i686-suse-linux) Copyright (C) 1995-2000 Joerg Schilling
->    cdrecord: Datei oder Verzeichnis nicht gefunden. Cannot open SCSI driver.
->    cdrecord: For possible targets try 'cdrecord -scanbus'. Make sure you are
->root.
->
->btw: up to now both drives worked fine (except for burning).
->
->Can somebody pls. tell me what I'm doing wrong or what I've missed?
+> On another matter, someone else asked you to check permissions. That
+> was good advice in concept, but wrong in a detail -- you need to
+> check the permissions on the underlying device, not on the symlink.
+> Symlinks always are mode 777, as you reported.
 
+All agreed so far, at least in the context it is given.
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> Finally, I note that your CD device is a CD writer. To use it as a
+> *writer*, you do need to implement ide-scsi emulation.  So I'd guess
+> that that was how you had it set up when it worked before (in which
+> case, /dev/scd0 would be the right device to use when accessing it)
+> ... but that in doing the upgrade, you lost that emulation.
+
+Possibly of relevance here, although I'm not certain of this: Somewhere
+in the 2.4 kernel timeframe, a recommendation was made that the nodename
+for SCSI CD's change from /dev/scdN to /dev/srN if my memory is correct,
+and I think Red Hat made the change between 7.1 and 7.2 so it could
+simply be that the nodename /dev/scd0 should now be /dev/sr0 instead.
+
+> Since I use neither Red Hat nor kudzu, I can't tell you in detail
+> how to restore ide-scsi emulation, but the outline is --
+>
+>  1. Pass a boottime argument to the kernel (in lilo.conf) of this
+>     form: append="hdd=ide-scsi"
+>
+>  2. Enable ide-scsi emulation in the kernel. One way is by compiling
+>     and loading this set of modules:
+>
+>	  # the stuff to enable ide-scsi emulation for the CD-ROM
+>	  scsi_mod
+>	  sr_mod scd0
+>	  sg
+>	  ide-scsi
+>
+>  3. For reading, the CD drive should then look like it is a scsi 
+>     device, at /dev/scd0
+>
+>  4. For writing, it is *probably* at lun 0,0,0 -- you can check 
+>     this with "cdrecord --scanbus".
+
+That is a reasonable general outline for Red Hat as well. Yes, I use Red
+Hat, but right at this moment, I don't have access to a 7.3 system to
+check the details on.
+
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
