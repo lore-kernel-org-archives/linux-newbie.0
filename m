@@ -1,39 +1,32 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: self-made potato driver-1.bin
-Date: Mon, 26 Aug 2002 07:34:46 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Screen size
+Date: Mon, 26 Aug 2002 15:08:04 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020826073104.025f6470@celine>
-References: <5.1.0.14.1.20020825152156.0225d270@celine>
- <5.1.0.14.1.20020825152156.0225d270@celine>
+Message-ID: <Pine.LNX.4.21.0208261501060.8397-100000@Consulate.UFP.CX>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1030363455.928.35.camel@highflyer>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Michael Gruner <stockraser@yahoo.de>
-Cc: linux-newbie@vger.kernel.org
+To: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Just a small clarification.
+Hi there.
 
-At 02:09 PM 8/26/02 +0200, Michael Gruner wrote:
-[...]
+We're talking about a Red Hat 7.3 system here, but the question is
+probably equally relevant both to earlier Red Hat systems and to
+other distributions as well. We are also NOT talking about X-Windows
+but about the virtual text consoles.
 
->That sounds interesting I'll search for that floppy-split program to get
->more information about how to create that one file as you mentioned.
+When one is booting into Linux, one can specify "vga=1" on the kernel
+command line to specify that one wishes to have an 80x50 text screen.
+How does one specify this after Linux has finished booting?
 
-The C source for this program is part of the Debian boot-floppies package I 
-referred you to in my prior message. The source lists no author or other 
-identifying info. I'd *guess* it was written for this package and may be 
-difficult to fild elsewhere.
+The reason I ask is that although it's specified on the command line,
+something during the init process switches it back to 80x25 lines. I'd
+prefer to have it in 80x50 mode on this computer though.
 
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
