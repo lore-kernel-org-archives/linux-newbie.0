@@ -1,37 +1,24 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: defrag
-Date: Tue, 01 Oct 2002 12:54:36 -0700
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: defrag
+Date: Tue, 1 Oct 2002 15:35:54 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021001124856.02c9ed90@celine>
-References: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
+Message-ID: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 03:35 PM 10/1/02 -0400, Paul Kraus wrote:
->Can you defrag a Linux drive
+Can you defrag a Linux drive I think the partition is ext3. Do they need
+deframenting?
 
-There is a Linux program called "defrag" that works with ext2 filesystems. 
-I don't know if it works with the newer filesystems, like ext3 and reiserfs.
-
->I think the partition is ext3. Do they need
->deframenting?
-
-People disagree about this, but the conventional answer is NO (exclusing 
-unusual circumstances). In practice, I don't ever defrag my ext2 
-filesystems, and I don't see the kinds of performance deterioration you (or 
-I, anyway) typically see on old Windows systems.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
