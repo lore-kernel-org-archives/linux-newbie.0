@@ -1,39 +1,27 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: PPP in Slackware
-Date: Mon, 31 Mar 2003 19:41:20 +0000
+Subject: Re: Red Hat Version 9
+Date: Mon, 31 Mar 2003 19:36:23 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03033119412003.04308@unix.pa3gcu>
-References: <200303310637.h2V6atH03122@philonline.com>
+Message-ID: <03033119362302.04308@unix.pa3gcu>
+References: <678FF08CF467D4118DA400508BD9365706684EE5@mail02.adt1.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303310637.h2V6atH03122@philonline.com>
+In-Reply-To: <678FF08CF467D4118DA400508BD9365706684EE5@mail02.adt1.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, linux <linux-newbie@vger.kernel.org>
+To: "Linovitz, Scott" <slinovitz@adt.com>, linux-newbie@vger.kernel.org
 
-On Monday 31 March 2003 06:36, Peter wrote:
-> Hi,
->
-> In Slackware 8.0 it seems to me that I can have only one ISP
-> installed at a time unlike in RedHat where I have
-> 3 different ISPs to be called with /sbin/ifup ppp#.
->
-> I read all the HOWTO on ppp and can't find a reference.
->
-> What would I have to do in Slackware to be able to access more then one ISP
-> w/o doing pppsetup first every time I change the ISP ?
+On Monday 31 March 2003 19:20, Linovitz, Scott wrote:
+> Does anyone have any comments on the new Red Hat version 9??
 
-I have never used ppp as is, i have always used kppp under KDE, kppp allows 
-you to store as many isp's as you wish and will ask you which one you want at 
-start time.
-
-There is also a same sort program under GNOME, but i cant remember its name 
-at the minute.
+Not as yet as only paying guest's get access to it for the first week, or at 
+least thats what i was informed would be the case in a Redhat Newsletter i 
+received.
 
 >
-> Thanks & regards
+> Scott
 
 -- 
 Regards Richard
