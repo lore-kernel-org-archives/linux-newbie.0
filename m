@@ -1,45 +1,32 @@
-From: ramzez <r4mz3z@yahoo.es>
-Subject: port 6000
-Date: 17 Jul 2003 21:13:21 -0500
+From: Peter <heisspf@skyinet.net>
+Subject: Fetchpop
+Date: Sat, 19 Jul 2003 11:14:15 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1058407622.1173.3.camel@localhost.localdomain>
+Message-ID: <20030719031420.81B921041E@heisspf>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-T3v/VNt49WK3jrFO0wkP"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
+Hi,
 
---=-T3v/VNt49WK3jrFO0wkP
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+I have been using Fetchpop to retrieve my mail for several years. Now that I 
+changed my ISP I can't get my mail any longer using fetchpop.
 
-Hi friends...
+The error message I get is:
 
-  I'm using RH8.0, why do my X11 open the port number 6000?; what is the
-use? and How do I can close this port?
+]$ fetchpop -pr
+fetchpop 1.9pl1 release, by Seung-Hong Oh.
+using procmail for mail  delivery.
+[-Error-] Getting status of LAST read mail. Disconnecting from the pop server.
 
-thanks
+Does anybody know how to correct this?
 
---=20
-  Linux User Registered #232544
-         ICQ : 337889406
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
-
---=-T3v/VNt49WK3jrFO0wkP
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Esta parte del mensaje esta firmada digitalmente
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQA/FgTGG3Fqyap52TERAm1cAKDZ/VmVR8cGRKeF0eztojCaUxJytwCfWPJD
-2hLFM6nGCV4tTO0tJJpq/SQ=
-=ox3a
------END PGP SIGNATURE-----
-
---=-T3v/VNt49WK3jrFO0wkP--
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
