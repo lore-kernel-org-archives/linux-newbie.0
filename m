@@ -1,31 +1,33 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Unrecognized Host Name
-Date: Fri, 9 Jan 2004 15:55:21 +0800
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: xset errors
+Date: Fri, 9 Jan 2004 15:33:19 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040109155521.7cba73b2.heisspf@skyinet.net>
+Message-ID: <Pine.LNX.4.44.0401091518250.15733-100000@legolas.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
+After I ssh -X into a remote machine and try to run mathematica, I get a 
+bunch of errors: 
 
-When I upgraded to RH9 with kernel 2.4.20.20-9 the siam office suite would not open any longer. I then installed kernel 2.4.22, siam opened again, however, I camn't sent mail now neither with exmh or nor pine.
+---
+xset:  bad font path element (#64), possible causes are:
+    Directory does not exist or has wrong permissions
+    Directory missing fonts.dir
+    Incorrect font server address or syntax
+---
 
-I get the error message: "unrecognized host name xxx@yyy.zz".
+I assume that these messages are telling me that the fonts the program is
+looking for are absent on my local machine, is that right? How can I fix 
+this? 
 
-Switching back to kernel 2.4.20.20-9 I get the same error message.
+Thanks,
 
-So I tried sylpheed and seems to work.
-
-Any explanation to this strange behaviour and what has to be done to correct it?
-
-Thanks & regards
-
--- --
-Peter
+-K
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
