@@ -1,39 +1,71 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: ssh as proxy?
-Date: Tue, 15 Feb 2005 21:47:56 -0600 (CST)
-Message-ID: <Pine.LNX.4.58.0502152144080.14569@localhost.localdomain>
-References: <Pine.LNX.4.58.0502151644180.14569@localhost.localdomain>
- <200502151847.34392.eric@cisu.net>
+From: "frans toruan" <frans@acbi.co.id>
+Subject: RE: ADSL connection via RHL 90
+Date: Wed, 16 Feb 2005 11:09:54 +0700
+Message-ID: <000501c513dd$6b8007a0$6510ea0a@acbi.local>
+References: <5.1.0.14.1.20050215081628.01fcb8d0@celine>
+Reply-To: <frans@acbi.co.id>
 Mime-Version: 1.0
-In-Reply-To: <200502151847.34392.eric@cisu.net>
+Content-Transfer-Encoding: 8BIT
+In-Reply-To: <5.1.0.14.1.20050215081628.01fcb8d0@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: 'Ray Olszewski' <ray@comarre.com>
+Cc: Linux newbie list <linux-newbie@vger.kernel.org>
 
-On Tue, 15 Feb 2005, Eric Bambach wrote:
+# fx > I don't quite understand this last sentence. The gateway number
+# fx > should be
+# fx > the LAN address of your router ... probably 10.234.16.99, based on
 
-> Yep, you're 95% of the way there.
-> Instead of the -L option try the -D option. This works to circumvent IRC
-> restrictions for me in school ;)
-> Im not too well read on ssh forwarding so I dont know the technical difference
-> between them, but it seems -D will get you by just fine at least for web.
->
-> Open console, type ssh -l username -D6667 mysshserver.com
->
-> Then ssh will act as a socks4/socks5 proxy. Set up application appropriately
-> and it will go!
+Yes, you are right.
 
-Thanks for the feedback. I'm looking for ways to test this out, and in
-order to do so I need to be able to close all ports on the test machine
-except 443. Is there some comand(s) I can issue that would do this? This
-would be on a workstation, Debianish machine without any sort of firewall
-running. Short of a command(s), what would be the simplest way to
-accomplish this port blocking for testing purposes? Is there a system-wide
-config I could edit?
+# fx > what you
+# fx > report below ... not (for example) the public address by which that
+# fx > router
+# fx > (probably) connects to the Internet via ADSL (or, even worse, the
+# fx > router's
+# fx > gateway address).
 
-Thanks, James
+# fx > Preliminary comment: When asking for technical help, never tell us
+# fx > what the
+# fx > response is "something like". Take the time to write it down and tell
+# fx > us
+# fx > what it actually is, and the exact command it is response to.
+
+
+# fx > Now ... you say first that you cannot ping to "any external IP
+# fx > number", but
+# fx > then refer to "external FQDN". Have you tested pinging an address ("(
+# fx > e.g.
+# fx > 18.7.22.69 )") or not? If not, please do ... in that case, James'
+
+Already tried to ping to other IP numbers, but failed. I could only ping to
+IP numbers of DNS servers of our ISP ( and even then, not to their names ). 
+
+
+# fx > Probably something RH does by default. There's an RFC standard for
+
+Many thanks for your info.
+
+# fx > >Data from /etc/sysconfig/networking/devices/eth0.route as follows :
+# fx > >
+# fx > >GATEWAY1=10.234.16.99
+# fx > >NETMASK1=255.255.0.0
+# fx > >ADDRESS1=202.134.2.5
+# fx > >GATEWAY0=10.234.16.99
+# fx > >NETMASK0=255.255.0.0
+# fx > >ADDRESS0=202.134.0.155
+# fx > 
+# fx > What do the addresses in "ADDRESS1" and "ADDRESS0" refer to?
+
+IP numbers of my ISP.
+
+Very many thanks, 
+
+
+Frans T.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
