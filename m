@@ -1,60 +1,64 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Emacs
-Date: Sat, 23 Nov 2002 14:42:19 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: unable to ping cable provider
+Date: Sat, 23 Nov 2002 11:50:07 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <026b01c29328$6f797180$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021123114235.020b8210@celine>
+References: <5.1.0.14.1.20021123085232.02126060@celine>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_026C_01C292FE.86A36980"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.21.0211231926380.15555-100000@ppg_penguin.linux
+ .bogus>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-This is a multi-part message in MIME format.
+Ken -- There is one part of your latest reply that I do not understand.
 
-------=_NextPart_000_026C_01C292FE.86A36980
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+At 07:37 PM 11/23/02 +0000, Ken Moffat wrote:
+[...]
+> > 3. The approach you seem to have arrived at ... put the NIC in a Windows
+> > box; register the NIC; move the NIC to your Linux router ... is the good,
+> > conservative approach to making the connection work (assuming you are in
+> > situation 1B, not 1A). You could also try connecting via your ISP's
+> > preferred browser (IE, no doubt) running on a NAT'd Windows or Mac host on
+> > the LAN. If you do this right, the connection should look to the ISP as
+> > though it were coming from the router's IP and MAC address (unless the ISP
+> > specifically has anti-NAT stuff in its system, an unlikely possibility ...
+> > but one that will cause bigger problems than we've considered so far if
+> > they somehow do it).
+>
+>  Thanks, I think this is what I did from the iBook. Trouble is, it fails
+>to negotiate an ip address from the server (either it ignores the
+>specification to use my `router', or it's asking the firewall for the
+>address.) It then falls back to trying ping (but doesn't specify who or
+>where). Hence my original question.
 
-Can someone point me to some guides on how to use emacs?
+Since I suggest two different approaches, I am not certain which of them 
+"this" refers to.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+If it is the second ... then I am still unclear on what some of the "it"s 
+refer to, as well as whether the "router" and the "firewall" are both the 
+same Linux device or if you mean one term or the other to refer to some 
+different device.
 
-------=_NextPart_000_026C_01C292FE.86A36980
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+For the second approach to work, the iBook itself has a LAN address (either 
+assigned statically or via a LAN DHCP server). The ISP then needs to be 
+assigning the external address by DHCP, using the router's MAC address for 
+authentication. To get this last part to work, you may need to reboot the 
+router, or at least force it to request a new DHCP lease.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+Or it may not work at all. Depends on the details of how the ISP expects 
+you to authenticate yourself.
 
-------=_NextPart_000_026C_01C292FE.86A36980--
+
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
