@@ -1,9 +1,10 @@
 From: Adam Luchjenbroers <adam@luchjenbroers.com> (by way of Adam
-	Luchjenbroers <adam@luchjenbroers.com>)
+	Luchjenbroers <adam@luchjenbroers.com> by way of Adam Luchjenbroers
+	<adam@luchjenbroers.com>)
 Subject: Re: Large FTP transfers
-Date: Mon, 30 Sep 2002 23:24:44 +0930
+Date: Mon, 30 Sep 2002 23:25:17 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209302324.44358.adam@luchjenbroers.com>
+Message-ID: <200209302325.17917.adam@luchjenbroers.com>
 Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
