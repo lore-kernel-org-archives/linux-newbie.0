@@ -1,47 +1,74 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Petre Bandac <g38@rdsbv.ro>
 Subject: Re: CDDA ->MP3 Conversion
-Date: Mon, 15 Jul 2002 07:40:54 -0700
+Date: Mon, 15 Jul 2002 17:44:27 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020715073143.021531b0@celine>
-References: <20020715.081447.-455505.1.matthewstapleton@juno.com>
+Message-ID: <200207151444.g6FEiSf12091@g38.rdsbv.ro>
+References: <20020715.080250.-455505.0.matthewstapleton@juno.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020715.081447.-455505.1.matthewstapleton@juno.com>
+In-Reply-To: <20020715.080250.-455505.0.matthewstapleton@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Matthew Stapleton <matthewstapleton@juno.com>
+Content-Type: text/plain; charset="us-ascii"
+To: Matthew Stapleton <matthewstapleton@juno.com>, dalgoda@ix.netcom.com
 Cc: linux-newbie@vger.kernel.org
 
-At 08:14 AM 7/15/02 -0400, Matthew Stapleton wrote:
->How might one go about ripping a CD into OGG files?
+www.xiph.org
 
-[old stuff deleted]
+slackware > 8.0 has a package oggutils which does the job ....
 
-The actual ripping part is the same as with MP3; you use an app that 
-converts the CD tracks into WAV files. The change is at the next step, 
-compressing the WAV files into ogg format instead of MP3.
+HTH,
 
-Exactly how you do it probably depends on what is prepackaged for whichever 
-Linux distro you use. I use a "super-app" called abcde, which is just a 
-bunch of wrappers (in Perl, I believe) that runs a series of other apps to 
-download CD info (wget), rip to WAVs (cdparanoia), compress to MP3 (any mp3 
-encoder) or OGG (oggenc), create a playlist,  put the results someplace 
-sensible, and clean up the temporary files. Installing the Debian version 
-of abcde gets all the other stuff installed (thanks to a good dependency 
-system); YMMV on that, depending on your distro.
+petre
 
 
 
+On Monday 15 July 2002 15:02, Matthew Stapleton wrote using one of his 
+keyboards:
+> Excuse my ignorance but what is "ogg"?  Is it a new sound format?
+>
+> -MS
+>
+>
+> On Sun, 14 Jul 2002 22:28:01 -0700 dalgoda@ix.netcom.com (Mike Castle)
+>
+> writes:
+> > In article <20020712.142607.-314991.0.matthewstapleton@juno.com>,
+> >
+> > Matthew Stapleton  <matthewstapleton@juno.com> wrote:
+> > >cdda2wav and BladeEnc seemed to work well for me.
+> >
+> > You may also consider lame and also switching from mp3 to ogg.
+> >
+> > mrc
+> >
+> > --
+> >      Mike Castle      dalgoda@ix.netcom.com
+> > www.netcom.com/~dalgoda/
+> >     We are all of us living in the shadow of Manhattan.  --
+> > Watchmen
+> > fatal ("You are in a maze of twisty compiler features, all
+> > different"); -- gcc
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe
+> > linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+>
+> Matthew Stapleton
+> ============================
+> To dare is to lose one's footing momentarily. Not to dare is to lose
+> oneself. -SK
+> ============================
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+-- 
+  5:44pm  up 34 min,  1 user,  load average: 0.32, 0.23, 0.14
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
