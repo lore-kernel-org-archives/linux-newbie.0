@@ -1,48 +1,91 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
+From: "Korosi Akos" <korosiakos@mailbox.hu>
 Subject: Re: internal faxmodem...
-Date: Wed, 24 Apr 2002 15:13:36 +0000
+Date: Wed, 24 Apr 2002 17:16:39 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042415133703.04696@unix.pa3gcu>
-References: <20020424123013.16686.qmail@web2.mailbox.hu>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020424151639.26938.qmail@web2.mailbox.hu>
+References: <2.2.32.20020424130541.00f5698c@[192.168.1.23]>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020424123013.16686.qmail@web2.mailbox.hu>
+References: 
+In-Reply-To: <2.2.32.20020424130541.00f5698c@[192.168.1.23]>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Korosi Akos <korosiakos@mailbox.hu>, Newbie <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: Newbie <linux-newbie@vger.kernel.org>
 
-On Wednesday 24 April 2002 12:30, Korosi Akos wrote:
-> Hi all!
->
-> I bought an internal faxmodem...
-> Now I know, it was a bad idea, because my linux distribution didn't
-> idendtified it, and I heard that internal modems are not
-> supported by linux very vell...
->
-> About the faxmodem:
-> Mercury 56 Kbps faxmodem, with CONEXANT chipset.
-> (I don't know what else should I tell to you, but you could ask)
+Hi Ray!
 
-Ray did a fine job telling you to go to the site he did, however many links 
-that you will click on there dont seem to work espessialy ones you will need, 
-here is one that will work and has information concerning your question, I do 
-not garentee it will support your modem, however i do belive you have a very 
-good chance of getting it to work.
+Ray Olszewski <ray@comarre.com> wrote
 
-www.mbsi.ca/cnxtlindrv/hcf/
+>Linux supports internal *modems* just fine. It does not support
+> so-called
+> Winmodems, which are devices that use software to emulate portions of a
+> real
+> modem's functionality. 
 
-Contary to what Ray said, there is a saying at www.linmodems.org if it works 
-under windows we can design a driver for it under linux, its just that it is 
-sometimes very difficult to do that as Ray pointed out, "Closed source".
+You are right, but unfortunately I became aware of it just after
+I bought one of *them*...
+And because I have no Windoze, I must at least try to set
+it up under Linux...
 
-Why is that,? ask Bill Gates.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+> In any case, to see if your particular modem is supported, look it up
+in
+> the
+> list at
+> 
+>         http://www.idir.net/~gromitkc/winmodem.html 
+
+Thanks a lot, I will try it...
+
+
+Akos
+
+
+p.s: If anybody else wrote to me before Ray, please resend
+the message because I had some troubles with my mails... 
+
+> At 02:30 PM 4/24/02 +0200, Korosi Akos wrote:
+> >Hi all!
+> >
+> >I bought an internal faxmodem...
+> >Now I know, it was a bad idea, because my linux distribution didn't
+> >idendtified it, and I heard that internal modems are not
+> >supported by linux very vell...
+> >
+> >About the faxmodem:
+> >Mercury 56 Kbps faxmodem, with CONEXANT chipset.
+> >(I don't know what else should I tell to you, but you could ask)
+> >
+> >My linux:
+> >RedHat 7.1 (Seawolf) with the default kernel which i got with it:
+> >Kernel 2.4.2-2
+> >I installed it with default parameters on graphic mode.
+> >(that was my first (and last till now) linux installation)
+> >
+> >Ask, if additional data is required...
+> >
+> >Now I ask how could I get faxmodem to work.
+> >If there is a newer kernel, which supports faxmodem,
+> >or if there is a driver somwhere...
+> >The best would be if somebody knows for sure, that RH7.2
+> >supports faxmodems, because than I would force myself to
+> >install it.
+> >If a newer kernel supports it, than also I will start installing
+> >new kernels, but I am asking for the easiest (and the most painless)
+> >method to make it work.
+> >(it would be urgent to make it work)
+> >
+> >If somebody knows drivers for Motorola faxmodem chipset, than
+> >I could change my modem for an other with Motorola chipset on it
+> >(if linux knows Motorola better).
+> >I think it is Arowana with Motorola chipset.
+> 
+
+
+--------------------------------------------------
+http://www.mailbox.hu - Mert levelezni kell...
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
