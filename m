@@ -1,28 +1,22 @@
-From: Daniel Provin <dgp@labmetro.ufsc.br>
-Subject: bind conf
-Date: Thu, 29 Aug 2002 16:49:30 -0300 (BRT)
+From: Natarajan K <natarajan_k@hotpop.com>
+Subject: eth0 promiscuous mode
+Date: Fri, 30 Aug 2002 09:31:14 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44L.0208291647100.3358-100000@labmetro.ufsc.br>
+Message-ID: <200208300931.14643.natarajan_k@hotpop.com>
+Reply-To: natarajan_k@hotpop.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi there
-
-Is there a better way than CNAME entries to include subdomains for a zone
-in the bind configuration?
-
-I am currently using CNAME entries for the www and the mail subdomains
-
-thanks
-Daniel Provin
-Linux User #191271
-EEL LABMETRO UFSC
-
-
+HI,
+	I am part of a LAN and get my IP through DHCP. Will eth0 interface be put in 
+promiscuous mode initially or is there any option I should use to put it in 
+promiscuous mode? I use Mandrake 8.2. 
+-- 
+Natarajan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
