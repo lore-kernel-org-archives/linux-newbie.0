@@ -1,41 +1,43 @@
-From: joy <gracecott@sancharnet.in>
-Subject: X not starting at all
-Date: Mon, 12 Jan 2004 22:16:25 +0530
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Sendmail-8.10 / 8.12 diffs???
+Date: Mon, 12 Jan 2004 15:18:59 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4002CF61.6040507@sancharnet.in>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <20040112201859.GA784@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: mailing list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello,
-it's me again.
-Thanks again for the help you guys gave me when I had a problem with my 
-modules.
-from when I had installed Woody, I was not able to startx as I have a 
-Geforce4 MX 440 SE which was not supported by the nv driver in X (I have 
-version 4.1.0.1)
-I got a new driver from the Nvidia site (the latest is pkg2 I think, I 
-have pkg0 ).I installed it and yet startx would not work.
-since X loads its drivers from /usr/X11R6/lib/modules/drivers , I moved 
-the new NV module (nvidia.ko ) and renamed it nv_drv.o which was the nv 
-driver  (this is illogical, I know , but I was desperate.....)
-and it gave me another error message module does not have nvModuledata 
-data object and died on me. I just got Gnome 2.4 and I'm desperate to 
-install it.
-So anybody with the ideas flashing,
-HELP!
-thanx in advance,
-Joy
+Greetings: I can't seem to find an answer to this on the Web, so
+thought I'd try here.. Unfortunately all my Sendmail books don't
+cover the really up-to-date versions..
 
-> --------------------------------------------------------------------------------------------------------
-> A life without purpose is like a bird that never learnt to fly.......
-> I am the bird that regularly flies Lufthansa
+I've been using Sendmail-8.11.6 for some time with the
+masquerade_envelope FEATURE so the "From_" line is correct on the
+envelope.. With 8.11.6, after building a new .cf file, I merely had
+to make an edited entry in that file adding the ISP domain to the
+"CM" and "DM" lines..
 
+8.12.9 builds with the FEATURE but neither CM or DM is found.. I note
+that 8.12 creates two .cf files now instead of the original one,
+probably for security reasons I guess.. Neither include the CM or DM
+lines.. Of course the older .cf files will not work with the newer
+versions..
 
+What do others do; edit /etc/HOSTNAME as the ISP's domain name? Or,
+do most, merely not worry about the envelope address??
+
+Maybe there's a site that could explain some of this..
+
+Any suggestions or comments? TIA and Appreciate!!
+
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+		Utrum Per Hebdomadem Perveniam
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
