@@ -1,46 +1,31 @@
-From: caszonyi@rdslink.ro
-Subject: Re: disabled system speaker: how to enable?
-Date: Thu, 1 Jan 2004 05:33:51 +0200 (EET)
+From: dave <dave@dpomeroy.com>
+Subject: group
+Date: Thu, 01 Jan 2004 13:17:26 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0401010532030.589@grinch.ro>
-References: <Pine.LNX.4.58.0312311325080.465@debian-box>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <3FF48E66.5000206@dpomeroy.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0312311325080.465@debian-box>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Wed, 31 Dec 2003, James Miller wrote:
+I'll try to ask this question so that it makes sense.  I'm running 
+Mandrake 9.1.  I've made a folder called "/home/everyone".  I have my 
+daughter sharing an internet connection on my local network.  My router 
+gives ip addresses when she starts her computer, (windows98) and it 
+gives me an ip address when I start up, (Mandrake 9.1).  I'm trying to 
+share the folder "/home/everyone" between  her and me.  Samba gives her 
+access to Laura folder on my linux box and when she logs into my linux 
+machine she can also access her folder.  I've changed the permissions on 
+the /home/everyone folder to rwx with chmod.  When I reboot I loose the 
+w permission on /home/everyone.  Otherwise everything works great.  
+Anyone have some suggestions?  Thanks for your help.
+Dave
 
-> We recently installed Gentoo Linux on a laptop, which went successfully
-> for the most part.  The Gentoo install seems to run from a ramdisk Linux
-> version, and it includes things like the links browser so you can go
-> online during the install to check documentation.  We also installed an
-> application there that used the console beep (a chat client) to keep in
-> touch with someone during the install.  The system speaker/console beep on
-> the machine worked fine at this stage, and would beep as it was supposed
-> to when someone would send a message.  On the installed system, however,
-> the console beep/system speaker is not working.  It doesn't work in the
-> chat client, and issuing | echo -e "\a" | doesn't make the system speaker
-> beep either (no error responses or anything, just a blank line like it's
-> trying to ring the system bell, then a return to bash prompt).  This is
-> the 2.6 kernel, btw.  So, what could the problem be?  Should we have maybe
-> enabled console beep when we compiled the kernel or something?  Any other
-> things I could check/implement to get it working?
->
+-- 
+Dave Pomeroy K7DNP South Eastern Washington
 
-you should have these lines in your kernel .config
-
-CONFIG_INPUT_MISC=y
-CONFIG_INPUT_PCSPKR=y
-
-> Thanks, James
-
-Calin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
