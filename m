@@ -1,38 +1,96 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Tue, 5 Nov 2002 12:03:16 +0200
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Re: A way to transfer drives?
+Date: 05 Nov 2002 09:00:31 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021105120316.F2076@neutrino.particles.org>
-References: <200211050126.gA51QMD01651@philonline.com>
+Message-ID: <1036486831.2358.9.camel@zebra.vil.ite.mee.com>
+References: <20021104.174956.135082040.5.lawson_whitney@juno.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200211050126.gA51QMD01651@philonline.com>; from pfheiss@philonline.com on Tue, Nov 05, 2002 at 09:26:22AM +0800
+In-Reply-To: <20021104.174956.135082040.5.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Tue, Nov 05, 2002 at 09:26:22AM +0800, Peter wrote:
-> Only the message 'Segmentation fault' shows up immediately after giving the 
-> command tkdesk.
+My apologies, you are correct. I think my brain stepped out for a
+moment... :)
+
+To be exact: if you tar using a directory name, it works fine, but if
+you use a wild card it doesn't see dot files (because that's how
+wildcard expansion works).
+
+thus:
+
+cd $HOME
+tar -cvf /archive/homedir.tar *
+
+will not do the same as:
+
+cd $HOME
+tar -cvf /archive/homedir.tar .
+
+The first example will not save anything who's name begins with a dot,
+but the second one will.
+
+
+A thing to know about:
+
+cd /
+tar -cvf /archive/homedir.tar $HOME
+
+will store the full path of everything in your home dir. This means that
+if you try and extract it later on, it will try and put all the files
+back _exactly_ where they came from in the first place.
+
+Although this sounds like a fine idea for a backup, I have found that it
+makes more sense to avoid the full paths for user generated data,
+because there will always be the time when you want to get back the
+backup and compare it to what you already have - which is much more
+complicated if you have the full paths stored in the archive.
+
+It also means that restoring the stuff to a different machine is harder,
+because you need an identical directory structure - less of a problem
+with a home dir, but it could be something more complicated like this:
+
+tar -cvf /archive/backup.tar /usr/local/data/bungle/source/c/big_project
+
+Paul.
+
+
+
+
+
+On Mon, 2002-11-04 at 21:37, lawson_whitney@juno.com wrote:
+> On 4 Nov 2002, Paul Furness wrote:
 > 
-> Why would that be and how could it be corrected?
-
-Inspect the core file using gdb:
-
-% gdb tkdesk ./core
-
-Or use strace:
-
-$ strace tkdesk
-
-And see if you can figure where it crashed. If yes, then you should pro-
-bably know why, too.
-
+> > There is only one snag with tartar: it doesn't pick up 'dot' files in
+> > the starting directory.
+> 
+> If you mean files of the form .name, I can't see that it doesn't.
+> ls won't show them without -a though.
+> 
+> Lawson
+> ---oops---
+> 
+> 
+> 
+> ________________________________________________________________
+> Sign Up for Juno Platinum Internet Access Today
+> Only $9.95 per month!
+> Visit www.juno.com
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 -- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+Paul Furness
+
+Systems Manager
+
+Steepness is an illusion caused by flat things leaning over.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
