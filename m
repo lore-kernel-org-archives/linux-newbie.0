@@ -1,32 +1,37 @@
-From: Beatriz Botero H <bbotero@gmx.de>
-Subject: Merging ps-files
-Date: Fri, 16 Aug 2002 09:33:53 +0200
+From: lawson_whitney@juno.com
+Subject: Re: setting up X under Slackware
+Date: Fri, 16 Aug 2002 09:12:01 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020816093353.53441e77.bbotero@gmx.de>
+Message-ID: <20020816.094311.134670320.14.lawson_whitney@juno.com>
+References: <5.1.0.14.1.20020815230501.02105300@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20020815230501.02105300@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: ray@comarre.com
+Cc: matthewstapleton@juno.com, linux-newbie@vger.kernel.org
 
-Hi,
-I need for a special aplication to merge two or more post-script files
-to a resultant ps-one. I tryed "psmerge" but this program does not work
-at all. Including the author who aknowledged problems with his program,
-nobody seems to have been successfull with "psmerge". There must exist a
-way to merge two ps-files. I have tryed "ghostscript". This program
-seems to deliver the merged view to the screen or to the printer, but I
-couldnt write to a file up to now. Could someone help on this issue ?
-Thanks in advance,
-Beatriz
+On Thu, 15 Aug 2002, Ray Olszewski wrote:
+
+> 3. What errors get reported when startx runs?
+
+To see these, you are probably going to need to do something like:
+
+startx >~/oops 2>&1
+
+~/oops should then give the X version, driver used, and some interesting
+error messages.
+
+If your shell is bash, you can use
+
+startx &>~/oops
+
+Lawson
+---oops---
 
 
------------------ 
-
-Beatriz Botero H.
-Weinheim. Germany
-mailto:bbotero@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
