@@ -1,185 +1,38 @@
-From: Bill Pleasants <Pleasants@myfreei.com>
-Subject: Re: Printer error (correction)
-Date: Thu, 19 Dec 2002 16:03:22 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Minicom fails
+Date: Fri, 20 Dec 2002 15:00:04 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E02341A.8030508@myfreei.com>
-References: <5.1.0.14.1.20021216085528.02134570@celine> <5.1.0.14.1.20021217220641.0210c590@celine>
+Message-ID: <200212200700.gBK704603967@philonline.com>
+References: <200212190804.04757.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Thu, 19 Dec 2002 08:04:04 EST."
+             <200212190804.04757.sotl155360@earthlink.net> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
 
-
-Hello,
-When I started the computer today, the Internet Device Control worked so I copied last night's message below to put it in the thread.  Also I checked the printer manual and see that the flashing light that I said indicated "toner out" indicates a malfunction designated "Service C" if not cleared by cycling power which it was.
-
-My 12/18 mesage:
-Ray Olszewski wrote:
-
->> You did not provide some of the information I asked for (namely, the
->> contents of /etc/resolv.conf), but from what you did provide, the
->> likely source of the lprm problem is an inconsistency between your lpr
->> setup and /etc/hosts . As you report below, your /etc/hosts file only
->> identifies the machine as localhost.localdomain and not also as just
->> localhost. Consequently, the resolver cannot associate localhost with
->> your machine, as is illustrated by the ping failure you also report.
->  
->
-
-I failed to mention there is no resolv.conf file.
+ Peter said:
+> After I run a RH7.3 upgrade I can't access anymore minicom as a user.
+> I get the following message: ]$ minicom Device /dev/ttyS0 lock failed:
+> Operation not permitted.
 
 
->>
->> Probably you can fix the lprm problem by editing the entry (yeah, I
->> know it says "Do not remove", but this is editing, not removing) so it
->> reads:
->>
->>         127.0.0.1    localhost.localdomain localhost
->>
->> Do that and see if lprm now works. If not, tell us what the problem
->> now loks like.
->  
->
+Thanks Frank!
 
-    "[bill@localhost bill]$ lprm
-    Printer 'Print@localhost' - cannot open connection - No such file or
-directory
-    Make sure the remote host supports the LPD protocol
-    and accepts connections from this host and from non-privileged
-(>1023) ports"
+The first thing I did was reading the man pages after the opening failure. I 
+got nothing out of it.
 
+What I did now was setting the group of /var/lock to user and I can open 
+minicom again.
 
->>
->> As to the underlying problem ... by "Additional attempts to print", do
->> you mean trying to print different files? Preferably something nice
->> and easy, like a short text file (/etc/hosts itself will do for a
->> test)? Does "lpq" show anything significant? If you power-cycle the
->> printer, does it now start to print? DId the printer successfully
->> print other files prior to failing with the final page of the MapQuest
->> one?
->  
->
+Was this the right way to do it?
 
-After the change in the hosts file, I tried printing the hosts file from
-gedit, another file from Open Office and your email from Mozilla.  (I
-did not reboot.)
-
-    "[bill@localhost bill]$ lpq
-    Printer 'Print@localhost' - cannot open connection - No such file or
-directory
-    Make sure the remote host supports the LPD protocol
-    and accepts connections from this host and from non-privileged
-(>1023) ports"
-
-Power cycling the printer did not print.  There is no error light
-showing.  I don't remember if more than 2 pages printed.  It was a while
-ago.  While I was logged on as root, I also changed the boot run level
-from 3 to 5.
-
-And then .. the Network Device Control failed to function so I rebooted.
-And then .... the printer started and printed the 2 MapQuest pages (from
-10/15 I see) and stopped with the "toner out" light flashing.  I pulled
-the parallel plug, cycled the power, got the "ready" light, plugged the
-parallel back and got the error light again.  clicking to print this
-message did not change the printer.
-And then ...... The NDC failed again so I changed the hosts file back,
-rebooted and still no go.  So I copied this message to a floppy to take
-to my MS computer to send.  So that's what the problem looks like.
-
-
->>
->> At 10:44 PM 12/17/02 -0500, Bill Pleasants wrote:
->> [...]
->>
->  
->
->>>>>> More immediately, how does your system do name-to-address
->>>>>> resolution? Does it rely on /etc/hosts? If so, what are the contents
->>>>>> of that file? Or does it use a nameserver? If so, is it accessable?
->>>>>> And what are the contents of the /etc/resolv.conf file?
->>>      
->>>
->>>>
->>>>
->>>> I have some notion of what name-to-address resolution is for the
->>>> internet but not what it is for the Linux OS.  /etc/hosts contains:
->>>>   "# Do not remove the following line, or various programs
->>>>   # that require network functionality will fail.
->>>>   127.0.0.1    localhost.localdomain
->>>>
->>    
->>
->>>>>>
->>>>>> Does the message really say "local host" rather than "localhost"?
->>>>>> What result do you get if (from the command line) you try "ping
->>>>>> localhost"?
->>>      
->>>
->>>>
->>>>
->>>> This is cut and paste:
->>>>    "[bill@localhost bill]$ lprm
->>>>    Get_local_host: 'localhost' IP address not available!"
->>>>
->>>>    "[bill@localhost bill]$ ping localhost
->>>>    ping: unknown host localhost"
->>    
->>
->>
->> [...]
->>
->  
->
->>>>>> Finally, as to your immediate problem ... if the third page of a
->>>>>> epecific document continues to fail to print, while other docs print
->>>>>> fine (do they? you haven't said), i'd suspect something odd about
->>>>>> the specific document. Generically, you need to investigate how
->>>>>> general the printing problem is before we can tackle it systematically.
->>>      
->>>
->>>>
->>>>
->>>> I did not retain the file I first tried to print.  Additional
->>>> attempts to print have produced no response from the printer.  Thank
->>>> you for your offer to help.
->>    
->>
->>
->> [...]
->> --
->> -------------------------------------------"Never tell me the
->> odds!"--------
->> Ray Olszewski                    -- Han Solo
->> Palo Alto, California, USA              ray@comarre.com
->>
->  
->
--------------------------------------------------------------------------------
-
-
->>
->>
->> -
->> To unsubscribe from this list: send the line "unsubscribe
->> linux-newbie" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at http://www.linux-learn.org/faqs
->>
->  
->
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
-
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
