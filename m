@@ -1,43 +1,36 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: Amin <raihan@citech-bd.com>
 Subject: Re: switching window managers
-Date: Sat, 22 Mar 2003 23:53:37 -0500
+Date: Sun, 23 Mar 2003 17:10:01 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303230453.h2N4rb3T024680@hartford-hwp.com>
-References: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <20030323111001.GA1366@localhost.localdomain>
+References: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org> <200303230453.h2N4rb3T024680@hartford-hwp.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <20030322225559.8260.qmail@linux.ik5bcu.ampr.org>
+Content-Disposition: inline
+In-Reply-To: <200303230453.h2N4rb3T024680@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ik5bcu@tin.it
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-> Hello Haines,Im using IceWm as well from very few days and I simply run:
-> 
-> xinit /usr/local/bin/icewm --:0 
-> 
-> from terminal when I'am here on my RHL-7.3 box,or even run:
+On Sat, Mar 22, 2003 at 11:53:37PM -0500, Haines Brown
+wrote:
 
-Thanks Marco, but I managed to get myself into trouble. When runing
-IceWM, I was using its panel at the same time as gnome's desktop
-switcher. They seemed to get along, but unfortunately, they had
-conflicing keybindings, and as soon as I typed a key that had
-conflicting purposes, X crashed.
+> Do you happen to know the name of the gnome desktop
+> switcher executable and its configuration file? Do you
+> know which panel file calls the desktop switcher? I'm
+> caught in a gnome panel crash loop,
 
-I got X working and am now back in gnome to start again. However, I
-seem to have damaged gnome desktop switcher because panel crashes as
-it is loaded. I need to configure gnome not to run the desktop switcher,
-but don't know how to do it.
+Try reinstalling the ``gnome-panel'' RPM, or if that doesn't
+work, uninstalling and then reinstalling it.  This RPM
+manages the Panel's basic stuff, including the desktop
+switcher.
 
-Do you happen to know the name of the gnome desktop switcher
-executable and its configuration file? Do you know which panel file
-calls the desktop switcher? I'm caught in a gnome panel crash loop,
-and so was forced to use another account (root has same trouble as
-regular user) in order to use X apps.  
+You'll need (to specify the location of the) the RPM file,
+of course.
 
-Haines Brown 
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
