@@ -1,36 +1,65 @@
-From: Andrew <ald2@arrakis.es>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: ethernet nic install
-Date: Thu, 05 Aug 2004 12:49:24 +0200
+Date: Thu, 5 Aug 2004 16:37:24 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <411210B4.3090405@arrakis.es>
-References: <410F692C.3070303@arrakis.es> <200408032120.37112.pa3gcu@zeelandnet.nl> <411113A4.9020800@arrakis.es> <200408042041.51227.pa3gcu@zeelandnet.nl>
+Message-ID: <200408051637.24198.pa3gcu@zeelandnet.nl>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200408042041.51227.pa3gcu@zeelandnet.nl>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-pa3gcu wrote:
-> Another indication that your BIOS is setup for PnP and NOT PCI or shared.
-> 
->>I shall have another go at the BIOS (It is the strangest I have ever
->>seen) and maybe come back to you.
-> 
-> 
-> Yes, they are somewhat differnet to todays BIOS's.
+> pa3gcu wrote:
+> > Another indication that your BIOS is setup for PnP and NOT PCI or shared.
+> >
+> >>I shall have another go at the BIOS (It is the strangest I have ever
+> >>seen) and maybe come back to you.
+> >
+> >
+> > Yes, they are somewhat differnet to todays BIOS's.
+>
+> Perhaps you could help me with the settings:
+> PCI Slot Number: I think even I can manage that one.
+> Function Number of Device: Dunno (1-7)
 
-Perhaps you could help me with the settings:
-PCI Slot Number: I think even I can manage that one.
-Function Number of Device: Dunno (1-7)
-Device Function: Presumably I choose Enabled (Enabled/Disabled)
+Without knowing what type of bios you have i cant really say, however is there 
+not some sort of help in the bios, where it says, 1 = pci 2 = legacy etc 
+etc.?
 
-IRQ Level for INTA Pin and ditto for INTB, INTC, INTD has me thrown.
+> Device Function: Presumably I choose Enabled (Enabled/Disabled)
 
-TIA,
+I would imagen so yes.
 
-Andrew
+>
+> IRQ Level for INTA Pin and ditto for INTB, INTC, INTD has me thrown.
+
+Just leave those alone, choose default.
+
+Old BIOS's can be a pian in the butt, but all you need to do is set the IRQ 
+which you ISA nic uses too ISA and leave the PCI to PnP.
+
+Another way to get more information on a BIOS is go to the manufactures web 
+site, they may well have a FAQ sheet for you to review.
+
+Sorry i'm vauge but as i said without knowing the bios manufacture it would be 
+hard for anyone to advise.
+
+
+>
+> TIA,
+>
+> Andrew
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
