@@ -1,38 +1,36 @@
-From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Subject: Re: not reading contents of cd-rom
-Date: Sun, 8 Feb 2004 15:58:18 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: TEST
+Date: Sun, 8 Feb 2004 09:38:36 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200402081558.18273.wheds8@ms66.hinet.net>
-References: <5.1.0.14.1.20040207231643.01f9a4a0@celine>
+Message-ID: <200402080938.36690.pa3gcu@zeelandnet.nl>
+References: <4025C7EF.3020307@earthlink.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040207231643.01f9a4a0@celine>
+In-Reply-To: <4025C7EF.3020307@earthlink.net>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: LEWIS KIMBLE <lfkimble1@earthlink.net>, LINUX NEWBIE <linux-newbie@vger.kernel.org>
 
+On Sunday 08 February 2004 06:23, LEWIS KIMBLE wrote:
+> TEST
 
+Test failed!
 
-> Am I right in assuming that you meant to type /mnt/cdrom ?
+Reason;
+Caps lock was on.
 
-Yes, my apologies...
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-I did this...
->          mount /dev/cdrom /mnt/cdrom
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-and got mount: you must specify the filesystem type.
->
-
->
-> If this command does not fix the problem, then you probably need to check
-> that the CD drive itself is working and is recognized by your kernel.
-> Details require a description of your setup. But one quick check is to see
-> if a CD ripper (like cdparanoia) can read the CD drive.
- 
-How do I check if the cd is recognized by the kernel? I am trying to install 
-SourceMage so I must select all the hardware options for the kernel. 
 
 
 -
