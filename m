@@ -1,35 +1,51 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Postfix as a relay
-Date: Thu, 31 Jul 2003 09:18:23 -0600
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Re:  W$ 2K...
+Date: Thu, 31 Jul 2003 15:17:35 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F29333F.7090408@shaw.ca>
+Message-ID: <200307311517.35577.James.Hatridge@epost.de>
+References: <5.1.0.14.1.20030728115610.01ee9cd8@celine> <5.1.0.14.1.20030730121607.00b132c0@pop.mail.yahoo.com>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030730121607.00b132c0@pop.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: James Ferris <james_e_ferris@yahoo.ca>
+Cc: linux-newbie@vger.kernel.org
 
-My setup is currently to have postfix relay all messages through my 
-isp's smtp server, and it's doing so only from local IPs.  This poses 
-two problems:  One, i'd like to be able to access my smtp server from 
-outside the local network, so i need to know how to secure it.  Two, i 
-would like to have certain mail addresses - specifically, messages 
-addressed to local users - more specifically, root and postmaster (for 
-logging notifications) - - not be relayed.  Can someone help me with 
-this?  I admit, my configuration is more luck than anything, and i'm 
-really nervous about altering it, since the current setup is A) working 
-and B) kind of important, given that all my email comes in to this 
-server and is sent to my local imap server.  So postfix being dead could 
-really toast my personal mail system.
+Hi James et al...
+On Wednesday 30 July 2003 20:26, James Ferris wrote:
+> hosts file is located at C:\WINNT\system32\drivers\etc\hosts
+> ... assuming your W2K is installed to C:\
 
-Anyone up to the task?
+This was what I was looking for! Thanks. As a side note I found that W$ only 
+says do it this way
 
+192.168.17.41 Opus.epost.de
+
+But you can add a nickname like in Linux so that it looks like this
+
+192.168.17.41 	Opus.epost.de 	Opus
+
+It works just like in Linux and makes it easier.
+
+Thanks
+
+JIM
+
+Jim Hatridge
+Linux User #88484
 -- 
-Chris R.
-=======
-Listening to the sound of silence
-http://offline.pointclark.net/
+Our country was colonized by the religious, political, economic, and criminal
+rejects of every country in the world. We have been carefully breeding insane, 
+obsessive, fanatic lunatics with each other for over 400 years, resulting in 
+the glorious strain of humanity known as "Americans". You have to expect 
+some... peculiarities. 
+
+Read about new German stamps each quarter:
+	 http:/www.fecundswamp.net/~hatridge/bulletin
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
