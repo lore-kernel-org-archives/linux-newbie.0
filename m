@@ -1,44 +1,43 @@
-From: Geoff Bagley <geoff@gcbagley.demon.co.uk>
-Subject: Debian printing on a hp Laser Jet.
-Date: Tue, 7 Oct 2003 14:08:06 +0100
+From: "M. Ghaeini" <mohammad@cerberian.com>
+Subject: APIC problem on kernel Kernel 2.4.18
+Date: Fri, 10 Oct 2003 11:56:08 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <aTCaNNA2qrg$Ew2S@gcbagley.demon.co.uk>
+Message-ID: <3F86F2B8.2080308@cerberian.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
+Hello,
 
-I have a HP lj1100 laserjet printer.  It works correctly on SuSE 8.0,
-but on Debian Woody I still haven't sorted out the linefeed/cret
-correctly.  I am getting the famous staircase effect.
+I am running RedHat 7.3 with the SMP kernel 2.4.18 on IBM-x360 hardware,
+with 6GB memory and 2x1.6GHz Xeon CPUs.  This server panic-ed with the
+following message:
 
-SuSE 8.0 uses (BSD ?) lpr with a few bits of ghostscript invoked by
-printcap.
+   mp-bios bug: 8254 time not connected to io-apic
+   Kernel panic io-apic + timer doesn't work pester mingo@redhat.com
 
-Before I try copying extracts from the one into the other, am I
-going about it the right way, or did I miss something ?
+I also found these message:
 
-I prefer lpr to the other spooling systems because there are more
-references to it in my various books.  However, this printer seems to be
-too modern for them.
-
-I am not sure whether such things as ghostscript and foomatic should be
-used.
-
-I have been reading many accounts of the various available systems for
-mail spoolers, but the variety available is confusing.
-
-I would prefer to use Debian, if I can, because of the synaptic and 
-apt-get  for sorting out dependencies.  I need to know what things to
-chose out of the numerous competing options.
+   WARNING: MP table in the EBDA can be UNSAFE, contact
+linux-smp@vger.kernel.org if you experience SMP problems!
+ 
 
 
-Regards
--- 
-Geoff Bagley
+   WARNING: unexpected IO-APIC, please mail to linux-smp@vger.kernel.org
+
+in the syslog.
+
+Has anyone else seen these messages?  Is there a patch for this problem?
+
+Thanks in advance.
+
+-Ghaeini
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
