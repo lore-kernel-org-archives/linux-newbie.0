@@ -1,24 +1,58 @@
 From: "Tom Beer" <mailings@analogon.com>
-Subject: Re: searching a mail solution
-Date: Mon, 20 May 2002 00:32:44 +0200
+Subject: Re: nomore newbies??
+Date: Mon, 20 May 2002 00:59:31 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <007701c1ff85$1909f220$0901a8c0@system>
-References: <11924676928.20020519190418@chello.pl>
+Message-ID: <002101c1ff88$d73fc3c0$0901a8c0@system>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: =?iso-8859-1?Q?Mateusz_=A3oskot?= <m.loskot@chello.pl>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi,
+3.2.  Message Rejection and Bouncing
 
-> So, this ISP doesn't allow to run any server services.
+   MTAs and MSAs MAY implement message rejection rules that rely in part
+   on whether the message is a submission or a relay.
 
-then, I would change my ISP, if I'm not allowed to run my on 
-mail services, or whatever service.
+   For example, some sites might configure their MTA to reject all RCPT
+   TOs for messages that do not reference local users, and configure
+   their MSA to reject all message submissions that do not come from
+   authorized users, based on IP address, or authenticated identity.
 
-Greets Tom
+   NOTE:  It is better to reject a message than to risk sending one that
+   is damaged.  This is especially true for problems that are
+   correctable by the MUA, for example, an invalid 'From' field.
+
+   If an MSA is not able to determine a return path to the submitting
+   user, from a valid MAIL FROM, a valid source IP address, or based on
+   authenticated identity, then the MSA SHOULD immediately reject the
+   message.  A message can be immediately rejected by returning a 550
+   code to the MAIL FROM command.
+
+   Note that a null return path, that is, MAIL FROM:<>, is permitted
+   and MUST be accepted. (MUAs need to generate null return-path
+   messages for a variety of reasons, including disposition
+   notifications.)
+
+   Except in the case where the MSA is unable to determine a valid
+   return path for the message being submitted, text in this
+   specification which instructs an MSA to issue a rejection code MAY be
+   complied with by accepting the message and subsequently generating a
+   bounce message. (That is, if the MSA is going to reject a message for
+   any reason except being unable to determine a return path, it can
+   optionally do an immediate rejection or accept the message and then
+   mail a bounce.)
+
+   NOTE:  In the normal case of message submission, immediately
+   rejecting the message is preferred, as it gives the user and MUA
+   direct feedback.  To properly handle delayed bounces the client MUA
+   must maintain a queue of messages it has submitted, and match bounces
+   to them.
+
+http://www.faqs.org/rfcs/rfc2476.html
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
