@@ -1,45 +1,62 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Image conversion
-Date: 29 Nov 2002 13:07:44 +0000
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Samba mount not as root
+Date: Fri, 29 Nov 2002 09:18:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1038575263.5234.48.camel@zebra.vil.ite.mee.com>
+Message-ID: <00c701c297b2$327115c0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_00C8_01C29788.499B0DC0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Good afternoon.
+This is a multi-part message in MIME format.
 
-Does anyone know of a tool for performing a colour channel swap
-operation on a load of graphic images (currently jpeg but I can convert
-to a different format if needed).
+------=_NextPart_000_00C8_01C29788.499B0DC0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 
-Basically, I have a large number of images (800+) that will be a video
-sequence, but due to an error in the image creation (before I got to
-them) the Red and Blue channels are swapped so the image comes out all
-funny colours.
+Have written some scripts that perform network backups. However I am
+only able to run them as root. How can give mount permissions to another
+user.
 
-Ideally I need a command line that'll do it. I've looked at ImageMagick,
-but I can't see an obvious way of decomposing the image to rgb, swapping
-r and b, then recombining them.
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
-I also tried Gimp. By messing around with layers I was able to get
-something that approached correct. I guess I don't know what I need to
-look for in the manual.
+------=_NextPart_000_00C8_01C29788.499B0DC0
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
-Any thoughts, anyone?
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
-
-Paul.
-
--- 
-Paul Furness
-
-Systems Manager
-
-Steepness is an illusion caused by flat things leaning over.
+------=_NextPart_000_00C8_01C29788.499B0DC0--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
