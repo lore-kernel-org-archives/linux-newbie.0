@@ -1,43 +1,57 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: OGG vs. MP3
-Date: Mon, 15 Jul 2002 09:11:06 -0700
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Something funny in Mail
+Date: Tue, 16 Jul 2002 11:50:50 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020715090253.02157350@celine>
-References: <20020715.114422.-455505.2.matthewstapleton@juno.com>
+Message-ID: <200207160350.g6G3oo201856@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020715.114422.-455505.2.matthewstapleton@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-At 11:44 AM 7/15/02 -0400, Matthew Stapleton wrote:
->What is the benefit of using OGG over MP3?  Is it merely that one is open
->source while the other is not?
 
-That's one important consideration. It's a bit more than "Open Source", 
-though (and I must object, at least in passing, to the dismissive "merely" 
-in your question). As I understand it ... though I don't know the details 
-... there are, at least arguably, patent issues with the MP3 format that 
-make it difficult to offer a low-cost MP3 encoder under any terms. To learn 
-about this, you might want to look at the LAME encoder and see how they've 
-worked around the restrictions.
 
-On the other side, OGG is a bit more than "Open Source". I believe its 
-implementations qualify under the somewhat more stringent standard as "free 
-software".
+> On Mon, 15 Jul 2002, Peter wrote:
+> >> After that command proceeds as expected. So it's no bother I now
+> >> just wonder how that happens. Both Albert and Jim are friends of mine.
+> 
+> 
+> jos@lemmerling.net said:
+> > Look into your '.mailrc' in your home-directory; it's probarly
+> > containing the names Albert and Jim. 
+> 
 
-Licensing issues aside, some people think the OGG format is technically 
-superior in its sound quality. I can't hear the difference myself, but that 
-may be more my limited ear than anything else.
+> > HTH
 
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+>Peter said:
+> 
+> Thanks!
+> 
+> I checked .mailrc and it had quite a few e-mail addesses. The first
+> one was 
+> Albert's the second one Jim's. Now before Albert was the word 'alias',
+> therefore the unknown command changed to Jim.
+> 
+> Which program is manipulating .mailrc?
+
+> man mail does not say neither could I find a reference in HOWTOs
+
+jos@lemmerling.net said:
+> dunno, I don't use the program mail that much... I've checked some
+> man-pages, but couldn't find anything.
+
+> Perhaps you've done some experimenting in the mail-program itself?
+
+NOT AT ALL
+
+> HTH
+
+> -- Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net) 
+
+
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
