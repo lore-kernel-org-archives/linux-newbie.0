@@ -1,33 +1,94 @@
-From: "Eng Se-Hsieng" <g0202512@nus.edu.sg>
-Subject: Upgrading from 2.4.18 to 2.5.59
-Date: Fri, 14 Feb 2003 19:09:45 +0800
-Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <720FB032F37C0D45A11085D881B03368A2B18E@MBXSRV24.stu.nus.edu.sg>
+From: Kurt Sys <kurt.sys@rug.ac.be>
+Subject: smbprint
+Date: Fri, 14 Feb 2003 15:00:06 +0100
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <15948.63078.810448.32226@ksys.rug.ac.be>
+Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
-Content-Class: urn:content-classes:message
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "linux-kernel@vger.kernel.org" <'linux-kernel@vger.kernel.org'>, linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Dear all,
+Hello,
 
-I am currently running 2.4.18 (Redhat 7.3) but would like to upgrade to
-2.5.59.
+I try to get samba to work, especially the printing to a windows NT network printer. I can print to the printer by using smbprint etc, but this always takes some time (first 'gs -sDEVICE=ljet -sOutputFile=file.hp file.pdf' followed by 'smbclient \\\\labmetserver\\HPLaserJ -Ukurts%xxxxx' and finally giving the command 'print file.hp'). So, I decided to try to make an entry in my printcap-file (I show it here, although I'm sure that this doesn't matter for the problem I have...):
 
-This is because I would like to implement the SCTP transport protocol
-which comes in the form of .patch.
+----
+smb0|SMB.HP.LJ4.normal.1:\
+        :cm=HP LaserJet 4 computerlokaal:
+        :lp=/dev/smb0:\
+        :sd=/var/spool/lpd/smb0:\
+        :af=/var/spool/lpd/smb0/acct:\
+        :mx#0:\
+        :if=/usr/local/bin/smbprint
+----
 
-I am confused as to if I should upgrade and install the kernel before
-applying the patch or do both together.
+And then I had to make two more files (these are the important ones, I guess): 
+/var/spool/lpd/smb0/.config:
+----
+server = LABMETSERVER
+service = HPLaserJ
+user = kurts
+password = "xxxxxx"
+----
 
-Furthermore, may I use the kernel sources on this site since I can't
-find 2.5.59 on redhat?
+and the file /usr/local/bin/smbprint:
+----
+#!/bin/sh -x
 
-Thank you.
+logfile=/tmp/smb-print.log
 
-Eng Se-Hsieng
-Singapore
+eval acct_file=\$$#
+
+spool_dir=/var/spool/lpd/smb0
+config_file=$spool_dir/.config
+
+eval cat $config_file
+
+echo "server $server, service $service" >> $logfile
+
+(
+echo translate
+echo "print -"
+cat
+) | /usr/bin/smbclient "\\\\$server\\$service" -U$user>> $logfile
+----
 
 
+I didn't add my password here, but it should prompt for it anyway. Now, I just try the smbprint-script first, but it won't work:
+
+----
+$ smbprint "test"
++ logfile=/tmp/smb-print.log
++ eval 'acct_file=$1'
+++ acct_file=test
++ spool_dir=/var/spool/lpd/smb0
++ config_file=/var/spool/lpd/smb0/.config
++ eval cat /var/spool/lpd/smb0/.config
+++ cat /var/spool/lpd/smb0/.config
+server = LABMETSERVER
+service = HPLaserJ
+user = kurts
+password = "xxxxx"
++ echo 'server , service '
++ echo translate
++ echo 'print -'
++ cat
++ /usr/bin/smbclient '\\\' -U
+\\\: option requires an argument -- U
+
+----
+
+Apparently, the variables 'server', 'service', 'user' and 'password' are not read (since they are replaced by nothing). What am I doing wrong?
+
+
+
+thanks in advance,
+Kurt
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
