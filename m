@@ -1,36 +1,41 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: SOLVED: Some users locked out of ssh and sftp?
-Date: Mon, 14 Mar 2005 16:06:17 -0800
-Message-ID: <5.1.0.14.1.20050314160314.02007ff0@celine>
-References: <00d201c528e0$723cf4f0$4f0aa8c0@lanadmin> <00dd01c528f2$1f597440$4f0aa8c0@lanadmin>
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Bash will not start in Terminals
+Date: Tue, 15 Mar 2005 15:46:11 +0800
+Message-ID: <200503150746.j2F7kBBm000590@skyinet.net>
+References: <5.1.0.14.1.20050310183928.0293ee08@celine>
 Mime-Version: 1.0
-In-Reply-To: <00dd01c528f2$1f597440$4f0aa8c0@lanadmin>
-References: <00d201c528e0$723cf4f0$4f0aa8c0@lanadmin>
+In-Reply-To: Your message of "Thu, 10 Mar 2005 18:55:46 PST."
+             <5.1.0.14.1.20050310183928.0293ee08@celine> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 07:01 PM 3/14/2005 -0500, Eve Atley wrote:
+Hi,
 
->First, I had 'user account is locked'.
->
->Second, once I logged in via the linux box, using 'ssh -l manik
->192.168.10.57', it created a new .Xauthority file, apparently.
->
->And they're in.
+Peter said:
+> Slackware10 kernel 2.4.26
+> >For me unknown reason suddenly bash will not
+> start in terminals. 
 
-I hope your problem is solved ... but I'd encourage you to keep an eye on 
-this, at the least.
+The reason was that I had made a new slackware installation in which then in 
+the /etc/passwd under my user name at the end of the line there was no 
+:/bin/bash as it used to be.
 
-.Xauthority should have no connection with ssh logins ... and I just 
-verified that the one host where I have an account but no .Xauthority file 
-(this file derives from running X sessions, as you might guess from the 
-name, so is present on my workstations) connects just fine with Winscp.
+I found it out when I added an arbitrary user in which then again bash was not 
+started in the terminals. Again on his passwd line there was no :/bin/bash.
 
-I don't know what "user account is locked"  means, possibly hecause I don't 
-know the context in which you got that message.
+So it had nothing to do with me getting too old for Linux. It's a new 
+"gimmick" in slackware which one has to find out first.
+
+Regards
+
+
+-- 
+Peter
+
 
 
 -
