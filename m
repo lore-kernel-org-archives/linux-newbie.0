@@ -1,8 +1,8 @@
 From: "Robert Todd" <linux-net@tcob1.net>
 Subject: Re: Mustek 1200 UB scanner
-Date: Friday, 14 Jun 2002 02:01:28 -0500
+Date: Friday, 14 Jun 2002 01:56:06 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a202=2f1_cff9f0cd@fidonet.org>
+Message-ID: <MSGID_110=3a202=2f1_7ea8121c@fidonet.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -12,7 +12,8 @@ To: linux-newbie@vger.kernel.org
 
 Originally to: G Anna
 
-Any way you could EMail this file to me at wolf@bbs.linux-dude.com?  Thanks!
+OOOOH!  Just what I have been looking for!  Tanks!  Will this work with the
+kernel that installs with Mandrake 8.2?
 
 <G ANNA> wrote in message news:1021972155.75.0@daver.bungi.com...
 >
