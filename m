@@ -1,54 +1,40 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Special characters
-Date: Fri, 3 Jan 2003 19:59:25 +1300
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: Re: Networking issue
+Date: Fri, 3 Jan 2003 21:01:07 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301030927.h039Rhb08733@mail.orcon.net.nz>
-References: <20030101.162055.134684296.1.whitnl73@juno.com>
-Reply-To: cr@orcon.net.nz
+Message-ID: <200301032101.07628.Adam@Luchjenbroers.com>
+References: <5.1.0.14.1.20030102230450.0211b230@celine>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030101.162055.134684296.1.whitnl73@juno.com>
+In-Reply-To: <5.1.0.14.1.20030102230450.0211b230@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: whitnl73@juno.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Thursday 02 January 2003 10:17, whitnl73@juno.com wrote:
-> On Wed, 1 Jan 2003, cr wrote:
-> > This is probably an elementary query, but I can't find the answer i=
-n any
-> > help files!
-> >
-> > How does one produce a special (i.e. non-keyboard) ASCII character =
-in a
-> > Linux or X application (like text editors etc)?    For example, the
-> > pounds sign, chr$(163).
-> >
-> > Alt + <num keypad>  doesn't seem to work.
-> >
-> > cr
->
-> Depends on the app.  joe, FI will generate =A3 if you type `163
-> To get a literal `, type ``
->
-> Lawson
+On Friday 03 Jan 2003 4:39 pm, Ray Olszewski wrote:
 
-Thanks.   I'm a little surprised there isn't a semi-'standard' method, =
-a=20
-little along the lines of the DOS Alt-key method which most M$ apps see=
-m to=20
-support. However, I can now generate =A3=A3=A3 signs (and any others) a=
-t will,=20
-which was the object of my query, so thank you all.
+Got everything pretty much fixed, except for one thing.
 
-Regards
+Something perioically seems to re-add a line to hosts.deny that forbids 
+connections from everything but localhost. 
+/proc/sys/net/ipv4/icmp_echo_ignore_all also gets reset to 1 (but this 
+happened at a different time)
 
-cr
+/var/spool/cron has no entries
+
+How can I find the problem?
+
+-- 
+"MS-DOS is to computing as the black plague was to Europe" - NH
+
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
+
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
