@@ -1,91 +1,81 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Thu, 07 Nov 2002 14:58:57 +0800
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Re: Write to Windows partition from linux as ordinary user
+Date: 07 Nov 2002 08:08:59 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211070659.gA76wvp02557@philonline.com>
+Message-ID: <1036656539.12354.10.camel@zebra.vil.ite.mee.com>
+References: <20021106214656.16325.qmail@web13408.mail.yahoo.com> 
+	<046901c285e5$f845e390$8c01a8c0@ENTROPY>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <046901c285e5$f845e390$8c01a8c0@ENTROPY>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="windows-1252"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Christoph <christoph23@charter.net>
+Cc: Abhijit Vijay <abhijit_v@yahoo.com>, linux-newbie@vger.kernel.org
 
-Thanks!
+That's a pretty good solution. It _does_ mean that you can only write to
+that partition as root or the specified user. This may be a disadvantage
+for you, I don't know.
 
-eathan@otenet.gr said:
-> % ulimit -c 1000000=20
-> Rerun TkDesk and let it crash. You should have a core file now.=20
+You could add "noauto" to the fstab entry, if you like. That means that
+the partition is not mounted by default. If you want to mount it, you
+don't need to remember a load of options for mount. If your fstab line
+says this:
 
-$ tkdesk
-Segmentation fault (core dumped)
+/dev/hdd1  /mnt/local_d  vfat    noauto,defaults,rw,gid=XXX,uid=XXX  0 0
 
-except it's nowhere to be found. Wait, here it is now with ending numbe=
-rs:=20
-core.1298
-One of the new tricks of RH7.3?
+then you can mount it (you need to be root to mount it) like this:
 
-gdb core.1298=20
-This GDB was configured as "i386-redhat-linux"...core.1298: No such fil=
-e or=20
-directory
-
-cp core.1298 ~/core
-
-gdb core
-This GDB was configured as "i386-redhat-linux"..."/home/peter/core": no=
-t in=20
-executable format: File format not recognized
-
-(gdb) where
-No stack.
-
-Looking at the core file I see a lot of talk about:
-"his probably means that Itcl/Tcl weren't installed properly"
-and
-set msg "Can't find a usable init.tcl in the following directories:=20
-"
-The end of core file is:
-
-  set f [open pkgIndex.tcl w]
-    puts $f $index
-    close $f
-    cd $oldDir
-@|[=01@(=85=C9u=E9=8B=930
-@|=D3=0F@L<
-@=01@=85=3D
-followed by a lot more of those weird signs.
-
-ray@comarre.com said:
-> You might also want to make sure that even after you install TCL 8.0,
-> tkdesk uses it rather then the more recent version of Tcl that RH has
-> installed.
-
-I did that by changing the tcl/tlConfig.sh files.
+mount /mnt/local_d
 
 
-ray@comarre.com said:
-> You  might want to ldd tcl (or whatever the right name is -- see what
-> interpreter the tkdesk script is invoking on its shebang line).=20
+Paul.
 
-ldd tcl... gives the same files in RH7.3 as in RH6.2.
+On Wed, 2002-11-06 at 22:43, Christoph wrote:
+> > I have a Windows 98 partition mounted on linux. The
+> > directory, /win98 on which I have done the mount is
+> > owned by me, as an ordinary user. However, I find that
+> > I cannot write to the partition except as root. Is
+> > there any way out, so that I do not need to su before
+> > writing?
+> 
+> I'm still very much a newbie so I could be totally off base
+> here.  I had a problem very similar to yours.  I set up a
+> local dos drive in fstab to be mounted.  And whenever it
+> was mounted, all the directories (and files) were owned as
+> root.  The way that I fixed that was to modify the entry in
+> fstab to read as such:
+> 
+> /dev/hdd1               /mnt/local_d            vfat    defaults,rw,gid=XXX,uid=XXX  0 0
+> 
+> so that it mounts the drive so it's own by group id XXX and 
+> user XXX and that did the trick.
+> If you are just using mount from the command line, there
+> are switches that do the above.
+> 
+> If a more experienced user knows a better way or can clarify
+> as to whether or not there are problems with this solution, I'd
+> be very happy to hear it!
+> 
+> Christoph
+> 
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+-- 
+Paul Furness
 
-If this is another case of strange happenings under RH7.3 then we might=
- probe=20
-again in the dark or is it that the new tk/tcl of RH7.3 are at fault on=
-ly.=20
-Could one reinstall the ones of RH7.2 w/o messing-up everything?
+Systems Manager
 
-I hate to see a solid good program <tkdesk> go to waste on account of R=
-H7.3.
-
-Regards
-
---=20
-Peter
+Steepness is an illusion caused by flat things leaning over.
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
