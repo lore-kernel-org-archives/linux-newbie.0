@@ -1,75 +1,68 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
+From: James Hatridge <James.Hatridge@epost.de>
 Subject: Re: Slack9.0/Atapi-ZIP250???
-Date: Sat, 28 Jun 2003 23:23:45 +0100 (BST)
+Date: Sun, 29 Jun 2003 09:54:32 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0306282315540.594@reg_kipling>
+Message-ID: <200306290954.38827.James.Hatridge@epost.de>
 References: <20030628151407.A244@lnx2.w8mch.ampr.org>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20030628151407.A244@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Hal MacArgle <haltec@kvinet.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-On Sat, 28 Jun 2003, Hal MacArgle wrote:
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
+Hi all....
+On Saturday 28 June 2003 21:14, Hal MacArgle wrote:
 > Greetings: Several days; RTFM, FAQ's, HOW-TO's - no joy...
 >
 > This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
 > internal, as /dev/sda4, as long as I insmod ide-scsi.o.. ( That file
 > also installs sd_mod.o )..
->
-> Installing Slackware9.0/2.4.20, on another partition, a different
-> story, reporting the dreaded "mount: /dev/sda4 is not a valid block
-> device," meaning, AFAIK, the kernel can't see it.. I note that 2.4.20
-> does _not_ load, or even have, sd_mod.o, or anything similar.. Please
-> note the permissions, etc, are the same on both partitions..
->
-> There must be another module that I can't seem to find.. Of course
-> the HOWTOs and Mini HOWTOs, are correct for earlier kernels, but no
-> help here..
->
-> Installing Slack9.0/2.4.20 on another machine with a parallel port
-> ZIP250 finds the drive OK w/ insmod imm.o and ide-scsi.o - as per
-> normal, so that scheme seems OK.. (imm.o, of course, is only for
-> parallel port devices.)
->
-> Any suggestions, comments, etc?? I've looked at all the modules
-> available and I can't find anything that rings a bell so far...
->
-Hal,
 
- I'll guess you need sr_mod.  The following are clipped from
-modules.conf on this box, I believe they are the part that sets up the
-zip drive (I know, I used to understand how my modules.conf worked, but
-once it was all correct I didn't need to remember any more.)
+You're doing this wrong. I have the Atapi Zip100 internal. It does not need 
+the ide-scsi.co. Just set it up like this:
 
-alias scsi_hostadapter ide-scsi
-pre-install sr_mod modprobe ide-scsi
-pre-install ide-scsi modprobe scsi_mod
+/dev/hdc4       /zip            auto    noauto,user 0 0
 
- However, I believe the easier method is to use `modprobe' instead of
-`insmod' - if my memory is correct, it knows enough about the
-dependencies to get them sorted.
+You only need the scsi stuff when using the external type Zip (which I also 
+have). 
 
-Ken
+Hope this helps,
 
-> Cheers,
->
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
->                 Proprietary  Formats  Unacceptable
-> .
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 
--- 
-You'll always find me out to lunch
+JIM
+
+
+
+Jim Hatridge
+Linux User #88484
+- -- 
+Our country was colonized by the religious, political, economic, and criminal
+rejects of every country in the world. We have been carefully breeding insane, 
+obsessive, fanatic lunatics with each other for over 400 years, resulting in 
+the glorious strain of humanity known as "Americans". You have to expect 
+some... peculiarities. 
+
+Check out my stamp collection:
+                                          Vielfeind -- Viel Ehr'
+Antiamerikanische Propaganda in der Philatelie des 20. Jahrhunderts
+          http:/www.fecundswamp.net/~hatridge/stamps/index.html
+
+Read about new German stamps each quarter:
+	 http:/www.fecundswamp.net/~hatridge/bulletin
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.7 (GNU/Linux)
+
+iD8DBQE+/ps8v3Z9K7QSWt4RAlLKAJ4wfG1cibPhlPMUysTMu9YYEumpVQCg1s54
+YexYqQ8M5l6nspA3Fq62bL4=
+=nrxX
+-----END PGP SIGNATURE-----
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
