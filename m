@@ -1,55 +1,34 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: CD-ROM settings and bash resources
-Date: 18 Oct 2002 15:23:45 -0400
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: 18 Oct 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034969037.26230.3.camel@localhost.localdomain>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
-	boundary="=-dYytnS7zYkJq7rW6Stc5"
+Message-ID: <200210182013.g9IKDrq17098@ev6.be.wanadoo.com>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
+As Ray Olszewski <ray@comarre.com> wrote:
+> There ae some implementations of BASIC for Linux, but I know of no working
+> VB implementation. If you do, a reference to a URL would be helpful.
 
---=-dYytnS7zYkJq7rW6Stc5
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Yes, there is a quite advanced Basic version (XBasic) but it suffers
+from a basic *nix (and thus Linux) structural property: just the best
+qualities of Basic - to control input and output on a rather low,
+hardware-near level - cannot be implemented because of this. Which is a
+real PITA as Basic is a great language when it comes to all sorts of
+string/text handling and screen/printer/comport output of such.
 
-I've noticed that my HP CD-Writer 9100+ has trouble reading large files
-off of a burn under Mandrake 9.0.  This problem doesn't occur in
-Windows.  I think it may be the read-ahead setting.  Does anyone know
-anything about this?
+Which in turn is a direct consequence of the paranoid "security"
+approach - "Oh My God Don't Let a 'user' Ever Get Near the Real Stuff
+(there has to be a SysAdmin for this who KNOWS about the tricks and
+will never tell and allow)". In fact, rather paternalistic. Which
+irritates me.
 
-Also, what are some good sites for learning bash scripting techniques?
-I want to write a function in my .bash_profile file that puts a specific
-Makefile in a new dir when I create the new dir under ~/313/Proj[5-9].
-Can anyone assist?
-
---=20
-Regards,
-
-Bryan Simmons=20
-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
--=3D-=3D-=3D-=3D-=3D=20
- "All that's required for evil to flourish
-  is for good men to remain silent."=20
-    ---Edmund Burke
-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D=
--=3D-=3D-=3D-=3D-=3D=20
-
---=-dYytnS7zYkJq7rW6Stc5
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
-
-iD8DBQA9sF/Br3nDhuQnQRARAh52AJ9No3YDb9k/3eD8rXskGMF5CwOaTwCeMTdZ
-yqhbK3iA85HxHilyUo2Rxkk=
-=xozc
------END PGP SIGNATURE-----
-
---=-dYytnS7zYkJq7rW6Stc5--
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-17
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
