@@ -1,59 +1,57 @@
 From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Sendmail-8.10 / 8.12 diffs???
-Date: Tue, 13 Jan 2004 10:09:42 -0500
+Subject: Re: Linux for Dummies?
+Date: Tue, 13 Jan 2004 09:44:26 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040113150942.GB517@lnx2.w8mch.ampr.org>
-References: <20040112201859.GA784@lnx2.w8mch.ampr.org> <Pine.LNX.4.53.0401130015170.880@grinch.ro>
+Message-ID: <20040113144426.GA517@lnx2.w8mch.ampr.org>
+References: <btv950$i7m$1@sea.gmane.org>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.53.0401130015170.880@grinch.ro>
+In-Reply-To: <btv950$i7m$1@sea.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 01-13, caszonyi@rdslink.ro wrote:
-> On Mon, 12 Jan 2004, Hal MacArgle wrote:
-> 
-> > Greetings: I can't seem to find an answer to this on the Web, so
-> > thought I'd try here.. Unfortunately all my Sendmail books don't
-> > cover the really up-to-date versions..
-> >
-> > I've been using Sendmail-8.11.6 for some time with the
-> > masquerade_envelope FEATURE so the "From_" line is correct on the
-> > envelope.. With 8.11.6, after building a new .cf file, I merely had
-> > to make an edited entry in that file adding the ISP domain to the
-> > "CM" and "DM" lines..
-> >
-> > 8.12.9 builds with the FEATURE but neither CM or DM is found.. I note
-> > that 8.12 creates two .cf files now instead of the original one,
-> > probably for security reasons I guess.. Neither include the CM or DM
-> > lines.. Of course the older .cf files will not work with the newer
-> > versions..
-> >
-> > What do others do; edit /etc/HOSTNAME as the ISP's domain name? Or,
-> > do most, merely not worry about the envelope address??
-> >
-> > Maybe there's a site that could explain some of this..
-> >
-> > Any suggestions or comments? TIA and Appreciate!!
-> >
+Greetings: 
 
-> 
-> theorethically you shuold not edit sendmail cf files. :-)
-> You should build mc files to suit your need and generate the cf from the
-> mc
+One suggestion would be to access www.amazon.com; select "books" and
+enter linux in the search panel.. You'll be surprized at the amount
+of listings you get.. Then the problem is; which one or more??
 
-	But of course; but can you advise me how to enter the
-masqueraded domain in the .mc file?? I sure can't find it. <grin>
+Amazon lists many used books for give away prices, where they are an
+agent for other booksellers and individuals.. Linux In A Nutshell
+will give an almost complete listing of the commands, etc, but
+Running Linux by Matt Welsh, et al, might be a better selection for
+what you want.. And since Linux was derived from Unix - many other
+selections are available being forewarned that Linux is much better
+than any of the Unix machines I've messed with..  If you're not
+interested in the command line, the above books wont help a lot..
 
-Cheers,
+Linux should be called GNU/Linux because without the Free Software
+Foundation's work we might be up a creek. <grin>
+
+HTH,
 
     Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
 		Utrum Per Hebdomadem Perveniam
-.
+
+On 01-12, Dave wrote:
+> Is there a good book out there to get me started with Linux?  Something 
+> like Linux for Dummies?  I'm an old DOS and Windows guy and I need to 
+> learn the basics.  Even all the terminology is new.  I'be been reading 
+> the manual that came with SuSE 9.0 and the Net and the Newsgroups, but I 
+> feel like I'm trying to piece it all together in the dark.
+> 
+> Any suggestions would be appreciated.
+> 
+> -- 
+> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> "So many electrons and so little time!!"
+>                73,K6DBH   Dave
+>                      . .
+> ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
