@@ -1,25 +1,22 @@
 From: "a a" <xlsd@hotmail.com>
-Subject: read-only file system
-Date: Sat, 05 Oct 2002 03:02:34 +0000
+Subject: test
+Date: Sat, 05 Oct 2002 03:44:17 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
+Message-ID: <F68HBnI8tshwCp6H8DE000171d0@hotmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; format=flowed; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
 To: linux-newbie@vger.kernel.org
 
-hello
-im trying to edit a file in /etc/rc.d but it says "Read-only file system"
-how do i change it to writeable?
-
-thanks
+is this list working?
 
 
 
 _________________________________________________________________
-Send and receive Hotmail on your mobile device: http://mobile.msn.com
+Join the world=92s largest e-mail service with MSN Hotmail.=20
+http://www.hotmail.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
