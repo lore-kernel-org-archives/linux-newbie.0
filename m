@@ -1,48 +1,35 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: Intrusion detection
-Date: Thu, 30 May 2002 20:39:34 +0300
+From: Bob Batson <rcb@kc.rr.com>
+Subject: Re: Related to thread: which UNIX to use, but offtopic
+Date: Thu, 30 May 2002 14:14:17 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200205301739.g4UHdeI19146@g38.rdsbv.ro>
-References: <5.1.0.14.0.20000530065430.00ada0a0@mail.comcast.net>
+Message-ID: <p04330104b91c2a29a162@[65.31.217.219]>
+References: <F4D3DB9A18752A4F99FD880ABC5407179D144B@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.0.20000530065430.00ada0a0@mail.comcast.net>
+In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D144B@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Seth Callen <callen432@comcast.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Sridhar J <sridharj.hyd@cxknetworks.com>, "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-On Tuesday 30 May 2000 13:57, Seth Callen wrote using one of his keyboards:
-> 1)   Can anyone recommend a good program or utility (and where to d/l it
-> from) that can detect things like port scans, and attempts to hack into a
-> linux box ?
+At 9:55 AM +0530 5/30/02, Sridhar J wrote:
 
-for portscans - portsentry - www.psionic.org if I remember (and I also use 
-logcheck from psionic too - very useful to know what happens to my linux bow 
-while I am away from it)
-
-> I;ve heard of packet sniffers, but do they actually detect, or just capture
-> massive amounts of data ?
-
-just capture, _I_think_
-
-> 2)   also what basic methods can one take to secure a simple linux box
-> being used with Samba and Apache (i dont need major security right now,
-> just basic firewall and other simple protection...
+>Hi
 >
-> thanks in advance
->
-> Seth
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+>Something offtopic, but one question, what is a hardware modem and what is a
+>software modem?
+
+Check the site called "Winmodems are not modems; Linux Information 
+Page" at http://www.idir.net/~gromitkc/winmodem.html
 
 -- 
-  8:39pm  up 23 min,  1 user,  load average: 0.86, 0.39, 0.19
+
+Bob Batson                            L 39 12 14 N 94 33 16 W
+rcb@kc.rr.com                         Gladstone, MO
+TCS - Mystic Fire Priest              USDA Zone 5
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Under the most controlled conditions, the experimental apparatus
+will do exactly as it pleases.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
