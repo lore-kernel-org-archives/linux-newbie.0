@@ -1,43 +1,66 @@
-From: "Marco Calistri" <ik5bcu@tin.it>
-Subject: Re: Again about SHAPE extension
-Date: Sat, 06 Jul 2002 17:34:41 +0200 (CEST)
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Re: Umount a ZIP ATAPI internal???
+Date: Sat, 6 Jul 2002 15:55:40 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020706153441.2072.qmail@linux.ik5bcu.ampr.org>
-References: <20020703213914.GA20033@neon.hh59.org>
-Reply-To: ik5bcu@tin.it
+Message-ID: <20020706155540.A227@lnx2.w8mch.ampr.org>
+References: <20020705110224.A229@lnx2.w8mch.ampr.org> <5.1.0.14.1.20020705083856.02499aa0@celine>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020703213914.GA20033@neon.hh59.org>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20020705083856.02499aa0@celine>; from ray@comarre.com on Fri, Jul 05, 2002 at 08:41:05AM -0700
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Axel Siebenwirth <axel@hh59.org>
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
+Greetings and - APPRECIATE!! The -u flag on exportfs got by me. I
+must be older than I think /or/ need new specs.. :^)...
 
-On 03-Jul-2002 Axel Siebenwirth wrote:
-> Hi Marco!
-> 
-> On Wed, 03 Jul 2002, Marco Calistri wrote:
-> 
->> After I upgraded RHL from 7.2 to 7.3 I noticed an error from Sawfish where
->> Xlib
->> complains about my X server has not SHAPE extension enabled.
-> 
-> http://nscp.upenn.edu/aix4.3html/x11/specs/pdf/shape.PDF
-> http://www.xfree86.org/4.2.0/XShapeCombineMask.3.html#sect3
-> http://nscp.upenn.edu/aix4.3html/aixprggd/aixwnpgd/ext_window.htm
-> http://www.oreilly.com/catalog/x3/
-> 
-> Best would be visiting irc.openprojects.net with you favorite IRC client,
-> join #xfree86 and ask there..
-> 
-> Regards,
-> Axel
+Thanks again,
 
-Many Thanks Axel,see U
+Hal
 
-Marco.
+On Fri, Jul 05, 2002 at 08:41:05AM -0700, Ray Olszewski wrote:
+> You are having this problem because after the the NFS access, the drive 
+> remains exported, thus in use by (I think) nfsd, thus "busy". You need to 
+> unexport it before umount'ing it. See the man page for "exportfs" for the 
+> details.
+> 
+> At 11:02 AM 7/5/02 -0400, Hal MacArgle wrote:
+> >Greetings: Have an internal ZIP250 ATAPI drive working well as
+> >/dev/sda4, mounted on an empty directory - /zip, disks formatted as
+> >ext2 fs.
+> >
+> >Everything normal and good except for one small problem: Once mounted
+> >and files transferred to it via NFS - I cannot umount it - "drive
+> >busy." /etc/mtab looks good and I can change the drives rw to ro but
+> >still no umounting.. Only way, so far, is to reboot the machine, to
+> >be able to remove the disk.. (This does not happen with normal file
+> >managing in the same machine - only after a NFS transfer.)
+> >
+> >Reading man umount I gather that _something_ is open but what? ps x
+> >or ps -A doesn't give an obvious clue.. Using iOmegas 'iw' programs'
+> >-u flag returns same "busy" report..
+> >
+> >Invoking rmmod - ide-scsi, smc-ultra, 8390, nfsd - all modules
+> >involved return "busy."
+> >
+> >Any suggestions?? TIA.
+> 
+> --
+> -----------------------------------------------"Never tell me the 
+> odds!"--------------
+> Ray Olszewski					     -- Han Solo
+> Palo Alto, California, USA				ray@comarre.com
+> -------------------------------------------------------------------------------------------
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
