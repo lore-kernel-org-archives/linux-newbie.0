@@ -1,35 +1,32 @@
 From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Sun, 10 Nov 2002 12:22:50 +0200
+Subject: Re: striking X server
+Date: Sun, 10 Nov 2002 12:32:40 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021110122250.A25979@neutrino.particles.org>
-References: <20021108.225110.134684296.0.lawson_whitney@juno.com> <200211100424.gAA4OMQ02428@philonline.com>
+Message-ID: <20021110123240.B25979@neutrino.particles.org>
+References: <200211100419.gAA4Jpq08040@ev6.be.wanadoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200211100424.gAA4OMQ02428@philonline.com>; from pfheiss@philonline.com on Sun, Nov 10, 2002 at 12:24:22PM +0800
+In-Reply-To: <200211100419.gAA4Jpq08040@ev6.be.wanadoo.com>; from hammer@revobild.net on Sun, Nov 10, 2002 at 10:18:19AM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
+To: Heimo Claasen <hammer@revobild.net>
 Cc: linux-newbie@vger.kernel.org
 
-On Sun, Nov 10, 2002 at 12:24:22PM +0800, Peter wrote:
-> -#1  0x4007502a in _XOpenLC () from /usr/X11R6/lib/libX11.so.6
-> -#2  0x400746f9 in XOpenIM () from /usr/X11R6/lib/libX11.so.6
-> -#3  0x08079c09 in OpenIM ()
-> -#4  0x080783e6 in GetScreen ()
-> -#5  0x0807823b in CreateTopLevelWindow ()
-> -#6  0x0807891c in TkCreateMainWindow ()
-> -#7  0x08089544 in TkCreateFrame ()
-> -#8  0x0807a185 in Initialize ()
-> -#9  0x08079d4c in Tk_Init ()
-> -#10 0x0804c921 in Tcl_AppInit ()
-> -#11 0x080768a0 in Tk_Main ()
-> -#12 0x0804c8ec in main ()
-> (gdb) 
+On Sun, Nov 10, 2002 at 10:18:19AM +0000, Heimo Claasen wrote:
+> AND - I almost forgot - there was indeed a nearly 600 M(!)B large
+> "core.nnnn" file somewhere on that HD's system ... only that, as far
+> as I could remember, THERE HAS NOT BEEN ANY program crash I _remember_
+> of with that system in the time preceding the sudden strike of the
+> X server.
 
-Just a guess. Your X libs are incompatible with your Tcl/Tk.
+Just do:
+
+% gdb --core=/path/to/core.nnnn
+
+And you'll get the name of the application that crashed (most probably it
+is your X Server). 
 
 Elias
 
