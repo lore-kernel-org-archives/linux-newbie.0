@@ -1,46 +1,55 @@
-From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
-Subject: Re: pdf file creation using Linux apps
-Date: Sun, 2 Mar 2003 07:51:29 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: run scripts as other user
+Date: Sat, 01 Mar 2003 23:14:17 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030302065129.GA20413@teamfinders.org>
-References: <Pine.LNX.4.21.0303011750230.28792-100000@ppg_penguin> <Pine.LNX.4.53.0303011903080.11087@homenet>
+Message-ID: <5.1.0.14.1.20030301230909.01ee2f58@celine>
+References: <5.1.0.14.1.20030228230844.01f4a078@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.53.0303011903080.11087@homenet>
+In-Reply-To: <20030302.010513.8.0.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: whitnl73@juno.com
+Cc: linux-newbie@vger.kernel.org
 
-On Sat, Mar 01, 2003 at 07:17:42PM -0600, James Miller hunted and pecked out:
-[snip]
-> I have several pdf reading progs on my machine, so my concern is not so
-> much with being able to read pdfs. It's more with creating them, and,
-> specifically, creating files compatible with Adobe Reader. Most people who
-> will be reading such pdf files as I create will be viewing them with
-> Adobe's pdf product. So far, all documents I've created with KWord have
-> been compatible with Acrobat Reader (maybe 4 or 5 documents?). Those
-> created under OpenOffice and, if I recall correctly, Abiword, have not been
-> compatible. Since I'm running a system that is largely Debian Woody, I can't
-> easily upgrade the KOffice I have. Does anyone know of other apps that
-> create/convert to pdf that are largely compatible with Adobe Acrobat Reader?
-> Is there another list where I should pose this sort of question?
+At 12:56 AM 3/2/2003 -0500, whitnl73@juno.com wrote:
+>[...]
+> > You accomplish that by setting the suid bit, which you can do with the 
+> command
+> >
+> >          chmod +s filename
+> >
+> > Try "man chmod" for the details. The program needs to be normally
+> > executable by the user in question, for example.
+> >
+>Try man execve (towards the end, in NOTES) to see why this probably
+>won't work with a script.
+>perl claims to handle setuid scripts, but I haven't had the need to
+>figure out how to work it.  I think the perl interpreter itself has to
+>be setuid, and then it gets very fussy about checking your script for
+>booby-traps.
+>
+>You could write a binary program to call your script, and make it (the
+>binary program) setuid, I guess, but be careful.
+>
+>Lawson
 
-If you don't mind using a command line tool, then you might want to save the documents as PostScript files and then use ps2pdf13 to convert to PDF format.  I have been using ps2pdf13 for a little while now to convert man pages to pdf format, and I have never had one not load in Acrobat Reader.  My thought is that PostScript is a well recognized format that each of the word processors you've mentioned should be able to master, and they may be able to do PostScript better than they can do PDF.
 
-Take one of your documents, save it as a PostScript file, and then convert it to see how well it works.  From the command line:
+Oops, indeed. Thanks, Lawson. I missed that he was asking about a script 
+rather than a binary.
 
-ps2pdf13 mydocument.ps mydocument.pdf
+I'm not sure where perl claims to "handle" suid scripts, but as a general 
+matter, perl was designed to restrict use of suid for security reasons. The 
+solution of choice with perl is to use a wrapper binary of the sort you 
+refer to in the last paragraph. In fact, my old copy (not the current 
+edition) of Programming Perl has a perl script that generates the needed 
+wrapper ... a bit silly, since the perl program was more complicated than 
+the wrapper, which is simple to create as a template, then edit in vi (or 
+whatever) to insert the name of the script you want to run.
 
-ps2pdf13 has several related applications giving varying levels of Acrobat compatibility.  Try `man ps2pdf` to get the full story.
 
-HTH,
-Sean
 
--- 
-Theo. Sean Schulze
-tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
