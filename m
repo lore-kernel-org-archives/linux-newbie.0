@@ -1,49 +1,31 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: core dump volumes
-Date: 25 Nov 2002
+From: Joshua Lee <yid@softhome.net>
+Subject: Re: new to Debian
+Date: Mon, 25 Nov 2002 01:05:08 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211250121.gAP1LRq01890@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20021125060508.GA3215@softhome.net>
+References: <20021123070206.A1156@linux> <5.1.0.14.1.20021123084809.02141030@celine> <20021123075444.B1156@linux>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20021123075444.B1156@linux>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: lcollins <lcollins@gci.net>
+Cc: linux-newbie@vger.kernel.org
 
-With a yet not perfectly working (X-)application I happen to get
-X-server crashes and core dumps.
+On Sat, Nov 23, 2002 at 07:54:44AM -0500, lcollins wrote:
+> Looks like that's what I'm looking for. Thanks 
+> 
+> Ray Olszewski previously wrote:
+> > dselect is the standard Debian package manager for CD installs. I 
 
-(1.) The sheer volume of those "core.nnnn" dumps is flabbergasting:
-tendentially, they fill up all available volume of the main Linux
-partition - and some of these dumps did, and this apparently "spilled
-over" and damaged some of the X setup -, and they are in the range of
-600+ MB.
-I have some trouble to understand this:
-
--- The "core" (how much is this identical with the loaded kernel?)
-   couldn't be possibly that large; there's only just a bit more than
-   half of that RAM installed in the machine (320 MB), definitely not
-   600 MB or more.
-
--- What is it that gets dumped, really ?
-
-(2.) Using "mc" (the Midnight Commander), I found such a "core.1216" dump
-indicated as a file with a size of "637164K", and deleted it.
-
-Running "df" before and after, I get quite different data:
-
-Before deleting:  1875228 1K-blocks in use
-After deleting:   1429892 1K-blocks in use
-
-Difference thus:   445336 1K-blocks
-
--- clearly less than the 637164K of the deleted file according to MC.
-
-Where have the missing 192828K been/vanished ?
-Who is correct here, "df" or "mc" ? And what/whom is to be believed ?
-
-// Heimo Claasen // Brussels 2002-11-24
-
+Dselect is useful but it has a very odd interface. Aptitude is somewhat
+more friendly and does some of the same things, though it doesnt have
+all of dselect's features, I used to use it until I got more used to
+dselect. For apt-get there is a GUI front-end synaptic you might also
+want to take a look at, though I like to use apt-cache to search and
+then apt-get to install, since apt-get is quite easy to use.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
