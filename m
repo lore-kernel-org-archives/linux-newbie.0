@@ -1,65 +1,45 @@
-From: Martijn van Oosterhout <kleptog@svana.org>
+From: "John W. Linville" <linville@tuxdriver.com>
 Subject: Re: zero copy issue while receiving the data (counter part of sendfil e)
-Date: Wed, 22 Dec 2004 16:50:05 +0100
-Message-ID: <20041222155003.GA29278@svana.org>
-References: <267988DEACEC5A4D86D5FCD780313FBB02C66FCA@exch-03.noida.hcltech.com> <1103649767.7217.100.camel@beastie> <41C879CB.3040600@pobox.com> <1103658190.7217.121.camel@beastie> <1103703718.3775.93.camel@samish.india.ascend.com>
-Reply-To: Martijn van Oosterhout <kleptog@svana.org>
+Date: Wed, 22 Dec 2004 11:06:27 -0500
+Message-ID: <20041222160625.GB19449@tuxdriver.com>
+References: <267988DEACEC5A4D86D5FCD780313FBB02C66FCA@exch-03.noida.hcltech.com> <1103649767.7217.100.camel@beastie> <41C879CB.3040600@pobox.com> <1103658190.7217.121.camel@beastie> <1103703718.3775.93.camel@samish.india.ascend.com> <20041222155003.GA29278@svana.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
-Return-path: <linux-net-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 Content-Disposition: inline
-In-Reply-To: <1103703718.3775.93.camel@samish.india.ascend.com>
-Sender: linux-net-owner@vger.kernel.org
+In-Reply-To: <20041222155003.GA29278@svana.org>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-To: Mandeep Sandhu <Mandeep_Sandhu@infosys.com>
-Cc: dima@s2io.com, Jeff Garzik <jgarzik@pobox.com>, linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Martijn van Oosterhout <kleptog@svana.org>
+Cc: Mandeep Sandhu <Mandeep_Sandhu@infosys.com>, dima@s2io.com, Jeff Garzik <jgarzik@pobox.com>, linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
 
+On Wed, Dec 22, 2004 at 04:50:05PM +0100, Martijn van Oosterhout wrote:
 
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Generally, reading from memory takes time because the CPU has to wait,
+> writing is free since it can be deferred in the cache (in theory
+> indefinitly) until there's free cycle.
 
-On Wed, Dec 22, 2004 at 01:51:58PM +0530, Mandeep Sandhu wrote:
-> On Wed, 2004-12-22 at 01:13, Dmitry Yusupov wrote:
-> > indeed :)
-> > another words if you have modern NIC than you get "zero-copy"(except
-> > copy_to_user()) for free :)
-> what does "checksum on rx" mean??? Don't most of the NIC's support
-> DMA-ing to mem on rx-ing a packet? so what does "zero-copy for free"
-> mean here?
+I'm not sure I'd call that "free" -- executing the instructions for
+the write has a non-zero cost.
 
-It's if the network card will check the checksums of the packets on
-receiving. If it doesn't, the main CPU needs to read every byte in the
-packet to calculate the checksum itself. If the CPU is doing that
-anyway you can copy it elsewhere for free.=20
+Still, it is significantly cheaper than the read...
 
-Generally, reading from memory takes time because the CPU has to wait,
-writing is free since it can be deferred in the cache (in theory
-indefinitly) until there's free cycle.
+John
+-- 
+John W. Linville
+linville@tuxdriver.com
 
-In other words, if the card isn't checksumming but does DMA you're not
-really saving any time over a manual copy.
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
 
-Hope this helps,
---=20
-Martijn van Oosterhout   <kleptog@svana.org>   http://svana.org/kleptog/
-> Patent. n. Genius is 5% inspiration and 95% perspiration. A patent is a
-> tool for doing 5% of the work and then sitting around waiting for someone
-> else to do the other 95% so you can sue them.
-
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQFByZeqY5Twig3Ge+YRAhqrAJ9xLO66LZpRLgD2D3wIzuUx0Jo1jgCgic+r
-NSxeItQ4wZKPxGjqv0VqGDo=
-=XEu8
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
