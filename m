@@ -1,73 +1,23 @@
-From: Jude DaShiell <dashielljt@gmpexpress.net>
-Subject: Re: linux and tag lines
-Date: Tue, 14 Jan 2003 21:47:22 -0500 (EST)
+From: Yawar Amin <raihan@citech-bd.com>
+Subject: Going to GNOME from twm
+Date: Thu, 16 Jan 2003 02:07:13 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0301142146500.169-100000@athame.gmpexpress.net>
-References: <20030114.000124.134688608.0.whitnl73@juno.com>
-Mime-Version: 1.0
+Message-ID: <200301152007.h0FK7Dw03046@localhost.localdomain>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030114.000124.134688608.0.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: whitnl73@juno.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Thanks Lawson, as you can see it worked.  Now I'll have a way in.On Mon,
-13 Jan 2003 whitnl73@juno.com wrote:
+I've somehow managed to set twm to be my window manager on my Red Hat 7.3
+PC. I want to go back to GNOME and the panel. I've tried opening up
+Nautilus, going to "Start Here", then "Desktop" inside the "Start Here"
+window, then "Window Manager", and then set the window manager to Sawfish
+(thereby deselecting twm). I then restarted X. But I'm stuck with twm, so
+... I need some way to change back to GNOME. I'd be grateful for any help.
 
-> Date: Mon, 13 Jan 2003 23:45:38 -0500 (EST)
-> From: whitnl73@juno.com
-> To: dashielljt@gmpexpress.net
-> Cc: linux-newbie@vger.kernel.org
-> Subject: Re: linux and tag lines
->
-> On Mon, 13 Jan 2003, Jude DaShiell wrote:
->
-> > st:	linux-newbie@vger.kernel.org
-> >
-> > Can any of the character-based email programs run a script and write
-> > output from that script onto the ends of outgoing messages?  There's
-> > something some users are doing using perl and astrolog and outlook in
-> > windows I'd like to be able to get linux doing too.
-> >
-> >
->
-> Err, yes.  Pine has the options:
->
-> sending-filters=/usr/local/bin/trail
-> compose-send-offers-first-filter="yes"
->
-> Which I will use to put a `uname -a` on the end of this if it works.
-> Mutt has a send-hook, which looks similar.
->
-> If this works, here is the filter (I had the sed command to begin with,
-> I just added the uname.  Note this is a filter, the outgoing message is
-> piped through it, so your script must copy stdin to stdout and append
-> the sig.
->
-> #!/bin/sh
-> /bin/sed 's/ *$//g' $@
-> uname -a 1>&1
->
->
->
-> Lawson
-> --
-> ---oops---
-> Linux giftie 2.4.13 #1 Tue Oct 30 22:04:20 EST 2001 i586 unknown
->
->
->
-> ________________________________________________________________
-> Sign Up for Juno Platinum Internet Access Today
-> Only $9.95 per month!
-> Visit www.juno.com
->
-
--- 
-Jude <dashielljt(at)gmpexpress-dot-net>
-
+Yawar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
