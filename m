@@ -1,35 +1,37 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: /net
-Date: 29 Oct 2002 19:23:57 -0500
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: SCSI Card Recognized Incorrrectly
+Date: Tue, 29 Oct 2002 19:39:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035937437.2765.5.camel@brainpress.verizon.net>
+Message-ID: <200210291939.32920.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-I'm still recovering from upgrading into almost a completely new
-system.  I thought I didn't install NFS and samba and the other network
-file system stuff, but it seems it's there anyway.
+Hi Folks
 
-Anyway, when the system is shutting down or rebooting,  just after the
-umount command is given, I get the error: umount2: <something about RPC
-not being found>: umount /net: device busy
-and right there, all attempts to shutdown/reboot are ended.  The system
-just sits there.  The only thing I can do is hit the reset button.  If
-not for XFS, I'd be running fsck at every frickin reboot.
+Thanks in advance for listing to my small knowledge problem.
 
-I have an AthlonXP 2100+ system, integrated ethernet, adsl connex
-(started at boot and not stopped manually at all).  Can't think of what
-else is important here.  Can anyone tell me how to make this go away?
-I tried to disable nfslock and nfs at boot (set to start manually), but
-it frickin started anyway.
+Running RH 7.3 I have a HP 6100 scanner which my system recognizes as a HP 
+24xx scanner.
 
-Thanks guys!!!
--- 
-Bryan Simmons <bsimmo1@gl.umbc.edu>
+To me the problem appears to exist because the on installation of the system 
+RH 7.3 automatically recognizes the SCSI card as (dmesg):
+
+SCSI0 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.5
+        <Adaptec 2902/04/10/15/20/30C SCSI adapter>
+        aic7850: Single Channel A, SCSI Id=7, 3/253 SCBs
+
+which is the right make but the wrong model.
+
+The card is an Adaptec 2906.
+
+How does one go about changing the configuration to the correct card?
+
+Thanks
+Frank
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
