@@ -1,107 +1,62 @@
-From: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
-Subject: how to use appl of one image in another
-Date: Thu, 19 Jun 2003 03:12:17 -0700 (PDT)
+From: James Mohr <linux-newbie@jimmo.com>
+Subject: Re: About newbie help
+Date: Thu, 19 Jun 2003 14:21:25 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030619101217.99432.qmail@web20501.mail.yahoo.com>
-References: <5.1.0.14.1.20030618101820.02f53830@celine>
+Message-ID: <200306191421.25646.linux-newbie@jimmo.com>
+References: <02AB8F82CFB9AF47A537171AFF3A97E26B9473@blr005istex01.symphonysv.com> <20030618102533.GA27992@bilmuh.ege.edu.tr> <oprqyoj1q1yuy227@mail.citech-bd.com>
+Reply-To: linux-newbie@jimmo.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030618101820.02f53830@celine>
+In-Reply-To: <oprqyoj1q1yuy227@mail.citech-bd.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: ganesh.venkatesan@intel.com
+To: linux-newbie@vger.kernel.org
 
+On Wednesday 18 June 2003 13:51, Amin wrote:
+> On Wed, 18 Jun 2003 13:25:33 +0300, Halil Demirezen
+>
+> <nitrium@bilmuh.ege.edu.tr> wrote:
+> > Yes, they all seem nice for initial. And extra, bh processing, spinlocks
+> > and usage of semaphores in linux kernel, the cache tables.. etc etc.
+> >
+> > I am looking for a document that will not be so deep, however, for an
+> > entrance into the deepness..
+> >
+> > Google is treasure, however, you usually got lost in there.
+> >
+> > thanx.
+>
+> Sounds like you want Dave Rusling's ``The Linux Kernel'' at
+>
+> http://www.tldp.org/guides.html
+>
+> Yawar Amin
 
+An expanded version of Dave's paper can be found here:
 
-I have installed RH8.0 in my system.
+http://www.linux-tutorial.info/cgi-bin/display.pl?81&0&0&0&3
 
-Then I have downloaded the linux kernel 2.4.18 and
-configured it and compiled it to get new image.
-I have used the old configuration(make oldconfig) with
-my RH8.0(2.4.18-14).
+This is actually a combination of two different documents on the kernel, as 
+well as operating system basics. Rather than being a static document, like 
+most of the the stuff on the LDP, the entire Linux Tutorial is interactive. 
+It provides links between various sections and to other sites, pop-up 
+glossary terms, and much more. 
 
-when I boot into the new image,I have observed the
-following things form the /var/log/boot.log
-  
-  sshd:starting sshd
-  sshd:execvp:no such file or directory
-  sshd:failed
-  rc:starting sshd:failed
+Regards,
 
-  rpc.yppasswdd:execvp:no such file or directory
-  yppasswdd:rpc.yppasswdd startup failed
+jimmo
 
-  gpm:execvp:no such file or directory
-  gpm:gpm startupj failed
-
-  httpd:execvp:no such file or directory
-  httpd:startup failed
-
-  crond:execvp:no such file or directory
-  crond:startup failed
-
-  rc.sysinit:mounting proc filesystem succeeded
-  sysctl:net.ipv4.ip_forward=0
-         net.ipv4.conf.default.rp_filter=1
-         net.ipv4.kernel.core_user_pid=1
-  rc.sysinit:configuring kernel parameters:succeeded
-  mount:mount:mount point /proc/bus/usb does not exist
-  
-  rc.sysinit:mounting usb filesystem:failed
-  modprobe:can't locate module hid
-           Initaialising USB HID interface:failed
-  modprobe:can't locate module keybdev
-           Initialising USB keyboard failed
-  modprobe:can't locate module mousedev
-           Initialising USB MOUSE :failed
-  
-  mount:mount fs type ext3 not supported by kernel
-  Mounting local filesystems :failed
-  updfstab:execvp: no such file or directory
-  kudzu: updating /etc/fstab failed
-  iptables:modprobe
-  iptables:failed
-  iptables:can't locate module ip-tables
-  iptables:perhaps iptables or your kernel needs to be
-
-              upgraded
-  
-  
-  Also, the output of the command df ,
-  shows that all my partitions are of type ext3.
-  
-  Iam also unable to see the files or directories of
-home,misc,nfshome,initrd,opt,usr  partitions while Iam
-able to see the files of root partition.
-  
-  Is it because I have specified in the /etc/lilo.conf
-  as
-   
-       "root=/dev/hda1"
-
-  Its not booting when I have given the option,
-  append="root=LABEL=/"
-
-  When my original image(RH8.0) is booting and working
-fine with this configuration and append="root=LABEL=/"
- in lilo.conf,
-  why is my new image not working ?
-
-please think over this!!!!!!!!!
-
-
-  
-  
-
-  
-
-
-__________________________________
-Do you Yahoo!?
-SBC Yahoo! DSL - Now only $29.95 per month!
-http://sbc.yahoo.com
+-- 
+---------------------------------------
+"Be more concerned with your character than with your reputation. Your
+character is what you really are while your reputation is merely what others
+think you are." -- John Wooden
+---------------------------------------
+Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
+---------------------------------------
+NOTE: All messages sent to me in response to my posts to newsgroups, mailing 
+lists or forums are subject to reposting.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
