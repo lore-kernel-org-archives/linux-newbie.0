@@ -1,21 +1,21 @@
-From: 1stFlight <1stflight@ameritech.net>
-Subject: Compile Options for Optimized Programs
-Date: Fri, 9 Aug 2002 22:36:48 -0400
+From: Natarajan K <natarajan_k@hotpop.com>
+Subject: Partitioning  Worked
+Date: Sat, 10 Aug 2002 08:43:50 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208092236.48708.1stflight@ameritech.net>
+Message-ID: <200208100843.50199.natarajan_k@hotpop.com>
+Reply-To: natarajan_k@hotpop.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux newbie <linux-newbie@vger.kernel.org>
+To: Riley Williams <rhw@InfraDead.Org>
+Cc: Ray Olszewski <ray@comarre.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-  Awhile back I found some options for optimizing programs on a i686 (Athlon) 
-processor during compile..something along the lines of - O3 -mpcu -march  do 
-things options (environment settings I believe) ring a bell to anyone, and if 
-so how do I impliement them? Thanks!
-
-   																Darryl
+HI,
+	Thanks Riley and Ray.
+-- 
+Natarajan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
