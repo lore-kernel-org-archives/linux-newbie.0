@@ -1,50 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: insmod at system startup - where?
-Date: Tue, 20 May 2003 13:05:24 -0700
+Date: Tue, 20 May 2003 15:13:39 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030520125948.01ec6e90@celine>
-References: <Pine.LNX.4.53.0305201426560.959@homenet>
+Message-ID: <Pine.LNX.4.53.0305201506520.959@homenet>
+References: <5.1.0.14.1.20030520125948.01ec6e90@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0305201426560.959@homenet>
+In-Reply-To: <5.1.0.14.1.20030520125948.01ec6e90@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux-Newbie list <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-Assuming you are not for some esoteric reason unable to use modprobe rather 
-than insmod ... all you need to do in Debian is add the name of the module 
-(without the .o part, but with any parameter settings, just the way you 
-wrote it below) to /etc/modules . One of the early-on init scripts (I 
-forget its name right now) checks this file and modprobes every module name 
-in it, in order.
+On Tue, 20 May 2003, Ray Olszewski wrote:
 
-I don't know if Libranet is sufficiently "Debianish" to follow the Debian 
-practice here ... but that's how genuine, whole-nine-yards Debian handles 
-this situation.
+> Assuming you are not for some esoteric reason unable to use modprobe rather
+> than insmod ... all you need to do in Debian is add the name of the module
+> (without the .o part, but with any parameter settings, just the way you
+> wrote it below) to /etc/modules . One of the early-on init scripts (I
+> forget its name right now) checks this file and modprobes every module name
+> in it, in order.
+>
+Well, here we go again: time to tackle yet *another* Linux learning
+curve.  I was only being as esoteric as the directions I found on the web,
+actually.  That said, why is modprobe less esoteric than insmod?  What (in
+short scope) does each do in comparison with the other?  Being in almost
+total ignorance, I really have no preference for one over the other.  In
+other areas of life where I have greater degrees of adeptness, I usually
+choose the short and direct over the labrynthine and tortuous (you may be
+wondering: "why the hell is he using Linux, then?").  So, perhaps armed
+with a bit more know-how, I could make a valid choice between the two?
 
-At 02:40 PM 5/20/2003 -0500, James Miller wrote:
->I would like to make my Debianish distro do an insmod on startup and am
->wondering what init file I need to edit.  Here's more on what I understand
->I'm doing (not to be confused with what I really may be doing, not
->understanding it).  I found a way to make a PDA sync utility that was
->written to sync through a serial cable sync through a USB port.  From
->the command line I wrote (as instructed): insmod usbserial vendor=0x0XXX
->product=0x0XXXX.  I think that loads a module that somehow convinces the
->computer that it should treat a USB connection as a serial port.  A firm
->grasp of that issue may not be all that pertinent, since, whatever it
->does or doesn't do, it worked: I got my PDA syncing through the USB port.
->I think that, in order to ease things a bit, I'd like to have this
->presumed module load at system startup.  Under standard Debian (assuming
->my distro - Libranet - is fairly Debian-compliant), what file would one
->edit with the insmod command in order for the system to do this
->serial/USB switcheroo on startup?  Any clarifications on muddled
->conceptualizations of what I'm doing are welcomed and appreciated.
-
-
-
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
