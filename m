@@ -1,68 +1,66 @@
-From: lawson_whitney@juno.com
-Subject: Re: XF86Config problem
-Date: Mon, 8 Apr 2002 20:12:00 -0400 (EDT)
+From: chammann@t-online.de (Christoph Hammann)
+Subject: Re: Urgent help !
+Date: Tue, 9 Apr 2002 03:43:29 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020408.201310.134669216.0.lawson_whitney@juno.com>
-References: <3730BAFF.2A1295B4.0349D98D@netscape.net>
+Message-ID: <16ukfV-26ZTpgC@fwd01.sul.t-online.com>
+References: <20020408232526.122bd9b1.bbotero@gmx.de>
 Mime-Version: 1.0
-In-Reply-To: <3730BAFF.2A1295B4.0349D98D@netscape.net>
+Content-Transfer-Encoding: 7BIT
+In-Reply-To: <20020408232526.122bd9b1.bbotero@gmx.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: robrice56@netscape.net, lawson_whitney@juno.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Beatriz Botero H <bbotero@gmx.de>, linux-newbie@vger.kernel.org
 
-On Mon, 8 Apr 2002 robrice56@netscape.net wrote:
-
+Am Montag, 8. April 2002 23:25 schrieb Beatriz Botero H:
+> I am running a PC under Linux SuSE 7.2 with kernel 2.4.18, self compiled.
+> I changed some days ago the partition of my second HD from ext2 to ext3
+> with the help of tune2fs -j /dev/hdb2 and everything was running OK. Today,
+> I had a problem with a frozen display and I had to reboot the box cold.
+> During the corresponding forced check I got the following messages: Quote
+> ---------
+> /dev/hdb2: reading journal for ext3 file system...
+> fsck.ext3: Invalid argument:couldn't load ext3 journal for /dev/hdb2
+> fsck.ext3: /dev/hdb2 failed ( status 8 )! run it manually
+> ....
+> fsck failed. Please repair manually and reboot
+> ---------
 >
-> ---------3730e4672a12bf1c3730e4672a12bf1c
-> Content-Type: text/plain; charset=iso-8859-1
-> Content-Transfer-Encoding: 8bit
-> Content-Disposition: inline
+> After I enter fsck /dev/hdb2 i got:
+> Quote
+> ---------
+> Parallelizing fsck versioin 1.19a (13-jul-2000)
+> e2fsck 1.19, 13-jul-2000 for EXT2 FS 0.5b, 95/08/09
+> /dev/hdb2: reading journal for ext3 file system...
+> fsck.ext3: Invalid argument:couldn't load ext3 journal for /dev/hdb2
+> fsck.ext3: /dev/hdb2 failed ( status 8 )! run it manually
+> ---------
+> If I try to boot with the boot DK or with the CD ( Linux SuSE 7.2 ) I get
+> the same wording.
 >
-> the attched file is my XF86Config file with the error mesages from XF86R6
-> my computer is a IBM think pad 350c type 2618-poa I have ben all over the net trying to find info on this computer
-> I have slack 3.5 12 meg ram 16 meg swap a CT-65530 vido controler what the display is IBM dosen't even know I hope the rest is in the attched file
->
-What is a poa?  Never mind.  This thing is a laptop, right?  With an LCD
-display?
->
-> Section "Monitor"
->    Identifier      "Primary Monitor"
->    VendorName      "Unknown"
->    ModelName       "Unknown"
->    HorizSync       31.5
+> What can I do ? As I was just experimenting with ext3, I can reformat the
+> second HD if necessary ( partiton magic ). However, the informations in the
+> first HD are extremely important for me ( second HD was backup for HD 1 ;-(
+>   )
 
-You said the monitor ^^^^ can only sync at this rate...
+Dear Edgar!
 
-This is likely not true, but if you lie to the X server it will act as
-if it believes you and not risk harming the hardware.
-Why are you using the hsync spec for a VGA (note no S) CRT monitor?
+/dev/hdb2 seems to be definitely hosed, I'm not seeing any reasonable method 
+of getting at the data on this partition. But as you write this partition 
+seems to contain a backup only. Can you boot from CD-ROM or diskette and when 
+it halts in the bootup process while trying to fsck /dev/hdb2 open another 
+console (Ctrl-Alt-F2 to F{number of ttys+1})? If so, I would try to umount 
+this partition and go on with the boot process or edit /etc/fstab so that it 
+doesn't even touch it.
+If, on the other hand, /dev/hdb2 contains the root filesystem, you really are 
+FUBAR. Wonder if one of the experts on this list can still help you out of 
+this.
+So, what is the /etc/fstab of this system?
 
-> Start of startx output
-
-> (--) SVGA: Mode "640x480" needs hsync freq of 31.46 kHz. Deleted.
-
-The X server replies that your only mode needs to sync at 31.46
-
-The rest after this is fallout.
-
-I have only limited experience with these things, but in a pinch I can
-use my Packard Hell 386 with 4mb as a super-slow X terminal.  I don't
-think LCD displays actually sync at all, and they don't seem to care
-what hsync is required, so I guess you can just specify a looser hsync
-range in the monitor section and maybe that will work better.
-
-   HorizSync       30-40
-
-Or something like that.
-
-Lawson
----oof---
-
-
-
-
+Christoph
+-- 
+Random fortune quote:
+Kin, n.:
+	An affliction of the blood
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
