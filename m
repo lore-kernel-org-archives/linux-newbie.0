@@ -1,8 +1,8 @@
-From: "Ray Olszewski" <lists@tcob1.net>
-Subject: stripping flies (was: Re: .so, .a and .o-files)
-Date: Thursday, 15 Aug 2002 08:59:21 +000
+From: "Axel Siebenwirth" <lists@tcob1.net>
+Subject: Re: .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 20:25:40 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_085921__75f821c9@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_202540__a46609a1@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,27 +13,15 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-I changed the Subject: line to refer to the question you actually asked.
+Hi Ray!
 
-At 03:44 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Me again.
->
->Whats the use of stripping object files of their symbols. Symbols reflect
->the functions in an object file, right?
+What is the difference between the linking that gcc does i.e. to link many
+object files into an executable and  the linking that ld does?
+Is it really that gcc is just to link object files together to an executable
+and ld is there to link object files to an shared library?
 
-
-Stripping makes the files smaller, which matters in some cases. The symbols 
-are valuable in debugging problems but are not needed simply to execute the 
-object code.
-
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Thank you,
+Axel
 -
 
 <-> Gateway Information.
