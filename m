@@ -1,36 +1,46 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Strange Mice Behavior
-Date: Tue, 25 Mar 2003 14:20:20 +0800
+From: Kurt Sys <kurt.sys@rug.ac.be>
+Subject: Re: safety/permissions
+Date: Tue, 25 Mar 2003 09:05:14 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303250620.h2P6KKg02578@philonline.com>
+Message-ID: <16000.3514.269146.127648@ksys.rug.ac.be>
+References: <15999.13082.237069.193180@ksys.rug.ac.be>
+	<20030324.165557.8.0.whitnl73@juno.com>
+Reply-To: Kurt Sys <kurt.sys@rug.ac.be>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030324.165557.8.0.whitnl73@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-Hi,
-
-I recently bought a new mouse since the old one is graying. Both ps2 mice 
-behave properly under RH7.3 on the console and in X.
-
-In Slackware 8.0 each behaves differently. One, a Benq, functions correctly on 
-the console, however, goes crazy in X, which then I have to abort with 
-ctrl-alt-backspace.  The other mouse, a Kensington, is the reverse. It does 
-not work on the console, yet perfectly in X.
-
-When I have started X with the Kensington mouse in SW8.0 and then change to 
-the Benq mouse that one will then work in X.
-
-Is there any explanation and could it be corrected and how?
-
-Thanks & regards
--- 
-Peter
+To: whitnl73@juno.com
+Cc: linux-newbie@vger.kernel.org
 
 
+Mail from whitnl73@juno.com
+sent on Monday March 24 2003 at 16:50 (GMT-0500):
 
+> On Mon, 24 Mar 2003, Kurt Sys wrote:
+> 
+> [...]
+> >
+> > I guess another config-file, somewhere is /etc is wrong and
+> > fetchmail reads that file if it doesn't find the
+> > 'smtphost'-option. Could this be right?
+> >
+> Not exactly.  smtphost defaults to 'localhost'.
+> [...]
+
+
+OK... I get it. True: I can't send mail to myself using a simple
+command like:
+
+$ echo "To: kurt@localhost" | qmail-inject
+
+Possible reason (just for my understanding of this machine, this is
+absolutely nothing I worry about)?
+
+tnx,
+Kurt.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
