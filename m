@@ -1,47 +1,33 @@
-From: Donald Duckie <schipperke2000@yahoo.com>
-Subject: on sk_buff
-Date: Tue, 31 Aug 2004 22:06:42 -0700 (PDT)
+From: Andrew <ald2@arrakis.es>
+Subject: uninstalling source package
+Date: Wed, 01 Sep 2004 17:49:36 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040901050642.10265.qmail@web90105.mail.scd.yahoo.com>
+Message-ID: <1094053775.8237.15.camel@p2.ald.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux newbie <linux-newbie@vger.kernel.org>
 
-good day!
+Hi,
+Silly me went and installed a source package on the wrong machine. The
+package in question is Mail-SpamAssassin-2.64.tar.bz2 and the system is
+Mdk-10. When I do 'make uninstall' I get:
 
-i am new to linux kernel, and came across with
-sk_buff. i have been reading about it for awhile now,
-but there are some questions which were not answered
-by any site that i came across:
+Uninstall is unsafe and deprecated, the uninstallation was not
+performed.
+We will show what would have been done.
+ 
+no packlist file found:  at /usr/lib/perl5/5.8.3/ExtUtils/Install.pm
+line 332.
+make: *** [uninstall_from_sitedirs] Error 2
 
-(1) as what i have understood, sk_buff is just
-equivalent to a packet that can be passed from one
-layer/protocol to the other. how or in what way can it
-be passed? 
+So how do I uninstall it?
 
-(2) the functionalities offered by sk_buff can be
-categorized into: memory management; data
-manipulation; list manipulation. what functions are
-supposed to be invoked in order for the skb to be sent
-or received?
+TIA,
+Andrew
 
-(3) i know that i still have to read a lot, but where
-can i find/read resources about the sending/receiving
-of an sk_buff from one layer to another; one protocol
-to another? the net/core/skbuff.c does not offer much
-explanation on the above querries.
-
-
-
-
-		
-_______________________________
-Do you Yahoo!?
-Win 1 of 4,000 free domain names from Yahoo! Enter now.
-http://promotions.yahoo.com/goldrush
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
