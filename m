@@ -1,28 +1,29 @@
-From: Mike Dresser <mdresser_l@windsormachine.com>
-Subject: Re: Netscape6.2/Slack8.1 Problem??
-Date: Wed, 30 Apr 2003 13:31:12 -0400 (EDT)
+From: Andrew Langdon-Davies <ald2@arrakis.es>
+Subject: olivetti p100 with onboard ATI Mach64
+Date: Wed, 30 Apr 2003 19:50:53 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0304301329540.22705-100000@router.windsormachine.com>
-References: <20030430130258.A152@lnx2.w8mch.ampr.org>
+Message-ID: <3EB00CFD.5040100@arrakis.es>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030430130258.A152@lnx2.w8mch.ampr.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Wed, 30 Apr 2003, Hal MacArgle wrote:
+Hello,
+I have two machines as described above and both give me exactly the same 
+problem. Soon after booting from a Linux floppy the screen goes blank. 
+In the case of Tomsrtbt this happens just after the screen for choosing 
+a video mode.
+ The manual describes the video controller as:
+-Component ATI Mach64-CT with 1 MB or 2 MB of video memory, integrated 
+on the motherboard, and the DPMS, DDC 1 features
+-Board IN2052 with video connector output.
+Is there a solution to this?
+TIA
+Andrew
 
-> Clicking on the normal box that usually accepts an entry - the
-> arrow changes to an "I" but no typing appears in the box..
 
-I've seen this happen on occasion on a Debian Sid machine, p4 2.53/512 meg
-ram, mozilla 1.3
-
-Doesn't do it all the time like your machine seems to be doing though.
-
-Mike
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
