@@ -1,35 +1,29 @@
-From: ichi@ihug.co.nz
-Subject: Re: what's ${1##*/}
-Date: Sat, 21 Dec 2002 14:52:45 +0000
+From: "Jonathan Kallay" <yoni@kallay.net>
+Subject: missing man and smbsh
+Date: Fri, 20 Dec 2002 22:17:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E04803D.D79BC7E@ihug.co.nz>
-References: <20021221084841.659D.WOLFGANG127JP@ybb.ne.jp>
+Message-ID: <007801c2a89f$811fb340$6400a8c0@00arc>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: wolfgang <wolfgang127jp@ybb.ne.jp>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-wolfgang wrote:
-> 
-> I found the statement below in killproc() of 
-> /etc/init.d/functions script.
-> 
-> base=${1##*/}
+I'm running Debian 3.0 and have been working on setting up my machine on a
+Windows network.  I installed the packages samba, samba-common, swat, smbfs
+and smbclient.  When using smbmount I've gotten an error from the kernel- I
+tried running "modprobe smbfs", but the smbfs module couldn't been found.  I
+also tried running smbsh but that couldn't be found either.
 
-This is a bash structure used to remove parts of a 
-variable.  The variable is $1.  The ##*/ means that 
-everything before the last / is removed.  Therefore,
-if $1 is the full pathname of a file, $base will be
-the filename (without the path).
+I thought that perhaps there were setting that I did not correctly set when
+installing Samba (such as the -smbwrapper option).  So I tried using dselect
+to remove and reinstall Samba.  However, before compilation dselect didn't
+prompt for any options.
 
-Cheers,
-Steven
-
-______________________________
-http://www.volny.cz/basiclinux
+After Samba was reinstalled, I discovered that the system could no longer
+find man!  Anyone have any suggestions on what could have happened, and how
+to get smbsh or smbmount to work properly?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
