@@ -1,87 +1,63 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Can't see my drives
-Date: Sun, 25 Aug 2002 14:16:09 +1200
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: Choice of NIST daemon
+Date: Sun, 25 Aug 2002 08:35:28 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020825055150.EB46751BA2@smtp.orcon.net.nz>
-References: <5.1.0.14.1.20020823084240.02277630@celine> <5.1.0.14.1.20020824074857.02250780@celine>
-Reply-To: cr@orcon.net.nz
+Message-ID: <Pine.LNX.4.21.0208242236150.8397-100000@Consulate.UFP.CX>
+References: <200208221040.g7MAe6p06770@hartford-hwp.com>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020824074857.02250780@celine>
+In-Reply-To: <200208221040.g7MAe6p06770@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-On Sunday 25 August 2002 03:05, Ray Olszewski wrote:
-> Selected responses only, below.
+Hi Haines.
 
+> I'd like to have my system clock automatically corrected through an
+> online connection that remains always up. I gather that xntpd is a
+> commonly used daemon to do that for me.
 
+xntpd is one of several commonly used daemons for doing that. Another
+commonly used daemon is called ntp if that helps. You can't install
+both of them.
 
-> Before I set up ide-scsi here, my CD burner worked just fine as a reader in
-> ide mode.
-
-That's exactly what I'd expect to be able to do.   
-
-In fact,as I recall it, when I replaced my old 6x CD-ROM (IDE) drive with my 
-LG cd-writer  (also IDE), I don't think the system even 'noticed' the 
-change....   it all worked exactly as before.
-
-I think I'll try to work back to the original IDE CD-ROM setup, and see how I 
-go from there.
-
-[.....]
-> >
-> >Is this going to happen *every* time I upgrade?   8(
+> However, I find that the Red Hat version of this application is
+> rather old, and when I try to install it, it conflicts with
+> installed ntp. I did not uninstall ntp because it is needed by
+> another program. At one time I was interested in nisttime, but that
+> led to questions regarding reconfiguration of uucp.
 >
-> Probably. You'll need to make notes about how you set this up and redo it
-> with every full-level (not incremental) upgrade. (Or you could switch to a
-> distro that does upgrades more gently, as Debian does ... but I digress.)
+> What is the most straightforward way to implement a NIST server that
+> does not interfere with other programs? I'm running RedHat 7.3
 
-Umm OK, this time I *will* take notes.   :)
+The straightforward way would be to use the ntp daemon that is already
+installed according to your description above. To configure it, edit the
+file /etc/ntp.conf and insert the following lines at the top of the
+file, replacing $SERVER with the full hostname of the server you plan to
+synchronise to:
 
-> [...]
->
-> >As a related question, is there anywhere on the Internet a page that
-> > explains (in simple language) what the boot-up sequence of Linux is (and
-> > XFree86 for that matter) and what files get read in what order?   Man
-> > pages are always much too detailed and limited in scope to be easy to
-> > follow.
->
-> You probably want to know about the init sequence, not the boot-up
-> sequence. Booting just involves getting the kernel running and starting the
-> init process. The init process (normally, and we can easily neglect the
-> exceptions for the moment) is governed by the directives in /etc/inittab.
-> Typically, these directives involve a three-step init process:
->
->          1. Init into single-user more and run a script. On my systems, and
-> pretty much every Linux system I've ever sern, this is a script called rcS.
-> Its location varies a bit; on my systems, the coverning line reads
-> "si::sysinit:/etc/init.d/rcS". This script in turn runs other scripts; if
-> you understand shell scripting, you can follow the sequence by reading the
-> scripts.
->
->          2. Init into normal multi-user mode (governed by a runlevel
-> specification). This works the same way as step 1, except init runs a
-> different script, again as specified in inittab for the default or chosen
-> runlevel. On my systems, it is a line like "l2:2:wait:/etc/init.d/rc 2" --
-> which says run the script /etc/init.d/rc and pass to it the argument "2".
->
->          3. Run other processes specified for the chosen or default
-> runlevel. Typically these are just the tty processes that allow for console
-> logins (look for lines like "1:2345:respawn:/sbin/getty 38400 tty1"), but
-> some distros use this step to run an X-based login process like xdm or to
-> run consoles on serial ports.
+	#
+	# Remote system I am authorised to synchronise to.
+	#
+	server	$SERVER
 
-Thanks!   I'll file this and print out a copy for reference.
+When you've done that, save the file, then run the following commands:
 
-> I'm not sure if there is a general turorial on the boot/init process, but
-> were I looking for one, I'd look through the HowTos at (for example)
-> www.linuxdoc.org .
+	chkconfig --level 35 ntpd on
+	service ntpd stop
 
-I don't recall seeing one, but I'll check again.
+At this point, make sure that your system clock is set to within five
+minutes of the correct time, then run the following command:
 
-cr
+	service ntpd start
+
+After that, your system clock will remain synchronised to whichever
+clock you have set it to.
+
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
