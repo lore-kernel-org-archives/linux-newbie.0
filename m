@@ -1,53 +1,34 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: Fetchpop
-Date: 20 Jul 2003
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: How to update JRE?
+Date: Sun, 20 Jul 2003 16:32:24 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307202116.h6KLGWj4010625@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <0a9130032021573HNLMAIL1@hnlmail1.hawaii.rr.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hmm, difficult to imagine that Fetchpop would not have any means to
-set some parameters/arguments. Maybe there are command line switches ?
+I have a *very recently updated* (like installed and 
+completely apt-getted and updated and such like 10 
+days ago) Debian. It came with a JRE identifying itself 
+as 1.4.1, build Blackdown-1.4.1-01. I've been informed 
+by the author of a certain Java program that I like (at the 
+moment, not the author, just the program!) to go the Sun 
+JRE link on his web site and download that version - 
+which, according to the target of the link on his web 
+page, is version 1.4.1 ... anyway, how does one update 
+a JRE on Linux? I've only done it on WIndows and OS/2 
+(both via an executable that you download and run).
 
-(At least it has to be given the POP3 server name, the user-ID and
-password - where are these stored an how are they read by the prog ?
-Some mail fetch progs have an input mask for that where they have
-buttons or fields to define "get new mails / delete old" or the like,
-which would be based precisely on use of the "last" command. Setting
-this type of definition to "get all / delete all" would rather
-certainly avoid the use, and possible error-hangup, with this POP3
-command.)
+Sorry for asking something so basic, I got hit in the 
+head this morning with a 100-lb PA speaker, and the two 
+brain cells haven't regained communications between 
+themselves yet ... 
 
-If the program source is available (as it should, meant to be run under
-Linux), it could even be not too problematic to cut out the subroutine(?)
-executing the "last" command and to recompile the thing ?
-
-Basically, fetchmail progs have just two tasks, (1) doing the log-in to
-the POP server, and (2) using any of the few server commands, and then
-listen and display and/or store what's coming back from the server.
-
- ------------mandatory POP3 server commands
- list
- dele #
- retr #
- quit
- -----------optional POP3 server commands
- last
- top # Z
- -----------(#=msg.no., Z=no.of lines)
-
-(There are some more, e.g. for login/authentication but that's not
-relevant here.) Those commands listed have been there almost all from
-earliest email times, and with this divison of "optional" ones. Any
-fetchmail prog must therefore provide for a possibility to adapt the
-use of these latter, as they depend on the ISP's implementation.
-
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-07-20
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+David
+gnome@hawaii.rr.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
