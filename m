@@ -1,66 +1,50 @@
-From: Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-Subject: Re: Install location(s)
-Date: Mon, 08 Apr 2002 23:02:56 +0200
+From: Beatriz Botero H <bbotero@gmx.de>
+Subject: Urgent help !
+Date: Mon, 8 Apr 2002 23:25:26 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CB20580.1090204@wanadoo.fr>
-References: <m3ofgui987.fsf@wobble.eth.net> <007a01c1df33$c2ee2e40$8c01a8c0@wild.net>
+Message-ID: <20020408232526.122bd9b1.bbotero@gmx.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Christoph <christoph23@charter.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Christoph wrote:
- > Apologies if this is a stupid question.  And apologies for all
- > the stupid questions that are sure to come from me in the
- > weeks to follow. :p  I take heart that since this is a newbie
- > list, I'm sure that you guys have fielded plenty.
- >
- > In any case, my question:  where should you typically install
- > new software?  For example, I'm getting ready to look into
- > and install Samba on my Linux (RH 7.2) box.  I've DL'd it
- > already and have been reading the documentation but have
- > yet to make and install it.  So, where should it (and anything
- > else I plan to install) go to make it easier to manage and
- > administer?
+I am running a PC under Linux SuSE 7.2 with kernel 2.4.18, self compiled.
+I changed some days ago the partition of my second HD from ext2 to ext3 with the help of tune2fs -j /dev/hdb2 and everything was running OK.
+Today, I had a problem with a frozen display and I had to reboot the box cold. During the corresponding forced check I got the following messages:
+Quote
+---------
+/dev/hdb2: reading journal for ext3 file system...
+fsck.ext3: Invalid argument:couldn't load ext3 journal for /dev/hdb2
+fsck.ext3: /dev/hdb2 failed ( status 8 )! run it manually
+....
+fsck failed. Please repair manually and reboot
+---------
 
-1) If the management of installed packages is a concern, you would
-better unpack a RH binary package.
+After I enter fsck /dev/hdb2 i got:
+Quote
+---------
+Parallelizing fsck versioin 1.19a (13-jul-2000)
+e2fsck 1.19, 13-jul-2000 for EXT2 FS 0.5b, 95/08/09
+/dev/hdb2: reading journal for ext3 file system...
+fsck.ext3: Invalid argument:couldn't load ext3 journal for /dev/hdb2
+fsck.ext3: /dev/hdb2 failed ( status 8 )! run it manually
+---------
+If I try to boot with the boot DK or with the CD ( Linux SuSE 7.2 ) I get the same wording.
 
-2) I assume many ready made scripts coming with RH expect to find the
-software installed as per their own specs. The box would not boot if a
-startup script has a line as "/bin/mount / ro" when mount is installed
-in /usr/bin. For this reason, you must be carefull when installing
-util-linux, sh-utils, textutils, net-tools and all the basic utilities.
+What can I do ? As I was just experimenting with ext3, I can reformat the second HD if necessary ( partiton magic ). However, the informations in the first HD are extremely important for me ( second HD was backup for HD 1 ;-(   )
 
-3) A package is compiled with a given --prefix --exec-prefix
---sysconfdir and so on, you easily break the software when you split the
-executable, the libraries, the config files in directories which are not
-the ones given at compile time. If you install samba in /usr/local/samba
-the config file smb.conf is looked for in /usr/local/samba/lib.
-
-4) For most applications (internet, multimedia, office...) you are quite
-free to choose the install path provided that the environment variables 
-are properly set to tell the system where the binaries and the libraries 
-are.
-
-5) If you build samba yourself, the default install path is 
-/usr/local/samba. It is not necessary to add /usr/local/samba/bin to 
-your PATH if you write a start-samba script and put it /usr/bin. It 
-would have the lines:
-#!/bin/sh
-/usr/local/samba/bin/smbd -D
-/usr/local/samba/bin/nmbd -D
+Thanks in advance for any hints !
+Edgar Alwers
+Please answer to the above still functioning address or to the list
 
 
-Pierre
--- 
-------------------------------------------------
-   Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-------------------------------------------------
 
+----------------- 
 
+Beatriz Botero H.
+Weinheim. Germany
+mailto:bbotero@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
