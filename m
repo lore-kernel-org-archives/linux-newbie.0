@@ -1,29 +1,41 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re: ssh error message
-Date: Sat, 7 Sep 2002 06:50:18 -0700
+From: Quinn Harris <quinn@nmt.edu>
+Subject: Re: ethernet
+Date: 07 Sep 2002 21:21:56 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU04K0feMzO00001a30@cpimssmtpu04.email.msn.com>
+Message-ID: <1031455316.6871.8.camel@quinn.rcn.nmt.edu>
+References: <Pine.LNX.4.44L.0209061604020.31710-100000@labmetro.ufsc.br>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44L.0209061604020.31710-100000@labmetro.ufsc.br>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Can you post the portion of your log entries which show some details?  You may have to turn on debugging features to get the output.
+'mii-tool' will display the network speed in addition to allowing you to
+set the speed.
 
-  >>  when booting I get the following message:
+'mii-tool eth0' will give you info for eth0.  All the other options are
+described in the man page.
 
- >>  starting ssh: execvp: No such file or directory  [failed]
 
- >>  I uninstalled openssh, reinstalled, still I get the same message.
+On Fri, 2002-09-06 at 13:05, Daniel Provin wrote:
+> Anyone knows an way to check the actual network speed (100Mbps or 10Mbps)
+> on linux?
+> 
+> thanks
+> Daniel Provin
+> Lixux User #191271
+> EEL LABMETRO UFSC
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
- >>  How do I correct this?
 
- >>  Thanks & regards
-
- >>  -- 
- >>  Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
