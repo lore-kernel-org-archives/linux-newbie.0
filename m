@@ -1,73 +1,65 @@
 From: Alan Womack <arwbackup@worldnet.att.net>
 Subject: Re: Trouble with serial ports
-Date: Sun, 3 Nov 2002 21:27:58 -0800
+Date: Sun, 3 Nov 2002 21:33:06 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU08NUTvl7P0000054e@cpimssmtpu08.email.msn.com>
+Message-ID: <CPIMSSMTPU03yeKzGZu000000c5@cpimssmtpu03.email.msn.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>, linux-newbie@vger.kernel.org
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
- >>  OK. Since you've only been testing ttyS01 (the first of the 4 ports), we 
- >>  really do not know if the others are working or not. Your cabling looks 
- >>  good (subject to one hesitation; see below) and your other test standards 
- >>  look good too. So I'm drawn to the difference between the first STB 4Com 
- >>  port and the others in your configuration.
-
- >>  At 08:25 AM 11/3/02 -0800, Alan Womack wrote:
- >>  >I have a chance to get back to this issue, it appears actually that none 
- >>  >of the STB 4Com ports are working "correctly" I can get some "data" from 
- >>  >od -v /dev/ttyS01 but it is a file of ^@ the control character and the 
- >>  >longer I leave it up the more it gets whether data is being sent or 
- >>  >not.  I have tested /dev/ttyS00 with a null modem cable and details 
- >>  >follow.  I want to work on just /dev/ttyS01 at this moment.
- >>  [...]
- >>  >setserial /dev/ttyS01 baud_base 9600 irq 3 port 0x02A8 ^fourport
+ >>  > The STB 4Com card came to me used, I have attempted to set the card up
+ >>  in a manner as such:
+ >>  >
+ >>  > setserial /dev/ttyS04 baud_base 9600 irq 15 port 0x03E8 ^fourport
  >>  ^skip_test
- >>  [...]
- >>  >root@webby:root# ./serial.ports
- >>  >/dev/ttyS01, Line 1, UART: 16550A, Port: 0x02a8, IRQ: 3
- >>  >         Baud_base: 9600, close_delay: 50, divisor: 0
- >>  >         closing_wait: 3000
- >>  >         Flags: spd_normal
+ >>  > setserial /dev/ttyS03 baud_base 9600 irq 15 port 0x02F8 ^fourport
+ >>  ^skip_test
+ >>  > setserial /dev/ttyS02 baud_base 9600 irq 15 port 0x02E8 ^fourport
+ >>  ^skip_test
+ >>  > setserial /dev/ttyS01 baud_base 9600 irq 3 port 0x02A8 ^fourport
+ >>  ^skip_test
 
- >>  Since the setserial probe finds a UART type associated with ttyS01, that 
- >>  device is configured correctly for *some* serial port. But since it also
- >>  is 
- >>  using the standard values for the second serial port ... does your mobo 
- >>  have 1 or 2 serial ports (an onboard modem port counts)? My first thought 
- >>  is that you have an irq/ioport conflict (newer kernels support irq
- >>  sharing, 
- >>  but you can't share ioports). If you do, either move S01 to a different 
- >>  itq/ioport combination, or make sure the modem/serial port is diaabled in 
- >>  the mobo's BIOS.
+ >>  Wy are you doing this?  The baud_base of a 16550a is 115200 unless this
+ >>  is very strange hardware indeed.  The baud base is just used by the
+ >>  serial driver to choose which divisor to set for a requested speed.
+ >>  A baud base of 9600 with a requested speed of 9600 give a divisor of 1,
+ >>  which will make a normal 16550a run at 115200.
+ >>  It won't see anything coming over the cable at 9600, or maybe a little
+ >>  garbage.
 
-My motherboard only has one physical serial port, and I am sure the built in modem jumper is in the diabled position.
+It is certainly not clear in the documentation.  That's one of my biggest time wasters with linux is the ambiguity of documentation.  A clear usage example would go a LONG WAYS in helping in the man page.  Maybe someday I will know enough to make some of those updates, make the diff patch and send it off to the maintainer to get it ignored.
 
-My kernel is 2.4.18 built from www.linuxfromscratch.org  book 3.3
+ >>  Probably because you didn't mess with the baud_base.
 
- >>  If that is not the problem ... I don't have experience with the specific 
- >>  4-port card you are using, but I do recall that some multiport cards (the 
- >>  old BocaBoard 8 comes to mind)  did not provide all of the control signals
- >>  
- >>  (DTR/DSR. RTS/CTS, DCD), while onboard serial ports pretty reliably do.
- >>  You 
- >>  might want to retest with a null-modem cable that loopbacks the control 
- >>  signals rather than one that passes them through (even appropriately 
- >>  crossed, as your cable does).
+I believe you may be correct, a quick grep of my .bash_history showed no setserial on that line.
 
- >>  If none of that helps ... the only thing I am left with is wondering if
- >>  the 
- >>  card itself works. You might want to repeat the tests using the port 
- >>  associated with ttyS02 as a check.
+ >>  >
+ >>  > The cable pin out is db9:
+ >>  >
+ >>  > 2  -- 3
+ >>  > 3 -- 2
+ >>  > 4 --  6+1
+ >>  > 5 -- 5
+ >>  > 6+1 -- 4
+ >>  > 7 -- 8
+ >>  > 8 -- 7
+ >>  >
+ >>  >
+ >>  > On windows I am using Terra Term Pro, a freeware serial/telnet client. 
+ >>  I have no flow control selected and 9600 8 n 1 as my settings.
+ >>  >
+ >>  > On linux I have used term with term /dev/ttyS00 9600 8 n 1
+ >>  > I have used od -v /dev/ttyS00
+ >>  > I have used  stty -F /dev/ttyS00 raw -echo 9600 ; cat /dev/ttyS00 >
+ >>  /tmp/0.txt
+ >>  >
+ >>  What do you have against minicom or cu?  Or try if Wine will run Terra
+ >>  Term Pro.
 
-I have physically installed the board into an old windows workstation and verified that port 1 with
-IRQ3 port 0x2a8 works via my cable and talking between windows machines.
-
-I am going to remove the card and change each different port to this configuration and retest, that way I can know that all of them physically function or not.
-
+I use Terra Term Pro on the windows box, there is no X on my lfs box.  Minicom I read was difficult to work with a make sure it did what you told it to do, therefor I'm using term and od and stty now for testing.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
