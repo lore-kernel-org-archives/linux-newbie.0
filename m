@@ -1,41 +1,46 @@
 From: Eric Bambach <eric@cisu.net>
 Subject: Re: root password
-Date: Fri, 1 Apr 2005 10:52:06 -0600
-Message-ID: <200504011052.06961.eric@cisu.net>
-References: <5.1.0.14.1.20050330063201.02035bd0@celine> <200504011823.16115.Tobias.Hirning@gmx.de>
+Date: Fri, 1 Apr 2005 10:55:44 -0600
+Message-ID: <200504011055.44030.eric@cisu.net>
+References: <5.1.0.14.1.20050330063201.02035bd0@celine>
 Reply-To: eric@cisu.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200504011823.16115.Tobias.Hirning@gmx.de>
+In-Reply-To: <5.1.0.14.1.20050330063201.02035bd0@celine>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: Tobias Hirning <Tobias.Hirning@gmx.de>
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Friday 01 April 2005 10:23 am, Tobias Hirning wrote:
-> Hi Ray!
->
-> > [...]
-> > Any other suggestion of how to become root without knowing the root
-> > password is a technique for breaking into systems, and I (and I
-> > hope everyone else) will not give advice on that publicly, in this
-> > forum or anywhere else.
->
-> Why shouldn't we know how the bad can break into our systems?
-> I think it's always better to know exactly how they do it.
-> Tobias
+On Wednesday 30 March 2005 08:36 am, Ray Olszewski wrote:
+> Any other suggestion of how to become root without knowing the root
+> password is a technique for breaking into systems, and I (and I hope
+> everyone else) will not give advice on that publicly, in this forum o=
+r
+> anywhere else.
 
-Kernel parameter line init=3D/bin/(ba)sh (most effective IMO)
-Boot cd/disk/ etc.
-Physically removing the hard drive
-Get the shadow file and crack
-Overwrite the shadow file with an exploit
-Sniff the password from telnet/unsecure services
+I respectfully disagree. How will sysadmins ever know how to secure the=
+ir=20
+systems unless they know HOW break-ins occur. Certainly most hacking do=
+esnt=20
+come from boot CDs but having a more informed sysadmin is infinitely be=
+tter=20
+than one that only discovers how to make their system more secure *AFTE=
+R*=20
+being broken into.
 
-=2E..And many more, these just came off the top of my head.
+What you are saying is that security through obscurity is good and ther=
+e have=20
+been countless rebuttals on just how horrible security though obscurity=
+ is in=20
+99% of the situations. The only reason for S.T.O. is a company that fou=
+nd an=20
+exploit and is giving lead-time to the vendor to patch their vulnerable=
+=20
+software.
 
 --=20
 ----------------------------------------
