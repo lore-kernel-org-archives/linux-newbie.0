@@ -1,40 +1,20 @@
-From: Simon <simon@highlyillogical.org>
-Subject: Sharing bandwidth across multiple internet connections?
-Date: Thu, 17 Oct 2002 14:54:42 +0100
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: re: Sharing bandwidth across multiple internet connections?
+Date: Thu, 17 Oct 2002 07:21:28 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210171454.42606.simon@highlyillogical.org>
+Message-ID: <CPIMSSMTPU04OlbcrYP000007f9@cpimssmtpu04.email.msn.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: Text/plain; charset="us-ascii"
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-Hi,
+ >>  Seems a
+ >>  shame 
+ >>  to have this bandwidth knocking about unused.
 
-I recently (yesterday) upgraded my home internet connection from BT ADSL
-(512k/256k), to NTL Cable(1Mb/256k), for the extra speed. However,
-for the next 30 days I seem to be the owner of two broadband connections in
-my home.
-
-I have a linux (2.4.19) box running as the gateway for my home
-network, and it's doing masquerading over eth1, which is the connection to
-the cable modem. ppp0 is the connection to the ADSL, but is no longer used. 
-(The internal net hangs off eth0)
-
-Is there a clever trick I can do, to allow my home net to use the available
-bandwidth on both connections? It would be weird, as they would both have a
-very different real-world IP... But is it in any way possible? Seems a shame 
-to have this bandwidth knocking about unused.
-
-Simon
-
-
-
---
-This message has been scanned for viruses and dangerous content, and
-is believed to be clean.
-
+Try a google search on shutgun internet access, a modem manufacturer a few years ago came out with a kit to use two dialup modems to get 106K access.  You might find something that way.  There basically has to be a layer someplace that reassembles the packets from two different sources.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
