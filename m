@@ -1,33 +1,43 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: no working Mozilla after Sid dist-upgrade: suggestions?
-Date: Mon, 26 Jul 2004 13:31:13 -0500 (CDT)
+From: Experience Sharing Alert 
+	<experience.sharing.alert@sharingopinions.biz>
+Subject: A member at our website is looking for experiences about: linux-newbie@vger.kernel.org
+Date: Mon, 26 Jul 2004 20:03:10 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0407261326010.1363@debian-emach>
-References: <5.1.0.14.1.20040716075506.01f20c68@celine>
- <5.1.0.14.1.20040716075506.01f20c68@celine> <5.1.0.14.1.20040716092314.01f08c58@celine>
- <Pine.LNX.4.58.0407261112300.1363@debian-emach>
-Mime-Version: 1.0
+Message-ID: <200407270003.i6R03Agb009360@mail.sharingopinions.biz>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407261112300.1363@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Mon, 26 Jul 2004, James Miller wrote:
+########POSTING ABOUT YOU########
 
-> simply renamed the whole dir in my user's home dir.  After that, the
-> browser started working more normally.  I don't recall confronting such a
+Someone is trying to share Opinions and Experiences about you in our online community. 
 
-Turns out I need to qualify this.  The browser does, indeed, at least
-start, whereas it wouldn't before (would segfault).  But it's not running
-anywhere near normally.  It crashes unexpectedly and frequently - much
-like Mozilla Firefox.  For example, if I try to go to Google, it crashes
-(disappears from the screen).  Frustrating.  I've gone ahead and loaded
-Opera, which will have to serve my graphical browser needs until they
-finally get these Mozilla problems straightened out.
+The purpose of this email is to inform you that a submission has been made about you at our website.  This is email is not commercial in nature.  
 
-James
+If this email message was delivered to your spam or bulk email folder please notify your ISP or spam filtering company regarding this mistake on their part.
+
+To view all of the submissions made at our website about you use this link:
+
+http://1.share1.us/lx.php?a=search&b=5&c=linux-newbie@vger.kernel.org
+
+ShareYourExperiences.com members are always anonymous. By this we mean that ShareYourExperiences.com will not release your identity to other members. This way you can freely share the experiences that you have had with an individual or business without fear of retribution.
+
+IMPORTANT - If you prefer not to be notified by our website in the future when  submissions are mode about you, just add your email address to our Do Not Email List.  
+
+Our website will never send email to an address that appears on our Do Not Email List.
+
+To add to Do Not Email List click here:
+
+http://3.share2.us/lx.php?a=donotemail&b=linux-newbie@vger.kernel.org
+
+Regards,
+
+SYEC Support Department
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
