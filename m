@@ -1,39 +1,41 @@
-From: "Oliver Ob [o.b./RSi/TRSi/NSD]" <ob_ok@gmx.net>
-Subject: WWW development - another good example against M$
-Date: Fri, 28 Mar 2003 17:11:22 +0100
-Message-ID: <3E84742A.FD7EE19D@gmx.net>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Sanyo CDR-H94A (non-atapi) Booting???
+Date: Fri, 28 Mar 2003 13:18:32 -0500
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <20030328131832.A249@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Return-path: <suse-multimedia-e-return-465-suse-multimedia-e=m.gmane.org@suse.com>
-List-Post: <mailto:suse-multimedia-e@suse.com>
-List-Help: <mailto:suse-multimedia-e-help@suse.com>
-List-Unsubscribe: <mailto:suse-multimedia-e-unsubscribe-suse-multimedia-e=m.gmane.org@suse.com>
-List-Subscribe: <mailto:suse-multimedia-e-subscribe@suse.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Lx Suse E <suse-linux-e@suse.com>
-Cc: Lx Newbie List <linux-newbie@vger.kernel.org>, Lx Suse MULTiMEDiA E <suse-multimedia-e@suse.com>, Lx SXS <linux-users@linux-sxs.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello folks,=20
+Greetings: Trying to install Slackware 8.0 in a AM586-P75 box with
+32mB RAM - I can't find the magic entry/ies to install the packages
+from the CD.. The CD is working OK from the Dos5.0 partition of
+course. :^)..
 
-short time, short go today: I need a web design program for Linux (I use
-Suse 7.3 here) which can use the files from NETOBJECTS FUSION 7 (Winsuck)
+I've tried the Slackware boot image - sanyo.i - from both the 8.0 and
+7.1 distribution and I can't get "setup" to find the CDR.. The report
+is always: "SJCD: Sanyo CDR-H94A Cdrom driver version 1.7
+            SJCD: Resetting............ reset failed, no drive found."
 
-Explanation for those who are interested:
-I ran into installing the NOF 7 pack, and it requires that god-damn Win
-Internet Explorer 5.5 - and as I am moving away from Windoze, I will NOT
-get that thing. I run Win98 for whatever purposes that Linux is yet=20
-incapable to deal with, and Windoze98 does only include IE4.7.
+Ignoring that and forging ahead still no joy as later probing for the
+drive fails too.. I've also tried entering parameters in the lilo
+boot: but none I've tried seem to work.. (The drive port is: 0x340)
 
-Another good example that Windoze sucks major d...!!!
+Perhaps the only answer is to copy the basic files from the CD to the
+HD and then install from there but was hoping a better way.. The BIOS
+of the machine does not support CD booting, so I'm stuck from that
+angle.. Any suggestions?? TIA and cheers.
 
-Please, can anyone point me into that direction?
-
---=20
-   *=BA=A4.,___,.=A4=BA*=A8=A8=A8*=A4         =3DOliver@home=3D         *=
-=BA=A4.,=B8=B8=B8,.=A4=BA*=A8=A8*=A4
-   I   / __|__   http://www.bmw-roadster.de/Friends/Olli/olli.html  I
-   I  / /  |_/   http://www.bmw-roadster.de/Friends/friends.html    I
-   I  \ \__|_\   http://groups.yahoo.com/group/VGAP-93              I
-   I   \___|     mailto:VGAP-93-subscribe@yahoogroups.com           I
-   >>>  Telek0ma iBBMS - moving house, but online! +49....TRSi1   <<<
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+                Proprietary  Formats  Unacceptable
+.
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
