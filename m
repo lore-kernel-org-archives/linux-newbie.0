@@ -1,32 +1,60 @@
 From: ichi@ihug.co.nz
-Subject: Re: more X problems
-Date: Thu, 14 Nov 2002 12:22:27 +0000
+Subject: Re: XFree86 crash log
+Date: Thu, 14 Nov 2002 13:14:04 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DD39583.7CEF55E3@ihug.co.nz>
-References: <Pine.LNX.4.44.0211131533100.21708-100000@localhost.localdomain>
+Message-ID: <3DD3A19C.7E0838B3@ihug.co.nz>
+References: <5.1.0.14.1.20021112183621.02114990@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: James Miller <jamtat@mailandnews.com>
-Cc: Linux <linux-newbie@vger.kernel.org>
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-James Miller wrote:
+Ray Olszewski wrote:
 > 
-> I'm beginning to think I may have overlooked something 
-> in installing X. I'll look and think that over a bit 
-> before posting further.
+> 4. Does your kernel support Unix domain sockets? 
+> If you are using any stock Slackware kernel, it probably 
+> supports Unix sockets. 
 
-Which X server are you using?  The default X server in
-Slackware 8.1 is designed for VESA cards -- but not the
-old VESA cards.  There is a cut-off point, but I don't
-remember what it is.  1.2 ?   2.0 ?
+James was using the stock lowmem.i kernel from Slackware.
+-------------------------------
+# Networking options
+#
+CONFIG_PACKET=y
+# CONFIG_PACKET_MMAP is not set
+# CONFIG_NETLINK_DEV is not set
+# CONFIG_NETFILTER is not set
+# CONFIG_FILTER is not set
+CONFIG_UNIX=y
+# CONFIG_INET is not set
+--------------------------------
 
-You say you have an S3 Trio 64V+ video card.  I believe 
-this card is VESA 1.2.  That VESA may be too old to work
-with the default X server.  If so, try the S3 X server 
-from the /pasture directory of Slackware 8.1.
+> If you are using one from BasicLinux ... well, the BasicLinux 
+> home page says it supports X installs, so I suppose the kernel 
+> includes what is needed 
+
+BasicLinux uses a stock Slackware kernel (bare.i).
+
+> 5. BasicLinux has a page that lists the Slackware packages 
+> needed to run X.  Did you include everything this page says 
+> to install?
+
+Sorry for the confusion.  BasicLinux is not the problem.  James
+is running pure, unadulterated Slackware 8.1.  Yes, it is a
+mini-installation (26mb of HD space) -- but it's 100% Slackware.
+
+The confusion arises because the author of BasicLinux (who is
+a strong supporter of using Linux on old PCs) produced a special 
+installation routine to enable old PCs to install Slackware 8.1.  
+The normal installation routine for Slackware 8.1 requires 16mb 
+RAM.  The special installation routine runs happily on a system
+with 4mb RAM and 80mb HD.
+-------------------------------------------
+http://www.volny.cz/basiclinux/slack81.html
+-------------------------------------------
+Although this installation package for Slackware 8.1 is stored
+at the BasicLinux site, it is quite different from BasicLinux.
 
 Cheers,
 Steven
