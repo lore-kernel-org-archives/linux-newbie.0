@@ -1,56 +1,54 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: alsamixer Doesn't save volume settings
-Date: Thu, 06 May 2004 23:36:06 -0700
+Subject: Re: Hard Drive Puzzle
+Date: Thu, 06 May 2004 23:43:34 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040506231100.01efccd0@celine>
-References: <20040507043447.53651.qmail@web61008.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20040506233636.01efcf50@celine>
+References: <20040507133955.6095d838@skyinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040507043447.53651.qmail@web61008.mail.yahoo.com>
+In-Reply-To: <20040507133955.6095d838@skyinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 05:34 AM 5/7/2004 +0100, sumit kalra wrote:
->Hi,
+At 01:39 PM 5/7/2004 +0800, Peter wrote:
+>Hi
 >
->I am running ALSA-1.0.4 on RedHat 8 Linux (kernel
->2.4.18-14).
+>My old HD which I had moved from my old PC to my new PC as master drive has 2
+>partitions, one for dos and one for linux. The MBR resided on dos.
+
+No, the MBR is a set location on the disk, and it resides outside any 
+partition. Do you mean that you have the drive's boot loader in the DOS 
+partition instead of in the MBR?
+
+
+>I installed now a new HD on the new PC and moved the old HD back to the 
+>old PC
+>as master drive. On the linux partition of this old drive I made a new
+>installation of RedHat 9.0. The dos partition was not touched.
 >
->I am trying to set the volume using "alsamixer" but
->everytime I reboot the machine, the volume gets reset
->to zero. I searched on google and got one solutions
->but it doesn't seem to work for me: Running "alsactl
->store" after increasing the volume - the command
->completes properly (with no errors) but on reboot, the
->volume setting are lost.
+>Now to my surprise I cannot boot into dos. If I try I get the error message:
+>this is not a bootable disk, please insert a bootable floppy.
 
-Odd. With normal operation of alsamixer, the most common changes are 
-supposed to persist, even across a reboot ... even if you don't run alsactl 
-manually.
+Am I right in thinking that you *can* boot into Red Hat from this disk? How 
+do you "try" to boot into DOS?
 
-Do any other changes you make to the settings (for example, turning various 
-devices on and off, or setting the capture device) persist across a reboot, 
-or are they too reset? (If you haven't tried changes other than volume, 
-please do.)
+>If I remove this old HD and put it into the new PC as slave drive I can boot
+>into the dos partition of this old drive.
 
-After you run alsactl, does the config file (maybe /etc/sound.state, maybe 
-/etc/asound.state) actually get created? Is it present (and unchanged - 
-check the timestamp) after a reboot?
+Once again, what procedure are you using to "boot into the dos partition"? 
+Are you adding a stanza to lilo, or entering command-line options at 
+boottime? Or what?
 
-Is the "you" who runs alsactl root or an unprivileged userid? If the 
-latter, that could be your problem; on my system, /etc/asound.state is 
-owned by root and mode 644, so other userids cannot modify the file.
+>How does one explain this and how can it be corrected that I can boot into 
+>dos
+>on the old PC?
 
-Are there any init scripts that affect alsa settings? Look for either alsa 
-or alsasound in your init-script directory (I forget where RH puts this; my 
-Debian systems use /etc/init.d) and see that both your default runlevel and 
-the runlevel 6 (shutdown) call via symlinks whichever script is present 
-(these scripts are supposed to run alsactl to save and restore settings).
-
-Did you install a precompiled RPM, compile against your kernel from an RPM, 
-or compile from non-RH source?
+Probably you have to modify /etc/lilo.conf so it provides an option to boot 
+into DOS. But until you describe better what you are doing that works when 
+the drive is a slave in one machine, but fails when it is the master in a 
+different one, it will be hard to give you more exact advice.
 
 
 
