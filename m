@@ -1,48 +1,110 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re: getting serial ports on STB4COM UP
-Date: Sun, 19 Jan 2003 06:04:56 -0800
+From: "Anant Aneja" <anantaneja@rediffmail.com>
+Subject: Re: Re: Shutdown problem
+Date: 19 Jan 2003 14:21:29 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU05QVjp3b6000002ae@cpimssmtpu05.email.msn.com>
+Message-ID: <20030119142129.31936.qmail@webmail9.rediffmail.com>
+Reply-To: "Anant Aneja" <anantaneja@rediffmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: pa3gcu <pa3gcu@zeelandnet.nl>, linux-newbie@vger.kernel.org
 
- >>  Alan -- In your kernel, have you compiled in support for serial ports 
- >>  sharing interrupts? It's an option (in "make menuconfig") under
+heres more info :
+my kernel is of version 2.4.2-2.
+i couldnt locate the readme u mentioned.
+there are no files there (in that folder).
+does that mean that I havbe a improperly installed system.
+Please help
+Anant
 
- >>  Character Devices
- >>  Extended dumb serial options
- >>  Support for sharing serial interrupts
+On Sat, 18 Jan 2003 pa3gcu wrote :
+>On Friday 17 January 2003 18:16, Anant Aneja wrote:
+> > well i guess i was 0 on details last time.
+> > but heres another problem whose complete details I CAN 
+>supply.
+> > only problem is writing the exact o/p would mean actually 
+>WRITING
+> > it down first.
+>
+>Well you explain what happens, but you dont say;
+>1) What kernel is used.
+>2) The command used. Or how you shutdown the system and from 
+>where, in X via
+>      KDM or some other manager. Or do you use 
+>ctrl-alt-delete.?
+>3) Has this always happend, or did it simply start recently.
+>
+> >
+> > cos it comes when i shutdown the comp.
+> >
+> > my comp has a feature by which when the os shuts down it 
+>shuts
+> > down the comp completley. thus in windows i dont see a
+> > 'Its safe to shutdown ......."
+> >
+> > in linux(red hat 7.1 on a pentium 350 Mhz)i come down to the
+> > foll.
+> > (from what i rem.,may not be exact) :
+> > stopping md devices.
+> > stopped md devices.
+> > halting system.
+> > POWER DOWN
+> > <error>
+> >
+> > its after this that i get a complete listing of the cpu's
+> > registers and some more crap(i'll send this as soon as 
+>someone
+> > asks)
+>
+>Sounds like an "oops" to me, fi that is so then you are the one 
+>who needs to
+>study the oops, you have the tools on your system and the 
+>relavant system
+>files holding the information.
+>To make an oops readable and to find out what caused the oops i 
+>suggest you
+>read the following and do as the files say.
+>
+>/usr/src/linux/README (part concerning)
+>IF SOMETHING GOES WRONG:
+>In the README it tells you what to do and which other files to 
+>read.
+>
+> >
+> > so any help i can get ?
+>
+>Possable causes of an oops are processes left open or processes 
+>using system
+>resources left open, a system which uses "tainted modules" and 
+>they are not
+>being removed before shutdown, many other things, too many to 
+>mention, the
+>answer is in the oops.
+>
+> >
+> > Anant Aneja
+> >
+>
+>--
+>Regards Richard
+>pa3gcu@zeelandnet.nl
+>http://people.zeelandnet.nl/pa3gcu/
+>
+>-
+>To unsubscribe from this list: send the line "unsubscribe 
+>linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  
+>http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
 
- >>  The fact that you have problems only on a port that shares an IRQ suggests
- >>  
- >>  that this may be the cause.
 
- >>  You might also want to enable "Support more than 4 serial ports" in the 
- >>  same location.
 
-I found in my kernel I did have:
-CONFIG_PARPORT_SERIAL=y
-CONFIG_SERIAL=y
-# CONFIG_SERIAL_CONSOLE is not set
-# CONFIG_SERIAL_ACPI is not set
-CONFIG_SERIAL_EXTENDED=y
-CONFIG_SERIAL_MANY_PORTS=y
-CONFIG_SERIAL_SHARE_IRQ=y
-# CONFIG_SERIAL_DETECT_IRQ is not set
 
-I did not have this one set:
-
-CONFIG_SERIAL_MULTIPORT=y
-
-Last night I set it and set off a rebuild of my kernel.  I also changed port 2 of the STB4Com card to share interrupt 3 with port 1.
-
-It appears one of those two modifications has port 2 working correctly now.  Port 3 and Port 4 still share IRQ 15, and although the pausing is noticebly shorter for port 3, it is still quite slow.  Therefore I have to conclude there is an issue with sharing 15 for some reason.  Next time I take my server down, I will move port 3 to share IRQ 3 and see what happens.
-
-Alan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
