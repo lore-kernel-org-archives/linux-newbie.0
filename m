@@ -1,117 +1,64 @@
-From: "[ Jason ]" <jasonj@satx.rr.com>
-Subject: Re: Book Recommendations
-Date: 12 Nov 2002 01:24:07 -0500
+From: james miller <jamtat@mailandnews.com>
+Subject: XFree86 crash log
+Date: Tue, 12 Nov 2002 21:23:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1037082248.2851.35.camel@Shelbyville>
+Message-ID: <3DD5D41B@mailandnews.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
+Hello all:
 
-Initially I sent this to Mr. Kraus, thinking it was going to
-the list; but instead wound up in his inbox. Sorry about that :)
-I don't post much. 
+I posted to the list some time ago about problems I was having getting X 
+running. That was on another computer, and I never managed to resolve the 
+problems. Now, I'm confronting the problem again and it's high time I figured 
+out what I'm doing wrong and fix it. And, I stand to learn alot about X and 
+the way the gui works under Linux in the process - knowing, at the moment, 
+virtually nothing.
 
-Here are my picks:
+Right now, I am trying to install a minimal Slackware (8.1) version via a 
+routine developed by the creator of Basiclinux. The minimal install does not 
+have X installed or configured, but it does give one access to the Slackware 
+pkgtool and, via this, to the possibility for installing whatever packages one 
+wishes from the Slackware CD. I used this routine to install XFree86 4.2. So 
+far as I could tell, I installed all necessary packages: I may well have 
+missed something important and am simply not sure if my problem may not come 
+down to something like this.
 
-On Tue, 2002-11-12 at 14:45, Paul Kraus wrote:
-> What books would you recommend?
+In any case, after installing XFree86 and associated packages (e.g., fonts), I 
+ran xf86config from the command line. I selected refresh rates that my monitor 
+seems likely to support (it is a 14" Epson extended vga) and my video card (S3 
+Trio 64v+). When I try to run "startx," the X server crashes with the 
+following report dumped to /var/log/:
 
-1)  Practical Unix Programming : A Guide to Concurrency, Communication
-    and Multithreading
-    By S. Robbins (PhD. MIT) and K. Robbins (PhD. MIT) 
-    http://vip.cs.utsa.edu
- 
-    Excellent book, however some of the code examples are very 
-    concise and may require several passes for a new C programmer
-    to comprehend. I'll be honest, I had the privilege of taken
-    the course from Dr. Steve Robbins and it was excellent to say
-    the least. The second edition is very close to completion
-    and includes a project I worked on as an undergrad :-D
+##############################################################
+_XSERVTransSocketOpen: socket() failed for tcp
+_XSERVTransSocketOpenCOTSServer: Unable to open socket for tcp
+_XSERVTransOpen: transport open failed for tcp/darkstar:0
+_XSERVTransMakeAllCOTSServerListeners: failed to open listener for tcp
+_XSERVTransSocketOpen: socket() failed for local
+_XSERVTransSocketOpenCOTSServer: Unable to open socket for local
+_XSERVTransOpen: transport open failed for local/darkstar:0
+_XSERVTransMakeAllCOTSServerListeners: failed to open listener for local
 
-2)  Understanding the Linux Kernel 
-    by D. Bovet and M. Cesati
-    O'Reilly series
+Fatal server error:
+Cannot establish any listening sockets - Make sure an X server isn't already 
+running
 
-    A nice book so far, haven't gotten to far with it. But I 
-   would say that you need basic understanding of how an OS 
-   works before diving right in.
+When reporting a problem related to a server crash, please send
+the full server output, not just the last messages.
+This can be found in the log file "/var/log/XFree86.0.log".
+###########################################################
 
-3)  Maximum Linux Security 
-    by Anonymous 
+Can someone help point me in the right direction for resolving this problem 
+and getting a working X install?
 
-4)  "the Safe book"  aka: Practical Unix & Internet Security
-    by. S. Garfinkel and G. Spafford
-     
-both 3) and 4) are must haves IMO.  The "Hacking Exposed series" isn't
-too bad. But if you want some real fun set up a honeynet :-D
-http://project.honeynet.org/
+Thanks, James
 
-5) Any book by Richard Stevens; Adavanced Programming in the Unix
-   System Enviornment; Unix Network Programming vol 1 & 2; 
-   TCP IP/Illustrated Vol 1-3; especially Vol 1.
-
-6)  Modern Operating Systems
-    by A. Tanebaum
-    Very good book from what I hear, but I don't own a copy.
-
-7) Learning Perl
-   O'Reilly series
-
-8) Sed & Awk
-   O'Reilly series
-
-9) The C Programming Lang (ANSI Standard) (the white book, aka: the
-   bible to some, the k&R book)
-   by. Kernighan and Ritchie 
-   This is a *must* have.
-
-10) Books by Dietel and Dietel; such as "How to Program <foo>"
-    Just in case the K&R book isn't your cup of tea, I found
-    their series to be helpful.
-
-11) Pick up a book on python..thats my next language. I heard
-    its really useful.
-
-12) the Java "core" series by C. Horstmann.
-
-13) Java network programming by E. L. Harold; currently 2nd edition.
- 
-    Good book, covers Threads, working with URL's, secure sockets etc..
-
-I think thats it. I have more book lying around but these were the
-ones that came to mind right away.
-
-regards,
-Jason Jendrusch
-
-
-    
- 
-
-
-> If it seems broad it is supposed to be :) I want recommendation on
-> newbie, intermediate, advanced, scripting, programming, and security
-:)
-> 
-> Thanks!
-> 
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe
-linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+PS This is an old test computer - 486 DX4 100 with 40MB RAM and 1.3 GB HD.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
