@@ -1,73 +1,47 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: Special Characters in xterm
-Date: Thu, 20 Jan 2005 10:40:40 +0800
-Message-ID: <20050120024040.B229C39D0D@heisspf>
+From: Thorsten Alge <mail@thorsten-alge.de>
+Subject: Time-Zones
+Date: Wed, 19 Jan 2005 09:02:23 +0000
+Message-ID: <1106125343.4183.7.camel@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-tddmhqocwAaG82+uvj2a"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/enriched; charset="iso-8859-1"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
+
+--=-tddmhqocwAaG82+uvj2a
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
+i'm using Debian Linux on my notebook. I've set up the system to use the
+UTC because better filesystem syncronisation. To get the local time on
+the console i added "export TZ=3DEurope/Berlin" to ~/.bash_profile. But i
+dont know how to configure gnome to translate the UTC to the local time;
+can anyone help?
 
-every now and then somebody asks how to produce special characters. May b=
-e =
+thx,
 
-little is known that 75 of them can be produced in xterm on a US keyboard=
- by =
+thorsten
+                                  ,,,,,
+                                 ( o ~ )
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~.oooO~~(_)~~Oooo.~~~
 
-pressing Alt or Alt/Shift plus the character.
+--=-tddmhqocwAaG82+uvj2a
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
 
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
 
-For example:<bigger> =AE  =BE  =B2  =A3  =B0  =A9  =DC  =EF  =F1</bigger>=
- etc, etc.
+iD8DBQBB7iIefqTT+g1FweURAjzCAJ9bE40l5XmFmaO1D6/6s5RNSLheDgCaAgRF
+Nc5DUhhgEZ61ClY2Mp+Vgb0=
+=5/mI
+-----END PGP SIGNATURE-----
 
-
-If I need any one I copy in xterm and paste into a text editor or word =
-
-processor.
-
-
-In order to know where they are I just went through all the characters ro=
-w by =
-
-row copied and pasted them into abiword made them bold and anlarged. Prin=
-ted =
-
-the sheet out pasted it on a card board, so they are handy when needed.
-
-
-Unfortunately the big linux distros try to hide this excellent terminal x=
-term. =
-
-I guess in order to promote their own clumsier versions, just as Fedora w=
-ill =
-
-not even install anymore routinely mc, IMO the best file manager there is=
- and =
-
-I have tried quite a few. In KDE mc is installed, however, is not incorpo=
-rated =
-
-into the toolbar menu system. At least I can't find it there in slackware=
-=2E
-
-
-Just some thoughts.
-
-
-Regards
-
-
--- =
-
-
-Peter
-
+--=-tddmhqocwAaG82+uvj2a--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
