@@ -1,8 +1,9 @@
 From: "Jamie Risk" <jamie_risk@yahoo.ca>
-Subject: Configuring command line mail ...
-Date: Fri, 20 Dec 2002 15:30:26 -0500
+Subject: Re: Configuring command line mail ...
+Date: Fri, 20 Dec 2002 15:47:26 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <atvuk7$q8k$1@main.gmane.org>
+Message-ID: <atvvk4$tgd$1@main.gmane.org>
+References: <atvuk7$q8k$1@main.gmane.org>
 Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -11,18 +12,21 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'd like the ability to send quick e-mails, particularly from dinky little
-scripts
-(say perl), or from the command line of the form (syntax notwithstanding):
-    [joe@joesMachine joe]# mailto joe@joeswork.com -s "Hi joe"
+Chris wrote:
+>
+> $ mail someone@somewhere.com < filename
+>
 
-I appreciate there are numerous programs to choose from, I'm looking for
-the simplest to configure, and am only really interested in the outgoing
-mail.
+Whose reponse I appreciate, and please believe I've tried that: as well as
+many other variant programs.
 
-Suggestions?
+*How do I configure it?*
 
-- Jamie
+Like most of my troubles with this RH installation, everything _promises_
+to work, and when they don't I'm clueless where to turn. I'm approaching
+the moment where I'll decide to start with a "clean/minimalist" installation
+and install each component as I need them, so that I learn what's going
+on in the process.
 
 
 
