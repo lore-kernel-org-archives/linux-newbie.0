@@ -1,59 +1,46 @@
-From: Terje Eggestad <terje.eggestad@scali.com>
-Subject: Re: debate on 700 threads vs asynchronous code
-Date: 27 Jan 2003 10:48:22 +0100
-Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <1043660902.21075.11.camel@pc-16.office.scali.no>
-References: <20030123231913.26663.qmail@mail.com>
+From: Narsimha Reddy CH <creddy@npd.hcltech.com>
+Subject: How to hide few disk file systems ??
+Date: Mon, 27 Jan 2003 17:33:59 +0530
+Sender: linux-fsdevel-owner@vger.kernel.org
+Message-ID: <3E35202F.44C4BDD2@npd.hcltech.com>
+Reply-To: creddy@npd.hcltech.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
-In-Reply-To: <20030123231913.26663.qmail@mail.com>
+Return-path: <linux-fsdevel-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Lee Chin <leechin@mail.com>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, linux-fsdevel@vger.kernel.org
 
-Apart from the argument already given on other replies, you should
-keep in mind that you probably need to give priority to doing receive.
-THat include your clients, but if you don't you run into the risk of
-significantly limiting your bandwidth since the send queues around your
-system fill up. 
+Hi,
 
-Try doing that with threads. 
+  I am having a linux system with a single hard disk.
+I have lot of important data on this hard disk. For
+experimental purpose I want to build a new kernel image
+from a source  which will contain modified code for file
+system implementation (the code contains some modifications
+to ext2 implementation). Also it may contain lot of bugs
+which may corrupt data on the disk. So, after loading the
+new linux kernel image, I want to make sure that my old
+data stored on the disk must be safe.
 
+ In order to achieve this,  I want to create a new 
+partition on the disk. After loading the system with new
+kernel image, I want to access only the new partition
+that I created. And I want to hide the old ext2 partitions.
 
-Actually I would recommend the approach c)
+  Now the problem is how can I hide the old partitions
+after booting the system with new kernel image (to avoid
+corruption of my old data on disk ) ??
 
-c)  Write an asynchronous system with only 2 or three threads where I
-manage the connections and keep the state of each connection in a data
-structure.  
+Any configuration is needed to hide file systems ??
 
+Can anybody help me how to solve this problem ??
 
-On fre, 2003-01-24 at 00:19, Lee Chin wrote:
-> Hi
-> I am discussing with a few people on different approaches to solving a scale problem I am having, and have gotten vastly different views
-> 
-> In a nutshell, as far as this debate is concerned, I can say I am writing a web server.
-> 
-> Now, to cater to 700 clients, I can
-> a) launch 700 threads that each block on I/O to disk and to the client (in reading and writing on the socket)
-> 
-> OR
-> 
-> b) Write an asycnhrounous system with only 2 or three threads where I manage the connections and stack (via setcontext swapcontext etc), which is progromatically a little harder
-> 
-> Which way will yeild me better performance, considerng both approaches are implemented optimally?
-> 
-> Thanks
-> Lee
+TIA,
 -- 
-_________________________________________________________________________
+Narsimha Reddy CH
+Storage Area Networking, HCL Technologies
+Contact  +91-044 2372 8366 ext 1128
 
-Terje Eggestad                  mailto:terje.eggestad@scali.no
-Scali Scalable Linux Systems    http://www.scali.com
-
-Olaf Helsets Vei 6              tel:    +47 22 62 89 61 (OFFICE)
-P.O.Box 150, Oppsal                     +47 975 31 574  (MOBILE)
-N-0619 Oslo                     fax:    +47 22 62 89 51
-NORWAY            
-_________________________________________________________________________
+http://san.hcltech.com
+http://www.hcltech.com
