@@ -1,52 +1,40 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: Automount
-Date: Wed, 12 Jun 2002 18:37:26 +0300
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Unmounting a Zip 250 Drive??
+Date: Fri, 14 Jun 2002 10:42:45 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206121537.g5CFb8I00908@g38.rdsbv.ro>
-References: <MSGID_110=3a202=2f1_130DB3A0@fidonet.org>
+Message-ID: <20020614104245.A481@lnx2.w8mch.ampr.org>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MSGID_110=3a202=2f1_130DB3A0@fidonet.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Robert Todd <linux-net@tcob1.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-speaking of mandrake, today I had to configure one mandrake box while its 
-administrator was away... and the options I had at boot-time were linux, 
-failsafe and another option - all in a graphic screen ... couldn't do the 
-good-old "linux init=/bin/sh" ... so I had to call the man and ask for his 
-password
+Greetings:  Having a problem trying to umount /dev/sda4 on the NFS
+server machine getting "device busy" report.. Was able to invoke
+umount with the -r flag changing to ro but still can't umount, to
+remove the disk, without rebooting the machine.. This internal ATAPI
+drive does not have the mechanical remove disk pin like the older
+drives.. Man umount hasn't offered a clue as well as several books
+and manuals I have..
 
-slack has "linux init=/bin/sh", rh has "linux single", what about mdk ?!
+This only happens, AFAIK, when I use the drive to back up files from
+a NFS client machine.. I've made sure the client has unmounted it's
+end OK and /etc/mtab on both machines looks OK, with the server mtab
+changed from 'rw' to 'ro' of course, but still no joy..
 
-petre
+I can reboot the server solving the problem but there must be another
+way.. BTW, the iOmega supplied program, iomegaware, 'iw',  wont
+unmount it either. Something is 'open' somewhere that I can't seem to
+find. Any suggestions?? (Slackware8.0 w/ kernel 2.4.13 on the server
+machine and kernel 2.2.19 on the client.) TIA!!
 
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+    haltec@iceweb.net | w8mch@iceweb.net.. A M$ free environment     
+.
 
-
-On Tuesday 11 June 2002 08:36, Robert Todd wrote using one of his keyboards:
-> Originally to: All
->
-> Hey folks!  My first post to the echo so here goes...
->
-> Is it just me or did they put automount "back into" Mandrake 8.2 by
-> default?  I know 8.1 had it disabled by default.
->
-> ... EMail: wolf@bbs.linux-dude.com -OR- wolf@todd.bungi.com
-> <-> Gateway Information.
-> This message originated from a Fidonet System (http://www.fidonet.org)
-> and was gated at TCOB1 (http://www.tcob1.net)
-> Please do not respond direct to this message but via the list
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
-  6:37pm  up 45 min,  1 user,  load average: 0.00, 0.00, 0.00
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
