@@ -1,47 +1,48 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: CD formats
-Date: Fri, 25 Jul 2003 22:25:47 +1200
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: /cdrom fails to unmount
+Date: Fri, 25 Jul 2003 10:28:23 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307251020.h6PAK4CV024666@dbmail-mx1.orcon.co.nz>
+Message-ID: <Pine.LNX.4.56.0307251015460.6210@homenet>
+References: <200307241851.h6OIotZ5180340@www2.wanadoo.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200307241851.h6OIotZ5180340@www2.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-On Thursday 24 July 2003 20:04, cr wrote:
-> I hope this isn't too OT -
+On Thu, 24 Jul 2003, Heimo Claasen wrote:
+
+> Sorry for the "convoluted style", James - perhaps it stems from trying
+> not to get entagled with terms I'm not too sure about.
 >
-> I'm going to use X-cd-roast on this Debian box to make a CD to send to an
-> acquaintance who has a Mac  (mostly scanned JPG's of photos).
+It's actually entertaining most of the time.  Sometimes your meaning is a
+bit obscure, though.  In any case, I'm not asking you to change it.  I may
+just need to ask for additional clarification at times.
 >
-> If I understand correctly, I could use long filenames (Joliet) if intended
-> for a Windoze machine, but for a Mac I can only use 8.3 filenames.    Is
-> that correct, or is there any way around that?
+> I'm searching for a good "visual" analogy - maybe fishing from a boat
+> could be, the boat being the "user" floating on the "System" waters, the
+> rod the "application": Usually, you would anchor somewhere, cast with the
+> rod, and draw whatever is hooked towards the boat; the boat wouldn't
+> move.  Not so in Linux waters - if the bait is hooked (most probably on
+> the branch of a file-tree under the surface, <bg>) the boat is drawn
+> there and "anchored" _there_.  So you're not allowed to cut that
+> submarine branch - this would set the boat adrift -, you first have to
+> lift the anchor and fasten the boat elsewhere. And someone else may be
+> fishing there too, and having been hooked up at the same invisible
+> branch. So this "user" has to move his booat too first, before you
+> may take a dive and tear the dang branch out of the water to recover
+> your precious bait.
 >
-> Regards
->
-> Chris
+That's a really intersting and helpful analogy, Heimo.  Here's a question
+relative to it: do you think the "umount -l" command that works with
+2.4.10 kernels and later, might have been introduced in response to this
+"shortcoming" (a relative assessment, I know) of the Linux mode of
+operation?  Likewise, would it adequately resolve the problem for your
+usage (if you use the required kernel, that is)?
 
-So far, I've had three practical solutions suggested to me - 
-
-1.  Use Joliet file names, some Mac OS's at least understand them 
-
-2.   Zip the long-file-name files into Zipfiles with short 8.3 names, which 
-any Mac OS can read off the CD, and can then unzip into long names that make 
-sense to it
-
-3.   Make an HFS  CD  (HFS is the Mac filesystem).   man mkisofs describes 
-HFS, and I see gcombust has a HFS option.
-
-What I might do, since blank CD's are so cheap (and postage will cost me 
-several times as much!) is make one CD by each method and send all three.   
-The time-consuming part is assembling all the files in the right place, once 
-that's done burning a CD or three is comparatively quick.    So that's what 
-I'll try, and thanks to all who offered advice.
-
-Chris
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
