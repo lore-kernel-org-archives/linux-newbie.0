@@ -1,65 +1,75 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Disk Partition
-Date: Sat, 29 May 2004 17:36:30 +1200
+From: Beolach <beolach@comcast.net>
+Subject: Re: shrunken console on laptop problem
+Date: Sat, 29 May 2004 01:01:14 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200405290528.i4T5SLUL007488@dbmail-mx6.orcon.co.nz>
-References: <20040529035957.95A3F2A180@heisspf>
+Message-ID: <40B8353A.5090907@comcast.net>
+References: <Pine.LNX.4.58.0405262241300.28951@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040529035957.95A3F2A180@heisspf>
+In-Reply-To: <Pine.LNX.4.58.0405262241300.28951@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Sat, 29 May 2004 15:59, Peter H. wrote:
-> Hi,
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+James Miller wrote:
+> I'm having some display problems on a couple of laptops: one has Gentoo,
+> the other Debian Sid.  The difference in the nature of the problem between
+> the two laptops is that one has an Xwindows display that looks fine
+> (Gentoo), while I'm still working on getting X going (hoping to set up
+> Xfbdev) on the other.  But the aspect of the problem the two share
+> concerns when the computers are in console mode - like when they're
+> booting.  Until the Gentoo machine gets to the login window for X, the
+> console part of the screen where text is showing as boot messages scroll
+> by occupies only a small portion that the center of the screen, rather
+> than taking up the whole screen.  It's not as though anything is cut off:
+> I see all the text there that I think I should be seeing.  But it's as
+> though the console has been shrunken down to occupy a small portion at the
+> center of the screen, with just blank black surrounding it.  This display
+> is meant to function at 1024x768, btw.  The other laptop does the exact
+> same thing: there is a console in the center of the screen with just blank
+> black surrounding it.  As I said, I haven't got any sort of X going on
+> this machine yet, so I'm forced to use this small portion of the screen as
+> a console when I'm trying to do things at the command line or using mc or
+> whatever other console apps I run.  This laptop's screen does 800x600,
+> btw.
 >
-> can the program "fips" be used to safely partition a hard drive with
-> Windows XP installed in preparation for a linux installation?
+> Can anyone onlist inform me as to the nature of the problem I'm
+> confronting?  Just as well, can anyone offer suggestions about how I might
+> make the console take up the entire screen, rather than just a portion of
+> it?
 >
->
-> Thanks
+> Thanks, James
 
-I can't answer for FIPS  from personal experience because (due to 
-circumstances) I've never used it.
+This is a fairly common problem with laptops (and is not actually
+related to Linux, btw), and with desktop systems with LCD monitors.  It
+is caused by the way LCDs handle non-native resolutions (ie: 640x480 on
+your LCD laptop capable of 1024x768).  LCDs are actually incapable of
+running at any resolution other that their native resolution, and so
+they can either do what you are seeing, where only the central 640x480
+of the total 1024x768 is used, or it can stretch the image so it is
+displayed fullscreen.  They have this because the method used to stretch
+the display sometimes does a poor job, especially with text fonts.  How
+to change your laptops to display fullscreen depends on what type of
+laptop you have, usually either in the BIOS setup, or using a special
+function key.  On my Dell Latitude CPi, it has a 'Font' function key
+[Fn+F7] that toggles this.  If you still have trouble finding how to
+switch to fullscreen,  I would recommend checking your laptop
+manufacturers support.
 
-Depends on whether the WinXP partition is FAT32 or NTFS.    Some of the 
-documentation I've seen says WinXP uses NTFS, however the only WinXP setup 
-I've ever tried to resize turned out to be FAT32, much to my surprise.   
-The way to find out is probably to boot off a Linux rescue floppy such as RIP 
-(or maybe a Knoppix CD) and see what fdisk says it is.   (It's even 
-possible that WinXP itself may tell you, somewhere in 'My Computer', but I 
-don't know for sure).
+Hope this helps,
+Conway S. Smith
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
 
-IF it's NTFS, then ntfsresize  should do it, and (so I've read) will take 
-care of moving any files.    (Always assuming, of course, that the Windows 
-partition isn't too full to allow this).
-
-In the case of FAT32, I believe you're advised to run  defrag first to 
-compact all files.     In the one case I've tried, I used Ranish Partition 
-Manager (which is DOS-based, and free*)  simply because that's what I had 
-handy on floppy.   (I also had a Knoppix cd-rom with me which apparently has  
-qtparted  on it which (I believe) will also handle repartitioning, but I 
-didn't know at the time that Knoppix included qtparted).
-
-Anyway, Ranish Partition Manager successfully halved the size of the WinXP 
-partition, and WinXP ran successfully again with no complaints afterwards.   
-So it can be done.    
-
-This article:
-http://www.linuxmigration.com/quickref/install/disk.html
-recommends FIPS for Windows 95/98/ME.     This is reassuring, since FIPS 2.0 
-itself seems to have been written sometime around the time of Win95, which 
-could use FAT16 or FAT32 partitions - but I'm pretty sure by the time WinME 
-came along, Windows was committed to FAT32.
-
-Usual cautions apply about backing up any vital data first!   
-
-cr
-(*Ranish Partition Manager is actually shareware - with a ten-year free trial 
-period.    The guy has a sense of humour  :)
-
+iD8DBQFAuDU3GL3AU+cCPDERAr3DAKCDUEDFt2qNRko82WKXek84caO/PgCfX1oD
+tzILHcO/TfmMyoQLBz+ZHdk=
+=Jba8
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
