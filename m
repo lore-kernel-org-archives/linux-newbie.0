@@ -1,162 +1,113 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: kernel patch failure: input please?
-Date: Tue, 20 Jul 2004 17:05:45 +0100 (BST)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re[6]: Linux Help
+Date: Tue, 20 Jul 2004 08:55:32 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0407201637420.10481@ppg_penguin.kenmoffat.uklinux.net>
-References: <Pine.LNX.4.58.0407192341250.1363@debian-emach>
- <Pine.LNX.4.58.0407201257320.9456@ppg_penguin.kenmoffat.uklinux.net>
- <Pine.LNX.4.58.0407200846400.1363@debian-emach>
+Message-ID: <5.1.0.14.1.20040720083003.01fa4db8@celine>
+References: <16636.21568.952345.578826@cerise.nosuchdomain.co.uk>
+ <20040720000918.484C.SAVAGE-GARDEN@hanikamail.com>
+ <16636.21568.952345.578826@cerise.nosuchdomain.co.uk> <20040720211141.16B3.SAVAGE-GARDEN@hanikamail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407200846400.1363@debian-emach>
+In-Reply-To: <20040720211141.16B3.SAVAGE-GARDEN@hanikamail.com>
+References: <16636.21568.952345.578826@cerise.nosuchdomain.co.uk>
+ <20040720000918.484C.SAVAGE-GARDEN@hanikamail.com>
+ <16636.21568.952345.578826@cerise.nosuchdomain.co.uk>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Tue, 20 Jul 2004, James Miller wrote:
+At 09:20 PM 7/20/2004 +0600, Kev wrote:
+>Hi guys...
 
-> On Tue, 20 Jul 2004, Ken Moffat wrote:
+Kev -- It's generally considered discourteous to cross-post messages to 
+multiple mailing lists. In this instance, I've removed the linux-admin 
+posting from my reply.
+
+>i'm going to do the follwing as a 1st step,
 >
-> >
-> >  I've seen this when I was hand-editing a diff to only use some of =
-the
-> > changes in a file.  Can be caused by errors in the "magic numbers"
-> > saying how many lines change/where they are.  This sort of thing me=
-ans
-> > the patch will not apply for *anyone*, so you might want to see if =
-the
-> > version you got was corrupted, or has been updated.
->
-> For reference, here's the "updated" (adapted for the 2.4.23 kernel) p=
-atch:
->
-> --- init/do_mounts.c 2003-11-28 13:26:21.000000000 -0500
-> +++ init/do_mounts.c.mount_root 2006-01-29 10:45:53.000000000 -0500
-> @@ -759,6 +759,19 @@
->
-> static void __init mount_root(void)
-> {
-> + static DECLARE_WAIT_QUEUE_HEAD (jordi_queue);
-> +
-> + printk ("\n\n\n---------------------------------\n");
-> +
-> + printk (" WAITING FOR A WHILE (1000) \n");
-> +
-> + printk (" TO DETECT THE USB DISK \n");
-> +
-> + sleep_on_timeout (&jordi_queue, 2000);
-> +
-> + printk ("---------------------------------\n\n\n");
-> +
-> +
-> #ifdef CONFIG_ROOT_NFS
-> if (MAJOR(ROOT_DEV) =3D=3D NFS_MAJOR
-> && MINOR(ROOT_DEV) =3D=3D NFS_MINOR) {
->
-> In the C source file do_mounts.c, the line right before "static void
-> __init mount_root(void)" is blank and is line number 759 (line 760 re=
-ads
-> "static void __init mount_root(void)").  This is the 5th line of my
-> kernel2-4-25patch file that is being complained about as the problem =
-area.
->
+>i got a Debian 3 (woody) basic 1 CD and i'm going to have postfix as the
+>SMTP relay.... the BOX is a Cyrix 233Mhz with 64MB ram, (Compaq Presario)
+>4GB HDD with 2 Lan Cards
 
- In that case, I don't know what the problem is.  In the old file ('-')
-the hunk is for six lines at line 759, in the new ('+') it's for 19
-lines [ 6 existing, for context, plus 13 new =3D 19, just like it says =
-].
+If you plan to add Web caching to this system (as you mentioned in an 
+earlier emssage), I think you'll find 64 MB to be too little memory for 
+good performance.  Everything else should be fine.
 
- The content of the patch scares me - all that shouting, a value of 100=
-0
-hard-coded in the print, but a value of 2000 used in the code, and all
-those gratuitous blank lines in the printk.
+In Linux, default installs do NOT automatically enable DMA on hard disks. 
+You'll want to do that in an init script (using the app hdparm, from the 
+Debian package hdparm).
 
- The DECLARE_WAIT_QUEUE_HEAD is presumably a macro (grep for it in the
-kernel tree you are building), for which jordi_queue is a parameter.
+In my prior reply, I didn't list postfix among the SMTP candidates, but it 
+is another good one, so should be fine for your purposes (though I myself 
+have no recent experience using it).
 
-> >  If the file isn't very big, you can copy the code in a text editor=
-, but
-> > that isn't recommended for a newbie list because you need to unders=
-tand
-> > what the code is doing.
+>i'm going to install Webmin 1.5, and also DHCP for Debian that comes
+>with Debian (on the web site)
 >
-> I don't understand very well what the code is doing.  I see that, in
-> do_mounts.c, "static void __init mount_root(void)" is followed immedi=
-ately
-> by "#ifdef CONFIG_ROOT_NFS".  From this, I deduce that what lies betw=
-een
-> the two in the patch is what's actually getting inserted.  Further, I=
-'m
-> guessing the + signs at the left margin are telling the patching rout=
-ine
-> to add the lines followed by the sign to the file being patched.  Wor=
-ds
-> like "WAIT," "DETECT" and "USB DISK" are, of course comprehensible.
-> Others like "printk" and "jordi_queue" mean nothing to me.  I'm also =
-not
-> clear on the line spacing: the lines of the patch are mostly what we =
-would
-> call in typesetting/page formatting terminology "double spaced" or ev=
-en
-> triple spaced.  I know generally the conventions followed in publishi=
-ng
-> regarding line spacing, and have my own ideas about how these things =
-can
-> aid in (or are irrelevant to) reading comprehension.  What they mean =
-to
-> computers - if anything - I have no idea.
->
+>do you gusy thing i can do this with a basic Debian instalation or
+>should i download all other CD's from the site ?
 
- Line spacing means nothing to a computer.  Yes, the lines prefixed '+'
-are to be inserted, similarly any lines prefixed '-' would be deleted.
-The 'incomprehensible' words are what will be printed on the console,
-printk is the kernel's version of printf.
+The usual way to maintain a Debian system after setup is by doing online 
+updates. In fact, unless you have an awful Internet connection, that's 
+usually the best way to install. That is, get a set of boot floppies (or a 
+boot CD, depending on your hardware), install the (very small) Debian base 
+from it, then use apt-get to add the packages you need from an online 
+repository.
 
- So, in theory you can copy the thirteen new lines prefixed by '+' into
-the file, remove the '+' signs, and that file is done.  What it does,
-and whether or not it is sensible, I can't say.  Presumably there are
-other parts to the patch ?  Do they all apply to 2.4.25 ?  And why
-hasn't the patch gone into the kernel (i.e. is it misconceived, or just
-not submitted?).  Come to that, it might be worth checking to see if
-this has made it into 2.4.26 or 2.4.27-rc (yes, I know you've been told
-not to use a -pre or -rc, but _if_ it gives you new functionality you
-need then you should try the -rc and upgrade to 2.4.27 when it is
-released).
+This approach will assure that you get the latest versions of things 
+(Debian CDs, like pretty much all Linux distro CDs, aren't updated anywhere 
+nearly as regularly as the online repositories). In particular, it will 
+makes sure that you get all security upgrades ... VERY important for any 
+system that is connected directly to the Internet (as a router is).
 
-> >  Also, you don't need to be root until you are trying to install th=
-ings,
-> > and setting PS1 to end '\$' (with the whole string in _single_ quot=
-es)
-> > will change the prompt to end in '#' when you _are_ root.
->
-> The file I'm patching is in /usr/src/kernel-source-2.4.25, and my use=
-r
-> does not have read/write permissions in that directory.  At least tha=
-t was
-> my assumption.  Not that I question your advice on the root prompt, b=
-ut
-> why would having # instead of $ matter?  If it's just to remind one t=
-hat
-> they are running as root, I have another way of indicating that: the =
-whole
-> root prompt is red.  But maybe there is some other reason to have #
-> instead of $ when running as root?
->
+>now the commands like
+>setup on Redhat dont work, how come ? do i need to install any thing
+>else ?
 
- If you're happy with a red prompt, that's fine, but expect "helpful"
-comments from time to time because red doesn't show up in plain text th=
-e
-way '#' does :-)
+If you are asking why a particular command specific to Red Hat doesn't work 
+on a Debian install, then the answer is probably that Debian doesn't 
+include the app or the script that implements the command. Not being a Red 
+Hat user, I don't know what "setup" on a default RH install does.
 
-Ken
---=20
- das eine Mal als Trag=F6die, das andere Mal als Farce
+If you are asking a more general question, you'lll have to be more clear 
+... I have no way of knowing what Debian commands you think are "like setup 
+on Redhat". Also what "now" referred to, and if "dont work" means anything 
+more subtle than that the command itself is not present.
+
+>leter on i'm going to install a 2nd HDD and Squid and BIND and some AV
+>for the email relay, and the RAM to 256MB.
+
+All easy to do using Debian's apt-get and apt-cache package management 
+system. (Except I don't know what "some AV for the email relay" means ... I 
+can't parse "AV" in this context.) The extra RAM should handle your Web 
+caching needs quite nicely. I'm not sure if you'll need the second hard 
+disk ... it depends on traffic volumes (SMTP and Web caching).
+
+>if any one can give me the basic how to do this, or a link to some sites
+>(Linux for Dummies :-)
+
+The Debian installer itself should walk you through the installation 
+process. The big gotcha to watch out for is NIC modules ... you don't say 
+what NICs you are using, and stock Debian Linux kernels only support the 
+most common ones directly. For others, you'll have to install kernel 
+modules ... the installer prompts you to do this, but it doesn't help you 
+identify the ones you need.
+
+Last time I checked, the Debian install process still used an old kernel 
+(2.2.something). Once you have the system configured, and before you set it 
+up to route and firewall, you'll want to update to a newer kernel ... at 
+least 2.4.whatever_is_current, maybe even 2.6.something. Unless you want to 
+compile you own kernel (a good idea for a router, but maybe not such a good 
+idea for a beginner), you apt-get install a suitable kernel-image-* package.
+
+
+>i know i sound really dumb, well i really dont know much about linux
+>sorry !!!
+
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
