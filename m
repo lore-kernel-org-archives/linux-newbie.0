@@ -1,35 +1,30 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: parallel port cd writers and linux
-Date: Sun, 10 Nov 2002 19:08:54 +0000
+From: wa4chq@netscape.net (neil t)
+Subject: screensaver
+Date: Sun, 10 Nov 2002 20:46:09 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02111019085401.00238@unix.pa3gcu>
-References: <Pine.LNX.4.44.0211101248260.13342-100000@athame.gmpexpress.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <497DCBD4.6C5E1E65.0006BEFC@netscape.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0211101248260.13342-100000@athame.gmpexpress.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: dashielljt <dashielljt@gmpexpress.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Sunday 10 November 2002 17:50, dashielljt wrote:
-> I'm using slackware 8.0 and am wondering if there are any brand model
-> combinations in parallel cd writers to avoid and also if there are ones
-> that would be good to buy.
->
-> Jude <dashielljt@gmpexpress.net>
 
-http://lhd.datapower.com/
-
-There seems to be a small problem on that site at the minute, pages cant be 
-found and all that, normally it has a database on all supported hardware.
-
+Greetings all
+Thanks for the info about Xscreensaver.  It was there right under my nose, as usual.  I searched the Mandrake cd's and found the Xscreensaver RPM.  
+Thanks again.
+Neil
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Arachne/DRdos-Mandrake9.0/Basiclinux-QrpHamRadio
+http://www.qsl.net/wa4chq
+ 
 
+
+__________________________________________________________________
+The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
+
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
