@@ -1,25 +1,38 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: kernel rebuild question
-Date: Sun, 31 Aug 2003 03:59:13 -0400 (EDT)
+From: Peter Edstrom <peter.p3@home.se>
+Subject: Procmail won't filter linux-newbie mail
+Date: Sun, 31 Aug 2003 11:14:26 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0308310355410.1122@localhost>
+Message-ID: <20030831091426.GB2273@linux>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-I'm in process of installing ftape4-x unstable for my system since I have
-a parallel tape drive that needs the unstable stuff patched in.  The ftape
-documentation says to disable the ftape2 stuff in the kernel source
-otherwise it will be wiping out the ftape4 patches.  Will that be one of
-the choices when I run makemenu to rebuild the kernel?
+Hello!
 
--- 
------
-Microsoft; mismanagement, and stupidity are all weapons of mass destruction.
+Procmail has of some reason stopped filtering my linux-newbie mail. It
+occured as I cleaned up my .procmailrc-file. This is how the
+linux-newbie entry looks like:
 
+  :0
+  * ^X-Mailing-List:.*linux-newbie@vger.kernel.org
+  IN.linux-newbie
+
+I've also tryed with the following condition just before the
+X-Mailing-List one, but without success:
+
+  * ^(To|Cc):.*linux-newbie@vger.kernel.org
+
+I have tons of mailing list filters that all work with this principle,
+but this one don't. Does anyone have any ideas on what's causing the
+problem?
+
+Thanks in advance.
+Sincerely,
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
