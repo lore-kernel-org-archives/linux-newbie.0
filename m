@@ -1,8 +1,8 @@
 From: Chuck Gelm <nc8q@gelm.net>
 Subject: Re: RAM and swap partition
-Date: Mon, 09 Dec 2002 15:59:37 -0500
+Date: Mon, 09 Dec 2002 15:59:32 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF50439.1C50E752@gelm.net>
+Message-ID: <3DF50434.E7E17BCC@gelm.net>
 References: <3DF4FBF0@mailandnews.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
