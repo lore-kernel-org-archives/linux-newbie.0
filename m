@@ -1,41 +1,49 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Fri, 8 Nov 2002 11:53:06 +0200
+From: Shaggy Im-erbtham <shaggy@loxinfo.co.th>
+Subject: need method of backing up files
+Date: Fri, 08 Nov 2002 18:55:25 +0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021108115306.B3759@neutrino.particles.org>
-References: <eathan@otenet.gr> <200211080213.gA82D7w02008@philonline.com>
+Message-ID: <4.3.2.7.0.20021108184521.023f8f00@lox2.loxinfo.co.th>
+References: <200211080213.gA82D7w02008@philonline.com>
+ <eathan@otenet.gr>
+ <200211080213.gA82D7w02008@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200211080213.gA82D7w02008@philonline.com>; from pfheiss@philonline.com on Fri, Nov 08, 2002 at 10:13:07AM +0800
+In-Reply-To: <20021108115306.B3759@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Fri, Nov 08, 2002 at 10:13:07AM +0800, Peter wrote:
-> I had to put the dash in front of # for the mailk to get out.
-> Does it say anything usefull?
-> Thanks for your patiences.
+I use Slackware 7.0 with upgraded 2.4.18 kernel in a box which serves
+as file server to 5 win9x clients.
 
-No. Sorry but I just realised that you have a problem with a Tcl/Tk 
-script. Actually, you have to use gdb with the Tcl/Tk interpreter (not
-sure which is that, it should be named in the first line of TkDesk).
+Is there a method to perform incremental back-ups for every user, for
+every day of the week.
 
-Assuming the interpreter has been build with debugging info, it is called
-'tcl' and it is in your path, do:
+Eg.  /home/peter
+        /home/paul
+        /home/mary
 
-% gdb tcl
-% (gdb) run /path/to/tkdesk
+to be backed up everyday into day-of-the-week directories
+so on Monday, files that were updated today would be copied to
+each user's sub-directory in the monday directory.
+/mnt/1monday/peter
+/mnt/1monday/paul
+/mnt/1monday/mary
 
-Normally, you'll get the segfault inside gdb, and using 'where' you'll get
-the stack backtrace.
+and so on
+/mnt/2tuesday/peter
+/mnt/2tuesday/paul
+/mnt/2tuesday/mary
 
-Elias
+Sometimes we need to track the daily changes that are made, that's
+why.
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+I'm aware RAID is available but I think this is another thing altogether.
+
+TIA
+Shaggy
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
