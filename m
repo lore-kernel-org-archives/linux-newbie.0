@@ -1,120 +1,115 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: Re: No Boot Problem
-Date: Fri, 26 Jul 2002 21:23:28 -0400
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: LI -lilo booting problem
+Date: Sat, 27 Jul 2002 08:08:55 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207262123.28564.sotl155360@earthlink.net>
-References: <5.1.0.14.1.20020725203925.022778d0@celine> <5.1.0.14.1.20020726093031.0228aa80@celine>
+Message-ID: <02072708085502.00307@unix.pa3gcu>
+References: <3D36DDA3.FA0F073C@gmx.net> <02072606105100.00370@unix.pa3gcu> <3D41BCFB.390F2750@gelm.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020726093031.0228aa80@celine>
+In-Reply-To: <3D41BCFB.390F2750@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org, Chuck Gelm <nc8q@gelm.net>
+To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
 
-First thanks to all who took the time to respond.
-Second I have the box working but I still have no idea what the real problem 
-is.
-To get the box working I reinstalled the 3rd hard drive; putting the two 
-normally in the box on a shelf.
-Then I installed Linux on the third HD from the CD-Reader and created a 
-floppie boot disk.
-Then I utilized the floppie boot disk to book up Linux which then I shut down 
-normally.
-Then I reinstalled the 2 HD that are normally in the system and booted them in 
-a normal fashion.
+On Friday 26 July 2002 21:19, Chuck Gelm wrote:
+> Hi, Ray, Richard, & Ramzez:
+>
+>  I use
+> /usr/src/linux/# make install
+>  and
+> # lilo
+>  (/sbin/lilo ?) to try to install a bootable system.
 
-Bottom line
-The only thing I can figure is that if BIOS must complete a boot in a proper 
-sequence and then shut down in the correct sequence or else. 
-And, that "or else" is a problem; not just a problem but a major problem.
+I pointed you to my home-page in my last mail, i will suggest it once more, i 
+can assure you it will help you.
 
-Thanks
-Frank 
+>
+> Thanks.  I found the mention of adding lba32
+> to lilo.conf, although README.common.problems
+> does NOT show the syntax of the line.  :-|
+
+lba32 is, i belive "not" your problem, /dev/hda1 starts and ends within the  
+larger as1023 limit. (If applicable in your lilo version that is)
+As i mentioned, the cyl limit is not a problem anymore in presant day lilo 
+versions.
+
+>
+>  However, I'll plug 'lba32' & 'lilo' into google
+> or whatever and see if I can find an example.
+>
+>  I can install Slackware8.0, compile a new kernel,
+> and boot from floppies, either lilo or bzdisk,
+> yet I cannot boot from either of two hard drives.
+
+Ray pointed out that you have boot = /dev/hda1 in /etc/lilo.conf
+have you tryed changing it to boot = /dev/hda
+??
+
+I always advise against the use of 'make install' when installing a new 
+kernel because one has problems like you are encountering.
+
+I will update the kernel.htm in my home page and explain more about the 
+use/missuse of make options and what they do/can do, help/ or hinder.
 
 
-
-
-On Friday 26 July 2002 12:57, Ray Olszewski wrote:
-> In your followup, you haven't really told us much more about the problem.
 >
-> Based on your clarifications, I'd surmise a problem of some sort with the
-> hard disk connection -- either the controller itself,  which in modern
-> systems is usually part of the motherboard electronics (this is why I
-> characterized your problem as a mobo problem before), with the BIOS
-> settings for the hard disk(s), or possibly with the cable (is the CD drive
-> that you say works for booting on the same IDE channel as the hard disks?
-> I'd *guess* not from the BIOS report you provide below).
+> :-|
 >
-> The alternative is that you have two separate problems, one with the old
-> (Windows) hda, the other with the replacement hard disk you attempted to
-> install to. Since you only examined the replacement drive under Windows, I
-> can't venture any real guess about what its problem might be (although it
-> *might* be as simple as a BIOS mismatch, if you didn't either set the BIOS
-> to autoprobe for IDE primary master or actually specify the new drive
-> geometry).
+> Here is the partition structure of the last two
+> HDs that I've tried to boot.
 >
-> A couple of specific comments are below.
+> Device	Boot	Start	End	Blocks	Id	System
+> /dev/hda1 *	1	240    1927768	83	Linux system
+> /dev/hda2	241	256	128520	82	Linux swap
+> /dev/hda3	257	2491 179526378	83	Linux system
 >
-> At 08:44 AM 7/26/02 -0400, Frank Roberts - SOTL wrote:
-> [...]
+> I tried this one in Primary master also:
 >
-> > > At this point, a description of the failure mode would belp more than
-> > > "refused to boot".  Did LILO even begin to run?
-> >
-> >No
-> >
-> > > Did it display any messages on teh screen?
-> >
-> >This is going to take several boot and I dought that I get all the info
-> >completely correct. It simply goes by on the screen too fast.
-> >
-> >1. CPU=Celeron 300 MHz
-> >2. RAM is checked                  Passed
-> >3. Extended RAM is checked  Passed
-> >4. System BIOS Shadowed
-> >5. Vidio BIOS Shadowed
-> >6. Upper limit segmant address = F299
-> >7. Fixed Disk 0: TD@ @06400L
-> >8. Fixed Disk 1: WDC AC310200R
-> >9. ATAPI CD-ROM: CDR-8240B
-> >10. ATAPI CD-ROM: SONY CD-RW CRX175E2
-> >11. System Configuration Data Updated
-> >12. Blinking Currersor
+> Device	Boot	Start	End	Blocks	Id	System
+> /dev/hda1 *	1	128    1028128	83	Linux system
+> /dev/hda2	129	131	 24097	82	Linux swap
+> /dev/hda3	132    1048    7365802	83	Linux system
 >
-> This is all information from the system's BIOS. You are right in inferring
-> that LILO does not appear ever to run.
+> In all cases(2) system was:
 >
-> > > >I stuck Tomsrtd in and boot the box into Toms followed by a normal
-> > > > shut down.
-> > > >
-> > > >I then stuck RH 7.3 install in and started an upgrade to see what
-> > > > would happen. The box finally booted into RH after 5 or 6 tries.
+> (1)	/dev/hda1 mounted as /
+> 	/dev/hda3 mounted as /usr
+>
+> (2)	/dev/hda1 mounted as /
+> 	/dev/hda3 mounted as /share
+>
+>  So, / (/boot) was always within the first 1024 cylinders.
+>
+> :-|
+>
+> I'm off to find "lba32".
+>
+> Thanks again, Chuck
+>
+> pa3gcu wrote:
+> > On Thursday 25 July 2002 21:20, Chuck Gelm wrote:
+> > > Howdy, Y'all:
 > > >
-> > > This sounds more and more like a hardware failure, perhaps a mobo
-> > > problem. The system as you described it has now had problems with a
-> > > Windows boot floppy, some hard disk bootloader (I surmise lilo), and
-> > > syslinux (I believe RH boot floppies use syslinux).
+> > >  Where can I find help with 'lilo'.
 > >
-> >Don't see that personally. The two normal systems HD were out of the
-> > system with the third HD in the system and the system will boot and load
-> > from the floppie and CD-Read after system restoration.
+> > /usr/doc/lilo-21.7.5 (slackware-8.0)
+> >
+> > > When I try to boot from hard disk, I get:
+> > >
+> > > LI
 >
-> What does this mean (specifically the phrase "system restoration")?
->
-> You say the RH installer took 6 tries before it worked. I realize now that
-> you did not say if you were doing this from a floppy or a CD ... RH can
-> install either way ... but that is part of the reason I interpret your
-> report as a hardware failure -- even with the 2 original hard disks
-> removed, you have problems.
->
-> In re-reading what you wrote, I also realize that I don't know for sure
-> what you mean by "The box finally booted into RH after 5 or 6 tries". I had
-> read it to mean that the RH installer itself took 6 tries to boot (get to
-> the install process), but perhaps you mean you had to try installing 6
-> times before the new hard disk would boot. In any case, you can see the
-> need to clarify your report.
-> [...]
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
