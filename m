@@ -1,39 +1,26 @@
-From: Dragos LUNGU <rlug-list@xts.ro>
-Subject: Re: A way to transfer drives?
-Date: Sun, 03 Nov 2002 19:48:53 +0200
+From: Chris Rose <offline@shaw.ca>
+Subject: RE: MySQL not getting along with MovableType in RH8
+Date: Sun, 03 Nov 2002 10:43:26 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DC56185.6000005@xts.ro>
-References: <200210310853.08719.1stflight@ameritech.net> 	<3DC1618D.4060704@xts.ro> <1036170279.4295.6.camel@zebra.vil.ite.mee.com>
+Message-ID: <000001c28360$83761c10$4b01a8c0@deadbox>
+References: <000001c282ad$5319fb80$4b01a8c0@deadbox>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1036170279.4295.6.camel@zebra.vil.ite.mee.com>
+In-reply-to: <000001c282ad$5319fb80$4b01a8c0@deadbox>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Paul Furness <paul.furness@vil.ite.mee.com>
-Cc: linux newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: "'Linux-Newbie (Linux Newbie)'" <linux-newbie@vger.kernel.org>
+
+Never mind...  It would appear that I'm not R'ing T F'ing M.  At least
+not properly.
+
+I apologize for wasting you folks' time :)
 
 
-
-Paul Furness wrote:
-> This does, however, have the disadvantage that your existing partitions
-> are copied but not resized. Eventually, you end up with lots of little
-> partitions (after a couple of hard disk upgrades...)
-
-you are absolutely right. I allready lost the old  256 MB swap 
-partition. (unsable space). I never do this twice.
-
-
-
-
--- 
-
-| Dragos LUNGU
-|
-| http://www.xts.ro
-| dragos@xts.ro
-| mobile (+40)745 379 734
-| office (+40)251 190 561
+Chris R.
+======
+Silence is golden.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
