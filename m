@@ -1,126 +1,44 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: RE: investingating kernel :Cnx error
-Date: Fri, 11 Mar 2005 10:15:31 +0530
-Message-ID: <4EE0CBA31942E547B99B3D4BFAB348113A49A8@mail.esn.co.in>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: Thought I was mounting drive correctly, but backup failed
+Date: Fri, 11 Mar 2005 14:20:23 -0500
+Message-ID: <009301c5266f$60028390$4f0aa8c0@lanadmin>
+References: <200503011926.04903.eric@cisu.net>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
-Content-class: urn:content-classes:message
+In-Reply-To: <200503011926.04903.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: bhamal@wlink.com.np, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 
-Do u get any kernel messages just before hanging?
-Is it kernel default kernel that comes with RedHat 8?
+My setup: 
+1 Linux RedHat 9 kernel
+1 Windows 2000 backup machine with 2 firewire hot-swap drives attached
+(named 'backup')
+	- firewire drives have been partitioned and ready to roll
+	- drives are lettered/named, respectively, e/Granite1, and
+f/Granite2
+	- linuxadmin/password set up on system to allow for the following...
 
-Mukund jampala
+My procedure:
+mount -t smbfs -o username=linuxadmin,password=password,workgroup=wowcorp
+//backup/e /mnt/backup
+
+/mnt/backup directory's definitely created. When I use the above command, I
+return no errors, and the drive is empty so I thought it was mounting.
+However, when I checked the backup logs, the logs were empty...and remount
+shows no files were copied over from the script I've set up.
+
+It doesn't appear to be the backup script that is the issue. Is there
+something amiss in my setup? Let me know if you need more info (I'm sure you
+will!).
+
+Thanks,
+Eve
 
 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
-> owner@vger.kernel.org] On Behalf Of bj
-> Sent: Wednesday, March 02, 2005 9:37 AM
-> To: linux-newbie@vger.kernel.org
-> Subject: investingating kernel :Cnx error
-> 
-> Hi !
-> 
-> I am using Red Hat 8 with kernel 2.4.20-30.8.legacy
-> 
-> I am facing the following error some times  .
-> 
-> It hangs my computer when I am doing a make or am using x-windows .
-> 
-> How do I go about investigating the cause of it ?
-> 
-> Thank you for your help.
-> 
-> Cheers,
-> bj
-> 
-> 
-> 
-> 
-> Feb 25 10:14:20 HOME kernel: cnxthsf_OsFloatSuffix: Id=4 used bit was
-> FALSE
-> !
-> Feb 25 10:14:20 HOME kernel: cnxthsf_OsFloatSuffix: Id=5 used bit was
-> FALSE
-> !
-> Feb 25 10:14:20 HOME kernel: cnxthsf_OsFloatSuffix: Id=5 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=8 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=9 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=0 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=2 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=3 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=4 used bit was
-> FALSE
-> !
-> Feb 25 10:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=5 used bit was
-> FALSE
-> !
-> Feb 28 09:44:22 HOME kernel: cnxthsf_OsFloatSuffix: Id=3 used bit was
-> FALSE
-> !
-> Feb 28 09:44:23 HOME kernel: cnxthsf_OsFloatSuffix: Id=9 used bit was
-> FALSE
-> !
-> Feb 28 09:44:23 HOME kernel: cnxthsf_OsFloatSuffix: Id=0 used bit was
-> FALSE
-> !
-> Feb 28 09:44:23 HOME kernel: cnxthsf_OsFloatSuffix: Id=3 used bit was
-> FALSE
-> !
-> Feb 28 09:44:23 HOME kernel: cnxthsf_OsFloatSuffix: Id=6 used bit was
-> FALSE
-> !
-> Feb 28 09:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=4 used bit was
-> FALSE
-> !
-> Feb 28 09:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=0 used bit was
-> FALSE
-> !
-> Feb 28 09:44:26 HOME kernel: cnxthsf_OsFloatSuffix: Id=4 used bit was
-> FALSE
-> !
-> Feb 28 10:26:44 HOME kernel: cnxthsf_OsFloatSuffix: Id=6 used bit was
-> FALSE
-> !
-> Feb 28 10:26:47 HOME kernel: cnxthsf_OsFloatSuffix: Id=6 used bit was
-> FALSE
-> !
-> Mar  1 09:30:46 HOME kernel: cnxthsf_OsFloatSuffix: Id=8 used bit was
-> FALSE
-> !
-> Mar  1 09:30:46 HOME kernel: cnxthsf_OsFloatSuffix: Id=0 used bit was
-> FALSE
-> !
-> Mar  1 10:06:56 HOME kernel: cnxthsf_OsFloatSuffix: Id=1 used bit was
-> FALSE
-> !
-> Mar  1 10:07:00 HOME kernel: cnxthsf_OsFloatSuffix: Id=8 used bit was
-> FALSE
-> !
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe
-linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
