@@ -1,42 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
+From: <a.c.labij@hccnet.nl>
 Subject: Re: small computer ?
-Date: Mon, 02 Sep 2002 14:55:54 -0700
+Date: Tue, 3 Sep 2002 06:23:19 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020902145048.0219aec0@celine>
+Message-ID: <Pine.LNX.4.30.0209030027030.2472-100000@zub.asd>
 References: <002e01c252b4$a8f7d3c0$3505b3d8@aptiva>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <002e01c252b4$a8f7d3c0$3505b3d8@aptiva>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: Robert R Stephens <robert4@bestweb.net>, linux-newbie@vger.kernel.org
 
-At 03:12 PM 9/2/02 -0400, Robert R Stephens wrote:
->How small of a computer does one need to run a GUI with a Desktop
->environment on a linux system?
+
+Robert R Stephens wrote:
+> How small of a computer does one need to run a GUI with a Desktop
+> environment on a linux system?
+
+Recently i was looking for a small distro to install at my old
+486SX-4Mb-100Mb. At www.ibiblio.org/pub/linux/distributions are a couple
+of small distro's, and i tried BasicLinux. It runs o.k.
+You need a basic DOS ( i installed full, 10 Mb). From there you
+can run a RAM-linux ( I needed a 4Mb-ram supplemental pkg) . Next a HD
+install. ( supplemental HD package)
+The zImage stays in a DOS directory, and the text-mode installa-
+tion takes 7Mb. There are pkg's for icewm (bas-html.tgz),mc, Slackware 3.5
+add-ons, it's in the docs.
+Actually i subscribed to this mailinglist, because it was somewhere
+mentioned , and expected hundreds of users, writing thousands of mails
+about it.
+
+adriaan
 
 
-Do you mean how *big*? It depends on what you mean by "Desktop environment" 
-and what else the system is running.
-
-I've used a 486/40 with 16 MB RAM, running X and wfvm95, but it didn't do 
-much more than that (just ran the usual background apps, some xterms, and 
-otherwise acted as a remote X terminal for use with a server). Some of the 
-newer minimalist X desktops, like blackbox or ICE, would probably handle 
-this sort of setup pretty well.
-
-If you are wondering about environments like KDE or Gnome ... they will 
-require more in the way of resources. I have very little eperience with 
-these high-demand desktops, so someone else will have to address that part.
 
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
