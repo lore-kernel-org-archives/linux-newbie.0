@@ -1,43 +1,25 @@
-From: 1stFlight <1stflight@ameritech.net>
-Subject: Re: rpm
-Date: Tue, 3 Dec 2002 12:47:55 -0500
+From: dave <dave@dpomeroy.com>
+Subject: rpm problems
+Date: Tue, 3 Dec 2002 10:11:26 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212031247.55787.1stflight@ameritech.net>
-References: <5.1.1.6.0.20021204083139.009f6010@mail.dpomeroy.com>
+Message-ID: <200212031011.26949.dave@dpomeroy.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.1.6.0.20021204083139.009f6010@mail.dpomeroy.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Dave Pomeroy <dave@dpomeroy.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 04 December 2002 11:32 am, Dave Pomeroy wrote:
-> I just installed Mandrake 9.0.  Everything is cool except when I try to run
-> rpm to ad a package I get an error saying that I have 2 different versions
-> of RPM.  Anyway to fix this without a reinstall?  Thanks for your help.
->
->
-> Dave Pomeroy K7DNP South East Washington
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+This is the error I get if I'm logged in as root.  When I am logged in as user 
+dave rpm works ok.
 
+rpm -rebuilddb
+rpmdb: Program version 4.0.14 doesn't match environment version 3.1.14
+error:  db4 error(22) from dbenv->open: Invalid argument
+error:  cannot open Packages index
 
-Odd,  try this 
-
-rpm -v 
-
-and see what message you get, failing that try 
-
-find / -name rpm* -print 
-
-And see where the different "rpms" are installed
-
-Happy hunting! 
+Thanks for your help.
+Dave Pomeroy
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
