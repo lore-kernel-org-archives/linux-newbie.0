@@ -1,66 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: switching to debian (... and installing the NVIDIA
-  GeForce4)
-Date: Thu, 25 Mar 2004 07:42:19 -0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: switching to debian (... and installing the NVIDIA  GeForce4)
+Date: Thu, 25 Mar 2004 17:07:32 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040325072647.01f7bde8@celine>
-References: <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.
- engin.umich.edu>
+Message-ID: <200403251707.32557.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040325072647.01f7bde8@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0403250945300.26064-100000@legolas.personal.
- engin.umich.edu>
+In-Reply-To: <5.1.0.14.1.20040325072647.01f7bde8@celine>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-At 09:46 AM 3/25/2004 -0500, Karthik Vishwanath wrote:
-
->I installed the 2.4.18 source by 'apt-get install kernel-source-2.4.18',
->extracted the source and made a symbolic /usr/src/linux ->
->/usr/src/kernel-source-2.4.18/, and followed all the instructions below
->as is.
+On Thursday 25 March 2004 16:42, Ray Olszewski wrote:
+> In fact, it should read
 >
->sh NVIDIA-Linux-x86-1.0-5336-pkg1.run quits with an error.
+> =A0 =A0 =A0 =A0 =A0EXTRAVERSION =3D-k7
 >
-># cat /var/log/nvidia-installer.log | grep ^ERROR
->ERROR: Unable to determine the NVIDIA kernel module filename.
->
->
->How to proceed?
+> (without the space before the hyphen).
 
-Preliminary question: Are you using an installer you got from nVidia, or 
-are you using the Debian package nvidia-kernel-source (from non-free/X11)?
+No sorry Ray its not a typo, its how it should be a as matter of fact,
+It possably works without a white space but AFAIK white spaces are igno=
+red.
 
-Second question: Did you edit the Makefile in /usr/src/linux so it matches 
-the version of the running kernel EXACTLY (as reported by "uname -a"; I 
-don't care what name the kernel file has)? I ask in part because Richard's 
-instructions contain a small typo you may have missed. He says to edit the 
-Makefile as follows:
-         > change line 4 from
-         > EXTRAVERSION =
-         > To
-         > EXTRAVERSION = -k7
+If for example you look into any Topdir Makefile you will note that lin=
+es 1,=20
+2, and 3 have white spaces after the =3D  and the 4th line should compl=
+y as=20
+well or so i was once told.
 
-In fact, it should read
+--=20
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-         EXTRAVERSION =-k7
-
-(without the space before the hyphen).
-
-Third, I think we are going to have to see the context of the error 
-message. I can't find in the nVidia installer where that message is 
-generated, so it must come from the binary portion somewhere. The preceding 
-lines in the log (or onscreen) probably give some context for interpreting 
-the message. If the log file is small (mine is, but from a successful 
-install of 4363), include it all. IF it is too long for that, include the 
-immediate context of the error.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
