@@ -1,60 +1,51 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: A few more things and I can kiss windows good bye.
-Date: Wed, 16 Oct 2002 17:46:51 +0100
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Laptop Prompt
+Date: Wed, 16 Oct 2002 19:08:20 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021016164651.GA4265@cam.ac.uk>
-References: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
+Message-ID: <20021016170820.GA18126@teamfinders.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="0F1p//8PRICkK4MW"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+Hello,
+
+A number of weeks ago, I approached the list about making apm more accurately reflect the amount of charge left on my laptop battery.  As suggested to me here on the list, I am pretty certain that my problem is due to the age of the battery.  Some testing here shows that I have a similar inaccuracy when I boot the laptop into Windows.
+
+While I was digging around on laptop-related issues, however, I found the Bash-Prompt-HOWTO at the Linux Documentation Project (www.tldp.org).  That HOWTO has an example bash prompt for laptop users that indicates the amount of battery charge remaining and whether the charger is attached.  I wasn't able to get the example to work, but I was able to use the general information in the HOWTO to get a prompt put together.  I thought I might post it here for anyone who is interested.  I put this into my .bashrc.
 
 
---0F1p//8PRICkK4MW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+function pwr_chk {
 
-> 1. Microsoft .NET framework. I know Microsoft is a bad word in most of
-> these forums/lists but it is a great web development package. Allowing
-> for true object oriented programming. I am also already familiar with
-> it. Will the framework run on a Linux machine.
-The Microsoft one doesn't, as far as I know, and it seems unlikely that
-it ever will.  There is a FreeBSD version, though.  Look for Rotor, of
-you're interested.
+ACstat=$(apm | cut -f2 -d ' ')
 
-Having said that, Mono.NET have a C# compiler, JIT, and most of a class
-framework available from www.go-mono.com.  There's also an early-stage
-vb.net interpreter, but I haven't tried it.
+case $ACstat in
 
-DotGNU were also aiming towards a C# implementation.  The last time I
-checked, they were a long way behind Mono, however.
+	on-line* )
+		echo -n '^'$( apm | cut -f5 -d ' ')
+		;;
 
-> What editors can I use.
-Emacs works, as does vi.  If you want a friendlier interface, jEdit,
-kDevelop, and CoolEdit are fairly popular.
+	off-line* )
+		echo -n 'v'$( apm | cut -f6 -d ' ')
+		;;
 
-Steven Smith,
-sos22@cam.ac.uk.
+esac
 
---0F1p//8PRICkK4MW
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+}
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+PS1='\[\033[0;31m\][$(pwr_chk)]\[\033[0m\]\[\033[1;33m\]\u@\h:\w\[\033[0m\]\$ '
 
-iD8DBQE9rZf6O4S8/gLNrjcRAq/mAJ9dzcGPfYgkZcm4zplZOFElvJRfsQCgqSyL
-sw/dd0CVuYgKX+puQEpyD1o=
-=VoLI
------END PGP SIGNATURE-----
+The charger indicator and % battery charge reading are in red and the prompt is in yellow, because I also wanted to play with colors a bit.  They are easily removed.  BTW, there was a question here recently about console colors.  The Bash-Prompt-HOWTO contains a pretty helpful discussion on that topic.
 
---0F1p//8PRICkK4MW--
+Cheers,
+Sean
+
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
