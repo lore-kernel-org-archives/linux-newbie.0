@@ -1,54 +1,45 @@
-From: "Dinesh K Subhraveti" <dinesh@cs.columbia.edu>
-Subject: isn't wait4 amenable to interception?
-Date: Fri, 9 Apr 1999 01:12:40 -0400
+From: cr <cr@orcon.net.nz>
+Subject: Re: a simple browser
+Date: Tue, 9 Apr 2002 18:02:47 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <009b01be8247$97659b60$13123b80@endo>
+Message-ID: <200204090515.g395FS704571@mail.orcon.net.nz>
+References: <m3ofgui987.fsf@wobble.eth.net>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
+In-Reply-To: <m3ofgui987.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: anna7sept@linuxmail.org, G Anna <drguruolai@eth.net>, linux-newbie@vger.kernel.org
 
-hello,
+On Tuesday 09 April 2002 01:57, G Anna wrote:
+> Dear All,
+>
+> Can anybody suggest a good and simple browser?  Netscape core dumps
+> very often, Mozilla is very very slow and I do not know of any other
+> browser.  (Most of the websites nowadays doesn't care about Lynx :-(
+>
+> Thanks for your time.
+>
+> anna
 
-i was trying to intercept various system calls and got stumped at wait4. the
-new syscall routine just returns original sys_wait4. i am able to insert the
-module. sytem works just fine after insertion. but when i rmmod the module,
-kernel 'oops'es with "bad eip" message and the shell gets killed. am just
-not able to figure why. i'd greatly appreciate any insight on this. am
-attaching the code below.
+Depends which distribution of Linux you're using, but:
 
-thanks in advance
+KDE Konqueror (comes with KDE 2.2 IIRC).    I use it from Gnome - you don't 
+*have* to be running KDE to use it.
 
------------------------------------------------
-#include <linux/kernel.h>
-#include <linux/module.h>
-#include <linux/resource.h>
-#include <sys/syscall.h>
+Or Opera for Linux, which is 'adware'  (a little panel on the top right shows 
+ads), but other than that is a very nice-handling browser.   (If you want it 
+without ads you can always pay $$ and register).    www.opera.com
 
-extern void *sys_call_table[];
+Or Galeon  (which I think is based on Mozilla?)
 
-static int (*original_sys_wait4) (pid_t, int*, int, struct rusage*);
+All the above (except or maybe including Opera, I can't recall) came with Red 
+Hat 7.2.
 
-asmlinkage int my_wait4 (pid_t a, int *b, int c, struct rusage *d)
-{
-   return original_sys_wait4 (a, b, c, d);
-}
+My favourite's Opera, myself.   But I'd suggest you could try one of those.
 
-int init_module()
-{
-   original_sys_wait4 = sys_call_table[__NR_wait4];
-   sys_call_table[__NR_wait4] = my_wait4;
-   return 0;
-}
-
-void cleanup_module()
-{
-   sys_call_table[__NR_wait4] = original_sys_wait4;
-}
-
-
-
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
