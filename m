@@ -1,44 +1,111 @@
-From: Michael Gruner <stockraser@yahoo.de>
-Subject: self-made potato driver-1.bin
-Date: 25 Aug 2002 21:50:46 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: self-made potato driver-1.bin
+Date: Sun, 25 Aug 2002 20:46:43 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1030305001.695.18.camel@highflyer>
+Message-ID: <02082520464300.02211@unix.pa3gcu>
+References: <1030305001.695.18.camel@highflyer>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1030305001.695.18.camel@highflyer>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="macroman"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Michael Gruner <stockraser@yahoo.de>, linux-newbie@vger.kernel.org
 
-SGVsbG8sCgp0cnlpbmcgdG8gaW5zdGFsbCBhIGRlYmlhbiBwb3RhdG8gdmlhIGZ0cCBvbiBhIHBj
-IHdpdGggYSBzbWMtdWx0cmEtY2FyZAppcyBkcml2aW5nIG1lIGNyYXp5IDotLy4gCgpJdCBzZWVt
-cyBub3QgdG8gYmUgcG9zc2libGUgdG8gZ2V0IGRlYmlhbiBwb3RhdG8gdG8gd29yayB3aXRoIHNt
-Yy11bHRyYQpOSUNzLiBTb21lIHRpbWVzIGFnbyBpIHRyaWVkIHRvIGdldCBpdCBpbnN0YWxsZWQg
-b24gYSBQOTAgd2l0aCBhCnNtYy11bHRyYSBidXQgaGFkIG5vIHN1Y2Vzcy4gSW5zdGFsbGluZyBT
-dVNFIG9uIHRoYXQgcGMgSSBoYWQgbm8KcHJvYmxlbXMgdG8gZ2V0IHRoZSBOSUMgd29yay4gVG9k
-YXkgdGhlIG5leHQgdHJ5OiBJIHB1dCB0aGUgY2FyZCBpbnRvIGEKNDg2IHBjIHJlc3VsdDogcG90
-YXRvIGRpZG4ndCBsb2FkIHRoZSBtb2R1bGUgc21jLXVsdHJhIHdoZXRoZXIgSSBnYXZlCnRoZSBp
-byBhbmQgaXJxIGkgc2V0IHRoZSBqdW1wZXIgb24gdGhlIGNhcmQgb24gbm9yIGkgZ2F2ZSBubyBv
-cHRpb25zIHRvCmxvYWQgaXQ6IHBvdGF0byBldmVyeS10aW1lIHRvbGQgbWU6IGRldmljZSBvciBy
-ZXNvdXJjZSBidXN5Li4uIHN0YXJ0aW5nCnRoZSBkaXN0cmlidXRpb24gZmxpNGwgKHd3dy5mbGk0
-bC5kZSkgb24gdGhhdCBwYyB0aGUgY2FyZCB3b3JrZWQgd2l0aG91dAphbnkgcHJvYmxlbXMuCgpJ
-IHNlYXJjaGVkIGdvb2dsZSBhbmQgZ3JvdXBzLmdvb2dsZSBmb3IgdGhhdCBidXQgd2l0aG91dCBh
-bnkgc3VjZXNzCnNvbHZpbmcgdGhlIHByb2JsZW0uCgpTbyBpIGRlY2lkZWQgdG8gY29tcGlsZSBt
-eSBvd24ga2VybmVsIGZvciB0aGUgaW5zdGFsbGF0aW9uIGRpc2suIEkndmUKZ290IHRoZSBrZXJu
-ZWwgc291cmNlcyBmb3IgMi4yLjIxLiBJIHN1Y2Vzc2Z1bHkgbW91bnRlZCB0aGUgcmVzY3VlIGRp
-c2sKb2YgbXkgcG90YXRvIHNvIEkgY2FuIHB1dCB0aGUgYnpJbWFnZSBhcyAibGludXgiIG9uIGl0
-LiBCdXQgd2hhdCBhYm91dAp0aGUgZHJpdmVyLTEuYmluLWRpc2s/IEknbSBub3QgYWJsZSB0byBt
-b3VudCB0aGF0IGRpc2sgdG8gcmVwbGFjZSB0aGUKbW9kdWxlcyBvbiBpdC4gCgpBbnkgaGludHMg
-Zm9yIHNvbHZpbmcgdGhlIHByb2JsZW0gd2l0aCB0aGUgb3JpZ2luIHBvdGF0byBkaXNrcyBvciBo
-b3cgdG8KbW91bnQgYW5kIHJlcGxhY2UgdGhlIGRyaXZlci0xLmJpbiBkaXNrIHdpdGggdGhlIG5l
-dyBrZXJuZWwgbW9kdWxlcz8KCnRoYW5rIHlvdQoKbWljaGEKCgotLSAKV2luZG11ZWhsZW53ZWcg
-MjIgMDc5MDcgU2NobGVpegptb2JpbDogKzQ5MTYyODk1NTAyOQplLU1haWw6IE1pY2hhZWwuR3J1
-bmVyQGZoLWhvZi5kZQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCgpHZXNlbmRldCB2b24gWWFob28hIE1haWwgLSBodHRw
-Oi8vbWFpbC55YWhvby5kZQpZYWhvbyEgcHLkc2VudGllcnQgYWxzIG9mZml6aWVsbGVyIFNwb25z
-b3IgZGFzIEZ132JhbGwtSGlnaGxpZ2h0IGRlcwpKYWhyZXM6IC0gaHR0cDovL3d3dy5GSUZBd29y
-bGRjdXAuY29tCi0KVG8gdW5zdWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUg
-InVuc3Vic2NyaWJlIGxpbnV4LW5ld2JpZSIgaW4KdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1h
-am9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcKTW9yZSBtYWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3Zn
-ZXIua2VybmVsLm9yZy9tYWpvcmRvbW8taW5mby5odG1sClBsZWFzZSByZWFkIHRoZSBGQVEgYXQg
-aHR0cDovL3d3dy5saW51eC1sZWFybi5vcmcvZmFxcwo=
+On Sunday 25 August 2002 19:50, Michael Gruner wrote:
+> Hello,
+>
+> trying to install a debian potato via ftp on a pc with a smc-ultra-card
+> is driving me crazy :-/.
+>
+> It seems not to be possible to get debian potato to work with smc-ultra
+> NICs. Some times ago i tried to get it installed on a P90 with a
+> smc-ultra but had no sucess. Installing SuSE on that pc I had no
+> problems to get the NIC work. Today the next try: I put the card into a
+> 486 pc result: potato didn't load the module smc-ultra whether I gave
+> the io and irq i set the jumper on the card on nor i gave no options to
+> load it: potato every-time told me: device or resource busy... starting
+> the distribution fli4l (www.fli4l.de) on that pc the card worked without
+> any problems.
+>
+> I searched google and groups.google for that but without any sucess
+> solving the problem.
+>
+> So i decided to compile my own kernel for the installation disk. I've
+> got the kernel sources for 2.2.21. I sucessfuly mounted the rescue disk
+> of my potato so I can put the bzImage as "linux" on it. But what about
+> the driver-1.bin-disk? I'm not able to mount that disk to replace the
+> modules on it.
+>
+> Any hints for solving the problem with the origin potato disks or how to
+> mount and replace the driver-1.bin disk with the new kernel modules?
+
+You make it impossable for any hints as you dont say what commands you use, 
+execpt, 
+"potato didn't load the module smc-ultra whether I gave
+the io and irq i set the jumper on the card on nor i gave no options to
+load it:"
+
+You dont even say what options you used./////
+
+Now i have a lot of experiance with smc nics, some "early ultra's" have buggy 
+firmware and will give you problems as you seem to be having, those early 
+type's (some) work with the module  "wd" (in most cases).
+Some cards may look like a smc-ultra but have a 8013 chip, the old wd had 
+8003's or was called 8003 cant remember, but AFAIK they were 8 bit cards.
+
+A typical modprobe command for the wd module is simply;
+ 'modprobe wd'
+
+Now if the card is a true smc-ultra then you have 2 jumpers on the card.
+With the card placed with component side up and the coax and RJ45 connectors 
+on the righthand side there are jumpers at top left.
+The first set of jumpers from left to right is numberd W1.
+J1 = soft configurated (under linux not in use)
+J2 = I/O=280 IRQ=3 
+J3 = I/O=300 IRQ=10
+
+W2 Rom ADDRESS
+J1 = none/soft 
+J2 D8000 (under linux not in use)
+
+I always used the following;
+W1, J1 and J2 open, J3 closed 
+W2, J1 closed J2 open
+
+I have encounterd many problems with these cards, here are some hints, as far 
+as i can remember, its been a long time since i used them.
+
+Dont use IRQ 3 as it is normally used by serial ports.
+Use the jumper settings above to avoid memory and I/O address problems.
+Make sure your BIOS is set for ISA/PnP on IRQ 10 otherwise some systems will 
+quite possably assign irq10 to some PCI adaptor during the init process and 
+will produce the error message you mentioned above, 
+"  device or resource busy "
+It really means the IRQ or I/O address is in use rather than the ethernet 
+card is in use.
+
+There are more hints and kinks for the dam cards, i cant think of anymore at 
+the minute, however i am sure that those mentioned are the most important.
+
+If your problems persist you have 2 choosie's, 
+
+1) Send another mail, i/wee wil try and help.
+2) Throw the dam things away as they are way outdated and olny 10M cards.
+
+>
+> thank you
+>
+> micha
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
