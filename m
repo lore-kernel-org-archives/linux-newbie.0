@@ -1,70 +1,317 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: commport settings
-Date: 30 Dec 2002
+From: Kurt Sys <kurt.sys@rug.ac.be>
+Subject: Re: Debian -> sound modules
+Date: Mon, 30 Dec 2002 14:16:50 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212300521.gBU5LBq22018@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <3E104742.5030500@rug.ac.be>
+References: <5.1.0.14.1.20021226085851.020b2100@celine> <5.1.0.14.1.20021227083019.02107cd0@celine>
+Reply-To: kurt.sys@rug.ac.be
+Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"; 
 To: linux-newbie@vger.kernel.org
 
-Thanks, Lawson, for the detailed answers. BTW, I was searching all
-over the systems here to find the chat script (and I'm used to it using
-a DOS-chat all the time whdere precisely you set the modem's adrs and
-irq) but couldn't _find_ the corresponding thing here, e.g. in that
-Mdk-install: there is a chat script in it, but it does _not_ contain
-anything related to modem initiation etc., only the dialogue and
-messages when connected with the dial-in point already.
+OK, thanks, but apparently, I have to try again... So let's try sound o=
+n=20
+my laptop. I don't have much information about the hardware, but this i=
+s=20
+it (and I've added the 'source of the information' between brackets):
 
-For instance, either on the DOS command line or in a chat.scr you
-would have base address (in your script indeed referred to as
-/dev/ttyS2) _and_ irq specified, besides of speed, crtscts, etc.
+SoundBlaster=AE and Windows=AE sound compatible (website Dell)
+Sigmatel 9700 audio controller (Laptop users manual)
+Integrated Intell Audio (Windows)
+82801CA/CAM AC'97 Audio controller (Windows)
+PCI bus 0 device 31 function 5  (windows)
+IRQ=3D09 (windows)
+IO =3D 1C00 1CFF (windows)
+IO =3D 1880 18BF (windows)
 
-What I do not understand in the example of your second, bash script
-is, where this one gets the variables "$6" and "$1" from, and the
-specifications for the "$DNS1" and "$DNS2". Where are these set ?
 
-(REM, using the Waterloo TCP/IP arrangement in DOS - which is a port
-from *nix -, I get a bit confused with the fact that you have a
-permanent "ip-up" script.  In the very similar DOS sequence of routines,
-with chat running first and then a packet driver loading [with latter
-using a configuration script which contains, e.g., name servers, packet
-volume etc.] the "ip-up.bat" script gets written anew each time a
-ppp-connection is done _by_ the driver and run from it. The WATTCP.CFG
-there contain both permanent parts and what is appende into it by
-ip-up.bat, like with resolve.conf in your example.)
+Now, the output of lspci -v:
 
-Well, I'll spend some more hours again to chase those scripts on the
-two different installs here (haven't got a Sclackware active at the
-moment). And it's always good to have examples of "weird" things as
-these show more different options and syntax idiosynchracies.
+-----
 
-On some of the points you made:
+00:00.0 Host bridge: Intel Corp. 82845 845 (Brookdale) Chipset Host=20
+Bridge (rev 05)
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, fast devsel, latency 0
+	Memory at ec000000 (32-bit, prefetchable) [size=3D64M]
+	Capabilities: [e4] #09 [c104]
+	Capabilities: [a0] AGP version 2.0
 
-> ... trying to probe what IRQ it uses is not that easy.
-Hmm, how come ? for at least fifteen years I use a little DOS utility
-wich spits out the list of existing commports _and_ the irq.s related to
-each. And there had been quite several of such little DOS helpers; a
-bit more difficult to find them these days.
+00:01.0 PCI bridge: Intel Corp. 82845 845 (Brookdale) Chipset AGP Bridg=
+e=20
+(rev 05) (prog-if 00 [Normal decode])
+	Flags: bus master, 66Mhz, fast devsel, latency 96
+	Bus: primary=3D00, secondary=3D01, subordinate=3D01, sec-latency=3D64
+	Memory behind bridge: e0000000-e7ffffff
+	Prefetchable memory behind bridge: f0000000-f7ffffff
 
-> ...anything you don't specify to pppd on the command line or options file
-> will be left as is.
-There _is_ a "pppd.options" file but I couldn't find either there or in the
-"man" any hint on how to use it for precisely the issue at hand.
+00:1d.0 USB Controller: Intel Corp. 82801CA/CAM USB (Hub #1) (rev 02)=20
+(prog-if 00 [UHCI])
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, medium devsel, latency 0, IRQ 10
+	I/O ports at 1800 [size=3D32]
 
-> What are pon and ifup?
-These are bash commands in Debian and Mandrake, resp., for starting
-ppp[n] from the console (I think it's "p-on pppN" in Slackware,  just
-to add a bit to the confusion); in a way, the correspondings to kppp
-which is used from X only.
+00:1d.1 USB Controller: Intel Corp. 82801CA/CAM USB (Hub #2) (rev 02)=20
+(prog-if 00 [UHCI])
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, medium devsel, latency 0, IRQ 11
+	I/O ports at 1820 [size=3D32]
 
-// Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-12-30
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+00:1e.0 PCI bridge: Intel Corp. 82801BAM/CAM PCI Bridge (rev 42)=20
+(prog-if 00 [Normal decode])
+	Flags: bus master, fast devsel, latency 0
+	Bus: primary=3D00, secondary=3D02, subordinate=3D02, sec-latency=3D168
+	I/O behind bridge: 00003000-00003fff
+	Memory behind bridge: e8000000-e80fffff
+
+00:1f.0 ISA bridge: Intel Corp. 82801CAM ISA Bridge (LPC) (rev 02)
+	Flags: bus master, medium devsel, latency 0
+
+00:1f.1 IDE interface: Intel Corp. 82801CAM IDE U100 (rev 02) (prog-if=20
+8a [Master SecP PriP])
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, medium devsel, latency 0
+	I/O ports at <unassigned> [size=3D8]
+	I/O ports at <unassigned> [size=3D4]
+	I/O ports at <unassigned> [size=3D8]
+	I/O ports at <unassigned> [size=3D4]
+	I/O ports at 1840 [size=3D16]
+	Memory at 20000000 (32-bit, non-prefetchable) [disabled] [size=3D1K]
+
+00:1f.3 SMBus: Intel Corp. 82801CA/CAM SMBus (rev 02)
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: medium devsel, IRQ 10
+	I/O ports at 1860 [size=3D32]
+
+00:1f.5 Multimedia audio controller: Intel Corp. 82801CA/CAM AC'97 Audi=
+o=20
+(rev 02)
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, medium devsel, latency 0, IRQ 10
+	I/O ports at 1c00 [size=3D256]
+	I/O ports at 1880 [size=3D64]
+
+00:1f.6 Modem: Intel Corp. 82801CA/CAM AC'97 Modem (rev 02) (prog-if 00=
+=20
+[Generic])
+	Subsystem: Conexant: Unknown device 5421
+	Flags: medium devsel, IRQ 10
+	I/O ports at 2400 [size=3D256]
+	I/O ports at 2000 [size=3D128]
+
+01:00.0 VGA compatible controller: nVidia Corporation NV11 [GeForce2 Go=
+]=20
+(rev b2) (prog-if 00 [VGA])
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: 66Mhz, medium devsel, IRQ 10
+	Memory at e0000000 (32-bit, non-prefetchable) [size=3D16M]
+	Memory at f0000000 (32-bit, prefetchable) [size=3D128M]
+	Expansion ROM at <unassigned> [disabled] [size=3D64K]
+	Capabilities: [60] Power Management version 2
+	Capabilities: [44] AGP version 2.0
+
+02:01.0 Ethernet controller: 3Com Corporation 3c905C-TX/TX-M [Tornado]=20
+(rev 78)
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, medium devsel, latency 80, IRQ 10
+	I/O ports at 3000 [size=3D128]
+	Memory at e8000000 (32-bit, non-prefetchable) [size=3D128]
+	Expansion ROM at <unassigned> [disabled] [size=3D128K]
+	Capabilities: [dc] Power Management version 2
+
+02:04.0 CardBus bridge: O2 Micro, Inc.: Unknown device 6972
+	Subsystem: Dell Computer Corporation: Unknown device 00f3
+	Flags: bus master, stepping, slow devsel, latency 168, IRQ 10
+	Memory at e8001000 (32-bit, non-prefetchable) [size=3D4K]
+	Bus: primary=3D02, secondary=3D03, subordinate=3D06, sec-latency=3D176
+	I/O window 0: 00000000-00000003
+	I/O window 1: 00000000-00000003
+	16-bit legacy interface ports at 0001
+
+-----
+
+
+And my /etc/modules file:
+
+-----
+
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file should contain the names of kernel modules that are
+# to be loaded at boot time, one per line.  Comments begin with
+# a "#", and everything on the line after them are ignored.
+
+af_packet
+dummy
+ntfs
+lp
+apm
+serial_cs
+ide-cd
+ide-floppy
+3c59x
+3c589_cs
+sg
+imm
+i810_audio
+
+-----
+
+
+=46inally, the 'overdrive' sound, it's not 'double speed' (I guess), bu=
+t=20
+it's a typical 'noise-signal' sound. So:
+
+cat /usr/share/sndconfig/sample.au > /dev/dsp
+
+gives such a noise-signal (overdrive). I really don't know how I can=20
+describe it another way... I'm sorry about that. The same is true for=20
+/usr/share/sndconfig/sample2.au and some small wav-files (not all of th=
+em).
+
+
+Some additional, less important (I think) comments inline...
+
+
+
+tnx,
+Kurt.
+
+
+Ray Olszewski wrote:
+[...]
+
+>> OK, here it comes (I ran 'modconf' and tried to install a=20
+>> driver/module, such as the '100% soundblaster compatible' one, but=20
+>> some others give the same result, and the ones that don't give=20
+>> 'installation failed' are actually not alright since I get the messa=
+ge=20
+>> that 'device /dev/dsp doesn't exist' if I run 'cat=20
+>> /somepath/somefile.wav > /dev/dsp'):
+>>
+>> # /lib/modules/x.x.xx/kernel/drivers/sound/xxxxx.o: init_module: no=20
+>> such device
+>> # Hint: insmod errors can be cause by incorrect module parameters,=20
+>> including invalid IO or IRQ parameters
+>> # You may find more information in syslog or the output from dmesg
+>> # /lib/modules/x.x.xx/kernel/drivers/sound/xxxxx.o: insmod=20
+>> /lib/modules/x.x.xx/kernel/drivers/sound/xxxxx.o failed
+>> # /lib/modules/x.x.xx/kernel/drivers/sound/xxxxx.o: insmod xxxxx.o f=
+ailed
+>> # Installation failed
+>=20
+>=20
+> I'm not actually familiar with modconf; does it really report its=20
+> results substituting "x.x.xx" for the kernel version? And what is mod=
+ule=20
+> "xxxxx.o"? Is that gobbledygook out of modconf, a module I'm=20
+> unacquainted with, or your unwise attempts to edit the output (Genera=
+l=20
+> Rule #1: NEVER edit error output except for passwords, and make it=20
+> unambiguously clear when you do even that).
+
+It's my unwise attempt... I just tried several sound modules, and I=20
+didn't think it was necessary to put everytime the same output. So, the=
+=20
+xxxxx should be replaced by a module, such as VIA82xxx_audio. The x.x.x=
+x=20
+should be replaced by 2.4.16 for my laptop.
+I now installed module i810_audio as the only sound module.
+
+
+> The "no such device" response on the first line usually means that th=
+e=20
+> module did not find hardware to initialize. So it suggests that=20
+> "xxxxx.o" is not the right module for the sound hardware on whichever=
+ of=20
+> your systems you are reporting about here.
+
+Yups, I did get that one. So I didn't include these modules.
+
+
+
+> As to "/dev/dsp" ... I can't tell from what you sent whether the /dev=
+/=20
+> entry itself exists or not ("ls -l /dev/dsp*"). I'm not even certain=20
+> which of your two systems you get this message from. If it doesn't=20
+> exist, you'll need to create it, which you can do manually with "mkno=
+d".=20
+> There is probably a Debian package that sets up this sound stuff (the=
+=20
+> needed /dev/* devices, I mean), but if so, I forget its name. If it d=
+oes=20
+> exist but using it returns that message, that means that /dev/dsp is =
+not=20
+> pointing to any real, physical device on the system (that is, you don=
+'t=20
+> have a working sound module installed in the kernel).
+
+/dev/dsp exists. That's not the problem here.
+
+
+
+>> I'm quite sure my soundblaster is sb 128 PCI and I know the IRQ, IO=20
+>> and other parameters (at least for my desktop). On my laptop, I=20
+>> already get some sound, but it quite often, it's like it's ging in
+>> 'overdrive'.
+>=20
+> I don't really know what "overdrive" is "like". Do you perhaps mean i=
+t=20
+> plays at double speed? (General Rule #2: Describe symptoms as exactly=
+ as=20
+> you possibly can. Metaphorical trouble reports are hard to interpret.=
+)=20
+> If so, this is indicative of the wrong module ... one that *almost*=20
+> works but isn't really right for your sound card.
+
+Yups, I get that one. overdrive here means thus a noise-signal. And for=
+=20
+now, don't bother the desktop (sb 128 PCI etc). Let's get things to wor=
+k=20
+on my laptop first, because on my desktop, it's somewhat harder, I=20
+think, since I've got other problems there.
+
+
+>  From what you wrote here, my best *guess* is that you have not yet=20
+> found the right module for your sound card. One approach is simply br=
+ute=20
+> force -- compile all the soundcard modules, then modprobe (NOT insmod=
+ or=20
+> modconf) them one by one until you find one that works. Then add that=
+=20
+> one to /etc/modules .
+
+That's what I've been trying to do. At least, I tried to compile the=20
+kernel with all soundcard modules. This didn't work; I could only=20
+compile the kernel if I removed some of the sound modules (that's the=20
+problem I have on my desktop, but that's for tomorrow, 'cause I haven't=
+=20
+got my desktop here).
+Anyway, I don't think that's a problem. The module I have now (in=20
+/etc/modules) gives 'some sound'. Only the IRQ setting is different tha=
+n=20
+the IRQ setting of the soundcard in windows. Could that be the problem?=
+=20
+And how can I solve it?
+
+
+
+> As to your SMB problems ... the additional info you provided suggeste=
+d=20
+> nothing to me. The (presumed) edits you did even made it hard for me =
+to=20
+> figure out what it was saying in places. So I'll leave that one for=20
+> someone else to take a try at.
+
+Ok, I understand that... So let's take one problem; I'll wait for this=20
+samba-thing.
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
