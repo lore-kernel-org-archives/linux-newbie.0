@@ -1,35 +1,32 @@
-From: Jude DaShiell <jdashiel@shellworld.net>
+From: Jim Reimer <wa5rrh@arrl.net>
 Subject: Re: breaking up a zip file
-Date: Mon, 30 Sep 2002 21:33:07 -0400 (EDT)
+Date: Mon, 30 Sep 2002 20:56:47 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.BSF.4.44.0209302132340.20863-100000@server1.shellworld.net>
-References: <Pine.BSF.4.44.0209301922230.20863-100000@server1.shellworld.net>
+Message-ID: <3D9900DF.4070305@arrl.net>
+References: <Pine.BSF.4.44.0209302132340.20863-100000@server1.shellworld.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.BSF.4.44.0209301922230.20863-100000@server1.shellworld.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Furness <paul.furness@vil.ite.mee.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Jude DaShiell <jdashiel@shellworld.net>
 Cc: linux-newbie@vger.kernel.org
 
-let's try zipsplit.  It appears it's nearly time for a new keyboard.
+Jude DaShiell wrote:
+> let's try zipsplit.  It appears it's nearly time for a new keyboard.
+> 
+> 
+> 
+> On Mon, 30 Sep 2002, Jude DaShiell wrote:
+> 
+> 
+>>That would be ipsplit.
 
+I remember zipsplit from my DOS days, but where's it available
+for Linux?
 
+-jdr-
 
-On Mon, 30 Sep 2002, Jude DaShiell wrote:
-
-> That would be ipsplit.
->
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
