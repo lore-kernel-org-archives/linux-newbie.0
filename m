@@ -1,30 +1,35 @@
-From: "LAU KAYIT BUROSU" <info2@lau-kayitburosu.com>
-Subject: EN UYGUN  =?ISO-8859-1?Q?=20HAR=C7?= OLANAKLARI  =?ISO-8859-1?Q?=20=DDLE?=  =?ISO-8859-1?Q?=20K?=
-	=?ISO-8859-1?Q?IBRIS=92TA?=  =?ISO-8859-1?Q?=20=DCN=DDVERS=DDTE?=  =?ISO-8859-1?Q?=20E=D0=DDT=DD?=
-	=?ISO-8859-1?Q?M=DD?=
-Date: Sun, 1 Aug 2004 01:05:42 +0300
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: documentation for perl modules
+Date: Mon, 2 Aug 2004 21:25:21 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S264595AbUGaWFo/20040731220544Z+5643@vger.kernel.org>
+Message-ID: <Pine.LNX.4.44.0408022105390.32586-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-LEFKE AVRUPA =DCN=DDVERS=DDTES=DD
-K=FDbr=FDs Bilim Vakf=FD
+Hello,
 
-Y=D6K taraf=FDndan onayl=FD Yurt d=FD=FE=FDnda ge=E7erli diploma ve bir=
-=E7ok burs
-olanaklar=FD ile ciddi bir e=F0itim.
-=C7ok uygun har=E7 ve bar=FDnma olanaklar=FD, =FCcretsiz ula=FE=FDm ile=
- en ekonomik ve en
-iyi ko=FEullarda Devlet-Vak=FDf =DCniversitesinde e=F0itim olana=F0=FD.
-WEB: www.lau-kayitburosu.com  E-Mail:info@lau-kayitburosu.com
+Is there a way I can see all the perl modules installed and the related 
+documentation for these modules? 
+
+My problem is that I don't know what Module::Name to give perldoc. 
+
+All help is appreciated and apologies if this is off-topic on this list. 
+
+Thanks,
+
+-K
+
+---------------------
+Biology is the only science in which multiplication means the same thing 
+as division.
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
