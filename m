@@ -1,80 +1,39 @@
 From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
-Subject: Re: ISO Image
-Date: Thu, 11 Jul 2002 12:17:11 +0200 (CEST)
+Subject: Re: Konsole
+Date: Thu, 11 Jul 2002 13:01:47 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020711101711.57010.qmail@web13106.mail.yahoo.com>
-References: <3D2B16AC.C7ADA30@gmx.net>
+Message-ID: <20020711110147.63442.qmail@web13106.mail.yahoo.com>
+References: <200207111212.24255.azie@kawan.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D2B16AC.C7ADA30@gmx.net>
+In-Reply-To: <200207111212.24255.azie@kawan.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: Oliver Ob <ob_ok@gmx.net>
-Cc: linux-newbie@vger.kernel.org
+To: azie <azie@kawan.net>, Linux Newbie <linux-newbie@vger.kernel.org>
 
- --- Oliver Ob <ob_ok@gmx.net> a =E9crit=A0: > This is
-what I would like to do: Updating a backup
-> then burn new.
+ --- azie <azie@kawan.net> a =E9crit=A0: > Hi,
 >=20
-> I copied the old cd using=20
-> dd=3Dif... of=3D/image.iso
->=20
-> Now I mounted that iso
-> mount -o loop -t iso9660 image.iso /mnt/image
->=20
-> It is there, no problems till here.
->=20
-> Now it is mounted rw (according to mount)
-> I want to copy one file INTO it.
->=20
-> But I get "READ ONLY FS"
->=20
-> So what do I do wrong here? It IS mounted rw
+> I hope you can help me with this. I wanted to set
+> aliases like 'ls=3Dls=20
+> --color=3Dauto' permanently in X Konsole. It seems
+> that all aliases in .bashrc=20
+> did not apply in X Konsole. How can I do this?
 >=20
 
-1. You should RTFM before experimenting.
-2. ISO9660 is _not_ a writable filesystem.
-It was developed for read only media.
+Run the x console with=20
+xterm -ls=20
+or
+rxvt -ls
+(if you use something else your on your own :-) )
 
-> Please help, I need to get that done for tomorrow.
->=20
+=46or other programs there must be an option to run as=20
+a login shel
 
-If you want to "write" to a ISO image:
-1. mount the iso
-2. copy the files you want to keep on that iso
-in a directory. COpy the others file which you=20
-want on that iso in that directory
-3. man mkisofs
-4. make the iso from that directory=20
+> -azie-
 
-> --=20
-> *=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D      =
- =20
-> *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
-> I     =20
-> http://www.bmw-roadster.de/Friends/Olli/olli.html  =20
->    I
-> I     =20
-> http://www.bmw-roadster.de/Friends/friends.html    =20
->    I
-> I       http://groups.yahoo.com/group/VGAP-93      =20
->            I
-> I       mailto:VGAP-93-subscribe@yahoogroups.com   =20
->            I
-> I     =20
-> http://home.t-online.de/home/spacecraft.portal     =20
->    I
-> >>>  Telek0ma iBBMS - now back online
-> +49.4504.TRSi1/TRSi2   <<<
-> -
-> To unsubscribe from this list: send the line
-> "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at=20
-> http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at
-http://www.linux-learn.org/faqs=20
+Calin
+
 
 =3D=3D=3D=3D=3D
 --
