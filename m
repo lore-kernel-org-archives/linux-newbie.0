@@ -1,46 +1,31 @@
-From: docv <docv@sbcglobal.net>
-Subject: Re: Suggestion for help-page?
-Date: Sun, 28 Apr 2002 18:08:29 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Undelete for linux
+Date: Mon, 29 Apr 2002 08:34:06 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CCC80ED.4050301@sbcglobal.net>
-References: <2.2.32.20020428222404.010b3648@[192.168.1.23]>
+Message-ID: <200204290034.g3T0Y6701320@philonline.com>
+References: <20020428075920.A210@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sun, 28 Apr 2002 07:59:20 -0400."
+             <20020428075920.A210@lnx2.w8mch.ampr.org> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-As one very newbie to another,
+It's safedelete. Works fine, the rpm package is only 52 Kb.
 
-Wouldn't it be "safer" to use 'mv' instead of 'cp' and 'rm'? That way, 
-if the destination dir didn't exist (/industgoth/new) the script would 
-error out and not have removed any of the mp3 files from the original 
-location.
+The binaries included are
 
-Also, was there a special reason for the copying them to the root dir 
-instead of straight to the destination dir?
+safedelete the main program to safeldelete files
 
-Ray Olszewski responded to:
+undelete to retrive deleted files
 
->>I made one called test, it contained just this...
->>
->>#!/bin/bash
->>cp /home/staci/*.mp3 /
->>cp /*.mp3 /industgoth/new
->>rm /*.mp3
->>rm /home/staci/*.mp3
->>
+savedelchk to check the log and status of all comprssed, safely deleted files.
 
+Regards
 -- 
-Steve
-docv@sbcglobal.net
-
-In a world without walls and fences there is no need for windows nor gates.
-
-
-
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
