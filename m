@@ -1,19 +1,20 @@
-From: "joaquin" <mmirtceli@yahoo.com>
-Subject: UPS Shipped Drugs!  No Prescription!
-Date: Wed, 04 Aug 2004 06:51:01 GMT
+From: "abel" <speedo21front242@hotmail.com>
+Subject: Anonymous Drug Delivery, no prescription!!
+Date: Wed, 04 Aug 2004 09:25:11 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1091602261-30089__34440.6866970987$1091602001$gmane$org@yahoo.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Message-ID: <1091611511-31366__42374.0124366761$1091611578$gmane$org@excite.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain;; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-kernel@vger.kernel.org
+
 
 What do you pay now?
 
 If you pay more than these prices, maybe you should click this link....
-http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/5
+http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/7
 
 VALIUM - $2 a pill! (Anti-Depressant)
 SOMA - $3 a pill! (Pain Relief)
@@ -29,7 +30,7 @@ VIOXX - $1 a pill! (Pain Relief)
 CELEBREX - $2 a pill! (Pain Relief)
 XENICAL - $2.50 a pill! (Weight Loss)  
 
-http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/5
+http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/7
 
 
 
@@ -39,9 +40,11 @@ http://www.dfjndfv.com/_85924943b9db73ac62baa654773c6a8e/5
 
 
 
-master1 hornetmailman promethe kitty metallic bfi miranda 
-meow tintinmetallica lorraine safety
-orchid cutie fozzie 
+
+
+light abcdefactive camping ruby scuba1 dodgers zhongguo 
+public guessmeow cynthia valentin
+fiona racoon tarzan 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
