@@ -1,56 +1,65 @@
-From: David Benfell <co@trek.parts-unknown.org>
-Subject: Re: Confirmation for subscribe linux-kernel
-Date: Tue, 19 Aug 2003 10:33:25 -0700
+From: "Robert Couture" <sean@tcob1.net>
+Subject: Strange Boot Behavior (cont.)
+Date: Sunday, 24 Aug 2003 18:26:52 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030819173325.GC24599@parts-unknown.org>
-References: <Pine.LNX.4.56.0308181732280.1554@homenet> <200308190853.42110.weston_p@yahoo.com>
+Message-ID: <MSGID_110=3a260=2f1_3f493c5d@fidonet.org>
+References: <20030822054905.11388.qmail@web13804.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200308190853.42110.weston_p@yahoo.com>
+In-Reply-To: <20030822054905.11388.qmail@web13804.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 19 Aug 2003 08:53:41 +0000, Weston M. Price wrote:
-> Arghhghgh!!!!!!! Looking at it this was probably my screw up, I forgot to cut 
-> the name of the kernel list out of my subscribe message....
-> 
-> Guys, I am truly sorry....
-> 
-> Let, the beatdown commence!
-> 
-Somebody please correct me if I'm wrong.  But I don't think that's how
-it works.
+Originally to: Christopher Swope
 
-You would have had to have sent a command something like:
+Hello Christopher.
 
-	subscribe linux-kernel linux-newbie@vger.kernel.org
+21 Aug 03 22:49, you wrote to all:
 
-That's not an accident.  So I'm assuming you didn't do it.
+CS|> If the settings are any of the following, the drives are not
+CS|> recognized at all.  (These results are not surprising).
+CS|>     Primary -- Master w/ Slave present
+CS|>     Secondary -- Cable Select
 
-Majordomo is designed to handle multiple mailing lists, so it's
-entirely okay to send multiple commands in one e-mail to majordomo,
-like:
+CS|>     Primary -- Master w/ Slave Present
+CS|>     Secondary -- Master
 
-	subscribe linux-kernel
-	subscribe linux-newbie
+CS|>     Primary -- Anything other than "Master (Single Drive)"
+CS|>     Secondary -- Not installed
 
-You can respond to the confirmations with a single e-mail as well, by
-combining the required confirm commands into a single e-mail.  And if
-you're in the habit of putting a sig block at the end of your e-mails,
-you can even tell majordomo to ignore it by inserting an 'end'
-command after your commands to it.
+CS|> If the settings are any of the following, I get the behavior I
+CS|> described earlier.
+CS|>     Primary -- Cable Select
+CS|>     Secondary -- Slave
 
-I don't choose majordomo for the mailing lists I administer, but I
-have to admit, it has some cool features.
+CS|>     Primary -- Master w/ Slave Present
+CS|>     Secondary -- Slave
 
--- 
-David Benfell, LCP
-benfell@parts-unknown.org
----
-Resume available at http://www.parts-unknown.org/resume.html
+CS|>     Primary -- Master (Single Drive)
+CS|>     Secondary -- Slave
+
+CS|> Now, my line of thinking is as follows.
+
+CS|> If the second drive is not installed at all, the computer boots
+CS|> normally.  This would indicate the problem stems from connecting the
+CS|> second drive.
+
+I just jumped into this thread.  But what you say hear makes me think that the 
+drives are not compatible.  While rarer these days, I recall the days when 
+certain drives just would not function together regardless of what you did.
+
+Perhaps the older 4G drive just will not work with the new drive?  It seems to 
+be possible.
+
+Will the 80G drive function alone?
+
+What are the makes?  Sorry if you already answered this.  I just caught the 
+thread at this point.
+
+Robert
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
