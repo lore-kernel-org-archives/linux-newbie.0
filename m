@@ -1,57 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Large FTP transfers
-Date: Mon, 30 Sep 2002 06:28:19 -0700
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: breaking up a zip file
+Date: 30 Sep 2002 14:30:04 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020930062210.02cacbf0@celine>
-References: <5.1.0.14.1.20020929090857.024f4300@celine>
- <5.1.0.14.1.20020928093421.024d14f0@celine>
- <5.1.0.14.1.20020929090857.024f4300@celine>
+Message-ID: <1033392605.3245.44.camel@Zebra>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209301909.25896.adam@luchjenbroers.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: adam@luchjenbroers.com
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-As I think I said once before, troubleshooting exchanges are better kept on 
-the list, not moved to private communications. I've Cc'd the list here.
+Hi, everyone.
 
-At 07:09 PM 9/30/02 +0930, Adam Luchjenbroers wrote:
+I seem to remember seeing somewhere a handy Linux prog that will take a
+gz or zip file, and re-package it into a number of smaller zip files. I
+don't remember the command, but it was used something like:
 
-> > Finally, you might try running a diagnostic progrem for the NIC. I don't
-> > recall what type of NIC it is (or even if you reported that in a prior
-> > message ... I've seen about a half dozen different NIC-related threads in
-> > the last day, and my memory just isn't good enough to retain the details of
-> > each), but most manufacturers supply DOS-based NIC configuration and
-> > testing programs. For awhile, Don Becker was releasing Linux config/test
-> > programs for some NICs, and you might see if he covered yours. (Use the
-> > usual search engines to track this down.)
->
->I did mention it in a prior message, 3Com 905B-TX.
->And yes, he does have a
->diagnostics program, which comes as a C source file.
->
->do I just type "gcc vortex-diag.c" or what?
+Command  -s chunk-size archive.zip
 
-Probably (assuming you have gcc and all needed header files installed on 
-your system). A tidier approach might be
+and it would produce archive01.zip, archive02.zip etc, each of size
+"chunk-size".
 
-         gcc -o vortex-diag vortex-diag.c
+Can anyone point me at this util?
 
-so you can control the name of the executable that gcc creates.
+Thanks,
 
-But without examining the source, I can't be certain. Look at the top of 
-the source; these standalone files (by which I mean ones that do not have 
-accompanying Makefiles) usually have "how to compile me" comments near the top.
+Paul.
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+-- 
+Paul Furness
+
+Systems Manager
+
+2+2=5 for extremely large values of 2.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
