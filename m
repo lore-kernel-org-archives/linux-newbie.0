@@ -1,39 +1,41 @@
 From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: 1024x768 SVGA Shell - won't work
-Date: Wed, 5 Jun 2002 16:51:36 +0100
+Subject: Re: Prblm: USB mouse in KDE 3.0 doesn't work about every second boot?
+Date: Wed, 5 Jun 2002 17:10:38 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020605155136.GA1429@cam.ac.uk>
-References: <20020604080752Z316530-22651+74203@vger.kernel.org> <20020605103118Z314422-22651+75434@vger.kernel.org>
+Message-ID: <20020605161038.GA3597@cam.ac.uk>
+References: <000001c20c96$9f652970$c8000a0a@stowks14>
 Mime-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="yrj/dFKFPuw6o+aM"
+	protocol="application/pgp-signature"; boundary="qMm9M+Fa2AknHoGS"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20020605103118Z314422-22651+75434@vger.kernel.org>
+In-Reply-To: <000001c20c96$9f652970$c8000a0a@stowks14>
 List-Id: <linux-newbie.vger.kernel.org>
 To: linux-newbie@vger.kernel.org
 
 
---yrj/dFKFPuw6o+aM
+--qMm9M+Fa2AknHoGS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-> I can find nothing telling me what else I need to enable to be able to en=
-able
-> the frame-buffer drivers.
-The only thing I can see is CONFIG_EXPERIMENTAL, under
-``Code maturity level options''.
+> I have a problem with one of my computers. About every second boot the
+> mouse in KDE doesn't respond to movement. I also have a laptop with the
+> same type of USB mouse and here I don't have that problem. If the mouse
+> doesn't work, the only thing to do is to reboot the computer and mostly
+> that makes it work until the next boot. It's not enough just to restart
+> KDE.
+The usual cause of random problems with the mouse under X is a bad
+interaction with gpm. Try killing gpm by logging in as root under
+a text console (Ctrl-Alt-F1 on most ditributions) and going:
 
-> Does anybody know what options I must enable, or even better, have a=20
-> dependancy map of the kernel?
-The dependency map used by the kernel itself is in arch/i386/config.in.
-It isn't terribly easy to read, but it might be somewhat helpful.
+gpm -k
+
+the next time th mouse decides to play silly games.
 
 Steven Smith,
 sos22@cam.ac.uk.
 
---yrj/dFKFPuw6o+aM
+--qMm9M+Fa2AknHoGS
 Content-Type: application/pgp-signature
 Content-Disposition: inline
 
@@ -41,12 +43,12 @@ Content-Disposition: inline
 Version: GnuPG v1.0.6 (GNU/Linux)
 Comment: For info see http://www.gnupg.org
 
-iD8DBQE8/jOIO4S8/gLNrjcRAofGAKCSaA4q/HT3XxUcnkcbI3wZ50nmNQCgtq3q
-fK8caSd/fYx6utNMldyKYgg=
-=onLZ
+iD8DBQE8/jf+O4S8/gLNrjcRAlfxAKCknw+l66EqrIXOfCVo7hMUXMXnZQCfcBil
+iBfcLs09voIUw+4BEXfybec=
+=9vEx
 -----END PGP SIGNATURE-----
 
---yrj/dFKFPuw6o+aM--
+--qMm9M+Fa2AknHoGS--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
