@@ -1,51 +1,72 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: Firewall / Web Monitor
-Date: Wed, 30 Oct 2002 15:41:47 +0000
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: How to mount CD-ROM?
+Date: Wed, 30 Oct 2002 08:11:31 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20021030150531.033637d0@interzone.anexia.co.uk>
-References: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021030075115.020ef7a0@celine>
+References: <5.1.0.14.1.20021029083056.0215aec0@celine>
+ <5.1.0.14.1.20021029083056.0215aec0@celine>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
+In-Reply-To: <20021030093224.D37F971949@smtp.orcon.net.nz>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 08:54 30/10/2002 -0500, Paul Kraus wrote:
->I have a network of about 25 pcs and 4 servers. With moderate internet
->traffic. What kind of machine do you think I would need for a firewall
->only box? Ipchains or Iptables ( I have some experience with the latter
->and non with Ipchains). I would also like to be able to log where
->everyone is going. Such as what sites they are visiting, the time, and
->the pc that is making the request. Then if we see fit I would like to
->come up with a list of sites that they can visit while restricting all
->others. I would like to have this list be able to be split based on the
->different departments. One list for Accounts Payable one for inventory
->control, ect. Thanks for info. From what I have been reading squid can
->do this but squid says it's a caching server. I don't really think I
->need to cache pages though.
+At 09:46 PM 10/30/02 +1300, cr wrote:
+[...]
+>  if the
+> > installation really did work correctly, then /mnt/cdrom should be a symlink
+> > to the correct block device (easy to check).
+>
+>/mnt/cdrom is a directory, not a symlink.   Which I assume means the
+>installation hasn't worked?
 
-Paul,
+Nope.  It was a typo on my part. It is /dev/cdrom that should be a symlink 
+(probably to /dev/scd0)
+[...]
+> >          'unknown device'  means that the device entry exists in /dev, but
+> > it does not point to an actual, physical device on the system. Try mounting
+> > /dev/scd0 instead.
+>
+>Tried that before -  "unknown device"   still
 
-Squid does indeed do all the jobs your asking for.
+Your other message said that /dev/scd0 is a file that is 11 bytes long. It 
+shouldn't be; it should be a pseudo-file entry -- in this case, a block 
+device -- that provides an interface to the hardware. If you do "ls -l 
+/dev/scd0", the result should be approximately this (this one is from my 
+workstation):
 
-The cache side of it is not a problem as you can turn the cache off or restrict
-the size of the downloaded files to help keep  the cache from becoming too
-large.
+         brw-rw----    1 root     cdrom     11,   0 Jun 13  2001 /dev/scd0
 
-The ACL controls will allow you to set which sites can be accessed by which users
-at which times of the day. The sites that are allowed/disallowed are held in plain text
-files for easy reading or updating from the web (www.hklc.com maintain an on-line set of
-undesirable websites that can be used for blocking in squid. These are mainly porn and
-warez sites).
+The "11" here is not a size; it is a device-major number. Make sure your 
+corresponding entry has the initial "b" (the indicator of a block device) 
+as well as the 11, 0.
+[...]
 
-I use SARG (http://web.onda.com.br/orso/index.html) for reporting on who is looking at what.
+>lsmod showed  sg  and scsi-mod.
+>After  'insmod ide-scsi'   ide-scsi appeared in the list too.
+>But trying 'insmod sr_mod'   just gives four error messages of
+>'unresolved symbol unregister_cdrom_R94f2f104'   and similar.
 
+The absence of this module is probably the source of your problem, as it is 
+the device driver for scsi CD-ROMs. modules.dep ssys it depends only on 
+scsi_mod. I don't have enough info about your setup (kernel details, 
+mostly) to know why you are getting ghe "unresolved symbol" errors, but the 
+usual reasons are kernel-version mismatch or missing dependency. See what 
+effect "modprobe sr_mod" has.
+
+>X-cd-roast seems to work quite happily without it, though.
+
+That's because it accesses the device by (pseudo-)LUN, not through the 
+block device /dev/scd0.
+
+[...]
 --
-Carl
-
-
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
