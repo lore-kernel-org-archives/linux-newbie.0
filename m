@@ -1,68 +1,41 @@
-From: oford <oford@ev1.net>
-Subject: Re: Basic questions on the kernel
-Date: 30 May 2003 15:10:42 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Using a URL to access a variable background image
+Date: Fri, 30 May 2003 17:26:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1054325442.12558.43.camel@spider.hotmonkeyporn.com>
-References: <36993D449C7FA647BF43568E0793AB3E061CD9@nevis_pune_xchg.pune.nevisnetworks.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-X3MRkK1Nb2ME8NWp5jRh"
+Message-ID: <200305302126.h4ULQQhu002400@hartford-hwp.com>
+References: <200305301054.h4UAsKHP015949@hartford-hwp.com> <1054298147.1853.21.camel@Gandalf>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <36993D449C7FA647BF43568E0793AB3E061CD9@nevis_pune_xchg.pune.nevisnetworks.com>
+In-reply-to: <1054298147.1853.21.camel@Gandalf> (message from Alan Bort on 30
+	May 2003 15:35:47 +0300)
 List-Id: <linux-newbie.vger.kernel.org>
-To: Girish Kale <girish.kale@nevisnetworks.com>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: 333101@personal.net.py
+Cc: linux@hartford-hwp.com
 
 
---=-X3MRkK1Nb2ME8NWp5jRh
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+> what GUI are you using??? what version of XF86??? with gnome you can
+> set it so it changes every minute... and with a little cron script
+> you can set an wget to wget the current image to a certain
+> direcotry.... then set the background image to change every
+> minute... (I did something alike once... didn't work.. but it was
+> using a php interface... so that might have been the problem...)
 
-On Fri, 2003-05-30 at 08:00, Girish Kale wrote:
-> Hi,
->=20
-> I have a few basic questions on the kernel performance:
->=20
-> 1) For embedded systems, even though standard linux may not have hard
-> real-time performance unless real-time patch, low latency patch are
-> applied, I would like to know if linux can give "deterministic"
-> performance. Meaning can we be guaranteed that a particular process will
-> be scheduled after a particular time. What are the these times or where
-> do I find this data. =20
->=20
-> 2) When we are using linux on an embedded system, will there a memory
-> management unit for this, since there will not be any swapping in/out of
-> pages? Can we avoid a process from keeping on allocating memory thereby
-> starving other applications?=20
+GUI? Well, don't have a desktop environment (gnome, ximian, KDE,
+etc.), if that's what you mean, but simply run a window manager
+(iceWM). As for XFree86, I'm not sure because I'm sitting at the wrong
+machine, but it should be something like 4.2.0-72.
 
-1) I think your best source of info here is going to be the scheduler
-code itself.  You can find lots of information on it by searching the
-linux-kernel mailing list archives.  Here is the link:
-http://marc.theaimsgroup.com/?l=3Dlinux-kernel&r=3D1&w=3D2
+I'm sorry I wasn't clearer in my original question. I don't want a
+script that simply creates a slideshow for the background image. I
+want to use a constantly changing image as it appears on a web
+site. That is, I want to substitute a URL for a background image
+file. I don't want to create my own slide show by downloading images,
+but use someone else's slide show.
 
-2) There are MMUs for almost every architecture.  My advice is to email
-the kernel maintainer of the architecture you wish to use.  Seek out any
-lists that the embedded community uses and I'm sure they will be glad to
-assist you.
-
-3) Be prepared to make modifications to the kernel source code to fit
-the needs of your specific device.
---=20
-Owen Ford <oford@ev1.net>
-
---=-X3MRkK1Nb2ME8NWp5jRh
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (GNU/Linux)
-
-iD8DBQA+17rC7BqG9qbphc4RAmvlAKCVimytePkyBq6LT6J3LdIAjhsCNgCg2BOR
-39EkTAUWnVh5M3dMGoMHr+k=
-=oPD8
------END PGP SIGNATURE-----
-
---=-X3MRkK1Nb2ME8NWp5jRh--
-
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
