@@ -1,38 +1,35 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: switching window managers
-Date: Wed, 19 Mar 2003 10:58:57 -0500
+From: "Sean Rima" <gateway@tcob1.net>
+Subject: Re: Linux Newsleters from me.
+Date: Wednesday, 19 Mar 2003 21:20:20 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303191558.h2JFwvF4007542@hartford-hwp.com>
-References: <001001c2ee0a$0fd7cdc0$1803a8c0@ets.enterasys.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <MSGID_7223=3a9750=2f200_cf110099@fidonet.org>
+References: <20030318092836.A1873@neutrino.particles.org>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <001001c2ee0a$0fd7cdc0$1803a8c0@ets.enterasys.com>
-	(simon.doyle@applysystems.co.uk)
+In-Reply-To: <20030318092836.A1873@neutrino.particles.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: simon.doyle@applysystems.co.uk
-Cc: linux@hartford-hwp.com
+To: linux-newbie@vger.kernel.org
 
-Simon,
+Originally to: Elias Athanasopoulos
 
-> Hi, I think redhat has the "switchdesk" utility, you can choose whether
-> it is for current session or permanent change.
-> 
-> Give it a whirl.
+> From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+> On Tue, Mar 18, 2003 at 01:02:48AM +0000, Sean Rima wrote:
+>> I must say sorry to all the members of the Linux Newbies list for the off
+> topic
+>>newsletters that arrived on the list from my system. I run a BBS and gate the
+> Do you offer access in your BBS via telnet or only by phone call?
+> Also, if your BBS runs on Linux, what software do you use?
 
-Thanks. RH8.0 indeed does have a destop switching tool, but it seems
-to conflate desktop environments (gnome vs kde) and window managers
-(WindowMaker vs. twm). This left me feeling uncomfortable. 
 
-Since I'm planning a migration from RedHat to gentoo or debian, I
-don't want to become reliant on gui utilities any more than I have
-to. If I were to reconfigure the desktop switcher to recognize icewm,
-I suspect it would be easier to modify a rc file to call icewm in
-the first place. 
+It is avilable mainly via telephone but best if you live in Ireland :) You can 
+get through to the BBS sometimes during GMT 1800-2300 at tcob1.no-ip.com. Until 
+last week the bbs was MBSE (mbse.sf.net) but I also used BBBS (www.bbbs.net) Due 
+to a MB failure, the BBS is running on a XP box.
 
-Haines
+Sean
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
