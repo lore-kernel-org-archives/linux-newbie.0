@@ -1,82 +1,36 @@
-From: fluid@chaijur.com
-Subject: 93TiKehSeD3xfSoGtxKl6RN my web QXsyogtgnE8mNKge9z
-Date: Tue, 21 Sep 2004 04:24:09 -0400
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MY1dWZ1G08M@mail.seeder.net.tw>
-Content-Transfer-Encoding: Quoted-Printable
-Return-path: <linux-newbie-owner@vger.kernel.org>
+From: "Huber, George K RDECOM CERDEC STCD SRI" <George.K.Huber@us.army.mil>
+Subject: RE: Network Statistics Collection
+Date: Tue, 21 Sep 2004 09:54:23 -0400
+Sender: linux-c-programming-owner@vger.kernel.org
+Message-ID: <E3E30069B061524E90BCEE4417E30661138533@monm207.monmouth.army.mil>
+Mime-Version: 1.0
+Return-path: <linux-c-programming-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain;; charset="iso-8859-1"
-To: my@vger.kernel.org, web@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org, linux-net@vger.kernel.org, linux-c-programming@vger.kernel.org, linux-admin@vger.kernel.org, linux-newbie@vger.kernel.org
 
-http://www.chaijur.com/886913697892/
+Tejas wondered:
 
-GSM / CDMA MOBIL EXPORT
-MOBIL PARTS EXPORT 
+>I am working on a company project and as a part of it - I have to
+>collect and show some network information on the Monitoring utility.
+>Please help to find out that how can I collect these information from
+>a Linux Machine.
 
-OEM/ODM SERVICE & SOURCE OFFER
+>1. Number of active TCP connection
+>2. Information of Active connections (Source and Dest IP, Source and Dest
+Port)
+>3. Retransmitted packets due to Duplicate ACK and SACK
+>4. Connection Duration and RTT
+>5. Transmission Troughput (in KB/Sec)
+>6. Number of Newly Created TCP Connections
+>7. Closed TCP Connections
+>8. Total Data transmitted (in byte)
+>9. Total Data Retransmitted (in byte)
 
-ASSEMBLY TECHNICAL SUPPORT
+Take a look at iptraf - it does most (if not all of what you want).  Through
+a
+study of its source code you should be able to figure out how to do what you
+want.
 
-GSM / CDMA ELECTRONIC BOARD R/D & SUPPLY
-
-=A1@
-
-
-
-MOBIL SILICON RUBBER R/D & SUPPLY
-
-LCD DISPLAY R/D & SUPPLY
-
-WHOLE SET SUPPLY
-
-CIS/LOGO DESIGN
-
-Dr.Stephen Lee
-
-TEL : 886-425347342
-FAX : 886-425329268
-fluid@chaijur.com
-
-MOBIL : 886-913697892
-
-http://www.chaijur.com/newlist/free/SkypeSetup.exe
-
-search ID : chaijur
-
-http://www.chaijur.com/newlist/free/ipbb.exe
-
-search ID : 87817406
-
-QUOTATION LINK
-
-http://www.chaijur.com/newlist/simplyquotation.xls
-
-SPECIFICATION LINK
-
-http://www.chaijur.com/newlist/speciafication/
-
-FTP LINK
-
-http://www.chaijur.com/newlist/
-
-=A1@
-
-
-
-
-
-Dr.Stephen Lee
-
-TEL : 886-425347342
-FAX : 886-425329268
-fluid@chaijur.com
-MOBIL : 886-913697892
-
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+George
