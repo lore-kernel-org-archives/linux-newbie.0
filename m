@@ -1,8 +1,8 @@
 From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: wireless configuration
-Date: Fri, 08 Aug 2003 12:45:30 -0400
+Subject: bridging question
+Date: Fri, 08 Aug 2003 17:43:51 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <729f4972a22c.72a22c729f49@homemail.nyu.edu>
+Message-ID: <77e79b77a0f8.77a0f877e79b@homemail.nyu.edu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,17 +12,21 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,
-I just installed a wireless network card (Linksys WPC11 Instant wireless PC Card). I am using the hostap driver for it as I require it for a project I am doing. The driver loads correctly. The lsmod shows that it has loaded.
-
-The thing is that when I execute the 'iwpriv' command, it doesn;t see the wlan0 interface (which I guess the the wireless networt interface).
-Also, in the /etc/sysconfig/network-scripts , I dont see the configuration script for wlan0 (ifcfg-wlan0 is the name for it I guess).
-
-What do I do here?
-If you need more information, please let me know.
-
-Thanks
-Anshuman
+Hi,  
+I need to bridge my ethernet (eth0) and my  
+wireless interface (wlan0). I tried to  
+follow the steps in bridge-stp-howto but  
+it seems to be for an older kernel (2.2).  
+  
+I am using RHL 7.3 with v2.4.18-3.  
+I have compiled the kernel with bridging  
+support. The commands mentioned in the  
+howto (brctl, brcfg) dont seem to be  
+present. 
+How do I go about it? 
+ 
+Thanks for the help, 
+Anshuman 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
