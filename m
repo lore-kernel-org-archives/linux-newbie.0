@@ -1,30 +1,42 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Hard disk repartitioning-II
-Date: Fri, 4 Apr 2003 12:46:14 -0600 (CST)
+From: prussian7@netzero.net
+Subject: Printing to W98 from SUSE 8.1
+Date: Fri, 04 Apr 2003 20:23:06 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0304041244290.1804@homenet>
-References: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
- <20030404162907.GA4866@localhost.localdomain>
+Message-ID: <3E8E3E0A.C83F22F@netzero.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030404162907.GA4866@localhost.localdomain>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Amin <raihan@citech-bd.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Fri, 4 Apr 2003, Amin wrote:
->
-> I think there's an issue here about Linux needing its boot
-> partition within the first 1024 cylinders of the hard disk,
-> or something like that.  In any case, here's what I'd
+Problem:
 
-The 1024 cylinder limit only applies to older versions of Lilo, as I
-understand it. Any recent distro (released within the last 2 years or so?)
-should not have this problem.
+I am unable to print to the printer shared on my windows 98 computer
+(panther 192.168.1.2), from my SUSE 8.1 (192.168.1.254) running SAMBA
+2.2.5
+When I type in:
 
-James
+smbclinent //panther/lp -P
+
+I get:
+
+added interface ip=192.168.1.254 bcast=192.168.1.255 nmask=255.255.255.0
+
+Got a positive name query response from 192.168.1.2 (192.168.1.2)
+Password:
+
+then no matter what password I try I get:
+
+tree connect failed:  ERRSRV  - ERRinvertname (Invalid network name in
+tree connect.)
+
+I don't know if this is related but I when I click on the LAN browser on
+the Konqueror  I get an error stating " protocol not supported"
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
