@@ -1,64 +1,63 @@
-From: Kumaresh Perumal <kumaresh.perumal@gmail.com>
-Subject: RPC response reception
-Date: Fri, 7 Jan 2005 16:27:58 +0530
-Message-ID: <ef2116a905010702572c6e244a@mail.gmail.com>
-Reply-To: Kumaresh Perumal <kumaresh.perumal@gmail.com>
+From: chuck gelm <chuck@gelm.net>
+Subject: Re: retrieval
+Date: Fri, 07 Jan 2005 09:13:11 -0500
+Message-ID: <41DE98F7.9000206@gelm.net>
+References: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20050107085806.17319.qmail@web52909.mail.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ankit Jain <ankitjain1580@yahoo.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+Ankit Jain wrote:
+> hi
+> 
+> sorry but i could not understand by unmounting the
+> partition. i dont use floppy drive or something like
+> that. if i am using hard disk then i cant unmopunt the
+> whole partition
+> 
+> so what to do
+> 
+> thanks
+> 
+> ankit jain
 
-I am running two RPC servers in a linux box where two different RPC
-program numbers are registered in each servers. RPC server A gets an
-asynchronous call from a client, after processing, RPC server A makes
-another client_call using clnt_call to RPC server B. A function
-registered to that particular RPC prognum executes in RPC server B and
-returns a response structure. But I am not seeing the response
-structure values at the RPC server A side.
+Hi, ankit jain:
 
-Client----> RPC A ---> RPC B
+  The syntax of the command is 'umount' rather than 'unmount'.
+Yes, you can 'umount' an entire partition and, actually,
+you must 'mount' and 'umount' entire partitions.
 
-In RPC A, following is the code:
+  If the partition where the deleted files existed was '/',
+then you can (restart the system and) change the mount of
+the partition to be 'ro'; read only. This will keep the data
+area from being written over.  I think that there is a
+command to "re-mount ro" a partition, so you man not need
+to restart your system.
 
-clnt = clnt_create("host", PROCB, 1, "udp")
-clnt_stat = clnt_call(clnt, procnum, inproc, inargument,
-(xdrproc_t)xdr_void, outresult, timeout)
+  You may choose to shut down the system and reboot using
+your distribution install or a recovery CD-ROM disk or any
+other recovery media.  Using a boot media created from a
+KNOPPIX.iso is a popular way to recover data from many a
+operating system and distribution; even M$-Windoze.
 
-In RPC B, following is the snippet of the code:
+Perhaps,
+  if your '/' partition contained the deleted file and
+  it was mounted as partition /dev/hda1 and
+  its type of filesystem was second extended:
 
-register SVCXPRT *transp;
-transp = svcudp_create(RPC_ANYSOCK);
-svc_register(transp, PROCB, 1, create_response, IPPROTO_UDP);
-svc_run();
+mount -t ext2 -o remount,ro /dev/hda1 /
 
-PROCB(struct svc_req *rqstp, register SVCXPRT *transp)
-{
-switch (rqstp->rq_proc)
-case 1:
-_xdr_argument = <>;
-_xdr_result = <>;
-break;
+would be syntactically correct.
 
-<form the response structure>
-svc_sendreply(transp, _xdr_result, (char *)result);
-}
+I hope this helps,  Chuck
 
-At the client side, I am getting RPC_SUCCESS.
-
-I could see the response structure values in the RPC B after executing
-the PROCB program. But at the RPC A side, I am not getting the
-response structure that I am passing from the RPC B side. I guess the
-response structure should be stored in outresult structure in the RPCA
-side. I think, I am missing some part of RPC code at RPC B side to
-send the response, please let me know the problem and clarify to me.
-
-Thanks and Regards,
-Kumaresh
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
