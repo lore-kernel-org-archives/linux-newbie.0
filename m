@@ -1,47 +1,62 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: crontab syntax ?
-Date: Sat, 07 Jun 2003 16:09:21 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Slackware 8.1.01 Install????
+Date: Sun, 8 Jun 2003 10:36:08 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030607160253.01ed16a8@celine>
-References: <20030529165407.A446@lnx2.w8mch.ampr.org>
- <200306042101.56986.pa3gcu@zeelandnet.nl>
- <20030605093027.A233@lnx2.w8mch.ampr.org>
- <200306052108.36121.pa3gcu@zeelandnet.nl>
- <20030607104727.A355@lnx2.w8mch.ampr.org>
- <5.1.0.14.1.20030607131805.01fe8a60@celine>
+Message-ID: <200306081036.08989.pa3gcu@zeelandnet.nl>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306052108.36121.pa3gcu@zeelandnet.nl> <20030607104727.A355@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EE265D9.56EA90D0@gelm.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030607104727.A355@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-At 06:23 PM 6/7/2003 -0400, Chuck Gelm wrote:
->Thanks, Ray:
+On Saturday 07 June 2003 16:47, Hal MacArgle wrote:
+> On 06-05, pa3gcu wrote:
+> > So it sounds like you can mount the CD manually during install, is that
+> > correct,?? If so then you MUST be able to use it to install period, what
+> > you may be doing is FORGETTING to ""UNMOUNT"" it before proceeding with
+> > the install, i say that be cause i can get the same error message you
+> > mention if i mount the cdrom by hand in a console and then proceed with
+> > "setup" to install slackware, it does not then work, one needs to UNMOUNT
+> > the cdrom first....
+> >
+> > Is that your problem.?????
 >
->Odd, here is a segment of (*my*) 'man crontab' showing
->the example lines. Every example has 'date' as the 6th field. :-|
+> 	Not sure I understand the above completely.. Slackware has a
+> source selection including sth like "Install from a mounted
+> directory." I tried that by creating an empty directory, /slack, and
+> then mounting the CD drive.. So that means, to me, that setup should
+> find the files at /slack/slackware.. I tried all combinations to no
+> avail, including trailing "/"s...
 
-Yes. But the proposed entry you asked us about originally --
+Yes it does allow what you say however it will NOT work as you think or want 
+it to for the following reason.
 
-         5 6 7 * date /usr/local/src/ez/dyndns.conf
+You mount your cdrom in /slack which you created, your cdrom has a directory 
+called slackware containing the install sets, a, ap, etc etc etc.
+However the setup program does NOT look in slackware, it looks in slack and 
+will not find the install sets. I burnt a cdrom with the contents of the 
+slackware directory in the root of the cdrom, however this did not work 
+either.
 
--- had "date" as the fifth field, NOT the sixth field. That is wrong. You 
-can't just skip a field; you need (in this case) the * entry for it.
+One possable reason for it not working is that you are not mounting a 
+predefined "directory" you mount another "device" in that directory, my cdrom 
+led does not even flikker at all when setup looks for the "a" series 
+indicating that it does not find the cdrom mounted in the given directory at 
+all.
 
-"date" is a standard Unix/Linux command, and the samples you referred to, 
-which have it in the sixth field, simply use it as the name of the program 
-to run ... just as you suspected.
+So as far as i see it, simply let slack detect the cdrom from the setup 
+process, do not mount the cdrom beforehand. If it does not find it you may 
+need to define where setup must look for it.
 
->(*my* = slackware-8.0, kernel-2.2.19, firewall, ip-masq)
->Maybe the examples show how to run the 'date' program?
->
-># MIN HOUR DAY MONTH DAYOFWEEK   COMMAND
-># at 6:10 a.m. every day
->10 6 * * * date
-[rest deleted]
-
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
