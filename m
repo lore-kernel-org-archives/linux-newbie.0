@@ -1,57 +1,43 @@
 From: Jim Nelson <james4765@verizon.net>
 Subject: Re: Query regarding Copy-on-write
-Date: Sat, 20 Nov 2004 09:17:32 -0500
-Message-ID: <419F51FC.2030101@verizon.net>
-References: <1100947162.4038.43.camel@myLinux>
+Date: Sat, 20 Nov 2004 09:22:17 -0500
+Message-ID: <419F5319.8090500@verizon.net>
+References: <1100947162.4038.43.camel@myLinux> <419F4DA7.1070606@ieee.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1100947162.4038.43.camel@myLinux>
+In-Reply-To: <419F4DA7.1070606@ieee.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+To: Simon Valiquette <v.simon@ieee.org>
+Cc: linux-newbie@vger.kernel.org
 
-Jagadeesh Bhaskar P wrote:
-> Hi,
-> 
->  When a process forks, every resource of the parent, including the
-> virtual memory is copied to the child process. The copying of VM uses
-> copy-on-write(COW). I know that COW comes when a write request comes,
-> and then the copy is made. Now my query follows:
-> 
-> How will the copy be distributed. Whether giving the child process a new
-> copy of VM be permanent or whether they will be merged anywhere? And
-> shouldn't the operations/updations by one process be visible to the
-> other which inherited the copy of the same VM?
-> 
-> How can this work? Can someone please help me on this regard?
-> 
-> 
+Simon Valiquette wrote:
+> Jagadeesh Bhaskar P a =E9crit :
 
-Standard *nix forking does not allow that kind of interaction between the data of 
-parent and child processes.  Pipes are designed for that kind of interprocess 
-communication.
+>> How can this work? Can someone please help me on this regard?
+>>
+>=20
+>   I think I gave a good overview of the question.  I tried to keep=20
+> things as simple as I could, at the cost of not giving an exact=20
+> description of how Linux handle COW.  For example, there is in fact 3=
+=20
+> levels of page table indirections in Linux, but it was not necessary =
+to=20
+> understand COW.
+>=20
 
-POSIX threads do run in the same address space - it requires a bit more 
-programming effort, but it seems to fit what you're asking for a little better.
-
-http://www.cs.nmsu.edu/~jcook/Tools/pthreads/pthreads.html
-
-Is a decent overview on pthreads.  I haven't used them - nothing I've written 
-needed that kind of interactivity.
-
-Not every computer system can run pthreads on Linux - i686 or higher, SPARC, and 
-SPARC64 are the only ones I *know* have pthreads working (i. e. I own the machine 
-and pthreaded Linux apps work on them).  i586 and earlier PC's lack some 
-fundamental capabilities necessary to make threading work.
-
-Anyone else care to take it from here?
+4-level page tables just were merged into the kernel mainline as of 2.6=
+=2E10-rc2 -=20
+mostly to support the big iron that has almost-terabyte-level system me=
+mory (the=20
+SGI Altix, some of the big stuff from IBM, some other NUMA machines).
 
 Jim
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
