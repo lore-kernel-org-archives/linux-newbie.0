@@ -1,61 +1,62 @@
-From: G Anna <drguruolai@eth.net>
-Subject: scripts in /etc/rc2.d/
-Date: 15 May 2002 21:10:43 +0530
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: scripts in /etc/rc2.d/
+Date: Thu, 16 May 2002 13:27:16 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m37km5zaf8.fsf@wobble.eth.net>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <20020516122716.GA949@cam.ac.uk>
+References: <m37km5zaf8.fsf@wobble.eth.net>
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="liOOAslEiF7prFVr"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <m37km5zaf8.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Dear All,
 
-I have kept the startup script "dictd.init" for the dictd server in
-the /etc/init.d/ directory.
+--liOOAslEiF7prFVr
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I want the dictd server to be started automatically while booting my
-system.  So I created a symbolic link to dict.init script under the
-/etc/rc2.d/ (I use runlevel 2) So I have
+> $ ls -l /etc/rc2.d/S39dictd
+> lrwxrwxrwx    1 root     root           20 May 15 21:02 /etc/rc2.d/S39dic=
+td -> ../init.d/dictd.init
+>=20
+> My question is will this work?
+Probably.
 
-$ ls -l /etc/init.d/dictd.init
--rwxr-xr-x    1 root     root          747 May 11 12:51 /etc/init.d/dictd.init
+> I have randomly chosen the name "S39dict".  I can understand that
+> the prefix "S" is for "Start".  What is that number for?
+Sxx services are started in ascending order of xx, so an S39 script
+can assume that S01, S02, S03, ... S38 scripts have been run, but
+S40 on will not have been run.
 
-$ ls -l /etc/rc2.d/S39dictd
-lrwxrwxrwx    1 root     root           20 May 15 21:02 /etc/rc2.d/S39dictd -> ../init.d/dictd.init
+> How should I chose the number?  Is any random number - like the
+> one I have chosen - sufficient?
+Most numbers should work. Just make sure that syslog (usually
+S10syslog or S10sysklog) starts first, and that networking is set
+up (this is usually done before any rc2 scripts are run).
 
-My question is will this work?  I have randomly chosen the name
-"S39dict".  I can understand that the prefix "S" is for "Start".  What
-is that number for?  How should I chose the number?  Is any random
-number - like the one I have chosen - sufficient?  What is the purpose
-of that number?
+Basically, if it works, leave it.
 
-$ cat /etc/issue
+Steven Smith,
+sos22@cam.ac.uk.
 
-Red Hat Linux release 7.1 (Seawolf)
-Kernel 2.4.16 on an i686
+--liOOAslEiF7prFVr
+Content-Type: application/pgp-signature
+Content-Disposition: inline
 
-$ uname -a
-Linux wobble 2.4.16 #8 Tue May 14 14:15:58 IST 2002 i686 unknown
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
 
-Kindly help me to understand.
+iD8DBQE846WkO4S8/gLNrjcRArAiAJwIN4iQUJNc85QL9h+dEnvO+H2a2gCfeNEK
+JexXTpCIBADDeccerdRbxlk=
+=OlnO
+-----END PGP SIGNATURE-----
 
-Cheers,
-anna
-
--- 
-
-(9) I will not include a self-destruct mechanism unless absolutely
-    necessary.  If  it is necessary, it will not be a large red button
-    labelled  "Danger: Do Not Push". The big red button marked "Do Not
-    Push"  will  instead  trigger  a spray of bullets on anyone stupid
-    enough  to  disregard  it.  Similarly,  the ON/OFF switch will not
-    clearly be labelled as such. - Peter Anspach in "The Top 100 Things 
-    I'd Do If I Ever Became An Evil Overlord"
-
-
+--liOOAslEiF7prFVr--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
