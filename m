@@ -1,52 +1,67 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Volunteers needed for the Linux Tutorial
-Date: Mon, 29 Apr 2002 15:05:59 -0700
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: Re: /etc/sudoers setup
+Date: Tue, 30 Apr 2002 01:15:44 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020429220559.0102fe20@[192.168.1.23]>
+Message-ID: <200204292215.g3TMFpl06118@g38.rdsbv.ro>
+References: <4.3.2.7.0.20020429090836.02480960@globalnet.hn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <4.3.2.7.0.20020429090836.02480960@globalnet.hn>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux-tutorial@jimmo.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Ricardo Denis <r_denis@globalnet.hn>, linux-newbie@vger.kernel.org
 
-At 06:27 PM 4/29/02 +0200, James Mohr wrote:
->Hi All!
+root@k:~# more /etc/sudoers
+# sudoers file.
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# See the sudoers man page for the details on how to write a sudoers file.
+#
+
+# Host alias specification
+
+# User alias specification
+User_Alias      JUPANI = petre, k
+# Cmnd alias specification
+Cmnd_Alias      SHUTDOWN = /sbin/shutdown -h now
+Cmnd_Alias      REBOOT = /sbin/reboot
+# User privilege specification
+root    ALL=(ALL) ALL
+JUPANI  ALL = NOPASSWD: SHUTDOWN, REBOOT
+
+
+good enough ?
+
+HTH,
+
+petre
+
+
+
+
+On Monday 29 April 2002 17:12, Ricardo Denis wrote using one of his keyboards:
+> hi all,
 >
->I am looking for volunteers to help me with my Linux Tutorial 
->(www.linux-tutorial.info).  Since I cannot program well enough to be involved 
->in any major project, I have decided to make my book "Linux User's Resource" 
->available on the Web as part of my contribution to the Internet community.
-[...]
->Because of the scope of this project, I need as much help as I can get.  I am 
->grateful for any contribution you can make. Anything from suggestions for 
->improving the layout or appearance to updating the articles or even writing 
->on new topics will be greatly appreciated.  For those of us who cannot 
->program, but would still like to give something back to the Linux community, 
->I think projects like this provide a great opportunity. 
-[...]
+> i have read the sudo and sudoers man page but i still can't configure it to
+> work properly. the problem is that i don't know how to properly specify the
+> users in the /etc/sudoers file. would somebody be kind enough to send me a
+> copy of theirs so i can learn how to do mine please? thanks in advance.
+>
+> rick
+>
+>
+> Donde esta Ricky? http://www.findu.com/cgi-bin/track.cgi?hr2kos-2
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Since you are not making the material you wrote available under any of the
-GPL-like licenses for documenation (other readers, please see URL
-http://www.linux-tutorial.info/cgi-bin/display.pl?247&0 for the
-copyright/license explanation), it might help if you explained the terms
-under which contributors will be contributing their work to this project. If
-I (or others) write material for the site, who holds the copyright and,
-assuming I (we) do, what rights am I (are we) expected to assign to you?
-
-Please don't take this as an attempt to start an argument about how you
-should make the material available. I don't want to do that; it's your
-material (up to now), and you can make it available on any terms you care
-to. I just want to know the terms under which you are soliticiting the
-volunteer work of others.
-
-
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
-
+-- 
+  1:15am  up 6 min,  1 user,  load average: 0.01, 0.10, 0.06
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
