@@ -1,66 +1,108 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: ethernet nic install
-Date: Thu, 5 Aug 2004 16:37:24 +0200
+From: Lei Yang <leiyang@nec-labs.com>
+Subject: Re: Error building 'Hello,World' kernel Module
+Date: Thu, 05 Aug 2004 15:44:06 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200408051637.24198.pa3gcu@zeelandnet.nl>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <4112B836.2060703@nec-labs.com>
+References: <1091659420.5427.14.camel@bijar.nec-labs.com> <1091683034.1861.13.camel@shine.naturesoft.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <1091683034.1861.13.camel@shine.naturesoft.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: shinemohamed_j@naturesoft.net
+Cc: Kernel Newbies Mailing List <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-> pa3gcu wrote:
-> > Another indication that your BIOS is setup for PnP and NOT PCI or shared.
-> >
-> >>I shall have another go at the BIOS (It is the strangest I have ever
-> >>seen) and maybe come back to you.
-> >
-> >
-> > Yes, they are somewhat differnet to todays BIOS's.
->
-> Perhaps you could help me with the settings:
-> PCI Slot Number: I think even I can manage that one.
-> Function Number of Device: Dunno (1-7)
+Shine Mohamed Jabbar wrote:
+> Hi,
+> 
+> I tried ur program in my machine and
+> its working fine.
+> 
+> Apart from what u've done I did two more things
+> 1) Copied the config file from the /boot to kernel
+>    source directory and done "make menuconfig"
 
-Without knowing what type of bios you have i cant really say, however is there 
-not some sort of help in the bios, where it says, 1 = pci 2 = legacy etc 
-etc.?
+I didn't copy anything to kernel source, I just did 'make oldconfig'
 
-> Device Function: Presumably I choose Enabled (Enabled/Disabled)
+> 2) Done a make in the kernel source till it compiles
+>    the first c file (CC      init/main.o). (I've done
+>    because to make a link of include/asm->include/asm-i386).
 
-I would imagen so yes.
+Is this really necessary...? I don't know. I didn't do that. I thought 
+all the information module needed is the kernel configuration.
 
->
-> IRQ Level for INTA Pin and ditto for INTB, INTC, INTD has me thrown.
+Thanks.
+Lei
 
-Just leave those alone, choose default.
-
-Old BIOS's can be a pian in the butt, but all you need to do is set the IRQ 
-which you ISA nic uses too ISA and leave the PCI to PnP.
-
-Another way to get more information on a BIOS is go to the manufactures web 
-site, they may well have a FAQ sheet for you to review.
-
-Sorry i'm vauge but as i said without knowing the bios manufacture it would be 
-hard for anyone to advise.
-
-
->
-> TIA,
->
-> Andrew
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+> Regards,
+> Shine Mohamed Jabbar
+> 
+> On Thu, 2004-08-05 at 04:13, Lei Yang wrote:
+> 
+>>Hello,
+>>
+>>I am learning about module programming and just tried to build a
+>>simplest module, Hello World.
+>>
+>>The code is as follows:
+>>/* hello.c
+>>#include <linux/module.h>       
+>>#include <linux/kernel.h>      
+>>
+>>int init_module(void)
+>>{
+>>        printk("Hello world!\n");
+>>        return 0;
+>>}
+>>
+>>void cleanup_module(void)
+>>{
+>>        printk(KERN_ALERT "Goodbye world!\n");
+>>}
+>>
+>>
+>>The makefile is just one line:
+>> obj-m += hello.o
+>>
+>>Then as root, I did in the HelloWorld directory:
+>>
+>>make -C /usr/src/linux-`uname -r` SUBDIRS=$PWD modules
+>>
+>>There is such an error:
+>>make: Entering directory `/usr/src/linux-2.6.5-7.104-default'
+>>
+>>WARNING: Symbol version dump
+>>/usr/src/linux-2.6.5-7.104-default/Module.symvers is  missing, modules
+>>will have CONFIG_MODVERSIONS disabled.
+>>
+>>make[1]: *** No rule to make target `/home/lei/HelloWorld/hello.c',
+>>needed by `/home/lei/HelloWorld/hello.o'.  Stop.
+>>make: *** [_module_/home/lei/HelloWorld] Error 2
+>>make: Leaving directory `/usr/src/linux-2.6.5-7.104-default'
+>>
+>>
+>>Appreciate any comments and help!
+>>
+>>TIA
+>>Lei
+>>
+>>
+>>
+>>--
+>>Kernelnewbies: Help each other learn about the Linux kernel.
+>>Archive:       http://mail.nl.linux.org/kernelnewbies/
+>>FAQ:           http://kernelnewbies.org/faq/
+>>
+>>
+> 
+> 
+> 
+> --
+> Kernelnewbies: Help each other learn about the Linux kernel.
+> Archive:       http://mail.nl.linux.org/kernelnewbies/
+> FAQ:           http://kernelnewbies.org/faq/
+> 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
