@@ -1,80 +1,114 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Printer error
-Date: Mon, 16 Dec 2002 09:05:51 -0800
+From: Arno Seitzinger <spam2_arno@lucienet.de>
+Subject: Re: system hangs after reboot
+Date: Mon, 16 Dec 2002 20:25:08 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021216085528.02134570@celine>
-References: <3DFD4529.1040700@pghmail.com>
+Message-ID: <atl99e$jbu$1@main.gmane.org>
+References: <5.1.0.14.1.20021216080217.021330f0@celine> <1040055299.2905.19.camel@zebra.vil.ite.mee.com>
+Reply-To: spam2_arno@lucienet.de
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DFD4529.1040700@pghmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-You don't give us much to go on, but since the problems seem to be with 
-name resolution, I'd suggest you tell us the details of your system as they 
-relate to that.
+Hi Ray and Paul,
+thanks for your interest.
 
-First is your networking setup. Are you connected to a LAN or directly to 
-the internet? (I guess you must be if you are using MapQuest.) If so, how?
+I investigated a little bit deeper, but am stil clueless:
 
-More immediately, how does your system do name-to-address resolution? Does 
-it rely on /etc/hosts? If so, what are the contents of that file? Or does 
-it use a nameserver? If so, is it accessable? And what are the contents of 
-the /etc/resolv.conf file?
-
-Does the message really say "local host" rather than "localhost"? What 
-result do you get if (from the command line) you try "ping localhost"?
-
-How is the printer connected to the PC? Parallel port? Something else?
-
-Although your questions involve generic Linux applications, the form of 
-your report is specific to RH 8.0. My questions ask for more generic Linux 
-information, which will permit non-RH users to try to assess your problem. 
-If you prefer to stick with the RH tools, that's fine ... in that case, I 
-hope someone else here, someone who does use RH 8.0, pops in with 
-translations of these suggestions to Red Hat-ese.
-
-Finally, as to your immediate problem ... if the third page of a epecific 
-document continues to fail to print, while other docs print fine (do they? 
-you haven't said), i'd suspect something odd about the specific document. 
-Generically, you need to investigate how general the printing problem is 
-before we can tackle it systematically.
-
-At 10:14 PM 12/15/02 -0500, Bill Pleasants wrote:
->Hello,
->After installing RH 8.0 in my HP Pentium II, my first successful installation,
->I installed a Brother HL-720 printer. I set it up local.  The Printer 
->Administration window shows:
->Command:    lpr
->
->Driver:          Generic Printer (SGENPRT)
->
->Location:
->
->After printing 2 of 3 pages from
->Mapquest, the printer indicated toner out.  I replaced the cartridge and
->there was an error light which can be cleared by unplugging the printer
->cable and cycling the printer off.  I reset the print queue and the same
->2 pages printed and the error light flashed.  Rebooted - same error light.
->Attempts to print additional items failed.  Later I entered "lprm" to 
->cancel anything pending and got
->"local host IP not available."  When I entered
->"/etc/init.d/lpd stop" I got "[FAILED]"
->I repeated it and got
->"[FAILED]"
->"local host IP not available"
->In the panel is a ? which when clicked gives
->"Temporary error in name resolution."
->So far I haven't learned what this IP is about. I would appreciate help.
+_changed 20:20 CET: no more clueless._ A couple of days ago I removed the 
+PCMCIA CAN-Card which was innocently sitting in my cardslot for months. 
+Maybe it received a different configuration when I re-inserted it. After 
+removal of the CAN-Card, the system reboots as usual. Thank you for your 
+assistance.
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> 1. If you change /etc/init.tab so that the system boots into run level
+> 3, then reboot, do you get any errors?
+
+Errors (errormessages), no, but the system hangs like before.
+
+
+> 3. It sounds like you have a network thing going on. If you wait long
+> enough, it might start anyway. sendmail often does this when your host
+> table doesn't agree with your IP address. Other programs also have this
+> problem. Therefore, check that you have an "/etc/hosts" file and that it
+> is correct and complete (at least as far as info about the problem
+> machine goes).
+
+I also think it is a network problem because if I boot into a runlevel w/o 
+network, the system does not freeze. It also does not freeze when I remove 
+the network card from the configuration.
+My /etc/hosts is
+127.0.0.1       localhost
+::1             localhost ipv6-localhost ipv6-loopback
+fe00::0         ipv6-localnet
+ff00::0         ipv6-mcastprefix
+ff02::1         ipv6-allnodes
+ff02::2         ipv6-allrouters
+ff02::3         ipv6-allhosts
+127.0.0.2       esw44.mdom1     esw44
+and was set up automatically by yast-setuptool
+
+When the freeze occurs, the cursor stops blinking, the animated ball on the 
+boot screen stops jumping and the system won't react to anything (ctrl-c, 
+ctrl-alt-del etc), only power-off and display brightness. A cold boot 
+always works, and it also boots up correctly when I do a warm reboot 
+(shutdown -r now) but switch off the power the moment the bios screen 
+appears.
+
+
+>> 1. In the "good init" sequence, what happens next? You're asking us to
+>> compare a bad init to nothing (as regards the part that is bad).
+
+In the "bad init" sequence, the file ends after 
+<notice>/etc/init.d/rc5.d/S05network start
+
+In the "good init" sequence, I cut the rest of the file after the 
+configuration of eth0. ppp0 is started next (manual dialup w/ cellphone).
+After that, hotplugging services are started.
+
+
+>> 2. When you say the system "hangs" and "freezes", how carefully have you
+>> assessed that? How long have you waited before giving up? What happens if
+>> you CRTL-C when the system is "hung"?
+
+I waited for about 15 minutes. ctrl-c does not do anything... but it doesn't 
+do anything elsewhere in the bootup process anyhow...
+I will let the machine sit overnight trying to boot, but I dont think it 
+will bring us further. Is there a possibility to redirect
+
+>> 3. What is eth0 and how does it connect to the Internet? If the problem
+>> is associated with a DHCP failure of some type, the details of the
+>> interface it is using may matter.
+
+eth0 is the only ethernet port on that machine (builtin Accton EN1216 card).
+The problem is not associated with a DHCP failure because the freeze also 
+occurs when the machine is assigned a fixed IP-address
+
+
+>> 4. Is the problem only associated with a soft ("shutdown -r") reboot? If
+>> you do a power-down reboot, does the system boot and init properly?
+
+2*Yes
+
+
+Greets and thanks
+
+Arno
+
+
+
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
