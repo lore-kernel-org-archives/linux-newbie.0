@@ -1,26 +1,44 @@
-From: "" <dave@dpomeroy.com>
-Subject: perl script
-Date: Fri,  6 Aug 2004 15:13:59 -0700
+From: caszonyi@rdslink.ro
+Subject: Re: disabling all video
+Date: Sat, 7 Aug 2004 01:19:47 +0300 (EEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1091830439.411402a7af283@webmail.dpomeroy.com>
+Message-ID: <Pine.LNX.4.53.0408070119200.695@grinch.ro>
+References: <4113FDCB.2030307@networkstreaming.com>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <4113FDCB.2030307@networkstreaming.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Davy Durham <davy@networkstreaming.com>
+Cc: linux-newbie@vger.kernel.org
 
-I'm tring to help a friend that has to put about 250 students in his samba box
-every year.  I'm trying to write a perl script that uses Expect to inter the
-passwords in the OS, Linux.  I spawned Expect->(passwd $password);
-then Expect "password:".  However, I get a syntax error when I try to do that.
-  Anyone with any suggestions.  It seems I just don't have the receive syntax
-down.  I'm also having a hard time finding much documentation, examples for the
-Expect module.
-  Thanks in ADvance.
-Dave Pomeroy
+On Fri, 6 Aug 2004, Davy Durham wrote:
+
+> Sorry if this is the wrong list to ask this.. direct me to the correct
+> list if so...
+>
+> Question: I would like the kernel not to use any of the video hardware
+> on the machine.  Is there any run-time kernel parameter I can pass to
+> disable all video?  (I tried console= to direct output to the serial
+> port, but ttys were still using the vga hardware.)  My video card is
+> built onto the mother board, and there is no way I see to disable it
+> from the BIOS.
+> I was hoping there was an option such as vga=disable or video=null or
+> something like that, but I've looked thru the docs and cannot find
+> anything.
+>
+> Thanks,
+>  Davy
+
+you can compile a kernel without virtual terminal support
 
 
+--
+"A mouse is a device used to point at
+the xterm you want to type in".
+Kim Alm on a.s.r.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
