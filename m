@@ -1,63 +1,49 @@
-From: Chris Rose <offline@shaw.ca>
+From: Steven Smith <sos22@cam.ac.uk>
 Subject: Re: Marco's failed message: Help on scripting
-Date: Sat, 27 Apr 2002 23:23:17 -0600
+Date: Sun, 28 Apr 2002 09:59:06 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.0.20020427232245.00a24530@shawmail.ed.shawcable.net>
-References: <2.2.32.20020428033439.010495e0@[192.168.1.23]>
+Message-ID: <20020428085906.GB361@cam.ac.uk>
+References: <2.2.32.20020428033439.010495e0@[192.168.1.23]> <5.1.0.14.0.20020427232245.00a24530@shawmail.ed.shawcable.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="GID0FwUMdk1T2AWN"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <2.2.32.20020428033439.010495e0@[192.168.1.23]>
+Content-Disposition: inline
+In-Reply-To: <5.1.0.14.0.20020427232245.00a24530@shawmail.ed.shawcable.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
-
-Marco, try this:
-
-for i in `ls jnos*.p*`; do mail -s $i user@myhost.domain; done;
-
-remember, the " ` " characters (around "ls jnos*.p*") are the grave 
-accents, from about the tilde key
-
-Let us know if the mail error fixes.
-
-At 08:34 PM 27/04/2002 -0700, Marco wrote:
-> >Hi I'd have this problem:
-> >
-> >how to send files to a local (LAN) SMTP-server giving them their own
-> >Subject(one by one)?
-> >
-> >i.e.the folder /encod contains:
-> >
-> >jnos-1_1.p01
-> >jnos-1_1.p02
-> >jnos-1_1.p03
-> >jnos-1_1.p04
-> >jnos-1_1.p05
-> >jnos-1_1.p06
-> >jnos-1_1.p07
-> >jnos-1_1.p08
-> >jnos-1_1.p09
-> >jnos-1_1.p0a
-> >
-> >I wonder a script which reads the above and formats mail so that I obtain:
-> >
-> >mail -s jnos-1_1.p01 user@myhost
-> >mail -s jnos.1_1.p02 user@myhost
-> >mail -s jnos.1_1.p03 user@myhost
-> >
-> >...and so on
-> >
-> >
-> >Thanks,Marco
-> >
+To: Chris Rose <offline@shaw.ca>
+Cc: linux-newbie@vger.kernel.org
 
 
-Chris Rose
-==========
-1952 - 2001 = 42
+--GID0FwUMdk1T2AWN
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+> for i in `ls jnos*.p*`; do mail -s $i user@myhost.domain; done;
 
+It might be easier to go:
+
+for i in jnos*.p*; do mail -s $i user@myhost.domain; done
+
+and get rid of the backticks. Both should do the same thing, though.
+
+Steven Smith,
+sos22@cam.ac.uk.
+
+--GID0FwUMdk1T2AWN
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE8y7naO4S8/gLNrjcRAiAXAJ0aIxHLE5mW9Aa98zMGahFObk/gIQCfZ7X/
+fN0/WUoFIGCSBVSiq2dutnE=
+=8Hns
+-----END PGP SIGNATURE-----
+
+--GID0FwUMdk1T2AWN--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
