@@ -1,36 +1,37 @@
-From: "David Jones" <gnome@hawaii.rr.com>
-Subject: RE: Where do I look up scripts for konqueror?
-Date: Tue, 24 Sep 2002 17:56:06 -1000
+From: Peter <pfheiss@philonline.com>
+Subject: Re: PPP Question
+Date: Wed, 25 Sep 2002 16:00:37 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00b364355031992HNLMAIL1@hawaii.rr.com>
-References: <200209200848.51887.r4mz3z@yahoo.es>
+Message-ID: <200209250800.g8P80cK04820@philonline.com>
+References: <5.1.0.14.1.20020924194522.025f49a0@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <GJEFIFJJJFEKABEMHGFCMEDDEAAA.nacht@widerstand.org>
+In-Reply-To: Your message of "Tue, 24 Sep 2002 19:46:30 MST."
+             <5.1.0.14.1.20020924194522.025f49a0@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-BTW, DynamicDrive is known for offering JS that only 
-supports proprietary DOMs like that of NS4 and IE. It 
-would be worth checking at some other script sites, 
-perhaps.
+Thanks Ray!
 
-On 25 Sep 02, at 1:18, Mojo Jojo wrote:
+ray@comarre.com said:
+> Glad you got it working. One small correction on what I sent you
+> before.
 
-> if i'm not mistaken., most things that support ns6+ should
-> work?
-> 
-> > Hi...
-> >    I'm trying to use some JavaScripts that I download
-> >    from 
-> > DynamicDrive, but 
-> > they didn't work in my konqueror (some in Netscape
-> > 4.7)... can somebody tell me where I can download free
-> > javascripts that work in Konqueror (netscape, etc)
-> > 
-> > thanks
+> At 10:31 AM 9/25/02 +0800, Peter wrote: [...]
+
+> >There is no such file as /etc/interfaces
+
+> Sorry. Make that /etc/network/interfaces . 
+
+There are no interfaces files in my RH7.2 box /etc/. I had checked it before I 
+sent the message. There is only a /etc/networks which is empty and there is 
+/etc/sysconfig/network.
+
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
