@@ -1,55 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: authentication issues
-Date: Sat, 08 Jun 2002 15:35:58 -0700
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: fast interrupts?
+Date: Sun, 9 Jun 2002 02:38:01 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020608152031.020bb6c0@celine>
-References: <20020608205646.FPKS13408.mtiwmhc22.worldnet.att.net@alan>
+Message-ID: <20020609023801.F12928@neutrino.particles.org>
+References: <046701c20ecc$69f3d560$9e03a5d8@oemcomputer> <20020608125800.D12928@neutrino.particles.org> <003a01c20f22$e490e140$4204a5d8@oemcomputer>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020608205646.FPKS13408.mtiwmhc22.worldnet.att.net@alan>
+Content-Disposition: inline
+In-Reply-To: <003a01c20f22$e490e140$4204a5d8@oemcomputer>; from asr245@nyu.edu on Sat, Jun 08, 2002 at 03:30:03PM -0400
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Alan Womack <arwbackup@worldnet.att.net>, linux-newbie@vger.kernel.org
+To: Anshuman Rawat <asr245@nyu.edu>
+Cc: linux-newbie@vger.kernel.org
 
-At 01:56 PM 6/8/02 -0700, Alan Womack wrote:
->How can I tell if each layer of my authentication is working or not working?
+On Sat, Jun 08, 2002 at 03:30:03PM -0400, Anshuman Rawat wrote:
 
-At this level of abstraction, there is no meaningful answer to the 
-question. Unless you think "check each of them, one by one" is meaningful 
-advice (I don't).
+> so it means that only those registers are saved that were being used by the
+> process which was interrupted? or only those which the process was using and
+> the intr. handling routine will also use?
 
+No. The text just warns you that if you use assembly code inside the 
+interrupt handler you'll have to save the registers you plan to modify
+and restore them afterwards. This isn't the case with the registers which
+are stored when a C function takes control (SP register, etc.).
 
->eg.  how do I tell if I use/need shadow passwords?
-To tell if your system *uses* shadow passwords, see if it has a file called 
-/erc/shadow . Also check that the password field in each entry of 
-/etc/password contains only a single "x" character.
+A process does not use specific registers (all the registers are modified
+during the execution of a program), but when a function takes control 
+some specific registers are saved, such as the Stack Pointer register.
 
-Whether you "need" shadow passwords? They are pretty much the standard now 
-for any Linux system that is connected to the Internet.
+Elias
 
->How do I tell if I have md5 and what encryption method it is using?
-
-Depends on the details of your setup. You might look for the MD5 flag in 
-any of these locations: /etc/pam.conf, /etc/pam.d/passwd, or (just barely 
-possible) /etc/login.defs .
-
-
->I ask because when I enable my authconfig to use ldap, I can no longer log 
->in, but there are several changes that occur to enable ldap and I am not 
->sure ldap is the actual non functional portion of the whole mess.
-
-I don't use ldap here. Do the logs tell you anything you (or we) might 
-consider informative?
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
