@@ -1,23 +1,30 @@
-From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Tape Backup
-Date: 25 Oct 2002 20:58:38 -0400
+From: John E. Jay Maass <jay.maass@verizon.net>
+Subject: Re: Tape Backup
+Date: Fri, 25 Oct 2002 21:07:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1035593918.20082.36.camel@localhost.localdomain>
+Message-ID: <20021026010727.DINF9318.out016.verizon.net@[127.0.0.1]>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-What do you guys suggest for a tape backup for a 100GB hard disk system?
-I'm planning on going XFS and want to dump partitions to tape, but I
-only know about the really expensive tape backups that hold, like 25-100
-tapes.
-Where can I find something that's inexpensive but holds a lot of data
-and works well with Linux?
--- 
-Bryan Simmons <bsimmo1@gl.umbc.edu>
+Bryan Simmons <bsimmo1@gl.umbc.edu> writes:
+
+> What do you guys suggest for a tape backup for a 100GB
+> hard disk system? [...etc...]
+
+This brings up a question I have always wanted to ask, but
+have been reluctant to broach. What ever happened to the
+idea of using a VHS recorder for tape backup? Anyone know
+of any schemes for this?
+
+Regards,
+Jay, Philadelphia
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
