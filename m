@@ -1,45 +1,18 @@
 From: "Marco Calistri" <ik5bcu@tin.it>
-Subject: Enabling SHAPE extension (??)
-Date: Sat, 29 Jun 2002 00:13:40 +0200 (CEST)
+Subject: test as usual
+Date: Sat, 29 Jun 2002 20:26:45 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020628221340.12773.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <20020629182645.3307.qmail@linux.ik5bcu.ampr.org>
 Reply-To: ik5bcu@tin.it
 Mime-Version: 1.0
-Content-Type: multipart/signed;
- boundary="_=XFMail.1.5.2.Linux:20020629001338:10797=_";
- micalg=pgp-md5; protocol="application/pgp-signature"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-This message is in MIME format
---_=XFMail.1.5.2.Linux:20020629001338:10797=_
-Content-Type: text/plain; charset=iso-8859-15
-
-Hello I noticed after upgrading my RHL to 7.3 from 7.2 that new WM sawfish
-can't works reporting an Xlib error about SHAPE extension as not enabled
-on my X.
-
-Wonder what is SHAPE and how to enable this extension inside X.
-
-Many Thank's
-
-Marco
-
---_=XFMail.1.5.2.Linux:20020629001338:10797=_
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: Per informazioni si veda http://www.gnupg.org
-
-iD8DBQE9HN+Rs0ru0Kz1knARAoE9AJ9VDzYNZVa08Z3pFYV5v/+rJmOgPwCdGWD8
-7ghZ6zjwjpPlRwa2DWRzWLw=
-=uM0D
------END PGP SIGNATURE-----
-
---_=XFMail.1.5.2.Linux:20020629001338:10797=_--
-End of MIME message
+It seems once again I can post but can't retrieve messages from this list.
+This is just a test,please try to reply on the list.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
