@@ -1,42 +1,48 @@
-From: LL Phillips <lilo.phillips@sympatico.ca>
-Subject: Re: Sharing drives.
-Date: Sat, 19 Oct 2002 16:05:32 -0400
+From: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
+Subject: Re: CD-ROM settings and bash resources
+Date: Sat, 19 Oct 2002 18:51:15 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DB1BB0C.F831C945@sympatico.ca>
-References: <000501c269e8$b8ca73c0$af33f7c2@gcb> <3D9AE71D.D509316F@gelm.net> <3D9C4FAB.8CAD330F@sympatico.ca> <3D9CB79E.54505E03@gelm.net> <3DADBDE3.7D2D42D3@sympatico.ca> <20021018085428.A145@lnx2.w8mch.ampr.org>
+Message-ID: <Pine.LNX.4.44.0210191837370.7796-100000@filesrv1.baby-dragons.com>
+References: <1034969037.26230.3.camel@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1034969037.26230.3.camel@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: haltec@iceweb.net, linux-newbie@vger.kernel.org
-
-Hi Hal
-Thanks for the tips.  It was the OPERATOR's fault I'm sure.   Too much
-enthusiasm combined with a thick skull.  The drives were working fine
-when I got them.   I did find them delicate to work with. Went through
-a couple adapters which quit on me too.  I'm moving up soon to
-possible motherboard destruction.  Looking to flash the bios on EPOX
-P55-BT.
-
-With Linux I've become less dangerous now that I've discovered and
-downloaded KNOPPIX which runs in RAM; and just read today that SUSE
-has a LIVE CD version as well.  Must investigate.
-Lorraine
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
 
-<snip>
-> 
->                 Why software problems could cause drives to become
-> "grinders" is beyond me, except that laptop/notebook drives are 2"
-> jobs so you can visualize all that capacity in a very small and
-> compact space.. They've _got_ to be less rugged than normal..
-> 
->                 Anyway good luck and hope you get things in order.
-> 
->     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
->                haltec@iceweb.net | w8mch@iceweb.net..
-> .
+	Hello Bryan ,  Fyi ,  Mentioning M$-widows if only saying that the
+	hardware itself is funtioning , can (and usually does) illicit a
+	smaller response from some groups .  Also might want to post a
+	little more info about the device & system & kernel .  That
+	informaiton will help others to help you .  I for one have an HP
+	CD-Writer+ 9200 scsi hanging off of a lsi-53c1010-66 on board
+	controller .  If you can ,  posting on a webpage someplace the
+	output from 'dmesg' and giving the Url: to it here is a good
+	option as well .
+
+	A good referance to bash stuff ...  Hth ,  JimL
+
+	http://www.caliban.org/bash/index.shtml
+
+On 18 Oct 2002, Bryan Simmons wrote:
+> I've noticed that my HP CD-Writer 9100+ has trouble reading large files
+> off of a burn under Mandrake 9.0.  This problem doesn't occur in
+> Windows.  I think it may be the read-ahead setting.  Does anyone know
+> anything about this? Also, what are some good sites for learning bash
+> scripting techniques? I want to write a function in my .bash_profile
+> file that puts a specific Makefile in a new dir when I create the new
+> dir under ~/313/Proj[5-9]. Can anyone assist? -- Regards,
+--
+       +------------------------------------------------------------------+
+       | James   W.   Laferriere | System    Techniques | Give me VMS     |
+       | Network        Engineer |     P.O. Box 854     |  Give me Linux  |
+       | babydr@baby-dragons.com | Coudersport PA 16915 |   only  on  AXP |
+       +------------------------------------------------------------------+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
