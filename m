@@ -1,44 +1,37 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: RE: Setting quota on user's home folders?
-Date: Thu, 17 Mar 2005 15:00:42 -0500
-Message-ID: <007401c52b2c$0023aaa0$4f0aa8c0@lanadmin>
-References: <1111087285.25539.9.camel@localhost.localdomain>
-Reply-To: <eatley@wowcorp.com>
+From: <stackframe@charter.net>
+Subject: No copy on write system call?
+Date: Mon, 21 Mar 2005 22:38:51 -0600
+Message-ID: <3rr9ri$pii5sp@mxip18a.cluster1.charter.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <1111087285.25539.9.camel@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 'Peter' <peterg@fishinternet.com.au>, 'Ray Olszewski' <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+How is it that a write (man 2 write) can be passed a buffer 
+that exceeds most of the physical and virtual memory on a 
+system and work successfully?
 
-Sorry about not including system info: it's RedHat 9 ATM (to upgrade to RH
-Enterprise 3).
+I wrote a simple program that allocates a large buffer on 
+the heap, zeros the space and then calls write 
+(man 2 write).  Even though the buffer is almost as large 
+as physical memory + page space the call completes without 
+error.  In my example I allocated 705MB on a system that 
+has 256MB physical and 512MB virtual.  When it completes 
+there is a 705MB file on disk as expected.
 
->I noticed, on running ` locate quota` , that these lines appear in my
-output
+So is it in the case of the sys_write that the memory is 
+accessed and allowed to page fault as needed while running 
+in the context of the kernel?  Most of the kernel books 
+talk about using copy_from_user on system calls before
+using memory from the user.  Strace shows one write 
+call with the entire length.
 
-I ran this too, and it came back with this:
+So what is going on to allow this to happen?
 
-(truncated)
- /etc/warnquota.conf
-/usr/bin/quota
-/usr/sbin/edquota
-/usr/sbin/quotastats
-/usr/sbin/repquota
-/usr/sbin/rpc.rquotad
-/usr/sbin/setquota
-/usr/sbin/warnquota
-/sbin/convertquota
-/sbin/quotacheck
-/sbin/quotaoff
-/sbin/quotaon
-
-So, I'm wondering if it's already in my system.
-
-- Eve
+Thanks,
+Tony
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
