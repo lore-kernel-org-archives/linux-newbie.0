@@ -1,34 +1,29 @@
-From: Axel Siebenwirth <axel@hh59.org>
-Subject: Re: very newbie
-Date: Tue, 17 Sep 2002 00:23:57 +0200
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: a trouble with OpenGL (additional information)
+Date: 17 Sep 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020916222357.GA10208@prester.freenet.de>
-References: <0E253E40DC78F4499CEDDE9223099F43039CB6D9@xcgva040.northgrum.com>
-Mime-Version: 1.0
+Message-ID: <200209170236.g8H2adRA019956@pegasus.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0E253E40DC78F4499CEDDE9223099F43039CB6D9@xcgva040.northgrum.com>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "Yelland, Michael" <MYelland@northropgrumman.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi Michael!
+Had similar trouble with the Nvidia driver: despite a good - and,
+according to the Nvidia cocumentation, complete and compatible -
+installation of Mdk 8.2 the Nvidia driver refuses to install.
 
-On Mon, 16 Sep 2002, Yelland, Michael wrote:
+It complains about the kernel versin - the Nvidia driver wants
+"kernel = 2.4.8-16mdk" while for its "Mdk 8.1"-compliant installation:
+while Mdk 8.1 and 8.2 have higher kernel versions (2.4.18-6mdk for the
+latter).
 
-> "build a kernel"...is even Linux still 'back' at this stage of
-> life/evolution ?  Hasn't anyone yet learned what Windows has done, which is
-> install on anything, anytime, any card, any device, etc ???
-> 
-> If the kernel didn't recognize the card, it should say so and find the right
-> driver and cfg itself. Windoze does it !
+Clearly a (Nividia) bug.
 
-Hmm. If you regard Windows so pleasant, just stick to Windows...
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-09-16
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
-Best wishes,
-Axel
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
