@@ -1,48 +1,50 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Re-installing issues
-Date: Mon, 24 Jun 2002 03:08:54 -0600
+From: Oliver Ob <ob_ok@gmx.net>
+Subject: Re: A _small_ replacement for midnite commander / mc
+Date: Tue, 25 Jun 2002 00:19:55 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020624030130.033c7200@shawmail.ed.shawcable.net>
+Message-ID: <af863s$313$2@main.gmane.org>
+References: <3B3F2D3A.AD169CAF@gmx.net> <01070115554301.00386@unix.pa3gcu.ampr.org> <3B3F5556.9C7B49CD@gmx.net> <3D0B04C0.F6290EFC@gmx.net> <200206151901.g5FJ14400544@langhans.hartford-hwp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: suse-linux-e@suse.com
+Cc: Haines Brown <brownh@hartford-hwp.com>
 
-i'm running Mandrake 8.1, and i think i have to re-install - it looks like 
-RPMdrake is buggered up, and i can't upgrade rpm at all because of circular 
-dependencies.  So, i want to re-install - I THINK.  i figure that i might 
-as well upgrade to Mdk8.2 in the process, largely because i can't afford to 
-go out and buy SuSE.  Here's where i run into a few snags.  What do i have 
-to keep to keep my work environment *more-or-less* consistent?  The linux 
-box is not a main workstation, since i'm generally more comfy with 
-Win2k.  But it is the file server.  i have a /home partition that is 
-formatted in ReiserFS, and a /var/ftp directory that is mounting /dev/hdb0, 
-a single 20Gb ReiserFS partition.  Other than that, i think that the only 
-thing i really care about is some game servers, but those are trivial to 
-reinstall.
+Haines Brown schrieb:
+>=20
+> Oliver,
+>=20
+> I'm no expert, but I believe that the command line small editor that
+> easily fits on a diskette would be ed for Linux. It has vi-like
+> commands. Don't know size (perhaps 50 Kb).
+>=20
+> Your distribution may have it. Try entering
+>=20
+>      $ ed --help
+>=20
+> to see what happens. If nothing, you can go to rmpfind and ownload
+> it.
+>=20
+> Haines
 
-So, i have a phobia of re-setting up both Samba and Proftpd - they were 
-easily enough of a pain the first time around.  And i'd rather not lose all 
-my users.  IS there a simple list of what i should save?
+Sorry haines, we were talking NOT of an editor, but (see topic!)
+about an mc replacement.
 
-...or...  is there an easy way to make Mandrake clean its mess up with rpm, 
-so that i can go back and start over?
+Anyone got experiences with git? (have 7.0 only, its on 7.3)
 
-(A side question - my RPM database shows two versions of openssl installed 
-(openssl-0.9.5a-8mdk and openssl-0.9.6b-1mdk).  Is there any way to erase 
-ONE of these packages?)
-
-
-Chris R.
-========
-Lumen Redundas
-"To Cast The Light Of Knowledge On The Already Well-Known"
-
-
+--=20
+*=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
+ *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
+I       http://www.bmw-roadster.de/Friends/Olli/olli.html       I
+I       http://www.bmw-roadster.de/Friends/friends.html         I
+I       http://groups.yahoo.com/group/VGAP-93                   I
+I       http://home.t-online.de/home/spacecraft.portal          I
+>>>  Telek0ma iBBMS - soon back online +49.4503.TRSi1/TRSi2   <<<
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
