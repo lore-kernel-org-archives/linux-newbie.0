@@ -1,138 +1,56 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: I killed user's x server
-Date: Fri, 22 Nov 2002 16:45:38 -0500
+From: "Marco Calistri" <ik5bcu@tin.it>
+Subject: usr1,home1 after hdd cloning?
+Date: Fri, 22 Nov 2002 23:49:55 +0100 (CET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211222145.gAMLjcQ12678@hartford-hwp.com>
-References: <200211202236.gAKMaIK05653@hartford-hwp.com> <5.1.0.14.1.20021121103403.02116350@celine> <200211212046.gALKkTj04709@hartford-hwp.com> <02112121392100.00286@unix.pa3gcu> <200211221843.gAMIh4W08194@hartford-hwp.com>
+Message-ID: <20021122224955.8911.qmail@linux.ik5bcu.ampr.org>
+Reply-To: ik5bcu@tin.it
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200211221843.gAMIh4W08194@hartford-hwp.com> (message from Haines
-	Brown on Fri, 22 Nov 2002 13:43:04 -0500)
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: brownh@hartford-hwp.com
-Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
+To: valhalla-list@redhat.com
+Cc: linux-newbie@vger.kernel.org
 
-The plot thickens. I just discovered the script command that allows me
-to view the output when I run startx as root (which loads
-succesfully). The result is instructive.
+Hello listmembers,I cloned a new disk due badblocks on the old root hd
+(/dev/hda).
 
-When I inserted a new nVidia graphics card (and even after after
-replacing it with the old card of the same type), users could no
-longer start X because the configuration looked for decprecated
-libraries (pex5 and xie).  Root had no such trouble.
+All seems ok now that new one is on place on first IDE channel but I noticed
+during boot that message "Checking filesystem..." is reporting:
 
-When root started X, even though X started, I saw an error message:
+/1....clean...
+/usr1........clean...
+/home1.......clean...
 
-	If the server is older than 6-12 months, or if your card is
-	newer than the above date, look for a newer version before
-	reporting problems.  (See http://www.XFree86.Org/)
+instead of /; /usr ;and /home.
 
-Since the card I originally used was some ten months old, I took this
-to say I had to install a new XF86 driver. That I did, but it did not
-solve my problem (I'm now back to the new card because it seems to
-make no difference which I use).
+Wonder why this happened and how to ged rid of this problem...
+a "df" is not showing any /usr1 or /1 neither /home1:
 
-However, I now used script to see what happens when root starts X, and
-it's a horror show! How X somehow managed to start for root I have no
-idea. I'll append the log.
+[marco@linux marco]$ df
+Filesystem           1k-blocks      Used Available Use% Mounted on
+/dev/hda3              5039592    366684   4416904   8% /
+/dev/hda1                24853      9898     13672  42% /boot
+/dev/hda2             10079356   2635440   6931904  28% /usr
+/dev/hda5              1007960     16520    940236   2% /tmp
+/dev/hda7              5039560    262932   4520624   6% /var
+/dev/hda8             11122592   2199636   8357952  21% /home
+/dev/hdb1              4208784   2819588   1389196  67% /mnt/win
+/dev/hdd1               778012    335636    402216  46% /mnt/slack
+none                     30920         0     30920   0% /dev/shm
 
-Now, I have a note to myself that the new XF86 driver should start
-using a configuration file named XF86Config rather than the
-XF86Config-4 that I had been using before. However, as the log shows,
-I'm still using the old configuration file.
+I tried to trim /etc/fstab and to reinstall grub since now my root partition is
+on /dev/hda3 and not on /dev/hda1 as the previous install.
+Hope someone of you could point me on the solution.
+Thanks for readind,cheers.
 
-What's signfiicant is that the old (XFConfig-4) configuration file
-does try to load the deprecated libraries pex5 and xie, while the
-newly created configuration file (XF86Config) does not attemtp to do
-so. 
+----------------------------------
+E-Mail: Marco Calistri <ik5bcu@tin.it>
+Date: 22-Nov-2002 Time: 23:48:34
+Red Hat Linux release 7.3 (Valhalla) kernel 2.4.18-18.7.x
+This message was sent by XFMail
+----------------------------------
 
-So my problem may be that startx is looking to the wrong configuration
-file. The startx script is dated September, which means it was
-installed by my  update of XF86. This startx script calls XF86, which
-is executable by everyone, but I'm not inclined to snoop into this big
-baby.
-
-So my question is, how do I get XF86 to use XFConfig rather than
-XFConfig-4? Is there a utility to set this value?
-
-Haines Brown
-
-
-=========================================================================
-
-Script started on Fri Nov 22 16:03:26 2002
-[root@hartford-hwp root]# startx
-net-tools 1.60
-hostname 1.100 (2001-04-14)
-
-
-XFree86 Version 4.2.1 / X Window System
-(protocol Version 11, revision 0, vendor release 6600)
-Release Date: 3 September 2002
-	If the server is older than 6-12 months, or if your card is
-	newer than the above date, look for a newer version before
-	reporting problems.  (See http://www.XFree86.Org/)
-Build Operating System: Linux 2.4.7-10custom i686 [ELF] 
-Module Loader present
-Markers: (--) probed, (**) from config file, (==) default setting,
-         (++) from command line, (!!) notice, (II) informational,
-         (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
-(==) Log file: "/var/log/XFree86.0.log", Time: Fri Nov 22 16:03:32 2002
-(==) Using config file: "/etc/X11/XF86Config-4"
-dlopen: /usr/X11R6/lib/modules/pex5.so: undefined symbol: PexExtensionInitPtr
-(EE) Failed to load /usr/X11R6/lib/modules/pex5.so
-(EE) Failed to load module "pex5" (loader failed, -1073743256)
-dlopen: /usr/X11R6/lib/modules/pex5.so: undefined symbol: PexExtensionInitPtr
-(EE) Failed to load /usr/X11R6/lib/modules/pex5.so
-(EE) Failed to load module "pex5" (loader failed, -1073743256)
-dlopen: /usr/X11R6/lib/modules/xie.so: undefined symbol: XieInitPtr
-(EE) Failed to load /usr/X11R6/lib/modules/xie.so
-(EE) Failed to load module "xie" (loader failed, -1073743256)
-SESSION_MANAGER=local/hartford-hwp.com:/tmp/.ICE-unix/10003
-SetKbdSettings - type: 2 rate: 30 delay: 500 snumlk: 0
-SetKbdSettings - Succeeded
-AUDIT: Fri Nov 22 16:03:39 2002: 10000 X: client 4 rejected from local host
-Xlib: connection to ":0.0" refused by server
-
-Xlib: No protocol specified
-
-
-xscreensaver: Can't open display: :0
-xscreensaver: initial effective uid/gid was root/root (0/0)
-xscreensaver: running as nobody/nobody (99/99)
-
-xscreensaver: This is probably because you're logging in as root.  You
-              shouldn't log in as root: you should log in as a normal user,
-              and then `su' as needed.  If you insist on logging in as
-              root, you will have to turn off X's security features before
-              xscreensaver will work.
-
-              Please read the manual and FAQ for more information:
-
-              http://www.jwz.org/xscreensaver/faq.html
-              http://www.jwz.org/xscreensaver/man.html
-
-
-Gtk-WARNING **: invalid cast from (NULL) pointer to `GtkOptionMenu'
-
-Gtk-CRITICAL **: file gtkoptionmenu.c: line 248 (gtk_option_menu_set_history): assertion `option_menu != NULL' failed.
-aumix:  error opening mixer
-
-Gtk-WARNING **: gtk_signal_disconnect_by_data(): could not find handler containing data (0x819F330)
-
-
-waiting for X server to shut down 
-
-
-[root@hartford-hwp root]# 
-[root@hartford-hwp root]# 
-[root@hartford-hwp root]# 
-Script done on Fri Nov 22 16:03:57 2002
-
-
- 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
