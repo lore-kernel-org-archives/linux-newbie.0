@@ -1,38 +1,36 @@
-From: Heimo Claasen <hammer@revobild.net>
+From: Elias Athanasopoulos <eathan@otenet.gr>
 Subject: Re: block-major-33
-Date: 07 Oct 2002
+Date: Mon, 7 Oct 2002 17:02:43 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210071243.g97Ch2802232@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20021007170243.A1174@neutrino.particles.org>
+References: <200210071243.g97Ch2802232@ev6.be.wanadoo.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200210071243.g97Ch2802232@ev6.be.wanadoo.com>; from hammer@revobild.net on Mon, Oct 07, 2002 at 01:54:11PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
-> The kernel hasn't load the appropriate module when fstab is parsed
-> during the boot process, so you get the error.
+On Mon, Oct 07, 2002 at 01:54:11PM +0000, Heimo Claasen wrote:
+> So why starting up Linux _does_ demand to have them insterted ?
+> I found numbers of such indications in articles, Howtos etc.
 
-I don't think this is the reason; the module _is_ loaded with the
-kernel but if the adapter with a CF card is not present/inserted it's
-with executing 'fstab' that the "[FAILED]" message appears.
+From the man page of mount:
 
-On a similar issue, but on the Zip-Drives's "exchangeable medium":
-In the manuals, Iomega advises to _not_ have a Zipdisk inserted when
-booting up. However, depending on the setting in fstab (with or
-without auto-mounter) you would get a "[FAILED]" for this too.
+The mount command serves to attach the file system found on some  device  to
+the  big file tree. Conversely, the umount(8) command will detach it again.
+		   
+So, as you can see you have to have a *file system* to mount. Keep in mind,
+that mount has nothing to do with hardware identification of the device 
+(this is done by the kernel using probe routines).
 
-Which would be only logical. Though as with floppies too, the
-traditional wisdom is to _not_ have them inserted when starting up a
-machine, as the start-up and self-tests could cause an initial current
-in the divices which _could_ be harmful for data on the inserted media.
+Elias
 
-So why starting up Linux _does_ demand to have them insterted ?
-I found numbers of such indications in articles, Howtos etc.
-
-// Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-10-07
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
-
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
