@@ -1,36 +1,35 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: PPP in Slackware
-Date: Sun, 6 Apr 2003 09:53:34 +0000
+Date: Sun, 6 Apr 2003 09:56:10 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03040609533401.02940@unix.pa3gcu>
-References: <202304032058.333KwBq14663@ev6.be.wanadoo.com>
+Message-ID: <03040609561002.02940@unix.pa3gcu>
+References: <200304040759.h347xf702179@philonline.com>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <202304032058.333KwBq14663@ev6.be.wanadoo.com>
+In-Reply-To: <200304040759.h347xf702179@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Thursday 01 January 1970 00:00, Heimo Claasen wrote:
-> Richard - how do you make Kppp work in an exclusively Gnome environment ?
-> (Gnome-ppp is not at all the same thing re functionalities.)
-> Note that for other reasons, I cannot install any of the Qt/KDE (GUI-
-> providing) libraries; it's all Gtk.
->
-> Another problem is that I cannot find a "kppp" package by itself, it's
-> part of a whole bundel of KDE utilities wrapped together insto one
-> package in (some of) the RPM-based distros/installations.
+On Friday 04 April 2003 07:59, Peter wrote:
+> Richard if you think only Dutchmen are stubborn you are mistaken. ;-)
 
-I have never used Gnome for any lenth of time, i have really no idea how it 
-works with kde apps.
-Maybe someone else could help you more.
+Subborn,! well i suppose we all have our views and sometimes make them known.
 
 >
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-04-03
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
->
+> I now reinstalled SW8.0 and as I suspected kppp connected to the different
+> ISPs as I know it would since the time I had a SUSE 5.1 box, provided you
+> do not run pppsetup first. To make sure now not to make this mistake again
+> I deleted that program first thing. Gnome-ppp works just as well now.
+
+I dont think a reinstall was nessasary at all, all you needed to do was 
+remove the pppsetup files in /etc/ppp .
+
+Anyway i am glad to hear your problems are now somewhat smaller.
+
 
 -- 
 Regards Richard
