@@ -1,39 +1,39 @@
-From: Haines Brown <brownh@hartford-hwp.com>
+From: Riley Williams <rhw@InfraDead.Org>
 Subject: Re: nVidia lockups
-Date: Sat, 27 Jul 2002 10:41:27 -0400
+Date: Sat, 27 Jul 2002 17:57:27 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207271441.g6REfRZ18361@langhans.hartford-hwp.com>
-References: <Pine.LNX.4.21.0207270933380.30515-100000@Consulate.UFP.CX> <02072709363903.00307@unix.pa3gcu> <200207271245.g6RCjPT17529@langhans.hartford-hwp.com> <02072713034305.00307@unix.pa3gcu>
+Message-ID: <Pine.LNX.4.21.0207271753130.30515-100000@Consulate.UFP.CX>
+References: <200207271245.g6RCjPT17529@langhans.hartford-hwp.com>
+Reply-To: Riley Williams <Riley@Williams.Name>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02072713034305.00307@unix.pa3gcu> (message from pa3gcu on Sat,
-	27 Jul 2002 13:03:43 +0000)
+In-Reply-To: <200207271245.g6RCjPT17529@langhans.hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: pa3gcu@zeelandnet.nl, Linux Newbies <linux-newbie@vger.kernel.org>
 
-Richard,
+Hi Haines.
 
-> > The page for nVidia Linux drivers is:
-> > http://www.nvidia.com/view.asp?PAGE=linux
-> 
-> On that page you will find a shell script called NVchoose.sh, if you
-> download it and run it it should tell you which driver you need.
+The other points have all been dealt with by others in other emails,
+so I'll just clear the one remaining item for you...
 
-Thanks, that worked. I'd still like to know what the difference is
-between i386 and i686. Perhaps someone will chime in.
+> There is a difference between UP and SMP. I understand what the
+> latter means, and the former is a single processor, but what does
+> "UP" mean literally?
 
-> Enterprise = Redhat version.
-> All i know is that Seawolf = 7.1
+Here's the literal translation of both, as well as the missing one...
 
-Well, that's what I would have assumed, but there are "Enterprise"
-drivers for different versions of Red Hat. That is, Red Hat 7.1 has an
-Enterprise driver, but no mention of Seawolf. In any case, the script
-you pointed me two knows that I'm not running Enterprise.
+	UP	UniProcessor
+	AMP	Asynchronous MultiProcessor
+	SMP	Synchronous MultiProcessor
 
-Haines
+The Transputer is based on AMP technology, but I don't know whether
+anybody is still working on AMP as SMP appears to have taken over
+from it.
 
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
