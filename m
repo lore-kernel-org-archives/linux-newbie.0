@@ -1,43 +1,42 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: local networking hostname
-Date: Mon, 22 Jul 2002 08:19:00 -0700
+Subject: Re: Package managers.
+Date: Mon, 22 Jul 2002 08:26:14 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020722081403.02197720@celine>
-References: <B9617ACB.1E8C%jimurl@montanaice.com>
+Message-ID: <5.1.0.14.1.20020722081938.021ab810@celine>
+References: <000101c23167$995b86a0$4d32f7c2@geoff>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <B9617ACB.1E8C%jimurl@montanaice.com>
+In-Reply-To: <000101c23167$995b86a0$4d32f7c2@geoff>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Jim Earl <jimurl@montanaice.com>, linux-newbie@vger.kernel.org
+To: geoff <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
 
-At 09:03 AM 7/22/02 -0600, Jim Earl wrote:
->Hello!
+At 11:07 AM 7/22/02 +0100, geoff wrote:
+>I am considering getting a copy of the new Debian 3.0 release,  but I
+>understand that they
+>use  "deb" rather than "rpm"  for package installation.
 >
->I am setting up a small network of one Linux and one non-Linux box.  The
->network is established via Ethernet; ifconfig and route report verify this.
->I am able to telnet from the non-linux to the Linux box but only using the
->IP address - NOT using the hostname.  However, when I try to telnet from the
->Linux box to itself ( using the loopback interface ), it works fine.  My
->/etc/hosts , /etc/resolv.conf and /etc/networks seem to be ok.
->
->I don't have 'named' running, but it looks like I might need to ( though I
->had wanted to avoid it ).
->
->Any ideas are appreciated.
+>Please can anyone  on the list who has made the transition from rpm to deb
+>tell me
+>how they got on ?    Is the deb system as easy and as convenient as rpm ?
 
-The files that you say "seem to be ok" affect the ability of the Linux host 
-itself to resolve names, but they have nothing to do with the ability of 
-the "non-linux" host to resolve names. Your options are:
+I can't really answer your question, since I never used .rpm (I moved to 
+Debian from Slackware). Having used Debian for several years now, I can 
+tell you that the .deb-based system is quite convenient to use, once you 
+get over a modest learning curve. That is, package management with apt-get 
+and aptcache is quite convenient; dpkg is a bit clunkier, but you should 
+find that you do not need to use it often.
 
-1. Run an on-LAN nameserver and tell the non-Linux host to use it to 
-resolve names. Running BIND (named) on the Linux host is one way to do this.
+Your biggest problem in moving to Debian is likely not to be the package 
+manager but the (small) number of free (in some sense) packages not 
+available in .deb form. Although there are not many of these packages, if 
+you need any of them, you'll have to install them yourself (either from 
+.tgz files or from the unofficial .deb packages some sites offer).
 
-2. Set up the non-Linux host to do local name resolution using its 
-equivalent of /etc/hosts . Knowing nothing about this host, execpt that it 
-is a computer and it does not run Linux, I can't tell you how to do this.
-
+It also looks to me like distributors of commercial software are still more 
+likely to offer .rpm packages of their applications than .deb packages. 
+This doesn't affect me but may be a consideration for you.
 
 
 --
