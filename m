@@ -1,29 +1,24 @@
-From: Bryan Whitehead <driver@megahappy.net>
-Subject: Re: MSN Messenger clones keep failing
-Date: Tue, 04 Nov 2003 14:01:39 -0800
+From: "Warren Hrach" <sean@tcob1.net>
+Subject: bogofilter
+Date: Tuesday, 04 Nov 2003 14:16:02 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA821C3.1030608@megahappy.net>
-References: <3FA79E82.3080204@siriusbb.com> <3FA79E82.3080204@siriusbb.com> <5.1.0.14.1.20031104073149.02010830@celine>
+Message-ID: <MSGID_1=3a202=2f745_89b079fd@fidonet.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031104073149.02010830@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Build gaim with ssl support on. You will need mozilla installed with all 
-the nss and related libaries along with openssl.
+Originally to: All
 
-http://gaim.sourceforge.net/
+I recently downloaded a copy of bogofilter, the static version in rpm form. Installed on my RH V8.0 system that runs fetchmail and pine for email. Unfortunently I cannot figure out the docs on how to
+ start it up. I need a simple how-to that just give examples.
 
-you need to run version .71 or up. They also have binaries for windoze.
+Does anyone have experiance with bogofilter with pine and procmail ?
 
--- 
-Bryan Whitehead
-Email:driver@megahappy.net
-WorkE:driver@jpl.nasa.gov
+Warren
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
