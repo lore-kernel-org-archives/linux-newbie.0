@@ -1,65 +1,42 @@
-From: caszonyi@rdslink.ro
-Subject: Re: can't startx X under non-root login
-Date: Tue, 13 Jan 2004 23:19:24 +0200 (EET)
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Can't Mail with Exmh
+Date: Wed, 14 Jan 2004 15:01:49 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0401132318440.997@grinch.ro>
-References: <400410BB.9050308@rbcmail.ru> <4004142B.9000809@vip.cybercity.dk>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <200401140701.i0E71nh01583@skyinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4004142B.9000809@vip.cybercity.dk>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Flemming Greve Skovengaard <dsl58893@vip.cybercity.dk>
-Cc: "Andrey V. Romanchev" <negative@rbcmail.ru>, linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Tue, 13 Jan 2004, Flemming Greve Skovengaard wrote:
+>  >  Peter said:
+>  > > In RedHat9.0 after I changed from kernel 2.4.20.20-9 to kernel
+>  >  2.4.22 I can't send mail any longer with exmh or with pine. 
 
-> XFree86 must permissions rws--x--x. XFree86 is found in /usr/X11R6/bin.
->
+To which I got only one reply.
 
-... or you can use Xdm to start the server (runlevel 4 on Slackware and 5
-on others)
+>  > 
+>  > I finally solved the problem. I made a "make upgrade" with postfix
+>  > which  seems to have fixed it.
 
-> Andrey V. Romanchev wrote:
-> > subj
-> >
-> > log:
-> >
-> > Fatal server error:
-> > xf86OpenConsole: Server must be suid root
-> >
-> > What's wrong?
-> >
-> > Thanks.
-> >
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
-> >
-> > .
-> >
->
-> --
-> Flemming Greve Skovengaard               Man still has one belief,
-> a.k.a Greven                             One decree that stands alone
-> <dsl58893@vip.cybercity.dk>              The laying down of arms
-> 4168.08 BogoMIPS                         Is like cancer to their bones
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+It did not solve it, it only stopped giving error messages and placed the mail 
+in the queue from which it could not be mailed.
 
---
-"A mouse is a device used to point at
-the xterm you want to type in".
-Kim Alm on a.s.r.
+The culprit was sendmail-8.12.8-9.90.i386.rpm. I uninstalled it and went back 
+to
+sendmail-8.11.6-27.73.i386.rpm and this mail will go out with exmh.
+
+I started to suspect sendmail when on booting I always got the error: 
+sm-client failed, invalid option -- A.
+
+Therefore RH9 seems to be buggy.  With the kernel 2.4.20.20-9 I can't open 
+siag office and with sendmail-8.12.8-9.90 I can't send mail. This is the Krud 
+Linux version of RH9.
+
+Regards
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
