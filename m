@@ -1,35 +1,46 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Why do I can't listen CD's with OSS
-Date: Sun, 22 Dec 2002 08:41:09 +0000
+From: "Paulo Jorge O. C. Matos" <pocm@mega.ist.utl.pt>
+Subject: CDParanoia not copying from /dev/cdrom
+Date: Sun, 22 Dec 2002 13:28:53 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02122208410908.00388@unix.pa3gcu>
-References: <200212212307.50786.r4mz3z@yahoo.es>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <3E05BE15.6090000@mega.ist.utl.pt>
+Reply-To: pocm@mega.ist.utl.pt
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212212307.50786.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: r4mz3z <r4mz3z@yahoo.es>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Saturday 21 December 2002 23:07, r4mz3z wrote:
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
->
-> Hi friends...
->   I installed OSS sound drivers and I can listen my mp3 with xmms and other
-> players; but if I wanna listem my music CDs I can't... which is the
-> problem?
->
-> thanks
+Hi all,
 
-Configure xmms properly to find your cdrom device.
+I have a /dev/cdrom pointing to /dev/sr1 since I had /dev/hdd to 
+ide-scsi. I can listen to audio cds through /dev/cdrom using the Gnome 
+CD Player but while doing:
+pdestroy@localhost:/mnt/old/audiowrite$ cdparanoia -vsQ
+cdparanoia III release 9.8 (March 23, 2001)
+(C) 2001 Monty <monty@xiph.org> and Xiphophorus
 
+Report bugs to paranoia@xiph.org
+http://www.xiph.org/paranoia/
+
+Checking /dev/cdrom for cdrom...
+	Testing /dev/cdrom for cooked ioctl() interface
+		/dev/sr1 is not a cooked ioctl CDROM.
+	Testing /dev/cdrom for SCSI interface
+		No generic SCSI device found to match CDROM device /dev/sr1
+
+
+Any ideas?
+
+Best regards,
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Paulo J. Matos : pocm(_at_)mega.ist.utl.pt
+Instituto Superior Tecnico - Lisbon          WISHING YOU A MERRY
+Software & Computer Engineering - A.I.        CHRISTMAS, AND A GREAT
+  - > http://mega.ist.utl.pt/~pocm                               2003!!!
+  ---	
+	Yes, God had a deadline...
+		So, He wrote it all in Lisp!
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
