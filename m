@@ -1,77 +1,62 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: At Loss with Mailing
-Date: Wed, 07 May 2003 07:45:37 -0700
+From: kernel@slackuser.com
+Subject: Re: hiding my hostname (2)
+Date: Wed, 7 May 2003 11:29:10 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030507073022.01f3e020@celine>
-References: <200305071548.35741.pfheiss@philonline.com>
+Message-ID: <Pine.LNX.4.44.0305071128350.5564-100000@kenny.slackuser.com>
+References: <20030507035842.42941.qmail@web10704.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305071548.35741.pfheiss@philonline.com>
+In-Reply-To: <20030507035842.42941.qmail@web10704.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Jesse Armand <matrix_rev2002@yahoo.com>
+Cc: linux-newbie@vger.kernel.org
 
-Riley's response may be right. Really, the technical parts of your 
-description are too vague to permit anything more than a guess about what's 
-up and his guess is as good as any.
+That is caused by someone being logged in through the console.
 
-At 03:48 PM 5/7/2003 +0800, Peter wrote:
+-Chris W.
 
->The situation of me being unable to send mail is becoming worse. You are 
->right
->the problem is not philonline. When I called them they said they never had
->reverse look-up. Since a few month ago I had no problem with them anyhow.
+On Tue, 6 May 2003, Jesse Armand wrote:
+
+> well.. I think there is a way,
+> why ?
+> because i've just seen it.
+> when i'm logging in to a server,
+> i saw a client that hiding his hostname,
+> and it's not about the server not knowing my ip
+> address, it's about hiding my ip address from viewing
+> by other users.
+> I know a server must know an ip address of the client
+> that connects to it.
 >
->Now I found that even with skyinet and another new ISP mail will not be sent.
->The problem appears when I have difficulties making a connection and when
->connected the flow of data is very slow if any at all meaning the lines are
->hopelessly congested. The problem is/was less with skyinet since they have
->better equipment.
-
-What does "difficulties maning a connection" mean? Really, the only ways to 
-diagnose e-mail problems are:
-
-         1. If you get an actual refusal to connect to your SMTP client, it 
-will probably be logged by the client.
-         2. Use telnet (I described how in an eariler message) to connect 
-to a problem SMTP server and interact with it by hand. See what you see.
-
-If your ISPs are actually blocking outgoing connections to port 25 (except 
-to their own SMTP relay hosts, as RIley speculates), the second test will 
-result in your being entirely unable to connect, NOT connecting slowly. And 
-it will fail for ALL sites, not just some.
-
-So ... since mail sent to this list, and to me, *directly* from your server 
-gets here intact (the Received: headers on the copies that got here says 
-that's how you sent them), I infer that at least philonline is NOT blocking 
-your outgoing SMTP. If mail arrives here when you connect by way of other 
-ISPs, then they too are NOT blocking SMTP connections. In that case, there 
-is simply no way to tell you what is going on with the failed connections 
-unless you do one of the two checks I outline above.
-
->One solution would be to sent all mail with kmail which I have set to smtp 
->for
->sending mail instead of using sendmail (this one will go out with it) which
->would mean giving up my beloved mailer exmh.
+> when i use 'w' or 'who' command
+> the hostname table shows empty content
 >
->Or does somebody know how to set exmh (nmh) to use smtp for sending mail?
-
-By "using smtp", I assume you mean here that the client is told to use an 
-SMTP server that is not on the same host (in practice, your ISP's relay). 
-MTAs like sendmail (I'm basing this on actual experience with exim, but 
-sendmail should have equivalent functionality) can be configured to use a 
-"smarthost relay" for sending mail, and you can use this capability to have 
-sendmail use your ISP's SMTP relays. I don't know the details of this setup 
-for sendmail, so perhaps someone else here who actually uses such a setup 
-can supply them to you.
-
->Regards
+> USER    TTY   FROM    LOGIN@    IDLE    WHAT
+> woho    p1     -      10:09AM    -      - (pine)
 >
->Peter
-[old stuff deleted]
-
-
+> can u explain that ?
+>
+> btw by using .nofinger i can hide myself from
+> fingering,
+> that's one way,
+>
+> so anybody knows how to hide my hostname from 'who'
+> and 'w'
+>
+>
+> __________________________________
+> Do you Yahoo!?
+> The New Yahoo! Search - Faster. Easier. Bingo.
+> http://search.yahoo.com
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
