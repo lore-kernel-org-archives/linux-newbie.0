@@ -1,51 +1,84 @@
-From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
-Subject: RE: Disk Image
-Date: 10 Oct 2002 16:41:32 -0400
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Bash Scripts
+Date: Thu, 10 Oct 2002 16:34:48 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034282493.9893.26.camel@goldfinger.orbdesigns.com>
-References: <002801c27098$1d5ded70$64fea8c0@pkrausxp>
+Message-ID: <003301c2709c$7ac11b00$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0034_01C2707A.F3AF7B00"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002801c27098$1d5ded70$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Thu, 2002-10-10 at 16:03, Paul Kraus wrote:
-> I think you are seeing this backwards. I want to create the image of a
-> hard drive that is on the network to my linux box.
+This is a multi-part message in MIME format.
 
-So, can you envision a way to "reverse" the idea he gave you to solve
-your problem? 
+------=_NextPart_000_0034_01C2707A.F3AF7B00
+Content-Type: text/plain;
+	charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
 
-	* * *
+I have a script that mounts an samba shared drive, copies the contents
+if newer to the Linux box, and then umounts the share.
 
-It's non-trivial in the sense that you can't just use the administrative
-share, samba-mount the windows partition and copy it - there are files
-in use that Windows won't let you copy while you're running Windows. If
-you need an image that you can restore, I can think of methods using
-Linux, it would certainly be fairly easy if the box that runs windows
-dual boots with Linux, because then you can boot into linux and dd the
-drive, directing the output to a file on a remote-mounted partition
-(either NFS or ?). But then, we don't actually know what you want to
-accomplish. If you want to do the same thing for tens of machines, why
-not get ghost and image each box? It works, afterall. 
+Sample script
+---
+mount -t smbfs -o username=x,password=y //machine/share /mnt/network
+cp --recursive --preserve --verbose --parents --update /mnt/network/*
+/backup/machine \
+	> log1.txt 2>log2.txt
+umount /mnt/network
+------------
+End script
 
-Otherwise, fashion some way of booting into Linux (via a CD rescue disk
-perhaps), nfs- or samba-mount a remote partition, and dd the drive image
-to a file remotely. THen if you need to restore it, just reverse that
-process.
+A couple of easy questions I can't seem to find answers to.
+1. How can I pass in parameters from the command line to use as
+variables. 
+	myscript value1 value2
+2. How can I have it dump a message to a log file if something fails and
+then cease running the script. 
+	if mount fail append to end of log1.txt "mounting failed",
+terminate script.
 
-Have fun,
+I was under the impression that you could have a script terminate if a
+command failed by having && separate the commands but this just
+generates an error.
 
-.brian
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
--- 
-Brian Bilbrey && bilbrey@orbdesigns.com && http://www.orbdesigns.com/
-	The guy has a reality distortion field generator 
-	the size of the state of Rhode Island. 
-                                 - Daniel Gray
+------=_NextPart_000_0034_01C2707A.F3AF7B00
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
+
+------=_NextPart_000_0034_01C2707A.F3AF7B00--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
