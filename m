@@ -1,156 +1,38 @@
-From: "Mike Turcotte" <Mike.Turcotte@cityofnorthbay.ca>
+From: "Eve Atley" <eatley@wowcorp.com>
 Subject: RE: Simple script to set permissions on folders daily - write script and cron it?
-Date: Tue, 29 Mar 2005 09:31:14 -0500
-Message-ID: <C6FD667B200BDF4F964C1BA77B796CE20F5E4A@cnbmail2.city.north-bay.on.ca>
+Date: Tue, 29 Mar 2005 10:54:35 -0500
+Message-ID: <002f01c53477$9c88c9d0$580aa8c0@lanadmin>
+References: <C6FD667B200BDF4F964C1BA77B796CE20F5E4A@cnbmail2.city.north-bay.on.ca>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <C6FD667B200BDF4F964C1BA77B796CE20F5E4A@cnbmail2.city.north-bay.on.ca>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: 'Mike Turcotte' <Mike.Turcotte@cityofnorthbay.ca>, linux-newbie@vger.kernel.org
 
-I am fairly new to the linux scene, and I am currently using Gentoo
-Linux. How exactly do I go about setting a global default umask value to
-set 777 permissions on a particular folder and its contents?
 
-Michael Turcotte
-Information Systems
-City of North Bay
-200 McIntyre St. E
-PO Box 360
-North Bay, Ontario
-P1B 8H8
- 
-Mike.Turcotte@cityofnorthbay.ca
-http://www.cityofnorthbay.ca 
+That is my issue as well; Ray and others, I hadn't implemented umask because
+it still appears Greek to me. I'm not against use umask; I just didn't 'get
+it' upon reading stuff online. A link or two pointing to 'Umask for Idiots'
+would be great!
 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
-> owner@vger.kernel.org] On Behalf Of J.
-> Sent: Monday, March 28, 2005 6:11 PM
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: Simple script to set permissions on folders daily - write
-> script and cron it?
-> 
-> On Mon, 28 Mar 2005, Eve Atley wrote:
-> 
-> > Hello! I want to write a very simple script that once daily (via
-cron)
-> will
-> > set permissions to 777. This is to override any permissions set on
-files
-> > uploaded by other people, so everyone who already has access to the
-> group
-> > will have rwx access to the file(s).
-> 
-> You should do that by setting the `umask value' or configuring the
-> programs that store the files correctly . No need for a
-> cronscript. That is if they are only uploading and not accessing the
-> shell interactively, even then you should go for a systemwide default
-> `umask' value.
-> 
-> > So I'm double-checking if the best route is to create my script,
-then
-> run it
-> > in cron as necessary. Or is there another way I should be handling
-it?
-> >
-> > Here's the script:
-> >
-> > #!/bin/sh
-> > #set_permissions: simple routine to set permissions of directories
-to be
-> > #accessible by everyone who already has specific group access.
-> > #
-> > #written by EMM - 3/28/2005
-> >       cd /home/shared/hr/
-> 
-> Does the directory exsist you `cd' to ?
-> test -d /home/shared/hr/ || echo "Error - .... and exittttt.. "
-> or
-> if [ ! -d /home/shared/hr/ ] ; then
->  print error..
-> fi
-> 
-> > 	chmod 777 -R *
-> 
-> You say, `permissions of directorys' The above will set permissions of
-> all files except for the dotted files.
-> 
-> You could walk the directory structure by means of `find' and evaluate
-if
-> the file is a directory file by `-type d'.
-> find /home/shared/hr/ -type d -exec chmod 0755 '{}' \;
-> 
-> Then there is overhead, since every file no matter what the
-permissions
-> are is set. Check if the file needs permissions 777 and what the
-current
-> permissions are..
-> 
-> Other..., Maybe there are files that no matter what shouldn't be world
-> readable and writable.. If multiple users are on your system they
-could
-> put a file in a certain directory, your cronscript goes over
-> it, maybe as user root.. and.. makes it world readable/writable.. Not
-a
-> good thing. There is also a time gap inbetween the two different
-> permissions, users can't access their files until your cronscript has
-set
-> the correct permissions. Yes running your cronscript every X sec's
-will
-> fix that, but that's not the way...
-> 
->  > 	cd /home/shared/public
-> > 	chmod 777 -R *
-> > #put an exception here for /scans and /cd however
-> > #????
-> > 	cd /home/shared/accounting
-> > 	chmod 777 -R *
-> > Fi
-> 
-> There is no error wrapper in your script, it will keep running after
-> errors or notifying messages have occurred. Cron takes also the exit
-value
-> of your script to determine if it's successful or not..
-> 
-> > Thanks much,
-> > Eve
-> 
-> You should take more effort doing the `Unix filosofy', Do one thing
-> and do it well.. [Right from the beginning in your case].
-> 
-> You are fixing symptoms, after the problem has occurred. E.G.
-> 
-> From the moment a file is stored on your system, it should have the
-right
-> permissions. That takes good configuration of the basics of your
-system.
-> 
-> Before looking at these type of problems, try to imagine if you are
-> running an ISP with 1000+ users. Who are constantly accessing their
-files.
-> 
-> You surely don't want to run constantly cronscripts to fix every
-> user/group rights management problem ?
-> 
-> GNU/Linux , Unix are multitasking, multiuser operatingsystems and they
-> should be treated like that.. Otherwise you will loose all the
-advantages
-> of that at a certain given point..
-> 
-> GoodLuck..
-> 
-> J.
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe
-linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks,
+Eve
+
+
+P.S. For additional info, my setup is something like this:
+Directories 'accounting' and 'hr' are created.
+Groups 'accounting' and 'hr' are active in the system.
+Users have been assigned to accounting and hr group.
+Directories are then locked to those users with access to accounting or hr,
+respectively.
+Accounting and HR are currently set up as 
+drwxrwx--T accounting
+drwxrwx--T hr
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
