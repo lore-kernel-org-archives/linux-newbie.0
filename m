@@ -1,51 +1,44 @@
-From: "Tim Merkel" <tim@kerryandtim.com>
-Subject: courier-imap RPM help!
-Date: Wed, 24 Sep 2003 21:15:35 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: courier-imap RPM help!
+Date: Thu, 25 Sep 2003 07:39:58 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BNEEIMBDCFOEJALDEFJAMEDICCAA.tim@kerryandtim.com>
+Message-ID: <200309250739.58080.pa3gcu@zeelandnet.nl>
+References: <BNEEIMBDCFOEJALDEFJAMEDICCAA.tim@kerryandtim.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <BNEEIMBDCFOEJALDEFJAMEDICCAA.tim@kerryandtim.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Tim Merkel <tim@kerryandtim.com>, linux-newbie@vger.kernel.org
 
-Hello,
+On Thursday 25 September 2003 06:15, Tim Merkel wrote:
+> Why is it saying "libcrypto.so.4 is needed by python.2.2.2-26"?  I am not
+> trying to install python.
+>
+> Can somebody please enlighten me to where I am stuck?  Maybe an RPM 101
+> guide would help me. Thanks in advance for your help!
+>
+> Tim Merkel
 
-I have been trying to get courier-imap installed on RH 9 for the past couple
-of days to no avail.  Most of my troubles are coming from RPMs.  Any help
-you can give this newbie would be much appreciated.
+When i get things like this on an rpm system i simply use the --nodeps option.
+In most cases the program concerned will work, however if you have trouble 
+(say the program wont start) do the following.
+ldd /path/to/program
+Too see which libary is "Not Found".
+Then of course install the libary seperatly.
 
-First of all, I don't even know if I have the most current rpm, I am using
-courier-imap-1.4.3-2.rh.7.2.i386.rpm.  Freshmeat.net says it's on version
-2.1, but I cannot find an RPM for RH, with that version.  Does it matter if
-I use a RPM for another distro (i.e. courier-imap-2.1.1-1mdk.i586.rpm)?
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-Anyway, when I install run "rpm -Uvh courier-imap-1.4.3-2.rh.7.2.i386.rpm",
-I get:
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-error: Failed dependencies:
-        libcrypto.so.2 is needed by courier-imap-1.4.3-2.rh.7.2
-        libssl.so.2 is needed by courier-imap-1.4.3-2.rh.7.2
-
-So, I search for these RPM's but keep getting redirected to
-"openssl-0.9.7b-3tr.i586.rpm".  So I figure I will try to install this.
-When I run "rpm -Uvh openssl-0.9.7b-3tr.i586.rpm" I get:
-
-error: Failed dependencies:
-        libcrypto.so.4 is needed by (installed) python-2.2.2-26
-        libcrypto.so.4 is needed by (installed) cyrus-sasl-2.1.10-4
-        libcrypto.so.4 is needed by (installed) cyrus-sasl-md5-2.1.10-4
-        libcrypto.so.4 is needed by (installed) openldap-2.0.27-8
-        .......tons more listed
-
-Why is it saying "libcrypto.so.4 is needed by python.2.2.2-26"?  I am not
-trying to install python.
-
-Can somebody please enlighten me to where I am stuck?  Maybe an RPM 101
-guide would help me. Thanks in advance for your help!
-
-Tim Merkel
 
 
 -
