@@ -1,46 +1,32 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Andrew Langdon-Davies <ald2@arrakis.es>
 Subject: Re: su fails
-Date: Mon, 14 Jul 2003 20:23:43 +0200
+Date: Mon, 14 Jul 2003 20:48:14 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307142023.43039.pa3gcu@zeelandnet.nl>
-References: <5.1.0.14.1.20030714080202.01ef9e68@celine> <oprsa696n7hmmv6x@smtp.arrakis.es> <oprsbalrywhmmv6x@smtp.arrakis.es>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <oprsbc6ofjhmmv6x@smtp.arrakis.es>
+References: <5.1.0.14.1.20030714080202.01ef9e68@celine> <oprsa696n7hmmv6x@smtp.arrakis.es> <oprsbalrywhmmv6x@smtp.arrakis.es> <200307142023.43039.pa3gcu@zeelandnet.nl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <oprsbalrywhmmv6x@smtp.arrakis.es>
-Content-Disposition: inline
+In-Reply-To: <200307142023.43039.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Andrew Langdon-Davies <ald2@arrakis.es>, linux-newbie@vger.kernel.org
-
-On Monday 14 July 2003 19:52, Andrew Langdon-Davies wrote:
-> >> su: Authentication failure
-> >> Sorry.
-> >> autovcr@kuryakin:~$
-> >
-> > It says only "Sorry"
-> >
-
-NO it does not, it says, "Authentication failure" and then sorry.
-
-I have encoured a simalar problem years ago, my problem was caused by a disk 
-that was 100% full.
-It may seem strange but AFAI see it, if the disk is full syslog(d) cannot 
-write to /var/log/syslog and rejects connections, at least that is what i 
-belive happend to me.
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
 
-
+>> >
+>> > It says only "Sorry"
+>> >
+>
+> NO it does not, it says, "Authentication failure" and then sorry.
+>
+I can assure you, sir, in spite of your block capitals, that it said just 
+"Sorry". Which also surprised me, I may say, and attracted Mr Oswelski's 
+attention too. I thought at the time it was a touch curt by Linux 
+standards. But, as I say, I reinstalled shadow and it is now back to 
+normal. So let us let bygones be bygones as I have no intention of 
+reproducing the error to prove what I say.
+Thanks for taking the trouble to write.
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
