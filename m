@@ -1,35 +1,44 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: LVM query
-Date: Wed, 13 Oct 2004 13:58:29 -0500 (CDT)
+From: chuck gelm <chuck@gelm.net>
+Subject: Re: Fwd: Re: clock cycles
+Date: Wed, 13 Oct 2004 14:59:34 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410131346130.1347@debian-emach>
+Message-ID: <416D7B16.4040809@gelm.net>
+References: <20041013131206.67214.qmail@web52902.mail.yahoo.com>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20041013131206.67214.qmail@web52902.mail.yahoo.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ankit Jain <ankitjain1580@yahoo.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-I tend to use somewhat older computers and older, smaller (and
-cheaper--sometimes free!) hard drives.  As a result, I end up with 2 or
-more hard drives in any given machine.  I've been manually partitioning
-and usually making / the mount point for smaller of the disks, /home the
-mount point for the larger (single user system, btw).  I suppose /usr
-might be a good mount point for a third disk.  Be that as it may, I've
-recently looked into LVM (logical volume management) and wondered whether
-it might not be a better option for setting up my system.  As I understand
-about the way it works, I would not run into problems such as I might have
-with my former scheme--for example running out of room on / (never
-happened before, but who knows).  With all disks being used as one large
-filesystem under LVM--if that is, indeed, the way it works--directories
-can increase to whatever size disk total allows.  So, a couple of
-questions in closing: have I understood correctly how LVM works and what
-it does?  Does it sound like a good solution for my scenario?  Is there
-any performance hit involved in using it as over against a traditional
-partitioning scheme?  Any other comments on, criticisms, praises of LVM?
-Gotchas?  Thanks for any feedback on this.
+> Sorry could not understand this. <1> What is making AMD
+> processors work faster than Intel processors at a
+> lower clock cycle. <2> also i want to know how to prove
+> this that AMD 64 bit processors will work faster than
+> Intel 32 bit processor even if they have clock cycles
+> like 3.6 GHz....
 
-James
+<1>
+  An AMD processor may execute a command with
+less clock cycles than an Intel processor.
+e.g.
+It could get more work done with equal clock cycles.
+It could get as much work done with less clock cycles.
+It could get more work done with less clock speed.
+
+<2>
+  Why not let someone else prove it and then you can
+simply accept their education, skill, and knowledge.
+
+There is more to measuring CPU than clock cycle speed.
+How fast does it r/w memory and devices...internal
+and external cache, bus speed, ...?
+
+Regards, Chuck
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
