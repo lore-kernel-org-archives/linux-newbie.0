@@ -1,31 +1,29 @@
-From: ichi@ihug.co.nz
+From: Jim Reimer <wa5rrh@arrl.net>
 Subject: Re: Debian install issue
-Date: Thu, 10 Oct 2002 07:56:35 +0000
+Date: Wed, 09 Oct 2002 13:40:58 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DA532B3.29A7FF20@ihug.co.nz>
-References: <Pine.LNX.4.44.0210091223130.6549-100000@localhost.localdomain>
+Message-ID: <3DA4783A.3030909@arrl.net>
+References: <000d01c26fbd$e4761080$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: 'James Miller' <jamtat@mailandnews.com>, linux-newbie@vger.kernel.org
 
-> On 9 Oct 2002, Ray Olszewski wrote:
->
-> > As to Slackware (and btw, what does "survpc-friendly" mean?) 
+Paul Kraus wrote:
+> I know you can redirect the standard output with > and then the file
+> name you want. But how do you also redirect the STRERR?
 
-survpc  =  survivor PC  =  sub-Pentium PC
+cmd 2>file             will leave stdout on screen and send
+                        stderr to file
+cmd > file 2>&1        will send both to file
+(cmd > file1) 2>file2  sends stdout to file1 and stderr to file2
 
-Slackware is survpc-friendly because even the latest version (8.1) 
-runs on a 386, provides a low-mem kernel for systems with less 
-than 8mb RAM and supports old non-IDE CDroms.  And (incredibly) 
-it even supports pre-IDE (two cable) harddrives and MicroChannel 
-systems.  I know of no other up-to-date, mainsteam distro that 
-provides that much upfront support for old hardware.
+then there's also  'tee'  if you ever need it.
 
-Cheers,
-Steven
+-jdr-
 
 
 -
