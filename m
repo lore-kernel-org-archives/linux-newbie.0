@@ -1,41 +1,27 @@
-From: "Peter H." <heisspf@skyinet.net>
+From: Peter <peter@skyinet.net>
 Subject: Re: user/e-mail name
-Date: Mon, 08 Mar 2004 10:51:24 +0800
+Date: Mon, 08 Mar 2004 14:25:34 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040308025124.87051D821@heisspf>
-References: <5.1.0.14.1.20040307072153.01ef1480@celine>
+Message-ID: <20040308062534.C03E2D831@heisspf>
+Reply-To: "Peter H." <heisspf@skyinet.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 07 Mar 2004 07:46:11 PST." 
- <5.1.0.14.1.20040307072153.01ef1480@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-OK we can say then that in Linux an e-mail program will use the login name as 
-the host name for e-mailing unless a program like sylpheed has it built-in not 
-to do so or one takes special efforts to pinch a program not to do it. Which 
-means the easiest way out is to use ones 'login name' as 'host name' or 
-vis-versa.
+Hi,
 
+I was finally able to tweak exmh to put
+"Reply-To: myname@myisp.net" automatically into the header of outgoing mail. I 
+had to edit .mh_profile in an unusual way to be able to read 
+/etc/nmh/components. That was never necessary in RedHat that exmh could not 
+read that file.
 
-ray@comarre.com said:
-> the man page for exmh includes this vague reference:
-> "Aliases  User Interface.  A browser for your MH aliases lets you define
->         new aliases and insert aliases into mail messages."
-
-I am aware of this feature and use it when I put the From: alias in the 
-header. And I was mistaken earlier that exmh will not accept Reply-To:. I must 
-have made a typo when I tried it. Then based on your earlier mail it is better 
-to use Reply-To: than From: in the mail header.
-
-Thanks & regards
+Regards
 -- 
 Peter
-
-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
