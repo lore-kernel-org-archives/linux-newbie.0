@@ -1,30 +1,41 @@
-From: Jim Reimer <wa5rrh@arrl.net>
-Subject: Re: Debian install issue
-Date: Wed, 09 Oct 2002 13:40:58 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: RE: Debian install issue
+Date: Wed, 09 Oct 2002 12:23:25 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DA4783A.3030909@arrl.net>
-References: <000d01c26fbd$e4761080$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021009121954.025ce990@celine>
+References: <Pine.LNX.4.44.0210091223130.6549-100000@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000d01c26fbd$e4761080$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: 'James Miller' <jamtat@mailandnews.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, 'James Miller' <jamtat@mailandnews.com>, linux-newbie@vger.kernel.org
 
-Paul Kraus wrote:
-> I know you can redirect the standard output with > and then the file
-> name you want. But how do you also redirect the STRERR?
+At 02:01 PM 10/9/02 -0400, Paul Kraus wrote:
+>I know you can redirect the standard output with > and then the file
+>name you want. But how do you also redirect the STRERR?
 
-cmd 2>file             will leave stdout on screen and send
-                        stderr to file
-cmd > file 2>&1        will send both to file
-(cmd > file1) 2>file2  sends stdout to file1 and stderr to file2
+At least with bash, you use
 
-then there's also  'tee'  if you ever need it.
+         2> filename
 
--jdr-
+to redirect STDERR to its own file.
 
+You use
+
+         > filename 2>&1
+
+to redirect both STDOUT and STDERR to the same file (the second part, to be 
+exact, redirects STDERR to STDOUT, which the first part has already 
+redirected to the file).
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
