@@ -1,53 +1,39 @@
-From: Erik Jakobsen <erik@urbakken.dk>
-Subject: checkinstall.
-Date: Thu, 19 Sep 2002 16:56:51 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: checkinstall.
+Date: Thu, 19 Sep 2002 15:19:26 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020919165651.4703598f.erik@urbakken.dk>
+Message-ID: <02091915192602.18645@unix.pa3gcu>
+References: <20020919165651.4703598f.erik@urbakken.dk>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020919165651.4703598f.erik@urbakken.dk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Erik Jakobsen <erik@urbakken.dk>, linux-newbie@vger.kernel.org
 
-Hi.
+On Thursday 19 September 2002 14:56, Erik Jakobsen wrote:
+> Hi.
+>
+> I saw the nice software checkinstall, and would having it installed.
+>
+> Here is the first results.
+>
+> eurit:/home/erik/check/usr/local/sbin # ./checkinstall
+>
+> checkinstall 1.5.3, Copyright 2001 Felipe Eduardo Sanchez Diaz Duran
+>            This software is released under the GNU GPL.
+>
 
-I saw the nice software checkinstall, and would having it installed.
+Whats the URL again, like an ass i have deleted the URL.
 
-Here is the first results.
-
-eurit:/home/erik/check/usr/local/sbin # ./checkinstall
-
-checkinstall 1.5.3, Copyright 2001 Felipe Eduardo Sanchez Diaz Duran
-           This software is released under the GNU GPL.
-
-
-The package documentation directory ./doc-pak does not exist.
-Should I create a default set of package docs?  [y]: y
-
-Preparing package documentation...OK
-
-*** No known documentation files were found. The new package
-*** won't include a documentation directory.
-
-Installing with "make install"...
-
-========================= Installation results ===========================
-make: *** No rule to make target `install'.  Stop.
-
-****  Installation failed. Aborting package creation.
-
-Cleaning up...OK
-
-Bye.
-
-What is to be done now ?.
 
 -- 
-Med venlig hilsen - Best regards - VY73 de OZ4KK
-Erik Jakobsen - erik@urbakken.dk
-SuSE Linux 8.0 Professional
-Registered as user #114875 with the Linux Counter.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
