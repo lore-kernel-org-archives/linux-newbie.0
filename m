@@ -1,33 +1,45 @@
-From: Mike Dresser <mdresser_l@windsormachine.com>
-Subject: Re: writing disk image to file
-Date: Tue, 10 Jun 2003 15:57:37 -0400 (EDT)
+From: qwms-avib@dea.spamcon.org
+Subject: Re: Slackware 8.1.01 Install????
+Date: Tue, 10 Jun 2003 16:14:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0306101550370.5736-100000@router.windsormachine.com>
-References: <3EE63421.7060601@bcgreen.com>
-Mime-Version: 1.0
+Message-ID: <S262192AbTFJUHn/20030610200745Z+191@vger.kernel.org>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EE63421.7060601@bcgreen.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 10 Jun 2003, Stephen Samuel wrote:
+Hal MacArgle wrote:
+> 
+> booting from a DRDos702 floppy the BIOS sees the
+> BusLogic controller OK but doesn't, automatically, 
+> assign a drive letter to either CD.
 
-> The main purpose of the BS parameters was to take care of I/O devices for
-> which the write size made a difference. tape drives with variable block
-> sizes or streaming come to mind. Depending on the tape drive, you could
-> sometimes end up with very different performance and even effective tape
-> capacities depending on how big your write block sizes were.
+A DOS bootdisk can be downloaded from www.bootdisk.com
+that handles the following CDrom drives:
+---------------------------
+Adaptec UW (SCSI) CD or DVD
+Adaptec U2 (LVD) CD or DVD
+IDE/Atapi CD or DVD 
+---------------------------
+It automatically assigns a drive letter (R:) to the CDrom.
 
-Think this would explain why I only get about 16.5-17 gig out of a DDS-4
-tape drive using the default block options (in other words, i didn't
-specify) on tar?
 
-I know some of it is marketting, that they don't _ever_ get 20 gig out of
-them for various reasons.
+> The IDE HD on this machine does NOT have a Dos partition, 
 
-Mike
+No DOS partition is needed.  The system is booted from the
+DOS bootdisk, which launches the installation routine from
+the CDrom.
+
+> so I'm shot down with Stevens' instructions as the two 
+> images wont fit on a floppy.
+
+The two images do not go on the the floppy.  They are read
+(by loadlin.exe) directly from the CDrom.  
+
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
