@@ -1,58 +1,37 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Something funny in Mail
-Date: Tue, 16 Jul 2002 11:50:50 +0800
+From: cR@clear.net.nz (Chris Rodliffe)
+Subject: Xwindows defaults
+Date: Wed, 17 Jul 2002 01:35:25 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207160350.g6G3oo201856@philonline.com>
-Mime-Version: 1.0
+Message-ID: <20020717.013525.88@orac.clear.net.nz>
+Reply-To: cR@clear.net.nz
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
 
+This may not be quite the right list, but I'm getting desperate.
+My Gnome desktop has gone catatonic.   First I lost the pager, then 
+the bar with the applets (can't remember its name).   Quitting & 
+reloading X wouldn't bring it back.  I tried switching window managers 
+(which is always a mistake) and now all I get when I start X is (I think) 
+Sawmill, with icons for Nautilus and the Trash can.   If I start Nautilus 
+the title bar is off the top of the screen and I can't get it down.  
+The right mouse button works but the centre button does nothing, 
+so I can't get any applications, the only way I can get out of X 
+is Alt-Ctrl-F2.  
 
-> On Mon, 15 Jul 2002, Peter wrote:
-> >> After that command proceeds as expected. So it's no bother I now
-> >> just wonder how that happens. Both Albert and Jim are friends of mine.
-> 
-> 
-> jos@lemmerling.net said:
-> > Look into your '.mailrc' in your home-directory; it's probarly
-> > containing the names Albert and Jim. 
-> 
+(If I log in as root, which happens to be configured for KDE, 
+everything works).
 
-> > HTH
+OK, what I *want* to do at this stage is delete some config files so 
+X will start with the default settings.   But I don't want to delete 
+the wrong files and kill X altogether.   I have a heap of emails I
+don't want to lose, for starters.    Can anyone help?   
 
->Peter said:
-> 
-> Thanks!
-> 
-> I checked .mailrc and it had quite a few e-mail addesses. The first
-> one was 
-> Albert's the second one Jim's. Now before Albert was the word 'alias',
-> therefore the unknown command changed to Jim.
-> 
-> Which program is manipulating .mailrc?
-
-> man mail does not say neither could I find a reference in HOWTOs
-
-jos@lemmerling.net said:
-> dunno, I don't use the program mail that much... I've checked some
-> man-pages, but couldn't find anything.
-
-> Perhaps you've done some experimenting in the mail-program itself?
-
-NOT AT ALL
-
-> HTH
-
-> -- Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net) 
-
-
--- 
-Peter
-
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
