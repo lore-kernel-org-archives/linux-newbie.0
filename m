@@ -1,129 +1,38 @@
-From: "Rajat  Jain, Noida" <rajatj@noida.hcltech.com>
-Subject: zero copy issue while receiving the data (counter part of sendfil
-	e)
-Date: Thu, 16 Dec 2004 19:38:41 +0530
-Message-ID: <267988DEACEC5A4D86D5FCD780313FBB02A6B7B2@exch-03.noida.hcltech.com>
+From: "Vladimir E. Rodriguez" <vrodriguez@municipiodeloja.gov.ec>
+Subject: lilo boot problems with SATA and mandrake 10.1
+Date: Thu, 16 Dec 2004 09:40:44 +0000
+Message-ID: <1103190044.7183.12.camel@itanium>
+Reply-To: vrodriguez@municipiodeloja.gov.ec
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Cc: "Sanjay Kumar, Noida" <sanjayku@hcltech.com>, "Deepak Kumar Gupta, Noida" <dkumar@hcltech.com>
 
+Hello!
 
-Hi,
+Please, someone could help me with the following problem:
 
-I'm experimenting on stock kernel 2.6.8
+I have  a system with the following specifications:
+    Intel 865G Chipset
+    SATA Maxtor 120GB
+    P4 2.8 Ghz
 
-I was looking for an interface that could directly receive data from a
-network socket, WITHOUT coying from kernel space to user space. (Like for
-sending data, "sendfile" provides to send data to network socket without
-copying it to kernel space). I came across tcp_read_sock() interface in
-net/ipv4/tcp.c.
+When I trying to install Mandrake 10.1 on it, it intalls it normally,
+but when I boot I have only "L" letter instead Lilo Boot Menu, I tried
+GRUB Bootloader, and get "G" letter instead GRUB Boot Menu
 
-Has anybody tried tcp_read_sock()?? Is there any known issue with it ?? If
-somebody has some idea, I would appreciate if you can share.
+Also I have windows XP on this system to dual boot.
+After I have installed Fedora Core 3, It works normally, but with
+mandrake 10.1 official I have problems to boot.
 
-I might be wrong, but what I perceive is that I will pass a pointer to this
-function. And when the function returns, I expect it to be set to the kernel
-buffer (corresponding to socket).
+Please anybody have experience with this thing?
 
-1) To fulfill this objective, I expect to pass a pointer to pointer & only
-then it can be done. (If we have to modify a pointer's value, we have to
-pass its address ... Right??). However, this function expects a char * buf
-(in read_descriptor_t argument). Any ideas ?????????
+Thanks
 
-2) This code also frees the space allocated to sk_buffs etc using
-sk_eat_skb(sk, skb) and cleanup_rbuf(sk, copied) etc. But this function is
-supposed to return these locations to the calling code ... Right???
-
-Any pointers are more than welcome. I have provided the code for reference.
-Please cc the reply to me as I'm not on the list.
-
-Thanks & regards,
-
-Rajat Jain
-
------------------------------------------------------------------------
-/* net/ipv4/tcp.c
- * This routine provides an alternative to tcp_recvmsg() for routines
- * that would like to handle copying from skbuffs directly in 'sendfile'
- * fashion.
- * Note:
- *      - It is assumed that the socket was locked by the caller.
- *      - The routine does not block.
- *      - At present, there is no support for reading OOB data
- *        or for 'peeking' the socket using this routine
- *        (although both would be easy to implement).
- */
-int tcp_read_sock(struct sock *sk, read_descriptor_t *desc,
-                  sk_read_actor_t recv_actor) {
-        struct sk_buff *skb;
-        struct tcp_opt *tp = tcp_sk(sk);
-        u32 seq = tp->copied_seq;
-        u32 offset;
-        int copied = 0;
-
-        if (sk->sk_state == TCP_LISTEN)
-                return -ENOTCONN;
-        while ((skb = tcp_recv_skb(sk, seq, &offset)) != NULL) {
-                if (offset < skb->len) {
-                        size_t used, len;
-
-                        len = skb->len - offset;
-                        /* Stop reading if we hit a patch of urgent data */
-                        if (tp->urg_data) {
-                                u32 urg_offset = tp->urg_seq - seq;
-                                if (urg_offset < len)
-                                        len = urg_offset;
-                                if (!len)
-                                        break;
-                        }
-                        used = recv_actor(desc, skb, offset, len);
-                        if (used <= len) {
-                                seq += used;
-                                copied += used;
-                                offset += used;
-                        }
-                        if (offset != skb->len)
-                                break;
-                }
-                if (skb->h.th->fin) {
-                        sk_eat_skb(sk, skb);
-                        ++seq;
-                        break;
-                }
-                sk_eat_skb(sk, skb);
-                if (!desc->count)
-                        break;
-        }
-        tp->copied_seq = seq;
-
-        tcp_rcv_space_adjust(sk);
-
-        /* Clean up data we have read: This will do ACK frames. */
-        if (copied)
-                cleanup_rbuf(sk, copied);
-        return copied;
-}-----------------------------------------------------------------------
-
-read_descriptor_t is defined as:
-
-/*
- * include/linux/fs.h
- */
-typedef struct {
-        size_t written;
-        size_t count;
-        union {
-                char __user * buf;
-                void *data;
-        } arg;
-        int error;
-} read_descriptor_t;
------------------------------------------------------------------------
+Vladimir
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
