@@ -1,27 +1,36 @@
-From: Amin <amin@siriusbb.com>
-Subject: Re: WYSIWYG editor
-Date: Sat, 27 Dec 2003 12:52:44 +0600
+From: Peter <heisspf@skyinet.net>
+Subject: C Compiler
+Date: Sat, 27 Dec 2003 16:20:40 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200312271252.45096.amin@siriusbb.com>
-References: <1072362418.3feaf3b285fa0@ecserv7.uwaterloo.ca>
+Message-ID: <200312270820.hBR8Ked01366@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1072362418.3feaf3b285fa0@ecserv7.uwaterloo.ca>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Thursday 25 Dec 2003 20:26, Dan Zlotnikov wrote:
-> I've been unable to google up anything worthwhile, so I figured I'd
-> ask here. Are you aware of a WYSIWYG web editor for linux? Ideally
-> one that does CSS as well as HTML.
+Season Greetings!
 
-The only thing that comes immediately to mind is Mozilla's Composer 
-application.  You could also try OpenOffice.org's Web page editor.
+Trying to install a program I get:
 
-HTH,
-Yawar Amin
+checking for C compiler default output... configure: error: C compiler cannot 
+create executables
+
+when doing ./configure in RH9.
+
+How do I correct this error?
+
+Thanks & regards
+-- 
+Peter
+
+
+
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
