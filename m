@@ -1,25 +1,37 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: Installation of sources
-Date: Sun, 21 Jul 2002 01:14:01 -0400
+From: Jim Reimer <wa5rrh@arrl.net>
+Subject: samba problem
+Date: Sun, 21 Jul 2002 08:17:46 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <221321ff3c.1ff3c22132@homemail.nyu.edu>
+Message-ID: <200207211315.g6LDFtOc028945@franklin.icok.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
-I recently installed Linux (RHL 7.3) for the first time in my life.
-Now what do I do install/view the sources? I read in some book where i 
-cud find the sources but that directory is absolutely empty, so I 
-guess the sources have to be installed first.
+I'm having trouble geting samba going.  I can see the Linux
+machine (pyro2) from a windows(95) machine (it shows up in
+windows explorer) but when I try to connect from windows,
+I get this error message:
 
--Anshu
+\\pyro2 is not accessible.  The specified computer did not
+receive your request.  Try again later.
+
+And when I check from another Linux machine for available
+shares, I get this:
+
+[jdr@pyro jdr]$ /usr/bin/smbclient -L pyro2
+added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
+Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
+session request to PYRO2 failed (Not listening for calling name)
+Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
+session request to *SMBSERVER failed (Not listening for calling name)
+
+What do I need to do?
+
+Thanks,
+-jdr-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
