@@ -1,48 +1,21 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: ssh error message
-Date: Thu, 12 Sep 2002 19:56:12 -0700
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: How do I do a surface scan of a CDROM?
+Date: Thu, 12 Sep 2002 21:29:05 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020912194655.022ca9c0@celine>
-References: <200209130241.g8D2ewt01925@philonline.com>
+Message-ID: <CPIMSSMTPU045A8JB0i00002fe5@cpimssmtpu04.email.msn.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209130241.g8D2ewt01925@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: Text/plain; charset="us-ascii"
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-At 10:40 AM 9/13/02 +0800, Peter wrote:
->[...]
->ray@comarre.com said:
-> > As to the packages (what you call "programs")
->
->That's what we called them before the PCs were around, ;-).
+badblocks won't run because it's a read only medium.
 
-Not really. At least I didn't, either then or now.
+I believe my kids have scratched the disk on a particular file, but I would like to run a full surface scan of the cd to see if it gets read sometimes, but not others.
 
-I was attempting to distinguish an actual program, such as sshd (that is, 
-either an executable binary or source code that can be either compiled or 
-interpreted), from a package that contained that program, maybe an 
-associated init script, a man page and other documentation, possibly sample 
-config files, and whatever else the packager thought worth including(or the 
-packaging system requires).
-
-The distinction was meaningful back in mainframe days, and it remains 
-meaningful today. Packages often contain programs, but they are not the 
-same thing as programs.
-
-In the context of troubleshooting your problem, drawing the distinction was 
-cogent, since the problem was that you were mistaken about which package 
-actually contained the program you wanted to run.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Thanks
+Alan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
