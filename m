@@ -1,70 +1,147 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re[2]: checking bandwidth in coyote
-Date: Thu, 13 May 2004 07:32:59 -0700
+From: "Gosselin, Mark" <gosselinm@netscout.com>
+Subject: RE: Optimizing I/O via kernel changes
+Date: Thu, 13 May 2004 14:19:11 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040513072252.01fa8a48@celine>
-References: <5.1.0.14.1.20040511122021.02031090@celine>
- <1211088623.20040512014917@yahoo.com.sg>
- <5.1.0.14.1.20040511122021.02031090@celine> <1114970915.20040513001532@yahoo.com.sg>
+Message-ID: <6CE6A442029B3347890ED9FCA94FAE0701EEAF6A@nsxmail.netscout.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1114970915.20040513001532@yahoo.com.sg>
-References: <5.1.0.14.1.20040511122021.02031090@celine>
- <1211088623.20040512014917@yahoo.com.sg>
- <5.1.0.14.1.20040511122021.02031090@celine>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: otok_otok1998 <otok_otok1998@yahoo.com.sg>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
+Cc: "Linux Newbie (E-mail)" <linux-newbie@vger.kernel.org>
 
-At 12:15 AM 5/13/2004 +0700, otok_otok1998 wrote:
-[...]
->RO> At 01:49 AM 5/12/2004 +0700, otok_otok1998 wrote:
-> >>Hello linux-newbier,
-> >>
-> >>i want to know how to checking bandwidth on my coyote linux, i'm using
-> >>adsl connection, coyote on Pentium I as router.. thanx 4all
+OK, here's the final scoop on this one... I finally found someone willing to tell
+me EXACTLY what they want to do. We run an application called snort (snort.org), and
+we run upwards of 100 instances of the snort process to collect data from a network 
+segment. We want to optimize the I/O to the SCSI device, so that all of these processes
+can write to the same device (into different files). 
+
+We're running Red Hat Enterprise ES 3.0, on a Dell 2650, kernel is 2.4.21-9.ELsmp,
+it's a stock  kernel, system has 8GB of RAM, no real swap activity...
+
+Anyone have any ideas???
+
+Thanks,
+Mark Gosselin
+NetScout Systems
+
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com]
+Sent: Wednesday, May 12, 2004 1:41 PM
+To: linux-newbie@vger.kernel.org
+Subject: RE: Optimizing I/O via kernel changes
+
+
+Both Chris and Mark have replied to me privately on this, but replies to 
+the list are more useful.
+
+I aldready discarded Mark's reply, so I cannot forward it ... but he said 
+he asked for more details and was told that the speedup issue involves SCSI 
+I/O of some sort ... I've forgotten the specifics ... a topic way outside 
+my expertise.
+
+So while Chris was closer to the target than I, Mark really needs to post a 
+more specific follopup to the list in order to get help.
+
+At 09:30 AM 5/12/2004 -0500, Little, Chris wrote:
+>see, i took this to mean disk i/o.  the next guy might take it as video i/o.
+>vague questions lead to vague answers, eh?
 >
->RO> Please be more descriptive about what exactly you want to check.
-[...]
->sorry ray.. im not giving the descriptive, i mean i want to check my
->bandwidth size that my adsl isp told me, it's about 128kbps.. once more
->sorry ray :) n thanx
+> > -----Original Message-----
+> > From: Ray Olszewski [mailto:ray@comarre.com]
+> > Sent: Tuesday, May 11, 2004 11:52 AM
+> > To: linux-newbie@vger.kernel.org
+> > Subject: Re: Optimizing I/O via kernel changes
+> >
+> >
+> > At 11:30 AM 5/11/2004 -0400, Gosselin, Mark wrote:
+> > >Hi List,
+> > >
+> > >I've been asked the following question by our VP of Development.
+> > >
+> > >Is there some kernel parameter (or parameters) that we can tweak to
+> > >improve our I/O on a Linux Server??
+> > >
+> > >Since I'm new to Linux, I figured someone one one of these
+> > lists might
+> > >have a concise answer to that
+> > >question. Can we use the kernel tomincrease I/O rates, or
+> > are we bound by
+> > >hardware??
+> >
+> > This question is too vague to elicit a meaningful answer.
+> > Even assuming you
+> > mean Mbps on an Ethernet by "I/O rates" (there are other
+> > possible meanings,
+> > of course), knowing whether your particular setup is hardware
+> > or software
+> > bound requires knowledge of your hardware and software ...
+> >
+> >          what NIC? (if not 100 Mbps, mention speed)
+> >          what CPU? (type and speed)
+> >          how much RAM?
+> >                  is the system *ever* using swap?
+> >          any relevant IRQ sharing?
+> >
+> >          what Linux distro and version?
+> >          what Linux kernel ("uname -a")?
+> >          custom or stock kernel?
+> >          what NIC module and parameters?
+> >          what (if any) iptables rules are you running?
+> >          does "ifconfig" show any appreciable error rate?
+> >
+> >          what relevant services are you running?
+> >          what "I/O rates" are you currently seeing?
+> >          if the relevant connectivity is not just Ethernet
+> > (for example, if
+> > it is a DSL connection to the Internet), what type and speed
+> > of connection
+> > is it?
+> >          how "busy" is the system during normal operation?
+> >                  what % CPU use does "top" report?
+> >                  what blocking ("load averages") does "uptime" report?
+> >
+> > Depending on the details of the response, there could be ways
+> > to speed up
+> > throughput, such as reducing the complexity of firewall
+> > rulesets,  tweaking
+> > NIC module settings, rearranging IRQ assignments, conceivably
+> > doing some
+> > tailoring to specific service needs, possibly tailoring
+> > packet size (MTU)
+> > settings to a link layer other than Ethernet.
+> >
+> >   As a general matter, you may want to look at the settings
+> > described in
+> > your kernel Documentation under
+> > ./Documentation/networking/ip-sysctl.txt
+> > and at the doc file in the same directory for your NIC. But
+> > there is no
+> > magic "faster" switch in the kernel (or at least none I know
+> > of) that is
+> > turned off by default (why would there be?).
+> >
+> > In practice, 100 Mbps Ethernet NICs under Linux seem to
+> > deliver somewhere
+> > between 50 Mbps and 80 Mbps on a sustained basis, depending
+> > on things I'm
+> > not sure of (kernel version? specific NIC hardware?).
+> >
+> > And, of course, if I have misinterpreted your use of "I/O
+> > rates", this
+> > entire response is meaningless for your purposes.
 
 
-For someone lacking in specialized equipment to test lines, and access to 
-both ends of the connection, there is no *definitive* test I know of to 
-determine bandwidth size. In practice, when I need to do this, I initiate a 
-large transfer of some sort (usually ftp), and simply observe the transfer 
-rate. A few considerations:
-
-1. The transfer needs to be large enough to give you a good feel for 
-average bandwidth ... not short enough to be influenced by transient 
-effects. The larger the better, but as a general matter, something in the 
-60 MB range (a Linux kernel source package, for example) usually serves me 
-nicely.
-
-2. The source of the transfer needs to have a higher upload speed than the 
-alleged download speed of the connections you are trying to test.
-
-3. The source should be "close enough" to you that delays caused by 
-intermediate steps in the route are unlikely to affect measurement. (This 
-is usually the toughest requirement to meet, and I cannot give you any real 
-advice about how to meet it.)
-
-I haven't had occasion to need to do this in years, so I may be missing 
-some other considerations that apply. If so, I hope others will jump in 
-with some added suggestions. That's why I'm sending this reply back via the 
-list rather then just privately.
-
-You can probably observe the speed in the ftp client you use; most of the 
-ones I'm familiar with display cumulative download speed for a transfter. 
-If not, with a little care you can check total bytes transferred in a given 
-time frame using either ifconfig or ip (whichever one coyote supplies).
 
 
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
