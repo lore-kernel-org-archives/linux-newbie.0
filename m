@@ -1,70 +1,47 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Mail
-Date: Tue, 22 Oct 2002 11:15:27 -0400
+From: Carl <carl@anexia.co.uk>
+Subject: Re: Mail
+Date: Tue, 22 Oct 2002 16:42:59 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <005601c279dd$da9f1ff0$64fea8c0@pkrausxp>
+Message-ID: <5.1.1.6.0.20021022162717.0339c138@interzone.anexia.co.uk>
+References: <005601c279dd$da9f1ff0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0057_01C279BC.538D7FF0"
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <005601c279dd$da9f1ff0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0057_01C279BC.538D7FF0
-Content-Type: text/plain;
-	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-I want to set up one of our servers as a mail server for internal mail
-and external mail. But I wont external mail forwarded to our real mail
-server which is hosted by a 3rd party. That part is easy. But I also
-want all incoming mail to filter through this server. Do I  need to run
-fetchmail to have it get the mail from our isp or is there a better way?
+At 11:15 22/10/2002 -0400, Paul Kraus wrote:
+>I want to set up one of our servers as a mail server for internal mail
+>and external mail. But I wont external mail forwarded to our real mail
+>server which is hosted by a 3rd party. That part is easy. But I also
+>want all incoming mail to filter through this server. Do I  need to run
+>fetchmail to have it get the mail from our isp or is there a better way?
+>
+>Red Hat 7.3
+>Qmail
 
-Red Hat 7.3
-Qmail
+mail collection from the isp will depend on the isp setup.
 
-This server is also running Hylafax as a fax server and I have it
-running backups at night.
+if your isp pushes an smtp feed at you when you login (assuming dial-up
+connection/dynamic ip address) then just use the smtp server. otherwise
+use fetchmail for pop3/imap etc...
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+if you are on an always on connection with static ip then you don't need the
+isp at all except for dns and connectivity purposes.
 
-------=_NextPart_000_0057_01C279BC.538D7FF0
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+fetchmail can be a little daunting for the newbie to start but when you get the
+config file right it takes very little admin.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+it is also worth noting that if your isp has seperate pop3 mailboxes for
+all your users they can sometimes be convinced to move your feed to smtp
+rather than pop3 to save them admin time at their end. some isp's charge
+for smtp but when you point out that their "unlimited pop3 accounts" is really
+going to be unlimited they might start to see sense.
 
-------=_NextPart_000_0057_01C279BC.538D7FF0--
+--
+Carl
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
