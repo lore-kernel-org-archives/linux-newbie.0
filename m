@@ -1,35 +1,78 @@
-From: "William Stanard" <wstanard@palmertrinity.org>
-Subject: PHP5 won't make on Linux 2.4.18-14
-Date: Tue, 15 Mar 2005 16:06:11 -0500
-Message-ID: <fc.004c4e000076134a004c4e000076134a.761401@palmertrinity.org>
+From: Donald Duckie <schipperke2000@yahoo.com>
+Subject: Re: SOLVED: Some users locked out of ssh and sftp?
+Date: Tue, 15 Mar 2005 18:13:08 -0800 (PST)
+Message-ID: <20050316021308.55227.qmail@web53610.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+In-Reply-To: 6667
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-In our Linux class, we are about to study coding in PHP and Mysql. We're
-running  Linux 2.4.18-14  (Red Hat) and have loaded Apache 2.0.52 (which
-serves just fine, thank you...) and Mysql 4.0.21 (runs ok on the command
-line...). We want to be able to run PHP 5.0.2, but we can't get it to
-make. The error reads:
+hi chuck,
 
-ext/ctype/ctype.lo: file not recognized: file truncated
-collect2: ld returned 1 exit status
-make: *** [libphp5.la] Error 1
+thanks for your information.
+i was quite hesistant to delete that line, that was
+why i wanted some confirmation.
+it is already ok now.
 
-We have been at this for a while, having upgraded from Apache 1.33 and
-PHP4.22 and Mysql 3.x. Is there a known PHP5 incompatibility with our
-(ancient but serviceable) Linux kernel?
+this is not eve.
+sorry eve :)
+it just happen that i have the same problem that
+moment, and while taking some break, i happen to read
+this thread. that was why i asked as to how i would
+modify the known_hosts file.
 
-Bill Stanard
-Academic Computing
-Palmer Trinity School
-305.969.4239
+donald
+
+--- chuck gelm <chuck@gelm.net> wrote:
+> Donald Duckie wrote:
+> > I got this error message as shown below  . . . 
+> > How do I change the /root/.ssh/known_hosts file?
+> > It seems encrypted . . .
+> 
+> Hi, Donald:
+> 
+>   The file is not encripted, but it contains an
+> encription key for
+> each remote hostname.  There is a line for each
+> 'ssh' host that
+> you have sucessfully connected.  If the remote
+> 'host' has changed
+> its encription key and you already have a line with
+> the old
+> encription key, 'ssh' will fail with that message.
+> 
+> Solution:
+> 
+>   Use a 'text' editor and open
+> /root/.ssh/known_hosts.
+> Delete the line that starts with the remote
+> hostname.
+> Save and exit.  (or 'rm known_hosts')
+> 
+> 'ssh' to that hostname.
+> Answer 'yes' when prompted.
+> 
+> HTH, Chuck
+> 
+> -
+> To unsubscribe from this list: send the line
+> "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at 
+> http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at
+> http://www.linux-learn.org/faqs
+> 
 
 
-
+		
+__________________________________ 
+Do you Yahoo!? 
+Take Yahoo! Mail with you! Get it on your mobile phone. 
+http://mobile.yahoo.com/maildemo 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
