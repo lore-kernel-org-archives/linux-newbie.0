@@ -1,53 +1,47 @@
 From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Mandrake 9.1 internet connection
-Date: Sun, 1 Jun 2003 16:51:44 -0500 (CDT)
+Subject: Re: more compaq 4000 / linux questions.
+Date: Sun, 1 Jun 2003 17:06:48 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0306011633390.1059@homenet>
-References: <3EDA4378.6070007@att.net>
+Message-ID: <Pine.LNX.4.53.0306011658400.1059@homenet>
+References: <3EDA7595.3090202@att.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EDA4378.6070007@att.net>
+In-Reply-To: <3EDA7595.3090202@att.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux-Newbie list <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-Gee, an engineer that knows less about Linux (or at least certain aspects
-of it) than me.  Welcome aboard!  Prepare for frustration . . .
-
-First, let me interject on Ray's behalf that you have not given us enough
-information to help you with your problem (hey, I think I'm getting the
-hang of this!).  But, seriously: what dialer program are you using and/or
-what graphical frontend?  I know of a couple of different dialing programs
-for Linux, but I can't remember the name of either at the moment :(.
-Maybe information about that would be helpful to those here who could
-offer some constructive advice.
-
-Anyway, what I would point out on a perhaps more fundamental level is that
-I understand you to have 2 basic tasks in your request.  Maybe you're not
-separating them conceptually, but I see you as needing to: 1) set up
-something like dial-on-demand; which has a related problem that you've run
-into - 2) dialing program permissions.  I think most Linuces come with
-their dialing programs belonging to root only.  As I understand this, the
-ways to deal with the inconvenience of having to su every time you want to
-dial the 'net are: 1) set up a "dialers" or "ppp" group into which you
-place users who are allowed to dial the 'net on your system; 2) change the
-permissions on the dialing program.  I used option 2.  I accomplished
-this by su'ing and issuing the command "chmod 4745 /usr/bin/kppp".  As you
-may note, I'm running the graphical frontend Kppp (part of the KDE desktop
-environment) as my dialing program.  This allows most users to invoke the
-dialer on my system (I'm virtually the only user).  I suppose in
-situations where more people use a particular computer, it might be wiser
-to use method 1 to give those users dialer/'net access.  I'll have to let
-others describe how to best do that, since I'm still a bit vague on user
-administration under Linux.
-
-As for making the dialer dial when outside packets are requested, I'll
-have to leave that to others to address.  I'd like to get that working on
-my system as well, but have just not had the time to tackle it yet.  I'd
-have to do some studying to say anything meaningful on that topic.  Ah,
-the things we used to do so simply under M$Win!  But those days are
-forever behind us now . . . ?
+On Sun, 1 Jun 2003, Richard Dawson wrote:
+>
+> Mandrake 9.1 didn't seem to find the ESS 1868 based. Compaq sound card.
+>  The Compaq card is a quasi-ISA card.  There is a slightly extended ISA
+> socket on the board (labeled Compaq) in which it is installed.  I
+> removed that card, put a "vanilla" sound card in the adjacent ISA slot,
+> and rebooted.  The Mandrake Control Center (MDC) Hardware tab doesn't
+> seem to find it either.
+>
+<snip>
+>
+> All of this seems to be there even if I pull the sound cards, so (1) can
+> I get this thing to use the sound card that came with it, or (2) can I
+> get it to acknowledge the installation of some other card?
+>
+I'm not so swift on sound configuration under Linux either, and tend to
+rely on its steadily-improving autodetection and driver/module autoloading
+for this sort of thing.  But I may still be able to say something
+relevant, as follows.  Were I in your shoes, I would get good hardware
+identification numbers off the two cards (by physically looking at them)
+and enter those terms into a Google search.  I would then select "restrict
+the search" and enter in the term - yes, you guessed it - "Linux."  You
+will likely get lots of results telling you how other Linux users have
+fared in trying to use that hardware.  If you look extensively enough, you
+will likely find fairly specific advice for getting that hardware working
+on your system - if it really is supported by Linux.  I'm not trying to
+say you shouldn't ask here.  I'll bet there are people that have some
+fairly ready answers of a more technical nature than mine who could help.
+But when I've confornted situations like yours, I've usually started with
+some basic 'net searching.  Hope this helps.
 
 James
 -
