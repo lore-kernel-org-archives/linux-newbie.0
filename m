@@ -1,95 +1,73 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Can't Print (fwd)
-Date: Sun, 02 May 2004 07:50:00 -0700
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: cdrecord failure report??
+Date: Mon, 3 May 2004 15:27:57 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040502073017.01efcfc0@celine>
-References: <20040502065909.56AB020933@heisspf>
+Message-ID: <20040503192757.GA493@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040502065909.56AB020933@heisspf>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-At 02:59 PM 5/2/2004 +0800, Peter wrote:
-> >heisspf@skyinet.net said:
-> > > On a standalone PC with no modem and therefore no Internet connection
-> > > and RH 9.0 installed I am unable to get the printer to work.
-> >
-> > > I have not an onboard parport but a singel parallel PCI card with chipset
-> > > NM9805CV.
->
->ray@comarre.com said:
-> > but I **think** you also need the module parport_pc to use a parallel
-> > printer.
->
->I have done that: insmod parport_pc io=0x378 irq=7
->
->then I get in dmesg 2 warnings and the message parport 0x378: "you gave this
->address, but there is probably no parallel port there!"
->
->After insmod parport_pc there is no more error message about 'cannot open
->'/dev/lp0' 'No such device or address'
->
->Doing lpr file gives some rumbling on the hd and lpq shows job done yet
->nothing has been printed.
->
->io=0x378 and irq=7 I got from the instructions on how to install the printer
->card.
->
->In bios onboard paraport is disabled.
->
->"more /proc/pci" should give me the io and irq addresses of the card, it does
->not. Could that mean that the card has not been detected at all by the system?
->
->Kudzu does not indicate that it had found new hardware after the card was
->installed.
+Greetings: My faithful, for years, CDRW system just failed for no
+_apparent_ reason with the following report:
+-----------------------------------------------------------------------=
+-------
+Script started on Mon May  3 14:35:46 2004
+root@lnx2:~# cdrecord -checkdrive
+Cdrecord 2.00.3 (i686-pc-linux-gnu) Copyright (C) 1995-2002 J=F6rg Schi=
+lling
+scsidev: '0,3,0'
+scsibus: 0 target: 3 lun: 0
+Linux sg driver version: 3.1.24
+Using libscg version 'schily-0.7'
+Device type    : Removable CD-ROM
+Version        : 2
+Response Format: 2
+Capabilities   : SYNC=20
+Vendor_info    : 'YAMAHA  '
+Identifikation : 'CRW8424S        '
+Revision       : '1.0j'
+Device seems to be: Generic mmc CD-RW.
+cdrecord: Warning: controller returns zero sized CD write parameter pag=
+e.
+cdrecord: Warning: controller returns wrong page 0 for CD write paramet=
+er page (5).
+	< repeated exact report three more times>
+Using generic SCSI-3/mmc CD-R driver (mmc_cdr).
+Driver flags   : MMC SWABAUDIO=20
+Supported modes:=20
+root@lnx2:~# exit
+Script done on Mon May  3 14:35:57 2004
+-----------------------------------------------------------------------=
+-------
 
+	This from cdrecord 2.00.3 - same from cdrecord 1.1x, so it
+must be either the Yamaha drive or the BusLogic controller but I
+don't know which not having "spares" of either to swap.. Of course
+the standard /proc/scsi/scsi and cdrecord -scanbus returns normally.
+Cdrecord reporting "controller" can, possibly, mean the SCSI
+controller or the controller on the drive. Just guessing..
 
-This troubleshooting report is a bit of a hodgepodge of information, so a 
-hodgepodge of suggestions is probably a proper response to it.
+	The BusLogic controller works fine with a SCSI scanner so I'm
+inclined to think it must be the Yamaha drive but would like some
+input from anyone who's had a similar event.. And yes, this was
+discovered when I tried to blank and/or write to a CDR as I've done
+so many times before...
 
-1. In the BIOS, do you have "PnP OS" set to NO? Or (if it is YES) do you 
-have RH set up to do PnP for you? (I can't advise you as to how, since my 
-practice is to let the BIOS handle PnP.) If I were to guess at this point, 
-it would be that you have this setting wrong.
+	TIA and cheers,
 
-2. Does the BIOS report seeing the PCI card? BIOS information formats vary 
-a lot, but usually there is a screen briefly displayed just before boot 
-starts that shows IRQ info. With Linux, it will show up just before (and at 
-first , right above) the LILO: prompt.
-
-3. Look at your BIOS screens to see what IRQs it is set to assign to the 
-various PCI slots. IRQ 7 is unlikely to be there by default (since it would 
-normally be used by the mobo parport, the one you've disabled). Also check 
-to see if you'ce reserved any IRQs for "legacy" use (which in this context 
-means an ISA slot, if your mobo has one). With the details depending on 
-your mobo and BIOS, there should *some* way to select IRQ 7 for the slot 
-you have yoyur PCI card in.
-
-4. If lpq shows the jobs as done, then lpd has managed to print them 
-somewhere  (from its perspective, anyway). So if you check 
-/proc/interrupts, you should find some IRQ associated with the lp0 device, 
-and in /proc/ioports some I/O base.
-
-5. I prefer "/sbin/lspci" to "more /proc/pci", but that's just style, not 
-substance. In either case, not finding an entry there does suggest the 
-system is not detecting the card. This is almost surely a BIOS issue (or 
-failure of the card itself), not a Linux issue.
-
-6. If you just "insmod parport_pc", without forcing an IRQ and I/O base, 
-what happens?
-
-7. You said in an earlier message that all of this worked with Slackware. 
-Were you referring to a Slackware install on this hardware, or to using 
-this parport card in a different host that ran Slackware? (It's relevant to 
-all this speculation I'm doing about BIOS problems.)
-
-
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+          =20
+	     Anyone can pile complexity upon complexity;
+                  only a genius can truly simplify..
+=2E
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
