@@ -1,29 +1,31 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Switching between KDE and GNOME
-Date: Fri, 04 Jul 2003 16:50:05 +0800
+From: "Girish Kale" <girish.kale@nevisnetworks.com>
+Subject: Question on performance figures
+Date: Mon, 7 Jul 2003 15:09:02 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030704085010.357DC1041E@pfheiss>
-References: <200307030921.h639Lg0J000826@dbmail-mx2.orcon.co.nz>
+Message-ID: <36993D449C7FA647BF43568E0793AB3E061D48@nevis_pune_xchg.pune.nevisnetworks.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Thu, 03 Jul 2003 21:23:59 +1200." 
- <200307030921.h639Lg0J000826@dbmail-mx2.orcon.co.nz>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: cr <cr@orcon.net.nz>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-I am using fvwm2 or xfce. If I need access to gnome I type panel&, if I need 
-access to kde I type kicker&. That way my desktop will not be clattered with 
-icons. To put those panels out of the way I iconify them.
+Hi,
 
-Regards
+I would like to know :
 
+Number of cycles/processing time (with CPU freq) for
 
--- 
-Peter
+1) Context switching
+2) IP stack
+3) tcp/udp stack
+4) Ethernet driver
 
+Is there any website where these figures are available.
+
+Regards,
+Girish
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
