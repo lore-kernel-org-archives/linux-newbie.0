@@ -1,34 +1,28 @@
-From: Eng Se-Hsieng <g0202512@nus.edu.sg>
-Subject: SIOCGIFCONF and ifr_bandwidth
-Date: 30 Jun 2003 21:30:46 -0800
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: Switching between KDE and GNOME
+Date: Mon, 30 Jun 2003 09:46:40 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1057037447.1564.14.camel@nusnet-165-146.dynip.nus.edu.sg>
+Message-ID: <Pine.LNX.4.43.0306300946190.20894-100000@perpugilliam.csclub.uwaterloo.ca>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Dear all,
+Hello everyone, and good morning where appropriate.
 
-Could someone please tell me why when I use 
+I'm currently running GNOME/Sawfish, but have decided to switch to KDE.
+This is proving to be somewhat beyond me. Can anyone point me in the right
+direction with some really short steps and using two-syllable words at
+most?
 
-ioctl(fd, SIOCGIFCONF, (char *)cf);
+Running Debian/Woody kernel 2.4.1
 
-All the addresses returned have a link bandwidth
-(ifrequest->ifr_bandwidth) of 2?
+Thanks!
 
-What does this 2 mean and why is the same for all the interfaces (eth,
-ppp, lo)?
-
-Thank you.
-
-Regards,
-
-Se-Hsieng
-
-
+Dan
 
 
 -
