@@ -1,58 +1,65 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Large FTP transfers
-Date: Sat, 28 Sep 2002 14:59:18 +0000
+Date: Sat, 28 Sep 2002 08:01:27 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02092814591800.00287@unix.pa3gcu>
+Message-ID: <5.1.0.14.1.20020928075131.02675d00@celine>
 References: <200209281757.06861.adam@luchjenbroers.com>
-Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <200209281757.06861.adam@luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Adam Luchjenbroers <adam@luchjenbroers.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: adam@luchjenbroers.com, linux-newbie@vger.kernel.org
 
-On Saturday 28 September 2002 08:27, Adam Luchjenbroers wrote:
-> What parts of system does an FTP transfer of a large file (eg .ISOs)
-> affect. I am getting hard-lockups while trying to D\L the file.
+At 05:57 PM 9/28/02 +0930, Adam Luchjenbroers wrote:
+>What parts of system does an FTP transfer of a large file (eg .ISOs) 
+>affect. I
+>am getting hard-lockups while trying to D\L the file.
 >
-> Where might the problem be?
+>Where might the problem be?
 >
-> Mandrake 8.1
-> Kernel 2.4.19
-> KDE 3.0.2
+>Mandrake 8.1
+>Kernel 2.4.19
+>KDE 3.0.2
 >
-> Athlon 900MHz
-> nVidia GeForce 4 Ti4200 128MB
-> 512MB Corsair DDR333
-> Soltek SL-75DRV5 (Via KT333 Chipset, identified as KT266)
-> Seagate 40GB HDD
->
+>Athlon 900MHz
+>nVidia GeForce 4 Ti4200 128MB
+>512MB Corsair DDR333
+>Soltek SL-75DRV5 (Via KT333 Chipset, identified as KT266)
+>Seagate 40GB HDD
 
-There should be no problem with the file size, providing you have room for it 
-on the disk space where it is being transfered to.
+Over the years, I've had systems fail during large ftp transfers, though my 
+symptom is usually a spontaneous reboot rather than a "hard-lockup" (by 
+which, I assume, you mean the Linux system that is receiving the file 
+ceases to respond in any way ... no X, no consoles, no telnet of ssh 
+response, and no response to pings ... requiring a power-down or a 
+hard-reset reboot). The cause invariably proved to be marginal hardware (in 
+fact, this is so predictable that I use large ftp transfers as part of my 
+stress testing of new systems ... that plus my being a cheapskate probably 
+explains why I see this problem so often). A large ftp transfer "affects" 
+about every part of the system there is.
 
-Would you mind defining "hard-lockups" for us, what are the symtoms, 
-Questions from me.
+Among the things this test has turned up for me are:
 
-1) Does the num-lock led light up when you press numlock.??
-2) Is the machine reachable from another machine via your network,?
-     If appicable of course.
-3) can you do anything with the machine, 
-4) What steps do you take.?
-5) How long do you wait after you see that you have what you call a           
-     hard-lockup, do any leds work, keyboard or machines leds.???
-6) Are there any messages in your system logs.?????
+         1. An inadequate heatsink/fan combination (an ftp transfer puts a 
+lot of work on typical CPUs, unearthing any overheating risk it may face).
+         2. Flaky memory (the ftp transfer will cache into RAM, taking you 
+to 100% RAM use far more quickly than everyday operation will)
+         3. A bad power supply (don't know why an ftp transfer turned this 
+one up).
+         4. Problems with my swap partition (not sure what; possibly speed 
+problems on the drive itself, or maybe a problem with DMA).
 
-Please give as much information as possable, what you describe is a very 
-abnormal situation.
+I'd imagine it could also turn up problems with the NIC or with the 
+filesystem partition, but I haven't actually experienced either.
 
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
