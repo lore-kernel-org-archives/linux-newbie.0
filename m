@@ -1,43 +1,31 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: Tape Backup
-Date: Tue, 05 Nov 2002 00:01:54 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Tkdesk Segmentation Fault
+Date: Tue, 05 Nov 2002 09:26:22 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DC750C2.65D9BB86@gelm.net>
-References: <1035593918.20082.36.camel@localhost.localdomain>
+Message-ID: <200211050126.gA51QMD01651@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Hi, Bryan:
+Hi,
 
- CD/RW devices and media are cheaper than tape. :-|
-Hard drives are sometimes rather cheap also.
-I've seen 40 gigabyte drives for 48usd.
- I'm guessing that a 40G tape cartridge would
-be nearly 48USD. :-|
+In RH 7.3 the program tkdesk will not open any longer.
 
-HTH, Chuck
+Only the message 'Segmentation fault' shows up immediately after giving the 
+command tkdesk.
 
-Bryan Simmons wrote:
-> 
-> What do you guys suggest for a tape backup for a 100GB hard disk system?
-> I'm planning on going XFS and want to dump partitions to tape, but I
-> only know about the really expensive tape backups that hold, like 25-100
-> tapes.
-> Where can I find something that's inexpensive but holds a lot of data
-> and works well with Linux?
-> --
-> Bryan Simmons <bsimmo1@gl.umbc.edu>
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Why would that be and how could it be corrected?
+
+Thanks & regards
+
+
+
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
