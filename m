@@ -1,54 +1,50 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Xinetd compared to /etc/rc.d/init.d
-Date: Wed, 18 Sep 2002 11:26:36 -0700
+Subject: Re: Run Levels - I am just full of questions today :)
+Date: Wed, 18 Sep 2002 11:34:42 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020918111503.024d0260@celine>
-References: <008d01c25f3b$793e9950$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20020918112724.024d5d90@celine>
+References: <009501c25f3c$5a5c7380$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <008d01c25f3b$793e9950$64fea8c0@pkrausxp>
+In-Reply-To: <009501c25f3c$5a5c7380$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 01:47 PM 9/18/02 -0400, Paul Kraus wrote:
->What is xinetd used for. I thought it was used to start services but
->have read on some newsgroups to avoid it. Does it work with the startup
->files in /etc/rc.d/init.d/ folder, is it actually a step up from those
->scripts and a possible replacement. How do the two work in relation to
->each other.
+At 01:53 PM 9/18/02 -0400, Paul Kraus wrote:
+>For my install (redhat 7.3)
+>3 Full multi-user mode - I would assume this is the run level where
+>everything can run.
+>
+>However my system boots to
+>5 X11 - I assume this is for X-windows. Does that mean the 3 can't run
+>xwindows? Or that in 5 there is extra over head if you are barely using
+>x-windows?
 
-inetd (not a typo. keep reading) is itself a sort of service; it listens on 
-many ports, and when a connection is made to a port it is listening to, it 
-passes that connection on to the actual service for that port (as specified 
-in /etc/inetd.conf). It's usually called the "superserver". This concise 
-description leaves out some details; reading the man page for inetd will 
-fill in the details.
 
-xinetd is an alternate implementation of roughly the same functionality. It 
-has some additional features, and I've read some problems. Since I 've 
-never tried it myself, I can't intelligently discuss its merits relative to 
-regular inetd.
+In a technical senes, runlevels are arbitrary designations, used by init 
+(by way of its config file, /etc/inittab) to run different setups easily. 
+By custom, runlevel 3 is the standard multi-user, command-line runlevel. 
+Similarly, but again only as a custom, runlevel 5 is the native-X runlevel 
+(it starts xdm or an equivalent X-based login manager).
 
-inetd and xinetd have nothing (well, almost nothing) to do with the 
-boot/init scripts. Those scripts do need to start services, so one of them 
-will start inetd or xinetd for you, but other than that, they are quite 
-separate.
+You can easily run X from runlevel 3. Log in to a console with the userid 
+you want X to run under, and run the program "startx". If your system was 
+set up properly, this will start an X server on the first available tty 
+(usually tty7 on  typical runlevel-3 setups).
 
->On a side not what is up with all the filename.d's.
+As to overhead on runlevel 5 ... well, running X does use some system 
+resources, as does running xdm or an equivalent. In that sense, there is 
+"extra" overhead.
 
-That's a pretty vague question, Paul.
+PS - Paul, on Linux lists, .vcf attachments are generally viewed as useless 
+clutter.
 
-If you mean the various /etc/something_or_other.d listings, they are 
-usually directories, not files (well, in Unix/Linux, there is a sense in 
-which *everything* is a file, including the keyboard and the screen, but 
-let's put that aside for now). The modern convention is for programs to 
-create /etc/myname.d directories and put any systemwide config files they 
-need in there (user-specific config files go in users' home directories).
+PPS - These sorts of basic questions can often be answered by consulting 
+FAQs, man pages, or HowTos.
 
-If you mean something else, please try asking again, a bit less 
-elliptically this time.
+
 
 
 --
