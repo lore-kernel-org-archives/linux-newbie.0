@@ -1,109 +1,78 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Chuck Gelm <nc8q@gelm.net>
 Subject: Re: No Boot Problem
-Date: Fri, 26 Jul 2002 09:57:10 -0700
+Date: Fri, 26 Jul 2002 16:28:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020726093031.0228aa80@celine>
-References: <5.1.0.14.1.20020725203925.022778d0@celine>
- <3D406BBB.E208E07B@gelm.net>
- <5.1.0.14.1.20020725203925.022778d0@celine>
+Message-ID: <3D41B0EA.812106E7@gelm.net>
+References: <3D36DDA3.FA0F073C@gmx.net> <02072506225706.04469@unix.pa3gcu> <3D406BBB.E208E07B@gelm.net> <200207252138.32376.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207260844.34055.sotl155360@earthlink.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: linux-newbie@vger.kernel.org
 
-In your followup, you haven't really told us much more about the problem.
+Hi, Frank:
 
-Based on your clarifications, I'd surmise a problem of some sort with the 
-hard disk connection -- either the controller itself,  which in modern 
-systems is usually part of the motherboard electronics (this is why I 
-characterized your problem as a mobo problem before), with the BIOS 
-settings for the hard disk(s), or possibly with the cable (is the CD drive 
-that you say works for booting on the same IDE channel as the hard disks? 
-I'd *guess* not from the BIOS report you provide below).
+ You may need to let bios autodetect the different hard drives.
+Odd, you never mentioned an error message, only that the
+computer did not boot.
+Did it POST?
+Did it display your video hardware?
+Did it boot to bios (press DEL to enter setup) ?
+Did bios recognize that your changed your hard drives?
+...
+HTH, Chuck
 
-The alternative is that you have two separate problems, one with the old 
-(Windows) hda, the other with the replacement hard disk you attempted to 
-install to. Since you only examined the replacement drive under Windows, I 
-can't venture any real guess about what its problem might be (although it 
-*might* be as simple as a BIOS mismatch, if you didn't either set the BIOS 
-to autoprobe for IDE primary master or actually specify the new drive 
-geometry).
-
-A couple of specific comments are below.
-
-At 08:44 AM 7/26/02 -0400, Frank Roberts - SOTL wrote:
-[...]
-
-> > At this point, a description of the failure mode would belp more than
-> > "refused to boot".  Did LILO even begin to run?
->
->No
->
-> > Did it display any messages on teh screen?
->
->This is going to take several boot and I dought that I get all the info
->completely correct. It simply goes by on the screen too fast.
->
->1. CPU=Celeron 300 MHz
->2. RAM is checked                  Passed
->3. Extended RAM is checked  Passed
->4. System BIOS Shadowed
->5. Vidio BIOS Shadowed
->6. Upper limit segmant address = F299
->7. Fixed Disk 0: TD@ @06400L
->8. Fixed Disk 1: WDC AC310200R
->9. ATAPI CD-ROM: CDR-8240B
->10. ATAPI CD-ROM: SONY CD-RW CRX175E2
->11. System Configuration Data Updated
->12. Blinking Currersor
-
-This is all information from the system's BIOS. You are right in inferring 
-that LILO does not appear ever to run.
-
-
-> > >I stuck Tomsrtd in and boot the box into Toms followed by a normal shut
-> > > down.
-> > >
-> > >I then stuck RH 7.3 install in and started an upgrade to see what would
-> > >happen. The box finally booted into RH after 5 or 6 tries.
-> >
-> > This sounds more and more like a hardware failure, perhaps a mobo problem.
-> > The system as you described it has now had problems with a Windows boot
-> > floppy, some hard disk bootloader (I surmise lilo), and syslinux (I believe
-> > RH boot floppies use syslinux).
->
->Don't see that personally. The two normal systems HD were out of the system
->with the third HD in the system and the system will boot and load from the
->floppie and CD-Read after system restoration.
-
-
-What does this mean (specifically the phrase "system restoration")?
-
-You say the RH installer took 6 tries before it worked. I realize now that 
-you did not say if you were doing this from a floppy or a CD ... RH can 
-install either way ... but that is part of the reason I interpret your 
-report as a hardware failure -- even with the 2 original hard disks 
-removed, you have problems.
-
-In re-reading what you wrote, I also realize that I don't know for sure 
-what you mean by "The box finally booted into RH after 5 or 6 tries". I had 
-read it to mean that the RH installer itself took 6 tries to boot (get to 
-the install process), but perhaps you mean you had to try installing 6 
-times before the new hard disk would boot. In any case, you can see the 
-need to clarify your report.
-[...]
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+Frank Roberts - SOTL wrote:
+> 
+> partitionsucceededI hope you nice people can explain to me how to get out of
+> this situation.
+> 
+> I have a dual boot box - MS Windows 98 on hda and Linux RH6.3 on hdb.
+> 
+> Having problems with the Windows side (nothing new here) I decided to remove
+> both hda and hdb and install a third hard drive (hd3) and the use the
+> original restore disk to install windows on hd3.
+> 
+> First I had problems getting the restore disk to be acknowledged but on about
+> the 4th boot attempt I .
+> 
+> The first screen up said that the disk drive was unreadable and that i would
+> have to use FDisk to remove all partions. This I did and then rebooted the
+> box.
+> 
+> The box then refused to boot.
+> 
+> I then restored the box to its original configuration by reinstalling hda and
+> hdb and removing hd3. The systen still refused to boot.
+> 
+> I stuck Tomsrtd in and boot the box into Toms followed by a normal shut down.
+> 
+> I then stuck RH 7.3 install in and started an upgrade to see what would
+> happen. The box finally booted into RH after 5 or 6 tries.
+> 
+> I shut the upgrade down before the box upgrades keeping the original
+> configuration - hopefully.
+> 
+> Next I attempted an install of RH to see what the  table looked liked. Here I
+> received an error message that the partition table for hda the MS Windows
+> side was not readable. At that point I shut the box down keeping the original
+> configuration hopefully.
+> 
+> I again tried to boot the box normally. No Go.
+> 
+> Hopefully somebody has some ideas in how to boot this box.
+> 
+> Thanks
+> 
+> Frank
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
