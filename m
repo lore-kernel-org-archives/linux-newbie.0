@@ -1,39 +1,30 @@
-From: Jerry James Haumberger <jerryjh@imt.net>
-Subject: hard drive head parking in linux
-Date: Mon, 9 Dec 2002 21:36:39 +0000 (UTC)
+From: Daniel Peter Cavanagh <nofsk@vtown.com.au>
+Subject: bash script problem
+Date: Tue, 10 Dec 2002 12:08:06 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212092132.OAA04397@cu.imt.net>
+Message-ID: <3DF54C86.7070908@vtown.com.au>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi, folks --
+Hi,
 
-Does Linux automatically lift the heads of a hard drive off
-of the disk after some time of non-activity?
+I'd like to write a script that will run a command, and if successful 
+run another command otherwise echo a message.
 
-Does it also park the heads as a part of the shutdown process?
+This is what I have but it doesn't work (I've never written a bash 
+script before):
 
-I understand that early PC hard drives had to have their heads
-parked when shut down, but that the later hard drives do this
-automatically.  Under DOS with most of my older PCs, I've used
-a few small utilities that perform both of the above functions.
-One such utility lifts the heads after a period of inactivity
-(a TSR) after a predetermined number of minutes.
+if [ `fetchmail -su nofsk pop.vtown.com.au` ]; then
+    pine
+else
+    echo failed fetch
+fi
 
-This is important to me, since I find it useful to preserve the
-old hard drives of PCs in my collection, which will also include
-some Linux machines...
-
-Thank you for any knowledge on this matter!
---
-Jerry... on a 486 DX2-50MHz with 8MB RAM in BasicLinux 1.7
-and Midnight Commander at the lab of Classic Systems, Ltd.
-
-
+Could something please fix this up. Thanks for your help, Daniel.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
