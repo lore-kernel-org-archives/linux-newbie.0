@@ -1,36 +1,38 @@
-From: chakkerz <chakkerz_dev@optusnet.com.au>
-Subject: Re: 2.6.0 kernel compile overview
-Date: Tue, 6 Jan 2004 08:45:20 +1100
+From: caszonyi@rdslink.ro
+Subject: Re: Modules problem part-2
+Date: Mon, 5 Jan 2004 23:42:17 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401060845.20257.chakkerz_dev@optusnet.com.au>
-Reply-To: chakkerz_dev@optusnet.com.au
+Message-ID: <Pine.LNX.4.53.0401052340540.780@grinch.ro>
+References: <5.1.0.14.1.20040105104618.01f28358@celine>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20040105104618.01f28358@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-dunno if that helps, but Linux Format had an article on how to do it in 
-November (the one with the baby on the cover). I'd copy the instructions out 
-(ahh ... plagerism), but someone at work nicked the magazine (darn MS 
-users)...
+On Mon, 5 Jan 2004, Ray Olszewski wrote:
 
-mayhaps the local library (or the linux format web page) has the article.
--- 
-with kind regards,
-  chakkerz
+> At 11:55 PM 1/5/2004 +0530, joy wrote:
+>
+> >hi,
+>
+> Here too, you might look for something similar in the 2.6.x config file ...
+> the "QM_MODULES" name might indicate a change in terminology.
+>
 
-"You don't need eyes to see, you need vision" (Faithless - Reverence)
+no
+this message appears when using old modutils with a 2.6 kernel
+Kernel 2.6 require module-init-tools
 
-  Internet:          http://naiv.sourceforge.net
-  NAIV Status:
-     Stable       Testing       Development
-      0.2.3r2      none          0.3.0 - Installation
 
-"May there be mercy on man and machine for their sins" (Animatrix)
-
+--
+"A mouse is a device used to point at
+the xterm you want to type in".
+Kim Alm on a.s.r.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
