@@ -1,34 +1,32 @@
-From: jason@netconnect.2y.net
-Subject: Re: Linux & Zip Drives.
-Date: Sat, 11 May 2002 20:12:48 -0500 (CDT)
+From: adwin <fox@sby.centrin.net.id>
+Subject: install pidentd from rpm.
+Date: Sun, 12 May 2002 09:46:52 +0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1965.142.165.167.12.1021165968.squirrel@www.netconnect.2y.net>
-References: <20020511163432.A465@lnx2.w8mch.ampr.org>
+Message-ID: <44525484.20020512094652@sby.centrin.net.id>
+Reply-To: adwin <fox@sby.centrin.net.id>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020511163432.A465@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-> Greetings: I just bought an internal SCSI Zip drive on eBay that was
-> sold as "Zip 100mB converted to 250mB." Purchasing only 250mB disks I
-> find the drive will not accept them - ejecting immediately after
-> inserting.
-> 
-> I believe the drive needs a disk before I can install the module and
-> use it.. Research tells me that some drives require that with Linux and
-> others don't... No details.. I, also, cannot find any information as to
-> whether that conversion is for real or not.. :^(..
-> 
+Hello linux-newbie,
 
-I personally have never heard of any such conversion. I'm not saying it's 
-impossible but.........unlikely. I'd be interested in knowing once you have 
-it hammered out though.
+I have trouble with my rpm installation..
+I install pidentd-30143mdk.rpm in my Mandrake 8.2. It's success... but
+when I cannot use this pidentd, command not found ... (in su mode too)
 
-jason
+I try rpm -qa | grep pidentd
+and strange ... there is no result at all...
+and then I try to install it again using rpminst...it failed and the
+rpminst said that there is already pidentd.
 
+what should i do ?
+
+--
+Best regards,
+ adwin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
