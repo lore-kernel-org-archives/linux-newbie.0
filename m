@@ -1,47 +1,26 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Mailing List Posting Rules
-Date: Mon, 27 May 2002 20:29:57 -0700
+From: Brent Eckhout <linuxworks@attbi.com>
+Subject: Shutdown / Halt Problem - Bad EIP Value
+Date: Mon, 27 May 2002 22:40:31 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020527202605.02753ec0@celine>
-References: <20020528032200.WXFH11426.rwcrmhc51.attbi.com@there>
+Message-ID: <20020528033642.YJMP11659.rwcrmhc53.attbi.com@there>
+Reply-To: linuxworks@attbi.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020528032200.WXFH11426.rwcrmhc51.attbi.com@there>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linuxworks@attbi.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie Mailing List <linux-newbie@vger.kernel.org>
 
+I've just started using Red Hat 7.2 (Enigma).  It installed successfully but 
+whenever I shut down the system, I get an "oops" error--  Bad EIP Value.  It 
+looks like it's bombing on the command "halt -i -d -p".  Any suggestions for 
+fixing this problem?  
 
+If I need to turn off some auto shutdown functions, that's fine (BIOS or 
+others).  I tried a Google search-- there were several folks with similar 
+problems but no quick and dirty solutions.  
 
-At 10:25 PM 5/27/02 -0500, Brent Eckhout wrote:
->Where can I found out about the posting rules for this mailing list?  The
->confirmation email did not offer any details.
-
-
-This list has rules?
-
-Well ... actually it does, both formal (enforced) and informal ones.
-
-For the formal ones, go to the majordomo link listed in the trailer to this 
-(and every list) message.
-
-For the informal ones ... watch the list traffic to get a sense of its 
-tone, and use common sense. Be polite. Remember that while this is an 
-English-language list, it includes many participants whose primary language 
-is not English. If you want help with something, include enouggh 
-information that people on the list can understand your problem. Don't 
-start fights, and don't continue fights if someone else starts one.
-
-There are probably more informal "rules" here, but that's enough to get you 
-started safely.
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+Brent
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
