@@ -1,39 +1,37 @@
-From: Ramzez <r4mz3z@yahoo.es>
-Subject: cd-rom with udf
-Date: Thu, 17 Oct 2002 09:51:46 -0500
+From: Simon <simon@highlyillogical.org>
+Subject: Re: Sharing bandwidth across multiple internet connections?
+Date: Thu, 17 Oct 2002 16:16:43 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210170951.55533.r4mz3z@yahoo.es>
+Message-ID: <200210171616.43225.simon@highlyillogical.org>
+References: <CPIMSSMTPU04OlbcrYP000007f9@cpimssmtpu04.email.msn.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <CPIMSSMTPU04OlbcrYP000007f9@cpimssmtpu04.email.msn.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Thursday 17 October 2002 15:21, Alan Womack wrote:
+> There basically has to be a layer
+> someplace that reassembles the packets from two different sources.
 
-Hi...
-  How do I can read a udf CDrom?... this format is used in operating systems 
-like windows... In other windows like, you see an application and later run 
-this app you can see all the contents in this type of CDs... but if I mount 
-this CD I can see this app... but i don't kwon how to see the other files in 
-the udf file system.
-  Please, give a hand ;-)
+I had a look, but couldn't see any software that could do this. It would be a 
+'neat' solution though, as it would enable file downloads at 1.5Mb/s, as 
+opposed to the routing method. But I couldn't understand how this would work 
+without something clever going on at the other end of the connection.
 
-Ramzez
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+Otherwise I could end up playing a game of quake, and some of my packets would 
+start coming from a different IP? I can't imagine a quake server liking that. 
+(For example)
 
-iD8DBQE9rs6Js4dF9gl05swRAmFXAJ9xNu5O/gcFWSSoQD3elNxUTtDaFQCfcKJT
-+cIhgK8oTzUti4BqyvFDDak=
-=GkPc
------END PGP SIGNATURE-----
+Simon
+
+
+
+--
+This message has been scanned for viruses and dangerous content, and
+is believed to be clean.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
