@@ -1,53 +1,27 @@
 From: "Tom Beer" <mailings@analogon.com>
-Subject: Re: error: failed dependencies -----> rpmlib
-Date: Fri, 19 Apr 2002 16:12:18 +0200
+Subject: Re: USB device installation
+Date: Fri, 19 Apr 2002 16:17:42 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <009b01c1e7ac$3d698040$0901a8c0@system>
-References: <4.3.2.7.0.20020419091135.011a3f00@lox2.loxinfo.co.th>
+Message-ID: <00a101c1e7ac$fae6b7a0$0901a8c0@system>
+References: <20020417221621.7E4A052728@psybernet.co.nz> <20020418121355.C487352729@psybernet.co.nz> <00e901c1e6db$739bc820$0901a8c0@system> <20020418234908.A06CE5272A@psybernet.co.nz>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, Shaggy Im-erbtham <shaggy@loxinfo.co.th>
+To: walter@psybernet.co.nz
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+> No I have not compiled anything but have modules loaded that I 
+> thought were needed - ie usb-storage, scsi_mod, usbcore, I will 
+> append the output of lsmod.
 
-
-Which version of rpm are you using?
-A generally good resource finding
-rpm's is rpmfind.com and rpmfind.net.
+You should try to track down which modules are needed for the
+smartcard drive. A quick web search leaded to no results (for me).
+The usb modules you installed are for a mouse and a keyboard, as
+far as I'm concerned. 
 
 Greets Tom
-
-
-> I was attempting to install a package (specifically ltsp_core from
-> www.ltsp.org)
-> on RedHat 6.2 with the following
->
-> rpm -ivh ltsp_core-3.0.0-1.i386.rpm
->
-> and got this error
->
-> error: failed dependencies
-> rpmlib (PayloadFilesHavePrefix) <= 4.0.0 needed by ltsp_core-3.0.0-1
-> rpmlib (CompressedFileNames) <= 3.0.4-1 needed by ltsp_core-3.0.0-1
->
->
-> I assume I have an out-of-date "rpmlib" package, tried searching the net
-> for it, but came up with nothing I could download and upgrade.
->
-> Could anybody help?
->
-> TIA
-> Shaggy
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
