@@ -1,8 +1,8 @@
 From: wa4chq@netscape.net (neil t)
-Subject: lilo vs. grub
-Date: Wed, 18 Sep 2002 19:15:19 -0400
+Subject: video editing
+Date: Wed, 18 Sep 2002 19:13:47 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <70D2426B.531446B0.0006BEFC@netscape.net>
+Message-ID: <6240DAD5.69D267D2.0006BEFC@netscape.net>
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,11 +10,11 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Greetings all-
-I have been using lilo since installing RH a year and a half
-ago.  Is there a reason why I should switch and start using
-grub?
-Tnx
+Greetings-
+Is there hardware available for linux for grabbing video 
+from my camcorder or vcr?  I have something already but it has
+to be used with .....(windoze....).......ugggg
+Cheers
 Neil T.
 
 -- 
