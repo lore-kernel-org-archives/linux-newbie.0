@@ -1,50 +1,46 @@
-From: Owen Ford <oford@arghblech.com>
-Subject: Re: keyword for rivafb in XF86Confige file
-Date: Wed, 29 Sep 2004 04:58:19 -0500
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: RE: keyword for rivafb in XF86Confige file
+Date: Wed, 29 Sep 2004 15:42:42 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1096451898.27898.20.camel@spider.hotmonkeyporn.com>
-References: <4EE0CBA31942E547B99B3D4BFAB34811107F55@mail.esn.co.in>
-	 <415A8435.9040303@kevino.org>
+Message-ID: <4EE0CBA31942E547B99B3D4BFAB348111081AE@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-M2gH0Icd4WkFjHr5FDvc"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <415A8435.9040303@kevino.org>
+Content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Owen Ford <oford@arghblech.com>, linux-newbie@vger.kernel.org
 
+Hello ford,
 
---=-M2gH0Icd4WkFjHr5FDvc
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+> > I dont think you need the rivafb driver if you use the xfree86
+> > driver or nvidia's propietary driver.
+> 
+> IIRC rivafb actually screws up the nvidia driver.  I've never gotten
+it
+> working with *any* nvidia card ever :)
 
-On Wed, 2004-09-29 at 04:45, mike wrote:
+It is working for me. 
+I have edited the Driver field in the device section as follows:-
+Driver "fbdev" 
 
-> I dont think you need the rivafb driver if you use the xfree86
-> driver or nvidia's propietary driver.
+After then the X server is using rivafb as I could see the debug
+messages.
+But it is not invoked when I switch between app ( ATL+TAB) or I open new
+app.
+I don't know, why?
+Is the software take care of it, rather than the fb driver?
+Suggest, if u have any idea.
 
-IIRC rivafb actually screws up the nvidia driver.  I've never gotten it
-working with *any* nvidia card ever :)
+Regards,
+Mukund jampala
 
---=20
-Owen Ford <oford@arghblech.com>
-
-()  ascii ribbon campaign - against html e-mail=20
-/\                        - against proprietary attachments
-
---=-M2gH0Icd4WkFjHr5FDvc
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQBBWoc64bjUYpnk5/QRAlqSAKCSkC0AO6PV3ADWXoFuOSzO3hZkhwCg1GCb
-5oAksbDY3Lv9te9r04JAvoU=
-=WsD3
------END PGP SIGNATURE-----
-
---=-M2gH0Icd4WkFjHr5FDvc--
-
+> 
+> --
+> Owen Ford <oford@arghblech.com>
+> 
+> ()  ascii ribbon campaign - against html e-mail
+> /\                        - against proprietary attachments
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
