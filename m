@@ -1,82 +1,48 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: missing man and smbsh
-Date: Sat, 21 Dec 2002 08:34:15 -0800
+Subject: Re: Su & Security
+Date: Sat, 21 Dec 2002 08:57:34 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021221081448.02103cf0@celine>
-References: <5.1.0.14.1.20021220191905.020c3c10@celine>
+Message-ID: <5.1.0.14.1.20021221084621.020b1910@celine>
+References: <200212210924.gBL9OYm05183@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <008f01c2a90c$0b43f560$6400a8c0@00arc>
+In-Reply-To: <200212210924.gBL9OYm05183@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-At 11:14 AM 12/21/02 -0500, Jonathan Kallay wrote:
->Sorry about being short on the details- my machine is at work and I'm
->starting a two week vacation (the perks of being a teacher).
+I don't quite understand your questions, Peter. "su" is an application used 
+to change userid, usually (but not always) from an ordinary userid to 
+superuser. So I have to guess a bit in responding, below, about what you 
+are actually asking.
 
-As a practical matter, you may then want to defer pursuing this until you 
-once more have access to the machine with the problems. We'll still be 
-here, I'm sure.
+At 05:24 PM 12/21/02 +0800, Peter wrote:
+>Season Greetings
+>
+>Is it a security risk when connected/ing to the Internet if
+>
+>a) a terminal is open under su
 
->The way I now understand it, dselect installs precompiled binaries rather
->than compiling the source.
+Do you just mean that a console (or xterm or eterm) is open by the root 
+userid? It would be unusual for this by itself to be a security risk.
 
-Right. So does apt, unless you choose the "apt-get source" option (and have 
-source-package directories listed in /etc/apt/sources.list).
+>b) an application like gtkdial must be opened as su to connect
 
->Since the configuration options for Samba are
->set before compilation, I'll either have to work with the apt-get or dpkg
->source building features or just download the source and build it the usual
->way without the packaging.
+Dialers normally need to run suid to access the modem device. (There are 
+alternatives to this, though -- on my systems, all /dev/ttyS* devices are 
+in group "dialout" and mode 660, so a dialer app need not be suid.) Unless 
+the app itself has a security problem (and while gtkdial itself is probably 
+pretty much secure, I have no idea what apps you might think are "like" 
+gtkdial), this should be no problem.
 
-I'm not sure what you mean by "configuration options" above. Like most 
-complex apps, Samba has config files that can be edited independent of 
-compilation. Although I can't know your situation well enough to be 
-certain, I'd be surprised if you needed to compile the various Samba pieces 
-yourself (other than kernel components ... the usersspace stuff should be 
-fine precompiled).
+>c) an application like kppp needs the root password to be accessible
 
->As for the smbfs module, when I installed the smbfs package in dselect I
->expected the smbfs module to be placed somewhere.  Shouldn't I be able to
->insert the module without recompiling or reinstalling the kernel?
-
-You should read the package description. "apt-cache search smbfs" returns 
-this short description: "smbfs - mount and umount commands for the smbfs 
-(for kernels >= than 2.2.x)". From that, I'd say it does not include the 
-smbfs module. (I don't know beyond that -- I run an SMB server on a Linux 
-host, but not the client, so I don't need smbfs.)
-
-Really, how can it? Debian Woody provides a wide range of kernel choices, 
-including 2.2.x kernels, 2.4.x kernels, and maybe even (I didn't check) 
-2.5.x kernels. Modules tend to be kernel-version specific. I'd suggest that 
-when you are back at your machine, you do what I already suggested: find 
-out what kernel you are using. If it is the default 2.2.20-compact, replace 
-it with a current one (2.4.20 seems to be the latest kernel-image listed, 
-but that was checking Sid, not Woody), doing your own compile if the 
-precompiled one doesn't have what you need.
-
->The missing man:  when I enter the command "man foo" I get a message like
->"bash:  man not found"- as if it simply does not recognize the command.  If
->I type "whereis man" it'll return something like "man: /usr/share/man
->/usr/share/doc/man/man.8.gz" or something of the sort.
-
-If you want to find the "man" *binary* with this command, you do it with 
-"whereis man -b". Or "which man", which will find the "man" app ONLY if it 
-is in the user's current PATH. In any case, the binary "man" should be in 
-/usr/bin/man -- until you check if it is there or not, there's no way to 
-help you. (The "something like" you report above are the miscellaneus 
-information directory for man and man's own man page.)  Either the command 
-was somehow deleted or made non-exdcutable (improbable) or the userid you 
-are using does not include /usr/bin in its PATH (also pretty improbable). 
-Or you're remembering, hence quoting, the response incorrectly and 
-something else is going on.
-
-
->----- Original Message -----
-[old stuff deleted]
-
+I can't figure out what you mean by "accessible" here (or, once again, what 
+apps "like" covers), so I can't really answer this one. The natural risk to 
+think of is that you might, for some reason, store the root password in a 
+plaintext file somewhere on the system ... but I can't imagine your not 
+seeing the security in risk in doing that without help from this list.
 
 
 --
