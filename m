@@ -1,52 +1,50 @@
-From: Jose Luis Alarcon <jlalarcon@linuxnobis.com>
-Subject: Re: which distribution to use?
-Date: Sun, 26 May 2002 02:58:59 -0700 (PDT)
+From: G Anna <drguruolai@eth.net>
+Subject: Re: is emacs considered a gui WP or cli?
+Date: 26 May 2002 09:46:12 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020526095859.5DEEF2755@sitemail.everyone.net>
-Reply-To: jlalarcon@linuxnobis.com
+Message-ID: <m3661bzgqb.fsf@wobble.eth.net>
+References: <20020524.163134.-176941.0.matthewstapleton@juno.com>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20020524.163134.-176941.0.matthewstapleton@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Matthew Stapleton <matthewstapleton@juno.com>
+Cc: linux-newbie@vger.kernel.org
 
---- Richard Adams <pa3gcu@zeelandnet.nl> wrote:
->On Friday 24 May 2002 21:40, Matthew Stapleton wrote:
->> Say someone, like myself, did not like windows and wanted a more Unix
->> type experience or environment.  Would you suggest Debian or Slackware?
->> I actually want to try to learn about the system and not just point and
->> click.
->
->Slackware
->
 
-  Debian. ;-).
+> Date: Fri, 24 May 2002 16:31:33 -0700
+> From: Matthew Stapleton <matthewstapleton@juno.com>
+> Subj: is emacs considered a gui WP or cli?
+> 
+> I was wondering if Emacs was considered to be gui based WP or
+> cli-based?  And is it stilled updated?
 
-  Best Regards.
+(snip)
 
-  Jose.
+I use GNU Emacs all the time.  And I love it.  I use the viper mode,
+in which you can use the vi commands to edit.
 
->-- 
->Regards Richard
->pa3gcu@zeelandnet.nl
->http://people.zeelandnet.nl/pa3gcu/
->
+Anyway you could probably ask your question at
 
-Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
-Mandrake Linux 8.2 Kernel 2.4.17 ReiserFS.
-Registered Linux User #213309.
-Memories..... You are talking about memories. 
-Rick Deckard. Blade Runner.
+help-gnu-emacs@gnu.org
 
-_____________________________________________________________
-Linux for the Desktop
-Software, Setup, chat & email.
-http://www.linuxnobis.com
+To ask a question you don't need to subscribe to that mailing list (I
+think so).
 
-_____________________________________________________________
-Promote your group and strengthen ties to your members with email@yourgroup.org by Everyone.net  http://www.everyone.net/?btn=tag
+Cheers,
+anna
+
+-- 
+
+(14) The  hero is not entitled to a last kiss, a last cigarette, or any
+     other form of last request. - Peter Anspach in "The Top 100 Things
+     I'd Do If I Ever Became An Evil Overlord"
+
+                                            http://www.eviloverlord.com
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
