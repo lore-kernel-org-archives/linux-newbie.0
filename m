@@ -1,62 +1,28 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: Modules problem part-2
-Date: Mon, 5 Jan 2004 13:31:06 -0600 (CST)
+From: "EXT-Reimer, Jim D" <jim.d.reimer@boeing.com>
+Subject: RE: 2.6.0 kernel compile overview
+Date: Mon, 5 Jan 2004 11:39:28 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0401051329260.3345@localhost>
-References: <5.1.0.14.1.20040105104618.01f28358@celine>
+Message-ID: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040105104618.01f28358@celine>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 5 Jan 2004, Ray Olszewski wrote:
+> 
+> I can't find the reference right now, but I think step 3 
+> should actually be 'make install' if you want to get a 
+> compressed kernel image and System.map file moved to either / 
+> or /boot (if you have edited the Makefile to install to 
+> /boot).  If I am wrong, someone please correct me.
+> 
 
-> At 11:55 PM 1/5/2004 +0530, joy wrote:
-> 
-> >hi,
-> >I did what was told of  me, make modules and make install and the modules 
-> >were in place.
-> >but the other problem I had with lsmod and insmod giving me error stating:
-> >QM_MODULES function not implemented
-> >refuses to go away
-> >even at bootup ,
-> >when init runs modprobe, the same error appears a LOT of times.(it scrolls 
-> >fast but I could just make out!)
-> 
-> It sounds like you (or whoever compiled your kernel) did not compile in 
-> loadable modules support. (In 2.4.x kernels, which I still use, this is the 
-> second item in the "make menuconfig" setup list, so you might look in a 
-> similar location in the 2.6.x configuration.)
-> 
-> In the 2.4.x kernels, the relevant section of the actual config file is
-> 
->          #
->          # Loadable module support
->          #
->          CONFIG_MODULES=y
->          CONFIG_MODVERSIONS=y
->          CONFIG_KMOD=y
-> 
-> Here too, you might look for something similar in the 2.6.x config file ... 
-> the "QM_MODULES" name might indicate a change in terminology.
-> 
-Here's what I've got in my 2.6.0 kernel .config file relevant to this:
+Here's an "overviewish" page covering the process:
+http://kerneltrap.org/node/view/799
 
-#
-# Loadable module support
-#
-CONFIG_MODULES=y
-CONFIG_MODULE_UNLOAD=y
-# CONFIG_MODULE_FORCE_UNLOAD is not set
-CONFIG_OBSOLETE_MODPARM=y
-# CONFIG_MODVERSIONS is not set
-CONFIG_KMOD=y
-
-James
+-jdr-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
