@@ -1,52 +1,32 @@
-From: David Lewis <DLewis@karta.com>
-Subject: RE: test
-Date: Fri, 20 Dec 2002 11:48:38 -0600
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: Configuring command line mail ...
+Date: Fri, 20 Dec 2002 15:30:26 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <353A32F9B331D411BB8F00A0C9FC5037D651C3@NT04>
-Mime-Version: 1.0
+Message-ID: <atvuk7$q8k$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I have no complaints - just trying to solve a problem.  I tried twice, 7
-days apart, to resubscribe to the list, and got this back from the Major
-both times:
+I'd like the ability to send quick e-mails, particularly from dinky little
+scripts
+(say perl), or from the command line of the form (syntax notwithstanding):
+    [joe@joesMachine joe]# mailto joe@joeswork.com -s "Hi joe"
 
-**** Address already subscribed to linux-newbie  
+I appreciate there are numerous programs to choose from, I'm looking for
+the simplest to configure, and am only really interested in the outgoing
+mail.
 
+Suggestions?
 
-Other linux lists I subscribe to are coming through with no problem;  one
-noteworthy difference between them and this list is that they use mailman as
-a list manager rather than majordomo.
-
-The test message I sent to the list never showed up in my Inbox, and I
-suspect your response did only because you included my personal address.
-I'll pay a visit to my IT group and see if they're up to something.
-
-Thanks for the quick response. 
-
-Dave
+- Jamie
 
 
 
-	
 
------Original Message-----
-From: Ray Olszewski [mailto:ray@comarre.com]
-Sent: Friday, December 20, 2002 10:02 AM
-To: David Lewis; linux-newbie@vger.kernel.org
-Subject: Re: test (nm)
-
-
-The list has been active. so I suggest you check if you are subscribed.
-
-[snip]
-
-If you think this is a bad thing, please don't complain to the list (or to 
-me personally; 
-[snip]
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
