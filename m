@@ -1,33 +1,23 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: assertion failure (Ted, ext3)
-Date: Wed, 28 Aug 2002 11:01:14 -0400
+From: "Ola Theander" <ola.theander@otsystem.com>
+Subject: Looking for a WLAN PC-Card (IEEE 802.11b) compatible with Linux.
+Date: Wed, 28 Aug 2002 22:41:16 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208281501.g7SF1EC12998@hartford-hwp.com>
+Message-ID: <001201c24ed3$44c89fe0$c5000a0a@c0002>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@hartford-hwp.com
+To: linux-newbie@vger.kernel.org
 
-I installed ted-2.11-1.i386.rpm, but when I try to run it, get the
-following error:
+Dear subscribers.
 
-# Ted &
-[1] 12833
-# Ted: loadlocale.c:220: _nl_load_locale: Assertion `idx % __alignof__ 
-  (u_int32_t) == 0' failed. 
-  [1]+  Aborted                 Ted
-# /usr/local/bin/Ted &
-[ 1] 12836
-# Ted: loadlocale.c:220: _nl_load_locale: Assertion `idx % __alignof__
-   (u_int32_t) == 0' failed.
-  [1]+  Aborted                 /usr/local/bin/Ted
+I'm looking for a WLAN PC-Card that is compatible with Linux. I have a
+Dell Inspiron 8000 running SuSE 8.0 and I would like to be able to
+connect to my school's WLAN.
 
-Is this an assertion failure? I'm using ext3 file system with kernel
-2.4.88-3. Can I debug it without recompiling my kernel?
+Kind regards, Ola Theander
 
-Haines Brown
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
