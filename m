@@ -1,57 +1,38 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: Suse 8.1
-Date: Wed, 19 Mar 2003 08:59:34 -0500
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: switching window managers
+Date: Wed, 19 Mar 2003 10:58:57 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <026e01c2ee1f$c7f05b10$cdfea8c0@pkraus>
-References: <99AB91B0F8D13347B812F54D6D9ADE9652F394@admail.ims.ca>
-Reply-To: <pkraus@pelsupply.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200303191558.h2JFwvF4007542@hartford-hwp.com>
+References: <001001c2ee0a$0fd7cdc0$1803a8c0@ets.enterasys.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <99AB91B0F8D13347B812F54D6D9ADE9652F394@admail.ims.ca>
+In-reply-to: <001001c2ee0a$0fd7cdc0$1803a8c0@ets.enterasys.com>
+	(simon.doyle@applysystems.co.uk)
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: 'Shenan Hawkins' <shenan@ims.ca>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: simon.doyle@applysystems.co.uk
+Cc: linux@hartford-hwp.com
 
-Is now. I didn't see it during the install and didn't even think about
-it. Thanks!!
+Simon,
 
------Original Message-----
-From: Shenan Hawkins [mailto:shenan@ims.ca] 
-Sent: Wednesday, March 19, 2003 8:56 AM
-To: pkraus@pelsupply.com
-Subject: RE: Suse 8.1
+> Hi, I think redhat has the "switchdesk" utility, you can choose whether
+> it is for current session or permanent change.
+> 
+> Give it a whirl.
 
+Thanks. RH8.0 indeed does have a destop switching tool, but it seems
+to conflate desktop environments (gnome vs kde) and window managers
+(WindowMaker vs. twm). This left me feeling uncomfortable. 
 
+Since I'm planning a migration from RedHat to gentoo or debian, I
+don't want to become reliant on gui utilities any more than I have
+to. If I were to reconfigure the desktop switcher to recognize icewm,
+I suspect it would be easier to modify a rc file to call icewm in
+the first place. 
 
-Is the gateway configured properly?
-
-
-Shenan
-
-
-
------Original Message-----
-From: Paul Kraus [mailto:pkraus@pelsupply.com] 
-Sent: Wednesday, March 19, 2003 8:47 AM
-To: linux-newbie@vger.kernel.org
-Subject: Suse 8.1
-
-
-I just installed suse 8.1. However it not able to connect to anything
-outside of the local network. I can ping all local address but if I try
-to ping an internet address or even our name servers (outside of local
-network) I get an immediate host unreachable meggase. Under the yoost
-network module I have configured its ip (static) and the name servers. I
-have not entered anything in the domain search fields. Any help would be
-greatly appreciated.
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in the body of a message to majordomo@vger.kernel.org More majordomo
-info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
