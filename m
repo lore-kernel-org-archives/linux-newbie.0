@@ -1,43 +1,61 @@
-From: wa4chq@netscape.net (neil t)
-Subject: cd player woes
-Date: Mon, 28 Apr 2003 18:18:52 -0400
+From: James Ferris <james_e_ferris@yahoo.ca>
+Subject: need direction - LAN browse troubleshooting
+Date: Mon, 28 Apr 2003 16:25:29 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <32B1C4DC.7D25E396.0006BEFC@netscape.net>
+Message-ID: <5.1.0.14.1.20030428152449.02d2bb90@pop.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings all-
-I have been having a problem playing cd's on my pc.  I know 
-there is nothing wrong with the cd player itself because all is 
-fine when running WinMe and RedHat.  I am using Debian 3.0 most 
-all the time and can't seem to get the cd player to go past song
-number one....after that it just stops.  I have tried xmms,
-workbone, freeamp and cdplay and all seem to do the same.  When I 
-try setting it up to play several tracks, it just cycles through
-the lot, but never playing the songs.  I don't know to trouble
-shoot this problem.  I almost wonder if I should just removing
-all of the cd players and start again.... Any suggestions?
-Thanks and 
-Cheers!
-Neil T.
+Hello list,
+Sorry to ask what should be a simple question. I simply have not yet found
+an answer, or a resource to solve this myself.
+(have looked thru RH docs, some samba docs, lists from both)
+It seems this should be easy from the docs I've read (do X + Y, and restart).
+I think what I need is a 'troubleshooting guide'.
+... with 'F' problems, look 'here' kind-of-thing.
+note I'm not a programmer - more of an experienced w2k user trying to learn
 
--- 
-Arachne/DRdos/Debian3.0
-Basiclinux/QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+So here's where I am:
+- new build of RedHat 8 with rhn updates, including samba
+- eth0 set to dhcp client with local domain hostname
+- iptables set to not start at boot
+- samba set to start at boot (RunLevel 3 & 5); smb.conf has:
+   -- w2k workgroup name; hostname shows in w2k Network browse list
+   -- some basic [global] permission settings
+   -- printer share for public and guest access; opens and viewable
+   -- homes share for users access; asks for auth but no-go
+   -- SharePt share for general access; does not accept access attempts
+   -- each share includes an entry with:
+      --- [name], comment, path, writable or readonly
 
+- when I try to browse the LAN via the RH box by Konqueror, LAN browser:
+   -- I get an error "could not connect to host localhost"
 
-__________________________________________________________________
-Try AOL and get 1045 hours FREE for 45 days!
-http://free.aol.com/tryaolfree/index.adp?375380
+So to get a better idea of samba, I examined a friends box that 'works'.
+(it's debian, but all basic samba settings should be (?) similar).  Still...
 
-Get AOL Instant Messenger 5.1 for FREE! Download Now!
-http://aim.aol.com/aimnew/Aim/register.adp?promo=380455
+I'm not able to connect to any of the shares showing on the RH box.
+(I've stopped and restarted smb service since my smb.conf changes.)
+'homes' shares ask for a password, but will not accept any of the set
+user passwords, and the 'SharePt' responds as Network Path 'not there'.
+Printer share is openable.
+___________________________________________________________
+Any thoughts for where to check would be very-much appreciated.
+___________________________________________________________
+
+aside: The RH host-name shows up in my w2k WINS server,
+... but the RH host-name does not show in my w2k dns server.
+The debian host-name shows in both WINS and dns servers under w2k.
+
+Is there some way to get RH 8 to automatically update its hostname
+  and IP into a w2k dns server? I found a reference in the debian system to
+'send host-name "name";' within file dhclient.conf. Is this what's making
+that work? Where might I insert such for a static IP workstation?
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
