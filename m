@@ -1,39 +1,60 @@
-From: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
-Subject: Re: Query on SIGFPE handling
-Date: Mon, 22 Nov 2004 14:35:24 +0530
-Message-ID: <1101114324.5382.42.camel@myLinux>
+From: Manish Regmi <regmi.manish@gmail.com>
+Subject: Re: further query signal handling!
+Date: Mon, 22 Nov 2004 14:54:28 +0545
+Message-ID: <652016d304112201091575fff@mail.gmail.com>
 References: <1101104772.4527.7.camel@myLinux>
 	 <652016d3041121230031fe6094@mail.gmail.com>
-	 <1101107755.4527.18.camel@myLinux> <1101111876.5382.8.camel@myLinux>
-	 <01ca01c4d071$5b35f080$121aa8c0@ascindia.com>
+	 <1101107755.4527.18.camel@myLinux>
+	 <652016d3041122001540a047fd@mail.gmail.com>
+	 <1101113860.5382.36.camel@myLinux>
+Reply-To: Manish Regmi <regmi.manish@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <01ca01c4d071$5b35f080$121aa8c0@ascindia.com>
+In-Reply-To: <1101113860.5382.36.camel@myLinux>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Yogesh Bute <yogeshb@ascindia.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Mon, 2004-11-22 at 14:27, Yogesh Bute wrote:
-> hi,
->     u need to inform the shell that the signal is handled - so u need to
-> SIG_IGN the singal ie. signal (signum, SIG_IGN) once u have done with
-> handling the signal
->     or u could send SIG_DFL, so that default singal handler will handle the
-> signal, after your specific signal handler code.
+On Mon, 22 Nov 2004 14:27:40 +0530, Jagadeesh Bhaskar P
+<jbhaskar@hclinsys.com> wrote:
+> > You are generating a divide by zero exception (on i386) which is a
+> > fault (it means the instruction is restartable). So what happens is
+> > you catch an exception and print and return. The same code is
+> > restarted again. so processor gets exception again and again.
+> 
+> If the fault was not attached to a function written by me, and leaving
+> it to be handled by the kernel, there was no problem. How can that
+> happen? Shouldnt the kernel restart the instruction in that case also.
+> Why didnt that happen?
+> 
+> --
+> With regards,
+> 
+> Jagadeesh Bhaskar P
+> R&D Engineer
+> HCL Infosystems Ltd
+> Pondicherry
+> INDIA
 
-How can I generate and send a signal from a function of mine? Is it
-possible from a userlevel C program, using some functions like
-signal()??
+In UNIX and like, the exceptions generate UNIX signals. IEEE POSIX
+have defined what to do on generation of signals. The signal may have
+default action, run user 's signal handler. For SIGFPE signal, The
+default action is Abnormal termination of the process. But when you
+set your handler, it does not terminate but runs your handler. After
+returning from your handler it again tries to execute the faulting
+instruction and signal is generate again and so on.
 
-Please do help
+BTW:
+ For UNIX programming, Advanced UNIX programming by richard stevens is
+the Best book (i have ever seen).
+ 
+Regards Manish
+ 
 -- 
-With regards,
-
-Jagadeesh Bhaskar P
-
+Manish Regmi
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
