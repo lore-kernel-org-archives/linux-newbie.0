@@ -1,40 +1,62 @@
-From: "Angel GrefurT" <lez_jew5@yahoo.com>
-Subject: hi
-Date: Sat, 7 Sep 2002 13:30:12 -0700
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Making APM more accurate
+Date: Sat, 7 Sep 2002 13:13:13 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <49581.3764202923$1031394491@news.gmane.org>
+Message-ID: <02090713131300.01043@unix.pa3gcu>
+References: <20020906173248.GA24625@teamfinders.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020906173248.GA24625@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-fsdevel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Theo. Sean Schulze" <tschulze@teamfinders.org>, linux-newbie@vger.kernel.org
 
-http://lizaclub.da.ru
-http://lol.to/bbs.php?bbs=shakira   <<< VIP
+On Friday 06 September 2002 17:32, Theo. Sean Schulze wrote:
+> Hello,
+>
+> Is there a way to make apm's or apmd's estimates of the time left on a
+> battery charge more accurate?
+>
+> I just booted my laptop (a Sony VAIO PCG-C1XS with the stock hardware)
+> after several days of not having used it.  APM reported as I logged in that
+> I had 39% battery charge left and 136 minutes of use remaining.  I wish
+> that were true, but based on experience, with this older battery I can
+> expect about 20 to 25 minutes charge.  Since I am using a wireless card,
+> the usable time is actually significantly lower, and I acknowledge and
+> accept that.  That is not the issue.
+>
+> The problem is, that as the charge decreases, the time remaining on the
+> charge becomes more and more unrealistic.  For example, I know have 21%
+> charge remaining and that equates out to 89 minutes, according to apm.  I
+> have gone from 136 minutes remaining to 89 minutes remaining in the space
+> of about 7 minutes.  Is there any way to get apm to accurately calculate
+> the rate of discharge?  To what extent does this depend on my laptop's
+> BIOS?
 
-Today Sally.
+On my laptop a Compaq Armada i get relatively accurate readings, altho' to be 
+honest i dont take a lot of notice of its messages.
 
-NOT NEED CREDI CARD - 
+Now APM(d) works with the BIOS, so could it be that your BIOS is giving 
+unacurate data to apm.
+IMHO it could happen when a battery is nearing the end of its life, internal 
+resistance lowers causing all sorts of strange effects on older batterys.
 
-PARTY 1. VIDEO  16MB
-PARTY 2. VIDEO http://pluginaccess.com/?w=preview&type=exe 3MB  <<< try now
-PARTY 3. VIDEO  22MB
-PARTY 4. VIDEO 33MB
-PARTY 5. VIDEO  49MB
-PARTY 6. VIDEO  154MB
+Now i am not saying that is the problem, but i wonder if you could get hold 
+of another battery and then see if apm gives different details..
 
-Modem/ISDN Users: This archive features hundreds
- of movies therefore the movie previews on this page 
-may take a bit of time to load for you, however please 
-be patient, it will definitely be worth the wait.
-
-%100 FREE 
-Rus-SexServer
+Thats just my thoughts and my not reflect your actual problem.
 
 
+>
+> Cheers,
+> Sean
 
-
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
