@@ -1,10 +1,9 @@
-From: "Steven.Keuchel" <Steven.Keuchel@freenet.de> (by way of Steven.Keuchel
-	<Steven.Keuchel@freenet.de>)
-Subject: Re: 1024x768 SVGA Shell - won't work
-Date: Mon, 10 Jun 2002 20:37:34 +0200
+From: "Jim Johnson" <jim@kc4hw.net>
+Subject: remote login for Red Hat 7.2
+Date: Mon, 10 Jun 2002 18:37:30 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206102037.34114.Steven.Keuchel@freenet.de>
-Reply-To: Steven.Keuchel@freenet.de
+Message-ID: <200206102237.g5AMbZC1006568@smtp-server1.tampabay.rr.com>
+Reply-To: jim@kc4hw.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,12 +11,18 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Hello Everyone, 
 
-I think you can't use VESAFB modes for configuring the driver for your
-video-card. Take a look at "Documentation/fb/modedb.txt". This will help you
-setting the video mode for your video-card properly.
+I would like to be able to remote login into my Red Hat 7.2 via ssh.  Don't 
+really know where to start.  
 
+Any help here.
+
+Thanks
+Jim Johnson, Melbourne, Florida
+jim@kc4hw.net - http://www.kc4hw.net
+DXCluster RF Connection: 144.97
+Telnet://kc4hw.homelinux.net:8000
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
