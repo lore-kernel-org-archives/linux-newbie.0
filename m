@@ -1,43 +1,41 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: PPP Question
-Date: Wed, 25 Sep 2002 19:30:51 -0700
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: File Management
+Date: 26 Sep 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020925192522.025ffa30@celine>
-References: <Your message of "Wed, 25 Sep 2002 08:21:09 MST." <5.1.0.14.1.20020925082025.025f05e0@celine>
-Mime-Version: 1.0
+Message-ID: <200209260252.g8Q2qR6J017434@pyxis.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209260212.g8Q2C1901246@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: "e.a./CC" <linux-newbie@vger.kernel.org>
 
-At 10:12 AM 9/26/02 +0800, Peter wrote:
+Thanks, Steven and others who replied to this thread.
 
->ray@comarre.com said:
-> > Curious. What does your man page for "ifup" say about where it looks
-> > for its default interfaces file?
->
->]$ pinfo ifup
->Przemek's Info Viewer v0.5.8
->Error: could not open info file, trying manual
->Error: No manual page found either.
->[...]
->In /sbin/ifup the word interface does not appear in the script.
+I suspect I have to go with this indeed:
+> Your best bet would probably be to just rely on your package manager.
+Hmm.
 
-Oh what fun. On your system (Red Hat? I forget), "/sbin/ifup" is a script. 
-On my (Debian) systems, the same app name,  "/sbin/ifup", identifies a binary.
+Interesting, nevertheless:
+> This initially sounds like a good idea.  In fact, I once went as far as
+> actually writing such a script.  Unfortunately, you quite quickly
+> hit a problem: ldd doesn't actually report all of the libraries
+> used by a particular program.  You've said you're not a programmer, so
+> I'll spare you the details, but it is possible for a program to
+> specify while it's running that additional libraries should be linked
+> in. This is used by most programs which support plug ins, for instance.
+> Unfortunately, it isn't possible in general to get a complete list of
+> such libraries just by looking at the program in question, and so you
+> can't build an accurate list of which libraries are in use.
 
-I hate it when stuff this basic becomes both distribution specific -AND- 
-named in ways that invite confusion. Pfui!
+Which latter condition explains some of the never-ending troubles with
+installing (application) programs.
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Understandable, sure, that one wouldn't like to re-invent all those
+wheels.
+Less understandable that there is no (at least, moral) obligation to
+"declare" used bits and pieces from somewhere else in a/the "system".
+Result is lots of newbie frustration.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
