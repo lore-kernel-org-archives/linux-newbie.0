@@ -1,39 +1,52 @@
-From: Dave Pomeory <dave@dpomeroy.com>
-Subject: Re: iomega zip 650 cd burners
-Date: Sat, 19 Oct 2002 21:07:24 -0700
+From: Jude DaShiell <jdashiel@shellworld.net>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: Sun, 20 Oct 2002 01:21:15 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021019210724.6c019917.dave@dpomeroy.com>
-References: <Pine.BSF.4.44.0210192257070.26747-100000@server1.shellworld.net>
+Message-ID: <Pine.BSF.4.44.0210200120080.26747-100000@server1.shellworld.net>
+References: <200210182013.g9IKDrq17098@ev6.be.wanadoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.BSF.4.44.0210192257070.26747-100000@server1.shellworld.net>
+In-Reply-To: <200210182013.g9IKDrq17098@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Jude DaShiell <jdashiel@shellworld.net>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Heimo Claasen <hammer@revobild.net>
 Cc: linux-newbie@vger.kernel.org
 
-I have an iomega zip cd 650 also and am running Mandrake 9.0.  I would also like to find out if anyone has gotten this burner to burn.  Thanks for your time.
+Do any good versions of basic exist for linux that can compile on
+slackware 8.0 but are text interface versions exist?
 
-On Sat, 19 Oct 2002 23:00:23 -0400 (EDT)
-Jude DaShiell <jdashiel@shellworld.net> wrote:
 
-> On red hat 7.2 I was able to get that kind of drive reading but never
-> managed to get it to burn.  Now I've got slackware 8.0 on this system and
-> am wondering what kind of luck the slackware users have had or are having
-> with this kind of drive.  What I had used a usb connector.
-> 
-> 
-> 
+
+On 18 Oct 2002, Heimo Claasen wrote:
+
+> As Ray Olszewski <ray@comarre.com> wrote:
+> > There ae some implementations of BASIC for Linux, but I know of no working
+> > VB implementation. If you do, a reference to a URL would be helpful.
+>
+> Yes, there is a quite advanced Basic version (XBasic) but it suffers
+> from a basic *nix (and thus Linux) structural property: just the best
+> qualities of Basic - to control input and output on a rather low,
+> hardware-near level - cannot be implemented because of this. Which is a
+> real PITA as Basic is a great language when it comes to all sorts of
+> string/text handling and screen/printer/comport output of such.
+>
+> Which in turn is a direct consequence of the paranoid "security"
+> approach - "Oh My God Don't Let a 'user' Ever Get Near the Real Stuff
+> (there has to be a SysAdmin for this who KNOWS about the tricks and
+> will never tell and allow)". In fact, rather paternalistic. Which
+> irritates me.
+>
+> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-17
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+>
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
-
--- 
-Dave Pomeroy K7DNP South East Washington
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
