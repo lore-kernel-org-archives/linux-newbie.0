@@ -1,68 +1,54 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: Re: problems with ALSA
-Date: Thu, 12 Dec 2002 00:19:18 +0000
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: Setting standard arguments
+Date: Thu, 12 Dec 2002 22:21:06 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212120019.25355.r4mz3z@yahoo.es>
-References: <200212110750.08044.r4mz3z@yahoo.es> <Pine.LNX.4.50.0212112042140.4071-100000@athame.gmpexpress.net>
+Message-ID: <Pine.LNX.4.50.0212122220110.902-100000@athame.gmpexpress.net>
+References: <20021212161921.GA10853@neon.pearbough.net>
+ <Pine.LNX.4.50.0212122045250.902-100000@athame.gmpexpress.net>
+ <20021213015515.GA12456@neon.pearbough.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.50.0212112042140.4071-100000@athame.gmpexpress.net>
+In-Reply-To: <20021213015515.GA12456@neon.pearbough.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: dashielljt <dashielljt@gmpexpress.net>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: axel@pearbough.net
+Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+It looks as if the preinstall.pkg file is where you want to store what
+parameters this package will allow.
 
-Hi...
-  I know which is my card, I'm using a VIA card:
-00:11.5 Multimedia audio controller: VIA Technologies, Inc. VT8233 AC97=
- Audio=20
-Controller (rev 40)
-        Subsystem: C-Media Electronics Inc: Unknown device 0300
-        Flags: medium devsel, IRQ 3
-        I/O ports at e000 [size=3D256]
-        Capabilities: [c0] Power Management version 2
+Jude <dashielljt(at)gmpexpress-dot-net>
 
-  And compile ALSA with the option snd-via82xx, the files exist and eve=
-rything=20
-look fine, but when I use modprobe... It doesn't works.
+On Fri, 13 Dec 2002 axel@pearbough.net wrote:
 
-  Please help me
-  thanks
+Hi dashielljt!
 
-El Jue 12 Dic 2002 01:46, dashielljt escribi=F3:
-> Have you tried: lspci -v >lspci.log <cr> then had a look inside of
-> lspci.log to see if you could find your sound card?  If it's a p&P so=
-und
-> card only this won't work, but if it's in a pci slot it's possible ls=
-pci
-> -v can give you the vendor and type of card which may be enough to ge=
-t
-> alsa going correctly.  That should also provide you port info, but ev=
-en
-> before that perhaps dmesg >dmesg.log as root and reading down that fi=
-le to
-> see if the system even finds a sound card would be useful.
->
-> Jude <dashielljt(at)gmpexpress-dot-net>
-- --=20
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
+On Thu, 12 Dec 2002, dashielljt wrote:
 
-iD8DBQE999YLs4dF9gl05swRAhgDAJ9NBcRDQIVCsLxlFChZYIf1HR006wCfVtnE
-3NZ2iy6rHOhQg0CgYlpWRTk=3D
-=3DDkH/
------END PGP SIGNATURE-----
+> Never heard of that package and I have slackware 8.0 going on his machine.
+> It's not in the man pages, is it even part of traditional slackware full
+> install?  If not, you do best to check its documentation and faq file if
+> one exists.
 
+Well it's not about checkinstall. Checkinstall is not part of Slackware, it
+just creates slackware packages from source builds to help keep you system
+in order. Please take a look at it, in case you build software from source
+packages. It's very useful. (http://asic-linux.com.mx/~izto/checkinstall/).
 
+No, my question was targeted at doing such thing in general. Calling a
+program which is called with a set of standard arguments given to it.
+Because quite often you use the same options when calling some program.
+
+Best regards,
+Axel
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
