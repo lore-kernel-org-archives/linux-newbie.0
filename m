@@ -1,37 +1,36 @@
-From: Liam Helmer <linuxlists@thevenue.org>
-Subject: Re: Linux Networking problem...please help..
-Date: Thu, 17 Jul 2003 15:09:39 +0000
-Sender: linux-net-owner@vger.kernel.org
-Message-ID: <3F16BC33.4060705@thevenue.org>
-References: <20030716122034.88944.qmail@web21001.mail.yahoo.com>
+From: "Anna G. Zapata" <azapata@du.edu>
+Subject: dual boot
+Date: Thu, 17 Jul 2003 09:34:35 -0600
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <HBEJLOFMLEPBMAAEFNFDCEMLCAAA.azapata@du.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-net-owner@vger.kernel.org>
-In-Reply-To: <20030716122034.88944.qmail@web21001.mail.yahoo.com>
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Sanjay Arora <skpobox@yahoo.com>
-Cc: linux-net@vger.kernel.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-AFAIK, Windows XP doesn't accept ICMP redirects.
-I know that Windows 2000 and NT didn't, so it wouldn't surprise me if XP 
-didn't. It's not secure... <g>.
+Hello all,
 
-Cheers,
-Liam
+I would like to install RH 8.0 on my W2K laptop (a dual boot).  I entered
+the installation program without a problem and finally came upon the
+partioning section of the setup.  I clicked to use an automatic partition
+and clicked next.  I was told that there wasn't enough disk space, but I
+know that I have a little over 2G on the drive.  Does anyone have any
+suggestions as to what I'm doing wrong?
 
-Sanjay Arora wrote:
+Thanks.
 
->Netmask is 255.255.255.0 on all machines.
->
->Point is that the WinXP machine is being given a
->redirect by the Linux firewall and that is being
->ignored, either due to inability of WinXP or some
->misconfiguration by me.
->
->Sanjay.
->
->  
->
+Anna G. Zapata - GSEC, MCIS
+University of Denver
+University Technology Services - Network Security
+(303) 871-2009 (phone)
+(303) 871-4135 (fax)
+azapata@du.edu (email)
 
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
