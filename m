@@ -1,58 +1,37 @@
-From: Adam Luchjenbroers <adam@luchjenbroers.com>
-Subject: Problems installing nVidia drivers
-Date: Fri, 19 Jul 2002 21:24:04 +0930
+From: Oliver Ob <ob_ok@gmx.net>
+Subject: Multiple CD Changer
+Date: Fri, 19 Jul 2002 14:22:54 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200207192124.04363.adam@luchjenbroers.com>
-Reply-To: adam@luchjenbroers.com
+Message-ID: <3D38049E.66325BD2@gmx.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Lx Newbie List <linux-newbie@vger.kernel.org>
 
-When I start up X using the nVidia drivers I get a blank screen and the 
-machine locks hard.
+Hello,
 
-I'll start off by giving the relevant hardware and software configuration 
-information.
+how can I mount a 6-CD-Changer into my tree?
 
-Hardware:
-Soltek SL-75DRV5 Mainboard
-Athlon 900Mhz CPU
-Winfast GeForce DDR 256 (AGP)
+It is /dev/hdb
 
-Software
-Linux Mandrake 8.1
-Kernel 2.4.18 (compiled from kernels.org source tree, unpatched)
-XFree 4.1.0
-nVidia Kernel module + GLX version 1.0-2960
+But how can I distinguish those 6 slots?
+Mount them each?
 
-Because I have a non standard kernel I have to download the driver 'source', 
-which is a few C code and header files plus a chunk of pre-compiled object 
-code that is the real driver.
-
-I've built it using both
-
-# make
-
-and
-
-# make SYSINCLUDE=/usr/src/linux-2.4.18
-
-and the problem persists.
-
-(GLX has also been compiled).
-
-Using the nv driver I get no problems but I also don't get the 3d performance 
-their drivers offer.
-
-Analysis of the /var/log/XFree86.0.log file shows that it stops immediatly 
-after loading the PCI module.
-
-
+Best regards!
+--=20
+*=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
+ *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
+I       http://www.bmw-roadster.de/Friends/Olli/olli.html       I
+I       http://www.bmw-roadster.de/Friends/friends.html         I
+I       http://groups.yahoo.com/group/VGAP-93                   I
+I       mailto:VGAP-93-subscribe@yahoogroups.com                I
+I       http://home.t-online.de/home/spacecraft.portal          I
+>>>  Telek0ma iBBMS - now back online +49.4504.TRSi1/TRSi2   <<<
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
