@@ -1,24 +1,29 @@
-From: Peter Howell <p.howell74@rcn.com>
-Subject: scripting the "rec" function for a fixed time.
-Date: 24 Feb 2003 19:01:03 -0500
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: su command broken
+Date: Tue, 25 Feb 2003 11:31:22 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1046131264.10885.28.camel@smeagle>
+Message-ID: <200302251131.23055.Adam@Luchjenbroers.com>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I would like to be able to run the rec command unattended.  Right now
-when executed, it will record sound until I hit C-c.  I would really
-like to be able to right a script which will execute "rec ...", then
-wait a specified period of time, then pass the C-c to it.  Or is there a
-simpler way?
 
-Thanks
+using su to quickly login to root or to another user account fails, returning 
+the error "invalid password"
 
-Peter
+However, this password works fine to login from the login prompt.
+
+Where should I start looking to find the problem.
+-- 
+"Windows isn't a virus, viruses do something" - Nowhere Man
+
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
