@@ -1,30 +1,22 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Minicom fails
-Date: Thu, 19 Dec 2002 16:50:41 +0800
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: How can I expand the window size of a telnet session?
+Date: Thu, 19 Dec 2002 10:27:05 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212190850.gBJ8ofb04028@philonline.com>
-Mime-Version: 1.0
+Message-ID: <atsoff$m76$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
+I've given up getting an XTerm session from my windows X
+client working, and really all I want is large text window session.
 
-After I run a RH7.3 upgrade I can't access anymore minicom as a user.
+So, how can I expand the window size of telnet session beyond
+the anaemic dimensions of 80x25?
 
-I get the following message:
-]$ minicom
-Device /dev/ttyS0 lock failed: Operation not permitted.
-
-No problem accessing it as su and /dev/ttyS0 is set to chmod a+rw.
-
-How will I get my minicom back as a user?
-
-Thanks & regards
--- 
-Peter
 
 
 
