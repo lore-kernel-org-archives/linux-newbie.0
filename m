@@ -1,30 +1,22 @@
-From: "Ken Boyer" <kboyer@logicalimages.com>
+From: "Paul Kraus" <pkraus@pelsupply.com>
 Subject: RE: RedHat 8
-Date: Wed, 23 Oct 2002 08:49:53 -0400
+Date: Wed, 23 Oct 2002 08:56:20 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001601c27a92$b17c9160$7b01010a@zeus>
-References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+Message-ID: <003501c27a93$972b1740$64fea8c0@pkrausxp>
+References: <001601c27a92$b17c9160$7b01010a@zeus>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+In-Reply-To: <001601c27a92$b17c9160$7b01010a@zeus>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-
-So far, so good.
-
-The subscription service works very well.
-
-USB 2.0 support is nice - allows easier installation on newer hardware.
-
-Apache 2.0 - so far it is working well although there are some subtle
-differences in the conf file that I was used to with 1.3
+To: 'Ken Boyer' <kboyer@logicalimages.com>
+Cc: linux-newbie@vger.kernel.org
 
 No disk partition tool.
-
-Haven't tried Evolution yet but it is said to have similar features as
-Outlook....when I have a couple days to kill....some day.
+-=-=-=
+So you have no options during install on how you want your drive
+partitioned? 
 
 Ken
 
@@ -53,6 +45,12 @@ info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
 
 
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+in the body of a message to majordomo@vger.kernel.org More majordomo
+info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
