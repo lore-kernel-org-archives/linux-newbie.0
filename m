@@ -1,77 +1,74 @@
-From: Oliver Ob <ob_ok@gmx.net>
-Subject: Lilo and NT - repost because many did not READ!!!!
-Date: Tue, 06 Aug 2002 21:01:45 +0200
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: Lilo and NT - repost because many did not READ!!!!
+Date: Tue, 6 Aug 2002 20:18:14 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D501D19.456D382E@gmx.net>
-References: <3D4E4917.FA23C178@gmx.net>
+Message-ID: <Pine.LNX.4.21.0208062008090.8397-100000@Consulate.UFP.CX>
+References: <3D501D19.456D382E@gmx.net>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3D501D19.456D382E@gmx.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Lx Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Oliver Ob <ob_ok@gmx.net>
+Cc: Lx Newbie List <linux-newbie@vger.kernel.org>
 
-Oliver Ob schrieb:
+Hi Oliver.
 
-There is some problem here. I had been using my machine dualbooting
-with Lilo for NT and Linux. Worked like a charme. Lilo resided in the
-mbr and it worked.
+> There is some problem here. I had been using my machine dualbooting
+> with Lilo for NT and Linux. Worked like a charme. Lilo resided in
+> the mbr and it worked.
+>
+> But now the NT uses SAFEGUARD and that thing sits in the mbr for the
+> pre-boot-password-authentication. So for all of you who do not know
+> SG yet: It starts booting ONLY if you entered the correct pw.
+>
+> I have not done this before and ask for your advice:
+>
+> *** AGAIN, STOP WASTING MY AND YOU TIME WITH IDEAS TO MODIFY THE NT
+> LOADER! I SAID A MILLION TIMES WHY I CANNOT CHANGE THAT !!! ****
+> Thanks.
 
-But now the NT uses SAFEGUARD and that thing sits in the mbr for the
-pre-boot-password-authentication. So for all of you who do not know
-SG yet: It starts booting ONLY if you entered the correct pw.
+If you're not willing to read the replies you get, then stop wasting OUR
+time asking for information you then ignore !!!
 
-I have not done this before and ask for your advice:
+To quote your comment above, you said "Lilo resided in the mbr" and THAT
+is the problem that stops SafeGuard from working. As I stated in my
+previous reply, you need to move Lilo out of the mbr and into the boot
+sector of the LINUX partition - NOT the NT partition as you claim in
+your comments. When you've done so, you change the partition table
+(which is NOT part of the MBR and is also NOT part of the NT loader)
+to indicate that the active partition is the Linux one.
 
-*** AGAIN, STOP WASTING MY AND YOU TIME WITH IDEAS TO MODIFY THE
-NT LOADER! I SAID A MILLION TIMES WHY I CANNOT CHANGE THAT !!! ****
-Thanks.
+> How can I continue using LILO for NT/Linux dualboot *when I need to
+> make NT believe the orignal ("safeguarded") NT-Bootsector in the
+> mbr, but want to use lilo in the mbr ACTUALLY
 
-How can I continue using LILO for NT/Linux dualboot
-*when I need to make NT believe the orignal ("safeguarded")=20
-NT-Bootsector i the mbr, but want to use lilo in the mbr ACTUALLY
-=20
-What to do?
+Why do you want to put lilo in the MBR ??? Why not just give safeguard
+what it wants in the first place?
 
-I put it like this: I NEED lilo in the mbr, but can only boot=20
-with SAFEGUARD. So how can I tell lilo to run the SAFEGUARD sector,
-which I have here in a file (512 bytes) ?
+> What to do?
 
-> The other way round to get this clear: The Multiboot HOWTOs that I
-> found as well as googling with
-> http://www.google.de/search?q=3Dlilo+mbr+NT&btnG=3DGoogle-Suche&hl=3D=
-de&ie=3DISO-8859-1
->=20
-> all brought only solutions like "Configure NT-Loader to boot your
-> Linux system" - which NOT what I want nor can!
+Read what people tell you, for starters.
 
-THIS is it!=20
-So how can I install Lilo in the mbr and tell Lilo to boot NT,
-but emulate that BOOT using the SAFEGUARD-MBR
-=20
-The lilo.conf section about chain loading is not clear to me.
+> I put it like this: I NEED lilo in the mbr...
 
-Can anybody help? I re-read the man lilo all the time, but cannot
-get on how to chain-boot a single sector (the SAFEG one) which then
-starts to actually boot the NT.
+Why? I've never put lilo in the MBR and have many systems happily dual
+booting Linux and Windows, so it can't be for that. I even have one
+system that is quad-booting Linux, Windows XP, OS2 Warp and MS-DOS and
+did it precicely this way.
 
-Hope you now understand me. I have not had enough sleep because of
-this problem :-)
+> ...but can only boot with SAFEGUARD. So how can I tell lilo to run
+> the SAFEGUARD sector, which I have here in a file (512 bytes) ?
 
-Cheers mates!
+That's easy enough, but if you do it that way, it won't work as the
+safeguard sector is sensitive to its position on the hard drive.
 
+Best wishes from Riley.
 
---=20
-   *=BA=A4.,___,.=A4=BA*=A8=A8=A8*=A4         =3DOliver@home=3D        =
- *=BA=A4.,=B8=B8=B8,.=A4=BA*=A8=A8*=A4
-   I   / __|__   http://www.bmw-roadster.de/Friends/Olli/olli.html  I
-   I  / /  |_/   http://www.bmw-roadster.de/Friends/friends.html    I
-   I  \ \__|_\   http://groups.yahoo.com/group/VGAP-93              I
-   I   \___|     mailto:VGAP-93-subscribe@yahoogroups.com           I
-   >>>  Telek0ma iBBMS - moving house, but online! +49....TRSi1   <<<
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
