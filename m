@@ -1,42 +1,57 @@
-From: "Kasim Sinan Yildirim" <yildirim@bilmuh.ege.edu.tr>
-Subject: Paging and system calls
-Date: Mon, 28 Apr 2003 14:48:08 +0200
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: Re: Getting a warning with const
+Date: Mon, 28 Apr 2003 15:48:23 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030428124808.M37677@bilmuh.ege.edu.tr>
+Message-ID: <20030428154823.P16619@neutrino.particles.org>
+References: <20030427231356.75AC.WOLFGANG127JP@ybb.ne.jp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20030427231356.75AC.WOLFGANG127JP@ybb.ne.jp>; from wolfgang127jp@ybb.ne.jp on Sun, Apr 27, 2003 at 11:13:58PM +0900
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: wolfgang <wolfgang127jp@ybb.ne.jp>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+On Sun, Apr 27, 2003 at 11:13:58PM +0900, wolfgang wrote:
+> Hi gurus,
+> I made a simple code(dos2unix.c) that changes dos formatted text to unix
+> or unix formatted text to dos. it's up to the code name.
+> If I change the argument of getBasename function to (const char *name),
+> I get a following warning.
+> dos2unix.c: In function `getBasename':
+> dos2unix.c:10: warning: assignment discards qualifiers from pointer
+> target type
+[snipped]
+> char* getBasename(char *name){
+>    char* basename = 0;
+>    if((basename = strrchr(name,'/')) != 0)
+>       basename++;
+>    else
+>       basename = name;
+> }
+[snipped]
+>    basename = getBasename(argv[0]);
+> 
 
-I am working on a small kernel and i am examining the source code of the=20
-linux.
+You call getBasename by passing argv[0] which is char *, but you have declare
+getBasename so as to take a const char *. 
 
-Since every task has its own page tables, when task switching occurs,  the =
+You can make the warning dissapear by:
 
-cr3 field of the TSS is put to the cr3 register which is page directory bas=
-e=20
-register.
+	getBasename ((const char *) argv[0]);
 
-=DDn my operating system, when a system call occurs, the user level code ju=
-mps=20
-to system level code by changing its selectors to KernelCS and KernelDS. Bu=
-t=20
-at this point, the cr3 register still points to the page directory of the=20
-user process. So, the actual code that is pointed by kernel level page=20
-directory is not equal to the user level page directory entry. As a result =
-,=20
-the system fails.
+If I were you, I will just declare getBasename so as to take char * and make
+everything happy.
 
-How this problem is solved in Linux? Have you got any solution to my proble=
-m?
+Elias
 
-Thanks...
+-- 
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
-
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
