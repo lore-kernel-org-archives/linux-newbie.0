@@ -1,34 +1,29 @@
-From: Jim Reimer <jdr@wa5rrh.org>
-Subject: Re: .prn to .txt conversion = ?
-Date: Tue, 30 Mar 2004 07:24:14 -0600
+From: joy <gracecott@sancharnet.in>
+Subject: Re: XFree86 problems (ATI radeon video card)
+Date: Tue, 30 Mar 2004 19:12:57 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <17050938982.20040330072414@wa5rrh.org>
-References: <200403281732.18531.sotl155360@earthlink.net>
- <5.1.0.14.1.20040329204727.01ef69d0@celine>
-Reply-To: Jim Reimer <jdr@wa5rrh.org>
+Message-ID: <40697961.1050805@sancharnet.in>
+References: <00b701c415a0$c1ab34b0$bb7ac19d@King>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040329204727.01ef69d0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: Philippe De Neve <Philippe.deneve@intec.ugent.be>, linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
+about the log which you sent me and the Xf86config, it seems to me that 
+Xfree86 is trying to open font directories
+ not available. install aptitude (if possible) and search for fonts to 
+be installed. I recommend aptitude coz it has an
+easier interface than dselect ( which I hate with a vengeance, but keep 
+it installed nevertheless). Also according to
+you the font server doesn't start. Since you have installed only the 
+bare minimum  needed, check if you have xfs,
+the x font server package installed.
 
-> At 05:32 PM 3/28/2004 -0500, Frank Roberts - SOTL wrote:
-
-> When you say "the content is all text", can you be a bit more exact? (I
-> haven't used DOS for years and I cannot recall what the.prn extension
-> signifies.)
-
-A .prn file is generated when the "print to file" option is
-used.  It's contents depend solely on the printer driver -
-could be text, could be PostScript, could be HPGL, could be
-lots of other completely useless things.
-
--- 
--jdr-
+Cheers,
+Joy
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
