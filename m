@@ -1,49 +1,35 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Digests.
-Date: Tue, 18 Mar 2003 14:58:07 +0000
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: Re: Linux Newsleters from me.
+Date: Tue, 18 Mar 2003 09:28:36 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03031814580700.03692@unix.pa3gcu>
-References: <000001c2ed54$694d3ae0$b630f7c2@gcbagley>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030318092836.A1873@neutrino.particles.org>
+References: <MSGID_7223=3a9750=2f200_a221c5f8@fidonet.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c2ed54$694d3ae0$b630f7c2@gcbagley>
+Content-Disposition: inline
+In-Reply-To: <MSGID_7223=3a9750=2f200_a221c5f8@fidonet.org>; from gateway@tcob1.net on Tue, Mar 18, 2003 at 01:02:48AM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: geoff bagley <geoff@gcbagley.uklinux.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Sean Rima <gateway@tcob1.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 18 March 2003 13:41, geoff bagley wrote:
-> Please can you tell me how to find a "digest #4930" ?
->
-> I am trying to track down linux drivers for a Mitac 6031 Notebook.
+On Tue, Mar 18, 2003 at 01:02:48AM +0000, Sean Rima wrote:
+> I must say sorry to all the members of the Linux Newbies list for the off topic 
+> newsletters that arrived on the list from my system. I run a BBS and gate the 
 
-No need to look for a video driver Jeff, its supported by XFree.
+Do you offer access in your BBS via telnet or only by phone call? 
 
-You can better take a look at the following URL it has a few tips on that 
-card. It concerns a Mitac 5033 but has "seeminly" the same video adaptor.
-It has other tips as well.
+Also, if your BBS runs on Linux, what software do you use?
 
-I found the link at www.linux-on-laptops.com
-
-> Particularly for the Trident 9660 VGA display.
-
-I used one for ages in my old 486 router, that was with xfree 3.3.6
-
->
-> Any help appreciated.
->
->
-> Best regards.
->
-> Geoff
-> G3FHL
+Regards,
+Elias
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
