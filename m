@@ -1,80 +1,53 @@
-From: Ray Olszewski <ray@comarre.com>
+From: lawson_whitney@juno.com
 Subject: Re: (fwd) .so, .a and .o-files
-Date: Thu, 15 Aug 2002 08:58:41 -0700
+Date: Thu, 15 Aug 2002 12:17:55 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020815083919.02181c50@celine>
-References: <20020815153420.GA10981@prester.freenet.de>
+Message-ID: <20020815.122115.134670320.0.lawson_whitney@juno.com>
+References: <5.1.0.14.1.20020815083919.02181c50@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020815153420.GA10981@prester.freenet.de>
+In-Reply-To: <5.1.0.14.1.20020815083919.02181c50@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Axel Siebenwirth <axel@hh59.org>, linux-newbie@vger.kernel.org
+To: ray@comarre.com
+Cc: axel@hh59.org, linux-newbie@vger.kernel.org
 
-If you have not seen your mail on the list, then almost certainly something 
-is wrong at your end. This is the *third* time I have seen this message 
-this morning.
+On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
-Are you sure you are subscribed?
+> It's been so long since I used a .a libraries, I didn't recall how they
+> were created. They are the old-format libraries I referred to above. They
+> are kept around, at least on full-size Linux installs, mainly for legacy
+> reasons. Don't use them unless you have *very* unusual requirements (I
+> can't even think of an example).
 
-Might your MTA or MUA be filtering out messages that are From: your own 
-address?
+In case you want to make a static executable (one that does not require
+dynamic linking.  Nost distro's link /sbin/ldconfig static so you can
+use it to recover when you mess up your libraries and nothing woorks,
+say when you try to upgrade libc and don't know how.
 
-At 05:34 PM 8/15/02 +0200, Axel Siebenwirth wrote:
->Sorry, I haven't seen my mail get to the list. So here goes it again.
+Some distros keep a /bin/ash.static or other small shell for use in
+rescue root floppies and initrd images.
+
 >
->----- Forwarded message from Axel Siebenwirth <axel@hh59.org> -----
+> >Many thanks and my best regards,
+> >Axel Siebenwirth
 >
->Hi,
->
->I have some stupid questions.
->
->What makes the difference between .o and .so files? What is their use? Is it
->just a naming convention?
+> -------------------------------------------"Never tell me the odds!"--------
+> Ray Olszewski					-- Han Solo
+> Palo Alto, California, USA			  ray@comarre.com
+> -------------------------------------------------------------------------------
 
-.o is an object file. It represents the intermediate step in the 
-compile-and-link process for a program. .so is a shared object file (i.e., 
-a library); their linking (at runtime) is managed by ld.so .
-
-I'm not sure if the naming differences are actually required or if the use 
-of .so is a naming convention (not "juet" a naming convention, though, 
-since if it is one, it is well established, hence important).
-
->When I want to link libraries to a program I am compiling, of what format do
->the libraries have to be?
-
-Depends on how you link. Modern linking is done dynamically (only one copy 
-of the library is loaded into memory and shared by all apps that use it), 
-using .so libraries. Older linking was done statically (each app loaded its 
-own personal copy of the library into memory), using .a libraries.
-
-Of course, you need the appropriate header files in /usr/include to do 
-either of these things. How to get them depends on which Linux distro you 
-use; in Debian, most every library_package_name.deb has a corresponding 
-library_package_name-dev.deb with the needed headers.
-
->I have found out that .a files are archives created with ar. What is that
->for?
-
-It's been so long since I used a .a libraries, I didn't recall how they 
-were created. They are the old-format libraries I referred to above. They 
-are kept around, at least on full-size Linux installs, mainly for legacy 
-reasons. Don't use them unless you have *very* unusual requirements (I 
-can't even think of an example).
-
->Many thanks and my best regards,
->Axel Siebenwirth
+Lawson
+---oops---
 
 
 
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+________________________________________________________________
+GET INTERNET ACCESS FROM JUNO!
+Juno offers FREE or PREMIUM Internet access for less!
+Join Juno today!  For your FREE software, visit:
+http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
