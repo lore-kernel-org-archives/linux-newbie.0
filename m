@@ -1,32 +1,35 @@
-From: dave <dave@dpomeroy.com>
-Subject: group
-Date: Thu, 01 Jan 2004 13:17:26 -0800
+From: Srinivas Chinta <chintasrinivas_tech@yahoo.com>
+Subject: info needed on atomic operations
+Date: Thu, 1 Jan 2004 13:34:01 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FF48E66.5000206@dpomeroy.com>
+Message-ID: <20040101213401.36093.qmail@web21201.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'll try to ask this question so that it makes sense.  I'm running 
-Mandrake 9.1.  I've made a folder called "/home/everyone".  I have my 
-daughter sharing an internet connection on my local network.  My router 
-gives ip addresses when she starts her computer, (windows98) and it 
-gives me an ip address when I start up, (Mandrake 9.1).  I'm trying to 
-share the folder "/home/everyone" between  her and me.  Samba gives her 
-access to Laura folder on my linux box and when she logs into my linux 
-machine she can also access her folder.  I've changed the permissions on 
-the /home/everyone folder to rwx with chmod.  When I reboot I loose the 
-w permission on /home/everyone.  Otherwise everything works great.  
-Anyone have some suggestions?  Thanks for your help.
-Dave
+Hi all,
+ 
+I need some information on atomic operations.
+Please provide me some information on how do I do the
+following operations atomically(for iX86):
+(1) set a charecter ( dst = src),
+(2) compare and then set a charecter ( if (dst==X) 
+dst = src;)
+ 
+It would be great If you provide some references to
+any good documents.
+ 
+Thanks,
+Srini
 
--- 
-Dave Pomeroy K7DNP South Eastern Washington
 
-
+__________________________________
+Do you Yahoo!?
+Find out what made the Top Yahoo! Searches of 2003
+http://search.yahoo.com/top2003
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
