@@ -1,79 +1,87 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: linux kernel: irq 11: nobody cared!
-Date: Tue, 20 Jul 2004 21:52:53 +0100 (BST)
+From: Peter Garrett <peterg@fishinternet.com.au>
+Subject: Re: Re[8]: Linux Help
+Date: Wed, 21 Jul 2004 07:43:35 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0407202138320.27512@ppg_penguin.kenmoffat.uklinux.net>
-References: <200407201939.30300.Mr.MailingList@ntlworld.com>
+Message-ID: <1090359814.1647.5.camel@DebiAnarchist>
+References: <20040720222206.16C0.SAVAGE-GARDEN@hanikamail.com>
+	 <5.1.0.14.1.20040720094640.01fc1668@celine>
+	 <20040720230038.16D4.SAVAGE-GARDEN@hanikamail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200407201939.30300.Mr.MailingList@ntlworld.com>
+In-Reply-To: <20040720230038.16D4.SAVAGE-GARDEN@hanikamail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: Mr MailingList <Mr.MailingList@ntlworld.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie list <linux-newbie@vger.kernel.org>
 
-On Tue, 20 Jul 2004, Mr MailingList wrote:
+On Wed, 2004-07-21 at 03:01, Kev wrote:
+> >If memory serves (I'm not certain, though), the stock Debian install kernel 
+> >does NOT contain support for NICs that use the rtl8139 driver (or the newer 
+> >8139too driver). If that's the "comm one" you are referring to, you will 
+> >need to add a module for it to do an online install.
+> 
+> LAN cards are both, Realtek RTL8139
+> 
+> :(
+> 
+> 
+> On Tue, 20 Jul 2004 09:54:41 -0700
+> Ray Olszewski <ray@comarre.com> wrote:
+> 
+> >At 10:26 PM 7/20/2004 +0600, Kev wrote:
+> >[...]
+> >>LAN Card are Realtec both same model , a comm one but cant remember the
+> >>exact model tho, sorry
+> >
+> >If memory serves (I'm not certain, though), the stock Debian install kernel 
+> >does NOT contain support for NICs that use the rtl8139 driver (or the newer 
+> >8139too driver). If that's the "comm one" you are referring to, you will 
+> >need to add a module for it to do an online install.
+> >
+> >> >--> system. (Except I don't know what "some AV for the email relay" 
+> >> means ... I
+> >> >--> can't parse "AV" in this context.) The extra RAM should handle your Web
+> >>
+> >>AV = AntiVirus for the SMTP relay.
+> >>but not sure what i'm going to use.
+> >
+> >Ah. I guess that's why words communicate better than made-up abbreviations 
+> >(for me, AV = audio-visual, but that made no sense in context).
+> >
+> >I just skimmed the Debian package list (for Sid; Woody will be less 
+> >complete or current) and found that postfix has these associated packages:
+> >
+> >         amavis-ng - AMaViS "Next Generation"
+> >         amavisd-new - Interface between MTA and virus scanner/content filters
+> >         amavisd-new-milter - Interface between sendmail-milter and amavisd-new
+> >
+> >         postgrey - Greylisting implementation for Postfix
+> >         webmin-postfix - postfix control module for webmin
+> >
+> >Not having used any of this stuff myself, I can neither recommend nor 
+> >criticize it ... just let you know it is (probably) there, for you to take 
+> >a look at.
 
->
-> Hi have a very irritating problem and so far I have been unable to fi=
-nd a
-> solution to it.
->
-> I have supermicro P3TDDE mob with VIA Apollo 266 chipset and SuSe 9.1=
- with
-> kernel 2.6.5-7.95-smp. The problem is that if I leave the PC unattend=
-ed i.e
-> there is no keyboard or mouse IO activity for about 20 minutes those =
-input
-> devices get disabled. The keyboard and mouse is connected the PC via =
-Belkin
-> KVM USB switch. Looking through the message file I found that the fol=
-lowing
-> recodes being logged each time it happens (see below). So far the onl=
-y remedy
-> is to telnet to the machine and reboot it. I suspect that the problem=
- must
-> the combination of 2.6 kernel and the hardware. I did not have this p=
-roblem
-> with kernel 2.4 or I don't have this problem when I dual boot to XP. =
-I have
-> another supermicro mob (on the same Belkin KVM switch), P6DBE - BX ba=
-sed,
-> running the same kernel and that PC does not have this problem. I can=
- leave
-> it for hours and nothing happens. I wonder if it's possible somehow t=
-o
-> reenable the IRQ11. As I said the problem is very irritating since ev=
-ery time
-> I go to make myself a coffee I have to turned blasted PC off.
->
-> Thanks - Tom
->
-> Jun 24 07:18:51 linux kernel: irq 11: nobody cared!
-> Jun 24 07:18:51 linux kernel: Call Trace:
-> Jun 24 07:18:51 linux kernel:  [__report_bad_irq+36/144]
+If you are installing Debian, you might want to look here: 
 
- A quick search on google suggests there are/were a lot of these,
-possibly related to the IRQ handler rather than the individual drivers.
+>http://www.osnews.com/story.php?news_id=2016&page=1
 
- Possible workarounds, in increasing order of pain, might include
-booting with whatever the option is to disable apic, using a non-smp
-kernel (if you only have one cpu, of course), trying a newer kernel fro=
-m
-SuSe if there is one, or trying a newer kernel from kernel.org.  This
-looks the sort of thing where you might need to try the latest 2.6.8-rc
-or even -mm (if it isn't fixed in 2.6.7).  These aren't normally
-recommended, particularly for production boxes, but I guess it isn't in
-production if you telnet to it.
+and here:
 
-Ken
---=20
- das eine Mal als Trag=F6die, das andere Mal als Farce
+http://www.debian.org/devel/debian-installer/
+
+and I would recommend:
+
+http://www.debian.org/doc/manuals/apt-howto/index.en.html
+-
+
+> 
+> ------- 
+-- 
+Windows belongs to Microsoft: Linux belongs to humanity
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
