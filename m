@@ -1,327 +1,67 @@
-From: James Ferris <james_e_ferris@yahoo.ca>
-Subject: Re: need direction - LAN browse troubleshooting - Thanks Ray
-Date: Wed, 30 Apr 2003 14:51:57 -0600
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: need to switch NICs... process?
+Date: Wed, 30 Apr 2003 16:36:22 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030430143819.02d143b0@pop.mail.yahoo.com>
-References: <5.1.0.14.1.20030428152449.02d2bb90@pop.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20030430163003.01f75238@celine>
+References: <5.1.0.14.1.20030430114148.01f79ad8@celine>
+ <5.1.0.14.1.20030430121655.02d2bb90@pop.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="=====================_1978620916==_"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030428184326.01fa09c0@celine>
+In-Reply-To: <5.1.0.14.1.20030430142853.02d2bb90@pop.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
---=====================_1978620916==_
-Content-Type: text/plain; charset="us-ascii"; format=flowed
-
-At 28/04/2003 ; 10:58 PM, you wrote:
->I don't have magic answers for you or even a pointer to a TS Guide (beyond 
->the obvious -- the resources at a Samba mirror site, such as 
->http://us3.samba.org/samba/samba.html). My impression is that *free* Samba 
->resources (there are books one can buy) do not provide very good help for 
->beginner questions or most smb.conf configuration troubleshooting. But I 
->do have a couple of thoughts that might help.
+At 02:36 PM 4/30/2003 -0600, James Ferris wrote:
+>At 30/04/2003 ; 12:46 PM, you wrote:
+>>At 12:18 PM 4/30/2003 -0600, James Ferris wrote:
+>>>Hello list,
+>>>Is there a 'best process' for changing out a NIC?
+>>>I would be going from a dlink 528 (10bT) to a dlink 530 (100bTX).
+>>
+>>
+>>I'm not sure what you are looking for in the way of a "process" (never 
+>>mind the "best" part). Usually, all I do is halt, power down, open the 
+>>case, remove the old NIC, insert the new NIC, close the case, and reboot. 
+>>When the system boots/inits, I log in as root and make any changes to NIC 
+>>modules that are needed to make the new NIC work (this can involve 
+>>another reboot, but it usually does not ... just rmmod the old module and 
+>>modprobe the new one, then restart networking. After this works (so I 
+>>know I have the right module), I edit /etc/modules ... you do whatever 
+>>method your distro uses (this is the Debian system) ... so the new 
+>>required module loads next time the system reboots.
+>>
+>>I guess this is a process, but it all seems obvious to me. Is there 
+>>something I am missing about yor question? If so, please clarify it and 
+>>I'll try to be as helpful as I can.
 >
->First, how does the RH host resolve names? /etc/hosts, an on-host DNS 
->server, a remote DNS server? The comment
+>Ummm. okay. What I wanted to know, as a 'newbie', was just how difficult 
+>this might be. If this were Windows and I did this with a PCI NIC, the OS 
+>would tell me 'there's a new piece of hardware, and this is what I think 
+>it is.' ... then it would ask me what network settings to apply. Almost as 
+>drop-dead simple as for a Mac.
 >
->>   -- I get an error "could not connect to host localhost"
->
->makes me wonder if there is a problem with the resolver, or perhaps with 
->the localhost entry in /etc/hosts
+>The linux I'm learning here is RedHat 8, and from your response, I think I 
+>need to spend more time reading about the commands you listed.
 
-First hosts, then bind. And dns is functioning correctly.
-I'm not sure about this part yet, but I discovered that if I enter 
-"smb://localhost/" I get the expected 'good' response. (I get the listing 
-of local smb resources).
-If I use "lan://localhost/" I still get 'the error' as above.
 
-Next I'll read up on how to get Windows workgroup LAN resouces listed.
+OH, now I understand your question. Linux itself (the kernel and kernel 
+modules, I mean) does not have any hardware detection built in. Some 
+distributions add in some degree of hardware detection, but it remains 
+relatively primitive compared to what you are used to in Windows (although 
+your description of what Windows does is a bit idealized ... I tend to see 
+a lot of "Did the manufacturer provide a disk?" results in Windows' 
+"automatic" device identification).
 
->Second, what does the smb.conf block for 'SharePt' actually say? And what 
->is the exact exchange that you describe as "Network Path 'not there'."? 
->This part sounds like you may have the "path = " entry in the smb.conf 
->block wrong.
+Someone who knows Red Hat 8 specifically (that's not me) may be able to 
+tell you the degree to which it will autodetect hardware changes. My 
+experience is with Debian, which probably has the worst hardware detection 
+(unless some Slacker would like to step up to the plate here) of any major 
+Linux distro. So I'm used to doing this stuff by hand ... no real problem, 
+since I rarely swap NICs and mostly stick with 2 brands.
 
-see the attached smb.conf file... I think I've just set a read-write switch 
-incorrectly.
 
->Third, did you create entries in the Samba password file, using 
->"smbpasswd"? See its man page for the details. I'm guessing you did not; 
->your password failures are consistent with skipping this step.
-
-Oops. I missed that document page. My mistake. (Is my face red?)
-
->Fourth, regarding DHCP, the 'send host-name "name";' line is a standard 
->option in DHCP, but I've never tried to use it to get a client to tell a 
->server its name. Since the hostname info needs to be passed to a DNS 
->resolver, not to an DHCP server, I doubt it will accomplish what you want 
->(at least not with a Linux-based dhcpd server ... but I don't really know 
->Windows well enough to be sure). In any case, trying to figure out how a 
->vaguely described Debian system does something is a bit much to ask us ... 
->ask the friend with the system how it gets its IP address and if, just 
->perhaps, it gets its hostname from the DHCP server instead of the other 
->way around. Or just try using the line ... it should not break anything, 
->even if it is not helpful.
-
-Tryed it... did not work. As you say, I'll look around that debian system 
-some more. May be simply because it's dhcp and my rh system is static.
-
->So ... I hope this is some help for starters. If you need to post again, 
->please quote the relevant sections of smb.conf exactly (concerlaing only 
->password info ... though offhand I cannot think of anyplace in smb.conf 
->where password info appears).
->
->At 04:25 PM 4/28/2003 -0600, James Ferris wrote:
->>Hello list,
->>Sorry to ask what should be a simple question. I simply have not yet found
->>an answer, or a resource to solve this myself.
->>(have looked thru RH docs, some samba docs, lists from both)
->>It seems this should be easy from the docs I've read (do X + Y, and restart).
->>I think what I need is a 'troubleshooting guide'.
->>... with 'F' problems, look 'here' kind-of-thing.
->>note I'm not a programmer - more of an experienced w2k user trying to learn
->>
->>So here's where I am:
->>- new build of RedHat 8 with rhn updates, including samba
->>- eth0 set to dhcp client with local domain hostname
->>- iptables set to not start at boot
->>- samba set to start at boot (RunLevel 3 & 5); smb.conf has:
->>   -- w2k workgroup name; hostname shows in w2k Network browse list
->>   -- some basic [global] permission settings
->>   -- printer share for public and guest access; opens and viewable
->>   -- homes share for users access; asks for auth but no-go
->>   -- SharePt share for general access; does not accept access attempts
->>   -- each share includes an entry with:
->>      --- [name], comment, path, writable or readonly
->>
->>- when I try to browse the LAN via the RH box by Konqueror, LAN browser:
->>   -- I get an error "could not connect to host localhost"
->>
->>So to get a better idea of samba, I examined a friends box that 'works'.
->>(it's debian, but all basic samba settings should be (?) similar).  Still...
->>
->>I'm not able to connect to any of the shares showing on the RH box.
->>(I've stopped and restarted smb service since my smb.conf changes.)
->>'homes' shares ask for a password, but will not accept any of the set
->>user passwords, and the 'SharePt' responds as Network Path 'not there'.
->>Printer share is openable.
->>___________________________________________________________
->>Any thoughts for where to check would be very-much appreciated.
->>___________________________________________________________
->>
->>aside: The RH host-name shows up in my w2k WINS server,
->>... but the RH host-name does not show in my w2k dns server.
->>The debian host-name shows in both WINS and dns servers under w2k.
->>
->>Is there some way to get RH 8 to automatically update its hostname
->>  and IP into a w2k dns server? I found a reference in the debian system to
->>'send host-name "name";' within file dhclient.conf. Is this what's making
->>that work? Where might I insert such for a static IP workstation?
-
---=====================_1978620916==_
-Content-Type: application/octet-stream; name="smb.conf"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smb.conf"
-
-IyBUaGlzIGlzIHRoZSBtYWluIFNhbWJhIGNvbmZpZ3VyYXRpb24gZmlsZS4gWW91IHNob3VsZCBy
-ZWFkIHRoZQojIHNtYi5jb25mKDUpIG1hbnVhbCBwYWdlIGluIG9yZGVyIHRvIHVuZGVyc3RhbmQg
-dGhlIG9wdGlvbnMgbGlzdGVkCiMgaGVyZS4gU2FtYmEgaGFzIGEgaHVnZSBudW1iZXIgb2YgY29u
-ZmlndXJhYmxlIG9wdGlvbnMgKHBlcmhhcHMgdG9vCiMgbWFueSEpIG1vc3Qgb2Ygd2hpY2ggYXJl
-IG5vdCBzaG93biBpbiB0aGlzIGV4YW1wbGUKIwojIEFueSBsaW5lIHdoaWNoIHN0YXJ0cyB3aXRo
-IGEgOyAoc2VtaS1jb2xvbikgb3IgYSAjIChoYXNoKSAKIyBpcyBhIGNvbW1lbnQgYW5kIGlzIGln
-bm9yZWQuIEluIHRoaXMgZXhhbXBsZSB3ZSB3aWxsIHVzZSBhICMKIyBmb3IgY29tbWVudHJ5IGFu
-ZCBhIDsgZm9yIHBhcnRzIG9mIHRoZSBjb25maWcgZmlsZSB0aGF0IHlvdQojIG1heSB3aXNoIHRv
-IGVuYWJsZQojCiMgTk9URTogV2hlbmV2ZXIgeW91IG1vZGlmeSB0aGlzIGZpbGUgeW91IHNob3Vs
-ZCBydW4gdGhlIGNvbW1hbmQgInRlc3RwYXJtIgojIHRvIGNoZWNrIHRoYXQgeW91IGhhdmUgbm90
-IG1hZGUgYW55IGJhc2ljIHN5bnRhY3RpYyBlcnJvcnMuIAojCiM9PT09PT09PT09PT09PT09PT09
-PT09PSBHbG9iYWwgU2V0dGluZ3MgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PQpbZ2xvYmFsXQoKIyB3b3JrZ3JvdXAgPSBOVC1Eb21haW4tTmFtZSBvciBXb3JrZ3JvdXAtTmFt
-ZQogICB3b3JrZ3JvdXAgPSBUSEVNSUNFCgojIHNlcnZlciBzdHJpbmcgaXMgdGhlIGVxdWl2YWxl
-bnQgb2YgdGhlIE5UIERlc2NyaXB0aW9uIGZpZWxkCiAgIHNlcnZlciBzdHJpbmcgPSBSSDggKGsy
-LjQuMTgtMjcuOC4wKSBTYW1iYSAldgoKIyBUaGlzIG9wdGlvbiBpcyBpbXBvcnRhbnQgZm9yIHNl
-Y3VyaXR5LiBJdCBhbGxvd3MgeW91IHRvIHJlc3RyaWN0CiMgY29ubmVjdGlvbnMgdG8gbWFjaGlu
-ZXMgd2hpY2ggYXJlIG9uIHlvdXIgbG9jYWwgbmV0d29yay4gVGhlCiMgZm9sbG93aW5nIGV4YW1w
-bGUgcmVzdHJpY3RzIGFjY2VzcyB0byB0d28gQyBjbGFzcyBuZXR3b3JrcyBhbmQKIyB0aGUgImxv
-b3BiYWNrIiBpbnRlcmZhY2UuIEZvciBtb3JlIGV4YW1wbGVzIG9mIHRoZSBzeW50YXggc2VlCiMg
-dGhlIHNtYi5jb25mIG1hbiBwYWdlCiAgIGhvc3RzIGFsbG93ID0gMTkyLjE2OC4wLiAxMjcuCgoj
-IGlmIHlvdSB3YW50IHRvIGF1dG9tYXRpY2FsbHkgbG9hZCB5b3VyIHByaW50ZXIgbGlzdCByYXRo
-ZXIKIyB0aGFuIHNldHRpbmcgdGhlbSB1cCBpbmRpdmlkdWFsbHkgdGhlbiB5b3UnbGwgbmVlZCB0
-aGlzCiAgIHByaW50Y2FwIG5hbWUgPSAvZXRjL3ByaW50Y2FwCiAgIGxvYWQgcHJpbnRlcnMgPSB5
-ZXMKCiMgSXQgc2hvdWxkIG5vdCBiZSBuZWNlc3NhcnkgdG8gc3BlbGwgb3V0IHRoZSBwcmludCBz
-eXN0ZW0gdHlwZSB1bmxlc3MKIyB5b3VycyBpcyBub24tc3RhbmRhcmQuIEN1cnJlbnRseSBzdXBw
-b3J0ZWQgcHJpbnQgc3lzdGVtcyBpbmNsdWRlOgojIGJzZCwgc3lzdiwgcGxwLCBscHJuZywgYWl4
-LCBocHV4LCBxbngKICAgcHJpbnRpbmcgPSBscHJuZwoKIyBVbmNvbW1lbnQgdGhpcyBpZiB5b3Ug
-d2FudCBhIGd1ZXN0IGFjY291bnQsIHlvdSBtdXN0IGFkZCB0aGlzIHRvIC9ldGMvcGFzc3dkCiMg
-b3RoZXJ3aXNlIHRoZSB1c2VyICJub2JvZHkiIGlzIHVzZWQKOyAgZ3Vlc3QgYWNjb3VudCA9IHBj
-Z3Vlc3QKCiMgdGhpcyB0ZWxscyBTYW1iYSB0byB1c2UgYSBzZXBhcmF0ZSBsb2cgZmlsZSBmb3Ig
-ZWFjaCBtYWNoaW5lIHRoYXQgY29ubmVjdHMKICAgbG9nIGZpbGUgPSAvdmFyL2xvZy9zYW1iYS8l
-bS5sb2cKCiMgUHV0IGEgY2FwcGluZyBvbiB0aGUgc2l6ZSBvZiB0aGUgbG9nIGZpbGVzIChpbiBL
-YikuCiAgIG1heCBsb2cgc2l6ZSA9IDEwMDAKCiMgU2VjdXJpdHkgbW9kZS4gTW9zdCBwZW9wbGUg
-d2lsbCB3YW50IHVzZXIgbGV2ZWwgc2VjdXJpdHkuIFNlZQojIHNlY3VyaXR5X2xldmVsLnR4dCBm
-b3IgZGV0YWlscy4KICAgc2VjdXJpdHkgPSB1c2VyCgojIFVzZSBwYXNzd29yZCBzZXJ2ZXIgb3B0
-aW9uIG9ubHkgd2l0aCBzZWN1cml0eSA9IHNlcnZlcgojIFRoZSBhcmd1bWVudCBsaXN0IG1heSBp
-bmNsdWRlOgojICAgcGFzc3dvcmQgc2VydmVyID0gTXlfUERDX05hbWUgW015X0JEQ19OYW1lXSBb
-TXlfTmV4dF9CRENfTmFtZV0KIyBvciB0byBhdXRvLWxvY2F0ZSB0aGUgZG9tYWluIGNvbnRyb2xs
-ZXIvcwogICAgcGFzc3dvcmQgc2VydmVyID0gKgo7ICAgcGFzc3dvcmQgc2VydmVyID0gPE5ULVNl
-cnZlci1OYW1lPgoKIyBQYXNzd29yZCBMZXZlbCBhbGxvd3MgbWF0Y2hpbmcgb2YgX25fIGNoYXJh
-Y3RlcnMgb2YgdGhlIHBhc3N3b3JkIGZvcgojIGFsbCBjb21iaW5hdGlvbnMgb2YgdXBwZXIgYW5k
-IGxvd2VyIGNhc2UuCjsgIHBhc3N3b3JkIGxldmVsID0gOAo7ICB1c2VybmFtZSBsZXZlbCA9IDgK
-CiMgWW91IG1heSB3aXNoIHRvIHVzZSBwYXNzd29yZCBlbmNyeXB0aW9uLiBQbGVhc2UgcmVhZAoj
-IEVOQ1JZUFRJT04udHh0LCBXaW45NS50eHQgYW5kIFdpbk5ULnR4dCBpbiB0aGUgU2FtYmEgZG9j
-dW1lbnRhdGlvbi4KIyBEbyBub3QgZW5hYmxlIHRoaXMgb3B0aW9uIHVubGVzcyB5b3UgaGF2ZSBy
-ZWFkIHRob3NlIGRvY3VtZW50cwogICBlbmNyeXB0IHBhc3N3b3JkcyA9IHllcwogICBzbWIgcGFz
-c3dkIGZpbGUgPSAvZXRjL3NhbWJhL3NtYnBhc3N3ZAoKIyBUaGUgZm9sbG93aW5nIGlzIG5lZWRl
-ZCB0byBrZWVwIHNtYmNsaWVudCBmcm9tIHNwb3V0aW5nIHNwdXJpb3VzIGVycm9ycwojIHdoZW4g
-U2FtYmEgaXMgYnVpbHQgd2l0aCBzdXBwb3J0IGZvciBTU0wuCjsgICBzc2wgQ0EgY2VydEZpbGUg
-PSAvdXNyL3NoYXJlL3NzbC9jZXJ0cy9jYS1idW5kbGUuY3J0CgojIFRoZSBmb2xsb3dpbmcgYXJl
-IG5lZWRlZCB0byBhbGxvdyBwYXNzd29yZCBjaGFuZ2luZyBmcm9tIFdpbmRvd3MgdG8KIyB1cGRh
-dGUgdGhlIExpbnV4IHN5c3RlbSBwYXNzd29yZCBhbHNvLgojIE5PVEU6IFVzZSB0aGVzZSB3aXRo
-ICdlbmNyeXB0IHBhc3N3b3JkcycgYW5kICdzbWIgcGFzc3dkIGZpbGUnIGFib3ZlLgojIE5PVEUy
-OiBZb3UgZG8gTk9UIG5lZWQgdGhlc2UgdG8gYWxsb3cgd29ya3N0YXRpb25zIHRvIGNoYW5nZSBv
-bmx5CiMgICAgICAgIHRoZSBlbmNyeXB0ZWQgU01CIHBhc3N3b3Jkcy4gVGhleSBhbGxvdyB0aGUg
-VW5peCBwYXNzd29yZAojICAgICAgICB0byBiZSBrZXB0IGluIHN5bmMgd2l0aCB0aGUgU01CIHBh
-c3N3b3JkLgogICB1bml4IHBhc3N3b3JkIHN5bmMgPSBZZXMKICAgcGFzc3dkIHByb2dyYW0gPSAv
-dXNyL2Jpbi9wYXNzd2QgJXUKICAgcGFzc3dkIGNoYXQgPSAqTmV3KnBhc3N3b3JkKiAlblxuICpS
-ZXR5cGUqbmV3KnBhc3N3b3JkKiAlblxuICpwYXNzd2Q6KmFsbCphdXRoZW50aWNhdGlvbip0b2tl
-bnMqdXBkYXRlZCpzdWNjZXNzZnVsbHkqCgojIFlvdSBjYW4gdXNlIFBBTSdzIHBhc3N3b3JkIGNo
-YW5nZSBjb250cm9sIGZsYWcgZm9yIFNhbWJhLiBJZgojIGVuYWJsZWQsIHRoZW4gUEFNIHdpbGwg
-YmUgdXNlZCBmb3IgcGFzc3dvcmQgY2hhbmdlcyB3aGVuIHJlcXVlc3RlZAojIGJ5IGFuIFNNQiBj
-bGllbnQgaW5zdGVhZCBvZiB0aGUgcHJvZ3JhbSBsaXN0ZWQgaW4gcGFzc3dkIHByb2dyYW0uCiMg
-SXQgc2hvdWxkIGJlIHBvc3NpYmxlIHRvIGVuYWJsZSB0aGlzIHdpdGhvdXQgY2hhbmdpbmcgeW91
-ciBwYXNzd2QKIyBjaGF0IHBhcmFtZXRlciBmb3IgbW9zdCBzZXR1cHMuCgogICBwYW0gcGFzc3dv
-cmQgY2hhbmdlID0geWVzCgojIFVuaXggdXNlcnMgY2FuIG1hcCB0byBkaWZmZXJlbnQgU01CIFVz
-ZXIgbmFtZXMKOyAgdXNlcm5hbWUgbWFwID0gL2V0Yy9zYW1iYS9zbWJ1c2VycwoKIyBVc2luZyB0
-aGUgZm9sbG93aW5nIGxpbmUgZW5hYmxlcyB5b3UgdG8gY3VzdG9taXNlIHlvdXIgY29uZmlndXJh
-dGlvbgojIG9uIGEgcGVyIG1hY2hpbmUgYmFzaXMuIFRoZSAlbSBnZXRzIHJlcGxhY2VkIHdpdGgg
-dGhlIG5ldGJpb3MgbmFtZQojIG9mIHRoZSBtYWNoaW5lIHRoYXQgaXMgY29ubmVjdGluZwo7ICAg
-aW5jbHVkZSA9IC9ldGMvc2FtYmEvc21iLmNvbmYuJW0KCiMgVGhpcyBwYXJhbWV0ZXIgd2lsbCBj
-b250cm9sIHdoZXRoZXIgb3Igbm90IFNhbWJhIHNob3VsZCBvYmV5IFBBTSdzCiMgYWNjb3VudCBh
-bmQgc2Vzc2lvbiBtYW5hZ2VtZW50IGRpcmVjdGl2ZXMuIFRoZSBkZWZhdWx0IGJlaGF2aW9yIGlz
-CiMgdG8gdXNlIFBBTSBmb3IgY2xlYXIgdGV4dCBhdXRoZW50aWNhdGlvbiBvbmx5IGFuZCB0byBp
-Z25vcmUgYW55CiMgYWNjb3VudCBvciBzZXNzaW9uIG1hbmFnZW1lbnQuIE5vdGUgdGhhdCBTYW1i
-YSBhbHdheXMgaWdub3JlcyBQQU0KIyBmb3IgYXV0aGVudGljYXRpb24gaW4gdGhlIGNhc2Ugb2Yg
-ZW5jcnlwdCBwYXNzd29yZHMgPSB5ZXMKCiAgb2JleSBwYW0gcmVzdHJpY3Rpb25zID0geWVzCgoj
-IE1vc3QgcGVvcGxlIHdpbGwgZmluZCB0aGF0IHRoaXMgb3B0aW9uIGdpdmVzIGJldHRlciBwZXJm
-b3JtYW5jZS4KIyBTZWUgc3BlZWQudHh0IGFuZCB0aGUgbWFudWFsIHBhZ2VzIGZvciBkZXRhaWxz
-CiAgIHNvY2tldCBvcHRpb25zID0gVENQX05PREVMQVkgU09fUkNWQlVGPTgxOTIgU09fU05EQlVG
-PTgxOTIKCiMgQ29uZmlndXJlIFNhbWJhIHRvIHVzZSBtdWx0aXBsZSBpbnRlcmZhY2VzCiMgSWYg
-eW91IGhhdmUgbXVsdGlwbGUgbmV0d29yayBpbnRlcmZhY2VzIHRoZW4geW91IG11c3QgbGlzdCB0
-aGVtCiMgaGVyZS4gU2VlIHRoZSBtYW4gcGFnZSBmb3IgZGV0YWlscy4KOyAgIGludGVyZmFjZXMg
-PSAxOTIuMTY4LjEyLjIvMjQgMTkyLjE2OC4xMy4yLzI0IAoKIyBDb25maWd1cmUgcmVtb3RlIGJy
-b3dzZSBsaXN0IHN5bmNocm9uaXNhdGlvbiBoZXJlCiMgIHJlcXVlc3QgYW5ub3VuY2VtZW50IHRv
-LCBvciBicm93c2UgbGlzdCBzeW5jIGZyb206CiMJYSBzcGVjaWZpYyBob3N0IG9yIGZyb20gLyB0
-byBhIHdob2xlIHN1Ym5ldCAoc2VlIGJlbG93KQo7ICAgcmVtb3RlIGJyb3dzZSBzeW5jID0gMTky
-LjE2OC4zLjI1IDE5Mi4xNjguNS4yNTUKIyBDYXVzZSB0aGlzIGhvc3QgdG8gYW5ub3VuY2UgaXRz
-ZWxmIHRvIGxvY2FsIHN1Ym5ldHMgaGVyZQo7ICAgcmVtb3RlIGFubm91bmNlID0gMTkyLjE2OC4x
-LjI1NSAxOTIuMTY4LjIuNDQKCiMgQnJvd3NlciBDb250cm9sIE9wdGlvbnM6CiMgc2V0IGxvY2Fs
-IG1hc3RlciB0byBubyBpZiB5b3UgZG9uJ3Qgd2FudCBTYW1iYSB0byBiZWNvbWUgYSBtYXN0ZXIK
-IyBicm93c2VyIG9uIHlvdXIgbmV0d29yay4gT3RoZXJ3aXNlIHRoZSBub3JtYWwgZWxlY3Rpb24g
-cnVsZXMgYXBwbHkKICAgbG9jYWwgbWFzdGVyID0gbm8KCiMgT1MgTGV2ZWwgZGV0ZXJtaW5lcyB0
-aGUgcHJlY2VkZW5jZSBvZiB0aGlzIHNlcnZlciBpbiBtYXN0ZXIgYnJvd3NlcgojIGVsZWN0aW9u
-cy4gVGhlIGRlZmF1bHQgdmFsdWUgc2hvdWxkIGJlIHJlYXNvbmFibGUKOyAgIG9zIGxldmVsID0g
-MzMKCiMgRG9tYWluIE1hc3RlciBzcGVjaWZpZXMgU2FtYmEgdG8gYmUgdGhlIERvbWFpbiBNYXN0
-ZXIgQnJvd3Nlci4gVGhpcwojIGFsbG93cyBTYW1iYSB0byBjb2xsYXRlIGJyb3dzZSBsaXN0cyBi
-ZXR3ZWVuIHN1Ym5ldHMuIERvbid0IHVzZSB0aGlzCiMgaWYgeW91IGFscmVhZHkgaGF2ZSBhIFdp
-bmRvd3MgTlQgZG9tYWluIGNvbnRyb2xsZXIgZG9pbmcgdGhpcyBqb2IKOyAgIGRvbWFpbiBtYXN0
-ZXIgPSB5ZXMgCgojIFByZWZlcnJlZCBNYXN0ZXIgY2F1c2VzIFNhbWJhIHRvIGZvcmNlIGEgbG9j
-YWwgYnJvd3NlciBlbGVjdGlvbiBvbiBzdGFydHVwCiMgYW5kIGdpdmVzIGl0IGEgc2xpZ2h0bHkg
-aGlnaGVyIGNoYW5jZSBvZiB3aW5uaW5nIHRoZSBlbGVjdGlvbgo7ICAgcHJlZmVycmVkIG1hc3Rl
-ciA9IHllcwoKIyBFbmFibGUgdGhpcyBpZiB5b3Ugd2FudCBTYW1iYSB0byBiZSBhIGRvbWFpbiBs
-b2dvbiBzZXJ2ZXIgZm9yIAojIFdpbmRvd3M5NSB3b3Jrc3RhdGlvbnMuIAo7ICAgZG9tYWluIGxv
-Z29ucyA9IHllcwoKIyBpZiB5b3UgZW5hYmxlIGRvbWFpbiBsb2dvbnMgdGhlbiB5b3UgbWF5IHdh
-bnQgYSBwZXItbWFjaGluZSBvcgojIHBlciB1c2VyIGxvZ29uIHNjcmlwdAojIHJ1biBhIHNwZWNp
-ZmljIGxvZ29uIGJhdGNoIGZpbGUgcGVyIHdvcmtzdGF0aW9uIChtYWNoaW5lKQo7ICAgbG9nb24g
-c2NyaXB0ID0gJW0uYmF0CiMgcnVuIGEgc3BlY2lmaWMgbG9nb24gYmF0Y2ggZmlsZSBwZXIgdXNl
-cm5hbWUKOyAgIGxvZ29uIHNjcmlwdCA9ICVVLmJhdAoKIyBXaGVyZSB0byBzdG9yZSByb3Zpbmcg
-cHJvZmlsZXMgKG9ubHkgZm9yIFdpbjk1IGFuZCBXaW5OVCkKIyAgICAgICAgJUwgc3Vic3RpdHV0
-ZXMgZm9yIHRoaXMgc2VydmVycyBuZXRiaW9zIG5hbWUsICVVIGlzIHVzZXJuYW1lCiMgICAgICAg
-IFlvdSBtdXN0IHVuY29tbWVudCB0aGUgW1Byb2ZpbGVzXSBzaGFyZSBiZWxvdwo7ICAgbG9nb24g
-cGF0aCA9IFxcJUxcUHJvZmlsZXNcJVUKCiMgV2luZG93cyBJbnRlcm5ldCBOYW1lIFNlcnZpbmcg
-U3VwcG9ydCBTZWN0aW9uOgojIFdJTlMgU3VwcG9ydCAtIFRlbGxzIHRoZSBOTUJEIGNvbXBvbmVu
-dCBvZiBTYW1iYSB0byBlbmFibGUgaXQncyBXSU5TIFNlcnZlcgogICB3aW5zIHN1cHBvcnQgPSBu
-bwoKIyBXSU5TIFNlcnZlciAtIFRlbGxzIHRoZSBOTUJEIGNvbXBvbmVudHMgb2YgU2FtYmEgdG8g
-YmUgYSBXSU5TIENsaWVudAojCU5vdGU6IFNhbWJhIGNhbiBiZSBlaXRoZXIgYSBXSU5TIFNlcnZl
-ciwgb3IgYSBXSU5TIENsaWVudCwgYnV0IE5PVCBib3RoCiAgIHdpbnMgc2VydmVyID0gMTkyLjE2
-OC4wLjEwIDE5Mi4xNjguMC4yMAoKIyBXSU5TIFByb3h5IC0gVGVsbHMgU2FtYmEgdG8gYW5zd2Vy
-IG5hbWUgcmVzb2x1dGlvbiBxdWVyaWVzIG9uCiMgYmVoYWxmIG9mIGEgbm9uIFdJTlMgY2FwYWJs
-ZSBjbGllbnQsIGZvciB0aGlzIHRvIHdvcmsgdGhlcmUgbXVzdCBiZQojIGF0IGxlYXN0IG9uZQlX
-SU5TIFNlcnZlciBvbiB0aGUgbmV0d29yay4gVGhlIGRlZmF1bHQgaXMgTk8uCjsgICB3aW5zIHBy
-b3h5ID0geWVzCgojIEROUyBQcm94eSAtIHRlbGxzIFNhbWJhIHdoZXRoZXIgb3Igbm90IHRvIHRy
-eSB0byByZXNvbHZlIE5ldEJJT1MgbmFtZXMKIyB2aWEgRE5TIG5zbG9va3Vwcy4gVGhlIGJ1aWx0
-LWluIGRlZmF1bHQgZm9yIHZlcnNpb25zIDEuOS4xNyBpcyB5ZXMsCiMgdGhpcyBoYXMgYmVlbiBj
-aGFuZ2VkIGluIHZlcnNpb24gMS45LjE4IHRvIG5vLgogICBkbnMgcHJveHkgPSBubyAKCiMgQ2Fz
-ZSBQcmVzZXJ2YXRpb24gY2FuIGJlIGhhbmR5IC0gc3lzdGVtIGRlZmF1bHQgaXMgX25vXwojIE5P
-VEU6IFRoZXNlIGNhbiBiZSBzZXQgb24gYSBwZXIgc2hhcmUgYmFzaXMKOyAgcHJlc2VydmUgY2Fz
-ZSA9IG5vCjsgIHNob3J0IHByZXNlcnZlIGNhc2UgPSBubwojIERlZmF1bHQgY2FzZSBpcyBub3Jt
-YWxseSB1cHBlciBjYXNlIGZvciBhbGwgRE9TIGZpbGVzCjsgIGRlZmF1bHQgY2FzZSA9IGxvd2Vy
-CiMgQmUgdmVyeSBjYXJlZnVsIHdpdGggY2FzZSBzZW5zaXRpdml0eSAtIGl0IGNhbiBicmVhayB0
-aGluZ3MhCjsgIGNhc2Ugc2Vuc2l0aXZlID0gbm8KCiM9PT09PT09PT09PT09PT09PT09PT09PT09
-PT09IFNoYXJlIERlZmluaXRpb25zID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQpbaG9t
-ZXNdCiAgIGNvbW1lbnQgPSBIb21lIERpcmVjdG9yaWVzCiAgIGJyb3dzZWFibGUgPSB5ZXMKICAg
-d3JpdGFibGUgPSB5ZXMKICAgdmFsaWQgdXNlcnMgPSAlUwogICBjcmVhdGUgbW9kZSA9IDA2NjQK
-ICAgZGlyZWN0b3J5IG1vZGUgPSAwNzc1CiMgSWYgeW91IHdhbnQgdXNlcnMgc2FtYmEgZG9lc24n
-dCByZWNvZ25pemUgdG8gYmUgbWFwcGVkIHRvIGEgZ3Vlc3QgdXNlcgo7IG1hcCB0byBndWVzdCA9
-IGJhZCB1c2VyCgpbU2hhcmVQdF0KICAgY29tbWVudCA9IFRlbXBvcmFyeSBmaWxlIHNwYWNlCiAg
-IHBhdGggPSAvcm9vdC9TaGFyZVB0CiAgIHJlYWQgb25seSA9IG5vCiAgIHB1YmxpYyA9IHllcwoK
-IyBVbi1jb21tZW50IHRoZSBmb2xsb3dpbmcgYW5kIGNyZWF0ZSB0aGUgbmV0bG9nb24gZGlyZWN0
-b3J5IGZvciBEb21haW4gTG9nb25zCjsgW25ldGxvZ29uXQo7ICAgY29tbWVudCA9IE5ldHdvcmsg
-TG9nb24gU2VydmljZQo7ICAgcGF0aCA9IC91c3IvbG9jYWwvc2FtYmEvbGliL25ldGxvZ29uCjsg
-ICBndWVzdCBvayA9IHllcwo7ICAgd3JpdGFibGUgPSBubwo7ICAgc2hhcmUgbW9kZXMgPSBubwoK
-CiMgVW4tY29tbWVudCB0aGUgZm9sbG93aW5nIHRvIHByb3ZpZGUgYSBzcGVjaWZpYyByb3Zpbmcg
-cHJvZmlsZSBzaGFyZQojIHRoZSBkZWZhdWx0IGlzIHRvIHVzZSB0aGUgdXNlcidzIGhvbWUgZGly
-ZWN0b3J5CjtbUHJvZmlsZXNdCjsgICAgcGF0aCA9IC91c3IvbG9jYWwvc2FtYmEvcHJvZmlsZXMK
-OyAgICBicm93c2VhYmxlID0gbm8KOyAgICBndWVzdCBvayA9IHllcwoKCiMgTk9URTogSWYgeW91
-IGhhdmUgYSBCU0Qtc3R5bGUgcHJpbnQgc3lzdGVtIHRoZXJlIGlzIG5vIG5lZWQgdG8gCiMgc3Bl
-Y2lmaWNhbGx5IGRlZmluZSBlYWNoIGluZGl2aWR1YWwgcHJpbnRlcgpbcHJpbnRlcnNdCiAgIGNv
-bW1lbnQgPSBBbGwgUHJpbnRlcnMKICAgcGF0aCA9IC92YXIvc3Bvb2wvc2FtYmEKICAgYnJvd3Nl
-YWJsZSA9IG5vCiMgU2V0IHB1YmxpYyA9IHllcyB0byBhbGxvdyB1c2VyICdndWVzdCBhY2NvdW50
-JyB0byBwcmludAogICBwdWJsaWMgPSB5ZXMKICAgZ3Vlc3Qgb2sgPSBubwogICB3cml0YWJsZSA9
-IG5vCiAgIHByaW50YWJsZSA9IHllcwoKIyBUaGlzIG9uZSBpcyB1c2VmdWwgZm9yIHBlb3BsZSB0
-byBzaGFyZSBmaWxlcwo7W3RtcF0KOyAgIGNvbW1lbnQgPSBUZW1wb3JhcnkgZmlsZSBzcGFjZQo7
-ICAgcGF0aCA9IC90bXAKOyAgIHJlYWQgb25seSA9IG5vCjsgICBwdWJsaWMgPSB5ZXMKCiMgQSBw
-dWJsaWNseSBhY2Nlc3NpYmxlIGRpcmVjdG9yeSwgYnV0IHJlYWQgb25seSwgZXhjZXB0IGZvciBw
-ZW9wbGUgaW4KIyB0aGUgInN0YWZmIiBncm91cAo7W3B1YmxpY10KOyAgIGNvbW1lbnQgPSBQdWJs
-aWMgU3R1ZmYKOyAgIHBhdGggPSAvaG9tZS9zYW1iYQo7ICAgcHVibGljID0geWVzCjsgICB3cml0
-YWJsZSA9IHllcwo7ICAgcHJpbnRhYmxlID0gbm8KOyAgIHdyaXRlIGxpc3QgPSBAc3RhZmYKCiMg
-T3RoZXIgZXhhbXBsZXMuIAojCiMgQSBwcml2YXRlIHByaW50ZXIsIHVzYWJsZSBvbmx5IGJ5IGZy
-ZWQuIFNwb29sIGRhdGEgd2lsbCBiZSBwbGFjZWQgaW4gZnJlZCdzCiMgaG9tZSBkaXJlY3Rvcnku
-IE5vdGUgdGhhdCBmcmVkIG11c3QgaGF2ZSB3cml0ZSBhY2Nlc3MgdG8gdGhlIHNwb29sIGRpcmVj
-dG9yeSwKIyB3aGVyZXZlciBpdCBpcy4KO1tmcmVkc3Bybl0KOyAgIGNvbW1lbnQgPSBGcmVkJ3Mg
-UHJpbnRlcgo7ICAgdmFsaWQgdXNlcnMgPSBmcmVkCjsgICBwYXRoID0gL2hvbWUvZnJlZAo7ICAg
-cHJpbnRlciA9IGZyZWRzX3ByaW50ZXIKOyAgIHB1YmxpYyA9IG5vCjsgICB3cml0YWJsZSA9IG5v
-CjsgICBwcmludGFibGUgPSB5ZXMKCiMgQSBwcml2YXRlIGRpcmVjdG9yeSwgdXNhYmxlIG9ubHkg
-YnkgZnJlZC4gTm90ZSB0aGF0IGZyZWQgcmVxdWlyZXMgd3JpdGUKIyBhY2Nlc3MgdG8gdGhlIGRp
-cmVjdG9yeS4KO1tmcmVkc2Rpcl0KOyAgIGNvbW1lbnQgPSBGcmVkJ3MgU2VydmljZQo7ICAgcGF0
-aCA9IC91c3Ivc29tZXdoZXJlL3ByaXZhdGUKOyAgIHZhbGlkIHVzZXJzID0gZnJlZAo7ICAgcHVi
-bGljID0gbm8KOyAgIHdyaXRhYmxlID0geWVzCjsgICBwcmludGFibGUgPSBubwoKIyBhIHNlcnZp
-Y2Ugd2hpY2ggaGFzIGEgZGlmZmVyZW50IGRpcmVjdG9yeSBmb3IgZWFjaCBtYWNoaW5lIHRoYXQg
-Y29ubmVjdHMKIyB0aGlzIGFsbG93cyB5b3UgdG8gdGFpbG9yIGNvbmZpZ3VyYXRpb25zIHRvIGlu
-Y29taW5nIG1hY2hpbmVzLiBZb3UgY291bGQKIyBhbHNvIHVzZSB0aGUgJVUgb3B0aW9uIHRvIHRh
-aWxvciBpdCBieSB1c2VyIG5hbWUuCiMgVGhlICVtIGdldHMgcmVwbGFjZWQgd2l0aCB0aGUgbWFj
-aGluZSBuYW1lIHRoYXQgaXMgY29ubmVjdGluZy4KO1twY2hvbWVdCjsgIGNvbW1lbnQgPSBQQyBE
-aXJlY3Rvcmllcwo7ICBwYXRoID0gL3Vzci9sb2NhbC9wYy8lbQo7ICBwdWJsaWMgPSBubwo7ICB3
-cml0YWJsZSA9IHllcwoKIyBBIHB1YmxpY2x5IGFjY2Vzc2libGUgZGlyZWN0b3J5LCByZWFkL3dy
-aXRlIHRvIGFsbCB1c2Vycy4gTm90ZSB0aGF0IGFsbCBmaWxlcwojIGNyZWF0ZWQgaW4gdGhlIGRp
-cmVjdG9yeSBieSB1c2VycyB3aWxsIGJlIG93bmVkIGJ5IHRoZSBkZWZhdWx0IHVzZXIsIHNvCiMg
-YW55IHVzZXIgd2l0aCBhY2Nlc3MgY2FuIGRlbGV0ZSBhbnkgb3RoZXIgdXNlcidzIGZpbGVzLiBP
-YnZpb3VzbHkgdGhpcwojIGRpcmVjdG9yeSBtdXN0IGJlIHdyaXRhYmxlIGJ5IHRoZSBkZWZhdWx0
-IHVzZXIuIEFub3RoZXIgdXNlciBjb3VsZCBvZiBjb3Vyc2UKIyBiZSBzcGVjaWZpZWQsIGluIHdo
-aWNoIGNhc2UgYWxsIGZpbGVzIHdvdWxkIGJlIG93bmVkIGJ5IHRoYXQgdXNlciBpbnN0ZWFkLgo7
-W3B1YmxpY10KOyAgIHBhdGggPSAvdXNyL3NvbWV3aGVyZS9lbHNlL3B1YmxpYwo7ICAgcHVibGlj
-ID0geWVzCjsgICBvbmx5IGd1ZXN0ID0geWVzCjsgICB3cml0YWJsZSA9IHllcwo7ICAgcHJpbnRh
-YmxlID0gbm8KCiMgVGhlIGZvbGxvd2luZyB0d28gZW50cmllcyBkZW1vbnN0cmF0ZSBob3cgdG8g
-c2hhcmUgYSBkaXJlY3Rvcnkgc28gdGhhdCB0d28KIyB1c2VycyBjYW4gcGxhY2UgZmlsZXMgdGhl
-cmUgdGhhdCB3aWxsIGJlIG93bmVkIGJ5IHRoZSBzcGVjaWZpYyB1c2Vycy4gSW4gdGhpcwojIHNl
-dHVwLCB0aGUgZGlyZWN0b3J5IHNob3VsZCBiZSB3cml0YWJsZSBieSBib3RoIHVzZXJzIGFuZCBz
-aG91bGQgaGF2ZSB0aGUKIyBzdGlja3kgYml0IHNldCBvbiBpdCB0byBwcmV2ZW50IGFidXNlLiBP
-YnZpb3VzbHkgdGhpcyBjb3VsZCBiZSBleHRlbmRlZCB0bwojIGFzIG1hbnkgdXNlcnMgYXMgcmVx
-dWlyZWQuCjtbbXlzaGFyZV0KOyAgIGNvbW1lbnQgPSBNYXJ5J3MgYW5kIEZyZWQncyBzdHVmZgo7
-ICAgcGF0aCA9IC91c3Ivc29tZXdoZXJlL3NoYXJlZAo7ICAgdmFsaWQgdXNlcnMgPSBtYXJ5IGZy
-ZWQKOyAgIHB1YmxpYyA9IG5vCjsgICB3cml0YWJsZSA9IHllcwo7ICAgcHJpbnRhYmxlID0gbm8K
-OyAgIGNyZWF0ZSBtYXNrID0gMDc2NQo=
---=====================_1978620916==_--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
