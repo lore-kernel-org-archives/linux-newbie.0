@@ -1,81 +1,83 @@
-From: Ray Olszewski <ray@comarre.com>
+From: beolach@juno.com
 Subject: Re: Cannot login as non-root user
-Date: Tue, 15 Jul 2003 19:25:34 -0700
+Date: Wed, 16 Jul 2003 03:01:20 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030715191243.01fcece8@celine>
-References: <20030715.162201.505.419099@webmail10.lax.untd.com>
+Message-ID: <20030715.200131.754.324122@webmail06.lax.untd.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030715.162201.505.419099@webmail10.lax.untd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-See below.
 
-At 11:21 PM 7/15/2003 +0000, beolach@juno.com wrote:
-
->On my brother's computer, running Slackware 9.0, we have just recently
->begun experiencing problems signing in as non-root users, either from
->normal login, su, su -, or ssh.  After entering username & password,
->login prints the error "Cannot execute /bin/bash: Permission denied"
->and returns to login prompt. Su & su - from root prints the same error,
->"Cannot execute /bin/bash: Permission denied" and returns to the root
->shell.  Ssh gives "/bin/bash: Permission denied" and connection lost.
->Root can sign in with no problems at all.
+>Basic questions:
 >
->The first thing I did was check the pemissions on /bin/bash, and it
->is executable for everyone: -rwxr-xr-x.  We've also un/reinstalled
->the bash package (we've tried the bash packages from both the
->slackware-9.0 and slackware-current distributions; bash-2.05b-i386-2
->and bash-2.05b-i486-3), with no change.  I've also removed & readded
->the user accounts in /etc/passwd & /etc/shadow, both with vipw and
->userdel/useradd; again with no result.
+>1. What is root's shell? Is it /bin/bash or /bin/sh? (If the latter, is 
+>/bin/sh a symlink to /bin/bash? It usually is but might not be in your >case.)
+
+It is /bin/bash (and /bin/sh is symlink to same).
+
+>2. What are permissions on /bin? They should be 755 (rwxr-xr-x).
+
+They are. (As are permisions on /, suggested by someone else).
+
+>3. This feels like a long shot, but might there be a permissions >problem 
+>with one of the shared libraries bash uses? Check your system with "ldd 
+>/bin/bash". Mine shows these libraries involved:
 >
->We started experiencing this quite suddenly, while we were trying to
->get X setup with 3d acceleration for my brothers ATI Radeon 9500 Pro
->(which is still not working, anyone here have experience?), and I am
->have no idea what started the login problems, because obviously X has
->nothing to do with login, and we really weren't doing anything else.
->
->Any help resolving this is greatly appreciated,
->Conway S. Smith
+>      autovcr@kuryakin:~$ ldd /bin/bash
+>              libncurses.so.5 => /lib/libncurses.so.5 (0x40018000)
+>              libdl.so.2 => /lib/libdl.so.2 (0x40055000)
+>              libc.so.6 => /lib/libc.so.6 (0x40058000)
+>              /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
 
-Basic questions:
+root@IG-88:~# ldd /bin/bash
+        libtermcap.so.2 => /lib/libtermcap.so.2 (0x40025000)
+        libdl.so.2 => /lib/libdl.so.2 (0x4002a000)
+        libc.so.6 => /lib/libc.so.6 (0x4002d000)
+        /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
+Permissions on all are 755.
 
-1. What is root's shell? Is it /bin/bash or /bin/sh? (If the latter, is 
-/bin/sh a symlink to /bin/bash? It usually is but might not be in your case.)
+>4. Another long shot: how full is /var ? /tmp ? / ? Might bash be >unable to 
+>create a log or scratch file, or login a wtmp entry, as an ordinary >user 
+>that it can as root (since root can use reserved areas of filesystems)?
 
-2. What are permissions on /bin? They should be 755 (rwxr-xr-x).
+Only have one filesystem, /, wich is 11% full (2.7GB of 22GB).
 
-3. This feels like a long shot, but might there be a permissions problem 
-with one of the shared libraries bash uses? Check your system with "ldd 
-/bin/bash". Mine shows these libraries involved:
+>5. And another: might some filesystem be mounted read only?
 
-         autovcr@kuryakin:~$ ldd /bin/bash
-                         libncurses.so.5 => /lib/libncurses.so.5 (0x40018000)
-                         libdl.so.2 => /lib/libdl.so.2 (0x40055000)
-                         libc.so.6 => /lib/libc.so.6 (0x40058000)
-                         /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
+Nope.
 
-4. Another long shot: how full is /var ? /tmp ? / ? Might bash be unable to 
-create a log or scratch file, or login a wtmp entry, as an ordinary user 
-that it can as root (since root can use reserved areas of filesystems)?
+>6. This sounds very non-Linux, but ... have you rebooted? It's just >barely 
+>possible that some kernel pointer got corrupted somehow and you need to 
+>reload a fresh kernel to get the permissions read properly.
 
-5. And another: might some filesystem be mounted read only?
+Yes we have. He dual-boots M$ Windows, and usually plays games under
+Windows for most of the time he's on his computer.
 
-6. This sounds very non-Linux, but ... have you rebooted? It's just barely 
-possible that some kernel pointer got corrupted somehow and you need to 
-reload a fresh kernel to get the permissions read properly.
+>If none of this gets you anywhere, and no one else comes up with >something 
+>better, next time tell us in more detail waht you have been doing to >get X 
+>working. Just editing XF86Config-4? Or fiddlign with other parts of the 
+>system too?
 
-If none of this gets you anywhere, and no one else comes up with something 
-better, next time tell us in more detail waht you have been doing to get X 
-working. Just editing XF86Config-4? Or fiddlign with other parts of the 
-system too?
+Mainly editing XF86Config-4.  Also attempting to install the ATI Radeon
+drivers off of ATI's site.  This might be somewhing to worry about, as
+the drivers were only available in RPMs, and Slackware doesn't nativly
+support RPMs.  I used Alien to convert it to a Slackware tgz package,
+and it seemed to install fine.
+
+Just solved it.  Thought popped into my head, what's the permission on
+the /lib directory? 700.  Changed to 755, everything works fine.
+
+Thank's for the help everyone,
+Conway S. Smith
 
 
-
+________________________________________________________________
+The best thing to hit the internet in years - Juno SpeedBand!
+Surf the web up to FIVE TIMES FASTER!
+Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
