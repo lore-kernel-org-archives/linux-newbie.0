@@ -1,73 +1,35 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: two Ethernet cards in the same machine with xover cable
-  .....
-Date: Tue, 23 Mar 2004 18:24:21 -0800
+From: joy <gracecott@sancharnet.in>
+Subject: Re: switching to debian (... and installing the NVIDIA  GeForce4)
+Date: Wed, 24 Mar 2004 18:52:23 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040323181722.01ef6c20@celine>
-References: <89760D3F308BD41183B000508BAFAC4104B17026@DDCNYNTD>
- <89760D3F308BD41183B000508BAFAC4104B17026@DDCNYNTD> <4060CA85.2020409@gelm.net>
+Message-ID: <40618B8F.6010707@sancharnet.in>
+References: <405FAC4A.1000609@sancharnet.in>
+ <5.1.0.14.1.20040322210149.01fdd960@celine> <406071B1.7030305@sancharnet.in>
+ <200403232059.23243.pa3gcu@zeelandnet.nl>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4060CA85.2020409@gelm.net>
-References: <89760D3F308BD41183B000508BAFAC4104B17026@DDCNYNTD>
- <89760D3F308BD41183B000508BAFAC4104B17026@DDCNYNTD>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: pa3gcu@zeelandnet.nl
+Cc: linux-newbie@vger.kernel.org
 
-At 06:38 PM 3/23/2004 -0500, chuck gelm wrote:
->RANDAZZO@ddc-web.com wrote:
+pa3gcu wrote:
+
+>I dont want to sound like a wet blanket, however i have a machine here running 
+>a 2.6 kernel, be aware there are issues with the nvidia video drivers, or at 
+>least i have some.
+>  
 >
->>All,
->>
->>This may seem stupidly easy, but please here me out.....
->>
->>I have 2 pro100 nics (using eepro100 driver)
->>
->>currently my setup is..
->>
->>
->>
->>>>ifconfig
->>>>
->>eth0    Link encap:Ethernet  HWaddr xx:xx:xx:xx:xx:xx
->>            inet addr: 172.172.16.1  Bcast:172.172.255.255  Mask:255.255.0.0
->>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
->>
->>eth1    Link encap:Ethernet  HWaddr yy:yy:yy:yy:yy:yy
->>            inet addr: 172.172.16.1  Bcast:172.172.255.255  Mask:255.255.0.0
->>            UP BROADCAST RUNNING MULTICAST  MTU:1500 Metric:1
->>
->>These nics are connected with an RJ-45 crossover cable......
->>
->>what do I need to do to get ftp communication between these devices.........
->Hi, Mike:
+I too had some problems in the beginning, but I believe APIC support on 
+uniprocessor systems breaks the driver...
+try disabling it and see if there is any difference coz after I did the 
+same, X has never hung on me ( it used to do so very often before)
+and thats atleast a month or two
+
+>  
 >
->You need to put them in different machines and give them different
->IP addresses.
->:-|
->HTH, Chuck
-
-Well, Mike, you see what you get when you keep asking the same question 
-over and over, in increasingly vague terms.
-
-Since I remember what your actual, original question was, I suggest you try 
-what I suggested back then -- look at the source code for ping 
-(specifically for a version of ping that implements the -I flag) and see 
-how it does it. I just did that for the stock ping that Debian distributes 
-(in netkit-base). It uses the setsockopt() call to assign to its socket an 
-a.b.c.d value contained a struct in_addr called ifaddr. This seems to force 
-the packets that ping sends to go out the specific interface you specify on 
-the command line, rather than following the routing table.
-
-This is *probably* what you need. The source provides what looks to me like 
-a good example, and the relevant man pages should fill in the rest.
-
-Oh, Chuck is right, though, that the two interfaces still do need distinct 
-IP addresses ... but I assume that part was just a typo in your message.
-
-
 
 
 
