@@ -1,160 +1,229 @@
-From: Jim Nelson <james4765@verizon.net>
-Subject: Re: physical address?
-Date: Fri, 08 Oct 2004 17:50:19 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: continuing (pdf) font frustrations
+Date: Fri, 08 Oct 2004 14:55:12 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <41670B9B.50103@verizon.net>
-References: <20041008120516.38539.qmail@web52909.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20041008125104.01f22500@celine>
+References: <5.1.0.14.1.20041008103518.01f22280@celine>
+ <5.1.0.14.1.20041008103518.01f22280@celine> <Pine.LNX.4.58.0410081331320.1527@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041008120516.38539.qmail@web52909.mail.yahoo.com>
+In-Reply-To: <Pine.LNX.4.58.0410081331320.1527@debian-emach>
+References: <5.1.0.14.1.20041008103518.01f22280@celine>
+ <5.1.0.14.1.20041008103518.01f22280@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Ankit Jain wrote:
+The added info you provide below, along with my quick check of the file you 
+sent to me offlist, all says you are right that you have a font problem. 
+And I am probably right that it is specific to Helvetica (or almost 
+specific to it ... the errors you list below indicate a bit of a problem 
+with Times Roman as well).
 
->thanks a lot for helping all the way
->
->see inline
->
-> --- Jim Nelson <james4765@verizon.net> wrote: 
->  
->
->>Ankit Jain wrote:
->>
->>    
->>
->>>hi
->>>
->>>http://www.xml.com/ldd/chapter/book/ch02.html
->>>
->>>00000000-0009fbff : System RAM
->>>0009fc00-0009ffff : reserved
->>>000a0000-000bffff : Video RAM area
->>>000c0000-000c7fff : Video ROM
->>>000f0000-000fffff : System ROM
->>>00100000-03feffff : System RAM
->>> 00100000-0022c557 : Kernel code
->>> 0022c558-0024455f : Kernel data
->>>20000000-2fffffff : Intel Corporation 440BX/ZX -
->>>82443BX/ZX Host bridge
->>>68000000-68000fff : Texas Instruments PCI1225
->>>68001000-68001fff : Texas Instruments PCI1225 (#2)
->>>e0000000-e3ffffff : PCI Bus #01
->>>e4000000-e7ffffff : PCI Bus #01
->>> e4000000-e4ffffff : ATI Technologies Inc 3D Rage
->>>      
->>>
->>LT
->>    
->>
->>>Pro AGP-133
->>> e6000000-e6000fff : ATI Technologies Inc 3D Rage
->>>      
->>>
->>LT
->>
->>> <>Pro AGP-133
->>> fffc0000-ffffffff : reserved
->>> what is it reserved for?
->>>
->>> if somebody can explin me this:
->>>
->>> "Once again, the values shown are hexadecimal ranges, and the string 
->>> after the colon is the name of the "owner" of the I/O region."
->>
->>>      
->>>
->>What you are seeing is the remapped I/O space for
->>various components in 
->>your computer.  During bootup, the kernel scans the
->>various buses and 
->>identifies various devices.  Each driver remaps the
->>I/O space for PCI 
->>devices - "they are physical addresses in that those
->>memory addresses do 
->>map to real devices, but they are not real memory
->>addresses."
->>    
->>
->
->what do u mean by this? they are physical address but
->not the real memory address? what do u mean by
->physical address then?
->
->  
->
+OK. Now what? I already made a few guesses, but they proved (by your 
+responses) to be off the mark.
 
-Most modern computer components have an I/O range built in - like a 
-graphics card, for example, will have the pixel maps, etc. for the 
-display, an IDE controller will have a configuration area, status 
-information, etc.  Using PCI for an example, each adapter card has a 
-certain amount of memory and register space.  The virtual addresses 
-allow you to use standard memory-oriented commands to access the 
-devices.  The x86 system has a different set of machine instruations for 
-I/O (at least for the legacy components - serial & parallel ports, 
-keyboard, mouse, system speaker, etc.) but most other architectures 
-don't have that same kind of split - you just segment off an area of the 
-address space and call it an adapter.  It's not the easiest thing in the 
-world to grok - I just barely understand it myself.
+1. The required font files *are* present on your system.
 
->>IIRC, the "reserved" area is the remapped kernel
->>address space - they 
->>set it up to remap to the top of the 32-bit memory
->>address range in 
->>order to allow hard-coded function calls - it is
->>faster to hard-code the 
->>function calls than to maintain symbol tables.
->>    
->>
-> 
->what is hard coded funtion calls? is it something like
->stting the pointer to starting location?
+2. The required deforma symlinks *are* present on your system.
+
+So, the rest of the steps ...
+
+3. Are the fonts all mode 644? (The actual fonts 
+in  /usr/share/fonts/type1/gsfonts/, not the symlinks). Probably; you said 
+you checked that already. And if other apps workm, that too indicates the 
+problem is specific to the PDF font corrspondences.
+
+4. Is the file /etc/defoma/hints/gsfonts.hints present? It provides defoma 
+with the information that Helvetica is an "Alias" for the Nimbus fonts.
+
+5. From looking over the man pages for defoma, I'd guess that it is worth 
+trying this:
+         defoma-font reregister-all /etc/defoma/hints/gsfonts.hints
+
+(I didn't actually try this here, since I don't like to muck with a stable, 
+working system just to see what happens.) Try reading the man pages for 
+defoma and defoma-fonts yourself, though, before you decide if you want to 
+try this.
+
+At 02:12 PM 10/8/2004 -0500, James Miller wrote:
+>On Fri, 8 Oct 2004, Ray Olszewski wrote:
 >
->  
+>Thanks for your response, Ray.
 >
-
-More like not having to go to a call table or calculate relative 
-offsets.  It saves time, to keep addresses of various parts of the 
-kernel in predictable places.  Any large program (Windows programs come 
-to mind) will load various parts of itself at different times.  Keeping 
-track of where in memory all those functions are located takes processor 
-time - for each subroutine called.
-
-If you don't allow things to move around in memory, you can just jump to 
-the address of the target subroutine.  No fuss, no bother.  That's how 
-DOS interrupts were handled, by the way - you had to load your interrupt 
-handler at a specific location in memory.  It makes for a smaller, 
-faster executable at the cost of some fragility when you try and muck 
-with it.
-
-Sorry if that's a little confused, but I'm just starting to get my chops 
-on w/ programming anything beyond silly toys.
-
->>I see this computer is a laptop - now I understand
->>why you are reluctant 
->>to upgrade the RAM.
->>    
->>
+> > 1. Just to eliminate  possible rookie error ... do you know that the
+> > "certain" .pdf files are themselves good? Can you read them on Windows
+> > using Acrobat, or could you previously read it on this system? You've
+> > almost surely checked this, but your problem has gotten so messy that I
+> > don't want to skip past even "obvious" questions. (If you have a small one,
+> > consider sending it to me off-list, and I'll make sure I can display it 
+> here.)
 >
->what tells that this is a laptop? 
+>The files (the text within them) were previously readable, whereas now
+>only the graphics portions of them are visible.  I've selected two for
+>testing: one is a webpage I printed to file (.ps) then used ps2pdf to
+>convert to a pdf.  The other is a city bus map I downloaded that was
+>created eslewhere: neither show any text where they used to - only blank
+>space around or within the graphics.  I've just checked them using
+>Acroread under Win (VMware install of Win 98) and they both display
+>normally there: all text appears and is legible.  On Debian, I get only
+>graphics but no text.  I'll send you the smaller of the two offlist (the
+>webpage I printed to .ps file, then converted to pdf) so you can check it
+>as well:  the other one is fairly large - nearly 1 MB.
+>
+> > 2. How have you been starting xpdf? Try starting it through an xterm, so
+> > you can either see or redirect STDOUT and STDERR ... see if xpdf is telling
+> > you anything about the problem that way.
+>
+>Been starting it via the menu Debian gives.  When I start it from an xterm
+>and open a problematic file, I get the following in STDOUT (in the
+>terminal, right?):
+>
+>me@mycomputer:~$ xpdf
+>Error: Couldn't create a font for 'Times-Roman'
+>Error: Couldn't create a font for 'Times-Roman'
+>Error: Couldn't create a font for 'Times-Roman'
+>Error: Couldn't create a font for 'Times-Roman'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica-Bold'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica-Bold'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica-Bold'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Times-Bold'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Times-Bold'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
+>Error: Couldn't create a font for 'Helvetica'
 >
 >
->  
+> > 3. Check for a dependency problem. The easiest way is to remove, then
+> > install the package, that is ...
+> >
+> >          apt-get remove xpdf
+> >          apt-get install xpdf
+> >
+> >  From what you wrote below, it appears you already tried his. Oh well.
 >
+>Yep, tried that.  Except I'm using Synaptic now, so I did it through the
+>gui.
+>
+> > 4. Is there anything that systematically distinguishes the "certain" .pdf
+> > files that have problem from others that, presumably, do not? Might you be
+> > missing some specific font that they need, for example? The gv output you
+> > wrote below seems to suggest this, in that the error comes from "findfont".
+> > (I don't use gs here, so I'm not familiar with the form of its error
+> > output, leving me to guess that
+> > "Helvetica   Font   Helvetica   362928   Helvetica" *might* be the missing
+> > font. See what "fc-list" tells you.
+>
+>I'm guessing it's a missing font problem, yes.  I don't see Helvetica in
+>the list fc-list produces, and "fc-list |grep Helvetica" does not return
+>any results.  Could that be the problem?  Helvetica is definitely
+>available and useable in OpenOffice.org, but I don't see it listed in
+>Abiword's font menu.
+>
+> > 5. Or there might be some lost "mapping" between a font you do have and
+> > Helvetica. (I say this because I don't have a Helvetica on my system
+> > either, and I can't find a .deb that provides a true Helvetica.) Check that
+> > you have tthe full Nimbus font set, for example (that appears to be what
+> > xpdf and gs want to use for Helvetica):
+> >
+> >          waverly:/proc# fc-list  |grep Nimbus |grep Sans
+> >          Nimbus Sans L:style=Regular Italic
+> >          Nimbus Sans L Condensed:style=Regular
+> >          Nimbus Sans L:style=Bold
+> >          Nimbus Sans L Condensed:style=Regular Italic
+> >          Nimbus Sans L:style=Regular
+> >          Nimbus Sans L:style=Bold Italic
+> >          Nimbus Sans L Condensed:style=Bold
+> >          Nimbus Sans L Condensed:style=Bold Italic
+>
+>I get
+>
+>Nimbus Sans L:style=Regular Italic
+>Nimbus Sans L:style=Bold
+>Nimbus Sans L:style=Regular
+>Nimbus Sans L:style=Bold Condensed
+>Nimbus Sans L:style=Bold Italic
+>Nimbus Sans L:style=Regular Condensed Italic
+>Nimbus Sans L:style=Regular Condensed
+>Nimbus Sans L:style=Bold Condensed Italic
+>
+> > Also make sure you have the deforma symlinks to these fonts present:
+> >
+> >          waverly:/proc# find / -name *imbus*
+> >          /var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-ReguItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusMonL-Bold.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldCond.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-MediItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-Medi.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-Regu.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-Bold.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguCond.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusMonL-BoldObli.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusMonL-ReguObli.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguCondItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldCondItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-Regu.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguItal.pfb
+> >          /var/lib/defoma/fontconfig.d/N/NimbusMonL-Regu.pfb
+> >
+> > (These are all symlinks to various actual fonts
+> > in  /usr/share/fonts/type1/gsfonts/ )
+>
+>Here's what I get doing "find / -name *Nimbus*":
+>
+>/var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-ReguItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusMonL-Bold.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldCond.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-MediItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-Medi.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-Regu.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguCond.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-Bold.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusMonL-BoldObli.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusMonL-ReguObli.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguCondItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-BoldCondItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusRomNo9L-Regu.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusSanL-ReguItal.pfb
+>/var/lib/defoma/fontconfig.d/N/NimbusMonL-Regu.pfb
+>
+> > 6. With respect to defoma and its kin, did you ever "blindly choose"
+> > something other than the recommended default? Debian is not really idiot
+> > proof, but its default choices are pretty good.
+>
+>It's quite possible.  My policy is to accept the defaults, but sometimes I
+>think: "what the heck, why not try an alternative? Maybe I'll learn
+>something" (all this time the good angel on my right shoulder is saying
+>"you'll hose your system, bub.  Be wise, and stick with convetion")  But
+>again I understand so poorly what Defoma and Pango are and do that it
+>wasn't really a conscious decision, so I have no clear recollection.
+>Sorry - I know that doesn't help.
 
-68000000-68000fff : Texas Instruments PCI1225
-68001000-68001fff : Texas Instruments PCI1225 (#2)
 
 
-Texas Instruments CardBus slots.  Educated guess - there are 
-CardBus-to-PCI adapters available, but are pretty rare - not the kind of 
-things that you'd see in a novice's computer.  I'm looking at getting 
-one myself, but that's because I have a project for my day job that 
-involves some PCMCIA hacking, and my old laptop isn't feeling up to the 
-job, I think.
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
