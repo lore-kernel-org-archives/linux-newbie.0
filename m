@@ -1,47 +1,78 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Mailer Connections
-Date: Sun, 11 Aug 2002 14:19:15 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Extra installation
+Date: Sun, 11 Aug 2002 07:06:54 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02080915532601.07686@localhost.localdomain>
+Message-ID: <02081107065400.00319@unix.pa3gcu>
+References: <001901c240f6$2a4395c0$14000a0a@p75>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <001901c240f6$2a4395c0$14000a0a@p75>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Colin Harris <charis.g3orh@virgin.net>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+On Sunday 11 August 2002 05:14, Colin Harris wrote:
+> Hi all,
+>          New to this list. Could someone outline the
+> possibilities please. Problem as below :-
+>
+> I have a 17Gb HDD. First 5 GB dedicated to Redhat 6.1 and
+> runs an ax25 system for a DX cluster and ax25 node system.
+>
+> Want to try Redhat 7.2 - Tried a second install by creating
+> a new 5GB partition. First time it did install, subsequent
+> times it stops after 400 mb.    However , the plan was to
+> install this later version and run it from the existing
+> Lilo. After ( successfully) installing 7.2 and running from
+> a floppy , shut down 7.2 , booted 6.1 to include info into
+> lilo.conf , run lilo but of course it cannot find files on
+> an unmounted system (7.2).
 
-When I recently upgraded from RH7.1 to RH7.3 I got total keyboard lock-up 
-with some programs.  In order to go on working I had to reinstall RH7.1.
+You would need to mount the partition first before running lilo.
+Depending on how you plan to configure lilo of course.
+There are many ways of achiving what you want, i will explain how i do it.
 
-After that I found  a) that I could not send e-mail any more using my mail 			
-		     program
-		     exmh nor using <mail> from the console. I have to resort to either 				
-		     pine or kmail. This is the case using my ISP for my e-mail address.
-		      	
-		  b) that I could not send any mail at all using my alternate ISP 										
-		      subscribed to with a pre-paid webcard.
+>
+> Questions are :- How to run a second version selectable from
+> Lilo ? and are there still problems with installing between
+> 5 and 10 GB down a hdd ?. I thought this 1023 cylinder thing
+> had been overcome long ago.
 
-In case a) the message in  maillog was either ...stat= service not 
-available.. or ...stat=Data format error. This one especially when sending to 
-this list.
+You describe adding the new 7.2 system into the old 6.2 lilo, i would advise 
+against doing that as newer versions of lilo have less problems with just 
+about everything, including the 1023 limit as you point out, i dont know what 
+limitations the version has included in 6.2.
 
-In case b) the message popping up on the screen is "sorry that domain isn't 
-allowed to be relayed thru this MTA".
+I would place both systems under the latest version of lilo, that we can do 
+as follows.
 
-How do I revert back that I can mail again with any mail program especially 
-exmh and with any ISP?
+Boot into 7.2 with your floppy.
+login as root
+mount the 6.2 root partition into /mnt
+mount -t ext2 /dev/hdxx /mnt
+cp /mnt/boot/boot_image /boot/vmlinuz-red-6.2
+cp /mnt/boot/System.map /boot/System.map-red-6.2
+umount /mnt
+edit /etc/lilo.conf
+Add a new section for the old 6.2 install.
+run lilo with the -t option to check if things are ok.
+If all is ok run lilo again to install the new configuration.
+reboot now you can choose which system you want.
 
-Regards
+If you need an example take a look at;
 
-Peter
+http://people.zeelandnet.nl/pa3gcu/lilo.htm
 
-
-
+>
+> - Regards Colin
 
 -- 
-Peter
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
