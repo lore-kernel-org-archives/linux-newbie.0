@@ -1,40 +1,36 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: gdict won't run as panel applet
-Date: Fri, 16 Aug 2002 17:03:10 -0400
+From: Bob Batson <rcb@kc.rr.com>
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Fri, 16 Aug 2002 16:26:35 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208162103.g7GL3AX13053@hartford-hwp.com>
-References: <NOMSGID_7223=3a9750=2f200_020814_222500__f01bb26a@fidonet.org>
+Message-ID: <p05111b00b9831e021b21@[65.31.217.219]>
+References: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <NOMSGID_7223=3a9750=2f200_020814_222500__f01bb26a@fidonet.org>
-	(lists@tcob1.net)
+In-Reply-To: <NOMSGID_7223=3a9750=2f200_020815_095841__b3f411ac@fidonet.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: lists@tcob1.net
-Cc: linux-newbie@vger.kernel.org
+To: Ray Olszewski <lists@tcob1.net>, linux-newbie@vger.kernel.org
 
-Sorry to follow up on my own question, but seems to have taken a
-strange root. I need to append something to my original query:
+At 4:16 PM -0500 8/16/02, Ray Olszewski wrote:
 
-> When I upgraded to RH 7.3, I lost gdict. I'd like to add it as an
-> applet to my panel. But when I try, nothing except a default icon on
-> the panel (black square with gnome foot).
-> 
-> whereis tells me that gdict is at /usr/bin/gdict. 
-. . .
-> rmp verify says that gdict-0.6.1 has no problems, and I uninstalled
-> and reinstalled the rpm.
-> 
-> Haines Brown
+>Originally to: All
+>
+>
+>If you have not seen your mail on the list, then almost certainly something
+>is wrong at your end. This is the *third* time I have seen this message
+>this morning.
 
-I get gdict to run OK as an application from an icon I put into my
-Favorites menu, but it still won't allow itself to appear as a small
-text entry region in my main panel.
+[snip]
 
-Where can I read up on the panel to better understand how it works?
+I too am receiving multiple copies of more than one persons' message/question.
 
-Haines Brown 
+
+-- 
+Bob Batson
+rcb@kc.rr.com
+
+Chocolate is the true opiate of the masses!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
