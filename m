@@ -1,8 +1,8 @@
 From: "Korosi Akos" <korosiakos@mailbox.hu>
 Subject: Re[2]: Strange problem
-Date: Wed, 22 Jan 2003 16:31:46 +0100
+Date: Wed, 22 Jan 2003 16:31:27 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030122153153.28193.qmail@web1.mailbox.hu>
+Message-ID: <20030122153131.21100.qmail@web2.mailbox.hu>
 References: <5.1.0.14.1.20030117102213.021b4900@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
@@ -93,7 +93,7 @@ so I wasn't sure.
 As I can not give you more actual information about the
 system (because it has been reinstalled), I don't know if
 you could guess the source of the problem.
-But I want to than you Ray for the guesses!
+But I would than you Ray for the guesses!
 
 Best regards,
 Akos
