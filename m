@@ -1,94 +1,46 @@
-From: Ravi <ravivsn@roc.co.in>
-Subject: Re: IP aliasing
-Date: Thu, 19 Jun 2003 10:58:11 +0530
+From: cr <cr@orcon.net.nz>
+Subject: Re: disabling X display Manager
+Date: Thu, 19 Jun 2003 19:05:42 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EF149EB.8040108@roc.co.in>
-References: <20030618140305.73398.qmail@web20512.mail.yahoo.com>
+Message-ID: <200306190800.h5J80d0k002585@dbmail-mx3.orcon.co.nz>
+References: <5.1.0.14.1.20030617061959.0201dcd0@celine> <5.1.0.14.1.20030618072219.02f42c60@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20030618072219.02f42c60@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org, lvs-users@linuxvirtualserver.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi Ravi,
+On Thursday 19 June 2003 02:24, Ray Olszewski wrote:
+> At 11:29 PM 6/18/2003 +1200, cr wrote:
+> [...]
+>
+> > >          1:2345:respawn:/sbin/getty 38400 tty1
+> >
+> >Yep, they're there.    Would the '2345' be runlevels?
+>
+> Yes.
+> [...]
+>
+> > > The other thing to do is to check that when you do start X via gdm, the
+> > > consoles are present. From the gdm display, you should be able to
+> > > access them by pressing CTRL-ALT-F1 through CTRL-ALT-F6.
+> >
+> >Yes, they do.    But then I didn't know how to get the gdm back :)
+> >Never mind, I just rebooted it.
+>
+> CTRL-ALT-F7 (typically - technically, it is the first VT not occupied by a
+> console, and that is typically F7).
+> [...]
+>
 
-       Load the IP Alias module (you can skip this step if you compiled 
-the module into the kernel):
+I did wonder, later on, looking at that list.   I'd already tried F1 to F6 as 
+suggested, it just never occurred to me at the time to try F7.    
 
-/sbin/insmod /lib/modules/`uname -r`/ipv4/ip_alias.o
+Thanks!
 
-
-
-
-Setup the loopback, eth0, and all the IP addresses beginning with the 
-main IP address for the eth0 interface:
-
-for example:
-
-/sbin/ifconfig lo 127.0.0.1
-/sbin/ifconfig eth0 up
-/sbin/ifconfig eth0 172.16.3.1
-/sbin/ifconfig eth0:0 172.16.3.10
-/sbin/ifconfig eth0:1 172.16.3.100
-
-
-
-Setup the routes. First route the loopback, then the net, and finally, 
-the various IP addresses starting with the default (originally 
-allocated) one:
-
-/sbin/route add -net 127.0.0.0
-/sbin/route add -net 172.16.3.0 dev eth0
-/sbin/route add -host 172.16.3.1 dev eth0
-/sbin/route add -host 172.16.3.10 dev eth0:0
-/sbin/route add -host 172.16.3.100 dev eth0:1
-/sbin/route add default gw 172.16.3.200
-
-
-Enjoy,
-Ravi
-
-Ravi Kumar Munnangi wrote:
-> I want to give more than one IP addresses to my NIC.
-> For this we have to enable the feature of IP alias
-> when configuring the kernel and recompile it.
-> Is there any way to check if the option is already
-> checked or not?
-> My next question is,
->   After reconfiguring and recompiling, how can I give
-> IP addresses(aliases) to NIC?
->   please tell me the commands to be used.
-> 
->   Ravi kumar
-> 
-> __________________________________
-> Do you Yahoo!?
-> SBC Yahoo! DSL - Now only $29.95 per month!
-> http://sbc.yahoo.com
-> --
-> Kernelnewbies: Help each other learn about the Linux kernel.
-> Archive:       http://mail.nl.linux.org/kernelnewbies/
-> FAQ:           http://kernelnewbies.org/faq/
-> 
-
-
--- 
-
-
-The views presented in this mail are completely mine. The company is not
-responsible for whatsoever.
-------------------------------------------------------------------------
-Ravi Kumar CH
-Rendezvous On Chip (i) Pvt Ltd
-Hyderabad, India
-Ph: +91-40-2335 1214 / 1175 / 1184
-
-ROC home page <http://www.roc.co.in>
-
-
-
+Chris
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
