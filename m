@@ -1,8 +1,8 @@
-From: "ferdinand" <shelley21katie@hotmail.com>
+From: "chang" <aeh21dgj@hotmail.com>
 Subject: Buy prescriptions in bulk, SAVE THOUSANDS!
-Date: Sat, 07 Aug 2004 11:48:51 GMT
+Date: Sun, 08 Aug 2004 00:45:20 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1091879331-31668@excite.com>
+Message-ID: <1091925920-3571__36424.1638490514$1091926045$gmane$org@excite.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
@@ -30,9 +30,9 @@ Click here: http://www.we49fm.com/_85924943b9db73ac62baa654773c6a8e/7
 
 
 
-dirk whitneycenter surf frederic bobcat whitney apple1 
-fozzie olivierjulia mission reynolds
-sbdc julia diane 
+benoit bachdon future mantra trident petunia ssssss 
+button fletchirene dragonfl gordon
+jazz nugget t-bone 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
