@@ -1,36 +1,41 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Book Recommendations
-Date: Wed, 13 Nov 2002 00:51:10 +0200
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: login error
+Date: Wed, 13 Nov 2002 00:57:44 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021113005110.B12031@neutrino.particles.org>
-References: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp> <5.1.0.14.1.20021112123254.020f5b60@celine>
+Message-ID: <200211130057.44928.g38@rdsbv.ro>
+Reply-To: g38@rdsbv.ro
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20021112123254.020f5b60@celine>; from ray@comarre.com on Tue, Nov 12, 2002 at 01:17:39PM -0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Tue, Nov 12, 2002 at 01:17:39PM -0800, Ray Olszewski wrote:
-> at some of the book-level materials available from the Linux Documentation 
-> Project (the URL keeps changing, so google the phrase). Every 
-> general answer. I find the O'Reilly Internet Core Protocols book almost 
+Inconsistency detected by ld.so:dynamic-link.h:62: elf_get_dynamic_info: 
+Assertion '! bad dynamic tag"' failed
 
-Yes. The LDP was always the first place to look in, when everything didn't
-work. It still is for me: http://www.linuxdoc.org.
 
-> Development (Addision-Wesley). Beware of the original K&R C book that Elias 
-> suggested; it predates the ANSI C spec by many years, and the spec departed 
+this is the message I get after I type something at the login: prompt (it 
+doesn't bother to prompt the second line, the one with the password:)
 
-There is a second edition, which is compatible with ANSI C. 
+the machine is a slackware 8.0 2.4.18 kernel patched for htb which acts as a 
+router (and nothing else) for a /27 subnetwork (additional processes are 
+portsentry and snmpd, i.e. it has a very small load)
 
-Elias
+the machine still works and I believe (haven't tried yet though) I can login 
+via ssh
+
+what could cause this problem and can it be repaired ?
+
+thanks,
+
+petre
+
+
 
 -- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+ 00:43:21 up 3 days, 15:54,  2 users,  load average: 0.09, 0.17, 0.09
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
