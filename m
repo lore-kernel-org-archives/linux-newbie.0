@@ -1,18 +1,28 @@
-From: "Eve Atley" <eatley@wowcorp.com>
+From: "Little, Chris" <Chris.Little@okdhs.org>
 Subject: RE: Setting permissions via SSH upload to 777
-Date: Wed, 13 Oct 2004 15:11:22 -0400
+Date: Wed, 13 Oct 2004 14:13:15 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000901c4b158$6dbc1e60$500aa8c0@lanadmin>
-References: <15DCB059E3814E448A1CFFF04F78F7A703917246@s99mail08>
-Reply-To: <eatley@wowcorp.com>
+Message-ID: <15DCB059E3814E448A1CFFF04F78F7A703917247@s99mail08>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <15DCB059E3814E448A1CFFF04F78F7A703917246@s99mail08>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "'Little, Chris'" <Chris.Little@okdhs.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+Sorry.  The reply-to wasn't set to the list and I didn't check.
+
+
+Brain outgassing there.  I should have said 666, not 555.  Yes it will allow
+r/w, just not execute.
+
+-----Original Message-----
+From: Eve Atley [mailto:eatley@wowcorp.com]
+Sent: Wednesday, October 13, 2004 2:11 PM
+To: 'Little, Chris'
 Cc: linux-newbie@vger.kernel.org
+Subject: RE: Setting permissions via SSH upload to 777
+
 
 
 Will that allow any read/write? I suppose not at 555. Is there another
@@ -54,7 +64,6 @@ To unsubscribe from this list: send the line "unsubscribe linux-newbie"
 in the body of a message to majordomo@vger.kernel.org More majordomo
 info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
