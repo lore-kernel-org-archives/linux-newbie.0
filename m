@@ -1,64 +1,41 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Setting EXTRAVERSION (was Re: Kernel error)
-Date: Tue, 28 May 2002 18:08:29 +0100
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: which distribution to use?
+Date: Tue, 28 May 2002 18:22:26 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020528170829.GA317@cam.ac.uk>
-References: <A1F41DE771DCD5119FE30060089343500A58C6@NET-ARCH> <20020527165031.GA2875@cam.ac.uk> <m3ptzge0qn.fsf_-_@wobble.eth.net>
+Message-ID: <0205281822260F.01212@unix.pa3gcu>
+References: <5.1.0.14.1.20020527232606.02756510@celine> <5.1.0.14.1.20020528084649.020741b0@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="2fHTh5uZTiUOsy+g"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <m3ptzge0qn.fsf_-_@wobble.eth.net>
+In-Reply-To: <5.1.0.14.1.20020528084649.020741b0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
+On Tuesday 28 May 2002 15:47, Ray Olszewski wrote:
+> At 12:50 PM 5/28/02 +0000, Richard Adams wrote:
+> >On Tuesday 28 May 2002 06:40, Ray Olszewski wrote:
+> > > I usually ignore these threads, but this one is starting to get an
+> > > unpleasant tone, so let me try to encourage the proponents of the
+> > > various distros to moderate their insistance before we get to a flame
+> > > war.
+> >
+> >So do i, but the thread was which one "learns" you the most and as we all
+> >seem to agree in one way or another Slackware is best for that.
+>
+> Actually we don't all agree to this. I just see no benefit in extending the
+> debate.
 
---2fHTh5uZTiUOsy+g
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I did not say we agreed, i said most agree.
 
-> > My suggestion would be to compile a new kernel, and set
-> > EXTRAVERSION.  If the new kernel is version 2.4.5<extra>, then put
-> > the System.map in /boot/System.map-2.4.5<extra>.
-> I installed RH 7.1.  It came with 2.4.2-2 kernel.  I then upgraded the
-> kernel to 2.4.16.  While compiling the new 2.4.16 kernel I didn't not
-> set the EXTRAVERSION in /usr/src/linux/Makefile. Will this cause any
-> problem in the future?
-Usually not. Occasionally, though, especially if you compile the same
-version several times, you get odd errors, and of course you'll overwrite
-the modules from the previous compilation.
+End of thread as far as i am concerned.
 
-Generally, it's safer to set it, even if you don't think you need it.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-> What is the significance of this EXTRAVERSION?
-It allows you to distinguish different kernels which have the same
-official version number but were compiled with different configurations.
-
-> Can I choose any value for this variable?
-Within reason. Numbers, letters, and dashes are probably safe.
-
-> Also, should this value always start with -, by convention?
-That's the convention. There's no real reason for it, though, except
-to make things easier to read.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---2fHTh5uZTiUOsy+g
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE887mNO4S8/gLNrjcRAiZsAJsHcWCCWiO2KiHt4g94Jl0l2tluwQCgx8pl
-hMaK14yfMB5k5SlXHZCADos=
-=LD72
------END PGP SIGNATURE-----
-
---2fHTh5uZTiUOsy+g--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
