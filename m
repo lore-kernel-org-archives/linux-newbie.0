@@ -1,36 +1,47 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: RH8.0: binding DEL to Remove
-Date: Tue, 3 Dec 2002 20:54:50 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Need fdformat from Slackware 3.5
+Date: Tue, 03 Dec 2002 18:22:11 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212040154.gB41soa04613@hartford-hwp.com>
+Message-ID: <5.1.0.14.1.20021203181554.020faec0@celine>
+References: <200212040027.RAA04650@cu.imt.net>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212040027.RAA04650@cu.imt.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+At , Jerry James Haumberger wrote:
+>Hi, folks --
+>
+>After installing BasicLinux, I discovered that I needed to add
+>fdformat to format ext2 on high density 3.5" and 5.25" floppy disks.
+>
+>Unfortunately, I'm not quite sure where to look for this on the
+>Slackware 3.5 site (which is what I need for BasicLinux 1.7).
+>
+>I would greatly appreciate anyone pointing me to the ftp address where
+>I can download the tar file for fdformat and use pkg to install it.
 
-In installing RedHat 8.0, I can bind the DEL key to Remove (delete
-current character and move right) rather than BACKSPACE (delete with a
-left move of cursor) in emacs and elsewhere, but I've a real problem
-with gnome-terminal.
+Go to any Slackware 3.5 mirror site (find one via Google if you need to) 
+and look at the Manifest.gz file in the Slakware [sic] directory. You'll 
+find all the packages listed with their contents. In your case, you 
+probably want one of these:
 
-Showkey indicates that my DEL key code is 111, and keycode tells me it
-is bound to "Remove" by default. That's what I want. But
-gnome-terminal apparently overrides the default. When I enter its Edit
-Profile, Compatibility page, by default it has bound the DEL key to
-ASCII-DEL (same as BACKSPACE). It offers two other options, either to
-bind it to Escape Sequence or to Control-H.
+         fdformat, contained in ./a11/util.tgz
+         superformat, contained in ./a1/aaa_base.tgz
 
-Would a statement in ~/.Xdefaults serve to override this set of
-options? If so, would the statement be something like:
+In modern distros, I believe that superformat has superseded fdformat for 
+formatting both regular and high-density floppies.
 
-gnome-terminal.keycode 111: Delete
 
-I'm only guessing here. Probably mixing apples and oranges.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
-Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
