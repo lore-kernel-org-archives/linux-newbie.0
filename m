@@ -1,54 +1,52 @@
-From: Frank Robers _ SOTL <sotl155360@earthlink.net>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: Minicom and Modem
-Date: Sun, 2 Feb 2003 12:52:30 -0500
+Date: Sun, 2 Feb 2003 20:11:38 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302021252.30505.sotl155360@earthlink.net>
-References: <200302011710.46462.sotl155360@earthlink.net> <200302020745.13455.sotl155360@earthlink.net> <03020213372901.19519@unix.pa3gcu>
+Message-ID: <03020220113803.19519@unix.pa3gcu>
+References: <200302011710.46462.sotl155360@earthlink.net> <03020213372901.19519@unix.pa3gcu> <200302021252.30505.sotl155360@earthlink.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <03020213372901.19519@unix.pa3gcu>
+In-Reply-To: <200302021252.30505.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl, Linux Newbie <linux-newbie@vger.kernel.org>
+To: Frank Robers _ SOTL <sotl155360@earthlink.net>, pa3gcu@zeelandnet.nl, Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Sunday 02 February 2003 08:37, pa3gcu wrote:
-> On Sunday 02 February 2003 12:45, Frank Robers _ SOTL wrote:
-> > Hi
-> >
-> > Thanks for the help. I greatly appreciate your taking the effort to
-> > respond.
-> >
-> > Now for the principal issue.
-> >
-> > If I issue the above commands will that screw up Kppp from seeing the
-> > built in modem and stop normal Internet connections.
+On Sunday 02 February 2003 17:52, Frank Robers _ SOTL wrote:
+
+> Please I don't want to get into the configuration of a Sweitzer system (the
+> system being controlled) on this list. Suffice it to say that it is not
+> Linux nor MS.
+
+Sorry i was under the impresstion that both machines were linux.
+
 >
-> Why use Minicom at all for simply transferring flies via a serial cable.?
+> I only want to configure Minicom under linux in the format in which I
+> previously had it before I lost the Minicom installation instructions.
 
-Because that is the only way to make the transfers unless you know of a better 
-Linux replacement of MS's Hyper Terminal than Minicom.
+Simply start as root, minicom and use -s
+minicom -s
+change the port setting to /dev/ttyS0 (i belive you said com1)
+make sure the speed is correct and it should work.
 
-The second computer is NOT a Linux box or a MS box but is a specialized 
-process control computer whose only access is by Hyper terminal under MS 
-Windows. I am attempting to using Linux in this computer (the command 
-computer) with the objective of replace MS's Hyper Terminal with Minicom 
-under Linux.
+>
+> What I would appreciate knowing is if I issue the commands you suggest will
+> that change the operation of Kppp such that I can not then connect to the
+> Internet.
 
-Please I don't want to get into the configuration of a Sweitzer system (the 
-system being controlled) on this list. Suffice it to say that it is not Linux 
-nor MS.
+Yes it possably would, disregard what i said about /dev/modem.
 
-I only want to configure Minicom under linux in the format in which I 
-previously had it before I lost the Minicom installation instructions.
+>
+>
+> Thanks
+> Frank
 
-What I would appreciate knowing is if I issue the commands you suggest will 
-that change the operation of Kppp such that I can not then connect to the 
-Internet.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-
-Thanks
-Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
