@@ -1,46 +1,67 @@
-From: Ray Olszewski <ray@comarre.com>
+From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: starting X with different XF86Configs
-Date: Tue, 20 Aug 2002 08:44:55 -0700
+Date: Tue, 20 Aug 2002 15:56:19 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020820083959.0223c480@celine>
-References: <5.1.0.14.1.20020819165442.020fa290@celine>
+Message-ID: <02082015561902.00695@unix.pa3gcu>
+References: <Pine.LNX.4.44.0208201031250.26541-100000@localhost.localdomain>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0208201026040.26541-100000@localhost.localdo
- main>
+In-Reply-To: <Pine.LNX.4.44.0208201031250.26541-100000@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: James & Tatiana Miller <jamtat@aaahawk.com>, Linux <linux-newbie@vger.kernel.org>
 
-At 10:30 AM 8/20/02 -0500, James & Tatiana Miller wrote:
->On Mon, 19 Aug 2002, Ray Olszewski wrote:
-> > you don't say how you are starting X anyway ...
+On Tuesday 20 August 2002 15:39, James & Tatiana Miller wrote:
+> On Tue, 20 Aug 2002, Matthias Schweinoch wrote:
+> > don't know if this is considered a "bad approach", but another way to do
+> > this is to simply name your working XF86Config files appropriately and
+> > then just create a symlink to whichever file it is your using.
 >
->Ray:
+> Hmmm. This I don't understand. What would be the purpose of symlinking,
+> and from where (i.e., what point in the Linux startup process) would the
+> symlink get used? Are you talking about creating a symlink pointing to the
+> desired XF86Config and calling it "XF86Config" each time I am preparing to
+> start X? I can see how that would work, but it seems about the same amount
+> of time and trouble as renaming XF86Configs each time I wish to start X. I
+> guess I'm looking for a more elegant and less time-consuming solution. So
+> far, Ray's looks best.
 >
->Thanks for your answer. I'm starting X from the cli - "startx". Is there
->some other way it could be started, offering a choice of XF86Configs?
+> Thanks, James
 
 
-Not that I know of. I already suggested a cli method of selecting the 
-config file when running X via startx, and someone sles suggested the 
-alternative of using symlinks and changing the symlink depending on what 
-display you are using. I suppose you could write a wrapper program for 
-startx (or even modify startx to do this; startx is just a bash script that 
-calls xinit) that asked you what file you wanted to use, then passed on the 
-appropriate command-line argument.
+Use your imaganation, create a script, call it what you want, i will call it 
+GoX
 
-I was mainly trying to make sure you were not starting X with xdm. I don't 
-know how one would pass command-line arguments with xdm, since there is no 
-command line in that case.
+#!/bin/sh
 
+case "$1" in
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+  1) 
+	/bin/ln -s /etc/X11/XF86Config-1 /etc/X11/XF86Config
+	/usr/X11R6/bin/startx
+	;;
+  2)
+	/bin/ln -s /etc/X11/XF86Config-2 /etc/X11/XF86Config
+	/usr/X11R6/bin/startx
+	;;
+  *)
+	/bin/echo "USAGE: GoX 1 or GoX 2 "
+esac
+
+#------------------------------
+
+No use the command;
+'chmod a+x GoX'
+To make it executable.
+
+Its all so easy...
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
