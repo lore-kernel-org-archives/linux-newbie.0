@@ -1,30 +1,25 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: RE: Can't see my drives
-Date: Fri, 30 Aug 2002 12:26:59 -0500 (CDT)
+From: "B.J. Wilson" <analogkid01@mindspring.com>
+Subject: Re: Can't see my drives
+Date: Fri, 30 Aug 2002 13:30:56 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0208301217160.8975-100000@localhost.localdomain>
-References: <3D6FA684.A309CC6@gelm.net>
+Message-ID: <005901c2504b$005efe70$778fd943@laptop>
+References: <Pine.LNX.4.44.0208301217160.8975-100000@localhost.localdomain>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D6FA684.A309CC6@gelm.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On 30 Aug 2002, Chuck Gelm wrote:
+> > (What is plural of 'guru'?)
+>
+> It's "gurutavatimundiharistrasnivishumaximotiousnesses".
 
-> (What is plural of 'guru'?)
+Yeah - don't you remember singing that song from "Shiva Poppins" when you
+were a kid? ;-)
 
-It's "gurutavatimundiharistrasnivishumaximotiousnesses". Note the "es" on 
-the end. Only in the case of this word does Sanskrit form the plural like 
-English (and German, when they're not being silly and trying to indicate 
-plural by using "en"), using "es". In all other cases, an additional 16 
-syllables are needed to form the plural of common nouns.
 
-Finally, a question that even *I* can answer!
 
-James :>]
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
