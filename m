@@ -1,52 +1,34 @@
-From: Ray Olszewski <ray@comarre.com>
+From: jude dashiell <dashielljt@gmpexpress.net>
 Subject: Re: linux appears to be missing calendar program
-Date: Sat, 21 Jun 2003 19:56:54 -0700
+Date: Sat, 21 Jun 2003 23:35:57 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030621194513.02f2c7e8@celine>
-References: <Pine.LNX.4.53.0306212209260.699@localhost>
+Message-ID: <Pine.LNX.4.53.0306212330560.575@localhost>
+References: <5.1.0.14.1.20030621194513.02f2c7e8@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0306212209260.699@localhost>
+In-Reply-To: <5.1.0.14.1.20030621194513.02f2c7e8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 10:11 PM 6/21/2003 -0400, jude dashiell wrote:
->Is there source for calendar for linux somewhere on the web?  I'd hate to
->have it said microsoft outlook can do something useful linux cannot?
+Unix has a calendar capability.  If you have a file called .calendar in
+your home directory on a Unix system, when dates and events come due that
+are listed in that file the system can be so arranged that a user will get
+email reminders about those events.  That particular function of Unix most
+definitely present in freebsd has been responsible for saving marriages
+because husbands didn't forget their aniverserary dates among other dates.
+In these other versions of unix, the calendar management can get done
+without having to use emacs or python as an example.
 
-Since I don't use Outlook, I'm not sure what the "something useful" it can 
-do is. And "calendar for linux" does not actualy name any program I am 
-familiar with. At first, I thought you were just misnaming the familiar 
-"cal" program, but on reflection, I suspect you want something more PDA'ish.
-
-In that case, a quick search of the Debian package database turns up these 
-possibilities:
-
-         ccal - Colorised calendar utility
-         gcal - Prints calendars
-         gdeskcal - A desktop calendar featuring transparency with smooth 
-alpha-blending
-         gnome-pim - calendar and address book for GNOME
-         gnome-pim-conduits - Palm synchronization for calendar and address 
-book
-         korganizer - KDE personal organizer
-         kronolith - Web Based Calendar Manager
-         plan - X/Motif day planner (dynamically compiled with LessTif)
-         remind - a sophisticated reminder service
-         wmdate - Calendar for window manager docking bars
-         xcal - a graphical calendar with memos and reminder alarms
-
-I have not run any of these so cannot comment on their specifics, aside 
-from noting that they are almost all X applications so not actually 
-specific to Linux.
-
-To find any of them, your best starting place is the package collection for 
-your distro. If that fails, Google is your friend.
-
-
-
+-- 
+-----BEGIN GEEK CODE BLOCK-----
+Version: 3.12
+GIT d- s+:+ a+ C++ UL P+ L+++ E+ W-- N+ o+ K- w---
+O-- M-- V PS++ PE Y+ PGP t+ 5++ X-- R* tv- b++ DI D---
+G- e++ h r-- y*
+------END GEEK CODE BLOCK------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
