@@ -1,33 +1,44 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Tkdesk Segmentation Fault
-Date: Mon, 11 Nov 2002 11:35:48 +0800
+From: Edgar Alwers <edgaralwers@gmx.de>
+Subject: Re: umount
+Date: Mon, 11 Nov 2002 16:58:39 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211110335.gAB3Zmu02766@philonline.com>
-References: <20021110122250.A25979@neutrino.particles.org>
+Message-ID: <200211111658.39126.edgaralwers@gmx.de>
+References: <5.1.0.14.1.20021108093105.021201f0@celine> <200211082227.46496.edgaralwers@gmx.de> <20021108220313.GA2231@cam.ac.uk>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 10 Nov 2002 12:22:50 +0200."
-             <20021110122250.A25979@neutrino.particles.org> 
+In-Reply-To: <20021108220313.GA2231@cam.ac.uk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Elias Athanasopoulos <eathan@otenet.gr>, linux-newbie@vger.kernel.org
+To: Steven Smith <sos22@cam.ac.uk>
+Cc: Ray Olszewski <ray@comarre.com>, newbies <linux-newbie@vger.kernel.org>
 
+Hallo, Ray and Steven,
 
-eathan@otenet.gr said:
-> Just a guess. Your X libs are incompatible with your Tcl/Tk.
+thank you very much for the help. Details as follows:
 
-Thank you so much and Lawson for the lead!!!
+On Friday 08 November 2002 23:03, Steven Smith wrote:
+>
+> The obvious thing to check is that the mounting user is being recorded
+> correctly in the mtab.  There should be something along the lines of
+> ``user=sos22'' (or whatever your username is) in the /etc/mtab line
+> for /dev/cdrom.  If not, or if it specifies a different username,
+> you'll be allowed to mount, but not unmount.
+>
+This was the clue. After entering a line as given in mtab, I could also umount 
+cdrom as user.
 
-You guessed it right. Copying libX11.so.6.1 into /usr/X11R6/lib/ made tkdesk 
-coming up instantly.
+> If you have such a symlink, you should probably
+> ``rm /etc/mtab; cp /proc/mounts /etc/mtab'' and then reboot.
+I did this also. There was a symlink there, which I removed.
 
-Hurray!
+Thanks again
+Edgar
 
-Regards
 -- 
-Peter
-
+--------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto: edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
