@@ -1,68 +1,42 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
 Subject: Re: xterm: copy and paste
-Date: Mon, 6 Jan 2003 21:22:45 +0000
+Date: Mon, 6 Jan 2003 21:27:10 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03010621224501.24001@unix.pa3gcu>
-References: <200301061517.h06FHrtJ032214@hartford-hwp.com>
+Message-ID: <03010621271002.24001@unix.pa3gcu>
+References: <200301061517.h06FHrtJ032214@hartford-hwp.com> <03010621224501.24001@unix.pa3gcu>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200301061517.h06FHrtJ032214@hartford-hwp.com>
+In-Reply-To: <03010621224501.24001@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Haines Brown <brownh@hartford-hwp.com>, linux-newbie@hartford-hwp.com
+To: Haines Brown <brownh@hartford-hwp.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Monday 06 January 2003 15:17, Haines Brown wrote:
-
-Haines, first of all you have that dreaded "ReplyToo" problem again.
-
-By hitting my reply to all button i see i get the following headers.
-Haines Brown <brownh@hartford-hwp.com>, linux-newbie@hartford-hwp.com
-I added a Cc to linux-newbie@vger.kernel.org
-
-> When I upgraded to RH 8.0, I seem to have lost the ability to copy
-> data displayed in xterm into a clipboard for pasting, say, into
-> emacs.
+On Monday 06 January 2003 21:22, pa3gcu wrote:
+> On Monday 06 January 2003 15:17, Haines Brown wrote:
 >
-> I need to do this from the keyboard, but mention that a mouse swipe
-> does not put the text into the clipboard except within xterm. A Ctl-y
-> causes a beep. A Ctl-c just restarts the shell.
+> Haines, first of all you have that dreaded "ReplyToo" problem again.
 >
-> Do I now have to do a keybind for xterm to tell it to copy? If so, any
-> reason I couldn't use M-w and C-v to copy and paste?
->
-> Haines Brown
+> By hitting my reply to all button i see i get the following headers.
+> Haines Brown <brownh@hartford-hwp.com>, linux-newbie@hartford-hwp.com
+> I added a Cc to linux-newbie@vger.kernel.org
 
-I have never used your method of ctrl-y or what ever, i have always simply 
-used my mouse to copy whatever i wish no matter how big or small to another 
-program or xterm or program running in another xterm.
+Now to make things worse, i got the following, i hope i make my point clear.
 
-My PS/2 mouse (wheel mouse) allows me to do this in which ever distro i use.
+   ----- The following addresses had permanent fatal errors -----
+linux-newbie@hartford-hwp.com
+    (reason: 550 5.1.1 <linux-newbie@hartford-hwp.com>... User 
+Unknown...[EOF])
+ 
+   ----- Transcript of session follows -----
+... while talking to inbound.registeredsite.com.:
+>>> RCPT To:<linux-newbie@hartford-hwp.com>
+<<< 550 5.1.1 <linux-newbie@hartford-hwp.com>... User Unknown...[EOF]
+550 5.1.1 linux-newbie@hartford-hwp.com... User unknown
 
-Left button highlights text, goto which ever (program/xterm/program) depress 
-the wheel and text is placed into the target, here its as simple as that.
-
-I rather feel what you are asking is the windows way of doing things, my 
-mouse is all i need.
-
-Maybe i have misunderstood you, if so i am all ears.
-
-O in case you need it here is how i configure my wheel mouse, which has one 
-left and right button and a wheel in the middle, the wheel can be depressed 
-to form a 3rd button.
-
-Section "InputDevice"
-        Identifier  "Mouse1"
-        Driver      "mouse"
-        Option       "Corepointer"
-        Option      "Device" "/dev/psaux"
-        Option      "Protocol" "IMPS/2"
-        Option       "Buttons" "5"
-        Option      "Emulate3Buttons" "off"
-        Option      "ZAxisMapping" "4 5"
-EndSection
+Please do somethng about it....
 
 -- 
 Regards Richard
