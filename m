@@ -1,33 +1,31 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: bridging question
-Date: Fri, 08 Aug 2003 17:43:51 -0400
+From: Eric <eric@cisu.net>
+Subject: C Programming Mailing list
+Date: Fri, 8 Aug 2003 23:11:56 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <77e79b77a0f8.77a0f877e79b@homemail.nyu.edu>
+Message-ID: <200308082311.56970.eric@cisu.net>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,  
-I need to bridge my ethernet (eth0) and my  
-wireless interface (wlan0). I tried to  
-follow the steps in bridge-stp-howto but  
-it seems to be for an older kernel (2.2).  
-  
-I am using RHL 7.3 with v2.4.18-3.  
-I have compiled the kernel with bridging  
-support. The commands mentioned in the  
-howto (brctl, brcfg) dont seem to be  
-present. 
-How do I go about it? 
- 
-Thanks for the help, 
-Anshuman 
+Greetings,
 
+	I am a beginning C programmer who desperatly needs help teching himself. I am 
+looking for a good forumn/mailing list where I can ask questions, post code 
+snippets, and generally glean information from people who have more 
+experience than me for those moments when I am really stuck. 
+	Does anyone know of a good C programming mailing list/forumn/website/etc 
+where I could ask questions?
+
+	Thanks in advance.
+----------------------
+Eric Bambach   
+Eric (at) CISU (dot) net 
+----------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
