@@ -1,75 +1,69 @@
-From: Mark Hahn <hahn@physics.mcmaster.ca>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: usleep
-Date: Wed, 11 Jun 2003 19:45:17 -0400 (EDT)
+Date: Wed, 11 Jun 2003 16:55:18 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0306111931510.20310-100000@coffee.psychology.mcmaster.ca>
+Message-ID: <5.1.0.14.1.20030611162513.01fc8040@celine>
 References: <20030611225502.29651.qmail@mail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20030611225502.29651.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Lee Chin <leechin@mail.com>
-Cc: linux-newbie@vger.kernel.org
+To: Lee Chin <leechin@mail.com>, hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
 
-> I would think the following code would wait for 1 second each itteration
-> before printing hello,
+At 05:55 PM 6/11/2003 -0500, Lee Chin wrote:
+>I would think the following code would wait for 1 second each itteration 
+>before printing hello, but it waits way too long.  Replacing the for loop 
+>body with a
+>usleep(1000000) works great... what am I missing here?
 
-well, usleep takes microseconds, so as you've written it,
-you should expect it to take 1ms per usleep or 50ms between hello's.
-further, the man page doesn't claim that it'll actually sleep
-for exactly the specified microseconds.
+Why would you expect this loop to wait 1 second? The usleep() call is for 
+1/1000 of a second, and you call it 50 times. 50/1000 seconds is hardly 
+equal to 1 second.
 
-here:
-#include <unistd.h>
-#include <stdio.h>
-int main() {
-    int c = 20;
-    while (c--) {
-        int i;
-        printf("hello\n");
-        for(i = 0; i < 50; i++) {
-            usleep(1000);
-        }
-    }
-    return 0;
-}
+In fact, compiled on my system, the loop as written does introduce just 
+about a 1 second delay (30 iterations take 29 seconds,  timed crudely with 
+a wristwatch ... just right, since the initial printf() happens before the 
+first loop run).
 
-(not that a correct program needs both the stdio and a return from main.)
+The ability of a system to resolve time is limited by the kernel and the 
+hardware. If you read the man page for nanosleep() -- the POSIX replacement 
+for usleep -- it specifies this limitation on that call's behavior. SO does 
+the man page for usleep, though the writing here is fuzzier.
 
-| [hahn@hahn hahn]$ /usr/bin/time ./chin
-| hello
-...
-| hello
-| 0.00user 0.00system 0:19.99elapsed 0%CPU (0avgtext+0avgdata 0maxresident)k
-| 0inputs+0outputs (71major+10minor)pagefaults 0swaps
-| [hahn@hahn hahn]$ setrealtime time ./chin
-| hello
-...
-| hello
-| 0.13user 0.87system 0:01.00elapsed 100%CPU (0avgtext+0avgdata 0maxresident)k
-| 0inputs+0outputs (71major+10minor)pagefaults 0swaps
+An i386 has a hardware timer that beats about 72 times per second, leaving 
+me uncertain as to how accurate timings below 14 msec can be on this 
+hardware using the kernel's internal timer.
 
-hmm, so on its own, 20 iterations of your loop take 20 seconds,
-one second per iteration, and the usleep is actually lasting 20ms.
-this is the traditional behavior (and correct, since the man page 
-permits this kind of fuzziness).
+If you need more accurate timing, you might want to look at using /dev/rtc 
+(described in the kernel Documentation directory), which relies on IRQ8 and 
+the system's real-time-clock hardware.
 
-if run in realtime mode, 20*50 usleep(1000)'s take 1.00 seconds, cool.
+The test system I used, BTW, is a P-III 1 Ghz, and I ran the program with 
+an ssh connection as STDOUT.
 
-also, if I add:
-#include <sys/time.h>
 
-void myusleep(unsigned us) {
-    struct timeval tv;
-    tv.tv_sec = 0;
-    tv.tv_usec = us;
-    select(0,0,0,0,&tv);
-}
-
-then it behaves pretty much exactly as expected.  (good code would handle
-the case where us>1000000 and where select is interrupted by a signal.)
+>Thanks
+>Lee
+>
+>#include <unistd.h>
+>
+>int main()
+>{
+>     while (1)
+>     {
+>         int i;
+>
+>         printf("hello\n");
+>         for(i = 0; i < 50; i++)
+>         {
+>             usleep(1000);
+>         }
+>
+>     }
+>
+>}
 
 
 -
