@@ -1,59 +1,31 @@
-From: Sridhar J <sridharj.hyd@cxknetworks.com>
-Subject: RE: Desktop Manager
-Date: Wed, 5 Jun 2002 14:33:23 +0530
+From: Adam Luchjenbroers <adam@luchjenbroers.com>
+Subject: Re: 1024x768 SVGA Shell - won't work
+Date: Wed, 5 Jun 2002 20:03:44 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D153A@ccdc-exchg.careercommunity.com>
+Message-ID: <20020605103118Z314422-22651+75434@vger.kernel.org>
+References: <20020604080752Z316530-22651+74203@vger.kernel.org>
+Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020604080752Z316530-22651+74203@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi Jackson
+OK, I've done some research (suddenly noticed there was a massive folder in 
+my kernel source tree called 'Documentation' - wish I'd seen it sooner).
 
-Thanks very much for the prompt reply. I really appreciate it.
+The mode I was using is one of the VESAfb modes (1024x768x24, apparently). 
 
-Regards
-Sridhar
+These modes require the frame-buffer drivers to be compiled. The frame-buffer 
+drivers are greyed out.
 
------Original Message-----
-From: Joseph Jackson [mailto:skoidat@lvcm.com]
-Sent: Wednesday, June 05, 2002 2:34 PM
-To: Sridhar J
-Cc: 'linux-newbie@vger.kernel.org'
-Subject: Re: Desktop Manager
+I can find nothing telling me what else I need to enable to be able to enable 
+the frame-buffer drivers.
 
-
-Sridhar J wrote:
-
-> Hello
-> 
-> I am going to install Mandrake 8.2 with the new 2.4.18 kernel. But I heard
-> that the default Desktop manager is not very good. What Desktop Manager do
-> you suggest for Mandrake. Will all other DMs work on all Linux distros?
-> 
-> Regards
-> Sridhar
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> 
-
-KDE isn't that bad of a desktop system.  Tho I myself like windowmaker more.
-
-http://www.windowmaker.org  and yes all DMs that work on one linux distro
-will 
-work on any other.
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Does anybody know what options I must enable, or even better, have a 
+dependancy map of the kernel?
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
