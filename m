@@ -1,30 +1,40 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: uname -r
-Date: Mon, 6 May 2002 23:30:15 +0300
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: uname -r
+Date: Mon, 06 May 2002 13:38:56 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200205062030.g46KUOW09162@g38.rdsbv.ro>
+Message-ID: <2.2.32.20020506203856.00e13c50@[192.168.1.23]>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Petre Bandac <g38@rdsbv.ro>, linux-newbie@vger.kernel.org
 
-yesterday I saw a slack 7.1.0 machine whose uname -r output was 
-2.4.7-greased-turkey or something like that
-
-actually, kernels can have a name of their own given by the person who 
-compiled it ?
-
-just being curious ...
-
-thanks,
-
-petre
+At 11:30 PM 5/6/02 +0300, Petre Bandac wrote:
+>yesterday I saw a slack 7.1.0 machine whose uname -r output was 
+>2.4.7-greased-turkey or something like that
+>
+>actually, kernels can have a name of their own given by the person who 
+>compiled it ?
+>
+>just being curious ...
 
 
--- 
- 11:27pm  up 2 min,  1 user,  load average: 0.21, 0.13, 0.05
+Sure. It's a standard feature of the kernel Makefile. I think the variable
+you set is EXTRAVERSION. I usually see it used in more useful ways than the
+example you saw ... it's handy if you do a lot of kernel customizing and
+need to keep track of several variants of the same base kernel. I find it
+more useful to give them meaningful names ... say 2.4.7-router and
+2.4.7-workstation ... but that, like many Linux-related things, is a matter
+of personal preference.
+
+
+--
+------------------------------------"Never tell me the odds!"---
+Ray Olszewski                                        -- Han Solo
+Palo Alto, CA           	 	         ray@comarre.com        
+----------------------------------------------------------------
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
