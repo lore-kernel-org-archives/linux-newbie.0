@@ -1,37 +1,32 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: connecting two nics.... [bcc]
-Date: Wed, 10 Mar 2004 20:14:27 +0100
+From: RANDAZZO@ddc-web.com
+Subject: debugging after netif_rx....
+Date: Wed, 10 Mar 2004 17:01:53 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200403102014.27090.pa3gcu@zeelandnet.nl>
-References: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <89760D3F308BD41183B000508BAFAC4104B16FF4@DDCNYNTD>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: RANDAZZO@ddc-web.com, ray@comarre.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-On Wednesday 10 March 2004 14:50, RANDAZZO@ddc-web.com wrote:
-> Does anyone know how to duplicate the ping -I command for
-> socket-layer calls?
+I'm writing my first network driver.
 
-Just what is it you want to achive.?
+I beleive I created the sk_buff correctly after receiving data, and I called
+netif_rx...
 
-Seems to me like you dont know what you are doing.
+Nothing happens.............I passed up an ARP frame........
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+Is there some debugging messages I can turn on to see what happens after I 
+call netif_rx?
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Regards,
+Mike
+ 
+"This message may contain company proprietary information. If you are not
+the intended recipient, any disclosure, copying, distribution or reliance on
+the contents of this message is prohibited. If you received this message in
+error, please delete and notify me."
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
