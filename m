@@ -1,34 +1,42 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Debian questions
-Date: Sat, 01 Mar 2003 10:52:12 +0800
+From: "[ramzez]" <r4mz3z@yahoo.es>
+Subject: run scripts as other user
+Date: Sat, 1 Mar 2003 00:12:01 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303010252.h212qCc03103@philonline.com>
+Message-ID: <47381.8270060748$1046495575@news.gmane.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Fri, 28 Feb 2003 07:10:24 EST." 
-Content-ID: <3100.1046487132.1@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: neil t <wa4chq@netscape.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-I think when I upgraded from RH6.2 saytime would not work well anymore. What I 
-did was change the bottom lines in saytime.sh as follows:
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-cat $SAYFILES > saytemp
-# cat $SAYFILES > /dev/audio  (original disabled)
-play -t ul -r 8000 saytemp
+Hi friends...
+  Which perms I have to give  to my script if I wanna that other users run it
+but just how if I run it.
+  I know that is something with suid but I can't do it
 
-and it worked ever since thru RH7.3.
+thanks
+- --
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
 
-Regards 
+- -- 
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-
--- 
-Peter
-
-
+iD8DBQE+YEEmG3Fqyap52TERAj3AAKDmWvMCsJX+HqrQA9uSbU0sZxBsSACeNmW4
+kYV7TWW72b8lAyYYICHmqNc=
+=Wrrg
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
