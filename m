@@ -1,46 +1,49 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: unfragment fat under linux
-Date: Fri, 18 Apr 2003 18:24:10 +0100 (BST)
+From: ramzez <r4mz3z@yahoo.es>
+Subject: conecct to internet
+Date: 19 Apr 2003 01:06:45 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0304181816460.26501-100000@ppg_penguin>
-References: <b7ohco$bvg$1@main.gmane.org>
+Message-ID: <1050732413.1895.1.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
+	boundary="=-EClZxYV/SR8TPvFK8bS0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b7ohco$bvg$1@main.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Arno Seitzinger <spam2_arno@lucienet.de>
-Cc: linux-newbie@vger.kernel.org
-
-On Fri, 18 Apr 2003, Arno Seitzinger wrote:
-
-> Hi NG,
-> 
-> I would like to defrag my USB harddrive (Archos Jukebox Recorder). 
-> Filesystem is fat. Is there a way to do so under Linux?
-> 
-> Greetings
-> Arno
-> 
-> 
-
- Maybe dosfsck can do this, I'm not sure, but even if it does, it's
-still flagged as `alpha' software (for VFAT), and I've had problems
-using "another operating system" which might relate to using dosfsck.
-
- If you've got sufficient space elsewhere (no idea how big this drive
-is), the easiest thing would be to tar everything up to another drive,
-umount the usb drive, remake the filesystem in it, remount, and extract
-back to it.  Or perhaps ask yourself whether you *really* need to defrag
-it ;-)
-
-Ken
--- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
 
+--=-EClZxYV/SR8TPvFK8bS0
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+
+Hi...=20
+
+  I'm using RedHat 8.0; and I have to use kppp but allways I have to
+give root's password... how do I cofigure to some user can use kppp
+whitout root's password?...=20
+
+  I have the drivers of my modem (winmodem)... how do I store this in my
+kernel so I'll can use redhat-config-network ?? ...
+
+thanks=20
+--=20
+  Linux User Registered #232544
+         ICQ : 337889406
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+
+--=-EClZxYV/SR8TPvFK8bS0
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: Esta parte del mensaje esta firmada digitalmente
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQA+oOd1G3Fqyap52TERAjDuAJ42q7jTl11i9C6hBsGxj3X6kKQ/7ACg/Szj
+HPBo0vBs3BmAAU+jtD309fQ=
+=di0f
+-----END PGP SIGNATURE-----
+
+--=-EClZxYV/SR8TPvFK8bS0--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
