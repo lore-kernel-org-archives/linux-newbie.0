@@ -1,61 +1,66 @@
-From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
-Subject: Re: 2.6.0 kernel compile overview-the unfolding saga
-Date: Tue, 6 Jan 2004 07:05:03 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Modules problem part-2
+Date: Tue, 6 Jan 2004 07:18:26 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040106060503.GA6016@teamfinders.org>
-References: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com> <Pine.LNX.4.58.0401051408430.3345@localhost> <Pine.LNX.4.58.0401051556150.3636@localhost>
+Message-ID: <200401060718.26925.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040105104618.01f28358@celine>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20040105104618.01f28358@celine>
 Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.58.0401051556150.3636@localhost>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-Just a shot in the dark here, but do you have the volume turned up?  I am using the ALSA sound modules, and they, as default, start up with the sound muted.  I haven't gotten around to fixing it yet, so every time I reboot that machine, I have to reset the sound levels to something higher than zero.
+On Monday 05 January 2004 19:53, Ray Olszewski wrote:
+> At 11:55 PM 1/5/2004 +0530, joy wrote:
+> >hi,
+> >I did what was told of  me, make modules and make install and the modules
+> >were in place.
+> >but the other problem I had with lsmod and insmod giving me error stating:
+> >QM_MODULES function not implemented
+> >refuses to go away
+> >even at bootup ,
+> >when init runs modprobe, the same error appears a LOT of times.(it scrolls
+> >fast but I could just make out!)
+>
+> It sounds like you (or whoever compiled your kernel) did not compile in
+> loadable modules support. (In 2.4.x kernels, which I still use, this is the
+> second item in the "make menuconfig" setup list, so you might look in a
+> similar location in the 2.6.x configuration.)
+>
+> In the 2.4.x kernels, the relevant section of the actual config file is
+>
+>          #
+>          # Loadable module support
+>          #
+>          CONFIG_MODULES=y
+>          CONFIG_MODVERSIONS=y
+>          CONFIG_KMOD=y
+>
+> Here too, you might look for something similar in the 2.6.x config file ...
+> the "QM_MODULES" name might indicate a change in terminology.
 
-On Mon, Jan 05, 2004 at 04:08:07PM -0600, James Miller hunted and pecked out:
-> Ok.  It turns out the system speaker is enabled in the .config file:
-> 
-> # Input Device Drivers
-> #
-> CONFIG_INPUT_KEYBOARD=y
-> CONFIG_KEYBOARD_ATKBD=y  
-> # CONFIG_KEYBOARD_SUNKBD is not set
-> # CONFIG_KEYBOARD_XTKBD is not set
-> # CONFIG_KEYBOARD_NEWTON is not set
-> CONFIG_INPUT_MOUSE=y
-> CONFIG_MOUSE_PS2=y
-> CONFIG_MOUSE_PS2_SYNAPTICS=y
-> # CONFIG_MOUSE_SERIAL is not set
-> # CONFIG_INPUT_JOYSTICK is not set
-> # CONFIG_INPUT_TOUCHSCREEN is not set
-> CONFIG_INPUT_MISC=y
-> CONFIG_INPUT_PCSPKR=y
-> # CONFIG_INPUT_UINPUT is not set
-> 
-> I looked through that file for other entries relevant to system speaker 
-> functioning, but nothing jumped out at me (not that I'd know what to make 
-> of it if it did).  I also searched a bit online for "system speaker" or 
-> "console beep", narrowed further by "2.6", but didn't find much helpful.  
-> As a next step, just to convince myself that there aren't maybe some 
-> issues regarding the system speaker using the 2.6 kernel, can I ask here 
-> if anyone using that kernel can get system speaker output?  echo -e "\a" - 
-> is the traditional command line way of making the system speaker sound.  
-> If you run this kernel and can report results of this command (or whatever 
-> else you might do to sound the system speaker), I would apreciate it.
-> 
-> Thanks, James 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+AFAIK Joy has NOT followed my advice, to be more precise, Joy quite possably 
+needs to install a new set of modules utilitys which is mentioned in the 
+Changes file (of which i mentioned in my last mail).
+
+Use google and type in QM_MODULES as the search and one will see that Joy is 
+not the first to have this problem.
 
 -- 
-Theo. Sean Schulze
-tschulze@teamfinders.org
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
