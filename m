@@ -1,124 +1,85 @@
-From: Donald Duckie <schipperke2000@yahoo.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: insmod: unresolved symbol
-Date: Wed, 15 Sep 2004 22:36:54 -0700 (PDT)
+Date: Thu, 16 Sep 2004 14:28:10 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040916053654.46231.qmail@web53607.mail.yahoo.com>
-References: <4148E859.70303@laposte.net>
+Message-ID: <200409161428.10469.pa3gcu@zeelandnet.nl>
+References: <20040916053654.46231.qmail@web53607.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4148E859.70303@laposte.net>
+In-Reply-To: <20040916053654.46231.qmail@web53607.mail.yahoo.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Donald Duckie <schipperke2000@yahoo.com>, linux-newbie@vger.kernel.org
 
-hi simon & chuck!
+On Thursday 16 September 2004 07:36, Donald Duckie wrote:
+> hi simon & chuck!
+>
+> thank you very much for the information that you have
+> sent.
+>
+> i have some confirmation though, because the
+> information confuses me: removing the
+> CONFIG_MODVERSIONS might not change anything. well,  i
+> tried it, but the result was indeed still the same.
+>
+> anyway, here was what was done:
+> i compiled the snull source file on 2.4.18-sh which i
+> got from
+> http://www.oreilly.com.tw/editor_column/a138_read.html.
+> it was mentioned in that site that snull was compiled
+> with 2.4.24.
+>
+> anyway, compilation with 2.4.18-sh was successful,
+> but upon running insmod on 2.4.18-sh, i got those
+> unresolved errors.
+>
+> any help/information are very  much welcome.
+>
+>
+> and with depmod (since i am cross-compiling):
 
-thank you very much for the information that you have
-sent.
+Meaning.???
 
-i have some confirmation though, because the
-information confuses me: removing the
-CONFIG_MODVERSIONS might not change anything. well,  i
-tried it, but the result was indeed still the same.
+> i also tried running "depmod
+> -a" prior to compilation, but depmod wrote into
+> /lib/modules/2.4.24, instead of
+> /lib/modules/2.4.18-sh. both directories exists.
+> do i really need to run depmod? 
 
-anyway, here was what was done:
-i compiled the snull source file on 2.4.18-sh which i
-got from
-http://www.oreilly.com.tw/editor_column/a138_read.html.
-it was mentioned in that site that snull was compiled
-with 2.4.24.
+If you had taken the trouble to have answered the few questions i asked you in 
+my reply on the other thread, you could have gotten an answer here strait 
+away from me, however you choose not to so you still have problems.
+depmod with the -a option will write modules.dep to the directory which 
+matches the results of the command, 'uname -r', so seeing that depmod wrote 
+to 2.4.18 we can presume you are getting mixed up with 2.4.18-sh and 2.4.18, 
+as i said in a previous mail, the directroy containg the linux source code 
+(which is linked to "linux" with a symlink) is simply a name, the name of the 
+resulting kernel is taken from the topdir Makefile lines 1,2,3 and 4, 4 is 
+optional.
 
-anyway, compilation with 2.4.18-sh was successful,
-but upon running insmod on 2.4.18-sh, i got those
-unresolved errors. 
+> how will i made it
+> update the /lib/modules/2.4.18-sh directory instead of
+> the /lib/modules/2.4.24 directory?
 
-any help/information are very  much welcome.
+I think its time you answered the questions i and others have asked, then and 
+only then could one get to the bottom of the problem you are having. I am 
+convinced its got nothing to do with kernel 2.4.18 (see my comments in other 
+mails).
 
+> again, thanks for the help guys . ..
 
-and with depmod (since i am cross-compiling):
-i also tried running "depmod
--a" prior to compilation, but depmod wrote into
-/lib/modules/2.4.24, instead of
-/lib/modules/2.4.18-sh. both directories exists.
-do i really need to run depmod? how will i made it
-update the /lib/modules/2.4.18-sh directory instead of
-the /lib/modules/2.4.24 directory?
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-
-
-again, thanks for the help guys . .. 
-
-
---- simon <simon.guinot@laposte.net> wrote:
-
-> 
-> 
-> Donald Duckie wrote:
-> > hi!
-> hello donie
-> > 
-> > has anyone ever tried compiling and running snull
-> on
-> > Linux2.4.18-sh?
-> > 
-> > i tried compiling snull(without any modification)
-> on
-> > Linux2.4.18-sh.
-> > upon running snull_load, i got the following:
-> > Using
-> /lib/modules/2.4.18-sh/kernel/drivers/net/snull.
-> > insmod: unresolved symbol kmalloc_R93d4cfe6
-> > insmod: unresolved symbol
-> skb_under_panic_R69955398
-> > insmod: unresolved symbol
-> register_netdev_R09e03f58
-> > insmod: unresolved symbol eth_type_trans_R0a4e7a1c
-> > insmod: unresolved symbol
-> unregister_netdev_R98eda3f8
-> > insmod: unresolved symbol printk_Rdd132261
-> > insmod: unresolved symbol __udivsi3_i4
-> > insmod: unresolved symbol memcpy_R11f7ce5e
-> > insmod: unresolved symbol jiffies_R0da02d67
-> > insmod: unresolved symbol alloc_skb_R0177038c
-> > insmod: unresolved symbol softnet_data_R258cb892
-> > insmod: unresolved symbol
-> cpu_raise_softirq_R4d09166c
-> > insmod: unresolved symbol __kfree_skb_R1741771d
-> > insmod: unresolved symbol memset_R2bc95bd4
-> > insmod: unresolved symbol kfree_R037a0cba
-> > insmod: unresolved symbol netif_rx_R8316ccd0
-> > insmod: unresolved symbol ether_setup_R586ea93a
-> > insmod: unresolved symbol skb_over_panic_R4bb59969
-> > 
-> > can someone please tell me what's wrong with this,
-> > and how to fix this without chaning Linux
-> versions?
-> remove CONFIG_MODVERSIONS of your kernel is in my
-> opinion a good idea...
-> 
-> are you using the original Makefile ?
-> 
-> your compilation line must look like that...
-> gcc -D MODVERSIONS -include
-> /usr/src/linux/include/linux/modversion.h...
-> 
-> if it is already the case... i suggest you to verify
-> that "modversion.h"
-> is compliant with your running kernel...
-> 
-> you can take a look on the chapter 11 of "Device
-> Driver 2nd edition"
-> it is just talking about that...
-> 
-> simon
-> 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
-__________________________________________________
-Do You Yahoo!?
-Tired of spam?  Yahoo! Mail has the best spam protection around 
-http://mail.yahoo.com 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
