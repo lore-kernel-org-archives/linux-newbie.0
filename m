@@ -1,49 +1,33 @@
 From: ippi <heynumbertwo@yahoo.com>
 Subject: Re: how to identify filesystem type
-Date: Thu, 19 Aug 2004 01:13:00 -0700 (PDT)
+Date: Thu, 19 Aug 2004 02:06:06 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040819081300.95564.qmail@web50005.mail.yahoo.com>
-References: <005e01c485a0$69631820$5c59023d@dreammachine>
+Message-ID: <20040819090606.8446.qmail@web50007.mail.yahoo.com>
+References: <20040819081300.95564.qmail@web50005.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <005e01c485a0$69631820$5c59023d@dreammachine>
+In-Reply-To: <20040819081300.95564.qmail@web50005.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Pankaj Agarwal <pankaj@pnpexports.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 
---- Pankaj Agarwal <pankaj@pnpexports.com> wrote:
-
-> Kindly let me know how to
-> identify the filesystem in an image file or block
-> device.
-> 
-
-Hi Pankaj,
-
-if you've got an image file called somefs.img you
-should be able to do:
-
-    file somefs.img
-
-If you've got a block device - say /dev/hda1 - then
-you'll need to do the following (probably as root).
-Be careful to type this command correctly or you
-could be in a world of pain
+Sorry for the typo, the command to check a block 
+device such as /dev/hda1 is:
 
     dd if=/dev/hda1 bs=1k count=5 | file -
 
-A
-DO NOT USE dd WITH ANYTHING UNDER /dev WHILE RUNNING 
-AS ROOT UNLESS YOU REALLY, REALLY HAVE TO.
+Regards,
+
+ippi
 
 
 		
-__________________________________
+_______________________________
 Do you Yahoo!?
-Yahoo! Mail Address AutoComplete - You start. We finish.
-http://promotions.yahoo.com/new_mail 
+Win 1 of 4,000 free domain names from Yahoo! Enter now.
+http://promotions.yahoo.com/goldrush
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
