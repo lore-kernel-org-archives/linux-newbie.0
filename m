@@ -1,60 +1,36 @@
-From: whitnl73@juno.com
-Subject: Re: slightly off topic: remotely displaying Mac OS X applications
-Date: Sun, 12 Jan 2003 16:31:09 -0500 (EST)
+From: axel@pearbough.net
+Subject: Re: DRI not working?
+Date: Mon, 13 Jan 2003 00:14:29 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030112.164910.134688608.0.whitnl73@juno.com>
+Message-ID: <20030112231429.GB1485@neon.pearbough.net>
+References: <200301130932.42612.genright@paradise.net.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200301130932.42612.genright@paradise.net.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-Cc: yoni@kallay.net
+To: glenn <genright@paradise.net.nz>
+Cc: linux-newbie@vger.kernel.org
 
+Hi glenn!
 
-On Sun, 12 Jan 2003, Jonathan Kallay wrote:
+On Mon, 13 Jan 2003, glenn wrote:
 
-> My downstairs neighbor has a computer running Mac OS X, which as we all know
-> has a UNIX backend.  For kicks, I started an X server, telnetted into his
-> machine, changed the DISPLAY variable to my display, and tried launching a
-> GUI application.  The application did in fact launch, but on his screen, not
-> in my X server.  Any ideas as to why this happened?
->
-How did you change the DISPLAY variable?  Did you forget to export it?
-Probably your X server will not allow apps on another machine to use
-your display (that is generally how X servers are set up).
+> hi guys.
+> Have been trying to improve the grapics performance on my new Mandrake 9 
+> install, but have come accross a problem.
+> 
+> (WW) System lacks support for changing MTRRs
 
-It is much easier to run remote X applications using ssh, which will
-handle them automagically, but if you can't use ssh, there is a
-Remote-X-Apps-mini-HOWTO that covers the details of X security.
+I guess you kernel is built with CONFIG_DRM_TDFX=y/m.
+But do you also have CONFIG_MTRR=y ?
 
-If you have the howtos installed, it is probably on your machine, or you
-can look here:
+Seems to me that Memory Type Range Register kernel support is necessary...
 
-
-Remote X Apps mini-HOWTO: Introduction (p2 of 2)
-
-   The most recent version of this document is always available on WWW at
-   http://www.xs4all.nl/~zweije/xauth.html. It is also available as the
-   Linux Remote X Apps mini-HOWTO at
-   http://sunsite.unc.edu/LDP/HOWTO/mini/Remote-X-Apps. Linux
-   (mini-)HOWTOs are available by http or ftp from sunsite.unc.edu.
-
-what was sunsite.unc.edu is now calling itself
-www.ibiblio.org (and ftp.ibiblio.org, BTW
-
-
-Lawson
---
----oops---
-
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+Best regards,
+Axel Siebenwirth
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
