@@ -1,64 +1,55 @@
-From: Hal MacArgle <haltec@iceweb.net>
-Subject: Install Slack/or/RedHat to SCSI HD???
-Date: Wed, 25 Sep 2002 14:36:57 -0400
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: auto login
+Date: Wed, 25 Sep 2002 19:23:29 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020925143657.A562@lnx2.w8mch.ampr.org>
-Reply-To: haltec@iceweb.net
+Message-ID: <02092519232902.09996@unix.pa3gcu>
+References: <F22LjQyKNRocEvBff6e0000a72a@hotmail.com> <20020915200537.C1134@neutrino.particles.org> <3D9204F0.F636F42E@sympatico.ca>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <3D9204F0.F636F42E@sympatico.ca>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: LL Phillips <lilo.phillips@sympatico.ca>, Elias Athanasopoulos <eathan@otenet.gr>
+Cc: linux-newbie@vger.kernel.org
 
-Several days RTFM's, Books and trial/error's, no joy w/ a Seagate
-SCSI HD and Adaptec 1515 Controller, except that DRDos7.03, MSDos6.2
-and MSDos7.0 all find it and assign C: automatically. <grin>
+On Wednesday 25 September 2002 18:48, LL Phillips wrote:
+> If you buy LINDOWS root is the default user.
+> Lorraine
 
-HD configured using Seagates' Dos DM program with three partitions;
-one for Dos, 650mB, and the remainder in limbo, 650mB earmarked for
-Linux native and the remainder of the 1.3gB drive for linux swap.
+The principles of linux are being explioted by Lindows, (by that i mean) get 
+everyone to operate as root, before you know it linux will be just as 
+vunarable as Windows, then windows gets it market share back again because we 
+will see more and more users reading mail as root, then in turn we we have 
+more and more mail viruses that can and will be spread via root/linux systems.
 
-Slackware7.1, 2.2.16; Slack8.0, 2.2.19 /or/ 2.4.5 and RedHat6.2, 2.2.16
-a different story all three trys ending by not automatically finding
-the HD.. Slack finds it and reports the Port, IRQ and ID, 0x340, 11
-and 7 - OK - RedHat merely says, "No HD present." W/Slack I used the
-aha152x.s boot image - Docs saying that's proper for the 151x card.
-Tried two different RH boot images - same problem again...(Also tried
-other Slack .s images to no avail.)
+What Elias wants is a protentioal security hole in his system by asking for a 
+"root autologin".
+There maybe such things, but i cannot see the point of them, linux is all 
+about security, where are the old days gone when even the word root was out 
+of order in a conversation.
 
-The booted kernel obviously cannot see the drive for some reason and
-after many, many kernel entries, re the Docs, I have partially given
-up. One mysterious, to me, report by the Slack boot is: "aha152x:
-Trying software for interrupts, lost. /and/ aha152x: IRQ possibly
-wrong, Please verify"... Since the card has jumper set IRQ 11 -
-dunno. Changed the jumper to 9 and tried again - same problem, except
-reporting 9 instead of 11, of course.... No other cards fitted except
-an ethernet card at 0x300, IRQ10, that I removed to try all again -
-same reports and problem..
+Just my 2c's worth.
 
-Both Slack tries actually go thru the beginning of the install but
-balk when I invoke either cfdisk or fdisk to attempt a linux
-partition setup. Cfdisk says something like "can't open HD," and
-fdisk similar..
+>
+> http://www.osnews.com/story.php?news_id=1803&page=3
+>
+> Elias Athanasopoulos wrote:
+> > On Sun, Sep 15, 2002 at 04:19:10PM +0000, a a wrote:
+> > > Hello
+> > > Is there a way i can automatically login as root when i boot up the
+> > > computer?
+> >
+> > Maybe, but I hope there isn't. This is totally insecure.
+> >
+> > Elias
 
-I have the onboard IDE controller disabled but strangly the BIOS
-reports CHS as: 172-255-63 but the boot kernel disk report says:
-"non IDE drive, CHS=306/4/17."
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-I've never run into this before with several years under my belt with
-MFM, RLL and IDE HD's and SCSI peripherals EXCEPT HD's...(I have no
-other SCSI adapters or HD's available to try a swap.)
-
-I'm beginning to suspect the problem is the 1515 card, but why does
-it work with Dos???
-
-I hope someone might have the magic solution.... <grin> TIA..
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-	       haltec@iceweb.net | w8mch@iceweb.net..
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
