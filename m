@@ -1,37 +1,26 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: Spamassassin is ignoring user_prefs
-Date: Mon, 16 Jun 2003 10:47:28 +1000
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Linux's SOC Rebuttal
+Date: Sun, 15 Jun 2003 21:56:04 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002e01c333a0$ddbf46b0$d700a8c0@iih.usyd.edu.au>
-References: <3EECA70F.8030201@shaw.ca>
+Message-ID: <200306152156.04143.sotl155360@earthlink.net>
+References: <200306151703.17434.sotl155360@earthlink.net> <200306152121.05516.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200306152121.05516.sotl155360@earthlink.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chris Rose <offline@shaw.ca>, linux-newbie <linux-newbie@vger.kernel.org>
+To: Linux Thinkpad <linux-thinkpad@linux-thinkpad.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Chris Rose wrote:
-> Or, it sure seems to be..  I don't know that this is the right place
-> to ask this, but it seems appropriate.  I have spamassassin being
+Threat
+http://www.theinquirer.net/?article=10018
 
-Actually try the spamassassin user mailing list:
+Action
+http://mozillaquest.com/Linux03/ScoSource-19-Injunction_Story01.html
+http://mozillaquest.com/Linux03/ScoSource-18-Injunction_Story01.html
 
-http://www.spamassassin.org/lists.html
-
-> called as part of my maildrop .mailfilter file, and it seems to
-> completely ignore both the .spamassassin/user_prefs and
-> .spamassassin/user_prefs.cf files, since i'm trying to blacklist an
-> address. but no joy.
-
-Try the /etc/mail/spamassassin/local.cf file.  SpamAssassin checks this
-before anything else.
-
-Regards
-
-James Turnbull
-
-
+ Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
