@@ -1,69 +1,79 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: net detection failure with old kernel
-Date: Tue, 16 Dec 2003 12:33:41 -0800
+From: Ken Moffat <ken@kenmoffat.uklinux.net>
+Subject: Re: framebuffer console
+Date: Wed, 17 Dec 2003 00:03:16 +0000 (GMT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031216122353.02039d80@celine>
-References: <5.1.0.14.1.20031215133800.01ff3b00@celine>
- <5.1.0.14.1.20031215133800.01ff3b00@celine> <Pine.LNX.4.58.0312161343290.452@debian-box>
+Message-ID: <Pine.LNX.4.58.0312162347200.28443@ppg_penguin>
+References: <Pine.LNX.4.58.0312150920510.1041@debian-box>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0312161343290.452@debian-box>
-References: <5.1.0.14.1.20031215133800.01ff3b00@celine>
- <5.1.0.14.1.20031215133800.01ff3b00@celine>
+In-Reply-To: <Pine.LNX.4.58.0312150920510.1041@debian-box>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-At 01:54 PM 12/16/2003 -0600, James Miller wrote:
->On Mon, 15 Dec 2003, Ray Olszewski wrote:
+On Mon, 15 Dec 2003, James Miller wrote:
+
+> I hope this is the right place to ask this sort of newbie question.  Here
+> goes . . .  I was chatting with a programmer online the other day about
+> his (console-based) program.  This individual said he doesn't use X
+> windows, and doesn't have it installed on his system.  This is not
+> entirely new to me, since I've used svgalib before and found it a great
+> way to get graphical output from an under-resourced system (btw: isn't the
+> svgalib project going moribund, unfortunately?)  Anyway, the individual of
+> whom I speak said that he uses Links 2 for graphical web browsing.  Most
+> importantly, he said he is always in "framebuffer console."  I don't quite
+> understand what "framebuffer console" is, and relatedly, how it aids in
+> running something like Links 2 (I ran Links 2 in graphical mode with
+> svgalib, though).  I did some searching around on the 'net about this and
+> found a couple of things that talked about the matter, but the basic issue
+> still sort of escapes me.  I'd like to ask if anyone onlist could write
+> a basic description of the framebuffer console for me, explaining a bit
+> about what it is and what it does.  If you could also say something about
+> how a graphical program like the Links 2 browser works under it, that
+> would be great, too.  Finally, links to other info on the matter would be
+> welcome as well (I already looked at the "Framebuffer How To", but it's a
+> little beyond what I need: it tells you how to implement the framebuffer,
+> which is of limited help to someone who's not entriely sure what it is).
+> Thanks in advance for any input on this.
 >
-> > problem down a bit. As to the source ... I'm assuming that the 2.2.20
-> > kernel did get a DHCP lease from this server before you switched to
-> > 2.4.something_or_other and that you made no changes to the hardware or the
-> > BIOS settings after you switched kernels. If those assumptions hold, the
-> > only thing I can think of that is left is a corrupted NIC driver ... you
-> > might check timestamps to make sure the module you are loading is the same
-> > one you used to use.
-> >
->Your assumption (about hardware/BIOS) was wrong.
+> James
+> -
 
-Yeah. That's why I always *try* to make the assumptions explicit ... to 
-detect important details that the poster left out of the problem description.
+ If I understand correctly, the framebuffer is a way of viewing the
+screen as an array of pixels instead of an array of character cells.  I
+think it started out on mac hardware, because that is how they are
+organised.  On x86 the available console framebuffer drivers depend on
+your graphics card - most support vga, but more specific drivers tend to
+be better (e.g. atyfb, radeon, g400).  The big benefit is that you can
+get more characters in the console, e.g. 1024x768 gives me a 128x48
+display after I've set a suitable font. This is _distinct_ from the
+XFree fb driver.  The downside is it might be slower than using a text
+console with character cells.
 
->Since I was starting to
->have some trouble with IDE channels in the machine I did the original
->installation on, I decided to just remove the HD and place it in another
->machine with essentially the same peripherals (NIC, video card, CD drive
->etc.) but a somewhat different mobo and processor.  I was a bit surprised
->that it worked as well as it did - even the networking (with the 2.4.x
->kernel, as you know).  I've since fixed the problem with the IDE stuff,
->and have just now placed the drive back in the machine I initially did the
->Debian install on.  And, when I boot the 2.2.20 kernel - voila! networking
->works fine.  So, the problem was somehow hardware related, as you opined
->for one of the remote possibilities.  Still curious to me though why
->networking did work with the 2.4.x kernel while the drive was in that
->temporary host, but not with the 2.2.20 kernel.  Anyway, it's working now.
->If you'd care to offer any further speculations on why the problem cropped
->up with the change in hardware using the older kernel (but not with the
->new), I would gladly listen/read.
+ The real fun comes when you're trying to work out what bootargs to use
+to get a sensible-sized display.  It seems as if every driver has its
+own syntax, and some of the documents out there are no longer up to
+date.  I can probably offer some suggestions for the mystique, g400,
+radeon, and tdfx cards if anybody is interested.  At least on macs you
+don't have to do this, they just work (mostly) in the available
+resolution.
 
-At a guess, you hit an IRQ problem. I forget the details of the evolution 
-of the IRQ-sharing kernel code, but I'd expect 2.4.x to be better at it 
-than 2.2.x. And your 2.2.20 symptoms match the classic problem of a NIC and 
-a serial port (or onboard Winmodem) sharing an IRQ in the days before the 
-kernel supported IRQ sharing. Did you happen to look at /proc/interrupts on 
-the temporary setup with 2.2.20? If so, did it differ from the current, 
-working setup?
+ As to links, I haven't used the graphical version, but it's got the
+full 1024x768 or whatever to play with, so it sounds a useful way to go.
+Might give this a go some time (of course, it means saying goodbye to
+tabbed browsing).  I can remember running fbview (?) to view images
+centered in the console window, but one of my upgrades broke it and I
+never got it running again.
 
-The other possibility that comes to mind is that the mobo switch fouled up 
-PnP initialization of the NIC, and that 2.2.20 doesn't cope with this as 
-well as 2.4.x ... though I have no details to offer in support of this 
-blue-sky speculation.
+ I'm all for slimming systems down, but for most recent systems the
+overhead from X and a light window manager is not very much.
 
-This is all pretty vague because I don't know the hardware involved, even 
-if (for example) the NIC is ISA or PCI.
+HTH
 
+Ken
+-- I'm as free as a bird now, and this bird you cannot chain.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
