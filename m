@@ -1,35 +1,42 @@
-From: "Sean Rima" <linux-net@tcob1.net>
-Subject: repartioning a reiserfs hd
-Date: Saturday, 19 Oct 2002 13:50:46 +0000
+From: LL Phillips <lilo.phillips@sympatico.ca>
+Subject: Re: Sharing drives.
+Date: Sat, 19 Oct 2002 16:05:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a10=2f1_4ce36142@linuxnet>
+Message-ID: <3DB1BB0C.F831C945@sympatico.ca>
+References: <000501c269e8$b8ca73c0$af33f7c2@gcb> <3D9AE71D.D509316F@gelm.net> <3D9C4FAB.8CAD330F@sympatico.ca> <3D9CB79E.54505E03@gelm.net> <3DADBDE3.7D2D42D3@sympatico.ca> <20021018085428.A145@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: haltec@iceweb.net, linux-newbie@vger.kernel.org
 
-Originally to: All
+Hi Hal
+Thanks for the tips.  It was the OPERATOR's fault I'm sure.   Too much
+enthusiasm combined with a thick skull.  The drives were working fine
+when I got them.   I did find them delicate to work with. Went through
+a couple adapters which quit on me too.  I'm moving up soon to
+possible motherboard destruction.  Looking to flash the bios on EPOX
+P55-BT.
 
-Hi folks,
-
-I have a 2 gb HD that is under reiserfs as /home. I want to re-partition it so 
-that half is /opt. Is this posible and is there a howto
-
-Sean
-... Click click click damn, out of ferret Taglines!
---
-printk("; corrupted filesystem mounted read/write - your computer will explode 
-within 20 seconds ... but you wanted it so!\n");
-  2.4.3 linux/fs/hpfs/super.c
-
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
+With Linux I've become less dangerous now that I've discovered and
+downloaded KNOPPIX which runs in RAM; and just read today that SUSE
+has a LIVE CD version as well.  Must investigate.
+Lorraine
 
 
+<snip>
+> 
+>                 Why software problems could cause drives to become
+> "grinders" is beyond me, except that laptop/notebook drives are 2"
+> jobs so you can visualize all that capacity in a very small and
+> compact space.. They've _got_ to be less rugged than normal..
+> 
+>                 Anyway good luck and hope you get things in order.
+> 
+>     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+>                haltec@iceweb.net | w8mch@iceweb.net..
+> .
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
