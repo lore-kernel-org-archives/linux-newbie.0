@@ -1,31 +1,34 @@
 From: Amin <amin@siriusbb.com>
-Subject: Re: Can't write VFAT filesystem
-Date: Wed, 05 Nov 2003 18:20:09 +0600
+Subject: Re: MSN Messenger clones keep failing
+Date: Wed, 05 Nov 2003 19:09:07 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA8EAF9.8090007@siriusbb.com>
-References: <5.1.0.14.1.20031104083631.01f742c0@celine>
+Message-ID: <3FA8F673.8070301@siriusbb.com>
+References: <3FA79E82.3080204@siriusbb.com> <3FA79E82.3080204@siriusbb.com> <5.1.0.14.1.20031104073149.02010830@celine> <3FA821C3.1030608@megahappy.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031104083631.01f742c0@celine>
+In-Reply-To: <3FA821C3.1030608@megahappy.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
+Bryan Whitehead wrote:
+> Build gaim with ssl support on. You will need mozilla installed with all 
+> the nss and related libaries along with openssl.
 > 
+> http://gaim.sourceforge.net/
 > 
-> Well ... what does "ls -l /mnt/d/My\ Documents" tell you about ownership 
-> of and permissions for that directory? Same questions for "ls -l 
-> /mnt/d". Checking this info is the obvious place to start ... so basic, 
-> really, that I wouldn't check anything else until I had verified that 
-> the values reported here were sensible.
+> you need to run version .71 or up. They also have binaries for windoze.
+> 
 
-Thanks, this worked.  Turned out this was a permissions 
-problem after all.  Funny thing, I never think about 
-permissions until I don't get them!
+Hi,
 
-Anyway, thanks very much.
+Gaim ROCKS!  It's the most polished IM client I've ever seen 
+in Linux, and it handles MSN just fine.  Oh, I didn't even 
+have to compile it or anything.  The SourceForge RPM for RH8 
+works fine.
+
+Thanks very much.  Life is easier to bear now :-)
 
 Yawar Amin
 
