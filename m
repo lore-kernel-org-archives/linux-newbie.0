@@ -1,59 +1,43 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Printing
-Date: Tue, 01 Apr 2003 09:08:15 -0800
+Subject: Re: Suse 8.1 Konsole Sco Openserver
+Date: Tue, 01 Apr 2003 09:34:39 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030401085644.01e9c520@celine>
-References: <1049189061.3522.1.camel@localhost.localdomain>
+Message-ID: <5.1.0.14.1.20030401091855.01ed2038@celine>
+References: <1049214745.3728.6.camel@linux>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1049189061.3522.1.camel@localhost.localdomain>
+In-Reply-To: <1049214745.3728.6.camel@linux>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-At 05:23 PM 4/1/2003 +0800, S. Barret Dolph wrote:
->Under Mandrake 9.0 my printing jobs just hang forever. After the
->installation I was able to print and then sometimes printouts would come
->through after turning on and off the computer. Now nothing....
->Printer works fine as I tested it with my girlfriends laptop.
+At 11:32 AM 4/1/2003 -0500, Paul Kraus wrote:
+>For work i have to attach to sco box that runs are main work application
+>(tbred). Everything works great except that the arrow keys are not
+>correct. How can  i set Konsole to send the charact codes so that it
+>works correctly. I also need to be able to work for the shell in unix.
+>Here backspace del both cause a carrige return.
+>
+>If this is outside the scope of the list please point me where i need to
+>go. Thanks!!
 
+What terminal type is the SCO app (and the SCO shell ... you do mean a 
+shell on the SCO system, not the Linux system, right?) expecting? It might 
+be easier to tell it to expect the terminal type that Konsole delivers by 
+default than to try to adapt Konsole on an app-by-app basis. The details of 
+this depends a bit on how you are connecting to the SCO system 
+(ssh/telnet/something_else).
 
-1. How is your printer physically connected to the system? (parport, 
-serial, USB, network?) If it is a parport printer, do you have all the 
-right modules installed?
+If you need to change the terminal type at the Linux end, the usual way to 
+do it is in the shell's initialization file ... perhaps /etc/profile or 
+~./.profile or ~./.bashrc  (or some variant of this ... exact naming is 
+still a bit distro-specific).
 
-2. Which lpd daemon does Mandrake 9 use?
-
-3. What printer is it? Does the Linux printer site (I've misplaced the URL, 
-so you'll need to search for it) report anything special about it and Linux?
-
-4. What does its entry in /etc/printcap look like?
-
-5. How are you trying to print under Linux? (What apps are you printing from?)
-
-6. What happens if you try to dump a file directly to the printer? (How you 
-do this depends on the answer to Q1, but an example would be: "cat 
-/etc/passwd >/dev/lp0").
-
-7. Assuming you are using a typical lpd daemon, what do these result in?
-
-         A. lpr -pdefault /etc/passwd
-         B. lpq
-
-(Change "default" if the printer use a different printcap entry.)
-
-8. Did this printer work under any other version fo Linux, or is this your 
-first try using it with a Linux system? If the first, please provide details.
-
-9. Does your general description of the problem conceal any pattern you've 
-seen? For example, after a boot/init, the first attempt to print works but 
-not later ones? Or power-cycling the printer causes printing temporarily to 
-resume? Or ... ???
-
-(BTW, there is nothing special about /etc/passwd except that it is a file 
-that I know must be present on your system. Feel free to substitute any 
-plain-text file that you prefer.)
+I don't run Konsole here and cannot quickly find how to set the terminal 
+type in Konsole. Eterm, for example, has a menu-bar choice for this. 
+xtrerm, by contrast, is pretty much locked into VT102 emulation. I don't 
+know how flexible Konsole is in this regard.
 
 
 
