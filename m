@@ -1,26 +1,55 @@
-From: "Gosselin, Mark" <gosselinm@netscout.com>
-Subject: Adding Fibre channel disks
-Date: Fri, 7 May 2004 15:49:06 -0400
+From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
+Subject: Re: alsamixer Doesn't save volume settings
+Date: Sat, 8 May 2004 00:09:23 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <6CE6A442029B3347890ED9FCA94FAE0701EEAF43@nsxmail.netscout.com>
+Message-ID: <20040507220923.GA14047@teamfinders.org>
+References: <20040507043447.53651.qmail@web61008.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-content-class: urn:content-classes:message
+Content-Disposition: inline
+In-Reply-To: <20040507043447.53651.qmail@web61008.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Linux Newbie (E-mail)" <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Have you tried adding 'alsactl restore' in your rc.local on boot?
 
-I'm running Red Hat Enterprise. I installed a QLogic HBA in it to attach to an EMC Clariion.
-I'm connected, I can see the device from the BIOS on my Linux box, but I can't for the life of me figure out 
-what device it is or how to fdisk it. Anyone ever done this before? I'm sure someone who monitors this
-list mus be able to gove me a step-by-step as to how to see/format that san disk...
+On Fri, May 07, 2004 at 05:34:47AM +0100, sumit kalra hunted and pecked out:
+> Hi,
+> 
+> I am running ALSA-1.0.4 on RedHat 8 Linux (kernel
+> 2.4.18-14). 
+> 
+> I am trying to set the volume using "alsamixer" but
+> everytime I reboot the machine, the volume gets reset
+> to zero. I searched on google and got one solutions
+> but it doesn't seem to work for me: Running "alsactl
+> store" after increasing the volume - the command
+> completes properly (with no errors) but on reboot, the
+> volume setting are lost.
+> 
+> Any help is appreciated,
+> TIA
+> Sumit Kalra
+> 
+> 
+> 	
+> 	
+> 		
+> ____________________________________________________________
+> Yahoo! Messenger - Communicate instantly..."Ping" 
+> your friends today! Download Messenger Now 
+> http://uk.messenger.yahoo.com/download/index.html
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Thanks
-Mark Gosselin
-NetScout Systems
+-- 
+Theo. Sean Schulze
+tschulze@teamfinders.org
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
