@@ -1,38 +1,30 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Re: Networking issue
-Date: Fri, 3 Jan 2003 21:01:07 +0930
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Re: rpm description
+Date: Fri, 3 Jan 2003 06:44:52 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301032101.07628.Adam@Luchjenbroers.com>
-References: <5.1.0.14.1.20030102230450.0211b230@celine>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <200301030644.52437.sotl155360@earthlink.net>
+References: <200301030323.h033N6V03525@philonline.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030102230450.0211b230@celine>
+In-Reply-To: <200301030323.h033N6V03525@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
-On Friday 03 Jan 2003 4:39 pm, Ray Olszewski wrote:
+On Thursday 02 January 2003 22:23, Peter wrote:
+> whitnl73@juno.com said:
+> > for a package already installed: rpm -qi <package name>
+> > for a package not yet installed: rpm -qip <filename>
+>
+> Using mc has the advantage of not making typing errors on those long names.
 
-Got everything pretty much fixed, except for one thing.
+That is what I thought the great advantage of typing part of the name and then 
+hitting tab to complete the name up to the next diversion in names of files 
+is.
 
-Something perioically seems to re-add a line to hosts.deny that forbids 
-connections from everything but localhost. 
-/proc/sys/net/ipv4/icmp_echo_ignore_all also gets reset to 1 (but this 
-happened at a different time)
-
-/var/spool/cron has no entries
-
-How can I find the problem?
-
--- 
-"MS-DOS is to computing as the black plague was to Europe" - NH
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
-
+Thanks
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
