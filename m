@@ -1,42 +1,70 @@
 From: Ray Olszewski <ray@comarre.com>
 Subject: Re: ?Copying 'difficult' CD-ROM discs
-Date: Sat, 17 Aug 2002 13:13:34 -0700
+Date: Sat, 17 Aug 2002 13:27:53 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020817130643.020e1040@celine>
+Message-ID: <5.1.0.14.1.20020817131920.020edaa0@celine>
 References: <200208100843.50199.natarajan_k@hotpop.com>
  <5.1.0.14.1.20020817104733.020ef510@celine>
- <3D5E97ED.CEC2B73D@gelm.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000a01c2461c$f3b577e0$0200a8c0@toybox>
+In-Reply-To: <3D5E97ED.CEC2B73D@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Matthias Schweinoch <matthias.schweinoch@epost.de>, linux-newbie@vger.kernel.org
+To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
 
-At 08:36 PM 8/17/02 +0200, Matthias Schweinoch wrote:
->while we're on the subject of copying "difficult" CDs: has anyone tried to
->make copies of video CDs? i have several video CDs here which were created
->with win tools such as NERO or WINONCD. i can't get these copied on my linux
->box with the latest X-CD-ROAST... i haven't tried the command line approach
->yet...
+At 02:37 PM 8/17/02 -0400, Chuck Gelm wrote:
+>Hi, Ray:
 >
->but before i get all too much into it: how das linux (cdrecord, mkisofs?)
->handle mixed-mode CDs - i think that's the problem with the VCDs. thank for
->the help.
+>  Thanks.
+>Windows hardware check:
+>My existing windows cd-burn software can burn the
+>Slackware8.0 'install.iso' to blank media and it boots & works fine.
+>  ;-)
+>
+>  Using my Easy-cd-creator v4.02 generates an image file of
+>         112 bytes and fails with an error about creating file
+>000000001.TMP                  :-(
+>^^^^^^^^^^^^^ something like that
+>
+>  Using 'dd if=/dev/cdrom of=./filename.iso' generates a file of
+>   1,699,840 bytes.  :-|
+>
+>  Yet, 'tar -czvf filename.tar.gz /cdrom/*', generates a filesize of
+>561,982,106 bytes.    ;-)
+>
+>  The 'dd' command seems to work with other, friendlier, CD-ROMs.
+>(filesize seems appropriate,
+>  but I haven't burned a CD from them, yet>)
+>
+>:-) So, it is that easy to create .iso images!  :-)
+>
+>  So, it seems that 'dd' is not creating the expected output.
+>What does this indicate.
 
-I haven't actually done this yet,  but I've been reading up on it. VCDs are 
-not iso format, so they need to be burned with different tools and ripped 
-(in the same way that one rips CDs and DVDs) rather than read.
+At a *guess*, the CD is not pure iso, but instead has a small "outside 
+edge" track that an iso imager reads rather than the full disk. That track 
+then has some second-stage loader that lets you read the rest of the disk. 
+Or maybe the dummy track is just junk and the core of the disk is true iso. 
+I haven't actually encountered this sort of setup, but I'm reasoning by 
+analogy to that lamebrain system for "protecting" music CDs from ripping 
+software that involved putting a small, bogus track on the outside edge.
 
-There is a (Debian) package called vcdtools that inclues an app called 
-mkvcdfs. Its man page says the images it creates can be burned with cdrdao 
-(but apparently not with cdrecord). Someday I'll have the time to try this 
-out. If your someday comes sooner than mine, and you get this working, 
-please tell us what the details are.
+In the music case, the workaround was easy, since you didn't need that 
+track. Here it is probably harder and may involve specialized understanding 
+of the specific disk in question (at least is that small filesystem is 
+important to running the disk). In any case, Linux is likely to be no more 
+successful here than Windows, at least using its ordinary tools. Sorry.
 
-For ripping VCDs, there is a (Debian) package called vcdimager that 
-converts the VCD content to regular mpeg.
+One possibility ... if you can mount the disk and see its directories (the 
+tar results imply that you can), try
+
+         mkisofs -J -r -o some_filename.iso /cdrom/*
+
+This will put the contents of the CD into a true iso image that you can 
+burn. Whether the programs there will run from that burned image ... well, 
+your guess is as good as mine, but I'd not be optimistic, since it sounds 
+like you are encountering some form of deliberate copy protection.
 
 
 --
