@@ -1,73 +1,70 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Skype wont't open
-Date: Wed, 2 Mar 2005 07:51:31 +0100
-Message-ID: <200503020751.31499.pa3gcu@zeelandnet.nl>
-References: <20050302020750.EF01617D14@heisspf>
-Reply-To: pa3gcu@zeelandnet.nl
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: ADSL and mail
+Date: Tue, 01 Mar 2005 22:54:26 -0800
+Message-ID: <5.1.0.14.1.20050301223821.0207fce8@celine>
+References: <1109795489.4963.22.camel@fxrhl90>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-In-Reply-To: <20050302020750.EF01617D14@heisspf>
-Content-Disposition: inline
+In-Reply-To: <1109795489.4963.22.camel@fxrhl90>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Peter <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Wednesday 02 March 2005 03:07, Peter wrote:
-> Is it possible that the kernel has something to do that skype will no=
-t open
-> in slackware10 instead aborts with:
+At 01:31 PM 3/2/2005 -0700, frans toruan wrote:
+>Hi, Ray . . .
 >
-> skype: relocation error: /usr/lib/qt/lib/libqt-mt.so.3: undefined sym=
-bol:
-> XkbSetPerClientControls
->
-> My kernel in slackware10 is 2.4.26 whereas in Fedora2 where skype wor=
-ks
-> flawlessly the kernel is 2.6....
->
-> What is that anyhow XkbSetPerClientControls ?
->
-> Besides having tried the static and dynamic version I tried as well t=
-he rpm
-> version which I have in Fedora, made a tgz file with rpm2tgz and tryi=
-ng to
-> run it I get the identical error message.
+>As you suggested the last time, I succeeded in connecting my machine to
+>the net, just by deleting the name of my LAN nameserver from the DNS
+>search list.
+>Now, I can already browse the net and send/receive mail, using Ximian
+>Evolution ( included in RHL 9 ).
+>My new problem is when I tried to send mail via Pine 4.4.( through the
+>x-terminal ). In configuration, I use the name of my ISP in the
+>user-domain column, and the name of my SMTP server in the smtp-server
+>name.
+>I succeeded to send a mail into my other address ( within the LAN ), and
+>retrieved it under Windowz ( dual booting, in the same machine ).
+>But, when I send to another address outside of the LAN, I failed.
+>What could have happened?
+>Below, I attached the data.
+[data deleted here]
 
-When i searched google for your error message some said it is a bug in =
-qt,=20
-others say its because one has installed another version of qt and now =
-has=20
-two versions installed.
-I pointed you to an URL which menioned a spesific order of directory=B4=
-s in the=20
-file /etc/ld.so.conf. here is what i used on my slack-10 system when i =
-tryed=20
-skype.
+I read the traffic on linux-newbie pretty regularly, Frans, so there's 
+really no need to send me a personal copy of a message you're posting to 
+the list.
 
-/usr/local/lib
-/usr/X11R6/lib
-/usr/i486-slackware-linux/lib
-/opt/kde/lib
-/usr/lib/qt/lib
-/usr/lib/xine
-/usr/lib
-/lib
+As to your actual problem, I'm not able to give you specific advice ... the 
+last time I used pine was back around 1998. But what you're running into 
+may not be a pine problem as such.
 
-I noticed in another message of your that what ls -al /usr/lib/qt retur=
-ed, it=20
-was different to my origanal slack-10 install, i get;
-/usr/lib/qt -> qt-3.3.2
+If I follow you, your workstation uses an on-LAN SMTP server to send mail. 
+Using it, you were able to send mail successful to another on-LAN address, 
+but not to a couple of addresses off-LAN. In using these terms, you mean, I 
+suspect, that the successful address can be reached for delivery without 
+going to any off-LAN SMTP server (your ISP's forwarder, for example, or the 
+SMTP server identified by the MX record for the destination FQDN) ... that 
+is, the on-LAN SMTP server recognizes your "other address (within the LAN)" 
+as one it can deliver to locally.
 
-I belive if you installed an rpm from fedora 2 then that could well be =
-your=20
-problem.
+This causes me to suspect that your on-LAN SMTP server is not properly 
+configured to send mail off-LAN. I don't know enough about your site (or 
+anything about the SMTP server itself) to know what exactly is wrong, but 
+there are many possibilities. If the SMTP server uses direct delivery, your 
+ISP may block outgoing port-25 traffic to force its customers to use their 
+forwarder. If you are using their forwarder, there could be a problem with 
+its requiring POP-before-SMTP authentication, or you might be running into 
+some sort of anti-relaying measure.
 
-> Regards
+Since you dual-boot into Windows, what SMTP server is your Windows MUA set 
+to use? If the on-LAN SMTP server works fine with a WIndows MUA but not 
+with a Linux UA, then of course my guessing here is off target ... but in 
+that case you'll need help from someone who has more revent experience with 
+pine than I have.
+
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
