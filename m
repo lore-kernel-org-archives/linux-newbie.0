@@ -1,61 +1,72 @@
 From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: Choice of NIST daemon
-Date: Sun, 25 Aug 2002 08:35:28 +0100 (BST)
+Subject: Re: really hidden hidden files
+Date: Sun, 25 Aug 2002 08:47:58 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208242236150.8397-100000@Consulate.UFP.CX>
-References: <200208221040.g7MAe6p06770@hartford-hwp.com>
+Message-ID: <Pine.LNX.4.21.0208250838540.8397-100000@Consulate.UFP.CX>
+References: <7A9A0C00.079CF921.7C182763@netscape.net>
 Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208221040.g7MAe6p06770@hartford-hwp.com>
+In-Reply-To: <7A9A0C00.079CF921.7C182763@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Haines Brown <brownh@hartford-hwp.com>
+To: Robert Haehnel <HaehnelRobert@netscape.net>
 Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Hi Haines.
+Hi Robert.
 
-> I'd like to have my system clock automatically corrected through an
-> online connection that remains always up. I gather that xntpd is a
-> commonly used daemon to do that for me.
+> Hey out there. This is really a Dos/Windows question, but I'm trying
+> to fix a problem in windows using Linux.
 
-xntpd is one of several commonly used daemons for doing that. Another
-commonly used daemon is called ntp if that helps. You can't install
-both of them.
+We all get to do that on occasion...
 
-> However, I find that the Red Hat version of this application is
-> rather old, and when I try to install it, it conflicts with
-> installed ntp. I did not uninstall ntp because it is needed by
-> another program. At one time I was interested in nisttime, but that
-> led to questions regarding reconfiguration of uucp.
+> Here is the deal. My son trashed the windows 98 installation on our
+> home PC. So I formatted the Windows partition and started over with
+> a clean install. However, the install did not go smoothly. It
+> rebooted as part of the install process, and tried to reformat the
+> windows partition, but the installation is confused, and what it
+> thinks is the hard drive is actually the CD drive. Of course it
+> can't do that, and it is stuck right there and won't go any further.
+
+That sounds like typical Microsoft programming...
+
+> First I dropped out of the install process, and tried to clean it's
+> memory (on c:) of what it had done so far in the install process by
+> formatting the windows partition. This did not purge the partition
+> of the hidden files that are created during the install process to
+> keep the install information during reboot.
 >
-> What is the most straightforward way to implement a NIST server that
-> does not interfere with other programs? I'm running RedHat 7.3
+> So ... I had a bright idea (anyway, I thought it was bright). Maybe
+> I can see these hidden files in Linux, and wipe the slate clean
+> there. Well I only had partial success. I booted into Linux, mounted
+> the windows partition, and typed...
+>
+>	ls -la
+>
+> ...to see what was on the partition. It only showed "." and "..",
+> but it reported 5 files were present (Ha, a clue!, Maybe..). Anyway,
+> I think that what the ls command told me was it saw three hidden
+> files there even though it didn't list them.
+>
+> Unfortunately, an "rm *" doesn't remove them.
 
-The straightforward way would be to use the ntp daemon that is already
-installed according to your description above. To configure it, edit the
-file /etc/ntp.conf and insert the following lines at the top of the
-file, replacing $SERVER with the full hostname of the server you plan to
-synchronise to:
+You could try going back to the Windows command prompt and running
+scandisk on that drive - those three "files" could easily be strings
+of "lost clusters" rather than genuine files.
 
-	#
-	# Remote system I am authorised to synchronise to.
-	#
-	server	$SERVER
+> Does anyone have an idea of how I can see these hidden files and
+> more importantly remove them, so I can clean up and start over.
 
-When you've done that, save the file, then run the following commands:
+What I would do is to use Linux to format that partition as ext2 with
+the mke2fs command, as that will overwrite everything in the partition
+with what Windows regards as gibberish. After that, Windows will say the
+partition is unformatted, and you should be able to start the whole
+procedure afresh with a clean format.
 
-	chkconfig --level 35 ntpd on
-	service ntpd stop
+> Thanks for your help in advance.
 
-At this point, make sure that your system clock is set to within five
-minutes of the correct time, then run the following command:
-
-	service ntpd start
-
-After that, your system clock will remain synchronised to whichever
-clock you have set it to.
+NP.
 
 Best wishes from Riley.
 
