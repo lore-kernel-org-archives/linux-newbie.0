@@ -1,39 +1,31 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: USB and Flash Drive??
-Date: Mon, 21 Jul 2003 08:27:20 -0400
+From: "Deas, Jim" <James.Deas@warnerbros.com>
+Subject: vmalloc and page locks
+Date: Mon, 21 Jul 2003 11:19:05 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030721082720.A149@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <S270658AbTGUSES/20030721180452Z+4623@vger.kernel.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: Just getting interested in what USB is all about; spending
-hours on the Web and reading articles/docs, etc - I still have some
-unanswered questions.
+How can I look at what memory are being paged out of memory in the kernel
+or how to lock kmalloc and vmalloc pages so they do not get put to swap?
+ I have a program that runs great 90% of the time but the other 10%
+of the time the system usage (using 'top')goes from 3% to 50% and latency goes out
+the window!  I am assuming this is due to some of my buffers getting swaped 
+out as it often corrects itself and runs well the majority of time.
+Doubling the base memory from 256M to 512M did nothing to fix this.
+I need some way to find out who is holding up the process.
+Any suggestions?
 
-What are the details about "hot swapping?" All I read is that it
-means you can plug/unplug a device while the machine is "on".. No
-mention, that I could find, as to why this is possible. Is finger #1,
-Vcc, at zero or millivolts until a device is inserted, then it
-"jumps" up, mysteriously, to the required +5??
+Best Regards,
+J. Deas
 
-In my book; connecting any load draws current, albeit quite small in
-the case of a flash drive, that cannot be good for those mighty thin
-contacts..
+** Please cc me on this if possible.
 
-I have kernels 2.4.18 and 2.4.20, and the necessary modules, so I've
-ordered a Flash Drive to see what cooks..
-
-Cheers,
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
