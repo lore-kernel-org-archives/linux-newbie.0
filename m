@@ -1,12 +1,12 @@
 From: lawson_whitney@juno.com
-Subject: Re: .so, .a and .o-files
-Date: Thu, 15 Aug 2002 17:03:06 -0400 (EDT)
+Subject: Re: (fwd) .so, .a and .o-files
+Date: Thu, 15 Aug 2002 16:49:47 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020815.193207.134670320.1.lawson_whitney@juno.com>
-References: <5.1.0.14.1.20020815112320.021158a0@celine>
+Message-ID: <20020815.193207.134670320.0.lawson_whitney@juno.com>
+References: <5.1.0.14.1.20020815093422.02118d50@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020815112320.021158a0@celine>
+In-Reply-To: <5.1.0.14.1.20020815093422.02118d50@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -15,33 +15,78 @@ Cc: axel@hh59.org, linux-newbie@vger.kernel.org
 
 On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
-> As I indicated in my message to Lawson, "static" is a tricky term, with an
-> assortment of context-dependent meanings. It is messy enough that you
-> should take what I write next with a grain of salt, since it is easy to get
-> mixed up here.
+> At 12:17 PM 8/15/02 -0400, lawson_whitney@juno.com wrote:
+> >
+> >In case you want to make a static executable (one that does not require
+> >dynamic linking.  Nost distro's link /sbin/ldconfig static so you can
+> >use it to recover when you mess up your libraries and nothing woorks,
+> >say when you try to upgrade libc and don't know how.
 >
-> Both .a and .so libraries get linked at runtime. .a linking was called
-> static, but not in the sense you mean (at least as best I can recall). In
-> that context, static meant that a dedicated copy of the needed library was
-> loaded into memory and used just with that process. The .so approach was an
-> improbvement on this runtime linking, loading just one copy of the library
-> memory into memory and sharing it among all the processes that need those
-> routines.
-
-IIRC, it was possible but difficult to make a shared .a library: each
-shared library had to have the same dedicated address range in every
-address space.  I don't think anybody does this any more.
-
-ELF (.so) libraries are relocatable at runtime.
-
-> But when the linker ld is used with the --static option, an actual copy of
-> any needed library function is incorporated into the executable, allowing
-> it to run standalone (without access to the .so libraries).
+> I don't really want to argue with you, Lawson, but I do want to ask how
+> certain you are of this interpretation. "static" is a word that means
+> different things in different contexts, and I think you and I may have
+> crossed two of its meanings.
 >
-Exactly.
+No, I mean the same by static as you do, if I understand you aright.
 
+> The ld option "--static" links in an actual copy of any needed library code
+> to the executable during linking (instead of at runtime, via ld.so). But
+> does ld use (or need) .a libraries to do this? Or does it just override the
+> normal (dymanic) use of the .so libraries? I'd always assumed the latter.
+>
+The way I read the section of info ld on the subject, you need .a
+libraries to make a static executable.
+
+File: ld.info,  Node: Options,  Next: Environment,  Up: Invocation
+
+`-Bdynamic'
+`-dy'
+`-call_shared'
+     Link against dynamic libraries.  This is only meaningful on
+     platforms for which shared libraries are supported.  This option
+     is normally the default on such platforms.  The different variants
+     of this option are for compatibility with various systems.  You
+     may use this option multiple times on the command line: it affects
+     library searching for `-l' options which follow it.
+
+`-Bstatic'
+`-dn'
+`-non_shared'
+`-static'
+     Do not link against shared libraries.  This is only meaningful on
+     platforms for which shared libraries are supported.  The different
+     variants of this option are for compatibility with various
+     systems.  You may use this option multiple times on the command
+     line: it affects library searching for `-l' options which follow
+     it.
+Viewing line 503/1103, 45%
+
+> While the man page for ld doesn't clear this up, the Makefile for busybox
+> includes a static option (for the exact reason you suggest above -- it's
+> basically a rescue-disk app), but its docs only mention compiling against
+> glibc, uClibc, and libc5, with no explicit mention of .a libraries.
+
+I bet you can find libc.a in the glibc-dev package, along with a
+/usr/lib/libc.so that reads as follows:
+
+/* GNU ld script
+   Use the shared library, but some functions are only in
+   the static library, so try that secondarily.  */
+GROUP ( /lib/libc.so.6 /usr/lib/libc_nonshared.a )
+>
+> I could easily be the one here who is mixed up. But we should get it clear
+> and correct on the list to protect the innocent victims, no?
+>
+I'm not the sort to start an argument I can't win.
+
+> -------------------------------------------"Never tell me the odds!"--------
+> Ray Olszewski					-- Han Solo
+> Palo Alto, California, USA			  ray@comarre.com
+> -------------------------------------------------------------------------------
+>
 Lawson
----oops---
+
+No offense meant.
 
 
 
