@@ -1,37 +1,71 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: modprobe snd-cs4236 question
-Date: Wed, 20 Oct 2004 12:31:10 -0500 (CDT)
+From: kernel kernel <unix.hacker@gmail.com>
+Subject: Re: Unable to make kernel 2.6.8 up
+Date: Thu, 21 Oct 2004 09:27:36 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0410201226370.1287@debian-emach>
-References: <5.1.0.14.1.20041020083240.01f57b98@celine>
+Message-ID: <104ee7a5041020205740020828@mail.gmail.com>
+References: <104ee7a50410190917496bc175@mail.gmail.com>
+	 <200410192136.58935.pa3gcu@zeelandnet.nl>
+	 <104ee7a5041019205249198045@mail.gmail.com>
+	 <200410200740.47957.pa3gcu@zeelandnet.nl>
+Reply-To: kernel kernel <unix.hacker@gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20041020083240.01f57b98@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200410200740.47957.pa3gcu@zeelandnet.nl>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Richard Adams <pa3gcu@zeelandnet.nl>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-On Wed, 20 Oct 2004, Ray Olszewski wrote:
+Hi Richard,
+I was able to build it. 
+But while, boot up it is giving the error message init not found.
 
-> In "standard Debian", the entries in /etc/modules get modprobe'd, not
-> insmod'ed, so dependencies will be handled properly (assuming the
-> dependencies file is up to date ... "standard Debian" runs depmod as part
-> of the init process). You do put ONLY the names of the modules, plus any
-> arguments, you want loaded in this file ... not either "insmod" or "modprobe".
+Thanks
+Amrith
+
+
+On Wed, 20 Oct 2004 07:40:47 +0200, Richard Adams <pa3gcu@zeelandnet.nl> wrote:
+> On Wednesday 20 October 2004 05:52, kernel kernel wrote:
+> > Hi  Richard,
+> > Thanks for your fast response.
+> >
+> > I am furnishing the following details.
+> > Motherboard : Intel 865
+> > Processor    : P4 2.4GHz
+> > SCSI           : Samsung Hard disk
+> >
+> > I am trying to use 2.6.8 kernel from the GNU (downloaded from kernel.org)
+> 
+> You said your problem was;
+> 
+> "While booting with 2.6.8 kernel. giving error no ata_piix module found"
+> 
+> Now you say you have a SCSI disk, the two are completly different,
+> With SCSI its now the disk type which needs a driver but your SCSI controler.
+> It will also need to be compiled into the kernel and NOT as a module.
+> 
+> Simply choose the needed driver with 'make config' or 'make menuconfig'
+> recompile the kernel install it and update your bootloader then reboot.
+> 
+> You are being to vauge to help precisely, please learn to explain your
+> problem(s) better.
+> 
+> > Thanks
+> > Amrith
+> 
+> --
+> 
+> 
+> If the Linux community is a bunch of thieves because they
+> try to imitate windows programs, then the Windows community
+> is built on organized crime.
+> 
+> Regards Richard
+> pa3gcu@zeelandnet.nl
+> http://people.zeelandnet.nl/pa3gcu/
+> 
 >
-> I haven't looked at Ubuntu so cannot tell you if it follows this "standard"
-> procedure or not. But the "standard Debian" procedure just runs this
-> feature from an ordinary init script (/etc/init.d/modutils), so you might
-> check for a corresponding init script in Ubuntu.
-
-Thanks for the clarification on /etc/modules and insmod/modprobe, Ray.
-Looks like adding snd-cs4236 to /etc/modules is the answer for Ubuntu,
-just as for "standard Debian."  There *is* an /etc/init.d/modutils script
-in Ubuntu, btw.  More help requests on other topics will likely follow
-soon.
-
-James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
