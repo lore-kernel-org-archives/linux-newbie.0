@@ -1,42 +1,45 @@
-From: "Ken Boyer" <kboyer@logicalimages.com>
-Subject: RE: Linux Quick Ref
-Date: Fri, 8 Nov 2002 11:53:12 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: umount
+Date: Fri, 08 Nov 2002 09:36:24 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <001901c28747$5647f7a0$7c01010a@zeus>
-References: <058101c28746$2a308ac0$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20021108093105.021201f0@celine>
+References: <200211081750.01300.edgaralwers@gmx.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <058101c28746$2a308ac0$64fea8c0@pkrausxp>
+In-Reply-To: <200211081750.01300.edgaralwers@gmx.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: newbies <linux-newbie@vger.kernel.org>
 
-http://www.ss64.demon.co.uk/bash/
+At 05:50 PM 11/8/02 +0100, Edgar Alwers wrote:
+>Hallo,
+>in my KDE 3.0.3 (linux from the scratch ) I installed an CD-ROM Icon on the
+>desk, which mounts /dev/cdrom on the mount point /media/cdrom.
+>Klicking on the Icon ( as user ) mounts the CD-ROM perfectly. But if I then
+>try to umount the device klicking with the right mouse on the icon and
+>selecting "umount",  I get an error message: only root can umount /dev/cdrom
+>from /media/cdrom.
+>What should I do to enable the "umount" ? ( why is by the way "mount"
+>functioning ? )
 
-Ken
+Well ... I'd guess there is a permissions difference between mount and 
+umount. Check both by using "ls -l /bin/mount" and "ls -l /bin/umount" and 
+see what the difference is. It might be simply the mode, or it might also 
+involve group each is "owned" by.
+
+The other possibility if an entry in /etc/fstab that makes mounting 
+possible but not umounting (though I can't offhand think of a setting that 
+will do this).
+
+BTW, is "klicking" some KDE idiom?
 
 
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Paul Kraus
-Sent: Friday, November 08, 2002 11:45 AM
-To: linux-newbie@vger.kernel.org
-Subject: Linux Quick Ref
-
-
-Anyone know of any pages that have quick reference you could download
-and print that has the most common commands listed and there switches? I
-saw a book called UNIX in a nutshell that was great but the Linux
-counterpart was not that impressive.
-
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
-
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
