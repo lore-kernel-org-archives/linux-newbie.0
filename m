@@ -1,52 +1,43 @@
-From: "Benny Pedersen" <linux-net@tcob1.net>
-Subject: bind conf
-Date: Friday, 30 Aug 2002 02:22:16 +0200
+From: cr <cr@orcon.net.nz>
+Subject: Re: Can't see my drives
+Date: Sat, 31 Aug 2002 12:02:50 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a300=2f15_3d6ed797@fidonet.org>
-References: <Pine.LNX.4.44L.0208291647100.3358-100000@labmetro.ufsc.br>
+Message-ID: <20020830231242.3585752EAC@smtp.orcon.net.nz>
+References: <F665uAy0BYTxHwMQFLc00025135@hotmail.com> <20020830100130.8677B52897@smtp.orcon.net.nz> <3D6FA684.A309CC6@gelm.net>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44L.0208291647100.3358-100000@labmetro.ufsc.br>
+In-Reply-To: <3D6FA684.A309CC6@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Chuck Gelm <nc8q@gelm.net>
+Cc: grottoBoy rant <stylerzz@hotmail.com>, linux-newbie@vger.kernel.org
 
-Originally to: Daniel Provin
+On Saturday 31 August 2002 05:08, Chuck Gelm wrote:
+> Howdy, Y'all:
+>
+>  I noticed that the poster never mentioned, explicitly,
+> that they were mounting the filesystem as type iso9660.
+> i.e.
+> mount -t iso9660 /dev/sd0? /cdrom-rw
+>       ^^^^^^^^^^
+> Since I am a newbie, I didn't post, until now.
+>
+> I recall, time after time, the helpful guru's
+> (What is plural of 'guru'?)
+> ask for the explicit 'command' and the
+> explicit 'error message'.
+> ;-)
+> Chuck
 
-Hello Daniel!
+I'll keep this short, don't wanna waste bandwidth - yes I know the importance 
+of the *exact* commands / error messages (and fstab entries), I did quote 'em 
+(or what I thought were the relevant ones) earlier in the thread, but until I 
+have time to try some more experimenting I won't have any to report at this 
+point.
 
-29 Aug 02 16:49, Daniel Provin wrote to All:
-
- DP> Is there a better way than CNAME entries to include subdomains for 
- DP> a zone in the bind configuration?
-
-nope
-
- DP> I am currently using CNAME entries for the www and the mail 
- DP> subdomains
-
-the way it should be
-
-CNAME is for subdomains on the same ip
-
-A record is for subdomains on diffrent ip
-
-basicly the hostnames can be the same :)
-
- DP> -+- Internet Rex 2.67 beta 1a
-
-closed beta ?
-
-
-Regards, Benny
-
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
-
-
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
