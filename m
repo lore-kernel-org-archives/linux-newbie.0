@@ -1,25 +1,26 @@
 From: Peter <pfheiss@philonline.com>
-Subject: Re: Source RPM
-Date: Sat, 21 Sep 2002 18:23:02 +0800
+Subject: Re: Gnoprm Redhat 7.3
+Date: Sat, 21 Sep 2002 18:23:07 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209211023.g8LAN2S01472@philonline.com>
+Message-ID: <200209211023.g8LAN7o01481@philonline.com>
 References: <pkraus@pelsupply.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: Message from "Paul Kraus" <pkraus@pelsupply.com> 
-   of "Fri, 20 Sep 2002 14:03:27 -0400." <005601c260d0$05d7d490$64fea8c0@pkrausxp> 
+   of "Fri, 20 Sep 2002 15:35:40 -0400." <006001c260dc$e79ddf30$64fea8c0@pkrausxp> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
+
+That's why I don't use it among other things. Instead I use kpackage.
 
 
 pkraus@pelsupply.com said:
-> So it's the general census of the exp readers of this list that when
-> one can one should install from rpm rather then source code. Correct? 
-
-My experience shows that 9 out of 10 rpm install properly and 9 out of 10 
-source code do not install for which reason I pretty much gave up on them.
+> How come when I run gnorpm and do a find for anything it always
+> returns nothing. Even for packages that I know for a fact are
+> installed. 
 
 
 -- 
