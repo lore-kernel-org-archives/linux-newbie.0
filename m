@@ -1,79 +1,72 @@
-From: Kevin Curtis <kevin.curtis@farsite.co.uk>
-Subject: RE: Getting c/assembler listings
-Date: Wed, 30 Oct 2002 13:54:39 -0000
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Firewall / Web Monitor
+Date: Wed, 30 Oct 2002 08:54:38 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <7C078C66B7752B438B88E11E5E20E72E0EF5AA@GENERAL.farsite.co.uk>
+Message-ID: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0001_01C27FF1.FAD00D60"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0001_01C27FF1.FAD00D60
+Content-Type: text/plain;
+	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "'lawson_whitney@juno.com'" <lawson_whitney@juno.com>, pa3gcu@zeelandnet.nl
-Cc: Kevin Curtis <kevin.curtis@farsite.co.uk>, linux-newbie@vger.kernel.org
 
-Thanks,
-	I managed to get an assembler output file, but it was just raw
-assembler not "assembled".  I'll try this out later today.
+I have a network of about 25 pcs and 4 servers. With moderate internet
+traffic. What kind of machine do you think I would need for a firewall
+only box? Ipchains or Iptables ( I have some experience with the latter
+and non with Ipchains). I would also like to be able to log where
+everyone is going. Such as what sites they are visiting, the time, and
+the pc that is making the request. Then if we see fit I would like to
+come up with a list of sites that they can visit while restricting all
+others. I would like to have this list be able to be split based on the
+different departments. One list for Accounts Payable one for inventory
+control, ect. Thanks for info. From what I have been reading squid can
+do this but squid says it's a caching server. I don't really think I
+need to cache pages though.
 
-Kevin
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
------Original Message-----
-From: lawson_whitney@juno.com [mailto:lawson_whitney@juno.com]
-Sent: 30 October 2002 02:45
-To: pa3gcu@zeelandnet.nl
-Cc: kevin.curtis@farsite.co.uk; linux-newbie@vger.kernel.org
-Subject: Re: Getting c/assembler listings
+------=_NextPart_000_0001_01C27FF1.FAD00D60
+Content-Type: text/x-vcard;
+	name="Paul Kraus (pkraus@pelsupply.com).vcf"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
 
+BEGIN:VCARD
+VERSION:2.1
+N:Kraus;Paul
+FN:Paul Kraus (pkraus@pelsupply.com)
+ORG:PEL Supply Company
+TITLE:Network Administrator
+TEL;WORK;VOICE:(216) 267-5775
+TEL;CELL;VOICE:(216) 410-5526
+TEL;WORK;FAX:(216) 267-6176
+ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
+America
+LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
+Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
+rica
+ADR;HOME:;;;;;;United States
+LABEL;HOME:United States
+URL;WORK:http://www.pelsupply.com
+EMAIL;PREF;INTERNET:pkraus@pelsupply.com
+REV:20020416T182124Z
+END:VCARD
 
-On Tue, 29 Oct 2002, pa3gcu wrote:
+------=_NextPart_000_0001_01C27FF1.FAD00D60--
 
-> On Tuesday 29 October 2002 12:03, Kevin Curtis wrote:
-> > Hi,
-> > 	I hope this question is not too technical.  When an oops message is
-> > generated and decoded with ksymoops, how do I get an assembler listing
-of
-> > the module that caused the problem so I can see where in my program the
-> > error occurred.  The ksymoops output seems to be bytes of code offset
-from
-> > the start of a function.  Do I use a switch in my makefile?  Will the
-
-Yes.  The gcc flag to get an assembly listing is -Wa,-a
-so you could put that in your makefile, if you like.  That causes gcc to
-pass the option -a to the assembler.
-
-> > listing have offsets in it from the start of the module or the start of
-> > each function?  Is there any correlation to line numbers in the original
-.c
-> > file?
-
-The start of each function.  If the C was compiled with the -g option,
-source line numbers are - in fact the entire source is - available to
-gdb or any other runtime debugger.
->
-> You can run 'gdb' on your running kernel.
-> You will need to do some things beforehand, its all explained in
-> /usr/src/linux/README, the part about "If something goes wrong".
->
-> I am not so well up on gdb but i belive you can run it on a module itself
-> altho' i have never tryed dthat.
->
-> >
-> >
-> > Thanks
-> >
-> > Kevin
->
->
-
---
----oops---
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
