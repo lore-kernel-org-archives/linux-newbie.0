@@ -1,34 +1,31 @@
 From: mike <mike@kevino.org>
 Subject: Re: long resolve
-Date: Thu, 09 Sep 2004 21:49:17 -0700
+Date: Thu, 09 Sep 2004 21:57:09 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4141324D.9000601@kevino.org>
-References: <414125B7.60903@dpomeroy.com>
+Message-ID: <41413425.6050203@kevino.org>
+References: <41411F54.2070307@dpomeroy.com>
 Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <414125B7.60903@dpomeroy.com>
+In-Reply-To: <41411F54.2070307@dpomeroy.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Dave,
-you should be able to disable a dns server address in the
-/etc/resolv.conf file. As root open up an editor and comment it out
-or remove it.
-
-You may have to do a "service network restart" without quotes as root.
+/var/log/messages should give you some information.
 
 Mike
 
 
 dave wrote:
-> I pinged the 2 ip addresses in the network config for dns.  The first
-> one will not respond so I'm guessing there is a problem with this
-> server.  I'll call tomorrow and get it fixed.  I can't seem to figure
-> out how to disable the os from trying to use that first ip address.  I'm
-> mandrake 10.0 official.
+> I'm having a problem with my network access.  It takes a long time to
+> resolve internet addresses.  I have a wireless bridge D-Link
+> DWL 810+.  Its been working fine but the last week trouble.  If I boot
+> into windows (dual boot) I have no problems. The system here is wireless
+> and its issues ip addresses.  It also gives me the dns addresses.  I
+> can't seem to figure out whats going on.  Is there a log that will tell
+> me if something is taking a long time?  Thanks for the help.
 > Dave
 > 
 -
