@@ -1,40 +1,36 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: Maildrop doesn't filter or log filters
-Date: Fri, 2 May 2003 09:14:11 +1000
+From: Peter <pfheiss@philonline.com>
+Subject: Re: At Loss with Mailing
+Date: Fri, 2 May 2003 09:41:53 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00da01c31037$5ffe1a80$0300000a@iih.usyd.edu.au>
-References: <n2m-g.428061.a14921@tcob1.net>
+Message-ID: <200305020941.53139.pfheiss@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: sean@tcob1.net, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-sean@tcob1.net wrote:
-> On 26.04.2003 09:19:10, Chris Rose wrote:
->
->> Here's how i have things:  I'm using postfix as a local MTA, and it's
->> calling maildrop with
->> mailbox_command = /usr/bin/maildrop
->>
->> I have only one user that receives mail on my system, and that user
->> account has/d a ~/.mailfilter file.  The problem is, whenever that
->> file exists, no mail whatsoever makes it into my Maildir.  I've
->> tested this - i send a message to myself, and i receive nothing as
->> long as there's a mailfilter file existing.  As soon as i rename it,
->> i'm fine.
->>
->
-> What are the permissions on the .mailfilter file, they must be 0600.
-> I had problems like this and this caused problems similar
+Greetings Hal,
 
-Look in your mail logs / syslogs.  Postfix / Maildrop is usualy pretty good
-about telling you what the problem is.
+In RH7.3 I just tried to simulate your setup just opening X with xterm only.
+startx /usr/X11R6/bin/xterm.
 
+Opening Netscape 4.79 I have no problem entering a URL, however, opening 
+Mozilla 5.0 I have as you call it the dog bone cursor yet cannot enter 
+anything into the URL window, like you say as if the keyboard is not 
+responding.  Opera works fine as well as dillo.
+
+I am using xfce as window manager and there is no such problem.
+
+I just checked with Slackware 8.0 using xterm only. Results are the same as in 
+RH7.3. No problem with Netscape 4.77, Mozilla 5.0 URL window does not 
+respond.
+
+ 
 Regards
 
-James Turnbull
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
