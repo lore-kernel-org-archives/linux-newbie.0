@@ -1,46 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: CD-ROM settings and hardware resources...
-Date: Thu, 24 Oct 2002 09:10:57 -0700
+From: Paulo Jorge <paulojjs@bragatel.pt>
+Subject: Re: RedHat 8
+Date: Thu, 24 Oct 2002 17:36:55 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021024090118.02169050@celine>
-References: <0210240635240C.00497@unix.pa3gcu>
+Message-ID: <20021024163655.GA1042@cliente-bgt-217-70-66-127.bragatel.pt>
+References: <002e01c27a90$5f956220$64fea8c0@pkrausxp> <200210231630.10921.sotl155360@earthlink.net> <200210232057.g9NKviG17145@hartford-hwp.com> <200210240739.41271.sotl155360@earthlink.net>
+Reply-To: paulojjs@bragatel.pt
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="a8Wt8u1KmwUX3Y2C"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210241604.g9OG4u5X000579@darkstar.example.net>
+Content-Disposition: inline
+In-Reply-To: <200210240739.41271.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 05:04 PM 10/24/02 +0100, jbradford@dial.pipex.com wrote:
-[...]
->By the way, I'm not sure what enabling/disabling DMA has to do with
->reading a faulty CD-ROM.  It's not like you're enabling/disabling
->UDMA, which has error correction to detect errors on the _bus_.
 
-Enabling DMA has nothing (that I know of) to do with reading a faulty 
-CD-ROM. I originally suggested it as a solution because in his first 
-message, Bryan (the original poster) described his problems in a very vague 
-way ("has trouble reading large files"). That sounded to me like it might 
-refer to a problem I have seen ... namely, a lot of dropped frames ... when 
-doing video playback from a CD drive that does not have DMA enabled. 
-Enabling DMA does fix that, since it is a timing issue.
+--a8Wt8u1KmwUX3Y2C
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-When Bryan's subsequent messages made it clear that (a) this was a problem 
-limited to a specific, home-burned CD and (b) the problem occurred in 
-non-timing-sensitive settings like copying to a hard disk, I suggested that 
-the problem was with the CD's filesystem, not DMA.
+On Thu, Oct 24, 2002 at 07:39:41AM -0400, Frank Roberts - SOTL wrote:
+> I am stating IN NO UNCERTANT TERNS THAT THERE IS NO GONOME GUI IN RH 8.0 =
+just=20
+> like ther is no KDE GUI.
 
-The lesson here is that vague descriptions of problems elicit irrelevant 
-solutions. I hope everyone who reads this list takes that lesson to heart.
-
-
+In RedHat 8.0 there is a KDE GUI and there is a Gnome GUI. The only fact
+is that RedHat replace both the kde and the gnome default theme by a
+theme design by them. If you don't like just switch the theme...
 --
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Paulo Jorge Jesus Silva
+perl -we "print 'paulojjs' . (reverse 'tp.letagarb@') . \"\n\""
 
+--a8Wt8u1KmwUX3Y2C
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.0 (GNU/Linux)
+
+iD8DBQE9uCGnEaP6ghLWOw8RAin2AJ9sggXHX3iatOx+Rw5pSSdVGoW+RgCdFm4d
+kRSb09eM9IInYdTbOZNjr4g=
+=uo10
+-----END PGP SIGNATURE-----
+
+--a8Wt8u1KmwUX3Y2C--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
