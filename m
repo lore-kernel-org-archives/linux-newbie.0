@@ -1,41 +1,25 @@
 From: Peter <heisspf@skyinet.net>
-Subject: Re: Can't Mail with Exmh
-Date: Wed, 14 Jan 2004 15:01:49 +0800
+Subject: Re: Linux for Dummies?
+Date: Wed, 14 Jan 2004 15:17:58 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401140701.i0E71nh01583@skyinet.net>
+Message-ID: <200401140717.i0E7Hwx02075@skyinet.net>
+References: <40035BB8.7020404@kevino.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Mon, 12 Jan 2004 19:45:12 MST." 
+ <40035BB8.7020404@kevino.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
->  >  Peter said:
->  > > In RedHat9.0 after I changed from kernel 2.4.20.20-9 to kernel
->  >  2.4.22 I can't send mail any longer with exmh or with pine. 
+My first 2 books were "Linux in 24 Hours" and "Discover Linux".
 
-To which I got only one reply.
+I still consult them every now and then, even so I have now Linux in a 
+Nutshell and Running Linux.
 
->  > 
->  > I finally solved the problem. I made a "make upgrade" with postfix
->  > which  seems to have fixed it.
-
-It did not solve it, it only stopped giving error messages and placed the mail 
-in the queue from which it could not be mailed.
-
-The culprit was sendmail-8.12.8-9.90.i386.rpm. I uninstalled it and went back 
-to
-sendmail-8.11.6-27.73.i386.rpm and this mail will go out with exmh.
-
-I started to suspect sendmail when on booting I always got the error: 
-sm-client failed, invalid option -- A.
-
-Therefore RH9 seems to be buggy.  With the kernel 2.4.20.20-9 I can't open 
-siag office and with sendmail-8.12.8-9.90 I can't send mail. This is the Krud 
-Linux version of RH9.
-
-Regards
-
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
