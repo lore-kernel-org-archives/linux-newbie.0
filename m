@@ -1,60 +1,38 @@
-From: chuck gelm net <chuck@gelm.net>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Moving Hard Drive
-Date: Fri, 16 Jan 2004 18:44:04 -0500
+Date: Sat, 17 Jan 2004 11:16:22 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40087744.A1B0B8E4@gelm.net>
-References: <20040116105630.D896B1C900@heisspf>
+Message-ID: <20040117031622.B31C01C900@heisspf>
+References: <200401162145.i0GLjZDu004162@dbmail-mx3.orcon.co.nz>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sat, 17 Jan 2004 09:49:07 +1300." 
+ <200401162145.i0GLjZDu004162@dbmail-mx3.orcon.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <heisspf@skyinet.net>
+Content-Transfer-Encoding: 7bit
+To: cr <cr@orcon.net.nz>
 Cc: linux-newbie@vger.kernel.org
 
-Hi, Peter:
+Thanks!
 
- You didn't mention that you had system files on /dev/hdc.
-If it has been simply installed, you should be able to
-copy all of your system files from your root system to
-this new file system.  Then use fdisk to make it bootable.
+Peter said:
+> > Boot initially
+> > from a floppy into SW run lilo and I should be set with the new drive
+> >as master.
 
-Perhaps
 
-mount /dev/hdc /mnt
-cp -x / /mnt
-umount /mnt
+cr@orcon.net.nz said:
+> Re the boot floppy, if it was created when you installed your system,
+> it may  be set to boot your system on hdc and may fail when you move
+> it to hda.
 
-would work?
+I can tell the floppy to boot into hda* and in SlackWare (there is the SW) I 
+have anyhow a bootable live rescue disc.
 
- I am assuming that you could then simply swap IDE connectors
-on the mobo.
-
-HTH, Chuck
-
-Peter wrote:
-> 
-> Hi,
-> 
-> I got myself a new larger hard drive which is presently a secondary master
-> hdc. On it I have RH9 and SW9.1 the latter doing the booting with lilo.
-> 
-> I want to make now this drive the master drive by which I assume it will
-> become hda.
-> 
-> Is it correct then that before doing the switch I will have to change in
-> /etc/fstab and lilo.conf all what is labeled hdc to hda? Boot initially from a
-> floppy into SW run lilo and I should be set with the new drive as master.
-> 
-> Thanks & regards
-> --
-> Peter
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
