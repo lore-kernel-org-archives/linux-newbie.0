@@ -1,60 +1,39 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Long Gnome-session
-Date: Mon, 12 Jan 2004 12:35:34 +0100
+From: joy <gracecott@sancharnet.in>
+Subject: X not starting at all
+Date: Mon, 12 Jan 2004 22:16:25 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401121235.34024.pa3gcu@zeelandnet.nl>
-References: <20040112155340.0b7f58a6@skyinet.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <4002CF61.6040507@sancharnet.in>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040112155340.0b7f58a6@skyinet.net>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Peter <heisspf@skyinet.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: mailing list <linux-newbie@vger.kernel.org>
 
-On Monday 12 January 2004 08:53, Peter wrote:
-> Hi,
->
-> Among other strange things in RH9.0 is the long time it takes to open
-> gnome-session. A full 2.5 minutes.
->
-> Is this standard?
+Hello,
+it's me again.
+Thanks again for the help you guys gave me when I had a problem with my 
+modules.
+from when I had installed Woody, I was not able to startx as I have a 
+Geforce4 MX 440 SE which was not supported by the nv driver in X (I have 
+version 4.1.0.1)
+I got a new driver from the Nvidia site (the latest is pkg2 I think, I 
+have pkg0 ).I installed it and yet startx would not work.
+since X loads its drivers from /usr/X11R6/lib/modules/drivers , I moved 
+the new NV module (nvidia.ko ) and renamed it nv_drv.o which was the nv 
+driver  (this is illogical, I know , but I was desperate.....)
+and it gave me another error message module does not have nvModuledata 
+data object and died on me. I just got Gnome 2.4 and I'm desperate to 
+install it.
+So anybody with the ideas flashing,
+HELP!
+thanx in advance,
+Joy
 
-No its not, something is wrong, i would check my logs to see if there are any 
-hints, a possable is that you have defined a hostname which is unresolvable.
-
-> What is also surprising is that one has to look for a terminal and finds it
-> finally as the last item under system tools.
-
-Well not so suprising as most users today dont even know what a terminal 
-session is. You can of course add an icon to your pannel or desktop.
-
->
-> Is gnome going the way of MSWindows, users of which are mere klickers?
-
-I think you will find that many things are starting to look like MSwidows for 
-the simple reason thats the way most folks want it to be but, you as user can 
-change the way it all works that is "UN"like MSwidows.
-
->
-> Luckily there is blackbox and my favored fvwm2.
-
-Many others as well.
-
->
-> Regards
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+> --------------------------------------------------------------------------------------------------------
+> A life without purpose is like a bird that never learnt to fly.......
+> I am the bird that regularly flies Lufthansa
 
 
 -
