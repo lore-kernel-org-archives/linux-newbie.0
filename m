@@ -1,23 +1,28 @@
-From: Halil Demirezen <nitrium@bilmuh.ege.edu.tr>
-Subject: atomic and thus volatile.
-Date: Fri, 4 Jul 2003 09:08:24 +0300
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Switching between KDE and GNOME
+Date: Fri, 04 Jul 2003 16:50:05 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030704060824.GA27777@bilmuh.ege.edu.tr>
+Message-ID: <20030704085010.357DC1041E@pfheiss>
+References: <200307030921.h639Lg0J000826@dbmail-mx2.orcon.co.nz>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: Your message of "Thu, 03 Jul 2003 21:23:59 +1200." 
+ <200307030921.h639Lg0J000826@dbmail-mx2.orcon.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: cr <cr@orcon.net.nz>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-I look close to atomic variables in kernel.
-However, exactly, what is atomic variable. 
-Anyone, easily describe it with a little 
-example. 
+I am using fvwm2 or xfce. If I need access to gnome I type panel&, if I need 
+access to kde I type kicker&. That way my desktop will not be clattered with 
+icons. To put those panels out of the way I iconify them.
+
+Regards
 
 
-Thank you.
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
