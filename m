@@ -1,38 +1,32 @@
-From: Jose <jmirles@sc.rr.com>
-Subject: Re: RPM version of Alien around?
-Date: Thu, 7 Nov 2002 21:33:25 -0500
+From: Mike Ni <cba20032002@yahoo.com>
+Subject: Page swap
+Date: Thu, 7 Nov 2002 21:16:26 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211072133.25156.jmirles@sc.rr.com>
-References: <0306f31350507b2HNLMAIL3@hawaii.rr.com>
+Message-ID: <20021108051626.44003.qmail@web40406.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <0306f31350507b2HNLMAIL3@hawaii.rr.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Thursday 07 November 2002 12:37 am, David Jones wrote:
-> A friend has the newest release of Mandrake installed on
-> his Fujitsu Lifebook. He has a need to install a closed-
-> source app that's available only in DEB form. Apparently
-> the GUI Mandrake app installer doesn't understand DEB
-> form. I suggested he use Alien to convert it to RPM.
-> Unfortunately, Alien seems to either be available only in
-> DEB form and/or requires other packages that are only
-> in DEB form. In his words, "I need to convert Alien to
-> RPM form so I can install it to convert its DEB package"
-> (or something like that, it's been a long day).
+Folks,
 
-http://www.rpm.bone.net/ has it
+I am having performance issue with one of the
+application. It looks like it is running low on the
+memory. 
 
+In addition to add new memory to the system, is there
+anything can be done while we are waiting for the
+memory upgrade? 
 
--- 
-Jose
-jmirles@sc.rr.com
-Registered Mandrake, Redhat and SuSE user
-Children - the most commonly transmitted sexual disease
+Thanks in advance
+MIke
 
+__________________________________________________
+Do you Yahoo!?
+U2 on LAUNCH - Exclusive greatest hits videos
+http://launch.yahoo.com/u2
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
