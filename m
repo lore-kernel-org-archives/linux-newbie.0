@@ -1,54 +1,48 @@
-From: James Miller <jamtat@mailandnews.com>
-Subject: Re: Lycoris
-Date: Fri, 28 Feb 2003 08:56:44 -0600 (CST)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Debian questions
+Date: Fri, 28 Feb 2003 07:12:11 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0302280831280.9924-100000@vector>
-References: <3E5F28F6.1010405@citech-bd.com>
+Message-ID: <5.1.0.14.1.20030228070715.01f62fd0@celine>
+References: <25FAA566.38217A58.0006BEFC@netscape.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E5F28F6.1010405@citech-bd.com>
+In-Reply-To: <25FAA566.38217A58.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: neil t <wa4chq@netscape.net>, linux-newbie@vger.kernel.org
 
-On 28 Feb 2003, Amin wrote:
-> Has anyone used Lycoris?  What's the word on the vine about it?  The
-> website would have us believe that it's bringing about a ``revolution''
-> in desktop Linux.  If it's as good as advertised, what's going on out there?
->
-I've used Lycoris. It's one of those *real* newbie distros. Automated
-install, with no choices for packages during install. Comes with KDE
-desktop - no other choices. Comes with a pretty good selection of apps -
-for the most part one each for any possible task. WINE is installed
-and preconfigured. It's obviously meant to make first time install less
-bothersome for the inexperienced. I believe it's based on OpenLinux. For
-the absolute newbie, it's probably the distro to use (absolute newbie is a
-relative term, I know. I mean by it: the desktop productivity computer
-user who is familiar with the other popular O$ from the user perspective.
-I don't mean the techie/sys admin wanting to migrate to Linux from the
-other O$). When I decided to go with Linux full time, having fiddled with
-it to some degree previously and being familiar with its daunting learning
-curve, I decided to go with this distro (Lycoris). Had it not been for the
-fact that, due to some mysterious hardware glitch that I could not resolve
-even with the help of Lycoris' tech support, I could not get the OS to
-install on one of my computers, I might still be using Lycoris. Not being
-able to install it forced me to keep looking, and learning more. Now,
-having learned more about Linux and having come to prefer certain apps, I
-would not want to use Lycoris. It's too restrictive. I'd have to spend too
-much time and energy penetrating the vanilla coating they've put on Linux
-to get it set up the way I want it: that kind of defeats the purpose of
-using it. But as far as distros that make the computing experience under
-Linux as M$-like as possible - in both its good (ease of use) and bad
-(lack of tweakability) aspects - this one is among the best. And of course
-even in its bad aspects (tweak unfriendliness) it's not nearly as bad as
-that other O$. It's just counterproductive to have to spend time
-undoing what the distro's creators did to gear it toward the user base
-they're targeting.
+At 07:10 AM 2/28/2003 -0500, neil t wrote:
+>Hello Ray and group-
+>I have been reading the posts about Distro's and saw your comments about
+>Debian.  I obtained a copy of 3.0 a several months ago.  I installed it
+>and had it setup and running but never had it fine tuned. Last month
+>I decided to start again.  I have been having a pretty good time getting
+>things working-- better then before, but for some reason I can't get
+>one of the 'sound' features working that I did have working the first time.
+>I am able to play cd's, realplayer works great but I can't get "saytime"
+>to work.  I don't have time right now to send the details, but just
+>wanted to see if you may be able to help me with some 'Deb' problems.
+>All the best-
+>Neil T.
 
-James
 
-PS It even lets you play solitaire during install! Try *that* with Debian!
+If you have problems with your Debian Woody setup, by all means post the 
+details here. Whether I can help or not depends (naturally) on what the 
+exact problem is. No user of a distro, any distro, knows *everything* about 
+that distro, and I've never even heard of "saytime" before now.
+
+But this is a good opportunity to point out something else -- to get help 
+with a specific app, you need not get help from someone with the same 
+distro. Sometimes knowledge of the app itself is more important. So if you 
+post your problem description here, presented clearly enough that a user of 
+any Linux distro will follow the explanation, someone who knows the app 
+from (say) Red Hat or Slackware may be able to offer useful advice. Don't 
+feel tied to your distro in looking for answers -- sometimes it matters, 
+sometimes it doesn't.
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
