@@ -1,85 +1,38 @@
-From: joy <gracecott@sancharnet.in>
-Subject: Re: Modules problem part-2
-Date: Tue, 06 Jan 2004 17:23:57 +0530
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: 2.6.0 kernel compile overview-the unfolding saga
+Date: Tue, 6 Jan 2004 08:42:34 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FFAA1D5.6010203@sancharnet.in>
-References: <5.1.0.14.1.20040105104618.01f28358@celine>
- <200401060718.26925.pa3gcu@zeelandnet.nl>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <Pine.LNX.4.58.0401060834140.3636@localhost>
+References: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com>
+ <Pine.LNX.4.58.0401051408430.3345@localhost> <Pine.LNX.4.58.0401051556150.3636@localhost>
+ <20040106060503.GA6016@teamfinders.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20040106060503.GA6016@teamfinders.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl
-Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-pa3gcu wrote:
+On Tue, 6 Jan 2004, Theo. Sean Schulze wrote:
 
->On Monday 05 January 2004 19:53, Ray Olszewski wrote:
->  
->
->>At 11:55 PM 1/5/2004 +0530, joy wrote:
->>    
->>
->>>hi,
->>>I did what was told of  me, make modules and make install and the modules
->>>were in place.
->>>but the other problem I had with lsmod and insmod giving me error stating:
->>>QM_MODULES function not implemented
->>>refuses to go away
->>>even at bootup ,
->>>when init runs modprobe, the same error appears a LOT of times.(it scrolls
->>>fast but I could just make out!)
->>>      
->>>
->>It sounds like you (or whoever compiled your kernel) did not compile in
->>loadable modules support. (In 2.4.x kernels, which I still use, this is the
->>second item in the "make menuconfig" setup list, so you might look in a
->>similar location in the 2.6.x configuration.)
->>
->>In the 2.4.x kernels, the relevant section of the actual config file is
->>
->>         #
->>         # Loadable module support
->>         #
->>         CONFIG_MODULES=y
->>         CONFIG_MODVERSIONS=y
->>         CONFIG_KMOD=y
->>
->>Here too, you might look for something similar in the 2.6.x config file ...
->>the "QM_MODULES" name might indicate a change in terminology.
->>    
->>
->
->AFAIK Joy has NOT followed my advice, to be more precise, Joy quite possably 
->needs to install a new set of modules utilitys which is mentioned in the 
->Changes file (of which i mentioned in my last mail).
->
->Use google and type in QM_MODULES as the search and one will see that Joy is 
->not the first to have this problem.
->
->  
->
-Hi pa3gcu (please tell me how to pronounce it),
-I did exactly what you told me to do.
-I went thru the debug mesgs and found that module-init-tools is reqd., 
-downloaded it,
-and installed.
-Well,
-lsmod and insmod now work perfect, but init's modprobe stills curses the 
-hell out of me.
-I'll compile another time and see if I can get it working......
-See ya soon,
-Joy
+> Just a shot in the dark here, but do you have the volume turned up?  I am using the ALSA sound modules, and they, as default, start up with the sound muted.  I haven't gotten around to fixing it yet, so every time I reboot that machine, I have to reset the sound levels to something higher than zero.
+> 
 
+And a brilliant shot in the dark it was!  I ran across, somewhere on the
+web, the "alsamixer" command and even ran it (that's my kind of app -
+colors and shapes in a console).  I saw "PCSpeaker" there, and even turned
+up the volume, but that didn't get me any console beep.  Well, I just had
+a look at it again after reading your post.  This time, I noted that
+certain of the items listed there had an "off" flag by them - among these
+the PCSpeaker.  I toggled that flag and - voila! - system speaker!  So, it
+woiks, it woiks!  I just would never have guessed that alsa was something
+that governs the PC's speaker - I thought that was a separate "low level"  
+(however that parses out in my benighted understanding of these things)  
+item.  Can anyone help clarify this for me?  Anyway, thanks to all for 
+input on this - it's now fixed (provided the settings I did stick).
 
-
---------------------------------------------------------------------------------------------------------
-A life without purpose is like a bird that never learnt to fly.......
-I am the bird that regularly flies Lufthansa
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
