@@ -1,65 +1,71 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: Re: Trouble with serial ports
-Date: Sun, 3 Nov 2002 21:33:06 -0800
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Re: striking X server
+Date: 04 Nov 2002 09:28:59 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <CPIMSSMTPU03yeKzGZu000000c5@cpimssmtpu03.email.msn.com>
+Message-ID: <1036402140.23486.6.camel@zebra.vil.ite.mee.com>
+References: <200211021744.gA2HiTPq017274@pyxis.wanadoo.be>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200211021744.gA2HiTPq017274@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Heimo Claasen <hammer@revobild.net>
+Cc: linux-newbie@vger.kernel.org
 
- >>  > The STB 4Com card came to me used, I have attempted to set the card up
- >>  in a manner as such:
- >>  >
- >>  > setserial /dev/ttyS04 baud_base 9600 irq 15 port 0x03E8 ^fourport
- >>  ^skip_test
- >>  > setserial /dev/ttyS03 baud_base 9600 irq 15 port 0x02F8 ^fourport
- >>  ^skip_test
- >>  > setserial /dev/ttyS02 baud_base 9600 irq 15 port 0x02E8 ^fourport
- >>  ^skip_test
- >>  > setserial /dev/ttyS01 baud_base 9600 irq 3 port 0x02A8 ^fourport
- >>  ^skip_test
+It looks like your problem is that something has stopped working right,
+and generated huge error logs.
 
- >>  Wy are you doing this?  The baud_base of a 16550a is 115200 unless this
- >>  is very strange hardware indeed.  The baud base is just used by the
- >>  serial driver to choose which divisor to set for a requested speed.
- >>  A baud base of 9600 with a requested speed of 9600 give a divisor of 1,
- >>  which will make a normal 16550a run at 115200.
- >>  It won't see anything coming over the cable at 9600, or maybe a little
- >>  garbage.
+Is /var a separate partition or is it just a directory under /?
 
-It is certainly not clear in the documentation.  That's one of my biggest time wasters with linux is the ambiguity of documentation.  A clear usage example would go a LONG WAYS in helping in the man page.  Maybe someday I will know enough to make some of those updates, make the diff patch and send it off to the maintainer to get it ignored.
+Check through /vae/log and look for anything huge. Depending on what it
+is, you could remove it or put is somewhere else.
 
- >>  Probably because you didn't mess with the baud_base.
+It is also quite possible that one of the regular cron jobs has gone
+bang, and is sending lots of emails to root. Check out file sizes in 
+/var/spool/mail
 
-I believe you may be correct, a quick grep of my .bash_history showed no setserial on that line.
+Paul.
 
- >>  >
- >>  > The cable pin out is db9:
- >>  >
- >>  > 2  -- 3
- >>  > 3 -- 2
- >>  > 4 --  6+1
- >>  > 5 -- 5
- >>  > 6+1 -- 4
- >>  > 7 -- 8
- >>  > 8 -- 7
- >>  >
- >>  >
- >>  > On windows I am using Terra Term Pro, a freeware serial/telnet client. 
- >>  I have no flow control selected and 9600 8 n 1 as my settings.
- >>  >
- >>  > On linux I have used term with term /dev/ttyS00 9600 8 n 1
- >>  > I have used od -v /dev/ttyS00
- >>  > I have used  stty -F /dev/ttyS00 raw -echo 9600 ; cat /dev/ttyS00 >
- >>  /tmp/0.txt
- >>  >
- >>  What do you have against minicom or cu?  Or try if Wine will run Terra
- >>  Term Pro.
+On Sat, 2002-11-02 at 00:00, Heimo Claasen wrote:
+> On a perfectly well running installation (Mdk 8.2), all of a sudden
+> the X server - installed as the "-4" version - does not want to start
+> up any more, quits with "font 'fixed' not found".  Bizarre. The attempt
+> to re-install the basic XFree86-fontfile packages (for shure they _had_
+> been installed, and the machine _was_ running with this X the day
+> before, but a rpm-check said "package[s] not installed": bizarre too)
+> results in a lot of errro-messages, all claiming "not enopugh space on
+> device". Puzzled control gives indeed, the 2 (!) GB root-"/" partition
+> being "100 % used" - ultimate bezarrerie, as quite lately before, it
+> was checked (precisely in view of an eventual, and quite bulky addition
+> of Java) and found filled up to 73 % only; but nothing, _absolutely_
+> nothing had been changed, re- or newly installed since.
+> 
+> AND X had run perfectly as usual at the last boot before.
+> 
+> ?!?
+> 
+> (And note that the machine boots up well into command line mode as
+> usual; all filesystemchecks therewith indicate "clean", etc.)
+> 
+> :(((
+> 
+> // Heimo Claasen //<revobild at revobild dot net>// Brussels 2002-11-02
+> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+-- 
+Paul Furness
 
-I use Terra Term Pro on the windows box, there is no X on my lfs box.  Minicom I read was difficult to work with a make sure it did what you told it to do, therefor I'm using term and od and stty now for testing.
+Systems Manager
+
+Steepness is an illusion caused by flat things leaning over.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
