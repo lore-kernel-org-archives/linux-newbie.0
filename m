@@ -1,34 +1,36 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: 2 questions: 1. ssh permissions to 777 and 2. recursively change all directories/files to 777
-Date: Thu, 9 Dec 2004 16:11:50 -0500
-Message-ID: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+From: Jeff Woods <Kazrak+kernel@cesmail.net>
+Subject: Re: 2 questions: 1. ssh permissions to 777 and 2. recursively
+  change all directories/files to 777
+Date: Thu, 09 Dec 2004 14:12:23 -0700
+Message-ID: <6.1.2.0.0.20041209140942.02faeb18@no.incoming.mail>
 References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
-Reply-To: <eatley@wowcorp.com>
+ <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
+In-Reply-To: <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
+References: <9BBB7C9EFEF1874BAC4DC204E867EFAF02561319@s99mail06>
+ <00ac01c4de33$b3b63e20$1f0aa8c0@lanadmin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: eatley@wowcorp.com
+Cc: linux-newbie@vger.kernel.org
+
+At 12/9/2004 04:11 PM -0500, Eve Atley wrote:
+>Second question...
+>How can I recursively set all files/directories to 777?
+>Chmod -R 777 *.* ... Didn't seem to hit everything.
+
+"Linux is not Windows."  Lots of filenames on Linux (and other Unix-ish 
+systems) don't have a period in them.
+
+If you *really* mean "everything" then:
+         chmod -R 777 /
 
 
-First question...
-We have people SSHing into our Linux box from overseas (India to US, company
-access only). But files that are uploaded from these people become read-only
-to anyone else accessing them. We *require* that they be readable/writable
-by this side of the pond (US). How can I set this to occur? Otherwise, this
-method of transferring files will *not* work for us, and perhaps someone can
-point me to another solution.
-
-Second question...
-How can I recursively set all files/directories to 777?
-Chmod -R 777 *.* ... Didn't seem to hit everything.
-
-Thanks!
-
--Eve
+--
+Jeff Woods <kazrak+kernel@cesmail.net> 
 
 
 -
