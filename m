@@ -1,26 +1,34 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: Fetchpop Problem
-Date: Sat, 05 Oct 2002 15:25:43 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: read-only file system
+Date: Sat, 5 Oct 2002 07:52:54 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210050725.g957Pis06219@philonline.com>
-References: <20021004084206.A207@lnx2.w8mch.ampr.org>
+Message-ID: <02100507525400.00234@unix.pa3gcu>
+References: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Fri, 04 Oct 2002 08:42:06 -0400."
-             <20021004084206.A207@lnx2.w8mch.ampr.org> 
+In-Reply-To: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: haltec@iceweb.net, linux-newbie@vger.kernel.org
+To: a a <xlsd@hotmail.com>, linux-newbie@vger.kernel.org
 
-Thanks Hal!
+On Saturday 05 October 2002 03:02, a a wrote:
+> hello
+> im trying to edit a file in /etc/rc.d but it says "Read-only file system"
+> how do i change it to writeable?
 
-It was you who put me on fetchpop. I, therefore, expected some reply from you. 
-I will try your suggestion next mail around from that source.
+Files in /etc/rc.d/ are owned by "root" so one would need to be root or have 
+root permissions to edit one of those files.
 
-Regards
+>
+> thanks
+>
+
 -- 
-Peter
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
