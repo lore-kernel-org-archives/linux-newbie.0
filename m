@@ -1,93 +1,77 @@
 From: cr <cr@orcon.net.nz>
 Subject: Re: How to mount CD-ROM?
-Date: Thu, 28 Nov 2002 01:02:57 +1300
+Date: Thu, 28 Nov 2002 01:01:51 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021128071041.0B551109254@smtp.orcon.net.nz>
-References: <5.1.0.14.1.20021031075555.020ce520@celine> <5.1.0.14.1.20021118083008.020d92e0@celine>
+Message-ID: <20021128071039.614F410924D@smtp.orcon.net.nz>
+References: <20021125.215101.134684296.0.lawson_whitney@juno.com>
 Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021118083008.020d92e0@celine>
+In-Reply-To: <20021125.215101.134684296.0.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: lawson_whitney@juno.com
+Cc: ray@comarre.com, linux-newbie@vger.kernel.org
 
-On Tuesday 19 November 2002 05:54, Ray Olszewski wrote:
-> Comments inline.
->
-> At 11:58 PM 11/18/02 +1300, cr wrote:
-> >Sorry for the long delay.   Real Life (TM) interfered with my
-> > investigations, and also a point you mentioned brought up a possible
-> > complication which I'll mention at the end...
->
-> Perfectly understandable. I hope you will be equally understanding ... the
-> long gap between my last message and your reply today means that I do not
-> recall the details of the prior discussion very well. So please forgive me
-> if I suggest here something I've already suggested (or you've previously
-> tried).
+There seem to be four copies of this message in my inbox.  Odd.
 
-The delay's my fault, and you're being helpful, I would be ungrateful indeed 
-(and very silly) if I complained about minor repetitions.    :)
+On Saturday 23 November 2002 14:18, lawson_whitney@juno.com wrote:
+> On Mon, 18 Nov 2002, cr wrote:
 
-Having said that, as you may notice from my reply to Lawson, running depmod 
-seems to have changed things somewhat in that  mount  now works and 
-X-CD-Roast doesn't.   I think a little careful experimentation and checking 
-is in order.
-
-
+> > Doing /sbin/modprobe sr_mod brings a string of 'unresolved symbol'
+> > messages and  "insmod sr_mod failed", and  lsmod indicates no change.
 > >
-> >Trying to run X-CD-Roast gives an error message 'Failed to scan SCSI-bus'
-> >*but* lsmod indicates it's loaded a couple of modules:
+> > Trying to run X-CD-Roast gives an error message 'Failed to scan SCSI-bus'
+> > *but* lsmod indicates it's loaded a couple of modules:
 > >
-> >Module                  Size  Used by
-> >sg                     27488   0  (autoclean) (unused)
-> >scsi_mod               92208   1  (autoclean) [sg]
-> >esssolo1               25376   0  (autoclean)
-> >..
-> >..
+> > Module                  Size  Used by
+> > sg                     27488   0  (autoclean) (unused)
+> > scsi_mod               92208   1  (autoclean) [sg]
+> > esssolo1               25376   0  (autoclean)
+> > ..
+> > ..
+>
+> Hmmm, has root never run /sbin/depmod for this kernel to set up the
+> modules.dep file?  Try having it do so and see if modprobe works better.
+
+Apparently, root never has done that (root being me, with a plentiful supply 
+of ignorance :)     I'm surprised it wasn't covered in the RedHat 
+installation procedure.   
+
+So root (me) ran it, and then tried 
+
+modprobe scsi_mod
+mount /mnt/cdrom
+
+and it worked!
+
+> > Then (but not before), /sbin/insmod ide-scsi works, after which
+> > X-CD-Roast works.
 > >
-> >Then (but not before), /sbin/insmod ide-scsi works, after which X-CD-Roast
-> >works.
+> > However, trying to mount /mnt/cdrom still brings up a 'wrong fs type'
+> > message.
 >
-> As I check my setup, it appears that sr_mod needs an argument that tells it
-> what device to attach to. See if adding that helps. Here, as an example, is
-> what I do (in /etc/modules)
+> Well, what is in the /etc/fstab line that mentions /mnt/cdrom?
 >
->          # the stuff to enable ide-scsi emulation for the CD-ROM
->          scsi_mod
->          sr_mod scd0
->          sg
->          ide-scsi
 
-> >However, trying to mount /mnt/cdrom still brings up a 'wrong fs type'
-> >message.
->
-> This is where my hazy memory of our prior discussion raises problems. Most
-> lilely, this is the direct result of sr_mod not loading. So address that
-> first off.
+Just for the record - 
 
-Well, (apparently) as a result of running depmod, I can now mount /mnt/cdrom  
-even though /sbin/lsmod does *not* show sr_mod to be loaded.   sg, scsi_mod 
-and ide-scsi are loaded.
+/dev/cdrom              /mnt/cdrom              iso9660 noauto,owner,kudzu,ro 
+0 0
 
-/sbin/insmod sr_mod scd0   works (i.e. sr_mod appears in the listing from 
-lsmod) but seems to make no difference to mounting or X-CD-Roast.   
+However, now X-CD-roast has stopped working.   Even if I go and do a 
+/sbin/insmod ide-scsi,  which worked previously, it now still tells me 
+"Failed to scan the SCSI-bus"
 
-> If that's not it ... is /etc/cdrom properly symlinked, probably to
-> /dev/scd0? (I can't check my system for the right answer, because it has
-> both a CD-R and a DVD drve, and /dev/cdrom symlinks to the DVD.) Does the
-> same thing happen if you try to mount /dev/scd0 someplace.
+Am I asking too much to want to read CD-ROM's *and* use X-CD-Roast on the 
+same drive?   (Not simultaneously!)
 
-I think '/etc/cdrom' is a misprint?  /dev/cdrom is linked to /dev/hdb.
+I'll check the CD-writing HOWTO as X-CD-Roast's error message suggests and 
+see if it gives any enlightenment.   I suspect I need to carefully figure out 
+just what I've got loaded.
 
-I tried mounting /dev/scd0, got /dev/scd0: unknown device.
-
-It's rather late at night now, I'm not thinking too clearly.   I think I need 
-to sit down and work this out carefully before I can ask any intelligent 
-questions.   
-
-Thanks
+Regards
 
 Chris
 
