@@ -1,119 +1,35 @@
-From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: Mailer Connections
-Date: Wed, 14 Aug 2002 06:18:10 +0100 (BST)
+From: Bryan Whitehead <driver@jpl.nasa.gov>
+Subject: Re: converting pdfs
+Date: Wed, 14 Aug 2002 10:48:56 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208140600380.8397-100000@Consulate.UFP.CX>
-References: <200208130603.OAA02685@localhost.localdomain>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <3D5A9808.7060802@jpl.nasa.gov>
+References: <20020813.183924.-265271.6.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200208130603.OAA02685@localhost.localdomain>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Linux Newbies <linux-newbie@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Matthew Stapleton <matthewstapleton@juno.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi Peter.
+Matthew Stapleton wrote:
+> How should I convert a pdf into individual image files?  I do not care
+> what format the output is ...jpg...gif...pbm...tif
 
-Here's the relevant headers of your email as it came to me...
 
-> Received: from ppp12.pool4.mnl.skyinet.net ([202.78.107.12]
->     helo=localhost.localdomain)
-> 	by phoenix.infradead.org with esmtp (Exim 4.10)
-> 	id 17eUmE-0008Fi-00
-> 	for rhw@InfraDead.Org; Tue, 13 Aug 2002 07:03:36 +0100
-> Received: from localhost.localdomain (pfheiss@localhost)
-> 	by localhost.localdomain (8.9.3/8.9.3) with ESMTP id OAA02685;
-> 	Tue, 13 Aug 2002 14:03:37 +0800
-> X-Mailer: exmh version 2.5 07/13/2001 with nmh-1.0.4
-> To: linux-newbie@vger.kernel.org
-> cc: rhw@InfraDead.Org, ray@comarre.com
-> Subject: Re: Mailer Connections 
-> Date: Tue, 13 Aug 2002 14:03:37 +0800
-> From: Peter <pfheiss@localhost.localdomain>
+Most linux distros come with a program called "convert". It's a program 
+that is part of ImageMagick.
 
-From those, we can deduce the following:
+just type convert <file>.pdf <file>.[jpg,giv,png,tif]
 
- 1. The "Date:" line states when it was posted.
+very easy! :)
 
- 2. The "X-Mailer:" line states the program you used to post it.
 
- 3. The "From:" line states the address that was used to post it. As
-    you can see, this is wrong.
-
- 4. The "To:" and "cc:" lines state the addresses you posted it to.
-
- 5. Reading from the bottom up, the "Received:" lines state the route
-    your message took to get to me. The bottom one is your local box's
-    SendMail reporting that it processed the message on the way out,
-    and the top one is my mailhost confirming receipt thereof.
-
-The top "Received:" line gives the critical evidence when it reports
-"helo=localhost.localdomain" as this states that your system's hostname
-is currently set up as localhost.localdomain as stated, and this is also
-confirmed both by the bottom "Received:" line and by the "From:" line.
-This is NOT a problem with either Exim or SendMail but with the general
-configuration of your system.
-
->>> How do I revert back that I can mail again with any mail program
->>> especially exmh and with any ISP?
-
->> As a result, the solution may be as simple as setting the hostname
->> for your machine to match that of your preferred ISP by editing the
-.> file / etc/sysconfig/network and putting the full; hostname on the
->. HOSTNAME= line, then rebooting your system.
-
-> I did that now. It had localhost.localdomain. I changed if to "Peter".
-> Can there be more than one name and if so how are they separated?
-
-There can only be one name,. Assuming you are NOT running a LAN of your
-home, it should correspond to your primary ISP's hostname rather than
-being your first name. As an example, if your primary email address is...
-
-	daffy.duck @ waltdisney.com
-
-...then your machine's hostname should be...
-
-	waltdisney.com
-
-...and your username on that system should be...
-
-	daffy.duck
-
-...and I'm sure you can substitute whatever is relevant for your actual
-email address in that.
-
-As per my last email, you need to tweak the HOSTNAME= line in the file 
-/etc/sysconfig/network to contain the correct domain name, and you then
-need to reboot your system for this line to take effect.
-
->> Incidentally, sendmail normally tries to send all outgoing emails
->> direct to the relevant delivery host, so the ISP you're dialled up
->> with should make no difference at all.
-
-> That what I always thought and it always worked since RH5.2 w/o me
-> doing anything.
-
-The headers from your email confirm that it is doing precicely as stated
-here, so you do not need to worry about this.
-
->> Also please  mention which MTA you are using (either look for
->> something listening on  port 25 or find the smtp entry in /etc/
->> inetd.conf, depending on which way your system is set up)
-
-> The file inetd.conf was absent. I found it as inetd.cof.rpmsave and
-> copied it to /etc/inetd.conf. There is no smtp entry in this file.
-
-SendMail doesn't run from /etc/inetd.conf so you won't find an entry in
-there for it.
-
-> This mail should go out now with my webcard ISP and using the
-> program exmh.
-
-As you can see, it used the program exmh but it went out with the wrong
-email address for you.
-
-Best wishes from Riley.
+-- 
+Bryan Whitehead
+SysAdmin - JPL - Interferometry Systems and Technology
+Phone: 818 354 2903
+driver@jpl.nasa.gov
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
