@@ -1,70 +1,76 @@
 From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: Mailer Connections
-Date: Sun, 11 Aug 2002 08:29:52 +0100 (BST)
+Subject: Re: Extra installation
+Date: Sun, 11 Aug 2002 08:40:25 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208110815450.8397-100000@Consulate.UFP.CX>
-References: <02080915532601.07686@localhost.localdomain>
+Message-ID: <Pine.LNX.4.21.0208110830010.8397-100000@Consulate.UFP.CX>
+References: <001901c240f6$2a4395c0$14000a0a@p75>
 Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02080915532601.07686@localhost.localdomain>
+In-Reply-To: <001901c240f6$2a4395c0$14000a0a@p75>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: Colin Harris <charis.g3orh@virgin.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi Peter.
+Hi Colin.
 
-I've reformatted and reparagraphed your query to make it readable. Not
-sure what happenned when you posted it, but it arrived here full of tab
-characters...
-
-> When I recently upgraded from RH7.1 to RH7.3 I got total keyboard
-> lock-up with some programs.  In order to go on working I had to
-> reinstall RH7.1. After that I found
+> New to this list. Could someone outline the possibilities please.
+> Problem as below :-
 >
-> a) that I could not send e-mail any more using my mail program exmh
->    nor using <mail> from the console. I have to resort to either pine
->    or kmail. This is the case using my ISP for my e-mail address.
+> I have a 17Gb HDD. First 5 GB dedicated to Redhat 6.1 and runs an
+> ax25 system for a DX cluster and ax25 node system.
 >
-> b) that I could not send any mail at all using my alternate ISP
->    subscribed to with a pre-paid webcard.
+> Want to try Redhat 7.2 - Tried a second install by creating a new
+> 5GB partition. First time it did install, subsequent times it stops
+> after 400 mb.  However , the plan was to install this later version
+> and run it from the existing Lilo. After ( successfully) installing
+> 7.2 and running from a floppy , shut down 7.2 , booted 6.1 to
+> include info into lilo.conf , run lilo but of course it cannot find
+> files on an unmounted system (7.2).
 >
-> In case a) the message in maillog was either ...stat= service not
-> available.. or ...stat=Data format error. This one especially when
-> sending to this list.
->
-> In case b) the message popping up on the screen is "sorry that
-> domain isn't allowed to be relayed thru this MTA".
->
-> How do I revert back that I can mail again with any mail program
-> especially exmh and with any ISP?
+> Questions are :- How to run a second version selectable from Lilo ?
+> and are there still problems with installing between 5 and 10 GB
+> down a hdd ?. I thought this 1023 cylinder thing had been overcome
+> long ago.
 
-First, a disclaimer: I don't use exmh or kmail and never have, so can't
-comment on anything specific to those. However, I have used both pine
-and mail and the comments below relate to them.
+The obvious solution would be to temporarily mount your 7.2 partition as
+/mnt within your 6.1 partition, but you also need to ensure that each
+entry gets a separate root= parameter. That would give you a lilo.conf
+something like the following:
 
-Next: A summary of how MOST mail programs send email under Linux: They
-open a connection to port 25 on localhost and deliver the email to
-whatever answers, leaving that to sort out the problem. On most Linux
-systems, it's sendmail that answers and deals with the mail. I can add
-that sendmail is a complex beastie to set up, and it's all too easy to
-get it wrong.
+===============8<=============== CUT ===============>8===============
 
-One thing pine has is that it can be configured with the domain your
-email address is in, and this can easily be different from that of the
-machine it's run on. However, mail doesn't have that ability, and always
-uses the hostname of the machine it's run on as the domain.
+boot		= /dev/hda
+compact
+delay		= 50
+install 	= /boot/boot.b
+map		= /boot/map
+prompt
+ramdisk 	= 16384
+read-only
+timeout 	= 50
+vga		= 1
 
-As a result, the solution may be as simple as setting the hostname for
-your machine to match that of your preferred ISP by editing the file
-/etc/sysconfig/network and putting the full; hostname on the HOSTNAME=
-line, then rebooting your system.
+password	= NotLikely
+restricted
 
-Incidentally, sendmail normally tries to send all outgoing emails direct
-to the relevant delivery host, so the ISP you're dialled up with should
-make no difference at all.
+default 	= 6.1
+
+image=/boot/vmlinuz
+	label	= 6.1
+	root	= /dev/hda1
+
+image=/mnt/boot/vmlinuz
+	label	= 7.2
+	root	= /dev/hda2
+
+===============8<=============== CUT ===============>8===============
+
+Change the password= line to whatever you prefer (and no, that isn't
+mine), and also change the root= lines to suit, then mount your 7.2
+partition wherever and run lilo to deal with the results.
 
 Best wishes from Riley.
 
