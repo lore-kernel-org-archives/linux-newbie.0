@@ -1,45 +1,49 @@
-From: "Lee Chin" <leechin@mail.com>
-Subject: Re: debate on 700 threads vs asynchronous code
-Date: Thu, 23 Jan 2003 19:07:11 -0500
-Sender: linux-kernel-owner@vger.kernel.org
-Message-ID: <20030124000711.98366.qmail@mail.com>
+From: ramzez <r4mz3z@yahoo.es>
+Subject: export variables
+Date: Fri, 24 Jan 2003 07:47:54 +0000
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <200301240748.03285.r4mz3z@yahoo.es>
+Reply-To: r4mz3z@yahoo.es
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
-Content-Disposition: inline
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: lm@bitmover.com, leechin@mail.com
-Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi,
-Thanks for the rpely... my question was more so, with setcontext and swapcontext, I will still be messing with the data cache right?  
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-In otherwords, as long as I have an async system with out setcontext, I know I am good... but with it, havent I degraded to a threaded environment?
+Hi friends...
+  I have a trouble when try to export variables... I write a script like this:
+- -------------- test.sh ------------------
+export MY_VAR="SOME_VALUE"
+echo "$MY_VAR"
+- -------------- test.sh ------------------
+  later: chmod +x test.sh then run this script: ./test.sh ... everything looks 
+OK :)
+  but when try to use this variable in my environment I can't do, if write 
+"env" the nev variable MY_VAR doesn't appear ... I think that there are some 
+protection about export variables, but how do I can export variables?
 
-Thanks
-Lee
------ Original Message -----
-From: Larry McVoy <lm@bitmover.com>
-Date: Thu, 23 Jan 2003 15:28:34 -0800
-To: Lee Chin <leechin@mail.com>
-Subject: Re: debate on 700 threads vs asynchronous code
+  I'm using red hat 7.3
 
-> > b) Write an asycnhrounous system with only 2 or three threads where I manage the connections and stack (via setcontext swapcontext etc), which is progromatically a little harder
-> > 
-> > Which way will yeild me better performance, considerng both approaches are implemented optimally?
-> 
-> If this is a serious question, an async system will by definition do better.
-> You have either 700 stacks screwing up the data cache or 2-3 stacks nicely
-> fitting in the data cache.  Ditto for instruction cache, etc.
-> -- 
-> ---
-> Larry McVoy            	 lm at bitmover.com           http://www.bitmover.com/lm 
+thanks
 
--- 
-__________________________________________________________
-Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
 
-Meet Singles
-http://corp.mail.com/lavalife
+iD8DBQE+MO+xs4dF9gl05swRApKYAJ0TmE/LvroRvx9BFMgYxZkHP9vNnACeKYkH
+PbQvNbrsquCZ0dSrEJXxsC4=
+=EQRI
+-----END PGP SIGNATURE-----
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
