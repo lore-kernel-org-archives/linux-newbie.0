@@ -1,7 +1,7 @@
 From: "Dog Walker" <forestiero@qwest.net>
 Subject: Adding to the PATH but not if already in $PATH
-Date: Sat, 26 Feb 2005 10:16:27 -0800
-Message-ID: <200502261016.28122.forestiero@qwest.net>
+Date: Sat, 26 Feb 2005 10:17:00 -0800
+Message-ID: <200502261017.00466.forestiero@qwest.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
