@@ -1,75 +1,51 @@
-From: beolach@juno.com
-Subject: Re: CD formats
-Date: Thu, 24 Jul 2003 17:29:52 GMT
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: /cdrom fails to unmount
+Date: 24 Jul 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030724.103039.16315.936943@webmail02.lax.untd.com>
-Mime-Version: 1.0
+Message-ID: <200307241851.h6OIotZ5180340@www2.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: cr@orcon.net.nz
-Cc: linux-newbie@vger.kernel.org
+To: "e.a./CC" <jamtat@mailsnare.net>
 
+Sorry for the "convoluted style", James - perhaps it stems from trying
+not to get entagled with terms I'm not too sure about.
 
-I really don't have much experiencec with Macs, so I couldn't
-tell you what CD formats they can read.  But from my experience
-with burning CDs, I would recommend using Joliet.  Basically,
-the wat Joliet works actually does not invalidate the iso9660
-8.3 filenames; it just provides alternative long filenames that
-a Joliet capable OS uses instead of the 8.3 filenames.  If a
-Joliet CD is used in an non-Joliet capable OS, it will just
-fall back on the 8.3 filenames.  I have never actually seen a
-Joliet CD in a non Joliet capable OS, but I would guess it may
-look a little different than normal, with extra files and such,
-but I think it should be completely usable.
+And yes, this is how I see it too:
+> if the user mounts the CDROM, then navigates into the
+> /whatever/cdrom directory using MC, then exits MC (F10), the OS will
+> continue to "think" the cdrom is being accessed...
+> So, while there's no process running that's actively trying to access the
+> cdrom (not one that the user can find, anyway), the computer/OS acts as
+> though there is such a process tying up the cdrom, and therefore won't
+> allow the user to umount/eject the media.
 
-Here's a quote from the mkisofs man page about Joliet:
-  -J  Generate Joliet directory records  in  addition  to
-      regular iso9660 file names.  This is primarily use-
-      ful when the discs are to be used on Windows-NT  or
-      Windows-95  machines.   The  Joliet  filenames  are
-      specified in Unicode and each path component can be
-      up to 64 Unicode characters long.  Note that Joliet
-      is no standard - CD's that use only  Joliet  exten-
-      sions  but  no  standard  Rock Ridge extensions may
-      usually only be used on  Microsoft  Win32  systems.
-      Furthermore,  the  fact that the filenames are lim-
-      ited to 64 characters and the fact that Joliet uses
-      the  UTF-16  coding  for  Unicode characters causes
-      interoperability problems.
+I'm searching for a good "visual" analogy - maybe fishing from a boat
+could be, the boat being the "user" floating on the "System" waters, the
+rod the "application": Usually, you would anchor somewhere, cast with the
+rod, and draw whatever is hooked towards the boat; the boat wouldn't
+move.  Not so in Linux waters - if the bait is hooked (most probably on
+the branch of a file-tree under the surface, <bg>) the boat is drawn
+there and "anchored" _there_.  So you're not allowed to cut that
+submarine branch - this would set the boat adrift -, you first have to
+lift the anchor and fasten the boat elsewhere. And someone else may be
+fishing there too, and having been hooked up at the same invisible
+branch. So this "user" has to move his booat too first, before you
+may take a dive and tear the dang branch out of the water to recover
+your precious bait.
 
-Again I want to point out that I basically have no Mac experience,
-but as I was reading over the mkisofs man page, I noticed a
-section on "HFS Macintosh File Formats" which seems to describe
-a Macintosh parallel to Joliet.  I really don't know what HFS is,
-but it might be something you want to look into if you plan on
-making a lot of hybrid CDs.  See the man 8 mkisofs page for more
-details on HFS or Joliet.
+Maybe someone else finds a better formulation - the point is that in
+*nixish systems there's no difference between "current" and "working"
+directory.  The (part the user may use of the) whole OS "moves to" the
+(sub)dir where some task is done. As a "device" - at the surface - is
+treated the same way like a (data) file or a directory, the boat/user
+must get off from there first before it can be unmounted.
 
-Hope this helps more than it confuses,
-Conway S. Smith
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-07-
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
---- cr <cr@orcon.net.nz> wrote:
-> I hope this isn't too OT -
-> 
-> I'm going to use X-cd-roast on this Debian box to make a CD to
-> send to an 
-> acquaintance who has a Mac  (mostly scanned JPG's of photos).
-> 
-> If I understand correctly, I could use long filenames (Joliet) if
-> intended 
-> for a Windoze machine, but for a Mac I can only use 8.3 filenames.    > Is that 
-> correct, or is there any way around that?
-> 
-> Regards
-> 
-> Chris
-
-________________________________________________________________
-The best thing to hit the internet in years - Juno SpeedBand!
-Surf the web up to FIVE TIMES FASTER!
-Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
