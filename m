@@ -1,33 +1,34 @@
-From: Eric <eric@cisu.net>
-Subject: Re: maximum number of Unix98 pty's
-Date: Sun, 18 May 2003 20:41:24 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Text Reformatting
+Date: Mon, 19 May 2003 10:25:50 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305182041.24928.eric@cisu.net>
-References: <200305161629.h4GGTIPs017487@ev6.be.wanadoo.com>
-Reply-To: eric@cisu.net
+Message-ID: <20030519022555.DE918103AE@pfheiss>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200305161629.h4GGTIPs017487@ev6.be.wanadoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Heimo Claasen <hammer@revobild.net>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 31 December 1969 06:00 pm, Heimo Claasen wrote:
-> what ist "PTY" ?
->
-> -hc
+Beautiful!
+Thanks to all. sed and vim work perfect. I read up on sed and tried vim before 
+posting the question. It's just remains Greek to me.
 
-A pty is a psuedo-terminal. Linux creates these so you can log in and type 
-things on your computer. If you press ctr+alt+<#> where # is 1-5 then you 
-will see 5 pty's ready for login. Also SSH, telnet, and rlogin, and each 
-xterm uses up one PTY. Normal linux kernels are configured to support 
-256pty's and this is MORE than enough for desktop systems and small servers.
-----------------------
-Eric Bambach   
-Eric@CISU.net 
-----------------------
+vim -ggVG gives error -G command unknown. vim -ggVg file just opens the file 
+as is.
+
+Peter said:
+> Some text I download for printing are formatted like: >
+>       Because of the publicity the Iraqi government has given to the
+>                       issue, Iraqis worry about DU. >
+> which adds more pages for printing. >
+> How can I with some command, left align the text
+
+Regards
+
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
