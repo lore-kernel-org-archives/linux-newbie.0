@@ -1,185 +1,69 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: How to mount CD-ROM?
-Date: Mon, 18 Nov 2002 23:58:50 +1300
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: RE: need method of backing up files
+Date: 18 Nov 2002 12:08:32 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021118092133.AFBB17FC17@smtp.orcon.net.nz>
-References: <5.1.0.14.1.20021030075115.020ef7a0@celine> <5.1.0.14.1.20021031075555.020ce520@celine>
-Reply-To: cr@orcon.net.nz
+Message-ID: <1037621312.366.39.camel@zebra.vil.ite.mee.com>
+References: <05bb01c2876f$0104b300$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021031075555.020ce520@celine>
+In-Reply-To: <05bb01c2876f$0104b300$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-Sorry for the long delay.   Real Life (TM) interfered with my investiga=
-tions,=20
-and also a point you mentioned brought up a possible complication which=
- I'll=20
-mention at the end...
+I don't know of a way to make it put the machine name at the beginning
+of each line. 
 
-On Friday 01 November 2002 05:05, Ray Olszewski wrote:
-> At 02:29 AM 11/1/02 +1300, cr wrote:
-> >[...]
-> >
-> >I don't have enough info about your setup (kernel details,
-> >
-> > > mostly) to know why you are getting ghe "unresolved symbol" error=
-s, but
-> > > the usual reasons are kernel-version mismatch or missing dependen=
-cy.
-> > > See what effect "modprobe sr_mod" has.
-> >
-> >Same list of four   "unresolved symbol" errors, then
-> >"insmod /lib/modules/2.4.7-10/kernel/drivers/scsi/sr_mod.o  failed"
-> >
-> >The module's there in /lib/....    , I looked.
->
-> Yes, of course it is. The messages you are seeing say that some exter=
-nal
-> function calls *in* the module cannot be resolved.
->
-> Usually this occurs because some other module that the one you are tr=
-ying
-> to load provides the missing functionality; modprobe is supposed to h=
-andle
-> this for you (by consulting modules.dep and loading anything that is
-> needed). After the unsuccessful modprobe, what does "lsmod" tell you =
-about
-> what is loaded? Is the module scsi_mod loaded, and what does the outp=
-ut say
-> about what other modules are using it (the stuff in [] after the size=
-)?
+As a partial solution, you could put the machine name into the log file
+before the copy:
 
-OK.   /sbin/lsmod gives:
+  echo ${machinename} >> $log
+  cp --preserve ..... and so on.
 
-Module                  Size  Used by
-esssolo1               25376   0  (autoclean)
-gameport                1840   0  (autoclean) [esssolo1]
-soundcore               4208   4  (autoclean) [esssolo1]
-binfmt_misc             6064   1=20
-autofs                 11232   0  (autoclean) (unused)
-ipchains               36000   0=20
-nls_iso8859-1           2800   1  (autoclean)
-nls_cp437               4320   1  (autoclean)
-umsdos                 24832   1  (autoclean)
-msdos                   5104   0  (autoclean) [umsdos]
-fat                    31392   0  (autoclean) [umsdos msdos]
-usb-ohci               17936   0  (unused)
-usbcore                49792   1  [usb-ohci]
-ext3                   61936   2=20
-jbd                    38976   2  [ext3]
+I tend to put a lot of date stamps in log files as well as some
+comments. It doesn't make much difference to the file size, and it can
+be very useful information later, and also make the log file much easier
+to read. I tend to do something like this:
+
+  echo "Starting the backup of ${machinename} at `date`" >> $log
+  cp --preserve .....
+
+P.
 
 
-Doing /sbin/modprobe sr_mod brings a string of 'unresolved symbol' mess=
-ages=20
-and  "insmod sr_mod failed", and  lsmod indicates no change.
+On Fri, 2002-11-08 at 21:37, Paul Kraus wrote:
+> How can I add the machine name to the output. For instance...
+> This command writes to the log file that a file is in use and was not
+> backed up.
+> 
+> cp --preserve --recursive --update "$source"/* $dest 2>> $log
+> 
+> So if I have a variable called $machine and it equals the workstations
+> name how can I have it written before the log entry.
+> 
+> Example
+> Myworkstation: output from errors out.
+> 
+> Thanks in advance,
+> Paul Kraus
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+-- 
+Paul Furness
 
-Trying to run X-CD-Roast gives an error message 'Failed to scan SCSI-bu=
-s'=20
-*but* lsmod indicates it's loaded a couple of modules:
+Systems Manager
 
-Module                  Size  Used by
-sg                     27488   0  (autoclean) (unused)
-scsi_mod               92208   1  (autoclean) [sg]
-esssolo1               25376   0  (autoclean)
-=2E.
-=2E.
+Steepness is an illusion caused by flat things leaning over.
 
-Then (but not before), /sbin/insmod ide-scsi works, after which X-CD-Ro=
-ast=20
-works.
-
-However, trying to mount /mnt/cdrom still brings up a 'wrong fs type'=20
-message.  =20
-
->
-> The other reason this occurs is because the module was compiled for a
-> different kernel than the one loaded. Did you compile (or otherwise c=
-hange)
-> your kernel? If so, did you also compile (or otherwise change) module=
-s,
-> including sr_mod specifically?
-
-No, I'm using the standard RedHat 7.2 distribution.   I'm not sufficien=
-tly=20
-confident to do alarming things to the kernel.   Or modules.    ;)
-
-It looks maybe like sr_mod is the cause of the problem, since I can't s=
-eem to=20
-make it load.
-
-
-
-Referring back to a previous message, you said
-
-> If you do "ls -l /dev/scd0", the result should be approximately this =
-(this=20
-> one is from my workstation):
->
->=A0 =A0 =A0 =A0 =A0brw-rw---- =A0 =A01 root =A0 =A0 cdrom =A0 =A0 11, =
-=A0 0 Jun 13 =A02001 /dev/scd0
-
-My system gives=20
-brw-rw----    1 root     disk      11,   0 Aug 31  2001 scd0
-
-I'm not sure if the 'disk' indicates a source of problems?
-
-
-> >Is it possible to 'switch off'  modules once installed?   It occurs =
-to me
-> > I could switch off  ide-scsi and sg and see if I can get my  IDE  C=
-D-ROM
-> > reading back.
->
-> Well, you can remove modules with "rmmod". I don't know how that inte=
-racts
-> with the lilo.conf settings that tell the kernel to use ide-scsi emul=
-ation
-> for an IDE device.
-
-Actually it's grub.conf, since I'm booting with Grub - or trying to.  =20
-/boot/grub/grub.conf says=20
-
-# grub.conf generated by anaconda
-#
-# Note that you do not have to rerun grub after making changes to this =
-file
-# NOTICE:  You have a /boot partition.  This means that
-#          all kernel and initrd paths are relative to /boot/, eg.
-#          root (hd0,0)
-#          kernel /vmlinuz-version ro root=3D/dev/hda2
-#          initrd /initrd-version.img
-#boot=3D/dev/hda
-default=3D0
-timeout=3D10
-splashimage=3D(hd0,0)/grub/splash.xpm.gz
-title Red Hat Linux (2.4.7-10)
-	root (hd0,0)
-	kernel /vmlinuz-2.4.7-10 ro root=3D/dev/hda2 hdb=3Dide-scsi
-	initrd /initrd-2.4.7-10.img
-
-HOWEVER, I'm not booting successfully off the hard drive, when I start =
-up it=20
-says 'GRUB' and hangs.   (and the previous install where I was using li=
-lo did=20
-the same).    So I'm booting off the floppy made at install time.   I p=
-resume=20
-that reads grub.conf, but I'm not sure of that.
-
-(Trying to fix this was next on my To Do list after the CD-ROM drive).
-
-I did wonder if the booting problem had any relevance to the cd-rom, bu=
-t=20
-everything else on the system seems to work OK.   I hope it isn't somet=
-hing=20
-vitally relevant I should have mentioned.
-
-Chris
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
