@@ -1,70 +1,40 @@
-From: "Yawar Amin" <yav_a@hotmail.com>
-Subject: Re: a little help about vi or vim
-Date: Sun, 17 Nov 2002 15:38:01 +0600
+From: dashielljt <dashielljt@gmpexpress.net>
+Subject: Re: Linux distributions
+Date: Sun, 17 Nov 2002 07:38:09 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <OE22X0nmR1sjVfuscsE00000f73@hotmail.com>
-References: <200211142008.34206.r4mz3z@yahoo.es>
+Message-ID: <Pine.LNX.4.44.0211170728400.29134-100000@athame.gmpexpress.net>
+References: <200211162129.42677.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200211162129.42677.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Alternately to putting the command in your startup file, you may want to set
-the "textwidth" option manually for a file. Depends on how often you work
-with 45-column text files. If you're editing an existing file and you set
-that option, VIM won't automatically rearrange the characters so that there
-are only 45 per line. You'll probably want to write a script that will do
-that for you.
+Okay, when you buy an operating system in Linux, you buy an operating
+system.  Other software is available for download and perhaps more
+winmodem stuff ought to have been put on the distributions.  Nonetheless,
+linux works lots better with ethernet cards and cable modems than the
+older slower modems.  I use slackware 8.0 myself and like it.  For one
+thing, when you tell slackware 8.0 to install everything, itdoes exactly
+that.  Redhat does not.  You'll find on the redhat CD's packages available
+for installation that the distribution doesn't install.  Also, I use
+console ext mode only and a speech synthesizer since I'm totally blind and
+don't have the colors problem and also don't care what Redhat did with kde
+and gnome.  Both of those window managers can probaly be downloaded and
+installed but it'll be a matter for disabling the Redhat interface and I
+don't know how to do that.  I gave up on Redhat at 7.2 when my computer
+got knocked over by a hacker and it was only on a dial up modem too.
+Redhat has on a security front closed everything down and what you open
+you do at your own risk and hopefully with knowledge of consequences and
+precautions needed.  I don't ever expect I'll be using any gui under
+linux, it's a work requirement for me to use windows 2000 but this
+computer is at home and I don't choose to use any gui stuff on it.
 
-To justify text, you need to know a little VIM scripting (namely, how to use
-functions). There's a VIM script file called "justify.vim" (or something
-similar) in the "macros" folder somewhere in the VIM installation. If you
-run
-that script, it'll set up the "Justify()" function and some useful
-user-defined commands like ":Justify" and "_j" that you can use. I've used
-this function, and I think it only works if you have the "lbr" option
-switched off (I'm talking about VIM 6.0 or above).
+Jude <dashielljt@gmpexpress.net>
 
-Yawar
-
-
------ Original Message -----
-From: "r4mz3z" <r4mz3z@yahoo.es>
-To: <linux-newbie@vger.kernel.org>
-Sent: Friday, 15 November, 2002 07:08
-Subject: a little help about vi or vim
-
-
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
->
-> Hi friends...
->   How do I configure my vim-editor to write just 45 characteres (or other
-> measure) for each line? and How do I justify the text?, because I've see a
-> lot of txt files that are justify...
->
-> thanks.
->
-> - --
->   Linux User Registered #232544
-> my GnuPG-key at www.keyserver.net
->     --- rm -rf /bin/laden ---
-> -----BEGIN PGP SIGNATURE-----
-> Version: GnuPG v1.2.1 (GNU/Linux)
->
-> iD8DBQE91EkRs4dF9gl05swRAuJWAJ9ybms2rKsIgUHfrkO/D6MZ83bATACfXLBr
-> YK+gcO4pvaZYgxWLLC5aklM=
-> =WcDN
-> -----END PGP SIGNATURE-----
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
