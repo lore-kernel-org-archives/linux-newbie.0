@@ -1,9 +1,10 @@
-From: Jim Nelson <james4765@verizon.net>
+From: chuck gelm <chuck@gelm.net>
 Subject: Re: Heavy load of graphics
-Date: Tue, 05 Oct 2004 06:04:18 -0400
+Date: Tue, 05 Oct 2004 08:26:56 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <416271A2.8030304@verizon.net>
+Message-ID: <41629310.5090508@gelm.net>
 References: <20041005050100.76032.qmail@web52902.mail.yahoo.com>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -31,24 +32,40 @@ Ankit Jain wrote:
 >thanks
 >
 >Ankit
+>
+>________________________________________________________________________
 >  
 >
+Hi, Ankit:
 
-Could you please post your ps -Al, /proc/meminfo, and lspci output?  I 
-know Red Hat has a lot of standard daemons (PCMCIA, ISDN, etc) that are 
-started by default - have you used chkconfig or redhat-config-services 
-to shut off unneded services?
+ In my humble opinion:
+There is no 'linux 9.0'; perhaps you mean
+Red Hat 9.0
+Mandrake 9.0
+Suse 9.0
+Slackware 9.0
+Debian 9.0
+...
+The memory is not 'lost', it has only been used sometime
+and will be reallocated if it is needed by another
+application.  Have you noticed any errors or warnings
+about 'low memory' or 'out of memory' ?  I am guessing
+that you had not had anything fail due to 'memory lost'.
+...
+'how to reduce this load'
 
-The kernel also uses a lot of free memory for I/O caching - even my P4 
-w/ 1GB RAMBUS shows 90% memory consumption in /proc/meminfo.  Caching is 
-a low-priority memory allocation - when the system needs memory for 
-active processes, it should give the memory to the process.
+Use a window manager that requires less resources.
+What window manager are you using now?
+Gnome, KDE, FVWM[2,95],xfce,icebox,twm,...?
+...
+Yes, xserver, GUI, graphics,... all use very much memory.
+...
+;-)  Do not use GUI environment.  ;-)
 
-BTW, unless you are using a framebuffer kernel-level driver, X is 
-handled almost exclusively in userland.  On SPARC32 (for example) 
-framebuffers are pretty much the only way to get X working, but mostly, 
-XFree86 and the X.org server that comes with FC2 use mostly user-space 
-drivers.
+HTH, Chuck
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
