@@ -1,52 +1,48 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: Sype wont't open
-Date: Tue, 1 Mar 2005 07:58:22 +0100
-Message-ID: <200503010758.23060.pa3gcu@zeelandnet.nl>
-References: <20050301055006.4C53B4E6EC@heisspf>
+Date: Tue, 1 Mar 2005 08:10:40 +0100
+Message-ID: <200503010810.41032.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20050228220147.01f4dec8@celine>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
-In-Reply-To: <20050301055006.4C53B4E6EC@heisspf>
+In-Reply-To: <5.1.0.14.1.20050228220147.01f4dec8@celine>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: "Peter H." <heisspf@skyinet.net>
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux <linux-newbie@vger.kernel.org>
 
-On Tuesday 01 March 2005 06:50, Peter H. wrote:
-> Hi,
+On Tuesday 01 March 2005 07:21, Ray Olszewski wrote:
+> PS - Just to avoid misunderstanding ... libqt-mt.so.3 is normally a
+> symlink, to something like this:
 >
-> in slackware10 trying to open skype a program
-> for Internet telephony I get the following error:
+> =A0 =A0 =A0 =A0 =A0/usr/lib/libqt-mt.so.3 -> libqt-mt.so.3.2.3
 >
-> relocation error: /usr/lib/qt/lib/libqt-mt.so.3: undefined symbol:
-> XkbSetPerClientControls
+> =A0 You need to check the underlying library it is a symlink to to de=
+termine
+> the version.
 
-I did not get confronted with this problem when i tryed skype with=20
-slackware-10, i found all sorts of problems tho'.
+Standard slack-10 has 3.3.2 installed in/
 
-The following URL may well help you;
+/usr/lib/qt which should be linked to qt-3.3.2
+My slack-10 /etc/ld.so.conf looks like;
 
-https://www.redhat.com/archives/fedora-list/2004-May/msg04589.html
+/usr/local/lib
+/usr/X11R6/lib
+/usr/i486-slackware-linux/lib
+/opt/kde/lib
+/usr/lib/qt/lib
+/usr/lib/xine
+/usr/lib
+/lib
 
-If that helps then your problems are not over as you will meet many pro=
-blems=20
-with skype and slackware-10. I may well be able to help you tho=B4.
+I found many questions about this error on www.google.com/linux.
+A few answers all saying the same as i pointed Peter to in my other rep=
+ly.
 
-I did manage to get skype started but performance was lousy and to be h=
-onest i=20
-was very dissapointed with it.
-
-I have it running under fedora 3, performance is fine and it was not to=
- much=20
-hassel to get going.
-
-> and the program aborts.
->
-> How to resolve?
->
-> Thanks & regards
+Regards Richard.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
  in
