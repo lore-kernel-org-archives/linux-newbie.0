@@ -1,37 +1,30 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: RH8.0: wm choice
-Date: Sat, 1 Mar 2003 15:09:37 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Debian questions
+Date: Sun, 02 Mar 2003 08:52:13 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303012009.h21K9bIq012170@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <200303020052.h220qDL01841@philonline.com>
+References: <288B825F.19E3465D.0006BEFC@netscape.net>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sat, 01 Mar 2003 07:14:34 EST." 
+ <288B825F.19E3465D.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux@hartford-hwp.com
+To: neil t <wa4chq@netscape.net>
+Cc: linux-newbie@vger.kernel.org
 
-Until I went to RH8.0, I used to be able to switch window managers to
-compare their features, but now I no longer know how to do it. I want
-to try sawfish, but that's only offered as an alternative desktop
-environment to gnome, not as a window manager to run under
-gnome. Running xinit sawfish doesn't work because I'm already running
-an X server. 
 
-Two questions:
+locate saytime.sh
 
-1. Is it possible to switch window managers under my RedHat 8.0 gnome
-   desktop without exiting X? When I decide on a manager, can I put it
-   into  ~/.Xinitrc to override the default?
+/usr/local/saytime/sounds/saytime.sh
 
-2. All I want to do is to run a window manager that will support
-   window stacking. The wm web sites don't worry much about this
-   feature, so I'm stuck just trying them out to see if stack control
-   is included. Enlightenment suports it nicely, but under RH8.0,
-   getting it to run under gnome is a risky business. Does sawfish
-   support stack vs. queue for window placement? 
+That's where I made the changes.
 
-Haines Brown
+Regards
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
