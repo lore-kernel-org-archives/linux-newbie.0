@@ -1,40 +1,31 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Convert PBM to ascii text??
-Date: Mon, 08 Mar 2004 13:09:58 -0800
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Spam from linux-newbie
+Date: Tue, 09 Mar 2004 17:07:35 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040308130547.01f63e50@celine>
-References: <20040308204535.GA1010@lnx2.w8mch.ampr.org>
+Message-ID: <20040309090735.55A3FD842@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040308204535.GA1010@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 03:45 PM 3/8/2004 -0500, Hal MacArgle wrote:
->Greetings: Been reading and viewing tons of stuff but can't seem to
->find if there's a "simple" solution I need..
->
->Would like to scan a normal black on white typewritten page to a PBM
->file, "P4", then convert that to a standard text ascii file.. (My
->scanner is a HP ScanJet IIC, that defaults PBM)
->
->My "pen friend" insists on sending me snail mail and letting me reply
->via eMail.. I would like to import part of his text into my document
->- as is usually done..
->
->Any suggestions as to an easy solution? Both the OCR programs and
->PBMPlus package are, seemingly, way too powerful for my simple
->requirement.. (Or are they?) <grin>
+Hi,
 
-Well ... if you want to convert the text in a graphic image .... whether it 
-is on a page or in a file ... to ascii text, you need to do OCR. That's 
-what "OCR" means, after all. I haven't done this on Linux myself, but my 
-instinct would be to try gocr for it, especially since the package docs for 
-it say it reads pbm files (among other types).
+I have been spam free for the past 6 months. Now all of a sudden I get regular 
+spam by apparently a subscriber this list linux-newbie.
 
+Is it only me since I see no one else is complaining?
 
+Can it be stopped at the source that is at linux-newbie?
+
+What information is needed? The spam comes with hostname constantly changing 
+in the Message-Id:, however, not the ISP itself.
+
+Regards
+
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
