@@ -1,27 +1,45 @@
-From: "Lee Chin" <leechin@mail.com>
-Subject: poll system call
-Date: Thu, 15 May 2003 13:37:42 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: maximum number of Unix98 pty's
+Date: Thu, 15 May 2003 18:54:14 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030515183742.52798.qmail@mail.com>
+Message-ID: <03051518541401.11757@unix.pa3gcu>
+References: <5.1.1.6.0.20030515134918.01f98c28@interzone.anexia.co.uk>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <5.1.1.6.0.20030515134918.01f98c28@interzone.anexia.co.uk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
+To: Carl <carl@anexia.co.uk>, linux-newbie list <linux-newbie@vger.kernel.org>
 
-I couldnt find an answer to this in the man pages... so here goes
+On Thursday 15 May 2003 12:55, Carl wrote:
+> Hi All,
+>
+> Does anybody know how to find out what the limit of PTYs is when you don't
+> have the source and config that the kernel was compiled with. I'd rather
+> not have to login x hundred times to find out when it falls over as i have
+> to do this a fair number of servers.
 
-If I want to wait on a file descriptor being available for both reading and writing at the same time, can I have two entries in the pollfd array for the same file descriptor, one with a POLLIN flag and the other with a POLLOUT flag set?
-I tried a simple program and it worked, but I dont know if that is the correct API usage
+Hope i am correct here. 
 
-Thanks
-Lee
+ls -al /dev/pty* | wc -l
+
+List all pty's in your /dev directory and get 'wc' to tell you how many lines 
+it contains, one line is one pty in this case.
+
+On another note 256 is the standard (default) number of pty's in all kernels, 
+UNLESS you choose to change it when configuring your custom kernel.
+
+>
+> TIA
+> Carl
+> --
+
 -- 
-__________________________________________________________
-Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
