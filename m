@@ -1,76 +1,47 @@
-From: Matthew Stapleton <matthewstapleton@juno.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: CDDA ->MP3 Conversion
-Date: Mon, 15 Jul 2002 08:14:46 -0400
+Date: Mon, 15 Jul 2002 07:40:54 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020715.081447.-455505.1.matthewstapleton@juno.com>
+Message-ID: <5.1.0.14.1.20020715073143.021531b0@celine>
+References: <20020715.081447.-455505.1.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020715.081447.-455505.1.matthewstapleton@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: matthewstapleton@juno.com
-Cc: dalgoda@ix.netcom.com, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Matthew Stapleton <matthewstapleton@juno.com>
+Cc: linux-newbie@vger.kernel.org
 
-How might one go about ripping a CD into OGG files?
+At 08:14 AM 7/15/02 -0400, Matthew Stapleton wrote:
+>How might one go about ripping a CD into OGG files?
 
--MS
+[old stuff deleted]
 
+The actual ripping part is the same as with MP3; you use an app that 
+converts the CD tracks into WAV files. The change is at the next step, 
+compressing the WAV files into ogg format instead of MP3.
 
-On Mon, 15 Jul 2002 08:02:49 -0400 Matthew Stapleton
-<matthewstapleton@juno.com> writes:
-> Excuse my ignorance but what is "ogg"?  Is it a new sound format?
-> 
-> -MS
-> 
-> 
-> On Sun, 14 Jul 2002 22:28:01 -0700 dalgoda@ix.netcom.com (Mike 
-> Castle)
-> writes:
-> > In article <20020712.142607.-314991.0.matthewstapleton@juno.com>,
-> > Matthew Stapleton  <matthewstapleton@juno.com> wrote:
-> > >cdda2wav and BladeEnc seemed to work well for me.
-> > 
-> > You may also consider lame and also switching from mp3 to ogg.
-> > 
-> > mrc
-> > 
-> > -- 
-> >      Mike Castle      dalgoda@ix.netcom.com      
-> > www.netcom.com/~dalgoda/
-> >     We are all of us living in the shadow of Manhattan.  -- 
-> > Watchmen
-> > fatal ("You are in a maze of twisty compiler features, all 
-> > different"); -- gcc
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe 
-> > linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  
-> http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
-> > 
-> 
-> 
-> Matthew Stapleton
-> ============================
-> To dare is to lose one's footing momentarily. Not to dare is to 
-> lose
-> oneself. -SK
-> ============================
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+Exactly how you do it probably depends on what is prepackaged for whichever 
+Linux distro you use. I use a "super-app" called abcde, which is just a 
+bunch of wrappers (in Perl, I believe) that runs a series of other apps to 
+download CD info (wget), rip to WAVs (cdparanoia), compress to MP3 (any mp3 
+encoder) or OGG (oggenc), create a playlist,  put the results someplace 
+sensible, and clean up the temporary files. Installing the Debian version 
+of abcde gets all the other stuff installed (thanks to a good dependency 
+system); YMMV on that, depending on your distro.
 
 
-Matthew Stapleton
-============================
-To dare is to lose one's footing momentarily. Not to dare is to lose
-oneself. -SK
-============================
+
+
+
+--
+-----------------------------------------------"Never tell me the 
+odds!"--------------
+Ray Olszewski					     -- Han Solo
+Palo Alto, California, USA				ray@comarre.com
+-------------------------------------------------------------------------------------------
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
