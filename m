@@ -1,55 +1,45 @@
 From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: /cdrom fails to unmount
-Date: Tue, 22 Jul 2003 18:06:48 +0200
+Subject: Re: Multi-kernel in grub
+Date: Tue, 22 Jul 2003 18:11:13 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307221806.48987.pa3gcu@zeelandnet.nl>
-References: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+Message-ID: <200307221811.13462.pa3gcu@zeelandnet.nl>
+References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: dzlotnik@uwaterloo.ca, Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>, linux-newbie@vger.kernel.org
+To: travis@wsor.net, linux-newbie@vger.kernel.org
 
-On Tuesday 22 July 2003 17:19, Dan Zlotnikov wrote:
-> In Deb.woody, kernel 2.4.18, I have the following problem:
+On Tuesday 22 July 2003 17:15, Travis wrote:
+
+> My problem came at "Next, you have to copy the appropriate files so that
+> linux can boot from the new kernel."  I copied the vmlinuz image created
+> by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
+> file by copy-and-pasting my current RH boot section and simply changing
+> the label and pointing the vmlinuz-matrox as the kernel to load.
 >
-> mount /cdrom
-> "sure," the computer says, "I will."
->
-> cd /cdrom
->
-> mplayer -fs whateverthehellI'mwatching
-> "Okay," says the computer.
->
-> cd
-> "No problems," says the beast.
->
-> umount /cdrom
-> umount: /cdrom: device is busy
-> Or in other words, "*$^! you!"
+> When booting I got an error very quickly.  I have been searching for a
+> grub multi-boot kernel tutorial and have read most of the applicable
+> grub user-guide, but to no avail.  If someone could point out a good
+> tutorial or give a few things to try, I would appreciate it.  Thanks in
+> advance.
+
+It would have been a "very" good idea to have mentioned the error you got or 
+are getting.
+The way you word things i get the impression the kernel starts to boot, that 
+means grub did its work and you forgot some or other important kernel compile 
+option, just what was the error message.???
+
+BTW; I'm no grub expert, once again i read it to be a kernel compile problem 
+and not a bootloader problem. I've been wrong before however with the error 
+we can go from there.
 
 
-No it says' sommat or someone started another program while you were in /cdrom
-'fuser' would be a good idea on this one.
-
-fuser /cdrom
-
-may help.
-
->
-> No processes that I could identify suggested themselves as the visible
-> culprit. Rebooting works, but killing the x-session doesn't.
-
-Let fuser decide that.
-
->
-> Help, anyone?
->
-> Dan
+> -- Travis
 
 -- 
 If the Linux community is a bunch of theives because they
