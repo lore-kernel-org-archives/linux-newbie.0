@@ -1,39 +1,31 @@
-From: "Robin Doer" <robin@robind.de>
-Subject: RE: Mutual Exclusion in Kernel
-Date: Wed, 06 Oct 2004 10:43:20 +0200
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: VM Vs Swap space
+Date: Wed, 6 Oct 2004 09:52:54 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041006.Yzh.28379000@192.168.0.6>
-References: <20041006055017.42480.qmail@web52903.mail.yahoo.com>
+Message-ID: <20041006085254.76571.qmail@web52908.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041006055017.42480.qmail@web52903.mail.yahoo.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: newbie <linux-newbie@vger.kernel.org>
 
-Good morning!
+hi
 
-Ankit Jain (ankitjain1580@yahoo.com) schrieb:
->
-> hi
->
-> what is spin lock?
+if somebody can tell me that is this correct?
 
-http://en.wikipedia.org/wiki/Spin_lock
+can i say that swap area created by linux is nothign
+but virtual memory. is it correct to use the term
+interchangeably
 
-aka "busy waiting". A thread is polling <something> until <something> says
-"ok" and the thread continues working.
+thanks
 
->
-> thanks
->
-> ankit
+ankit
 
-Have fun,
-Robin
-
+________________________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
