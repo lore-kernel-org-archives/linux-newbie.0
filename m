@@ -1,82 +1,67 @@
-From: "Sudhir Barwal" <sudhir@guj.nic.in>
-Subject: Re: Limiting download with Squid
-Date: Fri, 14 May 2004 12:36:33 +0530
+From: "clark" <jamaicawarriors@beer-garden.com>
+Subject: Save a ton on Microsoft Office!
+Date: Mon, 17 May 2004 11:10:00 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <00a401c43982$01c4e870$0532a8c0@sudhir>
-References: <5.1.0.14.1.20040511071352.01f93e00@celine>
-Reply-To: "Sudhir Barwal" <sudhir@guj.nic.in>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <1084792200-10821__21514.8309398957$1084792318@excite.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain;; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org
 
-Hi everybody,
-   Thanks to Ray andWilliams. I'm little bit busy at the moment and will try
-this and respond to the list.
-Thanks.
+Incredible DEALS on SOFTWARE you NEED!
 
-Sudhir
------ Original Message ----- 
-From: "Ray Olszewski" <ray@comarre.com>
-To: <linux-newbie@vger.kernel.org>
-Sent: Tuesday, May 11, 2004 7:52 PM
-Subject: Re: Limiting download with Squid
+Save 40% on Windows XP Professional!
+Save 40% on Microsoft Office 2003 Professional!
+Save $90 on Adobe Photoshop!
+Save 60% on Norton AntiVirus!!
+
+Save your company thousands of dollars when it needs software!
+
+That promotion just got closer...
+
+Click here!!
+http://teddychoice.biz/index.php?s=7555
 
 
-> At 03:16 PM 5/11/2004 +0530, Sudhir Barwal wrote:
-> >Hi everybody,
-> >I have the following config :
-> >Linux  : RedHat 8.0
-> >Squid : 2.5STABLE1
-> >The above system is working as a proxy server for all the local LAN
-clients.
-> >The problem :
-> >
-> >My ISP is allowing the total download say 1GB per month. If the download
-is
-> >exceded that limit they are charging extra money for that.
-> >
-> >My Question :
-> >
-> >Is there a way so that I can restrict the client to say
-> >10 Mb for 1 group
-> >50 Mb for another group
-> >and so on..
-> >I want this restriction on IP basis( e.g. say for 192.168.50.1 to
-> >192.168.50.50 should be allowed to download 10Mb and after that they
-should
-> >get the message ...something like ..."your download limit is over for the
-> >current month" or simply they should not be allowed to download anything
-> >beyond that limit, the same is true for other clients also and for
-> >192.168.50.55 to 192.168.50.90 permissible limit should be 50Mb)
-> >
-> >I have looked into the "Delay pool" option of Squid but that will be
-> >applicable to all the users.(Since there are some executives for whom I
-have
-> >to allow unlimited download, I know that they are not downloading much,
-and
-> >just surfing the net for 1-2 hours etc.)
-> >
-> >Please guide me to the right pointers.
->
-> You appear to be looking in the right place.
->
-> I have not actually done this myself, but as I read the docs, it is
-> possible to set up multiple delay pools and apply them to different users
-> (that is, IP addresses or address ranges). See
-> http://quark.humbug.org.au/publications/squid/aclsquid.html for an intro
-to
-> this approach ... the page indicates that the issue is an important one in
-> Australia. The spec includes providing for a delay pool with unlimited
-> access, which would seem to be what you want for your VIP users.
->
-> Delay pools themselves do not do *quite* what you want overall, but their
-> function may be close enough to serve your actual needs.
->
->
+Software packages you can save big on:
 
+Windows XP Professional
+Norton Antivirus 2004
+Adobe Photoshop 7.0
+Microsoft Office XP Professional
+Microsoft Office 2003 Professional
+Microsoft Money 2004
+Microsoft 2000 Professional
+Adobe Photoshop CS
+Adobe Pagemaker 7.0
+Adobe Illustrator 10
+Corel Draw Graphics Suite 11
+Adobe Acrobat 6.0 Professional
+Borland Delphi 7 Professional
+Visual Studio.Net Enterprise Architecht
+MS SQL Server 2000 Enterprise
+MS Windows Server 2003 Enterprise
+MS Windows 2000 Server
+Red Hat Linux 7.3
+
+
+
+Click here!!
+http://teddychoice.biz/index.php?s=7555
+
+
+
+
+
+
+
+
+
+pirate campbellbenson blowfish player dougie scooter1 chevy 
+sweety nauticasafety wolverin speedo
+canced petunia bozo 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
