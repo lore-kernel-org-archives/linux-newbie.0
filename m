@@ -1,103 +1,45 @@
 From: Ankit Jain <ankitjain1580@yahoo.com>
-Subject: Re: physical address?
-Date: Fri, 8 Oct 2004 13:05:16 +0100 (BST)
+Subject: address limitation
+Date: Fri, 8 Oct 2004 13:28:09 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041008120516.38539.qmail@web52909.mail.yahoo.com>
-References: <416662AB.8080000@verizon.net>
+Message-ID: <20041008122809.99434.qmail@web52906.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <416662AB.8080000@verizon.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jim Nelson <james4765@verizon.net>
-Cc: newbie <linux-newbie@vger.kernel.org>
+To: newbie <linux-newbie@vger.kernel.org>
 
-thanks a lot for helping all the way
+hi
 
-see inline
+well i am not able ot understand this... there are lot
+many more problems
 
- --- Jim Nelson <james4765@verizon.net> wrote: 
-> Ankit Jain wrote:
-> 
-> >hi
-> >
-> >http://www.xml.com/ldd/chapter/book/ch02.html
-> >
-> > 00000000-0009fbff : System RAM
-> > 0009fc00-0009ffff : reserved
-> > 000a0000-000bffff : Video RAM area
-> > 000c0000-000c7fff : Video ROM
-> > 000f0000-000fffff : System ROM
-> > 00100000-03feffff : System RAM
-> >  00100000-0022c557 : Kernel code
-> >  0022c558-0024455f : Kernel data
-> > 20000000-2fffffff : Intel Corporation 440BX/ZX -
-> >82443BX/ZX Host bridge
-> > 68000000-68000fff : Texas Instruments PCI1225
-> > 68001000-68001fff : Texas Instruments PCI1225 (#2)
-> > e0000000-e3ffffff : PCI Bus #01
-> > e4000000-e7ffffff : PCI Bus #01
-> >  e4000000-e4ffffff : ATI Technologies Inc 3D Rage
-> LT
-> >Pro AGP-133
-> >  e6000000-e6000fff : ATI Technologies Inc 3D Rage
-> LT
-> >Pro AGP-133
-> > fffc0000-ffffffff : reserved
-> >what is it reserved for?
-> >
-> >if somebody can explin me this:
-> >
-> >"Once again, the values shown are hexadecimal
-> ranges,
-> >and the string after the colon is the name of the
-> >"owner" of the I/O region. "
-> >
-> >  
-> >
-> 
-> What you are seeing is the remapped I/O space for
-> various components in 
-> your computer.  During bootup, the kernel scans the
-> various buses and 
-> identifies various devices.  Each driver remaps the
-> I/O space for PCI 
-> devices - "they are physical addresses in that those
-> memory addresses do 
-> map to real devices, but they are not real memory
-> addresses."
+/proc/iomem
+00000000-0009fbff : System RAM
+0009fc00-0009ffff : reserved
+000a0000-000bffff : Video RAM area
+000c0000-000c7fff : Video ROM
+000f0000-000fffff : System ROM
+00100000-077effff : System RAM
+00100000-00250d5b : Kernel code
+00250d5c-0034ac43 : Kernel data
 
-what do u mean by this? they are physical address but
-not the real memory address? what do u mean by
-physical address then?
+this is just a brief..... System RAM what does that
+mean? the range can just point 65K of RAM? what about
+rest? so what that means?
 
-> 
-> IIRC, the "reserved" area is the remapped kernel
-> address space - they 
-> set it up to remap to the top of the 32-bit memory
-> address range in 
-> order to allow hard-coded function calls - it is
-> faster to hard-code the 
-> function calls than to maintain symbol tables.
- 
-what is hard coded funtion calls? is it something like
-stting the pointer to starting location?
+also,
 
-> I see this computer is a laptop - now I understand
-> why you are reluctant 
-> to upgrade the RAM.
+on a 32 bit proceesor we can at the most have a access
+to 4GB of area as we have that many address space.
+well some what it look stupid but then also asking
+some where this blunder i have to clear, that how it
+access the hard disks which is of much high capacity?
 
-what tells that this is a laptop? 
+thanks again
 
-
-> >thanks
-> >
-> >ankit
-> >  
-> >
-> 
->  
+ankit
 
 ________________________________________________________________________
 Yahoo! Messenger - Communicate instantly..."Ping" 
