@@ -1,71 +1,51 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Firewall / Web Monitor
-Date: Wed, 30 Oct 2002 08:54:38 -0500
+From: Carl <carl@anexia.co.uk>
+Subject: Re: Firewall / Web Monitor
+Date: Wed, 30 Oct 2002 15:41:47 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
+Message-ID: <5.1.1.6.0.20021030150531.033637d0@interzone.anexia.co.uk>
+References: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0001_01C27FF1.FAD00D60"
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000001c2801b$e3a48ec0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0001_01C27FF1.FAD00D60
-Content-Type: text/plain;
-	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-I have a network of about 25 pcs and 4 servers. With moderate internet
-traffic. What kind of machine do you think I would need for a firewall
-only box? Ipchains or Iptables ( I have some experience with the latter
-and non with Ipchains). I would also like to be able to log where
-everyone is going. Such as what sites they are visiting, the time, and
-the pc that is making the request. Then if we see fit I would like to
-come up with a list of sites that they can visit while restricting all
-others. I would like to have this list be able to be split based on the
-different departments. One list for Accounts Payable one for inventory
-control, ect. Thanks for info. From what I have been reading squid can
-do this but squid says it's a caching server. I don't really think I
-need to cache pages though.
+At 08:54 30/10/2002 -0500, Paul Kraus wrote:
+>I have a network of about 25 pcs and 4 servers. With moderate internet
+>traffic. What kind of machine do you think I would need for a firewall
+>only box? Ipchains or Iptables ( I have some experience with the latter
+>and non with Ipchains). I would also like to be able to log where
+>everyone is going. Such as what sites they are visiting, the time, and
+>the pc that is making the request. Then if we see fit I would like to
+>come up with a list of sites that they can visit while restricting all
+>others. I would like to have this list be able to be split based on the
+>different departments. One list for Accounts Payable one for inventory
+>control, ect. Thanks for info. From what I have been reading squid can
+>do this but squid says it's a caching server. I don't really think I
+>need to cache pages though.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Paul,
 
-------=_NextPart_000_0001_01C27FF1.FAD00D60
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+Squid does indeed do all the jobs your asking for.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+The cache side of it is not a problem as you can turn the cache off or restrict
+the size of the downloaded files to help keep  the cache from becoming too
+large.
 
-------=_NextPart_000_0001_01C27FF1.FAD00D60--
+The ACL controls will allow you to set which sites can be accessed by which users
+at which times of the day. The sites that are allowed/disallowed are held in plain text
+files for easy reading or updating from the web (www.hklc.com maintain an on-line set of
+undesirable websites that can be used for blocking in squid. These are mainly porn and
+warez sites).
+
+I use SARG (http://web.onda.com.br/orso/index.html) for reporting on who is looking at what.
+
+--
+Carl
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
