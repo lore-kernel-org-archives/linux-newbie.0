@@ -1,37 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: partitons and proper order
-Date: Mon, 01 Nov 2004 09:14:26 -0800
-Message-ID: <5.1.0.14.1.20041101091124.01f2c198@celine>
-References: <Your message of "Sun, 31 Oct 2004 15:14:08 MST." <418563B0.6060306@kevino.org> <20041101070754.CE0D9255BA@heisspf>
+Date: Mon, 1 Nov 2004 20:33:12 +0100
+Message-ID: <200411012033.12853.pa3gcu@zeelandnet.nl>
+References: <20041101070754.CE0D9255BA@heisspf>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20041101070754.CE0D9255BA@heisspf>
-References: <Your message of "Sun, 31 Oct 2004 15:14:08 MST." <418563B0.6060306@kevino.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
-At 03:07 PM 11/1/2004 +0800, Peter wrote:
-
->mike@kevino.org said:
+On Monday 01 November 2004 08:07, Peter wrote:
+> mike@kevino.org said:
 > >  /boot partition within the first 500 megabytes of the drive.
 >
->20 MB would be more than enough. I have 3 kernels on my /boot and use a 
->little
->less than 10 MB
+> 20 MB would be more than enough. I have 3 kernels on my /boot and use a
+> little less than 10 MB
 
-You misread this, Peter. I did not write that the partition needed to be 
-500 MB large, just thet is needed to be within the first 500 MB of the 
-drive. In fact, I usually make it the first partition, and make it anywhere 
-from 10 to 50 MB, depending on specifics of the system (mainly, of course, 
-how many different kernels I expect to have on it at any time ... normal 
-systems will, as you suggest, do fine with 10 MB or even less ... also how 
-big the hard disk is).
+For what its worth.
+
+AFAIK the reason why we ever needed a /boot partition was a way around lilo's 
+former limit of booting from a partition ( or i had better say) a kernel 
+image which was placed beyond the 1023 cylinder limit of old style BIOS's.
+lilo does not have that limit anymore nor do most (i think i could say "all" 
+bios's) now a days. So what i am saying is the following.
+
+Today we don't need a separate /boot partition, one may have there own reasons 
+for doing so, but linuxwise, there is no reason to have one thesedays because 
+the old <1023 cyl, limit is gone for ever.
 
 
+> Regards
 
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
