@@ -1,82 +1,27 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Recovery help (Maybe OT)
-Date: Thu, 27 Jun 2002 18:52:04 -0700
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: Illegal user problem figured out
+Date: Thu, 27 Jun 2002 21:23:20 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020627184318.022718d0@celine>
-References: <20020627070631.96452.qmail@web13103.mail.yahoo.com>
+Message-ID: <20020628042340.NXPT5870.mtiwmhc23.worldnet.att.net@alan>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020627070631.96452.qmail@web13103.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: szonyi calin <caszonyi@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: Text/plain; charset="us-ascii"
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-Your description is a bit sketchy, but I wonder if the problem is that your 
-(partial, I assume interrupted) "rm -rf /" debacle caused /bin/sh to be 
-deleted. Since rc.S and rc.M are (almost surely) shell scripts (the first 
-line of each is all but certainly "#!/bin/sh"), they need the /bin/sh 
-interpreter to execute . Since it is apparently missing, based on your 
-reported "init=/bin/sh" failure, init is correct in telling you that these 
-init scripts "cannot execute".
+I had posted about an illegal user problem I was having that I couldn't log in a user that existed in my /etc/shadow /etc/passwd and my ldap database.
 
-The fix is to reinstall bash and symlink it to /bin/sh .
+After nuking my pam.d directory and going to only pam_permit.so and STILL having the problem.  I was able to find a little hint that perhaps ssh had a bug that would return a NULL pointer to pam.  Well, this in itself wasn't the cause of the problem.  However, due to chasing this error I installed a new rpm of openssh, which notified me that it had created a new sshd.conf file.
 
-That said, the suggestion someone else made, that you do a complete 
-reinstall, is probably the better way to go. There are probably other 
-"gotchas" waiting to be found on your partly-deleted system. Were I to have 
-the problem, I'd do this sort of patching only to get the system to the 
-point where I could get any unique, local content off it to another server.
+This caused me to look at my existing conf file to see a usersallow line in there.  And guess what I found to my horror?  A list of allowed users not including the one I've spent a week trying to figure out why I couldn't log in with!
 
-BTW, this is hardly off topic. In fact, it seems a prime candidate for a 
-beginner's list, since it is very much a rookie error.
+added user lfs to the list and wa la..  Now to rebuild that pam.d directory!
 
-At 09:06 AM 6/27/02 +0200, szonyi calin wrote:
->Hi
->I'm new to the list.
->If this is OT please tell me and i won't bother
->you again.
->
->I'm not a newbie but I need help.
->I managed to do a rm -rf /
->It erased my /bin /boot /dev
->and something from /mnt
->
->I recovered from backup but can't
->boot.
->
->I boot the default kernel, it boots fine.
->... boot messages here
->Mounting root ext2 fs read-only
->Freeing unused kernel memory
->Mounted devices in /dev
->Init version 2.83 booting
->INIT: cannot execute /etc/rc.d/rc.S
->INIT: cannot execute /etc/rc.d/rc.M
->INIT: cannot execute /sbin/agetty
->INIT: respawning too fast, disabled for five minutes
->
->Those files _are_ there and _are_ executable.
->(I verified by booting from the slackware 8.0
->install-cd and mounting the partitioin and ls -l)
->
->If I try to boot with init=/bin/sh
->
->No init found -- kerne panic :-)
->
-> From my experience this seems to be a /dev/ problem
+Alan
 
 
-
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
-
+Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
