@@ -1,28 +1,30 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Postfix as a relay - still get root's mail?
-Date: Fri, 05 Sep 2003 12:04:12 -0600
+From: Heimo Claasen <hammer@revobild.net>
+Subject: Re: TFT display on Debian GNU/Linux
+Date: 06 Sep 2003
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3F58D01C.5030604@shaw.ca>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <200309061134.h86BYOO8026092@gallantin.skynet.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-How can i configure postfix, having been set up with the
+It was indeed the Debian setup script that posed the problem, Ray.
+I think we tried just every combination of including/excluding any of
+the specific modules; doctored the X-configuration files etc. That was
+now some month ago (March/April); in the meantime I've thrown away most
+of the notes on all this. (Guarded the ones on the dubious video RAM
+entry: it's quite possible that the problem is there, as resolutions
+from a certain threshold on nay need sufficient video memory to allow for
+the corresponding mode-lines in the config.)
 
-relahost=my.isp.mailserver.com
-mydomain=isp.com
-myorigin=$mydomain
+BTW, both Debian-3.0/Woody and Mandrake-8.2 used the generic "nv" driver.
+Thus the difference wasn't there either.  We just couldn't find out where
+the glitch was with Debian.
 
-settings to still send mail sent to root (ie:  logwatches etc...) to the 
-local mailbox?
-
--- 
-Chris R.
-=======
-http://offline.pointclark.net/
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-09-05
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
