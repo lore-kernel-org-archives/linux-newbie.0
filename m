@@ -1,59 +1,60 @@
-From: Peter <peterg@fishinternet.com.au>
+From: Tobias Hirning <Tobias.Hirning@gmx.de>
 Subject: Re: root password
-Date: Sat, 02 Apr 2005 10:56:47 +1000
-Message-ID: <1112403407.6121.26.camel@localhost.localdomain>
-References: <5.1.0.14.1.20050330063201.02035bd0@celine>
-	 <5.1.0.14.1.20050330063201.02035bd0@celine>
-	 <5.1.0.14.1.20050401095907.01f50b78@celine>
+Date: Fri, 1 Apr 2005 20:03:04 +0200
+Message-ID: <200504012003.16580.Tobias.Hirning@gmx.de>
+References: <5.1.0.14.1.20050330063201.02035bd0@celine> <200504011823.16115.Tobias.Hirning@gmx.de> <200504011052.06961.eric@cisu.net>
 Mime-Version: 1.0
+Content-Type: multipart/signed;
+  boundary="nextPart1776293.DOgchDIHn7";
+  protocol="application/pgp-signature";
+  micalg=pgp-sha1
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20050401095907.01f50b78@celine>
+In-Reply-To: <200504011052.06961.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
+To: eric@cisu.net
 Cc: linux-newbie@vger.kernel.org
 
-On Fri, 2005-04-01 at 10:23 -0800, Ray Olszewski wrote:
+--nextPart1776293.DOgchDIHn7
+Content-Type: text/plain;
+  charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 
-(snipped)
-> 
-> If you (and Tobias, and anyone else) feel differently, then you should
-> act 
-> on your beliefs and provide this sort of information on request, I
-> suppose. 
-> So I do apologize for the suggestion that my personal view here
-> should 
-> restrict what you and others do. Please feel free to provide any 
-> information of this sort that you have, and be sure I will not
-> criticize 
-> you for doing so.
+Hi Ray!
+On Friday, 1. April 2005 18:52 Ray wrote:
+>> [...]
+> [..]
+> Get the shadow file and crack
+Yeah, I've done this on a big system and about 90% of the users used=20
+weak passwords.
+> [...]
+> Sniff the password from telnet/unsecure services
+Who is still using telnet? I wouldn't use telnet on a secure net=20
+either.
+Tobias
 
-Ray,
+=2D-=20
+GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
+Registered Linux-User #367044
+Registered Linux-Machine #262062
+http://counter.li.org
+Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
+Signatur nach =A72 2. d) SigG signiert.
 
-I just want to say that over the two years I have been subscribed to
-this list, I have learnt a great deal from you, both about Linux, and
-about integrity and attention to detail. Your contributions have always
-been considered, thorough, to the point and helpful.
+--nextPart1776293.DOgchDIHn7
+Content-Type: application/pgp-signature
 
-We have all, I think, learnt much about how to trouble-shoot our
-problems, just from reading the way you go about it.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.5 (GNU/Linux)
 
-I personally feel that your response in this case is a model of respect
-and openness, and thoroughly in keeping with what I think are the best
-traditions of free and open-source software. 
+iD8DBQBCTYzkVPy429AtcIURAqE8AJ9kAh/6el9NiNuqGEMCVf9VC8zwtQCcCGix
+/vZn+aysPTRaqtYVYuVxvJQ=
+=ZK9C
+-----END PGP SIGNATURE-----
 
-Most of us, I hope, can see both sides of this issue.
-
-Thank you for your continuing contribution to the list. I don't often
-see acknowledgements of this kind on lists, but I think this one is
-deserved.
-
-Sincerely, 
-
-Peter Garrett
-
+--nextPart1776293.DOgchDIHn7--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
