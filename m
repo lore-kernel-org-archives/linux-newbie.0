@@ -1,56 +1,55 @@
 From: Bill Davidsen <davidsen@tmr.com>
 Subject: Re: debate on 700 threads vs asynchronous code
-Date: Mon, 27 Jan 2003 16:48:52 -0500 (EST)
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.3.96.1030127163538.27928G-100000@gatekeeper.tmr.com>
-References: <1043660902.21075.11.camel@pc-16.office.scali.no>
+Date: Mon, 27 Jan 2003 17:08:54 -0500 (EST)
+Sender: linux-kernel-owner@vger.kernel.org
+Message-ID: <Pine.LNX.3.96.1030127165006.27928H-100000@gatekeeper.tmr.com>
+References: <20030123231913.26663.qmail@mail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1043660902.21075.11.camel@pc-16.office.scali.no>
+Return-path: <linux-kernel-owner+linux-kernel=40quimby.gnus.org@vger.kernel.org>
+In-Reply-To: <20030123231913.26663.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Terje Eggestad <terje.eggestad@scali.com>
-Cc: Lee Chin <leechin@mail.com>, linux-kernel <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
+To: Lee Chin <leechin@mail.com>
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-On 27 Jan 2003, Terje Eggestad wrote:
+On Thu, 23 Jan 2003, Lee Chin wrote:
 
-> Apart from the argument already given on other replies, you should
-> keep in mind that you probably need to give priority to doing receive.
-> THat include your clients, but if you don't you run into the risk of
-> significantly limiting your bandwidth since the send queues around your
-> system fill up. 
+> I am discussing with a few people on different approaches to solving a
+> scale problem I am having, and have gotten vastly different views
 > 
-> Try doing that with threads.
+> In a nutshell, as far as this debate is concerned, I can say I am writing a web server.
+> 
+> Now, to cater to 700 clients, I can a) launch 700 threads that each
+> block on I/O to disk and to the client (in reading and writing on the
+> socket) 
+> 
+> OR
+> 
+> b) Write an asycnhrounous system with only 2 or three threads where I
+> manage the connections and stack (via setcontext swapcontext etc), which
+> is progromatically a little harder
 
-Okay, I'm running my usenet exchange machines on Linux with Earthquake,
-one thread per socket, 300-500 sockets, 700-800GB/day with incoming rate
-spikes to 130Mbit on two 100Mbit NICs. What is it I'm supposed to try
-doing with threads?
+There are many other ways, involving use of async io for disk and select
+on some limited number of sockets per thread. If you want to wallow in
+analysis paralysis you can certainly do it. Take a look at existing
+usenet, mail, web and dns servers and you will see a number of ways to
+attack this problem, and correctly implemented most of them work fine.
 
-And if this is a webserver or anything like it, the incoming bandwidth is
-probably orders of magnitude below the outgoing... Hum, like a usenet
-reader server. Below, from a Linux box running Twister, also threaded per
-feed in and per reader socket out.
+I believe Ingo mentioned some huge number of practical threads when he was
+first talking about the latest thread library. If you believe it, or if
+you really will be happy at 700 tasks per server, then thread per socket
+is the easiest to implement, at least IMHO.
 
- load free buffs swap pgin pgou dk0 dk1 dk2 dk3 ipkt opkt  int  ctx   usr  sys idl  i_netK  o_netK
- 2.98  5.0  1807  0.0  544 2220  71  66  21   0 6173 3390 9600 17983     3  17  80  7170.8   941.9
- 4.77  4.5  1805  0.0 1117 6267  39 134 134   0 5403 3212 8780 20663     8  34  58  6645.4   978.9
- 2.35  4.3  1802  0.0 1529 6900  37 176 189   0 6134 3648 10007 18492    9  25  66  7470.4  1087.9
- 1.10  4.8  1800  0.0 1428 5609  33 149 150   0 5871 3447 9505 18028     9  25  66  7235.2   961.0
- 1.38  6.7  1798  0.0  970 6671  34 139 134   0 6250 3685 10051 20210    9  26  65  7503.4  1088.8
- 6.57  5.0  1797  0.0 1589 7673  89 184 188   0 5912 3571 9732 20165     8  33  59  7003.7  1169.3
- 2.30  4.6  1799  0.0 1648 5900  44 154 146   0 6539 3998 10660 17975    9  27  64  7631.0  1382.6
-
-Forgive the formatting, it kind of break with larger numbers...
+I'm using various news software which does most combinations of threading,
+select, and even full processes per client, and none of them strike me as
+being inherently better (as opposed to some being better implementations). 
+Ask Ingo how many threads you can really run in six months when the new
+kernel and thread bits are more stable, that's the only scaling bit I
+can't even guess. Pick one method, write code. I believe implementation
+will be more important than method, unless you make a *really* bad choice.
 
 -- 
 bill davidsen <davidsen@tmr.com>
   CTO, TMR Associates, Inc
 Doing interesting things with little computers since 1979.
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
