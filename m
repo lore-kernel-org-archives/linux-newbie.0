@@ -1,51 +1,50 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Tcsh: Append output to a file
-Date: Wed, 15 May 2002 07:52:24 +0100
+From: G Anna <drguruolai@eth.net>
+Subject: Can Listen; Cannot Talk
+Date: 15 May 2002 19:25:44 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020515065224.GA295@cam.ac.uk>
-References: <2.2.32.20020515010844.00e0918c@[192.168.1.23]> <20020515011704.GC1047@neon>
+Message-ID: <m3sn4tzfa7.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="Nq2Wo0NMKNjxTN9z"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020515011704.GC1047@neon>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+Dear All,
 
---Nq2Wo0NMKNjxTN9z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I have an external modem.  It has, apart from the telepone plug and
+the power plug, two plugs - one for speaker and the other for a mike.
+I have connected my head-phone/mike to this.
 
-> > >My question is: How do I append to an existing file?
-> > /usr/local/sbin/dsniff >>& dsniff.log &
-> Can you please tell me how to the same thing for bash? :)
-/usr/local/sbin/dsniff >> dsniff.log &
+Using minicom (with the help of AT commands) I am able to dial another
+phone.  The phone rings at the other end.  When they answer the phone,
+I can listen to their voice.  Its very clear too.  But they are not
+able to hear my voice.  Can anybody help me understand why this is so?
 
-if you just want output in the file,
+Am I doing any silly mistakes anywhere?  Kindly help me.  Pointers to
+relevant information would also be very helpful.
 
-/usr/local/sbin/dsniff >> dsniff.log 2>&1 &
+$ : using RH 7.1
+$ uname -a
+Linux wobble 2.4.16 #8 Tue May 14 14:15:58 IST 2002 i686 unknown
 
-if you want output and errors.
+Thank you for your time and effort.
 
-Steven Smith,
-sos22@cam.ac.uk.
+Cheers,
+anna
 
---Nq2Wo0NMKNjxTN9z
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+-- 
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+(9) I will not include a self-destruct mechanism unless absolutely
+    necessary.  If  it is necessary, it will not be a large red button
+    labelled  "Danger: Do Not Push". The big red button marked "Do Not
+    Push"  will  instead  trigger  a spray of bullets on anyone stupid
+    enough  to  disregard  it.  Similarly,  the ON/OFF switch will not
+    clearly be labelled as such. - Peter Anspach in "The Top 100 Things 
+    I'd Do If I Ever Became An Evil Overlord"
 
-iD8DBQE84gWoO4S8/gLNrjcRArSjAKDQModcNndOkLIlfvvpY+zfBSvN+ACfQ584
-awj4ZQLJx5hjjlHCiB+x3bk=
-=lNtE
------END PGP SIGNATURE-----
 
---Nq2Wo0NMKNjxTN9z--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
