@@ -1,98 +1,56 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: Debian Sid startup problems
-Date: Sat, 12 Jun 2004 11:32:53 -0700
+Date: Sat, 12 Jun 2004 13:47:20 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040612111803.01fd5808@celine>
-References: <5.1.0.14.1.20040611215205.01faf760@celine>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611183923.01fc9dc0@celine>
- <Pine.LNX.4.58.0406112102240.2201@debian-emach>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611215205.01faf760@celine> <Pine.LNX.4.58.0406121104520.1489@debian-emach>
+Message-ID: <Pine.LNX.4.58.0406121333170.1825@debian-emach>
+References: <Pine.LNX.4.58.0406112204310.2201@debian-emach>
+ <5.1.0.14.1.20040611160033.01fa0948@celine> <5.1.0.14.1.20040611160033.01fa0948@celine>
+ <5.1.0.14.1.20040611183923.01fc9dc0@celine> <Pine.LNX.4.58.0406112102240.2201@debian-emach>
+ <Pine.LNX.4.58.0406112204310.2201@debian-emach> <5.1.0.14.1.20040611215205.01faf760@celine>
+ <Pine.LNX.4.58.0406121104520.1489@debian-emach> <40CB459C.6050509@gelm.net>
+ <Pine.LNX.4.58.0406121307380.1504@debian-emach>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0406121104520.1489@debian-emach>
-References: <5.1.0.14.1.20040611215205.01faf760@celine>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611183923.01fc9dc0@celine>
- <Pine.LNX.4.58.0406112102240.2201@debian-emach>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611215205.01faf760@celine>
+In-Reply-To: <Pine.LNX.4.58.0406121307380.1504@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: James Miller <jamtat@mailsnare.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 11:20 AM 6/12/2004 -0500, James Miller wrote:
->This is all a bit beyond me, Ray.  But, taking your advice again, I looked
->in /etc/modules - nothing there referring to usb.  Then, I looked in
->/etc/rc2.d: there, I found S15usbmgr which I changed to NoS15usbmgr.
->Rebooted with the 2.6.5 kernel, issued startx - same system hang requiring
->a telnet session to reboot the machine.  Next, I looked in rcS.d.
->Nothing about usb in there, but I found something relating to another
->package I recently installed - hotplug.
+Well, I don't know if I can claim to have resolved my problems or not - I
+guess you'll have to be the judge of that.  But the display is back to
+working normally with the 2.6.5 kernel and I seem to have usb (at least my
+multi-reader) working as well.  So, here's what I've done.
 
-This is probably unrelated to your problem, but the apt-cache listing for 
-hotplug claims that it conflicts with (and is a replacement for) usbmgr. If 
-you are trying to  use both in init scripts, the results could be ... well, 
-unpredictable.
+I changed NoS15usbmgr back to S15usbmgr and rebooted the computer into
+console mode.  I issues startx, got a very brief blank screen with "no
+signal"  which quickly gave way to my normally-working gui.  I guess that
+means hotplug is the culprit here (left it commented out as NoS40hotplug
+in /etc/rcS.d).  Trying to find out if there were any conflicts between
+framebuffer and usb under the 2.6 kernel I googled framebuffer, restricted
+by usb, restricted by 2.6.  That gave me this article
+http://linux.derkeiler.com/Mailing-Lists/Debian/2003-07/0048.html , which
+didn't seem all that relevant.  However information contained at the end
+("load usbcore, uhci-hcd, usb-storage" and "mount -t usbfs none
+/proc/bus/usb"), I was able to get my multicard reader to show up in
+usbview.  I even formatted a flash disk, and successfully mounted and
+unmounted one.  The display continues to work normally.  Guessing that
+some wierd problems I was having while attempting to toubleshoot all this
+were related to a line I earlier inserted into /etc/fstab (the line was
+usbdevfs /proc/bus/usb usbdevfs defaults 0 0), I removed that line.  So,
+usb seems now to be working, as is the display.  I hate to just kind of
+thrash around and take wild stabs like this, but it did get me a few steps
+forward (got usb going) in this case.  I'm not quite clear on how to
+implement usb more coherently (maybe write a script?), but I suppose I'll
+ask more about that later.
 
->So, I changed S40hotplug to
->NoS40hotplug.  Rebooted, issued startx and - WALLA! - normal X and gui
->startup!  I'm not quite sure where to go from here, apart from doing some
->more testing to make sure the hotplug thing is the culprit (changing
->NoS15usbmgr back to S15usbmgr).
+Further feedback appreciated.
 
-This is a symlink to a script (in /etc/init.d). The next step (after the 
-one you suggest) is to read the script and see what it does ... most 
-likely, what kernel module(s) it installs. That should isolate the 
-conflicting item (daemon, kernel module, or whatever).
+James
 
->  I looked at the xfree log in /var/log
->that you mentioned, but could not identify any significant problem areas -
->not that my xfree log interpretation skills are much to speak of.
-
- From your earlier descriptions, it sounds like X is being stalled 
-somewhere in its initialization stage. What is the last thing X reports 
-doing in the log?
-
->Anyway, while I do a bit more experimentation, let me just ask what you
->think of upgrading X on this system to the latest 4.3?  I'd like to update
->it anyway.  Do you think it holds any potential for resolving this
->problem, or it could possibly interfere with any further troubleshooting?
-
-Especially since you are running Sid (Debian unstable), I always favor 
-upgrading to current versions when you are having trouble. Transient 
-problems in Sid packages are not all that rare -- that's in part WHY it's 
-called "unstable" -- so you just about always want to make sure a problem 
-is not just the result of a glitch in a package that has been fixed. In 
-fact, I'd go so far as to recommend a full upgrade or dist-upgrade, not 
-just upgrading to the current version of xserver-xfree86 (and any 
-dependencies it automatically upgrades).
-
-Unless you have one of the (extremely rare) cards that XFree86 occasionally 
-drops support for, there is no downside to upgrading your X packages that I 
-can think of.
-
->Similarly, a 2.6.6 kernel is now available for Sid.  While I'm not too
->wild about loading a new kernel (I run vmware and so will have to compile
->new modules for it if I upgrade the kernel), I would consider it if it
->held some potential for resolving the current display problem.  Any advice
->on that?
-
-No, none. As I said previously, I'm still using 2.4.something myself. You 
-need advice from someone else, someone current with 2.6.x kernels.
-
->Thanks so much for your input: at least I have a vague idea now
->of the problem's nature.
-[old stuff deleted]
-
-
-
+PS  I have yet to uncomment NoS99xdm so that the machine boots straight
+into the xdm login window like it used to, but am guessing that will work
+fine, since startx from the command line works now.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
