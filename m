@@ -1,68 +1,59 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Joseph Spainhour <spainhou@coastalnet.com>
 Subject: Re: Source Install - Service Start stop restart
-Date: Thu, 19 Sep 2002 08:27:00 -0700
+Date: Thu, 19 Sep 2002 11:42:14 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020919080150.024c1010@celine>
+Message-ID: <Pine.GSO.4.20.0209191057190.9272-100000@falcon.coastalnet.com>
 References: <000801c25fe1$b39e1fc0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <000801c25fe1$b39e1fc0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 09:37 AM 9/19/02 -0400, Paul Kraus wrote:
->When installing an app by source I have notice the don't usually include
->the startup scripts. Samba is an example of this. How can get/write a
->script that will all for the "service app start,stop,restart" to work
->for programs I install from source. I know I can write a script but
->looking at the ones that the rpms install(still using samba as my
->example) they seem pretty involved.
+Paul,
 
-There is no single, *general* answer to this question.
+  Some software comes with startup scripts, some does not. look in the
+souce driectory and look for a scripts, or a contrib
+directory. Normally if the software has such a script, it will be
+located in there.
+  You are the admin. If after you have tested the software and find it
+functional you should then decide how to start and stop the software,
+or use one of the premade scripts, if included in the source.
+  The pure magic of Unix is that YOU can decide how to do anything and
+everything. There are very few rules. You just need to learn the ones
+that go with your distribution.
+  Distributions are in a way, rulesets. This file goes here, this
+script does this at startup. Package managment is handled this way.
+This is basicly the only place that they all differ. They all run
+the Linux kernel, they all have some sort of init. Keep in mind 
+this is very general.
 
-As to getting scripts ... for the most part, these are added by the 
-maintainers of the packaging system, not the individual authors (or current 
-maintainers) of the programs. This makes sense in a way, because the init 
-scripts have to run in the right sequence, and interact proprely. The 
-details of that are distro related, so (for example) the part of package 
-install that creates the rc.*/S* symlinks is somewhat distro specific.
+Joseph
 
-That said ... where are you getting your source from? Debian source 
-packages (the system I know best) include a ./debian directory. One of the 
-things in it is the appropriate init.d script (for packages that require 
-one). If you are using RH source RPMs, you might see if they include 
-something similar. (If not, shame on Red Hat; it's not hard to include this.)
+ On Thu, 19 Sep 2002, Paul Kraus wrote:
 
-As to writing them ... I'm not quite sure what you are asking. The only way 
-to write shell scripts is to learn how to write shell scripts. If you do a 
-standard Google search, you'll find plenty of tutorial sites. Startup 
-scripts can be a lot simpler then what you see installed by packages -- the 
-much simpler Slackware init script sequence is probably still an example of 
-this (it used to be, anyway) -- but only if you are willing to skip the 
-error checking that most of the convoluted-looking parts are doing.
-
-In the end, this is one reason why I avoid installing from source as a 
-*routine* approach. I only do it for kernels and for packages in areas I am 
-particularly involved in (enough to want to *understand* the source, not 
-just "make" it), or occasionally for packages that distribute as source 
-only, perhaps for legal reasons. For routine apps, I use my distro's 
-packaging system. This is only one of many reasons for doing so (the most 
-important one for me is that the Debian maintainers do a very good job of 
-staying on top of security updates).
-
-BTW, one of the typos in your message actually stumps me. I don't know what 
-you meant to write here: "a script that will all for the "service app 
-start,stop,restart" to work". I assume "all" is a typo, but for what? 
-"Call", my immediate guess, doesn't really make the sentence make sense.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+->When installing an app by source I have notice the don't usually include
+->the startup scripts. Samba is an example of this. How can get/write a
+->script that will all for the "service app start,stop,restart" to work
+->for programs I install from source. I know I can write a script but
+->looking at the ones that the rpms install(still using samba as my
+->example) they seem pretty involved.
+->
+->Paul Kraus
+->Network Administrator
+->PEL Supply Company
+->216.267.5775 Voice
+->216-267-6176 Fax
+->www.pelsupply.com
+->
+->-
+->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+->the body of a message to majordomo@vger.kernel.org
+->More majordomo info at  http://vger.kernel.org/majordomo-info.html
+->Please read the FAQ at http://www.linux-learn.org/faqs
+->
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
