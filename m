@@ -1,44 +1,60 @@
-From: "Matthias U. Eifert" <Matthiaseifert@gmx.de>
-Subject: ghost users
-Date: Fri, 21 May 2004 18:33:53 +0200
+From: "Adam Luchjenbroers" <adam@luchjenbroers.com>
+Subject: skystar2\mt312 driver does not timeout under kernel 2.6.6
+Date: Thu, 20 May 2004 0:35:47 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S265023AbUEUXCZ/20040522020651Z+1@vger.kernel.org>
+Message-ID: <200405200435.AAA87673@m1.name2host.com>
+Reply-To: "Adam Luchjenbroers" <adam@luchjenbroers.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi Listmembers!
+Under kernel 2.6.6 (modules dvbcore, mt312, skystar2 loaded) dvbtune enters
+an infinite polling loop, as shown below.
 
-Recently I found something odd (I think...).
-First: My machine is a single-user desktop, no network attached except a modem-dialup to the internet. Nobody else is using this machine. Distro is SuSE 8.1, Kernel 2.4.19, and KDE 3.0.3 (I know, sounds 'bit outdated, but this system is fantastic reliable and stable).
+polling....
+Getting frontend event
+FE_STATUS:
+polling....
+Getting frontend event
+FE_STATUS: FE_HAS_CARRIER
+polling....
+Getting frontend event
+FE_STATUS:
+polling....
+Getting frontend event
+FE_STATUS: FE_HAS_CARRIER
+polling....
+Getting frontend event
+...
 
-When I issue the finger command I get the following:
-	matthias@hpa878:~> finger
-	Login      Name                  Tty      Idle  Login Time   Where
-	matthias   Matthias Eifert       :0       254d     Fri 17:46console
-	matthias   Matthias Eifert       pts/0      18     Fri 17:46
-	matthias   Matthias Eifert      *pts/1       -     Fri 17:47
+Under 2.4.20 it simply pauses a few seconds then
+receives an FE_TIMEDOUT and stops.
 
-similar thing with who:
-	matthias@hpa878:~> who
-	matthias :0       May 21 17:46 (console)
-	matthias pts/0    May 21 17:46
-	matthias pts/1    May 21 17:47
+The following code has been identified in dvbtune, and it looks simply like
+the driver is not responding with an FE_TIMEDOUT where perhaps it should be.
 
-If I don't misinterpret the concept of 'finger' there _should_ be only one user matthias indicatet, right?
-And what about the idle-time of 254 days? (I'm confused).
-
-So my simple question is if this is normal behaviour or not?
-Is my machine bewitched? Should I head for the local voodoo-master? ;-)
-
-Thanks for your patience,
-Matthias
-
-Oh, P.S.
-All applications are running fine, I experience no problems with the matter mentioned above. I'm asking just for reasons of curiosity. Thanks.
+while (((event.status & FE_TIMEDOUT)==0) && ((event.status &
+FE_HAS_LOCK)==0)) {
+fprintf(stderr,"polling....\n");
+if (poll(pfd,1,10000)){
+if (pfd[0].revents & POLLIN){
+fprintf(stderr,"Getting frontend event\n");
+if ((status = ioctl(fd_frontend, FE_GET_EVENT, &event)) < 0){
+if (errno != EOVERFLOW) {
+perror("FE_GET_EVENT");
+fprintf(stderr,"status = %d\n", status);
+fprintf(stderr,"errno = %d\n", errno);
+return -1;
+}
+else fprintf(stderr,"Overflow error, trying again (status = %d, errno =
+%d)", status, errno);
+}
+}
+print_status(stderr,event.status);
+}
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
