@@ -1,71 +1,55 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Network card and kernel module problems
-Date: Mon, 03 Feb 2003 09:24:49 -0800
+Subject: Re: unable to make dep; limit.h
+Date: Mon, 03 Feb 2003 09:49:02 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030203091129.02140130@celine>
-References: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
+Message-ID: <5.1.0.14.1.20030203094342.021343c0@celine>
+References: <20030202211210.A2446@jetty>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
+In-Reply-To: <20030202211210.A2446@jetty>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
+To: Richard Spencer <rspr@sunflower.com>, linux-newbie@vger.kernel.org
 
-At 09:56 PM 2/2/03 +0600, Amin wrote:
->Hi all,
+I didn't see any other replies to this. So while I'm sort of guessing here, 
+I'm reply in the belief that my suggestion is at least better than nothing.
+
+I notice that you are doing the compile from "linux-2.4.20". Normally, 
+scripts expect to find kernel source in /usr/src/linux . If you  do not 
+have it in such a directory (typically, you would actually put it in 
+/usr/src/linux-2.4.20 and make a symlink), then the script that looks for 
+"/usr/src/linux/include/linux/limits.h" would be unable to find it ... as 
+the last line of the error report you quote indicates (but without the full 
+include path).
+
+I'm not certain that this is the source of your problem, but it is probably 
+worth a look.
+
+At 09:12 PM 2/2/03 -0500, Richard Spencer wrote:
+
+>I hope someone can point me in the right direction. I tried to compile a 
+>new kernel (version 2.4.20) and I ended up with the following error message:
 >
->I use a Surecom EP-320X-S 100/10M Ethernet PCI adapter; I believe it's
->Myson MTD3xx compatible --- at least, I've used it before with Myson's
->fealnx.o module in Red Hat Linux 7.3.  The problem is I upgraded to RH8.0
->and find that the kernel does not already support the card.  I tried
->recompiling with built-in support (for the Myson module).  kudzu detected
->the card at startup and configured it.  I've set it up it using Red Hat's
->``neat'' tool (it uses DHCP), but it says it can't determine IP
->information, and to check the cables.
+>[root@jetty linux-2.4.20]# make dep
+>gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -o scripts/mkdep 
+>scripts/mkdep.c
+>In file included from /usr/include/bits/posix1_lim.h:126,
+>                  from /usr/include/limits.h:30,
+>                  from 
+> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:117,
+>                  from 
+> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/syslimits.h:7,
+>                  from 
+> /usr/lib/gcc-lib/i386-redhat-linux/egcs-2.91.66/include/limits.h:11,
+>                  from scripts/mkdep.c:35:
+>/usr/include/bits/local_lim.h:27: linux/limits.h: No such file or directory
+>make: *** [scripts/mkdep] Error 1
+>
+>I currently run Linux kernel 2.2.22 on a pentium laptop and RedHat 6.2 and 
+>I would appreciate any help or suggestions as to where to look. Thank you!
 
 
-Richard has given you good advice in his replies, but in looking at the 
-exchange, I think you may need a more plainly described troubleshooting 
-strategy. So I suggest this procedure:
-
-1. After boot/init has completed, use "lsmod" to see which modules have 
-been loaded. Look for fealnx on the list.
-
-2. If fealnx is not on the list, then look at the dmesg buffer (with the 
-"dmesg" comand) or your log files (probably in /var/log) to see if the 
-module tried to load and failed.
-
-3. Use "ifconfig -a" to see if your eth0 interface was created. If it was, 
-then either the kernel has builtin support for your NIC card or a suitable 
-module was loaded. If it was not, then you have some kernel- or 
-module-level problem that the prior steps failed to unearth.
-
-4. How does your host get its IP address? (I'm not sure how RH specifies 
-this -- look in the init file that starts networking, or see if your system 
-uses /etc/network/interfaces to control this.) If it is by DHCP, then check 
-if you omitted some kernel feature needed by DHCP when you did your custom 
-compile. This is easy to do because some of the kernel capabilities neede 
-for DHCP are not well described in the kernel-make Help file.
-
-Likely candidates for this mistake are in this part of the config file:
-
-         # Networking options
-         #
-         CONFIG_PACKET=y
-                 # CONFIG_PACKET_MMAP is not set
-                 # CONFIG_NETLINK_DEV is not set
-                 # CONFIG_NETFILTER is not set
-         CONFIG_FILTER=y
-         CONFIG_UNIX=y
-         CONFIG_INET=y
-
-5. If your interface gets its address by some means other than DHCP, you'll 
-need to tell us what it is.
-
-Finally -- in the future, please quote commands and their error-message 
-replies completely and exactly. Do not summarize of paraphrase ... it 
-requires us to guess too much about what is going on.
 --
 -------------------------------------------"Never tell me the odds!"--------
 Ray Olszewski					-- Han Solo
