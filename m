@@ -1,65 +1,45 @@
-From: "Matthias U. Eifert" <Matthiaseifert@gmx.de>
-Subject: Re: License issues of file formats
-Date: Wed, 2 Jun 2004 18:44:47 +0200
+From: "grady" <hornetguess@antihunt.com>
+Subject: Save a ton on Microsoft Office!
+Date: Thu, 03 Jun 2004 09:44:40 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200406021844.27709.Matthiaseifert@gmx.de>
-References: <200406021243.44731.michael.scondo@arcor.de>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Message-ID: <1086255880-17764__4417.7864598625$1086256007@excite.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200406021243.44731.michael.scondo@arcor.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain;; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org
 
-at Mittwoch, 2. Juni 2004 12:43 wrote Michael Scondo:
-> Hi to all,
-> Maybe this is the wrong list for my question, but I don't know a
-> better place..
->
-> I'm developing a GPL'ed vocabulary trainer and would like to
-> provide support for other vocabulary file formats.
-> But I'm not sure if I'm allowed to do so, especially in the case
-> of commercial programs' file formats.
-> So do you think there are restrictions by law ?
->
-> Btw., do you know a good collection of vocabulary files ?
->
-> Thanks,
-> Micha
+Need software but not the price that comes with it?
+We sell OEM software at major discounts.
+Don't pay the department store markups, buy on the internet.
+
+Free Delivery and Extra Discounts on orders over $200!
+
+Save yourself or your company thousands of dollars, reap the rewards!
+
+Q:  How can you sell this software as OEM ? It seems too good to be true - is there a catch?
+
+A:  There is no catch - the software versions that we sell are OEM (Original Equipment Manufacturer) which means you will receive the installation CDs only (they do not come in their original retail packing and do not include the manual). We do guarantee that all programs are the 100% full working retail versions - no demos or academic versions! When you order, you will receive all materials required for a complete installation - or your money back! Why pay hundreds of dollars more when you can get exactly the same but OEM-CD? You don't have to pay that much for the fancy box and manuals. 
 
 
 
-Micha !
+Click here!!
+http://magicisland.biz/index.php?s=7555
 
-I'm afraid I can't give legal advise. I'm not a lawyer and this 
-stuff is much to complicatet to me.
 
-Anyway, about vocabulary files, maybe the following is of some use 
-for you.
 
-I use steak or ksteak respectively. Steak is a german/english - 
-english/german dictionary. It's GPL'd and the vocabulary database 
-file is about 5.1 MB large and plain text. (ksteak is just the GUI 
-for steak under KDE).
-It came with my SuSE distro.
-The home of steak is 
-http://www.tm.informatik.uni-frankfurt.de/~razi/steak/steak.html
-but I haven't checked if the link is still valid or broken. Pls. 
-google for yourself.
 
-Furterhermore I have jdictionary here. It's a dictionary as well, 
-written in 100% java and GPL'd too. It supports english, german, 
-spanish and some other languages that have slipped my mind yet.
-You may want to have a look at 
-http://www.jdictionary.info.
 
-You didn't mention which language(s) your vocabulary trainer will 
-support but maybe this is of some help for you.
 
-Bye,
-Matthias
 
+
+
+bird cancedroman reznor pearl wanker megan vermont 
+fiona promethecorwin first mortimer
+garnet rambo1 trek 
+
+REMOV3: http://mycomp.biz/soft/chair.php
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
