@@ -1,29 +1,42 @@
-From: "Sean Rima" <sean@tcob1.net>
-Subject: Re: test after resubscribing
-Date: Sunday, 05 Oct 2003 15:09:46 +0000
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: USB Hotplug??
+Date: Sun, 5 Oct 2003 10:50:55 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a100=2f1_a3783fb0@fidonet.org>
-References: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <20031005145055.GA882@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20031005120942.12930.qmail@linux.ik5bcu.ampr.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Marco Calistri
+Greetings: I thought that "hotplug" merely meant a device could be
+plugged in/out without shutting off the power to the computer..
+Apparently there's more to it than that as I see a man and directory
+dedicated to "hotplug."
 
--=> Marco Calistri wrote to All <=-
+I'm a bit lost at this point especially since I've plugged in a flash
+drive, with the power off; noted the kernel finds it; changed the
+default filesystem to ext2; and use it as a regular drive mounted as
+/dev/sda1... So it's obvious that Slackware9.0/2.4.20 has configured
+things to work right out of the box..
 
+Seeing the hotplug directory and files I thought I might find an
+answer to my basic query: Can the device actually be plugged in and
+unplugged with the power on?? I read somewhere that firewire is
+hotpluggable but "don't do it," in many cases.. No details.. I still
+can't find the theory behind hot plugging.. As an EE you don't
+connect anything to a live bus with impunity; unless the bus is
+"dead" until it senses a load.. Maybe I can learn something here.
+<grin>
 
-Looks good here
+Any comments? TIA & enjoying the list..
 
-Sean
-
-... TCOB1 telnet:\\tcob1.thebbs.org 1800-0000 BST/GMT
-
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
