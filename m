@@ -1,49 +1,74 @@
-From: Kurt Sys <kurt.sys@rug.ac.be>
-Subject: smbfs and mount
-Date: Fri, 24 Jan 2003 18:22:03 +0100
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: export variables
+Date: Fri, 24 Jan 2003 17:37:32 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E31763B.1000002@rug.ac.be>
-Reply-To: kurt.sys@rug.ac.be
+Message-ID: <20030124173732.GA5031@cam.ac.uk>
+References: <200301240748.03285.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="wRRV7LY7NUeQGEoC"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200301240748.03285.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
-
-Hello,
-
-I have some troubles with mounting/unmounting smb-filesystems. I have 
-some smbfs-entries in my fstab and they mounted at startup (which is as 
-it should be). However, if I don't login as root, I can't mount/unmount 
-them,because
-
-# unmount: only root can umount //labmetserver/students from 
-/mnt/labmet/students
-
-I would like to not mount them at start-up, but mount them whenever I 
-need them. This works with the options 'noauto' and 'users' for CD's, 
-zipdrives, ntfs etc, but not for samba filesystems. So, I can 
-mount/unmount as 'ordinary' user as long as don't try to mount/unmount 
-samba filesystems. The options in fstab simply don't work for smbfs. Is 
-there any solution?
+To: ramzez <r4mz3z@yahoo.es>
+Cc: linux-newbie@vger.kernel.org
 
 
-thanks in advance,
-Kurt Sys
+--wRRV7LY7NUeQGEoC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> - -------------- test.sh ------------------
+> export MY_VAR=3D"SOME_VALUE"
+> echo "$MY_VAR"
+> - -------------- test.sh ------------------
+> later: chmod +x test.sh then run this script: ./test.sh
+>
+>   but when try to use this variable in my environment I can't do, if writ=
+e=20
+> "env" the nev variable MY_VAR doesn't appear ... I think that there are s=
+ome=20
+> protection about export variables, but how do I can export variables?
+The environment of a process cannot easily be changed from outside
+that process once the process has started running.  This means that
+exporting a variable does not do the obvious thing: if you run
+a shell script, which tries to export a variable, then that variable
+will only be exported to processes which are spawned by that shell
+script.  In particular, if test.sh contains
 
+export WIDGET=3Dwobble
 
-PS: By the way, I still have a problem with mounting samba filesystems 
-correctly, see an earlier mail of me to this list. I always get the message
+then running test.sh will have absolutely no effect on the environment
+of the shell which invoked it.
 
-# session request to LABMETSERVER failed (Called name not present)
+If you need to change a running shell's environment through a script,
+then you need to get that shell to source rather the script rather
+than to execute it.  To do this, go
 
-I would like to get rid of this too... Anyway, be prepared, I'll send 
-you detailed information next week :-)
+$ . ./test.sh
 
+This causes the shell to run test.sh as if it had been typed in at
+the command line, rather than spawning an entirely independent shell
+and running test.sh through that.
 
+Steven Smith,
+sos22@cam.ac.uk.
 
+--wRRV7LY7NUeQGEoC
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.0 (GNU/Linux)
+
+iD8DBQE+MXncO4S8/gLNrjcRAimGAKC/ngWkTfJA/bq4QD8k625XZQ1LeQCgobfW
+DCzgGR+0pwzRUkbxV8XDBzM=
+=EJJ/
+-----END PGP SIGNATURE-----
+
+--wRRV7LY7NUeQGEoC--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
