@@ -1,44 +1,46 @@
-From: "geoff" <geoff@gcbagley.uklinux.net>
-Subject: (Was) corrupt .deb file.
-Date: Wed, 11 Sep 2002 16:13:46 +0100
+From: Peter <pfheiss@philonline.com>
+Subject: Re: ssh error message
+Date: Thu, 12 Sep 2002 10:42:23 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000101c259a5$e66bde20$3830f7c2@gcb>
-Reply-To: "geoff" <geoff@gcbagley.uklinux.net>
+Message-ID: <200209120242.g8C2gNa01977@philonline.com>
+References: <20020910.205536.134671024.0.lawson_whitney@juno.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Mon, 09 Sep 2002 22:25:45 -0400."
+             <20020910.205536.134671024.0.lawson_whitney@juno.com> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Firstly, thanks for the reply.  I was very suspicious that both the DVD
-and EPROM distros of Woody, which came from different sources,
-should seem to have the same error.
 
-So,  I installed the EPROM version on my  other machine, a notebook,
-(wrecking Windoze98 in the process Hooray!)   and it installed OK.
+lawson_whitney@juno.com said:
 
-Therefore the answer must lie in the other machine.  This has a Pentium 3
-at 600MHz, and drives hda, hdb, (both 6.4Gb), and hdc (20Gb), and hdd
-a DVD 16 times  read only.
+> On Mon, 9 Sep 2002, Peter wrote: >
+> Sep  8 09:52:46 philonline apmd: apmd startup succeeded
+> Sep  8 09:52:46 philonline sshd: Starting sshd:
+> Sep  8 09:52:46 philonline sshd: execvp: No such file or directory
+> Aha! sshd.  I thought it was odd to try to run ssh as a daemon.
 
-I eventually found that the fault was due to insufficient strong coffee
-whilst
-partitioning and configuring my drives.  I now have both SuSE 8.0 and
-Debian Woody running fine on hdb and hdc respectively, and have tried
-loading new packages, and deleting others, on both.
+> try "file /usr/sbin/sshd" "ldd /usr/sbin/sshd" for details on shared
+> library problems; see if user 0 can run it from the command line: "/
+> usr/sbin/sshd" 
 
-It's going to be fun comparing them, and furthermore, getting  first hand
-experience  of the Distros  without raising the flame temperature  on the
-internet !
+]# ldd /usr/sbin/sshd
+ldd: /usr/sbin/sshd: No such file or directory.
 
-I now intend to try out the Free Pascal compilers on both.
+In none of the /bin /sbin directories is there any sshd file and I do not know 
+in which  program it is hidden in any of the install CDs of RH7.2.
 
-Best wishes, and thanks.
+These programs are installed:
+openssh-3.1p1-3
+openssh-askpass-3.1p1-3
+openssh-askpass-gnome-3.1p1-3
+openssh-clients-3.1p1-3
 
-Geoff
-G3FHL.
-
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
