@@ -1,44 +1,33 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: making a gateway with eth0 wired eth1 wireless
-Date: Fri, 31 Dec 2004 15:15:48 -0500
-Message-ID: <41D5B374.8010900@gelm.net>
-References: <Pine.LNX.4.58.0412310908020.7477@localhost.localdomain> <Pine.LNX.4.58.0412300834100.7477@localhost.localdomain> <41D4E124.2030702@gelm.net> <Pine.LNX.4.58.0412310908020.7477@localhost.localdomain> <5.1.0.14.1.20041231113330.0217ceb0@celine>
-Reply-To: chuck@gelm.net
+From: Peter <heisspf@skyinet.net>
+Subject: Re: retrieval
+Date: Sat, 01 Jan 2005 14:06:53 +0800
+Message-ID: <20050101060653.D86614E4F9@heisspf>
+References: <20041231045512.81128.qmail@web52901.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20041231113330.0217ceb0@celine>
+In-Reply-To: Your message of "Thu, 30 Dec 2004 20:55:12 PST."
+             <20041231045512.81128.qmail@web52901.mail.yahoo.com> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
-> At 02:18 PM 12/31/2004 -0500, chuck gelm wrote:
-> [...]
-> 
->>>> &, just for grins;
->>>> What is the model number of your LinkSys AP?
->>>
->>>
->>> WAP 11 ver 2.8. It's not the one that runs Linux, if you're wondering
->>> about that.
->>
->>
->>  Thanks. Oh. Hmmm, I've never heard of a wireless access point device
->> that runs linux. :-|
-> 
-> 
-> Do a Google search on "Linksys Linux" and follow the first link you get 
-> back, if you are curious about this device.
+Do a google for safedelete.
 
-Hi, Ray:
+DESCRIPTION
+       safedelete  provides  a way to safely delete files so they
+       can be undeleted on demand.  safedelete `deletes' files by
+       copying  them to a safedelete directory which is specified
+       at install time.  Files processed by safedelete are  given
+       a  new  unique  filename  after  they  are  placed  in the
+       safedelete directory.  This allows multiple copies of  the
+       same  file to be safedeleted without having to worry about
+       collisions with existing files.
 
-  Thanks.  Wow!  LinkSys really is making it easy to use their products
-with Linux.  :-)
-
-Regards, Chuck
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
