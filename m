@@ -1,38 +1,42 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: su command broken
-Date: Mon, 24 Feb 2003 18:45:21 -0800
+Subject: Re: scripting the "rec" function for a fixed time.
+Date: Mon, 24 Feb 2003 18:55:53 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030224183842.01ea2b68@celine>
-References: <200302251131.23055.Adam@Luchjenbroers.com>
+Message-ID: <5.1.0.14.1.20030224184821.01eb7e30@celine>
+References: <1046131264.10885.28.camel@smeagle>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200302251131.23055.Adam@Luchjenbroers.com>
+In-Reply-To: <1046131264.10885.28.camel@smeagle>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 11:31 AM 2/25/2003 +0930, Adam Luchjenbroers wrote:
+At 07:01 PM 2/24/2003 -0500, Peter Howell wrote:
+>I would like to be able to run the rec command unattended.  Right now
+>when executed, it will record sound until I hit C-c.  I would really
+>like to be able to right a script which will execute "rec ...", then
+>wait a specified period of time, then pass the C-c to it.  Or is there a
+>simpler way?
 
->using su to quickly login to root or to another user account fails, returning
->the error "invalid password"
->
->However, this password works fine to login from the login prompt.
->
->Where should I start looking to find the problem.
 
-With this little information, any suggestion is really a guess.
+I waited to see if anyone else would respond, since I cannot actually 
+answer your question.
 
-That said, I'd look for a mismatch between the su program and your other 
-authentication programs (like login). Possibly you've got an su that 
-doesn't use the PAM stuff properly; assuming you are using PAM, see if the 
-config program for su (maybe /etc/pam.d/su) differs in some way from other 
-PAM config files.
+"rec" is not a stock linux command, and I cannot readily identify a package 
+that includes that application (just trying to match on "rec" turns up 
+several hundred hits in the Debian package database). So I'd suggest you 
+tell us a bit more about your setup, including enough information that we 
+can identify and take a look at the package that includes this command.
 
-I encountered a transient problem of this source once with ftp 
-authentication on Debian Unstable (Sid) systems, and was able to fix it by 
-changing some entry  ... I forget the details now ... in 
-/etc/pam.d/wu-ftpd, until the error got cleaned up upstream.
+What file format does it record to, and does it record from standard 
+sound-card devices (like /dev/mixer or /dev/dsp)? Does its man page list 
+any command-line arguments (many video recording programs, for example, 
+accept a flag like "-t 5m" to specify recording time)?
+
+Writing a script of the sort you have in mind is a bit more complicated 
+than you might at first think, so you are wise to look for other options.
+
 
 
 
