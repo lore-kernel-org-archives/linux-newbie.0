@@ -1,32 +1,35 @@
-From: Jim Limmer <jim@heem.org>
-Subject: Postfix Transport question
-Date: Sun, 15 Jun 2003 18:49:14 -0400
+From: "James Turnbull" <james@lovedthanlost.net>
+Subject: Re: Spamassassin is ignoring user_prefs
+Date: Mon, 16 Jun 2003 10:47:28 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EECF7EA.2010206@heem.org>
+Message-ID: <002e01c333a0$ddbf46b0$d700a8c0@iih.usyd.edu.au>
+References: <3EECA70F.8030201@shaw.ca>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Chris Rose <offline@shaw.ca>, linux-newbie <linux-newbie@vger.kernel.org>
 
+Chris Rose wrote:
+> Or, it sure seems to be..  I don't know that this is the right place
+> to ask this, but it seems appropriate.  I have spamassassin being
 
+Actually try the spamassassin user mailing list:
 
-It seems more and more ISP's and companies are beginning to block IP's 
-on the MAPS DUL - which I bet blocks more legit mail then it does spam, 
-but I suppose each ISP has it's right to choose
-what mail to accept and reject. Anyway, I grow tired of manually adding 
-these to the transport file, and I don't want to resort to relaying ALL 
-my mail through my ISP's mail server.
+http://www.spamassassin.org/lists.html
 
-So, my question, Is it possible to configure postfix to behave in such a 
-fashion that if it gets a 550 error, it will try again, this time 
-relaying through a predetermined host?
+> called as part of my maildrop .mailfilter file, and it seems to
+> completely ignore both the .spamassassin/user_prefs and
+> .spamassassin/user_prefs.cf files, since i'm trying to blacklist an
+> address. but no joy.
 
-Thanks,
+Try the /etc/mail/spamassassin/local.cf file.  SpamAssassin checks this
+before anything else.
 
+Regards
 
--Jim
+James Turnbull
 
 
 -
