@@ -1,35 +1,23 @@
 From: Dave <howek@vcss.k12.ca.us>
-Subject: Re: Linux for Dummies?
-Date: Wed, 14 Jan 2004 21:16:37 -0800
+Subject: Accessing the A Drive - OpenOffice 1.1
+Date: Thu, 15 Jan 2004 17:09:47 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <bu57eh$rtt$1@sea.gmane.org>
-References: <40035BB8.7020404@kevino.org> <200401140713.i0E7DtD01739@skyinet.net>
+Message-ID: <bu7db6$9rb$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200401140713.i0E7DtD01739@skyinet.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Peter wrote:
-> My first 2 books were Linux in 24 Hours and Discover Linux.
-> 
-> I still consult them every now and then, even so I have now Linux in a 
-> Nutshell and Running Linux.
-> 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-Thanks... I'll look into them.  Everyone's suggestions really help.
+I can't figure out how to access the A drive.  I have a document saved 
+to a disk in my A drive (3 1/2 floppy) and now I want to open it from 
+OpenOffice 1.1.
+
+What the heck am I doing wrong?  (Maybe my A drive is not recognized by 
+SuSE 9.0?
 
 Dave
-
 -- 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "So many electrons and so little time!!"
