@@ -1,75 +1,47 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: net detection failure with old kernel
-Date: Mon, 15 Dec 2003 13:48:06 -0800
+From: Peter Garrett <peterg@fishinternet.com.au>
+Subject: Odd path changes with new Mozilla in Debian Sid/unstable
+Date: Tue, 16 Dec 2003 09:43:54 +1100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031215133800.01ff3b00@celine>
-References: <Pine.LNX.4.58.0312151450400.603@debian-box>
+Message-ID: <1071528233.22206.38.camel@DebiAnarchist>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0312151450400.603@debian-box>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie list <linux-newbie@vger.kernel.org>
 
-At 03:03 PM 12/15/2003 -0600, James Miller wrote:
->On a Debian install I recently did, I ended up getting a newer kernel to
->replace the 2.2.20 kernel I initially installed on the system.  But the
->old kernel remains on the system, and I can boot from it if I enter
->"LinuxOLD" at the command prompt.  The problem is, when I boot using that
->older kernel, the network doesn't work (it used to work fine prior to
->updating kernels).  The system loads the right driver for the card, but it
->somehow can't get a dhcp offer.  I'm wondering why this is.  Anyone have
->any ideas?  Here's an excerpt from a log file that shows the failed dhcp
->attempt:
+This is not exactly a problem, since currently Mozilla appears to be
+working. I'm curious as to why the following has happened:
 
-The log shows more than an inability to get a DHCP lease. After that fails, 
-it tries to use the old lease's IP address and ping the gateway (I assume 
-it is the gateway, anyway ... it is the DHCP server, at least). These are 
-the relevant lines:
+1. I updated to the latest Mozilla in Debian Sid by doing an "apt-get
+install mozilla".This installed Mozilla 1.5-3.
 
->Mon Dec 15 12:22:17 2003: No DHCPOFFERS received.
->Mon Dec 15 12:22:17 2003: Trying recorded lease 192.168.254.4
->Mon Dec 15 12:22:18 2003: PING 192.168.254.254 (192.168.254.254): 56 data 
->bytes
->Mon Dec 15 12:22:28 2003:
->Mon Dec 15 12:22:28 2003: --- 192.168.254.254 ping statistics ---
->Mon Dec 15 12:22:28 2003: 1 packets transmitted, 0 packets received, 100% 
->packet loss
->Mon Dec 15 12:22:28 2003: bound: renewal in 98438 seconds.
+2.Initially certain functions failed to operate. For instance, using
+Google was impossible as the browser would not send my typed search
+terms either with the "enter" key or by clicking on the relevant
+"button". In composer, similarly most of the buttons were unresponsive.
+In the mail program several icons were greyed out, and so on...
 
+3. I did a "dpkg-reconfigure" mozilla, and the application sprang back
+to life, but now when I try to start mozilla from the menu (the browser
+component) I get Mozilla-Firebird instead. (Firebird is 0.6.1) Mozilla
+--help returns the information: "Usage: /usr/lib/mozilla/mozilla-bin
+[options..] [URL], so I created a launcher with the /usr/lib/... path
+and this works fine. (This path is not in my $PATH.) 
 
-After the system has booted with this kernel, try the following:
+Changing the menu entry in gnome, I havent yet worked out how to do.
 
-         ifconfig -a
-         ping 192.168.254.254
-         (CTRL-C after about 10 seconds).
-         ifconfig -a
+Can anyone explain what might have happened? BTW, "which mozilla"
+returns /usr/bin/mozilla, and checking "ls -al /usr/bin/mozilla" shows
+that it is a link to "/etc/alternatives/mozilla".
+"/usr/bin/MozillaFirebird" is not a link; it appears to be the
+executable binary, or the launch script for it.
 
-Check the packet counts in the 2 ifconfig results. See if the TX count is 
-incremented. If not, the pings are not going out of the system. If yes, the 
-replies are not arriving. You might also see what the DHCP server is 
-logging about all of this, if you can.
+I'm cautious about altering the link for /usr/bin/mozilla, as I assume
+it is a way for Debian to find the binary... but then the link doesn't
+do what it's designed to do!
 
-This won't tell you the source of the problem, but it will pin the actual 
-problem down a bit. As to the source ... I'm assuming that the 2.2.20 
-kernel did get a DHCP lease from this server before you switched to 
-2.4.something_or_other and that you made no changes to the hardware or the 
-BIOS settings after you switched kernels. If those assumptions hold, the 
-only thing I can think of that is left is a corrupted NIC driver ... you 
-might check timestamps to make sure the module you are loading is the same 
-one you used to use.
-
-Sorry I can't suggest anything more specific. Oh, one long shot ... what 
-system is acting as a DHCP server here? Is there any chance it has some 
-security capability that causes it to notice that a different OS is 
-requesting a lease using a known MAC address? (I'm *really* reaching here 
-... I've never heard of a DHCP server doing this, but it would be a neat 
-anti-spoofing trick if one did.)
-
-[log details deleted]
-
-
+Ideas?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
