@@ -1,36 +1,63 @@
-From: Dan Bentson-Royal <dbentson@lcsd.k12.wa.us>
-Subject: Working with Network Printer
-Date: Fri, 02 May 2003 12:26:27 -0700
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Finding things
+Date: Fri, 02 May 2003 12:43:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.2.20030502122536.023a7be0@mail.lcsd.k12.wa.us>
+Message-ID: <5.1.0.14.1.20030502123558.01fd7d68@celine>
+References: <5.1.0.14.2.20030502122424.02b2f3f8@mail.lcsd.k12.wa.us>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.2.20030502122424.02b2f3f8@mail.lcsd.k12.wa.us>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I have a user that is eager to blaze trails with Linux OS. She has a 
-workstation install of RedHat 8.x
+At 12:25 PM 5/2/2003 -0700, Dan Bentson-Royal wrote:
+>I often cannot find where things are on my Linux box.
+>
+>What is the best way to look for something when I haven't a clue where (or 
+>if) I have it? I think I saw Eric Harrison use "locate" but when I do that 
+>it never finds things that I know are there. I did "man locate" and was 
+>even more confused than ever.
 
-I used the GUI to add a print queue. I tested it, got the successful test 
-print page. To that point, everything looks copacetic.
+Three possibilities, depending a bit on the nature of the "things" you want 
+to find, are:
 
-When in OpenOffice, I assumed that the print menu would list this printer. 
-It doesn't.
+locate -- this actually checks a database that is, in normal operation, 
+updated daily as a cron job. You don't say anything about your distro, 
+though, so I don't know if your system maintains the locate database or not.
 
-How do I add a printer to OpenOffice? Bigger question, how do I add a 
-printer to the computer and have it available to all applications? The 
-OpenOffice documentation says something about spadmin but I can't seem to 
-figure that out either.
+which -- this will find an executable that is in the PATH of the user 
+running it. Try it with "which which" to see what does. Remember that an 
+ordinary yser's PATH covers less ground than root's (on typical systems), 
+so this command will not find some common executables unless run by root.
+
+find -- this is the core capability, in that is searches all areas of all 
+mounted filesystems that the user has read rights for, using a starting 
+point the user specifies. The simplest way to use it is (as root, so you 
+have access to everything)
+
+         find / -name *filespec*
+
+Unwrapping this a bit:
+
+         the / says to start at the root (top) of the filesystem.
+         the -name says that the next thing listed will be what to look for.
+         *filespec* is a REGEX for what to look for. You can use wildcards 
+like * and ? here.
+
+For example, to find all gif files on a system, you would use
+
+         find / -name *.gif
+
+The man pages for locate, which, and find will tell you more. This should 
+be enough to get you started, though.
+
+BTW, I'm sorry that "man locate" confused you. But unless you say something 
+about *why* you found the man page confusing, I can't do more than sympathize.
 
 
-Dan Bentson-Royal
-La Center School District
 
-      When the only tool you have is a hammer,
-      every problem begins to resemble a nail.
-           --Abraham Maslow
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
