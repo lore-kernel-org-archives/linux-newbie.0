@@ -1,93 +1,77 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: start up script
-Date: Tue, 09 Mar 2004 06:09:47 -0800
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Spam from linux-newbie
+Date: Tue, 09 Mar 2004 07:05:59 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <404DD02B.5080903@bcgreen.com>
-References: <20040306104303.4475.qmail@web60602.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20040309064723.01f8cf48@celine>
+References: <20040309090735.55A3FD842@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040306104303.4475.qmail@web60602.mail.yahoo.com>
+In-Reply-To: <20040309090735.55A3FD842@heisspf>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Ravi Kumar Munnangi wrote:
-> Users,
->  
->   Iam working in a LAN with a number of systems.
->   A system has X hardware address and another has Y
-> hardware address.
->   I want to set the hardware address of the second
-> system
->   also to X.
+Peter -- This is simply too vague to permit a decent reply. Other replies 
+seem to be making different guesses about what you mean. I won't try to 
+guess. I offer what specifics I can below.
 
-ifconfig eth0 hw ether  00:56:BA:A4:81:02
+At 05:07 PM 3/9/2004 +0800, Peter H. wrote:
+>Hi,
+>
+>I have been spam free for the past 6 months. Now all of a sudden I get 
+>regular
+>spam by apparently a subscriber this list linux-newbie.
 
->   I also want to set the primary IP addresses of both
->   systems to 172.31.19.30.
->   So when I ping to 172.31.19.30, both the systems
->   should respond.
-ifconfig eth0 172.31.19.30   [[ may want to set netmask/BC]]
-> 
->   The topology of LAN we are using is star. All
-> systems
->   are connected to a Switch.
->   Does the settings change when we are using a bus
->   topology?
-Some switches may get confused by having the same
-MAC address on two ports... In somes cases, it may
-only send a packet to one fo the machines (usually
-the last one to use that MAC address))
+"apparently"? What does that mean? I hope you are not replying on the From: 
+line to infer the source, since From: headers are routingely spoofed in 
+SPAM. The only way (that I know of) to figure out the actual source of a 
+piece of SPAM is to review the Received: headers ... and since they too can 
+be spoofed, to a degree, even a review of them requires some care.
 
->   
->   Do I have to write a start up script?
->   How should I write?
-Write a regular shell script and then put it in
-the proper place.  If you have proper rc2.d
-script directories, then you can put it near the
-SNNnetwork scripts
+>Is it only me since I see no one else is complaining?
 
-For RedHat, that would be /etc/rc.d/rc[2345].d/S10network
-so you could try S09
-Otherwise, put it in the r.local file for those kinds of systems.
+I am impressed that you are "spam free". I'm not close to that. I do 
+succeed in filtering out most of my SPAM, though, so I could be getting the 
+same messages you are and not notice ... especially since you have 
+identified them so vaguely. I see mail from this list, in my summary lists 
+of messages, as coming from the sender, not the list, so I would not easily 
+spot any SPAM actually coming through the list.
 
-Setting the MAC addr needs to be done *BEFORE* you
-bring the card up. (or you need to bring it down).
-(under Linux)
+>Can it be stopped at the source that is at linux-newbie?
 
-For RedHat systems, however, you can use the MACADDR=
-variable in /etc/sysconfig/network-scripts/ifcfg-eth0
-and IPADDR=
+Earlier, you said the source was a linux-newbie subscriber. Here you seem 
+to say it is the list itself. Which is it? And how do you know?
 
-The RH scripts do the rest.
+If it is coming through the list ... well, the usual solution to this is to 
+filter messages at the list level. (Making the list subscribers only is 
+another control, though an imperfect one ... but probably not the right 
+approach for a beginners list.) Unfortunately, the list maintainer, whoever 
+he or she is, seems to pay no attention to the list, so I doubt anything 
+will get done unless the same problem occurs on an "important" vger list -- 
+like linux-kernel -- in which case we will be side beneficiaries of 
+whatever tightening gets done there ... even that part is just a guess, though.
 
+If you want to attempt to get the list owner's attention, the standard way 
+to do that ... at least for majordomo-based lists, and I believe 
+linux-newbie still is ... is to send a message to 
+"owner-linux-newbie@vger.kernel.org".
 
+>What information is needed?
 
-For the person who said that some cards don't support this,
-I would say that that is very rare to nonexistent..
-the MAC address needs to be softwar settable for
-things like prosxy arp and bridgng... In 17 years
-of playing with ethernet, Idon't rememember *ever* seeing
-a card that you couldn't set the MAC address on.
+Post a followup with a COMPLETE set of Received: headers quoted, as well as 
+whatever information you are using to make your judgments about the source 
+of the message, along with an explanation of how you are reading the 
+message to infer its source.
 
+>The spam comes with hostname constantly changing
+>in the Message-Id:, however, not the ISP itself.
+
+  I don't know what you mean by this part. You may need to provide 
+information from more than one message to clarify it.
 
 
->   My actual goal is to start 2 web servers on two
->   systems with same hardware address and same 
->   primary IP address but with different secondary
->   IP addresses. So when a request comes from a 
->   client, the request has to be seen by both 
->   systems. I will write some mechanism by which only
->   one will respond finally.
 
-
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-    Powerful committed communication. Transformation touching
-      the jewel within each person and bringing it to light.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
