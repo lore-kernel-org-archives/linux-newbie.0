@@ -1,48 +1,35 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: test as usual
-Date: Sat, 29 Jun 2002 17:37:41 -0400
+From: Alan Womack <arwomack01@worldnet.att.net>
+Subject: Need some help getting DSL connected in
+Date: Sat, 29 Jun 2002 17:30:24 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206292137.g5TLbfi09389@langhans.hartford-hwp.com>
-References: <20020629182645.3307.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <20020630003017.JIUT6230.mtiwmhc23.worldnet.att.net@alan>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020629182645.3307.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ik5bcu@tin.it
-Cc: linux-newbie@vger.kernel.org
+Content-Type: Text/plain; charset="us-ascii"
+To: "Majordomo leben.com" <linux-newbie@vger.kernel.org>
 
-Well, I can receive, but can no longer send!
+Windows Internet Connection Sharing is giving me fits getting my DSL shared onto my private home network.
 
--- 
-      Haines Brown
-	brownh@hartford-hwp.com
-	kb1grm@arrl.net
-	www.hartford-hwp.com
-        
+I have 2 network cards in my linux server (redhat 7.2)
 
-> From: "Marco Calistri" <ik5bcu@tin.it>
-> Mail-Followup-To: linux-newbie@vger.kernel.org
-> X-Priority: 3 (Normal)
-> Content-Type: 	text/plain; charset=US-ASCII
-> X-GPG-Fingerprint: F091 FA61 7C0C 53C4 C500  2D11 B34A EED0 ACF5 9270
-> X-URL: 	http://www.qsl.net/ik5bcu
-> Date: 	Sat, 29 Jun 2002 20:26:45 +0200 (CEST)
-> Reply-To: ik5bcu@tin.it
-> Sender: linux-newbie-owner@vger.kernel.org
-> Precedence: bulk
-> X-Mailing-List: 	linux-newbie@vger.kernel.org
-> 
-> It seems once again I can post but can't retrieve messages from this list.
-> This is just a test,please try to reply on the list.
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+Eth0 is set up as 192.168.0.5
 
+Eth1 is set up as 192.168.0.6
+
+My internal network is plugged into Eth1 and I am able to ping all my windows pcs fine.
+
+I want to plug the DSL ethernet connection into Eth0 and have my other machines "route" or use the 192.168.0.5 as the gateway to the internet.
+
+The modem is an Arescom 860 and appears to be permanently set for 192.168.1.1 with 255.255.255.252 for the subnet 
+
+After this I'm rather lost and don't know what other information to provide to allow someone to assist me.
+
+Thanks
+Alan
+
+Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
 
 
 -
