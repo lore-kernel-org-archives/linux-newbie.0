@@ -1,57 +1,56 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Intel 830 video chip with RH 7.2
-Date: Thu, 1 Aug 2002 06:27:23 +0000
+From: "Benny Pedersen" <linux-net@tcob1.net>
+Subject: Re: Blocking hackers
+Date: Friday, 12 Jul 2002 14:33:08 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02080106272304.01130@unix.pa3gcu>
-References: <20020801001427.80700.qmail@web10706.mail.yahoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <MSGID_110=3a300=2f15_6406591@fidonet.org>
+References: <004701c218d7$cf274dd0$0c00a8c0@qpbd103>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020801001427.80700.qmail@web10706.mail.yahoo.com>
+In-Reply-To: <004701c218d7$cf274dd0$0c00a8c0@qpbd103>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: dan ritter <k1dlr01@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thursday 01 August 2002 00:14, dan ritter wrote:
-> I have installed RH 7.2 on a VMWAre 3.1 running on a
-> DELL c400 with an INTEL 830 video chip.
+Originally to: Phillp Morgan
 
-A virtual machine under windows or under linux ???
+Hi Phillp Morgan
 
->
-> XFree86 does not work
+you wrote about "Blocking hackers":
 
-If its running under vmware then you have to install the vmware-tools in the 
-install of redhat, i dont have vmware 3 so i cant say howto do it, however i 
-would imagen its very much the same as 2.x, read the vmware "getting started" 
-guide.
 
->
-> My research indicates that I have the following
-> options
->
-> 1. upgrade to RH 7.3
-> 2. find an RPM for XFree86 that is 4.2++
-> 3. install XFree86 via the make/install
->
-> My first guess is to wait and install RH7.3 - but what
-> about the other 2 options.
->
-> Is make/install Xfre86 4.2++  so dificult ?
-> or
-> Does Rh7.3 also come with anything else that I might
-> need   Cisco 350 support or ....
-> or
-> I could not find an RPM for RH 7.2 that has XFree
-> 4.2++
->
-> thanks
+ PM> It looks like someone is trying to break into my system. This is
+ PM> out of my apache error log...
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+>> 61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET
+>> /MSADC/root.exe?/c+dir
+
+this is code red (virus on this computer)
+
+i will make a perl script that scans for root.exe or cmd.exe or simply
+just .exe and put this ip in my firewall and last put it on a page so
+others can see ip i have the ip blocked, well i can do this but i
+just dont since its bad behavior :-)
+
+ PM> Is there any way I can block this nasty person?
+
+block the ip from your firewall
+
+ PM> Who should I report this to?
+
+your isp in the abuse team
+
+
+ Benny Pedersen  http://fido.juncorg.dk/  icq:36248146
+
+
+...Today is the day you worried about yesterday.
+
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
