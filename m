@@ -1,50 +1,31 @@
-From: Andrew <ald2@arrakis.es>
-Subject: Re: ethernet nic install
-Date: Wed, 04 Aug 2004 18:49:40 +0200
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: advice on Apache/Linux
+Date: Wed, 04 Aug 2004 13:03:07 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <411113A4.9020800@arrakis.es>
-References: <410F692C.3070303@arrakis.es> <200408032120.37112.pa3gcu@zeelandnet.nl>
+Message-ID: <fc.004c4e00005efcfb004c4e00005efcfb.5efd04@palmertrinity.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200408032120.37112.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-pa3gcu wrote:
-> 
-> Firstly, you said "486" 
 
-Sorry. I was suffering from heatstroke. It's a very ancient pentium 60Mhz.
+I've been an eavesdropper for about nine months on linux-newbie and have
+learned a lot from all of you. Where can I subscribe (mailing list) to get
+the same kind of advice for my school's setup of Apache 2.0 running on Red
+Hat 2.4.18-14? I'm having a heck of a time configuring our site to my
+liking.
+cheers!
+Bill
 
-> Now secondly, why i ask are you using the 8139cp driver when your type of card 
-> needs the 8139too driver.?????
 
-Good question. I'm not. I have only used the 8139too driver and can't 
-figure out why there is any reference at all to the 8139cp (I didn't 
-even know it existed and didn't notice it until after my first post).
+Bill Stanard
+Academic Computing
+Palmer Trinity School
+Miami, Florida
 
-> 
-> I would place into /etc/rc.d/rc.netdevice the following;
-> 
-> /sbin/modprobe 8139too
 
-So far I have loaded it manually, from /etc.rc.d/rc.modules and with 
-'netconfig', which detects the nic if I remove the other one (see below).
-
-> Another thing here is that you state "eth1" is the interface concerned, that 
-> means its the second ethernet device in your system, do you have a working 
-> eth0 device and if so what is it and is it working.???
-
-Yes, 3c509 isapnp and yes.
-
-I shall have another go at the BIOS (It is the strangest I have ever 
-seen) and maybe come back to you.
-
-Thanks, anyway,
-
-Andrew
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
