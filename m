@@ -1,53 +1,49 @@
 From: "eddysan" <eddysan@alusis.ucb.edu.bo>
-Subject: Re: ?Copying 'difficult' CD-ROM discs
-Date: Mon, 19 Aug 2002 14:53:11 -0400 (BOT)
+Subject: Re: converting pdfs
+Date: Mon, 19 Aug 2002 15:08:50 -0400 (BOT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3243.65.173.62.82.1029783191.ucb@www.ucbmail.ucb.edu.bo>
-References: <3D5E8669.41B0CB38@gelm.net>
+Message-ID: <4651.65.173.62.82.1029784130.ucb@www.ucbmail.ucb.edu.bo>
+References: <NOMSGID_7223=3a9750=2f200_020813_193913__468bb3d9@fidonet.org>
 Reply-To: eddysan@alusis.ucb.edu.bo
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D5E8669.41B0CB38@gelm.net>
+In-Reply-To: <NOMSGID_7223=3a9750=2f200_020813_193913__468bb3d9@fidonet.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: nc8q@gelm.net
+To: lists@tcob1.net
 Cc: linux-newbie@vger.kernel.org
 
-Try using this command:
+See:
 
-mkisofs -J -r -l -allow-lowercase -V "CD label" -o image.iso /mnt/cdrom
+man xpdf
+man convert
 
-and you can mount this file system using...
 
-mount -t iso9660 -o loop,ro image.iso /mnt/cdromproof
-
-If you want burn in linux..
-
-cdrecord -v speed=8 dev=0,0,0 image.iso
-
-speed would be= 2,4,8,12,16
-
-If you have got problems just tell me..
-
-bye
-
-> Howdy, Y'all:
+> Originally to: All
 >
-> I have a commercial CD-ROM disc that resists being copied.
-> (using Eazy-CD-Creator v4.02 & Windows98se & CD-ROM R/W drive)
 >
-> It is used very frequently and I'd like to create a backup
-> and store the original in a safe place.
+> How should I convert a pdf into individual image files?  I do not care
+> what format the output is ...jpg...gif...pbm...tif
 >
-> I have a linux 'file server' system with a CD-ROM read-only drive.
+> Thanks,
 >
-> Can I create an '.iso' image of the original CD-ROM disc
-> using linux utilities/applications that can be 'burned'
-> with my Windows CD-ROM-writer software?
-> If 'yes', how or where to go for more information? ;-)
 >
-> Regards, Chuck
+>
+> Matthew Stapleton
+> ============================
+> http://webpages.marshall.edu/~staple12
+> "What good fortune for those in power that people do not think!" --
+> Adolph Hitler
+> ============================
+> -
+>
+> <-> Gateway Information.
+> This message originated from a Fidonet System (http://www.fidonet.org)
+> and was gated at TCOB1 (http://www.tcob1.net)
+> Please do not respond direct to this message but via the list
+>
+>
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie"
 > in the body of a message to majordomo@vger.kernel.org
