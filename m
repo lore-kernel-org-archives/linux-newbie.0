@@ -1,39 +1,35 @@
-From: 1stFlight <1stflight@ameritech.net>
-Subject: Redhat 9 Can't Compile a Kernel??
-Date: Tue, 22 Apr 2003 22:43:19 -0400
+From: "ramands" <ramands@indiatimes.com>
+Subject: oops in kmalloc
+Date: Wed, 23 Apr 2003 09:11:39 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304222243.19905.1stflight@ameritech.net>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200304230308.IAA12636@WS0005.indiatimes.com>
+Reply-To: "ramands" <ramands@indiatimes.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-admin@vger.kernel.org
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+Cc: whitnl73@juno.com, ray@comarre.com, sneakums@zork.net, marcus@infa.abo.fi, martin.zwickel@technotrend.de
 
- I get this error message when trying to compile kernel 2.4.20 patched to 
-.21-rc1. What's gone wrong here? Thanks	
+Hello, 
+i am getting OOPS in Kmalloc .
 
-												Darryl
+void **data;
+qset = 1000;
 
-[root@localhost linux-2.4.20]# make xconfig
-rm -f include/asm
-( cd include ; ln -sf asm-i386 asm)
-make -C scripts kconfig.tk
-make[1]: Entering directory `/usr/src/linux-2.4.20/scripts'
-gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkparse.o 
-tkparse.c
-gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkcond.o tkcond.c
-gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkgen.o tkgen.c
-gcc -o tkparse tkparse.o tkcond.o tkgen.o
-cat header.tk >> ./kconfig.tk
-./tkparse < ../arch/i386/config.in >> kconfig.tk
-drivers/ide/Config.in: 46: can't handle dep_bool/dep_mbool/dep_tristate 
-condition
-make[1]: *** [kconfig.tk] Error 1
-make[1]: Leaving directory `/usr/src/linux-2.4.20/scripts'
-make: *** [xconfig] Error 2
+dptr->data = kmalloc(qset * sizeof(char *), GFP_KERNEL);
+
+what could the possible the cause of the error 
+
+Raman
+
+
+Get Your Private, Free E-mail from Indiatimes at http://email.indiatimes.com
+
+ Buy The Best In BOOKS at http://www.bestsellers.indiatimes.com
+
+Bid for for Air Tickets @ Re.1 on Air Sahara Flights. Just log on to http://airsahara.indiatimes.com and Bid Now !
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
