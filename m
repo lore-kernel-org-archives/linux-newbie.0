@@ -1,59 +1,39 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: ssh error message
-Date: Tue, 10 Sep 2002 10:19:18 +0800
+From: "geoff" <geoff@gcbagley.uklinux.net>
+Subject: Corrupt .deb file.
+Date: Tue, 10 Sep 2002 09:39:45 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209100219.g8A2JJB01955@philonline.com>
-References: <CPIMSSMTPU12RIfKdRb00001c0a@cpimssmtpu12.email.msn.com>
+Message-ID: <000f01c258a5$b0ec00a0$a830f7c2@gcb>
+Reply-To: "geoff" <geoff@gcbagley.uklinux.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 08 Sep 2002 20:23:42 MST."
-             <CPIMSSMTPU12RIfKdRb00001c0a@cpimssmtpu12.email.msn.com> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Alan Womack <arwbackup@worldnet.att.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+
+I have two separate copies of the Debian GNU/Linux "Woody" 3.0 distro.
+One is on CDROMs, the other is on a DVD-ROM.
+
+They both fail to install when the installation reaches
+libc6_2.2.5-6_i386.deb
+which is stated to be corrupt.
+
+Is it possible that a corrupt file is being distributed,  or must I look
+closer to home ?
+
+My other distros (Mandrake,  Red Hat, SuSE 8.0  and FreeBSD4.4 Unix) all
+install OK
+including the SuSE DVD version.
+
+Anyone else had a similar experience ?
+I particularly want to  test drive Debian and the .deb installation system.
+
+Best regards
+
+Geoff
+G3FHL
 
 
-arwbackup@worldnet.att.net said:
-> Do you have the file:
-> /etc/ssh/sshd_config?
-
-Yes I have that file.
-]# locate /etc/ssh/sshd_config
-/etc/ssh/sshd_config
-
-
-]$ /etc/rc.d/init.d/sshd start 
-Starting sshd:execvp: No such file or directory
-                                                           [FAILED]
-> Please try running sshd from the command prompt. 
-
-There is no sshd to run; I mean in one of the (s)bin directories.
-
-locate sshd
-/etc/rc.d/init.d/sshd
-/etc/rc.d/rc0.d/K25sshd
-/etc/rc.d/rc1.d/K25sshd
-/etc/rc.d/rc2.d/S55sshd
-/etc/rc.d/rc3.d/S55sshd
-/etc/rc.d/rc4.d/S55sshd
-/etc/rc.d/rc5.d/S55sshd
-/etc/rc.d/rc6.d/K25sshd
-/etc/log.d/conf/services/sshd.conf
-/etc/log.d/conf/services/sshd2.conf
-/etc/log.d/scripts/services/sshd
-/etc/log.d/scripts/services/sshd2
-
-locate ssh
-/usr/bin/ssh-add
-/usr/bin/ssh
-/usr/bin/ssh-keygen
-/usr/bin/ssh-agent
-/usr/bin/ssh-keyscan
-
-Regards
--- 
-Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
