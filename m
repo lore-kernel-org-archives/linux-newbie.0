@@ -1,40 +1,89 @@
-From: Hal MacArgle <haltec@iceweb.net>
-Subject: Slack8.0 - 2.4.XX - ftpd missing?
-Date: Thu, 18 Apr 2002 15:28:28 -0400
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: vpn connection problem
+Date: Thu, 18 Apr 2002 20:32:24 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020418152828.A172@lnx2.w8mch.ampr.org>
-Reply-To: haltec@iceweb.net
+Message-ID: <02041820322408.04062@unix.pa3gcu>
+References: <3CBEE7A7.305A895B@yukthi.com> <01c501c1e6ef$bb8c7080$0901a8c0@system>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <01c501c1e6ef$bb8c7080$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Tom Beer <mailings@analogon.com>, ahrao@yukthi.com, linux-newbie@vger.kernel.org
 
-Greetings: Been running Slackware 8.0 - kernel 2.2.19 /or/ kernel
-2.4.5 /or/ kernel 2.4.13 and find I can't FTP that machine via my eth
-lashup.
+On Thursday 18 April 2002 15:43, Tom Beer wrote:
+> Hi,
+>
+> this is the newbie list, not the guru list :-)
 
-Ping works; telnet works; NSFD works, etc but trying ftp the machine
-reports: "Connected to lnx2" then a wait, "421 Service not available,
-remote server has closed connection." The opposite direction from the
-problem machine to any other machine running Slack 7.1; Slack3.5;
-RH6.2, etc - all fine.. It seems obvious, to me, that FTPD is not in
-evidence. I looked at the Configure file and see no obvious entries.
+Sure is "The newbie list", however this list has a reputation of having some 
+more experienced "LINUX" users floating around with (me for one) more than 10 
+years of linux usage, however i cannot claim to be a guru, just a more 
+advanced linux user willing to answer newbie questions when and if possable.
 
-I note there is no 'man ftpd' or 'man ftpaccess', like previous
-versions, so something must have changed and I can't find it...
+As a matter of fact this VPN question is of great interest to me as i for one 
+tryed setting up a windows machine behind a linux firewall to a vpn server 
+behind another linux firewall, the problems i encored were many, mostly due 
+to cooperate firewalls.
+I gave up considering i do not like the M$ way of life, i convinced my boss 
+to do things in other ways, with windows XP thats easy, remote desktop, it is 
+much simpler to get throb' a decent linux firewall with a few simple firewall 
+commands added to the linux machine(s).
 
-I looked thru all the docs including the source package to no avail.
+If i can be of help this half guru will comment on anything i see that rings 
+bells with me, i can even try out ones configuration as my situation here 
+sounds like/similar to the question askers.
+Other than that i promise nothing.
 
-Any suggestions?
+>
+> Can you provide a _little_ more information than
+> I have a M$ and a M$ which I want to connect to a
+> Linux gateway. What is your exact problem?
+> Have you log files. What have you tryed, what
+> failed. What's your assessment of the situation?
+>
+> Greets Tom
+>
+> ----- Original Message -----
+> From: Hanumanth Rao <ahrao@yukthi.com>
+> To: <linux-newbie@vger.kernel.org>
+> Sent: Thursday, April 18, 2002 5:35 PM
+> Subject: vpn connection problem
+>
+> > Hi Gurus,
+> >
+> > I have a situation for which i want a solution, hope somebody out there
+> > has got a solution.
+> >
+> > I have win98 and win2k professional vpn clients to be connected through
+> > a linux 6.1 box (gateway with ISDN connection) to a vpn server on the
+> > internet.  Im not able to get connected to the vpn server please
+> > suggest.
+> >
+> > Scenario
+> >
+> > Win98 & Win2K Professional (vpn clients)
+> >
+> >                   V
+> > Red Hat Linux 6.1 (Gateway, ISDN Connection,  MASQ enabled, IP_Forward
+> > enabled)
+> >
+> >                   V
+> > VPN Server (on Internet with real ip)
+> >
+> >
+> > Please let me know if anything to be done on the linux gateway.
+> >
+> > Regards
+> > Rao
 
-Cheers,
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-    Hal - in Terra Alta, WV,  -  Slackware Linux 8.0   (2.4.13)
-    haltec@iceweb.net | w8mch@iceweb.net..A M$ free environment     
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
