@@ -1,52 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: no working Mozilla after Sid dist-upgrade: suggestions?
-  RESOLVED
-Date: Thu, 29 Jul 2004 17:14:14 -0700
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: cron job for rsync
+Date: Fri, 30 Jul 2004 02:48:12 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040729171151.01fd0df8@celine>
-References: <Pine.LNX.4.58.0407261326010.1363@debian-emach>
- <5.1.0.14.1.20040716075506.01f20c68@celine>
- <5.1.0.14.1.20040716075506.01f20c68@celine>
- <5.1.0.14.1.20040716092314.01f08c58@celine>
- <Pine.LNX.4.58.0407261112300.1363@debian-emach>
- <Pine.LNX.4.58.0407261326010.1363@debian-emach> <Pine.LNX.4.58.0407291842350.1363@debian-emach>
+Message-ID: <Pine.LNX.4.44.0407300240000.20622-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0407291842350.1363@debian-emach>
-References: <Pine.LNX.4.58.0407261326010.1363@debian-emach>
- <5.1.0.14.1.20040716075506.01f20c68@celine>
- <5.1.0.14.1.20040716075506.01f20c68@celine>
- <5.1.0.14.1.20040716092314.01f08c58@celine>
- <Pine.LNX.4.58.0407261112300.1363@debian-emach>
- <Pine.LNX.4.58.0407261326010.1363@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 06:50 PM 7/29/2004 -0500, James Miller wrote:
->I think I've finally straightened out this problem.  I posted to the
->Debian users' list about it, and someone (privately) indicated to me that
->they'd had such a problem, and that it was traceable to a font permissions
->problem.  He had discovered this by using strace.  I didn't even know
->about strace, so I read up about it and also used it to start Mozilla.
->Sure enough, the browser segfaulted right at a font permissions error.  I
->chmod'ed that font (600 to 644), and afterward accessed the page in
->question with Mozilla with no segfault/crash.  I think I know why the
->problem exists: I'm still a bit hazy on permissions for various
->files/dirs, and copied over a bunch of truetype fonts from Windows to
->Linux.  I probably screwed up permissions in so doing.
->
->So, my (hopefully) final question in all this is: what permissions are
->fonts supposed to have?  These are in /usr/share/fonts/truetype.  I'd like
->to just change them all en masse (in case some of them are wrong) to the
->right permissions.  Any tips on doing this?
+Hello,
 
+I was considering adding an entry in crontab for automated synchronization 
+of files across two machines that I work on most frequently. One machine 
+is at work, while the other at home. I used ssh-keygen so that I am 
+able to be auto-authenicated to the machine at work from home. I want to 
+run a cron job that runs at home to update the a list of files (from 
+home->work if the most recent file is the one at home, or vice-versa.) 
 
-Based on a quick look at my working fonts directory, it appears that the 
-fonts themselves should be mode 644, and font directories within 
-/usr/share/fonts/truetype/ should be mode 755. This is what I would expect 
-them to be absent any specific information.
+I was particularly concerned about whether rysnc/rcp would be able use the 
+authorized-key values from my $HOME (which is non-root) to be able to 
+login to the remote machine. Do cron jobs run as root or can they be run 
+for particular users as well? 
+
+All ideas/inputs are appreciated. 
+
+Thanks,
+
+-K
+
+---------------------
+Biology is the only science in which multiplication means the same thing 
+as division.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
