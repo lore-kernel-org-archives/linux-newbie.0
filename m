@@ -1,44 +1,43 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: How to pick a distro?
-Date: Wed, 6 Apr 2005 16:21:52 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0504061614500.5570@localhost.localdomain>
-References: <425440DE.4000403@gmail.com>
+From: caszonyi@rdslink.ro
+Subject: Re: sound problems on Debian unstable
+Date: Thu, 7 Apr 2005 00:23:30 +0300 (EEST)
+Message-ID: <Pine.LNX.4.60.0504070022080.852@grinch.ro>
+References: <5.1.0.14.1.20050406092225.02059310@celine>
+ <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
+ <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <425440DE.4000403@gmail.com>
+In-Reply-To: <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Thu, 7 Apr 2005, NNK wrote:
+On Wed, 6 Apr 2005, James Miller wrote:
 
-> I was wondering what I should be looking at in the different distros before 
-> picking one to use.
+> On Wed, 6 Apr 2005, Ray Olszewski wrote:
 >
-> Being a total novice, I don't have much experience on Linux, so I'm wondering 
-> what I should be asking.
 >
-> Any advice?
+> With sb_irq=XXX (and so forth) in the same line as pas2, I do not get these 
+> sorts of error messages. Just a clean:
+> Pro Audio Spectrum driver Copyright (C) by Hannu Savolainen 1993-1996
+>
+> But sound still works very poorly. Very scratchy when I play mp3's/ogg's with 
+> pauses when I open an application, switch terminals or some other computer 
+> activity takes place.
+>
 
-In addition to Ray's advice, I'll add a couple of observations. The main 
-problem you'll want to adress at the beginning is hardawre compatibility. 
-Though that's gotten pretty good under Linux, you shouldn't just assume 
-your hardware will be supported. If some important element of your setup 
-is not supported, or is poorly supported, your foray into Linux could turn 
-sour quickly.
+Are you sure your soundcard is not sharing interrupts with other device ?
 
-A couple of ways to adress this: 1) find a distro with a good support 
-community (e.g., Ubuntu is a newbie-oriented distro with a really active 
-forum) and ask about your hardware there ahead of time. This presumes you 
-know what kind of hardware is in, or attached to, your machine. What kind 
-of NIC/modem, video card, hard drive controller card (if any), usb 
-devices, printer. That sort of thing. Short of finding out all that, you 
-could try a less involved option: 2) download and burn a copy of a live CD 
-like Knoppix, boot from it and see if everything works ok.
 
-James
+
+--
+?
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
