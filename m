@@ -1,50 +1,54 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Fwd: mac-ip pairs
-Date: Fri, 20 Jun 2003 10:17:22 +0300
+From: berthiaume_wayne@emc.com
+Subject: RE: Filesystem corruption in kernels 2.4.19, 2.4.20, 2.4.21
+Date: Fri, 20 Jun 2003 08:31:35 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306201017.22868.g38@rdsbv.ro>
-Reply-To: g38@rdsbv.ro
+Message-ID: <93F527C91A6ED411AFE10050040665D007AA86FA@corpusmx1.us.dg.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: beolach@juno.com, linux-newbie@vger.kernel.org
+Cc: linux-ide@vger.kernel.org
+
+	Conway, what other patches do you use beside the patches from
+Promise? Were the patches from Promise for 48LBA? If so, as you have already
+noted, these are no longer needed in lk 2.4.19 and onward. As for your
+issue, I, too, had the same battle; however, it was centered around
+reiserfs, using disk caching in conjunction with the write barrier and data
+logging patches, and powerfail scenarios. With lots of help from Jens Axboe
+and Chris Mason of SuSE, the problem was finally overcome. There are a
+series of patches to resolve this via SuSE. Their kernel source contains
+many fixes in this area and you should contact them. Jens usually monitors
+this mailinglist; however, Chris can be also found at
+reiserfs-list@namesys.com mailinglist. Either can be contacted thru SuSE.
+Regards,
+Wayne.
+
+-----Original Message-----
+From: beolach@juno.com [mailto:beolach@juno.com]
+Sent: Thursday, June 19, 2003 4:48 PM
 To: linux-newbie@vger.kernel.org
-
-hello
-
-I have a small problem:
-
-a network (something about half of a C class IPs) and some users who I'd like
-to "stick" them to only one IP; half of the computers get their IPs via dhcp,
-the others are fixed.
-
-I was thinking of mixing arp -f /etc/ethers with some iptables rules, but the
-question which arises is if I "stick" the mac on the ip, or the ip on the
-mac, i.e. if the mac X is tied to the IP Y, will the mac X be able to have
-the IP Z (since the IP Y won't allow itself to another ethernet)
-
-hope I'm not too ambiguous,
-
-thanks,
-
-petre
+Cc: linux-ide@vger.kernel.org
+Subject: Filesystem corruption in kernels 2.4.19, 2.4.20, 2.4.21
 
 
---
-Login: petre          			Name: Petre Bandac
-Directory: /home/petre              	Shell: /usr/local/bin/zsh
-On since Fri Jun  6 13:27 (EEST) on ttyv0, idle 16:52 (messages off)
-Last login Tue Jun 17 09:21 (EEST) on ttyp6 from ns.rdsbv.ro
-No Mail.
-No Plan.
+I've been having problems with major filesystem corruption on kernels
+2.4.19, 2.4.20, and 2.4.21.
+I'm pretty sure it's a problem with the driver for the PCI expansion IDE
+controller the drives are on,
+and I've reported this problem to the manufacturer (Promise Technology
+Inc, www.promise.com),
+but I haven't really gotten any help from them.  I've been considering
+sending this to the kernel mailing
+list, but I'm a little in awe of all the hardcore coders there, so I
+figured I'd see if I could get any help
+here first.
 
--------------------------------------------------------
-
--- 
-10:17AM  up 13 days, 20:51, 2 users, load averages: 0.69, 0.38, 0.19
-
+------------------------------------8<--------------------------------------
+----
+Any help resolving this would be appreciated,
+Conway S. Smith
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
