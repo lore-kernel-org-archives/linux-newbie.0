@@ -1,39 +1,38 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: unicode under Linux question
-Date: Mon, 29 Mar 2004 14:00:11 -0600 (CST)
+From: Rei Shinozuka <shino@panix.com>
+Subject: 3 button optical mouse
+Date: Mon, 29 Mar 2004 18:19:25 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0403291339210.1036@debian-emach>
+Message-ID: <20040329231925.GC12375@panix.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Newbie Linux Users <linux-newbie@vger.kernel.org>
 
-I don't know if this list is the right place to ask questions about using
-unicode fonts under Linux.  But maybe it's at least a place to start.
-So, here goes.  I may be needing to use some unicode fonts (i.e., input
-unicode), and so have been doing a bit of research on the web.  I think
-the overall effect of that is that I'm getting more confused, rather than
-more enlightened.  Maybe getting some input from more experienced Linux
-users here can help clear the fog.  Here's what I think I understand, in
-general terms, about unicode input: the operating system handles it, and
-there should be a way of "telling" the OS that a unicode font is desired.
-I guess it shifts its mapping of keyboard keys somehow when so "told."
-Under other, less versatile operating systems, I think the keyboard
-mapping can be changed like this by using a certain key sequence - e.g.,
-left ctrl-shift.  Is there some counterpart like this under more versatile
-operating systems like Linux?  This, at present, appears to me the main
-issue I need to work out, since I know that alot of "higher level"
-applications that run under Linux (e.g., open office) can handle unicode
-fonts - at least they can display them.  But in order to input them, as I
-understand it, requires some keyboard implementation at the operating
-system level.  Corrections, comments and pointers welcome.
 
-Thanks, James
+i was delivered a linux system with a belkin 3 button ball-type PS2 mouse.
+two problems:
+1) don't like ball-mice
+2) i boycott belkin
 
-PS  I'm using a Sid Debian system with the latest OO (1.1, I believe)
-installed, if that information helps.
+is it possible to get a 3-button optical mouse to replace it?  all of
+the mice i can find have scroll wheels and i have no idea if they 
+work with linux, and they seem like they would be uncomfortable as 
+a 2nd mouse button.  advice?
+
+i ordered a happy hacker's keyboard because it laid the keys out like
+they should be, and its tiny footprint.
+
+thanks!
+
+-rei
+
+-- 
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
