@@ -1,56 +1,41 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Accessing the A Drive - OpenOffice 1.1
-Date: Thu, 15 Jan 2004 17:24:11 -0800
+From: joy <gracecott@sancharnet.in>
+Subject: Re: X not starting at all
+Date: Fri, 16 Jan 2004 10:07:54 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040115171632.01f0df48@celine>
-References: <bu7db6$9rb$1@sea.gmane.org>
+Message-ID: <40076AA2.6020801@sancharnet.in>
+References: <011520040505.8108.40a4@comcast.net>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <bu7db6$9rb$1@sea.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: beolach@comcast.net
+Cc: linux-newbie@vger.kernel.org
 
-At 05:09 PM 1/15/2004 -0800, Dave wrote:
->I can't figure out how to access the A drive.  I have a document saved to 
->a disk in my A drive (3 1/2 floppy) and now I want to open it from 
->OpenOffice 1.1.
+
+>This (obviously) doesn't work.  What it is, is the nvidia driver has two
+>parts; a kernel module (the nvidia.ko file), and a X driver.  When you run
+>the installer from nvidia's website, they should install to the correct
+>locations - you shouldn't need to move any files (the correct locations are
+>/lib/modules/2.6.1/kernel/drivers/video/nvidia.ko &
+>/usr/X11R6/lib/modules/drivers/nvidia_drv.o).  What you will need to do
+>is edit the X config file, usually /etc/X11/XF86Config or XF86Config-4.
+>In this file, you need to go to the display device section and change the
+>line that says:
+>    Driver      "nv"
+>to say
+>    Driver      "nvidia"
+>  
 >
->What the heck am I doing wrong?  (Maybe my A drive is not recognized by 
->SuSE 9.0?
-
-It's hard to tell you what you are doing "wrong" when you do not say what 
-you are doing in the first place.
-
-So ... try this.
-
-1. Put the floppy in the floppy drive.
-
-2. su to root (in an xterm or eterm, probably ... I surmise you are at an X 
-display).
-
-3. Enter this command:
-
-         mount /dev/fd0 /mnt
-
-4a. If you get an error message at step 3 that you cannot interpret, post 
-it here (quote it exactly and completely, please) and we'll try to help. 
-(For example, SuSe 9.0 neither recognizes nor does not recognize "drive A". 
-Particular Linux kernels will or will not have support for the floppy 
-device itself, and will or will not have support for the msdos filesystem 
-on a normal floppy made on a Windows host. The error message will tell you, 
-or us, whether you have one of these problems.)
-
-4b. If you do not get an error message at step 3, enter this command:
-
-         ls -l /mnt
-
-5a. If you get an error message at step 4b that you cannot interpret, post 
-it here (quote it exactly and completely, please) and we'll try to help.
-
-5b. If you do not get an error message at step 4b, you should see your file 
-listed as part of the response to that command.
+Thanks again, the problem was that nvidia_drv.o was not being placed in 
+the right place (/usr/...)
+I had to do a find .|grep nvidia to find the module(buried in the 
+NVIDIA...... installation directory)
+and cp it to the right place <phew>. Now xinit works fine but startx 
+hangs. Also my shiny new 2.6.1 kernel locks hard pretty often
+(considering that my 2.4 kernel never did) Any ideas as to Why???????
+and how do I change the resolution?
 
 
 
