@@ -1,45 +1,26 @@
-From: dalgoda@ix.netcom.com (Mike Castle)
-Subject: Re: Question about "find -exec"
-Date: Wed, 24 Jul 2002 00:07:37 -0700
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: extended list of e-mail aliases
+Date: Wed, 24 Jul 2002 07:35:58 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <pnjlha.6fv.ln@thune.mrc-home.org>
-References: <3D36DDA3.FA0F073C@gmx.net> <200207190752.38161.linux-newbie@jimmo.com>
+Message-ID: <200207241135.g6OBZwE15485@langhans.hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie@langhans.hartford-hwp.com
 
-In article <200207190752.38161.linux-newbie@jimmo.com>,
-James Mohr  <linux-newbie@jimmo.com> wrote:
->You need to tell -exec which file to process. This is done with curly braces:
->
->find /mnt/c/ -name *.snm -exec ls {} \;
->
->However, without the -exec, your command will simply list the files anyway. I 
->am assuming that this is just an example, and you would want to do more than 
->just list the file name. You could exand this concept and use the curly 
+I've been using short e-mail alias lists with success, but one group I
+serve has grown to more than 50 members. My system won't accept an
+alias list over that size. 
 
-Also, you should realize that for each file processed, there is the
-overhead of fork()/exec() calls.
+Rather than send out duplicate messages to sub-groups of fifty
+addresses each, I'd prefer to have one alias list to simplify list
+maintenance. I've tried various work-arounds, but without success.
 
-You would probably find something like:
+Any suggestions? I'm running RH 7.3.
 
-find /mnt/c -name '*.snm' | xargs -r ls -l 
-
-to be significantly faster.
-
-If you expect that there will be any spaces involved, consider using
--print0/-0 in addition:
-
-find /mnt/c -name '*.snm' -print0 | xargs -0 -r ls -l 
-
-mrc
--- 
-     Mike Castle      dalgoda@ix.netcom.com      www.netcom.com/~dalgoda/
-    We are all of us living in the shadow of Manhattan.  -- Watchmen
-fatal ("You are in a maze of twisty compiler features, all different"); -- gcc
+Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
