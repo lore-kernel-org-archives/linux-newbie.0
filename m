@@ -1,31 +1,43 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: ? wireless 802.11b, D-Link DWL-520
-Date: Sat, 20 Apr 2002 11:52:59 -0400
+From: lawson_whitney@juno.com
+Subject: Re: ncurses
+Date: Sat, 20 Apr 2002 12:03:17 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <a9s368$i2s$2@main.gmane.org>
-References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <3CBD9E75.1030802@lvcm.com>
+Message-ID: <20020420.123226.134669216.0.lawson_whitney@juno.com>
+References: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: nc8q@gelm.net
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: inavaganza@yahoo.com, lawson_whitney@juno.com
+Cc: linux-newbie@vger.kernel.org
 
-Howdy, Ladies and Gentlemen newbie guru's"
+On Thu, 18 Apr 2002, glen wrote:
 
- I'd would like a wireless (802.11b) link between two hosts:
-kernel-2.2.19 (Slackware-7.1) k6-266 
-kernel-2.4.17 (Slackware-8.0) 80586x120
+> I am trying to use the menuconfig command to upgrade
+> my kernel.  It returns the error that I need Ncurses
+> installed.  I installed Ncurses and ran ldconfig.  I
+> still get the error:
+>
+> rm -f include/asm
+> ( cd include ; ln -sf asm-i386 asm)
+> make -C scripts/lxdialog all
+> make[1]: Entering directory
+> `/usr/src/linux/scripts/lxdialog'
+> /usr/bin/ld: cannot find -lncurses
+> collect2: ld returned 1 exit status
+>
+make menuconfig compiles a program that uses ncurses.  To do that on an
+rpm-based system, you need to install both ncurses and ncurses-devel.
+You need ncurses to run a program that uses ncurses, and ncurses-devel
+to compile such a program on your system.
 
- I am installing D-Link DWL-520 PCI cards.
+Lawson
 
-How do I configure the cards, /usr/src/linux/.config ?
+Only guessing, of course.
 
-How do I set them up for an 'ad-hoc' network?
 
-How do I configure the cards to use one channel among 1 through 6?
-
-Kindest regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
