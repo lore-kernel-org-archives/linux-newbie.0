@@ -1,42 +1,48 @@
-From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
-Subject: /cdrom fails to unmount
-Date: Tue, 22 Jul 2003 11:19:59 -0400 (EDT)
+From: Amin <raihan@citech-bd.com>
+Subject: Re: Multi-kernel in grub
+Date: 22 Jul 2003 21:43:13 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.43.0307221116460.20338-100000@perpugilliam.csclub.uwaterloo.ca>
+Message-ID: <m3ptk24lf2.fsf@localhost.localdomain>
 References: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
-Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: travis@wsor.net
+Cc: linux-newbie@vger.kernel.org
 
-In Deb.woody, kernel 2.4.18, I have the following problem:
+"Travis" <travis@wsor.net> writes:
 
-mount /cdrom
-"sure," the computer says, "I will."
+> My problem came at "Next, you have to copy the appropriate files so that
+> linux can boot from the new kernel."  I copied the vmlinuz image created
+> by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
+> file by copy-and-pasting my current RH boot section and simply changing
+> the label and pointing the vmlinuz-matrox as the kernel to load.
+> 
+> When booting I got an error very quickly.  I have been searching for a
+> grub multi-boot kernel tutorial and have read most of the applicable
+> grub user-guide, but to no avail.  If someone could point out a good
+> tutorial or give a few things to try, I would appreciate it.  Thanks in
+> advance.
 
-cd /cdrom
+The problem is Red Hat is not satisfied by the files you've
+copied, etc. etc.  It's best to let Red Hat's built-in
+scripts do this.  After the compilation, do a
 
-mplayer -fs whateverthehellI'mwatching
-"Okay," says the computer.
+# make install
 
-cd
-"No problems," says the beast.
+This, according to the Official Red Hat Linux Customization
+Guide (p. 257), will copy your new kernel to its proper
+place, create an entry for it in the boot loader's menu, and
+if necessary, make an initrd image for you (initrd is
+necessary if you use ext3 or SCSI devices).
 
-umount /cdrom
-umount: /cdrom: device is busy
-Or in other words, "*$^! you!"
+You can get the Guide at www.redhat.com/docs/manuals/linux.
 
-No processes that I could identify suggested themselves as the visible
-culprit. Rebooting works, but killing the x-session doesn't.
-
-Help, anyone?
-
-Dan
-
+HTH,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
