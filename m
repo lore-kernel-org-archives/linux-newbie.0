@@ -1,40 +1,55 @@
-From: Ramzez <r4mz3z@yahoo.es>
-Subject: Where do I look up scripts for konqueror?
-Date: Fri, 20 Sep 2002 08:48:44 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: my linux connection is slow
+Date: Tue, 24 Sep 2002 14:31:27 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200209200848.51887.r4mz3z@yahoo.es>
-References: <20020813.183924.-265271.6.matthewstapleton@juno.com> <3D5A9808.7060802@jpl.nasa.gov>
+Message-ID: <5.1.0.14.1.20020924142306.025f3510@celine>
+References: <200209201102.05454.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D5A9808.7060802@jpl.nasa.gov>
+In-Reply-To: <200209201102.05454.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Ramzez <r4mz3z@yahoo.es>, linux <linux-newbie@vger.kernel.org>
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+At 11:01 AM 9/20/02 -0500, Ramzez wrote:
+>-----BEGIN PGP SIGNED MESSAGE-----
+>Hash: SHA1
+>
+>Hi...
+>   I use windows and linux (I prefer linux) but when I try to connect to
+>internet... my linux connection is slowest... why?
 
-Hi...
-   I'm trying to use some JavaScripts that I download from DynamicDrive, but 
-they didn't work in my konqueror (some in Netscape 4.7)... can somebody tell 
-me where I can download free javascripts that work in Konqueror (netscape, 
-etc)
+There is no reason intrinsic to Linux why this should be so. So it probably 
+has something to do with the details of your setup. Since you've told us 
+nothing about your setup except that it uses Linux, I can't even begin to 
+guess about what detail might be causing this.
 
-thanks
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+Things to tell us include:
 
-iD8DBQE9iydCs4dF9gl05swRAgsiAJ9VcexL3UMB+gSxbdcfHVZSYzeqagCfUyik
-2YZzmZRKv+STUwHY1J5DXI4=
-=FDF+
------END PGP SIGNATURE-----
+         1. What version of Linux (what distro, what version, what kernel 
+version).
+         2. What sort of Internet connection (ppp dialup, DSL, cable, LAN, 
+etc.), with the details appropriate to it.
+         3. What you are actually observing that you characterize as "my 
+linux connection is slowest". (Examples: Web pages load slower; DNS 
+resolution takes longer; e-mail doesn't download as fast.)
+         4. For whatever you are observing in (3), what application 
+software is involved. (E.g., Netscape for Web connections.)
+         6. What are the relevant features of your hardware? (What is 
+"relevant" depends on the answers to (2), (3), and maybe (4).)
 
+Your answers will most likely generate another round of questions before I 
+(or others) can give you any useful advice, but that's just how it is ... 
+to get the answer to a technical question, you need to provide some 
+technical details.
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
