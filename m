@@ -1,33 +1,38 @@
-From: "Axel H. Siebenwirth" <axel@hh59.org>
-Subject: Re: eth0 promiscuous mode
-Date: Fri, 30 Aug 2002 10:29:06 +0200
+From: cr <cr@orcon.net.nz>
+Subject: Re: Can't see my drives
+Date: Fri, 30 Aug 2002 23:06:47 +1200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D6F2CD2.20907@hh59.org>
-References: <239460-2200285308288105@lvcm.com>
+Message-ID: <20020830100130.8677B52897@smtp.orcon.net.nz>
+References: <F665uAy0BYTxHwMQFLc00025135@hotmail.com>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <F665uAy0BYTxHwMQFLc00025135@hotmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Joseph Jackson <skoidat@lvcm.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: grottoBoy rant <stylerzz@hotmail.com>, linux-newbie@vger.kernel.org
 
-Joseph Jackson wrote:
-> wow how rude.  Why would you call his or anyone elses question stupid? if
-> you can't help you shouldn't reply to posts.
+On Friday 30 August 2002 05:07, grottoBoy rant wrote:
+> Don't know if you've fixed this already, I don't know about configuring for
+> CDRW as scsi emulation or whatever, but were you specifying iso9660
+> filesystem type when attempting to mount, ie.
+> mount -t iso9660 /dev/(?) /mnt/cdrom
+> man mount for syntax
+>
+> later
+>
 
-I'm really sorry for my syntactical error. What I meant to be stupid was 
-my question I asked ;) since I do not know what the promiscuous mode is.
+Yes, I was, exactly that.
 
-When I read my mail after sending, I knew somebody would understand it 
-this way. SORRY!
+I've shelved the problem for now as other things took up my time, however 
+I've managed to find the original instructions I used to configure the thing, 
+so I'll work through them (as soon as I have enough time) and see if that 
+fixes it.
 
-Best regards,
-Axel
+Thanks
 
-
-
-
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
