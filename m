@@ -1,79 +1,108 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: sound problems on Debian unstable
-Date: Wed, 6 Apr 2005 10:10:48 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0504060933430.5951@localhost.localdomain>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: still bugging me...pblm on->how to get mass storage
+  devices (memory card readers) to work
+Date: Wed, 06 Apr 2005 08:30:53 -0700
+Message-ID: <5.1.0.14.1.20050406074046.02006dc8@celine>
+References: <1112784755.3598.31.camel@prasad.isilica.net>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1112784755.3598.31.camel@prasad.isilica.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'm having some perplexing sound problems on my Debian unstable system and 
-would like to ask for help, clarifications and sympathy :)
+Preliminary comment: This message is very hard to read. Should you post a 
+followup, please try to use standard English spelling and grammar. For the 
+moment, I'll do my best to reply, but I may be misunderstanding some of 
+what you say ... this *really* is hard for me to read.
 
-The system is a Dell Optiplex GX1 that's been somewhat modified (BIOS 
-update, Powerleap processor, maxed out for RAM, extra hard drives, new 
-power supply). It's one of those institutional models with a daughterboard 
-that has some pci and isa slots in it. It has a "PnP BIOS" according to 
-dmesg output.
+At 04:22 PM 4/6/2005 +0530, prasad wrote:
+>Problem:-I hav external usb harddrive,how can i make it detect from
+>         fedora core linux...( itried every thing wht u published...in ur
+>         message)
 
-It has onboard sound--Crystal Semiconductor--that I've had working fine 
-under other Linux installs to this machine. But in this case, I wanted to 
-add a sound card, since I'll be using unpowered speakers and need the 
-computer to output more amplified sound.
+Are we discussing an actual USB hard drive, as this says, or a memory card 
+reader acting like a hard drive, as the subject line says? If a hard drive, 
+what does its partition table look like? In particular, is its sd*1 
+partition a valid filesystem type? If so, what is it (usbdevfs? unlikely 
+vfat? more likely)?
 
-I put in an ISA card--a Logitech Soundman 16. It is an older, though never 
-used, card. I tried isapnptools to get the thing recognized, but pnpdump 
-reports "no boards found." Searching the internet I finally found the 
-right module to load for the card--pas2. After loading that module with 
-necessary io/irq/dma specifications, I was able to play a CD. A tape deck 
-and radio, played through the audio-in port on the card, worked fine as 
-well. Nice sound. However, my sound apps, like Rhythmbox (I'm using the 
-Gnome desktop on this machine), will not really play. What I mean by "not 
-really play" is that I get some really choppy sound: split-second snippets 
-of the actual music interspersed with some clicking noises and punctuated 
-by silence. dmesg output shows some errors after trying Rhythmbox, as 
-follows: "Sound: DMA (output) timed out - IRQ/DRQ config error?" Kind of 
-wierd.
+Please be as specific as you can about the hardware involved.
 
-cat /proc/interrupts shows the right interrupt assigned to the module (I 
-was using IRQ 7 but dmesg indicated that the parallel port was trying to 
-use 7 so I switched the sound card to IRQ 5 using the DOS utility that 
-came with the card). cat /proc/ioports does not show the assigned io 
-(230--it was 220 but I assigned a different one last night using the DOS 
-software that came with the card in hopes this might resolve the problem) 
-associated with the module. This holds for both the 220 setting I used 
-earlier as well as the current 230 setting. I can include the full ouput 
-from those commands in a future post if that would be helpful in 
-diagnosing.
+>Even i followed dha steps dat u replied for message(94020),i still cant
+>able to detect my External USB hardrrive..frum Fedora core linux.
+>
+>i did all trials,
+>what i did iz:
+># /sbin/modprobe sg
+>#/sbin/modprobe usb_storage
+>
+>lsmod giving me da exact thing,as below:
+>#  /sbin/lsmod | grep sg
+>    sg  28513  0
+>    scsi_mod 105360  4 usb_storage,sg,libata,sd_mod
 
-I wondered if the PnP BIOS Linux identifies might not be the problem, and 
-whether it might be blocking Linux and isapnptools from dealing with the 
-card as specified or detecting it. But this doesn't seem to make sense 
-since I am able to run the test software under DOS provided with the card 
-with no problems. I boot from a DOS diskette that sets up a ramdisk, and I 
-install the soundman testing utilities in the ramdisk. I can hear all the 
-sounds fine, fiddle with IRQ's, IO's and DMA's, run the diagnostic which 
-tells me everything is ok. So it's a bit mystifying why Linux can't seem 
-to deal with the thing.
+Could we see this lsmod output unedited? (Without the pipe to grep, I mean.)
 
-Maybe it's a sound server issue rather than a hardware issue? I don't 
-understand very well the various sound server schemes Linux uses, but can 
-try and answer some pointed questions or run some commands relevant to 
-this line of inquiry.
+Also, in your logs, are you seeing a message something like this one:
 
-Another confusing thing about the card itself is its available settings. 
-It has 2 possible sets of IRQ's, for example: a "soundman" IRQ and a 
-"soundblaster" IRQ. Same for DMA setting. But it has *only* a soundblaster 
-IO. It is said in the manual to be "soundblaster (and adlib) compatible," 
-whatever that means.
+         kernel: Attached scsi disk sda at scsi1, channel 0, id 0, lun 0
 
-Input on this problem will be appreciated. Can I make my sound apps play 
-through this thing, or should I give up and try to find a different card?
+Or, what does "more /proc/scsi/scsi" report as present?
 
-Thanks, James
+If a drive is present at /dev/sda (or any sd*), what does fdisk report 
+about its partition table?
+
+>pblm cums wher , it was showing like as below:
+># mount -t usbdevfs 0 /proc/bus/usb
+>   mount: 0 already mounted or /proc/bus/usb busy
+>   mount: according to mtab, usbdevfs is already mounted on /proc/bus/usb
+
+If it is already mounted (as the last line says), then this is not a 
+problem. You might tell us what /proc/bus/usb reports about the status of 
+the USB bus.
+
+># mount -t vfat /dev/sda1 /mnt/HD12
+>   mount: /dev/sda1 is not a valid block device
+
+I would expect this command to work (assuming a vfat filesystem is present 
+at sda1). This response does usually mean that the device entry does not 
+have a physical partition associated with it.
+
+>As u said, i tried with other scsi devices for mounting,,,
+>but not worked out,,
+>Wht i tried iz:
+>sda,sda1-5,
+>sdb, sdb1.
+>  i tried every possibilty....
+
+Am I correct in inferring that you always got the same response ("is not a 
+valid block device")? Or did something different happen in any of these 
+attempts?
+
+At this point, based on your report, it is hard to pin down where in the 
+process of attaching this device your efforts have failed. If you respond 
+with a more systematic report, I (or someone else here) may be able to 
+offer a helpful suggestion. In addition to the specifics I've asked above, 
+please mention or quote, as appropriate:
+
+         the output of "uname -a" (If you are using a kernel you compiled 
+yourself, and not the stock Fedora version of that kernel, you need to 
+mention that too.)
+         whether you have *any* other USB devices on this system (e.g., a 
+keyboard or a mouse).
+         the specifics of the drive itself (make and model, and whether you 
+have had it working in other contexts)
+         the output of "lspci -vv" that relates to the USB interface
+
+Based on my own experience ... with USB flash drives, not hard drives ... 
+the general approach you are taking is correct, at least as far as you have 
+described it. So the problem is probably in some "unimportant" detail 
+you've omitted.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
