@@ -1,71 +1,77 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: Re: Linux install error
-Date: Mon, 28 Jul 2003 00:43:59 -0400
+From: James Hatridge <James.Hatridge@epost.de>
+Subject: Fwd: W$ 2K...
+Date: Mon, 28 Jul 2003 06:41:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <30afd0830ac87b.30ac87b30afd08@homemail.nyu.edu>
+Message-ID: <200307280641.12692.James.Hatridge@epost.de>
+Reply-To: James.Hatridge@epost.de
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-
-Well, I tried the first part of what John Kelly suggested (installing in text mode). It didn;t work, so will try with a new set of cd's.
-
-I am trying RHL 7.3 as there is this specific HostAP software which
-seems to be have tested on v7.3 but not on the later versions.
-So my project team suggested that we continue using RHL7.3 coz thats what they have in their university too.
-
-Thanks for the suggestions n help.
-
--Anshuman
+To: Newbie <linux-newbie@vger.kernel.org>
 
 
------ Original Message -----
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Date: Sunday, July 27, 2003 4:13 pm
-Subject: Re: Linux install error
 
-> On Sunday 27 July 2003 19:26, Anshuman Singh Rawat wrote:
-> > I got this error during startup when i booted from the cdrom. 
-> This error
-> > occured before it asked me anything about installing anything! I 
-> dont know
-> > if that answers your question.
-> 
-> Well in that case i agree with John Kelly.
-> 
-> Now you can see why one should try and make his/her question as 
-> clear as 
-> possable.
-> 
-> If i remember correctly you mentioned redhat 7.2, why i ask do you 
-> want to 
-> install such an old version, after all 7.2 does not include 
-> support for much 
-> of todays advanced hardware.
-> By getting the latest version you should save yourself a lot of 
-> grief. As soon 
-> as you find out that your chipset or some other piece of hardware 
-> does not 
-> have a spesific driver or at worst no support at all you will see 
-> what i 
-> mean.
-> 
-> -- 
-> If the Linux community is a bunch of theives because they
-> try to imitate windows programs, then the Windows community
-> is built on organized crime.
-> 
-> Regards Richard
-> pa3gcu@zeelandnet.nl
-> http://people.zeelandnet.nl/pa3gcu/
-> 
-> 
-> 
-> 
+----------  Forwarded Message  ----------
+
+Subject: W$ 2K...
+Date: Sun, 27 Jul 2003 15:47:27 +0200
+From: James Hatridge <James.Hatridge@epost.de>
+To: SUSE OT <suse-ot@suse.com>
+
+Hi all....
+
+For the first time since Windows 3.1 I have installed W$ on one of my
+ systems. Due to needing to see what my web site looks like under IE I broke
+ down and did it.  I got a copy of W$2K from a friend.
+
+I now have a system running 2K, but I can not seem to get it to connect to my
+other system. Here's the deal
+
+Opus == Linux
+
+Penguin == 2K
+
+I can ping from Penguin to Opus and it works. But when I ping from Opus to
+Penguin, Opus gets nothing, but Penguin give an error.
+
+When I try to use IE to get to Opus's web site
+(Opus.epost.de/~hatridge/bulletin)  I get a page not found error.
+
+I'm sure that it's just a config problem. Could one of you guys talk me thru
+setting up 2K for a home network. I don't need email, or file sharing etc,
+only IE
+
+TIA
+
+JIM
+
+Jim Hatridge
+Linux User #88484
+--
+Our country was colonized by the religious, political, economic, and criminal
+rejects of every country in the world. We have been carefully breeding
+ insane, obsessive, fanatic lunatics with each other for over 400 years,
+ resulting in the glorious strain of humanity known as "Americans". You have
+ to expect some... peculiarities.
+
+Read about new German stamps each quarter:
+	 http:/www.fecundswamp.net/~hatridge/bulletin
+
+-------------------------------------------------------
+
+Jim Hatridge
+Linux User #88484
+-- 
+Our country was colonized by the religious, political, economic, and criminal
+rejects of every country in the world. We have been carefully breeding insane, 
+obsessive, fanatic lunatics with each other for over 400 years, resulting in 
+the glorious strain of humanity known as "Americans". You have to expect 
+some... peculiarities. 
+
+Read about new German stamps each quarter:
+	 http:/www.fecundswamp.net/~hatridge/bulletin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
