@@ -1,49 +1,52 @@
 From: lindax newbie <linux-newbie@tlinx.org>
-Subject: Re: Frame pointer Vs Stack Pointer
-Date: Thu, 25 Nov 2004 12:10:53 -0800
-Message-ID: <41A63C4D.804@tlinx.org>
-References: <20041123092440.27562.qmail@web52908.mail.yahoo.com>
+Subject: Re: Locate Vs Find
+Date: Thu, 25 Nov 2004 13:00:18 -0800
+Message-ID: <41A647E2.1080302@tlinx.org>
+References: <20041122165244.62360.qmail@web52904.mail.yahoo.com> <1101185010.3786.9.camel@myLinux>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041123092440.27562.qmail@web52908.mail.yahoo.com>
+In-Reply-To: <1101185010.3786.9.camel@myLinux>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+To: Jagadeesh Bhaskar P <jbhaskar@hclinsys.com>
+Cc: Ankit Jain <ankitjain1580@yahoo.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Frame pointer is a convenience for referencing local variables in a
-subrouting, usually all the args are pushed onto the stack then BP
-(the frame, or Base pointer) is pushed , then SP
-(the stack pointer) is copied to BP, so all variables can easily be
-referenced via BP+x, BP+y, etc.  It is especially useful if you are
-debugging since BP will give you an idea of where the parameters to
-the current subroutine are located.  It is also useful if you are doing
-a stack traceback since the values of BP have been pushed onto the stack
-for each stack frame.
+If you look at the 'updatedb' script, you'll even find that it uses
+the 'find' command to build the static database.  Normally the database
+is rebuilt only once per/day -- in the wee hours of the morning if
+your computer is on then otherwise, it'll run soon after you turn it
+on in the morning (in the default configuration).  As Jagadeesh says,
+locate is much faster -- basically being a "grep" through a large text
+database, but it doesn't contain all the same info as 'find' can access
+and is only up-to-date from when it was last run...
 
-On the otherhand, there are otherways of accessing those variables by
-referencing off of "SP" and using BP as a general purpose register
-to do other things -- this can result in faster code that is less
-easy to debug.
+linda
 
-If you aren't doing kernel debugging and/or are not expecting to be
-generating stack traces, allowing the compiler to use BP (Base/Frame
- Pointer) is usually a good thing for optimizing memory and CPU
-execution time.
+Jagadeesh Bhaskar P wrote:
 
--linda
-
-Ankit Jain wrote:
-
->Frame pointer, Stack Pointer....i want to understand
->this concept w.r.t stack in a program
+>On Mon, 2004-11-22 at 22:22, Ankit Jain wrote:
+>  
 >
->how a program stores and understand by this
+>>Which is more efficient? /if both perform the same
+>>work and are not different then why shoudl we have 2 ?
+>>    
+>>
 >
->thanks
+>As far as I know, locate is based on a database storing locations of
+>file. It doesnot search physically throughout the directory hierarchy.
+>So it is many a time faster. But you have to update the database
+>periodically with an "updatedb" command. Otherwise even error locations
+>may be the result.
 >
+>Find doesnt depend on any such databases. It searches throughout the
+>directory hierarchy. This case results are always more reliable, but
+>mostly slow. 
+>
+>It can be seen by "finding" a file from the "/" and "locating" the same.
+>
+>I think that trade-off enough a reason!!
 >
 >  
 >
