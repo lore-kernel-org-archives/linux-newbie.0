@@ -1,77 +1,110 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Trying to get GUI'ed
-Date: Wed, 23 Oct 2002 13:27:30 -0700
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: RedHat 8
+Date: Wed, 23 Oct 2002 16:31:53 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021023130903.02121660@celine>
-References: <200210231953.g9NJrFdC012165@pyxis.wanadoo.be>
+Message-ID: <007001c27ad3$398c0140$64fea8c0@pkrausxp>
+References: <200210231624.32476.sotl155360@earthlink.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210231953.g9NJrFdC012165@pyxis.wanadoo.be>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200210231624.32476.sotl155360@earthlink.net>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: 'Frank Roberts - SOTL' <sotl155360@earthlink.net>, linux-newbie@vger.kernel.org
 
-At , Heimo Claasen wrote:
->Ray's "first draft to a window manager how-to" did (finally!) give me
->some insight.
->(I would like to go longer in reading and putting other bits and pieces
->in there too - just haven*'t got the time right now, woner when ever...)
+4 for and 1 against. You really slammed it. Can I inquire as to why you
+like suse? I have only used mandrake 7 and 8, RedHat 6 briefly, 7.3 now.
+
+-----Original Message-----
+From: Frank Roberts - SOTL [mailto:sotl155360@earthlink.net] 
+Sent: Wednesday, October 23, 2002 4:25 PM
+To: Paul Kraus; linux-newbie@vger.kernel.org
+Subject: Re: RedHat 8
+
+
+First the major change in RH 5.0 to 6.0 to 7.0 to 8.0 appear to be major
+
+changes in the RH side of the software meaning major changes in the 
+installation and configuration programs.
+
+The changes in x.0 to x.2 to x.3 appear to be changes in the content and
+
+progressive increases (sometimes) in stability. 
+
+For RH 7.3 to RH 8.0 the kernel was increased to 2.4.18 from 2.4.3 (I
+believe 
+2.4.3 is correct although it may be incorrect.).
+Open Office replaced Star Office
+and 
+a hatchet job was done to KDE and KDE programs. There is no more KDE.
+
+Considering if you had an official copy of RH7.3 installed you could
+then 
+automaticall update most programs then the only advantage RH 8.0 would
+bring 
+to your system would be the updated kernel and the new configuration
+program. 
+
+As for as the programs which you can not automatically update an
+inspection 
+shows most of the GUI programs appear to be KDE the very programs RH
+left out 
+of RH 8.0.
+
+Bottom line RH 8.0 Personal is not half as good as RH 7.3 Personal.
+ 
+I have no idea the status of the profession edition is because it cost
+$150 
+versus $40 for the personal. Note RH 8.0 Personal is cheaper than RH 7.3
+
+Personal which was $55.
+
+I would recommend switching to Suse which is in some ways a more
+advanced 
+distribution than RH except for Yast2. If you want to do a standard 
+configuration with Suse but if you have a oddball or personalized 
+configuration well you may experience certain difficulties.
+
+As far as RH new GUI it appears to be nothing more than a screwed up
+version 
+of Gnome.
+
+Fortunally I have 2 HDs for this computer a test HD and the normal
+operating 
+HD. I say fortunately because I installed RH 8.0 on the test HD for 
+verification of installation before updating the normal system. The
+above 
+comments come from that test. 
+
+There is only one other comment on this pitiful trash distribution - RH
+8.0 I 
+wish to make. At our next Linux meeting I will give away the RH 8.0
+complete 
+box as a boobie prize.
+
+Thanks
+
+Frank  
+
+
+
+
+
+On Wednesday 23 October 2002 08:33, Paul Kraus wrote:
+> What does everyone think of RedHat 8.
 >
->Practical question: is it possible, and how then, to run X and some
->application in it at a very "low level", for instance _without_ as
->much as could be cut off from the libraries (both Gtk and Qt) needed
->for the "higher level" managers/desktops ?
-
-I find it hard to follow the syntax of this sentence. I don't mean to pick 
-on you, Heimo, but you are getting into very technical areas now, where 
-clarity and precision are at a premium, and I simply can't be sure what you 
-mean by (for example) "as much as could be cut off from".
-
-With that disclaimer, the answer to whatever your question is, most likely, 
-is: it depends on the application. Please try asking the specific question 
-you want answered, about the actual application.
-
-For example, on my Linux workstations, I routinely run Blackbox as a Window 
-Manager, and I run no Desktop Environment. I probably do run some 
-components of the Gnome and/or KDE APIs; Debian dependency management is 
-really very good at handling those sorts of dependency issues without 
-operator involvement. Most applications ... all the ones I care about, in 
-particular ... examples are xterm, eterm, xmms, xine, XMovie, Mplayer, 
-ogle, xawtv, GTKsee, and xvncviewwe ... run fine on this stripped-down 
-system. Possibly some of the Gnome-specific apps would not display or run 
-properly, and I don't attempt to run any whose names begin with K (KDE apps 
-seem a bit pickier about choice of WM than Gnome ones, though I'm not 
-certain of that).
-
-I've never tried it myself, but I seem to recall that Lawson Whitney (are 
-you there, Lawson? acn you comment helpfully?) has in the past run his 
-xserver "bare metal", without even a basic Window Manager. I don't know how 
-versatile he found that setup.
-
->And how to de-install these latter cleanly without creating new problems ?
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
 >
->(The problem I have with that SCSI device and the application for it is
->not the deveice's functioning, which works Ok., but this application's
->screen GUI - it's definitely some conflict there with both Gtk and Qt
->"families", i.e. using either KDE or Gnome. The one occasion it did
->run well was with a "just window maker" install of X. Thus banning the
->additional presence of those Gnome/KDE could perhaps avoid that
->collision, whatever it is.)
-
-Troubleshooting requires information, and your posting messages about an 
-application you will not identify by name is unlikely to get you any 
-meaningful help. Name the application (include a URL if the app is 
-obscure), describe the GUI problem, and report the basics of the system 
-that you are having it on (what X server, what Window Manager, and which of 
-KDE or Gnome you are running).
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> -
+> To unsubscribe from this list: send the line "unsubscribe 
+> linux-newbie" in the body of a message to majordomo@vger.kernel.org 
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
