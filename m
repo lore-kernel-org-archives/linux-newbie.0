@@ -1,40 +1,34 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: AOL and MS.
-Date: Sat, 7 Jun 2003 14:21:13 -0400
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: crontab syntax ?
+Date: Sat, 07 Jun 2003 15:50:25 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030607142113.A2969@lnx2.w8mch.ampr.org>
-References: <haltec@kvinet.com> <3324.1054999219@localhost.localdomain>
-Reply-To: haltec@kvinet.com
+Message-ID: <3EE24201.DA793DC8@gelm.net>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org> <200306042101.56986.pa3gcu@zeelandnet.nl> <20030605093027.A233@lnx2.w8mch.ampr.org> <200306052108.36121.pa3gcu@zeelandnet.nl> <20030607104727.A355@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <3324.1054999219@localhost.localdomain>; from raihan@citech-bd.com on Sat, Jun 07, 2003 at 09:20:19PM +0600
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 06-07, Amin wrote:
-> 
-> MS and AOL merging?  Sounds a little far-fetched ... .
-> 
-> My $0.02,
-> Yawar Amin
+Howdy, y'all:
 
-	Your comments noted but it's not "merging" just "joining" for
-some mutual shenanigans methinks..
+ I want to run a script monthly.
+(update my dynamic DNS account)
+I (as 'root') ran 'crontab -e' and added this line:
 
-	Check out Newsweek,  09 June 2003 issue, page 38 by Steven
-Levy - "Two Gorillas Make Nice." My comment about them, possibly,
-going after Linux was gleaned from an eMail message I happened to
-view. 
+5 6 7 * date /usr/local/src/ez/dyndns.conf >> /share/dyndnsup.txt 2>>
+/share/dyndnsup.txt
 
-	I found part of the message but this is OT, so nuff said,
-although it does and will affect Linux users in the future..
+This seems to be the syntax indicated by 'man crontab'.
+If I understand the syntax of crontab, the above line will 
+every 7th of the month, at 06:05, execute my dyndns.conf file
+and send standard and error messages to file /share/dyndnsup.txt.
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
-                Proprietary  Formats  Unacceptable
-.
+ Is this correct syntax?
+ Is there a syntax checker for crontab like testparm for samba?
+
+Regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
