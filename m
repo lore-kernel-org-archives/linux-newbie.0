@@ -1,51 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: FSpecs
-Date: Thu, 14 Nov 2002 18:57:14 -0800
+From: Peter <pfheiss@philonline.com>
+Subject: Print Queue Disappearing
+Date: Fri, 15 Nov 2002 14:42:07 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021114185333.020ca1d0@celine>
-References: <MSGID_110=3a20=2f1_50638fc8@linuxnet>
+Message-ID: <200211150642.gAF6g8F02109@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DD50801.55ACE0D@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-All the approaches suggested for this exercise assume that one need not 
-worry about generating a UNIQUE 8.3 filename from the long filename. Is 
-that assumption appropriate to Ben's real, underlying problem? Or does it 
-risk overwriting a file with a later one (e.g., shortnam-abcd.txt and 
-shortnam-efgh.txt both become shortnam.txt)?
+Hi,
 
-At 02:43 PM 11/15/02 +0000, ichi@ihug.co.nz wrote:
->BEN RITCHEY wrote:
-> >
-> > Would it be possible in a Bash script to munge a
-> > Long File Name to the older DOS 8.3 format?
-> > In my case I need the first 8 characters and the
-> > last 4 (.xxx)
->
->To which Paul Kraus replied:
-> > It would be a lot easier to do it with gawk or perl.
->
->And hackob said:
-> > Use cut and/or gawk
->
->Actually guys, all you need is bash:
->--------------------------------------------------
->example="long-filename.to.munge.txt"
->echo ${example%${example#????????}}.${example##*.}
->--------------------------------------------------
+In RH7.3 documents place for printing are being aborted after a certain time 
+and if large documents are being printed printing suddenly stops. When then 
+checking lpq it is empty which is annoying.
 
+This is what I get with lpq at 10:03:
+Printer: lpd1@philonline
+ Queue: 1 printable job
+ Server: pid 1164 active
+ Unspooler: pid 1165 active
+ Status: IF filter 'mf_wrapper' filter msg - 'foomatic-gswrapper: gs
+'-dBATCH' '-dSAFER' '-dQUIET' '-dNOPAUSE' '-sDEVICE=epsonc' '-r180x180'
+'-sOutputFile=/dev/fd/3' '/dev/fd/0' 3>&1 1>&2' at 10:03:00.384
+ Rank   Owner/ID                  Class Job Files                 Size Time
+active pfheiss@philonline+163       A   163 (STDIN)             861984
+10:02:59
 
+and later at 11:43
+Printer: lpd1@philonline
+ Queue: no printable jobs in queue
+ Server: no server active
+ Status: job 'pfheiss@philonline+163' error 'aborting operations' at
+11:43:00.386
+ Rank   Owner/ID                  Class Job Files                 Size Time
+error  pfheiss@philonline+163       A   163 ERROR: aborting operations
 
+Why would that be? Is there somewhere a clock running to keep documents only 
+so long in the print queue and if so can that be stopped. I found nothing in 
+the HOWTO for printing.
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
