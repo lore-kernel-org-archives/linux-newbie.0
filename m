@@ -1,41 +1,38 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: XFree86 crash log
-Date: Fri, 15 Nov 2002 08:53:40 +0800
+From: ichi@ihug.co.nz
+Subject: Re: FSpecs
+Date: Fri, 15 Nov 2002 14:43:13 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211150053.gAF0ree01258@philonline.com>
-References: <Pine.LNX.4.44.0211132043350.21708-100000@localhost.localdomain>
+Message-ID: <3DD50801.55ACE0D@ihug.co.nz>
+References: <MSGID_110=3a20=2f1_50638fc8@linuxnet>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Wed, 13 Nov 2002 20:45:54 CST."
-             <Pine.LNX.4.44.0211132043350.21708-100000@localhost.localdomain> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: BEN RITCHEY <linux-net@tcob1.net>
+Cc: linux-newbie@vger.kernel.org
 
-On 13 Nov 2002, Peter wrote:
-
-> When I upgraded on my old PS1 from RH7.0 to RH7.1 I had a lot of problems, 
-> like system hangs, X not opening and a lot of exchanges on this forum. I had 
-> also SW7.? running and could not make SW8.0 run at all.
-> Finally someone asked what computer I have and I said PS1 and he said no 
-> wonder those new kernels will not run on those old machines. I bought a new 
-> PS2 motherboard and all problems were solved till I encountered RH7.3. But 
-> that's another story.
+BEN RITCHEY wrote:
 > 
-jamtat@mailandnews.com said:
-> So far, the only problem has been getting X running - but this *is* a
-> minimal Slack 8.1 install (probably up to about 50-70MB with X
-> installed).  The kernel boots fine. Maybe further problems await,
-> though. We'll see. 
+> Would it be possible in a Bash script to munge a 
+> Long File Name to the older DOS 8.3 format?
+> In my case I need the first 8 characters and the 
+> last 4 (.xxx) 
 
-To be more specific, RH7.1 did not install normally it hang after the 3rd Text 
-window and I had to force it somehow. SW8.0 installed and booted yet I could 
-not run X.
+To which Paul Kraus replied:
+> It would be a lot easier to do it with gawk or perl.
 
+And hackob said:
+> Use cut and/or gawk
 
--- 
-Peter
+Actually guys, all you need is bash:
+--------------------------------------------------
+example="long-filename.to.munge.txt"
+echo ${example%${example#????????}}.${example##*.}
+--------------------------------------------------
+
+Cheers,
+Steven
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
