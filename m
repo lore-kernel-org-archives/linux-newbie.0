@@ -1,38 +1,31 @@
-From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
-Subject: mounting vfat partitions
-Date: Sun, 25 Apr 2004 18:31:35 -0400 (EDT)
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Suse / Kmail setup
+Date: Mon, 26 Apr 2004 08:28:52 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0404251822380.11721-100000@legolas.personal.engin.umich.edu>
-Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
+Message-ID: <20040426002852.F2A1530205@heisspf>
+References: <3.0.16.20040424211211.2f17be24@mail1.abac.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sat, 24 Apr 2004 18:38:51 MST."
+             <3.0.16.20040424211211.2f17be24@mail1.abac.com> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: David Tiefenbrunn <davidtief@abac.com>
+Cc: linux-newbie@vger.kernel.org
 
-The layout of partitions on my system here looks like the following:
 
-/dev/hda1 -> vfat
-/dev/hdb1 -> vfat
-/dev/hdb2 -> ext2
-/dev/hdb3 -> ext2
-/dev/hdb4 -> swap
+davidtief@abac.com said:
+> The dumbest thing is, that before I did the re install, I had it working.
+> Since I had little trouble getting it to work the first time, I  wasn't
+> worried about doing it again, but I must have missed something.
 
-/dev/hdb2 corresponds to /, and /dev/hdb3 to /home. I want to be able to 
-mount /dev/hda1 and /dev/hdb1 as /dosc and /dosd, respectively and have 
-added the following lines to /etc/fstab:
-/dev/hdb1	/dosd	vfat	defaults
-/dev/hda1	/dosc	vfat	defaults
+I have the same problem and gave up on kmail. Now after your mail I tried 
+again to no avail. My choice is Sylpheed after exmh.
 
-This mounts the partitions correctly. However, I am able to access these
-mount points only as root, and not as a user.  I would prefer that these
-vfat partitions be writable by root alone, but be readble for all users on
-the machine. How can I fix that?
 
-Thanks,
-
--K
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
