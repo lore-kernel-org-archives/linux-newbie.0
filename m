@@ -1,53 +1,55 @@
 From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: 3d modelling
-Date: 25 Nov 2002 09:28:17 +0000
+Subject: Re: libc5 problem
+Date: 25 Nov 2002 09:37:47 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1038216495.20703.55.camel@zebra.vil.ite.mee.com>
-References: <3DDE70EF.9040700@arrakis.es>
+Message-ID: <1038217066.20988.64.camel@zebra.vil.ite.mee.com>
+References: <3DDDB357.5D3AD244@fuse.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DDE70EF.9040700@arrakis.es>
+In-Reply-To: <3DDDB357.5D3AD244@fuse.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Andrew Langdon-Davies <ald@arrakis.es>
+To: rob <rob.rice@fuse.net>
 Cc: linux-newbie@vger.kernel.org
 
-Andrew, 
+A couple of things you can check before getting too bogged down:
 
-I'm afraid that I never got very far with this, but for what it's worth:
+ls -l /usr/local/bin/mc
 
-It depends on what you mean by modeling. If you want to create a 3D
-surface, then wrap the photograph around it, there are a number of
-things available (such as Povray, BMRT) which will do it one image at a
-time for you. To do it in real time (such as a game) seems to involve
-writing your own code, or using something like 3D Studio Max on a
-windows machine (it _may_ work under Wine, but I never tried it).
+it may be a link to somewhere incorrect.
 
-If you want to "take a stereo pair of images and create a model" or
-"take a number of cross-sectional images and create a model" then I also
-looked into this a short while ago, but didn't come up with anything. I
-also looked around for Windows software, but couldn't find anything
-either.
+also: it might possibly have something to do with slocate (if you have
+it installed). Try running "slocate -u" as root. 
 
-What do you want to do with the model - this will affect the kind of
-model you produce (or at least the format of the data)
+Another thing to try is "which mc"
+
+Finally, are you trying to run mc from the command line? if so, is there
+an alias set up which points to /usr/local/bin/mc ? If you are running
+it from an icon on the desktop or a menu entry, check the command line
+that it's trying to run.
+
+
+Oh, also check your login scripts (.bashrc and .bash_profile, or
+whatever is appropriate for your shell) and see if anything got changed
+there.
+
+If you log in as a different user (or create a new user) does that user
+have a problem running mc?
 
 Paul.
 
-On Fri, 2002-11-22 at 18:01, Andrew Langdon-Davies wrote:
-> Is there anything available in Linux for 3-D modelling from photographs?
-> TIA
-> Andrew
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
--- 
-Paul Furness <paul.furness@vil.ite.mee.com>
-Mitsubishi Electric ITE BV VIL
+
+On Fri, 2002-11-22 at 04:33, rob wrote:
+> I tryed to run a libc6 program amaya on slack 3.5 a libc5 distro
+> now in X term or rxvt when ever I try to run midnight commander
+> I get "bash:no such file /usr/local/bin/mc" but it runs just fine
+> if I type the path to mc i.e "/usr/bin/mc -x" /usr/local/bin was 
+> the path to amaya and mc runs just fine from the text console
+> anybody got a handle on this one ????
+> -- 
+> Paul Furness <paul.furness@vil.ite.mee.com>
+> Mitsubishi Electric ITE BV VIL
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
