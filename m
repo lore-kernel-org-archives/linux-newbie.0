@@ -1,58 +1,57 @@
-From: Peter Garrett <peterg@fishinternet.com.au>
-Subject: Re: Getting a valid display under Debian revisited
-Date: Wed, 10 Dec 2003 19:51:54 +1100
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: USB DSL modem
+Date: Wed, 10 Dec 2003 11:33:47 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1071046313.760.1.camel@DebiAnarchist>
-References: <Pine.LNX.4.58.0312091843110.1018@debian-box>
-	 <Pine.LNX.4.58.0312092206490.777@debian-box>
+Message-ID: <1071056027.19327.35.camel@Zebra.vil.ite.mee.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0312092206490.777@debian-box>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=;
+	e.com0=; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
+Hello.
 
-There are several S3 cards. I had a similar problem with the S3Trio
-dx/gx, I think it was ... apparently the drivers are quite specific for
-the model.
+Can anyone point me at some useful information about setting up a DSL
+modem connected to a linux box via USB?
 
-On Wed, 2003-12-10 at 15:18, jamtat@mailsnare.net wrote:
-> I was finally able to get a working display by using the vesa xserver.  I
-> can get 1024x768 with 16 bit color with this.  Strange that the S3
-> xserver, which is supposed to be for this card, would not work.  Any ideas
-> why, anyone?
-> 
-> I still get the /dev/input/mice missing directory error, but that doesn't
-> seem to interfere with X running.
-> 
-> The mouse cursor was acting really wildly, but I think that was because I
-> installed gpm.  Once I kill gpm (killall gpm), it behaves normally.  I
-> tried setting the mouse input device to /dev/gpmdata, as the manpage
-> suggests, but that did not resolve the problem: only killing gpm makes
-> the cursor behave normally under Xwindows.  Since I like to use alot
-> of virtual terminals, I'll miss having gpm functioning.  Anyone have any
-> ideas about how to make gpm work alongside Xwindows?
-> 
-> And, on a similar note: I like to have my virtual terminals set at vga=5
-> (I include that comment in lilo.conf).  However, once I fire up X windows,
-> then exit it, the console gets wierd.  About 1/4 of the console screen is
-> cut off at the bottom.  If I change vga=5 to vga=normal, I don't get that
-> lower 1/4 of the screen getting cut off, but I also get a text size I
-> don't really like in the virtual terminals.  Anyone have any ideas on how
-> to resolve this problem, or other insights into it?  Does it happen
-> because the xserver I'm using messes with the video BIOS?
-> 
-> Thanks, James
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+What happened here is that I recently got a DSL connection set up at
+home. Part of the sign up package included an Alcatel 'Speedtouch' USB
+connected modem and some filters. I plugged it all in and set it up
+under windows without a hitch, and it's working beautifully. However, I
+want to connect when I'm booted into linux (currently RedHat 9 although
+probably Fedora soon).
+
+I spent an age hunting around for HOWTOs and so on, and while there are
+a few things written about how to configure the networking so it will
+connect to a DHCP/DSL router and such like, I can't find anything at al=
+l
+about how to make a USB modem wake up and connect.
+
+I know that the kernel supports USB fine, and when I do 'lsusb' the
+modem appears in the list, so that's working. But I don't know what to
+do next.
+
+I know that I could buy a router with a modem built in, and I may end u=
+p
+doing that if I have to. But it needs to include a wireless connection
+to my PC, so would cost =C2=A370 plus and I'd like to try and avoid spe=
+nding
+any money on it if I possibly can; I already own the modem I have, sinc=
+e
+it was 'free'.
+
+Oh, when it's connected in Windows, the modem shows up as using PPPoA,
+which I think means that roaring penguin won't help.
+
+Can anyone give me any leads?
+
+Paul.
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
