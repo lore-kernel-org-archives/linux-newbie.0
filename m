@@ -1,41 +1,38 @@
-From: "Ola Theander" <ola.theander@otsystem.com>
-Subject: The best way to backup a Linux workstation?
-Date: Tue, 18 Mar 2003 19:02:34 +0100
+From: Mike Dresser <mdresser_l@windsormachine.com>
+Subject: Re: The best way to backup a Linux workstation?
+Date: Tue, 18 Mar 2003 13:04:54 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000f01c2ed78$90927150$7301a8c0@c0003>
+Message-ID: <Pine.LNX.4.33.0303181304130.12864-100000@router.windsormachine.com>
+References: <000f01c2ed78$90927150$7301a8c0@c0003>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <000f01c2ed78$90927150$7301a8c0@c0003>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Ola Theander <ola.theander@otsystem.com>
+Cc: linux-newbie@vger.kernel.org
 
-Dear subscribers.
+On Tue, 18 Mar 2003, Ola Theander wrote:
 
-I would like to know the recommended way to backup a Linux workstation.
-Currently I use tar to pack a number of directories to a single file which I
-save on a CD. One problem I've noticed with this approach is that tar seems
-to ignore all hidden files i.e. files beginning with a '.' and there doesn't
-seem to be a switch to change this. This is a problem for me since some
-files, such as .profile, that I want to backup is ignored.
+> Dear subscribers.
+>
+> I would like to know the recommended way to backup a Linux workstation.
+> Currently I use tar to pack a number of directories to a single file which I
+> save on a CD. One problem I've noticed with this approach is that tar seems
+> to ignore all hidden files i.e. files beginning with a '.' and there doesn't
+> seem to be a switch to change this. This is a problem for me since some
+> files, such as .profile, that I want to backup is ignored.
+>
+> Any help on this matter would be greatly appreciated.
+>
+> Kind regards, Ola Theander
+>
 
-Any help on this matter would be greatly appreciated.
+What does your tar line look like?  My tar backs up anything starting with
+a ., it's just a matter of having the right syntax.
 
-Kind regards, Ola Theander
-
--------------------------------------
-Ola Theander System & Konsult 
-Essingetorget 46
-SE-112 66 STOCKHOLM 
-SWEDEN
-
-Mobile +46 (0)733 529395
-
-Mail   ola.theander@otsystem.com
-WWW    http://www.otsystem.com
--------------------------------------
- 
-
+Mike
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
