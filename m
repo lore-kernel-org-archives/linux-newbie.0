@@ -1,66 +1,52 @@
-From: Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-Subject: Re: Netscape 6.22 and Red Hat 7.2
-Date: Sat, 27 Apr 2002 06:24:52 +0200
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: register_exec_domain
+Date: Sat, 27 Apr 2002 07:05:05 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CCA2814.1040901@wanadoo.fr>
-References: <3CCA2321.60105@adelphia.net>
+Message-ID: <0204270705050A.04696@unix.pa3gcu>
+References: <20020427010243.90880.qmail@web12805.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020427010243.90880.qmail@web12805.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Mark Johnson <rmjohnson144@adelphia.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Staci <spiritlover666@yahoo.com>, linux-newbie@vger.kernel.org
 
-Mark Johnson wrote:
-> Hello All,
-> 
->     I am having troubles installing Netscape 6.22 on my Red Hat 7.2 
-> system and was wondering if someone could help.  I currently use 
-> netscape navigator 4.78.  When I install the new 6.22 it finds the old 
-> version and asks to delete it and respond yes to delete.
+On Saturday 27 April 2002 01:02, Staci wrote:
+> --- G Anna <drguruolai@eth.net> wrote:
+> > (snip)
+> > (snip)
+> >
+> > Did you do a 'make mrproper' before anything else?
+>
+> Dunno if you know, but mrproper can corrupt things.
 
-netscape-6 is mozilla. The last release is mozilla-1.0-rc1.
+Can it, i have never seen or heard of that problem, in any case you have to 
+use make mrproper when you install a new kernel source otherwise things like 
+symlinks to /usr/include are not created.
 
-Depending on your display the installation window may be too small for 
-showing where mozilla is installed, you may have to enlarge it first.
+> i always use make clean. :)
 
-By default it installs itself in /usr/local/mozilla if you unpack a 
-mozilla-xxx.tar.gz archive or /usr/local/netscape if you unpack a 
-netscape-6-xxx.tar.gz.
+That will not help when installing a new kernel source.
+If you look into the kernel source top dir Makefile you will see that "clean" 
+only removes an amount of unwanted configureation *.h files, mrproper removes 
+logfiles, files preceeded with a . (as in) .config,  removes old symlinks and 
+recreates them + much much more.
 
->  The program 
-> installs fine and comes up and running fine.  But, when I exit the 
-> program and start it up it doesn't give me a new icon or anyway to start 
-> up the new version.  When I use the old icon, I get the old netscape.
+And on another note if your statement were true, i am convinced that a 
+problem of that magnitute would be fixed long before we the end user even saw 
+it.
 
-I wouldn't expect any automatic link installed. Just use kmenuedit and 
-enter name 'Netscape-6' command line '/usr/local/netscape/netscape' (or 
-/usr/local/mozilla/mozilla).
+Linus Torvalds does not tolerate sloppyness in his kernel source.
 
-> I have tried about 3 times to reinstall it  with no luck.  although the 
-> third time I removed the old navigator icons from the KDE menu and it 
-> was replaced with a new icon, but I get the old netscape.  Then I tried 
-> running Mozilla to get my mail and sure enough I get the new version of 
-> netscape, but it has the old version of mozilla in the lower left corner 
-> icons.  The mozilla program seems to be the newer version that is built 
-> in though as I didn't install a new one, just old Icons in the lower 
-> left corner. 
+>
+> sl
 
-Check the version with the menu Help 'About netscape'
-
-> anyway, I did a file search for netscape and couldn't 
-> locate anything but the old netscape stuff.  I even searched for *6.22* 
-> with no results?  Is there a way to uninstall the old version?
-
-You can safely delete any previous diretory /usr/local/netscape. Your 
-mail files are in /home/.netscape
-
-
-Pierre
-------------------------------------------------
-  Pierre Rousselet <pierre.rousselet@wanadoo.fr>
-------------------------------------------------
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
