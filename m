@@ -1,56 +1,45 @@
 From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: RH 7.3 and tripwire
-Date: 25 Nov 2002 09:12:40 +0000
+Subject: Re: 3d modelling
+Date: 25 Nov 2002 09:28:17 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1038215558.20988.38.camel@zebra.vil.ite.mee.com>
-References: <sdde49fa.036@mail.sussex.edu>
+Message-ID: <1038216495.20703.55.camel@zebra.vil.ite.mee.com>
+References: <3DDE70EF.9040700@arrakis.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <sdde49fa.036@mail.sussex.edu>
+In-Reply-To: <3DDE70EF.9040700@arrakis.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: peter schoch <pschoch@sussex.cc.nj.us>
+To: Andrew Langdon-Davies <ald@arrakis.es>
 Cc: linux-newbie@vger.kernel.org
 
-Peter, 
+Andrew, 
 
-Firstly, do you actually need / want to run tripwire? It is mostly
-useful for intrusion detection type things, which may not matter if your
-PC is either on a secure network, or standalone. In which case, I'd just
-remove tripwire from your system.
+I'm afraid that I never got very far with this, but for what it's worth:
 
-I don't run tripwire on my workstations, but I _do_ run it on the
-machines in my DMZ (such as web server) since they are at a much higher
-risk of hack attack than those inside my firewall on my internal
-network.
+It depends on what you mean by modeling. If you want to create a 3D
+surface, then wrap the photograph around it, there are a number of
+things available (such as Povray, BMRT) which will do it one image at a
+time for you. To do it in real time (such as a game) seems to involve
+writing your own code, or using something like 3D Studio Max on a
+windows machine (it _may_ work under Wine, but I never tried it).
 
+If you want to "take a stereo pair of images and create a model" or
+"take a number of cross-sectional images and create a model" then I also
+looked into this a short while ago, but didn't come up with anything. I
+also looked around for Windows software, but couldn't find anything
+either.
 
-If you decide that you _do_ need tripwire, it could well be that it's
-not configured for your system's setup. Can you give us a little more
-detail about the errors that tripwire is reporting?
-
-As for documentation: I haven't found anything that is better than the
-man page for explaining how it works. In principal it's very simple: you
-create a list of files to watch, and tripwire takes a note of various
-attributes of the files (such as size, date and so on). At a later time
-(usually from a cron job) tripwire compares the file against the
-information it has, and reports any discrepancy. You can tell it the
-level at which to check the file and the kind of warning it gives.
+What do you want to do with the model - this will affect the kind of
+model you produce (or at least the format of the data)
 
 Paul.
 
-
-
-On Fri, 2002-11-22 at 20:14, peter schoch wrote:
-> Greetings,
+On Fri, 2002-11-22 at 18:01, Andrew Langdon-Davies wrote:
+> Is there anything available in Linux for 3-D modelling from photographs?
+> TIA
+> Andrew
 > 
-> I just upgraded from RH6.2 to RH7.3.  I've been fighting with it for several days now.
-> 
-> My last, big 'fight' is with tripwire.  I keep getting cron mail that tripwire had all sorts of troubles.  It gives me commands to 'fix' the trouble, and have run them; however the problems apparently persist.  I don't remember using tripwire in 6.2, so is there a good resource for finding out what to do?
-> 
-> Peter Schoch
-> Sussex County Community College
 > -
 > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
