@@ -1,38 +1,62 @@
-From: Hal MacArgle <haltec@iceweb.net>
-Subject: Changing Hard Drives??
-Date: Fri, 22 Nov 2002 10:42:15 -0500
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: installation and lilo
+Date: Fri, 22 Nov 2002 17:07:04 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021122104215.A171@lnx2.w8mch.ampr.org>
-Reply-To: haltec@iceweb.net
+Message-ID: <02112217070401.00286@unix.pa3gcu>
+References: <6C559FFA.31E59693.0006BEFC@netscape.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <6C559FFA.31E59693.0006BEFC@netscape.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: neil t <wa4chq@netscape.net>, linux-newbie@vger.kernel.org
 
-Greetings: Several weeks ago I changed from two drives, /hda and
-/hdb, with the hdb drive setup to boot using LILO.. (All partitions
-on both drives Linux or Swap, no other o/s.) The /hda drive was
-needed elsewhere so I changed the entry in fstab so that the old hdb
-was now hda and it's been working fine booting from the HD..
-(At least it seems so.) :^)...
+On Friday 22 November 2002 11:32, neil t wrote:
+> (this didn't send the first time, so I am posting it again via a FWD)
 
-I thought I had better make a recover disk so I tried both dd and cat
-copying /vmlinuz to the floppy and neither one will boot, "kernel
-panic." It's looking for hdb according to the screen report and I'm
-wondering why does it boot OK from the HD but not the floppy..
+It does not really make any differance which system installed lilo, the 
+secret is mounting all your disks/partitions where "lilo" can reach them all 
+in one go, you can define any partition "in use or not" as long as it is 
+mounted.
 
-Can someone suggest something or steer me to a man/s/, whatever, to
-help?? I've never had an occasion to do this before...
+An example;
+dos = hda1
+redhat = hda5
+mandrake = hdc1
+slackware = hdd1
 
-TIA and cheers,
+You boot with mandrake, you then create some extra dirs'
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-	       haltec@iceweb.net | w8mch@iceweb.net.
-		    NON ILLEGITIMI CARBORUNDUM
-.
+mkdir /hda5
+mkdir /hdc1
+mkdir /hdd1
+
+mount -t ext2 /dev/hda5 /hda5
+mount -t ext2 /dev/hdd1 /hdd1
+
+Edit /etc/lilo and reflect the above
+
+image = image-redhat
+label = redhat
+root = /hda5/boot/image-redhat
+read-only
+
+same idea for slack.
+
+run lilo with -t to check that all is ok, when all is ok /sbin/lilo
+reboot
+
+Another way is to copy all bootable images into one /boot dir and edit 
+lilo.conf accordingly.
+
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
