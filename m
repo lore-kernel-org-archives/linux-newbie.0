@@ -1,48 +1,39 @@
-From: Bryan Whitehead <driver@jpl.nasa.gov>
-Subject: Re: Journaling File Systems...
-Date: Fri, 25 Oct 2002 11:19:41 -0700
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Trying to get GUI'ed
+Date: Fri, 25 Oct 2002 15:14:27 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DB98B3D.8010301@jpl.nasa.gov>
-References: <1035456374.31016.84.camel@localhost.localdomain>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <200210251914.g9PJER508163@hartford-hwp.com>
+References: <20021025.133927.134682184.2.lawson_whitney@juno.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <20021025.133927.134682184.2.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Cc: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: lawson_whitney@juno.com
+Cc: ray@comarre.com, hammer@revobild.net, linux-newbie@vger.kernel.org
 
-Bryan Simmons wrote:
-> When I first installed Linux in 1998, I don't remember there being any
-> other file system to use other than Ext2.  After 2000, I went a few
-> years without Linux.  This time around, when installing Linux, I noticed
-> I could use anything from Ext3 to ReiserFS to JFS etc... I steered clear
-> of these and chose Ext2 because it was all that I knew.  Now, after
-> reading an article on journaling file-systems in Linux Magazine, I am
-> convinced I need to use this technology on my next system (which should
-> arrive Friday).
-> 
-> Here's my question:  what would you guys suggest as a good file system
-> for a client?  I use my system for programming, multimedia (home movies,
-> mp3s, pics, etc...).  So far, it seems good to go with Reiser.  JFS and
-> XFS seem like overkill for a client and Ext3 is not efficient enough.
-> 
-> What are your opinions?
+Please allow a naive question.
 
-I'd recommend XFS. All the Workstations I manage run it without a hitch. 
-Very fast, stable, and xfsdump works. ;) I've also used the features 
-such as growfs to get more room (it works while the FS is mounted).
+When I boot, I arrive at a log in prompt. When I log in, I arrive at
+command prompt for the user.
 
-If your using NFS stay away from Reiser. I hear reports all the time 
-that "nfs+reiser is now fixed" but everytime I give it another go it 
-screws up bad....
+You explained how one might start X without a window manager, and I
+that might have some utility. 
 
--- 
-Bryan Whitehead
-SysAdmin - JPL - Interferometry Systems and Technology
-Phone: 818 354 2903
-driver@jpl.nasa.gov
+But my question is, is there any difference in functionality between
+running xterm under X and the initial command prompt before starting
+X? Is there any difference in functionality between xterm and the
+command prompt before running X?
 
+I ask because I'm trying to understand why one would go to the trouble
+to edit ~/.xinitrc to boot to an xterm. Why not stay in the nice
+DOS-like world that exists before X if all one wants to do is to issue
+commands. 
+
+Haines
+
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
