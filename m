@@ -1,36 +1,36 @@
-From: DFW II <devon_wing@yahoo.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: Compaq Armada 100S
-Date: Sun, 14 Apr 2002 16:18:29 -0400
+Date: Mon, 15 Apr 2002 06:17:40 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.0.20020414161742.01f58c00@pop.mail.yahoo.com>
-References: <5.1.0.14.0.20020412084933.01f54100@pop.mail.yahoo.com>
+Message-ID: <0204150617400Y.00302@unix.pa3gcu>
+References: <5.1.0.14.0.20020412084933.01f54100@pop.mail.yahoo.com> <5.1.0.14.0.20020414161742.01f58c00@pop.mail.yahoo.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0204121201210.4381-100000@bamboonet.mine.nu>
+In-Reply-To: <5.1.0.14.0.20020414161742.01f58c00@pop.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: DFW II <devon_wing@yahoo.com>, linux-newbie@vger.kernel.org
 
-The only problem I can see is that it has a winmodem built into it.... May 
-have to get a combo card for it.  Thanks for the opinions on the topic.
+On Sunday 14 April 2002 20:18, DFW II wrote:
+> The only problem I can see is that it has a winmodem built into it.... May
+> have to get a combo card for it.  Thanks for the opinions on the topic.
 
-At 12:04 PM 4/12/02 -0400, Brian Jung Myeng Lee wrote:
->Hello.
->
->Hmm.. This could be a war between what distro's the best. =)
->In my opinion, if you are a newbie, get Mandrake or RedHat then swtich
->over to Slackware or Debian as soon as possible. (That is when you know
->how to manage/run/fix stuff) I started with RH then switched to Slack,
->then LFS. But I think it doesn't take a lot to learn those 'hard' distros.
->They are all Linux (This is the word, but...) anyway.
->
->Bye bye.
->
->On Fri, 12 Apr 2002, DFW II wrote:
->
-> > I just inherited a Compaq Armada 100S laptop computer and am thinking about
-> > installing Linux on the machine... Any recommendations for a distribution?
+It may not be such a problem, my Armada E500 also has a winmodem in it, but 
+there is a linux driver for my modem and i must say it works well.
+
+You may want to look at the following sites for info on your make and type of 
+modem.
+http://linmodems.technion.ac.il/
+http://www.idir.net/~gromitkc/winmodem.html
+
+If its a lucent chip moden then you have a very good chance indeed.
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
