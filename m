@@ -1,130 +1,80 @@
-From: Petre Bandac <g38@rdsbv.ro>
-Subject: Re: forwarding question
-Date: Wed, 10 Dec 2003 01:34:03 +0200
+From: jamtat@mailsnare.net
+Subject: Re: Getting a valid display under Debian revisited
+Date: Tue, 9 Dec 2003 18:44:37 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200312100134.03552.g38@rdsbv.ro>
-References: <5.1.0.14.1.20031209145625.02059488@celine>
-Reply-To: g38@rdsbv.ro
+Message-ID: <Pine.LNX.4.58.0312091843110.1018@debian-box>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20031209145625.02059488@celine>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, g38@rdsbv.ro, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Wednesday 10 December 2003 01:22 Anno Domini, Ray Olszewski wrote using one 
-of his keyboards:
-> At 12:21 AM 12/10/2003 +0200, Petre Bandac wrote:
-> >hello
-> >
-> >I have the following problem:
-> >
-> >I want all the http traffic (dport 80) to be redirected to some other
-> >machine,
-> >from where the packets should go out on the internet
-> >
-> >I have tried to SNAT, but it seems that it isn't possible only with
-> > iptables
-> >
-> >on the second machine there should be squid running to take care of the
-> >incoming packets, or what ?
-> >
-> >(please cc to me, because though I'm subscribed to this list, messages
-> >stopped
-> >arriving to me since april 19th)
->
-> First the incidental part: if you are not getting list mail, you are
-> probably not subscribed. The vger server will detect some mail delievery
-> failures and auto-unsubscribe addresses. So if you had a transient e-mail
-> failure, one that left you unable to receive mail for a day or so, that
-> might have caused you to be unsubscribed. (Or it may be something else, of
-> course; I only mention this because any time one stops getting list mail
-> for no apparent reason, it is worth verifying that you are still
-> subscribed. Over the 5 years or so I've been on this list, I've been
-> involuntarily unsubscribed about a half dozen times.)
+Apologies if this gets double-posted.  I sent it 2 or 3 hrs ago and
+haven't seen it hit the list yet, so I'm resending.
 
-I resubscribed and it works now :-)
+On Tue, 9 Dec 2003, Ray Olszewski wrote:
 
-> Now your actual question:  I don't *quite* understand what you want to
-> accomplish here, so some of this is guessing.
+> OK. First thing to wonder is if this is some sort of xdm problem. Test this
+> by removing the symlink /etc/rc2.d/S99xdm and rebooting. This change should
+> leave you with a standard login: prompt on VT1.
+>
+> Log in and run "startx", and see if you have the same problem.
+>
+Same problem.  A bit of phosphor excitement as the server starts, and some
+blinking.  Then it goes totally black and the power light starts blinking.
 
-linux_1 193.231.x.x is routing a subnet (routable)
-linux_2 is on the same network with linux_1 (193.231.x.x)
+> This detail actually is important. It is an indicator of a problem with an
+> hsync or vsync signal to the monitor. Make sure your X setup is set to use
+> default size of 640x480 and color depth of 8 (not great settings, but very
+> vanilla ones, likely to find a workable modeline).
+>
+Tried 640x480x8 with the current hsync and vsync.  Same problem - black
+screen after a blink or two.
 
-all the traffic from the subnet going to port 80 must be redirected to linux_2 
-(this redirection I presume should be made by linux_1), and from there go to 
-its destination (yahoo.com or whatever)
+> I don't have a 2.2.20 source tree handy to examine, and I don't otherwise
+> recall if it supports devfs. Based on my system here, current (or at least
+> recent) X doesn't assume devfs is in use.
+>
+I tried the new kernel and am running it now.  It has not resolved the
+problem.
 
-so, linux_2 should have proxy (squid or apache, as you say) or it can do snat 
-or whatever trick with iptables
+> As a general matter, if we are looking at the possibility of hardware
+> problems, you might want to report the details of how you consifured X (in
+> the dpkg-mediated dialog) and what the relevant sections (Modules,  Device,
+> Monitor, Screen, and ServerLayout) of XF86Config look like. Also tell us
+> what monitor you are using and what you know about its multisync
+> capabilities (this last item is an RTFM exercise).
+>
+When I installed X using tasksel, a set of dialogues ran after the
+download asking details about video card, monitor, keyboard and mouse.  I
+entered the values there.  I initially edited (by hand) a line in the
+section that deals with the mouse.  Since then, I have run
+dpkg-reconfigure xserver-xfree86 at least 4 or 5 times to try and fiddle
+with settings to see if that would help.  Those mouse settings have almost
+surely been overwritten by now.  The way XF86Config-4 looks is sort of a
+moving target for this reason: I'm not sure what to show you.  This
+monitor is a Microscan ADI 4V LM-1564.  Like most of the other stuff I
+have, this one is a castoff that came with no documentation.  Specs I
+found on the web for it say it can do 1280x1024 maximum, and that hsync is
+30-64, vsync 50-100.  I tried those settings initially at 24 bit color and
+640x480, 800x600 and 1024x768 resolutions.  Later I went down to 50-80 on
+vsync.  Since your last reply I've selected 640x480 only in
+dpkg-reconfigure xserver-xfree86 and 8 bit color.  I also tried limiting
+hsync down to 30-40 and vsync to 50-60.
 
-thanks,
+Though it may not be relevant, I'd like to ask how I go about specifying a
+window manager.  I apt-get(ted) fluxbox as I mentioned, but I'm just not
+sure if I need to configure the system somehow so that the computer knows
+to start it.  I'm assuming that, even if that's not configured correctly,
+I should still see something when I run "startx," and that it's therefore
+probably not relevant to the problems I'm having.  But not being sure, and
+needing to perhaps confront that aspect at some stage, I thought I should
+mention it.  What I really need is some sort of description of setting up
+X from start to finish.  Unfortunately, I haven't located such a resource
+yet.  Any recommendations anyone?
 
-petre
-
-
-> The usual way to force a host to use a proxy server for (say) http traffic
-> is
->
->          (A) in the site's router/firewall, DENY all traffic going from
-> workstations to external addresses at port 80 (and maybe 443, if you want
-> to restrict https too); ALLOW traffic only from the machine in B.
->
->          (B) on some suitable-secure internal server, run a proxy like
-> Squid or Junkbuster or whatever (I think even Apache itself can be
-> configured to operate as a proxy) to forward the traffic.
->
->          (C) Have each user configure his or her bowser to use that proxy
-> server.
->
-> What I **think** you are trying is a bit different, something I've never
-> seen done but that, in principle, whould work. It goes something like this:
->
->          (A) is the same as above, since if you don't restrict things at
-> the router, users will have the opportunity to bypass restrictions (unless
-> no user has *any* way to get root access to his or her workstation, hard to
-> manage on Linux systems that the user has physical access to).
->
->          (B) On each individual workstation (or perhaps on the router,
-> instead of step A), use the kernel's routing code to redirect all port-80
-> (and 443?) traffic to an internal server that runs some sort of proxy.
->
-> If you want to do that, then iptables should work. The details depend on
-> whether you are talking about running Linux and iptables on the
-> workstations or the firewall/router. For example, on the firewall/router,
-> you would do it with 2 rules:
->
->          (1) in the default table's FORWARD chain: For any traffic from the
-> LAN to port 80, ACCEPT it
->
->          (2) in the nat table's PREROUTING chain: For any traffic from any
-> LAN address other than the proxy server to an external port 80 destination,
-> DNAT it to the proxy server address.
->
-> You may need to modify other existing rules as well, depending on details
-> of your setup that can vary too much for me to cover even all the likely
-> cases. (For example, rulesets often block routing LAN traffic back to the
-> LAN, and rule 2 above runs afoul of that.)
->
-> All this is a bit vague, I admit, but your requirements ae a bit vague too.
-> If you try again, describing the setup and your goal more precisely, as
-> well as telling us what you tried (I do'nt see how even to *try* doing this
-> with SNAT, for example) and what went wrong, then maybe I or someone else
-> can give you more exact help.
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-
--- 
- 1:34AM  up 15:19, 1 user, load averages: 1.13, 1.26, 1.31
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
