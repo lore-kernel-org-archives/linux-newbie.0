@@ -1,43 +1,57 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Re: Logging
-Date: Wed, 10 Apr 2002 00:36:40 -0600
+From: edgaralwers@t-online.de (Edgar Alwers)
+Subject: Re: Urgent help !
+Date: Wed, 10 Apr 2002 09:54:29 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.0.20020410003520.0352ef78@shawmail.ed.shawcable.net>
-References: <5.1.0.14.0.20020409234447.0352bf68@shawmail.ed.shawcable.net>
- <5.1.0.14.0.20020409234447.0352bf68@shawmail.ed.shawcable.net>
+Message-ID: <02041009542900.01099@edgar>
+References: <20020408232526.122bd9b1.bbotero@gmx.de> <16ukfV-26ZTpgC@fwd01.sul.t-online.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02041006080002.00302@unix.pa3gcu>
+In-Reply-To: <16ukfV-26ZTpgC@fwd01.sul.t-online.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Christoph Hammann <chammann@t-online.de>, linux-newbie@vger.kernel.org
 
-At 06:08 AM 10/04/2002 +0000, Richard Adams wrote:
->On Wednesday 10 April 2002 05:46, Chris Rose wrote:
-> > Can anyone on the list suggest some tools for log reading?  i'm trying to
-> > audit my ftp server (proftpd) and i have no idea how to configure its
-> > logging, nor how best to view what it puts out.  i have Webmin, but the
-> > logging interface in there is pretty unclear to someone who's got nothing
-> > to start from, knowledge-wise.
+Thank you, Christoph.
+
+I could boot the box in maintenance modus, edit /etc/fstab and exclude 
+/dev/hdb2 from booting. After that, I could at least boot up normally my 
+first hd.
+
+Now one question and one general remark.
+The question: how could I  try to rescue the /dev/hdb2 partition ? I mean, 
+do I have to formate the disk or what could be a better procedure ?
+
+The general remark: after this experience, I would strongly recomend _not_ 
+to_change a running ext2 partition in an ext3 one, as it seems that recovery 
+processes in the event of a crash and consequential forced check may have 
+catastrophal consequences. I had downloaded the newest e2fsprogs version 1.27 
+and even this program could not repair the partition. Not imaginable what 
+would have happened, if I would have also changed the partition containing 
+root !
+
+Edgar
+
+You wrote:
 >
->Why would one want to ue a fancy program to read a simple text file, the
->program less allows the use of a search engine, hit the '/' key and a slash
->will appier at the bottom left of the screen, type a word to look for, then
->hit enter, to repeat hit the slash again and press enter or simply hit the
->space bar, the found word is highlighted.
+> /dev/hdb2 seems to be definitely hosed, I'm not seeing any reasonable
+> method of getting at the data on this partition. But as you write this
+> partition seems to contain a backup only. Can you boot from CD-ROM or
+> diskette and when it halts in the bootup process while trying to fsck
+> /dev/hdb2 open another console (Ctrl-Alt-F2 to F{number of ttys+1})? If so,
+> I would try to umount this partition and go on with the boot process or
+> edit /etc/fstab so that it doesn't even touch it.
+> If, on the other hand, /dev/hdb2 contains the root filesystem, you really
+> are FUBAR. Wonder if one of the experts on this list can still help you out
+> of this.
+> So, what is the /etc/fstab of this system?
+>
+> Christoph
 
-i think you're missing the point - what i'm looking for is not, per se, the 
-mechanism used to read the log, so much as i'm looking for the means to 
-make sense of what i'm seeing, and also which log files/settings of the 
-daemon will provide me with stats on uploads/downloads from my ftp site.
-
-
-Chris Rose
-==========
-1952 - 2001 = 42
-
-
+-- 
+-----------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto:edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
