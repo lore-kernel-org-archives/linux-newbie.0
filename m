@@ -1,29 +1,46 @@
-From: "Mike Chambers" <mike@netlyncs.com>
-Subject: Hiyas
-Date: Thu, 18 Apr 2002 23:07:15 -0500
+From: G Anna <drguruolai@eth.net>
+Subject: char-major-6
+Date: 19 Apr 2002 09:25:55 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <006801c1e757$b0a13350$0301a8c0@netlyncs.com>
+Message-ID: <m3662o5ol0.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hiyas all,
+Dear All,
 
-Just found this list and thought I would check it out.  Maybe I can learn a
-thing or two as well as help out others.  Been using linux for almost 5
-years now total off and on.  Hopefully I can be of some help.
+When I try to do
 
-Is this list active?  Hope to talk to you soon,
+# /etc/rc.d/init.d/lpd start
+Starting lpd: Warning - test: \ 
+cannot open lp device '/dev/lp0' - No such device
 
---------------------
-Mike Chambers
-Madisonville, KY
-Netlyncs
+[I broke the line into two.]
 
-"It's always better to hurt a little now, then to hurt a lot later!"
+And in the /var/log/messages file I have
+
+Apr 19 09:19:05 wobble modprobe: modprobe: Can't locate module char-major-6
+Apr 19 09:19:05 wobble lpd: lpd startup succeeded
+
+Can anybody tell me, which config option is this char-major-6?
+
+I am using RH 7.1,
+
+$ uname -a
+Linux wobble 2.4.16 #2 Fri Apr 19 01:09:19 IST 2002 i686 unknown
+
+Thanks for all the help.
+
+Cheers,
+anna
+
+-- 
+
+Get your free e-mail account at http://www.linuxmail.org
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
