@@ -1,54 +1,38 @@
-From: mike <mike@kevino.org>
-Subject: Re: devfs
-Date: Wed, 04 Feb 2004 07:09:41 -0700
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: accessing USB memory stick
+Date: Wed, 4 Feb 2004 14:46:38 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4020FD25.5060907@kevino.org>
-References: <401F1A29.80107@kevino.org> <Pine.LNX.4.58.0402031515530.24791@ppg_penguin> <40208F5E.8020504@kevino.org>
+Message-ID: <Pine.LNX.4.44.0402041422210.17345-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <40208F5E.8020504@kevino.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-mike wrote:
-> Ken Moffat wrote:
-> 
->>
->>
->>
->> Based on past experience with mdk8.2, which used devfs and worked
->> extremely badly for me, I'd recommend doing without.  However, that's a
->> lot easier said than done.  You'll need to create static devices, and
->> you won't be able to do this while devfs is blocking access to the real
->> underlying /dev, which means booting from a recovery CD as well as
->> knowing which devices you need, and which groups should own them.
->>
->> I also take the view that most people don't change their underlying
->> hardware and peripherals very often, so for me manually adding a device
->> when I add a usb printer is par for the course.  If you don't want that
->> level of involvement and you don't have any problems with it, keep it.
-> 
-> 
-> I think I'll keep it, sounds like it does alot for me which I'm not 
-> knowledgeable enough to do for myself. At least at this point in my 
-> learning process :-)
-> 
->> Funnily enough, based on an email a little while ago on lkml about udev,
->> I thought Mandrake had already moved away from devfs.  [ udev
->> reimplements some of what devfs does, with 2.6 kernels, but its still at
->> an early stage and certainly not intended as a drop-in replacement. ]
->>
->> Ken
-> 
-> 
-> Thanks for reply Ken.
-> 
+Hello,
 
+How do I mount a usb memory stick? I do see something connected to usb on
+the output mount (I am running Redhat 9):
+$ mount | grep usb
+usbdevfs on /proc/bus/usb type usbdevfs (rw)
 
--- 
-Mike
+On plugging the device into the machine and looking at dmesg, shows me 
+stuff (which I think is connected to plugging in the usb stick):
+
+hub.c: new USB device 00:1d.7-6, assigned address 3
+WARNING: USB Mass Storage data integrity not assured
+USB Mass Storage device found at 3
+
+Is the device being recognized? How can I access it? 
+
+Thanks,
+
+-K
+
+---------------------
+Genius may have its limitations, but stupidity is not thus handicapped.
 
 
 -
