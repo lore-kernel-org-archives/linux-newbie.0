@@ -1,74 +1,62 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: nomore newbies??
-Date: Sun, 19 May 2002 21:02:42 +0000
+From: "Tom Beer" <mailings@analogon.com>
+Subject: lost in wonder-land
+Date: Mon, 20 May 2002 00:25:29 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02051921024213.27213@unix.pa3gcu>
-References: <20020519202734.15086.qmail@linux.ik5bcu.ampr.org> <02051920453612.27213@unix.pa3gcu> <200205192053.g4JKrlI09570@g38.rdsbv.ro>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <005401c1ff84$1938bfc0$0901a8c0@system>
+References: <20020518183319.JSUI11146.mtiwmhc22.worldnet.att.net@alan>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200205192053.g4JKrlI09570@g38.rdsbv.ro>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Petre Bandac <g38@rdsbv.ro>, pa3gcu@zeelandnet.nl, Marco Calistri <ik5bcu@tin.it>, linux-newbie@vger.kernel.org
+To: Alan Womack <arwbackup@worldnet.att.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Sunday 19 May 2002 20:53, Petre Bandac wrote:
-> richard,
+Hi,
+
+> In general I like the kiss protocol..  But it appears I have to attack from
+two avenues
 >
-> just for my general knowledge, would you please define "mail-bouncing" ?
-
-I meant as bouncing, when a system "refuses" to accept a mail, as in 
-disk full no space left on device,
-mail filters, reject mail from xx.xx.xx
-
-On the otherhand a mailing list as this has "majordomo" as its sevewr, one 
-can define things like.
-rejected mail, then place the receiprent in a "bounce list", after X amount 
-of tries and we cant sent the mail, "unsubscribe" the reciprient.
-
-> K-Mail has this command when right-clicking on an e-mail and I have also
-> seen many e-mails coming from some mailing-lists have in the sender's
-> address "bounce" too [sendmail[8113]: g4JHwLG08113:
-> from=<rlug-bounce@lug.ro>]
+> when I go to security=user on the NT authentication side I get:
+>
+> [Alan@Webby Alan]$ smbclient //webby/WinShare -U Alan
+> added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
+> Password:
+> session setup failed: NT_STATUS_LOGON_FAILURE
+> [Alan@Webby Alan]$
 >
 
-Yes it does but that is not what i meant about bounces on a mailing list.
+This is a samba passwd issue in conjunction with a nt password
+authentication mechanism. This is widely documented. Take a look at
+http://www.samba.org/samba/docs/ENCRYPTION.html
 
-> thanks,
->
-> petre
->
-> On Sunday 19 May 2002 23:45, Richard Adams wrote using one of his keyboards:
-> > On Sunday 19 May 2002 20:27, Marco Calistri wrote:
-> > > On 19-May-2002 Staci wrote:
-> > > > Not dead, just sleeping. ;)
-> > > >
-> > > > It seems a lot of things don't apply to me, they're
-> > > > either too high-level or to basic, or involve
-> > > > hardware/needs I don't have. <shrug>
-> > > >
-> > > > sl
-> > > >
-> > > > --- Marco Calistri <ik5bcu@tin.it> wrote:
-> > > >> Hi,this list seems dead...
-> > >
-> > > I'm replying to the list after my "usual" unsubscribe/resubscribe due
-> > > to vger "automatic user wiper"
-> > >
-> > > Thanks Ray,Richard,Staci,Steven...
-> >
-> > I have not seen replys from others yet, however its early days, what i
-> > find is, if one has mail bounced, that means a mail was sent to you and
-> > your ISP/your mailserver refused the mail, then your mail address goes on
-> > the bounces list, after X amount of retrys and the mail is not accepeted
-> > by your ISP or you directly, then your off the list, this i belive is
-> > normall practice on just about all mailing listes.
+I hope this will help for your purpose to setting up the nt - linux
+interface.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+> and on setting up ldap:
+>
+> [root@Webby openldap]# ldapadd -x -h localhost -D
+"cn=manager,dc=WEBBY,dc=com" -f base.ldif -W
+> Enter LDAP Password:
+> ldap_bind: Can't contact LDAP server
+>
+
+If you are using PAM authentication through xinetd you have to
+set up an entry in xinetd.d for Ldap services to provide a socket
+and, additionally in /etc/pam.d/.
+If you use inetd you have to modify inetd.conf. If you're using
+s/key or some other authentication sheme, modifications will vary.
+Then you should consult the Security Howto. Besides, the Ldap socket
+errors could result from Outlook (or other) Front end misconfigurations.
+
+Greets Tom
+
+
+
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
