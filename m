@@ -1,23 +1,22 @@
 From: dashielljt <dashielljt@gmpexpress.net>
-Subject: linux and micro solutions parallel cdrw drives
-Date: Wed, 13 Nov 2002 19:13:09 -0500 (EST)
+Subject: RE: Tar Exclude
+Date: Wed, 13 Nov 2002 19:46:05 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0211131909590.15802-100000@athame.gmpexpress.net>
+Message-ID: <Pine.LNX.4.44.0211131945370.15804-100000@athame.gmpexpress.net>
+References: <078101c28b29$b4737260$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <078101c28b29$b4737260$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-I know these drives aren't state of the art but have an opportunity to buy
-one.  Is this likely to be a good fit for slackware linux or should I
-leave this opportunity alone?  That http://lhd.datapower.com site hasn't
-been fixed and I'd actually like to get both of the available newsletters
-associated with it but the registration form is even broken too so that's
-not even possible.
+You want to have /proc in that exclude along with /tmp.
 
 Jude <dashielljt@gmpexpress.net>
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
