@@ -1,37 +1,43 @@
-From: John E. Jay Maass <jay.maass@verizon.net>
-Subject: Re: Trying to get GUI'ed
-Date: Fri, 25 Oct 2002 22:29:20 -0400
+From: cr <cr@orcon.net.nz>
+Subject: Re: problems with dual boot
+Date: Sat, 26 Oct 2002 17:08:59 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021026022920.KKZN11125.out010.verizon.net@[127.0.0.1]>
+Message-ID: <20021026025631.276127321C@smtp.orcon.net.nz>
+References: <20021025.133927.134682184.1.lawson_whitney@juno.com>
+Reply-To: cr@orcon.net.nz
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20021025.133927.134682184.1.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: lawson_whitney@juno.com, abhijit_v@yahoo.com
+Cc: linux-newbie@vger.kernel.org
 
-> > How much do you have now ? (memory)
-> 80m.  Why do you ask?  I had 8m in an old 486 to start with.
+On Friday 25 October 2002 14:45, lawson_whitney@juno.com wrote:
 
-At Computer Learning Center we were required to memorize a rough
-block diagram showing a cpu, its ram, a hard drive controler,
-hard drive, and network card.
+(snip)
 
-Using arrows we had to trace a bit of data coming from the
-network and going to the hard drive. And vice-versa.
+>
+> > Doing fdisk /dev/hda
+> > gives me the error "Unable to load /dev/hda"
+>
+> if this                         ^^^^ is a typo for open,
+> maybe you were not root and had not permission?
+>
+> Why do you need fdisk?  Do you not know where is /boot?
+>
 
-The point was that, at every step, random access memory (RAM)
-was involved. Every time a bit of data flows within a system,
-it is going to pass through RAM.
+My system went down recently - I *think* because one of the three(!) hard 
+drives was failing.    And I definitely needed to read the drives to see what 
+partitions I had on each one....
 
-The instructor did well to have us memorize that diagram.
+So I intalled a new system on a spare drive, then added each old drive in 
+turn and checked it with  fdisk, Antivir (just in case) and fsck.   I had to 
+mount it to use Antivir, using the partition names I got from reading fdisk.
+All as su to root, of course.
 
-jay
-philadelphia
-
-
-
-
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
