@@ -1,80 +1,46 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: basic networking queries
-Date: Thu, 24 Jul 2003 20:17:51 -0700
+Date: Thu, 24 Jul 2003 22:33:53 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030724200741.01ee7cc0@celine>
-References: <Pine.LNX.4.56.0307242056270.6151@homenet>
+Message-ID: <Pine.LNX.4.56.0307242218050.6210@homenet>
+References: <5.1.0.14.1.20030724200741.01ee7cc0@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.56.0307242056270.6151@homenet>
+In-Reply-To: <5.1.0.14.1.20030724200741.01ee7cc0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-James -- I cannot answer your question directly, because you have provided 
-a bit too little information about your setup, and some of what you did 
-provide is unusual relative to my experience.
+On Thu, 24 Jul 2003, Ray Olszewski wrote:
 
-First off, what Linux distribution and version are you using? I'm guessing 
-Slackware, but that is no more than a guess (based on the filename 
-rc.pcmcia ... of the major distros, I think Slackware is the only one that 
-still uses rc* filenames for init scripts).
+Thanks for your answer, Ray.  I didn't provide much detail because, rather
+than trying to set something up specifically or trying to troubleshoot, I
+was trying to understand better *in theory* something about networking -
+namely about how DHCP works.  I know so little about it, in fact, that I'm
+not sure what sort of information to provide.  I do use a Slackware
+variant.  As I mentioned, I know from sources connected with this variant
+that some form of dhcp is enabled on it (dhcpd?) and maybe just runs as a
+background process.  But this is really already further than I want to go
+with this.  I'm just trying to better my grasp on some of the fundamentals
+of how dhcp works, what sort of info it needs/uses and the like.  One of
+those touchy-feely inquiries, you know, where you're not even sure which
+questions to ask to get started learning?  I don't know, maybe you already
+know everything about everything and don't find yourself in those sorts of
+situations.  But I sure do (not ashamed of admitting it, either).  Anyway,
+this sort of inquiry goes in stages for me: I start with some probings,
+which helps me get bearings and know what further to ask, where further to
+look.  At some later stage of the learning process, I can then formulate
+more specific questions related to some task.  But I'm just not at that
+stage yet with DHCP.  Is a linux-newbie list not the place to make those
+sorts of inquiries?
 
-To get an IP address assigned by DHCP, a system needs to run a DHCP client. 
-The one most commonly used, these days, is pump. Others include dhcpcd and 
-dhclient. You need to see which of these you have on your system, then 
-create or activate an init script that starts one of them with appropriate 
-settings. If you have none of them, you need to see which of them your 
-distro provides and install one of them ... also maybe create an init 
-script, or maybe the install will cause an init script to be installed too.
+James
 
-Or maybe changing the settings in network.opts as you guessed will work, if 
-the needed daemon is on your system. It's hard to say. The form of init 
-scripts is a bit distro dependent (very much so as regards Slackware), so 
-without seeing the script in question, it is hard to be definite about what 
-you should do. Usually, if you are using DHCP, you do not fill in fields 
-for IP address, netmask, broadcast address, gateway, and maybe nameservers.
-
-Since you are a beginner, I'll close with a bit of beginner advice: 
-whenever you pose a question about Linux, here or on any list, always 
-mention what distro you are using, what version, and (usually) what kernel 
-version (e.g., "Red Hat 9.0 with kernel 2.4.20" or "Debian Sid with kernel 
-2.4.19"). It saves everyone a lot of time.
-
-At 08:57 PM 7/24/2003 -0500, James Miller wrote:
->I've set up a small home network and managed to get a few computer talking on
->it, including an old laptop.  The laptop prompts this query.  So, I have a
->basic grasp of some Linux networking concepts, as well as general networking
->concepts.  I set up the home network with static addressing, which seemed
->more approachable to me.  Now, I'm going to need to tweak the laptop a bit so
->I can use it at some larger institutions (schools) where I visit or study.
->Almost surely these places will be using DHCP for assigning network addresses,
->and they will likely expect computers hooking up there to be DHCP-capable.
->Well, I'm sure I have such capability on the laptop, so that much is in place.
->I've also gotten some information from the PCMCIA how to, as well as some
->other sources, on ways to select between DHCP and static addressing setups.
->In this initial inquiry, I just want to ask for some further information on
->how DHCP works, so I'll have an idea what to expect.  Let me pose my questions
->as follows: in the network.opts file, which is where rc.pcmcia gets its
->information about the network from, there are various entries - ip address,
->gateway address, subnet address, network address and the like.  I have at 
->least
->a general idea of which of these fields I must fill in on my static, home
->network, as well as the values that go there.  What I'm not sure about when
->using DHCP is which of the fields (if any) need to be filled in?  Apart from
->enabling DHCP there (by entering a "y" in the appropriate field), which other
->fields might I need to fill in?  Do I need to know anything about the network
->addressing scheme where I'll be using the laptop, or will DHCP take care of
->detecting and utilizing all those values?
->
->Depending on the enlightenment or confusion that results from answers I may
->receive to this query, I may need to pose additional questions.  Thanks for
->your help.
-
-
-
-
+PS I had some problems getting that message to the list, since my initial
+post got lost.  Maybe I didn't formulate things very clearly in the
+rewriting, with the disappointment of having lost what I'd earlier
+started.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
