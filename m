@@ -1,61 +1,61 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: More on Startup Scripts
-Date: Wed, 18 Sep 2002 13:49:41 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Xinetd compared to /etc/rc.d/init.d
+Date: Wed, 18 Sep 2002 11:26:36 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <009101c25f3b$c47471b0$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20020918111503.024d0260@celine>
+References: <008d01c25f3b$793e9950$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0092_01C25F1A.3D62D1B0"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <008d01c25f3b$793e9950$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0092_01C25F1A.3D62D1B0
-Content-Type: text/plain;
-	charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-I understand that in the runtime folders that the SXXscript stands for
-startup and the KXXscript stands for kill. What do the XX stand for?
+At 01:47 PM 9/18/02 -0400, Paul Kraus wrote:
+>What is xinetd used for. I thought it was used to start services but
+>have read on some newsgroups to avoid it. Does it work with the startup
+>files in /etc/rc.d/init.d/ folder, is it actually a step up from those
+>scripts and a possible replacement. How do the two work in relation to
+>each other.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+inetd (not a typo. keep reading) is itself a sort of service; it listens on 
+many ports, and when a connection is made to a port it is listening to, it 
+passes that connection on to the actual service for that port (as specified 
+in /etc/inetd.conf). It's usually called the "superserver". This concise 
+description leaves out some details; reading the man page for inetd will 
+fill in the details.
 
-------=_NextPart_000_0092_01C25F1A.3D62D1B0
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+xinetd is an alternate implementation of roughly the same functionality. It 
+has some additional features, and I've read some problems. Since I 've 
+never tried it myself, I can't intelligently discuss its merits relative to 
+regular inetd.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+inetd and xinetd have nothing (well, almost nothing) to do with the 
+boot/init scripts. Those scripts do need to start services, so one of them 
+will start inetd or xinetd for you, but other than that, they are quite 
+separate.
 
-------=_NextPart_000_0092_01C25F1A.3D62D1B0--
+>On a side not what is up with all the filename.d's.
+
+That's a pretty vague question, Paul.
+
+If you mean the various /etc/something_or_other.d listings, they are 
+usually directories, not files (well, in Unix/Linux, there is a sense in 
+which *everything* is a file, including the keyboard and the screen, but 
+let's put that aside for now). The modern convention is for programs to 
+create /etc/myname.d directories and put any systemwide config files they 
+need in there (user-specific config files go in users' home directories).
+
+If you mean something else, please try asking again, a bit less 
+elliptically this time.
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
