@@ -1,37 +1,38 @@
-From: Amin <amin@siriusbb.com>
-Subject: Re: MSN Messenger clones keep failing
-Date: Wed, 05 Nov 2003 19:09:07 +0600
+From: Ravi Kumar Munnangi <munnangi_ivar@yahoo.com>
+Subject: problem with Real Tek RTL-8139, SMC EZ Card
+Date: Thu, 6 Nov 2003 09:11:24 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3FA8F673.8070301@siriusbb.com>
-References: <3FA79E82.3080204@siriusbb.com> <3FA79E82.3080204@siriusbb.com> <5.1.0.14.1.20031104073149.02010830@celine> <3FA821C3.1030608@megahappy.net>
+Message-ID: <20031106171124.64183.qmail@web80604.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3FA821C3.1030608@megahappy.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Bryan Whitehead wrote:
-> Build gaim with ssl support on. You will need mozilla installed with all 
-> the nss and related libaries along with openssl.
-> 
-> http://gaim.sourceforge.net/
-> 
-> you need to run version .71 or up. They also have binaries for windoze.
-> 
+Hello,
+ 
+  I have just now installed RedHat Linux 8.0 on my
+system. It has the Real Tek RTL-8139, SMC EZ Card.
+  
+ After ifup eth0, it gave the message,
 
-Hi,
+ modprobe:Can't open dependencies file
+/lib/modules/2.2.14-5.0/modules.dep(No such file or
+directory)
 
-Gaim ROCKS!  It's the most polished IM client I've ever seen 
-in Linux, and it handles MSN just fine.  Oh, I didn't even 
-have to compile it or anything.  The SourceForge RPM for RH8 
-works fine.
 
-Thanks very much.  Life is easier to bear now :-)
+The same message appeared even at the time of booting.
+ 
+Please help me come out of this problem!
 
-Yawar Amin
+Thanking you,
+Ravi Kumar
 
+__________________________________
+Do you Yahoo!?
+Protect your identity with Yahoo! Mail AddressGuard
+http://antispam.yahoo.com/whatsnewfree
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
