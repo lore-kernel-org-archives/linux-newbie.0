@@ -1,28 +1,36 @@
 From: Joshua Lee <yid@softhome.net>
 Subject: Re: Book Recommendations
-Date: Wed, 13 Nov 2002 09:11:25 -0500
+Date: Wed, 13 Nov 2002 09:01:42 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021113141125.GA8413@softhome.net>
-References: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp> <5.1.0.14.1.20021112123254.020f5b60@celine>
+Message-ID: <20021113140142.GA8312@softhome.net>
+References: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20021112123254.020f5b60@celine>
+In-Reply-To: <070a01c28a83$ff0d0f30$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
+To: Paul Kraus <pkraus@pelsupply.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Tue, Nov 12, 2002 at 01:17:39PM -0800, Ray Olszewski wrote:
-> Essential System Administration from those days (actually, I replaced my 
-> original copy with the second edition), and though I never refer to it any 
-> more, in the early days, struggling with early versions of Slackware,  it 
-> was an everyday tool.  It's probably too out of date for use today (unless 
-> I missed a 3e), but I'd look for something like it. I'd also look closely 
+On Tue, Nov 12, 2002 at 02:45:03PM -0500, Paul Kraus wrote:
+> What books would you recommend?
+> 
+> If it seems broad it is supposed to be :) I want recommendation on
+> newbie, intermediate, advanced, scripting, programming, and security :)
 
-A third edition is forthcoming from O'Reilly. You're right about the
-second edition being a bit out of date.
+O'Reilly's "UNIX Power Tools" is a neat book for finding tips and tricks
+concerning *nix programs and utilities. 
+
+For system administration a clone of the venerable (and expensive) 
+Unix System Administration Handbook (aka the Purple Book) by Evi Nemeth 
+et. al. has been published under the name of Linux Administration Handbook. 
+I reccomend it highly.
+
+For programming I hear that W. Richard Stevens "Advanced Programming in
+the Unix Environment" is the best. (It's in my to-buy queue.) I have
+one of his works on the TCP/IP protocols, "TCP/IP Illustrated Vol 1"
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
