@@ -1,21 +1,18 @@
-From: James Miller <jamtat@mailsnare.net>
+From: Pete Shinners <pete@shinners.org>
 Subject: Re: USB Mass Storage Devices
-Date: Sat, 25 Oct 2003 11:29:30 +0200
+Date: Sat, 25 Oct 2003 09:22:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031025112930.75078d0a.jamtat@mailsnare.net>
+Message-ID: <bne88l$jap$1@sea.gmane.org>
 References: <1067097757.10057.15.camel@Abydos>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <1067097757.10057.15.camel@Abydos>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Thorsten Alge <mailing@thorsten-alge.de>
-Cc: linux newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On 25 Oct 2003 18:02:34 +0200
-Thorsten Alge <mailing@thorsten-alge.de> wrote:
-> 
+Thorsten Alge wrote:
 > I want to use my usb hd and my usb mp3-player an my linux computer. if i
 > plug them on on after one, they will assigned as sda (i.e. my usb hd)
 > and sdb (my mp3-player) . so i can add them to /etc/fstab. the problem
@@ -27,10 +24,16 @@ Thorsten Alge <mailing@thorsten-alge.de> wrote:
 > cards an two of my partitions on my usb-hd must be vfat partitions. 
 > 
 > any ideas how to fix? 
-> 
-Good luck.  I don't mean to be callous, but my inquiries here of a similar sort have been met with stony silence.  I think USB - at least of the "hot pluggable" variety - has some serious problems under mainstream Linux.  I've thought of finding a USB-Linux list on which to pose such questions: you might want to try that if you get no helpful responses here.
 
-James
+i have this same problem and i cannot get it resolved. i believe with 
+"devfs" you can get consistent device names?? not sure, but debian 
+does not have devfs, so i need a different solution. i was hoping 
+there was some "hotplug" script that would link the plugged in device 
+to whatever system device it was assigned to, but i have found nothing.
+
+help please?
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
