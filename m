@@ -1,47 +1,33 @@
-From: Jim Nelson <james4765@verizon.net>
-Subject: Re: Inter-module communication
-Date: Fri, 12 Nov 2004 22:05:46 -0500
-Message-ID: <41957A0A.5040709@verizon.net>
-References: <000001c4c8d1$82a92620$340d81a4@benin>
+From: SOTL <sotl155360@earthlink.net>
+Subject: [SLUG] Modem signal 15
+Date: Sun, 14 Nov 2004 06:53:33 -0500
+Message-ID: <200411132014.40233.sotl155360@earthlink.net>
+Reply-To: slug@nks.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000001c4c8d1$82a92620$340d81a4@benin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Peter STIEGLITZ <peter.stieglitz@st.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Peter STIEGLITZ wrote:
-> Hi folks,
-> I have a requirement using 2.6 to notify more than one kernel module following the receipt of an interrupt.
-> 
-> I've heard of module unloading becoming a problem with other modules assuming they are still there.
-> 
-> What do people think is the best approach?
-> 
-> Regards
-> Pete
-> 
+I have a modem termination connection on initial login on signal 15.
 
-If this is going to be a suite of drivers, I'd probably write a function into each 
-module that is called whenever an interrupt of interest is called.  Then, in the 
-bottom half of the actual interrupt handler, I'd iterate over an array of those 
-functions, letting each module know that an interrupt had occurred.
+Does any happen to know what is happening?
 
-You'll probably need an IPC-like module to handle the message-passing interface 
-(unless a feature like this is already built into the kernel - anyone know?).
+This is on equipment that has functioned very well on dial up for a number of 
+years but recently has had the system reinstalled in it.
 
-Interesting problem - a microkernel would make this a little easier, but I don't 
-think that there is a generic message-passing capability built into the Linux kernel.
+Thanks
 
-There are some nasty obstacles to overcome - especially if you want to use it w/ 
-SMP or with the real-time preemptive system in development.  Unfortunately, that's 
-where my kernel-hacking skills run dry.  Ask me again in a year or so - I could 
-probably give you a better answer then :)
+Frank
 
-Jim
+-----------------------------------------------------------------------
+This list is provided as an unmoderated internet service by Networked
+Knowledge Systems (NKS).  Views and opinions expressed in messages
+posted are those of the author and do not necessarily reflect the
+official policy or position of NKS or any of its employees.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
