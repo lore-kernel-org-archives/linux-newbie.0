@@ -1,36 +1,43 @@
 From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: C compiler cannot create executables
-Date: Sat, 22 Jun 2002 11:07:41 +0300
+Subject: Re: fopen error number??
+Date: Sat, 22 Jun 2002 11:13:22 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020622110741.A1128@neutrino.particles.org>
-References: <200206210859.g5L8xRc02729@philonline.com>
+Message-ID: <20020622111322.B1128@neutrino.particles.org>
+References: <20020621141910.A403@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200206210859.g5L8xRc02729@philonline.com>; from pfheiss@philonline.com on Fri, Jun 21, 2002 at 04:59:27PM +0800
+In-Reply-To: <20020621141910.A403@lnx2.w8mch.ampr.org>; from haltec@iceweb.net on Fri, Jun 21, 2002 at 02:19:10PM -0400
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>
+To: Hal MacArgle <haltec@iceweb.net>
 Cc: linux-newbie@vger.kernel.org
 
-On Fri, Jun 21, 2002 at 04:59:27PM +0800, Peter wrote:
-> Hi,
->  trying to configure a program I get the following message and .configure 
-> stops.
+On Fri, Jun 21, 2002 at 02:19:10PM -0400, Hal MacArgle wrote:
+> Greetings: Just installed Slack8.0 (2.2.19) on a fresh HD, restoring
+> backed up user files only from original working HD, that was Slack7.1
+> (2.2.16).  Simple setup using A AP and N groups only..
 > 
-> checking for C compiler default output... configure: error: C compiler cannot 
-> create executables
+> Everything working fine except one that baffles me:
 > 
-> What has to be done to correct this?
+> Using Mutt and Metamail, default distribution packages, I can't save
+> a jpeg attachment to a file, in order to view it.. The report is:
+> "fopen: Permission denied (errno=13"
+> 
+> I checked and compared the file permissions on all the files I could
+> think of, plus checked for the libraries, and see no difference
+> between this machine and another similar machine that saves the files
+> correctly... I have some books on C but I can't find what errno 13
+> is.
 
-Do this:
+[anteater@neutrino anteater]$ grep 13 /usr/include/asm/errno.h 
+#define EACCES          13      /* Permission denied */
+#define EHOSTUNREACH    113     /* No route to host */
 
-% echo "int main(void) { return 1; }" > foo.c && gcc foo.c -o foo ; ./foo
+Check for *directory* permissions, too.
 
-If you get any errors check for your gcc installation.
-
-Elias  
+Elias
 
 -- 
 http://gnewtellium.sourceforge.net			MP3 is not a crime.	
