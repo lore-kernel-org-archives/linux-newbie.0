@@ -1,70 +1,43 @@
-From: Stephen Kitchener <stephen@g6dzj.demon.co.uk>
-Subject: Re: How to update JRE?
-Date: Mon, 21 Jul 2003 23:19:40 +0100
+From: "Travis" <travis@wsor.net>
+Subject: Multi-kernel in grub
+Date: Tue, 22 Jul 2003 10:15:09 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307212319.40302.stephen@g6dzj.demon.co.uk>
-References: <20030721.144434.16315.897220@webmail02.lax.untd.com>
+Message-ID: <001b01c35064$0a9d2b90$abcea695@ads.iu.edu>
+Reply-To: <travis@wsor.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030721.144434.16315.897220@webmail02.lax.untd.com>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: beolach@juno.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Monday 21 Jul 2003 22:44 pm, beolach@juno.com wrote:
-Thanks Conway.
+I am a recent convert to RH9 and have been trying to compile a kernel to
+allow dual head video support for my matrox g400-tv card.  Here is the
+main tutorial I was following:
+http://www.intel.com/support/platform/pentium4/linux.htm
 
-Getting them now 
+I used xconfig , and the compilation process seemed to go fine (no
+errors were display when I got the command prompt back) from running the
+following.
 
-> <http://plugindoc.mozdev.org/linux.html> has a link; it goes
-> to <http://java.sun.com/j2se/1.4.2/download.html>.  It looks
-> like this might be the 1.4.2 SDK, but it does have the VM and
-> JRE as well as the SDK.  If I remember right from when I
-> installed it, it installs to a different location from the
-> older JREs, so I had to tweak all my browsers plugin search
-> paths.
->
-> Conway S. Smith
->
-> --- Stephen Kitchener <stephen@g6dzj.demon.co.uk> wrote:
-> > On Monday 21 Jul 2003 20:50 pm, beolach@juno.com wrote:
-> >
-> > Hmmm - looked on Sun's site, didn't see a 1.4.2 anywhere, only a
-> > 1.4.1-03, do you know where it is ??
-> >
-> > > Before installing Sun's version of JRE, you might want to
-> > > look into the differences between Sun's and Blackdown's JRE.
-> > > As far as I understand it, if you use the latest version of
-> > > Sun's JRE (1.4.2), it is the best choice, but if you want to
-> > > use version 1.4.1 or older, you might need to use Blackdown
-> > > if you want to use the plugins in Mozilla, if Mozilla was
-> > > compiled with gcc ver. 3.x. A nice summary page is available
-> > > at <http://plugindoc.mozdev.org/whichjava.html>.
-> > >
-> > > But remember, this only applies to JRE 1.4.1 or older, with
-> > > Sun's JRE 1.4.2 this is no longer an issue, and so Sun's JRE
-> > > 1.4.2 will probably be your best choice, unless the program
-> > > you want to run specifically says it will only work with an
-> > > older version.
->
-> ________________________________________________________________
-> The best thing to hit the internet in years - Juno SpeedBand!
-> Surf the web up to FIVE TIMES FASTER!
-> Only $14.95/ month - visit www.juno.com to sign up today!
+make dep
+make clean
+make bzImage
+make modules
 
--- 
-                 O  o
-            _\_   o
-         \\/  o\ .
-         //\___=
-            ''
-Mon, 21 Jul 2003 23:19:13 +0100
- 23:19:13 up 15:03,  2 users,  load average: 2.81, 2.52, 2.44
-A language that doesn't affect the way you think about programming is
-not worth knowing.
+My problem came at "Next, you have to copy the appropriate files so that
+linux can boot from the new kernel."  I copied the vmlinuz image created
+by the compilation to /boot/vmlinuz-matrox.  I then edited grub's conf
+file by copy-and-pasting my current RH boot section and simply changing
+the label and pointing the vmlinuz-matrox as the kernel to load.
+
+When booting I got an error very quickly.  I have been searching for a
+grub multi-boot kernel tutorial and have read most of the applicable
+grub user-guide, but to no avail.  If someone could point out a good
+tutorial or give a few things to try, I would appreciate it.  Thanks in
+advance.
+
+-- Travis
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
