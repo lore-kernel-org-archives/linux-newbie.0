@@ -1,72 +1,34 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: bash scripting
-Date: Sat, 14 Aug 2004 16:13:51 -0700
+From: dave <dave@dpomeroy.com>
+Subject: bash scripting
+Date: Sat, 14 Aug 2004 19:00:19 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040814155510.01f9a050@celine>
-References: <411E779D.6060209@dpomeroy.com>
+Message-ID: <411ED1C3.9030407@dpomeroy.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <411E779D.6060209@dpomeroy.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 12:35 PM 8/14/2004 -0800, dave wrote:
->OK I installed Mandrake 10 official and all things seem to be normal.  I 
->still get the same message when I try to run a bash script.
->
->#!/bin/env
->bash
->
->
->shopt -s -o nounset
->
->declare LINE
->
->exec 3< /home/dave/scripts/test.dat
->
->while read LINE <&3 ; do
->  printf "%s\n" "$LINE"
->done
->
->exit 0
->
->and here is the error message I get.
->
->[dave@dave scripts]$ ./new.sh
->: bad interpreter: No such file or directory
->[dave@dave scripts]$
->
->Anyone have any ideas.  I used whereis bash and it returned /bin/bash.
->  Everything seems normal and I guess I'm over my head.  Anyone with any 
-> suggestions?
+I tried the same script with #!/bin/bash as the first line and get the 
+same error.  Then I cd to /bin and do a ls bash and this is what I get.
 
-You made two changes, not one. You both changed the distro install 
-("installed Mandrake 10") -AND- changed the shebang line in the script 
-("#!/bin/env"). The second change is definitely wrong.
+[dave@dave bin]$ ls bash
+bash*
+[dave@dave bin]$ ./bash
+[dave@dave bin]$ /home/dave/scripts/new.sh
+: bad interpreter: No such file or directory
+[dave@dave bin]$
 
-Go back to the original shebang line ("#!/bin/bash") and see if it works 
-now. It does on my system (that is, I get errors, but they involve my not 
-having a file named /home/dave/scripts/test.dat).
+Then I tried the samw script again and I get the same error.  I used 
+chmod and set the script file as 777.  Still no go.  I believe its not 
+finding bash but I sure can't tell why.  I ran a setup.sh script in 
+/usr/share/webmin today and it ran just fine.  I am confused   Any more 
+ideas?  Thanks again.
+Dave
 
-Or make the first line (probably; check where "env' is on your system) 
-"#!/usr/bin/env bash". It too works here (up to the same error).
-
-BTW, if I have the interpreter name wrong, I get a slightly different form 
-of error message from you (on a Debian-Sid install). Here, I changed "bash" 
-to "nash" and got this:
-
--bash: ./testscript.sh: /bin/nash: bad interpreter: No such file or directory
-
-Not sure why you're not seeing all that stuff to the left of the ": bad 
-interpreter" part. Could just be a difference between your default shell 
-and mine (2.05b-19). Or it might indicate something odd about your script 
-that is not making it through a representation as e-mail.
-
-
-
-
+-- 
+Dave Pomeroy K7DNP SouthEastern Washington
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
