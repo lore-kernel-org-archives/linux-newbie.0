@@ -1,51 +1,50 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Silly Question
-Date: Wed, 18 Jun 2003 07:41:19 -0700
+From: "James Miller (office)" <jamtat@mailsnare.net>
+Subject: Re: disabling X display Manager
+Date: Wed, 18 Jun 2003 10:01:59 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030618073330.02009c18@celine>
-References: <00a601c33577$75d0bba0$e764a8c0@fesnel.noip.org>
- <1055903157.9558.9.camel@localhost.localdomain>
- <3EEFF697.6060309@heem.org>
- <courier.3EEFFE8A.00005CCE@softhome.net>
- <200306180834.56048.my@masterpe.nl>
- <courier.3EF02531.00007626@softhome.net>
- <00a601c33577$75d0bba0$e764a8c0@fesnel.noip.org>
+Message-ID: <Pine.LNX.4.53.0306180950440.312@veclin.office>
+References: <5.1.0.14.1.20030617061959.0201dcd0@celine>
+ <5.1.0.14.1.20030611133014.01f97628@celine> <5.1.0.14.1.20030617061959.0201dcd0@celine>
+ <5.1.0.14.1.20030618072219.02f42c60@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3EF034A7.2050308@vip.cybercity.dk>
+In-Reply-To: <5.1.0.14.1.20030618072219.02f42c60@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-At 11:45 AM 6/18/2003 +0200, Flemming Greve Skovengaard wrote:
->John T. Williams wrote:
->>anyone know how or where I could get the source code for basic linux
->>programs like "ls" and or "mkdir" or "rm" ?
-[...]
->The basic fileutils (ls, cp, rm, etc) can be found at:
->http://www.gnu.org/software/fileutils/fileutils.html
+On Wed, 18 Jun 2003, Ray Olszewski wrote:
+> [...]
+> > > The other thing to do is to check that when you do start X via gdm, the
+> > > consoles are present. From the gdm display, you should be able to access
+> > > them by pressing CTRL-ALT-F1 through CTRL-ALT-F6.
+> >
+> >Yes, they do.    But then I didn't know how to get the gdm back :)
+> >Never mind, I just rebooted it.
 >
->You might also want to take a look at:
->http://www.gnu.org/software/coreutils/
+> CTRL-ALT-F7 (typically - technically, it is the first VT not occupied by a
+> console, and that is typically F7).
+> [...]
 >
->GNU's webpage holds many if not all of the Linux utils.
->http://www.gnu.org/
+Just a clarification on the ctrl-alt-F7 bit.  I have understood, and have
+proven in practice, that only alt-F7 is necessary to get back to whatever
+x session is running in whichever virtual console.  In other words, I can
+do ctrl-alt-F3 and log in.  Providing no other x session is running in any
+other console, I can type "startx" and have Xwindows open up in that
+console.  Should I switch to another virtual console by, say, pressing
+ctrl-alt-F1, the way I get back to the console where X is running is to
+press alt-F7 (wihtout using the ctrl key) - no matter on which virtual
+console I've started it.  I'm rehearsing this from memory, but I'm pretty
+sure that's the way I handle virtual consoles and Xwindows.  Of course
+ctrl-alt-F7 does also get you back to that running x session but,
+according to my experience, the ctrl key has no role in effecting this.
+Anyway, I'm not trying to be nit-pickey here, just curious about the way
+this works and whether I'm doing and understanding things correctly.  Can
+you comment further on this ctrl key aspect, Ray?
 
-
-Good options all. An additional one is the source packages associated with 
-whichever Linux distribution you use.
-
-In Debian, as an example, you can use the command "dpkg-query -S filename" 
-to find the package that holds any file actually on your system. You can 
-then use "apt-get source packagename" to install it.
-
-I imagine the other packaging systems (or at least RPM) have analogous 
-capabilities. Slackware CDs used to include a complete filelist that you 
-could grep to match an app to its .tgz package.
-
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
