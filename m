@@ -1,22 +1,29 @@
-From: Daniel Provin <dgp@labmetro.ufsc.br>
-Subject: ethernet
-Date: Fri, 6 Sep 2002 16:05:16 -0300 (BRT)
+From: Peter <pfheiss@philonline.com>
+Subject: ssh error message
+Date: Sat, 07 Sep 2002 17:01:19 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44L.0209061604020.31710-100000@labmetro.ufsc.br>
+Message-ID: <200209070901.g8791J304631@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-Anyone knows an way to check the actual network speed (100Mbps or 10Mbps)
-on linux?
+Hi,
 
-thanks
-Daniel Provin
-Lixux User #191271
-EEL LABMETRO UFSC
+when booting I get the following message:
+
+  starting ssh: execvp: No such file or directory  [failed]
+
+I uninstalled openssh, reinstalled, still I get the same message.
+
+How do I correct this?
+
+Thanks & regards
+
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
