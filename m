@@ -1,62 +1,38 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Redhat 9 Can't Compile a Kernel??
-Date: Wed, 23 Apr 2003 12:58:47 +0000
+From: Chris Rose <offline@shaw.ca>
+Subject: Setting up an IMAP server
+Date: Wed, 23 Apr 2003 15:55:49 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03042312584700.02747@unix.pa3gcu>
-References: <200304222243.19905.1stflight@ameritech.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <001901c309e3$1a129f00$4b01a8c0@t9397.tjem.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304222243.19905.1stflight@ameritech.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 1stFlight <1stflight@ameritech.net>
-Cc: linux-newbie@vger.kernel.org
+To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
 
-On Wednesday 23 April 2003 02:43, 1stFlight wrote:
->  I get this error message when trying to compile kernel 2.4.20 patched to
-> .21-rc1. What's gone wrong here? Thanks
+ 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
+I'm looking for the steps and instructions for setting up an IMAP server on Redhat 9.  What i intend is for fetchmail (ideally running as a service) fetch each user's pop3 mail from remote servers, and then have it accessible via imap mailboxes from both inside and outside the network.  In between these points, ideally i'd like to have some degree of nondestructive (ie: flag and copy) spam filtering and automated message filtering as well.
 
-I did not CC to linux-admin as i think they dont have much to do with this 
-sort of thing (AFAIK).
+Outgoing mail is not necessary, though it'd be nice.  If it is necessary, i don't have a domain per se, only a dynamic DNS service.  I'm of the impression that this sort of thing matters :)
 
-I get the same results so i dug into the source, it seems there are more than 
-just this problem, its not you its a software problem, as far as i can see 
-that is.
+Admission:  I don't know a damned thing about setting up mail.
 
-You could check out the linux-kernel mailing list archives and/or 
-google.com/linux for a answer of howto get around it.
-This often happens with pre releases.
-http://www.geocrawler.com/lists/3/Linux/35/0/ is a good place to start as 
-well.
+Thanks, all.
 
-> (please get rid of the tabs here) Darryl
->
-> [root@localhost linux-2.4.20]# make xconfig
-> rm -f include/asm
-> ( cd include ; ln -sf asm-i386 asm)
-> make -C scripts kconfig.tk
-> make[1]: Entering directory `/usr/src/linux-2.4.20/scripts'
-> gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkparse.o
-> tkparse.c
-> gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkcond.o
-> tkcond.c gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o
-> tkgen.o tkgen.c gcc -o tkparse tkparse.o tkcond.o tkgen.o
-> cat header.tk >> ./kconfig.tk
-> ./tkparse < ../arch/i386/config.in >> kconfig.tk
-> drivers/ide/Config.in: 46: can't handle dep_bool/dep_mbool/dep_tristate
-> condition
-> make[1]: *** [kconfig.tk] Error 1
-> make[1]: Leaving directory `/usr/src/linux-2.4.20/scripts'
-> make: *** [xconfig] Error 2
->
+Chris R.
+=======
+http://offline.pointclark.net/
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+-----BEGIN PGP SIGNATURE-----
+Version: PGP 8.0
+
+iQA/AwUBPqcL5cFBXq9qNmWaEQLP+ACfep/mD6gqgCEKJJuC+Wn1/d40xusAoM9L
+TPD4Siw1D3QdOZYUPmadcFRs
+=9Fsz
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
