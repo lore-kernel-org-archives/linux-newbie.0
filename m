@@ -1,35 +1,32 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: RE: 2.6.0 kernel compile overview
-Date: Mon, 5 Jan 2004 14:09:46 -0600 (CST)
+From: "James Turnbull" <james@lovedthanlost.net>
+Subject: Re: 2.6.0 kernel compile overview
+Date: Tue, 6 Jan 2004 08:36:31 +1100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0401051408430.3345@localhost>
-References: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com>
+Message-ID: <01db01c3d3d3$fc09b280$0800000a@iih.usyd.edu.au>
+References: <Pine.LNX.4.58.0401050850220.3345@localhost>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: "EXT-Reimer, Jim D" <jim.d.reimer@boeing.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 5 Jan 2004, EXT-Reimer, Jim D wrote:
+James Miller wrote:
+> to 2.4.x kernels and earlier. I just did a quick 'net search and
+> couldn't find anything specific on 
+> 2.6.x kernel compiling.  At the same time, I have understood from the
+> friend that 2.6.x kernel compiling differs somewhat.  So, can anyone
+> direct me to any sources on 2.6.x kernel compiling?  I have an overall
 
-> > 
-> > I can't find the reference right now, but I think step 3 
-> > should actually be 'make install' if you want to get a 
-> > compressed kernel image and System.map file moved to either / 
-> > or /boot (if you have edited the Makefile to install to 
-> > /boot).  If I am wrong, someone please correct me.
-> > 
-> 
-> Here's an "overviewish" page covering the process:
-> http://kerneltrap.org/node/view/799
-> 
-Great link - thanks for providing it.  It's got just about all I need to 
-proceed with this.
+This is a good site for this info:
 
-James
+http://www.digitalhermit.com/~kwan/kernel.html
+
+HTH
+
+Regards
+
+James Turnbull
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
