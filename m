@@ -1,48 +1,68 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Compiler method of finding header.
-Date: Wed, 22 Oct 2003 06:57:37 +0930
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Compiler method of finding header.
+Date: Wed, 22 Oct 2003 15:17:45 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200310220657.50794.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <200310221517.45695.pa3gcu@zeelandnet.nl>
+References: <200310220657.50794.Adam@Luchjenbroers.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Description: clearsigned data
+In-Reply-To: <200310220657.50794.Adam@Luchjenbroers.com>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/Plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Adam@Luchjenbroers.com, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Tuesday 21 October 2003 23:27, Adam Luchjenbroers wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> /usr/include/openssl/kssl.h:72:18: krb5.h: No such file or directory
+>
+> includes line:
+> #include <krb5.h>
+>
+> So it's expecting the header to be wherever the compiler expects them.
+>
+> using locate:
+> /usr/kerberos/include/krb5.h
+>
+> How do I tell the compiler where to look for headers? OS is RedHat 9.
+>
 
-/usr/include/openssl/kssl.h:72:18: krb5.h: No such file or directory
+Without knowing what you are trying to compile or being able to see the 
+Makefile it would be hard to say how you could do that in the makefile as 
+includes "include" header files that are located in /usr/include so your 
+Makefile is not at fault here, or so it seems to me.
 
-includes line:
-#include <krb5.h>
+If this is a one file error then you could edit kssl.h and change the above 
+mentioned include to;
 
-So it's expecting the header to be wherever the compiler expects them.
+#include </usr/kerberos/include/krb5.h>
 
-using locate: 
-/usr/kerberos/include/krb5.h
+I expect you would then find that your compile will go on a little and barf 
+again as it will miss another file, you can also create a sym link in /usr/
+include (possably a better idea).
 
-How do I tell the compiler where to look for headers? OS is RedHat 9.
+cd /usr/include
+ln -s /usr/kerberos/include kerberos
+Or something to that effect.
 
-- -- 
-"What happens if a big asteroid hits the Earth? Judging from realistic 
-simulations involving a sledge hammer and a common laboratory frog, we can 
-assume it will be pretty bad." - Dave Barry
+The most likly explanation for the problem is that your kerberos includes have 
+been installed one directory too high, header files belong in /usr/include 
+and not in /usr, that is what i have been taught.
 
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-iD8DBQE/laTT94zI/zB2CYURAiGVAKCW7VWzAfZnwwLBZ/v8+3Mi9KNMSgCfZ+L+
-n9lCD6pDbUq9YESC2XIyRzs=
-=DC42
------END PGP SIGNATURE-----
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
