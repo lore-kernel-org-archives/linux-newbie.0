@@ -1,31 +1,37 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: Squid only on eth1
-Date: Tue, 27 Jan 2004 13:50:57 +1100
+From: Peter <heisspf@skyinet.net>
+Subject: Separate Boot Partition
+Date: Tue, 27 Jan 2004 11:15:54 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <010601c3e480$63c445e0$3401a8c0@iih.usyd.edu.au>
-References: <4011C8740000069B@mail-bcm02.alestra.net.mx>
+Message-ID: <20040127031554.6CE141C920@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> Hi:
->
-> I have 2 eth devices in my Linux box, I want that all squid traffic go
-throw
-> eth1 an not eth0, how do I configure it?
->
+Hi,
 
-If they have seperate IP addresses you can force squid to use a specific IP
-address in the squid.conf file.  Look at the http_port config option and
-specify an IP, i.e. http_port 10.0.0.5:3128
+Presently my boot folder resides under root as /boot. If I decide to make a 
+separate boot partition on my hard drive are then the following steps the 
+right way?
 
-Regards
+-- Make a partition on the hard drive of 50 MB and format it.
 
-James
+-- in fstab put "/dev/hda3  /boot  ext3  defaults  0 0
 
+-- move /boot to /tmp/boot
+
+-- mount /boot
+
+-- move files of /tmp/boot to /boot
+
+If so do i have to make a new mkbootdisk?
+
+Thanks & regards
+
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
