@@ -1,31 +1,40 @@
-From: G Anna <drguruolai@eth.net>
-Subject: wps file
-Date: 15 Apr 2002 20:39:03 +0530
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: wps file
+Date: Mon, 15 Apr 2002 19:30:11 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <m3hemd578w.fsf@wobble.eth.net>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <02041519301104.03682@unix.pa3gcu>
+References: <m3hemd578w.fsf@wobble.eth.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <m3hemd578w.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, G Anna <drguruolai@eth.net>
 
-Dear All,
+On Monday 15 April 2002 15:09, G Anna wrote:
+> Dear All,
+>
+> Is it possible to view a .wps file in linux?
+>
+> $ file test.wps
+> test.wps: Microsoft Office Document
+>
+> Any help appreciated.  Thank you for your time.
 
-Is it possible to view a .wps file in linux?
+I have absolutly no experiance with what you ask, hiowever my suggestion 
+would be to try star office, i wonder if other would like to comment on my 
+suggestion.???
 
-$ file test.wps
-test.wps: Microsoft Office Document
-
-Any help appreciated.  Thank you for your time.
-
-luv,
-anna
+>
+> luv,
+> anna
 
 -- 
-
-Get your free e-mail account at http://www.linuxmail.org
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
