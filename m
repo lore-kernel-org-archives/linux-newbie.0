@@ -1,41 +1,33 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: nVidia
-Date: Fri, 2 Aug 2002 06:15:49 -0400
+From: Kevin Curtis <kevin.curtis@farsite.co.uk>
+Subject: Bottom Halves
+Date: Fri, 2 Aug 2002 11:30:00 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208021015.g72AFnY04232@langhans.hartford-hwp.com>
-References: <02080209511800.00914@localhost.localdomain>
+Message-ID: <7C078C66B7752B438B88E11E5E20E72E0EF486@GENERAL.farsite.co.uk>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02080209511800.00914@localhost.localdomain> (message from Peter
-	on Fri, 2 Aug 2002 10:33:04 +0800)
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pfheiss@philonline.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Peter,
+Hi,
+	I am writing a Kernel module that needs to be both 2.2 and 2.4
+compatible.  My module receives hardware interrupts, and I have a need to
+schedule a task from the interrupt routine.  I have been reading up on
+Bottom Halves and have a question:
 
-> What have I to do to fix this problem which is starting to mess-up
-> my drives.  I just had to go into rescue mode to do fsck in order to
-> boot.
+I would like the same task to be scheduled each time the ISR is run, but the
+parameter must be different.  The parameter is in fact a pointer to a
+structure of context information.  The bit that worries me about what I have
+read is that if the BH is scheduled several times before it is run, it will
+only actually run once.  How does the Kernel identify if the task is already
+in the task list?  Is it by address of the task only or the address of the
+task and the value of the parameter?
 
-I can't offer advice, but merely point you to a discussion forum
-archive in which it appears off hand that the nVidia problem is
-widespread and that there's no consensus as to cause or correction:
+Any pointers to some example code that do this would be gratefully accepted.
 
-www.mcdownloads.com/
 
-In yourcase, you are sensitive to which app is running, and someone
-did suggest that the hang occurred whenever an application requested a
-resolution change. 
-
-Apparently different drivers are problematic to different degrees,
-some people upgrading them and others downgrading. The most recent
-driver I found was 1.0-2960, but I don't know where my old driver was
-stored by RedHat 7.2 so that I can find out my current version.
-
-Haines
+Kevin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
