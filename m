@@ -1,56 +1,45 @@
-From: "Benny Pedersen" <linux-net@tcob1.net>
-Subject: Re: Blocking hackers
-Date: Friday, 12 Jul 2002 14:33:08 +000
+From: Peter <pfheiss@philonline.com>
+Subject: Re: nVidia
+Date: Fri, 2 Aug 2002 10:33:04 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a300=2f15_6406591@fidonet.org>
-References: <004701c218d7$cf274dd0$0c00a8c0@qpbd103>
+Message-ID: <02080209511800.00914@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <004701c218d7$cf274dd0$0c00a8c0@qpbd103>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Phillp Morgan
 
-Hi Phillp Morgan
+When I sent this message 7 days ago I noticed it had not left since on 
+account  possibly of problem below I could not mail anymore. In the meantime 
+I reinstalled RH7.1
+- --------
+Just when I wanted to write about my problem this message came.
 
-you wrote about "Blocking hackers":
+brownh@hartford-hwp.com said:
+> A thread is running on comp.os.linux regarding a problem of system
+> hang (no keyboard; no mouse; system clock stops) perhaps every other
+> week or so.
 
+I just upgraded from RH7.1 to RH7.3 and I noticed that I get this problem of 
+total keyboard lock trying to use the programs tuxracer and chromium and if I 
+have the xscreensaver daemon not killed.
 
- PM> It looks like someone is trying to break into my system. This is
- PM> out of my apache error log...
+In chromium the mouse can still be moved, however does not respond to clicks 
+and the music continues playing, keyboard locked. In xscreensaver lock-up all 
+is blank and keyboard locked, however, my time announcer still goes on. In 
+tuxracer all seems to be dead.
 
->> 61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET
->> /MSADC/root.exe?/c+dir
+My mainboard is P6STMT with a SiS630ET chipset which includes integrated 
+built-in video, audio, networking and communication capabilities.
 
-this is code red (virus on this computer)
+What have I to do to fix this problem which is starting to mess-up my drives. 
+I just had to go into rescue mode to do fsck in order to boot.
 
-i will make a perl script that scans for root.exe or cmd.exe or simply
-just .exe and put this ip in my firewall and last put it on a page so
-others can see ip i have the ip blocked, well i can do this but i
-just dont since its bad behavior :-)
-
- PM> Is there any way I can block this nasty person?
-
-block the ip from your firewall
-
- PM> Who should I report this to?
-
-your isp in the abuse team
-
-
- Benny Pedersen  http://fido.juncorg.dk/  icq:36248146
-
-
-...Today is the day you worried about yesterday.
-
-<-> Gateway Information.
-This message originated from a Fidonet System (http://www.fidonet.org)
-and was gated at TCOB1 (http://www.tcob1.net)
-Please do not respond direct to this message but via the list
-
+Regards
+- -- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
