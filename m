@@ -1,64 +1,64 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: Trading stuff SuSE 8.2 for.....
-Date: Sun, 29 Jun 2003 15:41:32 +0200
+From: Christopher Sly <vaidyana@cs.wisc.edu>
+Subject: kernel-module version mismatch
+Date: Mon, 30 Jun 2003 02:19:43 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306291541.43665.James.Hatridge@epost.de>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <Pine.GSO.4.21.0306300219300.13921-100000@nova19.cs.wisc.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+hello,
+	im trying to run the most simple linux modules and i get the
+following error on saing: 
 
-HI all...
+/sbin/insmod hello.o
 
-I've got a copy of SuSE 8.2 (5 disks) that I would like to trade with someone. 
-I'm looking for these parts:
+ hello.o was compiled for kernel version 2.4.9-9
+        while this kernel is version 2.4.18-14.
 
-AMD K6 300mhz CPU
-or
-Mother Board for an AMD Athlon 500mhz CPU (this CPU I have)
-or
-any MoB/CPU combo of around 500mhz (or better)
-or
-Memory chips of at least 128mb each
-or
-IDE Hard Disks of over 10gb (bigger the better)
+I also tried:
+gcc -c hello.c -I /usr/src/linux-2.4.18-14/include
+ with the same consequences 
 
-IF you have anything that you think I might be interested in email me 
-off-list. 
+And:
+gcc -c -D__KERNEL__ -DMODULE -I/usr/src/linux-2.4.18-14/include -o hello.o
+hello.c
+hello.c:1:1: warning: "MODULE" redefined
+hello.c:1:1: warning: this is the location of the previous definition
 
-Thanks
+again with the same consequence.
 
-JIM
+any suggestions?
 
-Jim Hatridge
-Linux User #88484
-- -- 
-Our country was colonized by the religious, political, economic, and criminal
-rejects of every country in the world. We have been carefully breeding insane, 
-obsessive, fanatic lunatics with each other for over 400 years, resulting in 
-the glorious strain of humanity known as "Americans". You have to expect 
-some... peculiarities. 
+the code looks like so:
+#define MODULE
+#include <linux/module.h>
 
-Check out my stamp collection:
-                                          Vielfeind -- Viel Ehr'
-Antiamerikanische Propaganda in der Philatelie des 20. Jahrhunderts
-          http:/www.fecundswamp.net/~hatridge/stamps/index.html
+int init_module (void) /* Loads a module in the kernel */
+{
+        printk("Hello kernel n");
+        return 0;
+}
 
-Read about new German stamps each quarter:
-	 http:/www.fecundswamp.net/~hatridge/bulletin
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
+void cleanup_module(void) /* Removes module from kernel */
+{
+        printk("GoodBye Kerneln");
+}
 
-iD8DBQE+/uyVv3Z9K7QSWt4RAkopAKC78ZtFXTOTrHCQ0umjL/iYEHGHQACePVrP
-FCAD62xEJ7eSphKMYbW+Cck=
-=y/T9
------END PGP SIGNATURE-----
+
+
+*******************************************************************************
+
+	Getting crazy on the waltzers but it's the life that I choose
+				-- Dire Straits
+
+*******************************************************************************
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
