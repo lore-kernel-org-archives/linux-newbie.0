@@ -1,18 +1,24 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Help configuring Redhat for rsh
-Date: Thu, 16 Oct 2003 13:02:28 -0700
+From: "Gosselin, Mark" <gosselinm@netscout.com>
+Subject: RE: Help configuring Redhat for rsh
+Date: Thu, 16 Oct 2003 16:18:33 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031016125453.01f23880@celine>
-References: <6CE6A442029B3347890ED9FCA94FAE07148910@nsxmail.netscout.co
- m>
+Message-ID: <6CE6A442029B3347890ED9FCA94FAE07148915@nsxmail.netscout.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <6CE6A442029B3347890ED9FCA94FAE07148910@nsxmail.netscout.co
- m>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+
+
+
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com]
+Sent: Thursday, October 16, 2003 4:02 PM
 To: linux-newbie@vger.kernel.org
+Subject: Re: Help configuring Redhat for rsh
+
 
 At 12:46 PM 10/16/2003 -0400, Gosselin, Mark wrote:
 >Hi,
@@ -51,6 +57,11 @@ answer (compared to "Here's what I did; what is actually wrong about it?).
 
 
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
