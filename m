@@ -1,17 +1,33 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
 Subject: RE: Tar Exclude
-Date: Wed, 13 Nov 2002 10:25:42 -0500
+Date: Wed, 13 Nov 2002 10:31:15 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <078001c28b28$ee2a56a0$64fea8c0@pkrausxp>
-References: <Pine.LNX.4.33.0211131021190.29738-100000@router.windsormachine.com>
+Message-ID: <078101c28b29$b4737260$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.33.0211131021190.29738-100000@router.windsormachine.com>
+In-Reply-To: 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 'Mike Dresser' <mdresser_l@windsormachine.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+
+Also I just noticed I get an error about removing leading / from member
+names.
+
+Here is my archive.exclude
+/backup/advserver
+/backup/logs
+/backup/lost+found
+/backup/scripts
+/backup/tar.archive
+
+-----Original Message-----
+From: Paul Kraus [mailto:pkraus@pelsupply.com] 
+Sent: Wednesday, November 13, 2002 10:26 AM
+To: 'Mike Dresser'
+Cc: 'linux-newbie@vger.kernel.org'
+Subject: RE: Tar Exclude
+
 
 Here is the script
 ------------------
@@ -38,10 +54,10 @@ Subject: Re: Tar Exclude
 
 On Wed, 13 Nov 2002, Paul Kraus wrote:
 
-> When running tar with the exclude set tar creates a 10k empty tar 
+> When running tar with the exclude set tar creates a 10k empty tar
 > file.
 >
-> I have a script that tars a all the sub directories of a directory 
+> I have a script that tars a all the sub directories of a directory
 > into individual tar files for each subdirectory. I have an exclude 
 > file that is set to skip some of the folders I don't want tarred. This
 
