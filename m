@@ -1,40 +1,39 @@
-From: "James Turnbull" <james@lovedthanlost.net>
-Subject: Re: How to update JRE?
-Date: Mon, 21 Jul 2003 15:31:58 +1000
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: USB and Flash Drive??
+Date: Mon, 21 Jul 2003 08:27:20 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <008301c34f49$680c0150$3400a8c0@iih.usyd.edu.au>
-References: <0a9130032021573HNLMAIL1@hnlmail1.hawaii.rr.com>
+Message-ID: <20030721082720.A149@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: David Jones <gnome@hawaii.rr.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-David Jones wrote:
-> I have a *very recently updated* (like installed and
-> completely apt-getted and updated and such like 10
-> days ago) Debian. It came with a JRE identifying itself
-> as 1.4.1, build Blackdown-1.4.1-01. I've been informed
-> by the author of a certain Java program that I like (at the
-> moment, not the author, just the program!) to go the Sun
-> JRE link on his web site and download that version -
-> which, according to the target of the link on his web
-> page, is version 1.4.1 ... anyway, how does one update
-> a JRE on Linux? I've only done it on WIndows and OS/2
-> (both via an executable that you download and run).
+Greetings: Just getting interested in what USB is all about; spending
+hours on the Web and reading articles/docs, etc - I still have some
+unanswered questions.
 
-At the Sun Site http://java.sun.com/j2se/1.4.1/download.html there is a .bin
-file available to download.
+What are the details about "hot swapping?" All I read is that it
+means you can plug/unplug a device while the machine is "on".. No
+mention, that I could find, as to why this is possible. Is finger #1,
+Vcc, at zero or millivolts until a device is inserted, then it
+"jumps" up, mysteriously, to the required +5??
 
-Here are instructions for unpacking .bin files:
+In my book; connecting any load draws current, albeit quite small in
+the case of a flash drive, that cannot be good for those mighty thin
+contacts..
 
-http://mandrakeforum.com/article.php?sid=2329
+I have kernels 2.4.18 and 2.4.20, and the necessary modules, so I've
+ordered a Flash Drive to see what cooks..
 
-Regards
+Cheers,
 
-James Turnbull
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
