@@ -1,25 +1,48 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: Setting quota on user's home folders?
-Date: Wed, 16 Mar 2005 18:43:59 -0500
-Message-ID: <000001c52a82$0685e340$4f0aa8c0@lanadmin>
-References: <20050316021308.55227.qmail@web53610.mail.yahoo.com>
-Reply-To: <eatley@wowcorp.com>
+From: "J." <mailing-lists@xs4all.nl>
+Subject: Re: Setting quota on user's home folders?
+Date: Thu, 17 Mar 2005 01:02:21 +0100 (CET)
+Message-ID: <Pine.LNX.4.21.0503170051220.1193-100000@hestia>
+References: <000001c52a82$0685e340$4f0aa8c0@lanadmin>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-In-Reply-To: <20050316021308.55227.qmail@web53610.mail.yahoo.com>
+In-Reply-To: <000001c52a82$0685e340$4f0aa8c0@lanadmin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+On Wed, 16 Mar 2005, Eve Atley wrote:
 
-Is there a way to set a quota limit on user's home folders? EG. say I have
-/home/joe, /home/jane, and want to set it so they can have no more than 5GB
-in their folders?
+> Is there a way to set a quota limit on user's home folders? EG. say I have
+> /home/joe, /home/jane, and want to set it so they can have no more than 5GB
+> in their folders?
+> 
+> Thanks,
+> Eve
 
-Thanks,
-Eve
+What you have todo is:
 
+1.  Create seperate partitions for the /home/joe /home/jane directory
+    entrys.
+2.  install the quota program for your native GNU/Linux distribution you
+    are using. Which is ??? [Next time tell your system specs when asking 
+    a question]
+3.  Update /etc/fstab and remount the system.
+
+Note, the kernel has to support the use of quota's in most cases.
+
+Here are some links:
+http://www.yolinux.com/TUTORIALS/LinuxTutorialQuotas.html
+http://www.redhat.com/docs/manuals/linux/RHL-9-Manual/custom-guide/ch-disk-quotas.html
+http://www.eyrie.org/~eagle/notes/debian/quotas.html
+
+B.t.w.
+The `Folders' terminology is used in a M$ Wintendo enviroment but in the *X world they 
+are refered to as directorys or special files.
+
+cheers
+
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
