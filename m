@@ -1,65 +1,49 @@
-From: "Robert Couture" <sean@tcob1.net>
-Subject: Strange Boot Behavior (cont.)
-Date: Sunday, 24 Aug 2003 18:26:52 +000
+From: "Robert" <robert_schmidli@hotmail.com>
+Subject: Sendmail won't receive remote messages
+Date: Tue, 26 Aug 2003 19:23:51 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a260=2f1_3f493c5d@fidonet.org>
-References: <20030822054905.11388.qmail@web13804.mail.yahoo.com>
-Mime-Version: 1.0
+Message-ID: <bif8v7$sd7$1@sea.gmane.org>
+Reply-To: "Robert" <robert_schmidli@hotmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030822054905.11388.qmail@web13804.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Christopher Swope
+My mail server has been working without a glitch for a number of months.
+All of a sudden it won't receive messages from the Internet.  Local mail
+within my network is still received.  Our ISP is under new management - so
+maybe its not a problem with my system!
 
-Hello Christopher.
+I'm able to access my webpage OK over the net at http://www.mydomain.com.au.
 
-21 Aug 03 22:49, you wrote to all:
+Could somebody let me know whether there's a problem with my config, or is
+there a problem with my ISP?
 
-CS|> If the settings are any of the following, the drives are not
-CS|> recognized at all.  (These results are not surprising).
-CS|>     Primary -- Master w/ Slave present
-CS|>     Secondary -- Cable Select
+Below is a description of my setup:
 
-CS|>     Primary -- Master w/ Slave Present
-CS|>     Secondary -- Master
+OS: Slackware 9.0
+Sendmail 8.12.9
+Firewall: only port 25 open to receive mail
+I access my mail with Squirrelmail and IMAP2
 
-CS|>     Primary -- Anything other than "Master (Single Drive)"
-CS|>     Secondary -- Not installed
-
-CS|> If the settings are any of the following, I get the behavior I
-CS|> described earlier.
-CS|>     Primary -- Cable Select
-CS|>     Secondary -- Slave
-
-CS|>     Primary -- Master w/ Slave Present
-CS|>     Secondary -- Slave
-
-CS|>     Primary -- Master (Single Drive)
-CS|>     Secondary -- Slave
-
-CS|> Now, my line of thinking is as follows.
-
-CS|> If the second drive is not installed at all, the computer boots
-CS|> normally.  This would indicate the problem stems from connecting the
-CS|> second drive.
-
-I just jumped into this thread.  But what you say hear makes me think that the 
-drives are not compatible.  While rarer these days, I recall the days when 
-certain drives just would not function together regardless of what you did.
-
-Perhaps the older 4G drive just will not work with the new drive?  It seems to 
-be possible.
-
-Will the 80G drive function alone?
-
-What are the makes?  Sorry if you already answered this.  I just caught the 
-thread at this point.
-
-Robert
-
+If I telnet to my mail server from a dialup, everything looks OK (I've
+substituted my address with a fictitious one):
+----------------------------------------------------------------------------
+# telnet myserver.com.au 25
+220 myserver.com.au ESMTP Sendmail 8.12.9/8.12.9; Tue, 26 Aug 2003 07:34:58
++1000
+helo 63.60.42.226
+250 myserver.com.au Hello 1Cust226.tnt3.cbr2.da.uu.net [63.60.42.226],
+pleased to meet you
+mail from: me@mycomputer.com
+250 2.1.0 me@mycomputer.com... Sender ok
+rcpt to: robert@myserver.com.au
+250 2.1.5 robert@myserver.com.au ... Recipient ok
+data
+354 Enter mail, end with "." on a line by itself
+this is a test
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
