@@ -1,25 +1,53 @@
-From: Natarajan K <natarajan_k@hotpop.com>
-Subject: Knode saving threads
-Date: Mon, 5 Aug 2002 20:45:57 -0400
+From: RimeGate@rime.org (RUSS JOHNSON)
+Subject: Root filesystem is full!
+Date: 04 Aug 02 12:54:00 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200208052045.57479.natarajan_k@hotpop.com>
-Reply-To: natarajan_k@hotpop.com
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Message-ID: <BAG2SMTP.12758.69.1943434.1711962929.RIMEGateQWK@MoonDog.BBS>
+Reply-To: RimeGate@rime.org (RUSS JOHNSON)
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-HI,
-	I am using Knode as my news client. The messages that have been downloaded 
-are not saved locally. It is fetched for every session. Is it possible to 
-save the downloaded messages without explicitly using the save as file option 
-i.e. as a folder for a group locally. Is there any other good newsreader 
-which does the above required job?
-Thanks
--- 
-Natarajan
+
+*
+
+
+
+> The root filesystem which was about 90% full already is now
+> showing 100% full.  I haven't found any large new files to account for this.
+> However, I have deleted several megabytes of data and df shows the used
+> blocks going down however the available blocks still is at zero.
+
+You can fsck the root file system, but you'll need to put the system in single
+user mode first. If you run lilo, you can press [TAB] at the LILO prompt to see
+what your boot options are. Assuming your normal boot is called "linux", you
+would type "linux 1" at the lilo prompt to boot into single user mode.
+Alternatively, you can type "telinit 1" at a prompt on your running system to
+switch to runlevel 1 (also called single user mode).
+
+Once there, you remount the root filesystem as ro (read only). Use the mount
+command to do this. 
+
+Once your root filesystem is read only, run fsck. If there are errors, you will
+need to fix them. This may require booting with a floppy so that you can have
+the root partition mounted read-write, but won't be using binaries off that
+same partition to run the system. 
+
+Doing this CAN hose your system. Be very careful, and use this information at
+your own risk. 
+
+Russ
+
+--- BBBS/LiI v4.01 Flag-4
+ * Origin: RelayNet(tm) DIMSTAR (#3071):http://www.dimstar.net (900:104/3071)
+
+
+
+                                                                                           
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
