@@ -1,105 +1,137 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: LI -lilo booting problem
-Date: Sun, 28 Jul 2002 14:15:31 -0700
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Re: Partitioning problem
+Date: Sun, 28 Jul 2002 20:56:52 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020728140342.0228b3c0@celine>
-References: <3D36DDA3.FA0F073C@gmx.net>
- <02072506225706.04469@unix.pa3gcu>
- <3D406BBB.E208E07B@gelm.net>
- <02072606105100.00370@unix.pa3gcu>
- <5.1.0.14.1.20020726164536.02296360@celine>
+Message-ID: <1478dde1475bfd.1475bfd1478dde@homemail.nyu.edu>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D444FC2.354744E5@gelm.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Chuck Gelm <nc8q@gelm.net>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Riley Williams <Riley@Williams.Name>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-Chuck -- I assume your sending this to me personally was just a typo, so 
-Iave added the list back into my reply.
+Hi,
+unfortunately i don think WinXP recognises FAT32 system. it requires 
+NTFS and i can't create NTFS type partition using dos's fdisk!
 
-At 04:10 PM 7/28/02 -0400, Chuck Gelm wrote:
->Hi, Ray et allia:
->
->  I tried /dev/hda1 = /boot.
+-Anshu
 
-I trust this is just a typo in the e-mail, since it is neither correct LILO 
-usage nor anything I suggested. But I can't gues what it is a typo *for*.
+----- Original Message -----
+From: Riley Williams <rhw@infradead.org>
+Date: Saturday, July 27, 2002 5:41 am
+Subject: Re: Partitioning problem
 
->The result was the same as before; LI
->I've just been wondering about drive geometry, as you mention.
->I 'dmesg|grep hd' and found that it had 16,### cylinders.
-
-Yes. As I said some messages back, big hard disks lie about their 
-geometries in ways that I do not fully understand, but that can cause their 
-CHS settings to look diferent to the BIOS than to Linux. You seem to have 
-found that this is true of the disk you were working with (Linux fdisk will 
-proably tell you that this same drive has 1048 cylinders).
-
->I did some math and decided that '/' needed to be no larger
->than the old 528 MB, 1024 cylinders * 16 heads * 63 sectors
->* 512 bytes = 528,482,304.
->
->  So, I've just re-fdisk'ed /dev/hda
->(the 8.6 gigabyte drive) to
->part    boot    device  start   stop    size    mount
->1       *       /hda1   1       64      528M    /
->2               /hda2   65      96      257M    swap
->3               /hda3   96      1048    7.9G    /usr
-
-You may find it inconvenient to have this small a root (/) partition on 
-your system. I know I would, This is why I suggested earlier making hda1 
-even smaller and mounting it as /boot, then having a later hda* partition 
-be your system root.
-
->Ray Olszewski wrote:
-> >
-> > Chuck -- You are trying to write the bootloader itself to a partition, You
-> > should at least try writing it to the Master Boot Record to see if that
-> > fixes your problem. To do that, you change the line that reads
-> >
-> >          boot = /dev/hda1
-> >
-> > to read
-> >
-> >          boot = /dev/hda
-> >
-> > Second, you are not *explicitly* putting the kernel image in /boot . You
-> > are pointing to it with this line:
-> >
-> >          image = /vmlinuz
-> >
-> > Now this is *probably* OK; typically, /vmlinux is a symlink to
-> > /boot/linux_something_or_other (the exact name used for the real kernel
-> > image can vary a lot, and I don't recall Slackware's practice here). But
-> > you might double check it. ALso double check that /boot/boot.b (the
-> > second-stage bootloader) is present.
->
->On my new install
->/vmlinuz
->resides in / and there are no links in /.
->Boot.b is a link, but it resides in /boot
->and it links to a file, boot-menu.b, which also resides
->in /boot. :-|
->
->  I gotta go. Many thanks.
->#lilo -V
->21.7-5.
->
->Regards, Chuck
-
-[old stuff deleted]
-
-
-
---
------------------------------------------------"Never tell me the 
-odds!"--------------
-Ray Olszewski					     -- Han Solo
-Palo Alto, California, USA				ray@comarre.com
--------------------------------------------------------------------------------------------
+> Hi.
+> 
+> >>> btw I used Partition Magic from WinXP to partition the disc as I
+> >>> dont know how to work around using fdisk in Linux.
+> 
+> In the process, you probably caused this problem, and my advice 
+> would be
+> to scrap PartitionMagic and redo your system completely. Here's the
+> procedure I use to set up a system to dual-boot WIndows (any version)
+> and Linux:
+> 
+> 1. Use the Linux fdisk to create the partitioning scheme I want.
+>    In my experience, NONE of the Windows-based partitioning
+>    software can correctly create partitions for Linux, and this
+>    includes PartitionMagic.
+> 
+>    This is the partition layout I generally use:
+> 
+> 	Partition  Type  Cylinders  Notes
+> 
+> 	/dev/hda1  Swap     254     Anti-virus measure
+>        /dev/hda2  ext2      2      Mounted as /boot under Linux
+>        /dev/hda3  FAT32    50%     C: under Windows
+>        /dev/hda4  ext2     Rest    Mounted as / under Linux
+> 
+>    The allocation of /dev/hda1 as the swap partition is because of
+>    the number of Windows viruses that overwrite the first so many
+>    Megabytes of the primary hard drive. Since there is nothing of
+>    importance in a Linux swap partition when Windows is running,
+>    this measure prevents those viruses from overwriting anything
+>    other than the partition table, and that is relatively easy to
+>    recreate.
+> 
+> 2. Install one's favourite dialect of Windows into /dev/hda3 that
+>    was reserved for it in the above partition table. This writes
+>    the correct MBR record out, and marks /dev/hda3 as the bootable
+>    partition.
+> 
+> 3. Install one's favourite Linux distribution specifying the mount
+>    points as listed above, and placing the boot loader in the boot
+>    record of /dev/hda2 and NOT in the MBR.
+> 
+> 4. Use fdisk to set /dev/hda2 as the bootable partition. Either the
+>    Linux or Windows fdisk can be used for this without problems.
+> 
+> Every distribution of Linux I've met auto-detects that Windows is
+> installed and automatically sets up the boot loader correctly.
+> 
+> Incidentally, the reason for putting the Linux boot loader in the 
+boot
+> sector of the /boot mount is because Windows has a habit of 
+> overwritingthe MBR with its own boot loader, although it respects 
+> the boot marker
+> when doing so.
+> 
+> > Thanks for the response, but the problem is that with the partition
+> > shown below i am never able to boot using linux. so i cant edit the
+> > lilo.conf. or shud i change partition 1 (/dev/hda1) to type ext2
+> > from current vfat. coz that was the only way i cud boot into linux?
+> 
+> Before you do anything, you need to decide precicely what each 
+> partitioncontains. The partition layout shown, taken together with 
+> your comments,
+> idnicates that the /boot mount point is probably /dev/hda1 rather 
+than
+> the /dev/hda6 indicated, and this is probably PartitionMagic's work.
+> 
+> >>> I want to have both WinXP and Linux (RHL7.3) on my system but 
+> am 
+> >>> having trouble with the partitions. My partition table (i 
+> dunno 
+> >>> whether thats the correct term) looks like this (as shown by 
+linux
+> >>> installer ) -
+> >>>
+> >>>                  Start    End  Size(MB)  Type      Mount point
+> >>> /dev/hda
+> >>>    Free              1      1      8     Free
+> >>>    /dev/hda1         2      7     47     vfat
+> >>>    /dev/hda2         8    708   5499     NTFS
+> >>>    /dev/hda3       709   2432  13523     Extended
+> >>>      /dev/hda5     709   1413  5530      NTFS
+> >>>      /dev/hda6    1414   1419    47      ext2      /boot
+> >>>      /dev/hda7    1420   1453   267      swap
+> >>>      /dev/hda8    1454   2432  7697      ext2      /
+> >>>
+> >>> the error message i get is -> Boot partition may not meet booting
+> >>> constraints for your architecture. Creation of boot disk is 
+highly
+> >>> encouraged.
+> 
+> >> Thats not an error message but a warning from the install 
+> process, 
+> >> as you see lilo or grub was installed.
+> 
+> >>> The options I get is "modify partition" and "add anyway". If I
+> >>> proceed with 'add anyway' option installation is succesful but I
+> >>> dont get the option of selecting the OS for booting the PC and 
+the
+> >>> PC boots using WinXP. I tried changing the /dev/hda1 partition to
+> >>> ext2 ,mount pt /boot. The installation was succesful and so 
+> was the
+> >>> boot, but then the option of starting with WinXP dissapeared. I
+> >>> could only boot with Linux Can anyone help me out here?
+> 
+> Best wishes from Riley.
+> 
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
