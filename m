@@ -1,69 +1,116 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: How to pick a distro?
-Date: Wed, 06 Apr 2005 13:44:44 -0700
-Message-ID: <5.1.0.14.1.20050406133253.0202be68@celine>
-References: <425440DE.4000403@gmail.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: sound problems on Debian unstable
+Date: Wed, 6 Apr 2005 16:13:09 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
+References: <5.1.0.14.1.20050406092225.02059310@celine>
+ <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <425440DE.4000403@gmail.com>
+In-Reply-To: <5.1.0.14.1.20050406120016.0201f1f8@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 01:34 AM 4/7/2005 +0530, NNK wrote:
->I was wondering what I should be looking at in the different distros 
->before picking one to use.
+On Wed, 6 Apr 2005, Ray Olszewski wrote:
+
+> At 01:38 PM 4/6/2005 -0500, James Miller wrote:
+<snip>> pas2 io=0x388 irq=3 dma=5
+>> sb io=0x230 irq=5 dma=1
 >
->Being a total novice, I don't have much experience on Linux, so I'm 
->wondering what I should be asking.
+> You are pretty much doing what I meant to be suggesting. You do need to adapt 
+> this stuf to /etc/modules, not to grub.
 >
->Any advice?
+> Note though that the LILO parameters associate ioport 0x220 (and the related 
+> dma and int settings) with both pas2 and sb. I'm not sure what to make of 
+> that either ... but my best *guess* from reading the doc file is that you are 
+> not enabling SB emulation (and you probably want to) ... look at the example 
+> for *not* enabling SB in the doc and you'll probably see what I mean.
+>
+> What to do about it? You probably need to include a second set of arguments 
+> on the pas2 line, probably labeled sb_io and so forth ... to judge from this 
+> short excerpt from the driver source(./drivers/sound/pas2_card.c):
+>
+>        cfg.io_base = io;
+>                cfg.irq = irq;
+>                cfg.dma = dma;
+>                cfg.dma2 = dma16;
+>
+>                cfg2.io_base = sb_io;
+>                cfg2.irq = sb_irq;
+>                cfg2.dma = sb_dma;
+>                cfg2.dma2 = sb_dma16;
+>
+> (When the docs are badly written ... and the ones for this driver certainly 
+> are, if only because they do not include a list of legal module arguments ... 
+> there's no substitute for reading the source.)
+>
+> Also note (this part *is* in the docs) that SB emulation with this card uses 
+> dsp1 and audio1, while native-mode is dsp0 and audio0 ... you may want to 
+> change which sound device are outputting to, since I'd bet the SB emulation 
+> is better behaved than native mode.
+>
+> Finally, it is unclear to me whether this extended argument list replaces or 
+> combines with the "sb" line you have. I'd try it both ways and see what 
+> works.
 
-This is a difficult question to answer with anything other than personal 
-prejudice. I will give it a try, though.
+With the separate sb line as in my last post, here's what I get in dmesg 
+about the module:
 
-1. As a beginner, you want to use a full-strength distribution, one that is 
-likely to support the full range of activities you might want to use Linux 
-for. Experienced users often can benefit from using more specialized, 
-semi-embedded distros that are geared to particular tasks ... e.g., distros 
-designed to work as routers or as dedicated vidcap hosts ... but you're 
-better off waiting until you know more before you go that route. Same goes 
-for source-based distros ... not the best place for a novice to start.
+Apr  6 12:45:13 localhost kernel: Pro Audio Spectrum driver Copyright (C) 
+by Hannu Savolainen 1993-1996
+Apr  6 12:45:13 localhost kernel: sb: Init: Starting Probe...
+Apr  6 12:45:13 localhost kernel: sb: Probing legacy card with io=230, 
+irq=5, dma=1, dma16=-1
+Apr  6 12:45:13 localhost kernel: sb: dsp reset failed.
+Apr  6 12:45:13 localhost kernel: sb: Init: Done
+Apr  6 12:45:13 localhost kernel: Capability LSM initialized
 
-2. You want a distro that has a good packaging system and good support for 
-security and other updates. Examples that meet this are Debian (the distro 
-I use) and most of the big RPM-based distros. The best-known distro that 
-does NOT meet this standard (or at least I believe it does not) is 
-Slackware ... though if I'm wrong, I'd welcome correction from a Slackware 
-user.
+With sb_irq=XXX (and so forth) in the same line as pas2, I do not get 
+these sorts of error messages. Just a clean:
+Pro Audio Spectrum driver Copyright (C) by Hannu Savolainen 1993-1996
 
-3. You want someplace you can ask questions with the hope that you will get 
-prompt and accurate answers. Many distros have their own help lists, and if 
-you are considering one, you might look at the archives of its support list 
-to see if it meets this standard. Or, for distro-agnostic lists like this 
-one, notice what distros are discussed the most ... that is, notice what 
-the people who *answer* questions know the answers *to*. If you have a 
-friend who will be helping you, use what he or she uses ... that's way more 
-important than a quest for the elusive "best" distro.
+But sound still works very poorly. Very scratchy when I play mp3's/ogg's 
+with pauses when I open an application, switch terminals or some other 
+computer activity takes place.
 
-4. This all assumes you are planning to use reasonablty modern desktop 
-equipment. Really old equipment ... 486- and even 386-based systems, and 
-other oddball hardware ... and laptops present specialized problems that 
-might dictate selection of a particular distro that handles that equipment 
-well. Most of the RPM-based distros are better at hardware detection than 
-Debian is, so you might think about how much that matters to your install too.
+Here's one interesting side-note. Among the things I read I found 
+reference to the opl3 module with the io=0x388 parameter. Thought I'd add 
+that in as well (to /etc/modules). It did not cause any sort of error 
+messages. But most interestingly, where pas2 does not seem to get 
+associated with an io (according to cat /proc/ioports output)--no matter 
+whether I specify 0x230 or 0x388--opl3 does, in fact, get associated with 
+io 0x388 when I load this module as specified (again, according to cat 
+/proc/ioports output).
 
-5. Finally, think about the range of applications you want to run. 
-Especially GUI-based ones. Different distros come out in different places 
-in the GUI wars (between KDE and Gnome, mainly, though there is more) and 
-your life will be easier if you pick a distro that fits what you want or 
-need in that regard.
+Changing which sound device output goes to seems worth testing. Only 
+problem is I have no idea how to do it. Bet it's not a system-wide 
+setting, but something that needs to be input for each application.
 
+> But please remember, James, this is all an no more than an extended guess ... 
+> something that might guide you experimenting a bit if you want to spend the 
+> time on it. Nothing more.
 
+A trip over to Frys (or the local equivalent) is getting more tempting all 
+the time. Any recommendations for reasonably-priced, Linux-compatible 
+cards? I'm no kind of audiophile: heck, if I were, I wouldn't be using a 
+computer to listen to sound. Just something serviceable. I'm happy with 
+the "sound quality" (I being a former audiophile I use that phrase 
+loosely) I get out of a Soundblaster awe 64 on my other machine.
 
+> Is there any better context fo this message than what you've provided? 
+> Anything before it that refers to the native-mode values (io-0x388 and so 
+> on)? I'd guess this message is telling you that the sb driver cannot find 
+> anything to connect to.
 
+Not really. These lines (they repeat 6 or 7 times) come at the end of 
+dmesg, right after information about my video card. They are still there, 
+even though sound is working somewhat more coherently than it was formerly 
+(when all I could hear was a snippet of music punctuated by clicks and 
+moments of silence)
+
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
