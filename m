@@ -1,33 +1,34 @@
-From: ichi@ihug.co.nz
-Subject: Re: a simple browser
-Date: Tue, 09 Apr 2002 12:46:46 +0000
+From: "Jerry T" <linuxl1@hotmail.com>
+Subject: Fwd: Re: Fwd: Re: cdrom working! (almost)
+Date: Tue, 09 Apr 2002 04:06:43 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3CB2E2B6.20CD93C6@ihug.co.nz>
-References: <m3ofgui987.fsf@wobble.eth.net>
+Message-ID: <F193lljMAkL44wMVSga0001783f@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: anna7sept@linuxmail.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-G Anna wrote:
-> 
-> Can anybody suggest a good and simple browser?  Netscape core dumps
-> very often, Mozilla is very very slow and I do not know of any other
-> browser.  (Most of the websites nowadays doesn't care about Lynx :-(
+When I try xmms I get about 1 or 2 seconds of music and then the music 
+stops. I can move to any track and get the same results. Neither gtcd nor 
+cdp do anything. The cd's play fine on the same machine running windoze.
 
-Have you tried "links"?  
------------------------------------------------
-http://artax.karlin.mff.cuni.cz/~mikulas/links/
------------------------------------------------
-Its layout is good (much better than lynx) and it does cookies
-and SSL.  Images are not displayed on the page, but if you click
-on an image, it will be displayed on a separate screen (using zgv).
 
-Cheers,
-Steven
+>From: Adam Schrotenboer <adam@tabris.net>
+>To: "Jerry T" <linuxl1@hotmail.com>, linux-newbie@vger.kernel.org
+>Subject: Re: Fwd: Re: cdrom working! (almost)
+>Date: Sun, 7 Apr 2002 22:05:32 -0500
+>
+>On Sunday 07 April 2002 20:49, Jerry T wrote:
+> > How do I access the cdrom ioctls?
+>
+>That's cdp and xmms and various programs are for.
+>
 
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
