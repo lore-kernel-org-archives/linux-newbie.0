@@ -1,69 +1,63 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+From: "Brian P. Bilbrey" <bilbrey@orbdesigns.com>
 Subject: Re: path Setting
-Date: Sun, 13 Jul 2003 13:53:32 -0400
+Date: 13 Jul 2003 14:28:34 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307131353.33161.sotl155360@earthlink.net>
-References: <5.1.0.14.1.20030712195144.02087a90@celine> <5.1.0.14.1.20030713071527.0207fea0@celine>
+Message-ID: <1058120914.11414.6.camel@goldfinger.orbdesigns.com>
+References: <5.1.0.14.1.20030712195144.02087a90@celine>
+	 <5.1.0.14.1.20030713071527.0207fea0@celine>
+	 <200307131353.33161.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030713071527.0207fea0@celine>
-Content-Disposition: inline
+In-Reply-To: <200307131353.33161.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hi all and Ray
+On Sun, 2003-07-13 at 13:53, Frank Roberts - SOTL wrote:
+ [snip]
+> Is this procedure incorrect or what?
+> Can I not set the PATH by this procedure?
 
-HELP please
-I have about 8 books with some info in it, none complete, and a few web sites 
-but I am still not getting it.
+Yes, it's incorrect. No, you can't set the path "PERMANENTLY" by that
+procedure. If you had edited your ~/.bashrc as suggested by Ray, then
+you would be happy now.
 
-THis is wxactly what I did.
-Opened KDE Konsole in home directory
+However, please be aware, if you set and export the path in a terminal
+session, it does not carry over to any other terminal session. By
+setting the path in ~/.bashrc (assuming you're running bash), it will be
+sourced by every terminal session as it opens.
 
-Typed @ > echo $PATH 
-Got -> /usr//bin:/bin:/usr/bin::/usr/local/bin:/usr/X11R6/bin:
-     /usr/games:/usr/lib/jdk-1.4.1_01/bin
+Extra credit - export is a command, and as with most other things *NIX,
+case sensitive. EXPORT is *not* a command, export is.
 
-Copied /usr//bin:/bin:/usr/bin::/usr/local/bin:/usr/X11R6/bin:
-     /usr/games:/usr/lib/jdk-1.4.1_01/bin
+SO... If I open a terminal window, and add/export /usr/local/bob/bin to
+my path thusly:
 
-Typed @ > PATH= {Copied PATH}
+export PATH=$PATH:/usr/local/bob/bin
 
-Edited {Copied Path} to be
-/usr/bin:/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin:
-     /usr/games:/usr/lib/jdk-1.4.1_01/bin
-     {Setting // to be / & :: to be : }
+Then going forward IN THAT TERMINAL SESSION, /usr/local/bob/bin is part
+of my path. That PATH is *lost* the moment I close that terminal
+session. If I want to have /usr/local/bob/bin in my path every time I
+open a terminal window or console, then I will put that command in my
+~/.bashrc, at the bottom.
 
-Typed @ > echo $PATH 
-Got -> /usr/bin:/bin:/usr/bin:/usr/local/bin:/usr/X11R6/bin:
-     /usr/games:/usr/lib/jdk-1.4.1_01/bin
+export PATH=$PATH:/usr/local/bob/bin
 
-Ok so far I think.
+Then I will logout and log back in, to take advantage of the change that
+I have just made to the ~/.bashrc configuration file, now and going
+forward.
 
-Next
-Typed @ > EXPORT PATH
-Got -> bash: EXPORT: command not found
+HTH,
 
-Closed out of termal; reopened terminal
-Did echo $PATH
-Got Original PATH 
+.brian
 
-Is this procedure incorrect or what?
-Can I not set the PATH by this procedure?
-
-Thanks
-Frank
-
-
-> You can also try adding this at the end of ~/.bashrc
->
->          PATH=$PATH:/usr/lib/qt3/bin:/usr/lib/jdk-1.4.1_01/bin
->          EXPORT PATH
->
-> Then log out completely as that user and log in afresh from a vt or ssh
-> connection or xdm screen (or other variant).
+-- 
+Brian Bilbrey: bilbrey@orbdesigns.com and http://www.orbdesigns.com/
+    First they came for the verbs, and I said nothing,for
+    verbing weirds language.  Then, they arrival for the nouns
+    and I speech nothing, for I no verbs. - Peter Ellis
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
