@@ -1,58 +1,44 @@
-From: beolach@juno.com
-Subject: Re: Problem Mounting a Windows partition
-Date: Tue, 8 Jul 2003 18:52:50 GMT
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: NFS - uid different??
+Date: Wed, 9 Jul 2003 14:50:42 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030708.115331.559.325694@webmail05.lax.untd.com>
+Message-ID: <20030709145042.A276@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: quereshi@etilize.com
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Greetings: Been using NFS for years with little problems until I
+discovered one client machine that has different uid's than the
+server.. No matter how much I read or try I can't figure out how to
+work with files on the client with, typically, uid 1001 for user
+haltec and the server with user haltec uid 1000.. If the user/uid
+matches on each machine - no problem of course..
 
-Here's an excerpt from my fstab for my windows partitions.
+I've tried the anon stuff till blue in the face but every time I copy
+a file from the server that has the correct owner it ends up on the
+client with the owner matching the different uid... So far I've been
+chown'ing on the client, which seems to work OK, but there must be a
+better way - somehow, because every owner in the entire directory
+tree has to be changed..
 
-Device     Mnt point  FStype Options, see the mount(8) man page
-/dev/hda1  /mnt/winc  vfat   defaults,umask=0,utf8,uid=1000,gid=100
+There must be a file that maps the user to the uid.. /etc/passwd
+lists them of course, but editing it doesn't solve the problem and
+creates _many_ others.. :^(..
 
---- "Affan Qureshi" <quereshi@etilize.com> wrote:
+I have the Linux Network Administrators Guide, but it mentions files
+that are missing from Slackware 8.0/9.0.. No real help there..
 
-Hi All,
-I have RH9 and WinXP on a single hard drive dual-booting peacefully with
-GRUB. The problem is when I mount a WinXP FAT32 partition in linux using the
-following command:
-mount -t vfat /dev/hda6 /home/shared
+If the above makes sense, is there anyone accomplishing what I want
+to do?? TIA,
 
-I am unable to change the permission on that partition's filesystem even
-with the root user. By default i get root:root and the user:group. But I am
-unable to access it through other user. I have tried chmod and chgrp but
-nothing works and I get the error saying unable to perform operation or you
-do not have enough priveledges to perform the operation.
-
-I have also created an entry in the /etc/fstab file with defaults for
-options and vfat for the filesystem.
-
-Can anyone tell me what the problem is?
-
-Thanks in advance,
-
-Affan
-
-
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
-
-
-________________________________________________________________
-The best thing to hit the internet in years - Juno SpeedBand!
-Surf the web up to FIVE TIMES FASTER!
-Only $14.95/ month - visit www.juno.com to sign up today!
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
