@@ -1,52 +1,50 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: Re: partitioning drive
-Date: Tue, 23 Mar 2004 16:01:00 +0100
+From: joy <gracecott@sancharnet.in>
+Subject: Re: switching to debian (... and installing the NVIDIA  GeForce4)
+Date: Tue, 23 Mar 2004 22:49:45 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4060512C.5080700@arrakis.es>
-References: <20040323130248.GA10357@panix.com> <200403231539.55433.pa3gcu@zeelandnet.nl>
+Message-ID: <406071B1.7030305@sancharnet.in>
+References: <405FAC4A.1000609@sancharnet.in>
+ <5.1.0.14.1.20040322210149.01fdd960@celine>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200403231539.55433.pa3gcu@zeelandnet.nl>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Ray Olszewski wrote:
 
->>
->>what's my best best to make this happen?  fips?    fdisk?
->>disk druid?  something on the fedora install disks?
-> 
-> 
-> None of the above unless you have some unpartitioned room on the disk in 
-> question.
-> AFAIK fips is for FAT partitions (msdos)
-> fdisk is only for creating new (when there is room) and deleting old 
-> partitions.
-> disk-druid (AFAIK) idem dito.
-> 
-> 
->>this is what it looks like now.
->>
->>[root@tuxedo shino]# df -m
->>Filesystem           1M-blocks      Used Available Use% Mounted on
->>/dev/hda3               190140      7085    173397   4% /
->>/dev/hda1                   99         7        88   7% /boot
->>none                       505         0       505   0% /dev/shm
->>
-> 
-> 
-> You have 3 partitions, we cant see if you have any spare room without the 
-> output of fdisk 
-> 
-> fdisk -l /dev/hda
-> 
+> Short answer: to use the nVidia proprietary X driver, you need on your 
+> system the kernel source that matches your installed kernel. This is 
+> so because part of what the nVidia package provides is a customized 
+> framebuffer in the form of a kernel module called "nvidia".
 >
-What about partboot? A bootdisk with a partition editor:
+> How did you install the kernel-source-2.4.18 package you mention? If 
+> you just did the apt-get (or dselect, if you do it that way) part, you 
+> did not un'tar the source tree. You just have a package called 
+> something like /usr/src/kernel-source-2.4.18.tar.bz2 . You need to do 
+> two things for the nvidia installer to run properly:
+>
+>         1. un'tar the source in the usual way.
+>         2. make the customary symlink:
+>                 ln -s /usr/src/kernel-source-2.4.18 linux
+>
+> Then the nvidia installer should succeed.
+>
+> (NOTE: The one thing I cannot vouch for is that kernel-source-2.4.18 
+> and kernel-image-2.4.18-k7 packages actually match up. I always 
+> compile my own kernels after installing, so I have no actual 
+> experience with using the Debian kernel-image-* packages.)
 
-http://ftp.lug.udel.edu/pub/gnu/parted/bootdisk/
+yup, I suggest the same. get your own kernel sources and compile them. 
+if you get a 2.6 series kernel, you need to upgrade a few packages on 
+the system( the version numbr of the software  required is found in the 
+sources in /Documentation/Changes.I suggest you get a 2.6, it's worth 
+the download and you will really feel the difference and also the 5336 
+version has support for the 2.6 series and I see no reason you shuld not 
+take advantage of this.
 
-Andrew
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
