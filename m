@@ -1,58 +1,67 @@
-From: Alan Bort <333101@personal.net.py>
-Subject: Re: ICEwm
-Date: 01 Aug 2003 14:11:39 -0400
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: USB Flash Drive??
+Date: Fri, 1 Aug 2003 14:25:48 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1059761497.4142.152.camel@gandalf.ciccio-net.cjb.net>
-References: <3F2AC9E8.4080503@fuse.com>
-Reply-To: 333101@personal.net.py
+Message-ID: <20030801142548.A276@lnx2.w8mch.ampr.org>
+References: <20030731.122614.5706.281202@webmail08.lax.untd.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3F2AC9E8.4080503@fuse.com>
+Content-Disposition: inline
+In-Reply-To: <20030731.122614.5706.281202@webmail08.lax.untd.com>; from beolach@juno.com on Thu, Jul 31, 2003 at 07:26:03PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: "rob.rice" <rob.rice@fuse.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Yeah... well, MY suggestion is a symlink. in /usr/bin
+Greetings and thanks for the comments and pointer.. The thread was
+interesting in that it seems some of those sticks are formatted vfat
+and mine umsdos; not that I'm completely clear on the relationship
+between all this.. <g>
 
-El vie, 01-08-2003 a las 16:13, rob.rice escribi=F3:
-> I would like to add programs that are not on my path to the ICEwm men=
-ues=20
-> I know these programs will run with out being on the path=20
-> nbhs2@i-2000.com has tould me how to remove programs and how to add=20
-> prograns that are on the path ( thank you ) but how do I add the full=
-=20
-> path to the program to the menues ?
->=20
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
---=20
-Alan Bort
-Personal:	+595 (0)971 333 101
-=46ax: 		+595 (0)21 606 967
-ICQ-UIN:	73799272
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-Linux Registered User 298277 -Country Manager- [http://counter.li.org]
-[ http://www.linuxquestions.org ] Username: Ciccio
-[ http://es.tldp.org ]
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-RedHat 9 on Intel Pentium IV 2GHz, 512 DIMM, 64MB nVidia gForce 2 MX200
-Ximian Desktop 2 | Ximian Evolution
-Asuncion - Paraguay
-Ciccio.-
+"Crack the book" time again... 
 
+Appreciate!
+
+Hal
+
+On 07-31, beolach@juno.com wrote:
+> 
+> I have no personal experience with memory sticks, but I think you
+> should be able to reformat them with any filesystem you want to,
+> but keep in mind that it would then be unreadable in M$.  So if
+> you want it to be portable at all, keep it as vfat.
+> 
+> For somewhat related info see:
+> <http://www.linuxquestions.org/questions/showthread.php?threadid=69332>
+> 
+> Hope that helps,
+> Conway S. Smith
+> 
+> --- Hal MacArgle <haltec@kvinet.com> wrote:
+> > 
+> > Greetings: Just getting my feet wet with USB on a Slackware9.0,
+> > 2.4.20 box, and a 64mB Flash Disk "stick."
+> > 
+> > Enabling BIOS - 2.4.20 found it and loaded the necessary modules OK.
+> > Slick..
+> > 
+> > However - mount reports the fstype as umsdos.. I note I can also
+> > mount the device as msdos or vfat OK and use mcopy to manipulate
+> > files.. cp also works but reports an error, copying the file anyway.
+> > 
+> > I can find no information though as to if I can reformat the stick as
+> > ext2 or ext3..
+> > 
+> > Has anyone done this? At this point I'm afraid to try.. <grin>
+> > 
+> > TIA and Cheers,
+> > 
+> >     Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+> >                 Proprietary  Formats  Unacceptable
+> > .
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
