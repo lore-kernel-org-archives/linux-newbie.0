@@ -1,78 +1,98 @@
-From: "Little, John" <JOHN.LITTLE@okdhs.org>
-Subject: RE: Problems installing nVidia drivers
-Date: Fri, 19 Jul 2002 08:58:29 -0500
+From: chuck gelm <nc8q@gelm.net>
+Subject: Re: ppp0 (urgent)
+Date: Fri, 19 Jul 2002 10:35:26 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <92091C60D5E2B74CB77C1FDB84F5FA76E5F7@s99mail02.okdhs.org>
+Message-ID: <3D3823AE.10B50713@gelm.net>
+References: <20020719102636.12295.qmail@web2.mailbox.hu>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "'adam@luchjenbroers.com'" <adam@luchjenbroers.com>, linux-newbie@vger.kernel.org
+To: Korosi Akos <korosiakos@mailbox.hu>
+Cc: Newbie <linux-newbie@vger.kernel.org>
 
-due to the nVidia drivers being closed source, we can't do a lot to help
-you.  nVidia needs to be contacted for assistance.
+Hi, Akos:
 
-> -----Original Message-----
-> From: Adam Luchjenbroers [mailto:adam@luchjenbroers.com]
-> Sent: Friday, July 19, 2002 6:54 AM
-> To: linux-newbie@vger.kernel.org
-> Subject: Problems installing nVidia drivers
+ I am a newbie too, but since I didn't see a response
+from the gurus yet, I'll post some comments.
+
+Korosi Akos wrote:
 > 
+> Hi!
 > 
-> When I start up X using the nVidia drivers I get a blank 
-> screen and the 
-> machine locks hard.
+> Ray wrote:
+> > I don't use kppp and never have ... but assuming it is a fairly
+<snip>
+> The output of kppp in /var/log/messages was this :
 > 
-> I'll start off by giving the relevant hardware and software 
-> configuration 
-> information.
+> Jul 19 10:05:41 localhost kernel: hsf_break_ctl: modem does not
+> presently support sending/receiving BREAK
+> Jul 19 10:06:11 localhost modprobe: modprobe: Can't locate module ppp0
+> Jul 19 10:06:11 localhost modprobe: modprobe: Can't locate module ppp0
+pppd.o is a modules ppp0 may not be a module.
+Are you doing:
+modprobe pppd
+?
+
+> Jul 19 10:06:11 localhost pppd[12233]: pppd 2.4.1 started by root, uid 0
+> Jul 19 10:06:11 localhost modprobe: modprobe: Can't locate module ppp0
+> Jul 19 10:06:11 localhost pppd[12233]: Using interface ppp0
+> Jul 19 10:06:11 localhost pppd[12233]: Connect: ppp0 <--> /dev/ttyHSF0
+> Jul 19 10:06:11 localhost /etc/hotplug/net.agent: assuming ppp0 is
+> already up
+> Jul 19 10:06:41 localhost pppd[12233]: Terminating on signal 15.
+> Jul 19 10:06:47 localhost pppd[12233]: Connection terminated.
+> Jul 19 10:06:47 localhost pppd[12233]: Receive serial link is not 8-bit
+> clean:
+> Jul 19 10:06:47 localhost pppd[12233]: Problem: all had bit 7 set to 0
+ This looks like your modem is set for 7 [even|odd|no] parity.
+You probably need to set 8 bits, no parity, 1 stop bit; "8N1".
+
+HTH, Chuck
+
+> Jul 19 10:06:47 localhost pppd[12233]: Exit.
+> Jul 19 10:06:47 localhost /etc/hotplug/net.agent: NET unregister event
+> not supported
 > 
-> Hardware:
-> Soltek SL-75DRV5 Mainboard
-> Athlon 900Mhz CPU
-> Winfast GeForce DDR 256 (AGP)
+> on 10:06:47 I pulled out the phone cable to cut off the connection, so
+> those
+> messages are because of that.
 > 
-> Software
-> Linux Mandrake 8.1
-> Kernel 2.4.18 (compiled from kernels.org source tree, unpatched)
-> XFree 4.1.0
-> nVidia Kernel module + GLX version 1.0-2960
+> If this is not enough (and I think it is not), please tell me what other
+> information should I
+> tell to you.
 > 
-> Because I have a non standard kernel I have to download the 
-> driver 'source', 
-> which is a few C code and header files plus a chunk of 
-> pre-compiled object 
-> code that is the real driver.
+> I wonder why is that when I made a dial up connection on the other
+> macine (with Ethernet card)
+> there wasn't any problems?
+> I tought that was because of the Ethernet card, so that is why I thought
+> that I need one
+> in this machine too, but if not, than could there be any relation
+> between ppp0 and Ethernet?
 > 
-> I've built it using both
+> Now I started to look through pppd and chat, but I don't really know
+> what I need for a
+> dial up connection.
+> When a connection is made with chat and it logged in, and pppd got back
+> to work, do I need
+> anything else, or from that I can use Internet with a browser??
 > 
-> # make
+> I will keep on trying with kppp and chat and I will send you all
+> informations that I
+> get from log messages.
 > 
-> and
+> Thank you for your help (for now),
+> Akos
 > 
-> # make SYSINCLUDE=/usr/src/linux-2.4.18
-> 
-> and the problem persists.
-> 
-> (GLX has also been compiled).
-> 
-> Using the nv driver I get no problems but I also don't get 
-> the 3d performance 
-> their drivers offer.
-> 
-> Analysis of the /var/log/XFree86.0.log file shows that it 
-> stops immediatly 
-> after loading the PCI module.
-> 
+> --------------------------------------------------
+> http://www.mailbox.hu - Mert levelezni kell...
 > 
 > -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
-> 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
