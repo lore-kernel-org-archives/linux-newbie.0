@@ -1,66 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: No More Logrotate
-Date: Mon, 14 Apr 2003 08:53:18 -0700
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: Memory usage
+Date: Tue, 15 Apr 2003 01:17:08 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030414084230.01e990b8@celine>
-References: <200304141616.08613.pfheiss@philonline.com>
+Message-ID: <200304150117.08844.Adam@Luchjenbroers.com>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200304141616.08613.pfheiss@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Peter --
+OS: Linux Mandrake 9.0
+Kernel: 2.4.20
+Soltek SL-75DRV5
+512MB DDR
+Althon XP2100+
 
-Unfortunately, organization of logs is one of the more distro-dependant 
-things in Linux. Debian doesn't have a file (or directory) called 
-/var/log/cron, so I can't immediately diagnose your problem from the 
-information you provided. Another RH 7.3 user may be able to, though, you 
-you might want to wait a bit to see if you get a more useful response from 
-someone else  before bothering with these questions.
+I'm noticing memory usage that I cannot trace back to a process - alot of it 
+too. I use top and the "M" command to list programs by memory usage - but 
+what I see with it (or using other system monitoring tools) are only a few 
+processes and none that can explain the memory usage.
 
-If not ...
+Even dropping down to runlevel 1 still displays RAM usage in excess of 300MB. 
+Maybe I've still got alot to spare but I still want to fix this problem - 
+currently running BlackBox under X (I use some KDE apps, but even after 
+killing off all kdeinit processes the memory usage stays high).
 
-1. Is /var/log/cron a file or a directory? If the latter, what files does 
-it contain?
+So, what would be the cause of this mysterious memory usage?
 
-2. Just to be sure -- when you run "logrotate --force /etc/logrotate.conf", 
-you get an error at the console that reads *exactly* "error: syslog:1 
-duplicate log entry for /var/log/cron"? That is, you get an error from 
-syslog, not from logrotate (or even syslogd)? And you get no other output 
-to the screen?
+-- 
+"taking advice on what the GPL means from Microsoft is like taking Stalin's 
+word on the meaning of the US Constitution." - Eben Moglen
 
-3. It is possible to run logrotate with a -d (debug) flag. Does that 
-generate any useful info?
-
-4. On my systems, logrotate runs as root. Is that true on your system as 
-well? If not, under what userid does it run? Might there be a permissions 
-problem with some file it needs to rotate/
-
-5. What is "KRUD Linux"?
-
-At 04:16 PM 4/14/2003 +0800, Peter wrote:
->Hi,
->
->after I upgraded to a newer RH7.3 version from KRUD Linux logrotate will not
->rotate the log files any longer.
->
->Instead I get the following error message in my mail:
->
->error: syslog:1 duplicate log entry for /var/log/cron
->
->Giving the command logrotate --force /etc/logrotate.conf I get the same error
->message.
->
->I have not changed /etc/logrotate.conf or crontab of root.
->
->I checked the pertinent cron.daily/weekly files and can't find anything
->  wrong.
->
->How could this be resolved?
-
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
 
 
 -
