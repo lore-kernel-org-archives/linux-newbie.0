@@ -1,75 +1,59 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: CD-RW-Drive
-Date: Mon, 3 Jan 2005 11:26:35 +0800
-Message-ID: <20050103112635.6dce0659@skyinet.net>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Do not delete files by mistake (was Re: retrieval)
+Date: Mon, 3 Jan 2005 07:33:09 +0100
+Message-ID: <200501030733.09945.pa3gcu@zeelandnet.nl>
+References: <20041231045512.81128.qmail@web52901.mail.yahoo.com> <4b0d6e0d05010200016a7c3abe@mail.gmail.com> <20050102093240.1675fba2@sarge>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20050102093240.1675fba2@sarge>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Ulrich =?iso-8859-1?q?F=FCrst?= <heimwill@compuserve.de>
+Cc: linux-newbie@vger.kernel.org
 
-On 
-Peter H. <heisspf@skyinet.net> wrote:
+On Sunday 02 January 2005 09:32, Ulrich F=FCrst wrote:
+> joy merwin monteiro <joy.merwin@gmail.com> wrote:
+> > its really a trivial thing..... just alias rm to rm -i in your
+> > .bashrc
+>
+> or you can put the following into your .bashrc
+> alias rm=3D'mv --target-directory=3D/root/Desktop/Trash $1 '
 
-> Slackware 10, Kernel 2.4.26
-> 
-> got myself an Asus Atapi CD-RW-Drive and I am not sure if this was the right
-> choice for Linux. I was able to make it work following the instruction of
-> the program xcdroast, however, some things seem strange.
+I dont have the origanal message anymore to check, but i thought the th=
+read=20
+was about a "user" deleting files, if that is correct then the above wi=
+ll not=20
+work as a normal user cannot write to /root (s) directory.
 
-> I always get error messages telling not to use atapi instead scsi.
-> 
-> I had a CD with picture files on. When I copied them to the HD I can't open 
-> them and copying back to the CD I can't open them as well any longer. In
-> fact I can not mount the CD anymore. Only xcdroast can.
+It is a good idea to do the same for root and users tho'.
+On another note many distro's dont have a trash directory, so the need =
+to=20
+create one arises as well.
 
-> $ mount /mnt/cdrom
-> mount: Not a directory
-> 
-> Trying too boot Knoppix 3.4 from the CD I get only a blank screen. Booting 
-> from CD and then switching to HD, Knoppix works alright.
-> 
-> It seems that xcdroast can only write .wav and .iso files?????
-> 
-> Questions:
-> 
-> Is there a better CD-RW-Drive for Linux than Asus? The shop is willing to 
-> exxchange.
-> 
-> Are there better programs than xcdroast to R+W and which?
-> 
 
-The problem got solved, the CD got damaged.
+> Ulrich
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
+e" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Since xcdroast was not found in Slackware I installed the one from Fedora 2.
-Before I tried the program I had checked the CD, I could mount it and see the
-files on it. I followed the instructions of xcdroast on what to do with Atapi
-drives including putting 'append "/dev/hdc=ide-scsi"' into lilo.conf and run
-lilo.
-I then copied the folder on the CD to the HD and wrote another folder from the
-HD to the CD using xcdroast. After that the CD could not be mounted anymore.
-It looks like the CD was roasted by xcdroast. Now I understand the name of the
-program.
+--=20
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-On the advise of the various replies I installed in slackware k3b from Fedora
-2. It looked as if the installation was not right. I went then into the Fedora
-box from where either in xcdroast or 3kb a message showed that the CD is
-probably defective.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-I then downloaded k3b...bz2 installed it in slackware got myself new CDs and
-the programs works like a dandy.
-
-What is still puzzling is why a different CD drive would give a blank screen
-when Knoppix is run from the CD only. I solved that by running it in expert
-mode configuring the monitor.
-
-Many thanks again
--- 
-Peter
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
