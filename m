@@ -1,63 +1,44 @@
-From: "Riley Williams" <Riley@Williams.Name>
-Subject: RE: Slack9.0/Atapi-ZIP250???
-Date: Mon, 30 Jun 2003 21:44:18 +0100
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: Re: Switching between KDE and GNOME
+Date: Mon, 30 Jun 2003 16:51:38 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BKEGKPICNAKILKJKMHCAKEECELAA.Riley@Williams.Name>
-References: <Pine.LNX.4.53.0306301419160.466@veclin.office>
+Message-ID: <Pine.LNX.4.43.0306301648150.1840-100000@perpugilliam.csclub.uwaterloo.ca>
+References: <5.1.0.14.1.20030630114417.02777b38@celine>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0306301419160.466@veclin.office>
+In-Reply-To: <5.1.0.14.1.20030630114417.02777b38@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "James Miller (office)" <jamtat@mailsnare.net>, linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi James.
+First of all, D'oh! 2.4.19, of course. Typoed.
 
- >>>>> This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
- >>>>> internal, as /dev/sda4, as long as I insmod ide-scsi.o..
- >>>>> (That file also installs sd_mod.o )..
 
- >>>> You're doing this wrong. I have the Atapi Zip100 internal. It
- >>>> does not need the ide-scsi.co. Just set it up like this:
- >>>>
- >>>> /dev/hdc4       /zip            auto    noauto,user 0 0
- >>>>
- >>>> You only need the scsi stuff when using the external type Zip
- >>>> (which I also have).
+On Mon, 30 Jun 2003, Ray Olszewski wrote:
 
- >>> Greetings and - Gad Zooks.. Where did you discover the above?
- >>> Everything I've read about ZIP drives say they _must_ use scsi
- >>> emulation..
+> I don't run either KDE or Gnome here, so I can help only a little with the
+> DEbian parts.
+>
+> Assuming you are using the apt-* tools for package management, you probably
+> want to apt-get install kdebase . (At least this is right for Sid; Woody is
+> probably the same in this respect.) If its installer is any good, it will
+> either ask appropriate questions to get you to replace Gnome with KDE, or
+> it will do so without asking (less likely but possible). Once the base
+> stuff is installed, you'll need to install appropriate specific
+> applications for kde.
 
- >> SCSI emulation is needed for PARALLEL PORT and SCSI INTERFACE zip
- >> drives only - and NOT for ATAPI IDE zip drives - UNLESS you included
- >> the string "hdc=ide-scsi" as a kernel parameter. If you did that,
- >> then you told the kernel to use the ide-scsi driver to access the
- >> drive in the secondary master IDE position independent of whether
- >> such was necessary or not.
+I installed kde, which is the dummy package with dependencies taking care
+of the entire gamut of kde apps. However, the nice thing isn't happening;
+no config-apps starting up automatically. I'm somewhat confused where KDE
+fits in the whole display manager/desktop environment/window manager
+structure, so I don't know where it should be called from.
 
- > Doesn't scsi emulation also apply to USB Zip (and other IDE) devices
- > as well? I have an external Zip100 drive that plugs into the computer
- > via USB, and it appears under the /dev/sdaX node. It shows up as a
- > scsi device, even though it's apparently using some sort of IDE to 
- > USB trickery - which makes me believe that these also use scsi
- > emulation. I could be seriously miscomprehending - an ever-present
- > danger to my semi computer-literate cognitive apparatus.
+Thanks for the help!
 
-I know zilch about the USB version, which is why I specifically didn't
-mention it in the above. However, from your description, the USB models
-appear to the computer as being a USB-SCSI interface with a SCSI Zip
-drive behind it. In that case, they would use the relevant SCSI driver.
+Dan
 
-Best wishes from Riley.
----
- * Nothing as pretty as a smile, nothing as ugly as a frown.
-
----
-Outgoing mail is certified Virus Free.
-Checked by AVG anti-virus system (http://www.grisoft.com).
-Version: 6.0.493 / Virus Database: 292 - Release Date: 25-Jun-2003
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
