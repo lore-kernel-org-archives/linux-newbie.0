@@ -1,83 +1,68 @@
-From: "Lee Chin" <leechin@mail.com>
+From: Stephen Samuel <samuel@bcgreen.com>
 Subject: Re: usleep
-Date: Thu, 12 Jun 2003 15:43:05 -0500
+Date: Thu, 12 Jun 2003 18:16:54 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030612204306.7450.qmail@mail.com>
+Message-ID: <3EE92606.9050203@bcgreen.com>
+References: <20030611225502.29651.qmail@mail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20030611225502.29651.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: hahn@physics.mcmaster.ca
-Cc: linux-newbie@vger.kernel.org
-
-Mark,
-Two questions
-
-1) Do threads inherrit the schedule priority?  Or do I need to set this for every thread
-
-2) If there is nothing else runnable in my system, will this help? or is it effectively the same?
-
-Thanks
-Lee
------ Original Message -----
-From: Mark Hahn <hahn@physics.mcmaster.ca>
-Date: Wed, 11 Jun 2003 21:02:17 -0400 (EDT)
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: Lee Chin <leechin@mail.com>
-Subject: Re: usleep
+Cc: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
 
-> > Any way... what is setrealtime?  I dont have it on my linux machine
-> 
-> it's a simple tool I wrote a long time ago, code below.
-> ***** N O T E *******
-> it can effectively freeze your machine, since it gives you a process
-> which will not be prempted!  it *is* useful, though, if you know
-> what you're doing...
-> ***** N O T E *******
-> 
-> #include <unistd.h>
-> #include <stdlib.h>
-> #include <stdio.h>
-> #include <sched.h>
-> /* setrealtime: run procs in realtime.
->    author: Mark Hahn <hahn@mcmaster.ca> */
-> 
-> int main(int argc, char *argv[]) {
->     static struct sched_param sched_parms;
->     int pid, wrapper=0;
-> 
->     if (argc <= 1)
->         return 1;
-> 
->     pid = atoi(argv[1]);
-> 
->     if (!pid || argc != 2) {
->         wrapper = 1;
->         pid = getpid();
->     }
->     if (!pid)
->         return 1;
->  
->     sched_parms.sched_priority = sched_get_priority_min(SCHED_FIFO);
->     if (sched_setscheduler(pid, SCHED_FIFO, &sched_parms) == -1) {
->         perror("cannot set realtime scheduling policy");
->         return 1;
->     }
->     if (wrapper) {
->         setuid(getuid());
->         execvp(argv[1],&argv[1]);
->         perror("exec failed");
->         return 1;
->     }
->     return 0;
-> }
-> 
+On my box, (a P3/450) usleep seems to have an overhead of about 10000usec
+and a minimum response time of about 20000
+
+/* my test prog:
+  * (based on yours)
+  */
+
+#include <unistd.h>
+#include <sys/time.h>
+
+struct timeval tv1,tv2;
+#define PAUSE 100000
+
+int main()
+{
+     while (1)
+     {
+         int i;
+         double sum=0.0,t;
+         gettimeofday(&tv2, NULL);
+         printf("hello\n");
+         for(i = 0; i < 20 ; i++)
+         {
+                 gettimeofday(&tv1, NULL);
+             usleep(PAUSE);
+                gettimeofday(&tv2, NULL);
+                printf("slept %9.6fs\n", t=tv2.tv_sec+tv2.tv_usec*.000001 -tv1.tv_sec-tv1.tv_usec*.000001 );
+                sum+=t;
+         }
+         printf ("average %9.6fs\n",sum/i);
+         sleep (5);
+     }
+}
+
+
+
+Lee Chin wrote:
+ > I would think the following code would wait for 1 second each itteration before printing hello, but it waits way too long.  Replacing the for loop body with a
+ > usleep(1000000) works great... what am I missing here?
+ >
+ > Thanks
+ > Lee
+
+
 
 -- 
-__________________________________________________________
-Sign-up for your own FREE Personalized E-mail at Mail.com
-http://www.mail.com/?sr=signup
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+Powerful committed communication, reaching through fear, uncertainty and
+doubt to touch the jewel within each person and bring it to life.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
