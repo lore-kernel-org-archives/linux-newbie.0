@@ -1,47 +1,32 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: dict server/client
-Date: Sun, 5 May 2002 09:58:30 +0100
+From: G Anna <drguruolai@eth.net>
+Subject: mirror for ftp://ftp.dict.org
+Date: 05 May 2002 18:08:47 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020505085830.GA338@cam.ac.uk>
-References: <m3offvrwuq.fsf@wobble.eth.net>
+Message-ID: <m3bsbuu5uw.fsf@wobble.eth.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="BXVAT5kNtrzKuDFl"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <m3offvrwuq.fsf@wobble.eth.net>
 List-Id: <linux-newbie.vger.kernel.org>
-To: anna7sept@linuxmail.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+Dear All,
+
+Do you people know a mirror for ftp://ftp.dict.org server?  I am
+trying to access this ftp://ftp.dict.org but it seems to not work for
+me.  Thank you for any help.
+
+Cheers,
+anna
+
+-- 
+
+(6) I will not gloat over my enemies' predicament before killing them.
+    - Peter Anspach in "The Top 100 Things I'd Do If I Ever Became An
+      Evil Overlord"
 
 
---BXVAT5kNtrzKuDFl
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-> I would like to install the "dict" server and client in my machine.
-> Can anybody tell me its home page?
-www.dict.org has some nice stuff. You'll need some dictionaries as well;
-I recommend gcide. The dictionary is at ftp.gnu.org/gnu/dictionary,
-with the formatting programs on dict.org.
-
-Steven Smith,
-sos22@cam.ac.uk.
-
---BXVAT5kNtrzKuDFl
-Content-Type: application/pgp-signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE81PQ2O4S8/gLNrjcRAsoYAKDHCcCY4wHUlouVqRNHvFovSmSGQwCePZc7
-fqr1eFMMWSLLjjzIMN3WpFw=
-=+6S/
------END PGP SIGNATURE-----
-
---BXVAT5kNtrzKuDFl--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
