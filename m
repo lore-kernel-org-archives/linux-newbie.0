@@ -1,39 +1,55 @@
-From: wa4chq@netscape.net (neil t)
-Subject: Debian questions
-Date: Fri, 28 Feb 2003 07:10:24 -0500
+From: Frank Roberts <sotl155360@earthlink.net>
+Subject: Re: distribution choice
+Date: Fri, 28 Feb 2003 08:30:43 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <25FAA566.38217A58.0006BEFC@netscape.net>
+Message-ID: <200302280830.44084.sotl155360@earthlink.net>
+References: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030228012551.81191.qmail@web11406.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hello Ray and group-
-I have been reading the posts about Distro's and saw your comments about 
-Debian.  I obtained a copy of 3.0 a several months ago.  I installed it 
-and had it setup and running but never had it fine tuned. Last month
-I decided to start again.  I have been having a pretty good time getting
-things working-- better then before, but for some reason I can't get
-one of the 'sound' features working that I did have working the first time.
-I am able to play cd's, realplayer works great but I can't get "saytime"
-to work.  I don't have time right now to send the details, but just
-wanted to see if you may be able to help me with some 'Deb' problems.
-All the best-
-Neil T.
+Hi All
 
--- 
-Arachne/DRdos/Debian3.0
-Basiclinux/QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+Hope I am not sticking my keyboard in my mouth but here are a few thoughts on 
+the latest version of the three major commercial distribution and Debian.
+
+Redhat - seems to be focused toward servers and uniform workstations for 
+corporate America. Single choice of desktop - The Bluecurve. Redhat seems to 
+be headed away from the individual. 
+
+Mandrake - seems to be more focused toward individual choice than corporate 
+choice of content but be aware Mandrake appears to be a "me too" company in 
+regards to coping Redhat. 
+
+SuSE - Best distribution if you desire standard configuration and nothing 
+else. If you desire non standard configuration this is not the distribution 
+for you.
+
+Debian - Can be very difficult to install if you do not have standard 
+components - cards, hard drives, floppy drives, video cards, et. 
+Installation of Debian should not be tried by newbies. Installation of Debian 
+in a laptop is not recommend unless the installer is extremely advanced due 
+to manufacturers use of non stand components.
+
+It is recommended that one acquire the commercial box sets for the commercial 
+distributions or a commercial generated CD set for Debian. For Debian try a 
+company like Cheap Bites.
+
+For Redhat, Mandrake, and SuSE it is highly recommended that the most 
+expensive professional box set be acquired. The difference in cost is well 
+worth the additional funds.
+
+It is not recommend that one attempt to install, update, or replace system 
+components - this does not refer to individual programs - unless one is 
+extremely advanced. This especially applies to the core. 
+
+Frank
 
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
