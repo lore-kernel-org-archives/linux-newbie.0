@@ -1,55 +1,32 @@
-From: Matthew Stapleton <matthewstapleton@juno.com>
-Subject: Video settings within the XF86Config file
-Date: Sat, 17 Aug 2002 13:02:14 -0400
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: ?Copying 'difficult' CD-ROM discs
+Date: Sat, 17 Aug 2002 13:22:49 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020817.130217.-194581.0.matthewstapleton@juno.com>
+Message-ID: <3D5E8669.41B0CB38@gelm.net>
+References: <200208100843.50199.natarajan_k@hotpop.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Sorry for bombarding the list with messages this morning. However I have
-some solutions to the problems I previously posted on this list as well
-as new questions.
+Howdy, Y'all:
 
-A few days ago I was having trouble getting my video card and monitor
-setup for X.  As you know there are a couple of different options for
-setting up X in Linux, namely, xf86cfg, xf86config, and xf86setup.  Well,
-I decided to try xf86setup.  It was short and sweet but allowed X to
-start up with 24 bit depth. But the downside was that the resolution was
-still in 640*480.  I remembered seeing a message at the end of one of the
-configuration utilities that said the configuration info was stored in
-/etc/X11/XF86Config, so I decided to take a look...then modify as per the
-instructions given in the man pages.  That is, I added a HorizSync line
-set to 48kHz, and a another to adjust the screen size to 1024*768.  This
-worked perfectly and the result was that I now have X running at 1024*768
-with 24 bit depth.  
+ I have a commercial CD-ROM disc that resists being copied.
+(using Eazy-CD-Creator v4.02 & Windows98se & CD-ROM R/W drive)
 
-My new questions:
+ It is used very frequently and I'd like to create a backup
+and store the original in a safe place.
 
-Do I need a VertRefresh line as well?  Is this beneficial, dangerous or
-otherwise? 
+ I have a linux 'file server' system with a CD-ROM read-only drive.
 
-Is it dangerous to set the HorizSync line to a specific rate rather than
-a range? For example, should I have set the range to 30-50kHz rather than
-just 48?  What is the up side and down side to this?  I do not want to
-burn up my hardware.
+Can I create an '.iso' image of the original CD-ROM disc
+using linux utilities/applications that can be 'burned'
+with my Windows CD-ROM-writer software?
+If 'yes', how or where to go for more information? ;-)
 
-As a note, the reason I set the HorizSync to 48 is because in the manual
-for my monitor there is a chart that shows the present modes of the
-monitor.  Mode 6)Vesa is 1024*768, HorizFreq 18kHz, VertFreq 60Hz.
-
-Do I need to do something with the VertFreq setting for X?
-
-
-Thanks again,
-Matthew Stapleton
-============================
-http://webpages.marshall.edu/~staple12
-Go there now! You know you want to.
-============================
+Regards, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
