@@ -1,49 +1,31 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: partitons and proper order
-Date: Mon, 1 Nov 2004 20:33:12 +0100
-Message-ID: <200411012033.12853.pa3gcu@zeelandnet.nl>
-References: <20041101070754.CE0D9255BA@heisspf>
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: security level configuration
+Date: Wed, 03 Nov 2004 06:39:43 -0500
+Message-ID: <fc.004c4e00006886b5004c4e00006886b5.6886cf@palmertrinity.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041101070754.CE0D9255BA@heisspf>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Monday 01 November 2004 08:07, Peter wrote:
-> mike@kevino.org said:
-> >  /boot partition within the first 500 megabytes of the drive.
->
-> 20 MB would be more than enough. I have 3 kernels on my /boot and use a
-> little less than 10 MB
+I'm running Red Hat 2.4.18-14smp; I want to enable Mail(SMTP) on the
+server and already run ssh and httpd. When I go to the Gnome gui System
+Settings > Security Level Configuration I see that the radio button for
+Use default firewall rules has been selected. As I am beginning to feel
+much more comfortable using vi to edit config files, I have been looking
+for the config file(s) to edit. My ultimate aim is to enable this intranet
+box to act as a web server and an intranet mail server, as well as accept
+ftp (Dreamweaver, to update the web pages) and PuTTY ssh connections (my
+student users). Which config file(s) must I edit, and does it (do they)
+contain enough guidance in their comments to enable me to intelligently
+configure my server?
 
-For what its worth.
-
-AFAIK the reason why we ever needed a /boot partition was a way around lilo's 
-former limit of booting from a partition ( or i had better say) a kernel 
-image which was placed beyond the 1023 cylinder limit of old style BIOS's.
-lilo does not have that limit anymore nor do most (i think i could say "all" 
-bios's) now a days. So what i am saying is the following.
-
-Today we don't need a separate /boot partition, one may have there own reasons 
-for doing so, but linuxwise, there is no reason to have one thesedays because 
-the old <1023 cyl, limit is gone for ever.
+Bill Stanard
 
 
-> Regards
 
--- 
-If the Linux community is a bunch of thieves because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
