@@ -1,51 +1,87 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: RE: How to make Linux/SOlaris talk to Window
-Date: Tue, 5 Nov 2002 14:12:53 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Re: Tkdesk Segmentation Fault
+Date: Wed, 06 Nov 2002 10:42:13 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <046901c284ff$577d94d0$64fea8c0@pkrausxp>
-References: <20021105175917.27965.qmail@web40401.mail.yahoo.com>
+Message-ID: <200211060242.gA62gDM04000@philonline.com>
+References: <20021105120316.F2076@neutrino.particles.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021105175917.27965.qmail@web40401.mail.yahoo.com>
+In-Reply-To: Your message of "Tue, 05 Nov 2002 12:03:16 +0200."
+             <20021105120316.F2076@neutrino.particles.org> 
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 'Mike Ni' <cba20032002@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
-
-How you checked out Samba? www.samba.org. I believe it can be complied
-on a Solaris box and I know it works on Linux.
-
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Mike Ni
-Sent: Tuesday, November 05, 2002 12:59 PM
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Subject: How to make Linux/SOlaris talk to Window
 
+Thanks!
 
-Dear all,
+On Tue, Nov 05, 2002 at 09:26:22AM +0800, Peter wrote:
+>> Only the message 'Segmentation fault' shows up immediately after giving the 
+>> command tkdesk.
+> 
+>> Why would that be and how could it be corrected?
 
-Is there any mailing list or web site where I can get information about
-the interaction between Linux/Solaris/Window?
+I have to add from RH5.2 thru RH7.2 tkdesk always opened flawlessly.
+It is only now with RH7.3 that I have the problem to which I have (foolishly) 
+upgraded a few days ago.
 
-The Linux/Solaris boxes of my department have some
-additional unused capacity, and I would like to see if
-there is any good way to put such unused resource into
-good use
+Ray, my guess is that is has something to do with the new libraries. How would 
+I find out which one. ldd tkdesk gives "not a dynamic executable".
+I still have RH6.2 running and could transfer the libraries from there.
 
-Thanks in advance
-MIke
+If I try to re-./.configure I get error:
+checking version of Tcl/Tk... 8.3/8.3
 
-__________________________________________________
-Do you Yahoo!?
-HotJobs - Search new jobs daily now
-http://hotjobs.yahoo.com/
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-in the body of a message to majordomo@vger.kernel.org More majordomo
-info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+TkDesk requires Tcl/Tk versions 7.5/4.1, 7.6/4.2., or 8.0.
+Older versions are unlikely to work, while newer ones are not
+yet supported
+
+So I copied Tcl/Tk...8.0 from RH6.2 over to RH7.3 and I still get the same 
+error.
+
+eathan@otenet.gr said:
+> Inspect the core file using gdb:
+> % gdb tkdesk ./core 
+
+There is no core file created.
+
+eathan@otenet.gr said:
+> Or use strace:
+> $ strace tkdesk
+
+This is the tail of the strace output:
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 
+0x40
+016000
+read(4, "#\t$Xorg: locale.dir,v 1.3 2000/0"..., 4096) = 4096
+read(4, "LOCALE\t\t\tfr_BE.ISO8859-15\niso885"..., 4096) = 4096
+read(4, ".TCVN\nvi_VN.viscii/XLC_LOCALE\t\tv"..., 4096) = 4096
+read(4, "\t\t\tlv_LV.UTF-8\nen_US.UTF-8/XLC_L"..., 4096) = 4096
+close(4)                                = 0
+munmap(0x40016000, 4096)                = 0
+open("/usr/X11R6/lib/X11/locale/C/XI18N_OBJS", O_RDONLY) = 4
+fstat64(4, {st_dev=makedev(22, 67), st_ino=451076, st_mode=S_IFREG|0444, 
+st_nlin
+k=1, st_uid=0, st_gid=0, st_blksize=4096, st_blocks=8, st_size=333, 
+st_atime=200
+2/11/06-09:11:05, st_mtime=2002/04/19-11:11:08, st_ctime=2002/11/03-11:24:28}) 
+=
+ 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 
+0x40
+016000
+read(4, "# CATEGORY(XLC|XIM|OM)\tSHARED_LI"..., 4096) = 333
+read(4, "", 4096)                       = 0
+close(4)                                = 0
+munmap(0x40016000, 4096)                = 0
+--- SIGSEGV (Segmentation fault) ---
++++ killed by SIGSEGV +++
+
+It's Greek for me.
+
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
