@@ -1,49 +1,80 @@
-From: Peter <pfheiss@philonline.com>
-Subject: Re: PPP in Slackware
-Date: Fri, 04 Apr 2003 15:59:41 +0800
+From: Arthur Kng <arthur_kng@yahoo.com>
+Subject: Hard disk repartitioning-II
+Date: Fri, 4 Apr 2003 06:51:34 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304040759.h347xf702179@philonline.com>
-References: <03040315353900.01175@unix.pa3gcu>
+Message-ID: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Thu, 03 Apr 2003 15:35:39 GMT." 
- <03040315353900.01175@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Richard if you think only Dutchmen are stubborn you are mistaken. ;-)
+Hey all,
+ 
+      First up, thank you everyone for your prompt
+help. you've really made it easier for me.
+reading all your posts i've come up with a plan which
+goes like this:
 
-I now reinstalled SW8.0 and as I suspected kppp connected to the different 
-ISPs as I know it would since the time I had a SUSE 5.1 box, provided you do 
-not run pppsetup first. To make sure now not to make this mistake again I 
-deleted that program first thing. Gnome-ppp works just as well now.
+(  just to remind you, i have a 20GB disk, C drive:5GB
+having WinME(FAT32), D drive: 15GB having all my
+data(FAT32), 128MB RAM )
 
-pa3gcu@zeelandnet.nl said:
-> pa3gcu@zeelandnet.nl said:
->> As Ray has explained quite well i have no futher comments more as to
->> say use  KPPP, it will do what you want.
+   1)back up all my data at a friends place. fdisk and
+delete all existing partitions. make a          
+primary partition of 10GB on which i'll load the
+Windows OS and which will also have the         data
+which i want to access from Win and Linux.
 
-> Unfortunately it is not the case.
+   2)in the 10GB thats left i'll have 4GB for '/'
+where i'll load Linux.
 
-> Unless i am missing some very spesific machine problems you may or
-> may not  have i can say, Yes, kppp WILL do what you want and need.
+   3)the remaining 6GB will be the '/home' partition,
+which will have the linux only data.
 
-
-> I suspect the pppsetup is where the dog is buried. Before I used kppp or
-> for that matter gnome-ppp I had done a pppsetup. Only the ISP I choose in
-> pppsetup is the one I can connect with in kppp/gnome-ppp. If I want to use
-> another ISP I have to change it in pppsetup. I can't help it these are
-> the facts.
-
-Regards
--- 
-Peter
+   4)mine is a desktop machine for normal home use. at
+any given time i run atmost                     
+(browser+mp3player) or (a programming IDE + mp3player)
+etc. now i have 128MB of RAM so 
+       i'm thinking of doing away with the swap
+partition but i'm not too sure about this. so if      
+ i'm wrong please do tell me.
 
 
+so in short:
 
+    PRIMARY PARTITION: Windows (FAT32)-10GB
+      /dev/hda1
+
+    EXTENDED PARTITION
+      /dev/hda2
+              LOGICAL PARTITION 1 LINUX OS-4GB
+               /dev/hda5
+
+              LOGICAL PARTITION 2 LINUX /home-6GB
+               /dev/hda6
+
+   i know this is a long way to do it but this way i
+avoid having 2 FAT32 partitions (one for Win OS and
+the other for my data) and have a substantial space
+for the 'Linux only data' partition.
+
+now i would like to know what you all think about
+this. if i'm doing wrong please do tell as i'm just
+starting out on Linux.
+
+thank you for your help.
+
+AK
+
+
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+http://tax.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
