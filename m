@@ -1,46 +1,44 @@
-From: Lars Bungum <lars@bungum.no>
-Subject: Re: Machine to power off automatically.
-Date: Sun, 11 Jan 2004 18:57:32 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: RTL8180
+Date: Sun, 11 Jan 2004 20:10:26 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1073843852.2236.7.camel@shostakovitsj.larsemann>
-References: <1073811986.2087.2.camel@shostakovitsj.larsemann>
-	 <20040111125045.49f04b65.bilbo@waitrose.com>
+Message-ID: <200401112010.26954.pa3gcu@zeelandnet.nl>
+References: <1073821972.4039.14.camel@Nimue>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040111125045.49f04b65.bilbo@waitrose.com>
+In-Reply-To: <1073821972.4039.14.camel@Nimue>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: John Kelly <bilbo@waitrose.com>
-Cc: linux-newbie@vger.kernel.org
+To: Thorsten Alge <mail@thorsten-alge.de>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Sun, 2004-01-11 at 13:50, John Kelly wrote:
-> > I can't get my machine to turn itself off automatically (when I tell it
-> > to do so in KDE), it just hangs saying "Power Down".  Is there some
-> > option I have to enable in order to get this working?  Looked at the
-> > APM/ACPI sections, but felt that was more related to laptops and
-> > batteries, etc.  My BIOS was too old for ACPI, anyway.
-> You don't say which distro or kernel you are using, which may help.
-> For what it is worth I had this problem a while ago. My Redhat box died and the 
-> only CD I had was debian. The new debian box (kernel2.4.18) would not power down 
-> automatically. I just loaded the apm module and things then worked as expected.
+On Sunday 11 January 2004 12:52, Thorsten Alge wrote:
+> Hi,
+>
+> ive two new ethernet cards. a pcmcia card and a pci card, both with an
+> rtl8180 chipset. but i cant set it up. the debian kernel dont supports
+> it and realtek.com provides only a patch for red hat 7.3 and 9.0.
+> any ideas??
 
-John,
+Yes, use www.google.com/linux and enter "rtl8180" as your search.
+No i cant help you more sorry.
 
-my system is based on RH9, with the kde-redhat project inside using
-apt-rpm.  However as shutting the machine off works with the exact same
-configuration only booting a different kernel (the 2.4.18 shipped with
-RH) I suspect some option/module must be set in the kernel to get this
-working.  The "apm" module is loaded, and the "apmd" daemon from the
-RedHat system is started and runs without error.
 
-My problem is that I don't really know what is supposed to make this
-particular feature work.  Is it apm?  When I read the docs about
-APM/ACPI it seemd all to be about battieries and other laptop-related
-matters, and my machine is just a standing desktop.  So what software is
-it that is supposed to make this work?
+>
+> thanks
+>
+>   thorsten
 
---lars
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 
 
