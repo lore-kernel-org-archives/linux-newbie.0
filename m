@@ -1,37 +1,66 @@
-From: Kurt Sys <kurt.sys@rug.ac.be>
-Subject: xsession
-Date: Fri, 03 Jan 2003 13:55:48 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Networking issue
+Date: Fri, 03 Jan 2003 08:20:09 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E158854.50905@rug.ac.be>
-Reply-To: kurt.sys@rug.ac.be
+Message-ID: <5.1.0.14.1.20030103080553.0211e270@celine>
+References: <5.1.0.14.1.20030102230450.0211b230@celine>
+ <5.1.0.14.1.20030102230450.0211b230@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200301032101.07628.Adam@Luchjenbroers.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello,
+At 09:01 PM 1/3/03 +0930, Adam Luchjenbroers wrote:
+>On Friday 03 Jan 2003 4:39 pm, Ray Olszewski wrote:
+>
+>Got everything pretty much fixed, except for one thing.
+>
+>Something perioically seems to re-add a line to hosts.deny that forbids
+>connections from everything but localhost.
+>/proc/sys/net/ipv4/icmp_echo_ignore_all also gets reset to 1 (but this
+>happened at a different time)
+>
+>/var/spool/cron has no entries
 
-I have a Debian X session question. I run kdm as display manager and 
-blackbox as window manager. When I startup blackbox, I would like to 
-execute a small script for the slit in blackbox (just putting some 
-applications in the slit). I just don't manage to execute that script. I 
-copied the Xsession-script (/etc/X11) to my own home directory and 
-renamed it to '.xsession'. I added the line 'bbkeys -w &' to the 
-beginning of the file (just to test if it would work), but bbkeys won't 
-start and there's no slit. However, if I run this command from a console 
-in blackbox, it works (as well as the complete script I wrote to 
-configure the slit). So, I'm wuite sure the script '.xsession' in my 
-home directory is not started. I though this script would be used when I 
-start blackbox, but apparently it's not.
-Anyway, how can I start a script for blackbox whenever I startup 
-blackbox? (I guess '.xsession' is not the most optimal solution, since 
-it's not only for blackbox, but I was just trying... of course, if I can 
-make my script to run only if a particular windowmanager, e.g. blackbox 
-or windowmaker, is started, it would be better.)
+I infer (from the comment about cron) that these changes occur while the 
+server is running, rather than as the result of a reboot. And when you say 
+"/var/spool/cron has no entries", I understand you to mean that it does not 
+have the usual subdirectories (since /var/spool/cron is a directory, not a 
+file). Beyond that ... you'd get better help from someone who uses Mandrake 
+than from a Debian user like me, since this behavior most likely reflects 
+something idiosyncratic to Mandrake.
 
-Kurt.
+So ... all I can offer is some reflection on how I'd try to investigate an 
+unknown problem of this sort. Putting aside obvious things like a Google 
+search,  I'd first try to ping down "periodically" to a more precise value.
+
+When you discover the change in /etc/hosts.deny, what is the timestamp on 
+the file?
+
+Look through your process list and see if there is some daemon running that 
+might do things like this. Have you installed a firewall package (though 
+I'd be astounded if Shorewall, the one you mentioned trying, did anything 
+this silly ... it is a well-designed app)?
+
+Might one of the other cron-job files (the ones in /etc) be running 
+something that makes these changes?
+
+For example, is something running one of your init scripts with the 
+"restart" switch? Check (using "grep") all the init scripts (does Mandrake 
+keep these in /etc/init.d or somewhere else?) for any references to 
+hosts.deny or "icmp_echo".
+
+That's about all I can think of for starters.
+
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
