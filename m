@@ -1,55 +1,46 @@
-From: Armen Kaleshian <akaleshian@kriation.com>
+From: caszonyi@rdslink.ro
 Subject: Re: upgrading open ssh
-Date: Mon, 23 Feb 2004 16:30:40 -0500
+Date: Mon, 23 Feb 2004 23:45:05 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040223213040.GB10315@sevoog.kriation.com>
+Message-ID: <Pine.LNX.4.53.0402232343260.1619@grinch.ro>
 References: <HBEJLOFMLEPBMAAEFNFDMECICFAA.azapata@du.edu>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 In-Reply-To: <HBEJLOFMLEPBMAAEFNFDMECICFAA.azapata@du.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: "Anna G. Zapata" <azapata@du.edu>
-Cc: linux-newbie@vger.kernel.org
+Cc: Linux-Newbie <linux-newbie@vger.kernel.org>
 
-Anna..
+On Mon, 23 Feb 2004, Anna G. Zapata wrote:
 
-Since you were using an rpm version of SSH before, and now you've converted to a
-source package, it might be a little more difficult to stay consistant.
+> Hi all,
+>
+> I downloaded and installed the latest version of open ssh.  I was running openssh-3.6.1p2-19 on a Fedora box.  However,
+> how do I know that the new install took and that the old open ssh has been done away with?  I did the ./configure, make,
+> and make install, but I think I'm missing some steps.
+>
 
-On my system, I removed the rpm version and replace it with the source version,
-by compiling and installing it the way you did.
+ls -l `which sshd`  `which ssh`
+and look at time field
+they should have the date you installed them
 
-I suggest removing the rpm package of SSH that you have, and then simply just
-run make install on the SSH source directory you have, and that way, you're
-guaranteed to run the version you're expecting.
+> Thank you as always.
+>
+> Anna Zapata
+> UTS - Network Security
+> 303.871.2009
+>
+>
 
-Good Luck!
-
---Armen
 
 
-On Mon, Feb 23, 2004 at 02:12:15PM -0700, Anna G. Zapata wrote:
-: Hi all,
-: 
-: I downloaded and installed the latest version of open ssh.  I was running openssh-3.6.1p2-19 on a Fedora box.  However,
-: how do I know that the new install took and that the old open ssh has been done away with?  I did the ./configure, make,
-: and make install, but I think I'm missing some steps.
-: 
-: Thank you as always.
-: 
-: Anna Zapata
-: UTS - Network Security
-: 303.871.2009
-: 
-: 
-: -
-: To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-: the body of a message to majordomo@vger.kernel.org
-: More majordomo info at  http://vger.kernel.org/majordomo-info.html
-: Please read the FAQ at http://www.linux-learn.org/faqs
+--
+"A mouse is a device used to point at
+the xterm you want to type in".
+Kim Alm on a.s.r.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
