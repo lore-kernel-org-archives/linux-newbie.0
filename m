@@ -1,64 +1,53 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: wired/wireless bridge: a more surefire Linux wireless
-  solution?
-Date: Thu, 03 Feb 2005 09:48:17 -0800
-Message-ID: <5.1.0.14.1.20050203094213.04a1f228@celine>
-References: <Pine.LNX.4.58.0502021428050.7624@localhost.localdomain>
- <Pine.LNX.4.58.0502021428050.7624@localhost.localdomain> <Pine.LNX.4.58.0502030811090.7624@localhost.localdomain>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: USB Flash/Jump Drives-Linux??
+Date: Thu, 3 Feb 2005 16:35:57 -0500
+Message-ID: <20050203213557.GA868@lnx2.w8mch.ampr.org>
+References: <20050129140343.GA599@lnx2.w8mch.ampr.org> <41FC5929.70409@gelm.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-In-Reply-To: <Pine.LNX.4.58.0502030811090.7624@localhost.localdomain>
-References: <Pine.LNX.4.58.0502021428050.7624@localhost.localdomain>
- <Pine.LNX.4.58.0502021428050.7624@localhost.localdomain>
+Content-Disposition: inline
+In-Reply-To: <41FC5929.70409@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-71C24702"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 08:21 AM 2/3/2005 -0600, James Miller wrote:
+Greetings Ray, Chuck, Joshua and all who replied.. Apparently my
+original problem was getting two flash/jump drives that "happened" to
+not work with Linux.. So be it. <grin>
 
->On Wed, 2 Feb 2005, James Miller wrote:
->
-> > So, let me just ask: is this really some sort of solution to the wireless
-> > support problem under Linux? People objected to that poster's suggestion
-> > on the basis that it was too bulky (extra pieces of hardware like the
-> > bridge and its power adaptor). Maybe it's a bit more expensive, too.
->
->Looking around at prices, wired/wireless bridges do seem a bit more
->expensive than traditional wireless cards. I see prices starting at around
->$35 for these, while wireless NIC's can be had on sale for as low as $10
->(after rebates!). But what good is an unsupported $10 wirless NIC going to
->be, anyway? I note in advertisements that these bridges are expressly
->described as allowing computers to connect to wireless LANs (along with
->set-top boxes, gaming consoles etc etc), and many even claim Linux
->support. This looks to me like a good alternative to suggest to Linux
->newbies interested in using wireless networks--i.e., for those who haven't
->bought an already-wireless-enabled machine and are simply trying to get
->the built-in wireless hardware to work under Linux.
+Anyway it seems, at least the Lexar brands are no problem and,
+probably with kernel 2.6.X, the others might not be either.. At any
+rate I visited the only "computer store" we have in this rural area
+finding they stocked three Lexar models; one called "sport" the
+others "secure." They also had an "Impact" 256mB that turned out to
+be a Lexar sans the "secure?" software.. Plugged into this box it
+works like a charm.. It was $10 less than the Lexar price but with a
+90 day warranty vice sth like 4 years for the "genuine" Lexar...
 
+We learn something every day, eh?  APPRECIATE one and all..
 
-James -- You are right that a $35 bridge that works is a better buy than a 
-$10 card that does not work. And I've even seen these bridges as low as $20 
-(after rebates) from time to time (this due to my proximity to Fry's 
-Electronics; I never see deals that good online.
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
 
-One thing people haven't mentioned here, though, is the NDIS-wrapper 
-approach. This uses some wrapper code to let the kernel operate a WLAN card 
-using its Windows driver software. I forget the URL, but if you Google, 
-"NDIS Linux", you'll probably find it. And my son, who (unlike me) has a 
-WLAN running at his home, says his recent experience is that the technique 
-works well, except for dual-CPU systems, where (I think this is what he 
-said) it can lead to a race condition.
-
-
-
-
--- 
-No virus found in this outgoing message.
-Checked by AVG Anti-Virus.
-Version: 7.0.300 / Virus Database: 265.8.5 - Release Date: 2/3/2005
-
-
+> Hal MacArgle wrote:
+> >Greetings: Running Slackware 9.0 and 9.1; kernels 2.4.20 or 2.4.22,
+> >bare.i installation, I've experienced good support for all USB
+> >devices except Flash Drives.
+> >
+> >First one bought was a Link-Max UL-641 that, plugged in, was
+> >immediately accessible by the kernel with no configuring by me..
+> >
+> >Later attempts with other brands, no such luck.. As I look at the
+> >retail boxes not a single one mentions Linux, so was wondering what
+> >others have discovered.. It's no fun buying then returning just to
+> >see what works or doesn't... <grin>
+> >
+> >Most of the comments on the Web seem to indicate this is not a
+> >problem but I've found otherwise.. One vendor, Kingston, said flat
+> >out that Linux is not supported by their devices..
+> >
+> >Best and TIA.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
