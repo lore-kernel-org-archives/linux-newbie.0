@@ -1,57 +1,129 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Hard Drive Puzzle
-Date: Thu, 06 May 2004 23:43:34 -0700
+From: =?iso-8859-1?q?sumit=20kalra?= <i_am_sumit_kalra@yahoo.com>
+Subject: Re: alsamixer Doesn't save volume settings
+Date: Fri, 7 May 2004 10:27:07 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040506233636.01efcf50@celine>
-References: <20040507133955.6095d838@skyinet.net>
+Message-ID: <20040507092707.63689.qmail@web61006.mail.yahoo.com>
+References: <5.1.0.14.1.20040506231100.01efccd0@celine>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040507133955.6095d838@skyinet.net>
+In-Reply-To: <5.1.0.14.1.20040506231100.01efccd0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-At 01:39 PM 5/7/2004 +0800, Peter wrote:
->Hi
+Hi Ray,
+
+Thnaks for your reply. Please see my answers embedded
+below.
+
+
+ --- Ray Olszewski <ray@comarre.com> wrote: > At 05:34
+AM 5/7/2004 +0100, sumit kalra wrote:
+> >Hi,
+> >
+> >I am running ALSA-1.0.4 on RedHat 8 Linux (kernel
+> >2.4.18-14).
+> >
+> >I am trying to set the volume using "alsamixer" but
+> >everytime I reboot the machine, the volume gets
+> reset
+> >to zero. I searched on google and got one solutions
+> >but it doesn't seem to work for me: Running
+> "alsactl
+> >store" after increasing the volume - the command
+> >completes properly (with no errors) but on reboot,
+> the
+> >volume setting are lost.
 >
->My old HD which I had moved from my old PC to my new PC as master drive has 2
->partitions, one for dos and one for linux. The MBR resided on dos.
-
-No, the MBR is a set location on the disk, and it resides outside any 
-partition. Do you mean that you have the drive's boot loader in the DOS 
-partition instead of in the MBR?
-
-
->I installed now a new HD on the new PC and moved the old HD back to the 
->old PC
->as master drive. On the linux partition of this old drive I made a new
->installation of RedHat 9.0. The dos partition was not touched.
+> Odd. With normal operation of alsamixer, the most
+> common changes are
+> supposed to persist, even across a reboot ... even
+> if you don't run alsactl
+> manually.
 >
->Now to my surprise I cannot boot into dos. If I try I get the error message:
->this is not a bootable disk, please insert a bootable floppy.
+> Do any other changes you make to the settings (for
+> example, turning various
+> devices on and off, or setting the capture device)
+> persist across a reboot,
+> or are they too reset? (If you haven't tried changes
+> other than volume,
+> please do.)
 
-Am I right in thinking that you *can* boot into Red Hat from this disk? How 
-do you "try" to boot into DOS?
-
->If I remove this old HD and put it into the new PC as slave drive I can boot
->into the dos partition of this old drive.
-
-Once again, what procedure are you using to "boot into the dos partition"? 
-Are you adding a stanza to lilo, or entering command-line options at 
-boottime? Or what?
-
->How does one explain this and how can it be corrected that I can boot into 
->dos
->on the old PC?
-
-Probably you have to modify /etc/lilo.conf so it provides an option to boot 
-into DOS. But until you describe better what you are doing that works when 
-the drive is a slave in one machine, but fails when it is the master in a 
-different one, it will be hard to give you more exact advice.
+All the settings including the capture device state
+get reset after a reboot.
 
 
+>
+> After you run alsactl, does the config file (maybe
+> /etc/sound.state, maybe
+> /etc/asound.state) actually get created? Is it
+> present (and unchanged -
+> check the timestamp) after a reboot?
 
+Yes, on running "alsactl", the file
+"/etc/asound.state" gets created which remains
+unchanged across the reboot.
+
+
+>
+> Is the "you" who runs alsactl root or an
+> unprivileged userid? If the
+> latter, that could be your problem; on my system,
+> /etc/asound.state is
+> owned by root and mode 644, so other userids cannot
+> modify the file.
+
+The root is running "alsactl" command. The file, even
+in my case, is owned by root and has mode 644.
+
+
+>
+> Are there any init scripts that affect alsa
+> settings? Look for either alsa
+> or alsasound in your init-script directory (I forget
+> where RH puts this; my
+> Debian systems use /etc/init.d) and see that both
+> your default runlevel and
+> the runlevel 6 (shutdown) call via symlinks
+> whichever script is present
+> (these scripts are supposed to run alsactl to save
+> and restore settings).
+
+The script /etc/init.d/alsasound is present but
+/etc/rc6.d/ and /etc/rc3.d/ directories don't have
+symlinks to it. I created these links by hand, but it
+didn't help.
+
+
+>
+> Did you install a precompiled RPM, compile against
+> your kernel from an RPM,
+> or compile from non-RH source?
+
+I got the alsa drivers, library and utilities from the
+alsa project website (alsa-project.org) as tarred
+zips. I compiled and installed them as root.
+
+
+Interestingly, after rebooting if I run "alsactl
+restore" before runnign "alsamixer", my previous
+settings are restored. This means that the file
+/etc/asound.state is correctly storing the settings
+across reboots but alsamixer is somehow not re-reading
+it after rebooting. How do we get around this?
+
+Thanks and regards,
+Sumit Kalra
+
+
+	
+	
+		
+____________________________________________________________
+Yahoo! Messenger - Communicate instantly..."Ping" 
+your friends today! Download Messenger Now 
+http://uk.messenger.yahoo.com/download/index.html
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
