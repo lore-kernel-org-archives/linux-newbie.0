@@ -1,91 +1,103 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: ppp ain't talking
-Date: Sun, 15 Jun 2003 00:05:56 +1200
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Linux newbie: Help requested in decoding the nature of
+  this Martian packet..
+Date: Sat, 14 Jun 2003 08:03:17 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306141152.h5EBqlvc016877@dbmail-mx3.orcon.co.nz>
-References: <200306140104.h5E144wo017689@pegasus.wanadoo.be> <5.1.0.14.1.20030613230654.0390ced0@celine> <200306140756.h5E7uENj010573@dbmail-mx1.orcon.co.nz>
+Message-ID: <5.1.0.14.1.20030614072454.039060a8@celine>
+References: <5.1.1.6.0.20030614140245.00b50320@yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200306140756.h5E7uENj010573@dbmail-mx1.orcon.co.nz>
+In-Reply-To: <5.1.1.6.0.20030614140245.00b50320@yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Sunday 15 June 2003 07:45, cr wrote:
-
-> I see kppp in that list....
+At 02:04 PM 6/14/2003 +0530, Sanjay Arora wrote:
+>I am a new user to this list from Amritsar, India.
 >
-> I'll assume for the present that KPPP is now supported in Debian and carry
-> on with my debugging efforts.
+>I have a home network on internal IP 192.168.x.x, connected through GW 
+>172.16.0.141 to a cable (Ethernet Cat 5 Cable) ISP having internal IP 
+>network 172.16.x.x and giving Internet connectivity through GW 172.16.0.1, 
+>which he claims is firewalled (though I doubt they are competent at it, as 
+>they could not find mac address in a broadcast packet...IMHO they are 
+>using a consultant, who they are unwilling to call again n again...maybe 
+>due to his charges).
 >
-> Thanks
+>My GW 172.16.0.141 is a multihomed linux box with Linux Firewall Project 
+>firewall on it (installed it a few days ago and am still in the process of 
+>understanding it). Firewall is generating huge logs about a Martian packet 
+>being detected having IP 192.16.1.101 on eth1 which is 172.16.0.141 ie 
+>external interface. It also lists Ethernet II header giving hardware 
+>address of the broadcast packet.
 >
-> cr
+>I am not competent enough to compile a sniffer yet on Linux but I plugged 
+>a windows machine directly on to the ISPs cable and sniffed the Martian 
+>packets...I am listing them here, please advise if this packet is having a 
+>spoofed IP address (ie is a virus or hacker transmission) or if seems to 
+>be a genuine DHCP broadcast. If DHCP broadcast...how do I find out if it 
+>is coming from the ISP's Internet GW or from his internal network.
+>
+>Maybe I am wrong but I don't think its a genuine DHCP broadcast (from 
+>someone like myself who has connected an inner 192.168.x.x network to the 
+>cable ISP's wire) as I am getting no other packets except these broadcast 
+>ones...I am sure a leakage would not be discriminating and leak only DHCP 
+>broadcast. But then I am a linux newbie.
+>
+>I believe I can use the arp command to find out the MAC addresses of 
+>machines on isp's network but i do not know the various issues involved 
+>and the syntax.
+>
+>Please help. One decoded & several undecoded packets are given below.
+>
+>With my thanks in advance
+[sample data deleted]
 
-Success!   (This message sent from Debian).
 
-(Apologies for not quoting the original message, I haven't imported 
-the previous mailboxes yet).
+I'm not familiar with the sniffer you used (so the *format* of the decoded 
+data is not familiar to me), and I am not up to decoding hex by hand this 
+morning, but the decoded packet appears genuine. Barring unusual setups, 
+DHCP broadcast packets do not cross routers, so it should be from the same 
+ISP "LAN" as the one you are on. Here are two things to check:
 
-I checked /var/log/messages as suggested and found that a program 
-called  diald  seemed to have been remarkably active.   I don't use diald 
-so eventually, having found no 'nice' way to stop it starting up, I just 
-uninstalled it.   And KPPP immediately started working!
+1. How often are the Martians coming in?
 
-Many thanks for the help.
+2. Are they all coming from the same MAC address?
 
-I have quite a few things still to resolve, such as  KPPP will only start if 
-I type 'kppp' in a terminal window, not from the menu; but then there are 
-several other programs that will work or not depending which menu I select 
-them from. These look more like Debian-specific problems so I'll probably 
-find a Debian list to ask about them.
+If the answer to (2) is YES, then this machine requests a DHCP lease from 
+time to time. What then? Depends a bit on the answer to (1); I see two 
+possibilities.
 
-Just in case it's of interest, here's a bit of /var/log/messages:
+  One possibility: it never gets one. (Perhaps he is trying to connect 2 
+hosts but is restricted to 1 IP address. You don't tell me enough about 
+your ISP for me to guess about *how* your ISP might restrict address 
+assignment; ISPs who deliver their services over Cat5 cable are not in my 
+experience, so I could only guess wildly.) Since it does not get a lease, 
+it lacks a usable routing table and can only send broadcast packets (which 
+is why that is all you ever see).
 
-Jun 14 22:13:39 alti kernel: PPP: version 2.3.7 (demand dialling)
-Jun 14 22:13:39 alti kernel: PPP line discipline registered.
-Jun 14 22:13:39 alti kernel: registered device ppp0
-Jun 14 22:13:39 alti pppd[418]: pppd 2.4.1 started by cr, uid 1000
-Jun 14 22:13:39 alti pppd[418]: Using interface ppp0
-Jun 14 22:13:39 alti pppd[418]: Connect: ppp0 <--> /dev/ttyS0
-Jun 14 22:13:39 alti kernel: PPP BSD Compression module registered
-Jun 14 22:13:40 alti kernel: PPP Deflate Compression module registered
-Jun 14 22:13:40 alti pppd[418]: local  IP address 219.88.128.163
-Jun 14 22:13:40 alti pppd[418]: remote IP address 210.55.12.202
-Jun 14 22:13:40 alti pppd[418]: primary   DNS address 210.55.12.205
-Jun 14 22:13:40 alti pppd[418]: secondary DNS address 210.55.12.1
-Jun 14 22:13:40 alti diald[232]: Trigger: udp       192.168.0.1/1025     
-210.55.12.205/53   
-Jun 14 22:13:40 alti diald[232]: Calling site 192.168.0.2 
-Jun 14 22:13:40 alti diald[232]: Device ttyS0 is locked by pid 414
-Jun 14 22:13:40 alti diald[232]: No devices free to call out on.
-Jun 14 22:13:40 alti diald[232]: Connect script failed.
-Jun 14 22:13:40 alti diald[232]: Delaying 1 seconds before clear to dial.
-Jun 14 22:13:43 alti diald[232]: Calling site 192.168.0.2 
-Jun 14 22:13:43 alti diald[232]: Device ttyS0 is locked by pid 414
-Jun 14 22:13:43 alti diald[232]: No devices free to call out on.
-Jun 14 22:13:44 alti diald[232]: Connect script failed.
-(snip)
-Jun 14 22:15:35 alti diald[232]: Delaying 1 seconds before clear to dial.
-Jun 14 22:15:37 alti diald[232]: Calling site 192.168.0.2 
-Jun 14 22:15:37 alti diald[232]: Device ttyS0 is locked by pid 414
-Jun 14 22:15:37 alti diald[232]: No devices free to call out on.
-Jun 14 22:15:38 alti pppd[418]: Terminating on signal 15.
-Jun 14 22:15:38 alti pppd[418]: Connection terminated.
-Jun 14 22:15:38 alti pppd[418]: Connect time 2.0 minutes.
-Jun 14 22:15:38 alti pppd[418]: Sent 346 bytes, received 424 bytes.
-Jun 14 22:15:38 alti diald[232]: Connect script failed.
-Jun 14 22:15:38 alti diald[232]: Delaying 1 seconds before clear to dial.
-Jun 14 22:15:39 alti pppd[418]: Exit.
-Jun 14 22:15:40 alti diald[232]: Calling site 192.168.0.2 
-Jun 14 22:15:41 alti diald[232]: connector: sh: option `-c' requires an 
-argument
-Jun 14 22:15:41 alti diald[232]: Connect script failed.
-Jun 14 22:15:42 alti diald[232]: Delaying 30 seconds before clear to dial.
-Jun 14 22:16:13 alti diald[232]: Calling site 192.168.0.2 
+Second possibility: it does get a lease, and its further transmissions use 
+a 172.16.1.d address so are no longer Martians. So you don't see them until 
+the next time it requests a lease from the Martian address. (Why does it 
+switch back to 192.168.1.101? Maybe it's a laptop that moves between 2 
+networks.)
 
-Chris
+The "arp" command does not do what you think. It checks your host's (in 
+this case, I suppose your router's) arp table. It does not itself generate 
+arp queries. To check MAC addresses on a LAN, one method is to broadcast 
+ping the LAN (or run a program that quickly pings each address), then use 
+"arp" to check what IP addresses have valid MAC addresses associated with 
+them in the arp cache.
+
+In any case, I would not worry about this problem. Your firewall is 
+stopping these packets, just as it should. Even if it is an attack, it is 
+one you are not vulnerable to, since your firewall will not itself be 
+listening on port 67 on its external interface, and the RFC1918 firewall 
+rule should be DENYing (not REJECTing) these Martians, leaving you properly 
+stealthy.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
