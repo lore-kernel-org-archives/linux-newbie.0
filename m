@@ -1,50 +1,53 @@
-From: Chris Mann <cmann@stonebridgebank.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Big dummy lost SU password...
-Date: 11 Jul 2003 11:38:49 -0400
+Date: Fri, 11 Jul 2003 08:52:13 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1057937929.29435.23.camel@Kaylee>
+Message-ID: <5.1.0.14.1.20030711084149.02076e78@celine>
 References: <bemkju$ou$1@main.gmane.org>
-Reply-To: cmann@stonebridgebank.com
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-3fpSNZF4PRHqDEBddxIi"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <bemkju$ou$1@main.gmane.org>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Jamie Risk <risk@advancedbioelectric.com>, linux-newbie@vger.kernel.org
+
+At 11:28 AM 7/11/2003 -0400, Jamie Risk wrote:
+>Due in parts to brain fog and the remarkable stability of Linux, I've not
+>had to adminster my Linux box for over 8 months.  Because of Windows Admin
+>tinkering, my samba server has stopped working and I need to modify it's
+>configuration.
+>
+>Is there a way I can mount mylinux box (say from a bootable ISO image I'd
+>make) to reset the root user password and not goof up the other accounts
+>that I've been so happily been using?
+>
+>I'm hoping that combinations of commands like chroot and such will allow me
+>to avoid rebuilding my system.
+>
+>- Jamie (if I rember correctly)
+
+I hope I am not misunderstanding your question.
+
+The easiest way to fix this problem, with a machine you have physical 
+access to and can reboot, is to reboot it (itself a bit of a problem if you 
+do not know the root password, but possibly the CTRL-ALT-DEL method will 
+work ... this depends *entirely* on specifics of your install, though) and 
+use any suitable rescue disk (tomsrtbt, your distro's rescue floppy, most 
+any bootable iso image) that you find convenient. (What is "suitable" 
+depends on details you haven't told us, like whether the hard disk with the 
+root (/) partition is IDE or SCSI and whether the system even has a floppy 
+drive.)
+
+Then mount the "real" root (/) partition at some handy location (like /mnt) 
+on the "rescue"  root partition and use vi (or any suitable text editor) to 
+edit /mnt/etc/passwd and/or /mnt/etc/shadow to remove the old root password.
+
+Then reboot the "real" version of Linux (ideally without network access, 
+since it is momentarily VERY insecure), become root (no password required, 
+if you did the prior part right), and set a new root password the usual way.
 
 
---=-3fpSNZF4PRHqDEBddxIi
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, 2003-07-11 at 11:28, Jamie Risk wrote:
-> Is there a way I can mount mylinux box (say from a bootable ISO image I'd
-> make) to reset the root user password and not goof up the other accounts
-> that I've been so happily been using?
-if you boot of a boot disk and type: Linux 1 (IIRC) you should be dumped
-to a shell. From there, it's as simple as passwd and enter your new root
-password.
---=20
-Christopher Mann
-Systems Administrator
-Stonebridge Bank
-cmann@stonebridgebank.com
-
-*This email has been digitally signed using GnuPG.*
-
---=-3fpSNZF4PRHqDEBddxIi
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (GNU/Linux)
-
-iD8DBQA/DtoJ/p/7mS3tTXcRAiKcAJ0U35sNYapRLmTvS7KeGPjokpVp9QCfaVEe
-8X6qf1GvUdX4g6I2potZQLA=
-=pbq4
------END PGP SIGNATURE-----
-
---=-3fpSNZF4PRHqDEBddxIi--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
