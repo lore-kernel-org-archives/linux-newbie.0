@@ -1,34 +1,34 @@
 From: ichi@ihug.co.nz
 Subject: Re: RAM and swap partition
-Date: Tue, 10 Dec 2002 08:15:23 +0000
+Date: Tue, 10 Dec 2002 08:39:41 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF5A29B.37AFD2D7@ihug.co.nz>
-References: <3DF4FBF0@mailandnews.com>
+Message-ID: <3DF5A84D.7E8BA1C6@ihug.co.nz>
+References: <5.1.0.14.1.20021209102942.020ab400@celine>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: james miller <jamtat@mailandnews.com>
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-james miller wrote:
+Ray Olszewski wrote:
 > 
-> Let me pose the RAM question in another way to see if
-> it can elicit a generic, "rule-of-thumb" response 
+> It's hard for me to think sensibly about what I'd do 
+> on a system with, say, 16 or 32 MB of RAM, because I 
+> can't seriously imagine setting up such a system as a 
+> workstation today 
 
-I'm happy to give you my personal "rule-of-thumb", 
-but that's all it is.  It's not an absolute truth.
+You might be surprised at the number of people today trying
+to install Linux on computers with less than 32mb RAM.  It
+not unusual for Windows users to try Linux on a dusty old PC 
+(rather than risk their precious Windows machine).  Also, 
+there are still quite a few laptops in regular use with less 
+than 32mb RAM.  
 
-Every system gets at least 16mb of total memory.
-So, a system with 4mb RAM gets 12mb swap.
-
-Light X installations with slim wm (*not* KDE or Gnome) 
-get at least 32mb total memory.  So, a system with 12mb RAM 
-gets 24mb swap.
-
-Heavy X installations need RAM.  Lots of RAM.  Swap is
-less relevant on such systems.
+One of the advantages of Linux is that it still quite usable
+on old hardware.  A light X runs pretty well on 12mb RAM -- 
+I even know of some people running X with 4mb RAM (*shudder*).
 
 Cheers,
 Steven
