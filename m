@@ -1,53 +1,27 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: kernel compilation problem
-Date: Tue, 23 Dec 2003 08:51:33 -0800
+From: joy <gracecott@sancharnet.in>
+Subject: Re: kernel compilation problem
+Date: Wed, 24 Dec 2003 10:15:37 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031223084227.01f4cec0@celine>
-References: <3BEEE23D31CAD2118D920008C75D8946059FF59E@NPRI54EXC21.NPT.N
- UWC.NAVY.MIL>
+Message-ID: <3FE919F1.6010600@sancharnet.in>
+References: <5.1.0.14.1.20031223084227.01f4cec0@celine>
+Reply-To: gracecott@sancharnet.in, gracecott@sancharnet.in
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3BEEE23D31CAD2118D920008C75D8946059FF59E@NPRI54EXC21.NPT.N
- UWC.NAVY.MIL>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>, PachecoJ@Npt.NUWC.Navy.Mil
 
-At 08:46 AM 12/23/2003 -0500, Pacheco Jason NPRI wrote:
-> >       Hi,
-> > I was compiling the 2.4.18 kernel as a practice run and when I booted
-> > thru it I recieved a message during boottime:
-> > Kernel panic: VFS unable to mount root fs on 03:05.
-> > any clues why?
-
-Where is the host's actual root filesystem? 03:05 says the kernel is 
-looking for it on /dev/hda5 ... is that the right place or not? (It's not 
-typical for a Debian install, but not impossible either.)
-
-If it is correct -- what filesystem type is it? (ext2, most likely). Make 
-sure your kernel has support for that filesystem type compiled in.
-
-If it is incorrect -- what partition should it be? Are you compiling the 
-kernel on the same system you are trying to boot it on? What happens if you 
-specify the correct partition at the lilo (or grub or whatever you use for 
-a bootloader) prompt? Are you booting from hda?
-
-
->Did you copy over your /usr/src/linux/System.map file into /boot? Also,
->did you build an initial ramdisk via mkinitrd? A lot of times that last
->step is overlooked but is necessary because it loads the initial drivers
->needed to mount the hard disk partitions.
-
-No it's not. It is only necessary if the kernel does not have ide support 
-compiled in (not usual) or dos not have support for your filesystem type 
-compiled in (again unusual, if the filesysystem is ext2). Typical, 
-"vanilla" systems do not need the initrd step to boot/init.
-
-> > I run the Debian woody release.
-
-[rest omitted]
-
+Sorry to find a trivial answer to the Q. The settings were alright .
+thanks a lot , Jason and Ray, All I needed to do was to to copy the
+System.map as this Kernel does not use the other two System.map(s)  in
+/boot (they are for kernels compiled with diff options).
+But still ,I would like to get rid of the irritating
+              spurious 8259A interrupt : IRQ7
+message I get on Boottime.
+I run an athlon 2400+ , with a biostar nforce2 mobo and the normal
+peripherals, nothing out of the ordinary.
 
 
 -
