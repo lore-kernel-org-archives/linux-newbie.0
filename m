@@ -1,109 +1,64 @@
-From: Andrew <ald2@arrakis.es>
-Subject: Re: nfs mounted directories are inaccessible (solved)
-Date: Thu, 21 Oct 2004 11:46:07 +0200
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Unable to make kernel 2.6.8 up
+Date: Thu, 21 Oct 2004 18:14:21 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4177855F.2020600@arrakis.es>
-References: <415BEAAA.5020806@arrakis.es>	 <5.1.0.14.1.20040930133821.01fafe58@celine> <23880abf04093022131c9b35a6@mail.gmail.com>
+Message-ID: <200410211814.21563.pa3gcu@zeelandnet.nl>
+References: <104ee7a50410190917496bc175@mail.gmail.com> <200410210753.02042.pa3gcu@zeelandnet.nl> <104ee7a50410202340180a28ba@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <23880abf04093022131c9b35a6@mail.gmail.com>
+In-Reply-To: <104ee7a50410202340180a28ba@mail.gmail.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbies <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: kernel kernel <unix.hacker@gmail.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-Brandon Niemczyk wrote:
+On Thursday 21 October 2004 08:40, kernel kernel wrote:
+> Hi Richard.
+>
+> I had a kernel patch and i need to test in the latest kernel.
+> Before that i am trying to bring the kernel 2.6.x up and running.
+> That is all i want to do.
 
->I have also had issues where it 'hung' when using UDP (the default),
->and i had to switch to TCP
->
->
->On Thu, 30 Sep 2004 14:16:05 -0700, Ray Olszewski <ray@comarre.com> wrote:
->  
->
->>At 01:14 PM 9/30/2004 +0200, Andrew wrote:
->>    
->>
->>>NFS server running Mandrake 10.0, client running Slackware 9.0.
->>>NFS server running Mandrake 9.0, client running Slackware 10.0.
->>>
->>>Both cases show the same problem: the remote directory is mounted, but any
->>>attempt to access it on the client 'hangs', i.e. no response, cursor
->>>blinks, no prompt, I have to switch to a new console to get anything done.
->>>
->>>I have tried both manual and automatic mounting. (Even though the mounting
->>>itself does not seem to be the problem).
->>>
->>>The two servers also share these directories without any trouble.
->>>
->>>The only obvious (to me) point is that it only and always happens with a
->>>Mdk server and Sw client. Can there be some kind of incompatibility?
->>>      
->>>
->>Well ... of course there "can" be "some kind of incompatibility". But if
->>there is, you'll find it in the details.
->>
->>The most basic possibility is that Slackware expects NFS version 3 and
->>Mandrake provides only version 2. If that is the case, the userspace app
->>mountd (or rpc.mountd) on each server should have been invoked with the "
->>--no-nfs-version 3" argument. If this is it, you'll need either to enable
->>NFS3 support on the servers (which may require a kernel recompile,
->>depending on whether they support NFS in the kernel or with a userapace app
->>like rpc.nfsd) or change the clients so they use NFS2 (might be able to
->>specify this in the mount commands on the client -- see what the ones now
->>in use do, and try adding "-o vers=2", but I'm not sure if that will work
->>-- or you might have to do a kernel recompile).
->>
->>If you are using nfsd and mountd, rather than capabilites compiled into the
->>kernel, then you can run both in debug mode (the man pages give the
->>details). Doing so might let you see what the problem is.
->>
->>If none of that helps, we'll probably need the details to say more. (I
->>certainly will, anyway.)
->>
->>Are you using the stock install kernels for these 4
->>distro/versions?  Whether yes or no, what kernels are you using ("uname -a"
->>normally tells this)?
->>
->>What NFS-related processes are running on the 2 servers? Check with "ps
->>ax". You should find something like this (Debian-Woody with a custom 2.4.17
->>kernel) ...
->>
->>   243 ?        SW     6:51 [nfsd]
->>   245 ?        SW     0:00 [rpciod]
->>   255 ?        S      0:00 /usr/sbin/rpc.mountd
->>
->>... or perhaps like this (Debian-Sid with a custom 2.4.19)...
->>
->>   390 ?        Ss     0:00 /usr/sbin/rpc.nfsd
->>   397 ?        S      0:00 /usr/sbin/rpc.mountd
->>  1732 ?        Ss     0:00 /sbin/portmap
->>
->>(There should also be references to lockd, statd, and maybe quotad).
->>
->>What is the relevant configfuration information?
->>
->>         on the servers, contents of /etc/exports
->>         on the clients (including the servers when they act as clients)
->>the actual mount commands or the entries in /etc/fstab (depending on how
->>you are mounting).
->>
->>How do you "attempt to access it"? Are you doing an ls, or opening a text
->>file for reading, or touch'ing a file, or running an app, or ... what?
->>
->>Are there any permissions differences that might matter? NFS is a bit
->>sloppy in that it relies on matching the numeric userid between systems
->>when determining permissions. So if Mandrake and Slackware don't use the
->>same iderid numbers in /etc/passwd (thiiis is pretty standard for the
->>system-level accounts but not perfectly so), it could be introducing some
->>permissions problem.
->>    
->>
-My apologies for the delay in getting back to this. For those 
-interested, the solution was to add tcp to the options in /etc/fstab.
+Providing the patch you intend to use is for your kernel version why not.
 
-Thanks,
-Andrew
+> By the way
+> vmlinux -- is the kernel
+
+The kernel can be called anything you want it to be called its up to you.
+
+> vmlinuz --- is the boot sector.
+
+Is it.???
+
+>
+> Why initrd is needed ?
+
+If you compile your own kernel and "include" disk or card drivers which are 
+needed to boot the system then you dont need initrd.
+
+> While mkinitrd, I am getting the error /dev/mapper not found, But
+> still it makes the initrd image.
+
+Never use initrd so i cant comment.
+
+There are plenty of sites around giving upto date info on howto compile and 
+use a 2.6 kernel, i suggest once more that you use google to get more info, 
+it is full of it i can assure you.
+
+>
+> Thanks
+> Amrith
+
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
