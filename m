@@ -1,53 +1,158 @@
-From: lawson_whitney@juno.com
-Subject: Re: Trouble with serial ports
-Date: Tue, 15 Oct 2002 10:09:10 -0400 (EDT)
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: RE: Variable Quoting
+Date: 15 Oct 2002 17:13:06 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021015.101312.134681288.0.lawson_whitney@juno.com>
-References: <CPIMSSMTPU0581Np7vX00000137@cpimssmtpu05.email.msn.com>
+Message-ID: <1034698386.11967.13.camel@zebra.vil.ite.mee.com>
+References: <005201c273bb$594e0880$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <CPIMSSMTPU0581Np7vX00000137@cpimssmtpu05.email.msn.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: arwbackup@worldnet.att.net
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <005201c273bb$594e0880$64fea8c0@pkrausxp>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@jimmo.com, linux-newbie@vger.kernel.org
 
-On Mon, 14 Oct 2002, Alan Womack wrote:
+There are a couple of approaches.
 
-> OK, made a loop back cable.  Works great on the windows box, fast and accurate.
->
-> On the linux box it's INCREDIBLY slow, makes 300 baud look blazing.  Take like 2 hours to print the whole dmesg:
->
-> cat dmesg (I have it saved to a file) >/dev/ttyS01
->
-> on second terminal
->
-> od -v /dev/ttyS01
->
-> nothing is dropped, but it is SLOW SLOW SLOW
->
-HUH?  Are you reading it back from the same port you wrote it to?
-What does that have to do with the cable?  You can set a serial port to
-echo the input, but it just seems odd.
+One way is to enclose the entire path in quotes then stick the asterisk
+on the end - as in:
 
+cp "My Documents/"* /tmp
 
-One other thing:  if you connect 2 serial ports, and write to one at one
-speed and read from the other at a different speed, you will get either
-_Nothing_ or garbage.  You can see or set the speed with
-stty -F <device>
-but the app can and probably will change it when it opens the port.
+which you can then use a variable for like this:
 
-Lawson
----oops---
+Path="My Documents"
+cp "${Path}"/* /tmp
+
+You could also use a for loop:
+
+Path="My Documents/"
+
+for FILENAME in ls "${Path}"
+do
+	cp "${Path}${Filename}" "/tmp"
+done
+
+Note that this second way of doing it will create "/tmp/My Documents"...
+but the first way will put the files in /tmp
+
+P.
 
 
 
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
+On Mon, 2002-10-14 at 20:53, Paul Kraus wrote:
+> Ok I lied. I understand why its not working but how should I workaround
+> it?
+> Do I have to have my script gather a list of the files and the pass it
+> the variable?
+> That sucks that I can not use a wildcard to just get all.
+> 
+> I have made these changes. Which I though would fix my problem.
+> string="My Documents/"
+> cp "${string}*" Which I thought would eliminate the problem. I guess I
+> am not understanding.
+> 
+> 
+> -----Original Message-----
+> From: linux-newbie-owner@vger.kernel.org
+> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of James Mohr
+> Sent: Monday, October 14, 2002 3:58 PM
+> To: linux-newbie@vger.kernel.org
+> Subject: Re: Variable Quoting
+> 
+> 
+> 
+> On Monday 14 October 2002 20:38, Paul Kraus wrote:
+> <SNIP>
+> > Now with this change
+> > string="My Documents/*"
+> > cp "$string" /tmp
+> >
+> > cp: cannot stat 'My Documents/*':no such file or directory
+> 
+> Sure because the token that is passed to the cp command includes the
+> asterisk, 
+> it doesn't know that it should expand the asterisk (*) to the file
+> names, so 
+> it looks for a file with the literal name '*'. 
+> 
+> > So then I for kicks I tried.
+> >
+> > cp "My Documents/*" /tmp
+> > Produces the same error.
+> 
+> Same thing.
+> 
+> >
+> > So just to make sure that it was not a typo in path I tried. cp My\ 
+> > Documents/* /tmp
+> >
+> > And this worked.
+> 
+> Makes sense as the shell is now expanding the asterisks to the names of
+> the 
+> files. You don't see this because it is expanded internally. Create a
+> shell 
+> script that just does this copy and put "set -x" on the first list. This
+> 
+> should show you the expanded form before it is passed to cp.
+> 
+> > So is the problem with cp? Since the same syntax seems to work with 
+> > all other apps? Is cp not capable of taking a double quoted path with 
+> > spaces?
+> 
+> No, it is the fact that cp does not know to expand the asterisk. Plus
+> you are 
+> passing different things to the cp depending on what sets of quotes you
+> use.
+> 
+> > Redhat 7.3 in case it helps.
+> Actually the Linux distriubtion is pretty irrelevant in this case. In
+> fact the 
+> behavior would be the same on most any *NIX system, as it is standard
+> shell 
+> stuff. 
+> 
+> See if these explain more of the details for you:
+> 
+> http://www.linux-tutorial.info/cgi-bin/display.pl?20&0&0&0&3
+> http://www.linux-tutorial.info/cgi-bin/display.pl?22&0&0&0&3
+> 
+> regards,
+> 
+> jimmo
+> 
+> -- 
+> ---------------------------------------
+> "Be more concerned with your character than with your reputation. Your
+> character is what you really are while your reputation is merely what
+> others think you are." -- John Wooden
+> ---------------------------------------
+> Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
+> ---------------------------------------
+> NOTE: All messages sent to me in response to my posts to newsgroups or
+> forums 
+> are subject to reposting.
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+> in the body of a message to majordomo@vger.kernel.org More majordomo
+> info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+-- 
+Paul Furness
+
+Systems Manager
+
+2+2=5 for extremely large values of 2.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
