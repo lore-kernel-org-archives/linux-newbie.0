@@ -1,64 +1,69 @@
-From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
-Subject: Re: /cdrom fails to unmount
-Date: Tue, 22 Jul 2003 12:28:25 -0400 (EDT)
+From: ramzez <r4mz3z@yahoo.es>
+Subject: Re: bash_logout -> KDE
+Date: 22 Jul 2003 12:33:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.43.0307221209260.20338-100000@perpugilliam.csclub.uwaterloo.ca>
-References: <5.1.0.14.1.20030722084626.01eeb000@celine>
-Reply-To: dzlotnik@uwaterloo.ca
+Message-ID: <1058810375.2014.2.camel@localhost.localdomain>
+References: <1058650465.1955.3.camel@localhost.localdomain> 
+	<200307201344.16825.robin@robind.de>
 Mime-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-6Rkxaog8tqoY8TMMzBtO"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030722084626.01eeb000@celine>
+In-Reply-To: <200307201344.16825.robin@robind.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
-
-> Your fanciful responses from the computer are cute but, in practice,
-> distracting and even a bit confusing. In particular, when you report ...
-
-Well, at least they were cute...
-
-> ... does the "Okay" stand in for the fact that mplayer *begins* playing the
-> file or *finishes* playing the file?
+To: Robin Doer <robin@robind.de>
 
 
-First of all, thank you for your suggestions and help, everyone. I
-got it unmounted (fuser helped).
+--=-6Rkxaog8tqoY8TMMzBtO
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-Second, has anyone ever encountered the following:
-
-ADSL service dies (connection reset).
-
-I proceed to do the following (cdrom is mounted, accord. to fuser no
-processes are using it)
-alpha:/cdrom# adsl-start
-. Connected!
-
-alpha:/cdrom#fuser /cdrom/
-/cdrom/:              2176c  2485c  2513c  2515c
-
-The processes are: (incidentally, this is all being done as root)
-
-root      2176  0.0  0.4  2308 1392 pts/2    S    10:42   0:00 bash
-root      2485  0.0  0.3  2080 1048 pts/2    S    12:18   0:00 /bin/sh
-/usr/sbin/adsl-connect
-root      2513  0.0  0.2  1936  912 ?        S    12:18   0:00
-/usr/sbin/pppd pty /usr/sbin/pppoe -p /var/run/pppoe.conf-adsl.pid.pppoe
--I eth0 -T 80 -U  -m 1412    noi
-root      2515  0.0  0.1  1212  440 ?        S    12:18   0:00
-/usr/sbin/pppoe -p /var/run/pppoe.conf-adsl.pid.pppoe -I eth0 -T 80 -U -m
-1412
-
-For some obscure reason, my running adsl-start from /cdrom has mated the
-processes to the directory.
-
-Is that supposed to happen?
-
-Additional info: System is standalone, no NFS or other users present.
-
-Dan
+Hi...
+   I can't manipulate using xreset ... but I modified
+"/usr/bin/startkde" and it works for me
 
 
+El dom, 20-07-2003 a las 08:44, Robin Doer escribi=F3:
+    Hello!
+   =20
+    Am Samstag, 19. Juli 2003 21:37 schrieb ramzez:
+    > Hi friends...
+    >
+    >   How do I can always execute some script just before logout from any
+    > KDE session (just like .bash_logout in text mode)?
+    >
+    > thanks
+   =20
+    Well, It depends, like so often, on the display manager you are using.
+    For example xdm supports a Xreset-script which runs after terminating a=
+n=20
+    user-session. Check the xdm-man page for more detailed information (sec=
+tion=20
+    RESET PROGRAM).
+   =20
+    So long,
+    Robin
+--=20
+  Linux User Registered #232544
+        ICQ : 337889406
+  GnuPG-key : www.keyserver.net
+ -------------------------------
+"Software is like sex,
+      it's better when it's free."
+                  [Linus Torvalds]
+
+--=-6Rkxaog8tqoY8TMMzBtO
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: Esta parte del mensaje esta firmada digitalmente
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQA/HCoGG3Fqyap52TERAs8AAJ9h66QHrI2cTwnnFPapVpItD97TfgCdH95S
+ATITl0UFbP7r6Zaq7FYTbPY=
+=lbNe
+-----END PGP SIGNATURE-----
+
+--=-6Rkxaog8tqoY8TMMzBtO--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
