@@ -1,46 +1,35 @@
-From: james miller <jamtat@mailandnews.com>
-Subject: would this work as a thin client?
-Date: Wed, 18 Dec 2002 10:32:53 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: How do I see all my partitions?
+Date: Wed, 18 Dec 2002 09:18:16 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E00C4CA@mailandnews.com>
+Message-ID: <5.1.0.14.1.20021218091629.02111760@celine>
+References: <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
+ <5.1.0.14.0.20021217222210.00b5fdd8@mail.comcast.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20021218104722.GA3850@neon.pearbough.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello all. I'm pretty new to Linux and to the LTSP project, but I ran across 
-something on the web for really cheap ($12.95!) and wondered if it could work 
-as a thin client. Seems like, if it would, a bit of fiddling would be 
-involved. Sorry if this is a stupid question. Anyway, here's the link: 
-http://www.softwareandstuff.com/h_misc_webpal.html . Description follows:
+There is a small error of detail in axel's reply. He writes:
 
-#######################BEGIN PRODUCT DESCRIPTION########################
+>To call fdisk for your primary IDE slave call "fdisk /dev/hda" and you
+>will get something like this:
 
-Product Description:  What the heck is a Webpal you ask??!?! This an Internet 
-Set-top box which was produced for Newcom, Inc.(Now defunct) by 
-Teknema(Teknema.com) and originally sold for over $400.  The WebPal Internet 
-Box converts a television set (or VGA monitor) into a device that can access 
-the Internet. The box is operated by its own hand-held remote control unit, 
-and a wireless keyboard is also included.
+/dev/hda is the IDE primary *master*, not the IDE primary *slave* (which is 
+/dev/hdb).
 
-WebPal's built-in 33.6Kbps modem lets you surf the net, through a regular 
-voice grade telephone line. You can use the Internet Service Provider 
-recommend by Necom(Earthlink) or specify your own PPP/PAP or CHAP provider.
+At 11:47 AM 12/18/02 +0100, axel@pearbough.net wrote:
+[deleted]
 
-Good for emailing or simple surfing! Works with any ISP that uses one server 
-for inbound and outbound e-mail. Experience the Internet on Your TV! The 
-cheapest way to have email or browse the web on your TV! Wireless keyboard and 
-remote control Included! Originally retailed for over $399.95!
 
-You can either use the device as a Web-TV type device when connected to your 
-TV OR Computer monitor!..... OR you can hack it and use it as a Linux box!  
-This little unit has just about enough features to use it as a PC!!
-
-##########################END PRODUCT DESCRIPTION#########################
-
-James
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
