@@ -1,73 +1,60 @@
-From: whitnl73@juno.com
-Subject: Re: Minicom and Modem
-Date: Sun, 2 Feb 2003 22:30:24 -0500 (EST)
+From: "Amin" <raihan@citech-bd.com>
+Subject: Re: Network card and kernel module problems
+Date: Mon, 3 Feb 2003 18:09:18 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030202.223939.8.0.whitnl73@juno.com>
-References: <03020220113803.19519@unix.pa3gcu>
+Message-ID: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
+References: <000801c2cad3$a696b500$eb6510ac@citechbd.com> <03020216151302.19519@unix.pa3gcu>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <03020220113803.19519@unix.pa3gcu>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: pa3gcu@zeelandnet.nl
-Cc: sotl155360@earthlink.net, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Sun, 2 Feb 2003, pa3gcu wrote:
+Hi Richard,
 
-> On Sunday 02 February 2003 17:52, Frank Robers _ SOTL wrote:
->
-> > Please I don't want to get into the configuration of a Sweitzer system (the
-> > system being controlled) on this list. Suffice it to say that it is not
-> > Linux nor MS.
->
-> Sorry i was under the impresstion that both machines were linux.
->
-> >
-> > I only want to configure Minicom under linux in the format in which I
-> > previously had it before I lost the Minicom installation instructions.
->
-> Simply start as root, minicom and use -s
-> minicom -s
-> change the port setting to /dev/ttyS0 (i belive you said com1)
-> make sure the speed is correct and it should work.
->
-Right.  The two programs at either end of a null modem cable must agree
-beforehand exactly what speed the line is to run at, otherwise neither
-will see what the other is sending.  If you get parity, data bits,or
-stop bits wrong, you should at least see garbage.  Oh, windows tends not
-to work the control lines according to RS-232, so you might need to set
-minicom to ignore Carrier Detect, by default I think it expects carrier
-detect to be on if something is at the other end, otherwise it shows a
-status of Offline and waits.  stty(1) or termios(3) setting would be
-clocal/CLOCAL, sorry I don't remember the minicom setting and don't have
-minicom installed just now.  Hardware flow control might not work right
-with a windows program either; null modem cables made for windows tend
-not to have those lines even present.  You might need to turn off
-hardware flow control in minicom.
-> >
-> > What I would appreciate knowing is if I issue the commands you suggest will
-> > that change the operation of Kppp such that I can not then connect to the
-> > Internet.
->
-> Yes it possably would, disregard what i said about /dev/modem.
->
-> >
-> >
-> > Thanks
-> > Frank
->
->
-Lawson
---
----oops---
+> Then that means the card was detected and the module was loaded, have
+you
+> done what it says.????
 
+I have made sure that the hardware works.  In fact, I dual-boot Windows 98
+on the same machine and Windows never has any problems with the card,
+including now.
 
+> You may need to use dhcpcd with options to obtain a IP# from your isp.
+> IE, hostname ??.
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+Do you mean that I have to set up a DHCP server on my machine and
+configure it ... ?  I sure hope there's an easier way than that ... .
+
+I'm beginning to think I've mixed up different kernel module dependencies.
+The short story is I need help sorting out the modules for use with my two
+kernels: 2.4.18-14 and 2.4.18-14custom.  The long story is: when I
+originally installed RH8.0 and found it didn't already support my NIC, I
+recompiled the kernel with
+
+make xconfig; make dep; make modules; make modules_install; make bzImage
+
+and tried to boot the new kernel.  Eventually I got it to boot, but it
+failed to detect/insert a lot of modules, which seems strange in
+retrospect because I think I actually specified only one loadable module;
+all the others were built-in.  I recompiled again, with the same results.
+A lot of error messages courtesy of depmod as it tries to find module
+dependencies --- things like input.o, soundcore.o, etc.  I've recompiled
+twice after that, with a slightly different command order:
+
+make xconfig; make dep; make bzImage; make modules; make modules_install
+
+But still I get the same module dependency problems during boot.  Help!
+
+Yawar Amin
+
+----- Original Message -----
+From: "pa3gcu" <pa3gcu@zeelandnet.nl>
+To: "Amin" <raihan@citech-bd.com>; <linux-newbie@vger.kernel.org>
+Sent: Sunday, 02 February, 2003 22:15
+Subject: Re: Network card and kernel module problems
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
