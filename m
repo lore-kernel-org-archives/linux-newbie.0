@@ -1,47 +1,56 @@
-From: James Mohr <linux-newbie@jimmo.com>
-Subject: Re: defrag
-Date: Tue, 1 Oct 2002 22:27:15 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Script as root
+Date: Tue, 1 Oct 2002 21:10:02 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210012227.15188.linux-newbie@jimmo.com>
-References: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
-Reply-To: linux-newbie@jimmo.com
+Message-ID: <0210012110020B.00233@unix.pa3gcu>
+References: <5.1.0.14.1.20021001085016.02c818f0@celine> <3D99C948.9020704@arrl.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
+In-Reply-To: <3D99C948.9020704@arrl.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Jim Reimer <wa5rrh@arrl.net>, Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 01 October 2002 21:35, Paul Kraus wrote:
-> Can you defrag a Linux drive I think the partition is ext3. Do they need
-> deframenting?
+On Tuesday 01 October 2002 16:11, Jim Reimer wrote:
+> suid bit on a script is ignored, isn't it?
+
+AFAIK yes, and the saying is, never run a script as root, root is evil, one 
+small oversight and damage can be done period.
+
+I once was accused of destorying someones system because i said, "if" you 
+want to get all the information from the script then you will need to run it 
+as root, if it is run under a user it will not gain some vital information 
+from your /etc dir, a few days later a mail appierd on that particular 
+mailing list saying i had destroyed his system with my script.
+Many still use that script actually but thats asside the point, root is evil.
+
+> -jdr-
 >
-
-Typically there is no reason to defragement any *nix filesystem. Many are 
-designed to keep fragmentation at a minimum and do to the nature of a 
-multi-user system, you are not going to be reading the whole file at once. 
-Therefore, when you do need to go re-read the harddisk, it doesn't matter if 
-you go back to the place where you last read or someplace compeltely 
-different.
-
-If memory serves me right, there was a defrag tool for the ext2 FS, but I 
-don't have it on my system and have never used it.
-
-Regards,
-
-jimmo
+> Ray Olszewski wrote:
+> > Yes. You want to set the suid bit on it and have it owned by root. "man
+> > chmod" (or maybe other chmod documentation) for the details.
+> >
+> > At 09:55 AM 10/1/02 -0400, Paul Kraus wrote:
+> >> I have a backup script that mounts a drive on my xp workstations. Is
+> >> there a way I can set this script to run as root so that I do not have
+> >> to su every time I want to run it?
+> >
+> > --
+> > -------------------------------------------"Never tell me the
+> > odds!"--------
+> > Ray Olszewski                    -- Han Solo
+> > Palo Alto, California, USA              ray@comarre.com
+> > -------------------------------------------------------------------------
+> >------
 
 -- 
----------------------------------------
-"Be more concerned with your character than with your reputation. Your
-character is what you really are while your reputation is merely what others
-think you are." -- John Wooden
----------------------------------------
-Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
----------------------------------------
-NOTE: All messages sent to me in response to my posts to newsgroups or forums 
-are subject to reposting.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
