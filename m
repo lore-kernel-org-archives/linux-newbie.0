@@ -1,51 +1,39 @@
-From: Frank Roberts - SOTL <sotl155360@earthlink.net>
-Subject: HD Partitiona
-Date: Tue, 26 Nov 2002 15:16:40 -0500
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: core dump volumes
+Date: Tue, 26 Nov 2002 22:17:17 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211261516.40320.sotl155360@earthlink.net>
+Message-ID: <20021126221717.A2140@neutrino.particles.org>
+References: <200211250121.gAP1LRq01890@ev6.be.wanadoo.com> <200211252205.gAPM5eH04772@hartford-hwp.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200211252205.gAPM5eH04772@hartford-hwp.com>; from brownh@hartford-hwp.com on Mon, Nov 25, 2002 at 05:05:40PM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: Haines Brown <brownh@hartford-hwp.com>
+Cc: hammer@revobild.net, linux-newbie@vger.kernel.org
 
-Hi All:
+On Mon, Nov 25, 2002 at 05:05:40PM -0500, Haines Brown wrote:
+> For whatever it's worth, I'm told that core dumps are an obvious
+> target for denial of service attacks, and so they are best not
+> generated if you don't think you will use them. This from Bastille,
+> which offers to disable core dumping.
 
-I am sure you recall my triad against RH 8.0, Suse 8.2, and Mandrake 8.0 so 
-for info I finally got RH 8.0 on my laptop computer. I even managed to get 
-the Hard Drive partition the way I wanted as follows:
+Well, maybe. But, in general core files include debugging information in
+order to identify where and why an application crashed. You can use gdb
+to examine a core file; it has been mentioned lots of times in linux-newbie.
 
-hda1    C:/      NTFS    10 GB   Containing MS Windows XP
-hda2    E:/      fat32     10 GB   Label = Data
-hda3    /boot  ext2      100 MB   Linux Boot
-hda4    extended
-hda5    /         ext2        10 GB
-hda6    swap                  1 GB
-hda7    /home    ext2     5 GB
+As far as security is concerned, a cracker will probably try to use a
+buffer overflow exploit. If he/she doesn't succeed (i.e. if he/she hasn't
+make correct calculations) there is a great chance to simply crash the
+valnurable application. Programs that segfault can be taken under
+control and, if they are suid root, can give someone access to a system.
 
-and with both operation systems installed and functioning.
+Elias
 
-Then I configures Usermount with an icon on the desk top and attempted to 
-configure fstab so that hda2 was readable from RH 8.0.
-
-Setting the file type for hda2 to fat32 in fstab I get a error message that 
-that file type is not supported by Linux.
-
-Changing the file type for hda2 to vfat I can read hda2 from linux but can not 
-adjust the partition above 2 GB with Partition Magic. This latter seems 
-strange to me as I have another dual boot with a vfat partition of 10 GB but 
-I must admit that that box uses 2 HD with the vfat partition encompassing one 
-(1) entire HD.
-
-Would appreciate any suggestions or comments on how I can increase hda2 to 10 
-GB and have this read by the linux side.
-
-Thanks
-
-Frank 
-
-
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
