@@ -1,42 +1,57 @@
-From: John Kelly (bilbo) <bilbo@waitrose.com>
-Subject: Re: left handed mouse
-Date: Sat, 7 Jun 2003 13:57:51 +0100
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: tftpd problem (was: [no subject line])
+Date: Sat, 07 Jun 2003 07:16:35 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030607125408.HGKH11246.mta03-svc.ntlworld.com@there>
-References: <5.1.0.14.1.20030606075801.01fbfb90@celine> <005001c32c89$9fc0f2f0$ed64a8c0@descartes>
-Reply-To: bilbo@waitrose.com
+Message-ID: <5.1.0.14.1.20030607065956.02005d18@celine>
+References: <1054971913.3ee1980970d54@pop-mail.india.tejasnetworks.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <005001c32c89$9fc0f2f0$ed64a8c0@descartes>
+In-Reply-To: <1054971913.3ee1980970d54@pop-mail.india.tejasnetworks.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "John T. Williams" <jowillia@vt.edu>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Saturday 07 June 2003 1:12 am, John T. Williams wrote:
-> my father (who I just got to start using linux) asked me how to cause the
-> mouse buttons to be inverted.
-> And I had no idea, I've been searching through X-configuration guides and
-> haven't found anything, does anyone have any ideas?
+Please use a Subject: line in the future. I added one.
+
+At 01:15 PM 6/7/2003 +0600, deepesh@india.tejasnetworks.com wrote:
 >
+>  Hi,
+>
+>     I am having some problem setting up the tftp server. I am using Red Hat
+>     6.2.
+
+This is quite old. It would not surprise me if no one here is using such an 
+old version of Red Hat, so you may not be able to get version-specific 
+help. The ramainder of my comments assume this version is reasonably 
+standard Linux.
+
+>I have uncommented the "tftp" line in the inetd.conf file in
+>     "/etc". but the tftpd daemon did not get started.
+
+inetd.conf does not start daemons; it tells inetd to listen on ports, 
+starting the relevant daemon only when a connection is received. Also, 
+after editing inetd.conf, you need to restart or re-HUP inetd, to get it to 
+read and act on the revised file.
+
+Finally, the daemon needs to be present on the system; is it? (Apparently 
+yes, from the error you report below, but see my comment with respect to it.)
+
+>then i tried executing
+>     /usr/sbin/in.ftpd, but got an error
+>
+>       "tftpd[25618]: recvfrom: Socket operation on non-socket"
+
+This is very puzzling, because in.ftpd is not (usually) the name of the 
+tftpd server. (Is this the daemon name that appears on the line in 
+inetd.conf that you uncommented?) Are you sure this message is a response 
+to executing the file you name above?
+
+In any case, how *exactly* did you attempt to run this daemon? (Quote the 
+line.) Is networking set up properly on this host?
 
 
-I don't know if this really helps but I read in  the Red Hat docs:
-==================================================================
-Tip
-To change your mouse configuration after you have completed the installation 
-of Red Hat Linux,become root; then use the /usr/sbin/mouseconfig command from 
-a shell prompt.
-To configure your mouse to work as a left-handed mouse, reset the order of 
-the mouse buttons. To do this, after you have booted your Red Hat Linux 
-system, type gpm -B 321 at the shell prompt. You can
-also change this setting in GNOME by going to the main menu and selecting 
-Programs => Settings=> Peripherals => Mouse. In KDE, select Preferences => 
-Peripherals => Mouse. 
-===================================================================
-regards,
 
-John Kelly
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
