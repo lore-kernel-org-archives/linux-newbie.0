@@ -1,119 +1,234 @@
-From: SOTL <sotl155360@earthlink.net>
-Subject: Re: SSH and Monitor failure
-Date: Mon, 28 Feb 2005 08:46:24 -0500
-Message-ID: <200502280846.25098.sotl155360@earthlink.net>
-References: <200502241917.45547.sotl155360@earthlink.net> <200502251328.04753.derek@disposable.dnsalias.org> <200502271747.11731.sotl155360@earthlink.net>
+From: "bj" <bhamal@wlink.com.np>
+Subject: RE: System stops because /var/log not found after moving to    new partition
+Date: Mon, 28 Feb 2005 10:48:31 +0545
+Message-ID: <000801c51d55$0f950fe0$0db3fea9@kath.state.gov>
+References: <5.1.0.14.1.20050227080737.0209d820@celine>
+Reply-To: <bhamal@wlink.com.np>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-In-Reply-To: <200502271747.11731.sotl155360@earthlink.net>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20050227080737.0209d820@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux-Newbie Vger <linux-newbie@vger.kernel.org>
+To: 'Ray Olszewski' <ray@comarre.com>, linux-newbie@vger.kernel.org
 
 
-Please disregard following.
 
-Issue was resolved by reconnecting bad HD connection.
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org]On Behalf Of Ray Olszewski
+Sent: Sunday, February 27, 2005 10:28 PM
+To: linux-newbie@vger.kernel.org
+Subject: RE: System stops because /var/log not found after moving to new
+partition
 
-Frank
 
-On Sunday 27 February 2005 17:47, SOTL wrote:
-> Hi All
+At 10:12 AM 2/27/2005 +0545, bj wrote:
+[...]
+>Hi Ray !
 >
-> Help !!!!!!!!!!!!!
+>Thank you for the prompt reply.
 >
-> Sorry for screaming but I do feel a bit better now.
+>80 % of the solution worked .
 >
-> I have a small network with 3 computers which mostly does not work:
+>1. I did mount hda5 & hda6 as below .
+
+That looks good. But I still wish you had done what I asked and provided
+the output of df.
+
+>2. After I keyed in the symbolic links as below my commands could find the
+>lib .
+
+I am still puzzled as to why this fix solves the library problem. I wish
+you had answered my earlier question about where the ncurses5 library is
+kept on your system.
+
+>3 But the sym link to /var did n't work & once I reboot , the system
+created
+>a /var by itself .The system created /var is mostly empty . If I delete
+that
+>auto created /var , and reboot , it creates the /var again .  The contents
+I
+>have listed below .
+
+The commands you transcribed below are incomplete and should not work. Not
+any of them.  I asked you to provide the output of "ls -l /" this time
+around, and you did not. Please do so, along with a correct transcription
+of the commands you are using to create the symlinks.
+
+>4. yes , the system stopped for 5 minutes looking to start the system
+logger
+>. After  it could not find it ,  the boot process move forward and the
+>normal login prompt did come( not single user but multi user login prompt )
+>. So you were right , the system didn't hang but just stopped for 5 minutes
+>trying to start the system logger .
+>.
 >
-> MSI with name of Reality_Check @ 192.168.2.7 with Mandrake 10.1
-> HP with name Meatloaf_Night @ 192.168.2.9 with Mandrake 9.2
-> IBM with name Big_Nate @ 192.168.2.2 with Mandrake 10.1
+>I did mount hda5 & hda6 in the fstab .
 >
-> I do not have the ability to install 10.1 on the HP with out replacing the
-> CD reader with a DVD reader.
+>Cat /etc/fstab gives the ff
 >
-> From any one box I can ping either [or both at the same time] of the other
-> two boxes. For example from the IBM box I can ping MSI by using 192.168.2.7
-> and/or HP by using 192.168.2.9.
+>LABEL=/                 /                       ext3    defaults        1 1
+>none                    /dev/pts                devpts  gid=5,mode=620  0 0
+>none                    /proc                   proc    defaults        0 0
+>/dev/hda5                       /mnt/hda5                       ext3
+>defaults        1 2
+>/dev/hda6                       /mnt/hda6                       ext3
+>defaults        1 3
+>none                    /dev/shm                tmpfs   defaults        0 0
+>/dev/hda3               swap                    swap    defaults        0 0
+>/dev/fd0                /mnt/floppy             auto    noauto,owner,kudzu
+0
+>0
+>/dev/cdrom              /mnt/cdrom              iso9660
+>noauto,owner,kudzu,ro 0 0
+
+What does "ff" mean? You use it several times.
+
+>The symbolic link also worked . After I keyed in the ff :-
 >
-> I can not ping either of the other boxes by using names. For example I can
-> not ping MSI or HP by using the names Reality_Check or Meatloaf_Night nor
-> can I ping the IBM box from either MSI or HP using Big_Nate.
 >
-> So, numbers work; names do not work. I believe this issue will be solved
-> when I configure /etc/hosts or my firewall router so for this posting that
-> issue is not relevant.
+>cd /
+>ln -s /mnt/hda5/var
+>ln -s /mnt/hda5/tmp
+>ln -s /mnt/hda6/usr
+>ln -s /mnt/hda6/home
+
+As I wrote above, these are incomplete. They should be of the form
+         ln -s /mnt/hda6/usr     /usr
+
+It is possible that your current problem arises from nothing more than your
+entering 3 of the commands correctly and the fourth (the one for /var)
+incorrectly.
+
+Or you may have entered them too late ... after syslogd has started.
+
+Or you may have removed the actual /usr, /tmp, and /home directories,
+allowing ln -s to recreate them as symlinks ... but forgotten to remove
+/var (this *might* be what you mean by "has been created auto" below),
+which would cause even a correct symlink command to fail.
+
+Or some other init script may be doing something (for example, noticing
+that /var is absent and creating it) that interferes with your symlink
+approach.
+
+Or maybe something else. It's hard to say without more detail.
+
+Please, next time, provide the diagnostics I ask for, instead of (or in
+addition to) the ones you think are interesting.
+
+>Once I cd /  and give the four link (ln ) commands three work .
+>The result running file command on the links :-
+
+I don't know what this sentence means, specifically the phrase "running
+file command on the links :-".
+
+
+>usr: symbolic link to /mnt/hda6/usr
 >
-> I was able to access the MSI box from both the HP box and the IBM box by
-> using the following:
-> fish://username@ip_address/path/to/directory
-> or fish://trunk@192.168.2.7
+>tmp: symbolic link to /mnt/hda5/tmp
 >
-> After performing the above plus actions I departed and returned.
 >
-> Firing up all 3 computers the 2 which I was not able to access by fish came
-> up normal and functioned normal.
+>But the link to var didn't .
 >
-> The MSi box which I was able to access by fish came up with video up to 3/4
-> way through KDE boot at which time it lost video and maybe key and mouse
-> too as they did not appear to be functioning either.
+>It gives no error message. But when I type reboot , it shows that it could
+>not find a file shutdown.pid under /var .
+>  Once I reboot , it gives quite few error messages that shows that it
+could
+>not still find /var.
+
+I assume we are talking about a normal multi-user boot/init here (another
+thing you may recall my asking you to be specific about in my prior
+response). In any case, it is impossible to interpret these messages when
+you tell us neither what they say or when in the boot/init process they
+appear. For example, are the messages really about /var, or might they be
+about /var/log ?
+
+>It does stop around 5 minutes trying to start the system logger & after 5
+>minutes , it keep  boots successfully.
 >
-> I shut the box down by turning power off [bad practice] since I appear to
-> have no control of box.
+>After I log in I notice a /var directory has been created .
+>This /var has been created  auto , as I didn't create it  .
 >
-> I repeated the above several times with identical results.
+>The system is auto creating this directory & removing the sym link ,and so
+>it does not find the other needed files in /var.
 >
-> I attempted to access box by fish and was able to do so.
+>Why do you think this is happening ?
 >
-> I placed Mandrake 10.1 disk in DVD drive and did an upgrade.
+>In addition I would also like to have the command to mount a partition read
+>only such as /usr on a readonly partition.
+
+         mount  -o remount,ro /dev/whateveritis /usr
+
+is one way. Read the man page for mount for the details.
+
+But remember that in your setup, your /usr directory is *not* its own
+partition (which is why I used the "somethingorother" above, lacking a real
+example from your system).
+
+
+>Cheers,
+>bj
 >
-> Booting box after upgrade I still got blank screen and most possible no
-> mouse and no keyboard.
 >
-> My personal belief at this point is that the box is confused by my not
-> logging out of SSH - I saw no way to do such so I just closed Konqueror on
-> the box I was SSHing from.
+>When I do ls -lR on the auto created /var , it gives out the ff contents :-
 >
-> Question:
+>var:
+>total 4
+>drwxr-xr-x    3 root     root         4096 Feb 27 09:28 lib
 >
-> How does one go about establishing why, how issue develops and how does one
-> repair?
+>var/lib:
+>total 8
+>-rw-------    1 root     root          512 Feb 27 09:28 random-seed
+>drwxr-xr-x    2 root     root         4096 Feb 27 09:22 rpm
 >
-> Thanks
-> Frank
->
-> > /etc/hosts is a system file and can only be edited by root user. If you
-> > are in KDE hit Alt+F2 and enter 'kdesu konqueror' to get a root copy of
-> > konqueror file manager.
-> >
-> > If your IP address does keep changing, then it may be more convenient to
-> > use samba instead of fish.
-> > Samba allows you to join a Windows network, and you can pass files
-> > between both Windows and Linux computers.
-> >
-> > > Since I would imagine part of my ping issue is that hostname is not set
-> > > and user name may not be [not sure if user name is same as login user
-> > > or if this is different user name] lets tackle username and host name
-> > > first. How do I set them up?
-> >
-> > The user name is the login name.
-> >
-> > > > derek
-> > >
-> > > Thanks for the help
-> > > Frank
-> >
-> > HTH
-> > derek
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+>var/lib/rpm:
+>total 308
+>-rw-r--r--    1 root     root         8192 Feb 27 09:22 __db.001
+>-rw-r--r--    1 root     root      1310720 Feb 27 09:22 __db.002
+>-rw-r--r--    1 root     root       360448 Feb 27 09:22 __db.003
+>-rw-r--r--    1 root     root        12288 Feb 27 09:22 Name
+>-rw-r--r--    1 root     root        12288 Feb 27 09:22 Packages
+
+OK. As I aked before, I want to see the output of ...
+
+         ls -l /
+         df
+         find / -name libncurses*                (I didn't give the actual
+command before; I
+                                         just asked where libncurses5 was
+located)
+
+... and all actual error messages (not summaries or paraphrases) that you
+see.
+
+Also, please provide the output of
+
+         ls -l /mnt/hda5
+         ls -l /mnt/hda6
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+Hi !
+
+Thank you all for the help .
+
+I again tried by removing the old links & recreating them in single user
+mode .
+
+cd /
+ ln -s /mnt/hda5/var
+ ln -s /mnt/hda5/tmp
+ ln -s /mnt/hda6/usr
+ ln -s /mnt/hda6/home
+
+This time everything worked fine & my sytem is up & running.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
