@@ -1,38 +1,47 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Can't see my drives
-Date: Fri, 30 Aug 2002 23:06:47 +1200
+From: "Mojo Jojo" <nacht@widerstand.org>
+Subject: RE: eth0 promiscuous mode
+Date: Fri, 30 Aug 2002 11:50:45 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020830100130.8677B52897@smtp.orcon.net.nz>
-References: <F665uAy0BYTxHwMQFLc00025135@hotmail.com>
-Reply-To: cr@orcon.net.nz
+Message-ID: <GJEFIFJJJFEKABEMHGFCOEEGDOAA.nacht@widerstand.org>
+References: <239460-2200285308288105@lvcm.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F665uAy0BYTxHwMQFLc00025135@hotmail.com>
+In-Reply-To: <239460-2200285308288105@lvcm.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: grottoBoy rant <stylerzz@hotmail.com>, linux-newbie@vger.kernel.org
+To: Joseph Jackson <skoidat@lvcm.com>, Axel Siebenwirth <axel@hh59.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-On Friday 30 August 2002 05:07, grottoBoy rant wrote:
-> Don't know if you've fixed this already, I don't know about configuring for
-> CDRW as scsi emulation or whatever, but were you specifying iso9660
-> filesystem type when attempting to mount, ie.
-> mount -t iso9660 /dev/(?) /mnt/cdrom
-> man mount for syntax
+He wasn't calling the otehr question stupid, he was saying i have a stupid
+qustion as in he didnt know what promiscuosmsosus mode was....
+
+easy tiger.......
+
+
+
+> wow how rude.  Why would you call his or anyone elses question stupid? if
+> you can't help you shouldn't reply to posts.
 >
-> later
->
+> -----------------------Original Message-----------------------
+> >From:  Axel Siebenwirth [mailto:axel@hh59.org]
+> >To:  Linux Newbie [mailto:linux-newbie@vger.kernel.org]
+> >Date:  8/30/2002 12:09:00 AM
+> >Subject:  Re: eth0 promiscuous mode
+> >
+> >On Thu, 29 Aug 2002, Ray Olszewski wrote:
+> >
+> >> >interface be put in
+> >> >promiscuous mode initially or is there any option I should use to put
+> it in
+> >> >promiscuous mode? I use Mandrake 8.2.
+> >
+> >Very stupid question: What is the promiscuous mode? I think I see my NIC
+> >going into that mode when I start tcpdump...
+> >
+> >Thank you,
+> >Axel
+> >-
 
-Yes, I was, exactly that.
-
-I've shelved the problem for now as other things took up my time, however 
-I've managed to find the original instructions I used to configure the thing, 
-so I'll work through them (as soon as I have enough time) and see if that 
-fixes it.
-
-Thanks
-
-cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
