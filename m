@@ -1,157 +1,54 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: RE: Variable Quoting
-Date: 15 Oct 2002 17:13:06 +0100
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: A few more things and I can kiss windows good bye.
+Date: Tue, 15 Oct 2002 13:52:57 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034698386.11967.13.camel@zebra.vil.ite.mee.com>
-References: <005201c273bb$594e0880$64fea8c0@pkrausxp>
+Message-ID: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <005201c273bb$594e0880$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Paul Kraus <pkraus@pelsupply.com>
-Cc: linux-newbie@jimmo.com, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-There are a couple of approaches.
+Well what started out as a cost effective experiment has turned into an
+obsession. Linux seems to do everything that I want but it does it
+better.... Well that's not fair not better but it allows more control
+and the reliability is perfect. There are only two things that have me
+not wanting to get rid of my xp pro workstation(unix and Linux are
+already our dominant servers.)
 
-One way is to enclose the entire path in quotes then stick the asterisk
-on the end - as in:
+1. Microsoft .NET framework. I know Microsoft is a bad word in most of
+these forums/lists but it is a great web development package. Allowing
+for true object oriented programming. I am also already familiar with
+it. Will the framework run on a Linux machine. I know that it is
+supposed to be cross-platform combatable. Also would I then need to
+redesign my pages as c# instead of vb.net? If I can keep vb.net that
+would be great seeing as I know the language well. But if I had to learn
+c# instead then I am ok with that. What editors can I use. Does anything
+compare to Visual Studio.net(I know I said I would't use windows
+programs as references but I am at a loss and to describe the software
+would be a vary large email).
 
-cp "My Documents/"* /tmp
+2. This is the big one and it is a problem that you think should not be
+a problem. Our main software package (thoroughbred solution 4 in case
+you have heard of it) runs on a UNIX server. However when telnetting
+into the server nothing works the way it is supposed to from a Linux
+workstation. Key maps are wrong. I have in the past played with Linux
+and this has always been the reason that I went back. I am using tiny
+term by century for my connections now on the windows workstations. They
+also sell a product for UNIX but I am wanting to maintain the idea of
+using all free software.
 
-which you can then use a variable for like this:
+Now just for some opinions from people on the list.
+What are the difference in bistro's? Why is one preferred over another.
+Is one a better server product and one a better desktop? If so why?
 
-Path="My Documents"
-cp "${Path}"/* /tmp
-
-You could also use a for loop:
-
-Path="My Documents/"
-
-for FILENAME in ls "${Path}"
-do
-	cp "${Path}${Filename}" "/tmp"
-done
-
-Note that this second way of doing it will create "/tmp/My Documents"...
-but the first way will put the files in /tmp
-
-P.
-
-
-
-On Mon, 2002-10-14 at 20:53, Paul Kraus wrote:
-> Ok I lied. I understand why its not working but how should I workaround
-> it?
-> Do I have to have my script gather a list of the files and the pass it
-> the variable?
-> That sucks that I can not use a wildcard to just get all.
-> 
-> I have made these changes. Which I though would fix my problem.
-> string="My Documents/"
-> cp "${string}*" Which I thought would eliminate the problem. I guess I
-> am not understanding.
-> 
-> 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org
-> [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of James Mohr
-> Sent: Monday, October 14, 2002 3:58 PM
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: Variable Quoting
-> 
-> 
-> 
-> On Monday 14 October 2002 20:38, Paul Kraus wrote:
-> <SNIP>
-> > Now with this change
-> > string="My Documents/*"
-> > cp "$string" /tmp
-> >
-> > cp: cannot stat 'My Documents/*':no such file or directory
-> 
-> Sure because the token that is passed to the cp command includes the
-> asterisk, 
-> it doesn't know that it should expand the asterisk (*) to the file
-> names, so 
-> it looks for a file with the literal name '*'. 
-> 
-> > So then I for kicks I tried.
-> >
-> > cp "My Documents/*" /tmp
-> > Produces the same error.
-> 
-> Same thing.
-> 
-> >
-> > So just to make sure that it was not a typo in path I tried. cp My\ 
-> > Documents/* /tmp
-> >
-> > And this worked.
-> 
-> Makes sense as the shell is now expanding the asterisks to the names of
-> the 
-> files. You don't see this because it is expanded internally. Create a
-> shell 
-> script that just does this copy and put "set -x" on the first list. This
-> 
-> should show you the expanded form before it is passed to cp.
-> 
-> > So is the problem with cp? Since the same syntax seems to work with 
-> > all other apps? Is cp not capable of taking a double quoted path with 
-> > spaces?
-> 
-> No, it is the fact that cp does not know to expand the asterisk. Plus
-> you are 
-> passing different things to the cp depending on what sets of quotes you
-> use.
-> 
-> > Redhat 7.3 in case it helps.
-> Actually the Linux distriubtion is pretty irrelevant in this case. In
-> fact the 
-> behavior would be the same on most any *NIX system, as it is standard
-> shell 
-> stuff. 
-> 
-> See if these explain more of the details for you:
-> 
-> http://www.linux-tutorial.info/cgi-bin/display.pl?20&0&0&0&3
-> http://www.linux-tutorial.info/cgi-bin/display.pl?22&0&0&0&3
-> 
-> regards,
-> 
-> jimmo
-> 
-> -- 
-> ---------------------------------------
-> "Be more concerned with your character than with your reputation. Your
-> character is what you really are while your reputation is merely what
-> others think you are." -- John Wooden
-> ---------------------------------------
-> Be sure to visit the Linux Tutorial:  http://www.linux-tutorial.info
-> ---------------------------------------
-> NOTE: All messages sent to me in response to my posts to newsgroups or
-> forums 
-> are subject to reposting.
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-> in the body of a message to majordomo@vger.kernel.org More majordomo
-> info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
--- 
-Paul Furness
-
-Systems Manager
-
-2+2=5 for extremely large values of 2.
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
