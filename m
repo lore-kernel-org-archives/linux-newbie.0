@@ -1,23 +1,27 @@
-From: Jude DaShiell <dashielljt@gmpexpress.net>
-Subject: Re: export variables
-Date: Fri, 24 Jan 2003 08:59:52 -0500 (EST)
+From: Robin Doer <robin@robind.de> (by way of Robin Doer
+	<robin@robind.de>)
+Subject: Creation of VCD slideshows
+Date: Fri, 24 Jan 2003 18:21:37 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.33.0301240859031.1450-100000@athame.gmpexpress.net>
-References: <200301240748.03285.r4mz3z@yahoo.es>
+Message-ID: <200301241821.37203.robin@robind.de>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200301240748.03285.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ramzez <r4mz3z@yahoo.es>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-use the ($) just in front of the variable when testing it in an if
-statement or trying to echo its value.
+Hi list!
 
--- 
-Jude <dashielljt(at)gmpexpress-dot-net>
+I'm looking for software to create a picture-slideshow in (S)VCD-format. For
+Win* there are some: VCDEasy, tvCD, DVD Picture View...
+
+Ok, I found a solution using VCDImager. But it is not really comfortabe.
+
+Does somebody know a good / easy to use solution?
+
+Thanks,
+Robin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
