@@ -1,36 +1,63 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: switching window managers
-Date: Tue, 18 Mar 2003 14:20:44 -0500
+From: "Ola Theander" <ola.theander@otsystem.com>
+Subject: RE: The best way to backup a Linux workstation?
+Date: Tue, 18 Mar 2003 22:37:37 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200303181920.h2IJKis4008038@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <002401c2ed96$9eecc6b0$7301a8c0@c0003>
+References: <Pine.LNX.4.33.0303181304130.12864-100000@router.windsormachine.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.33.0303181304130.12864-100000@router.windsormachine.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux@hartford-hwp.com
+To: 'Mike Dresser' <mdresser_l@windsormachine.com>
+Cc: linux-newbie@vger.kernel.org
 
-I'm running RH8.0 and seek a way of switching window managers without
-changing the existing default. I could write ~/.xinitrc and with a
-line represting the name of my intended wm, but prefer switching from
-command prompt.
+Hi Mike.
+ 
+My tar line looks like this: tar zcvf dest-file source-dirs
 
-I installed a window manager and verified that it's in the path of
-both root and user.
+/Ola
 
-My older directions suggested that I pass the name of the wm executable
-to the xstart command. I tried this, but xstart does not recognize the
-option, and I don't see any option that accepts a window manager as
-its value. 
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org
+[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Mike Dresser
+Sent: den 18 mars 2003 19:05
+To: Ola Theander
+Cc: linux-newbie@vger.kernel.org
+Subject: Re: The best way to backup a Linux workstation?
 
-So I tried running xinit the same way, but that was not the way to go,
-either.
 
-I'm running RH8.0 and seek a way of switching window managers without
-changing the existing default.
+On Tue, 18 Mar 2003, Ola Theander wrote:
 
-Haines Brown
+> Dear subscribers.
+>
+> I would like to know the recommended way to backup a Linux 
+> workstation. Currently I use tar to pack a number of directories to a 
+> single file which I save on a CD. One problem I've noticed with this 
+> approach is that tar seems to ignore all hidden files i.e. files 
+> beginning with a '.' and there doesn't seem to be a switch to change 
+> this. This is a problem for me since some files, such as .profile, 
+> that I want to backup is ignored.
+>
+> Any help on this matter would be greatly appreciated.
+>
+> Kind regards, Ola Theander
+>
+
+What does your tar line look like?  My tar backs up anything starting with a
+., it's just a matter of having the right syntax.
+
+Mike
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org More majordomo info at
+http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
