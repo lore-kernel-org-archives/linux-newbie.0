@@ -1,16 +1,42 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Re: Running fetchmail in daemon mode?
-Date: Thu, 24 Apr 2003 17:06:57 +0100
+From: Chris Rose <offline@shaw.ca>
+Subject: RE: Running fetchmail in daemon mode?
+Date: Thu, 24 Apr 2003 10:32:58 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030424155520.00b1eda0@interzone.anexia.co.uk>
-References: <000801c30a6e$68d73340$4b01a8c0@t9397.tjem.com>
+Message-ID: <003e01c30a7f$2a6b1110$4b01a8c0@t9397.tjem.com>
+References: <5.1.1.6.0.20030424155520.00b1eda0@interzone.anexia.co.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000801c30a6e$68d73340$4b01a8c0@t9397.tjem.com>
+In-reply-to: <5.1.1.6.0.20030424155520.00b1eda0@interzone.anexia.co.uk>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: "Linux-Newbie (Linux Newbie)" <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: 'Carl' <carl@anexia.co.uk>, "'Linux-Newbie (Linux Newbie)'" <linux-newbie@vger.kernel.org>
+
+ 
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+The issue that i run into with the cron job is twofold:
+
+One:  I get duplicate messages.  Right now, i'm passing mail to postfix-maildrop(Maildir/)-courierIMAP, and i get as many as 10 copies - already marked as read - of mail messages that have been sitting there a while.
+
+Two:  Fetchmail, when i run it from the command line, gives me a console message:
+fetchmail: interface option is only supported under Linux (without IPv6) and FreeBSD
+
+This message gets mailed to me every time that fetchmail runs, which you can imagine isn't too helpful :/
+
+Can anyone suggest a way to resolve these issues?
+
+Chris R.
+=======
+http://offline.pointclark.net/
+
+- -----Original Message-----
+From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Carl
+Sent: April 24, 2003 10:07 AM
+To: Linux-Newbie (Linux Newbie)
+Subject: Re: Running fetchmail in daemon mode?
+
 
 At 08:33 24/04/2003 -0600, Chris Rose wrote:
 > 
@@ -39,7 +65,21 @@ Reading the fetchmail faq will give you some of the pro's and con's of the diffe
 
 Regards
 Carl
---
+- --
+
+- -
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+-----BEGIN PGP SIGNATURE-----
+Version: PGP 8.0
+
+iQA/AwUBPqgRucFBXq9qNmWaEQKhYwCfQbDiERgoNEEvXrXDz6qmxToNCWIAoMeY
+ToxW5vFe2IEgkua3rNHfi9HM
+=WTGh
+-----END PGP SIGNATURE-----
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
