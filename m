@@ -1,35 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: PPP Question
-Date: Tue, 24 Sep 2002 19:46:30 -0700
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: RE: Where do I look up scripts for konqueror?
+Date: Tue, 24 Sep 2002 17:56:06 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020924194522.025f49a0@celine>
-References: <Message from Ray Olszewski <ray@comarre.com>
- <5.1.0.14.1.20020924082159.025e33a0@celine>
+Message-ID: <00b364355031992HNLMAIL1@hawaii.rr.com>
+References: <200209200848.51887.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200209250231.g8P2VBE02701@philonline.com>
+In-reply-to: <GJEFIFJJJFEKABEMHGFCMEDDEAAA.nacht@widerstand.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Glad you got it working. One small correction on what I sent you before.
+BTW, DynamicDrive is known for offering JS that only 
+supports proprietary DOMs like that of NS4 and IE. It 
+would be worth checking at some other script sites, 
+perhaps.
 
-At 10:31 AM 9/25/02 +0800, Peter wrote:
-[...]
+On 25 Sep 02, at 1:18, Mojo Jojo wrote:
 
->There is no such file as /etc/interfaces
-
-Sorry. Make that /etc/network/interfaces .
-
-
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+> if i'm not mistaken., most things that support ns6+ should
+> work?
+> 
+> > Hi...
+> >    I'm trying to use some JavaScripts that I download
+> >    from 
+> > DynamicDrive, but 
+> > they didn't work in my konqueror (some in Netscape
+> > 4.7)... can somebody tell me where I can download free
+> > javascripts that work in Konqueror (netscape, etc)
+> > 
+> > thanks
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
