@@ -1,35 +1,60 @@
-From: Bob Batson <rcb@kc.rr.com>
-Subject: Re: Related to thread: which UNIX to use, but offtopic
-Date: Thu, 30 May 2002 14:14:17 -0500
+From: "Michael H. Warfield" <mhw@wittsend.com>
+Subject: Re: Open Office - printing
+Date: Thu, 30 May 2002 13:42:55 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <p04330104b91c2a29a162@[65.31.217.219]>
-References: <F4D3DB9A18752A4F99FD880ABC5407179D144B@ccdc-exchg.careercommunity.com>
+Message-ID: <20020530174255.GA3441@alcove.wittsend.com>
+References: <p05100300b91b1168860d@[168.212.25.34]>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D144B@ccdc-exchg.careercommunity.com>
+Content-Disposition: inline
+In-Reply-To: <p05100300b91b1168860d@[168.212.25.34]>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Sridhar J <sridharj.hyd@cxknetworks.com>, "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+To: Dan Bentson-Royal <dbentson@orion.lcsd.k12.wa.us>
+Cc: linux-newbie@vger.kernel.org
 
-At 9:55 AM +0530 5/30/02, Sridhar J wrote:
+On Wed, May 29, 2002 at 04:21:57PM -0700, Dan Bentson-Royal wrote:
+> I feel foolish - I am trying to print from OpenOffice and started 
+> reading the built-in help. The very Ffirst thing I am told to do is 
+> "Click the New Printer button." and I absolutely cannot find that.
 
->Hi
->
->Something offtopic, but one question, what is a hardware modem and what is a
->software modem?
+	Hmmm...  Hadn't seen that before...  Maybe it's a "going to
+be" feature and invokes spadmin.
 
-Check the site called "Winmodems are not modems; Linux Information 
-Page" at http://www.idir.net/~gromitkc/winmodem.html
+> There is a printer icon in a toolbar, but it is for printing directly 
+> to the default printer (I assume). The File menu has "print" and 
+> "printer settings" which I thought would be gold mines. But nowhere 
+> does it allow me to select my printer.
 
+> I ran printconf-gui& and successfully entered the IP number of my 
+> JetDirect printer. I think all I need to do is tell my system to use 
+> that printer. I hope.
+
+	That's all you need for you system to know where the printer is
+but it doesn't help with OpenOffice.  I assume that you DID tell
+the printconf app to print a test page and it printed properly.
+
+> Sorry to be so dense!
+
+	You're not.  Here is the way I've set up printers in OpenOffice...
+
+	cd OpenOffice.org1.0
+	./spadmin
+
+	There you will find what you need.  Once you have added your
+printer, you will probably want to edit it's properties and set the
+paper type (it defaults to A4 and I use US Letter).
+
+	Don't know if this is how they intend it to work NOW, but it's
+the way it was done in the past (just chose appropriate install directory).
+
+	Mike
 -- 
-
-Bob Batson                            L 39 12 14 N 94 33 16 W
-rcb@kc.rr.com                         Gladstone, MO
-TCS - Mystic Fire Priest              USDA Zone 5
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Under the most controlled conditions, the experimental apparatus
-will do exactly as it pleases.
+ Michael H. Warfield    |  (770) 985-6132   |  mhw@WittsEnd.com
+  /\/\|=mhw=|\/\/       |  (678) 463-0932   |  http://www.wittsend.com/mhw/
+  NIC whois:  MHW9      |  An optimist believes we live in the best of all
+ PGP Key: 0xDF1DD471    |  possible worlds.  A pessimist is sure of it!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
