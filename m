@@ -1,8 +1,8 @@
-From: "Warren Hrach" <sean@tcob1.net>
-Subject: bogofilter
-Date: Tuesday, 04 Nov 2003 14:16:02 -0800
+From: james niland <bareego@yahoo.com>
+Subject: Re: MSN Messenger clones keep failing
+Date: Tue, 4 Nov 2003 16:25:39 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_1=3a202=2f745_89b079fd@fidonet.org>
+Message-ID: <20031105002539.16413.qmail@web11405.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
@@ -10,16 +10,33 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: All
+As I only use the yahoo chat I can't comment on the MSN
+connection issues.
 
-I recently downloaded a copy of bogofilter, the static version in rpm form. Installed on my RH V8.0 system that runs fetchmail and pine for email. Unfortunently I cannot figure out the docs on how to
- start it up. I need a simple how-to that just give examples.
+But yahoo did change the way that people login into their chat
+servers for the ymsg protocol, otherwise the ymsg protocol
+didn't change.
 
-Does anyone have experiance with bogofilter with pine and procmail ?
+Many yahoo chat capable clients have been updated for this, eg
+zinc, curphoo, gyach and gaim.
 
-Warren
+For it to work in gaim you have to get one of the recent
+versions, if memory serves me right at least version 0.7 or
+newer
 
+I had trouble compiling gaim from source because of some
+dependency regarding ssl, so I don't have a personal experience
+using it, but I have seen several people in chatrooms using it.
+There are some prebuilt packages on gaim.sourceforge.net but I
+haven't tried any of those.
 
+Good luck anyway
+James N.
+
+__________________________________
+Do you Yahoo!?
+Protect your identity with Yahoo! Mail AddressGuard
+http://antispam.yahoo.com/whatsnewfree
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
