@@ -1,43 +1,51 @@
-From: simon <simon.guinot@laposte.net>
-Subject: Re: Need a network traffic monitor
-Date: Sun, 28 Nov 2004 15:04:52 +0100
-Message-ID: <41A9DB04.8070004@laposte.net>
-References: <10444189897.20041127192716@wa5rrh.org>
+From: "J." <mailing-lists@xs4all.nl>
+Subject: Re: Locate Vs Find
+Date: Sun, 28 Nov 2004 15:13:16 +0100 (CET)
+Message-ID: <Pine.LNX.4.21.0411281438060.16146-100000@hestia>
+References: <41A647E2.1080302@tlinx.org>
+Reply-To: Linux Newbie <linux-newbie@vger.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <10444189897.20041127192716@wa5rrh.org>
+In-Reply-To: <41A647E2.1080302@tlinx.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-hello Jim
+Sunday, November 28 14:38:06
 
-Jim Reimer wrote:
-> How can I set up to monitor what's coming and going on my gateway?
-> Network is all hubs, no switches, and all I need to do is count
-> bytes going to and coming from 192.168.0.1 - don't care where it
-> came from or where it's going, I just need to count it.
-> 
-there is lot of ways to do that...
-the most simplest (for me) is writing a basic sniffer... or use an 
-existing... like tcpdump... to look the ip adresses (sender an receiver)
-and depending the result... incremant a value...
-if you want some skeleton code examples... send me a mail
-an other way is by using the iptables... the netfilter...
-you can insert a kernel module into the network stack and use an entry 
-point in the netfilter... ("Hacking the Linux Kernel Network Stack" 
-explain how to do that)...
-may be there is some existing iptables user-space fonctionality to 
-perform that...
-using the iptables-netfilter ask you for your application portability...
-an other idea is writing a kernel module who intercept the socket () 
-system call...
-in hope you find something useful...
+> On Mon, 2004-11-22 at 22:22, Ankit Jain wrote:
+>
+> Which is more efficient? /if both perform the same
+> work and are not different then why shoudl we have 2 ?
 
-simon
+That's not true, they do not preform the same task.
+`find' doesn't find files, it's just a side effect of
+the program. `Find's' real occupation is to evaluate files.
+a.k.a. to preform tests on them. For example:
+find / -atime +1 -fstype ext2 -name core -exec rm '{}' \;
+find . \( -fstype nfs -prune\) -o \
+       \( -type d -a -exec chmod 771 '{}' \; \) -o \
+       \( -name "*.BAK" -a -exec /bin/rm '{}' \; \) -o \
+       \( -name "*.sh" -a -exec chmod 755 '{}' \; \)
+find /home -xdev -size +500k -ls > blabla
+find /usr/include -xtype f -exec grep foobar \ 
+     /dev/null '{}' \;
+Find recurses down a structure and preforms a stat() system call for each
+regular file it encounters.. I advise you to read man page or stat(),
+lstat(), readdir and the dirent.h header file..
 
+`Locate's' only purpose is to find files. It builds a database of all
+files which then later on can be searched..
+
+There are no. examples of c code directory handeling available in the
+snippits section at rdrs.net or more `find' examples in 
+http://www.rdrs.net/docs/src/reminder.txt
+
+Greetzz.. 
+
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
