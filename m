@@ -1,56 +1,84 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Moving Hard Drive
-Date: Sat, 17 Jan 2004 10:53:50 +0100
+From: Rei Shinozuka <shino@panix.com>
+Subject: [kazrak+kernel@cesmail.net: Re: hardware advice for a PC moron]
+Date: Sun, 18 Jan 2004 12:26:23 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401171053.50808.pa3gcu@zeelandnet.nl>
-References: <20040117031622.B31C01C900@heisspf> <4008D441.6090009@sancharnet.in>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20040118172622.GA19258@panix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4008D441.6090009@sancharnet.in>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: gracecott@sancharnet.in, Peter <heisspf@skyinet.net>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
+
+thanks for the pointers.
+
+as a general rule:
+
+1. is there any difference in functionality between the various
+   AMD and intel processors?  i.e., am i better off starting with
+   one versus another?
+2. is it worth getting a "fancy" 3d card (are they supported under
+   linux) or is a plain-jane card good enough for 1280x1024x24bits.
+   are any cards ATI or NVIDIA considered good or bad under linux? 
+
+thanks!
+
+-rei
+
+
+
+----- Forwarded message from Jeff Woods <kazrak+kernel@cesmail.net> -----
+
+X-Original-To: shino@panix.com
+X-Sender: kazrak_@no.incoming.mail
+X-Mailer: QUALCOMM Windows Eudora Version 6.0.1.1
+Date:	Fri, 16 Jan 2004 19:35:08 -0800
+To: Rei Shinozuka <shino@panix.com>
+From: Jeff Woods <kazrak+kernel@cesmail.net>
+Subject: Re: hardware advice for a PC moron
 Cc: linux-newbie@vger.kernel.org
+In-Reply-To: <20040116103416.GA16542@panix.com>
+Precedence: bulk
+X-Mailing-List:	linux-newbie@vger.kernel.org
 
-On Saturday 17 January 2004 07:20, joy wrote:
-> Peter wrote:
-> >I can tell the floppy to boot into hda* and in SlackWare (there is the SW)
-> > I have anyhow a bootable live rescue disc.
-> >
-> >Regards
->
-> Since you are on lilo ,  it would be easier to type on the lilo prompt
+At 1/16/2004 05:34 AM -0500, Rei Shinozuka wrote:
+>i'd appreciate advice as to how to best buy/build an intel/amd system and 
+>build a linux workstation on top of.
 
-Thats the point, if he "moves" /dev/hda to /dev/hdc then he "wont" have lilo 
-on his MBR, or at least not under normal curcumstancies.
+While I haven't bought a Linux box from them, I've had good success with 
+hardware from Monarch Computer Systems and I believe they recently (Linux 
+World 2003 @SF) won some award(s) on their Linux bundles.  You can learn 
+more at http://tinyurl.com/24kpl which redirects to
+http://www.monarchcomputer.com/Merchant2/merchant.mv?Screen=CTGY&Store_Code=M&Category_Code=linuxsystems
 
-One can place lilo where he/she wants via /etc/lilo.conf, leave disks where 
-they are and use the mobo's boot option to choose which ever disk to boot 
-from, if of course one has a recent motherboard and a BIOS which supports 
-booting from all devices, that option has been around for a few years now so 
-chances are there is no real need to move devices around anyway.
+I've also heard good things about (but haven't personally dealt with)
+http://penguincomputing.com/
 
-> root=/dev/hda(something - your root partiton)
-> for it to boot  thru instaed of all  the fuss with boot disks and rescue
-> cds .
-> then edit fstab and lilo.conf
->
-> Joy
+You may also want to check out some of the other Linux-oriented hardware 
+vendor lists such as those found at:
+http://www.linux.org/vendor/system/
+http://www.rice.edu/IT/hwsw/hardware/pclinux.html
+http://www.linuxhardware.net/cgi-bin/viewvendor.cgi
+http://directory.google.com/Top/Computers/Hardware/Systems/Linux/
 
+Good luck!  :)
+
+--
+Jeff Woods <kazrak+kernel@cesmail.net> 
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+----- End forwarded message -----
 
 -- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+Rei Shinozuka shino@panix.com
+Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
