@@ -1,50 +1,57 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: howto configuring kernel and modules.conf for automatic loading of ide-scsi
-Date: Sun, 25 Jan 2004 20:30:31 +0100
+From: caszonyi@rdslink.ro
+Subject: Re: Samba
+Date: Sun, 25 Jan 2004 22:47:59 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401252030.31572.pa3gcu@zeelandnet.nl>
-References: <5.1.0.14.1.20040124202304.01f31308@celine> <5.1.0.14.1.20040125082404.01f99be0@celine> <20040125211055.10e7943a.agri@desnol.ru>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <Pine.LNX.4.53.0401252233050.540@grinch.ro>
+References: <001301c3e361$36718cd0$6afea8c0@FAMILY>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040125211055.10e7943a.agri@desnol.ru>
-Content-Disposition: inline
+In-Reply-To: <001301c3e361$36718cd0$6afea8c0@FAMILY>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Agri <agri@desnol.ru>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Josh Lamb <jlamb03@elitemail.org>
+Cc: linux-newbie@vger.kernel.org
 
-On Sunday 25 January 2004 19:10, Agri wrote:
-> here... i want to mention one strange thing...
-> if i "touch" for hd? device "hided" by ide-scsi kmod will request for a
-> module and system will load ide-scsi... curious... don't you think?
+On Sun, 25 Jan 2004, Josh Lamb wrote:
 
-Too be honest i have no clue as to what you mean however i never have any 
-problem with loading of modules, normally speaking i never have to use 
-modprobe, i only use modprobe if i do things via scripts and that only to 
-make sure the module is loaded otheriwse the sript would need to do all sorts 
-of checks first.
-
-I dont know if you tryed my suggestion i made in my last mail on this subject, 
-another is simply add;
-append="hdX=ide-scsi"
-X= a,b,c or d on your system, to /etc/lilo.conf and rerun lilo or do the 
-equivilant under grub if thats what you use.
-As you said you did not like the idea of loading modules at boottime but i 
-think you should reconsider as that in itself does not hinder or slow down 
-your system one bit.
-
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
-
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+> Hello,
+>
+> I recently switched to linux because I was curious what else was out there
+> and was very annoyed with windows's mismanaged multitasking.  So I went and
+> bought Slackware after trying knoppix for a short while. I know Slack is
+> sometimes not recommended for newbies, but I think it is the best way to
+> learn linux because it really forced me to learn new things.
+>
+> My question: Can you recommend any books that deal more with networking, I
 
 
+see on this page
+http://www.tldp.org/guides.html
+Network administrator guide and
+System administrator guide
 
+
+> am having troubles trying to set up a Samba server? I also want to be able
+> to set up Apache and BIND? OH, and one more, does anyone have a good text on
+> using a good linux server to serve a lot of thin clients?
+>
+> thanks for your time
+>
+
+on
+http://www.tldp.org
+you will find a lot of usefull documentation about linux
+
+>
+> end
+>
+
+--
+"A mouse is a device used to point at
+the xterm you want to type in".
+Kim Alm on a.s.r.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
