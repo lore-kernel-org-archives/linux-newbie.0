@@ -1,54 +1,41 @@
 From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: question on "find"
-Date: Sun, 18 Apr 2004 18:17:13 -0700
+Subject: Re: adjusting partitions without a reinstall
+Date: Sun, 18 Apr 2004 18:27:29 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40832899.1000405@bcgreen.com>
-References: <Pine.SOL.4.56.0404181942470.9002@pollux.cse.buffalo.edu>
+Message-ID: <40832B01.6010304@bcgreen.com>
+References: <012701c42314$55a855f0$530a0a0a@rutgersinsurance.com> <20040415133513.A8606@cougar.aero-vision.com> <01eb01c4231a$166bec70$530a0a0a@rutgersinsurance.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.SOL.4.56.0404181942470.9002@pollux.cse.buffalo.edu>
+In-Reply-To: <01eb01c4231a$166bec70$530a0a0a@rutgersinsurance.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Tony Gogoi <tgogoi@cse.Buffalo.EDU>, linux-newbie <linux-newbie@vger.kernel.org>
+To: Adam Lang <aalang@rutgersinsurance.com>, linux-newbie <linux-newbie@vger.kernel.org>
 
-The easiest would be to just 'find . '
-That tells it to search in the current dirctory (and also
-find hidden files in the current directory, which "find *" won't)
+FOr changing partitions, parted would be the way to go.
 
-I don't see why  "Doc - PDF" would cause you
-problems, but I can see "-pdf doc" causing a problem,
-because the leading '-' makes the filename look like a
-find search option (and all other filenames after that
-are evaluated in that context).
+On the other hand, since you're running RAID 1, you should be able to
+swap one drive for a larger one, rebuild the mirror, then swap the second
+drive and rebuild again.
+After swapping out the boot drive, you may have to re-install grub/lilo/whatever.
 
-That can be worked around by using './*' instead of '*'
-(replace '*' with any globbing pattern)
-This would keep the first character of a filename from
-ever being a "-"
+If you can hot-swap your drives, this should be seamless for the users.
+If you have to poweroff between boots, then you'll run into a problem with
+grub not being installed on your primary drive after boot.
 
-Tony Gogoi wrote:
-> I have another question.
+This would require that you boot with an emergency disk and re-installing
+grub. (you'll need a version of grub.conf that says to find the boot partition
+on the secondary drive).  Once the system is up, then you can rebuild the
+mirror again. (or you can do it from the emergency boot system)
+
+Adam Lang wrote:
+> Hmm, good idea, but unfortunately that won't work for me either.  The server
+> has two hot swap RAID 1 drives.  To add anything else, it will require
+> external storage.
 > 
-> "find ./*" displays recursively all files in this and its sub-directories.
-> 
-> However for some files that were ftp'ed from a Windows system eg.
-> something like in the one of the directories
-> "(Doc - PDF) My Document.pdf"
-> would cause "find *" to display "invalid predicate...." .
-> How can I overcome this problem ?
-> 
-> Thanks.
-> 
-> Thanks Mike and Raju for ur earlier responses.
-> 
-> 
-> 
-> Tony Gogoi
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-admin" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Basically I am just looking for a temporary fix until later down the road
+> when I go with more storage.  The couple gigs I would be moving into the
+> root partition will suffice for a while.
 
 
 -- 
