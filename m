@@ -1,28 +1,91 @@
-From: Robin Doer <robin@robind.de>
-Subject: Re: breaking up a zip file
-Date: Tue, 1 Oct 2002 19:05:37 +0200
+From: Jose Luis Alarcon <jlalarcon@linuxnobis.com>
+Subject: Re: Ogle and slow DVD playing.
+Date: Tue, 1 Oct 2002 10:58:23 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021001170537.DA6A85466B@basicbox3.server-home.net>
-References: <1033392605.3245.44.camel@Zebra>
+Message-ID: <20021001175823.B928A11E07@sitemail.everyone.net>
+Reply-To: jlalarcon@linuxnobis.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1033392605.3245.44.camel@Zebra>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
+Cc: pa3gcu@zeelandnet.nl, Ray  Olszewski <ray@comarre.com>
 
-Paul Furness wrote:
-> I seem to remember seeing somewhere a handy Linux prog that will take a
-> gz or zip file, and re-package it into a number of smaller zip files. I
-> don't remember the command, but it was used something like:
+--- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
+>On Monday 30 September 2002 19:13, Jose Luis Alarcon wrote:
+>>   Hi all. Long time since i was here last time.
+>>
+>>   Anybody can tell me what can are the reasons why ogle play the DVD movies
+>> very slow?.
+>
+>
+>Have you read the FAQ at www.dtek.chalmers.se/groups/dvd/faq.shtml 
+>espestialy FAQ Nr, 20.
+>
+>Just how do you invoke ogle?
+>What video card do you have?
+>What driver is the Video card using.?
+>What version of Xv are you using.? (xvinfo)
+>What options do you pass to Xv "before" you play a DVD.?
+>Do you use an MPEG2 decoder card like a DRX2 or DRX3.???
+>Where does the output go too, TVout or Monitor.?
+>What CPU do you use?
+>How much Ram do you have.?
+>What device does the audio go thro' (make and model please).
+>
+>There are a lot of factors which apply here, if i were to ask them all i 
+>would need more bandwidth, its the last day of the month and my limit of 
+>2.5Gb is just about used up.
+>
+>Help me/us to help you by supling the nessasary info.
+>
+>>   TIA.
+>>
+>>   Best regards.
+>>
+>>   Jose.
+>>
+>> Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
+>> ESware Linux 365 Kernel 2.4.17 ReiserFS.
+>> Registered Linux User #213309.
+>> Memories..... You are talking about memories.
+>> Rick Deckard. Blade Runner.
+>
+>-- 
+>Regards Richard
+>pa3gcu@zeelandnet.nl
+>http://people.zeelandnet.nl/pa3gcu/
+>
 
-An easy way to split a file into several pieces is 'split'. You can use it 
-with files in text- and binary-format.
-After it use 'cat' to merge the files.
+  Richard and Ray, thanks you very much. You both are the real heroes of this
+list.
 
-Hope it helps
-Robin
+  Into the Ogle's FAQS web i (and anybody) have all the necesary for solve
+all problems what can be present with the player.
+
+  Hold on in your work's line.
+
+  Thanks you very much, again.
+
+  Regards.
+
+  Jose.
+
+Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
+ESware Linux 365 Kernel 2.4.17 ReiserFS.
+Registered Linux User #213309.
+Memories..... You are talking about memories. 
+Rick Deckard. Blade Runner.
+
+_____________________________________________________________
+Linux for the Desktop
+Software, Setup, chat & email.
+http://www.linuxnobis.com
+
+_____________________________________________________________
+Select your own custom email address for FREE! Get you@yourchoice.com w/No Ads, 6MB, POP & more! http://www.everyone.net/selectmail?campaign=tag
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
