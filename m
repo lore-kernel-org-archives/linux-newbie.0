@@ -1,34 +1,32 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Authorising a Linux DHCP server in MS Active Directory
-Date: Thu, 6 Feb 2003 14:19:59 +0930
+From: Peter <pfheiss@philonline.com>
+Subject: Keyboard Freeze
+Date: Thu, 06 Feb 2003 14:55:52 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302061419.59717.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <200302060656.h166tqq05806@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: samba@lists.samba.org, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
+Several months ago when I changed from RH7.2 to RH7.3 the keyboard would 
+freeze when trying to open certain games like tuxracer or invoking some 
+screensavers or doing 'blank screen now' in screensaver window.
 
-Trying to setup RIS, the current network uses a Linux DHCP server/firewall. 
-RIS requires that both the RIS server and the DHCP server are authorised in 
-Active Directory (the MS documentation states that only a Win2k DHCP server 
-can be authorised - but it's MS documentation, so it wouldn't suggest non MS 
-alternatives).
+A lot of suggestion I got from this list, none of which could solve the 
+problem. I then changed the built-in video chip SiS630 to my old video card 
+savage 4 and the spook was gone.
 
-Current planned solution is to have the firewall serve only as a firewall and 
-have DHCP moved to the RIS server. I just want to investigate this 
-alternative aswell.
+Now I read in Linux Gazette the suggestion to somebody with a similar problem, 
+no type of video cards mentioned, to disable the line Load "dri" in 
+XF86Config-4. I did it, changed back to SiS630 and it seems to work. Tuxracer 
+comes up nicely and I can't produce any keyboard freeze with screensaver.
+
+Regards
 
 -- 
-"Never EVER mess with a jumper you don't know about, even if it's labeled 'sex 
-and free beer'." - Dave Haynie, Amiga developer
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
