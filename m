@@ -1,43 +1,36 @@
-From: Robert.Couture@p0.f2000.n229.z1.fidonet.org
-Subject: Re: vsftpd
-Date: 23 May 2003 10:52:54 GMT
+From: Steven Ackerman <steven@nvts.us>
+Subject: RH 9.0 and knetfilter installation
+Date: 23 May 2003 16:36:26 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <66c108.b75e9b@tcob1.net>
-References: <76c0f2.b4bb18@tcob1.net> <5.2.1.1.0.20030521132415.01bbfec0@interzone.anexia.co.uk>
+Message-ID: <1053732984.4479.8.camel@RHServer>
+Reply-To: steven@nvts.us
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: sean@tcob1.net
+To: linux-newbie@vger.kernel.org
 
-The following message is a courtesy copy of an article
-that has been posted to linux.newbies as well.
+Greetings list,
 
-Hello Carl!
+I am running RH 9.0 and trying to install knetfilter 3.1.1. I untarred
+the file .tar.gz file and then used the command rm config.cache;
+../configure in the directory the files were untarred (correct usage?)
+to.
 
-May 21 13:38 03, Carl wrote to Robert.Couture@p0.f2000.n229.z1.fid:
+When I do that, it goes through checking for a whole host of different
+things but stops at the end and says:
 
- C> I found this on the vsftpd website in the FAQ:
+Checking for iptables....no
+Configure error: No iptables found.
 
+Now it seems obvious to me that iptables is not installed on the
+machine. I did a server installation and could swear that I did some
+kind of basic firewall installation. That's unimportant. I need to know 
+how to install iptables and move on from here. I have the 3 Red Hat 9.0
+CD's.Can anyone help?
 
- C> Q) Help! I'm getting the error message "refusing to run with writable
- C> anonymous root".
- C> A) vsftpd is protecting against dangerous configurations. The cause of
- C> this message is usually dodgy ownership of the ftp home directory. The
- C> home directory should NOT be owned by the ftp user itself. Neither
- C> should it be writable by the ftp user. A way to fix this is: chown
- C> root ~ftp; chmod -w ~ftp
-
-Thanks a million!
-
-Regards,
-Robert
-
---- Msged/UNX 6.1.2
- * Origin: RuneKeep: Linux Hub 2000 (1:229/2000)
-
-
+-Steve
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
