@@ -1,63 +1,98 @@
-From: Alan Womack <arwbackup@worldnet.att.net>
-Subject: re[2]: authentication issues
-Date: Sat, 8 Jun 2002 16:30:31 -0700
+From: Oliver Ob <ob_ok@gmx.net>
+Subject: [SLE] Windows emulator for Linux - here WINE again -6th try-
+Date: Sun, 09 Jun 2002 18:28:06 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020608233110.QCMG19182.mtiwmhc21.worldnet.att.net@alan>
+Message-ID: <advvpk$kca$2@main.gmane.org>
+References: <01100420530801.00810@linux> <20011004205800.A22590@savior.morgancomputers.net> <3BBD1394.30508@ihug.co.nz>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: "suse-linux-e@suse.com" <suse-linux-e@suse.com>, Lx Newbie List <linux-newbie@vger.kernel.org>, Lx Suse MULTiMEDiA E <suse-multimedia-e@suse.de>
 
-Perhaps not meaningful but informative, I've cruise about the web, but finding do this and see this, do this and see this is missing for someone like myself who's unix,vms,linux experience is either so old as to not be specific enough or non existant.  The method to check each layer would be informative as well as assist in my general knowledge of linux.
+Greek Geek schrieb:
+>=20
+> Hi All & Austin,
+>=20
+> who typed....
+>=20
+> It has been a while since I have tried WINE. Tell me/us, what games y=
+ou
+> are running & what tweaks yall made-if any?
+>=20
+> Will it run Civ II or Red Alert or WordPerfect 8/9???
 
- >>  At this level of abstraction, there is no meaningful answer to the 
- >>  question. Unless you think "check each of them, one by one" is meaningful 
- >>  advice (I don't).
+I would like to run these applications which I have so far not=20
+found in the wine homepage to be supported:
 
-This may have shed some light on possible further up the ladder problems.  The file exists, and the two users I added with the ldap tools.  smbldap-useradd.pl do not have entries in the file.
+Rebirth 1.0
+	audio application, audio runs GOOD, but screen addressment
+Rebirth 2.01
+	audio application, audio runs GOOD, but screen addressment
+VGA Planets Winplan 3.5
+	front screen loads, but cannot play game
+Planets 4
+	front screen loads, but cannot play game
+Incubation (Battle Isle 4)
+	title loads, but no sound
+688i Hunter Killer
+	title loads from cd, but gets stuck on front screen,
+	no sound
+=20
+My versions are all registered and original so that is not sort
+of a shareware restriction, but a problem of tweak options for
+wine. i also stand in front of a wall when it comes to that the
+audio WORKS for the sound applications, but does not for the
+games. WONDER BIG TIME.
 
- >>  >eg.  how do I tell if I use/need shadow passwords?
- >>  To tell if your system *uses* shadow passwords, see if it has a file
- >>  called  /etc/shadow .
+Hello Austin!! I am currently trying out Wine as well. The programs I
+use (Rebirth and VGA Planets/Winplan) do work in part, but sort of
+problem lies in the SCREEN ADDRESSING.
 
-Yes my users I added by normal redhat adduser are there with the x, but the smbldap-useradd users are not their either.
+how should I twiddle that?
 
- >> Also check that the password field in each entry of 
- >>  /etc/password contains only a single "x" character.
+example:
 
- >>  Whether you "need" shadow passwords? They are pretty much the standard now
- >>  
- >>  for any Linux system that is connected to the Internet.
+appearance of NTpassword is under native windoze:
 
-I have no MD5 flag file in the pam.conf which was in /etc/log.d/conf/services
+user1   password1       info1
+user2   password2       info2
+user3   password3       info3
+user4   password4       info4
+user5   password5       info5
 
-only a couple of actual entries in that file, rest are comments, no md5 settings.
+but under wine it is mixed up, sort of like this:
 
- >>  >How do I tell if I have md5 and what encryption method it is using?
+user5   password2       info1
+user1   password3       info2
+user2   password4       info3
+user3   password5       info4
+user4   password1       info5
 
- >>  Depends on the details of your setup. You might look for the MD5 flag in 
- >>  any of these locations: /etc/pam.conf, /etc/pam.d/passwd, or (just barely 
- >>  possible) /etc/login.defs .
-
-
- >>  >I ask because when I enable my authconfig to use ldap, I can no longer
- >>  log 
- >>  >in, but there are several changes that occur to enable ldap and I am not 
- >>  >sure ldap is the actual non functional portion of the whole mess.
-
-I'm sure I don't have the log level set correctly to get much useful information at this time, I tried a log level of -1 in the slapd.conf file, will try some other entries from there.
-
- >>  I don't use ldap here. Do the logs tell you anything you (or we) might 
- >>  consider informative?
+how can i fix that? it appears to be not a program, but a wine
+error.
 
 
+hope we can work this out together!
 
+--=20
+*=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
+ *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
+I       http://www.bmw-roadster.de/Friends/Olli/olli.html       I
+I       http://www.bmw-roadster.de/Friends/friends.html         I
+I       http://groups.yahoo.com/group/VGAP-93                   I
+I       http://home.t-online.de/home/spacecraft.portal          I
+>>>  Telek0ma iBBMS - soon back online +49.4503.TRSi1/TRSi2   <<<
 
-Epson Inkjet Printer FAQ: http://welcome.to/epson-inkjet
+--=20
+To unsubscribe send e-mail to suse-linux-e-unsubscribe@suse.com
+=46or additional commands send e-mail to
+suse-linux-e-help@suse.com            =20
+Also check the archives at http://lists.suse.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
