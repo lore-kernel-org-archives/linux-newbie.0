@@ -1,48 +1,37 @@
-From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
-Subject: Re: mounting vfat partitions
-Date: Mon, 26 Apr 2004 18:27:01 -0400 (EDT)
+From: Joaquim Laureano <laureano8@comcast.net>
+Subject: Strange users listed by repquota
+Date: Mon, 26 Apr 2004 21:54:16 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0404261824550.12785-100000@legolas.personal.engin.umich.edu>
-References: <408C8152.7000802@siriusbb.com>
-Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
+Message-ID: <1083030856.15808.33.camel@dell1500>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <408C8152.7000802@siriusbb.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-changing the /etc/fstab entries to the ones you listed below, Amin, mounts 
-the devices at boot but does not allow a user to read them.
+Hi,
 
-The problem persists. 
+When I execute the command "repquota -a" I get the listing of quota
+values for all the users listed in /etc/passwd plus a few other as listed
+below:
 
--K
+#307      --    1156       0       0             67     0     0
+#1001     --     804       0       0             61     0     0
+#253      --    5580       0       0            782     0     0
+#37725    --    2196       0       0             79     0     0
+#507      --       0       0       0              1     0     0
+#1000     --     136       0       0             11     0     0
+#516      --       0       0       0              1     0     0
+#6000     --     100       0       0              9   0     0
 
-On Mon, 26 Apr 2004, at 9:26am, Amin wrote:
+The number of these strange "characters" is increasing overtime.
+Does anyone know what is at work here? 
+Thank you.
 
-> Karthik Vishwanath wrote:
-> 
-> > /dev/hdb1	/dosd	vfat	defaults
-> > /dev/hda1	/dosc	vfat	defaults
-> > 
-> > This mounts the partitions correctly. However, I am able to access these
-> > mount points only as root, and not as a user.  I would prefer that these
-> > vfat partitions be writable by root alone, but be readble for all users on
-> > the machine. How can I fix that?
-> > 
-> > Thanks,
-> > 
-> > -K
-> 
-> /dev/hdb1	/dosd	vfat	defaults,owner,user
-> /dev/hda1	/dosc	vfat	defaults,owner,user
-> 
-> HTH
-> 
-> Yawar
-> 
+-- 
+Joaquim Laureano 
+Email: laureano8@comcast.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
