@@ -1,54 +1,51 @@
-From: Dennis Schridde <lindevel@gmx.net>
-Subject: ALSA-Sound IRQ Problems
-Date: Fri, 16 Jan 2004 21:37:36 +0100
+From: cr <cr@orcon.net.nz>
+Subject: Re: Moving Hard Drive
+Date: Sat, 17 Jan 2004 09:49:07 +1300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200401162137.36633.lindevel@gmx.net>
+Message-ID: <200401162145.i0GLjZDu004162@dbmail-mx3.orcon.co.nz>
+References: <20040116105630.D896B1C900@heisspf>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <20040116105630.D896B1C900@heisspf>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Peter <heisspf@skyinet.net>, linux-newbie@vger.kernel.org
 
-Hi,
-I'm using linux-2.6.1-rc3(-gentoo) with integrated ALSA. (intel8x0)
-The first times after compiling this kernel ALSA worked perfectly, but now 
-there is no sound anymore and dmesg says:
-////////////////////////////////////////////////////////////////////////////////////////////////
-PCI: Setting latency timer of device 0000:00:06.0 to 64
-intel8x0: clocking to 47432
-irq 193: nobody cared!
-Call Trace:
- [<c010b68a>] __report_bad_irq+0x2a/0x90
- [<c010b77c>] note_interrupt+0x6c/0xa0
- [<c010ba51>] do_IRQ+0x121/0x130
- [<c0105000>] _stext+0x0/0x60
- [<c0109d6c>] common_interrupt+0x18/0x20
- [<c0105000>] _stext+0x0/0x60
- [<c0107053>] default_idle+0x23/0x30
- [<c01070bc>] cpu_idle+0x2c/0x40
- [<c0364707>] APIC_init_uniprocessor+0x17/0xd0
- [<c0364480>] init_apic_mappings+0xd0/0x130
+On Fri, 16 Jan 2004 23:56, Peter wrote:
+> Hi,
+>
+> I got myself a new larger hard drive which is presently a secondary master
+> hdc. On it I have RH9 and SW9.1 the latter doing the booting with lilo.
+>
+> I want to make now this drive the master drive by which I assume it will
+> become hda.
+>
+> Is it correct then that before doing the switch I will have to change in
+> /etc/fstab and lilo.conf all what is labeled hdc to hda? 
 
-handlers:
-[<e4a6a7c0>] (snd_intel8x0_interrupt+0x0/0x210 [snd_intel8x0])
-Disabling IRQ #193
-////////////////////////////////////////////////////////////////////////////////////////////////
+Yes, certainly for fstab and I'm pretty sure for lilo.conf too (I use Grub 
+myself and it would apply to Grub's conf file 'menu.lst').
+I'd first make a copy of the fstab and conf files just in case something goes 
+wrong and you want to change back.
 
-Has anybody an idea what this could mean, or how to fix it?
+> Boot initially
+> from a floppy into SW run lilo and I should be set with the new drive as
+> master.
 
-Thanks,
-Dennis
+That would work OK with Grub so I guess it will work with Lilo.
 
-System:
-Gentoo 1.4
-Linux-2.6.1-rc3-gentoo (gentoo-dev-sources)
-alsa-lib 1.0.0_rc2
-alsa-utils 1.0.0_rc2
+Re the boot floppy, if it was created when you installed your system, it may 
+be set to boot your system on hdc and may fail when you move it to hda.   
+I find it handy to have a Grub boot floppy which I can use to boot a system 
+'anywhere', I don't know if Lilo makes a similar boot floppy.    I also find 
+it handy to keep a spare floppy 'rescue disk' like Toms Root Boot, RIP or 
+Leka, or an install CD with a 'Rescue' option.
 
-Hardware:
-ASUS A7N8X non-deluxe (nVidia nForce2)
+Btw, I'm not sure what distro 'SW' is but I think fstab, Lilo and Grub work 
+nearly the same way in all distros.
+
+cr
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
