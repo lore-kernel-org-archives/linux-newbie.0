@@ -1,40 +1,80 @@
-From: simon <simon.guinot@laposte.net>
-Subject: Re: linux box hacked ?
-Date: Tue, 21 Sep 2004 03:11:51 +0200
+From: fluid@chaijur.com
+Subject: 93TiKehSeD3xfSoGtxKl6RN my web QXsyogtgnE8mNKge9z
+Date: Tue, 21 Sep 2004 04:24:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <414F7FD7.8060000@laposte.net>
-References: <9765ac97d150.97d1509765ac@nyu.edu>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Message-ID: <MY1dWZ1G08M@mail.seeder.net.tw>
+Content-Transfer-Encoding: Quoted-Printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <9765ac97d150.97d1509765ac@nyu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Anshuman Singh Rawat <asr245@nyu.edu>, linux-newbie <linux-newbie@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain;; charset="iso-8859-1"
+To: my@vger.kernel.org, web@vger.kernel.org
 
-hello,
+http://www.chaijur.com/886913697892/
 
-Anshuman Singh Rawat wrote:
-> Hi, I want to know how one can know for sure if a linux box has been 
-> hacked. This morning a linux box in our lab was behaving funny. More 
-> clearly, i was executing some commands and on doing a 'grep', 'grep' 
-> threw a segmentation fault!! Also, I saw (with a 'ps -A') there were 
-> several processes running with names like'xscan', 'pscan'. There were
->  several 'cat' commands running; some of them were dead (if that's 
-> what defunct means). Also, I noticed that the executables for 'cat', 
-> 'grep' and a few others showed a modification date of today. I tried 
-> to reboot the system, but that never happenned. The boot loader 
-> complained about /etc/fstab being corrupted or missing, and ofcourse 
-> as booting procedure uses the 'grep' command (which was throwing 
-> segmentation faults), the machine couldn't boot.
-> 
-> We really couldn't figure out for sure what happenned but do any of 
-> these symptoms indicate that somebody could have hacked into it?
+GSM / CDMA MOBIL EXPORT
+MOBIL PARTS EXPORT 
 
-check or change your ram...
-else reinstall your system...
+OEM/ODM SERVICE & SOURCE OFFER
 
-simon
+ASSEMBLY TECHNICAL SUPPORT
+
+GSM / CDMA ELECTRONIC BOARD R/D & SUPPLY
+
+=A1@
+
+
+
+MOBIL SILICON RUBBER R/D & SUPPLY
+
+LCD DISPLAY R/D & SUPPLY
+
+WHOLE SET SUPPLY
+
+CIS/LOGO DESIGN
+
+Dr.Stephen Lee
+
+TEL : 886-425347342
+FAX : 886-425329268
+fluid@chaijur.com
+
+MOBIL : 886-913697892
+
+http://www.chaijur.com/newlist/free/SkypeSetup.exe
+
+search ID : chaijur
+
+http://www.chaijur.com/newlist/free/ipbb.exe
+
+search ID : 87817406
+
+QUOTATION LINK
+
+http://www.chaijur.com/newlist/simplyquotation.xls
+
+SPECIFICATION LINK
+
+http://www.chaijur.com/newlist/speciafication/
+
+FTP LINK
+
+http://www.chaijur.com/newlist/
+
+=A1@
+
+
+
+
+
+Dr.Stephen Lee
+
+TEL : 886-425347342
+FAX : 886-425329268
+fluid@chaijur.com
+MOBIL : 886-913697892
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
