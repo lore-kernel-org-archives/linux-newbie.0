@@ -1,44 +1,51 @@
-From: Steven Ackerman <steven@nvts.us>
+From: "Riley Williams" <Riley@Williams.Name>
 Subject: RE: RH 9.0 and knetfilter installation
-Date: 27 May 2003 08:02:11 -0700
+Date: Tue, 27 May 2003 16:45:52 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1054047731.814.2.camel@RHServer>
-References: <BKEGKPICNAKILKJKMHCAOENKDBAA.Riley@Williams.Name>
-Reply-To: steven@nvts.us
+Message-ID: <BKEGKPICNAKILKJKMHCAGEJPEBAA.Riley@Williams.Name>
+References: <1054047731.814.2.camel@RHServer>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BKEGKPICNAKILKJKMHCAOENKDBAA.Riley@Williams.Name>
+In-Reply-To: <1054047731.814.2.camel@RHServer>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Riley Williams <Riley@Williams.Name>
+To: steven@nvts.us
 Cc: linux-newbie@vger.kernel.org
 
-Hey all.
+Hi Steven.
 
-When I try to install iptables like it is listed below. I get the
-following error:
+ >> Put Red Hat 9 CD 1 in your favourite CD drive and mount it.
+ >> Assuming you've mounted it as /mnt/cdrom do the following...
+ >>
+ >>		rpm -Uvh /mnt/cdrom/RedHat/RPMS/iptables-*
+ >>
+ >> ...and it will install iptables for you. You can then unmount
+ >> the CD and put it back to bed...
 
-error: cannot get exclusive lock on /var/lib/rpm/Packages
-error: cannot open Packages index using db3 - Operation not permitted
-(1)
-error: cannot open Packages database in /var/lib/rpm
+ > When I try to install iptables like it is listed below.
+ > I get the following error:
+ >
+ > error: cannot get exclusive lock on /var/lib/rpm/Packages
+ > error: cannot open Packages index using db3 - Operation not
+ >		permitted (1)
+ > error: cannot open Packages database in /var/lib/rpm
+ >
+ > I am not logged in as root.
 
-I am not logged in as root. I'll try that but thought I will post this
-anyway. Thanks for the help. Hope everyone had a great weekend.
+That would explain the above - with very few exceptions, you have
+to be logged in as root to install, upgrade or erase RPM packages
+simply because root is the only user to have write access to most
+of the directories involved in installing packages.
 
--Steve
+Best wishes from Riley.
+---
+ * Nothing as pretty as a smile, nothing as ugly as a frown.
 
-On Fri, 2003-05-23 at 23:54, Riley Williams wrote:
-
-> Put Red Hat 9 CD 1 in your favourite CD drive and mount it.
-> Assuming you've mounted it as /mnt/cdrom do the following...
-> 
->          rpm -Uvh /mnt/cdrom/RedHat/RPMS/iptables-*
-> 
-> ...and it will install iptables for you. You can then unmount
-> the CD and put it back to bed...
-> 
+---
+Outgoing mail is certified Virus Free.
+Checked by AVG anti-virus system (http://www.grisoft.com).
+Version: 6.0.483 / Virus Database: 279 - Release Date: 19-May-2003
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
