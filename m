@@ -1,38 +1,39 @@
-From: Peter <pfheiss@philonline.com>
-Subject: "=?iso-8859-1?Q?J=FCrgen?=
-Date: Tue, 22 Apr 2003 08:49:14 +0800
+From: 1stFlight <1stflight@ameritech.net>
+Subject: Redhat 9 Can't Compile a Kernel??
+Date: Tue, 22 Apr 2003 22:43:19 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304220049.h3M0nEe02128@philonline.com>
+Message-ID: <200304222243.19905.1stflight@ameritech.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-admin@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+ I get this error message when trying to compile kernel 2.4.20 patched to 
+.21-rc1. What's gone wrong here? Thanks	
 
-When downloading the mail sometimes I get the following on the xterm:
+												Darryl
 
-[Message #12] From: "=?iso-8859-1?Q?J=FCrgen?= 
-
-Apparently, in this case the German Umlaut can not be read.
-
-export LANG=de will not do trick.
-
-How do I correct this?
-
-Thanks & regards
--- 
-Peter
-
-
-
-
-
-
-
-
+[root@localhost linux-2.4.20]# make xconfig
+rm -f include/asm
+( cd include ; ln -sf asm-i386 asm)
+make -C scripts kconfig.tk
+make[1]: Entering directory `/usr/src/linux-2.4.20/scripts'
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkparse.o 
+tkparse.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkcond.o tkcond.c
+gcc -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -c -o tkgen.o tkgen.c
+gcc -o tkparse tkparse.o tkcond.o tkgen.o
+cat header.tk >> ./kconfig.tk
+./tkparse < ../arch/i386/config.in >> kconfig.tk
+drivers/ide/Config.in: 46: can't handle dep_bool/dep_mbool/dep_tristate 
+condition
+make[1]: *** [kconfig.tk] Error 1
+make[1]: Leaving directory `/usr/src/linux-2.4.20/scripts'
+make: *** [xconfig] Error 2
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
