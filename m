@@ -1,72 +1,39 @@
-From: lawson_whitney@juno.com
-Subject: Re: tar question (was Re: nomore newbies??)
-Date: Mon, 20 May 2002 10:21:43 -0400 (EDT)
+From: "Axel H. Siebenwirth" <axel@hh59.org>
+Subject: Re: process priority at 25
+Date: Mon, 20 May 2002 16:46:12 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020520.102255.134663624.0.lawson_whitney@juno.com>
-References: <200205201347.g4KDl2k21520@langhans.hartford-hwp.com>
+Message-ID: <20020520144612.GA489@prester>
+References: <20020519142943.GA9998@prester> <0205191540330V.27213@unix.pa3gcu> <006101c1ff84$963f95c0$0901a8c0@system>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200205201347.g4KDl2k21520@langhans.hartford-hwp.com>
+Content-Disposition: inline
+In-Reply-To: <006101c1ff84$963f95c0$0901a8c0@system>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: brownh@hartford-hwp.com, lawson_whitney@juno.com
-Cc: ik5bcu@tin.it, linux-newbie@vger.kernel.org
+To: Tom Beer <mailings@analogon.com>
+Cc: pa3gcu@zeelandnet.nl, linux-newbie@vger.kernel.org
 
-On Mon, 20 May 2002, Haines Brown wrote:
+Hi Tom!
 
-> Lawson,
->
-> The "tartar" script worked very nicely to copy a directory on one
-> drive to another drive, thanks!
->
-> > #!/bin/bash
-> > tar -C "$1" -cOl . | tar -C "$2" -xpf -
->
-> However, I ran into a lot of ownership and permission errors, and so
-> these were often not preserved. This shifts the issue from tar to
-> permissions, but perhaps I can sneak it in here because it does bear
-> on setting up a backup.
->
-> My guess is that I need to give user write permission to /mnt/mirror
-> if I am to preserve user's ownership and permissions. Root can give
-> that permission, but when the mount point is mounted, the permissions
-> automagically revert to rwxr-xr-x.
+On Mon, 20 May 2002, Tom Beer wrote:
 
-Huh?  Read man mount, DESCRIPTION.
+> amanda, some month ago. I thought that the uneven numbers are experimental, but
+> the even numbers would be "stable"?
 
-       This tells the kernel to attach the file system  found  on
-       device  (which is of type type) at the directory dir.  The
-       previous contents (if any)  and  owner  and  mode  of  dir
-       become  invisible, and as long as this file system remains
->>>>>>>>>>>>>>>^^^^^^^^^^
-       mounted, the pathname dir refers to the root of  the  file
-       system on device.
+For example in kernel version number 2.4.18
+				     2 is the VERSION
+				       4 is the PATCHLEVEL and
+					 18 is the SUBLEVEL.
 
-An ext2 filesystem has an owner and permissions of its own.  These are
-not affected by the permissions of the mount point.  You can't change
-them when it's not mounted.  Well, not with chown and chmod, anyway.
-Mount it and chown -R/chmod -R it or rm -rf /mnt/mirror/storage/backups
-#mkdir /mnt/mirror/storage/backups
-#chown user /mnt/mirror/storage/backups
-(or chmod or chgrp or however you like to manage this thing).
-and do the tartar again.  It should preserve permissions then.
->
-> I'm mystified. The cause might well be in /etc/fstab. The relevant
-> line is:
->
->      /dev/sdc1	/mnt/mirror	ext2	noauto,user
->
-> I find that my mounting the primary partition of the external mass
-> storage device, I have access to all its partitions. But only root can
-> write to them.
->
-> Haines Brown
->
-Lawson
----oops---
+I believe since kernel version 2, kernel development was arranged in a way
+that even PATCHLEVELs are regarded as a "stable" branch and an uneven
+PATCHLEVEL is a "development" branch that regular linux users should not
+work with. It is only for kernel developers for working out a "better
+kernel". So 2.5 is not for regular use.
 
-
+Regards,
+Axel
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
