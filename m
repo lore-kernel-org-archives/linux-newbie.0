@@ -1,35 +1,77 @@
 From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: lilo boot problems with SATA and mandrake 10.1
-Date: Sat, 18 Dec 2004 13:56:04 -0500
-Message-ID: <20041218185604.GB611@lnx2.w8mch.ampr.org>
-References: <1103190044.7183.12.camel@itanium> <41C20748.9080605@ieee.org>
+Subject: USB and GPM??
+Date: Sat, 18 Dec 2004 13:46:58 -0500
+Message-ID: <20041218184658.GA611@lnx2.w8mch.ampr.org>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <41C20748.9080605@ieee.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 12-16, Simon Valiquette wrote:
-> Vladimir E. Rodriguez a ?crit :
+Greetings: Been using Logitech Optical Mice on two machines for some
+time with excellent results using the supplied adapter from it's USB
+socket to PS/2 plug. Gpm no problem invoking gpm -tps2 of course..
 
-> >Also I have windows XP on this system to dual boot.
-> >After I have installed Fedora Core 3, It works normally, but with
-> >mandrake 10.1 official I have problems to boot.
-> >
-> >Please anybody have experience with this thing?
+Needed another mouse with an identical one not available, but a
+Logitech Model M/N UV56A, with a USB plug but no PS/2 adapter..
+Plugged into the USB supported machine running Slack9.0, 2.4.20
+kernel, bare.i - the kernel saw the device and automatically
+installed all the modules needed according to all the docos I fetched
+from linux-usb.org... Invoking gpm -tps2 is accepted assigning a pid
+but no normal block pointer appears on the screen.. Invoking
+_anything_ except -tps2 completely locks the KB big time.. gpm config
+- anything tried produces a complete lock up needing a hard reset and
+the usual files system repairs.. The BIOS set to USBKeyboard disable
+or enable, no change.. I've listed an edited copy of dmesg which
+looks OK to _me_, but, obviously isn't... :^)..
 
-	FWIW, I can't really help; only comment.. I tried setting up
-a dual boot machine with WinXP for a neighbour, that was already
-setup with Win98, 8gB partition and Linux...  Never got Win98
-replaced with XP but XP managed to completly mess up the Linux
-partition changing the device numbers.. It took several hours with
-cfdisk to straighten out the partition table and then re install
-Win98 for them... NEVER again... Hope you have better luck..
+All the /dev/ listings are the same as the docos: I'm stuck.. Could
+it be that Logitech has made a "WinMouse?" This particular model with
+the aforementioned USB to PS/2 adapter doesn't work either, so the
+subject mouse is definately "different." I wonder if anyone has had a
+similar fate?? Appreciate and TIA.. (I have not tried the mouse with
+anything except gpm because that's the only reason for the mouse on
+that particular machine.)
+
+dmesg, edited, follows:
+------------------------------------------------------------------------------
+Linux version 2.4.20 (root@midas) (gcc version 3.2.2) #2 Mon Mar 17 22:02:15 PST 2003
+<snipped>
+usb.c: registered new driver usbdevfs
+usb.c: registered new driver hub
+uhci.c: USB Universal Host Controller Interface driver v1.1
+PCI: Found IRQ 12 for device 00:07.2
+PCI: Sharing IRQ 12 with 00:07.3
+uhci.c: USB UHCI at I/O 0xd400, IRQ 12
+usb.c: new USB bus registered, assigned bus number 1
+hub.c: USB hub found
+hub.c: 2 ports detected
+PCI: Found IRQ 12 for device 00:07.3
+PCI: Sharing IRQ 12 with 00:07.2
+uhci.c: USB UHCI at I/O 0xd800, IRQ 12
+usb.c: new USB bus registered, assigned bus number 2
+hub.c: USB hub found
+hub.c: 2 ports detected
+parport0: PC-style at 0x378 [PCSPP,EPP]
+parport_pc: Via 686A parallel port: io=0x378
+hub.c: new USB device 00:07.2-1, assigned address 2
+usb.c: USB device 2 (vend/prod 0x46d/0xc016) is not claimed by any active driver.
+usb-uhci.c: $Revision: 1.275 $ time 15:38:38 Mar 11 2003
+usb-uhci.c: High bandwidth mode enabled
+usb-uhci.c: v1.275:USB Universal Host Controller Interface driver
+usb.c: registered new driver usb_mouse
+input0: Logitech Optical USB Mouse on usb1:2.0
+usbmouse.c: v1.6:USB HID Boot Protocol mouse driver
+usb.c: registered new driver hiddev
+usb.c: registered new driver hid
+hid-core.c: v1.8.1 Andreas Gal, Vojtech Pavlik <vojtech@suse.cz>
+hid-core.c: USB HID support drivers
+mice: PS/2 mouse device common for all mice
+------------------------------------------------------------------------------
 -- 
 
     Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
