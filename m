@@ -1,48 +1,37 @@
-From: David Yeu <dyeu@tulane.edu>
-Subject: SCSI Emulation w/ DMA
-Date: Mon, 19 Aug 2002 16:57:48 -0500
+From: Venkat Raghu <venkatraghu2002@yahoo.com>
+Subject: newbie
+Date: Mon, 19 Aug 2002 15:30:18 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D6169DC.1020700@tulane.edu>
+Message-ID: <20020819223018.79961.qmail@web40015.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
-
-Hi everyone,
-
-I have SCSI emulation on my CDR drive in order to burn and the like,
-but I was confused by the following entries in /var/log/messages...
-
-----------------------------------------------------------------------
-Aug  5 12:18:48 localhost kernel: SCSI subsystem driver Revision: 1.00
-Aug  5 12:18:19 localhost rc.sysinit: Setting clock  (localtime): Mon
-Aug  5 12:18:13 UTC 2002 succeeded
-Aug  5 12:18:49 localhost kernel: scsi0 : SCSI host adapter emulation
-for IDE ATAPI devices
-Aug  5 12:18:19 localhost rc.sysinit: Loading default keymap succeeded
-Aug  5 12:18:49 localhost kernel:   Vendor: LITE-ON   Model: LTR-24102B
-         Rev: 5S0J
-Aug  5 12:18:19 localhost rc.sysinit: Setting default font (lat0-sun16):
-   succeeded
-Aug  5 12:18:49 localhost kernel:   Type:   CD-ROM        ANSI SCSI
-revision: 02
-Aug  5 12:18:19 localhost rc.sysinit: Activating swap partitions:  succeeded
-Aug  5 12:18:49 localhost kernel: hdc: DMA disabled
------------------------------------------------------------------------
-
-The last line says that DMA is disabled, but it refers to hdc.  Since
-my /dev/cdrom is linked to /dev/scd0, and /dev/cdrecorder is linked
-to /dev/sg0, does that mean DMA is working anyhow?  How can I tell?
-
-(I was prompted into peeking around after burning seemed a little
-slow..)
-
-Thanks in advance,
-Dave.
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-kernel@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org, linuxprog@geeky1.ebtech.net, linux-support@os.com, redhat-list@redhat.com
 
 
+Hi,
+
+I have a bash script which modifies some environment
+variables and does some other housekeeping things.
+But problem is that when script finishes running,
+new values of environment variables are no longer
+visible in parent shell. So what should I do so that
+these new values are visible in parent. I don't want
+to run as ". file.sh". I have to run it as "file.sh"
+only.
+
+Kindly mail me at venkatraghu2002@yahoo.com
+
+Regards
+Venkat.
+
+__________________________________________________
+Do You Yahoo!?
+HotJobs - Search Thousands of New Jobs
+http://www.hotjobs.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
