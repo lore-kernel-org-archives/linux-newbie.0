@@ -1,33 +1,70 @@
-From: "BEN RITCHEY" <linux-net@tcob1.net>
-Subject: 8.3 FSpec
-Date: Saturday, 16 Nov 2002 21:10:09 +000
+From: "Yawar Amin" <yav_a@hotmail.com>
+Subject: Re: a little help about vi or vim
+Date: Sun, 17 Nov 2002 15:38:01 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a20=2f1_b5daa12e@linuxnet>
+Message-ID: <OE22X0nmR1sjVfuscsE00000f73@hotmail.com>
+References: <200211142008.34206.r4mz3z@yahoo.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: ALL
+Alternately to putting the command in your startup file, you may want to set
+the "textwidth" option manually for a file. Depends on how often you work
+with 45-column text files. If you're editing an existing file and you set
+that option, VIM won't automatically rearrange the characters so that there
+are only 45 per line. You'll probably want to write a script that will do
+that for you.
 
-Thanks for all the feedback and info, I am staying busy researching all the
-ideas presented. Gawk seems more file/pipe oriented and all I need to do is
-parse an argument to a Bash script (LFN arg to SFN) and use the result to
-control the creation of semaphores and downloading of files locally (if already
-present, that one is skipped).
+To justify text, you need to know a little VIM scripting (namely, how to use
+functions). There's a VIM script file called "justify.vim" (or something
+similar) in the "macros" folder somewhere in the VIM installation. If you
+run
+that script, it'll set up the "Justify()" function and some useful
+user-defined commands like ":Justify" and "_j" that you can use. I've used
+this function, and I think it only works if you have the "lbr" option
+switched off (I'm talking about VIM 6.0 or above).
 
-If I were under DOS, as I am more often than not, I would just write a quick &
-simple Assembly program to handle things (plus a .Bat file, of course),
-however, Linux is my first choice for Internet jobs, so back to school. :)
+Yawar
 
---
-Keep the faith,
 
- : Ben        http://bellsouthpwp.net/c/m/cmech617   ICQ #32457590
- :
- + WildCat! Board 24/7  (337) 232-4155  33.6kBps 8,N,1  Files!
+----- Original Message -----
+From: "r4mz3z" <r4mz3z@yahoo.es>
+To: <linux-newbie@vger.kernel.org>
+Sent: Friday, 15 November, 2002 07:08
+Subject: a little help about vi or vim
+
+
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> Hi friends...
+>   How do I configure my vim-editor to write just 45 characteres (or other
+> measure) for each line? and How do I justify the text?, because I've see a
+> lot of txt files that are justify...
+>
+> thanks.
+>
+> - --
+>   Linux User Registered #232544
+> my GnuPG-key at www.keyserver.net
+>     --- rm -rf /bin/laden ---
+> -----BEGIN PGP SIGNATURE-----
+> Version: GnuPG v1.2.1 (GNU/Linux)
+>
+> iD8DBQE91EkRs4dF9gl05swRAuJWAJ9ybms2rKsIgUHfrkO/D6MZ83bATACfXLBr
+> YK+gcO4pvaZYgxWLLC5aklM=
+> =WcDN
+> -----END PGP SIGNATURE-----
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
