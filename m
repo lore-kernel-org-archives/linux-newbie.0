@@ -1,48 +1,55 @@
-From: RimeGate@rime.org (SPAM.B.GONEftn@digdilem.org )
-Subject: Exim borked
-Date: Fri, 30 Aug 2002 23:09:02 GMT
+From: "Sean Rima" <linux-net@tcob1.net>
+Subject: Re: Exim borked
+Date: Saturday, 31 Aug 2002 12:33:18 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <BAG2SMTP.1480023854.030749181@digdilem.org>
-Reply-To: RimeGate@rime.org (SPAM.B.GONEftn@digdilem.org )
+Message-ID: <MSGID_110=3a10=2f1_990845bd@fidonet.org>
+References: <BAG2SMTP.1480023854.030749181@digdilem.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <BAG2SMTP.1480023854.030749181@digdilem.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+Originally to: Rimegate@rime.Org (spam.B.Goneftn@d
 
-Hello All
+ R(> Hello All
 
-I've managed to break exim. :(
+Hello Simon, we seem to meet in strange places.
 
-(Debian 3, Kernal 2.4.18)
+ R(> I've managed to break exim. :(
 
-/var/log/exim/paniclog reads thus:
+Nah, I tried it and failed :)
 
-Unable to get root to set uid 1000 and gid 8 for local delivery to=20
-flash: uid=3D8 euid=3D8
+ R(> (Debian 3, Kernal 2.4.18)
 
+ R(> /var/log/exim/paniclog reads thus:
 
-Searched the web for help and it appears my uid is somehow screwed up=20
-- but I don't know how to set the uid for exim so it runs as root, so=20
-what I'm after is:
-
-1. How to setuid exim as root (it's running as daemon) so it'll work.
-2. Double-check the file permissions for /usr/sbin/exim against=20
-somebody with a working copy.=20
-
-Thanks!
+ R(> Unable to get root to set uid 1000 and gid 8 for local delivery to
+ R(> flash: uid=8 euid=8
 
 
---
-Simon Avery, Dartmoor, UK   =DD   http://www.digdilem.org/
----
-=FE RIMEGate(tm)/RGXPost V1.14 at BBSWORLD * Info@bbsworld.com
+This can be a couple of things (and I have to presume that you are using exim 
+4.x):
+a) Make sure that the exim binary is chmod 4755 (ie -rwsr-xr-x) B) this can also 
+be a problem with the director for the delivery, if you are trying to use 
+procmail/tmda/maildrop etc. It depends but try the first and let us know how you 
+get on.
+
+Sean
+
+
+... COFFEE.CUP empty - Operator shelled out to KITCHEN
+
+<-> Gateway Information.
+This message originated from a Fidonet System (http://www.fidonet.org)
+and was gated at TCOB1 (http://www.tcob1.net)
+Please do not respond direct to this message but via the list
+
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
