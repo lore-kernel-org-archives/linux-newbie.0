@@ -1,8 +1,8 @@
 From: "Axel Siebenwirth" <lists@tcob1.net>
 Subject: Re: .so, .a and .o-files
-Date: Thursday, 15 Aug 2002 16:44:45 +000
+Date: Thursday, 15 Aug 2002 20:31:11 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_164445__a46609a1@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_203111__a46609a1@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,12 +13,26 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Me again.
+Hi Ray!
 
-Whats the use of stripping object files of their symbols. Symbols reflect
-the functions in an object file, right?
+On Thu, 15 Aug 2002, Ray Olszewski wrote:
 
-Axel
+> Depends on how you link. Modern linking is done dynamically (only one copy 
+> of the library is loaded into memory and shared by all apps that use it), 
+> using .so libraries. Older linking was done statically (each app loaded its 
+> own personal copy of the library into memory), using .a libraries.
+
+Does this mean what I think? that when an executable is linked statically
+all the libraries are in the executable? So none of the required libraries
+are required when executing?
+
+Is there a difference between statically linking object files to a library
+and statically linking libraries to an executable?
+I'm really sorry about such fundamental questions but I want to get
+clarity about all that.
+
+Thank you very much and my best regards,
+Axel Siebenwirth
 -
 
 <-> Gateway Information.
