@@ -1,34 +1,32 @@
-From: Axel Siebenwirth <axel@pearbough.net>
-Subject: Re: WheelMouse/XF86 Education??
-Date: Sat, 26 Apr 2003 11:41:57 +0200
+From: David Gonzalez <sean@tcob1.net>
+Subject: Red Hat Version 9
+Date: 21 Apr 2003 23:48:46 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030426094157.GA19635@neon.pearbough.net>
-References: <20030425152005.A629@lnx2.w8mch.ampr.org>
-Mime-Version: 1.0
+Message-ID: <n2m-g.128001.960617@tcob1.net>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030425152005.A629@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Hal MacArgle <haltec@kvinet.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi Hal!
+Hello Linovitz,.
 
-On Fri, 25 Apr 2003, Hal MacArgle wrote:
+31 Mar 03 12:20, you wrote to All:
 
-> Can I presume I _must_ do something in the app, Netscape 4.77, for
-> this to happen?? Excuse my GUI ignorance.
+ LS> Does anyone have any comments on the new Red Hat version 9??
 
-You cannot do anything about that in the app.
+it sucks!.
 
-As far as I can remember, Netscape 4.77 just won't let you scroll in the 
-page and I also believe to remember that this has changed with Netscape 6 
-and up. Mozilla does it as well.
+I can't browse the web with that.
 
+I'd rather suggest you used Mandrake which is the best.
 
-Axel Siebenwirth
+David
+
+... @/opt/mbse/etc/tagline.lst
+--- SKYNET-GoldEDX/LNX 1.1."?"-DAVID-
+ * Origin: SkyNet BBS - Linux Powered - bbs.skynetbbs.org (4:930/1)
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
