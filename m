@@ -1,31 +1,40 @@
-From: "David Jones" <gnome@hawaii.rr.com>
+From: Adam Luchjenbroers <adam@luchjenbroers.com>
 Subject: Re: Large FTP transfers
-Date: Sat, 28 Sep 2002 12:35:01 -1000
+Date: Sun, 29 Sep 2002 17:39:30 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03f275434221c92HNLMAIL1@hawaii.rr.com>
-References: <200209281757.06861.adam@luchjenbroers.com>
+Message-ID: <200209291739.30520.adam@luchjenbroers.com>
+References: <5.1.0.14.1.20020928075131.02675d00@celine> <5.1.0.14.1.20020928093421.024d14f0@celine>
+Reply-To: adam@luchjenbroers.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20020928075131.02675d00@celine>
+In-Reply-To: <5.1.0.14.1.20020928093421.024d14f0@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On 28 Sep 02, at 8:01, Ray Olszewski wrote:
+I'm starting to suspect the NIC. It has twice recently (one instance before my 
+previous emails, one since) stopped being detected with Linux giving me an 
+"unable to access 64-bit address message"
 
-> I'd imagine it could also turn up problems with the NIC or
-> with the filesystem partition, but I haven't actually
-> experienced either.
+I've retrieved them from /var/log/kernel/errors
 
-I used to have hard crashes during long network 
-transfers (not simply FTP transfers) that disappeared 
-after I updated the driver for my 3COM 905Cs.
+Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for 
+device 00:09.0
+Sep 28 22:09:21 ironclad kernel: PCI: Unable to handle 64-bit address for 
+device 00:09.0
+Sep 28 22:09:21 ironclad kernel: Unknown bridge resource 0: assuming 
+transparent
+Sep 28 22:09:21 ironclad kernel: PCI: Cannot allocate resource region 1 of 
+device 00:09.0
+Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because of 
+resource collisions
+Sep 28 22:09:21 ironclad kernel: PCI: Device 00:09.0 not available because of 
+resource collisions
 
-David
-gnome@hawaii.rr.com
-
-
+In both cases, applying pressure to the top of the card fixed the issue, 
+however it is properly screwed in. How can I verify that this part is at 
+fault as I do not have any other cards to test it with?
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
