@@ -1,32 +1,47 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: disabled system speaker: how to enable?
-Date: Wed, 31 Dec 2003 13:33:21 -0600 (CST)
+From: caszonyi@rdslink.ro
+Subject: Re: disabled system speaker: how to enable?
+Date: Thu, 1 Jan 2004 05:33:51 +0200 (EET)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0312311325080.465@debian-box>
+Message-ID: <Pine.LNX.4.53.0401010532030.589@grinch.ro>
+References: <Pine.LNX.4.58.0312311325080.465@debian-box>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.58.0312311325080.465@debian-box>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-We recently installed Gentoo Linux on a laptop, which went successfully
-for the most part.  The Gentoo install seems to run from a ramdisk Linux
-version, and it includes things like the links browser so you can go
-online during the install to check documentation.  We also installed an
-application there that used the console beep (a chat client) to keep in
-touch with someone during the install.  The system speaker/console beep on
-the machine worked fine at this stage, and would beep as it was supposed
-to when someone would send a message.  On the installed system, however,
-the console beep/system speaker is not working.  It doesn't work in the
-chat client, and issuing | echo -e "\a" | doesn't make the system speaker
-beep either (no error responses or anything, just a blank line like it's
-trying to ring the system bell, then a return to bash prompt).  This is
-the 2.6 kernel, btw.  So, what could the problem be?  Should we have maybe
-enabled console beep when we compiled the kernel or something?  Any other
-things I could check/implement to get it working?
+On Wed, 31 Dec 2003, James Miller wrote:
 
-Thanks, James
+> We recently installed Gentoo Linux on a laptop, which went successfully
+> for the most part.  The Gentoo install seems to run from a ramdisk Linux
+> version, and it includes things like the links browser so you can go
+> online during the install to check documentation.  We also installed an
+> application there that used the console beep (a chat client) to keep in
+> touch with someone during the install.  The system speaker/console beep on
+> the machine worked fine at this stage, and would beep as it was supposed
+> to when someone would send a message.  On the installed system, however,
+> the console beep/system speaker is not working.  It doesn't work in the
+> chat client, and issuing | echo -e "\a" | doesn't make the system speaker
+> beep either (no error responses or anything, just a blank line like it's
+> trying to ring the system bell, then a return to bash prompt).  This is
+> the 2.6 kernel, btw.  So, what could the problem be?  Should we have maybe
+> enabled console beep when we compiled the kernel or something?  Any other
+> things I could check/implement to get it working?
+>
+
+you should have these lines in your kernel .config
+
+CONFIG_INPUT_MISC=y
+CONFIG_INPUT_PCSPKR=y
+
+> Thanks, James
+
+Calin
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
