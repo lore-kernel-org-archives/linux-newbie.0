@@ -1,52 +1,60 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Debian libc6 upgrade
-Date: Tue, 27 Jan 2004 14:16:00 -0800
+From: "James Turnbull" <james@lovedthanlost.net>
+Subject: Re: Squid only on eth1
+Date: Wed, 28 Jan 2004 09:24:59 +1100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040127140555.01fe9d38@celine>
-References: <200401272140.53742.michael.scondo@arcor.de>
- <200401272140.53742.michael.scondo@arcor.de> <Pine.LNX.4.53.0401272330090.501@grinch.ro>
+Message-ID: <000701c3e524$66616c70$3401a8c0@iih.usyd.edu.au>
+References: <4011C8740000129C@mail-bcm02.alestra.net.mx>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0401272330090.501@grinch.ro>
-References: <200401272140.53742.michael.scondo@arcor.de>
- <200401272140.53742.michael.scondo@arcor.de>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: rgomez@bancomer.com, linux-newbie@vger.kernel.org
 
-At 11:34 PM 1/27/2004 +0200, caszonyi@rdslink.ro wrote:
->On Tue, 27 Jan 2004, Michael Scondo wrote:
+rgomez@bancomer.com wrote:
+> It works, but one more, now it takes much time (close a minute) to
+> get response from proxy, here are all info I think you would need...
+
+There are far too many variables to determine why this could be happening
+and you have not provided enough information.  I'd probably need to look at
+your squid.conf.  What OS is it?  What is the spec of the machine you're
+running on? What version of squid?  What sort of connection to the Internet
+do you have and it's speed?
+
+> # echo $http_proxy
+> http://localhost:8080/
 >
-> > Hi to all,
-> > I'm running a mixed Debian Woody, with a few backports and libc6 2.3.1-16.
-> > Now I would like to upgrade to libc6 2.3.2.ds1-10.
-> > Anything runs fine - until I try to compile a program :
+> # wget www.tldp.com
+> --13:44:09--  http://www.tldp.com/
+>            => `index.html'
+> Resolving localhost... done.
+> Connecting to localhost[127.0.0.1]:8080... failed: Connection refused.
 
-Sorry I missed this the first time through. Let me ask the basic question: 
-when you upgraded libc6, did you also upgrade libc6-dev (the .deb with the 
-header files) to match?
+Confused as to why this is here - this is going to be rejected because squid
+is only running on eth1?
 
-I run Sid here, so offhand I do not know what libc6 is "current" for Woody 
-... so I can't deduce from what you posted if you did your libc6 upgrade 
-through Debian package management or if it is part of what makes this what 
-you call a "mixed" system.
+> # wget www.ibm.com
+> --13:48:57--  http://www.ibm.com/
+>            => `index.html.4'
+> Connecting to eth1:8080... connected.
+> Proxy request sent, awaiting response... 302 Moved Temporarily
+> Location: http://www.ibm.com/us/ [following]
+> --13:49:44--  http://www.ibm.com/us/
+>            => `index.html.4'
+> Connecting to eth1:8080... connected.
+> Proxy request sent, awaiting response... 200 OK
+> Length: 27,087 [text/html]
 
-[...]
-> > cpp -o hallo hallo.cpp
-> > micha@betageuze:~/prog/test/t2$ ./hallo
-> > bash: ./hallo: Permission denied
-> > micha@betageuze:~/prog/test/t2$ chmod a+x ./hallo
-[remainder deleted]
+I can see the time being taken but this could also be the remote site or
+your link?
 
-This part is just a plain mistake --- cpp does not yield executable code; 
-it is just a preprocessor tha outputs source. The errors you got occur 
-because the system is trying to process the text as a seris of shell commands.
+Can I suggest you try the Squid FAQ and/or the Usenet group and mailing
+list.  All of these can be found on the squid website -
+http://www.squid-cache.org/
 
-You want to use gcc to compile and link C code, as you did later (omitted 
-here). The error from that is probably a header mismatch.
+Regards
 
-
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
