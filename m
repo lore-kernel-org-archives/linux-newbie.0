@@ -1,70 +1,50 @@
-From: Amin <raihan@citech-bd.com>
-Subject: Re: Hard disk repartitioning-II
-Date: Fri, 4 Apr 2003 22:29:07 +0600
+From: "Michael Graham" <themichaelgraham@hotmail.com>
+Subject: Re: Red Hat Version 9
+Date: Fri, 04 Apr 2003 13:37:35 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030404162907.GA4866@localhost.localdomain>
-References: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
+Message-ID: <F43XLVmAVnMKzRezsKF000291a2@hotmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030404145134.3911.qmail@web20711.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; format=flowed; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: slinovitz@adt.com, linux-newbie@vger.kernel.org
 
-On Fri, Apr 04, 2003 at 06:51:34AM -0800, Arthur Kng wrote:
 
->    1)back up all my data at a friends place. fdisk and
-> delete all existing partitions. make a          
-> primary partition of 10GB on which i'll load the
-> Windows OS and which will also have the         data
-> which i want to access from Win and Linux.
-> 
->    2)in the 10GB thats left i'll have 4GB for '/'
-> where i'll load Linux.
-> 
->    3)the remaining 6GB will be the '/home' partition,
-> which will have the linux only data.
-> 
->    4)mine is a desktop machine for normal home use. at
-> any given time i run atmost                     
-> (browser+mp3player) or (a programming IDE + mp3player)
-> etc. now i have 128MB of RAM so 
->        i'm thinking of doing away with the swap
-> partition but i'm not too sure about this. so if      
->  i'm wrong please do tell me.
 
-I think there's an issue here about Linux needing its boot
-partition within the first 1024 cylinders of the hard disk,
-or something like that.  In any case, here's what I'd
-recommend:
+I have the new redhat, you can get it with bit torrent if you have a windows 
+machine to use. There was an article on slashdot a couple of days ago 
+discussing it. Yeah redhat 9 seems to be nearly the same as redhat 8, but I 
+have had trouble with it. Redhat 9 doesn't have you add a regular user after 
+you set the root password during the install. It doesn't test the X 
+configuration, It has newer versions of all the software of course, but if 
+you have used redhat 8 you get the picture. My installation started failing 
+after I tried to set up ALSA. I used the instructions on freshrpms.net, but 
+I think I must have missed something. My system started locking up during 
+the boot when system logging service would start.
 
-hda1: 4 GB FAT Primary
-hda3: 100 MB ext3 Primary
-hda4: 150 MB linux-swap
-hda2: Extended
- hda5: 7 GB logical FAT
- hda6: 7 GB logical ext3 Growable
 
-hda1 is to house Windows' system files (the C: drive); hda3
-for Linux's ``/boot'' directory; and hda2 being the extended
-partition that holds hda5 and hda6.  hda5 you can use to
-store non-system Windows stuff (the D: drive); and hda6 for
-your ``/'' directory in Linux.
 
-About the swap space --- call me old-fashioned but I think
-it really is necessary.
 
-About hda6 being ``growable'': you may or may not choose to
-make it so, depending on how much expertise you're able to
-garner on the subject.  If you do make it so, you'll be able
-to use every last megabyte of your hard disk.  If not,
-you'll ``lose'' about 1.76 MB, because I rounded off space
-to the nearest integer.
+>From: "Linovitz, Scott" <slinovitz@adt.com>
+>To: linux-newbie@vger.kernel.org
+>Subject: Red Hat Version 9
+>Date: Mon, 31 Mar 2003 12:20:28 -0700
+>
+>Does anyone have any comments on the new Red Hat version 9??
+>
+>Scott
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
 
-HTH,
-Yawar Amin
+
+_________________________________________________________________
+Protect your PC - get McAfee.com VirusScan Online  
+http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
