@@ -1,43 +1,50 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: /cdrom fails to unmount
-Date: 24 Jul 2003
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: Re: How to update JRE?
+Date: Wed, 23 Jul 2003 21:39:33 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307240457.h6O4v5qR009233@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <089a84938071873HNLMAIL3@hnlmail3.hawaii.rr.com>
+References: <20030721.132729.505.480316@webmail10.lax.untd.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <20030721.132729.505.480316@webmail10.lax.untd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Maybe, and I think, the thing is much more trivial - but for the reason
-of typical specialised blindness, you never get it explained from the
-*nix gurus: It has to do with the current "location" where you are when
-trying to "umount /cdrom" - if one of the applications in any one of the
-desktop windows "is" still "in" the /cdrom directory, for instance after
-having done some task there, you cannot umount it from there nor from
-another task, because it's "busy" (not with a process - there duely is
-none to find -, but simply because the directory=device is accessed.)
+On 21 Jul 03, at 19:50, beolach@juno.com wrote:
 
-I have this nuisance time and again because after a while doing this or
-that I tend to forget that some earlier activity delocated the "working
-directory" (for its own purpose), and when I then want to change media in
-a CDROM or ZIP drive I promptly get that friendly "device is busy"
-harassment.
+> Before installing Sun's version of JRE, you might want to
+> look into the differences between Sun's and Blackdown's
+> JRE. As far as I understand it, if you use the latest
+> version of Sun's JRE (1.4.2), it is the best choice, but
+> if you want to use version 1.4.1 or older, you might need
+> to use Blackdown if you want to use the plugins in
+> Mozilla, if Mozilla was compiled with gcc ver. 3.x. A nice
+> summary page is available at
+> <http://plugindoc.mozdev.org/whichjava.html>.
 
-A good illustration is the behaviour of the Midnight Commander: you
-start it somwhere on some branch on the directory tree, then you
-navigate _inside_ the prog to _look_ at some other branch/files, and if
-you exit MC then your're quite somewhere else from where you started.
+I'll check into that. I do use Mozilla.
 
-Maybe that's natural for everyone who grew up with *nixish mother's
-milk; for all others, and certainly for mewbies like me, it's a bit more
-diffcult to understand why "The System" would change your current/working
-directory with, say, just reading-in data for an application, from a data
-file which is situated quite somewhere else.
+> But remember, this only applies to JRE 1.4.1 or older,
+> with Sun's JRE 1.4.2 this is no longer an issue, and so
+> Sun's JRE 1.4.2 will probably be your best choice, unless
+> the program you want to run specifically says it will only
+> work with an older version.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-07-23
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+Thanks ... I've gotten increasingly-hostile responses 
+from the author of the program, he basically is being 
+very adament - Sun JRE 1.4.1 (although the instructions 
+on his web page also say "or newer"). As far as he's 
+concerned, Blackdown is a "cheap knockoff" and he 
+refuses to have anything to do with it.
+
+I think I'll go ahead and update to the JRE 1.4.2, and 
+see if the program in question works. If it doesn't, Oh, 
+well!
+
+David
+gnome@hawaii.rr.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
