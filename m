@@ -1,8 +1,8 @@
 From: "Girish Kale" <girish.kale@nevisnetworks.com>
-Subject: Filesystem for embedded device
-Date: Mon, 23 Jun 2003 14:28:44 +0530
+Subject: Problem in logging in as root
+Date: Mon, 23 Jun 2003 15:34:42 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <36993D449C7FA647BF43568E0793AB3E059BAD@nevis_pune_xchg.pune.nevisnetworks.com>
+Message-ID: <36993D449C7FA647BF43568E0793AB3E061D26@nevis_pune_xchg.pune.nevisnetworks.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,14 +12,27 @@ Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie <linux-newbie@vger.kernel.org>
 
 Hi,
- 
-I want to know if there is any guide/link for the "exact" procedure of
-building, creating a filesystem for "embedded devices". I have gone
-through docs which explain this but still not fully able to understand
-this. 
- 
-Regards,
+
+I built a kernel off 2.4.21.
+When I load it, it comes to the login. If I give the login as root and
+then type the password, it gives me an error "Authentication service
+cannot retrieve authentication info" , and it comes back to the login
+prompt.
+
+After a few times of trying the above, it gives me the above message and
+also the following :
+
+"INIT: Id "1" respawning too fast disabling for 5 min"
+
+I am able to login as root with the same above password with the
+standard Redhat linux- 2.4.18, installed on my machine.
+
+Can anyone help me out.
+
+Thanks,
 Girish
+ 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
