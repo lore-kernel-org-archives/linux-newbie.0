@@ -1,32 +1,76 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Tripwire and LogWatch general info
-Date: Wed, 30 Oct 2002 14:41:32 -0500
+From: lawson_whitney@juno.com
+Subject: Re: user can't read mail (rmail) in text mode (fwd)
+Date: Wed, 30 Oct 2002 19:44:45 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210301941.g9UJfW502355@hartford-hwp.com>
+Message-ID: <20021030.203356.134682184.0.lawson_whitney@juno.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@hartford-hwp.com
+To: brownh@hartford-hwp.com
+Cc: linux-newbie@vger.kernel.org
 
-Root cron every day runs to programs, Tripwire and LogWatch. I'd like
-to know more about them.
 
-Tripwire apparently compares certain files against a database to
-ensure file integrity. What files are checked? What's the point? Is it
-to help protect against viruses? Is it entirely safe for me to enable
-Tripwire? (root's cron tries to run it daily, but it says it has not
-been initiated).
+---------- Forwarded message ----------
 
-The LogWatch does report denied packets. I'd like to know what it all
-means. Denial is good, but I don't know what's denied. What good is it
-to know what IP tried without success to access my system. Usually
-there is just one attempt, and I suppose that can be ignored. But at
-what point should one become concerned? Or is the fact that LogWatch
-is reporting it mean that I don't have to be concerned?
+On Tue, 29 Oct 2002, root wrote:
 
-Haines Brown
+> I'm in a real jam: can't run X server, and so trying to run rmail
+> out of emacs in text mode from a command prompt. But I'm having
+> trouble with rmail in this situation.
+
+It shouldn't happen, but bash will read different startup files
+depending on how it was started.  You might have the environment
+variable MAIL set wrong in one.  A console shell reads ~/.bash_profile,
+while an xterm reads ~/.bashrc.
+>
+> Fetchmail works (dumps new messages into /var/spool/mail/<username>).
+> However, even though I'm logged in as user and run rmail under emacs,
+> it says permission denied to access old stored mail (~/RMAIL), but
+> nevertheless then proceeds to load it properly. Rmail then works
+> normally with old messages. But when I try to access new messages from
+> /var/spool/mail/usrname, I get permission denied for /var/spool/mail
+> /root. I don't know why it tries to read root's mail, and chmod o+r
+> username does not help.
+>
+> The only way I can read my mail is to read /var/spool/mail/username
+> file directly with emacs, which is a pain (partly because for some
+> reason, in text mode, Ctl-home does not take me to the top of the
+> file).
+>
+> First question. If I'm logged in as user and user starts emacs and
+> then rmail, why does rmail (when run from a command prompt in text
+> mode) fail to seek its own incoming mail spool file? Is there any
+> way to tell rmail what it's spool file is?
+
+try 'source ~/.bashrc'
+
+I am guessing, of course, but maybe rmail reads MAIL.
+>
+> Second. I get hundreds of messages a day, and I'm already overwhelmed
+> by the size of user's mail spool file. To what extent can it be edited
+> directly (such as by cutting out undesirable messages)?
+
+There is nothing magic about a mail file.  It is just a file, and you
+can read it with any mail user agent, or - for a long time, I read mail
+with "less -ni" and comosed mail with joe.
+>
+> If I could communicate properly, I could start addressing my basic
+> problems.
+>
+> Haines Brown
+
+Lawson
+---oops---
+
+
+
+
+________________________________________________________________
+Sign Up for Juno Platinum Internet Access Today
+Only $9.95 per month!
+Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
