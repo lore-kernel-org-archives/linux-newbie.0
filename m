@@ -1,42 +1,37 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: USB Hotplug??
-Date: Sun, 5 Oct 2003 10:50:55 -0400
+From: Amichai Rotman <amichai@iglu.org.il>
+Subject: Re: USB Hotplug??
+Date: Sun, 05 Oct 2003 18:00:15 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031005145055.GA882@lnx2.w8mch.ampr.org>
-Reply-To: haltec@kvinet.com
+Message-ID: <200310051800.16571.amichai@iglu.org.il>
+References: <20031005145055.GA882@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <20031005145055.GA882@lnx2.w8mch.ampr.org>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-Greetings: I thought that "hotplug" merely meant a device could be
-plugged in/out without shutting off the power to the computer..
-Apparently there's more to it than that as I see a man and directory
-dedicated to "hotplug."
+On Sunday 05 October 2003 16:50, Hal MacArgle wrote:
+> Seeing the hotplug directory and files I thought I might find an
+> answer to my basic query: Can the device actually be plugged in and
+> unplugged with the power on?? I read somewhere that firewire is
+> hotpluggable but "don't do it," in many cases.. No details.. I still
+> can't find the theory behind hot plugging.. As an EE you don't
+> connect anything to a live bus with impunity; unless the bus is
+> "dead" until it senses a load.. Maybe I can learn something here.
+> <grin>
+>
+> Any comments? TIA & enjoying the list..
 
-I'm a bit lost at this point especially since I've plugged in a flash
-drive, with the power off; noted the kernel finds it; changed the
-default filesystem to ext2; and use it as a regular drive mounted as
-/dev/sda1... So it's obvious that Slackware9.0/2.4.20 has configured
-things to work right out of the box..
+It would e wise if you umount the device before yanking it from the plug. 
+Other than that - it is safe to unplug it while the power is on. If you 
+unplug it before umounting it, the data on it will become unreadable / 
+unaccessible and that's a shame... ;-)
 
-Seeing the hotplug directory and files I thought I might find an
-answer to my basic query: Can the device actually be plugged in and
-unplugged with the power on?? I read somewhere that firewire is
-hotpluggable but "don't do it," in many cases.. No details.. I still
-can't find the theory behind hot plugging.. As an EE you don't
-connect anything to a live bus with impunity; unless the bus is
-"dead" until it senses a load.. Maybe I can learn something here.
-<grin>
+Amichai. 
 
-Any comments? TIA & enjoying the list..
-
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-                Proprietary  Formats  Unacceptable
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
