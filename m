@@ -1,37 +1,38 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Kerberos and FTP login failure
-Date: Mon, 10 Feb 2003 11:07:42 -0500
+From: ramzez <r4mz3z@yahoo.es>
+Subject: dump vs tar
+Date: Mon, 10 Feb 2003 16:26:58 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200302101607.h1AG7gEI031340@hartford-hwp.com>
-Reply-To: brownh@hartford-hwp.com
+Message-ID: <200302101627.05932.r4mz3z@yahoo.es>
+Reply-To: r4mz3z@yahoo.es
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I've been struggling for some time to get a new web hosting service
-going. Since things really should be working, I began to suspect that
-my Kerberos V4 (RedHat 8.0) tokens are simply not recognized by the
-web hosting server. Here is the exchange:
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-  $ ftp unix245.hosting-network.com
-  Connected to unix245.hosting-network.com.
-  220 unix245.hosting-network.com NcFTPd Server (licensed copy) ready.
-  500 Syntax error, command unrecognized.
-  500 Syntax error, command unrecognized.
-  KERBEROS_V4 rejected as an authentication type
-  Name (unix245.hosting-network.com:brownh): brown
-  331 User brown okay, need password.
-  Password:
-  530 Login incorrect.
-  Login failed.
-  ftp> bye
+Hi friends...
 
-Can anyone offer any insight here?
+  When is advisable use dump, and when is advisable use tar? and How do I can 
+use these commands?
 
-Haines Brown
+thanks
+- -- 
+  Linux User Registered #232544
+my GnuPG-key at www.keyserver.net
+    --- rm -rf /bin/laden ---
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (GNU/Linux)
+
+iD8DBQE+R9LZG3Fqyap52TERAtbcAJ9TF11MZFVUbZb/5iCBv8jZmXgtEACePIoV
+1rekp/Pkf6tSgZFc8zdfH5w=
+=/84H
+-----END PGP SIGNATURE-----
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
