@@ -1,95 +1,85 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Debian -> sound modules
-Date: Thu, 26 Dec 2002 09:15:28 -0800
+Subject: Re: further debian questions
+Date: Thu, 26 Dec 2002 09:24:32 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021226085851.020b2100@celine>
-References: <3E0B0DDC.9040705@rug.ac.be>
+Message-ID: <5.1.0.14.1.20021225230121.020b1130@celine>
+References: <200212260504.gBQ53pSP012114@pyxis.wanadoo.be>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3E0B0DDC.9040705@rug.ac.be>
+In-Reply-To: <200212260504.gBQ53pSP012114@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Comments inline below.
-
-At 03:10 PM 12/26/02 +0100, Kurt Sys wrote:
->Hello,
+At , Heimo Claasen wrote:
+>I feel quite confused when reading this:
 >
->I'm rather a newbie to Linux (and to this list) and I've been trying 
->already some different distro's. In my opinion, Debian as (by far) the 
->best one (I've tried RedHet, Slackware, which I didn't like and SuSe, 
->which I think is also OK), but there are a few things I can't get right. I 
->have both a desktop and a laptop... and after a few months, I would like 
->to get everything working.
+> > The main lesson is to stick to a single archive ... even mixing Woody and
+> > Sid packages is not for the inexperienced.
 >
->1. I just can't get sound working. I installed Woody, but it coming with a 
->kernel which doesn't support sound (as far as I understand all well), so I 
->recompiled the kernel with different sound modules (I compile the 'debian 
->way' and when I 'make menuconfig', I choose some different 'sound 
->modules'). On my desktop, I have a very standard soundblaster (PCI 128, 
->and I know I/O, IRQ, DMA, etc), on my (Dell Inspiron 2650) laptop, it's 
->rather new and I now it's a 'integrated intell sound controller'. What's 
->the problem?
->I tried to run sndconfig, but it complains about my kernel. It asks for a 
->kernel at least 2.2... and I use 2.2.20 on my desktop and 2.4.16 on my 
->laptop. I don't get it. I think it searches for a module, sb or snd. When 
->I try to 'insmod' the 'soundblaster' (100% compatible things, actually the 
->ones I need!?) modules, it failes, for some reason or another. I don't 
->know why... So I tried alsa and installed, alsa-headers, alsa-modules (but 
->Debian tells me I have to use alsa-base, so that's what I do), alsa-utils 
->and alsaconf. If I run alsaconf, I can choose some cards and give the 
->right 'parameters', but alsa then it fails again, because 'can't locate 
->module snd'.
->It's more or less the same story for my laptop... although I have actually 
->no idea which 'modules' I have to choose for the soundcard which is 
->'integrated'.
+>What, then, would be the use of "upgrades" at all" ?
 
-First, if you want detailed help, you need to describe the problem better. 
-"it failes, for some reason or another. I don't know why" is a bit vague to 
-diagnose. There should be an error message if your "insmod" attempt fails, 
-and if it succeeds, then you need to explain waht you mean by "fails" in a 
-bit more detail.
+Well ... are you and I using "upgrade" in the same way? In the context of 
+the Debian apt-* system, the "upgrade" command tells apt-get to check which 
+installed packages are not the current versions in the archive, and replace 
+any that are not current with the current ones (with some minor 
+exceptions). It is NOT the command one uses when (for example) moving a 
+system from Woody to Sid ... that is a "dist-upgrade", whihc addresses 
+dependencies a bit differently. The "upgrade" options is properly, and 
+quite usefully, used only *within* a version to keep it current (to get 
+security upgrades and bugfiles, mainly).
 
-My current kernel (2.4.19, compiled by me. on Sid) runs a stock 
-Soundblaster card using the Ensoniq driver that I compiled in (Creative 
-Ensoniq AudioPCI 97 (ES1371) in Sound, using "make menuconfig"). If you are 
-using the out-of-the-box 2.2.20-compact kernel that Debian-Woody initially 
-installs ... I believer it does not include ANY sound support (it's trimmed 
-down to fit on a boot/rescue floppy), and you need a full-size kernel-image 
-package (or your own compile from kernel-source).
+>And the conclusion would not be that general for installing packages
+>from "earlier" distributions (or their versions) either - I regularly
+>install a quite "old" application, which is rather demanding in its X
+>(server) use, with all sorts of "modern" distributions and hitherto
+>never had a problem with it.
 
-In any case, you should be using modprobe, not insmod ... it will sort out 
-module interdependencies for you (as long as you've compiled the ones you 
-need).
+You describe your experience here too vaguely for me to be able to comment 
+intelligently. Except to note that dependency problems usually relate to 
+libraries, not X servers (does this "quite 'old' application" use libc6, 
+for example, and how did it cope with the change from glibc2.0.x to 
+glibc2.1.x?).
 
->2. I want to get to a network with a Windows NT server. I know I have to 
->use samba, but again, some trouble. I didn't manage to mount the 
->filesystem, so I looked for some tools and found one: xsmbrowser. With 
->this thing, I'm able to connect so the server and read all the files etc, 
->but I can't mount the filesystem, even not as root. I really have to be 
->able to mount the filesystem, because I can't print if it's not mounted (I 
->guess). So, it is surely possible to connect to the server and read the 
->stuff, but I really want to know how I have to mount the whole filesystem. 
->I have a password for my own directory (although if I use xsmbrowser, I 
->can read everyones documents with that passwd, but that has something to 
->do with some 'server things', I guess) and I have the password of the 
->administrators (although I'm not really an administrator...).
+>The reason for that "main lesson" given then, seems rather questionable:
+> > Actually, missing dependencies are commonplace on all full-size Linux
+> > systems, because, increasingly, packages use a wide mix of libraries, far
+> > too many possibilities to install them all in a base install.
 
-Once again, "I can't mount the filesystem, even not as root" is less 
-informative than your telling us the actual command you enter and the error 
-message, or other actual failure, you get in response. In particular, how 
-does what you WANT to do differ from what you say you CAN do ("connect so 
-the server and read all the files etc")? The "etc" part in particular 
-leaves my mystified.
+[...]
 
-Do you have smbfs support in your kernel (either compiled in or loaded as a 
-module)?
+>It appears to me that a response to this condition rather would be,
+>(a) an advice to authors (or packagers) to join clear indications of
+>needed third components [ - and I work with one rather experimental
+>development where this is done exemplarly - ], and
 
->Any help? Any suggestions? Thanks,
+Were this a list that gave advice to package developers (or authors or 
+packagers), I might agree with you. But offering such advice *here* is 
+pointless, since the people who come here for advice are beginners trying 
+to get Linux to work., not developers and others trying to improve their 
+packaging practices. Advice *here* should help those people cope with 
+reality, not focus on how packaging might be better.
 
-Details are at the heart of troubleshooting, Provide them in your followup.
+>(b) hints about how to best handle "complicated" cases; most probably,
+>these would be conflicts _among_ "dependencies".
+
+These problems need to be handled on a case-by-case basis. Perhaps others 
+can suggest useful "hints" that are not specific to a particular problem, 
+but I have none to offer, especially since (apparently) I use sufficiently 
+well-behanved apps that Debian-Sid (or Debian-Woody, for older, more stable 
+apps) can handle dependencies properly for me.
+
+One option you don't mention ... though you hint at it in a part of your 
+message that I deleted here ... is static compilation. A developer (or a 
+user who compiles from source) can bypass dependency issues completely by 
+doing a static compile against the library versions he or she wants the 
+program to use. The price is bigger code (both on disk and in memory), but 
+for the highly specialized applications you focus on in your comments, it 
+might be worth considering. But again, this though too is more useful to 
+experienced users and developers than to true beginners.
+
+[remainder deleted]
 
 
 --
