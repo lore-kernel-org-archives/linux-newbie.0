@@ -1,56 +1,29 @@
-From: robin@robind.de
-Subject: Re: New module: kernel recompile?
-Date: Thu,  3 Apr 2003 11:47:04 +0200 (CEST)
+From: Amin <raihan@citech-bd.com>
+Subject: /dev/cdrom is not a valid block device?
+Date: Thu, 3 Apr 2003 18:35:00 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030403094704.B9A2744331@basicbox3.server-home.net>
+Message-ID: <20030403123500.GA749@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Amin <raihan@citech-bd.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> Hi, I've installed a new RH8.0 system after
-> losing the old one. 
-> Problem is,
-> the fresh installation doesn't support my
-> (Myson) Ethernet card,
-> and I have
-> to load the ``fealnx'' module to get it to do
-> so.  And that module
-> isn't
-> already compiled and insertable.  So: is it
-> possible to compile the
-> module
-> and then insert it into the kernel, instead of
-> recompiling the
-> whole kernel,
+Hi all,
 
-IMHO, yes.
+Shortly after recompiling my kernel (ignoring numerous
+warnings and errors therein), I tried to mount my CD drive
+in the normal way:
 
-make mrproper
-make menuconfig <-- Insert your missing module
-!! Don't forget to load the configuration from file because 'make
-mrproper' will delete your '.config'.
-make dep &&
-make modules &&
-make modules_install
+mount /mnt/cdrom
 
-Please tell me when I'm wrong!!! 'make bzImage' will build the
-kernel-binary, you don't need it, so you can leave it.
+But I'm getting a ``mount: /dev/cdrom is not a valid block
+device''.  Does anyone have any idea why this is appearing?
 
-> as I had to do the last time?  (Not that I
-> don't like recompiling
-> the
-> kernel; it just gets a little boring during
-> the 5  hours it takes.)
-
-Wow!!! The last time I built a kernel I need approx. 45 minutes! Ok,
-but the time depends on your system.
-
-Goold look,
-Robin
+Thanks,
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
