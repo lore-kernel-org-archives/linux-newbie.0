@@ -1,64 +1,48 @@
-From: oford <oford@ev1.net>
-Subject: Re: Freesco, old kernel lines, security
-Date: 03 Jun 2003 03:54:02 -0500
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Slackware 8.1.01 Install????
+Date: Tue, 03 Jun 2003 18:23:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1054630442.4746.13.camel@spider.hotmonkeyporn.com>
-References: <Pine.LNX.4.53.0306020858070.6480@vector>
+Message-ID: <3EDD1FE4.E534CC27@gelm.net>
+References: <20030529165407.A446@lnx2.w8mch.ampr.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-B7IfGbwJj2U3I8F8RCkh"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.53.0306020858070.6480@vector>
 List-Id: <linux-newbie.vger.kernel.org>
-To: "James Miller (office)" <jamtat@mailsnare.net>
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com
+Cc: linux-newbie@vger.kernel.org
 
+ftp://ftp.slackware.com/pub/slackware/slackware-8.1/
 
---=-B7IfGbwJj2U3I8F8RCkh
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+ Hi, Hal:
 
-On Mon, 2003-06-02 at 09:08, James Miller (office) wrote:
-> I understand that in the world of Linux network security, generally older
-> =3D worser (more insecure).  So, I see that Freesco, a small Linux
-> gateway/router distro that seems to be actively maintained, is using a
-> kernel from the 2.0.x line - 2.0.38 (I understand that the most
-> recent 2.0.x kernel is 2.0.39).  Is Freesco considered an insecure
-> gateway/router distro because it uses this older kernel line, or can it b=
-e
-> expected to provide adequate network security?  What would be the risks
-> involved in using such a distro?  Would the security savants on this list
-> recommend against using it?
->=20
-> Thanks, James
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" i=
-n
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+ I downloaded slackware-9.0-install.iso and burned a CD.
+The resultant CD boots on two of three computers that I
+tried it on.  I suggest going to the above URL and downloading
+the iso image.  Here is a mirror that seems close to me:
 
-I like routerlinux.  And it appears to still be actively maintained.
+ftp://ftp.cerias.purdue.edu/pub/os/slackware/slackware-8.1-iso/
 
-http://www.routerlinux.com/
+ Sometimes I get all the domain names from:
+http://www.slackware.com/getslack/
+ then ping them to see which is fastest.  Then I
+get the file(s) from the fastest one.  ;-)
 
+To date, I have purchased one CD set from Slackware and
+one from CheapBytes. I currently use Slackware v8.0 with
+kernels 2.2.19, 2.2.25, 2.4.19, 2.4.20 on various computers.
 
---=20
-Owen Ford <oford@ev1.net>
+ Can you mount and read the bootable CD with your current
+slackware v8.0 computer?  I still think you can copy a boot
+image to one of your existing partitions and boot it
+with one floppy or even your existing boot loader.
 
---=-B7IfGbwJj2U3I8F8RCkh
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
+ If you can mount your 'bootable' install CD under 8.0,
+copy the base directory and the /slakware directory to
+an existing partition.  Then when you select your install
+media, use this hard drive partition.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (GNU/Linux)
-
-iD8DBQA+3GIq7BqG9qbphc4RAkIMAJ9Yv0ele4REFMgYJWrIasZPlHiUVwCfc97V
-VOs4u6g2aU8CK3TUjgktG6w=
-=u1M4
------END PGP SIGNATURE-----
-
---=-B7IfGbwJj2U3I8F8RCkh--
-
+HTH, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
