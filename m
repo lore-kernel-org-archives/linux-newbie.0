@@ -1,30 +1,21 @@
-From: kernel kernel <unix.hacker@gmail.com>
-Subject: New System call.
-Date: Sun, 7 Nov 2004 18:20:40 +0530
-Message-ID: <104ee7a5041107045023e8e0e1@mail.gmail.com>
-References: <104ee7a504110608313b809d3@mail.gmail.com>
-Reply-To: kernel kernel <unix.hacker@gmail.com>
+From: Phil Birkelbach <phil@petrasoft.net>
+Subject: Suggested Cron
+Date: Sun, 07 Nov 2004 21:48:35 -0600
+Message-ID: <418EEC93.1080406@petrasoft.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <104ee7a504110608313b809d3@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi All
+I am building a server and I am trying to decide on a cron daemon.  I 
+could use the venerable vixie-cron but I was wondering if there are some 
+others out there that folks have used that may be better.  Any suggestions?
 
-I am planning to add a new system call, in the Linux 2.6.8 kernel. I
-have made the changes.
-But gnu ld is throwing the linker errors. I have properly updated all
-the required header files. So compiliation is fine. I guess this
-problem is because, this newly introduced symbol is not in libc.so
-
-Please give a solution.
-
-Thanks
-Amrith
+Phil
+Houston
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
