@@ -1,61 +1,64 @@
-From: lawson_whitney@juno.com
-Subject: Re: How to mount CD-ROM?
-Date: Fri, 22 Nov 2002 20:18:19 -0500 (EST)
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Re: Windows File Server
+Date: 26 Nov 2002 11:16:07 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021125.215101.134684296.0.lawson_whitney@juno.com>
-References: <20021118092133.AFBB17FC17@smtp.orcon.net.nz>
+Message-ID: <1038309367.25357.9.camel@zebra.vil.ite.mee.com>
+References: <007e01c29498$ff605b80$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021118092133.AFBB17FC17@smtp.orcon.net.nz>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: cr@orcon.net.nz
-Cc: ray@comarre.com, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <007e01c29498$ff605b80$64fea8c0@pkrausxp>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Mon, 18 Nov 2002, cr wrote:
+Paul,
 
-> Sorry for the long delay.   Real Life (TM) interfered with my investigations,
-> and also a point you mentioned brought up a possible complication which I'll
-> mention at the end...
->
-> Doing /sbin/modprobe sr_mod brings a string of 'unresolved symbol' messages
-> and  "insmod sr_mod failed", and  lsmod indicates no change.
->
-> Trying to run X-CD-Roast gives an error message 'Failed to scan SCSI-bus'
-> *but* lsmod indicates it's loaded a couple of modules:
->
-> Module                  Size  Used by
-> sg                     27488   0  (autoclean) (unused)
-> scsi_mod               92208   1  (autoclean) [sg]
-> esssolo1               25376   0  (autoclean)
-> ..
-> ..
-Hmmm, has root never run /sbin/depmod for this kernel to set up the
-modules.dep file?  Try having it do so and see if modprobe works better.
+Funnily enough, I just started looking at Debian again (I tried it some
+time ago, and gave up because the install was so complex). My take on
+Debian now is that it's _much_ better than it used to be. The base
+install was pretty intuitive (although having some knowledge of linux is
+still basically a must), and the configuration of the components was
+straightforward. Just make sure that you specifically tell the install
+at the first prompt that you want to install the 2.4 kernel.
 
->
-> Then (but not before), /sbin/insmod ide-scsi works, after which X-CD-Roast
-> works.
->
-> However, trying to mount /mnt/cdrom still brings up a 'wrong fs type'
-> message.
->
-Well, what is in the /etc/fstab line that mentions /mnt/cdrom?
+Regarding file systems: the reading I have done suggests that the two
+best things to try are ext2/3 and reiserfs, and apparently reiserfs is
+quicker. Since Debian gives you the easy choice of ext3 or reiserfs, I
+picked reiserfs for my test machine and it's behaving just fine so far.
+I intend to try a file server using reiserfs and lvm, which is where I
+think I probably want to take our main file server in time.
 
->
-> Chris
-> -
-
---
----oops---
+Paul.
 
 
+On Mon, 2002-11-25 at 15:40, Paul Kraus wrote:
+> I am setting up a file server on a Linux box (probably debian I am
+> downloading it now to check it out since all of my prior exp has been
+> with some flavor of RedHat). I am going to use samba and wanted to know
+> of any pit falls anyone might have had as well as recommend file system
+> that I should run. I was thinking ext3 but that's just because its  the
+> only file system I have ever used.
+> 
+> The system will be being accessed by two users. All the files are either
+> tiffs or pagemaker/indesign files.  There is over 13 gigs worth of files
+> that these two users will be accessing and using all day. The files will
+> be accessed from the server not being copied locally first.
+> 
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
+-- 
+Paul Furness
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+Systems Manager
+
+Steepness is an illusion caused by flat things leaning over.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
