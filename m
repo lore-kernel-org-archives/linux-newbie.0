@@ -1,33 +1,42 @@
-From: Hal MacArgle <haltec@iceweb.net>
-Subject: Linux & Zip Drives.
-Date: Sat, 11 May 2002 16:34:32 -0400
+From: Staci <spiritlover666@yahoo.com>
+Subject: File-system Ext2 or Ext3??
+Date: Sat, 11 May 2002 13:46:22 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020511163432.A465@lnx2.w8mch.ampr.org>
-Reply-To: haltec@iceweb.net
+Message-ID: <20020511204622.23285.qmail@web12806.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: I just bought an internal SCSI Zip drive on eBay that was
-sold as "Zip 100mB converted to 250mB." Purchasing only 250mB disks I
-find the drive will not accept them - ejecting immediately after
-inserting.
+Hi!
 
-I believe the drive needs a disk before I can install the module and
-use it.. Research tells me that some drives require that with Linux
-and others don't... No details.. I, also, cannot find any information
-as to whether that conversion is for real or not.. :^(..
+I have some confusion.
 
-Any suggestions or comments??
-TIA,
+I set up journals on my ext2 FSes (there's two, / and
+/home) with tune2fs -j, to make them ext3.  But I
+still get forced fscks at startup, and they still find
+lots of problems I thought would be eliminated with
+ext3.
+So I look at cfdisk for /dev/hdb, and it says those
+partitions are ext2.  Is my cfdisk too old?  Did I do
+something wrong?  Both my mtab and fstab have them
+labeled (correctly?) as ext3.  
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-    haltec@iceweb.net | w8mch@iceweb.net.. A M$ free environment     
-.
+Anyone know what's going on here?
+
+Thanks...
+sl
+
+=====
+**************************
+In cyberspace nobody can hear you scream.
+
+__________________________________________________
+Do You Yahoo!?
+LAUNCH - Your Yahoo! Music Experience
+http://launch.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
