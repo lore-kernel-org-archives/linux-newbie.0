@@ -1,77 +1,55 @@
-From: Jude DaShiell <jdashiel@shellworld.net>
-Subject: Re: Fetchpop Problem
-Date: Mon, 7 Oct 2002 21:50:06 -0400 (EDT)
+From: James Miller <jamtat@mailandnews.com>
+Subject: Debian install issue
+Date: Mon, 7 Oct 2002 21:18:40 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.BSF.4.44.0210072145580.81085-100000@server1.shellworld.net>
-References: <200210071243.g97Ch1802214@ev6.be.wanadoo.com>
+Message-ID: <Pine.LNX.4.44.0210072054390.6549-100000@localhost.localdomain>
+References: <20021008010735.8144.qmail@mail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210071243.g97Ch1802214@ev6.be.wanadoo.com>
+In-Reply-To: <20021008010735.8144.qmail@mail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Heimo Claasen <hammer@revobild.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-hmmm, mail coming from such sources usually contains the program
-identification string that wrote the mail in the first place if memory
-serves.  Why not reject any email from a non-compliant mta attaching a
-message onto the rejected email stating x is a non-compliant mail
-transport agent and messages sent will not be recieved or read at this
-domain.
+Hello. I have an old machine I use mostly for email and light duty 
+browsing - nothing fancy. It is a P 75 with 32 MB RAM 1 MB (forgot which) 
+PCI video card and < 1 GB HD. I have an old AOC B&W monitor hooked up to 
+it.
 
+I had RH 6.2 on there, but was not very happy with it. I was running fvwm 
+for the desktop. A little bit less than standard install took up about 90% 
+of the 600 MB HD space. There was a chat prog I ran alot (AIM for Linux) 
+that was causing me grief, and I wanted to replace it with GAIM. But I 
+needed an updated install of RPM to install any newer version of GAIM. So, 
+when push came to shove, I decided I should try some other distro, one 
+more geared toward a "survpc" like this one. Thought about Slackware, but 
+decided to go with Debian, which I've never used before but have heard 
+good reports on visa vis survpc's.
 
+I stuck in a second drive which I made master of the primary and did the 
+install of Debian 2.25 (Potato? - sorry if I'm making a mistake on the 
+release #: I don't have the disk here at home so am reciting from memory). 
+It went fairly uneventfully until I got to configuration of X. Probably I 
+entered in the wrong vertical sync rate (I selected 50-70, unfortunately. 
+I really have no idea of the refresh rates of this monitor, but I had a 
+feeling that a 50-70 rate was going to be too narrow). I am now stuck at 
+the X configuration stage of the install. I think Debian is preparing to 
+go to VGA mode in order to do the config. It fails with the error 
+"X11TransocketUNIXConnect : can't connect : errno 111" - and spits out 
+that message about 8 times. Then it goes back to the same point in the 
+install where I am asked to configure X. So I'm sort of stuck in a 
+vicious circle.
 
-On 7 Oct 2002, Heimo Claasen wrote:
+So, for you Debian users: how do I deal with this? Is there a way I can 
+complete the install, by going back in the process, for example, and 
+reselecting refresh rates? It obviously wants to create an XF86Config file. 
+Do I have to just abandon the install and start all over again?
 
-> Yes, there is an problem with an increasing number of mail troubles.
-> No, this is not a Fetchpop problem: I see it with all sorts of mail
-> transport agents (MTAs) not only under Linux.
->
-> My suspicion for the reasons go towards a specific recent version of
-> the Outhouse Excremental Exploder, perhaps even only the Mac version of
-> it, in combination of the send-MTA used therewith; I think it may go
-> like this:
->
-> While the mail composer forcibly changes/remaps all 8-bit characters
-> in a charset used, it doesn't do so with an imported/pasted signature
-> or likewise element.  The send-MTA though then chops _all_ 8-bit chars
-> in an - as illegal as erronous and wrong - manner[*] to make it 7-bit
-> "compliant". This is especially critical when the 8th bit in the 128 to
-> 159 (dec) range of charsets is cut; the result is that illegal, 7-bit
-> "low ASCII" chars are created with these remains, and sent.
->
-> However, all decently behaving, and truely RFC-compliant MTAs -
-> (a.) are 8-bit-transparent, i.e., don't change/eat/suppress 8-bit chars,
-> as MS void professors do;
-> (b.) rely on some combination of "low-ASCII" (dec 0 to 31) chars for
-> control functions;
-> (c.) rely on the RFCs and other "industry"-wide conventions (to which
-> indeed everybody keeps, except MS) that such low-ASCII chars are not to
-> be included in a mail "body".  (This is the whole point, BTW, of having
-> UU- or Base-64 encoded "attachments" at all, in order to pack and
-> transport binary data like program code or images through eMail.)
->
-> So more and more of the decent, standards-complying MTAs, well-behaving
-> over the years, will get into trouble.
-> (BTW, you wouldn't see the culprit - except with capturing the complete
-> packet stream -because the receiving MTA precisely hangs at that point
-> and cannot print it.)
->
-> The way to avoid this, besides of not using that crooked gear in the
-> first hand, would be to have all SMTP servers to screen mail bodies;
-> which they do not, presently, as they are nicely behaving and rely on
-> standards.
->
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-07
-> The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+Also: anyone with tips for configuring X for monochrome, please feel free 
+to chip in as well.
+
+Thanks, James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
