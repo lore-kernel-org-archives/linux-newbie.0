@@ -1,68 +1,24 @@
-From: Stephen Samuel <samuel@bcgreen.com>
+From: Mark Hahn <hahn@physics.mcmaster.ca>
 Subject: Re: usleep
-Date: Thu, 12 Jun 2003 18:16:54 -0700
+Date: Thu, 12 Jun 2003 21:22:06 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EE92606.9050203@bcgreen.com>
-References: <20030611225502.29651.qmail@mail.com>
+Message-ID: <Pine.LNX.4.44.0306122120250.25379-100000@coffee.psychology.mcmaster.ca>
+References: <3EE92606.9050203@bcgreen.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030611225502.29651.qmail@mail.com>
+In-Reply-To: <3EE92606.9050203@bcgreen.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Lee Chin <leechin@mail.com>
-Cc: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Stephen Samuel <samuel@bcgreen.com>
+Cc: Lee Chin <leechin@mail.com>, linux-newbie@vger.kernel.org
 
-On my box, (a P3/450) usleep seems to have an overhead of about 10000usec
-and a minimum response time of about 20000
+> On my box, (a P3/450) usleep seems to have an overhead of about 10000usec
+> and a minimum response time of about 20000
 
-/* my test prog:
-  * (based on yours)
-  */
-
-#include <unistd.h>
-#include <sys/time.h>
-
-struct timeval tv1,tv2;
-#define PAUSE 100000
-
-int main()
-{
-     while (1)
-     {
-         int i;
-         double sum=0.0,t;
-         gettimeofday(&tv2, NULL);
-         printf("hello\n");
-         for(i = 0; i < 20 ; i++)
-         {
-                 gettimeofday(&tv1, NULL);
-             usleep(PAUSE);
-                gettimeofday(&tv2, NULL);
-                printf("slept %9.6fs\n", t=tv2.tv_sec+tv2.tv_usec*.000001 -tv1.tv_sec-tv1.tv_usec*.000001 );
-                sum+=t;
-         }
-         printf ("average %9.6fs\n",sum/i);
-         sleep (5);
-     }
-}
-
-
-
-Lee Chin wrote:
- > I would think the following code would wait for 1 second each itteration before printing hello, but it waits way too long.  Replacing the for loop body with a
- > usleep(1000000) works great... what am I missing here?
- >
- > Thanks
- > Lee
-
-
-
--- 
-Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
-		   http://www.bcgreen.com/~samuel/
-Powerful committed communication, reaching through fear, uncertainty and
-doubt to touch the jewel within each person and bring it to life.
+which is perfectly correct/expected.  
+although "overhead" isn't quite right: instead, say
+it has a resolution of 1/HZ and a minimum of 2/HZ.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
