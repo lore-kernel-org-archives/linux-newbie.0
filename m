@@ -1,98 +1,76 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Network card and kernel module problems
-Date: Mon, 3 Feb 2003 16:55:08 +0000
+Date: Mon, 03 Feb 2003 09:24:49 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03020316550804.19519@unix.pa3gcu>
-References: <000801c2cad3$a696b500$eb6510ac@citechbd.com> <03020216151302.19519@unix.pa3gcu> <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <5.1.0.14.1.20030203091129.02140130@celine>
+References: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
+In-Reply-To: <000801c2cad3$a696b500$eb6510ac@citechbd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-On Monday 03 February 2003 12:09, Amin wrote:
-> Hi Richard,
+At 09:56 PM 2/2/03 +0600, Amin wrote:
+>Hi all,
 >
-> > Then that means the card was detected and the module was loaded, have
->
-> you
->
-> > done what it says.????
->
-> I have made sure that the hardware works.  In fact, I dual-boot Windows 98
-> on the same machine and Windows never has any problems with the card,
-> including now.
->
-> > You may need to use dhcpcd with options to obtain a IP# from your isp.
-> > IE, hostname ??.
->
-> Do you mean that I have to set up a DHCP server on my machine and
-> configure it ... ?  I sure hope there's an easier way than that ... .
-
-No, dhcpcd is the "client" that contacts a server, the server being your 
-ISP's machine. So no you dont need to setup a server.
-I was under the impression that you use dhcp top obtain a IP#.
-
->
-> I'm beginning to think I've mixed up different kernel module dependencies.
-> The short story is I need help sorting out the modules for use with my two
-> kernels: 2.4.18-14 and 2.4.18-14custom.  The long story is: when I
-> originally installed RH8.0 and found it didn't already support my NIC, I
-> recompiled the kernel with
-
-Dependancies is a big word when it comes to modules, most dependacy problems 
-arise because of misconfiguration in /etc/modules.conf and not when compiling 
-a new kernel, or tho' that can sometimes be the case.
-
->
-> make xconfig; make dep; make modules; make modules_install; make bzImage
->
-> and tried to boot the new kernel.  Eventually I got it to boot, but it
-> failed to detect/insert a lot of modules, which seems strange in
-> retrospect because I think I actually specified only one loadable module;
-> all the others were built-in.  I recompiled again, with the same results.
-> A lot of error messages courtesy of depmod as it tries to find module
-> dependencies --- things like input.o, soundcore.o, etc.  I've recompiled
-> twice after that, with a slightly different command order:
+>I use a Surecom EP-320X-S 100/10M Ethernet PCI adapter; I believe it's
+>Myson MTD3xx compatible --- at least, I've used it before with Myson's
+>fealnx.o module in Red Hat Linux 7.3.  The problem is I upgraded to RH8.0
+>and find that the kernel does not already support the card.  I tried
+>recompiling with built-in support (for the Myson module).  kudzu detected
+>the card at startup and configured it.  I've set it up it using Red Hat's
+>``neat'' tool (it uses DHCP), but it says it can't determine IP
+>information, and to check the cables.
 
 
-AFAIK, all recent distribution kernel verstions will support most all 
-ethernet cards, unless of course your card is the newest of the newest.
-So this means you should be able to use the kernel which was installed when 
-you installed Linux, be it what ever distro...
-What you must make sure is that "modprobe" knows which driver to use, this 
-can be done via /etc/modules.conf
+Richard has given you good advice in his replies, but in looking at the 
+exchange, I think you may need a more plainly described troubleshooting 
+strategy. So I suggest this procedure:
 
-alias eth0 8139too # a Realtech 8139A/B or C type chip.
+1. After boot/init has completed, use "lsmod" to see which modules have 
+been loaded. Look for fealnx on the list.
 
-To be honest i have forgotten what type of card you have and all your other 
-details, i cleaned out my mailbox this morning and i seem to have deleted 
-mails replyed too as well.
+2. If fealnx is not on the list, then look at the dmesg buffer (with the 
+"dmesg" comand) or your log files (probably in /var/log) to see if the 
+module tried to load and failed.
 
->
-> make xconfig; make dep; make bzImage; make modules; make modules_install
+3. Use "ifconfig -a" to see if your eth0 interface was created. If it was, 
+then either the kernel has builtin support for your NIC card or a suitable 
+module was loaded. If it was not, then you have some kernel- or 
+module-level problem that the prior steps failed to unearth.
 
-Use;
-make dep clean bzImage modules modules_install
+4. How does your host get its IP address? (I'm not sure how RH specifies 
+this -- look in the init file that starts networking, or see if your system 
+uses /etc/network/interfaces to control this.) If it is by DHCP, then check 
+if you omitted some kernel feature needed by DHCP when you did your custom 
+compile. This is easy to do because some of the kernel capabilities neede 
+for DHCP are not well described in the kernel-make Help file.
 
->
-> But still I get the same module dependency problems during boot.  Help!
+Likely candidates for this mistake are in this part of the config file:
 
-It would be better to show us the error messages, then we can advise more 
-precisly, to say anything now would be pure guess work.
+         # Networking options
+         #
+         CONFIG_PACKET=y
+                 # CONFIG_PACKET_MMAP is not set
+                 # CONFIG_NETLINK_DEV is not set
+                 # CONFIG_NETFILTER is not set
+         CONFIG_FILTER=y
+         CONFIG_UNIX=y
+         CONFIG_INET=y
 
+5. If your interface gets its address by some means other than DHCP, you'll 
+need to tell us what it is.
 
->
-> Yawar Amin
->
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Finally -- in the future, please quote commands and their error-message 
+replies completely and exactly. Do not summarize of paraphrase ... it 
+requires us to guess too much about what is going on.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
