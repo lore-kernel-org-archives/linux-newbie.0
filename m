@@ -1,67 +1,60 @@
-From: Eric Bambach <eric@cisu.net>
-Subject: Re: root password
-Date: Fri, 1 Apr 2005 10:55:44 -0600
-Message-ID: <200504011055.44030.eric@cisu.net>
-References: <5.1.0.14.1.20050330063201.02035bd0@celine>
-Reply-To: eric@cisu.net
+From: Savant <savantedge@gmail.com>
+Subject: [SLE] Bootup Problems
+Date: Fri, 01 Apr 2005 22:54:26 +0530
+Message-ID: <424D83CA.5070600@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20050330063201.02035bd0@celine>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <suse-linux-e-return-231387-suse-linux-e=m.gmane.org@suse.com>
+list-help: <mailto:suse-linux-e-help@suse.com>
+list-unsubscribe: <mailto:suse-linux-e-unsubscribe-suse-linux-e=m.gmane.org@suse.com>
+list-post: <mailto:suse-linux-e@suse.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: suse-linux-e@suse.com, linux-newbie@vger.kernel.org
 
-On Wednesday 30 March 2005 08:36 am, Ray Olszewski wrote:
-> Any other suggestion of how to become root without knowing the root
-> password is a technique for breaking into systems, and I (and I hope
-> everyone else) will not give advice on that publicly, in this forum o=
-r
-> anywhere else.
+Hi,
 
-I respectfully disagree. How will sysadmins ever know how to secure the=
-ir=20
-systems unless they know HOW break-ins occur. Certainly most hacking do=
-esnt=20
-come from boot CDs but having a more informed sysadmin is infinitely be=
-tter=20
-than one that only discovers how to make their system more secure *AFTE=
-R*=20
-being broken into.
+I have a problem installing/running SUSE Linux 9.2 and Windows XP Pro.
 
-What you are saying is that security through obscurity is good and ther=
-e have=20
-been countless rebuttals on just how horrible security though obscurity=
- is in=20
-99% of the situations. The only reason for S.T.O. is a company that fou=
-nd an=20
-exploit and is giving lead-time to the vendor to patch their vulnerable=
-=20
-software.
+I first did a complete reformat of the hard drive using XP Pro Operating 
+System/Recovery disk that came with the laptop.  In the process, I 
+partitioned the hard drive roughly into two halves.  I then went about 
+installing XP on one half, including all its drivers, etc.  Then I put 
+in the SUSE 9.2 Linux CD, and went about installing it, instructing it 
+to break off a piece of the second partition for a 940ish MB swap and 
+the rest for Linux.  It seemed to install smoothly.
 
---=20
-----------------------------------------
---EB
+I then rebooted it, and it gives me 3 options at load: Linux, Windows, 
+and Failsafe.  Windows loads.  Failsafe gives me a prompt, and I can 
+access the root account from there.  Linux however just goes through a 
+loadup sequence, and then the screen goes blank instead of offering me 
+login options.
 
-> All is fine except that I can reliably "oops" it simply by trying to =
-read
-> from /proc/apm (e.g. cat /proc/apm).
-> oops output and ksymoops-2.3.4 output is attached.
-> Is there anything else I can contribute?
+I tried the Rescue option off the Linux CD, couldn't figure out 
+anything.  I then tried to just cleanly put back on WinXP off its disk 
+again, and I get the "Setup is analyzing your configuration..." message, 
+and then it goes to a blank screen again, like if I tried to load up Linux.
 
-The latitude and longtitude of the bios writers current position, and
-a ballistic missile.
+While I can still use Windows normally (as far as I can tell), I need to 
+know that it can still be reformatted if the need arises.  Optimally, I 
+would still like to get a dual-boot Windows/Linux.
 
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0--Alan Cox LKML-Decembe=
-r 08,2000=20
+Computer is a Dell Latitude 505 (35gb hdd) if that makes any differece.
 
-----------------------------------------
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+I'm very much a Linux newbie, so if I don't know much about the Linux 
+terminal/console/prompt commands.
+
+Any help very much appreciated.
+Thank you for your time,
+
+-Neil
+
+PS:  I hope its alright that this was posted to two mailing lists.
+
+-- 
+Check the headers for your unsubscription address
+For additional commands send e-mail to suse-linux-e-help@suse.com
+Also check the archives at http://lists.suse.com
+Please read the FAQs: suse-linux-e-faq@suse.com
+
+
