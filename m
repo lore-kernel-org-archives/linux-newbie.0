@@ -1,48 +1,51 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Source file
-Date: Tue, 14 May 2002 22:36:57 -0700
+From: Steven Smith <sos22@cam.ac.uk>
+Subject: Re: Tcsh: Append output to a file
+Date: Wed, 15 May 2002 07:52:24 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <2.2.32.20020515053657.00f0e738@[192.168.1.23]>
+Message-ID: <20020515065224.GA295@cam.ac.uk>
+References: <2.2.32.20020515010844.00e0918c@[192.168.1.23]> <20020515011704.GC1047@neon>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="Nq2Wo0NMKNjxTN9z"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20020515011704.GC1047@neon>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: Azie Jamilah <azie@kawan.net>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-At 12:28 PM 5/15/02 +0800, Azie Jamilah wrote:
->Hi,
->
->I'm using RedHat Linux 7.2, and when i did file command /usr/bin , most of 
->the files are "ELF 32-bit LSB executable, Intel 80386, version 1, dynamically 
->linked (uses shared libs), stripped".
 
-I don't really know what "i did file command /usr/bin" means. But what you
-have in (for example) /usr/bin is a bunch of compiled applications, usually
-called binaries. Separately from them, you will have (or can get if you
-don't have them) the source code, in a series of src-RPMs whose names will
-correspond to the files of executable (binary) RPMs you installed.
+--Nq2Wo0NMKNjxTN9z
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->I wonder if I can see the source file (I thought most of the files would be 
->in text file), and if i already have a command in text files, how can i make 
->the files in the same format as above?
+> > >My question is: How do I append to an existing file?
+> > /usr/local/sbin/dsniff >>& dsniff.log &
+> Can you please tell me how to the same thing for bash? :)
+/usr/local/sbin/dsniff >> dsniff.log &
 
-To see the source code for the compiled apps, get the corresponding src-RPMs
-from the same place you got the RH distro in the first place.
+if you just want output in the file,
 
-As for your own stuff ... it depends on how the "command in text files" is
-written. If you wrote it in C or C++ (or some other compiler-based
-language), you would use gcc to compile it. If you wrote it in an
-interpreted form (say as a bash script or a Perl program), you won't compile
-it at all (though I believe there now is a compiler for Perl, so you might
-have an option there).
+/usr/local/sbin/dsniff >> dsniff.log 2>&1 &
 
---
-------------------------------------"Never tell me the odds!"---
-Ray Olszewski                                        -- Han Solo
-Palo Alto, CA           	 	         ray@comarre.com        
-----------------------------------------------------------------
+if you want output and errors.
 
+Steven Smith,
+sos22@cam.ac.uk.
+
+--Nq2Wo0NMKNjxTN9z
+Content-Type: application/pgp-signature
+Content-Disposition: inline
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+
+iD8DBQE84gWoO4S8/gLNrjcRArSjAKDQModcNndOkLIlfvvpY+zfBSvN+ACfQ584
+awj4ZQLJx5hjjlHCiB+x3bk=
+=lNtE
+-----END PGP SIGNATURE-----
+
+--Nq2Wo0NMKNjxTN9z--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
