@@ -1,41 +1,32 @@
-From: Don Petrowski <dpetrowski@ci.collierville.tn.us>
-Subject: Re: beep killing
-Date: 11 Oct 2002 08:04:05 -0500
+From: Peter <pfheiss@philonline.com>
+Subject: Groff Print-out
+Date: Sat, 12 Oct 2002 16:05:12 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1034341446.11653.2.camel@workwatcher>
-References: <3DA6C0D9.3040206@vtown.com.au>
+Message-ID: <200210120805.g9C85Ce04963@philonline.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
-	boundary="=-gVujt53+qXULjz7oZfBP"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DA6C0D9.3040206@vtown.com.au>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Daniel Peter Cavanagh <nofsk@vtown.com.au>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
+Hi,
 
---=-gVujt53+qXULjz7oZfBP
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+I am using groff to print-out books I download with kgutenbook program since 
+groff has a pleasant font and most important prints longer lines than all 
+other text print programs I tried (emacs, vim, gedit, kedit, xedplus), 
+therefore, fewer pages to print.
 
-On the email client you could configure fetchmail to pick up the POP3
-accounts and deliver it to local user mbox and then pine or mutt to read
-and send messages.
+Groff has 2 drawbacks, a) it does not number the pages and b) does barely 
+advance at the end of the page.
 
---=-gVujt53+qXULjz7oZfBP
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: This is a digitally signed message part
+Can that be somehow corrected, may be with a script?
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
+The command I give is: groff file | lpr
 
-iEYEABECAAYFAj2mzEUACgkQIUkeRg0nIiKaDgCfZ+KYVtLDvbNrRnf90a7VYp9s
-ZNUAmwaj5X12VF2fy5pzNL9hnjWiNJav
-=JDwB
------END PGP SIGNATURE-----
-
---=-gVujt53+qXULjz7oZfBP--
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
