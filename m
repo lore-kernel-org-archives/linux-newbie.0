@@ -1,40 +1,40 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Kernel error
-Date: Sat, 25 May 2002 18:48:11 +0000
+From: Matthiaseifert@gmx.de
+Subject: Re: is emacs considered a gui WP or cli?
+Date: Sat, 25 May 2002 21:48:05 +0200 (MEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02052518481107.04213@unix.pa3gcu>
-References: <A1F41DE771DCD5119FE30060089343500A58C3@NET-ARCH>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <21807.1022356085@www6.gmx.net>
+References: <20020525180357.B1158@neutrino.particles.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <A1F41DE771DCD5119FE30060089343500A58C3@NET-ARCH>
-List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Shaun Bryant <sbryant@ThePit.org>, "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Saturday 25 May 2002 17:47, Shaun Bryant wrote:
-> Hi all,
->
-> This recently starting popping up in my syslog log, about once every 5
-> hours or so. Does anyone of a idea of a course of action to correct this
-> problem?
->
-> May 20 08:14:38 Illusion kernel: Symbol table has incorrect version number.
+Hi, all!
+Hi, Matthew!
 
-What have you recently changed, installed a new kernel.?????
+The emacs we're talking about is afaik the *GNU emacs* that 
+Richard Stallman gave to the unix community long time ago.
+There is actual a version called xemacs which one could consider 
+a *gui-editor* (or whatsoever). 
 
-It could be that you have installed a new kernel and the old System.map is 
-still being used.!.
+But to be honest, I don't use either.
+My editor-of-choice is vi and I'm not familliar with both, GNU emacs 
+and xemacs. Maybe smbdy else on this list can give you more advise on that.
 
->
-> Thanks
-> Shaun
+Bye, Matthias
+
+
+> On Fri, May 24, 2002 at 04:31:33PM -0700, Matthew Stapleton wrote:
+> > I was wondering if Emacs was considered to be gui based WP or cli-based?
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Matthias U. Eifert
+65934 Frankfurt am Main
+
+GMX - Die Kommunikationsplattform im Internet.
+http://www.gmx.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
