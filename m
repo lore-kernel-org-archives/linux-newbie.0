@@ -1,26 +1,71 @@
-From: Anshuman Singh Rawat <asr245@nyu.edu>
-Subject: linux box hacked ?
-Date: Mon, 20 Sep 2004 19:42:51 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Network Statistics Collection
+Date: Mon, 20 Sep 2004 17:32:32 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <9765ac97d150.97d1509765ac@nyu.edu>
+Message-ID: <5.1.0.14.1.20040920172215.0eb20040@celine>
+References: <88240e9404092016313ca56ca0@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en
-Content-Disposition: inline
+In-Reply-To: <88240e9404092016313ca56ca0@mail.gmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
-I want to know how one can know for sure if a linux box has been hacked. This morning a linux box in our lab was behaving funny. More clearly, i was executing some commands and on doing a 'grep', 'grep' threw a segmentation fault!! Also, I saw (with a 'ps -A') there were several processes running with names like'xscan', 'pscan'. There were several 'cat' commands running; some of them were dead (if that's  what defunct means). Also, I noticed that the executables for 'cat', 'grep' and a few others showed a modification date of today. I tried to reboot the system, but that never happenned. The boot loader complained about /etc/fstab being corrupted or missing, and ofcourse as booting procedure uses the 'grep' command (which was throwing segmentation faults), the machine couldn't boot.
+You really should not cross post the same message to so many  lists. If 
+people reply without pruning, it will get messy, and it's just considered 
+bad manners.
 
-We really couldn't figure out for sure what happenned but do any of these symptoms indicate that somebody could have hacked into it?
+Now to your problem.
 
-Thanks,
-Anshuman
+As a general matter, much of this information can be found in the /proc 
+filesystem, a pseudo-filesystem that gives you read (sometimes write) 
+access to kernel internals in ways that make the internals look like files. 
+Common apps that provide interfaces to this information are netstat, 
+ifconfig, and ip (also known as iproute). iptables rulesets (iptables is 
+the interface to the kernel's firewalling and NATing code) for logging 
+packets may be needed to get some of the more fine-grained things you want 
+to know about (e.g., retransmits).
 
-PS: We had Apache web server running on this machine and we didn't have a firewall installed (other than linux's basic firewall install).
+Consulting the man pages for these apps is a good way to start to gain an 
+understanding of how to access this information.
+
+The information is usually kept in static, not dynamic form (for example, 
+cumulative bytes received and transmitted, but no measure of 
+KB/sec  transmitted or received), so you'd need to poll the static values 
+periodically (via a cron script, say) and do the math yourself.
+
+At 04:31 PM 9/20/2004 -0700, TEJAS VORA wrote:
+>Hi All,
+>
+>I am working on a company project and as a part of it - I have to
+>collect and show some network information on the Monitoring utility.
+>Please help to find out that how can I collect these information from
+>a Linux Machine.
+>
+>1. Number of active TCP connection
+>2. Information of Active connections (Source and Dest IP, Source and Dest 
+>Port)
+>3. Retransmitted packets due to Duplicate ACK and SACK
+>4. Connection Duration and RTT
+>5. Transmission Troughput (in KB/Sec)
+>6. Number of Newly Created TCP Connections
+>7. Closed TCP Connections
+>8. Total Data transmitted (in byte)
+>9. Total Data Retransmitted (in byte)
+>
+>Also, does anybody have any information on Watchdaog or how to use
+>watchdog and SOCKS and SNOOP Daemon?
+>I am using RedHat 9.0 machine.
+>
+>Any help is apreciated.
+>
+>Looking for an answer.
+>
+>Tejas Vora
+
+
+
 
 
 -
