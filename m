@@ -1,60 +1,101 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
+From: Edgar Alwers <edgaralwers@gmx.de>
 Subject: Re: File Management
-Date: Wed, 18 Sep 2002 19:30:26 +0000
+Date: Wed, 18 Sep 2002 23:26:20 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <0209181930260H.03392@unix.pa3gcu>
-References: <00c301c25f48$62b94bf0$64fea8c0@pkrausxp>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <200209182326.20390.edgaralwers@gmx.de>
+References: <00c301c25f48$62b94bf0$64fea8c0@pkrausxp> <0209181930260H.03392@unix.pa3gcu>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <00c301c25f48$62b94bf0$64fea8c0@pkrausxp>
+In-Reply-To: <0209181930260H.03392@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
+To: pa3gcu@zeelandnet.nl, Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-On Wednesday 18 September 2002 19:20, Paul Kraus wrote:
-> Obviously software is always better installed from source. This creates
-> binaries that are system specific. However this represents the problem
-> of software removal. I notice some software by default will install into
-> /usr/local then dump everything under one directory (windows style-the
-> source install for samba is a good example). You can uses switches to
-> put these files in the correct bin lib etc folders. So if you follow the
-> standard(usings the systems bin/etc/sbin/man/var folders) how can you
-> effectively remove a piece of software without having a list of all the
-> files and paths of every app you installed. This is the only drawback to
-> Linux I have found. Of course RPMs/dpms are away around this but lets
-> omit pre-packaged software.
+On Wednesday 18 September 2002 21:30, pa3gcu wrote:
 
-If ones installes programs from *.tar.gz archives after compiling one can 
-simply delete the source dir and its contents, you are then left with the 
-executable of course, when you want to "uninstall" a program reinstall the 
-source and simply type make uninstall, in some instancies it may be nessasary 
-to exectute a file called ./configure or even ./autogen.sh those files create 
-a Makefile, once the Makefile is created one can then do;
-make uninstall .
+> On Wednesday 18 September 2002 19:20, Paul Kraus wrote:
+> > Obviously software is always better installed from source. This creates
+> > binaries that are system specific. However this represents the problem
+> > of software removal.
 
-Mind you some older archives did not have that approch, but i guess in the 
-modern day kernels they would not compile anyway, so we can safely say;
+There is a little programm, installwatch, which seems to record exactly 
+everything which was installed in an directory, and allows to remove 
+completly in the case you want to uninstall:
 
-cd /to/source/dir
-make uninstall
+Quote: (heavy shortened ! )
+--------------------------------------
+
+TITLE:		Using Installwatch as a Package Manager
+LFS VERSION:	Any
+AUTHOR:		Robert Park <feztaa@shaw.ca>
+
+SYNOPSIS: 
+	Use installwatch to keep track of what files got installed when you compiled
+	something from source. Includes an easy method for removing those files,
+	packaging those files up, and installing said packages.
+
+HINT:
 
 
->
-> Paul Kraus
-> Network Administrator
-> PEL Supply Company
-> 216.267.5775 Voice
-> 216-267-6176 Fax
-> www.pelsupply.com
+One big problem with LFS is that there is no package management system.  This
+means that it is a *HUGE* pain in the butt to uninstall something, since there
+is no record of what got installed where, and by what program.
+
+
+Requirements
+------------
+
+You'll need to download installwatch, which you can get from one of these
+locations:
+
+http://asic-linux.com.mx/~izto/checkinstall/installwatch.html
+http://proyectos.glo.org.mx/checkinstall/installwatch.html
+
+If both these sites are down, try this one (but only as a last resort):
+
+http://www.google.ca/search?hl=en&q=installwatch+izto+0.6.3&meta=
+
+You'll also need my 'nuke' script, which is used for uninstalling software,
+among other things. You can get that here:
+
+http://members.shaw.ca/feztaa/projects/nuke
+
+4. Using Installwatch.
+
+Now I'm going to show you how to use installwatch to create the logfiles that
+will be used by the nuke script.
+
+When you are reading installation instructions for something, and you see 
+"make install", you'll want to replace that with this:
+
+##--CODE--##
+installwatch -o /var/install/programname-version make install
+##--CODE--##
+
+5. Using Nuke.
+
+The nuke script has many uses, the first and foremost of which is to
+uninstall software by analyzing installwatch logfiles.
+
+Uninstalling software is extremely easy with the nuke script, you simply give
+it a logfile from /var/install, and it will remove the software from your
+system, and then create a logfile in /var/uninstall telling you how the
+uninstall went.
+------------------------------------
+unquote
+
+This are hints from the project "Linux from the scratch", and I hope it will 
+help you. Up to now, I have not used installwatch, but I am intending to do 
+it.
+Regards,
+Edgar
 
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+--------------------------------
+Dr.-Ing. Edgar Alwers
+Mailto: edgaralwers@gmx.de
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
