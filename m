@@ -1,55 +1,60 @@
-From: mike <mike@kevino.org>
-Subject: Re: changing refresh rate.
-Date: Sun, 03 Oct 2004 11:49:24 -0700
+From: james niland <bareego@yahoo.com>
+Subject: RE: changing refresh rate.
+Date: Sun, 3 Oct 2004 18:31:10 -0700 (PDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <416049B4.7070403@kevino.org>
-References: <652016d30410020314a67f701@mail.gmail.com>
-Reply-To: linux-newbie@vger.kernel.org
+Message-ID: <20041004013110.46355.qmail@web11409.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <652016d30410020314a67f701@mail.gmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+hi all,
+Manish wrote :
+
+ How can i change the refresh Rate. I am using Fedora Core 2.
+The monitor settings(gdm) does not have refresh rate option. I
+want to
+make it exactly 100 HZ(My system supports this value in
+Windows). I
+have Geforce 2 MX 100/200 card and have installed propritary
+driver
+from nVidia.
+
+I looked in the xorg.conf file. There is not any entry about
+refrash 
+rate.
+
+Thanks in advance.
+Manish
+*********************************************************
+
+I have been in the same situation, and the settings pointed out
+in the other reply are the ones I've changed as well.
+However, the drive from nvidia will actually try to get the 
+maximum capabilites of your monitor and not overclock it.
+
+This only works though with monitors that pass that information
+back to the video card when requested. All modern monitors
+should do this.
+
+I found that out trying to run 120Hz on a high resolution on my
+monitor, which would work on the "nv" driver, but not the
+"nvidia" one. In the end it pays to be cautious, try to approach
+the refresh rate from the lower end.
+
+Cheers
+James
 
 
-manish regmi wrote:
-> hi all,
->  How can i change the refresh Rate. I am using Fedora Core 2.
-> The monitor settings(gdm) does not have refresh rate option. I want to
-> make it exactly 100 HZ(My system supports this value in Windows). I
-> have Geforce 2 MX 100/200 card and have installed propritary driver
-> from nVidia.
-> 
-> I looked in the xorg.conf file. There is not any entry about refrash rate.
-> 
-> Thanks in advance.
-> Manish
 
-I have MDK10.0 came with XFree I installed Xorg on mine the
-xorg.conf is linked to XF86Config-4
-xorg.conf -> XF86Config-4
-Should be a section
 
-Section "Monitor"
-    Identifier "monitor1"
-    VendorName "Dell"
-    ModelName "Dell P780"
-    HorizSync 30-85
-    VertRefresh 48-120
-
-But be aware that you could damage a videocard or monitor with the
-wrong values, at least that was warnings I have seen.
-
-You can do a google search for linux and your monitor/display and
-see if others have dealt with your hardware.
-
-Keep an open mind on what hardware can do in windows and what it can
-do in Linux.
-
-Mike
+		
+_______________________________
+Do you Yahoo!?
+Declare Yourself - Register online to vote today!
+http://vote.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
