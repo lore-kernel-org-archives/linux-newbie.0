@@ -1,33 +1,33 @@
-From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
-Subject: Renumbering Primary Partitions?
-Date: Sat, 11 Jan 2003 16:57:53 +0930
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Ping a DNS???
+Date: Sat, 11 Jan 2003 07:56:56 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200301111657.53780.Adam@Luchjenbroers.com>
-Reply-To: Adam@Luchjenbroers.com
+Message-ID: <03011107565604.31603@unix.pa3gcu>
+References: <20030110090952.A303@lnx2.w8mch.ampr.org> <03011015315202.31603@unix.pa3gcu> <20030110150208.B658@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030110150208.B658@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: haltec@iceweb.net
+Cc: linux-newbie@vger.kernel.org
 
+On Friday 10 January 2003 20:02, Hal MacArgle wrote:
 
-My current partition table has the following partitions
+> 		UtHo: I had no idea my Reply To: field was wrong in
+> the past.. I have changed nothing. It's in, and has been for some
+> time, in my .muttrc file.. Let me make a quick check: According to
+> the date I've not made a change to .muttrc since November 2001.. Did
+> you warn me before??
 
-1) FAT32
-2) FAT32
-3) Extended
-
-Is it possible for me to make partitions 1 and 2 one partition and get it to 
-renumber 3 as 2 (the first bit is easy, but how would I make the latter part 
-happen)
+Oops, i mixed you up with someone else, sorry...
 
 -- 
-"MS-DOS is to computing as the black plague was to Europe" - NH
-
-Please avoid sending me Word or PowerPoint attachments.
-See http://www.fsf.org/philosophy/no-word-attachments.html
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
