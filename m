@@ -1,51 +1,82 @@
-From: Ralph Gesler <rgesler@pacificnet.net>
-Subject: Re: CD-ROM Hell
-Date: Wed, 02 Oct 2002 14:35:57 -0700
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Using large drives on old computers under Linux.
+Date: Wed, 02 Oct 2002 20:12:31 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D9B66BD.101284FA@pacificnet.net>
-References: <5.1.0.14.1.20020930220638.02c84c60@celine>
+Message-ID: <3D9B8B6F.DAF1A50F@gelm.net>
+References: <3F06C9859CA7D31194ED0000D1ECC4AB14C48B12@pkcexv007.sprintspectrum.com> <3D8BC55E.77DE0541@gelm.net> <3D95F3C0.558B3146@worldnet.att.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: Bryan Simmons <bsimmo1@gl.umbc.edu>, linux-newbie <linux-newbie@vger.kernel.org>
+To: Richard Dawson <rcdawson@worldnet.att.net>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-Ray Olszewski wrote:
-<snip> 
-> The mere act of putting a CD in a drive shouldn't cause Linux to try to
-> read the CD. You normally have to execute a "mount" command for the device
-> (or mount point, if it is in /etc/fstab). You should be able to kill the
-> process running the mount command to halt attempts to access the CD. If
-> that option isn't available to you, you'll need to tell us how you have the
-> system set up to mount CDs.
+Hi, Richard:
+
+ I used the manufacturer's (Maxtor) partitioning software MaxBlast.
+It auto-magically created four (4) 2.1 gigabyte partitions for 
+[MS,PC]DOS and left the rest unpartitioned.  It asked for a DOS
+system disk and I gave it one.  DOS then recognized the four (4)
+partitions.
+
+ I then booted with Slackware v8.0 bootdisk and rootdisk and
+did a nfs install from a server on my LAN.  Linux recognized
+the four (4) DOS partitions and the rest 32 gigabyte of drivespace.
+
+ I used linux fdisk and removed partitions 2, 3, & 4 and created
+one 38 gigabyte /dev/hda3, one swap partition /dev/hda2,
+ and edited /hdev/hda1 to be type 83.
+
+ Probably, /dev/hda1 must be no larger than 2.1 gigabytes so that
+MaxBlast and system BIOS are happy when booting.
+
+HTH, Chuck
+
+Richard Dawson wrote:
 > 
-> BTW, I assume we are talking about iso9660 CDs here, not music CDs. If I'm
-> mistaken in that assumption, please tell us what app you are using to rip
-> the music CD (and you should probably tell us the basics of which Linux
-> distro and version you are using). Here too, you should be able to get free
-> by killing the process, whatever it might be.
+> Cuck Gelm's response re using a Linux boxe as an internet server/router/firewall
+> mentioned that he used and 80486dx33 with 32 Meg of RAM, and a new 40 Gig hard
+> disk.
 > 
-A little bit late to this thread, but some symptoms that I have recently
-seen that may point to Bryan's problem ( assuming it is not a bad CDROM
-drive )which may point to a misconfiguration, e.g. driver, device
-linkage. Experimenting with the CD dump program cdda2wav I find that if
-I carelessly misstep or omit a command line device parameter, the
-process hangs and can not be killed with SIGKILL ,i.e.. -9, even by the
-super user. I am making a wild guess that this condition is caused by
-some kernel io process, as yet unidentified: it does time-out and the
-calling process, cdda2wav, dies. 
-
-I make this assumption because of the large amount of cpu usage used by
-system at this time as shown by top. So far I have only observed this
-with a music cd in the drive, but I have no reason to believe that the
-same problem would not occur with a data, iso9660, cd. It may be
-possible that a misconfiguration could cause the same symptoms.
-
-kernel 2.4.4, Pentium 133
-
-Ralph Gesler
+> My question:  how does one get an old machine running Linux, a machine whose
+> BIOS presumably is limited to much less that 40 Gig,  to recognize a 40 Gig hard
+> drive?
+> 
+> Chuck Gelm wrote:
+> 
+> > Hi, Le, Paul:
+> >
+> >  I used an old 80586-120 cyrix system to share my dialup ISP service
+> > with several workstations, linux, WFW3.11, Win95, Win98.  It
+> > also functioned as a firewall.  I used applications that came
+> > with my distribution (pppsetup) and set it up like the HowTo
+> > IP-Masquerade. (And quite a bit of help here in this list ;-)
+> >
+> >  I now have an aDSL ISP account and use 'Roaring Penguin'.
+> > It is also capable of being a firewall.
+> > OBTW, the 'new' internet connection sharing - firewall - router
+> > is an old 80486dx33, 32 Meg of RAM, and a new 40 Gig hard disk.
+> > The computer was USD$5 and had a 3c509 in it. I added another
+> > 3c509 ($2) and the hard drive ($60) and a keyboard ($4), so
+> > I only have $71 invested in it!
+> > :-)
+> > HTH, Chuck
+> >
+> > I used and use now ipchains.
+> >
+> > "Le, Paul [Contractor]" wrote:
+> > >
+> > > I am sorry kind of jump in the middle here. I am looking for a software so
+> > > more than one computers in my LAN can share a same internet connection. Is
+> > > Squid doing this???
+> > >
+> > > Thanks,
+> > >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
