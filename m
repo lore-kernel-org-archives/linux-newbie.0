@@ -1,55 +1,58 @@
-From: caszonyi@rdslink.ro
-Subject: Re: 2.6.0 kernel compile overview-the unfolding saga
-Date: Tue, 6 Jan 2004 22:56:53 +0200 (EET)
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Modules problem part-2
+Date: Wed, 7 Jan 2004 08:14:54 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0401062255170.528@grinch.ro>
-References: <3DD6433F08A5A145AD7DA03566BDBFAF9F18DC@xch-sw-06.sw.nos.boeing.com>
- <Pine.LNX.4.58.0401051408430.3345@localhost> <Pine.LNX.4.58.0401051556150.3636@localhost>
- <20040106060503.GA6016@teamfinders.org> <Pine.LNX.4.58.0401060834140.3636@localhost>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+Message-ID: <200401070814.54455.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040105104618.01f28358@celine> <200401060718.26925.pa3gcu@zeelandnet.nl> <3FFAA1D5.6010203@sancharnet.in>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0401060834140.3636@localhost>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: James Miller <jamtat@mailsnare.net>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3FFAA1D5.6010203@sancharnet.in>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: gracecott@sancharnet.in
 Cc: linux-newbie@vger.kernel.org
 
-On Tue, 6 Jan 2004, James Miller wrote:
+On Tuesday 06 January 2004 12:53, joy wrote:
+> Hi pa3gcu (please tell me how to pronounce it),
 
-> On Tue, 6 Jan 2004, Theo. Sean Schulze wrote:
->
-> > Just a shot in the dark here, but do you have the volume turned up?  I am using the ALSA sound modules, and they, as default, start up with the sound muted.  I haven't gotten around to fixing it yet, so every time I reboot that machine, I have to reset the sound levels to something higher than zero.
-> >
->
-> And a brilliant shot in the dark it was!  I ran across, somewhere on the
-> web, the "alsamixer" command and even ran it (that's my kind of app -
-> colors and shapes in a console).  I saw "PCSpeaker" there, and even turned
-> up the volume, but that didn't get me any console beep.  Well, I just had
-> a look at it again after reading your post.  This time, I noted that
-> certain of the items listed there had an "off" flag by them - among these
-> the PCSpeaker.  I toggled that flag and - voila! - system speaker!  So, it
-> woiks, it woiks!  I just would never have guessed that alsa was something
-> that governs the PC's speaker - I thought that was a separate "low level"
-> (however that parses out in my benighted understanding of these things)
-> item.  Can anyone help clarify this for me?  Anyway, thanks to all for
-> input on this - it's now fixed (provided the settings I did stick).
->
+Prounouce it "Richard".
+ pa3gcu is my Radio Ham callsign.
 
-It seems that some on-board sound controllers seem to be able to control
-the pc speaker. At least at my work we have some windoz machines which
-have this "feature"
+> I did exactly what you told me to do.
+> I went thru the debug mesgs and found that module-init-tools is reqd.,
+> downloaded it,
+> and installed.
+> Well,
+> lsmod and insmod now work perfect, but init's modprobe stills curses the
+> hell out of me.
 
-> Thanks, James
-> -
+Possably because you did not read the README and INSTALL files in the 
+mod-utils package (properly) before you compiled and installed them.
 
-Calin
+> I'll compile another time and see if I can get it working......
 
---
-"A mouse is a device used to point at
-the xterm you want to type in".
-Kim Alm on a.s.r.
+Bad option, do some reading first.
+
+You may want to also try using www.google.com/linux to find more info about 
+your problem, others have been there and done that, so see what they did to 
+correct the problem.
+
+> See ya soon,
+
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
