@@ -1,46 +1,58 @@
-From: whitnl73@juno.com
-Subject: Re: Newbie can't start ftpd
-Date: Tue, 11 Mar 2003 18:22:46 -0500 (EST)
+From: pshook <pshook@dsl-only.net>
+Subject: Re: Hiyas
+Date: Tue, 11 Mar 2003 23:09:54 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030311.183845.8.0.whitnl73@juno.com>
-References: <20030311.145217.8.0.whitnl73@juno.com>
+Message-ID: <3E6EDD42.A2C9BC08@dsl-only.net>
+References: <006801c1e757$b0a13350$0301a8c0@netlyncs.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030311.145217.8.0.whitnl73@juno.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: whitnl73@juno.com
-Cc: parviz_linux@yahoo.com, ray@comarre.com, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Tue, 11 Mar 2003 whitnl73@juno.com wrote:
+Give this one a try if y wanna help!!
 
-> On Tue, 11 Mar 2003, parviz dey wrote:
+Not sure if this is the correct newsgroup, if not can you direct me to
+the right one?
+
+I am trying to compile my kernel for RH7.3. It doesn't generate any
+errors, but it fails to find/load eth0 and vfat. It won't go past
+starting system logger and has many no such file or directory statements
+after the first fail which is eth0.
+
+Is there a way to set the make xconfig back to a default or what the
+original kernel on my system is? I can still boot with the original
+kernel but not the new one.
+
+Please help I'm an extreme newbie.
+
+
+
+Mike Chambers wrote:
+
+> Hiyas all,
 >
-> > i think you should look into xinted, since new redhat
-> > versions has stopped using inted. do some reading on
-> > how to setup xinted on your linux system.
+> Just found this list and thought I would check it out.  Maybe I can learn a
+> thing or two as well as help out others.  Been using linux for almost 5
+> years now total off and on.  Hopefully I can be of some help.
 >
-> That's spelled xinetd, successor to inetd, isn't it?
-> IIRC the config files are in /etc/sinetd.d/,
-
- IIRC the config files are in /etc/xinetd.d/,
-
-You'd think I wouldn't make typos when pointing out typos
-
-> one for each service.
+> Is this list active?  Hope to talk to you soon,
 >
-Oh, well.\
->^D
+> --------------------
+> Mike Chambers
+> Madisonville, KY
+> Netlyncs
+>
+> "It's always better to hurt a little now, then to hurt a lot later!"
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
