@@ -1,41 +1,27 @@
-From: ichi@ihug.co.nz
-Subject: Re: Variable Quoting
-Date: Wed, 16 Oct 2002 07:23:50 +0000
+From: James Miller <jamtat@mailandnews.com>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: Tue, 15 Oct 2002 16:05:42 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DAD1406.12077252@ihug.co.nz>
-References: <005201c273bb$594e0880$64fea8c0@pkrausxp> <1034698386.11967.13.camel@zebra.vil.ite.mee.com>
+Message-ID: <Pine.LNX.4.44.0210151600220.6549-100000@localhost.localdomain>
+References: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <004901c27473$b23df0a0$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Paul Furness <paul.furness@vil.ite.mee.com>
-Cc: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@jimmo.com, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>
+Cc: Linux <linux-newbie@vger.kernel.org>
 
-Paul Furness wrote:
-> 
-> Path="My Documents/"
-> for FILENAME in ls "${Path}"
-> do
->      cp "${Path}${Filename}" "/tmp"
-> done
+On 15 Oct 2002, Paul Kraus wrote:
 
-I think you mean:
-----------------------------------
-Path="My Documents/"
-for FILENAME in `ls "${Path}"`
-do
-    cp "${Path}${FILENAME}" "/tmp"
-done
-----------------------------------
-Note the changes in lines two and four.
+> I know that it is supposed to be cross-platform combatable. 
 
+This sentence belongs in the M$ vs Linux freudian slips hall of fame.
+(Paul's spelling sensibilities turned the word "compatible" 
+[complementary, harmonious] into "combatable" [well-suited for combat?]).
 
-Cheers,
-Steven
-
-______________________________
-http://www.volny.cz/basiclinux
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
