@@ -1,71 +1,35 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: DNS Questions
-Date: Thu, 26 Sep 2002 10:16:40 -0400
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Pop Up Banner Adds
+Date: Thu, 26 Sep 2002 10:46:14 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000a01c26567$557ac020$64fea8c0@pkrausxp>
+Message-ID: <200209261046.14128.sotl155360@earthlink.net>
+References: <000401c26496$bf7d7f20$64fea8c0@pkrausxp> <5.1.0.14.1.20020925094922.0262d620@celine> <02092519071901.09996@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_000B_01C26545.CE692020"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <02092519071901.09996@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-This is a multi-part message in MIME format.
+Another dumb question but this one is beginning to drive me nuts.
 
-------=_NextPart_000_000B_01C26545.CE692020
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+In KDE one can easily delete unwanted cookies on a dial up connected box with 
+out network capabilities.
 
-My internal network is connected to a router/firewall all address are
-down with Nat. So no machines on my network have an outside ip. Our dns
-is supplied by our ISP and we have 2 others we use that are supplied by
-our web site hosting company these dns servers are not apart of our
-internal network. If I wanted to setup a dns server on the internal
-network what would be the benefit? Why would I want to do this? I have
-been reading a lot of books on Linux and all of them recommend running a
-dns server. How would this server get/maintain a list of all the dns
-records that our current dns servers have. Is this what they even mean
-or do they mean just to cover the internal machines. If that's the case
-why bother. Any insights are greatly appreciated.
+Is there some easy way to delete unwanted Pop Up Banner Adds which appear when 
+you access a site. 
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+Clicking on the URL to the add shows that it originates from a different site 
+than the one being visited.
 
-------=_NextPart_000_000B_01C26545.CE692020
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+Personally I know of no way of filtering out such trash without setting the 
+box up on a network.
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
+Thanks
 
-------=_NextPart_000_000B_01C26545.CE692020--
-
+Frank
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
