@@ -1,60 +1,49 @@
-From: Agri <agri@desnol.ru>
-Subject: Re: howto configuring kernel and modules.conf for automatic loading
- of ide-scsi
-Date: Sun, 25 Jan 2004 21:10:55 +0300
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: howto configuring kernel and modules.conf for automatic loading of ide-scsi
+Date: Sun, 25 Jan 2004 20:30:31 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040125211055.10e7943a.agri@desnol.ru>
-References: <5.1.0.14.1.20040124202304.01f31308@celine>
-	<20040125041110.22704715.agri@desnol.ru>
-	<5.1.0.14.1.20040124202304.01f31308@celine>
-	<5.1.0.14.1.20040125082404.01f99be0@celine>
+Message-ID: <200401252030.31572.pa3gcu@zeelandnet.nl>
+References: <5.1.0.14.1.20040124202304.01f31308@celine> <5.1.0.14.1.20040125082404.01f99be0@celine> <20040125211055.10e7943a.agri@desnol.ru>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20040125082404.01f99be0@celine>
+In-Reply-To: <20040125211055.10e7943a.agri@desnol.ru>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Agri <agri@desnol.ru>, linux-newbie@vger.kernel.org
 
-anyway thanks for answer... it's good answer i think :-)
-i just knew it before...
+On Sunday 25 January 2004 19:10, Agri wrote:
+> here... i want to mention one strange thing...
+> if i "touch" for hd? device "hided" by ide-scsi kmod will request for a
+> module and system will load ide-scsi... curious... don't you think?
 
-here... i want to mention one strange thing...
-if i "touch" for hd? device "hided" by ide-scsi kmod will request for a module and
-system will load ide-scsi... curious... don't you think?
+Too be honest i have no clue as to what you mean however i never have any 
+problem with loading of modules, normally speaking i never have to use 
+modprobe, i only use modprobe if i do things via scripts and that only to 
+make sure the module is loaded otheriwse the sript would need to do all sorts 
+of checks first.
 
-Agri
+I dont know if you tryed my suggestion i made in my last mail on this subject, 
+another is simply add;
+append="hdX=ide-scsi"
+X= a,b,c or d on your system, to /etc/lilo.conf and rerun lilo or do the 
+equivilant under grub if thats what you use.
+As you said you did not like the idea of loading modules at boottime but i 
+think you should reconsider as that in itself does not hinder or slow down 
+your system one bit.
 
-On Sun, 25 Jan 2004 08:28:31 -0800
-Ray Olszewski <ray@comarre.com> wrote:
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-> At 02:06 PM 1/25/2004 +0300, Agri wrote:
-> >thanks for answers, but....
-> >the only thing i get: there is no way to configure loading of ide-scsi "ON 
-> >DEMAND".
-> >Am i right?
-> [old stuff deleted]
-> 
-> I alswys hate to say that a statement like yours is correct ... there are 
-> so many different ways of doing things on Linux/Unix systems, it may be 
-> merely that I do not know the one that will solve your problem ... but I do 
-> believe that there is no way to use "on demand" loading in this case ... 
-> or, in fact, any case that involves access to filesystems. The only way for 
-> you to be certain of that, though, it to wait and see whether someone else, 
-> someone who knows a different bag of tricks from mine, suggests a method 
-> that works for you.
-> 
-> I am also sorry if my prior response was so poorly phrased that that is the 
-> "only thing [you] get" from it. I was attempting to be more helpful than that.
-> 
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
