@@ -1,38 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Gnomecard Program lost
-Date: Fri, 05 Dec 2003 21:42:23 -0800
+From: Neo Wee Teck <weeteck@linux.net>
+Subject: Process information?
+Date: Mon, 8 Dec 2003 17:37:32 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20031205213650.0200a128@celine>
-References: <Your message of "Fri, 05 Dec 2003 08:11:41 PST."  <5.1.0.14.1.20031205080910.02014e18@celine> <200312060408.hB647kx01452@skyinet.net>
+Message-ID: <20031209013732.D92B03965@sitemail.everyone.net>
+Reply-To: weeteck@linux.net
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200312060408.hB647kx01452@skyinet.net>
-References: <Your message of "Fri, 05 Dec 2003 08:11:41 PST."  <5.1.0.14.1.20031205080910.02014e18@celine>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 12:07 PM 12/6/2003 +0800, Peter wrote:
->Thanks Ray, I found gnomecard  as you suggested in gnome-pim in RH7.1 and not
->anymnore in RH7.3 of Krud Linux. Why would they leave-out such a nice program?
->
->I still wonder how my "/" partition could suddenly fill to 100% and not
->showing any unusual large or duplicate files. Is there a virus around?
+Hi,
 
+  I saw some difference in the process info when using RedHat kernel 2.4.20-8 and the kernel from kernel.org (2.4.23)
 
-Not that I've heard about. How much space are we actually talking about 
-(100% of what capacity)? And how quick was "suddenly" (seconds? minutes? 
-hours?)? These days, I never see this problem, but way back when, I saw it 
-happen if logging got out of hand, so /var/log got full (assuming /var 
-isn't a separate filesystem).
+With Redhat's kernel, process show something like this
 
-Since the system is reinstalled, suggesting diagnostics is a bit late. If 
-it should happen again, use "du" to hone in on where the space is being 
-gobbled up.
+www      10186  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
+www      10187  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
+www      10188  0.0  0.1  2536 1276 ?        S    Dec08   0:01 [httpd]
 
+But with 2.4.23 kernel it shows
 
+www      5673  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
+www      5674  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
+www      5675  0.0  0.1  2536 1276 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd 
 
+Any configuration in the kernel that i missed out? I prefer the way processes are shown in Redhat's kernel but would like to use the 2.4.23's kernel.
+
+Cheers
+
+    Neo
+
+_____________________________________________________________
+Linux.Net -->Open Source to everyone
+Powered by Linare Corporation
+http://www.linare.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
