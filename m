@@ -1,56 +1,28 @@
-From: prasad <prasad@isilica.net>
-Subject: still bugging me...pblm on->how to get mass storage devices
-	(memory card readers) to work
-Date: Wed, 06 Apr 2005 16:22:36 +0530
-Message-ID: <1112784755.3598.31.camel@prasad.isilica.net>
+From: "Eve Atley" <eatley@wowcorp.com>
+Subject: Restoring RH Linux Desktop
+Date: Wed, 6 Apr 2005 10:54:06 -0400
+Message-ID: <005601c53ab8$7e030dd0$540aa8c0@lanadmin>
+References: <Pine.LNX.4.21.0503292045450.1414-100000@hestia>
+Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.21.0503292045450.1414-100000@hestia>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Problem:-I hav external usb harddrive,how can i make it detect from
-	fedora core linux...( itried every thing wht u published...in ur
-	message) 
 
+I had a user connect through VNC to our Redhat Enterprise WS 3 Linux box.
+They had to 'kill' a folder (unsure how they did this) as it did not open
+after some considerable amount of time. They are able to perform all
+functions, but the desktop is blank (no icons, but 'toolbar' is there at
+bottom of screen). How can I restore the desktop?
 
-Even i followed dha steps dat u replied for message(94020),i still cant
-able to detect my External USB hardrrive..frum Fedora core linux.
+Thanks,
+Eve
 
-i did all trials,
-what i did iz:
-# /sbin/modprobe sg
-#/sbin/modprobe usb_storage
-
-lsmod giving me da exact thing,as below:
-#  /sbin/lsmod | grep sg
-   sg  28513  0
-   scsi_mod 105360  4 usb_storage,sg,libata,sd_mod
-
-pblm cums wher , it was showing like as below:
-# mount -t usbdevfs 0 /proc/bus/usb
-  mount: 0 already mounted or /proc/bus/usb busy
-  mount: according to mtab, usbdevfs is already mounted on /proc/bus/usb
-# mount -t vfat /dev/sda1 /mnt/HD12
-  mount: /dev/sda1 is not a valid block device
-
-
-
-As u said, i tried with other scsi devices for mounting,,,
-but not worked out,,
-Wht i tried iz:
-sda,sda1-5,
-sdb, sdb1.
- i tried every possibilty....
-
-
-
-Hope i get reply from u,
-
-Thank u,,
-Prasad..
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
