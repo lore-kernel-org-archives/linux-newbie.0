@@ -1,33 +1,25 @@
-From: Robin Doer <robin.doer@gmx.de>
-Subject: Re: Permissions changing
-Date: Sat, 20 Jul 2002 19:57:52 +0200
+From: Matthew Stapleton <matthewstapleton@juno.com>
+Subject: inverting a list
+Date: Sat, 20 Jul 2002 17:54:08 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020720175020Z317450-685+14704@vger.kernel.org>
-References: <5.1.0.14.1.20020720091409.024ab480@celine>
+Message-ID: <20020720.175417.-315329.2.matthewstapleton@juno.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20020720091409.024ab480@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Am Samstag, 20. Juli 2002 18:14 schrieb Ray Olszewski:
-> At 09:41 PM 7/20/02 -0400, Natarajan K wrote:
-> >HI,
-> >         I am using  Mandrake 8.2. I allowed the mail log file to be read
-> > by everybody. But the permissions were reverted soon without my
-> > knowledge. Is any daemon running by default that changes the permissions
-> > of important files?
->
-> I don't know offhand what Mandrake runs by default ... but see if logrotate
-> is running. It *might* cause this sort of change to happen.
+Can I use linux text utilities to invert the lines of a text file?  Say
+that the lines of the file are 50.  (1,2, ...50)  How can I change the
+order the of lines so that line 1 is now line 50?
 
-But it's also possible that your mail-client checks the permissions of  files 
-and, if it's necessary, change it back (for security reasons). Try to change 
-the owner of the logfile and then see what happend.
-
-Robin
+Thanks,
+Matthew Stapleton
+============================
+To dare is to lose one's footing momentarily. Not to dare is to lose
+oneself. -SK
+============================
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
