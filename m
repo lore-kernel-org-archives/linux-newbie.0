@@ -1,50 +1,26 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: alsamixer Doesn't save volume settings
-Date: Fri, 07 May 2004 06:36:59 -0700
+From: "Gosselin, Mark" <gosselinm@netscout.com>
+Subject: Adding Fibre channel disks
+Date: Fri, 7 May 2004 15:49:06 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040507062943.01f20198@celine>
-References: <5.1.0.14.1.20040506231100.01efccd0@celine> <20040507092707.63689.qmail@web61006.mail.yahoo.com>
+Message-ID: <6CE6A442029B3347890ED9FCA94FAE0701EEAF43@nsxmail.netscout.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20040507092707.63689.qmail@web61006.mail.yahoo.com>
-References: <5.1.0.14.1.20040506231100.01efccd0@celine>
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Linux Newbie (E-mail)" <linux-newbie@vger.kernel.org>
 
-At 10:27 AM 5/7/2004 +0100, sumit kalra wrote:
-[...]
->The script /etc/init.d/alsasound is present but
->/etc/rc6.d/ and /etc/rc3.d/ directories don't have
->symlinks to it. I created these links by hand, but it
->didn't help.
->[...]
->Interestingly, after rebooting if I run "alsactl
->restore" before runnign "alsamixer", my previous
->settings are restored. This means that the file
->/etc/asound.state is correctly storing the settings
->across reboots but alsamixer is somehow not re-reading
->it after rebooting.
+Hi,
 
-alsamixer is not supposed to re-read it. The alsasound init script runs 
-"alsactl restore" to handle this ... and includes what looks like decent 
-error handling, so it should log an error if it itself runs but cannot for 
-some reason run alsactl.  So make sure it is running properly on init.
+I'm running Red Hat Enterprise. I installed a QLogic HBA in it to attach to an EMC Clariion.
+I'm connected, I can see the device from the BIOS on my Linux box, but I can't for the life of me figure out 
+what device it is or how to fdisk it. Anyone ever done this before? I'm sure someone who monitors this
+list mus be able to gove me a step-by-step as to how to see/format that san disk...
 
->How do we get around this?
-
-Is 3 *really* the default runlevel on RH systems? (Debian uses 2.)
-
-Did you install alsactl as /usr/sbin/alsactl (that is where the alsasound 
-script expects to find it)?
-
-Is the pseudo-directory /proc/asound present on your system (dieing 
-silently if it is not is the one error-reporting weakness I can see in 
-alsasound)?
-
-
-
+Thanks
+Mark Gosselin
+NetScout Systems
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
