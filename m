@@ -1,42 +1,42 @@
-From: Joseph Jackson <skoidat@lvcm.com>
-Subject: Re: Installation of sources
-Date: Sun, 21 Jul 2002 07:10:20 -0700
+From: Jim Reimer <wa5rrh@arrl.net>
+Subject: Re: samba problem - oops
+Date: Sun, 21 Jul 2002 10:39:28 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D3AC0CC.3040208@lvcm.com>
-References: <221321ff3c.1ff3c22132@homemail.nyu.edu>
+Message-ID: <200207211537.g6LFbbOc004719@franklin.icok.net>
+References: <200207211315.g6LDFtOc028945@franklin.icok.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200207211315.g6LDFtOc028945@franklin.icok.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Anshuman Singh Rawat <asr245@nyu.edu>
-Cc: no To-header on input <"unlisted-recipients: ;"@100m.mpr200-1.esr.lvcm.net>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Anshuman Singh Rawat wrote:
+"hosts allow" line in smb.conf was wrong.  All fixed now.
 
-> Hi,
-> I recently installed Linux (RHL 7.3) for the first time in my life.
-> Now what do I do install/view the sources? I read in some book where i 
-> cud find the sources but that directory is absolutely empty, so I 
-> guess the sources have to be installed first.
-> 
-> -Anshu
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
-> 
-
-
-Installing from the iso version (the downloaded one or the one in the store) off 
-the first cd does not install any of the source code for any of the packages. 
-If you bought the box set there should be a cd that is full of all the source 
-code.  If you didn't buy it you can also download the sources for it all from 
-redhats ftp site.
-
+On Sunday 21 July 2002 08:17 am, Jim Reimer wrote:
+> I'm having trouble geting samba going.  I can see the Linux
+> machine (pyro2) from a windows(95) machine (it shows up in
+> windows explorer) but when I try to connect from windows,
+> I get this error message:
+>
+> \\pyro2 is not accessible.  The specified computer did not
+> receive your request.  Try again later.
+>
+> And when I check from another Linux machine for available
+> shares, I get this:
+>
+> [jdr@pyro jdr]$ /usr/bin/smbclient -L pyro2
+> added interface ip=192.168.0.5 bcast=192.168.0.255 nmask=255.255.255.0
+> Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
+> session request to PYRO2 failed (Not listening for calling name)
+> Got a positive name query response from 192.168.0.9 ( 192.168.0.9 )
+> session request to *SMBSERVER failed (Not listening for calling name)
+>
+> What do I need to do?
+>
+> Thanks,
+> -jdr-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
