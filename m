@@ -1,8 +1,8 @@
-From: "Peter" <lists@tcob1.net>
-Subject: Re: RH7.3 keyborad lock-up
-Date: Thursday, 15 Aug 2002 12:21:05 +000
+From: "Axel Siebenwirth" <lists@tcob1.net>
+Subject: Re: .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 16:44:45 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_122105__224936f6@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_164445__a46609a1@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,26 +13,12 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Hi,
+Me again.
 
-once more on this subject before closing it.
+Whats the use of stripping object files of their symbols. Symbols reflect
+the functions in an object file, right?
 
-Peter said:
->>I made that switch with RH7.1 some time ago with no problems.
->>7.1 runs on XFree86-4.0.3-5 and and 7.3 om XFree-4.2.0-8.
-
-Ray Olszewski said:
-> This move by Red Hat may be optimistic. Even Debian unstable (Sid)
-> still runs XFree86 4.1.0-17. 
-
-And I think you were asking what RH7.2 is using. It's XFree86-4.1.0-3 on the 
-Cd I borrowed from a friend. I will upgrade to that one now and copy what is 
-useful from 7.3 to 7.2.
-
-Thanks & regards
--- 
-Peter
-
+Axel
 -
 
 <-> Gateway Information.
