@@ -1,62 +1,57 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Mandrake 8.1??
-Date: Fri, 7 Mar 2003 15:55:44 -0500
+From: Bryan Whitehead <driver@jpl.nasa.gov>
+Subject: devfs + PCI serial card = no extra serial ports
+Date: Fri, 07 Mar 2003 14:51:45 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030307155544.A547@lnx2.w8mch.ampr.org>
-References: <20030307151530.GA753@localhost.localdomain> <Pine.LNX.4.44.0303070926080.16791-100000@vector>
-Reply-To: haltec@kvinet.com
+Message-ID: <3E692281.10906@jpl.nasa.gov>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <Pine.LNX.4.44.0303070926080.16791-100000@vector>; from jamtat@mailandnews.com on Fri, Mar 07, 2003 at 09:42:34AM -0600
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
 
-Greetings James, Steven and Yawar and thanks for your input and
-comments.. I'm still struggling with this plus researching my many
-notes about X11R6 from months/years back.. I hit the Web for FAQ's,
-etc including the Mandrake site and nothing similar yet..
+It seems devfsd has an annoying "feature". I bought a PCI card to get a 
+couple (2) more serial ports. The kernel doesn't seem to set up the 
+serial ports at boot, so devfs never creates an entry. However, post 
+boot, since there is no entries, I cannot configure the serial ports 
+with setserial. So basically devfsd = no PCI based serial add on?
 
-The Desktop is maximized and the problem persists with the tool bar
-slid up or down.. When clicking on the Mandrake Control Centre there
-are no buttons in sight to do anything including maximizing..
+03:05.0 Serial controller: NetMos Technology 222N-2 I/O Card (2S+1P) 
+(rev 01) (prog-if 02 [16550])
+	Subsystem: LSI Logic / Symbios Logic (formerly NCR): Unknown device 0002
+	Flags: medium devsel, IRQ 17
+	I/O ports at ecf8 [size=8]
+	I/O ports at ece8 [size=8]
+	I/O ports at ecd8 [size=8]
+	I/O ports at ecc8 [size=8]
+	I/O ports at ecb8 [size=8]
+	I/O ports at eca0 [size=16]
 
-I looked at /etc/X11/XF86Config and the default entries under
-"Display" do NOT have the virtual entry.. I reconfigured another
-machine running Slackware and find that with "virtual 640 480" the
-screen is filled but if I happen to access a site that has drop down
-menus I can't "get" to them.. This is a BIG problem because "WV" is
-always at the "bottom" of the list. <grin> Commenting the virtual
-entry permits the scroll all over the place as James mentioned, and I
-can then select WV, etc...
 
-It seems to me the problem may be the bad dialogue design mentioned
-in that the Desktop itself, KDE, always fills the screen perfectly..
-It's just when you want to manipulate other screens like the Control
-Centre which is the worst of the lot.. Only half of it is viewable.
-Some of the others are better in that you can actually see the very
-top of the OK, Cancel, etc buttons.. It may be a non-compatible issue
-with this one box only and it's BIOS/MB.. I'm sure there are
-thousands of Mandrake 8.1 installs that are OK..
+mknod ttyS2 c 4 66
+mknod ttyS3 c 4 67
+setserial ttyS2 port 0xecf8 UART 16550A irq 17 Baud_base 9600
+setserial ttyS3 port 0xece8 UART 16550A irq 17 Baud_base 9600
 
-In summation I have to conclude that a default, "recommended" install
-of Mandrake 8.1 is NOT for the M$ crowd especially since there are
-some other problems I found making it very unuser friendly compared
-to a Win95 or Win98 setup.. I will never change from Linux/Unix but
-my neighbours wont buy what I can offer as of now.. Not that I'm
-selling "anything." Of course we all know that once Linux is
-configured you wont need the reset button much again.. :^)
+I hoped after "setting up" the serial ports with setserial some magic 
+would happen and they would apear in /dev/tts... but I was wrong.
 
-I have ordered an updated book that may shed some light, at least on
-X11R6.. All my present books are from the early/mid nineties.. Ugh.
+gets me working serial ports... but it's not in /dev... :O
 
-Thanks again - appreciate!!
+Am I just screwed?
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-                Proprietary  Formats  Unacceptable
-.
+If so, what would be a good add on PCI based solution for more serial 
+ports that WORKS with devfsd? (I don't want to disable devfs as this 
+opens up a different set of problems)
+
+Thanks for any replay!
+
+-- 
+Bryan Whitehead
+SysAdmin - JPL - Interferometry Systems and Technology
+Phone: 818 354 2903
+driver@jpl.nasa.gov
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
