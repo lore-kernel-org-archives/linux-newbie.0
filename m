@@ -1,61 +1,113 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: tar for "full" floppy backup?
-Date: Fri, 6 Dec 2002 17:26:05 -0500 (EST)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: tuning iptables
+Date: Fri, 6 Dec 2002 16:48:43 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212061725310.1504-100000@athame.gmpexpress.net>
-References: <200212062144.OAA17052@cu.imt.net>
-Mime-Version: 1.0
+Message-ID: <200212062148.gB6Lmhb05074@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212062144.OAA17052@cu.imt.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jerry James Haumberger <jerryjh@imt.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+Cc: ray@comarre.com
 
-maybe tar cvbkf /dev ... will work.
+Well, I'm afraid I didn't get very far in straightening out my
+iptables so that I could move tcpip packets.
 
-Jude <dashielljt(at)gmpexpress-dot-net>
+I should mention that I'm running RedHat 8.0. I use  pop3 to get email
+and sendmail to send mail. I don't care to be pinged, and I'll do
+without telnet. No one needs to access my standalone machine for FTP
+etc. 
 
-On Fri, 6 Dec 2002, Jerry James Haumberger wrote:
+1. First, I verify that INPUT chain's policy is set to ACCEPT:
 
-> Hello everyone --
->
-> An old Slackware 3.0 manual suggests the following command with
-> tar for a full backup onto 3.5" floppy disks:
->
-> tar cvfbk /dev/fd0 1440 4 /
->
-> I've read that the "k" option is supposed to cause tar to prompt
-> for adding multiple disks as the archive exceeds the size of each
-> floppy disk, but I receive errors, and the backup stalls.
->
-> Does anyone know of a one-line command string for using tar
-> to backup all that's necessary (I realize that *everything*
-> doesn't have to be backed up, such as empty directories, etc.)?
->
-> And what would be the correct command using tar to restore this
-> backup?
->
-> Can the multiple floppy disk archive be gzipped during the tar
-> archive process -- or would this make it impossible to restore
-> the archive later?
->
-> Am I using the wrong utility to attempt floppy disk backups?
->
-> I only have about 9 MBs of material (from BasicLinux) to
-> back up and am using a full version of tar from Slackware 3.5,
-> and I'm not working with a network here.
->
-> Please excuse my ignorance, and thanks for any suggestions!
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+  Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+   pkts bytes target     prot opt in     out     source   destination         
+    150 10348 RH-Lokkit-0-50-INPUT  all  --  * * 0.0.0.0/0 0.0.0.0/0
+
+  This lokkit is a Firewall Configuration utility. It starts by saying
+  that "high security blocks all incoming accesses." Is that my
+  problem? 
+
+2. I flushed all rules for the INPUT chain:
+
+   # iptables -F INPUT
+
+3. This had no feedback, and so I looked at my iptables:
+
+  # iptables -nvL
+  Chain INPUT (policy ACCEPT 0 packets, 0 bytes) 
+    pkts bytes target prot opt in     out     source  destination         
+
+  Chain FORWARD (policy ACCEPT 0 packets, 0 bytes) 
+    pkts bytes target prot opt in     out     source  destination         
+
+  Chain OUTPUT (policy ACCEPT 150 packets, 10348 bytes) 
+    pkts bytes target prot opt in     out     source   destination         
+
+  Chain RH-Lokkit-0-50-INPUT (0 references)
+   pkts bytes target  prot opt in  out source          destination         
+      0     0 ACCEPT  udp  --  *    *   206.141.193.55  0.0.0.0/0  	
+		udp spt:53 dpts:1025:65535 
+      0     0 ACCEPT  udp  --  *    *   206.73.20.40    0.0.0.0/0  
+		udp spt:53 dpts:1025:65535 
+      0     0 ACCEPT  udp  --  eth0 *   0.0.0.0/0       0.0.0.0/0  
+		udp spts:67:68 dpts:67:68 
+      0     0 ACCEPT  udp  --  eth1 *   0.0.0.0/0       0.0.0.0/0  
+		udp spts:67:68 dpts:67:68 
+    150 10348 ACCEPT  all  --  lo   *   0.0.0.0/0       0.0.0.0/0  
+      0     0 REJECT  tcp  --  *    *   0.0.0.0/0       0.0.0.0/0  
+		tcp flags:0x16/0x02 reject-with icmp-port-unreachable 
+      0     0 REJECT  udp  --  *    *   0.0.0.0/0       0.0.0.0/0  
+		udp reject-with icmp-port-unreachable 
+    
+  Am I right to infer that since under the INPUT CHAIN, nothing is
+  listed, that the flush succeeded? I guess so, for Lokkit is gone.
+
+4. Next, I connected with my DSL provider using rp-pppoe:
+
+	# adsl-start 
+	. . . .Connect
+
+5. To check the result, I ran ifconfig -a, and I see that eth0, lo, and
+   ppp0 are all up, and ppp0 has been assigned an address. 
+
+  # ifconfig -a
+  ppp0      Link encap:Point-to-Point Protocol  
+    inet addr:64.252.164.246  P-t-P:64.252.160.1  Mask:255.255.255.255
+
+6. I try # fetchmail. No go. Same behavior as before. Fetchmail
+   accesses the mail server, reports the number of messages waiting,
+   but hangs when it comes to downloading the first.
+
+7. I tried some pings. Same as before:
+   a. I ping my ppp0 address (64.252.164.246). Works fine.
+   b. Then my DNS: # ping 206.73.20.40. While no returns, the server
+   might block pings.
+   c. I ping hardware.redhat.com.  Nothing comes back back.
+   d. I ping aol.com. Every five seconds a return. About 30 ms round
+   trip, which I guess is normal.
+
+In sum, unless I somehow failed to flush rules for the INPUT chain,
+while my iptables were messed up, that is not the basic problem.
+
+I'm using the same box, and simply swapping hard disks, and so the
+only hardware that changes is the hard disk. I have a high software
+firewall, and have run Bastille so set up certain rules, but not
+affecting iptables.
+
+I also recall that my initial installation of RH8.0 resulted in a
+broken rp-pppoe, which I replaced/upgraded with happier results. So I
+wonder if something else might be broken. I'll try running
+/usr/sbin/lokkit with either No Firewall or Medium security to see if
+that helps. Medium security is what I have on my present machine, that
+can receive tcp mail packets.
+
+
+Haines Brown
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
