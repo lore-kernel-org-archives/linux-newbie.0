@@ -1,68 +1,44 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: disabling X display Manager
-Date: Wed, 11 Jun 2003 22:30:02 +0200
+From: "Lee Chin" <leechin@mail.com>
+Subject: usleep
+Date: Wed, 11 Jun 2003 17:55:02 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200306112230.02595.pa3gcu@zeelandnet.nl>
-References: <20030611.160313.-280611.0.matthewstapleton@juno.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20030611225502.29651.qmail@mail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030611.160313.-280611.0.matthewstapleton@juno.com>
 Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Matthew Stapleton <matthewstapleton@juno.com>, linux-newbie@vger.kernel.org
+To: hahn@physics.mcmaster.ca, linux-newbie@vger.kernel.org
 
-On Wednesday 11 June 2003 22:03, Matthew Stapleton wrote:
-> Hello,
->
-> When I boot into linux (I have a dual boot system) the XDM is
-> automatically started.  What file or files do I need to modify in order
-> to disable this? Is there a linux equivalent to DOS's autoexec.bat?
+I would think the following code would wait for 1 second each itteration before printing hello, but it waits way too long.  Replacing the for loop body with a 
+usleep(1000000) works great... what am I missing here?
 
-Depends on which distor you use, in slackware you edit /etc/inittab and make 
-the default runlevel 3 as in;
+Thanks
+Lee
 
-id:3:initdefault:
+#include <unistd.h>
 
-Its around line 24 of the file.
+int main()
+{
+    while (1)
+    {
+        int i;
 
-Some other distros work the same, last time i commented on this it seemed some 
-distos do it in other ways, i am sure the users of those distros will comment 
-and help you further on your way.
+        printf("hello\n");
+        for(i = 0; i < 50; i++)
+        {
+            usleep(1000);
+        }
 
-Your other question is a script file with executable permissions, an example 
-would be.
-Create a file called my-first-script,
+    }
 
-#!/bin/sh
-
-/bin/echo "This is my first try at a script..."
-
-/bin/date
-
-/bin/echo "That is tdays date"
-
-close file, change permissions;
-chmod a+x my-first-script
-Now type ./my-first-script
-
-There is a man page for this sort of thing, 
-man bash
-
-> Thanks,
-> Matthew Stapleton
-> %%%%%%%%%%%%%%%%%%
-> http://webpages.marshall.edu/~staple12
-> %%%%%%%%%%%%%%%%%%
+}
 
 -- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
+__________________________________________________________
+Sign-up for your own FREE Personalized E-mail at Mail.com
+http://www.mail.com/?sr=signup
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
