@@ -1,17 +1,46 @@
-From: "Robert R Stephens" <robert4@bestweb.net>
-Subject: small computer ?
-Date: Mon, 2 Sep 2002 15:12:17 -0400
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: driver via97
+Date: Mon, 2 Sep 2002 20:31:07 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002e01c252b4$a8f7d3c0$3505b3d8@aptiva>
+Message-ID: <0209022031070A.09346@unix.pa3gcu>
+References: <200209020753.02487.r4mz3z@yahoo.es>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200209020753.02487.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Ramzez <r4mz3z@yahoo.es>, linux-newbie@vger.kernel.org
 
-How small of a computer does one need to run a GUI with a Desktop
-environment on a linux system?
+On Monday 02 September 2002 12:52, Ramzez wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+>
+> Hi...
+>   I have installed a sound card VIA97 and the driver for this is into
+> OpenSound package; but the driver turn off each 20 min because it's
+> shareware
+>
+>   where do I find a driver like this??
+
+
+Who knows, i have never encouncered such a card, what does the command;
+lspci
+say or what does he command;
+cat /proc/pci 
+say about the card.??
+Plese cut and paste all the relavant text and do not exclude anything 
+concerning the card.
+
+>
+> thanks
+
+
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
