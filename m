@@ -1,35 +1,27 @@
-From: Axel Siebenwirth <axel@hh59.org>
-Subject: Re: Again about SHAPE extension
-Date: Wed, 3 Jul 2002 23:39:14 +0200
+From: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>
+Subject: Apache in Linux
+Date: Thu, 4 Jul 2002 12:11:52 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020703213914.GA20033@neon.hh59.org>
-References: <20020703201654.9543.qmail@linux.ik5bcu.ampr.org>
+Message-ID: <F4D3DB9A18752A4F99FD880ABC5407179D15D6@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020703201654.9543.qmail@linux.ik5bcu.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi Marco!
+Hi
 
-On Wed, 03 Jul 2002, Marco Calistri wrote:
+1. I have installed Mandrake Linux 8.2 with all server tools. But I couldn't
+find where Apache was put in. I know that we have to untar and then install
+apache, but the gzip file could not be found. Can someone help me?
 
-> After I upgraded RHL from 7.2 to 7.3 I noticed an error from Sawfish where Xlib
-> complains about my X server has not SHAPE extension enabled.
+2. Is there any equivalent in Linux for the "File find" utility in windows.
+I have nautilus, but it didn't show up Apache. It took up a huge amount of
+time seaching only /usr.
 
-http://nscp.upenn.edu/aix4.3html/x11/specs/pdf/shape.PDF
-http://www.xfree86.org/4.2.0/XShapeCombineMask.3.html#sect3
-http://nscp.upenn.edu/aix4.3html/aixprggd/aixwnpgd/ext_window.htm
-http://www.oreilly.com/catalog/x3/
-
-Best would be visiting irc.openprojects.net with you favorite IRC client,
-join #xfree86 and ask there..
-
-Regards,
-Axel
+Regards
+Sridhar
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
