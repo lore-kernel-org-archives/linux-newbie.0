@@ -1,63 +1,65 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: firewall blocks ppp0?
-Date: Mon, 25 Nov 2002 14:44:16 -0800
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: Configuring RH8.0 window manager
+Date: Mon, 25 Nov 2002 18:03:56 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021125140320.0210c410@celine>
-References: <5.1.0.14.1.20021124102855.02154730@celine>
- <3DE102FA.85D8F85D@gelm.net>
- <200211232355.gANNtx703441@hartford-hwp.com>
- <3DE102FA.85D8F85D@gelm.net>
- <5.1.0.14.1.20021124102855.02154730@celine>
-Mime-Version: 1.0
+Message-ID: <200211252303.gAPN3u305042@hartford-hwp.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200211252057.gAPKvMu04359@hartford-hwp.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-OK. Just as a reminder ... I don't run Red Hat here, and I don't currently 
-run PPPoE on my Debian-based router. So I can't help with specifics at the 
-level of what config file the RH-8.0 version or RP-PPPoE uses.
+   > 1. I can delete any icon from the desktop except for two. How do I get
+   >    rid of trash and home?
 
-Having said that, I think you yourself have spotted the problem. A severely 
-edited version of your report, below, focuses on it.
+   Are you using KDE or Gnome? I think these icons may be somewhat integral to 
+   the Window Manager like they are in windows. 
 
-At 03:57 PM 11/25/02 -0500, Haines Brown wrote:
-[...]
-> > Script /usr/sbin/pppoe
-> >       -p
-> >       -I eth0
-> >       -T 20
-> >       -U
-> >       -m 1412
-> >       -D 0-0
-> >       finished (pid 4906), status = 0x1
+Wow. I thought integration was a feature of Windows, rather than
+Linux! I supposed I could get the source for gnome and edit out where
+it drags in the icons, and then compile it and fold it in. But I'm so
+unsure of myself I'd screw things up irrevocably.
 
-The problem you have here is with the -T setting. It tells pppoe to exit if 
-there is no link-layer (ppp) traffic for 20 seconds.  As you go on to 
-comment ...
+   > 3. Window stacking is tied to focus, so that the window on top of the
+   >    stack is the focused window. I want to revert to my usual
+   >    preference which is for stacking to be in order of window creation,
+   >    so that what's on top is the newest window.
 
->I don't understand why a successful connection results in a
->hangup. The -T timeout option of 20 seconds seems about the time it takes for
->my connection to die. I gather that timeout can cause trouble if
->there's no traffic. The solution is to use lcp-echo-internal option
->for pppd. The pppoe timeout should be about four times the LCP echo
->interval. Any idea where one implements the LCP echo option?
+   If you are using KDE then there should be a 'Control Center' in the main 
+   programs menu. Otherwise you should look up the docs for a configuartion 
+   utility which most of the desktops should have provided with the install.
 
-This is a pppd option ("lcp-echo-interval", not "lcp-echo-internal", BTW). 
-Put it wherever the RH-8.0 implementation of pppd stores its settings (on 
-my Debian system, this would be in /etc/ppp/options, but YMMV ... check 
-*your* version of the pppd man page for this info).
-[...]
+I'm using gnome. There is a little utility for setting focus behavior,
+but that's not what I need. What I want to do is to have stacking set
+a window to the bottom. I've been doing that because I was running
+Ximian. Enlightenment has the same feature, but RH8.0 does not seem to
+include Enlightenment. 
 
+   > 4. I want to configure xterm, but ~/.Xdefaults no longer understands
+   >    statements such as
+   >
+   > 	      XTerm*Font: 7x13bold
+   > 	      xterm -geometry 20x5-0-0 &
+   >
+   >    Where now does one now define things like fn, bg, fg, etc.?
+   >
+   >    Ideally I'd like to customize an xterm by which user invoked
+   >    it. For example, if I issue the su - user command in an xterm, the
+   >    xterm would use user's xterm configuraiton. As things now stand, I
+   >    can achieve this only by creating a second xterm icon, and
+   >    configure its xterm command to pass its own set of options to the
+   >    xterm command.
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+I managed to solve this problem a bit. I have ~/Xdefaults define the
+xterms in general, and then I crated a launcher for user's xterm and
+one for root's xterm so that they are distiinguished by their
+background colors and position on the desktop. This is the usual
+approach. My problem was that the examples in Running Linux used some
+upper case letters that are now deprecated and the configurability of
+the xterm launcher snuck up on me.
 
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
