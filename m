@@ -1,54 +1,58 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: ncurses
-Date: Thu, 18 Apr 2002 20:43:12 +0000
+Subject: Re: Slack8.0 - 2.4.XX - ftpd missing?
+Date: Thu, 18 Apr 2002 20:57:48 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02041820431209.04062@unix.pa3gcu>
-References: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
+Message-ID: <0204182057480B.04062@unix.pa3gcu>
+References: <20020418152828.A172@lnx2.w8mch.ampr.org>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
+In-Reply-To: <20020418152828.A172@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: glen <inavaganza@yahoo.com>, linux-newbie@vger.kernel.org
+To: Hal MacArgle <haltec@iceweb.net>, linux-newbie@vger.kernel.org
 
-On Thursday 18 April 2002 16:47, glen wrote:
-> I am trying to use the menuconfig command to upgrade
-> my kernel.  It returns the error that I need Ncurses
-> installed.  I installed Ncurses and ran ldconfig.  I
-> still get the error:
+On Thursday 18 April 2002 19:28, Hal MacArgle wrote:
+> Greetings: Been running Slackware 8.0 - kernel 2.2.19 /or/ kernel
+> 2.4.5 /or/ kernel 2.4.13 and find I can't FTP that machine via my eth
+> lashup.
+>
+> Ping works; telnet works; NSFD works, etc but trying ftp the machine
+> reports: "Connected to lnx2" then a wait, "421 Service not available,
+> remote server has closed connection." The opposite direction from the
+> problem machine to any other machine running Slack 7.1; Slack3.5;
+> RH6.2, etc - all fine.. It seems obvious, to me, that FTPD is not in
+> evidence. I looked at the Configure file and see no obvious entries.
 
-You failed to say how you installed ncurses and what the archive was called.
-Just what did you install, most folks mistakes are that they dont read the 
-INSTALL file before issuing ./configure --options where options are what you 
-choose from the README file also included in the ncurses archive(s).
+Which configure file ????
+The correct file would be /etc/inetd.conf and should contain one of the two 
+following lines.
+
+ftp    stream  tcp     nowait  root    /usr/sbin/tcpd  wu.ftpd -l -i -a
+ftp     stream  tcp     nowait  root    /usr/sbin/tcpd  proftpd
+
+and of course the programs should be resident in the mentioned directory's.
+On the otherhand it sounds like you did not install ftp at all, if that is 
+the case you can install it from your source(cdrom) ((or what ever)) with 
+"setup" or "pkgtool".
+Oops another point is; in /etc/ftpusers it states;
+# To enable anonymous FTP, remove the "ftp" user:
+In otherwords if a line exsists with 
+ftp
+remove it or comment it out.
 
 >
-> rm -f include/asm
-> ( cd include ; ln -sf asm-i386 asm)
-> make -C scripts/lxdialog all
-> make[1]: Entering directory
-> `/usr/src/linux/scripts/lxdialog'
-> /usr/bin/ld: cannot find -lncurses
-> collect2: ld returned 1 exit status
+> I note there is no 'man ftpd' or 'man ftpaccess', like previous
+> versions, so something must have changed and I can't find it...
+
+> I looked thru all the docs including the source package to no avail.
 >
-> >> Unable to find the Ncurses libraries.
-
-This is saying i cant find the following which should be in /lib
-/lib/libncurses.so.5 -> libncurses.so.5.2*
- /lib/libncurses.so.5.2*
-
-> >>
-> >> You must have Ncurses installed in order
-> >> to use 'make menuconfig'
+> Any suggestions?
 >
-> make[1]: *** [ncurses] Error 1
-> make[1]: Leaving directory
-> `/usr/src/linux/scripts/lxdialog'
-> make: *** [menuconfig] Error 2
+> Cheers,
 
-If all else fails simply use 'make config' no ncurses needed then.
+73's.
 
 -- 
 Regards Richard
