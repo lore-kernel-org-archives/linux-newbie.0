@@ -1,43 +1,40 @@
-From: glen <inavaganza@yahoo.com>
-Subject: ncurses
-Date: Thu, 18 Apr 2002 09:47:44 -0700 (PDT)
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Slack8.0 - 2.4.XX - ftpd missing?
+Date: Thu, 18 Apr 2002 15:28:28 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020418164744.67532.qmail@web12202.mail.yahoo.com>
+Message-ID: <20020418152828.A172@lnx2.w8mch.ampr.org>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I am trying to use the menuconfig command to upgrade
-my kernel.  It returns the error that I need Ncurses
-installed.  I installed Ncurses and ran ldconfig.  I
-still get the error:
+Greetings: Been running Slackware 8.0 - kernel 2.2.19 /or/ kernel
+2.4.5 /or/ kernel 2.4.13 and find I can't FTP that machine via my eth
+lashup.
 
-rm -f include/asm
-( cd include ; ln -sf asm-i386 asm)
-make -C scripts/lxdialog all
-make[1]: Entering directory
-`/usr/src/linux/scripts/lxdialog'
-/usr/bin/ld: cannot find -lncurses
-collect2: ld returned 1 exit status
+Ping works; telnet works; NSFD works, etc but trying ftp the machine
+reports: "Connected to lnx2" then a wait, "421 Service not available,
+remote server has closed connection." The opposite direction from the
+problem machine to any other machine running Slack 7.1; Slack3.5;
+RH6.2, etc - all fine.. It seems obvious, to me, that FTPD is not in
+evidence. I looked at the Configure file and see no obvious entries.
 
->> Unable to find the Ncurses libraries.
->>
->> You must have Ncurses installed in order
->> to use 'make menuconfig'
+I note there is no 'man ftpd' or 'man ftpaccess', like previous
+versions, so something must have changed and I can't find it...
 
-make[1]: *** [ncurses] Error 1
-make[1]: Leaving directory
-`/usr/src/linux/scripts/lxdialog'
-make: *** [menuconfig] Error 2
+I looked thru all the docs including the source package to no avail.
 
+Any suggestions?
 
-__________________________________________________
-Do You Yahoo!?
-Yahoo! Tax Center - online filing with TurboTax
-http://taxes.yahoo.com/
+Cheers,
+
+    Hal - in Terra Alta, WV,  -  Slackware Linux 8.0   (2.4.13)
+    haltec@iceweb.net | w8mch@iceweb.net..A M$ free environment     
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
