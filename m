@@ -1,52 +1,38 @@
-From: Jamie Lokier <jamie@shareable.org>
-Subject: Re: Paging and system calls
-Date: Mon, 28 Apr 2003 14:14:18 +0100
+From: Elias Athanasopoulos <elathan@phys.uoa.gr>
+Subject: Re: about upgrading the kernel.
+Date: Mon, 28 Apr 2003 19:30:01 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030428131418.GB8906@mail.jlokier.co.uk>
-References: <20030428124808.M37677@bilmuh.ege.edu.tr>
+Message-ID: <20030428193001.A31941@neutrino.particles.org>
+References: <20030427172040.GA6928@storm.armateknik.com.tr>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20030428124808.M37677@bilmuh.ege.edu.tr>
+In-Reply-To: <20030427172040.GA6928@storm.armateknik.com.tr>; from halil@debian-tr.org on Sun, Apr 27, 2003 at 08:20:40PM +0300
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Kasim Sinan Yildirim <yildirim@bilmuh.ege.edu.tr>
-Cc: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Halil Demirezen <halil@debian-tr.org>
+Cc: linux-newbie@vger.kernel.org
 
-Kasim Sinan Yildirim wrote:
-> ?n my operating system, when a system call occurs, the user level code jumps 
-> to system level code by changing its selectors to KernelCS and KernelDS. But 
-> at this point, the cr3 register still points to the page directory of the 
-> user process. So, the actual code that is pointed by kernel level page 
-> directory is not equal to the user level page directory entry. As a result , 
-> the system fails.
-> 
-> How this problem is solved in Linux? Have you got any solution to my problem?
+On Sun, Apr 27, 2003 at 08:20:40PM +0300, Halil Demirezen wrote:
+> I want to know, as the new patches and upgrades are published for the kernel, do i have to re-compile the 
+> whole kernel after i pached it? or is there any easy way of doing it so?
 
-In Linux, there is no separate kernel page directory.  The the upper
-1GB (configurable) of each process address space holds the same kernel
-level page mappings in _all_ page directories, so process context
-switches don't change those mappings.
+Make (if the Makefile is correctly written) is quite clever to resolve any
+depedencies and compile only the changed sources; as well as sources depend
+on the changes.
 
-The exception is vmalloc() kernel mappings.  For these the kernel area
-of each process address spaceis filled in lazily by the page fault
-handler.  Once filled, these also have the same values in all contexts.
+This is done automagically. You just patch the sources and perform a 'make'.
+OTOH, if you encounter strange bahaviour in the fresh kerenl, a 'make clean; 
+make' won't hurt to try.
 
-This is why user space can only address 0-3GB of address space in
-Linux.  It has the huge benefits that (a) system calls and interrupts
-don't need to switch page directories and incur TLB flush costs; (b)
-the kernel code can easily read and write user space.
+Elias
 
-It gets a bit more complex when dealing with more than about 1GB RAM
-(actually the threshold is some imprecise 10's of meg below that.
-Then PAE page tables are used instead, and you have kmap() mappings in
-the kernel area.  But you probably aren't using PAE in your operating
-system.
+-- 
+University of Athens			I bet the human brain 
+Physics Department				is a kludge --Marvin Minsky 
 
--- Jamie
-
-
+	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
