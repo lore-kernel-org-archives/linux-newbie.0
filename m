@@ -1,69 +1,80 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Can't see my drives
-Date: Mon, 26 Aug 2002 19:31:33 +1200
+From: Michael Gruner <stockraser@yahoo.de>
+Subject: Re: self-made potato driver-1.bin
+Date: 26 Aug 2002 14:09:27 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020826075832.CC0E851E48@smtp.orcon.net.nz>
-References: <5.1.0.14.1.20020823084240.02277630@celine> <5.1.0.14.1.20020824074857.02250780@celine> <OE532m9lHiu3fQtYdVz00016e0b@hotmail.com>
-Reply-To: cr@orcon.net.nz
+Message-ID: <1030362679.930.22.camel@highflyer>
+References: <1030305001.695.18.camel@highflyer> 
+	<02082520464300.02211@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: base64
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <OE532m9lHiu3fQtYdVz00016e0b@hotmail.com>
+In-Reply-To: <02082520464300.02211@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Arthur Othieno <a_othieno@hotmail.com>, Linux Newbie Mailing List <linux-newbie@vger.kernel.org>, Ray Olszewski <ray@comarre.com>
+Content-Type: text/plain; charset="macroman"
+To: pa3gcu@zeelandnet.nl
+Cc: linux-newbie@vger.kernel.org
 
-On Monday 26 August 2002 07:53, Arthur Othieno wrote:
-> Subject: Re: Can't see my drives
->
-> > Selected responses only, below.
-> >
-
-
-> > >As a related question, is there anywhere on the Internet a page that
-> > > explains
-> > >(in simple language) what the boot-up sequence of Linux is (and XFree86
-> > > for that matter) and what files get read in what order?   Man pages are
-> > > always much too detailed and limited in scope to be easy to follow.
->
-> There is a HOWTO that describes the Linux 'boot-up sequence' dubbed
-> "From-Power-Up-To-Bash-Prompt HOWTO".
-> "The UNIX and Internet Fundamentals HOWTO" may also be useful. Get them all
-> at http://www.tldp.org/docs.html#howto
-
-Thanks!   I looked in linuxdocs.org but either missed them or they're not 
-there.    I'll get them.
-
-
->
-> On RedHat, the initialisation script is actually /etc/rc.d/rc.sysinit, so
-> you will have a line simillar to 'si::sysinit:/etc/rc.d/rc.sysinit' in your
-> inittab file...
-
-I did find sysinit, and it's biiig... still, it's comprehensible.  (Just  :)
-
-
->
-> > I'm not sure if there is a general turorial on the boot/init process, but
-> > were I looking for one, I'd look through the HowTos at (for example)
-> > www.linuxdoc.org .
->
-> The HOWTOs recommended above should do the trick ;-)
->
-> Sorry about the attention-to-detail (if I may say) on RedHat Ray, I'm just
-> trying to make
-> CR feel at home with his box ;-)
->
-> --Arthur--
-
-Thanks guys for the help, I've been running Linux for a while now but never 
-really learnt the basics of it -  I guess it's time I did so (rather than 
-just frantically scrabbling around when something stops working  :)
-
-cr
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+QW0gU29uLCAyMDAyLTA4LTI1IHVtIDIyLjQ2IHNjaHJpZWIgcGEzZ2N1Ogo+IFlvdSBtYWtlIGl0
+IGltcG9zc2FibGUgZm9yIGFueSBoaW50cyBhcyB5b3UgZG9udCBzYXkgd2hhdCBjb21tYW5kcyB5
+b3UgdXNlLCAKPiBleGVjcHQsIAo+ICJwb3RhdG8gZGlkbid0IGxvYWQgdGhlIG1vZHVsZSBzbWMt
+dWx0cmEgd2hldGhlciBJIGdhdmUKPiB0aGUgaW8gYW5kIGlycSBpIHNldCB0aGUganVtcGVyIG9u
+IHRoZSBjYXJkIG9uIG5vciBpIGdhdmUgbm8gb3B0aW9ucyB0bwo+IGxvYWQgaXQ6Igo+IAo+IFlv
+dSBkb250IGV2ZW4gc2F5IHdoYXQgb3B0aW9ucyB5b3UgdXNlZC4vLy8vLwpPaywgeW91J3JlIHJp
+Z2h0LCBoZXJlIGl0IGlzOgpmaXJzdCBpIHVzZWQgdGhlIGRlYmlhbiBpbnN0YWxsZXIgd2hpY2gg
+bG9hZHMgdGhlIG1vZHVsZXMgZm9yIHRoZSBOSUNzLApDRFJvbXMuLi4gYW5kIGdhdmUgdGhlIG9w
+dGlvbiBpbz0weDMwMCAKc2Vjb25kIGkgc3dpdGNoZWQgdG8gdGhlIHNlY29uZCBjb25zb2xlIGFu
+ZCBkaWQgYSAibW9kcHJvYmUgc21jLXVsdHJhIgp0aGlyZCBpIHN3aXRjaGVkIHRvIHRoZSBzZWNv
+bmQgY29uc29sZSBhbmQgZGlkIGEgbW9kcHJvYmUgODM5MCBhbmQgYQptb2Rwcm9iZSBzbWMtdWx0
+cmEKZXZlcnl0aW1lcyBmcm9tIGEgZnJlc2ggYm9vdGVkIHBvdGF0byBpbnN0YWxsLi4ueW91IGtu
+b3cgdGhlIHJlc3VsdHMuCj4gCj4gTm93IGkgaGF2ZSBhIGxvdCBvZiBleHBlcmlhbmNlIHdpdGgg
+c21jIG5pY3MsIHNvbWUgImVhcmx5IHVsdHJhJ3MiIGhhdmUgYnVnZ3kgCj4gZmlybXdhcmUgYW5k
+IHdpbGwgZ2l2ZSB5b3UgcHJvYmxlbXMgYXMgeW91IHNlZW0gdG8gYmUgaGF2aW5nLCB0aG9zZSBl
+YXJseSAKPiB0eXBlJ3MgKHNvbWUpIHdvcmsgd2l0aCB0aGUgbW9kdWxlICAid2QiIChpbiBtb3N0
+IGNhc2VzKS4Kd2lsbCBnaXZlIHRoYXQgYSB0cnkuIFRoZSB0aGluZyBpIGRvbid0IHVuZGVyc3Rh
+bmQgaXM6IHRyeWluZyB0byBpbnN0YWxsClN1U0UgYW5kIGZsaTRsIHdpdGggdGhhdCBjYXJkIGFs
+d2F5cyB3b3JrcyBmaW5lIGJ5IGxvYWRpbmcgdGhlaXIKc21jLXVsdHJhLW1vZHVsZS4uLgo+IFNv
+bWUgY2FyZHMgbWF5IGxvb2sgbGlrZSBhIHNtYy11bHRyYSBidXQgaGF2ZSBhIDgwMTMgY2hpcCwg
+dGhlIG9sZCB3ZCBoYWQgCj4gODAwMydzIG9yIHdhcyBjYWxsZWQgODAwMyBjYW50IHJlbWVtYmVy
+LCBidXQgQUZBSUsgdGhleSB3ZXJlIDggYml0IGNhcmRzLgpvbiB0aGUgY2hpcCB0aGVyZSBpcyAi
+c21jLXVsdHJhLWNoaXAiIHByaW50ZWQuCj4gCj4gTm93IGlmIHRoZSBjYXJkIGlzIGEgdHJ1ZSBz
+bWMtdWx0cmEgdGhlbiB5b3UgaGF2ZSAyIGp1bXBlcnMgb24gdGhlIGNhcmQuCj4gV2l0aCB0aGUg
+Y2FyZCBwbGFjZWQgd2l0aCBjb21wb25lbnQgc2lkZSB1cCBhbmQgdGhlIGNvYXggYW5kIFJKNDUg
+Y29ubmVjdG9ycyAKPiBvbiB0aGUgcmlnaHRoYW5kIHNpZGUgdGhlcmUgYXJlIGp1bXBlcnMgYXQg
+dG9wIGxlZnQuCj4gVGhlIGZpcnN0IHNldCBvZiBqdW1wZXJzIGZyb20gbGVmdCB0byByaWdodCBp
+cyBudW1iZXJkIFcxLgo+IEoxID0gc29mdCBjb25maWd1cmF0ZWQgKHVuZGVyIGxpbnV4IG5vdCBp
+biB1c2UpCj4gSjIgPSBJL089MjgwIElSUT0zIAo+IEozID0gSS9PPTMwMCBJUlE9MTAKSSBkaWQg
+c2V0IHRoZSB0aGF0IGp1bXBlciB0byBKMy4gdGhlIGNhcmQgSSBoYXZlIGhlcmUgaGFzIHRoZSBq
+dW1wZXIgZm9yCnRoZSBST00gaW50ZWdyYXRlZCB0byBKMS1KNSwgc28geW91IGhhdmUgSjEgc29m
+dCBjb25maWd1cmF0ZWQsIEoyIGZvcgoyODAvMyB3aXRob3V0IFJPTSBKMyBmb3IgMzAwLzEwIHdp
+dGhvdXQgUk9NIEo0IDI4MC8zIHdpdGggUk9NIGFuZCBKNQozMDAvMTAgd2l0aCBST00uCj4gCj4g
+SSBoYXZlIGVuY291bnRlcmQgbWFueSBwcm9ibGVtcyB3aXRoIHRoZXNlIGNhcmRzLCBoZXJlIGFy
+ZSBzb21lIGhpbnRzLCBhcyBmYXIgCj4gYXMgaSBjYW4gcmVtZW1iZXIsIGl0cyBiZWVuIGEgbG9u
+ZyB0aW1lIHNpbmNlIGkgdXNlZCB0aGVtLgo+IAo+IERvbnQgdXNlIElSUSAzIGFzIGl0IGlzIG5v
+cm1hbGx5IHVzZWQgYnkgc2VyaWFsIHBvcnRzLgo+IFVzZSB0aGUganVtcGVyIHNldHRpbmdzIGFi
+b3ZlIHRvIGF2b2lkIG1lbW9yeSBhbmQgSS9PIGFkZHJlc3MgcHJvYmxlbXMuCj4gTWFrZSBzdXJl
+IHlvdXIgQklPUyBpcyBzZXQgZm9yIElTQS9QblAgb24gSVJRIDEwIG90aGVyd2lzZSBzb21lIHN5
+c3RlbXMgd2lsbCAKPiBxdWl0ZSBwb3NzYWJseSBhc3NpZ24gaXJxMTAgdG8gc29tZSBQQ0kgYWRh
+cHRvciBkdXJpbmcgdGhlIGluaXQgcHJvY2VzcyBhbmQgCj4gd2lsbCBwcm9kdWNlIHRoZSBlcnJv
+ciBtZXNzYWdlIHlvdSBtZW50aW9uZWQgYWJvdmUsIAo+ICIgIGRldmljZSBvciByZXNvdXJjZSBi
+dXN5ICIKYSBjYXQgL3Byb2MvaW50ZXJydXB0cyB0b2xkIG1lIElSUSAzIGFuZCAxMCBhcmUgYm90
+aCB1bnVzZWQgYW5kIGNhdAovcHJvYy9pb3BvcnRzIHRvbGQgbWUgdGhhdCAweDMwMCBtdXN0IGJl
+IGZyZWUgYXMgd2VsbC4KPiBJdCByZWFsbHkgbWVhbnMgdGhlIElSUSBvciBJL08gYWRkcmVzcyBp
+cyBpbiB1c2UgcmF0aGVyIHRoYW4gdGhlIGV0aGVybmV0IAo+IGNhcmQgaXMgaW4gdXNlLgo+IAo+
+IDEpIFNlbmQgYW5vdGhlciBtYWlsLCBpL3dlZSB3aWwgdHJ5IGFuZCBoZWxwLgpJJ2xsIGdpdmUg
+dGhhdCBhIHRyeSA7LSkKPiAyKSBUaHJvdyB0aGUgZGFtIHRoaW5ncyBhd2F5IGFzIHRoZXkgYXJl
+IHdheSBvdXRkYXRlZCBhbmQgb2xueSAxME0gY2FyZHMuClRoYXQgbWlnaHQgbm90IGJlIGFuIGFs
+dGVybmF0aXZlIHRvIG1lIGJlY2F1c2UgYXMgYSBzdHVkZW50IHRoZXJlIGlzIG5vdAplbm91Z2gg
+bW9uZXkgdG8gbWUgYW5kIG1heWJlIGkgY2FuIGxlYXJuIHNvbWV0aGluZyBieSBnZXR0aW5nIHRo
+YXQgY2FyZHMKd29yayB0b2dldGhlciB3aXRoIGRlYmlhbi4KCj4gaHR0cDovL3Blb3BsZS56ZWVs
+YW5kbmV0Lm5sL3BhM2djdS8Kb2ZmLXRvcGljOiBpcyB0aGF0IE5ld3plZWxhbmQgbmVhciBhdXN0
+cmFsaWE/CgptaWNoYQotLSAKV2luZG11ZWhsZW53ZWcgMjIgMDc5MDcgU2NobGVpegptb2JpbDog
+KzQ5MTYyODk1NTAyOQplLU1haWw6IE1pY2hhZWwuR3J1bmVyQGZoLWhvZi5kZQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CgpHZXNlbmRldCB2b24gWWFob28hIE1haWwgLSBodHRwOi8vbWFpbC55YWhvby5kZQpZYWhvbyEg
+cHLkc2VudGllcnQgYWxzIG9mZml6aWVsbGVyIFNwb25zb3IgZGFzIEZ132JhbGwtSGlnaGxpZ2h0
+IGRlcwpKYWhyZXM6IC0gaHR0cDovL3d3dy5GSUZBd29ybGRjdXAuY29tCi0KVG8gdW5zdWJzY3Jp
+YmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUgInVuc3Vic2NyaWJlIGxpbnV4LW5ld2Jp
+ZSIgaW4KdGhlIGJvZHkgb2YgYSBtZXNzYWdlIHRvIG1ham9yZG9tb0B2Z2VyLmtlcm5lbC5vcmcK
+TW9yZSBtYWpvcmRvbW8gaW5mbyBhdCAgaHR0cDovL3ZnZXIua2VybmVsLm9yZy9tYWpvcmRvbW8t
+aW5mby5odG1sClBsZWFzZSByZWFkIHRoZSBGQVEgYXQgaHR0cDovL3d3dy5saW51eC1sZWFybi5v
+cmcvZmFxcwo=
