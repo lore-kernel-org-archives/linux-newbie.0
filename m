@@ -1,64 +1,40 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: striking X server
-Date: 10 Nov 2002
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Tkdesk Segmentation Fault
+Date: Sun, 10 Nov 2002 12:22:50 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200211100419.gAA4Jpq08040@ev6.be.wanadoo.com>
-Content-Transfer-Encoding: 8bit
+Message-ID: <20021110122250.A25979@neutrino.particles.org>
+References: <20021108.225110.134684296.0.lawson_whitney@juno.com> <200211100424.gAA4OMQ02428@philonline.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200211100424.gAA4OMQ02428@philonline.com>; from pfheiss@philonline.com on Sun, Nov 10, 2002 at 12:24:22PM +0800
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
-Now I got at the root of that problem; and it is indeed bizarre:
-somewhat/something(*) must have done a "new" copy of the XFree86-
-"Config-4" file(**), where there was the single line _not_
-commented out which is there by _default_, namely the valid line
+On Sun, Nov 10, 2002 at 12:24:22PM +0800, Peter wrote:
+> -#1  0x4007502a in _XOpenLC () from /usr/X11R6/lib/libX11.so.6
+> -#2  0x400746f9 in XOpenIM () from /usr/X11R6/lib/libX11.so.6
+> -#3  0x08079c09 in OpenIM ()
+> -#4  0x080783e6 in GetScreen ()
+> -#5  0x0807823b in CreateTopLevelWindow ()
+> -#6  0x0807891c in TkCreateMainWindow ()
+> -#7  0x08089544 in TkCreateFrame ()
+> -#8  0x0807a185 in Initialize ()
+> -#9  0x08079d4c in Tk_Init ()
+> -#10 0x0804c921 in Tcl_AppInit ()
+> -#11 0x080768a0 in Tk_Main ()
+> -#12 0x0804c8ec in main ()
+> (gdb) 
 
-  FontPath 'unix/:-1'
+Just a guess. Your X libs are incompatible with your Tcl/Tk.
 
-(**) I quote from mem; Lawson's hint made me search a bit in this direction
-and in the docs.
+Elias
 
-Indeed, the queer logic in the pertinent "man" has it that the -
-correct and meaningful - default behaviour for looking at the usual
-places for font and other files (indicated precisely there, in the
-"man") with this config-file, is set out of play if the default format of
-this very config-file is used.
-
-Got it ?
-
-(Now tell a Linux/Unix newbie that something like "unix:/-1" is sheer
-nonsense when s/he sees it in the highly original and sacrosanct default
-version of a configuration file.)
-
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-09
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
-
-(*) Bizarrery is and no-one had done a trial for a re-installation or
-change of the X server at that install (on an exchangeable HD), before a
-respective (config-4-)".old" and a (")new(") one were created -- and BOTH
-of them have that ominous line _un_commented.
-
-There should have been just a very first, well-working config-4-file
-from the very first, and at the time immediately successful, install,
-as the back-up "old" file, because there was one single and
-uninterrupted/unrepeated attempt to re-install up the X server on
-Oct.28th: the date when it suddenly striked to succeed with "startx"
-(after impeccable behaviour all the time before).
-
-AND - I almost forgot - there was indeed a nearly 600 M(!)B large
-"core.nnnn" file somewhere on that HD's system ... only that, as far
-as I could remember, THERE HAS NOT BEEN ANY program crash I _remember_
-of with that system in the time preceding the sudden strike of the
-X server.
-And I had run "du" tediously with all the total HD without getting
-aware or attent of the monster (Ok., the human eye is unreliable;
-better do not believe what you see onscreen.)
-
--hc
-
-All answers questioned here.
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
