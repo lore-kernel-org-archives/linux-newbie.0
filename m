@@ -1,8 +1,10 @@
-From: Robert Reif <reif@earthlink.net>
-Subject: block driver example needed for 2.4
-Date: Sun, 18 Aug 2002 23:48:34 -0400
+From: "Arthur Othieno" <a_othieno@hotmail.com>
+Subject: Unknown User/Alias 'Marc'
+Date: Fri, 16 Aug 2002 20:03:11 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3D606A92.8EDACE75@earthlink.net>
+Message-ID: <OE73lmmlQ080Gxw8Zw500012266@hotmail.com>
+References: <20020816.094311.134670320.14.lawson_whitney@juno.com>
+Reply-To: "Arthur Othieno" <a_othieno@hotmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,28 +12,29 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I'm writing a block device driver for an IPI controller that has an
-onboard
-command queue.  I have the driver working for one command at a time but
-I would like to send it all pending requests in the request queue and
-handle
-the replies as they come back.  I'm having a hard time figuring out how
-to
-read multiple requests from the request queue properly and also remove
-the
-requests properly from the request queue in the interrupt routine.
+Hello all. After a few weeks of lurking on the list I can finally turn to
+you
+for some quick advice. The other night as I was looking through my sendmail
+aliases file (/etc/aliases), I noticed a perculiar line at the end of it
+that read:
 
-Linux Device Drivers talks about this type of driver but doesn't give an
-example.
-Are there any examples or explanations  for a block driver like this?
+--begin--
+# Person who should get root's mail
+#root:                        marc
+--end--
 
-The DAC960 code looks like it's doing what I want but it's hard to
-follow
-without hardware documentation.
+All I want to know is who is this user/alias marc? A quick look at the
+/etc/passwd, shadow, group, gshadow... didn't turn up any results, which
+puzzles me. Funny thing is I get mail as root fine! I am running RedHat 7.3
+(Valhalla), Sendmail 8.11.6. The only ports open on the machine are 25/tcp
+(Sendmail) and 6000/tcp (X11). No UDP ports open. And I don't connect to the
+internet with this machine, it's just a dummy machine that sits there
+waiting
+for all things experimentation that may come my way ;-) I have attached a
+copy of the /etc/aliases file for anyone to look at just in case. Thank you
+for your time...
 
-Thanks,
-
-Bob.
+--Arthur--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
