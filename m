@@ -1,46 +1,35 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: (OT?) Dos question..
-Date: Tue, 15 Apr 2003 19:20:16 +0200
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: (OT?) Dos question..
+Date: Tue, 15 Apr 2003 12:57:46 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304151920.23550.James.Hatridge@epost.de>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <Pine.LNX.4.53.0304151250180.1064@homenet>
+References: <200304151920.23550.James.Hatridge@epost.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200304151920.23550.James.Hatridge@epost.de>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: James Hatridge <James.Hatridge@epost.de>
+Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Tue, 15 Apr 2003, James Hatridge wrote:
+>
+> Hi all...
+>
+> My darling wife needs glasses and will not get them. So I need to make the
+> fonts bigger on her DR Dos 7 screen. Does anyone know of a small program that
+> will do this for her?
+>
+In case you don't get helpful responses here, I would suggest 2 lists
+where you are sure to get helpful suggestions. Both are called "survpc"
+and there are alot of old-timer DOS users with stashes of old software
+and/or links to same. One is survpc@tmonroe and the other is
+survpc@softcon.  Both require that one join the list to post there.  An
+internet search under those names should bring up relevant details about
+joining and posting to the list.
 
-
-Hi all...
-
-My darling wife needs glasses and will not get them. So I need to make the 
-fonts bigger on her DR Dos 7 screen. Does anyone know of a small program that 
-will do this for her?
-
-Thanks
-
-JIM
-- -- 
-Jim Hatridge
-Linux User #88484
-- ------------------------------------------------------
-                 BayerWulf
-           Linux System # 129656
-         The Recycled Beowulf Project
-  Looking for throw-away or obsolete computers and parts
-   to recycle into a Linux super computer
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.7 (GNU/Linux)
-
-iD8DBQE+nD9Tv3Z9K7QSWt4RAsLoAKDoLYzWZKs0avi35Py93zJcE1k9zwCfTPu2
-TUnOiN6h6a9efd7usI5Z8MI=
-=DF1K
------END PGP SIGNATURE-----
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
