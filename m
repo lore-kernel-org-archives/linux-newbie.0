@@ -1,108 +1,52 @@
-From: Sanjay Arora <skpobox@yahoo.com>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Linux Networking problem...please help..
-Date: Wed, 16 Jul 2003 05:20:34 -0700 (PDT)
-Sender: linux-net-owner@vger.kernel.org
-Message-ID: <20030716122034.88944.qmail@web21001.mail.yahoo.com>
+Date: Wed, 16 Jul 2003 07:06:10 -0700
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <5.1.0.14.1.20030716065640.01fadea8@celine>
 References: <3F1332FC.8080903@bcgreen.com>
 Mime-Version: 1.0
-Return-path: <linux-net-owner@vger.kernel.org>
-In-Reply-To: <3F1332FC.8080903@bcgreen.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20030716122034.88944.qmail@web21001.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-net@vger.kernel.org
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Netmask is 255.255.255.0 on all machines.
+At 05:20 AM 7/16/2003 -0700, Sanjay Arora wrote:
+>Netmask is 255.255.255.0 on all machines.
+>
+>Point is that the WinXP machine is being given a
+>redirect by the Linux firewall and that is being
+>ignored, either due to inability of WinXP or some
+>misconfiguration by me.
+[old stuff deleted]
 
-Point is that the WinXP machine is being given a
-redirect by the Linux firewall and that is being
-ignored, either due to inability of WinXP or some
-misconfiguration by me.
+As I said in my prior response, redirects are commonly (though not always) 
+ignored. Redirects are a way of spoofing, thus a security hole (even though 
+they also have legitimate uses, as in your case). That XP rejects redirect 
+instructions is quite reasonable.
 
-Sanjay.
+(Are you sure that your Linux client on the LAN is receiving and acting on 
+the router's redirect message? You haven't said. In any case, if it is on 
+network 192.169.250.0/24, and has default gateway 192.168.200.1, as your 
+earlier message seemed to say, it has a more elaborate routing table than 
+the WinXP host ... either a route to 192.168.200.0/24 or a static route to 
+192.168.200.1/32.)
 
---- Stephen Samuel <samuel@bcgreen.com> wrote:
-> What are the netmasks for the two machines?? If you
-> give them a /18
-> (or a /16) netmask and the associated broadcast
-> addresses, then they'll
-> know to just talk directly to each other.
-> 
-> Of course, I barely trust Windows to understand
-> netmasks, but it
-> should be OK -- far better than trying to get it to
-> accept ICMP
-> redirects.
-> 
-> 
-> Sanjay Arora wrote:
-> > Network Scenario: RH 8 Linux Firewall Server using
-> three ethernet cards, 
-> > IPs 172.16.0.141 (connected to Cable Ethernet ISP
-> doing NAT), 
-> > 192.168.200.1 connected to an ethernet hub, &
-> 192.168.100.1 (presently 
-> > not being used). Using a hub two lans are
-> connected to 192.168.200.1, 
-> > each presently having one machine each having IP
-> addresses 192.168.200.2 
-> > (Windows XP machine, having Gateway address of
-> 192.168.200.1 in TCP/IP 
-> > settings) and 192.168.250.1 (RH8 Linux Server,
-> again having 
-> > 192.168.200.1 as GW address).
-> > 
-> > 1. When I ftp from 192.168.200.2 (WinXP) to
-> 192.168.250.1 (RH Linux File 
-> > Server), the firewall shows an error message
-> saying that WinXP machine 
-> > is ignoring redirects to 192.168.250.1 The
-> transfer speed is also around 
-> > 3.5 MB instead of full 10 MB which I get between
-> the two Linux Servers. 
-> > What's the reason? What do I do to correct this
-> behaviour?
-> > 
-> > 2. The RH fileserver machine is very
-> underutilized. I am thinking of 
-> > putting another ethernet card in it and connect is
-> to the cable ISP and 
-> > Firewall server using a hub. I plan to put a
-> firewall on the new 
-> > ethernet/IP address denying all outgoing packets
-> and put a sniffer on 
-> > it. What are the security implications of this?
-> Mind the IP that sniffer 
-> > is running on is denying all outgoing traffic and
-> dropping all incoming 
-> > traffic and providing no services at all. On the
-> other hand the machine 
-> > is inside the firewall.... a compromise here would
-> provide direct access 
-> > to all local network resources. Is a compromise
-> possible on an IP that 
-> > denies all traffic inbound and outbound? Should I
-> waste one machine for 
-> > this task on my proposed small network (less than
-> 20 machines)?
-> > 
-> > With thanks in advance ;-))
-> > Sanjay.
-> 
-> 
-> -- 
-> Stephen Samuel +1(604)876-0426               
-> samuel@bcgreen.com
-> 		   http://www.bcgreen.com/~samuel/
->     Powerful committed communication. Transformation
-> touching
->         the jewel within each person and bring it to
-> life.
-> 
+In any case, if this is the "point" of your query, is it not better made on 
+a Windows XP list than a pair of Linux lists? (BTW, no one else has 
+mentioned this, but cross-posting of this sort is usually considered 
+discourteous.) Both Linux hosts on the LAN seem to be functioning correctly 
+(at least as far as I can tell from your description).
+
+The only solution I can suggest is not to use the redirect trick to enable 
+connectivity. Instead, give the WinXP host a proper routing table that 
+tells it that it has a direct route to network 192.168.250.0/24.
 
 
-__________________________________
-Do you Yahoo!?
-SBC Yahoo! DSL - Now only $29.95 per month!
-http://sbc.yahoo.com
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
