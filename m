@@ -1,61 +1,58 @@
-From: Bernard Bordja <bbpub@wanadoo.fr>
-Subject: Re: Mustek 1200UB scanner driver compilation error
-Date: Wed, 15 May 2002 18:58:49 +0200 (CEST)
+From: =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>
+Subject: extra ordinary installation
+Date: Wed, 15 May 2002 19:27:42 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.20.0205151835570.473-100000@matrix.localdomain>
-References: <02051405560806.27213@unix.pa3gcu>
+Message-ID: <1191284662.20020515192742@chello.pl>
+Reply-To: =?ISO-8859-2?B?TWF0ZXVzeiCjb3Nrb3Q=?= <m.loskot@chello.pl>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <02051405560806.27213@unix.pa3gcu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-On Tue, 14 May 2002, Richard Adams wrote:
+Hello,
 
-> Date: Tue, 14 May 2002 05:56:08 +0000
-> From: Richard Adams <pa3gcu@zeelandnet.nl>
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: Mustek 1200UB scanner driver compilation error
-> 
-> On Monday 13 May 2002 21:35, Ray Olszewski wrote:
-> > A few details that might help ...
-> 
-> [snip]
-> 
-> > 3. As you might infer from the preceding 2 comments, I was able to connect
-> > to the URL in question. I did need to do it using an *ftp* client, though.
-> 
-> I cant not even with ncftp or ftp.
-> Anyway, i will pass on the info here, thanks.
-> 
-> > >> > ftp://ftp.mustek.com.tw/pub/driver/1200UB/Linux/V1.0.3/1200ub.tar.gz
-> > >
-> > >I get connection refused with the above URL.!
-> 
+I have some question:
 
-Hi all !
-I have exactly the same problem with this adress (ftp.mustek.com.tw) with
-ncftp or ftp client.
-login anonymous, password bbpub...
-The response is always the same : CONNECTION REFUSED !
-In other way ftp://ftp.mustek.com works, but infortunetly they have
-nothing for me (mustek 1200 ED Plus on // port) and the sane driver is
-still in progress ... in monochrome. :(
-Nobody knows what's wrong ?
+I have some machine with  RH 7.2 on 10 GB hard drive.
+But I would like to change this HDD to 60 GB (I have 60 GB samsung
+drive).
 
-Bye.
+I think there are two ways to do it:
 
-PS: Please, excuse my english !!!
+1) Export RH7.2 from  10 GB drive to 60 GB drive using PartImage
+software (www.partimage.org).
 
-#!/Bernard/Bordja
-bbpub@wanadoo.fr
-Love, Life, Linux ;-)
+2) Install new OS (I prefer Slackware)
 
+What do you think,which solutin is the best ?
+Which solution has most chances to work fine ?
+
+I could choose First one, because there are many services and software
+installed on RH 7.2 (dhcp, named, www, mysql, etc.)
+
+But I prefer Slackware.
+But I know that it is a lot of work to install this services etc.
+I haven't a lot of time.
+
+What do you recommend ?
+I'm affraid of First solution because I didn't export any OS by
+PartImage.
+
+Any advice ?
+
+Best Regards
+
+--
+
+Mateusz =A3oskot
+E-mail: m.loskot@chello.pl
+GG#: 792434
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
