@@ -1,58 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Burning iso to disk
-Date: Thu, 13 Mar 2003 09:00:30 -0800
+From: "Sriram Narasimhan" <nsri@tataelxsi.co.in>
+Subject: ADS8260 Hang
+Date: Sun, 16 Mar 2003 15:58:44 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030313085420.01fcb8b0@celine>
-References: <200303131021.45642.sotl155360@earthlink.net>
+Message-ID: <3E7451DC.3050902@tataelxsi.co.in>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200303131021.45642.sotl155360@earthlink.net>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Frank Roberts - SOTL <sotl155360@earthlink.net>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Frank -- The generic line I use for burning is quite similar to yours:
+Hello,
 
-                 cdrecord dev=0,0,0 speed=24 filename.iso
+[ If this is the wrong mailing list please point me to the right one. 
+Thank you]
 
-And while I rarely burn bootable CDs (I mostly archive data), when I do, 
-they work.
+I having been trying to bring up the ADS8260 board and incidentally ran 
+into some problems.
 
-Note that I use, for example, speed, not -speed, a usage consistent with 
-the man page ... but that difference is unlikely to cause the sort of 
-failure you seem to be describing. And while I omit -data, that is the 
-default (according to the man page) if no content-type flag is specified.
+I initially tried using Linux 2.4.1 kernel and it worked fine and the 
+board was up.
+I upgraded to 2.4.17 and I found out that the system started hanging 
+during boot up.
 
-So ... what do you mean by "Checking CD I find I have an image file on CD"? 
-Do you mean that the process you use creates an iso9660 filesystem that 
-*contains* the file "MandrakeLinux-9.1rc2-CD1.i586.iso" or that the 
-iso-image file is correctly being placed on the CD as a mountable filesystem?
+I compiled 2.4.17 for ppc boot. (I already have ppc boot on my ADS board 
+and I test my development by tftp boot'ing the kernel image.
 
-At 10:21 AM 3/13/2003 -0500, Frank Roberts - SOTL wrote:
->Hi All
->
->I have downloaded the Mandrake 9.1rc2.iso to my HD.
->I have attempted to burn these iso to CD by both CDRoast and by command line.
->
->I did not ck sums but am assuming that they are good as iso were 
->downloaded on
->line better than t3.
->
->After placing #1 burn CD in CD Reader to start installation computer did not
->recognize CD as bootable.
->
->Checking CD I find I have an image file on CD.
->
->Is it possible for someone to inform me where I am making the mistake in
->converting the iso images to the correct format on the CD.
->
->The command line command used was:
->cdrecord -dev=0,2,0 -speed=12 -data MandrakeLinux-9.1rc2-CD1.i586.iso
+I tried tracking down where the hang could be and ended up at the RFI 
+instruction where its waiting to complete the MMU initialization. The 
+system executes SYNC instruction and then hangs. (arch/ppc/kernel/head.S)
 
+I tried comparing the file head.S between 2.4.1 and 2.4.17. I found out 
+some patches done inside the 2.4.1 had been made generic. There were 
+patches for the BAT initialization and RAM mapping on the MPC8260.
 
+Is there an update on the files?
+Should the patches be done for 2.4.17 as well ?
 
+Any suggestions or pointers could be very helpful.
 
+[Running on x86 with Red Hat 8.0 and cross compiling for PPC.]
+
+Thank you.
+Regards,
+Sriram Narasimhan
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
