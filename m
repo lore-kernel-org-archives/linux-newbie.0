@@ -1,50 +1,45 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: Changing Text
-Date: Fri, 16 Aug 2002 18:02:56 +0200
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: setting up X under Slackware
+Date: Fri, 16 Aug 2002 18:49:51 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <27787.5432432213$1029518281@news.gmane.org>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <02081618495100.02805@unix.pa3gcu>
+References: <20020816.094311.134670320.14.lawson_whitney@juno.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020816.094311.134670320.14.lawson_whitney@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: SuSE List <suse-linux-e@suse.com>
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+To: lawson_whitney@juno.com, ray@comarre.com
+Cc: matthewstapleton@juno.com, linux-newbie@vger.kernel.org
 
+On Friday 16 August 2002 13:12, lawson_whitney@juno.com wrote:
+> On Thu, 15 Aug 2002, Ray Olszewski wrote:
+> > 3. What errors get reported when startx runs?
+>
+> To see these, you are probably going to need to do something like:
+>
+> startx >~/oops 2>&1
+>
+> ~/oops should then give the X version, driver used, and some interesting
+> error messages.
+>
+> If your shell is bash, you can use
+>
+> startx &>~/oops
 
-Hi all..
+Chances are he needs not to do this, newer versions of Xfree create a log 
+automaticly into /var/log
+I think it was XFree86-4.0 when that was added as standard.
 
-OK, here's the problem I've got a file that looks like this:
-
-Rates as of 2002.08.13 20:25:28 UTC (GMT). Base currency is EUR.
-USD United States Dollars                 1.01756               0.982743    
-GBP United Kingdom Pounds                 1.56297               0.639808    
-AUD Australia Dollars                     0.546791              1.82885     
-
-What I want is this;
-
-2002.08.13 	USD 	1.01756  	0.982743    
-2002.08.13 	GBP 	1.56297   	0.639808    
-2002.08.13 	AUD 	0.546791  	1.82885     
-
-With tabs between each word. I think I can do this with sed but I can't see 
-how. 
-
-Thanks
-
-JIM
+>
+> Lawson
 
 -- 
-Jim Hatridge
-Linux User #88484
-------------------------------------------------------
-                 BayerWulf
-	   Linux System # 129656
-         The Recycled Beowulf Project
-  Looking for throw-away or obsolete computers and parts
-   to recycle into a Linux super computer
-
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
