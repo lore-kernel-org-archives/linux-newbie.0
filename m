@@ -1,86 +1,128 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: procmail
-Date: Fri, 26 Jul 2002 15:09:09 +0200 (CEST)
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Re: Partitioning problem
+Date: Fri, 26 Jul 2002 10:39:16 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0207261436420.326-100000@hestia.rdrs.net>
-References: <200207252055.g6PKt8G01345@g38.rdsbv.ro>
+Message-ID: <107a26d107876a.107876a107a26d@homemail.nyu.edu>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207252055.g6PKt8G01345@g38.rdsbv.ro>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: 
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-Hello,....
+Thanks for the response. 
+but the problem is that with the partition shown below i am never able 
+to boot using linux. so i cant edit the lilo.conf.
+or shud i change partition 1 (/dev/hda1) to type ext2 from current 
+vfat. coz that was the only way i cud boot into linux?
 
-On Thu, 25 Jul 2002, Petre Bandac wrote:
+----- Original Message -----
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Date: Thursday, July 25, 2002 2:22 am
+Subject: Re: Partitioning problem
 
-> can procmail do the following: search in the body of an email for a string 
-> and, if found, send a mail with the subject the very string searched for ?
-
-Yes.. you have to build an recipe in your .procmailrc which does basicly
-the following.
-# 1) In your case check the body of the e-mail message.
-:0 B     # Notify procmail that a new recipe starts with B parameter `BODY'
-# 2) Now check if there is a string that you like in the body.
-#    You can do this either by piping the body trhu an external program
-#    like grep and testing for the return value, or you can do this by
-#    staying in procmail itself which is basicly already an optimised egrep.
-#    So in any case, you have to build a regex.
-#    Procmail has the MATCH operator for this.
-*\/.+ anything after the so called V will by stored in the variable MATCH.
-#    You can find more information about this in the procmailex or
-#    procmailrc manpage (see bottom).
-#    To pipe the body trhu an external program your action line has to
-#    start with a `|' symbol e.g (| gzip -9 c >> $HOME/gzippdemailbox)
-#    If you want to extract the sender of the message:
-#    FROM = `formail -zrt -xTo:` However calling formail on heavy duty
-#    e-mail server can cause things to go slow because of the extra
-#    procmail process that has to be created.
-#    Here's another example that you probably find interesting and want to
-#    look for in the manpages or web pages.
-* ? test -s $confirmationlist
-* ! ? echo "$FROM" | fgrep -i -f $confirmationlist
-
-I hope this will get you somewhat further...
-:0 Bi
-* ()\<\/pattern to match the word\>
-* MATCH ?? ()\/[a-z]+
-| echo "$MATCH" | program
-
-> if so - please point me to some howto's, the examples in the /usr/doc of my 
-> slackware didn't help me much
-
-Finding documentation:
-The command `man -k procmail' should give you a list of the currently
-available manpages about the subject procmail on your system. The ouput on
-my system shows:
-
-procmail (1)         - autonomous mail processor
-procmailex (5)       - procmail rcfile examples
-procmailrc (5)       - procmail rcfile
-procmailsc (5)       - procmail weighted scoring technique
-
-For procmail examples there also should be a directory with procmail examples. 
-I don't know what GNU Linux distro you are running but usually on any distro 
-that conforms to some general standards you can find them in the directory: 
-/usr/doc/procmail/examples
-
-The homepage of the procmail mailing-lists is at:
-http://MailMan.RWTH-Aachen.DE/mailman/listinfo/procmail
-
-You can find here also a wealth of procmail examples, FAQ's and links to
-get you started.
-
-> thanks in advance,
+> On Wednesday 24 July 2002 21:24, Anshuman Rawat wrote:
+> > Hi,
+> > I want to have both WinXP and Linux (RHL7.3) on my system but am 
+> having> trouble with the partitions. My partition table (i dunno 
+> whether thats the
+> > correct term) looks like this (as shown by linux installer ) -
+> >
+> >                                 Start   End        Size(MB)      
+> Type
+> > Mount point    Format
+> > /dev/hda
+> >     -Free                        1        1            8         
+>   Free
+> > space
+> >     -/dev/hda1                 2        7            47          
+vfat
+> > No
+> >     -/dev/hda2                8        708        5499      NTFS
+> > No
+> >     -/dev/hda3               709     2432      13523    Extended
+> >         -/dev/hda5           709     1413      5530      NTFS
+> > No
+> >         -/dev/hda6           1414   1419      47          ext2
+> > /boot               Yes
+> >         -/dev/hda7           1420   1453      267        swap
+> > Yes
+> >         -/dev/hda8           1454    2432     7697      ext2
+> > /                       Yes
+> >
+> > the error message i get is -> Boot partition may not meet booting
+> > constraints for your architecture. Creation of boot disk is highly
+> > encouraged.
 > 
-> petre
-
-g00d luck
-
-J.
+> Thats not an error message but a warning from the install process, 
+> as you see lilo or grub was installed.
+> 
+> > The options I get is "modify partition" and "add anyway". If I 
+> proceed with
+> > 'add anyway' option installation is succesful but I dont get the 
+> option of
+> > selecting the OS for booting the PC and the PC boots using WinXP.
+> > I tried changing the /dev/hda1 partition to ext2 ,mount pt 
+> /boot. The
+> > installation was succesful and so was the boot, but then the 
+> option of
+> > starting with WinXP dissapeared. I could only boot with Linux
+> > Can anyone help me out here?
+> > btw I used Partition Magic from WinXP to partition the disc as I 
+> dont know
+> > how to work around usinf fdisk in Linux.
+> 
+> You need to change you lilo.conf file, or grub which ever you told 
+> redhat to 
+> install.
+> 
+> I do not use grub so someone else will need to give you and 
+> example for grub
+> lilo can be told to boot linux as default, it may be that in 
+> /etc/lilo.conf a 
+> line is presant
+> default = xxx
+> Simply change the xxx to the "name" stated in the linux portion 
+> lower down in 
+> the file, or if no default = is present place the linux entry as 
+> the first 
+> entry.
+> Save the file and run lilo with the -t option,
+> /sbin/lilo -t
+> If no errors are found you will see something like;
+> 
+> Added Linux *
+> Added dos
+> The boot sector and the map file have *NOT* been altered.
+> 
+> Now rerun lilo as is.
+> /sbin/lilo
+> reboot and linux is the default system.
+> 
+> Its all explained on my home page;
+> 
+> http://people.zeelandnet.nl/pa3gcu/kernel.htm
+> 
+> >
+> > -Anshu
+> >
+> >
+> > -
+> > To unsubscribe from this list: send the line "unsubscribe linux-
+> newbie" in
+> > the body of a message to majordomo@vger.kernel.org
+> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> > Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> -- 
+> Regards Richard
+> pa3gcu@zeelandnet.nl
+> http://people.zeelandnet.nl/pa3gcu/
+> 
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
