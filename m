@@ -1,22 +1,29 @@
-From: "Tom Beer" <mailings@analogon.com>
-Subject: Re: Telnet
-Date: Fri, 24 May 2002 13:22:24 +0200
+From: Matthew Stapleton <matthewstapleton@juno.com>
+Subject: which distribution to use?
+Date: Fri, 24 May 2002 13:00:27 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <005d01c20315$4809e600$0901a8c0@system>
-References: <E7B0663E34409F45B77EFDB62AE0E4D202236238@s99mail02.okdhs.org> <200205241018.g4OAIsV28156@mail.orcon.net.nz>
+Message-ID: <20020524.130028.-440295.7.matthewstapleton@juno.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: cr@orcon.net.nz
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-> 
-> I'll bear in mind that it's insecure.
-> 
-Just use ssh, same feeling, same style and a little more secure.
+Hello,
 
+I have tried several of the major distributions on my PC over the years. 
+But I am by no means an expert at using UNIX/Linux.  I want some advice
+on the pros and cons of the various distributions.  Possibly any replies
+to this could be aimed at Redhat, Slackware, Debian, SUSE, Mandrake etc
+as many of the others are based on these.  
+
+Thanks,
+
+
+Matthew Stapleton
+...........
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
