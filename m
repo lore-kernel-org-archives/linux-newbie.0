@@ -1,42 +1,56 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Can't Print (fwd)
-Date: Sun, 09 May 2004 15:16:27 +0800
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Adding Fibre channel disks
+Date: Sun, 9 May 2004 09:50:41 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040509071627.2213F333ED@heisspf>
-References: <5.1.0.14.1.20040502073017.01efcfc0@celine>
+Message-ID: <200405090950.41433.pa3gcu@zeelandnet.nl>
+References: <6CE6A442029B3347890ED9FCA94FAE0701EEAF43@nsxmail.netscout.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Sun, 02 May 2004 07:50:00 MST."
-             <5.1.0.14.1.20040502073017.01efcfc0@celine> 
+In-Reply-To: <6CE6A442029B3347890ED9FCA94FAE0701EEAF43@nsxmail.netscout.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Linux-newbie@vger.kernel.org
+To: "Gosselin, Mark" <gosselinm@netscout.com>, "Linux Newbie (E-mail)" <linux-newbie@vger.kernel.org>
 
-Hi,
+On Friday 07 May 2004 21:49, Gosselin, Mark wrote:
+> Hi,
+>
+> I'm running Red Hat Enterprise. I installed a QLogic HBA in it to attach to
+> an EMC Clariion. I'm connected, I can see the device from the BIOS on my
+> Linux box, but I can't for the life of me figure out what device it is or
+> how to fdisk it. Anyone ever done this before? I'm sure someone who
+> monitors this list mus be able to gove me a step-by-step as to how to
+> see/format that san disk...
 
-I have made a new installation of RH9.0 2.4.20-9 where I have a parallel 
-printer card. The system is now discovering the card.
+I have absolutly no idea, so why am i answering you.?
+Well, if i am stuck i use www.google.com/linux and type in some keywords in 
+the engine, now if i use "QLogic HBA" i get more than 100 hits, the first 2 
+gave me an impression of what is needed.
+May i suggest you do the same.
 
-Doing: "more /proc/pci" I am told that the printer card is using irq 5 and the 
-io=0xd400.
-This is the first number to show. There are some more io.
+http://listserv.sap.com/pipermail/linux.general/2003-August/003615.html
+http://open-projects.linuxcare.com/t3/documentation.html
 
-Only to this io does the printer react, meaning it makes that sound when the 
-print head moves somewhat and only giving this io will lpq give an information 
-about the print queue. It is a dot matrix printer.
+google is your friend as it shows answers to problems one has never come 
+across.
 
-That printer react comes when I do: insmod parport_pc io=0x400 irq=5.
-After this lpq gives the usual information about the print queue. There is 
-always an old queue around either as 'done' or now as an 'error too many 
-tries'.
+>
+> Thanks
+> Mark Gosselin
+> NetScout Systems
 
-Now if I want to print something 'lpr file' the keyboard totally freezes and I 
-have to do a dirty reboot.
-
-Any help appreciated.
 -- 
-Peter
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
