@@ -1,24 +1,36 @@
-From: dashielljt <dashielljt@gmpexpress.net>
-Subject: Re: problems with ALSA
-Date: Thu, 12 Dec 2002 22:26:33 -0500 (EST)
+From: Heimo Claasen <hammer@revobild.net>
+Subject: RE: RAM and swap partition
+Date: 13 Dec 2002
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.50.0212122225440.902-100000@athame.gmpexpress.net>
-References: <200212110750.08044.r4mz3z@yahoo.es>
- <Pine.LNX.4.50.0212112042140.4071-100000@athame.gmpexpress.net>
- <200212120019.25355.r4mz3z@yahoo.es>
-Mime-Version: 1.0
+Message-ID: <200212130451.gBD4pNUg019999@pegasus.wanadoo.be>
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212120019.25355.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: r4mz3z <r4mz3z@yahoo.es>
-Cc: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Is that alsa rc6 or something earlier?  If earlier, suggest you download
-and try installing and compiling rc6.
+It's still not really clear for my when and if, how much swap space is
+needed.
 
-Jude <dashielljt(at)gmpexpress-dot-net>
+There had been two opinions in this thread which clearly pointed to
+none at all - surely qualified, one from own experience re
+"workstations", the other (and that was the first time I heard about
+this at all) that swap is (only?) needed when compiling and in order
+to save a crash log.
+
+The definition of "total (virtual) memory needed" for a/one programm
+appears logical (and "natural"); but then, there should be some means
+of measurement of precisely this, in order to do some reasonable -
+and economic - decision on that workspace indeed needed.
+
+Furthermore, it seems rational to approach this in function of the
+actual use of (or installed) applications - i.e., to define, or even
+to resize if necessary (when a memory hog is added), the swap partition
+_after_ the otherwise complete installation of the "system".
+
+// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-12
+The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
