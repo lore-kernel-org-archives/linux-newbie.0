@@ -1,41 +1,44 @@
-From: Gavin Laking <me@gavinlaking.co.uk>
-Subject: CPU Utilization & Priorities
-Date: Wed, 26 Jun 2002 13:50:38 +0000
+From: Jos Lemmerling <jos@lemmerling.net>
+Subject: Re: Reg:gcc
+Date: Wed, 26 Jun 2002 14:57:45 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020626135038.3b9752ca.me@gavinlaking.co.uk>
-Reply-To: me@gavinlaking.co.uk
+Message-ID: <Pine.LNX.4.21.0206261447030.9633-100000@orthanc.lemmerling.net>
+References: <F4D3DB9A18752A4F99FD880ABC5407179D15BA@ccdc-exchg.careercommunity.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <F4D3DB9A18752A4F99FD880ABC5407179D15BA@ccdc-exchg.careercommunity.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
+On Wed, 26 Jun 2002, Sridhar J (june end) wrote:
 
-I'm struggling to understand exactly what my 'load average' is reporting.
+> Thanks to all of you who replied promptly to my question. I would like to
+> clarify one thing. When I compiled the program using gcc, I tried typing
+> a.out. When that didn't work, I did a ls -l which showed me a file called
+> a.out*.
+> 
+> Doesn't it mean that a.out is in the current directory? So why I should go
+> to a parent directory as in ./a.out to execute it?
 
-I run several applications at once, and by using 'top' I can ascertain what applications are currently gobbling up the most memory and CPU resources. At the minute when I run the Distributed.net client (which I stopped just before I started this email), my load average jumps to 1.00 (+/- 0.10). From this figure I understand that my CPU is being fully used, as anything lower than 1.00 indicates a percentage when multiplied by 100- i.e. 0.20 load average is 20% of CPU utilization. (correct me if I'm wrong! :-S )
+yep (a.out is in the current directory).
 
-This seems reasonable, since 'dnetc' (Distributed.net Client) only runs when the CPU is idle. When the CPU is idle, 'dnetc' gobbles all of the idle cycles. The problem/confusion arises when I start doing something else 'intensive'. Just for fun, we can say I run a second 'dnetc' client. Now in theory, because the client are eating the 'spare' cycles, the load average should remain at 1.00+/-; both applications taking about half (0.50) of the idle cycles between them. In actuality, the load average jumps to 2.00+/- so the processor is sharing its full attention between two applications. With 'n' similar applications we can watch the load average jump to 'n' high.
+You just stay in the directory where a.out is located. The first dot in
+"./a.out" _means_ the current directory.
 
-Now lets throw priorities in to the mix. If I set the the priority to +20, then the applications should run when nothing else is running, and if something else decides to run, then the application should "Shut up a minute, I'm working!", but this isn't the case, the load average just keeps climbing irrespective of priorities.
+If you want to try it, try a "ls -l .", you should see the content of the
+current directory (output should be the same as "ls -l").
 
-Is the 'dnetc' application a bad, irresponsible, CPU hating application, or is it "Just doing my job Ma'am"?
 
-I've tried monitor other applications for this type of activity but 'top' grabs the most cycles itself and it doesn't update fast enough to view applications 'flitting' up the priority/load-induced ladder.
-
-Any light on this matter would be great, and links to resource where I can learn more (so you can type less) are much appreciated. :-) Thanks for your time,
-
-G
+HTH
 
 --
-  Gavin Laking
- 
-  1:34pm  up 20:07,  3 users,  load average: 0.08, 0.85, 0.88
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
-  http://www.gavinlaking.co.uk/
---
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
