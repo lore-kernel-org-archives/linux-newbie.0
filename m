@@ -1,139 +1,80 @@
-From: Paul Furness <paul.furness@vil.ite.mee.com>
-Subject: Re: system hangs after reboot
-Date: 16 Dec 2002 16:15:01 +0000
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Printer error
+Date: Mon, 16 Dec 2002 09:05:51 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1040055299.2905.19.camel@zebra.vil.ite.mee.com>
-References: <5.1.0.14.1.20021216080217.021330f0@celine>
+Message-ID: <5.1.0.14.1.20021216085528.02134570@celine>
+References: <3DFD4529.1040700@pghmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20021216080217.021330f0@celine>
+In-Reply-To: <3DFD4529.1040700@pghmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Here's yet another set of questions to look at :)
+You don't give us much to go on, but since the problems seem to be with 
+name resolution, I'd suggest you tell us the details of your system as they 
+relate to that.
+
+First is your networking setup. Are you connected to a LAN or directly to 
+the internet? (I guess you must be if you are using MapQuest.) If so, how?
+
+More immediately, how does your system do name-to-address resolution? Does 
+it rely on /etc/hosts? If so, what are the contents of that file? Or does 
+it use a nameserver? If so, is it accessable? And what are the contents of 
+the /etc/resolv.conf file?
+
+Does the message really say "local host" rather than "localhost"? What 
+result do you get if (from the command line) you try "ping localhost"?
+
+How is the printer connected to the PC? Parallel port? Something else?
+
+Although your questions involve generic Linux applications, the form of 
+your report is specific to RH 8.0. My questions ask for more generic Linux 
+information, which will permit non-RH users to try to assess your problem. 
+If you prefer to stick with the RH tools, that's fine ... in that case, I 
+hope someone else here, someone who does use RH 8.0, pops in with 
+translations of these suggestions to Red Hat-ese.
+
+Finally, as to your immediate problem ... if the third page of a epecific 
+document continues to fail to print, while other docs print fine (do they? 
+you haven't said), i'd suspect something odd about the specific document. 
+Generically, you need to investigate how general the printing problem is 
+before we can tackle it systematically.
+
+At 10:14 PM 12/15/02 -0500, Bill Pleasants wrote:
+>Hello,
+>After installing RH 8.0 in my HP Pentium II, my first successful installation,
+>I installed a Brother HL-720 printer. I set it up local.  The Printer 
+>Administration window shows:
+>Command:    lpr
+>
+>Driver:          Generic Printer (SGENPRT)
+>
+>Location:
+>
+>After printing 2 of 3 pages from
+>Mapquest, the printer indicated toner out.  I replaced the cartridge and
+>there was an error light which can be cleared by unplugging the printer
+>cable and cycling the printer off.  I reset the print queue and the same
+>2 pages printed and the error light flashed.  Rebooted - same error light.
+>Attempts to print additional items failed.  Later I entered "lprm" to 
+>cancel anything pending and got
+>"local host IP not available."  When I entered
+>"/etc/init.d/lpd stop" I got "[FAILED]"
+>I repeated it and got
+>"[FAILED]"
+>"local host IP not available"
+>In the panel is a ? which when clicked gives
+>"Temporary error in name resolution."
+>So far I haven't learned what this IP is about. I would appreciate help.
 
 
-1. If you change /etc/init.tab so that the system boots into run level
-3, then reboot, do you get any errors? 
-2. If not, try logging in as a user and running "startx" to see what
-errors you get (if any) on the terminal.
-3. It sounds like you have a network thing going on. If you wait long
-enough, it might start anyway. sendmail often does this when your host
-table doesn't agree with your IP address. Other programs also have this
-problem. Therefore, check that you have an "/etc/hosts" file and that it
-is correct and complete (at least as far as info about the problem
-machine goes).
-
-P.
-
-
-On Mon, 2002-12-16 at 16:07, Ray Olszewski wrote:
-> Four questions about what you posted ...
-> 
-> 1. In the "good init" sequence, what happens next? You're asking us to 
-> compare a bad init to nothing (as regards the part that is bad).
-> 
-> 2. When you say the system "hangs" and "freezes", how carefully have you 
-> assessed that? How long have you waited before giving up? What happens if 
-> you CRTL-C when the system is "hung"?
-> 
-> 3. What is eth0 and how does it connect to the Internet? If the problem is 
-> associated with a DHCP failure of some type, the details of the interface 
-> it is using may matter.
-> 
-> 4. Is the problem only associated with a soft ("shutdown -r") reboot? If 
-> you do a power-down reboot, does the system boot and init properly?
-> 
-> At 09:53 AM 12/16/02 +0100, Arno Seitzinger wrote:
-> >Hi NG,
-> >
-> >for a couple of days, my Suse Linux 8.1 (2.4.19) on a HP Omnibook XE3 Laptop
-> >shows a strange behaviour: it hangs after a reboot (shutdown -r now od from
-> >KDE). First it starts as usual, but freezes after "switching to runlevel
-> >5", when initializing the random number generator and the network.
-> >I pasted the output of a good and a bad boot.msg below.
-> >
-> >My last actions, before I noticed it doesn't reboot anymore, were:
-> >- use the cellphone to access internet
-> >- create a new user because of OpenOffice store failure
-> >- clear tmp directory in single user mode (because of OpenOffice store
-> >failure - was this stupid?)
-> >- new (workstation) installation of OpenOffice
-> >
-> >Nayone around who can give me a clou where to look next?
-> >Arno
-> >
-> >***boot.msg when system hangs
-> >=============================
-> >[...]
-> >Master Resource Control: previous runlevel: N, switching to runlevel:
-> >5
-> >
-> >done<notice>killproc: kill(30,3)
-> >
-> >INIT: Entering runlevel: 5
-> >
-> ><notice>/etc/init.d/rc5.d/S01isdn start
-> ><notice>'/etc/init.d/rc5.d/S01isdn start' exits with status 0
-> ><notice>/etc/init.d/rc5.d/S01random start
-> ><notice>'/etc/init.d/rc5.d/S01random start' exits with status 0
-> ><notice>/etc/init.d/rc5.d/S05network start
-> >
-> >***boot.msg normally
-> >====================
-> >[...]
-> >Master Resource Control: previous runlevel: N, switching to runlevel:
-> >5
-> >
-> >
-> >done<notice>killproc: kill(30,3)
-> >
-> >INIT: Entering runlevel: 5
-> >
-> >
-> ><notice>/etc/init.d/rc5.d/S01isdn start
-> ><notice>'/etc/init.d/rc5.d/S01isdn start' exits with status 0
-> ><notice>/etc/init.d/rc5.d/S01random start
-> ><notice>'/etc/init.d/rc5.d/S01random start' exits with status 0
-> ><notice>/etc/init.d/rc5.d/S05network start
-> ><notice>Initializing random number generator
-> >done
-> >
-> >Setting up network interfaces:
-> >
-> >     lo
-> >done
-> >
-> >     eth0      (DHCP) startproc: execve (/sbin/dhcpcd) [ /sbin/dhcpcd -H -D
-> >-N -Y -t 999999 -h esw44 eth0 ], [ CONSOLE=/dev/console TERM=linux
-> >SHELL=/bin/sh OLDPWD=/etc/sysconfig/network INIT_VERSION=sysvinit-2.82
-> >RUN_FROM_RC=yes REDIRECT=/dev/tty1 COLUMNS=106
-> >PATH=/sbin:/usr/sbin:/bin:/usr/bin:/etc/sysconfig/network/scripts vga=791
-> >RUNLEVEL=5 PWD=/etc/sysconfig/network PREVLEVEL=N LINES=34 HOME=/ SHLVL=4
-> >_=/sbin/startproc DAEMON=/sbin/dhcpcd ]
-> ><notice>pidofproc: dhcpcd 347
-> 
-> 
-> 
-> --
-> -------------------------------------------"Never tell me the odds!"--------
-> Ray Olszewski					-- Han Solo
-> Palo Alto, California, USA			  ray@comarre.com
-> -------------------------------------------------------------------------------
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
--- 
-Paul Furness
-
-Systems Manager
-
-Steepness is an illusion caused by flat things leaning over.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
