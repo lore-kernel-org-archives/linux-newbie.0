@@ -1,69 +1,25 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: FW: Perl
-Date: Wed, 04 Dec 2002 12:03:01 -0800
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: Re: Type II PCMCIA SLOT, how can I tell?
+Date: Wed, 04 Dec 2002 17:08:54 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021204114638.022408c0@celine>
-References: <5.1.0.14.1.20021204111950.022398d0@celine>
+Message-ID: <3DEE7CF6.A3ACE0D7@gelm.net>
+References: <20021204170342.DLHH12667.smtp02.fuse.net@smtp.fuse.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <01bb01c29bcd$3eba1a60$64fea8c0@pkrausxp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-At 02:42 PM 12/4/02 -0500, Paul Kraus wrote:
->Odd we looked at the same problem and came up with completely opposing
->conclusions. My attempt to combine them was for the sake of readability.
->I know Perl has a 1000 ways to write the same statement. I thought there
->would be a better more readable way. Sort of like Paul = + 1 can be
->written Paul += Paul. The second of which is easier for me to look at.
+was Re: Type II PCMCIA, how can I tell?
 
-Not in Perl. These two operations do different things, and neither does 
-what I suspect you think they both do (increment Paul by 1). Example below:
+ It is not the PC-CARD that I am in question about.
+It is the PCMCIA interface in an old laptop.
 
-#!/usr/bin/perl
+ Is there some program I can run to check the interface
+to see if it is PCMCIA Type II ?
 
-$paul = 23      ;
-
-#!/usr/bin/perl
-
-$paul = 23      ;
-$paul = +1      ;
-
-$paul2 = 23     ;
-$paul2 += $paul2        ;
-
-print "paul=$paul but paul2 =$paul2\n"  ;
-#EOP
-
-ray@waverly:~$ ./testme2.pl
-paul=1 but paul2 =46
-
-This offers a nice illustration of why I dislike most "shortcut" syntax. I 
-even usually prefer to write $paul = $paul + 1 rather than its equivalent 
-$paul++, except in highly conventionalized uses like "for" statements. 
-YMMV, of course.
-
-BTW, Alan's suggestion won't work either (either exactly as proposed or in 
-the easy variants I could try ... though Perl is wonky enough that *some* 
-variation on his idea might work). Two reasons:
-
-1. $5 is a read-only variable so you can't apply the =~s operator to it.
-
-2. In general, $a = $b = $c assigns to $a the return code from the 
-operation $b = $c --  either 1 for success or 0 for failure -- not the 
-value in $c.
-
-Another nice example of why I hate "shortcut" syntax. Boring is better.
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
-
+Thanks, Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
