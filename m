@@ -1,80 +1,79 @@
-From: jamtat@mailsnare.net
-Subject: Re: Getting a valid display under Debian revisited
-Date: Tue, 9 Dec 2003 18:44:37 -0600 (CST)
+From: Neo Wee Teck <weeteck@linux.net>
+Subject: Re: Process information?
+Date: Tue, 9 Dec 2003 16:55:06 -0800 (PST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0312091843110.1018@debian-box>
+Message-ID: <20031210005506.8C0347268@sitemail.everyone.net>
+Reply-To: weeteck@linux.net
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: whitnl73@juno.com, weeteck@linux.net
+Cc: linux-newbie@vger.kernel.org
 
-Apologies if this gets double-posted.  I sent it 2 or 3 hrs ago and
-haven't seen it hit the list yet, so I'm resending.
+But in redhat's kernel, even with ps ax, it shows [httpd]
 
-On Tue, 9 Dec 2003, Ray Olszewski wrote:
 
-> OK. First thing to wonder is if this is some sort of xdm problem. Test this
-> by removing the symlink /etc/rc2.d/S99xdm and rebooting. This change should
-> leave you with a standard login: prompt on VT1.
+
+--- whitnl73@juno.com wrote:
+On Mon, 8 Dec 2003, Neo Wee Teck wrote:
+
+> Hi,
 >
-> Log in and run "startx", and see if you have the same problem.
+>   I saw some difference in the process info when using RedHat kernel 2.4.20-8 and the kernel from kernel.org (2.4.23)
 >
-Same problem.  A bit of phosphor excitement as the server starts, and some
-blinking.  Then it goes totally black and the power light starts blinking.
-
-> This detail actually is important. It is an indicator of a problem with an
-> hsync or vsync signal to the monitor. Make sure your X setup is set to use
-> default size of 640x480 and color depth of 8 (not great settings, but very
-> vanilla ones, likely to find a workable modeline).
+> With Redhat's kernel, process show something like this
 >
-Tried 640x480x8 with the current hsync and vsync.  Same problem - black
-screen after a blink or two.
-
-> I don't have a 2.2.20 source tree handy to examine, and I don't otherwise
-> recall if it supports devfs. Based on my system here, current (or at least
-> recent) X doesn't assume devfs is in use.
+> www      10186  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
+> www      10187  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
+> www      10188  0.0  0.1  2536 1276 ?        S    Dec08   0:01 [httpd]
 >
-I tried the new kernel and am running it now.  It has not resolved the
-problem.
-
-> As a general matter, if we are looking at the possibility of hardware
-> problems, you might want to report the details of how you consifured X (in
-> the dpkg-mediated dialog) and what the relevant sections (Modules,  Device,
-> Monitor, Screen, and ServerLayout) of XF86Config look like. Also tell us
-> what monitor you are using and what you know about its multisync
-> capabilities (this last item is an RTFM exercise).
+> But with 2.4.23 kernel it shows
 >
-When I installed X using tasksel, a set of dialogues ran after the
-download asking details about video card, monitor, keyboard and mouse.  I
-entered the values there.  I initially edited (by hand) a line in the
-section that deals with the mouse.  Since then, I have run
-dpkg-reconfigure xserver-xfree86 at least 4 or 5 times to try and fiddle
-with settings to see if that would help.  Those mouse settings have almost
-surely been overwritten by now.  The way XF86Config-4 looks is sort of a
-moving target for this reason: I'm not sure what to show you.  This
-monitor is a Microscan ADI 4V LM-1564.  Like most of the other stuff I
-have, this one is a castoff that came with no documentation.  Specs I
-found on the web for it say it can do 1280x1024 maximum, and that hsync is
-30-64, vsync 50-100.  I tried those settings initially at 24 bit color and
-640x480, 800x600 and 1024x768 resolutions.  Later I went down to 50-80 on
-vsync.  Since your last reply I've selected 640x480 only in
-dpkg-reconfigure xserver-xfree86 and 8 bit color.  I also tried limiting
-hsync down to 30-40 and vsync to 50-60.
+> www      5673  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
+> www      5674  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
+> www      5675  0.0  0.1  2536 1276 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
+>
+> Any configuration in the kernel that i missed out? I prefer the way processes are shown in Redhat's kernel but would like to use the 2.4.23's kernel.
+>
+> Cheers
+>
+>     Neo
 
-Though it may not be relevant, I'd like to ask how I go about specifying a
-window manager.  I apt-get(ted) fluxbox as I mentioned, but I'm just not
-sure if I need to configure the system somehow so that the computer knows
-to start it.  I'm assuming that, even if that's not configured correctly,
-I should still see something when I run "startx," and that it's therefore
-probably not relevant to the problems I'm having.  But not being sure, and
-needing to perhaps confront that aspect at some stage, I thought I should
-mention it.  What I really need is some sort of description of setting up
-X from start to finish.  Unfortunately, I haven't located such a resource
-yet.  Any recommendations anyone?
+try adding c to whatever ps options you use.
 
-Thanks, James
+[whit@giftie whit]$ ps -C xfstt u
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+root       510  0.0  0.9  1896  740 ?        S    Dec02   0:00 /usr/X11R6/bin/xf
+root     10382  0.0  0.9  6504  764 ?        S    Dec03   0:00 /usr/X11R6/bin/xf
+[whit@giftie whit]$ ps -C xfstt uc
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+root       510  0.0  0.9  1896  740 ?        S    Dec02   0:00 xfstt
+root     10382  0.0  0.9  6504  764 ?        S    Dec03   0:00 xfstt
+[whit@giftie whit]$ tty
+/dev/vc/4
+[whit@giftie whit]$ cat /dev/vcc/4|fold|trail >oops
+
+This is nothing to do with the kernel patch level, I think.
+
+Lawson
+--
+---oops---
+
+
+
+________________________________________________________________
+The best thing to hit the internet in years - Juno SpeedBand!
+Surf the web up to FIVE TIMES FASTER!
+Only $14.95/ month - visit www.juno.com to sign up today!
+
+
+_____________________________________________________________
+Linux.Net -->Open Source to everyone
+Powered by Linare Corporation
+http://www.linare.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
