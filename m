@@ -1,91 +1,38 @@
-From: Jose Luis Alarcon <jlalarcon@linuxnobis.com>
-Subject: Re: Ogle and slow DVD playing.
-Date: Tue, 1 Oct 2002 10:58:23 -0700 (PDT)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: defrag
+Date: Tue, 01 Oct 2002 12:54:36 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021001175823.B928A11E07@sitemail.everyone.net>
-Reply-To: jlalarcon@linuxnobis.com
+Message-ID: <5.1.0.14.1.20021001124856.02c9ed90@celine>
+References: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <000601c26981$c2a1b370$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: pa3gcu@zeelandnet.nl, Ray  Olszewski <ray@comarre.com>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
---- pa3gcu <pa3gcu@zeelandnet.nl> wrote:
->On Monday 30 September 2002 19:13, Jose Luis Alarcon wrote:
->>   Hi all. Long time since i was here last time.
->>
->>   Anybody can tell me what can are the reasons why ogle play the DVD movies
->> very slow?.
->
->
->Have you read the FAQ at www.dtek.chalmers.se/groups/dvd/faq.shtml 
->espestialy FAQ Nr, 20.
->
->Just how do you invoke ogle?
->What video card do you have?
->What driver is the Video card using.?
->What version of Xv are you using.? (xvinfo)
->What options do you pass to Xv "before" you play a DVD.?
->Do you use an MPEG2 decoder card like a DRX2 or DRX3.???
->Where does the output go too, TVout or Monitor.?
->What CPU do you use?
->How much Ram do you have.?
->What device does the audio go thro' (make and model please).
->
->There are a lot of factors which apply here, if i were to ask them all i 
->would need more bandwidth, its the last day of the month and my limit of 
->2.5Gb is just about used up.
->
->Help me/us to help you by supling the nessasary info.
->
->>   TIA.
->>
->>   Best regards.
->>
->>   Jose.
->>
->> Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
->> ESware Linux 365 Kernel 2.4.17 ReiserFS.
->> Registered Linux User #213309.
->> Memories..... You are talking about memories.
->> Rick Deckard. Blade Runner.
->
->-- 
->Regards Richard
->pa3gcu@zeelandnet.nl
->http://people.zeelandnet.nl/pa3gcu/
->
+At 03:35 PM 10/1/02 -0400, Paul Kraus wrote:
+>Can you defrag a Linux drive
 
-  Richard and Ray, thanks you very much. You both are the real heroes of this
-list.
+There is a Linux program called "defrag" that works with ext2 filesystems. 
+I don't know if it works with the newer filesystems, like ext3 and reiserfs.
 
-  Into the Ogle's FAQS web i (and anybody) have all the necesary for solve
-all problems what can be present with the player.
+>I think the partition is ext3. Do they need
+>deframenting?
 
-  Hold on in your work's line.
+People disagree about this, but the conventional answer is NO (exclusing 
+unusual circumstances). In practice, I don't ever defrag my ext2 
+filesystems, and I don't see the kinds of performance deterioration you (or 
+I, anyway) typically see on old Windows systems.
 
-  Thanks you very much, again.
 
-  Regards.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
-  Jose.
-
-Debian GNU/Linux 'Sid' Kernel 2.4.17 Ext3.
-ESware Linux 365 Kernel 2.4.17 ReiserFS.
-Registered Linux User #213309.
-Memories..... You are talking about memories. 
-Rick Deckard. Blade Runner.
-
-_____________________________________________________________
-Linux for the Desktop
-Software, Setup, chat & email.
-http://www.linuxnobis.com
-
-_____________________________________________________________
-Select your own custom email address for FREE! Get you@yourchoice.com w/No Ads, 6MB, POP & more! http://www.everyone.net/selectmail?campaign=tag
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
