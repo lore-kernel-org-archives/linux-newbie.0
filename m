@@ -1,36 +1,56 @@
-From: "Huber, George K RDECOM CERDEC STCD SRI" <George.K.Huber@us.army.mil>
-Subject: RE: Network Statistics Collection
-Date: Tue, 21 Sep 2004 09:54:23 -0400
-Sender: linux-c-programming-owner@vger.kernel.org
-Message-ID: <E3E30069B061524E90BCEE4417E30661138533@monm207.monmouth.army.mil>
+From: Ole Martin Handeland <oli@oasenlan.com>
+Subject: RTL network card problem
+Date: Tue, 21 Sep 2004 17:54:34 +0200
+Sender: linux-newbie-owner@vger.kernel.org
+Message-ID: <cipis0$jcg$1@sea.gmane.org>
 Mime-Version: 1.0
-Return-path: <linux-c-programming-owner@vger.kernel.org>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org, linux-net@vger.kernel.org, linux-c-programming@vger.kernel.org, linux-admin@vger.kernel.org, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Tejas wondered:
+Hi,
 
->I am working on a company project and as a part of it - I have to
->collect and show some network information on the Monitoring utility.
->Please help to find out that how can I collect these information from
->a Linux Machine.
+When i just inserted this second network card my redhat network config 
+shows this:
 
->1. Number of active TCP connection
->2. Information of Active connections (Source and Dest IP, Source and Dest
-Port)
->3. Retransmitted packets due to Duplicate ACK and SACK
->4. Connection Duration and RTT
->5. Transmission Troughput (in KB/Sec)
->6. Number of Newly Created TCP Connections
->7. Closed TCP Connections
->8. Total Data transmitted (in byte)
->9. Total Data Retransmitted (in byte)
+Desc.			Type		Device		Status
+RTL-8139/8139C/8139C+ 	Ethernet	eth0		ok
+RTL-8139/8139C/8139C+ 	Unknown		dev22193	ok
 
-Take a look at iptraf - it does most (if not all of what you want).  Through
-a
-study of its source code you should be able to figure out how to do what you
-want.
+Yes, i have two pci slots with two identical cards in.
+ifconfig shows this:
 
-George
+dev22193  Link encap:Ethernet  HWaddr 00:E0:4C:39:32:3F
+           inet addr:192.168.0.5  Bcast:192.168.0.255  Mask:255.255.255.0
+           inet6 addr: fe80::2e0:4cff:fe39:323f/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:55 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:0 (0.0 b)  TX bytes:7474 (7.2 Kb)
+           Interrupt:10 Base address:0xc000
+
+eth0      Link encap:Ethernet  HWaddr 00:10:A7:13:CB:0D
+           inet addr:192.168.1.101  Bcast:192.168.1.255
+	  Mask:255.255.255.0
+           inet6 addr: fe80::210:a7ff:fe13:cb0d/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:108 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:37 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:16616 (16.2 Kb)  TX bytes:4623 (4.5 Kb)
+           Interrupt:11 Base address:0xc400
+
+So, my question is: why is this network card just partially found? my 
+kudzu found it, i configured it, and it dont work...?
+
+System: 700mhz celeron, 256mb ram, fedora core 2, and, as you see, one 
+and a half network cards...
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
