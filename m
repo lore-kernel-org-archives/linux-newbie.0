@@ -1,48 +1,82 @@
-From: Gavin Laking <me@gavinlaking.co.uk>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Recovery help (Maybe OT)
-Date: Thu, 27 Jun 2002 12:32:58 +0000
+Date: Thu, 27 Jun 2002 18:52:04 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020627123258.5f4acbd6.me@gavinlaking.co.uk>
+Message-ID: <5.1.0.14.1.20020627184318.022718d0@celine>
 References: <20020627070631.96452.qmail@web13103.mail.yahoo.com>
-Reply-To: me@gavinlaking.co.uk
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20020627070631.96452.qmail@web13103.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: szonyi calin <caszonyi@yahoo.com>, linux-newbie@vger.kernel.org
 
-On Thu, 27 Jun 2002 09:06:31 +0200 (CEST)
-szonyi calin <caszonyi@yahoo.com> wrote:
+Your description is a bit sketchy, but I wonder if the problem is that your 
+(partial, I assume interrupted) "rm -rf /" debacle caused /bin/sh to be 
+deleted. Since rc.S and rc.M are (almost surely) shell scripts (the first 
+line of each is all but certainly "#!/bin/sh"), they need the /bin/sh 
+interpreter to execute . Since it is apparently missing, based on your 
+reported "init=/bin/sh" failure, init is correct in telling you that these 
+init scripts "cannot execute".
 
-> Hi
-> I'm new to the list.
-> If this is OT please tell me and i won't bother 
-> you again.
-> 
-> I'm not a newbie but I need help.
-> I managed to do a rm -rf /
-> It erased my /bin /boot /dev 
-> and something from /mnt
+The fix is to reinstall bash and symlink it to /bin/sh .
 
-Hi Calin,
+That said, the suggestion someone else made, that you do a complete 
+reinstall, is probably the better way to go. There are probably other 
+"gotchas" waiting to be found on your partly-deleted system. Were I to have 
+the problem, I'd do this sort of patching only to get the system to the 
+point where I could get any unique, local content off it to another server.
 
-Oh dear, oh dear, oh dear. What possessed you to execute that command? Don't worry, I'm not here to mock you- when I fiurst started with Linux, the first ever command I executed on my test-install was that; just to see how dangerous it really was. Because it was my test-install it didn't matter- no important data loss.
+BTW, this is hardly off topic. In fact, it seems a prime candidate for a 
+beginner's list, since it is very much a rookie error.
 
-You mention in your email that you have backups, so rather than mess around trying to recover the disk, simply wipe it clean, install Slackware again and then when you have your system up and running import/copy over the files that you require from your backup. In most cases that should be a handful of files from the /etc directory that you *may* have edited, and your /home directory.
+At 09:06 AM 6/27/02 +0200, szonyi calin wrote:
+>Hi
+>I'm new to the list.
+>If this is OT please tell me and i won't bother
+>you again.
+>
+>I'm not a newbie but I need help.
+>I managed to do a rm -rf /
+>It erased my /bin /boot /dev
+>and something from /mnt
+>
+>I recovered from backup but can't
+>boot.
+>
+>I boot the default kernel, it boots fine.
+>... boot messages here
+>Mounting root ext2 fs read-only
+>Freeing unused kernel memory
+>Mounted devices in /dev
+>Init version 2.83 booting
+>INIT: cannot execute /etc/rc.d/rc.S
+>INIT: cannot execute /etc/rc.d/rc.M
+>INIT: cannot execute /sbin/agetty
+>INIT: respawning too fast, disabled for five minutes
+>
+>Those files _are_ there and _are_ executable.
+>(I verified by booting from the slackware 8.0
+>install-cd and mounting the partitioin and ls -l)
+>
+>If I try to boot with init=/bin/sh
+>
+>No init found -- kerne panic :-)
+>
+> From my experience this seems to be a /dev/ problem
 
-Good Luck, and don't go executing naughty commands like that again! :-)
 
-G
+
+
 
 --
- Gavin Laking
- 
- 12:25pm  up 1 day, 18:58,  5 users,  load average: 0.17, 0.22, 0.10
+-----------------------------------------------"Never tell me the 
+odds!"--------------
+Ray Olszewski					     -- Han Solo
+Palo Alto, California, USA				ray@comarre.com
+-------------------------------------------------------------------------------------------
 
- http://www.gavinlaking.co.uk/
---
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
