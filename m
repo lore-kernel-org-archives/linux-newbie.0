@@ -1,46 +1,62 @@
-From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-Subject: Re: Linux scripting problem
-Date: Wed, 26 Feb 2003 23:59:03 +0200
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: distribution choice
+Date: Thu, 27 Feb 2003 13:59:30 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030226235903.G28473@neutrino.particles.org>
-References: <20030226174525.48083.qmail@web13406.mail.yahoo.com>
-Mime-Version: 1.0
+Message-ID: <200302271859.h1RIxUE9026632@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030226174525.48083.qmail@web13406.mail.yahoo.com>; from abhijit_v@yahoo.com on Wed, Feb 26, 2003 at 09:45:25AM -0800
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Abhijit Vijay <abhijit_v@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Wed, Feb 26, 2003 at 09:45:25AM -0800, Abhijit Vijay wrote:
-> 
-> -r-s--x--x    1 root     root   656 Feb 26 12:28
-> burnCD
-> 
-> This has the same permissions as /usr/bin/passwd.
-> 
-> burnCD is essentially a tcsh script.
-> 
-> When I run it as root, it works fine.
-> However, when I try to run it as a normal user, I get
-> the message:
-> 
-> /usr/bin/burnCD: Permission denied.
+I've always used Red Hat. My installation of 7.3 began to go sour last
+fall after a clumbsy video driver installation. Things got more
+and more complicated, and I ended up having to do a fresh install of
+Red Hats 8.0. Since then, things just have not worked right and I'm
+spending all to much of my valuable time doing repairs, often
+unsuccessfully.  
 
-You get the permission denied from the tcsh interpreter which can't read
-the script, because you have no read permission (for the script).
+I'm considering a retreat to 7.3, but must also consider changing
+distributions. Here are my criteria:
 
-/usr/bin/passwd is an elf, so you need only x permission to run it.
+1. I like to rely as much as possible on keyboard input rather than
+   the mouse. Red Hat seems to be moving in the opposite direction,
+   and more and more I'm being forced to use the mouse. 
 
-Elias
+2. I must have multiple desktops and window stacking. I don't know
+   that any window manager supports stacking order except
+   enlightenment. Yet I like Gnome's panel and applets. These two
+   applications don't get along well in RedHat 8.0, but do in gentoo;
+   I don't know about other distributions. I've never used Windows,
+   and so don't find anything appealing in a Windows-like interface. 
 
--- 
-University of Athens			I bet the human brain 
-Physics Department				is a kludge --Marvin Minsky 
+3. I've got plenty of hardware muscle, so don't worry much about
+   speed. It is fairly standard SCSI and USB stuff, hardware
+   compatibility is probably not a big issue. 
 
-	
+4. I don't need to be at the bleeding edge in terms of kernel and
+   applications, but I need my stand-alone workstation with DSL
+   connection to be secure and reliable. I've an interest in ham radio,
+   which used to favor one distribution, but I assume there's no
+   significant difference today.
+
+5. I don't find ease of installation to be an issue, and am quite
+   willing to put up with gentoo's notoriously slow compile.
+
+6. I'm quite willing to edit configuration files by hand, but will
+   occasionally need spiritual advice, and so would prefer a
+   distribution that's not too exotic. I find configuration files that
+   are on the move to be a pain. 
+
+7. I mostly use a few standard applications, especially emacs.
+
+In light of this, which distributions should I be considering? Does
+one of them stand out in your opinion as an obvious choice in light of
+my criteria?
+
+Haines  
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
