@@ -1,82 +1,66 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Problems with modules after installing Kernel 2.5.75
-Date: Mon, 15 Sep 2003 09:07:09 +0200
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309150907.09529.pa3gcu@zeelandnet.nl>
-References: <200309142314.35140.lindevel@gmx.net>
-Reply-To: pa3gcu@zeelandnet.nl
+From: =?iso-8859-1?q?szonyi=20calin?= <caszonyi@yahoo.com>
+Subject: Re: Multithreaded /sbin.init? Is it possible?
+Date: Mon, 15 Sep 2003 12:29:29 +0200 (CEST)
+Sender: linux-c-programming-owner@vger.kernel.org
+Message-ID: <20030915102929.8156.qmail@web40605.mail.yahoo.com>
+References: <200309141240.55800.eric@cisu.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200309142314.35140.lindevel@gmx.net>
-Content-Disposition: inline
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-c-programming-owner@vger.kernel.org>
+In-Reply-To: <200309141240.55800.eric@cisu.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Dennis Schridde <lindevel@gmx.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: eric@cisu.net, linux-newbie@vger.kernel.org, linux-c-programming@vger.kernel.org
 
-On Sunday 14 September 2003 23:14, Dennis Schridde wrote:
-> Hi List!
-> I have some Problems with module-symbols...
->
-> I hav compiled linux-2.5.75 without Problems
-> Then I copied arch/i386/boot/bzImage to /boot/vmlinuz-2.5.75 and System.map
-> to /boot/System.map-2.5.75
->
-> When I now restart my System with this Kernel, I get following
-> "error"-message in /var/log/boot.msg:
-> ####################################
-> Inspecting /boot/System.map-2.5.75
-> Loaded 26091 symbols from /boot/System.map-2.5.75.
-> Symbols match kernel version 2.5.75.
-> No module symbols loaded - kernel modules not enabled.
+ --- Eric <eric@cisu.net> a =E9crit=A0:=20
+> 	Wouldn't the Linux Boot process be speeded up if the init
+> program was=20
+> multithreaded?=20
 
-Theres your answer, you disabled modules during your configuration.
+No
+Boot scripts _must_ be executed in a predefined order.
+I was playing a liitle with this and i can give you the=20
+following advice:
 
-> [... ]
->
-> modprobe: FATAL: Module char_major_4 not found.
-> ####################################
-> The modprobe error appears many times...
+1. Bash is the most executed program in the init scripts
+to speed up boot process you must speedup bash.
+Some people suggest to make statically linked. This is=20
+my sugestion too. Loading every shared library takes time.
 
-Of course it will because you configured without module support.
+2. Use a script to start your daemons not 20.=20
+I use Slackware which has one script for each runlevel.=20
+Believe me. There _is_ a difference compared to Mandrake=20
+for example.=20
 
->
-> I edited the modules.conf in the way it is described on
-> http://www.dhaller.de/linux/multikernel.html
-> (It's german, but hope you understand it anyway)
+3. The disk load has an impact on speed also.
+If you start 5 processes in parralel they will start slower
+than 5 scripts sequentially because of the loading of every
+script in the same time.
 
-You can edit what you want but it will not help, go and reconfigure the kernel 
-and start over.
+4. A bigger processor cache also helps a lot :-)
 
-Why would you want to use such an old "development kernel".?
-.6.0{test-x} is out, you may want to try that.
-Be sure to read the Changes file in the Documentation directory, and of course 
-update your system accordinly otherwise it still wont work.
+just my 2 cents.
 
->
-> I think I put the files at the wrong places...
+Sorry for the off-topic answer in linux-c-programming
 
-You may or may not get more help at;
-http://people.zeelandnet.nl/pa3gcu/kernel.htm
+> ----------------------
+> Eric Bambach  =20
+> Eric (at) CISU (dot) net=20
+> ----------------------
 
-> Can you help me?
->
-> Thanks,
-> Dennis Schridde
+Calin
 
--- 
-If the Linux community is a bunch of theives because they
-try to imitate windows programs, then the Windows community
-is built on organized crime.
+=3D=3D=3D=3D=3D
+--
+A mouse is a device used to point at=20
+the xterm you want to type in.
+Kim Alm on a.s.r.
 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
-
-
+___________________________________________________________
+Do You Yahoo!? -- Une adresse @yahoo.fr gratuite et en fran=E7ais !
+Yahoo! Mail : http://fr.mail.yahoo.com
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-c-progr=
+amming" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
