@@ -1,48 +1,49 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: starting X with different XF86Configs
-Date: Mon, 19 Aug 2002 16:58:47 -0700
+From: Riley Williams <rhw@InfraDead.Org>
+Subject: Re: newbie
+Date: Tue, 20 Aug 2002 06:42:44 +0100 (BST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020819165442.020fa290@celine>
-References: <5.1.0.14.1.20020819153832.020ec500@celine>
+Message-ID: <Pine.LNX.4.21.0208200631470.8397-100000@Consulate.UFP.CX>
+References: <20020819223018.79961.qmail@web40015.mail.yahoo.com>
+Reply-To: Riley Williams <Riley@Williams.Name>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0208191830520.25454-100000@localhost.localdo
- main>
+In-Reply-To: <20020819223018.79961.qmail@web40015.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: James & Tatiana Miller <jamtat@aaahawk.com>, Linux <linux-newbie@vger.kernel.org>
+To: Venkat Raghu <venkatraghu2002@yahoo.com>
+Cc: Linux Newbies <linux-newbie@vger.kernel.org>
 
-At 06:36 PM 8/19/02 -0500, James & Tatiana Miller wrote:
->Hello all:
->
->I've got a notebook that I will be hooking an external display to from
->time to time. Of course the external display has totally different
->settings than the notebook's native display (native display is limited to
->800x600 res, for example). For this reason, I'd like to be able to start X
->with one of 2 differing XF86Config files, depending on whether I'll be
->using the notebook's own monitor or the external one. I've got
->working XF86Config files for both the external and native displays.
->What I'm having some trouble with is figuring out how to invoke one or the
->other XF86Config file when I start X. Any suggestions on how to go about
->this?
+Hi Venkat.
 
-Never needed to do this myself, but the man page for "XF86Config" says you 
-can specify an alternate file with the "-xf86config" argument on the 
-command line. The man page is a bit unclear as to what command it 
-associates this aggument with, and you don't say how you are starting X 
-anyway ... but I'd *try* passing it as a server argument to startx ("startx 
--- -xf86config appropriate_file_name") and seeing it that did the trick.
+> I have a bash script which modifies some environment variables and
+> does some other housekeeping things. But problem is that when script
+> finishes running, new values of environment variables are no longer
+> visible in parent shell. So what should I do so that these new
+> values are visible in parent.
 
-If that's not quite it, perhaps this is enough of a start that you can use 
-the man system to track down the right way to pass this argument yourself.
+Run your script using ". file.sh" or "source file.sh" to do that.
 
+> I don't want to run as ". file.sh".
+> I have to run it as "file.sh" only.
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Unfortunately, if you run it as "file.sh" only, you start up a new
+shell and lose the ability to change the settings in the parent shell. 
+This is a deliberate part of bash's design, and is to isolate the new
+shell from the existing one so the new shell can make changes to
+important environment variables to accomplish its task without causing
+problems for later commands.
+
+Another option would be for your script to drop the relevant commands
+into the keyboard buffer for the parent shell to execute when the new
+shell exits. Whilst that might be an interesting exercise, it's also a
+pointless one when the needed functionality is already present.
+
+If your script is one that you want executed every time you log in, then
+include the relevant source command in ~/.bashrc and it will be loaded
+at login time without problem.
+
+Best wishes from Riley.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
