@@ -1,61 +1,37 @@
-From: wa4chq@netscape.net (neil t)
-Subject: Re: Debian questions
-Date: Sat, 01 Mar 2003 07:14:34 -0500
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: Wierd filesystem behavior
+Date: Sat, 1 Mar 2003 19:17:23 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <288B825F.19E3465D.0006BEFC@netscape.net>
+Message-ID: <200303011917.23179.Adam@Luchjenbroers.com>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Peter <pfheiss@philonline.com> wrote:
+Output of df -hL
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/hda12             23G   21G  271M  99% /
+/dev/hda7              61M  7.3M   51M  13% /auxboot
+/dev/hda11            2.0G  1.9G   22M  99% /home
+/dev/hda8             358M  2.0K  339M   1% /oldboot
+/dev/hda10            4.0G  3.7G   76M  99% /usr/share/workspace
+/dev/hda5             4.0G  3.6G  184M  96% /var/ftp
 
->I think when I upgraded from RH6.2 saytime would not work well anymore. What I 
->did was change the bottom lines in saytime.sh as follows:
+In a few instances here, Used + Avail != Size.
 
-Hi Peter--
-Where can I find the saytime.sh file?  I would like to see what it
-says.  Here is what I get when I execute 'saytime':
- Hello OM: ./saytime
-----------------------
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-sox: Sound card appears to only support 2 channels.  Overriding format
-
-Press any key to continue...
---------------------------------------------------
-I can hear scratchy noise as the message is scrolled down the page.
-All the best
-Neil T.
-
-
+Where has the rest of the space gone?
 
 -- 
-Arachne/DRdos/Debian3.0
-Basiclinux/QrpHamRadio
-http://www.qsl.net/wa4chq
- 
+"Unix is user-friendly. It just isn't promiscuous about which users it's 
+friendly with." - Steven King
+
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
 
 
-__________________________________________________________________
-The NEW Netscape 7.0 browser is now available. Upgrade now! http://channels.netscape.com/ns/browsers/download.jsp 
-
-Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
