@@ -1,40 +1,38 @@
-From: Oliver Ob <ob_ok@gmx.net>
-Subject: Automatically play an audio CD (resent b/c/o no solution yet)
-Date: Wed, 26 Jun 2002 17:48:17 +0200
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: gcc
+Date: Wed, 26 Jun 2002 16:52:40 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <afcntr$cap$2@main.gmane.org>
-References: <01071608444801.01321@unix.pa3gcu.ampr.org>
+Message-ID: <20020626165240.C1131@neutrino.particles.org>
+References: <F4D3DB9A18752A4F99FD880ABC5407179D15B5@ccdc-exchg.careercommunity.com> <200206260812.NAA13140@thiru.vetri.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200206260812.NAA13140@thiru.vetri.com>; from sambaiah@thiru.vetri.com on Wed, Jun 26, 2002 at 01:37:16PM +0530
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: 
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: usamki01@thiru.vetri.com
+Cc: "Sridhar J (june end)" <sridharj.hyd@cxknetworks.com>, linux-newbie@vger.kernel.org
 
+On Wed, Jun 26, 2002 at 01:37:16PM +0530, Kilaru Sambaiah wrote:
+> On Wednesday 26 June 2002 01:03 pm, Sridhar J (june end) wrote:
+> > Hello
+> >
+> > When I compile a C program using gcc, I get an a.out file. But when I type
+> > a.out, the error is "No such command"
+>
+> pwd is not in your path. Add it. otherwise type ./a.out
+> sam
 
-Is there any way to simply have some background (console) task
-AUTOMATICALLY play that cd in background as soon as I put that
-cd into the drive?
+Better do the the second. Adding the current directory to PATH can
+cause security problems.
 
-How do I do that? (console solutions please!)
-                   =3D=3D=3D=3D=3D=3D=3D
+Elias
 
-thanks, also text pointers appreciated.
-
-cda is running (started with cda on), now how do I instruct
-cda to start playing after I have inserted an audio cd?
-
-Or maybe a different console tool?
-
-
---=20
-*=BA=A4., =B8=B8,.=A4=BA*=A8=A8=A8*=A4        =3DOliver@home=3D        =
- *=BA=A4., =B8=B8,.=A4=BA*=A8=A8*=A4
-This is Linux country.=20
-If you listen carefully, you can hear Windows reboot...
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
