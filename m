@@ -1,36 +1,28 @@
 From: Peter <pfheiss@philonline.com>
 Subject: Re: At Loss with Mailing
-Date: Thu, 10 Apr 2003 11:10:46 +0800
+Date: Thu, 10 Apr 2003 11:45:09 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304100310.h3A3Alh03221@philonline.com>
+Message-ID: <200304100345.h3A3j9904862@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Thanks Ray! 
+Things seem to become more nutty.
 
-ray@comarre.com said:
->  BY not providing reverse lookup, philonline.com is, in practice,
-> forcing you to use its smarthost relay for outgoing mail. 
+I just sent a test mail to the list with kmail and philonline and the setting 
+for sending changed to sendmail instead of smtp and it went out according to 
+maillog.
 
-I suspected all along that the problem is with philonline. I will talk to them 
-again once they have fixed their phone line for custom care.
-
-ray@comarre.com said:
-> If it matters to any *future* posting you make, though ... in  the
-> ping part, what is "Peter"? What host are you actyually trying to ping
->  there?
-
-it's in /etc/hosts:
-202.95.238.2    philonline.com  Peter
-202.78.74.68    webcard.skyinet.net     Pedro
-
-that way I do not have to remember the dot DN
+Now I am sending this messages with exmh and kmail using sendmail and 
+philonline. If it goes out with kmail and not with exmh then I will stop this 
+subject before I lose my mind.
 
 Regards
+
 
 -- 
 Peter
