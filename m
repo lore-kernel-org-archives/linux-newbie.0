@@ -1,64 +1,121 @@
-From: Pratik Solanki <pratik.solanki.ml@gmail.com>
-Subject: Re: VM Vs Swap space
-Date: Fri, 8 Oct 2004 11:25:43 -0400
+From: James Miller <jamtat@mailsnare.net>
+Subject: continuing (pdf) font frustrations
+Date: Fri, 8 Oct 2004 12:09:58 -0500 (CDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <9cb08bfa04100808255ac31f47@mail.gmail.com>
-References: <9cb08bfa04100709095ebe08a1@mail.gmail.com>
-	 <20041007172157.63553.qmail@web52908.mail.yahoo.com>
-	 <9cb08bfa04100711494df0774@mail.gmail.com> <4165BFA0.8010008@gelm.net>
-Reply-To: Pratik Solanki <pratik.solanki.ml@gmail.com>
+Message-ID: <Pine.LNX.4.58.0410081017310.1527@debian-emach>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4165BFA0.8010008@gelm.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: chuck@gelm.net
-Cc: Ankit Jain <ankitjain1580@yahoo.com>, linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thu, 07 Oct 2004 18:13:52 -0400, chuck gelm <chuck@gelm.net> wrote:
-> Pratik Solanki wrote:
-> 
-> >[CCing linux-newbie]
-> >
-> >On Thu, 7 Oct 2004 18:21:57 +0100 (BST), Ankit Jain
-> ><ankitjain1580@yahoo.com> wrote:
-> >
-> >
-> >>well i dont know exactly but somewhat i feel that
-> >>there must be some way to disable the virtual memory.
-> >>yaa of course there should be some way. it is not that
-> >>sys cant work without it
-> >>
-> >>
-> >
-> >Yes, you can have a system without virtual memory. Search for MMUless
-> >linux kernel and you'll see patches/websites.
-> >
-> >My point was that disabling VM after its been enabled would tough (if
-> >not impossible). Someone correct me if I am wrong here.
-> >
-> >Pratik.
-> >
-> I was thinking that an active swap partition was 'virtual memory'.
-> Why are many folks using capital letters 'VM'.  Am I missing
-> something?  Is 'VM' == virtual memory or is there a application
-> or service called 'VM' ?
+Sorry to beat a dead horse over these font problems, but it's really
+bothering me and interfering with my work.  I've posted on this before,
+but the issue remains unresolved.  Previously I complained about a couple
+of apps as having some font problems: browsers (Mozilla and Opera) and pdf
+viewers (Xpdf and GV).  Well, I need to reduce the field in this post:
+all X apps display fonts just fine so far as I can tell - except for the
+pdf viewers.  My problem now focuses on an inability to view certain pdf
+files.  What I mean by "inability to view" is that the program opens a
+file, but where text should be in the file there is nothing - just
+white/blank space.  That's what Xpdf does.  GV does the same, but at least
+gives an error message.  I cannot really say what precipitated this
+problem: it could be some chmod-ing I did in some font directories
+recently, could be the result of switching to an apt-get dist-upgrade
+system administration policy I recently adopted for this Debian Sid system
+(had been selectively upgrading apps previously) - I just can't say with
+any certainty.  This surely won't help you help me, but I just have to be
+up front about that.  With dist-upgrade'ing I've gotten dialogues about
+defoma and pango and other font programs/options that I do not understand,
+so I blindly choose.  I suppose changing one of those options from the way
+I initially set up the system could be utlimately at the root of the
+problem.  But the problem is here and needs to be resolved.  As means to
+addressing the problem, I've tried the following: ckecking font files and
+dirs for proper permissions setting (they seem to be fine), uninstalling
+and reinstalling Xpdf (and related progs), GV and reinstalled gsfonts.
+These measures did not help: the problem of blank pdf's or blank portions
+persists.  I need to mention that not all pdf documents are affected: some
+show the text as normal.  But others do not.  Also relevant: ps2pdf no
+longer works, but exits with error messages.  Here is the error message I
+get from GV:
 
-Yes, VM is virtual memory.
- 
->  Anywho, the only 'virtual memory' I know of is an active
-> swap file or swap partition and either can be started
-> or stopped in a running kernel.
-> (I think.)
- 
-Swap can be started or stopped. Virtual memory cannot be started or
-stopped. Just because you stopped swap does not mean the kernel is not
-using virtual memory. The kernel always uses virtual memory (except if
-its MMUless) . Swap is used only when the kernel needs more memory
-than what's physically available.
+---------------------------------------------------------
+ Error: /invalidfontESP Ghostscript 7.07.1: Unrecoverable error, exit
+code 1
+ in findfont
+Operand stack:
+   --dict:8/8(L)--   F12   1   --dict:8/8(L)--   --dict:8/8(L)--
+--dict:10/10(L)--   Helvetica-Narrow   Font   Helvetica-Narrow   487763
+Helvetica-Narrow   --nostringval--   Helvetica-Narrow
+NimbusSanL-ReguCond   (NimbusSanL-ReguCond)   NimbusSanL-ReguCond
+(NimbusSanL-ReguCond)   NimbusSanL-ReguCond
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval--
+--nostringval--   false   1   %stopped_push   1   3   %oparray_pop   1
+3   %oparray_pop   1   3   %oparray_pop   .runexec2   --nostringval--
+--nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+--nostringval--   --nostringval--   --nostringval--   %array_continue
+--nostringval--   false   1   %stopped_push   --nostringval--
+%loop_continue   --nostringval--   --nostringval--   --nostringval--
+--nostringval--   7   9   %oparray_pop   8   9   %oparray_pop
+--nostringval--   --nostringval--   --nostringval--   --nostringval--
+--nostringval--   false   1   %stopped_push   11   10   %oparray_pop
+--nostringval--   --nostringval--   --nostringval--   5   -1   1
+--nostringval--   %for_neg_int_continue   --nostringval--
+--nostringval--
+Dictionary stack:
+   --dict:1055/1417(ro)(G)--   --dict:0/20(G)--   --dict:73/200(L)--
+--dict:97/127(ro)(G)--   --dict:229/230(ro)(G)--   --dict:20/24(L)--
+--dict:4/6(L)--   --dict:20/31(L)--   --dict:10/13(L)--
+--dict:17/17(ro)(G)--   --dict:1055/1417(ro)(G)--
+Current allocation mode is local
+Last OS error: 2
+--------------------------------------------------------------
 
-Pratik.
+From ps2pdf, I get the following error:
+
+-------------------------------------------------------------
+Error: /invalidfont in findfont
+Operand stack:
+   HeadFont   Helvetica   Font   Helvetica   362928   Helvetica
+--nostringval--   Courier   NimbusMonL-Regu   (NimbusMonL-Regu)
+NimbusMonL-Regu   (NimbusMonL-Regu)   NimbusMonL-Regu
+Execution stack:
+   %interp_exit   .runexec2   --nostringval--   --nostringval--
+--nostringval--   2   %stopped_push   --nostringval--   --nostringval--
+--nostringval--   false   1   %stopped_push   1   3   %oparray_pop   1   3
+%oparray_pop   1   3   %oparray_pop   .runexec2   --nostringval--
+--nostringval--   --nostringval--   2   %stopped_push   --nostringval--
+--nostringval--   2   3   %oparray_pop   3   3   %oparray_pop
+--nostringval--   --nostringval--   --nostringval--   --nostringval--
+--nostringval--   false   1   %stopped_push   6   4   %oparray_pop
+--nostringval--   --nostringval--   --nostringval--   5   -1   1
+--nostringval--   %for_neg_int_continue   --nostringval--
+--nostringval--
+Dictionary stack:
+   --dict:1055/1417(ro)(G)--   --dict:0/20(G)--   --dict:82/200(L)--
+--dict:17/17(ro)(G)--   --dict:1055/1417(ro)(G)--
+Current allocation mode is local
+Last OS error: 2
+Current file position is 6259
+--------------------------------------------------------------
+
+The beginning of each - "Error: /invalidfont in findfont" - seems relevant
+to me.  Doesn't this mean that, since it can't find or use one or more
+fonts, that the program is aborting?  What can I do to check that these
+fonts are present and are fine?  I can use Helvetica and Courier under
+OOo, for example.  Nimbus does not show up as an option there, though.
+In Abiword nimbus fonts of various sorts show up in the font selection
+menu, but trying to select one of them for use causes the program to crash
+(summarily disappear from the screen).  Maybe this is where the problem
+lies?  Please, any ideas on addressing or resolving this problem will be
+appreciated.
+
+Thanks for any input on this.
+
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
