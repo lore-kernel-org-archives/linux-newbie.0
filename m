@@ -1,51 +1,40 @@
-From: Joshua Rogers <joshuarogers@hopper.net>
-Subject: Noflushd usage
-Date: Wed, 31 Mar 2004 22:53:35 -0600
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: reinstall continued
+Date: Thu, 1 Apr 2004 08:27:24 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <406BA04F.3060503@hopper.net>
+Message-ID: <200404010827.24196.pa3gcu@zeelandnet.nl>
+References: <200404011246.54599.wheds8@ms66.hinet.net>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200404011246.54599.wheds8@ms66.hinet.net>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "S. Barret Dolph" <wheds8@ms66.hinet.net>, linux-newbie@vger.kernel.org
 
-Slightly curious here.  I have fairly new computer here that I got from 
-walmart.com maybe 4 months ago.  I decided to install linux and windows 
-on  it.  Ok.  I installed a 100Gb harddrive into the computer that has 
-all my data on it.  And the drive sounds like a jet plane.
+On Thursday 01 April 2004 06:46, S. Barret Dolph wrote:
+> I used fdisk to clear all partitions. But when I boot up my box I still get
+> a splash screen with two kernels listed. Where are those kernels?
 
-How can I (or can I not) make noflushd turn off the second hard drive 
-after about 15 minutes?
+The kernels are gone if you used fdisk but you did not clear the MBR.
+http://www.computing.net/linux/wwwboard/forum/24422.html
 
-My first drive is /dev/hda.  It contains Windows 2000 on an NTFS 
-partition, Windows 98 on Fat32, Lycoris (can't remember the fs) and 
-Debian (on ReiserFS).  I don't mind this drive, it's quiet and contains 
-only the OSes.
+> Cordially,
+> S. Barret Dolph
+>
 
-My other drive is /dev/hdb.  It is the 100Gb Drive.  It consists of 5 
-partitions, all of which are of type Fat32.  My computer is only about 3 
-feet from my bed, so this drive would definately keep me up.  Either 
-that or have to keep shutdown every night. 
+-- 
+If the Linux community is a bunch of theives because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
 
-Also, when I shutdown, if there is something ready to write to the 
-drive, will it save, or will the kernel just ignore it.
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-I'm running linux kernel 2.6.4, with ACPI enabled.  It's a custom 
-kernel, so if I need to make some modifications, I will.
 
-I'm going to be trying this on my Debian Install.  I know I can't make 
-/dev/hda spin down (because of the ReiserFS), but I would like to be 
-able to spin down /dev/hdb (containing only FAT32 partitions.)
-
-Oh, one last thing (sorry), I don't know if this has anything to do with 
-it, but when I type 'acpi' at konsole it responds "No support for device 
-type: battery".  Is this important?  I'm running a desktop, so I'm not 
-using a battery to power the system.
-
-Thanks and sorry for the length of the post.
-
-Joshua Rogers
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
