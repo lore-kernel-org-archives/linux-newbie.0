@@ -1,65 +1,73 @@
-From: joy <gracecott@sancharnet.in>
-Subject: Re: net (& module, I guess) problems after dist-upgrade
-Date: Sun, 13 Jun 2004 10:13:07 +0530
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: 3Com NIC Driver?
+Date: Sun, 13 Jun 2004 14:16:18 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40CBDB5B.7060105@sancharnet.in>
-References: <5.1.0.14.1.20040612111803.01fd5808@celine>
- <5.1.0.14.1.20040611215205.01faf760@celine>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611160033.01fa0948@celine>
- <5.1.0.14.1.20040611183923.01fc9dc0@celine>
- <Pine.LNX.4.58.0406112102240.2201@debian-emach>
- <Pine.LNX.4.58.0406112204310.2201@debian-emach>
- <5.1.0.14.1.20040611215205.01faf760@celine>
- <5.1.0.14.1.20040612111803.01fd5808@celine>
- <5.1.0.14.1.20040612121108.01fc9a80@celine>
- <Pine.LNX.4.58.0406121445360.1825@debian-emach>
- <Pine.LNX.4.58.0406121719540.1071@debian-emach>
-Reply-To: gracecott@sancharnet.in
+Message-ID: <200406131416.18554.pa3gcu@zeelandnet.nl>
+References: <200405280756.57985.pa3gcu@zeelandnet.nl> <5.1.0.14.1.20040529115723.01fc3e68@celine> <20040530120407.GA477@lnx2.w8mch.ampr.org>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <Pine.LNX.4.58.0406121719540.1071@debian-emach>
+In-Reply-To: <20040530120407.GA477@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-James Miller wrote:
+On Sunday 30 May 2004 14:04, Hal MacArgle wrote:
+> Greetings again Ray: I did mention that we were 100% 10base2 here and
+> had I had a crossover UTP cable to try, would have found the problem
+> myself..
+>
+> Your experience let you say the magic phrase: Auto-media on 3Com
+> cards don't always work - which was the case.. Default 10baseT, I had
+> to re-flash it with the setup Dos program.. All's now well discovering
+> that I had been lucky before with my SMC and RealTek NIC's all auto
+> sensing without my intervention..
 
->This has all been a long-winded preface to the question: what
->the heck I gotta do to get my NIC modules back to loading on boot? Am I
->  
->
-Well,  since  you know the modules to be loaded , the quick and dirty 
-solution would be to put a shell script
-in /etc/init.d which says  modprobe this and modprobe that.... followed 
-by an ifup -a (just to be sure!)
-I used this and works fine for me......
+Auto-media is a thing which does not work well on any card in linux (IMHO) 
+that is. I used to have such a problem with my SMC cards, i found that if 
+there was no signal presant at inititaliation time then UTP would be used.
+If the BNC connector is connected to another machine or hub and there is no 
+traffic during the init,. process then UTP gets selected by Auto-media, 
+however if i setup a ping on another machine and created traffic then 
+10base-T would be selcted and the card worked properly.
 
->gonna run into other module problems as well?  What's the way to start
->  
->
-That's somthing you'll have to wait and watch (I guess;-)
+I tryed the above with realtec 8019 cards as well and got the same results 
+which is why i say Auto-media does not work well in linux, but having said 
+that i have not tryed any of the cards under windows to see if the results 
+are the same so really saying it does not work well in linux is not the right 
+thing to say, possably the same problems will arise under windows as well, 
+which is possably why all dual cards have dos/windows programs to change 
+defaults in the cards chips.
 
->this process that gets the module loading routine working as it should be?
->I think there was a reference to modules.dep or maybe modules.conf in that
->message I saw during dist-upgrade.  But there was definitely nothing there
->telling me how I could manually start the process that couldn't finish
->during dist-upgrade.  Any pointers, please?
->
->Thanks, James
->
->PS Most of the above refers to having booted using the new kernel (2.6.6,
->though some of those boots were with the old 2.6.5 kernel and one was even
->with the 2.4.22 kernel).  None of those were able to use eth0 and gave the
->same error message during the boot process.
->  
->
-possibly modules .conf was to be written on bootup or something....?.
+It could also be that some Mobo's are slower in the detection process and dont 
+return a value to modrobe quickly enough thus selecting UTP as default, but 
+thats a wild guess.
 
-regards, Joy.M.M
+There is another method of selcting 10base-T or UTP when inserting the cards 
+module, some cards have module options to select the output, its been a long 
+time since i used 10base-T and to be honest i have forgotten which cards have 
+what options.
+There is a command to show what options a module/driver has,
+
+modinfo -p <module_name>
+
+
+> APPRECIATE!! Happy Holiday...
+>
+> Hal
+
+-- 
+If the Linux community is a bunch of thieves because they
+try to imitate windows programs, then the Windows community
+is built on organized crime.
+
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
