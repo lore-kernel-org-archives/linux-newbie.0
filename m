@@ -1,52 +1,33 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Re: Memory leaks and strange results from top
-Date: Sun, 08 Feb 2004 17:02:36 -0700
+From: "John T. Williams" <jtwilliams@vt.edu>
+Subject: iptables and logging
+Date: 10 Feb 2004 14:24:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <4026CE1C.7080703@shaw.ca>
-References: <5.1.0.14.1.20040208093437.01f2f778@celine>
+Message-ID: <1076441078.2268.13.camel@Marx.fesnel.no-ip.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <5.1.0.14.1.20040208093437.01f2f778@celine>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+I've set up a basic firewall using iptables.  It allows connections from
+a block of ip addresses to port 22, and allows connection back from
+established,related.  Then everything else gets dropped.  Out of
+curriousity mostly, I wanted to log everything that gets dropped, but
+iptables logs an overwhelming amount of information.  All I really want
+is src ip, des ip, and if its tcp/udp , des port.  I read virtually the
+entire man page for iptables and took for other sources, but I can't
+figure out any way to limit what is actually logged.  It did mention the
+ability to log to user space via netlink socket, using the ULOG option,
+but I had no idea what netlink was.  All this is leading to: Does anyone
+know any way short of editing the source code to either change the
+output format of the information sent to system logger, or perhaps how I
+could use 'netlink socket' to extract the information I want and log it
+to some other file.  
 
-Thanks, Ray, for the thoroughly detailed response.
+Thanks
+John 
 
-Following up on some of the things you've mentioned, i did some googling
-and now i think i get it - i'm not too familiar with the way that linux
-reports memory usage, so it caught me off guard.
-
-As far as ClarkConnect itself is concerned, it's a modified RH8 derivate
-that is intended for use purely as a firewall/gateway and nothing else.
-~ I was experiencing intense performance problems on it previously with
-96Mb, although i had been assured that it should run just fine with that.
-
-So, post-upgrade, i was shocked to see memory use up again.
-
-At any rate, there's no performange problem with the new setup, but
-since i thought it was a program problem, I was figuring i'd fix it
-preemtively.  Thanks again for the very educational reply.
-
-Cheers.
-
-- --
-Chris R.
-=======
-http://offlineblog.com/
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.2 (Cygwin)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org
-
-iD8DBQFAJs4cYGWCRcy3UcsRAtAoAJ4x8Ga2w5Q6Ho1g9QZnKEItfj6tHACgiD56
-ZMZcgkuuf1iyINeGfq2LWEU=
-=BvAl
------END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
