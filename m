@@ -1,69 +1,77 @@
-From: "Theo. Sean Schulze" <tschulze@teamfinders.org>
-Subject: Re: File names with spaces
-Date: Tue, 18 Feb 2003 22:37:21 +0100
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Subject: Re: Upgrading from 2.4.18 (Redhat 7.3) to 2.5.59
+Date: Wed, 19 Feb 2003 12:43:13 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030218213721.GA11729@teamfinders.org>
-References: <20030217191140.GA13495@teamfinders.org> <200302171434.16323.brian@mdrx.com>
+Message-ID: <0302191243130F.29824@unix.pa3gcu>
+References: <720FB032F37C0D45A11085D881B033684CBC74@MBXSRV24.stu.nus.edu.sg>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200302171434.16323.brian@mdrx.com>
+In-Reply-To: <720FB032F37C0D45A11085D881B033684CBC74@MBXSRV24.stu.nus.edu.sg>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: Eng Se-Hsieng <g0202512@nus.edu.sg>, Jose Luis Alarcon <jlalarcon@linuxwaves.com>
+Cc: linux-newbie@vger.kernel.org
 
-Thanks, that did help, although it didn't solve the problem.  I now recognize that the problem is in assigning the variable.  Both my version with ls and the version with find in the example give the expected results when printing to the console, but they both fail when used to assign a string including spaces to a variable.
+On Wednesday 19 February 2003 11:40, Eng Se-Hsieng wrote:
+> Dear all,
+>
+> I realise that it's a difficult upgrade for a newbie like me. However, I
+> would really to upgrade from 2.4.18 (Redhat 7.3) to 2.5.59 as soon as
+> possible
+>
+> I have read the changelog for 2.5.59 but I was unable to find what
+> software, including: libs, compiler and utilities I would have to upgrade
+> in order to make my system suitable for 2.5.59.
 
-I need to find a way to maintain the integrity of the string as I assign it to the file variable.  I tried `echo (ls -1)` and `echo "(ls -1)"`, but neither works.  Changing the parentheses to brackets doesn't help either.
+Load ./linux/Documentation/Changes into an editor
+goto line 41 read on untill line 61.
 
-Cheers,
-Sean
+There is a list if "neded" libs, tools and utils.
 
-On Mon, Feb 17, 2003 at 02:34:16PM -0600, Brian Jackson hunted and pecked out:
-> You can try to adapt this example from The Advanced Bash Scripting Guide:
-> http://www.tldp.org/LDP/abs/html/moreadv.html#EX57
-> 
-> It deletes the file, but it shouldn't be too hard to adapt to your needs.
-> 
-> --Brian
-> 
-> On Monday 17 February 2003 01:11 pm, Theo. Sean Schulze wrote:
-> > Hello,
-> >
-> > I am trying to write a bash shell script that will translate spaces in file
-> > names into underline characters.  This is the script as I have it now:
-> >
-> >
-> > for file in `ls`
-> > do
-> > 	echo $file
-> > 	newfile=`ls ${file} | tr '[:space:]' '[_*]'`
-> > 	echo File is named ${file}
-> > 	echo The new file is named ${newfile}
-> > 	# [[ -s $newfile ]] || (mv $file $newfile)
-> > 	sleep 2
-> > done
-> >
-> > The lines that begin with echo and the sleep line are for debugging.  What
-> > they have shown me is that the $file is getting set to the first word in
-> > the file name on the first iteration, the second word on the second
-> > interation, etc.  (The file names look like "001 of 150 files", "002 of 150
-> > files", etc.)  So, on the first iteration, $file is egual to "001", on the
-> > second iteration $file is equal to "of", etc.  Yet, if I go to the
-> > directory and issue `ls`, the filenames are shown as one would expect with
-> > the whole four word filename on one line.
-> >
-> > Can anyone give me a hint on how to fix this so that the whole filename is
-> > loaded into $file?
-> >
-> > TIA,
-> > Sean
-> 
+Somply compare your system with the list, for example;
+
+the first line says;
+o  Gnu C                  2.95.3                  # gcc --version
+
+It means you need at least version 2.95.3 of gcc, to find out which you have 
+you type;
+gcc --version
+If the version is "lower" than the "needed" version then you will need to 
+upgrade.
+Thats how its done, to behonest i see nothing difficult in doing that.
+
+>
+> If I understand correctly, I shouldn't recompile the 2.5.59 kernel until I
+> have all this sorted out?
+
+You can always try, no one is stopping you, however your chance of sucess is 
+nominal.
+
+If i may say so, if you did not understand howto check your system with the 
+list in the Changes file then you will find in very hard to compile and 
+install a development kernel let alone use it, its not for the light at heart.
+
+However once again noone is stopping you from doing so.
+
+BTW, to give you a hint on how developemnt kernels change, the latest kernel 
+is 2.5.62.
+
+>
+> Grateful for any suggestions.
+
+Stay where you are unless "you know what you are doing".
+
+>
+> Eng Se-Hsieng
+
 
 -- 
-Theo. Sean Schulze
-tschulze@teamfinders.org
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
