@@ -1,33 +1,26 @@
-From: Brett <brett@brett.d2g.biz>
-Subject: Console fonts and colors
-Date: Sun, 6 Oct 2002 13:07:22 -0600 (MDT)
+From: Bryan Simmons <bsimmo1@gl.umbc.edu>
+Subject: Xemacs config
+Date: 06 Oct 2002 11:16:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0210061300030.16559-100000@linuxDBA.brett.d2g.biz>
-References: <200210051904.09629.g38@rdsbv.ro>
+Message-ID: <1033917374.6130.2.camel@localhost.localdomain>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200210051904.09629.g38@rdsbv.ro>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-I use SuSE 8.0 and mostly use the KDE UI but find myself more and more
-using the standard text console either by doing a Alt+f2 or not even
-starting X at all.
-What I would like to do is change the color of the font and maybe the font
-it self.
-Is this a hard thing?   If it involves setting up a fonts server or such,
-maybe I'll make do with what I have. It's not all that bad really.   My
-goal was to change the font color to green and maybe find a font that I
-could get a few more words on a line.
-Thanks,
+Does anyone know how to setup the mousewheel scroll in Xemacs?
+I can't find the variable for setting this anywhere...
+-- 
+Regards,
 
-Brett
-___
-Linux linuxDBA 2.4.18-4GB #1 Wed Mar 27 13:57:05 UTC 2002 i686 unknown
- 12:30pm  up 7 days, 14:17,  3 users,  load average: 2.01, 1.99, 1.92
-
+Bryan Simmons 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
+ "All that's required for evil to flourish
+  is for good men to remain silent." 
+    ---Edmund Burke
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
