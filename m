@@ -1,55 +1,63 @@
-From: Jose Luis Alarcon <jlalarcon@linuxwaves.com>
-Subject: Re: difference between buffer and page caches?
-Date: Sat, 12 Jul 2003 02:37:41 -0700 (PDT)
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: NFS - uid different??
+Date: Sat, 12 Jul 2003 07:36:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030712093741.6D4193BAD@sitemail.everyone.net>
-Reply-To: jlalarcon@linuxwaves.com
+Message-ID: <20030712073632.A215@lnx2.w8mch.ampr.org>
+References: <20030709.132728.490.28986@webmail15.lax.untd.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
+In-Reply-To: <20030709.132728.490.28986@webmail15.lax.untd.com>; from beolach@juno.com on Wed, Jul 09, 2003 at 08:27:02PM +0000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Mohammad Nayyer Zubair <mzubair@ic.sunysb.edu>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: beolach@juno.com
+Cc: linux-newbie@vger.kernel.org
 
---- Mohammad Nayyer Zubair <mzubair@ic.sunysb.edu> wrote:
->
->Hi...
->
->Can anyone explain in as much detail as possible the difference between
->the design, use, implementation and related of the buffer and page >caches in the linux 2.4.20 kernel?
->
->thanks
->
+Greetings and thanks for your excellent suggestion and reply.. I've
+been immersed in NIS-YP and see that that is the answer except the
+method is really designed for large complicated LAN's, not the home
+hobby system we have here, which only requires a KISS approach.
 
-  Hi Mohammad, Salam.
+My unfortunate situation is that the clients are all "matched" and
+the server isn't, but will be when I move up a notch in versions...
+<grin> I think I'll try to setup rpc.ugidd as we don't really need
+good security.. The main thing is to keep this retired mind busy with
+less and less "things to do" available..
 
-  For this kind of questions the right mailing list is this:
+Appreciate - and thanks again.
 
-     https://mail.nl.linux.org/cgi-bin/lsg2.cgi
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.18)
+                Proprietary  Formats  Unacceptable
 
-that is the list of this site: http://kernelnewbies.org
-
-  There is sure that the guys can solve your dudes.
-
-  Very good luck.
-
-  Regards.
-
-  Jose.
-
-
-http://linuxespana.scripterz.org
-
-FreeBSD RELEASE 4.8.
-Mandrake Linux 9.1 Kernel 2.5.75 XFS.
-Registered Linux User #213309.
-Memories..... You are talking about memories. 
-Rick Deckard. Blade Runner.
-
-_____________________________________________________________
-Get your spam-free, Linux email now --> http://www.LinuxWaves.com
-Join Linux discussions --> http://Community.LinuxWaves.com
+On 07-09, beolach@juno.com wrote:
+> 
+> As far as I know, the only mapping done by NFS is the "squashing"
+> that maps to anonuid and anongid.  If you only needed to map to one
+> user id,  you could change the anonuid and anongid options in the
+> /etc/exports file.  The two more elegant solutions I can think of
+> are to use NIS/YP to serve the passwd and shadow files from the
+> server, or to use ugidd, a program designed specifically for NFS
+> UID/GID mapping.  ugidd would be the best option, except that it
+> does not come with Slackware, and may be a security risk.  If you
+> want to try building it from source, look on the Debian page at
+> <http://packages.debian.org/stable/net/ugidd.html> and download
+> the source from the bottom of the page.  I have no experience at
+> all with ugidd, so I can't help you at all with what to expect.
+> 
+> The first "elegant" option I listed, using NIS/YP passwd & shadow
+> serving, I have done myself, and Slackware comes with all the
+> packages required.  On the downside, configuring it is rather
+> complicated, and will require editing the passwd and shadow files
+> on the client.  But if you are careful, and keep backups, you
+> shouldn't have any problems with that. If you want to look into
+> using NIS/YP, read the HOWTO in (Slackware specific) /usr/doc/
+> Linux-HOWTOs/NIS-HOWTO, or online at The Linux Document Project
+> <http://www.tldp.org/HOWTO/NIS-HOWTO/index.html>.
+> 
+> Hope that helps,
+> Conway S. Smith
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
