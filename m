@@ -1,42 +1,30 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: uname -a
-Date: Mon, 29 Nov 2004 16:01:01 +0100 (CET)
-Message-ID: <Pine.LNX.4.21.0411291556230.17894-100000@hestia>
-References: <20041129094652.73203.qmail@web52902.mail.yahoo.com>
-Reply-To: newbie <linux-newbie@vger.kernel.org>
+From: Greg KH <greg@kroah.com>
+Subject: Re: Proc structure standards.
+Date: Mon, 29 Nov 2004 16:45:02 -0800
+Message-ID: <20041130004502.GB2136@kroah.com>
+References: <652016d304112623595d8f6e76@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20041129094652.73203.qmail@web52902.mail.yahoo.com>
+Content-Disposition: inline
+In-Reply-To: <652016d304112623595d8f6e76@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: newbie <linux-newbie@vger.kernel.org>
+To: Manish Regmi <regmi.manish@gmail.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On Mon, 29 Nov 2004, Ankit Jain wrote:
+On Sat, Nov 27, 2004 at 01:44:26PM +0545, Manish Regmi wrote:
+> Hi all,
+>  Is there any standard to the proc interface?
 
-> uname -a
-> Linux Ankit 2.4.20-8 #1 Thu Mar 13 17:54:28 EST 2003
-> i686 i686 i386 GNU/Linux
-> 
-> prints this
-> 
-> i want to know how is it possible that machine &
-> processor is 686 and hardware platform is 386
-> 
-> thanks
-> 
-> ankit jain
+Only standard is don't add any more new proc files :)
 
-Did you compile the kernel yourself ? If so you should reconfigure and
-recompile. If not then prob. you have installed a default kernel, which
-is, yes precompiled for the 386.
+Use sysfs instead.
 
-Anyway if you are a `starting' user it shouldn't be much of a
-problem or affect the preformance of your computer v.s. os.
+thanks,
 
-J.
-
+greg k-h
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
