@@ -1,96 +1,64 @@
-From: kernel@slackuser.com
-Subject: Re: hiding my hostname (3)
-Date: Thu, 8 May 2003 13:07:52 -0400 (EDT)
+From: Bryan Whitehead <driver@jpl.nasa.gov>
+Subject: Re: HOWTO Restart LPD
+Date: Thu, 08 May 2003 10:27:08 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0305081307290.7410-100000@kenny.slackuser.com>
-References: <20030508040141.75606.qmail@web10704.mail.yahoo.com>
+Message-ID: <3EBA936C.6080100@jpl.nasa.gov>
+References: <1052279439.8304.1.camel@jayhawk>  <200305070940.44823.pfheiss@philonline.com> <200305080346.h483kdf02539@philonline.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030508040141.75606.qmail@web10704.mail.yahoo.com>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jesse Armand <matrix_rev2002@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200305080346.h483kdf02539@philonline.com>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <pfheiss@philonline.com>
+Cc: J S <webnews@comcast.net>, linux-newbie <linux-newbie@vger.kernel.org>
 
-Since he is logged in from the console there is no host information
-displayed.
+If your using CUPS then the service is "cups".
 
--Chris W.
+"service cups restart" will restart it. or "service cups start" will 
+just start it.
 
-On Wed, 7 May 2003, Jesse Armand wrote:
+for cups to start up automagically run this command:
+chkconfig --add cups
 
-> OK..someone being logged in, i know that,
-> but how does he hide his hostname information ?
->
->
->
->
-> > That is caused by someone being logged in through
-> > the console.
-> >
-> > -Chris W.
-> >
-> > On Tue, 6 May 2003, Jesse Armand wrote:
-> >
-> > > well.. I think there is a way,
-> > > why ?
-> > > because i've just seen it.
-> > > when i'm logging in to a server,
-> > > i saw a client that hiding his hostname,
-> > > and it's not about the server not knowing my ip
-> > > address, it's about hiding my ip address from
-> > viewing
-> > > by other users.
-> > > I know a server must know an ip address of the
-> > client
-> > > that connects to it.
-> > >
-> > > when i use 'w' or 'who' command
-> > > the hostname table shows empty content
-> > >
-> > > USER    TTY   FROM    LOGIN@    IDLE    WHAT
-> > > woho    p1     -      10:09AM    -      - (pine)
-> > >
-> > > can u explain that ?
-> > >
-> > > btw by using .nofinger i can hide myself from
-> > > fingering,
-> > > that's one way,
-> > >
-> > > so anybody knows how to hide my hostname from
-> > 'who'
-> > > and 'w'
-> > >
-> > >
-> > > __________________________________
-> > > Do you Yahoo!?
-> > > The New Yahoo! Search - Faster. Easier. Bingo.
-> > > http://search.yahoo.com
-> > > -
-> > > To unsubscribe from this list: send the line
-> > "unsubscribe linux-newbie" in
-> > > the body of a message to majordomo@vger.kernel.org
-> > > More majordomo info at
-> > http://vger.kernel.org/majordomo-info.html
-> > > Please read the FAQ at
-> > http://www.linux-learn.org/faqs
-> > >
-> > >
-> >
->
->
-> __________________________________
-> Do you Yahoo!?
-> The New Yahoo! Search - Faster. Easier. Bingo.
-> http://search.yahoo.com
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
->
+
+Peter wrote:
+> Thanks!
+> 
+> webnews@comcast.net said:
+> 
+>>just use the script in /etc/init.d
+>>For example...
+>>/etc/init.d/lpd restart 
+> 
+> 
+> That's the script used on booting where I get: Starting lpd:  No Printers 
+> Defined
+> 
+> Doing "/etc/init.d/lpd start" from the command line I therefore get the same: 
+> No Printers Defined.
+> Ergo before starting lpd a printer has to be defined first.
+> 
+> Can that be done from the command line?
+> 
+> 
+> 
+>>On Tue, 2003-05-06 at 21:40, Peter wrote:
+>>Hi,
+>>When cups has been activated for printing, then on rebooting lpd is
+>>not started anymore.
+>>
+>>How can I restart lpd from the command line instead of using printtool
+>>or printconf-tui? I can't find anything in man lpd.
+> 
+> 
+
+
+-- 
+Bryan Whitehead
+SysAdmin - JPL - Interferometry and Large Optical Systems
+Phone: 818 354 2903
+driver@jpl.nasa.gov
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
