@@ -1,31 +1,33 @@
 From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Windows Virus
-Date: Thu, 26 Sep 2002 10:03:16 -0400
+Subject: DNS Questions
+Date: Thu, 26 Sep 2002 10:16:40 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000201c26565$76164b30$64fea8c0@pkrausxp>
+Message-ID: <000a01c26567$557ac020$64fea8c0@pkrausxp>
 Mime-Version: 1.0
 Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0003_01C26543.EF0631D0"
+	boundary="----=_NextPart_000_000B_01C26545.CE692020"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 To: linux-newbie@vger.kernel.org
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_0003_01C26543.EF0631D0
+------=_NextPart_000_000B_01C26545.CE692020
 Content-Type: text/plain;
 	charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 
-I am setting up a Linux server as a fax server as well as email. I want
-to support Imap and I would really like to be able to scan all incoming
-email for viruses to protect my windows workstations without having to
-do it on a per machine basis. One location and one definition file to
-keep current. Any suggestions an software to scan the emails? I know we
-touched this topic about a week ago but I was still unclear. Some people
-said it was a waste of time because it would be hard on the system. I
-find that hard to believe since its just email that I want to scan.
-Thanks.
+My internal network is connected to a router/firewall all address are
+down with Nat. So no machines on my network have an outside ip. Our dns
+is supplied by our ISP and we have 2 others we use that are supplied by
+our web site hosting company these dns servers are not apart of our
+internal network. If I wanted to setup a dns server on the internal
+network what would be the benefit? Why would I want to do this? I have
+been reading a lot of books on Linux and all of them recommend running a
+dns server. How would this server get/maintain a list of all the dns
+records that our current dns servers have. Is this what they even mean
+or do they mean just to cover the internal machines. If that's the case
+why bother. Any insights are greatly appreciated.
 
 Paul Kraus
 Network Administrator
@@ -34,7 +36,7 @@ PEL Supply Company
 216-267-6176 Fax
 www.pelsupply.com
 
-------=_NextPart_000_0003_01C26543.EF0631D0
+------=_NextPart_000_000B_01C26545.CE692020
 Content-Type: text/x-vcard;
 	name="Paul Kraus (pkraus@pelsupply.com).vcf"
 Content-Transfer-Encoding: quoted-printable
@@ -62,7 +64,7 @@ EMAIL;PREF;INTERNET:pkraus@pelsupply.com
 REV:20020416T182124Z
 END:VCARD
 
-------=_NextPart_000_0003_01C26543.EF0631D0--
+------=_NextPart_000_000B_01C26545.CE692020--
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
