@@ -1,55 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <pfheiss@philonline.com>
 Subject: Re: Su & Security
-Date: Sat, 21 Dec 2002 08:57:34 -0800
+Date: Sun, 22 Dec 2002 12:31:23 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021221084621.020b1910@celine>
-References: <200212210924.gBL9OYm05183@philonline.com>
+Message-ID: <200212220431.gBM4VNn03322@philonline.com>
+References: <5.1.0.14.1.20021221084621.020b1910@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212210924.gBL9OYm05183@philonline.com>
+In-Reply-To: Your message of "Sat, 21 Dec 2002 08:57:34 PST."
+             <5.1.0.14.1.20021221084621.020b1910@celine> 
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-I don't quite understand your questions, Peter. "su" is an application used 
-to change userid, usually (but not always) from an ordinary userid to 
-superuser. So I have to guess a bit in responding, below, about what you 
-are actually asking.
+Thanks Ray!
 
-At 05:24 PM 12/21/02 +0800, Peter wrote:
->Season Greetings
->
->Is it a security risk when connected/ing to the Internet if
->
->a) a terminal is open under su
+You guessed mostly right what I tried to ask.
 
-Do you just mean that a console (or xterm or eterm) is open by the root 
-userid? It would be unusual for this by itself to be a security risk.
+to a) a terminal is open under su
 
->b) an application like gtkdial must be opened as su to connect
+When I need to be su I open an xterm with a blue color background and exit it 
+when I connect to the Internet. Now according to you I can leave it open.
 
-Dialers normally need to run suid to access the modem device. (There are 
-alternatives to this, though -- on my systems, all /dev/ttyS* devices are 
-in group "dialout" and mode 660, so a dialer app need not be suid.) Unless 
-the app itself has a security problem (and while gtkdial itself is probably 
-pretty much secure, I have no idea what apps you might think are "like" 
-gtkdial), this should be no problem.
+to b) an application like gtkdial must be opened as su to connect
 
->c) an application like kppp needs the root password to be accessible
+The "like" should better be "as" and your ansewer takes away by concern.
 
-I can't figure out what you mean by "accessible" here (or, once again, what 
-apps "like" covers), so I can't really answer this one. The natural risk to 
-think of is that you might, for some reason, store the root password in a 
-plaintext file somewhere on the system ... but I can't imagine your not 
-seeing the security in risk in doing that without help from this list.
+to c) an application like kppp needs the root password to be accessible
 
+Again "accessible" should better read "open". I take it that your answer to b) 
+will apply as well to c)
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Regards
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
