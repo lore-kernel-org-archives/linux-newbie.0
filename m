@@ -1,31 +1,38 @@
-From: Eric <eric@cisu.net>
-Subject: Re: strange freeze
-Date: Tue, 13 May 2003 11:34:12 -0500
+From: geoff bagley <geoff@gcbagley.demon.co.uk>
+Subject: Debian Wody.
+Date: Tue, 13 May 2003 18:33:27 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200305131134.12197.eric@cisu.net>
-References: <5.1.0.14.1.20030507122045.01fb2d10@celine>
-Reply-To: eric@cisu.net
+Message-ID: <3IjDFBAX5Rw+Ew32@gcbagley.demon.co.uk>
+References: <200305131334.h4DDYvjs017212@hartford-hwp.com>
+ <5.1.0.14.1.20030513064731.01eb14a8@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20030507122045.01fb2d10@celine>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20030513064731.01eb14a8@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-How can you exclude the power supply just becuase no-one else in the office 
-has the same problem? Unless I mis-understood you the power supply should 
-still be held in suspect. If you can get away with it, swap out the PS with 
-someone elses in the office or bring one from home. Is it a terribly 
-low-wattage supply 150-200? Try unpluging one of the disks when botting to 
-the other OS, its not much of a power drai, but its still something.
 
+I have just rejoined this list because I know Ray to be a proponent of
+the Debian distro.
+
+When I load up my Debian GNU/Linux 3.0 I get a nice little picture of
+the well-known Penguin "Tux", complete with a glass of beer, and all
+correctly coloured, up in the left-hand corner of the display.
+
+At a certain point during the loading sequence, his colours suddenly all
+get fouled up.
+
+Please can you tell me why, and what, if anything, is to be learned from
+this ?
+
+
+Best wishes.
 -- 
-#----------------------
-#Eric Bambach   
-#Eric@CISU.net 
-#----------------------
+geoff bagley
+G3FHL.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
