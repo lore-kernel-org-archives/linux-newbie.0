@@ -1,24 +1,39 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: Re: CD-RW-Drive
-Date: Thu, 30 Dec 2004 15:31:19 +0800
-Message-ID: <20041230073119.BD2AA4E5B2@heisspf>
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: retrieval
+Date: Thu, 30 Dec 2004 20:55:12 -0800 (PST)
+Message-ID: <20041231045512.81128.qmail@web52901.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: newbie <linux-newbie@vger.kernel.org>
 
-Many thanks to all for the excellent replies, I will come back to it after the 
-holidays.
+Hi
 
-Have a good celebration for the New Year and all
+i want to know if somebody can help me directly or
+indirectly on this topic by providing some source
+material to read etc.
 
-the Best therein. 
--- 
-Peter
+i want to retireve the lost file/files from my system
+which are removed by rm command
 
+i dont have any backup for them
+
+tell me any way i.e if i want to retirive the file
+immediately after removal
+
+thanks in advance
+
+ankit jain
+
+
+		
+__________________________________ 
+Do you Yahoo!? 
+Yahoo! Mail - Easier than ever with enhanced search. Learn more.
+http://info.mail.yahoo.com/mail_250
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
