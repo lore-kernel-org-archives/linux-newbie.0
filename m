@@ -1,8 +1,8 @@
-From: "Alan Womack" <lists@tcob1.net>
-Subject: Want to strip some formatting out of a text file
-Date: Monday, 12 Aug 2002 17:57:56 +000
+From: "Peter" <lists@tcob1.net>
+Subject: Re: Mailer Connections
+Date: Tuesday, 13 Aug 2002 15:41:57 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <19665.7681874514$1029528492@news.gmane.org>
+Message-ID: <31723.2971814976$1029528500@news.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,18 +13,48 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-I'm trying to download the text manuals for the linux pam modules to my palm 
-pilot, but there is the appearance of old style double strike for emphasis text 
-all over the docs.
+Thanks Riley and Ray
 
-e.g. a L(backspace)Li(backspace)in(backspace)n
+pfheiss said:
+>> How do I revert back that I can mail again with any mail program
+>> especially exmh and with any ISP?
 
-What utility to remove this backspacing and doubling of characters so they 
-would be over-written?
 
-Alan
+rhw@InfraDead.Org said:
+> As a result, the solution may be as simple as setting the hostname for
+> your machine to match that of your preferred ISP by editing the file /
+> etc/sysconfig/network and putting the full; hostname on the HOSTNAME=
+> line, then rebooting your system. 
 
-I dl'd the text file from the kernel.org website documentation of pam
+I did that now. It had localhost.localdomain. I changed if to "Peter".
+Can there be more than one name and if so how are they separated?
+
+
+rhw@InfraDead.Org said:
+> Incidentally, sendmail normally tries to send all outgoing emails
+> direct to the relevant delivery host, so the ISP you're dialled up
+> with should make no difference at all.
+
+That what I always thought and it always worked since RH5.2 w/o me doing 
+anything.
+
+ray@comarre.com said:
+>  Also please  mention which MTA you are using (either look for
+> something listening on  port 25 or find the smtp entry in /etc/
+> inetd.conf, depending on which way your system is set up)
+
+The file inetd.conf was absent. I found it as inetd.cof.rpmsave and copied it 
+to /etc/inetd.conf. There is no smtp entry in this file.
+
+This mail should go out now with my webcard ISP and using the program exmh.
+
+Regards
+
+-- 
+Peter
+
+
+
 -
 
 <-> Gateway Information.
