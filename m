@@ -1,63 +1,43 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: symbolic links
-Date: Sat, 6 Jul 2002 08:13:29 +0000
+From: "Marco Calistri" <ik5bcu@tin.it>
+Subject: Re: Again about SHAPE extension
+Date: Sat, 06 Jul 2002 17:34:41 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02070608132900.01455@unix.pa3gcu>
-References: <200207060403.g6643Nr01549@philonline.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <20020706153441.2072.qmail@linux.ik5bcu.ampr.org>
+References: <20020703213914.GA20033@neon.hh59.org>
+Reply-To: ik5bcu@tin.it
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200207060403.g6643Nr01549@philonline.com>
+In-Reply-To: <20020703213914.GA20033@neon.hh59.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter <pfheiss@philonline.com>, linux <linux-newbie@vger.kernel.org>
+To: Axel Siebenwirth <axel@hh59.org>
+Cc: linux-newbie@vger.kernel.org
 
-On Saturday 06 July 2002 04:03, Peter wrote:
-> Hi,
->
-> when reinstalling binutils-2.10.91.0.2-3 which apparenly got corrupted I
-> received the following messages:
->
-> /sbin/ldconfig: /usr/lib/libkdeui.so.2 is not a symbolic link
->
-> /sbin/ldconfig: /usr/lib/libncurses.so.4 is not a symbolic link
->
-> /sbin/ldconfig: /usr/lib/liboaf.so.0 is not a symbolic link
->
-> /sbin/ldconfig: /usr/local/lib/libncurses.so.5 is not a symbolic link
->
-> /sbin/ldconfig: /usr/local/lib/libgtkextra-0.99.so.1 is not a symbolic link
->
-> /sbin/ldconfig: /usr/local/qt/lib/libqt.so.2 is not a symbolic link
->
-> How do I go about that?
 
-AFAIK the libs;
-/usr/lib/libkdeui.so.2
-/usr/lib/libncurses.so.4
-/usr/lib/liboaf.so.0
-Should reside in /lib and there should be s symbolic link in /usr/lib to lib 
-for each libary.
-Possably when thoses libs are placed into the proper directory then ldconfig 
-possably will create a symlink altho' i am not sure.
+On 03-Jul-2002 Axel Siebenwirth wrote:
+> Hi Marco!
+> 
+> On Wed, 03 Jul 2002, Marco Calistri wrote:
+> 
+>> After I upgraded RHL from 7.2 to 7.3 I noticed an error from Sawfish where
+>> Xlib
+>> complains about my X server has not SHAPE extension enabled.
+> 
+> http://nscp.upenn.edu/aix4.3html/x11/specs/pdf/shape.PDF
+> http://www.xfree86.org/4.2.0/XShapeCombineMask.3.html#sect3
+> http://nscp.upenn.edu/aix4.3html/aixprggd/aixwnpgd/ext_window.htm
+> http://www.oreilly.com/catalog/x3/
+> 
+> Best would be visiting irc.openprojects.net with you favorite IRC client,
+> join #xfree86 and ask there..
+> 
+> Regards,
+> Axel
 
-The libs in /usr/local i suspect you have installed yourself, i suggest you 
-read the README and INSTALL files for qt and gtk and pay attention to the 
-options for ./configure 
+Many Thanks Axel,see U
 
-I am always very careful when it comes to upgrading libs as "more often than 
-not" problems arise, sometimes to the point of rendering your system 
-unuseable because one missed a seemingly small point in one or another README.
-
->
-> Thanks and regards
-
---
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
-
+Marco.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
