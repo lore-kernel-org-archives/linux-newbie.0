@@ -1,49 +1,63 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Ogle and slow DVD playing.
-Date: Mon, 30 Sep 2002 12:56:52 -0700
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: RE: Tar Backups
+Date: Mon, 30 Sep 2002 15:48:58 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20020930125022.02c79ec0@celine>
-References: <20020930191336.C2A2D3C02@sitemail.everyone.net>
+Message-ID: <003201c268ba$6b62ad70$64fea8c0@pkrausxp>
+References: <5.1.0.14.1.20020930123403.02c7c350@celine>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20020930191336.C2A2D3C02@sitemail.everyone.net>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: jlalarcon@linuxnobis.com, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <5.1.0.14.1.20020930123403.02c7c350@celine>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: 'Ray Olszewski' <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-At 12:13 PM 9/30/02 -0700, Jose Luis Alarcon wrote:
->   Hi all. Long time since i was here last time.
->
->   Anybody can tell me what can are the reasons why ogle play the DVD movies
->very slow?.
+I understand about outputting the contents to file. On my m$ system the
+backup software indexes the tape so that when you want to get a file off
+of it the software looks at the index for the location on the tape. Fast
+forwards to the spot, and then restores the file. With tar it reads
+every inch of the tape until it comes to your file. This is anything but
+efficient. Any suggestions?
 
-Probably not, given that in this context, "slow" has multiple meanings. (Do 
-you mean it takes a long time to *start* playing the movie? Or that is 
-plays at half the normal speed? Or something else?)
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com] 
+Sent: Monday, September 30, 2002 3:39 PM
+To: Paul Kraus; linux-newbie@vger.kernel.org
+Subject: Re: Tar Backups
 
-Give us a better description of the problem, along with the basics of your 
-setup.
 
-Include ogle details -- what version? Playing through X or not? If through 
-X, what X server do you use?
+At 03:21 PM 9/30/02 -0400, Paul Kraus wrote:
+>Is there a way to have an index written? I am making 13gb backups and 
+>it takes forever to simply restore because it has to read each and 
+>every single file on the tape. This is actually on my sco box but the 
+>question is relevant because I plan on moving the file server to a red 
+>hat machine.
 
-On your DVD drive, do you have DMA enabled (through hdparm)?
+Do you mean that you want to use tar to make a tape backup, and at the
+same 
+time write a separate file that contains a list of all of the files on
+the 
+tape?
 
-Have you seen this behavior with a particular DVD, with some of the DVDs 
-you play, or with all of the DVDs you play?
+If you do mean that ... then just run tar in verbose mode and redirect
+the 
+output to a file. Something like this (though this example saves to a
+.tar 
+file rather than tape):
 
-Taking a long time to start, BTW, is normal ... ogle has to get the DVD 
-decryption started, a process that involves region checking and other stuff 
-I forget right now ... can easily take a minute or two even on fast 
-equipment (I see these delays on a 1 GHz P-3, for example).
+         tar -cvf somename.tar filespec > index.txt
+
+If you mean something more specific by "index", please describe in more 
+detail what you need.
 
 
 --
--------------------------------------------"Never tell me the odds!"--------
+-------------------------------------------"Never tell me the
+odds!"--------
 Ray Olszewski					-- Han Solo
 Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+------------------------------------------------------------------------
+-------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
