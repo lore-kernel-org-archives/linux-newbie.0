@@ -1,48 +1,30 @@
-From: whitnl73@juno.com
-Subject: Re: slightly off topic: remotely displaying Mac OS X applications
-Date: Sun, 12 Jan 2003 22:20:20 -0500 (EST)
+From: "n  mishra" <mishra_nn@rediffmail.com>
+Subject: c with assembly
+Date: 13 Jan 2003 09:45:09 -0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030112.223118.134688608.1.whitnl73@juno.com>
+Message-ID: <20030113094509.17152.qmail@webmail29.rediffmail.com>
+Reply-To: "n  mishra" <mishra_nn@rediffmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain;
+	format=flowed; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Cc: hammer@revobild.net
 
+Hi all!
+I'm having problems compiling a c file with assembly code embedded 
+in it.How can I transfer control to a assembly language procedure 
+ from the c code?
+Also:
+In assembly how do you specify the entry point for the code i.e 
+the equivalent of main in 'c'.I tried '.ENTER' using as86.I also 
+tried the assembler directive END.Could someone please tell me 
+it's exact syntax.
+Thanks in advance.
+mishra.
 
-On 13 Jan 2003, Heimo Claasen wrote:
-
-> How _do_ you "change the DISPLAY variable?"
->
-> Searching through my wise Debian book I cannot even find it mentioned
-> at all.
->
-> // Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-01-13
->
-Depends on your shell.
-
-bash:
-export DISPLAY=machine.you.want_to_display.on:0.0
-tcsh:
-setenv DISPLAY machine.you.want_to_display.on:0.0
-
-If you use some other shell, see the man page for it, or at least tell
-us what it is.
-
-Lawson
-
---
----oops---
-
-
-
-
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
