@@ -1,42 +1,51 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Who is listening on port xxx?
-Date: Wed, 28 Jan 2004 11:54:03 -0800
+From: Michael Scondo <michael.scondo@arcor.de>
+Subject: Re: Debian libc6 upgrade
+Date: Wed, 28 Jan 2004 22:27:38 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040128115150.02053e40@celine>
-References: <4011C87400001C22@mail-bcm02.alestra.net.mx>
- <4011C87400001C22@mail-bcm02.alestra.net.mx> <1075317421.25428.1.camel@science>
+Message-ID: <200401282227.38737.michael.scondo@arcor.de>
+References: <200401272140.53742.michael.scondo@arcor.de> <5.1.0.14.1.20040127140555.01fe9d38@celine> <200401281652.39190.micha@topsurf.com>
+Reply-To: michael.scondo@arcor.de
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1075317421.25428.1.camel@science>
-References: <4011C87400001C22@mail-bcm02.alestra.net.mx>
- <4011C87400001C22@mail-bcm02.alestra.net.mx>
+In-Reply-To: <200401281652.39190.micha@topsurf.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 08:17 PM 1/28/2004 +0100, Jens S=FClwald wrote:
->Am Mi, den 28.01.2004 schrieb rgomez@bancomer.com um 19:56:
-> > Hi, here's the network newbie again...
-> >
-> > How or Where can I find which process is listening on specific port=
-?
->fuser -v -n tcp <port>
->or
->fuser -v -n udp <port>
+> > > > Hi to all,
+> > > > I'm running a mixed Debian Woody, with a few backports and libc6
+> > > > 2.3.1-16. Now I would like to upgrade to libc6 2.3.2.ds1-10.
+> > > > Anything runs fine - until I try to compile a program :
 
-You might also find various options in "netstat" helpful, depending on=20
-exactly what information you are looking for. For example, try running
+> The current version of libc6 for woody is 2.2.5-11.5, mixed system, because
+> I already upgraded libc6 and a few other packages.
+> However, I had first an woody testing system. Then I upgraded the libc6
+> from 2.2.4-7 to 2.3.1-16 via aptitude, this was the testing release this
+> time. But everything run fine, beside the fact, using the praeprocessor for
+> compiling a program didn't succeed.. :-)
+> But the compiler did his job.
+> Now I did again this upgrade of libc6, also of libc6-dev and
+> linux-kernel-headers using aptitude.
+> Maybe, I've got the wrong version of gcc (2.95.4-9 now ) ?
+>
 
-         netstat -lp
+It drives me crazy - I upgraded now gcc and g++ and the depending librarys - 
+gcc compiles fine, but the praeprocessor still doesn't make his job at least 
+it seems to me to be the praeprocessor.
 
-to see if its output is helpful to you.
+micha@betageuze:~/prog/test/t2$ gcc -o hallo hallo.c
+micha@betageuze:~/prog/test/t2$ ./hallo
+Hallo !
+micha@betageuze:~/prog/test/t2$ gcc -o hallo hallo.cpp
+/tmp/ccUmthd6.o(.eh_frame+0x11): undefined reference to `__gxx_personality_v0'
+collect2: ld returned 1 exit status
+micha@betageuze:~/prog/test/t2$ 
 
-
-
+Anyone has a tip ?
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
