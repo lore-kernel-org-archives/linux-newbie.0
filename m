@@ -1,60 +1,30 @@
-From: Gavin Laking <me@gavinlaking.co.uk>
-Subject: Re: ftp issues
-Date: Thu, 14 Nov 2002 19:09:55 +0000
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: Book Recommendations
+Date: Thu, 14 Nov 2002 22:32:54 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021114190955.4c30adb3.me@gavinlaking.co.uk>
-References: <92091C60D5E2B74CB77C1FDB84F5FA76EA61@s99mail02.okdhs.org>
+Message-ID: <20021114223254.G12031@neutrino.particles.org>
+References: <20021114000151.C12031@neutrino.particles.org> <Pine.LNX.4.44.0211140449040.19742-100000@athame.gmpexpress.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <92091C60D5E2B74CB77C1FDB84F5FA76EA61@s99mail02.okdhs.org>
+Content-Disposition: inline
+In-Reply-To: <Pine.LNX.4.44.0211140449040.19742-100000@athame.gmpexpress.net>; from dashielljt@gmpexpress.net on Thu, Nov 14, 2002 at 04:51:55AM -0500
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Little, Chris" <Chris.Little@okdhs.org>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: dashielljt <dashielljt@gmpexpress.net>
+Cc: "[ Jason ]" <jasonj@satx.rr.com>, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+On Thu, Nov 14, 2002 at 04:51:55AM -0500, dashielljt wrote:
+> advanced reference book.  All I have to say about Knuth is that it would
+> have been nice if he had put the necessary fortran or source in that large
+> book to build the tools for his unique programming language.  I didn't
 
-On Thu, 14 Nov 2002 11:23:12 -0600
-"Little, Chris" <Chris.Little@okdhs.org> wrote:
+It's an algorithms book. It shouldn't depend on a particular language.
 
-> trying to ftp an oracle export.  this happens
->
-> 150 Opening BINARY mode data connection for expKIDSaa.20021110.dmp
-> (1048576000 bytes).
->   6% |*****
-> | 63560 KB  775.22 KB/s    20:38 ETA
-> ftp: expKIDSaa.20021110.dmp: short write
+Elias
 
-Two things I can think of:
-
-1) temporary disk space is full (is swap space full too?)
-
-2) the file is being written to at the same time as you are downloading
-it.
-
-Finally, save yourself some heartache in the long run by compressing the
-file before you download it- save yourself bandwidth, and by downloading
-the compressed version you can ensure that no other user will attempt to
-write to it.
-
-GL 
-
-- -- 
-Gavin Laking - Web Development Daemon
-
-http://www.gavinlaking.co.uk
-- --
-
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-
-iD8DBQE90/UDaMak7Ylvm3ARAproAJoDW2qQLmGScYMQyTagEpADs9VrWgCgvEBp
-UR4roHeAdANSxR1QRnUoGqg=
-=LnY3
------END PGP SIGNATURE-----
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
