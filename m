@@ -1,35 +1,35 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: line printer line transport
-Date: 26 Sep 2003
+From: =?iso-8859-1?Q?Ricardo=20Gomez?= <rgomez@bancomer.com>
+Subject: =?iso-8859-1?Q?undefined=20reference=20to=20=60=5Ffxstat=27?=
+Date: Thu, 25 Sep 2003 18:50:48 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309252310.h8PNAdY30004@xizor.is.kpn.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <3F69538E00003E10@mail-bcm01.alestra.net.mx>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-I want to use some simple line printer for text and debug print-out.
-Problem is that that *nix (text) output gives solely LineFeed (LF)
-at a line break, not the needed additional Carriage Return (CR).
+I don't know if this is the right place to make this question, but I'm having
+some problems compiling wterm.
 
-No deal to fiddle with the dip switches of the printer(s) each time when
-some text has to be printed from a Linux on that units (and besides, those
-[HP] printers can only add LFs to given CRs, not vice versa), as there are
-other OSs which durely give the CR+LF sequence by themselves. So the
-solution must be soft.
+When I make ./configure it's seems to be all ok but in the make steep I
+get this:
 
-No question neither to reformat the files to print just for that
-purpose, they should be left intgeger; and this wouldn't be working with
-debugging output anyway.
+gcc -o wterm command.o graphics.o grkelot.o main.o menubar.o misc.o netdisp.o
+rmemset.o screen.o scrollbar2.o utmp.o xdefaults.o xpm.o -L/usr/X11R6/lib
+ -lSM -lICE -L/usr/X11R6/lib -lXpm -lX11 -lWMaker -lutil
+/usr/X11R6/lib/libXpm.so: undefined reference to `_fxstat'
+collect2: ld returned 1 exit status
 
-Thus something like 'cat filename /dev/lp0' should go through a simple
-filter which inserts a CR in front of any LF. Is there something the
-like ? Couldn't a small bash script do it ?
+I'm sure I have libXpm:
+[pedsgrr2@edsrgr00 wterm-6.2.9]$ ll /usr/X11R6/lib/libXpm.so 
+-rwxr-xr-x 1 root root 81K sep 17 16:05 /usr/X11R6/lib/libXpm.so*
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2003-09-25
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+
+Any idea, TKS.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
