@@ -1,25 +1,33 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Re: Window manager in Gnome 2.0
-Date: Tue, 02 Jul 2002 03:34:24 -0600
+From: adwin <fox@sby.centrin.net.id>
+Subject: mouse setup
+Date: Wed, 3 Jul 2002 07:40:09 +0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20020702033148.034ddd58@shawmail.ed.shawcable.net>
+Message-ID: <50420696.20020703074009@sby.centrin.net.id>
+Reply-To: adwin <fox@sby.centrin.net.id>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Yeah, that appears to be missing.  No matter, i've typically been a KDE 
-person, and, in the learning process, trying to get this damn wm thing 
-fixed, i toasted X beyond my ability to repair.  So, off to KDE it is.
+Hello,
 
+  my system is Mandrake 8.2 & KDE 3.0 in my system.
+I got a problem with my ps2 mouse port so I use USB Mouse instead.
+I got problem, because my mouse cannot be detected. I have been try
+use mousedrake to detect my mouse. It is success to detect my mouse
+but my mouse still cannot be used. Then I try to detect with kudzu, it
+also doesn't work (it say like " cannot create /dev/usbmouse").
+how to solve this problem ?
 
-Chris R.
-========
-Lumen Redundas
-"To Cast The Light Of Knowledge On The Already Well-Known"
+thanks
 
+ps: my mouse is Logitech optical.
+
+-- 
+Best regards,
+ adwin
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
