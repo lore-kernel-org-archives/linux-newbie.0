@@ -1,39 +1,58 @@
-From: James Hatridge <James.Hatridge@epost.de>
-Subject: Genius Scanner
-Date: Sun, 27 Jul 2003 17:44:21 +0200
+From: Anshuman Singh Rawat <asr245@nyu.edu>
+Subject: Re: Linux install error
+Date: Sun, 27 Jul 2003 13:26:17 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200307271744.22009.James.Hatridge@epost.de>
-Reply-To: James.Hatridge@epost.de
+Message-ID: <305c5c33059685.3059685305c5c3@homemail.nyu.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: SuSE <suse-linux-e@suse.com>
-Cc: Newbie <linux-newbie@vger.kernel.org>
+To: pa3gcu@zeelandnet.nl
+Cc: linux-newbie@vger.kernel.org
 
-Hi all...
+I got this error during startup when i booted from the cdrom. This error occured before it asked me anything about installing anything! 
+I dont know if that answers your question.
 
-I was given an old Genius Scanner 1170 CS SCSI scanner. My buddy gave me 
-everything for it but the terminator. If anyone has a terminator and is 
-willing to let go of it, please email me off-list and we will make a deal.
+----- Original Message -----
+From: pa3gcu <pa3gcu@zeelandnet.nl>
+Date: Sunday, July 27, 2003 11:37 am
+Subject: Re: Linux install error
 
-Thanks
-
-JIM
-
-
-Jim Hatridge
-Linux User #88484
--- 
-Our country was colonized by the religious, political, economic, and criminal
-rejects of every country in the world. We have been carefully breeding insane, 
-obsessive, fanatic lunatics with each other for over 400 years, resulting in 
-the glorious strain of humanity known as "Americans". You have to expect 
-some... peculiarities. 
-
-Read about new German stamps each quarter:
-	 http:/www.fecundswamp.net/~hatridge/bulletin
+> On Sunday 27 July 2003 04:33, Anshuman Singh Rawat wrote:
+> > Traceback (Innermost last)
+> >     File "/usr/bin/anaconda", line 487, in ?
+> >         from splashscreen import splashScreenShow
+> >     File "/usr/bin/anaconda/splashscreen.py", line 21, in ?
+> >         from gtk import *
+> >     File "/usr/lib/python1.5/site-packages/gtk.py", line 22, in ?
+> >         from _gtk
+> > ImportError: /usr/lib/libgtk-1.2.so.0:invalid ELF header
+> > install exited abnormally.
+> > sending termination signals...done
+> > sending kill signals...done
+> 
+> Are you sure that you installed "gtk" and its libs.??
+> All the errors concern gtk.
+> 
+> > Any idea what the problem mite be?
+> >
+> > -Anshuman
+> 
+> -- 
+> If the Linux community is a bunch of theives because they
+> try to imitate windows programs, then the Windows community
+> is built on organized crime.
+> 
+> Regards Richard
+> pa3gcu@zeelandnet.nl
+> http://people.zeelandnet.nl/pa3gcu/
+> 
+> 
+> 
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
