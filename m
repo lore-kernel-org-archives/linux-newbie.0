@@ -1,27 +1,44 @@
-From: Adam Luchjenbroers <adam@luchjenbroers.com>
-Subject: Highly unusual crashes.
-Date: Sun, 30 Jun 2002 17:27:45 +0930
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: recursively removing directories
+Date: Sun, 30 Jun 2002 08:26:37 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020630075334Z314596-685+1086@vger.kernel.org>
-Reply-To: adam@luchjenbroers.com
+Message-ID: <200206300826.37779.pa3gcu@zeelandnet.nl>
+References: <20020629.214414.-257403.0.matthewstapleton@juno.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20020629.214414.-257403.0.matthewstapleton@juno.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Matthew Stapleton <matthewstapleton@juno.com>, linux-newbie@vger.kernel.org
+
+On Sunday 30 June 2002 01:44, Matthew Stapleton wrote:
+> How do I recursively remove all the subdirectories and contents of a
+> particular directory in Linux? I know of 'rmdir', but this only works for
+> empty directories.  I need something like DOS's 'deltree'.
+
+You got 2 other answers to your question, one mentioned the need to be "very 
+carefull" with rm, what they did not say is you can wipe out your complete 
+system with rm and its options.
+I would strongly advise you to use 'mc' the linux answer to 
+midnight-commander.
+You will have more oversight as to what you are deleting and will not be faced 
+with the same problem we saw here a few days ago when someone asked how he 
+could recover his system after he made a mistake with rm -rf.
 
 
-Screen just goes black or locks up.
+>
+> Thanks,
+> Matthew Stapleton
 
-Under X it locks up with a blue screen and a white line.
+-- 
+Regards Richard
+pa3gcu@zeelandnet.nl
+http://people.zeelandnet.nl/pa3gcu/
 
-No apparent cause, I did nothing that could've caused it. I'm surprised I can 
-get in as it was doing it on boot (yes, even to failsafe). I have no idea 
-what could've caused it or what the problem might be.
 
-Will try another reboot and see what happens. Perhaps this has gone as 
-mysteriously as it came. Got me puzzled.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
