@@ -1,40 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Netscape6.2/Slack8.1 Problem??
-Date: Thu, 01 May 2003 09:06:06 -0700
+From: sean@tcob1.net
+Subject: Re: Maildrop doesn't filter or log filters
+Date: 1 May 2003 08:09:02 GMT
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030501090116.01ea5780@celine>
-References: <5.1.0.14.1.20030430101045.01f89a18@celine>
- <20030430130258.A152@lnx2.w8mch.ampr.org>
- <5.1.0.14.1.20030430101045.01f89a18@celine>
-Mime-Version: 1.0
+Message-ID: <n2m-g.428061.a14921@tcob1.net>
+Reply-To: sean@tcob1.net
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030501113320.B165@lnx2.w8mch.ampr.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-OK. This response pretty much eliminates RAM/swap as a possible cause.
+On 26.04.2003 09:19:10, Chris Rose wrote:
 
-I also asked about CPU use. That's the line in "top", near the top of the 
-display, that looks like this:
+ CR> Here's how i have things:  I'm using postfix as a local MTA, and it's
+ CR> calling maildrop with
+ CR> mailbox_command = /usr/bin/maildrop
+ CR>
+ CR> I have only one user that receives mail on my system, and that user
+ CR> account has/d a ~/.mailfilter file.  The problem is, whenever that file
+ CR> exists, no mail whatsoever makes it into my Maildir.  I've tested this -
+ CR> i send a message to myself, and i receive nothing as long as there's a
+ CR> mailfilter file existing.  As soon as i rename it, i'm fine.
+ CR>
 
-Cpu(s):  30.6% user,   2.0% system,   0.0% nice,  67.4% idle
+What are the permissions on the .mailfilter file, they must be 0600. I had
+problems like this and this caused problems similar
 
-See if running the problem version of Netscape pushes your idle time to 0% 
-or nearly that.
+Sean
 
-But this too seems less likely, now that I understand that the problem is 
-specific to a *particular* action on the Netscape you are running. I'd be 
-looking for an app-specific bug, I think. For that you'll need help from 
-someone shose setup is closer to yours than mine is.
-
-Sorry I wasn't able to help.
-
-At 11:33 AM 5/1/2003 -0400, Hal MacArgle wrote:
-[...]
-
-
+--
+I Didn't Climb to the Top of the Food Chain to Be a Vegetarian.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
