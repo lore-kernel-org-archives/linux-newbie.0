@@ -1,40 +1,31 @@
-From: "chang" <aeh21dgj@hotmail.com>
-Subject: Buy prescriptions in bulk, SAVE THOUSANDS!
-Date: Sun, 08 Aug 2004 00:45:20 GMT
+From: "Toti Bilgisayar" <pehlivan@toti.net>
+Subject: ADSL  =?ISO-8859-1?Q?=20Sat=FD=FE?= Ve Servis  =?ISO-8859-1?Q?=20Noktas=FD?=
+Date: Mon, 9 Aug 2004 08:32:43 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1091925920-3571__36424.1638490514$1091926045$gmane$org@excite.com>
+Message-ID: <200408090531.i795VFXJ030837@zeus.kernel.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain;; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-Buy your meds through our Canadian Pharmacy,
+Toti Bilgisayar Art=FDk T=FCrk Telekom =C7=F6z=FCm Orta=F0=FD
+ADSL Sat=FD=FE ve Servis noktas=FD
+Hep Daha =DDyiye
+-_-_-_-_-_-_-_-
 
-Save up to 80% on EXACTLY THE SAME DRUGS!
+Toti Bilgisayar Ltd.
+Tekzen =DEube
+Tekzen Al=FD=FEveri=FE Merk.
+=C7=FDrp=FDc=FD yolu
+Merter =DDst.
+Tel: (212) 543 8888
+www.toti.net
 
-Click here: http://www.we49fm.com/_85924943b9db73ac62baa654773c6a8e/7
-
-On medication long term?
-Buy bulk through us and LITERALLY SAVE THOUSANDS!
-
-Click here: http://www.we49fm.com/_85924943b9db73ac62baa654773c6a8e/7
-
-
-
-
-
-
-
-
-
-
-benoit bachdon future mantra trident petunia ssssss 
-button fletchirene dragonfl gordon
-jazz nugget t-bone 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
