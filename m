@@ -1,52 +1,66 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: ipchains && kernel-2.4.x
-Date: Wed, 24 Apr 2002 05:42:52 +0000
+From: Paul Furness <paul.furness@vil.ite.mee.com>
+Subject: Re: CD writing in ext2 filesystem
+Date: 24 Apr 2002 10:45:04 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02042405425201.00216@unix.pa3gcu>
-References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <02042218444504.00604@unix.pa3gcu> <3CC6030E.8A74B4FD@gelm.net>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <1019641504.16651.14.camel@Zebra>
+References: <200204232318.55166.mssnlayam@cs.annauniv.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3CC6030E.8A74B4FD@gelm.net>
+In-Reply-To: <200204232318.55166.mssnlayam@cs.annauniv.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <nc8q@gelm.net>, linux-newbie@vger.kernel.org
+To: mssnlayam@cs.annauniv.edu
+Cc: linux-newbie@vger.kernel.org
 
-On Wednesday 24 April 2002 00:57, Chuck Gelm wrote:
->  I would like to upgrade from kernel-2.2.20 to 2.4.18,
-> but I don't know how to make 2.4.x use ipchains instead
-> of iptables.  I'm using Roaring Penguin v3.3 (PPPOE) and
-> it is set up to use ipchains.  I cannot figure how to
-> answer "/usr/src/linux#make config"
-> to let 2.4.x use ipchains.
->
->  My new 802.11b wireless card needs 2.4.x.
->  My aDSL (pppoe) wants IPCHAINS (2.2.x).
->  I want both!
->
-> How do I do it?
+Hmm. Well, when CDs are created, the file system used is called iso9660.
+What I _think_ has happened is that you have created a file on your hard
+disk inside which you have created an ext2 filesystem, but then then you
+recorded that file onto a CD. As far as I know, cdrecord will try and
+interpreate the file you give it as either a CD image file (ie an
+iso9660 file system) or a ufs file system. What it MAY have done is
+created an iso9660 image on the CD and copied your file containing the
+ext2 onto the CD as a file. In other words, to get at it you need to
+mount the CD (as iso9660) and then mount the file inside the CD file
+system.
 
-Easy, choose the correct option while configuringing you new kernel;
-Under;
-IP: Netfilter Configuration choose;
-CONFIG_IP_NF_COMPAT_IPCHAINS=m
-You may wish to choose other possablity's as well, its up to you.
+Try using mount without the -t option - it should recognise the file
+system on the CD (if it is a working one) and mount it automatically.
+you could then ls /mnt/cdrom and see if the file file.ext2 comes up.
 
-Upon starting your new kernel you will need to insmod or modprobe ipchains.o
-I belive you use slackware on one of your machines, add a line in 
-/etc/rc.d/rc.modules for ipchains, providing of course you use 
-/etc/rc.d/rc.modules.
-If not you will need to modprobe ipchains before you bring up your interfaces.
+Is there a particular reason why you were trying to put an ext2 fiole
+system on the CD rather than an ISO9660 one?
 
->
-> Many thanks,
-> Chuck
+Incidentally, if you just want to copy some stuff to a CD, the easiest
+way is to use one of the nice graphical CD writing tools that are around
+- try xcdroast, for example.
 
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
+Hope that some of this helps...
+
+Paul.
+
+
+On Tue, 2002-04-23 at 18:48, Suriya Narayanan M S wrote:
+> On Monday 22 April 2002 01:29, Pierre Rousselet wrote:
+>   > Suriya Narayanan M S wrote:
+>   > > # mount -t ext2 -o ro /dev/cdrom /mnt/cdrom
+>   >
+>   > Is there any error message following this command line ?
+> Yes.
+> mount: wrong fs type, bad option, bad superblock on /dev/cdrom, 
+>        or too many mounted file systems
+> --
+> Guru Brahma Gurur Vishnu
+> Gurur Dhevo Maheshwaraha
+> Gurur Saakshaath Parabramha
+> Thasmai Shree Gurave Namaha
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
