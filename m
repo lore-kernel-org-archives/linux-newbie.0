@@ -1,18 +1,32 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Question on initrd
-Date: Wed, 17 Sep 2003 08:09:29 +0200
+From: "Girish Kale" <girish.kale@nevisnetworks.com>
+Subject: RE: Question on initrd
+Date: Wed, 17 Sep 2003 11:59:03 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200309170809.29374.pa3gcu@zeelandnet.nl>
-References: <36993D449C7FA647BF43568E0793AB3E061DEA@nevis_pune_xchg.pune.nevisnetworks.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <36993D449C7FA647BF43568E0793AB3E061DF1@nevis_pune_xchg.pune.nevisnetworks.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <36993D449C7FA647BF43568E0793AB3E061DEA@nevis_pune_xchg.pune.nevisnetworks.com>
-Content-Disposition: inline
+content-class: urn:content-classes:message
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Girish Kale <girish.kale@nevisnetworks.com>, linux-newbie <linux-newbie@vger.kernel.org>
+To: pa3gcu@zeelandnet.nl, linux-newbie <linux-newbie@vger.kernel.org>
+
+Hi,
+
+My original grub.conf file has an initrd, so I am assuming it is
+required. I have a SCSI drive and so I think it is required. 
+I did make dep clean modules modules_install bzImage.
+I compiled the kernel without selecting BusLogic module also, but I got
+the same error, which I am unable to understand.
+
+Thanks,
+Girish
+
+-----Original Message-----
+From: pa3gcu [mailto:pa3gcu@zeelandnet.nl] 
+Sent: Wednesday, September 17, 2003 11:39 AM
+To: Girish Kale; linux-newbie
+Subject: Re: Question on initrd
 
 On Tuesday 16 September 2003 10:27, Girish Kale wrote:
 > Hi,
@@ -24,12 +38,15 @@ On Tuesday 16 September 2003 10:27, Girish Kale wrote:
 > Can anyone help me on this.
 
 Firstly do you need initrd ?? i doubt it.
-Secondly did you do; 'make modules' and make 'modues_install' after compiling 
+Secondly did you do; 'make modules' and make 'modues_install' after
+compiling 
 the kernel and last but not least why compile the buslogic driver as a 
-module, things like that "should" be in your kernel espesialy if you intend 
+module, things like that "should" be in your kernel espesialy if you
+intend 
 to boot from such a device.
 
-If things you need for booting are in the kernel then really any need for 
+If things you need for booting are in the kernel then really any need
+for 
 initrd goes away.
 
 > Thanks,
