@@ -1,8 +1,8 @@
-From: "Abhijit Vijay" <lists@tcob1.net>
-Subject: Query regarding linking...
-Date: Thursday, 15 Aug 2002 11:41:36 +000
+From: "Axel Siebenwirth" <lists@tcob1.net>
+Subject: .so, .a and .o-files
+Date: Thursday, 15 Aug 2002 16:19:18 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <NOMSGID_7223=3a9750=2f200_020815_114136__ed7e8e9d@fidonet.org>
+Message-ID: <NOMSGID_7223=3a9750=2f200_020815_161918__af9304b7@fidonet.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -13,21 +13,21 @@ To: linux-newbie@vger.kernel.org
 Originally to: All
 
 
-Hi All,
+Hi,
 
-While on the topic of linking, could anyone tell me
-why a C source file compiles alright, but gives
-"Symbol not found" errors during linking? I mean, how
-is the error, "symbol _ABC not found" different from
-"function xyz not found"?
+I have some stupid questions.
 
-Regards,
-Abhijit.
+What makes the difference between .o and .so files? What is their use? Is it
+just a naming convention?
 
-__________________________________________________
-Do You Yahoo!?
-HotJobs - Search Thousands of New Jobs
-http://www.hotjobs.com
+When I want to link libraries to a program I am compiling, of what format do 
+the libraries have to be?
+
+I have found out that .a files are archives created with ar. What is that
+for?
+
+Many thanks and my best regards,
+Axel Siebenwirth
 -
 
 <-> Gateway Information.
