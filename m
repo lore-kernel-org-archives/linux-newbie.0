@@ -1,27 +1,29 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Cups / lp / Samba
-Date: Fri, 27 Sep 2002 09:18:50 -0400
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: 2 video cards in the same computer
+Date: Fri, 27 Sep 2002 20:51:59 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <002f01c26628$6d5dbd20$64fea8c0@pkrausxp>
+Message-ID: <200209272051.59278.g38@rdsbv.ro>
+Reply-To: g38@rdsbv.ro
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-In order to print to my windows shared printers I have setup cups to use
-samba. Test pages work and I can print documents to the windows
-workstations using lp. However when I use lp -dprinter the very left
-character of the printjob gets cut off. How can I increase the left
-margin to avoid this.
+is the $subj possible ?
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
+what I want is two monitors plugged in in the same computer - different video 
+cards ... am I talking nonsense here ?
+
+
+
+thanks,
+
+petre
+
+-- 
+ 20:42:39 up  7:00,  3 users,  load average: 0.19, 0.18, 0.16
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
