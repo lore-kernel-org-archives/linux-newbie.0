@@ -1,26 +1,35 @@
-From: Dave Pomeroy <dave@dpomeroy.com>
-Subject: mandrake installation
-Date: Sat, 08 Mar 2003 08:05:22 -0800
+From: James Miller <jamtat@mailandnews.com>
+Subject: stopping diald
+Date: Sat, 8 Mar 2003 12:07:12 -0600 (CST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.1.6.0.20030308080205.00a73ac8@mail.dpomeroy.com>
+Message-ID: <Pine.LNX.4.53.0303081157280.18544@homenet>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Linux-Newbie list <linux-newbie@vger.kernel.org>
 
-My old scsi cdrom will not boot.  I'm installing from my windows hard 
-drive.  I've made a boot floppy and all goes as it should when I boot, it 
-asks me for the location of the files and I tell it the path to my windows 
-drive where the files for disk 1 are stored.  It never asks where disk 2 is 
-stored and when it needs the files off that it can't find them. I guess I'm 
-asking where do you put the "RPMS2" and "RPMS3" packages so the install 
-program can find them?  Thanks for all your help.
+Newbie question:
 
+I've started experimenting with diald, since I'm planning on setting up a
+small network from which more than one computer will be needing to access
+the 'net. Diald works fine, in terms of connecting to the provider. My
+question is about stopping the process. So far, I've been able to stop
+diald only by opening a console and su'ing and issuing "poff." Trying to
+run poff from a console as user results in the message "/usr/bin/poff:
+/bin/kill failed. None stopped". I believe that this is because the
+process is owned by root, as ps axu shows. I need a more elegant and less
+restrictive process for stopping the diald connection than having to open
+a console, su, then issue "poff." Can someone please suggest alternative
+methods? Eventually, I plan on adding a poff item to my Icewm toolbar. But
+understanding various ways to stop the process is prerequisite to that (I
+know how to edit the toolbar config file, and have some understanding of
+how the entries should look).
 
-Dave Pomeroy K7DNP South East Washington
+Thanks for any help.
 
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
