@@ -1,37 +1,39 @@
-From: SOTL <sotl155360@earthlink.net>
-Subject: Re: database
-Date: Mon, 20 Dec 2004 16:00:01 -0500
-Message-ID: <200412201600.01330.sotl155360@earthlink.net>
-References: <200412210209.49487.wheds8@ms66.hinet.net> <41C71B7D.9080702@vip.cybercity.dk>
+From: Kev <savage-garden@hanikamail.com>
+Subject: Re[2]: route to deferent gateways depend on the protocol
+Date: Tue, 21 Dec 2004 08:21:42 +0600
+Message-ID: <20041221080419.3CEB.SAVAGE-GARDEN@hanikamail.com>
+References: <20041220141714.BDCE.SAVAGE-GARDEN@hanikamail.com> <5.1.0.14.1.20041220083554.01f46718@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <41C71B7D.9080702@vip.cybercity.dk>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20041220083554.01f46718@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Flemming Greve Skovengaard <dsl58893@vip.cybercity.dk>, linux-newbie <linux-newbie@vger.kernel.org>
-Cc: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Monday 20 December 2004 01:35 pm, Flemming Greve Skovengaard wrote:
-> S. Barret Dolph wrote:
-> > Any suggestions on what a school should use for a database. We mostly
-> > will use it for accounting and student lists. (Neither of which require
-> > complex database design.)
-> >
-> > Cordially,
-> > S. Barret Dolph
-> > Pegasus International Schools
-> > Taipei Taiwan
->
-> Why don't you try MySQL ( http://www.mysql.org/ )
-> or PostgreSQL ( http://www.postgresql.org/ ) and see what you like?
+ 
+> With respect to iptables ... I cannot immediately think of a way to do 
+> this, but iptables offers an awful lot of flexibility, so I would not rule 
+> out some tricky solution, especially in a context where the gateways are 
+> NATing routers. But I have nothing specific to suggest.
 
-Try downloading Open Office 2.0. It has a very good data base in it similar to 
-act and should suffice for your needs.
+im testing with iptables, if things go right, i will let you all knows,
+if any one know how to do this, plz let me know :)
 
-Frank
+------- 
+Web Hosting at a cheap price, starting at $1 per month with your own domain, .COM, .NET, .LK, .ORG etc..
+PHP, CGI, Perl, MySQL, Cpanel 9, POP3, POP3s, SMTP, IMAP, FTP,
+http://www.orbitsl.net
+
+
+--------------------------
+Email Disclaimer 
+http://www.metalanka.com/email/email.html 
+
+Sent on 21/12/2004 by Kev to Ray Olszewski (ray@comarre.com).
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
