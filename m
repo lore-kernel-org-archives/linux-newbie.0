@@ -1,55 +1,48 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: apt-get broken: exim connection?
-Date: Thu, 10 Jun 2004 20:47:18 +0100 (BST)
+From: joy <gracecott@sancharnet.in>
+Subject: agpgart problem
+Date: Fri, 11 Jun 2004 16:27:03 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.58.0406102045090.7432@ppg_penguin>
-References: <Pine.LNX.4.58.0406091023170.15997@debian-emach>
- <Pine.LNX.4.58.0406101715460.6349@ppg_penguin> <Pine.LNX.4.58.0406101201540.15997@debian-emach>
+Message-ID: <40C98FFF.9050909@sancharnet.in>
+Reply-To: gracecott@sancharnet.in
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.58.0406101201540.15997@debian-emach>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="iso-8859-1"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Thu, 10 Jun 2004, James Miller wrote:
+Hi everyone,
 
->
-> Other than the fact that it did not help me to get the disk mounted, =
-I had
-> no problem at all with it.  Let me thank you for offering your help
-> directly, in case you didn't see the indirect thanks I inserted into =
-my
-> response to Hal's post on the subject: thank you for your attempt.  A=
-ny
-> failure in connection with it was doubtless due to my inexperience an=
-d
-> ineptness with things Linux.
->
-> Sincerely, James
+A friend and I had this strange problem with agpgart. He ahd upgraded 
+his Woody to Sid just days ago and he is not able to get X to work(ver 4.4).
+the X o/p says error unable to open /dev/agpgart : no such file or device.
+This though /dev/agpgart exists with major/minor   10/175 (as in 
+devices.txt).
+After googling around , we decided to build a new kernel and built a 
+kernel with the 2.4.26 source got with the The RedHat Distro(He also has RH)
+with agpgart built in.
+This didn't work either. Same error.
+However, in RH, X worked fine
+We then did an apt-get for the 2.6.6 image and booted thru it.now a 
+newer, funkier message appeared and we ditched it immediately.
+built a custom 2.6.6 and booted thru it, The same result.
+Then 2.6.6 started rebooting mysteriously without cause. Thought it 
+might be the APIC and disabled it, built a new kernel.
+the other kernel too had the same problem.
 
- Sorry, I'm not usually picky.  The thing is, if advice doesn't help,
-you have to come back and report.
+Hardware : Intel 845G Chipset.
 
->
-> PS  Since I don't see the response I sent to the list after I got Hal=
-'s
-> post, I'll resend it after I send this one.  Hal's advice got the thi=
-ng
-> finally working for me.
->
+Another one of my friends with thesame chipset on woody got his X 
+working.......
 
- The dreaded scsi emulation strikes again ;-)
+This guy might be employing me for some time and it would be nice if I  
+impressed him with a solution :-)
+So, anybody with any solutions, pleeeeze heeeeelpppp!
 
-Ken
---=20
- das eine Mal als Trag=F6die, das andere Mal als Farce
-
+Thanx in advance,
+Joy.M.M
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
