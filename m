@@ -1,60 +1,125 @@
-From: whitnl73@juno.com
+From: "Amin" <raihan@citech-bd.com>
 Subject: Re: Network card and kernel module problems
-Date: Tue, 4 Feb 2003 16:52:57 -0500 (EST)
+Date: Wed, 5 Feb 2003 10:47:33 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030204.180710.8.0.whitnl73@juno.com>
-References: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
+Message-ID: <000001c2ccd7$bcfb0e80$eb6510ac@citechbd.com>
+References: <5.1.0.14.1.20030203091129.02140130@celine>
 Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_0032_01C2CD03.FCEECE60"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000301c2cb7d$184dd620$eb6510ac@citechbd.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0032_01C2CD03.FCEECE60
+Content-Type: text/plain;
+	charset="iso-8859-1"
 Content-Transfer-Encoding: 7bit
-To: raihan@citech-bd.com
-Cc: linux-newbie@vger.kernel.org
 
-On Mon, 3 Feb 2003, Amin wrote:
+Hi people,
 
-> I'm beginning to think I've mixed up different kernel module dependencies.
-> The short story is I need help sorting out the modules for use with my two
-> kernels: 2.4.18-14 and 2.4.18-14custom.  The long story is: when I
-> originally installed RH8.0 and found it didn't already support my NIC, I
-> recompiled the kernel with
->
-> make xconfig; make dep; make modules; make modules_install; make bzImage
->
-> and tried to boot the new kernel.  Eventually I got it to boot, but it
-> failed to detect/insert a lot of modules, which seems strange in
-> retrospect because I think I actually specified only one loadable module;
-> all the others were built-in.  I recompiled again, with the same results.
+First --- sorry about not including specific error messages earlier.  The
+attached file is a (snipped) list of bootup messages, and contains the
+messages I'm concerned with.
 
-If you didn't change EXTRAVERSION in the Makefile, you will have the
-leftover modules from the modular kernel in /lib/modules/`uname -r`
-but they will not be able to load with the kernel that has them builtin.
-I'd use a unique EXTRAVERSION for each new custom configuration.
-When you get it right you can remove all the false starts.
+I've decided to reinstall, perhaps try a different distro, and see if that
+will do the trick.  And thanks
+to Lawson for pointing out the EXTRAVERSION point.  Just want to make sure
+about something --- you're talking about
+/usr/src/linux-2.4.18-14/Makefile, right?
 
-> A lot of error messages courtesy of depmod as it tries to find module
-> dependencies --- things like input.o, soundcore.o, etc.  I've recompiled
-> twice after that, with a slightly different command order:
->
-> make xconfig; make dep; make bzImage; make modules; make modules_install
->
-> But still I get the same module dependency problems during boot.  Help!
->
-> Yawar Amin
->
-Lawson
---
----oops---
+Yawar Amin
+
+P.S.  Is it a good sign or a bad sign that I've got my kernel version
+memorized?
 
 
+------=_NextPart_000_0032_01C2CD03.FCEECE60
+Content-Type: text/plain;
+	name="startup_errors.txt"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="startup_errors.txt"
 
+...=0A=
+=0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+try_inc_mod_count_Re6105b23 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+jiffies_R0da02d67 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+del_timer_Rfc62f16d =0A=
+Feb  4 15:41:26 localhost netfs: Mounting other filesystems:  succeeded=0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+sprintf_R1d26aa98 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+printk_R1b7d4074 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o failed =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod keybdev =
+failed =0A=
+Feb  4 15:40:45 localhost rc.sysinit: Initializing USB keyboard:  failed =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o:  =0A=
+Feb  4 15:40:45 localhost modprobe: unresolved symbol =
+mod_timer_R1f13d309 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+unregister_chrdev_Rc192d491 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+register_chrdev_R44b36f42 =0A=
+Feb  4 15:41:27 localhost autofs: automount startup succeeded=0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+request_module_R27e4dc04 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+try_inc_mod_count_Re6105b23 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+jiffies_R0da02d67 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+del_timer_Rfc62f16d =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+sprintf_R1d26aa98 =0A=
+Feb  4 15:41:27 localhost sshd: Starting sshd:=0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: unresolved symbol =
+printk_R1b7d4074 =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o failed =0A=
+Feb  4 15:40:45 localhost modprobe: =
+/lib/modules/2.4.18-14/kernel/drivers/input/input.o: insmod mousedev =
+failed =0A=
+=0A=
+... [snip]=0A=
+=0A=
+Feb  4 15:41:15 localhost network: Setting network parameters:  =
+succeeded =0A=
+Feb  4 15:41:16 localhost network: Bringing up loopback interface:  =
+succeeded =0A=
+Feb  4 15:41:17 localhost ifup:  =0A=
+Feb  4 15:41:17 localhost ifup: Determining IP information for eth0... =0A=
+Feb  4 15:41:22 localhost ifup:  failed; no link present.  Check cable? =0A=
+Feb  4 15:41:22 localhost network: Bringing up interface eth0:  failed =0A=
+=0A=
+...=0A=
 
-________________________________________________________________
-Sign Up for Juno Platinum Internet Access Today
-Only $9.95 per month!
-Visit www.juno.com
+------=_NextPart_000_0032_01C2CD03.FCEECE60--
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
