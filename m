@@ -1,32 +1,36 @@
-From: r4mz3z <r4mz3z@yahoo.es>
-Subject: how do i transform documents to ps
-Date: Fri, 13 Dec 2002 21:37:16 +0000
+From: Jim Reimer <jdr@wa5rrh.org>
+Subject: Re: how do i transform documents to ps
+Date: Fri, 13 Dec 2002 21:04:56 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212132137.23141.r4mz3z@yahoo.es>
+Message-ID: <3DFA9FD8.7060808@wa5rrh.org>
+References: <200212132137.23141.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200212132137.23141.r4mz3z@yahoo.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: r4mz3z <r4mz3z@yahoo.es>
+Cc: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+r4mz3z wrote:
+> -----BEGIN PGP SIGNED MESSAGE-----
+> Hash: SHA1
+> 
+> Hi friends
+>   How do I transform a OpenOffice document to postscript format using "gs"??
+> thanks
 
-Hi friends
-  How do I transform a OpenOffice document to postscript format using "gs"??
-thanks
-- -- 
-  Linux User Registered #232544
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
+As far as I can tell, you do not, as gs is a PostScript
+viewer/interpreter, not a generator.
 
-iD8DBQE9+lMSs4dF9gl05swRAnaXAJ9lQA7V/d9pJ0SS20f3na+o9MkdAACaAn0b
-9bI9UupqODRY4o8Q0rNbcM0=
-=URy/
------END PGP SIGNATURE-----
+I do not have OpenOffice installed, but am still using
+Star Office, with which I can select "print to file" and
+generate a PostScript file.  You should be able to accomplish
+the same with OpenOffice.
+
+-jdr-
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
