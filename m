@@ -1,43 +1,27 @@
-From: pa3gcu <pa3gcu@zeelandnet.nl>
-Subject: Re: Samba issues
-Date: Mon, 17 Mar 2003 20:35:24 +0000
+From: "Sean Rima" <gateway@tcob1.net>
+Subject: Linux Newsleters from me.
+Date: Tuesday, 18 Mar 2003 01:02:48 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <03031720352400.01189@unix.pa3gcu>
-References: <20030317201127.53747.qmail@web13405.mail.yahoo.com>
-Reply-To: pa3gcu@zeelandnet.nl
+Message-ID: <MSGID_7223=3a9750=2f200_a221c5f8@fidonet.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030317201127.53747.qmail@web13405.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Monday 17 March 2003 20:11, Abhijit Vijay wrote:
+Originally to: All
 
-> Copy files from Server to Client 402 MB
-> (avg file size 58kB)
-> Linux => 2.71 MB/sec
-> WinXP => 3.42 MB/sec
->
-> Copy file from Server to Client 0.99 GB
-> (avg file size 86,630 kB)
-> Linux => 4.06 MB/sec
-> WinXP => 8.49 MB/sec
->
+I must say sorry to all the members of the Linux Newbies list for the off topic 
+newsletters that arrived on the list from my system. I run a BBS and gate the 
+list so that Fidonet newbies to Linux have access to the list. As a secondary 
+aid, I also placed the newsletters in the echo and forgot to filter them out, 
+which I have now done. I will also check all outgoing posts to the list to make 
+sure this never happens again
 
-I would make a bet that your ethernet cards are not negotiating properly and 
-are only half duplex and/or only 10MB instead of 100MB.
+Sean Rima
+Sysop TCOB1.net BBS and Fidonet System Ireland's only active BBS.
 
-mii-tool will tell you just how they are set.
-You will also need to check both ends.
-
-This is a common problem.
-
--- 
-Regards Richard
-pa3gcu@zeelandnet.nl
-http://people.zeelandnet.nl/pa3gcu/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
