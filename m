@@ -1,62 +1,46 @@
-From: "Paul Kraus" <pkraus@pelsupply.com>
-Subject: Dumb Questions
-Date: Wed, 25 Sep 2002 09:23:30 -0400
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: PPP Question
+Date: Wed, 25 Sep 2002 08:21:09 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000401c26496$bf7d7f20$64fea8c0@pkrausxp>
+Message-ID: <5.1.0.14.1.20020925082025.025f05e0@celine>
+References: <Your message of "Tue, 24 Sep 2002 19:46:30 MST." <5.1.0.14.1.20020924194522.025f49a0@celine>
 Mime-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0005_01C26475.386BDF20"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200209250800.g8P80cK04820@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
-
-This is a multi-part message in MIME format.
-
-------=_NextPart_000_0005_01C26475.386BDF20
-Content-Type: text/plain;
-	charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
+To: Peter <pfheiss@philonline.com>, linux-newbie@vger.kernel.org
 
-What does foo stand for. It is used everywhere. I understand its just a
-placeholder for the file name or what ever is pertinent to the context
-it is used but I would still like to know what it means.
+At 04:00 PM 9/25/02 +0800, Peter wrote:
+>Thanks Ray!
+>
+>ray@comarre.com said:
+> > Glad you got it working. One small correction on what I sent you
+> > before.
+>
+> > At 10:31 AM 9/25/02 +0800, Peter wrote: [...]
+>
+> > >There is no such file as /etc/interfaces
+>
+> > Sorry. Make that /etc/network/interfaces .
+>
+>There are no interfaces files in my RH7.2 box /etc/. I had checked it 
+>before I
+>sent the message. There is only a /etc/networks which is empty and there is
+>/etc/sysconfig/network.
 
-Paul Kraus
-Network Administrator
-PEL Supply Company
-216.267.5775 Voice
-216-267-6176 Fax
-www.pelsupply.com
 
-------=_NextPart_000_0005_01C26475.386BDF20
-Content-Type: text/x-vcard;
-	name="Paul Kraus (pkraus@pelsupply.com).vcf"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
-	filename="Paul Kraus (pkraus@pelsupply.com).vcf"
+Curious. What does your man page for "ifup" say about where it looks for 
+its default interfaces file?
 
-BEGIN:VCARD
-VERSION:2.1
-N:Kraus;Paul
-FN:Paul Kraus (pkraus@pelsupply.com)
-ORG:PEL Supply Company
-TITLE:Network Administrator
-TEL;WORK;VOICE:(216) 267-5775
-TEL;CELL;VOICE:(216) 410-5526
-TEL;WORK;FAX:(216) 267-6176
-ADR;WORK:;;4666 Manufacturing Road;Cleveland;Ohio;44135;United States of =
-America
-LABEL;WORK;ENCODING=3DQUOTED-PRINTABLE:4666 Manufacturing =
-Road=3D0D=3D0ACleveland, Ohio 44135=3D0D=3D0AUnited States of Ame=3D
-rica
-ADR;HOME:;;;;;;United States
-LABEL;HOME:United States
-URL;WORK:http://www.pelsupply.com
-EMAIL;PREF;INTERNET:pkraus@pelsupply.com
-REV:20020416T182124Z
-END:VCARD
 
-------=_NextPart_000_0005_01C26475.386BDF20--
+
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
