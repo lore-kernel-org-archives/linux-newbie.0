@@ -1,37 +1,39 @@
-From: Tim C <timc@accesswave.ca>
-Subject: Re: (unknown)
-Date: Sun, 26 Jan 2003 11:07:24 -0400
+From: Peter <pfheiss@philonline.com>
+Subject: StarOffice won't print
+Date: Mon, 27 Jan 2003 16:55:57 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <13234785.ujKOzpN7Ka@accesswave.ca>
-References: <20030125193142.26576.qmail@webmail9.rediffmail.com>
-Reply-To: timc@accesswave.ca
+Message-ID: <200301270855.h0R8twd06663@philonline.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Anant Aneja wrote:
+Hi,
 
-> hi there.
-> my problem is that Gnome RPM (gnorpm) provides for a method by
-> which dependecy checks are done and required files are informed to
-> the user.
-> however it does not go one step futhur and ask the user whetehr he
-> wants to instal the dependecy or not.
-> someway i can accomplish this.
-> i'm goin crazy with the dependecies.
-> 
-> maybe ther is a command line alternative (an option with rpm
-> command) to help me install without hassle.
-> 
+Suddenly I can not print anymore with StarOffice 5.2 in RH7.3.
 
-urpmi
+I did not change anything. Checking printer-setup of SO5.2 looks OK but it 
+will not print the test page, only weird characters.
+
+When trying to print a text, the printer Epson 300 beeps prints a few strange 
+characters, advances the page, beeps etc, etc, on and on.
+
+There are no print problems with all kind of other programs.
+
+I used the repair option in SO5.2 it had no effect. I unistalled and 
+reinstalled, still doesn't print.
+
+Any suggestions how to resolve?
+
+Thanks and regards
 
 -- 
-Tim C
-timc@accesswave.ca
+Peter
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
