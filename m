@@ -1,45 +1,40 @@
-From: lawson_whitney@juno.com
-Subject: Re: fec.c source code
-Date: Wed, 16 Oct 2002 13:51:03 -0400 (EDT)
+From: Simon <simon@highlyillogical.org>
+Subject: Sharing bandwidth across multiple internet connections?
+Date: Thu, 17 Oct 2002 14:54:42 +0100
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021016.191227.134681288.0.lawson_whitney@juno.com>
-References: <20021016044515.99393.qmail@web10905.mail.yahoo.com>
+Message-ID: <200210171454.42606.simon@highlyillogical.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021016044515.99393.qmail@web10905.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: gmt_bal@yahoo.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Tue, 15 Oct 2002, Melrez Tan wrote:
+Hi,
 
-> Hi all,
->
-> Could anybody know where to locate the fec.c source
-> code?
-> Thanks.
->
-> -mel
+I recently (yesterday) upgraded my home internet connection from BT ADSL
+(512k/256k), to NTL Cable(1Mb/256k), for the extra speed. However,
+for the next 30 days I seem to be the owner of two broadband connections in
+my home.
 
-[whit@giftie linux]$ find -name fec.c
-./arch/ppc/8xx_io/fec.c
+I have a linux (2.4.19) box running as the gateway for my home
+network, and it's doing masquerading over eth1, which is the connection to
+the cable modem. ppp0 is the connection to the ADSL, but is no longer used. 
+(The internal net hangs off eth0)
 
-Looks to be in
-<linux>/arch/ppc/8xx_io/fec.c
+Is there a clever trick I can do, to allow my home net to use the available
+bandwidth on both connections? It would be weird, as they would both have a
+very different real-world IP... But is it in any way possible? Seems a shame 
+to have this bandwidth knocking about unused.
 
-Lawson
----oops---
+Simon
 
 
 
+--
+This message has been scanned for viruses and dangerous content, and
+is believed to be clean.
 
-________________________________________________________________
-GET INTERNET ACCESS FROM JUNO!
-Juno offers FREE or PREMIUM Internet access for less!
-Join Juno today!  For your FREE software, visit:
-http://dl.www.juno.com/get/web/.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
