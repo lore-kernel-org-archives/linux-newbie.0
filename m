@@ -1,31 +1,24 @@
 From: "Rolf Edlund" <linux-net@tcob1.net>
-Subject: tar for "full" floppy backup?
-Date: Saturday, 07 Dec 2002 20:08:54 +000
+Subject: RAM and swap partition
+Date: Sunday, 08 Dec 2002 13:15:22 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a301=2f11_3df25576@linuxnet>
-References: <200212070919.CAA12532@cu.imt.net>
+Message-ID: <MSGID_110=3a301=2f11_3df34b71@linuxnet>
+References: <20021208002415.24931.qmail@web11406.mail.yahoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200212070919.CAA12532@cu.imt.net>
+In-Reply-To: <20021208002415.24931.qmail@web11406.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Jerry James Haumberger
+Originally to: james niland
 
 
- JH> The question remains:  How can I back up -- with tar or any other
- JH> Slackware 3.5 program -- my 9 MBs of files from the BasicLinux
- JH> console with multiple floppies?  And in compressed format?
+ jn> I know some people who run happily without a swap at all.
 
-One of these commands..
-
- # man tar
- # info tar
- # tar --help
-
-..will give you all information you need about your tar version.
+How low RAM can I use, without running a swap ? Can I for example do it on a 486 
+with 4 MB RAM ?
 
 ... To quote or not to quote, that is the question.
 
