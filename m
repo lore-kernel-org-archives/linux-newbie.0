@@ -1,32 +1,29 @@
 From: "Benny Pedersen" <linux-net@tcob1.net>
-Subject: Multiple CD Changer
-Date: Saturday, 03 Aug 2002 20:53:52 +000
+Subject: Installation of sources
+Date: Saturday, 03 Aug 2002 20:51:12 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <MSGID_110=3a300=2f15_3d4c277b@fidonet.org>
-References: <3D3AF0FD.55410F4F@gmx.net>
+Message-ID: <MSGID_110=3a300=2f15_3d4c266f@fidonet.org>
+References: <772267a00d.7a00d77226@homemail.nyu.edu>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D3AF0FD.55410F4F@gmx.net>
+In-Reply-To: <772267a00d.7a00d77226@homemail.nyu.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Originally to: Oliver Ob
+Originally to: Anshuman Singh Rawat
 
-Hello Oliver.
+Hello Anshuman.
 
-21 Jul 02 19:35, you wrote to all:
+21 Jul 02 12:34, you wrote to all:
 
- OO> how can I mount a 6-CD-Changer into my tree?
+ AR> Does the files valhalla-SRPMS-disc1.iso/valhalla-SRPMS-disc2.iso
+ AR> contain the source code? If yes, then do we have to burn them to cd as
+ AR> iamge file and boot from that cdrom to install them, as done for
+ AR> installing linux?
 
- OO> It is /dev/hdb
-
- OO> But how can I distinguish those 6 slots?
- OO> Mount them each?
-
-a changer is only 6 cdroms in one unit, thay mostly use lun to select what drive you want, all on the same scsi unit, so make sure you have enabled lun support in your kernel, if no then you can only
- use disk 1 :-)
+no thay just need to be mounted :-)
 
 Benny
 
