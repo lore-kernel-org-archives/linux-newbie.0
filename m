@@ -1,36 +1,28 @@
-From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-Subject: Re: Can't run links as non root user
-Date: Sun, 25 May 2003 19:15:18 +0300
+From: Peter <pfheiss@philonline.com>
+Subject: Wo Ist @
+Date: Mon, 26 May 2003 08:32:28 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030525191518.E7065@neutrino.particles.org>
-References: <baptsp$gmm$1@main.gmane.org>
+Message-ID: <20030526003233.B92C7103B1@pfheiss>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <baptsp$gmm$1@main.gmane.org>; from robert_schmidli@hotmail.com on Sun, May 25, 2003 at 06:14:11PM +1000
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Robert <robert_schmidli@hotmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-On Sun, May 25, 2003 at 06:14:11PM +1000, Robert wrote:
-> When I try to run links in graphical mode I get the message:
-> 
-> svgalib: cannot get I/O permissions
+Hi,
 
-If you mean links, the console based Web browser, what version do you use?
-I am in 0.97 and there is no svgalib depedency and I'm curious to find out
-why links needs svgalib. Do they [links developers] have added any inline
-graphics support, such as the one w3m uses?
+My keyboard has a standard US layout. To switch to German I am using 'setkbmap 
+de', however, I can't find "@",  where is "@" (Affenschaukel)?
 
-Elias
+Thanks
 
+ 
 -- 
-University of Athens			I bet the human brain 
-Physics Department				is a kludge --Marvin Minsky 
+Peter
 
-	
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
