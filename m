@@ -1,40 +1,41 @@
 From: Chuck Gelm <nc8q@gelm.net>
-Subject: Re: hard drive head parking in linux
-Date: Tue, 10 Dec 2002 15:58:18 -0500
+Subject: Re: bash script problem
+Date: Tue, 10 Dec 2002 16:19:07 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF6556A.6C6B5832@gelm.net>
-References: <200212101811.LAA18667@cu.imt.net>
+Message-ID: <3DF65A4B.E53E6BE4@gelm.net>
+References: <3DF54C86.7070908@vtown.com.au> <3DF61C86.51C4AD34@ihug.co.nz>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jerry James Haumberger <jerryjh@imt.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Check this bash script for me, please.
 
+#/bin/sh
+#
+# if a floppy can be formatted 1.68 megabytes
+#    with 0 bad blocks
+# else
+#    format 1.44 megabytes
+# fi
+# mkfs.msdos /dev/fd0
+#
+if   (superformat /dev/fd0u1680 && badblocks -c 512 -n /dev/fd0u1680);
+then
+     mkfs.msdos /dev/fd0u1680
+else superformat /dev/fd0u1440 
+     mkfs.msdos /dev/fd0u1440
+fi
+mdir
+#
 
-Jerry James Haumberger wrote:
-> 
-> Hello, Steven --
-> 
-> >> I understand that early PC hard drives had to have
-> >> their heads parked when shut down,
-> 
-> >A blast from the past.  Yes, indeed, pre-IDE drives
-> >(two data cables) needed parking.  Over the years I've
-> >had several of these monsters.  I even installed a small
-> >Linux on one (it had to be small 'cause the HD was only
-> >20mb :-).  Did you know that the latest Slackware (8.1)
-> >still provides a stock kernel (xt.i) for such drives?
-> >Imagine that: a 2.4.18 kernel on an old Seagate MFM.
-> 
-> But do you know whether or not Linux lifts the HD heads after a
-> period of inactivity, or is this already an automatic feature
-> of the later hard drives... say, my (approx.) 700MB HD on
-                                                ^^^^^^^^
- They made MFM or RLL drives that big?
-I would guess that a drive that big is IDE.  :-|
+ I'm thinking that 'badblocks' can find bad blocks and still return
+a 'true' condition.  If this is true, is there any way to cause
+the smaller format?
+
+ If 'superformat /dev/fd0u1680' fails, it drops back to '/dev/fd0u1440'.
 
 Regards, Chuck
 -
