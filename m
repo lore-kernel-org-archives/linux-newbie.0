@@ -1,45 +1,52 @@
-From: Suriya Narayanan M S <mssnlayam@cs.annauniv.edu>
-Subject: Syslog - doubt
-Date: Wed, 5 Jun 2002 21:02:33 +0530
+From: Jos Lemmerling <jos@lemmerling.net>
+Subject: Re: Syslog - doubt
+Date: Wed, 5 Jun 2002 20:41:44 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200206051714.g55HE8u18108@cs.annauniv.edu>
-Reply-To: mssnlayam@cs.annauniv.edu
+Message-ID: <Pine.LNX.4.21.0206052034570.18504-100000@orthanc.lemmerling.net>
+References: <200206051714.g55HE8u18108@cs.annauniv.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200206051714.g55HE8u18108@cs.annauniv.edu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
-	The following program writes 2 messages to
-syslog
-/********** Begin code ***********/
-#include <syslog.h>
-int main()
-{
-        openlog("Test of syslog",0,0);
-        syslog(LOG_EMERG,"Hello World\n");
-        syslog(LOG_EMERG,"Good Bye World\n");
-        closelog();
-        return 0;
-}
-/**********End code ***************/
+On Wed, 5 Jun 2002, Suriya Narayanan M S wrote:
 
-If someone executes this program repeatedly
-of from a loop, syslog would become too large.
-Is something wrong?  Can access to syslog
-be restrcted?
+> Hi all,
+> 	The following program writes 2 messages to
+> syslog
+> /********** Begin code ***********/
+> #include <syslog.h>
+> int main()
+> {
+>         openlog("Test of syslog",0,0);
+>         syslog(LOG_EMERG,"Hello World\n");
+>         syslog(LOG_EMERG,"Good Bye World\n");
+>         closelog();
+>         return 0;
+> }
+> /**********End code ***************/
+> 
+> If someone executes this program repeatedly
+> of from a loop, syslog would become too large.
+> Is something wrong?  Can access to syslog
+> be restrcted?
 
-Bye,
-Suriya Narayanan M S
--- 
-Guru Brahma Gurur Vishnu
-Gurur Dhevo Maheshwaraha
-Gurur Saakshaath Parabramha
-Thasmai Shree Gurave Namaha
+perhaps you can build some sort of a test in your program so the program
+doesn't "flood" the syslog. I've some messages in my syslog: "last 
+message repeated n times". Maybe something like that is what you're
+looking for?
 
-Public key at www.keyserver.net
+
+HTH
+
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
