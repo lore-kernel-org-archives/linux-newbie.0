@@ -1,60 +1,31 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: Telnet servers ...
-Date: Tue, 7 Jan 2003 20:19:11 +0000 (GMT)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: permission for alias file
+Date: Tue, 7 Jan 2003 16:01:25 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0301072013550.14635-100000@ppg_penguin>
-References: <avf8iq$omc$1@main.gmane.org>
-Mime-Version: 1.0
+Message-ID: <200301072101.h07L1PQs008657@hartford-hwp.com>
+References: <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk>
+ <200301061652.h06GqwTo000410@hartford-hwp.com>
+ <5.1.1.6.0.20030107110951.01e9a090@pop3.demon.co.uk> <5.1.1.6.0.20030107172131.01ee16a8@pop3.demon.co.uk> <200301071939.h07JdeWi008146@hartford-hwp.com>
+Reply-To: brownh@hartford-hwp.com
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <avf8iq$omc$1@main.gmane.org>
+In-reply-to: <200301071939.h07JdeWi008146@hartford-hwp.com> (message from
+	Haines Brown on Tue, 7 Jan 2003 14:39:40 -0500)
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Jamie Risk <jamie_risk@yahoo.ca>
-Cc: linux-newbie@vger.kernel.org
+To: brownh@hartford-hwp.com
+Cc: carl@anexia.co.uk, linux-newbie@vger.kernel.org
 
-On Tue, 7 Jan 2003, Jamie Risk wrote:
+> If I understand you correctly here, the "mail" directory is owned by
+> root/root and has a 755 permission, while the *.aliases files it
+> contains have 777 permissions. 
 
-> I downloaded, compiled and am now using (via xinetd) the telnet daemon
-> from GNU's Inetutils. In RH distributions, I noticed the daemon takes on
-> the name "/sbin/in.telnetd" (or something very similar) whereas the
-> inetutils
-> telnet daemon takes on the name "/usr/libexec/telnetd".
->
+No good. Still get the permission error.
 
- Anything daemon name starting `in.' suggests it is being called from
-tcp_wrappers, which *might* be providing a bit less insecurity.
- 
-> Two questions:
->  * Is there a difference between the two daemons?
+Thanks for trying.
 
- Pass, I wouldn't dare run telnetd so I don't know ;-)
-
-> and, a little more GNU install specific...
-> * What does the /usr/libexec directory typically hold?
->     I thought after accepting the default "./configure" outputs and running
->     "make && make install", the daemons would be placed in /sbin or
-> /usr/sbin.
->
-
- From memory, libexec is intended for binaries that should not be
-executed directly (e.g. you are running it from xinetd).
- 
-> - Jamie
-> 
-> 
-> 
-> -
-
- Do you *really* need the telnet daemon ?
-
-Ken
--- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
-
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
