@@ -1,29 +1,37 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: No init found
-Date: Sat, 30 Oct 2004 11:43:53 +0800
-Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20041030034353.5F43744BC2@heisspf>
+From: mike <mike@kevino.org>
+Subject: partitons and proper order
+Date: Sun, 31 Oct 2004 12:22:19 -0700
+Message-ID: <41853B6B.5020903@kevino.org>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Thanks Jim and Chuck.
+Hello,
+I have installed linux a few times no real problems with my
+installs. But going to move some drives around and do a fresh
+install. I usually install with the below
 
-james4765@verizon.net said:
-> If not, you will have to modify lilo.conf to reflect the location of the new
-> hard  drive.
+/
+swap
+/boot
+/var
+/usr
+/home
+/tmp
+
+I use ext3 and I am currently useing Mandrake distribution on an
+intel compatible machine with ide drives.
+
+My question is does the order I create the partitions matter and if
+so what would be the proper order, if there is one?
 
 
- Shame on me, I should have known but it just didn't click. It eventually 
-dawned me last night too late to hold the mail.
-
-Regards
-
-Peter
-
+Mike
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
