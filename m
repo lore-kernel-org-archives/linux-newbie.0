@@ -1,46 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: hiding my hostname
-Date: Tue, 06 May 2003 20:26:23 -0700
+From: J S <webnews@comcast.net>
+Subject: Re: HOWTO Restart LPD
+Date: Tue, 06 May 2003 23:50:39 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030506201353.01eb8ea0@celine>
+Message-ID: <1052279439.8304.1.camel@jayhawk>
 References: <200305070940.44823.pfheiss@philonline.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20030507030656.94940.qmail@web10701.mail.yahoo.com>
+In-reply-to: <200305070940.44823.pfheiss@philonline.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-At 08:06 PM 5/6/2003 -0700, Jesse Armand wrote:
->I want to find out how to hide my hostname or IP
->address,
->from viewing by other people by using who, finger, or
->w,
->while i was connected to a server via remote login
->(like ssh or telnet).
-
-If you connect to a remote server, by any means, there is no way to hide 
-from that server the apparent IP address you are connecting from. That is, 
-the remote server will either know the IP address of the host you are 
-connecting from, or the host you are connecting through (in the sense of, 
-say, a NAT'ing firewall or perhaps a proxy server of some sort). It has to 
-know that or it cannot maintain the connection.
-
-Technically, there is no way for the remote server to know your actual 
-hostname, in the sense of whatever your host happens to have in the file 
-/etc/hostname . But if it can do a reverse-lookup of your IP address, it 
-can, and usually will, know a FQN associated with your host.
-
-In principle, if you have root privileges on the remote server, you can 
-modify the applications who, finger, and w, so they do not display the FQN 
-or IP-address data. How to edit and recompile these apps is not really a 
-beginner question, so I won't go into detail here (and anyway, I don't know 
-the source for any of these apps well enough to answer at that level 
-without doing some work). But there is nothing you can do on the host you 
-are connecting *from* to accomplish what you want.
+Under RH 9.0 and most recent versions of RedHat as well as Mandrake,
+just use the script in /etc/init.d
 
 
+For example...
+
+/etc/init.d/lpd restart
+
+
+The other scripts in /etc/init.d are helpful for other services.  Most
+of the scripts take as an argument on of the following: start, stop,
+restart, and status.  These are very helpful at times.  I'm sure there
+are some other options as well, but I've never used them.
+
+J
+
+On Tue, 2003-05-06 at 21:40, Peter wrote:
+> Hi,
+> When cups has been activated for printing, then on rebooting lpd is not 
+> started anymore.
+> 
+> How can I restart lpd from the command line instead of using printtool or 
+> printconf-tui? I can't find anything in man lpd.
+> 
+> Thanks & regards
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
