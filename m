@@ -1,31 +1,47 @@
-From: Elias Athanasopoulos <eathan@otenet.gr>
-Subject: Re: Compiling kernel for a different machine.
-Date: Fri, 17 May 2002 21:52:59 +0300
+From: "Tom Beer" <mailings@analogon.com>
+Subject: Hard Drive
+Date: Fri, 17 May 2002 20:41:54 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020517215259.A1137@neutrino.particles.org>
-References: <20020517160123.GB797@prester.hh59.org>
+Message-ID: <00d501c1fdd2$85e01820$0901a8c0@system>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20020517160123.GB797@prester.hh59.org>; from axel@hh59.org on Fri, May 17, 2002 at 06:01:23PM +0200
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Cc: "Axel H. Siebenwirth" <axel@hh59.org>
 
-On Fri, May 17, 2002 at 06:01:23PM +0200, Axel H. Siebenwirth wrote:
+Hi,
 
-> I have checked out X server from cvs. Can I use cvs to track changes made to
-> spefific files/directories? I have not got so much out of "cvs log" or I
-> made something wrong.
+first Ray, thanks for your reply, but Conditions have changed now.
+The problem is as follows:
+One drive (as mentioned in the other mail)
+is corrupt. On this drive resides the swap partition
+and another, for system purposes unimportant data
+partition. These are labeled in /etc/fstab
+/dev/hdb6 swap 
+/dev/hdb5 /unit
 
-Use "cvs update" to sync your sources with the central repository.
+I replaced this disk with a new one with different size. However, I
+cant boot or start Yast or format the drive with a 
+swap partition. There I'm in a turning cycle. 
+What advice I would need is how to
+format the new drive from the rescue mode (all
+commands availble dd, mkswap, and so on),
+place a swap partition of the size of 128MB on it
+and another partition with the rest of the free space.
+It would be great if anyone may provide me how to 
+accomplish this.
 
-Elias
+Thanks in advance Tom
 
--- 
-http://gnewtellium.sourceforge.net			MP3 is not a crime.	
+
+
+
+
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
