@@ -1,41 +1,30 @@
-From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
-Subject: task management with groups
-Date: Fri, 25 Jun 2004 15:08:17 -0400 (EDT)
+From: Nasir Hossain <nhossain@gawab.com>
+Subject: pam.d query
+Date: Sat, 26 Jun 2004 11:13:58 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.44.0406251445230.10872-100000@legolas.personal.engin.umich.edu>
-Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
+Message-ID: <40DD0D1E.2040100@gawab.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hello,
+hi all,
 
-There is a project underway in my lab which involves multiple users
-accessing and working on my linux box. I wanted to have a common directory
-where the files related to the project lived, which could be accessed by
-all related users. I was thinking I could achieve this via creating a
-group which had the users as memebers, but was not exactly clear about
-how to go about it. Specifically, the initial questions were:
+I have a couple of query's which (till now) I have failed to answer/solve.
 
-1. How do I ascertain that files created in the "project" directory will 
-have correct permissions to allow members of the group to access them?
+1) How do I log in directly as root ? Is there some place where I can 
+give the password for root so I dont have to login every time I start my 
+system. I know knoppix does it... but I dunno how. Please tell me how to 
+do this using /etc/pam.d
 
-2. Will there be security issues will be involved, i.e will the $HOMEs of 
-users be compromised/insecure? 
+2) I am also working on a live cd and I want the kernel messeges removed 
+at startup (the ones which dmesg eventually gets). Is it possible ?
 
-All pointers will be appreciated.
+thanks
 
-Thanks,
-
--K
-
----------------------
-Biology is the only science in which multiplication means the same thing 
-as division.
-
+nasir
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
