@@ -1,8 +1,8 @@
 From: "John T. Williams" <jowillia@vt.edu>
 Subject: Re: About PID...???!!!
-Date: Wed, 10 Sep 2003 14:04:03 -0400
+Date: Wed, 10 Sep 2003 14:03:21 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <008501c377c5$f92db210$ed64a8c0@descartes>
+Message-ID: <007901c377c5$d2983940$ed64a8c0@descartes>
 References: <20030910142344.8594.qmail@web20008.mail.yahoo.com> <5.1.0.14.1.20030910084359.01f35750@celine>
 Reply-To: "John T. Williams" <jtwilliams@vt.edu>
 Mime-Version: 1.0
@@ -10,10 +10,11 @@ Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
 definitely higher then 2^16, I've got a process with the PID of 69917
 I would guess MAX_INT which is 2^32 -1 = 4294967295
+
 
 ----- Original Message ----- 
 From: "Ray Olszewski" <ray@comarre.com>
