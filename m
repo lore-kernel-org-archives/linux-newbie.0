@@ -1,35 +1,33 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Creating a simple mail server
-Date: Sat, 16 Nov 2002 20:23:32 -0700
+From: "BEN RITCHEY" <linux-net@tcob1.net>
+Subject: 8.3 FSpec
+Date: Saturday, 16 Nov 2002 21:10:09 +000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000001c28de8$b4c16ee0$4b01a8c0@deadbox>
+Message-ID: <MSGID_110=3a20=2f1_b5daa12e@linuxnet>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "'Linux-Newbie (Linux Newbie)'" <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I have a small personal network at home, consisting of a linux-based
-firewall, a redhat 8 server, and some windows systems.  All of the users
-who have computers attached to the network (there are four of us at the
-moment) have accounts on the linux box.
+Originally to: ALL
 
-What I want to do is have a mail aggregator.  I want the linux box to
-fetch mail from an arbitrary number of POP3(/IMAP) servers per user, and
-then host an imap server on it, so that all the mail in the household is
-handled internally.  Can someone point me to a (mostly) idiot-proof way
-of doing this?  From what I can see, Postfix is the MTA on RH8, but I'm
-not 100% sure.  And as for procmail, well, I intend to add it ASAP, if I
-get this all set up.
+Thanks for all the feedback and info, I am staying busy researching all the
+ideas presented. Gawk seems more file/pipe oriented and all I need to do is
+parse an argument to a Bash script (LFN arg to SFN) and use the result to
+control the creation of semaphores and downloading of files locally (if already
+present, that one is skipped).
 
-Cheers.
+If I were under DOS, as I am more often than not, I would just write a quick &
+simple Assembly program to handle things (plus a .Bat file, of course),
+however, Linux is my first choice for Internet jobs, so back to school. :)
 
+--
+Keep the faith,
 
-Chris R.
-======
-Listening to the sound of silence
-http://offline.pointclark.net/
+ : Ben        http://bellsouthpwp.net/c/m/cmech617   ICQ #32457590
+ :
+ + WildCat! Board 24/7  (337) 232-4155  33.6kBps 8,N,1  Files!
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
