@@ -1,102 +1,43 @@
-From: "Little, Chris" <Chris.Little@okdhs.org>
-Subject: RE: ftp issues
-Date: Thu, 14 Nov 2002 13:43:22 -0600
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: login error
+Date: Thu, 14 Nov 2002 23:14:52 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <92091C60D5E2B74CB77C1FDB84F5FA76EA67@s99mail02.okdhs.org>
+Message-ID: <20021114231452.H12031@neutrino.particles.org>
+References: <200211130057.44928.g38@rdsbv.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200211130057.44928.g38@rdsbv.ro>; from g38@rdsbv.ro on Wed, Nov 13, 2002 at 12:57:44AM +0200
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: 'Ray Olszewski' <ray@comarre.com>, linux-newbie@vger.kernel.org
+To: Petre Bandac <g38@rdsbv.ro>
+Cc: linux-newbie@vger.kernel.org
 
-i got it solved.  ran out of space on the receiving device.
+On Wed, Nov 13, 2002 at 12:57:44AM +0200, Petre Bandac wrote:
+> Inconsistency detected by ld.so:dynamic-link.h:62: elf_get_dynamic_info: 
+> Assertion '! bad dynamic tag"' failed
+> 
+> this is the message I get after I type something at the login: prompt (it 
+> doesn't bother to prompt the second line, the one with the password:)
 
-> -----Original Message-----
-> From: Ray Olszewski [mailto:ray@comarre.com]
-> Sent: Thursday, November 14, 2002 12:58 PM
-> To: linux-newbie@vger.kernel.org
-> Subject: Re: ftp issues
-> 
-> 
-> This report is far to little to go on.
-> 
-> First, give us the background.
-> 
-> Where is the ftp server? Why do you need to connect to it in 
-> passive mode? 
-> What OS and ftp server does the remote server run?
-> 
-> At the client end, what OS and ftp client? As someone else 
-> also asked, is 
-> client-side disk space an issue? (I doubt this is the problem myself.)
-> 
-> What network is in between them (a LAN? the Internet? a VPN? 
-> a PPPoE or 
-> DHCP external address that changes often?)  Any NAT'ing or other 
-> routing/firewalling involved? Some quick arithmetic seems to 
-> say that the 
-> transfer is taking place at about 6 Mbps (bits, not Bytes), 
-> implying a slow 
-> Ethernet, not the Internet (consistent with the subnet-10 
-> private address 
-> reported in the passive-mode transfer ... but then *why* 
-> passive mode???).
-> 
-> Do other ftp transfers from this server to this client run 
-> smoothly? If 
-> yes, are any of them as big as this one (1 GB)?
-> 
-> Second, do the logs on either end tell you anything informative? 
-> Especially, does the remote end log anything connected to the 
-> "421" message 
-> it sends to the client end?
-> 
-> Third, because ftp clients update the screen somewhat 
-> dynamically, quoting 
-> a static printout of the screen is less informative than with most 
-> applications. Is there anything significant about the 
-> real-time operation 
-> of the transfer that you see when doing it, but that is not 
-> apparent in the 
-> material you quoted below?
-> 
-> At 11:23 AM 11/14/02 -0600, Little, Chris wrote:
-> >trying to ftp an oracle export.  this happens
-> >
-> >ftp> get expKIDSaa.20021110.dmp
-> >local: expKIDSaa.20021110.dmp remote: expKIDSaa.20021110.dmp
-> >227 Entering Passive Mode (10,5,20,30,18,180)
-> >150 Opening BINARY mode data connection for expKIDSaa.20021110.dmp
-> >(1048576000 bytes).
-> >   6% |*****
-> >| 63560 KB  775.22 KB/s    20:38 ETA
-> >ftp: expKIDSaa.20021110.dmp: short write
-> >   6% |*****
-> >| 64124 KB  775.17 KB/s    20:38 ETA
-> >421 Service not available, remote server has closed connection.
-> >65663024 bytes received in 01:22 (774.66 KB/s)
-> >ftp: No control connection for command.
-> >ftp>
-> 
-> 
-> 
-> 
-> --
-> -------------------------------------------"Never tell me the 
-> odds!"--------
-> Ray Olszewski					-- Han Solo
-> Palo Alto, California, USA			  ray@comarre.com
-> --------------------------------------------------------------
-> -----------------
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+Although I don't know how that can happen in a brand new installation, the
+error means, IMHO, that your login is linked (dynamicaly) with a differenet 
+libc, incompatible with your dynamic linker (ld.so). The dynamic linker
+comes with glibc.
+
+Did you install or upgrade from a previous version?
+
+Elias
+
+PS. This just came up to my mind: the usual tactic of crackers/script
+kiddies is to replace various executables in the attacked system. One of
+them is login. There is a small possibility that someone tried to replace
+your login with a new one (compiled in another system). You can verify this
+by checking the timestamp of /bin/login.
+
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
