@@ -1,98 +1,34 @@
-From: "David Jones" <gnome@hawaii.rr.com>
+From: CaT <cat@zip.com.au>
 Subject: Re: How to update JRE?
-Date: Wed, 23 Jul 2003 21:57:26 -1000
+Date: Thu, 24 Jul 2003 18:01:41 +1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <08cf44356071873HNLMAIL3@hnlmail3.hawaii.rr.com>
-References: <20030721.132729.505.480316@webmail10.lax.untd.com>
+Message-ID: <20030724080141.GA482@zip.com.au>
+References: <0a9130032021573HNLMAIL1@hnlmail1.hawaii.rr.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200307212215.00168.stephen@g6dzj.demon.co.uk>
+Content-Disposition: inline
+In-Reply-To: <0a9130032021573HNLMAIL1@hnlmail1.hawaii.rr.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: David Jones <gnome@hawaii.rr.com>
+Cc: linux-newbie@vger.kernel.org
 
-http://java.sun.com/j2se/downloads.html
+On Sun, Jul 20, 2003 at 04:32:24PM -1000, David Jones wrote:
+> page, is version 1.4.1 ... anyway, how does one update 
+> a JRE on Linux? I've only done it on WIndows and OS/2 
 
-When I was there earlier, it was a beta release. Just 
-checked it now, and it's apparently no longer beta.
+Try looking here:
 
-David
-gnome@hawaii.rr.com
+http://mozilla.weebeastie.net/java.shtml
 
-On 21 Jul 03, at 22:14, Stephen Kitchener wrote:
+The instructions are primarily for installing java for moz but will
+suit you just the same I believe.
 
-> On Monday 21 Jul 2003 20:50 pm, beolach@juno.com wrote:
-> 
-> Hmmm - looked on Sun's site, didn't see a 1.4.2 anywhere,
-> only a 1.4.1-03, do you know where it is ??
-> 
-> > Before installing Sun's version of JRE, you might want
-> > to look into the differences between Sun's and
-> > Blackdown's JRE. As far as I understand it, if you use
-> > the latest version of Sun's JRE (1.4.2), it is the best
-> > choice, but if you want to use version 1.4.1 or older,
-> > you might need to use Blackdown if you want to use the
-> > plugins in Mozilla, if Mozilla was compiled with gcc
-> > ver. 3.x. A nice summary page is available at
-> > <http://plugindoc.mozdev.org/whichjava.html>.
-> >
-> > But remember, this only applies to JRE 1.4.1 or older,
-> > with Sun's JRE 1.4.2 this is no longer an issue, and so
-> > Sun's JRE 1.4.2 will probably be your best choice,
-> > unless the program you want to run specifically says it
-> > will only work with an older version.
-> >
-> > Just my 2 cents worth,
-> > Conway S. Smith
-> >
-> > --- "James Turnbull" <james@lovedthanlost.net> wrote:
-> > > David Jones wrote:
-> > > > I have a *very recently updated* (like installed and
-> > > > completely apt-getted and updated and such like 10
-> > > > days ago) Debian. It came with a JRE identifying
-> > > > itself as 1.4.1, build Blackdown-1.4.1-01. I've been
-> > > > informed by the author of a certain Java program
-> > > > that I like (at the moment, not the author, just the
-> > > > program!) to go the Sun JRE link on his web site and
-> > > > download that version - which, according to the
-> > > > target of the link on his web page, is version 1.4.1
-> > > > ... anyway, how does one update a JRE on Linux? I've
-> > > > only done it on WIndows and OS/2 (both via an
-> > > > executable that you download and run).
-> > >
-> > > At the Sun Site
-> > > http://java.sun.com/j2se/1.4.1/download.html there is
-> > > > a .bin file available to download.
-> > >
-> > > Here are instructions for unpacking .bin files:
-> > >
-> > > http://mandrakeforum.com/article.php?sid=2329
-> >
-> > ________________________________________________________
-> > ________ The best thing to hit the internet in years -
-> > Juno SpeedBand! Surf the web up to FIVE TIMES FASTER!
-> > Only $14.95/ month - visit www.juno.com to sign up
-> > today! - To unsubscribe from this list: send the line
-> > "unsubscribe linux-newbie" in the body of a message to
-> > majordomo@vger.kernel.org More majordomo info at 
-> > http://vger.kernel.org/majordomo-info.html Please read
-> > the FAQ at http://www.linux-learn.org/faqs
-> 
-> -- 
->                  O  o
->             _\_   o
->          \\/  o\ .
->          //\___=
->             ''
-> Mon, 21 Jul 2003 22:13:48 +0100
->  22:13:48 up 13:58,  2 users,  load average: 2.70, 2.47,
->  2.27
-> I'm not proud.
-> 
-
-
-
+-- 
+"How can I not love the Americans? They helped me with a flat tire the
+other day," he said.
+	- http://tinyurl.com/h6fo
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
