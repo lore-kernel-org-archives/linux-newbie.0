@@ -1,56 +1,53 @@
-From: Steven Smith <sos22@cam.ac.uk>
-Subject: Re: Page Borders in Latex
-Date: Sun, 26 May 2002 18:07:44 +0100
+From: G Anna <drguruolai@eth.net>
+Subject: Re: trouble setting shell variable
+Date: 26 May 2002 20:41:28 +0530
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020526170744.GA338@cam.ac.uk>
-References: <200205262029.21973.knutties@indiainfo.com>
+Message-ID: <m3sn4f2bbz.fsf@wobble.eth.net>
+References: <200205261406.g4QE6b9N012213@franklin.icok.net>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="WIyZ46R2i8wDzkSu"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200205262029.21973.knutties@indiainfo.com>
+In-Reply-To: <200205261406.g4QE6b9N012213@franklin.icok.net>
 List-Id: <linux-newbie.vger.kernel.org>
-To: Natarajan <knutties@indiainfo.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Jim Reimer - WA5RRH <wa5rrh@arrl.net>
+Cc: linux-newbie@vger.kernel.org
 
 
---WIyZ46R2i8wDzkSu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> Date: Sun, 26 May 2002 09:07:10 -0500
+> From: Jim Reimer - WA5RRH <wa5rrh@arrl.net>
+> Subj: trouble setting shell variable
+> 
+> I'm trying to rename files based on what time it is *now*....
+> 
+> echo `date` | cut -b 25-28,12-13,15-16,18-19
 
-> 	 How do you draw borders for pages in Latex? Thanks in advance.
-There are probably better ways, but the fancybox package provides a way
-to do this. In the document preamble, go:
+Why are you echoing?  Simply pass the output of date to cut.
 
-\usepackage{fancybox}
+> gives me what I want to use for the file name, but I
+> can't figure out how to get it into a variable for use
+> later in the script when I rename the file.  I've tried
+> 
+> variablename=
 
-and then once you get into the document proper, go:
+$ b=`date | cut -b 25-28,12-13,15-16,18-19`
+$ echo $b
+2038422002
+$
 
-\fancypage{\fbox}{}
+HTHs
 
-This needs to be one of the first things after the \begin{document}.
+anna
 
-As I said, there are probably better ways, but that's the first one
-which comes to mind.
+-- 
 
-Steven Smith,
-sos22@cam.ac.uk.
+(14) The  hero is not entitled to a last kiss, a last cigarette, or any
+     other form of last request. - Peter Anspach in "The Top 100 Things
+     I'd Do If I Ever Became An Evil Overlord"
 
---WIyZ46R2i8wDzkSu
-Content-Type: application/pgp-signature
-Content-Disposition: inline
+                                            http://www.eviloverlord.com
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-
-iD8DBQE88RZfO4S8/gLNrjcRAiAfAKDM26qsutYNcAt11KSbRDA58+WQZgCdGRlO
-2rPGdG5MuwtrSPamfs0ap3A=
-=nK5I
------END PGP SIGNATURE-----
-
---WIyZ46R2i8wDzkSu--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
