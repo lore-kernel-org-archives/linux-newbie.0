@@ -1,41 +1,29 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: RE: Debian install issue
-Date: Wed, 09 Oct 2002 12:23:25 -0700
+From: "Paul Kraus" <pkraus@pelsupply.com>
+Subject: Samba Mount File Corruption
+Date: Wed, 9 Oct 2002 15:59:16 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021009121954.025ce990@celine>
-References: <Pine.LNX.4.44.0210091223130.6549-100000@localhost.localdomain>
+Message-ID: <001201c26fce$5c1855c0$64fea8c0@pkrausxp>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <000d01c26fbd$e4761080$64fea8c0@pkrausxp>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Paul Kraus <pkraus@pelsupply.com>, 'James Miller' <jamtat@mailandnews.com>, linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-At 02:01 PM 10/9/02 -0400, Paul Kraus wrote:
->I know you can redirect the standard output with > and then the file
->name you want. But how do you also redirect the STRERR?
+Has anyone had any issues when copying a file from a samba/windows
+mounted drive (mount -t smbfs) to there Linux box? I had a 1 gig file I
+transferred that was a tar file. On the Linux machine I then tried to
+untar it received errors and failed about half way through. The file
+size was correct. I then copied it back to the windows machine as a test
+and tried to untar it there and the file had the same results. However
+the original file is good. Any ideas?
 
-At least with bash, you use
-
-         2> filename
-
-to redirect STDERR to its own file.
-
-You use
-
-         > filename 2>&1
-
-to redirect both STDOUT and STDERR to the same file (the second part, to be 
-exact, redirects STDERR to STDOUT, which the first part has already 
-redirected to the file).
-
-
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+Paul Kraus
+Network Administrator
+PEL Supply Company
+216.267.5775 Voice
+216-267-6176 Fax
+www.pelsupply.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
