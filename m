@@ -1,8 +1,8 @@
 From: james miller <jamtat@mailandnews.com>
 Subject: RE: Not able to install Redhat 8.0 - Network Card is 3c515
-Date: Sun, 5 Jan 2003 11:16:53 -0500
+Date: Sun, 5 Jan 2003 11:16:47 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3E1837DF@mailandnews.com>
+Message-ID: <3E1837D6@mailandnews.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
