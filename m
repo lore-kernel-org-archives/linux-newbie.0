@@ -1,55 +1,68 @@
-From: Dominique Sidiropoulos <ksidirop@ucnet.uoc.gr>
-Subject: Re: alsamixer Doesn't save volume settings
-Date: Thu, 13 May 2004 12:11:14 +0300
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re[2]: checking bandwidth in coyote
+Date: Thu, 13 May 2004 07:32:59 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <40A33BB2.2060309@ucnet.uoc.gr>
-References: <20040507043447.53651.qmail@web61008.mail.yahoo.com>
+Message-ID: <5.1.0.14.1.20040513072252.01fa8a48@celine>
+References: <5.1.0.14.1.20040511122021.02031090@celine>
+ <1211088623.20040512014917@yahoo.com.sg>
+ <5.1.0.14.1.20040511122021.02031090@celine> <1114970915.20040513001532@yahoo.com.sg>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <1114970915.20040513001532@yahoo.com.sg>
+References: <5.1.0.14.1.20040511122021.02031090@celine>
+ <1211088623.20040512014917@yahoo.com.sg>
+ <5.1.0.14.1.20040511122021.02031090@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: sumit kalra <i_am_sumit_kalra@yahoo.com>
+Content-Transfer-Encoding: 7bit
+To: otok_otok1998 <otok_otok1998@yahoo.com.sg>
 Cc: linux-newbie@vger.kernel.org
 
-sumit kalra wrote:
+At 12:15 AM 5/13/2004 +0700, otok_otok1998 wrote:
+[...]
+>RO> At 01:49 AM 5/12/2004 +0700, otok_otok1998 wrote:
+> >>Hello linux-newbier,
+> >>
+> >>i want to know how to checking bandwidth on my coyote linux, i'm using
+> >>adsl connection, coyote on Pentium I as router.. thanx 4all
+>
+>RO> Please be more descriptive about what exactly you want to check.
+[...]
+>sorry ray.. im not giving the descriptive, i mean i want to check my
+>bandwidth size that my adsl isp told me, it's about 128kbps.. once more
+>sorry ray :) n thanx
 
->Hi,
->
->I am running ALSA-1.0.4 on RedHat 8 Linux (kernel
->2.4.18-14). 
->
->I am trying to set the volume using "alsamixer" but
->everytime I reboot the machine, the volume gets reset
->to zero. I searched on google and got one solutions
->but it doesn't seem to work for me: Running "alsactl
->store" after increasing the volume - the command
->completes properly (with no errors) but on reboot, the
->volume setting are lost.
->
->Any help is appreciated,
->TIA
->Sumit Kalra
->
->
->	
->	
->		
->____________________________________________________________
->Yahoo! Messenger - Communicate instantly..."Ping" 
->your friends today! Download Messenger Now 
->http://uk.messenger.yahoo.com/download/index.html
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
->
->
->  
->
-You should invoke somewhere (/etc/rc.local I think - but not sure) 
-`alsactl restore' or something too.
+
+For someone lacking in specialized equipment to test lines, and access to 
+both ends of the connection, there is no *definitive* test I know of to 
+determine bandwidth size. In practice, when I need to do this, I initiate a 
+large transfer of some sort (usually ftp), and simply observe the transfer 
+rate. A few considerations:
+
+1. The transfer needs to be large enough to give you a good feel for 
+average bandwidth ... not short enough to be influenced by transient 
+effects. The larger the better, but as a general matter, something in the 
+60 MB range (a Linux kernel source package, for example) usually serves me 
+nicely.
+
+2. The source of the transfer needs to have a higher upload speed than the 
+alleged download speed of the connections you are trying to test.
+
+3. The source should be "close enough" to you that delays caused by 
+intermediate steps in the route are unlikely to affect measurement. (This 
+is usually the toughest requirement to meet, and I cannot give you any real 
+advice about how to meet it.)
+
+I haven't had occasion to need to do this in years, so I may be missing 
+some other considerations that apply. If so, I hope others will jump in 
+with some added suggestions. That's why I'm sending this reply back via the 
+list rather then just privately.
+
+You can probably observe the speed in the ftp client you use; most of the 
+ones I'm familiar with display cumulative download speed for a transfter. 
+If not, with a little care you can check total bytes transferred in a given 
+time frame using either ifconfig or ip (whichever one coyote supplies).
+
 
 
 -
