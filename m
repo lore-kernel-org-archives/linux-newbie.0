@@ -1,60 +1,71 @@
-From: "Michael H. Warfield" <mhw@wittsend.com>
-Subject: Re: Open Office - printing
-Date: Thu, 30 May 2002 13:42:55 -0400
+From: docv <docv@sbcglobal.net>
+Subject: HD Woes
+Date: Thu, 30 May 2002 15:57:37 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020530174255.GA3441@alcove.wittsend.com>
-References: <p05100300b91b1168860d@[168.212.25.34]>
+Message-ID: <3CF69241.4000705@sbcglobal.net>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <p05100300b91b1168860d@[168.212.25.34]>
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Dan Bentson-Royal <dbentson@orion.lcsd.k12.wa.us>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Linux, Newbie" <linux-newbie@vger.kernel.org>
 
-On Wed, May 29, 2002 at 04:21:57PM -0700, Dan Bentson-Royal wrote:
-> I feel foolish - I am trying to print from OpenOffice and started 
-> reading the built-in help. The very Ffirst thing I am told to do is 
-> "Click the New Printer button." and I absolutely cannot find that.
+Fellow Newbie listers,
 
-	Hmmm...  Hadn't seen that before...  Maybe it's a "going to
-be" feature and invokes spadmin.
+I am running a dual boot (RH7.3 & WinME) box. Due to the purchase of a 
+new Digital Video Camera and the firewire board to transfer videos, I 
+have also had to purchase a new 40Gig 7200RPM HD. For some unknown 
+reason, I can not mount any partition from the new 40Gig drive under linux.
 
-> There is a printer icon in a toolbar, but it is for printing directly 
-> to the default printer (I assume). The File menu has "print" and 
-> "printer settings" which I thought would be gold mines. But nowhere 
-> does it allow me to select my printer.
+I used fdisk (in dos) to format a 15 gig partition1 as my new WinME disk 
+and successfully transfered over the WinME to it (I know it was 
+successful because I can boot from that partition into WinME).
 
-> I ran printconf-gui& and successfully entered the IP number of my 
-> JetDirect printer. I think all I need to do is tell my system to use 
-> that printer. I hope.
+When I boot into linux and attempt to mount either partition1 (as 
+/winME) or the 25gig partition2 (as /website) All I receive is an error 
+that /dev/hdb1 (or /dev/hdb2) is not a valid block device.
 
-	That's all you need for you system to know where the printer is
-but it doesn't help with OpenOffice.  I assume that you DID tell
-the printconf app to print a test page and it printed properly.
+When I installed the drive, I used a dos based installation program that 
+came with the HD. Boot from a floppy included with the drive. I thought 
+that was the problem so I booted into a dos session and used fdisk to 
+repartition the drive, still to no avail!!
 
-> Sorry to be so dense!
+Any ideas on how I can solve this problem?
 
-	You're not.  Here is the way I've set up printers in OpenOffice...
-
-	cd OpenOffice.org1.0
-	./spadmin
-
-	There you will find what you need.  Once you have added your
-printer, you will probably want to edit it's properties and set the
-paper type (it defaults to A4 and I use US Letter).
-
-	Don't know if this is how they intend it to work NOW, but it's
-the way it was done in the past (just chose appropriate install directory).
-
-	Mike
 -- 
- Michael H. Warfield    |  (770) 985-6132   |  mhw@WittsEnd.com
-  /\/\|=mhw=|\/\/       |  (678) 463-0932   |  http://www.wittsend.com/mhw/
-  NIC whois:  MHW9      |  An optimist believes we live in the best of all
- PGP Key: 0xDF1DD471    |  possible worlds.  A pessimist is sure of it!
+Steve
+docv@sbcglobal.net
+
+In a world without walls and fences there is no need for windows nor gates.
+
+You can not solve problems with the same level of thinking
+that existed when the problems were created.
+--Dr. Albert Einstein
+
+Usted no puede solucionar problemas con el nivel del mismo
+de manera de pensar tan existido cuando el problemas
+fueron creados.
+--Dr. Albert Einstein
+
+President/CEO
+Consultant's Publishing Services, LLC
+http://www.cpsinfo.com
+
+http://www.vaitl.net
+===============================
+Stephen W. Vaitl, D.C.
+Certified Chiropractic Sports Physician
+Certified Chiropractic Extremity Practitioner
+Assistant Professor, Department of Chiropractic Sciences
+Assistant Professor, Department of Diagnosis
+Former Director of Rehabilitation Services
+Cleveland Chiropractic College - Kansas City
+6401 Rockhill Rd.
+Kansas City, MO  64131
+
+The opinions expressed, in the original post, are those of the author. 
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
