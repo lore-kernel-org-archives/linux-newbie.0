@@ -1,44 +1,47 @@
-From: mohammad nayyer zubair <nayyer@gmail.com>
-Subject: Fedora core 3's gcc
-Date: Sun, 13 Feb 2005 12:31:41 -0500
-Message-ID: <86b77df1050213093178d99dee@mail.gmail.com>
-Reply-To: mohammad nayyer zubair <nayyer@gmail.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: smtp alternatives
+Date: Sun, 13 Feb 2005 19:55:18 -0600 (CST)
+Message-ID: <Pine.LNX.4.58.0502131946120.14569@localhost.localdomain>
+References: <Pine.LNX.4.58.0502121224530.14569@localhost.localdomain>
+ <Pine.LNX.4.58.0502121224530.14569@localhost.localdomain>
+ <5.1.0.14.1.20050212221842.0b994008@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <5.1.0.14.1.20050212221842.0b994008@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Dear mailing list,
+On Sat, 12 Feb 2005, Ray Olszewski wrote:
 
-I had a couple of questions involving the relationship between fedora
-core 3, gcc and glibc. gcc version is 3.4 something.
+> Alternative four: Not really an alternative, but check harder with your
+> ISP. It's rare for an ISP really not to provide its customers with a way to
+> send and receive e-mail, and I'd think it more likely that James, or his
+> friend, misunderstood something the ISP said than that this ISP really
+> doesn't provide for e-mail the standard way. It does, probably, have some
+> sort of password (e.g., POP-before-SMTP) authentication, to restrict access
+> to the forwarder ... so the same Linux issue may arise here. These days,
+> some forwarders throttle connections, so you can send mail in normal,
+> single-user quantities, but not in the volumes that support SPAM.
 
-I have a acer 7600GT Veriton machine and I searched online that only
-redhat 9 has been tested and verified that it runs on this machine. I
-installed fedora core 3 and it also runs perfectly.
+Thanks for your informative response, Ray. It turned out alternative four
+was the answer. This outfit is not really a business venture--more of a
+community service-type effort. So information from them tends to be short
+on details and possibly conflicting in places. I reread information and
+decided to try out some connections to the smtp server and it worked. If
+anyone's interested in cheap dialup, www.freeshell.org really looks like
+the way to go. You have to open a shell account with them for a one-time
+fee of $1 (there are more expensive options that get you more
+features--like a $40 one-time fee for added web space, email space and
+extra shell functionality). Anyway, once you become a member, you can buy
+dialin access, almost truly unlimited (something around 700+ hrs per
+month), for $84 a year. By the month, it's $10, and they also have
+quarterly rates. Anyway, it's the best deal I've ever seen for dialup, and
+seems like support of a good cause, too. Give them a look if you need
+dialin access in the US. They also handle ISDN.
 
-But problem is that the source code I am working with is compatible
-with an old gcc (gcc 2.XX series). I also noticed that all of my
-colleagues have an old redhat installation (redhat 7.3).
-
-So, I wanted to install redhat 7.3, but it turns out that during
-installation you have to enter the driver for the CD-ROM. It asks me
-is my cd-rom a scsi one or not. And then asks me to choose what
-manufacturer it is. I cant seem to find out what kind of CD-ROM I
-have. Does anyone know how to find the the make? Acer's website doesnt
-have more information.
-
-Also, is there a way I can keep my existing Fedora core installation
-and try to download, compile and install an old gcc?  How will I
-remove the old gcc, what about the existing glibc installation, and
-other system libraries?
-
-Sorry for the long mail, but I would really appreciate answers as this
-issue has been plaguing me for quite some time now.
-
-Thanks
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
