@@ -1,49 +1,31 @@
-From: pepo <pepo@linuxmail.org>
-Subject: My parallel port
-Date: Fri, 8 Oct 2004 09:17:54 -0500
+From: Ole Martin Handeland <oli@oasenlan.com>
+Subject: Cant get internet access on my router
+Date: Sun, 17 Oct 2004 12:29:52 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200410080918.03239.pepo@linuxmail.org>
+Message-ID: <ckthj0$v02$1@sea.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: Text/Plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+Hi,
 
-Hi FRiends...
+I cant seem to get internet access on my gateway machine, using fc2 and
+iptables firewall. I have a eth0 connection (and a ppp0 connection using
+eth0 to connect to my adsl provider) and a eth1 connection which i use
+to connect to my local network (with a dhcp server on this gateway).
 
-	I think that my parallel port is wrong; I had a dot printer (EPSON-FX1050) 
-that prints with fails, one of them is that stop in the middle of the page; I 
-thought that the printer was damaged; but now my ink printer (CANON-BJC2000) 
-have the same fail.
+i have gotten this gateway to connect to the net, and the network from
+eth1 gets internet access. my problem is that my gateway dont get net
+access itself. when i set default action to allow in my iptable,
+everything works.
+anyone knows which rule(s) i should apply to get internet access working
+on this gateway?
 
-	Maybe the two printers are damaged, but is more probable my parallel port is 
-damaged.
+Ole Martin Handeland
 
-	How do I check my parallel port? How do I know if all the pines are right?
-
-Thanks.
-
-- -- 
-  Linux User Registered #232544
-     Jabber : pepo@jabberes.org
-        ICQ : 337889406
-  GnuPG-key : www.keyserver.net
- -------------------------------
-"Software is like sex,
-      it's better when it's free."
-                  [Linus Torvalds]
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
-
-iD8DBQFBZqGZ6DtppveuSQYRAtkvAJoCAULK6eXz3Fo0t7LQpq6cV/GTCACdEc76
-9IrSschia1pLQA+ngAHDAZc=
-=ZUPM
------END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
