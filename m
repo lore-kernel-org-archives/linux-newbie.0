@@ -1,35 +1,39 @@
-From: james niland <bareego@yahoo.com>
-Subject: RE: disk partitions
-Date: Tue, 14 Jan 2003 05:50:33 -0800 (PST)
+From: "Jamie Risk" <jamie_risk@yahoo.ca>
+Subject: Can anyone suggest a piece of software too ...
+Date: Tue, 14 Jan 2003 12:10:40 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030114135033.35108.qmail@web11401.mail.yahoo.com>
-Mime-Version: 1.0
+Message-ID: <b01g7t$a1p$1@main.gmane.org>
+Reply-To: "Jamie Risk" <jamie_risk@yahoo.ca>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Jude DaShiell wrote :
+Hi,
 
-<<I forgot, I set a partition in primary as type 83
-which makes it linux
-swap and gave it 128mb of memory since that's max
-memory on my
-computer.
+I'm an embedded software developer and as such I often find that I'm
+programming software that consists largely of state machines, intertwined,
+orthogonal or a mixture of both. Not a big deal to implement a state machine
+from hand drawn paper state diagrams, but it's a little tedious setting up
+the framework.
 
---
-Jude <dashielljt(at)gmpexpress-dot-net>
->>
-As far as I remember type 83 is a linux native
-partition. Type 82 is linux swap.
+Does anyone know of FREE software that would aid in this development? Or who
+I should be asking?
 
-James 
+Something akin to the software described here
+http://www.iar.com/Products/VS. Platform is not an issue, though Unix is
+prefered, and output should be C.
 
-__________________________________________________
-Do you Yahoo!?
-Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
-http://mailplus.yahoo.com
+I'd rather avoid designing mine own tools, especially if some has done so
+before me.
+
+- Jamie
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
