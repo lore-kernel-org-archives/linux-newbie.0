@@ -1,42 +1,46 @@
-From: jbradford@dial.pipex.com
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: CD-ROM settings and hardware resources...
-Date: Thu, 24 Oct 2002 17:04:56 +0100 (BST)
+Date: Thu, 24 Oct 2002 09:10:57 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210241604.g9OG4u5X000579@darkstar.example.net>
+Message-ID: <5.1.0.14.1.20021024090118.02169050@celine>
 References: <0210240635240C.00497@unix.pa3gcu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <0210240635240C.00497@unix.pa3gcu> from "pa3gcu" at Oct 24, 2002 06:35:24 AM
+In-Reply-To: <200210241604.g9OG4u5X000579@darkstar.example.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> > According to a conversation I had with another helper on this list,
-> > there is an experimental IDE CR driver that does away with the scsi
-> > emulation.  I was under the impression that this was the only way to
-> > turn on the dma setting.
-> 
-> Then i stand corrected, as i know nothing of such a driver, it could be that 
-> such a driver is being developed into 2.5 kernels, however those kernels are 
-> not things to use on normal systems as they are what they are, "experimental".
-> 
-> Perhaps the "other helper" on this list would like to tell us where to find 
-> information on this driver.
+At 05:04 PM 10/24/02 +0100, jbradford@dial.pipex.com wrote:
+[...]
+>By the way, I'm not sure what enabling/disabling DMA has to do with
+>reading a faulty CD-ROM.  It's not like you're enabling/disabling
+>UDMA, which has error correction to detect errors on the _bus_.
 
-I believe I am "the other helper" :-)
+Enabling DMA has nothing (that I know of) to do with reading a faulty 
+CD-ROM. I originally suggested it as a solution because in his first 
+message, Bryan (the original poster) described his problems in a very vague 
+way ("has trouble reading large files"). That sounded to me like it might 
+refer to a problem I have seen ... namely, a lot of dropped frames ... when 
+doing video playback from a CD drive that does not have DMA enabled. 
+Enabling DMA does fix that, since it is a timing issue.
 
-Yes, you are right, 2.5 contains changes that will eventually allow cd
-recording without using SCSI emulation:
+When Bryan's subsequent messages made it clear that (a) this was a problem 
+limited to a specific, home-burned CD and (b) the problem occurred in 
+non-timing-sensitive settings like copying to a hard disk, I suggested that 
+the problem was with the CD's filesystem, not DMA.
 
-http://groups.google.com/groups?q=cdrecord+%22torvalds%40transmeta.com%22&hl=en&lr=&ie=UTF-8&scoring=r&selm=Pine.LNX.4.44.0210161437010.1108-100000%40penguin.transmeta.com.lucky.linux.kernel&rnum=3
+The lesson here is that vague descriptions of problems elicit irrelevant 
+solutions. I hope everyone who reads this list takes that lesson to heart.
 
-By the way, I'm not sure what enabling/disabling DMA has to do with
-reading a faulty CD-ROM.  It's not like you're enabling/disabling
-UDMA, which has error correction to detect errors on the _bus_.
 
-John.
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
