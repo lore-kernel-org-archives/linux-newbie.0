@@ -1,34 +1,26 @@
-From: Haines Brown <brownh@hartford-hwp.com>
-Subject: Re: recovering files after rm
-Date: Tue, 1 Apr 2003 10:16:59 -0500
+From: Paul Kraus <pkraus@pelsupply.com>
+Subject: Suse 8.1 Konsole Sco Openserver
+Date: 01 Apr 2003 11:32:22 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200304011516.h31FGxO2000493@hartford-hwp.com>
-References: <200304010146.h311kNs02265@philonline.com>
-Reply-To: brownh@hartford-hwp.com
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <200304010146.h311kNs02265@philonline.com> (message from Peter on
-	Tue, 01 Apr 2003 09:46:23 +0800)
-List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Message-ID: <1049214745.3728.6.camel@linux>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Cc: mishra_nn@rediffmail.com, linux-newbie@vger.kernel.org, pfheiss@philonline.com
+Return-path: <linux-newbie-owner@vger.kernel.org>
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-> I am using the program safedelete. It works well and is easy to install just 
-> follow the instructions to set it up.
+For work i have to attach to sco box that runs are main work application
+(tbred). Everything works great except that the arrow keys are not
+correct. How can  i set Konsole to send the charact codes so that it
+works correctly. I also need to be able to work for the shell in unix.
+Here backspace del both cause a carrige return. 
 
-Very puzzling response. The thread is about how to recover a deleted
-file, but SafeDelete offers, as best as I can make out, only a
-commercial Annihilator application for Windows. It is one of a number
-of programs that overwrites hard disks so that information can't be
-retrieved from them. This is quite the opposite of the original
-question. 
+If this is outside the scope of the list please point me where i need to
+go. Thanks!!
 
-I thought maybe this application might redirect rm commands to put the
-files instead into a "trashcan" that is periodically "emptied," but
-even that would be OT for the original question. 
+Paul Kraus.
 
-Haines Brown
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
