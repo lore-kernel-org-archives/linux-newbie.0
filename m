@@ -1,82 +1,72 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Sanyo CDR-H94A (non-atapi) Booting???
-Date: Thu, 3 Apr 2003 11:17:24 -0500
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: /dev/cdrom is not a valid block device?
+Date: Thu, 03 Apr 2003 08:33:04 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030403111724.A234@lnx2.w8mch.ampr.org>
-References: <20030328131832.A249@lnx2.w8mch.ampr.org> <20030328214839.GB456@gajba.net> <20030330132929.D206@lnx2.w8mch.ampr.org> <20030330203403.GA1222@gajba.net>
-Reply-To: haltec@kvinet.com
+Message-ID: <5.1.0.14.1.20030403082113.01e99628@celine>
+References: <20030403123500.GA749@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20030330203403.GA1222@gajba.net>; from boris@gajba.net on Sun, Mar 30, 2003 at 10:34:03PM +0200
+In-Reply-To: <20030403123500.GA749@localhost.localdomain>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: Boris Bezlaj <boris@gajba.net>
-Cc: linux-newbie@vger.kernel.org
+To: Amin <raihan@citech-bd.com>, linux-newbie@vger.kernel.org
 
-Greetings: You were right - I needed two modules.. I found the
-easiest was to use the isp16.i boot disk to take care of the sound
-card/interface and then during the installation run 'insmod' with
-'sjcd.o' on a floppy transferring both to the ramdisk.. Setup didn't
-like it, at first, but on the 2nd try - it took.... Success finally.
+At 06:35 PM 4/3/2003 +0600, Amin wrote:
+>Hi all,
+>
+>Shortly after recompiling my kernel (ignoring numerous
+>warnings and errors therein), I tried to mount my CD drive
+>in the normal way:
 
-Appreciate everyones help in kick starting my grey cells.. A big time
-sink for an obsolete drive, eh?  Thanks again.
+It is normal to get manay, many **warnings** while compiling a kernel. But 
+if you got **errors**, you better go back and look at them. (Personally, I 
+doubt you really did get errors, since they are supposed to cause the 
+compile process to abort ... you cannot, in practice, "ignore" actual 
+errors. But since I can't see through your eyes, I have only what you wrote 
+to go on.)
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
-                Proprietary  Formats  Unacceptable
+>mount /mnt/cdrom
+>
+>But I'm getting a ``mount: /dev/cdrom is not a valid block
+>device''.  Does anyone have any idea why this is appearing?
 
-On 03-30, Boris Bezlaj wrote:
-> On Sun, Mar 30, 2003 at 01:29:29PM -0500, Hal MacArgle wrote:
-> > Greetings and thanks for your input..
-> > 
-> > I'm still stuck.. I found the bootdisk  'isp16', the name of the
-> > soundcard/cd-interface, and it found the drive at the proper port:
-> > 0x340.. But it still wont mount the drive either as /dev/sjcd or when
-> > I 'mknod /dev/isp16 b 0 6', which is "supposed" to be the major/minor
-> > number of the device.. I, honestly, question that Major of zero, but
-> > that's what I found in the src code, IIRC..
-> 
-> Major 0?
-> Maybe these have mislead you..from isp16.c source:
-> 
-> #define ISP16_VERSION_MAJOR 0
-> #define ISP16_VERSION_MINOR 6
->               ^^^^^^^
-> Wrong ones i guess :)
-> 
-> >From include/linux/major.h:
-> 
-> #define SANYO_CDROM_MAJOR 18
-> 
-> > > > 7.1 distribution and I can't get "setup" to find the CDR.. The report
-> > > > is always: "SJCD: Sanyo CDR-H94A Cdrom driver version 1.7
-> > > >             SJCD: Resetting............ reset failed, no drive found."
-> > 
-> > 		For some reason the drive doesn't want to make up
-> > it's mind whether it's a /dev/sjcd or /dev/isp16.. No amount of
-> > parameter entries seem to solve the problem /or/ to force the kernel
-> > to be able to mount the drive.. The boot image 'isp16' finds the
-> > drive all right at port 0x340,0,0-Sanyo, but I can't get it mounted
-> 
-> AFAIK, isp16.c enables the cdrom port on your soundblaster card, and
-> sjcd.c manages the drive(i could be dead wrong here).
-> /dev/sjcd (should have major 18) is the right device i guess..
-> 
-> Do you have the drivers in the main kernel image or as modules? If they
-> are in modules, try loading the isp16.o first, then sjcd.o..
-> 
-> The last resort is to ask the maintainer or whoever was the last
-> patching the driver(s).
-> 
-> BTW, when asking for help on mail list, always leave the mail-list
-> address in Cc field..might get some more brainpower 8)
-> 
-> Best luck.
-> -- 
-> 
->   Boris
+
+The most likely cause is that you omitted some kernel driver needed to 
+access the device when you recompiled your kernel.
+
+Next most likely is that you compiled what you needed as a module, but the 
+module is not loading. Check either /etc/modules or /etc/modules.conf (or 
+maybe /etc/conf.modules ... distros vary a bit here) to see that you are 
+loading everything you need to.
+
+Next is that there is something wrong with the /dev/cdrom symlink. What 
+does it point to, and is that the right real device? (BTW, I am assuming 
+there is a CD with an iso9660 filesystem in the drive when you try to mount.)
+
+Last (and least likely) is a problem in /etc/fstab. What does the line for 
+/mnt/cdrom look like?
+
+It is also possible that you missed some step in the process of 
+configuring, compiling, and installing the kernel. Since your prior message 
+indicated that you successfully installed the NIC module, I'm classing this 
+as a remote possibility.
+
+Like Richard, I cannot be more specific without knowing:
+
+A. What sort of CD-ROM drive is involved (ATAPI, SCSCI, one of the ones 
+that requires a special driver).
+
+B. Where is it really mounted (not just a symlink).
+
+C. What kernel options you selected relevant to whatever sort of drive it 
+is. (For example, if it is an ATAPI drive, did you select "ide-cd" support 
+when configuring the kernel?)
+
+D. The basics: what distro, what version, and what kernel version.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
