@@ -1,49 +1,31 @@
-From: Staci <spiritlover666@yahoo.com>
-Subject: Re: CD writing in ext2 filesystem
-Date: Tue, 23 Apr 2002 13:43:22 -0700 (PDT)
+From: Chuck Gelm <nc8q@gelm.net>
+Subject: ipchains && kernel-2.4.x
+Date: Tue, 23 Apr 2002 20:57:50 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020423204322.85915.qmail@web12808.mail.yahoo.com>
-References: <200204232318.55166.mssnlayam@cs.annauniv.edu>
+Message-ID: <3CC6030E.8A74B4FD@gelm.net>
+References: <F182IyDPxcgiKMXNaGf0001b276@hotmail.com> <02042119580302.00604@unix.pa3gcu> <3CC33667.A8608CDB@gelm.net> <02042218444504.00604@unix.pa3gcu>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200204232318.55166.mssnlayam@cs.annauniv.edu>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+ I would like to upgrade from kernel-2.2.20 to 2.4.18,
+but I don't know how to make 2.4.x use ipchains instead
+of iptables.  I'm using Roaring Penguin v3.3 (PPPOE) and
+it is set up to use ipchains.  I cannot figure how to
+answer "/usr/src/linux#make config"
+to let 2.4.x use ipchains.
 
---- Suriya Narayanan M S <mssnlayam@cs.annauniv.edu>
-wrote:
-> On Monday 22 April 2002 01:29, Pierre Rousselet
-> wrote:
->   > Suriya Narayanan M S wrote:
->   > > # mount -t ext2 -o ro /dev/cdrom /mnt/cdrom
->   >
->   > Is there any error message following this
-> command line ?
-> Yes.
-> mount: wrong fs type, bad option, bad superblock on
-> /dev/cdrom, 
->        or too many mounted file systems
+ My new 802.11b wireless card needs 2.4.x.
+ My aDSL (pppoe) wants IPCHAINS (2.2.x).
+ I want both!
 
-Umm..I just joined, so maybe I missed something in
-this.
-But since when are cdroms ext2???
-They're usually iso9660.
+How do I do it?
 
-What is this you are trying to mount?
-
-sl
-
-=====
-**************************
-In cyberspace nobody can hear you scream.
-
-__________________________________________________
-Do You Yahoo!?
-Yahoo! Games - play chess, backgammon, pool and more
-http://games.yahoo.com/
+Many thanks,
+Chuck
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
