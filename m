@@ -1,56 +1,45 @@
-From: iletisim@turizmkariyerturk.com
-Subject: Ucretsiz Eleman  =?ISO-8859-1?Q?=20ilan=FD?=  =?ISO-8859-1?Q?=20Yay=FDnlama?=
-Date: Sun, 9 May 2004 03:56:53 -0400
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Re: Can't Print
+Date: Sun, 09 May 2004 18:19:31 +0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <S264308AbUEIH4x/20040509075653Z+3453@vger.kernel.org>
+Message-ID: <20040509101931.66AE23339C@heisspf>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain;; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux-newbie@vger.kernel.org
 
-www.TurizmKariyerturk.com
+Thanks for any help! I solved the problem. I installed the kernel of 
+slackware9.1  2.4.22 and my good old Epson LX-800 came to live. This is not 
+the first time this kernel 2.4.20-20.9 did mess-up things. How much time 
+wasted by Richard and myself on account of an apparent defective kernel from 
+Krud-Linux.
+What did Ray say or similar, by his experience, with slackware most things 
+work better and smoother. Darn true!
 
-A=E7=FDld=FD...!
+Peter said:
+> Hi,
+> I have made a new installation of RH9.0 2.4.20-20.9 where I have a parallel
+> printer card. The system is now discovering the card.
 
-15 May=FDs' a kadar =FCye olan Turizm Kurumsal =DCyelere
+> Doing: "more /proc/pci" I am told that the printer card is using irq 5 and
+> the  io=0xd400. This is the first number to show. There are some more io.
 
-SINIRSIZ =DCCRETS=DDZ ilan yay=FDnlama hakk=FD ...
+> Only to this io does the printer react, meaning it makes that sound when the
+> print head moves somewhat and only giving this io will lpq give an
+> information  about the print queue. It is a dot matrix printer.
 
-D=DDGER SEKT=D6RLERDEK=DD kurumsal uyelerimizde www.kariyerturk.com =91a =
-=FCye olduklar=FDnda bir y=FDlda 3 =FCcretsiz eleman ilan=FD yay=FDnlama=85.
+> That printer react comes when I do: insmod parport_pc io=0x400 irq=5. After
+> this lpq gives the usual information about the print queue. There is  always
+> an old queue around either as 'done' or now as an 'error too many  tries'.
 
-Turizm Sekt=F6r=FCnde =DD=FE ve Eleman Bulma sitesi www.TurizmKariyerTurk.c=
-om
-Siz Turizm Sekt=F6r=FCnde Eleman arayanlar ve Kariyerini Turizm
-Sekt=F6r=FCnde Yapmak isteyenler i=E7in Yay=FDn Hayat=FDna Ba=FElad=FD
-HR T=DCRK GROUP i=FEtiraki olan www.TurizmKariyerTurk.com 'a =FCye olacak T=
-urizm Sekt=F6r=FCndeki Kurumsal =DCyelerimize Bir y=FDl i=E7inde SINIRISIZ =
-=DDLAN YAYINLAMA ve Yine Genel Sektor ilanlar=FD Yay=FDnlayan www.KariyerTu=
-rk.com ' da da 3 adet Eleman ilanlar=FD =DCcretsiz Yay=FDnlanacakt=FDr.
+> Now if I want to print something 'lpr file' the keyboard totally freezes and
+> I  have to do a dirty reboot.
 
-CV inceleme, istediginiz zaman kullanabilmek uzere cv arsivleme,
+> Any help appreciated. --  Peter 
 
-On-Line toplu veya Tek Tek cevaplama, Basvurulara
 
-On-line mesaj gonderme, Gruplama, ozel listeler haz=FDrlama
-
-k=FDsaca T=FCm sistemi kullanabilme imkan=FD
-
-Tek yapman=FDz gereken
-
-www.TurizmKariyerTurk.com
-
-' a
-
-girerek Kurumsal =FCye olman=FDz.
-
-Kurumsal =DCyelik =DCcretsizdir
-------------------------------------------------------------------
-www.TurizmKariyerTurk.com
-
-www.hrturkgroup.com =DD=FEtirakidir
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
