@@ -1,32 +1,30 @@
-From: Rei Shinozuka <shino@panix.com>
-Subject: "drawers" in gnome are bad?
-Date: Sun, 6 Jun 2004 11:41:52 -0400
+From: "Lewis Kimble" <lfkimble1@earthlink.net>
+Subject: mail problem
+Date: Mon, 7 Jun 2004 12:15:51 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040606154152.GB1933@panix.com>
+Message-ID: <410-22004617161551841@earthlink.net>
+Reply-To: lfkimble1@earthlink.net
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Newbie Linux Users <linux-newbie@vger.kernel.org>
+To: LINUX-NEWBIE <linux-newbie@vger.kernel.org>
 
-i have noticed when making drawers and adding launchers
-that they work for that session,
-but if i log out and back again, the launchers are 
-displayed, but they are "backgrounds" and cannot be removed,
-activated or changed.
 
-i am running fedora 1
-Linux tuxedo 2.4.22-1.2115.nptl #1 Wed Oct 29 15:31:21 EST 2003 i686 athlon i386 GNU/Linux
+I am using suse 9.0 professional kernel 2.4.21.215 -defaul-1 686
+my isp is earthlink,and i use mozilla for mail.i try and download my mail
+(mabey 25 messages) and after 4 or 5, I get the following
+retry command did not succeed,mail server pop.earthlink.net responds unable
+to open that message.
+when i use the mail command all of my mail is there and able to be read.all
+my mozilla settings appear ok.
+any ideas as to what is causing this?
+thanks lew
+Lewis Kimble
+lfkimble1@earthlink.net
 
-thanks,
 
--rei
-
--- 
-Rei Shinozuka shino@panix.com
-Ridgewood, New Jersey
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
