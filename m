@@ -1,23 +1,25 @@
-From: Chris Rose <offline@shaw.ca>
-Subject: Redhat 8 missing rhn_register
-Date: Fri, 04 Oct 2002 15:16:35 -0600
+From: "a a" <xlsd@hotmail.com>
+Subject: read-only file system
+Date: Sat, 05 Oct 2002 03:02:34 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <000101c26beb$521241d0$4b01a8c0@offline>
+Message-ID: <F156rHAK6YwyLdnsODF00001cac@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: 'Linux-Newbie' <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-My freshly installed psyche system is missing something kinda
-critical...  Can someone suggest a way to get rhn_register set up for my
-system?  Can i install the version for 7.3?
+hello
+im trying to edit a file in /etc/rc.d but it says "Read-only file system"
+how do i change it to writeable?
 
-Chris R.
------
-Lumen Redundas
-"To Cast The Light Of Knowledge On The Already Well-Known"
+thanks
+
+
+
+_________________________________________________________________
+Send and receive Hotmail on your mobile device: http://mobile.msn.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
