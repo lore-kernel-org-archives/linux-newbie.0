@@ -1,40 +1,31 @@
-From: James Ferris <james_e_ferris@yahoo.ca>
-Subject: Re: need direction - LAN browse troubleshooting - Thanks Ray
-  addenda
-Date: Wed, 30 Apr 2003 23:51:49 -0600
+From: "David Jones" <gnome@hawaii.rr.com>
+Subject: How to access USB storage devices in Linux?
+Date: Wed, 30 Apr 2003 21:32:04 -1000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20030430234440.02d2cd90@pop.mail.yahoo.com>
+Message-ID: <0e9e10230070153HNLMAIL3@hnlmail3.hawaii.rr.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Regarding my submission and your comments...
-Thanks. Your suggestions got me re-thinking.
+Friend of mine has SuSE 8.2, along with a USB-based 
+compact flash reader. The reader itself works in 
+Windows. He says that Linux is finding the USB hub and 
+he can see the Read light on the CF reader flash while 
+Linux is coming up. But he can't seem to find the device 
+anywhere in SuSE. Any idea what he needs to do to 
+make it visible in SuSE?
 
-At 28/04/2003 ; 10:58 PM, you wrote:
->Second, what does the smb.conf block for 'SharePt' actually say? And what 
->is the exact exchange that you describe as "Network Path 'not there'."? 
->This part sounds like you may have the "path = " entry in the smb.conf 
->block wrong.
+I also may benefit from the info, since I also have a CF-
+reader, currently unused, because I have no CF to use 
+in it yet.
 
-<<see the attached smb.conf file... I think I've just set a read-write 
-switch incorrectly.>>
+Thanks!
 
-Found my error. I set the SharePt share on \root ... and then set 'root' 
-with no-access-allowed via samba.
-I've moved the directory (and altered the path) to \tmp\SharePt and now it 
-works exactly as I wanted.
-Again, my face is red....
-  **** **** **** **** **** **** **** **** **** **** **** ****
-Last item here... Please recommend 'favorite' books for samba-for-dummies 
-... and perhaps something for more experienced users as well. I'll get 
-there soon enough.
-
-Regards,
-James
+David
+gnome@hawaii.rr.com
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
