@@ -1,53 +1,38 @@
-From: "James Miller (office)" <jamtat@mailsnare.net>
-Subject: RE: Slack9.0/Atapi-ZIP250???
-Date: Mon, 30 Jun 2003 14:26:24 -0500 (CDT)
+From: Dan Zlotnikov <dzlotnik@perpugilliam.csclub.uwaterloo.ca>
+Subject: Re: Switching between KDE and GNOME
+Date: Mon, 30 Jun 2003 16:48:09 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.53.0306301419160.466@veclin.office>
-References: <BKEGKPICNAKILKJKMHCAGEDPEIAA.Riley@Williams.Name>
+Message-ID: <Pine.LNX.4.43.0306301642070.1840-100000@perpugilliam.csclub.uwaterloo.ca>
+References: <3F006B81.9020201@vip.cybercity.dk>
+Reply-To: dzlotnik@uwaterloo.ca
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <BKEGKPICNAKILKJKMHCAGEDPEIAA.Riley@Williams.Name>
+In-Reply-To: <3F006B81.9020201@vip.cybercity.dk>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Mon, 30 Jun 2003, Riley Williams wrote:
 
-> Hi Hal.
->
->  >>> This box w/Slack8.0/2.4.18; running AOK with an Atapi ZIP250
->  >>> internal, as /dev/sda4, as long as I insmod ide-scsi.o..
->  >>> (That file also installs sd_mod.o )..
->
->  >> You're doing this wrong. I have the Atapi Zip100 internal. It
->  >> does not need the ide-scsi.co. Just set it up like this:
->  >>
->  >> /dev/hdc4       /zip            auto    noauto,user 0 0
->  >>
->  >> You only need the scsi stuff when using the external type Zip
->  >> (which I also have).
->
->  > Greetings and - Gad Zooks.. Where did you discover the above?
->  > Everything I've read about ZIP drives say they _must_ use scsi
->  > emulation..
->
-> SCSI emulation is needed for PARALLEL PORT and SCSI INTERFACE zip
-> drives only - and NOT for ATAPI IDE zip drives - UNLESS you included
-> the string "hdc=ide-scsi" as a kernel parameter. If you did that,
-> then you told the kernel to use the ide-scsi driver to access the
-> drive in the secondary master IDE position independent of whether
-> such was necessary or not.
->
-Doesn't scsi emulation also apply to USB Zip (and other IDE) devices as
-well?  I have an external Zip100 drive that plugs into the computer via
-USB, and it appears under the /dev/sdaX node.  It shows up as a scsi
-device, even though it's apparently using some sort of IDE to USB trickery
-- which makes me believe that these also use scsi emulation.  I could be
-seriously miscomprehending - an ever-present danger to my semi
-computer-literate cognitive apparatus.
+> If you already have KDE installed you can run 'xwmconfig'.
+> You can now choose xinitrc.kde (if you have KDE installed).
+> If you don't have KDE installed, I can't help (not yet anyway).
 
-James
+xwmconfig? It doesn't appear to exist. Is that distro/x-server specific?
+I'm running gdm, BTW.
+
+Thanks,
+
+Dan
+
+>
+> --
+> Flemming Greve Skovengaard               Man still has one belief,
+> a.k.a Greven                             One decree that stands alone
+> <dsl58893@vip.cybercity.dk>              The laying down of arms
+> 4168.08 BogoMIPS                         Is like cancer to their bones
+>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
