@@ -1,83 +1,83 @@
-From: beolach@juno.com
-Subject: Re: Cannot login as non-root user
-Date: Wed, 16 Jul 2003 03:01:20 GMT
+From: Andrew Langdon-Davies <ald2@arrakis.es>
+Subject: Re: su fails
+Date: Wed, 16 Jul 2003 10:55:16 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030715.200131.754.324122@webmail06.lax.untd.com>
+Message-ID: <oprsea2e1vhmmv6x@smtp.arrakis.es>
+References: <Pine.LNX.4.56.0307151320130.4165@filesrv1.baby-dragons.com> <3F133105.7010309@bcgreen.com> <5.1.0.14.1.20030714080202.01ef9e68@celine> <oprsa696n7hmmv6x@smtp.arrakis.es> <oprsbalrywhmmv6x@smtp.arrakis.es> <200307142023.43039.pa3gcu@zeelandnet.nl> <oprsbc6ofjhmmv6x@smtp.arrakis.es> <3F133105.7010309@bcgreen.com> <5.1.0.14.1.20030715074706.01faa538@celine> <oprsc1u8ichmmv6x@smtp.arrakis.es> <1058288791.4987.20.camel@gandalf.ciccio-net.cjb.net> <Pine.LNX.4.56.0307151320130.4165@filesrv1.baby-dragons.com> <5.1.0.14.1.20030715122050.01fbba40@celine> <oprseazgwzhmmv6x@smtp.arrakis.es>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <oprseazgwzhmmv6x@smtp.arrakis.es>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+Content-Transfer-Encoding: quoted-printable
 To: linux-newbie@vger.kernel.org
 
 
->Basic questions:
+>>
+>> Unaddresed possibilities do include:
+>>
+>> 1. That you somehow were tricked into downloading and installing a=20
+>> trojan app on the Slackware host. This is unlikely if you've stuck to=20
+>> "official" Slackware update sites, and not even all that likely if=20
+>> you've downloaded the sourcve of well-known apps from their sites and=20
+>> installed them. But if you installed anything obscure, consider it=20
+>> carefully.
+> I'll check that out.
+>>
+>> 2. You don't say what the other system is, so I'll assume the worst,=20
+>> that it runs Windows.
+> Mandrake 9.0. There's a WinXP installation on it but I haven't run it for=
+=20
+> months.
+>>
+>> 3. The Coyote firewall/router may have been compromised. I haven't=20
+>> looked at Coyote for years, so I don't know if it is keeping up with=20
+>> security patches. How risky this is depends on what the firewall/router =
+
+>> runs, but risk candidates include kernel-level problems, BIND problems, =
+
+>> ssh problems ... that's what I can think of offhand.
+> I'll check that out too.
+>>
+>>> 'stderr is not a tty - where are you?'
+>>
+>> With xdm, there is no console to map them to, so an xdm start **might** =
+
+>> generate that sort of message (does your xdm have a small window,=20
+>> probably in the lower right, that logs info?
+> No
+> if not, this guess gets more
+>> convincing). Or they might be an old leftover of some time when that=20
+>> userid tried to start X in some way that did not work. But the really=20
+>> odd thing is that there is no reason why STDERR *should* be a tty; it is=
+=20
+>> common to redirect STDERR to a file (in fact, it is a common practice=20
+>> when debugging X problems). So the message is, in a way, objecting to a =
+
+>> commonplace practice.
+> More info:
+> cat lastlog:
+> ~?tty30?pts/1(fqdn Mandrake9.0 machine)sh-2.05b$
+> The file is 292292 bytes. This message could have something to do with a =
+
+> tunnel I was trying at a time when the Slackware host was running a=20
+> different (Suse) installation. Right?
+> cat faillog:
+> pts/0=C3=BC
+> ?tty5
+> 1/4?
+> (The 1/4 actually appears in small script without the slash). The file is=
+=20
+> 24024 bytes.
+> Translation anyone?
+> TIA,
+> Andrew
 >
->1. What is root's shell? Is it /bin/bash or /bin/sh? (If the latter, is 
->/bin/sh a symlink to /bin/bash? It usually is but might not be in your >case.)
-
-It is /bin/bash (and /bin/sh is symlink to same).
-
->2. What are permissions on /bin? They should be 755 (rwxr-xr-x).
-
-They are. (As are permisions on /, suggested by someone else).
-
->3. This feels like a long shot, but might there be a permissions >problem 
->with one of the shared libraries bash uses? Check your system with "ldd 
->/bin/bash". Mine shows these libraries involved:
->
->      autovcr@kuryakin:~$ ldd /bin/bash
->              libncurses.so.5 => /lib/libncurses.so.5 (0x40018000)
->              libdl.so.2 => /lib/libdl.so.2 (0x40055000)
->              libc.so.6 => /lib/libc.so.6 (0x40058000)
->              /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
-
-root@IG-88:~# ldd /bin/bash
-        libtermcap.so.2 => /lib/libtermcap.so.2 (0x40025000)
-        libdl.so.2 => /lib/libdl.so.2 (0x4002a000)
-        libc.so.6 => /lib/libc.so.6 (0x4002d000)
-        /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
-Permissions on all are 755.
-
->4. Another long shot: how full is /var ? /tmp ? / ? Might bash be >unable to 
->create a log or scratch file, or login a wtmp entry, as an ordinary >user 
->that it can as root (since root can use reserved areas of filesystems)?
-
-Only have one filesystem, /, wich is 11% full (2.7GB of 22GB).
-
->5. And another: might some filesystem be mounted read only?
-
-Nope.
-
->6. This sounds very non-Linux, but ... have you rebooted? It's just >barely 
->possible that some kernel pointer got corrupted somehow and you need to 
->reload a fresh kernel to get the permissions read properly.
-
-Yes we have. He dual-boots M$ Windows, and usually plays games under
-Windows for most of the time he's on his computer.
-
->If none of this gets you anywhere, and no one else comes up with >something 
->better, next time tell us in more detail waht you have been doing to >get X 
->working. Just editing XF86Config-4? Or fiddlign with other parts of the 
->system too?
-
-Mainly editing XF86Config-4.  Also attempting to install the ATI Radeon
-drivers off of ATI's site.  This might be somewhing to worry about, as
-the drivers were only available in RPMs, and Slackware doesn't nativly
-support RPMs.  I used Alien to convert it to a Slackware tgz package,
-and it seemed to install fine.
-
-Just solved it.  Thought popped into my head, what's the permission on
-the /lib directory? 700.  Changed to 755, everything works fine.
-
-Thank's for the help everyone,
-Conway S. Smith
 
 
-________________________________________________________________
-The best thing to hit the internet in years - Juno SpeedBand!
-Surf the web up to FIVE TIMES FASTER!
-Only $14.95/ month - visit www.juno.com to sign up today!
+
+--=20
+Using M2, Opera's revolutionary e-mail client: http://www.opera.com/m2/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
