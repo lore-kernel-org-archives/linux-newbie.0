@@ -1,62 +1,49 @@
-From: John Kelly <bilbo@waitrose.com>
-Subject: Re: ssh setup: user 'locked out' daily
-Date: Thu, 19 Aug 2004 17:12:27 +0100
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Slack9.0 and Loadlin???
+Date: Thu, 19 Aug 2004 14:45:47 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040819171227.21e76e1c.bilbo@waitrose.com>
-References: <20040223225259.GA11316@sevoog.kriation.com>
-	<GNEPLLCIIBHICCOGIAKPCEDJDDAA.eatley@wowcorp.com>
+Message-ID: <20040819184547.GA481@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <GNEPLLCIIBHICCOGIAKPCEDJDDAA.eatley@wowcorp.com>
+Content-Disposition: inline
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
-On Thu, 19 Aug 2004 11:13:22 -0400
-"Eve Atley" <eatley@wowcorp.com> wrote:
+Greetings: Anyone loading a Slack9.0 kernel using Loadlin 1.6C, also
+tried Loadlin 1.5, without getting an "Not an image file" report??
 
-> 
-> We have SSH running on our Linux Redhat 9 server. I set up new users
-> to dump them upon initial login to a common directory using the
-> following command:	useradd -M -d /home/shared username -p password
-> 	passwd username (for some reason, -p password doesn't work?)
-> 
-> On a daily basis, they are locked out. /var/log/secure indicates the
-> following:
-> 	fatal: monitor_read: unsupported request: 24
-> 	PAM rejected by account configuration[13]: User account has
-> 	expired
-> 
-> /var/log indicates the following:
-> Aug 19 10:38:15 wow-rtr sshd(pam_unix)[19144]: account emon has
-> expired(failed to change password)
-> 
-> They log in with winscp3 (graphical client) using sftp.
-> 
+Wanting to install SLack9.0 I noted the CD I have does not boot even
+when the BIOS is set to boot a CD, so I thought, no problem, I'll
+just use Loadlin in a Dos partition, running DRDos 7.03, with the
+proper set up assigning drive E: to the 32X CDRom drive..
 
-I haven't looked at RedHat since 7.3 but ...
- 
-The problem here seems simple enough - the user account has expired.
-Have a look at the man page for passwd and in particular the -x -n -w
--i options. There is also a program called chage which changes the
-account ageing details. Account expiry information is held in
-/etc/shadow - the manpage for shadow explains how it works.
+Following the RTFM instructions I entered:
+loadlin e:\kernels\bare.i\bzimage initrd=e:\isolinux\initrd.img -
+that should load the kernel thence the setup program.. I tried
+copying bzimage and initrd.img to C:\ and still get the same "Not an
+image file" report.. Just invoking 'loadlin bzimage' screen reports
+the usual "loading..................", but then stops with "Not an
+image file."
 
-I believe that there is a file in /etc/system/ or /etc/sysconfig/ (I
-am not sure of the name) on RedHat which sets the default
-password/account ageing policy.  You may have to edit this file so
-that newly created accounts don't expire. There may even be a kewl
-graphical tool to do this - I haven't looked at RedHat recently and I
-don't use kewl graphically tools anyway :-).
+I tried two other kernels including the one this machine uses and
+still get the same report no matter what I do...
 
-Hope this helps.
+I'm beginning to think that Loadlin will just not load a 9.0 kernel..
+I note that Slackware safety floppies generated after version 8.01
+use SysLinux as a loader, wondering if the kernels are different and
+not what Loadlin is expecting...
 
-regards,
+Any light to be shed?? TIA. (BTW, I have SL9.1 and it's CD boots OK
+on the subject machine but due to space constraints wanted to use 9.0
+instead.)  (I, finally, booted with 9.1, thence installed the files
+from the 9.0 CD, using it's bzimage kernel.) There must be a better
+way?
 
-John Kelly
-
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
