@@ -1,141 +1,39 @@
-From: Steven.Barrett@fairfaxcounty.gov
-Subject: RE: Blocking hackers
-Date: Fri, 21 Jun 2002 19:13:49 -0400
+From: Elias Athanasopoulos <eathan@otenet.gr>
+Subject: Re: C compiler cannot create executables
+Date: Sat, 22 Jun 2002 11:07:41 +0300
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <DAA4E1F5DCBF2D409D3E0815E1981B181017B1@FFXEXV01.FFX.CO.FAIRFAX.VA.US>
+Message-ID: <20020622110741.A1128@neutrino.particles.org>
+References: <200206210859.g5L8xRc02729@philonline.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200206210859.g5L8xRc02729@philonline.com>; from pfheiss@philonline.com on Fri, Jun 21, 2002 at 04:59:27PM +0800
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: Peter <pfheiss@philonline.com>
+Cc: linux-newbie@vger.kernel.org
 
-Related to Apache and hacking - ExtremeTech issued an update to an Apache
-security problem they reported on June 17th.  Apparently the problem is more
-serious than first reported.  On Intel based machines running various
-flavors of Unix (including Linux) a hacker may be able to gain root access.
-The report also says that the problem is even more serious (if it could be)
-on MS systems running Apache.  They recommend patching immediately and gave
-the following URLs for further information:
+On Fri, Jun 21, 2002 at 04:59:27PM +0800, Peter wrote:
+> Hi,
+>  trying to configure a program I get the following message and .configure 
+> stops.
+> 
+> checking for C compiler default output... configure: error: C compiler cannot 
+> create executables
+> 
+> What has to be done to correct this?
 
-http://extreme.ziffdavis.com/cgi-bin10/flo?y=eQuz0CzBSD0FBU0oGS0Ad
-http://extreme.ziffdavis.com/cgi-bin10/flo?y=eQuz0CzBSD0FBU0oGT0Ae
-http://extreme.ziffdavis.com/cgi-bin10/flo?y=eQuz0CzBSD0FBU0oGU0Af
-http://extreme.ziffdavis.com/cgi-bin10/flo?y=eQuz0CzBSD0FBU0oGV0Ag
+Do this:
 
-You should be able to find the complete article, "Security Alert:  Apache
-hole allows root access", at www.extremetech.com.
-  
-Steve
+% echo "int main(void) { return 1; }" > foo.c && gcc foo.c -o foo ; ./foo
 
-> -----Original Message-----
-> From: Chuck Gelm [mailto:nc8q@gelm.net]
-> Sent: Friday, June 21, 2002 3:50 PM
-> To: Phillp Morgan; linux-newbie@vger.kernel.org
-> Subject: Re: Blocking hackers
-> 
-> 
-> I get the same thing, Phillp.
-> 
-> It is not a hacker, it is a trojan infected user.
-> The host owner probably has no idea that his system
-> is trying to infect your web server with Nimda.
-> 
->  If you are not running an unpatched version of a
-> Windows server, you are not vulnerable to this attack.
-> It consumes very very little bandwidth. ;-)
-> 
-> I use apache. ;-)
-> 
->  Also watch for 'Code Red'.  Those log file lines
-> will have a bunch of upper case "N's in them.
-> ala:
-> 211.218.111.96 - - [08/May/2002:03:15:03 -0400] "GET
-> /default.ida?NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-NNNNNNNNNNNNNNNNNNNNNN>
-NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-> NNNNNNNNNNNNNNN%u9090%u6858%ucbd3%u7801%u9090%u6858%ucbd3%u780
-> 1%u9090%u6858%ucbd3%u7801%u9090%u9090%u8190%u00c3%u0003%u8b00%
-> u531b%u53ff%u0078%u0000%u00=a 
-> HTTP/1.0" 400 316
-> 
-> Again, if your are not running an unpatched Windows server...
->  
-> HTH, Chuck
-> 
-> Phillp Morgan wrote:
-> > 
-> > Hi,
-> > 
-> > It looks like someone is trying to break into my system. 
-> This is out of my
-> > apache error log...
-> > 
-> > >61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET 
-> /MSADC/root.exe?/c+dir
-> > HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:30 +1000] "GET
-> > /c/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:31 +1000] "GET
-> > /d/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:32 +1000] "GET
-> > /scripts/..%255c../winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:33 +1000] "GET
-> > /_vti_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+di
-> > r HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:34 +1000] "GET
-> > /_mem_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+di
-> > r HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:36 +1000] "GET
-> > /msadc/..%255c../..%255c../..%255c/..%c1%1c../..%c1%1c../..%c1%1c../
-> > winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:29 +1000] "GET 
-> /MSADC/root.exe?/c+dir
-> > HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:30 +1000] "GET
-> > /c/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:31 +1000] "GET
-> > /d/winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:32 +1000] "GET
-> > /scripts/..%255c../winnt/system32/cmd.exe?/c+dir HTTP/1.0" 404 -
-> > >61.243.140.78 - - [21/Jun/2002:13:58:33 +1000] "GET
-> > 
-> /_vti_bin/..%255c../..%255c../..%255c../winnt/system32/cmd.exe?/c+dir
-> > HTTP/1.0" 404 -
-> > 
-> > Is there any way I can block this nasty person?
-> > 
-> > Who should I report this to?
-> > 
-> > Regards,
-> > 
-> > Phillip Morgan
-> > Chief Information Offier
-> > Quickpages Business Directories
-> > 
-> --------------------------------------------------------------
-> --------------
-> > ------------
-> > This email is intended for the above named recipient only, 
-> and may contain
-> > priveledged information. If you are not the intended 
-> recipient please delete
-> > this email immediately and notify Quickpages of the problem.
-> > 
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+If you get any errors check for your gcc installation.
+
+Elias  
+
+-- 
+http://gnewtellium.sourceforge.net			MP3 is not a crime.	
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
