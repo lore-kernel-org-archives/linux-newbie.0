@@ -1,31 +1,28 @@
-From: Riley Williams <rhw@InfraDead.Org>
-Subject: Re: newbie
-Date: Tue, 20 Aug 2002 20:53:54 +0100 (BST)
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: APM and  a fresh linux box
+Date: Tue, 20 Aug 2002 14:16:55 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0208202052500.8397-100000@Consulate.UFP.CX>
-References: <3D628D62.27F63560@ihug.co.nz>
-Reply-To: Riley Williams <Riley@Williams.Name>
+Message-ID: <200208202115.g7KLFkS09958@firebin.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3D628D62.27F63560@ihug.co.nz>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: ichi@ihug.co.nz
-Cc: Linux Newbies <linux-newbie@vger.kernel.org>
+Content-Type: Text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi Steven.
+I'm having some issues with getting APM to function under a Linux from Scratch installation I recently did so I could understand linux better.  First issue to resolve:
 
->> Another option would be for your script to drop 
->> the relevant commands into the keyboard buffer 
+shutdown -r now  shutsdown to the point where the console informs you it is rebooting.  It never reboots, it halts there.
 
-> How is this done?
+I have:
 
-All I know is that there are programs that do just that.
-I wish I knew how they did it, but I don't 8-((
+Amptron 9100C motherboard which dmesg tells me version 1.2 APM compliant
+I have compiled APM in the 2.4.18 kernel
+I have enabled power management in the BIOS which is upgraded the latest which is a couple of years old now.
 
-Best wishes from Riley.
+I'm working on compiling apmd, having just been taught how to get the xbat to not cause aborting of the compile since I don't have Xfree installed yet on my LFS system.
 
+Thoughts on what to check?  What to do?  How to test?
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
