@@ -1,43 +1,35 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: smtp_auth using home server
-Date: Fri, 29 Nov 2002 21:43:57 +0000 (GMT)
+From: Adam Luchjenbroers <Adam@Luchjenbroers.com>
+Subject: Re: A few questions
+Date: Mon, 2 Dec 2002 16:26:08 +0930
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0211292140430.12377-100000@ppg_penguin.linux.bogus>
-References: <20021128092136.GA9631@teamfinders.org>
+Message-ID: <200212021626.08487.Adam@Luchjenbroers.com>
+References: <200212012032.22587.Adam@Luchjenbroers.com> <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
+Reply-To: Adam@Luchjenbroers.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021128092136.GA9631@teamfinders.org>
+In-Reply-To: <Pine.LNX.4.50.0212010803280.1213-100000@athame.gmpexpress.net>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "Theo. Sean Schulze" <tschulze@teamfinders.org>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Thu, 28 Nov 2002, Theo. Sean Schulze wrote:
+On Sunday 01 Dec 2002 10:36 pm, dashielljt wrote:
+> By way of answering question 3, have a look at the sysback script below.
+> Understand I'm going to patch it a little so another version that puts
+> dates in file names for the .log file and the actual backup files as well
+> so another version will appear.
 
-> Hello,
-> 
-> Does anyone have any advice they can offer on setting up smtp_auth on my SuSE 8.0 system at home?  The problem I am trying to solve is this.  My SuSE 8.0 system here at home (dragoon.nuthole.de/localhost) is set up to send my emails out as tschulze@temfinders.org.  Teamfinders.org is a domain that I have that is hosted by a hosting service, and that service is not my ISP.  My ISP is 1&1 here in Germany, and I have a separate domain there that they offered as part of my DSL package.  Several times now I have gotten email deliveries rejected because the dynamically assigned IP I receive from 1&1 is blackholed.  There appears to possibly be an issue with the machines at those addresses being open relays used for spamming.  I have checked my mail logs, and as far as I can tell, my machine is rejecting attempts to use it as an open relay.  Several of the rejection messages have suggested the possibility that the emails would have been accepted if I had been using smtp_auth.
-> 
-> I have read through SuSE's configuration file at /etc/sysconfig/sendmail, and shortly I will start working my way through /usr/share/doc/packages/sendmail/README and /usr/share/doc/packages/sendmail/op.txt.bz2.  I have also printed out several articles from www.sendmail.org/~ca/ and have begun to read through those.  (That's going to take several re-reads though before I've grokked all that.)  So, I have no shortage of information on the topic.  What I was hoping for was that if anyone on the list has some helpful hints or tips from having done something like this himself, particularly setting up a home server to climb out of the black hole, then that might help me get a step ahead.
-> 
-> Cheers,
-> Sean
-> 
->
- Looks as if I'll need to do something similar soon, so maybe this link
-to my ISP might help -
-http://www.uklinux.net/support/#antispam
+Nice, but I only wanted to back-up the specific files that held the user 
+accounts. I suspect right now that alot of my disk-space is being used up by 
+assorted junk and I figure backing up the important stuff and re-installing 
+will help me recover it.
 
- It seems you need to build your own MTA using the SASL libraries. There
-are instructions for the changes to postfix or exim, and a pointer to
-sendmail.org. 
-
-Ken
 -- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
+"There is no such thing as sleep deprivation, only caffeine deficiency." - 
+Simmons
 
+Please avoid sending me Word or PowerPoint attachments.
+See http://www.fsf.org/philosophy/no-word-attachments.html
 
 
 -
