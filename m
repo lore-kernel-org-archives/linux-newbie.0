@@ -1,31 +1,35 @@
-From: Chuck Gelm <nc8q@gelm.net>
-Subject: Trying to get GUI'ed
-Date: Sun, 20 Oct 2002 10:15:35 -0400
+From: Hal MacArgle <haltec@iceweb.net>
+Subject: Re: A few more things and I can kiss windows good bye.
+Date: Sun, 20 Oct 2002 10:53:04 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DB2BA87.E2C47BDD@gelm.net>
-References: <200210190850.g9J8oBF04104@philonline.com>
+Message-ID: <20021020105304.A230@lnx2.w8mch.ampr.org>
+References: <20021016100603.8BBD36BD5C@smtp.orcon.net.nz> <Pine.BSF.4.44.0210192235570.26747-100000@server1.shellworld.net>
+Reply-To: haltec@iceweb.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <Pine.BSF.4.44.0210192235570.26747-100000@server1.shellworld.net>; from jdashiel@shellworld.net on Sat, Oct 19, 2002 at 10:40:50PM -0400
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Howdy, Y'all:
+Greetings: Excuse if this is redundant - but has anyone mentioned
+running any of the DOS versions of BASIC using 'DOSEMU???
 
- I am trying to 'upgrade' from 'console' to GUI.
-I think I have successfully installed XFree86/4.2.1.
-I can 'startx' and I get a monochrome desktop with
-a tiny clock and three windows; 'login', 'xterm', and 'xterm'.
-I can toggle among three resolutions.
+Some of the BASIC compilers, if needed, may be a problem but
+otherwise should be AOK...
 
-I want to run a browser, preferably Netscape
- (preferably v4.61 if available for linux).
 
-What am I missing?
-Where do I go for help to get from where I am to where I want to be?
+    Hal - in Terra Alta, WV - Slackware GNU/Linux 8.0   (2.4.13)
+	       haltec@iceweb.net | w8mch@iceweb.net.
+		    NON ILLEGITIMI CARBORUNDUM
 
-Regards, Chuck
+On 10-19, Jude DaShiell wrote:
+> The xbasic wouldn't help at all.  The linux gui interface has a long way
+> to go to get accessible to the point where blind users can use it with
+> screen readers.  Even so, I don't ever expect I'll ever use the GUI under
+> linux since I installed linux to specifically use its text interface.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
