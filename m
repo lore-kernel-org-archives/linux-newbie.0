@@ -1,29 +1,20 @@
-From: Andrew Langdon-Davies <ald2@arrakis.es>
-Subject: olivetti p100 with onboard ATI Mach64
-Date: Wed, 30 Apr 2003 19:50:53 +0200
+From: James Ferris <james_e_ferris@yahoo.ca>
+Subject: need to switch NICs... process?
+Date: Wed, 30 Apr 2003 12:18:36 -0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3EB00CFD.5040100@arrakis.es>
+Message-ID: <5.1.0.14.1.20030430121655.02d2bb90@pop.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello,
-I have two machines as described above and both give me exactly the same 
-problem. Soon after booting from a Linux floppy the screen goes blank. 
-In the case of Tomsrtbt this happens just after the screen for choosing 
-a video mode.
- The manual describes the video controller as:
--Component ATI Mach64-CT with 1 MB or 2 MB of video memory, integrated 
-on the motherboard, and the DPMS, DDC 1 features
--Board IN2052 with video connector output.
-Is there a solution to this?
-TIA
-Andrew
-
-
+Hello list,
+Is there a 'best process' for changing out a NIC?
+I would be going from a dlink 528 (10bT) to a dlink 530 (100bTX).
+Thanks
+James
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
