@@ -1,40 +1,45 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: zipdisk file problems
-Date: 15 Dec 2002
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: how to launch downloaded files?
+Date: Sat, 14 Dec 2002 18:46:07 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200212150239.gBF2d2iG023078@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <5.1.0.14.1.20021214184053.020e30b0@celine>
+References: <3DFBEA9E.9000704@look.ca>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <3DFBEA9E.9000704@look.ca>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-On a Zipdisk-ette, where directories and files had been changed and
-shoveled around - both with running DOS and Linux -, some files (jpg.s)
-suddenly became inaccessible with a Linux pixel application (in case,
-good old XView: it hangs "hard", not only X but the whole machine is
-frozen, only way out it with the ugly red buton).
+At 09:36 PM 12/14/02 -0500, R. Bal wrote:
+>Hi All,
+>
+>I'm a day old Linux user, and am loving the system performance. Everthing 
+>is great, except that I can't seem to get the files I download off the net 
+>to "execute".  I know where the files are being saved.  How do I "run" 
+>them?  I have a Netscape installer, but can't seem to get it working.
+>
+>Any suggestions?  I'm running Red Hat 8.0.
 
-Though from DOS there is no whatsoever access problem, the files
-themselves appear integer. And under Linux, the trouble does not seem
-to be specific with one distinct file - some re-arrangement of files in
-that specific directory would (eventually but not necessarily) make
-reappear that total hung-up with another file.
+Since you put "execute" and "run" in quotes, I wonder if you are referring 
+to something other than running an downloaded application that was compiled 
+for Linux. If you are, please explain further what you mean.
 
-The (internal, SCSI) Zipdrive is mounted as (filesystem-)"type msdos" in
-"fstab".
+If not ... if that is what you mean ... you either run it from a 
+command-line prompt (in X, open an xterm or eterm and run it from there), 
+or you add it to your X window-manager's popup menu (comes up with the 
+right mouse button, normally), or you do something specific to the desktop 
+environment (e.g., Gnome or KDE) that you are running. There are also 
+specialized "launcher" applications that emulate some of the click-to-run 
+style of the Windows GUI.
 
-I suspect some pecularities of the DOS/FAT16 filetables.  Straight xcopy
-to HD, then xcopy back the entire zipdisk (under DOS) on a new or hard
-formatted zipdisk does away with the problem. With erasing files or
-directories, however, DOS does not really "wipe" an entry in the file
-allocation table but merely sets a marker (8-bit) byte for "deleted"
-files. Could it be this which irritates the Linux application ?
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-12-14
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
-
+--
+-------------------------------------------"Never tell me the odds!"--------
+Ray Olszewski					-- Han Solo
+Palo Alto, California, USA			  ray@comarre.com
+-------------------------------------------------------------------------------
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
