@@ -1,110 +1,76 @@
-From: Ken Moffat <ken@kenmoffat.uklinux.net>
-Subject: Re: unable to ping cable provider
-Date: Sat, 23 Nov 2002 15:13:56 +0000 (GMT)
+From: Haines Brown <brownh@hartford-hwp.com>
+Subject: Re: I killed user's x server
+Date: Sat, 23 Nov 2002 10:17:10 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.LNX.4.21.0211231459440.14581-100000@ppg_penguin.linux.bogus>
-References: <20021123145412.LQUH16799.mta05-svc.ntlworld.com@there>
-Mime-Version: 1.0
+Message-ID: <200211231517.gANFHAv17709@hartford-hwp.com>
+References: <200211202236.gAKMaIK05653@hartford-hwp.com> <200211221843.gAMIh4W08194@hartford-hwp.com> <200211222145.gAMLjcQ12678@hartford-hwp.com> <02112313295302.00286@unix.pa3gcu>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021123145412.LQUH16799.mta05-svc.ntlworld.com@there>
+In-reply-to: <02112313295302.00286@unix.pa3gcu> (message from pa3gcu on Sat,
+	23 Nov 2002 13:29:53 +0000)
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: John Kelly <jkelly@ntlworld.com>
+To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-On Sat, 23 Nov 2002, John Kelly wrote:
-
+> > When I inserted a new nVidia graphics card (and even after after
+> > replacing it with the old card of the same type), users could no
+> > longer start X because the configuration looked for decprecated
+> > libraries (pex5 and xie).  Root had no such trouble.
 > 
-> I have an NTL broadband connection and I guess I should know how it works or 
-> not.. I have a setup similiar to yours but I would advise you to forget about 
-> iptables and/or NAT and get a standalone box up on NTLs network first. 
-> Once you have a standalone box working, you can consider your network.
-> I actually used a windows box 'cos NTL refused to have anything to do with 
-> Linux.
+> The NVidia driver i use does not has pex5 or xie, just what driver did you 
+> try.??
+
+The problem was that apparently I was using the wrong driver, and that
+killed X server, and so I backed out. I'm currently using the nv
+driver that comes with my RH distribution. 
+
+> man XF86Config states
+> "
+> XFree86  uses  a configuration file called XF86Config for its initial setup.  
+> This configuration file is searched for in the following places when the 
+> server is started as a normal user:
+>  
+>            /etc/X11/<cmdline>
+>            /usr/X11R6/etc/X11/<cmdline>
+>            /etc/X11/$XF86CONFIG
+>            /usr/X11R6/etc/X11/$XF86CONFIG
+>            /etc/X11/XF86Config-4
+>            /etc/X11/XF86Config
+>            /etc/XF86Config
+>            /usr/X11R6/etc/X11/XF86Config.<hostname>
+>            /usr/X11R6/etc/X11/XF86Config-4
+>            /usr/X11R6/etc/X11/XF86Config
+>            /usr/X11R6/lib/X11/XF86Config.<hostname>
+>            /usr/X11R6/lib/X11/XF86Config-4
+>            /usr/X11R6/lib/X11/XF86Config
+> "
 > 
-> > My own network is working fine - all the boxes talk to each other, using
-> > /etc/hosts for name lookups. The firewall is running LFS-3.3.
-> >
-> > My connection to NTL is using dhcp (I'm running dhclient-3.0pl1). I get
-> > assigned an address (10.64.14.5 at the moment) when I bring up the
-> > interface and I can see the lease data in
-> > /var/state/dhcp/dhclient.leases being updated at intervals. This same
-> > file shows the router is 10.64.14.1 and the dhcp-server is 10.0.138.70 .
-> >
+> So you see that XF86Config-4 will get "ignored" IF a file called XF86Config 
+> is found.
+
+Yes, I see that now that you point it out. This is why I'm using
+XF86Config-4. So it seems the problem is not that I'm using the wrong
+configuration file, but that it tries to load depcrecated libraries.
+
+> > So my question is, how do I get XF86 to use XFConfig rather than
+> > XFConfig-4? Is there a utility to set this value?
 > 
-> Is the DCHP working correctly? ie what does '/sbin/ifconfig eth1' show?
+> Looks like you have "named" your files incorrectly, you keep making 
+> referancies to, "XFConfig" and "XFConfig-4" they are;
+> XF86Config
+> XF86Config-4
 
-eth1	Link encap:Ethernet  HWaddr 00:40:F4:39:3D:BC
-	inet addr:10.64.14.5  Bcast:255.255.255.255  Mask:255.255.255.0
-	UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-	RX packets:50036 errors:0 dropped:0 overruns:0 frame:0
-	TX packets:53 errors:0 dropped:0 overruns:0 carrier:0
-	collisions:0 txqueuelen:100
-	RX bytes:3007236 (2.8 Mb)  TX bytes:6972 (6.8 Kb)
-	Interrupt 10 Base address:0xf800
-> 
-> > The first stage of making the connection usable is to register with
-> > NTL. Stuff on google suggests that all http requests are diverted to the
-> > sign-up server at this point, for a page start.html. I tried to use lynx
-> > to get this page, but it failed. Examination shows that I cannot ping
-> > any of the NTL addresses from the firewall. I'm using iptables, so I
-> > cleared out all the tables and re-enabled ip-forwarding in case the
-> > firewall script was the problem (I'm guessing this is safe for the
-> > moment because of the lack of connectivity).
-> 
-> When you sign up to NTL broadband, you have to register your cable modem. 
-> This was my downfall as the server did not seem to like me and It took 2 
-> months for NTL to fix. 
+Sorry. Typos. My head begins to swim. Also, because I'm running emacs
+to write, and doing so from a user xterm with root logged in, I don't
+have some of my configurations, and as a result, the type is
+microsopic. I can barely see it.
 
-Actually, mine is a "set-top box" - there are different signup pages for
-the Win/mac signup clients, and even a different tech support phone
-number. Sounds encouraging, like the poster somewhere else who reported
-that the ethernet cable they sent him was broken...
+I'm going to try simply to edit the XF86Config-4 to remove the
+statement that load the deprecated libraries and see what happens.
 
-> The google stuff sounds correct. I could only connect to one IP until I was 
-> registered. My old employer, an ISP had a similiar setup in that people 
-> dialling in with a singup CD could only access the signup server. 
-> So there is nothing up usual in not being able to ping any NTL addresses. If 
-> there is an access list in place for unregistered users then you cannot ping 
-> anything except what the ACL allows. My NTL default gateway does not respond 
-> to pings and the signup server is probably configured in the same way. 
->
-Thanks for this, maybe my side is ok after all.
- 
-> The chances are that the NTL signup server is 'optimised' for a specific 
-> browser. I seem to recall that it had lots of popups and other dancing 
-> baloney. So that probably explains why lynx does not work. I don't have the 
-> URL to hand or I could check. 
->
-
-I saw a posting from somebody in Bristol who used lynx to register (some
-months ago), but I've seen other stuff this week suggesting you need
-javascript enabled. Rude words, I don't think any of my linux browsers
-have js enabled.
-
- If my side seems ok, then I'm tempted to put the nic into a windows box
-and try that. I've already tried using the ntl installation CD on my
-iBook using mac OS-9, but that fails when it tries to get a dhcp address
-(well it would do, my firewall is in the middle, no point registering
-the iBook's hw address), --- then falls back to ping (but doesn't say
-where to) --- and eventually fails when it can't ping.
-
-> 
-> Hope this helps.
-> 
-> regards,
-> 
-> John Kelly
-> 
-
-Thanks, John. Looks useful.
--- 
- Out of the darkness a voice spake unto me, saying "smile, things could be
-worse". So I smiled, and lo, things became worse.
-
-
-
+Haines
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
