@@ -1,36 +1,84 @@
-From: Heimo Claasen <hammer@revobild.net>
-Subject: Re: Trying to get GUI'ed
-Date: 23 Oct 2002
+From: Frank Roberts - SOTL <sotl155360@earthlink.net>
+Subject: Re: RedHat 8
+Date: Wed, 23 Oct 2002 16:24:32 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <200210231953.g9NJrFdC012165@pyxis.wanadoo.be>
-Content-Transfer-Encoding: 8bit
+Message-ID: <200210231624.32476.sotl155360@earthlink.net>
+References: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <002e01c27a90$5f956220$64fea8c0@pkrausxp>
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Paul Kraus <pkraus@pelsupply.com>, linux-newbie@vger.kernel.org
 
-Ray's "first draft to a window manager how-to" did (finally!) give me
-some insight.
-(I would like to go longer in reading and putting other bits and pieces
-in there too - just haven*'t got the time right now, woner when ever...)
+First the major change in RH 5.0 to 6.0 to 7.0 to 8.0 appear to be major 
+changes in the RH side of the software meaning major changes in the 
+installation and configuration programs.
 
-Practical question: is it possible, and how then, to run X and some
-application in it at a very "low level", for instance _without_ as
-much as could be cut off from the libraries (both Gtk and Qt) needed
-for the "higher level" managers/desktops ?
-And how to de-install these latter cleanly without creating new problems ?
+The changes in x.0 to x.2 to x.3 appear to be changes in the content and 
+progressive increases (sometimes) in stability. 
 
-(The problem I have with that SCSI device and the application for it is
-not the deveice's functioning, which works Ok., but this application's
-screen GUI - it's definitely some conflict there with both Gtk and Qt
-"families", i.e. using either KDE or Gnome. The one occasion it did
-run well was with a "just window maker" install of X. Thus banning the
-additional presence of those Gnome/KDE could perhaps avoid that
-collision, whatever it is.)
+For RH 7.3 to RH 8.0 the kernel was increased to 2.4.18 from 2.4.3 (I believe 
+2.4.3 is correct although it may be incorrect.).
+Open Office replaced Star Office
+and 
+a hatchet job was done to KDE and KDE programs. There is no more KDE.
 
-// Heimo Claasen // <hammer at revobild dot net> // Brussels 2002-10-23
-The WebPlace of ReRead - and much to read  ==>  http://www.revobild.net
+Considering if you had an official copy of RH7.3 installed you could then 
+automaticall update most programs then the only advantage RH 8.0 would bring 
+to your system would be the updated kernel and the new configuration program. 
+
+As for as the programs which you can not automatically update an inspection 
+shows most of the GUI programs appear to be KDE the very programs RH left out 
+of RH 8.0.
+
+Bottom line RH 8.0 Personal is not half as good as RH 7.3 Personal.
+ 
+I have no idea the status of the profession edition is because it cost $150 
+versus $40 for the personal. Note RH 8.0 Personal is cheaper than RH 7.3 
+Personal which was $55.
+
+I would recommend switching to Suse which is in some ways a more advanced 
+distribution than RH except for Yast2. If you want to do a standard 
+configuration with Suse but if you have a oddball or personalized 
+configuration well you may experience certain difficulties.
+
+As far as RH new GUI it appears to be nothing more than a screwed up version 
+of Gnome.
+
+Fortunally I have 2 HDs for this computer a test HD and the normal operating 
+HD. I say fortunately because I installed RH 8.0 on the test HD for 
+verification of installation before updating the normal system. The above 
+comments come from that test. 
+
+There is only one other comment on this pitiful trash distribution - RH 8.0 I 
+wish to make. At our next Linux meeting I will give away the RH 8.0 complete 
+box as a boobie prize.
+
+Thanks
+
+Frank  
+
+
+
+
+
+On Wednesday 23 October 2002 08:33, Paul Kraus wrote:
+> What does everyone think of RedHat 8.
+>
+> Paul Kraus
+> Network Administrator
+> PEL Supply Company
+> 216.267.5775 Voice
+> 216-267-6176 Fax
+> www.pelsupply.com
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
