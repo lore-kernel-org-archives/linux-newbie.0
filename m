@@ -1,47 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: USB PCI
-Date: Tue, 17 Dec 2002 08:07:43 -0800
+From: Petre Bandac <g38@rdsbv.ro>
+Subject: mac address change on an eth alias
+Date: Tue, 17 Dec 2002 22:07:22 +0200
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20021217075855.020a7110@celine>
-References: <Pine.LNX.4.50.0212162100570.217-100000@athame.gmpexpress.net>
+Message-ID: <200212172207.22480.g38@rdsbv.ro>
+Reply-To: g38@rdsbv.ro
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20021217094200.13045.qmail@web2.mailbox.hu>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-At 10:41 AM 12/17/02 +0100, Korosi Akos wrote:
->Hi!
->
->dashielljt <dashielljt@gmpexpress.net> wrote:
->
-> >Here's your problem.  You must have a bios on that computer that has a
-> > date on or after July 1, 1989.
->...
-> > Jude <dashielljt(at)gmpexpress-dot-net>
->
->Thanks! And if the bios is newer, than this date
->(I could check this only in weekend), then
->there are no other problems?
+root@k:~# ifconfig eth0:1 123.123.123.123 netmask 255.255.255.0 hw ether 
+00:E0:7D:02:C6:0C
+SIOCSIFHWADDR: Device or resource busy
+root@k:~#
 
-Based on reading Jude's original reply, I'm almost certain that "1989" was 
-a typo and should read "1999". (USB was not even an idea in 1989, let alone 
-a BIOS feature. The original message went on to comment, "Many unethical 
-computer vendors were installing usb equipment before July 1999....") 
-Beyond that ... this should be sufficient to let the kernel's USB support 
-work. Whether you have "other problems" or not depends on the specific USB 
-devices you want to use ... an increasing number are supported by the Linux 
-kernel, but there's no way to know if unnamed devices are supported or not, 
-or what the difficulties of getting them to work might be.
+am I trying to do something impossible or is it only my NIC (Realtek 8139) 
+that can't do it ?
+
+I want to have 2 ip's on the same interface - but with 2 different macs ... 
+why? because this is my testing server and, among others (dhcp, bind, 
+sendmail/postfix, asterisk, etc) I want to actually see how a mac address can 
+be changed ... if it's possible
+
+thank you for you patience,
+
+petre
 
 
---
--------------------------------------------"Never tell me the odds!"--------
-Ray Olszewski					-- Han Solo
-Palo Alto, California, USA			  ray@comarre.com
--------------------------------------------------------------------------------
+-- 
+ 22:01:49 up  5:31,  1 user,  load average: 0.04, 0.11, 0.14
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
