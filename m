@@ -1,49 +1,56 @@
 From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Kernel error
-Date: Mon, 27 May 2002 15:18:27 +0000
+Subject: Re: HowTo: Fortifying a internet connected Linux server?
+Date: Mon, 27 May 2002 15:30:46 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <02052715182704.01212@unix.pa3gcu>
-References: <A1F41DE771DCD5119FE30060089343500A58C6@NET-ARCH> <m3n0um5hsy.fsf@wobble.eth.net>
+Message-ID: <02052715304605.01212@unix.pa3gcu>
+References: <FC79D1F4C922D511983400104BC303880195A1@DELL1>
 Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <m3n0um5hsy.fsf@wobble.eth.net>
+In-Reply-To: <FC79D1F4C922D511983400104BC303880195A1@DELL1>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Ola Theander <ola.theander@connective.se>, "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
-On Monday 27 May 2002 04:35, G Anna wrote:
-> > Date: Sun, 26 May 2002 07:57:59 -0700
-> > From: Shaun Bryant <sbryant@ThePit.org>
-> > Subj: RE: Kernel error
+On Monday 27 May 2002 14:57, Ola Theander wrote:
+> Dear subscribers.
 >
-> (snip)
+> I'm currently setting up a home network which will have a Linux box acting
+> as a gateway/firewall, connected to the Internet, for my internal network.
+> The gateway computer will also have servers for the following services:
+> HTTP, SMTP and DNS.
 >
-> > depmod: *** Unresolved symbols in
-> > /lib/modules/2.4.5/kernel/arch/i386/kernel/microcode.o.gz
-> > depmod: *** Unresolved symbols in
->
-> (snipped depmod error listing)
->
-> I am just guessing.  While compiling the kernel did you do
->
-> $ make mrproper
->
-> before anything else?  I had a similar problem and it was because of
-> not making the above mentioned target.
+> My question is, is there any good documentation, books or on-line, about
+> how to setup and secure an Internet exposed Linux server? The server will
+> run SuSE Linux 8.0, kernel 2.4.18.
 
-I can assure you that is not his/her problem.
+My thought's, i expect Ray and Lawson will chip in as well.
 
-Unresolved symbols are caused by many things, one is using the wrong 
-System.map another is trying to load module "b" before module "a" is loaded, 
-why,? because module b is dependant on module a and b will barf at you if 
-module a is not loaded.
+Documentation on a secure server, i would be suprised if there was not an URL 
+somewhere, however i know not of one.
+
+If i was doing what you want to do i would make sure "all" services such as 
+finger, telnet, ftp, talk, ntalk, rlogin, actually any server "other" that 
+you mentioned above should be closed down.
+
+With IPtables/ipchains depending on which you choose, you can exclude 
+forwarding, many uneeded UDP ports etc etc.
 
 >
-> Of any help?
+> I'm aware that it's not the best solution from a security point of view to
+> expose e.g. a WWW-server directly to the internet, but this is a home
+> network and currently I can't afford a more sophisticated solution.
+
+Yes and no, opinions vary here, i know of a few providers who have www 
+servers directly accessable but they are unix machines only serving www and 
+nothing else.
+
+In your case i would keep the www-page(s) simple, by that i mean as little as 
+possable extern scripts, links and the likes.
+
 >
-> anna
+> Kind regards, Ola Theander
 
 -- 
 Regards Richard
