@@ -1,34 +1,26 @@
-From: "Jerry T" <linuxl1@hotmail.com>
-Subject: Fwd: Re: Fwd: Re: cdrom working! (almost)
-Date: Tue, 09 Apr 2002 04:06:43 +0000
+From: robrice56@netscape.net
+Subject: XF86Config problem fixed
+Date: Tue, 09 Apr 2002 00:20:09 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <F193lljMAkL44wMVSga0001783f@hotmail.com>
-Mime-Version: 1.0
+Message-ID: <642088F0.175FCB51.0349D98D@netscape.net>
+Content-Transfer-Encoding: 8bit
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format=flowed; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-When I try xmms I get about 1 or 2 seconds of music and then the music 
-stops. I can move to any track and get the same results. Neither gtcd nor 
-cdp do anything. The cd's play fine on the same machine running windoze.
+THANK YOU to all who helped me 
+you guys were almost right and did point me in the right way.
+I set the h sync to 31.46 tryed startx.
+It came back with v sync needs to be 59.93
+reset vsync and IT WORKS 
+THANK YOU
 
 
->From: Adam Schrotenboer <adam@tabris.net>
->To: "Jerry T" <linuxl1@hotmail.com>, linux-newbie@vger.kernel.org
->Subject: Re: Fwd: Re: cdrom working! (almost)
->Date: Sun, 7 Apr 2002 22:05:32 -0500
->
->On Sunday 07 April 2002 20:49, Jerry T wrote:
-> > How do I access the cdrom ioctls?
->
->That's cdp and xmms and various programs are for.
->
+__________________________________________________________________
+Your favorite stores, helpful shopping tools and great gift ideas. Experience the convenience of buying online with Shop@Netscape! http://shopnow.netscape.com/
 
-
-
-_________________________________________________________________
-Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
