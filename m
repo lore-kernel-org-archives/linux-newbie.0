@@ -1,39 +1,23 @@
-From: Redjamand Kejvan <d97red@dtek.chalmers.se>
-Subject: Installing Linux: dual boot, fips?
-Date: Thu, 10 Oct 2002 00:16:10 +0200 (MEST)
+From: Alan Womack <arwbackup@worldnet.att.net>
+Subject: re: RAID was: Samba Mount File Corruption
+Date: Wed, 9 Oct 2002 16:11:30 -0700
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <Pine.GSO.4.10.10210092349400.11671-100000@licia.dtek.chalmers.se>
+Message-ID: <200210092310.g99NA7d10263@firebin.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, enigma-list@redhat.com
-Cc: linux-laptop@mobilix.org
+Content-Type: Text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi
-I have a laptop with Win XP already installed. I don't know how difficult
-it could be not reformating the hard disk and repartitioning withthe
-existing XP. The first question is, well, which way is better?
+I assume you are using them in a raid, are you using an IDE controller, if so which one or are you using RAID within the kernel itself.  e.g. software only raid.
 
-Other questions:
-1. How many partition is possible to have on a PC?
-I can make it more complicated by this question:
-2. I have plans to install Free BSD after 3-4 months.
-considering that I would like to have /home on linux on a dedicated
-partition Can I have boot, swap, root, home,  AND FREEBSD?? How should I
-plan?) 
+> (resolution note:) Instead, we got four of the 120G devices, and ended
+up spending $600 for for 480 G instead of $500 for 320 G.  I think,
+doing the math, that was a net gain.
 
-Assuming keeping existing Windows installation the following is of
-interest:
-3. Partitioning the hard drive (e.g.  Dos(XP), boot, swap, root, home)
-using fips. Is there better tools for this? 
-4. What file system for XP should be choosen FAT32 or NTFS?
- 
-I would really appreciate a pointer to a step by step instruction (on the
-web).
- 
-// Kejv
+Having 4 devices vs 2 devices is a tough decision, more possibility for individual failure, more power consumption vs. more and flexibility. :)
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
