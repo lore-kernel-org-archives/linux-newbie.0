@@ -1,58 +1,49 @@
 From: whitnl73@juno.com
-Subject: Re: tar for "full" floppy backup?
-Date: Sat, 7 Dec 2002 21:10:58 -0500 (EST)
+Subject: Re: RAM and swap partition
+Date: Sat, 7 Dec 2002 21:28:40 -0500 (EST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20021207.211305.134684296.3.whitnl73@juno.com>
-References: <3DF253FB.FCE749BE@gelm.net>
+Message-ID: <20021207.212927.134684296.0.whitnl73@juno.com>
+References: <200212080200.gB820cq03238@ev6.be.wanadoo.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3DF253FB.FCE749BE@gelm.net>
+In-Reply-To: <200212080200.gB820cq03238@ev6.be.wanadoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: nc8q@gelm.net
+To: hammer@revobild.net
 Cc: linux-newbie@vger.kernel.org
 
-On Sat, 7 Dec 2002, Chuck Gelm wrote:
+On 7 Dec 2002, Heimo Claasen wrote:
 
->  I did
+> James - that's quite new to me:
+> > ... that when your system has a crash it is
+> > still capable of writing a core dump to the harddisk.
 >
-> tar -cyvf /boot /dev/fd0
->  and
-> /mnt# tar -xyvf /dev/fd0
->  and it created
-> /mnt/boot/
->  and all the files from /boot appeared in /mnt/boot
+> I understood it hitherto that it's needed for cases when a program needs
+> more mem than is free and available ?
+> Or asked the other way round - would any program which uses more RAM
+> than is available at a moment, be respeonsible care for "swapping" its
+> parts (or rather for instance, parts of its data) in/out by itself, and
+> to some own swap file ?
 
-Yes, it will do that.  cd to where you want the files restored to first,
-or use -C:
+For historical reasons, a pagefile is called a swap file.  It is virtual
+memory.  The amount of memory available (to malloc(), FI) is the sum of
+real memory and swap files, less some overhead for the page tables.  The
+old swap is twice ram rule of thumb was for systems trying to run X with
+4 or 8mb real memory.
+>
+> The second part of James' reply is precisely what I hoped for:
+> > (you) can make a new swap partition with eg fdisk and change
+> > the entry for swap in /etc/fstab.
 
-tar -C / -xyvf /dev/fd0
->
->  Next I tried
-> tar -cvMf /dev/fd0 /etc
->  and after some floppy action, I was prompted:
->
-> "Prepare volume #2 for /dev/fd0 and hit return:"
->
-> I'd recommend running 'badblocks' on the diskettes
-> and using only those that report 0 bad blocks.
-> ;-)
+Don't forget to mkswap.
 
-I don't like using a raw floppy for anything but mkfs.
-I'd rather make a filesystem on each one and save a named file on it.
-That way, if I can't read my writing on the label, all is not lost.
-Restore the files to their own [temporary] directory, cat them together,
-and untar them.
-You are trying to use a floppy as a tape, and it just isn't really a
-tape.  Come to think of it, a tape isn't a very good tape either.
+> Using an (emptied) partition to split off a part would be indeed much
+> less risky than a real resizeing of the swap _partition_; and much less
+> worksome, without GB-backups, <g>
 >
-> tar --version
-> tar (GNU tar) 1.13
->  ...
+> -hc
 >
-> HTH, Chuck
-
 Lawson
 --
 ---oops---
