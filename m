@@ -1,39 +1,28 @@
 From: ichi@ihug.co.nz
 Subject: Re: tar for "full" floppy backup?
-Date: Sun, 08 Dec 2002 08:36:23 +0000
+Date: Sun, 08 Dec 2002 08:41:33 +0000
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <3DF30487.1829715E@ihug.co.nz>
-References: <200212070919.CAA12532@cu.imt.net>
+Message-ID: <3DF305BD.3BA2C910@ihug.co.nz>
+References: <Pine.LNX.4.50.0212071157090.5141-100000@filesrv1.baby-dragons.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jerry James Haumberger <jerryjh@imt.net>
+To: "Mr. James W. Laferriere" <babydr@baby-dragons.com>
 Cc: linux-newbie@vger.kernel.org
 
-Jerry James Haumberger wrote:
+Mr. James W. Laferriere wrote:
 > 
-> The question remains:  How can I back up -- with tar or 
-> any other Slackware 3.5 program -- my 9 MBs of files from 
-> the BasicLinux console with multiple floppies?  And in 
-> compressed format?
+> Compressed you are not going to accomplish easily .
+> Maybe someone else can address a method of compressing 
+> the input INLINE with the multi-volume archive issue .
 
-It would be possible to create a compressed archive and 
-then split it into floppy-sized chunks.  Like this:
--------------------------------------------
-tar -zcvf - /usr | split - -C 1440k floppy.
--------------------------------------------
-This will give you floppy.aa, floppy.ab, floppy.ac, etc.
-You could write a script around that to copy the files
-(for i in floppy.*) to floppies (prompt, mount, copy, 
-umount).
-
-To reverse the process, use cat instead of split.
+Couldn't this simply be done by using tar twice:  first
+tar with -zcf and then tar the result multi-volume?
 
 Cheers,
 Steven
-
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
