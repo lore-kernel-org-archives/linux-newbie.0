@@ -1,50 +1,31 @@
-From: ramzez <r4mz3z@yahoo.es>
-Subject: my screensaver doesn't work
-Date: 21 Mar 2003 01:35:12 -0500
+From: Amin <raihan@citech-bd.com>
+Subject: Re: switching window managers
+Date: Fri, 21 Mar 2003 14:14:35 +0600
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1048228517.2781.1.camel@localhost.localdomain>
+Message-ID: <20030321081435.GA753@localhost.localdomain>
+References: <200303210525.h2L5PXtV017456@pyxis.wanadoo.be>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature";
-	boundary="=-G0on0DWQzSGggQYAacpj"
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200303210525.h2L5PXtV017456@pyxis.wanadoo.be>
 List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+On Fri, Mar 21, 2003 at 07:36:11AM +0000, Heimo Claasen wrote:
 
---=-G0on0DWQzSGggQYAacpj
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+> And if bash (batch) syntax would be a bit easier to learn,
+> it could be feasible to set up a small script to choose
+> between window managers.
 
-Hi friends...=20
-  I'm trying to use screensavers in my RedHat8.0 but I couldn'... I
-probe it and everything is ok... but when I wait the time specified for
-me... only have a black screen and nothing more.. if I move the mouse I
-receive the dialog for my password (if I specified it) but the
-screensaver (any) doesn't work=20
+Actually, I have only a vague idea of how it works, but it
+works.  And that's enough for me.  However, you might try
+emailing Steve Litt, of the ``Linux Productivity Magazine'';
+I'm sure he'll be very helpful.  I got the script from his
+magazine.
 
-  What do I have to do for fix it??=20
-
-a lot of thanks=20
---=20
-  Linux User Registered #232544
-         ICQ : 337889406
-my GnuPG-key at www.keyserver.net
-    --- rm -rf /bin/laden ---
-
---=-G0on0DWQzSGggQYAacpj
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Description: Esta parte del mensaje esta firmada digitalmente
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.1 (GNU/Linux)
-
-iD8DBQA+erKfG3Fqyap52TERAh1cAJ4qXQ1DhwhutiuHh1tuxQmSNgZJ3QCfcikn
-iFUo0cJX9K/D+SnO9jYAFfs=
-=rZrC
------END PGP SIGNATURE-----
-
---=-G0on0DWQzSGggQYAacpj--
-
+Yawar Amin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
