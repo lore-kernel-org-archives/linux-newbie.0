@@ -1,41 +1,63 @@
-From: Elias Athanasopoulos <elathan@phys.uoa.gr>
-Subject: Re: scripting the "rec" function for a fixed time.
-Date: Tue, 25 Feb 2003 09:01:02 +0200
+From: "Eckhardt, Rodolpho H. O." <reckhardt@mandic.com.br>
+Subject: Re: Question about TCP/IP
+Date: Tue, 25 Feb 2003 10:03:02 -0300 (BRT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20030225090102.A28473@neutrino.particles.org>
-References: <1046131264.10885.28.camel@smeagle>
+Message-ID: <62694.200.136.52.249.1046178182.squirrel@www.mandic.com.br>
+References: <20030224202346.54528.qmail@web40406.mail.yahoo.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1046131264.10885.28.camel@smeagle>; from p.howell74@rcn.com on Mon, Feb 24, 2003 at 07:01:03PM -0500
+In-Reply-To: <20030224202346.54528.qmail@web40406.mail.yahoo.com>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter Howell <p.howell74@rcn.com>
+Content-Type: text/plain; charset="iso-8859-1"
+To: cba20032002@yahoo.com
 Cc: linux-newbie@vger.kernel.org
 
-On Mon, Feb 24, 2003 at 07:01:03PM -0500, Peter Howell wrote:
-> I would like to be able to run the rec command unattended.  Right now
-> when executed, it will record sound until I hit C-c.  I would really
-> like to be able to right a script which will execute "rec ...", then
-> wait a specified period of time, then pass the C-c to it.  Or is there a
-> simpler way?
+Hello Mikey,
 
-It's morning here and in 5mins I'm going to have exams in Quantum Mechanics
-so my reply will be quite theoritical. :-)
+> Is
+> there any good way to isolate/identify what is causing
+> this?
 
-The solution may not be the optimal: just use at to kill rec after the 
-specified time. Read the man page of at(1) for the details.
+It could be many things. From congestion of the network to bad programm=
+ing. If you are
+sure the problem is with the net, discover if it's half or full-duplex.=
+ If it's
+half-duplex, go to your hub or switch and discover if there are too man=
+y collisions
+going on (there should be a yellow or orange light flashing everytime a=
+ collision
+happens).
 
-Elias
+Try using a sniffer or a traffic analyzer to find out how much bandwidt=
+h is being used.
 
--- 
-University of Athens			I bet the human brain 
-Physics Department				is a kludge --Marvin Minsky 
+If there's enough bandwidth left, there are no collisions going on, it =
+could be a
+computer set up problem (MTU etc).
 
-	
+> What would happen when the line is cut during
+> transmission? IS there any particular timeout error
+> need to be looked for?
+
+No. If the line is cut during a transmission, the receiver won't be abl=
+e to check things
+like checksums with an incomplete packet. So, it will drop it.
+
+(I'm not sure if it won=B4t send out an icmp message with parameter pro=
+blem. But I think
+not.)
+
+Rodolpho
+--=20
+Rodolpho H. O. Eckhardt
+reckhardt@mandic.com.br
+Cel: 11 9126-9107
+
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
