@@ -1,50 +1,40 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Damn unmouted root
-Date: Fri, 25 Jun 2004 07:09:37 -0700
+From: Karthik Vishwanath <Karthik.Vishwanath.Adv03@Alum.Dartmouth.ORG>
+Subject: task management with groups
+Date: Fri, 25 Jun 2004 15:08:17 -0400 (EDT)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <5.1.0.14.1.20040625070339.01f9ebf8@celine>
-References: <1088132157.21223.11.camel@localhost>
+Message-ID: <Pine.LNX.4.44.0406251445230.10872-100000@legolas.personal.engin.umich.edu>
+Reply-To: Karthik <karthikv@Alum.Dartmouth.ORG>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1088132157.21223.11.camel@localhost>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 10:55 PM 6/24/2004 -0400, John T. Williams wrote:
->I've been having the hardest time getting a kernel I've compiled to
->work.  I've compiled kernels at least a dozen times and this is the
->first one that has given me any real trouble.  I think the issue might
->be the scsi hard-drive.
->
->I've compiled in scsi support ( actually in, not as module ), but every
->time I try to boot the kernel, i get the error
->
->VFS unable to mount root fs on /dev/hdf1
->
->and a kernel panic.
->
->the kernel uses devfs and I'm passing the kernel
->
->root=/dev/hdf1 devfs=mount
->
->as I said, I'm pretty sure its the scsi harddrive that is giving me
->problems as its the only thing in this situation that I've never had to
->deal with before, but even with that insight I haven't been able to
->figure out how to get the kernel.
+Hello,
 
+There is a project underway in my lab which involves multiple users
+accessing and working on my linux box. I wanted to have a common directory
+where the files related to the project lived, which could be accessed by
+all related users. I was thinking I could achieve this via creating a
+group which had the users as memebers, but was not exactly clear about
+how to go about it. Specifically, the initial questions were:
 
-With absolutely no details provided, either about the kernel you are 
-compiling or the system you are trying to run it on (or what Linux distro 
-is involved), all one can really do is make "obvious" comments. In that 
-spirit -- it is unusual for scsi drives to use "hd**" devices. They usually 
-are "sd**" devices. Might you have made an error of that sort?
+1. How do I ascertain that files created in the "project" directory will 
+have correct permissions to allow members of the group to access them?
 
-If your problem is not that, or the lack of filesystem support someone else 
-suggested, please try posting a description that includes the details ... 
-including why you believe your root scsi drive is accessed as /dev/hdf .
+2. Will there be security issues will be involved, i.e will the $HOMEs of 
+users be compromised/insecure? 
 
+All pointers will be appreciated.
+
+Thanks,
+
+-K
+
+---------------------
+Biology is the only science in which multiplication means the same thing 
+as division.
 
 
 -
