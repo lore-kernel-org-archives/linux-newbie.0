@@ -1,100 +1,87 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Convert PBM to ascii text??
-Date: Wed, 10 Mar 2004 08:59:00 -0500
+From: RANDAZZO@ddc-web.com
+Subject: RE: connecting two nics.... [bcc]
+Date: Wed, 10 Mar 2004 08:50:59 -0500
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20040310135900.GA614@lnx2.w8mch.ampr.org>
-References: <5.1.0.14.1.20040308130547.01f63e50@celine> <20040308204535.GA1010@lnx2.w8mch.ampr.org> <5.1.0.14.1.20040308130547.01f63e50@celine> <5.1.0.14.1.20040309070617.01fde278@celine>
-Reply-To: haltec@kvinet.com
+Message-ID: <89760D3F308BD41183B000508BAFAC4104B16FEA@DDCNYNTD>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <5.1.0.14.1.20040309070617.01fde278@celine>
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+To: ray@comarre.com, linux-newbie@vger.kernel.org
 
-On 03-09, Ray Olszewski wrote:
-> At 09:29 AM 3/9/2004 -0500, Hal MacArgle wrote:
-> >[...]
-> >
-> >        Greetings Ray and thanks for the input.. I've fetched gocr
-> >and noted the "text in graphic image" mentioned and should compile it
-> >to see if it'll work for me, but it needs some dependencies I don't
-> >have on this machine so thought I'd try the easy query way first.
-> >
-> >        I was, hoping, to find a program that will convert the scan
-> >to plain ordinary character generated text, rather than bit mapped..
-> >I'm hazy about what all this means plus my quest for simplicity is
-> >not the modern way to think.. I want to, merely, write the guy using
-> >all my brain power to compose/answer his letter - not spend all my
-> >time figuring out complicated manipulations for non significant
-> >stuff.. <g>
-> 
-> Yes, I got that from your earlier message. What confuses me is that you 
-> seem to think this process ... "convert the scan to plain ordinary 
-> character generated text, rather than bit mapped" involves something other 
-> than OCR software. The process you describe here *is* OCR (Optical 
-> Character Recognition), so looking for something other than OCR software to 
-> do it is an exercise in futility (or miscommunication).
+Does anyone know how to duplicate the ping -I command for
+socket-layer calls?
 
-	Greetings: Mis-communication is my middle name methinks..
-
-> 
-> You have two basic options:
-> 
-> 1. Run a program that will scan to an image file, then a separate program 
-> that will do OCR on the scanned image.
-
-	Done - scan to PBM (P4) then run Gocr to get a bit mapped
-file.. Trouble is; even using resolution 360, slow and a big PBM
-file, the final copy is about 90% accurate and the original format of
-the letter compromized losing paragraphs, offsets, indents, etc...
-Taking the time to do all this plus fix up the immediate above would
-take almost as long as manually re-typing the page..
-
-	I fetched Clara but could only find a .rpm file, no tarball
-could for Slackware, etc.. Slack has a rpm program but the
-dependencies needed to extract looked like they were mostly Red Hat's
-filenames..
-
-	The PBM file was good - converting it to postscript and
-printing on an ancient laser printer - the copy was very close to the
-original.. So the problem is in the recognition phase, admittedly a
-very tough nut according to the developers..
-
-	Very interesting though how it's done by "boxing" each
-character, etc... I've learned a lot..
+-----Original Message-----
+From: Ray Olszewski [mailto:ray@comarre.com]
+Sent: Tuesday, March 09, 2004 7:07 PM
+To: linux-newbie@vger.kernel.org
+Subject: RE: connecting two nics.... [bcc]
 
 
+At 06:07 PM 3/9/2004 -0500, RANDAZZO@ddc-web.com wrote:
+>I want to be able to communicate completely...
+>
+>ping, socket calls, udp, tcp, etc.....
+>
+>I was just using ping as a simple example.....
+>
+>even if I put the cards on the same network.......
+>
+>eth1 = 100.100.1.1 mask=255.255.255.0
+>eth2 = 100.100.1.2 mask=255.255.255.0
+>
+>the command ping 100.100.1.1 will go out of 100.100.1.1 not 100.100.1.2?
+>
+>I havent tried socket calls yet because I assumed if I couldn't get ping
+>to work, why try anything else......
+>
+>Mike
+>
+>ALL INFORMATION IN THIS EMAIL IS PUBLIC!
+[rest deleted]
 
-> In practice on Linux/Unix systems, any program of the second sort will 
-> probably be a wrapper for two separate apps that function as in (1) ... 
-> sort of the way "abcde" automates the process of CD ripping by serving as a 
-> frontend to about a half-dozen different applications.
+"communicate completely" is a meaningless specification in this context.
 
-	I'm a CLI person so no front ends involved here..
+It is not possible to tell the kernel that ALL traffic to 100.100.1.1 has 
+to be routed through 100.100.1.2 ... because there will be reply traffic to 
+anything that comes in from 100.100.1.2 to 100.100.1.1, and the kernel 
+needs to be able to reply directly out the 100.100.1.1 interface. Or at 
+least I imagine it does.
 
-> The only OCR programs I can find in the Debian package database are gocr 
-> and clara. Several other scanner apps refer to OCR, but they all seem to 
-> call gocr in the background actually to do it. Rwally, gocr seems like the 
-> consensus solution for Linux users.
-> 
-> If neither gocr nor clara is suitable, your next option is to consider a 
-> commercial product. This article -- 
-> http://www.linuxworld.com/story/32641.htm -- describes one called "OCR 
-> Shop" ... but its pricing appears to be way too high to make sense for the 
-> simple need you have.
+So you need to arrange for *specific* traffic to go the "long" way. The way 
+to do that is at the application level, for example with the -I option in 
+ping. That approach will (or should; have you actually tested it?) allow 
+you and your customers to verify that an installed device is working at the 
+hardware level, the original problem you posed.
 
-	Appreciate very much your comments and will look into non
-open source but am not optimistic from what I've read and heard about
-OCR in any platform.. I've read too many disclaimers on software
-packages I guess. <grin>
+Aside from such testing, I can't really think of a reason why a host would 
+want to communicate with itself the "long" way around ... so I'm having a 
+hard time trying to translate your general desire to specific things that 
+application-level solutions might address. Now we really are, probably, 
+getting into the sensitive business aspects of what your company does ... 
+but I think that only someone with that information will be able to come up 
+with solutions that work for you.
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20)
-		Utrum Per Hebdomadem Perveniam
-.
+As I said before, you probably want to see how ping implements the -I 
+option. I'm a bit rusty on this stuff right now, but I recall that bind() 
+allows you to specify a local address to use. This may force the use of the 
+indirect interface ... I'm really not certain.
+
+
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+ 
+"This message may contain company proprietary information. If you are not
+the intended recipient, any disclosure, copying, distribution or reliance on
+the contents of this message is prohibited. If you received this message in
+error, please delete and notify me."
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
