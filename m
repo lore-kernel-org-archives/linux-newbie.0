@@ -1,48 +1,55 @@
-From: Abhijit Vijay <abhijit_v@yahoo.com>
-Subject: Exporting display
-Date: Tue, 17 Sep 2002 05:45:24 -0700 (PDT)
+From: Jos Lemmerling <jos@lemmerling.net>
+Subject: Re: bash scripts creating log files
+Date: Tue, 17 Sep 2002 15:04:26 +0200 (CEST)
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20020917124524.17274.qmail@web13407.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.21.0209171501210.28745-100000@orthanc.lemmerling.net>
 References: <1032261353.7489.17.camel@Zebra>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <1032261353.7489.17.camel@Zebra>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi Everyone,
+On 17 Sep 2002, Paul Furness wrote:
 
-I connect to a Linux machine using SSH from a Windows
-NT workstation and need to bring up graphical programs
-on my console. I find that I am unable to do this...
-Could anyone please tell me what I should do?
+> What I _want_ to do is basically _copy_ stdout and stderr to a log file.
+> 
+> Thus, when I run a command, I wans the stdout and stderr to go to
+> wherever called the script (eg an interactive terminal) but I _also_
+> want it to go to a log file.
+> 
+> I can do it easily for things I'm echoing in my own script by writing a
+> function like this:
+> 
+> 
+> 	function ECHO
+> 	{
+> 	    echo $1
+> 	    echo $1 >> ${Logfile}
+> 	}
+> 
+> and then any messages which I generate I use ECHO instead of echo:
+> 
+> 	ECHO "This is a message"
+> 
+> What I can't figure out is how do I redirect the output of the things
+> I'm running to the same 2 places?
 
-Here's what I did...
+"tee" is your friend:
 
-1. Run XWin on my workstation. This shows up on my
-system tray
+echo test | tee -a logfile.txt
 
-2. Execute "setenv DISPLAY ${REMOTEHOST}:0.0" after
-connecting to my linux machine through SSH
+test is printed to the screen and appended to the file "logfile.txt". If
+you don't use the "-a" the file is overwritten every time.
 
-3. echo $REMOTEHOST gives me hughes08.biac.duke.edu
-(my Windows NT workstation)
+HTH
 
-4. echo $DISPLAY gives me hughes08.biac.duke.edu:0.0
 
-However, when I type xbiff& after connecting to my
-linux machine, I just get the process ID. The xbiff
-window does not show up!
+--
+Jos Lemmerling on Debian GNU/Linux			jos(@)lemmerling(.net)
 
-Regards,
-Abhijit.
-
-__________________________________________________
-Do you Yahoo!?
-Yahoo! News - Today's headlines
-http://news.yahoo.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
