@@ -1,68 +1,99 @@
-From: whitnl73@juno.com
-Subject: Re: Process information?
-Date: Tue, 9 Dec 2003 18:01:45 -0500 (EST)
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: forwarding question
+Date: Tue, 09 Dec 2003 15:22:10 -0800
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <20031209.181756.8.0.whitnl73@juno.com>
-References: <20031209013732.D92B03965@sitemail.everyone.net>
+Message-ID: <5.1.0.14.1.20031209145625.02059488@celine>
+References: <200312100021.55957.g38@rdsbv.ro>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20031209013732.D92B03965@sitemail.everyone.net>
+In-Reply-To: <200312100021.55957.g38@rdsbv.ro>
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
-To: weeteck@linux.net
-Cc: linux-newbie@vger.kernel.org
+To: g38@rdsbv.ro, linux-newbie@vger.kernel.org
+Cc: petre@kgb.ro
 
-On Mon, 8 Dec 2003, Neo Wee Teck wrote:
-
-> Hi,
+At 12:21 AM 12/10/2003 +0200, Petre Bandac wrote:
+>hello
 >
->   I saw some difference in the process info when using RedHat kernel 2.4.20-8 and the kernel from kernel.org (2.4.23)
+>I have the following problem:
 >
-> With Redhat's kernel, process show something like this
+>I want all the http traffic (dport 80) to be redirected to some other 
+>machine,
+>from where the packets should go out on the internet
 >
-> www      10186  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
-> www      10187  0.0  0.1  2536 1272 ?        S    Dec08   0:01 [httpd]
-> www      10188  0.0  0.1  2536 1276 ?        S    Dec08   0:01 [httpd]
+>I have tried to SNAT, but it seems that it isn't possible only with iptables
 >
-> But with 2.4.23 kernel it shows
+>on the second machine there should be squid running to take care of the
+>incoming packets, or what ?
 >
-> www      5673  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
-> www      5674  0.0  0.1  2536 1272 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
-> www      5675  0.0  0.1  2536 1276 ?        S    Dec08   0:01 /usr/local/apache/bin/httpd
->
-> Any configuration in the kernel that i missed out? I prefer the way processes are shown in Redhat's kernel but would like to use the 2.4.23's kernel.
->
-> Cheers
->
->     Neo
+>(please cc to me, because though I'm subscribed to this list, messages 
+>stopped
+>arriving to me since april 19th)
 
-try adding c to whatever ps options you use.
+First the incidental part: if you are not getting list mail, you are 
+probably not subscribed. The vger server will detect some mail delievery 
+failures and auto-unsubscribe addresses. So if you had a transient e-mail 
+failure, one that left you unable to receive mail for a day or so, that 
+might have caused you to be unsubscribed. (Or it may be something else, of 
+course; I only mention this because any time one stops getting list mail 
+for no apparent reason, it is worth verifying that you are still 
+subscribed. Over the 5 years or so I've been on this list, I've been 
+involuntarily unsubscribed about a half dozen times.)
 
-[whit@giftie whit]$ ps -C xfstt u
-USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
-root       510  0.0  0.9  1896  740 ?        S    Dec02   0:00 /usr/X11R6/bin/xf
-root     10382  0.0  0.9  6504  764 ?        S    Dec03   0:00 /usr/X11R6/bin/xf
-[whit@giftie whit]$ ps -C xfstt uc
-USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
-root       510  0.0  0.9  1896  740 ?        S    Dec02   0:00 xfstt
-root     10382  0.0  0.9  6504  764 ?        S    Dec03   0:00 xfstt
-[whit@giftie whit]$ tty
-/dev/vc/4
-[whit@giftie whit]$ cat /dev/vcc/4|fold|trail >oops
+Now your actual question:  I don't *quite* understand what you want to 
+accomplish here, so some of this is guessing.
 
-This is nothing to do with the kernel patch level, I think.
+The usual way to force a host to use a proxy server for (say) http traffic is
 
-Lawson
---
----oops---
+         (A) in the site's router/firewall, DENY all traffic going from 
+workstations to external addresses at port 80 (and maybe 443, if you want 
+to restrict https too); ALLOW traffic only from the machine in B.
+
+         (B) on some suitable-secure internal server, run a proxy like 
+Squid or Junkbuster or whatever (I think even Apache itself can be 
+configured to operate as a proxy) to forward the traffic.
+
+         (C) Have each user configure his or her bowser to use that proxy 
+server.
+
+What I **think** you are trying is a bit different, something I've never 
+seen done but that, in principle, whould work. It goes something like this:
+
+         (A) is the same as above, since if you don't restrict things at 
+the router, users will have the opportunity to bypass restrictions (unless 
+no user has *any* way to get root access to his or her workstation, hard to 
+manage on Linux systems that the user has physical access to).
+
+         (B) On each individual workstation (or perhaps on the router, 
+instead of step A), use the kernel's routing code to redirect all port-80 
+(and 443?) traffic to an internal server that runs some sort of proxy.
+
+If you want to do that, then iptables should work. The details depend on 
+whether you are talking about running Linux and iptables on the 
+workstations or the firewall/router. For example, on the firewall/router, 
+you would do it with 2 rules:
+
+         (1) in the default table's FORWARD chain: For any traffic from the 
+LAN to port 80, ACCEPT it
+
+         (2) in the nat table's PREROUTING chain: For any traffic from any 
+LAN address other than the proxy server to an external port 80 destination, 
+DNAT it to the proxy server address.
+
+You may need to modify other existing rules as well, depending on details 
+of your setup that can vary too much for me to cover even all the likely 
+cases. (For example, rulesets often block routing LAN traffic back to the 
+LAN, and rule 2 above runs afoul of that.)
+
+All this is a bit vague, I admit, but your requirements ae a bit vague too. 
+If you try again, describing the setup and your goal more precisely, as 
+well as telling us what you tried (I do'nt see how even to *try* doing this 
+with SNAT, for example) and what went wrong, then maybe I or someone else 
+can give you more exact help.
 
 
 
-________________________________________________________________
-The best thing to hit the internet in years - Juno SpeedBand!
-Surf the web up to FIVE TIMES FASTER!
-Only $14.95/ month - visit www.juno.com to sign up today!
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
