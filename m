@@ -1,8 +1,8 @@
 From: Bryan Simmons <bsimmo1@gl.umbc.edu>
-Subject: Xemacs config
-Date: 06 Oct 2002 11:16:09 -0400
+Subject: Mixer settings, esd
+Date: 06 Oct 2002 12:45:45 -0400
 Sender: linux-newbie-owner@vger.kernel.org
-Message-ID: <1033917374.6130.2.camel@localhost.localdomain>
+Message-ID: <1033922747.6129.6.camel@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,8 +10,13 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Does anyone know how to setup the mousewheel scroll in Xemacs?
-I can't find the variable for setting this anywhere...
+I'm using KDE 3.0.3 on Mandrake 9.0.
+I'm using the emu10k1 driver for my soundblaster live card.
+I'm trying to use esd for my mixer, but I have no control over the
+volume settings.  When I use xine, it chooses oss as the sound driver
+and esd as the mixer.  I have no control over the volume here either.
+
+Does anyone know of a way to set the volume for a profile using esd?
 -- 
 Regards,
 
