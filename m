@@ -1,54 +1,46 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Card Reader
-Date: Thu, 07 Apr 2005 22:24:42 -0400
-Message-ID: <4255EB6A.80405@gelm.net>
-References: <d345eq$cuc$1@sea.gmane.org> <5.1.0.14.1.20050407142351.0202e3e0@celine> <d349ga$qln$1@sea.gmane.org> <4255B0C6.5000203@gelm.net> <d34drn$722$1@sea.gmane.org> <Pine.LNX.4.60.0504080206320.885@grinch.ro> <d34fua$c59$1@sea.gmane.org>
-Reply-To: chuck@gelm.net
+From: Jeremy Abbott <jkbullfrog@comcast.net>
+Subject: Re: How to pick a distro?
+Date: Thu, 07 Apr 2005 19:45:36 +0000
+Message-ID: <42558DE0.3070808@comcast.net>
+References: <200504080203.j3823di3000665@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <d34fua$c59$1@sea.gmane.org>
+In-Reply-To: <200504080203.j3823di3000665@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: smertens@mho.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Mounting thumb drive.
+Peter wrote:
 
-On my two Slackware 9.1 (kernel 2.4.22) systems
-each mounted my thumbdrive (Sandisk microcruzer 128 MB) with
-
-mount /dev/sda1 /mnt/hd
-
-df -T indicated that it was a 'umsdos' filesystem.
-
-Slackware v10.0 & 10.1's kernel (2.4.26 & 2.4.29) found a
-  /dev/sda1 device and I could
-
-mount /dev/sda1 /mnt/hd
-  and
-df -T indicated that it was a 'msdos' filesystem.
-
-
-tail /var/log/messages indicated that the kernel found a
-/dev/sda1 USB device.
-
-Does your kernel find your USB device and put information into
-/var/log/messages?
-
-...
-Apr  7 21:59:40 g2000 kernel: hub.c: new USB device 00:10.3-1, assigned 
-address 2
-Apr  7 21:59:43 g2000 kernel: Initializing USB Mass Storage driver...
-Apr  7 21:59:43 g2000 kernel: usb.c: registered new driver usb-storage
-Apr  7 21:59:43 g2000 kernel: scsi1 : SCSI emulation for USB Mass 
-Storage devices
-Apr  7 21:59:43 g2000 kernel:  sda: sda1
-Apr  7 21:59:43 g2000 kernel: USB Mass Storage support registered.
-...
-
-HTH, Chuck
+>Hi,
+>
+>having read all the replies I would almost be scared to go to a Linux OS. It 
+>is not that difficult at all. With Fedora I would call the installation a 
+>child's or grandma's play, however, would recommend to do the partitioning 
+>yourself after having read how to go about it.
+>
+>As for me slackware is even easier and faster to install, however, can be 
+>bitchy afterwards. I have used SUSE once a long time ago so I can not speak of 
+>it today. At that time I was not impressed.
+>
+>When I switched to Linux I had no one to consult at all. Bought RedHat 5.2 
+>which had just come out, read carefully how to install, the had a very 
+>comprehensive handbook, and have been with Linux ever since. There were some 
+>problems in the beginning an account of my ignorance. I had only 16 MB RAM, a 
+>very small HD and forgot what of a slow cycle of the processor resulting at 
+>times in application crashes and what I call memory-run-aways.
+>
+>So just do it.
+>
+>Regards
+>  
+>
+I bought Suse about a year ago.  Very nice Distro with package
+management through Yast.  My problem with it though, was that it does
+not come with a C compiler.  If all youare installing is binary
+packeges, that's fine.  I wanted to do some compiling from source though.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
