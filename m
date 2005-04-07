@@ -1,57 +1,52 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: RE: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
-Date: Thu, 7 Apr 2005 15:58:50 -0400
-Message-ID: <009401c53bac$37d707e0$540aa8c0@lanadmin>
-Reply-To: <eatley@wowcorp.com>
+From: caszonyi@rdslink.ro
+Subject: Re: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
+Date: Thu, 7 Apr 2005 23:10:10 +0300 (EEST)
+Message-ID: <Pine.LNX.4.60.0504072307070.585@grinch.ro>
+References: <009301c53bac$15bb7e70$540aa8c0@lanadmin>
+Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: 
+In-Reply-To: <009301c53bac$15bb7e70$540aa8c0@lanadmin>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Eve Atley <eatley@wowcorp.com>
+Cc: linux-newbie@vger.kernel.org
+
+On Thu, 7 Apr 2005, Eve Atley wrote:
+
+>
+> Simply put...my mouse has started having a mind of its own in our Redhat
+> Enterprise Workstation 3 (Taroon) Linux box. It wants to focus on the bottom
+> left-hand corner of the screen, and clicks on whatever happens to be there
+> at the time (Languages at login, as an example). When I try to move the
+> cursor up towards my destination, it insists on refocusing down at the
+> bottom left-hand corner of the screen again. And though I press neither the
+> left nor right button, it functions as if I am.
+>
+> I don't know if any of these are related, but here are a few things which
+> lead up to this:
+> 1. desktop crashed after a user killed a window through remote VNC - I
+> rebooted the machine
+> 2. I have an entry in vncserver to start up "root:1" (conflict?) - when a
+> user remotely connects via VNC, they see a similar desktop but it's NOT the
+> same. I can tell, because windows will pop up in the server that never
+> appear in the VNC desktop. Icons layout is identical, however.
+> 3. The mouse in question is a scroll-wheel optical (Microsoft) and is
+> connected to a KVM switch. It worked perfect fine previous to this.
+>
+> Any ideas how I can exorcise my mouse? Any corrupted file to examine
+> perhaps?
+>
+
+see /etc/X11/xorg.conf or /etc/X11/XF86Config
+
+This behaviour is usually associated with wrong driver for mouse
 
 
-Additionally, the VNC Redhat desktop has no such problems with the mouse.
-
-Thanks,
-Eve
-
-
-
------Original Message-----
-From: Eve Atley [mailto:eatley@wowcorp.com] 
-Sent: Thursday, April 07, 2005 3:58 PM
-To: 'linux-newbie@vger.kernel.org'
-Subject: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
-
-
-
-Simply put...my mouse has started having a mind of its own in our Redhat
-Enterprise Workstation 3 (Taroon) Linux box. It wants to focus on the bottom
-left-hand corner of the screen, and clicks on whatever happens to be there
-at the time (Languages at login, as an example). When I try to move the
-cursor up towards my destination, it insists on refocusing down at the
-bottom left-hand corner of the screen again. And though I press neither the
-left nor right button, it functions as if I am. 
-
-I don't know if any of these are related, but here are a few things which
-lead up to this: 1. desktop crashed after a user killed a window through
-remote VNC - I rebooted the machine 2. I have an entry in vncserver to start
-up "root:1" (conflict?) - when a user remotely connects via VNC, they see a
-similar desktop but it's NOT the same. I can tell, because windows will pop
-up in the server that never appear in the VNC desktop. Icons layout is
-identical, however. 3. The mouse in question is a scroll-wheel optical
-(Microsoft) and is connected to a KVM switch. It worked perfect fine
-previous to this.
-
-Any ideas how I can exorcise my mouse? Any corrupted file to examine
-perhaps?
-
-Thanks,
-Eve
-
+--
+?
 
 
 -
