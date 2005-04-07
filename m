@@ -1,17 +1,31 @@
 From: "Eve Atley" <eatley@wowcorp.com>
-Subject: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
-Date: Thu, 7 Apr 2005 15:57:51 -0400
-Message-ID: <009301c53bac$15bb7e70$540aa8c0@lanadmin>
-References: <5.1.0.14.1.20050407093705.03492e28@celine>
+Subject: RE: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
+Date: Thu, 7 Apr 2005 15:58:50 -0400
+Message-ID: <009401c53bac$37d707e0$540aa8c0@lanadmin>
 Reply-To: <eatley@wowcorp.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20050407093705.03492e28@celine>
+In-Reply-To: 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
+
+
+Additionally, the VNC Redhat desktop has no such problems with the mouse.
+
+Thanks,
+Eve
+
+
+
+-----Original Message-----
+From: Eve Atley [mailto:eatley@wowcorp.com] 
+Sent: Thursday, April 07, 2005 3:58 PM
+To: 'linux-newbie@vger.kernel.org'
+Subject: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
+
 
 
 Simply put...my mouse has started having a mind of its own in our Redhat
@@ -23,15 +37,14 @@ bottom left-hand corner of the screen again. And though I press neither the
 left nor right button, it functions as if I am. 
 
 I don't know if any of these are related, but here are a few things which
-lead up to this:
-1. desktop crashed after a user killed a window through remote VNC - I
-rebooted the machine
-2. I have an entry in vncserver to start up "root:1" (conflict?) - when a
-user remotely connects via VNC, they see a similar desktop but it's NOT the
-same. I can tell, because windows will pop up in the server that never
-appear in the VNC desktop. Icons layout is identical, however.
-3. The mouse in question is a scroll-wheel optical (Microsoft) and is
-connected to a KVM switch. It worked perfect fine previous to this.
+lead up to this: 1. desktop crashed after a user killed a window through
+remote VNC - I rebooted the machine 2. I have an entry in vncserver to start
+up "root:1" (conflict?) - when a user remotely connects via VNC, they see a
+similar desktop but it's NOT the same. I can tell, because windows will pop
+up in the server that never appear in the VNC desktop. Icons layout is
+identical, however. 3. The mouse in question is a scroll-wheel optical
+(Microsoft) and is connected to a KVM switch. It worked perfect fine
+previous to this.
 
 Any ideas how I can exorcise my mouse? Any corrupted file to examine
 perhaps?
