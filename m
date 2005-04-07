@@ -1,67 +1,55 @@
-From: Yawar Amin <yawar.amin@gmail.com>
+From: Ulrich =?ISO-8859-1?Q?F=FCrst?= <heimwill@compuserve.de>
 Subject: Re: How to pick a distro?
-Date: Thu, 7 Apr 2005 14:50:37 +0800
-Message-ID: <efc7f7d00504062350e6d18e5@mail.gmail.com>
+Date: Thu, 7 Apr 2005 11:29:17 +0200
+Message-ID: <20050407112917.17cdf0ae@sarge>
 References: <425440DE.4000403@gmail.com>
-Reply-To: Yawar Amin <yawar.amin@gmail.com>
+	<Pine.LNX.4.61.0504061614500.5570@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <425440DE.4000403@gmail.com>
+In-Reply-To: <Pine.LNX.4.61.0504061614500.5570@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi NNK,
+James Miller <jamtat@mailsnare.net> wrote: 
+> A couple of ways to adress this: 1) find a distro with a good support 
+> community (e.g., Ubuntu is a newbie-oriented distro with a really
+> active forum) and ask about your hardware there ahead of time. This
+> presumes you know what kind of hardware is in, or attached to, your
+> machine. What kind of NIC/modem, video card, hard drive controller
+> card (if any), usb devices, printer. That sort of thing. Short of
+> finding out all that, you could try a less involved option: 2)
+> download and burn a copy of a live CD like Knoppix, boot from it and
+> see if everything works ok.
 
-On Apr 7, 2005 4:04 AM, NNK <savantedge@gmail.com> wrote:
-> I was wondering what I should be looking at in the different distros
-> before picking one to use.
-> 
-> Being a total novice, I don't have much experience on Linux, so I'm
-> wondering what I should be asking.
-> 
-> Any advice?
+3. Type the names of your hardware components into
+http://www.google.com/linux
+or
+http://groups.google.com/grphp?hl=en
+But watch out for the date of the question. A hardware with problems in
+2003 can work properly now... You should find many threads about it if
+you're hardware makes problems or is often used. But you see the
+solutions to get it working. If you do understand them it's o.k., if
+it's to complicated then you need other hardware or a distribution which
+supports it (or someone to help). By the way: sometimes it's better to
+change the hardware (e.g. software modems) than wasting hours and days
+to get it working...
 
-I can also give you a couple of tips :-)
+I don't know other distributions but e.g. with debian GNU/Linux you can
+use also packages from other distributions (like rpm). 
 
-You may appreciate a distro that comes with a full set of CDs, so you
-don't have to download the internet+1 just to get the stuff that you
-like to use. This may be the case even if you have a fast connection
-because online package repositories can get overloaded and/or taken
-down from time to time, or the software which goes and gets the
-packages for you from the 'net may be slightly misconfigured, and give
-you all sorts of headaches.
+4. Check sites like
+http://www.tldp.org/HOWTO/Hardware-HOWTO/
+>  This document attempts to list most of the hardware known to be
+>  either supported or unsupported under Linux.
+This document is over a year old, so there should be much more
+supported. So I guess "3." is the better solution.
 
-Full-CD distros like Debian, Fedora Core, SUSE, and Mandrake come to
-mind. Here's what I think: Debian is excellent, but ... outdated. And
-if you want to be cautious and not try to do full upgrades from the
-'net for fear of breaking something, then you're stuck with older
-stuff. (Sorry, Ray! I had to get that out. I myself use MEPIS, which
-is Debian-based. And I `broke' it by doing a dist-upgrade before first
-installing all the stuff I like.)
+hth
 
-Fedora Core is also great. I used FC2 for a long time. Its yum package
-management system is slow as hell, though. If you use FC, install apt
-(that is, apt-rpm) and Synaptic on it.
-
-SUSE has a great rep. I haven't used it, but it's obviously very
-high-quality. Teutonic precision, you know :-)
-
-Mandrake I have used. Version 10 is excellent, I can't think of
-anything bad to say about it -- except that I never was able to set up
-its apt equivalent, urpmi, to use the internet. Probably my own fault.
-In any case, you can still easily get apt and Synaptic for it.
-
-Overall, wrt package management, I recommend using the distro's
-built-in management tool for installing from the CDs, and Synaptic for
-downloading from the internet.
-
-HTH,
-
--- 
-Yawar
+Ulrich
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
