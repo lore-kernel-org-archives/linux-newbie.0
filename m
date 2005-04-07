@@ -1,49 +1,44 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: sound problems on Debian unstable
-Date: Thu, 7 Apr 2005 09:09:00 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0504070853500.5694@localhost.localdomain>
-References: <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
- <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070022080.852@grinch.ro> <Pine.LNX.4.61.0504061649470.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070119060.971@grinch.ro> <Pine.LNX.4.61.0504061726280.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070145360.1005@grinch.ro> <Pine.LNX.4.61.0504062231281.5570@localhost.localdomain>
+From: smertz <smertens@mho.com>
+Subject: Partitioning
+Date: Thu, 07 Apr 2005 08:18:03 -0600
+Message-ID: <d33fap$ouf$1@sea.gmane.org>
+Reply-To: smertens@mho.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504062231281.5570@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-On Wed, 6 Apr 2005, James Miller wrote:
+I noticed after installing Red Hat Enterprise Linux ES release 4 
+(Nahant) last week when I do a fdisk -l that the automatic partitioning 
+might not have done such a good job of partitioning out my 200 GIG HD.
 
-> range) or to disable ttyS1 (COM 2 as the BIOS sees it, I believe) and see if 
-> that relieves any potential IRQ 3 conflict.
+[root@localhost ~]# fdisk -l
 
-I tried disabling COM 2 in the BIOS (set it to "off" there). When I look 
-at dmesg output, it does, indeed, appear to be off and is not getting 
-assigned an IRQ by Linux. I see in dmesg output only ttyS0, assigned IRQ 
-4. So it seems I have succeeded in freeing up IRQ 3 and resolving any 
-potential conflict over it that might be contributing to sound issues. 
-Nonetheless, the sound is of the same poor quality when I try to play 
-files stored on the hard drive with mp3blaster. It is scratchy and I get 
-pauses when some other computer activity occurs, just like before. I 
-therefore presume that IRQ conflicts are not the operative problem here.
+Disk /dev/sda: 200.0 GB, 200049647616 bytes
+255 heads, 63 sectors/track, 24321 cylinders
+Units = cylinders of 16065 * 512 = 8225280 bytes
 
-I see no io address associated with the sound module(s) in cat 
-/proc/ioports output, so that could be part of my problem. I also do not 
-see IRQ 5 associated with anything (or even listed) in cat 
-/proc/interrupts output, though I've tried to associate the pas2 module 
-with it by specifying sb_irq=5 (among other parameters) in /etc/modules. I 
-don't see the device files Ray mentioned as being used by Soundblaster 
-emulation (/dev/dsp1 or /dev/audio1) in the /dev directory, but I think 
-those should be auto-created on boot if they are needed.
+    Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *           1          13      104391   83  Linux
+/dev/sda2              14       24321   195254010   8e  Linux LVM
+[root@localhost ~]#
 
-Further suggestions? A trip to Frys later today, perhaps?
 
-James
+Shouldn't there normally be a few more partitions like /swap /usr etc? 
+If so is it possible to manipulate these post install?  Or better to go 
+back and re-install and manually do the partitions? Either way I would 
+appreciate any advice on allocating the HD out.  There will be no other 
+OS on this drive/machine, just RH.
+
+Also I'm curious why my Hard drives are listed as sda1.  These are ATA 
+drives.  Just looked at the drive they are the new SATA drives and may 
+be recognized incorrectly.
+
+Thanks
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
