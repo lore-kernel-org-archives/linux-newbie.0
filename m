@@ -1,61 +1,86 @@
 From: James Miller <jamtat@mailsnare.net>
 Subject: Re: sound problems on Debian unstable
-Date: Wed, 6 Apr 2005 22:38:44 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0504062231281.5570@localhost.localdomain>
-References: <5.1.0.14.1.20050406092225.02059310@celine>
- <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
- <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070022080.852@grinch.ro> <Pine.LNX.4.61.0504061649470.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070119060.971@grinch.ro> <Pine.LNX.4.61.0504061726280.5570@localhost.localdomain>
- <Pine.LNX.4.60.0504070145360.1005@grinch.ro>
+Date: Wed, 6 Apr 2005 22:57:38 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504062239040.5570@localhost.localdomain>
+References: <5.1.0.14.1.20050406120016.0201f1f8@celine>
+ <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406092225.02059310@celine>
+ <5.1.0.14.1.20050406120016.0201f1f8@celine> <5.1.0.14.1.20050406160353.02035e98@celine>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.60.0504070145360.1005@grinch.ro>
+In-Reply-To: <5.1.0.14.1.20050406160353.02035e98@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Thu, 7 Apr 2005 caszonyi@rdslink.ro wrote:
+On Wed, 6 Apr 2005, Ray Olszewski wrote:
 
-> Can you post your /proc/interrupts here ?
+> One thing you don't mention trying is using a different audio device. I 
+> suggest you try directing output to /dev/audio1 or /dev/dsp1 and see if that 
+> improves the result. I don't know how to do that with mp3blaster; with mpg123 
+> you would do
+>
+>        mpg123 -a /dev/dsp1 nameoffile.mp3
+>
+> With ogg123, you'd do:
+>
+>        ogg123 -d oss -o dsp:/dev/dsp1 nameoffile.ogg
 
-me@mymachine:~$ cat /proc/interrupts
-            CPU0
-   0:   25759543          XT-PIC  timer
-   1:      23960          XT-PIC  i8042
-   2:          0          XT-PIC  cascade
-   3:       5223          XT-PIC  PAS16
-   7:          1          XT-PIC  parport0
-   8:          1          XT-PIC  rtc
-  10:      50736          XT-PIC  eth0
-  11:     283557          XT-PIC  uhci_hcd
-  12:      51870          XT-PIC  i8042
-  14:      29656          XT-PIC  ide0
-  15:     493057          XT-PIC  ide1
-NMI:          0
-LOC:          0
-ERR:          0
-MIS:          0
-me@mymachine:~$
+I get the following when trying this:
 
-> Also if your soundcard is an ISA one and your BIOS allow you, you can play 
-> with the way BIOS assign IRQ to devices (ISA/PCI or PCI) but this could be a 
-> dangerous thing if you don't know what you are doing.
-> On a normal system interrupts 0, 1, 2, 3, 4, 7 are normally assigned to ISA 
-> devices and 14 and 15 to PCI IDE. The rest of them depends of the 
-> configuration of the machine.
-> I usually saw that IRQ 5 or IRQ 9 was used by older soundcards.
+me@mymachine:~/MyMusic$ sudo mpg123 -a /dev/audio1 03\ -\ Norman\ Blake\ \ 
+\ You\ Are\ My\ Sunshine.ogg
+High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3.
+Version 0.59q (2002/03/23). Written and copyrights by Joe Drew.
+Uses code from various people. See 'README' for more!
+THIS SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY! USE AT YOUR OWN RISK!
 
-ISA soundcard, yes. Like I said earlier in this thread the BIOS is 
-reported as PnP by Linux. Very limited tweaking there--certainly nothing 
-as advanced as setting IRQ's. I'm afraid my only options are to either set 
-a different IRQ on the soundcard using the DOS software (though I see no 
-free IRQ's in range) or to disable ttyS1 (COM 2 as the BIOS sees it, I 
-believe) and see if that relieves any potential IRQ 3 conflict. Possible 
-IRQ's for the card are: 2, 3, 5, 7, 10, 11, 12, 15 for "Soundman" and 2, 
-3, 5, and 7 for "Sound blaster."
+Playing MPEG stream from 03 - Norman Blake   You Are My Sunshine.ogg ...
+MPEG 1.0 layer I, 34381 kbit/s, 32000 Hz mono
+Can't open libao driver with device /dev/audio1 (is device in use?)
+me@mymachine:~/MyMusic$ sudo mpg123 -a /dev/dsp1 03\ -\ Norman\ Blake\ \ \ 
+You\ Are\ My\ Sunshine.ogg
+High Performance MPEG 1.0/2.0/2.5 Audio Player for Layer 1, 2, and 3.
+Version 0.59q (2002/03/23). Written and copyrights by Joe Drew.
+Uses code from various people. See 'README' for more!
+THIS SOFTWARE COMES WITH ABSOLUTELY NO WARRANTY! USE AT YOUR OWN RISK!
+
+Playing MPEG stream from 03 - Norman Blake   You Are My Sunshine.ogg ...
+MPEG 1.0 layer I, 34381 kbit/s, 32000 Hz mono
+Can't open libao driver with device /dev/dsp1 (is device in use?)
+me@mymachine:~/MyMusic$
+
+or:
+
+me@mymachine:~/MyMusic$ sudo ogg123 -d oss -o dsp:/dev/audio1 03\ -\ 
+Norman\ Blake\ \ \ You\ Are\ My\ Sunshine.ogg
+
+Audio Device:   OSS audio driver output
+
+Playing: 03 - Norman Blake   You Are My Sunshine.ogg
+Ogg Vorbis stream: 2 channel, 44100 Hz
+Title: Norman Blake / You Are My Sunshine
+Artist: Various
+Track number: 3
+Tracktotal: 19
+Album: O Brother, Where Art Thou?
+Comment: Ripped with Sound Juicer
+Error: Cannot open device oss.
+
+me@mymachine:~/MyMusic$
+
+Same error messages whether I try /dev/dsp1 or /dev/audio1, though my 
+examples here show only output from trying /dev/audio1.
+
+> It's been almost 2 years since I set up a Linux system using new hardware, 
+> but back then, I tried to get SoundBlaster16 cards (usually around $25 back 
+> then). They use the OSS es1371 driver (usually compiled in stock kernels, I 
+> think) and work pretty well for both recording and playback. I've also used a 
+> Yamaha card and been happy with it.
+
+Thanks for the feedback on that. I'll probably go that route before too 
+much longer.
 
 James
 -
