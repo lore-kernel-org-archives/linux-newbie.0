@@ -1,55 +1,65 @@
-From: Ulrich =?ISO-8859-1?Q?F=FCrst?= <heimwill@compuserve.de>
-Subject: Re: How to pick a distro?
-Date: Thu, 7 Apr 2005 11:29:17 +0200
-Message-ID: <20050407112917.17cdf0ae@sarge>
-References: <425440DE.4000403@gmail.com>
-	<Pine.LNX.4.61.0504061614500.5570@localhost.localdomain>
+From: "Mike Turcotte" <Mike.Turcotte@cityofnorthbay.ca>
+Subject: RE:  Linux Backup
+Date: Thu, 7 Apr 2005 08:46:55 -0400
+Message-ID: <C6FD667B200BDF4F964C1BA77B796CE20F5E75@cnbmail2.city.north-bay.on.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504061614500.5570@localhost.localdomain>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-James Miller <jamtat@mailsnare.net> wrote: 
-> A couple of ways to adress this: 1) find a distro with a good support 
-> community (e.g., Ubuntu is a newbie-oriented distro with a really
-> active forum) and ask about your hardware there ahead of time. This
-> presumes you know what kind of hardware is in, or attached to, your
-> machine. What kind of NIC/modem, video card, hard drive controller
-> card (if any), usb devices, printer. That sort of thing. Short of
-> finding out all that, you could try a less involved option: 2)
-> download and burn a copy of a live CD like Knoppix, boot from it and
-> see if everything works ok.
+I recently tried using DAR on my Gentoo machine. This program works
+great as it has a $#!7 load of options including compression. One of the
+greatest features of this program is that it can split up its output
+file into user definable sized chunks so you can easily put it onto your
+choice of media. If you are writing directly to say a DVD-RW, there is
+even an option to have the program detect when the disc is full and it
+will pause until you insert a blank one.
 
-3. Type the names of your hardware components into
-http://www.google.com/linux
-or
-http://groups.google.com/grphp?hl=en
-But watch out for the date of the question. A hardware with problems in
-2003 can work properly now... You should find many threads about it if
-you're hardware makes problems or is often used. But you see the
-solutions to get it working. If you do understand them it's o.k., if
-it's to complicated then you need other hardware or a distribution which
-supports it (or someone to help). By the way: sometimes it's better to
-change the hardware (e.g. software modems) than wasting hours and days
-to get it working...
+Michael Turcotte
+Information Systems
+City of North Bay
+200 McIntyre St. E
+PO Box 360
+North Bay, Ontario
+P1B 8H8
+ 
+Mike.Turcotte@cityofnorthbay.ca
+http://www.cityofnorthbay.ca 
 
-I don't know other distributions but e.g. with debian GNU/Linux you can
-use also packages from other distributions (like rpm). 
-
-4. Check sites like
-http://www.tldp.org/HOWTO/Hardware-HOWTO/
->  This document attempts to list most of the hardware known to be
->  either supported or unsupported under Linux.
-This document is over a year old, so there should be much more
-supported. So I guess "3." is the better solution.
-
-hth
-
-Ulrich
+> -----Original Message-----
+> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
+> owner@vger.kernel.org] On Behalf Of smertz
+> Sent: Wednesday, April 06, 2005 7:59 PM
+> To: linux-newbie@vger.kernel.org
+> Subject: Linux Backup
+> 
+> I have spent a great deal of time on simple things in Linux as I am
+new
+> over the last week (No better way to learn)  But I don't want to
+> re-learn in case the proverbial Hard Drive dies, so what is a good way
+> to back up my system? On my 2 Windows XP machines I use Ghost 9.  Is
+> there similar thing to copy a Linux drive?
+> 
+> Or can I simply do something like an XCOPY from one drive to a second
+> one as a backup?
+> 
+> I am using Red Hat Enterprise Linux ES release 4 (Nahant)
+> on a home Workgroup as a File and print server - If I ever get Samba
+set
+> up correctly. Any suggestions appriciated.
+> 
+> Thanks
+> 
+> -
+> To unsubscribe from this list: send the line "unsubscribe
+linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
