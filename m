@@ -1,79 +1,45 @@
-From: "Eve Atley" <eatley@wowcorp.com>
-Subject: RE: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
-Date: Thu, 7 Apr 2005 16:44:54 -0400
-Message-ID: <009801c53bb2$a95b2f30$540aa8c0@lanadmin>
-References: <Pine.LNX.4.60.0504072307070.585@grinch.ro>
-Reply-To: <eatley@wowcorp.com>
+From: smertz <smertens@mho.com>
+Subject: Card Reader
+Date: Thu, 07 Apr 2005 14:35:47 -0600
+Message-ID: <d345eq$cuc$1@sea.gmane.org>
+Reply-To: smertens@mho.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.60.0504072307070.585@grinch.ro>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: 'Calin Szonyi' <caszonyi@rdslink.ro>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
+
+I have a new computer I installed Linux on Red Hat Enterprise Linux ES 
+release 4 (Nahant), it has one of those all-in-one card readers on it. I 
+have made mountpoints as root as follows for my thumb, Compact flash and 
+secure digital drive.
+
+mkdir /mnt/thumb
+mkdir /mnt/cf
+mkdir /mnt/sd
 
 
->see /etc/X11/xorg.conf or /etc/X11/XF86Config
+Now when I tried to mount the Thumb (USB) drive I got an error # mount 
+/dev/sda2 /mnt/thumb
+mount: /dev/sda2 already mounted or /mnt/thumb busy.
 
-Thanks; I tried reverting back to my XF86Config.backup but that didn't work.
-The old and new ones appear to be the same. 
 
-And if it helps, it's actually a Logitech PS2 trackball attached to a KVM
-switch.
+So what have I done wrong? I'm thinking sda2 is wrong, but don't know why?
 
-My entries in each show:
+df -h shows the following
 
-XF86Config.backup
-------------------
-Section "InputDevice"
-        Identifier  "Mouse0"
-        Driver      "mouse"
-        Option      "Protocol" "IMPS/2"
-        Option      "Device" "/dev/psaux"
-        Option      "ZAxisMapping" "4 5"
-        Option      "Emulate3Buttons" "no"
-EndSection
+[root localhost mnt]# df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00
+                      183G  2.9G  171G   2% /
+/dev/sda1              99M   19M   76M  20% /boot
+none                  247M     0  247M   0% /dev/shm
+[root localhost mnt]#
 
-Section "InputDevice"
-# If the normal CorePointer mouse is not a USB mouse then
-# this input device can be used in AlwaysCore mode to let you
-# also use USB mice at the same time.
-        Identifier  "DevInputMice"
-        Driver      "mouse"
-        Option      "Protocol" "IMPS/2"
-        Option      "Device" "/dev/input/mice"
-        Option      "ZAxisMapping" "4 5"
-        Option      "Emulate3Buttons" "no"
-EndSection
 
-XF86Config
---------------------
-Section "InputDevice"
-        Identifier  "Mouse0"
-        Driver      "mouse"
-        Option      "Protocol" "IMPS/2"
-        Option      "Device" "/dev/psaux"
-        Option      "ZAxisMapping" "4 5"
-        Option      "Emulate3Buttons" "no"
-EndSection
-
-Section "InputDevice"
-
-# If the normal CorePointer mouse is not a USB mouse then
-# this input device can be used in AlwaysCore mode to let you
-# also use USB mice at the same time.
-        Identifier  "DevInputMice"
-        Driver      "mouse"
-        Option      "Protocol" "IMPS/2"
-        Option      "Device" "/dev/input/mice"
-        Option      "ZAxisMapping" "4 5"
-        Option      "Emulate3Buttons" "no"
-EndSection
-
-- Eve
-
+Thanks.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
