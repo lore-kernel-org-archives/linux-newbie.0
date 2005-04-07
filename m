@@ -1,65 +1,49 @@
-From: "Mike Turcotte" <Mike.Turcotte@cityofnorthbay.ca>
-Subject: RE:  Linux Backup
-Date: Thu, 7 Apr 2005 08:46:55 -0400
-Message-ID: <C6FD667B200BDF4F964C1BA77B796CE20F5E75@cnbmail2.city.north-bay.on.ca>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: sound problems on Debian unstable
+Date: Thu, 7 Apr 2005 09:09:00 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504070853500.5694@localhost.localdomain>
+References: <5.1.0.14.1.20050406092225.02059310@celine>
+ <5.1.0.14.1.20050406092225.02059310@celine> <5.1.0.14.1.20050406120016.0201f1f8@celine>
+ <Pine.LNX.4.61.0504061541470.5570@localhost.localdomain>
+ <Pine.LNX.4.60.0504070022080.852@grinch.ro> <Pine.LNX.4.61.0504061649470.5570@localhost.localdomain>
+ <Pine.LNX.4.60.0504070119060.971@grinch.ro> <Pine.LNX.4.61.0504061726280.5570@localhost.localdomain>
+ <Pine.LNX.4.60.0504070145360.1005@grinch.ro> <Pine.LNX.4.61.0504062231281.5570@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <Pine.LNX.4.61.0504062231281.5570@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I recently tried using DAR on my Gentoo machine. This program works
-great as it has a $#!7 load of options including compression. One of the
-greatest features of this program is that it can split up its output
-file into user definable sized chunks so you can easily put it onto your
-choice of media. If you are writing directly to say a DVD-RW, there is
-even an option to have the program detect when the disc is full and it
-will pause until you insert a blank one.
+On Wed, 6 Apr 2005, James Miller wrote:
 
-Michael Turcotte
-Information Systems
-City of North Bay
-200 McIntyre St. E
-PO Box 360
-North Bay, Ontario
-P1B 8H8
- 
-Mike.Turcotte@cityofnorthbay.ca
-http://www.cityofnorthbay.ca 
+> range) or to disable ttyS1 (COM 2 as the BIOS sees it, I believe) and see if 
+> that relieves any potential IRQ 3 conflict.
 
-> -----Original Message-----
-> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
-> owner@vger.kernel.org] On Behalf Of smertz
-> Sent: Wednesday, April 06, 2005 7:59 PM
-> To: linux-newbie@vger.kernel.org
-> Subject: Linux Backup
-> 
-> I have spent a great deal of time on simple things in Linux as I am
-new
-> over the last week (No better way to learn)  But I don't want to
-> re-learn in case the proverbial Hard Drive dies, so what is a good way
-> to back up my system? On my 2 Windows XP machines I use Ghost 9.  Is
-> there similar thing to copy a Linux drive?
-> 
-> Or can I simply do something like an XCOPY from one drive to a second
-> one as a backup?
-> 
-> I am using Red Hat Enterprise Linux ES release 4 (Nahant)
-> on a home Workgroup as a File and print server - If I ever get Samba
-set
-> up correctly. Any suggestions appriciated.
-> 
-> Thanks
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe
-linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+I tried disabling COM 2 in the BIOS (set it to "off" there). When I look 
+at dmesg output, it does, indeed, appear to be off and is not getting 
+assigned an IRQ by Linux. I see in dmesg output only ttyS0, assigned IRQ 
+4. So it seems I have succeeded in freeing up IRQ 3 and resolving any 
+potential conflict over it that might be contributing to sound issues. 
+Nonetheless, the sound is of the same poor quality when I try to play 
+files stored on the hard drive with mp3blaster. It is scratchy and I get 
+pauses when some other computer activity occurs, just like before. I 
+therefore presume that IRQ conflicts are not the operative problem here.
+
+I see no io address associated with the sound module(s) in cat 
+/proc/ioports output, so that could be part of my problem. I also do not 
+see IRQ 5 associated with anything (or even listed) in cat 
+/proc/interrupts output, though I've tried to associate the pas2 module 
+with it by specifying sb_irq=5 (among other parameters) in /etc/modules. I 
+don't see the device files Ray mentioned as being used by Soundblaster 
+emulation (/dev/dsp1 or /dev/audio1) in the /dev directory, but I think 
+those should be auto-created on boot if they are needed.
+
+Further suggestions? A trip to Frys later today, perhaps?
+
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
