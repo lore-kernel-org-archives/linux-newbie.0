@@ -1,56 +1,38 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: auto start WM on second VT
-Date: Fri, 8 Apr 2005 08:24:33 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0504080758090.5555@localhost.localdomain>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: Mouse going nuts in RH Linux Enterprise 3 (Taroon)
+Date: Fri, 8 Apr 2005 15:16:05 +0200
+Message-ID: <200504081516.06071.pa3gcu@zeelandnet.nl>
+References: <009301c53bac$15bb7e70$540aa8c0@lanadmin> <5.1.0.14.1.20050407132836.02054640@celine> <web-739468@solidcore.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <web-739468@solidcore.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Rajendra Mishra <rpm@solidcore.com>
+Cc: Ray Olszewski <ray@comarre.com>, linux-newbie@vger.kernel.org
 
-After all those complex problems with sound, let me ask for some help on 
-something that should be much easier to resolve. It should just be a 
-matter of automating something I currently do manually. This refers to the 
-same Debian unstable system I discussed in the sound card thread.
+On Friday 08 April 2005 07:01, Rajendra Mishra wrote:
+> The problem is due to the incompatibility of KVM with
+> linux.
 
-I've become attached to some console programs and had been running them in 
-a sort of console window manager called "twin" on a second VT. Works 
-nicely (if you can get the right vga mode to work with your video card) 
-but there are some inconveniences--for example if you need to run some X 
-app when you try opening an email attachment or something. The combination 
-of those two problems led me to consider instead running a lightweight, 
-console-like WM on that second VT. I decided on ion3, since I've had some 
-experience with that.
+I have been using kvm switches here at home and at work for years, i have 
+never had a problem with any of them.
+They switch between windows and linux fine, bsd to linux and visa versa no 
+problem here at all.
 
-I discovered through some web searching that setting this up to work 
-"manually" was very easy under Debian. It was easy because Debian 
-apparently does not use an .xinitrc file found in the user's home dir when 
-starting up Xwindows on display :0 (hope I've said that at least somewhat 
-correctly). However if you create an .xinitrc file in your home directory 
-that points to a valid WM binary on your system, then start Xwindows on 
-display :1 in a second VT, it will use that .xinitrc file and get the WM 
-running on the second display. This can be either a second copy of the 
-same WM or a different WM altogether. One can alternate between the two by 
-use of the ctrl-alt-F7 and ctrl-alt-F8 keys. An example of the command 
-line way of doing this is to press ctrl-alt-F2 to get to the second VT and 
-a (login, then) command prompt. From the prompt, simply issue startx -- 
-:1.
+If you use google.com and check out some of the reported problems you will see 
+that most problems were solved by configuration and had really nothing to do 
+with KVM switches, it may well seem that the switch is at fault but as i said 
+mostly its not.
 
-Works fine. The question I'm currently trying to resolve however, is 
-getting the WM to start up automatically in the second VT. This should 
-happen either after I log into the system (using xdm), or, short of that, 
-automatically. I gather it can be done by editing inittab, though I'm not 
-sure of the exact syntax. I suppose it might also be accomplished by 
-editing/creating some xdm config file. A third way might involve tweaking 
-startx. And this is what I'd like to ask advice on.
+In most all cases its not a hardware problem but another program interfeering 
+with GPM and or the X server.
 
-Finally, my question. Can anyone offer suggestions on ways of getting the 
-second WM running on display :1 automatically? E.g., after I log in to 
-xdm? Hope this will be as easy as it seems.
-
-Thanks, James
+> regds,
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
