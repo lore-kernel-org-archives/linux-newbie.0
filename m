@@ -1,64 +1,38 @@
-From: smertz <smertens@mho.com>
-Subject: Re: Card Reader
-Date: Thu, 07 Apr 2005 17:34:45 -0600
-Message-ID: <d34fua$c59$1@sea.gmane.org>
-References: <d345eq$cuc$1@sea.gmane.org> <5.1.0.14.1.20050407142351.0202e3e0@celine> <d349ga$qln$1@sea.gmane.org> <4255B0C6.5000203@gelm.net> <d34drn$722$1@sea.gmane.org> <Pine.LNX.4.60.0504080206320.885@grinch.ro>
-Reply-To: smertens@mho.com
+From: Peter <heisspf@skyinet.net>
+Subject: Re: How to pick a distro?
+Date: Fri, 08 Apr 2005 10:03:39 +0800
+Message-ID: <200504080203.j3823di3000665@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.60.0504080206320.885@grinch.ro>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-caszonyi@rdslink.ro wrote:
-> On Thu, 7 Apr 2005, smertz wrote:
-> 
->>
->>>
->>>
->>> mount /dev/sdc1 /mnt/thumb
->>
->>
->> Trying this gives me the error
->> mount: special device /dev/sdsc1 does not exist
-> 
->                              ^^^^^^^
+Hi,
 
-Same error message below
-[root@RHServer01 ~]# mount /dev/sdc /mnt/thumb
-mount: special device /dev/sdc does not exist
-[root@RHServer01 ~]# mount /dev/sdc1 /mnt/thumb
-mount: special device /dev/sdc1 does not exist
-[root@RHServer01 ~]#
+having read all the replies I would almost be scared to go to a Linux OS. It 
+is not that difficult at all. With Fedora I would call the installation a 
+child's or grandma's play, however, would recommend to do the partitioning 
+yourself after having read how to go about it.
 
-> should be sdc1
-> Also you could try with
-> mount /dev/sdc /mnt/thumb
-> 
-> maybe you don't have sdc1 or sdc in your /dev/ directory.
-> there should be a script called MAKEDEV in /dev/ directory which can 
-> create those devices for you
+As for me slackware is even easier and faster to install, however, can be 
+bitchy afterwards. I have used SUSE once a long time ago so I can not speak of 
+it today. At that time I was not impressed.
 
-There seems to be no man pages on MAKEDEV is the syntax just MAKEDEV sdc
+When I switched to Linux I had no one to consult at all. Bought RedHat 5.2 
+which had just come out, read carefully how to install, the had a very 
+comprehensive handbook, and have been with Linux ever since. There were some 
+problems in the beginning an account of my ignorance. I had only 16 MB RAM, a 
+very small HD and forgot what of a slow cycle of the processor resulting at 
+times in application crashes and what I call memory-run-aways.
 
-I did that and it made a lot of files that started with sdc,sdc1 to 
-sdc100 etc. They disappered when I rebooted however.  Is this normal
-> 
-> 
-> 
-> -- 
-> ?
-> 
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+So just do it.
+
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
