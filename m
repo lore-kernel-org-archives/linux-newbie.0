@@ -1,49 +1,84 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: How to pick a distro?
-Date: Thu, 07 Apr 2005 22:55:07 -0700
-Message-ID: <5.1.0.14.1.20050407224150.0206b1f0@celine>
-References: <200504080203.j3823di3000665@skyinet.net>
- <200504080203.j3823di3000665@skyinet.net> <42558DE0.3070808@comcast.net>
+From: smertz <smertens@mho.com>
+Subject: samba question
+Date: Fri, 08 Apr 2005 05:40:19 -0600
+Message-ID: <d35qeh$i74$1@sea.gmane.org>
+Reply-To: smertens@mho.com
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <42558DE0.3070808@comcast.net>
-References: <200504080203.j3823di3000665@skyinet.net>
- <200504080203.j3823di3000665@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-At 07:45 PM 4/7/2005 +0000, Jeremy Abbott wrote:
-[...]
->I bought Suse about a year ago.  Very nice Distro with package
->management through Yast.  My problem with it though, was that it does
->not come with a C compiler.  If all youare installing is binary
->packeges, that's fine.  I wanted to do some compiling from source though.
+I did a install of RH ES4 a week ago and am very new to Linux. I want 
+this box to be a file and print server for a home WORKGROUP, not a DOMAIN.
 
-Are you sure of this, Jeremy?
+So first problem is I am tying to set up a printer to share with my 2 
+windows XP boxes. However they can not browse to the printer or see it 
+with the add printer wizard in XP. Since my DNS info comes from my ISP, 
+I'm wondering what needs to be set in Globals section for domain master 
+browser.  Also does the Linux box need to be part of the WORKGROUP?
 
-I just checked the online package repository for SuSE at 
-ftp://ftp.suse.com/pub/suse/i386/current/suse/i586, and there I see all the 
-usual compiler packages ... for example: gcc (the C compiler), g++ (the C++ 
-variant of gcc), the *-devel header files for the libraries, gdb (the 
-standard debugger) and ddd (its X frontend).
+Does anything have to be set up in XP for them to see this printer on 
+Linux attached locally to a USB port.  I can see and print to it in 
+Linux.  I know there have been volums written on Samba, but it seems to 
+me sharing a printer should be simple.
 
-I suspect that either what you bought was a limited subset of SuSE ... 
-possible, I suppose, since the iso image for the full distro is about 3.5 
-GB, requiring a DVD to hold it ... or you misunderstood the docs that came 
-with what you got.
+I just want XP users to use their own driver and use the guest account 
+for printing.  Fro win XP I can see the Linux box, but can't see the 
+Printer.
 
-I can't recall ever seeing a full-size Linux distro that did not include 
-the full suite of compilers it needed to compile all its own source. If 
-nothing else, you need this to compile custom kernels, a fairly common 
-activity among experienced users of all distros.
+My smb.conf file.
 
-And as we all know, anyone who provides you with a CD or DVD of binaries 
-needs to provide you with access to the associated source, at least for the 
-GPL'd packages.
+  [global]
+          workgroup = MERTENS
+          server string = Samba Server
+          security = SHARE
+          password server = None
+          passdb backend = guest
+          username map = /etc/samba/smbusers
+          log file = /var/log/samba/%m.log
+          max log size = 50
+          socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192
+          os level = 34
+          preferred master = No
+          domain master = No
+          dns proxy = No
+          ldap ssl = no
+          idmap uid = 16766216-33123431
+          idmap gid = 16766216-33123431
+          cups options = raw
+          load printers = yes
+          printing = cups
+          printcap name = cups
 
+  [homes]
+          comment = Home Directories
+          read only = No
+          browseable = No
+
+  [printers]
+          comment = All Printers
+          path = /var/spool/samba
+          printable = Yes
+          browseable = No
+          public = yes
+          guest ok = yes
+          writable = no
+          printer admin = root
+
+  [HP6110]
+          comment = All Printers
+          path = /var/spool/samba
+          printer admin = root
+          read only = No
+          guest ok = Yes
+          printable = Yes
+          printer name = HP6110
+          use client driver = Yes
+          browseable = No
+          oplocks = Yes
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
