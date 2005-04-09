@@ -1,58 +1,63 @@
-From: Jeremy Abbott <jkbullfrog@comcast.net>
-Subject: Re: How to pick a distro?
-Date: Fri, 08 Apr 2005 16:18:35 +0000
-Message-ID: <4256AEDB.7030608@comcast.net>
-References: <200504080203.j3823di3000665@skyinet.net> <200504080203.j3823di3000665@skyinet.net> <5.1.0.14.1.20050407224150.0206b1f0@celine>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: auto start WM on second VT
+Date: Fri, 8 Apr 2005 20:27:17 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504082010160.5555@localhost.localdomain>
+References: <5.1.0.14.1.20050408102653.02048aa8@celine>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5.1.0.14.1.20050407224150.0206b1f0@celine>
+In-Reply-To: <5.1.0.14.1.20050408102653.02048aa8@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
+On Fri, 8 Apr 2005, Ray Olszewski wrote:
 
->
-> Are you sure of this, Jeremy?
->
-> I just checked the online package repository for SuSE at
-> ftp://ftp.suse.com/pub/suse/i386/current/suse/i586, and there I see
-> all the usual compiler packages ... for example: gcc (the C compiler),
-> g++ (the C++ variant of gcc), the *-devel header files for the
-> libraries, gdb (the standard debugger) and ddd (its X frontend).
->
-> I suspect that either what you bought was a limited subset of SuSE ...
-> possible, I suppose, since the iso image for the full distro is about
-> 3.5 GB, requiring a DVD to hold it ... or you misunderstood the docs
-> that came with what you got.
->
-> I can't recall ever seeing a full-size Linux distro that did not
-> include the full suite of compilers it needed to compile all its own
-> source. If nothing else, you need this to compile custom kernels, a
-> fairly common activity among experienced users of all distros.
->
-> And as we all know, anyone who provides you with a CD or DVD of
-> binaries needs to provide you with access to the associated source, at
-> least for the GPL'd packages.
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
-The version I purchased was the cheapest version of 9.1, and I found out
-later that their was no compiler from reading on the net.  I could be
-mistaken, as I was extremely new to linux at the time, but either their
-was no gcc, or it was not in root's or my user path.  I tend to lean
-toward what I read on the net.  I did just examine Suse's website, and
-it apears to have been redesigned, and has new versions.  After reading
-about 9.2 professional, I would agree that there should be a C compiler
-in it.
+> First, let's clear up a bit of terminology.
+<snip>
+Thanks for those clarifications. They clarify both how the terminology is 
+used as well as what the computer is doing--much needed gap-filling 
+information for someone like me.
 
+> You *might* be better served by switching to (what I think of as) the 
+> Slackware approach, adding lines to /etc/inittab for consoles 7 and 8 that 
+> run xdm (or actual X logins), and removing the xdm script symlink from your 
+> default runlevel directory. If you want to take this approach, any Slackware 
+> user here should be able to give you a sample of what the inittab entry 
+> should look like ... I *think* is is just --
+>
+>        7:23:respawn:/usr/bin/X11/xdm
+>
+> -- but I can't be certain because I don't have a working system here that 
+> uses this method of starting xdm, so I'm drawing on a memory that is years 
+> old.
+
+I picked around a bit further in /etc/X11/xdm and /usr/X11R6 trying to 
+figure out how all this works. It's rather mind-boggling trying to puzzle 
+out how all the relevant files relate to one another, not to mention how 
+each is supposed to work on its own. Your slackwarish suggestion seems 
+worth trying. My problem with it the way it stands, though, is that it 
+invokes xdm, which doesn't give me any sort of menu for chosing between 
+WM's. It's just a bare login window. If I log into it, I'll get another 
+Gnome session (my main WM on this machine) rather than the ion3 session I 
+want. I'll attempt now to puzzle out if there's a way to add other WM's to 
+some sort of menu, starting with the man page.
+
+> PS - Did you give up on the sound card, or get it working? Or are you still 
+> in the process of trying?
+
+I've pretty much given up since it managed to completely stump me as well 
+as the experts via me. It seems to me that, were I finally to succeed with 
+this card, it would be by defeating the BIOS's settings somehow. And that 
+would be a lesson likely applicable only to this particular computer/mobo. 
+That doesn't seem to justify further effort. Before going out and buying a 
+PCI card though, I do want to try out a real SoundBlaster (16) someone is 
+sending me. Since these are more clearly Linux-compatible, if it also will 
+not work, I can rest more fully assured that the BIOS is the source of my 
+problems with the Soundman card. Thanks for your help on that.
+
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
