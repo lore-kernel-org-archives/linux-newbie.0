@@ -1,41 +1,27 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: auto start WM on second VT
-Date: Sat, 09 Apr 2005 11:51:56 +0800
-Message-ID: <200504090351.j393puIF000397@skyinet.net>
-References: <Pine.LNX.4.61.0504080758090.5555@localhost.localdomain>
+From: Maximiliano Rioseco <maxrioseco@gmail.com>
+Subject: why [permanent] modules on kernel 2.6.11-rc2?
+Date: Sat, 9 Apr 2005 02:19:35 -0400
+Message-ID: <eadb84e305040823195a7bd756@mail.gmail.com>
+Reply-To: Maximiliano Rioseco <maxrioseco@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Fri, 08 Apr 2005 08:24:33 EST."
-             <Pine.LNX.4.61.0504080758090.5555@localhost.localdomain> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
-Cc: James Miller <jamtat@mailsnare.net>
 
-Forgot the & after the 2
+Hi:
 
-Hi,
+I'm playing with kernel 2.6.11-rc2 and see that some kernel modules
+are marked [permanent] when I make lsmod. This topic was treated in
+linux-kernel mailing list but I quest if somebody can explain in more
+detail the reason for permanent modules (is it only for debugging
+reasons and will be removed in stable releases of kernel?).
 
-I have never used xdm, gdm or kdm. In fact I hate them. If I want to start X I 
-type startx. If I want to start X of another WM in another VT I type in the 
-terminal for example:
+Thanks in advance for your help.
 
-startx /usr/bin/gnome-session -- :2& or
-
-startx /opt/kde/bin/startkde -- :2& or whatever WM.
-
-Now you can put this in a small sript may be call it WM2 and start it from a 
-terminal. That's not automatic as such but I know in Fedora and KDE such 
-scripts can be started automatically after the WM or desktop is up and running.
-
-Regards
--- 
-Peter
-
-
-
+Max Rioseco
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
