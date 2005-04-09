@@ -1,57 +1,39 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: auto start WM on second VT
-Date: Fri, 08 Apr 2005 20:22:44 -0700
-Message-ID: <5.1.0.14.1.20050408201833.01f54bb8@celine>
-References: <5.1.0.14.1.20050408184004.01f561c8@celine>
- <5.1.0.14.1.20050408102653.02048aa8@celine>
- <5.1.0.14.1.20050408102653.02048aa8@celine>
- <5.1.0.14.1.20050408184004.01f561c8@celine> <Pine.LNX.4.61.0504082120440.5555@localhost.localdomain>
+Date: Sat, 09 Apr 2005 11:51:56 +0800
+Message-ID: <200504090351.j393puIF000397@skyinet.net>
+References: <Pine.LNX.4.61.0504080758090.5555@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504082120440.5555@localhost.localdomain>
-References: <5.1.0.14.1.20050408184004.01f561c8@celine>
- <5.1.0.14.1.20050408102653.02048aa8@celine>
- <5.1.0.14.1.20050408102653.02048aa8@celine>
- <5.1.0.14.1.20050408184004.01f561c8@celine>
+In-Reply-To: Your message of "Fri, 08 Apr 2005 08:24:33 EST."
+             <Pine.LNX.4.61.0504080758090.5555@localhost.localdomain> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+Cc: James Miller <jamtat@mailsnare.net>
 
-At 09:38 PM 4/8/2005 -0500, James Miller wrote:
-[...]
->>A standard Debian menu of this sort includes a WindowManagers section 
->>that lets you select among the available WMs.
->
->Yep, standard Debian unstable, installed starting with a netinst CD. The 
->menu program is installed, and menus are getting updated. Despite this, I 
->see no WindowManagers section anywhere: maybe the packagers for Gnome 
->thought no one would ever want to use any other WM after trying Gnome :) ? 
->Don't see that anywhere--not among the Gnome menu items, nor under the 
->"Debian" section.
+Forgot the & after the 2
 
-Hmmmph! Now I really wish I could see what you're seeing. I don't run 
-Gnome, but I''ve always had the WindowManagers choice in any WM I did run 
-... mainly blackbox and KDE. In Gnome, it would probably be the 
-next-to-last item in the Debian section. It's where the choice to exit from 
-X is.
+Hi,
 
+I have never used xdm, gdm or kdm. In fact I hate them. If I want to start X I 
+type startx. If I want to start X of another WM in another VT I type in the 
+terminal for example:
 
->>Or, you might approach this by creating a dedicated userid to run this 
->>special WM setup, and use its .xsession file to set things up. Then just 
->>log into that userid in the second xdm, and you're set to go.
->
->I don't see any .xsession file in my user's directory either. In fact, I 
->created my own .xinitrc file so I could get ion3 on logging in in a 
->console and running startx -- :1. I couldn't find anything like the file 
->you mention or .xinitrc when I originally started setting this all up.
+startx /usr/bin/gnome-session -- :2& or
 
-I may have misled you here; sorry. None of my X-using users has either of 
-these files by default either. They are the ones you create if you want 
-user-spefici customizations, not stock items created from a template the 
-way that, for example, .bash_profile and .bashrc are.
-[...]
+startx /opt/kde/bin/startkde -- :2& or whatever WM.
+
+Now you can put this in a small sript may be call it WM2 and start it from a 
+terminal. That's not automatic as such but I know in Fedora and KDE such 
+scripts can be started automatically after the WM or desktop is up and running.
+
+Regards
+-- 
+Peter
+
 
 
 -
