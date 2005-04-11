@@ -1,107 +1,58 @@
-From: Jeremy Abbott <jkbullfrog@comcast.net>
-Subject: 3d graphics in X
-Date: Mon, 11 Apr 2005 15:21:54 +0000
-Message-ID: <425A9612.5020701@comcast.net>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: help on dmesg output
+Date: Mon, 11 Apr 2005 17:47:19 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504111735570.5717@localhost.localdomain>
+References: <Pine.LNX.4.61.0504110958420.6036@localhost.localdomain>
+ <Pine.LNX.4.60.0504112155400.1512@grinch.ro> <Pine.LNX.4.61.0504111504390.5967@localhost.localdomain>
+ <Pine.LNX.4.60.0504120028150.1855@grinch.ro>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.60.0504120028150.1855@grinch.ro>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I'm running Gentoo with xorg 6.8.2-r1, kernel 2.6.10-gentoo-r6, and
-ati-drivers 8.10.19. 
+On Tue, 12 Apr 2005 caszonyi@rdslink.ro wrote:
 
-I have a Radeon 9600, so I have to use ATI's binary driver to use the
-3d.  For some reason, glxgears gives me over 2000 fps, but tuxracer
-freezes everytime I run it.  I've tried tweaking with my setting in my
-xorg.conf file, but all I managed to do was slow down my fps.  Here is
-my device section for the ATI card:
+> Another solution is to comment out all the lines in /etc/modules.conf and 
+> then uncomment only the necessary one for your kernel to work
+> (i.e. usb stuff, zip, vesa and sound). Also for this to work you must make 
+> sure that nos script is loading the modules. Take care that mixing ALSA sound 
+> modules with OSS sound modules is a bad idea
 
-# === ATI device section ===
+Here is the content of my /etc/modules file:
 
-Section "Device"
-    Identifier                          "ATI Graphics Adapter"
-    Driver                              "fglrx"
-# ### generic DRI settings ###
-# === disable PnP Monitor  ===
-    #Option                              "NoDDC"
-# === disable/enable XAA/DRI ===
-    Option "no_accel"                   "no"
-    Option "no_dri"                     "no"
-# === misc DRI settings ===
-    Option "mtrr"                       "off" # disable DRI mtrr mapper, driver has its own code for mtrr
-# ### FireGL DDX driver module specific settings ###
-# === Screen Management ===
-    Option "DesktopSetup"               "0x00000000" 
-    Option "MonitorLayout"              "AUTO, AUTO"
-    Option "IgnoreEDID"                 "off"
-    Option "HSync2"                     "unspecified" 
-    Option "VRefresh2"                  "unspecified" 
-    Option "ScreenOverlap"              "0" 
-# === TV-out Management ===
-    Option "NoTV"                       "yes"     
-    Option "TVStandard"                 "NTSC-M"     
-    Option "TVHSizeAdj"                 "0"     
-    Option "TVVSizeAdj"                 "0"     
-    Option "TVHPosAdj"                  "0"     
-    Option "TVVPosAdj"                  "0"     
-    Option "TVHStartAdj"                "0"     
-    Option "TVColorAdj"                 "0"     
-    Option "GammaCorrectionI"           "0x00000000"
-    Option "GammaCorrectionII"          "0x00000000"
-# === OpenGL specific profiles/settings ===
-    Option "Capabilities"               "0x00000000"
-# === Video Overlay for the Xv extension ===
-    Option "VideoOverlay"               "on"
-# === OpenGL Overlay ===
-# Note: When OpenGL Overlay is enabled, Video Overlay
-#       will be disabled automatically
-    Option "OpenGLOverlay"              "off"
-# === Center Mode (Laptops only) ===
-    Option "CenterMode"                 "off"
-# === Pseudo Color Visuals (8-bit visuals) ===
-    Option "PseudoColorVisuals"         "off"
-# === QBS Management ===
-    Option "Stereo"                     "off"
-    Option "StereoSyncEnable"           "1"
-# === FSAA Management ===
-    Option "FSAAEnable"                 "no"
-    Option "FSAAScale"                  "1"
-    Option "FSAADisableGamma"           "no"
-    Option "FSAACustomizeMSPos"         "no"
-    Option "FSAAMSPosX0"                "0.000000"
-    Option "FSAAMSPosY0"                "0.000000"
-    Option "FSAAMSPosX1"                "0.000000"
-    Option "FSAAMSPosY1"                "0.000000"
-    Option "FSAAMSPosX2"                "0.000000"
-    Option "FSAAMSPosY2"                "0.000000"
-    Option "FSAAMSPosX3"                "0.000000"
-    Option "FSAAMSPosY3"                "0.000000"
-    Option "FSAAMSPosX4"                "0.000000"
-    Option "FSAAMSPosY4"                "0.000000"
-    Option "FSAAMSPosX5"                "0.000000"
-    Option "FSAAMSPosY5"                "0.000000"
-# === Misc Options ===
-    Option "UseFastTLS"                 "1"
-    Option "BlockSignalsOnLock"         "off"
-    Option "UseInternalAGPGART"         "yes"
-    Option "ForceGenericCPU"            "no"
-    BusID "PCI:1:5:0"    # vendor=1002, device=496e
-    Screen 0
-EndSection
+# /etc/modules: kernel modules to load at boot time.
+#
+# This file should contain the names of kernel modules that are
+# to be loaded at boot time, one per line.  Comments begin with
+# a "#", and everything on the line after them are ignored.
+# pas2 io=220 irq=7 dma=1
+# sb io=0x230 irq=5 dma=1 mpu_io=0x330
+# pas2 io=0x388 irq=5 dma=5 sb_io=0x220 sb_irq=3 sb_dma=1
+# opl3 io=0x388
+# snd-sb16 port=0x220 irq=5 dma8=1 dma16=5
 
+ide-cd
+ide-detect
+sd_mod
+# snd-cs4236
 
-Any help would be greatly appreciated.
+I'm not sure where else modules might be stipulated in Debian, but my 
+understanding is that user-specified ones go in this file. The file, as 
+you can see, consists mainly of commented-out attempts at loading various 
+sound modules. Those are failed experiments that will be deleted soon. So, 
+only 3 modules are getting loaded from there, and none of them have to do 
+with sound, so far as I can see. So, I'm not loading any sound modules 
+through any means I know of. The system was likely pre-configured to load 
+whatever other modules are loading: it's pretty close to a stock Debian 
+unstable install. Doesn't really resolve anything other than demonstrating 
+that the conflicting modules problem--if that's what's 
+interfering--doesn't seem to result from anything I did.
 
-Thanks,
-Jeremy Abbott
-jkbullfrog@comcast.net
-
-
-
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
