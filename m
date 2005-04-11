@@ -1,59 +1,35 @@
-From: Tobias Hirning <Tobias.Hirning@gmx.de>
-Subject: Re: why [permanent] modules on kernel 2.6.11-rc2?
-Date: Sun, 10 Apr 2005 17:42:06 +0200
-Message-ID: <200504101742.20783.Tobias.Hirning@gmx.de>
-References: <eadb84e305040823195a7bd756@mail.gmail.com>
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Xmms Won't Open
+Date: Mon, 11 Apr 2005 11:19:04 +0800
+Message-ID: <200504110319.j3B3J5fZ019709@skyinet.net>
+References: <5.1.0.14.1.20050410073708.00a04540@celine>
 Mime-Version: 1.0
-Content-Type: multipart/signed;
-  boundary="nextPart3157230.M6u8ubqDLt";
-  protocol="application/pgp-signature";
-  micalg=pgp-sha1
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <eadb84e305040823195a7bd756@mail.gmail.com>
+In-Reply-To: Your message of "Sun, 10 Apr 2005 08:13:13 MST."
+             <5.1.0.14.1.20050410073708.00a04540@celine> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux <linux-newbie@vger.kernel.org>
 
---nextPart3157230.M6u8ubqDLt
-Content-Type: text/plain;
-  charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Thanks Ray!
 
-Hi Max!
-On Saturday, 9. April 2005 08:19 Maximiliano Rioseco wrote:
-> I'm playing with kernel 2.6.11-rc2 and see that some kernel modules
-> are marked [permanent] when I make lsmod. This topic was treated in
-> linux-kernel mailing list but I quest if somebody can explain in
-> more detail the reason for permanent modules (is it only for
-> debugging reasons and will be removed in stable releases of
-> kernel?).
-Do I understand you correctly? You can't unload modules, right?
-Normally in the 2.6 kernels you have to select "Module unloading" for=20
-unloading modules.
-I hope I could help you.
-Tobias
-=2D-=20
-GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
-Registered Linux-User #367044
-Registered Linux-Machine #262062
-http://counter.li.org
-Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
-Signatur nach =A72 2. d) SigG signiert.
+I solved the problem par force. Uninstalled dropline 2.10 and reinstalled the 
+2.8.3 version and all is back to normal working. I decided to do this after I 
+found that firefox crashes when a link is clicked.
 
---nextPart3157230.M6u8ubqDLt
-Content-Type: application/pgp-signature
+The 2.8.3 version I have on a CD whereas to the 2.10 version I upgraded by 
+downloading from the Internet. May be that might cause some kinks.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
+I posted the problem in the dropline forum as you suggested.
 
-iD8DBQBCWUlcVPy429AtcIURAow2AKCUy19YFazcY0fVEJAu37q2dJ3kBgCfRC18
-MDRoyEBjG4OzsGC7HcyZDao=
-=rXT8
------END PGP SIGNATURE-----
+Regards
+-- 
+Peter
 
---nextPart3157230.M6u8ubqDLt--
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
