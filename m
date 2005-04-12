@@ -1,41 +1,42 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: Re: .torrent
-Date: Tue, 12 Apr 2005 06:15:07 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0504120613450.5980-100000@treebeard.engin.umich.edu>
-References: <200504120820.j3C8K63P001756@skyinet.net>
+From: Manish Regmi <regmi.manish@gmail.com>
+Subject: Re: inb parameter physical/Virtual.
+Date: Tue, 12 Apr 2005 17:24:08 +0545
+Message-ID: <652016d3050412043952bdd8d9@mail.gmail.com>
+References: <4EE0CBA31942E547B99B3D4BFAB3481124BC15@mail.esn.co.in>
+Reply-To: Manish Regmi <regmi.manish@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200504120820.j3C8K63P001756@skyinet.net>
+In-Reply-To: <4EE0CBA31942E547B99B3D4BFAB3481124BC15@mail.esn.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: "Peter H." <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Cc: linux-newbie@vger.kernel.org
 
-try azureus -- http://azureus.sourceforge.net/howto_linux.php
-
-
--K
-
-On Tue, 12 Apr 2005, Peter H. wrote:
-
-> Hi,
+On Apr 12, 2005 10:51 AM, Mukund JB. <mukundjb@esntechnologies.co.in> wrote:
 > 
-> When I wanted to download some programs I ended up with a .torrent file, like  
-> dlg-2.10.0.iso.torrent.
+> Hi all,
 > 
-> What am I supposed to do with that? This is unfamiliar to me.
+> I am into writing Linux device drivers. I have a query regarding usage
+> of inb, outb instruction in the drivers.
 > 
-> Thanks & regards
-> -- 
-> Peter
+> What is the address we need to pass to inb, oub instructions? I mean, Is
+> it a Physical address or a Virtual address?
+> 
+> Regards,
+> Mukund jampala
 
+No,
+  It is I/O port address. It is different from Memory address. In x86,
+I/O Port addresses are 16bit.
 
---------------
-"Results! Why, man, I have gotten a lot of results. I know several thousand 
-things that won't work." - Thomas Edison
+Regards
+Manish Regmi
 
+-- 
+---------------------------------------------------------
+"Owning a hammer doesn't make one an architect"
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
