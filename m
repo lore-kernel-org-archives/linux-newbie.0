@@ -1,35 +1,25 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: inb parameter physical/Virtual.
-Date: Tue, 12 Apr 2005 10:36:57 +0530
-Message-ID: <4EE0CBA31942E547B99B3D4BFAB3481124BC15@mail.esn.co.in>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: .torrent
+Date: Tue, 12 Apr 2005 16:20:06 +0800
+Message-ID: <200504120820.j3C8K63P001756@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux <linux-newbie@vger.kernel.org>
 
+Hi,
 
-Hi all,
+When I wanted to download some programs I ended up with a .torrent file, like  
+dlg-2.10.0.iso.torrent.
 
-I am into writing Linux device drivers. I have a query regarding usage
-of inb, outb instruction in the drivers.
+What am I supposed to do with that? This is unfamiliar to me.
 
-What is the address we need to pass to inb, oub instructions? I mean, Is
-it a Physical address or a Virtual address?
-
-
-Regards,
-Mukund jampala
-
-
-
-
-
-
-
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
