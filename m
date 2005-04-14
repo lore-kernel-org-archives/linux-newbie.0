@@ -1,179 +1,122 @@
-From: Eric Bambach <eric@cisu.net>
+From: "J." <mailing-lists@xs4all.nl>
 Subject: Re: remote admin
-Date: Thu, 14 Apr 2005 16:15:09 -0500
-Message-ID: <200504141615.09765.eric@cisu.net>
-References: <Pine.LNX.4.21.0504141835380.1414-100000@hestia>
-Reply-To: eric@cisu.net
+Date: Thu, 14 Apr 2005 23:58:55 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0504142316340.1631-100000@hestia>
+References: <5.1.0.14.1.20050414103139.01f555a8@celine>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0504141835380.1414-100000@hestia>
-Content-Disposition: inline
+In-Reply-To: <5.1.0.14.1.20050414103139.01f555a8@celine>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux <linux-newbie@vger.kernel.org>
-Cc: "J." <mailing-lists@xs4all.nl>
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Thursday 14 April 2005 12:14 pm, J. wrote:
-> On Thu, 14 Apr 2005, Eric Bambach wrote:
-> > Ssh is the de facto standard for remote administration but It lacks=
- the
-> > ability to give you a GUI interface.
->
-> What ? Search for SSH GUI and google returns +770,000 matches.. ! Oth=
-er
-> than that it can be used to encrypt just about any connection, like f=
-or
-> example X .
+On Thu, 14 Apr 2005, Ray Olszewski wrote:
 
-Have you *TRIED* X over SSH over slow connections? There are better=20
-alternatives.
-
-> > SSH Is quick and dirty
->
-> Send a message to one of the SSH lists with that line in the subject.=
- ;-)
-
-I'm afraid I dont know what you mean. As far as I've experienced, if yo=
-u want=20
-a remote shell you unpack, configure, install, ssh-keygen, sshd, then o=
-n your=20
-local box ssh myhost.com. Im sure it can go downhill from there for mor=
-e=20
-advanced needs, but for grabbing a shell SSH is pretty easy especially =
-if it=20
-is preinstalled in your distribution.
-
-> > remote administration and comes standard (or should ) on all Unix
-> > variants.  (openssh.com)
+> At 07:14 PM 4/14/2005 +0200, J. wrote:
+> >On Thu, 14 Apr 2005, Eric Bambach wrote:
 > >
-> > TightVNC is a rather "unrobust" remote X server but it gets the job=
- done.
-> > This will let you connect remotely and get an X GUI session open.
+> > > Ssh is the de facto standard for remote administration but It lacks the
+> > > ability to give you a GUI interface.
 > >
-> > If you can afford it, ...........
->
-> <CUT>
-> ...
-> </CUT>
->
-> Then take 10min's of your precious time and look at some of the +200
-> projects that provide OPEN/FREE remote X administration.
-
-Could you back up your claim? Can you provide a SINGLE application besi=
-des X=20
-over SSH instead of inventing a random semi-large number. Instead of=20
-providing good advice you instead be-rate my advice and give an offtopi=
-c OSS=20
-fanboy rant.
-
-> Waf, waf..
-> The first computers were TIME-SHARING comp's . They had to be because=
- they
-> were to expensive to buy. Don't tell me we have to buy software to wo=
-rk
-> remotely ??????? Back to the stone-age again.... Hmmzz.. Smell old Mi=
-cro
-> soft users.. waf, waf..
->
-> Sorry people, but if small schools have to start buying stuff for the=
-se
-> relatively simple but fundamental tasks then w're definitely on the w=
-rong
-> track in the OSS galaxy.
-
-Just because you have to pay for something doesn't mean its evil and yo=
-u=20
-should immediatly dismiss it. If it fits your needs for goodness sakes =
-pay=20
-the $50/computer and feed the writers who made the software.
-
-The main concern isn't always price, especially if the price is low or=20
-reasonable for the service provided. Why should this admin spend his ti=
-me=20
-hacking a random FREE/OSS solution when there is a reasonable paid=20
-alternative that fits his needs better? Perhaps a free/oss solution wil=
-l fit=20
-his needs better, but to automatically choose free/oss over a paid solu=
-tion=20
-is just unwise fanaticism.
-
-> > HTH!
+> >What ? Search for SSH GUI and google returns +770,000 matches.. ! Other
+> >than that it can be used to encrypt just about any connection, like for
+> >example X .
 > >
-> > On Friday 15 April 2005 12:39 am, S. Barret Dolph wrote:
-> > > I would like to be able to do some admin stuff on our school comp=
-uters
-> > > from home. What is best way to do this? Are programs such as "Web=
-min"
-> > > better than remote logins or just different.
->
-> Ehm, webmin is also a remote login .. No difference inbetween the two=
-, if
-> you put it generaly like that. You always have to login to your syste=
-m .
->
-> Let me just say this:
->
-> Webmin can provide a lot of things to you AND to someone who is NOT
-> you. Make sure you only allow connections from your static IP to your
-> schools static IP address by firewall and learn to use hosts.allow &
-> hosts.deny. Pump all data thru secure shell, ssl or any other form of
-> encryption. Keep an eye on the logfiles, pick decent passwords, restr=
-ict
-> acces and change the password a couple of times a year.
->
-> Would be great of you also could setup a VPN, but is definitely not
-> required.
->
-> > > The administrative tasks are usually
-> > > more school administration than computer administration but not a=
-lways
-> > > just that. For example, I am now working on getting chinese input=
- on
-> > > our school computer. School administration work is usually just t=
-hings
-> > > like updating documents and making sure that the latest materials=
- are
-> > > available to them.
->
-> Again, would be great if we would know what distro <-> pc you use and=
- if
-> you know how to handle a X configuration.  Because your already almos=
-t
-> there...
->
-> > > Cordially,
-> > > S. Barret Dolph
-> > > Taipei Taiwan
->
-> J.
->
-> --
-> Don't worry Ma'am. We're university students, - we know what we're do=
-ing.
->
+> > > SSH Is quick and dirty
+> >
+> >Send a message to one of the SSH lists with that line in the subject. ;-)
+> >
+> > > remote administration and comes standard (or should ) on all Unix
+> > > variants.  (openssh.com)
+> > >
+> > > TightVNC is a rather "unrobust" remote X server but it gets the job 
+> > done. This
+> > > will let you connect remotely and get an X GUI session open.
+> > >
+> > > If you can afford it, ...........
+> >
+> ><CUT>
+> >...
+> ></CUT>
+> >
+> >Then take 10min's of your precious time and look at some of the +200
+> >projects that provide OPEN/FREE remote X administration.
+> [...]
+> 
+> If you really want people to follow this sort of advice, you might want to 
+> be a bit more specific about your recommendations.
 
---=20
-----------------------------------------
---EB
+Well maybe your right, ....... Anyway When I querry the google.com/linux
+`the linux' search engine. It returns many of the ssh GUI projects listed
+at freshmeat.net, sourceforge.net and other projects. Maybe even more
+important tut's & howto's like:
+http://www.vanemery.com/Linux/XoverSSH/X-over-SSH2.html
 
-> All is fine except that I can reliably "oops" it simply by trying to =
-read
-> from /proc/apm (e.g. cat /proc/apm).
-> oops output and ksymoops-2.3.4 output is attached.
-> Is there anything else I can contribute?
+> I tried the Google search you suggest above. I actually got about 667,000 
+> matches. More important than the lower raw number, though ... the top few 
+> matches were to a *commerical* product (Techia), a GUI for *managing* sshd 
+> locally (SecPanel), and what looks like an *abandoned*, incomplete effort 
+> located at Sourceforge (ssh-gui, last updated June 2000).
+> 
+> I scanned the top 50 Google responses a bit more quickly, and saw a mix of 
+> secondary references to these 3 apps, mailing-list questions that offered 
+> no solutions, and references to tunneling VNC over ssh.
+> 
+> So some better guidence to the "+200 projects" you allude to would be 
+> welcome. I'm having no luck finding any of them in the Debian package 
+> management system ("apt-cache", that is, on Debian Unstable), using what I 
+> think of as obvious, beginner-level searching strategies. 
 
-The latitude and longtitude of the bios writers current position, and
-a ballistic missile.
+That's prob. because there is no real need for that on GNU/Linux os. You
+could always check the text `/var/lib/dpkg/available' manually or by using
+dpkg -p, dpkg --print-avail ... 
 
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0--Alan Cox LKML-Decembe=
-r 08,2000=20
+> And your 
+> suggested Google search didn't prove profitable. So where are they... 
 
-----------------------------------------
+I am not going to paste the whole list of projects I ran into at freshmeat
+& sourceforge.. Just search for vnc, rdesktop, keyword: `remote', kboodle,
+mc4j, privaria, bo2k and that's just the top couple of hits on the
+first page. 
+
+Butttt...... I am still not sure if the original poster want's 
+windows <-> linux or  linux <-> linux or ?? Again some more info with his
+question would produce better answers like someone already pointed out in
+a previous reply. 
+
+> and are there any you can actually recommend to a beginner (this is a
+> list where *beginners* ask questions, after all)?
+
+Well, what is a beginner.. ? Different people, Different pref's..
+ 
+> (Just so you know ... I don't do much remote admin any more. When I do 
+> (did), I usually use(d) ssh-based console sessions. I've occasionally used 
+> tunneled VNC connections, and even more occasionally tunneled X, but I've 
+> always found the line speed (cheap ADSL on both ends) too slow to make 
+> gui-based approaches comfortable for any situation in which a CLI approach 
+> was a real alternative.)
+
+If there isn't to much noise on the DSL line, you can try to improve
+performance by giving priorities and queueing the appropiate packets
+in your firewall. Many central DSL phone centrals reset themselfs after
+30min's of being offline, doing that one's a week can help... 
+Most default supplied DSL modems can't do transparant bridging in a proper
+way and come with a crappy tcp/ip stack and firmware, always run the
+latest firmware. There are many var's working on a line that could be
+optimized. For example after I updated the firmware of my DSL modem it
+suddenly stopped choking after a couple days of continues
+downloading.. etc.. So that could be factor to. Then there is
+the length inbetween your modem and the DSL phone central, properly
+earthed modems and computers will also make a difference - Just like those
+old 56k modems.
+
+J.
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
