@@ -1,81 +1,89 @@
-From: "Little, Chris" <Chris.Little@okdhs.org>
-Subject: RE: remote admin
-Date: Thu, 14 Apr 2005 10:28:27 -0500
-Message-ID: <15DCB059E3814E448A1CFFF04F78F7A709BFF3F6@s99mail08.okdhs.org>
+From: Eric Bambach <eric@cisu.net>
+Subject: Re: remote admin
+Date: Thu, 14 Apr 2005 10:40:01 -0500
+Message-ID: <200504141040.02011.eric@cisu.net>
+References: <200504142239.24316.wheds8@ms66.hinet.net>
+Reply-To: eric@cisu.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200504142239.24316.wheds8@ms66.hinet.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
- Details . . . details . . . . details . . . . 
+Ssh is the de facto standard for remote administration but It lacks the=
+=20
+ability to give you a GUI interface. SSH Is quick and dirty remote=20
+administration and comes standard (or should ) on all Unix variants.=20
+(openssh.com)
 
------Original Message-----
-From: Ray Olszewski [mailto:ray@comarre.com] 
-Sent: Thursday, April 14, 2005 10:26 AM
-To: linux
-Subject: Re: remote admin
+TightVNC is a rather "unrobust" remote X server but it gets the job don=
+e. This=20
+will let you connect remotely and get an X GUI session open.
 
-At 10:39 PM 4/14/2005 -0700, S. Barret Dolph wrote:
->I would like to be able to do some admin stuff on our school computers 
->from home. What is best way to do this? Are programs such as "Webmin" 
->better than remote logins or just different. The administrative tasks 
->are usually more school administration than computer administration but not
-always just that.
->For example, I am now working on getting chinese input on our school 
->computer. School administration work is usually just things like 
->updating documents and making sure that the latest materials are available
-to them.
+If you can afford it, try to look into NXMachine (No Machine) remote=20
+administration. It offers very robust and configurable remote X server=20
+connections that are compressed and secured. This can be used over low=20
+bandwidth connections because it uses caching and compression. As far a=
+s I=20
+remember, they offer single user single machine trial liscenses so you =
+can=20
+test drive the technology before buying and I dont think that the licen=
+ses=20
+are terribly expensive.
 
-At the level of generality you have posed this question, it really has no
-one answer. The options available to you depend on how your school computers
-are connected to the Internet (mainly, what sorts of NATing and other
-firewalling are involved), how you normally admin them locally (consoles or
-X, mainly), and the nature and speed of your home (and school)
-connection(s) to the Internet. And, of course, what approaches you
-personally find "better" or "worse" ... for example, I find editing config
-files on a console in vi convenient, but that's just a personal preference,
-not an objective "better".
+HTH!
 
-If everything is fast enough, the firewalling permits it, and you normally
-use X to admin, then consider using remote X sessions via VNC.
+On Friday 15 April 2005 12:39 am, S. Barret Dolph wrote:
+> I would like to be able to do some admin stuff on our school computer=
+s from
+> home. What is best way to do this? Are programs such as "Webmin" bett=
+er
+> than remote logins or just different. The administrative tasks are us=
+ually
+> more school administration than computer administration but not alway=
+s just
+> that. For example, I am now working on getting chinese input on our s=
+chool
+> computer. School administration work is usually just things like upda=
+ting
+> documents and making sure that the latest materials are available to =
+them.
+>
+> Cordially,
+> S. Barret Dolph
+> Taipei Taiwan
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
+e" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-If everything is very slow and firewalling is a big issue, then consider
-setting up an ssh server at school that you can log into from home, then
-connect from to the other systems you need to remore admin. Console logins
-will best handle slow speeds.
+--=20
+----------------------------------------
+--EB
 
-I haven't used Webmin or anything like it in years, but using it, as best I
-recall, depends on its having the specific modules you need for what you
-want to do. (The Debian packaging system, for example, has a bout 40
-webmin-* modules, each of which does something quite specific.) Check it
-closely against your exact requirements to see if it will serve your "more
-school administration than computer administration" purposes.
+> All is fine except that I can reliably "oops" it simply by trying to =
+read
+> from /proc/apm (e.g. cat /proc/apm).
+> oops output and ksymoops-2.3.4 output is attached.
+> Is there anything else I can contribute?
 
-Webmin does have a module for uploading documents, so if "updating documents
-and making sure that the latest materials are available to them" 
-in practice means creating docs at home and uploading them, Webmin can help
-you do that.
+The latitude and longtitude of the bios writers current position, and
+a ballistic missile.
 
-  I can't even begin to guess what is involved in "getting chinese input on
-our school computer", so I don't know what Webmin modules might help with
-that.
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0--Alan Cox LKML-Decembe=
+r 08,2000=20
 
-In fact, as I reread your message, I can't even tell if you want to be able
-to access one or several hosts at the school ... in one place you say
-"computers" but in another "computer". As usual, the details matter to the
-answer.
-
-
+----------------------------------------
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org More majordomo info at
-http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
