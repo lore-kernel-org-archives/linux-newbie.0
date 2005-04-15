@@ -1,24 +1,27 @@
-From: Dennis Heuer <dh@triple-media.com>
-Subject: Twinhan DVB-T under 2.6.11.*
-Date: Wed, 13 Apr 2005 12:07:20 +0000
-Message-ID: <1113394040l.327l.1l@Foo>
+From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
+Subject: remote admin
+Date: Thu, 14 Apr 2005 22:39:24 -0700
+Message-ID: <200504142239.24316.wheds8@ms66.hinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="Flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux <linux-newbie@vger.kernel.org>
 
-Hello,
+I would like to be able to do some admin stuff on our school computers from 
+home. What is best way to do this? Are programs such as "Webmin" better than 
+remote logins or just different. The administrative tasks are usually more 
+school administration than computer administration but not always just that. 
+For example, I am now working on getting chinese input on our school 
+computer. School administration work is usually just things like updating 
+documents and making sure that the latest materials are available to them.
 
-I was trying to get the above mentioned card running under 2.6.11.7 but it freezed my system. I found a comment on the net that support is broken in 2.6.11.x but there was no further details... Is there some patch out there or will the next release be working again?
-
-Thanks
-
-Dennis Heuer
-
+Cordially,
+S. Barret Dolph
+Taipei Taiwan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
