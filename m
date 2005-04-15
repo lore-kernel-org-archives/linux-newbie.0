@@ -1,57 +1,62 @@
-From: chuck gelm <chuck@gelm.net>
+From: Flemming Greve Skovengaard <dsl58893@vip.cybercity.dk>
 Subject: Re: convert windows file names
-Date: Fri, 15 Apr 2005 14:00:53 -0400
-Message-ID: <42600155.60209@gelm.net>
-References: <Pine.LNX.4.61.0504150930530.5717@localhost.localdomain>
-Reply-To: chuck@gelm.net
+Date: Fri, 15 Apr 2005 20:17:35 +0200
+Message-ID: <4260053F.7070709@vip.cybercity.dk>
+References: <Pine.LNX.4.61.0504150930530.5717@localhost.localdomain> <425FDAA8.4060502@vip.cybercity.dk> <Pine.LNX.4.61.0504151126000.5717@localhost.localdomain>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504150930530.5717@localhost.localdomain>
+In-Reply-To: <Pine.LNX.4.61.0504151126000.5717@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
+Cc: James Miller <jamtat@mailsnare.net>
 
 James Miller wrote:
-<snip>
-
-> But, on to file names. unfortunately, the names for the pieces I'm 
-> recording from this station follow Windows long-file-naming conventions. 
-> Even worse, the names tend to be quite complex and long. Here are a 
-> couple of examples:
-> 
-> Anton\ Reicha-\ Albert\ Schweitzer\ Quintett\ -\ Wind\ Quintet\ No.9\ 
-> in\ D\ major\ Op.91\ No.3-\ Finale-\ Allegretto.mp3
+> I tried your perl script and it works really well, Flemming. Thanks for 
+> bringing it to my attention. I see it works for all files in a given 
+> directory--exactly what I need. Now, in place of something like
 > 
 > Patrick\ Cohen\ \&\ Mosaiques\ Quartet\ -\ Quintet\ For\ Piano\ \&\ 
-> Strings\ In\ D\ Major\,\ Op.56??5\,\ G411\ -??.\ Andante\ Come\ Prima.mp3
+> Strings\ In\ D\ Major\,\ Op.565\,\ G411\ -.\ Andante\ Come\ Prima.mp3
 > 
-> Feeding those names to cat so I can join the movements into a single 
-> file is going to be a major pain in the wazoo, as they say down at 
-> symphony hall. What I was hoping to find is a script that would 
-> automatically convert all the wierd characters into more standard Unix 
-> file-naming characters. But so far I've come up empty-handed. Can anyone 
-> point me to some utility that might do what I need?
+> I get
 > 
-> As a last resort, I might try to write my own script. I'm not too hot on 
-> doing that though, since I'm at an extremely rudimentary level when it 
-> comes to script writing. If it comes to that, could someone maybe help 
-> me get started by giving an example for a script that would do the 
-> renaming I want? I'd like to retain the bulk of the information, though 
-> I don't mind truncating words at, say 5 letters. I suppose the main 
-> thing would be replaing all the spaces and/or punctuation with dashes 
-> and/or underscores.
+> Patrick_Cohen__and__Mosaiques_Quartet_-_Quintet_For_Piano__and__Strings_In_D_Major._Op.565._G411_-._Andante_Come_Prima.mp3 
+> 
+> 
+> --a big step in the right direction. But I'm still getting some wierd 
+> characters in there-- and . Are these unicode or something? Anyway, 
+> I can't reproduce these at the command line. Is there any way your 
+> script might be made to catch and replace symbols like these as well (I 
+> mean, for someone who knows absolutely nothing about Perl, and precious 
+> little about scripting in general)? I have no idea what information 
+> these symbols are supposed to be representing. It's probably so 
+> inconsequential I don't even need it, so replacing it with virtually any 
+> other symbol should suffice. I'd say I've got at least 20 files with 
+> such symbols, and more are on the way.
 > 
 > Thanks, Jam
 > es
 
-man rename
-...
-rename " " "_" * # over and over again. ;-)
+This should remove the characters in question.
 
-HTH, Chuck
+Replace the if-statement with this on:
+	if ($new_name =~ m/(?:^[-+]|[^-\w.])/ ) {
+
+and add this line below the other $new_name... lines:
+		$new_name =~ s/[^-\w.]//g;
+
+I have only tested this very little, but the corrections removes anything
+that is not a hyphen (-), a word character (A-Za-z_) or a period (.).
+
+
+-- 
+Flemming Greve Skovengaard           FAITH, n.
+a.k.a Greven, TuxPower                   Belief without evidence in what is told
+<dsl58893@vip.cybercity.dk>              by one who speaks without knowledge,
+4112.38 BogoMIPS                         of things without parallel.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
