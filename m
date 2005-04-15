@@ -1,68 +1,89 @@
-From: Peter <peterg@fishinternet.com.au>
-Subject: Re: remote admin
-Date: Sat, 16 Apr 2005 00:05:33 +1000
-Message-ID: <1113573934.10338.7.camel@localhost.localdomain>
-References: <200504142239.24316.wheds8@ms66.hinet.net>
-	 <200504141040.02011.eric@cisu.net>
-	 <20050415074715.5845d80b.qwms-avib@dea.spamcon.org>
-	 <200504141602.15453.eric@cisu.net>
+From: James Miller <jamtat@mailsnare.net>
+Subject: convert windows file names
+Date: Fri, 15 Apr 2005 10:04:02 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504150930530.5717@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: MULTIPART/MIXED; BOUNDARY="8323328-643839312-1113577442=:5717"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200504141602.15453.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: eric@cisu.net
-Cc: qwms-avib@dea.spamcon.org, hgf4-wgsm@dea.spamcon.org, Linux-Newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-On Thu, 2005-04-14 at 16:02 -0500, Eric Bambach wrote:
-> On Thursday 14 April 2005 02:47 pm, qwms-avib@dea.spamcon.org wrote:
-> > Eric Bambach wrote:
-> > > Ssh is the de facto standard for remote administration
-> > > but It lacks the ability to give you a GUI interface.
-> >
-> > Getting a GUI interface for ssh is easy.  Simply start
-> > ssh from an xterm, login to the remote server and execute
-> > xterm.  This will cause a remote xterm to appear on your
-> > local X display.
-> >
-> > Instead of a remote xterm, you can start a remote
-> > window manager (or other X application) the same way.
-> 
-> Hehe, I stand corrected. I suppose *I* usually think of it as more of a 
-> console administration app. Anyways, this is not a good solution if you are 
-> logging in from a windows or "other" OS based machine. You would have to 
-> install a local X-server which may or may not be practical or useful.
-> 
-> Additionally, as others pointed out you can tunnel X connections over SSH. 
-> While this is true the X protocol by itself is quite heavy and lag and 
-> interactivity will be less than spectacular on anything less than 10Mbit. 
-> This is why I suggested NX Server for GUI administration because it does some 
-> quite spectacular compression and caching I havent seen in other projects 
-> (though I admit I havent done alot of diggin on the subject, only raw X, 
-> lbxproxy, ssh compression, and VNC each of which has its own caveats)
-> > Cheers,
-> > Steven
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-You don't have to pay for an NX server: for example...
+--8323328-643839312-1113577442=:5717
+Content-Type: TEXT/PLAIN; charset="en_US.UTF-8"; format=flowed
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 
-http://www.osnews.com/story.php?news_id=8139
+Among various frustrations recently I've had the gratifying success of=20
+learning how to use streamripper to augment my music collection.=20
+Streamripper is a program that writes an audio stream (e.g., from internet=
+=20
+radio) to your hard drive as an mp3 file. This is about the closest thing=
+=20
+to the mythical "Rivo" (Tivo for radio) that currently exists, I think,=20
+and could maybe serve as the basis for a *real* Rivo-type program, should=
+=20
+someone really decide to develop one.
 
-An interview with Fabian Franz and Kurt Pfeifle regarding the FreeNX
-server. 
+Despite the success, there are some problems--mainly having to do with=20
+file names. I've found a nice commercial-free classical (Baroque) station=
+=20
+and have been happily recording away for the last 24 hrs or so. The=20
+streamripper program was evidently written for rock or more popular genres=
+=20
+and tries to detect breaks between songs so as to make discrete files from=
+=20
+them. For whatever strange reason, it has a problem detecting beginnings=20
+and endings between movements in classical music (despite the noticeable=20
+pause) and wants to break between movements about 30 seconds into the next=
+=20
+movement, rather than at the pause. The cat command seems to fix this,=20
+though:
 
-I played with it on my small home network and it works well.
+cat movement1.mp3 >full-piece.mp3
+cat movement2.mp3 >>full-piece.mp3
+cat movement3.mp3 >>full-piece.mp3
 
-Unofficial Debian packages here:
+The breaks at 30 seconds into the following movement are hardly even=20
+noticeable in the full-piece.mp3 (I don't have the kind of purist=20
+standards I used to when it comes to audio quality, though).
 
-http://kanotix.com/files/debian/freenx/
+But, on to file names. unfortunately, the names for the pieces I'm=20
+recording from this station follow Windows long-file-naming conventions.=20
+Even worse, the names tend to be quite complex and long. Here are a couple=
+=20
+of examples:
 
-They may also exist in Debian Sid, I haven't checked (I'm running Ubuntu
-here at the moment)
+Anton\ Reicha-\ Albert\ Schweitzer\ Quintett\ -\ Wind\ Quintet\ No.9\=20
+in\ D\ major\ Op.91\ No.3-\ Finale-\ Allegretto.mp3
 
+Patrick\ Cohen\ \&\ Mosaiques\ Quartet\ -\ Quintet\ For\ Piano\ \&\=20
+Strings\ In\ D\ Major\,\ Op.56=A3=AF5\,\ G411\ -=A5=B2.\ Andante\ Come\=20
+Prima.mp3
 
+Feeding those names to cat so I can join the movements into a single file=
+=20
+is going to be a major pain in the wazoo, as they say down at symphony=20
+hall. What I was hoping to find is a script that would automatically=20
+convert all the wierd characters into more standard Unix file-naming=20
+characters. But so far I've come up empty-handed. Can anyone point me to=20
+some utility that might do what I need?
 
+As a last resort, I might try to write my own script. I'm not too hot on=20
+doing that though, since I'm at an extremely rudimentary level when it=20
+comes to script writing. If it comes to that, could someone maybe help me=
+=20
+get started by giving an example for a script that would do the renaming I=
+=20
+want? I'd like to retain the bulk of the information, though I don't mind=
+=20
+truncating words at, say 5 letters. I suppose the main thing would be=20
+replaing all the spaces and/or punctuation with dashes and/or underscores.
+
+Thanks, James
+--8323328-643839312-1113577442=:5717--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
