@@ -1,144 +1,117 @@
-From: "J." <mailing-lists@xs4all.nl>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: help with joining files
-Date: Sat, 16 Apr 2005 14:31:06 +0200 (CEST)
-Message-ID: <Pine.LNX.4.21.0504161353590.542-100000@hestia>
-References: <Pine.LNX.4.61.0504151630540.5717@localhost.localdomain>
-Reply-To: linux-newbie@vger.kernel.org
+Date: Sat, 16 Apr 2005 12:27:21 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504161157300.5717@localhost.localdomain>
+References: <Pine.LNX.4.21.0504161353590.542-100000@hestia>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0504151630540.5717@localhost.localdomain>
+In-Reply-To: <Pine.LNX.4.21.0504161353590.542-100000@hestia>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Fri, 15 Apr 2005, James Miller wrote:
+Thanks for your response, J. I'm faced with a fairly complex task here. I 
+suppose a more reasonable man would say, "heck with this. I'm gonna go buy 
+myself some CD's." But if I were a more reasonable man, I wouldn't be 
+using Linux, now would I? . . . :)
 
-> Flemming's script did the job of getting wierd characters out of file 
-> names for me, so that part of dealing with these recordings is nicely 
-> resolved. Just run the comand in the dir where the files are, and in 
-> about a second you have renamed 170 files. Now, if cat'ing them together 
-> were even 1/10th as efficient. I'm discovering that this process really 
-> needs to be automated, too. Maybe someone could offer advice on how to do 
-> this?
-> 
-> Currently, I surf to the dir where the 170 files are, issue "cat" 
-> followied by part of the beginning of a file's name and hit <tab>, which 
-> gives me about 2/3's of the rest of the name. I then have to start looking 
-> at names of files more closely in another window, look at their time 
-> signatures (the most pertinent piece of info, really), choose the oldest 
-> one, enter some letter from it where cat left off, and hit <tab> again to 
-> get the complete name of the first file. Then, I copy that file's name and 
-> paste it after >~/MyMusic/classical/ and strip off the more particluarized 
-> parts so I have a more generic name for my full-piece file, then hit 
-> enter. At that point, I have the beginning of the cat'd together piece, 
-> and I follow a similar procedure--but using >>~/MyMusic/classical--to cat 
-> the rest of the components of the piece together into one.
-> 
-> To give a more complete picture using fake names, I do something like 
-> this:
-> 
-> cat Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement1.mp3 
-> >~/MyMusic/classical/Snooty-Composer1-highflownsymphony-inGmajor-Op.89674.mp3
-> 
-> cat Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement2.mp3 
-> >>~/MyMusic/classical/Snooty-Composer1-highflownsymphony-inGmajor-Op.89674.mp3
-> 
-> cat Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement3.mp3 
-> >>~/MyMusic/classical/Snooty-Composer1-highflownsymphony-inGmajor-Op.89674.mp3
+Some of what you're saying is a bit beyond me. I'd kinda like to get to 
+the point where I could understand it better, and understand the 
+philosophy better (at the link you provide). But I'm sort of an old hacker 
+(I use that term in its old-fashioned, non-technical sense), so at the 
+very least I'll have to get there very slowly and gradually.
 
-If I read your filenames correctly, the only thing that seperates them are
-the movement numbers ? I am assuming that `[0-9]' would work than for
-all your files this way ???
+Your assumption about movement numbers is wrong, unfortunately. I tried to 
+make that clear in my note to the list, but apparently did not succeed. So 
+the bash examples you give are not going to get me too far--at least not 
+that I can see. But I was able to use some things in your post to help 
+automate things a bit more: I'm now using the "ls -l partial_file_name 
+<tab>" to get the salient information in a more discrete place from which 
+I can copy and paste. I do have to do some "ls partial_file_name <tab>ing" 
+to even get to the point where I can use ls -l (-l gives me the time 
+information I need in order to cat things together in the right order), 
+but I've already reduced the number of steps to get full_piece.mp3.
 
-~: ls Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement[0-9].mp3
-Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement1.mp3 
-Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement2.mp3 
-Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement3.mp3 
+Here's a more real world example of what I'm doing:
 
-`ls' can take a number of options, underwich `sort' entrys by time .
-~: ls -lt -c Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement[0-9].mp3
-Now extract the targetname you want with `sed` [see bottom of email] and
-fall into a loop dd'ing with notrunc or contactenating `like you did
-above' all files to your target file.
-done
+me@mymachine:~/radio/editing/classcl$ ls -l 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_*
+-rw-r--r--  1 me me 9617922 2005-04-15 13:50 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Adagio_-_Allegro.mp3
+-rw-r--r--  1 me me 5612894 2005-04-15 13:56 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Andante_con_Variazioni.mp3
+-rw-r--r--  1 me me 8120985 2005-04-15 14:08 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Finale-_Allegro_vivace.mp3
+-rw-r--r--  1 me me 2760026 2005-04-15 13:59 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Minuetto.mp3
+me@mymachine:~/radio/editing/classcl$ cat 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Adagio_-_Allegro.mp3 
+>~/radio/editing/Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4.mp3
+me@mymachine:~/radio/editing/classcl$ cat 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Andante_con_Variazioni.mp3 
+>>~/radio/editing/Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4.mp3
+me@mymachine:~/radio/editing/classcl$ cat 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Minuetto.mp3 
+>>~/radio/editing/Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4.mp3
+me@mymachine:~/radio/editing/classcl$ cat 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_Finale-_Allegro_vivace.mp3 
+>>~/radio/editing/Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4.mp3
+me@mymachine:~/radio/editing/classcl$ mv 
+Anton_Reicha-_Albert_Schweitzer_Quintett__-_WInd_Quintet_No.22_in_E_minor_Op.100_No.4-_* 
+~/radio/editing/parts-done/
+me@mymachine:~/radio/editing/classcl$
 
-> I then have the entire piece in a single file called 
-> Snooty-Composer1-highflownsymphony-inGmajor-Op.89674.mp3. Incidentally, 
-> there is alot more variation in the actual names than in these examples. 
-> For example, not very many have the movements numbered (the numeral right 
-> before .mp3). Rather, the movements are called by their more generic 
-> titles like "Adagio," "Andante," and so forth. So, not much consistency 
-> in that part of the name.
-> 
-> It seems like there should be a less labor-intensive way of doing this, 
-> and, it seems to me, the salient factor in such a scheme is the time of 
-> file creation rather than file name. 
+I don't really need file permissions information, so using the -l switch 
+is overkill. But so far I have not determined how I can get the time 
+information I need without the other, file permission info.
 
-Unix and GNU/Linux type systems do not store the file creation time as
-static information. There are `three sorts of time` that are stored with
-each file:
+On Sat, 16 Apr 2005, J. wrote:
 
-C time - changed time info of the corresponding inode,
-M time - last modified time,
-A time - last access time
+> Unix and GNU/Linux type systems do not store the file creation time as
+> static information. There are `three sorts of time` that are stored with
+> each file:
+>
+> C time - changed time info of the corresponding inode,
+> M time - last modified time,
+> A time - last access time
+>
+> These can be changed by other programs. For example `touch' . So be
+> careful how you implement this and how you group corrosponding files by
+> time .
 
-These can be changed by other programs. For example `touch' . So be
-careful how you implement this and how you group corrosponding files by
-time .
+I'm not doing anything with these files after they're saved to my HD other 
+than listing them (like, with ls) or looking at contents of directories 
+with mc. Could any of these change the time information ls -l gives me?
 
-Personally I would have renamed each file correctly according to the
-task I wanted to preform right from the start, thus to include
-the last modified UTC time in the filename. That way you can list each
-file belonging to a certain group `sort -n' them by time and concat them
-as appropiate. 
+> Personally I would have renamed each file correctly according to the
+> task I wanted to preform right from the start, thus to include
+> the last modified UTC time in the filename. That way you can list each
+> file belonging to a certain group `sort -n' them by time and concat them
+> as appropiate.
 
-> Each file is written to the HD in the 
-> order it finishes playing from the stream I am recording, so that's really 
-> probably the easiest and surest way to join them. All movments of a given 
-> piece are all going to have been written to disk within, say, 1/2 hr of 
-> the beginning of the piece.
-> 
-> Problem is, I'm sort of at a loss for ideas about how this could be done. 
-> Is there a way to feed cat file creation time rather than file name? 
+Good idea. I'm just technically-challenged enough that I have no idea how 
+to do this (or even where to start) where it concerns recording streaming 
+audio. I suppose I'd need to make streamripper run as part of a larger 
+script that would likewise invoke Flemming's remove_invalid, etc. Mind 
+boggling!
 
-No .
+> B.t.w. you could also use `dd', with the `notrunc' parameter . That is
+> more optimized for this task.
 
-B.t.w. you could also use `dd', with the `notrunc' parameter . That is
-more optimized for this task.
+I'll look into this.
 
-> It's 
-> not really so important that the name of the file I am cat'ing be 
-> preserved, so much as that the file being cat'ed to have an informative 
-> name. So, I'm casting about for ways of automating this process of joining 
-> movements together into the full pieces of which the movements are a part. 
-> Suggestions?
+> The GLUE at the GNU/Linux , Unix type command-line provides was already
+> there long before. Pls. Have a look at the `UNIX philosophy' since I
+> think it will give some more insight in the background of these tasks
+> you are trying to accomplish.
+>
+> http://www.google.com/linux?hl=en&lr=&q=unix+philosophy&btnG=Search
 
-This will....
-~: echo 'Snooty-Composer1-highflownsymphony-inGmajor-Op.89674-movement1.mp3' | \
- sed 's/^\(.*\)-movement\([0-9]*\).mp3$/\1_FULL.mp3/g'
-result in: 
- Snooty-Composer1-highflownsymphony-inGmajor-Op.89674_FULL.mp3
+Thanks for the link.
 
-Note the nonlinebreak after the pipe is done because of the linewidth in
-e-mail.. 
-
-> Thanks, James
-
-The GLUE at the GNU/Linux , Unix type command-line provides was already
-there long before. Pls. Have a look at the `UNIX philosophy' since I 
-think it will give some more insight in the background of these tasks
-you are trying to accomplish.
-
-http://www.google.com/linux?hl=en&lr=&q=unix+philosophy&btnG=Search
-
-Success, 
-J.
-
---
-Don't worry Ma'am. We're university students, - we know what we're doing.
-
+James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
