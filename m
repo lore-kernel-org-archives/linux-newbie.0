@@ -1,57 +1,59 @@
-From: Tobias Hirning <Tobias.Hirning@gmx.de>
-Subject: Re: Using the touchpad on my laptop
-Date: Sun, 17 Apr 2005 20:16:27 +0200
-Message-ID: <200504172016.47480.Tobias.Hirning@gmx.de>
-References: <loom.20050415T115006-986@post.gmane.org>
+From: James Miller <jamtat@mailsnare.net>
+Subject: Re: help with joining files
+Date: Sun, 17 Apr 2005 13:35:18 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0504162230350.5717@localhost.localdomain>
+References: <5.1.0.14.1.20050416121116.01f63160@celine>
+ <Pine.LNX.4.21.0504161353590.542-100000@hestia> <Pine.LNX.4.21.0504161353590.542-100000@hestia>
+ <5.1.0.14.1.20050416121116.01f63160@celine> <5.1.0.14.1.20050416144139.01fdd820@celine>
+ <Pine.LNX.4.61.0504161720320.5717@localhost.localdomain>
 Mime-Version: 1.0
-Content-Type: multipart/signed;
-  boundary="nextPart1867065.O6tWaskiHV";
-  protocol="application/pgp-signature";
-  micalg=pgp-sha1
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <loom.20050415T115006-986@post.gmane.org>
+In-Reply-To: <Pine.LNX.4.61.0504161720320.5717@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org, l_arsene@tiscali.fr
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
---nextPart1867065.O6tWaskiHV
-Content-Type: text/plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+I've discovered that ls -tr is what I need to get the files listed in the 
+right time sequence (time of creation). ls -t gives, for example:
 
-Hi larsene!
-On Friday, 15. April 2005 11:53 larsene wrote:
-> I have a laptop on wich one i have installed debian.
-> My problem is that i can use my touchpad for mouving the cursor,
-> and the buttons under it for left and right click, but i cannot use
-> the "quick touch" fonctionnality (used on windows) for clicking
-> without using the button. How can i configure that?
-Do you know, which touchpad you have?
-If not, please send the output of dmesg.
-Tobias
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.4_Rondo_-_Andante.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.3_Minuetto.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.2_Allegro_con_spirito.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.1_Amoroso.mp3
 
-=2D-=20
-GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
-Registered Linux-User #367044
-Registered Linux-Machine #262062
-http://counter.li.org
-Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
-Signatur nach =C2=A72 2. d) SigG signiert.
+while ls -tr gives:
 
---nextPart1867065.O6tWaskiHV
-Content-Type: application/pgp-signature
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.1_Amoroso.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.2_Allegro_con_spirito.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.3_Minuetto.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.4_Rondo_-_Andante.mp3
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
+(assuming the directory where the command is issued contains only these 
+files). Presently, since those are just excerpts and there are many more 
+files in that dir, I am navigating to that dir and doing ls -tr 
+>ls-tr_date.txt. I then go into that text file with an editor adding "cat" 
+at the beginning of the piece, taking out carriage returns between 
+movments, and adding >~/MyMusic/name-of-piece.mp3 at the end of the 
+movement. Using the above output, this would look like;
 
-iD8DBQBCYqgPVPy429AtcIURAvPiAJ0ZISvyR22TJZkb3mkk5mHyz9OTXgCfbhvM
-Qi2qCenlE/Ja7vhdfk36dGc=
-=RhYq
------END PGP SIGNATURE-----
+cat Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.1_Amoroso.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.2_Allegro_con_spirito.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.3_Minuetto.mp3
+Boccherini_-_Quintet_for_Strings_in_E_G.275_Mvt.4_Rondo_-_Andante.mp3 
+>~/MyMusic/Boccherini_-_Quintet_for_Strings_in_E_G.275.mp3
 
---nextPart1867065.O6tWaskiHV--
+Then I cut and paste this into an xterm wherein I have navigated to the 
+dir containing the files, then hit return. This is as streamlined as I've 
+been able to get with this so far. Still time-consuming and a bit 
+cumbersome, but I've progressed a little.
+
+James
+
+PS Again, the above excerpts, where movement number is actually given, are 
+exceptions to the rule. I just selected output that has numbers since I 
+thought it would more readily demonstrative of what I'm doing.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
