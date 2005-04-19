@@ -1,60 +1,84 @@
-From: Tobias Hirning <Tobias.Hirning@gmx.de>
-Subject: Re: Problem booting linux from a Win2000 laptop
-Date: Tue, 19 Apr 2005 16:28:13 +0200
-Message-ID: <200504191628.35144.Tobias.Hirning@gmx.de>
-References: <01C543F8.EE6739E0.vanitha@agilis.stengg.com>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Gutenbrowser Not Opening
+Date: Tue, 19 Apr 2005 08:08:30 -0700
+Message-ID: <42651EEE.30407@comarre.com>
+References: <200504190853.j3J8r8tq000407@skyinet.net>
 Mime-Version: 1.0
-Content-Type: multipart/signed;
-  boundary="nextPart2120711.8JKR6ChQTo";
-  protocol="application/pgp-signature";
-  micalg=pgp-sha1
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <01C543F8.EE6739E0.vanitha@agilis.stengg.com>
+In-Reply-To: <200504190853.j3J8r8tq000407@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux <linux-newbie@vger.kernel.org>
 
---nextPart2120711.8JKR6ChQTo
-Content-Type: text/plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+Peter H. wrote:
+> Hi,
+> 
+> Slackware 10.1 kernel 2.4.29
+> 
+> Trying to open Gutenbrowser I get before it aborts:
+> 
+> Setting up slots.
+> init finished.
+> QLayout "unnamed" added to Gutenbrowser "unnamed", which already has a layout
+> Floating point exception
+> 
+> with strace ending:
+> 
+> write(3, "\22\0\n\0\1\0@\1\"\0\0\0\37\0\0\0\10\0\0\0\r\0\0\0gute"..., 4328) = 
+> 4328
+> ioctl(4, FIONREAD, [1])                 = 0
+> --- SIGFPE (Floating point exception) @ 0 (0) ---
+> +++ killed by SIGFPE +++
+> 
+> Any suggestions what to do that gutenbrowser will open again? What means 
+> Floating point exception?
+> 
+> Thanks & regards
+> 
 
-Hi Vanitha!
-On Monday, 18. April 2005 11:28 Vanitha Ramaswami wrote:
-> I didnt install on the MBR, since in the Online help of the redhat
-> installation disk its mentioned that for Win2K/NT the Boot loader
-> should be installed in the first sector of the boot partition on
-> not on the MBR..?
-You can also do so, but then you have to mark the partition of Linux=20
-as active (with fdisk or such a tool).
+This signal can mean any of various sorts of errors with floating point, 
+and I **think** it even gets returned for an integer (not floating 
+point) divide-by-zero error. In context, I'd guess a divide-by-zero 
+error of some sort ... possibly unrelated to the preceding strace output 
+you quote (signals are sometimes delayed so could be a response to 
+something a bit earlier in the strace output).
 
-> Anyway i will try to install the bootloader on the MBR and see
-> whats happening
-I think this is the better way. I've tested this with Win2K and WinXP=20
-and it works fine.
-Tobias
-=2D-=20
-GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
-Registered Linux-User #367044
-Registered Linux-Machine #262062
-http://counter.li.org
-Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
-Signatur nach =C2=A72 2. d) SigG signiert.
+As to what to do ... first, round up the usual suspects.
 
---nextPart2120711.8JKR6ChQTo
-Content-Type: application/pgp-signature
+1. Is this a case where gutenbrowser used to run and has stopped 
+running? Or is it a program you are installing for the first time (or 
+upgrading to a newer version)?
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
+2. If gutenbrowser used to run, what has changed recently in your 
+system? (Don't say "nothing", because you've recently posted about 
+problems upgrading that Slackware-specific X WM you use, and that could 
+have left some debris. If you believe the assurance you got from the 
+other list that xmms was the "only" program affected, then you're much 
+too trusting ... how the devil can *anyone* know that sort of thing?)
 
-iD8DBQBCZRWTVPy429AtcIURAhRpAJ9K2NUzv9eCkW0rLisH1sHKNmKqswCfczTv
-815v2Ao0q3tdS+6J/kN72aY=
-=4Lu9
------END PGP SIGNATURE-----
+3. What does ldd tell you about gutenbrowser? Check for recent changes 
+in any of the libraries that it relies on. (Just on a hunch, be 
+especially alert regarding libgcc1.)
 
---nextPart2120711.8JKR6ChQTo--
+4. In my experience, divide-by-zero errors can be a sign of a hardware 
+problem (CPU or RAM, caused by heat or a strained power supply). This is 
+a bit of a leap based on what you've told us, but consider if you're 
+seeing anything else consistent with that interpretation.
+
+5. This is another long shot, but is it possible that your hardware is 
+old enough, or odd enough, that the kernel is using floating-point 
+emulation? (This is almost unheard of on modern i86 systems, but it is 
+still common with some other architectures, like ARM7.)
+
+6. Finally, the obvious question: what version of gutenbrowser are you 
+using? The project home page (on Sourceforge) lists a recent new 
+version, but apparently only for ARM architectures and with no 
+comparably dated or versioned source. The current i86 version is almost 
+4 years old, which invites speculation about shared-library concerns.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
