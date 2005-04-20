@@ -1,84 +1,36 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Gutenbrowser Not Opening
-Date: Tue, 19 Apr 2005 08:08:30 -0700
-Message-ID: <42651EEE.30407@comarre.com>
-References: <200504190853.j3J8r8tq000407@skyinet.net>
+From: SOTL <sotl155360@earthlink.net>
+Subject: Mr Clean
+Date: Wed, 20 Apr 2005 17:48:35 -0400
+Message-ID: <200504201748.35767.sotl155360@earthlink.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200504190853.j3J8r8tq000407@skyinet.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Newbie Linux <linux-newbie@vger.kernel.org>
 
-Peter H. wrote:
-> Hi,
-> 
-> Slackware 10.1 kernel 2.4.29
-> 
-> Trying to open Gutenbrowser I get before it aborts:
-> 
-> Setting up slots.
-> init finished.
-> QLayout "unnamed" added to Gutenbrowser "unnamed", which already has a layout
-> Floating point exception
-> 
-> with strace ending:
-> 
-> write(3, "\22\0\n\0\1\0@\1\"\0\0\0\37\0\0\0\10\0\0\0\r\0\0\0gute"..., 4328) = 
-> 4328
-> ioctl(4, FIONREAD, [1])                 = 0
-> --- SIGFPE (Floating point exception) @ 0 (0) ---
-> +++ killed by SIGFPE +++
-> 
-> Any suggestions what to do that gutenbrowser will open again? What means 
-> Floating point exception?
-> 
-> Thanks & regards
-> 
+Hi All
 
-This signal can mean any of various sorts of errors with floating point, 
-and I **think** it even gets returned for an integer (not floating 
-point) divide-by-zero error. In context, I'd guess a divide-by-zero 
-error of some sort ... possibly unrelated to the preceding strace output 
-you quote (signals are sometimes delayed so could be a response to 
-something a bit earlier in the strace output).
+Several months ago when I setup my laptop I set the root directory at 8 GB 
+think that would be sufficient.
 
-As to what to do ... first, round up the usual suspects.
+Yesterday attempting to add programs I attempted to put 10 GB of programs into 
+a 7GB partation. Damn I recall top of the line HD that only had 5 MB of 
+storage so I never expected to use 7 GB much less fill it up.
 
-1. Is this a case where gutenbrowser used to run and has stopped 
-running? Or is it a program you are installing for the first time (or 
-upgrading to a newer version)?
+Anyway the box refused to open the GUI on reboot so I had to remove a number 
+of programs from the system by command line. What a pain. Since I of course 
+did not get all the dependencies correct there are now a number of libraries 
+left whose identity I have no idea of which relate to nothing. 
 
-2. If gutenbrowser used to run, what has changed recently in your 
-system? (Don't say "nothing", because you've recently posted about 
-problems upgrading that Slackware-specific X WM you use, and that could 
-have left some debris. If you believe the assurance you got from the 
-other list that xmms was the "only" program affected, then you're much 
-too trusting ... how the devil can *anyone* know that sort of thing?)
+Does any know of a way to identify superfluous rpm which do nothing but take 
+up space so that they can be removed.
 
-3. What does ldd tell you about gutenbrowser? Check for recent changes 
-in any of the libraries that it relies on. (Just on a hunch, be 
-especially alert regarding libgcc1.)
+Thanks
 
-4. In my experience, divide-by-zero errors can be a sign of a hardware 
-problem (CPU or RAM, caused by heat or a strained power supply). This is 
-a bit of a leap based on what you've told us, but consider if you're 
-seeing anything else consistent with that interpretation.
-
-5. This is another long shot, but is it possible that your hardware is 
-old enough, or odd enough, that the kernel is using floating-point 
-emulation? (This is almost unheard of on modern i86 systems, but it is 
-still common with some other architectures, like ARM7.)
-
-6. Finally, the obvious question: what version of gutenbrowser are you 
-using? The project home page (on Sourceforge) lists a recent new 
-version, but apparently only for ARM architectures and with no 
-comparably dated or versioned source. The current i86 version is almost 
-4 years old, which invites speculation about shared-library concerns.
-
-
+Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
