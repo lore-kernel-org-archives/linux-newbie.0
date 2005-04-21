@@ -1,36 +1,28 @@
-From: SOTL <sotl155360@earthlink.net>
-Subject: Mr Clean
-Date: Wed, 20 Apr 2005 17:48:35 -0400
-Message-ID: <200504201748.35767.sotl155360@earthlink.net>
+From: "ymc014" <ymc014@ymc.mitsumi.co.jp>
+Subject: sound card problem
+Date: Thu, 21 Apr 2005 09:22:34 +0800
+Message-ID: <00a701c54610$9932c6f0$4a071aac@autocadmachine1>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Newbie Linux <linux-newbie@vger.kernel.org>
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi All
+Hello,
 
-Several months ago when I setup my laptop I set the root directory at 8 GB 
-think that would be sufficient.
+     I had just installed Red Hat 9 but I have a problem with my
+soundcard,it does not recognize the Creative SoundBlaster in my hardware, I
+tried looking at the creative website for a driver suitable for linux
+unfortunately I didn't find any. So am I hopeless here?I wouldn't want to go
+back to XP but if I cannot use my soundcard I do not have any other option.
+Thanks.
 
-Yesterday attempting to add programs I attempted to put 10 GB of programs into 
-a 7GB partation. Damn I recall top of the line HD that only had 5 MB of 
-storage so I never expected to use 7 GB much less fill it up.
+ymc
 
-Anyway the box refused to open the GUI on reboot so I had to remove a number 
-of programs from the system by command line. What a pain. Since I of course 
-did not get all the dependencies correct there are now a number of libraries 
-left whose identity I have no idea of which relate to nothing. 
 
-Does any know of a way to identify superfluous rpm which do nothing but take 
-up space so that they can be removed.
 
-Thanks
-
-Frank
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
