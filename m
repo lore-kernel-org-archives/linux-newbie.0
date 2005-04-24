@@ -1,30 +1,26 @@
-From: SOTL <sotl155360@earthlink.net>
-Subject: Deleating Updates
-Date: Sat, 23 Apr 2005 18:14:14 -0400
-Message-ID: <200504231814.14631.sotl155360@earthlink.net>
+From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+Subject: Re: Deleating Updates
+Date: Sun, 24 Apr 2005 11:57:44 +0300
+Message-ID: <4a618d0805042401575d8fcef0@mail.gmail.com>
+References: <200504231814.14631.sotl155360@earthlink.net>
+Reply-To: Arturas Moskvinas <arturas.moskvinas@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200504231814.14631.sotl155360@earthlink.net>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Newbie Linux <linux-newbie@vger.kernel.org>
+To: SOTL <sotl155360@earthlink.net>, Newbie Linux <linux-newbie@vger.kernel.org>
 
-Hi All
+> I would like to know what directory is used for temporary storage Mandrake
+> 10.1 download updates, this is the tempory storage location before updates
+> ate installed?
 
-I attempted to update my system but I attempted to do to much at once which 
-caused the root directory to over fill loosing X and GUI.
+If you are using yum than try /var/cache/yum
 
-I would like to know what directory is used for temporary storage Mandrake 
-10.1 download updates, this is the tempory storage location before updates 
-ate installed?
-
-Thanks
-
-All
-
-Frank
+Arturas Moskvinas
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
