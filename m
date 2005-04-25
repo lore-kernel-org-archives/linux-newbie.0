@@ -1,94 +1,72 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: No Locate for User
-Date: Mon, 25 Apr 2005 09:40:17 -0700
-Message-ID: <426D1D71.6060706@comarre.com>
-References: <200504250427.j3P4R6J5000324@skyinet.net>	<426C7ABC.3000007@comarre.com> <20050425161131.5192b7e9@skyinet.net>
+Subject: Re: filtering .mp3 packets
+Date: Mon, 25 Apr 2005 09:56:59 -0700
+Message-ID: <426D215B.30001@comarre.com>
+References: <fc.004c4e00007a2960004c4e00007a2960.7a296f@palmertrinity.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050425161131.5192b7e9@skyinet.net>
+In-Reply-To: <fc.004c4e00007a2960004c4e00007a2960.7a296f@palmertrinity.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Peter wrote:
-[...]
+William Stanard wrote:
+> We've been having some difficulty finding the vocabulary to describe
+> filtering content (for example .mp3 files) over TCP-IP. We would like to
+> set up our Linux server to do some "trapping" of packets containing .mp3
+> files with an eye toward using Linux enabled routing to clean our campus
+> of an overwhelming dose of music downloads and trading. To do this
+> exploration, I need to know what I should call the process I'm trying to
+> perform. Any vocabulary that you can suggest?
 
->>I don't know why ... that is, how ... your Fedora host works with these 
->>permissions, but I'm not surprised that your Slackware host presents 
->>problems with them. On Debian, the corresponding file (in a different 
->>location, but the functional equivalent) is mode 644, the mode you'd 
->>expect for a file that is to be readable by all users:
->>
->>  ray@kuryakin:~$ ls -l /var/cache/locate/locatedb
->>  -rw-r--r--  1 root root 1089123 Apr 24 06:25 /var/cache/locate/locatedb
->>
->>So try changing the mode to 644 with chmod. Or try adding all users who 
->>need to use locate to the group slocate (in /etc/group ... perhaps 
->>Fedora uses this trick to make locate work in mode 640?).
->>
-> Since I am using Linux beginning with ReaHat 5.1 then later switching to
-> slackware I always used "locate" as user and never bothered to look at the
-> permission of /var/lib/slocate since there was obviously no need.
-> 
-> Before I posted this mail I tried various permission for slocate even my user
-> name as owner and get the same error: Permission denied.
-> 
-> That's why I am at a loss. I checked the dropline forum and could not find a
-> reference. Might have to post one.
+What you are seeking to do is application-level (or content-based) 
+packet filtering, and the stock Linux routing capabilities are not 
+really the way to go about it.
 
-It is always difficult to give advice in response to an incomplete 
-problem description. I suggested changing the mode because you did not 
-mention having done so in your first report. From what you just wrote 
-this time ("I tried various permission for slocate"), I *still* cannot 
-tell if you tried what I actually suggested -- using chmod to set the 
-database file (slocate.db) to mode 644.
+What you can do at the conventional level of iptables rules is block 
+specific ports and IP addresses. This capability might, when combined 
+with some traffic analysis, allow you to interfere with the downloads in 
+question ... but P2P apps these days are pretty smart about working 
+around firewalls, often opting to use port 80 (www) to disguise their 
+nature.
 
-Also, I am unclear as to what you tried changing the mode of. The issue 
-is NOT with the directory "/var/lib/slocate". It is with the file 
-"/var/lib/slocate/slocate.db". Since you say you tried things with 
-"slocate" rather than "slocate.db", I am uncertain as to which of the 
-two you were modifying.
+To do content-based filtering, you need to do one of the following things.
 
-So ... I suggest you try running (as root) this specific command:
+1. Force LAN hosts to go through a proxy server to access the standard 
+services (smtp, www, and the like), while blocking ALL direct access to 
+the Internet. Then configure the proxy server to analyze and filter 
+content. Offhand, I don't know of an Open Source proxy server that will 
+do the sort of filtering you want ... partly because I don't *quite* 
+know what you want, beyond your example ... but you might want to see if 
+either "filterproxy" or "middleman" can be adapted to your needs.
 
-	chmod 644 /var/lib/slocate/slocate.db
+2. Add application-level filtering to the iptables capability, probably 
+by dropping in some sort of userspace module that the router uses to 
+process all packets. Take a look at FireFlier 
+(http://fireflier.sourceforge.net/index.html) for some help here. Its 
+documentation is a bit sketchy, but it does support app-level filtering 
+in userspace, so it might be adaptable to your needs.
 
-Then run "ls -l /var/lib/slocate/slocate.db" to make sure the change 
-took effect.
+(BTW, please remember that app-level filtering in userspace is a bit 
+more demanding of CPU time thansimple kernel-level filtering ... if your 
+router is an old, slow Linux host like mine is, you may need to upgrade it.)
 
-Then, as an ordinary user, attempt to run the "locate" command and see 
-if the error persists.
+Even if you do something like either of these things, remember that 
+there willl be workarounds (using password-protected zip'd files, or 
+using https, for example) that will interfere with app-level filtering. 
+And also remember that a server can only filter what it sees ... so 
+controls at your router can restrict downloads from, and uploads to, the 
+Internet, but not LAN-to-LAN exchanges ... which may be what you meant 
+by "trading". (I suspect there are ways to do this too, but they are not 
+immediately obvious to me and they probably impose significant LAN 
+overhead.)
 
-If it does not, this is your fix. (Though you may need to confirm that a 
-run of "updatedb" preserves the 644 permissions.)
-
-If it does, then round up the usual suspects:
-
-	ls -l /var/lib/slocate/slocate.db
-	ls -l /usr/bin/locate  (or wherever Slackware puts it)
-	ldd /usr/bin/locate
-
-And, as you did before, quote the actual command you ran and the actual, 
-exact error message you got.
-
-See if the Dropline install affected any of the libs identified by the 
-second command. (You'll recall at the time of your first problem my 
-expressing skepticism that someone on the Dropline list could assure you 
-that xmms was the "only" app affected ... ANY change to libc6 can be 
-far-reaching.)
-
-Also check "ls -l /usr/bin/locate" on the Fedora host ... I'm still 
-curious as to how it manages to use mode 640, so I (and you) want to see 
-if it is doing something with the suid or sgid bit that the Slackware 
-version is no longer doing.
-
-(BTW, can some Slackware user here with a working locate command run "ls 
--l /usr/bin/locate" and "ls -l /var/lib/slocate/slocate.db" and post the 
-results, so Peter can see what a working Slackware system is *supposed* 
-to look like?)
-
+If you move ahead on this project, please don't hesitate to pose more 
+specific questions. I'd be curious to read what you come up with as a 
+solution here ... this sort of filtering seems to be an underaddressed 
+issue in Linux development.
 
 
 -
