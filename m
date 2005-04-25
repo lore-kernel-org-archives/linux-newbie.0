@@ -1,90 +1,95 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: Re: How to d/w form the CVS?
-Date: Mon, 25 Apr 2005 08:21:50 -0700
-Message-ID: <426D0B0E.7050209@comarre.com>
-References: <4EE0CBA31942E547B99B3D4BFAB34811454A1F@mail.esn.co.in>
+Subject: Re: No Locate for User
+Date: Mon, 25 Apr 2005 09:40:17 -0700
+Message-ID: <426D1D71.6060706@comarre.com>
+References: <200504250427.j3P4R6J5000324@skyinet.net>	<426C7ABC.3000007@comarre.com> <20050425161131.5192b7e9@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4EE0CBA31942E547B99B3D4BFAB34811454A1F@mail.esn.co.in>
+In-Reply-To: <20050425161131.5192b7e9@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
-Mukund JB. wrote:
-> Hi All,
+Peter wrote:
+[...]
+
+>>I don't know why ... that is, how ... your Fedora host works with these 
+>>permissions, but I'm not surprised that your Slackware host presents 
+>>problems with them. On Debian, the corresponding file (in a different 
+>>location, but the functional equivalent) is mode 644, the mode you'd 
+>>expect for a file that is to be readable by all users:
+>>
+>>  ray@kuryakin:~$ ls -l /var/cache/locate/locatedb
+>>  -rw-r--r--  1 root root 1089123 Apr 24 06:25 /var/cache/locate/locatedb
+>>
+>>So try changing the mode to 644 with chmod. Or try adding all users who 
+>>need to use locate to the group slocate (in /etc/group ... perhaps 
+>>Fedora uses this trick to make locate work in mode 640?).
+>>
+> Since I am using Linux beginning with ReaHat 5.1 then later switching to
+> slackware I always used "locate" as user and never bothered to look at the
+> permission of /var/lib/slocate since there was obviously no need.
 > 
-> I got the tslib package on the link below in a CVS repository of
-> arm.linux.org.uk. I am trying to do get that. I have a doubt here. 
+> Before I posted this mail I tried various permission for slocate even my user
+> name as owner and get the same error: Permission denied.
 > 
-> Do I need to have a public IP to connect to the CVS? 
+> That's why I am at a loss. I checked the dropline forum and could not find a
+> reference. Might have to post one.
 
-It depends on what you mean. Your workstation needs to have some sort of 
-access to a public IP address to make any connections to the Internet. 
-If it has a private address, it needs to be behind a NAT'ing router or 
-use a proxy server. If it does the second of these, you are likely to 
-have a problem, since proxy servers do not usually support connections 
-to arbitrary servers, just a few well-known ones like http and ftp.
+It is always difficult to give advice in response to an incomplete 
+problem description. I suggested changing the mode because you did not 
+mention having done so in your first report. From what you just wrote 
+this time ("I tried various permission for slocate"), I *still* cannot 
+tell if you tried what I actually suggested -- using chmod to set the 
+database file (slocate.db) to mode 644.
 
-> I have executed it as follows:
-> export CVSROOT=:pserver:cvs@pubcvs.arm.linux.org.uk:/mnt/src/cvsroot
-> 
-> where "/mnt/src/cvsroot" exists. What does the pserver mean?
+Also, I am unclear as to what you tried changing the mode of. The issue 
+is NOT with the directory "/var/lib/slocate". It is with the file 
+"/var/lib/slocate/slocate.db". Since you say you tried things with 
+"slocate" rather than "slocate.db", I am uncertain as to which of the 
+two you were modifying.
 
-This line identifies a remote server that the cvs command will try  to 
-connect to. The entry is in the same form used with scp: 
-username@FQDN:remote directory.
+So ... I suggest you try running (as root) this specific command:
 
-I don't know what you mean by "where "/mnt/src/cvsroot" exists". Just to 
-be clear: this path needs to exist not on your host but on the remote 
-host you are trying to access.
-> 
-> Then if I say 
-> 
-> #cvs login
-> Logging in to :pserver:cvs@pubcvs.arm.linux.org.uk:2401/mnt/srv/cvsroot/
-> CVS passwd:
-> Cvs [login aborted]: connect to pubcvs.arm.linux.org.uk(212.18.232.187):
-> 12402 failed: Network is unreachable.
-> 
-> What could be the problem?
+	chmod 644 /var/lib/slocate/slocate.db
 
-I'm not familiar with this cvs server site specifically, so I do not 
-know what it expects in response to the passwd: prompt, or what you 
-tried there ... but that is unlikely to be the problem here. The 
-"Network is unreachable" almost always means a problem with either the 
-routing table or the firewall ruleset (either on your workstation or on 
-the router that conencts it to the Internet).
+Then run "ls -l /var/lib/slocate/slocate.db" to make sure the change 
+took effect.
 
-Can you ping pubcvs.arm.linux.org.uk (I can, so the address is 
-reachable)? If not, what error does ping report?
+Then, as an ordinary user, attempt to run the "locate" command and see 
+if the error persists.
 
-If it is a routing problem, we'll need some details about your network 
-to advise you. For the host you are on (I'm assuming here that it is s 
-Linux host, since this is a Linux list), report the output of
+If it does not, this is your fix. (Though you may need to confirm that a 
+run of "updatedb" preserves the 644 permissions.)
 
-	uname -a
-	netstat -nr
-	iptables -nvL
+If it does, then round up the usual suspects:
 
-If your system uses a private IP address, provide the details of how it 
-connects to the Internet. Be as specific as you can.
+	ls -l /var/lib/slocate/slocate.db
+	ls -l /usr/bin/locate  (or wherever Slackware puts it)
+	ldd /usr/bin/locate
 
-I'm not replying to the last part of your message, below, since it is 
-clearly part of an ongoing dialog with the individual you sent this 
-message to (aside from the list) so too difficult to join in midstream.
+And, as you did before, quote the actual command you ran and the actual, 
+exact error message you got.
 
-> Also, if I say chroot /mnt/src/cvsroot, according to what u told me and
-> the documentation, if I run a install script, it will launch in into
-> this directory. If so, please explain me how it works.
-> 
-> I am getting the following output when I run chroot.
-> 
-> #chroot /mnt/src
-> chroot: /bin/bash: No such file or directory
-> 
-> What does this mean?
+See if the Dropline install affected any of the libs identified by the 
+second command. (You'll recall at the time of your first problem my 
+expressing skepticism that someone on the Dropline list could assure you 
+that xmms was the "only" app affected ... ANY change to libc6 can be 
+far-reaching.)
+
+Also check "ls -l /usr/bin/locate" on the Fedora host ... I'm still 
+curious as to how it manages to use mode 640, so I (and you) want to see 
+if it is doing something with the suid or sgid bit that the Slackware 
+version is no longer doing.
+
+(BTW, can some Slackware user here with a working locate command run "ls 
+-l /usr/bin/locate" and "ls -l /var/lib/slocate/slocate.db" and post the 
+results, so Peter can see what a working Slackware system is *supposed* 
+to look like?)
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
