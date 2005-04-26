@@ -1,69 +1,41 @@
-From: "John T. Williams" <jtwilliams@vt.edu>
-Subject: Re: filtering .mp3 packets
-Date: Tue, 26 Apr 2005 07:36:25 -0400
-Message-ID: <001101c54a54$2e0dc5d0$660aa8c0@descartes2>
-References: <fc.004c4e00007a2960004c4e00007a2960.7a296f@palmertrinity.org>
+From: chuck <chuck@gelm.net>
+Subject: Re: No Locate for User
+Date: Tue, 26 Apr 2005 07:37:24 -0400
+Message-ID: <426E27F4.9070104@gelm.net>
+References: <200504250427.j3P4R6J5000324@skyinet.net>	<426C7ABC.3000007@comarre.com> <20050425161131.5192b7e9@skyinet.net> <426D1D71.6060706@comarre.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <426D1D71.6060706@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: William Stanard <wstanard@palmertrinity.org>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ray Olszewski <ray@comarre.com>, Peter <heisspf@skyinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-Bill Stanard,
+Ray Olszewski wrote:
 
-There are many ways to attack the mp3 problem, but the one you trying for is
-probably the most problematic.  You would not only need to check packets for
-mp3's, but you would also have to understand the various protocols used by
-file sharing software.   My university tracks the amount of bytes uploaded
-by a user and limits bandwidth of users who upload too much. (indicating
-that the user is doing something of which the school wouldn't approve).
-There are very few uses for massive uploads which would not violate the
-average university's Internet use agreement, and those cases could be
-addressed on a user by user bases.
+> <snip>
+> (BTW, can some Slackware user here with a working locate command run 
+> "ls -l /usr/bin/locate" and "ls -l /var/lib/slocate/slocate.db" and 
+> post the results, so Peter can see what a working Slackware system is 
+> *supposed* to look like?)
 
+I am not subscribed under this account so I'll privately post to Ray and 
+Peter.  HTH, Chuck
 
-However the only way to truly limit the behavior will be to convince the
-students not to do it.  Otherwise there will always be a work around.
-Packet sniffing is questionable ethical and in some states may violate the
-rights of the users, however you can probably do ports scans to protect the
-network security and find people running servers on ports which are commonly
-used for file sharing.  If someone is running a publicly open server, I
-cannot see any problem with finding out what content is being served.  You
-could probably write a robot of some sort that could search the file sharing
-ports, and raise a flag if it finds contents with *.avi or *.mp3 on it, but
-I would check with your legal department before doing so.
+Slackware 10.1.0
 
+#ls -l /usr/bin/locate
+lrwxrwxrwx  1 root root 7 2005-03-21 12:32 /usr/bin/locate -> slocate*
+
+#ls -l /usr/bin/slocate
+-rwxr-sr-x  1 root slocate 26652 2004-05-29 23:52 slocate*
+
+#ls -l /var/lib/slocate/slocate*
+-rw-r-----  1 root slocate 7890114 2005-04-26 04:42 /var/lib/slocate/slocate.db
 
 
------ Original Message ----- 
-From: "William Stanard" <wstanard@palmertrinity.org>
-To: <linux-newbie@vger.kernel.org>
-Sent: Monday, April 25, 2005 7:27 AM
-Subject: filtering .mp3 packets
-
-
-> We've been having some difficulty finding the vocabulary to describe
-> filtering content (for example .mp3 files) over TCP-IP. We would like to
-> set up our Linux server to do some "trapping" of packets containing .mp3
-> files with an eye toward using Linux enabled routing to clean our campus
-> of an overwhelming dose of music downloads and trading. To do this
-> exploration, I need to know what I should call the process I'm trying to
-> perform. Any vocabulary that you can suggest?
->
-> Bill Stanard
-> Academic Computing
-> Palmer Trinity School
-> 305.969.4239
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
 
 
 -
