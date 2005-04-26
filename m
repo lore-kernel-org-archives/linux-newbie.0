@@ -1,41 +1,86 @@
 From: chuck <chuck@gelm.net>
 Subject: Re: No Locate for User
-Date: Tue, 26 Apr 2005 07:37:24 -0400
-Message-ID: <426E27F4.9070104@gelm.net>
-References: <200504250427.j3P4R6J5000324@skyinet.net>	<426C7ABC.3000007@comarre.com> <20050425161131.5192b7e9@skyinet.net> <426D1D71.6060706@comarre.com>
+Date: Tue, 26 Apr 2005 07:53:04 -0400
+Message-ID: <426E2BA0.80307@gelm.net>
+References: <200504260418.j3Q4I8d2000571@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <426D1D71.6060706@comarre.com>
+In-Reply-To: <200504260418.j3Q4I8d2000571@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ray Olszewski <ray@comarre.com>, Peter <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+To: Peter <heisspf@skyinet.net>, Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Ray Olszewski wrote:
+Peter wrote:
 
-> <snip>
-> (BTW, can some Slackware user here with a working locate command run 
-> "ls -l /usr/bin/locate" and "ls -l /var/lib/slocate/slocate.db" and 
-> post the results, so Peter can see what a working Slackware system is 
-> *supposed* to look like?)
+>Sorry for not expressing myself clearly!
+>
+>ray@comarre.com said:
+>  
+>
+>> From what you just wrote  this time ("I tried various permission for
+>>slocate"), I *still* cannot  tell if you tried what I actually suggested --
+>>using chmod to set the  database file (slocate.db) to mode 644.
+>>    
+>>
+>
+>Yes I did chmod 644 /var/lib/slocate/slocate.db and it changed nothing.
+>
+>ray@comarre.com said:
+>  
+>
+>>Since you say you tried things with  "slocate" rather than "slocate.db", I am
+>>uncertain as to which of the  two you were modifying.
+>>    
+>>
+>
+>I did all the changes on slocate.db. I even made myself the owner. Even then I 
+>get Permission denied.
+>
+>Updatedb changes permissions of slocate.db back to -rw-r-----  1 root slocate.
+>
+>ray@comarre.com said:
+>  
+>
+>>If it does, then round up the usual suspects:
+>>	ls -l /var/lib/slocate/slocate.db
+>>	ls -l /usr/bin/locate  (or wherever Slackware puts it)
+>>	ldd /usr/bin/locate
+>>    
+>>
+>
+>ls -l /var/lib/slocate/slocate.db
+>-rw-r--r--  1 root slocate 6640136 2005-04-25 18:08 /var/lib/slocate/slocate.db
+>
+>ls -l /usr/bin/locate
+>lrwxrwxrwx  1 root root 7 2005-03-08 17:45 /usr/bin/locate -> slocate
+>
+>ldd /usr/bin/slocate
+>libc.so.6 => /lib/libc.so.6 (0x4001e000)
+>/lib/ld-linux.so.2 (0x80000000)
+>
+>Fedora:
+>ls -l /var/lib/slocate/slocate.db
+>-rw-r-----  1 root slocate 2874826 2005-04-20 15:07 
+>/mnt/rh9root/var/lib/slocate/slocate.db
+>
+>ls -l /usr/bin/locate
+>-rwxr-sr-x  1 root slocate 26460 2004-10-20 /usr/bin/locate -> slocate
+>
+>ldd /usr/bin/slocate
+>        libc.so.6 => /lib/tls/libc.so.6 (0x004c7000)
+>        /lib/ld-linux.so.2 (0x004ae000)
+>  
+>
+.../tls/... ?
 
-I am not subscribed under this account so I'll privately post to Ray and 
-Peter.  HTH, Chuck
+My Slackware 10.1: ldd /usr/bin/slocate:
+ libc.so.6 => /lib/libc.so.6 (0x40009000)
+ /lib/ld-linux.so.2 (0x80000000)
 
-Slackware 10.1.0
-
-#ls -l /usr/bin/locate
-lrwxrwxrwx  1 root root 7 2005-03-21 12:32 /usr/bin/locate -> slocate*
-
-#ls -l /usr/bin/slocate
--rwxr-sr-x  1 root slocate 26652 2004-05-29 23:52 slocate*
-
-#ls -l /var/lib/slocate/slocate*
--rw-r-----  1 root slocate 7890114 2005-04-26 04:42 /var/lib/slocate/slocate.db
-
-
+HTH, Chuck
 
 
 -
