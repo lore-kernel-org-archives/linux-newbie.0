@@ -1,56 +1,70 @@
-From: caszonyi@rdslink.ro
-Subject: Re: Xircom_cb - tulip ethernet chip
-Date: Sat, 30 Apr 2005 02:12:29 +0300 (EEST)
-Message-ID: <Pine.LNX.4.60.0504300211430.960@grinch.ro>
-References: <4272BB33.7050405@tlinx.org>
-Reply-To: Calin Szonyi <caszonyi@rdslink.ro>
+From: joy merwin monteiro <joy.merwin@gmail.com>
+Subject: Re: filtering .mp3 packets
+Date: Sat, 30 Apr 2005 05:09:37 +0530
+Message-ID: <4b0d6e0d050429163925e0450e@mail.gmail.com>
+References: <Pine.LNX.4.21.0504272136300.1172-100000@hestia>
+	 <001a01c54b7c$6da1b7f0$660aa8c0@descartes2>
+	 <427030A8.8020604@comarre.com>
+	 <4b0d6e0d050428200525186e50@mail.gmail.com>
+	 <42721DEE.7020102@mrmighty.net>
+	 <4b0d6e0d0504290824427d7beb@mail.gmail.com>
+	 <427257F7.7040800@comarre.com>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4272BB33.7050405@tlinx.org>
+In-Reply-To: <427257F7.7040800@comarre.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Linda W <linux-newbie@tlinx.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Fri, 29 Apr 2005, Linda W wrote:
+> Whether this is a good solution or not depends on what the perceived
+> problem is.
+> 
+> If the issue is file sharers tying up bandwidth to the Internet, this is
+> an excellent approach. It will limit all heavy users indiscriminately,
+> though, so someone who (say) does a network-based upgrade of his or her
+> Linux host (an "apt-get upgrade" in Debian terms, or the equivalent for
+> other distros) or downloads ISO images of Linux-distro CDs will be
+> limited in the same way as someone doing a lot of music downloads.
 
-> Hi...
->
-> I have a Xircom Cardbus 10/100 HD/FD duplex card that seems to always be 
-> booting
-> into 10Mb/s.  It's connected to a 10/100 switch that most everything else 
-> connects
-> at 100Mb to, but the Xircom is connecting at the lower speed.
->
-> I notice a bunch of options that can be specified to the Tulip driver in the
-> drivers/net/tulip directory in the file tulip_core.c.  How do I pass these 
-> options
-> to the running driver?  Can I change it "on the fly", or do I need to pass 
-> the
-> options in on the command line?  If that's the case, how do I include the
-> option?  Just place it,  naked, on the command line and hope that the module 
-> will
-> see the argument and it will "just work"?  Seems a bit of a shot in the dark 
-> -- like
-> I might have to say something like "net=option" or "tulip=option" or 
-> something...
->
-> Any help/hints?  How to specify options to the module doesn't seem to be 
-> covered
-> in the Documentation section (Documentation/DocBook/tulip-user.tmpl).
->
+IMO, a local campus LAN with limited bandwidth, a net upgrade of
+your system is as bad as p2p dowloading....... as you have mentioned,
+if bandwidth
+saving is the only issue, some legit computers can be allocated more b/w for 
+such legitimate reasons.
+> 
+> If the issue is preventing use of the Internet connection to download
+> unauthorized copies of copyrighted materials, then this approach is
+> probably not sufficiently targeted to accomplish what the original
+> poster requested. It has the "false positive" problem in spades.
+> 
+Totally agree, but if this problem had a ready solution, Linux based
+or otherwise,
+the RIAA would have made it mandatory by now :-)
 
-There is a program named mii-tool which can change the interface.
-
-> Thanks,
-> Linda
+> If the issue is inhibiting on-LAN exchanges of unauthorized copies of
+> copyrighted materials ... well in that case, this entire discussion's
+> focus on solutions at the router level is completely misplaced. If that
+> is the perceived problem (in a college setting, I can easily imagine it
+> being so, especially of the LAN provides service to dorm rooms), the
+> solution needs to involve a heavy dose of on-LAN traffic sniffing. Even
+> talking about that approach requires less abstraction from a particular
+> LAN implementation then we have had here so far.
 >
---
-?
+ 
+From my experience (being presently in college), I would prefer to burn a
+CD with 700 MB of songs and distribute it to all the people who need it rather
+than trying to send it over a LAN..... people who want to do it 
+_will_ find a way to do it......
 
+-- 
+<ed__> riel: if it were a vax, gcc would probably be an opcode
 
+	- excerpt from #kernelnewbies
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
