@@ -1,66 +1,45 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Andrew <ald2@arrakis.es>
 Subject: Re: boot problem
-Date: Mon, 02 May 2005 08:16:11 -0700
-Message-ID: <4276443B.6020003@comarre.com>
-References: <427617F5.1030307@arrakis.es>
+Date: Mon, 02 May 2005 17:21:28 +0200
+Message-ID: <42764578.7090305@arrakis.es>
+References: <427617F5.1030307@arrakis.es> <4b0d6e0d05050206107fae523@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <427617F5.1030307@arrakis.es>
+In-Reply-To: <4b0d6e0d05050206107fae523@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbies <linux-newbie@vger.kernel.org>
 
-Andrew wrote:
-> I have just used the Slackware 'swaret' tool to upgrade from Slackware 
-> 10.0 to 10.1. The result is my system no longer boots properly. Most 
-> attempts to reboot get as far as 'Freeing unused kernel memory: 120k 
-> freed', followed by a 'sh-3.00#' prompt, though on one attempt I got 
-> something like 'kernel panic. attempted to kill init' (I haven't been 
-> able to reproduce this). Where do I begin to sort this mess out?
+joy merwin monteiro wrote:
 
-It's difficult to say what your problem is from this sketchy a 
-description, but the likely place to start tracking it down is by 
-looking at your logs. The 'sh-3.00#' prompt at least means the system is 
-throwing you into a shell as root ... probably in single-user mode ... 
-so you should be able to read the logs.
+>Hi,
+>
+>Somewhere, your kernel parameters have been messed up.....
+>it is using bash as init. at the lilo prmpt,
+>
+>init=/sbin/init
+>
+> as a parameter
+>should do the trick, though it should have been the other way round,
+>when you want to bypass the passwd, you do
+>
+>init=/bin/bash
+>
+>see if anything is added to lilo.conf..... can't think of any other place
+>unless init has been replaced by bash :-(
+>
+>Joy
+>  
+>
+It didn't work, but it seems to be on the right track as in fact 
+/sbin/init doesn't exist.
+Any idea how it can be created? Or why it wasn't?
 
-But first take a look at whether /etc/inittab was changed by the 
-upgrade. Dropping into single-user mode usually means a problem with 
-init, not the kernel itself ... especially if the kernel makes it to the 
-"freeing memory" step ... and this is the file the controls the 
-operation of the init program.
+TIA,
 
-Then see what init scripts were modified by the upgrade. (I forget where 
-Slackware puts them, but look for a line in /etc/inittab similar to 
-this: "si::sysinit:/etc/init.d/rcS". Unless it has changed recently, 
-Slackware uses an old style of init-script organization that can easily 
-get errors incorporated into it through an automated upgrade, and that 
-*may* be all you are seeing. Make sure that whatever top-level init 
-scripts inittab points to ... in the line like the one above and in a 
-series of (probably) six that resemble "l2:2:wait:/etc/init.d/rc 2" ... 
-are present on the system and executable.
-
-Next thing is to look at your logs ... and at the output of "dmesg", if 
-Slackware down't dump that to a logfile during boot/init (some distros 
-do, but I don't know about Slack). It is likely, though not certain, 
-that either the kernel itself, or init by way of syslogd, will be 
-logging a better description of the problem than what is going to the 
-screen.
-
-Check your filesystems to make sure that they are a trpe that your 
-kernel can mount. This is unlikely to be a problem, but just might be, 
-for example if you're using ext3 but the kernel supports only ext2. See 
-what "df" reports, and see if the entries in /etc/fstab are reasonable 
-when compared with df's output.
-
-The suggestion Chuck made, to install a different kernel, is likely his 
-response to the kernel panic message you say you got on one occasion, 
-and it may do the job for you, or it may be like using a cannonball to 
-sway a fly. Definitely give it a try; there are a lot of things this 
-"mess" *might* be that a kernel change will fix.
-
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
