@@ -1,24 +1,25 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Is Xfbdev same as framebubber driver?
-Date: Mon, 2 May 2005 11:32:21 +0530
-Message-ID: <4EE0CBA31942E547B99B3D4BFAB34811454E89@mail.esn.co.in>
+From: Andrew <ald2@arrakis.es>
+Subject: boot problem
+Date: Mon, 02 May 2005 14:07:17 +0200
+Message-ID: <427617F5.1030307@arrakis.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbies <linux-newbie@vger.kernel.org>
 
-Hi all,
+I have just used the Slackware 'swaret' tool to upgrade from Slackware 
+10.0 to 10.1. The result is my system no longer boots properly. Most 
+attempts to reboot get as far as 'Freeing unused kernel memory: 120k 
+freed', followed by a 'sh-3.00#' prompt, though on one attempt I got 
+something like 'kernel panic. attempted to kill init' (I haven't been 
+able to reproduce this). Where do I begin to sort this mess out?
 
-I have a small query about fb drive.
-Is Xfbdev same as framebubber driver?
+TIA,
 
-
-Regards,
-Mukund jampala
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
