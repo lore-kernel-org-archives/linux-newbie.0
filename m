@@ -1,7 +1,7 @@
-From: Peter <bato_mainit@ispx.com.ph>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: HTML files not open in MC
-Date: Tue, 3 May 2005 10:49:44 +0800
-Message-ID: <20050503104944.18d9b726@skyinet.net>
+Date: Tue, 3 May 2005 13:39:15 +0800
+Message-ID: <20050503133915.0e56ebe7@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,10 +10,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Hi,
 
-I solved the problem. My ~/.mc/bindings was apparently an old version. Copying
-/usr/share/mc/mc.ext to ~/.mc/bindings and making the necessary corrections
-makes diilo and lynx pop-up in split seconds again.
+I solved the problem. My ~/.mc/bindings was apparently for the old version of
+mc. Copying /usr/share/mc/mc.ext to ~/.mc/bindings and making the necessary
+corrections makes diilo and lynx pop-up in split seconds again.
 
 # html
 regex/\.([Hh]tml?|HTML?|stm?)$
@@ -21,6 +22,7 @@ regex/\.([Hh]tml?|HTML?|stm?)$
 file://%d/%p &) >/dev/null 2>&1; else lynx %f 2>/dev/null || lynx -force_html
 %f; fi        View=%view{ascii} lynx -dump -force_html %f
 
+Ergo, if you upgrade upgrade the settings as well.
 
 Peter H. <heisspf@skyinet.net> wrote:
 
@@ -78,6 +80,10 @@ Peter H. <heisspf@skyinet.net> wrote:
 > -- 
 > Peter
 > 
+
+
+-- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
