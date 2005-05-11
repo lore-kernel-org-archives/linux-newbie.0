@@ -1,38 +1,29 @@
-From: "muHum" <zmaster@zmaster.de>
-Subject: isdn problem with debian amd64
-Date: Tue, 10 May 2005 16:00:26 +0200
-Message-ID: <005101c55568$9f185960$f1afe450@necro>
-References: <3546538697.124423@222.182.39.119>
+From: "William Stanard" <wstanard@palmertrinity.org>
+Subject: a simple way to burn DVDs
+Date: Wed, 11 May 2005 15:46:06 -0400
+Message-ID: <fc.004c4e00007c2b66004c4e00007c2b66.7c2bce@palmertrinity.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi!
+I've purchased and correctly installed (it reads data CDs just fine,
+mounted with "mount /dev/cdrom /mnt/cdrom" ) a HI-VAL DVD_RW/_R rewritable
+drive in my Compaq Proliant 800 server running Red Hat 8.0 (ver 2.4.18-14
+) in preparation to setting up the drive to do my backup chores. There
+doesn't, however, seem to be a simple application as part of this
+particular Red Hat build that writes to DVDs. Am I missing something, or
+do I have to purchase, for instance, NeroLINUX or some other utility for
+writing data to DVDs?
 
-ive got a avm fritz card pci v1 and debian x86_64 linux installed
-but everytime i try to dial ippp0 there is an error like this:
+Bill Stanard
 
-fcpcipnp0,ch0 cause E001B
-isdn_net: local hangup ippp0
-ippp0: Chargesum is 0
 
-i know that everything is configured well and the 
-card works well under microshit win...
-anyone knows an answer to this problem???
 
-thank you
-muHum 
 
-ps:
-
-i have kernel 2.8.11 from standard debian 128mb netinstall iso
-and use isdnutils package
-
-pps: also same problem with 32bit debian sarge
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
