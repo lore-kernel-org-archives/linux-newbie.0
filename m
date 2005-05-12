@@ -1,45 +1,61 @@
-From: Ray Olszewski <ray@comarre.com>
+From: "J." <mailing-lists@xs4all.nl>
 Subject: Re: internet access through proxy...
-Date: Thu, 12 May 2005 00:16:25 -0700
-Message-ID: <428302C9.50403@comarre.com>
+Date: Thu, 12 May 2005 12:31:59 +0200 (CEST)
+Message-ID: <Pine.LNX.4.21.0505121216300.551-100000@hestia>
 References: <652016d30505112356347dff09@mail.gmail.com>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <652016d30505112356347dff09@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Manish Regmi wrote:
+On Thu, 12 May 2005, Manish Regmi wrote:
+
 > Hi,
 > 
 >   My PC uses a proxy server to connect to the internet. I can easily
 > assess the internet by changing the Browser options. But i am unable
 > to use lynx, ssh, traceroute etc.
+
+Is the proxy located or provided by your ISP or is it really running and 
+init'd by you on your pc or on your own local network [lan] ?
+
 > Do i need to change all of their configuration files?
 > If yes which one and where?
 > Is there any generic way?
+> 
+> Thanks in Advance.
+> Manish regmi
 
-The purpose of a proxy server ... from the network manager's point of 
-view, anyway ... is to prevent LAN users from accessing the Internet 
-with arbitrary applications. So the way to force users to use it is to 
-block direct access to the Internet at the firewall/router.
+No there is no generic way. It's not like your DNS settings for example.
 
-In a proxy-server setting, you can only proxy the apps that your proxy 
-server is willing to proxy ... and those are typically only ftp, http, 
-and https (and maybe a couple of others I'm not thinking of right now).
+You will have to set the preferences for each program independantly - 
+If the program is able and made to go thru a proxy !
 
-So no, there is no generic way to use the proxy server for everything. 
-For ssh and traceroute, there is most likely no way at all ... and no 
-one can tell you about "etc".
+To use a proxy with lynx uncomment and set the appropiate
+proxy variable's in your /etc/lynx.cfg . Search for `proxy' in that config
+file.
 
-As to lynx, since it is an http client, there is no reason in principle 
-why it could not work with a proxy server. Its man page seems to say it 
-can do so via ENV variables of the form *_proxy, for example http_proxy 
-and ftp_proxy ... but I haven't tried this. So you might look at the man 
-page ... down in the section on COnfiguration ... and experiment a bit.
+Do the same for your ftp client, look in the manual page of your
+ftp-client to see if a proxy is supported and which variables in the
+config file you have to set. 
+
+SSH does not have a proxy variable that you can set, however there are
+other ways you can achive this task. Search www.google/linux for `ssh
+proxy' will turn up some scripts that use netcat to proxy your ssh tunnel 
+if you want to run a ssh proxy server on you lan.
+
+Traceroute is not made to be proxyd - It's a network discovery tool.
+
+The term proxying is different than the actual proxy PROGRAM you are
+using. For the last it depends what protocols the program supports. While
+the term proxy in theory can be applied to just about anything.
+
+J.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
