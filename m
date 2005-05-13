@@ -1,39 +1,53 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: a simple way to burn DVDs
-Date: Wed, 11 May 2005 17:02:55 -0400
-Message-ID: <20050511210255.GA1214@lnx2.w8mch.ampr.org>
-References: <fc.004c4e00007c2b66004c4e00007c2b66.7c2bce@palmertrinity.org>
-Reply-To: haltec@kvinet.com
+From: Manish Regmi <regmi.manish@gmail.com>
+Subject: Re: internet access through proxy...
+Date: Fri, 13 May 2005 13:10:02 +0545
+Message-ID: <652016d305051300256a0a6679@mail.gmail.com>
+References: <652016d30505112356347dff09@mail.gmail.com>
+	 <428302C9.50403@comarre.com>
+Reply-To: Manish Regmi <regmi.manish@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <428302C9.50403@comarre.com>
 Content-Disposition: inline
-In-Reply-To: <fc.004c4e00007c2b66004c4e00007c2b66.7c2bce@palmertrinity.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: "Simple" - hmmmmmm. <grin>
-
-Google; sth like "dvdrtools", and--well far from simple.. FWIW..
-
-
-On 05-11, William Stanard wrote:
-> I've purchased and correctly installed (it reads data CDs just fine,
-> mounted with "mount /dev/cdrom /mnt/cdrom" ) a HI-VAL DVD_RW/_R rewritable
-> drive in my Compaq Proliant 800 server running Red Hat 8.0 (ver 2.4.18-14
-> ) in preparation to setting up the drive to do my backup chores. There
-> doesn't, however, seem to be a simple application as part of this
-> particular Red Hat build that writes to DVDs. Am I missing something, or
-> do I have to purchase, for instance, NeroLINUX or some other utility for
-> writing data to DVDs?
+On 5/12/05, Ray Olszewski <ray@comarre.com> wrote:
+> The purpose of a proxy server ... from the network manager's point of
+> view, anyway ... is to prevent LAN users from accessing the Internet
+> with arbitrary applications. So the way to force users to use it is to
+> block direct access to the Internet at the firewall/router.
 > 
-> Bill Stanard
--- 
+> In a proxy-server setting, you can only proxy the apps that your proxy
+> server is willing to proxy ... and those are typically only ftp, http,
+> and https (and maybe a couple of others I'm not thinking of right now).
+> 
+> So no, there is no generic way to use the proxy server for everything.
+> For ssh and traceroute, there is most likely no way at all ... and no
+> one can tell you about "etc".
+> 
+> As to lynx, since it is an http client, there is no reason in principle
+> why it could not work with a proxy server. Its man page seems to say it
+> can do so via ENV variables of the form *_proxy, for example http_proxy
+> and ftp_proxy ... but I haven't tried this. So you might look at the man
+> page ... down in the section on COnfiguration ... and experiment a bit.
+> 
 
-    Hal - in Terra Alta, WV - Slackware GNU/Linux 9.0   (2.4.20-1)
-.
+Thank you for making things Clear.
+
+What should i do to use ssh from my system. May i need to ask my
+Network Administrator to change some settings in the server.
+Or can i do it by adding some softwares.....
+
+Thanks in  Advance...
+Manish Regmi
+
+-- 
+---------------------------------------------------------
+"Owning a hammer doesn't make one an architect"
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
