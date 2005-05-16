@@ -1,46 +1,31 @@
-From: Nathan Clayton <nathanclayton@daftwazzock.com>
-Subject: Re: Reverse DNS
-Date: Tue, 17 May 2005 01:30:45 -0700
-Message-ID: <1116318646.3938.72.camel@localhost.localdomain>
-References: <200505160723.j4G7Nanl010005@skyinet.net>
-	 <4288B8EB.3000202@comarre.com>
+From: sn00born <sn00bb0rn@telkom.net>
+Subject: help, root overpowered ?
+Date: Tue, 17 May 2005 02:30:32 +0700
+Message-ID: <4288F4D8.8050609@telkom.net>
+Reply-To: sn00bb0rn@telkom.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4288B8EB.3000202@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 2005-05-16 at 08:14 -0700, Ray Olszewski wrote:
-> What to do about this? I'm afraid the advice you found to complain to 
-> your ISP is right. Reverse-DNS entries need to be provided by whoever is 
-> authoritative for the *address*, not the domain name, and that (almost 
-> without exception, for us small users) is your ISP. This lookup failure 
-> suggests a degree of sloppiness at your ISP that would have me looking 
-> elsewhere for a service provider.
-> 
-> How to contact your ISP really is not a Linux issue, except perhaps to 
-> point out that VoIP options exist for use with Linux, if your lack of a 
-> wireline phone really is a persistent problem.
-> 
-> In the meantime -- does your ISP provide a mail forwarder? Most do. If 
-> so, setting up your MTA to send mail through that forwarder would 
-> probably satisfy AOL's requirements.
+Dear all,
 
-A lot of ISPs do this now. They force you to go through their SMTP
-server. It helps cut down on spammers using their networks. Quite
-frankly, I'm surprised that they even left that port open for you to
-send out email on. You could also try using something like dyndns to get
-a dynamic DNS name pointing to your IP address.
+I am a newbie. I play with linux CLI now (using chmod and chown).
+It seems to me that if I am using su -as root- I can use all directories 
+and files that I -by my own setting- not allowed. For instance I have 
+set chown 700 to some files and folder as a normal user. I think it will 
+prevent anyone else using it (even root). But when as root I can still 
+read the content of thet file.
+My question is, is that a normal in *nix world ? I imagine how powerfull 
+an computer administrator of a company will be. He can read *all 
+sensitive data* that beyond his level. Please tell me, and point me 
+where my understanding of this matter that was wrong. Sorry for the 
+unproper English.
 
-Change your email client/sendmail/postfix to use the SMTP server that
-your broadband provider provides and you should have no problems (you
-can usually keep the from and reply-to headers pointing to your other
-email address without a problem).
-
-nathan
+Thank you very much in advance.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
