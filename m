@@ -1,28 +1,21 @@
-From: James Miller <jamtat@mailsnare.net>
+From: Spack <spack.world@gmail.com>
 Subject: Re: 56k and Linux 2.6.x
-Date: Mon, 16 May 2005 13:36:04 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0505161333110.5645@localhost.localdomain>
+Date: Mon, 16 May 2005 15:14:15 -0400
+Message-ID: <3cb33221050516121453ae8984@mail.gmail.com>
 References: <3cb332210505161104766bf17b@mail.gmail.com>
+	 <Pine.LNX.4.61.0505161333110.5645@localhost.localdomain>
+Reply-To: Spack <spack.world@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3cb332210505161104766bf17b@mail.gmail.com>
+In-Reply-To: <Pine.LNX.4.61.0505161333110.5645@localhost.localdomain>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Mon, 16 May 2005, Spack wrote:
-
-> Hi, I want to know if at this time, there is an another means to use a
-> 56k conexant modem instead buy the conexant driver ?
-
-Well, they make interesting Christmas tree ornaments :). Actually, I don't 
-recall ever trying to set up or use a conexant modem under Linux. I 
-suppose you've looked at this somewhat outdated how to? 
-http://www.tldp.org/HOWTO/Conexant+Rockwell-modem-HOWTO/
-
-James
+OK thanks, I will look this howto !
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
