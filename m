@@ -1,61 +1,67 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: internet access through proxy...
-Date: Fri, 13 May 2005 08:32:18 -0700
-Message-ID: <4284C882.90808@comarre.com>
-References: <652016d30505112356347dff09@mail.gmail.com>	 <428302C9.50403@comarre.com> <652016d305051300256a0a6679@mail.gmail.com>
+From: "Peter H." <heisspf@skyinet.net>
+Subject: Reverse DNS
+Date: Mon, 16 May 2005 15:23:36 +0800
+Message-ID: <200505160723.j4G7Nanl010005@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <652016d305051300256a0a6679@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Manish Regmi wrote:
-> On 5/12/05, Ray Olszewski <ray@comarre.com> wrote:
-> 
->>The purpose of a proxy server ... from the network manager's point of
->>view, anyway ... is to prevent LAN users from accessing the Internet
->>with arbitrary applications. So the way to force users to use it is to
->>block direct access to the Internet at the firewall/router.
->>
->>In a proxy-server setting, you can only proxy the apps that your proxy
->>server is willing to proxy ... and those are typically only ftp, http,
->>and https (and maybe a couple of others I'm not thinking of right now).
->>
->>So no, there is no generic way to use the proxy server for everything.
->>For ssh and traceroute, there is most likely no way at all ... and no
->>one can tell you about "etc".
->>
->>As to lynx, since it is an http client, there is no reason in principle
->>why it could not work with a proxy server. Its man page seems to say it
->>can do so via ENV variables of the form *_proxy, for example http_proxy
->>and ftp_proxy ... but I haven't tried this. So you might look at the man
->>page ... down in the section on COnfiguration ... and experiment a bit.
->>
-> 
-> 
-> Thank you for making things Clear.
-> 
-> What should i do to use ssh from my system. May i need to ask my
-> Network Administrator to change some settings in the server.
-> Or can i do it by adding some softwares.....
+Hi,
 
-There is no real way to avoid talking to your network administrator 
-about this. If I understand your desciption of the setup correctly ... 
-and this is a real source of uncertainty, as I've assumed a lot in 
-filling in gaps in what you actually said ... whoever is in charge of 
-your network *intends* to interfere with your ability to use ssh (for 
-example) to access the Internet.
+Since I have a broadband Internet connection I cannot send mail any longer to 
+addresse of @aol.com. An account that:
 
-Working around designed-in limitations to your Internet access isn't 
-really a Linux problem, although if you find a type of workaround that 
-will server your needs, then finding a Linux application to do that 
-workaround surely is. But the first thing you need to do is get a better 
-understanding of why your access comes with these limitations and 
-whether your network administrator is helpful with or opposed to your 
-efforts to work around them.
+Reverse DNS lookup for your IP address is failing. AOL does require that all 
+connecting Mail Transfer Agents have established reverse DNS.
+
+After that message I went to reverse DNS research tool where I entered the IP 
+address of the braoadband provider and the result is:
+
+Quote
+Success! It appears you have Reverse DNS. Please note the following points:
+
+     * If the sender's domain is the only domain sending mail from a specific 
+IP address, we recommend that the reverse DNS entry (PTR Record) match the 
+domain name (A Record), but we do not require it.
+
+     * AOL does require that all connecting Mail Transfer Agents have 
+established reverse DNS, regardless of whether it matches the domain.
+
+    *  Reverse DNS must be in the form of a fully-qualified domain name 
+-reverse DNSes containing in-addr.arpa are not acceptable, as these are merely 
+placeholders for a valid PTR record. Reverse DNSes consisting only of IP 
+addresses are also not acceptable, as they do not correctly establish the 
+relationship between domain and IP address.
+Unquote
+
+I do not have an e-mail address with the broadband provider instead continue 
+using the same current address of my ISP when I had only a modem connection.
+
+On the web page http://postmaster.info.aol.com/errors/421dnsnr.html it says 
+among others:
+
+Quote
+If you are on a dynamic IP address, please call your ISP and request a static 
+IP address with proper rDNS before attempting to send mail to AOL through that 
+server.
+Unquote
+
+The problem is I have no telephone nor my neighbors for the past 2 months. The 
+telephone company apparently blew-up a connection box and has been so far 
+unable to repair it.
+
+Any suggestions how to go about it and where do I put the reverse DNS of my 
+e-mail provider if I ever will get it.
+
+In the meantime I am sending mail to @aol via operamail.
+
+Thanks & regards 
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
