@@ -1,33 +1,40 @@
-From: "Sandeep Shetty" <nsandeepshetty@hotmail.com>
-Subject: Need help on ACL in linux
-Date: Fri, 27 May 2005 12:19:30 +0530
-Message-ID: <BAY1-DAV242835EFDB02670A9D294CE000@phx.gbl>
+From: Rhys Hardwick <linux-newbie@rhyshardwick.co.uk>
+Subject: Re: Change permissions of files to -xw +r for all other users
+Date: Fri, 27 May 2005 18:17:45 +0100
+Message-ID: <200505271817.45798.linux-newbie@rhyshardwick.co.uk>
+References: <Pine.LNX.4.21.0505262239430.1464-100000@hestia>
+Reply-To: linux-newbie@vger.kernel.org
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Message-ID: <000001c56288$3bd50e20$7604a8c0@socsoft.com>
+In-Reply-To: <Pine.LNX.4.21.0505262239430.1464-100000@hestia>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi all,
-I'd like to know how to use the default option in setfacl works in Linu=
-x.
-=46or example I have 3 users --- dir_owner, secondparty and thirdparty
-If dir_owner is the owner of a directory named dir1 and whenever he cre=
-ates  directories/files under dir1 I would like the user thirdparty  to=
- have rwx permission  and the user secondparty only r-x permission on t=
-hose child folders by default. How do I use setfacl in this case .
+> Hope that helped...
+>
+> J.
+>
 
+Gotcha, thanks for the help.  I did figure out that bit, it was the part about 
+only selecting files, so when I -x 'd them, I wouldn't take list privileges 
+away from the directories.  
 
-Tnx & Warm Wishes=20
-=DB=8C =CE=B1 n d =E2=82=AC =E2=82=AC =D7=A7 =20
-=20
+Thanks,
+
+Rhys
+
+	
+	
+		
+___________________________________________________________ 
+Yahoo! Messenger - NEW crystal clear PC to PC calling worldwide with voicemail http://uk.messenger.yahoo.com
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
