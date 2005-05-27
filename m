@@ -1,11 +1,11 @@
 From: "Sandeep Shetty" <nsandeepshetty@hotmail.com>
 Subject: Need help on ACL in linux
-Date: Fri, 27 May 2005 12:19:37 +0530
-Message-ID: <BAY1-DAV2A57F87C5F80EC30AB4A5CE000@phx.gbl>
+Date: Fri, 27 May 2005 12:19:30 +0530
+Message-ID: <BAY1-DAV242835EFDB02670A9D294CE000@phx.gbl>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Message-ID: <000101c56288$400aa180$7604a8c0@socsoft.com>
+Message-ID: <000001c56288$3bd50e20$7604a8c0@socsoft.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="utf-8"
