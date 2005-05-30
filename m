@@ -1,37 +1,29 @@
-From: Rhys Hardwick <linux-newbie@rhyshardwick.co.uk>
-Subject: Re: Change permissions of files to -xw +r for all other users
-Date: Fri, 27 May 2005 18:17:45 +0100
-Message-ID: <200505271817.45798.linux-newbie@rhyshardwick.co.uk>
-References: <Pine.LNX.4.21.0505262239430.1464-100000@hestia>
-Reply-To: linux-newbie@vger.kernel.org
+From: "Sudhir Barwal" <sudhir@guj.nic.in>
+Subject: Most Vulnerable Protocol
+Date: Mon, 30 May 2005 10:56:07 +0530
+Message-ID: <008501c564d8$15857af0$0a32a8c0@sudhir1>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.21.0505262239430.1464-100000@hestia>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-> Hope that helped...
->
-> J.
->
+Hi everybody,
+     I'm sorry if it is of the topic, but I though this is the right place
+to ask this.
+I want to know that which is the most vulnerable protocol. I mean which is
+the
+protocol in which lot of vulnerabilities are there and can be hacked easily.
+Why this question arises because somebody told me that SNMP is the most
+vulnerable protocol.  After that I google but could not find satisfactory
+link.
+Any link, views are appericated in this regard.
 
-Gotcha, thanks for the help.  I did figure out that bit, it was the part about 
-only selecting files, so when I -x 'd them, I wouldn't take list privileges 
-away from the directories.  
+Thanks.
 
-Thanks,
-
-Rhys
-
-	
-	
-		
-___________________________________________________________ 
-Yahoo! Messenger - NEW crystal clear PC to PC calling worldwide with voicemail http://uk.messenger.yahoo.com
+Sudhir Barwal
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
