@@ -1,59 +1,92 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: Re: Mplayer problem
-Date: Tue, 31 May 2005 04:30:31 +0200
-Message-ID: <200505310430.31548.pa3gcu@zeelandnet.nl>
-References: <429ACFE2.7060109@verizon.net>
-Reply-To: pa3gcu@zeelandnet.nl
+From: "Sudhir Barwal" <sudhir@guj.nic.in>
+Subject: Re: Most Vulnerable Protocol
+Date: Tue, 31 May 2005 13:21:44 +0530
+Message-ID: <002d01c565b5$98482cc0$0a32a8c0@sudhir1>
+References: <008501c564d8$15857af0$0a32a8c0@sudhir1> <1117436352.823.18.camel@beastie.kruemel.home>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <429ACFE2.7060109@verizon.net>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Jeremy Abbott <jkbullfrog@verizon.net>
+To: newsletter <newsletter@guengel.ch>
 Cc: linux-newbie@vger.kernel.org
 
-On Monday 30 May 2005 10:33, Jeremy Abbott wrote:
-> I have recied an errore while compiling mplayer recently.  Here is the
+Thanks Rafael for the reply,
+
+I waited for sometime so that I can reply to everyone at once.
+
+I fully agree with your view that end points are vulnerable rathere than
+protocol.
+Actually what I mean was that which is the protocol having most no of
+vulnerabilities?
+(I suppose TCP). To manage my traffic passing from router I want to enable
+snmp on
+my cisco 3845 router, so whether it is safe to open that or not.
+I'm giving public community with RO access.
+I have put the iptable firewall before that.
+
+Thanks.
+
+Sudhir
+
+
+----- Original Message ----- 
+From: "newsletter" <newsletter@guengel.ch>
+To: "Sudhir Barwal" <sudhir@guj.nic.in>
+Cc: <linux-newbie@vger.kernel.org>
+Sent: Monday, May 30, 2005 12:29 PM
+Subject: Re: Most Vulnerable Protocol
+
+
+> Hi Sudhir
 >
-> message:
-> : undefined reference to `XF86DGADirectVideo'
+> My first guess was, every protocol that is not encrypted is vulnerable
+> to the most basic attacks, e.g. password sniffing.
 >
-> libvo/libvo.a(vo_3dfx.o)(.text+0x50): In function `sighup':
-> : undefined reference to `XF86DGADirectVideo'
+> However, on a second look, what does "a vulnerable protocol" mean? As
+> stated, if passwords and other sensitive data is not encrypted, it is
+> for sure not secure. But there are other issues that also influences the
+> security of network services: Is the receiving end vulnerable to buffer
+> overflows for example. Take a web server, the protocol, http, is clear
+> text, so all you need is a telnet client an you can talk to every web
+> server. Does this make the protocol vulnerable? Well, to a certain
+> degree yes, but it is more concerning how the web server reacts on
+> malformed packets. Same goes for snmp.
 >
-> collect2: ld returned 1 exit status
-> make: *** [mplayer] Error 1
+> In my opinion, it's not the protocol that's vulnerable, the sending and
+> receiving ends are.
 >
-> Any help regarding this situation would be appreciated.  I am currently
-> running Xorg 6.8.2 with kernel 2.6.10.  I will soon be upgrading to 2.6.11.
-
-I could be wrong but:
-1) You have an incompatable libary installed (possably libXxf86dga)
-2) You are trying to compile mplayer to support something which you may not 
-need, run the configure program in the mplayer source as:
-
-./configure --help
-You can exclude certain video card support try excluding 3dfx support for one.
-
-As i said i could be wrong.
-A better place would be to visit 
-
-http://mplayerhq.hu/homepage/design7/info.html#mailing_lists
-
-Read the archives your answer may well be there somewhere.
-
-> Thanks,
-> Jeremy Abbott
-> jkbullfrog@verizon.net
+> So with this in mind, have a look at:
+> * http://www.rfc-editor.org
+> * http://www.sans.org
+> * http://www.cert.org
+> * http://www.securityfocus.org/
 >
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+> regards
+> rafi
+>
+> On Mon, 2005-05-30 at 10:56 +0530, Sudhir Barwal wrote:
+> > Hi everybody,
+> >      I'm sorry if it is of the topic, but I though this is the right
+place
+> > to ask this.
+> > I want to know that which is the most vulnerable protocol. I mean which
+is
+> > the
+> > protocol in which lot of vulnerabilities are there and can be hacked
+easily.
+> > Why this question arises because somebody told me that SNMP is the most
+> > vulnerable protocol.  After that I google but could not find
+satisfactory
+> > link.
+> > Any link, views are appericated in this regard.
+> >
+> > Thanks.
+> >
+> > Sudhir Barwal
+> >
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
