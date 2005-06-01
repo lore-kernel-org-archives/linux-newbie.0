@@ -1,7 +1,7 @@
-From: Job <articulators@mutualanalytics.com>
-Subject: All Generic Viagra Prices include a Free Online Prescription.
-Date: Tue, 31 May 2005 11:09:28 +0200
-Message-ID: <4251459173.6869555971@m107.net81-65-212.noos.fr>
+From: Rosalie <assesses@wolframes.com>
+Subject: Finally a Patch that works!
+Date: Wed, 1 Jun 2005 21:34:47 +0200
+Message-ID: <13068226464.5347410048@p508FE17E.dip.t-dialin.net>
 Mime-Version: 1.0 (Apple Message framework v728)
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,14 +10,18 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Every night becomes unforgettable event in your life owing to this new means for treatment ED!
-http://ikmzfd.p4a0tqpi4zpfbq7.tirolean66i1.com
+Now, it's finally possible for you to enlarge your penis
+http://www.jnaz.net/ss/
 
 
 
-PREJUDICE, n. A vagrant opinion without visible means of support.   
-She ain't my mother, so I ain't gonna get her nothin'.  
-REPOSE, v.i. To cease from troubling.       
+
+
+Those who are clever, who have a Brain, never understand anything.  
+Human history becomes more and more a race between education and catastrophe. 
+Be true to your work, your word, and your friend.   
+My heart is pure as the driven slush.     
+There are three ingredients to the good life; learning, earning, and yearning. 
 
 
 -
