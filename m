@@ -1,36 +1,42 @@
-From: Thorsten Alge <mail@thorsten-alge.de>
-Subject: ULI M5289 Chipset
-Date: Fri, 03 Jun 2005 23:49:03 +0200
-Message-ID: <1117835343.4477.7.camel@localhost.localdomain>
+From: "nayyer zubair" <nayyerzubair@hotmail.com>
+Subject: connecting to remote network from vmware machine
+Date: Fri, 03 Jun 2005 23:49:22 -0400
+Message-ID: <BAY107-F367BEAB42917B3B523263C0F90@phx.gbl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-c-programming-owner@vger.kernel.org>
-Sender: linux-c-programming-owner@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>, Linux C Programming <linux-c-programming@vger.kernel.org>
+Content-Type: text/plain; format=flowed; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Hi all
 
-ive some trouble with getting an ali/uli sata chipset running. ive got
-the m5289 chipset but it wont work on debian linux. it works fine on
-suse 9.3 but i cant figure out wich patch they use. after testing all
-patches and the newest kernel source ive no ideas how the get it
-working. if anybody has an idea or a hint how the get it running or find
-the right patch, please let me know...
+I am in a bit of a fix. I have a VPN connection to my office's network and I 
+would like to connect to an office machine from my vmware linux virtual 
+machine.
 
-thx,
+At home I connect through the net through my cable and I have a wireless 
+router which gives me a IP address. Right now the router gives the VM 
+machine an internal IP address like 192.168.0.3. And it gives my host 
+Windows machine a similar IP like 192.168.0.2.
+
+Now from the host windows machine and with my VPN connection I can easily 
+connect to my remote office machine just by telneting into it. But I cant do 
+it from my vmware machine. Telnet just hangs.
+
+I guess the reason could be that the Linux VM doesnt see that the host 
+windows machine has a VPN connection set up, right?  Is there a way the VM 
+can detect the VPN connection?
+
+any ideas?
+
+thanks in advance
+-nayyer
 
 
-Thorsten
-                                  ,,,,,
-                                 ( o ~ )
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~.oooO~~(_)~~Oooo.~~~
-
------BEGIN GEEK CODE BLOCK-----
-Version: 3.12
-GCM d+ s-: a-- C++ UL+++ P+++ L+++ E--- W++ N* o K- w--- 
-O-- M+ V PS++ PE Y++ PGP++ t 5- X++ R tv- b++ DI D- 
-G e h+ r y+ 
-------END GEEK CODE BLOCK------
-
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
