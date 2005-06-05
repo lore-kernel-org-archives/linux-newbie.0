@@ -1,32 +1,43 @@
-From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+From: Steve Graegert <graegerts@gmail.com>
 Subject: Re: Printf and scanf
-Date: Sun, 5 Jun 2005 16:54:13 +0300
-Message-ID: <4a618d0805060506545a4337be@mail.gmail.com>
+Date: Sun, 5 Jun 2005 15:59:27 +0200
+Message-ID: <6a00c8d505060506594bb32935@mail.gmail.com>
 References: <20050605122105.1865.qmail@web52905.mail.yahoo.com>
-Reply-To: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+Reply-To: Steve Graegert <graegerts@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
-Return-path: <linux-c-programming-owner@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <20050605122105.1865.qmail@web52905.mail.yahoo.com>
 Content-Disposition: inline
-Sender: linux-c-programming-owner@vger.kernel.org
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: linux prg <linux-c-programming@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
+Cc: linux-newbie@vger.kernel.org
 
+On 6/5/05, Ankit Jain <ankitjain1580@yahoo.com> wrote:
 > hi
-> 
-> this is a simple problem which somebody asked me and i
-> am not able to solve. if somebody here can help me out
-> 
+
+Hello,
+
 > i just want to know how scanf function can be used on
 > the place of printf and vice versa
 
-Scanf reads from STDIN and printf writes into STDOUT. I do not think
-there is any way to change reading operation with writing... Of course
-some alchemy might help you :)
+Hmm, I think I do not understand your question.  Can you give an
+example of what you want to achive?
 
-I think you misinterpreted something...
+Kind Regards
 
-Arturas Moskvinas
+    \Steve
+
+--
+
+Steve Graegert <graegerts@gmail.com>
+Independent Software Consultant {C/C++ && Java && .NET}
+Mobile: +49 (176)  21 24 88 69
+Office: +49 (9131) 71 26 40 9
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
