@@ -1,22 +1,25 @@
-From: "S. Barret Dolph" <wheds8@ms66.hinet.net>
-Subject: spam
-Date: Sat, 4 Jun 2005 23:31:55 -0700
-Message-ID: <200506042331.55844.wheds8@ms66.hinet.net>
+From: Ankit Jain <ankitjain1580@yahoo.com>
+Subject: Printf and scanf
+Date: Sun, 5 Jun 2005 13:21:05 +0100 (BST)
+Message-ID: <20050605122105.1865.qmail@web52905.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-c-programming-owner@vger.kernel.org>
+Sender: linux-c-programming-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux prg <linux-c-programming@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
 
-Why is there now so much spam on this list?
+hi
 
-Cordially,
-S. Barret Dolph
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+this is a simple problem which somebody asked me and i
+am not able to solve. if somebody here can help me out
+
+i just want to know how scanf function can be used on
+the place of printf and vice versa
+
+thanks
+
+ankit
+
+Send instant messages to your online friends http://uk.messenger.yahoo.com 
