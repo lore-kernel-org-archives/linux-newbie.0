@@ -1,106 +1,47 @@
-From: "heisspf@skyinet.net" <heisspf@skyinet.net>
-Subject: Re: Can't Send Mail No Longer
-Date: Fri, 10 Jun 2005 04:28:45 -0400
-Message-ID: <180150-2200565108284535@M2W090.mail2web.com>
-Reply-To: heisspf@skyinet.net
+From: <signme@hotmail.com>
+Subject: You have signups
+Date: Mon, 13 Jun 2005 20:13:02 -0400
+Message-ID: <F683C361.4FE897E@hotmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie@vger.kernel.org
 
-Thanks Stephen!
+Would you like to get twenty (20) paid_sign_ups this
+week?
 
-Peter wrote
->
->>In March this year I got my broadband Internet connection and I could go
-on >>sending mail as before using my ISPs.
->
->> 2 weeks ago the base station for my BB was hit by lighhtening and some
->>eletronics destroyed. It took 12 days to repair and to restore my
-connection.
->
->>After this I cannot send anymore my mail with mail programs such as exmh,
->>mail, sylpheed or thunderbird. This is in 3 distros, knoppix, slackware
-and >>fedora 3. No problem using web mail such as operamail and no problem
-receiving >mail.
---snip--
+Simple process that can be repeated every week for
+52 weeks a year. Any business.
 
-Stephen wrote
+How would you like 20 sign_ups a week?
 
->If you're using sendmail, then you can set the Smart Relay Host to be
->your designated ISP SMTP server.
+Doesn't cost any more than 80USD$ and 2 hours of
+your time to get paid_sign_ups.
 
-># "Smart" relay host (may be null)
->DSmail.my-isp-name.net
+How much will you earn from 20 sign_ups each week?
+More than 80USD$ or 40GBP=A3?
 
-I entered:DSmail.skyinet.net
+We sell test packages at 80USD$ but you can buy=20
+much bigger packages once you've tested us and
+see the great results.
 
-Then I did telinit 1, telinit 3. The result is the same, mail will not go
-out.
+For more details please send an email to:
 
-If I do as you suggested
+lwood2005@tiscali.co.uk Please put
+"test20@80USD".
 
-iptables -t nat -I OUTPUT -m tcp -p tcp --dport 25 -j DNAT 
---to-destination 202.78.97.2
+Sorry if you got this email either in error or want=20
+to be taken off our list please send an email to:
 
-then there is no output.
+lwood2005@tiscali.co.uk with "notest20@80USD"
+and your details will be removed very quickly
+indeed.
 
-nslookup skyinet.net (my ISP I am sending mail)
-Server:         203.87.128.3
-Address:        203.87.128.3#53
-
-Non-authoritative answer:
-Name:   skyinet.net
-Address: 202.78.97.2
-
-and 
-
-nslookup meridian.ph (meridian the broadband connection)
-Server:         203.87.128.3
-Address:        203.87.128.3#53
-
-Name:   meridian.ph
-Address: 203.87.128.87
-
-On booting I get:
-
-dhcpcd: Your IP Address = 198.168.232.2
-
-nslookup 192.168.232.2
-Server:         203.87.128.3
-Address:        203.87.128.3#53
-
-** server can't find 2.232.168.192.in-addr.arpa: NXDOMAIN
-
-I finally got an answer from meridian, which is all:
-Quote
-try using smtp.meridian.ph as your SMTP server....  and also check 
-that you are using meridian service for the said configuration, using 
-your skyinet and ispx connection wouldn't work with our SMTP server.
-Unquote
-
-They don't touch why it had worked for 2 1/2 months.
-
-Should smtp.meridian.ph not have a login name and password. I have asked
-that and have no answer yet.
-
-I am sednding this mail with mail2web.com. It's a lot more cumbersome then
-using a MUA or just "mail" from the console.
-
-Hope we can resolve this problem. I need step by step instructions adopted
-to my cranial capacity. Have patience therefore. 
-
-Regards
-
-Peter
-
---------------------------------------------------------------------
-mail2web - Check your email from the web at
-http://mail2web.com/ .
-
+Many Thanks
+Larry
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
