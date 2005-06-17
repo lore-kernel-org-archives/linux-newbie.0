@@ -1,7 +1,8 @@
-From: <signme@hotmail.com>
-Subject: You have signups
-Date: Mon, 13 Jun 2005 20:13:02 -0400
-Message-ID: <F683C361.4FE897E@hotmail.com>
+From: <csieran@hotmail.com>
+Subject: You got signups
+Date: Fri, 17 Jun 2005 15:36:48 -0300
+Message-ID: <88D5AFBE.A0629D1@hotmail.com>
+Reply-To: <csieran@hotmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -30,13 +31,13 @@ see the great results.
 
 For more details please send an email to:
 
-lwood2005@tiscali.co.uk Please put
+morebucks05@tiscali.co.uk Please put
 "test20@80USD".
 
 Sorry if you got this email either in error or want=20
 to be taken off our list please send an email to:
 
-lwood2005@tiscali.co.uk with "notest20@80USD"
+morebucks05@tiscali.co.uk with "notest20@80USD"
 and your details will be removed very quickly
 indeed.
 
