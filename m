@@ -1,50 +1,38 @@
-From: "J." <mailing-lists@xs4all.nl>
-Subject: Re: Peculiar problem mounting a harddrive
-Date: Tue, 21 Jun 2005 14:39:25 +0200 (CEST)
-Message-ID: <Pine.LNX.4.21.0506211436310.622-100000@hestia>
-References: <4EE0CBA31942E547B99B3D4BFAB348115AB462@mail.esn.co.in>
-Reply-To: linux-newbie@vger.kernel.org
+From: James Miller <jamtat@mailsnare.net>
+Subject: xclock as screensaver?
+Date: Tue, 21 Jun 2005 09:33:41 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0506210817240.5965@localhost.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4EE0CBA31942E547B99B3D4BFAB348115AB462@mail.esn.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On Tue, 21 Jun 2005, Mukund JB. wrote:
+I like using clocks as screensavers. Under Win some years ago, I found a 
+nice digital clock with all kinds of configuration options like character 
+color, etc. Under Linux, the closest thing I found to that was xdaliclock. 
+I'd actualy prefer an analog clock though, and the only thing I've found 
+so far is some sort of morphing analog clock made up of balls that moves 
+around the screen. It's kind of hard to read. I would much prefer to use 
+the old-fashioned xclock (e.g., what you get with xclock -norender -fg 
+purple -hl purple -bg black). I was looking at something that made me 
+think it might be possible to use xset to make xclock function as a 
+screensaver at 
+http://www.penguinsecurity.net/pensec/modules.php?name=News&file=article&sid=16 
+, but my tests based on that article were unsuccessful. Likewise, I tried 
+editing ~/.xscreensaver and adding xclock as an entry, since the man page 
+seems to indicate xscreensaver can run programs. But that did not work, I 
+think because xclock doesn't accept the -root option. For xscreensaver to 
+use a program, it apparently has to be able to display on the root window.
 
-> Dear all,
-> 
-> I have a peculiar problem mounting a hard drive on the mount point
-> "/mnt/LinuxH1".
-> 
-> I have edited the /etc/fstab at as follows:-
-> 
-> 	Dev/hdb1	/home/LinuxH1	auto	defaults	0 0
+In short, I've come up empty-handed in my attempts to get the 
+old-fashioned xclock to function as a screensaver. Can anyone offer tips 
+that might lead to success? Or is it just not possible to use the 
+old-fashioned xclock as a screensaver?
 
-You made some typo's... `Dev/hdb1' should be: `/dev/hdb1' . Just like you
-are listing below in your message. That's why prob. the below works and
-the previous not.
-
-> But, I am able to mount the device with the mount command as follows
-> 
-> 	mount /dev/hdb1 /home/LinuxH1
-> 
-> Can someone suggest me what cont be the problem? Why am I not able to
-> mount the device at mount time using the fstab entry?
-> 
-> Regards,
-> Mukund Jampala
-
-If that didn't solve it, put some error messages that occur in your next
-message.
-
-Cheers..
-
-J.
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
