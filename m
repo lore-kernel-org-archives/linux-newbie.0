@@ -1,52 +1,38 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Sending Mail Problem
-Date: Tue, 21 Jun 2005 14:17:34 +0800
-Message-ID: <20050621141734.05a8f4c8@localhost>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: Peculiar problem mounting a harddrive
+Date: Tue, 21 Jun 2005 18:10:34 +0530
+Message-ID: <4EE0CBA31942E547B99B3D4BFAB348115AB462@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Dear all,
 
-As reported earlier I suddenly could not sent mail any longer with my new
-BroadBand connection using my former ISPs. It had worked well for over 2
-months.
+I have a peculiar problem mounting a hard drive on the mount point
+"/mnt/LinuxH1".
 
-After some adjustments I can send mail now with Sylpheed and Thunderbird,
-however, not with mail or exmh my 2 main mailing programs.
+I have edited the /etc/fstab at as follows:-
 
-In sylpheed and Thunderbrid I had to enter for smtp server (send)
-"smtp.meridian.ph".
+	Dev/hdb1	/home/LinuxH1	auto	defaults	0 0
 
-To use mail or exmh for sending mail where would I have to make the
-corrections? 
+But, I am able to mount the device with the mount command as follows
 
-Trying to send mail with those 2 programs they end now in the mailq.
+	mount /dev/hdb1 /home/LinuxH1
 
-mailq:
- /var/spool/mqueue (1 request)
------Q-ID-----     --Size-------Q-Time-----------------Sender/Recipient--
-j5L2cW0T001279*   9 Tue Jun 21 10:38 <heisspf@meridian.ph>                    
-                                                         <heisspf@skyinet.net>
+Can someone suggest me what cont be the problem? Why am I not able to
+mount the device at mount time using the fstab entry?
 
-tail -c 10 /var/log/maillog:
+Regards,
+Mukund Jampala
 
-Jun 21 10:42:43 localhost sm-mta[1231]: j5L2XGA6001229:
-to=<heisspf@skyinet.net>, ctladdr=<heisspf@meridian.ph> (12346/100),
-delay=00:09:27, xdelay=00:09:27, mailer=esmtp, pri=120457,
-relay=mx1.skyinet.net. [202.78.116.252], dsn=4.0.0, stat=Deferred: Connection
-timed out with mx1.skyinet.net.
 
-I am using slackware 10.1.
 
-Thanks & regards
 
-----
-Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
