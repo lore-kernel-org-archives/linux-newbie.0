@@ -1,33 +1,23 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: preserving logins
-Date: Thu, 30 Jun 2005 13:52:31 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0506301339570.5397-100000@treebeard.engin.umich.edu>
+From: Spack <spack.world@gmail.com>
+Subject: Re: preserving logins
+Date: Thu, 30 Jun 2005 14:19:47 -0400
+Message-ID: <3cb33221050630111913c42c2@mail.gmail.com>
+References: <Pine.LNX.4.44.0506301339570.5397-100000@treebeard.engin.umich.edu>
+Reply-To: Spack <spack.world@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.44.0506301339570.5397-100000@treebeard.engin.umich.edu>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hello,
-
-I have a dual-boot (windows, linux) machine that runs Redhat 9.0. There
-are two physical drives hda and hdb - the linux partition resides on hdb
-(/boot - hdb1, / - hdb2, /home - /hdb3). I plan to install debian on hda
-now (blowing away the windoze partition completely), but want to retain
-the same logins/uids/gids for all the users from the Redhat installation.  
-How can I do this?
-
-Thanks,
-
--K
-
-
---------------
-"Results! Why, man, I have gotten a lot of results. I know several thousand 
-things that won't work." - Thomas Edison
-
+I don't think it's a good idea because it's can occur some problems
+due to the different between that two distributions... It's preferable
+to have distinct files for all users but they can be in the same
+partition...
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
