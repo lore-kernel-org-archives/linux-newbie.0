@@ -1,28 +1,32 @@
-From: Angelica <headlined@dbplacements.com>
-Subject: No pills, no pumps - Its the Patch
-Date: Thu, 30 Jun 2005 17:22:10 +0200
-Message-ID: <730046057.3860729394@169-41-246-201.adsl.terra.cl>
-Mime-Version: 1.0 (Apple Message framework v728)
-Content-Transfer-Encoding: 7bit
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: preserving logins
+Date: Thu, 30 Jun 2005 13:52:31 -0400 (EDT)
+Message-ID: <Pine.LNX.4.44.0506301339570.5397-100000@treebeard.engin.umich.edu>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hey - Don't get ripped off!
-http://www.gretan.com/ss/
+Hello,
+
+I have a dual-boot (windows, linux) machine that runs Redhat 9.0. There
+are two physical drives hda and hdb - the linux partition resides on hdb
+(/boot - hdb1, / - hdb2, /home - /hdb3). I plan to install debian on hda
+now (blowing away the windoze partition completely), but want to retain
+the same logins/uids/gids for all the users from the Redhat installation.  
+How can I do this?
+
+Thanks,
+
+-K
 
 
-
-
-
-The key to immortality is first to live a life worth remembering. 
-Baseball is 90% mental, the other half is physical.    
-The truth is more important than the facts.     
-Rudeness is the weak man's imitation of strength.     
-We make our fortunes and call them fate.     
-
+--------------
+"Results! Why, man, I have gotten a lot of results. I know several thousand 
+things that won't work." - Thomas Edison
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
