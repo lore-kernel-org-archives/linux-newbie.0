@@ -1,7 +1,7 @@
 From: Peter <heisspf@skyinet.net>
 Subject: Re: What happened to "From "????
-Date: Thu, 7 Jul 2005 15:17:32 +0800
-Message-ID: <20050707151732.0900ddbf@localhost>
+Date: Thu, 7 Jul 2005 15:23:04 +0800
+Message-ID: <20050707152304.243eff4e@localhost>
 References: <20050703172347.GA485@lnx2.w8mch.ampr.org>
 	<200507050039.j650dsDq000725@meridian.ph>
 	<20050705125308.GB1109@lnx2.w8mch.ampr.org>
@@ -21,31 +21,10 @@ Cc: linux-newbie@vger.kernel.org
 On Wed, 6 Jul 2005 09:33:46 -0400
 Hal MacArgle <haltec@kvinet.com> wrote:
 
->
- 
-> 	OK another enlightenment.. /var/mail/heisspf will also be
-> mirrored, exactly, as /var/spool/mail/heisspf... But you are not
-> using that..
+Forgot to mentioned, checked in some old mail box when I used pine and surely
+there is the From_
 
-OK 
-ls -l  /var/mail -> spool/mail
-
-No, it's not used with my setup.
-
-
-> 
-> 	OK, so you've changed over to the "new" mail schemes all the
-> way.. All the queries answered with a little more knowledge, for
-> better or worse, eh?? I may have a rocky road ahead.. <grin>
-> -- 
-
-Excellent pages to learn about how to filter with procmail even for our aged
-brains:
-
-http://www.beedub.com/cgi-bin/wiki.cgi/27    ...../29
-
-
--- 
+ --- 
 Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
