@@ -1,43 +1,47 @@
-From: Greg KH <greg@kroah.com>
-Subject: Re: Problem while inserting pciehp (PCI Express Hot-plug) driver
-Date: Tue, 12 Jul 2005 15:52:25 -0700
-Message-ID: <20050712225225.GA29690@kroah.com>
-References: <1e2adab705071202015fb9aa50@mail.gmail.com>
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: oops Re: Change permissions of files to -xw +r for all other users
+Date: Wed, 13 Jul 2005 04:52:53 -0700
+Message-ID: <42D50095.7020202@bcgreen.com>
+References: <200505261844.36271.rhys@rhyshardwick.co.uk> <42A86A31.5040200@bcgreen.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1e2adab705071202015fb9aa50@mail.gmail.com>
+In-Reply-To: <42A86A31.5040200@bcgreen.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: rajatj@noida.hcltech.com
-Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org, rajatxjain@yahoo.com
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Stephen Samuel <samnospam@bcgreen.com>, rhys@rhyshardwick.co.uk, linux-newbie@vger.kernel.org
 
-On Tue, Jul 12, 2005 at 06:01:22PM +0900, Rajat Jain wrote:
-> Hi,
+Stephen Samuel wrote:
+> Rhys Hardwick wrote:
 > 
-> I'm trying to use the PCI Express Hot-Plug Controller driver
-> (pciehp.ko) with Kernel 2.6 so that I can get hot-plug events whenever
-> I add a card to my PCI Express slot.
-> 
-> I built the driver as a module, and am trying to load it manually
-> using modprobe. However, when trying to insert, I'm getting the
-> following error:
-> 
-> pciehp: acpi_pciehprm:\_SB.PCI0 _OSC fails=0x5
-> pciehp: Both _OSC and OSHP methods do not exist
-> FATAL: Error inserting pciehp
-> (/lib/modules/2.6.9-5.18AXcustom-hotplug/kernel/drivers/pci/hotplug/pciehp.ko):
-> No such device
+>> Hey there,
+>>
+>> I know this may be a case of RTM, but I am getting confused on it.
+>>
+>> I want to change the permissions of all the files in my home folder to 
+>> read only for all users but myself, but to leave directories 
+>> executable so that they can be opened.  I have had difficulty doing 
+>> this for only other users, and have ended up -xw for myself as well, 
+>> even tyring many variations of the -o tag.  Any help would be fantastic.
 
-Your bios does not support pci express hotplug.  Are you sure you have
-pci express hotplug hardware in your system?  If so, contact your bios
-vendor to get an updated version.
 
-Good luck,
+> find ~ -type f -print0 | xargs -0 chmod og=r
 
-greg k-h
+On second thought:
+Presuming that you really just want to remove write access, I'd
+try  'chmod og-w' or 'chmod og-wx'
+
+That would remove the write bit or the write and execute bits,
+but not add the read bit.  There tend to be some files in a users
+directory that you don't want readable all (like ssh private keys,
+cert files etc.)
+
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+    Powerful committed communication. Transformation touching
+      the jewel within each person and bringing it to light.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
