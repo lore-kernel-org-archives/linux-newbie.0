@@ -1,111 +1,66 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: linux kernel print to file problem
-Date: Fri, 15 Jul 2005 17:06:02 +0530
-Message-ID: <4EE0CBA31942E547B99B3D4BFAB34811610F7B@mail.esn.co.in>
+From: simon <simon.guinot@laposte.net>
+Subject: Re: linux kernel print to file problem
+Date: Sat, 16 Jul 2005 01:23:56 +0200
+Message-ID: <42D8458C.2080905@laposte.net>
+References: <4EE0CBA31942E547B99B3D4BFAB34811610F7B@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <4EE0CBA31942E547B99B3D4BFAB34811610F7B@mail.esn.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Cc: linux-newbie@vger.kernel.org
 
+hello
 
-Dear Linux-lovers.
+Mukund JB. wrote:
+> Dear Linux-lovers.
+> 
+> I am trying to build a 2.6.10 linux kernel module to print messages to a
+> file. I have done this 2.4 and I was successful but I am failing here.
+> 
+> I am using the sys_open, sys_write calls to do so.
+> I am getting a compilation warning and I find no .ko file created
+> finally instead I find an .o.ko file.
+> 
+> *** WARNIG: "sys_write" [/home/cf.o.ko] undefined!
+> Below is the module code. Please suggest me what could be the problem:-
 
-I am trying to build a 2.6.10 linux kernel module to print messages to a
-file. I have done this 2.4 and I was successful but I am failing here.
+system call are no longer export with 2.6 kernel...
+you can find syscall address in your system.map...
+if you intend to use lot of system call... you have best to find the 
+sys_call_table address...
 
-I am using the sys_open, sys_write calls to do so.
-I am getting a compilation warning and I find no .ko file created
-finally instead I find an .o.ko file.
+it can looks like :
 
-*** WARNIG: "sys_write" [/home/cf.o.ko] undefined!
-Below is the module code. Please suggest me what could be the problem:-
+#define SYS_CALL_TABLE "address_in_your_system.map"
 
+void **sys_call_table;
 
-#include <linux/kernel.h>
-#include <linux/module.h>
-#include <linux/moduleparam.h>
-#include <asm/fcntl.h>		/* for O_WRONLY */
-#include <linux/syscalls.h>	/* for sys_ functions */
-#include <asm/uaccess.h>	/* for set_fs(), get_fs() etc. */
-#include <linux/string.h>	/* for string length */
-#include <linux/slab.h>		/* for kmalloc */
-
-MODULE_LICENSE("GPL");
-/*
-#define DBG
-#define PRINTK(fmt,arg...) printk("DBG INFO <%s> | "
-fmt,__FUNCTION__,##arg)
-#else
-#define PRINTK(fmt,arg...) while(0)
-#endif
-*/
-
-typedef struct tagWRITE_TEST
-{
-	unsigned long fd;
-	unsigned long x;
-	
-}WRITE_TEST, *PWRITE_TEST;
-
-PWRITE_TEST ptest;
-
-void SysPrint(char * pString, ...)
-{
-	static char buff[1024];
-	va_list ap;
-
-	va_start(ap,pString);
-	vsprintf((char *)buff, pString, ap);
-	va_end(ap);
-	
-	sys_write(ptest->fd,(char *)buff,(size_t)strlen(buff));
-}
+int (*orig_write) (int, char *, size_t);
 
 int init_module(void)
 {
-	
-	printk("<%s> invoked!\n",__FUNCTION__);
-	printk("File Creation Testing in Kernel Module!\n");
+	[...]
 
-	set_fs(get_ds());
+	sys_call_table = (void **) SYS_CALL_TABLE;
 	
-	/* allocate the memory for structre */
-	ptest = (PWRITE_TEST)kmalloc(sizeof(WRITE_TEST),GFP_KERNEL);
-	if(ptest == NULL)
-	{
-		printk("Structure Memory Allocation Fails!\n");
-		return -ENOMEM;
-	}
+	orig_write = sys_call_table[__NR_write];
 	
-	ptest->fd = sys_open("srcdebug.txt", O_CREAT | O_WRONLY, 644);
-	if (ptest->fd == 0)
-	{
-		SysPrint("File Creation Error!!!\n");
-		return 1;
-	}
-	
-	SysPrint("File Creation Testing in Kernel Module!\n");
-	SysPrint("Srinivas Testing the File Creation\n");
-	sys_close(ptest->fd);
-	
-	return 0;
+	[...]
 }
 
-void cleanup_module(void)
-{
-	printk("Good bye!\n");
+may be there is an other problem with your example code...
+have you try to run it ?
+system call should be used with parameters coming from userspace...
 
-	/* free the allocated memory */
-	kfree(ptest);
-}
+a way to perform that : http://www.ouah.org/LKM_HACKING.html#I.4.
 
-Regards,
-Mukund jampala
+regards
 
+simon
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
