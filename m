@@ -1,50 +1,27 @@
-From: "Conway S. Smith" <beolach@comcast.net>
-Subject: Re: Fixing /etc/resolv.conf
-Date: Thu, 21 Jul 2005 01:38:50 -0600
-Message-ID: <42DF510A.7040803@comcast.net>
-References: <200507210552.j6L5qNoH000634@meridian.ph>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: using 2.6 kernel timespec nano sec?
+Date: Thu, 21 Jul 2005 15:03:09 +0530
+Message-ID: <4EE0CBA31942E547B99B3D4BFAB34811611315@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200507210552.j6L5qNoH000634@meridian.ph>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Peter H." <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+Dear all,
 
-Peter H. wrote:
-> Hi,
-> 
-> In slackware the file /etc/resolv.conf is updated on every reboot.
-> 
-> How can I stop that? I tried chattr +i and chmod -w w/o success.
-> 
-> The reason is that the nameserver address which is put into the file on every 
-> reboot is not the the one I am supposed to use according to the advise from my 
-> broadband ISP.
-> 
-> Thanks & regards
+I have timing issue in my code powering up my socket device.
+I want use the current_kernel_time() and wait in terms of nano seconds.
+The tv_nsec (nano) of timespec structure will be overflowing every
+second. 
+So, how do I handle it?
 
+Regards,
+Mukund Jampala
 
-Most likely /etc/resolv.conf is being overwritten by the DHCP client
-every time you reboot.  In Slackware, edit /etc/rc.d/rc.inet1 so that
-when it runs dhcpcd it uses the option -R, which will prevent dhcpcd
-from replacing the existing /etc/resolv.conf.
-
-Good luck,
-Conway S. Smith
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-Comment: Using GnuPG with Mozilla - http://enigmail.mozdev.org
-
-iD8DBQFC31EIGL3AU+cCPDERAj7yAJ9kbxVaLo9PSJlMlg7ra5m3CQVZZACg7afv
-2cFV+FhRQLMUHX+GTLI0+4c=
-=wx/F
------END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
