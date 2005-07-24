@@ -1,7 +1,7 @@
 From: Peter <heisspf@skyinet.net>
 Subject: Re: Fixing /etc/resolv.conf
-Date: Sat, 23 Jul 2005 14:21:00 +0800
-Message-ID: <20050723142100.3112f92d@localhost>
+Date: Sun, 24 Jul 2005 09:55:38 +0800
+Message-ID: <20050724095538.0b68f61b@localhost>
 References: <200507210552.j6L5qNoH000634@meridian.ph>
 	<42DF510A.7040803@comcast.net>
 	<20050722090537.7e40d277@localhost>
@@ -16,61 +16,19 @@ Content-Type: text/plain; charset="us-ascii"
 To: pa3gcu@zeelandnet.nl
 Cc: linux-newbie@vger.kernel.org
 
-On Fri, 22 Jul 2005 16:25:13 +0200
-Richard Adams <pa3gcu@zeelandnet.nl> wrote:
+Correction
 
-> On Friday 22 July 2005 03:05, Peter wrote:
-> > On Thu, 21 Jul 2005 01:38:50 -0600
+> "Conway S. Smith" <beolach@comcast.net> wrote:
+> > Most likely /etc/resolv.conf is being overwritten by the DHCP client
+> > every time you reboot.  In Slackware, edit /etc/rc.d/rc.inet1 so that
+> > when it runs dhcpcd it uses the option -R, which will prevent dhcpcd
+> > from replacing the existing /etc/resolv.conf.
+>
+> Thanks! It does not work.
 
-> > > Peter H. wrote:
-> > > > Hi,
-> > > >
-> > > > In slackware the file /etc/resolv.conf is updated on every reboot.
-> > > >
-> > > > How can I stop that? I tried chattr +i and chmod -w w/o success.
-> > > >
-> > > > The reason is that the nameserver address which is put into the file
-on
-> >
-> > every
-> >
-> > > > reboot is not the the one I am supposed to use according to the advise
-> > > >from my  broadband ISP.
+It does work now! Can't understand why it did not work when I first tried it.
 
-> > >
-> > > Most likely /etc/resolv.conf is being overwritten by the DHCP client
-> > > every time you reboot.  In Slackware, edit /etc/rc.d/rc.inet1 so that
-> > > when it runs dhcpcd it uses the option -R, which will prevent dhcpcd
-> > > from replacing the existing /etc/resolv.conf.
-> >
-> > Thanks! It does not work.
-> 
-> When i tryed that option a while ago it worked for me, however you can
-always 
-> do things in many different ways with linux, simply make a copy 
-> of /etc/resolv.conf and edit it to your needs and rename it something like 
-> resolv.good.
-> Now place the following in your /etc/rc.d/rc.local file
-> 
-> cp /etc/resolv.good /etc/resolv.conf
-
-That's what I did. May be I put the -R on the wrong place. I put it at
-
- eth${1}" | $LOGGER
-          /sbin/dhcpcd -d -R -t 10 -h
-
-> 
-> I ask myself why you get the wrong info everytime from your dhcp server tho.
-> Surely its better to solve the problem at the root instead of working around
-> it.
-
-I approached the ISP and was told they will have it fixed coming week.
-
-> Regards Richard.
-> 
-
-Regards
--- 
+--------
 Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
