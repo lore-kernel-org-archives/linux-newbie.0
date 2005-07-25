@@ -1,35 +1,58 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Fixing /etc/resolv.conf
-Date: Sun, 24 Jul 2005 09:55:38 +0800
-Message-ID: <20050724095538.0b68f61b@localhost>
-References: <200507210552.j6L5qNoH000634@meridian.ph>
-	<42DF510A.7040803@comcast.net>
-	<20050722090537.7e40d277@localhost>
-	<200507221625.13687.pa3gcu@zeelandnet.nl>
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: Incorrect driver getting loaded for Qlogic FC-HBA
+Date: Mon, 25 Jul 2005 11:02:39 +0900
+Message-ID: <b115cb5f0507241902653b6f72@mail.gmail.com>
+Reply-To: Rajat Jain <rajat.noida.india@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200507221625.13687.pa3gcu@zeelandnet.nl>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: pa3gcu@zeelandnet.nl
-Cc: linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, rajat.noida.india@gmail.com
 
-Correction
+Hi,
 
-> "Conway S. Smith" <beolach@comcast.net> wrote:
-> > Most likely /etc/resolv.conf is being overwritten by the DHCP client
-> > every time you reboot.  In Slackware, edit /etc/rc.d/rc.inet1 so that
-> > when it runs dhcpcd it uses the option -R, which will prevent dhcpcd
-> > from replacing the existing /etc/resolv.conf.
->
-> Thanks! It does not work.
+I do not know which list to put this problem on. And hence ...
 
-It does work now! Can't understand why it did not work when I first tried it.
+I'm using Kernel 2.6.9 and am having a Qlogic QLE2362 FC-HBA in my
+system. I selected all the Qlogic SCSI drivers while buiding the
+kernel. Now the problem is that every time I reboot, I have to
+MANUALLY modprobe the qla2322.ko module in the kernel and only then my
+HBA works. By default, the kernel loads qla2300.ko, which is not the
+correct driver for the card, and hence the HBA does not work. Here is
+the lspci output:
 
---------
-Peter
+-----------------------------------------------------------------
+0d:07.1 Fibre Channel: QLogic Corp.: Unknown device 2322 (rev 03)
+	Subsystem: QLogic Corp.: Unknown device 0118
+	Flags: bus master, 66Mhz, medium devsel, latency 128, IRQ 185
+	I/O ports at 6400 [size=256]
+	Memory at d0401000 (64-bit, non-prefetchable) [size=4K]
+	Capabilities: [44] Power Management version 2
+	Capabilities: [4c] PCI-X non-bridge device.
+	Capabilities: [54] Message Signalled Interrupts: 64bit+ Queue=0/3 Enable-
+-------------------------------------------------------------------
+
+Here is the relevant extract from modules.pcimap:
+-------------------------------------------------------------------
+#module  vendor     device     subvendor  subdevice  class     
+class_mask driver_data
+qla2300  0x00001077 0x00002300 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+qla2300  0x00001077 0x00002312 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+qla2322  0x00001077 0x00002322 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+-------------------------------------------------------------------
+
+As can be seen from above, qla2322 is the correct driver for device
+2322 (My QLE2362 HBA has a device no 2322, as seen in lspci output).
+But for some reason the kernel always loads qla2300 instead on
+qla2322. I even tried putting the "qla2322" line on top of the two
+"qla2300" lines in the modules.pcimap file. But with no result.
+
+TIA,
+
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
