@@ -1,8 +1,7 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Gxine in Mozilla & Co.
-Date: Mon, 25 Jul 2005 16:24:31 +0800
-Message-ID: <20050725162431.756e3544@localhost>
-Reply-To: heisspf@skyinet.net
+From: David <shawinbox@yahoo.com>
+Subject: using cygwin to compile Lunix source on Windows
+Date: Mon, 25 Jul 2005 22:04:07 +0000 (UTC)
+Message-ID: <loom.20050726T000352-607@post.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,27 +10,24 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+I got a bunch compilation errors on NT headers files when building Linux 
+sources and included the cygwin header files to the path in MS Studio .NET.  
+If I received the header path inclusion, then there are no errrors, but I am 
+left with errors on Linux POSIX specific calls.  I could use some advice as to 
+how to using cygwin without running into these errors when compiling with 
+nmake in Windows XP.  
 
-Lately mozilla, netscape and firefox open by default gxine to play music or
-video which unfortunately does not work giving errors about missing plugins
-and if not that will buffer for ever.
+Source:
+Compiled under Linux g++ version 3.2
 
-I then have to go through several steps to open with either realplayer or
-totem.
+Created a project with MS Studio .NET and tyring to compile using nmake.
 
-Where do I change the default settings to either realplayer or totem. I can't
-find it in the preference settings of those browsers.
+In preprocessor, included c:\cygwin\usr\include -> got bunch of errors in 
+windows header file
+remove the above include -> got errors in pthread and PATH_MAX
 
-I noticed as well that the BBC Radio Player does not open anymore instead will
-try gxine.
+-- David
 
-Lately above could mean after upgrading in slackware 10.1 to
-dropline-gnome-2.20.2.
-
-Thanks & regards
--- 
-Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
