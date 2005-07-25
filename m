@@ -1,60 +1,86 @@
-From: Rajat Jain <rajat.noida.india@gmail.com>
-Subject: Incorrect driver getting loaded for Qlogic FC-HBA
-Date: Mon, 25 Jul 2005 11:02:39 +0900
-Message-ID: <b115cb5f0507241902653b6f72@mail.gmail.com>
-Reply-To: Rajat Jain <rajat.noida.india@gmail.com>
+From: Rajat Jain <rajat.noida.india-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Re: Problem while inserting pciehp (PCI Express Hot-plug) driver
+Date: Mon, 25 Jul 2005 11:49:22 +0900
+Message-ID: <b115cb5f0507241949da02aa7@mail.gmail.com>
+References: <20050725021747.67869.qmail@web34405.mail.mud.yahoo.com>
+Reply-To: Rajat Jain <rajat.noida.india-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+In-Reply-To: <20050725021747.67869.qmail-6mNr3ekj/EivuULXzWHTWIglqE1Y4D90QQ4Iyu8u01E@public.gmane.org>
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+Errors-To: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+List-Unsubscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=unsubscribe>
 List-Id: <linux-newbie.vger.kernel.org>
+List-Post: <mailto:acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+List-Help: <mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=subscribe>
+List-Archive: <http://sourceforge.net/mailarchive/forum.php?forum=acpi-devel>
 Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, rajat.noida.india@gmail.com
+To: rajat.noida.india-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, greg-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-hotplug-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, dkumar-QByN7dn/BetQWC9lL0RKGQC/G2K4zDHf@public.gmane.org
 
-Hi,
+> On Tue, Jul 12, 2005 at 06:01:22PM +0900, Rajat Jain
+> wrote:
+>
+> > Hi,
+> >=20
+> > I'm trying to use the PCI Express Hot-Plug Controller driver
+> > (pciehp.ko) with Kernel 2.6 so that I can get hot-plug events=20
+> > whenever I add a card to my PCI Express slot.
+> >=20
+> > I built the driver as a module, and am trying to load it=20
+> > manually using modprobe. However, when trying to insert,
+> > I'm getting the following error:
+> >
+> > pciehp: acpi_pciehprm:\_SB.PCI0 _OSC fails=3D0x5
+> > pciehp: Both _OSC and OSHP methods do not exist
+> > FATAL: Error inserting pciehp
+> >
+> > (/lib/modules/2.6.9-5.18AXcustom-hotplug/kernel/drivers/pci/hotplug/pci=
+ehp.ko):
+> > No such device
+> >
 
-I do not know which list to put this problem on. And hence ...
+> --- Greg KH <greg-U8xfFu+wG4EAvxtiuMwx3w@public.gmane.org> wrote:
+> Your bios does not support pci express hotplug.  Are
+> you sure you have pci express hotplug hardware in your
+> system?  If so, contact your bios vendor to get an=20
+> updated version.
+>=20
+> Good luck,
+>=20
+>  greg k-h
 
-I'm using Kernel 2.6.9 and am having a Qlogic QLE2362 FC-HBA in my
-system. I selected all the Qlogic SCSI drivers while buiding the
-kernel. Now the problem is that every time I reboot, I have to
-MANUALLY modprobe the qla2322.ko module in the kernel and only then my
-HBA works. By default, the kernel loads qla2300.ko, which is not the
-correct driver for the card, and hence the HBA does not work. Here is
-the lspci output:
+Thanks for replying Greg. I checked again, I have the hardware in my
+system. I asked the vendor for bios update, but he says mine is the
+latest version.
 
------------------------------------------------------------------
-0d:07.1 Fibre Channel: QLogic Corp.: Unknown device 2322 (rev 03)
-	Subsystem: QLogic Corp.: Unknown device 0118
-	Flags: bus master, 66Mhz, medium devsel, latency 128, IRQ 185
-	I/O ports at 6400 [size=256]
-	Memory at d0401000 (64-bit, non-prefetchable) [size=4K]
-	Capabilities: [44] Power Management version 2
-	Capabilities: [4c] PCI-X non-bridge device.
-	Capabilities: [54] Message Signalled Interrupts: 64bit+ Queue=0/3 Enable-
--------------------------------------------------------------------
+I downloaded the Intel "iasl" compiler
+(http://developer.intel.com/technology/iapc/acpi/downloads.htm),  and
+used it to decompile "/proc/acpi/dsdt" file (in AML) to its equivalent
+ACPI source code. I could not find the _OSC and OSHP control methods
+there. Is this information sufficient enough to deduce that I need a
+BIOS update? And the hardware is OK but the problem is with the bios?
 
-Here is the relevant extract from modules.pcimap:
--------------------------------------------------------------------
-#module  vendor     device     subvendor  subdevice  class     
-class_mask driver_data
-qla2300  0x00001077 0x00002300 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
-qla2300  0x00001077 0x00002312 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
-qla2322  0x00001077 0x00002322 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
--------------------------------------------------------------------
+Just out of curosity, I would appreciate if you could provide me
+pointers to OSHP and _OSC methods. What exactly do they mean? Does
+every hardware containing a hot-plug controller necessarily has to
+implement them both? I checked with ACPI Specs but it contains no
+refrence to "OSHP" method.
 
-As can be seen from above, qla2322 is the correct driver for device
-2322 (My QLE2362 HBA has a device no 2322, as seen in lspci output).
-But for some reason the kernel always loads qla2300 instead on
-qla2322. I even tried putting the "qla2322" line on top of the two
-"qla2300" lines in the modules.pcimap file. But with no result.
+Any pointers are more than appreciated,
 
 TIA,
 
 Rajat
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
+
+-------------------------------------------------------
+SF.Net email is sponsored by: Discover Easy Linux Migration Strategies
+from IBM. Find simple to follow Roadmaps, straightforward articles,
+informative Webcasts and more! Get everything you need to get up to
+speed, fast. http://ads.osdn.com/?ad_id=7477&alloc_id=16492&op=click
