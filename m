@@ -1,34 +1,24 @@
-From: Greg KH <greg@kroah.com>
-Subject: Re: Incorrect driver getting loaded for Qlogic FC-HBA
-Date: Mon, 25 Jul 2005 17:06:00 -0700
-Message-ID: <20050726000600.GB23858@kroah.com>
-References: <b115cb5f0507241902653b6f72@mail.gmail.com>
+From: David <shawinbox@yahoo.com>
+Subject: /cygdrive/c/cygwin/bin/g++: not found
+Date: Tue, 26 Jul 2005 01:17:15 +0000 (UTC)
+Message-ID: <loom.20050726T031517-72@post.gmane.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <b115cb5f0507241902653b6f72@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Mon, Jul 25, 2005 at 11:02:39AM +0900, Rajat Jain wrote:
-> I'm using Kernel 2.6.9 and am having a Qlogic QLE2362 FC-HBA in my
-> system. I selected all the Qlogic SCSI drivers while buiding the
-> kernel. Now the problem is that every time I reboot, I have to
-> MANUALLY modprobe the qla2322.ko module in the kernel and only then my
-> HBA works. By default, the kernel loads qla2300.ko, which is not the
-> correct driver for the card, and hence the HBA does not work. Here is
-> the lspci output:
+I build some C++ source from the cygwin shell and received 
+(/cygdrive/c/cygwin/bin/g++: not found) when executing make (-f Makefile).  
+However, if I copy the whole line (as produced by the Makefile), it will run.  
+I verified that g++ is there.  Any idea?
 
-"by default" the kernel does not load any modules.  That's up to the
-hotplug system, or some other package.
+Thanks,
 
-thanks,
+David 
 
-greg k-h
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
