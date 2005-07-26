@@ -1,57 +1,73 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Gxine in Mozilla & Co.
-Date: Tue, 26 Jul 2005 11:56:27 +0800
-Message-ID: <20050726115627.33982c0b@localhost>
-References: <20050725162431.756e3544@localhost>
-Reply-To: heisspf@skyinet.net
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: Re: Incorrect driver getting loaded for Qlogic FC-HBA
+Date: Tue, 26 Jul 2005 13:16:02 +0900
+Message-ID: <b115cb5f050725211615cfab78@mail.gmail.com>
+References: <b115cb5f0507241902653b6f72@mail.gmail.com>
+	 <20050726000600.GB23858@kroah.com>
+Reply-To: Rajat Jain <rajat.noida.india@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050725162431.756e3544@localhost>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-scsi-owner@vger.kernel.org>
+In-Reply-To: <20050726000600.GB23858@kroah.com>
+Content-Disposition: inline
+Sender: linux-scsi-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Greg KH <greg@kroah.com>
+Cc: kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-On Mon, 25 Jul 2005 16:24:31 +0800
-Peter <heisspf@skyinet.net> wrote:
-
-> Hi,
+On 7/26/05, Greg KH <greg@kroah.com> wrote:
+> On Mon, Jul 25, 2005 at 11:02:39AM +0900, Rajat Jain wrote:
+> > I'm using Kernel 2.6.9 and am having a Qlogic QLE2362 FC-HBA in my
+> > system. I selected all the Qlogic SCSI drivers while buiding the
+> > kernel. Now the problem is that every time I reboot, I have to
+> > MANUALLY modprobe the qla2322.ko module in the kernel and only then my
+> > HBA works. By default, the kernel loads qla2300.ko, which is not the
+> > correct driver for the card, and hence the HBA does not work. Here is
+> > the lspci output:
 > 
-> Lately mozilla, netscape and firefox open by default gxine to play music or
-> video which unfortunately does not work giving errors about missing
-> libraries and if not  will buffer for ever.
+> "by default" the kernel does not load any modules.  That's up to the
+> hotplug system, or some other package.
 > 
-> I then have to go through several steps to open with either realplayer or
-> totem.
+> thanks,
 > 
-> Where do I change the default settings to either realplayer or totem. I
-> can't find it in the preference settings of those browsers.
+> greg k-h
 > 
-> I noticed as well that the BBC Radio Player does not open anymore instead
-> will try gxine.
-> 
-> Lately above could mean after upgrading in slackware 10.1 to
-> dropline-gnome-2.20.2.
-> 
-> Thanks & regards
 
-I found the answer. First I installed the latest realplayer10. Then in
-mozilla in Preferences>Navigator>Helper-Applications I had to do the settings
-to point for video to ~/Realplayer/realplay
+Thanks. I just checked .. that is right. So let me put it this way.
+When ever I hot-plug my HBA into the system, the driver "qla2300" gets
+loaded. Where as the correct driver is "qla2322". This evident from
+the output of "modules.pcimap" file and "lspci". The PCI device number
+of HBA is 2322. and in modules.pcimap file, qla2322 is supposed to be
+loaded when this HBA is hot-plugged. But module qla2300 is getting
+loaded.
 
-This then will do the settings as well for netscape and firefox where
-strangely I cannot find such helper-application. After this the BBC Radio
-Player works again.
+Any pointers on where could the problem be? Or how should I approach
+this problem?
 
-Does it say anywhere settings for netscpe or firefox have to be done in
-mozilla? I have not looked for it.
+Thanks a lot.
 
+Rajat
 
--- 
-Peter
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+PS: For reference I am attaching the modules.pcimap file and lspci
+output here again:
+
+-----------------------------------------------------------------
+0d:07.1 Fibre Channel: QLogic Corp.: Unknown device 2322 (rev 03)
+       Subsystem: QLogic Corp.: Unknown device 0118
+       Flags: bus master, 66Mhz, medium devsel, latency 128, IRQ 185
+       I/O ports at 6400 [size=256]
+       Memory at d0401000 (64-bit, non-prefetchable) [size=4K]
+       Capabilities: [44] Power Management version 2
+       Capabilities: [4c] PCI-X non-bridge device.
+       Capabilities: [54] Message Signalled Interrupts: 64bit+ Queue=0/3 Enable-
+-------------------------------------------------------------------
+
+Here is the relevant extract from modules.pcimap:
+-------------------------------------------------------------------
+#module  vendor     device     subvendor  subdevice  class  
+class_mask driver_data
+qla2300  0x00001077 0x00002300 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+qla2300  0x00001077 0x00002312 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+qla2322  0x00001077 0x00002322 0xffffffff 0xffffffff 0x00000000 0x00000000 0x0
+-------------------------------------------------------------------
