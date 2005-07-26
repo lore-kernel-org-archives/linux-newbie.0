@@ -1,33 +1,34 @@
-From: David <shawinbox@yahoo.com>
-Subject: using cygwin to compile Lunix source on Windows
-Date: Mon, 25 Jul 2005 22:04:07 +0000 (UTC)
-Message-ID: <loom.20050726T000352-607@post.gmane.org>
+From: Greg KH <greg@kroah.com>
+Subject: Re: Incorrect driver getting loaded for Qlogic FC-HBA
+Date: Mon, 25 Jul 2005 17:06:00 -0700
+Message-ID: <20050726000600.GB23858@kroah.com>
+References: <b115cb5f0507241902653b6f72@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <b115cb5f0507241902653b6f72@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-I got a bunch compilation errors on NT headers files when building Linux 
-sources and included the cygwin header files to the path in MS Studio .NET.  
-If I received the header path inclusion, then there are no errrors, but I am 
-left with errors on Linux POSIX specific calls.  I could use some advice as to 
-how to using cygwin without running into these errors when compiling with 
-nmake in Windows XP.  
+On Mon, Jul 25, 2005 at 11:02:39AM +0900, Rajat Jain wrote:
+> I'm using Kernel 2.6.9 and am having a Qlogic QLE2362 FC-HBA in my
+> system. I selected all the Qlogic SCSI drivers while buiding the
+> kernel. Now the problem is that every time I reboot, I have to
+> MANUALLY modprobe the qla2322.ko module in the kernel and only then my
+> HBA works. By default, the kernel loads qla2300.ko, which is not the
+> correct driver for the card, and hence the HBA does not work. Here is
+> the lspci output:
 
-Source:
-Compiled under Linux g++ version 3.2
+"by default" the kernel does not load any modules.  That's up to the
+hotplug system, or some other package.
 
-Created a project with MS Studio .NET and tyring to compile using nmake.
+thanks,
 
-In preprocessor, included c:\cygwin\usr\include -> got bunch of errors in 
-windows header file
-remove the above include -> got errors in pthread and PATH_MAX
-
--- David
-
+greg k-h
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
