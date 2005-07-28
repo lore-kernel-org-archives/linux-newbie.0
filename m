@@ -1,78 +1,65 @@
 From: Rajat Jain <rajat.noida.india@gmail.com>
-Subject: Re: Incorrect driver getting loaded for Qlogic FC-HBA
-Date: Thu, 28 Jul 2005 19:36:15 +0900
-Message-ID: <b115cb5f050728033662fb288a@mail.gmail.com>
-References: <b115cb5f0507241902653b6f72@mail.gmail.com>
-	 <20050726000600.GB23858@kroah.com>
-	 <b115cb5f050725211615cfab78@mail.gmail.com>
-	 <20050726155253.GB8462@plap.qlogic.org>
-	 <b115cb5f05072623016a713629@mail.gmail.com>
-	 <20050727181135.GI7114@plap.qlogic.org>
+Subject: Re: Re: Problem while inserting pciehp (PCI Express Hot-plug) driver
+Date: Thu, 28 Jul 2005 19:45:49 +0900
+Message-ID: <b115cb5f05072803451836055c@mail.gmail.com>
+References: <20050725021747.67869.qmail@web34405.mail.mud.yahoo.com>
+	 <b115cb5f0507241949da02aa7@mail.gmail.com>
+	 <512afbf905072711295f87ad24@mail.gmail.com>
 Reply-To: Rajat Jain <rajat.noida.india@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050727181135.GI7114@plap.qlogic.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-hotplug-devel-admin@lists.sourceforge.net>
+In-Reply-To: <512afbf905072711295f87ad24@mail.gmail.com>
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: linux-hotplug-devel-admin@lists.sourceforge.net
+Errors-To: linux-hotplug-devel-admin@lists.sourceforge.net
+List-Unsubscribe: <https://lists.sourceforge.net/lists/listinfo/linux-hotplug-devel>,
+	<mailto:linux-hotplug-devel-request@lists.sourceforge.net?subject=unsubscribe>
 List-Id: <linux-newbie.vger.kernel.org>
+List-Post: <mailto:linux-hotplug-devel@lists.sourceforge.net>
+List-Help: <mailto:linux-hotplug-devel-request@lists.sourceforge.net?subject=help>
+List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/linux-hotplug-devel>,
+	<mailto:linux-hotplug-devel-request@lists.sourceforge.net?subject=subscribe>
+List-Archive: <http://sourceforge.net/mailarchive/forum.php?forum=linux-hotplug-devel>
 Content-Type: text/plain; charset="us-ascii"
-To: Andrew Vasquez <andrew.vasquez@qlogic.com>
-Cc: Greg KH <greg@kroah.com>, kernelnewbies@nl.linux.org, linux-scsi@vger.kernel.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Kristen Accardi <kristen.kml@gmail.com>
+Cc: greg@kroah.com, linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org, acpi-devel@lists.sourceforge.net, linux-hotplug-devel@lists.sourceforge.net, dkumar@noida.hcltech.com
 
-> > > A similar problem was noted with RHEL4, it seems the modules.pcimap
-> > > and pci.ids file were correct, but the pcitable file contained entries
-> > > for all ql[ae]23xx based HBAs to load qla2300.ko.
-> > >
-> > > It's my understanding that this was fixed for RHEL4 U1.  Which distro
-> > > are you using?  If you are using RHEL, and are still having problems,
-> > > I'd suggest you file a report with Redhat.
-> > >
-> > > Regards,
-> > > Andrew Vasquez
-> > >
-> >
-> > BINGO! I AM using RHEL 4. So does that mean I can rectify the problem
-> > by making appropriate changes to "pcitable" file?
-> 
-> I'm trying to get a firm answer from the folks who originally
-> discvoered the problem some time back, it seems you have two options:
+>=20
+> Hi Rajat, you can learn more about the OSHP method by reading the PCI
+> express spec.  It is used to tell an ACPI bios that the OS will be
+> handling the hotplug events natively.  It may be that your BIOS does
+> not allow native hotplug for pcie, in which case you need to be using
+> the acpiphp driver instead of the pciehp driver.  You could just try
+> modprobing acpiphp and see if this will handle the hotplug events.  A
+> recent version of lspci (which understands pcie) will tell you as well
+> if pcie hotplug capability is supported (lspci -vv).
+>=20
 
-Hey Thanks. I would really appreciate if you could update list/me on
-it IF you get any updates (I know its too much pain).
+Okay. I'm sorry but I'm not very clear with this. I'm just putting
+down here my understanding. So basically we have two mutually
+EXCLUSIVE hotplug drivers I can use for PCI Express:
 
+1) "pciehp.ko" : We use this PCIE HP driver when our BIOS supports
+Native Hot-plug for PCI Express (which means that hot-plug will be
+handled by OS single handedly).
 
->  - (post installation) modify the /etc/modprobe.conf to and rename the
->   qla2300 entry to qla2322 (i.e.):
-> 
->        alias scsi_hostadapter1 qla2322
-> 
->   modify the modules.pcimap table to load qla2322 for the 2322
->   device-id:
-> 
->        qla2300         0x00001077      0x00002322      ...
-> 
->   to:
-> 
->        qla2322         0x00001077      0x00002322      ...
-> 
-> 
-> Beyond that, I'd suggest you log a report with Redhat, as that's the
-> extent of the workaround knowledge without going to RHEL4U1.
-> 
-> Hope this helps,
-> Andrew Vasquez
-> 
+2) "acpiphp.ko" : We use this "generic" ACPI HP driver when BIOS
+allows only ITSELF to handle hot-plug events.
 
-THANKS. It worked for me, for time being. 
-In the mean time, I plan to file  report with RedHat and will update
-list as and when I get any response.
+Is my understanding correct? I would appreciate if you could help me
+gain a grip on this.
 
-regards,
+Thanks a lot for the useful info you gave. Provided me with a new
+direction to work on.
+
+Regards,
 
 Rajat
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
+
+-------------------------------------------------------
+SF.Net email is Sponsored by the Better Software Conference & EXPO September
+19-22, 2005 * San Francisco, CA * Development Lifecycle Practices
+Agile & Plan-Driven Development * Managing Projects & Teams * Testing & QA
+Security * Process Improvement & Measurement * http://www.sqe.com/bsce5sf
