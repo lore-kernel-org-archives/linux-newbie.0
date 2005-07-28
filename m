@@ -1,7 +1,7 @@
 From: rekha vn <vidiyala_r@yahoo.com>
 Subject: mount problem
-Date: Thu, 28 Jul 2005 02:34:26 -0700 (PDT)
-Message-ID: <20050728093426.29629.qmail@web40629.mail.yahoo.com>
+Date: Thu, 28 Jul 2005 03:20:58 -0700 (PDT)
+Message-ID: <20050728102058.83858.qmail@web40611.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,16 +10,11 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org, rahul_deelwal@yahoo.com
 
-thanks for the mail.
-i've done the foll:
+i'm getting the same error for both the commands.
+fs type /dev/hda1 not supported by kernel
+fs type /dev/hda5 not supported by kernel
 
-1. mkdir /winD
-2. mount vfat -t /dev/hda2 /winD 
-
-the response was:
-mount: fs type /dev/hda2 not supported by kernel
-
-my kernel version is 2.4.21-4
+any problem with the kernel settings?
 
 
 		
