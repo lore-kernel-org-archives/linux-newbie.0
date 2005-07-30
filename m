@@ -1,42 +1,65 @@
-From: rekha vn <vidiyala_r@yahoo.com>
-Subject: Re: kernel version problem
-Date: Sat, 30 Jul 2005 05:50:13 -0700 (PDT)
-Message-ID: <20050730125013.84096.qmail@web40608.mail.yahoo.com>
-References: <4a618d080507300336460644fc@mail.gmail.com>
+From: kylin <fierykylin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: Re: Problem while inserting pciehp (PCI Express Hot-plug) driver
+Date: Sun, 31 Jul 2005 00:20:30 +0800
+Message-ID: <87ab37ab0507300920570b0ea6@mail.gmail.com>
+Reply-To: kylin <fierykylin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4a618d080507300336460644fc@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: quoted-printable
+Return-path: <acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+Content-Disposition: inline
+Sender: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+Errors-To: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+List-Unsubscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=unsubscribe>
 List-Id: <linux-newbie.vger.kernel.org>
+List-Post: <mailto:acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+List-Help: <mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=subscribe>
+List-Archive: <http://sourceforge.net/mailarchive/forum.php?forum=acpi-devel>
 Content-Type: text/plain; charset="us-ascii"
-To: arturas.moskvinas@gmail.com, borad.gautam@gmail.com
-Cc: linux-newbie@vger.kernel.org
+To: rajesh.shah-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-hotplug-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, dkumar-QByN7dn/BetQWC9lL0RKGQC/G2K4zDHf@public.gmane.org
 
-i've tried both the methods:
+n the latest update of the Intel's E7520 MCH,the very NOTFIX entry
+caught my eye:
+//////////////////////
+PCI Express Hot-Plug MSI interrupt issue
+////////////////////
+Problem:
+During a link down state, the MCH will not send MSI interrupts to the
+front side bus. In general
+MSI messages need not be delivered when the link is down, but in the
+event that MSI interrupt routing is used on Hot-Plug events, the
+processor will wait indefinitely for this interrupt. Waiting for
+command complete interrupts is a normal part of the steps in the
+orderly removal process, and link down will occur at the point that
+power is removed from the slot. Subsequent accesses to the slot
+control register to update indicators and power control will not
+generate the expected MSI interrupts from the MCH until slot power is
+restored, and the link is back up.
+Implication:
+Hot-Plug software written to wait for command complete interrupts will
+hang in MSI interrupt mode.
+Workaround:
+Run in either of the other two interrupt modes (the "legacy" method
+using the MCHGPE# to signal
+hot-plug interrupts to the ICH or "native" interrupt mode using PCI
+interrupts (INTA#)).
+Alternatively in MSI mode, software may poll for command complete
+rather than wait for MSI, or implement the command complete timeout to
+continue to the next slot control update rather than repeat the
+current slot control update
+I wonder if i can workaround the MSI using the polling way on the
+server geared by E7520 and the firmware with no OSC implemented
 
-1.modprobe --force ./hello.o
-2.-I in gcc (/usr/src/linux/include)
 
-i'm getting "kernel will get tainted" warnings.
-
-anyother better way?
-In my /usr/src/ I have two folders one as LINUX and
-also LINUX2.4.21-4.EL
-how is it possible?
-moreover, the LINUX folder has an arrow symbol over
-it?what does that mean?
+--=20
+we who r about to die,salute u!
 
 
-
-		
-__________________________________ 
-Yahoo! Mail 
-Stay connected, organized, and protected. Take the tour: 
-http://tour.mail.yahoo.com/mailtour.html 
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+-------------------------------------------------------
+SF.Net email is sponsored by: Discover Easy Linux Migration Strategies
+from IBM. Find simple to follow Roadmaps, straightforward articles,
+informative Webcasts and more! Get everything you need to get up to
+speed, fast. http://ads.osdn.com/?ad_id=7477&alloc_id=16492&op=click
