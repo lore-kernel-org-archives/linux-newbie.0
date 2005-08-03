@@ -1,7 +1,7 @@
-From: Md Shanto <shanto76@gmail.com>
-Subject: Starting "Script" when user logs on.
-Date: Wed, 3 Aug 2005 16:34:52 +0600
-Message-ID: <b30595cd050803033433db70e9@mail.gmail.com>
+From: jampala-baba <mukundjster@gmail.com>
+Subject: Running script on 2.6 fails
+Date: Wed, 3 Aug 2005 18:45:11 +0530
+Message-ID: <9bf1cee10508030615508b44f@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,32 +10,27 @@ Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
+Cc: mukundjb@esntechnologies.co.in
 
-Hi all,
+Dear all,
 
-I am trying to force "script" for logging all text I/O activities at
-the moment user logs in. Most of the users are running bash at this
-moment.
+I am right now working on understaning the 2.6 kernel BLOCK sbull
+drivers implementation provided in the Linux book 3rd Edition book.
 
-Initially I tired with "ttyrec" a tty recorder and failed, as it says
-"Out of pty's - Terminated". Now, I tried something like below:
+I am OK with the block driver aspects. But, I am NOT able to run
+sbull_load scruipt to create the device NODES.
+when I tried running the script, i failed saying
 
-------------------
-#!/bin/bash -l
-USER=`whoami`
-LOGTIME=`date +%Y-%m-%d-%H:%M:%S`
-/usr/bin/script -q /var/log/commlog/$USER-$LOGTIME
-------------------
+# sh sbull_load
+: command not found
+' bull_load: line 4: syntax error near unexpected token '{
+' bull_load: line 4: '{
 
-and assigning this script in /etc/passws. This script will log scripts
-with time stamp in /var/log/commlog/.
+Can some one give an idea why is this failing?
+Some one please help me in this aspect.
 
-what happen is: when user logs in the process becomes a loop and I see
-lot of script instances are running.
-
-Any idea.
-
--Refayet
+Regards,
+Mukund Jampala
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
