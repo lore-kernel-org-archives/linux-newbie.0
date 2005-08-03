@@ -1,131 +1,46 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Running script on 2.6 fails
-Date: Wed, 3 Aug 2005 21:13:20 +0530
-Message-ID: <C349E772C72290419567CFD84C26E0170423B0@mail.esn.co.in>
+From: Rajesh Shah <rajesh.shah-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Subject: Re: Re: Problem while inserting pciehp (PCI Express Hot-plug) driver
+Date: Wed, 3 Aug 2005 10:49:43 -0700
+Message-ID: <20050803104940.A3754@unix-os.sc.intel.com>
+References: <87ab37ab0507300920570b0ea6@mail.gmail.com>
+Reply-To: Rajesh Shah <rajesh.shah-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
-Sender: linux-newbie-owner@vger.kernel.org
+Return-path: <acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <87ab37ab0507300920570b0ea6-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>; from fierykylin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org on Sun, Jul 31, 2005 at 12:20:30AM +0800
+Sender: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+Errors-To: acpi-devel-admin-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
+List-Unsubscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=unsubscribe>
 List-Id: <linux-newbie.vger.kernel.org>
+List-Post: <mailto:acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
+List-Help: <mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=help>
+List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/acpi-devel>,
+	<mailto:acpi-devel-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=subscribe>
+List-Archive: <http://sourceforge.net/mailarchive/forum.php?forum=acpi-devel>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: kylin <fierykylin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: rajesh.shah-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, acpi-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-hotplug-devel-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, dkumar-QByN7dn/BetQWC9lL0RKGQC/G2K4zDHf@public.gmane.org
 
-Dear all,
+On Sun, Jul 31, 2005 at 12:20:30AM +0800, kylin wrote:
+> I wonder if i can workaround the MSI using the polling way on the
+> server geared by E7520 and the firmware with no OSC implemented
+> 
+Per the PCI firmware spec (I'm looking at draft 0.9, version 3.0),
+the OS must explicitly get control of native pcie hotplug from
+firmware using _OSC before trying to use it. Firmware may be
+deliberately not creating an _OSC because it is controlling the
+hotplug hardware, or may be aware of other reasons (e.g. errata)
+why OS native pcie hotplug should not be used on this platform.
+So no, I don't think we can load and use pciehp if there's
+no _OSC implemented in firmware.
 
-I am right now working on understanding the 2.6 kernel BLOCK sbull
-driver implementation provided in the Linux book 3rd Edition book.
-
-I am OK with the block driver aspects. But, I am NOT able to run
-sbull_load script to create the device NODES. When I tried running the
-script, I failed saying
-
-# sh sbull_load
-: command not found
-' bull_load: line 4: syntax error near unexpected token '{
-' bull_load: line 4: '{
-
-Can some one give an idea why is this failing?
-Someone please help me in this aspect.You can see the script below ....
-
-Regards,
-Mukund Jampala
-
--------------------------- sbull_load script
--------------------------------
-
-#!/bin/sh
-
-function make_minors {
-
-    let part=1
-
-    while (($part < $minors)); do
-
-      let minor=$part+$2
-
-      mknod $1$part b $major $minor
-
-      let part=$part+1
-
-    done
-
-}
-
-# FIXME: This isn't handling minors (partitions) at all.
-
-module="sbull"
-
-device="sbull"
-
-mode="664"
-
-chardevice="sbullr"
-
-minors=16
-
- 
-
-# Group: since distributions do it differently, look for wheel or use
-staff
-
-if grep '^staff:' /etc/group > /dev/null; then
-
-    group="staff"
-
-else
-
-    group="wheel"
-
-fi
-
- 
-
-# invoke insmod with all arguments we got
-
-# and use a pathname, as newer modutils don't look in . by default
-
-/sbin/insmod -f ./$module.ko $* || exit 1
-
-major=`cat /proc/devices | awk "\\$2==\"$module\" {print \\$1}"`
-
-# Remove stale nodes and replace them, then give gid and perms
-
-rm -f /dev/${device}[a-d]* /dev/${device}
-
-mknod /dev/${device}a b $major 0
-
-make_minors /dev/${device}a 0
-
-mknod /dev/${device}b b $major 16
-
-make_minors /dev/${device}b 16
-
-mknod /dev/${device}c b $major 32
-
-make_minors /dev/${device}c 32
-
-mknod /dev/${device}d b $major 48
-
-make_minors /dev/${device}d 48
-
-ln -sf ${device}a /dev/${device}
-
-chgrp $group /dev/${device}[a-d]*
-
-chmod $mode  /dev/${device}[a-d]*
-
-------------------------- sbull_load script ENDS
---------------------------
- 
-
- 
-
- 
+Rajesh
 
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+-------------------------------------------------------
+SF.Net email is sponsored by: Discover Easy Linux Migration Strategies
+from IBM. Find simple to follow Roadmaps, straightforward articles,
+informative Webcasts and more! Get everything you need to get up to
+speed, fast. http://ads.osdn.com/?ad_id=7477&alloc_id=16492&op=click
