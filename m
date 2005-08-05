@@ -1,81 +1,33 @@
-From: Andrzej Doyle <dtsazza@gmail.com>
-Subject: Re: Running script on 2.6 fails
-Date: Thu, 04 Aug 2005 12:00:38 +0100
-Message-ID: <42F1F556.6040404@andrzejdoyle.co.uk>
-References: <C349E772C72290419567CFD84C26E0170423C7@mail.esn.co.in>
+From: Peter <heisspf@skyinet.net>
+Subject: Mailing Problem
+Date: Fri, 5 Aug 2005 17:26:05 +0800
+Message-ID: <20050805172605.1ba2e5d4@localhost>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <C349E772C72290419567CFD84C26E0170423C7@mail.esn.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Mukund JB. wrote:
+Hi,
 
->>>[Error is:]
->>># sh sbull_load
->>>: command not found
->>>' bull_load: line 4: syntax error near unexpected token '{
->>>' bull_load: line 4: '{
->
+I still have problems sending mail with sendmail and/or postfix.
 
->Dear Arturas,
->
->Please see the entire sbull_load script below
->
->Regards,
->Mukund Jampala
->
->-------------------------- sbull_load script
->-------------------------------
->
->#!/bin/sh
->
->function make_minors {
->
->    let part=1
->
->    while (($part < $minors)); do
->
->      let minor=$part+$2
->
->      mknod $1$part b $major $minor
->
->      let part=$part+1
->
->    done
->
->}
->
->...
->
->------------------------- sbull_load script ENDS
->--------------------------
->  
->
+I have a broadband connection with meridian and in sendmail.cnf I put as
+smarthost smtp.meridian.ph. My ISP for my mail is skyinet.net.
 
-Line 4 of your script is the while(...) do line.  Although I'm by no 
-means an expert in shell scripting, I can see that you're referencing 
-the variable $minors before either declaring it or initialising it.  
-Though this might not actually throw an error, it's bad programming 
-practice, since as well as the possibility of the 'default' value 
-changing, it also makes your program harder to read.  I see you set the 
-variable in the loop, so you could either change it into a do ... while 
-loop (if you know you'll be going through it at least once), or just add 
-another "let minor=$part+$2" line just after the "let part=1" line.
+Trying to send mail with say mail>nail it will just hang in the mail queue.
 
-That said, I don't see a single '{' in that area of code that the shell 
-could be complaining about.  Since it's mentioning bull_load, and you've 
-give us sbull_load (note extra s), are you sure you're running the 
-script you intended, and not (perhaps) an older version of it?  If not, 
-and bull_load is a short little thing that calls sbull_load to do the 
-actual work, I'd still need to see bull_load since that's where the 
-error lies.
+I can send mail with sylpheed with uses mh and thunderbird which I understand
+has its own mailer.
 
-Andrzej
+How to resolve and what do I need to supply to make assistance meaningful. 
+
+Thanks & regards
+
+-- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
