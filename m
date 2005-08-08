@@ -1,72 +1,54 @@
-From: mhb <badrpayam@yahoo.com>
-Subject: I cannot build a new kernel image when I add a assembly module to It
-Date: Mon, 8 Aug 2005 06:21:00 -0700 (PDT)
-Message-ID: <20050808132100.19904.qmail@web60523.mail.yahoo.com>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: Mount the SD card formatted using the DIGITAL CAMREA on Linux box but HOW?
+Date: Mon, 8 Aug 2005 20:38:41 +0530
+Message-ID: <C349E772C72290419567CFD84C26E0170426F0@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-assembly-owner@vger.kernel.org>
-Sender: linux-assembly-owner@vger.kernel.org
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-fsdevel-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
+Sender: linux-fsdevel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: linux-assembly <linux-assembly@vger.kernel.org>
-
-Hi
-
-I had added an assembly program to the networking
-section of kernel linux 2.2.16 without any problem.
-But when I add it to kerenel 2.4.1 I could build that
-kernel, but I faced with kernel panic error when I
-boot
-system with new builded image. I use the following
-Make file to build It in the 2.4.1 kernel. 
-
-/*--------------------------------*/
-L_TARGET := libtest.a
-
-obj-$(CONFIG_TEST)		+= test.o
-
-override CFLAGS += -Wpointer-arith
-override CFLAGS += -Wbad-function-cast
-override CFLAGS += -DTERMIO
+To: linux-fsdevel@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
 
-#-----------------------------------------------------------------------------
-# Section 3 - Conversion routines from new style to
-old style for Rules.make
+Dear all,
 
-#-----------------------------------------------------------------------------
-# Section 4 - Rules.make section
-include $(TOPDIR)/Rules.make
-#-----------------------------------------------------------------------------
-# Section 5
+I have an SD card problem that mounts when formatted on windows but
+fails when formatted on camera as you all know.
 
-$(obj-y):  $(TOPDIR)/include/linux/config.h\
-                       
-$(TOPDIR)/include/linux/autoconf.h
+Now, I an able mount the SD card formatted using the DIGITAL CAMREA on
+Linux box using the windows formatted SD cards first 512 bytes.
 
-clean:
-	-rm -f *.o
-tags:
-	ctags libtest.a
+This will NOT serve as a permanent solution BUT I am able to reduce the
+scope of the issue. I used a raw method for this. Here it is.
 
-tar:
-	tar -cvf /dev/f1 .
+I formatted the card in windows; copied it to disk-image.
 
-test.o: test1.o test2.o test3.o 
-	$(LD) -r -o $@ test1.o test2.o test3.o 
+	(Dump the first 512 bytes to the file)
+	dd if=/dev/tfa0 of=disk-image count=1
 
-test3.o: test3.s
-	$(AS) -o $@ $<
-#-----------------------------------------------------------------------------
-As you can see test3.s is an assembly file.
-I guess this problem is related to this Makefile.
-Is this Make file true?
-How can I win over this problem?
+Then I copied the disk-image to the camera formatted device which is not
+mounting.
 
-thanks
+	dd if= disk-image of=/dev/tfa0 count=1
 
-__________________________________________________
-Do You Yahoo!?
-Tired of spam?  Yahoo! Mail has the best spam protection around 
-http://mail.yahoo.com 
+Then, I tried to mount the device. It mounts with some error messages
+that are caused to not able to find the 57 sector that contains the FAT
+details.
+
+	Attempt to access beyond the end of device
+	FAT: Directory bread(block 24) failed
+	FAT: Directory bread(block ..) failed
+	..
+	..
+	FAT: Directory bread(block 55) failed
+
+It works fine when I increase the count to 60. I able to copy files,
+remount and see the files.
+Some one please help me in coming to a conclusion where is the problem.
+
+Regards,
+Mukund Jampala
+
