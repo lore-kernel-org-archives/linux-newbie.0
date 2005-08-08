@@ -1,54 +1,44 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Mount the SD card formatted using the DIGITAL CAMREA on Linux box but HOW?
-Date: Mon, 8 Aug 2005 20:38:41 +0530
-Message-ID: <C349E772C72290419567CFD84C26E0170426F0@mail.esn.co.in>
+From: Stephen Ray <stephen@mrmighty.net>
+Subject: Re: I cannot build a new kernel image when I add a assembly module
+ to It
+Date: Mon, 08 Aug 2005 16:17:42 -0300
+Message-ID: <42F7AFD6.9080505@mrmighty.net>
+References: <20050808132100.19904.qmail@web60523.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-fsdevel-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
-Sender: linux-fsdevel-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-assembly-owner@vger.kernel.org>
+In-Reply-To: <20050808132100.19904.qmail@web60523.mail.yahoo.com>
+Sender: linux-assembly-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-fsdevel@vger.kernel.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: mhb <badrpayam@yahoo.com>
+Cc: linux-newbie@vger.kernel.org, linux-assembly <linux-assembly@vger.kernel.org>
 
+mhb wrote:
+> Hi
+> 
+> I had added an assembly program to the networking
+> section of kernel linux 2.2.16 without any problem.
+> But when I add it to kerenel 2.4.1 I could build that
+> kernel, but I faced with kernel panic error when I
+> boot
+> system with new builded image. 
+...
+> As you can see test3.s is an assembly file.
+> I guess this problem is related to this Makefile.
+> Is this Make file true?
+> How can I win over this problem?
+> 
+> thanks
+> 
 
-Dear all,
+Sorry, I'm not much of a linux assembly guru, but I am wondering why you 
+assume the Makefile is the problem.  It could be, I'm not a makefile 
+guru either.  But, as far as I know, make works the same no matter what 
+kernel it's running on.  My first suspicion would be that calling 
+conventions were changed between kernel versions, or that you use a 
+kernel function that changed functionality.  Also, the version of gcc 
+may be important.  I think something in the 2.9xx series is recommended 
+for compiling the kernel.
 
-I have an SD card problem that mounts when formatted on windows but
-fails when formatted on camera as you all know.
-
-Now, I an able mount the SD card formatted using the DIGITAL CAMREA on
-Linux box using the windows formatted SD cards first 512 bytes.
-
-This will NOT serve as a permanent solution BUT I am able to reduce the
-scope of the issue. I used a raw method for this. Here it is.
-
-I formatted the card in windows; copied it to disk-image.
-
-	(Dump the first 512 bytes to the file)
-	dd if=/dev/tfa0 of=disk-image count=1
-
-Then I copied the disk-image to the camera formatted device which is not
-mounting.
-
-	dd if= disk-image of=/dev/tfa0 count=1
-
-Then, I tried to mount the device. It mounts with some error messages
-that are caused to not able to find the 57 sector that contains the FAT
-details.
-
-	Attempt to access beyond the end of device
-	FAT: Directory bread(block 24) failed
-	FAT: Directory bread(block ..) failed
-	..
-	..
-	FAT: Directory bread(block 55) failed
-
-It works fine when I increase the count to 60. I able to copy files,
-remount and see the files.
-Some one please help me in coming to a conclusion where is the problem.
-
-Regards,
-Mukund Jampala
-
+Stephen
