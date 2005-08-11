@@ -1,10 +1,11 @@
-From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+From: Richard Adams <pa3gcu@zeelandnet.nl>
 Subject: Re: HOW to FAT partition the device?
-Date: Thu, 11 Aug 2005 17:52:40 +0300
-Message-ID: <4a618d080508110752698621e@mail.gmail.com>
+Date: Thu, 11 Aug 2005 20:42:19 +0200
+Message-ID: <200508112042.19404.pa3gcu@zeelandnet.nl>
 References: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
 Content-Disposition: inline
@@ -14,20 +15,16 @@ Content-Type: text/plain; charset="us-ascii"
 To: "Mukund JB." <mukundjb@esntechnologies.co.in>
 Cc: linux-newbie@vger.kernel.org
 
-> 
-> Dear all,
-> I have silly doubt regarding creating FAT partition on my SD Card.
-> 
-> Can I do it with fdisk? I tried it in the man-pages to find how to do
-> it?
-> I found nothing related to FAT.
-> When I tried to create it with 'n' option, by default it is creating the
-> ext2 fs & NOT FAT fs.
+On Thursday 11 August 2005 16:39, Mukund JB. wrote:
+> Can someone give me the instruction to create FAT partion on my disk?
 
-You can specify what partition type you want to create, press "l"
-(small L) to view the list, and "t" to change the partition type...
+Would it not be better to let your digital camera do the formatting, after 
+all, if that is done properly then there should be absolutly no reason why 
+linux could not mount it as a normal camera memory chip, or even beter simply 
+mount the camera itself via one of your USB inputs.
 
-Arturas M.
+> Regards,
+> Mukund Jampala
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
