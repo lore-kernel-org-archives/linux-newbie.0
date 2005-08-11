@@ -1,37 +1,33 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: HOW to FAT partition the device?
-Date: Thu, 11 Aug 2005 20:09:34 +0530
-Message-ID: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
+From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+Subject: Re: HOW to FAT partition the device?
+Date: Thu, 11 Aug 2005 17:52:40 +0300
+Message-ID: <4a618d080508110752698621e@mail.gmail.com>
+References: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Cc: linux-newbie@vger.kernel.org
 
+> 
+> Dear all,
+> I have silly doubt regarding creating FAT partition on my SD Card.
+> 
+> Can I do it with fdisk? I tried it in the man-pages to find how to do
+> it?
+> I found nothing related to FAT.
+> When I tried to create it with 'n' option, by default it is creating the
+> ext2 fs & NOT FAT fs.
 
-Dear all,
-I have silly doubt regarding creating FAT partition on my SD Card.
+You can specify what partition type you want to create, press "l"
+(small L) to view the list, and "t" to change the partition type...
 
-Can I do it with fdisk? I tried it in the man-pages to find how to do
-it?
-I found nothing related to FAT.
-When I tried to create it with 'n' option, by default it is creating the
-ext2 fs & NOT FAT fs.
-
-I think we can not use command like mkdosfs & mkfs to create a partition
-of type FAT. 
-Instead they are used to create an fs on the existing partition. 
-Please correct if I am wrong somewhere?
-
-Can someone give me the instruction to create FAT partion on my disk?
-
-Regards,
-Mukund Jampala
-
-
+Arturas M.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
