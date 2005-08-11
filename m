@@ -1,30 +1,36 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: Gnome-Panel Weather-Applet
-Date: Thu, 11 Aug 2005 16:38:40 +0800
-Message-ID: <200508110838.j7B8cecI001895@meridian.ph>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: HOW to FAT partition the device?
+Date: Thu, 11 Aug 2005 20:09:34 +0530
+Message-ID: <C349E772C72290419567CFD84C26E0170A00B8@mail.esn.co.in>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
 
-In the gnome-panel one can put a weather applet showing the weather at a given 
-location. However, the time given is totally off and in the case of Central 
-Europe 8 hours ahead of UTC (GMT), letting the sun rise at 12:00 and set at 
-02:40.
+Dear all,
+I have silly doubt regarding creating FAT partition on my SD Card.
 
-Where would one set the time for this applet to correctly show either UTC or 
-local time.
+Can I do it with fdisk? I tried it in the man-pages to find how to do
+it?
+I found nothing related to FAT.
+When I tried to create it with 'n' option, by default it is creating the
+ext2 fs & NOT FAT fs.
 
-The program GrabWeather for example always shows time at UTC.
+I think we can not use command like mkdosfs & mkfs to create a partition
+of type FAT. 
+Instead they are used to create an fs on the existing partition. 
+Please correct if I am wrong somewhere?
 
-Thank & regards
--- 
-Peter
+Can someone give me the instruction to create FAT partion on my disk?
+
+Regards,
+Mukund Jampala
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
