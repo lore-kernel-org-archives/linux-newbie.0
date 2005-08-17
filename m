@@ -1,76 +1,96 @@
-From: "Mukund JB`." <mukundjb@esntechnologies.co.in>
-Subject: RE: Mount the SD card formatted using the DIGITAL CAMREA on Linux box but HOW?
-Date: Wed, 17 Aug 2005 21:54:53 +0530
-Message-ID: <3AEC1E10243A314391FE9C01CD65429B3808@mail.esn.co.in>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: dmesg output: impending hardware failure?
+Date: Wed, 17 Aug 2005 09:33:46 -0700
+Message-ID: <430366EA.5010303@comarre.com>
+References: <Pine.LNX.4.61.0508151724430.11640@localhost.localdomain> <43012AC7.2000606@gelm.net> <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: chuck@gelm.net
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
->> #fdisk -lV /dev/tfa0 (both camera & windows are same result)
->>
->> Disk /dev/tfa0: 448 cylinders, 2 heads, 32 sectors/track
->> Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
-0
->>
->>    Device Boot Start     End   #cyls    #blocks   Id  System
->> /dev/tfa0p1   *      0+    449     450-     14371+   1  FAT12
->> /dev/tfa0p2          0       -       0          0    0  Empty
->> /dev/tfa0p3          0       -       0          0    0  Empty
->> /dev/tfa0p4          0       -       0          0    0  Empty
->> Warning: partition 1 extends past end of disk
->
->  Thanks.  It seems to me that this partitioning is different or wrong.
->Let us see what filesystems are present on the cards:
->
->fdisk -T /dev/tfa0p1
-FAT12 is fs found on both the windows formatted & CAM formatted SD cards
+James Miller wrote:
+> On Mon, 15 Aug 2005, chuck gelm wrote:
+> 
+>> First: Backup your data on /dev/hdb! :-|
+>> Second: I recommend editing /etc/smartd.conf to include
+>> /dev/hdb -a
+>> Then running
+>> smartd
+>> Then
+>> tail -f /var/log/messages
+>> and see whazzzup!  ;-)
+> 
+> 
+> This doesn't reveal anything related to the drive. Some mouse messages 
+> show up there, but that's another puzzle. Further investigation reveals 
+> that, when I boot with the "old" 2.6.10 kernel, there are no dmesg 
+> output errors related to /dev/hdb. Furthermore, with the 2.6.12 kernel I 
+> got doing the dist-upgrade, I seem also to have gotten udev. Maybe this 
+> is related somehow to udev? I notice I've got usb hotplug back with the 
+> dist-upgrade, too. Probably the resolution to these and related issues 
+> is compiling my own kernel and the learning associated with that. I've 
+> actually compiled a kernel before semi-successfully. I don't remember 
+> much about it though, and there's a special Debian way of doing it that 
+> I'm not very familiar with, so it would be sort of like starting from 
+> square one. If anyone has further input on the /dev/hdb errors 
+> referenced, the 2.6.12 kernel, udev, or other related advice, please 
+> offer it.
 
->
->Does your linux system support filesystem type fat12?
-Yes, My Linux supports FAT12. It is able to mount the FAT12 windows
-formatted SD.
+I can only offer a guess, James, but the guess is that this report is 
+nothing to worry about. I guess this from a look at the details.
 
->What filesystem does your windows o/s put on the SD media?
->
-FAT12
->What filesystem does your camera put on the media?
->
-FAT12
->Does your linux system support the same filesystem as your camera ?
->
-Yes it support FAT12.
+First, dmesg reports this:
 
-fdisk -l -u /dev/tfa0:
-debdev1:~# fdisk -l -u /dev/tfa0
+> hdb: Host Protected Area detected.
+>     current capacity is 39102336 sectors (20020 MB)
+>     native  capacity is 39102337 sectors (20020 MB) 
 
-Disk /dev/tfa0: 14 MB, 14680064 bytes
-2 heads, 32 sectors/track, 448 cylinders, total 28672 sectors Units =
-sectors of 1 * 512 = 512 bytes
+Then it reports a bunch of seek errors, all involving the same sector:
 
-   Device Boot      Start         End      Blocks   Id  System
-/dev/ tfa0p1		57       28799       14371+   1  FAT12
+> hdb: dma_intr: error=0x10 { SectorIdNotFound }, LBAsect=39102336, sector=39102336 
 
-On a keen look on the above fdisk output on my 16MB SD card, you can
-find the cylinder information as 448 where as my driver ioctl returns
-450.
+Now, note that the sector involved in ALL the seek errors is the last 
+sector, the one included in "native capacity" but not in "current 
+capacity". (Remember, sector numbers start at 0, not 1.) Since this 
+sector is not part of the capacity of the drive as (for example) fdisk 
+sees it, there will never be a call to read from or write to this 
+sector, since no partition or filesystem will use it.
 
-I have found from the partition table that Total n/o sector for the
-primary partition is 28743 (total sectors).
-But my ioctl returns total cylinders as 450 i.e. 28800 sectors.
-As 28743 is NOT any multiple of 64(2*32)i.e sectors*heads, the fdisk
-tried manipulates it to get multiples of 64.
-So, finally the best multiple 448 cylinders (i.e. 28672 sector)
-So, finally that NOT a BUG in the driver instead is a generalization
-made by fdisk command.
+The errors are probably occurring because during boot/init, hard drives 
+are told to seek the "last" sector. Or they used to be told this ... I'm 
+not sure that they still are, but they might be.
 
-Regards,
-Mukund Jampala
+All that said, I still don't know why the new kernel reports these seek 
+failures but the old one doesn't. Since you use pre-compiled kernels, 
+and I don't even know where you get them from (I've never heard of "the 
+Synaptic equivalent" to a Debian dist-upgrade ... does this just mean 
+you work at Synaptic and use a local cache in a proxy server?), they are 
+a black box to both of us. If the drive is 4 years old, it may have been 
+partitioned under a 2.4.x kernel (conceivably even a 2.2.x. kernel), so 
+these reports could just reflect improvements in the IDE code over time.
+
+Or it may be some wackiness specific to the IDE chipset in your machine 
+(if you look at a kernel configuration ruleset, in "make menuconfig" or 
+whatever is convenient for you, you will see a lot of choices involving 
+specific IDE chipsets, with the number growing over time) and changes in 
+what chipsets are supported in pre-compiled kernels.
+
+Or it could be a "feature" of the BIOS or IDE hardware (the "Host 
+Protected Area" part makes me think of laptop drives, which sometimes 
+reserve an area for maintaining state while sleeping).
+
+Or (most likely) it is some oddball thing I haven't thought of.
+
+But I doubt it is a cause for concern.
+
+Of course, if you are seeking more widespread reports of seek errors, 
+involving other sectors and times other than boot/init, then you should 
+immediately back up the contents of this drive on a new one.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
