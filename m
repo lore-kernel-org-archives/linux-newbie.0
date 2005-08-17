@@ -1,61 +1,76 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: recording a .wav file in a daemon.
-Date: Wed, 17 Aug 2005 08:34:58 -0700
-Message-ID: <43035922.7060509@comarre.com>
-References: <Pine.LNX.4.44.0508120118150.20982-100000@treebeard.engin.umich.edu>  <200508130940.51347.pa3gcu@zeelandnet.nl>  <Pine.LNX.4.60.0508141137540.20130@lantana.cs.iitm.ernet.in> <4a618d08050814073217c78a5@mail.gmail.com> <Pine.LNX.4.60.0508162310410.29955@lantana.cs.iitm.ernet.in>
+From: "Mukund JB`." <mukundjb@esntechnologies.co.in>
+Subject: RE: Mount the SD card formatted using the DIGITAL CAMREA on Linux box but HOW?
+Date: Wed, 17 Aug 2005 21:54:53 +0530
+Message-ID: <3AEC1E10243A314391FE9C01CD65429B3808@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.60.0508162310410.29955@lantana.cs.iitm.ernet.in>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: chuck@gelm.net
+Cc: linux-newbie@vger.kernel.org
 
-P.Manohar wrote:
-> 
-> hai,
->    I am calling this below script( call it recording.scr) from a c 
-> program using system() , this C program is written as a daemon, so that 
-> it will run continuously and executes this script periodically.
->  When I run this daemon in any terminal it is recording continously.
-> But when I run the same thing as original daemon like atd or sshd by 
-> putting a script mydaemon in
-> /etc/rc.d/init.d/mydaemon start
-> This daemon is not recording.
-> 
-> Whether "brec" need a controlling terminal ?
-> I am confused with this. Please suggest me if u can.
-> 
-> 
->  #!/bin/tcsh
-> if($# != 1) then
->   echo "Argument  filename"
->   exit(-1)
-> endif
-> 
-> echo "recording"
-> brec -s 96000 -b 16 -t 1 -w /usr/loca/xyz.wav
-> echo "recording over"
-> 
-> Thanks & Regrds,
-> P.Manohar.
+>> #fdisk -lV /dev/tfa0 (both camera & windows are same result)
+>>
+>> Disk /dev/tfa0: 448 cylinders, 2 heads, 32 sectors/track
+>> Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
+0
+>>
+>>    Device Boot Start     End   #cyls    #blocks   Id  System
+>> /dev/tfa0p1   *      0+    449     450-     14371+   1  FAT12
+>> /dev/tfa0p2          0       -       0          0    0  Empty
+>> /dev/tfa0p3          0       -       0          0    0  Empty
+>> /dev/tfa0p4          0       -       0          0    0  Empty
+>> Warning: partition 1 extends past end of disk
+>
+>  Thanks.  It seems to me that this partitioning is different or wrong.
+>Let us see what filesystems are present on the cards:
+>
+>fdisk -T /dev/tfa0p1
+FAT12 is fs found on both the windows formatted & CAM formatted SD cards
 
-I can offer only a guess in reply. The guess is that you need to have 
-the script call /usr/bin/brec (or whatever the path is) rather than 
-brec. When you call the daemon from a terminal, the user's PATH variable 
-fills in the blank. But when you run it as an init script, PATH is not 
-set in the environment so it does not.
+>
+>Does your linux system support filesystem type fat12?
+Yes, My Linux supports FAT12. It is able to mount the FAT12 windows
+formatted SD.
 
-BTW, do you really use /usr/loca/ as a directory on your system, and not 
-the more customary /usr/local/ ? Or is this some special directory 
-specific to this purpose?
+>What filesystem does your windows o/s put on the SD media?
+>
+FAT12
+>What filesystem does your camera put on the media?
+>
+FAT12
+>Does your linux system support the same filesystem as your camera ?
+>
+Yes it support FAT12.
 
-The script seems odd in some other ways too (what is the purpose of the 
-requirement for a filename, for example), but they are hard to judge 
-without seeing the source for the C wrapper daemon as well as the script 
-itself.
+fdisk -l -u /dev/tfa0:
+debdev1:~# fdisk -l -u /dev/tfa0
 
+Disk /dev/tfa0: 14 MB, 14680064 bytes
+2 heads, 32 sectors/track, 448 cylinders, total 28672 sectors Units =
+sectors of 1 * 512 = 512 bytes
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/ tfa0p1		57       28799       14371+   1  FAT12
+
+On a keen look on the above fdisk output on my 16MB SD card, you can
+find the cylinder information as 448 where as my driver ioctl returns
+450.
+
+I have found from the partition table that Total n/o sector for the
+primary partition is 28743 (total sectors).
+But my ioctl returns total cylinders as 450 i.e. 28800 sectors.
+As 28743 is NOT any multiple of 64(2*32)i.e sectors*heads, the fdisk
+tried manipulates it to get multiples of 64.
+So, finally the best multiple 448 cylinders (i.e. 28672 sector)
+So, finally that NOT a BUG in the driver instead is a generalization
+made by fdisk command.
+
+Regards,
+Mukund Jampala
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
