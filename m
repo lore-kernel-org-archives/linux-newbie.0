@@ -1,54 +1,55 @@
-From: James Miller <jamtat@mailsnare.net>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: dmesg output: impending hardware failure?
-Date: Wed, 17 Aug 2005 11:59:10 -0500 (CDT)
-Message-ID: <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
-References: <Pine.LNX.4.61.0508151724430.11640@localhost.localdomain>
- <43012AC7.2000606@gelm.net> <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain>
- <430366EA.5010303@comarre.com>
+Date: Wed, 17 Aug 2005 17:06:19 -0700
+Message-ID: <4303D0FB.3040003@comarre.com>
+References: <Pine.LNX.4.61.0508151724430.11640@localhost.localdomain> <43012AC7.2000606@gelm.net> <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain> <430366EA.5010303@comarre.com> <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <430366EA.5010303@comarre.com>
+In-Reply-To: <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-On Wed, 17 Aug 2005, Ray Olszewski wrote:
+James Miller wrote:
+[...]
+> On 
+> the Synaptic issue: you are undoubtedly aware that Synaptic is a 
+> graphical frontend for apt, I suppose? 
 
-> I can only offer a guess, James, but the guess is that this report is nothing 
-> to worry about. I guess this from a look at the details.
+Actually, no. I always use apt from the command line so I missed this 
+front end. oops.
+[...]
 
-Thanks for your input, Ray. I was beginning to think maybe it was not a 
-matter for much concern, so it's good to hear some verification from 
-someone more knowledgeable.
+>I really didn't want an
+> updated kernel since I run vmware and have to recompile modules for it 
+> every time a new kernel comes along, and I'm not entirely sure how I got 
+> the kernel. I've looked at packages on the system and can't see where 
+> new 2.6.x kernels are supposed to be part of my dist-upgrade, but that's 
+> another issue. 
 
-> All that said, I still don't know why the new kernel reports these seek 
-> failures but the old one doesn't. Since you use pre-compiled kernels, and I 
-> don't even know where you get them from (I've never heard of "the Synaptic 
-> equivalent" to a Debian dist-upgrade ... does this just mean you work at 
-> Synaptic and use a local cache in a proxy server?), they are a black box to 
-> both of us. If the drive is 4 years old, it may have been partitioned under a 
-> 2.4.x kernel (conceivably even a 2.2.x. kernel), so these reports could just 
-> reflect improvements in the IDE code over time.
+How did you install the kernel? That is, did you install the general 2.6 
+package for your architecture (kernel-image-2.6-386, for example) or did 
+you install a specific kernel minor version (for example, 
+kernel-image-2.6.8-2-386)?
 
-Yep, I'm pretty sure I partitioned this drive using a 2.4.x kernel. It's a 
-Debian unstable netinst system, pretty much starting from scratch. On the 
-Synaptic issue: you are undoubtedly aware that Synaptic is a graphical 
-frontend for apt, I suppose? On the Synaptic menu bar, there are items 
-representing command-line actions: the "reload" button likely invokes 
-apt-get update, for example, while hitting the "mark all" button, followed 
-by clicking the "apply" button, results in what must be the commandline 
-equivalent of apt-get dist-upgrade. I've got the stock Debian repositories 
-stipulated in /etc/apt/sources.list, so the pre-compiled kernels are 
-coming from there. I really didn't want an updated kernel since I run 
-vmware and have to recompile modules for it every time a new kernel comes 
-along, and I'm not entirely sure how I got the kernel. I've looked at 
-packages on the system and can't see where new 2.6.x kernels are supposed 
-to be part of my dist-upgrade, but that's another issue. Anyway, good to 
-get your take on the hard drive errors.
+If you did it the first way, that's why you are getting the updates ... 
+every time a new kernel package is introduced, the general packages 
+(which Debian calls "transition" packages for reasons I do not know) are 
+updated to point to the new version. So apt-get dist-upgrade (maybe even 
+an apt-get upgrade) will upgrade this package just like any other.
 
-Thanks, James
+If you did it the second way, it should not be happening (at least the 
+way I understand the apt-get [dist-]upgrade process to work) except when 
+a new version of that specific kernel is introduced, so I can't be of help.
+
+If the question doesn't mean anything to you, do an "apt-cache search 
+kernel-image-2.6" and look at some of the package descriptions for the 
+packages it lists.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
