@@ -1,55 +1,43 @@
-From: Ray Olszewski <ray@comarre.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: dmesg output: impending hardware failure?
-Date: Wed, 17 Aug 2005 17:06:19 -0700
-Message-ID: <4303D0FB.3040003@comarre.com>
-References: <Pine.LNX.4.61.0508151724430.11640@localhost.localdomain> <43012AC7.2000606@gelm.net> <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain> <430366EA.5010303@comarre.com> <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
+Date: Wed, 17 Aug 2005 20:41:57 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0508172028310.4988@localhost.localdomain>
+References: <Pine.LNX.4.61.0508151724430.11640@localhost.localdomain>
+ <43012AC7.2000606@gelm.net> <Pine.LNX.4.61.0508161249060.4989@localhost.localdomain>
+ <430366EA.5010303@comarre.com> <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
+ <4303D0FB.3040003@comarre.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.61.0508171138430.4988@localhost.localdomain>
+In-Reply-To: <4303D0FB.3040003@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-James Miller wrote:
-[...]
-> On 
-> the Synaptic issue: you are undoubtedly aware that Synaptic is a 
-> graphical frontend for apt, I suppose? 
+On Wed, 17 Aug 2005, Ray Olszewski wrote:
 
-Actually, no. I always use apt from the command line so I missed this 
-front end. oops.
-[...]
+> How did you install the kernel? That is, did you install the general 2.6 
+> package for your architecture (kernel-image-2.6-386, for example) or did you 
+> install a specific kernel minor version (for example, 
+> kernel-image-2.6.8-2-386)?
 
->I really didn't want an
-> updated kernel since I run vmware and have to recompile modules for it 
-> every time a new kernel comes along, and I'm not entirely sure how I got 
-> the kernel. I've looked at packages on the system and can't see where 
-> new 2.6.x kernels are supposed to be part of my dist-upgrade, but that's 
-> another issue. 
+I believe I specified a particular kernel for my architecture -- 
+kernel-image-2.6.10-1-686 or something very similar. I've double checked, 
+and no kernel-image-2.6-anything is installed. At least Synaptic shows 
+none installed. kernel-kbuild-2.6-3 is the only thing similar-looking 
+that's installed. Unstable is in a particularly unstable state at the 
+moment--as you likely know--since a new release was done not long ago. 
+I've been making the working assumption that the kernel oddness I'm seeing 
+is related to this.
 
-How did you install the kernel? That is, did you install the general 2.6 
-package for your architecture (kernel-image-2.6-386, for example) or did 
-you install a specific kernel minor version (for example, 
-kernel-image-2.6.8-2-386)?
+There's been a noticeable decrease in performance on this system with this 
+2.6.12 kernel, so I'll likely be getting rid of it. I'm looking at dummy 
+ways of building a kernel: do you have any experience with kernel-package? 
+It looks like it could make the process a bit less daunting to a relative 
+neophyte like me.
 
-If you did it the first way, that's why you are getting the updates ... 
-every time a new kernel package is introduced, the general packages 
-(which Debian calls "transition" packages for reasons I do not know) are 
-updated to point to the new version. So apt-get dist-upgrade (maybe even 
-an apt-get upgrade) will upgrade this package just like any other.
-
-If you did it the second way, it should not be happening (at least the 
-way I understand the apt-get [dist-]upgrade process to work) except when 
-a new version of that specific kernel is introduced, so I can't be of help.
-
-If the question doesn't mean anything to you, do an "apt-cache search 
-kernel-image-2.6" and look at some of the package descriptions for the 
-packages it lists.
-
-
-
+Thanks, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
