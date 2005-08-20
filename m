@@ -1,87 +1,65 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: How do i detect a USB device from  the Linux Box
-Date: Sun, 21 Aug 2005 07:14:21 +1200
-Message-ID: <200508200758.j7K7wucY023149@dbmail-mx1.orcon.net.nz>
-References: <3AEC1E10243A314391FE9C01CD65429B38C4@mail.esn.co.in>
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: kernel log messages and disk space
+Date: Sat, 20 Aug 2005 18:34:44 -0400 (EDT)
+Message-ID: <Pine.LNX.4.44.0508201812550.24204-100000@treebeard.engin.umich.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3AEC1E10243A314391FE9C01CD65429B38C4@mail.esn.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Assuming it's some sort of storage device you're using  - 
+Hello,
 
-I'd say, *before* unplugging the USB device, you need to un-mount it with 
-the 'umount'  command   
-(and wait until the linux prompt comes up on the command line again, to make 
-sure it's finished writing everything to the USB device, *before* you unplug 
-it)
+Observed today, that my machine had utilized ~ 7G of hard drive space 
+(since the last time I saw it, ~ week ago)! The real killers were: 
 
-cr
+# du -hcs /var/log/* | grep -E '^[0-9]*.[0-9]*G'
+2.6G    /var/log/kern.log.0
+2.6G    /var/log/messages.0
+2.6G    /var/log/syslog.0
+
+On inspection each of these files along with the /var/log/messages,
+/var/log/kern.log and /var/log/syslog, contained messages as pasted below.  
+Am pasting the contents near the head/tail of each of these files (just to
+highlight that the sector-numbers/time-stamps of these messages were quite
+varied, and that these messages were repeated over and over again till the
+filesize grew to what du showed). 
+
+I would much appreciate any input on what is/was causing this behavior,
+and, how I may be able to catch it/fix it, therefore.
+
+The file contents follow:
+
+[# tail -n3 /var/log/kern.log.0]
+
+Aug 18 07:38:18 mithrandir kernel: attempt to access beyond end of device
+Aug 18 07:38:18 mithrandir kernel: 03:01: rw=0, want=2031123176, 
+limit=13277691
+Aug 18 07:38:18 mithrandir kernel: attempt to access beyond end of device
 
 
-On Fri, 19 Aug 2005 18:20, Mukund JB`. wrote:
-> Dear all,
->
-> I have a USB device connected to Linux BOX running 2.6.10 kernel (F3).
->
-> I am able to mount read/write to the device with NO problem.
->
->
->
-> I find the following messages at attach time:-
->
->
->
-> usb 1-3: new high speed device using ehci_hcd and address 5
->
-> scsi4: SCSI emulation for USB Mass storage devices
->
-> usb-storage: device fount at 5
->
->
->
-> This are the messages are generated when I have plugged in my USB to the
-> system.
->
-> The address value & the device found value keeps on increasing for every
-> plug-in.
->
->
->
-> I find the following messages at detach time:-
->
->
->
-> usb 1-3: USB disconnected, address 5
->
->
->
-> The address value & the device found value keeps on increasing for every
-> plugin
->
->
->
-> What is it doing?
->
-> Do I need to run something like " detach the device safely" before
-> detaching the USB-device?
->
->
->
-> Thanks & Regards,
->
-> Mukund Jampala
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+[# tail -n3 var/log/messages]
+Aug 20 07:38:23 mithrandir kernel: attempt to access beyond end of device
+Aug 20 07:38:23 mithrandir kernel: 03:01: rw=0, want=1373859054, 
+limit=13277691
+Aug 20 07:38:23 mithrandir kernel: Directory sread (sector 0xa3c6d9dc) 
+failed
+
+[# tail -n3 /var/log/syslog]
+
+Aug 20 08:41:13 mithrandir kernel: attempt to access beyond end of device
+Aug 20 08:41:13 mithrandir kernel: 03:01: rw=0, want=71196829, 
+limit=13277691
+Aug 20 08:41:13 mithrandir kernel: Directory sread (sector 0x87cc13a) 
+failed
+
+
+Thanks and regards,
+
+-K
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
