@@ -1,45 +1,30 @@
-From: Sergio Paracuellos <sparacuellos@lock-linux.com>
-Subject: Exporting symbols between modules
-Date: Wed, 24 Aug 2005 09:28:08 +0200
-Message-ID: <1124868488.3073.10.camel@localhost.localdomain>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: Device used to access the ram on my system?
+Date: Wed, 24 Aug 2005 17:20:52 +0530
+Message-ID: <3AEC1E10243A314391FE9C01CD65429B03CBDC@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi all,
 
-I'm new in this list and I have some problems exporting symbols in a
-module to see them in other module.
+Dear all,
 
-In the module I want to export the symbol I do:
+I have a requirement of dumping all the information on the ram to a load
+file.
+I guess I should read /dev/ramdisk (/dev/ram0) device.
 
-tList list;
-EXPORT_SYMBOL(list);
-
-I compile it and install without any problem.
-
-And in the module I want to use them I declare list with "extern"
-prototype:
-
-extern tList list;
-
-When I compile the module It says me that list is undefined, and I don't
-know what I am doing wrong.
-
-Does anybody know what is happening? 
-
-Maybe a makefile example would be appreciated... 
-
-Thanks in advance.
+Can someone give me pointer of making sure that reading this will give
+me the current ram disk contents?
+Is there a procedure involved in reading its contents? Please update.
 
 Regards,
-
-	Sergio 
-
+Mukund Jampala
+ 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
