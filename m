@@ -1,30 +1,56 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Device used to access the ram on my system?
-Date: Wed, 24 Aug 2005 17:20:52 +0530
-Message-ID: <3AEC1E10243A314391FE9C01CD65429B03CBDC@mail.esn.co.in>
+From: simon guinot <simon.guinot@laposte.net>
+Subject: Re: Exporting symbols between modules
+Date: Wed, 24 Aug 2005 16:59:22 +0200
+Message-ID: <20050824165922.6f0d8c08.simon.guinot@laposte.net>
+References: <1124868488.3073.10.camel@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <1124868488.3073.10.camel@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Sergio Paracuellos <sparacuellos@lock-linux.com>
+Cc: linux-newbie@vger.kernel.org
 
+hello
 
-Dear all,
+On Wed, 24 Aug 2005 09:28:08 +0200
+Sergio Paracuellos <sparacuellos@lock-linux.com> wrote:
 
-I have a requirement of dumping all the information on the ram to a load
-file.
-I guess I should read /dev/ramdisk (/dev/ram0) device.
+> Hi all,
+> 
+> I'm new in this list and I have some problems exporting symbols in a
+> module to see them in other module.
+> 
+> In the module I want to export the symbol I do:
+> 
+> tList list;
+> EXPORT_SYMBOL(list);
 
-Can someone give me pointer of making sure that reading this will give
-me the current ram disk contents?
-Is there a procedure involved in reading its contents? Please update.
+ok... you've better to use the EXPORT_SYMBOL_NOVERS macro to export the symbol whiteout the versioning information...
+don't forget to define EXPORT_SYMTAB before include module.h...
+you can add a -DEXPORT_SYMTAB in your Makefile or a #define EXPORT_SYMTAB before 
+#include <linux/module.h> in your source file...
 
-Regards,
-Mukund Jampala
- 
+> 
+> I compile it and install without any problem.
+> 
+> And in the module I want to use them I declare list with "extern"
+> prototype:
+> 
+> extern tList list;
+> 
+> When I compile the module It says me that list is undefined, and I don't
+> know what I am doing wrong.
+
+a compilation error or a loading error ?
+are you sure to have well defined the type tList in your "client" module ?
+may be a shareed header between your modules is missing :) 
+
+regards
+
+simon
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
