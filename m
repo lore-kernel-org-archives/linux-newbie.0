@@ -1,33 +1,45 @@
-From: "P.Manohar" <pmanohar@lantana.cs.iitm.ernet.in>
-Subject: getting kernel symbols list in FC2
-Date: Wed, 24 Aug 2005 12:19:54 +0530 (IST)
-Message-ID: <Pine.LNX.4.60.0508241215180.17781@lantana.cs.iitm.ernet.in>
-References: <Pine.LNX.4.44.0508120118150.20982-100000@treebeard.engin.umich.edu>
-  <200508130940.51347.pa3gcu@zeelandnet.nl>  <Pine.LNX.4.60.0508141137540.20130@lantana.cs.iitm.ernet.in>
- <4a618d08050814073217c78a5@mail.gmail.com>
+From: Sergio Paracuellos <sparacuellos@lock-linux.com>
+Subject: Exporting symbols between modules
+Date: Wed, 24 Aug 2005 09:28:08 +0200
+Message-ID: <1124868488.3073.10.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4a618d08050814073217c78a5@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-hai,
-    In redhat 9 we can get the kernel symbols list by executing the command
-   /sbin/ksyms -a
-But the same when I do in Fedora core 2,
-it is giving the following error,
-ksyms: QM_MODULES Function not implemented
+Hi all,
 
-I updated the module-init-tools rpm to 3.2.X
-But still the same error I am getting.
+I'm new in this list and I have some problems exporting symbols in a
+module to see them in other module.
 
-Can anybody suggest on this.
+In the module I want to export the symbol I do:
 
-Thanks& Regards
-P.Manohar.
+tList list;
+EXPORT_SYMBOL(list);
+
+I compile it and install without any problem.
+
+And in the module I want to use them I declare list with "extern"
+prototype:
+
+extern tList list;
+
+When I compile the module It says me that list is undefined, and I don't
+know what I am doing wrong.
+
+Does anybody know what is happening? 
+
+Maybe a makefile example would be appreciated... 
+
+Thanks in advance.
+
+Regards,
+
+	Sergio 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
