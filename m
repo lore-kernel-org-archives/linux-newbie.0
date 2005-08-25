@@ -1,7 +1,7 @@
 From: rekha vn <vidiyala_r@yahoo.com>
-Subject: associate an application/viewer
-Date: Wed, 24 Aug 2005 08:44:49 -0700 (PDT)
-Message-ID: <20050824154449.37058.qmail@web40602.mail.yahoo.com>
+Subject: where do folders reside on partition
+Date: Wed, 24 Aug 2005 22:54:29 -0700 (PDT)
+Message-ID: <20050825055430.80228.qmail@web40627.mail.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -10,17 +10,17 @@ List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-i'd like to see the contents of /documentation/changes
-file.i'm unable to open it with gedit/vi/emacs.how do
-i associate it with an application or a viewer?
-what is MIME?
+how can i know the hard disk partition in which the
+various folders reside? 
+the "find" command is giving only the path and not the
+partition on which the folder resides.
 
 
 		
-____________________________________________________
-Start your day with Yahoo! - make it your home page 
-http://www.yahoo.com/r/hs 
- 
+__________________________________ 
+Yahoo! Mail for Mobile 
+Take Yahoo! Mail with you! Check email on your mobile phone. 
+http://mobile.yahoo.com/learn/mail 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
