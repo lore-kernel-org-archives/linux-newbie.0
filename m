@@ -1,31 +1,33 @@
-From: _z33 <timid.Gentoo@gmail.com>
-Subject: contributing to FSF
-Date: Sat, 27 Aug 2005 10:51:46 +0530
-Message-ID: <deot22$agd$1@sea.gmane.org>
+From: Jeff Woods <Kazrak+kernel@cesmail.net>
+Subject: Re: human readable format?
+Date: Fri, 26 Aug 2005 23:32:33 -0600
+Message-ID: <6.2.3.4.0.20050826231813.04377b30@no.incoming.mail>
+References: <deosbv$8ps$1@sea.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <deosbv$8ps$1@sea.gmane.org>
+References: <deosbv$8ps$1@sea.gmane.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: _z33 <timid.Gentoo@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-   I have been using Linux for the past 2 years. I'm still trying to get 
-my feet wet in many programming languages widely used by the GNU/FSF 
-community.
-   My goal has always been to contribute something to the FSF community 
-as I have gained a lot of help and support from them, at various times. 
-But to my disappointment, the complexities of the project maintenance 
-systems, and the correlated rules and guidelines for contributing code, 
-thwart me, most of the times in pursuing any further :(
-   What could prove to be a good starting point for newbie linux 
-enthusiastists like me???
-   Any valuable advices would be greatly appreciated!
+At 8/27/2005 10:39 +0530, _z33 wrote:
+>When using commands like 'ls', 'du' & 'df', I fnd special switches 
+>to the commands that convert the usage details reported by these 
+>programs into human readable format. I am still not able to 
+>understand why these switches aren't enabled by default?
 
+"backward compatibility"
 
-_z33
--- 
-I love TUX; well... that's an understatement :)
+These commands are all used by scripts and other sorts of programs to 
+provide information that's then parsed by the program.  If you change 
+the default behavior you break all those programs.
+
+--
+Jeff Woods <kazrak+kernel@cesmail.net> 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
