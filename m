@@ -1,40 +1,39 @@
-From: "Peter H." <heisspf@skyinet.net>
-Subject: Hang With EHCI_HCD Activated
-Date: Sun, 28 Aug 2005 10:53:11 +0800
-Message-ID: <200508280253.j7S2rBOO000986@meridian.ph>
+From: joy merwin monteiro <joy.merwin@gmail.com>
+Subject: Re: TANSTAAFL (was: Re: contributing to FSF)
+Date: Sun, 28 Aug 2005 11:31:39 +0530
+Message-ID: <4b0d6e0d0508272301ea45700@mail.gmail.com>
+References: <deot22$agd$1@sea.gmane.org>
+	 <6.2.3.4.0.20050826235315.02ca7830@no.incoming.mail>
+	 <deovsg$h3j$1@sea.gmane.org>
+	 <200508272204.15664.wheds8@ms66.hinet.net>
+	 <43109AE4.5000607@comarre.com>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <43109AE4.5000607@comarre.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux <linux-newbie@vger.kernel.org>
 
-Hi,
+Someone please get Ray a PhD in something........
+he has prolly researched this one more than some languauge students ;)
 
-Recently I tried to boot PuppyLinux from a CD and it would hang when this line 
-on the console showed:
+How bout technical writing ???
 
-ehci_hcd 00:10.3: Via Technologies, Inc USB 2.0
+Thesis on "2 Gazillion lines on linux-newbie: a summary (in 1.98
+Gazillion lines)"
 
-Then in slackware 10.1 kernel 2.4.29 I activated EHCI HCD support putting it 
-to yes in USB Support.
+To Ray Olzewski, 
+ THE Dude on newbie...... 3 Cheers!!!!!
 
-When rebooting slackware from the HD the system then hang at exactly the same 
-line.
 
-I then rebooted from the slackware CD and put the old kernel configuration 
-back w/o EHCI HCD support.
-
-My motherboard has USB 2.0 support including EHCI Host Controller core for 
-high speed signaling.
-
-What could be the cause for this hang on booting when EHCI is activated?
-
-Thanks & regrds
 -- 
-Peter
+<ed__> riel: if it were a vax, gcc would probably be an opcode
 
+	- excerpt from #kernelnewbies
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
