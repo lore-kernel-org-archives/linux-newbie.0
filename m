@@ -1,69 +1,44 @@
-From: joy merwin monteiro <joy.merwin@gmail.com>
-Subject: Re: Hang With EHCI_HCD Activated
-Date: Sun, 28 Aug 2005 12:13:00 +0530
-Message-ID: <4b0d6e0d0508272343138d546b@mail.gmail.com>
-References: <200508280253.j7S2rBOO000986@meridian.ph>
-Reply-To: joy_mm@ieee.org
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: iptables problem.
+Date: Sun, 28 Aug 2005 17:53:22 +0200
+Message-ID: <200508281753.22543.pa3gcu@zeelandnet.nl>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200508280253.j7S2rBOO000986@meridian.ph>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Peter H." <heisspf@skyinet.net>
-Cc: linux <linux-newbie@vger.kernel.org>
+To: linux <linux-newbie@vger.kernel.org>
 
-Hi,
+Hi All.
 
-Googled around and found a guy with similar problems.
-Via USB 2.0 controller, with ehci-hcd hung with 2.6 though.....
-He had recently upgraded his BIOS, started after that......
+Has anybody every tryed getting a VPN connection thro his/her firewall here on 
+this list.??
+I can get it to work no problem with iptables FORWARD ALLOW, but not when i 
+use my default setting of, FORWARD DENY and;
 
-Any similarities????
-prolly something for someone more experienced to talk bout..
+iptables -t nat -A PREROUTING -i eth0 -p tcp -d x.x.x.x --dport 1723 -j DNAT \ 
+--to 10.11.12.28:1723
+iptables -A FORWARD -i eth0 -o eth1 -p tcp -d 10.11.12.28 --dport 1723 -j \ 
+ACCEPT
 
-Joy
+I also tryed the following.
 
-On 8/28/05, Peter H. <heisspf@skyinet.net> wrote:
-> Hi,
-> 
-> Recently I tried to boot PuppyLinux from a CD and it would hang when this line
-> on the console showed:
-> 
-> ehci_hcd 00:10.3: Via Technologies, Inc USB 2.0
-> 
-> Then in slackware 10.1 kernel 2.4.29 I activated EHCI HCD support putting it
-> to yes in USB Support.
-> 
-> When rebooting slackware from the HD the system then hang at exactly the same
-> line.
-> 
-> I then rebooted from the slackware CD and put the old kernel configuration
-> back w/o EHCI HCD support.
-> 
-> My motherboard has USB 2.0 support including EHCI Host Controller core for
-> high speed signaling.
-> 
-> What could be the cause for this hang on booting when EHCI is activated?
-> 
-> Thanks & regrds
-> --
-> Peter
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 1723 -j DNAT --to \ 
+10.11.12.28
+iptables -t nat -A PREROUTING -i eth0 -p 47 -j DNAT --to 10.11.12.28
 
+I have used google and found plenty of folks with my problem, but i can seem 
+to find a mail or faq site actually giving the solution.
+
+Yes this mail may seem vauge because it possably is, but if you are a net-guru 
+i certainly can supply more info and possably my whole iptables script 
+off-line of course.
 
 -- 
-<ed__> riel: if it were a vax, gcc would probably be an opcode
-
-	- excerpt from #kernelnewbies
+Regards Richard.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
