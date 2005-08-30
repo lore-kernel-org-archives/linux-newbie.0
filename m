@@ -1,44 +1,37 @@
-From: Richard Adams <pa3gcu@zeelandnet.nl>
-Subject: iptables problem.
-Date: Sun, 28 Aug 2005 17:53:22 +0200
-Message-ID: <200508281753.22543.pa3gcu@zeelandnet.nl>
-Reply-To: pa3gcu@zeelandnet.nl
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: How to change PCI Configuration space?
+Date: Tue, 30 Aug 2005 13:47:12 +0900
+Message-ID: <b115cb5f0508292147de16584@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux <linux-newbie@vger.kernel.org>
+To: pcihpd-discuss@lists.sourceforge.net, linux-newbie@vger.kernel.org, kenux-kernel@vger.kernel.org
+Cc: dkumar@noida.hcltech.com, "Sanjay Kumar, Noida" <sanjayku@hcltech.com>, rajat.noida.india@gmail.com
 
-Hi All.
+Hi List,
 
-Has anybody every tryed getting a VPN connection thro his/her firewall here on 
-this list.??
-I can get it to work no problem with iptables FORWARD ALLOW, but not when i 
-use my default setting of, FORWARD DENY and;
+I want to change the PCI Configuration space of a particular device in
+my system. I am trying to use the "pcitweak" utility to do so, but am
+not suceeding. I would appreciate if some body could provide me any
+pointers in how to do so.
 
-iptables -t nat -A PREROUTING -i eth0 -p tcp -d x.x.x.x --dport 1723 -j DNAT \ 
---to 10.11.12.28:1723
-iptables -A FORWARD -i eth0 -o eth1 -p tcp -d 10.11.12.28 --dport 1723 -j \ 
-ACCEPT
+In this case, I want to change the value at offset 64:
 
-I also tryed the following.
+$ pcitweak -r 5:9:1 64
+0x01000001                 //original value
 
-iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 1723 -j DNAT --to \ 
-10.11.12.28
-iptables -t nat -A PREROUTING -i eth0 -p 47 -j DNAT --to 10.11.12.28
+$ pcitweak -w 5:9:1 64 0x02000002      //new value
 
-I have used google and found plenty of folks with my problem, but i can seem 
-to find a mail or faq site actually giving the solution.
+$ pcitweak -r 5:9:1 64
+0x01000001                //no change?
 
-Yes this mail may seem vauge because it possably is, but if you are a net-guru 
-i certainly can supply more info and possably my whole iptables script 
-off-line of course.
+TIA,
 
--- 
-Regards Richard.
+Rajat Jain
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
