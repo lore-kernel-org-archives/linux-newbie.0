@@ -1,42 +1,34 @@
-From: Yawar Amin <yawar.amin@gmail.com>
-Subject: Re: understanding netstat -ap
-Date: Mon, 19 Sep 2005 04:10:26 +0800
-Message-ID: <efc7f7d0050918131057cb52d8@mail.gmail.com>
-References: <Pine.LNX.4.44.0509180129530.10191-100000@treebeard.engin.umich.edu>
-	 <432D80BD.80403@comarre.com> <200509181455.38918.eric@cisu.net>
-Reply-To: yawar.amin@gmail.com
+From: Matthew Wilcox <matthew@wil.cx>
+Subject: Re: [Pcihpd-discuss] How to change PCI Configuration space?
+Date: Tue, 30 Aug 2005 14:11:49 +0100
+Message-ID: <20050830131149.GK26314@parcelfarce.linux.theplanet.co.uk>
+References: <b115cb5f0508292147de16584@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200509181455.38918.eric@cisu.net>
 Content-Disposition: inline
+In-Reply-To: <b115cb5f0508292147de16584@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: pcihpd-discuss@lists.sourceforge.net, linux-newbie@vger.kernel.org, kenux-kernel@vger.kernel.org, dkumar@noida.hcltech.com, "Sanjay Kumar, Noida" <sanjayku@hcltech.com>
 
-On 9/19/05, Eric Bambach <eric@cisu.net> wrote:
-[...]
->  Although it wont stop the connections, what pam_abl does is auto-blacklist
-> the host after so many failed attempts. They can still try to log in and it
-> looks like they're authenticating but even if they have a correct
-> username/password pair they will be denied! Its quite a nifty module. 
-[...]
+On Tue, Aug 30, 2005 at 01:47:12PM +0900, Rajat Jain wrote:
+> I want to change the PCI Configuration space of a particular device in
+> my system. I am trying to use the "pcitweak" utility to do so, but am
+> not suceeding. I would appreciate if some body could provide me any
+> pointers in how to do so.
 
-We're facing this problem also. We've considered auto-blacklisting
-hosts like you say, but what if these hosts are actually simply
-zombies taken over for launching brute force attacks, or external IP
-addresses for a whole range of NAT'd hosts, any one of which might be
-the attacker, and the rest innocent bystanders?
-
-You could remove them from the blacklist after a while, perhaps. Or
-maybe not. The problem remains: how to blacklist them very swiftly
-when it's decided they're trying a brute force, and then whitelist
-them again after a while so that nobody else suffers because of the
-bad guys.
+Don't use pcitweak.  Use setpci instead.
 
 -- 
-Yawar
+"Next the statesmen will invent cheap lies, putting the blame upon 
+the nation that is attacked, and every man will be glad of those
+conscience-soothing falsities, and will diligently study them, and refuse
+to examine any refutations of them; and thus he will by and by convince 
+himself that the war is just, and will thank God for the better sleep 
+he enjoys after this process of grotesque self-deception." -- Mark Twain
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
