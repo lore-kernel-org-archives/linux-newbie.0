@@ -1,25 +1,196 @@
-From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
-Subject: Re: where can I get ext3 patch for linux-2.4.1
-Date: Thu, 1 Sep 2005 11:30:17 +0300
-Message-ID: <4a618d0805090101301d19c27d@mail.gmail.com>
-References: <20050901071236.31523.qmail@web60525.mail.yahoo.com>
+From: James Miller <jamtat@mailsnare.net>
+Subject: X (core input device) probs under Debian unstable; solution?
+Date: Thu, 1 Sep 2005 10:44:14 -0500 (CDT)
+Message-ID: <Pine.LNX.4.61.0509011029380.4985@localhost.localdomain>
+References: <Pine.LNX.4.61.0508181052110.3106@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1751085AbVIAIa0@vger.kernel.org>
-In-Reply-To: <20050901071236.31523.qmail@web60525.mail.yahoo.com>
-Content-Disposition: inline
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <Pine.LNX.4.61.0508181052110.3106@localhost.localdomain>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: mhb <badrpayam@yahoo.com>
-Cc: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-> Hi
-> 
-> Most of the related sites has ext3 patches for 2.4
-> kernels but I could not found any for 2.4.1.
-> where can I find It?
+I finally got around to trying more earnestly to tackle this problem. 
+The motivation was that I lost CD burning capability by reverting to the 
+2.4.27 kernel (the kernel that actually gave me a working mouse and thus a 
+working X) and I finally needed to get it back.  Searching the internet I 
+was able to find some information that got the mouse, and thus the gui, 
+working again.
 
-I think you are using way too old kernel, consider an upgrade...
+Before searching the 'net, I actually decided I might try upgrading the 
+xserver to xorg. I did that, and ran dpkg-reconfigure xserver-xorg, trying 
+various mouse options, but the core pointer still was not found and the 
+gui wouldn't start.  That's when I started searching the 'net.
 
-Arturas M.
+I found a message on the debian-users list that mentioned modprobing or 
+adding to /etc/modules psmouse and mousedev. I tried modprobing them in 
+that order and then running startx and, sure enough, the gui fired up and 
+I had a working mouse. I decided to add mousedev to /etc/modules and 
+reboot to see if that would do the trick. Having done that, the gui 
+started but the mouse wasn't working (cursor did not respond to mouse 
+movements). So I added psmouse before mousedev in /etc/modules and 
+rebooted.  After this, the gui fired up fine plus I had a responsive mouse 
+cursor.  So, the problem I had is pretty much solved (for now, at least).
+
+Why did this happen?  My guess is that since the mouse module wasn't 
+getting loaded, no device node was created for it.  Just a guess: I'm not 
+techie enough to say for sure.  But one of the tests I ran when I was 
+searching out this problem, which involved running od -tx1 /dev/psaux and 
+od -tx1 /dev/input/mice, did indicate that these device nodes were 
+non-existent.  Maybe more experienced brains than mine on this list can 
+figure out why this happened.  At least I've found a solution.
+
+James
+
+On Thu, 18 Aug 2005, James Miller wrote:
+
+> Some new problems have cropped up since I dist-upgraded my Debian unstable 
+> install. Odd that they did not show up immediately after the dist-upgrade, 
+> but only now after having rebooted several times. The most recent reboot was 
+> necessitated by a momentary power failure.
+>
+> So, here's the problem: X won't start. It has a problem finding a core input 
+> device--the mouse. I haven't touched XFConfig-4 for a couple of months, which 
+> deepens the mystery. Here is some relevant output from 
+> /var/log/XFree86.0.log:
+>
+> XFree86 Version 4.3.0.1 (Debian 4.3.0.dfsg.1-14 20050601051219 
+> fabbione@fabbione.net)
+> <snip>
+> (II) Keyboard "Generic Keyboard" handled by legacy driver
+> (**) Option "Protocol" "PS/2"
+> (**) Configured Mouse: Protocol: "PS/2"
+> (**) Option "CorePointer"
+> (**) Configured Mouse: Core Pointer
+> (**) Option "Device" "/dev/psaux"
+> (EE) xf86OpenSerial: Cannot open device /dev/psaux
+> 	No such file or directory.
+> (EE) Configured Mouse: cannot open input device
+> (EE) PreInit failed for input device "Configured Mouse"
+> (II) UnloadModule: "mouse"
+> (WW) No core pointer registered
+> No core pointer
+>
+> Fatal server error:
+> failed to initialize core devices
+>
+> This newly-discovered failure seems to have to do with the 2.6.x kernels, and 
+> possibly udev. I say this because, in order to get a working gui, I've had to 
+> boot using an older 2.4.27 kernel I have on the system. When I boot using 
+> that kernel, everything works fine: no failure of core input devices or X 
+> refusing to start. But when I try booting with either of the other two 2.6.x 
+> kernels (2.6.10 or 2.6.12), I get the failure message above.
+>
+> For further reference, let me include an excerpt from my XF86Config-4 file:
+>
+> # XF86Config-4 (XFree86 X Window System server configuration file)
+> #
+> # This file was generated by dexconf, the Debian X Configuration tool, using
+> # values from the debconf database.
+> #
+> # Edit this file with caution, and see the XF86Config-4 manual page.
+> # (Type "man XF86Config-4" at the shell prompt.)
+> #
+> # This file is automatically updated on xserver-xfree86 package upgrades 
+> *only*
+> # if it has not been modified since the last upgrade of the xserver-xfree86
+> # package.
+> #
+> # If you have edited this file but would like it to be automatically updated
+> # again, run the following commands as root:
+> #
+> #   cp /etc/X11/XF86Config-4 /etc/X11/XF86Config-4.custom
+> #   md5sum /etc/X11/XF86Config-4 >/var/lib/xfree86/XF86Config-4.md5sum
+> #   dpkg-reconfigure xserver-xfree86
+> <snip>
+>
+> Section "InputDevice"
+> 	Identifier	"Generic Keyboard"
+> 	Driver		"keyboard"
+> 	Option		"CoreKeyboard"
+> 	Option		"XkbRules"	"xfree86"
+> 	Option		"XkbModel"	"pc104"
+> 	Option		"XkbLayout"	"us"
+> EndSection
+>
+> Section "InputDevice"
+> 	Identifier	"Configured Mouse"
+> 	Driver		"mouse"
+> 	Option		"CorePointer"
+> 	Option		"Device"		"/dev/psaux"
+> 	Option		"Protocol"		"PS/2"
+> 	Option		"Emulate3Buttons"	"true"
+> EndSection
+>
+> Section "Device"
+> 	Identifier	"ATI Rage 3D"
+> 	Driver		"ati"
+> EndSection
+>
+> Section "Monitor"
+> 	Identifier	"MAG 765"
+> 	HorizSync	63.98
+> 	VertRefresh	60.02
+> 	Option		"DPMS"
+> EndSection
+>
+> Section "Screen"
+> 	Identifier	"Default Screen"
+> 	Device		"ATI Rage 3D"
+> 	Monitor		"MAG 765"
+> 	DefaultDepth	24
+> 	SubSection "Display"
+> 		Depth		1
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> 	SubSection "Display"
+> 		Depth		4
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> 	SubSection "Display"
+> 		Depth		8
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> 	SubSection "Display"
+> 		Depth		15
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> 	SubSection "Display"
+> 		Depth		16
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> 	SubSection "Display"
+> 		Depth		24
+> 		Modes		"1280x1024"
+> 	EndSubSection
+> EndSection
+>
+> Section "ServerLayout"
+> 	Identifier	"Default Layout"
+> 	Screen		"Default Screen"
+> 	InputDevice	"Generic Keyboard"
+> 	InputDevice	"Configured Mouse"
+> EndSection
+>
+> Section "DRI"
+> 	Mode	0666
+> EndSection
+>
+> Any ideas what I might do to get this situation rectified? The mouse is a ps2 
+> for sure. It's a little unusual--sort of a mini-trackball type thing. But 
+> I've never before had any problem with it when specifying it as a generic ps2 
+> mouse. It's worked fine for a few months on this same machine prior to the 
+> dist-upgrade mentioned. When I took Chuck Gelm's advice and used smartd to 
+> look for problematic hard drive output, I did see some output related to the 
+> mouse. I can't recall the specifics, unfortunately.
+>
+> Input geared toward resolving this problem will be appreciated.
+>
+> James
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
