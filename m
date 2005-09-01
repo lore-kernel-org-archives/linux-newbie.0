@@ -1,30 +1,25 @@
 From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
-Subject: Re: RHEL 3 hardware list
-Date: Thu, 01 Sep 2005 11:23:39 +0300
-Message-ID: <1125563019.2545.1.camel@athlon>
-References: <20050901064043.87756.qmail@web40605.mail.yahoo.com>
+Subject: Re: where can I get ext3 patch for linux-2.4.1
+Date: Thu, 1 Sep 2005 11:30:17 +0300
+Message-ID: <4a618d0805090101301d19c27d@mail.gmail.com>
+References: <20050901071236.31523.qmail@web60525.mail.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20050901064043.87756.qmail@web40605.mail.yahoo.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1751085AbVIAIa0@vger.kernel.org>
+In-Reply-To: <20050901071236.31523.qmail@web60525.mail.yahoo.com>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: rekha vn <vidiyala_r@yahoo.com>
-Cc: linux-newbie@vger.kernel.org
+To: mhb <badrpayam@yahoo.com>
+Cc: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
+> Hi
+> 
+> Most of the related sites has ext3 patches for 2.4
+> kernels but I could not found any for 2.4.1.
+> where can I find It?
 
-> i'd like to have the hardware compatability list    of
-> rhel 3(kernel 2.4.21-4).thanks in advance
+I think you are using way too old kernel, consider an upgrade...
 
-You should ask vendor (Red Hat) about compatibility list not
-linux-newbie maillist. It is vendor specific question...
-
-
-Arturas M. 
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Arturas M.
