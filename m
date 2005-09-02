@@ -1,150 +1,69 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: kernel log messages and disk space
-Date: Thu, 01 Sep 2005 18:50:24 -0700
-Message-ID: <4317AFE0.4080600@comarre.com>
-References: <Pine.LNX.4.44.0509012049410.4730-100000@treebeard.engin.umich.edu>
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: ACPI problem with PCI Express Native Hot-plug driver
+Date: Fri, 2 Sep 2005 16:57:33 +0900
+Message-ID: <b115cb5f0509020057741365dc@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0509012049410.4730-100000@treebeard.engin.umich.edu>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1030451AbVIBH5h@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-newbie@vger.kernel.org, linux-hotplug-devel@lists.sourceforge.net, acpi-devel@lists.sourceforge.net, pcihpd-discuss@lists.sourceforge.net, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org
+Cc: greg@kroah.com, dkumar@noida.hcltech.com, sanjayku@noida.hcltech.com
 
-OK, Karthik. With the extra information, I'm adding the list back in, 
-since other might have a more helpful response than I. Specifics below.
+Hi,
 
-Karthik Vishwanath wrote:
-> On Thu, 1 Sep 2005, at 17:14, Ray Olszewski wrote to Karthik Vishwanath:
-> 
-> 
->>I'm sorry, Karthik, but this information doesn't make sense to me.
->>
->>Normally, hda1 would be a partition, not a drive, so I really do not 
->>understand what all this output means. If it is something that makes 
->>sense ... say one of those old versions of Linux that boot from a DOS 
->>directory ... you'll need describe the setup.
->>
->>If not, I'd want to see an fdisk for /dev/hda (the drive itself), not 
->>for a partition.
->>
->>Also, if you look back at my Aug 21 message, I asked for more 
->>information than a partition table. Please provide it.
->>
-> 
+I'm using RHEL4 kernel (2.6.9), and am trying to make PCI Express
+Native Hot-plug driver (pciehp) work on my system (My system has two
+hot-pluggable PCI Express slots). I am facing following problem, and
+would really appreciate if any one can provide any info regarding this
+problem.
 
-Just a reminder for others; the original issue was that the logs were 
-filling up with messages of this sort (I'm picking a representative 
-example):
+When I disable the ACPI support in my kernel configuration, the
+("non-acpi") pciehp driver inserts successfully and I see the
+following two entries appearing in my /sys/bus/pci/slots:
 
-	Aug 18 07:38:18 mithrandir kernel: attempt to access
-		beyond end of device
-	Aug 18 07:38:18 mithrandir kernel: 03:01: rw=0,
-		want=2031123176, limit=13277691
+drwxr-xr-x  2 root root 0 Sep  2 14:28 10
+drwxr-xr-x  2 root root 0 Sep  2 14:28 11
 
-> 
-> Heres all the information you had requested, i.e. all of which I could get 
-> without asking you more for clarification...
-> 
-> 1. df 
-> 
-> Filesystem           1K-blocks      Used Available Use% Mounted on
-> /dev/hdb2             11535376   2731884   8217524  25% /
-> tmpfs                   257164         0    257164   0% /dev/shm
-> /dev/hdb3             11519672   9960692    973816  92% /home
-> /dev/hdb1             53676064  33833024  19843040  64% /dosd
-> /dev/hda1             13264712   4129016   9135696  32% /dosc
+However, when I enable the ACPI support in the kernel, the controller
+initialization fails giving me following error (excerpts):
 
-This suggests no problem.
+......
+......
+pciehp: pfar:cannot locate acpi bridge of PCI 0xb.
+pciehp: pciehprm_find_available_resources = 0xffffffff
+pciehp: unable to locate PCI configuration resources for hot plug add.
+......
+......
+pciehp: pfar:cannot locate acpi bridge of PCI 0xe.
+pciehp: pciehprm_find_available_resources = 0xffffffff
+pciehp: unable to locate PCI configuration resources for hot plug add.
+......
+......
 
-> 2. fdisk /dev/hda: 
-> 
-> The number of cylinders for this disk is set to 1653.
-> There is nothing wrong with that, but this is larger than 1024,
-> and could in certain setups cause problems with:
-> 1) software that runs at boot time (e.g., old versions of LILO)
-> 2) booting and partitioning software from other OSs
->    (e.g., DOS FDISK, OS/2 FDISK)
-> 
-> Command (m for help): p
-> 
-> Disk /dev/hda: 13.6 GB, 13601193984 bytes
-> 255 heads, 63 sectors/track, 1653 cylinders
-> Units = cylinders of 16065 * 512 = 8225280 bytes
-> 
->    Device Boot      Start         End      Blocks   Id  System
-> /dev/hda1   *           1        1653    13277691    c  W95 FAT32 (LBA)
+I am attaching both the logs (The one with ACPI enabled and giving
+this error, the other - ACPI disabled and displaying the slot
+entries). I am not sure where the problem lies. But the fact that the
+entries are appearing correctly when I disable ACPI, combined with
+above error messages, I suspect that there is a problem with ACPI
+namespace (probably the resources cannot be found using ACPI).
 
-This is consistent with the df output and tells us that there is nothing 
-ugly about how the partition is positioned on the disk. It also tells us 
-that the partition hda1 occupies all of the drive hda.
+I have two questions:
 
-> 3. reports by dmesg on boot wrt ide info
-> 
->     ide0: BM-DMA at 0xff00-0xff07, BIOS settings: hda:DMA, hdb:DMA
->     ide1: BM-DMA at 0xff08-0xff0f, BIOS settings: hdc:DMA, hdd:DMA
-> hda: WDC WD136AA, ATA DISK drive
-> hdb: ST380020A, ATA DISK drive
-> hdc: CD-RW 48X24, ATAPI CD/DVD-ROM drive
-> hdd: CRD-8322B, ATAPI CD/DVD-ROM drive
-> ide0 at 0x1f0-0x1f7,0x3f6 on irq 14
-> ide1 at 0x170-0x177,0x376 on irq 15
-> hda: 26564832 sectors (13601 MB) w/2048KiB Cache, CHS=26354/16/63, 
-> UDMA(33)
-> hdb: 156301488 sectors (80026 MB) w/2048KiB Cache, CHS=155061/16/63, 
-> UDMA(100)
-> Partition check:
->  /dev/ide/host0/bus0/target0/lun0: [PTBL] [1653/255/63] p1
->  /dev/ide/host0/bus0/target1/lun0: [PTBL] [9729/255/63] p1 p2 p3 p4
-> ext3: No journal on filesystem on ide0(3,66)
+1) How can I go about tackling this problem? The possibility of BIOS /
+Hardware being faulty cannot be ruled out. But then what exactly is
+missing and how can that be solved?
 
-These last 3 lines are new to me (at least for ide devices). That may 
-just mean you're running a newer kernel than I (I run 2.4.27 here, on my 
-main Linux host).
+2) If the resources are actually missing, then how does the driver
+find the required resources when I disable the ACPI from kernel?
 
-> 4. (from email of 21-Aug: output of "free" (both lines) run proximate to 
-> the messages in the logs) - I didn't quite get what you were asking. I 
-> thought it must be the out of free
-> 
->              total       used       free     shared    buffers     cached
-> Mem:        514332     506868       7464          0       9008     307692
-> -/+ buffers/cache:     190168     324164
-> Swap:      1036184        408    1035776
+Even if no body had faced this problem before, I would really
+appreciate if any one can provide ANY kind of pointers / information
+regarding this (As I am willing to explore and solve this, no matter
+what :-))
 
-Sorry I was not clearer here. I meant that I'd like to see (or have you 
-check) the output of "free" from a time when you are getting these 
-errors logged  ... to see they are associated with filling up RAM as 
-reported on the second line, or with just starting to use swap. If so, 
-it may mean you have either a bad spot high in RAM, or a bad swap 
-partition, but it rarely matters because you rarely use the problem 
-area. This is really a long shot, but not so long that I haven't 
-actually experienced it, so I though it worth asking.
-> 
-> The machine has not had any kind of an "update", except being physically
-> relocated a few miles in space (in newer, better, cooler apartment :-)
+TIA
 
-Good for you. (I assume you too were relocated.)
-
-> There should almost be no hard drive activity on hda1 (hence, not mounting
-> it avoids the original issue), from any activity that I am cognizant
-> about, that I use the system for.
-
-Well, any port in a storm, as they say, so this may be your best 
-solution. And much as I hate to say it (since this is Linux, not 
-Windows), occasionally this sort of thing can be a soft problem that 
-gets fixed by a reboot (I had a quite different filesystem problem last 
-week, where the kernel couldn't read some directories, that a reboot 
-completely solved).
-
-You originally said the timestamps were "quite varied", so I didn't 
-really ask myself if some particular process might be causing the 
-errors. But I'd suggest you think if there is some regular cron job (one 
-example is updating the "locate" database) that is associated in time 
-with the errors.
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Rajat Jain
