@@ -1,50 +1,49 @@
-From: Kristen Accardi <kristen.c.accardi@intel.com>
-Subject: Re: [Pcihpd-discuss] Re: ACPI problem with PCI Express Native
-	Hot-plug driver
-Date: Fri, 02 Sep 2005 10:46:28 -0700
-Message-ID: <1125683188.13185.5.camel@whizzy>
-References: <b115cb5f0509020057741365dc@mail.gmail.com>
-	 <b115cb5f050902005877607db1@mail.gmail.com>
+From: pepo <r4mz3z@yahoo.es>
+Subject: accept some IP/users deny others
+Date: Fri, 2 Sep 2005 22:39:20 -0500
+Message-ID: <200509022239.21591.r4mz3z@yahoo.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <b115cb5f050902005877607db1@mail.gmail.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: Linux-newbie@vger.kernel.org, linux-hotplug-devel@lists.sourceforge.net, acpi-devel@lists.sourceforge.net, pcihpd-discuss@lists.sourceforge.net, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, greg@kroah.com, dkumar@noida.hcltech.com, sanjayku@noida.hcltech.com
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
->  
-> > Even if no body had faced this problem before, I would really
-> > appreciate if any one can provide ANY kind of pointers / information
-> > regarding this (As I am willing to explore and solve this, no matter
-> > what :-))
-> > 
-> > TIA
-> > 
-> > Rajat Jain
-> >
+Hi friends...
 
-Hello,
-Would you be willing to test the mainline kernel (2.6.13) to see if you
-have the same problem with the most recent version of the driver?  And
-attach the logs again please.
+        I am using exim4 (exim4-daemon-light) 4.52-1 in my Sarge, and I hav=
+e a=20
+little=20
+LAN (PC1:192.168.1.1, PC2:192.168.1.2, PC3:192.168.1.3) the first is my box.
 
-Thanks,
-Kristen
+        Please, how do I accept any local mail in my LAN, but just=20
+PC2:192.168.1.2=20
+can send mails to Internet? and if you can help me with the same but only f=
+ew=20
+users can send to Internet.
+
+        I hope that you can help me, it is urgent for me.
+
+Thanks
+
+--=20
+           Linux User Registered #232544
+             Jabber : pepo@jabberes.org
+                ICQ : 337889406
+          GnuPG-key : www.keyserver.net
+---------------- -------------------------------
+                   dum loquimur, fugerit invida
+aetas: carpe diem, quam minimum credula postero.
 
 
---
-Kernelnewbies: Help each other learn about the Linux kernel.
-Archive:       http://mail.nl.linux.org/kernelnewbies/
-FAQ:           http://kernelnewbies.org/faq/
+_____________________________________=20
+Este mensaje ha sido analizado por el
+Servicio Gratuito de Protecci=F3n contra Virus de E-mail de EtapaOnLine.
 
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
