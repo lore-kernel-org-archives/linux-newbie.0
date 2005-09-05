@@ -1,35 +1,58 @@
-From: Rajat Jain <rajat.noida.india@gmail.com>
-Subject: Re: [Pcihpd-discuss] Re: ACPI problem with PCI Express Native Hot-plug driver
-Date: Mon, 5 Sep 2005 10:58:01 +0900
-Message-ID: <b115cb5f05090418583abfc73@mail.gmail.com>
-References: <b115cb5f0509020057741365dc@mail.gmail.com>
-	 <b115cb5f050902005877607db1@mail.gmail.com>
-	 <1125683188.13185.5.camel@whizzy>
+From: Stephen Samuel <samuel@bcgreen.com>
+Subject: Re: what do the dots mean?
+Date: Mon, 05 Sep 2005 09:04:21 -0700
+Message-ID: <431C6C85.1050403@bcgreen.com>
+References: <dfeaqa$qch$1@sea.gmane.org> <20050904120533.40576.qmail@web61014.mail.yahoo.com> <dfeo9p$m08$1@sea.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1125683188.13185.5.camel@whizzy>
-Content-Disposition: inline
+In-Reply-To: <dfeo9p$m08$1@sea.gmane.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Kristen Accardi <kristen.c.accardi@intel.com>
-Cc: Linux-newbie@vger.kernel.org, linux-hotplug-devel@lists.sourceforge.net, acpi-devel@lists.sourceforge.net, pcihpd-discuss@lists.sourceforge.net, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, greg@kroah.com, dkumar@noida.hcltech.com, sanjayku@noida.hcltech.com
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: _z33 <timid.Gentoo@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-> 
-> Hello,
-> Would you be willing to test the mainline kernel (2.6.13) to see if you
-> have the same problem with the most recent version of the driver?  And
-> attach the logs again please.
-> 
-> Thanks,
-> Kristen
-> 
-> 
+No the second dot does NOT disappear... Watch  your output closely.
+You should also get yourself a linux distribution ( www.knoppix.org
+has bootable CD or DVD images ).  and try the command 'man ctime'
+(the reason why I say that is that is that 'PAUSE' is a DOS command)
 
-Thanks, for the inputs. I will test it with 2.6.13 and get back.
+The %.24s says "Only print the first 24 characters of the output
+from 'ctime'.  You see, the output from ctime includes a newline as
+the last (25th) character of it's output,  so  %.24s chops off the output
+just before the newline.
 
-Rajat
+I.e. the resultint output is   <DATE>\n.\n
+
+The trailing dot is now on the next line.
+
+_z33 wrote:
+
+> sumit kalra wrote:
+>
+>> Well, the first dot along with the 24 (%.24s) specifies to printf to 
+>> print only 24 characters of the
+>> string.
+>>
+>> Second dot is a full stop after the string. :-)
+>>
+>
+> Thanks for the info.
+>
+> But in that case when you remove the first dot you should be able to 
+> see the second dot for sure, right? But the moment I remove the first 
+> dot, the second dot disappears from the output.
+
+        printf("It's %.24s.\n", ctime(&now));
+        system ("PAUSE");
+
+-- 
+Stephen Samuel +1(604)876-0426                samuel@bcgreen.com
+		   http://www.bcgreen.com/~samuel/
+   Powerful committed communication. Transformation touching
+     the jewel within each person and bringing it to light.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
