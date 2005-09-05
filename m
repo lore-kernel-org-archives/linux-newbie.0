@@ -1,58 +1,35 @@
-From: Tobias Hirning <Tobias.Hirning@gmx.de>
-Subject: Re: remote job execution via xterm
-Date: Sun, 4 Sep 2005 15:51:00 +0200
-Message-ID: <200509041551.42753.Tobias.Hirning@gmx.de>
-References: <Pine.LNX.4.44.0509032209490.11321-100000@treebeard.engin.umich.edu>
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: Re: [Pcihpd-discuss] Re: ACPI problem with PCI Express Native Hot-plug driver
+Date: Mon, 5 Sep 2005 10:58:01 +0900
+Message-ID: <b115cb5f05090418583abfc73@mail.gmail.com>
+References: <b115cb5f0509020057741365dc@mail.gmail.com>
+	 <b115cb5f050902005877607db1@mail.gmail.com>
+	 <1125683188.13185.5.camel@whizzy>
 Mime-Version: 1.0
-Content-Type: multipart/signed;
-  boundary="nextPart2028851.Muu98Aks4b";
-  protocol="application/pgp-signature";
-  micalg=pgp-sha1
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0509032209490.11321-100000@treebeard.engin.umich.edu>
+In-Reply-To: <1125683188.13185.5.camel@whizzy>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Kristen Accardi <kristen.c.accardi@intel.com>
+Cc: Linux-newbie@vger.kernel.org, linux-hotplug-devel@lists.sourceforge.net, acpi-devel@lists.sourceforge.net, pcihpd-discuss@lists.sourceforge.net, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, greg@kroah.com, dkumar@noida.hcltech.com, sanjayku@noida.hcltech.com
 
---nextPart2028851.Muu98Aks4b
-Content-Type: text/plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
+> 
+> Hello,
+> Would you be willing to test the mainline kernel (2.6.13) to see if you
+> have the same problem with the most recent version of the driver?  And
+> attach the logs again please.
+> 
+> Thanks,
+> Kristen
+> 
+> 
 
-Hi,
-On Sunday, 4. September 2005 04:37 Karthik Vishwanath wrote:
-> [...]
-> What is going on? How can I ensure that ssh terminates and
-> disconnects from the session without me having to do all of the
-> above and making sure that the executable stays alive?
-You can use nohup.
+Thanks, for the inputs. I will test it with 2.6.13 and get back.
 
-nohup ./your_program &
-
-The ouput of the program will be written to nohup.log
-Tobias
-=2D-=20
-GPG-Fingerprint: C39E 5381 7721 8613 B5C9  CFAF 54FC B8DB D02D 7085
-Registered Linux-User #367044
-Registered Linux-Machine #262062
-http://counter.li.org
-Diese E-Mail wurde mit einer fortgeschrittenen elektronischen
-Signatur nach =C2=A72 2. d) SigG signiert.
-
---nextPart2028851.Muu98Aks4b
-Content-Type: application/pgp-signature
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.5 (GNU/Linux)
-
-iD8DBQBDGvvuVPy429AtcIURAgZBAJ0fYCyL68Ao/m+7LeRZDfqR1y41ZgCdEWV9
-+/AoPqOInasmsfm9/0lQ0yw=
-=5o2c
------END PGP SIGNATURE-----
-
---nextPart2028851.Muu98Aks4b--
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
