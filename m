@@ -1,7 +1,7 @@
-From: Aroop Maliakkal <aroop@poornam.com>
+From: Aroop Maliakkal <mparoop@gmail.com>
 Subject: Re: server hangs after sometime on starting apache
-Date: Sun, 11 Sep 2005 14:45:06 +0600
-Message-ID: <4323EE92.9040204@poornam.com>
+Date: Sun, 11 Sep 2005 14:45:23 +0600
+Message-ID: <4323EEA3.1020404@gmail.com>
 References: <432392F2.4010002@gmail.com> <4a618d0805091102004400f1d7@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -11,7 +11,7 @@ Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: arturas.moskvinas@gmail.com
-Cc: Aroop Maliakkal <mparoop@gmail.com>, newbie <linux-newbie@vger.kernel.org>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
 Hi,
 
@@ -31,7 +31,6 @@ sending a SIGTERM
 sending a SIGTERM
 [Sun Sep 11 13:53:15 2005] [warn] child process 849 still did not exit, 
 sending a SIGTERM
-
 Arturas Moskvinas wrote:
 
 >>When i restart apache, the memory usage shoots up to 1041M  after some
@@ -62,28 +61,9 @@ Arturas Moskvinas wrote:
 >on linux-newbie...
 >
 >Arturas M.
->-
->To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->the body of a message to majordomo@vger.kernel.org
->More majordomo info at  http://vger.kernel.org/majordomo-info.html
->Please read the FAQ at http://www.linux-learn.org/faqs
->
 >
 >  
 >
-
-
--- 
-Regards,
-Aroop Maliakkal
-Software Engineer.
-Poornam Info Vision Pvt. Ltd. 
-http://poornam.com/ & http://bobcares.com/ 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- At a certain point in our lives, we lose control of what's happening to us, and our lives become controlled by fates. 
- That's the world's greatest lie. Whoever you are, or whatever it is that you do, when you really want something, all the 
-  universe conspires in helping you achieve it.  
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
