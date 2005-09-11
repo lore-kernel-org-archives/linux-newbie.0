@@ -1,26 +1,41 @@
-From: Ankit Jain <ankitjain1580@yahoo.com>
-Subject: priority
-Date: Sat, 10 Sep 2005 17:12:21 +0100 (BST)
-Message-ID: <20050910161221.10313.qmail@web52913.mail.yahoo.com>
+From: Aroop Maliakkal <mparoop@gmail.com>
+Subject: server hangs after sometime on starting apache
+Date: Sun, 11 Sep 2005 08:14:10 +0600
+Message-ID: <432392F2.4010002@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: newbie <linux-newbie@vger.kernel.org>
 
-Hi to all
+Hi,
 
-Can anybody tell me whats the difference b/w dynamic
-priority and normal scheduling ones in linux.......
-its confusing.
+When i restart apache, the memory usage shoots up to 1041M  after some 
+time. After that, the server hangs up. Any solutions?
+I'm using apache 1.3.33 .
+This is the top result:-
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-thanks to all
+Swap: 2048276k av,  209452k used, 1838824k free                    8064k 
+cached
 
-ankit jain
+ PID USER     PRI  NI  SIZE  RSS SHARE STAT %CPU %MEM   TIME CPU COMMAND
+15288 nobody    16   0 1041M 939M   852 D     2.9 93.0   0:08   1 httpd
+   7 root      10   0     0    0     0 DW    0.8  0.0   2:02   0 kswapd
+15284 nobody    11   0 14704  12M  6660 D     0.1  1.2   0:00   2 httpd
+15294 nobody     9   0 14300 5548  5316 D     0.1  0.5   0:00   0 httpd
+   1 root       8   0   108   80    80 S     0.0  0.0   0:03   3 init
+   2 root       9   0     0    0     0 SW    0.0  0.0   0:00   1 keventd
+   3 root      18  19     0    0     0 SWN   0.0  0.0   0:00   0 
+ksoftirqd_CPU0
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
-Send instant messages to your online friends http://uk.messenger.yahoo.com 
+
+
+Regards,
+Aroop Maliakkal
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
