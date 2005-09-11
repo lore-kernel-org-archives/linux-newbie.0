@@ -1,130 +1,48 @@
-From: pepo <r4mz3z@yahoo.es>
-Subject: Re: accept some IP/users deny others
-Date: Sun, 11 Sep 2005 00:19:34 -0500
-Message-ID: <200509110019.35216.r4mz3z@yahoo.es>
-References: <200509022239.21591.r4mz3z@yahoo.es> <200509062115.40029.pa3gcu@zeelandnet.nl>
+From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+Subject: Re: server hangs after sometime on starting apache
+Date: Sun, 11 Sep 2005 12:00:24 +0300
+Message-ID: <4a618d0805091102004400f1d7@mail.gmail.com>
+References: <432392F2.4010002@gmail.com>
+Reply-To: arturas.moskvinas@gmail.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200509062115.40029.pa3gcu@zeelandnet.nl>
+In-Reply-To: <432392F2.4010002@gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: pa3gcu@zeelandnet.nl
+Content-Type: text/plain; charset="us-ascii"
+To: Aroop Maliakkal <mparoop@gmail.com>
+Cc: newbie <linux-newbie@vger.kernel.org>
 
-Hi...
-  First thanks for your help and sorry for the time to responce, I was =
-so=20
-busy.
+> When i restart apache, the memory usage shoots up to 1041M  after some
+> time. After that, the server hangs up. Any solutions?
+> I'm using apache 1.3.33 .
+> This is the top result:-
+> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+> 
+> Swap: 2048276k av,  209452k used, 1838824k free                    8064k
+> cached
+> 
+>  PID USER     PRI  NI  SIZE  RSS SHARE STAT %CPU %MEM   TIME CPU COMMAND
+> 15288 nobody    16   0 1041M 939M   852 D     2.9 93.0   0:08   1 httpd
+>    7 root      10   0     0    0     0 DW    0.8  0.0   2:02   0 kswapd
+> 15284 nobody    11   0 14704  12M  6660 D     0.1  1.2   0:00   2 httpd
+> 15294 nobody     9   0 14300 5548  5316 D     0.1  0.5   0:00   0 httpd
+>    1 root       8   0   108   80    80 S     0.0  0.0   0:03   3 init
+>    2 root       9   0     0    0     0 SW    0.0  0.0   0:00   1 keventd
+>    3 root      18  19     0    0     0 SWN   0.0  0.0   0:00   0
+> ksoftirqd_CPU0
+> !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  I wanna send/receive any mails from any host inside my LAN, but only=20
-PC2:192.168.1.2, PC4:192.168.1.4 and PC6:192.168.1.6 can send mails to=20
-Internet like smarthost, so the others PCs just inside the LAN.
+Way too little information to help anyhow, first look in apache log
+files, maybe some script is trying to use this much of memory and so
+on. And of course it is much better to ask on apache mailing list than
+on linux-newbie...
 
-Thanks again
-
-El Mar 06 Sep 2005 14:15, Richard Adams escribi=F3:
-> On Saturday 03 September 2005 05:39, pepo wrote:
-> > Hi friends...
-> >
-> >         I am using exim4 (exim4-daemon-light) 4.52-1 in my Sarge, a=
-nd I
-> > have a little
-> > LAN (PC1:192.168.1.1, PC2:192.168.1.2, PC3:192.168.1.3) the first i=
-s my
-> > box.
-> >
-> >         Please, how do I accept any local mail in my LAN, but just
-> > PC2:192.168.1.2
-> > can send mails to Internet? and if you can help me with the same bu=
-t only
-> > few users can send to Internet.
->
-> I have been waiting for a responce to your mail from others to see if=
- i can
-> really help you, i saw one reply to which you did not eply to so i pr=
-esume
-> you may not have understood what was said/asked...
->
->
-> Firstly, your mail is somewhat lacking in detail, detail as to just w=
-hat
-> you have as LAN and for all, just what you want to do.
->
-> As i see it, you want mail on 192.168.1.2 (your machine) correct.???.
->
-> You do not say if you are going to be collecting mail from your provi=
-der or
-> you want to run sendmail on 192.168.1.2 to listen for incomming
-> connections, (not such a good thing to do thesedays with all that spa=
-m
-> around), leave that to your provider...
->
-> Let me say this.
->
-> A normal "Local Area Network", (LAN) would have a router possably in =
-this
-> case 192.168.1.1, that computer would be connected to the internet wi=
-th
-> another NIC and have a set of firewall rules via the command iptables=
-, now
-> i can only guess here but you said "sarge" meaning i presume debian.
-> I have no knowlage of how debian sets it default iptables rules or ev=
-en
-> what frontend for iptables it uses, what i can tell you is that iptab=
-les
-> decides who does and who does not enter your computer or who passes t=
-hro'
-> it via the rules which you or some frontend defines.
->
-> A good place to start leaning about iptables is;
-> http://www.linuxguruz.com/iptables/
-> There you will find many example firewalls for all sorts of needs.
->
-> The basic rule for a home LAN is to Masquarde all traffic from inside=
- to
-> the outside with the Inet IP# of the router, to do that one needs to =
-use a
-> basic masquerading firewall. (I am sure thats what debian sets as a d=
-efault
-> as most all distro's do the same thing).
->
-> Your distro, will no doubtably have some or other GUI interface for d=
-oing
-> such a job.
->
-> If you need more help please explain in more detail just what you wan=
-t and
-> what you are using.
->
-> >         I hope that you can help me, it is urgent for me.
-> >
-> > Thanks
->
-> --
-> Regards Richard.
->
-> PS, spelling mistakes are free in this mail.
-
---=20
-           Linux User Registered #232544
-             Jabber : pepo@jabberes.org
-                ICQ : 337889406
-          GnuPG-key : www.keyserver.net
----------------- -------------------------------
-                   dum loquimur, fugerit invida
-aetas: carpe diem, quam minimum credula postero.
-
-
-_____________________________________=20
-Este mensaje ha sido analizado por el
-Servicio Gratuito de Protecci=F3n contra Virus de E-mail de EtapaOnLine=
-=2E
-
+Arturas M.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
