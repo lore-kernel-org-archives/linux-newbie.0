@@ -1,70 +1,73 @@
-From: Aroop Maliakkal <mparoop@gmail.com>
-Subject: Re: server hangs after sometime on starting apache
-Date: Sun, 11 Sep 2005 14:45:23 +0600
-Message-ID: <4323EEA3.1020404@gmail.com>
-References: <432392F2.4010002@gmail.com> <4a618d0805091102004400f1d7@mail.gmail.com>
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: Problem booting 2.6.13 on RHEL 4
+Date: Wed, 14 Sep 2005 13:08:05 +0900
+Message-ID: <b115cb5f05091321082a3ffc24@mail.gmail.com>
+Reply-To: rajat.noida.india@gmail.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4a618d0805091102004400f1d7@mail.gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: arturas.moskvinas@gmail.com
-Cc: newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Hi,
+Hi list,
 
-Thanks for your reply. I'm getting this in my error_log
+I am using RHEL4 distribution, and am trying to boot with vanilla
+2.6.13 stock kernel. My system has two onboard Adaptec SCSI
+controllers. I am booting using initrd, and passing the correct
+"root=" option. The following message pops up while trying to boot
+with 2.6.13:
 
-[Sun Sep 11 13:52:52 2005] [notice] child pid 857 exit signal 
-Segmentation fault (11)
-[Sun Sep 11 13:53:15 2005] [warn] child process 844 still did not exit, 
-sending a SIGTERM
-[Sun Sep 11 13:53:15 2005] [warn] child process 845 still did not exit, 
-sending a SIGTERM
-[Sun Sep 11 13:53:15 2005] [warn] child process 4734 still did not exit, 
-sending a SIGTERM
-[Sun Sep 11 13:53:15 2005] [warn] child process 847 still did not exit, 
-sending a SIGTERM
-[Sun Sep 11 13:53:15 2005] [warn] child process 848 still did not exit, 
-sending a SIGTERM
-[Sun Sep 11 13:53:15 2005] [warn] child process 849 still did not exit, 
-sending a SIGTERM
-Arturas Moskvinas wrote:
+Loading scsi_mod.ko module
+Loading sd_mod.ko module
+Loading scsi_transport_spi.ko module
+SCSI subsystem initialized
+Loading aic7xxx.ko module
+Creating root device
+umount /sys failed: 16
+Mounting root filesystem
+Mount: error 6 mounting ext3
+Mount: error 2 mounting none
+Switching to new root
+switchroot: mount failed: 22
+umount /initrd/dev failed: 2
+Kernel panic - not syncing: Attempted to kill init!
 
->>When i restart apache, the memory usage shoots up to 1041M  after some
->>time. After that, the server hangs up. Any solutions?
->>I'm using apache 1.3.33 .
->>This is the top result:-
->>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
->>
->>Swap: 2048276k av,  209452k used, 1838824k free                    8064k
->>cached
->>
->> PID USER     PRI  NI  SIZE  RSS SHARE STAT %CPU %MEM   TIME CPU COMMAND
->>15288 nobody    16   0 1041M 939M   852 D     2.9 93.0   0:08   1 httpd
->>   7 root      10   0     0    0     0 DW    0.8  0.0   2:02   0 kswapd
->>15284 nobody    11   0 14704  12M  6660 D     0.1  1.2   0:00   2 httpd
->>15294 nobody     9   0 14300 5548  5316 D     0.1  0.5   0:00   0 httpd
->>   1 root       8   0   108   80    80 S     0.0  0.0   0:03   3 init
->>   2 root       9   0     0    0     0 SW    0.0  0.0   0:00   1 keventd
->>   3 root      18  19     0    0     0 SWN   0.0  0.0   0:00   0
->>ksoftirqd_CPU0
->>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
->>    
->>
->
->Way too little information to help anyhow, first look in apache log
->files, maybe some script is trying to use this much of memory and so
->on. And of course it is much better to ask on apache mailing list than
->on linux-newbie...
->
->Arturas M.
->
->  
->
+When I boot the default kernel supplied with RHEL 4, it boots successfully:
 
+Loading scsi_mod.ko module
+SCSI subsystem initialized
+Loading sd_mod.ko module
+Loading scsi_transport_spi.ko module
+Loading aic7xxx.ko module
+ACPI: PCI interrupt 0000:05:09.0[A] -> GSI 18 (level, low) -> IRQ 201
+ACPI: PCI interrupt 0000:05:09.1[B] -> GSI 19 (level, low) -> IRQ 169
+scsi0 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
+        <Adaptec aic7899 Ultra160 SCSI adapter>
+        aic7899: Ultra160 Wide Channel A, SCSI Id=7, 32/253 SCBs
+
+(scsi0:A:0): 160.000MB/s transfers (80.000MHz DT, offset 126, 16bit)
+  Vendor: HITACHI   Model: DK32CJ-18MW       Rev: JTN1
+  Type:   Direct-Access                      ANSI SCSI revision: 03
+scsi0:A:0:0: Tagged Queuing enabled.  Depth 4
+SCSI device sda: 35520512 512-byte hdwr sectors (18187 MB)
+SCSI device sda: drive cache: write back
+ sda: sda1 sda2 sda3 sda4 < sda5 >
+Attached scsi disk sda at scsi0, channel 0, id 0, lun 0
+scsi1 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
+        <Adaptec aic7899 Ultra160 SCSI adapter>
+        aic7899: Ultra160 Wide Channel B, SCSI Id=7, 32/253 SCBs
+
+Can some one please suggest me what could be the problem? I doubt if
+there is any option I need to enable in the kernel configuration?
+
+Any pointers are welcome,
+
+TIA,
+
+Rajat Jain
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
