@@ -1,73 +1,110 @@
-From: Rajat Jain <rajat.noida.india@gmail.com>
-Subject: Problem booting 2.6.13 on RHEL 4
-Date: Wed, 14 Sep 2005 13:08:05 +0900
-Message-ID: <b115cb5f05091321082a3ffc24@mail.gmail.com>
-Reply-To: rajat.noida.india@gmail.com
+From: "liyu@WAN" <liyu@ccoss.com.cn>
+Subject: Re: Problem booting 2.6.13 on RHEL 4
+Date: Wed, 14 Sep 2005 16:13:47 +0800
+Message-ID: <4327DBBB.7090108@ccoss.com.cn>
+References: <b115cb5f05091321082a3ffc24@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <b115cb5f05091321082a3ffc24@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: rajat.noida.india@gmail.com
+Cc: Linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Hi list,
 
-I am using RHEL4 distribution, and am trying to boot with vanilla
-2.6.13 stock kernel. My system has two onboard Adaptec SCSI
-controllers. I am booting using initrd, and passing the correct
-"root=" option. The following message pops up while trying to boot
-with 2.6.13:
+It seem that kernel have no time to probe your disk, and do not
+read parttion table.
 
-Loading scsi_mod.ko module
-Loading sd_mod.ko module
-Loading scsi_transport_spi.ko module
-SCSI subsystem initialized
-Loading aic7xxx.ko module
-Creating root device
-umount /sys failed: 16
-Mounting root filesystem
-Mount: error 6 mounting ext3
-Mount: error 2 mounting none
-Switching to new root
-switchroot: mount failed: 22
-umount /initrd/dev failed: 2
-Kernel panic - not syncing: Attempted to kill init!
+I use kernel 2.6.12 and SATA disk on FC3, also failed to boot.
+but after some experiment, I found if we place 'sleep 5'
+statement between insmod commands in linuxrc or init, it will
+boot up!
 
-When I boot the default kernel supplied with RHEL 4, it boots successfully:
+However, this idea is too HACK.
 
-Loading scsi_mod.ko module
-SCSI subsystem initialized
-Loading sd_mod.ko module
-Loading scsi_transport_spi.ko module
-Loading aic7xxx.ko module
-ACPI: PCI interrupt 0000:05:09.0[A] -> GSI 18 (level, low) -> IRQ 201
-ACPI: PCI interrupt 0000:05:09.1[B] -> GSI 19 (level, low) -> IRQ 169
-scsi0 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
-        <Adaptec aic7899 Ultra160 SCSI adapter>
-        aic7899: Ultra160 Wide Channel A, SCSI Id=7, 32/253 SCBs
+Maybe, I guest, kernel need some time to probe scsi disk?
+but I can not explain that kernel say unresoluting symbol XXXXX
+use this reason. 
+                                                                                           
 
-(scsi0:A:0): 160.000MB/s transfers (80.000MHz DT, offset 126, 16bit)
-  Vendor: HITACHI   Model: DK32CJ-18MW       Rev: JTN1
-  Type:   Direct-Access                      ANSI SCSI revision: 03
-scsi0:A:0:0: Tagged Queuing enabled.  Depth 4
-SCSI device sda: 35520512 512-byte hdwr sectors (18187 MB)
-SCSI device sda: drive cache: write back
- sda: sda1 sda2 sda3 sda4 < sda5 >
-Attached scsi disk sda at scsi0, channel 0, id 0, lun 0
-scsi1 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
-        <Adaptec aic7899 Ultra160 SCSI adapter>
-        aic7899: Ultra160 Wide Channel B, SCSI Id=7, 32/253 SCBs
 
-Can some one please suggest me what could be the problem? I doubt if
-there is any option I need to enable in the kernel configuration?
+May be also, there have one problem in older mkinitrd. but
+I looked its source (more roughly), it only include some scriptes.
 
-Any pointers are welcome,
+Any more clear idea on it ??
 
-TIA,
 
-Rajat Jain
+
+Rajat Jain wrote:
+
+>Hi list,
+>
+>I am using RHEL4 distribution, and am trying to boot with vanilla
+>2.6.13 stock kernel. My system has two onboard Adaptec SCSI
+>controllers. I am booting using initrd, and passing the correct
+>"root=" option. The following message pops up while trying to boot
+>with 2.6.13:
+>
+>Loading scsi_mod.ko module
+>Loading sd_mod.ko module
+>Loading scsi_transport_spi.ko module
+>SCSI subsystem initialized
+>Loading aic7xxx.ko module
+>Creating root device
+>umount /sys failed: 16
+>Mounting root filesystem
+>Mount: error 6 mounting ext3
+>Mount: error 2 mounting none
+>Switching to new root
+>switchroot: mount failed: 22
+>umount /initrd/dev failed: 2
+>Kernel panic - not syncing: Attempted to kill init!
+>
+>When I boot the default kernel supplied with RHEL 4, it boots successfully:
+>
+>Loading scsi_mod.ko module
+>SCSI subsystem initialized
+>Loading sd_mod.ko module
+>Loading scsi_transport_spi.ko module
+>Loading aic7xxx.ko module
+>ACPI: PCI interrupt 0000:05:09.0[A] -> GSI 18 (level, low) -> IRQ 201
+>ACPI: PCI interrupt 0000:05:09.1[B] -> GSI 19 (level, low) -> IRQ 169
+>scsi0 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
+>        <Adaptec aic7899 Ultra160 SCSI adapter>
+>        aic7899: Ultra160 Wide Channel A, SCSI Id=7, 32/253 SCBs
+>
+>(scsi0:A:0): 160.000MB/s transfers (80.000MHz DT, offset 126, 16bit)
+>  Vendor: HITACHI   Model: DK32CJ-18MW       Rev: JTN1
+>  Type:   Direct-Access                      ANSI SCSI revision: 03
+>scsi0:A:0:0: Tagged Queuing enabled.  Depth 4
+>SCSI device sda: 35520512 512-byte hdwr sectors (18187 MB)
+>SCSI device sda: drive cache: write back
+> sda: sda1 sda2 sda3 sda4 < sda5 >
+>Attached scsi disk sda at scsi0, channel 0, id 0, lun 0
+>scsi1 : Adaptec AIC7XXX EISA/VLB/PCI SCSI HBA DRIVER, Rev 6.2.36
+>        <Adaptec aic7899 Ultra160 SCSI adapter>
+>        aic7899: Ultra160 Wide Channel B, SCSI Id=7, 32/253 SCBs
+>
+>Can some one please suggest me what could be the problem? I doubt if
+>there is any option I need to enable in the kernel configuration?
+>
+>Any pointers are welcome,
+>
+>TIA,
+>
+>Rajat Jain
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-kernel" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at  http://www.tux.org/lkml/
+>
+>
+>  
+>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
