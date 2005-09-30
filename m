@@ -1,62 +1,55 @@
-From: Arturas Moskvinas <arturas.moskvinas@gmail.com>
-Subject: Re: RPM Qs
-Date: Fri, 30 Sep 2005 22:33:48 +0300
-Message-ID: <4a618d080509301233t388276cega33d466dca8fe749@mail.gmail.com>
-References: <faf407640509301133t72bae599v93fb711fd97f5aae@mail.gmail.com>
-Reply-To: Arturas Moskvinas <arturas.moskvinas@gmail.com>
+From: Rajesh Shah <rajesh.shah@intel.com>
+Subject: Re: [Pcihpd-discuss] Re: ACPI problem with PCI Express Native Hot-plug driver
+Date: Fri, 30 Sep 2005 13:24:41 -0700
+Message-ID: <20050930132440.C28328@unix-os.sc.intel.com>
+References: <b115cb5f0509020057741365dc@mail.gmail.com> <b115cb5f050902005877607db1@mail.gmail.com> <1125683188.13185.5.camel@whizzy> <b115cb5f05090418583abfc73@mail.gmail.com> <b115cb5f0509292257j395d60f8j53d1afa967caa263@mail.gmail.com>
+Reply-To: Rajesh Shah <rajesh.shah@intel.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <faf407640509301133t72bae599v93fb711fd97f5aae@mail.gmail.com>
 Content-Disposition: inline
+In-Reply-To: <b115cb5f0509292257j395d60f8j53d1afa967caa263@mail.gmail.com>; from rajat.noida.india@gmail.com on Fri, Sep 30, 2005 at 02:57:07PM +0900
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Michael Medwid <mmedwid@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: Kristen Accardi <kristen.c.accardi@intel.com>, Linux-newbie@vger.kernel.org, linux-hotplug-devel@lists.sourceforge.net, acpi-devel@lists.sourceforge.net, pcihpd-discuss@lists.sourceforge.net, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, greg@kroah.com, dkumar@noida.hcltech.com, sanjayku@noida.hcltech.com
 
-> I have had spotty success in loading RPMs from say here:
->
-> http://download.fedora.redhat.com/pub/fedora/linux/core/updates/4/i386
->
-> One common error is I click on one of the RPMs via FireFox and it goes
->  through "Preparing System Update" and ends up with  "Package Not
-> Found".  About half the time that happens and half the time it
-> actually installs.  e.g. I was able to load SNORT without any problem.
->
-> Can someone comment on why I am seeing that specific error when I'm
-> downloading the RPM directly from fedora.redhat.com?
->
-> Also can you point me to how to go about trouble-shooting this kind of
-> thing myself?  Where would I find a log of what happened during the
-> installation?  Also where are the binary files typically installed?
-> usr/bin?  user/sbin?
->
-> And lastly when loading an RPM - should the package become launchable
-> in the Gnome UI (as happens with most Windows applications)?  Or is
-> that typically an extra step?
+On Fri, Sep 30, 2005 at 02:57:07PM +0900, Rajat Jain wrote:
+> 
+> pciehp: pfar:cannot locate acpi bridge of PCI 0xb.
+> ......
+> pciehp: pfar:cannot locate acpi bridge of PCI 0xe.
 
-You should try and use a more user friendly program "yum". Whenever
-you want to install a package from fedora official site, you simply
-enter "yum install package_name" and it will download needed rpm with
-all dependencies and so on.
+This is saying that the driver's probe function was called for
+these pciehp capable bridges, but it didn't find them in the
+ACPI namespace. 
 
-Places where files are installed depends on what is being installed,
-for example exutable files are place in /usr/bin, i think "service"
-exutable files are placed into "/usr/sbin" (but i'm not sure about
-this). Configuration files are placed into /etc directory. Docs are
-placed into /usr/share/ and so on. Forget about madness there is on
-WIndows platform, in Unix systems everything is in place where it
-belongs.
+> 
+> I am not sure where the problem lies. But the fact that the entries
+> are appearing correctly when I disable ACPI, combined with above error
+> messages, I suspect that there is a problem with ACPI namespace
+> (probably the resources cannot be found using ACPI).
+> 
+At init time, the pciehp driver scans the ACPI namespace and tries
+to collect resources for all bridges - host as well as PCI. It's
+pretty rare for BIOS to describe PCI bridge resources in ACPI
+namespace, so that's not unusual. What's unexpected is that these
+pciehp bridges weren't even listed in the namespace.
 
-About shortcuts, most graphical programs put shortcuts into "start"
-menu automatically (at least in gnome environment, i do not know about
-KDE desktop environment)
+With the pciehp version that has acpi disabled, it's not going to
+try to get bridge resources and other information from acpi. In
+that case, it simply reads the bridge config space to determine
+resource ranges it is decoding. This is what the acpi version of
+pciehp also defaults to for PCI bridges that are listed without
+resource descriptions in the acpi namespace. So, the error you
+are running into is somewhat bogus. The proper long term fix
+is to change pciehp to not depend so much on acpi and just use
+the pci core for resource management. In the meantime, you should
+just use the non-acpi version of pciehp. 
 
-Arturas M.
-P.S.: recommend reading www.fedorafaq.com, nice informational site...
-P.S.S.: if you do not like console app yum, you can try and install
-"yumex" a graphical frontend for yum...
+Rajesh
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
