@@ -1,42 +1,71 @@
-From: David Fierbaugh <david@fierbaugh.org>
+From: chuck gelm <chuck@gelm.net>
 Subject: Re: Netconfig Fail
-Date: Thu, 6 Oct 2005 07:53:56 -0500
-Message-ID: <200510060753.56561.david@fierbaugh.org>
-References: <20051006091512.7dd839e8.heisspf@skyinet.net> <200510052204.15272.david@fierbaugh.org> <20051006105408.1d7ead8f.heisspf@skyinet.net>
+Date: Thu, 06 Oct 2005 14:52:48 -0400
+Message-ID: <43457280.4050609@gelm.net>
+References: <20051006091512.7dd839e8.heisspf@skyinet.net>
+Reply-To: chuck@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051006105408.1d7ead8f.heisspf@skyinet.net>
-Content-Disposition: inline
+In-Reply-To: <20051006091512.7dd839e8.heisspf@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
-On Thursday 06 October 2005 09:54 am, Peter wrote:
-> On Wed, 5 Oct 2005 22:04:14 -0500
->
-> David Fierbaugh <david@fierbaugh.org> wrote:
-> > Are you connecting to a home router, or to a cable/dsl modem?
-> >
-> > Some cable/dsl services watch the MAC address, and won't allow
-> > connections from any other network card.
->
-> I have a broadband connection and had no problem with netconfig and the
-> onboard LAN card. -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Peter wrote:
+> Hi,
+> 
+> Slackware 10.1 kernel 2.4.29
 
-Have you tried booting knoppix? It is often helpful to try it out, and then 
-you might be able to tell if it's a hardware problem, or software setup 
-issue.
+  I have this same distribution in a few workstations here at home.
 
-if it works under knoppix, try issueing a lsmod from the command line to find 
-out what modules are loaded. Then, rmmod the ones that might be the network 
-card, until it stops working, write that one down, reboot and try modprobing 
-it to see if that makes the card work.
+> My onboard LAN card on the mobo failed and I had to switch to an external LAN card.
+> 
+> I disabled in BIOS Ethernet onboard. Then I did netconfig. 
+
+  What did you do with 'netconfig' ?
+
+> Slackware found the LAN card I entered all necessary data and the configuration went w/o any errors.
+
+  What did you enter?
+
+> However, I cannot connect to the Internet. 
+ > on booting after the MAC address was found
+ > it should produce the the IP address which it does not.
+ > It just sits for a while then continues booting.
+
+  What is 'it' ?
+
+ > The same happens when I do /etc/rc.d/rc.inet1.
+
+  Try '/etc/rc.d/rc.inet1 stop && /etc/rc.d/rc.inet1'.
+  e.g. 'stop' before you 'start'.
+  But, really, I would like to see how you configured your
+  interface first.
+
+> Ifconfig naturally shows no connection just the loop-back.
+> 
+> Where is the hitch?
+
+  	I need:
+  What you entered into 'netconfig' and this should match your
+  /etc/rc.d/rc.inet1.conf file.
+
+  The output of 'ifconfig -a'.
+
+HTH, Chuck
+
+> I had no problem in Fedora4 to configure the new Lan card and in the gem Damned Small Linux distro,
+  where I am now, the new LAN card was found w/o me doing anything.
+> 
+> Help for slackware appreciated.
+> 
+> Thanks & regards
+> 
+> Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
