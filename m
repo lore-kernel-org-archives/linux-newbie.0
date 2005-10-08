@@ -1,74 +1,61 @@
-From: Peter <heisspf@skyinet.net>
+From: Ray Olszewski <ray@comarre.com>
 Subject: Re: Netconfig Fail
-Date: Sat, 8 Oct 2005 11:43:22 -0400
-Message-ID: <20051008114322.5c86c6b5.heisspf@skyinet.net>
-References: <20051006091512.7dd839e8.heisspf@skyinet.net>
-	<4344D330.2050005@comarre.com>
-	<20051007122344.3780b5c0.heisspf@skyinet.net>
-	<43465A15.5090708@gelm.net>
-	<4346AF0C.6070905@comarre.com>
+Date: Fri, 07 Oct 2005 21:18:32 -0700
+Message-ID: <43474898.8040206@comarre.com>
+References: <20051006091512.7dd839e8.heisspf@skyinet.net>	<4344D330.2050005@comarre.com>	<20051007122344.3780b5c0.heisspf@skyinet.net>	<43465DBF.50907@gelm.net> <20051008113905.42e32ecb.heisspf@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4346AF0C.6070905@comarre.com>
+In-Reply-To: <20051008113905.42e32ecb.heisspf@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Fri, 07 Oct 2005 10:23:24 -0700
-Ray Olszewski <ray@comarre.com> wrote:
+Peter wrote:
+> On Fri, 07 Oct 2005 07:36:31 -0400
+> chuck gelm <chuck@gelm.net> wrote:
+> 
+> 
+>>Peter:
+>>
+>>  Please adjust your system clock.
+>>Your clock may be more than 5 hours ahead.
+>>My email viewer is sorting your emails after Ray's responses.
+>>:-|
+>>Regards, Chuck
+> 
+> 
+> My clock is correctly set for the local time which is +8 from UTC (GMT).
+> 
+> Since I run from DSL I see when giving command date I get
+> 
+> Sat Oct  8 11:35:15 EDT 2005.
+> 
+> I don't know what the EDT part stands for. I think in slack it is PHT which is correct.
 
-> chuck gelm wrote:
-> [...]
-> >> Yes neither in Fedora nor in DSL had I to enter anything. In Fedora I 
-> >> just
-> >> had to activate eth1, eth0 was taken by the onboard LAN card.
-> > 
-> > 
-> >  It seems to me that Fedora is finding your add-on PCI card and
-> > assigning it eth0, yet Slackware is assigning it eth1 !?
-> > 
-> >  I expected, since you disabled the on-board ether device,
-> > all distributions would only find a 'eth0'.
-> > 
-> >  So, if Slackware assigns it 'eth1' and your rc.inet1.conf assigns
-> > DHCP to eth0, it will not work.
-> > 
-> >  Run dhcpcd from a console. If Slackware sees your PCI NIC as eth1;
-> > dhcpcd eth1
-> > 
-> >  If that works, you can either edit rc.inet1.conf or add
-> > 'dhcpcd eth1' to rc.local.
-> > 
-> 
-> Chuck -- I think you read Peter's message backwards. The ifconfig output 
-> he posted said (as I read it) that *Slackware* assigned the NIC to eth0, 
-> while *Fedora* assigned it to eth1. Not the other way aound. (I'm 
-> assuming, of course, that Peter is able to distinguish the 2 NICs 
-> correctly, presumably by having noted their MAC addresses.)
-> 
-> So the main thing that this means is that Peter is being inexact when he 
-> says yes to my question: Was everything else the same (across the 3 
-> tests)? I note now, in what you posted (and I requote above), that Peter 
-> says he did NOT disable (in the BIOS) the on-mobo NIC for the Fedora test.
+EDT normally stands for Eastern Daylight Time, Eastern being the time 
+zone for the East Coast of the United States. It is UT-4, not the UT+8 
+you want. And that interpretation is consistent with what your mail 
+software is actually sending, for example:
 
-> As usual with these problems, the devil is in the details, and as is too 
-> often the case, we have here the added problem of needing to get the 
-> details reported correctly before we can do useful troubleshooting.
-> 
-> At this stage, I'd suggest that Peter repost his trouble report from the 
-> beginning, this time putting in all the relevant details (e.g., 
-> complete, unedited "ifconfig -a" output from all 3 tests; complete, 
-> unedited "lsmod" results from all 3 tests; complete "dmesg" output 
-> regarding NIC detection from all 3 tests; and complete dhcpcd, or 
-> whatever DHCP client the others use, logging from all 3 tests) ... and 
-> this time doing all 3 tests with the on-mobo NIC disabled in BIOS and 
-> EVERYTHING ELSE, except choice of distro, the same across all 3 tests.
-> 
+	Date: Sat, 8 Oct 2005 11:43:22 -0400
 
-OK I will try to get it all together. Jumping from distro to distro hoping staying online which I was not this morning for 4 hours.
+So even if your local time looks correct to you, your time *zone* is 
+wrong, and that will cause e-mail (which always specifies both the local 
+time and the UT offset) to appear wrong in any e-mail client that 
+reports time based on either the recipient's local time zone or UT.
+
+I'm not familiar with the designation "PHT", but since it is UT+8 and 
+your mail server is "mail.meridian.ph", I'm guessing it refers to the 
+Philippines.
+
+To check what your computer thinks UT currently is, run "date -u". If it 
+is wrong but your local time looks right, that is another indication of 
+a timezone error.
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
