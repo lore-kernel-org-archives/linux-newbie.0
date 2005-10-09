@@ -1,51 +1,31 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: problems with sending "meta" keystrokes across xterm
-Date: Sun, 9 Oct 2005 00:53:42 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0510090035440.29170-100000@treebeard.engin.umich.edu>
+From: Peter <bato_mainit@ispx.com.ph>
+Subject: Re: Netconfig Fail
+Date: Sun, 9 Oct 2005 15:08:44 +0800
+Message-ID: <20051009150844.3b0a73b6@localhost>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hello,
+Hi,
 
-I have trouble with when I try to use Meta-<key> characters (for e.g. to
-navigate/edit a bash command line) in a remote bash session via ssh from
-an xterm client - the keystrokes get garbled and frequently are translated
-into some undesired behavior in the (remote) shell. CTRL-<key>
-combinations work perfectly fine, though. Also, the problem disappears if 
-I:
+happy to report I am connected again in slackware.
 
-(a) log into the remote machine and run an xterm on that machine (while
-forwarding X connections)
+When I woke-up from my Sunday afternoon nap I had the great idea of removing 
+the module tulip and then inserting the module dmfe. It worked like a charm.
 
-(b) run another terminal client such as xterminal locally and then log 
-into the remote machine. 
+This is my first mail out again in slack.
 
-I prefer to use xterm to xterminal. How can fix it so that I can continue 
-to use xterm but still have all shell editing functionality even in 
-remote ssh sessions? 
+Thanks again for all the help. I always seem to need someone to lift me on the
+ chair.
 
-On a connected issue, running `man` on the remote machine (while logged in
-from my local xterm client) causes many characters to be garbled in the
-display. The only way that this gets fixed is by using (a) above.
+Regards
+-- 
 
-
-All help is appreciated. Please excuse the lack of "relevant details", if
-so, for the ignorance of not knowing what to include...
-
-
-Regards,
-
--K
-
---------------
-Freedom is not worth having if it does not include the freedom to 
-make mistakes.
-
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
