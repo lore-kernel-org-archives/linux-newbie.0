@@ -1,52 +1,51 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Netconfig Fail
-Date: Sun, 9 Oct 2005 11:29:06 -0400
-Message-ID: <20051009112906.73070faa.heisspf@skyinet.net>
-References: <20051008143336.4b907ad5.heisspf@skyinet.net>
-	<4347ED53.50105@comarre.com>
-	<20051009093319.584ebc9b.heisspf@skyinet.net>
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: problems with sending "meta" keystrokes across xterm
+Date: Sun, 9 Oct 2005 00:53:42 -0400 (EDT)
+Message-ID: <Pine.LNX.4.44.0510090035440.29170-100000@treebeard.engin.umich.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051009093319.584ebc9b.heisspf@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: ray@comarre.com
-Cc: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi,
+Hello,
 
-In slackware when I try to "/sbin/modprobe dmfe" I get the following error:
+I have trouble with when I try to use Meta-<key> characters (for e.g. to
+navigate/edit a bash command line) in a remote bash session via ssh from
+an xterm client - the keystrokes get garbled and frequently are translated
+into some undesired behavior in the (remote) shell. CTRL-<key>
+combinations work perfectly fine, though. Also, the problem disappears if 
+I:
 
-Quote
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: init_module: No such
-device
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: Hint: insmod errors can be
-caused by incorrect module parameters, including invalid IO or IRQ
-parameters.
-      You may find more information in syslog or the output from dmesg
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: insmod
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz failed
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: insmod dmfe failed
-Unquote
+(a) log into the remote machine and run an xterm on that machine (while
+forwarding X connections)
 
-Locate dmfe shows that the module is present. I confirmed it in mc. There is no info in dmesg or syslog.
+(b) run another terminal client such as xterminal locally and then log 
+into the remote machine. 
 
-As for init_module there is only a man page in slackware as in Fedora which I do not understand.
+I prefer to use xterm to xterminal. How can fix it so that I can continue 
+to use xterm but still have all shell editing functionality even in 
+remote ssh sessions? 
 
-# locate dmfe
-/lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz
-/usr/src/linux-2.4.29/drivers/net/.dmfe.o.flags
-/usr/src/linux-2.4.29/drivers/net/dmfe.c
-/usr/src/linux-2.4.29/drivers/net/dmfe.o
-/usr/src/linux-2.4.29/Documentation/networking/dmfe.txt
+On a connected issue, running `man` on the remote machine (while logged in
+from my local xterm client) causes many characters to be garbled in the
+display. The only way that this gets fixed is by using (a) above.
 
-How to resolve? Short of looking for an ethernet card slackware can read correctly.
 
-Regards
+All help is appreciated. Please excuse the lack of "relevant details", if
+so, for the ignorance of not knowing what to include...
 
-Peter
+
+Regards,
+
+-K
+
+--------------
+Freedom is not worth having if it does not include the freedom to 
+make mistakes.
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
