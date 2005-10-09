@@ -1,14 +1,18 @@
-From: Peter <bato_mainit@ispx.com.ph>
+From: Peter <heisspf@meridian.ph>
 Subject: Re: Netconfig Fail
-Date: Sun, 9 Oct 2005 15:08:44 +0800
-Message-ID: <20051009150844.3b0a73b6@localhost>
+Date: Sun, 09 Oct 2005 15:04:45 +0800
+Message-ID: <200510090704.j9974jl1001745@meridian.ph>
+References: <20051009093319.584ebc9b.heisspf@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: Your message of "Sun, 09 Oct 2005 09:33:19 +0800."
+             <20051009093319.584ebc9b.heisspf@skyinet.net> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
+Cc: Ray Olszewski <ray@comarre.com>
 
 Hi,
 
@@ -19,13 +23,13 @@ the module tulip and then inserting the module dmfe. It worked like a charm.
 
 This is my first mail out again in slack.
 
-Thanks again for all the help. I always seem to need someone to lift me on the
- chair.
+Thanks again for all the help. I always seem to need someone to lift me on the 
+chair.
 
 Regards
 -- 
-
 Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
