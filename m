@@ -1,49 +1,29 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: Netconfig Fail
-Date: Sun, 09 Oct 2005 14:00:21 -0400
-Message-ID: <43495AB5.1070705@gelm.net>
-References: <20051008143336.4b907ad5.heisspf@skyinet.net>	<4347ED53.50105@comarre.com>	<20051009093319.584ebc9b.heisspf@skyinet.net> <20051009112906.73070faa.heisspf@skyinet.net>
-Reply-To: chuck@gelm.net
-Mime-Version: 1.0
+From: Veronica Duncan <vectorizing@freiwah.com>
+Subject: Your electronics shopping alternative.
+Date: Tue, 18 Oct 2005 05:17:49 -0700
+Message-ID: <5210152829.10934468791@host81-156-185-91.range81-156.btcentralplus.com>
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051009112906.73070faa.heisspf@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Peter <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Peter wrote:
-> Hi,
-> 
-> In slackware when I try to "/sbin/modprobe dmfe" I get the following error:
-> 
-> Quote
-> /lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: init_module: No such
-> device
-> /lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: Hint: insmod errors can be
-> caused by incorrect module parameters, including invalid IO or IRQ
-> parameters.
->       You may find more information in syslog or the output from dmesg
-> /lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: insmod
-> /lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz failed
-> /lib/modules/2.4.29/kernel/drivers/net/dmfe.o.gz: insmod dmfe failed
-> Unquote
+Photos, drawings, graphics...learn to create them...then share them all... 
+http://goxbq.0k6cnmor5a5q000d500dni00.boleitegm.com/?eici
 
-  Hi, Peter:
 
-  Yep, it said 'no such device' not 'no such module', so your kernel
-doesn't find the device.  Review:
-http://www.linuxquestions.org/questions/history/113041
-"... try another slack kernel like bareacpi.i or similar
-  (especially on a laptop)..."
+Sometime they'll give a war and nobody will come.    
+If you have a vision, do something with it.    
 
-  You could contact the dmfe module author
-(/usr/src/linux/Documentation/networking/dmfe.txt)
-or report a 'bug' to Slackware.
+Justice is incedental to law and order.      
+Life is too important to take seriously.      
 
-HTH, Chuck
+MAGNET, n. Something acted upon by magnetism.      
+An ounce of hypocrisy is worth a pound of ambition.   
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
