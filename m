@@ -1,28 +1,32 @@
-From: Veronica Duncan <vectorizing@freiwah.com>
-Subject: Your electronics shopping alternative.
-Date: Tue, 18 Oct 2005 05:17:49 -0700
-Message-ID: <5210152829.10934468791@host81-156-185-91.range81-156.btcentralplus.com>
+From: Peter <heisspf@skyinet.net>
+Subject: Epiphany Browser Fails
+Date: Sat, 22 Oct 2005 10:47:21 +0800
+Message-ID: <20051022104721.2ae3957d@localhost>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Photos, drawings, graphics...learn to create them...then share them all... 
-http://goxbq.0k6cnmor5a5q000d500dni00.boleitegm.com/?eici
+Hi,
 
+Slackware 10.2 Kernel 2.4.31
 
-Sometime they'll give a war and nobody will come.    
-If you have a vision, do something with it.    
+After upgrading to slackware 10.2 from 10.1 the browser epiphany won't open 
+and I get the following error message:
 
-Justice is incedental to law and order.      
-Life is too important to take seriously.      
+Epiphany can't be used now. Mozilla initialization failed.
 
-MAGNET, n. Something acted upon by magnetism.      
-An ounce of hypocrisy is worth a pound of ambition.   
+Checking with google it seems a common problem with apparently no real 
+solution.
 
+Or does somebody on this list knows one?
+
+Thanks & regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
