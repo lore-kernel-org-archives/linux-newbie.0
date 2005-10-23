@@ -1,34 +1,32 @@
-From: Laurence Pithie <pithie@tiscali.co.uk>
-Subject: Re: Epiphany Browser Fails
-Date: Sun, 23 Oct 2005 22:40:35 +0100
-Message-ID: <m3ll0j9ajw.fsf@countzero.home>
-References: <20051022104721.2ae3957d@localhost>
+From: David Fierbaugh <david@fierbaugh.org>
+Subject: Re: Linux Equivilant of Ghost?
+Date: Sun, 23 Oct 2005 13:34:44 -0500
+Message-ID: <200510231334.44830.david@fierbaugh.org>
+References: <faf407640510231359t46ac5b92uf4e46ec099178132@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051022104721.2ae3957d@localhost> (Peter's message of "Sat, 22 Oct 2005 10:47:21 +0800")
+In-Reply-To: <faf407640510231359t46ac5b92uf4e46ec099178132@mail.gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-the mozilla binary that comes with slackware 10.2 is in
-/usr/lib/mozilla-1.7.11/mozilla-bin running ldd on that will give you
-the (missing) libraries (As you installed an old version the version
-suffix may differ). I'd uninstallthe old copy of mozilla you
-regressed to and reinstall the one that comes with Slack 10.2. 
+On Sunday 23 October 2005 03:59 pm, Michael Medwid wrote:
+> Is there a method to quickly replicate a bunch of Linux workstations
+> to a desired image like you can do with Symantec's Ghost product on
+> Windows?   For example suppose you have a classroom with 15 PCs and
+> you want them all to have the same image.  If there is such a beast -
+> does it support multicast to be able to image several machines on a
+> LAN all at once?
+>
+> Thanks.
+>
+> Michael
 
-
-10.2 has dropped support for gnome. The gnome support was never one of
-slacks strengths. I've installed dropline-gnome which is built for
-slack and it just works here. YMMV of course :-)
-
-HTH
--- 
-The intelligence of any discussion diminishes with the square of the
-number of participants.
-		-- Adam Walinsky
+Have you looked at G4L (Ghost 4 Linux)??????
+http://sourceforge.net/projects/g4l
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
