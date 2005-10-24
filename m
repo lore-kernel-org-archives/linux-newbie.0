@@ -1,81 +1,58 @@
-From: Eric Bambach <eric@cisu.net>
-Subject: Re: Linux Equivilant of Ghost?
-Date: Sun, 23 Oct 2005 23:23:22 -0500
-Message-ID: <200510232323.22675.eric@cisu.net>
-References: <faf407640510231359t46ac5b92uf4e46ec099178132@mail.gmail.com>
-Reply-To: eric@cisu.net
+From: Peter <bato_mainit@ispx.com.ph>
+Subject: Re: Epiphany Browser Fails
+Date: Mon, 24 Oct 2005 14:26:48 +0800
+Message-ID: <20051024142648.7ce56aee@localhost>
+References: <20051022104721.2ae3957d@localhost>
+	<6.2.3.4.0.20051021210529.0454d528@no.incoming.mail>
+	<4359DCD9.8030406@comarre.com>
+	<20051023151151.55cb200f@localhost>
+	<435BF491.1070506@comarre.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <faf407640510231359t46ac5b92uf4e46ec099178132@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <435BF491.1070506@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Michael Medwid <mmedwid@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-On Sunday 23 October 2005 03:59 pm, Michael Medwid wrote:
-> Is there a method to quickly replicate a bunch of Linux workstations
-> to a desired image like you can do with Symantec's Ghost product on
-> Windows?   For example suppose you have a classroom with 15 PCs and
-> you want them all to have the same image.  If there is such a beast -
-> does it support multicast to be able to image several machines on a
-> LAN all at once?
->
-> Thanks.
->
-> Michael
-> -
+Thanks Ray and Laurence,
 
-In a pinch there is alwatys dd :). This is especially true if they have=
-=20
-identical hard drive sizes and partition layouts
+The 2 libraries I made symblinks are  libgtkembedmoz.so and libgtksuperwin.so.
+There was a third I thought and can't find.
+I made the links in /usr/lib and did a ldconfig afterwards.
 
-dd if=3D(Image source) of=3D(image destination) bs=3D512
+ldd  /usr/lib/mozilla-1.7.11/mozilla-bin | grep found
+        libmozjs.so => not found
 
-where image source will be an entire hard drive like the primary=20
-master /dev/hda and dest. will be /dev/hdb. ALso you can do this over t=
-he=20
-network!
+However mozilla starts w/o problem and this library can be found:
 
-Boot the image destination from a boot cd, (I like gentoo cause you can=
- get=20
-SSHD up with 1 command)
+locate libmozjs.so
+/usr/lib/mozilla-1.7.11/libmozjs.so
+/usr/lib/netscape/libmozjs.so
 
-On the image master
+Slackware does not have epiphany it comes with dropline-gnome and the upgrade
+was made from  the original slack box. Yes they must be sloppy. After the
+previous upgrade all the media programs did not run anymore until I found
+moving in ld.so.conf /usr/local/lib from the top to the bottom of the list
+solved the problem. So much for my tinkering. And recently providing the wrong
+module for the ethernet card, another bad slack classic.
 
-dd if=3D/dev/hda bs=3D512 | ssh root@imagedestination dd of=3D/dev/hda
+If I do ldd /usr/bin/epiphany it does, not find, only libgtkembedmoz.so. Then
+if I make a symblink ldd reports it does, not find, now libgtksuperwin.so
+which is not present on the ldd run w/o symblink to libgtkembedmoz.so.
 
-This will block copy the hard drive on the source (/dev/hda) over the n=
-etwork=20
-onto the destination hard drive (/dev/hda).
+I will check later on the websites you provided.
 
-Ugly, but it could hold you over till you get ghost up and going and it=
-s quite=20
-simple.
+As for the other browser I use I really did not mention dillo which is my main
+stay browser.
 
+Regards
 
---=20
-----------------------------------------
---EB
-
-> All is fine except that I can reliably "oops" it simply by trying to =
-read
-> from /proc/apm (e.g. cat /proc/apm).
-> oops output and ksymoops-2.3.4 output is attached.
-> Is there anything else I can contribute?
-
-The latitude and longtitude of the bios writers current position, and
-a ballistic missile.
-
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0--Alan Cox LKML-Decembe=
-r 08,2000=20
-
-----------------------------------------
+Peter 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
