@@ -1,74 +1,84 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: Re: problems with sending "meta" keystrokes across xterm
-Date: Thu, 27 Oct 2005 22:37:17 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0510272222140.21592-100000@treebeard.engin.umich.edu>
-References: <Pine.LNX.4.44.0510090035440.29170-100000@treebeard.engin.umich.edu>
+From: Stephen Samuel <samnospam@bcgreen.com>
+Subject: Re: Linux Equivilant of Ghost?
+Date: Thu, 27 Oct 2005 20:01:02 -0700
+Message-ID: <4361946E.7000905@bcgreen.com>
+References: <faf407640510231359t46ac5b92uf4e46ec099178132@mail.gmail.com> <200510232323.22675.eric@cisu.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0510090035440.29170-100000@treebeard.engin.umich.edu>
+In-Reply-To: <200510232323.22675.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: eric@cisu.net
+Cc: Michael Medwid <mmedwid@gmail.com>, linux-newbie@vger.kernel.org
 
-Heres an alternate variation to the problem in the last email - 
+You can also do the process the other way 'round.
+ From the machine doing the install:
 
-The meta-key codes (at least as far as a remote bash shell opened from an
-xterm goes) seem to get transmitted alright if I enable (with a mouse) the
-"Meta Sends Escape" option on the "Main Options" menu of an xterm window.
-How can I start the xterm with that option (resource) enabled ?
+shh pickup@sourcebox  dd if=/hold/rootimage  bs=40K | dd of=/dev/hda1 bs=40k
 
-I tried setting it via the -xrm argument to xterm, e.g. 
-$ xterm -xrm 'Xterm*metaSendsEscape: true'
-
-This did not seem to do it, however. All help is appreciated. 
-
-Thanks and regards,
-
--K
+You really want to make sure that the partition used to create
+rootimage is smaller than the partition on any of your destination
+machines.  Once you've DD'd the data over, then
+    resize2fs /dev/hda1
+(presuming that you're using ext[23]fs for the OS. Other Filesystems
+may have their own utility) resize2fs will expand an ext2 or ext3 fs to
+fit whatever partition it is currently in.
 
 
-On Sun, 9 Oct 2005, at 00:53, Karthik Vishwanath wrote to linux-newbie@vger...:
 
-> Hello,
-> 
-> I have trouble with when I try to use Meta-<key> characters (for e.g. to
-> navigate/edit a bash command line) in a remote bash session via ssh from
-> an xterm client - the keystrokes get garbled and frequently are translated
-> into some undesired behavior in the (remote) shell. CTRL-<key>
-> combinations work perfectly fine, though. Also, the problem disappears if 
-> I:
-> 
-> (a) log into the remote machine and run an xterm on that machine (while
-> forwarding X connections)
-> 
-> (b) run another terminal client such as xterminal locally and then log 
-> into the remote machine. 
-> 
-> I prefer to use xterm to xterminal. How can fix it so that I can continue 
-> to use xterm but still have all shell editing functionality even in 
-> remote ssh sessions? 
-> 
-> On a connected issue, running `man` on the remote machine (while logged in
-> from my local xterm client) causes many characters to be garbled in the
-> display. The only way that this gets fixed is by using (a) above.
-> 
-> 
-> All help is appreciated. Please excuse the lack of "relevant details", if
-> so, for the ignorance of not knowing what to include...
-> 
-> 
-> Regards,
-> 
-> -K
-> 
-> --------------
-> Freedom is not worth having if it does not include the freedom to 
-> make mistakes.
-> 
-> 
+Eric Bambach wrote:
 
+>On Sunday 23 October 2005 03:59 pm, Michael Medwid wrote:
+>  
+>
+>>Is there a method to quickly replicate a bunch of Linux workstations
+>>to a desired image like you can do with Symantec's Ghost product on
+>>Windows?   For example suppose you have a classroom with 15 PCs and
+>>you want them all to have the same image.  If there is such a beast -
+>>does it support multicast to be able to image several machines on a
+>>LAN all at once?
+>>
+>>Thanks.
+>>
+>>Michael
+>>-
+>>    
+>>
+>
+>In a pinch there is alwatys dd :). This is especially true if they have 
+>identical hard drive sizes and partition layouts
+>
+>dd if=(Image source) of=(image destination) bs=512
+>
+>where image source will be an entire hard drive like the primary 
+>master /dev/hda and dest. will be /dev/hdb. ALso you can do this over the 
+>network!
+>
+>Boot the image destination from a boot cd, (I like gentoo cause you can get 
+>SSHD up with 1 command)
+>
+>On the image master
+>
+>dd if=/dev/hda bs=512 | ssh root@imagedestination dd of=/dev/hda
+>
+>This will block copy the hard drive on the source (/dev/hda) over the network 
+>onto the destination hard drive (/dev/hda).
+>
+>Ugly, but it could hold you over till you get ghost up and going and its quite 
+>simple.
+>
+>
+>  
+>
+
+
+-- 
+Stephen Samuel +1(604)876-0426             samnospam@bcgreen.com
+		   http://www.bcgreen.com/
+   Powerful committed communication. Transformation touching
+     the jewel within each person and bringing it to light.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
