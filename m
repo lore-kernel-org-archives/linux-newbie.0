@@ -1,51 +1,42 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Epiphany Browser Fails
-Date: Wed, 2 Nov 2005 13:52:16 +0800
-Message-ID: <20051102135216.5482fb41@localhost.localdomain>
-References: <20051022104721.2ae3957d@localhost>
+From: ppunnam@cs.kent.edu
+Subject: send_sigqueue problem..
+Date: Wed, 2 Nov 2005 17:54:54 -0500 (EST)
+Message-ID: <1137.131.123.180.184.1130972094.squirrel@webmail.cs.kent.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051022104721.2ae3957d@localhost>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On Sat, 22 Oct 2005 10:47:21 +0800
-Peter <heisspf@skyinet.net> wrote:
 
-> Hi,
-> 
-> Slackware 10.2 Kernel 2.4.31
-> 
-> After upgrading to slackware 10.2 from 10.1 the browser epiphany won't open 
-> and I get the following error message:
-> 
-> Epiphany can't be used now. Mozilla initialization failed.
-> 
-> Checking with google it seems a common problem with apparently no real 
-> solution.
-> 
-> Or does somebody on this list knows one?
-> 
-> Thanks & regards
-> -- 
-> Peter
-> 
+Hi guys,
 
-Glad to report that after now upgrading to dropline-gnome-2.12.1 Epiphany
-opened up again.
+i am trying to use the linux signaling to signal a user process from
+the kernel..
+i require a reliable(without any signal loss) and fast signaling
+mechanism.
+i tried to use the send_sigqueue to send the signals...here what i did
 
-There is only one small problem in BBC-News-Player it tries to open with gxine
-instead of Realplayer and gxine does not seem to work with it.
+1) creted the sigqueue structure using the sigqueue_alloc()..
+2) called the send_sigqueue() function...
+it worked fine for some time(around 1000 sig) but after that
+sigqueue_alloc failing..may be becuse of not enough memory  available
+to allocate sigqueue..
+i got few question about this..
 
-Regards 
+1) does sigqueue structure need to be removed explisitly or it will be
+autometically cleared after the signal delivery (i did't used the
+sigqueue_free() becuse i dont know when the signal is deliverd).
+2)there is any another way i can implement such a signaling mechanism.
 
-Peter
+i will be thankful for your help...
 
--- 
-Peter
+-prady
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
