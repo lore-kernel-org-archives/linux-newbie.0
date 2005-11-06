@@ -1,42 +1,28 @@
-From: ppunnam@cs.kent.edu
-Subject: send_sigqueue problem..
-Date: Wed, 2 Nov 2005 17:54:54 -0500 (EST)
-Message-ID: <1137.131.123.180.184.1130972094.squirrel@webmail.cs.kent.edu>
+From: Peter <heisspf@skyinet.net>
+Subject: Alsactl Boot Error
+Date: Sun, 6 Nov 2005 11:10:17 +0800
+Message-ID: <20051106111017.065d0108@localhost.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Hi,
 
-Hi guys,
+After upgrading to slackware 10.2 I get the following error when booting:
 
-i am trying to use the linux signaling to signal a user process from
-the kernel..
-i require a reliable(without any signal loss) and fast signaling
-mechanism.
-i tried to use the send_sigqueue to send the signals...here what i did
+Loading ALSA mixer settings:  /usr/sbin/alsactl restore
+/usr/sbin/alsactl: set_control:873: failed to obtain info for
+control #35 (No such file or directory)
 
-1) creted the sigqueue structure using the sigqueue_alloc()..
-2) called the send_sigqueue() function...
-it worked fine for some time(around 1000 sig) but after that
-sigqueue_alloc failing..may be becuse of not enough memory  available
-to allocate sigqueue..
-i got few question about this..
+What is the meaning and does it have any negative effect, how to correct?
 
-1) does sigqueue structure need to be removed explisitly or it will be
-autometically cleared after the signal delivery (i did't used the
-sigqueue_free() becuse i dont know when the signal is deliverd).
-2)there is any another way i can implement such a signaling mechanism.
-
-i will be thankful for your help...
-
--prady
-
-
-
+Thanks & regards
+- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
