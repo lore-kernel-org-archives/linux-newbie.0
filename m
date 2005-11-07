@@ -1,25 +1,24 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Which version of 2.6.11 is most stable
-Date: Mon, 7 Nov 2005 15:39:34 +0530
-Message-ID: <3AEC1E10243A314391FE9C01CD65429B13B281@mail.esn.co.in>
+From: Roushan Ali <roushan.ali@gmail.com>
+Subject: JBD layer
+Date: Mon, 7 Nov 2005 17:57:48 +0530
+Message-ID: <30b4e63b0511070427k5c69486rb9d764db1c7418f5@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+ Hi All,
+          Can anyone give me  pointer to a good documentation about
+kernel JBD layer ?
+Thanks in advance.
 
-Dear All,
-
-I am in the phase of development of a Linux BSP for 2.6.11 kernel.
-Which version of 2.6.11 kernel can be called best stable? In general where do i get this king of info?
-I serched in the www.lwn.net but i failed to get the required info.
 
 Regards,
-Mukund Jampala
+Roushan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
