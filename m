@@ -1,42 +1,40 @@
-From: linuxdevelop linux <linuxdevelop@gmail.com>
-Subject: Re: Which version of 2.6.11 is most stable
-Date: Tue, 8 Nov 2005 09:43:52 -0600
-Message-ID: <710f519a0511080743j37d7bcd1ibde642642bba8a71@mail.gmail.com>
-References: <3AEC1E10243A314391FE9C01CD65429B13B281@mail.esn.co.in>
+From: Chris Largret <largret@gmail.com>
+Subject: Re: Alsactl Boot Error
+Date: Tue, 08 Nov 2005 13:01:15 -0800
+Message-ID: <1131483675.5227.21.camel@shogun.daga.dyndns.org>
+References: <20051106111017.065d0108@localhost.localdomain>
+	 <BF937FBB.3F%jkbullfrog@verizon.net>
+	 <20051107100945.2b71161d@localhost.localdomain>
+	 <710f519a0511080734v78f17527h6281c3bbd74ba70e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3AEC1E10243A314391FE9C01CD65429B13B281@mail.esn.co.in>
-Content-Disposition: inline
+In-Reply-To: <710f519a0511080734v78f17527h6281c3bbd74ba70e@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Cc: linux-newbie@vger.kernel.org
+To: Peter <heisspf@skyinet.net>
+Cc: Jeremy Abbott <jkbullfrog@verizon.net>, Linux-Newbie <linux-newbie@vger.kernel.org>
 
-This would be the best place to get all the information you would need ..
+> After upgrading to slackware 10.2 I get the following error when
+booting:
+>
+> Loading ALSA mixer settings:  /usr/sbin/alsactl restore
+> /usr/sbin/alsactl: set_control:873: failed to obtain info for
+> control #35 (No such file or directory)
+>
+> What is the meaning and does it have any negative effect, how to
+correct?
 
-http://www.kernel.org/pub/linux/kernel/v2.6/
+It simply means that there are new controls (or there was a name change
+on an existing control) with the new kernel drivers. If you switch back
+and forth between a couple kernel versions, you'll see this pretty
+often. It isn't harmful in any way, but if you want to make it go away,
+a simple "alsactl store" as root will suffice.
 
-./thanks
-ilaiy
+--
+Chris Largret <http://daga.dyndns.org>
 
-On 11/7/05, Mukund JB. <mukundjb@esntechnologies.co.in> wrote:
->
-> Dear All,
->
-> I am in the phase of development of a Linux BSP for 2.6.11 kernel.
-> Which version of 2.6.11 kernel can be called best stable? In general where do i get this king of info?
-> I serched in the www.lwn.net but i failed to get the required info.
->
-> Regards,
-> Mukund Jampala
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
