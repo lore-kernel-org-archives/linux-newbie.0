@@ -1,48 +1,26 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Alsactl Boot Error
-Date: Wed, 9 Nov 2005 16:39:09 +0800
-Message-ID: <20051109163909.5efb5f8a@localhost.localdomain>
-References: <20051106111017.065d0108@localhost.localdomain>
-	<BF937FBB.3F%jkbullfrog@verizon.net>
-	<20051107100945.2b71161d@localhost.localdomain>
-	<710f519a0511080734v78f17527h6281c3bbd74ba70e@mail.gmail.com>
-	<1131483675.5227.21.camel@shogun.daga.dyndns.org>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: Can a normal user format, mount the card
+Date: Wed, 9 Nov 2005 16:36:32 +0530
+Message-ID: <3AEC1E10243A314391FE9C01CD65429B04F016@mail.esn.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1131483675.5227.21.camel@shogun.daga.dyndns.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chris Largret <largret@gmail.com>
-Cc: Jeremy Abbott <jkbullfrog@verizon.net>, Linux-Newbie <linux-newbie@vger.kernel.org>
-
-Many thanks. That simple and it worked.
-
-On Tue, 08 Nov 2005 13:01:15 -0800
-Chris Largret <largret@gmail.com> wrote:
-
-> > After upgrading to slackware 10.2 I get the following error when
-> booting:
-> >
-> > Loading ALSA mixer settings:  /usr/sbin/alsactl restore
-> > /usr/sbin/alsactl: set_control:873: failed to obtain info for
-> > control #35 (No such file or directory)
-> >
-> > What is the meaning and does it have any negative effect, how to
-> correct?
-> 
-> It simply means that there are new controls (or there was a name change
-> on an existing control) with the new kernel drivers. If you switch back
-> and forth between a couple kernel versions, you'll see this pretty
-> often. It isn't harmful in any way, but if you want to make it go away,
-> a simple "alsactl store" as root will suffice.
-> 
-> --
+To: linux-newbie@vger.kernel.org
 
 
--- 
-Peter
+Dear users,
+
+I am just here to confirm whether a normal user can mount and format a device.
+As for as I rememder a normal user is not allowed to mount. I tried it & I am not able to do it.
+
+Then fhow can a normal user access a device. I am seeing that he is not even able to place files into a mounted device.
+
+Regards,
+Mukund Jampala
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
