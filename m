@@ -1,50 +1,80 @@
-From: Peter <heisspf@skyinet.net>
+From: Carl <carl@anexia.co.uk>
 Subject: Re: MPG Video Format
-Date: Tue, 15 Nov 2005 16:57:02 +0800
-Message-ID: <20051115165702.24307506@localhost.localdomain>
+Date: Tue, 15 Nov 2005 09:36:15 +0000
+Message-ID: <6.2.3.4.0.20051115092533.0210b050@127.0.0.1>
 References: <20051115105214.25290e02@Peter.meridiantelekoms.com>
-	<43795637.90904@gelm.net>
+ <437962AF.9000902@comarre.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <43795637.90904@gelm.net>
+In-Reply-To: <437962AF.9000902@comarre.com>
+References: <20051115105214.25290e02@Peter.meridiantelekoms.com>
+ <437962AF.9000902@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Thanks Chuck et all!
 
-OK, I made mkisofs -o file.iso /path/to/directory/file.mpg and got an iso
-file. Then I used graveman to write the file to the CD. Well it succeeded to
-write the iso file to the CD, however, that is not what I need.
+<snip>
 
-I would like to copy the file.mpg to the CD in order that it can be played
-from that or copied back to a HD and played from there. The reason is, I want
-to give it to friends which have no broadband connection and cannot
-consequently download such a large file.
+>It depends on what sort of CD you want.
+>
+>If you want to put it on a data CD (an iso9660=20
+>filesystem, that is), then one way is to follow this two-step process:
+>
+>         1.  mkisofs -J -o somename.iso -r file.mpg
+>         2. cdrecord cdrecord dev=3D[something] somename.iso
+>
+>Where [something] is an entry like "0,0,0", with=20
+>the exact value depending where on the SCSI bus=20
+>(or the ide-scsi simulation of a SCSI bus) the=20
+>CD writer is (find our with "cdrecord=20
+>--scanbus"). Depending on your drive and media,=20
+>you may have to set other parameters too, like speed=3D[value].
+>
+>If your CD burner isn't SCSI or using ide-scsi=20
+>simulation ... I've read that newer versions of=20
+>cdrecord support burning to /dev/hd* devices,=20
+>but I've never managed to get it to work here so still use ide-scsi my=
+self.
 
-Then I did cdrecord -v dev=ATAPI:0,1,0 fs=64M speed=2 driveropts=burnproof
-gracetime=2 file.mpg and all proceeded nicely apparently, however, now I
-cannot read or mount the CD anymore:
+Just for the record (no pun intended) i have just=20
+installed fedora core 4 on a machine with an ide dvd-rw.
 
-dmesg tells: Unable to identify CD-ROM format.
+I tried "cdrecord --scanbus" and it shows the dvd=20
+as 0,0,0 so i tried "dev=3D0,0,0" and it failed=20
+cause it couldn't access the device.
 
-The dev=ATAPI:0,1,0 I got from the program xcdroast.
+I tried "dev=3D/dev/dvd" (symlink to /dev/hda) and it worked.
 
-My CDRom drive is [ATAPI:0,1,0] ASUS     CRW-5232AS 
+I thought with the scanbus option finding the=20
+device the ide-scsi emulation was working but=20
+apparently not. However this is what i get from
+a "cdrecord --version" which may or may not explain it.:
 
-What will be the next step?
+[carl@fed4 ~]$ cdrecord --version
+Cdrecord-Clone 2.01-dvd (i686-pc-linux-gnu)=20
+Copyright (C) 1995-2004 J=C3=B6rg Schilling
+Note: This version is an unofficial (modified) version with DVD support
+Note: and therefore may have bugs that are not present in the original.
+Note: Please send bug reports or support requests=20
+to http://bugzilla.redhat.com/bugzilla
+Note: The author of cdrecord should not be=20
+bothered with problems in this version.
+[carl@fed4 ~]$
 
-Just did it using xcdroast in Write Mode: RAW writing (raw96r) gave me what I
-wanted, a playable CD with file.mpg from that file.iso
+
+<snip>
+
 
 Regards
+Carl=20
 
--- 
-Peter
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
