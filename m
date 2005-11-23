@@ -1,45 +1,34 @@
-From: Chris Largret <largret@gmail.com>
-Subject: Re: Bash Script
-Date: Mon, 21 Nov 2005 00:10:27 -0800
-Message-ID: <1132560627.32698.4.camel@shogun.daga.dyndns.org>
-References: <20051121104538.3B83.SAVAGE-GARDEN@hanikamail.com>
-Reply-To: largret@gmail.com
+From: chuck gelm <chuck@gelm.net>
+Subject: Window virtual larger than physical?
+Date: Wed, 23 Nov 2005 11:41:26 -0500
+Message-ID: <43849BB6.1050603@gelm.net>
+References: <17281.43053.891765.176695@cerise.gclements.plus.com>	<43819B47.9040206@leuchtturm-it.de> <17284.35279.681946.957436@cerise.gclements.plus.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20051121104538.3B83.SAVAGE-GARDEN@hanikamail.com>
+In-Reply-To: <17284.35279.681946.957436@cerise.gclements.plus.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Kev <savage-garden@hanikamail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Mon, 2005-11-21 at 10:45 +0600, Kev wrote:
-> Hi,
-> 
-> im trying to setup a RBL DNS server for my testing. 
-> im trying to write a bash scrip that add the IP's to add bind zone.
->
-> im having a prb transferring the ip in reveres format (192.168.1.2 -->
-> 2.1.168.192) 
-> 
-> can any one help me to do this with a bash script ?
+ My virtual window is larger than my physical window.
+This is agrevating.  I have a fresh install of Slackware v10.2
+and I am using KDE v3.4.
 
-I don't know too much about RBL DNS servers, but changing the number
-sequence around for an IP should be pretty easy:
+ Is this a Xorg/Xwindow issue or a KDE issue?
 
-#!/bin/sh
+I have browsed around the KDE settings and googled,
+but I have found no help.  :-|
 
-IP='192.168.1.2'
-echo $IP|sed -r
-'s/^([0-9]+)\.([0-9]+)\.([0-9]+)\.([0-9]+)$/\4.\3.\2.\1/'
+I ran xorgsetup and choose not to have virtual windows larger,
+yet after a few startx's, the window manager returns to this
+virtual > physical mode.  :-|
 
-Essentially, it performs a regular expression replace. It finds the four
-groups of numbers and reverses the order (#4 goes first, #3 second,
-etc.).
+How do I make my virtual window the same size as my physical window?
 
---
-Chris Largret <http://daga.dyndns.org>
+Thanks,
+Chuck
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
