@@ -1,88 +1,37 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: CVS no such repository error..
-Date: Sat, 26 Nov 2005 13:43:26 +0530
-Message-ID: <3AEC1E10243A314391FE9C01CD65429B1BD0A1@mail.esn.co.in>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: pppoe * rp-pppoe * pppd?????
+Date: Sun, 27 Nov 2005 15:03:34 -0500
+Message-ID: <20051127200334.GA1427@lnx2.w8mch.ampr.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
 
-Dear RedHat users, 
+Greetings: I'm lost in a bewilderment of HOWTO's, Docs, FAQ's, etc
+about PPPOE and ADSL Modems.. The more I read the worse it gets.
+<grin>
 
-I am trying to configure the CVS Server on RH 7.3 dist on i386. 
-I am using the default cvs that comes with the RH 7.3 dist. 
-I am resulting in the 'No repository' Error. 
+However, my one query for the list is:
 
-I have followed the following steps as mention in the link to configure the cvs server & test it: http://owen.sj.ca.us/rkowen/howto/cvs.html#server <http://owen.sj.ca.us/rkowen/howto/cvs.html> 
+Using the Roaring Penguin PPPOE client, rp-pppoe; do I really need
+PPP support too?? Or does that client include PPP support.. No success
+yet I've got to eliminate some parameters..
 
-	export CVSROOT=/usr/local/src/cvsroot
-	cvs init
+Both are legitimate packages in Slackware 10-l and I'll go ahead and
+try all the different ways but could use some possible comments..
 
-created users & grps:- 
-	groupadd -g 8000 cvsgrp
-	useradd -u 8000 -g cvsgrp -d /u/cvs -s /bin/sh -c "CVS Repository" -m cvs
+Cheers and TIA..
 
-Set the ownership of the $CVSROOT and set the setgid bit on the directory 
-	chown -R cvs $CVSROOT
-	chgrp -R cvsgrp $CVSROOT
-	chmod -R g+s $CVSROOT
+-- 
 
-grep cvs /etc/services resulted with: 
-	cvspserver 2401/tcp #CVS client/server operations
-	cvspserver 2401/udp #CVS client/server operations
-
-In /etc/xinetd.d I named a file cvspserver with: 
-	service cvspserver
-	{
-	socket_type = stream
-	protocol = tcp
-	wait = no
-	user = root
-	passenv = 
-	server = /usr/bin/cvs
-	server_args = --allow-root=/usr/local/src/cvsroot pserver
-	}
-
-and issued: 
-	# service xinetd reload
-
-Create or edit the following files in $CVSROOT/CVSROOT 
-readers added mukund, root to it
-
-used htpasswd for creating entried of the file and appends each entry with ":cvs"
-	htpasswd -c passwd pseudo_username
-
-CVS server access from the same machine ona diffrentr terminal: 
-	# cvs -d :pserver:root@cvshost:/usr/src/cvsroot login { where cvshost = 100.100.100.28, cvs server IP} 
-	Logging in to :pserver:root@cvshost:2401/usr/src/cvsroot 
-	CVS passwd: 
-	/usr/src/cvsroot: no such repository 
-
-Using the anonymous uses..... 
-	cvs -d :pserver:anonymous@cvshost:/usr/src/cvsroot login { where cvshost = 100.100.100.28, cvs server IP} 
-	Logging in to :pserver:root@cvshost:2401/usr/src/cvsroot 
-	CVS passwd: << blank poasswd >> { as I did not assign any} 
-	/usr/src/cvsroot: no such repository
-
-Also, when I tried to
-
-	# telnet 100.100.100.28 2401 
-	Trying 100.100.100.28...
-	Connected to 100.100.100.28 (100.100.100.28)
-	Escape charecter is '^]'.
-On pressing ENTER:
-	cvs {pserver aborted]: bad auth protocol start:
-	Connection closed by foreign host.
-
-Can somene please explain me where exactly I am commiting the mistake?
-
-Thanks & Regards, 
-Mukund Jampala
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
