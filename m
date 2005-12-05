@@ -1,27 +1,29 @@
-From: Sally Curtis <audition@frauenseite.com>
-Subject: A wide range of software applications, drivers, and more.
-Date: Sat, 3 Dec 2005 23:38:08 -0800
-Message-ID: <3830638151.12673973640@tp-s2-c108-19.router.hinet.net>
-Content-Transfer-Encoding: 7bit
+From: s0u1d13r s0u1d13r <s0u1d13r@gmail.com>
+Subject: This will answer all your linux command questions...
+Date: Sun, 4 Dec 2005 20:00:17 -0800
+Message-ID: <29352c160512042000v62a82b1r44763ca59205ae45@mail.gmail.com>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Personalising technology solutions.
-http://eytv.q2egelw1eovg8qq3vq83dqq8.caryatidlf.com/?ladommwy
+A cool new search engine that gives you linux commands as search
+results, put in what you are looking to accomplish like "directory
+listing" and it will return "ls" as the result. Includes chained
+commands, examples, notes and the man page for the command.
 
+http://www.linuxcommands.org/
 
-We need a president who's fluent in at least one language.  
-God made everything out of nothing, but the nothingness shows through.  
-Patience is bitter, but its fruit is sweet.     
-Contrary to popular belief, English women do not wear tweed nightgowns.  
+You can also submit or request commands as well, and there is soon to
+be tutorials cross-linked with command entries.
 
-The future will be better tomorrow.       
+Have a look!
 
-
+s
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
