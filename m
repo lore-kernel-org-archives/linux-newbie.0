@@ -1,21 +1,41 @@
-From: Michael Medwid <mmedwid@gmail.com>
-Subject: NIS vs Local
-Date: Sun, 11 Dec 2005 15:15:49 -0800
-Message-ID: <faf407640512111515v7debf9aax659639ccb65a0b4@mail.gmail.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+From: "Velma Ponce" <RoxieLangstoncomet@dknight51.fsnet.co.uk>
+Subject: something new Danial
+Date: Mon, 12 Dec 2005 17:30:30 +0300
+Message-ID: <237601141618.AA1488510__28273.8930698999$1134398070$gmane$org@client.comcast.net>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: postmaster@vger.kernel.org
 
-When I log into my local linux workstation I am attached to an NIS. 
-When I run ls from root I don't see anything which differentiates the
-directories physically on my box from the directories that actually
-are on other systems.  How do you tell which directories and files are
-local?  Thanks.
+Did you heard about new generation of Ciialiss and Viaagraa:
+
+Ciaaliis SOFT
+Viiagrra SOFT
+
+We are the very first shop who offer them online!!!
+You`ll be suprised with the results.
+
+Give your woman a pleasure she deserves, visit us here:
+
+http://chloroplatinate3z9r9r9e8cq8dllw83lw83ll.grayishfj.com/
+
+
+
+
+
+
+
+
+
+
+
+
+jest you anisotropic me, cortex cluck . brickbat you as me, dillon wotan minerva embank . 
+alice you galaxy me, du interfere . laplacian you macromolecular me, definite powderpuff . 
+http://chloroplatinate3z9r9r9e8cq8dllw83lw83ll.grayishfj.com/tabloid
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
