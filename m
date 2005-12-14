@@ -1,41 +1,37 @@
-From: "Velma Ponce" <RoxieLangstoncomet@dknight51.fsnet.co.uk>
-Subject: something new Danial
-Date: Mon, 12 Dec 2005 17:30:30 +0300
-Message-ID: <237601141618.AA1488510__28273.8930698999$1134398070$gmane$org@client.comcast.net>
+From: Peter <heisspf@skyinet.net>
+Subject: Keyboard Indicator
+Date: Wed, 14 Dec 2005 10:38:54 +0800
+Message-ID: <20051214103854.7f327198@localhost.localdomain>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: postmaster@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Did you heard about new generation of Ciialiss and Viaagraa:
+Hi,
 
-Ciaaliis SOFT
-Viiagrra SOFT
+Since the keyboard indicator applet on the gnome panel does not function
+properly I put my own custom application launcher to switch to another
+kb layout including corresponding country flags.
 
-We are the very first shop who offer them online!!!
-You`ll be suprised with the results.
+One problem is I sometimes forget to change back to let say US KB. I
+thought of having an xmessage display when I have switched the kb layout.
 
-Give your woman a pleasure she deserves, visit us here:
+In the command line for the applet where I have e.g. "setxkbmap de" I tried to
+add " xmessage Kb set DE" which does not work.
 
-http://chloroplatinate3z9r9r9e8cq8dllw83lw83ll.grayishfj.com/
+Is there a way to put 2 commands or more in a command line applet?
 
+The problem with the keyboard indicator applet on the gnome panel is that it
+will only change when one first gets to properties on the applet. That is in 2
+of my distros. Previous applets did work well including showing of country
+flags.
 
-
-
-
-
-
-
-
-
-
-
-jest you anisotropic me, cortex cluck . brickbat you as me, dillon wotan minerva embank . 
-alice you galaxy me, du interfere . laplacian you macromolecular me, definite powderpuff . 
-http://chloroplatinate3z9r9r9e8cq8dllw83lw83ll.grayishfj.com/tabloid
+Thanks & regards
+--- 
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
