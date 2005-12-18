@@ -1,25 +1,28 @@
-From: Angelica Dudley <paraboloidal@clarico.com>
-Subject: No pills, no pumps - Its the Patch
-Date: Fri, 16 Dec 2005 14:02:13 -0800
-Message-ID: <9054530861.32749103913@host-65-7-67-197.bna.bellsouth.net>
+From: "Arturas Moskvinas" <arturas.moskvinas@gmail.com>
+Subject: RE: NIS vs Local
+Date: Sun, 18 Dec 2005 12:07:01 +0200
+Message-ID: <43a534c3.33437452.2235.ffffb0f1@mx.gmail.com>
+Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: mmedwid@gmail.com, linux-newbie@vger.kernel.org
 
-Penis enhancement system that works for countless men worldwide.
-http://www.nefarsa.com/pt/
+Try mount and you will see...
+Arturas M.
 
-
-
-Genius is one per cent inspiration, ninety-nine per cent perspiration.   
-All the world's a cage.        
-Music is the wine that fills the cup of silence.   
-HERS, pron. His.          
-If the world were a logical place, men would ride sidesaddle.  
+-----Original Message-----
+    From: "Michael Medwid"<mmedwid@gmail.com>
+    Sent: 05.12.12 01:15:49
+    To: "linux-newbie@vger.kernel.org"<linux-newbie@vger.kernel.org>
+    Subject: NIS vs Local
+      When I log into my local linux workstation I am attached to an NIS. 
+    When I run ls from root I don't see anything which differentiates the
+    directories physically on my box from the directories that actually
+    are on other systems.  How do you tell which directories and files are
+    local?  Thanks.
 
 
 -
