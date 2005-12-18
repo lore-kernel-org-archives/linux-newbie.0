@@ -1,30 +1,56 @@
-From: "Arturas Moskvinas" <arturas.moskvinas@gmail.com>
-Subject: RE: NIS vs Local
-Date: Sun, 18 Dec 2005 12:07:01 +0200
-Message-ID: <43a534c3.33437452.2235.ffffb0f1@mx.gmail.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: recovering a partition
+Date: Sun, 18 Dec 2005 12:50:07 -0500
+Message-ID: <20051218175007.GA1619@lnx2.w8mch.ampr.org>
+References: <dnee1r$pdp$1@sea.gmane.org> <1134240581.6589.6.camel@shogun.daga.dyndns.org>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1134240581.6589.6.camel@shogun.daga.dyndns.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: mmedwid@gmail.com, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Try mount and you will see...
-Arturas M.
+On 12-10, Chris Largret wrote:
+> On Sat, 2005-12-10 at 12:27 +0100, Nagy Viktor wrote:
+> 
+> > I wanted to change the filesystem of my ex-windows partition (I just wanted
+> > to finish the migration from win 2 Linux) from vfat to ext3, but when I made
+> > its backup I copied only one file instead of the whole partition. I would
+> > like to restore it if possible.
+> > 
+> > The partition was vfat, now is ext3, and I already made a dd of it. (When it
+> > was ext3.)
+> > 
+> > Is there a way to save my data? How can I do it?
+> 
+> Since you already formatted the drive as another file system, it will be
+> difficult to retrieve files. It is still possible to find some as long
+> as you didn't do bad-block testing or use some other method that wrote
+> data to the partition before formatting.
+> 
+> 'grep' and 'dd' will be your most common commands.
+> 
+> For somewhat more high-level tools, take a look at the man page for
+> magicrescue:
+> 
+> http://jbj.rapanden.dk/magicrescue/manpage.html
+> 
+> Good luck!
+> 
+> --
+> Chris Largret <http://daga.dyndns.org>
 
------Original Message-----
-    From: "Michael Medwid"<mmedwid@gmail.com>
-    Sent: 05.12.12 01:15:49
-    To: "linux-newbie@vger.kernel.org"<linux-newbie@vger.kernel.org>
-    Subject: NIS vs Local
-      When I log into my local linux workstation I am attached to an NIS. 
-    When I run ls from root I don't see anything which differentiates the
-    directories physically on my box from the directories that actually
-    are on other systems.  How do you tell which directories and files are
-    local?  Thanks.
+	I just noticed "Test Disk" at SourceForge.. You may want to
+check into that.. SF has a bazillion recovery apps..
 
+-- 
 
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
