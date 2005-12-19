@@ -1,34 +1,37 @@
-From: Andrew <ald2@arrakis.es>
-Subject: Re: adsl, firewalls, etc.
-Date: Mon, 19 Dec 2005 17:56:10 +0100
-Message-ID: <43A6E62A.4040706@arrakis.es>
-References: <43A66B34.6070102@arrakis.es> <faf407640512190843g6f5c3d13sa6dead2f2324d45b@mail.gmail.com>
+From: "Justin Morgan" <JMorgan@d2hawkeye.com>
+Subject: RE: adsl, firewalls, etc.
+Date: Mon, 19 Dec 2005 11:06:50 -0600
+Message-ID: <27E6B53A6B1ADF49B715893D85F2303DBC833A@d2hawkeye-01-ex.atlarge.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <faf407640512190843g6f5c3d13sa6dead2f2324d45b@mail.gmail.com>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Michael Medwid wrote:
 
->I assume you mean the "default" configuration.  :-)  
->
-Right! Spanish influence (por defecto=by default), but not far wrong.
 
-Thanks for your answers
+> I know I'm pushing my luck a bit asking this here, but does anyone 
+> actually have any experience shutting ports on this router? I've 
+> followed the logical steps, which are the same steps described in the 
+> manual, but after reinitiating the router I still find exactly the
+same 
+> ports open.
 
-I know I'm pushing my luck a bit asking this here, but does anyone 
-actually have any experience shutting ports on this router? I've 
-followed the logical steps, which are the same steps described in the 
-manual, but after reinitiating the router I still find exactly the same 
-ports open.
 
-And no, I don't need any ports opne on the outside.
+Andrew,
 
-Andrew
+I can't say I've actually worked with that model, but I can say that I
+suspect those are ports to manage the router itself.  Thus, you might
+not find the settings in the ACLs/policies, but in the management
+settings for the entire device.  I've seen similar hiding spots for
+management ports on Juniper and Linksys devices.
+
+Regards,
+
+-Justin
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
