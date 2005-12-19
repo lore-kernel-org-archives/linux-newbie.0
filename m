@@ -1,56 +1,34 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: recovering a partition
-Date: Sun, 18 Dec 2005 12:50:07 -0500
-Message-ID: <20051218175007.GA1619@lnx2.w8mch.ampr.org>
-References: <dnee1r$pdp$1@sea.gmane.org> <1134240581.6589.6.camel@shogun.daga.dyndns.org>
-Reply-To: haltec@kvinet.com
+From: Andrew <ald2@arrakis.es>
+Subject: adsl, firewalls, etc.
+Date: Mon, 19 Dec 2005 09:11:32 +0100
+Message-ID: <43A66B34.6070102@arrakis.es>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1134240581.6589.6.camel@shogun.daga.dyndns.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-On 12-10, Chris Largret wrote:
-> On Sat, 2005-12-10 at 12:27 +0100, Nagy Viktor wrote:
-> 
-> > I wanted to change the filesystem of my ex-windows partition (I just wanted
-> > to finish the migration from win 2 Linux) from vfat to ext3, but when I made
-> > its backup I copied only one file instead of the whole partition. I would
-> > like to restore it if possible.
-> > 
-> > The partition was vfat, now is ext3, and I already made a dd of it. (When it
-> > was ext3.)
-> > 
-> > Is there a way to save my data? How can I do it?
-> 
-> Since you already formatted the drive as another file system, it will be
-> difficult to retrieve files. It is still possible to find some as long
-> as you didn't do bad-block testing or use some other method that wrote
-> data to the partition before formatting.
-> 
-> 'grep' and 'dd' will be your most common commands.
-> 
-> For somewhat more high-level tools, take a look at the man page for
-> magicrescue:
-> 
-> http://jbj.rapanden.dk/magicrescue/manpage.html
-> 
-> Good luck!
-> 
-> --
-> Chris Largret <http://daga.dyndns.org>
+Midwinter greetings,
 
-	I just noticed "Test Disk" at SourceForge.. You may want to
-check into that.. SF has a bazillion recovery apps..
+I have just moved one rung up on the evolutionary scale and got myself 
+an adsl connection. I am probably going to make a few relatively minor 
+changes to my home lan because of this, but before going any further 
+there is one issue worrying me:
 
--- 
+The free modem my isp provided has no support under Linux so I had to 
+take the router option. It's a Draytek Vigor 2500. The defect 
+configuration leaves ports 20 (ftp-data),  23 (telnet) and 80 (http) 
+open, the rest are stealthed (according to Shields Up). Am I right in 
+thinking this is not such a good idea? I haven't yet had any success in 
+trying to add rules to close these ports, and my isp 'cordially' informs 
+me that this is up to me to sort out, so for the time being I am simply 
+disconnecting when not in use (about 16 hours a day). Am I being 
+over-paranoid?
 
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+TIA
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
