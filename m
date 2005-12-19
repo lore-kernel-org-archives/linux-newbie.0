@@ -1,47 +1,36 @@
-From: Carl <carl@anexia.co.uk>
-Subject: Fwd: Re: adsl, firewalls, etc.
-Date: Mon, 19 Dec 2005 17:46:25 +0000
-Message-ID: <6.2.3.4.0.20051219174500.0219bad8@127.0.0.1>
+From: Andrew <ald2@arrakis.es>
+Subject: Re: adsl, firewalls, etc.
+Date: Mon, 19 Dec 2005 21:41:04 +0100
+Message-ID: <43A71AE0.5030608@arrakis.es>
+References: <43A66B34.6070102@arrakis.es> <faf407640512190843g6f5c3d13sa6dead2f2324d45b@mail.gmail.com> <43A6E62A.4040706@arrakis.es> <faf407640512190917q9d1ade0k96d5a1744a6ced4b@mail.gmail.com> <6.2.3.4.0.20051219173414.02101c78@127.0.0.1>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <6.2.3.4.0.20051219173414.02101c78@127.0.0.1>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: Michael Medwid <mmedwid@gmail.com>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+Carl wrote:
 
->Date: Mon, 19 Dec 2005 17:44:09 +0000
->To: Michael Medwid <mmedwid@gmail.com>,linux-newbie@vger.kernel.org
->From: Carl <carl@anexia.co.uk>
->Subject: Re: adsl, firewalls, etc.
+> There is a check box in the management setup that gives you the option 
+> to allow access from the outside
+> and the choice of which service you allow and what ports you want them 
+> to run on.
 >
->I've just unwrapped a brand new draytek vigor 2900 out the box and 
->set it up to connect to the internet with NAT
->and it doesn't allow management access via https, http, ftp or 
->telnet from the outside by default.
+> This is the same on vigor 2600's but i never had a 2500 so can't 
+> comment on that model but i suspect it is the same.
 >
->There is a check box in the management setup that gives you the 
->option to allow access from the outside
->and the choice of which service you allow and what ports you want 
->them to run on.
->
->This is the same on vigor 2600's but i never had a 2500 so can't 
->comment on that model but i suspect it is the same.
->
->--
->Carl
+That was it. Thanks.
 
+BTW. Amongst the Google answers Ray coudn't understand was one 
+confirming that the modem (vigor 318) was unsupported under Linux and 
+another with info about a project which does provide Linux support for it:
 
+http://accessrunner.sourceforge.net/
 
-Also meant to mention there is also the option to add 3 ip/netmask 
-ranges that have access from the outside.
-
-
---
-Carl 
-
-
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
