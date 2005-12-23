@@ -1,34 +1,51 @@
 From: Andrew <ald2@arrakis.es>
-Subject: Re: adsl, firewalls, etc.
-Date: Mon, 19 Dec 2005 21:41:04 +0100
-Message-ID: <43A71AE0.5030608@arrakis.es>
-References: <43A66B34.6070102@arrakis.es> <faf407640512190843g6f5c3d13sa6dead2f2324d45b@mail.gmail.com> <43A6E62A.4040706@arrakis.es> <faf407640512190917q9d1ade0k96d5a1744a6ced4b@mail.gmail.com> <6.2.3.4.0.20051219173414.02101c78@127.0.0.1>
+Subject: kernel update fiasco (depmod)
+Date: Fri, 23 Dec 2005 10:12:01 +0100
+Message-ID: <43ABBF61.5080708@arrakis.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <6.2.3.4.0.20051219173414.02101c78@127.0.0.1>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Carl wrote:
+Good morning,
 
-> There is a check box in the management setup that gives you the option 
-> to allow access from the outside
-> and the choice of which service you allow and what ports you want them 
-> to run on.
->
-> This is the same on vigor 2600's but i never had a 2500 so can't 
-> comment on that model but i suspect it is the same.
->
-That was it. Thanks.
+I have just installed Slackware-10.2 with kernel 2.4.31 on a Pentium 100 
+with 32Mb ram. All packets are from the 1st iso, which I downloaded and 
+burned on cd. The problems start when I try to upgrade the kernel using 
+the Slackware packet kernel-generic-2.6.13 and the corresponding 
+kernel-modules. The 3 symlinks in /boot all point to the right files. 
+lilo.conf is set up correctly. I've run lilo -v repeatedly. But the 
+system will not boot correctly as the files in /lib/modules/2.6.13 
+(modules.dep, etc.) are not being created. (However, I can boot the 
+system from a floppy with the 2.4.31 kernel). If I try running depmod 
+after booting with the 2.6.13 I just get the message Killed, and the 
+following lines appear in var/log/messages:
 
-BTW. Amongst the Google answers Ray coudn't understand was one 
-confirming that the modem (vigor 318) was unsupported under Linux and 
-another with info about a project which does provide Linux support for it:
+Dec 23 10:47:45 fw kernel: Mem-info:
+Dec 23 10:47:45 fw kernel: Free swap:            0kB
+Dec 23 10:47:45 fw kernel: 8192 pages of RAM
+Dec 23 10:47:45 fw kernel: 0 pages of HIGHMEM
+Dec 23 10:47:45 fw kernel: 924 reserved pages
+Dec 23 10:47:45 fw kernel: 16 pages shared
+Dec 23 10:47:45 fw kernel: 0 pages swap cached
+Dec 23 10:47:45 fw kernel: 5 pages dirty
+Dec 23 10:47:45 fw kernel: 1 pages writeback
+Dec 23 10:47:45 fw kernel: 6298 pages mapped
+Dec 23 10:47:45 fw kernel: 618 pages slab
+Dec 23 10:47:45 fw kernel: 55 pages pagetables
 
-http://accessrunner.sourceforge.net/
+(The figures vary)
+
+I have tried redownloading and reinstalling the kernel, kernel-modules 
+and module-init-tools tgzs. No difference. I replaced the hd (it was 
+giving intermittent error messages) and reinstalled. No difference.
+
+Now what?
+
+TIA,
 
 Andrew
 -
