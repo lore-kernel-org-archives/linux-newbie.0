@@ -1,29 +1,27 @@
-From: Andrew <ald2@arrakis.es>
-Subject: Re: kernel update fiasco (depmod)
-Date: Fri, 23 Dec 2005 20:58:54 +0100
-Message-ID: <43AC56FE.9090302@arrakis.es>
-References: <43ABBF61.5080708@arrakis.es> <200512230943.15725.eric@cisu.net>
-Mime-Version: 1.0
+From: Sophia Gilbert <degenerated@butikgron.se>
+Subject: Microsoft and IBM OEM Software for Bundling Only and other related software.
+Date: Sat, 24 Dec 2005 02:27:57 -0800
+Message-ID: <12650192255.2304577550@netcache5.is.co.za>
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200512230943.15725.eric@cisu.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Eric Bambach wrote:
+LOWEST PRICE GUARANTEED! download and Buy Cds
+http://ljlev.8iwpd8ehe5vgqq83dq83dq8q.egoizerjd.com/?eei
 
->Your machine is running out of memory and the command is being killed by the 
->OOM killer. 32MB is quite slim nowadays and if you dont have a distribution 
->BUILT for low memory conditions you could experience this. I recommend 
->increasing your swap file (or creating one!).
->
->  
->
-Spot on. Cheers.
 
-Andrew
+A person is never happy except at the price of some ignorance. 
+My heart is pure as the driven slush.     
+DUCK-BILL, n. Your account at your restaurant during the canvas-back season.  
+When you betray somebody else, you also betray yourself.    
+Never offend people with style when you can offend them with substance. 
+I improve on misquotation.         
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
