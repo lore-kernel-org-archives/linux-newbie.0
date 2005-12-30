@@ -1,77 +1,49 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: RE: Howto set kernel makefile to use particular gcc
-Date: Fri, 30 Dec 2005 11:57:26 +0530
-Message-ID: <3AEC1E10243A314391FE9C01CD65429B2239A9@mail.esn.co.in>
+From: Andrew <ald2@arrakis.es>
+Subject: adsl pppoa connection
+Date: Fri, 30 Dec 2005 20:57:07 +0100
+Message-ID: <43B59113.7040408@arrakis.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: jimmy <jimmyb@huawei.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Jimmy,
+I'm trying to set up an adsl pppoa Internet connection on Slackware 10.2 
+with kernel 2.6.13,  which includes the cxacru driver known to work with 
+vigor 318 modem.
 
-I will try what you suggested.
-I guess Linux provides a export variable which we can set to use a particular gcc while building the kernel.
+The modem shows up in /proc/bus/usb/devices.
 
+cat /proc/net/atm/cxacru\:0 :
+ADSL USB MODEM (usb-0000:00:0a.0-1)
+MAC: 00:50:7f:18:75:6e
+AAL5: tx 0 ( 0 err ), rx 0 ( 0 err, 0 drop )
+Line up
 
-Regards,
-Mukund Jampala
+Leds light up correctly.
 
+Running pppd gets as far as:
 
+Connect: ppp0 <--> /dev/pts/0
+Connection terminated
+Modem hangup
+Exit
 
-> -----Original Message-----
-> From: jimmy [mailto:jimmyb@huawei.com]
-> Sent: Friday, December 30, 2005 11:50 AM
-> To: Mukund JB.
-> Subject: Re: Howto set kernel makefile to use particular gcc
-> 
-> 
-> Mukund JB. wrote:
-> > Dear Kernel mailers,
-> > 
-> > I have specific requirement of building kernel 2.6.11.12 
-> with gcc- 3.3 over the FC4 dist. 
-> > I have downloaded the gcc-3.3.
-> > As FC4 comes with a default gcc-4.0, how do I set the 
-> kernel Makefile to use the gcc-3.3 instead of gcc-4.0.
-> > 
-> > How do I achieve it? I know it is a very small issue and 
-> searched google and I am unable to find it.
-> > Please help.
-> you can lookup man gcc to find how to use different versions 
-> of gcc thru 
-> the driver program.
-> 
-> i think it's gcc -v 3.3
-> 
-> Then try
-> 
-> $make CC="gcc -v 3.3"
-> 
-> for building the kernel. I'm not sure bout this part, but looks to be 
-> the logical thing to do :-)
-> 
-> 
-> -jb
-> 
-> > 
-> > Regards,
-> > Mukund Jampala
-> > 
-> > 
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe 
-> linux-kernel" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at  http://www.tux.org/lkml/
-> > 
-> 
-> 
+The message in syslog is LCP: timeout sending Config-Requests
+
+It seems I am not getting an IP address (dynamic).
+
+According to my ISP, no username or password are required; 
+authentication is apparently done by phone number.
+
+Does anybody have any idea where I go from here? Or what I should put in 
+my ppp/options?
+
+TIA,
+
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
