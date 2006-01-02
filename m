@@ -1,67 +1,55 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: adsl pppoa connection
-Date: Sat, 31 Dec 2005 13:08:41 -0500
-Message-ID: <20051231180841.GA1281@lnx2.w8mch.ampr.org>
-References: <43B59113.7040408@arrakis.es>
-Reply-To: haltec@kvinet.com
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: gcc-3.3.3 native compiler build error on FC4
+Date: Mon, 2 Jan 2006 14:49:08 +0530
+Message-ID: <3AEC1E10243A314391FE9C01CD65429B223B4B@mail.esn.co.in>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <43B59113.7040408@arrakis.es>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Andrew <ald2@arrakis.es>
-Cc: linux-newbie@vger.kernel.org
-
-On 12-30, Andrew wrote:
-> I'm trying to set up an adsl pppoa Internet connection on Slackware 10.2 
-> with kernel 2.6.13,  which includes the cxacru driver known to work with 
-> vigor 318 modem.
-> 
-> The modem shows up in /proc/bus/usb/devices.
-> 
-> cat /proc/net/atm/cxacru\:0 :
-> ADSL USB MODEM (usb-0000:00:0a.0-1)
-> MAC: 00:50:7f:18:75:6e
-> AAL5: tx 0 ( 0 err ), rx 0 ( 0 err, 0 drop )
-> Line up
-> 
-> Leds light up correctly.
-> 
-> Running pppd gets as far as:
-> 
-> Connect: ppp0 <--> /dev/pts/0
-> Connection terminated
-> Modem hangup
-> Exit
-> 
-> The message in syslog is LCP: timeout sending Config-Requests
-> 
-> It seems I am not getting an IP address (dynamic).
-> 
-> According to my ISP, no username or password are required; 
-> authentication is apparently done by phone number.
-> 
-> Does anybody have any idea where I go from here? Or what I should put in 
-> my ppp/options?
-> 
-> TIA,
-> 
-> Andrew
+To: linux-newbie@vger.kernel.org
 
 
-Greetings: Can't help with pppoa but I got pppoe working with much
-doco reading and considerable help from Ray and Chuck on this list..
+Dear All,
 
-I have the file: DSL-HOWTO.pdf > 200K, that goes into all DSL formats
-including pppoa.. It may give you some clues, finding it via google,
-by Hal Burgiss, hal@foobar.net; v1.71 2002-07-21... HTH..
+I have a system running FC4 whose default gcc is 4.0.0.
+I have requirement of gcc-3.3.3 i.e. FC2 default gcc over the FC4.
 
---
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+I am trying to install the gcc rpms found in the FC2 CD's.
+It looks like the gcc rpm has a check to see whether the installed gcc is the latest one.
+And seeing that installed gcc is the latest one It stops.
+
+What would be a better approach of install the gcc 3.3.3 over my FC4 dist?
+
+I also downloaded the gcc 3.3.3 from gcc.gnu.org.I am failing to get the build successful.
+I followed the following steps:
+
+./configure --prefix=/usr/bin
+(i got NO errors here)
+
+when I tried to build the gcc using the make file generated
+
+# make 
+./read-rtl.c: warning: traditional C rejects ISO C style function definitions
+./read-rtl.c: 653: error: invalid lvalue in increment
+make[1]: *** [read-rtl.o] Error 1
+make[1]: Leaving directory '/root/gcc-3.3.3/gcc'
+make[1]: *** [all-gcc] Error 2
+
+Can someone smell the problem?
+Do I need to pass any specific arguments to configure script an well as make?
+
+Best Regards,
+Mukund Jampala
+
+
+
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
