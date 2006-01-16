@@ -1,29 +1,47 @@
-From: micha105@arcor.de
-Subject: modifier keys in vim
-Date: Fri, 13 Jan 2006 02:30:55 +0100
-Message-ID: <200601130230.55747.micha105@arcor.de>
+From: "heisspf@skyinet.net" <heisspf@skyinet.net>
+Subject: Modem Busy
+Date: Sun, 15 Jan 2006 20:09:31 -0500
+Message-ID: <380-2200611161931620@M2W103.mail2web.com>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
 Hi,
-I try to map the modifier keys in vim (under X, xterm), e.g <M-j> or <S-Down>.
 
-However it doesn't work at all.
-also neither hitting Ctrl-k nor Ctrl-v helps, this just shows in the above 
-example j or <Down>.
+My broadband Internet base station broke down. Therefore, I have to use the 
+modem dial-up for Internet connection until the station is fixed.
 
-But: it works in gvim.
-And: yesterday it worked also in xterm.
-Today not.
-XXX
+Now in slackware 10.2 using kppp when trying to connect or when querying
+the 
+modem it shows "modem busy" and I cannot make a connection consequently.
 
-Is this problem known to someone ?
+Before I got the BB connection I always used kppp to dial-up w/o any
+problems. 
+All the same settings except it was slack 10.1.
+
+I switch now to my Fedora box and can make a connection with the dial-up
+modem 
+easily.
+
+I just found that minicom will not go onlione as well.
+
+Why would kppp claim that the modem is busy and how can I correct this? The 
+lights on the modem do not show anything that it is busy.
+
+Thanks & regards
+
+Peter
+
+--------------------------------------------------------------------
+mail2web - Check your email from the web at
+http://mail2web.com/ .
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
