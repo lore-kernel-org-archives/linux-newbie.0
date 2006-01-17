@@ -1,47 +1,26 @@
-From: "heisspf@skyinet.net" <heisspf@skyinet.net>
-Subject: Modem Busy
-Date: Sun, 15 Jan 2006 20:09:31 -0500
-Message-ID: <380-2200611161931620@M2W103.mail2web.com>
-Reply-To: heisspf@skyinet.net
+From: Andrew <ald2@arrakis.es>
+Subject: undefined reference
+Date: Tue, 17 Jan 2006 21:06:09 +0100
+Message-ID: <43CD4E31.3010001@arrakis.es>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Good evening,
 
-My broadband Internet base station broke down. Therefore, I have to use the 
-modem dial-up for Internet connection until the station is fixed.
+Trying to compile gqcam-0.8 or 0.9 on a Slackware-10.1 I get a lot of 
+'undefined reference' messages about libpng.so. I have version 1.2.8 of 
+libpng (the latest).
 
-Now in slackware 10.2 using kppp when trying to connect or when querying
-the 
-modem it shows "modem busy" and I cannot make a connection consequently.
+Does anyone know what is wrong?
 
-Before I got the BB connection I always used kppp to dial-up w/o any
-problems. 
-All the same settings except it was slack 10.1.
+TIA
 
-I switch now to my Fedora box and can make a connection with the dial-up
-modem 
-easily.
-
-I just found that minicom will not go onlione as well.
-
-Why would kppp claim that the modem is busy and how can I correct this? The 
-lights on the modem do not show anything that it is busy.
-
-Thanks & regards
-
-Peter
-
---------------------------------------------------------------------
-mail2web - Check your email from the web at
-http://mail2web.com/ .
-
-
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
