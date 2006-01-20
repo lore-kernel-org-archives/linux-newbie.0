@@ -1,52 +1,21 @@
-From: Andrew <ald2@arrakis.es>
-Subject: Re: undefined reference
-Date: Tue, 17 Jan 2006 21:59:47 +0100
-Message-ID: <43CD5AC3.6040608@arrakis.es>
-References: <43CD4E31.3010001@arrakis.es> <Pine.LNX.4.62.0601172221490.2812@grinch.ro> <43CD5401.5020107@arrakis.es> <Pine.LNX.4.62.0601172256250.2938@grinch.ro>
+From: "James Miller" <jamtat@mailsnare.net>
+Subject: SOS: restore deleted file on ext3 system
+Date: Fri, 20 Jan 2006 15:25:22 +0000
+Message-ID: <W7012113546167841137770722@mail.mailsnare.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.62.0601172256250.2938@grinch.ro>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-caszonyi@rdslink.ro wrote:
+I spent all day yesterday revising a chapter of a work I'm writing.  Since I've had trouble ftp'ing files to/from my ftp server, I just emailed the file to myself so I could access it from the library where I was working.  Unfortunately, I told the browser to open the file with the default application (OpenOffice) when I loaded the file from email, rather than having it save it to disk.  I failed to note that, therefore, the file I was editing was located in the /tmp directory.  I finished editing, having saved numerous times while I worked, and shut down the computer.  Today, when I started the system I realized my error and understood that, since I'm using a Debian variant (Xandros), and since Debian's habit is to delete the contents of /tmp on each reboot, the file I spent all day yesterday working on is simply gone.  The system uses the ext3 filesystem, btw.  Can anyone help me to re
+ cover this file so I don't end up having wasted a whole day?  Any suggestions will be greatly appreciated.
 
-> On Tue, 17 Jan 2006, Andrew wrote:
->
->> caszonyi@rdslink.ro wrote:
->>
->>> On Tue, 17 Jan 2006, Andrew wrote:
->>>
->>>> Good evening,
->>>>
->>>> Trying to compile gqcam-0.8 or 0.9 on a Slackware-10.1 I get a lot 
->>>> of 'undefined reference' messages about libpng.so. I have version 
->>>> 1.2.8 of libpng (the latest).
->>>>
->>>> Does anyone know what is wrong?
->>>>
->>>
->>> you forgot (or the configure script forgot) to add libz when lining 
->>> with libpng ?
->>
->>
->> The source doesn't use config, only make.
->>
->
-> ok. I downloaded the program
-> on the following line in the Makefile
-> LDFLAGS = `gtk-config --libs gthread` -ljpeg -lpthread -lpng
-> you should add -lz like this
-> LDFLAGS = `gtk-config --libs gthread` -ljpeg -lpthread -lpng -lz
+Thanks, James
 
-Wow! (Lost for words)
 
-Thanks
-
-Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
