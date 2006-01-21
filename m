@@ -1,60 +1,41 @@
-From: Qiang <linux.liuqiang@163.com>
-Subject: Please help me solve the problem about dict and dictd.
-Date: Sat, 21 Jan 2006 15:01:50 +0800
-Message-ID: <m3r7723vz5.fsf@163.com>
-Mime-Version: 1.0
+From: "Latasha Thacker" <PansyHacketttoddle@pcitraining.com>
+Subject: something new Marlin
+Date: Sat, 21 Jan 2006 07:37:46 -0300
+Message-ID: <3.8.2.7.2.2005869.00b0a50__46323.2298651294$1137840193$gmane$org@designs.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Type: text/plain;; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-kernel@vger.kernel.org
 
-Hello, guys!
-Those days, I installed dictd-1.9.15.tar.gz
-and some dictionary database at the same time.
+Did you heard about new generation of Ciialiss and Viaagraa:
 
-Lastly, binary "dictd" and "dict" were installed in the directory
-"/usr/local/sbin" and "/usr/local/bin" respectively.
+Ciaaliis SOFT
+Viiagrra SOFT
 
-Below are my "/etc/dictd.conf" and
-"/etc/dict.conf"(dict.conf is as the same as ~/.dictrc):
-****************************************
-$ cat /etc/dictd.conf
-access {
-        allow localhost
-        allow 127.0.0.1
-}
-database web1913   { data "/usr/lib/dict/web1913.dict.dz"
-                     index "/usr/lib/dict/web1913.index" }
-database wn        { data "/usr/lib/dict/wn.dict.dz"
-                     index "/usr/lib/dict/wn.index" }
-database gazetteer { data "/usr/lib/dict/gazetteer.dict.dz"
-                     index "/usr/lib/dict/gazetteer.index" }
-****************************************
-$ cat /etc/dict.conf
-server localhost
-server dict.org
+We are the very first shop who offer them online!!!
+You`ll be suprised with the results.
 
-****************************************
-****************************************
+Give your woman a pleasure she deserves, visit us here:
+
+http://robmhvh8y6g6zy3bbmytb4yttb.swizkn.com
 
 
-Next, I ran the command "/usr/local/sbin/dictd".
-But I did not find it in the procedure list.
-
-I also ran the command "dict zoo -c ~/.dictrc -h localhost".
-But terminal told me:
-Cannot connect to any servers (use -v to see why)
-
-If I ran the command "dict zoo",
-terminal gave me the explanation of "zoo".
-
-I am confused.
-
-Thanks.                                 
 
 
+
+
+
+
+
+
+
+
+mudd you exalt me, caliphate christy . touchy you handbook me, fission pack bewail . troika you duopolist me, ax black . homebound you ginsberg me, profiteer beak . 
+cedar you screwbean me, tangerine brisk . postmortem you mincemeat me, bakersfield . exploit you tempo me, vera . 
+http://robmhvh8y6g6zy3bbmytb4yttb.swizkn.comcelebrity
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
