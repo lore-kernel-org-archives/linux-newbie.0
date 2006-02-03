@@ -1,49 +1,70 @@
-From: Tadashi Abe <tadashi.abe@gmail.com>
-Subject: Question about isolate_lru_pages() in 2.6.15
-Date: Thu, 2 Feb 2006 17:48:52 +0900
-Message-ID: <64f7fb310602020048g1f04930bl@mail.gmail.com>
+From: "Philippe De Neve" <Philippe.deneve@intec.ugent.be>
+Subject: php systemcall question
+Date: Fri, 3 Feb 2006 23:22:08 +0100
+Message-ID: <00dd01c62910$45c48380$bbd6c19d@King>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
 To: linux-newbie@vger.kernel.org
 
-Hi, all.
+Hi all,
 
-I have a question about the code of isolate_lru_pages() in 2.6.15,
-(or shrink_cache() before 2.6.11...), which is in mm/vmscan.c.
+First of all I do not know wether this is the correct place to post this 
+question so my apologies if not!
 
-The comment in the source says "scanned" variable indicates
-"The number of pages that were scanned.".
-Indeed, each page is scanned in the loop (from line 601).
+I want to try to execute a command from within a php script.  I'm trying to 
+transcode a file with ffmpeg,
+These are the commands:
 
-<mm/vmscan.c>
-----
-594 static int isolate_lru_pages(int nr_to_scan, struct list_head *src,
-595                  struct list_head *dst, int *scanned)
-596 {
-597     int nr_taken = 0;
-598     struct page *page;
-599     int scan = 0;
-600
-601     while (scan++ < nr_to_scan && !list_empty(src)) {
-602         page = lru_to_page(src);
-----
+<?php
+if(!system('ffmpeg -i /var/www/video/upload/movie.mov -vcodec flv -b 
+500 -an -r 30 /var/www/video/adapted/movie.flv'))
+    echo 'script failed';
+else
+    echo 'script succesfull';
+?>
 
-However, because of the increment in while conditional,
-"scanned" gets at (number of scanned pages + 1) when
-isolate_lru_pages() returns, I think.
+Now when I run the script this is the output:
 
-And after it, "scanned" variable is used as the very number of scanned pages.
-It looks to me like a mistake.
-Could you tell me the intention of the procedure if anyone knows?
+ffmpeg version 0.4.9-pre1, build 4738, Copyright (c) 2000-2004 Fabrice 
+Bellard configuration: --build 
+i386-linux --enable-gpl --enable-pp --enable-zlib --enable-vorbis --enable-a52 
+ --enable-dts --disable-mmx --disable-debug --prefix=/usr built on Jan 21 
+2005 19:24:19, gcc: 3.3.5 (Debian 1:3.3.5-6)
 
+script succesfull
 
-Regards,
-Tadashi Abe
+So ffmpeg was started but stops immediately and no file was transcoded
+
+Normal output would be:
+
+ffmpeg version 0.4.9-pre1, build 4738, Copyright (c) 2000-2004 Fabrice 
+Bellard  configuration:  --build 
+i386-linux --enable-gpl --enable-pp --enable-zlib --enable-vorbis --enable-a52 
+ --enable-dts --disable-mmx --disable-debug --prefix=/usr  built on Jan 21 
+2005 19:24:19, gcc: 3.3.5 (Debian 1:3.3.5-6)
+
+Input #0, mov,mp4,m4a,3gp, from '/var/www/video/upload/movie.mov':
+  Duration: 00:00:10.0, start: 0.000000, bitrate: 723 kb/s
+  Stream #0.0: Video: h263, 352x288, 30.00 fps
+Output #0, flv, to '/var/www/video/adapted/movie.flv':
+  Stream #0.0: Video: flv, 352x288, 30.00 fps, q=2-31, 500 kb/s
+Stream mapping:
+  Stream #0.0 -> #0.0
+[flv @ 0x82e363c]removing common factors from framerate
+
+Press [q] to stop encoding
+frame=  130 q=0.0 Lsize=     403kB time=4.3 bitrate= 761.7kbits/s
+video:401kB audio:0kB global headers:0kB muxing overhead 0.509926%
+
+Why does the program stops after the first few lines? Is the system call 
+dependent on the type of program it starts?
+
+Thanks for all help, Philippe. 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
