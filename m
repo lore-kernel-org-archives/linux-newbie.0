@@ -1,9 +1,8 @@
-From: "hackmiester (Hunter Fuller)" <hackmiester@hackmiester.com>
+From: Dominique Sidiropoulos <ksidirop@csd.uoc.gr>
 Subject: Re: Linux on dual processor query
-Date: Wed, 08 Feb 2006 19:43:57 -0600
-Message-ID: <43EA9E5D.1010303@hackmiester.com>
+Date: Thu, 09 Feb 2006 04:58:39 +0200
+Message-ID: <43EAAFDF.7050405@csd.uoc.gr>
 References: <Pine.LNX.4.64.0602081935170.5615@localhost.localdomain>
-Reply-To: hackmiester@hackmiester.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,19 +10,23 @@ In-Reply-To: <Pine.LNX.4.64.0602081935170.5615@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>, linux-newbie@vger.kernel.org
+To: James Miller <jamtat@mailsnare.net>
+Cc: linux-newbie@vger.kernel.org
 
-I believe I have a machine like yours - two chips, HP, PII era... I 
-installed fedora 4 on it and yes my kernel does have 'smp' in it. It's 
-pretty fast for a PII 400mHz so I suppose it is distributing to both 
-procs. However, some programs do have to be compiled like that, like my 
-eggdrop and IRCd.
+Generally the (smp-)kernel will do the right thing (TM) for you. In very 
+very rare occasions you'll have to tinker a program to take advantage of 
+the two processors. Installing and running a linux distro of recent 
+vintage like Fedora or Novell/SuSE should be fearly easy. Fedora is a 
+good option there. For any additional (Fedora) packages and programs you 
+may have a look at freshrpms.net/rpmforge.net and related sites (I 
+assume you've got a broandband connection there cause the updates are 
+quite `demanding' in bandwidth). Hope this helps mate and good luck.
 
--- 
---hackmiester
-Walk a mile in my shoes and you will be a mile away in a new pair of shoes.
+Cheers,
+Dominick
 
-
+P.S.: For extra performance boost you might want to add some extra RAM 
+modules to the system. It usually helps a lot.
 
 James Miller wrote:
 
@@ -48,6 +51,7 @@ James Miller wrote:
 > Please read the FAQ at http://www.linux-learn.org/faqs
 >
 >
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
