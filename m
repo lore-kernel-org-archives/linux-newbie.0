@@ -1,79 +1,64 @@
-From: Yawar Amin <yawar.amin@gmail.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Converting .gif to .txt
-Date: Thu, 09 Feb 2006 20:14:07 +0600
-Message-ID: <43EB4E2F.3070501@gmail.com>
+Date: Fri, 10 Feb 2006 14:46:18 +0800
+Message-ID: <20060210144618.131216f9@localhost.localdomain>
 References: <380-2200624964217314@M2W030.mail2web.com>
+	<43EAF88C.60704@arrakis.es>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
- protocol="application/pgp-signature";
- boundary="------------enig77CDE7F5A82C3606BB628970"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <380-2200624964217314@M2W030.mail2web.com>
+In-Reply-To: <43EAF88C.60704@arrakis.es>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: 
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-This is an OpenPGP/MIME signed message (RFC 2440 and 3156)
---------------enig77CDE7F5A82C3606BB628970
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
+On Thu, 09 Feb 2006 09:08:44 +0100
+Andrew <ald2@arrakis.es> wrote:
 
-heisspf@skyinet.net wrote:
-> Hi,
+> heisspf@skyinet.net wrote:
 > 
-> How can one convert a text document which has been scanned and therefore
-> has become a
-> .gif file back to a .txt file in order that one can copy and paste text
-> from it.
+> >Hi,
+> >
+> >How can one convert a text document which has been scanned and therefore
+> >has become a
+> >.gif file back to a .txt file in order that one can copy and paste text
+> >from it.
+> >
+> >I was told it can be done with some software in windows. Is there such
+> >software in
+> >Linux?
+> >  
+> >
+> I've done this sort of thing under Windows using Optical Character 
+> Recognition software bundled with a scanner. There are OCR programs 
+> available for Linux (I think there's something called clara - not sure 
+> now), but they take rather a lot of work (or did when I looked at them a 
+> year or so ago).
+> 
+> >I was able to convert a .gif file in question to .pdf and open it with
+> >acroread. Acroread has an option to convert to text, however, trying to do
+> >it I get an empty file.
+> >  
+> >
+> If you can convert to pdf, it is possible to cut and paste from xpdf to 
+> certain editors (Open Office, gedit. Not abiword), but results are 
+> hardly perfect and will probably need quite a bit of editing).
 
-This is the job of OCR software, as mentioned.
+Yes that seems to work when apparently the file was written as pdf, however,
+not with a file converted from gif to pdf. I did this conversion with xpaint
+and I think all it does changing the suffix. Opening it with mc the
+pdf looks the same as the gif file.
 
-> I was told it can be done with some software in windows. Is there such
-> software in
-> Linux?
+Thanks for all the information.
 
-Yes, but it's not up to the mark. I did some research on Freshmeat
-some time ago. I recommend, if this is a one-time thing, getting the
-OCR done at a shop.
+Peter
 
-> I was able to convert a .gif file in question to .pdf and open it with
-> acroread. Acroread has an option to convert to text, however, trying to do
-> it I get an empty file.
-
-Basically the image is being embedded, pixel by pixel, into a PDF
-file. The conversion program doesn't understand that the image is
-showing English (?) text, and neither does Acroread. Acroread's
-convert to text feature usually works because usually PDF files
-contain text. You can verify this by opening a sampling of PDF files
-with `less'. Then try opening your scanned image's PDF file with
-`less'. You won't see the scanned text, but you will see a truckload
-of gibberish data -- more or less the pixel-by-pixel description of
-the image.
+> Andrew
+>
 
 -- 
-Yawar
-Malaysia +60 (12) 918 6642
-Bangladesh +880 (174) 614 754 or +880 (2) 882 1848 or +880 (175) 003
-706 or +880 (189) 250 170
-OpenPGP key ID 8B6B0839
-Fingerprint EFB0 5050 6F27 AFC2 42B2 3B40 FD9C B344 8B6B 0839
-
---------------enig77CDE7F5A82C3606BB628970
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (MingW32)
-Comment: Using GnuPG with Thunderbird - http://enigmail.mozdev.org
-
-iD8DBQFD604v/ZyzRItrCDkRAuwmAJ46DE/N/QOLVyOq4xacate2Z1xnEQCfSZTQ
-BCPkSnLqfPZ1biyYLXf1jR4=
-=IUNm
------END PGP SIGNATURE-----
-
---------------enig77CDE7F5A82C3606BB628970--
+Peter
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
