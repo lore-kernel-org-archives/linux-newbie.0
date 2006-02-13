@@ -1,60 +1,76 @@
 From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: AbiWord, Text and HTML??
-Date: Mon, 13 Feb 2006 09:42:29 -0500
-Message-ID: <20060213144229.GB1135@lnx2.w8mch.ampr.org>
-References: <20060212181536.GA2276@lnx2.w8mch.ampr.org> <20060213110952.5cab507e.peterg@fishinternet.com.au>
+Date: Mon, 13 Feb 2006 09:38:13 -0500
+Message-ID: <20060213143813.GA1135@lnx2.w8mch.ampr.org>
+References: <20060212181536.GA2276@lnx2.w8mch.ampr.org> <43EFB2C5.5020409@comarre.com>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20060213110952.5cab507e.peterg@fishinternet.com.au>
+In-Reply-To: <43EFB2C5.5020409@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Peter Garrett <peterg@fishinternet.com.au>
+To: Ray Olszewski <ray@comarre.com>
 Cc: linux-newbie@vger.kernel.org
 
-On 02-13, Peter Garrett wrote:
-> On Sun, 12 Feb 2006 13:15:36 -0500
-> Hal MacArgle <haltec@kvinet.com> wrote:
+On 02-12, Ray Olszewski wrote:
+> Hal MacArgle wrote:
+> >Greetings: A problem importing a previously composed ascii text file
+> >with jstar (joe) or, probably, any standard Linux text editor:
+> >
+> >I had a single need to convert this to html and found that AbiWord
+> >was quite easy:
+> >
+> >$ abiword --to=html filename.txt > filename.html.
+> >
+> >The trouble is; viewing filename.html with lynx or links it's double
+> >spaced.. I thought 'no problem,' we have the standard end of line
+> >thingy so I'll just edit filename.html substituting a space for the
+> ></p> entries... Oh yeah--grin--lynx and links still view it double
+> >spaced.. I tried several other 'fixes' to no avail.. Some crash and
+> >burn..
+> >
+> >Retyping the entire ascii text file into AbiWord and saving as a html
+> >file is fine, but I much prefer composing all files with a CLI
+> >editor.. Call me old fashioned?? Whatever.. I used WordStar for too
+> >many years I guess... (Failing eyes doesn't help) <grin>
+> >
+> >Any suggestions? TIA.
 > 
-> > 
-> > Greetings: A problem importing a previously composed ascii text file
-> > with jstar (joe) or, probably, any standard Linux text editor:
-> > 
-> > I had a single need to convert this to html and found that AbiWord
-> > was quite easy:
+> This sounds like a famirly conventional EoL (Cr vs LF) problem to me. 
+> You should look at the problem file in some hex editor (e.g., hexer, 
+> hexedit) and see what actual characters are at the ends of the lines.
 > 
-> [snip]
+> Or, if you like, send me (off-list) a short sample (filename.txt and the 
+> corresponding filename.html) and I'll take a look at it.
 > 
-> > Any suggestions? TIA.
+> Yeah, I used Wordstar too. These days it's vi on Linux and WordPad on 
+> Windows. Occasionally OpenOffice, but only when I must.
 > 
-> What about "txt2html" ? I imagine it's available for Slackware... 
-> The Debian/Ubuntu description from "apt-cache show txt2html" is:
-> 
-> Description: Text to HTML converter
->  txt2html is a Perl program that converts plain text to HTML.
->  .
->  It supports headings, lists, simple character markup, and hyperlinking,
-> and is highly customizable. It recognizes some of the apparent structure
-> of the source document (mostly whitespace and typographic layout), and
-> attempts to mark that structure explicitly using HTML.
->  .
->  the purpose for this tool is to provide an easier way of converting
-> existing text documents to HTML format. txt2html can also be used to aid
-> in writing new HTML documents, but there are probably better ways of doing
-> that.
-> 
-> Peter
+> Guess us fogies have to stick together.
 
-	Greetings and thanks for your input.. I have fetched txt2html
-and will try it once I get a hands on with PERL.. As mentioned to
-Ray, there is no .tgz package on w3.linuxpackages, that I could
-find.. I tried Slack 10.1; maybe I should have spent more time, eh?? 
+	We're outnumbered... <grin> This is a _real_ education..
+Slackware bundles 'hexdump' but, using it, I long for the old Norton
+hex editor from Dos, that screen printed ascii as well as hex.. To
+make matters worse; hexdump lists in groups of four characters in
+_little endian_ notation.. That was a head scratcher... Worst of all;
+where I expected an 0x0a/0x0d combination, it was a mere 0x20??? Too
+much automation for this cat.. If I replaced all the SP's, I'd really
+be in the soup... There has to be some shenanigans in the way I did
+it.. BTW; Jstar (Joe) uses WordStar commands as does 'E3.' IIRC
+though there was a problem with the .deb version I tried on a Woody
+machine.. Forget now..
 
-	Meanwhile we have a work around but an easier way would be
-nice... Thanks again..
+	Cracking the HTML book I decided to bite the bullet and
+prepare a html template with the minimum entries and go from there,
+even though it means many <p> </p> combinations..  Meanwhile Peter
+suggested txt2html that I fetched, but it's PERL and linuxpackages
+has no Slackware .tgz that I could find.. The README with
+txt2html.tar.gz means I, now, have to crack the PERL books...
+
+	Appreciate!! The learning curve is alive and well..
 
 -- 
 
