@@ -1,52 +1,65 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: AbiWord, Text and HTML??
-Date: Sun, 12 Feb 2006 14:12:21 -0800
-Message-ID: <43EFB2C5.5020409@comarre.com>
-References: <20060212181536.GA2276@lnx2.w8mch.ampr.org>
+Date: Mon, 13 Feb 2006 09:42:29 -0500
+Message-ID: <20060213144229.GB1135@lnx2.w8mch.ampr.org>
+References: <20060212181536.GA2276@lnx2.w8mch.ampr.org> <20060213110952.5cab507e.peterg@fishinternet.com.au>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060212181536.GA2276@lnx2.w8mch.ampr.org>
+Content-Disposition: inline
+In-Reply-To: <20060213110952.5cab507e.peterg@fishinternet.com.au>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Peter Garrett <peterg@fishinternet.com.au>
+Cc: linux-newbie@vger.kernel.org
 
-Hal MacArgle wrote:
-> Greetings: A problem importing a previously composed ascii text file
-> with jstar (joe) or, probably, any standard Linux text editor:
+On 02-13, Peter Garrett wrote:
+> On Sun, 12 Feb 2006 13:15:36 -0500
+> Hal MacArgle <haltec@kvinet.com> wrote:
 > 
-> I had a single need to convert this to html and found that AbiWord
-> was quite easy:
+> > 
+> > Greetings: A problem importing a previously composed ascii text file
+> > with jstar (joe) or, probably, any standard Linux text editor:
+> > 
+> > I had a single need to convert this to html and found that AbiWord
+> > was quite easy:
 > 
-> $ abiword --to=html filename.txt > filename.html.
+> [snip]
 > 
-> The trouble is; viewing filename.html with lynx or links it's double
-> spaced.. I thought 'no problem,' we have the standard end of line
-> thingy so I'll just edit filename.html substituting a space for the
-> </p> entries... Oh yeah--grin--lynx and links still view it double
-> spaced.. I tried several other 'fixes' to no avail.. Some crash and
-> burn..
+> > Any suggestions? TIA.
 > 
-> Retyping the entire ascii text file into AbiWord and saving as a html
-> file is fine, but I much prefer composing all files with a CLI
-> editor.. Call me old fashioned?? Whatever.. I used WordStar for too
-> many years I guess... (Failing eyes doesn't help) <grin>
+> What about "txt2html" ? I imagine it's available for Slackware... 
+> The Debian/Ubuntu description from "apt-cache show txt2html" is:
 > 
-> Any suggestions? TIA.
+> Description: Text to HTML converter
+>  txt2html is a Perl program that converts plain text to HTML.
+>  .
+>  It supports headings, lists, simple character markup, and hyperlinking,
+> and is highly customizable. It recognizes some of the apparent structure
+> of the source document (mostly whitespace and typographic layout), and
+> attempts to mark that structure explicitly using HTML.
+>  .
+>  the purpose for this tool is to provide an easier way of converting
+> existing text documents to HTML format. txt2html can also be used to aid
+> in writing new HTML documents, but there are probably better ways of doing
+> that.
+> 
+> Peter
 
-This sounds like a famirly conventional EoL (Cr vs LF) problem to me. 
-You should look at the problem file in some hex editor (e.g., hexer, 
-hexedit) and see what actual characters are at the ends of the lines.
+	Greetings and thanks for your input.. I have fetched txt2html
+and will try it once I get a hands on with PERL.. As mentioned to
+Ray, there is no .tgz package on w3.linuxpackages, that I could
+find.. I tried Slack 10.1; maybe I should have spent more time, eh?? 
 
-Or, if you like, send me (off-list) a short sample (filename.txt and the 
-corresponding filename.html) and I'll take a look at it.
+	Meanwhile we have a work around but an easier way would be
+nice... Thanks again..
 
-Yeah, I used Wordstar too. These days it's vi on Linux and WordPad on 
-Windows. Occasionally OpenOffice, but only when I must.
+-- 
 
-Guess us fogies have to stick together.
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
