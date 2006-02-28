@@ -1,54 +1,61 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: tovid - videotrans ? (was Re: Convert .avi to .vob/Linux only??)
-Date: Mon, 27 Feb 2006 21:12:08 -0500
-Message-ID: <4403B178.1070606@gelm.net>
-References: <20060224152430.GA1275@lnx2.kvinet.com> <43FF57EF.8030803@comarre.com>
+From: Pepo <pepo@linuxmail.org>
+Subject: Using my lexmark x4270
+Date: Mon, 27 Feb 2006 23:43:17 -0500
+Message-ID: <200602272343.24864.pepo@linuxmail.org>
 Mime-Version: 1.0
+Content-Type: multipart/signed;
+  boundary="nextPart1712800.XykR4N4MX3";
+  protocol="application/pgp-signature";
+  micalg=pgp-sha1
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <43FF57EF.8030803@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I would also like to convert some .avi (and other formats) so they can be
-viewed on a DVD player.  I tried 'videotran' that Ray found.  The spiel
-on http://videotrans.sourceforge.net/
+--nextPart1712800.XykR4N4MX3
+Content-Type: text/plain;
+  charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 
- I downloaded the source and that was only the beginning of a
-wild goose chase.
+Hi friends...
 
-.../videotrans-1.4.1... only a 85K .tar.gz however
-./configure halted with an error that ffmpeg was required.
+I am trying to install a multifunction system Lexmark X4270 (printer, scann=
+er=20
+and fax) but I dont know where I can get the right drivers.
 
- I obtained ffmpeg and ./configure && make && make install
+Please if anybody could install Lexmark X4270 (or any 4200 series) help me.
 
-.../videotrans-1.4.1/./configure complained that mpegtools was required
+thanx.
 
-I obtained mpegtools, ./configure && make && make install
-
-.../videotrans-1.4.1/./configure complained that spumux was required and 
-spumux was part of dvdauthor.
-
- I obtained dvdauthor and ./configure, but dvdauthor halted on error 
-that libdvdread (-devel)
- was required and did not mention where it could be found.
-I give up.
-
- I found 'tovid' and am off on this path:
-http://tovid.berlios.de//en/index.html
-
-"tovid is a collection of video disc authoring tools; it can help you 
-create your own DVDs, VCDs, and SVCDs for playback on your home DVD 
-player. It has a command-line interface 
-<http://tovid.berlios.de//en/cli.html> as well as a graphical frontend 
-<http://tovid.berlios.de//en/gui.html>. tovid is free software 
-<http://en.wikipedia.org/wiki/Free_software>."
-
-:-|  Chuck
+ps: First I want to use the printer function and later scanner function
+--=20
+           Linux User Registered #232544
+             Jabber : pepo@jabberes.org
+                ICQ : 337889406
+          GnuPG-key : www.keyserver.net
+---------------- -------------------------------
+                   dum loquimur, fugerit invida
+aetas: carpe diem, quam minimum credula postero.
 
 
+--nextPart1712800.XykR4N4MX3
+Content-Type: application/pgp-signature
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQBEA9Ts6DtppveuSQYRAjoFAJ9sDcitjpNEAB6i6KGztBMuL0E8zwCcCcS6
+EYdczI7QShYoYPLjQimHsRU=
+=yw6w
+-----END PGP SIGNATURE-----
+
+--nextPart1712800.XykR4N4MX3--
+
+_____________________________________ 
+Este mensaje ha sido analizado por el
+Servicio Gratuito de Proteccisn contra Virus de E-mail de EtapaOnLine.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
