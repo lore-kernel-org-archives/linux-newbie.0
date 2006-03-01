@@ -1,48 +1,43 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: videotrans (Season 1 Episode 2 ;-)
-Date: Wed, 01 Mar 2006 08:09:18 -0500
-Message-ID: <44059CFE.2040007@gelm.net>
-References: <4404D9ED.6070707@gelm.net> <440570C2.1060003@bcgreen.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: tovid - videotrans ? (was Re: Convert .avi to .vob/Linux only??)
+Date: Wed, 1 Mar 2006 16:38:49 -0500
+Message-ID: <20060301213849.GC1231@lnx2.kvinet.com>
+References: <20060224152430.GA1275@lnx2.kvinet.com> <43FF57EF.8030803@comarre.com> <4403B178.1070606@gelm.net> <20060228195752.GA1048@lnx2.kvinet.com> <4404C4F6.1090705@comarre.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <440570C2.1060003@bcgreen.com>
+Content-Disposition: inline
+In-Reply-To: <4404C4F6.1090705@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
-Cc: Stephen Samuel <samuel@bcgreen.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-Stephen Samuel wrote:
+On 02-28, Ray Olszewski wrote:
+> 
+> http://linuxgazette.net/issue83/stoddard.html
+> 
+> It's dated 2002, which is a bit old. But then, so is your system, so it 
+> might be useful for advice on doing DVD burning with a system that is, 
+> by today's standards, a bit light on CPU power and RAM (and maybe HD 
+> space; i don't recall if you said).
 
-> Try dvdauthor ... I got it to work for me. It's somewhat simplistic
-> but it does the job.
->
-> It creates the directory structure, I then used k3b to burn the
-> physical DVD
->
-Hi, Stephen:
+	The HD seems to not be a problem in that I have a 40gB for
+the O/S's and temp files plus a 60gB just for the data... Chuck has
+discovered that a tremendous amount of time is spent for the
+"conversion" to DVD/VOB.. The learning curve flattens, but not a
+happy one... :^).. Funny no one, heretofore, has mentioned this that
+I've seen.. Chucks CPU is a 2gHz Athlon; mine a 1.3gHz Duron.. I have
+512mB DRAM and he over 700..
 
- 'dvdauthor' is mentioned in the last step of the videotrans utilities.
-(http://videotrans.sourceforge.net/videotrans.1.html)
+	Thanks to all for the help..
 
- I was able to convert three (3) .avi files and burn them to DVD,
-but the 'menu' was not good.  The menu had one image of the
-first scene of the last video that occupied the entire menu screen.
-I could 'arrow' over to second movie and see the ">" button highlighted,
-but it took a few minutes to guess that to see the third 'play button
-I needed to press the 'down arrow' on my remote.  Then the play arrow
-appeared in the middle of the 'image of the first scene of the last video'.
-Oh, and at the bottom of the menu screen was always displayed the
-filename of the last video, not the currently selected video.  :-|
+-- 
 
- I am now redoing the process and leaving out the 'scene image'.
-I hope to see a menu of only movie filenames from which to choose.
-\/
-/\
-Fingers crost'
-Chuck
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
