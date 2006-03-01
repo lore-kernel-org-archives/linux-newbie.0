@@ -1,42 +1,47 @@
-From: Stephen Samuel <samuel@bcgreen.com>
-Subject: Re: tovid - videotrans ? (was Re: Convert .avi to .vob/Linux only??)
-Date: Wed, 01 Mar 2006 02:00:34 -0800
-Message-ID: <440570C2.1060003@bcgreen.com>
-References: <4404D9ED.6070707@gelm.net>
+From: chuck gelm <chuck@gelm.net>
+Subject: videotrans (Season 1 Episode 2 ;-)
+Date: Wed, 01 Mar 2006 08:09:18 -0500
+Message-ID: <44059CFE.2040007@gelm.net>
+References: <4404D9ED.6070707@gelm.net> <440570C2.1060003@bcgreen.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <4404D9ED.6070707@gelm.net>
+In-Reply-To: <440570C2.1060003@bcgreen.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: 
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
+Cc: Stephen Samuel <samuel@bcgreen.com>
 
-Try dvdauthor ... I got it to work for me. It's somewhat simplistic
-but it does the job.
+Stephen Samuel wrote:
 
-It creates the directory structure, I then used k3b to burn the
-physical DVD
-
-chuck gelm wrote:
-
-> Ken Nagorski wrote:
+> Try dvdauthor ... I got it to work for me. It's somewhat simplistic
+> but it does the job.
 >
->> Check this out...
->>
->> http://www.dtek.chalmers.se/groups/dvd/downloads.shtml
+> It creates the directory structure, I then used k3b to burn the
+> physical DVD
 >
-> Hi, Ken:
->
-> That link took me to a DVD reader.
-> I am looking for a DVD writer, especially converting .avi (.mov, .wmv, 
-> .mpg,...)
-> to DVD-player format (VIDEO_TS/AUDIO_TS; .VOB, .IFO, .BUP).
->
-> I have many .avi files that I can watch on my laptop or desktop,
-> but I want to watch them on a DVD-player/Television.
+Hi, Stephen:
 
+ 'dvdauthor' is mentioned in the last step of the videotrans utilities.
+(http://videotrans.sourceforge.net/videotrans.1.html)
+
+ I was able to convert three (3) .avi files and burn them to DVD,
+but the 'menu' was not good.  The menu had one image of the
+first scene of the last video that occupied the entire menu screen.
+I could 'arrow' over to second movie and see the ">" button highlighted,
+but it took a few minutes to guess that to see the third 'play button
+I needed to press the 'down arrow' on my remote.  Then the play arrow
+appeared in the middle of the 'image of the first scene of the last video'.
+Oh, and at the bottom of the menu screen was always displayed the
+filename of the last video, not the currently selected video.  :-|
+
+ I am now redoing the process and leaving out the 'scene image'.
+I hope to see a menu of only movie filenames from which to choose.
+\/
+/\
+Fingers crost'
+Chuck
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
