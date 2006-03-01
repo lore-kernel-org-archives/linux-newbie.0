@@ -1,43 +1,65 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: tovid - videotrans ? (was Re: Convert .avi to .vob/Linux only??)
-Date: Wed, 1 Mar 2006 16:38:49 -0500
-Message-ID: <20060301213849.GC1231@lnx2.kvinet.com>
-References: <20060224152430.GA1275@lnx2.kvinet.com> <43FF57EF.8030803@comarre.com> <4403B178.1070606@gelm.net> <20060228195752.GA1048@lnx2.kvinet.com> <4404C4F6.1090705@comarre.com>
-Reply-To: haltec@kvinet.com
+From: chuck gelm <chuck@gelm.net>
+Subject: Videotrans ... Re: Convert .avi to .vob/Linux only??
+Date: Wed, 01 Mar 2006 17:08:26 -0500
+Message-ID: <44061B5A.3000309@gelm.net>
+References: <20060224152430.GA1275@lnx2.kvinet.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <4404C4F6.1090705@comarre.com>
+In-Reply-To: <20060224152430.GA1275@lnx2.kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ray Olszewski <ray@comarre.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On 02-28, Ray Olszewski wrote:
-> 
-> http://linuxgazette.net/issue83/stoddard.html
-> 
-> It's dated 2002, which is a bit old. But then, so is your system, so it 
-> might be useful for advice on doing DVD burning with a system that is, 
-> by today's standards, a bit light on CPU power and RAM (and maybe HD 
-> space; i don't recall if you said).
+Hal MacArgle wrote:
 
-	The HD seems to not be a problem in that I have a 40gB for
-the O/S's and temp files plus a 60gB just for the data... Chuck has
-discovered that a tremendous amount of time is spent for the
-"conversion" to DVD/VOB.. The learning curve flattens, but not a
-happy one... :^).. Funny no one, heretofore, has mentioned this that
-I've seen.. Chucks CPU is a 2gHz Athlon; mine a 1.3gHz Duron.. I have
-512mB DRAM and he over 700..
+>	Greetings; I just spent two hours trying to find software or
+>information converting video .avi files to .vob, in order to burn
+>some personal .avi files to a DVD that's playable on a stand alone
+>DVD player.. I have the files in .avi format and a Plextor DVD
+>burner, etc.. MPlayer lets me view them on the computer monitor of
+>course..
+>
+>	Interesting in that this is the first time I've noticed when
+>accessing www.google.com/linux, that I get linked to 100% of the
+>MSWindows stuff.. I gave up..
+>
+>	Anyone have any suggestions?? TIA..
+>  
+>
+Hal et allia:
 
-	Thanks to all for the help..
+ I converted three (3) .avi files and burned them to DVD and can
+play them on my DVD player.  Text menu also! :-)
+I installed videotrans and stumbled through enough required
+additional project installations to get it to work.  Thus:
 
--- 
+#!/bin/sh
+# create a DVD-player for .avi movies
 
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+movie-to-dvd -m ntsc -d letterbox -a 4:3 CloseToHomeS01E08.avi 
+CloseToHomeS01E09.avi CloseToHomeS01E10.avi
+
+movie-make-title-simple -o title -m ntsc -n none
+
+movie-title -T 2x2 -c none -o title.vob -t title CloseToHomeS01E08.m2v 
+CloseToHomeS01E09.m2v CloseToHomeS01E10.m2v
+
+dvdauthor -o dvd_directory -x title.vob-dvdauthor.xml
+
+growisofs -dvd-video -Z /dev/dvd dvd_directory
+
+#end
+
+ There is some word wrapping in my display while entering this note.
+The commands are double spaced, so if you see consecutive lines,
+there was 'word wrap' and not a newline.  ;-)
+
+HTH, Chuck
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
