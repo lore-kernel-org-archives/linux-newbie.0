@@ -1,36 +1,60 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: need wdm help
-Date: Fri, 3 Mar 2006 08:55:13 -0600 (CST)
-Message-ID: <Pine.LNX.4.64.0603030845180.5615@localhost.localdomain>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Videotrans ... Re: Convert .avi to .vob/Linux only??
+Date: Fri, 3 Mar 2006 09:47:57 -0500
+Message-ID: <20060303144757.GA1063@lnx2.kvinet.com>
+References: <20060224152430.GA1275@lnx2.kvinet.com> <44061B5A.3000309@gelm.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <44061B5A.3000309@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: chuck gelm <chuck@gelm.net>
+Cc: linux-newbie@vger.kernel.org
 
-Debian unstable system.  I've been using Gnome on it and the 2.6.10 
-kernel.  The system is getting sluggish, so I want to trim back on 
-resource usage.  I'll probably remove Gnome soon and go with some 
-lightweight window manager like fluxbox.  For a display manager I've been 
-using xdm because it is lightweight.  It's also no very featureful and, so 
-far as I can see, does not allow selection between window managers (e.g., 
-via a menu).  I'm trying to move to wdm therefore, during the interim 
-while moving away from Gnome.  Seems like it could give me the option of 
-booting into either Gnome or Fluxbox via a menu.  I've actually used a 
-system before that had such a wdm menu.  So, I've apt-get(ted) wdm.  But 
-at the login window, I get no menu.  Furthermore, when I go to login, it 
-simply boots me back to the login window.  I've looked at man pages and 
-done some web searching, but whatever the solution is eludes me.  I 
-believe I tried wdm earlier and had the same problem, so I abandoned it. 
-Something is apparently misconfigured, but I am unable to determine what 
-and how to fix it.  Could someone please offer some assistance on getting 
-wdm to: 1) give me a menu of choices for window managers to boot to; and 
-2) get the window managers to come up rather than having it take me back 
-to the wdm login window?  Input will be appreciated.
+On 03-01, chuck gelm wrote:
+> 
+> I converted three (3) .avi files and burned them to DVD and can
+> play them on my DVD player.  Text menu also! :-)
+> I installed videotrans and stumbled through enough required
+> additional project installations to get it to work.  Thus:
+> 
+> #!/bin/sh
+> # create a DVD-player for .avi movies
+> 
+> movie-to-dvd -m ntsc -d letterbox -a 4:3 CloseToHomeS01E08.avi 
+> CloseToHomeS01E09.avi CloseToHomeS01E10.avi
+> 
+> movie-make-title-simple -o title -m ntsc -n none
+> 
+> movie-title -T 2x2 -c none -o title.vob -t title CloseToHomeS01E08.m2v 
+> CloseToHomeS01E09.m2v CloseToHomeS01E10.m2v
+> 
+> dvdauthor -o dvd_directory -x title.vob-dvdauthor.xml
+> 
+> growisofs -dvd-video -Z /dev/dvd dvd_directory
+> 
+> #end
+> 
+> There is some word wrapping in my display while entering this note.
+> The commands are double spaced, so if you see consecutive lines,
+> there was 'word wrap' and not a newline.  ;-)
+> 
+> HTH, Chuck
 
-Thanks, James
+	That's fantastic Chuck; a Mini-HOWTO tutorial of what's
+involved for the deed.. I can see now why GUI front ends are so
+popular, eh?
+
+	We now have the step-by-step involved.. Great work..
+
+-- 
+
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
