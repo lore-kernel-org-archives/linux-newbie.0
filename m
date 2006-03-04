@@ -1,41 +1,43 @@
-From: "joy merwin monteiro" <joy.merwin@gmail.com>
+From: James Miller <jamtat@mailsnare.net>
 Subject: Re: need wdm help
-Date: Sat, 4 Mar 2006 00:15:55 +0530
-Message-ID: <4b0d6e0d0603031045n5cfe59c1r5e29fc562f478574@mail.gmail.com>
-References: <Pine.LNX.4.64.0603030845180.5615@localhost.localdomain>
-	 <Pine.LNX.4.64.0603030908340.5615@localhost.localdomain>
-	 <Pine.LNX.4.64.0603031137350.5615@localhost.localdomain>
-	 <44088855.8010907@comarre.com>
-Reply-To: joy_mm@ieee.org
+Date: Fri, 3 Mar 2006 20:12:14 -0600 (CST)
+Message-ID: <Pine.LNX.4.64.0603032008100.4459@localhost.localdomain>
+References: <Pine.LNX.4.64.0603030845180.5615@localhost.localdomain> 
+ <Pine.LNX.4.64.0603030908340.5615@localhost.localdomain> 
+ <Pine.LNX.4.64.0603031137350.5615@localhost.localdomain>  <44088855.8010907@comarre.com>
+ <4b0d6e0d0603031045n5cfe59c1r5e29fc562f478574@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <44088855.8010907@comarre.com>
-Content-Disposition: inline
+In-Reply-To: <4b0d6e0d0603031045n5cfe59c1r5e29fc562f478574@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
 To: linux <linux-newbie@vger.kernel.org>
 
-On 3/3/06, Ray Olszewski <ray@comarre.com> wrote:
-<snip>
-> Assuming both xdm and wdm are trying to run ... that's my best reading
-> of what you've posted here ... you probably just want to disable xdm
-> completely. One way to do it is to rm the symlink to it in /etc/rc2.d .
-> Or you could mv the symlink to a name that doesn't start with "S" ...
-> this is how I usually disable an init-script symlink here (e.g., "mv
-> S99xdm NO99xdm"). Then reboot (or maybe "/etc/init.d/xdm stop" will
-> suffice; try it).
+On Sat, 4 Mar 2006, joy merwin monteiro wrote:
 
-if it IS getting started in runlevel 2, and you remove the symlink,
-you might also
-want to get rid of the link in runlevel 6 and 0 that stops it (K**xdm),
-just to be thorough .....
+> On 3/3/06, Ray Olszewski <ray@comarre.com> wrote:
+>> Assuming both xdm and wdm are trying to run ... that's my best reading
+>> of what you've posted here ... you probably just want to disable xdm
+>> completely. One way to do it is to rm the symlink to it in /etc/rc2.d .
+>> Or you could mv the symlink to a name that doesn't start with "S" ...
+>> this is how I usually disable an init-script symlink here (e.g., "mv
+>> S99xdm NO99xdm"). Then reboot (or maybe "/etc/init.d/xdm stop" will
+>> suffice; try it).
+>
+> if it IS getting started in runlevel 2, and you remove the symlink,
+> you might also
+> want to get rid of the link in runlevel 6 and 0 that stops it (K**xdm),
+> just to be thorough .....
 
+Thanks to all for getting me past the final hurdle of stopping xdm from 
+loading.  It does seem both were loading and somehow xdm was taking 
+priority.  Renaming the symlinks Ray and joy pointed out seems to have 
+done the trick: I've rebooted to test this, and wdm comes up as expected 
+now.
 
---
-The person who cannot reason is a fool, one who won't reason is a bigot,
-one who dare not reason is a slave.
+Sincerely, James
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
