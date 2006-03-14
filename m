@@ -1,43 +1,35 @@
-From: James Miller <jamtat@mailsnare.net>
-Subject: Re: need wdm help
-Date: Fri, 3 Mar 2006 20:12:14 -0600 (CST)
-Message-ID: <Pine.LNX.4.64.0603032008100.4459@localhost.localdomain>
-References: <Pine.LNX.4.64.0603030845180.5615@localhost.localdomain> 
- <Pine.LNX.4.64.0603030908340.5615@localhost.localdomain> 
- <Pine.LNX.4.64.0603031137350.5615@localhost.localdomain>  <44088855.8010907@comarre.com>
- <4b0d6e0d0603031045n5cfe59c1r5e29fc562f478574@mail.gmail.com>
+From: Tommi Tapani Piirainen <tommi.piirainen@hut.fi>
+Subject: Ntfs compability
+Date: Tue, 14 Mar 2006 12:37:19 +0200 (EET)
+Message-ID: <1142332639.44169cdfe9602@webmail2.hut.fi>
+Reply-To: ttpiirai@cc.hut.fi
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4b0d6e0d0603031045n5cfe59c1r5e29fc562f478574@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On Sat, 4 Mar 2006, joy merwin monteiro wrote:
+Hi,
 
-> On 3/3/06, Ray Olszewski <ray@comarre.com> wrote:
->> Assuming both xdm and wdm are trying to run ... that's my best reading
->> of what you've posted here ... you probably just want to disable xdm
->> completely. One way to do it is to rm the symlink to it in /etc/rc2.d .
->> Or you could mv the symlink to a name that doesn't start with "S" ...
->> this is how I usually disable an init-script symlink here (e.g., "mv
->> S99xdm NO99xdm"). Then reboot (or maybe "/etc/init.d/xdm stop" will
->> suffice; try it).
->
-> if it IS getting started in runlevel 2, and you remove the symlink,
-> you might also
-> want to get rid of the link in runlevel 6 and 0 that stops it (K**xdm),
-> just to be thorough .....
+I have slackware 10.1. I rewrote my ntfs partition with cfdisk and now I am
+unable to boot the partition (with windows xp). Can the problem be that i wrote
+the table with cfdisk or could it be some thing else. In additional there is two
+different ntfs partition is cfdisk both named same way. I used the first one
+can't remember the number (or was it 86, don't remember).
 
-Thanks to all for getting me past the final hurdle of stopping xdm from 
-loading.  It does seem both were loading and somehow xdm was taking 
-priority.  Renaming the symlinks Ray and joy pointed out seems to have 
-done the trick: I've rebooted to test this, and wdm comes up as expected 
-now.
+The reason for doing this was to include slackware to same disk. First I deleted
+ntfs partition and made it smaller. Motivation for doing this was mbr chrash due
+use of "System Mechanic 6" or at least I think so. I intalled lilo to mbr and it
+fixed the mbr problem. Booting problems can also have some thing to do with
+System Mechanic 6 altering my dll-files or some thing else.
 
-Sincerely, James
+The ntfs partition is first partition in the disk and I use lilo-bootloader. Can
+I fix the partition with ntfstools to be bootable?
+
+-- 
+Tommi
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
