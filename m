@@ -1,100 +1,79 @@
-From: Tommi Tapani Piirainen <tommi.piirainen@hut.fi>
-Subject: Re: Ntfs compability
-Date: Wed, 15 Mar 2006 11:56:58 +0200 (EET)
-Message-ID: <1142416618.4417e4ea6e1ad@webmail2.hut.fi>
-References: <1142332639.44169cdfe9602@webmail2.hut.fi> <18846aef0603141810l5f3745d0o3805f9db367c26d4@mail.gmail.com>
-Reply-To: ttpiirai@cc.hut.fi
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Convert .avi to .vob/Linux only??
+Date: Thu, 16 Mar 2006 14:58:10 -0500
+Message-ID: <20060316195810.GA1027@lnx2.kvinet.com>
+References: <20060224152430.GA1275@lnx2.kvinet.com> <44061B5A.3000309@gelm.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <18846aef0603141810l5f3745d0o3805f9db367c26d4@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <44061B5A.3000309@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: cRaig <treehead@gmail.com>
-Cc: ttpiirai@cc.hut.fi, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: chuck gelm <chuck@gelm.net>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
-
-Ok, thanks I will try type 7 after I back up my recent data.
-
-I toggled hda1 bootable, so I will change this for my linux partition.
-
-Thank you cRaig from your answer:) If none of these changes will solve my
-problem I will reinstall.
-
---
-Tommi
-
-On Tue, 14 Mar 2006 21:10:33 -0500 cRaig <treehead@gmail.com> wrote:
-
-> > /dev/hda1   *           1        9605    77152131   86  NTFS volume
-> set
+On 03-01, chuck gelm wrote:
+> Hal et allia:
 > 
-> ;your problem may be the NTFS volume should be type 7 (HPFS/NTFS)
-> instead of 86 or 87, which i believe is for dynamic disks (partitions
-> spanning multiple disks).
+> I converted three (3) .avi files and burned them to DVD and can
+> play them on my DVD player.  Text menu also! :-)
+> I installed videotrans and stumbled through enough required
+> additional project installations to get it to work.  Thus:
 > 
-> ;another issue may be that your /dev/hda1 is toggled as bootable, i
-> don't know for certain.  i thought that the bootable flag was just for
-> linux, so is it possible that you toggled it on when you installed
-> slackware, and linux has this as your /boot in /etc/fstab?  or did you
-> turn that flag on in cfdisk yourself?
+> #!/bin/sh
+> # create a DVD-player for .avi movies
 > 
-> ;cRaig
+> movie-to-dvd -m ntsc -d letterbox -a 4:3 CloseToHomeS01E08.avi 
+> CloseToHomeS01E09.avi CloseToHomeS01E10.avi
 > 
-> On 3/14/06, Tommi Tapani Piirainen <tommi.piirainen@hut.fi> wrote:
-> > Hi,
-> >
-> > I have slackware 10.1. I rewrote my ntfs partition with cfdisk and
-> now I am
-> > unable to boot the partition (with windows xp). Can the problem be
-> that i wrote
-> > the table with cfdisk or could it be some thing else. In additional
-> there is two
-> > different ntfs partition is cfdisk both named same way. I used the
-> first one
-> > can't remember the number (or was it 86, don't remember).
-> >
-> > The reason for doing this was to include slackware to same disk.
-> First I deleted
-> > ntfs partition and made it smaller. Motivation for doing this was mbr
-> chrash due
-> > use of "System Mechanic 6" or at least I think so. I intalled lilo to
-> mbr and it
-> > fixed the mbr problem. Booting problems can also have some thing to
-> do with
-> > System Mechanic 6 altering my dll-files or some thing else.
-> >
-> > The ntfs partition is first partition in the disk and I use
-> lilo-bootloader. Can
-> > I fix the partition with ntfstools to be bootable?
-> >
-> > --
-> > Tommi
-> > -
-> > To unsubscribe from this list: send the line "unsubscribe
-> linux-newbie" in
-> > the body of a message to majordomo@vger.kernel.org
-> > More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> > Please read the FAQ at http://www.linux-learn.org/faqs
-> >
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie"
-> in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+> movie-make-title-simple -o title -m ntsc -n none
 > 
+> movie-title -T 2x2 -c none -o title.vob -t title CloseToHomeS01E08.m2v 
+> CloseToHomeS01E09.m2v CloseToHomeS01E10.m2v
+> 
+> dvdauthor -o dvd_directory -x title.vob-dvdauthor.xml
+> 
+> growisofs -dvd-video -Z /dev/dvd dvd_directory
+> 
+> #end
+> 
+> There is some word wrapping in my display while entering this note.
+> The commands are double spaced, so if you see consecutive lines,
+> there was 'word wrap' and not a newline.  ;-)
+> 
+> HTH, Chuck
+
+	Greetings: Helped immensely in that I am now, routinely,
+burning DVD's from tapes; which spawns more questions.. Of course.
+
+	Typically using xawtv, and a BT878 card, to grab a 50 minute
+total analogue tape to an avi file and then following the above to
+burn the final DVD on either DVD+R or DVD+RW blanks I notice one
+thing:
+
+The burn "shading" on the blank is only 1/3 the width of the surface
+and; mounting the DVD reports less than 1gB in length.. It's obvious
+that something is crunching the data more than, what, "normal." I
+note the blanks list four different Modes from "HQ" as 60 minutes on
+a 4.7gB disc thru "EP" 240 minutes each disc, but I see no reference
+to select these modes, that I can find... I would like to burn the
+best quality; closer to the original if possible..
+
+	With everything else the same, TV set; monitor etc, the view
+quality of the original VHS tape is better than the view of the DVD
+copy, so something is happening, somewhere /or/ I'm doing something
+wrong... (The blanks I'm using are not white box but so called prime)
+
+	I'm learning but, obviously, have a long way to go. <grin>
+TIA.
 
 -- 
-*********************
-Tommi Piirainen
-Lintukorventie 2 C 25
-02660 ESPOO
-+358 50 330 9143
-tommi.piirainen@hut.fi
-**********************
+
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
