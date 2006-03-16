@@ -1,109 +1,206 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Convert .avi to .vob/Linux only??
-Date: Thu, 16 Mar 2006 15:09:17 -0800
-Message-ID: <4419F01D.3070306@comarre.com>
-References: <20060224152430.GA1275@lnx2.kvinet.com> <44061B5A.3000309@gelm.net> <20060316195810.GA1027@lnx2.kvinet.com> <4419CF26.10104@gelm.net>
+From: "Dusted T. Stockiest" <bgingery@sammimail.com>
+Subject: Der beste Weg Ihr Einkommen zu erhohen.
+Date: Thu, 16 Mar 2006 18:07:21 -0500
+Message-ID: <1948079226.20060316180721@sammimail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <4419CF26.10104@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="windows-1252"
+To: Linux <linux-newbie@vger.kernel.org>
 
-chuck wrote:
-> Hal MacArgle wrote:
-> 
->> On 03-01, chuck gelm wrote:
->>  
->>
->>> Hal et allia:
->>>
->>> I converted three (3) .avi files and burned them to DVD and can
->>> play them on my DVD player.  Text menu also! :-)
->>> I installed videotrans and stumbled through enough required
->>> additional project installations to get it to work.  Thus:
->>>
->>> #!/bin/sh
->>> # create a DVD-player for .avi movies
->>>
->>> movie-to-dvd -m ntsc -d letterbox -a 4:3 CloseToHomeS01E08.avi 
->>> CloseToHomeS01E09.avi CloseToHomeS01E10.avi
->>>
->>> movie-make-title-simple -o title -m ntsc -n none
->>>
->>> movie-title -T 2x2 -c none -o title.vob -t title 
->>> CloseToHomeS01E08.m2v CloseToHomeS01E09.m2v CloseToHomeS01E10.m2v
->>>
->>> dvdauthor -o dvd_directory -x title.vob-dvdauthor.xml
->>>
->>> growisofs -dvd-video -Z /dev/dvd dvd_directory
->>>
->>> #end
->>>
->>> There is some word wrapping in my display while entering this note.
->>> The commands are double spaced, so if you see consecutive lines,
->>> there was 'word wrap' and not a newline.  ;-)
->>>
->>> HTH, Chuck
->>>   
->>
->>
->>     Greetings: Helped immensely in that I am now, routinely,
->> burning DVD's from tapes; which spawns more questions.. Of course.
->>
->>     Typically using xawtv, and a BT878 card, to grab a 50 minute
->> total analogue tape to an avi file and then following the above to
->> burn the final DVD on either DVD+R or DVD+RW blanks I notice one
->> thing:
->>
->> The burn "shading" on the blank is only 1/3 the width of the surface
->> and; mounting the DVD reports less than 1gB in length.. It's obvious
->> that something is crunching the data more than, what, "normal." I
->> note the blanks list four different Modes from "HQ" as 60 minutes on
->> a 4.7gB disc thru "EP" 240 minutes each disc, but I see no reference
->> to select these modes, that I can find... I would like to burn the
->> best quality; closer to the original if possible..
->>
->>     With everything else the same, TV set; monitor etc, the view
->> quality of the original VHS tape is better than the view of the DVD
->> copy, so something is happening, somewhere /or/ I'm doing something
->> wrong... (The blanks I'm using are not white box but so called prime)
->>
->>     I'm learning but, obviously, have a long way to go. <grin>
->> TIA.
->>  
->>
-> Hi, Hal:
-> 
-> I don't know about the quality of VHS->.avi, but to create a higher 
-> quality DVD from an .avi:
->  man movie-to-dvd ( -q ["low","normal","high",N] ).
-> where, in kilobits per second, low=3500, normal=6000, high=8000, N=user 
-> supplied number.
-> 
-> So, if the distortion occurs in the VHS -> .AVI, this may be no help.  :-|
-> 
-> HTH, Chuck
 
-Hal -- What resolution are you capturing the tape at? With what I recall 
-of your equipment, I'm betting on 320x240. This is way below the 
-resolution (640x480 or 720x480) of "real" DVDs and could account for the 
-  size differences you are seeing. With this spproach, you are not 
-deinterlacing the full image you see on videotape, which can account for 
-the visible quality degredation (something I also see here, and that I 
-don't know what to do about it without a faster CPU that can capture at 
-640x480 deinterlaced). Finally, you may be capturing at too low a 
-bitrate for the conversion to DVD to do much.
+Guten Tag!
 
-I don't capture here with xawtv; I use mencoder (I didn't even remember 
-that xawtv had a capture mode, and I don't see one mentioned in the man 
-page I have for it). But if you want to explore possibilities on that 
-end, please post again with the details of your xawtv capture settings, 
-including what "top" tells you about CPU use during a capture (so we get 
-an idea of you have the power to run at higher-quality settings in real 
-time).
+Als Beitrag zu unserem weiteren Aufstieg akzeptieren wir im Moment Antrage =
+fur die folgende Position:
+
+1.	Fernassistent
+Verfugbare Arbeitsstellen: 19
+Geografische Lage: USA, Australien, UK, Europa
+Verdienst: 350-480 $ pro Woche (fur den ersten Monat als Probezeit)
+Beschaftigung: nebenberuflich (3-4 Stunden pro Woche)
+
+Mehr Information:
+Der erfolgreiche Bewerber muss von Begriff uber die Banktransfer und das Op=
+erationssystem der Geldzahlungen sein.=20
+Die Moglichkeit nebenberuflich mindestens 2-4 Stunden pro Tag zu arbeiten.
+
+Bewerbungsprofil
+Die Moglichkeit die Zahlungen fur internationale und einheimische Kunden zu=
+ leisten. (Wir versorgen mit Training und Support). Erfahrung und Kenntniss=
+e der allgemeinen Officesoftware (Internet und E-Mail Kenntnisse sind erfor=
+derlich).=20
+
+Wichtig: Dieser Job fordert keine Investitionen.  Sie brauchen fur Bucher, =
+Bander nicht zu zahlen, gar nichts. Sie haben nur Ihre Zeit und Arbeit zu i=
+nvestieren, um das Ergebnis zu bekommen.=20
+
+Bitte, senden Sie Ihren Antrag  im Vertrauen zu=20
+
+Fur operative und vertrauliche Verhandlung schicken Sie bitte eine E-Mail m=
+it Ihrem Lebenslauf an unsere Adresse: support@psa4u-inc.com
+Vergessen Sie bitte nicht folgende wichtige Information uber Sie beizufugen=
+ (die mit dem Sternzeichnen markierten Felder sind nicht obligatorisch, die=
+ anderen Felder mussen ausgefullt werden):
+
+1. Ihr Vollname:
+2. Ihr Land:
+3. Ihre volle Adresse:
+4. Ihre Handynummer:
+5. Ihre Festnetznummer:
+6. Ihre dienstliche Kontaktnummer oder Fax (*):
+7. Ihre aktuelle E-Mail Adresse(n):
+8. Sind Sie bereit, den Vertrag mit unserer Firma zu unterschreiben? (muss =
+=84Ja=93 sein)
+9. Sind Sie bereit, die Gelduberweisungen auf Ihr Bankkonto oder Ihre Kredi=
+tkarte zu akzeptieren? (muss =84Ja=93 sein)=20
+ =20
+Wenn Sie diese E-Mail irrtumlich bekommen haben und in der Zukunft wollen S=
+ie nicht Notizen von uns haben, dann schicken Sie bitte eine Mitteilung an =
+diese Adresse:
+remove@psa4u-inc.com
+Anspruchsvolle Berichte an diese Adresse zu schicken: abuse@psa4u-inc.com
+
+Falls Ihre Fragen in der FAQ Abteilung (unten)nicht beantwortet sind, konta=
+ktieren Sie bitte mit unserer Supportabteilung an: support@psa4u-inc.com
+
+
+
+Haufig gestellte Fragen:
+
+Frage 1: Wozu brauchen Sie mich?
+Antwort: Wir sind froh, Sie zu informieren, dass unsere Weise die Transakti=
+onen zu machen, wie bei Western Union oder Money Gram, uns hilft, einige St=
+euer unserer Finanzmanager auszuweichen. Einfach gesagt, alle Steuer fur Ih=
+re Ortsbehorde sind schon bezahlt, bevor das Guthaben auf Ihr Bankkonto vor=
+handen ist. Au?erdem brauchen Sie nicht, Ihren Profit in den Steuerkarten a=
+nzuzeigen. Aber wenn Sie trotzdem vorziehen, die Steuer selbst zu bezahlen,=
+ dann konnen Sie es machen (stellen Sie bitte Fragen an unseren Support fur=
+ zusatzliche Information). Aber beachten Sie bitte, dass die Zahlungen, die=
+ als =84kommerziell=93 bezeichnet werden, geringer sind und mehr Zeit und A=
+nstrengung brauchen, akzeptiert zu werden. Deshalb empfehlen wir immer dies=
+e Uberweisungen als =84privat=93 anzugeben, als ob es fur Ihren Freund oder=
+ Ihren Familienangehorigen ware.
+
+ Frage 2: Warum wird es empfohlen, die Einzahlungen als =93privat=94 anzuze=
+igen?
+
+Antwort: Wenn Sie vorziehen, die Steuer selbst zu bezahlen, konnen Sie das =
+machen (stellen Sie bitte Fragen an unseren Support fur zusatzliche Informa=
+tion).
+Aber beachten Sie bitte, dass die Zahlungen, die als =84kommerziell=93 beze=
+ichnet werden, geringer sind und mehr Zeit und Anstrengung brauchen, akzept=
+iert zu werden. Deshalb empfehlen wir immer diese Uberweisungen als =84priv=
+at=93 anzugeben, als ob es fur Ihren Freund oder Ihren Familienangehorigen =
+ware.
+
+ Frage 3: Wozu brauchen Sie mich? Warum machen Sie die Uberweisungen nicht =
+selbst und behalten damit die Kommission nicht?
+
+Antwort: Wenn wir im Grossen und Ganzen von unserem Job reden, haben wir di=
+eses Schema der Zahlungen darum begrundet, weil es viel schneller ist, als =
+direkte Bankverbindung. Unser Kunde will eine Zahlung auf Ihr Konto leisten=
+. Sie haben nur Ihre Bank zu besuchen und dieses Geld einzunehmen. Danach b=
+rauchen Sie innerhalb von 12 Stunden ins Buro von Western Union oder von Mo=
+ney Gram zu gehen und dieses Bargeld zu ubergeben, um diese Geldgeschaft sc=
+hnell zu machen. Wir werden Ihnen die Information uber Empfanger fur jede T=
+ransaktion geben. Glauben Sie, dass die Bargeldeinnahme von Ihrem Bankkonto=
+ oder die Benutzung der Western Union Transaktionen illegal ist?
+Dieses Schema der Transaktionen hilft uns die Zahlungen schneller zu machen=
+ und die beiden Seiten, Sie und wir, konnen das Geld auch schneller machen.=
+ Wenn wir versuchen, das selbst zu machen, stellen Sie sich vor, wie teuer =
+das ware =96 hundert Buros (Tische, Stuhle, Computer, Telefon-, Faxverbindu=
+ng und das andere Zeug). Unser Schema hilft uns unsere Kosten zu verringern=
+ und erlaubt uns die gro?e Kommission fur unsere Manager zu bezahlen.
+
+Frage 4: Wie viele Uberweisungen kann ich pro Tag / Woche / Monat machen?
+
+Antwort: Das kommt auf das Auftragsvolumen. Das kann von einer Uberweisung =
+pro Woche bis einige Uberweisungen pro Tag sein. Wir benachrichtigen Sie ub=
+er die Zahl der Uberweisungen zuvor, als die Uberweisungen an Sie gesendet =
+werden.
+
+Frage 5: Was noch kann ich fur Ihre Firma machen?
+Antwort: Exakte Arbeit reicht es.
+
+Frage 6: Kann ich Sie meinen Freunden empfehlen?
+Antwort: Ja, naturlich.
+=20
+Frage 7: In welcher Wahrung werde ich das Geld erhalten? In welcher Wahrung=
+ wird es gesendet? Ist das notig, die Wahrung zu wechseln?
+
+ Antwort: Sie werden das Geld in der gleichen Wahrung senden, in der Sie da=
+s Geld erhalten haben.
+
+Frage 8: Wer bezahlt den Geldversand? Ist es nicht zu teuer, Western Union =
+oder Money Gram zu benutzen? Wird es von meiner Kommission abgezogen?
+
+Antwort: Die Kosten fur die Gelduberweisungen werden von unserer Firma beza=
+hlt. Gar nichts wird von Ihrer Kommission abgezogen; Sie erhalten die verei=
+nbarte Summe exakt.
+
+Frage 9: Ich mochte den Vertrag Ihrer Firma mit dem Siegel und mit der Unte=
+rschrift des Vorstandsvorsitzenden bekommen.
+Antwort: Naturlich ist unser Support bereit, Ihnen den Vertrag nach dem ers=
+ten Antrag zu schicken.
+
+ Frage 10: Ist es legal?
+
+Antwort: Ja, unser Geschaft ist absolut legal. Das ist schon unser zweites =
+Jahr auf dem Markt.
+=20
+Frage 11: Ich habe keine Hochbildung im finanziellen Bereich. Ist das wicht=
+ig?
+
+Antwort: Nein, Sie brauchen nicht, Hochbildung zu haben.
+=20
+Frage 12: Arbeiten Sie nur in den USA?
+Antwort: Nein, wir arbeiten auch mit Australien, Gro?britannien, Europa.
+=20
+Frage 13: Fuhren Sie bitte ein Beispiel vom Jobprozess ein.
+Antwort:
+1.	Ein Kunde aus Ihrem Land findet eine Firma in London, GB (zum Beispiel) =
+und will etwas kaufen.
+2.	Die Firma fragt uns uber einen Manager in Ihrem Land und wir finden Sie.
+3.	Wir geben dem Kunden Ihre Bankdaten, um die Zahlung an Sie zu leisten.
+4.	Der Kunde macht die Zahlung an Sie und benachrichtigt uns.
+5.	Wir informieren die Firma, dass die Zahlung gemacht ist.
+6.	Die Firma gibt uns den Vornamen und den Familiennamen von ihrem Vertrete=
+r, der das Geld erhalten muss. Zum Beispiel: Vorname Familienname, in Londo=
+n, GB.
+7.	Wir schicken eine E-Mail an Sie, wie diese: Fur Sie ist eine Gelduberwei=
+sung gemacht. Ihre Summe betragt XXXX USD. Sie sollen das an Vorname Famili=
+enname, in London, GB uberweisen.
+8.	Sie nehmen das Bargeld ein und schicken es an Vorname Familienname, in L=
+ondon, GB.
+9.	Sie schicken an uns die Quittung uber den Geldtransfer.
+10.	Wir ubergeben die Quittung der Firma und sie erhalt das Geld.
+
+Frage 14: Ich wurde sehr gern mehr Information uber Ihre Firma haben.
+=20
+Antwort: PSA wurde im September 2004 von einem Studenten der Fakultat fur E=
+conomics in Oxford gegrundet. Wahrend die ganze Mehrheit von seinen Freunde=
+n reiche Eltern hatte, konnte er damit nicht prahlen. Deswegen dachte er in=
+ der Freizeit daran, wie er das Geld erwerben kann.
+Er bemerkte, dass viele Freunde von ihm beim Einkauf der Kleidung oder Gera=
+te ein bisschen dafur uberzahlten. Von anderer Seite waren das die Leute, d=
+ie uberhaupt nicht wunschten einkaufen zu gehen, Preise zu erlernen und das=
+ eintraglichste Angebot zu wahlen. Die Idee verwirklichte sich und der Stud=
+ent eroffnete eine kleine Internet-Firma, die PSA hei?t und bis heute funkt=
+ioniert.
+Seit dem Moment der Grundung ist die Firma bedeutend angewachsen, die Manns=
+chaft hat die Zahl der angebotenen Servicedienste zugenommen und viele Land=
+er sind naher geworden. Aber die Anfangsidee ist dieselbe geblieben: den Le=
+uten zu helfen, die Waren von hohem Qualitat von uberall in der ganzen Welt=
+ fur den gunstigen Preis und mit dem besten Service zu bekommen.
+
+Frage 15: Haben Sie Zertifikate oder Lizenzen?
+Antwort: Ja, wir haben alle erforderlichen Unterlagen und sind bereit Ihnen=
+ sie zur Verfugung zu stellen, falls Sie den ersten Auftrag machen.
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
