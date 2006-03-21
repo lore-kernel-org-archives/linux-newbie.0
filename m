@@ -1,33 +1,52 @@
-From: "cannon jada" <IRAF@glocalforum.org>
-Subject: Re[8]: Love is a canvas furnished by Nature and embroidered by imagination
-Date: Tue, 21 Mar 2006 11:21:02 +0000
-Message-ID: <4dc401c64cd9$053e28a9$e6462b3e__36032.3115172379$1142939872$gmane$org@62-43-70-230.user.ono.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Printing with Kernel 2.6.14.4
+Date: Tue, 21 Mar 2006 08:44:59 -0500
+Message-ID: <20060321134459.GA1012@lnx2.kvinet.com>
+References: <200603210240.k2L2exYo003730@skyinet.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <200603210240.k2L2exYo003730@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
-To: kaylynn jarmesiya <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
-Howdy!
+On 03-21, Peter wrote:
+> Hi,
+> 
+> Slackware 10.2    kernel 2.6.14.4
+> 
+> Putting /sbin/modprobe parport_pc and ... lp in rc.local I can print, however, 
+> only when I am connected to the Internet since the print configuration tool 
+> has no provisions for parallel port when local printer is selected. Only 
+> Network Printer will show the setting for parallel port and Epson printers.
+> 
+> In my Fedora4 box with kernel 2.6.14-1... selecting local printer will show 
+> parallel port and Epson printers and I can print w/o being connected.
+> 
+> How could I correct to be able to print in slackware w/o being connected.
+> 
+> Should I just copy the files of /lib/modules/kernel/drivers from Fedora over 
+> the slackware?
+> 
+> Thanks & regards
+> -- 
+> Peter
 
-viiaaaaagra and other mmmmeeeeeds
-http://orkgq.fewatural.com/?a=1538gsegyl 
-cheaap pprriiicceess
+	Doesn't 'cat filename.txt > /dev/lp0' /or/ /dev/lp1 work??
+Depending on whether you're using 0x378 or 0x278??
 
-knew his brother and the workings of his intellect: he knew that
-his unbelief came not from life being easier for him without
-faith, but had grown up because step by step the contemporary
-scientific interpretation of natural phenomena crushed out the
-possibility of faith; and so he knew that his present return was
-not a legitimate one, brought about by way of the same working of
-his intellect, but simply a temporary, interested return to faith
-in a desperate hope of recovery.  Levin knew too that Kitty had
-strengthened his hope by accounts of the marvelous recoveries she
-had heard of.  Levin knew all this; and it was agonizingly
-painful to him to behold the supplicating, hopeful eyes and the
+	I don't have a printer connected to the one Slack 10.2, 2.6.X
+machine, so could be all wet... My one 10.2 machine using 2.4.31...
 
+-- 
+
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
