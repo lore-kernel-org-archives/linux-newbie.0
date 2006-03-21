@@ -1,44 +1,32 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Printing with Kernel 2.6.14.4
-Date: Tue, 21 Mar 2006 10:40:59 +0800
-Message-ID: <200603210240.k2L2exYo003730@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: "cannon jada" <IRAF@glocalforum.org>
+Subject: Re[8]: Love is a canvas furnished by Nature and embroidered by imagination
+Date: Tue, 21 Mar 2006 11:21:02 +0000
+Message-ID: <4dc401c64cd9$053e28a9$e6462b3e__36032.3115172379$1142939872$gmane$org@62-43-70-230.user.ono.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
+To: kaylynn jarmesiya <linux-newbie@vger.kernel.org>
 
-Hi,
+Howdy!
 
-Slackware 10.2    kernel 2.6.14.4
+viiaaaaagra and other mmmmeeeeeds
+http://orkgq.fewatural.com/?a=1538gsegyl 
+cheaap pprriiicceess
 
-Putting /sbin/modprobe parport_pc and ... lp in rc.local I can print, however, 
-only when I am connected to the Internet since the print configuration tool 
-has no provisions for parallel port when local printer is selected. Only 
-Network Printer will show the setting for parallel port and Epson printers.
-
-In my Fedora4 box with kernel 2.6.14-1... selecting local printer will show 
-parallel port and Epson printers and I can print w/o being connected.
-
-How could I correct to be able to print in slackware w/o being connected.
-
-Should I just copy the files of /lib/modules/kernel/drivers from Fedora over 
-the slackware?
-
-Thanks & regards
--- 
-Peter
-
-
-
-
-
-
-
-
+knew his brother and the workings of his intellect: he knew that
+his unbelief came not from life being easier for him without
+faith, but had grown up because step by step the contemporary
+scientific interpretation of natural phenomena crushed out the
+possibility of faith; and so he knew that his present return was
+not a legitimate one, brought about by way of the same working of
+his intellect, but simply a temporary, interested return to faith
+in a desperate hope of recovery.  Levin knew too that Kitty had
+strengthened his hope by accounts of the marvelous recoveries she
+had heard of.  Levin knew all this; and it was agonizingly
+painful to him to behold the supplicating, hopeful eyes and the
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
