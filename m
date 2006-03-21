@@ -1,30 +1,44 @@
 From: Peter <heisspf@skyinet.net>
-Subject: Re: skype
-Date: Tue, 21 Mar 2006 10:34:14 +0800
-Message-ID: <200603210234.k2L2YEf6003717@skyinet.net>
-References: <1142879317.5124.4.camel@localhost.localdomain>
+Subject: Printing with Kernel 2.6.14.4
+Date: Tue, 21 Mar 2006 10:40:59 +0800
+Message-ID: <200603210240.k2L2exYo003730@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: Your message of "Mon, 20 Mar 2006 19:28:37 +0100."
-             <1142879317.5124.4.camel@localhost.localdomain> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: John Woodrow <samuraiinlove@gawab.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-I just tested in Fedora 4 and Skype works fine.
+Hi,
 
-They have a test, dial echo123 and follow the instructions. Enter echo123 in 
-the dial bare then click the green phone handle for dialing.
+Slackware 10.2    kernel 2.6.14.4
 
-Make sure all the settings for volume control, I am using 
-gnome-volume-control, are set to maximum.
+Putting /sbin/modprobe parport_pc and ... lp in rc.local I can print, however, 
+only when I am connected to the Internet since the print configuration tool 
+has no provisions for parallel port when local printer is selected. Only 
+Network Printer will show the setting for parallel port and Epson printers.
 
-Regards
+In my Fedora4 box with kernel 2.6.14-1... selecting local printer will show 
+parallel port and Epson printers and I can print w/o being connected.
+
+How could I correct to be able to print in slackware w/o being connected.
+
+Should I just copy the files of /lib/modules/kernel/drivers from Fedora over 
+the slackware?
+
+Thanks & regards
 -- 
 Peter
+
+
+
+
+
+
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
