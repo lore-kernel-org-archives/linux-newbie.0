@@ -1,79 +1,55 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: skype
-Date: Tue, 21 Mar 2006 16:36:07 -0500
-Message-ID: <20060321213607.GA1898@lnx2.kvinet.com>
-References: <1142879317.5124.4.camel@localhost.localdomain> <441EC137.1010608@gelm.net> <20060320205930.GA1044@lnx2.kvinet.com> <1142967514.6632.11.camel@localhost.localdomain>
-Reply-To: haltec@kvinet.com
+From: John Woodrow <samuraiinlove@gawab.com>
+Subject: skype
+Date: Wed, 22 Mar 2006 11:22:34 +0100
+Message-ID: <1143022954.3360.19.camel@localhost.localdomain>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1142967514.6632.11.camel@localhost.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: John Woodrow <samuraiinlove@gawab.com>
-Cc: linux-newbie@vger.kernel.org
+To: newbie linux <linux-newbie@vger.kernel.org>
 
-On 03-21, John Woodrow wrote:
-> On Mon, 2006-03-20 at 15:59 -0500, Hal MacArgle wrote:
-> > On 03-20, chuck gelm wrote:
-> > > John Woodrow wrote:
-> > > 
-> > > >Hello,
-> > > >
-> > > >I'm having problems with Skype, I installed the rpm for fc3 but I am
-> > > >using fc4.  Many people claim to have got this working but I am having
-> > > >problems with the mic, people can not hear me.  I've made sure the mic
-> > > >volume is turned right up in volume control but this makes no
-> > > >difference.  Has anybody had the same experience who can help?
-> > > >
-> > > >-
-> > > >
-> > > Hi, John:
-> > > 
-> > > I use SKYPE both with Windows and with Linux.
-> > > The audio is tricker, for me, with Linux.
-> > > Does your microphone audio work locally?
-> > > I do not use FC? nor .rpm, so I can offer no help
-> > > in those areas.
-> > > 
-> > > HTH, Chuck
-> > 
-> > 	Dunno about Skype or Fedora Core 3/4, but was wondering if
-> > your problem could be the particular sound card you're using??
-> > 
-> > 	I've noticed that many not only require "Volume" and "Mic"
-> > set high but a possible other "slider" that affects it too?? Does
-> > your mixer have an obscure additional slider??
-> > 
-> > 	I have one card that needs three set and unmuted to work
-> > properly... Flail away... <grin>
-> > 
-> > 	Chuck asks if the Mic works OK locally.. Usually Mic inputs
-> > are not stereo and one of the pin outs is +5 for an electronic mic..
-> > I could be way wrong depending on the card, etc... Just a thought..
-> > 
-> > HTH.
-> > 
-> 
-> Thankyou people,
-> How can I check if the mic works locally?  I've got all the volume
-> controls turned up to max in gnome and have used the echo123 service but
-> with no luck.  My soundcard is a Creative Labs SB Audigy.
+Hello Everyone,
 
-	Do you have 'man arecord' or 'man rec'?? The former is you're
-using ALSA sound; the latter if you're using OSS sound.. Suspect the
-former is correct.. Can you invoke 'alsamixer'? This is getting
-involved, eh??
+dmesg | grep -i sound ............gives no reply.
+dmesg | grep -i sound
+application mixer_applet2 uses obsolete OSS audio interface
+application firefox-bin uses obsolete OSS audio interface
 
-	Trouble is; if "local" works that still wont really solve
-your problem... Ugh..
 
--- 
+I bring up volume control by right clicking on the speaker icon and
+selecting 'Open Volume Control'.  Everything is set to max including
+LOADS of things I don't understand like various PCM's, EMU10K1 PCM 1 to
+32, EMU10K1 PCM Send 1 to 32.  If I mess with EMU10K1 PCM Send Routing 1
+it results in silence from either 1 or both speakers so I leave well
+alone but the other 31 are fine.  Sorry if I'm giving useless
+information but I don't know enough to distinguish.  None of them are
+muted.  I also have every channel turned up in alsamixer, so I think
+that's a yes to the question about whether I can invoke alsamixer.
 
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+[root'at'localhost /]# lsmod | grep snd
+bash: lsmod: command not found
+[root'at'localhost /]# lspci -v | grep -A 5 audio
+bash: lspci: command not found
+
+
+I looked for 'modules.conf' in /etc/ but could not find.  Using locate I
+got these results:
+
+/etc/gnome-vfs-2.0/modules/mapping-modules.conf
+/etc/gnome-vfs-2.0/modules/ssl-modules.conf
+/etc/gnome-vfs-2.0/modules/default-modules.conf
+
+
+I have man arecord.  There is no squeal when I place the mic close to
+the speaker.
+
+Thanks guys,
+
+John.
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
