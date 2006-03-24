@@ -1,78 +1,47 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Printing with Kernel 2.6.14.4
-Date: Fri, 24 Mar 2006 06:55:50 -0800
-Message-ID: <44240876.3030306@comarre.com>
-References: <380-22006352464414683@M2W061.mail2web.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Lexar Jump Drive & Linux??
+Date: Fri, 24 Mar 2006 16:38:42 -0500
+Message-ID: <20060324213842.GA1272@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <380-22006352464414683@M2W061.mail2web.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-heisspf@skyinet.net wrote:
-> thanks Hal!
-> 
-> altec@kvinet.com said:
-> 
->>Doesn't 'cat filename.txt > /dev/lp0' work
-> 
-> 
-> no since /dev/lp0 is not an executable file.
-> 
-> I just had for 36 hours no Internet connection and therefore no printing
-> and this
-> late reply. When connection was restored I can't send mail any more with
-> exmh or sylpheed????????
-> 
-> Luckily there is mail2web.com
-> 
 
-Peter -- Your response reflects a misunderstanding of the relevant 
-permissions. When you redirect output to a file (or a pseudofile like 
-the device link /dev/lp0), that destination file need not be executable. 
-It just needs to be writable by the uid doing the redirection.
+Greetings: One year ago I bought a Lexar 256mB Jump Drive; put an
+ext2 FS on it and used it to transport small files from one Linux
+machine to another, all running 2.4.XX kernels, and mounting the
+drive as /dev/sda1, per dmesg...
 
-For example, these are the permissions from my stock Debian-Sid setup here:
+All of a sudden I couldn't write to it unless the files were less
+than 30mB total size.. I figured the drive must be bad; still in
+warranty according to Lexar, so I contacted their support people..
 
-autovcr@new-flagg:~$ ls -l /dev/lp*
-crw-rw----  1 root lp 6, 0 Feb 25  2005 /dev/lp0
-crw-rw----  1 root lp 6, 1 Feb 25  2005 /dev/lp1
-crw-rw----  1 root lp 6, 2 Feb 25  2005 /dev/lp2
+First off they say I must reformat the drive using Windows and
+included instructions for doing this with Win98SE or XP... SE didn't
+even see the drive so I fetched the newest driver from their site and
+never did get it to work...
 
-So root and members of group lp can write to these files, but other 
-users cannot (they will get "Permission denied" because they lack write 
-access, NOT because the file is not executable).
+Then I went to an XP machine and was able to format the drive as per
+their instructions so it now seems to work fine as long as it's
+formatted FAT32  (VFAT)...
 
-Since I use neither parallel printers nor the particular X application 
-your earlier messages referred to, I haven't tried to figure out what 
-your problem is. But no one will be able to help you if you don't report 
-  accurately the failures (specifically, the associated error messages) 
-of the tests that people ask you to run.
+Am I presuming I have to _not_ use a Linux FS with this or other jump
+or flash drives?? (I do have a UL641 64mB drive that's fine ext2, so
+far) I've been telling some that the Lexar 256 drive works with
+Linux.. I'll have to retract that unless I can figure out what
+happened, eh?? Any comments. TIA.. (Of course the drive 'specs' don't
+list Linux, as usual.) :^(
 
-Here, for example, where I have no printer attached to lp0, I get 
-different failure messages as an ordinary user and as root:
+-- 
 
-autovcr@new-flagg:~$ cat mencoder_notes.txt > /dev/lp0
--bash: /dev/lp0: Permission denied
-autovcr@new-flagg:~$ su
-Password:
-new-flagg:/home/autovcr# cat mencoder_notes.txt > /dev/lp0
-bash: /dev/lp0: No such device
-
-The response I get as autovcr means I don't have write (not execute) 
-permission for the file (device). The response I get as root means there 
-is no printer attached to the port.
-
-You should be equally specific in your reporting to us. Oh and also try
-
-	cat filename.txt > /dev/lp1
-
-as I have a hazy recollection that some versions of Slackware associated 
-lp1, not lp0, with the first parallel port.
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
