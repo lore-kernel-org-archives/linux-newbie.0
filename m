@@ -1,40 +1,41 @@
 From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: Lexar Jump Drive & Linux??
-Date: Sat, 25 Mar 2006 09:22:24 -0500
-Message-ID: <20060325142224.GB1239@lnx2.kvinet.com>
-References: <20060324213842.GA1272@lnx2.kvinet.com> <442441BB.6010702@gelm.net>
+Date: Sat, 25 Mar 2006 09:17:38 -0500
+Message-ID: <20060325141738.GA1239@lnx2.kvinet.com>
+References: <20060324213842.GA1272@lnx2.kvinet.com> <200603242044.14981.david@fierbaugh.org>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <442441BB.6010702@gelm.net>
+In-Reply-To: <200603242044.14981.david@fierbaugh.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: chuck gelm <chuck@gelm.net>
+To: David Fierbaugh <david@fierbaugh.org>
 Cc: linux-newbie@vger.kernel.org
 
-On 03-24, chuck gelm wrote:
-> Hi, Hal:
+On 03-24, David Fierbaugh wrote:
+> I second what has been said about using them with vfat file system. I have a 
+> 16Mb that must be at least 4 1/2 years old. It's still going fine.
 > 
-> I have two (128MB) USB (flash,thumb) drives and usually
-> use them as 'vfat' formatted systems.  They are partially
-> linux compatible, because 'vfat' does not carry as many
-> permissions as 'ext2' does.  I'm guessing that all 'full'
-> linux distributions support 'vfat' file systems by default.
-> So, these USB drives are basically linux compatible.
-> I looked in my filesystem list (/usr/src/linux/fs/) and see
-> over 25 filesystems.  I have even heard of some of them:
-> cramfs, ext3, fat, jffs, minnix, msdos, ramfs, reiserfs,...
+> Most people keep these as vfat, unless there's a really god reason not to 
+> (like using with NSLU2 hacked to run off a flash drive, now that's fun.)
 > 
-> You could have formatted them 'vfat' with linux.  :-|
+> Flash drives are EXTRAORDINARILY resilient. I've seen photos off of a flash 
+> card from a camera which was caught (and destroyed) in an explosion.
 > 
-> Chuck
+> I've seen them destroyed by fluid, but the most common cause of failure is 
+> good old file system corruption from miscellaneous cause or human error.
+> 
+> I'd suggest formating it as vfat, and take a look at it with fsck.vfat or 
+> badblocks.
 
-	I have done that and checked it with dosfsck as AOK..
-However, as mentioned, fsck returns an Error 2, but I wont worry
-about it for now...
+	Thanks all for your input.. Consensus is to use it vfat to
+stay out of trouble with Lexar.. <grin> It seems to be AOK now except
+that fsck.vfat returns an Error 2, but 'dosfsck -tvr /dev/sda1' gives
+it a clean bill of health.. I didn't try badblocks, but set it up as
+Dos drive F: so we're in business again till the next crisis... 
 
 -- 
 
