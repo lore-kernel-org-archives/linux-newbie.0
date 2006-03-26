@@ -1,131 +1,67 @@
 From: Hal MacArgle <haltec@kvinet.com>
-Subject: Re: Lexar Jump Drive & Linux??
-Date: Sat, 25 Mar 2006 09:43:10 -0500
-Message-ID: <20060325144310.GC1239@lnx2.kvinet.com>
-References: <20060324213842.GA1272@lnx2.kvinet.com> <44247618.4060701@bcgreen.com>
+Subject: Re: Printing with Kernel 2.6.14.4
+Date: Sun, 26 Mar 2006 13:55:31 -0500
+Message-ID: <20060326185531.GA1485@lnx2.kvinet.com>
+References: <380-22006362515858506@M2W055.mail2web.com>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <44247618.4060701@bcgreen.com>
+In-Reply-To: <380-22006362515858506@M2W055.mail2web.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Stephen Samuel <samnospam@bcgreen.com>
+To: "heisspf@skyinet.net" <heisspf@skyinet.net>
 Cc: linux-newbie@vger.kernel.org
 
-On 03-24, Stephen Samuel wrote:
-> Hal MacArgle wrote:
-> >Greetings: One year ago I bought a Lexar 256mB Jump Drive; put an
-> >ext2 FS on it and used it to transport small files from one Linux
-> >machine to another, all running 2.4.XX kernels, and mounting the
-> >drive as /dev/sda1, per dmesg...
-> >
-> >All of a sudden I couldn't write to it unless the files were less
-> >than 30mB total size.. I figured the drive must be bad; still in
-> >warranty according to Lexar, so I contacted their support people..
-> >
-> >First off they say I must reformat the drive using Windows and
-> >included instructions for doing this with Win98SE or XP... SE didn't
-> >even see the drive so I fetched the newest driver from their site and
-> >never did get it to work...
-> >
-> >Then I went to an XP machine and was able to format the drive as per
-> >their instructions so it now seems to work fine as long as it's
-> >formatted FAT32  (VFAT)...
-> >
-> >Am I presuming I have to _not_ use a Linux FS with this or other jump
-> >or flash drives?? (I do have a UL641 64mB drive that's fine ext2, so
-> >far) I've been telling some that the Lexar 256 drive works with
-> >Linux.. I'll have to retract that unless I can figure out what
-> >happened, eh?? Any comments. TIA.. (Of course the drive 'specs' don't
-> >list Linux, as usual.) :^(
-> >  
+On 03-24, heisspf@skyinet.net wrote:
+> Thanks Ray,
 > 
-> Shoulda stopped at step 1.. They had it specified as
-> working with Se. If that didn't work then you could tell
-> them it was broken and get a replacement.
-> Now that you have it working with XP, it's a lot harder
-> to scream at them for having a dead drive.
-> :-)
+> >>Doesn't 'cat filename.txt > /dev/lp0' work
+> > 
+> > 
+> > no since /dev/lp0 is not an executable file.
+> > 
 > 
-> Hey, they gave the specs, not me.
-
-	Some day "they'll" admit that there are "other" O/S's out
-there, eh??
-
-	One of my paranoid problems is that I can't get Win98SE to
-work with any flash/jump drive, only an USB mouse, even with the
-driver supplied by Lexar's site, trying on three different machines..
-
-
-
-
-> If it was working with Linux to begin with, I'd say that
-> most things were fine... There may have been some
-> problems with reading/writing certain blocks in the
-> device. I'd try exercising it with something like the
-> 'badblock' command in Linux.
-
-	Now that I have it reformatted as vfat, 'dosfsck' gives it a
-clean bill of health; giving more details than badblocks of course..
-I find the drive I have is USB 1.0, so it's not up to speed so to
-speak, eh?
-
-
-
-> Did you have any errors associated with the drive in
-> /var/log/messages?
+> Ok my mistake. It does work under su, however, not as sudo which I had
+> tried only.
 > 
-> You can also run the system with heavy debugging...
+> > as I have a hazy recollection that some versions of Slackware associated 
+> > lp1, not lp0, with the first parallel port.
 > 
-> Presuming it's just a desktop (as opposed to a heavily loaded
-> server which would produce lots of I/O if you do the following):
-
-	Yes a simple desktop, a machine that can be connected to wide
-band for faster downloads than our rural home machines using antique
-twisted pairs, lucky to get 3.0kBps.. I admit I cried wolf before
-putting my brain in motion and didn't troubleshoot properly..
-
-<snip>
-
-
-
-
-> One thing that I'll have to ask (OK: 2)
+> It is lp0.
 > 
-> 1) have you always remembered to unmount the device before
-> pulling it out??
-> 2) did you try doing a full FSCK?
+> The reason I can't print not being connected with kernel 2.6.14 is, the way
+> I see it, that there is no provision for a parallel port on "local printer"
+> set-up, but only for "network printer".
+> 
+> May be I should try to fumble around the source, /usr/src/linux.
+> 
+> Regards
+> 
+> Peter
 
-	Running Unix for years now I hope I know about umount but
-have to be honest that we sometimes "forget," eh?? Am, really, not
-sure of the complete details.. In the heat of "battle" I flipped and
-didn't do many things I should have.. At least all is well now with
-the vfat format.. I hope it's not an intermittent thingy.. Oh well..
+	Greetings: You got my curiosity in gear: I installed
+Slackware 10.2, (test26) and it's module library, full install except KDE,
+Tex or Games and hooked a Panasonic KX-P2123, Epson mode, printer;
+and booted...
 
+	After logging in as root; lsmod reported that parport_pc and
+parport were both installed automatically..
 
+	Noting there was one txt file already in root I invoked 'cat
+loadlin16c.txt > /dev/lp0' and it printed perfectly.. I created
+another txt file of all 60 lines and tried it too; AOK...
 
+	Since default Slack 10.2/26test is 2.6.13; something may have
+happened when you bumped up from that?? I don't remember; maybe
+you're not using Slackware10.2 here?? As an aside; I've been trying
+to install SuSE 10.0 on the same machine, off and on for a week, to
+no avail.. Forget which 2.6 patch it defaults to...
 
-> I'd also suggest using ext3fs, which is a good bit more
-> resilient than ext2fs to having the drive accidently pulled out
-> without an unmount.
-
-	Everything I have here is ext3 but I used ext2 on that drive
-because I didn't want to rock the boat away from a device that's
-marked "Windoze" only... <grin> I'll keep it vfat and be done with
-it, as all suggested.. Believe it or not I've actually talked to some
-hardware vendors who haven't even "heard" of Linux... Ugh..
-
-	Lexar support has been excellent otherwise with, actually,
-too many messages, but they seem to want to try as long as I don't
-mention Linux (maybe.) Wonder if they'll talk to me as to why I can't
-get Win98SE to work with either flash/jump drive I have?? Lexar
-support answers eMails within hours instead of the normal days of
-others, if at all...
-
-	Appreciate all!!
+	At least I know Slack still works as expected.. I didn't go
+any further than that...
 
 -- 
 
