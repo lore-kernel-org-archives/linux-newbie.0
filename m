@@ -1,48 +1,39 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Printing with Kernel 2.6.14.4
-Date: Wed, 29 Mar 2006 11:55:34 +0800
-Message-ID: <20060329115534.609aea77@skyinet.net>
-References: <200603280259.k2S2xxLA004035@skyinet.net>
-	<4428C787.50804@comarre.com>
-	<20060328160926.4ce1e7fc@skyinet.net>
-	<200603280742.21986.david@fierbaugh.org>
+From: Bo Yang <struggleyb@gmail.com>
+Subject: cannt open root device ?
+Date: Fri, 31 Mar 2006 10:48:37 +0800
+Message-ID: <442C9885.8000703@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200603280742.21986.david@fierbaugh.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: David Fierbaugh <david@fierbaugh.org>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On Tue, 28 Mar 2006 07:42:21 -0500
-David Fierbaugh <david@fierbaugh.org> wrote:
+Hello everybody :
+I know maybe my question is just a piece of cake for you , but
+I have struggled with it for 4 days , and I didn't get any answer from
+the google and the archive .
+So I came here !
 
-> With cups apparently running, and root having the ability to print manually,
+And my problem is that :
+I use VMware , and install gentoo linux on the vm which hold a scsi disk
+. I compile the linux kernel with scsi support in the kernel self , but
+when boot up the kernel panic with the bellow message :
+VFS: Cannot open root device "803" or unkonw-block(8,3)
+Please append a correct "root=" boot option
 
-> try configuring your printer with cups web based tool.
-> 
-> Point your favorite web browser to 'http://localhost:631/'. This should open
+But I have a line in my lilo.conf : root=/dev/sda3
 
-> cups configuration. The login will probably be root and your root password, 
-> this can be changed later, after you get printing working. From there you
-can 
-> add/change/delete printers and their settings. You can also print test pages
+I have recompile the kernel for many times , but it panic everytime .
 
-> from cups once you've got a printer setup correctly.
-> 
-Thanks!
-I have done all this. Now I tried it again adding a new printer,  then w/o
-being connected to print a test. It will just sit and wait and wait. So I
-closed the page http://localhost:631/admin and tried to open it again w/o
-being connected. The result was the machine froze, keyboard, second hand on
-clock and I had to do a reset.
+Thanks in advance !
 
-Regards
+Best Regard !
 
--- 
-Peter
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
