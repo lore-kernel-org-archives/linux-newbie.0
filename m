@@ -1,86 +1,57 @@
-From: Juanjo Escribano <jescribano@zitralia.com>
+From: David Fierbaugh <david@fierbaugh.org>
 Subject: Re: cannt open root device ?
-Date: Fri, 31 Mar 2006 13:14:27 +0200
-Message-ID: <1143803667.3684.8.camel@juanjo.zitralia>
+Date: Fri, 31 Mar 2006 08:42:38 -0500
+Message-ID: <200603310842.38359.david@fierbaugh.org>
 References: <442C9885.8000703@gmail.com>
-	 <Pine.LNX.4.64.0603302233010.6607@localhost.localdomain>
-	 <442CC328.9000906@gmail.com>
-Reply-To: jescribano@zitralia.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <442CC328.9000906@gmail.com>
+In-Reply-To: <442C9885.8000703@gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Bo Yang <struggleyb@gmail.com>
-Cc: James Miller <jamtat@mailsnare.net>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi,
+I would second what's been said about the VM ware forums, and add that the 
+Gentoo Forums might also provide more relevant help to the Gentoo specific 
+items. Also here's an article on Gentoo & VM ware:
+http://www.linuxdig.com/news_page/1082673701.php
 
-	I'm not sure but maby you don't have the correct modules to manage the
-disk emulated by VMware in the initrd. I have a FC4 installed on a
-vmware machine with SCSI disk and I need that initrd loads this modules
-to wark fine: scsi_mod, sd_mod, mptbase, mptscsih, mptspi. Without this
-modules the kernel can't manage the disk and it can't create the root
-device to do the switchroot.
+-- David
 
-	I hope it can help you.
-
-Good Luck!!
-
-Juanjo
-
-
-
-El vie, 31-03-2006 a las 13:50 +0800, Bo Yang escribi=C3=B3:
-> > This is actually a VMware question more than a Linux question.  The=
-y=20
-> > have a user forum: have you tried posting about your problem there?=
-  I=20
-> > have a little bit of experience with VMware, but you don't provide=20
-> > enough information for me to take a stab at what the problem might=20
-> > be.  First, is this a virtual disk or are you trying to use an actu=
-al=20
-> > scsi hardware disk for your Gentoo install?  I have no expereince w=
-ith=20
-> > using a real disk or partition for the guest OS, only with virtual =
-disks.
-> It is a scsi virtual disk ,  and VM  display it as '' Hard Disk 1:=20
-> (SCSI  0:0)"
-> > So I might not be able to help with that anyway.  If it's a virtual=
-=20
-> > partition I can't understand why you would specify it as /dev/sda3.=
- =20
-> > I've always put OS's on the first partition of the virtual disk. =20
-> > VMware presents these virtual disks to the host OS as scsi disks, s=
-o=20
-> > my experience has always been with systems installed to /dev/sda1. =
-=20
-> > Did you partition the (virtual?) disk and put /home and swap or=20
-> > something on the other 2 partitions?  Anyway, I'm not even sure I c=
-an=20
-> > help.  Probably best to try the VMware forums.
-> And I have partition the disk for 4 part .
-> /dev/sda1  /boot  reiserfs
-> /dev/sda2  swap  swap
-> /dev/sda3  /          reiserfs
-> /dev/sda4  /usr    reiserfs
->=20
-> So I tell the lilo to mount the root file system in the partition=20
-> /dev/sda3 , is it wrong ?
->=20
-> Thank you for your reply !
+On Thursday 30 March 2006 21:48, Bo Yang wrote:
+> Hello everybody :
+> I know maybe my question is just a piece of cake for you , but
+> I have struggled with it for 4 days , and I didn't get any answer from
+> the google and the archive .
+> So I came here !
+>
+> And my problem is that :
+> I use VMware , and install gentoo linux on the vm which hold a scsi disk
+> . I compile the linux kernel with scsi support in the kernel self , but
+> when boot up the kernel panic with the bellow message :
+> VFS: Cannot open root device "803" or unkonw-block(8,3)
+> Please append a correct "root=" boot option
+>
+> But I have a line in my lilo.conf : root=/dev/sda3
+>
+> I have recompile the kernel for many times , but it panic everytime .
+>
+> Thanks in advance !
+>
+> Best Regard !
+>
+>
+>
+>
 > -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 > the body of a message to majordomo@vger.kernel.org
 > More majordomo info at  http://vger.kernel.org/majordomo-info.html
 > Please read the FAQ at http://www.linux-learn.org/faqs
-
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
