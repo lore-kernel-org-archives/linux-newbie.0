@@ -1,55 +1,38 @@
-From: David Fierbaugh <david@fierbaugh.org>
-Subject: Re: cannt open root device ?
-Date: Fri, 31 Mar 2006 08:42:38 -0500
-Message-ID: <200603310842.38359.david@fierbaugh.org>
-References: <442C9885.8000703@gmail.com>
+From: Peter <heisspf@skyinet.net>
+Subject: Re: Printing with Kernel 2.6.14.4
+Date: Mon, 03 Apr 2006 10:04:06 +0800
+Message-ID: <200604030204.k33246r6004351@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <442C9885.8000703@gmail.com>
-Content-Disposition: inline
+Content-ID: <4349.1144029846.1@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-I would second what's been said about the VM ware forums, and add that the 
-Gentoo Forums might also provide more relevant help to the Gentoo specific 
-items. Also here's an article on Gentoo & VM ware:
-http://www.linuxdig.com/news_page/1082673701.php
+Just want to inform, the problem that I could not print offline was solved 
+with the help of a  certain Jorgeu from Venezuela, in Dropline-Gnome-Forum, 
+Slackware Discussions under "Unable to Print Offline".
 
--- David
+Jorgeu asked me what the output is of /sbin/route when offline. There was 
+none. From which he concluded correctly that it is a loopback configuration 
+issue.
 
-On Thursday 30 March 2006 21:48, Bo Yang wrote:
-> Hello everybody :
-> I know maybe my question is just a piece of cake for you , but
-> I have struggled with it for 4 days , and I didn't get any answer from
-> the google and the archive .
-> So I came here !
->
-> And my problem is that :
-> I use VMware , and install gentoo linux on the vm which hold a scsi disk
-> . I compile the linux kernel with scsi support in the kernel self , but
-> when boot up the kernel panic with the bellow message :
-> VFS: Cannot open root device "803" or unkonw-block(8,3)
-> Please append a correct "root=" boot option
->
-> But I have a line in my lilo.conf : root=/dev/sda3
->
-> I have recompile the kernel for many times , but it panic everytime .
->
-> Thanks in advance !
->
-> Best Regard !
->
->
->
->
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+He told me then to input the following command:
+
+# route add 127.0.0.0 dev lo
+
+and behold Jorgeu was right: And you should be printing offline without 
+problems.
+
+And it seems to hold. This morning when I bootet I was offline and could print.
+
+Thank you Jorgeu!!
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
