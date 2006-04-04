@@ -1,38 +1,83 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Printing with Kernel 2.6.14.4
-Date: Mon, 03 Apr 2006 10:04:06 +0800
-Message-ID: <200604030204.k33246r6004351@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: Mac <macduineabhan@yahoo.com>
+Subject: Problems with Scanner class in Blackdown JDK
+Date: Mon, 3 Apr 2006 20:28:56 -0700 (PDT)
+Message-ID: <20060404032856.93706.qmail@web37814.mail.mud.yahoo.com>
+References: <4428C787.50804@comarre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-ID: <4349.1144029846.1@skyinet.net>
+In-Reply-To: <4428C787.50804@comarre.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Just want to inform, the problem that I could not print offline was solved 
-with the help of a  certain Jorgeu from Venezuela, in Dropline-Gnome-Forum, 
-Slackware Discussions under "Unable to Print Offline".
+I'm currently using the most recent release of the
+Gentoo kernel, version 2.6.15.  The JDK I am using is
+Blackdown 1.4.2.03.
 
-Jorgeu asked me what the output is of /sbin/route when offline. There was 
-none. From which he concluded correctly that it is a loopback configuration 
-issue.
+Right now I'm taking a college java course, and I'm
+trying to get my java up and running so I can do
+homework outside of the labs.  The IDE I am supposed
+to be using for the class is Bluej (which I have
+installed), although I have duplicated the problems I
+have been having on Netbeans as well.
 
-He told me then to input the following command:
+Basic java programs seem to compile just fine, but I
+have trouble whenever I try to use certain import
+statements, specifically with the Scanner class.  For
+example:
 
-# route add 127.0.0.0 dev lo
+import java.util.Scanner;
+  (error message: cannot resolve symbol - class
+Scanner)
 
-and behold Jorgeu was right: And you should be printing offline without 
-problems.
+-- the same error message occurs with 
+import java.util.*;
 
-And it seems to hold. This morning when I bootet I was offline and could print.
+This class is VERY important to have for my course, as
+a large number of the projects we have utilize it. 
+The course I'm taking uses it to get keyboard input.
+(example: Scanner keyboard = new Scanner(System.in);
+ int exampleInt = keyboard.nextInt(); // reads in an
+integer using the new Scanner object, keyboard)
 
-Thank you Jorgeu!!
--- 
-Peter
+The computers at the campus labs are Windows-based.
+However, java is very portable, and I have no problems
+writing a program in the Linux Bluej, then e-mailing
+it to myself and opening in the Windows Bluej on
+campus.  The programs written in Linux compile in
+Windows, even when they don't compile in Linux.  While
+I can still keep doing it this way, it would be nice
+to be able to test and debug my projects BEFORE I get
+to class, if you know what I mean.
 
+--  Does anyone have a suggestions as to why I might
+be getting this message?
+--  I know that Java is fairly portable, but is it
+possible that the Scanner class is not available for
+Linux?
+
+A bit of info:
+
+mycomputer / # java-config -v    #version of JVM
+java version "1.4.2-03"
+Java(TM) 2 Runtime Environment, Standard Edition
+(build Blackdown-1.4.2-03)
+Java HotSpot(TM) Client VM (build Blackdown-1.4.2-03,
+mixed mode)
+
+Any help would be appreciated.  Thanks!
+
+Mac
+
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Tired of spam?  Yahoo! Mail has the best spam protection around 
+http://mail.yahoo.com 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
