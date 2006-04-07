@@ -1,22 +1,22 @@
 From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: SuSE 10.0 and it's RPM 4.1.1??
-Date: Fri, 7 Apr 2006 14:23:26 -0400
-Message-ID: <20060407182326.GA1046@lnx2.kvinet.com>
-References: <20060405151039.GA1065@lnx2.kvinet.com> <200604060902.11198.sotl155360@earthlink.net>
+Date: Fri, 7 Apr 2006 14:56:16 -0400
+Message-ID: <20060407185616.GA1071@lnx2.kvinet.com>
+References: <20060405151039.GA1065@lnx2.kvinet.com> <200604062314.25999.edgaralwers@gmx.de>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200604060902.11198.sotl155360@earthlink.net>
+In-Reply-To: <200604062314.25999.edgaralwers@gmx.de>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: SOTL <sotl155360@earthlink.net>
+To: "Dr. Edgar Alwers" <edgaralwers@gmx.de>
 Cc: linux-newbie@vger.kernel.org
 
-On 04-06, SOTL wrote:
-> On Wednesday 05 April 2006 11:10 am, Hal MacArgle wrote:
+On 04-06, Dr. Edgar Alwers wrote:
+> On Wednesday 05 April 2006 17:10, Hal MacArgle wrote:
 > > Greetings: A Slackware junkie all my Linux life, I'm just now
 > > "playing" with other distributions that use RPM..
 > >
@@ -49,63 +49,66 @@ On 04-06, SOTL wrote:
 > >
 > > Is there a tutorial that explains this better than the man?? TIA.
 > 
-> If I recall correctly RPM stands for Red Hat Package Manager which I believe 
-> is uses by Fedora/Redhat and FreeMandriva/Mandriva/Mandrake.
+> Up to now I thought I would  understand english fairly good. Withouth being 
+> nasty, I did not understand at all the subject.
 
-	True AFAIK; plus others including Slackware that has the rpm
-program but warns us that it doesn't work with all apps... Open
-Source keeps us on our toes, eh?? Could it be with SuSe that it means
-something like Reliable Package Manager, instead of RedHat Package
-Manager?? Stranger things have happened.. The study of acronyms is
-another PhD dissertation..
+	Greetings and I apologize profusely for the American slang..
+Maybe it's my way to prove I'm not getting senile.. When my
+grandchildren and great-grandchildren talk to me I don't understand
+90% of what they say.. <grin> Some fault me for no details that I
+tried to circumvent this time.. I failed.. My relatives in the UK and
+Scotland say that Americans haven't spoken Englisch for years...
 
-
-
-
-> Not sure on this but I believe that SuSE uses a different package system which 
-> is not compatable with Red Hat's.
-
-	This is what I really needed to know.. "RPM" is not,
-necessarily, "RPM"... Open Source again??
+	The query has been answered, mostly, in that it seems that
+the .rpm files of different distributions are not, in all cases,
+exactly the same, or, at least, not all will run cross distributions. 
 
 
 
 
-> I am sure that Debian uses a different system which is also used by Ubuntu and 
-> Kubuntu.
+> Is it too much to ask for a short description of the problem
+> instead of so much literature?
 
-	Yes; ".deb" and it too probably works with other
-distributions unknown by me.. It's getting much more complicated than
-when I first found Linux after years of Unix... 
+	Maybe I should have had separate queries?? I still can't find
+what V3 DSA signature means, except that it has something to do with
+security.. Why I got that report is unknown especially since this
+machine is not and never will be connected to a LAN or WAN..
+Basically; I was completely confused as to why I could not install a
+.rpm file, unmarked as to distribution, into SuSE.. That seems to be
+answered..
 
 
 
 
-> If what you are doing is what I infer from your title that you are trying to 
-> install RPM into a SuSE system then I do not believe even if there were no 
-> issues with the package manager that it would work as Red Hat and SuSE do 
-> things internally sufficiently different that the only package that I am 
-> aware of that will run equally on both system is OpenOffice.org's Office 
-> package which basically puts all libraries and all components into a separate 
-> root directory with no integration. Since this is not the Linux/Unix way but 
-> is the MS way which OO is emulating I do not believe that you will find any 
-> other package that will install and run in a equivalent way.Thus I believe 
-> that it may be best to find the correct SuSE package for installation. From 
-> past experience not with SuSE but other distributions if you do not you are 
-> simply asking for problems.
+> what is a piece of cake, what ball playing package did you install,
+> what box of queries did you open and so on ?
 
-	More or less, simply, I've been looking for a distribution
-that supports streaming video including editing, etc, not that I want
-the M$ route either.. It's obviously extremely complicated so I'm
-going to build on what I have already using Slackware 10.2, kernel
-2.4.31... Skirting around to other distributions to make it "simple"
-just hasn't happened.. My mind was definately made up when I tried
-yet another .rpm package that needed  25 extra dependencies, most of
-which I already had in either /lib or /usr/lib and I have no idea why
-the package didn't find them... It's moot now... <grin>
+	American slang again; very sorry... I'll try to be better in
+the future.. Can I use "cool" when talking about Linux?? <grin>
 
-	Appreciate your comments; you did confirm one big suspicion..
+	BTW; I hope it didn't come across that I was complaining about
+SuSE and/or RPM, both superb.. It's just that Open Source has made
+many things more complicated inasmuch as we are all different in the
+way we think and act..
 
+
+
+
+> Never mind, Edgar
+> 
+> -- 
+> ---------------------
+> Dr.-Ing. Edgar Alwers
+> Weinheim
+
+	You are from DE land so I must mention that five of my
+neighbours emigrated from there many years ago.. Our little
+"community" is called Birchesgarten.. I'll have to admit that we
+don't "understand" each other all of the time... <grin>
+
+	Very best regards,
+
+-- 
 
     Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
 .
