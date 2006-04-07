@@ -1,68 +1,42 @@
-From: Mac <macduineabhan@yahoo.com>
-Subject: Re: Problems with Scanner class in Blackdown JDK
-Date: Thu, 6 Apr 2006 15:05:14 -0700 (PDT)
-Message-ID: <20060406220514.42082.qmail@web37807.mail.mud.yahoo.com>
+From: Chris Largret <largret@gmail.com>
+Subject: chmod u+s confusion
+Date: Fri, 07 Apr 2006 02:41:13 -0700
+Message-ID: <1144402873.8482.14.camel@localhost>
+Reply-To: largret@gmail.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-I switched to Sun's JDK, and I'm still having the same
-problem.  What can you recommend?
+Hey,
 
-Mac
- 
-> --- Yawar Amin <yawar.amin@gmail.com> wrote:
-> 
-> > 
-> > Try Sun's JDK.
-> > 
-> > --
-> 
-> 
-> > On 4/4/06, Mac <macduineabhan@yahoo.com> wrote:
-> > > I'm currently using the most recent release of
-> the
-> > > Gentoo kernel, version 2.6.15.  The JDK I am
-> using
-> > is
-> > > Blackdown 1.4.2.03.
-> 
-> > > Basic java programs seem to compile just fine,
-> but
-> > I
-> > > have trouble whenever I try to use certain
-> import
-> > > statements, specifically with the Scanner class.
-> 
-> > For
-> > > example:
-> > >
-> > > import java.util.Scanner;
-> > >   (error message: cannot resolve symbol - class
-> > > Scanner)
-> > >
-> > > -- the same error message occurs with
-> > > import java.util.*;
-> > >
-> 
-> 
-> 
-> __________________________________________________
-> Do You Yahoo!?
-> Tired of spam?  Yahoo! Mail has the best spam
-> protection around 
-> http://mail.yahoo.com 
-> 
+I've used chmod to set suid for a file before and thought I had a good
+grasp of how it worked. Recently I've found myself trying to set it for
+a script. Here's what I see ($ denotes user account, # is root):
 
+$ echo -e '#!/bin/sh\n\nwhoami'>whoami.sh
+# chown root:root whoami.sh
+# chmod 4755 whoami.sh
+$ ./whoami.sh
+chris
+# chmod u+s `which whoami`
+$ whoami
+root
 
-__________________________________________________
-Do You Yahoo!?
-Tired of spam?  Yahoo! Mail has the best spam protection around 
-http://mail.yahoo.com 
+[Note: u+s is equivalent to 4xxx, sorry for the change-up]
+
+So... why doesn't this make whoami.sh run the 'whoami' program as root?
+It's worked for the programs whoami, and is a common mode set on
+cdrecord.
+
+Thanks for your help (and enlightenment).
+
+--
+Chris Largret <http://daga.dyndns.org>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
