@@ -1,38 +1,47 @@
-From: "Yawar Amin" <yawar.amin@gmail.com>
-Subject: Re: SuSE 10.0 and it's RPM 4.1.1??
-Date: Sat, 8 Apr 2006 15:57:06 +0800
-Message-ID: <efc7f7d00604080057m79b96ea6m28c9253192579bdf@mail.gmail.com>
-References: <20060405151039.GA1065@lnx2.kvinet.com>
-	 <200604060902.11198.sotl155360@earthlink.net>
-	 <20060407182326.GA1046@lnx2.kvinet.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Debian Sarge Install??
+Date: Sat, 8 Apr 2006 14:13:07 -0400
+Message-ID: <20060408181307.GA1328@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060407182326.GA1046@lnx2.kvinet.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-On 4/8/06, Hal MacArgle <haltec@kvinet.com> wrote:
-> > If I recall correctly RPM stands for Red Hat Package Manager which I believe
-> > is uses by Fedora/Redhat and FreeMandriva/Mandriva/Mandrake.
->
->         True AFAIK; plus others including Slackware that has the rpm
-> program but warns us that it doesn't work with all apps... Open
-> Source keeps us on our toes, eh?? Could it be with SuSe that it means
-> something like Reliable Package Manager, instead of RedHat Package
-> Manager?? Stranger things have happened.. The study of acronyms is
-> another PhD dissertation..
+Debian Sarge; two single layer DVD set bought on eBay.. Packed well
+with very nice printed labels and both mounted and read easily with
+two separate machines and DVD devices; a HP DVD-300i and Plextor
+PK-708A, both relatively new and not overworked..
 
-Believe it or not, RPM stands for RPM Package Manager.
+Tried installing, twice, on a Cyrix III/600mHz CPU; 256mB SDRAM; 8gB
+freshly partitioned HD and a c.2000 BIOS.. Both trys stalled on
+DVD#1, so I used the distributions "Check the CDRoms Integrity"
+program and both failed at different points in the run.. Thought;
+must be bad burns???
 
---
-Yawar
-Malaysia +60 (12) 918 6642
-Bangladesh +880 (174) 614 754 or +880 (2) 882 1848 or +880 (175) 003
-706 or +880 (189) 250 170
+Not wanting to complain if there is another reason I tried on another
+machine: Duron 1.3gHz CPU; 512mB SDRAM; freshly partitioned 12gB on a
+40gB HD, this one with the Plextor PK-708A device and c.2000 BIOS...
+
+DVD#1 passed the Integrity run but #2 failed at around 90% of the
+checksum run... So no install that machine either.. I got to thinking
+that I didn't want to complain to the vendor if the problem was a
+single file that I would never need anyway, but how to work around
+this; if possible??
+
+Could it be that all files must be perfect to install Debian Sarge??
+The vendor charged only pennies above what the blanks cost so can I
+really complain?? Are single layer DVD's that critical with data??
+
+TIA...
+-- 
+
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
