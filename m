@@ -1,27 +1,32 @@
 From: "Yawar Amin" <yawar.amin@gmail.com>
-Subject: Re: Problems with Scanner class in Blackdown JDK
-Date: Sat, 8 Apr 2006 15:45:56 +0800
-Message-ID: <efc7f7d00604080045r2ab6fa1bm4255e9aca88d722c@mail.gmail.com>
-References: <20060406220514.42082.qmail@web37807.mail.mud.yahoo.com>
+Subject: Re: SuSE 10.0 and it's RPM 4.1.1??
+Date: Sat, 8 Apr 2006 15:57:06 +0800
+Message-ID: <efc7f7d00604080057m79b96ea6m28c9253192579bdf@mail.gmail.com>
+References: <20060405151039.GA1065@lnx2.kvinet.com>
+	 <200604060902.11198.sotl155360@earthlink.net>
+	 <20060407182326.GA1046@lnx2.kvinet.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060406220514.42082.qmail@web37807.mail.mud.yahoo.com>
+In-Reply-To: <20060407182326.GA1046@lnx2.kvinet.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On 4/7/06, Mac <macduineabhan@yahoo.com> wrote:
-> I switched to Sun's JDK, and I'm still having the same
-> problem.  What can you recommend?
+On 4/8/06, Hal MacArgle <haltec@kvinet.com> wrote:
+> > If I recall correctly RPM stands for Red Hat Package Manager which I believe
+> > is uses by Fedora/Redhat and FreeMandriva/Mandriva/Mandrake.
 >
-> Mac
+>         True AFAIK; plus others including Slackware that has the rpm
+> program but warns us that it doesn't work with all apps... Open
+> Source keeps us on our toes, eh?? Could it be with SuSe that it means
+> something like Reliable Package Manager, instead of RedHat Package
+> Manager?? Stranger things have happened.. The study of acronyms is
+> another PhD dissertation..
 
-http://java.sun.com/j2se/1.5.0/docs/api/java/util/Scanner.html says
-java.util.Scanner has only been present in the API since version 1.5.
-You need to use the latest version of the JDK.
+Believe it or not, RPM stands for RPM Package Manager.
 
 --
 Yawar
