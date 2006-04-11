@@ -1,36 +1,53 @@
-From: cRaig <treehead@gmail.com>
-Subject: Re: SuSE 10.0 and it's RPM 4.1.1??
-Date: Mon, 10 Apr 2006 08:22:54 -0400
-Message-ID: <18846aef0604100522s49aa423ay593086fb8e589540@mail.gmail.com>
-References: <20060405151039.GA1065@lnx2.kvinet.com>
-	 <20060407182326.GA1046@lnx2.kvinet.com>
-	 <efc7f7d00604080057m79b96ea6m28c9253192579bdf@mail.gmail.com>
-	 <200604081200.09659.sotl155360@earthlink.net>
-	 <efc7f7d00604100516tb878c76wce28fc7e92e9948@mail.gmail.com>
+From: Chris Largret <largret@gmail.com>
+Subject: Re: chmod u+s confusion
+Date: Mon, 10 Apr 2006 23:28:08 -0700
+Message-ID: <1144736888.9394.56.camel@localhost>
+References: <1144402873.8482.14.camel@localhost>
+	 <200604070842.19837.david@fierbaugh.org>
+	 <1144433171.8482.21.camel@localhost>
+	 <200604071548.09870.david@fierbaugh.org>
+Reply-To: largret@gmail.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <efc7f7d00604100516tb878c76wce28fc7e92e9948@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <200604071548.09870.david@fierbaugh.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: David Fierbaugh <david@fierbaugh.org>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-On 4/10/06, Yawar Amin <yawar.amin@gmail.com> wrote:
-> That may well be, but according to
-> http://www.redhat.com/docs/manuals/linux/RHL-9-Manual/custom-guide/ch-rpm.html,
-> RPM stands for RPM Package Manager.
+On Fri, 2006-04-07 at 15:48 +0000, David Fierbaugh wrote:
+> I would look at permissions of the folder you're trying to create the file in. 
+> That seems like the likely candidate.
+> 
+> Can your script append to a file if it already exists? Should be a small 
+> change to the code to do this, and might help diagnose the problem.
 
-;that's funny, because an earlier version manual [0] on the same sites says:
+Found the answer on linuxsecurity.com
+(http://www.linuxsecurity.com/content/view/119415/49/)
 
-"Red Hat Package Manager (RPM), is an open packaging system available
-for anyone to use, and works on both Red Hat Linux as well as other
-Linux and UNIX systems."
+Any program that is set to run with the same privileges as its user can
+be a huge security hole, so the kernel programmers have set out to
+alleviate this threat a little. From my own tests, it appears to be
+impossible to run a shell script (or any program through a system()
+call) except as the user who is running the program/script. Any commands
+processed by a prompt have their privileges downgraded to the executing
+user.
 
-[0] http://www.redhat.com/docs/manuals/linux/RHL-5.0-Manual/user-guide/doc059.html
+I had tried my suid test with SH and Perl scripts as well as with a
+quick C program. The Perl script and C program both used a system() call
+to run "whoami" (in order to verify if the UID had changed due to the
+use of SUID). The use of the system() call was forced to run as the
+standard user, which gave the appearance of failure. It wasn't one.
 
-;cRaig
+The verdict: Use a compiled program and do things the right way if you
+want to set the SUID bit. Avoid system() calls (even if they are only as
+a test).
+
+--
+Chris Largret <http://daga.dyndns.org>
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
