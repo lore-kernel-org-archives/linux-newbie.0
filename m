@@ -1,58 +1,78 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Location Detection
-Date: Tue, 18 Apr 2006 19:47:41 -0700
-Message-ID: <4445A4CD.3060203@comarre.com>
-References: <200604190151.k3J1pplp004219@skyinet.net>
+From: "Curso Buscadores" <meridionalht@fullzero.com.ar>
+Subject: curso gratis para Linux-newbie
+Date: Wed, 19 Apr 2006 03:44:49 -0300
+Message-ID: <77701793.20060419034449@fullzero.com.ar>
+Reply-To: "Curso Buscadores" <meridionalht@fullzero.com.ar>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <200604190151.k3J1pplp004219@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Linux-newbie <linux-newbie@vger.kernel.org>
 
-Peter wrote:
-> Hi,
-> 
-> During the recent Winter Olympic I tried to open the videos for it offered by 
-> a website station. It was not possible, instead a site opened telling me that 
-> for whatever reasons I am not allowed access since I am not within the 
-> European area.
-> 
-> Questions:
-> 
-> How do they know where I possibly am?
+Todo propietario de un sitio web sabe que conseguir visitantes para el =
+mismo es una tarea dura, y=20
+dif=EDcil, pero important=EDsima.
+El estar bien ubicado en los buscadores es una parte fundamental de la =
+promoci=F3n de cualquier sitio=20
+web.
+Hoy en d=EDa hay tantas opciones para promover un sitio web en internet=
+, que para quien es novato en el=20
+tema, pueden crearse confusiones y desconciertos.=20
+Muchos se preguntan qu=E9 opci=F3n elegir, un alta en buscadores, un in=
+tercambio de links, alquilar=20
+banners, un resultado patrocinado, las opciones son muchas cada una con=
+ su ventaja y su=20
+desventaja.
 
-IP addresses are assigned in blocks to groups called Registries that in 
-turn assign them to ISPs and others. This assignment process has a 
-regional component, so the IP address you were trying to connect from 
-might be associated with the Philippines.
+Por =E9sa raz=F3n, y para asesorar a nuestros clientes hemos creado un =
+curso gratuito de 12 lecciones=20
+que le ense=F1a al propietario de un sitio web las mejores opciones par=
+a promover su sitio mediante los=20
+buscadores de internet.=20
+Este curso se dise=F1=F3 originalmente en forma exclusiva para nuestros=
+ clientes, pero en esta ocasi=F3n, y=20
+por tiempo limitado, le damos a usted la posibilidad de tomarlo, es tot=
+almente gratuito.
 
-The raw (and not very informative) list of address assignments is at
+Este curso gratuito consta de 12 lecciones, que le ser=E1n enviadas por=
+ e-mail, una al d=EDa.=20
+Cada lecci=F3n trata en un lenguaje ameno y simple, un tema en particul=
+ar.
 
-	http://www.iana.org/assignments/ipv4-address-space
+Este curso le ense=F1ar=E1 sobre las diversas opciones actualmente disp=
+onibles en el mercado de=20
+promoci=F3n mediante internet
 
-Other pages at the IANA site may also be fo interest to you, so look 
-around a bit.
+Si usted est=E1 interesado en aprovechar al m=E1ximo las opciones que l=
+e dan los diferentes m=E9todos de=20
+promoci=F3n en internet, en especial el alta en buscadores, sus variant=
+es, y sus complementos, no=20
+puede dejar pasar esta oportunidad.=20
+Cupo limitado a los 100 primeros suscriptos.
 
-This is just a guess, of course.
+Para suscribirse al curso env=EDe un e-mail en blanco a la casilla de c=
+orreo supercurso@fullzero.com.ar
+MUY IMPORTANTE > PARA QUE LA SUSCRIPCI=D3N AL CURSO SEA EXITOSA DEBE CO=
+LOCAR EN=20
+EL ASUNTO DEL E-MAIL QUE ENV=CDA LA PALABRA "SUSCRIBIR".=20
+Esto es muy importante, ya que si no coloca la palabra "SUSCRIBIR" en e=
+l asunto o subjet del e-mail=20
+que env=EDa no recibir=E1 el curso.
+la suscripcion de sealiza UNICAMENTE DE LA FORMA ANTEDICHA >> NO (no) E=
+S=20
+RESPONDIENDO ESTE EMAIL
 
-> 
-> Can that be overridden and how?
+Si conoce a alguien que est=E9 interesado en este tema, por favor reenv=
+=EDele este e-mail.
 
-If my guess is right, not easily. The only workaround I can immediately 
-think of is to find a proxy server in Europe that will let you proxy 
-through it ... either a public proxy server, if any such thung exists, 
-or a friend who will let you proxy through his site. (One of the 
-companies I work with has, occasionally, run this sort of off-site 
-proxy, but only for product testing purposes, so that wouldn't help you. 
-It is how I know that proxy servers can be used that way.)
+Gracias
 
-> Thanks & regards
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
