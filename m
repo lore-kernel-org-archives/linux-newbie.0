@@ -1,29 +1,76 @@
-From: " Arthur" <fuwtag@caller.com>
-Subject: Save On ED Prescriptions!
-Date: Fri, 21 Apr 2006 10:07:21 -0500
-Message-ID: <084p489c.5507669__45077.417654875$1145628490$gmane$org@caller.com>
+From: "Arijit Das" <arijit79@gmail.com>
+Subject: A tough C construct in Linux Kernel's implementation
+Date: Mon, 24 Apr 2006 10:54:25 +0530
+Message-ID: <5f3d30900604232224h22e80541p8095c473abc82d9@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-net@vger.kernel.org, linux-newbie@vger.kernel.org, linux-ppp@vger.kernel.org, linux-raid@vger.kernel.org, linux-scsi@vger.kernel.org, linux-serial@vger.kernel.org, linux-sound@vger.kernel.org, linux-tape@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+I thought that I am very good at C until yesterday when I was browsing
+thorugh the list_head data structure's implementation in Linux Kernel
+2.6.10 and found that the following code:
 
+#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
 
-How are you
+is returning the "Offset of a Memeber inside a struct/class Type". I
+didn't logically understand how is that happenning...:-(
 
-You can order top quanlity 
+I expect the outcome of &((TYPE *)0)->MEMBER to be the address of the
+member 'MEMBER' of type 'TYPE'. Now, how does that address becomes
+offset has totally gone out of my understanding...
 
-C:ALIS and V:AGRA direct from us. 
+Any help is highly appreciated. What am I missing...?
 
-http://sgahj2a8yqt8gqf7lf2kvpk2vpkkk.amniotemk.com/?uighjf
+Thanks,
+Arijit
 
+Here is a small implemetation showing what I just said:
 
+myhost> cat test.c
+#include <stdio.h>
 
+#if 0
+/**
+ * This is how it is used in Linux kernel.
+ */
+#define container_of(ptr, type, member) ({                      \
+        const typeof( ((type *)0)->member ) *__mptr = (ptr);    \
+        (type *)( (char *)__mptr - offsetof(type,member) );})
+#endif
 
-g7890hbhghjkj
+#define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
+
+typedef struct list_head {
+	struct list_head *next, *prev;
+} list_head_t;
+
+typedef struct TypeName {
+	int i;
+	float f;
+	long l;
+	char c;
+	list_head_t list;
+	double d;
+} TypeName_t;
+
+int main()
+{
+	int offset = offsetof(TypeName_t, list);
+	
+        printf("Offset = %d\n\n", offset);
+	return 0;
+}
+
+myhost> gcc test.c
+myhost> ./a.out
+Offset = 16
+
+myhost>
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
