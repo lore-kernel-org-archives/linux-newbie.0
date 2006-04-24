@@ -1,57 +1,83 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Re: A tough C construct in Linux Kernel's implementation
-Date: Mon, 24 Apr 2006 11:22:37 +0530
-Message-ID: <b115cb5f0604232252y7469b578vd3dac1c370a2c0a4@mail.gmail.com>
-References: <5f3d30900604232224h22e80541p8095c473abc82d9@mail.gmail.com>
+From: Kari Hurtta <hurtta+linux-newbie@leija.mh.fmi.fi>
+Subject: Re: chmod u+s confusion
+Date: Mon, 24 Apr 2006 16:48:13 +0300 (EEST)
+Message-ID: <200604241348.k3ODmDej009155@leija.fmi.fi>
+References: <1144402873.8482.14.camel@localhost>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <5f3d30900604232224h22e80541p8095c473abc82d9@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <1144402873.8482.14.camel@localhost>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Arijit Das <arijit79@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: largret@gmail.com
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
->
-> #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER)
->
-> is returning the "Offset of a Memeber inside a struct/class Type". I
-> didn't logically understand how is that happenning...:-(
->
-> I expect the outcome of &((TYPE *)0)->MEMBER to be the address of the
-> member 'MEMBER' of type 'TYPE'. Now, how does that address becomes
-> offset has totally gone out of my understanding...
->
+> Hey,
+> 
+> I've used chmod to set suid for a file before and thought I had a good
+> grasp of how it worked. Recently I've found myself trying to set it for
+> a script. Here's what I see ($ denotes user account, # is root):
+> 
+> $ echo -e '#!/bin/sh\n\nwhoami'>whoami.sh
+> # chown root:root whoami.sh
+> # chmod 4755 whoami.sh
+> $ ./whoami.sh
+> chris
+> # chmod u+s `which whoami`
+> $ whoami
+> root
+> 
+> [Note: u+s is equivalent to 4xxx, sorry for the change-up]
+> 
+> So... why doesn't this make whoami.sh run the 'whoami' program as root?
+> It's worked for the programs whoami, and is a common mode set on
+> cdrecord.
+> 
+> Thanks for your help (and enlightenment).
+> 
 
-You are right ... &((TYPE *)0)->MEMBER is the address of member
-"MEMBER" of type "TYPE". But consider that the (base) address of the
-structure of type "TYPE" is NULL (0) as shown in above expression, and
-hence the address of "MEMBER" is nothing but the offset.
+Bash (/bin/sh) may be own check if it is run on root.
 
-An example:
+But there is also another problem with running setuid scripts.
 
-Say you have:
+It is following:
 
-struct student {
-  int roll no;
-  int age;
-}
+Lets assume that script is  named as "Script"
 
-if you write offsetof(student, age), it converts to:
+and file Script have first line
 
-((size_t) &((student *)0)->age)
+#!/bin/interpreter
 
-= ((size_t) &((student*)NULL)->age)
 
-= ((size_t) 4 )    (Considering int = 4 bytes)
+When kernel gets execve("Script", ... ) system call, it check what
+loader it should use. When program start with #! kernel instead
+runs program given on that line and giving script file name as argument.
+So it is like
+	/bin/interpreter Script
 
-=4 = offset
+is called.
 
-Regards,
 
-Rajat
+Now there is problem (perhaps also other problems). If Script
+is replaces with another file between /bin/interpreter is started
+and when  /bin/interprete opens file given as argument, then
+/bin/interpreter is opened and interpreting wrong file.
+
+This is specially problem if Script is setuid root. Then /bin/interpreter
+is execured as root.  Then it is better that file, what /bin/interpreter
+is opened, is same than for which kernel started /bin/interpreter as root.
+
+
+I do not know how linux hanles that. My impression that many systems
+do not honor setuid bit on scripts because of this.
+
+
+/ Kari Hurtta
+
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
