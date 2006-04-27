@@ -1,83 +1,57 @@
-From: Kari Hurtta <hurtta+linux-newbie@leija.mh.fmi.fi>
-Subject: Re: chmod u+s confusion
-Date: Mon, 24 Apr 2006 16:48:13 +0300 (EEST)
-Message-ID: <200604241348.k3ODmDej009155@leija.fmi.fi>
-References: <1144402873.8482.14.camel@localhost>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Fedora core 4 and Totem Media Player??
+Date: Thu, 27 Apr 2006 16:04:18 -0400
+Message-ID: <20060427200418.GA1963@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1144402873.8482.14.camel@localhost>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: largret@gmail.com
-Cc: linux-newbie <linux-newbie@vger.kernel.org>
-
-> Hey,
-> 
-> I've used chmod to set suid for a file before and thought I had a good
-> grasp of how it worked. Recently I've found myself trying to set it for
-> a script. Here's what I see ($ denotes user account, # is root):
-> 
-> $ echo -e '#!/bin/sh\n\nwhoami'>whoami.sh
-> # chown root:root whoami.sh
-> # chmod 4755 whoami.sh
-> $ ./whoami.sh
-> chris
-> # chmod u+s `which whoami`
-> $ whoami
-> root
-> 
-> [Note: u+s is equivalent to 4xxx, sorry for the change-up]
-> 
-> So... why doesn't this make whoami.sh run the 'whoami' program as root?
-> It's worked for the programs whoami, and is a common mode set on
-> cdrecord.
-> 
-> Thanks for your help (and enlightenment).
-> 
-
-Bash (/bin/sh) may be own check if it is run on root.
-
-But there is also another problem with running setuid scripts.
-
-It is following:
-
-Lets assume that script is  named as "Script"
-
-and file Script have first line
-
-#!/bin/interpreter
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
 
-When kernel gets execve("Script", ... ) system call, it check what
-loader it should use. When program start with #! kernel instead
-runs program given on that line and giving script file name as argument.
-So it is like
-	/bin/interpreter Script
+Greetings am in trouble again researching media playing..
 
-is called.
+Fedora core 4, default desktop install that includes the totem media
+player launchable from one of the pull down menus..
 
+Plays a selected known good avi file/s/ to test and the screen looks
+like a fractal display with coloured lights and circular swatches of
+colour that resembles a circular saw... (Audio is fine)
 
-Now there is problem (perhaps also other problems). If Script
-is replaces with another file between /bin/interpreter is started
-and when  /bin/interprete opens file given as argument, then
-/bin/interpreter is opened and interpreting wrong file.
+The docs say that totem is a front end for xine but I don't see xine
+anywhere in the apps... A Web lookup said to use totem-xine, but
+that's not in evidence either in the installation or installation
+DVD... I can only conclude that xine is included with the default
+totem package.. Nothing I do seems to change anything..
 
-This is specially problem if Script is setuid root. Then /bin/interpreter
-is execured as root.  Then it is better that file, what /bin/interpreter
-is opened, is same than for which kernel started /bin/interpreter as root.
+I invoked totem from a terminal command line and got the following
+report that I don't understand.. Running that started the viewing
+window and ran the avi file just like a mouse click:
 
+------------------------------------------------------------------------------
 
-I do not know how linux hanles that. My impression that many systems
-do not honor setuid bit on scripts because of this.
+(totem:4011): GLib-GObject-WARNING **: gsignal.c:1719: signal
+** `got-redirect' is invalid for instance `0x9b84e90'
+ Message: don't ** know how to handle EMPTY
+------------------------------------------------------------------------------
 
+I found several sites on the web with a totem version earlier than
+the one bundled, all for Fedora core 3, not 4...
 
-/ Kari Hurtta
+I invoked ldd totem and found no missing dependencies... I'm stuck..
+<g>
 
+Any suggestions or words of wisdom?? TIA.. (I was so happy with CLI
+for so many years.) <grin>
 
+-- 
 
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
