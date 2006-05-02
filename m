@@ -1,7 +1,7 @@
 From: Peter <heisspf@skyinet.net>
 Subject: Re: Fedora core 4 and Totem Media Player??
-Date: Tue, 02 May 2006 11:09:06 +0800
-Message-ID: <200605020309.k42396PF004255@skyinet.net>
+Date: Tue, 02 May 2006 11:12:08 +0800
+Message-ID: <200605020312.k423C8qq004283@skyinet.net>
 References: <20060501143032.GA1208@lnx2.kvinet.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -32,6 +32,8 @@ In Fedora4: totem-1.0.2-1.i386.rpm
 Regards
 -- 
 Peter
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
