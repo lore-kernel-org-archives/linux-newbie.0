@@ -1,35 +1,38 @@
-From: "Ellen Jackson" <arnold.kerncas@gmail.com>
-Subject: Logos, letterheads, business cards, envelops (ID23943651)
-Date: Fri, 5 May 2006 21:43:41 -0100
-Message-ID: <200605051943.k45Jh3A1009390__18530.1749072552$1146858221$gmane$org@zeus1.kernel.org>
+From: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Subject: New Linux & GPL isuues
+Date: Fri, 12 May 2006 12:33:25 +0530
+Message-ID: <AF63F67E8D577C4390B25443CBE3B9F70927A1@esnmail.esntechnologies.co.in>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-net@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-au7
+Dear All,
 
-Our art team creates a custom logo for you, based on your needs.  Years of experience have taught us how to create a logo that makes a statement that is unique to you.
+I am planning to use a module in my Open Source project GPL claimed
+module.
+I have to buy it from the customer.
 
-In a professional manner we learn about your image and how you would like the world to perceive you and your company.  With this information we then create a logo that is not only unique but reflects the purpose of you and your company.
+The module is so build that it has 2 object files:
+One object file will be provided with the source code which registers
+itself to the kernel char driver interface and uses them.
+The Second object file contains the proprietary code of the
+manufacturer.
+They build it this way and create a .ko file by linking them.
+Later I can load this module into a running kernel module.
 
-For value and a logo that reflects your image, take a few minutes and visit Logo Maker!
+If this is the case, the second object file is not open source.
+Can you please elaborate on this and let me know if I can use this in my
+GPL based project.
 
-http://accredit.info.logotip-marke.com
-
-Sincerely,
-Logo Design Team
- 
-
+Regards,
+Mukund Jampala
 
 
-
-
-
- contemptible cuisine brotherhood
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
