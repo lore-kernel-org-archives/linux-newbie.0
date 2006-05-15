@@ -1,34 +1,29 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: reason for code like this: "do { something } while (0)"
-Date: Mon, 15 May 2006 15:18:41 +0530
-Message-ID: <b115cb5f0605150248s1444b7c1wf43a1517eb96130e@mail.gmail.com>
+From: "Anupam Kapoor" <anupam.kapoor@gmail.com>
+Subject: Re: reason for code like this: "do { something } while (0)"
+Date: Mon, 15 May 2006 15:41:14 +0530
+Message-ID: <e3177630605150311y3937438fv419d5fa2d7346a5@mail.gmail.com>
+References: <b115cb5f0605150248s1444b7c1wf43a1517eb96130e@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <b115cb5f0605150248s1444b7c1wf43a1517eb96130e@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Hi,
+> What is the reason to use do while loop if it is only meant to be
+> executed just once? Why not a simple:
 
-I'm asking a pretty amateur question.
+look at kernelnewbies faq/google/search the archives for this list.
 
-I've come accross code like this huge number of times in the kernel:
+anupam
 
-#define __set_task_state(tsk, state_value)              \
-        do { (tsk)->state = (state_value); } while (0)
-
-What is the reason to use do while loop if it is only meant to be
-executed just once? Why not a simple:
-
-#define __set_task_state(tsk, state_value)              \
-        { (tsk)->state = (state_value); }
-
-TIA,
-
-Rajat
+-- 
+In the beginning was the lambda, and the lambda was with Emacs, and
+Emacs was the lambda.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
