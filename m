@@ -1,65 +1,34 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: RE: New Linux & GPL isuues
-Date: Fri, 12 May 2006 19:37:34 +0530
-Message-ID: <AF63F67E8D577C4390B25443CBE3B9F709283C@esnmail.esntechnologies.co.in>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: reason for code like this: "do { something } while (0)"
+Date: Mon, 15 May 2006 15:18:41 +0530
+Message-ID: <b115cb5f0605150248s1444b7c1wf43a1517eb96130e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Kari Hurtta <hurtta+linux-newbie@leija.mh.fmi.fi>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Dear Kari,
+Hi,
 
->You can not distribute resulting binary.
+I'm asking a pretty amateur question.
 
-But how are they distributing the driver modules.
-Is it valid from the module distributor point of view?
+I've come accross code like this huge number of times in the kernel:
 
-Can some one distribute it so?
+#define __set_task_state(tsk, state_value)              \
+        do { (tsk)->state = (state_value); } while (0)
 
-Regards,
-Mukund Jampala
+What is the reason to use do while loop if it is only meant to be
+executed just once? Why not a simple:
 
+#define __set_task_state(tsk, state_value)              \
+        { (tsk)->state = (state_value); }
 
->> I am planning to use a module in my Open Source project GPL claimed
->> module.
->> I have to buy it from the customer.
->>
->> The module is so build that it has 2 object files:
->> One object file will be provided with the source code which registers
->> itself to the kernel char driver interface and uses them.
->> The Second object file contains the proprietary code of the
->> manufacturer.
->> They build it this way and create a .ko file by linking them.
->> Later I can load this module into a running kernel module.
->>
->> If this is the case, the second object file is not open source.
->> Can you please elaborate on this and let me know if I can use this in
-my
->> GPL based project.
->
->You can not distribute resulting binary.
->
->> Regards,
->> Mukund Jampala
->>
->
->/ Kari Hurtta
->
->
->>
->> -
->> To unsubscribe from this list: send the line "unsubscribe
-linux-newbie"
->in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at http://www.linux-learn.org/faqs
->>
+TIA,
+
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
