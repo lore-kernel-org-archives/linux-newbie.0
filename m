@@ -1,35 +1,28 @@
 From: Andrew <ald2@arrakis.es>
-Subject: scsi hd
-Date: Mon, 15 May 2006 21:00:36 +0200
-Message-ID: <4468CFD4.6090202@arrakis.es>
+Subject: Re: scsi hd
+Date: Thu, 18 May 2006 05:34:11 +0200
+Message-ID: <446BEB33.1080209@arrakis.es>
+References: <4468CFD4.6090202@arrakis.es> <20060517125727.GA1076@lnx2.kvinet.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20060517125727.GA1076@lnx2.kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-I am trying to install an scsi hd (IBM DDRS 34560) on a P4 runnning 
-Slackware 10.2 / 2.6.13. The hd came out of a pII/300 I found and which 
-worked perfectly once I changed the ram. At the moment it has an ntfs 
-system on it.
+Hal MacArgle wrote:
 
-The scsi adaptor it was attached to is an Adaptec AHA-2940U/UW/D / 
-AIC-7881U. I think the right module is the aha152x.
-
-CONFIG_SCSI = y
-
-I don't know what else I need configured.
-
-The aha152x module loads without errors. Where do I go from here? 
-/proc/scsi/scsi does not list any devices. Presumably I am missing one 
-or more steps.
-
-TIA,
+>	I've seen no replies on the list so:
+>
+>Have you tried modprobe aic7xxx??
+>
+>  
+>
+You, sir, are a genius. I thank you.
 
 Andrew
-
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
