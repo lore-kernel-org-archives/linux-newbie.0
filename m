@@ -1,26 +1,27 @@
 From: Andrew <ald2@arrakis.es>
-Subject: Re: scsi hd
-Date: Thu, 18 May 2006 05:34:11 +0200
-Message-ID: <446BEB33.1080209@arrakis.es>
-References: <4468CFD4.6090202@arrakis.es> <20060517125727.GA1076@lnx2.kvinet.com>
+Subject: scsi hdparm
+Date: Thu, 18 May 2006 06:06:16 +0200
+Message-ID: <446BF2B8.4090201@arrakis.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060517125727.GA1076@lnx2.kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hal MacArgle wrote:
+My SCSI hd (DDRS 34560) is described by Hitachi as
 
->	I've seen no replies on the list so:
->
->Have you tried modprobe aic7xxx??
->
->  
->
-You, sir, are a genius. I thank you.
+7200 RPM
+'read seek time' 7.5ms
+
+My IDE hd (ST320410A, ATA) is described by Seagate as
+
+5400 RPM
+'average read time' 9.9ms
+
+But hdparm -tT reports slower speeds for the scsi. Does this make sense? 
+Are my dreams of improved video performance shattered?
 
 Andrew
 -
