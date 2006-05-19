@@ -1,29 +1,81 @@
-From: Andrew <ald2@arrakis.es>
-Subject: scsi hdparm
-Date: Thu, 18 May 2006 06:06:16 +0200
-Message-ID: <446BF2B8.4090201@arrakis.es>
+From: Kari Hurtta <hurtta+linux-newbie@leija.mh.fmi.fi>
+Subject: Re: New Linux & GPL isuues
+Date: Fri, 19 May 2006 16:35:31 +0300 (EEST)
+Message-ID: <200605191335.k4JDZVoU027930@leija.fmi.fi>
+References: <AF63F67E8D577C4390B25443CBE3B9F709283C@esnmail.esntechnologies.co.in>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <AF63F67E8D577C4390B25443CBE3B9F709283C@esnmail.esntechnologies.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Cc: linux-newbie@vger.kernel.org
 
-My SCSI hd (DDRS 34560) is described by Hitachi as
+> Dear Kari,
+> 
+> >You can not distribute resulting binary.
+> 
+> But how are they distributing the driver modules.
+> Is it valid from the module distributor point of view?
+> 
+> Can some one distribute it so?
+> 
+> Regards,
+> Mukund Jampala
 
-7200 RPM
-'read seek time' 7.5ms
+What is "they" on here ?
 
-My IDE hd (ST320410A, ATA) is described by Seagate as
+If module is derivate of linux kernel (as copyright is considered),
+then GPL apply.  (Actually you need license from copyright holders of
+linux kernel and on that case that license is GPL.)
 
-5400 RPM
-'average read time' 9.9ms
+What is derivate then you (or "they") better ask from laywyers (in all 
+countries to where you (or "they") distributing module.)
 
-But hdparm -tT reports slower speeds for the scsi. Does this make sense? 
-Are my dreams of improved video performance shattered?
 
-Andrew
+> >> I am planning to use a module in my Open Source project GPL claimed
+> >> module.
+> >> I have to buy it from the customer.
+> >>
+> >> The module is so build that it has 2 object files:
+> >> One object file will be provided with the source code which registers
+> >> itself to the kernel char driver interface and uses them.
+> >> The Second object file contains the proprietary code of the
+> >> manufacturer.
+> >> They build it this way and create a .ko file by linking them.
+> >> Later I can load this module into a running kernel module.
+> >>
+> >> If this is the case, the second object file is not open source.
+> >> Can you please elaborate on this and let me know if I can use this in
+> my
+> >> GPL based project.
+> >
+> >You can not distribute resulting binary.
+> >
+> >> Regards,
+> >> Mukund Jampala
+> >>
+> >
+> >/ Kari Hurtta
+> >
+> >
+> >>
+> >> -
+> >> To unsubscribe from this list: send the line "unsubscribe
+> linux-newbie"
+> >in
+> >> the body of a message to majordomo@vger.kernel.org
+> >> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> >> Please read the FAQ at http://www.linux-learn.org/faqs
+> >>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
