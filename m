@@ -1,81 +1,29 @@
-From: Kari Hurtta <hurtta+linux-newbie@leija.mh.fmi.fi>
-Subject: Re: New Linux & GPL isuues
-Date: Fri, 19 May 2006 16:35:31 +0300 (EEST)
-Message-ID: <200605191335.k4JDZVoU027930@leija.fmi.fi>
-References: <AF63F67E8D577C4390B25443CBE3B9F709283C@esnmail.esntechnologies.co.in>
+From: "Lucas Bellamy" <xdcidzenmu@yahoo.com>
+Subject: Woww..8o-% 0ff Linux-net
+Date: Mon, 22 May 2006 06:54:25 -0400
+Message-ID: <8A167EE3.7684.2215C2D5__2302.28332006863$1148234631$gmane$org@localhost>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <AF63F67E8D577C4390B25443CBE3B9F709283C@esnmail.esntechnologies.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Cc: linux-newbie@vger.kernel.org
-
-> Dear Kari,
-> 
-> >You can not distribute resulting binary.
-> 
-> But how are they distributing the driver modules.
-> Is it valid from the module distributor point of view?
-> 
-> Can some one distribute it so?
-> 
-> Regards,
-> Mukund Jampala
-
-What is "they" on here ?
-
-If module is derivate of linux kernel (as copyright is considered),
-then GPL apply.  (Actually you need license from copyright holders of
-linux kernel and on that case that license is GPL.)
-
-What is derivate then you (or "they") better ask from laywyers (in all 
-countries to where you (or "they") distributing module.)
+Content-Transfer-Encoding: 7bit
+To: linux-net@vger.kernel.org, linux-newbie@vger.kernel.org, linux-ppp@vger.kernel.org, linux-raid@vger.kernel.org, linux-scsi@vger.kernel.org
 
 
-> >> I am planning to use a module in my Open Source project GPL claimed
-> >> module.
-> >> I have to buy it from the customer.
-> >>
-> >> The module is so build that it has 2 object files:
-> >> One object file will be provided with the source code which registers
-> >> itself to the kernel char driver interface and uses them.
-> >> The Second object file contains the proprietary code of the
-> >> manufacturer.
-> >> They build it this way and create a .ko file by linking them.
-> >> Later I can load this module into a running kernel module.
-> >>
-> >> If this is the case, the second object file is not open source.
-> >> Can you please elaborate on this and let me know if I can use this in
-> my
-> >> GPL based project.
-> >
-> >You can not distribute resulting binary.
-> >
-> >> Regards,
-> >> Mukund Jampala
-> >>
-> >
-> >/ Kari Hurtta
-> >
-> >
-> >>
-> >> -
-> >> To unsubscribe from this list: send the line "unsubscribe
-> linux-newbie"
-> >in
-> >> the body of a message to majordomo@vger.kernel.org
-> >> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> >> Please read the FAQ at http://www.linux-learn.org/faqs
-> >>
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+
+
+The most complete W@tch C0llection Online
+We carry all major Br@ands at bargain price
+R0LEX, BV1gAri, C@RT1ER, 0mega , Ch0p@rD 
+Fr@nck Muller and Vacheron C0nstatin ETC ....many m0re!
+SatiisfactIon Gua ranteeed
+
+http://limuoz.com
+
+
+lES
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
