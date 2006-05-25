@@ -1,51 +1,51 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: How many times to "request_irq" when handling multiple devices
-Date: Thu, 25 May 2006 15:24:07 +0530
-Message-ID: <b115cb5f0605250254s10c530b6yd43ab455ad6bc2b7@mail.gmail.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Video Editing- Basics-Digital??
+Date: Thu, 25 May 2006 11:36:31 -0400
+Message-ID: <20060525153631.GA1296@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi list,
 
-This is regarding the "request_irq" function to install the interrupt handler.
+I've spent hours on the Web trying to find a few "simple" glossary or
+digital video editing questions I have.. Maybe someone on the list
+has the answers off the top of their head?
 
-int request_irq (unsigned int irq,
-                       irqreturn_t (*handler)(int, void *, struct pt_regs *),
-                       unsigned long irq_flags, const char * devname,
-                       void *dev_id)
+1.	When talking about "scenes," could that be the same as a
+file? In other words, are scenes loaded from a single file? Would,
+typically, foo.avi, loaded into an editor be considered a single
+"scene," no matter that it actually contains many scenes as they
+would be called in regular movies..
 
-As per my understanding, if my driver is to handle 2 (or more)
-instances of the same device (and the devices will be sharing the same
-interrupt line), then I have the following options:
+2.	I use xawtv to grab "clips" from tape that defaults to an
+.avi file that multiplexes the pictures and audio into one file..
+These clips can be converted to an .aob file that my editor, LVE, can
+view... My questions is: Can I edit a file as .vob /or/ do I have to
+further convert to separate picture and audio to edit; first the
+video, then the audio in order to get it into sync?? In other words:
+Do video editors require editing separately /or/ can they, maybe only
+some, edit the multiplexed files retaining sync? I doubt it, but
+don't really know..
 
-1) Eaither I call request_irq() once for each device during device
-initialization, and in each call pass a different dev_id paremeter to
-identify the particular device. This way, my handler would be
-registered multiple times with the same irq line and hence whenever
-any one of the devices raises an interrupt, my handler would be called
-n number of times. I have to determine which device actually
-interrupted and service it.
+3.	Looking for a "good" video editing textbook I see many but
+most descriptions are glitz rather than information.. Might there be
+one that is technical and doesn't spend the entire text telling you
+how to, typically, hold a camera, etc. <grin> In our rural area we
+don't even have a book store to check.. Our Library has very limited
+funds for specialised stuff like this.. <grin>
 
-2) OR, I register my handler just once during driver initialization
-and pass no dev_id. So when any of the devices raises the interrupt,
-my handler will be called only once and I have to again find out which
-device interrupted and service it.
+Appreciate; TIA for any input..
 
-My doubts:
+-- 
 
-1) Is my understanding coorect? Will both of the options work fine?
-2) How do drivers do it?
-3) Isn't approach 2 better than approach 1?
-
-TIA,
-
-Rajat
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
