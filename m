@@ -1,42 +1,55 @@
-From: Eric Bambach <eric@cisu.net>
-Subject: Re: head command with make in bash shell
-Date: Mon, 29 May 2006 21:12:47 -0500
-Message-ID: <200605292112.47219.eric@cisu.net>
-References: <4479858C.5090601@laposte.net> <447985ED.7060904@laposte.net>
+From: chuck gelm <chuck@gelm.net>
+Subject: Re: Symlink to Modem Vanishes
+Date: Wed, 31 May 2006 14:17:17 -0400
+Message-ID: <447DDDAD.3080804@gelm.net>
+References: <200605300100.k4U10pbg003990@skyinet.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <447985ED.7060904@laposte.net>
-Content-Disposition: inline
+In-Reply-To: <200605300100.k4U10pbg003990@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: ali shahrokni <ali.shahrokni@laposte.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: heisspf@skyinet.net
+Cc: linux <linux-newbie@vger.kernel.org>
 
-Hi,
+Peter wrote:
 
-	Try saving the output to a file then analyzing it.
+>Hi,
+>
+>Slackware 10.2 kernel 2.6.16
+>
+>Why is it that the symlink /dev/modem to /dev/ttyS0 is gone when machine is 
+>halted and has to be made again after rebooting?
+>
+>I do not know when this started, definitely it did not happen before I got my 
+>broadband connection a little over a year ago.
+>
+>Thanks & regards
+>  
+>
+Hi, Peter:
 
-make &> output.txt; head output.txt
+...because it is removed during a boot?
 
-On Sunday 28 May 2006 06:13, ali shahrokni wrote:
-> Hello,
-> Could anyone tell me how I can see the first part of the "make" command
-> log using "head" in a bash shell?!
-> i.e. what is the bash equivalent of the csh " make | & head " command?
-> thanks,
-> Ali
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Edit /etc/rc.d/rc.6 and put
+ ls -l /dev/modem [> /home/modem.txt]
+ ls -l /dev/ttyS0     [> /home/ttyS0.txt]
+immediately in front of
+ 'reboot' and 'halt' to see if it is still there immediately before.
+It is a few lines from the bottom on my Slackware 10.2 - 2.4.31
 
--- 
-Thanks,
+Boot from a 'live CD' and see of the link is there to see if it is being
+removed during a boot.
 
-Eric
+-or-
+
+put "ln -s /dev/modem /dev/ttyS0" at the bottom of your /etc/rc.d/rc.local.
+(did ^                                         ^ I get that right?)
+
+HTH, Chuck
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
