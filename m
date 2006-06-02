@@ -1,42 +1,35 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: Symlink to Modem Vanishes
-Date: Fri, 02 Jun 2006 14:08:22 +0800
-Message-ID: <200606020608.k5268MoK004233@skyinet.net>
+From: chuck gelm <chuck@gelm.net>
+Subject: images -> DVD-slideshow ?
+Date: Fri, 02 Jun 2006 10:07:36 -0400
+Message-ID: <44804628.5070106@gelm.net>
+References: <200606020608.k5268MoK004233@skyinet.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200606020608.k5268MoK004233@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-slackware 10.2 kernel 2.6.16
+Howdy:
 
-heisspf@skyinet.net indirectly said:
-> What I  needed was a file named 10-local.rules placed in the /sda3/etc/udev/
-> rules.d  subdirectory. All the file needed was the line following:
+What is your suggestion for an application that will convert
+many (still) images into a DVD slideshow, perhaps with
+background music?  I've been trying to obtain image2mpeg
+with varying sucess.  I was able to get a version downloaded
+and compiled.  I created an image (stream.ppm), but there
+seems to be no mention of how to get the output file onto a DVD.
 
-> KERNEL="ttyS0", SYMLINK="modem"
+If the output DVD <image> is small, can it be placed on
+a (650-700MB) CDROM and played on a standard DVD player?
+If yes, how?  'growisofs' balks at writing to my CDROM media.
 
-> Now the modem node in the /dev directory doesn't vanish anymore.
+I am using Slackware v10.2 and understand *.tar.gz.
+I am poorer at installing *.rpm, but will try if that is the only
+offering of another application.  *.deb, I don't know.
 
-> Will try it on next reboot
-
-It does not work, NAME="/dev/ttyS0" has to be added. However doing this then 
-there are no /dev/ttyS*. Symlink /dev/modem points to a non existing file.
-
-Now I found that /dev/ttyS0 is a symlink to /dev/tts/0. So I changed 
-NAME="/dev/tts/0" with the effect that then there is no /dev/tts/0 but only 1, 
-2 and 3.
-
-Now I am totally confused and back to rc.local command, ln -s /dev/ttyS0 
-/dev/modem.
-
-Is there somebody to whom this males sense?
-
-Regards
--- 
-Peter
+Regards, Chuck
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
