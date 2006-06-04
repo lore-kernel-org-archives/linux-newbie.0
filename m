@@ -1,91 +1,85 @@
-From: chuck gelm <chuck@gelm.net>
+From: Christian Pedaschus <cpedaschus@gmx.de>
 Subject: Re: images -> DVD-slideshow ?
-Date: Sun, 04 Jun 2006 05:41:30 -0400
-Message-ID: <4482AACA.8020005@gelm.net>
-References: <200606020608.k5268MoK004233@skyinet.net> <44804628.5070106@gelm.net> <20060602154419.GA1686@lnx2.kvinet.com> <20060604075621.A26508@col7.metta.lk>
+Date: Sun, 04 Jun 2006 11:49:12 +0200
+Message-ID: <4482AC98.9030002@gmx.de>
+References: <200606020608.k5268MoK004233@skyinet.net> <44804628.5070106@gelm.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060604075621.A26508@col7.metta.lk>
+In-Reply-To: <44804628.5070106@gelm.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Bhikkhu Mettavihari <linuxmet@col7.metta.lk>
-Cc: Hal MacArgle <haltec@kvinet.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: chuck gelm <chuck@gelm.net>
+Cc: linux-newbie@vger.kernel.org
 
-Howdy, Fellows:
+chuck gelm wrote:
 
-Thanks for the hints, but 'cinelerra' is much, much more
-complex than what I want or need.  Those suggestions
-are video editors, movie editors, ...
-
- All I want to do is make a slide show of my still images
-and put them on a DVD, perhaps with background music,
-to play on a television DVD player.
-
-Again, thanks,
-Chuck
-
-Bhikkhu Mettavihari wrote:
-
->* Hal MacArgle <haltec@kvinet.com> [2006-06-04 07:40]:
->  
+> Howdy:
 >
->>On 06-02, chuck gelm wrote:
->>    
->>
->>>Howdy:
->>>
->>>What is your suggestion for an application that will convert
->>>many (still) images into a DVD slideshow, perhaps with
->>>background music?  I've been trying to obtain image2mpeg
->>>with varying sucess.  I was able to get a version downloaded
->>>and compiled.  I created an image (stream.ppm), but there
->>>seems to be no mention of how to get the output file onto a DVD.
->>>
->>>If the output DVD <image> is small, can it be placed on
->>>a (650-700MB) CDROM and played on a standard DVD player?
->>>If yes, how?  'growisofs' balks at writing to my CDROM media.
->>>
->>>I am using Slackware v10.2 and understand *.tar.gz.
->>>I am poorer at installing *.rpm, but will try if that is the only
->>>offering of another application.  *.deb, I don't know.
->>>
->>>Regards, Chuck
->>>      
->>>
->>	I haven't tried slide shows yet still stuck on editing
->>streaming video with two, partially successful, routes: Linux Video
->>Editor; http://lvempeg.sourceforge.net that compiles and installs
->>under Slack10.2, but I've not, yet, been able to figure out how to
->>actually edit videos, only preview.. It wont work with .avi files,
->>just .vob's that I've converted with videotrans' -M flag.. (You
->>discovered most that led up to this.) It, of course, requires a
->>bazillion libs that, in turn, require more libs.. <grin> LVE has a
->>DVDAuthoring-HOWTO that's interesting referring to many buzz words
->>we're now immersed in.. Of course videotrans can convert to non muxed
->>files; .mp2 and m2v..
->>
->>Another much more powerful scheme I've installed is cinelerra:
->>www.cinelerra.org
->>the heroinewarrior.com version that only installs into FedoraCore 4,
->>but includes all the deps in the 30mB rpm package.. I tried cinelerra
->>tarball but never got it working under Slack10.2.. It's world class
->>and you can do everything with it including washing dishes I think..The blurb says that
->>cinelerra is "professional."
->>
->>Cinelerra recommends Kino for blokes like me but I got nowhere with
->>it, especially since it's sort of designed for digital camera to
->>editor and back... The various codecs can drive one to drink too..
->>
->There is a list on cinelerra where you could get much info.
+> What is your suggestion for an application that will convert
+> many (still) images into a DVD slideshow, perhaps with
+> background music?  I've been trying to obtain image2mpeg
+> with varying sucess.  I was able to get a version downloaded
+> and compiled.  I created an image (stream.ppm), but there
+> seems to be no mention of how to get the output file onto a DVD.
 >
->There is a link to a slackware site on www.cinelerra.org
->It really is pro.
+> If the output DVD <image> is small, can it be placed on
+> a (650-700MB) CDROM and played on a standard DVD player?
+> If yes, how?  'growisofs' balks at writing to my CDROM media.
 >
->I will have a look at lvempeg.sf.net
->  
+> I am using Slackware v10.2 and understand *.tar.gz.
+> I am poorer at installing *.rpm, but will try if that is the only
+> offering of another application.  *.deb, I don't know.
 >
+> Regards, Chuck
+
+
+
+I once had to create the same and decided to use mplayer/mencoder, as i
+like to automate things if possible.
+
+
+As a start:
+
+#Create an uncompressed avi-file from all the PNG files in the current
+directory (fps defines the time)
+mencoder mf://*.png -mf w=800:h=600:fps=25:type=png -ovc raw -oac copy
+-o output.avi
+
+
+#Now add sound using:
+mencoder output.avi -audiofile audio.wav -oac copy -ovc copy -o
+output_waudio.avi
+
+
+#and now encode it into a dvd/svcd compliant format using:
+
+13.6.5.1. PAL DVD
+
+  mencoder -oac lavc -ovc lavc -of mpeg -mpegopts format=dvd -vf
+scale=720:576,\
+  harddup -srate 48000 -af lavcresample=48000 -lavcopts vcodec=mpeg2video:\
+  vrc_buf_size=1835:vrc_maxrate=9800:vbitrate=5000:keyint=15:acodec=ac3:\
+  abitrate=192:aspect=16/9 -ofps 25 \
+  -o movie.mpg movie.avi
+
+13.6.5.5. PAL SVCD
+
+  mencoder -oac lavc -ovc lavc -of mpeg -mpegopts format=xsvcd -vf \
+  scale=480:576,harddup -srate 44100 -af lavcresample=44100 -lavcopts \
+  vcodec=mpeg2video:mbd=2:keyint=15:vrc_buf_size=917:vrc_minrate=600:\
+  vbitrate=2500:vrc_maxrate=2500:acodec=mp2:abitrate=224 -ofps 25 \
+  -o movie.mpg movie.avi
+
+
+You need to adjust the filenames as i just copied the stuff from the
+mencoder manual, which you really should read, it's very  interesting
+and tells a lot of stuff about various video-formats.
+
+Greets, Chris
+
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
