@@ -1,7 +1,7 @@
 From: Hal MacArgle <haltec@kvinet.com>
 Subject: Re: images -> DVD-slideshow ?
-Date: Sun, 4 Jun 2006 13:23:36 -0400
-Message-ID: <20060604172336.GA1075@lnx2.kvinet.com>
+Date: Sun, 4 Jun 2006 13:10:23 -0400
+Message-ID: <20060604171023.GA1067@lnx2.kvinet.com>
 References: <200606020608.k5268MoK004233@skyinet.net> <44804628.5070106@gelm.net> <20060602154419.GA1686@lnx2.kvinet.com> <20060604075621.A26508@col7.metta.lk>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
@@ -12,48 +12,23 @@ Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Bhikkhu Mettavihari <linuxmet@col7.metta.lk>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
+> * Hal MacArgle <haltec@kvinet.com> [2006-06-04 07:40]:
 
-On 06-04, Bhikkhu Mettavihari wrote:
+> > Another much more powerful scheme I've installed is cinelerra:
+> > www.cinelerra.org
+> > the heroinewarrior.com version that only installs into FedoraCore 4,
+> > but includes all the deps in the 30mB rpm package.. I tried cinelerra
+> > tarball but never got it working under Slack10.2..
 
-> Lovely, lively,
-> It was indeed hard to get started.
-> There is a list on cinelerra where you could get much info.
-> 
-> There is a link to a slackware site on www.cinelerra.org
-> if you do "wget -r -np to that site" you should get most of the 
-> dependencies. If you have any problems please email me privately on 
-> mettavihari@gmail.com or ask on the cinelerra mailing list.
+	Update: Compiled, not without some warnings, to Slackware10.2
+with the "test26.s" kernel, rather than the default 2.4.31, that
+failed, previously..
 
-	Greetings and -- Appreciate!! Will try the above. Thanks..
-Let me get some more time with the successfully compiled tarball on
-Slackware10.2, test26.s kernel.. I'm sure I'll have some queries..
-Didn't know there was a list. Missed that.. <grin> I was able to
-fetch the 300, or so, pages of HTML docs.. Plenty of studying..
-
-
-
-
-> I will have a look at lvempeg.sf.net
-> It sounds interesting and challenging
-
-	Be __very__ interested in hearing if you are able to load a
-file into it.. I sure missed something.. Trouble is; cinelerra spoils
-one though..
-
-
-
-
-> There is also a interface for making dvd's but i have not mastered yet.
-> May be in about 1-2 weeks I should be able to help.
-
-	Burning DVD's that play on a stand alone consumer player not
-a problem as Chuck and Ray figured out a few weeks ago.. At least
-from captured .avi files, non edited..
-
-	Best,
+	So far it works very well for what I've tried and there have
+been no surprises that I experienced with FC4.. My favourite
+Slackware, to the rescue.. <grin>
 
 -- 
 
