@@ -1,34 +1,51 @@
-From: Learnlinux_2day <learnlinux_2day@yahoo.co.in>
-Subject: How to disable telnetd login authentication?
-Date: Tue, 6 Jun 2006 05:14:16 +0100 (BST)
-Message-ID: <20060606041416.3724.qmail@web8411.mail.in.yahoo.com>
+From: Peter <heisspf@skyinet.net>
+Subject: Udev Mysteries
+Date: Tue, 06 Jun 2006 12:37:48 +0800
+Message-ID: <200606060437.k564bmtw003755@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Not sure if this is the right list for this sort of a
-question..
+Hi,
 
-Is there a way to disable authentication by the
-telnetd whenever a client connects. Basically, I need
-to setup an open telnet port! Currently, the telnet
-client comes up with a login/password prompt, but I
-would like to configure the telnetd such that any
-telnet attempts/connections are always deemed as
-authenticated and automatically presents the client
-with a shell prompt.
+After udev messed with the symlink of /dev/modem I have now problems with 
+sound.
 
-I am using netkit-telnet-0.17 on a linux-2.6.11.12, on
-a custom powerpc build. No PAM is used so far.
+a) alsactl restore does not restore anymore with the initial result that in 
+skype I    could not be heard. :-(
 
--- Shiva
+b) flashplayer has not more sound.
+
+Doing google on udev skype, udev alsactl and udev flashplayer shows that I am 
+not alone, however, could not find specific answers except for alsactl which I 
+have not yet tested.
+
+To solve the problems I have to do aumix l,s manually after which I can be 
+heard on skype except I have to be closer to the mike then before the change 
+to udev.
+
+Doing 'alsactl restore' on the console has no effect just as on booting.
+
+To make flashplayer have sound I have to 'chown heisspf:root /dev/sound/dsp' 
+from root:root.
+
+It seems udev was released w/o proper testing that it really works. To do this 
+is incomprehensible for me.
+
+Any ideas how to correct these udev mysteries?
+
+Thanks & regards
 
 
-Send instant messages to your online friends http://in.messenger.yahoo.com <br><br> Stay connected with your friends even when away from PC.  Link: http://in.mobile.yahoo.com/new/messenger/  
+
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
