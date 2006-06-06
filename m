@@ -1,51 +1,34 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Udev Mysteries
-Date: Tue, 06 Jun 2006 12:37:48 +0800
-Message-ID: <200606060437.k564bmtw003755@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: Diff between Semaphore and Completion Variable
+Date: Tue, 6 Jun 2006 17:27:35 +0530
+Message-ID: <b115cb5f0606060457p440b82f3l72d038fb72bffa58@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
 Hi,
 
-After udev messed with the symlink of /dev/modem I have now problems with 
-sound.
+I would appreciate if some one could explain the difference between
+"completion" variables and the semaphores in Linux.
 
-a) alsactl restore does not restore anymore with the initial result that in 
-skype I    could not be heard. :-(
+As far as I can understand, both are used to provide synchronization
+among kernel threads. Both have similar mechanism i.e. one or more
+tasks wait on the completion variable (or semaphore) while another
+task holds it and does some work (in critical section). When the task
+holding the completion variable (or semaphore) is done, it signals the
+other task using "complete" (or "up"). This would cause the waiting
+tasks to wait up.
 
-b) flashplayer has not more sound.
+So why have two different things to do the same thing?
 
-Doing google on udev skype, udev alsactl and udev flashplayer shows that I am 
-not alone, however, could not find specific answers except for alsactl which I 
-have not yet tested.
+Thanks,
 
-To solve the problems I have to do aumix l,s manually after which I can be 
-heard on skype except I have to be closer to the mike then before the change 
-to udev.
-
-Doing 'alsactl restore' on the console has no effect just as on booting.
-
-To make flashplayer have sound I have to 'chown heisspf:root /dev/sound/dsp' 
-from root:root.
-
-It seems udev was released w/o proper testing that it really works. To do this 
-is incomprehensible for me.
-
-Any ideas how to correct these udev mysteries?
-
-Thanks & regards
-
-
-
--- 
-Peter
-
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
