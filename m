@@ -1,44 +1,36 @@
-From: Arjan van de Ven <arjan@infradead.org>
+From: "cheng long" <kevinclcn@gmail.com>
 Subject: Re: Diff between Semaphore and Completion Variable
-Date: Tue, 06 Jun 2006 21:41:22 +0200
-Message-ID: <1149622882.2951.25.camel@laptopd505.fenrus.org>
+Date: Wed, 7 Jun 2006 16:15:46 +0800
+Message-ID: <786736460606070115u5b84ccc4rf6adbec161cacb65@mail.gmail.com>
 References: <b115cb5f0606060457p440b82f3l72d038fb72bffa58@mail.gmail.com>
-Reply-To: arjan@infradead.org
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <b115cb5f0606060457p440b82f3l72d038fb72bffa58@mail.gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: Rajat Jain <rajat.noida.india@gmail.com>
 Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
-On Tue, 2006-06-06 at 17:27 +0530, Rajat Jain wrote:
-> Hi,
-> 
 > I would appreciate if some one could explain the difference between
 > "completion" variables and the semaphores in Linux.
-> 
-> As far as I can understand, both are used to provide synchronization
-> among kernel threads. Both have similar mechanism i.e. one or more
-> tasks wait on the completion variable (or semaphore) while another
-> task holds it and does some work (in critical section). When the task
-> holding the completion variable (or semaphore) is done, it signals the
-> other task using "complete" (or "up"). This would cause the waiting
-> tasks to wait up.
-> 
-> So why have two different things to do the same thing?
+1) In semaphore, there is a variable, P() first test the variable and make the
+process sleep when it equals 0. In condition variable, there is no variable,
+instead, condition is external variable defined by process. The variable
+is tested by the process itself. In another word, sleeping is explicit in
+contion variable while implicit in sempaphore.
 
-they don't do the same thing just like a hammer and a couch are two
-different things.
+2) Whether there are waiting processes, V() alway increases the variable,
+however,signal() of contition variable will do nothing when there is no waiting
+process.
 
-a completion is for doing "wait until this event is finished", while a
-semaphore (well don't use semaphores, use a mutex nowadays) is for
-providing mutual exclusion for a piece of data.
-Totally different things.
+Hope this helpful !
+Good Luck!
 
-
+Regards,
+Cheng
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
