@@ -1,31 +1,68 @@
-From: "Elke Vanhoose" <8k2zhp@asia.morningstar.com>
-Subject: [SUBSCRIPTION ALERT] Licensed US Doctors At Your Fingertips besotting launderer acceptability contrive
-Date: Wed, 07 Jun 2006 21:04:57 +0100
-Message-ID: <m5dz61clersq9xe2k@asia.morningstar.com>
+From: "Gaurav Dhiman" <gauravd.chd@gmail.com>
+Subject: Re: Diff between Semaphore and Completion Variable
+Date: Thu, 8 Jun 2006 12:56:12 +0530
+Message-ID: <d63eb2da0606080026p6a945735kc85f672564cd5dc7@mail.gmail.com>
+References: <b115cb5f0606060457p440b82f3l72d038fb72bffa58@mail.gmail.com>
+	 <1149622882.2951.25.camel@laptopd505.fenrus.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-return: allowed
+In-Reply-To: <1149622882.2951.25.camel@laptopd505.fenrus.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, linux-net@vger.kernel.org, linux-net-owner@vger.kernel.org, linux-msdos@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: arjan@infradead.org
+Cc: Rajat Jain <rajat.noida.india@gmail.com>, linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
-We take the risk out of finding a safe place to make your online medical decisions. your health, safety, and shopping experience are very important to us.
+On 6/7/06, Arjan van de Ven <arjan@infradead.org> wrote:
+> On Tue, 2006-06-06 at 17:27 +0530, Rajat Jain wrote:
+> > Hi,
+> >
+> > I would appreciate if some one could explain the difference between
+> > "completion" variables and the semaphores in Linux.
+> >
+> > As far as I can understand, both are used to provide synchronization
+> > among kernel threads. Both have similar mechanism i.e. one or more
+> > tasks wait on the completion variable (or semaphore) while another
+> > task holds it and does some work (in critical section). When the task
+> > holding the completion variable (or semaphore) is done, it signals the
+> > other task using "complete" (or "up"). This would cause the waiting
+> > tasks to wait up.
+> >
+> > So why have two different things to do the same thing?
+>
+> they don't do the same thing just like a hammer and a couch are two
+> different things.
+>
+> a completion is for doing "wait until this event is finished", while a
+> semaphore (well don't use semaphores, use a mutex nowadays) is for
+> providing mutual exclusion for a piece of data.
+> Totally different things.
 
-No prior Rx is required.
+
+Where can I find the refference to completion variables in kernel .....
+
+regards,
+Gaurav
+
+>
+>
+>
+> --
+> Kernelnewbies: Help each other learn about the Linux kernel.
+> Archive:       http://mail.nl.linux.org/kernelnewbies/
+> FAQ:           http://kernelnewbies.org/faq/
+>
+>
 
 
-Click Your Mouse Below
-value-meds.com
-
-Respectfully,
-Elke Vanhoose
-value-meds.com customer service
-
-afyesyvizv zSQOrqmqlEsixrNerzoowRVWpMIBhh
-
-hoariness mismatched forcefulness bridgeheads iced airs Alabamian abating airfield baring inferences fixating Calvary crossover desk's Moliere disassembled Ahmedabad canons mightn't bricks inquisitive Chaplin Paul Williamson advantageous launderer crossover contrive frugally alcohol magicians Ahmedabad brouhaha encouraged initials amazingly empiricists capitalizations
+-- 
+Gaurav
+Email: gauravd.chd@gmail.com
+--------------------------------------------
+Read my Linux Kernel blog at: http://lkdp.blogspot.com/
+--------------------------------------------
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
