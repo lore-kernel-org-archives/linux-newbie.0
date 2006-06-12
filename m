@@ -1,39 +1,28 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Fedora5 Kernel Panic
-Date: Mon, 12 Jun 2006 11:36:16 +0800
-Message-ID: <200606120336.k5C3aGAg004443@skyinet.net>
+From: "joy merwin monteiro" <joy.merwin@gmail.com>
+Subject: Re: Fedora5 Kernel Panic
+Date: Mon, 12 Jun 2006 03:43:14 +0000
+Message-ID: <4b0d6e0d0606112043g52f54026uc360778dcc204dac@mail.gmail.com>
+References: <200606120336.k5C3aGAg004443@skyinet.net>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <200606120336.k5C3aGAg004443@skyinet.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Peter <heisspf@skyinet.net>
+Cc: linux <linux-newbie@vger.kernel.org>
 
-Hi,
+>
+> Did somebody say Bill Gates dos not have to worry about Linux?
+>
+ he prolly does not have to worry about fedora from now on, atleast :D
 
-After I upgraded from Fedora4 to Fedora5 I ended up with kernel panic when 
-booting into it.
-
-I had media checked all 5 CDs and all were OK.
-
-Make a new install of Fedora5, same kernel panic on booting.
-
-Google 'fedora5 kernel panic', lots of kernel panic problems with no solutions 
-offered.
-
-I started Linux with RedHat 5.2 and upgraded all the way to Fedora5 which now 
-seems to be the end of my affiliation with this distro. Did not use it anyhow 
-anymore, just kept it more for nostalgic reasons.
-
-This is meant as a warning to those planing to upgrade to Fedora5, just beware.
-
-Did somebody say Bill Gates dos not have to worry about Linux?
-
-Regards
 -- 
-Peter
-
+Aham Brahma Asmi
+          -- Brihadaranyaka Upanishad, Yajur Veda
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
