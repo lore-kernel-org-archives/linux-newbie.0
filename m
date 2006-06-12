@@ -1,33 +1,38 @@
-From: chuck gelm <chuck@gelm.net>
-Subject: Re: AT&T/sbcglobal setup for Linux
-Date: Thu, 08 Jun 2006 22:44:02 -0400
-Message-ID: <4488E072.8000402@gelm.net>
-References: <W8713125225284261149787813@mail.mailsnare.net>
+From: Peter <heisspf@skyinet.net>
+Subject: Fedora5 Kernel Panic
+Date: Mon, 12 Jun 2006 11:36:16 +0800
+Message-ID: <200606120336.k5C3aGAg004443@skyinet.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <W8713125225284261149787813@mail.mailsnare.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: James Miller <jamtat@mailsnare.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-James Miller wrote:
+Hi,
 
->This is just an attempt to get some information out there about how Linux users can get and, most importantly register for, AT&T/sbcglobal's DSL service. They're running a special currently for $13/mo. The problem is the setup utility they send, that includes a registration wizard, is a Win (or Mac) program. So, once you've got your kit (DSL modem, filters, etc), how can you create/register your account so you get a uname and password for PPPoE authentication? I thought about trying to run the installation disk in a Win install in qemu, but it didn't work for me because it couldn't detect the modem through the virtual NIC. I thouhgt of WINE but, despite the fact that it's gone from alpha to beta, it's as broken on my system (Ubuntu) as any alpha release ever was. In short, I couldn't run the necessary executables under WINE. I finally managed to discover that there is an online registra
- tion procedure for new AT&T/sbcglobal DSL accounts. The routine uses alot Java, so if you wanna do this be prepared with a java-enabled browser. Once you have access to such, just go to https://sbcreg.sbcglobal.net and go through the registration procedure. Despite the fact that I was unable to complete the process owing to some glitches with their web programming (couldn't download some patch they thought I needed, and the continuation page [resume_dsl] was blank), I was still able to authenticate using the uname/passwd I had managed to enter earlier in the registration procedure. Other Linux users may run into the same problems I had, so I wanted to make this info available for them.
->
->James
->  
->
-http://www.roaringpenguin.com/penguin/open_source_rp-pppoe.php
+After I upgraded from Fedora4 to Fedora5 I ended up with kernel panic when 
+booting into it.
 
-I used an earlier version with both Earthlink and SBC DSL service.
-I now have cable modem access that uses DHCP.
+I had media checked all 5 CDs and all were OK.
 
-Chuck
+Make a new install of Fedora5, same kernel panic on booting.
 
+Google 'fedora5 kernel panic', lots of kernel panic problems with no solutions 
+offered.
+
+I started Linux with RedHat 5.2 and upgraded all the way to Fedora5 which now 
+seems to be the end of my affiliation with this distro. Did not use it anyhow 
+anymore, just kept it more for nostalgic reasons.
+
+This is meant as a warning to those planing to upgrade to Fedora5, just beware.
+
+Did somebody say Bill Gates dos not have to worry about Linux?
+
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
