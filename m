@@ -1,52 +1,45 @@
-From: "Jesper Juhl" <jesper.juhl@gmail.com>
+From: Arjan van de Ven <arjan@infradead.org>
 Subject: Re: Embedded Linux?
-Date: Thu, 22 Jun 2006 13:29:46 +0200
-Message-ID: <9a8748490606220429x47cd9aaav181b2b756149941b@mail.gmail.com>
+Date: Thu, 22 Jun 2006 12:38:11 +0200
+Message-ID: <1150972691.3120.15.camel@laptopd505.fenrus.org>
 References: <292693080606212337q61c62cb1s56307a8f00847f8a@mail.gmail.com>
+Reply-To: arjan@infradead.org
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 In-Reply-To: <292693080606212337q61c62cb1s56307a8f00847f8a@mail.gmail.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
 To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vget.kernel.org
 
-On 22/06/06, Daniel Rodrick <daniel.rodrick@gmail.com> wrote:
+On Thu, 2006-06-22 at 12:07 +0530, Daniel Rodrick wrote:
 > Hi list,
->
+> 
 > I'm a newbie, true to its every sense, and hence this question.
->
+> 
 > I have come across the term "Embedded Linux" a lot of times. Is
 > embedded linux a different branch of kernel all together? Or is it
-
-Some embedded uses of Linux use the vanilla kernel, some use highly
-modified kernels custom, some use vendor kernels. What makes a Linux
-kernel embedded is simply that it is used as such.
-
 > that the vanila stock kernel (downloaded from kernel.org) becomes
 > "Embedded Linux" when compiled for an embedded processor like ARM /
 > PPC etc?
 
-Embedded boards can be found with almost any CPU available under the
-sun. You can get embedded boards with arm/ppc/pentium/opteron/c3/sparc
-and many more. The type of CPU does not determine if something is
-embedded or not. Also, many CPU's that are often used for embedded
-projects are also used elsewhere.
-
-Simply put; if you use Linux (in whatever form with whatever hardware)
-in an embedded application/project, then it becomes "Embedded Linux" -
-simple as that.
+it's usually the same kernel (but with a stripped down .config); the
+main difference tends to be in the userspace that is used... busybox and
+ulibc and other 'smaller than normal linux' components tend to be used..
 
 
 --
-Jesper Juhl <jesper.juhl@gmail.com>
-Don't top-post  http://www.catb.org/~esr/jargon/html/T/top-post.html
-Plain text mails only, please      http://www.expita.com/nomime.html
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
+
