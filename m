@@ -1,61 +1,79 @@
-From: "Jesper Juhl" <jesper.juhl@gmail.com>
-Subject: Re: Embedded Linux?
-Date: Thu, 22 Jun 2006 13:27:57 +0200
-Message-ID: <9a8748490606220427p721dce1ep8bbf0beff98ba9b@mail.gmail.com>
-References: <292693080606212337q61c62cb1s56307a8f00847f8a@mail.gmail.com>
+From: Hal MacArgle <haltec@kvinet.com>
+Subject: Re: Lost HD Partition
+Date: Thu, 22 Jun 2006 09:58:05 -0400
+Message-ID: <20060622135804.GA1229@lnx2.kvinet.com>
+References: <449A94F1.2030308@skyinet.net>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <292693080606212337q61c62cb1s56307a8f00847f8a@mail.gmail.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+In-Reply-To: <449A94F1.2030308@skyinet.net>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vget.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Peter <heisspf@skyinet.net>
+Cc: linux-newbie@vger.kernel.org
 
-On 22/06/06, Daniel Rodrick <daniel.rodrick@gmail.com> wrote:
-> Hi list,
->
-> I'm a newbie, true to its every sense, and hence this question.
->
-> I have come across the term "Embedded Linux" a lot of times. Is
-> embedded linux a different branch of kernel all together? Or is it
+On 06-22, Peter wrote:
+> Trying Hal's suggestion:
+> 
+> /sbin/e2fsck -b 32768 /dev/hda6
+> e2fsck 1.38 (30-Jun-2005)
+> /sbin/e2fsck: Invalid argument while trying to open /dev/hda6
+> 
+> The superblock could not be read or does not describe a correct ext2
+> filesystem.  If the device is valid and it really contains an ext2
+> filesystem (and not swap or ufs or something else), then the superblock
+> is corrupt, and you might try running e2fsck with an alternate superblock:
+>    e2fsck -b 8193 <device>
+> 
+> 
+> /sbin/mke2fs -n /dev/hda6
+> 
+> mke2fs 1.38 (30-Jun-2005)
+> Filesystem label=
+> OS type: Linux
+> Block size=4096 (log=2)
+> Fragment size=4096 (log=2)
+> 244320 inodes, 487966 blocks
+> 24398 blocks (5.00%) reserved for the super user
+> First data block=0
+> 15 block groups
+> 32768 blocks per group, 32768 fragments per group
+> 16288 inodes per group
+> Superblock backups stored on blocks:
+>        32768, 98304, 163840, 229376, 294912
+> 
+> Trying these backup superblocks /sbin/e2fsck -b * /dev/hda6, I get with 
+> each: Invalid argument while trying to open /dev/hda6
+> 
+> Since apparently the superblock is corrupted and the partion has not 
+> been formated since, therefore the data should still be on the disk.
+> So what other alternate superblock can be tried?
+> Yet
+> The superblock could not be read or does not describe a correct ext2
+> filesystem.
+> 
+> It seems I am kind of stuck.
 
-Some embedded uses of Linux use the vanilla kernel, some use highly
-modified kernels custom, some use vendor kernels. What makes a Linux
-kernel embedded is simply that it is used as such.
+	Bummer.. Really grabbing at straws: What might happen if you
+booted the machine with a rescue disk that ran a kernel from RAM
+then use dd to copy the contents of hda6 to another clean drive
+fitted, temporarily, in the machine?? Since hda6 is a virtual
+partition, copying it to a primary partition may work?? Depends on
+how important that partition is I guess..
 
-> that the vanila stock kernel (downloaded from kernel.org) becomes
-> "Embedded Linux" when compiled for an embedded processor like ARM /
-> PPC etc?
-
-Embedded boards can be found with almost any CPU available under the
-sun. You can get embedded boards with arm/ppc/pentium/opteron/c3/sparc
-and many more. The type of CPU does not determine if something is
-embedded or not. Also, many CPU's that are often used for embedded
-projects are also used elsewhere.
-
-Simply put; if you use Linux (in whatever form with whatever hardware)
-in an embedded application/project, then it becomes "Embedded Linux" -
-simple as that.
-
+	If all those superblock backups are corrupted, it seems
+nothing would work though.. I don't think 'sfdisk' will help in this
+case either.. Good Luck..
 
 -- 
-Jesper Juhl <jesper.juhl@gmail.com>
-Don't top-post  http://www.catb.org/~esr/jargon/html/T/top-post.html
-Plain text mails only, please      http://www.expita.com/nomime.html
 
---
-Kernelnewbies: Help each other learn about the Linux kernel.
-Archive:       http://mail.nl.linux.org/kernelnewbies/
-FAQ:           http://kernelnewbies.org/faq/
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
