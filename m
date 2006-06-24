@@ -1,43 +1,31 @@
-From: Hal MacArgle <haltec@kvinet.com>
-Subject: "Modern" Printers??
-Date: Fri, 23 Jun 2006 15:16:18 -0400
-Message-ID: <20060623191618.GA1596@lnx2.kvinet.com>
-Reply-To: haltec@kvinet.com
+From: Richard Adams <pa3gcu@zeelandnet.nl>
+Subject: Re: "Modern" Printers??
+Date: Sat, 24 Jun 2006 08:28:49 +0000
+Message-ID: <200606240828.49343.pa3gcu@zeelandnet.nl>
+References: <20060623191618.GA1596@lnx2.kvinet.com>
+Reply-To: pa3gcu@zeelandnet.nl
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20060623191618.GA1596@lnx2.kvinet.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: haltec@kvinet.com
+Cc: linux-newbie@vger.kernel.org
 
+On Friday 23 June 2006 19:16, Hal MacArgle wrote:
 
-Greetings: A neighbour gave me a HP LaserJet 4L printer and an extra
-toner cart.. Heretofore I've had nothing but impact printers, not
-knowing what I was going to get into with this machine.. (I've been
-helping him with some hardware problems.)
+> A neighbour gave me a HP LaserJet 4L printer
 
-It does work sending plain text to the machine as long as I use
-'todos' to add the required carriage return.. However, I thought I'd
-hit the Web and get the proper __escape__ commands... Wow!!! That
-word isn't even used anymore it seems..
+What about this URL;
 
-A2PS, Enscript, PPD files, Foomatic, etc; all I want or need to do is
-set the margins, font pitch and font type.. I see nothing listed, so
-far, that addresses such "simple" things..
+http://www.linuxprinting.org/show_printer.cgi?recnum=HP-LaserJet_4L
 
-The machine uses the PCL5E command set but, apparently, this is not
-the same animal as the old escape codes.. No actual manual available;
-of course. :^(..
+Or type; "HP LaserJet 4L" in google.
 
-Will my learning curve ever flatten?? TIA and appreciate any
-suggestions or comments..
-
--- 
-
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+Regards.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
