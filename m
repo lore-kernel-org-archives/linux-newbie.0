@@ -1,46 +1,48 @@
-From: Hal MacArgle <haltec@kvinet.com>
+From: mike@kevino.org
 Subject: Re: "Modern" Printers??
-Date: Sat, 24 Jun 2006 11:23:19 -0400
-Message-ID: <20060624152319.GA1234@lnx2.kvinet.com>
-References: <20060623191618.GA1596@lnx2.kvinet.com> <200606240828.49343.pa3gcu@zeelandnet.nl>
-Reply-To: haltec@kvinet.com
+Date: Sun, 25 Jun 2006 07:35:11 -0700 (MST)
+Message-ID: <20060625143511.307F432E8D@kevin.kevino.org>
+References: <20060623191618.GA1596@lnx2.kvinet.com>
+	<200606240828.49343.pa3gcu@zeelandnet.nl>
+	<20060624152319.GA1234@lnx2.kvinet.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200606240828.49343.pa3gcu@zeelandnet.nl>
+In-Reply-To: <20060624152319.GA1234@lnx2.kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Richard Adams <pa3gcu@zeelandnet.nl>
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-On 06-24, Richard Adams wrote:
-> On Friday 23 June 2006 19:16, Hal MacArgle wrote:
+On Sat, 24 Jun 2006 11:23:19 -0400
+Hal MacArgle <haltec@kvinet.com> wrote:
+
+> On 06-24, Richard Adams wrote:
+> > On Friday 23 June 2006 19:16, Hal MacArgle wrote:
+> > 
+> > > A neighbour gave me a HP LaserJet 4L printer
+> > 
+> > What about this URL;
+> > 
+> > http://www.linuxprinting.org/show_printer.cgi?recnum=HP-LaserJet_4L
+> > 
+> > Or type; "HP LaserJet 4L" in google.
+> > 
+> > Regards.
 > 
-> > A neighbour gave me a HP LaserJet 4L printer
+> 	Greetings Richard and thanks:
 > 
-> What about this URL;
-> 
-> http://www.linuxprinting.org/show_printer.cgi?recnum=HP-LaserJet_4L
-> 
-> Or type; "HP LaserJet 4L" in google.
-> 
-> Regards.
+> 	Tried several times and the URL returned a 404.. Direct to HP
+> via and around Google; it seems that printer is no longer supported
+> by anyone for what I need.. HP says the manual no longer available
+> either..
 
-	Greetings Richard and thanks:
+http://www.nefec.org/UPM/printers/mhp4l.htm
+http://www.nefec.org/UPM/ccPCLfrm.htm
 
-	Tried several times and the URL returned a 404.. Direct to HP
-via and around Google; it seems that printer is no longer supported
-by anyone for what I need.. HP says the manual no longer available
-either..
+Not much but some info.
 
-	Thanks again es vy 73..
-
--- 
-
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
+Mike
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
