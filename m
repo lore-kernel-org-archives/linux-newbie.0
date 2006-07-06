@@ -1,35 +1,62 @@
-From: "Magdalena Schmitz" <hung@besancon.net>
-Subject: Logos, letterheads, business cards, envelops (ID799753459)
-Date: Wed, 5 Jul 2006 21:45:25 +0000 (UTC)
-Message-ID: <200607052144.k65LiQZj004803__395.824752240692$1152135925$gmane$org@zeus1.kernel.org>
+From: "joy merwin monteiro" <joy.merwin@gmail.com>
+Subject: Re: Linux Startup Issues
+Date: Thu, 6 Jul 2006 01:04:52 +0000
+Message-ID: <4b0d6e0d0607051804s4bc34817w1419cafa047eec07@mail.gmail.com>
+References: <000801c6a072$bb16b020$6900a8c0@ANCHORMAN>
+Reply-To: joy_mm@ieee.org
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Date: Wen, 5 Jul 2006 17:44:37 +0500
+In-Reply-To: <000801c6a072$bb16b020$6900a8c0@ANCHORMAN>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Jesse <jlc@msdlg.com>
+Cc: linux-newbie@vger.kernel.org
 
-udc
+could you attach the file /var/log/XFree86.0.log or Xorg.0.log ??
+would be helpful .... dont really know, but I think Debian is using
+the Xorg server rather than the Xfree86 server ....
+try
+apt-cache search xorg
+apt-cache search xfree86
 
-Our art team creates a custom logo for you, based on your needs.  Years of experience have taught us how to create a logo that makes a statement that is unique to you.
+it will give you a list of the relevant packages ...
 
-In a professional manner we learn about your image and how you would like the world to perceive you and your company.  With this information we then create a logo that is not only unique but reflects the purpose of you and your company.
-
-For value and a logo that reflects your image, take a few minutes and visit Logo Maker!
-
-http://affiance.biz.try-logosxb.biz
-
-Sincerely,
-Logo Design Team
- 
+Joy
 
 
+On 7/5/06, Jesse <jlc@msdlg.com> wrote:
+> I am running Debian Linux, and every time I have to reboot, it tries to
+> start the Gnome graphical interface. There's always an error, "I cannot
+> start the X server (your graphical interface). It is likely that it is not
+> set up correctly. Would you like to view the server output to diagnose the
+> problem?". When I say yes, it appears that the problem is "no screens
+> found". I tried editing the XF86Config-4 file, but I have no idea what to
+> look for, or what to change. I also tried running the XFreeConfig program,
+> but while testing, it gets to a certain video mode, and freezes up.
+>
+> I tried an "apt-get install XFree86", but it tells me that it can't find
+> XFree86.
+>
+> Any idea what I need to do to get this fixed?
+>
+> Thanks,
+>
+> Jesse
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 
 
- bell bridgeport debugger
-
+-- 
+Aham Brahma Asmi
+          -- Brihadaranyaka Upanishad, Yajur Veda
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
