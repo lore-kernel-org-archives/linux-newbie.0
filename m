@@ -1,51 +1,34 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: Linux Startup Issues
-Date: Thu, 06 Jul 2006 08:27:59 -0700
-Message-ID: <44AD2BFF.8020506@comarre.com>
-References: <MPBBJDEADLDGEMBFJCPEAEPLGMAA.JesseC@msdlg.com>
+From: "George Zhim" <georgezhim@gmail.com>
+Subject: Re: /dev/mem contains physical memory addresses?
+Date: Thu, 6 Jul 2006 19:51:12 +0200
+Message-ID: <81dd41e20607061051t45e372a9n4586988e971ae367@mail.gmail.com>
+References: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
+	 <1152179099.3084.24.camel@laptopd505.fenrus.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <MPBBJDEADLDGEMBFJCPEAEPLGMAA.JesseC@msdlg.com>
+In-Reply-To: <1152179099.3084.24.camel@laptopd505.fenrus.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: arjan@infradead.org
+Cc: Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Jesse Castleberry wrote:
-> I am running Debian Linux, and every time I have to reboot, it tries to
-> start the Gnome graphical interface.  There's always an error, "I cannot
-> start the X server (your graphical interface).  It is likely that it is not
-> set up correctly.  Would you like to view the server output to diagnose the
-> problem?".  When I say yes, it appears that the problem is "no screens
-> found".  I tried editing the XF86Config-4 file, but I have no idea what to
-> look for, or what to change.  I also tried running the XFreeConfig program,
-> but while testing, it gets to a certain video mode, and freezes up.
-> 
-> I tried an "apt-get install XFree86", but it tells me that it can't find
-> XFree86.
-> 
-> Any idea what I need to do to get this fixed?
+Hi!
 
-Sorry I did not see this sooner.
+On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
+> PHYSICAL. if you want virutal you need to use /dev/kmem.
 
-If you're getting this message, then the package is already installed, 
-but it is not configured correctly for your hardware. To run the script 
-that lets you fix this, run (as root):
+isn't /dev/kmem some sort of core file with structures resembling core files ?
+how does that relate to virtual memory (isn't virtual memory unique
+per process) ?
 
-	dpkg-reconfigure xserver-xfree86
 
-You will still need to know enough about your hardware to answer the 
-questions correctly. If you want help with this part, you're going to 
-have to tell us about the details of your system ... but "no screens 
-found" *often* means that the combinations of resolution (HxW) plus 
-color depth (bpp) you've selected are inconsistent with the amount of 
-video RAM you have available. If that's what your underlying problem is, 
-try choosing 640x480x8bpp and see if that works. If it does, you can 
-then try again, moving to more and more demanding settings until you hit 
-your memory limit. (But this is only a guess; for real help, you need to 
-give us details.)
+(btw is there any documentation regarding /dev/kmem ? couldn't really find...)
 
+thanks,
+George.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
