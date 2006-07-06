@@ -1,56 +1,51 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Is mb() required when writing to device using outb()?
-Date: Thu, 6 Jul 2006 18:00:06 +0530
-Message-ID: <292693080607060530n32c36da4jb48c312b146270a@mail.gmail.com>
+From: Ray Olszewski <ray@comarre.com>
+Subject: Re: Linux Startup Issues
+Date: Thu, 06 Jul 2006 08:27:59 -0700
+Message-ID: <44AD2BFF.8020506@comarre.com>
+References: <MPBBJDEADLDGEMBFJCPEAEPLGMAA.JesseC@msdlg.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+In-Reply-To: <MPBBJDEADLDGEMBFJCPEAEPLGMAA.JesseC@msdlg.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi List,
+Jesse Castleberry wrote:
+> I am running Debian Linux, and every time I have to reboot, it tries to
+> start the Gnome graphical interface.  There's always an error, "I cannot
+> start the X server (your graphical interface).  It is likely that it is not
+> set up correctly.  Would you like to view the server output to diagnose the
+> problem?".  When I say yes, it appears that the problem is "no screens
+> found".  I tried editing the XF86Config-4 file, but I have no idea what to
+> look for, or what to change.  I also tried running the XFreeConfig program,
+> but while testing, it gets to a certain video mode, and freezes up.
+> 
+> I tried an "apt-get install XFree86", but it tells me that it can't find
+> XFree86.
+> 
+> Any idea what I need to do to get this fixed?
 
-Please note this dicussion in x86 specific. I was going through the
-LDD book (Chap 9 on hardware communication), and I came across the
-following code:
+Sorry I did not see this sooner.
 
-while (count++) {
-    outb(*(ptr++), addr);
-    wmb();
-}
+If you're getting this message, then the package is already installed, 
+but it is not configured correctly for your hardware. To run the script 
+that lets you fix this, run (as root):
 
-The above code writes "count" bytes to "addr" which is a IO port
-mapped address (using request_region()).
+	dpkg-reconfigure xserver-xfree86
 
-Now AFAIK, there are 2 ways of communicating with the hardware:
+You will still need to know enough about your hardware to answer the 
+questions correctly. If you want help with this part, you're going to 
+have to tell us about the details of your system ... but "no screens 
+found" *often* means that the combinations of resolution (HxW) plus 
+color depth (bpp) you've selected are inconsistent with the amount of 
+video RAM you have available. If that's what your underlying problem is, 
+try choosing 640x480x8bpp and see if that works. If it does, you can 
+then try again, moving to more and more demanding settings until you hit 
+your memory limit. (But this is only a guess; for real help, you need to 
+give us details.)
 
-1) Port mapped -> IO ports are mapped to a special IO address space
-different than memory address space. This IO address space is accessed
-using special processor instructions (via outb() etc)
-
-2) Memory mapped -> IO ports are mapped to memory region (in the
-memory address space only), accessed similar to normal memory.
-
-Now, my question is that for the latter case (memory mapped), a wmb()
-is needed after we write to the port because the system does not know
-that that the address being written to is actually an IO port and thus
-unwanted optimizations may come in.
-
-But why is wmb() requied in former case (port mapped IO)? Since the IO
-address space is accessed using special processor instructions and
-hence the system already has all the means to understand that this
-write is targeted at an IO port and not memory address. Hence the
-system should be smart enough not to throw in any unwanted
-optimizations.
-
-What am I missing?
-
-Thanks,
-
-Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
