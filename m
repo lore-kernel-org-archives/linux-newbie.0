@@ -1,38 +1,56 @@
-From: "Jinesh K J" <jineshkj.newsletters@gmail.com>
-Subject: Re: /dev/mem contains physical memory addresses?
-Date: Thu, 6 Jul 2006 15:19:45 +0530
-Message-ID: <feb8dc070607060249r21fa8114nd06f0e733d94ec7e@mail.gmail.com>
-References: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: Is mb() required when writing to device using outb()?
+Date: Thu, 6 Jul 2006 18:00:06 +0530
+Message-ID: <292693080607060530n32c36da4jb48c312b146270a@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On 7/6/06, Daniel Rodrick <daniel.rodrick@gmail.com> wrote:
-> Hi list,
->
-> I read that the /dev/mem represents the memory of the system.
->
-> 1) Does that mean I can if start reading from /dev/mem, I can read any
-> portion of the memory?
->
-> 2) If I read at offset "n" in the file /dev/mem, would I be reading
-> contents of the PHYSICAL memory address "n", or the VIRTUAL memory
-> addtress "n"?
->
+Hi List,
 
-You'll be accessing only PHYSICAL since VIRTUAL addresses are not
-unique and global. But, its possible that the physical memory that
-you're accessing is a part of the virtual address space of some user
-program running in the system.
+Please note this dicussion in x86 specific. I was going through the
+LDD book (Chap 9 on hardware communication), and I came across the
+following code:
 
-Jinesh.
+while (count++) {
+    outb(*(ptr++), addr);
+    wmb();
+}
+
+The above code writes "count" bytes to "addr" which is a IO port
+mapped address (using request_region()).
+
+Now AFAIK, there are 2 ways of communicating with the hardware:
+
+1) Port mapped -> IO ports are mapped to a special IO address space
+different than memory address space. This IO address space is accessed
+using special processor instructions (via outb() etc)
+
+2) Memory mapped -> IO ports are mapped to memory region (in the
+memory address space only), accessed similar to normal memory.
+
+Now, my question is that for the latter case (memory mapped), a wmb()
+is needed after we write to the port because the system does not know
+that that the address being written to is actually an IO port and thus
+unwanted optimizations may come in.
+
+But why is wmb() requied in former case (port mapped IO)? Since the IO
+address space is accessed using special processor instructions and
+hence the system already has all the means to understand that this
+write is targeted at an IO port and not memory address. Hence the
+system should be smart enough not to throw in any unwanted
+optimizations.
+
+What am I missing?
+
+Thanks,
+
+Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
