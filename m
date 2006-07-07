@@ -1,7 +1,7 @@
 From: Om. <om.turyx@gmail.com>
 Subject: Re: /dev/mem contains physical memory addresses?
-Date: Fri, 7 Jul 2006 10:07:10 +0530
-Message-ID: <6b4e42d10607062137w3071dd4ckfc9386cbe3a17b89@mail.gmail.com>
+Date: Fri, 7 Jul 2006 10:15:19 +0530
+Message-ID: <6b4e42d10607062145h613f183fsb8bc8fe471965466@mail.gmail.com>
 References: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
 	 <1152179099.3084.24.camel@laptopd505.fenrus.org>
 	 <81dd41e20607061051t45e372a9n4586988e971ae367@mail.gmail.com>
@@ -33,7 +33,10 @@ On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
 > > > PHYSICAL. if you want virutal you need to use /dev/kmem.
 How about peripheral memory mapped to some addresses? Assuming I have
 a PCI device and a on board flash PROM, would I be able to see them in
-/proc/mem
+/proc/(k)mem ? I feel not. Am I correct?
+
+Regards,
+om.
 
 --
 Kernelnewbies: Help each other learn about the Linux kernel.
