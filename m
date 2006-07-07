@@ -1,46 +1,57 @@
-From: Arjan van de Ven <arjan@infradead.org>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
 Subject: Re: /dev/mem contains physical memory addresses?
-Date: Fri, 07 Jul 2006 07:36:59 +0200
-Message-ID: <1152250619.3111.9.camel@laptopd505.fenrus.org>
+Date: Fri, 7 Jul 2006 11:28:54 +0530
+Message-ID: <292693080607062258j33884f8cw2845780dec305237@mail.gmail.com>
 References: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
 	 <1152179099.3084.24.camel@laptopd505.fenrus.org>
 	 <81dd41e20607061051t45e372a9n4586988e971ae367@mail.gmail.com>
 	 <1152209267.3084.78.camel@laptopd505.fenrus.org>
 	 <6b4e42d10607062145h613f183fsb8bc8fe471965466@mail.gmail.com>
+	 <1152250619.3111.9.camel@laptopd505.fenrus.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <6b4e42d10607062145h613f183fsb8bc8fe471965466@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+In-Reply-To: <1152250619.3111.9.camel@laptopd505.fenrus.org>
+Content-Disposition: inline
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: "Om." <om.turyx@gmail.com>
-Cc: George Zhim <georgezhim@gmail.com>, Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Arjan van de Ven <arjan@infradead.org>
+Cc: "Om." <om.turyx@gmail.com>, George Zhim <georgezhim@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On Fri, 2006-07-07 at 10:15 +0530, Om. wrote:
-> On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
-> > On Thu, 2006-07-06 at 19:51 +0200, George Zhim wrote:
-> > > Hi!
-> > >
-> > > On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
-> > > > PHYSICAL. if you want virutal you need to use /dev/kmem.
-> How about peripheral memory mapped to some addresses? Assuming I have
-> a PCI device and a on board flash PROM, would I be able to see them in
-> /proc/(k)mem ? I feel not. Am I correct?
+> > How about peripheral memory mapped to some addresses? Assuming I have
+> > a PCI device and a on board flash PROM, would I be able to see them in
+> > /proc/(k)mem ? I feel not. Am I correct?
+>
+> /dev/mem yes
+>
+> HOWEVER, there is a much nicer way to mmap a PCI device's resources, and
+> that is sysfs.
+> /sys/bus/pci/devices/0000:00:02.0/resource0
+> for example is the first resource of a PCI device on my system.
+> No need to muck about with the dangerous /dev/mem; this one is at least
+> well defined and portable across systems, including virtualization etc
+> etc
 
-/dev/mem yes
+So you mean to say that if I have a device whose registers are are
+memory mapped to say physical addresses "0x20020000 - 0x20020010".
+Then the file /sys/bus/pci/devices/0000:00:02.0/resource0 will contain
+thsi memory range as its contents?
 
-HOWEVER, there is a much nicer way to mmap a PCI device's resources, and
-that is sysfs.
-/sys/bus/pci/devices/0000:00:02.0/resource0 
-for example is the first resource of a PCI device on my system.
-No need to muck about with the dangerous /dev/mem; this one is at least
-well defined and portable across systems, including virtualization etc
-etc
+Thanks,
 
+Dan
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
+
