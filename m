@@ -1,34 +1,42 @@
-From: "Simon Wu" <simonwu1@gmail.com>
-Subject: what is PCI to PCMCIA adaptor device name
-Date: Thu, 6 Jul 2006 14:48:58 -0400
-Message-ID: <dd54e0e0607061148n5b1382e5l13dfebc5cccdf47b@mail.gmail.com>
+From: Om. <om.turyx@gmail.com>
+Subject: Re: /dev/mem contains physical memory addresses?
+Date: Fri, 7 Jul 2006 10:07:10 +0530
+Message-ID: <6b4e42d10607062137w3071dd4ckfc9386cbe3a17b89@mail.gmail.com>
+References: <292693080607060236n5c279815x3fe5d493ea3a587e@mail.gmail.com>
+	 <1152179099.3084.24.camel@laptopd505.fenrus.org>
+	 <81dd41e20607061051t45e372a9n4586988e971ae367@mail.gmail.com>
+	 <1152209267.3084.78.camel@laptopd505.fenrus.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+In-Reply-To: <1152209267.3084.78.camel@laptopd505.fenrus.org>
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: Arjan van de Ven <arjan@infradead.org>
+Cc: George Zhim <georgezhim@gmail.com>, Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Hello,
+On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
+> On Thu, 2006-07-06 at 19:51 +0200, George Zhim wrote:
+> > Hi!
+> >
+> > On 7/6/06, Arjan van de Ven <arjan@infradead.org> wrote:
+> > > PHYSICAL. if you want virutal you need to use /dev/kmem.
+How about peripheral memory mapped to some addresses? Assuming I have
+a PCI device and a on board flash PROM, would I be able to see them in
+/proc/mem
 
-I installed a PCI to PCMCIA card adaptor in my desktop PC with Fedora
-3. Apparently, it is detected as Ismod shows:
-yenta_socket   21705  1
-rsrc_nonstatic  12737  1 yenta_socket
-pcmcia_core    50013  2 yenta_socket, rsrc_nonstatic
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
 
-I have a 3G wireless modem connected to th adaptor.
-
-However, I couldn't find a device name under /dev/. Can someone tell
-me what and where is the device name? Is it configurable?
-
-Thanks,
-
-Simon
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
