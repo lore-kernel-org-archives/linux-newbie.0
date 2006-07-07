@@ -1,24 +1,68 @@
-From: "Jesse" <jlc@msdlg.com>
-Subject: How to make KDE default windows manager?
-Date: Fri, 7 Jul 2006 14:10:39 -0400
-Message-ID: <000501c6a1f0$a79153a0$6900a8c0@ANCHORMAN>
+From: Chase Venters <chase.venters@clientec.com>
+Subject: Re: Commenting out out_of_memory() function in __alloc_pages()
+Date: Fri, 7 Jul 2006 16:21:54 -0500 (CDT)
+Message-ID: <Pine.LNX.4.64.0607071616540.23767@turbotaz.ourhouse>
+References: <BKEKJNIHLJDCFGDBOHGMAEBKDCAA.abum@aftek.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <BKEKJNIHLJDCFGDBOHGMAEBKDCAA.abum@aftek.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: "Abu M. Muttalib" <abum@aftek.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
 
-I installed kde using the apt-get utility, however, I want to run it as my 
-default windows manager.  How do I do that?  I'm using Debian Linux, and 
-right now, it comes up to a log in screen where I can choose IceWM, Gnome, 
-and some others as my windows manager, but KDE is not one of those.  Any 
-ideas?
+On Fri, 7 Jul 2006, Abu M. Muttalib wrote:
+
+> Hi,
+>
+> I am getting the Out of memory.
+>
+> To circumvent the problem, I have commented the call to "out_of_memory(),
+> and replaced "goto restart" with "goto nopage".
+>
+> At "nopage:" lable I have added a call to "schedule()" and then "return
+> NULL" after "schedule()".
+
+I wouldn't recommend gutting the oom killer...
+
+> I tried the modified kernel with a test application, the test application is
+> mallocing memory in a loop. Unlike as expected the process gets killed. On
+> second run of the same application I am getting the page allocation failure
+> as expected but subsequently the system hangs.
+>
+> I am attaching the test application and the log herewith.
+>
+> I am getting this exception with kernel 2.6.13. With kernel
+> 2.4.19-rmka7-pxa1 there was no problem.
+>
+> Why its so? What can I do to alleviate the OOM problem?
+
+First you should know what is causing them. Is an application leaking 
+memory, or is the kernel leaking memory? "ps" can help you answer the 
+first question, while "watch cat /proc/meminfo" can help you answer the 
+second.
+
+If kernel memory usage seems to be rising steadily over time, report it as 
+a bug. Otherwise, fix the broken application.
+
+The reason for the "OOM killer" is because Linux does "VM overcommit". 
+Please read "Documentation/vm/overcommit-accounting" for more information, 
+including what you'll need if you want to disable "VM overcommit" to 
+hopefully stop the OOM killer from coming around.
+
+(When using VM overcommit, the OOM killer is very necessary for a healthy 
+system... sometimes the kernel _needs_ memory, and you can't tell it NO. 
+In those cases, the OOM killer is invoked to find something to 
+sacrifice...)
+
+> Thanks in anticipation and regards,
+> Abu.
+>
 
 Thanks,
-Jesse 
-
+Chase
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
