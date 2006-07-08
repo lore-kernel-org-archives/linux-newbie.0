@@ -1,33 +1,49 @@
-From: Frederik Deweerdt <deweerdt@free.fr>
-Subject: Re: Script to check a process
-Date: Sat, 8 Jul 2006 12:36:41 +0200
-Message-ID: <20060708103641.GA1933@slug>
-References: <BKEKJNIHLJDCFGDBOHGMAEBKDCAA.abum@aftek.com> <Pine.LNX.4.64.0607071616540.23767@turbotaz.ourhouse> <200607080109.48851.diegolima.br@gmail.com>
+From: Robert Hancock <hancockr@shaw.ca>
+Subject: Re: Commenting out out_of_memory() function in __alloc_pages()
+Date: Sat, 08 Jul 2006 12:06:13 -0600
+Message-ID: <44AFF415.2020305@shaw.ca>
+References: <fa.AmXizdwfdZtqgKFSMcRp3U0QZXI@ifi.uio.no>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <200607080109.48851.diegolima.br@gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Diego Alencar Alves de Lima <diegolima.br@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S964933AbWGHSGn@vger.kernel.org>
+In-reply-to: <fa.AmXizdwfdZtqgKFSMcRp3U0QZXI@ifi.uio.no>
+Sender: linux-kernel-owner@vger.kernel.org
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Abu M. Muttalib" <abum@aftek.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
 
-On Sat, Jul 08, 2006 at 01:09:48AM -0300, Diego Alencar Alves de Lima wrote:
-> How can I make a script that will check to see if a certain process is 
-> running? The process name is "nspluginviewer" and there should be 3 of it 
-> running (each one called from a konqueror process).  Then it would reboot the 
-> computer if it didn't detect the three running.
+Abu M. Muttalib wrote:
+> Hi,
 > 
-There are many ways to do it, one could be:
+> I am getting the Out of memory.
+> 
+> To circumvent the problem, I have commented the call to "out_of_memory(),
+> and replaced "goto restart" with "goto nopage".
+> 
+> At "nopage:" lable I have added a call to "schedule()" and then "return
+> NULL" after "schedule()".
 
-while [ $(pidof <command> | awk '{print NF;}') -eq <nr occurences> ]; do sleep 1; done ; shutdown -r now
+Bad idea - in the configuration you have, the system may need the 
+out-of-memory killer to free up memory, otherwise the system can 
+deadlock due to all memory being exhausted.
 
-Regards,
-Frederik
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+> I tried the modified kernel with a test application, the test application is
+> mallocing memory in a loop. Unlike as expected the process gets killed. On
+> second run of the same application I am getting the page allocation failure
+> as expected but subsequently the system hangs.
+> 
+> I am attaching the test application and the log herewith.
+> 
+> I am getting this exception with kernel 2.6.13. With kernel
+> 2.4.19-rmka7-pxa1 there was no problem.
+> 
+> Why its so? What can I do to alleviate the OOM problem?
+
+Please see Documentation/vm/overcommit-accounting in the kernel source tree.
+
+-- 
+Robert Hancock      Saskatoon, SK, Canada
+To email, remove "nospam" from hancockr@nospamshaw.ca
+Home Page: http://www.roberthancock.com/
