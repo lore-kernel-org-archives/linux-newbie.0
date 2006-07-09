@@ -1,32 +1,33 @@
-From: "Abu M. Muttalib" <abum@aftek.com>
-Subject: RE: Commenting out out_of_memory() function in __alloc_pages()
-Date: Sun, 9 Jul 2006 20:04:52 +0530
-Message-ID: <BKEKJNIHLJDCFGDBOHGMIEFJDCAA.abum@aftek.com>
-References: <44B0F0AA.20708@yahoo.com.au>
+From: Nick Piggin <nickpiggin@yahoo.com.au>
+Subject: Re: Commenting out out_of_memory() function in __alloc_pages()
+Date: Mon, 10 Jul 2006 01:15:37 +1000
+Message-ID: <44B11D99.5090303@yahoo.com.au>
+References: <BKEKJNIHLJDCFGDBOHGMIEFJDCAA.abum@aftek.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <44B0F0AA.20708@yahoo.com.au>
+In-Reply-To: <BKEKJNIHLJDCFGDBOHGMIEFJDCAA.abum@aftek.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Nick Piggin <nickpiggin@yahoo.com.au>, Alan Cox <alan@lxorguk.ukuu.org.uk>
-Cc: Robert Hancock <hancockr@shaw.ca>, chase.venters@clientec.com, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Abu M. Muttalib" <abum@aftek.com>
+Cc: Alan Cox <alan@lxorguk.ukuu.org.uk>, Robert Hancock <hancockr@shaw.ca>, chase.venters@clientec.com, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
 
->Abu, I guess you have turned on CONFIG_EMBEDDED and disabled everything
->you don't need, turned off full sized data structures, removed everything
->else you don't need from the kernel config, turned off kernel debugging
->(especially slab debugging).
+Abu M. Muttalib wrote:
+>>Abu, I guess you have turned on CONFIG_EMBEDDED and disabled everything
+>>you don't need, turned off full sized data structures, removed everything
+>>else you don't need from the kernel config, turned off kernel debugging
+>>(especially slab debugging).
+> 
+> 
+> Do you mean that I have configured kernel with CONFIG_EMBEDDED option??
 
-Do you mean that I have configured kernel with CONFIG_EMBEDDED option??
+I am guessing you have, if you a concerned about memory usage. Have you?
 
->If you still have problems, what does /proc/slabinfo tell you when running
->your application under both 2.4 and 2.6?
+-- 
+SUSE Labs, Novell Inc.
+Send instant messages to your online friends http://au.messenger.yahoo.com 
 
-Will find out the differences..
-
-Regards,
-Abu.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
