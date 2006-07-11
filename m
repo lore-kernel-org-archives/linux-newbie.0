@@ -1,38 +1,31 @@
-From: =?UTF-8?B?QXJ0xatyYXMgTW9za3ZpbmFz?= <arturas.moskvinas@gmail.com>
-Subject: Re: automatic service start at startup
-Date: Tue, 11 Jul 2006 00:32:25 +0300
-Message-ID: <44B2C769.4090607@gmail.com>
-References: <44B2A02F.5040304@laposte.net>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: versions numbering confusion - regarding development & stable versions
+Date: Tue, 11 Jul 2006 12:22:34 +0530
+Message-ID: <292693080607102352y5830dd97we1a0a9591818fe53@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <44B2A02F.5040304@laposte.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: ali shahrokni <shahrokni@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
-ali shahrokni wrote:
-> Hello all,
-> I am wondering how I can run "autofs start " automatically at startup of
-> my system, so that I can log on to the network directly.
-> I would appreciate any hints.
+Hi list,
 
-It depends on distro you are using. The easiest way (though not the best
-I think) is to add an entry into "rc.local" file (I think you should
-find somewhere in /etc subdirectories, because it depends on distro).
-Second way is to use special tool to add service to startup, for example:
+I have a very basic query regarding the kernel versioning. I read that
+the even numbered versions (like 2.6.x) are stable versions, where as
+odd numbered versions (like 2.5.x) are development versions.
 
-Gentoo: rc-update add autofs default
-SUSE (at least SLES): user graphical application yast, and choose
-Runlevel editor (i do not know the command line equivalent)
-Red Hat(and fedora core, Mandrake too, I think...):
-system-config-services (graphical tool), or chkconfig --add autofs
-Ubuntu (i think debian too): tool rcconf
+I now see only 2.6.x versions coming out (on kernel.org). I don't see
+any development version 2.7.x coming out.
 
-Arturas M.
+Is currently all the development going on directly in the 2.6.x series
+and hence no 2.7.x series?
 
+Thanks,
+
+Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
