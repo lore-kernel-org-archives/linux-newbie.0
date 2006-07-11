@@ -1,7 +1,7 @@
 From: "Jesper Juhl" <jesper.juhl@gmail.com>
 Subject: Re: versions numbering confusion - regarding development & stable versions
-Date: Tue, 11 Jul 2006 11:36:49 +0200
-Message-ID: <9a8748490607110236n7f9a27afpfa03d31c231e1f44@mail.gmail.com>
+Date: Tue, 11 Jul 2006 12:34:29 +0200
+Message-ID: <9a8748490607110334p118fb581q6addbce2793a676d@mail.gmail.com>
 References: <292693080607102352y5830dd97we1a0a9591818fe53@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -61,7 +61,7 @@ the first part of the document)
  http://sosdg.org/~coywolf/lxr/source/Documentation/HOWTO
 
 
--- 
+--
 Jesper Juhl <jesper.juhl@gmail.com>
 Don't top-post  http://www.catb.org/~esr/jargon/html/T/top-post.html
 Plain text mails only, please      http://www.expita.com/nomime.html
