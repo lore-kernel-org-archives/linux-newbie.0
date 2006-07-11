@@ -1,23 +1,96 @@
-From: "Renuka Pampana" <prenuka@gmail.com>
-Subject: see inbuilt modules in linux
-Date: Tue, 11 Jul 2006 16:14:49 +0530
-Message-ID: <9b23fc710607110344ld2b3a68m43c533fb4854b4c0@mail.gmail.com>
+From: "Jesse" <jlc@msdlg.com>
+Subject: Re: How to make KDE default windows manager?
+Date: Tue, 11 Jul 2006 07:35:45 -0400
+Message-ID: <000301c6a4de$26fd3060$6900a8c0@ANCHORMAN>
+References: <000501c6a1f0$a79153a0$6900a8c0@ANCHORMAN> <1152306806.7439.4.camel@localhost> <000301c6a21b$7a4bea10$6900a8c0@ANCHORMAN> <1152344229.15485.13.camel@localhost>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; format="flowed"; charset="us-ascii"; reply-type="original"
+To: largret@gmail.com
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+Someone helped me find and fix the problem.  Evidentially I needed to be 
+running the KDE Manager.  I was not.  I did a gdm stop and a kdm start, and 
+that solved my problem.
 
-How to see the inbuilt modules in the system. I want to see which
-keyboard driver is working in my system.
+Thanks,
+Jesse
 
-Thanking you
-Renuka
+----- Original Message ----- 
+From: "Chris Largret" <largret@gmail.com>
+To: "Jesse" <jlc@msdlg.com>
+Cc: <linux-newbie@vger.kernel.org>
+Sent: Saturday, July 08, 2006 3:37 AM
+Subject: Re: How to make KDE default windows manager?
+
+
+> On Fri, 2006-07-07 at 19:17 -0400, Jesse wrote:
+>> I found the file in the same place, and it has pretty much the same thing
+>> you've got there.  However,  think this may be the configuration file 
+>> once
+>> you get KDE up and running.  I can't seem to get KDE running.
+>
+> Hmmm, on my system that file puts 'KDE' in the list of desktop
+> environments available in [xgk]dm.
+>
+> I'd recommend checking the file permissions
+> for /usr/share/xsessions/kde.desktop. It would also be nice to know
+> which desktop manager is being used for your run-level (xdm/gdm/kdm).
+> 'ps -ef' will give you a list of programs currently running. One of them
+> should be your desktop manager.
+>
+> I'm also CC'ing this to the list in hopes that someone will know
+> better. :)
+>
+>
+>
+>> ----- Original Message ----- 
+>> From: "Chris Largret" <largret@gmail.com>
+>> To: "Jesse" <jlc@msdlg.com>
+>> Sent: Friday, July 07, 2006 5:13 PM
+>> Subject: Re: How to make KDE default windows manager?
+>>
+>>
+>> > On Fri, 2006-07-07 at 14:10 -0400, Jesse wrote:
+>> >> I installed kde using the apt-get utility, however, I want to run it 
+>> >> as
+>> >> my
+>> >> default windows manager.  How do I do that?  I'm using Debian Linux, 
+>> >> and
+>> >> right now, it comes up to a log in screen where I can choose IceWM,
+>> >> Gnome,
+>> >> and some others as my windows manager, but KDE is not one of those. 
+>> >> Any
+>> >> ideas?
+>> >
+>> > I'm not fully certain for Debian, but this should be close. On my
+>> > Slackware box you would look for /usr/share/xsessions/kde.desktop (If 
+>> > it
+>> > isn't /usr/share/xsessions/, maybe try running "slocate xsession" to
+>> > find the right directory).
+>> >
+>> > Inside of the kde.desktop file, here is what I have:
+>> >
+>> >
+>> > [Desktop Entry]
+>> > Encoding=UTF-8
+>> > Name=KDE
+>> > Comment=This session logs you into KDE
+>> > Exec=startkde
+>> > # no icon yet, only the top three are currently used
+>> > Icon=
+>> > Type=Application
+>> >
+>> >
+>> > hth
+>
+> --
+> Chris Largret <http://www.largret.com>
+> 
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
