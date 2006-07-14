@@ -1,34 +1,36 @@
-From: "Mukund JB." <mukundjb@esntechnologies.co.in>
-Subject: Adding Custom Applications to Damn CD Linux
-Date: Fri, 14 Jul 2006 14:25:16 +0530
-Message-ID: <AF63F67E8D577C4390B25443CBE3B9F72399CD@esnmail.esntechnologies.co.in>
+From: Chris Largret <largret@gmail.com>
+Subject: Re: Adding Custom Applications to Damn CD Linux
+Date: Fri, 14 Jul 2006 12:19:10 -0700
+Message-ID: <1152904750.8711.3.camel@localhost>
+References: <AF63F67E8D577C4390B25443CBE3B9F72399CD@esnmail.esntechnologies.co.in>
+Reply-To: largret@gmail.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+In-Reply-To: <AF63F67E8D577C4390B25443CBE3B9F72399CD@esnmail.esntechnologies.co.in>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "Mukund JB." <mukundjb@esntechnologies.co.in>
+Cc: linux-newbie@vger.kernel.org
 
+On Fri, 2006-07-14 at 14:25 +0530, Mukund JB. wrote:
+> I want to build a LIVE_CD Linux dist with Custom application added to
+> it.
+> I have an application which I would like to auto-launch from the Damn
+> Linux Live-CD.
 
-Hi ALL,
+Here is a how-to for "remastering" (customizing) Knoppix:
 
-I want to build a LIVE_CD Linux dist with Custom application added to
-it.
-I have an application which I would like to auto-launch from the Damn
-Linux Live-CD.
+http://www.knoppix.net/wiki/Knoppix_Remastering_Howto
 
-I had experience working with the Linux drivers. 
-But, I have no experience coming up with my own Live-Cd Linux Dist.
+You might also find the Slax documentation on linux-live.org worth a
+read:
 
-Can some one provide me pointers on doing trhis. i.e. adding Custom
-application to Damn Sources and build it on my my Linux BOX.
-I am using Dual Boot FC3 and REDHAT 9 Dist's. 
-DO I need to have a Debian Dist Hosted?
+http://slax.linux-live.org
 
-Regards,
-Mukund Jampala
+--
+Chris Largret <http://www.largret.com>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
