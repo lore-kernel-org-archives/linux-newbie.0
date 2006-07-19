@@ -1,54 +1,62 @@
-From: Hal MacArgle <haltec@kvinet.com>
+From: Peter <heisspf@skyinet.net>
 Subject: Re: Modem Inaccessible
-Date: Tue, 18 Jul 2006 14:54:09 -0400
-Message-ID: <20060718185409.GA1470@lnx2.kvinet.com>
-References: <200607180711.k6I7B1sn003807@skyinet.net> <44BCF54B.2000302@comarre.com>
-Reply-To: haltec@kvinet.com
+Date: Wed, 19 Jul 2006 14:47:16 +0800
+Message-ID: <200607190647.k6J6lGVF006179@skyinet.net>
+References: <44BCF54B.2000302@comarre.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <44BCF54B.2000302@comarre.com>
+In-Reply-To: Your message of "Tue, 18 Jul 2006 07:50:51 MST."
+             <44BCF54B.2000302@comarre.com> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.net
+To: Ray Olszewski <ray@comarre.com>
+Cc: linux-newbie@vger.kernel.org
 
-On 07-18, Ray Olszewski wrote:
-> See comments below.
-> 
-> Peter wrote:
-> >Thanks Ray!
-> >
-> >ray@comarre.com said:
-> >
-> >>I'm assuming the modem is attached to a serial port
-> >
-> >
-> >Yes, has been for years.
+OK, I do not have anymore a /dev/ttyS0. Why, I have no idea. And that seems to 
+be the reason that the modem does not respond.
 
-	Been watching the thread and wonder if the following will
-help since I am running Slack10.2, 2.6.13 on one machine:
+Now I created the device node with mknod  /dev/ttyS0 c 4 64, with permissions 
+set to root:tty.
 
-BIOS boot reports standard Com1 Com2 parameters.. Default..
+Then I get
+setserial /dev/ttyS0 -a
+/dev/ttyS0, Line 0, UART: 16550A, Port: 0x03f8, IRQ: 4
+        Baud_base: 115200, close_delay: 50, divisor: 0
+        closing_wait: 3000
+        Flags: spd_normal skip_test auto_irq
 
-Linux 2.6.13 boot; setserial /dev/ttyS0 and /dev/ttyS1 reports exact
-same parameters; normal.. Both UART 16550A.. The on board LSI chip
-seemingly AOK..
+and the modem responds to minicom, microcom and fax receive/send.
 
-I see no mention of /dev/tts anywhere on my machine..
+ray@comarre.com said:
+>> Fedora4 does not run setserial neither does DSL.
+> How do you know? Did you grep for "setserial" in the appropriate  directory
+> (probably /etc/init.d)? If not, how did you check this? 
 
-dmesg reports standard ttyS0 and ttyS1, normal.. This is the bundled
-kernel that Slackware calls test26.
+That is exactly what I did, grep for setserial in the appropriate directories.
 
-If I hang an external modem on either port; normal..
+Yes with kernels 2.4.31, 2.6.14 I had a /dev/ttys0, however, not anymore with 
+kernel 2.6.20. With kernel 2.17 modem responded to a setting of a symlink to 
+/dev/tts/1.
 
-Probably no help, just a thought..
+This symlink I kept with kernel 2.6.20 and the trouble started.
+
+Just now I resolved the issue. In /etc/udev/rules.d/modem.rules I changed the 
+setting from NAME="/dev/tts/1" to NAME="ttyS0". Then running rc.udev and I 
+have my
+/dev/ttyS0 back.
+
+ls -l /dev/modem
+lrwxrwxrwx  1 root root 5 2006-07-19 14:26 /dev/modem -> ttyS0
+
+Much appreciated your help.
+
+Regards
 
 -- 
+Peter
 
-    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
