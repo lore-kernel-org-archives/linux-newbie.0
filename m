@@ -1,37 +1,48 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Why "high memory" in x86?
-Date: Tue, 1 Aug 2006 11:18:16 +0530
-Message-ID: <b115cb5f0607312248p6e05f2f2je8c6a352f7856a9a@mail.gmail.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: Regarding the gfp mask "GFP_NOFS"
+Date: Tue, 1 Aug 2006 11:36:19 +0530
+Message-ID: <292693080607312306r58d0aa70q969a348842f26586@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vget.kernel.org
 
-Hi list,
+Hi,
 
-I recently read that the concept of "High Memory" was introduced
-because certain architectures are capable of physically addressing
-larger amounts of memory than they can virtually address (physical
-address space > virtual address space). I also read that nowadays
-"high Memory" exists only in x86.
+As mentioned in Robert Love's book on Linux kernel development:
 
-1) Why is virtual memory > 896 MB on x86 designated as high memory?
-AFAIK x86 has 4 GB of virtual address space (=physical address space?)
+"The mask GFP_NOFS to kmalloc specifies that the allocation can block
+and can initiate disk I/O, if it must, but will not initiate a
+filesystem operation. This is the flag to use in filesystem code when
+you cannot start another filesystem operation."
 
-2) Has the "high Memory" concept got anything to do with PAE (Page
-Address Extention) feature of x86?
+When it came to GFP_NOIO mask that says that no Disk IO should be
+initiated to free memory; I could digest that very well since Disk IO
+could be initiated to swap a process to disk to free memory.
 
-3) Do any other architectures than x86 have the concept of high memory?
+But I could not understand why and how could a filesystem request be
+initiated in order to free memory (the case avoided by GFP_NOFS)?
 
-TIA,
+What am I missing here?
 
-Rajat
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks,
+
+Dan
+
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
+
