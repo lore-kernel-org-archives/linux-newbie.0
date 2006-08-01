@@ -1,59 +1,118 @@
-From: Rajendra <rpm@solidcore.com>
-Subject: Re: Single physical memory location has multiple virtual addresses?
-Date: Tue, 01 Aug 2006 14:56:39 +0530
-Message-ID: <44CF1E4F.2030602@solidcore.com>
-References: <292693080607312351m116cdd2wd4d7fd889d46581f@mail.gmail.com>
+From: "Abu M. Muttalib" <abum@aftek.com>
+Subject: the /proc/meminfo statistics
+Date: Tue, 1 Aug 2006 15:09:32 +0530
+Message-ID: <BKEKJNIHLJDCFGDBOHGMEEJDDEAA.abum@aftek.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <292693080607312351m116cdd2wd4d7fd889d46581f@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: 
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
 
-The address returned by kmalloc is valid in kernel only, it will be
-something greater then 3GB ie (0xC000 0000). This address can not
-be used by user space program, it will cause segfault.  For accessing
-any memory from user space you need to create a "vma" entry of the
-process so that there is a mapping of some virtual address with the
-physical memory allocated by kmalloc.
-In short, yes you need two set of page table entries for accessing the
-memory allocated by kmalloc. The kernel entry is created by kmalloc
-call itself, while the user space entry has to be created by the concerned
-module.
+Hi,
 
-For more info on how user programs can map arbit. mem location
-see mmap() man page.
+I am running the following application.
 
-regds,
-~rpm
-Daniel Rodrick wrote:
+#include<stdio.h>
+#include<stdlib.h>
 
-> Hi,
->
-> Suppose I have a kernel module that dynamically allocates memory (via
-> kmalloc) for user space. Now my doubt is whether this chunk of
-> physical memory would have two virtual addresses?
->
-> - One virtual address that will be used by kernel to refer to the
-> memory (the address returned by kmalloc)
->
-> - One virtual address as will be seen by the user space application?
->
-> Is my understanding correct?
->
-> Thanks,
->
-> Dan
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+int main()
+{
+	unsigned char* arr;
+	system("cat /proc/meminfo");
+	sleep(25);
+	arr = (char *)malloc (1048576);
+	system("cat /proc/meminfo");
+	sleep(25);
+	free(arr);
+	system("cat /proc/meminfo");
+	sleep(25);
+}
+
+I am getting the following meminfo statistics. As I am allocating and
+freeing 1024 kb, so I should get the same information through /proc/meminfo:
+
+
+MemTotal:        14296 kB
+MemFree:           912 kB
+Buffers:          1448 kB
+Cached:           5564 kB
+SwapCached:          0 kB
+Active:           5480 kB
+Inactive:         3664 kB
+HighTotal:           0 kB
+HighFree:            0 kB
+LowTotal:        14296 kB
+LowFree:           912 kB
+SwapTotal:           0 kB
+SwapFree:            0 kB
+Dirty:               0 kB
+Writeback:           0 kB
+Mapped:           5144 kB
+Slab:             1560 kB
+CommitLimit:      7148 kB
+Committed_AS:     6492 kB
+PageTables:        188 kB
+VmallocTotal:   630784 kB
+VmallocUsed:    262560 kB
+VmallocChunk:   366588 kB
+
+
+MemTotal:        14296 kB
+MemFree:           920 kB
+Buffers:          1448 kB
+Cached:           5564 kB
+SwapCached:          0 kB
+Active:           5492 kB
+Inactive:         3660 kB
+HighTotal:           0 kB
+HighFree:            0 kB
+LowTotal:        14296 kB
+LowFree:           920 kB
+SwapTotal:           0 kB
+SwapFree:            0 kB
+Dirty:               0 kB
+Writeback:           0 kB
+Mapped:           5152 kB
+Slab:             1544 kB
+CommitLimit:      7148 kB
+Committed_AS:     7652 kB
+PageTables:        188 kB
+VmallocTotal:   630784 kB
+VmallocUsed:    262560 kB
+VmallocChunk:   366588 kB
+
+
+MemTotal:        14296 kB
+MemFree:           924 kB
+Buffers:          1448 kB
+Cached:           5564 kB
+SwapCached:          0 kB
+Active:           5488 kB
+Inactive:         3660 kB
+HighTotal:           0 kB
+HighFree:            0 kB
+LowTotal:        14296 kB
+LowFree:           924 kB
+SwapTotal:           0 kB
+SwapFree:            0 kB
+Dirty:               0 kB
+Writeback:           0 kB
+Mapped:           5148 kB
+Slab:             1544 kB
+CommitLimit:      7148 kB
+Committed_AS:     6624 kB
+PageTables:        188 kB
+VmallocTotal:   630784 kB
+VmallocUsed:    262560 kB
+VmallocChunk:   366588 kB
+
+I think that the values given in first Committed_AS and 3rd Committed_AS
+should be same. But the same is not the case. Why its so?
+
+Anticipation and regards,
+Abu.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
