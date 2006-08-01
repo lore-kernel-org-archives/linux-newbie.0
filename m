@@ -1,30 +1,35 @@
-From: "Felecia" <centrexdecease@yours.com>
-Subject: Discover the latest Make your girlfriend or wife speechless with increased hardness, richer orgsms and more power in bed
-Date: Mon, 31 Jul 2006 20:08:44 -0300
-Message-ID: <08714480650675.14626EF289__39863.4447170936$1154387441$gmane$org@SPW24NTD>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: Why "high memory" in x86?
+Date: Tue, 1 Aug 2006 11:18:16 +0530
+Message-ID: <b115cb5f0607312248p6e05f2f2je8c6a352f7856a9a@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-ppp@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Good day my friend!
+Hi list,
 
- Boost your manhood to astonishing levels Everything a real man would ever need.Enhanced male power and unlimited prowess with your girl The best products for the winning guys
+I recently read that the concept of "High Memory" was introduced
+because certain architectures are capable of physically addressing
+larger amounts of memory than they can virtually address (physical
+address space > virtual address space). I also read that nowadays
+"high Memory" exists only in x86.
 
-Have more success with women and impress them with your power and stamina in bed
+1) Why is virtual memory > 896 MB on x86 designated as high memory?
+AFAIK x86 has 4 GB of virtual address space (=physical address space?)
 
- Check up here: http://www.isohyetab.com
+2) Has the "high Memory" concept got anything to do with PAE (Page
+Address Extention) feature of x86?
 
+3) Do any other architectures than x86 have the concept of high memory?
 
-Felecia Zavala
+TIA,
 
-
-The longest rope has an end No man is an islandBetter die with honor than live with shame A good beginning makes a good ending.
-Dont teach your grandmother to suck eggs
-
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
