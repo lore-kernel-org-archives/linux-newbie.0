@@ -1,58 +1,52 @@
 From: Rajendra <rpm@solidcore.com>
-Subject: Re: Why "high memory" in x86?
-Date: Tue, 01 Aug 2006 14:48:46 +0530
-Message-ID: <44CF1C76.5060406@solidcore.com>
-References: <b115cb5f0607312248p6e05f2f2je8c6a352f7856a9a@mail.gmail.com>
+Subject: Re: Single physical memory location has multiple virtual addresses?
+Date: Tue, 01 Aug 2006 14:56:39 +0530
+Message-ID: <44CF1E4F.2030602@solidcore.com>
+References: <292693080607312351m116cdd2wd4d7fd889d46581f@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b115cb5f0607312248p6e05f2f2je8c6a352f7856a9a@mail.gmail.com>
+In-Reply-To: <292693080607312351m116cdd2wd4d7fd889d46581f@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: 
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-The reason for the high memory is this.
+The address returned by kmalloc is valid in kernel only, it will be
+something greater then 3GB ie (0xC000 0000). This address can not
+be used by user space program, it will cause segfault.  For accessing
+any memory from user space you need to create a "vma" entry of the
+process so that there is a mapping of some virtual address with the
+physical memory allocated by kmalloc.
+In short, yes you need two set of page table entries for accessing the
+memory allocated by kmalloc. The kernel entry is created by kmalloc
+call itself, while the user space entry has to be created by the concerned
+module.
 
-   o Linux divides the address space into two parts, user and kernel.
-   o Kernel gets 1 GB of address space while user gets 3GB virtual 
-address space.
-   o Kernel needs to access all of the  memory so ideally it needs 4 GB 
-of virtual addresses.
-   o But since only 1 GB (i.e. beyond 0xc000 0000) is available, so we 
-call the rest as
-      high memory (approx 3 GB)
-   o The high memory is accessed using temp. page table entries that map 
-the high memory
-      areas in kernel address space.
-   o The high memory region is mostly allocated to the user space programs.
-  
-hope it answers the question !
+For more info on how user programs can map arbit. mem location
+see mmap() man page.
 
-regd,
+regds,
 ~rpm
-Rajat Jain wrote:
+Daniel Rodrick wrote:
 
-> Hi list,
+> Hi,
 >
-> I recently read that the concept of "High Memory" was introduced
-> because certain architectures are capable of physically addressing
-> larger amounts of memory than they can virtually address (physical
-> address space > virtual address space). I also read that nowadays
-> "high Memory" exists only in x86.
+> Suppose I have a kernel module that dynamically allocates memory (via
+> kmalloc) for user space. Now my doubt is whether this chunk of
+> physical memory would have two virtual addresses?
 >
-> 1) Why is virtual memory > 896 MB on x86 designated as high memory?
-> AFAIK x86 has 4 GB of virtual address space (=physical address space?)
+> - One virtual address that will be used by kernel to refer to the
+> memory (the address returned by kmalloc)
 >
-> 2) Has the "high Memory" concept got anything to do with PAE (Page
-> Address Extention) feature of x86?
+> - One virtual address as will be seen by the user space application?
 >
-> 3) Do any other architectures than x86 have the concept of high memory?
+> Is my understanding correct?
 >
-> TIA,
+> Thanks,
 >
-> Rajat
+> Dan
 > -
 > To unsubscribe from this list: send the line "unsubscribe 
 > linux-newbie" in
