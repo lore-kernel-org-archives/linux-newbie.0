@@ -1,59 +1,42 @@
-From: Mensch <bausparkasse@gmx.de>
-Subject: Re: allocating disk space the fast way
-Date: Sat, 05 Aug 2006 18:06:51 +0000
-Message-ID: <1154801212.1885.16.camel@Marvin>
-References: <1154799802.1885.9.camel@Marvin>
+From: "Nilesh Agrawal" <nilesh.agrawal@gmail.com>
+Subject: Re: Issuing BIOS interrupts in Linux
+Date: Sat, 5 Aug 2006 22:03:48 +0530
+Message-ID: <9a9e5ab90608050933x6451ee98v8d3cc2abae170bdb@mail.gmail.com>
+References: <b115cb5f0608040400m7c644503p6d40bc8faea8a80a@mail.gmail.com>
+	 <1154740833.11701.1.camel@uranium.hq.netapp.com>
+	 <292693080608050553x756e4276k33c5afa80f686f44@mail.gmail.com>
+	 <b115cb5f0608050611qe937318qf04d87a472dc849a@mail.gmail.com>
+	 <44D4B134.1070002@surriel.com>
+	 <b115cb5f0608050826y6bac535eja57554410e34e2fb@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1154799802.1885.9.camel@Marvin>
+In-Reply-To: <b115cb5f0608050826y6bac535eja57554410e34e2fb@mail.gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie list <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: Rik van Riel <riel@surriel.com>, idlisambar@gmail.com, kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-it's me again.
-i'm sorry, but i found a way myself.
+> Okay ... NOW we are talking. Any idea / links / references on where
+> should I start looking for? How tough / practical is it to switch from
+> protected mode to real mode and back? Is it possible at all (in
+> linux)?
 
-written in c:
+Paging only works in protected mode. And once paging is turned off,
+all the kernel code is unusable because it is linked at PAGE_OFFSET +
+something. ( 3GB + )
 
-/*** START OF filesize_alloc.c ***/
+Disabling paging itself is not easy, let alone going to real mode
+(where only 64KB memory is available ) and coming back.
 
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <linux/unistd.h>
-#include <errno.h>
 
-int main(int argc, char **argv) {
-	FILE *newfile;
-	char *filename = "blub.img";
-	int size_in_bytes = 2000*(1024*1024); /* 2000 MB */
+Nilesh
 
-	 /* create a new file char *filename or overwrite it */
-	newfile = fopen(filename, "w");
-	 /* now jump to byte int size_in_bytes from start... */
-	fseek(newfile, size_in_bytes, SEEK_SET);
-	 /* ... and write a final zero at this position */
-	fwrite("\0", 1, 1, newfile); 
-	fclose(newfile);
-}
 
-/*** END OF filesize_alloc.c ***/
-
-Am Samstag, den 05.08.2006, 17:43 +0000 schrieb Mensch:
-> hello list.
-> i want to allocate some space for a harddisk image file.
-> for now, i do it like
-> $ dd if=/dev/zero of=blub.img bs=1M count=2000
-> which takes some time. is there a faster way to create a huge file? it
-> don't have to be zeroed.
-> i've seen that e.g. azureus allocates filesize in no time. how does this
-> work?
-> 
-> thanks in advance,
-> josef gosch
-
+-- 
+And ye shall know the truth (source) and the truth shall set you free.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
