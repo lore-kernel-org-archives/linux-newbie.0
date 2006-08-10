@@ -1,74 +1,69 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Re: Univeral Protocol Driver (using UNDI) in Linux
-Date: Thu, 10 Aug 2006 13:48:14 +0530
-Message-ID: <292693080608100118rc910647l7a8bf95fbc2df26c@mail.gmail.com>
-References: <292693080608070339p6b42feacw9d8f27a147cf1771@mail.gmail.com>
-	 <44D7579D.1040303@zytor.com>
-	 <292693080608070911g57ae1215qd994e03b9dd87b66@mail.gmail.com>
-	 <44D76F26.9@zytor.com>
-	 <292693080608072213n2be75176g46199e92d669f5de@mail.gmail.com>
-	 <44D8A80F.1020202@cs.cornell.edu>
+From: James Miller <jamtat@mailsnare.net>
+Subject: smtp vs sendmail query
+Date: Thu, 10 Aug 2006 14:07:49 -0500 (CDT)
+Message-ID: <Pine.LNX.4.64.0608101339210.15749@localhost.localdomain>
+References: <000501c6a1f0$a79153a0$6900a8c0@ANCHORMAN>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <44D8A80F.1020202@cs.cornell.edu>
-Content-Disposition: inline
+In-Reply-To: <000501c6a1f0$a79153a0$6900a8c0@ANCHORMAN>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Alan Shieh <ashieh@cs.cornell.edu>
-Cc: "H. Peter Anvin" <hpa@zytor.com>, Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hello Alan,
+I think I'm finally ready to abandon Pine as my e-mail client and to start 
+using Mutt. I thought of doing this a few years ago, but looking over Mutt 
+documentation and config files left me bewildered. I'm sure I will still 
+be confused about some of the program's workings, but it seems, after 4 
+years or so of using and admin'ing my Linux system(s), I have good enough 
+grasp of the program's basics and related e-mail workings now that I'm 
+ready to give it a serious go. This switch is also partly precipitated by 
+certain ways in which Pine has been failing me. Despite what I've said 
+above, the present message is not a Mutt-specific query: I'll probably be 
+directing those to the Mutt user list. What I'm wondering about is 
+something more fundamental about e-mail technology.
 
-First things first. Tons of thanks for a mail FULLY LOADED with useful
-information. I'm still to digest it all, but really thanks.
+One of the things that kept me from using Mutt previously was the fact 
+that it does not do smtp, but rather apparently relies on other programs 
+such as sendmail for passing mail to servers that in turn pass it to other 
+servers and eventually to recipients. I don't care how stupid I might 
+sound to the initiated in saying this, but for the technically-challenged 
+such as myself, having an extra layer of program activity between the 
+e-mail client and the outgoing server is confusing: it's just another set 
+of configuration files to edit and keep current, and another place to look 
+for errors should problems arise. At the same time, I suppose there are 
+good reasons for having a separate program to do mail passing to outgoing 
+servers. The most sensible reason I can think of is that e-mailing is 
+often done in an institutional environment, one that has a machine on its 
+network dedicated to mailing functions. I have no experience of working in 
+such an environment, so I'm guessing at this, but that seems like it could 
+provide a sensible explanation for the separation between e-mail client 
+and outgoing mail server.
 
+Anyway, Pine does do smtp: you enter info about your smtp server in its 
+config file, and away you go with sending out your mail. Mutt, as I 
+understand it "will never do smtp" (quotation from a Mutt information site 
+I haven't checked for a couple years but which I assume to reflect the 
+current state of affairs). I will thus, I assume, need to look into 
+getting and setting up a program to interact with the smtp server I will 
+be sending mail through. Sendmail is one I recall reading about: can 
+anyone supply names of, and recommendations about, others? I want the 
+simplest possible program for this one-user (Debian) machine.
 
-> >> >
-> >> > I'm sure having a single driver for all the NICs is a feature cool
-> >> > enough to die for. Yes, it might have drawbacks like just pointed out
-> >> > by Peter, but surely a "single driver for all NIC" feature could prove
-> >> > to be great in some systems.
-> >> >
-[Snip]
-> >
-> > Hi ... so there seem to be no technical feasibily issues, just
-> > reliabliy / ugly design issues? So one can still go ahead and write a
-> > Universal Protocol Driver that can work with all (PXE compatible)
-> > NICs?
->
-> With help from the Etherboot Project, I've recently implemented such a
-> driver for Etherboot 5.4. It currently supports PIO NICs (e.g. cards
-> that use in*/out* to interface with CPU). It's currently available in a
-> branch, and will be merged into the trunk by the Etherboot project. It
-> works reliably with QEMU + PXELINUX, with the virtual ne2k-pci NIC.
+Finally, can anyone enlighten me as to why a program like Mutt--which is 
+actually the only e-mail client I know of that won't interact with smtp 
+servers--will not do smtp? Is it for puristic reasons, i.e., because it 
+would somehow contaminate the program's perceived function by introducing 
+extra functionality? I.e., a line in the sand against feature-creep? Could 
+it be for some sort of security reasons?
 
-Umm ... pardon me if I am wrong, but I think you implemented a "UNDI
-Driver" (i.e. the code that provides implementation of UNDI API, and
-often resides in the NIC ROM) . I'm looking forward to write a
-"Universal Protocol Driver" (i.e. the code that will be a linux kernel
-module and will, use the UNDI API provided by your UNDI driver).
+Sorry for the long message. Input will be appreciated.
 
-But nevertheless your information has been *VERY* helpful ...
+Thanks, James
 
-> At minimum, one needs to be able to probe for !PXE presence, which means
-> you need to map in 0-1MB of physical memory. The PXE stack's memory also
-> needs to be mapped in. My UNDI driver relies on a kernel module, generic
-> across all NICs, to accomplish these by mapping in the !PXE probe area
-> and PXE memory in a user process.
-
-I'm pretty newbie to PXE, but I I think !PXE structure is used to find
-out the location & size of PXE & UNDI runtime routines, by UNIVERSAL
-PROTOCOL DRIVERS. Is my understanding wrong?
-
-Also, I think that UNDI driver routine will need not call PXE routines
-(TFTP / DHCP etc) as UNDI routines would be at a lower level providing
-access to the bare bones hardware. Is this correct?
-
-Thanks,
-
-Dan
+PS Recommendations for other text-mode e-mail clients would also be 
+appreciated.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
