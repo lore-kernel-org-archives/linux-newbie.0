@@ -1,93 +1,88 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: smtp vs sendmail query
-Date: Thu, 10 Aug 2006 12:55:46 -0700
-Message-ID: <44DB8F42.8030604@comarre.com>
-References: <000501c6a1f0$a79153a0$6900a8c0@ANCHORMAN> <Pine.LNX.4.64.0608101339210.15749@localhost.localdomain>
+From: Donald Becker <becker@scyld.com>
+Subject: Re: Univeral Protocol Driver (using UNDI) in Linux
+Date: Thu, 10 Aug 2006 13:59:06 -0700 (PDT)
+Message-ID: <Pine.LNX.4.44.0608101156490.20933-100000@bluewest.scyld.com>
+References: <44D8A80F.1020202@cs.cornell.edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.64.0608101339210.15749@localhost.localdomain>
+In-Reply-To: <44D8A80F.1020202@cs.cornell.edu>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Alan Shieh <ashieh@cs.cornell.edu>
+Cc: Daniel Rodrick <daniel.rodrick@gmail.com>, "H. Peter Anvin" <hpa@zytor.com>, Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org
 
-James Miller wrote:
-> I think I'm finally ready to abandon Pine as my e-mail client and to 
-> start using Mutt. I thought of doing this a few years ago, but looking 
-> over Mutt documentation and config files left me bewildered. I'm sure I 
-> will still be confused about some of the program's workings, but it 
-> seems, after 4 years or so of using and admin'ing my Linux system(s), I 
-> have good enough grasp of the program's basics and related e-mail 
-> workings now that I'm ready to give it a serious go. This switch is also 
-> partly precipitated by certain ways in which Pine has been failing me. 
-> Despite what I've said above, the present message is not a Mutt-specific 
-> query: I'll probably be directing those to the Mutt user list. What I'm 
-> wondering about is something more fundamental about e-mail technology.
-> 
-> One of the things that kept me from using Mutt previously was the fact 
-> that it does not do smtp, but rather apparently relies on other programs 
-> such as sendmail for passing mail to servers that in turn pass it to 
-> other servers and eventually to recipients. I don't care how stupid I 
-> might sound to the initiated in saying this, but for the 
-> technically-challenged such as myself, having an extra layer of program 
-> activity between the e-mail client and the outgoing server is confusing: 
-> it's just another set of configuration files to edit and keep current, 
-> and another place to look for errors should problems arise. At the same 
-> time, I suppose there are good reasons for having a separate program to 
-> do mail passing to outgoing servers. The most sensible reason I can 
-> think of is that e-mailing is often done in an institutional 
-> environment, one that has a machine on its network dedicated to mailing 
-> functions. I have no experience of working in such an environment, so 
-> I'm guessing at this, but that seems like it could provide a sensible 
-> explanation for the separation between e-mail client and outgoing mail 
-> server.
-> 
-> Anyway, Pine does do smtp: you enter info about your smtp server in its 
-> config file, and away you go with sending out your mail. Mutt, as I 
-> understand it "will never do smtp" (quotation from a Mutt information 
-> site I haven't checked for a couple years but which I assume to reflect 
-> the current state of affairs). I will thus, I assume, need to look into 
-> getting and setting up a program to interact with the smtp server I will 
-> be sending mail through. Sendmail is one I recall reading about: can 
-> anyone supply names of, and recommendations about, others? I want the 
-> simplest possible program for this one-user (Debian) machine.
-> 
-> Finally, can anyone enlighten me as to why a program like Mutt--which is 
-> actually the only e-mail client I know of that won't interact with smtp 
-> servers--will not do smtp? Is it for puristic reasons, i.e., because it 
-> would somehow contaminate the program's perceived function by 
-> introducing extra functionality? I.e., a line in the sand against 
-> feature-creep? Could it be for some sort of security reasons?
-> 
-> Sorry for the long message. Input will be appreciated.
-> 
-> Thanks, James
-> 
-> PS Recommendations for other text-mode e-mail clients would also be 
-> appreciated.
+On Tue, 8 Aug 2006, Alan Shieh wrote:
 
-James -- I don't know why (or even if, really) the authors of Mutt don't 
-build in smtp support. I could guess, but you don't need uninformed 
-guessing.
+> With help from the Etherboot Project, I've recently implemented such a 
+> driver for Etherboot 5.4. It currently supports PIO NICs (e.g. cards 
+> that use in*/out* to interface with CPU). It's currently available in a 
+> branch, and will be merged into the trunk by the Etherboot project. It 
+> works reliably with QEMU + PXELINUX, with the virtual ne2k-pci NIC.
+> 
+> Barring unforseen issues, I should get MMIO to work soon; target 
+> platform would be pcnet32 or e1000 on VMware, booted with PXELINUX.
 
-I'm replying only because you reminded us that you are a Debian user. 
-The off-the-shelf smtp program for Debian is exim, and if you did 
-anything resembling a standard install of any recent version of Debian, 
-you already have exim4 on your system, along with a symlink that lets 
-you run it as "sendmail":
+Addressing a very narrow terminology issue:
 
-	new-flagg:/home/autovcr# ls -l /usr/sbin/sendmail
-	lrwxr-xr-x  1 root root 5 Aug 30  2005 /usr/sbin/sendmail -> exim4
+I think that there a misuse of terms here.  PIO, or Programmed I/O, is 
+data transfer mode where the CPU explicitly passes data to and from a 
+device through a single register location.
 
-The details on setting this up (this HowTo is for Debian-Sarge, but I 
-expect Etch and Sid are almost the same) are at 
-http://pkg-exim4.alioth.debian.org/README/README.Debian
+The term is unrelated to the device being addressed in I/O or memory 
+space.  On the x86, hardware devices were usually in the I/O address space 
+and there are special "string" I/O instructions, so PIO and I/O space were 
+usually paired.  But processors without I/O instructions could still do 
+PIO transfers.
 
-The short version (for Sarge or Sid, probably Etch too): as root, run 
-"dpkg-reconfigure exim4-config" and tell it (I think, if I understand 
-your setup right) "mail sent by smarthost; no local mail". The 
-"smarthost" is the "smtp server" you identified to Pine.
+Memory Mapped I/O, MMIO, is putting the device registers in memory space.  
+In the past it specifically meant sharing memory on the device e.g. when 
+the packet buffer memory on a WD8013 NIC was jumpered into the ISA address 
+space below 1MB.  The CPU still controls the data transfer, generating a 
+write for each word transfered.  But the address changed with each write, 
+just like a memcpy.
+
+Today "MMIO" is sometimes misused to mean simply using a PCI memory 
+mapping rather than a PCI I/O space mapping.  PCI actually has three 
+address spaces: memory, I/O and config spaces.  Many devices allow 
+accessing the operational registers either through I/O or memory spaces.
+
+Both PIO and MMIO are obsolescent.  You'll still find it in legacy 
+interfaces, such as IDE disk controllers where it is only used during boot 
+or when running DOS. Instead bulk data is moved using bus master 
+transfers, where the device itself generates read or write 
+bus transactions.
+
+Specifically, you won't find PIO or MMIO on any current NIC.  They only 
+existed on a few early PCI NICs, circa 1995,  where an ISA design was 
+reworked.  
+
+So what does all of this have to with UNDI (and, not coincidentally,
+virtualization)?  There are a bunch of problems with using UNDI drivers,
+but we only need one unsolvable one to make it a doomed effort.  It's a
+big challenge to limit, control and remap how the UNDI driver code talks
+to the hardware.  That seems to be focus above -- just dealing with how to
+control access to the device registers.  But even if we do that correctly
+, the driver is still setting up the NIC to be a bus master.  The device
+hardware will be reading and writing directly to memory, and the driver
+has to make a bunch of assumptions when calculating those addresses.
+ 
+> ( An even easier way would be to axe the manufacturer's stack and use 
+> Etherboot instead )
+
+People are hoping to magically get driver support for all hardware 
+without writing drivers.  If it were as easy as writing a Linux-to-UNDI 
+shim, that shim would have been written long ago.  UNDI doesn't come 
+close to being an OS-independent driver interface, even if you are willing 
+to accept the big performance hit.
+
+
+-- 
+Donald Becker				becker@scyld.com
+Scyld Software	 			Scyld Beowulf cluster systems
+914 Bay Ridge Road, Suite 220		www.scyld.com
+Annapolis MD 21403			410-990-9993
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
