@@ -1,42 +1,45 @@
-From: "Alexandr Lebedev" <a.lebede@gmail.com>
-Subject: Re: how to debug a driver remotely?
-Date: Fri, 11 Aug 2006 04:21:34 -0400
-Message-ID: <a055a49b0608110121h76564d60mebc4d6c08d3968a@mail.gmail.com>
-References: <6b4e42d10608102141v5485de5ay5b62c70a887310ef@mail.gmail.com>
+From: Alan Shieh <ashieh@cs.cornell.edu>
+Subject: Re: Univeral Protocol Driver (using UNDI) in Linux
+Date: Fri, 11 Aug 2006 16:01:01 -0400
+Message-ID: <44DCE1FD.5020901@cs.cornell.edu>
+References: <292693080608070339p6b42feacw9d8f27a147cf1771@mail.gmail.com>	 <44D7579D.1040303@zytor.com>	 <292693080608070911g57ae1215qd994e03b9dd87b66@mail.gmail.com>	 <44D76F26.9@zytor.com>	 <292693080608072213n2be75176g46199e92d669f5de@mail.gmail.com>	 <44D8A80F.1020202@cs.cornell.edu> <292693080608100118rc910647l7a8bf95fbc2df26c@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <6b4e42d10608102141v5485de5ay5b62c70a887310ef@mail.gmail.com>
-Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Return-path: <linux-net-owner@vger.kernel.org>
+In-Reply-To: <292693080608100118rc910647l7a8bf95fbc2df26c@mail.gmail.com>
+Sender: linux-net-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "Om." <om.turyx@gmail.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: "H. Peter Anvin" <hpa@zytor.com>, Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org
 
-> (I do not have a remote power on/off switch. The driver panics so
-> often that somebody has to babysit the machine to switch it off and
-> on.)
+> Umm ... pardon me if I am wrong, but I think you implemented a "UNDI
+> Driver" (i.e. the code that provides implementation of UNDI API, and
+> often resides in the NIC ROM) . I'm looking forward to write a
+> "Universal Protocol Driver" (i.e. the code that will be a linux kernel
+> module and will, use the UNDI API provided by your UNDI driver).
 
-why not try user-mode-linux
-user-mode-linux.sourceforge.net
+I wrote a universal protocol driver that runs in Linux, and talks to an 
+extended UNDI stack implemented in Etherboot.
 
-It will allow you to run kernel from usermode, and if the kernel
-panics you can always restart it.
+>> At minimum, one needs to be able to probe for !PXE presence, which means
+>> you need to map in 0-1MB of physical memory. The PXE stack's memory also
+>> needs to be mapped in. My UNDI driver relies on a kernel module, generic
+>> across all NICs, to accomplish these by mapping in the !PXE probe area
+>> and PXE memory in a user process.
+> 
+> 
+> I'm pretty newbie to PXE, but I I think !PXE structure is used to find
+> out the location & size of PXE & UNDI runtime routines, by UNIVERSAL
+> PROTOCOL DRIVERS. Is my understanding wrong?
 
--- 
-wbr, Alex
+That's right.
 
---
-Kernelnewbies: Help each other learn about the Linux kernel.
-Archive:       http://mail.nl.linux.org/kernelnewbies/
-FAQ:           http://kernelnewbies.org/faq/
+> Also, I think that UNDI driver routine will need not call PXE routines
+> (TFTP / DHCP etc) as UNDI routines would be at a lower level providing
+> access to the bare bones hardware. Is this correct?
 
+I'm calling the UNDI level routines (packet send, interrupt handling) 
+from my driver.
+
+Alan
