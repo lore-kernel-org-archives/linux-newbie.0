@@ -1,10 +1,12 @@
-From: Om. <om.turyx@gmail.com>
-Subject: how to debug a driver remotely?
-Date: Thu, 10 Aug 2006 21:41:14 -0700
-Message-ID: <6b4e42d10608102141v5485de5ay5b62c70a887310ef@mail.gmail.com>
+From: "Alexandr Lebedev" <a.lebede@gmail.com>
+Subject: Re: how to debug a driver remotely?
+Date: Fri, 11 Aug 2006 04:21:34 -0400
+Message-ID: <a055a49b0608110121h76564d60mebc4d6c08d3968a@mail.gmail.com>
+References: <6b4e42d10608102141v5485de5ay5b62c70a887310ef@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <kernelnewbies-bounce@nl.linux.org>
+In-Reply-To: <6b4e42d10608102141v5485de5ay5b62c70a887310ef@mail.gmail.com>
 Content-Disposition: inline
 Sender: kernelnewbies-bounce@nl.linux.org
 Errors-to: kernelnewbies-bounce@nl.linux.org
@@ -17,24 +19,21 @@ List-owner: <mailto:ecartis-owner@nl.linux.org>
 List-post: <mailto:kernelnewbies@nl.linux.org>
 List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+To: "Om." <om.turyx@gmail.com>
+Cc: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
 
-Recently a friend of mine asked me to port a PCI driver from 2.4 to
-2.6, which I tried. But I learned that the device is custom made and
-not commercially available. Since it is not available anywhere else,
-he suggested me that I do remote debugging using telnet/ssh.
+> (I do not have a remote power on/off switch. The driver panics so
+> often that somebody has to babysit the machine to switch it off and
+> on.)
 
-For all driver development efforts I have carried out so far, I had
-free access to the device, the target machine and a serial port. Now
-in this case, without a serial port and remote power off/on
-facilities, I would like to ask the list about the options I have.
+why not try user-mode-linux
+user-mode-linux.sourceforge.net
 
-(I do not have a remote power on/off switch. The driver panics so
-often that somebody has to babysit the machine to switch it off and
-on.)
+It will allow you to run kernel from usermode, and if the kernel
+panics you can always restart it.
 
-Regards,
-Om.
+-- 
+wbr, Alex
 
 --
 Kernelnewbies: Help each other learn about the Linux kernel.
