@@ -1,95 +1,212 @@
-From: Alan Shieh <ashieh@cs.cornell.edu>
-Subject: Re: Univeral Protocol Driver (using UNDI) in Linux
-Date: Fri, 11 Aug 2006 16:48:23 -0400
-Message-ID: <44DCED17.1050202@cs.cornell.edu>
-References: <Pine.LNX.4.44.0608101156490.20933-100000@bluewest.scyld.com>
+From: Pekida Prihatin <info@prihatin.com>
+Subject: Ajak Keluarga Nikmati Perbualan PERCUMA bersama 2000 Jemaah seluruh Negara.!
+Date: Sat, 12 Aug 2006 20:35:52 +0800
+Message-ID: <8c37a5c142cbe5d28f926699092442d2@www.pekida.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0608101156490.20933-100000@bluewest.scyld.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Donald Becker <becker@scyld.com>
-Cc: Daniel Rodrick <daniel.rodrick@gmail.com>, "H. Peter Anvin" <hpa@zytor.com>, Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-net@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="windows-1252"
+To: linux-newbie@vger.kernel.org
 
-Donald Becker wrote:
-> On Tue, 8 Aug 2006, Alan Shieh wrote:
-> 
-> 
->>With help from the Etherboot Project, I've recently implemented such a 
->>driver for Etherboot 5.4. It currently supports PIO NICs (e.g. cards 
->>that use in*/out* to interface with CPU). It's currently available in a 
->>branch, and will be merged into the trunk by the Etherboot project. It 
->>works reliably with QEMU + PXELINUX, with the virtual ne2k-pci NIC.
->>
->>Barring unforseen issues, I should get MMIO to work soon; target 
->>platform would be pcnet32 or e1000 on VMware, booted with PXELINUX.
-> 
-> 
-> Addressing a very narrow terminology issue:
 
-<snip>
+Bismillah hirrohman nirrohim...
 
-Thanks for the terminology clarification. I'll try to clarify the 
-hardware scenarios.
 
-Currently, cards that use the I/O port space ought to work, so long as 
-their Etherboot drivers are well-behaved. Those that use PIO (like the 
-QEMU's NE2K-PCI, which looks like NE2K bolted onto a PCI/ISA bridge) 
-ought to work 100%. Those that use I/O ports to set up DMA transfers may 
-or may not work depending on whether they try to DMA directly into 
-pointers specified by UNDI calls.
 
-I am in the process of implementing a way to pass the virtual address of 
-each memory mapped I/O region described in the PCI BARs; once this 
-works, the same caveats as for I/O port controlled
+Assalamualaikum Saudara/Saudari,
 
-> So what does all of this have to with UNDI (and, not coincidentally,
-> virtualization)?  There are a bunch of problems with using UNDI drivers,
-> but we only need one unsolvable one to make it a doomed effort.  It's a
-> big challenge to limit, control and remap how the UNDI driver code talks
-> to the hardware.  That seems to be focus above -- just dealing with how to
-> control access to the device registers.  But even if we do that correctly
-> , the driver is still setting up the NIC to be a bus master.  The device
-> hardware will be reading and writing directly to memory, and the driver
-> has to make a bunch of assumptions when calculating those addresses.
 
-This is true. I had to verify that the Etherboot UNDI code performs 
-copies to/from its memory (which it knows the precise location of), 
-rather than DMAing to pointers.
 
-I think the virtualization approach is workable for stacks that hide 
-themselves properly in E820 maps (not specified in the PXE spec), but 
-somewhat complicated. It would have to either use a IOMMU (afaik not 
-present on Pacifica, VT, or LT), or enforce a 1:1 correspondence between 
-the emulated physical pages and actual physical pages that are provided 
-to the stack.
+Apa khabar Saudara/Saudari sekeluarga? semoga sihat-sihat selalu,
 
-The advantage of this over downloading an Etherboot stack is that it 
-slightly simplifies deployment -- there is no need to install a 
-Etherboot option ROM or boot image on each node. I believe the code 
-complexity, development, and testing costs are higher than they are for 
-our current approach, where we get to control and fix the firmware.
+Saya MAIZATUL BINTI RAHIM, mewakili pekida R&D dan Prihatin Services me=
+ngirim email ini kepada Saudara/Saudari untuk menyampaikan satu berita =
+besar.
 
-> People are hoping to magically get driver support for all hardware 
-> without writing drivers.  If it were as easy as writing a Linux-to-UNDI 
-> shim, that shim would have been written long ago.  UNDI doesn't come 
-> close to being an OS-independent driver interface, even if you are willing 
-> to accept the big performance hit.
+SATU BERITA GEMBIRA UNTUK KITA IAITU PERMINTAAN KITA DENGAN DESAKAN PEL=
+BAGAI PIHAK AGAR TAWARAN INI DILANJUTKAN TELAH DILULUSKAN. PEKEJ POWERT=
+OOL P38 BESERTA SUPLEMENTARY LINE DILANJUTKAN HINGGA HUJUNG BULAN OGOS =
+INI. P18 TELAH PUN DITAMATKAN.=20
 
-I agree. The PXE specification is woefully underspecified and clunky for 
-protected mode operation. Performance is on the order of broadband speed 
--- I'm getting 200-250KB/s using polling (as opposed to interrupt-driven 
-I/O), with QEMU running on a 2GHz Athlon.
+LANJUTAN MASA INI MEMBERIKAN KITA PELUANG KEEMASAN UNTUK MENGAJAK SERAM=
+AI MUNGKIN SANAK SAUDARA DAN SAHABAT HANDAI DALAM JEMAAH KITA SENDIRI U=
+NTUK TURUT SERTA DALAM PEKEJ INI. LEBIH RAMAI TURUTSERTA, LEBIH MERIAH =
+JEMAAH KITA, LEBIH BANYAK KENALAN UNTUK TUJUAN PENYATUAN UMMAH DAN KEUT=
+UHAN KELUARGA BESAR KITA.
 
-We still need drivers in the Etherboot-based strategy -- they live in 
-the Etherboot layer. Etherboot drivers would be checked for conformance 
-with protected mode operation.
+WALAU BAGAIMANAPUN, SYARAT KELULUSAN TELAH DIPERKETATKAN OLEH PIHAK CEL=
+COM... JADI SILA PERHATIKAN SYARAT-SYARAT YANG DITETAPKAN DI BAWAH INI.
 
-Alan
+
+
+
+Saudara/Saudari ...
+
+Jika dulu kita teragak-agak dan takut-takut untuk menghubungi IBU BAPA,=
+ KELUARGA, rakan taulan, pelanggan dan jemaah sendiri kerana khuatir bi=
+l telefon jadi tinggi, kini tidak perlu lagi=85 dengan Kemudahan PANGGI=
+LAN PERCUMA celcom POWERTOOLS Pekida Prihatin, kita bukan saja dapat be=
+rcakap PERCUMA secara individu, malah kita dapat BERSIDANG (CONFERENCE)=
+ dengan jemaah kita sekerap mungkin dengan PERCUMA.
+
+Kami, Prihatin Services daripada unit R&D, Latihan dan Perhubungan Awam=
+ PEKIDA MALAYSIA ingin menawarkan pekej ini untuk dimanfaatkan oleh ahl=
+i keluarga, syarikat dan organisasi Saudara/Saudari.
+
+Ini adalah satu Pekej Keluarga yang luar biasa, tidak pernah di tawarka=
+n oleh mana mana syarikat Telefon sebelumnya. Dirangka dan diditawarkan=
+ khusus untuk memupuk sifat keperihatinan melalui perhubungan kemanusia=
+an untuk dinikmati oleh semua ahli dan sukarelawan PRIHATIN UNIT R&D PE=
+KIDA MALAYSIA.
+
+Misi kami ialah untuk bekerjasama dengan celcom, menggalakkan perhubung=
+an yang rapat di kalangan individu untuk merapatkan persahabatan, keker=
+abatan dan semangat kekeluargaan di kalangan kita. Saudara/Saudari juga=
+ boleh manfaatkan pekej ini untuk memperbaiki perhubungan perniagaan se=
+sama pekerja dan pelanggan Saudara/Saudari tanpa batasan kos dan masa. =
+Berhubunglah semahunya dengan PERCUMA.
+
+Saudara/Saudari juga boleh menawarkan pekej EMAS ini kepada Organisasi =
+NGO, rakan niaga, rakan politik dan pengundi yang suka berhubung dan si=
+apa saja. Apa yang perlu Saudara/Saudari lakukan ialah mendaftar sebaga=
+i sukarelawan Prihatin UNIT R&D PEKIDA MALAYSIA dan Saudara/Saudari lay=
+ak untuk mendaftar dan mendapatkan satu talian Celcom di bawah Pekej EM=
+AS ini dengan PERCUMA, tanpa DEPOSIT, tanpa PENJAMIN.=20
+
+
+Dengan Pekej ini, Saudara/Saudari dan kumpulan Saudara/Saudari akan men=
+ikmati tarif khas yang sangat menarik seperti berikut.
+
+a)	Panggilan PERCUMA sesama kumpulan=20
+b)	Caj panggilan dan sms MURAH (diskaun melebihi 50%) untuk panggilan k=
+epada bukan ahli dalam kumpulan.
+c)	KADAR SAMA RATA untuk panggilan yang dibuat dari dan ke mana saja se=
+luruh negara, termasuk Sabah dan Serawak.
+d)	Caj minima (5 sen untuk panggilan dan 2 sen untuk sms) untuk 8 NOMBO=
+R CELCOM YANG DIPILIH.
+e)	Maksima 3 TALIAN ANAK percuma dengan bayaran rm 13 sebulan dan boleh=
+ bercakap percuma sesama ahli dalam kumpulan kecil (1+3=3D4 talian)
+f)	Pendaftaran PERCUMA, tanpa cagaran, tanpa penjamin.
+g)	Setiap penama BOLEH MENDAFTAR SEHINGGA 3 TALIAN UTAMA dan setiap tal=
+ian utama boleh memohon 3 talian anak (supplementary).
+h)	PERCUMA KAD SIM 128K baru yang dilengkapi dengan memori tinggi dan k=
+emudahan 3g.=20
+i)	Voice activated Service (V.A.S.) percuma, mel suara, panggilan menun=
+ggu, panggilan persidangan (Conference), clip dan sebagainya.
+=20
+Untuk makluman dan tindakan Saudara/Saudari, tawaran ini akan berakhir =
+sebelum hujung bulan Ogos'06. Jadi, janganlah berlengah lagi. Ahli Baia=
+h Pekida adalah di kira sebagai layak menyertai skim ini walaupun belum=
+ menerima kad ahli Pekida... apa yang perlu dilakukan ialah mendaftar s=
+ebagai Sukarelawan Khas Unit R&D Pekida Malaysia secara rasmi (kelulusa=
+n serta merta) ...
+
+Kalau bukan Ahli Pekida, Saudara/Saudari wajib mendaftar sebagai sukare=
+lawan Prihatin Unit R&D Pekida Malaysia sebagai syarat layak. Borang ad=
+a kami pastekan di www.prihatin/celcom.
+
+Celcom mengenakan syarat yang agak ketat sekarang, hanya yang berdaftar=
+ sebagai ahli Pekida atau Sukarelawan Prihatin saja diluluskan untuk me=
+nggunakan talian ini.
+
+Prihatin ditubuhkan oleh unit R&D untuk mendekatkan masyarakat dgn Peki=
+da melalui kerja kemanusiaan dan kemsyarakatan. Kebanyakkan ahli prihat=
+in akhirnya menjadi ahli Pekida yang Prihatin.
+
+Untuk mempercepatkan masa kerana tawaran hingga ke hujung bulan ini saj=
+a, maka ada baiknya samada Saudara/Saudari datang ke kajang atau email/=
+faxkan =20
+
+1. salinan ic depan belakang.
+
+2. beri nama ibu.
+
+3. beri alamat pos untuk penghantaran bil dan simkad.
+
+4. beri nombor talipun sekarang.
+
+
+
+kami di sini semua telah menggunakan talian free ini dan amat gembira m=
+elakukan conference seluruh negara dengan PERCUMA bersama jemaah yang t=
+elahpun mengaktifkan talian celcom Powertools mereka. Ini termasuklah r=
+amai khalifah dan penyelia kawasan yang telah menerima berita lebih awa=
+l. Semuga Saudara/Saudari dapat bersama kita dan menjadikan hubungan in=
+i lebih akrab selepas ini.
+
+Sila lihat brosur khas dan keterangan lanjut di www.pekida.org/celcom a=
+tau www.prihatin.com/celcom atau hubungi kami melalui email atau sms un=
+tuk tindakan segera.
+
+SETELAH SELESAI URUSAN PENDAFTARAN, KESEMUA PENGGUNA TALIAN POWERTOOL P=
+RIHATIN AKAN KITA SATUKAN DALAM SATU DIREKTORI DAN AKAN KITA PANJANGKAN=
+ DENGAN SATU MAJLIS SERTA AKTIVITI SOSIAL DAN PERNIAGAAN YANG PASTINYA =
+MENJADIKAN HIDUP KITA YANG ASALNYA KURANG KENAL MENGENALI SEBELUM INI M=
+ENJADI LEBIH BAIK DAN AKRAB. PELUANG MENDAPAT KENALAN-KENALAN BARU DARI=
+ SELURUH NEGARA YANG AKHIRNYA MENJADI SEHATI SEJIWA MELALUI KEAKRABAN P=
+ERHUBUNGAN PERCUMA POWETOOL INI PASTI AKAN MENJADIKAN MALAYSIA LEBIH IN=
+DAH UNTUK KITA SEMUA....
+
+Jika Saudara/Saudari sedang di blacklisted, boleh gunakan nama rakan da=
+n berkongsi penama kerana satu penama boleh mendaftar sehingga 3 talian=
+ utama.
+
+
+HUBUNGI KAMI SEKARANG DI,
+
+PRIHATIN SERVICES
+ROB NO: (1607051-X)
+8558, Jalan Pegawai, Sungai Ramal Baru
+43000 Kajang, Selangor Darul Ehsan
+Tel: 03-87369645 Tel/Fax: 03-87399645
+Mobile: 019-6230363 (TOLL FREE POWERTOOLS )=20
+
+Atau
+HUBUNGI SECARA PERIBADI PEGAWAI RND YANG BERIKUT:
+
+KEKANDA ANDY - Johor (POWERTOOL CALL FREE 013-3976760),=20
+KEKANDA AZAR - JOHOR ((POWERTOOL CALL FREE 013-3984543) Nick name Forum=
+ : TONTOYO,=20
+KEKANDA JONO / AZMAN - JOHOR (POWERTOOL CALL FREE 013-3983220),=20
+KEKANDA  ZACK - HQ (012-6931005),=20
+KEKANDA NIZAM - Penang (012-2778349, POWERTOOL CALL FREE 013-3335636),=20
+ERFI =96 KEDAH POWERTOOL CALL FREE 019-6230223
+KEKANDA WAN TAIPING - 013-5321736 / POWERTOOL CALL FREE 019-6230421),=20
+
+KEKANDA KHALID - HQ POWERTOOL CALL FREE 019-6230426
+KEKANDA MAIZATUL =96 HQ- POWERTOOL CALL FREE 019-6230425
+WAN BOS - HQ (016-3233036, (POWERTOOL CALL FREE 013-3303028)=20
+AZMI HQ - POWERTOOL CALL FREE 013-3984546,=20
+HAFIZ HQ - POWERTOOL CALL FREE 013-3303089,=20
+
+ATAU
+AYAHANDA DR.HJ.MASJUKI (013 3671112, 013-2299930 POWERTOOL CALL FREE 01=
+9-6230363)
+
+Email: info@prihatin.com   rnd@pekida.org
+Website: http://www.prihatin.com/celcom  or www.pekida.org/celcom =20
+
+Sokongan dan dokongan daripada Saudara/Saudari saya dahului dengan juta=
+an terima kasih... Semuga dengan pekej ini kita dapat berhubung lebih r=
+apat dan misi perjuangan lebih mudah dicapai=85. Insyaallah.
+
+Sekian dahulu buat masa ini,
+
+
+Wassalam dan selamat sejahtera dari saya...
+
+MAIZATUL
+
+
+
+ Please Paste following link to Un-subscribe :  http://www.pekida.org/m=
+aillist/unsubscribe.php?mail=3Dlinux-newbie@vger.kernel.org&id=3D12
+
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
