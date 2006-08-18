@@ -1,67 +1,67 @@
-From: "Abu M. Muttalib" <abum@aftek.com>
-Subject: RE: Relation between free() and remove_vm_struct()
-Date: Thu, 17 Aug 2006 16:57:16 +0530
-Message-ID: <BKEKJNIHLJDCFGDBOHGMEEFBDGAA.abum@aftek.com>
-References: <1155811716.4494.51.camel@laptopd505.fenrus.org>
+From: Andy Whitcroft <apw@shadowen.org>
+Subject: Re: Relation between free() and remove_vm_struct()
+Date: Fri, 18 Aug 2006 12:43:47 +0100
+Message-ID: <44E5A7F3.8080707@shadowen.org>
+References: <BKEKJNIHLJDCFGDBOHGMEEFBDGAA.abum@aftek.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <1155811716.4494.51.camel@laptopd505.fenrus.org>
+In-Reply-To: <BKEKJNIHLJDCFGDBOHGMEEFBDGAA.abum@aftek.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Arjan van de Ven <arjan@infradead.org>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Abu M. Muttalib" <abum@aftek.com>
+Cc: Arjan van de Ven <arjan@infradead.org>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mm <linux-mm@kvack.org>
 
-Hi,
+Abu M. Muttalib wrote:
+> Hi,
+> 
+>>>> second of all, glibc delays freeing of some memory (in the brk() area)
+>>>> to optimize for cases of frequent malloc/free operations, so that it
+>>>> doesn't have to go to the kernel all the time (and a free would imply
+> a
+>>>> cross cpu TLB invalidate which is *expensive*, so batching those up is
+> a
+>>>> really good thing for performance)
+>>> As per my observation, in two scenarios that I have tried, in one
+> scenario I
+>>> am able to see the prints from remove_vm_struct(), but in the other
+>>> scenario, I don't see any prints from remove_vm_strcut().
+>>>
+>>> My question is, if there is delayed freeing of virtual address space, it
+>>> should be the same in both the scenarios, but its not the case, and this
+>>> behavior is consistent for my two scenarios, i.e.. in one I am able to
+> see
+>>> the kernel prints and in other I am not, respectively.
+>> I'm sorry but you're not providing enough information for me to
+>> understand your follow-on question.
+> 
+> Well, the application, which is causing problem is specific to our
+> organization and details may not be known to the list. Any ways I am
+> detailing it further,
+> 
+> Our application is a VoIP application, which uses OSIP stack.
+> 
+> While running the application, when I give outgoing call, I see the VM
+> getting allocated and subsequently getting freed, this I have verified from
+> /proc/meminfo and kernel prints (that of remove_vm_struct). But in the case
+> of incoming call, though this is a reverse case, but I see memory only
+> getting allocated and not being freed.
+> 
+> I can see in the code that the free function is called but the call has not
+> been propagated to the kernel. The allocation is in the tune of 4 MB, so the
+> memory must have been allocated using mmap and not brk, as the heap size for
+> an application is defined to be 4 K, as per my knowledge. Even if the
+> allocation is from heap, the heap should get enlarged and on subsequent call
+> to free, the surplus space should be returned to OS.
+> 
+> Please help.
 
-> > > second of all, glibc delays freeing of some memory (in the brk() area)
-> > > to optimize for cases of frequent malloc/free operations, so that it
-> > > doesn't have to go to the kernel all the time (and a free would imply
-a
-> > > cross cpu TLB invalidate which is *expensive*, so batching those up is
-a
-> > > really good thing for performance)
-> >
-> > As per my observation, in two scenarios that I have tried, in one
-scenario I
-> > am able to see the prints from remove_vm_struct(), but in the other
-> > scenario, I don't see any prints from remove_vm_strcut().
-> >
-> > My question is, if there is delayed freeing of virtual address space, it
-> > should be the same in both the scenarios, but its not the case, and this
-> > behavior is consistent for my two scenarios, i.e.. in one I am able to
-see
-> > the kernel prints and in other I am not, respectively.
->
-> I'm sorry but you're not providing enough information for me to
-> understand your follow-on question.
+Can you attach a ptrace to the process in question to see what calls it 
+makes, brk, mmap, munmap should be sufficient.  That will allow you to 
+determine if the memory is being returned by the libc to the kernel or not.
 
-Well, the application, which is causing problem is specific to our
-organization and details may not be known to the list. Any ways I am
-detailing it further,
-
-Our application is a VoIP application, which uses OSIP stack.
-
-While running the application, when I give outgoing call, I see the VM
-getting allocated and subsequently getting freed, this I have verified from
-/proc/meminfo and kernel prints (that of remove_vm_struct). But in the case
-of incoming call, though this is a reverse case, but I see memory only
-getting allocated and not being freed.
-
-I can see in the code that the free function is called but the call has not
-been propagated to the kernel. The allocation is in the tune of 4 MB, so the
-memory must have been allocated using mmap and not brk, as the heap size for
-an application is defined to be 4 K, as per my knowledge. Even if the
-allocation is from heap, the heap should get enlarged and on subsequent call
-to free, the surplus space should be returned to OS.
-
-Please help.
-
-Regards,
-Abu.
-
-
+-apw
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
