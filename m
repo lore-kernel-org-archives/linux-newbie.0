@@ -1,24 +1,23 @@
-From: "Constance" <caseinaccredit@rpstoneconsultinginc.com>
-Subject: Enjoy This costs much less than a luxury car - but makes you a lot more confident and attractive.
-Date: Fri, 18 Aug 2006 21:02:08 -0400
-Message-ID: <02661377541127.F8C5B78488__45865.8142052174$1155949333$gmane$org@ADGE7ATA>
+From: "Julius" <aqueductcuff@rpitech.com>
+Subject: Feel Pleasure from Take your chance to make her adore you. Outrun her ex in terms of size and performance!
+Date: Sat, 19 Aug 2006 03:28:11 -0700
+Message-ID: <27223914363146.4EF3F0E744__37449.5552889586$1155983383$gmane$org@ZCONM5>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-raid-owner@vger.kernel.org
 
-Get the freshest
+Discover the latest
+ Now you don't need a huge car or expensive watch to prove that you are not at all size-challenged. A month or even less, and you will see your best friend growing in length and girth.
 
- Put aside any doubts and stuff, this terrific product for smart males really does what you need! Bigger, stronger and eventually better - this is what you will have in just a couple of months.
- By adding inches you are adding appeal, confidence and hype about you among women. Your confidence will jump through the roof - and women go crazy about guys with big self-esteem! Come in: http://www.gozolvor.com/gal/ms/ 
+ Stop taking that size-does-not-matter crap from girls! They just don't want to hurt you! Sufficient size, rigidity and staying power will be just among the few things you'll start enjoying. Come on in here: http://www.posadroft.com/gal/ms/ 
 
-Concerned with your size and hardness? Study this, here's the answer!
+This is what you always needed to lead a happier, more fulfilling life.
 
-
- You can throw a cat however you want; it always lands on its feet  A slip of the tongue is no fault of the mind and he who laughs is very unkind. Night is the Mother of Counsel God helps those who help themselves More haste less speed
+ Life is like a horse race there are winners and losers Corporations have neither bodies to be punished nor souls to be damned  Its too late to shut the stable door after the horse has bolted Think Much, Speak Little and Write Less
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
