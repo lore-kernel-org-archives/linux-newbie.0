@@ -1,25 +1,35 @@
-From: "Lizzie" <deemphasizecredential@rosspirtprom.ru>
-Subject: Revel in  Take control over your male body image. This delivers amazing results and makes your dearest limb bigger and better-working!
-Date: Sat, 19 Aug 2006 16:33:51 +0600
-Message-ID: <80940735433763.C2B313B600@4RLVN>
+From: "www.muzikvideo.gen.ms" <muzik@video.gen.ms>
+Subject: www.muzikvideo.gen.ms   KLIP INDIRMEK ISTEYEN HEMEN GIRSIN!!!
+Date: Sun, 20 Aug 2006 17:18:55
+Message-ID: <200608201419.k7KEJbYg005501@zeus1.kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-raid-owner@vger.kernel.org
+Content-Transfer-Encoding: quoted-printable
+To: linux-newbie@vger.kernel.org
 
-Latest stuff
- Now you don't need a huge car or expensive watch to prove that you are not at all size-challenged. You will be counting days before your rod will be almost reaching your knees.
+www.muzikvideo.gen.ms   KLIP INDIRMEK ISTEYEN HEMEN GIRSIN!!!
 
- She certainly has fantasies about a large-sized man pleasing her to the full. Just imagine your new happy life with more size, more adoration from females and more self-assurance. Take a look: http://www.posadroft.com/gal/ms/ 
+uzun s=FCredir yayinda olan k=F6kl=FC ve =FCnl=FC klip sitesinden haberiniz=
+ yok mu? hemen=20
+sizde klip indirmek istiyorsan=FDz, hemde zahmetsiz, hizli ve hemen sitemiz=
+e buyrun.
+www.muzikvideo.gen.ms
 
-Let's face it, you always wanted it. And with this product you can finally get what you want - better size and its better usage!
+bu maili tanidiklar=FDniza g=F6nderirseniz seviniriz. klip indirmek herkesi=
+n hakki. her=20
+dilden kaliteli klip isteyenler buyursun
+yeni cikan klipler aninda sitemize eklenmektedir. ayrica 500 den fazla kali=
+teli klipte sitemizde bulunmaktadir.
+en g=FCncel klip sitesine sizi de bekleriz...
 
 
- Two's company, three's.. the musketeers. The female of the species is more deadly than the male You can throw a cat however you want; it always lands on its feet  Fogiveness is the fragrance the violet sheds on the foot that crushed it When yuh play out all yuh trump cards yuh gat to lose till game done.
+www.muzikvideo.gen.ms
 
+
+Bir Sorun Ya Da Istek Olursa MSN Ve Mail Adresi: muzikonlinetk@hotmail.com
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
