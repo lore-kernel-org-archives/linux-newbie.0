@@ -1,43 +1,52 @@
-From: Josef Sipek <jsipek@fsl.cs.sunysb.edu>
-Subject: Re: Reading the GDT in kernel space?
-Date: Wed, 23 Aug 2006 11:29:59 -0400
-Message-ID: <20060823152959.GA28873@filer.fsl.cs.sunysb.edu>
-References: <b115cb5f0608230709n3a896e12mcd78f9688fd8010e@mail.gmail.com>
+From: "Mollie" <788carlo@hitbox.com>
+Subject: Make yourself more attractive to others
+Date: Wed, 23 Aug 2006 15:43:49 -0400
+Message-ID: <200608231945.k7NJjMOh007372@zeus1.kernel.org>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <b115cb5f0608230709n3a896e12mcd78f9688fd8010e@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: linux-net-owner@vger.kernel.org
 
-On Wed, Aug 23, 2006 at 07:39:22PM +0530, Rajat Jain wrote:
-> Hi,
-> 
-> I'm trying to read & display the GDT contents in kernel space. Is this
-> permissible? I used the "sgdt" assembly instruction to load the GDT
-> register, and found out the address & length of GDT from that (It is
-> "0000c248") . Is this the physical or the virtual address?
+Hi Linux-net-owner!!.
 
-I quickly looked at the Intel Instruction Set Reference for SGDT, and it
-says that the stored value is 6 bytes long.
+Being even a little overweight today can be extremely difficult and is embarassing for so many people. Today's society expects men and women to look lean, toned and hard at all times. Tough standards to live up to! And mostly unrealistic. However, steady weight loss and improved self image are not unrealistic, at all! In fact anyone can do it, quite easily, including you!
 
-"The 16-bit limit field of the register is stored in the low 2 bytes of the
-memory location and the 32-bit base address is stored in the high 4 bytes."
+http://www.dorsoda.com/n/?52&crimeacapricious
+Anatrim is an amazing new product aimed at helping men and women of any age and size lose weight and rapidly tone their bodies. Anatrim has been called a "miracle herb" on such respected media outlets as CNN, OPRAH WINFREY, ABCNEWS, 20/20, and many many others! It has already helped millions of overweight people shed pound after pound of unwanted extra weight, why not add yourself to the growing number of people benefiting from this amazing product! Here are a few of the thousands of email thank you's we have received"
 
-0xc248xxxx looks like a valid address, so my guess is that you are off by 2
-bytes :)
 
-Hope this helps,
 
-Josef "Jeff" Sipek.
 
--- 
-Once you have their hardware. Never give it back.
-(The First Rule of Hardware Acquisition)
+"This stuff is really great! After losing 32 lbs months earlier I hit a brick wall. I work out three times a week, 30 min of cardio and 30 minutes in the weight room. My two trouble zones (my stomach and legs) just wouldn't budge. I did all the exercises I could think of to target them, but nothing helped! Then I tried Anatrim and everything changed! In just 6 weeks I lost the remaining 18 pounds. I always knew that couldn't be the thinnest I could get. I'm glad I found this product. I finally achieved the body I wanted. My husband says I look like a goddess. 
+
+Thanks :)
+Jenny
+
+
+
+"I love to eat Junk food and I can not stay on those high-protein diets. I tried several other diets over the last five years without being able to shed pounds and burn the food cravings. I started taking two Anatrim capsules before most meals, and lost 30 pounds in three months. Your Anatrim Product is amazing! I have recommended it to all my friends already." 
+Amanda, Tuscon Arizona
+
+
+"I was born overweight and teased because of it most of my younger years. Finally at age 25 I took the initialtive and purchased a 4 month supply of Anatrim. I have since shed 22 pounds of unwanted weight and have a new enthusiasm for life! I go out more, socialize more, and have even met a special lady who I love. I credit much of my new-found happiness to the weight I lost and your product. 
+
+
+
+Thank you so much!"
+Henry N. California
+
+http://www.gnjserv.com/n/?52&butylcoy
+Not only is this product now available and ready to be shipped to your front door, but big discount specials are now in effect! Take advantage before prices go back up to the regular prices.
+
+
+
+Click here to view price specials and discounts! And congradulations on taking the first step towards the new you!
+
+Wed, 23 Aug 2006 15:43:49 -0400
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
