@@ -1,42 +1,27 @@
-From: mohanlal jangir <mohanlal@samsung.com>
-Subject: Re: Reading the GDT in kernel space?
-Date: Thu, 24 Aug 2006 14:10:08 +0530
-Message-ID: <003001c6c758$e88c8310$26526c6b@sisodomain.com>
-References: <b115cb5f0608230709n3a896e12mcd78f9688fd8010e@mail.gmail.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: Generic Disk Driver in Linux
+Date: Thu, 24 Aug 2006 18:17:59 +0530
+Message-ID: <292693080608240547w394bacc4l2410b6eba98d950b@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1751216AbWHXMsB@vger.kernel.org>
+Content-Disposition: inline
+Sender: linux-kernel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; reply-type="response"; charset="us-ascii"; format="flowed"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vget.kernel.org
+Cc: satinder.jeet@gmail.com
 
-> Hi,
->
-> I'm trying to read & display the GDT contents in kernel space. Is this
-> permissible? I used the "sgdt" assembly instruction to load the GDT
-> register, and found out the address & length of GDT from that (It is
-> "0000c248") . Is this the physical or the virtual address?
+Hi List,
 
-It's a physical address. Convert in virtual address using __va(x) before 
-dereferencing.
+I was curious that can we develop a generic disk driver that could
+handle all the kinds of hard drives - IDE, SCSI, RAID et al?
 
+I thought we could use the BIOS interrupt 13H for this purpose, but
+ran into a LOT of real mode / protected mode issues.
 
->
-> I'm now trying to print out the contents of GDT. I am able to print
-> this address. BUt the moment I try to deference it, the kernel OOPS. I
-> understand that this is because the address is not in kernel virtual
-> address space (3GB). I tried using "ioremap" but it always returns
-> NULL. Any ideas?
->
-> Thanks in Advance,
->
-> Rajat
->
+Any other ideas?
 
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks,
+
+Dan.
