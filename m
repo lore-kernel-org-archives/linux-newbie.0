@@ -1,51 +1,39 @@
-From: "Mollie" <788carlo@hitbox.com>
-Subject: Make yourself more attractive to others
-Date: Wed, 23 Aug 2006 15:43:49 -0400
-Message-ID: <200608231945.k7NJjMOh007372@zeus1.kernel.org>
+From: mohanlal jangir <mohanlal@samsung.com>
+Subject: Re: Reading the GDT in kernel space?
+Date: Thu, 24 Aug 2006 14:10:08 +0530
+Message-ID: <003001c6c758$e88c8310$26526c6b@sisodomain.com>
+References: <b115cb5f0608230709n3a896e12mcd78f9688fd8010e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-net-owner@vger.kernel.org
+Content-Type: text/plain; reply-type="response"; charset="us-ascii"; format="flowed"
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>
 
-Hi Linux-net-owner!!.
+> Hi,
+>
+> I'm trying to read & display the GDT contents in kernel space. Is this
+> permissible? I used the "sgdt" assembly instruction to load the GDT
+> register, and found out the address & length of GDT from that (It is
+> "0000c248") . Is this the physical or the virtual address?
 
-Being even a little overweight today can be extremely difficult and is embarassing for so many people. Today's society expects men and women to look lean, toned and hard at all times. Tough standards to live up to! And mostly unrealistic. However, steady weight loss and improved self image are not unrealistic, at all! In fact anyone can do it, quite easily, including you!
-
-http://www.dorsoda.com/n/?52&crimeacapricious
-Anatrim is an amazing new product aimed at helping men and women of any age and size lose weight and rapidly tone their bodies. Anatrim has been called a "miracle herb" on such respected media outlets as CNN, OPRAH WINFREY, ABCNEWS, 20/20, and many many others! It has already helped millions of overweight people shed pound after pound of unwanted extra weight, why not add yourself to the growing number of people benefiting from this amazing product! Here are a few of the thousands of email thank you's we have received"
-
-
-
-
-"This stuff is really great! After losing 32 lbs months earlier I hit a brick wall. I work out three times a week, 30 min of cardio and 30 minutes in the weight room. My two trouble zones (my stomach and legs) just wouldn't budge. I did all the exercises I could think of to target them, but nothing helped! Then I tried Anatrim and everything changed! In just 6 weeks I lost the remaining 18 pounds. I always knew that couldn't be the thinnest I could get. I'm glad I found this product. I finally achieved the body I wanted. My husband says I look like a goddess. 
-
-Thanks :)
-Jenny
+It's a physical address. Convert in virtual address using __va(x) before 
+dereferencing.
 
 
-
-"I love to eat Junk food and I can not stay on those high-protein diets. I tried several other diets over the last five years without being able to shed pounds and burn the food cravings. I started taking two Anatrim capsules before most meals, and lost 30 pounds in three months. Your Anatrim Product is amazing! I have recommended it to all my friends already." 
-Amanda, Tuscon Arizona
-
-
-"I was born overweight and teased because of it most of my younger years. Finally at age 25 I took the initialtive and purchased a 4 month supply of Anatrim. I have since shed 22 pounds of unwanted weight and have a new enthusiasm for life! I go out more, socialize more, and have even met a special lady who I love. I credit much of my new-found happiness to the weight I lost and your product. 
-
-
-
-Thank you so much!"
-Henry N. California
-
-http://www.gnjserv.com/n/?52&butylcoy
-Not only is this product now available and ready to be shipped to your front door, but big discount specials are now in effect! Take advantage before prices go back up to the regular prices.
-
-
-
-Click here to view price specials and discounts! And congradulations on taking the first step towards the new you!
-
-Wed, 23 Aug 2006 15:43:49 -0400
+>
+> I'm now trying to print out the contents of GDT. I am able to print
+> this address. BUt the moment I try to deference it, the kernel OOPS. I
+> understand that this is because the address is not in kernel virtual
+> address space (3GB). I tried using "ioremap" but it always returns
+> NULL. Any ideas?
+>
+> Thanks in Advance,
+>
+> Rajat
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
