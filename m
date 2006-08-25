@@ -1,38 +1,43 @@
-From: Robert Hancock <hancockr@shaw.ca>
-Subject: Re: Generic Disk Driver in Linux
-Date: Thu, 24 Aug 2006 18:12:00 -0600
-Message-ID: <44EE4050.7020608@shaw.ca>
-References: <fa.RkJMFmeAVY9kZAODCPJ1Yc8Vtww@ifi.uio.no>
+From: Arjan van de Ven <arjan@infradead.org>
+Subject: RE: Generic Disk Driver in Linux
+Date: Fri, 25 Aug 2006 10:03:41 +0200
+Message-ID: <1156493021.3032.2.camel@laptopd505.fenrus.org>
+References: <20060824222136.49055.qmail@web83114.mail.mud.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1030440AbWHYANw@vger.kernel.org>
-In-reply-to: <fa.RkJMFmeAVY9kZAODCPJ1Yc8Vtww@ifi.uio.no>
-Sender: linux-kernel-owner@vger.kernel.org
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20060824222136.49055.qmail@web83114.mail.mud.yahoo.com>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vget.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Aleksey Gorelov <dared1st@yahoo.com>
+Cc: jengelh@linux01.gwdg.de, daniel.rodrick@gmail.com, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, satinder.jeet@gmail.com
 
-Daniel Rodrick wrote:
-> Hi List,
+On Thu, 2006-08-24 at 15:21 -0700, Aleksey Gorelov wrote:
 > 
-> I was curious that can we develop a generic disk driver that could
-> handle all the kinds of hard drives - IDE, SCSI, RAID et al?
+> --- Arjan van de Ven <arjan@infradead.org> wrote:
 > 
-> I thought we could use the BIOS interrupt 13H for this purpose, but
-> ran into a LOT of real mode / protected mode issues.
 > 
-> Any other ideas?
+> > > > 
+> > > > it'll be easier and quicker to rev engineer 5 more formats than it will
+> > > > be to get the bios thing working ;) And the performance of the bios
+> > > probably true - I'm actually not great fan of originally proposed approach. But, 
+> > > unfortunately, manufactures and vendors still look more to MS. Until market 
+> > > situation changes, there is always a gap...
+> > 
+> > there are only so many different ways to describe raid0.
+> > And those companies aren't going to keep changing that "just because",
+> > changing costs them money, so there is an incentive for them to keep it
+> > as is
+> 
+> Bottom line is - today there is lack of support for it, 
 
-Aside from the real/protected mode issues (which are pretty much a 
-show-stopper right there), the performance would be horrible. Usually 
-the Interrupt 13 code on especially the more advanced controllers like 
-hardware RAID, etc. is designed solely to function, with little 
-attention to speed, and the performance tends to be horrible - look at 
-versions of Ghost that run into DOS and look how long it takes to image 
-a drive connected to an IBM ServeRAID controller..
+can you name one?
+(so far all you did was claim this but not name even one)
 
--- 
-Robert Hancock      Saskatoon, SK, Canada
-To email, remove "nospam" from hancockr@nospamshaw.ca
-Home Page: http://www.roberthancock.com/
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
