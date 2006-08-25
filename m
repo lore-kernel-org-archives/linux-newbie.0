@@ -1,32 +1,38 @@
-From: Aleksey Gorelov <dared1st@yahoo.com>
+From: Robert Hancock <hancockr@shaw.ca>
 Subject: Re: Generic Disk Driver in Linux
-Date: Thu, 24 Aug 2006 15:27:27 -0700 (PDT)
-Message-ID: <20060824222727.67706.qmail@web83111.mail.mud.yahoo.com>
-References: <44EE0DDA.5060600@cfl.rr.com>
+Date: Thu, 24 Aug 2006 18:12:00 -0600
+Message-ID: <44EE4050.7020608@shaw.ca>
+References: <fa.RkJMFmeAVY9kZAODCPJ1Yc8Vtww@ifi.uio.no>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <44EE0DDA.5060600@cfl.rr.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1030440AbWHYANw@vger.kernel.org>
+In-reply-to: <fa.RkJMFmeAVY9kZAODCPJ1Yc8Vtww@ifi.uio.no>
+Sender: linux-kernel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Phillip Susi <psusi@cfl.rr.com>
-Cc: arjan@infradead.org, jengelh@linux01.gwdg.de, daniel.rodrick@gmail.com, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, satinder.jeet@gmail.com
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: linux-kernel@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vget.kernel.org
 
-
-
---- Phillip Susi <psusi@cfl.rr.com> wrote:
-
-> The int 13 calls to the bios can only accept addresses within the first 
-> 1 MB of memory, and the calls are synchronous, so DMA really doesn't 
-> matter as the cpu will be busy waiting anyhow while the IO takes place, 
-> which will wreak all kinds of hell on the rest of the running system, 
-> including other hardware ISRs.
+Daniel Rodrick wrote:
+> Hi List,
 > 
-  Not that easy. Once you start int13 transfer, your vm86 thread may be 
-preempted to allow cpu doing something useful, including other ISRs processing.
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+> I was curious that can we develop a generic disk driver that could
+> handle all the kinds of hard drives - IDE, SCSI, RAID et al?
+> 
+> I thought we could use the BIOS interrupt 13H for this purpose, but
+> ran into a LOT of real mode / protected mode issues.
+> 
+> Any other ideas?
+
+Aside from the real/protected mode issues (which are pretty much a 
+show-stopper right there), the performance would be horrible. Usually 
+the Interrupt 13 code on especially the more advanced controllers like 
+hardware RAID, etc. is designed solely to function, with little 
+attention to speed, and the performance tends to be horrible - look at 
+versions of Ghost that run into DOS and look how long it takes to image 
+a drive connected to an IBM ServeRAID controller..
+
+-- 
+Robert Hancock      Saskatoon, SK, Canada
+To email, remove "nospam" from hancockr@nospamshaw.ca
+Home Page: http://www.roberthancock.com/
