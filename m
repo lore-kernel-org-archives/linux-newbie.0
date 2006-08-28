@@ -1,57 +1,68 @@
-From: Rene Herman <rene.herman@keyaccess.nl>
-Subject: Re: Reading the GDT in kernel space?
-Date: Mon, 28 Aug 2006 02:47:23 +0200
-Message-ID: <44F23D1B.4020605@keyaccess.nl>
-References: <b115cb5f0608230709n3a896e12mcd78f9688fd8010e@mail.gmail.com> <003001c6c758$e88c8310$26526c6b@sisodomain.com>
+From: Helge Hafting <helge.hafting@aitel.hist.no>
+Subject: Re: Generic Disk Driver in Linux
+Date: Mon, 28 Aug 2006 12:46:59 +0200
+Message-ID: <44F2C9A3.3090608@aitel.hist.no>
+References: <20060825170513.60108.qmail@web83113.mail.mud.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <003001c6c758$e88c8310$26526c6b@sisodomain.com>
+In-Reply-To: <20060825170513.60108.qmail@web83113.mail.mud.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: mohanlal jangir <mohanlal@samsung.com>
-Cc: Rajat Jain <rajat.noida.india@gmail.com>, Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>
+To: Aleksey Gorelov <dared1st@yahoo.com>
+Cc: jengelh@linux01.gwdg.de, daniel.rodrick@gmail.com, linux-kernel@vger.kernel.org, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, satinder.jeet@gmail.com
 
-mohanlal jangir wrote:
+Aleksey Gorelov wrote:
+> --- Helge Hafting <helge.hafting@aitel.hist.no> wrote:
+>
+>   
+>> Aleksey Gorelov wrote:
+>>     
+>>>> From: linux-kernel-owner@vger.kernel.org 
+>>>> [mailto:linux-kernel-owner@vger.kernel.org] On Behalf Of Jan Engelhardt
+>>>>     
+>>>>         
+>>>>> I was curious that can we develop a generic disk driver that could
+>>>>> handle all the kinds of hard drives - IDE, SCSI, RAID et al?
+>>>>>       
+>>>>>           
+>>>> ide_generic
+>>>> sd_mod
+>>>>
+>>>> All there, what more do you want?
+>>>>     
+>>>>         
+>>> Unfortunately, not _all_. DMRAID does not support all fake raids yet. Moreover, there is
+>>>       
+>> usually
+>>     
+>>> some gap for bleeding edge hw support.
+>>>   
+>>>       
+>> Nobody will want to use bleeding edge hardware with an int13 driver,
+>> because the performance will necessarily be much worse than using more
+>> moderate hardware with the generic IDE driver.
+>>     
+> If some one wants Linux server - I totally agree. I would probably even avoid relying purely on
+> generic IDE and instead use chipset specific variant or libata.
+> But if someone wants to access already installed & working other OS stuff - that's a different
+> story. Bad performance is still better than no support at all.
+>   
+Yes, there is forensics, and there is the copying of data when
+migrating a server to linux from some other OS. 
 
->> I'm trying to read & display the GDT contents in kernel space. Is
->> this permissible?
+Perhaps I worry too much - I imagine salesmen claiming linux
+support for their raid cards, because the int13 driver works. 
+Just like they claim "linux support" with abominations like ndiswrapper.
+The bad effects may be carefully hidden with "disk" tests that are
+smaller than main memory in some huge-memory machine.
 
-Sure. Also note that sgdt is available from userspace even.
+Then linux gets a bad reputation among ignorant purchasers,
+performance went so much up with some other os .  . .
 
->> I used the "sgdt" assembly instruction to load the GDT register,
->> and found out the address & length of GDT from that (It is 
->> "0000c248") . Is this the physical or the virtual address?
+Helge Hafting
 
-SGDT gets you a kernel virtual address. That 0000c248 isn't though and 
-it's incorrect. The problem you will be experiencing is that you haven't 
-told GCC to pack the struct in which you put the result. If you declare:
-
-struct gdtr {
-         u16 limit;
-         u32 base;
-};
-
-then gcc will align the 32-bit base field on a 32-bit boundary, meaning 
-it will end up looking like:
-
-struct gdtr {
-         u16 limit;
-	u16 padding
-         u32 base;
-};
-
-SGDT then stores into the limit and padding and only the low 16-bits of 
-base (your base is actually 0xc248xxxx). To avoid this, tell GCC to pack 
-the struct:
-
-struct gdtr {
-         u16 limit;
-         u32 base;
-} __attribute__((packed));
-
-Rene.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
