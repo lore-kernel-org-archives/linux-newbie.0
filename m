@@ -1,55 +1,30 @@
-From: tom arnall <kloro2006@gmail.com>
-Subject: Re: another place where bootup messages are recorded?
-Date: Tue, 29 Aug 2006 17:40:02 -0700
-Message-ID: <200608291740.02390.kloro2006@gmail.com>
-References: <20060817141403.10351.qmail@web81707.mail.mud.yahoo.com> <200608291131.43788.kloro2006@gmail.com> <20060829205333.GC1633@slug>
-Reply-To: kloro2006@gmail.com
+From: Alan Cox <alan@lxorguk.ukuu.org.uk>
+Subject: Re: Interrupt handler registration for multiple devices
+Date: Wed, 30 Aug 2006 20:38:35 +0100
+Message-ID: <1156966715.6271.211.camel@localhost.localdomain>
+References: <7783925d0608300812j2175164dja401b4e763a5ac43@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20060829205333.GC1633@slug>
-Content-Disposition: inline
+In-Reply-To: <7783925d0608300812j2175164dja401b4e763a5ac43@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Rick Brown <rick.brown.3@gmail.com>
+Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org, linux-kernel@vger.kernel.org
 
-On Tuesday 29 August 2006 13:53, you wrote:
-> On Tue, Aug 29, 2006 at 11:31:43AM -0700, tom arnall wrote:
-> > Recently I have begun to get a great number of messages at boot-up which
-> > are about 'querying' scsi drives. I need to get a better look at the
-> > messages, but cannot find them in the logs in /var/log. Is there another
-> > place where bootup messages are recorded?
->
-> You'll have them printed by typing 'dmesg'
-> Regards,
-> Frederik
->
+Ar Mer, 2006-08-30 am 20:42 +0530, ysgrifennodd Rick Brown:
+> Hi,
+> 
+> I want to write a driver that will handle multiple devices. These
+> devices will share the IRQ line. Do I need to register my (same)
+> interrupt handler as many times as the number of devices(by calling
+> request_irq())?
 
-
-the messages aren't in there either  ;( .  the weird thing about them is they 
-say that the boot process is checking a scsi device, of which i have none on 
-my system. this phenomenon started btw after i installed the following:
-
-	suspend2
-	software to configure the touchpad
-	laptop mode
-	acpi-related stuff
-
-also simultaneous to the appearance of the new messages was the appearance of 
-a recurring 'mini-hang' in the system. the hang lasts about one second and 
-occurs every 4 mins 2 secs exactly, except for a short period after booting, 
-when the intervals are smaller though still in a precise pattern. whenever 
-the hang occurs, the fan comes on for about 10 seconds.
-
-	
-
-
-	
-
-
-
-
+Up to you. If you are working with standard devices that need no special
+handling to share interrupts (eg PCI bus), the device model makes it
+more natural to do that and let the kernel call your handler once for
+each device (passing a different dev_id).
 
 
 -
