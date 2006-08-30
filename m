@@ -1,35 +1,59 @@
-From: Octavian Purdila <tavi@cs.pub.ro>
-Subject: Re: Interrupt handler registration for multiple devices
-Date: Wed, 30 Aug 2006 18:29:08 +0300
-Message-ID: <200608301829.08747.tavi@cs.pub.ro>
-References: <7783925d0608300812j2175164dja401b4e763a5ac43@mail.gmail.com>
-Reply-To: tavi@cs.pub.ro
+From: "Conway S. Smith" <beolach@comcast.net>
+Subject: Re: Combining three commands
+Date: Wed, 30 Aug 2006 11:26:30 -0600
+Message-ID: <44F5CA46.6000509@comcast.net>
+References: <44F438FB.5080207@wirkle.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <7783925d0608300812j2175164dja401b4e763a5ac43@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <44F438FB.5080207@wirkle.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org
-Cc: Rick Brown <rick.brown.3@gmail.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="windows-1252"
+To: Santosh Puranshettiwar <santosh@wirkle.com>
+Cc: linux-newbie@vger.kernel.org
 
-On Wednesday 30 August 2006 18:12, Rick Brown wrote:
-> Hi,
->
-> I want to write a driver that will handle multiple devices. These
-> devices will share the IRQ line. Do I need to register my (same)
-> interrupt handler as many times as the number of devices(by calling
-> request_irq())?
->
+Santosh Puranshettiwar wrote:
+> $ /home/foouser/decoder input-file.amr temp.raw
+> $ sox =96r 8000 =96w =96c 1 =96s temp.raw =96r *8000* =96w =96c 1 tem=
+p.wav
+> $ lame =96h temp.wav file.mp3 --tt song-title --ta artist --tl album
+>=20
+> Here are three commands that I wish to combine in one line so as to=20
+> avoid any temporary files?
+> Could anyone suggest me a solution.
+>=20
+> Santosh.
 
-No, once will suffice. However, you will need to check your devices registers 
-and figure out which device triggered the interrupt.
+I'm not entirely sure that I understand what you're asking, but if
+you're asking how to create the end "file.mp3" without creating the
+"temp.raw" and "temp.wav" files, then you can do that if all of your
+/home/foousr/decoder can write its output to standard output instead of
+a file.  Most decoder apps (including sox & lame) are able to do that,
+by specifying a single dash, "-", for the filename.  Assuming
+/home/foouser/decoder works in the standard way, you then connect its
+standard output to the standard input of the next command like this:
 
-tavi
+$ /home/foouser/decoder input-file.amr "-" | sox =96r 8000 =96w =96c 1 =
+=96s -t
+raw "-" =96r *8000* =96w =96c 1 -t wav "-" | lame =96h "-" file.mp3 --t=
+t
+song-title --ta artist --tl album
+
+That should tell /home/foouser/decoder to read a datastream from
+input-file.amr, and write the decoded datastream to stdout; that stdout
+is then connected by a pipe to the stdin of the sox command, which will
+read its input from the stdin, with the assumption that the input is in
+raw format, and write its output to stdout in wav format (I added the
+"-t raw" & "-t wav" options), and then the stdout of the sox command is
+connected to the stdin of the lame command, and the lame command reads
+its input from stdin, and writes to file.mp3.
+
+Hope this helps,
+Conway S. Smith
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
