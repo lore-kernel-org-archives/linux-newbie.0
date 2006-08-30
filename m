@@ -1,7 +1,7 @@
 From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: Spinlock query
-Date: Wed, 30 Aug 2006 07:42:32 +0530
-Message-ID: <7783925d0608291912i3f04d460kc9edebf9d358dbc3@mail.gmail.com>
+Subject: Interrupt handler registration for multiple devices
+Date: Wed, 30 Aug 2006 20:42:14 +0530
+Message-ID: <7783925d0608300812j2175164dja401b4e763a5ac43@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -9,28 +9,18 @@ Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org, linux-kernel@vger.kernel.org
 
 Hi,
 
-In my driver (Process context), I have written the following code:
+I want to write a driver that will handle multiple devices. These
+devices will share the IRQ line. Do I need to register my (same)
+interrupt handler as many times as the number of devices(by calling
+request_irq())?
 
---------------------------------------------
-spin_lock(lock)
-...
-//Critical section to manipulate driver data
-...
-spin_u lock(lock)
----------------------------------------------
+Also an unrelated query. Can I sleep after a call to preempt_kernel()??
 
-I have written similar code in my interrupt handler (Interrupt
-context). The driver data is not accessed from anywhere else. Is my
-code safe from any potential concurrency issues? Is there a need to
-use spin_lock_irqsave()? In both the places?
-
-I intend to run the driver on SMP machine.
-
-Regards,
+TIA,
 
 Rick
 -
