@@ -1,41 +1,38 @@
-From: Ray Olszewski <ray@comarre.com>
-Subject: Re: another place where bootup messages are recorded?
-Date: Tue, 29 Aug 2006 16:35:48 -0700
-Message-ID: <44F4CF54.5060905@comarre.com>
-References: <20060817141403.10351.qmail@web81707.mail.mud.yahoo.com> <200608271145.37956.kloro2006@gmail.com> <44F1F1EE.1010106@comarre.com> <200608291131.43788.kloro2006@gmail.com> <44F4AEBA.70201@gelm.net>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: Spinlock query
+Date: Wed, 30 Aug 2006 07:42:32 +0530
+Message-ID: <7783925d0608291912i3f04d460kc9edebf9d358dbc3@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <44F4AEBA.70201@gelm.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Chuck Gelm wrote:
-> tom arnall wrote:
-> 
->> Recently I have begun to get a great number of messages at boot-up 
->> which are about 'querying' scsi drives. I need to get a better look at 
->> the messages, but cannot find them in the logs in /var/log. Is there 
->> another place where bootup messages are recorded?
->>
->> Thanks,
->>
->> Tom Arnall
->> north spit, ca
->>  
->>
-> man dmesg
-> ?
-> hth, Chuck
+Hi,
 
-In addition to what this man page tells you, see if you have a file 
-called /var/log/dmesg . Many (all?) distros these days dump the contents 
-of the dmesg buffer here during boot/init ... handy because dmesg 
-accesses a ring buffer, and later messages may have overwritten the 
-boot-time ones you want to see.
+In my driver (Process context), I have written the following code:
 
+--------------------------------------------
+spin_lock(lock)
+...
+//Critical section to manipulate driver data
+...
+spin_u lock(lock)
+---------------------------------------------
+
+I have written similar code in my interrupt handler (Interrupt
+context). The driver data is not accessed from anywhere else. Is my
+code safe from any potential concurrency issues? Is there a need to
+use spin_lock_irqsave()? In both the places?
+
+I intend to run the driver on SMP machine.
+
+Regards,
+
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
