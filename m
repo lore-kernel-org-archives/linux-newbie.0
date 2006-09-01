@@ -1,32 +1,32 @@
-From: "Deann Fitzpatrick" <Kaylarc@msn.com>
-Subject: Wow...Nice Body Figure
-Date: Fri, 01 Sep 2006 12:25:03 +0600
-Message-ID: <68BM87FE.0Z24.Kaylarc@msn.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: Getting local IP / MAC address
+Date: Fri, 1 Sep 2006 16:04:11 +0530
+Message-ID: <292693080609010334k4baadb0dpfe9716c6e45045b7@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="windows-1252"
-To: linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
+Hi,
 
+Possibly this is not the best list to ask, but still, would appreciate
+if some one could help.
 
-The exciting new diet breakthrough =93Anatrim Cactus=94,=20
-a phenomenal new product that=92s taking the fat loss industry=20
-by a storm!=20
+Is there any portable / standard way to get the local IP & MAC address
+in a C program (in user space)? I heard ioctl "SIOCGIFADDR" is a way,
+but is is portable (read dependable)?
 
-- Promotes safe, rapid fat loss
-- Watch the pounds melt away and the new you emerge!
-- Makes you feel and look incredible!
+Also would it provide me only IP address. Any way of getting MAC address?
 
-Losing weight has become a lot easier.
+Thanks,
 
-http://www.kaldok.com/n/?159
-
+Dan
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
