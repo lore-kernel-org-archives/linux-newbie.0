@@ -1,46 +1,64 @@
-From: Rik van Riel <riel@surriel.com>
-Subject: Re: Sleeping after preempt_disable() possible?
-Date: Fri, 01 Sep 2006 19:56:37 -0400
-Message-ID: <44F8C8B5.2050103@surriel.com>
-References: <7783925d0608312224w3a038b5fh6355c5e89c33d485@mail.gmail.com>	 <200609011546.27167.bora.sahin@ttnet.net.tr> <7783925d0609010621j5a2cd857t67336a28782fedb3@mail.gmail.com>
+From: Parav Pandit <paravpandit@yahoo.com>
+Subject: code of init process?
+Date: Sat, 2 Sep 2006 02:43:39 -0700 (PDT)
+Message-ID: <20060902094339.97369.qmail@web36605.mail.mud.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <7783925d0609010621j5a2cd857t67336a28782fedb3@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Type: multipart/alternative; boundary="0-1189207852-1157190219=:97364"
+Content-Transfer-Encoding: 8bit
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: "bora.sahin@ttnet.net.tr" <bora.sahin@ttnet.net.tr>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Rick Brown wrote:
+--0-1189207852-1157190219=:97364
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-> I was curious that after a call to preempt_disable(), can I call a
-> function that MAY sleep?
+Hi,
+  =20
+  Can someone tell me where can I find the source code for the init() proce=
+ss?
+  Instead of starting init process, I am starting my own shell and reducing=
+ the overhead of reading lot of rc files, initab, mtab, fstab.
+  =20
+  I certainly don't want to do this, but would like to know what init() is =
+doing.
+  =20
+  Regards,
+  Parav Pandit
+  =20
 
-Bad idea.  That can make the kernel do bad things...
+ 	=09
+---------------------------------
+Yahoo! Messenger with Voice. Make PC-to-Phone Calls to the US (and 30+ coun=
+tries) for 2=A2/min or less.
+--0-1189207852-1157190219=:97364
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Just take a look at schedule() in kernel/sched.c:
+<div>Hi,</div>  <div>&nbsp;</div>  <div>Can someone tell me where can I fin=
+d the source code for the init() process?</div>  <div>Instead of starting i=
+nit process, I am starting my own shell and reducing the overhead of readin=
+g lot of rc files, initab, mtab, fstab.</div>  <div>&nbsp;</div>  <div>I ce=
+rtainly don't want to do this, but would like to know what init() is doing.=
+</div>  <div>&nbsp;</div>  <div>Regards,</div>  <div>Parav Pandit</div>  <d=
+iv>&nbsp;</div><p>&#32;
+		<hr size=3D1>Yahoo! Messenger with Voice. <a href=3D"http://us.rd.yahoo.c=
+om/mail_us/taglines/postman1/*http://us.rd.yahoo.com/evt=3D39663/*http://vo=
+ice.yahoo.com">Make PC-to-Phone Calls</a> to the US (and 30+ countries) for=
+ 2=A2/min or less.
+--0-1189207852-1157190219=:97364--
 
-asmlinkage void __sched schedule(void)
-{
-...
-	if (unlikely(in_atomic() && !current->exit_state)) {
-                 printk(KERN_ERR "BUG: scheduling while atomic: "
-                         "%s/0x%08x/%d\n",
-                         current->comm, preempt_count(), current->pid);
-                 dump_stack();
-         }
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
 
-Of course, in_atomic() checks whether you disabled preemption.
-
--- 
-What is important?  What you want to be true, or what is true?
-
--- 
-VGER BF report: H 1.11022e-16
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
