@@ -1,31 +1,29 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Editing contents of initrd
-Date: Fri, 8 Sep 2006 12:31:50 +0530
-Message-ID: <292693080609080001wfb242f4q41f184ea3083150c@mail.gmail.com>
+From: "Sandra L. McGrew" <momo_1@alltel.net>
+Subject: AllegroCl & SETI problems
+Date: Wed, 06 Sep 2006 18:06:57 -0500
+Message-ID: <ednkbn$gk$1@sea.gmane.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi,
+I'm trying to clear up at least two things... 
 
-I want to edit the contents of initrd. For this, I extracted the
-contents of my initrd:
+1st. What directory is AllegroCL located in???
+2nd. Everytime this Debian computer loads or unloads a package it tries to
+contact an alien server at berkley.edu... at some IP... it never can
+contact it... I've successfully pinged this server at the IP it's trying
+ftp to... I think that this computer does not have the correct permissions
+to gain access to the ftp server at berkley.edu... if I get an account
+there, how do I changed the string that this computer is sending to the
+berkley.edu server to authenticate with??? where is it located???
+             I would apppreciate any help that you can give me...
+                   Most sincerley, 
+                                Dan (nurse1@longviewcomm[removethis].net)
 
-$ mkdir /tmp/initrd
-$ cd /tmp/initrd
-$ gunzip -c /boot/initrd-2.6.17.img | cpio -i
-
-And hence the contents were extracted and made the changes I wanted to
-do. Now how do I wrap this changed hiereachy BACK into a valid initrd?
-
-Thanks,
-
-Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
