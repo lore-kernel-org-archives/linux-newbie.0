@@ -1,29 +1,31 @@
-From: "Bie Tao" <bietao@skyworth.com>
-Subject: where is information of block group stored?
-Date: Mon, 4 Sep 2006 10:54:03 +0800
-Message-ID: <SZGMMAILBE01ZfBI4Lr0000567e@szgmmailbe01.skyworth.com>
-Reply-To: bietao@skyworth.com
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: Editing contents of initrd
+Date: Fri, 8 Sep 2006 12:31:50 +0530
+Message-ID: <292693080609080001wfb242f4q41f184ea3083150c@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Hello <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Hello
+Hi,
 
-     where is information of block group stored?
-     in other word,which data structure include the information of the block group?the kernel how to search for it?
+I want to edit the contents of initrd. For this, I extracted the
+contents of my initrd:
 
-     and,there is a super block per block group,or per partition?
+$ mkdir /tmp/initrd
+$ cd /tmp/initrd
+$ gunzip -c /boot/initrd-2.6.17.img | cpio -i
 
-     thank you
+And hence the contents were extracted and made the changes I wanted to
+do. Now how do I wrap this changed hiereachy BACK into a valid initrd?
 
+Thanks,
 
-
--- 
-VGER BF report: H 0.255136
+Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
