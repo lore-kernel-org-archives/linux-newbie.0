@@ -1,7 +1,7 @@
-From: "Sandra L. McGrew" <momo_1@alltel.net>
-Subject: AllegroCl & SETI problems
-Date: Wed, 06 Sep 2006 18:06:57 -0500
-Message-ID: <ednkbn$gk$1@sea.gmane.org>
+From: Sandra McGrew <nurse1@longviewcomm.net>
+Subject: Problems with AllegroCL & SETI
+Date: Fri, 08 Sep 2006 23:36:22 -0500
+Message-ID: <edtgdf$usd$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
