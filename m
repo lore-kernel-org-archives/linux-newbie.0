@@ -1,108 +1,81 @@
 From: Ray Olszewski <ray@comarre.com>
-Subject: [Fwd: Re: Problems with AllegroCL & SETI]
-Date: Sat, 09 Sep 2006 17:54:13 -0700
-Message-ID: <45036235.9000609@comarre.com>
+Subject: Re: CUPS Problems
+Date: Sat, 09 Sep 2006 18:07:49 -0700
+Message-ID: <45036565.2090908@comarre.com>
+References: <edvmdk$b6c$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <edvmdk$b6c$1@sea.gmane.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-This message is marked as a forward because the list rejected my first 
-attempt to send it as SPAM. I don't know why, but since I know from 
-experience that no human list manager pays attention to this list, I 
-just gave up until I saw that someone else had been able to post a message.
-
-If this gets through, I guess it means that In encountered a transient 
-problem that has been fixed. If it doesn't ... well, then no one will 
-see this.
-
-I waited to reply in the hope that someone else, someone who could be
-more directly helpful, would post an answer. My comments below may help
-a little, at least.
-
 Sandra McGrew wrote:
-> I'm trying to clear up at least two things... 
+>         I'm not certain that I know how to explain this well enough so that someone
+> will be able to help me, but I will try... 
+>         I can't get cups to work... I've got a Lexmark Z611 printer... and it is
+> attached via usb to a Windows XP Home computer... 
+>                 So, I think that I need to use SMB with this... but, am not certain how to
+> do it.. I have SMB4K installed and started, it shows no mounted shares... 
+>         There is an SMB folder in each person's directory  (home)... including
+> (root)... I see the share on the Windows XP Home computer and I see a
+> folder named SMB4K -> MOMO1 -> All Users
+>                             -> D (CD-ROM Drive)
+>                             -> print$ (Not certain what this is for or what it does???)
 > 
-> 1st. What directory is AllegroCL located in???
+>         One the Windows XP Home machine, I can see the Debian (Sarge) computer.. in
+> the Windows Explorer window it says, Mf.com -> debian1 server (Samba
+> 3.0.14a-Debian)(Debian1)
+>                 However, when I click on it to get in, it brings up a connectoid dialog
+> box... Connecting to Debian1... 
+>                 User name: Mf.com\username  ( I think that's right???)
+>                 Password: Password
+>         However, it tells me that I have to put it into a format like this;
+>                 Examples:
+>                         User Name
+>                         username@domain
+>                         DOMAIN\username
+> That's the SAMBA problem, that I can't figure out...
+> I'm not certain, but I believe that if I could get SAMBA working right, then
+> the CUPS problem might be a little easier... 
+>                         I would appreciate any help that I can get...
+>                                         Most sincereley,
+>                                                         Dan
 
-This sort of thing is often distro-dependent. Since yours is
-(apparently, from #2) a Debian system, one way to check is by checking
-against the package database. If AllegroCL is the actual file name, then
-	
-	dpkg -S AllegroCL
+You have probably set up the Debian host to require authentication for 
+SMB connections. You do this in /etc/samba/smb.conf . If your 
+environment is sufficiently secure that you don't need this protection, 
+the easy solution is to change the setting in this way:
 
-Should work. I don't have it (AllegroCL) here on my system, so I can't
-check for you, but so you see how the command works, here's a different
-example:
+	;   security = user
+	security = share
 
-	autovcr@firefly:~$ dpkg -S MainPause.png
-	xine-ui: /usr/share/xine/skins/xinetic/MainPause.png
+Then set up at least one public share to test that this will work. An 
+example from my server is:
 
-Another is to use "find", as in (do this as root if you can):
+	[shared_video1]
+	comment = edited video - first volume
+	writable = yes
+	locking = no
+	path = /home/shared_video1
+	public = yes
 
-	find / -name *AllegroCL*
+(You might want to change the above to writable=no).
 
-(you can omit the wildcard *s if you know that AllegroCL is the EXACT name).
+Then re-HUP or restart samba (e.g., as root enter "/etc/init.d/samba 
+restart").
 
-Another is to use the locate database, if your system runs it:
+Even if you need to use authentication, I'd recommend this as a test 
+step, to make sure all else is working right. Then add authentication 
+back in. smb.conf has a section for authentication, but to help you with 
+that, I'll need to see yours (it's probably a newer version than mine, 
+and the format tends to change a bit).
 
-	autovcr@firefly:~$ locate MainPause.png
-	/usr/share/xine/skins/xinetic/MainPause.png
-
-> 2nd. Everytime this Debian computer loads or unloads a package it tries to
-> contact an alien server at berkley.edu... at some IP... it never can
-> contact it... I've successfully pinged this server at the IP it's trying
-> ftp to... I think that this computer does not have the correct permissions
-> to gain access to the ftp server at berkley.edu... if I get an account
-> there, how do I changed the string that this computer is sending to the
-> berkley.edu server to authenticate with??? where is it located???
-
-What do you mean by "loads or unloads"? Do you mean installs or removes
-(or updates) a Debian package? If so, I can't think of why the system
-would try to "contact an alien server" ... unless it is the one the
-system is set to use as a package repository. To see if that's it, check
-the contents of /etc/apt/sources.list (assuming your system uses apt for
-installs and removes).
-
-If that is it, then the berkeley.edu server ought to be able to do
-anonymous ftp. The Debian mirrors list at
-http://www.debian.org/mirror/list does list "linux.csua.berkeley.edu" as
-a mirror for both ftp and http access, so that might be what you are
-using. If so, my desktop browers is having no trouble connecting to it
-via anonymous ftp (checking directories, even downloading a package by
-hand), so you might try a follow-up that says a bit more about why you
-think you are having an authentication problem.
-
-If that's not it, you really do need to tell us a bit more. After all,
-how can you really expect any advice about how to get ftp access to some
-unnamed computer in the berkeley.edu domain from us, or from anyone?
-Instead, please try telling us:
-
-	the name &/or IP address of the host in question
-	how you are trying to access it (e.g., it is one of the sources used by
-apt in apt-get update, apt-get ungrade, and apt-get install commands)
-	what actual message you are getting that indicates a problem, and
-*specifically* what the message responds to (the actual apt-get, or
-aptitude or whatever, command you issue)
-
-And for your system:
-
-	the output of "uname -a"
-	the contents of /etc/apt/sources.list
-	(if you know) what version of Debian it runs (e.g., Sid, Etch, Sarge,
-Woody)
-
-Please don't paraphrase or summarize any of this ... quote the actual
-commands and the actual responses (masking ONLY true secrets like
-passwords).
-
->              I would apppreciate any help that you can give me...
->                    Most sincerley, 
->                                 Dan (nurse1@longviewcomm[removethis].net)
-> 
+PS - I tried to reply to your earlier query too, but the list rejected 
+my reply as SPAM. I don't know why. Seeing if this response gets through 
+may be instructive in that regard.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
