@@ -1,46 +1,43 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: syntax problems with scp/rsync
-Date: Mon, 11 Sep 2006 11:21:58 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0609111110430.23966-100000@treebeard.engin.umich.edu>
+From: ali shahrokni <shahrokni@gmail.com>
+Subject: Firewire camera and PCMCIA card under Debian
+Date: Mon, 11 Sep 2006 17:39:56 +0100
+Message-ID: <4505915C.5090706@laposte.net>
+References: <4505910C.8030505@laposte.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <4505910C.8030505@laposte.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
 Hello,
+I am trying to connect a unibrain firewire camera to my T40 thinkpad 
+using a PCMCIA firecard. I am running debian testing and kernel 2.6.15.
+The card is detected and the output of dmeg follows but the camera 
+doesn't even turn on and nothing happens when I connect it to the card! 
+Any help would be greatly appreciated.
+Cheers,
+Ali
 
-I seem to be having some difficulty using scp and rsync with the most
-basic commands giving me problems:
-
-$ scp kvh1@godzilla.acpub.duke.edu:FN* .
-usage: scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file]
-           [-l limit] [-o ssh_option] [-P port] [-S program]
-           [[user@]host1:]file1 [...] [[user@]host2:]file2
-
-$ rsync kvh1@godzilla.acpub.duke.edu:FN* .
-rsync  version 2.6.6  protocol version 29
-...
-rsync error: syntax or usage error (code 1) at main.c(897)
-
-However, both commands (listed below) work fine: 
-$ scp t* kvh1@godzilla.acpub.duke.edu:
-$ rsync t* kvh1@godzilla.acpub.duke.edu:
-
-
-What is going on to cause the incorrect syntax in attempting to retrieve 
-files from the remote host? 
-
-
-Thanks,
-
--K
-
---------------
-Never express yourself more clearly than you are able to think
-- Niels Bohr
+> ieee1394: raw1394: /dev/raw1394 device initialized
+> video1394: Installed video1394 module
+> usb 2-2: new full speed USB device using uhci_hcd and address 3
+> pccard: card ejected from slot 1
+> ieee1394: Node removed: ID:BUS[0-00:1023]  GUID[0814435800000528]
+> ohci1394: fw-host0: Set PHY Reg timeout [0xffffffff/0x00004000/100]
+> ohci1394: fw-host0: Set PHY Reg timeout [0xffffffff/0x00004000/100]
+> pccard: CardBus card inserted into slot 1
+> PCI: Enabling device 0000:07:00.0 (0000 -> 0002)
+> ACPI: PCI Interrupt 0000:07:00.0[A] -> Link [LNKB] -> GSI 11 (level, 
+> low) -> IRQ 11
+> PCI: Setting latency timer of device 0000:07:00.0 to 64
+> ohci1394: fw-host0: OHCI-1394 1.0 (PCI): IRQ=[11]  
+> MMIO=[c4004000-c40047ff]  Max Packet=[2048]
+> eth1394: eth1: IEEE-1394 IPv4 over 1394 Ethernet (fw-host0)
+> ieee1394: Host added: ID:BUS[0-00:1023]  GUID[0814435800000528]
+>
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
