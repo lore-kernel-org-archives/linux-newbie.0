@@ -1,48 +1,34 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: mount via cifs fails
-Date: Tue, 12 Sep 2006 16:37:24 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0609121622550.25643-100000@treebeard.engin.umich.edu>
+From: Hal <haltec@kvinet.com>
+Subject: BitTorrent Client??
+Date: Wed, 13 Sep 2006 13:03:01 -0400
+Message-ID: <20060913170301.GA31711@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hello,
 
-I seem to be unable to mount a shared windows partition across samba 
-within FC5. 
+Can I get some input about the various BitTorrent Clients available
+for Linux??
 
-# mount -t cifs //<server-IP>/NimmiLabBackup/ /mnt/labbackup/ -o 
-user=karthikv
-Password: 
-retrying with upper case share name
-mount error 6 = No such device or address
-Refer to the mount.cifs(8) manual page (e.g.man mount.cifs)
+I stumbled upon www.torrentreactor.net and found it very interesting.
+I've tried to install Azureus, written in Java, but am bogged down
+after installing a bazillion libraries it requires.. There must be a
+simpler route, I would think.. Maybe not.. I'm out of my league
+again... <grin> We thought Unix was complicated in the "good old
+days."
 
-Using the same mount command with the --verbose option changes 
-NimmiLabBackup -> NIMMILABBACKUP and fails with the same error. 
+Any comments appreciated.. TIA.
 
-I am able to log into the windows machine via smbclient, but an ls within 
-the smbclient gives: 
-smb: \> ls
-NT_STATUS_ACCESS_DENIED listing \*
+-- 
 
-Searching on google gives many users complaining about the same thing, but
-no clear solution. This behavior occurs on a 2.6.15-1.2054_FC5smp kernel
-running fedora core 5 on an intel dual-core CPU. The same samba mount from
-a neighbor's machine running Ubuntu with kernel 2.6.15 works fine.
-
-How can I try fixing this? 
-
-
-Thanks,
-
--K
-
-
+    Hal - in Terra Alta, WV/US - Slackware GNU/Linux 10.1   (2.4.29)
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
