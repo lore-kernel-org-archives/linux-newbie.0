@@ -1,72 +1,87 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: cannot access windows share via smbclient
-Date: Tue, 19 Sep 2006 15:44:21 -0400 (EDT)
-Message-ID: <Pine.LNX.4.44.0609191513080.12363-100000@treebeard.engin.umich.edu>
-References: <Pine.LNX.4.44.0609121622550.25643-100000@treebeard.engin.umich.edu>
+From: Peter <heisspf@skyinet.net>
+Subject: Joe Failing
+Date: Wed, 20 Sep 2006 15:01:22 +0800
+Message-ID: <200609200701.k8K71Mfn002294@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.44.0609121622550.25643-100000@treebeard.engin.umich.edu>
+Content-ID: <2292.1158735682.1@heisspf>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux <linux-newbie@vger.kernel.org>
 
-Hello,
+Hi,
 
-I recently upgraded to Ubuntu 6.06 LTS, installed smbfs and smbclient 
-(3.0.22-1ubuntu3.1) and run the 2.6.15-26 kernel. I am unable to access a 
-windows share that acts as the central data-backup machine for our lab 
-here. 
+Slackware 10.2, kernel 2.6.16-20
 
-I attempt to access the windows share from the linux box via: 
-$ smbclient -Ukarthikv -I192.168.0.100 //192.168.0.100/NimmiLabBackup
-Password: 
-Domain=[NR-BACKUP] OS=[Windows 5.1] Server=[Windows 2000 LAN Manager]
+since years I have been using the editor joe in xterm flawlessly. Now, =
+it=20
+started to play weird.
 
-I am able to login with my password and get the smb:\> prompt. However, 
-there, most commands fail: 
+Opening joe, the first typed letter will not register and then further =
+down=20
+the line others too, like:
 
-smb: \> ls
-NT_STATUS_ACCESS_DENIED listing \*
-59189 blocks of size 8388608. 51869 blocks available
+ bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbb=
+bbbbbb
 
-smb: \> pwd
-Current directory is \\152.3.194.117\NimmiLabBackup\
-smb: \> cd Shared
-smb: \Shared\> pwd
-Current directory is \\152.3.194.117\NimmiLabBackup\Shared\
-smb: \Shared\> cd Shared
-cd \Shared\Shared\: NT_STATUS_OBJECT_NAME_NOT_FOUND
+Then trying to edit a file I get strange characters:
 
-Which seems logical since there is a folder called Shared (within the 
-shared folder NimmiLabBackup on the windows machine). 
+#     session.menuFile: /home/you/.fluxbox/my-menu  =20
+=C6begin=C5 (Fluxbox-0.9.14)
+  =C6exec=C5 (xterm)    =E6xterm -bg lightyellow -fg black +sb -g 75x22=
+=E5
+  =C6exec=C5 (xterm small)  =E6xterm -bg moccasin -fg black +sb -g 50x1=
+2=E5
+  =C6exec=C5 (MC)       =E6.mc=E5
+  [exec] (su)       =E6rxvt -bg lightblue -fg firebrick -e su=E5
+  [exec] (MCsu)     =E6/usr/local/bin/aaterm +tr  -bg brown -fg white -=
+cr blue -f
+  [exec] (EmelFM)   {emelfm=E5=20
+#  =C6exec=C5 (kppp)     =E6kppp=E5 =20
+  =C6exec=C5 (CD FM)    =E6 xfmountdev4 /mnt/cdrom=E5
 
-smb: \Shared\> listconnect 
-0:      server=152.3.194.117, share=NimmiLabBackup
-smb: \Shared\> showconnect 
-//152.3.194.117/NimmiLabBackup
+Getting out of this the xterm line reads:
 
-smbclient seems to fail with the following error if I provide the 
-incorrect password. 
+heisspf=C4=FC:$
 
-$ smbclient -Ukarthikv -I192.168.0.100 //192.168.0.100/NimmiLabBackup
-Password:
-session setup failed: NT_STATUS_LOGON_FAILURE
+instead of:
 
-This seems to tell me that I am able to log into the windows share, but 
-do not have permissions there to view files? Is this a problem with my 
-local linux box, or the windows server? All responses are highly 
-appreciated.
+heisspf@~:$
 
+The same happens with gnome-terminal and rxvt, however, not with aterm.
 
-Thanks,
+Man pages do not display properly as well except in aterm:
 
--K
+with xterm man joe:
 
+Name
+oe - Joe's Own Editor
+
+Syntax
+joe[global-options][[local-options]filename]...
+
+with aterm man joe:
+
+Name
+           joe - Joe's Own Editor
+
+Syntax
+JOE(1)       joe[global-options][[local-options]filename]...
+
+On the console joe works properly.
+
+Any explanation and recommended correction appreciated.
+
+Thanks & regards    =20
+--=20
+Peter
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
