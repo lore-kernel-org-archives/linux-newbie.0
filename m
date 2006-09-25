@@ -1,49 +1,73 @@
-From: Rik van Riel <riel@surriel.com>
-Subject: Re: why "need_resched" per process?
-Date: Mon, 25 Sep 2006 08:11:17 -0400
-Message-ID: <4517C765.3040907@surriel.com>
-References: <292693080609250243r711cc218p55339fbca1f839ee@mail.gmail.com>
+From: Jim Cromie <jim.cromie@gmail.com>
+Subject: Re: Sleeping in Work_queue threads
+Date: Mon, 25 Sep 2006 16:39:34 -0600
+Message-ID: <45185AA6.6050807@gmail.com>
+References: <b115cb5f0609250135h42751bc8u18242c25e86a2fd8@mail.gmail.com> <200609251244.47943.borasahin@justnic.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <292693080609250243r711cc218p55339fbca1f839ee@mail.gmail.com>
+In-Reply-To: <200609251244.47943.borasahin@justnic.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>
+To: borasahin@justnic.com
+Cc: kernelnewbies@nl.linux.org, Rajat Jain <rajat.noida.india@gmail.com>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Daniel Rodrick wrote:
-> Hi,
-> 
-> I was determining a reason for the need_resched flag to be per process
-> rather than being a global variable. I read that the sole reason is
-> for performance.
-> 
-> I could not understand how would having it (need_resched) per process
-> result in a better performance? Having it as a global variable in the
-> kernel address space would be just a matter of getting the value at a
-> known address.
-> 
-> On the other hand, having a per process copy sure results in
-> unecessary memory occupancy.
+borasahin@justnic.com wrote:
+>> I understand that there is a default worker thread ("event") to which
+>> most of the drivers submit work (for bottom half processing).
+>>
+>> Now since this thread is catering to all of the drivers; if a driver's
+>> code sleeps, then aren't the rest of the drivers penalised?
+>>     
+>
+> Yes...
+>
+>   
+>> I mean the rest of the drivers want to do their work but the thread is
+>> now sleeping since one of the driver has issued a sleeping call?
+>>
+>> Wouldn't a seperate worker thread for each driver be a better design?
+>>     
+>
+> I think the worker thread is there to make driver writer's job easier. Say you 
+> need a bottom half but it is not sleep for a long time. Using a centralised 
+> worker thread is the most convenient one. But as you say if you need to sleep 
+> longer then you start to disrupt other driver's worker jobs. It's time to 
+> create a seperate worker thread. 
+>
+> Another point of view -> you categorize worker threads: shorter sleep times 
+> and longer sleep times. You dont need to create a worker thread for each of 
+> the work jobs. Instead you use one for shorter sleep times and one for each 
+> of longer sleep times. So you use system resources more efficiently. I think 
+> most of worker thread jobs is fit into shorter sleep times category.
+>
+>   
 
-1) not every CPU needs to reschedule simultaneously, think
-    about an 8-cpu core SMP system where one of the current
-    tasks needs to reschedule
+so hypothetically, if there were such a set of worker threads,
+how would I pick the right thread ?
+or rather, how do I measure/characterize the sleep-time ?
+(worst case, average, etc)
 
-2) the cacheline with the current task_struct pointer in
-    it is probably in the CPU's L2 cache, since it is used
-    very frequently - a global variable would probably not
-    be in the CPU cache
+does the Latency Tracer  (see: http://lwn.net/Articles/97811/ )
+make this possible/easy ?
 
-3) the thread struct (IIRC need_resched lives there, please
-    correct me if I misremember) is the first few bytes of a
-    task's kernel thread, so it doesn't really take any extra
-    memory
+and while we're on the topic, whats the average length of the event 
+work-queue ?
+and the enque/deque rate ?
+would 1 long queue, and 1 short cover 99%
 
--- 
-"You don't have to be crazy to do this... but it helps." -- Bob Ross
+> --
+> Bora SAHIN
+>
+> --
+> Kernelnewbies: Help each other learn about the Linux kernel.
+> Archive:       http://mail.nl.linux.org/kernelnewbies/
+> FAQ:           http://kernelnewbies.org/faq/
+>
+>
+>   
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
