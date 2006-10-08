@@ -1,30 +1,32 @@
 From: Eduard =?iso-8859-1?q?Gim=E9nez?= <edu@badopi.org>
-Subject: Re: Is there anyway to filter this spam in newsgroups
-Date: Sun, 8 Oct 2006 17:18:37 +0200
-Message-ID: <200610081718.37675.edu@badopi.org>
-References: <eftomp$kv4$1@sea.gmane.org>
+Subject: Re: Torrent and it's clients??
+Date: Sun, 8 Oct 2006 17:22:55 +0200
+Message-ID: <200610081722.55287.edu@badopi.org>
+References: <20061008143918.GA974@lnx2.kvinet.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <eftomp$kv4$1@sea.gmane.org>
+In-Reply-To: <20061008143918.GA974@lnx2.kvinet.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Arun Mallikarjunan <arun@ngb.biz>
+To: haltec@kvinet.com
 Cc: linux-newbie@vger.kernel.org
 
-On Tuesday 03 October 2006 15:38, Arun Mallikarjunan wrote:
-> I recently joined your group and I see A LOT of spam. Is there anyway I
-> can filter them out in my thunderbird.
+On Sunday 08 October 2006 16:39, Hal wrote:
+ > Flushed with pride I tried two small files, 3mB and 9mB and the
+> bottom dropped out of it.. The d/l started at a typical 3.0kBs then
+> after half the first file it went to zero and stayed there for the
+> next 8 hours... What happened??  Can I presume that one of the
+> servers was down or extremely busy, if I'm reading how it works??
 
-Hi, 
-
-I don't use thunderbird, but I suppose there should be a way.
-
-I've my mail filtered with Bogofilter and Spam Assassin (well, I've SA set up 
-while bogofilter is learning :)), and it catch about all spam (this week it 
-only failed to stop two short spam).
+BitTorrent works in a decentralized way, there are no servers that shall fail. 
+Probably what is happening to you is that the other peers don't have the 
+complete file. It's something habitual (currently I've a file stopped at 95%, 
+and no other peer have it complete...), and you can only do two things:
+	- wait
+	- cancel 
 
 Greetings,
 
