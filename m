@@ -1,57 +1,45 @@
 From: Hal <haltec@kvinet.com>
-Subject: Re: Torrent and it's clients??
-Date: Mon, 9 Oct 2006 10:10:54 -0400
-Message-ID: <20061009141054.GA1080@lnx2.kvinet.com>
-References: <20061008143918.GA974@lnx2.kvinet.com> <200610081722.55287.edu@badopi.org>
+Subject: "This Pgm Does Not Run In DOS Mode" ???
+Date: Tue, 10 Oct 2006 12:50:24 -0400
+Message-ID: <20061010165024.GA1253@lnx2.kvinet.com>
 Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200610081722.55287.edu@badopi.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Eduard =?iso-8859-1?Q?Gim=E9nez?= <edu@badopi.org>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On 10-08, Eduard Gim=E9nez wrote:
-> On Sunday 08 October 2006 16:39, Hal wrote:
->  > Flushed with pride I tried two small files, 3mB and 9mB and the
-> > bottom dropped out of it.. The d/l started at a typical 3.0kBs then
-> > after half the first file it went to zero and stayed there for the
-> > next 8 hours... What happened??  Can I presume that one of the
-> > servers was down or extremely busy, if I'm reading how it works??
->=20
-> BitTorrent works in a decentralized way, there are no servers that sh=
-all fail.=20
-> Probably what is happening to you is that the other peers don't have =
-the=20
-> complete file. It's something habitual (currently I've a file stopped=
- at 95%,=20
-> and no other peer have it complete...), and you can only do two thing=
-s:
-> 	- wait
-> 	- cancel=20
->=20
+Greetings: More and more I'm getting the Subject report or something
+like, "This Pgm Requires Windows," from software bundled with
+hardware devices that work with Linux but need to be diagnosed or
+setup with the vendors S/W.. The latest is trying to flash a USR
+Sportster firmware from X2 to V90. The older s/w used to work from
+Dos, that I've done many times with USR Courier's..
 
-	Thank you for the comments and further enlightenment.. I
-found another FAQ that was more comprehensive than the others so know
-a little more.. Your 95% comment attracted me as I read in the FAQ
-that there were some hacker/crackers doing mischief by uploading
-files than could not be fetched past "95%." You can't win eh?
+I have DRDos7.03, FreeDos and MSDos7.1 that used to work but no longer
+it seems.. Can I get some suggestions how to solve this increasingly
+worse problem?
 
-	At any rate with slow dialup here it doesn't seem I can
-contribute too much to the project.. :^(
+I know about Wine, and have played with it, but it's huge for
+something that could be simple and I don't have it on any machine all
+the time.. I have no machines with MSWindows either, therefore this
+query..
 
-	Thanks again,
---=20
+Perhaps there is no easy way like a Dos program that might work
+emulating Windows simply??
+
+Just thought I'd ask.. TIA.. (We run various versions of Slackware
+here, with kernels except the very latest.)
+
+-- 
 
     Hal.
-=2E
+.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
