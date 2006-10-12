@@ -1,43 +1,33 @@
-From: Hal <haltec@kvinet.com>
-Subject: "This Pgm Does Not Run In DOS Mode" ???
-Date: Tue, 10 Oct 2006 12:50:24 -0400
-Message-ID: <20061010165024.GA1253@lnx2.kvinet.com>
-Reply-To: haltec@kvinet.com
+From: Jim Reimer <jdr@wa5rrh.us>
+Subject: Sequence of events at boot
+Date: Wed, 11 Oct 2006 21:56:42 -0500
+Message-ID: <53876815734.20061011215642@wa5rrh.us>
+Reply-To: Jim Reimer <jdr@wa5rrh.us>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Greetings: More and more I'm getting the Subject report or something
-like, "This Pgm Requires Windows," from software bundled with
-hardware devices that work with Linux but need to be diagnosed or
-setup with the vendors S/W.. The latest is trying to flash a USR
-Sportster firmware from X2 to V90. The older s/w used to work from
-Dos, that I've done many times with USR Courier's..
+As of today, my FC4 machine is not booting.  The last thing on the screen during boot is
 
-I have DRDos7.03, FreeDos and MSDos7.1 that used to work but no longer
-it seems.. Can I get some suggestions how to solve this increasingly
-worse problem?
+Processing `etc/joe/jstarrc`...Done
 
-I know about Wine, and have played with it, but it's huge for
-something that could be simple and I don't have it on any machine all
-the time.. I have no machines with MSWindows either, therefore this
-query..
+jstar is the default editor on the system, and the "Processing" line on the screen follows
+lm_sensors, automount, nifd, and mDNSResponder.  Also, curiously, it says twice that it's
+processing the jstarrc file.
 
-Perhaps there is no easy way like a Dos program that might work
-emulating Windows simply??
+Can't find where jstarrc is run during boot, so I have no idea what should be happening
+next.  I've looked at every config, init, and rc file and directory I can think of, and
+I'm drawing a blank.
 
-Just thought I'd ask.. TIA.. (We run various versions of Slackware
-here, with kernels except the very latest.)
+Where do I look?
 
 -- 
+-jdr-
 
-    Hal.
-.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
