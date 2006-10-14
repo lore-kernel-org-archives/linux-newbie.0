@@ -1,89 +1,50 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Joe Failing
-Date: Sat, 14 Oct 2006 09:06:02 +0800
-Message-ID: <200610140106.k9E162dI003645@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: Eric Bambach <eric@cisu.net>
+Subject: Re: allocating disk space the fast way
+Date: Sat, 14 Oct 2006 12:35:08 -0500
+Message-ID: <200610141235.08715.eric@cisu.net>
+References: <1154799802.1885.9.camel@Marvin>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-ID: <3643.1160787962.1@heisspf>
+In-Reply-To: <1154799802.1885.9.camel@Marvin>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Mensch <bausparkasse@gmx.de>
+Cc: linux-newbie list <linux-newbie@vger.kernel.org>
 
-Hi,
+On Saturday 05 August 2006 12:43, Mensch wrote:
+> hello list.
+> i want to allocate some space for a harddisk image file.
+> for now, i do it like
+> $ dd if=/dev/zero of=blub.img bs=1M count=2000
+> which takes some time. is there a faster way to create a huge file? it
+> don't have to be zeroed.
+> i've seen that e.g. azureus allocates filesize in no time. how does this
+> work?
+>
+> thanks in advance,
+> josef gosch
+>
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
-Slackware 10.2, kernel 2.6.16-20
+I know you already found an answer....but....
 
-since years I have been using the editor joe in xterm flawlessly. Now, =
-it=20
-started to play weird.
+Make it sparse.
 
-Opening joe, the first typed letter will not register and then further =
-down=20
-the line others too, like:
+dd if=/dev/zero of=./my.image bs=1M seek=2048 count=1
 
- bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbb=
-bbbbbb
+-- 
+Thanks,
 
-Then trying to edit a file I get strange characters:
-
-#     session.menuFile: /home/you/.fluxbox/my-menu  =20
-=C6begin=C5 (Fluxbox-0.9.14)
-  =C6exec=C5 (xterm)    =E6xterm -bg lightyellow -fg black +sb -g 75x22=
-=E5
-  =C6exec=C5 (xterm small)  =E6xterm -bg moccasin -fg black +sb -g 50x1=
-2=E5
-  =C6exec=C5 (MC)       =E6.mc=E5
-  [exec] (su)       =E6rxvt -bg lightblue -fg firebrick -e su=E5
-  [exec] (MCsu)     =E6/usr/local/bin/aaterm +tr  -bg brown -fg white -=
-cr blue -f
-  [exec] (EmelFM)   {emelfm=E5=20
-#  =C6exec=C5 (kppp)     =E6kppp=E5 =20
-  =C6exec=C5 (CD FM)    =E6 xfmountdev4 /mnt/cdrom=E5
-
-Getting out of this the xterm line reads:
-
-heisspf=C4=FC:$
-
-instead of:
-
-heisspf@~:$
-
-The same happens with gnome-terminal and rxvt, however, not with aterm.
-
-Man pages do not display properly as well except in aterm:
-
-with xterm man joe:
-
-Name
-oe - Joe's Own Editor
-
-Syntax
-joe[global-options][[local-options]filename]...
-
-with aterm man joe:
-
-Name
-           joe - Joe's Own Editor
-
-Syntax
-JOE(1)       joe[global-options][[local-options]filename]...
-
-On the console joe works properly.
-
-Any explanation and recommended correction appreciated.
-
-Thanks & regards    =20
---=20
-Peter
-
-
-
+Eric
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
