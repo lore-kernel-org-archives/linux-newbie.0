@@ -1,33 +1,89 @@
-From: "James Miller" <jamtat@mailsnare.net>
-Subject: limited wifi snooping advice needed
-Date: Fri, 13 Oct 2006 17:16:22 +0000
-Message-ID: <W5780613382234591160759782@mail.mailsnare.net>
+From: Peter <heisspf@skyinet.net>
+Subject: Joe Failing
+Date: Sat, 14 Oct 2006 09:06:02 +0800
+Message-ID: <200610140106.k9E162dI003645@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-ID: <3643.1160787962.1@heisspf>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux <linux-newbie@vger.kernel.org>
 
-The following concerns a project I am thinking of that involves some limited wifi snooping. By "limited" I mean that the aim is not to decrypt packets so as to steal information or engage in other, likewise ethically questionable activities. Rather, the level of information I am seeking to extract from a wifi network is of the most generic sort, not going beyond the level of IP addresses.
+Hi,
 
-I've recently begun teaching and have been introduced to modern technology's complement to daydreaming in the classroom: a school-wide wifi network to which students can connect in the classroom. From various indicators, I am quite certain that some students are not using their laptops to take notes during the class, but are engaging in other, extra-curricular computer/internet activities (judging by the amount of scrolling and clicking, they are viewing webpages or maybe doing some web-mailing).
+Slackware 10.2, kernel 2.6.16-20
 
-Various things could be done about this, ranging from no/low-tech to high tech things. On the high tech side, I've thought of the following. I've fiddled a bit with tcpdump on a wired network and can see how it might be used to address this problem. Its most basic function is to watch packets pass by the network interface it's running on and to display origin and destination IP's, by default to stdout. First a question: would it work in the same way wirelessly? Could I, for example, issue tcpdump ra0 (my chiefmax/ralink wireless PCMCIA card is initialized as ra0) and expect it to dump to stdout origin and destination IP's passing the interface on that wireless network? That would be step 1 of the high tech solution. 
+since years I have been using the editor joe in xterm flawlessly. Now, =
+it=20
+started to play weird.
 
-Step two--turning that data into useful information that could be called up on demand--would be more complex. I envision dumping that data into a file which would then be operated on by a script. I'd go for bash since it's the only scritping language I have even the faintest clue about. The script would have to do a couple of things, as well as call some other programs. For one, it would have to eliminate extraneous data like repeated IP's, of which there would likely be very many (two IP's for every packet). It would also have to at least call whois to resolve IP's (so as to show what sites were being browsed). It would then have to save this information to a file that could be viewed in some application like a text editor, word processor, or browser. Figuring out how to do all that would be quite a task for someone with my limited abilities, and it is something I may end up asking for 
- some assistance on at this list in the future. But for now let me just ask if anyone know!
- s of some utility that does this or something like it?
+Opening joe, the first typed letter will not register and then further =
+down=20
+the line others too, like:
 
-Feedback on these issues will be appreciated.
+ bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbbbbbbbbbb bbbb=
+bbbbbb
 
-Sincerely,
-James
+Then trying to edit a file I get strange characters:
+
+#     session.menuFile: /home/you/.fluxbox/my-menu  =20
+=C6begin=C5 (Fluxbox-0.9.14)
+  =C6exec=C5 (xterm)    =E6xterm -bg lightyellow -fg black +sb -g 75x22=
+=E5
+  =C6exec=C5 (xterm small)  =E6xterm -bg moccasin -fg black +sb -g 50x1=
+2=E5
+  =C6exec=C5 (MC)       =E6.mc=E5
+  [exec] (su)       =E6rxvt -bg lightblue -fg firebrick -e su=E5
+  [exec] (MCsu)     =E6/usr/local/bin/aaterm +tr  -bg brown -fg white -=
+cr blue -f
+  [exec] (EmelFM)   {emelfm=E5=20
+#  =C6exec=C5 (kppp)     =E6kppp=E5 =20
+  =C6exec=C5 (CD FM)    =E6 xfmountdev4 /mnt/cdrom=E5
+
+Getting out of this the xterm line reads:
+
+heisspf=C4=FC:$
+
+instead of:
+
+heisspf@~:$
+
+The same happens with gnome-terminal and rxvt, however, not with aterm.
+
+Man pages do not display properly as well except in aterm:
+
+with xterm man joe:
+
+Name
+oe - Joe's Own Editor
+
+Syntax
+joe[global-options][[local-options]filename]...
+
+with aterm man joe:
+
+Name
+           joe - Joe's Own Editor
+
+Syntax
+JOE(1)       joe[global-options][[local-options]filename]...
+
+On the console joe works properly.
+
+Any explanation and recommended correction appreciated.
+
+Thanks & regards    =20
+--=20
+Peter
+
 
 
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
