@@ -1,63 +1,65 @@
-From: Danielle <aneternalstudent@gmail.com>
-Subject: Powernow-k8 (ACPI?) trouble
-Date: Sat, 21 Oct 2006 10:18:51 -0800
-Message-ID: <c41f42d0610211118o52eccddcyd5c760d9418f98a1@mail.gmail.com>
+From: "OpenDos Team" <opendos@gmail.com>
+Subject: =?WINDOWS-1252?Q?Open_Dos_=96_An_Open_Source_Dynam?= =?WINDOWS-1252?Q?ic_Optimization_System_Released?=
+Date: Fri, 27 Oct 2006 18:02:03 +0530
+Message-ID: <477e1b2f0610270532l6934b320y5e523601db69721@mail.gmail.com>
+References: <477e1b2f0610270530g680759a0he553cd04354264bc@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <477e1b2f0610270530g680759a0he553cd04354264bc@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="windows-1252"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-Hi, all.  I'm new to the list.
+Open Dos =96 An Open Source Dynamic Optimization System
 
-Vital stats:
-* Ubuntu Dapper (6.06)
-* Kernel 2.6.15-27-amd64-generic
-* Laptop
-* Used the update-rc.d command to remove GNOME from startup, so my
-system boots to the shell prompt.
 
-If the computer is plugged in while I boot, I don't have any problems.
- If it's on battery, I get the following text on my screen after the
-system has booted:
+Dynamic optimization refers to the runtime optimization of a native
+program binary. Dynamic binary optimization is an important area for
+compiler research, because the additional information available at
+runtime can substantially improve the effectiveness of optimizations
+that can be performed at runtime. The challenge is to monitor a
+process during its execution and optimize the static part of the
+binary.  We are building a system for monitoring and modifying a
+program's behavior while it is execution, without changing the
+semantics of the code. The basic idea of our system is to group a
+program's static instruction sequences into traces, optimize those
+traces, store the optimized trace in a software-based code cache, and
+then execute the optimized code in the code cache. As the runtime
+environment exposes several execution paths that have not been
+discovered during static optimization, it gives us several
+opportunities for performing optimizations even though the binary is
+strongly optimized statically. Several dynamic optimizers like Dynamo,
+Dynamo-Rio, Mojo have been implemented none of them being an open
+source [1]. Hence research in this area is substantially difficult. In
+this report we describe the design and high-level implementation of
+our dynamic optimization system.
 
-.....
-Ubuntu 6.06.1 LTS [ComputerName] tty1
+This is a very early version of the system, which has been tested
+completely on Fedora core 3 distro. So, kindly don't expect it to be
+complete.
 
-[ComputerName] login: [  100.725531] powernow-k8: ignoring illegal
-change in low freq table-2 to 0x2
-[  100.726009] powernow-k8: transition frequency failed
-[  101.728383] powernow-k8: ignoring illegal change in lo freq table-2 to 0x2
-[  101.728736] powernow-k8: transition frequency failed
-[  355.951446] powernow-k8: ignoring illegal change in lo freq table-2 to 0x2
-[  355.951625] powernow-k8: transition frequency failed
-.....
+Kindly give your reviews on it.
 
-If I type Ctrl-d, it prompts for login, and all is well.
+=46or further queries or to be a part of the development team:
 
-Following are boot messages regarding 'powernow-k8' when on battery:
+You can download the source from :
+http://sourceforge.net/project/showfiles.php?group_id=3D166921&release_=
+id=3D434335
 
-.....
-powernow-k8: Found 1 AMD Athlon 64 / Opteron processors (version 1.50.4)
-powernow-k8:    0 : fid 0xc (2000 MHz), vid 0x2 (1500 mV)
-powernow-k8:    1 : fid 0xa (1800 MHz), vid 0x6 (1400 mV)
-powernow-k8:    2 : fid 0x2 (1000 MHz), vid 0x10 (1150 mV)
-powernow-k8: ignoring illegal change in lo freq table-2 to 0x2
-powernow-k8: transition frequency failed
-.....
 
-I found a possible solution at
-http://ubuntuforums.org/archive/index.php/t-3585.html , though I don't
-know if it applies, and I don't know how to use it if it does.  Can
-someone help me make sense of this?
+Mail    :  opendos@gmail.com
+Group :  opendos@googlegroups.com
+              http://groups.yahoo.com/groups/opendos
+Blog    : http://opendos.blogspot.com
 
-Thanks in advance,
-Danielle
+Regards,
+OpenDos Team.
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
