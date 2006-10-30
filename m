@@ -1,34 +1,46 @@
-From: Hal <haltec@kvinet.com>
-Subject: Converting .avi to .mov??
-Date: Sat, 28 Oct 2006 14:29:23 -0400
-Message-ID: <20061028182923.GA1289@lnx2.kvinet.com>
-Reply-To: haltec@kvinet.com
+From: Diego Alencar Alves de Lima <diegolima.br@gmail.com>
+Subject: Capitalize a variable in a shell script
+Date: Mon, 30 Oct 2006 16:26:09 -0200
+Message-ID: <200610301626.12914.diegolima.br@gmail.com>
 Mime-Version: 1.0
+Content-Type: multipart/signed;
+  boundary="nextPart2099294.P586NfjTW9";
+  protocol="application/pgp-signature";
+  micalg=pgp-sha1
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux <linux-newbie@vger.kernel.org>
 
+--nextPart2099294.P586NfjTW9
+Content-Type: text/plain;
+  charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
 
-Greetings: I'm having a terrible time trying to convert .avi files
-that I've grabbed with mencoder then converting them to a quicktime
-for Linux .mov file that my editor likes.. Converting to .vob or .mpg
-is fairly easy with movie_to_dvd or tovid; but there is a problem
-with those two that's peculiar to the editor-Cinelerra... (It,
-simply, likes .mov files, at least here.) <grin>
+How can I capitalize an existing variable in a shell script? Currently=20
+$variable is www.domain.com, and I need to create a $variable1 that contain=
+s=20
+WWW.DOMAIN.COM (I am currently using bash as shell)
 
-I've been trying both ffmpeg and transcode, CLI,  to no avail.. Any
-suggestions?? TIA.. (Googling lists a bazillion programs for
-MSWindows, of course.) :^(.. [I'm using Slack10-2, 2.6.13 kernel, and
-both ffmpeg and transcode are working properly for other projects.]
+Thanks a lot
+=2D-=20
+Diego Lima
+http://sg.homelinux.com:81
 
--- 
+--nextPart2099294.P586NfjTW9
+Content-Type: application/pgp-signature
 
-    Hal.
-.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2.2 (GNU/Linux)
+
+iD8DBQBFRkPEMQUVtGjCvrMRAlIAAJ9JPPAK1KDxXnuz0MJRg1GRqofRzwCghgxQ
+YEKIiJFGfuFXdaLMMlOUmq4=
+=CUGl
+-----END PGP SIGNATURE-----
+
+--nextPart2099294.P586NfjTW9--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
