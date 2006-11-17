@@ -1,75 +1,58 @@
-From: "Conway S. Smith" <beolach@comcast.net>
-Subject: Re: connecting to the X-desktop with vnc
-Date: Tue, 7 Nov 2006 01:11:50 -0700
-Message-ID: <20061107011150.5bff8a45@mandalor.homelinux.net>
-References: <Pine.LNX.4.64.0611062108060.28741@localhost>
+From: Peter <heisspf@skyinet.net>
+Subject: Sound Messages
+Date: Fri, 17 Nov 2006 14:53:29 +0800
+Message-ID: <200611170653.kAH6rTrW002352@skyinet.net>
+Reply-To: heisspf@skyinet.net
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary=Sig_ZpfqUcEniO0tw8mYjaCqoWv;
- protocol="application/pgp-signature"; micalg=PGP-SHA1
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <Pine.LNX.4.64.0611062108060.28741@localhost>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: karthikv@Alum.Dartmouth.ORG
-Cc: Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
---Sig_ZpfqUcEniO0tw8mYjaCqoWv
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-On Mon, 6 Nov 2006 21:17:03 -0500 (EST)
-Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG> wrote:
-> I installed the vnc suite of tools (both on the remote server, as
-> well as the local client) where both machines run ubuntu-linux. I
-> started the vncserver on the server using vncserver which gives:
->=20
-> $ vncserver
->=20
-> New 'bombur:1 (karthik)' desktop is bombur:1
->=20
-> Starting applications specified in /home/karthik/.vnc/xstartup
-> Log file is /home/karthik/.vnc/bombur:1.log
->=20
-> I am able to connect from the client side using:
-> $ vncviewer bombur:1
->=20
-> This however opens up an xterm and is not the desktop that is running
-> on bombur. I want to see the X-desktop that is running on the server.
-> How do I go about doing this?
->=20
-> Both client and server run xorg as the Xserver. Please let me know if
-> more information is needed to help (such as kernels/xorg versions/vnc
-> versions running on client/server).
->=20
->=20
-> Thanks in advance,
->=20
-> -K
->=20
+After I upgraded from slackware-10.2 to sw-11
+playing a sound I get a message in xterm as well as one send to the mailbox:
 
-The vncserver actually starts its own X server, rather than connecting
-to the already running X server (hence the bombur:1, rather than
-bombur:0).  To connect to the already running X server, you want to use
-x11vnc instead of vncserver.  Most distributions should include it, or
-you can get its source from <http://www.karlrunge.com/x11vnc/>.
+In xterm
+
+@~:$ .growl
+
+Input Filename : /home/peter/sound/growl.wav
+Sample Size : 8-bits
+Sample Encoding: unsigned
+Channels : 1
+Sample Rate : 22050
+
+Time: 00:01.53 [00:00.00] of 00:01.53 ( 100.0%) Output Buffer: 67.39K
+
+In the Mail
+
+Subject: cron: cd /usr/local/saytime/sounds/; ./saytime.sh
+
+Input Filename : /home/peter/sound/saytemp
+Sample Size : 8-bits
+Sample Encoding: u-law
+Channels : 1
+Sample Rate : 8000
 
 
-Good luck,
-Conway S. Smith
+Time: 00:01.02 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 44.98K
+Time: 00:02.05 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 90.14K
+Time: 00:03.02 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 132.82K
 
---Sig_ZpfqUcEniO0tw8mYjaCqoWv
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Disposition: attachment; filename=signature.asc
+Done.
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.5 (GNU/Linux)
+Why is this and how can it be stopped especially those messages send to the 
+mailbox?
 
-iD8DBQFFUD/KGL3AU+cCPDERAv4aAJwIiGDAQVlzZ56H7Jf8KmVIMszSRQCfVNVQ
-wAY2VK/E14yNBIwNIyK7POw=
-=uFFP
------END PGP SIGNATURE-----
+Thanks & regards
 
---Sig_ZpfqUcEniO0tw8mYjaCqoWv--
+-- 
+Peter
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
