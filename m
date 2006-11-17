@@ -1,58 +1,31 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Sound Messages
-Date: Fri, 17 Nov 2006 14:53:29 +0800
-Message-ID: <200611170653.kAH6rTrW002352@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: Hal <haltec@kvinet.com>
+Subject: DialUp and ADSL on same machine??
+Date: Fri, 17 Nov 2006 15:58:45 -0500
+Message-ID: <20061117205845.GA1319@lnx2.kvinet.com>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
-
-Hi,
-
-After I upgraded from slackware-10.2 to sw-11
-playing a sound I get a message in xterm as well as one send to the mailbox:
-
-In xterm
-
-@~:$ .growl
-
-Input Filename : /home/peter/sound/growl.wav
-Sample Size : 8-bits
-Sample Encoding: unsigned
-Channels : 1
-Sample Rate : 22050
-
-Time: 00:01.53 [00:00.00] of 00:01.53 ( 100.0%) Output Buffer: 67.39K
-
-In the Mail
-
-Subject: cron: cd /usr/local/saytime/sounds/; ./saytime.sh
-
-Input Filename : /home/peter/sound/saytemp
-Sample Size : 8-bits
-Sample Encoding: u-law
-Channels : 1
-Sample Rate : 8000
+To: linux-newbie@vger.kernel.org
 
 
-Time: 00:01.02 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 44.98K
-Time: 00:02.05 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 90.14K
-Time: 00:03.02 [00:00.00] of 00:00.00 ( 0.0%) Output Buffer: 132.82K
+	As far as I can see I cannot have a pppoe setup and a dialup
+setup on the same machine.. It's either one or the other.. Not both..
+This machine has a NIC and a hardware modem, with the modem running
+for years with little problems.. "Adding" PPPOE for ADSL completely
+upsets everything, necessitating an install of the ppp package and
+running pppsetup again from scratch, in order to have dial up again..
 
-Done.
-
-Why is this and how can it be stopped especially those messages send to the 
-mailbox?
-
-Thanks & regards
+	Am I wrong??  Any comments most welcome. TIA
 
 -- 
-Peter
 
+         Hal.      GNU/Linux -- Slackware 10.1, kernel 2.4.29
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
