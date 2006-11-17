@@ -1,7 +1,7 @@
-From: Ray Olszewski <ray@comarre.com>
+From: Chuck Gelm <Chuck@Gelm.net>
 Subject: Re: DialUp and ADSL on same machine??
-Date: Fri, 17 Nov 2006 14:17:50 -0800
-Message-ID: <455E350E.20006@comarre.com>
+Date: Fri, 17 Nov 2006 17:38:37 -0500
+Message-ID: <455E39ED.9010705@Gelm.net>
 References: <20061117205845.GA1319@lnx2.kvinet.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -10,7 +10,8 @@ In-Reply-To: <20061117205845.GA1319@lnx2.kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: haltec@kvinet.com
+Cc: linux-newbie@vger.kernel.org
 
 Hal wrote:
 > 	As far as I can see I cannot have a pppoe setup and a dialup
@@ -19,35 +20,54 @@ Hal wrote:
 > for years with little problems.. "Adding" PPPOE for ADSL completely
 > upsets everything, necessitating an install of the ppp package and
 > running pppsetup again from scratch, in order to have dial up again..
-> 
+>
 > 	Am I wrong??  Any comments most welcome. TIA
-> 
+>   
+Hi, Hal:
 
-I'm afraid, Hal, that I can respond in only the most general way. I 
-don't know if this vague a response will help or not.
+ You may be right or wrong, but I think you are ambiguous.  :-|
 
-It should be possible to have on your system setups for both dial-up 
-(ppp) and ADSL (pppoe). At least the underlying stuff (kernel modules, 
-drivers, and userspace apps) should be able to handle it. But you'll 
-probably need to do the setup by hand, because scripts like pppsetup 
-tend to be written to handle only "vanilla" cases ... in this instance, 
-a host with a single pppd interface requirement. For example, you'll 
-probably want to make one of the interfaces ppp0, the other ppp1.
+ I used 'pppsetup' for a few years, then RoaringPenguin (PPPOE) a few years
+when I upgraded to DSL, and now I have cable modem internet access.
 
-If you want both connections to run at the same time, there will be some 
-added complications, mainly involving the host's routing table. But I'm 
-guessing you want to maintain the dial-up as a backup arrangement, for 
-when the DSL connection fails or, perhaps (if we're discussing a laptop, 
-say) when you are away from the home connection. So you'll want a way to 
-use apps like ifup and ifdown to switch interfaces.
+ Both 'pppsetup' and "PPPOE" are used to connect to an
+Internet Service Provider (ISP).    So...
 
-Having said all that, I am, unfortunately, way too rusty on pppd to help 
-with the details (I have the good fortune to have a static-address DSL 
-line here, so I don't have to jump through any pppoe hoops, and I don't 
-even own a modem). But if you provide the usual sorts of details, 
-someone else here may be able to give you more exact advice.
+"As far as I can see I cannot have a pppoe setup and a dialup setup on 
+the same machine."
 
-Sorry I can't offer more help on this one.
+IMHO, is ambiguous and false.  You can have both on the same machine.  
+They may not
+run concurrently unless you edit some configurations. (iptables, 'route 
+-n', /etc/resolv, ...)
+You could share (or not) your DSL connection by allowing users to dial 
+into your
+telephone modem and establish a ppp connection through (or to) your host.
+
+"completely upsets everything"  IMHO, is ambiguous.  Each may change 
+(upset?)
+/etc/resolv, routing tables, DNS, IPTABLES, ... for the other program.  ;-)
+
+Both packages perform a similar function.  Connect to an ISP.
+
+'pppsetup':
+"... PPPsetup is a bash shell script to help you in creating a chat 
+script, for
+establising a PPP connection to a internet service provider. ..."
+
+'rp-pppoe':
+"... pppoe is a user-space redirector which permits the use of PPPoE
+(Point-to-Point Over Ethernet) with Linux.  PPPoE is used by many
+DSL service providers. ..."  i.e. connect to an internet service proveder.
+
+ Just for grins, when I had DSL service. I dialed my '56k' modem to an ISP
+just to see if the DSL telephone frequencies would interfere with the
+telephone modem frequencies.  Whilst doing a download via DSL, I dialed
+and got a 49.333 kbps connection over and over and over...   Which was as
+fast as I ever got before DSL.    :-)
+
+HTH, Chuck
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
