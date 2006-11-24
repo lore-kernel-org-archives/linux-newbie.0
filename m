@@ -1,83 +1,38 @@
-From: Hal <haltec@kvinet.com>
-Subject: Re: DialUp and ADSL on same machine??
-Date: Thu, 23 Nov 2006 09:05:01 -0500
-Message-ID: <20061123140501.GB1685@lnx2>
-References: <45646F10.30707@Gelm.net> <200611230109.kAN19wZ4002008@skyinet.net>
-Reply-To: haltec@kvinet.com
+From: "Kelly Jones" <kelly.terry.jones@gmail.com>
+Subject: Process logger?
+Date: Thu, 23 Nov 2006 21:45:36 -0700
+Message-ID: <26face530611232045w7fa86de2l33938fe8550c50e5@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <200611230109.kAN19wZ4002008@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Peter <heisspf@skyinet.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On 11-23, Peter wrote:
-> Hi,
-> 
-> I don't know if I understand all what I read in this thread,--does it boil 
-> down to the fact that Hal cannot send mail using stand alone mail programs via 
-> his old mail addresses when using his new DSL.
-> 
-> I had/have this same problem with my broadband via DHCPD that I could/can send 
-> mail only through the email-address of the ISP of the BB and not via my old 
-> e-mail addresses. In fact I encounter this problem every-now-and-then when 
-> either my base station brakes down or they do a major upgrade.
-> 
+If a process runs for a long time, I can use "ps -aux -www" to see
+info about it, and even look at /proc/pid/*
 
-	So it's confirmed what Chuck and I have suspected; that my
-two ISP's can't or won't talk to each other.. Chuck has really spent
-an inordinate amount of time holding my hand on this..
+But sometimes a process starts, runs, and ends before I can see it
+with "ps -aux -www" or can look at /proc/pid/*
 
+Is there a way to log processes? A daemon or kernel module that
+creates syslog entries like this:
 
+Nov 23 16:57:38 machine processd[6052]: Process 1234 started, command=foo,
+arg1=bar, arg2=blah
 
-> I then inform this BB ISP and depending how lucky I am to get connected to the 
-> right knowledgeable person (last time it took 3 weeks) in a matter of less 
-> then a minute the problem is solved. They pull a switch or press a button, so 
-> to speak and out goes the mail which had hung in the queue. I have 2 mail 
-> addresses beside the one given by the BB ISP which I do not use.
+Nov 23 16:57:38 machine processd[6052]: Process 1234 opened file
+"/tmp/foobar.txt", file descriptor 3
 
-	Some things are easy when you know how, eh?
+Nov 23 16:57:39 machine processd[6052]: Process 1234 ended
 
+Obviously this would be something that could turned on/off (would
+really clutter the logs otherwise).
 
-
-> They try to make me use their browser based mail program which I refuse since 
-> I find those programs cumbersome.
-
-	I cannot use their supplied software at all.. Most suffer
-with it I gather..
-
-
-
-> When I have the problem of not sending mail with nail, exmh or whatsoever I 
-> use www.mail2web.com in the meantime until the switch has been pulled again. 
-> With mail2web.com I can use my old addresses.
-
-	That's a good suggestion to archive.. As of now I'm using
-Chucks previous suggestion of two separate directories with the setup
-parameters peculiar to which operation..
-
-
-> 
-> It is also important that the SMTP address is set correctly for outgoing mail 
-> which has to be the one of the ISP of the BB or I guess a DSL. Thunderbird and 
-> Sylpheed-claws are IMO easiest for this to set-up.
-
-	Chuck uses Thunderbird and it must be a great program like
-almost everything that comes out of Mozilla.. Verizon insists on IE6
-with all it's limitations.. Neither my wife or I can use a GUI for
-eMail except in very small doses.. That's our problem, not the
-worlds, eh?? We survive..
-
-	HAPPY THANKSGIVING..
-
--- 
-
-         Hal.      GNU/Linux -- Slackware 10.1, kernel 2.4.29
-.
+I know about strace, but that only works well for processes I start
+from the command-line.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
