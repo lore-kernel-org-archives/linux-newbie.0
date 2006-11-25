@@ -1,39 +1,39 @@
 From: Chuck Gelm <Chuck@Gelm.net>
-Subject: FedoraCore5: dhcpcd -d eth0 ?
-Date: Sat, 25 Nov 2006 14:49:19 -0500
-Message-ID: <45689E3F.20001@Gelm.net>
-References: <20061102200743.GB1570@lnx2.kvinet.com> <bb529e40611030437yc2b0029k55367a72d8bc2473@mail.gmail.com> <20061105150324.GA1138@lnx2.kvinet.com>
+Subject: Re: ADSL & Sending Mail? Was: DialUp and ADSL.......
+Date: Sat, 25 Nov 2006 16:00:27 -0500
+Message-ID: <4568AEEB.1030007@Gelm.net>
+References: <e0O5uQ5D.1164229866.0313500.haltec@kvinet.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <20061105150324.GA1138@lnx2.kvinet.com>
+In-Reply-To: <e0O5uQ5D.1164229866.0313500.haltec@kvinet.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: "haltec@kvinet.com" <haltec@kvinet.com>
+Cc: linux-newbie@vger.kernel.org
 
-Howdy:
+http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2372
 
- I am trying out K12LTSP and its distribution is Fedora Core 5.
+Hal:  Try these settings:
 
-How do I ask 'eth0' to try to obtain an IP address via DHCP?
+DSL settings
 
-dhcpcd -d eth0
--bash command not found: dhcpcd
+    * Primary DNS: */4.2.2.1/*
+    * Secondary DNS: */4.2.2.2/*
+    * Domain: dsl.verizon.net
+    * Network protocol used: TCP/IP
 
-IIRC RedHat uses a network command 'ifup', so I...
-man ifup
-No manual page for ifup.
+Mail server settings
 
-After running, 'netconfig', how do I ask FC5 to restart networking ?
-(In Slackware it would be '/etc/rc.d/rc.inetd restart')
-(other than rebooting ;-)
-
-Regards, Chuck
-
-
-
-
+    * Incoming mail server (POP3
+      <http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2330>):
+      */incoming.verizon.net/*
+    * Outgoing mail server (SMTP
+      <http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2066>):
+      */outgoing.verizon.net/*
+    * Your Verizon Online user name
+    * Your Verizon Online password
 
 
 -
