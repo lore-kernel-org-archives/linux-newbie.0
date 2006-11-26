@@ -1,40 +1,28 @@
-From: Chuck Gelm <Chuck@Gelm.net>
-Subject: Re: ADSL & Sending Mail? Was: DialUp and ADSL.......
-Date: Sat, 25 Nov 2006 16:00:27 -0500
-Message-ID: <4568AEEB.1030007@Gelm.net>
-References: <e0O5uQ5D.1164229866.0313500.haltec@kvinet.com>
+From: Peter <heisspf@skyinet.net>
+Subject: Re: FedoraCore5: dhcpcd -d eth0 ?
+Date: Sun, 26 Nov 2006 08:51:23 +0800
+Message-ID: <200611260051.kAQ0pN1A001712@skyinet.net>
+References: <45689E3F.20001@Gelm.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <e0O5uQ5D.1164229866.0313500.haltec@kvinet.com>
+In-Reply-To: Your message of "Sat, 25 Nov 2006 14:49:19 EST."
+             <45689E3F.20001@Gelm.net> 
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: "haltec@kvinet.com" <haltec@kvinet.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Chuck Gelm <Chuck@Gelm.net>
 Cc: linux-newbie@vger.kernel.org
 
-http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2372
+A)  Application -> System Tools -> Internet Configuration Wizard.         		
+(usr/bin/internet-druid)
 
-Hal:  Try these settings:
+B) Desktop -> System -> Network 
+	(usr/bin/system-config-network)
 
-DSL settings
-
-    * Primary DNS: */4.2.2.1/*
-    * Secondary DNS: */4.2.2.2/*
-    * Domain: dsl.verizon.net
-    * Network protocol used: TCP/IP
-
-Mail server settings
-
-    * Incoming mail server (POP3
-      <http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2330>):
-      */incoming.verizon.net/*
-    * Outgoing mail server (SMTP
-      <http://netservices.verizon.net/portal/site/msa/index.jsp?case=c2066>):
-      */outgoing.verizon.net/*
-    * Your Verizon Online user name
-    * Your Verizon Online password
-
+Regards
+-- 
+Peter
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
