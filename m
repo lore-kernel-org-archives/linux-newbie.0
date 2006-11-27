@@ -1,71 +1,68 @@
-From: "Conway S. Smith" <beolach@comcast.net>
-Subject: Re: Process logger?
-Date: Mon, 27 Nov 2006 04:31:36 -0700
-Message-ID: <20061127043136.744b9db6@mandalor.homelinux.net>
-References: <26face530611232045w7fa86de2l33938fe8550c50e5@mail.gmail.com>
+From: Chuck Gelm <Chuck@Gelm.net>
+Subject: Re: FedoraCore5: dhcpcd -d eth0 ?
+Date: Mon, 27 Nov 2006 11:58:14 -0500
+Message-ID: <456B1926.103@Gelm.net>
+References: <200611260051.kAQ0pN1A001712@skyinet.net>
 Mime-Version: 1.0
-Content-Type: multipart/signed; boundary="Sig_8RWOMw.fT=0WhkI5l1s/Apf";
- protocol="application/pgp-signature"; micalg=PGP-SHA1
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <26face530611232045w7fa86de2l33938fe8550c50e5@mail.gmail.com>
+In-Reply-To: <200611260051.kAQ0pN1A001712@skyinet.net>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-To: Kelly Jones <kelly.terry.jones@gmail.com>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: 
 Cc: linux-newbie@vger.kernel.org
 
---Sig_8RWOMw.fT=0WhkI5l1s/Apf
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
+Hi, Peter:
 
-On Thu, 23 Nov 2006 21:45:36 -0700
-"Kelly Jones" <kelly.terry.jones@gmail.com> wrote:
-> If a process runs for a long time, I can use "ps -aux -www" to see
-> info about it, and even look at /proc/pid/*
->=20
-> But sometimes a process starts, runs, and ends before I can see it
-> with "ps -aux -www" or can look at /proc/pid/*
->=20
-> Is there a way to log processes? A daemon or kernel module that
-> creates syslog entries like this:
->=20
-> Nov 23 16:57:38 machine processd[6052]: Process 1234 started,
-> command=3Dfoo, arg1=3Dbar, arg2=3Dblah
->=20
-> Nov 23 16:57:38 machine processd[6052]: Process 1234 opened file
-> "/tmp/foobar.txt", file descriptor 3
->=20
-> Nov 23 16:57:39 machine processd[6052]: Process 1234 ended
->=20
-> Obviously this would be something that could turned on/off (would
-> really clutter the logs otherwise).
->=20
-> I know about strace, but that only works well for processes I start
-> from the command-line.
+Thanks for your response.  However, when I use the GUI interface
+(K12LTSP, Gnome 2.14.2, 2.6.17-1.2157_FC5, logged in as 'root') and
 
-If you're still looking for info on this, you might be interested in
-the GNU system accounting utilities.  I've not really used them myself,
-but I think they do pretty close to what you want.
+Left click Applications -> System Tools ->
+ I do not see Internet Configuration Wizard;
+I do see only File Browser, Fltk Teacher Tool, Software Updater, and Yum 
+Extender.
 
-More info at <http://directory.fsf.org/acct.html> and
-<http://savannah.gnu.org/projects/acct/>
+&&
 
+When I right click on the Desktop,
+I do not see System,
+I do see Create Folder, Create Launcher, Create Document, Clean Up by Name
+Keep Aligned, <paste>, Change Desktop Background.
 
-Good luck,
-Conway S. Smith
+ So, what am I doing wrong?
 
---Sig_8RWOMw.fT=0WhkI5l1s/Apf
-Content-Type: application/pgp-signature; name=signature.asc
-Content-Disposition: attachment; filename=signature.asc
+ I would, still, like to know;
+after running, 'netconfig', how do I ask FC5 to restart networking ?
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.5 (GNU/Linux)
+Regards, Chuck
 
-iD8DBQFFasydGL3AU+cCPDERAvDcAJ4umDBPTu1miEtatBo7gfFG2UpYjQCcDjOh
-rXpsk8LL0NW2ZFrOZefhwL4=
-=Ol8o
------END PGP SIGNATURE-----
+Peter wrote:
+> A)  Application -> System Tools -> Internet Configuration Wizard.         		
+> (usr/bin/internet-druid)
+>
+> B) Desktop -> System -> Network 
+> 	(usr/bin/system-config-network)
+>
+> Regards
+>   
+I am trying out K12LTSP and its distribution is Fedora Core 5.
 
---Sig_8RWOMw.fT=0WhkI5l1s/Apf--
+How do I ask 'eth0' to try to obtain an IP address via DHCP?
+
+dhcpcd -d eth0
+-bash command not found: dhcpcd
+
+IIRC RedHat uses a network command 'ifup', so I...
+man ifup
+No manual page for ifup.
+
+After running, 'netconfig', how do I ask FC5 to restart networking ?
+(In Slackware it would be '/etc/rc.d/rc.inetd restart')
+(other than rebooting ;-)
+
+Regards, Chuck
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
