@@ -1,95 +1,75 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Re: FedoraCore5: dhcpcd -d eth0 ?
-Date: Tue, 28 Nov 2006 09:26:26 +0800
-Message-ID: <20061128092626.3fc98ab8@skyinet.net>
-References: <200611260051.kAQ0pN1A001712@skyinet.net>
-	<456B1926.103@Gelm.net>
+From: Hal <haltec@kvinet.com>
+Subject: Re: ADSL & Sending Mail? Was: DialUp and ADSL.......
+Date: Tue, 28 Nov 2006 13:21:04 -0500
+Message-ID: <20061128182104.GA2357@lnx2>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <456B1926.103@Gelm.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chuck Gelm <Chuck@Gelm.net>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Then K12LTSP must not use the standard apps gnome-panel or they do not have
-those programs I mention in next paragraph.
+	Disregard my request for help below.. I found a fix.. :^).
+Hal..
 
-Have you tried from a terminal the commands (usr/bin/internet-druid) and
-(usr/bin/system-config-network) or may be /usr/bin/network-admin which is
-the command in slackware using dropline-gnome giving the same gui? I use it
-to connect for my dial-up ISP via the modem.
+	Meanwhile maybe I can ask for more help with the scheme now
+being used in two parts; bash script follows:
+------------------------------------------------------------------------------
+#!/bin/bash
+# /usr/local/sbin/postmail (script to sendmail via kvinet.com..
 
-In /etc/init.d you might want to have a look at network and netplugd.
+# Disable ppp.adsl
+/bin/rm /etc/ppp
 
-I could not find to start eth0 in Fedora as you mentioned we do it in slack
-so I use /usr/bin/system-config-network
+# Setup to use dialup modem
+/bin/ln -s /etc/ppp.dial /etc/ppp
 
-On Mon, 27 Nov 2006 11:58:14 -0500
-Chuck Gelm <Chuck@Gelm.net> wrote:
+# Run ppp for DialUp
+/usr/sbin/ppp-go
 
-> Hi, Peter:
-> 
-> Thanks for your response.  However, when I use the GUI interface
-> (K12LTSP, Gnome 2.14.2, 2.6.17-1.2157_FC5, logged in as 'root') and
-> 
-> Left click Applications -> System Tools ->
->  I do not see Internet Configuration Wizard;
-> I do see only File Browser, Fltk Teacher Tool, Software Updater, and Yum 
-> Extender.
-> 
-> &&
-> 
-> When I right click on the Desktop,
-> I do not see System,
-> I do see Create Folder, Create Launcher, Create Document, Clean Up by Name
-> Keep Aligned, <paste>, Change Desktop Background.
-> 
->  So, what am I doing wrong?
-> 
->  I would, still, like to know;
-> after running, 'netconfig', how do I ask FC5 to restart networking ?
-> 
-> Regards, Chuck
-> 
-> Peter wrote:
-> > A)  Application -> System Tools -> Internet Configuration Wizard.         		
-> > (usr/bin/internet-druid)
-> >
-> > B) Desktop -> System -> Network 
-> > 	(usr/bin/system-config-network)
-> >
-> > Regards
-> >   
-> I am trying out K12LTSP and its distribution is Fedora Core 5.
-> 
-> How do I ask 'eth0' to try to obtain an IP address via DHCP?
-> 
-> dhcpcd -d eth0
-> -bash command not found: dhcpcd
-> 
-> IIRC RedHat uses a network command 'ifup', so I...
-> man ifup
-> No manual page for ifup.
-> 
-> After running, 'netconfig', how do I ask FC5 to restart networking ?
-> (In Slackware it would be '/etc/rc.d/rc.inetd restart')
-> (other than rebooting ;-)
-> 
-> Regards, Chuck
-> 
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
-> 
+# need a waitfor here :
+# "NO CARRIER Local: 146.82.214.57 -> Remote: 10.1.4.1 ppp0"
+# Needs a new line after that before invoking sendmail....
+# The 146.x.x.x may be different considering dhcp.
 
 
+#One of my many trys to make it one script, all failing..
+if grep  Local:
+then	 /bin/echo -e ""
+fi
+# Invoking postmail1, thence hitting enter and invoking postmail2, does
+# the trick...
+#
+# TEMPORARY: The above, before the if,  is postmail1 and the below is
+# postmail2..
+#
+
+# Sending mail via kvinet.com relay. See /etc/mail/submit.cf DS
+# Need to check to see if any outgoing mail in queue..
+# Not really necessary as it'll exit gracefully with no mail in the queue..
+
+# Running sendmail 8.13.3, secure, as user smmsp - /var/spool/clientmqueue.
+/usr/sbin/sendmail -q -v -Ac
+
+# Stop ppp Dialup
+/usr/sbin/ppp-off
+
+# Disable ppp.dial
+/bin/rm /etc/ppp
+
+# Setup to use ADSL Modem
+/bin/ln -s /etc/ppp.adsl /etc/ppp
+
+echo  " Back to ADSL StandBy."
+#
+------------------------------------------------------------------------------
 -- 
-Peter
+
+         Hal.      GNU/Linux -- Slackware 10.1, kernel 2.4.29
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
