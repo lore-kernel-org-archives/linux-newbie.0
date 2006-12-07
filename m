@@ -1,31 +1,31 @@
-From: Neal Morrison <webmaster@nams.de>
-Subject: Kernel read/write Blocksize
-Date: Thu, 7 Dec 2006 11:23:20 +0100
-Message-ID: <20061207112320.38bfc62a@localhost.localdomain>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: question regarding firmware
+Date: Thu, 7 Dec 2006 16:02:06 +0530
+Message-ID: <7783925d0612070232w6a2b7ab1qf194345996db8a96@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Hello everybody,
+Hi list,
 
-some of my colleagues told me that the internel Buffsize ist 4k.
-Yesterday I saw in the Kernelconfigurations that the default value for
-the stacksize is 8k and you can set it to 4k.
+Please pardon me for posting some what off the topic question here.
 
-Kernel hacking -> Use 4Kb for kernel stacks instead of 8Kb   
+I read that the driver has the reponsibility to download firmware onto
+a device. My understanding of "firmware" is that it is the code that
+runs IN the device without any help from the host (Hence there needs
+to be a processing core in the device).
 
+So as per this, a firmware is ONLY applicable to devices which are
+actually SoC (System on chip)??
 
+Thanks,
 
-So my question is: Is the stacksize simular to the read/write size? 
-                   And what ist the best read/write size when I build my
-                   own networkingprogramms?
-
--- 
-Regards Neal
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
