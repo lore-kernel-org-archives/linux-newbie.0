@@ -1,80 +1,69 @@
-From: Peter <heisspf@skyinet.net>
-Subject: Internet Connection in Zenwalk
-Date: Sun, 17 Dec 2006 10:09:49 +0800
-Message-ID: <200612170209.kBH29nqg002093@skyinet.net>
-Reply-To: heisspf@skyinet.net
+From: Carl <carl@anexia.co.uk>
+Subject: Re: SMTP AUTH with SMART_HOST Client only??
+Date: Mon, 18 Dec 2006 15:19:22 +0000
+Message-ID: <6.2.3.4.0.20061218151355.01f81100@127.0.0.1>
+References: <20061215191615.GA2017@lnx2>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20061215191615.GA2017@lnx2>
+References: <20061215191615.GA2017@lnx2>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"; x-avg-checked="avg-ok-3B45A6A"
 Content-Transfer-Encoding: 7bit
-To: linux <linux-newbie@vger.kernel.org>
+To: haltec@kvinet.com, linux-newbie@vger.kernel.org
 
-Hi,
+At 19:16 15/12/2006, Hal wrote:
 
-Recently I had a look at Zenwalk-4 distro which is slackware based with 
-kernel-2.6.18.1. I kind of like what I see, however, I can't make it connect 
-to the Internet.
 
-On booting I get
+>         ADSL support has upset my apple cart as far as outgoing SMTP
+>mail is concerned to my regular smart_relay ISP where my mailboxes
+>are located..
+>
+>         Fetching mail no problem using getmail connected as dial-up
+>or ADSL.. Sending mail no problem, dial-up, but via ADSL I've run
+>into the SMTP AUTH problem used by Verizon's outgoing smtp server..
+>Have fetched at least ten HOWTO's, that are mainly addressed to
+>server or combination server/client support.. I'm bogged down. <g>
+>
+>         I need some input as to what has worked for others, rather
+>than try so many.. Slackware comes bundled with Sendmail 8.13.X which
+>I can use but find Sendmail 8.11.4 is better for my use even though
+>it's not as "secure." I've never had a problem with 8.11.4, running
+>as a single user system, rather than a server.. Knock on wood, eh?
+>One first query is; I wonder if Cyrus-sasl is needed as a client only,
+>etc.. (I might be using Slackware 10.2, 2.4.31 if that helps.)
+>
+>         TIA and Happy Holidays to all..
+>
+>--
+>
+>          Hal.      GNU/Linux -- Slackware 10.1, kernel 2.4.29
+>.
+>-
+>To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+>the body of a message to majordomo@vger.kernel.org
+>More majordomo info at  http://vger.kernel.org/majordomo-info.html
+>Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>
+>--
+>No virus found in this incoming message.
+>Checked by AVG Free Edition.
+>Version: 7.1.409 / Virus Database: 268.15.23/591 - Release Date: 17/12/2006
+>
+>
+>
+>
+>--
+>No virus found in this incoming message.
+>Checked by AVG Free Edition.
+>Version: 7.1.409 / Virus Database: 268.15.23/591 - Release Date: 17/12/2006
 
-Starting the Network
-/etc/rc.d/rc.inet1:  /sbin/ifconfig lo 127.0.0.1
-/etc/rc.d/rc.inet1:  /sbin/route add -net 127.0.0.0 netmask 255.0.0.0 lo
-/etc/rc.d/rc.inet1:  /sbin/dhcpcd -d -t 60  eth0
-dhcpcd: MAC address = 00:08:a1:9c:43:3a
-dhcpcd[2211]: broadcasting DHCP_DISCOVER
 
-dhcpcd[2211]: timed out waiting for a valid DHCP server response
+Try this from comp.mail.sendmail:
 
-Could it be a missing module?
-
-Here is lsmod for my slackware-11 w/o the sound bits
-
-ipv6                  206336  10 
-sg                     24988  0 
-pcmcia                 28580  0 
-yenta_socket           21772  0 
-rsrc_nonstatic         10496  1 yenta_socket
-pcmcia_core            33040  3 pcmcia,yenta_socket,rsrc_nonstatic
-dmfe                   16540  0 
-agpgart                26716  0 
-lp                      9160  0 
-parport_pc             23236  1 
-parport                28872  2 lp,parport_pc
-psmouse                33288  0
-
-and here for zenwalk gain w/o the sound bits
-
-nls_iso8859_1           3584  2
-vfat                    6912  2
-fat                    30236  1 vfat
-video                  10372  0
-thermal                 7944  0
-processor              16720  1 thermal
-fuse                   24852  0
-fan                     2436  0
-dmfe                   11676  0
-button                  3472  0
-ac    
-via_agp                 4736  1    
-agpgart                16332  1 via_agp
-ehci_hcd               19080  0 
-uhci_hcd               13708  0 
-tulip                  35744  0 
-tsdev                   3904  0 
-evdev                   5504  0
-
-doing /etc/rc.d/rc.inet1 start
-gives the same as on booting, sitting for a long time trying to connect 
-unsuccessfully.
-
-Suggestions much appreciated.
-
-Regards
--- 
-Peter
+http://groups.google.com/group/comp.mail.sendmail/browse_thread/thread/1abaead5ed622ab/7f6ca1c2de498756?lnk=gst&q=benway&rnum=16#7f6ca1c2de498756 
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
