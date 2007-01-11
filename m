@@ -1,65 +1,41 @@
-From: "Daniel L. McGrew" <danix@northforkhoney.com>
-Subject: Problems with mouse & menu
-Date: Tue, 02 Jan 2007 00:51:31 -0600
-Message-ID: <encvi7$5ta$2@sea.gmane.org>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: ioport_resource / iomem_resource - PCI specific?
+Date: Thu, 11 Jan 2007 07:46:14 +0530
+Message-ID: <b115cb5f0701101816s55db0fecqaa38153b7bc1b83a@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-Thanks in advance for any help that is rendered to me on this topic... Thank
-you...
+Hi,
 
-I've loaded Debian on at least four computers about 10 times... Some more
-than others... lol... 
+I have a doubt regarding the following definitions in kernel/resource.c:
 
-Anyway, I've loaded it this last time, on a DELL Optiplex GX100... It's
-working absolutely wonderful, as always, however I've built 3 profiles on
-this 'puter and mine is messed up... I'm not certain exactly what I did to
-accomplish this unusual feat, but I would like to know how to fix it... 
+struct resource ioport_resource = {
+        .name   = "PCI IO",
+        .start  = 0x0000,
+        .end    = IO_SPACE_LIMIT,
+        .flags  = IORESOURCE_IO,
+};
 
-I have to click to select main list items on my menu... in all the other
-installations, I simply hold the mouse over the item in the KDE list menu
-and it's selected, the sub-menu pops out... 
-However, at the present it's not working like that... If anyone knows how to
-fix that I would really appreciate it if you could impart that information
-to me... 
+struct resource iomem_resource = {
+        .name   = "PCI mem",
+        .start  = 0UL,
+        .end    = ~0UL,
+        .flags  = IORESOURCE_MEM,
+};
 
-One other problem I'm having is with the mouse. I have a two button mouse
-with a scroll wheel in the middle... the scroll wheel it's working... 
-In control center I have these items selected; 
-GENERAL
-Button Order = Right Handed
-Single-click to open files and folders
-Change pointer shape over icons 
-visual feedback on activation
+Aren't the symbols ioport_resource and iomem_resource meant for
+"generic" resource management for all buses / devices? If yes, then
+why their names have "PCI" tagged to them?
 
-CURSOR THEME
-KDE-classic
+Just Curious,
 
-ADVANCED (Using setup defaults)
-Pointer acceleration            2.0x
-Pointer threshold               4 pixels
-Double-click interval           400 msec
-Drag start time                 500 msec
-Mouse wheel scrolls by          3 lines
-
-Mouse navigation                (by keyboard NOT selected)
-
-I've also looked at other instanced on this computer that work the way that
-I want them to work and can't find the difference... they look the same...
-I've got to be missing something... 
-
-It's always something small, a check-mark in a box somewhere, or something
-tiny and hard to find like that... there are so many check boxes... lol...
-
-        Thanks, once again, in advance for any and all help that anyone reading
-this renders to me in handling this problem, 
-                                        Dan
-
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
