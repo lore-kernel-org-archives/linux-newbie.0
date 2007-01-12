@@ -1,69 +1,40 @@
-From: "Daniel L. McGrew" <danix@northforkhoney.com>
-Subject: Problems with mouse & menu
-Date: Thu, 11 Jan 2007 22:04:52 -0600
-Message-ID: <eo71hu$v5l$1@sea.gmane.org>
-References: <encvi7$5ta$2@sea.gmane.org>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: request_mem_region() compulsory or advisory?
+Date: Fri, 12 Jan 2007 17:09:39 +0530
+Message-ID: <7783925d0701120339s74e3e0c7k5f3e113ec3fe347e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+Content-Disposition: inline
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Thanks in advance for any help that is rendered to me on this topic... Thank
-you...
+Hi,
 
-I've loaded Debian on at least four computers about 10 times... Some more
-than others... lol... 
+I'm trying to write a simple driver using some registers of my hardware.
 
-Anyway, I've loaded it this last time, on a DELL Optiplex GX100... It's
-working absolutely wonderful, as always, however I've built 3 profiles on
-this 'puter and mine is messed up... I'm not certain exactly what I did to
-accomplish this unusual feat, but I would like to know how to fix it... 
+Is a call to request_mem_region() advisory ("recommended") or
+compulsory before I ioremap the memory?
 
-I have to click to select main list items on my menu... in all the other
-installations, I simply hold the mouse over the item in the KDE list menu
-and it's selected, the sub-menu pops out... 
-However, at the present it's not working like that... If anyone knows how to
-fix that I would really appreciate it if you could impart that information
-to me... 
+In other words, if I don't use request_mem_region() before I start
+using the memory; is my driver BOUND to fail, or it MAY fail?
 
-One other problem I'm having is with the mouse. I have a two button mouse
-with a scroll wheel in the middle... the scroll wheel it's working... 
-In control center I have these items selected; 
-GENERAL
-Button Order = Right Handed
-Single-click to open files and folders
-Change pointer shape over icons 
-visual feedback on activation
+Thanks,
 
-CURSOR THEME
-KDE-classic
+Rick
 
-ADVANCED (Using setup defaults)
-Pointer acceleration            2.0x
-Pointer threshold               4 pixels
-Double-click interval           400 msec
-Drag start time                 500 msec
-Mouse wheel scrolls by          3 lines
+--
+Kernelnewbies: Help each other learn about the Linux kernel.
+Archive:       http://mail.nl.linux.org/kernelnewbies/
+FAQ:           http://kernelnewbies.org/faq/
 
-Mouse navigation                (by keyboard NOT selected)
-
-I've also looked at other instanced on this computer that work the way that
-I want them to work and can't find the difference... they look the same...
-I've got to be missing something... 
-
-It's always something small, a check-mark in a box somewhere, or something
-tiny and hard to find like that... there are so many check boxes... lol...
-
-        Thanks, once again, in advance for any and all help that anyone
-reading
-this renders to me in handling this problem, 
-                                        Dan
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
