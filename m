@@ -1,40 +1,48 @@
-From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: request_mem_region() compulsory or advisory?
-Date: Fri, 12 Jan 2007 17:09:39 +0530
-Message-ID: <7783925d0701120339s74e3e0c7k5f3e113ec3fe347e@mail.gmail.com>
+From: Pepo <pmancheno@gmail.com>
+Subject: Virtual interfaces in IPv6 for routing.
+Date: Mon, 15 Jan 2007 22:41:42 -0500
+Message-ID: <200701152241.43910.pmancheno@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org, debian-user@lists.debian.org
 
-Hi,
+Hi friends.
 
-I'm trying to write a simple driver using some registers of my hardware.
+I have PCs with just one nic each one, and these PCs are working like routers 
+for my test-LAN (for my thesis); when have to route to different sub-nets I 
+use tunnels in IPv4 with OpenVpn to virtual-connect directly each router.
 
-Is a call to request_mem_region() advisory ("recommended") or
-compulsory before I ioremap the memory?
+Now, I have to do the same thing but in IPv6. how do I make tunnels from IPv6 
+to other IPv6 address?
 
-In other words, if I don't use request_mem_region() before I start
-using the memory; is my driver BOUND to fail, or it MAY fail?
+I try with modprobe ip6_tunnel and now I have one interface more:
 
-Thanks,
+# ip addr show
+ip6tnl0: <NOARP> mtu 1460 qdisc noop
+link/tunnel6 00:00.... brd 00:00....
 
-Rick
+Do you know how do I have to configure the tunnels?
 
---
-Kernelnewbies: Help each other learn about the Linux kernel.
-Archive:       http://mail.nl.linux.org/kernelnewbies/
-FAQ:           http://kernelnewbies.org/faq/
+Thanks
 
+-- 
+
+         Linux User Registered #232544
+          Jabber : pepo@jabberes.org
+	   Ekiga : pepo@ekiga.net
+	     ICQ : 337889406
+       GnuPG-key : www.keyserver.net
+-----------------------------------------------
+                   dum loquimur, fugerit invida
+aetas: carpe diem, quam minimum credula postero.
+
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
