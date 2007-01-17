@@ -1,46 +1,28 @@
-From: Pepo <pmancheno@gmail.com>
-Subject: Virtual interfaces in IPv6 for routing.
-Date: Mon, 15 Jan 2007 22:41:42 -0500
-Message-ID: <200701152241.43910.pmancheno@gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: EXPORT_SYMBOL not mandatory in 2.4.x?
+Date: Wed, 17 Jan 2007 17:42:46 +0530
+Message-ID: <7783925d0701170412u2db661d6md5890f2a713ee808@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, debian-user@lists.debian.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Hi friends.
+Hi,
 
-I have PCs with just one nic each one, and these PCs are working like routers 
-for my test-LAN (for my thesis); when have to route to different sub-nets I 
-use tunnels in IPv4 with OpenVpn to virtual-connect directly each router.
+1) I'm using two 2.4 based kernel modules. The first module defines a
+symbol but does not EXPORT_SYSMBOL() it. Would my second module be
+able to use that symbol? In 2.4? In 2.6?
 
-Now, I have to do the same thing but in IPv6. how do I make tunnels from IPv6 
-to other IPv6 address?
+2) Also, in 2.4, is it OK if I start using my device memory before
+request_mem_region()?
 
-I try with modprobe ip6_tunnel and now I have one interface more:
+Thanks,
 
-# ip addr show
-ip6tnl0: <NOARP> mtu 1460 qdisc noop
-link/tunnel6 00:00.... brd 00:00....
-
-Do you know how do I have to configure the tunnels?
-
-Thanks
-
--- 
-
-         Linux User Registered #232544
-          Jabber : pepo@jabberes.org
-	   Ekiga : pepo@ekiga.net
-	     ICQ : 337889406
-       GnuPG-key : www.keyserver.net
------------------------------------------------
-                   dum loquimur, fugerit invida
-aetas: carpe diem, quam minimum credula postero.
-
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
