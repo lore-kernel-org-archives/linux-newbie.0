@@ -1,7 +1,7 @@
-From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: EXPORT_SYMBOL not mandatory in 2.4.x?
-Date: Wed, 17 Jan 2007 17:42:46 +0530
-Message-ID: <7783925d0701170412u2db661d6md5890f2a713ee808@mail.gmail.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: after effects of a kernel API change
+Date: Thu, 18 Jan 2007 09:45:04 +0530
+Message-ID: <292693080701172015n736a269fl6945ba4fe19d8174@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -9,20 +9,24 @@ Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>, linux-kernel@vger.kernel.org
 
-Hi,
+Hi list,
 
-1) I'm using two 2.4 based kernel modules. The first module defines a
-symbol but does not EXPORT_SYSMBOL() it. Would my second module be
-able to use that symbol? In 2.4? In 2.6?
+Whenever there is a change in the kernel API (or a new API is
+introduced), all of the drivers that use the older API need to be
+changed (or recommended to be changed). I believe it is the
+responsibility of the person changing the kernel API, to change all
+the drivers that have found their way into the kernel code?
 
-2) Also, in 2.4, is it OK if I start using my device memory before
-request_mem_region()?
+How does this happen? Because the person who brought the change in the
+API might not know the internals of all the drivers?
+
+Is there any way volunteers like me can help in this exercise?
 
 Thanks,
 
-Rick
+Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
