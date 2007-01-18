@@ -1,41 +1,41 @@
-From: "Ahmed S. Darwish" <darwish.07@gmail.com>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
 Subject: Re: after effects of a kernel API change
-Date: Thu, 18 Jan 2007 07:10:26 +0200
-Message-ID: <20070118051026.GA29695@Ahmed>
+Date: Thu, 18 Jan 2007 11:05:53 +0530
+Message-ID: <b115cb5f0701172135k411dca56u92101a929799548a@mail.gmail.com>
 References: <292693080701172015n736a269fl6945ba4fe19d8174@mail.gmail.com>
+	 <20070118051026.GA29695@Ahmed>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <20070118051026.GA29695@Ahmed>
 Content-Disposition: inline
-In-Reply-To: <292693080701172015n736a269fl6945ba4fe19d8174@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: "Ahmed S. Darwish" <darwish.07@gmail.com>
+Cc: Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>, linux-kernel@vger.kernel.org
 
-On Thu, Jan 18, 2007 at 09:45:04AM +0530, Daniel Rodrick wrote:
-> Hi list,
-> 
-> Whenever there is a change in the kernel API (or a new API is
-> introduced), all of the drivers that use the older API need to be
-> changed (or recommended to be changed). I believe it is the
-> responsibility of the person changing the kernel API, to change all
-> the drivers that have found their way into the kernel code?
-> 
-> How does this happen? Because the person who brought the change in the
-> API might not know the internals of all the drivers?
-> 
-> Is there any way volunteers like me can help in this exercise?
+> >
+> > Is there any way volunteers like me can help in this exercise?
+>
+> See the /APIchanges in the Kernel Janitors TODO list
+> http://kernelnewbies.org/KernelJanitors/Todo
+>
 
-See the /APIchanges in the Kernel Janitors TODO list
-http://kernelnewbies.org/KernelJanitors/Todo
+Hi,
 
-Also: Documentation/stable_api_nonsense.txt
+This is regarding the link posted above.
 
--- 
-Ahmed S. Darwish
-http://darwish-07.blogspot.com
+1) How do I make sure if some one is NOT working on any of the
+mentioned bullet points? Who coordinates? On what mailing list?
+
+2) Do any patches for the above Todo list have the chances of getting
+merged into the mainstream kernel? Who approves? I suppose the
+respective maintainer of the driver / subsystem getting affected?
+
+Thanks,
+
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
