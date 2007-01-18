@@ -1,44 +1,49 @@
-From: ebiederm@xmission.com (Eric W. Biederman)
+From: "Ahmed S. Darwish" <darwish.07@gmail.com>
 Subject: Re: after effects of a kernel API change
-Date: Thu, 18 Jan 2007 00:47:42 -0700
-Message-ID: <m1mz4g7p41.fsf@ebiederm.dsl.xmission.com>
-References: <292693080701172015n736a269fl6945ba4fe19d8174@mail.gmail.com>
-	<20070118051026.GA29695@Ahmed>
-	<b115cb5f0701172135k411dca56u92101a929799548a@mail.gmail.com>
+Date: Thu, 18 Jan 2007 11:44:11 +0200
+Message-ID: <20070118094411.GB29695@Ahmed>
+References: <292693080701172015n736a269fl6945ba4fe19d8174@mail.gmail.com> <20070118051026.GA29695@Ahmed> <b115cb5f0701172135k411dca56u92101a929799548a@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1750958AbXARHsm@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 In-Reply-To: <b115cb5f0701172135k411dca56u92101a929799548a@mail.gmail.com>
-	(Rajat Jain's message of "Thu, 18 Jan 2007 11:05:53 +0530")
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: "Ahmed S. Darwish" <darwish.07@gmail.com>, Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>, linux-kernel@vger.kernel.org
+Cc: Daniel Rodrick <daniel.rodrick@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>, linux-kernel@vger.kernel.org
 
-"Rajat Jain" <rajat.noida.india@gmail.com> writes:
-
->> >
->> > Is there any way volunteers like me can help in this exercise?
->>
->> See the /APIchanges in the Kernel Janitors TODO list
->> http://kernelnewbies.org/KernelJanitors/Todo
->>
->
-> Hi,
->
-> This is regarding the link posted above.
->
+On Thu, Jan 18, 2007 at 11:05:53AM +0530, Rajat Jain wrote:
+> >>
+> >> Is there any way volunteers like me can help in this exercise?
+> >
+> >See the /APIchanges in the Kernel Janitors TODO list
+> >http://kernelnewbies.org/KernelJanitors/Todo
+> >
+> [...]
 > 1) How do I make sure if some one is NOT working on any of the
 > mentioned bullet points? Who coordinates? On what mailing list?
 
-Depends on the issue.  Release early and release often and there
-won't be much duplicate work :)
+Check latest trees to make sure the work is not duplicated. espicially 
+trees like -mm and subsystem ones.
 
 > 2) Do any patches for the above Todo list have the chances of getting
 > merged into the mainstream kernel? Who approves? I suppose the
 > respective maintainer of the driver / subsystem getting affected?
 
-Generally. Occasionally for small things other paths are available.
+I advise lurking (following/reading) the list for at least 2 or 3 weeks and 
+you'll automatically understand how the "system" works. Also check:
 
-Eric
+$KERNEL_TREE/Documentation/HOWTO
+$KERNEL_TREE/Documentation/SubmittingPatches
+$KERNEL_TREE/Documentation/CodingStyle
+
+-- 
+Ahmed S. Darwish
+http://darwish-07.blogspot.com
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
