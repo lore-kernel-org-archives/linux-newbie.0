@@ -1,7 +1,7 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Why can't an ISR cause a page fault?
-Date: Tue, 23 Jan 2007 13:35:52 +0530
-Message-ID: <292693080701230005i4d4523a3g3cb3be819608a9b4@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: schedulting in SMP machine
+Date: Tue, 23 Jan 2007 13:40:39 +0530
+Message-ID: <7783925d0701230010kcd96c5asd3f305c24efec2d8@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -9,16 +9,20 @@ Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
 Hi,
 
-I read that ISRs can never cause a page fault. Why is that? What would
-happen if an ISR tries to use a data item that has been swapped out?
+If an executing process is interrupted by an interrupt, is it ensured
+that it won't get transferred to another idle CPU in the system??
+
+This would mean that despite the fact that a CPU is idle in the
+system, still the process will wait untill the ISR finishes its
+execution?
 
 Thanks,
 
-Dan
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
