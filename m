@@ -1,83 +1,35 @@
-From: "sandeep lahane" <sandeep.lahane@gmail.com>
-Subject: Re: schedulting in SMP machine
-Date: Tue, 23 Jan 2007 17:45:51 +0530
-Message-ID: <2d51cbf80701230415u1c6e3ddbx4e70313f793f7ff@mail.gmail.com>
-References: <7783925d0701230010kcd96c5asd3f305c24efec2d8@mail.gmail.com>
-	 <2d51cbf80701230214x75ea5490qcc6fe3cdbfb54ffd@mail.gmail.com>
-	 <b115cb5f0701230240h57c3cfc5n415e74d0a175bd22@mail.gmail.com>
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: customizing lpr on a cups-based printer
+Date: Tue, 30 Jan 2007 10:53:19 -0500 (EST)
+Message-ID: <Pine.LNX.4.64.0701301039440.2857@localhost>
+Reply-To: karthikv@Alum.Dartmouth.ORG
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b115cb5f0701230240h57c3cfc5n415e74d0a175bd22@mail.gmail.com>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Newbie List <linux-newbie@vger.kernel.org>
 
-On 1/23/07, Rajat Jain <rajat.noida.india@gmail.com> wrote:
-> On 1/23/07, sandeep lahane <sandeep.lahane@gmail.com> wrote:
-> > I dont know much about SMP scheduling but after thinking a while I came up with
-> > following inference, please correct me if I am wrong.
-> >
-> > If the ISR and the interrupted process are sharing the stack i.e. of
-> > the ISR doesnt have its own seperate stack in that case moving the
-> > interrupted process will be difficult since lot of book keeping will
-> > be required. Also this would be a fragile situation with chances of
-> > data corruption.
-> >
-> > But as far as I know, an ISR can have a separate stack also, this is
-> > configurable.
-> > In this case, moving the interrupted process to another cpu will be
-> > easier/feasible than before.
-> >
-> > Regards,
-> > Sandeep.
-> >
-> >
-> >
-> > On 1/23/07, Rick Brown <rick.brown.3@gmail.com> wrote:
-> > > Hi,
-> > >
-> > > If an executing process is interrupted by an interrupt, is it ensured
-> > > that it won't get transferred to another idle CPU in the system??
-> > >
-> > > This would mean that despite the fact that a CPU is idle in the
-> > > system, still the process will wait untill the ISR finishes its
-> > > execution?
-> > >
->
-> The ISR is not a SEPARATE process. When it executes, for the scheduler
-> it is the same process (which was interrupted). In other words, the
-> fact that ISR has started execution putting the process on hold is not
-> known to scheduler. Now given this, why would scheduler want to move a
-> RUNNING process to a different CPU?
->
-> Somebody please CMIIMW
->
-> Regards,
->
-> Rajat
->
+Hello,
+
+I added a networked printer using the gnome-cups-manager but I need to 
+customize the print command (specifically by adding a -U switch to lpr) 
+sent to that device each time I print to it, via the application that is 
+used to print.
+
+I was wondering if there was a way to tweak the configuration for that 
+device by adding/editing a cups-conf file and how to do it. All help will 
+be appreciated.
+
+Just in case its needed, I am running Ubuntu dapper with a 
+2.6.15-26-server kernel and gnome 2.14.3
 
 
-Rajat,
-I think Rick wants to know how the scheduling is done in case of SMP machines.
-What I gathered from his question is, even though it is a SMP
-environment, if the interrupted  process is not moved to another cpu
-which is idle then this suboptimal utilization of resources. So next
-obvious question is, is it possible to move the interrupted process to
-another cpu? This I tried to answer in my previous post depending upon
-whether the stack is shared or not. So hypothetically( or actually? )
-the scheduler should move the interrupted process to another idle cpu
-for optimal utilization. Actually how this is done only an expert on
-the list can tell us.
+regards,
 
+-K
 
-
-Regards,
-Sandeep.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
