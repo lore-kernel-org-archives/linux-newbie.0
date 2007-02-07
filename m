@@ -1,37 +1,32 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Re: Volatile
-Date: Tue, 6 Feb 2007 17:34:00 +0530
-Message-ID: <b115cb5f0702060404y2ad51d1fp3b033c6d0e39705@mail.gmail.com>
-References: <439896.82429.qm@web35414.mail.mud.yahoo.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: Determining amout a physical RAM my kernel needs?
+Date: Wed, 7 Feb 2007 18:46:23 +0530
+Message-ID: <7783925d0702070516o605b42f9tf917df60934d348@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <439896.82429.qm@web35414.mail.mud.yahoo.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ankit Jain <ankitjain1580@yahoo.com>
-Cc: newbie <linux-newbie@vger.kernel.org>
+To: Linux Kernel <linux-kernel@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-On 2/6/07, Ankit Jain <ankitjain1580@yahoo.com> wrote:
-> Hi ppl
->
-> Can any body here make this "volatile" more clear in
-> terms of C language with some practical example i.e
-> why we need it? or for what it can be used for ?
->
+Hi list,
 
-Volatile provides a hint to the compiler not to act oversmart by
-performing optimizations on the variable ;-). This is because the the
-value of the variable may be modified from elsewhere (for e.g.
-interrupts etc) which the compiler is not aware of. Hence it should
-not cache it anywhere, and should always generate load instructions to
-read the "fresh" copy.
+I have a kernel image about 600 KB in size that I intend to program to
+flash memory on my target board (hence size required in flash=600 KB).
 
-Regards,
+1) But how do I determine the size of the RAM required to run that
+image? (Since I believe the image will be uncompressed in RAM, plus
+will also need some extra memory)? Can I determine this info from the
+kernel image / System.map etc?
 
-Rajat
+2) Also, is there any way to determine (accurately) the amount of RAM
+eaten up by the kernel (plus modules), on a RUNNING system?
+
+TIA,
+
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
