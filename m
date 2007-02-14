@@ -1,32 +1,40 @@
-From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: Determining amout a physical RAM my kernel needs?
-Date: Wed, 7 Feb 2007 18:46:23 +0530
-Message-ID: <7783925d0702070516o605b42f9tf917df60934d348@mail.gmail.com>
+From: Chuck Gelm <chuck@gelm.net>
+Subject: aDSL modems, PVC, can two clients crossover?
+Date: Wed, 14 Feb 2007 11:57:37 -0500
+Message-ID: <45D33F81.1090901@gelm.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Kernel <linux-kernel@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
-Hi list,
+Howdy:
 
-I have a kernel image about 600 KB in size that I intend to program to
-flash memory on my target board (hence size required in flash=600 KB).
+ Where can I read about aDSL modems.
 
-1) But how do I determine the size of the RAM required to run that
-image? (Since I believe the image will be uncompressed in RAM, plus
-will also need some extra memory)? Can I determine this info from the
-kernel image / System.map etc?
+I am considering Verizon ADSL at a residence in Union, Ohio, USA.
+Verizon offers an account without modem and claims to be
+compatible with the Westell 515 and 516.  I have an Efficient
+Networks SpeedStream 5360.
 
-2) Also, is there any way to determine (accurately) the amount of RAM
-eaten up by the kernel (plus modules), on a RUNNING system?
+ I have found some information on the SpeedStream, but not
+the Westell.
 
-TIA,
+http://kb.efficient.com/display/1n/index.asp?c=&cpc=&cid=&r=0.4739191
 
-Rick
+ Lastly, I've been wondering if two DSL modems can be
+connected back-to-back.  Any links about this would be nice.
+
+ aDSLmodem <RJ11crossoverRJ11> aDSLmodem
+
+Ethernet|ATM<>ATM|Ethernet
+
+Regards, Chuck
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
