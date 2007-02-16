@@ -1,52 +1,34 @@
-From: flyfshmn <flyfshmn@carolina.rr.com>
-Subject: FTP Script - TOTAL NEWBIE HERE!!!
-Date: Thu, 15 Feb 2007 10:58:07 -0800 (PST)
-Message-ID: <8991524.post@talk.nabble.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: kernel porting query
+Date: Fri, 16 Feb 2007 07:46:00 +0530
+Message-ID: <7783925d0702151816r7df63816ld9c69b56bdb0a0b9@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Linux Kernel <linux-kernel@vger.kernel.org>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
+Hi,
 
-Hello all,
+I have a very basic query regarding kernel porting on different
+boards. I understand that even if two boards have the very same
+processor core (say MIPS 4KE), we need to port linux for them
+seperately. I have heard things like it is because of certain "board
+level differences", I need to provide some "board specific hooks"
+because the boards may contain "different devices" and so on ....
 
-1st post here. Anyway, here is my delema.
+1) Can any one please shed some light on precisely and exactly what
+are differences in different boards for which we need to port linux?
 
-I need to ftp a file (a new file is created daily) to a remote server.
-4 things need to happen.
+2) Also, I would appreciate if you could point out code portions /
+source files that need to be changed in the process of porting Linux?
 
-1)  Change directories. (done)
-2)  FTP file to remote site. (done)
-3)  Verify file successfully arrived at remote site. (havnt a clue)
-4)  Delete file from local machine.
+TIA,
 
-What I have at this point is this....all gathered from google searches
-
-#!/bin/bash
-cd /dsds/dsds
-lftp -c 'open -e "put filename" ftp://uername:pass@hostip/dir/dir
-
-At this point - I can manully make this happen. What I dont know is how do I
-create a script that will automatically insert file name (may use mput *.*),
-verify the success and then delete the file. I will not have access to snmp
-traps to actually know if the file was successful, but at least if it fails,
-then it wont be deleted. The files that are created have the current date as
-part of the file name, so this info may be useful for the variable for the
-put.
-
-Again - our "script writer" is no longer with the company and I have this
-task that needs to be automated as best as possible.
-
-TIA
-Fly
-
--- 
-View this message in context: http://www.nabble.com/FTP-Script---TOTAL-NEWBIE-HERE%21%21%21-tf3235480.html#a8991524
-Sent from the linux-newbie mailing list archive at Nabble.com.
-
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
