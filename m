@@ -1,37 +1,34 @@
-From: Jim Reimer <jdr@wa5rrh.us>
-Subject: Re: FTP Script - TOTAL NEWBIE HERE!!!
-Date: Sun, 18 Feb 2007 09:06:31 -0600
-Message-ID: <19059202812.20070218090631@wa5rrh.us>
-References: <8991524.post@talk.nabble.com>
-Reply-To: Jim Reimer <jdr@wa5rrh.us>
+From: Andrew <ald2@arrakis.es>
+Subject: flash-9 in firefox
+Date: Wed, 21 Feb 2007 11:04:14 +0100
+Message-ID: <45DC191E.8040504@arrakis.es>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <8991524.post@talk.nabble.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: flyfshmn <flyfshmn@carolina.rr.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-flyfshmn wrote:
+Slackware 10.2
+Firefox-2
+Flash Player 9
+
+On leaving a page with flash content without having viewed the flash 
+content, Firefox crashes. In a console the error message is:
+
+/usr/lib/firefox-2.0.0.1/run-mozilla.sh: line 131:  7387 Segmentation 
+fault  "$prog" ${1+"$@"}
+
+It doesn't happen if I actually view the flash content, it doesn't 
+happen with flash player 7 and it doesn't happen in Mozilla.
 
 
-> At this point - I can manully make this happen. What I dont know is how do I
-> create a script that will automatically insert file name (may use mput *.*),
-> verify the success and then delete the file. I will not have access to snmp
-> traps to actually know if the file was successful, but at least if it fails,
-> then it wont be deleted. The files that are created have the current date as
-> part of the file name, so this info may be useful for the variable for the
-> put.
+Any hints?
 
-What is the form of the filename?  Is it the newest file in the
-directory?  Does the date in the file name match the system date
-(I.E. is the date in the file name "today" or "yesterday" or what)?
+TIA
 
--- 
--jdr-
-
+Andrew
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
