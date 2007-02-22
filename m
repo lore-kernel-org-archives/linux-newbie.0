@@ -1,81 +1,46 @@
-From: Erik Mouw <mouw@nl.linux.org>
+From: "Raseel Bhagat" <raseelbhagat@gmail.com>
 Subject: Re: not getting command prompt at the console
-Date: Thu, 22 Feb 2007 11:25:40 +0100
-Message-ID: <20070222102540.GB31252@gateway.home>
+Date: Thu, 22 Feb 2007 16:20:08 +0530
+Message-ID: <f68850780702220250x57f4f678re104caecfeec6ef2@mail.gmail.com>
 References: <b115cb5f0702220149wfbfc051qc8d0106b9e4ed98d@mail.gmail.com>
+	 <20070222102540.GB31252@gateway.home>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="s2ZSL+KKDSLx8OML"
-Return-path: <kernelnewbies-bounce@nl.linux.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        b=SOYFDvIzImzBwm3aeITlLyP6iAwF7KIWjs/H7y0h5pjB+QHBSty8Xqlz/7xEJZPZHZ5sBrNQySdqSD8vOglIJ74c60609pYGV99dAAv3U6I2Hrc4qFYzwBdo74zlSs7MpRNtd7azBqi24RzddXAdXPWp7ORyiR6Iv1v6HccmRXI=
+In-Reply-To: <20070222102540.GB31252@gateway.home>
 Content-Disposition: inline
-In-Reply-To: <b115cb5f0702220149wfbfc051qc8d0106b9e4ed98d@mail.gmail.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>, linux-mips@linux-mips.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>, linux-mips@linux-mips.org
 
+Hi Rajat,
 
---s2ZSL+KKDSLx8OML
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2/22/07, Erik Mouw <mouw@nl.linux.org> wrote:
+> On Thu, Feb 22, 2007 at 03:19:10PM +0530, Rajat Jain wrote:
+> > Next, I expected to see a command prompt which never comes. At this
+> > point if I debug, I find the processor executing the idle process.
+> >
+> > I am successfully hable to telnet to the board and fire whatever
+> > commands I want though. How do I bring the prompt to the serial
+> > console?
+>
+> Run a getty on the serial device (I suppose you're using a serial
+> port).
+> Could be that the serial driver changed or that you forgot to compile a
+> driver for the serial device.
+>
 
-On Thu, Feb 22, 2007 at 03:19:10PM +0530, Rajat Jain wrote:
-> Hi All,
->=20
-> I just finished porting linux kernel 2.6.15 to a MIPS based board. The
-> board now boots up beautifully ... and here is the console log:
-
-[...]
-
-> Next, I expected to see a command prompt which never comes. At this
-> point if I debug, I find the processor executing the idle process.
->=20
-> I am successfully hable to telnet to the board and fire whatever
-> commands I want though. How do I bring the prompt to the serial
-> console?
-
-Run a getty on the serial device (I suppose you're using a serial
-port).
-
-> My root FS seems OK since the same root FS is working for the same
-> board for an ancient kernel (2.4.20)
-
-Could be that the serial driver changed or that you forgot to compile a
-driver for the serial device.
-
-
-Erik
-
---=20
-They're all fools. Don't worry. Darwin may be slow, but he'll
-eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
-
---s2ZSL+KKDSLx8OML
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
-
-iD8DBQFF3W+k/PlVHJtIto0RArSNAJ90TmeVEdoINTMf2c9Nbd6aEPXSkgCdG3hr
-qSwrqnHz3ROZBAuJoc5JX80=
-=iJ73
------END PGP SIGNATURE-----
-
---s2ZSL+KKDSLx8OML--
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+Also , assuming you are using a serial console , check your entries in
+the inittab file .
+It should look  something like :
+ttyS0::respawn:/sbin/getty ttyS0 115200 linux
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
