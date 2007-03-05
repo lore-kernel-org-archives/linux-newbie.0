@@ -1,54 +1,33 @@
-From: Linda Walsh <lkml@tlinx.org>
-Subject: way to "duplicate" console contents to a file?
-Date: Sun, 04 Mar 2007 16:02:17 -0800
-Message-ID: <45EB5E09.2040609@tlinx.org>
+From: Roel Bindels <rbindels@gmail.com>
+Subject: Why should we teach students Linux??
+Date: Mon, 05 Mar 2007 17:16:48 +0100
+Message-ID: <eshfpg$hl$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Sender: linux-newbie-owner@vger.kernel.org
+Return-path: <netdev-owner@vger.kernel.org>
+Sender: netdev-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: netdev@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org, linux-fsdevel@vger.kernel.org, arch@archlinux.org, linux-users@linux-sxs.org, linux-wlan-user@lists.linux-wlan.com, ubuntu-marketing@lists.ubuntu.com
 
+Hello listers,
 
-Is there a way to have my console messages duplicated and saved in a file?
+I'm tutor on the Faculty ICT, department NID. This is a bachelor degree
+and we are preparing our students to become something more then just
+System Administrators (such as manager, consulting, etc....). Since this
+department is part of the Microsoft camp, the students are educated
+mostly in this direction, which I think is not a bad thing. A better
+thing would be if we could give our students the opportunity to meat
+both the systems on the same level, at least, that is my opinion.
 
-I know about sending messages to "console" in [n]syslogd, but I'm
-looking for the ability to essentially see a _copy_ of what is on the
-screen.  There are messages that pop out on the console that I'd like to
-view remotely, *and*, I would like to be able to review the startup
-messages after the kernel has booted and while it is going through the
-RC scripts.  Occasionally (often) I have some rc script that caused some
-unexpected or weird output on boot that only "spews" its output onto the
-console.  Even the running of the "rc" scripts -- that output seems to
-be limited to the console.
+To change a curriculum of a study, I need a solid case. So if somebody
+knows a link/document about why we should educate our students in the
+Linux OS, please send it. Or article about the usage of Linux in company's.
 
-Even for info that goes to the console, I'm only partly lucky in being
-able to scroll back -- sometimes can't scroll back enough, or something
-on occasion mungs the part of the scrollback buffer I want to view.
+I hope you will all take some time to send me your best links/documents.
 
-It know "dmesg" and boot.[o]msg show the kernel's startup messages, but 
-maybe
-it's when it stop's recording to klog and switches over to syslog that info
-written to the console is no longer recorded.
+with best regards
 
-I'd "sorta" like a "console" file like is in boot.msg for the kernel
-boot -- something that is appended to for each session, the
-re-initialized.  But startup scripts and sometimes drivers and such,
-_appear_ to write messages to either /dev/console, /dev/tty, or
-stderr/out with it mapped to the console.
+Roel Bindels
 
-I'd prefer not to disturb the way messages are displayed on the console
-so when I am in front of the computer it will appear "normal" -- but
-want the ability to display those messages when logged in remotely (more
-normal case).
-
-Ideas? Clue sticks? :-)
-Thanks,
-Linda
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
