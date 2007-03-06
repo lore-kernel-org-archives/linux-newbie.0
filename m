@@ -1,59 +1,46 @@
-From: "Tsai, Hong-Bin" <hbtsai@gmail.com>
-Subject: Re: Why should we teach students Linux??
-Date: Tue, 6 Mar 2007 10:16:13 +0800
-Message-ID: <3befbf920703051816v4554a516q45b460d4ffbab8fc@mail.gmail.com>
-References: <eshfpg$hl$1@sea.gmane.org> <eshnsm$29p$1@sea.gmane.org>
-	 <45ECC116.3000608@rcn.com>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: Cleaning up unrequired #include(s)
+Date: Tue, 6 Mar 2007 12:59:53 +0530
+Message-ID: <b115cb5f0703052329w1c0730ccs63cf46d06435669c@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=mwNIWS5izjbsfYO8S2VSwI31sp+Y7fnR+NYAd654pEev7DlbKT8/y7sd0aHAaxHfwg3HbOerI+RE0v4apGpQ7gMRqoxSpL/1Au0OHLctr4rWkNNigAuDE3DA1YvWF5f8/iARAS9Yzl4UUYV0Lg5Wks3Kl0gHy9B4wE6D9ACzw48=
-In-Reply-To: <45ECC116.3000608@rcn.com>
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=coWasHn/ETQEdzE/mkoOPHx5ZThxanWRGyArHRFP7T+i5uNfP9Anp6w6X4HpIBphUp2B5OKqVLUI9Rz+rfNIg29Vm/GDcSgVDdHCUeUIMu0Vb1ua8MXBpyQDobm7m6Reb7bB8aluJnCcKsrix0KVDR+V/mD/XbPaGZTg9XW/BLw=
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: John Aspinall <jgaspinall@rcn.com>
-Cc: Jarmo <SVisor@lycos.com>, linux-newbie@vger.kernel.org
+To: Kernel Newbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-Well, I don't think it's meaningless, actually, it's quite serious and
-important. M$ windows has dominated the OS market for long, and they
-still do. The worst thing is, they keep their little secret in a black
-box.
-To kids in school, they have to know a world beyond M$ empire. It's an
-open society that people can learn, share, and talk freely.
-To CS students in college, they have to learn Operating System. Linux
-(or say, UNIX-family) as an open box is a great material.
+Hi list,
 
+I just finished porting the kernel to my board and am trying to
+cleanup my code. I had started my copying an existing board code and
+modifying it to suit my board. Its now working fine, but has numerous
+#includes which I do not think I need any more.
 
-On 3/6/07, John Aspinall <jgaspinall@rcn.com> wrote:
-> Jarmo forwarded:
->
-> >> knows a link/document about why we should educate our students in the
-> >> Linux OS, please send it. Or article about the usage of Linux in
-> >> company's.
->
-> This is a completely meaningless question until we know what kind of
-> students.  Elementary computer science?  Operating system design?
-> Software business and marketing?  Anthropology (like the recent survey
-> here)?  Elementary school?  High school?  Undergraduate?  Post-graduate?
-> -
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+Is there a quickway to correctly identify which all #include
+statements can be safely removed from my source files, (because none
+of the symbols declared in the corresponding headers are actually used
+in my source)?
 
+Thanks,
 
--- 
-Best regards,
-Hong-Bin
-blog: http://furseal.wordpress.com
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Rajat
+
+--
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
