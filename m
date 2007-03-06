@@ -1,38 +1,41 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Debugging kernel with KGDB
-Date: Tue, 6 Mar 2007 22:37:30 +0530
-Message-ID: <292693080703060907u2d6c6710rd26c26f0a78feca2@mail.gmail.com>
+From: Roel Bindels <rbindels@gmail.com>
+Subject: Re: Why should we teach students Linux??
+Date: Tue, 06 Mar 2007 18:29:58 +0100
+Message-ID: <esk8em$nul$1@sea.gmane.org>
+References: <eshfpg$hl$1@sea.gmane.org> <eshnsm$29p$1@sea.gmane.org> <45ECC116.3000608@rcn.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=EFeHXG0j0XgMWVoJmLwYTtP8n9Eh/Sfrf8HX2ctxhLN94czuQN+Xennnw7W3vNEbsf9hxOELhxW4jXw2qFps4m+oxvMUud5guAKkxfYCB+fnhfAPOngI8SeHf2cKqjxrwfrW4kz6ipfTgqZZ8pFB63k1HnMXOtmP1FG01iNLk2k=
-Content-Disposition: inline
+In-Reply-To: <45ECC116.3000608@rcn.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi list,
+John Aspinall schreef:
+> Jarmo forwarded:
+> 
+>>> knows a link/document about why we should educate our students in the
+>>> Linux OS, please send it. Or article about the usage of Linux in
+>>> company's.
+> 
+> This is a completely meaningless question until we know what kind of
+> students.  Elementary computer science?  Operating system design?
+> Software business and marketing?  Anthropology (like the recent survey
+> here)?  Elementary school?  High school?  Undergraduate?  Post-graduate?
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+> 
+In my original post I explained this:
+I'm tutor on the Faculty ICT, department NID. This is a bachelor degree
+and we are preparing our students to become something more then just
+System Administrators (such as manager, consulting, etc....).
 
-I am debugging linux kernel (2.6.15) remotely using gdb and want to
-debug an area that involves synchronization / timing between two
-kernel threads.
+(NID stands for Network Infrastructure Design.)
 
-I was wondering if it is possible to debug multiple kernel threads at
-the same time by manually switching between the two? For instance can
-I create the following scenario using the gdb debugger:
-
-1) kernel thread 1 hits break point 1
-2) At this point, I want kernel thread 2 to run till break point 2.
-
-I hope I'm clear enough?
-
-Thanks,
-
-Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
