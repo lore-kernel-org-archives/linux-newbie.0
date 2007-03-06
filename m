@@ -1,46 +1,40 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Cleaning up unrequired #include(s)
-Date: Tue, 6 Mar 2007 12:59:53 +0530
-Message-ID: <b115cb5f0703052329w1c0730ccs63cf46d06435669c@mail.gmail.com>
+From: Eric Bambach <eric@cisu.net>
+Subject: Re: way to "duplicate" console contents to a file?
+Date: Tue, 6 Mar 2007 01:31:12 -0600
+Message-ID: <200703060131.13669.eric@cisu.net>
+References: <45EB5E09.2040609@tlinx.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=coWasHn/ETQEdzE/mkoOPHx5ZThxanWRGyArHRFP7T+i5uNfP9Anp6w6X4HpIBphUp2B5OKqVLUI9Rz+rfNIg29Vm/GDcSgVDdHCUeUIMu0Vb1ua8MXBpyQDobm7m6Reb7bB8aluJnCcKsrix0KVDR+V/mD/XbPaGZTg9XW/BLw=
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <45EB5E09.2040609@tlinx.org>
 Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Kernel Newbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Linda Walsh <lkml@tlinx.org>
+Cc: linux-newbie@vger.kernel.org
 
-Hi list,
+On Sunday 04 March 2007 18:02, Linda Walsh wrote:
+> Is there a way to have my console messages duplicated and saved in a file?
 
-I just finished porting the kernel to my board and am trying to
-cleanup my code. I had started my copying an existing board code and
-modifying it to suit my board. Its now working fine, but has numerous
-#includes which I do not think I need any more.
+Have you looked into using the serial console and some sort of secondary 
+server to capture its output? It could be easily logged and stored. Serial 
+consoles are started very early in the boot process so you would get almost 
+all kernel message just after the kernel is invoked. Its a popular kernel 
+hacker debugging method.
 
-Is there a quickway to correctly identify which all #include
-statements can be safely removed from my source files, (because none
-of the symbols declared in the corresponding headers are actually used
-in my source)?
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
+-- 
 Thanks,
 
-Rajat
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+Eric
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
