@@ -1,65 +1,125 @@
-From: Melissa Draper <melissa@meldraweb.com>
-Subject: Re: [ubuntu-marketing] Why should we teach students Linux??
-Date: Wed, 07 Mar 2007 16:06:12 +1100
-Message-ID: <45EE4844.5030802@meldraweb.com>
-References: <eshfpg$hl$1@sea.gmane.org>
+From: Vishal Soni <vishal.soni@samsung.com>
+Subject: Gives Bus errory in memcpy() in coping /dev/fb0 to a file.
+Date: Wed, 07 Mar 2007 13:10:25 +0530
+Message-ID: <200703071310.25831.vishal.soni@samsung.com>
+Reply-To: Vishal Soni <vishal.soni@samsung.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-fsdevel-owner@vger.kernel.org>
-In-Reply-To: <eshfpg$hl$1@sea.gmane.org>
-Sender: linux-fsdevel-owner@vger.kernel.org
+Content-Type: multipart/mixed; boundary="Boundary_(ID_4mF5c1rWGm4dITFWmSG77w)"
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Roel Bindels <rbindels@gmail.com>
-Cc: ubuntu-marketing@lists.ubuntu.com, netdev@vger.kernel.org, linux-wlan-user@lists.linux-wlan.com, arch@archlinux.org, linux-fsdevel@vger.kernel.org, linux-users@linux-sxs.org, linux-newbie@vger.kernel.org, Richard Weideman <richard.weideman@canonical.com>, ubuntu-education@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Roel Bindels wrote:
-> Hello listers,
->
-> I'm tutor on the Faculty ICT, department NID. This is a bachelor degree
-> and we are preparing our students to become something more then just
-> System Administrators (such as manager, consulting, etc....). Since this
-> department is part of the Microsoft camp, the students are educated
-> mostly in this direction, which I think is not a bad thing. A better
-> thing would be if we could give our students the opportunity to meat
-> both the systems on the same level, at least, that is my opinion.
->
-> To change a curriculum of a study, I need a solid case. So if somebody
-> knows a link/document about why we should educate our students in the
-> Linux OS, please send it. Or article about the usage of Linux in company's.
->
-> I hope you will all take some time to send me your best links/documents.
->
-> with best regards
->
-> Roel Bindels
->   
-Roel,
 
-I recently interviewed Richard Weideman (who I am adding to the CC so he
-can comment directly) for an article about Edubuntu. One of the comments
-he made was:
+--Boundary_(ID_4mF5c1rWGm4dITFWmSG77w)
+Content-type: text/plain; charset=us-ascii
+Content-transfer-encoding: 7BIT
+Content-disposition: inline
 
-    "Kids who learn to use a computer from scratch are not afraid of
-    Linux or OpenOffice.org. They concentrate on the learning task at
-    hand, and they learn to use whatever the tool is put in front of
-    them. If some of those kids graduate to a work environment using
-    Linux or OpenOffice.org, they will have no problem. If the new work
-    environment uses Windows, they will adjust without any issues. Some
-    of them will even propose OpenOffice.org or Linux at work, and help
-    their new company to migrate and save money."
+hello,
 
-You can read the full article at
-http://www.linux.com/article.pl?sid=07/02/20/197251
+I am trying to get the snapshot of the screen through a c program by mmaping 
+the framebuffer device /dev/fb0 .
+For this i compiled kernel with virtual framebuffer support and passing  
+vga=791 as boot line argument.
 
--- 
-Sincerely
-Melissa Draper
+Though i am able to get snapshot by
+[root@tw pcapp]# cat /dev/fb0 > frame
 
-http://www.meldraweb.com
+and see it on the screen by
+[root@tw pcapp]# cat frame > /dev/fb0
 
-Phone: 0404 595 395
-(intl): +61 404 595 395
+When i try to capture the frame buffer using the below c code, It gives bus 
+error @ memcpy()
 
-P.O Box 1412
-Lavington, NSW 2641
+Output :::::::::
+
+[root@tw pcapp]# ./pcapp
+1024x768, 16bpp
+framebuffer device mapped to memory @ 0xb7db3000.
+FB_FRAME mapped to memory @ 0xb7c33000.
+Bus error
+[root@tw pcapp]#
+
+
+
+--Boundary_(ID_4mF5c1rWGm4dITFWmSG77w)
+Content-type: text/x-csrc; charset=us-ascii; name=pcapp.c
+Content-transfer-encoding: 7BIT
+Content-disposition: attachment; filename=pcapp.c
+
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <linux/fb.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+#include <errno.h>
+#include <string.h>
+
+#define FB_FILE "/dev/fb0"
+#define FB_FRAME "fb_frame"
+
+int main (int argc, char *argv[])
+{
+	int fdin = -1;
+	int fdout = -1;
+	char *src = NULL;
+	char *dst = NULL;
+	struct fb_var_screeninfo vinfo;
+	long int screensize = 0;
+
+	if ((fdin = open (FB_FILE, O_RDONLY)) < 0) {
+		printf ("Faile to open %s file", FB_FILE);
+		return 0;
+	}
+
+	/* open/create the output file */
+	if ((fdout = open (FB_FRAME, O_RDWR | O_CREAT | O_TRUNC, S_IRWXU)) < 0) {
+		printf ("faile to open %s for writing", FB_FRAME);
+		return -1;
+	}
+
+	// Get variable screen information
+	if (ioctl(fdin, FBIOGET_VSCREENINFO, &vinfo)) {
+		printf("Error reading variable information.\n");
+		return -1;
+	}
+
+	printf("%dx%d, %dbpp\n", vinfo.xres, vinfo.yres, vinfo.bits_per_pixel );
+
+	// Calculate the size of the screen in bytes
+	screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
+	
+	// Map the device to memory
+	src = (char *)mmap(0, screensize, PROT_READ, MAP_SHARED, fdin, 0);
+	if ((int)src == -1) {
+		printf("Error: failed to map framebuffer device to memory.\n");
+		return -1;
+	}
+
+	/* mmap the FB_FRAME file */
+	dst = mmap (0, screensize, PROT_READ | PROT_WRITE, MAP_PRIVATE, fdout, 0);
+	if ((int)dst == -1) {
+		printf("FB_FRAME:: mmap error  ");
+		return -1;
+	}
+	
+	printf("framebuffer device mapped to memory @ %p.\n", src);
+	printf("FB_FRAME mapped to memory @ %p.\n", dst);
+	/* copy /dev/fb0 to fb_frame file */
+	memcpy (dst, src, screensize);
+	close(fdin);
+	close(fdout);
+	return 0;
+} 
+
+--Boundary_(ID_4mF5c1rWGm4dITFWmSG77w)--
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
