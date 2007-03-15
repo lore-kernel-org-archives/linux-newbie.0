@@ -1,43 +1,36 @@
-From: Hal <haltec@kvinet.com>
-Subject: Re: Why should we teach students Linux??
-Date: Wed, 07 Mar 2007 09:15:21 -0500
-Message-ID: <20070307141521.GA1362@lnx2>
-References: <eshfpg$hl$1@sea.gmane.org> <eshnsm$29p$1@sea.gmane.org>
- <eshu4i$qef$1@sea.gmane.org>
-Reply-To: haltec@kvinet.com
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: How does boot loader tell the kernel, the location of initrd?
+Date: Thu, 15 Mar 2007 12:28:19 +0530
+Message-ID: <b115cb5f0703142358j6a422262qe1ad1c6cfcfcdd22@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <eshu4i$qef$1@sea.gmane.org>
-Content-disposition: inline
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=pNPvlM0M02jP2TyESKjHLdWEVlovHfpqQIlYUUJwq2NyHUDEeXo9FVa+Y7lRG8aiIRlLEqzhxXHf3ddVdyly0s63JvNd9RURgVt/ytO2l5s8A7bLFyPt+j2pMT/trZIkjkTiS1aYlnoUJLT/06p/34bmoYtldWq5JzzNl8TARqY=
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Roel Bindels <rbindels@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>
 
-On 03-05, Roel Bindels wrote:
-> Jarmo schreef:
-> > 
-> > ...
-> >> knows a link/document about why we should educate our students in the
-> >> Linux OS, please send it. Or article about the usage of Linux in
-> >> company's.
-> > 
-> > To know your enemy?
-> please, ....'strong case' ....;)
+Hi,
 
-	Watching the interesting replies I can only add that education is
-about teaching individuals to THINK... Some Linux distributions do that; M$
-never has and never will.. (I must admit though; that M$ encourages honing
-our cuss words.. :^)..
+I am experimenting with initrd and my initrd fails to mount. My
+bootloader (U-BOOT) coorectly loads the initrd into RAM as I can see.
 
-	Best of luck.
+I am wondering how does the kernel get to know the address at which
+the initrd is loaded by boot loader? How does the boot loader
+communicate this to the kernel?
 
--- 
+Any code references will be appreciated.
 
-                 Hal        GNU/Linux - Slackware 10.2, 2.4.31
-.
+Thanks,
+
+Rajat
+
+PS: I am not using initramfs (emebedding root filesystem into kernel image).
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
