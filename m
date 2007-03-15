@@ -1,67 +1,32 @@
-From: Rajendra <rajendra_mishra@solidcore.com>
-Subject: Re: How does boot loader tell the kernel, the location of initrd?
-Date: Thu, 15 Mar 2007 13:56:25 +0530
-Message-ID: <45F90331.4060107@solidcore.com>
-References: <b115cb5f0703142358j6a422262qe1ad1c6cfcfcdd22@mail.gmail.com>
+From: Arun Mallikarjunan <arun@ngb.biz>
+Subject: Screen doesnt refresh when I drag or scroll the mouse
+Date: Thu, 15 Mar 2007 14:07:47 -0400
+Message-ID: <etbqk1$t1t$1@sea.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <b115cb5f0703142358j6a422262qe1ad1c6cfcfcdd22@mail.gmail.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Every bootloader has different mechanism for loading the kernel
-image. I am talking of Grub boot loader here. Grub uses something
-called a multiboot specification. The specification documents the
-mechanism for passing data to and from the kernel image.
-Search for multiboot specification and i think u will get all ur answers.
+Hi,
+	I am running openSUSE 10.2 x86_64 on a Dell Dimension 9150. It has a
+ATI Radeon X300 card. I installed the ati drivers as per the
+instructions on openSUSE website http://en.opensuse.org/Howto/ATI_Driver
 
-U can also look at arch/i386/boot/bootsect.S for the linux kernel
-multiboot header related info.
+	Everything is working as they should except when I click on a file in
+Konqueror and drag the mouse it leaves trails of the icons border. Also
+when I scroll using the scroll wheel the text gets garbled. Basically
+its not repainting the screen for these two events.
 
-regards,
-~rpm
+	Any ideas as how to fix it? I would very much appreciate it.
 
-Rajat Jain wrote:
-> Hi,
->
-> I am experimenting with initrd and my initrd fails to mount. My
-> bootloader (U-BOOT) coorectly loads the initrd into RAM as I can see.
->
-> I am wondering how does the kernel get to know the address at which
-> the initrd is loaded by boot loader? How does the boot loader
-> communicate this to the kernel?
->
-> Any code references will be appreciated.
->
-> Thanks,
->
-> Rajat
->
-> PS: I am not using initramfs (emebedding root filesystem into kernel 
-> image).
-> -
-> To unsubscribe from this list: send the line "unsubscribe 
-> linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+thanks in advance,
+Arun
 
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
