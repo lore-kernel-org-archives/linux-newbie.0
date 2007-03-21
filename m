@@ -1,37 +1,29 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: need for mmap?
-Date: Wed, 21 Mar 2007 09:37:42 +0530
-Message-ID: <292693080703202107r7c8f914ch48f68abd8bf7d95d@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: need for 3G/1G split
+Date: Wed, 21 Mar 2007 09:45:27 +0530
+Message-ID: <7783925d0703202115j11dbf254nc916252e4cd98e8a@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=EoRRFr6oM2Py60KBIdsp/bbHCwvZudwMIYqtiBURwexoUSyhZNzx4ulB6u6r+MqnYDbywb6WMk1hl5nxMKa3bIIQswFD9NfKy6CnYWfaN1qsFtGq2tw+3ixmCqsIsZVvgK1pYwtRTkYyEDItF4EgUP5hXQmI9FAmsxdQ1cp8P4A=
+        b=K7J85NMn8/aBSScdIz+WApSzern3loShdJWixZEGtuVInOnph5ICBH7w87RB2hPn9iaGZwd2HScz/XRkwSNtfXZtsMtYf4Cq9b5X8mY8dOJpqQQuTfwPop2GtcE5H+mm26cfqovl1Q7z7RyfzYY8+2YDkfYXPpEelEyZh9ziof4=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hi list,
+Hi,
 
-I'm a newbie, and I just read about the mmap system call. I have a
-very basic confusion regarding why would a driver ever want to
-implement mmap.
+Why is kernel restricted to use virtual addresses of only 1 GB? Or
+what is the need to split up the virtual address space into user
+addresses and kernel addresses?
 
-1) The purpose of mmap is to map the device memory to user space
-programs, right? Isn't that alreay available via /dev/mem? The
-interested userspace programs can directly mmap (the required offset
-in) /dev/mem into their address space, and the task is done? No?
+TIA,
 
-2) Is it that mmapping /dev/mem works only for memory (RAM)? Are all
-physical addresses not available via /dev/mem?
-
-Thanks,
-
-Dan
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
