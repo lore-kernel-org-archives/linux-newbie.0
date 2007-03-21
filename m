@@ -1,77 +1,49 @@
-From: "Mansha Linux" <mansha.linux@gmail.com>
-Subject: Re: kernel preemption
-Date: Wed, 21 Mar 2007 10:53:42 +0530
-Message-ID: <fd40b9090703202223p6d0b8018k2a97b2f5483c6c0c@mail.gmail.com>
-References: <7783925d0703202117tbbe231cp3bf44fcbc0726291@mail.gmail.com>
+From: Arjan van de Ven <arjan@infradead.org>
+Subject: Re: need for mmap?
+Date: Wed, 21 Mar 2007 08:30:19 +0100
+Message-ID: <1174462219.1158.110.camel@laptopd505.fenrus.org>
+References: <292693080703202107r7c8f914ch48f68abd8bf7d95d@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_172419_23919146.1174454622061"
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
-        b=CP8m6byQYG5pPuACRxyowcRP/FRCYYz48V3Ui1FODWSNIf55MgJ6RBNJd7IWOHn6IFwWF510J7qxUblqPjpe6D0EFk0p4uJx37azYG7i0eZyCUZ4z0wi6Mv4QqvK95e5xKQIxb13KaN257wGsRauEKSkSoEZtuvGTDTAQK36IFM=
-In-Reply-To: <7783925d0703202117tbbe231cp3bf44fcbc0726291@mail.gmail.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
-
-------=_Part_172419_23919146.1174454622061
-Content-Type: text/plain; charset=ISO-8859-1; format=flowed
 Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Return-path: <linux-newbie-owner@vger.kernel.org>
+In-Reply-To: <292693080703202107r7c8f914ch48f68abd8bf7d95d@mail.gmail.com>
+Sender: linux-newbie-owner@vger.kernel.org
+List-Id: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>
 
-On 3/21/07, Rick Brown <rick.brown.3@gmail.com> wrote:
->
+On Wed, 2007-03-21 at 09:37 +0530, Daniel Rodrick wrote:
 > Hi list,
->
-> When we preempt_enable() / preempt_disable(), is the kernel preemption
-> enabled or disabled for ALL the processors or just the local
-> processor?
->
-> TIA,
->
-> Rick
->
-> --
-> To unsubscribe from this list: send an email with
-> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
-> Please read the FAQ at http://kernelnewbies.org/FAQ
->
->
-no,  the kernel preemption enabled or disabled for just the local processor
-only......CMIIW
+> 
+> I'm a newbie, and I just read about the mmap system call. I have a
+> very basic confusion regarding why would a driver ever want to
+> implement mmap.
+> 
+> 1) The purpose of mmap is to map the device memory to user space
+> programs, right? Isn't that alreay available via /dev/mem?
 
+no /dev/mem doesn't allow convenient access to scatter-gather memory etc
+while your own mmap can make the memory look linear
+
+
+> 2) Is it that mmapping /dev/mem works only for memory (RAM)? Are all
+> physical addresses not available via /dev/mem?
+
+ /dev/mem is a HORRIBLE interface, and it won't work in the future or
+even today on some machines.
+The reason for this is that this interface doesn't tell the kernel what
+device you want to talk to, so there is no way the kernel can set up the
+IOMMU correctly to allow access to the memory. Today only high end
+machines have an IOMMU, but I suspect that within a few years all PCs
+will have one as well....
 
 -- 
-regards,
-Mansha
+if you want to mail me at work (you don't), use arjan (at) linux.intel.com
+Test the interaction between Linux and your BIOS via http://www.linuxfirmwarekit.org
 
-------=_Part_172419_23919146.1174454622061
-Content-Type: text/html; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-<br><br>
-<div><span class="gmail_quote">On 3/21/07, <b class="gmail_sendername">Rick Brown</b> &lt;<a href="mailto:rick.brown.3@gmail.com">rick.brown.3@gmail.com</a>&gt; wrote:</span>
-<blockquote class="gmail_quote" style="PADDING-LEFT: 1ex; MARGIN: 0px 0px 0px 0.8ex; BORDER-LEFT: #ccc 1px solid">Hi list,<br><br>When we preempt_enable() / preempt_disable(), is the kernel preemption<br>enabled or disabled for ALL the processors or just the local
-<br>processor?<br><br>TIA,<br><br>Rick<br><br>--<br>To unsubscribe from this list: send an email with<br>&quot;unsubscribe kernelnewbies&quot; to <a href="mailto:ecartis@nl.linux.org">ecartis@nl.linux.org</a><br>Please read the FAQ at 
-<a href="http://kernelnewbies.org/FAQ">http://kernelnewbies.org/FAQ</a><br><br></blockquote></div><br>no,&nbsp; the kernel preemption enabled or disabled for just the local processor only......CMIIW<br><br clear="all"><br>-- <br>
-regards,<br>Mansha 
-
-------=_Part_172419_23919146.1174454622061--
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
