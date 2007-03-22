@@ -1,7 +1,7 @@
-From: "Sandeep Kumar" <sandeepksinha@gmail.com>
+From: "Prasad Joshi" <prasadjoshi124@gmail.com>
 Subject: Re: need for 3G/1G split
-Date: Thu, 22 Mar 2007 11:11:19 +0530
-Message-ID: <37d33d830703212241u62932778j6715ca9b9c3ecc51@mail.gmail.com>
+Date: Thu, 22 Mar 2007 11:11:38 +0530
+Message-ID: <fe291c8c0703212241o7d6909aj3acca12da7294260@mail.gmail.com>
 References: <7783925d0703202115j11dbf254nc916252e4cd98e8a@mail.gmail.com>
 	 <1174473501.9500.12.camel@localhost>
 Mime-Version: 1.0
@@ -10,7 +10,7 @@ Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=bPLMaEV7FTmadGjAAhdnGAZPM2+YKEzTA7nvHwvwYvKDQAZZRSJrr4LG7+wgWUQn/HpRmF4CohclK0czAGOZ93H1bfVkwyHfIpYjJazK3xXYGmqLNGhdZ1/YJteGD4bF1eFdJ14HR8jwH5MGscO8W8HGdrQZBm9joVXo7d/D47I=
+        b=ef20OwqdXoAWlpYU5E4yl0lghyaB6bruQQcQNHoRtCp1//zOY+npoixHvrf2A9ci8u1mofSEytD6j8lI/DMeDH4b1XNwZ8TXHWUJMFW7bquJPE9o10boMF0Mq5LO95gMN2Usq4AtFamzORiGsRCoTBS9GBZApchvxVUdfEy+Hr8=
 In-Reply-To: <1174473501.9500.12.camel@localhost>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
@@ -19,14 +19,7 @@ Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: vivekutal@gmail.com
 Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Also, go through the following article, they have explained things in
-a very nice way.
-
-http://kerneltrap.org/node/2450
-
-
-
-On 3/21/07, Vivek <vivekutal@gmail.com> wrote:
+ 3/21/07, Vivek <vivekutal@gmail.com> wrote:
 > > Why is kernel restricted to use virtual addresses of only 1 GB? Or
 > > what is the need to split up the virtual address space into user
 > > addresses and kernel addresses?
@@ -36,6 +29,13 @@ On 3/21/07, Vivek <vivekutal@gmail.com> wrote:
 > You can also make the split 2/2GB but this has a problem of having less
 > user address space.
 > 3/1 is a better choice.
+
+Does TLB size change 4, 3, or 2 GB virtual addresses are used? I
+though it would be same irrespective of whether virtual addresses are
+4 or 1 GB.
+If the TLB size is at all same for any number of virtual addresses
+then what difference it make while flushing the TLB?
+
 >
 > --
 > Vivek Kutal
@@ -48,18 +48,6 @@ On 3/21/07, Vivek <vivekutal@gmail.com> wrote:
 > Please read the FAQ at http://kernelnewbies.org/FAQ
 >
 >
-
-
--- 
-Regards,
-Sandeep
-
-
-
-
-
- 	
-If the facts don't fit the theory, change the facts.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
