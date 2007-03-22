@@ -1,98 +1,65 @@
-From: "Ajay Singh \(ajaysi\)" <ajaysi@cisco.com>
-Subject: RE: Need for a new spinlock API?
-Date: Thu, 22 Mar 2007 10:25:19 +0530
-Message-ID: <677342AB6AE12D4DB59A9D473F40D74B028E0442@xmb-blr-416.apac.cisco.com>
-References: <b115cb5f0703202053n1b8bfd4bo39cd046e04fb15a2@mail.gmail.com> <1174462330.1158.113.camel@laptopd505.fenrus.org> <623132dc0703211159n3781bfbdu6ffd43743a6fe377@mail.gmail.com> <1174511009.1158.150.camel@laptopd505.fenrus.org> <b115cb5f0703211812x6464f695ha1b3d4e2c58ba364@mail.gmail.com> <677342AB6AE12D4DB59A9D473F40D74B028E0441@xmb-blr-416.apac.cisco.com> <b115cb5f0703212133v4c8fa36cm528866fef3e3e8f9@mail.gmail.com>
+From: "Sandeep Kumar" <sandeepksinha@gmail.com>
+Subject: Re: need for 3G/1G split
+Date: Thu, 22 Mar 2007 11:11:19 +0530
+Message-ID: <37d33d830703212241u62932778j6715ca9b9c3ecc51@mail.gmail.com>
+References: <7783925d0703202115j11dbf254nc916252e4cd98e8a@mail.gmail.com>
+	 <1174473501.9500.12.camel@localhost>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
-In-Reply-To: <b115cb5f0703212133v4c8fa36cm528866fef3e3e8f9@mail.gmail.com>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        b=bPLMaEV7FTmadGjAAhdnGAZPM2+YKEzTA7nvHwvwYvKDQAZZRSJrr4LG7+wgWUQn/HpRmF4CohclK0czAGOZ93H1bfVkwyHfIpYjJazK3xXYGmqLNGhdZ1/YJteGD4bF1eFdJ14HR8jwH5MGscO8W8HGdrQZBm9joVXo7d/D47I=
+In-Reply-To: <1174473501.9500.12.camel@localhost>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: Arjan van de Ven <arjan@infradead.org>, anubhav rakshit <anubhavrocks@gmail.com>, kernel mail <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: vivekutal@gmail.com
+Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+
+Also, go through the following article, they have explained things in
+a very nice way.
+
+http://kerneltrap.org/node/2450
 
 
-> > > Hi Arjan,
-> > >
-> > > > > > > We often have a case where a driver wants to 
-> access its data 
-> > > > > > > structure in process context as well as in interrupt
-> > > context (in
-> > > > > > > its ISR). In such scenarios, we generally use
-> > > > > > > spin_lock_irqsave() to grab the lock as well as
-> > > disable all the
-> > > > > > > local interrupts. AFAIK, disabling of local interrupts is 
-> > > > > > > required so as to avoid running your ISR (which needs
-> > > the lock)
-> > > > > > > while process context is holding the lock. However, this 
-> > > > > > > also disables any other ISRs (which DO NOT need the lock)
-> > > on the local processor.
-> > > > > > >
-> > > > > > > Isn't this sub-optimal? Shouldn't there be a finer
-> > > grained locking?
-> > > > > >
-> > > > > > actually it's optimal.
-> > > > > how is it optimal,when all  you require is to disable
-> > > just one particular IRQ?
-> > > >
-> > > > because if you don't disable all you increase hold times, which 
-> > > > increases contention. Contention is BAD.
-> > >
-> > > Do you mean the lock hold time here? How is lock hold 
-> time affected 
-> > > by whether we disable just one or all the irqs?
-> >
-> > The lock hold time may increase if you are in one ISR 
-> holding a lock 
-> > and some other interrupt occurs. Processor will now call 
-> ISR linked to 
-> > that interrupt (nested interrupts) assuming that priority of newly 
-> > arrived interrupt is more.
-> 
-> Yes, but isn't that desired? Because the newly arrived 
-> interrupt is of higher priority than the currently executing 
-> ISR and it doesn't need any lock at all, 
 
-The lock contention is between the process or another instance of same
-ISR on other processor(say uP1) which are waiting for that same spinlock
-to be released. They will have to wait till old ISR instance finishes on
-processor (say uP0).
+On 3/21/07, Vivek <vivekutal@gmail.com> wrote:
+> > Why is kernel restricted to use virtual addresses of only 1 GB? Or
+> > what is the need to split up the virtual address space into user
+> > addresses and kernel addresses?
+>
+> We can have 4GB for kernel and 4GB for userspace but this has a overhead
+> of flushing of tlb for every syscall.
+> You can also make the split 2/2GB but this has a problem of having less
+> user address space.
+> 3/1 is a better choice.
+>
+> --
+> Vivek Kutal
+>
+>
+>
+> --
+> To unsubscribe from this list: send an email with
+> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
+> Please read the FAQ at http://kernelnewbies.org/FAQ
+>
+>
 
-shouldn't the new 
-> ISR experience a lesser interrupt latency (executed before 
-> the current ISR finishes)?
-> 
 
-On some real time Oses it is implemented like this, but not on linux I
-think (CMIIAW). Also in that case you need to calculate how much stack
-space you need in worst case of interrupt nesting.
+-- 
+Regards,
+Sandeep
 
-> >
-> > >
-> > > Secondly, is it possible AT ALL to disable a particular 
-> irq at the 
-> > > local CPU?
-> >
-> > It depends on the interrupt controller implementation in 
-> h/w. In most 
-> > cases it should be possible. Most of them are quite 
-> programmable where 
-> > you can mask out, disable, enable any interrupt line, set 
-> the priority 
-> > of the interrupt line.
-> 
-> So we can disable a single interrupt ONLY for the local CPU 
-> (leaving it enabled for other CPUs), right?
-> 
-Not sure about this.
 
-> Thanks,
-> 
-> Rajat
-> 
+
+
+
+ 	
+If the facts don't fit the theory, change the facts.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
