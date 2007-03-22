@@ -1,53 +1,38 @@
-From: "Prasad Joshi" <prasadjoshi124@gmail.com>
-Subject: Re: need for 3G/1G split
-Date: Thu, 22 Mar 2007 11:11:38 +0530
-Message-ID: <fe291c8c0703212241o7d6909aj3acca12da7294260@mail.gmail.com>
-References: <7783925d0703202115j11dbf254nc916252e4cd98e8a@mail.gmail.com>
-	 <1174473501.9500.12.camel@localhost>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: Re: Need for a new spinlock API?
+Date: Thu, 22 Mar 2007 11:29:10 +0530
+Message-ID: <b115cb5f0703212259i31baa281l5efc431d82cac8e7@mail.gmail.com>
+References: <b115cb5f0703202053n1b8bfd4bo39cd046e04fb15a2@mail.gmail.com>
+	 <1174462330.1158.113.camel@laptopd505.fenrus.org>
+	 <623132dc0703211159n3781bfbdu6ffd43743a6fe377@mail.gmail.com>
+	 <1174511009.1158.150.camel@laptopd505.fenrus.org>
+	 <b115cb5f0703211812x6464f695ha1b3d4e2c58ba364@mail.gmail.com>
+	 <677342AB6AE12D4DB59A9D473F40D74B028E0441@xmb-blr-416.apac.cisco.com>
+	 <b115cb5f0703212133v4c8fa36cm528866fef3e3e8f9@mail.gmail.com>
+	 <677342AB6AE12D4DB59A9D473F40D74B028E0442@xmb-blr-416.apac.cisco.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=ef20OwqdXoAWlpYU5E4yl0lghyaB6bruQQcQNHoRtCp1//zOY+npoixHvrf2A9ci8u1mofSEytD6j8lI/DMeDH4b1XNwZ8TXHWUJMFW7bquJPE9o10boMF0Mq5LO95gMN2Usq4AtFamzORiGsRCoTBS9GBZApchvxVUdfEy+Hr8=
-In-Reply-To: <1174473501.9500.12.camel@localhost>
+        b=ndXV/kCIsA8aooINispRbd1eyUw18bI7B2NFT35+xD2/m2TjOlu1dzAt3PuJWaMtpemMvK6vgwXllEMgVt8EK30iX4nBgFP2FNWCZPbH1BfU0atOzxuvZXFD4mReKIlX9YqnOTlPGqWcL0f5PZBd6ZjzEl11Z2wIYY4mMhCJJ9c=
+In-Reply-To: <677342AB6AE12D4DB59A9D473F40D74B028E0442@xmb-blr-416.apac.cisco.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: vivekutal@gmail.com
-Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: "Ajay Singh (ajaysi)" <ajaysi@cisco.com>
+Cc: Arjan van de Ven <arjan@infradead.org>, anubhav rakshit <anubhavrocks@gmail.com>, kernel mail <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
- 3/21/07, Vivek <vivekutal@gmail.com> wrote:
-> > Why is kernel restricted to use virtual addresses of only 1 GB? Or
-> > what is the need to split up the virtual address space into user
-> > addresses and kernel addresses?
->
-> We can have 4GB for kernel and 4GB for userspace but this has a overhead
-> of flushing of tlb for every syscall.
-> You can also make the split 2/2GB but this has a problem of having less
-> user address space.
-> 3/1 is a better choice.
+> The lock contention is between the process or another instance of same
+> ISR on other processor(say uP1) which are waiting for that same spinlock
+> to be released. They will have to wait till old ISR instance finishes on
+> processor (say uP0).
 
-Does TLB size change 4, 3, or 2 GB virtual addresses are used? I
-though it would be same irrespective of whether virtual addresses are
-4 or 1 GB.
-If the TLB size is at all same for any number of virtual addresses
-then what difference it make while flushing the TLB?
-
->
-> --
-> Vivek Kutal
->
->
->
-> --
-> To unsubscribe from this list: send an email with
-> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
-> Please read the FAQ at http://kernelnewbies.org/FAQ
->
->
+No, by design there cannot be two instances of your ISR running on two
+seperate processes (since the interrupt is disabled on all processors
+untill the ISR returns).
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
