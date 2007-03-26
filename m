@@ -1,43 +1,54 @@
-From: Arjan van de Ven <arjan@infradead.org>
-Subject: Re: Need for a new spinlock API?
-Date: Thu, 22 Mar 2007 09:51:47 +0100
-Message-ID: <1174553507.1158.160.camel@laptopd505.fenrus.org>
-References: <b115cb5f0703202053n1b8bfd4bo39cd046e04fb15a2@mail.gmail.com>
-	 <1174462330.1158.113.camel@laptopd505.fenrus.org>
-	 <623132dc0703211159n3781bfbdu6ffd43743a6fe377@mail.gmail.com>
-	 <1174511009.1158.150.camel@laptopd505.fenrus.org>
-	 <b115cb5f0703211812x6464f695ha1b3d4e2c58ba364@mail.gmail.com>
-	 <677342AB6AE12D4DB59A9D473F40D74B028E0441@xmb-blr-416.apac.cisco.com>
-	 <b115cb5f0703212133v4c8fa36cm528866fef3e3e8f9@mail.gmail.com>
-	 <677342AB6AE12D4DB59A9D473F40D74B028E0442@xmb-blr-416.apac.cisco.com>
-	 <b115cb5f0703212259i31baa281l5efc431d82cac8e7@mail.gmail.com>
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: files and directories with spaces in bash script
+Date: Mon, 26 Mar 2007 10:59:17 -0400 (EDT)
+Message-ID: <Pine.LNX.4.64.0703261049190.13397@localhost>
+Reply-To: karthikv@Alum.Dartmouth.ORG
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b115cb5f0703212259i31baa281l5efc431d82cac8e7@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: "Ajay Singh (ajaysi)" <ajaysi@cisco.com>, anubhav rakshit <anubhavrocks@gmail.com>, kernel mail <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Newbie List <linux-newbie@vger.kernel.org>
 
-On Thu, 2007-03-22 at 11:29 +0530, Rajat Jain wrote:
-> > The lock contention is between the process or another instance of same
-> > ISR on other processor(say uP1) which are waiting for that same spinlock
-> > to be released. They will have to wait till old ISR instance finishes on
-> > processor (say uP0).
-> 
-> No, by design there cannot be two instances of your ISR running on two
-> seperate processes (since the interrupt is disabled on all processors
-> untill the ISR returns).
+Hello,
 
-but the USERCONTEXT on the other cpu ALSO uses this lock, right?
-(Otherwise this entire discussion was moot already, that was your
-initial premise)
+I am trying to write a script to organize/sort my music collection. All of 
+my music is arranged as Artist/Album folders with tracks within them, and 
+most of these names have spaces (if not other strange characters). The 
+script I am trying to get working needs to get all filenames in a 
+specified directory so that I can process each file at a time. I am trying 
+to do this as:
+
+#!/bin/bash
+# set_idv3_tags.sh
+
+for directory in "$@"; do
+   if [[ -d "$directory" ]]; then
+     for f in `find $directory -iname '*mp3' `; do
+       echo "found mp3 file: $f"
+     done
+   fi
+done
+
+
+Obviously, $f is getting word-split at each space encountered in 
+$directory as well as in the filename. How can I set bash to give me an 
+array/variable that I loop over for each file found only, irrespective of 
+spaces without using sed to replace the spaces with _ etc.?
+
+I did think of -print0, but could not get to loop over each file and I 
+prefer not to use ls. What are my options with bash, or is it just better 
+to get this written with Perl?
+
+
+Thanks!
+
+-K
+
 -- 
-if you want to mail me at work (you don't), use arjan (at) linux.intel.com
-Test the interaction between Linux and your BIOS via http://www.linuxfirmwarekit.org
-
+The only way to keep your health is to eat what you don't want, drink
+what you don't like, and do what you'd rather not.  -- Mark Twain
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
