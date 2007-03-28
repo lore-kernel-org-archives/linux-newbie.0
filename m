@@ -1,37 +1,32 @@
-From: =?iso-8859-1?q?Tom=E1s_Tormo?= <tommymassama@gmail.com>
-Subject: KDE doesn't execute programs the first time
-Date: Tue, 27 Mar 2007 17:15:39 +0200
-Message-ID: <200703271715.39057.tommymassama@yahoo.es>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: mmaping device memory into userspace.
+Date: Wed, 28 Mar 2007 09:45:52 +0530
+Message-ID: <292693080703272115m335f5b0yf071007697aee6aa@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:to:subject:date:user-agent:mime-version:content-disposition:message-id:content-type:content-transfer-encoding:from;
-        b=lr2KYR8KcB3uwTwn2uW1ppnsOQ1p+QTnQddK2ejfHrLkDoAc6OJudaSrfpDhs6jVcT0+EW509zMV3c9M2ghV0C+SJ9sYSvoWIg4Hqg9zOR82Ey278XG7CYAQOBveWSf9qrgyYKbMo7bQT9WPRq1XhjAa7ueVFfGq/i+k/kzEK9E=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=BK6Ny3q6HEGJfW79axjifbgE2/o9HC6LQXhiPS1guwki06oALss7LHyUzDdRJFR+VVc4kg+d2XKyreVyAngcsHoMQPLgEeCNgeHrvcNaaXMqII81T27cW8AxXNh/EPxHoTO/ZiVnoMe9zcL0zGAyUWn+1cB2OyeMC6NG+SDLu5w=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>
 
-Greetings
+Hi list,
 
-I've installed Kubuntu Edgy with KDE 3.5.6. My problem is that 
-frequently, when i try to execute a program from KDE environment, 
-it doesn't run. I mean that when i choose the program from the KDE menu
-it tries to run (the program icon appears bounding next to the pointer, 
-the program name appears in the panel...), but then it stops (after a 
-time --in my opinion long time- the pointer and panel are like before)
+If we map device memory into user space using mmap(), the user will be
+able to do read / write into device using normal memory handling
+routines, right?
 
-Sometimes the program runs the second time ir try, and sometimes it doesn't 
-even run (then i execute it by console). Of course this doesn't happen alwas 
-but frequently.
+But as mentioned in LDD3, should appropriate readb() / writeb()
+routines be actually used to read / write into device memory?
 
-Do you know what is the problem? And the solution...? Actually is not 
-something really really important but sometimes in annoying
+Thanks,
 
-Thank you very much!!
+Dan
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
