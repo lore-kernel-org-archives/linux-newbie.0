@@ -1,46 +1,56 @@
-From: Erik Mouw <mouw@nl.linux.org>
-Subject: Re: Automatically loading kernel modules at bootup
-Date: Thu, 29 Mar 2007 18:39:01 +0200
-Message-ID: <20070329163900.GB15453@gateway.home>
-References: <292693080703290852g4e244c67rb740029e5142a3ae@mail.gmail.com>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: "struct file" - per process per file?
+Date: Thu, 29 Mar 2007 22:11:48 +0530
+Message-ID: <b115cb5f0703290941k26dcefear2a113c939b8db224@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <292693080703290852g4e244c67rb740029e5142a3ae@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
-List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
 Content-Transfer-Encoding: 7bit
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
-Cc: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=ILH8BgL4lbVIv4MEW2T1hhOdTuw0cj05wgAEvy24w28nnOhnGZs+8rKTy0IxZw5A0kbVUGb2CqQOEUcsuhaZfOhkOGeWV4UrGnZM/xGJ3tW3poh+DnQ/eXLBeLk0F7tWREVOD6KuX7zVIrzhXsnToqmH6awmS2kCknfdQsorGPM=
+Content-Disposition: inline
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+Hi,
 
-On Thu, Mar 29, 2007 at 09:22:45PM +0530, Daniel Rodrick wrote:
-> How do I make sure that my kernel module gets loaded automatically on
-> system bootup?
+This has reference to LDD3 chap3 - Char drivers (Pg 60).
 
-Depends. Hotplug/udev will automatically load modules for devices in
-plug-and-play busses (PCI, USB, Cardbus, firewire, etc). If that
-doesn't work, it gets distro specific. In Debian you would put the
-module name in /etc/modules, don't know about other distributions.
+The following is my understanding which seems to be incorrect. Can
+somebody please point out what am I missing?
 
+LDD3 states that the fops->open() and fops->release() methods are
+called only when "struct file" is created / destroyed. It further says
+that "struct file" is created ONLY when a process calls open() system
+all on a file. To give an example, it also says that if process 1
+opens file A and then forks another process B, then A and B will share
+the same struct file??
 
-Erik
+This seems quite strange to me as I had an understanding that two
+processes working on the same file will always have different file
+structure. Also, this would mean that a read by one of the processes
+on the file would affect the file position pointer in the other
+process?
 
-- -- 
-They're all fools. Don't worry. Darwin may be slow, but he'll
-eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
+I am sure I am missing something here. What is it?
 
-iD8DBQFGC+uk/PlVHJtIto0RAl2BAJ9K1IdFgcyCrJh8JWh7qP90/MET1QCdHegA
-vrANsmoHcmHk8pO8IZpMFTA=
-=IoIt
------END PGP SIGNATURE-----
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks,
+
+Rajat
+
+--
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
