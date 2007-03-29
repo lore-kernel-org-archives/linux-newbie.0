@@ -1,39 +1,35 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Automatically loading kernel modules at bootup
-Date: Thu, 29 Mar 2007 21:22:45 +0530
-Message-ID: <292693080703290852g4e244c67rb740029e5142a3ae@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: regarding kernel preemption
+Date: Thu, 29 Mar 2007 21:35:13 +0530
+Message-ID: <7783925d0703290905u1e4d94f2v88d6f1736c52de81@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=WzwAHZ821e+9mQ8ibAraCoRZyPbTKBKA7zdYKIrc1mIVvdDfvunNOlsAUs4xyCxNnzf178ryr7E+MxEimrLeqnO6xHub6egDCnf61TZMe+oe0xo2HMIA6nFMXoQ/Z02kZY6FJCSLl8dycF77LL0N7xt2IGma47E/AnOhROteV7o=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=pY00uaV72hrMswvqRIZZUPKiuUMHioez/L6PjrGksh4KrDUimqF2UIOfNLrvyhE4M7iQ5u94nvpd6E6fj7XmPjXcS2pBctOWU/dFeRrEHTuJwKHjcntd/VDrXaBhcx8JkRWKKmfDGlYvu00VQUKNHvEPUGro2hOGY/nPT87haQk=
 Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+To: Linux Kernel <linux-kernel@vger.kernel.org>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hi,
+Hi list,
 
-How do I make sure that my kernel module gets loaded automatically on
-system bootup?
+I had posted this on kernelnewbies, but did not get much response, and
+hence trying here.
 
-Thanks,
+When we preempt_enable() / preempt_disable(), is the kernel preemption
+enabled or disabled for ALL the processors or just the local
+processor?
 
-Dan
+TIA,
 
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+Rick
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
