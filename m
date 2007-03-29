@@ -1,7 +1,7 @@
-From: Chuck Gelm <chuck2007@gelm.net>
+From: Cedric <cedric@belbone.be>
 Subject: Re: the tree command
-Date: Thu, 29 Mar 2007 09:25:42 -0400
-Message-ID: <460BBE56.80403@gelm.net>
+Date: Thu, 29 Mar 2007 16:18:13 +0200
+Message-ID: <460BCAA5.9020108@belbone.be>
 References: <90d49b680703290443j7551f8b9n55610d68877f9875@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -27,24 +27,13 @@ Jack Bauer wrote:
 >
 > Bauer
 >
-bin: bin (some common system utilities)
-bin:
-bin: The "bin" package is a collection of utilities for handling various
-bin: kinds of archives, identifying file types, and processing data.
-bin: Several of these tools are used by system scripts, so this is a
-bin: required package. The bin package contains these programs:
-bin:
-bin: bban compress diskcopy dosfsck ed eject fbset file fiz fromdos lha
-bin: mkdosfs mktemp patch rescan-scsi-bus rpm2targz rpmoffset run-parts
-bin: savelog splitvt sysvbanner tempfile time todos tree unarj volname
-bin: which xx zoo
+i have a package 'tree' on my kubuntu 6.10
 
-/mnt/cdrom/slackware/a/bin-11.0-i486-3.tgz
+from apt-cache show :
 
-The bottom of my 'man tree' mentions
-SEE ALSO dircolors, ls, find
-
-HTH, Chuck
+Description: displays directory tree, in color
+Displays an indented directory tree, using the same color assignments as
+ls, via the LS_COLORS environment variable.
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
