@@ -1,31 +1,27 @@
 From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: regarding kernel preemption
-Date: Thu, 29 Mar 2007 21:35:13 +0530
-Message-ID: <7783925d0703290905u1e4d94f2v88d6f1736c52de81@mail.gmail.com>
+Subject: fcntl v/s ioctl
+Date: Thu, 29 Mar 2007 21:46:04 +0530
+Message-ID: <7783925d0703290916p5298cc10nc8279f3078af66dd@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=pY00uaV72hrMswvqRIZZUPKiuUMHioez/L6PjrGksh4KrDUimqF2UIOfNLrvyhE4M7iQ5u94nvpd6E6fj7XmPjXcS2pBctOWU/dFeRrEHTuJwKHjcntd/VDrXaBhcx8JkRWKKmfDGlYvu00VQUKNHvEPUGro2hOGY/nPT87haQk=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=PXhu6urofrs7hKKWgl2aXSxdWnA/jbS6P/0S6RlNze9ddaiYK7Ta8f5NU63Mr9v+8WSMyqx2wAMhIvADT4w8vh15nuqEXywBrHlaRu2rWxiY41K3JcC0qFfuTFjFVsEosopRNR1iWq8WRh1AvLrDziMMeL/VLvokAZ8fLNgkQQc=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Kernel <linux-kernel@vger.kernel.org>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hi list,
+Hi,
 
-I had posted this on kernelnewbies, but did not get much response, and
-hence trying here.
+Could some one please explain me the differences and similarities
+between fcntl and ioctl? Is one built upon the other? AFAIK, both are
+used for handling of very device specific commands by the driver.
 
-When we preempt_enable() / preempt_disable(), is the kernel preemption
-enabled or disabled for ALL the processors or just the local
-processor?
-
-TIA,
+Thanks,
 
 Rick
 -
