@@ -1,29 +1,57 @@
-From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: fcntl v/s ioctl
-Date: Thu, 29 Mar 2007 21:46:04 +0530
-Message-ID: <7783925d0703290916p5298cc10nc8279f3078af66dd@mail.gmail.com>
+From: "Conway S. Smith" <beolach@comcast.net>
+Subject: Re: the tree command
+Date: Thu, 29 Mar 2007 07:00:06 -0600
+Message-ID: <20070329070006.6c8e34ac@mandalor.homelinux.net>
+References: <90d49b680703290443j7551f8b9n55610d68877f9875@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; boundary="Sig_+uIdF9zdEf=SwFCAqj9S69z";
+ protocol="application/pgp-signature"; micalg=PGP-SHA1
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=PXhu6urofrs7hKKWgl2aXSxdWnA/jbS6P/0S6RlNze9ddaiYK7Ta8f5NU63Mr9v+8WSMyqx2wAMhIvADT4w8vh15nuqEXywBrHlaRu2rWxiY41K3JcC0qFfuTFjFVsEosopRNR1iWq8WRh1AvLrDziMMeL/VLvokAZ8fLNgkQQc=
-Content-Disposition: inline
+In-Reply-To: <90d49b680703290443j7551f8b9n55610d68877f9875@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Jack Bauer <bauer.free@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+--Sig_+uIdF9zdEf=SwFCAqj9S69z
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-Could some one please explain me the differences and similarities
-between fcntl and ioctl? Is one built upon the other? AFAIK, both are
-used for handling of very device specific commands by the driver.
+On Thu, 29 Mar 2007 19:43:34 +0800
+"Jack Bauer" <bauer.free@gmail.com> wrote:
+> Hi list,
+>=20
+> I am reading ldd3, there is a command like this,
+> $ tree /sys/bus/pci/devices/
+> to show some infomation.
+>=20
+> But this command is not installed in my distribution (ubuntu 6.06).
+> I have no idea about which package it belongs.
+>=20
+> Thanks
+>=20
+> Bauer
+>=20
 
-Thanks,
+It has its own package: 'apt-get install tree' should work.
+http://packages.ubuntulinux.org/dapper/utils/tree
 
-Rick
+Good luck,
+Conway S. Smith
+
+--Sig_+uIdF9zdEf=SwFCAqj9S69z
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Disposition: attachment; filename=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.3 (GNU/Linux)
+
+iD8DBQFGC7hiGL3AU+cCPDERArOMAKDFwx6u6YFXs3x0b+vDRKWMYTEHTQCfcDqP
+JEDIT7ehCyIIVCFlB7ywHFQ=
+=Jsrm
+-----END PGP SIGNATURE-----
+
+--Sig_+uIdF9zdEf=SwFCAqj9S69z--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
