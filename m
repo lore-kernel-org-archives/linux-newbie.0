@@ -1,35 +1,65 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Query regarding alloc_chrdev_region()
-Date: Thu, 29 Mar 2007 22:50:34 +0530
-Message-ID: <b115cb5f0703291020j32d15d97lc6ef7c1f3face23b@mail.gmail.com>
+From: Rodrigo Rubira Branco <rrbranco@br.ibm.com>
+Subject: Re: Automatically loading kernel modules at bootup
+Date: Thu, 29 Mar 2007 17:42:35 -0300
+Message-ID: <1175200955.4599.33.camel@localhost.localdomain>
+References: <292693080703290852g4e244c67rb740029e5142a3ae@mail.gmail.com>
+Reply-To: rrbranco@br.ibm.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-IfaaOAKBgl+D1SwfA2dY"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=qZWbvvCohUROSF0SQr+Y0KH+0HXk+awohKAVGOszLOFs3GZer3z4utJevoXZczXUvOyxQ3q1JUx3p5qdR7tM69GOH22X/+8VSsgqBNUNVe6WnVbRVgYOpVusYUz8a+EsHKBT+rpmg9C92ECCquZVlCQBH26H7nCRcTKmRALUha0=
-Content-Disposition: inline
+In-Reply-To: <292693080703290852g4e244c67rb740029e5142a3ae@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi,
 
-I was wondering that while using dynamic device numner allocation, can
-we ever have a scenario like following (using alloc_chrdev_region):
+--=-IfaaOAKBgl+D1SwfA2dY
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-1) Char Driver A is hooked on Major num X, minor numbers 0-10
-2) Char Driver B is hooked on (same) Major num X, minor numbers 11-20
+You can also use initrd (or initramfs)...
 
-If yes, how will the userland get to know about the dynamically
-allocated range (needed to create device nodes), since /proc/devices
-only shows major numbers?
+Cya,
 
-Thanks,
+rodrigo (BSDaemon).
 
-Rajat
+On Thu, 2007-03-29 at 21:22 +0530, Daniel Rodrick wrote:
+> Hi,
+>=20
+> How do I make sure that my kernel module gets loaded automatically on
+> system bootup?
+>=20
+> Thanks,
+>=20
+> Dan
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" i=
+n
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+--=20
+Rodrigo Rubira Branco
+Software Engineering - Advanced Linux Response Team (ALRT)
+IBM Linux Technology Center (IBM/LTC)
+rrbranco@br.ibm.com
+
+GPG KeyID: 5E90CA19
+
+--=-IfaaOAKBgl+D1SwfA2dY
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.5 (GNU/Linux)
+
+iD8DBQBGDCS7xJRNvl6QyhkRAr97AJ9BmKuJfqp4GYsDhqg3nyJBJFgBggCdE/SD
+YGjWXKFjsg96YQhB/WXhmgs=
+=TB8n
+-----END PGP SIGNATURE-----
+
+--=-IfaaOAKBgl+D1SwfA2dY--
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
