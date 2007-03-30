@@ -1,69 +1,59 @@
-From: "Milind Arun Choudhary" <milindchoudhary@gmail.com>
-Subject: Re: fcntl v/s ioctl
-Date: Fri, 30 Mar 2007 11:46:13 +0530
-Message-ID: <3b44d3fb0703292316o4e30167cxcb1e93f718d10dc7@mail.gmail.com>
-References: <7783925d0703290916p5298cc10nc8279f3078af66dd@mail.gmail.com>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: Re: Query regarding alloc_chrdev_region()
+Date: Fri, 30 Mar 2007 11:56:28 +0530
+Message-ID: <b115cb5f0703292326g62614492m98f09222c869996c@mail.gmail.com>
+References: <b115cb5f0703291020j32d15d97lc6ef7c1f3face23b@mail.gmail.com>
+	 <20070330021034.GA21152@kroah.com>
+	 <b115cb5f0703291936p2a46ceccx892c6b25bf07021b@mail.gmail.com>
+	 <20070330051926.GC26194@kroah.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=BI0rxjzsbgyTNfkh6ObC4yqu5diRPy2UMDvz5ay2YTKohbg8XtUnIbxuG/WWgAw756KIsSL78ErI5XmzeSVSUk1MLfAglA8lTHZAaHxUGMSKBZc/z7Cszv2pCNMDfOZsLre1Ylsmuk8FwvX8USiI/Z3v2RVjBaVLLSE16bEGdiE=
-In-Reply-To: <7783925d0703290916p5298cc10nc8279f3078af66dd@mail.gmail.com>
+        b=LAXqOKs6ZrPMj+TDzuA8fahPY6bZKWI0JG0PBZAhdx1zr7ODZUZ2VqRePJIP086RHH1yetjYLP7K/NV1ILdIObjrigigqwORQwOQ8mR1lFf4S9gHcFJ4EedcimkLGQTgb7xkj6mPx5i2k1y1mMBVsp7gfcEhE//gma7xwUWVelY=
+In-Reply-To: <20070330051926.GC26194@kroah.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Greg KH <greg@kroah.com>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-On 3/29/07, Rick Brown <rick.brown.3@gmail.com> wrote:
-> Hi,
+> > >> I was wondering that while using dynamic device numner allocation, can
+> > >> we ever have a scenario like following (using alloc_chrdev_region):
+> > >>
+> > >> 1) Char Driver A is hooked on Major num X, minor numbers 0-10
+> > >> 2) Char Driver B is hooked on (same) Major num X, minor numbers 11-20
+> >
+> > So the above is actually possible?
 >
-> Could some one please explain me the differences and similarities
-> between fcntl and ioctl?
->Is one built upon the other?
-No
+> Yes, once you have a major number, you can separate out the minor
+> numbers how ever you wish to.
 
-> AFAIK, both are used for handling of very
->device specific commands by the driver.
+Hi Greg,
 
-not both,
-this goes well with ioctl
+Ok, I understand that we can get a major number from the kernel and
+split it into a range of minor numbers.
 
-as ioctl is customizable, there is an ioctl method in the
-struct file_operations.
-so a driver writer can define some device specific tasks
-& hook her own method to execute them via an ioctl
+But does alloc_chrdev_region() reuse the major numbers in such a way?
 
-http://lxr.linux.no/source/fs/ioctl.c#L159
+In other words, is the following scenario possible:
 
-fcntl is not customizable by a driver
-there are some fixed task which it performs
+Driver 1
+======
+alloc_chrdev_region(10 minor nos required)
+-> receives major 150 (minor 0-9)
 
-like
-setting the close on exec flag
-duplicate fd
-set/get owner
-etc
-have a look at
+Driver 2
+======
+alloc_chrdev_region(20 minor nos required)
+-> receives major 150 (minor 10-29)
 
-sys_fcntl
-http://lxr.linux.no/source/fs/fcntl.c#L385
+Thanks,
 
-& its worker
-do_fcntl
-http://lxr.linux.no/source/fs/fcntl.c#L315
-
-
-we can say that fcntl dosen't bother if its a regular file
-or a device specific file
-
-where as ioctl changes its color in these case
-
--- 
-Milind Arun Choudhary
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
