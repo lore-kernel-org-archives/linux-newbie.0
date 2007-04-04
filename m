@@ -1,64 +1,62 @@
-From: Greg KH <greg@kroah.com>
-Subject: Re: Query regarding alloc_chrdev_region()
-Date: Thu, 29 Mar 2007 23:34:03 -0700
-Message-ID: <20070330063403.GA4745@kroah.com>
-References: <b115cb5f0703291020j32d15d97lc6ef7c1f3face23b@mail.gmail.com> <20070330021034.GA21152@kroah.com> <b115cb5f0703291936p2a46ceccx892c6b25bf07021b@mail.gmail.com> <20070330051926.GC26194@kroah.com> <b115cb5f0703292326g62614492m98f09222c869996c@mail.gmail.com>
+From: "Rajat Jain" <rajat.noida.india@gmail.com>
+Subject: kernel stack problem
+Date: Wed, 4 Apr 2007 06:20:15 +0530
+Message-ID: <b115cb5f0704031750g52b68cc6ncdecd6f3f94afbdf@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=ZSNhYB5/HRXgX4jCjWyJLuu/trazAiPq1A6NR2mKOsMIHntXA8bBwipFrHc6YFxItUeUTBlpfPJfoIw9NvR2G2UCgt+ww9A1oij0kYZnkSLa/crpFpxrQgbdg0iJPPQosssWHaPA+5MRjQ/6hvPR24OK5vl/iTlwC9gRHPDR8PU=
 Content-Disposition: inline
-In-Reply-To: <b115cb5f0703292326g62614492m98f09222c869996c@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-On Fri, Mar 30, 2007 at 11:56:28AM +0530, Rajat Jain wrote:
-> >> >> I was wondering that while using dynamic device numner allocation, can
-> >> >> we ever have a scenario like following (using alloc_chrdev_region):
-> >> >>
-> >> >> 1) Char Driver A is hooked on Major num X, minor numbers 0-10
-> >> >> 2) Char Driver B is hooked on (same) Major num X, minor numbers 11-20
-> >>
-> >> So the above is actually possible?
-> >
-> >Yes, once you have a major number, you can separate out the minor
-> >numbers how ever you wish to.
-> 
-> Hi Greg,
-> 
-> Ok, I understand that we can get a major number from the kernel and
-> split it into a range of minor numbers.
-> 
-> But does alloc_chrdev_region() reuse the major numbers in such a way?
-> 
-> In other words, is the following scenario possible:
-> 
-> Driver 1
-> ======
-> alloc_chrdev_region(10 minor nos required)
-> -> receives major 150 (minor 0-9)
-> 
-> Driver 2
-> ======
-> alloc_chrdev_region(20 minor nos required)
-> -> receives major 150 (minor 10-29)
+Hi List,
 
-If you look at the code in fs/char_dev.c, this can not happen right now,
-however, that could change in the future if we start to see a lot of
-different drivers all want dynamic numbers.
+Recently I got into the problem that I think relates to the small size
+of kernel stack. I had a function of the following form:
 
-In short, don't count on the fact that you will always get a different
-major number, it is not guaranteed, and in fact, your driver should
-never care about such a thing.
+void func()
+{
+     ...
+     //Block1
+    {
+         struct huge_var x;
+         ....
+         ....
+     }
+     ....
+     //Block2
+    {
+         struct huge_var y;
+         ....
+         ....
+     }
+     ....
+}
 
-And also userspace doesn't care either, udev handles all of that logic
-for you automatically.
+The above code resulted in stack overflow. I had an understanding that
+since the scope of variables x & y are limited to their blocks only,
+the space for them will be allocated and released when the block is
+entered and exited respectively. And hence the kernel stack will not
+overflow since both x and y will not occupy memory simultaneously (one
+instance of the variable can easily fit in the kernel stack).
 
-Hope this helps,
+I solved this problem by having a single instance of struct huge_var
+declared immediately at function begining and reusing it in both
+blocks. But my question is when (and where) are the block scope
+variable allocated? In my previous case, were the two variables
+occupying two sperate memory areas simultaneously?
 
-greg k-h
+Ah, I understand that I should use kernel stack sparingly ... and will do so.
+
+Thanks,
+
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
