@@ -1,66 +1,49 @@
-From: "sandeep lahane" <sandeep.lahane@gmail.com>
-Subject: Re: Why is Linux not RTOS?
-Date: Thu, 5 Apr 2007 15:53:16 +0530
-Message-ID: <2d51cbf80704050323u48bcb2f1u4861c3ff8a3eebe1@mail.gmail.com>
+From: "qingxiaoming" <qing_xiaoming@anyka.com>
+Subject: Not Initialize the shrinker->list after kmalloc() in mm/vmscan.c(V2.6.12)?
+Date: Thu, 5 Apr 2007 19:52:15 +0800
+Message-ID: <003701c77778$db000160$160710ac@qingxiaoming>
 References: <7783925d0704040521q3755394uf774884b5298eec2@mail.gmail.com>
-	 <7783925d0704040605s4590d421y39ae5b13a020a8a@mail.gmail.com>
-	 <ev0fpc$bc5$1@sea.gmane.org> <200704051236.29847.Tzahi.ML2@gmail.com>
-	 <2d51cbf80704050305n60bec989wf3e1d1dd046a5d4d@mail.gmail.com>
-	 <f68850780704050311qe9ca888tec4c255c6c1a0b3e@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=bPk+3YQ9JBa1/axUaGMOvSTKb8TpQAagSNav4lULIAc2msFjcxVFbd8NvrnMSXU5UFTIPXrz/PG0ZsSL4L5zQMMCFHlZbwwVb/sAPegqaM2c4KsLSu50Y4JQbZiatkliJs4/4dVtqMe4Edu8ceNNmLdANM3dVxXlqDmve/Z8LyE=
-In-Reply-To: <f68850780704050311qe9ca888tec4c255c6c1a0b3e@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <7783925d0704040521q3755394uf774884b5298eec2@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Raseel Bhagat <raseelbhagat@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org, 'kernelnewbies' <kernelnewbies@nl.linux.org>
 
-On 4/5/07, Raseel Bhagat <raseelbhagat@gmail.com> wrote:
-> Hi Sandeep,
->
-> On 4/5/07, sandeep lahane <sandeep.lahane@gmail.com> wrote:
->
-> >They have a paravirtualization based approach using which
-> > guest OSes like RTOS or other rich OSes can be run simultaneously on
-> > an embedded platform. These guest OSes can communicate using inter OS
-> > communication mechanisms. They are partitioning resources which can be
-> > partitioned like system RAM and resources like CPU, MMU and interrupt
-> > controller are virtualized since they can't be partitioned. So
-> > basically, what they are doing is almost totally irrelevant with this
-> > question, since they are not trying to make Linux a RTOS, rather they
-> > are making Linux and other guest OSes co-exist with RTOSes
-> > simultaneously. Please CMIIW.
-> >
->
-> I completely concur with you. And it makes lot of sense too.
-> For example RTLinux (Real time Linux) from FSMLabs is another such approach.
-> They have a micro-kernel , which is basically a core real tie\me
-> kernel, which sits on top of the vanilla linux kernel. This way, all
-> the real time tasks are handled by the Microkernel during whcih time
-> Linux kernel runs as an idle process. Only when no RT tasks are
-> present, the vanilla Linux kernel executes all the non-RT tasks.
-> This way, RT behaviour is accomplished without having to modify the
-> core Linux kernel.
->
-> --
-> To unsubscribe from this list: send an email with
-> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
-> Please read the FAQ at http://kernelnewbies.org/FAQ
->
->
+Dear all:
+I am reading the function set_shrinker() in mm/vmscan.c of V2.6.12, and I
+have a question about the not initialization of list_head,
 
-Yes, may be the poster is looking for RTLinux kind of thing.
--- 
+/*
+ * Add a shrinker callback to be called from the vm
+ */
+struct shrinker *set_shrinker(int seeks, shrinker_t theshrinker)
+{
+        struct shrinker *shrinker;
 
-Regards,
-Sandeep.
+        shrinker = kmalloc(sizeof(*shrinker), GFP_KERNEL);
+        if (shrinker) {
+	        shrinker->shrinker = theshrinker;
+	        shrinker->seeks = seeks;
+	        shrinker->nr = 0;
+	        down_write(&shrinker_rwsem);
+	        list_add_tail(&shrinker->list, &shrinker_list);
+	        up_write(&shrinker_rwsem);
+	}
+	return shrinker;
+}
+
+As above, the shrinker is allocated from kmalloc, coming from slab
+allocator,the list in shrinker is not initialized, directly list_add_tail()
+to shrinker_list, don't need to INIT_LIST_HEAD(shrinker->list)?
+
+Thanks,
+Best Regards!
+Xiaoming.Qing
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
