@@ -1,47 +1,35 @@
-From: Daniel Cheng <gmane@sdiz.net>
-Subject: Re: Why is Linux not RTOS?
-Date: Wed, 04 Apr 2007 23:21:16 +0800
-Message-ID: <ev0fpc$bc5$1@sea.gmane.org>
-References: <7783925d0704040521q3755394uf774884b5298eec2@mail.gmail.com>	 <alpine.DEB.0.83.0704040858070.28216@sigma.j-a-k-j.com> <7783925d0704040605s4590d421y39ae5b13a020a8a@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: reader-writer spinlocks
+Date: Thu, 5 Apr 2007 09:15:45 +0530
+Message-ID: <7783925d0704042045va8a015bree261c74900567db@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <7783925d0704040605s4590d421y39ae5b13a020a8a@mail.gmail.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=QRWKSl3XBUF3/4BZDZvkQbT3Hqee+6yHfS16/yo7WgPDIxaIkL4r3HQxZclT0NgJgIuyu+km+jK+T4m+FjP0nYmZ3uej/ffp0Xl/nxAUwelWidR0TjQKqdXVkvk3A09jtcNEwcnXI7SZVG7fUlUoxFLfwpFQmQx6QJrqol3gZwo=
+Content-Disposition: inline
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Rick Brown wrote:
-> Yes, I'm aware that there are quite a lot of different patches /
-> projects aimed at giving better RTOS behaviour ... but my question was
-> aimed at vanilla kernel.
+Hi LIst,
 
-An OS consider RealTime or not, does not depends on
-how low the latency is. It depends on how predictable
-the latency is.
+This is about reader-writer spinlocks. The Robert love's book says
+that Readers are given preference over writers, where as LDD3 says
+writers are given preference over readers.
 
-> 
-> Thanks,
-> 
-> Rick
+So which one is correct?
 
+And about reader-writer semaphores?
 
--- 
-This space was intended to be left blank.
+Thanks,
 
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+Rick
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
