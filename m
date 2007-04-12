@@ -1,66 +1,46 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Re: Not Initialize the shrinker->list after kmalloc() in mm/vmscan.c(V2.6.12)?
-Date: Mon, 9 Apr 2007 11:27:32 +0530
-Message-ID: <b115cb5f0704082257y63c4a496mf9ec3282735da165@mail.gmail.com>
-References: <7783925d0704040521q3755394uf774884b5298eec2@mail.gmail.com>
-	 <003701c77778$db000160$160710ac@qingxiaoming>
+From: Peter <peter@smartbro.net>
+Subject: Keyboard  Logic
+Date: Thu, 12 Apr 2007 08:58:22 +0800
+Message-ID: <200704120058.l3C0wMUn003922@smartbro.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=KFhxxyYkaHD4fITqygJENornxo+4a/i/PhYd5KzOtSfIxgMNkW2ko/Mkl9M5GxahBzi2GRemK+dujJF2pEQBZO7rKQcgGDk4xYS1qsj0vbwqZKlHcbhkcvk0lXYnLIsXmIGMkK/W+MQHQgOUFJdOCAwGbVAFiqlwh6dLDoyK0LM=
-In-Reply-To: <003701c77778$db000160$160710ac@qingxiaoming>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: qingxiaoming <qing_xiaoming@anyka.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux <linux-newbie@vger.kernel.org>
 
-Hi Qing,
-
-On 4/5/07, qingxiaoming <qing_xiaoming@anyka.com> wrote:
-> Dear all:
-> I am reading the function set_shrinker() in mm/vmscan.c of V2.6.12, and I
-> have a question about the not initialization of list_head,
+>Hi,
 >
-> /*
->  * Add a shrinker callback to be called from the vm
->  */
-> struct shrinker *set_shrinker(int seeks, shrinker_t theshrinker)
-> {
->        struct shrinker *shrinker;
+>I am using lilo for a multiple boot system.
 >
->        shrinker = kmalloc(sizeof(*shrinker), GFP_KERNEL);
->        if (shrinker) {
->                shrinker->shrinker = theshrinker;
->                shrinker->seeks = seeks;
->                shrinker->nr = 0;
->                down_write(&shrinker_rwsem);
->                list_add_tail(&shrinker->list, &shrinker_list);
->                up_write(&shrinker_rwsem);
->        }
->        return shrinker;
-> }
+>If I plug my keyboard into an USB port instead of the PS/2 port I can only 
+>boot into the system which is set as default. Lilo will not show the other 
+>boot systems.
 >
-> As above, the shrinker is allocated from kmalloc, coming from slab
-> allocator,the list in shrinker is not initialized, directly list_add_tail()
-> to shrinker_list, don't need to INIT_LIST_HEAD(shrinker->list)?
+>The same if I boot from a live CD and keyboard is plugged into USB port it 
+>cannot be accessed before start-up therefore no boot commands can be given.
 >
+>In either case once start-up is completed the keyboard is functioning 
+properly
+>when plugged into USB.
 
-IMHO, the linked list is not headed by shrinker->list, rather by
-shrinker_list. So the statement
+>In BIOS USB legacy is enabled.
 
-list_add_tail(&shrinker->list, &shrinker_list);
+>The mother board is Elitegroup P4VMM2 and has 4 USB ports. The keyboard is 
+>unbranded.
 
-is actually adding shrinker to the list shrinker_list. The shrinker->
-list is merely a pointer to help in atttaching the node to the list.
+>What could be the reason for such a behavior?
 
-Thanks,
+ Lilo does not support USB
 
-Rajat
+Peter
+
+There are now more than 10 Linux distributions that
+are miles ahead of Microsoft Vista in quality, security and beauty.
+
+
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
