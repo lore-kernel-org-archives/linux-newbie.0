@@ -1,38 +1,41 @@
-From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
-Subject: Floating point in kernel
-Date: Tue, 24 Apr 2007 14:07:38 +0530
-Message-ID: <292693080704240137j78fbc852x67c8af23a267d681@mail.gmail.com>
+From: Erik Mouw <mouw@nl.linux.org>
+Subject: Re: PCI config space doubt
+Date: Tue, 24 Apr 2007 11:41:52 +0200
+Message-ID: <20070424094151.GB20230@gateway.home>
+References: <b115cb5f0704232333u13a27802ycf025724be8f59a3@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=MLQdU5FAXrLYj7oGJUhLzo6g/vsgFkdRu6Lyx6wrNWVnFnX+WRMmgMlfDNj+qcZuce70XxrqDJ8tREqHpAgRlZLTypippntkJohAIux6Vyw4b1kcxSgQyhc9GbaThrU2YCahCXY0mX1h+PoikNJVzazm1+N0m3xy1u6NjvkOLtQ=
 Content-Disposition: inline
+In-Reply-To: <b115cb5f0704232333u13a27802ycf025724be8f59a3@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
+Content-Transfer-Encoding: 7bit
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-Hello,
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-I've always read that although it isn't completely forbidden, but
-kernel code shouldn't use floating point arithmetic. It is not
-recommended, but surely looks possible.
+On Tue, Apr 24, 2007 at 12:03:32PM +0530, Rajat Jain wrote:
+> Does Linux assign the resources to PCI devices? Or is it done by PCI 
+> firmware?
 
-So just for curosity purposes (and without getting into the debate of
-"You shouldn't be doing this..."), can some one point me a working
-example / code on how to use floating point in kernel?
+Yes.
 
-Also FP arithmatic is not recommended because the code will need to
-manually save and restore FPU registers in the event of context
-switch, right? But how about in atomic context? Is it safe to use FP
-arithmetic ONLY in atomic context (intr and preemption disabled)?
 
-Thanks,
+Erik
 
-Dan
+- -- 
+They're all fools. Don't worry. Darwin may be slow, but he'll
+eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFGLdDf/PlVHJtIto0RAqukAJ9cfecEpyBJeTyFITM5G4DQ+Iz6DgCfQjOy
+J1wUJulSFNYFQHSXN0y01ek=
+=HhpL
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
