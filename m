@@ -1,42 +1,57 @@
-From: "Mike Frysinger" <vapier.adi@gmail.com>
-Subject: Re: Threading in linux
-Date: Tue, 24 Apr 2007 06:08:04 -0400
-Message-ID: <8bd0f97a0704240308g6428f153n3bf4a2ae5518398a@mail.gmail.com>
-References: <7783925d0704232338h52bc1180i435a880b267ca0f3@mail.gmail.com>
+From: Erik Mouw <mouw@nl.linux.org>
+Subject: Re: PCI config space doubt
+Date: Tue, 24 Apr 2007 12:27:33 +0200
+Message-ID: <20070424102733.GD20230@gateway.home>
+References: <b115cb5f0704232333u13a27802ycf025724be8f59a3@mail.gmail.com> <20070424094151.GB20230@gateway.home> <b115cb5f0704240250y6360d82ev6dfff657dad7188d@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=BkmGUBaSHDn3xMqvR+EKimgt0NEMj3o3Rotr1RxdCr4yaDO83UyGGOjLTF0F8Upov7vk0MGw+QrcJVmtglkhQHM9QhwMyvqLQ5cwY5c9n0rfD2e+ioN02A+jmtTwZx2fK82DZWGFFzB52AnDO8F0aDJIC3iR+qeyWKQxTvB7uZM=
-In-Reply-To: <7783925d0704232338h52bc1180i435a880b267ca0f3@mail.gmail.com>
 Content-Disposition: inline
+In-Reply-To: <b115cb5f0704240250y6360d82ev6dfff657dad7188d@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
+Content-Transfer-Encoding: 7bit
+To: Rajat Jain <rajat.noida.india@gmail.com>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-On 4/24/07, Rick Brown <rick.brown.3@gmail.com> wrote:
-> So as long as relevant system calls do not change, it should be
-> possible to run any threading library on any kernel?
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-this statement is correct ... not that i see the point of it
+On Tue, Apr 24, 2007 at 03:20:01PM +0530, Rajat Jain wrote:
+> >On Tue, Apr 24, 2007 at 12:03:32PM +0530, Rajat Jain wrote:
+> >> Does Linux assign the resources to PCI devices? Or is it done by PCI
+> >> firmware?
+> >
+> >Yes.
+> 
+> I'm sorry but I could not understand your "Yes" very well ... so Which
+> one of the following assigns the resources to PCI devices?
 
-> NPTL on 2.4?
+Sorry, forgot to remove the remaining question.
 
-this can be done only if you backport the features from 2.6 that were
-added in order to make NPTL possible ... redhat has done this, but
-really it's just a waste of time ... 2.4 is dead :P
+> - Linux Kernel?
 
-> pthreads on 2.6?
+Kernel.
 
-i really have no idea what you mean by this ... "pthreads" is short
-for "POSIX threads" and there's no such thing as "pthreads" with
-respect to a specific code base.  NPTL is one implementation of the
-POSIX threads specification while LinuxThreads is another.
--mike
+> - PCI firmware?
+
+Modern BIOSes usually only initialise the devices needed for boot:
+disk and video card. With older BIOSes you can control that by the
+"PnP OS" option, even older BIOSes initialise every device.
+ 
+
+Erik
+
+- -- 
+They're all fools. Don't worry. Darwin may be slow, but he'll
+eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFGLduV/PlVHJtIto0RAhVnAJ98QaZJb54Pay3YomPCfZKZnfx/EACggpVo
+KfWHHCCeL+a+sRSC59nNQZM=
+=40ae
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
