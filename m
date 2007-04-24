@@ -1,58 +1,42 @@
-From: Erik Mouw <mouw@nl.linux.org>
+From: "Mike Frysinger" <vapier.adi@gmail.com>
 Subject: Re: Threading in linux
-Date: Tue, 24 Apr 2007 11:54:49 +0200
-Message-ID: <20070424095449.GC20230@gateway.home>
+Date: Tue, 24 Apr 2007 06:08:04 -0400
+Message-ID: <8bd0f97a0704240308g6428f153n3bf4a2ae5518398a@mail.gmail.com>
 References: <7783925d0704232338h52bc1180i435a880b267ca0f3@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        b=BkmGUBaSHDn3xMqvR+EKimgt0NEMj3o3Rotr1RxdCr4yaDO83UyGGOjLTF0F8Upov7vk0MGw+QrcJVmtglkhQHM9QhwMyvqLQ5cwY5c9n0rfD2e+ioN02A+jmtTwZx2fK82DZWGFFzB52AnDO8F0aDJIC3iR+qeyWKQxTvB7uZM=
 In-Reply-To: <7783925d0704232338h52bc1180i435a880b267ca0f3@mail.gmail.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: Rick Brown <rick.brown.3@gmail.com>
 Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-On Tue, Apr 24, 2007 at 12:08:40PM +0530, Rick Brown wrote:
-> I read that the kernel does not differentiate between threads and
-> processes.
-
-Correct.
-
->  That means, we can say that on a Linux system, the
-> threading is purely provided by user level thread libraries, right?
-
-No. User level thread libraries are usually things like LWP (light
-weight processes), that's not what the Linux kernel uses. The Linux
-clone() system call is a superset of the standard Unix fork() system
-call. With clone() you can tell what parent and child have to share. A
-thread is just an execution context that shares the protection context
-with its parent.
-
+On 4/24/07, Rick Brown <rick.brown.3@gmail.com> wrote:
 > So as long as relevant system calls do not change, it should be
-> possible to run any threading library on any kernel? NPTL on 2.4?
+> possible to run any threading library on any kernel?
+
+this statement is correct ... not that i see the point of it
+
+> NPTL on 2.4?
+
+this can be done only if you backport the features from 2.6 that were
+added in order to make NPTL possible ... redhat has done this, but
+really it's just a waste of time ... 2.4 is dead :P
+
 > pthreads on 2.6?
 
-Not sure about that. There were certainly issues, though I can't
-remember exactly what.
-
-
-Erik
-
-- -- 
-They're all fools. Don't worry. Darwin may be slow, but he'll
-eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
-
-iD8DBQFGLdPp/PlVHJtIto0RAoV4AJ9+NUu6wSCAniqHGebFcryzJ4pt1ACffRFC
-062W3+mce5yHafv4Ryjc/G4=
-=LAWy
------END PGP SIGNATURE-----
+i really have no idea what you mean by this ... "pthreads" is short
+for "POSIX threads" and there's no such thing as "pthreads" with
+respect to a specific code base.  NPTL is one implementation of the
+POSIX threads specification while LinuxThreads is another.
+-mike
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
