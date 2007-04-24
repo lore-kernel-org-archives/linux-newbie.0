@@ -1,56 +1,71 @@
-From: "Rajat Jain" <rajat.noida.india@gmail.com>
-Subject: Re: PCI config space doubt
-Date: Tue, 24 Apr 2007 16:08:37 +0530
-Message-ID: <b115cb5f0704240338p2cf5b5e0jd21ac86e30e0890@mail.gmail.com>
-References: <b115cb5f0704232333u13a27802ycf025724be8f59a3@mail.gmail.com>
-	 <20070424094151.GB20230@gateway.home>
-	 <b115cb5f0704240250y6360d82ev6dfff657dad7188d@mail.gmail.com>
-	 <20070424102733.GD20230@gateway.home>
+From: Erik Mouw <mouw@nl.linux.org>
+Subject: Re: Floating point in kernel
+Date: Tue, 24 Apr 2007 12:42:24 +0200
+Message-ID: <20070424104224.GE20230@gateway.home>
+References: <292693080704240137j78fbc852x67c8af23a267d681@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=LKUJCOZcI+QiwYThb15fLkcv4IXW9syBzrPBqJ4kA/QKHYZinb2WdqgxHTwuY6km5BndK2REJ3KPnUcaVuR0+q6I2+nchCNF6iHCHqfsWk20950DoSL02FM/HkOZpzOU8QD+kLCGIqyxuM4JNvAau6WjTl4+sqgWyfvTKgQo7f4=
-In-Reply-To: <20070424102733.GD20230@gateway.home>
 Content-Disposition: inline
+In-Reply-To: <292693080704240137j78fbc852x67c8af23a267d681@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Erik Mouw <mouw@nl.linux.org>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
+Content-Transfer-Encoding: 7bit
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
-On 4/24/07, Erik Mouw <mouw@nl.linux.org> wrote:
-> -----BEGIN PGP SIGNED MESSAGE-----
-> Hash: SHA1
->
-> On Tue, Apr 24, 2007 at 03:20:01PM +0530, Rajat Jain wrote:
-> > >On Tue, Apr 24, 2007 at 12:03:32PM +0530, Rajat Jain wrote:
-> > >> Does Linux assign the resources to PCI devices? Or is it done by PCI
-> > >> firmware?
-> > >
-> > >Yes.
-> >
-> > I'm sorry but I could not understand your "Yes" very well ... so Which
-> > one of the following assigns the resources to PCI devices?
->
-> Sorry, forgot to remove the remaining question.
->
-> > - Linux Kernel?
->
-> Kernel.
->
-> > - PCI firmware?
->
-> Modern BIOSes usually only initialise the devices needed for boot:
-> disk and video card. With older BIOSes you can control that by the
-> "PnP OS" option, even older BIOSes initialise every device.
->
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
 
-Thank You,
+On Tue, Apr 24, 2007 at 02:07:38PM +0530, Daniel Rodrick wrote:
+> I've always read that although it isn't completely forbidden, but
+> kernel code shouldn't use floating point arithmetic. It is not
+> recommended, but surely looks possible.
+> 
+> So just for curosity purposes (and without getting into the debate of
+> "You shouldn't be doing this..."), can some one point me a working
+> example / code on how to use floating point in kernel?
 
-Rajat
+There is no FP use in the kernel. The only thing that comes close is
+the use of MMX/SSE/multimedia-instructions-du-jour in the software raid
+subsystem (MMX etc. share the register set with FP).
+
+> Also FP arithmatic is not recommended because the code will need to
+> manually save and restore FPU registers in the event of context
+> switch, right?
+
+Yes, and that's what makes it so expensive to use. You can see it when
+the kernel initialises raid5: even though MMX XOR has a larger
+throughput than "normal" instructions, the kernel sometimes chooses the
+normal instructions because the latency is so much lower.
+
+> But how about in atomic context? Is it safe to use FP
+> arithmetic ONLY in atomic context (intr and preemption disabled)?
+
+Even in an atomic context you still need to save the FP state. See what
+happens:
+
+  userspace does something with FP
+  interrupt
+    enter atomic context
+    mess with FP
+    leave atomic context
+  return from interrupt
+  userspace finds FP in a different state than before
+
+
+Erik
+
+- -- 
+They're all fools. Don't worry. Darwin may be slow, but he'll
+eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+iD8DBQFGLd8Q/PlVHJtIto0RAiAKAJ9vf/vRM+iLYMP9Oq9YuWslb3+kyACeNaID
+QDIu/HuIiuEqbMGULc/7GfI=
+=N38R
+-----END PGP SIGNATURE-----
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
