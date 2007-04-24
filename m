@@ -1,57 +1,44 @@
-From: Erik Mouw <mouw@nl.linux.org>
-Subject: Re: PCI config space doubt
-Date: Tue, 24 Apr 2007 12:27:33 +0200
-Message-ID: <20070424102733.GD20230@gateway.home>
-References: <b115cb5f0704232333u13a27802ycf025724be8f59a3@mail.gmail.com> <20070424094151.GB20230@gateway.home> <b115cb5f0704240250y6360d82ev6dfff657dad7188d@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: Re: Threading in linux
+Date: Tue, 24 Apr 2007 16:06:33 +0530
+Message-ID: <7783925d0704240336i49e918dcm4d38e9bbc0310a39@mail.gmail.com>
+References: <7783925d0704232338h52bc1180i435a880b267ca0f3@mail.gmail.com>
+	 <8bd0f97a0704240308g6428f153n3bf4a2ae5518398a@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        b=HxHoSfgnZ3xk64ku4o56BICSpx4bJc2JxH9nYBna7IlrVw9BKsKflpp8zsGejEJSuGPteG+/uIl6KYDYx0eiEVTC3Mg/Qj8jXLKB36u9hAtyT3MgKoUc40J3tGusAONkniAm4LnZqU3ypi7UNWCSzLa3QMpvFVyTI0+u7ngpXZo=
+In-Reply-To: <8bd0f97a0704240308g6428f153n3bf4a2ae5518398a@mail.gmail.com>
 Content-Disposition: inline
-In-Reply-To: <b115cb5f0704240250y6360d82ev6dfff657dad7188d@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
-Content-Transfer-Encoding: 7bit
-To: Rajat Jain <rajat.noida.india@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Mike Frysinger <vapier.adi@gmail.com>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+> > NPTL on 2.4?
+>
+> this can be done only if you backport the features from 2.6 that were
+> added in order to make NPTL possible ... redhat has done this, but
+> really it's just a waste of time ... 2.4 is dead :P
 
-On Tue, Apr 24, 2007 at 03:20:01PM +0530, Rajat Jain wrote:
-> >On Tue, Apr 24, 2007 at 12:03:32PM +0530, Rajat Jain wrote:
-> >> Does Linux assign the resources to PCI devices? Or is it done by PCI
-> >> firmware?
-> >
-> >Yes.
-> 
-> I'm sorry but I could not understand your "Yes" very well ... so Which
-> one of the following assigns the resources to PCI devices?
+Could you hint upon the kernel features required for NPTL? May be a link?
 
-Sorry, forgot to remove the remaining question.
+>
+> > pthreads on 2.6?
+>
+> i really have no idea what you mean by this ... "pthreads" is short
+> for "POSIX threads" and there's no such thing as "pthreads" with
+> respect to a specific code base.  NPTL is one implementation of the
+> POSIX threads specification while LinuxThreads is another.
+> -mike
 
-> - Linux Kernel?
+Sorry ... I meant LinuxThreads.
 
-Kernel.
-
-> - PCI firmware?
-
-Modern BIOSes usually only initialise the devices needed for boot:
-disk and video card. With older BIOSes you can control that by the
-"PnP OS" option, even older BIOSes initialise every device.
- 
-
-Erik
-
-- -- 
-They're all fools. Don't worry. Darwin may be slow, but he'll
-eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
-
-iD8DBQFGLduV/PlVHJtIto0RAhVnAJ98QaZJb54Pay3YomPCfZKZnfx/EACggpVo
-KfWHHCCeL+a+sRSC59nNQZM=
-=40ae
------END PGP SIGNATURE-----
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
