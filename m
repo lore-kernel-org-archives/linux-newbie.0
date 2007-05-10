@@ -1,56 +1,41 @@
-From: "pradeep singh" <2500.pradeep@gmail.com>
-Subject: notifier_chain_register semantics query!!!
-Date: Tue, 8 May 2007 10:38:54 +0530
-Message-ID: <366312910705072208t6851aff8ha85579d5a0ee0422@mail.gmail.com>
+From: "Rick Brown" <rick.brown.3@gmail.com>
+Subject: Multithreaded debugging of kernel using kgdb
+Date: Thu, 10 May 2007 18:11:25 +0530
+Message-ID: <7783925d0705100541y596991fbo6e99090753421cbe@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=W923YzFANp+suxff2bGqj5uDpbk3EA27BLpGyiNUMOw6gAjNPZGewkFU8nra+TayJ+F+vnx9CecyDA6cE+FZPIg4+19zvUakv1AxnCeCoYyL93/z7qKiwtHHzBedL/zojd/jF/3hpBwNuoS0PEr54wrXE7RhmK4sx/0LrQ6OjRg=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=LLhVUAXEgKTuJitOUyloS/81NBb6Ho/UB3Sk4Ero7dDdQ/PjS+ptVUbsuI5YeLosg2icyWsSF0GBqnogDQMXCpni12krHOhzE1NXYQMbGfDcepQ2pycck1Lb8WE6+5zeiHjGW7cEbu5h5mqZclwIg0Pjqz0Dr3o8dRYfTP3kVHk=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Linux Newbies <kernelnewbies@nl.linux.org>
-Cc: net-linux <linux-net@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hi All,
+Hi List,
 
-Following definition of notifier_chain_register is from kernel/sys.c
-and for kernel 2.6.20.1 .
+I am debugging Linux kernel using gdb (KGDB patch). I am successsfully
+able to set breakpoints in the kernel and step though the code as far
+as a single thread of execution is concerned.
 
-static int notifier_chain_register(struct notifier_block **nl,
-                struct notifier_block *n)
-{
-        while ((*nl) != NULL) {
-                if (n->priority > (*nl)->priority)
-                        break;
-                nl = &((*nl)->next);
-        }
-        n->next = *nl;
-        rcu_assign_pointer(*nl, n);
-        return 0;
-}
+However, I was curious so as to how can I simulate and debug a race
+condition that involves multiple threads?
 
-Since the first parameter is passed as a double ptr, the pointer
-itself is changed by the traversal and by rcu_assign_pointer(*nl, n) ,
-right? And the new value will be address of notifier_block n. This
-means the new head of the notifier list is n with the highest
-priority( in terms of magnitude atleast ).
+For e.g., I want to simulate and analyse the state of some data structures when:
 
-My query is ,why are we loosing the notifiers  during traversal in the
-first while loop, which have a priority > n->priority ?
+Process P1 takes a semaphore S.
+......
+(At certain time) Process P2 becomes runnable and preempts P1
 
-I am terribly confused here.
-Can somebody help me out here?
+How do I perform a context switch and simulate that "while P1 is
+executing this instruction, P2 preempts it". Is it possible?
 
-Thank you
-~psr
+Thanks,
 
--- 
-play the game
+Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
