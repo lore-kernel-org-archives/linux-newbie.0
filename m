@@ -1,41 +1,27 @@
-From: "Rick Brown" <rick.brown.3@gmail.com>
-Subject: Multithreaded debugging of kernel using kgdb
-Date: Thu, 10 May 2007 18:11:25 +0530
-Message-ID: <7783925d0705100541y596991fbo6e99090753421cbe@mail.gmail.com>
+From: Jim Reimer <jdr@wa5rrh.us>
+Subject: "BUG: soft lockup detected on CPU#0!"
+Date: Fri, 11 May 2007 20:21:46 -0500
+Message-ID: <187234802578.20070511202146@wa5rrh.us>
+Reply-To: Jim Reimer <jdr@wa5rrh.us>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        b=LLhVUAXEgKTuJitOUyloS/81NBb6Ho/UB3Sk4Ero7dDdQ/PjS+ptVUbsuI5YeLosg2icyWsSF0GBqnogDQMXCpni12krHOhzE1NXYQMbGfDcepQ2pycck1Lb8WE6+5zeiHjGW7cEbu5h5mqZclwIg0Pjqz0Dr3o8dRYfTP3kVHk=
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hi List,
+Anybody know what this error message is about?  Looking at Google,
+it appears that lots of people see it from time to time, but nobody
+has a definitive explanation for it.
 
-I am debugging Linux kernel using gdb (KGDB patch). I am successsfully
-able to set breakpoints in the kernel and step though the code as far
-as a single thread of execution is concerned.
+I updated to kernel 2.6.20-1.2948 and started having the problem
+(along with a completely unresponsive computer).  Reverted to
+2.6.19-1.2911.6.5 and everything's ok.
 
-However, I was curious so as to how can I simulate and debug a race
-condition that involves multiple threads?
+-- 
+-jdr-
 
-For e.g., I want to simulate and analyse the state of some data structures when:
-
-Process P1 takes a semaphore S.
-......
-(At certain time) Process P2 becomes runnable and preempts P1
-
-How do I perform a context switch and simulate that "while P1 is
-executing this instruction, P2 preempts it". Is it possible?
-
-Thanks,
-
-Rick
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
