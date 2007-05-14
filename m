@@ -1,27 +1,28 @@
-From: Jim Reimer <jdr@wa5rrh.us>
-Subject: "BUG: soft lockup detected on CPU#0!"
-Date: Fri, 11 May 2007 20:21:46 -0500
-Message-ID: <187234802578.20070511202146@wa5rrh.us>
-Reply-To: Jim Reimer <jdr@wa5rrh.us>
+From: "Learning Linux" <learninglinux4@gmail.com>
+Subject: Why can't we sleep in an ISR?
+Date: Mon, 14 May 2007 12:07:12 +0530
+Message-ID: <9f1dc2cf0705132337k13aa3ccesc575d4550492a24e@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:mime-version:content-type:content-transfer-encoding:content-disposition;
+        b=KikVC2vgJsptso6tQFYW0JeCuuMu9DOe1uTk5gFgcp71JawvcgeF1ZynPQZvmM2/WtOzQcI3WXGPjaPbEiBJ5GfL6Y4bHSH4VOf0VGD2B9UQrGNPemjXLIDo1sW3Pq9+a1BxYkFCdDFrFWlJDPQBPgcS/DobIl/eYKoHzZ9TDxU=
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
 
-Anybody know what this error message is about?  Looking at Google,
-it appears that lots of people see it from time to time, but nobody
-has a definitive explanation for it.
+I have a very basic doubt here ... what makes it impossible to sleep
+in an ISR? I mean, I know that the kernel preemption is disabled and
+the kernel will panic, but I could not understand why?
 
-I updated to kernel 2.6.20-1.2948 and started having the problem
-(along with a completely unresponsive computer).  Reverted to
-2.6.19-1.2911.6.5 and everything's ok.
+TIA,
 
--- 
--jdr-
-
+LL
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
