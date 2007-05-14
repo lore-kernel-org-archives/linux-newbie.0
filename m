@@ -1,45 +1,37 @@
-From: "Learning Linux" <learninglinux4@gmail.com>
+From: Helge Hafting <helge.hafting@aitel.hist.no>
 Subject: Re: Why can't we sleep in an ISR?
-Date: Mon, 14 May 2007 12:46:26 +0530
-Message-ID: <9f1dc2cf0705140016w6d8f44f9wec7586e7879af873@mail.gmail.com>
+Date: Mon, 14 May 2007 14:25:17 +0200
+Message-ID: <4648552D.3060808@aitel.hist.no>
 References: <9f1dc2cf0705132337k13aa3ccesc575d4550492a24e@mail.gmail.com>
-	 <366312910705140010m78b215a2t1753445e81120288@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=dYkwdfDJ6OVdRxMt2363q/y8+6oSnNMwqrImH4ipF98eR6Bt18tncBN5/eNjMxEoG0W04Xn5WvZrRCXrgmtcEeUh8CnICD5S5c4MWgbUfZajQk3q+hpqe2pTio0sqOVoInuasHCthEQU09Uew7fCNmY2NJtYoFEjqD57GbLG6XU=
-In-Reply-To: <366312910705140010m78b215a2t1753445e81120288@mail.gmail.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1754689AbXENMe1@vger.kernel.org>
+In-Reply-To: <9f1dc2cf0705132337k13aa3ccesc575d4550492a24e@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: pradeep singh <2500.pradeep@gmail.com>
+To: Learning Linux <learninglinux4@gmail.com>
 Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
 
-> > I have a very basic doubt here ... what makes it impossible to sleep
-> > in an ISR? I mean, I know that the kernel preemption is disabled and
-> > the kernel will panic, but I could not understand why?
->
-> Because the interrupt which you are serving in the
-> ISR has been masked to avoid preemption(
-> true for maskable inetrrupts ).Any locks you are holding in ISR are now with
-> you solely. So, if you try to sleep you take the locks you untill you are
-> rescheduled and complete. This may lead to
-> a deadlock for the lock resource.
+Learning Linux wrote:
+> I have a very basic doubt here ... what makes it impossible to sleep
+> in an ISR? I mean, I know that the kernel preemption is disabled and
+> the kernel will panic, but I could not understand why?
+First: an ISR is meant to be very quick. It is supposed to do only a
+minimum of work needed to service the interrupt, then exit.
+This is important, as other interrupts might be blocked during your ISR.
+Sleeping is out of question, even a long-running loop in no-no.
 
-Ok, but how about an ISR, that does not take any locks? Why can't we
-sleep in SUCH an ISR?
+Second: You don't ever need to sleep in an ISR anyway.
+Complicated work that might take time or might need to sleep
+is not supposed to be in an ISR.  If you think you have a need,
+tell us what you're up to and hopefully someone will explain
+how do do things properly.
 
-AFAIK, taking a lock disables kernel preemption, and hence it is not
-allowed to sleep. So I think my question would boil down to why is
-sleeping not allowed when the kernel preemption is disabled.
+When an interrupt happens that needs complicated servicing, the
+ISR don't do the whole job.  It just acknowledges the interrupt,
+perhaps does a few things with the device in question, then it
+exits. It leaves the rest of the work for a bottom half or kernel
+thread or something like that.  Kernel threads may sleep . . .
 
-LL
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Helge Hafting
