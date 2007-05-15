@@ -1,12 +1,17 @@
-From: "rohit  hooda" <rohit13hooda@rediffmail.com>
+From: "pradeep singh" <2500.pradeep@gmail.com>
 Subject: Re: Why can't we sleep in an ISR?
-Date: 15 May 2007 09:34:23 -0000
-Message-ID: <20070515093423.1150.qmail@webmail81.rediffmail.com>
-Reply-To: "rohit  hooda" <rohit13hooda@rediffmail.com>
+Date: Tue, 15 May 2007 15:16:47 +0530
+Message-ID: <366312910705150246r356fa97cv96ccbf51779309cd@mail.gmail.com>
+References: <20070515093423.1150.qmail@webmail81.rediffmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="Next_1179221663---0-202.54.124.237-1119"
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_159383_12638171.1179222407269"
 Return-path: <kernelnewbies-bounce@nl.linux.org>
+DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
+        b=KTbWeKE8sdwD9w6WHgoaxF6fbTcFAN4DLd55AGD6Tft3H9f19FVMwcLg6i3AHFfdOlo3Mvg5dHf3PWEL3bMGqpTb20cmf+XvrdelYb23P4GcaZkKqNKU+X+c4kDr1LBf38Mi3rTKeu/8wyLoRwD7z1uTXwquENL6NGfDFJUrxsI=
+In-Reply-To: <20070515093423.1150.qmail@webmail81.rediffmail.com>
 Sender: kernelnewbies-bounce@nl.linux.org
 Errors-to: kernelnewbies-bounce@nl.linux.org
 List-help: <mailto:ecartis@nl.linux.org?Subject=help>
@@ -17,86 +22,112 @@ List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
 List-owner: <mailto:ecartis-owner@nl.linux.org>
 List-post: <mailto:kernelnewbies@nl.linux.org>
 List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-To: pradeep singh <2500.pradeep@gmail.com>
+To: rohit hooda <rohit13hooda@rediffmail.com>
 Cc: Learning Linux <learninglinux4@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org, Bahadir Balban <bahadir.balban@gmail.com>
 
- This is a multipart mime message
-
-
---Next_1179221663---0-202.54.124.237-1119
-Content-type: text/plain;
-	charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
+------=_Part_159383_12638171.1179222407269
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
-  =0A=0A=0AOn Tue, 15 May 2007 pradeep singh wrote :=0A>On 5/14/07, Bahadir=
- Balban <bahadir.balban@gmail.com> wrote:=0A>>=0A>>On 5/14/07, Learning Lin=
-ux <learninglinux4@gmail.com> wrote:=0A>> > Ok, but how about an ISR, that =
-does not take any locks? Why can't we=0A>> > sleep in SUCH an ISR?=0A>> > L=
-L=0A>> > -=0A>>=0A>>The killer reason why you can't sleep in an interrupt i=
-s because an=0A>>interrupt is not associated with any context in the first =
-place.=0A>=0A>=0A>good enough, but i have a query regarding this then.=0A>O=
-n a 8K kernel stack system, doesn't interrupts share the stack associated=
-=0A>with the current process which was interrupted?=0AYes, you are right.=
-=0A>Doesn't interrupt steals the CPU slice time allocated to the running pr=
-ocess=0A>to run?=0AYes=0A>Doesn't it run in current process's context ?=0AY=
-ou got it worng here. It runs on behalf of the process, but in the current =
-process's context. =0AFor interrupts we have a dirrerent context altogether=
-.=0A>=0A>What am i missing here?=0AThere are two different contexts of exec=
-ution=0AProcess context=0AInterrupt context=0A>=0A>Thanks=0A>~psr=0A>=0ATha=
-nks,=0A-Rohit=0A>What=0A>>is a context, then? It is the state information f=
-or a process. This=0A>>includes the kernel and userspace stack pointers, th=
-e register set,=0A>>and the page tables for that process. The scheduler has=
- access to all=0A>>this information, to preempt one process and run another=
-. Contrary to=0A>>this, an interrupt, depending on the version of your kern=
-el and arch,=0A>>uses a separate irq stack or the kernel stack of the inter=
-rupted=0A>>process. An irq is not a context but merely a temporary executio=
-n to=0A>>be concluded asap.=0A>>=0A>>Hope this helps,=0A>>Bahadir=0A>>=0A>=
-=0A>=0A>=0A>-- play the game=0A
---Next_1179221663---0-202.54.124.237-1119
-Content-type: text/html;
-	charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
+On 15 May 2007 09:34:23 -0000, rohit hooda <rohit13hooda@rediffmail.com>
+wrote:
+>
+>
+>
+>
+> On Tue, 15 May 2007 pradeep singh wrote :
+> >On 5/14/07, Bahadir Balban <bahadir.balban@gmail.com> wrote:
+> >>
+> >>On 5/14/07, Learning Linux <learninglinux4@gmail.com> wrote:
+> >> > Ok, but how about an ISR, that does not take any locks? Why can't we
+> >> > sleep in SUCH an ISR?
+> >> > LL
+> >> > -
+> >>
+> >>The killer reason why you can't sleep in an interrupt is because an
+> >>interrupt is not associated with any context in the first place.
+> >
+> >
+> >good enough, but i have a query regarding this then.
+> >On a 8K kernel stack system, doesn't interrupts share the stack
+> associated
+> >with the current process which was interrupted?
+> Yes, you are right.
+> >Doesn't interrupt steals the CPU slice time allocated to the running
+> process
+> >to run?
+> Yes
+> >Doesn't it run in current process's context ?
+> You got it worng here. It runs on behalf of the process, but in the
+> current process's context.
+> For interrupts we have a dirrerent context altogether.
+>
+Ok, that explains a bit.
+how will you define an interrupt context?
+
+Thanks
+~psr
+
+>
+> >What am i missing here?
+> There are two different contexts of execution
+> Process context
+> Interrupt context
+> >
+> >Thanks
+> >~psr
+> >
+> Thanks,
+> -Rohit
+> >What
+> >>is a context, then? It is the state information for a process. This
+> >>includes the kernel and userspace stack pointers, the register set,
+> >>and the page tables for that process. The scheduler has access to all
+> >>this information, to preempt one process and run another. Contrary to
+> >>this, an interrupt, depending on the version of your kernel and arch,
+> >>uses a separate irq stack or the kernel stack of the interrupted
+> >>process. An irq is not a context but merely a temporary execution to
+> >>be concluded asap.
+> >>
+> >>Hope this helps,
+> >>Bahadir
+> >>
+> >
+> >
+> >
+> >-- play the game
+>
+>
+> [image: Peanuts]<http://adworks.rediff.com/cgi-bin/AdWorks/click.cgi/www.rediff.com/signature-home.htm/1050715198@Middle5/1177315_1171298/1176420/1?PARTNER=3&OAS_QUERY=null+target=new+>
+
+
+
+
+-- 
+play the game
+
+------=_Part_159383_12638171.1179222407269
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 Content-Disposition: inline
 
-<P>=0A&nbsp; <BR>=0A<BR>=0A<BR>=0AOn Tue, 15 May 2007 pradeep singh wrote :=
-<BR>=0A&gt;On 5/14/07, Bahadir Balban &lt;bahadir.balban@gmail.com&gt; wrot=
-e:<BR>=0A&gt;&gt;<BR>=0A&gt;&gt;On 5/14/07, Learning Linux &lt;learninglinu=
-x4@gmail.com&gt; wrote:<BR>=0A&gt;&gt; &gt; Ok, but how about an ISR, that =
-does not take any locks? Why can't we<BR>=0A&gt;&gt; &gt; sleep in SUCH an =
-ISR?<BR>=0A&gt;&gt; &gt; LL<BR>=0A&gt;&gt; &gt; -<BR>=0A&gt;&gt;<BR>=0A&gt;=
-&gt;The killer reason why you can't sleep in an interrupt is because an<BR>=
-=0A&gt;&gt;interrupt is not associated with any context in the first place.=
-<BR>=0A&gt;<BR>=0A&gt;<BR>=0A&gt;good enough, but i have a query regarding =
-this then.<BR>=0A&gt;On a 8K kernel stack system, doesn't interrupts share =
-the stack associated<BR>=0A&gt;with the current process which was interrupt=
-ed?<BR>=0AYes, you are right.<BR>=0A&gt;Doesn't interrupt steals the CPU sl=
-ice time allocated to the running process<BR>=0A&gt;to run?<BR>=0AYes<BR>=
-=0A&gt;Doesn't it run in current process's context ?<BR>=0AYou got it worng=
- here. It runs on behalf of the process, but in the current process's conte=
-xt. <BR>=0AFor interrupts we have a dirrerent context altogether.<BR>=0A&gt=
-;<BR>=0A&gt;What am i missing here?<BR>=0AThere are two different contexts =
-of execution<BR>=0AProcess context<BR>=0AInterrupt context<BR>=0A&gt;<BR>=
-=0A&gt;Thanks<BR>=0A&gt;~psr<BR>=0A&gt;<BR>=0AThanks,<BR>=0A-Rohit<BR>=0A&g=
-t;What<BR>=0A&gt;&gt;is a context, then? It is the state information for a =
-process. This<BR>=0A&gt;&gt;includes the kernel and userspace stack pointer=
-s, the register set,<BR>=0A&gt;&gt;and the page tables for that process. Th=
-e scheduler has access to all<BR>=0A&gt;&gt;this information, to preempt on=
-e process and run another. Contrary to<BR>=0A&gt;&gt;this, an interrupt, de=
-pending on the version of your kernel and arch,<BR>=0A&gt;&gt;uses a separa=
-te irq stack or the kernel stack of the interrupted<BR>=0A&gt;&gt;process. =
-An irq is not a context but merely a temporary execution to<BR>=0A&gt;&gt;b=
-e concluded asap.<BR>=0A&gt;&gt;<BR>=0A&gt;&gt;Hope this helps,<BR>=0A&gt;&=
-gt;Bahadir<BR>=0A&gt;&gt;<BR>=0A&gt;<BR>=0A&gt;<BR>=0A&gt;<BR>=0A&gt;-- pla=
-y the game<BR>=0A=0A</P>=0A<br><br>=0A<Table border=3D0 Width=3D644 Height=
-=3D57 cellspacing=3D0 cellpadding=3D0 style=3D'font-family:Verdana;font-siz=
-e:11px;line-height:15px;'><TR><td><a href=3D'http://adworks.rediff.com/cgi-=
-bin/AdWorks/click.cgi/www.rediff.com/signature-home.htm/1050715198@Middle5/=
-1177315_1171298/1176420/1?PARTNER=3D3&OAS_QUERY=3Dnull target=3Dnew '><img =
-src =3Dhttp://imadworks.rediff.com/cgi-bin/AdWorks/adimage.cgi/1177315_1171=
-298/creative_1176420.gif  alt=3D'Peanuts'  border=3D0></a></td></TR></Table>
---Next_1179221663---0-202.54.124.237-1119--
+<br><br><div><span class="gmail_quote">On 15 May 2007 09:34:23 -0000, <b class="gmail_sendername">rohit  hooda</b> &lt;<a href="mailto:rohit13hooda@rediffmail.com">rohit13hooda@rediffmail.com</a>&gt; wrote:</span><blockquote class="gmail_quote" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; margin-left: 0.80ex; border-left-color: #cccccc; border-left-width: 1px; border-left-style: solid; padding-left: 1ex">
+<p> &nbsp; <br><br><br> On Tue, 15 May 2007 pradeep singh wrote :<span class="q"><br> &gt;On 5/14/07, Bahadir Balban &lt;<a href="mailto:bahadir.balban@gmail.com" target="_blank" onclick="return top.js.OpenExtLink(window,event,this)">
+bahadir.balban@gmail.com</a>&gt; wrote:<br> &gt;&gt;<br> &gt;&gt;On 5/14/07, Learning Linux &lt;<a href="mailto:learninglinux4@gmail.com" target="_blank" onclick="return top.js.OpenExtLink(window,event,this)">learninglinux4@gmail.com
+</a>&gt; wrote:<br></span><span class="q"> &gt;&gt; &gt; Ok, but how about an ISR, that does not take any locks? Why can&#39;t we<br> &gt;&gt; &gt; sleep in SUCH an ISR?<br> &gt;&gt; &gt; LL<br> &gt;&gt; &gt; -<br> &gt;&gt;
+<br> &gt;&gt;The killer reason why you can&#39;t sleep in an interrupt is because an<br> &gt;&gt;interrupt is not associated with any context in the first place.<br> &gt;<br> &gt;<br></span><span class="q"> &gt;good enough, but i have a query regarding this then.
+<br></span><span class="q"> &gt;On a 8K kernel stack system, doesn&#39;t interrupts share the stack associated<br> &gt;with the current process which was interrupted?<br></span> Yes, you are right.<span class="q"><br> &gt;Doesn&#39;t interrupt steals the CPU slice time allocated to the running process
+<br> &gt;to run?<br></span> Yes<span class="q"><br> &gt;Doesn&#39;t it run in current process&#39;s context ?<br></span> You got it worng here. It runs on behalf of the process, but in the current process&#39;s context. <br>
+ For interrupts we have a dirrerent context altogether.</p></blockquote><div>Ok,&nbsp;that&nbsp;explains&nbsp;a&nbsp;bit.<br>how&nbsp;will&nbsp;you&nbsp;define&nbsp;an interrupt&nbsp;context?&nbsp;<br><br>Thanks&nbsp;<br>~psr&nbsp;</div><br><blockquote class="gmail_quote" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; margin-left: 0.80ex; border-left-color: #cccccc; border-left-width: 1px; border-left-style: solid; padding-left: 1ex">
+<p><span class="q"> &gt;<br> &gt;What am i missing here?<br></span> There are two different contexts of execution<br> Process context<br> Interrupt context<br> &gt;<br> &gt;Thanks<br> &gt;~psr<br> &gt;<br> Thanks,<br><span class="sg">
+ -Rohit</span><span class="q"><br> &gt;What<br> &gt;&gt;is a context, then? It is the state information for a process. This<br> &gt;&gt;includes the kernel and userspace stack pointers, the register set,<br> &gt;&gt;and the page tables for that process. The scheduler has access to all
+<br> &gt;&gt;this information, to preempt one process and run another. Contrary to<br> &gt;&gt;this, an interrupt, depending on the version of your kernel and arch,<br> &gt;&gt;uses a separate irq stack or the kernel stack of the interrupted
+<br> &gt;&gt;process. An irq is not a context but merely a temporary execution to<br> &gt;&gt;be concluded asap.<br> &gt;&gt;<br> &gt;&gt;Hope this helps,<br> &gt;&gt;Bahadir<br> &gt;&gt;<br> &gt;<br> &gt;<br> &gt;<br> &gt;-- play the game
+<br></span></p><br><br><table border="0" width="644" height="57" cellspacing="0" cellpadding="0" style="font-family: &quot;Bitstream Vera Sans [bitstream]&quot;; font-size: 11px; line-height: 15px"><tbody><tr><td><a href="http://adworks.rediff.com/cgi-bin/AdWorks/click.cgi/www.rediff.com/signature-home.htm/1050715198@Middle5/1177315_1171298/1176420/1?PARTNER=3&amp;OAS_QUERY=null+target=new+" target="_blank" onclick="return top.js.OpenExtLink(window,event,this)">
+<img alt="Peanuts" border="0"></a></td></tr></tbody></table></blockquote></div><br><br clear="all"><br>-- <br>play the game 
 
+------=_Part_159383_12638171.1179222407269--
 
 --
 To unsubscribe from this list: send an email with
