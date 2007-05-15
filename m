@@ -1,49 +1,44 @@
 From: "Dong Feng" <middle.fengdong@gmail.com>
-Subject: Re: Why can't we sleep in an ISR?
-Date: Tue, 15 May 2007 16:58:02 +0800
-Message-ID: <a2ebde260705150158m45286bd6u5007be863b6ff791@mail.gmail.com>
-References: <9f1dc2cf0705132337k13aa3ccesc575d4550492a24e@mail.gmail.com>
-	 <366312910705140010m78b215a2t1753445e81120288@mail.gmail.com>
-	 <9f1dc2cf0705140016w6d8f44f9wec7586e7879af873@mail.gmail.com>
-	 <7ac1e90c0705140824i54e1c43ela3ab3d89827c0339@mail.gmail.com>
-	 <366312910705142217geba69dbm98a6c0bf2aabb937@mail.gmail.com>
-	 <a2ebde260705142345m440c70fbu33934334fbb69f8e@mail.gmail.com>
-	 <366312910705150010p623f9732mc498f457245d23a1@mail.gmail.com>
-	 <a2ebde260705150028j16cc12a2ya6d5906c97ce193b@mail.gmail.com>
-	 <9f1dc2cf0705150140k1fef87acvd774c7e171e4a660@mail.gmail.com>
+Subject: Re: Why sleeping not allowed after preempt_disable()
+Date: Tue, 15 May 2007 17:10:57 +0800
+Message-ID: <a2ebde260705150210y622d8a2dx80f6db1ec3f0930e@mail.gmail.com>
+References: <9f1dc2cf0705150137y6516af57o922ff00a5f53433b@mail.gmail.com>
+	 <e88b5df0705150144u234392f2n6b0ce29c91d24ac9@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=KoEEj2gm5Lsm/dXTpAQKAdNFaf8xxR5DBCQUUivD5HGhajTQGOLlhgPn3LsMjuODyo384w7pE7Xuyb9mp366iirmoy2FH+zWqShpwxNXo36KT/GxIOhHDBdHHFcN27AKY566h0RrNdYhn+7AWHi9xQ+wGKBFXPJnnG1sjId+ewc=
-In-Reply-To: <9f1dc2cf0705150140k1fef87acvd774c7e171e4a660@mail.gmail.com>
+        b=peT/3XsuMh/XWvbt4/paSPpjVQ6LBs4ZKFxNN3EoDSV29mDMo0aE2jiZ7uG9dtBCLBXuk0dj0DQ/TPo7YKEIUYq1rU4m/0P5ZZeb3xJ2eUdLUvuA49kACnl6FQVf2ySwu+MhQlMj3t3TCbN3VbX40KA9crQl7+pEXtvVvmv/wB8=
+In-Reply-To: <e88b5df0705150144u234392f2n6b0ce29c91d24ac9@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Learning Linux <learninglinux4@gmail.com>
-Cc: pradeep singh <2500.pradeep@gmail.com>, Bahadir Balban <bahadir.balban@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+To: Gaurav Bhatnagar <bhatnagar.gaurav22@gmail.com>
+Cc: Learning Linux <learninglinux4@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Yes, you are right in this regard. An interrupt handler does steal the
-time slice from the interrupted process.
-
-So now I think it is considered an acceptable deviation in calculating
-the process run time as well as determine process scheduling because
-an ISR should take very short time to return, in part as a consequence
-of the rule that ISR should not sleep.
-
-
-2007/5/15, Learning Linux <learninglinux4@gmail.com>:
-> > The interrupt handler's execution time will definitely defer the
-> > execution of the process, but I think it does not steal the process's
-> > time slice (the time_slice field not subtracted).
+2007/5/15, Gaurav Bhatnagar <bhatnagar.gaurav22@gmail.com>:
+> if you set disable preemption ... kernel can't schedule another thread until
+> thread itself leave the cpu ... if this thread sleeps who will wake it up
+> ??? this would lead to deadlock ..
+> gaurav
 >
-> It will definitely be substracted from the process's time slice.
-> Because the timeslice is substracted in timer interrupt, and does not
-> differenciate if the process is executing ISR or not.
->
+
+I do not think the potential dead-lock is the reason, because the
+sleep operation is exactly the operation of relinquishing CPU. So if a
+process disable preemption and then sleep, the scheduler will be
+invoked and another process will use CPU. No dead-lock here.
+
+I think the reason lies in why you are about to use preemption
+disabling in the first place. When you use preemption disabling, you
+managed to define a critical region within which your data structure
+is protected from being corrupted by another process. But if you put a
+sleep in that critical region, I think you actually split your
+original critical region into two regions in purpose so you should
+encompass each region by one pair of preempt_disable/enable
+respectively.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
