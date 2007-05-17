@@ -1,86 +1,106 @@
-From: "Dong Feng" <middle.fengdong@gmail.com>
-Subject: Re: Why can't we sleep in an ISR?
-Date: Thu, 17 May 2007 07:17:36 +0800
-Message-ID: <a2ebde260705161617u260bcb55i8c4a56e4a4875954@mail.gmail.com>
-References: <9f1dc2cf0705132337k13aa3ccesc575d4550492a24e@mail.gmail.com>
-	 <366312910705140010m78b215a2t1753445e81120288@mail.gmail.com>
-	 <9f1dc2cf0705140016w6d8f44f9wec7586e7879af873@mail.gmail.com>
-	 <7ac1e90c0705140824i54e1c43ela3ab3d89827c0339@mail.gmail.com>
-	 <a2ebde260705151549r2762ac1fk9a68db7b903e6525@mail.gmail.com>
-	 <464B2155.8040005@cfl.rr.com>
+From: "Ratnadeep Joshi" <ratn.josh@gmail.com>
+Subject: Re: notifier_chain_register semantics query!!!
+Date: Thu, 17 May 2007 21:10:37 +0530
+Message-ID: <4bcb1f700705170840w7283dd77s1750d9b156786dd7@mail.gmail.com>
+References: <366312910705072208t6851aff8ha85579d5a0ee0422@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_45337_25662827.1179416437564"
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=Czf5fwzmwrluDQd9ebYTOOHnJItH5M1eoKdIvj1w5SbqX58Te50KuHo1r/AreUtbuAndjabKJ9V5ecKQ3IGAeKqPdxFGIgT6/5H+iwznYAtReFLbdt3qAe4GfPSXsWDvwrY5Ug+Tz6xRNR9zTz6xLQDDsD2BwL3atI3LRQW3bnE=
-In-Reply-To: <464B2155.8040005@cfl.rr.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
+        b=nMX7DmxosLvq0l4xGTIgzdnciauN1REZNc/aePqTbQnExHXlrt65s5MQe/dF/9cob+KjE1Ic9tYh976kujR5PRM1OniHBFQi7vZ35eLON20tFd68h1ZHK7FmXIZCxIfU5WLi3tKv3zQFWQCZ5XfwVZvwkI3JXEdtBXj1mIVP4tw=
+In-Reply-To: <366312910705072208t6851aff8ha85579d5a0ee0422@mail.gmail.com>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Phillip Susi <psusi@cfl.rr.com>
-Cc: pradeep singh <2500.pradeep@gmail.com>, Bahadir Balban <bahadir.balban@gmail.com>, Learning Linux <learninglinux4@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+To: pradeep singh <2500.pradeep@gmail.com>
+Cc: Linux Newbies <kernelnewbies@nl.linux.org>, net-linux <linux-net@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
 
-OK. I think the gap between you and me is the definition of term
-*context*. If you go to Linux Kernel Development, 2nd Edition (ISBN
-0-672-32720-1), Page 6, then you will read the following:
+------=_Part_45337_25662827.1179416437564
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-....  in Linux, ... each processor is doing one of three things at any
-given moment:
-
-1. In kernel-space, in process context, ...
-2. In kernel-space, in interrupt context, not associated with a process, ...
-3. In user-space ...
-
-This list is inclusive. ...
-
-
-Maybe you prefer other terminology system, but I do like the above
-definition given by Robert Love. So maybe in your system *context*
-mean something at hardware level and you say ISR is in process
-context, but I think it is more like a logical level and agree with
-Rovert's definition.
-
-And in hardware level, Robert's *context* definition also mean
-something specific, that I started to be aware of. That is, *in the
-same context* means a kernel-code is triggered by a user-space code.
-*in different context* means a kernel-code is triggered by an external
-interrupt source other than a user-space code.
-
-Context has nothing to do with whether an ISR borrow any data
-structure of a process, instead, its something logical or related to
-causality.
-
-
-
-2007/5/16, Phillip Susi <psusi@cfl.rr.com>:
-> Dong Feng wrote:
-> > If what you say were true, then an ISR would be running in the same
-> > context as the interrupted process.
+>  All,
 >
-> Yes, and it is, as others have said in this thread, which is a good
-> reason why ISRs can't sleep.
+> Following definition of notifier_chain_register is from kernel/sys.c
+> and for kernel 2.6.20.1 .
 >
-> > But please check any article or
-> > book, it will say ISR running in different context from any process.
-> > So ISR is considered in its own context, although it shares a lot of
-> > things with the interrupted process. I would only say *context* is a
-> > higher-level logical concept.
+> static int notifier_chain_register(struct notifier_block **nl,
+>                 struct notifier_block *n)
+> {
+>         while ((*nl) != NULL) {
+>                 if (n->priority > (*nl)->priority)
+>                         break;
+>                 nl = &((*nl)->next);
+>         }
+>         n->next = *nl;
+>         rcu_assign_pointer(*nl, n);
+>         return 0;
+> }
 >
-> Depends on which book or article you are reading I suppose.  The
-> generally accepted and often used thought is that ISRs technically are
-> running in the context of the interrupted process, but because that
-> context is unknown and therefore should not be used, it is often said
-> that they run in no context, or outside of any context.  Sometimes
-> people then assume that because they run outside of any ( particular )
-> process context, they must be in their own context, but this is a mistake.
+> Since the first parameter is passed as a double ptr, the pointer
+> itself is changed by the traversal and by rcu_assign_pointer(*nl, n) ,
+> right? And the new value will be address of notifier_block n. This
+> means the new head of the notifier list is n with the highest
+> priority( in terms of magnitude atleast ).
+
+
+Nopes. If you observe closely, *nl (head) is never touched. It is the nl
+that is changed.
+
+Say,
+head = 1000
+nl = 5000 (&head)
+
+So, first nl = 5000. Then nl = &(head->next) that will be 1004 (address of
+'next' element of the structure)
+and so on.
+So, 'head' is never touched.
+
+Regards,
+- Ratnadeep
+
+My query is ,why are we loosing the notifiers  during traversal in the
+> first while loop, which have a priority > n->priority ?
 >
+> I am terribly confused here.
+> Can somebody help me out here?
 >
+> Thank you
+> ~psr
 >
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+> --
+> play the game
+>
+
+------=_Part_45337_25662827.1179416437564
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<br><div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">&nbsp;All,<br><br>Following definition of notifier_chain_register is from kernel/sys.c<br>
+and for kernel <a href="http://2.6.20.1">2.6.20.1</a> .<br><br>static int notifier_chain_register(struct notifier_block **nl,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;struct notifier_block *n)<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while ((*nl) != NULL) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n-&gt;priority &gt; (*nl)-&gt;priority)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nl = &amp;((*nl)-&gt;next);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;n-&gt;next = *nl;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rcu_assign_pointer(*nl, n);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 0;<br>}<br><br>Since the first parameter is passed as a double ptr, the pointer
+<br>itself is changed by the traversal and by rcu_assign_pointer(*nl, n) ,<br>right? And the new value will be address of notifier_block n. This<br>means the new head of the notifier list is n with the highest<br>priority( in terms of magnitude atleast ).
+</blockquote><div><br>Nopes. If you observe closely, *nl (head) is never touched. It is the nl that is changed. <br><br>Say,<br>head = 1000<br>nl = 5000 (&amp;head)<br><br>So, first nl = 5000. Then nl = &amp;(head-&gt;next) that will be 1004 (address of &#39;next&#39; element of the structure)
+<br>and so on.<br>So, &#39;head&#39; is never touched.<br><br>Regards,<br>- Ratnadeep<br><br></div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">
+My query is ,why are we loosing the notifiers&nbsp;&nbsp;during traversal in the<br>first while loop, which have a priority &gt; n-&gt;priority ?<br><br>I am terribly confused here.<br>Can somebody help me out here?<br><br>Thank you
+<br>~psr<br><br>--<br>play the game<br></blockquote></div>
+
+------=_Part_45337_25662827.1179416437564--
+
+--
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
