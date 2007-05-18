@@ -1,134 +1,90 @@
 From: "pradeep singh" <2500.pradeep@gmail.com>
-Subject: Re: Re: Why can't we sleep in an ISR?
-Date: Fri, 18 May 2007 13:14:56 +0530
-Message-ID: <366312910705180044j4ecbd211n168e84802028f66c@mail.gmail.com>
-References: <464cfdcc.21828b55.07f4.ffffdd17SMTPIN_ADDED@mx.google.com>
+Subject: Re: notifier_chain_register semantics query!!!
+Date: Fri, 18 May 2007 13:23:14 +0530
+Message-ID: <366312910705180053s2197112cx169278dc1f694f56@mail.gmail.com>
+References: <366312910705072208t6851aff8ha85579d5a0ee0422@mail.gmail.com>
+	 <4bcb1f700705170840w7283dd77s1750d9b156786dd7@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: base64
-Return-path: <kernelnewbies-bounce@nl.linux.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=ZQYFFolbWV/dGz8EX4M5QqyLuY9x9dTOo8rr9Ej+og+0GSMgdYq2Su7SaysTX5Ay1m2zgRUj5vXmFM+wY3vKDz4IV5dLX3p3P12bvfhQB/jBI1OcxVbBkNLd6QAhz1AQduy2oyLluNWUxOWh37/jHywcXXITR9C4XSEpEJGfabk=
-In-Reply-To: <464cfdcc.21828b55.07f4.ffffdd17SMTPIN_ADDED@mx.google.com>
+        b=dXoKJHiKyU9+D1Lvt+Mez0R3PKa1UzydBGpivn5ExkQ9Rq9pC/Bt5q61Aode3E0P7BRgW4X0xT0w8B4ztED1QkPFun5IdcOBm1f1wERYA2GPmrypfb8s5ZlViJalXJcwz+Xx5EEorKnlUD6C3Jkoezkyp0p0yYFJXkZ+oMt9GsQ=
+In-Reply-To: <4bcb1f700705170840w7283dd77s1750d9b156786dd7@mail.gmail.com>
 Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
+Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-To: =?UTF-8?B?6ZmI5rab?= <eastage@coship.com>
-Cc: Dong Feng <middle.fengdong@gmail.com>, Phillip Susi <psusi@cfl.rr.com>, Bahadir Balban <bahadir.balban@gmail.com>, Learning Linux <learninglinux4@gmail.com>, "kernelnewbies@nl.linux.org" <kernelnewbies@nl.linux.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Ratnadeep Joshi <ratn.josh@gmail.com>
+Cc: Linux Newbies <kernelnewbies@nl.linux.org>, net-linux <linux-net@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
 
-T24gNS8xOC8wNywg6ZmI5rabIDxlYXN0YWdlQGNvc2hpcC5jb20+IHdyb3RlOgo+IERlYXIgYWxs
-Ogo+ICAgICAgICAgQXMgeW91IGJvdGggYWdyZWUgdGhhdCBhbiBJU1IgY2Fubid0IGJlIGFzbGVl
-cCBpbiBhbiBpbnRlcnJ1cHQgQ09OVEVYVCwKPiBpdCByZW1pbmQgbWUgb2YgYW5vdGhlciBxdWVz
-dGlvbiBhcyBiZWxvdy4KPiAgICAgICAgIENhbiBhIHN5c3RlbSB0aW1lciB0aWNrIElTUiBzY2hl
-ZHVsZSB1c2VyIHByb2Nlc3NlcyBpbiBuZXN0ZWQgaW50ZXJydXB0IENPTlRFWFQ/CkkgZG8gbm90
-IHRoaW5rIHNvLiBzeXN0ZW0gdGljayBJU1IgZG9lcyBub3Qgc2NoZWR1bGVzIGRpcmVjdGx5IGFu
-eQpwcm9jZXNzIGZvciB0aGF0IG1hdHRlci5Pbmx5IHRoaW5nIGl0IGNhbiBhbmQgcGVyaGFwcyBh
-bnlvdGhlciBwcm9jZXNzCmNhbiBkbyBpcyByZXF1ZXN0IHRoZSBzY2hlZHVsZXIgdG8gc2NoZWR1
-bGUgYSBwcm9jZXNzIG9yIGl0c2VsZiBieQpjaGFuZ2luZyB0aGUgc3RhdGUuClRoZSBtb21lbnQg
-c2NoZWR1bGVyIHNlZXMgaXQsIGl0IG1heSBydW4gdGhlIHByb2Nlc3MuCgo+ICAgICAgICAgSSB0
-aGluayB3aGVuIGhhcmR3YXJlIHRpbWVyIHRpY2sgaW50ZXJydXB0IGZpcmVzIGluIG5vbiBuZXN0
-ZWQgaW50ZXJydXB0IENPTlRFWFQsCj4gaXRzIHJlbGF0ZWQgSVNSIHdpbGwgc2NoZWR1bGUgdXNl
-ciBwcm9jZXNzZXMgYW5kIGFsc28gY2xlYXIgc3RhY2sgZGF0YShjb250YWluaW5nIFNTIENTIEVG
-TEFHIElQLGV0YyxpbiBYODYgc3lzdGVtKQo+IGluIGtlcm5lbCBzdGFjayBzdG9yZWQgaW4gd2hl
-biB0aW1lciB0aWNrIElTUiBmaXJlcy4KQXBvbG9naWVzIEkgYW0gbm90IGFibGUgdG8gdW5kZXJz
-dGFuZCB3aGF0IHlvdSBhcmUgc2F5aW5nLCBzb3JyeSA6LSgKClRoYW5rcwp+cHNyCj4gICAgICAg
-ICBEb2VzIHRoaXMgbWVhbiB0aGUgdGltZXIgdGljayBJU1Igc29tZXRpbWVzIGNhbm5vdCBkaXJl
-Y3RseSByZXR1cm4gdG8gdGhlIHByb2Nlc3MgQ09OVEVYVAo+IHdoaWNoIGludGVycnVwdGVkIGJ5
-IHRoZSB0aW1lciB0aWNrIElTUj8KPgo+IEhpLCBQaGlsbGlwLAo+Cj4gSSBoYXZlIHNhaWQgdGhl
-IGdhcCBiZXR3ZWVuIHlvdSBhbmQgbWUgaXMgdGhlIGRlZmluaXRpb24gb2YgY29udGV4dC4KPiBJ
-biBSb2JlcnQncyBkZWZpbml0aW9uLCAqY29udGV4dCogaXMgdXNlZCBpbiBhIGNsYXNzaWZpY2F0
-aW9uIG1ldGhvZAo+IGFuZCByZWFsbHkgc29tZXRoaW5nIGluIGhpZ2hlci1sZXZlbC4gQW5kIEkg
-dXNlZCB0aGF0IHRlcm0gdG8gZXhwbGFpbgo+IHdoeSBJU1IgY2FuIG5vdCBzbGVlcC4KPgo+IElm
-IHlvdSBkbyBub3QgbGlrZSB0aGUgbmFtZSwgbmFtZSBpdCB5b3VyIHdheSBhbmQgc3Vic3RpdHV0
-ZSB0ZXJtCj4gKmNvbnRleHQqIGluIG15IHByZXZpb3VzIG1haWwgd2l0aCB3aGF0IHlvdSBuYW1l
-LiBCdXQgSSBiZWxpZXZlIG15Cj4gb3RoZXIgZXhwbGFpbmF0aW9uIHN0aWxsIGhvbGQsIHJpZ2h0
-Pwo+Cj4gQW5kIGFnYWluLCBpZiBhbnl3YXkgSSBhbSBmb3JjZWQgdG8gdXNlIHlvdXIgdGVybW5v
-bG9neSBzeXN0ZW0sIEkKPiB3b3VsZCBhbHNvIGFncmVlIHlvdXIgb3RoZXIgcG9pbnQgcmVnYXJk
-aW5nIGhhcmR3YXJlLgo+Cj4KPiAyMDA3LzUvMTgsIFBoaWxsaXAgU3VzaSA8cHN1c2lAY2ZsLnJy
-LmNvbT46Cj4gPiBEb25nIEZlbmcgd3JvdGU6Cj4gPiA+IE9LLiBJIHRoaW5rIHRoZSBnYXAgYmV0
-d2VlbiB5b3UgYW5kIG1lIGlzIHRoZSBkZWZpbml0aW9uIG9mIHRlcm0KPiA+ID4gKmNvbnRleHQq
-LiBJZiB5b3UgZ28gdG8gTGludXggS2VybmVsIERldmVsb3BtZW50LCAybmQgRWRpdGlvbiAoSVNC
-Tgo+ID4gPiAwLTY3Mi0zMjcyMC0xKSwgUGFnZSA2LCB0aGVuIHlvdSB3aWxsIHJlYWQgdGhlIGZv
-bGxvd2luZzoKPiA+ID4KPiA+ID4gLi4uLiAgaW4gTGludXgsIC4uLiBlYWNoIHByb2Nlc3NvciBp
-cyBkb2luZyBvbmUgb2YgdGhyZWUgdGhpbmdzIGF0IGFueQo+ID4gPiBnaXZlbiBtb21lbnQ6Cj4g
-PiA+Cj4gPiA+IDEuIEluIGtlcm5lbC1zcGFjZSwgaW4gcHJvY2VzcyBjb250ZXh0LCAuLi4KPiA+
-ID4gMi4gSW4ga2VybmVsLXNwYWNlLCBpbiBpbnRlcnJ1cHQgY29udGV4dCwgbm90IGFzc29jaWF0
-ZWQgd2l0aCBhIHByb2Nlc3MsCj4gPiA+IC4uLgo+ID4gPiAzLiBJbiB1c2VyLXNwYWNlIC4uLgo+
-ID4gPgo+ID4gPiBUaGlzIGxpc3QgaXMgaW5jbHVzaXZlLiAuLi4KPiA+Cj4gPiBZZXAsIEkgZGlz
-YWdyZWUgd2l0aCB0aGF0IHVzZSBvZiB0aGUgdGVybSwgYmVjYXVzZSBpdCBpcyBtaXNsZWFkaW5n
-IGFuZAo+ID4gY2F1c2VkIHlvdXIgY29uZnVzaW9uLiAgVGhlIGNvbnRleHQgdGhhdCB0aGUgSVNS
-IGV4ZWN1dGVzIGluIGlzIG5vdAo+ID4gYXNzb2NpYXRlZCB3aXRoIGEgX2tub3duXyBwcm9jZXNz
-IGlzIG1vcmUgY29ycmVjdC4KPiA+Cj4gPiA+IE1heWJlIHlvdSBwcmVmZXIgb3RoZXIgdGVybWlu
-b2xvZ3kgc3lzdGVtLCBidXQgSSBkbyBsaWtlIHRoZSBhYm92ZQo+ID4gPiBkZWZpbml0aW9uIGdp
-dmVuIGJ5IFJvYmVydCBMb3ZlLiBTbyBtYXliZSBpbiB5b3VyIHN5c3RlbSAqY29udGV4dCoKPiA+
-ID4gbWVhbiBzb21ldGhpbmcgYXQgaGFyZHdhcmUgbGV2ZWwgYW5kIHlvdSBzYXkgSVNSIGlzIGlu
-IHByb2Nlc3MKPiA+ID4gY29udGV4dCwgYnV0IEkgdGhpbmsgaXQgaXMgbW9yZSBsaWtlIGEgbG9n
-aWNhbCBsZXZlbCBhbmQgYWdyZWUgd2l0aAo+ID4gPiBSb3ZlcnQncyBkZWZpbml0aW9uLgo+ID4g
-Pgo+ID4gPiBBbmQgaW4gaGFyZHdhcmUgbGV2ZWwsIFJvYmVydCdzICpjb250ZXh0KiBkZWZpbml0
-aW9uIGFsc28gbWVhbgo+ID4gPiBzb21ldGhpbmcgc3BlY2lmaWMsIHRoYXQgSSBzdGFydGVkIHRv
-IGJlIGF3YXJlIG9mLiBUaGF0IGlzLCAqaW4gdGhlCj4gPiA+IHNhbWUgY29udGV4dCogbWVhbnMg
-YSBrZXJuZWwtY29kZSBpcyB0cmlnZ2VyZWQgYnkgYSB1c2VyLXNwYWNlIGNvZGUuCj4gPiA+ICpp
-biBkaWZmZXJlbnQgY29udGV4dCogbWVhbnMgYSBrZXJuZWwtY29kZSBpcyB0cmlnZ2VyZWQgYnkg
-YW4gZXh0ZXJuYWwKPiA+ID4gaW50ZXJydXB0IHNvdXJjZSBvdGhlciB0aGFuIGEgdXNlci1zcGFj
-ZSBjb2RlLgo+ID4KPiA+IFJpZ2h0LCBhbmQgdGhhdCBiZWNvbWVzIG1vcmUgY2xlYXIgd2hlbiB5
-b3Ugc2F5IHRoYXQgdGhlIElTUidzIGlzCj4gPiBleGVjdXRpbmcgaW4gYW4gaW5kZXRlcm1pbmF0
-ZSBwcm9jZXNzIGNvbnRleHQsIHJhdGhlciB0aGFuIHNheWluZyBpdAo+ID4gZG9lcyBub3QgaGF2
-ZSBhbnkgY29udGV4dCBhdCBhbGwsIG9yIGhhcyBpdHMgb3duIHNwZWNpYWwgY29udGV4dC4KPiA+
-Cj4gPiA+IENvbnRleHQgaGFzIG5vdGhpbmcgdG8gZG8gd2l0aCB3aGV0aGVyIGFuIElTUiBib3Jy
-b3cgYW55IGRhdGEKPiA+ID4gc3RydWN0dXJlIG9mIGEgcHJvY2VzcywgaW5zdGVhZCwgaXRzIHNv
-bWV0aGluZyBsb2dpY2FsIG9yIHJlbGF0ZWQgdG8KPiA+ID4gY2F1c2FsaXR5Lgo+ID4KPiA+IE5v
-LCBpdCBoYXMgZXZlcnl0aGluZyB0byBkbyB3aXRoIHRoZSBkYXRhIHN0cnVjdHVyZXMgb2YgdGhl
-IHByb2Nlc3MuCj4gPiBXaGVuIHlvdSBhcmUgZXhlY3V0aW5nICJpbiB0aGUgc2FtZSBjb250ZXh0
-IiBhcyB5b3UgcHV0IGl0LCBhcyBjYWxsZWQKPiA+IGZyb20gdGhlIHVzZXIgbW9kZSBjb2RlLCB5
-b3Uga25vdyB5b3UgYXJlIHVzaW5nIHRoZSB0YXNrIHN0cnVjdHVyZSBvZgo+ID4gdGhhdCBwcm9j
-ZXNzIGFuZCBzbyB5b3UgY2FuIG1ha2UgdXNlIG9mIHRoYXQgc3RydWN0dXJlLiAgRm9yIGV4YW1w
-bGUsCj4gPiB5b3UgY2FuIGxvb2sgYXQgdGhlIGN1cnJlbnQgdWlkIHRvIGRlY2lkZSBpZiB5b3Ug
-c2hvdWxkIGFsbG93IGFuCj4gPiBvcGVyYXRpb24gdG8gcHJvY2VlZC4gIFdoZW4geW91IGFyZSBp
-biBhbiBJU1IsIHRoZXJlIF9pc18gYSB0YXNrCj4gPiBzdHJ1Y3R1cmUgdGhlcmUsIGJ1dCB5b3Ug
-c2hvdWxkbid0IHVzZSBpdCBiZWNhdXNlIHlvdSBkb24ndCBrbm93IHdoaWNoCj4gPiB0YXNrIHN0
-cnVjdHVyZSBpdCBpcyBiZWNhdXNlIHlvdSBkb24ndCBrbm93IHdoaWNoIHRhc2sgeW91IGFyZQo+
-ID4gaW50ZXJydXB0aW5nLiAgVGh1cyBpZiB5b3UgbG9vayBhdCB0aGUgY3VycmVudCB1aWQgaW4g
-YW4gSVNSLCB5b3UgaGF2ZQo+ID4gbm8gaWRlYSB3aGF0IHlvdSB3aWxsIHNlZSB0aGVyZSBhbmQg
-aXQgd2lsbCBjaGFuZ2UgZnJvbSBpbnRlcnJ1cHQgdG8KPiA+IGludGVycnVwdCwgZGVwZW5kaW5n
-IG9uIHdoaWNoIHRhc2sgZ2V0cyBpbnRlcnJ1cHRlZC4KPiA+Cj4gPgo+ID4KPiAtCj4gVG8gdW5z
-dWJzY3JpYmUgZnJvbSB0aGlzIGxpc3Q6IHNlbmQgdGhlIGxpbmUgInVuc3Vic2NyaWJlIGxpbnV4
-LW5ld2JpZSIgaW4KPiB0aGUgYm9keSBvZiBhIG1lc3NhZ2UgdG8gbWFqb3Jkb21vQHZnZXIua2Vy
-bmVsLm9yZwo+IE1vcmUgbWFqb3Jkb21vIGluZm8gYXQgIGh0dHA6Ly92Z2VyLmtlcm5lbC5vcmcv
-bWFqb3Jkb21vLWluZm8uaHRtbAo+IFBsZWFzZSByZWFkIHRoZSBGQVEgYXQgaHR0cDovL3d3dy5s
-aW51eC1sZWFybi5vcmcvZmFxcwo+Cj4KPgo+Cj4KPiAqKioqKirlo7DmmI4qKioqKioKPiDmnKzp
-gq7ku7blj4rlhbbpmYTku7bmiYDljIXlkKvnmoTkv6Hmga/lnYflsZ7mt7HlnLPluILlkIzmtLLn
-lLXlrZDogqHku73mnInpmZDlhazlj7jllYbkuJrnp5jlr4bvvIzku4XpmZDkuo7mjIflrprnmoTk
-uKrkurrmiJbnu4Tnu4fkvb/nlKjvvIzmnKrnu4/orrjlj6/vvIzkuI3lvpfms4TpnLLnu5nku7vk
-vZXnrKzkuInmlrnjgILlpoLmnpzmgqjkuI3mmK/mnKzpgq7ku7bnmoTpooTmnJ/mlLbku7bkurrv
-vIzor7fnq4vljbPlsIbmraTplJnor6/lkYrnn6XmnKzlj5Hku7bkurrvvIzlubbov4XpgJ/msLjk
-uYXmgKfliKDpmaTmnKzpgq7ku7blj4rpmYTku7bnmoTmiYDmnInljp/lp4vku7bjgIHlpI3liLbk
-u7blkozovpPlh7rku7bvvIzor7fli7/kv53lrZjjgIHlpI3liLbjgIHliKnnlKjlkozms4TpnLLm
-nKzpgq7ku7blj4rpmYTku7bnmoTku7vkvZXlhoXlrrnvvIzku6Xnoa7kv53mgqjml6DpobvkuLrm
-raTmib/mi4Xms5XlvovotKPku7vjgILosKLosKLmgqjnmoTlkIjkvZzvvIEKPiAqKioqKipOT1RJ
-Q0UqKioqKioKPiBUaGlzIGVtYWlsIGFuZCBhbnkgZmlsZXMgdHJhbnNtaXR0ZWQgd2l0aCBpdCBt
-YXkgY29udGFpbiBsZWdhbGx5IFBSSVZJTEVHRUQgYW5kL29yIENPTkZJREVOVElBTCBJTkZPUk1B
-VElPTiwgYW5kIGFyZSBpbnRlbmRlZCBzb2xlbHkgZm9yIHRoZSBwZXJzb25hbCB1c2Ugb2YgdGhl
-IHJlY2lwaWVudChzKSBuYW1lZCBhYm92ZS4gV2l0aG91dCBwcmlvciBjb25zZW50LCB5b3Ugc2hv
-dWxkIG5vdCBkaXNzZW1pbmF0ZSB0aGlzIGNvbW11bmljYXRpb24gdG8gYW55IGlycmVsZXZhbnQg
-cGFydHku44CASWYgeW91IGhhdmUgcmVjZWl2ZWQgdGhpcyBjb21tdW5pY2F0aW9uIGluIGVycm9y
-LCBwbGVhc2UgaW1tZWRpYXRlbHkgbm90aWZ5IHRoaXMgc2VuZGVyIGFuZCBwZXJtYW5lbnRseSBk
-ZWxldGUgdGhlIG9yaWdpbmFsICYgZHVwbGljYXRlIGNvcHksIGFuZCBhbnkgcHJpbnRvdXQgdGhl
-cmVvZi4gQW55IGRpc3NlbWluYXRpb24sIGRpc3RyaWJ1dGlvbiBvciBjb3B5aW5nIG9mIHRoaXMg
-Y29tbXVuaWNhdGlvbiBpcyBTVFJJQ1RMWSBQUk9ISUJJVEVELiBUaGFuayB5b3UhCj4KPgo+Cj4K
-CgotLSAKcGxheSB0aGUgZ2FtZQo=
+On 5/17/07, Ratnadeep Joshi <ratn.josh@gmail.com> wrote:
+>
+>
+> >  All,
+> >
+> > Following definition of notifier_chain_register is from kernel/sys.c
+> > and for kernel 2.6.20.1 .
+> >
+> > static int notifier_chain_register(struct notifier_block **nl,
+> >                 struct notifier_block *n)
+> > {
+> >         while ((*nl) != NULL) {
+> >                 if (n->priority > (*nl)->priority)
+> >                         break;
+> >                 nl = &((*nl)->next);
+> >         }
+> >         n->next = *nl;
+> >         rcu_assign_pointer(*nl, n);
+> >         return 0;
+> > }
+> >
+> > Since the first parameter is passed as a double ptr, the pointer
+> > itself is changed by the traversal and by rcu_assign_pointer(*nl, n) ,
+> > right? And the new value will be address of notifier_block n. This
+> > means the new head of the notifier list is n with the highest
+> > priority( in terms of magnitude atleast ).
+>
+> Nopes. If you observe closely, *nl (head) is never touched. It is the nl
+> that is changed.
+>
+> Say,
+> head = 1000
+> nl = 5000 (&head)
+>
+> So, first nl = 5000. Then nl = &(head->next) that will be 1004 (address of
+> 'next' element of the structure)
+> and so on.
+> So, 'head' is never touched.
+Thanks Ratan, missed that easily though :-(
+Should have been more careful.
 
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
+Thank you
+~psr
+>
+> Regards,
+> - Ratnadeep
+>
+> > My query is ,why are we loosing the notifiers  during traversal in the
+> > first while loop, which have a priority > n->priority ?
+> >
+> > I am terribly confused here.
+> > Can somebody help me out here?
+> >
+> > Thank you
+> > ~psr
+> >
+> > --
+> > play the game
+> >
+>
 
+
+-- 
+play the game
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
