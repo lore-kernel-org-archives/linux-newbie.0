@@ -1,90 +1,65 @@
-From: "pradeep singh" <2500.pradeep@gmail.com>
-Subject: Re: notifier_chain_register semantics query!!!
-Date: Fri, 18 May 2007 13:23:14 +0530
-Message-ID: <366312910705180053s2197112cx169278dc1f694f56@mail.gmail.com>
-References: <366312910705072208t6851aff8ha85579d5a0ee0422@mail.gmail.com>
-	 <4bcb1f700705170840w7283dd77s1750d9b156786dd7@mail.gmail.com>
+From: "Ratnadeep Joshi" <ratn.josh@gmail.com>
+Subject: Re: query related to different architectures
+Date: Sun, 20 May 2007 17:20:59 +0530
+Message-ID: <4bcb1f700705200450n261a7274ga709e97ae98d9bd6@mail.gmail.com>
+References: <7783925d0703200528l70b534b6r69abfcba32f3a41a@mail.gmail.com>
+	 <8bd0f97a0703200715k3179750dy744a237bba9773b7@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_85462_15546650.1179661859124"
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=dXoKJHiKyU9+D1Lvt+Mez0R3PKa1UzydBGpivn5ExkQ9Rq9pC/Bt5q61Aode3E0P7BRgW4X0xT0w8B4ztED1QkPFun5IdcOBm1f1wERYA2GPmrypfb8s5ZlViJalXJcwz+Xx5EEorKnlUD6C3Jkoezkyp0p0yYFJXkZ+oMt9GsQ=
-In-Reply-To: <4bcb1f700705170840w7283dd77s1750d9b156786dd7@mail.gmail.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
+        b=JbYmtqKE6yAETrBweGxutdhDH/sPbma7E82NhcFab+ZBP84fz/yWAHqT31NPjiRhD2/EIbjgprTr0luDNcEU8WIEUh37RHi/a1o3ZwO1NgPGd7jgq9kqWLbeSCyj11S0My9/uHkQ8Yav1o2nHeWpfTk7Wv5yP1iGiyjydDrSS2w=
+In-Reply-To: <8bd0f97a0703200715k3179750dy744a237bba9773b7@mail.gmail.com>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Ratnadeep Joshi <ratn.josh@gmail.com>
-Cc: Linux Newbies <kernelnewbies@nl.linux.org>, net-linux <linux-net@vger.kernel.org>, newbie <linux-newbie@vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+To: Mike Frysinger <vapier.adi@gmail.com>
+Cc: Rick Brown <rick.brown.3@gmail.com>, linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
 
-On 5/17/07, Ratnadeep Joshi <ratn.josh@gmail.com> wrote:
->
->
-> >  All,
-> >
-> > Following definition of notifier_chain_register is from kernel/sys.c
-> > and for kernel 2.6.20.1 .
-> >
-> > static int notifier_chain_register(struct notifier_block **nl,
-> >                 struct notifier_block *n)
-> > {
-> >         while ((*nl) != NULL) {
-> >                 if (n->priority > (*nl)->priority)
-> >                         break;
-> >                 nl = &((*nl)->next);
-> >         }
-> >         n->next = *nl;
-> >         rcu_assign_pointer(*nl, n);
-> >         return 0;
-> > }
-> >
-> > Since the first parameter is passed as a double ptr, the pointer
-> > itself is changed by the traversal and by rcu_assign_pointer(*nl, n) ,
-> > right? And the new value will be address of notifier_block n. This
-> > means the new head of the notifier list is n with the highest
-> > priority( in terms of magnitude atleast ).
->
-> Nopes. If you observe closely, *nl (head) is never touched. It is the nl
-> that is changed.
->
-> Say,
-> head = 1000
-> nl = 5000 (&head)
->
-> So, first nl = 5000. Then nl = &(head->next) that will be 1004 (address of
-> 'next' element of the structure)
-> and so on.
-> So, 'head' is never touched.
-Thanks Ratan, missed that easily though :-(
-Should have been more careful.
+------=_Part_85462_15546650.1179661859124
+Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-Thank you
-~psr
 >
-> Regards,
-> - Ratnadeep
+> > Secondly, when we talk of 32/64 bit processor, we are talking about
+> > the data bus width, right? The same holds when we talk about Operating
+> > systems, right? So the size of address bus does not matter?
 >
-> > My query is ,why are we loosing the notifiers  during traversal in the
-> > first while loop, which have a priority > n->priority ?
-> >
-> > I am terribly confused here.
-> > Can somebody help me out here?
-> >
-> > Thank you
-> > ~psr
-> >
-> > --
-> > play the game
-> >
->
+> it usually refers to the native size of the cpu ... 64bit processors
+> work normally on registers that are 64bits in size while 32bit
+> processors work normally on registers that are 32bits in size
+> -mike
 
 
--- 
-play the game
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
+Yes, it is the data bus width. Size of the address bus does not matter. On
+i386, they are same by design not by requirement. On x86_64, they are
+different.
+
+------=_Part_85462_15546650.1179661859124
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<div><blockquote class="gmail_quote" style="border-left: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 0.8ex; padding-left: 1ex;">&gt; Secondly, when we talk of 32/64 bit processor, we are talking about<br>&gt; the data bus width, right? The same holds when we talk about Operating
+<br>&gt; systems, right? So the size of address bus does not matter?<br><br>it usually refers to the native size of the cpu ... 64bit processors<br>work normally on registers that are 64bits in size while 32bit<br>processors work normally on registers that are 32bits in size
+<br>-mike</blockquote><div><br><br>Yes, it is the data bus width. Size of the address bus does not matter. On i386, they are same by design not by requirement. On x86_64, they are different.<br></div><br></div>
+
+------=_Part_85462_15546650.1179661859124--
+
+--
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
