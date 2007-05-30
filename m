@@ -1,49 +1,89 @@
-From: "Jesper Juhl" <jesper.juhl@gmail.com>
-Subject: Re: query related to different architectures
-Date: Sun, 20 May 2007 14:04:42 +0200
-Message-ID: <9a8748490705200504geafb037m5d1cc113112fbabb@mail.gmail.com>
-References: <7783925d0703200528l70b534b6r69abfcba32f3a41a@mail.gmail.com>
-	 <8bd0f97a0703200715k3179750dy744a237bba9773b7@mail.gmail.com>
+From: Rodrigo Rubira Branco <rrbranco@br.ibm.com>
+Subject: Re: Why is Linux not RTOS?
+Date: Tue, 29 May 2007 21:47:35 -0300
+Message-ID: <1180486056.5473.28.camel@localhost.localdomain>
+References: <7783925d0704040521q3755394uf774884b5298eec2@mail.gmail.com>
+	 <7783925d0704040605s4590d421y39ae5b13a020a8a@mail.gmail.com>
+	 <ev0fpc$bc5$1@sea.gmane.org> <200704051236.29847.Tzahi.ML2@gmail.com>
+	 <f68850780704050307o3639b8bbi993e6a7a11adbe72@mail.gmail.com>
+Reply-To: rrbranco@br.ibm.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; micalg=pgp-sha1; protocol="application/pgp-signature"; boundary="=-iayHCDsRV7cAhLA2fYKN"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: a=rsa-sha1; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        b=Nx83f4ALKyfQZIbIpEGRjeR6ZDxJhIOO+Ga3leMrO18hHcsh0JF22QZiUJc4RfPZHf8FEWgQDyXJUYFIp1cCYqFEYQbRqvyK4dnzGf8XulBhSgBxKJWDB4Tq4HfSWB171GJI+RWGM5lI1Gxvy7kk9Xw1ELyfOADp9uBvPu5KABc=
-In-Reply-To: <8bd0f97a0703200715k3179750dy744a237bba9773b7@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <f68850780704050307o3639b8bbi993e6a7a11adbe72@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Mike Frysinger <vapier.adi@gmail.com>
-Cc: Rick Brown <rick.brown.3@gmail.com>, linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+To: Raseel Bhagat <raseelbhagat@gmail.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On 20/03/07, Mike Frysinger <vapier.adi@gmail.com> wrote:
-> On 3/20/07, Rick Brown <rick.brown.3@gmail.com> wrote:
-> > Secondly, when we talk of 32/64 bit processor, we are talking about
-> > the data bus width, right? The same holds when we talk about Operating
-> > systems, right? So the size of address bus does not matter?
->
-> it usually refers to the native size of the cpu ... 64bit processors
-> work normally on registers that are 64bits in size while 32bit
-> processors work normally on registers that are 32bits in size
-> -mike
->
 
-I agree that that's usually what people understand by 32/64 bit
-processors, but the whole thing is loosing meaning.
-AMD64/EM64T processors also have 128bit registers for the MMX/SSE
-stuff, and what about the x87 stuff, that uses 80bit registers, and
-when talking about how much memory the processor can address the
-Opteron has 40-bit physical and 48-bit virtual addressing and if I
-remember correct EM64T processors support only 36bit addresses.
-So it's all a little blurry...
+--=-iayHCDsRV7cAhLA2fYKN
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
--- 
-Jesper Juhl <jesper.juhl@gmail.com>
-Don't top-post  http://www.catb.org/~esr/jargon/html/T/top-post.html
-Plain text mails only, please      http://www.expita.com/nomime.html
+Ok, let's clarify somethings ;)
+
+
+First of all I really recommend this links:
+http://www.linuxjournal.com/article/9361
+http://rt.wiki.kernel.org/
+
+The real-time implementations previously commented in the list relies on
+"interrupt shielding" (forcing interrupts to run on a reserved CPU) and
+"CPU pinning" (forcing real-time tasks to only run on a CPU which
+doesn't run any other tasks), so we can't say it's a 'real' real-time ;)
+(it does not take the best advantage of multiple cpu's for example and
+needs more than just one in anyway).
+
+Legal notice: It's just my personal contribution.
+
+
+P.S.:  Sorry my delay to answer that ;)
+
+
+On Thu, 2007-04-05 at 15:37 +0530, Raseel Bhagat wrote:
+> Hi Tzahi,
+>=20
+> On 4/5/07, Tzahi Fadida <Tzahi.ML2@gmail.com> wrote:
+> > What is this i hear about PREEMT_RT from VirtualLogix:
+> > http://www.wirelessiq.com/content/newsfeed/9867.html
+>=20
+> I think the author is trying to mention the different innovative
+> solutions to the latency issue in the GPOS Linux Kernel. PREEMPT_RT ,
+> IIRC  was a Real Time patch by Ingo Molar.
+> VirtualLogix's Virtual OS is another such solution, etc.
+>=20
+> Thanks,
+> Raseel
+> -
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" i=
+n
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+--=20
+Rodrigo Rubira Branco
+Software Engineer=20
+Advanced Linux Response Team (ALRT) / Linux on Power Toolchain
+IBM Linux Technology Center (IBM/LTC)
+rrbranco@br.ibm.com
+
+GPG KeyID: 1FCEDEA1
+
+--=-iayHCDsRV7cAhLA2fYKN
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.5 (GNU/Linux)
+
+iD8DBQBGXMmnRpuC3B/O3qERAlHJAJ4lYdqW4xSPQlXoA/rK7ESGAH4XrgCfVd2k
+45jib0ZJ5WP5IM7oZ35lIio=
+=iXbf
+-----END PGP SIGNATURE-----
+
+--=-iayHCDsRV7cAhLA2fYKN--
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
