@@ -1,62 +1,41 @@
-From: Erik Mouw <mouw@nl.linux.org>
-Subject: Re: Accessing static variable from outside
-Date: Sun, 17 Jun 2007 12:20:24 +0200
-Message-ID: <20070617102023.GA7580@gateway.home>
-References: <b115cb5f0706151908o6a0f765etd5f275be8bf75f0@mail.gmail.com> <6d778f200706160936w3120edacuc7d0ac21a9b06144@mail.gmail.com>
+From: Hal <haltec@kvinet.com>
+Subject: Video Memory: How much?
+Date: Sun, 17 Jun 2007 08:42:46 -0400
+Message-ID: <20070617124246.GA1266@lnx2>
+Reply-To: haltec@kvinet.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <6d778f200706160936w3120edacuc7d0ac21a9b06144@mail.gmail.com>
+Content-disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; x-action="pgp-signed"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: tejas khatiwala <socretez@gmail.com>
-Cc: Rajat Jain <rajat.noida.india@gmail.com>, Linux Newbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
+	Greetings: I have one machine used for video streaming/viewing using
+a Max G400 video card with 8mB on board memory and with the proper server of
+course..
 
-A: http://en.wikipedia.org/wiki/Top_post
-Q: Were do I find info about this thing called top-posting?
-A: Because it messes up the order in which people normally read text.
-Q: Why is top-posting such a bad thing?
-A: Top-posting.
-Q: What is the most annoying thing in e-mail?
+	I am not a gamer but I read so much that 8mB video memory is
+obsolete these days; so I bought an AGP Creative CT5832-NVidia RIVA TNT2
+with 32mB RAM.. I haven't tried it because it doesn't boot on that machine
+so I'm wondering if it would be worth pursuing further.. (It works on
+another machine so it's not defective; possibly a compatibility issue.)
 
-A: No.
-Q: Should I leave quotations after my reply?
+	The subject machine has a Duron 1300 CPU and 512mB PC100 system
+memory.. Heretofore it seems to work fine except I think the presentation
+could be better, but not really sure.. Running Slackware v10.2, 2.6.13,
+xorg.
 
-On Sat, Jun 16, 2007 at 11:36:43AM -0500, tejas khatiwala wrote:
-> AFAIK one way to be able to access a static variable is using dynamic
-> linking lodader. u can read man pages of dlopen() and family. and here is
-> example of its usage http://www.slimy.com/~jleonard/src/dlopen.html
+	Any comments?? Of course my Net searching brings up; "the more
+memory the better." <grin> Maybe someone can point to a more detailed
+tutorial??
 
-The example doesn't apply:
+	TIA..
+-- 
 
-- - dlopen() is a userspace function and can't be used in kernel
-- - dynamic linking can only be used to link exported (i.e. non-static)
-  symbols
-
-Like Adrian Bunk already explained: there are dirty tricks to get the
-address of a static variable, but they will all fail when the compiler
-decides to optimise the variable away (which it is completely free to
-do because the "static" keyword *guarantees* that the variable will not
-be used outside that particular compilation unit).
-
-
-Erik
-
-- -- 
-They're all fools. Don't worry. Darwin may be slow, but he'll
-eventually get them. -- Matthew Lammers in alt.sysadmin.recovery
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.6 (GNU/Linux)
-
-iD8DBQFGdQrn/PlVHJtIto0RAsWkAJ0Qk9txqXYxwLMEeioj8z4T+74h5QCgiH51
-7yl9an3I/1EPWWkw4eFqOrA=
-=bEkd
------END PGP SIGNATURE-----
+                 Hal        GNU/Linux - Slackware 10.2, 2.4.31
+.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
