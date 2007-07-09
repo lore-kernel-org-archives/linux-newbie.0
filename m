@@ -1,31 +1,34 @@
-From: N O S P A M <krey_zo@yahoo.com>
-Subject: Porting Linux to New Hardware/CPU Platform
-Date: Mon, 2 Jul 2007 22:03:07 -0700 (PDT)
-Message-ID: <216367.47960.qm@web33213.mail.mud.yahoo.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: Padding in gcc
+Date: Mon, 9 Jul 2007 17:10:51 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B0575FCC7@GDCMX01.igglobal.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Hi
-I want to port Linux (kernel, device driver) to a new
-hardware/platform with new type of CPU, but I do not
-know anything about Linux.
+Hi,
 
-Is there any famous, professional software development
-company/team that can port the entire Linux to the new
-platform, with a fixed budget and time limit?
+Perhaps a little offtopic but no harm in trying ...
 
-What is the name of the company/team?
-Thank you.
+Can we always rely on the fact that gcc will pad the following structure?
 
+typedef struct {
+    int descrp;      SYSCALL64_STRUCT_ATTR;
+    (Automatic padding here?)
+    long long pos;   SYSCALL64_STRUCT_ATTR;
+    int mode;        SYSCALL64_STRUCT_ATTR;
+} lseek64_t;
 
-      ____________________________________________________________________________________
-Fussy? Opinionated? Impossible to please? Perfect.  Join Yahoo!'s user panel and lay it on us. http://surveylink.yahoo.com/gmrs/yahoo_panel_invite.asp?a=7 
+What is the correct way to make it portable? Explicitly added padding fields?
 
+Thanks,
+
+Rajat
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
