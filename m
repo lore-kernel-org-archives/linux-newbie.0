@@ -1,11 +1,16 @@
-From: "Rajat Jain" <Rajat.Jain@infogain.com>
-Subject: add a directory to initramfs cpio archieve
-Date: Fri, 24 Aug 2007 10:50:49 +0530
-Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B05ED4B34@GDCMX01.igglobal.com>
+From: "Daniel Rodrick" <daniel.rodrick@gmail.com>
+Subject: mdelay
+Date: Mon, 10 Sep 2007 22:55:33 +0530
+Message-ID: <292693080709101025g7c6b3a1dnae531ececc5b597e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <kernelnewbies-bounce@nl.linux.org>
-Content-class: urn:content-classes:message
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=beta;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        bh=i4P+TP/OMsofbo5zGvfVcA9jnjQD1IBoBfdv2LAInF8=;
+        b=HCcvmiPtJRSpYuafeLINZElHGTxpbPtfJvk+8Z5Zcu9h5AsWid0diJIOtjoAntj9gTKZbCAWbzUEb8KYPOE+vBspKHuY+9yMe153JBtlJhga9ml8vaUFijxAviCoPy3oaAJmgdgFbYmxMTftB0gq0i96HsTvAuSESpE1L4f6NgM=
+Content-Disposition: inline
 Sender: kernelnewbies-bounce@nl.linux.org
 Errors-to: kernelnewbies-bounce@nl.linux.org
 List-help: <mailto:ecartis@nl.linux.org?Subject=help>
@@ -17,51 +22,36 @@ List-owner: <mailto:ecartis-owner@nl.linux.org>
 List-post: <mailto:kernelnewbies@nl.linux.org>
 List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org, linux-newbie@kernel.org
-
+To: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
 Hi,
 
-I have a kernel image (2.6.16) that is booting fine. It came with an =
-initramfs cpio archieve that doesnot contain the /sys directory and =
-hence sysfs is not accessible (initramfs continues as root FS in my =
-case, even after system boots up). So how do I add /sys directory to my =
-cpio archieve? I know it sounds stupid, but but here it is:
+I'm trying to understand an I2C algo driver for a platform that I'm
+working on. In the source code where the driver is trying to read and
+write certain data to my device, I frequently see code like this:
 
-I am able to see the contents of cpio:
+/*Initiate a transactionon on bus */
 
-[rajat@qnx-server temp]$ cpio -itv < data.cpio
-drwxrwxrwx   2 root     root            0 May 25  2006 /lost+found
-drwxrwxrwx   2 root     root            0 May 25  2006 /bin
--rwxrwxrwx   1 rajat    root        19000 May 19  2002 /bin/basename
--rwxrwxrwx   1 rajat    root       968064 May 16  2002 /bin/bash
-...
-...
-...
+spin_lock_irq(&lock);
+mdelay(1);
+spin_unlock_irq(&lock);
 
-But when I try to extract it, it tries to overwrite my host root FS =
-(/etc, /usr etc) which ofcourse I don't want:
+/* Read status from device */
 
-[rajat@qnx-server temp]$  cpio -idv <data.cpio
-cpio: /lost+found: Operation not permitted
-/lost+found
-cpio: /bin: Operation not permitted
-/bin
-cpio: /bin/basename not created: newer or same age version exists
-/bin/basename
-cpio: /bin/bash not created: newer or same age version exists
-/bin/bash
-cpio: /bin/cat not created: newer or same age version exists
-/bin/cat
-...
-...
-...
+The delays like above are sprinkled quite often throughout the code,
+whereever the driver is reading / writing to the hardware.
 
-Any help?
+The driver does NOT have an interrupt handler, and the only reason
+lock is used is to guard the mdelay statements throughout the code.
+
+1) Can somebody help me understand what could be the use of disabling
+interrupts while mdelay()?
+
+2) AFAIK, mdelay is busy looping, right?
 
 Thanks,
 
-Rajat
+Dan.
 
 --
 To unsubscribe from this list: send an email with
