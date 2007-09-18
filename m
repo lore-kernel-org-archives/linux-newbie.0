@@ -1,67 +1,70 @@
-From: Daron Ryan <daron.ryan@gmail.com>
-Subject: Re:microphone
-Date: Tue, 18 Sep 2007 23:45:51 +0930
-Message-ID: <46EFDD97.2070506@gmail.com>
+From: "Conway S. Smith" <beolach@comcast.net>
+Subject: Re: Microphone
+Date: Tue, 18 Sep 2007 07:06:26 -0600
+Message-ID: <20070918070626.02f7c52f@mandalor.homelinux.net>
+References: <46EFC380.6080709@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/signed; boundary="Sig_aKDx93os+7j8+LlLwxN_9J/";
+ protocol="application/pgp-signature"; micalg=PGP-SHA1
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:user-agent:mime-version:to:subject:content-type:content-transfer-encoding;
-        bh=7zthNrJqBUc8El2CPQA39H+iE828zFYz9NgCRlof76g=;
-        b=CvJgBGv/jx5MTQgJto8/0tSxQo5G3Hxry6sZwDASkOBclC1LIupQjaGwo5weS3pO0uYIBgkPCesGkdn3YLwBs+0f+0b6LeYAVbo3C8Ad7rFy7evRMrwUyh6WNQ3Jf11wp+9GSdEfll8ShHsvOIWk0cOGHOdFyRyd81HaNf2MbCQ=
+In-Reply-To: <46EFC380.6080709@gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+To: Daron Ryan <daron.ryan@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hello Conway,
+--Sig_aKDx93os+7j8+LlLwxN_9J/
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
 
-I am using audacity to test the microphone. I will check the tab 
-function on the alsa mixer, I haven't tried that. Thanks for that.
+On Tue, 18 Sep 2007 21:54:32 +0930
+Daron Ryan <daron.ryan@gmail.com> wrote:
+> Hi,
+>=20
+> I have recently purchased a microphone / headset but can not get the=20
+> microphone to work. The system is dual boot and the microphone works=20
+> under windows but not Linux. Here some of the details of the system
+>=20
+> Distribution:                                Fedora 64bit
+> Audio card:                                 Intel 82801H (ICH8 Family)
+> ALSA driver version:                 1.0.14.
+>=20
+> I have tried adjusting microphone up to maximum volume using
+> alsamixer (I assume maximum volume means maximum sensitivity). This
+> only causes a hiss when microphone input is played back out again
+> with no sign of my voice. What else can I try?
+>=20
+> Regards,
+> Daron.
+>=20
 
-Regards,
-Daron.
-Conway S. Smith wrote:
- > On Tue, 18 Sep 2007 21:54:32 +0930
- > Daron Ryan <daron.ryan@gmail.com> wrote:
- >  
- >> Hi,
- >>
- >> I have recently purchased a microphone / headset but can not get the
- >> microphone to work. The system is dual boot and the microphone works
- >> under windows but not Linux. Here some of the details of the system
- >>
- >> Distribution:                                Fedora 64bit
- >> Audio card:                                 Intel 82801H (ICH8 Family)
- >> ALSA driver version:                 1.0.14.
- >>
- >> I have tried adjusting microphone up to maximum volume using
- >> alsamixer (I assume maximum volume means maximum sensitivity). This
- >> only causes a hiss when microphone input is played back out again
- >> with no sign of my voice. What else can I try?
- >>
- >> Regards,
- >> Daron.
- >>
- >>    
- >
- > What program are you using to test the microphone?  Several
- > applications still use the older OSS instead of the newer ALSA
- > interface, especially for microphones.  ALSA includes OSS
- > compatibility, but the mixer levels are somewhat separate.  Try using
- > an OSS mixer program, like rexima or aumix, as well as alsamixer, and
- > make sure that both the OSS & ALSA mixers are set to record from the
- > microphone & the capture level isn't 0.  Also note that in alsamixer
- > there are separate playback & capture levels for the microphone, as
- > indicated in the "View:" line towards the top: pressing tab should
- > cycle them.
- >
- > Good luck,
- > Conway S. Smith
- >  
+What program are you using to test the microphone?  Several
+applications still use the older OSS instead of the newer ALSA
+interface, especially for microphones.  ALSA includes OSS
+compatibility, but the mixer levels are somewhat separate.  Try using
+an OSS mixer program, like rexima or aumix, as well as alsamixer, and
+make sure that both the OSS & ALSA mixers are set to record from the
+microphone & the capture level isn't 0.  Also note that in alsamixer
+there are separate playback & capture levels for the microphone, as
+indicated in the "View:" line towards the top: pressing tab should
+cycle them.
 
+Good luck,
+Conway S. Smith
 
+--Sig_aKDx93os+7j8+LlLwxN_9J/
+Content-Type: application/pgp-signature; name=signature.asc
+Content-Disposition: attachment; filename=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.6 (GNU/Linux)
+
+iD8DBQFG781ZGL3AU+cCPDERAkICAKCLlK2P00mRjQTSIoxHsXh3qxpYVACfTvfg
+Wdg4J3g2FbtKqEQFAsB4j9w=
+=X+Kr
+-----END PGP SIGNATURE-----
+
+--Sig_aKDx93os+7j8+LlLwxN_9J/--
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
