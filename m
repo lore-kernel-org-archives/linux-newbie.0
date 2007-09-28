@@ -1,41 +1,24 @@
-From: hex1a4 <hex1a4@hex1a4.net>
-Subject: Re: Ntfs compability
-Date: Tue, 25 Sep 2007 13:56:57 -0400
-Message-ID: <fdbioi$osq$1@sea.gmane.org>
-References: <1142332639.44169cdfe9602@webmail2.hut.fi>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: preempt_disable() - disables preemption on all processors?
+Date: Fri, 28 Sep 2007 16:23:04 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B06536E77@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Tommi Tapani Piirainen wrote:
 
-> Hi,
-> 
-> I have slackware 10.1. I rewrote my ntfs partition with cfdisk and now I
-> am unable to boot the partition (with windows xp). Can the problem be that
-> i wrote the table with cfdisk or could it be some thing else. In
-> additional there is two different ntfs partition is cfdisk both named same
-> way. I used the first one can't remember the number (or was it 86, don't
-> remember).
-> 
-> The reason for doing this was to include slackware to same disk. First I
-> deleted ntfs partition and made it smaller. Motivation for doing this was
-> mbr chrash due use of "System Mechanic 6" or at least I think so. I
-> intalled lilo to mbr and it fixed the mbr problem. Booting problems can
-> also have some thing to do with System Mechanic 6 altering my dll-files or
-> some thing else.
-> 
-> The ntfs partition is first partition in the disk and I use
-> lilo-bootloader. Can I fix the partition with ntfstools to be bootable?
-> 
+Hi list,
 
-Your best bet might be to use windows' fixmbr to repair the boot record then
-using a live linux cd repair lilo.  Further, to access ntfs partitions in
-linux you should mount them as ntfs-3g.
+Does the preempt_disable() disable preemption on all the processors or just the current processor?
+
+Thanks,
+
+Rajat
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
