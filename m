@@ -1,20 +1,29 @@
 From: "Rajeh kuri" <rajeshkuri@gmail.com>
-Subject: Omitting heap section from Core dump file
-Date: Fri, 2 Nov 2007 17:59:43 +0530
-Message-ID: <c26b6f110711020529q6530d3e9t3d14d3ffa1de2340@mail.gmail.com>
+Subject: Fwd: Omitting heap section from Core dump file
+Date: Mon, 5 Nov 2007 18:34:47 +0530
+Message-ID: <c26b6f110711050504m26132de9n82f5a46d1b0aedf2@mail.gmail.com>
+References: <c26b6f110711020529q6530d3e9t3d14d3ffa1de2340@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        bh=E3LL5Qzy9hQZo+xqAGkHswE5TrubUQRiib6HH5G6nAw=;
-        b=XCR8hQQcZ4t+BYXlYuSesRWE7QyjssrhlVV2ITtRp/baz8BtRasN49k+bzgg/zVx582RTE9pWZ2Qalwyi4YF3akScGPHEerwXTn7USA3u9jbGIfWthOxdOHkAtJe7vd6rWUZCTLFzs7s0NvHerWiapcDPUBqg/6kpDK1EK6SlXE=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        bh=s751k8nQyGSIVPcU87LLDs1Hs4KT5lmhBKHb5NXiWyg=;
+        b=hEl1XlwVhlSFx+zznRmTX139yPROoqv255RoiYLafpgoK2TVVr60+heHgOi7taoj//gBr0Kry9KdPVZSngqJfGTmDKxF8fumkOj2LsTpV84x2mCuBIxOFJqAlOYMdmWzmz1cdFZMoATOpTRdNinOuYnX18Mnnl7K+T6qnSZWpuI=
+In-Reply-To: <c26b6f110711020529q6530d3e9t3d14d3ffa1de2340@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
+
+---------- Forwarded message ----------
+From: Rajeh kuri <rajeshkuri@gmail.com>
+Date: Nov 2, 2007 5:59 PM
+Subject: Omitting heap section from Core dump file
+To: linux-newbie@vger.kernel.org
+
 
 Hi All,
 
