@@ -1,62 +1,40 @@
-From: "Rajeh kuri" <rajeshkuri@gmail.com>
-Subject: Fwd: Omitting heap section from Core dump file
-Date: Mon, 5 Nov 2007 18:34:47 +0530
-Message-ID: <c26b6f110711050504m26132de9n82f5a46d1b0aedf2@mail.gmail.com>
-References: <c26b6f110711020529q6530d3e9t3d14d3ffa1de2340@mail.gmail.com>
+From: "Antino Kim" <antinokim@gmail.com>
+Subject: When does bottom half get to run?
+Date: Wed, 7 Nov 2007 15:13:52 -0400
+Message-ID: <f8b4363d0711071113j746b1663t496237c075e4ddfd@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=s751k8nQyGSIVPcU87LLDs1Hs4KT5lmhBKHb5NXiWyg=;
-        b=hEl1XlwVhlSFx+zznRmTX139yPROoqv255RoiYLafpgoK2TVVr60+heHgOi7taoj//gBr0Kry9KdPVZSngqJfGTmDKxF8fumkOj2LsTpV84x2mCuBIxOFJqAlOYMdmWzmz1cdFZMoATOpTRdNinOuYnX18Mnnl7K+T6qnSZWpuI=
-In-Reply-To: <c26b6f110711020529q6530d3e9t3d14d3ffa1de2340@mail.gmail.com>
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
+        bh=Kyiff2T6o9H6fuMAqUTTOMOlpUJOECm+eFa/OKuksgA=;
+        b=tvvLG/uyzo/c9lOz1cPm8y+pDD98ShddnNooxDj8+jmDZIhprDJDmzSk8wW3YAOUTkkRxQqlfm2zrdDXdGN3OvbpN97DMZRVUdjv1LUEnclUBFeT3Vicb/OOtyLp/wypG15VeMR0CdpLF87nIKhiu8HLA7dEUEVN+E/wX6mF/GE=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
----------- Forwarded message ----------
-From: Rajeh kuri <rajeshkuri@gmail.com>
-Date: Nov 2, 2007 5:59 PM
-Subject: Omitting heap section from Core dump file
-To: linux-newbie@vger.kernel.org
+Hello all,
 
+I was reading into top/bottom half handlers of interrupt processing,
+and I couldn't find an answer to my question;
 
-Hi All,
+when does bottom half get to run?
 
-I have modified the file "Linux-src/fs/binfmt_elf.c" having function
-'maydump ()' to omit/discard all anonymous segments while taking core
-dump of a process. Below is my changes in the function 'maydump ()':
+Actually, more specific question would be, can a task (any process...)
+be running when bottom half is not empty ( i.e., there are works to be
+done on be half some interrupts that happened)?
+Or, does bottom half handler have priority over all tasks (meaning
+that all bottom half work has to be completed before a scheduler gets
+to run one of the ready processes)?
 
-    if ((vma->vm_file == NULL) && (vma->vm_flags & 0x0100073))
-    {
-        if (vma->vm_start > 0x7fff00000000) /* will dump stack segment */
-            return 1;
-        printk(KERN_ERR "\nVMA Not Dumped: VMA Start 0x%lx SIZE %u",
-vma->vm_start, (vma->vm_end - vma->vm_start));
-        return 0;
-    }
+Your feedback would be appreciated. Thank you.
 
-I'm testing the above changes in x86_64 architecture having 8 CPU's.
-
-The above changes will work fine for core files which will be
-generated when the test program receives SIGSEGV while executing the
-instructions from its own code segment. (The instruction executed is
-not part of any library)
-
-And when the program receives SIGSEGV, during execution of library
-routine then the generated core file will not properly list the stack
-frames, when i issue 'bt' command on the core file. And also the
-symbols are missing from the out put of 'bt' command.
-
-Does the library call set up a separate stack area for their execution?
-Any thoughts or suggestions are highly appreciated.
-
---Regards,
-rajesh
+-- 
+For The Best,
+Antino Kim
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
