@@ -1,40 +1,37 @@
-From: "Antino Kim" <antinokim@gmail.com>
-Subject: When does bottom half get to run?
-Date: Wed, 7 Nov 2007 15:13:52 -0400
-Message-ID: <f8b4363d0711071113j746b1663t496237c075e4ddfd@mail.gmail.com>
+From: "Nguyen Vu Hung" <vuhung16plus@gmail.com>
+Subject: Linux MM and Swap in 2.x
+Date: Thu, 8 Nov 2007 10:16:01 +0900
+Message-ID: <78d7dd350711071716x3a080f24uc0433f617fed1346@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=beta;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        bh=Kyiff2T6o9H6fuMAqUTTOMOlpUJOECm+eFa/OKuksgA=;
-        b=tvvLG/uyzo/c9lOz1cPm8y+pDD98ShddnNooxDj8+jmDZIhprDJDmzSk8wW3YAOUTkkRxQqlfm2zrdDXdGN3OvbpN97DMZRVUdjv1LUEnclUBFeT3Vicb/OOtyLp/wypG15VeMR0CdpLF87nIKhiu8HLA7dEUEVN+E/wX6mF/GE=
+        bh=V4djVPbqM73Botmp8Dhoo0RbK/GQCL7XDHHLL1571BI=;
+        b=AGExOL2iYatgIi/GAqX2VqnZscbThizwIEqJhsVPvJkjkwtZi40gxh/o8aMfXYGU5hwRMAm8v3YJgMJZNFVggQVb/Gi1N0CNP/anWuvdA6fxIU6oPcl8x7EbJ7sIFBXN0ewgZq1wm9LF8Ul5ELcecxFg13o4YSfnRR9GqN6ja/M=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hello all,
+Hi all,
 
-I was reading into top/bottom half handlers of interrupt processing,
-and I couldn't find an answer to my question;
+Can anyone tell me how Linux manage memory and swap in 2.4 ( brief )
+and 2.6 ( need detail info. ).
 
-when does bottom half get to run?
-
-Actually, more specific question would be, can a task (any process...)
-be running when bottom half is not empty ( i.e., there are works to be
-done on be half some interrupts that happened)?
-Or, does bottom half handler have priority over all tasks (meaning
-that all bottom half work has to be completed before a scheduler gets
-to run one of the ready processes)?
-
-Your feedback would be appreciated. Thank you.
+I think it is best for me to read the Linux code but it sounds hard to
+me. Being said that, if you can tell me what code to read I will do
+it. And a link to a website explains about Linux memory management (
+developer level ) will be greateful.
 
 -- 
-For The Best,
-Antino Kim
+Best Regards,
+Nguyen Hung Vu
+vuhung16plus{remove}@gmail.dot.com
+An inquisitive look at Harajuku
+http://www.flickr.com/photos/vuhung/sets/72157600109218238/
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
