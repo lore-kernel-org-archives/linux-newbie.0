@@ -1,42 +1,68 @@
-From: "Rajat Jain" <Rajat.Jain@infogain.com>
-Subject: Things I can do before MMU is turned on
-Date: Wed, 2 Jan 2008 12:25:03 +0530
-Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
+From: "Mulyadi Santosa" <mulyadi.santosa@gmail.com>
+Subject: Re: Things I can do before MMU is turned on
+Date: Wed, 2 Jan 2008 19:23:59 +0700
+Message-ID: <f284c33d0801020423t20c268e3i6d9b8fcff2a46092@mail.gmail.com>
+References: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
+        bh=qhFyqEfMv/E6Y2iNE7ePflRahvuP0T+HzQuenyvmetg=;
+        b=GP0SmRJ0LBnq9uTnentwvYJAIFV/XIuxJCrw7s7B2xNHMA8olp2FCf8uK4Vpw1o41bf2cGTKvqveAv93K4CICx+UWkQHcYRP66css8rW8S8ApnzwP76CrXKpv48fPfiqCHIoVgdTdMje50hJQkgRHijkcQCB2b1Ee5ty2SyuIKE=
+In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
+To: Rajat Jain <Rajat.Jain@infogain.com>
+Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
+Hi...
 
-Hi,
+> This is a little offtopic but ...
 
-This is a little offtopic but ...
+Not sure if I can handle these things :)
 
-I'm working in an environment where the MMU has yet not been enabled (And hence on PC relative addressing can be used - no absolute addresses). I'm trying to build an exhaustive list (in terms of C language source contructs) of what I am allowed to do and what no. Can you please help me by adding to the list and verifying / disqualifying if anything is wrong:
+> Allowed
+> =======
+> 1) Local variables
+yes, they are referenced by offset of ebp/esp IIRC
 
-Allowed
-=======
-1) Local variables
-2) Function calls using function name (right?)
-3) if-then-else
-4) for / while / do-while
+> 2) Function calls using function name (right?)
 
+hm, relocation usually replace function calls with absolute function
+call, at least on x86.
 
-Not Allowed
-===========
-1) Accessing global variables
-2) Function call using function pointers (why?)
-3) Switch-case (why?)
+> 3) if-then-else
+that will be translated to jmp <label> IIRC..and that means relative
+jump. But not sure after relocation.
+> 4) for / while / do-while
+same as (3) IMHO
 
-Any thing else that can be added to the "Not allowed" list?
+> Not Allowed
+> ===========
+> 1) Accessing global variables
+IIRC yes. .bss and .data is usually referenced with absolute address
 
-Thanks,
+> 2) Function call using function pointers (why?)
+well, maybe because it can refer anywhere in valid address space, thus
+it uses absolute address.
 
-Rajat
+> 3) Switch-case (why?)
+
+usually it become jump table, but not sure about the addresses.
+
+> Any thing else that can be added to the "Not allowed" list?
+
+anything that could possibly jump beyond the defined "address space"?
+If I understand correctly, without MMU... there is per task unique
+address space, thus it's up to you to define the boundary, correct?
+
+regards,
+
+Mulyadi.
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
