@@ -1,70 +1,78 @@
-From: "Mulyadi Santosa" <mulyadi.santosa@gmail.com>
+From: "srinivas bakki" <srinivas.bakki@gmail.com>
 Subject: Re: Things I can do before MMU is turned on
-Date: Wed, 2 Jan 2008 19:23:59 +0700
-Message-ID: <f284c33d0801020423t20c268e3i6d9b8fcff2a46092@mail.gmail.com>
+Date: Wed, 2 Jan 2008 18:22:43 +0530
+Message-ID: <91219fd00801020452y5a6369d5n5e151f3be64d9f05@mail.gmail.com>
 References: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_6064_26185304.1199278363751"
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=qhFyqEfMv/E6Y2iNE7ePflRahvuP0T+HzQuenyvmetg=;
-        b=GP0SmRJ0LBnq9uTnentwvYJAIFV/XIuxJCrw7s7B2xNHMA8olp2FCf8uK4Vpw1o41bf2cGTKvqveAv93K4CICx+UWkQHcYRP66css8rW8S8ApnzwP76CrXKpv48fPfiqCHIoVgdTdMje50hJQkgRHijkcQCB2b1Ee5ty2SyuIKE=
+        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
+        bh=090Yerg0Xb2N/Y7ANztisprKFEXtErLnJjFdX82gBV0=;
+        b=RtAZ8NB75OTJ6zN1A/nk1hx5+tNSDV63ofP3H2d92wJKEduoyDnc54SIgYMh0pV+ZvuD8YEBIJP7jckcMYpCDZOcT1fMerJhIp26QhTG4cwpwhRqt9eIXRNLXNtZ/SBhT95uVoaeFMpoC6gm28QcyomHVhxuO5pQgACBGjIfT8Q=
 In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 To: Rajat Jain <Rajat.Jain@infogain.com>
 Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
-Hi...
+------=_Part_6064_26185304.1199278363751
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-> This is a little offtopic but ...
+>
+> I'm working in an environment where the MMU has yet not been enabled (And
+> hence on PC relative addressing can be used - no absolute addresses).
 
-Not sure if I can handle these things :)
 
-> Allowed
-> =======
-> 1) Local variables
-yes, they are referenced by offset of ebp/esp IIRC
+Does it necessarily mean that u need to access data or text with relative
+addressing only ? I mean yes we have to address it relatively but its very
+architecture specific.
 
-> 2) Function calls using function name (right?)
+ let us say in x86 segments are defined to span the entire addressable
+memory then both the absolute and the relative become the same ... am i
+right ?
 
-hm, relocation usually replace function calls with absolute function
-call, at least on x86.
+However  what i fail understand is why the question is being asked in
+context with the MMU being enabled or disabled !
 
-> 3) if-then-else
-that will be translated to jmp <label> IIRC..and that means relative
-jump. But not sure after relocation.
-> 4) for / while / do-while
-same as (3) IMHO
+Regards
+Srinivas Bakki
 
-> Not Allowed
-> ===========
-> 1) Accessing global variables
-IIRC yes. .bss and .data is usually referenced with absolute address
+------=_Part_6064_26185304.1199278363751
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
-> 2) Function call using function pointers (why?)
-well, maybe because it can refer anywhere in valid address space, thus
-it uses absolute address.
+<div>
+<blockquote class="gmail_quote" style="PADDING-LEFT: 1ex; MARGIN: 0px 0px 0px 0.8ex; BORDER-LEFT: #ccc 1px solid">I&#39;m working in an environment where the MMU has yet not been enabled (And hence on PC relative addressing can be used - no absolute addresses).
+</blockquote>
+<div>&nbsp;</div>
+<div>Does it necessarily mean that u need to access data or text with relative addressing only ? I mean yes we have to address it relatively but its very architecture specific.</div>
+<div>&nbsp;</div>
+<div>&nbsp;let us say in x86 segments are defined to span the entire addressable memory then both the absolute and the relative become the same ... am i right ?</div>
+<div>&nbsp;</div>
+<div>However&nbsp; what i&nbsp;fail understand&nbsp;is why the question is being asked in context with the MMU being enabled or disabled !</div>
+<div>&nbsp;</div>
+<div>Regards</div>
+<div>Srinivas Bakki</div>
+<div>&nbsp;</div><br>&nbsp;</div>
 
-> 3) Switch-case (why?)
+------=_Part_6064_26185304.1199278363751--
 
-usually it become jump table, but not sure about the addresses.
+--
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
 
-> Any thing else that can be added to the "Not allowed" list?
-
-anything that could possibly jump beyond the defined "address space"?
-If I understand correctly, without MMU... there is per task unique
-address space, thus it's up to you to define the boundary, correct?
-
-regards,
-
-Mulyadi.
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
