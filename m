@@ -1,78 +1,85 @@
-From: "srinivas bakki" <srinivas.bakki@gmail.com>
-Subject: Re: Things I can do before MMU is turned on
-Date: Wed, 2 Jan 2008 18:22:43 +0530
-Message-ID: <91219fd00801020452y5a6369d5n5e151f3be64d9f05@mail.gmail.com>
-References: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
+From: Girish H <hhgirish@yahoo.com>
+Subject: PCI express hot plug issue
+Date: Wed, 23 Jan 2008 15:39:46 -0800 (PST)
+Message-ID: <470930.59881.qm@web39812.mail.mud.yahoo.com>
 Mime-Version: 1.0
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_6064_26185304.1199278363751"
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:references;
-        bh=090Yerg0Xb2N/Y7ANztisprKFEXtErLnJjFdX82gBV0=;
-        b=RtAZ8NB75OTJ6zN1A/nk1hx5+tNSDV63ofP3H2d92wJKEduoyDnc54SIgYMh0pV+ZvuD8YEBIJP7jckcMYpCDZOcT1fMerJhIp26QhTG4cwpwhRqt9eIXRNLXNtZ/SBhT95uVoaeFMpoC6gm28QcyomHVhxuO5pQgACBGjIfT8Q=
-In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B075CC22B@GDCMX01.igglobal.com>
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-To: Rajat Jain <Rajat.Jain@infogain.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-------=_Part_6064_26185304.1199278363751
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Hi,
+        I'm trying to use the hot plug feature of
+PCI-PCIE bridge using pciehp.ko hot plug driver. I see
+the following issues and experiences after workarounds
+employed. 
 
->
-> I'm working in an environment where the MMU has yet not been enabled (And
-> hence on PC relative addressing can be used - no absolute addresses).
+The bridge chip is from Pericom PI7C9X110 and bridge
+is configured in reverse mode i.e. PCI to PCI express.
+When I try to load the kernel driver i.e., PCIE root
+port driver it fails to load. On debugging this driver
+loading sequence I see that init method is called and
+the probe method (pcie_port_device_probe fn) returns
+with error code ENODEV. Debugging revealed that the
+bridge reported device/port type as 80h i.e. PCI/PCIx
+to Express bridge,  in its PCIExpress capability
+register of PCIexpress capability structure.  
+Is this correct reporting by bridge? 
+If yes, is PCIe root port driver needed to handle this
+setting also? 
+For comparison purposes I found a server box having
+Intel South bridge chip which is PCI express to
+PCI/PCI-x mode device i.e, forward bridge mode
+operation. This also reports device port type as 07h
+which is again bridge device but unfortunately it
+didn't have a  HP controller on it. 
+Gurus, Please comment here with yes or no so that
+either I can use a s/w fix or make the vendor to
+report expected value in its config table.
+
+Next issue: 
+I just put a hack specific to Pericom vendor and
+device id to get past this issue in loading PCIe root
+port driver. With this root port driver got loaded
+successfully. Then I tried to load pciehp hot plug
+driver. Again this driver's probe method failed as
+this also checks for device/port type to be either
+Root port or Downstream port. 
+  So does bridge need to report it as a root port/down
+stream port for hot plug capability?
+ 
+From board layout perspective we plan to use this
+bridge as a secondary bridge i.e. as another south
+bridge device. So from my understanding of PCI specs
+this value should NOT be root port. If you disagree
+please comment here.
+
+Again with my hack I got past this issue but the probe
+method failed as there was no HP methods present in
+ACPI bios name space. I got around this method by
+using force flag for loading the driver. The hot plug
+driver works fine with all device removal/insertion
+issues but this raises basic question next. For hot
+plug to work properly either _OSC or _OSHP method
+should be supported in ACPI BIOS name space. I don't
+see these in dsdt file generated for BIOS we are
+using, then how are the hot plug interrupts being
+captured by Linux kernel? 
+
+Thanks in advance.
+
+regards
+Girish Handral
 
 
-Does it necessarily mean that u need to access data or text with relative
-addressing only ? I mean yes we have to address it relatively but its very
-architecture specific.
 
- let us say in x86 segments are defined to span the entire addressable
-memory then both the absolute and the relative become the same ... am i
-right ?
-
-However  what i fail understand is why the question is being asked in
-context with the MMU being enabled or disabled !
-
-Regards
-Srinivas Bakki
-
-------=_Part_6064_26185304.1199278363751
-Content-Type: text/html; charset=ISO-8859-1
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-<div>
-<blockquote class="gmail_quote" style="PADDING-LEFT: 1ex; MARGIN: 0px 0px 0px 0.8ex; BORDER-LEFT: #ccc 1px solid">I&#39;m working in an environment where the MMU has yet not been enabled (And hence on PC relative addressing can be used - no absolute addresses).
-</blockquote>
-<div>&nbsp;</div>
-<div>Does it necessarily mean that u need to access data or text with relative addressing only ? I mean yes we have to address it relatively but its very architecture specific.</div>
-<div>&nbsp;</div>
-<div>&nbsp;let us say in x86 segments are defined to span the entire addressable memory then both the absolute and the relative become the same ... am i right ?</div>
-<div>&nbsp;</div>
-<div>However&nbsp; what i&nbsp;fail understand&nbsp;is why the question is being asked in context with the MMU being enabled or disabled !</div>
-<div>&nbsp;</div>
-<div>Regards</div>
-<div>Srinivas Bakki</div>
-<div>&nbsp;</div><br>&nbsp;</div>
-
-------=_Part_6064_26185304.1199278363751--
-
---
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+      ____________________________________________________________________________________
+Looking for last minute shopping deals?  
+Find them fast with Yahoo! Search.  http://tools.search.yahoo.com/newsearch/category.php?category=shopping
+-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
