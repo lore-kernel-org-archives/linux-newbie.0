@@ -1,38 +1,38 @@
 From: "Mulyadi Santosa" <mulyadi.santosa@gmail.com>
-Subject: Re: Location of syscall wrappers
-Date: Thu, 7 Feb 2008 22:40:01 +0700
-Message-ID: <f284c33d0802070740i29ff633bn95963585b69648f9@mail.gmail.com>
-References: <f5524d840802062248v2311b6at1dc22bc30ece3b60@mail.gmail.com>
-	 <C86899CCB10A6C4E93D5978DCB232D4B07A66B7D@GDCMX01.igglobal.com>
+Subject: Re: MIssed interrupts
+Date: Thu, 7 Feb 2008 22:50:16 +0700
+Message-ID: <f284c33d0802070750n1bc438c1y85c974bbf53a8242@mail.gmail.com>
+References: <7783925d0802062112r4637c674qf2d1dd356cc0923e@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=tYtKes2MvhshTb78ntRqjNiFlJ/5qbYCURhhdeQ2YgE=;
-        b=HkK18i1Qw0CTZnqlzAMTGygQHmWLavmOuF9q2hJnWzWBzzjL/RKAh23YGdqmOW77WirKcWEVu/5Fc8AfD0hhkaa2jEbZOj6xjIv8x72LX54KJNrSQWE24CNxEmhTsknEVROb0aQvCMFjVBWQCtLVHuHSn1REtHIi7WH/vhe8SqY=
-In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B07A66B7D@GDCMX01.igglobal.com>
+        bh=LI+H2jO4OxdRcRj2Wrv9dNvoe8w991BHGrOmv/LdmcQ=;
+        b=DYVMqZsFwqLJ6904u6ljbjmYyF8BNw1unuExpX2qS/FGWZsmpKhveH6k3/Xk2qDsyPnRCYXdZQjcKurwBa6KxpFc/ors9Y+9/nNyHq52F1M+tq68aOOBAod2OjCQkgW/UNUZSeqU72/Yps6R1nmEWNXDKsaNrPruaFfHd/jcNnM=
+In-Reply-To: <7783925d0802062112r4637c674qf2d1dd356cc0923e@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Rajat Jain <Rajat.Jain@infogain.com>
-Cc: Sachin Gaikwad <sachin.kernel@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: Rick Brown <rick.brown.3@gmail.com>
+Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hi...
+Hi....
 
-On Feb 7, 2008 3:42 PM, Rajat Jain <Rajat.Jain@infogain.com> wrote:
-> Who is supposed to provide syscall()?? C library? Where do I find its definition (not declaration)?
+On Feb 7, 2008 12:12 PM, Rick Brown <rick.brown.3@gmail.com> wrote:
+> Hi,
+>
+> If a particual IRQ line has been disabled (disable_irq()), what
+> happens if the device on that IRQ line generates interrupt? Does it
+> result in missed interrupt?
 
-I think it could be the C kernel headers. I mean something like
-/usr/include/asm...
+AFAIK at the time it's in disabled state...yes it will be missed. But
+once you enabled it again.... missing interrupts will be received. It
+is different when interrupt is masked...it will be simply ignored.
 
-> What is an application supposed to do if it does not want to use the library?
-
-by calling sysenter or int 0x80 and put related parameters in certain registers?
-
-regards,
+regards.
 
 Mulyadi.
 -
