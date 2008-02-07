@@ -1,7 +1,7 @@
 From: mokhtar <mbmessaoud@yahoo.com>
-Subject: Usb device statistics
-Date: Thu, 7 Feb 2008 05:52:03 -0800 (PST)
-Message-ID: <15334316.post@talk.nabble.com>
+Subject: Loopback interfaces
+Date: Thu, 7 Feb 2008 05:54:54 -0800 (PST)
+Message-ID: <15334369.post@talk.nabble.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,11 +11,11 @@ Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
 
-I need to retrieve statistics about usb device 
- (sent packets , received packets)
-How to do that ?
+Is it possible to creat emore than one loopback interface
+
+I need this feature to implement loopback interfcaes as in router ( cisco)
 -- 
-View this message in context: http://www.nabble.com/Usb-device-statistics-tp15334316p15334316.html
+View this message in context: http://www.nabble.com/Loopback-interfaces-tp15334369p15334369.html
 Sent from the linux-newbie mailing list archive at Nabble.com.
 
 -
