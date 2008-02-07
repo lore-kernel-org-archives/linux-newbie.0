@@ -1,37 +1,36 @@
 From: "Mulyadi Santosa" <mulyadi.santosa@gmail.com>
-Subject: Re: Copy-on-Write
-Date: Thu, 7 Feb 2008 22:30:48 +0700
-Message-ID: <f284c33d0802070730s7dcc2735o77fe1d655e4220cc@mail.gmail.com>
-References: <7783925d0802052149g125a6497rabf866130edbaf78@mail.gmail.com>
+Subject: Re: Location of syscall wrappers
+Date: Thu, 7 Feb 2008 22:40:01 +0700
+Message-ID: <f284c33d0802070740i29ff633bn95963585b69648f9@mail.gmail.com>
+References: <f5524d840802062248v2311b6at1dc22bc30ece3b60@mail.gmail.com>
+	 <C86899CCB10A6C4E93D5978DCB232D4B07A66B7D@GDCMX01.igglobal.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=YejU74EPdI2xZfCBTWXUthyGLQNldC3ce4Cy2UnTDHY=;
-        b=JTofulqw+esoPAYst/fOyY892QXS9KQCZZiyCOOK8V+LfBdGlGyY1aXV6LRBCeNt/zTCbB4MnL5j9SoUA6NtFnDXBfpzx4C2U25zNhkR2fVOUEBH8AmKwZ0U/y/LoowmbvHXvZgNI2IPMe4qmsLuPVpt5Soaar0sv3LlthiaslQ=
-In-Reply-To: <7783925d0802052149g125a6497rabf866130edbaf78@mail.gmail.com>
+        bh=tYtKes2MvhshTb78ntRqjNiFlJ/5qbYCURhhdeQ2YgE=;
+        b=HkK18i1Qw0CTZnqlzAMTGygQHmWLavmOuF9q2hJnWzWBzzjL/RKAh23YGdqmOW77WirKcWEVu/5Fc8AfD0hhkaa2jEbZOj6xjIv8x72LX54KJNrSQWE24CNxEmhTsknEVROb0aQvCMFjVBWQCtLVHuHSn1REtHIi7WH/vhe8SqY=
+In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B07A66B7D@GDCMX01.igglobal.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Rajat Jain <Rajat.Jain@infogain.com>
+Cc: Sachin Gaikwad <sachin.kernel@gmail.com>, kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-Hi....
+Hi...
 
-On Feb 6, 2008 12:49 PM, Rick Brown <rick.brown.3@gmail.com> wrote:
-> So in linux, is a child run first or the parent? Can we rely on this
-> information?
+On Feb 7, 2008 3:42 PM, Rajat Jain <Rajat.Jain@infogain.com> wrote:
+> Who is supposed to provide syscall()?? C library? Where do I find its definition (not declaration)?
 
-Hm, this might be the answer:
-http://lxr.linux.no/linux/kernel/sched.c#L1663
+I think it could be the C kernel headers. I mean something like
+/usr/include/asm...
 
-it says:
-unsigned int __read_mostly sysctl_sched_child_runs_first = 1;
+> What is an application supposed to do if it does not want to use the library?
 
-and I guess it has relationship with certain /proc or /sys entry.
+by calling sysenter or int 0x80 and put related parameters in certain registers?
 
 regards,
 
