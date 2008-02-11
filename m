@@ -1,53 +1,66 @@
 From: "Rajat Jain" <Rajat.Jain@infogain.com>
-Subject: RE: Use of IRQF_DISABLED along with IRQF_SHARED
-Date: Mon, 11 Feb 2008 10:42:03 +0530
-Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B07A934B5@GDCMX01.igglobal.com>
-References: <804dabb00802080640i1921ef14k1b2c916f5717fd28@mail.gmail.com>
+Subject: ISR may be called with interrupts enabled (Was:"Use of IRQF_DISABLED along with IRQF_SHARED")
+Date: Mon, 11 Feb 2008 10:44:06 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B07A934C2@GDCMX01.igglobal.com>
+References: <C86899CCB10A6C4E93D5978DCB232D4B07A66D47@GDCMX01.igglobal.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Content-class: urn:content-classes:message
-In-Reply-To: <804dabb00802080640i1921ef14k1b2c916f5717fd28@mail.gmail.com>
+In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B07A66D47@GDCMX01.igglobal.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Peter Teoh <htmldeveloper@gmail.com>
-Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-----Original Message----
-From: Peter Teoh [mailto:htmldeveloper@gmail.com]
-Sent: Friday, February 08, 2008 8:11 PM
-To: Rajat Jain
-Cc: kernelnewbies@nl.linux.org; linux-newbie@vger.kernel.org
-Subject: Re: Use of IRQF_DISABLED along with IRQF_SHARED
+Hi,
 
-> sorry, i am also quite confused....
-> 
-> the caller of your function handle_IRQ_event() is __do_IRQ(), which
-> is thus: 
-> 
->                 if (likely(!(desc->status & IRQ_DISABLED))) {
->                         action_ret = handle_IRQ_event(irq,
->                         desc->action); if (!noirqdebug)
->                                 note_interrupt(irq, desc, action_ret);
->                 }
-> 
-> so what it means that only when IRQ_DISABLED is NOT SET, then
-> handle_IRQ_event() will be called, simulating a software-based IRQ.
-> 
-> and so the above function WILL ALWAYS BE CALLED WITH IRQ_DISABLED NOT
-> SET (assuming there is no other caller of handle_IRQ_event()).
-> 
-> errhhhh?? Am i right?
-
-
-Hi Peter,
-
-I think you are mistaken between IRQ_DISABLED & IRQF_DISABLED. My question was about IRQF_DISABLED.
+Was wondering if I did not frame my question appropriately? Or it there a better place to discuss this?
 
 Thanks,
 
 Rajat
+
+> 
+> This is regarding the following code in kernel/irq/handle.c. Consider
+> the case of a shared IRQ line, where two handlers are registered such
+> that first handler does not specify IRQF_DISABLED, but the second one
+> does. But it seems both the handlers will be called IRQs ENABLED
+> (which is certainly not what the second handler expects).    
+> 
+> I also checked but could not find anything that stops me from
+> registering two shared ISRs - one with IRQF_DISABLED & another
+> without this flag. Am I missing something here?  
+> 
+> irqreturn_t handle_IRQ_event(unsigned int irq, struct irqaction
+> *action) {
+>     irqreturn_t ret, retval = IRQ_NONE;
+>     unsigned int status = 0;
+> 
+>     handle_dynamic_tick(action);
+> 
+>     if (!(action->flags & IRQF_DISABLED))
+>         local_irq_enable_in_hardirq();
+> 
+>     do {
+>         ret = action->handler(irq, action->dev_id);
+>         if (ret == IRQ_HANDLED)
+>             status |= action->flags;
+>         retval |= ret;
+>         action = action->next;
+>     } while (action);
+> 
+>     if (status & IRQF_SAMPLE_RANDOM)
+>         add_interrupt_randomness(irq);
+>     local_irq_disable();
+> 
+>     return retval;
+> }
+> 
+> Thanks,
+> 
+> Rajat
+
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
