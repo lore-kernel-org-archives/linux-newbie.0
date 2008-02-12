@@ -1,68 +1,50 @@
-From: "Rajat Jain" <Rajat.Jain@infogain.com>
-Subject: ISR may be called with interrupts enabled (Was:"Use of IRQF_DISABLED along with IRQF_SHARED")
-Date: Mon, 11 Feb 2008 10:44:06 +0530
-Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B07A934C2@GDCMX01.igglobal.com>
-References: <C86899CCB10A6C4E93D5978DCB232D4B07A66D47@GDCMX01.igglobal.com>
+From: Benny Halevy <bhalevy@panasas.com>
+Subject: Re: Question about do_sync_read()
+Date: Tue, 12 Feb 2008 10:44:30 +0200
+Message-ID: <47B15C6E.4030003@panasas.com>
+References: <ea11fea30802090052o22a77f0bkb8867cc8f570572e@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
-Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
-In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B07A66D47@GDCMX01.igglobal.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-fsdevel-owner@vger.kernel.org>
+In-Reply-To: <ea11fea30802090052o22a77f0bkb8867cc8f570572e@mail.gmail.com>
+Sender: linux-fsdevel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+To: Manish Katiyar <mkatiyar@gmail.com>
+Cc: linux-newbie@vger.kernel.org, linux-fsdevel@vger.kernel.org
 
-Hi,
+On Feb. 09, 2008, 10:52 +0200, "Manish Katiyar" <mkatiyar@gmail.com> wrote:
+> Hi,
+> 
+> In the implementation of file systems for 2.6 kernels,
+> generic_file_read is often replaced with do_sync_read(). In this
+> function we call "filp->f_op->aio_read" unconditionally.
+> where most of the times aio_read is intialized as
+> generic_file_aio_read(). Wouldn't it be a good idea to change the
+> following code
+> 
+> 241  for (;;) {
+> 242   ret = filp->f_op->aio_read(&kiocb, &iov, 1, kiocb.ki_pos);
+> 243   if (ret != -EIOCBRETRY)
+> 244    break;
+> 245   wait_on_retry_sync_kiocb(&kiocb);
+> 
+> to
+> 
+> 241  for (;;) {
+> 242     if(filp->f_op->aio_read)
+> 243         ret = filp->f_op->aio_read(&kiocb, &iov, 1, kiocb.ki_pos);
+> 244     else
+> 245              ret = generic_file_aio_read(&kiocb, &iov, 1, kiocb.ki_pos);
+> 246   if (ret != -EIOCBRETRY)
+> 247    break;
+> 248   wait_on_retry_sync_kiocb(&kiocb);
+> 
+> Just to have a fall back mechanism as we do at many places in the VFS layer..
+> 
 
-Was wondering if I did not frame my question appropriately? Or it there a better place to discuss this?
+FWIW, it's a bit more efficient to set aio_read to generic_file_aio_read and
+call it unconditionally.
 
-Thanks,
+Benny
 
-Rajat
-
-> 
-> This is regarding the following code in kernel/irq/handle.c. Consider
-> the case of a shared IRQ line, where two handlers are registered such
-> that first handler does not specify IRQF_DISABLED, but the second one
-> does. But it seems both the handlers will be called IRQs ENABLED
-> (which is certainly not what the second handler expects).    
-> 
-> I also checked but could not find anything that stops me from
-> registering two shared ISRs - one with IRQF_DISABLED & another
-> without this flag. Am I missing something here?  
-> 
-> irqreturn_t handle_IRQ_event(unsigned int irq, struct irqaction
-> *action) {
->     irqreturn_t ret, retval = IRQ_NONE;
->     unsigned int status = 0;
-> 
->     handle_dynamic_tick(action);
-> 
->     if (!(action->flags & IRQF_DISABLED))
->         local_irq_enable_in_hardirq();
-> 
->     do {
->         ret = action->handler(irq, action->dev_id);
->         if (ret == IRQ_HANDLED)
->             status |= action->flags;
->         retval |= ret;
->         action = action->next;
->     } while (action);
-> 
->     if (status & IRQF_SAMPLE_RANDOM)
->         add_interrupt_randomness(irq);
->     local_irq_disable();
-> 
->     return retval;
-> }
-> 
-> Thanks,
-> 
-> Rajat
-
--
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
