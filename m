@@ -1,54 +1,55 @@
-From: am kara <kara_am@yahoo.com>
-Subject: IPsec, kernel, kara_am
-Date: Tue, 12 Feb 2008 21:34:48 -0800 (PST)
-Message-ID: <752164.54710.qm@web45907.mail.sp1.yahoo.com>
+From: Brandon Philips <brandon@ifup.org>
+Subject: Re: Copy-on-Write
+Date: Tue, 12 Feb 2008 21:44:11 -0800
+Message-ID: <20080213054411.GA30574@plankton.ifup.org>
+References: <7783925d0802052149g125a6497rabf866130edbaf78@mail.gmail.com> <f284c33d0802070730s7dcc2735o77fe1d655e4220cc@mail.gmail.com> <20080207234612.GB22488@plankton.ifup.org> <5f9618380802071809v24f2be47xc9aea8664a8f8488@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <5f9618380802071809v24f2be47xc9aea8664a8f8488@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: =?iso-8859-1?Q?Ren=EA?= <rene@grad.icmc.usp.br>
+Cc: linux-newbie@vger.kernel.org
 
-I have questions about the linux kernel and IPsec at
-the layer 3, the files 'net/ipv4/ipip.c' and
-'net/ipv4/tunnel4.c':
-Are these files necessary to implement IPsec? What are
-their main functionalities?
+On 00:09 Fri 08 Feb 2008, Ren=EA wrote:
+> What kernel version did you get this code?
 
-I see many input and output files at net/ipv4 like:
-ip_input.c/ip_output.c or
-xfrm4_input.c/xfrm4_output.c, If IPsec is enabled,
-does the second group  'xfrm4_input.c/xfrm4_output.c'
-is used instead of the first one? Or the second ones
-are called by the first couple of functions?
+It exists in 2.6.23+ IIRC.  Poke around at the git-log for
+kernel/sched.c
 
-net/ipv4/ah4.c and net/ipv4/esp4.c also have
-input/output functions, when and how they are called?
-I am looking for a simple flow of network traffic in
-case of IPsec...
+Cheers,
 
-I did not get my answer in the Linux kernel books,
-please answer me with your own technical knowledge.
-thank you. 
+	Brandon
 
-What is the flow of (input/output) information inside
-the layer 3 when IPsec is enabled? 
-
-How IPsec is enabled at user space, is it done by
-setkey or socket system call with special arguments?
-
-
-
-
-
-      ____________________________________________________________________________________
-Be a better friend, newshound, and 
-know-it-all with Yahoo! Mobile.  Try it now.  http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ 
-
-
+> On Feb 7, 2008 9:46 PM, Brandon Philips <brandon@ifup.org> wrote:
+> > On 22:30 Thu 07 Feb 2008, Mulyadi Santosa wrote:
+> > > On Feb 6, 2008 12:49 PM, Rick Brown <rick.brown.3@gmail.com> wrot=
+e:
+> > > > So in linux, is a child run first or the parent? Can we rely on=
+ this
+> > > > information?
+> > >
+> > > Hm, this might be the answer:
+> > > http://lxr.linux.no/linux/kernel/sched.c#L1663
+> > >
+> > > it says:
+> > > unsigned int __read_mostly sysctl_sched_child_runs_first =3D 1;
+> > >
+> > > and I guess it has relationship with certain /proc or /sys entry.
+> >
+> >  $ sysctl -w kernel.sched_child_runs_first=3D0
+> >
+> > Also available here: /proc/sys/kernel/sched_child_runs_first
+> >
+> > Cheers,
+> >
+> >        Brandon
 -
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
