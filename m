@@ -1,82 +1,51 @@
-From: "Rodrigo Rubira Branco (BSDaemon)" <rodrigo@kernelhacking.com>
-Subject: Re: sysctl_ip_default_ttl is not exported in 2.6
-Date: Tue, 12 Feb 2008 10:05:44 -0000
-Message-ID: <20080212120544.7CCBD8BD97@mail.fjaunet.com.br>
-Reply-To: "Rodrigo Rubira Branco (BSDaemon)" <rodrigo@kernelhacking.com>
+From: am kara <kara_am@yahoo.com>
+Subject: IPsec, kernel, kara_am
+Date: Tue, 12 Feb 2008 21:34:48 -0800 (PST)
+Message-ID: <752164.54710.qm@web45907.mail.sp1.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, "murtuja_bharmal@yahoo.com"@fjaunet.com.br
+To: linux-newbie@vger.kernel.org
 
-ip_options_compile is not static ;)
+I have questions about the linux kernel and IPsec at
+the layer 3, the files 'net/ipv4/ipip.c' and
+'net/ipv4/tunnel4.c':
+Are these files necessary to implement IPsec? What are
+their main functionalities?
 
-I think you can use:
-dst_metric(nskb->dst, RTAX_HOPLIMIT);
+I see many input and output files at net/ipv4 like:
+ip_input.c/ip_output.c or
+xfrm4_input.c/xfrm4_output.c, If IPsec is enabled,
+does the second group  'xfrm4_input.c/xfrm4_output.c'
+is used instead of the first one? Or the second ones
+are called by the first couple of functions?
 
-To replace the sysctl_ip_default_ttl value...
+net/ipv4/ah4.c and net/ipv4/esp4.c also have
+input/output functions, when and how they are called?
+I am looking for a simple flow of network traffic in
+case of IPsec...
 
-Please, let me know if it works for you.
+I did not get my answer in the Linux kernel books,
+please answer me with your own technical knowledge.
+thank you. 
 
+What is the flow of (input/output) information inside
+the layer 3 when IPsec is enabled? 
 
-cya,
-
-
-Rodrigo (BSDaemon).
-
---
-http://www.kernelhacking.com/rodrigo
-
-Kernel Hacking: If i really know, i can hack
-
-GPG KeyID: 1FCEDEA1
+How IPsec is enabled at user space, is it done by
+setkey or socket system call with special arguments?
 
 
---------- Mensagem Original --------
-De: murtuja bharmal <murtuja_bharmal@yahoo.com>
-Para: linux-newbie@vger.kernel.org <linux-newbie@vger.kernel.org>
-Assunto: sysctl_ip_default_ttl is not exported in 2.6
-Data: 12/02/08 08:41
 
->
-> Hello,
->
-> I m doing porting of kernel module from 2.4 to 2.6
-> kernel, during the porting I came to know some of the
-> Exported Symbol in 2.4, is now static in 2.6, which
-> our kernel module is using.
->
-> Like
-> sysctl_ip_default_ttl
-> ip_options_compile
->
-> Following is the reference link
-> http://lists.linuxcoding.com/kernel/2005-q2/msg17865.html
->
-> Can anyone please suggest a possible solution for the
-> same.
-> Should I need to Export These kernel symbols again in
-> linux 2.6 kernel code.
->
-> Murtuja
->
->
->
->       Why delete messages? Unlimited storage is just a click away. Go to
-http://help.yahoo.com/l/in/yahoo/mail/yahoomail/tools/tools-08.html
-> -
-> To unsubscribe from this list: send the line &quot;unsubscribe
-linux-newbie&quot; in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
->
->
->
->
+
+
+      ____________________________________________________________________________________
+Be a better friend, newshound, and 
+know-it-all with Yahoo! Mobile.  Try it now.  http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ 
+
 
 -
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
