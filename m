@@ -1,48 +1,38 @@
-From: "Peter Teoh" <htmldeveloper@gmail.com>
+From: "Jike Song" <albcamus@gmail.com>
 Subject: Re: MIssed interrupts
-Date: Fri, 29 Feb 2008 11:35:24 +0800
-Message-ID: <804dabb00802281935q4fbc0988w172b40493883cf1@mail.gmail.com>
+Date: Fri, 29 Feb 2008 15:21:07 +0800
+Message-ID: <df9815e70802282321l789d6c3bj967da63d3761183b@mail.gmail.com>
 References: <7783925d0802062112r4637c674qf2d1dd356cc0923e@mail.gmail.com>
+	 <f284c33d0802070750n1bc438c1y85c974bbf53a8242@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=gIGBraUDr9/Zwk+3Y8YqZTGVuOFBM9BaGQu956Uo7Cc=;
-        b=Lmim5xlp6eliE5TzYXP1AYSXrRvE9HIukgySZaG69cyoaz8KiEEv2tVwFnGws+6Px/VB7fOrvxa0u0uxoe/715NtHgwVo3kv9WRnYuoavb6Zh01nn4J8Ih8PCa9HEEGipv+xZl+47H26TvaaddMD+6IjJBQb7VtroasSD7sCnLY=
-In-Reply-To: <7783925d0802062112r4637c674qf2d1dd356cc0923e@mail.gmail.com>
+        bh=vTCOr5Uv6pYYZhzD0ugmCc9SYumFjc+8eQgCZGZfz+M=;
+        b=C8m5A5WEl5tx5R7gnAlCKsGZGu0c/3J2s8eBwdtjr3Y0yycroLQ9r2Ci0puJnQAhZVvmmdkyY7XFGgScSaIQVgNIu/7ue3yAkPt8HmnSt6k+aFrHexLf4R0W+1OaydyNEswhHJkUVhRwyoY81hl6n+JvNnIoUGSGrRiDp21njFk=
+In-Reply-To: <f284c33d0802070750n1bc438c1y85c974bbf53a8242@mail.gmail.com>
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Mulyadi Santosa <mulyadi.santosa@gmail.com>
+Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-On 2/7/08, Rick Brown <rick.brown.3@gmail.com> wrote:
-> Hi,
+On Thu, Feb 7, 2008 at 11:50 PM, Mulyadi Santosa
+<mulyadi.santosa@gmail.com> wrote:
+> Hi....
 >
->  If a particual IRQ line has been disabled (disable_irq()), what
->  happens if the device on that IRQ line generates interrupt? Does it
->  result in missed interrupt?
+>  AFAIK at the time it's in disabled state...yes it will be missed. But
+>  once you enabled it again.... missing interrupts will be received.
 
-Yes, and there are a few other problems with interrupts too.   For
-missed interrupt, we solved by "bottom half".    In essence the
-interrupt handler has to be very short (which is immuned to another
-interrupt trigger), and complete as soon as possible to get ready to
-receive another interrupt, while the "deferred context" can execute
-slowly, but is all the time interrupt-ready.
+Do you mean that the PIC(Local APIC or something else) will retain the
+disabled interrupt, and deliver it once again to the processor core as
+soon as be re-enabled?
 
->
->  And in case of Uniprocessor machine, what happens if interrupts are
->  generated while spinlock_irq_save() etc?
->
-
-Same, missed interrupts.
-
-Check this out:
-
-http://www.cs.utah.edu/classes/cs5785/slides/08-6up.pdf
+Regards,
+Jike
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
