@@ -1,42 +1,70 @@
-From: "Jike Song" <albcamus@gmail.com>
-Subject: Re: MIssed interrupts
-Date: Mon, 3 Mar 2008 09:10:12 +0800
-Message-ID: <df9815e70803021710k24ed0a81ue061ed09c6f2e372@mail.gmail.com>
-References: <7783925d0802062112r4637c674qf2d1dd356cc0923e@mail.gmail.com>
-	 <f284c33d0802070750n1bc438c1y85c974bbf53a8242@mail.gmail.com>
-	 <df9815e70802282321l789d6c3bj967da63d3761183b@mail.gmail.com>
-	 <f284c33d0802290343g74e8045en5ec86bc92a407b80@mail.gmail.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: Memory defragmentor in linux?
+Date: Thu, 13 Mar 2008 03:23:30 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B052E0057@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:cc:in-reply-to:mime-version:content-type:content-transfer-encoding:content-disposition:references;
-        bh=NUBCh93jxQlXyRZfpNz0ecaluPa9ZrqC4qRGIegjwM0=;
-        b=T0+SXH689YvqGe3uYAplqZuQFTgvM1t6qRoXMCq48S/kjbTtb+KyLcZlDSPVSnbMoGKVGeX1sRoBIU8oDxfRYSFamZFQdJewxN9PRKTAHngaV0tt+6Ez+N1MPojDE/Uve2lLmW3RfJiSjA12aYyOxHbctmtKo22p7Uigj7pfLpU=
-In-Reply-To: <f284c33d0802290343g74e8045en5ec86bc92a407b80@mail.gmail.com>
-Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Mulyadi Santosa <mulyadi.santosa@gmail.com>
-Cc: Rick Brown <rick.brown.3@gmail.com>, kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+Content-Type: multipart/alternative;
+	boundary="----_=_NextPart_001_01C8848B.82947522"
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+Content-class: urn:content-classes:message
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+To: kernelnewbies@nl.linux.org
+Cc: linux-newbie@kernel.org
 
-On Fri, Feb 29, 2008 at 7:43 PM, Mulyadi Santosa
-<mulyadi.santosa@gmail.com> wrote:
->  As far as I know, yes
->
->  regards,
->
->  Mulyadi.
->
+This is a multi-part message in MIME format.
 
-Thanks for the confirmation.
+------_=_NextPart_001_01C8848B.82947522
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Regards,
-Jike
+Hi,
+=20
+As the system stays up for longer time, the physical memory becomes =
+fragmented (external fragmentation) such that physically continuous =
+pages may be difficult to find.Is there any kind of "memory =
+defragmentor" mechanism built in linux (Like disk defragmentor) that =
+helps solves such issues?
+=20
+Thanks,
+=20
+Rajat
+
+------_=_NextPart_001_01C8848B.82947522
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><HTML =
+DIR=3Dltr><HEAD><META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1"></HEAD><BODY><DIV><FONT face=3D'Arial' =
+color=3D#000000 size=3D2>Hi,</FONT></DIV>=0A=
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>=0A=
+<DIV><FONT face=3DArial size=3D2>As the system stays up for longer time, =
+the =0A=
+physical memory becomes fragmented (external fragmentation) such that =
+physically =0A=
+continuous pages may be difficult to find.Is there any kind of "memory =0A=
+defragmentor" mechanism built in linux (Like disk defragmentor) that =
+helps =0A=
+solves such issues?</FONT></DIV>=0A=
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>=0A=
+<DIV><FONT face=3DArial size=3D2>Thanks,</FONT></DIV>=0A=
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>=0A=
+<DIV><FONT face=3DArial size=3D2>Rajat</FONT></DIV></BODY></HTML>
+------_=_NextPart_001_01C8848B.82947522--
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
