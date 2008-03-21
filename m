@@ -1,48 +1,28 @@
-From: Octavian Purdila <tavi@cs.pub.ro>
-Subject: Re: Memory defragmentor in linux?
-Date: Thu, 13 Mar 2008 01:33:29 +0200
-Message-ID: <200803130133.29461.tavi@cs.pub.ro>
-References: <C86899CCB10A6C4E93D5978DCB232D4B052E0057@GDCMX01.igglobal.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: BKL question
+Date: Fri, 21 Mar 2008 10:08:34 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B07F4C811@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B052E0057@GDCMX01.igglobal.com>
-Content-Disposition: inline
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: kernelnewbies@nl.linux.org
-Cc: Rajat Jain <Rajat.Jain@infogain.com>, linux-newbie@kernel.org
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On Wednesday 12 March 2008, Rajat Jain wrote:
-> Hi,
->
-> As the system stays up for longer time, the physical memory becomes
-> fragmented (external fragmentation) such that physically continuous pages
-> may be difficult to find.Is there any kind of "memory defragmentor"
-> mechanism built in linux (Like disk defragmentor) that helps solves such
-> issues?
->
 
-Hi Rajat,
+Hi,
 
-See this LWN article:
+I was trying to understand the big kernel lock and was wondering that it has been quite a while that it has been on the deprecated list. When is it slated to move out of the kernel? 
 
-http://lwn.net/Articles/224829/
+Also just for curosity purposes, does it provide interrupt safety? 
 
-Regards,
-tavi
+Thanks,
 
+Rajat
 --
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
