@@ -1,31 +1,30 @@
-From: "Sudheer Divakaran" <sudheer.divakaran@gmail.com>
-Subject: enabling serial port caused kernel crash for an old pc
-Date: Sat, 22 Mar 2008 11:17:13 +0530
-Message-ID: <c39bc0880803212247n27f0f068mc7f0da26694e748c@mail.gmail.com>
+From: Sudheer Divakaran <sudheerd@yahoo.com>
+Subject: enabling serial port caused kernel crash in an old pc
+Date: Fri, 21 Mar 2008 23:28:00 -0700 (PDT)
+Message-ID: <393347.16521.qm@web54505.mail.re2.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=beta;
-        h=domainkey-signature:received:received:message-id:date:from:to:subject:mime-version:content-type:content-transfer-encoding:content-disposition;
-        bh=OHJaxl+9KFIZOwWET/4+vm6RFK5zCVjI3Zg849jlD48=;
-        b=jllWjK0dYHyQKG30keYvYe/AWZvKyJ5WCiGgZw0AtmsiRYWXyCFuneBbDEPbAobCRdt52tm9Q1cuQthl10lbnWrlM8ByChx3jde4fhAnKw/RWfi45ZdnyeIKkQQDGuhfskgHgFAwJ4gLa8Zkhq4fwRL1F5ivXMwaK2h1toRmqpw=
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
 Hi,
-I have an old pc (Intel P2 400 MHz, 128MB), which has FC5 installed in
-it.  I was trying to compile & install the kernel 2.6.24.3. I have succeeded in
-bringing up the kernel without serial port support.  Since I'm still
-using serial
-mouse, I have added serial ports  support and recompiled the kernel. When I'm
-booting with this kernel (having serial port support), it is crashing
-(while booting itself).
+I have an old pc (Intel P2 400 MHz, 128MB), which has
+FC5 installed in
+it.  I was trying to compile & install the kernel
+2.6.24.3. I have
+succeeded in bringing up the kernel without serial
+port support.  Since
+I'm still using serial mouse, I have added serial
+ports  support and
+recompiled the kernel. When I'm booting with this
+kernel (having serial
+port support), it is crashing (while booting itself).
 
-Here is the crash dump (I have written it down), I might have missed
+Here is the crash dump (I have written it down), I
+might have missed
 some starting lines since it has scrolled up
 
 sysfs_create_link
@@ -46,16 +45,22 @@ kernel_thread_helper
 
 serial_pci_guess_board+0x49/0x170 SS:ESP 0068:c7c11ea4
 
-Code: 03 07 00 00 74 0b b8 ed ff ff ff 5a 5b 5e 5f 5d c3 25 ff 00 00 00
-     83 f8 06 77 eb 0f b7 4e 24 31 d2 eb 08 83 c2 1c 83 fa 34 74 1c <3b>
- 8a 1c 29 2b c0 75 f0 0f b7 46 26 3b 82 20 29 2b c0 74 c7 83
+Code: 03 07 00 00 74 0b b8 ed ff ff ff 5a 5b 5e 5f 5d
+c3 25 ff 00 00 00
+     83 f8 06 77 eb 0f b7 4e 24 31 d2 eb 08 83 c2 1c
+83 fa 34 74 1c <3b>
+ 8a 1c 29 2b c0 75 f0 0f b7 46 26 3b 82 20 29 2b c0 74
+c7 83
 
-I have included my .config file towards the bottom of the message
+I have included my .config file towards the bottom of
+the message
 
 My questions are
-1. Why is it crashing? Do I have to enable some other feature  for
+1. Why is it crashing? Do I have to enable some other
+feature  for
 this to work properly?
-2. How do I pin point the exact reason for failure? Some pointers/links
+2. How do I pin point the exact reason for failure?
+Some pointers/links
 
 Thanks
 Sudheer
@@ -597,7 +602,8 @@ CONFIG_IDE=y
 CONFIG_BLK_DEV_IDE=m
 
 #
-# Please see Documentation/ide.txt for help/info on IDE drives
+# Please see Documentation/ide.txt for help/info on
+IDE drives
 #
 # CONFIG_BLK_DEV_IDE_SATA is not set
 # CONFIG_BLK_DEV_HD_IDE is not set
@@ -655,7 +661,8 @@ CONFIG_IDE_GENERIC=m
 #
 
 #
-# Note: most of these also require special kernel boot parameters
+# Note: most of these also require special kernel boot
+parameters
 #
 # CONFIG_BLK_DEV_4DRIVES is not set
 # CONFIG_BLK_DEV_ALI14XX is not set
@@ -683,7 +690,8 @@ CONFIG_IDE_ARCH_OBSOLETE_INIT=y
 #
 
 #
-# An alternative FireWire stack is available with EXPERIMENTAL=y
+# An alternative FireWire stack is available with
+EXPERIMENTAL=y
 #
 # CONFIG_IEEE1394 is not set
 # CONFIG_I2O is not set
@@ -1323,6 +1331,13 @@ CONFIG_PLIST=y
 CONFIG_HAS_IOMEM=y
 CONFIG_HAS_IOPORT=y
 CONFIG_HAS_DMA=y
+
+
+
+
+      ____________________________________________________________________________________
+Looking for last minute shopping deals?  
+Find them fast with Yahoo! Search.  http://tools.search.yahoo.com/newsearch/category.php?category=shopping
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
