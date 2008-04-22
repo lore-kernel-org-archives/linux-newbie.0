@@ -1,31 +1,24 @@
-From: Yegor Yefremov <yegor_sub1@visionsystems.de>
-Subject: Correlation between linux-2.6-stable kernel tree and linux-2.6.24.4.tar.bz2
-Date: Wed, 02 Apr 2008 15:33:25 +0200
-Message-ID: <47F38B25.7050202@visionsystems.de>
-Reply-To: yegor_sub1@visionsystems.de
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: i386 -> x86?
+Date: Tue, 22 Apr 2008 11:59:27 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B082E3813@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
-
-Hi all,
-
-I've recently checked the  linux-2.6-stable kernel tree out 
-(http://git2.kernel.org/?p=linux/kernel/git/stable/linux-2.6-stable.git;a=summary). 
-During configuration I found out that some files are missing for example 
-arch/arm/mach-pxa/pxa300.c, arch/arm/mach-pxa/pxa320.c and so on. These 
-files are contained in the linux-2.6.24.4.tar.bz2. As as I understand 
-the linux-2.6-stable kernel tree reflects the latest stable kernel (i 
-this case 2.6.24.4). Why are these files missing? Where can I get info 
-about git kernel tree structure with verbose description of the git trees?
-
-Best regards,
-Yegor Yefremov
+Content-Type: text/plain; charset="us-ascii"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
 
+Hi,
+
+I recently had to look into the i386 code and realized that the i386 directory has been disappeared and x86 has appeared. So has it simply been renamed or are there any other source level reorganization?
+
+Thanks,
+
+Rajat
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
