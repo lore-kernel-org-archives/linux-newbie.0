@@ -1,25 +1,29 @@
-From: Alexei Babich <a.babich@rez.ru>
-Subject: (unknown)
-Date: Mon, 19 May 2008 16:57:13 +0600
-Message-ID: <200805191657.13926.a.babich@rez.ru>
+From: Eriberto <eriberto@eriberto.pro.br>
+Subject: IDE disks with kernel 2.6.24
+Date: Mon, 26 May 2008 15:02:49 -0300
+Message-ID: <g1eu0b$qb0$1@ger.gmane.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi all,
-How I can disable printk() output bufferization ? I need that printk() prints symbol-by-symbol or line-by-line.
+Hi!
 
-Thank you.
--- 
+I have a little doubt about IDE disks with kernel 2.6.24. I am using
+Debian Lenny (testing). The kernel provided by Lenny is 2.6.24-1. I have
+an IDE disk and the boot process shows: "waiting for root filesystem".
+The Google says: "change hdX by sdX". It is working fine. But, I don't
+understand why I need to use sdX now. What is the reason?
+
+Thanks in advance!
+
 Regards,
-Alexei Babich, chematic engineer, OOO NPP "Rezonans", Chelyabinsk, Russia
-http://www.rez.ru
-Jabber ID: impatt@jabber.ru
+
+Eriberto - Brazil
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
