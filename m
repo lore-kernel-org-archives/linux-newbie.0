@@ -1,47 +1,42 @@
-From: RuoMu Hu <huruomu@gmail.com>
-Subject: Create proc entry under /proc/sys/kernel
-Date: Sun, 08 Jun 2008 17:28:36 +0800
-Message-ID: <484BA644.4040205@gmail.com>
+From: "mohammed shareef" <mdshareef@gmail.com>
+Subject: x11 fails with floating point exception
+Date: Sun, 8 Jun 2008 15:35:37 +0530
+Message-ID: <a1d91fa0806080305m29bbce27v7bdc1cc04ec48e55@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from
-         :user-agent:mime-version:to:subject:content-type
-         :content-transfer-encoding;
-        bh=0bu88opd0nO8jQvmKwPMir0Uf8LafDQMCKiBuo99EIw=;
-        b=S76swBRA6LbDyrsoYCm+3CFMR1aLHkVvuLY2thODAY+J/j8whhGrGpfEjXHu9S1ku8
-         fPxWhrEdu2lWo3zWFkfadlfk/yn5iRcQjqet7DDoG9zNVLgzNoir6YXR0Fb1+T7pXrSV
-         Ntu84ZEiXWp4X1VlTEN4B9j85VQdubRRodcUE=
+        h=domainkey-signature:received:received:message-id:date:from:to
+         :subject:mime-version:content-type:content-transfer-encoding
+         :content-disposition;
+        bh=va5EisDpGaYf5aOLoefDH0ZnuGLKFJWUBPYlurreOJ0=;
+        b=sbA5E2uXkuuHQj6Lg044ZLM5lLY0A+Kg+mXi2P22aH3ghEJq+7kb6kJ2EPBVSm80kN
+         gFlK52XgnpaNZhF3zJHw3yy+djhhzKfyLxyTcavU6Yhg0ScU9B/t7rT/1jz6/8qz+L7I
+         Bmc6UqhIcJsQ7j0vPIU655SSXPs7f0+krfgDE=
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Hi!
+Hi,
 
-Is it possible to create a proc entry under /proc/sys/kernel directly by
-create_proc_read_entry in the way shown below?
+i am new to linux.
 
-test_pde = create_proc_read_entry("/proc/sys/kernel/test", 0, NULL,
-                                    test_read_proc, NULL);
-if (test_pde == NULL) {
-    printk(KERN_ERR "Failed to create the test proc file.\n");
-    return -ENOMEM;
-}
+when i compile x-windows, the xlib--X11 fails with a floating point exception.
 
-I'm using this in my kernel module but create_proc_read_entry always
-returns fail, while there's no problem creating proc entries directly
-under /proc.  The kernel source I'm building my kernel module against is
-2.6.25.4.
+../src/util/makekeys < /usr/include/X11/keysymdef.h > ks_tables_h
+/bin/sh: line 1: 12048 Floating point exception../src/util/makekeys <
+/usr/include/X11/keysymdef.h > ks_tables_h
+make[1]: *** [ks_tables.h] Error 136
+make[1]: Leaving directory `/root/omap5912/xwin_snapshot/xlibs/X11/src'
+make: *** [install-recursive] Error 1
 
-Any idea?
+could someone please tell me how to solve this
 
-
-Thanks
-Romu
-
+thank you,
+Shareef
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
