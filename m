@@ -1,33 +1,34 @@
-From: "mohammed shareef" <mdshareef@gmail.com>
-Subject: GUI on omap-osk
-Date: Tue, 10 Jun 2008 13:01:18 +0530
-Message-ID: <a1d91fa0806100031v2c0557afmd2d47a46d32ab3d@mail.gmail.com>
+From: Tom Cooksey <thomas.cooksey@trolltech.com>
+Subject: Re: GUI on omap-osk
+Date: Tue, 10 Jun 2008 10:16:32 +0200
+Message-ID: <200806101016.33489.thomas.cooksey@trolltech.com>
+References: <a1d91fa0806100031v2c0557afmd2d47a46d32ab3d@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to
-         :subject:mime-version:content-type:content-transfer-encoding
-         :content-disposition;
-        bh=gZRg7xJegfhQYa6SONNsZ6vRDmEyavBylPRH6u4u1b0=;
-        b=VEYMFh4dS7pRnTCNqUoaYib8NnCTAdfidvG1Vo+RzK6r6NhbIYzrr+KC93cPjt0cUu
-         20gIt+l1X+3qB8dV0sP4xsqv/eccfSpCn32wECiLz+T/WBFD88nLrxTrBfrWi89TC34T
-         vLWM5jxot3USG3fdE9tMz3Sfi/x/u89NUGLBg=
+Return-path: <linux-omap-owner@vger.kernel.org>
+In-Reply-To: <a1d91fa0806100031v2c0557afmd2d47a46d32ab3d@mail.gmail.com>
 Content-Disposition: inline
-Sender: linux-newbie-owner@vger.kernel.org
+Sender: linux-omap-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: omap <linux-omap@vger.kernel.org>, linux-newbie@vger.kernel.org, linux-embedded@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: mohammed shareef <mdshareef@gmail.com>
+Cc: omap <linux-omap@vger.kernel.org>, linux-newbie@vger.kernel.org, linux-embedded@vger.kernel.org
 
-Dear All,
+On Tuesday 10 June 2008 09:31:18 mohammed shareef wrote:
+> Dear All,
+> 
+> Could some one tell me how to install Qtopia/OPIE/QTEmbedded on omap5912 -osk?
+> 
 
-Could some one tell me how to install Qtopia/OPIE/QTEmbedded on omap5912 -osk?
 
-Thank you,
-Shareef
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+That's probably a bit off-topic for this list. Try the Qtopia-Interest mailing list we run:
+
+http://lists.trolltech.com/qtopia-interest/
+
+I'll try to help you on there.
+
+
+
+Cheers,
+
+Tom
