@@ -1,62 +1,32 @@
-From: "Suresh Rajashekara" <srajashekara@vocera.com>
-Subject: RE: omap osk audio
-Date: Tue, 10 Jun 2008 15:13:26 -0700
-Message-ID: <E0C15250B56CB5468389360E1E6D655D0EB621@Nebula.vocera.local>
-References: <a1d91fa0806100733o71e5f1dx5bed802e65275ccc@mail.gmail.com>
+From: Zhaohui Wang <zwange@gmu.edu>
+Subject: how to find when a symbol introduced into the kernel
+Date: Sat, 14 Jun 2008 18:11:55 -0400
+Message-ID: <000b01c8ce6b$a7bfda50$f73f8ef0$@edu>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-class: urn:content-classes:message
-In-Reply-To: <a1d91fa0806100733o71e5f1dx5bed802e65275ccc@mail.gmail.com>
+Content-language: en-us
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: mohammed shareef <mdshareef@gmail.com>, omap <linux-omap@vger.kernel.org>, linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: zwange@gmu.edu
 
-I see that the drivers getting loaded are the ALSA drivers. You are
-trying to create the nodes which usually the OSS applications use to
-talk to the OSS audio drivers. Unless you have the OSS emulation enabled
-in the kernel/user space, you can't use the audio device through these
-nodes. Use some ALSA application. Refer to ALSA website for creating
-your own sample application. Also you will need to create the device
-nodes for ALSA and also place the config files accordingly.
 
-Please someone correct me if I am wrong.
 
-Regards,
-Suresh 
+Hi all
 
------Original Message-----
-From: linux-omap-owner@vger.kernel.org
-[mailto:linux-omap-owner@vger.kernel.org] On Behalf Of mohammed shareef
-Sent: Tuesday, June 10, 2008 7:34 AM
-To: omap; linux-newbie@vger.kernel.org
-Subject: omap osk audio
+To write multiple kernel version compatible programs, I need to know when a specific symbol (a struct or a function)were introduced in to the kernel tree
 
-Dear all,
+Binary search against multiple kernel sources is a way,but is still slow.Is there any fast way to use modern git technology to make my life easier?
 
-I am working on omap osk. i want to enable audio on it. But am not able
-to do that. The kernel boot log says it has initialized audio device.
-but i am not able to configure the audio setting nor run some recording
-code. the system hangs and i have to restart.
+Many thanks.
 
-the kernel boot code says:
+Best Regards
+Zhaohui Wang
 
-TLV320AIC23 I2C version 1.8 (10-Feb-2006) audio support initialized ALSA
-device list:
- #0: OSK AIC23
 
-i have created nodes:
 
-# mknod /dev/mixer c 14 0
-# mknod /dev/dsp c 14 3
-
-thanx,
-Shareef
---
-To unsubscribe from this list: send the line "unsubscribe linux-omap" in
-the body of a message to majordomo@vger.kernel.org More majordomo info
-at  http://vger.kernel.org/majordomo-info.html
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
