@@ -1,16 +1,19 @@
 From: Zhaohui Wang <zwange@gmu.edu>
 Subject: how to find when a symbol introduced into the kernel
-Date: Sat, 14 Jun 2008 18:11:55 -0400
-Message-ID: <000b01c8ce6b$a7bfda50$f73f8ef0$@edu>
+Date: Sat, 14 Jun 2008 17:51:03 -0400
+Message-ID: <000a01c8ce68$be055400$3a0ffc00$@edu>
+References: <200805191657.13926.a.babich@rez.ru>
+ <804dabb00805262224j1d5f7cf2mc076bcbb0554bac4@mail.gmail.com>
+ <200805301706.00464.a.babich@rez.ru>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
+In-reply-to: <200805301706.00464.a.babich@rez.ru>
 Content-language: en-us
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: zwange@gmu.edu
+To: linux-newbie@vger.kernel.org
 
 
 
@@ -26,6 +29,44 @@ Best Regards
 Zhaohui Wang
 
 
+> -----Original Message-----
+> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-
+> owner@vger.kernel.org] On Behalf Of Alexei Babich
+> Sent: Friday, May 30, 2008 7:06 AM
+> To: linux-newbie@vger.kernel.org
+> Subject: Re:
+> 
+> > Check this out - since it has similar embedded requirements like
+> yours
+> > (what is a chematic engineer?):
+> I ment circuit, not schematic, and that's a misprint in addition :)
+> 
+> > http://tree.celinuxforum.org/pipermail/celinux-dev/2006-
+> July/001261.html
+> Thank you for link.
+> 
+> >
+> > Read the comments part of kernel/printk.c - printk() is an amazing
+> > function, because it can be called in ANY CONTEXT.....which also
+> means
+> > that it cannot sleep.   But since u know many I/O function involved
+> > some form of waiting, therefore printk() necessarily HAVE TO WRITE TO
+> > A BUFFER,
+> OK, I need decrease buffer depth.
+> Thank you.
+> 
+> --
+> Regards,
+> Alexei Babich, circuit engineer, OOO NPP "Rezonans", Chelyabinsk,
+> Russia
+> http://www.rez.ru
+> Jabber ID: impatt@jabber.ru
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie"
+> in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
