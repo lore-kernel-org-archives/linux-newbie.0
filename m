@@ -1,36 +1,35 @@
-From: Suresh Rajashekara <suresh@mistralsolutions.com>
-Subject: Re: unknown partition table
-Date: Mon, 16 Jun 2008 10:56:59 -0700
-Message-ID: <4856A96B.7040807@mistralsolutions.com>
-References: <a1d91fa0806161043w108cfe67o51ebc0ec45cb8fe7@mail.gmail.com>
+From: "mohammed shareef" <mdshareef@gmail.com>
+Subject: Video playback on osk with linux-2.6.18
+Date: Thu, 19 Jun 2008 00:53:46 +0530
+Message-ID: <a1d91fa0806181223h19bb9f9dxb67300bfea953de9@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-omap-owner@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from
-         :organization:user-agent:mime-version:to:cc:subject:references
-         :in-reply-to:content-type:content-transfer-encoding:sender;
-        bh=nbM7Zm3MINhREqDlxfHXZSc5hd9U1LIVw6oTA9JEmbs=;
-        b=KRA4BgFuwIEMcz1D1Se9NWv3I22mteE391UjfaCVvD8Jxp26zVZT34uYf5AvDOLstY
-         nXbqJm+94m9G8z/r1+Cex1qt/Nsn8UH2OiYrUr2JEuPv3gwg2ma1RDgtCkE2eImljCdk
-         vpcWytHA3ZlWX8qshIkD9s1nvyFm3bvKwfJ7A=
-In-Reply-To: <a1d91fa0806161043w108cfe67o51ebc0ec45cb8fe7@mail.gmail.com>
-Sender: linux-omap-owner@vger.kernel.org
+        h=domainkey-signature:received:received:message-id:date:from:to
+         :subject:mime-version:content-type:content-transfer-encoding
+         :content-disposition;
+        bh=7idsPUyoGkiFIKvWBNF5iEXaZzEIxffiNukh6omEsag=;
+        b=M0K+qZLQV0NksbcRKgxFaterEErznYACINv9xCMZAJ/XsrTOmpcneKqo633lRN/CN6
+         ZK1ofn/bFvE9UHi+MdDi2Mhk2PBEzHDNxJzR2LcXpY2xxIGVZTolvoD0cJDG3fR+PYn0
+         HeFNIIZlAzkDbk0z8XunDl24NJXrR4KsMumus=
+Content-Disposition: inline
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: mohammed shareef <mdshareef@gmail.com>
-Cc: omap <linux-omap@vger.kernel.org>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: omap <linux-omap@vger.kernel.org>, linux-newbie@vger.kernel.org
 
-mohammed shareef wrote:
+Dear All,
 
-> sda: Write Protect is off
-> sda: assuming drive cache: write through
->  sda:<7>usb-storage: queuecommand called
->  unknown partition table
-> sd 0:0:0:0: Attached scsi removable disk sda
+I have an OSK-Omap5912 with linux-2.6.18 running on it. i want to add
+video playback support to it. Has someone done this before? could you
+suggest some ways to do it? thank you.
 
-Try formatting once. Use fdisk (on Linux) to format it and make partitions.
-
-Regards,
-Suresh
+regards,
+Mohammed
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
