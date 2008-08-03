@@ -1,63 +1,49 @@
-From: "joy merwin monteiro" <joy.merwin@gmail.com>
-Subject: Re: passwd-less ssh without public keys
-Date: Sat, 26 Jul 2008 07:52:13 +0530
-Message-ID: <4b0d6e0d0807251922s7960e5e7wf5a1e3c60f785b87@mail.gmail.com>
-References: <Pine.LNX.4.64.0807252109200.24751@localhost>
-Reply-To: joy.merwin@gmail.com
+From: Phil C <hpypenguin@yahoo.com>
+Subject: Problems compiling Binutils 2.17
+Date: Sat, 2 Aug 2008 23:20:28 -0700 (PDT)
+Message-ID: <503928.82870.qm@web59706.mail.ac4.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:reply-to
-         :to:subject:cc:in-reply-to:mime-version:content-type
-         :content-transfer-encoding:content-disposition:references;
-        bh=wOM6PjqSRBjohM3SYxDfnCiqJwpvasOj2mGthvGhNWQ=;
-        b=l+qRam7FajZGpgklSPz2AhILI17jYVCJ7sZXxrpV6qI+L9lPEJwnj30lcTBxPkw+8G
-         HfSyNGGK2njg7qlsKtHfKytNVwTebooxtFDQbDPyQxpypeMj4kRWvFeI1aHvnZ6NlYIX
-         uJSrcrAwE89vmz7IKjCh9bRy0lGXZq71lEZz0=
-In-Reply-To: <Pine.LNX.4.64.0807252109200.24751@localhost>
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: karthikv@alum.dartmouth.org
-Cc: Newbie List <linux-newbie@vger.kernel.org>
+Content-Transfer-Encoding: 7bit
+To: Newbie Mailing List <linux-newbie@vger.kernel.org>
 
-Have you tried out expect ?
-http://en.wikipedia.org/wiki/Expect
+I am making my first attempt at compiling linux from source. To do this I'm using the LFS book and the most current stable kernel (2.6.26). The setup process seems to go fine but when I try and compile binutils it fails. 
 
-On Sat, Jul 26, 2008 at 6:42 AM, Karthik Vishwanath
-<karthikv@alum.dartmouth.org> wrote:
-> Hello,
->
-> I was wondering if there were any other ways of logging into a remote
-> machine via ssh without typing in a passwd and without using the
-> public/private key authorizations?
->
-> I would be open to having the passwd stored in a temporary file on the
-> client in order to enable such behavior. As usual, all input is appreciated.
->
->
-> Thanks,
->
-> -K
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
->
+I'm using the following command taken from LFS. The command is done from the ../binutils-build folder.
 
 
+#>CC="gcc -B/usr/bin/" ../binutils-2.17/configure \  --prefix=/tools --disable-nls --disable-werror
 
--- 
-"...For there is no freedom if it is not secured by the state; and
-conversely, only a state which is controlled by free citizens can
-offer them any reasonable security at all"
+After entering the command I get one of two errors. If I sudo the command I get
 
- -- Karl Popper in "Open Society and its Enemies,
- discussing balance of freedom and state control.
+#>/sbin invalid command 'configure'
+
+In lieu of using sudo I get
+
+#>../binutils-2.17/configure is an invalid file or directory.
+
+(Both responses are approximations I have no access to the terminal from 
+the computer I'm on as I'm at work and not using Linux here, but you get the gist
+of it. Using sudo it interprets the command improperly and without sudo it's
+looking for a directory that doesn't exsist. Sorry I can't provide an exact terminal
+copy. This has been a continuing problem due mainly to my ISP screwing up my
+connection and thus leaving me with no internet at the house.)
+
+The binutils-2.17 files are being stored in both the home directory of the user 
+I'm conducting the build from as well as in it's own folder under home. Is this a
+sytnax error or have I placed the source files in the wrong location?
+
+Thanks
+
+ - Phil C
+
+
+
+      
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
