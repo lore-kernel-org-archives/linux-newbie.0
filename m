@@ -1,55 +1,44 @@
-From: Dave Haywood <tla@oak.selfip.net>
-Subject: Re: Problems compiling Binutils 2.17
-Date: Mon, 04 Aug 2008 11:11:04 +0100
-Message-ID: <4896D5B8.2000505@oak.selfip.net>
-References: <633001.84864.qm@web59712.mail.ac4.yahoo.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: Who decides PCI device number?
+Date: Wed, 6 Aug 2008 11:24:57 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B09002FD5@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <633001.84864.qm@web59712.mail.ac4.yahoo.com>
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Phil C <hpypenguin@yahoo.com>
-Cc: Yeti <yeti@myhich.com>, Newbie Mailing List <linux-newbie@vger.kernel.org>
-
-Phil C wrote:
-
->> It seems like the configure script is not working.
->> Did you check whether it is executeable or not? ( chmod +x )
->>     
->
->   
->> Is it in the directory ../binutils-2.12/ ?
->> Why are you installing a system wide libary with sudo and not as root user?
->> Yeti
->>     
->
-> Ill have to check on the permissions. I'm installing with sudo because I use Ubuntu so there is no root login.
->
->   
-Couple of options I can think of on Ubuntu:
-
-    1) sudo su -
-
-          You now have a root shell to do the install
+Content-Transfer-Encoding: quoted-printable
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+Content-class: urn:content-classes:message
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
 
-or:
+Hi,
+
+In the PCI addess (domain + PCI bus num + PCI Device num + function num)
+of a PCI device, who decides the PCI device number assigned to a PCI
+device?=20
+
+- Is it hard wired for a particular PCI slot? (So that any PCI card
+plugged into this slot will always have a particular PCI device number).
 
 
-    2) add a "wheel" group to /etc/group and add your user id to it
+-Or is it hardwired on the PCI card? (So that this card if plugged on
+any slot in any machine will have the same PCI device number)?
 
-         in /etc/pam.d/su uncomment "auth sufficient pam_wheel.so trust"
+Thanks,
 
-          You can now su without using sudo and without specifying any
-password so long as you are a member of the wheel group
-
-
-Dave.
+Rajat
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
