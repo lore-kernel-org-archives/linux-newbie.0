@@ -1,61 +1,81 @@
-From: Phil C <hpypenguin@yahoo.com>
-Subject: Re: Network install fails at TFTP load on client pc
-Date: Tue, 12 Aug 2008 02:08:11 -0700 (PDT)
-Message-ID: <260800.64041.qm@web59716.mail.ac4.yahoo.com>
+From: "Sverre Hamre" <sverre.hamre@gmail.com>
+Subject: Re: Problems compiling Binutils 2.17
+Date: Tue, 12 Aug 2008 11:48:34 +0200
+Message-ID: <a2016d8d0808120248o7aaeff57r99c837df2048a874@mail.gmail.com>
+References: <633001.84864.qm@web59712.mail.ac4.yahoo.com>
+	 <4896D5B8.2000505@oak.selfip.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:message-id:date:from:to
+         :subject:cc:in-reply-to:mime-version:content-type
+         :content-transfer-encoding:content-disposition:references;
+        bh=K6VrC0KKz1xerxxek9XUN/ebUwhDNXqpAwUIDRDuPKk=;
+        b=ij1szFpZ6z1Uubm4cgIanolpOdFF1yyASPcc+zBqK6cHh5ZzXLMeWhg3ElrS+XUMQA
+         pOWpwLOYsyAKtb7AJUcTQmZsdPpgUZBdE74jHjGaSsgFv9eQqiA8z4o8SXY+rdZHWFPV
+         GBuvUStty3t5xzHjHhXKfaxuRyUwy/SwdvaHs=
+In-Reply-To: <4896D5B8.2000505@oak.selfip.net>
+Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Jim Carter <jimc@math.ucla.edu>
-Cc: Newbie Mailing List <linux-newbie@vger.kernel.org>
+To: Dave Haywood <tla@oak.selfip.net>
+Cc: Phil C <hpypenguin@yahoo.com>, Yeti <yeti@myhich.com>, Newbie Mailing List <linux-newbie@vger.kernel.org>
 
-> 
-
-> Is this a pre-installer kernel and initrd for Ubuntu to be used for PXE 
-> booting?  Often the two components are in separate files; the initrd may be 
-> called "root.image" or something like that.
-
-I verified from the official ubuntu website that pxelinux.0 is the file that a boot client needs to be looking for
- 
-> >  ###end of dmesg###
-> >  ### All ip addresses and mac addresses obscured for security ###
-> >  
-> >  x:xx:xx SRC=192.168.10.xx DST=192.168.10.xx LEN=78 TOS=0x00 PREC=0x00 TTL=20 
-> >  ID=2 PROTO=UDP SPT=2070 DPT=69 LEN=58 
-> >  [101285.992494] Unknown InputIN=eth0 OUT= 
-> >  MAC=00:0b:cd:05:a9:c0:00:08:0d:b5:dc:xx:xx:xx SRC=192.168.10.xx 
-> >  DST=192.168.10.xx LEN=78 TOS=0x00 PREC=0x00 TTL=20 ID=3 PROTO=UDP SPT=2071 
-> >  DPT=69 LEN=58 
+On Mon, Aug 4, 2008 at 12:11 PM, Dave Haywood <tla@oak.selfip.net> wrote:
+> Phil C wrote:
 >
-> Well, the server's kernel is still logging TFTP packets, so there must be 
-> another place in the iptables that needs to be perforated (temporarily).  
-> Likely the firewall specifically blocks a laundry list of ports (or more 
-> likely, allows only listed ports) no matter where they come from, plus 
-> there is probably a chain to whitelist a specific IP address range and 
-> block all others.  Both chains must be passed for the packet to be 
-> accepted.  That's how a lot of firewalls work, but I've never seen what 
-> Ubuntu gives you.
+>>> It seems like the configure script is not working.
+>>> Did you check whether it is executeable or not? ( chmod +x )
+>>>
+>>
+>>
+>>>
+>>> Is it in the directory ../binutils-2.12/ ?
+>>> Why are you installing a system wide libary with sudo and not as root
+>>> user?
+>>> Yeti
+>>>
+>>
+>> Ill have to check on the permissions. I'm installing with sudo because I
+>> use Ubuntu so there is no root login.
+>>
+>>
+>
+> Couple of options I can think of on Ubuntu:
+>
+>   1) sudo su -
+>
+>         You now have a root shell to do the install
+>
+>
+> or:
+>
+>
+>   2) add a "wheel" group to /etc/group and add your user id to it
+>
+>        in /etc/pam.d/su uncomment "auth sufficient pam_wheel.so trust"
+>
+>         You can now su without using sudo and without specifying any
+> password so long as you are a member of the wheel group
+>
 
-I tried messing with some of the firewall setting and have run into a new problem. My internet connection exists only on a WLAN right now (thanks to moronic time-warner employees) and my local network is only on LAN. I was able to get only one to communicate properly at a time. Either the laptop connects and communicates only to find that it can not route to the internet to get the rest of the files, or there is no functioning local connection. I read around and have not yet found a way around this. I need to get iptables to recognize seperate function sets for each interface and allow both to run at the same time. To the best of my knowledge iptables is configured the same way regardless of distro as it's a kernel module. Any thoughts on how to do this?
+also on ubuntu sudo -i
+then you are root user.
 
-> Can you borrow a USB external DVD drive?  That's what we do when the 
-> optical drive on a machine is unuseable: take the external drive off our 
-> burner host and use it on the uncooperative machine.
- 
-There are severe compatiblity issues with this model of Toshiba Portege. Even the company admits that only a handful of external DVD/CD drives will boot properly under there broken bios. I have already tried using both the external DVD drive that I have handy and a USB key that formatted and configured to be bootable. Neither was recognized by the laptop's bios. I have no desire to get another external drive in an attempt to fix this problem. 
+Sverre
 
-What are the odds of a success if I simply pull the drive, hook it up to a host machine via a 44 pin IDE adapter, install from there and pop it back in? I forsee some severe hardware config issues but I'm curiouse if that could work.
-
-Either way I have an express intreset in achieving this network boot as I know I'll use it again somewhere down the line.
-
- - Phil C
-
-
-
-      
-
+>
+> Dave.
+>
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
