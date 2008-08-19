@@ -1,58 +1,88 @@
-From: Jim Carter <jimc@math.ucla.edu>
-Subject: Re: Network install fails at TFTP load on client pc
-Date: Tue, 19 Aug 2008 12:30:09 -0700 (PDT)
-Message-ID: <Pine.LNX.4.64.0808191216080.4998@xena.cft.ca.us>
-References: <260800.64041.qm@web59716.mail.ac4.yahoo.com>
- <Pine.LNX.4.64.0808121443100.12720@xena.cft.ca.us> <48A8BFE7.7070900@gmail.com>
+From: Rene Herman <rene.herman@keyaccess.nl>
+Subject: Re: PCI interrupt queries
+Date: Tue, 19 Aug 2008 22:34:04 +0200
+Message-ID: <48AB2E3C.2070600@keyaccess.nl>
+References: <C86899CCB10A6C4E93D5978DCB232D4B091A399F@GDCMX01.igglobal.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <48A8BFE7.7070900@gmail.com>
+In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B091A399F@GDCMX01.igglobal.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Philip Cohen <hpypenguin.lists@gmail.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Rajat Jain <Rajat.Jain@infogain.com>
+Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On Sun, 17 Aug 2008, Philip Cohen wrote:
+On 19-08-08 07:11, Rajat Jain wrote:
 
-> I now get a message from the syslog that tells me that my tftp server can not
-> run because the address is already in use.Hopefully this is the last barrier
-> here. I run in.tftpd as an option in xinetd. The options are configured the
-> same way as recommended on the Ubuntu support website.
+> I want to understand who decides the IRQ number that a agiven PCI
+> card will use. I understand that from a PCI device drivers point of
+> view, it'll find the IRQ vector that it needs to attach by reading it
+> from the configuration space of the device.
 
-So xinetd should be listening on port 69.  If in.tftpd also tries to listen 
-on that port you would see your symptom.  Is there any chance that the 
-command line includes the -l option (standalone listener)?  
+Actually, a quick look at struct pci_dev suggests you should be using 
+pci_dev->irq. Note sure why that is; maybe odd bridged setups.
 
-Here's our /etc/xinetd.d/tftp file.  Note, we aren't a boot server; we use 
-this so a Cisco box can deposit a dump of its configuration automatically.
-So you would certainly need a different -U option in server_args.
+Greg might know if he's reading this :-)
 
-service tftp
-{
-        disable                 = no
-        socket_type             = dgram
-        protocol                = udp
-        wait                    = yes
-        user                    = root
-        server                  = /usr/sbin/in.tftpd
-# UCLA-Mathnet hacks:
-#               -s chrootdir
-#               -u setUID to this user (group = its primary group = maint)
-#               -U umask (complement of 407 -> mode 260, server can write 
-#			but not read the incoming file)
-#               -c (absent) = can create new files (we forbid this)
-#               -p (absent) would allow any file (for which the server has
-#                       permission, there aren't any) to be read.  As it is,
-#                       only publicly readable (xx4) files can be read.
-        server_args             = -s /tftpboot -u bugs -U 407
-}
+> 1) My first question is WHO writes that IRQ value in the device 
+> configuration space? Is it hardwired on the card? Is it written by
+> the PCI controller driver or some other kernel component? Or some
+> other piece of software takes care of it?
 
+The thing hardwired on the card is the interrupt PIN(s) it uses; A, B, C 
+and/or D (one pin per device and thus per config space). The thing that 
+writes the LINE value into the register is generally the BIOS; being 
+motherboard specific it knows which IRQ line it is that pin X (A, B, C 
+or D) from slot N is routed to and it writes those values back into the 
+device.
 
-James F. Carter          Voice 310 825 2897    FAX 310 206 6673
-UCLA-Mathnet;  6115 MSA; 405 Hilgard Ave.; Los Angeles, CA, USA 90095-1555
-Email: jimc@math.ucla.edu  http://www.math.ucla.edu/~jimc (q.v. for PGP key)
+Well, basically at least. It knows as long as it has programmed the 
+interrupt router itself as well:
+
+> 2) Secondly, irrespective of whoever writes it, what determines the irq
+> vector VALUE that will be written? So given that a PCI card uses PCI
+> INTA, what determines the IRQ vector associated with it? My
+> understanding is that the board specifications say something like "The
+> INTA from this PCI slot goes to IRQx input of interrupt controller". And
+> then from interrupt controller dosument we can find out which IRQ vector
+> is associated with input IRQx. Is this right?
+
+That's the basic form but in reality things are not hardwired on the 
+motherboard either; there's a programmable interrupt router (part of the 
+PCI chipset) between the lines coming from the bus and the lines going 
+into the interrupt controller that enables software control of the routing.
+
+So the answer is -- whoever sets up the interrupt routing. In your dmesg 
+you will see things like:
+
+ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+ACPI: PCI Interrupt Link [LNKA] (IRQs 3 4 5 6 7 *9 10 11 12 14 15)
+ACPI: PCI Interrupt Link [LNKB] (IRQs 3 4 5 6 7 9 10 *11 12 14 15)
+ACPI: PCI Interrupt Link [LNKC] (IRQs 3 4 5 6 7 9 *10 11 12 14 15)
+ACPI: PCI Interrupt Link [LNKD] (IRQs 3 4 5 6 7 9 10 11 *12 14 15)
+
+which lists the routing as setup by the BIOS. Linux _could_ change the 
+routing although I'm not sure if it ever does. What it certainly can do 
+is enable devices that the BIOS left disabled (wish it couldn't so it 
+would butt out already!) and then it is running the show.
+
+> 3) Lastly, if we boot linux and a different OS, on the same board with
+> the same PCI card plugged in, are they bound to use the same IRQ number?
+> Why or why not?
+
+Not bound then. The programmable interrupt router could be set up 
+differently.
+
+Also see the nice daisy-chaining diagram in
+
+	Documentation/x86/i386/IO-APIC.txt
+
+The programmable interrupt router is to the left, between the PIRQ lines 
+and the IRQ input lines on the PIC.
+
+Rene.
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
