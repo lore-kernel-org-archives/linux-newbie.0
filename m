@@ -1,61 +1,31 @@
-From: "Bhikkhu Mettavihari" <draketools@gmail.com>
-Subject: Re: ftp large files to new server
-Date: Mon, 18 Aug 2008 22:50:18 +0530
-Message-ID: <2e35683f0808181020q237e8d3dm2f22c29f1ad8030d@mail.gmail.com>
-References: <2e35683f0808180824h159060f7ga5d6745694794114@mail.gmail.com>
+From: Fundu <fundu_1999@yahoo.com>
+Subject: Module init for compiled in vs loaded modules
+Date: Mon, 18 Aug 2008 18:46:51 -0700 (PDT)
+Message-ID: <609891.43692.qm@web63401.mail.re1.yahoo.com>
+References: <2e35683f0808181020q237e8d3dm2f22c29f1ad8030d@mail.gmail.com>
+Reply-To: fundu_1999@yahoo.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to
-         :subject:in-reply-to:mime-version:content-type
-         :content-transfer-encoding:content-disposition:references;
-        bh=p49SYmDZk7y7QvVJtvdTuku5GCSSv5ldTmr2f+VDJJ0=;
-        b=dqHmhOiTYV116knViuZ4hSk41vHflnwOuJm0AnhSPMCyLsiiObEfekK6nx2VguE7pY
-         Gt1PKRiGoPGADsmoGzLAY0XJvfeJFiwcbnpPBY5PVLyNsewR4gycwItCsTvbfLvQl7KF
-         USJU6YO/AmHPt+JCY9OCnZWfNFCXuXl1DARS8=
-In-Reply-To: <2e35683f0808180824h159060f7ga5d6745694794114@mail.gmail.com>
-Content-Disposition: inline
+In-Reply-To: <2e35683f0808181020q237e8d3dm2f22c29f1ad8030d@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Sorry for this,
-but here is the answer from myself
+Hi,
 
-ncftpput -u ?        -p ?           -R servername remotefolder  localfolder &
+For kernel modules can be loaded by explicitly do insmod etc for ones that are not compiled into the kernel.
 
-may be others have better solutions.
+1) But where do i look to find how the kernel loads(ie. calls the fn exported by module_init(XXXX)) for modules compiled into the kernel.
 
-regards
-Mettavihari
+2) Does the kernel call some kind of probe to load them ? say i have 2 module compiled into the kernel for 2 diff type of ether cards. Would the kernel call init on both.
 
-On Mon, Aug 18, 2008 at 8:54 PM, Bhikkhu Mettavihari
-<draketools@gmail.com> wrote:
-> I live in Sri Lanka and have 2 servers in the USA.
-> Server1 is a Debian Box
-> Server2 is a shared box where I do not have command line access
->
-> I have several large files that I have to upload from server1 to Server2.
-> I would first ssh to Server1
-> then as root or as a user I will
-> #ftp Server2
-> I get a login and password
-> I am accepted as a user.
-> then I give the command
-> mput *.mpeg
-> and the first file will start going
-> Then my ssh will time out before the file is uploaded
-> and I do not have the possibility to say continue with the next file
->
-> Is there a way of telling my ftp client to do mput without prompting
-> me for the next file name.
->
-> regards
-> Mettavihari
->
+thanks !
+
+
+
+      
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
