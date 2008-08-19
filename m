@@ -1,44 +1,59 @@
-From: Santosh <ilpacx@gmail.com>
-Subject: Re: Module init for compiled in vs loaded modules
-Date: Tue, 19 Aug 2008 11:32:49 +0530
-Message-ID: <48AA6209.5010307@gmail.com>
-References: <609891.43692.qm@web63401.mail.re1.yahoo.com>
+From: Chuck <chuck2007@gelm.net>
+Subject: Re: ftp large files to new server
+Date: Tue, 19 Aug 2008 07:33:29 -0400
+Message-ID: <48AAAF89.1010501@gelm.net>
+References: <2e35683f0808180824h159060f7ga5d6745694794114@mail.gmail.com>
+Reply-To: chuck2008@gelm.net
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from
-         :user-agent:mime-version:to:cc:subject:references:in-reply-to
-         :content-type:content-transfer-encoding;
-        bh=cWfqMoCXgUq8PValiR5qRWz+oSI6m/5SRzvBl9WCJ3U=;
-        b=FWrrmE2TRfK9TeCN0HMO4fmK0ZNKZxIR3lEFC7VZyahmBUNIIWIk2CA2CmASr2i30z
-         mvkH+zM5xCDrH4bKu1+9RidPILmvU5BfQi93yGq5EEueT63LpCLBOhx5xx+xaFVouPe8
-         fHT1TlxJZjukrMMH4+pqkAqSuow9b1MlH+BwY=
-In-Reply-To: <609891.43692.qm@web63401.mail.re1.yahoo.com>
+In-Reply-To: <2e35683f0808180824h159060f7ga5d6745694794114@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: fundu_1999@yahoo.com
+To: Bhikkhu Mettavihari <draketools@gmail.com>
 Cc: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Fundu wrote:
-> Hi,
-> 
-> For kernel modules can be loaded by explicitly do insmod etc for ones that are not compiled into the kernel.
-> 
-> 1) But where do i look to find how the kernel loads(ie. calls the fn exported by module_init(XXXX)) for modules compiled into the kernel.
-> 
-> 2) Does the kernel call some kind of probe to load them ? say i have 2 module compiled into the kernel for 2 diff type of ether cards. Would the kernel call init on both.
-> 
-> thanks !
-> 
+Bhikkhu Mettavihari wrote:
+> I live in Sri Lanka and have 2 servers in the USA.
+> Server1 is a Debian Box
+> Server2 is a shared box where I do not have command line access
+>
+> I have several large files that I have to upload from server1 to Server2.
+> I would first ssh to Server1
+> then as root or as a user I will
+> #ftp Server2
+> I get a login and password
+> I am accepted as a user.
+> then I give the command
+> mput *.mpeg
+> and the first file will start going
+> Then my ssh will time out before the file is uploaded
+> and I do not have the possibility to say continue with the next file
+>
+> Is there a way of telling my ftp client to do mput without prompting
+> me for the next file name.
+>
+> regards
+> Mettavihari
+>   
+Dear Mettavihari:
 
-Please do not hijack the thread, it messes up the thread in our mail 
-boxes and also the archive which will be used by others in the future.
+ I don't know which 'ftp' server application is being used at your 
+servers, but
+here are some commands I have used:
+binary ( to make the circuit work with non-text/ascii/... data)
+prompt (this toggles prompting between files)
+hash (this displays an octothorpe "#" for each SIZE bytes transferred ).
+passive (allows 'dir' and 'ls' commands through a firewall or proxy)
 
---
-Santosh S
+# ftp -p -i hostname
+"-p and -i" invokes 'passive' and 'non-interactive' from command line.
+
+HTH, Chuck
+
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
