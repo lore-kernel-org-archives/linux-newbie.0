@@ -1,49 +1,65 @@
-From: Rene Herman <rene.herman@keyaccess.nl>
+From: Greg KH <greg@kroah.com>
 Subject: Re: PCI interrupt queries
-Date: Wed, 20 Aug 2008 20:04:59 +0200
-Message-ID: <48AC5CCB.6060302@keyaccess.nl>
-References: <C86899CCB10A6C4E93D5978DCB232D4B091A399F@GDCMX01.igglobal.com> <48AB2E3C.2070600@keyaccess.nl> <C86899CCB10A6C4E93D5978DCB232D4B091A43F9@GDCMX01.igglobal.com>
+Date: Wed, 20 Aug 2008 22:42:49 -0700
+Message-ID: <20080821054249.GA3192@kroah.com>
+References: <C86899CCB10A6C4E93D5978DCB232D4B091A399F@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B091A43F9@GDCMX01.igglobal.com>
+Content-Disposition: inline
+In-Reply-To: <C86899CCB10A6C4E93D5978DCB232D4B091A399F@GDCMX01.igglobal.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: Rajat Jain <Rajat.Jain@infogain.com>
 Cc: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
 
-On 20-08-08 06:50, Rajat Jain wrote:
-
->> On 19-08-08 07:11, Rajat Jain wrote:
->>
->>> I want to understand who decides the IRQ number that a agiven PCI
->>> card will use. I understand that from a PCI device drivers point of
->>> view, it'll find the IRQ vector that it needs to attach by reading
->>> it from the configuration space of the device.
->> Actually, a quick look at struct pci_dev suggests you should
->> be using pci_dev->irq. Note sure why that is; maybe odd
->> bridged setups.
+On Tue, Aug 19, 2008 at 10:41:26AM +0530, Rajat Jain wrote:
 > 
-> Where in source code is pci_dev->irq getting populated? I tried but
-> could not exactly locate it...
+> Hi,
+> 
+> I want to understand who decides the IRQ number that a agiven PCI card
+> will use. I understand that from a PCI device drivers point of view,
+> it'll find the IRQ vector that it needs to attach by reading it from the
+> configuration space of the device. 
+> 
+> 1) My first question is WHO writes that IRQ value in the device
+> configuration space? Is it hardwired on the card? Is it written by the
+> PCI controller driver or some other kernel component? Or some other
+> piece of software takes care of it?
 
-pci_read_irq() it seems.
+The BIOS/ACPI handles this, the kernel does not assign this directly
+(well, kind of indirectly, but it's complex...)
 
-> OK. But who does it in an embedded environment (PPC for eg) where
-> there is no POST software. The first piece of code that gets executed
-> is U-boot and then the kernel. So who writes the LINE value into the
-> config space?
+> 2) Secondly, irrespective of whoever writes it, what determines the irq
+> vector VALUE that will be written? So given that a PCI card uses PCI
+> INTA, what determines the IRQ vector associated with it? My
+> understanding is that the board specifications say something like "The
+> INTA from this PCI slot goes to IRQx input of interrupt controller". And
+> then from interrupt controller dosument we can find out which IRQ vector
+> is associated with input IRQx. Is this right?
 
-If anything, the kernel and specifically that bit of the kernel that 
-sets up the routing (if there is anything to setup; might ofcourse be 
-fully hardwired there).
+Kind of, please realize that irq's are getting to be more and more
+"fake" with the advent of pci express and MSI.
 
-The "if anything" might be the reason for needing to use pci_dev->irq as 
-per the comment. As said, don't know. Makes sense though; why would you 
-write it back to config space if you can just supply it as part of pci_dev.
+All of this is handled by ACPI on intel-based processors, if you want to
+go read that mess of a spec.
 
-Rene.
+> 3) Lastly, if we boot linux and a different OS, on the same board with
+> the same PCI card plugged in, are they bound to use the same IRQ number?
+> Why or why not?
+
+They should be, but I have seen plenty of instances where it is not the
+same.  This is usually bios bugs.  Older versions of the kernel used to
+tell ACPI that the OS was Linux, now we say we are windows so this
+shouldn't happen anymore.
+
+Sorry for being vague, but for a driver writer or a user, none of this
+matters, as it out of your hands :)
+
+thanks,
+
+greg k-h
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
