@@ -1,22 +1,50 @@
-From: Yeti <yeti@myhich.com>
-Subject: Re: IceWM Configure Issues: Loading wallpaper and terminal at startup
-Date: Sun, 7 Sep 2008 01:12:13 -0700
-Message-ID: <6adb32bc0809070112n4de1f66cv48380b3a7f9c18bb@mail.gmail.com>
-References: <703270f30809061923sd9375del5b6b34e594b093df@mail.gmail.com>
+From: "Bhikkhu Mettavihari" <draketools@gmail.com>
+Subject: download file
+Date: Tue, 16 Sep 2008 23:48:36 +0530
+Message-ID: <2e35683f0809161118q3153143kcc6221dc7dd27949@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <703270f30809061923sd9375del5b6b34e594b093df@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:message-id:date:from:to
+         :subject:mime-version:content-type:content-transfer-encoding
+         :content-disposition;
+        bh=kxPmsG5/gVUXTL5aTuBNjU/8XHp11iurenNzcq/UraM=;
+        b=I1dAu6ZAM6HRihhad2x7gr6sVVSqOK2C2COaUS2Pk+oWGw8CLT6/EyGJuahr55Ogou
+         uEIdOXi0PlJUymyRyVdSfHxuuMW1jaeoxzkJlL/SyO+D/Wwwigi0a62pXrZ4sZQZXDV3
+         BL74ydM3sWiALTuVdKr3SClsKdpAujqpI0Jls=
 Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>
 
-Have a look at this:
-http://ubuntuforums.org/showthread.php?t=812627
+hi,
 
-I hope I could help.
+I am on linux
+
+How do I download a file from this site ?
+
+http://switch3.castup.net/cunet/gm.asp?ai=214&ar=1050wmv&ak=TY
+
+when I do
+$wget  http://switch3.castup.net/cunet/gm.asp?ai=214&ar=1050wmv&ak=TY
+then I get a small file by the name of  "gm.asp?ai=214" with content like this.
+
+<asx version="3.0">
+                                <!-- GMX -->
+                                <title>CastUP: Unknown Error</title>
+                                <entry>
+                                        <title>Error: Unknown Error</title>
+                                    <author></author>
+                                        <ref href="http://" />
+                                </entry>
+                        </asx>
+
+
+Regards
+Mettavihari
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
