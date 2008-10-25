@@ -1,29 +1,22 @@
 From: Joe Damato <ice799@gmail.com>
-Subject: [PATCH 10/12] x86: Use static initializers for descriptors
-Date: Fri, 24 Oct 2008 20:15:30 -0700
-Message-ID: <63f6f0d8b3da967e88094b6cd4b23f2ba78abbdc.1224903712.git.ice799@gmail.com>
+Subject: [PATCH 03/12] x86: Cleanup usage of struct desc_struct
+Date: Fri, 24 Oct 2008 20:15:23 -0700
+Message-ID: <4810cc08c12cd78612b53f9b52d7ba93a9b03fd0.1224903712.git.ice799@gmail.com>
 References: <>
  <1224904532-9586-1-git-send-email-ice799@gmail.com>
  <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
  <03269a2e8f455b431612a32e8cce048e98c75b27.1224903712.git.ice799@gmail.com>
- <4810cc08c12cd78612b53f9b52d7ba93a9b03fd0.1224903712.git.ice799@gmail.com>
- <a9cabc5cabdb5a10631e2a6dc330c54826f2b210.1224903712.git.ice799@gmail.com>
- <a4c806abcf7a46c78aaff4e338fdbc1a06a56c88.1224903712.git.ice799@gmail.com>
- <8834ad1ab5a5ab9b4902ab708160b23f078f3758.1224903712.git.ice799@gmail.com>
- <4d0ab6d642a4edc3ecc7367df7043ecc8f0a7f98.1224903712.git.ice799@gmail.com>
- <c53b3a54b3215187055dfe5673e1351d1bd3957a.1224903712.git.ice799@gmail.com>
- <e1bbf5a92bbf8fcf36dcbb650ee5f22d48d4b0f4.1224903712.git.ice799@gmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:received:from:to:cc:subject
          :date:message-id:x-mailer:in-reply-to:references:in-reply-to
          :references;
-        bh=T/lwF+M3Uv7PgP2ulFElRlfMsOcdumQW10yCTm60dI4=;
-        b=v0lT+iuEbjxah4CPwBqpuRJK4OY44znRGCbT4Y6Z1xBOgYB4CDn8ZORy2wYUH2a106
-         JoQ25Sfuhu3QkQcRiDh8vxhaMN0yTci7lTConIrsX2vu7TfjAD/Aj8yN9uRKR8u78fwO
-         NeLYeNZt4EF29icdwgby1SsmL6NJIW++4V648=
-In-Reply-To: <e1bbf5a92bbf8fcf36dcbb650ee5f22d48d4b0f4.1224903712.git.ice799@gmail.com>
+        bh=wxNh/fzANBxYI9Q0XblIZiGb0vXAot4ZqW06oUBgLxo=;
+        b=kn1+w3Xf20FRizbBgK66GyqYK7lKy+DHAWhywGT3HCu6Tb/Wbcmxm6mwwLgB3G6in2
+         odPbYs/juKWpZfSMzs0QKVXoJbxc5kViYy7RZ9Ffg342SWO+Vb9uYeYic/IAMaiVynTC
+         SSyqCJttcIhohnn48/rYjUwnzW4k3PxU/+bxQ=
+In-Reply-To: <03269a2e8f455b431612a32e8cce048e98c75b27.1224903712.git.ice799@gmail.com>
 In-Reply-To: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
 References: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
@@ -34,100 +27,117 @@ Content-Transfer-Encoding: 7bit
 To: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Cc: Joe Damato <ice799@gmail.com>
 
-Use static intializers for GDT/LDT entries.
+Use gate_desc typedef for IDT entries instead of struct desc_struct.
 
 Signed-off-by: Joe Damato <ice799@gmail.com>
 ---
- arch/x86/kernel/apm_32.c     |    2 +-
- arch/x86/kernel/cpu/common.c |   28 ++++++++++++++--------------
- include/asm-x86/lguest.h     |    4 ++--
- 3 files changed, 17 insertions(+), 17 deletions(-)
+ arch/x86/kernel/vmi_32.c              |    2 +-
+ drivers/lguest/interrupts_and_traps.c |   12 ++++++------
+ drivers/lguest/lg.h                   |    2 +-
+ include/asm-x86/lguest.h              |    4 ++--
+ 4 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/arch/x86/kernel/apm_32.c b/arch/x86/kernel/apm_32.c
-index 5145a6e..5cacdad 100644
---- a/arch/x86/kernel/apm_32.c
-+++ b/arch/x86/kernel/apm_32.c
-@@ -407,7 +407,7 @@ static DECLARE_WAIT_QUEUE_HEAD(apm_waitqueue);
- static DECLARE_WAIT_QUEUE_HEAD(apm_suspend_waitqueue);
- static struct apm_user *user_list;
- static DEFINE_SPINLOCK(user_list_lock);
--static const struct desc_struct	bad_bios_desc = { { { 0, 0x00409200 } } };
-+static const struct desc_struct	bad_bios_desc = __DESC_INITIALIZER(0, 0x00409200);
+diff --git a/arch/x86/kernel/vmi_32.c b/arch/x86/kernel/vmi_32.c
+index 8b6c393..8c87b9b 100644
+--- a/arch/x86/kernel/vmi_32.c
++++ b/arch/x86/kernel/vmi_32.c
+@@ -63,7 +63,7 @@ static struct {
+ 	void (*cpuid)(void /* non-c */);
+ 	void (*_set_ldt)(u32 selector);
+ 	void (*set_tr)(u32 selector);
+-	void (*write_idt_entry)(struct desc_struct *, int, u32, u32);
++	void (*write_idt_entry)(gate_desc *, int, u32, u32);
+ 	void (*write_gdt_entry)(struct desc_struct *, int, u32, u32);
+ 	void (*write_ldt_entry)(struct desc_struct *, int, u32, u32);
+ 	void (*set_kernel_stack)(u32 selector, u32 sp0);
+diff --git a/drivers/lguest/interrupts_and_traps.c b/drivers/lguest/interrupts_and_traps.c
+index a103906..48aa15b 100644
+--- a/drivers/lguest/interrupts_and_traps.c
++++ b/drivers/lguest/interrupts_and_traps.c
+@@ -133,7 +133,7 @@ void maybe_do_interrupt(struct lg_cpu *cpu)
+ {
+ 	unsigned int irq;
+ 	DECLARE_BITMAP(blk, LGUEST_IRQS);
+-	struct desc_struct *idt;
++	gate_desc *idt;
  
- static const char driver_version[] = "1.16ac";	/* no spaces */
+ 	/* If the Guest hasn't even initialized yet, we can do nothing. */
+ 	if (!cpu->lg->lguest_data)
+@@ -353,7 +353,7 @@ void guest_set_stack(struct lg_cpu *cpu, u32 seg, u32 esp, unsigned int pages)
  
-diff --git a/arch/x86/kernel/cpu/common.c b/arch/x86/kernel/cpu/common.c
-index 25581dc..018e1ba 100644
---- a/arch/x86/kernel/cpu/common.c
-+++ b/arch/x86/kernel/cpu/common.c
-@@ -57,38 +57,38 @@ DEFINE_PER_CPU(struct gdt_page, gdt_page) = { .gdt = {
- } };
- #else
- DEFINE_PER_CPU_PAGE_ALIGNED(struct gdt_page, gdt_page) = { .gdt = {
--	[GDT_ENTRY_KERNEL_CS] = { { { 0x0000ffff, 0x00cf9a00 } } },
--	[GDT_ENTRY_KERNEL_DS] = { { { 0x0000ffff, 0x00cf9200 } } },
--	[GDT_ENTRY_DEFAULT_USER_CS] = { { { 0x0000ffff, 0x00cffa00 } } },
--	[GDT_ENTRY_DEFAULT_USER_DS] = { { { 0x0000ffff, 0x00cff200 } } },
-+	[GDT_ENTRY_KERNEL_CS] =  __DESC_INITIALIZER(0x0000ffff, 0x00cf9a00),
-+	[GDT_ENTRY_KERNEL_DS] =  __DESC_INITIALIZER(0x0000ffff, 0x00cf9200),
-+	[GDT_ENTRY_DEFAULT_USER_CS] = __DESC_INITIALIZER(0x0000ffff, 0x00cffa00),
-+	[GDT_ENTRY_DEFAULT_USER_DS] = __DESC_INITIALIZER(0x0000ffff, 0x00cff200),
- 	/*
- 	 * Segments used for calling PnP BIOS have byte granularity.
- 	 * They code segments and data segments have fixed 64k limits,
- 	 * the transfer segment sizes are set at run time.
- 	 */
- 	/* 32-bit code */
--	[GDT_ENTRY_PNPBIOS_CS32] = { { { 0x0000ffff, 0x00409a00 } } },
-+	[GDT_ENTRY_PNPBIOS_CS32] = __DESC_INITIALIZER(0x0000ffff, 0x00409a00),
- 	/* 16-bit code */
--	[GDT_ENTRY_PNPBIOS_CS16] = { { { 0x0000ffff, 0x00009a00 } } },
-+	[GDT_ENTRY_PNPBIOS_CS16] = __DESC_INITIALIZER(0x0000ffff, 0x00009a00),
- 	/* 16-bit data */
--	[GDT_ENTRY_PNPBIOS_DS] = { { { 0x0000ffff, 0x00009200 } } },
-+	[GDT_ENTRY_PNPBIOS_DS] = __DESC_INITIALIZER(0x0000ffff, 0x00009200),
- 	/* 16-bit data */
--	[GDT_ENTRY_PNPBIOS_TS1] = { { { 0x00000000, 0x00009200 } } },
-+	[GDT_ENTRY_PNPBIOS_TS1] = __DESC_INITIALIZER(0x00000000, 0x00009200),
- 	/* 16-bit data */
--	[GDT_ENTRY_PNPBIOS_TS2] = { { { 0x00000000, 0x00009200 } } },
-+	[GDT_ENTRY_PNPBIOS_TS2] = __DESC_INITIALIZER(0x00000000, 0x00009200),
- 	/*
- 	 * The APM segments have byte granularity and their bases
- 	 * are set at run time.  All have 64k limits.
- 	 */
- 	/* 32-bit code */
--	[GDT_ENTRY_APMBIOS_BASE] = { { { 0x0000ffff, 0x00409a00 } } },
-+	[GDT_ENTRY_APMBIOS_BASE] = __DESC_INITIALIZER(0x0000ffff, 0x00409a00),
- 	/* 16-bit code */
--	[GDT_ENTRY_APMBIOS_BASE+1] = { { { 0x0000ffff, 0x00009a00 } } },
-+	[GDT_ENTRY_APMBIOS_BASE+1] = __DESC_INITIALIZER(0x0000ffff, 0x00009a00),
- 	/* data */
--	[GDT_ENTRY_APMBIOS_BASE+2] = { { { 0x0000ffff, 0x00409200 } } },
-+	[GDT_ENTRY_APMBIOS_BASE+2] = __DESC_INITIALIZER(0x0000ffff, 0x00409200),
+ /*H:235 This is the routine which actually checks the Guest's IDT entry and
+  * transfers it into the entry in "struct lguest": */
+-static void set_trap(struct lg_cpu *cpu, struct desc_struct *trap,
++static void set_trap(struct lg_cpu *cpu, gate_desc *trap,
+ 		     unsigned int num, u32 lo, u32 hi)
+ {
+ 	u8 type = idt_type(lo, hi);
+@@ -404,10 +404,10 @@ void load_guest_idt_entry(struct lg_cpu *cpu, unsigned int num, u32 lo, u32 hi)
+ /* The default entry for each interrupt points into the Switcher routines which
+  * simply return to the Host.  The run_guest() loop will then call
+  * deliver_trap() to bounce it back into the Guest. */
+-static void default_idt_entry(struct desc_struct *idt,
++static void default_idt_entry(gate_desc *idt,
+ 			      int trap,
+ 			      const unsigned long handler,
+-			      const struct desc_struct *base)
++			      const gate_desc *base)
+ {
+ 	/* A present interrupt gate. */
+ 	u32 flags = 0x8e00;
+@@ -439,7 +439,7 @@ void setup_default_idt_entries(struct lguest_ro_state *state,
+ /*H:240 We don't use the IDT entries in the "struct lguest" directly, instead
+  * we copy them into the IDT which we've set up for Guests on this CPU, just
+  * before we run the Guest.  This routine does that copy. */
+-void copy_traps(const struct lg_cpu *cpu, struct desc_struct *idt,
++void copy_traps(const struct lg_cpu *cpu, gate_desc *idt,
+ 		const unsigned long *def)
+ {
+ 	unsigned int i;
+@@ -447,7 +447,7 @@ void copy_traps(const struct lg_cpu *cpu, struct desc_struct *idt,
+ 	/* We can simply copy the direct traps, otherwise we use the default
+ 	 * ones in the Switcher: they will return to the Host. */
+ 	for (i = 0; i < ARRAY_SIZE(cpu->arch.idt); i++) {
+-		const struct desc_struct *gidt = &cpu->arch.idt[i];
++		const gate_desc *gidt = &cpu->arch.idt[i];
  
--	[GDT_ENTRY_ESPFIX_SS] = { { { 0x00000000, 0x00c09200 } } },
--	[GDT_ENTRY_PERCPU] = { { { 0x00000000, 0x00000000 } } },
-+	[GDT_ENTRY_ESPFIX_SS] = __DESC_INITIALIZER(0x00000000, 0x00c09200),
-+	[GDT_ENTRY_PERCPU] = __DESC_INITIALIZER(0x00000000, 0x00000000),
- } };
- #endif
- EXPORT_PER_CPU_SYMBOL_GPL(gdt_page);
+ 		/* If no Guest can ever override this trap, leave it alone. */
+ 		if (!direct_trap(i))
+diff --git a/drivers/lguest/lg.h b/drivers/lguest/lg.h
+index 5faefea..4377488 100644
+--- a/drivers/lguest/lg.h
++++ b/drivers/lguest/lg.h
+@@ -147,7 +147,7 @@ void guest_set_stack(struct lg_cpu *cpu, u32 seg, u32 esp, unsigned int pages);
+ void pin_stack_pages(struct lg_cpu *cpu);
+ void setup_default_idt_entries(struct lguest_ro_state *state,
+ 			       const unsigned long *def);
+-void copy_traps(const struct lg_cpu *cpu, struct desc_struct *idt,
++void copy_traps(const struct lg_cpu *cpu, gate_desc *idt,
+ 		const unsigned long *def);
+ void guest_set_clockevent(struct lg_cpu *cpu, unsigned long delta);
+ void init_clockdev(struct lg_cpu *cpu);
 diff --git a/include/asm-x86/lguest.h b/include/asm-x86/lguest.h
-index 9ccf6f4..f766b6c 100644
+index 7505e94..9ccf6f4 100644
 --- a/include/asm-x86/lguest.h
 +++ b/include/asm-x86/lguest.h
-@@ -86,8 +86,8 @@ static inline void lguest_set_ts(void)
- }
+@@ -61,7 +61,7 @@ struct lguest_ro_state {
+ 	struct desc_ptr guest_idt_desc;
+ 	struct desc_ptr guest_gdt_desc;
+ 	struct x86_hw_tss guest_tss;
+-	struct desc_struct guest_idt[IDT_ENTRIES];
++	gate_desc guest_idt[IDT_ENTRIES];
+ 	struct desc_struct guest_gdt[GDT_ENTRIES];
+ };
  
- /* Full 4G segment descriptors, suitable for CS and DS. */
--#define FULL_EXEC_SEGMENT ((struct desc_struct){ { {0x0000ffff, 0x00cf9b00} } })
--#define FULL_SEGMENT ((struct desc_struct){ { {0x0000ffff, 0x00cf9300} } })
-+#define FULL_EXEC_SEGMENT ((struct desc_struct) __DESC_INITIALIZER(0x0000ffff, 0x00cf9b00))
-+#define FULL_SEGMENT ((struct desc_struct) __DESC_INITIALIZER(0x0000ffff, 0x00cf9300))
+@@ -70,7 +70,7 @@ struct lg_cpu_arch {
+ 	struct desc_struct gdt[GDT_ENTRIES];
  
- #endif /* __ASSEMBLY__ */
+ 	/* The IDT entries: some copied into lguest_ro_state when running. */
+-	struct desc_struct idt[IDT_ENTRIES];
++	gate_desc idt[IDT_ENTRIES];
  
+ 	/* The address of the last guest-visible pagefault (ie. cr2). */
+ 	unsigned long last_pagefault;
 -- 
 1.5.4.3
 
