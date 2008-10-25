@@ -1,7 +1,7 @@
 From: Joe Damato <ice799@gmail.com>
-Subject: [PATCH 06/12] x86: Refactor pack_descriptor
-Date: Fri, 24 Oct 2008 20:15:26 -0700
-Message-ID: <8834ad1ab5a5ab9b4902ab708160b23f078f3758.1224903712.git.ice799@gmail.com>
+Subject: [PATCH 09/12] x86: Add static initiazlier for descriptors
+Date: Fri, 24 Oct 2008 20:15:29 -0700
+Message-ID: <e1bbf5a92bbf8fcf36dcbb650ee5f22d48d4b0f4.1224903712.git.ice799@gmail.com>
 References: <>
  <1224904532-9586-1-git-send-email-ice799@gmail.com>
  <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
@@ -9,17 +9,20 @@ References: <>
  <4810cc08c12cd78612b53f9b52d7ba93a9b03fd0.1224903712.git.ice799@gmail.com>
  <a9cabc5cabdb5a10631e2a6dc330c54826f2b210.1224903712.git.ice799@gmail.com>
  <a4c806abcf7a46c78aaff4e338fdbc1a06a56c88.1224903712.git.ice799@gmail.com>
+ <8834ad1ab5a5ab9b4902ab708160b23f078f3758.1224903712.git.ice799@gmail.com>
+ <4d0ab6d642a4edc3ecc7367df7043ecc8f0a7f98.1224903712.git.ice799@gmail.com>
+ <c53b3a54b3215187055dfe5673e1351d1bd3957a.1224903712.git.ice799@gmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:received:from:to:cc:subject
          :date:message-id:x-mailer:in-reply-to:references:in-reply-to
          :references;
-        bh=qDfNYeLuDny3E/WjgZc4BqjsaBPXEQSPm80Hvs5RXr4=;
-        b=RDzStrFhkkiJ9XPPmVMeUsolEUxuX9hrFSrK//7jtYCGV1qRKcLZmFNI/U3y/z0tR4
-         F3Crc6w/3rviZAU1fdLlD2/XpsW3lahPiIhrOvIAfqEDkd1+R8WwlsBwPuuWZXkcAdlW
-         k8WOycg1OyPS2mQpqPH6+NXt8YWgKCaxEkLMs=
-In-Reply-To: <a4c806abcf7a46c78aaff4e338fdbc1a06a56c88.1224903712.git.ice799@gmail.com>
+        bh=ChLDtTRAa2DvTbOJvMS0wWqQaE6j73Fnn/BQLsynkbg=;
+        b=Qy/iHeikMBAJJO3ZjmcgmXHChKCtN0SkT2YyxNNXirnGYjdfTx0ZFGF8zjlDgtkO1x
+         mIlSaTdPMk7VncfOE6AbjOF5/ByLTm39kMfQoIuruviyCHRsK3gDyMxGKlAv9FU8/5nW
+         T5TqtyvsjAmMRmhP015oY6JkzZMjgPeO2VRM0=
+In-Reply-To: <c53b3a54b3215187055dfe5673e1351d1bd3957a.1224903712.git.ice799@gmail.com>
 In-Reply-To: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
 References: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
@@ -30,42 +33,38 @@ Content-Transfer-Encoding: 7bit
 To: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Cc: Joe Damato <ice799@gmail.com>
 
-Refactor pack_descriptor to use fields in the struct instead of bitmasks
+Add static initializer for LDT/GDT/TSS descriptors.
 
 Signed-off-by: Joe Damato <ice799@gmail.com>
 ---
- include/asm-x86/desc.h |   18 +++++++++++++-----
- 1 files changed, 13 insertions(+), 5 deletions(-)
+ include/asm-x86/desc_defs.h |   14 ++++++++++++++
+ 1 files changed, 14 insertions(+), 0 deletions(-)
 
-diff --git a/include/asm-x86/desc.h b/include/asm-x86/desc.h
-index 6b4f3e6..ac9aad5 100644
---- a/include/asm-x86/desc.h
-+++ b/include/asm-x86/desc.h
-@@ -151,11 +151,19 @@ static inline void pack_descriptor(struct desc_struct *desc, unsigned long base,
- 				   unsigned long limit, unsigned char type,
- 				   unsigned char flags)
- {
--	desc->a = ((base & 0xffff) << 16) | (limit & 0xffff);
--	desc->b = (base & 0xff000000) | ((base & 0xff0000) >> 16) |
--		(limit & 0x000f0000) | ((type & 0xff) << 8) |
--		((flags & 0xf) << 20);
--	desc->p = 1;
-+	desc->limit0 = limit & 0xffff;
-+	desc->base0  = base  & 0xffff;
-+	desc->base1  = (base  >> 16) & 0xff;
-+	desc->base2  = (base  >> 24) & 0xff;
-+	desc->type   = type;
-+	desc->s      = 0;
-+	desc->dpl    = 0;
-+	desc->p      = 1;
-+	desc->limit  = (limit >> 16) & 0xf;
-+	desc->avl    = flags & 0x1;
-+	desc->l      = (flags & 0x2) >> 1;
-+	desc->d      = (flags & 0x4) >> 2;
-+	desc->g      = (flags & 0x8) >> 3;
- }
+diff --git a/include/asm-x86/desc_defs.h b/include/asm-x86/desc_defs.h
+index a1c6516..5119051 100644
+--- a/include/asm-x86/desc_defs.h
++++ b/include/asm-x86/desc_defs.h
+@@ -91,6 +91,20 @@ typedef struct desc_struct tss_desc;
+                 , .dpl = (hi >> 13) & 3 \
+                 , .p   = (hi >> 15) & 1 \
+                 , .base1 = (hi >> 16) & 0xffff }
++#define __DESC_INITIALIZER(lo,hi) \
++                { .limit0 = lo & 0xffff \
++                , .base0  = (lo >> 16) & 0xffff \
++                , .base1  = hi & 0xff \
++                , .type   = (hi >> 8) & 0xf \
++                , .s      = (hi >> 12) & 1 \
++                , .dpl    = (hi >> 13) & 3 \
++                , .p      = (hi >> 15) & 1 \
++                , .limit  = (hi >> 16) & 0xf \
++                , .avl    = (hi >> 20) & 1 \
++                , .l      = (hi >> 21) & 1 \
++                , .d      = (hi >> 22) & 1 \
++                , .g      = (hi >> 23) & 1 \
++                ,.base2   = (hi >> 24) & 0xf }
+ #endif
  
- 
+ struct desc_ptr {
 -- 
 1.5.4.3
 
