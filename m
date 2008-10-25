@@ -1,20 +1,28 @@
 From: Joe Damato <ice799@gmail.com>
-Subject: [PATCH 01/12] x86: Cleanup x86 descriptors, remove a/b fields from structs
-Date: Fri, 24 Oct 2008 20:15:21 -0700
-Message-ID: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+Subject: [PATCH 06/12] x86: Refactor pack_descriptor
+Date: Fri, 24 Oct 2008 20:15:26 -0700
+Message-ID: <8834ad1ab5a5ab9b4902ab708160b23f078f3758.1224903712.git.ice799@gmail.com>
 References: <>
  <1224904532-9586-1-git-send-email-ice799@gmail.com>
-Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1753489AbYJYDat@vger.kernel.org>
+ <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+ <03269a2e8f455b431612a32e8cce048e98c75b27.1224903712.git.ice799@gmail.com>
+ <4810cc08c12cd78612b53f9b52d7ba93a9b03fd0.1224903712.git.ice799@gmail.com>
+ <a9cabc5cabdb5a10631e2a6dc330c54826f2b210.1224903712.git.ice799@gmail.com>
+ <a4c806abcf7a46c78aaff4e338fdbc1a06a56c88.1224903712.git.ice799@gmail.com>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:received:received:received:from:to:cc:subject
-         :date:message-id:x-mailer:in-reply-to:references;
-        bh=1VhsyFaLp7QeIVQob1X9uFMThBj9Ni8jwuh3EqWMM5I=;
-        b=HAo7rhob5S7nEezveenbgHzGXrpDvHUd+iHKtZT86IL07Ica8jaYY420tLJn70LhSt
-         tlqD2RxU4tM8LpVtltzKisLHE1m733RBoRtOk34lgHwpN1n3m+aSIBFnVOmeKjgN2GoI
-         IALrXUrPJbPlmKo1f1TAcd8s2GGGVxastUr6A=
-In-Reply-To: <1224904532-9586-1-git-send-email-ice799@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+         :date:message-id:x-mailer:in-reply-to:references:in-reply-to
+         :references;
+        bh=qDfNYeLuDny3E/WjgZc4BqjsaBPXEQSPm80Hvs5RXr4=;
+        b=RDzStrFhkkiJ9XPPmVMeUsolEUxuX9hrFSrK//7jtYCGV1qRKcLZmFNI/U3y/z0tR4
+         F3Crc6w/3rviZAU1fdLlD2/XpsW3lahPiIhrOvIAfqEDkd1+R8WwlsBwPuuWZXkcAdlW
+         k8WOycg1OyPS2mQpqPH6+NXt8YWgKCaxEkLMs=
+In-Reply-To: <a4c806abcf7a46c78aaff4e338fdbc1a06a56c88.1224903712.git.ice799@gmail.com>
+In-Reply-To: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+References: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,57 +30,47 @@ Content-Transfer-Encoding: 7bit
 To: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 Cc: Joe Damato <ice799@gmail.com>
 
-Split the single descriptor struct into an IDT struct and a struct for ldt/gdt/tss. This was done because the fields in IDTs are not the same or in the same order as ldt/gdt/tss descriptors. More meaningful field names were added and the a/b fields were removed.
+Refactor pack_descriptor to use fields in the struct instead of bitmasks
 
 Signed-off-by: Joe Damato <ice799@gmail.com>
 ---
- include/asm-x86/desc_defs.h |   32 +++++++++++++-------------------
- 1 files changed, 13 insertions(+), 19 deletions(-)
+ include/asm-x86/desc.h |   18 +++++++++++++-----
+ 1 files changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/include/asm-x86/desc_defs.h b/include/asm-x86/desc_defs.h
-index b881db6..68abda4 100644
---- a/include/asm-x86/desc_defs.h
-+++ b/include/asm-x86/desc_defs.h
-@@ -11,27 +11,21 @@
+diff --git a/include/asm-x86/desc.h b/include/asm-x86/desc.h
+index 6b4f3e6..ac9aad5 100644
+--- a/include/asm-x86/desc.h
++++ b/include/asm-x86/desc.h
+@@ -151,11 +151,19 @@ static inline void pack_descriptor(struct desc_struct *desc, unsigned long base,
+ 				   unsigned long limit, unsigned char type,
+ 				   unsigned char flags)
+ {
+-	desc->a = ((base & 0xffff) << 16) | (limit & 0xffff);
+-	desc->b = (base & 0xff000000) | ((base & 0xff0000) >> 16) |
+-		(limit & 0x000f0000) | ((type & 0xff) << 8) |
+-		((flags & 0xf) << 20);
+-	desc->p = 1;
++	desc->limit0 = limit & 0xffff;
++	desc->base0  = base  & 0xffff;
++	desc->base1  = (base  >> 16) & 0xff;
++	desc->base2  = (base  >> 24) & 0xff;
++	desc->type   = type;
++	desc->s      = 0;
++	desc->dpl    = 0;
++	desc->p      = 1;
++	desc->limit  = (limit >> 16) & 0xf;
++	desc->avl    = flags & 0x1;
++	desc->l      = (flags & 0x2) >> 1;
++	desc->d      = (flags & 0x4) >> 2;
++	desc->g      = (flags & 0x8) >> 3;
+ }
  
- #include <linux/types.h>
  
--/*
-- * FIXME: Acessing the desc_struct through its fields is more elegant,
-- * and should be the one valid thing to do. However, a lot of open code
-- * still touches the a and b acessors, and doing this allow us to do it
-- * incrementally. We keep the signature as a struct, rather than an union,
-- * so we can get rid of it transparently in the future -- glommer
-- */
-+/* 8 byte idt gate descriptor */
-+struct gate_struct {
-+	u16 base0;
-+	u16 seg_sel;
-+	u8 reserved;
-+	unsigned type: 4, zero: 1, dpl: 2, p: 1;
-+	u16 base1;
-+} __attribute__((packed));
-+
- /* 8 byte segment descriptor */
- struct desc_struct {
--	union {
--		struct {
--			unsigned int a;
--			unsigned int b;
--		};
--		struct {
--			u16 limit0;
--			u16 base0;
--			unsigned base1: 8, type: 4, s: 1, dpl: 2, p: 1;
--			unsigned limit: 4, avl: 1, l: 1, d: 1, g: 1, base2: 8;
--		};
--	};
-+	u16 limit0;
-+	u16 base0;
-+	unsigned base1: 8, type: 4, s: 1, dpl: 2, p: 1;
-+	unsigned limit: 4, avl: 1, l: 1, d: 1, g: 1, base2: 8;
- } __attribute__((packed));
- 
- enum {
 -- 
 1.5.4.3
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
