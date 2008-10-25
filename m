@@ -1,39 +1,37 @@
-From: "Jonas Galvez" <jonas@codeazur.com.br>
-Subject: /etc/group question
-Date: Fri, 17 Oct 2008 18:28:35 -0300
-Message-ID: <10df03a30810171428r1936657fyca2ac7075723e073@mail.gmail.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+From: Joe Damato <ice799@gmail.com>
+Subject: [PATCH 00/12] x86: Cleanup idt, gdt/ldt/tss structs
+Date: Fri, 24 Oct 2008 20:15:20 -0700
+Message-ID: <1224904532-9586-1-git-send-email-ice799@gmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:received:from:to:cc:subject
+         :date:message-id:x-mailer:in-reply-to:references;
+        bh=q5jg9GbvKiBF3t1l9YISKfZb4t3FYKgWdq8mDbqAlZY=;
+        b=ODfdPvhL8Up99rKks6HHFxKWlMqM0uB6sb3nQcC+XfX21y7SUq117mF1ME02VWnMAv
+         itcPRZR2ePj4iGVPus+L8Bh2qWIh1omC8gjM/+hNkT3lGNUBYwdDuvCqk9paesHb+9Bu
+         0cNWhLZIT9lX3lUvEv8kyyjofFn4aHZ+w+TJQ=
+In-Reply-To: <>
+References: <>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Joe Damato <ice799@gmail.com>
 
-I have a server box with the following files:
+Hi -
 
-/etc/passwd
-foo:x:1000:1000::/home/foo:/bin/bash
-bar:x:1001:1001::/home/bar:/bin/bash
+This is my first submission to the kernel, so (beware!) please let me know if I can make any improvements on these patches.
 
-/etc/group
-foo:x:1000:
-bar:!:1001:foo
+I attempted to clean up the x86 structs for 32bit cpus that store IDT/LDT/GDT data by removing the fields labeled "a" and "b" in favor of more descriptive field names. I added some macros and went through the kernel cleaning up the various places where "a" and "b" were used.
 
-/etc/shadow
-foo:[ENCRYPTED_PASSWORD]:14010:0:99999:7:::
-bar:[ENCRYPTED_PASSWORD]:14055:0:99999:7:::
+I tried building my kernel with my .config and then also did a make allyesconfig build to help ensure I found everything that was using the old structure names. I also tried a few grep patterns. Hopefully I got everyone out.
 
-Now the question is, what commands could the sys admin have possibly
-issued to end up with that last line in /etc/group with an exclamation
-point in the password field? I'm have a seriously hard time figuring
-that out. I'm trying to set up another server box with exactly the
-same user setup, but I don't want to copy the files, I want to know
-what commands were used to generate them.
 
-Thanks in advance,
---Jonas Galvez
+Thanks,
+Joe Damato
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
