@@ -1,53 +1,30 @@
-From: Joe Damato <ice799@gmail.com>
-Subject: [PATCH 02/12] x86: Use new gate_struct for gate_desc
-Date: Fri, 24 Oct 2008 20:15:22 -0700
-Message-ID: <03269a2e8f455b431612a32e8cce048e98c75b27.1224903712.git.ice799@gmail.com>
-References: <>
- <1224904532-9586-1-git-send-email-ice799@gmail.com>
- <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+From: Willy Tarreau <w@1wt.eu>
+Subject: Re: [PATCH 00/12] x86: Cleanup idt, gdt/ldt/tss structs
+Date: Sat, 25 Oct 2008 07:40:19 +0200
+Message-ID: <20081025054018.GU24654@1wt.eu>
+References: <1224904532-9586-1-git-send-email-ice799@gmail.com>
+Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:received:from:to:cc:subject
-         :date:message-id:x-mailer:in-reply-to:references:in-reply-to
-         :references;
-        bh=nIOwHMWmq7xJHC2kqlub3vQXX/hmBJGzbdDrw9zkNVw=;
-        b=n2MNoiawgY4QQWDxxWXyhOPlqdrSE7VKQ0Vh5BafB18FH/SotCMVjWFbFDeCKetVM6
-         Niy5CIjUZDalcc2aOpt+CWGjSo75G3qqyv/4CbEx4Apiepp3wynM9c9av4FItVGrJeIp
-         9zO8ZDjbnOlSPnPvWomdKJEK5DYTxpa3sPlUA=
-In-Reply-To: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
-In-Reply-To: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
-References: <52f8491fb5d55c0171840b01638ea6db0a98f3be.1224903712.git.ice799@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <1224904532-9586-1-git-send-email-ice799@gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
-Cc: Joe Damato <ice799@gmail.com>
+To: Joe Damato <ice799@gmail.com>
+Cc: linux-x86_64@vger.kernel.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 
-Change the gate_desc typedef to use the new gate_struct.
+On Fri, Oct 24, 2008 at 08:15:20PM -0700, Joe Damato wrote:
+> Hi -
+> 
+> This is my first submission to the kernel, so (beware!) please let me know if I can make any improvements on these patches.
 
-Signed-off-by: Joe Damato <ice799@gmail.com>
----
- include/asm-x86/desc_defs.h |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+It looks like you provide one patch per file. You should group some of them
+together so that each patch does a functional change and everything still
+builds after incrementally applying that patch. The way you have splitted
+them will break builds if someone tries to build after patch 1 for instance.
 
-diff --git a/include/asm-x86/desc_defs.h b/include/asm-x86/desc_defs.h
-index 68abda4..012df1f 100644
---- a/include/asm-x86/desc_defs.h
-+++ b/include/asm-x86/desc_defs.h
-@@ -72,7 +72,7 @@ typedef struct ldttss_desc64 tss_desc;
- #define gate_offset(g) ((g).offset_low | ((unsigned long)(g).offset_middle << 16) | ((unsigned long)(g).offset_high << 32))
- #define gate_segment(g) ((g).segment)
- #else
--typedef struct desc_struct gate_desc;
-+typedef struct gate_struct gate_desc;
- typedef struct desc_struct ldt_desc;
- typedef struct desc_struct tss_desc;
- #define gate_offset(g)		(((g).b & 0xffff0000) | ((g).a & 0x0000ffff))
--- 
-1.5.4.3
+Willy
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
