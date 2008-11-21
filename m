@@ -1,58 +1,78 @@
-From: "Peter Teoh" <htmldeveloper@gmail.com>
-Subject: Re: question about sys_call_table size
-Date: Sat, 15 Nov 2008 12:24:51 +0800
-Message-ID: <804dabb00811142024j41f1090ah71d05a19dd25b3d1@mail.gmail.com>
-References: <2e422b910811111749q33b7e98av8aebd622eb9b2f7b@mail.gmail.com>
+From: "EXTERNAL Werner Philipp (Praktikant; CR/AEM5)" 
+	<external.Philipp.Werner@de.bosch.com>
+Subject: Trying to alloc many continous pages
+Date: Fri, 21 Nov 2008 16:17:17 +0100
+Message-ID: <BF92A053E4A99B4E8EAE0B9EBD7EB203025E1650@si-mail15.de.bosch.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to
-         :subject:cc:in-reply-to:mime-version:content-type
-         :content-transfer-encoding:content-disposition:references;
-        bh=JSB4yZab6ocPdXxVV94OF98ca/btWBu7zOnJVw/z9P4=;
-        b=qGSDEO1AoJGiQ2qhWW1TpjD2DQstt3YqM2ADbjhZGCCQ3zXa0ic3YJ1m7fKf2IG8xp
-         vYdKyvPFqUhunrbIMDf/BMdouBB4nCG1rJ7ffaVYPGBr5+49M2wawt7ATZkFM78ezzs7
-         g2YtSAD8tVCva1uWj84dZNkoDcu0sSkELTAKo=
-In-Reply-To: <2e422b910811111749q33b7e98av8aebd622eb9b2f7b@mail.gmail.com>
-Content-Disposition: inline
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-2022-jp"
-To: =?BIG5?B?s6+w6qao?= <gcchen.org@gmail.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@nl.linux.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-On Wed, Nov 12, 2008 at 9:49 AM, 陳國成 <gcchen.org@gmail.com> wrote:
-> Hi..
-> I have two questions:
->
-> 1. Does anyone ever encounter a problem that must be solved by adding
-> new system calls. If yes, please briefly describe your problem.
->
-> 2. If I add thousands of new system calls (say 2000) in linux kernel
-> and add these new system calls into sys_call_table, will there be any
-> stability or performance issues(or other concerns) on this new kernel?
-> Thanks~~~
+Hi,
 
-should not be a problem....but u will be overwhelmed with context
-switching all the time......as every tasks is switched between
-userspace/kernelspace via system call.
+I'm writing a driver using DMA to transfer data to a performance critic=
+al device. I allocate a temporary DMA buffer which will be freed immedi=
+ately after the DMA is completed. If there is enough continous memory a=
+vailable for all data I would like to transfer, I use it. Otherwise I s=
+plit up the transfer in multiple transfers.
 
-u will have a crawling system...unless u hardly used any of the
-syscall, or having multicore CPUs, or employ some heuristics to delay
-the processing of the syscalls (just like Xen), so as to combine and
-execute all of them at the same time.   this is also the reason for
-the motivation behind asynchronous system call....check out
-kernelnewbies project site.
+What's the right way to allocate the continous buffer? I didn't find ho=
+w to "try allocating memory" without having an effect, if the memory in=
+ not available.
 
-am i correct?
+If I use the following code and there is not enough free memory, my lin=
+ux hangs for several minutes after the DMA has finished.
 
--- 
-Regards,
-Peter Teoh
+
+unsigned int order =3D get_order(data_size);
+while (1) {
+     	kbuf =3D (void *) __get_free_pages(__GFP_NORETRY | __GFP_NOWARN, =
+order);
+	if (kbuf)
+		break;		// success: we got a buffer
+	if (order =3D=3D 0)
+		return -ENOMEM;
+	order--;			// retry with a smaller order
+}
+buffer_size =3D PAGE_SIZE << order;
+
+
+
+I think the memory management tries to reduce fragmentation in memory, =
+but I would like to avoid this behaviour. It's not really a problem if =
+I can't get a huge buffer, because in this case I will use a smaller on=
+e. But if there is a huge chunk of free memory I would like to use it, =
+because it yields performance benefits.
+
+I just want to look if I can alloc a number of continous pages, and if =
+there aren't enough I want to handle it myself... How can I do that?
+
+
+Best regards=20
+Philipp Werner=20
+___________________________________
+
+
+
+Blaupunkt GmbH=20
+Robert-Bosch-Stra=DFe 200
+31139 Hildesheim
+www.blaupunkt.com
+
+
+Sitz: Hildesheim, Registergericht: Amtsgericht Hildesheim HRB 120
+Aufsichtsratsvorsitzender: Volkmar Denner; Gesch=E4ftsf=FChrung: Uwe Th=
+omas,
+Egbert Hellwig, Dirk Hoheisel, Michael Klemm
+Blaupunkt GmbH - Ein Unternehmen der Bosch Gruppe=20
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
