@@ -1,78 +1,41 @@
-From: "EXTERNAL Werner Philipp (Praktikant; CR/AEM5)" 
-	<external.Philipp.Werner@de.bosch.com>
-Subject: Trying to alloc many continous pages
-Date: Fri, 21 Nov 2008 16:17:17 +0100
-Message-ID: <BF92A053E4A99B4E8EAE0B9EBD7EB203025E1650@si-mail15.de.bosch.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: USB Gadget Drivers
+Date: Thu, 4 Dec 2008 16:45:22 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B0A003D08@GDCMX01.igglobal.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 Content-class: urn:content-classes:message
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-newbie@vger.kernel.org
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
+To: kernelnewbies@nl.linux.org, linux-newbie@vger.kernel.org
+
 
 Hi,
 
-I'm writing a driver using DMA to transfer data to a performance critic=
-al device. I allocate a temporary DMA buffer which will be freed immedi=
-ately after the DMA is completed. If there is enough continous memory a=
-vailable for all data I would like to transfer, I use it. Otherwise I s=
-plit up the transfer in multiple transfers.
+I understand that the USB mailing list might be a better choice, but
+still trying my luck here...
 
-What's the right way to allocate the continous buffer? I didn't find ho=
-w to "try allocating memory" without having an effect, if the memory in=
- not available.
+I'm very new to USB and would like to understand what would it take to
+make my ARM board appear as a USB mass storage device to a PC? What
+pieces of the framework I can reuse and what piece of code I'll need to
+write? Any help will be greatly appreciated.
 
-If I use the following code and there is not enough free memory, my lin=
-ux hangs for several minutes after the DMA has finished.
+Thanks,
 
-
-unsigned int order =3D get_order(data_size);
-while (1) {
-     	kbuf =3D (void *) __get_free_pages(__GFP_NORETRY | __GFP_NOWARN, =
-order);
-	if (kbuf)
-		break;		// success: we got a buffer
-	if (order =3D=3D 0)
-		return -ENOMEM;
-	order--;			// retry with a smaller order
-}
-buffer_size =3D PAGE_SIZE << order;
-
-
-
-I think the memory management tries to reduce fragmentation in memory, =
-but I would like to avoid this behaviour. It's not really a problem if =
-I can't get a huge buffer, because in this case I will use a smaller on=
-e. But if there is a huge chunk of free memory I would like to use it, =
-because it yields performance benefits.
-
-I just want to look if I can alloc a number of continous pages, and if =
-there aren't enough I want to handle it myself... How can I do that?
-
-
-Best regards=20
-Philipp Werner=20
-___________________________________
-
-
-
-Blaupunkt GmbH=20
-Robert-Bosch-Stra=DFe 200
-31139 Hildesheim
-www.blaupunkt.com
-
-
-Sitz: Hildesheim, Registergericht: Amtsgericht Hildesheim HRB 120
-Aufsichtsratsvorsitzender: Volkmar Denner; Gesch=E4ftsf=FChrung: Uwe Th=
-omas,
-Egbert Hellwig, Dirk Hoheisel, Michael Klemm
-Blaupunkt GmbH - Ein Unternehmen der Bosch Gruppe=20
+Rajat
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
