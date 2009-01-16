@@ -1,33 +1,32 @@
-From: "George Kumar" <grgkumar4@gmail.com>
-Subject: difference between proc and sysfs file systems
-Date: Thu, 15 Jan 2009 10:11:10 -0800
-Message-ID: <5f695cd0901151011s487e0456y7ad002c94846dc84@mail.gmail.com>
+From: George Kumar <grgkumar4@gmail.com>
+Subject: Manually editing .config in /usr/src/linux
+Date: Fri, 16 Jan 2009 12:40:39 -0800
+Message-ID: <5f695cd0901161240y170e4ffpdc327f1abfcdafe7@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:date:from:to
-         :subject:mime-version:content-type:content-transfer-encoding
-         :content-disposition;
-        bh=mGlh5EmDi6J9YURX0lvPiO5AzV6pLbThWTVep8VzgZc=;
-        b=bFP+j4MykebYDEX7F6XH+wdptVl6UNq2rToyzYBbNol2/KfrfkaLyBObW1NPKFZMli
-         u9yYMmiW4PksfDPazhhBSglteJxJSq+P2yUOxUJaIWNKp2e9203ZrxGN1iodwe0i2uW8
-         tQFmGyisM5lv+t+/ZXw3QDoM9PyeGQxs1USKU=
-Content-Disposition: inline
+        h=domainkey-signature:mime-version:received:date:message-id:subject
+         :from:to:content-type:content-transfer-encoding;
+        bh=rybi9BJWZkeb9iByyaqRWBbogg5KLpUo+lZEizaRZck=;
+        b=Y4FxCdzLXAKNjQvAZqeCu54HhB6rzy8rz5LV2g/uY2/1NW1Tf+ZntXJmFoCVKFz5K2
+         lYsKKMh9W5j2T5YX4nhGgOOMfubvG0Ah/jS5jcVLOXhTsZDDKX+p4Xyi58L7h6V5utdd
+         Eq4qpRXFJ/wwqqDs7BEsGIbNAk4tLQOVRCe9Q=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-Both are pseudo file systems. I am a bit familiar with proc as it is
-useful in seeing system info and also change things like ip_forward on
-the fly,
-but not so familar with sysfs. Why do we need sysfs....what
-functionality does it bring that could not be provided by proc.
+I'd like to compile the kernel with debug info, Is it okay to go ahead
+and set CONFIG_DEBUG_INFO=y in .config file
+in the source dir. Even though it says don't edit because it is a
+auto-generated file. I don' want to have to go through make menuconfig
+and also don't want to hack the makefile to unconditionally add -g to
+CFLAGS.
 
-thanks.
-george
+Thanks.
+George
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
