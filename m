@@ -1,34 +1,42 @@
-From: George Kumar <grgkumar4@gmail.com>
-Subject: Manually editing .config in /usr/src/linux
-Date: Fri, 16 Jan 2009 12:40:39 -0800
-Message-ID: <5f695cd0901161240y170e4ffpdc327f1abfcdafe7@mail.gmail.com>
+From: "zhangsong" <happynodyandhappyyogo@gmail.com>
+Subject: Why does he write such code?
+Date: Mon, 19 Jan 2009 12:58:49 +0800
+Message-ID: <497407bc.0e0d6e0a.1899.7020@mx.google.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:date:message-id:subject
-         :from:to:content-type:content-transfer-encoding;
-        bh=rybi9BJWZkeb9iByyaqRWBbogg5KLpUo+lZEizaRZck=;
-        b=Y4FxCdzLXAKNjQvAZqeCu54HhB6rzy8rz5LV2g/uY2/1NW1Tf+ZntXJmFoCVKFz5K2
-         lYsKKMh9W5j2T5YX4nhGgOOMfubvG0Ah/jS5jcVLOXhTsZDDKX+p4Xyi58L7h6V5utdd
-         Eq4qpRXFJ/wwqqDs7BEsGIbNAk4tLQOVRCe9Q=
+        h=domainkey-signature:received:received:message-id:from:to:subject
+         :date:mime-version:content-type:content-transfer-encoding:x-mailer
+         :thread-index:x-mimeole;
+        bh=zWRI+sXwaTYNQqNhXU8/7dTtnMb3s7/++bM0QFyfwcA=;
+        b=M7yAZah2qIOb9r4Ypgv3PBZYCV1MOU39HzoMPXDyYfoJPpGHljDJ95rLLk17wtIehd
+         q6tccqLIPatR+sUDwoNBMaKpLb0rkeRuVYy/tk/WlT1yqrT6khYHLVjf66CQXW0fM1fk
+         4HZhKYbmqsKlATmOC1Lut8ksIQLH3ZSvD9NvY=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="iso-2022-jp"
 To: linux-newbie@vger.kernel.org
 
-I'd like to compile the kernel with debug info, Is it okay to go ahead
-and set CONFIG_DEBUG_INFO=y in .config file
-in the source dir. Even though it says don't edit because it is a
-auto-generated file. I don' want to have to go through make menuconfig
-and also don't want to hack the makefile to unconditionally add -g to
-CFLAGS.
+Hello all,=20
 
-Thanks.
-George
+I read linux-2.4 and found a line of confused code:
+
+In kernel/sched.c:
+      =20
+     void do_timer(struct pt_regs * regs)
+     {
+=A1=A1=A1=A1	   (*(unsigned long *)&jiffies)++; /* confused code */
+=A1=A1=A1=A1=A1=A1=A1=A1=A1=AD
+     }
+
+1. Why not to use something link atomic_inc insead of the above code?
+2. Can the GCC optimize the above code to jiffies++ ?
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
