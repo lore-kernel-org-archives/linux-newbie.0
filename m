@@ -1,42 +1,55 @@
-From: "zhangsong" <happynodyandhappyyogo@gmail.com>
-Subject: Why does he write such code?
-Date: Mon, 19 Jan 2009 12:58:49 +0800
-Message-ID: <497407bc.0e0d6e0a.1899.7020@mx.google.com>
+From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
+Subject: finding directories within a particular directory
+Date: Tue, 10 Feb 2009 16:51:00 -0500 (EST)
+Message-ID: <Pine.LNX.4.64.0902101643170.16854@localhost>
+Reply-To: karthikv@Alum.Dartmouth.ORG
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:message-id:from:to:subject
-         :date:mime-version:content-type:content-transfer-encoding:x-mailer
-         :thread-index:x-mimeole;
-        bh=zWRI+sXwaTYNQqNhXU8/7dTtnMb3s7/++bM0QFyfwcA=;
-        b=M7yAZah2qIOb9r4Ypgv3PBZYCV1MOU39HzoMPXDyYfoJPpGHljDJ95rLLk17wtIehd
-         q6tccqLIPatR+sUDwoNBMaKpLb0rkeRuVYy/tk/WlT1yqrT6khYHLVjf66CQXW0fM1fk
-         4HZhKYbmqsKlATmOC1Lut8ksIQLH3ZSvD9NvY=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-2022-jp"
-To: linux-newbie@vger.kernel.org
+Content-Type: TEXT/PLAIN; charset="us-ascii"; format="flowed"
+Content-Transfer-Encoding: 7bit
+To: Newbie List <linux-newbie@vger.kernel.org>
 
-Hello all,=20
+Hi all,
 
-I read linux-2.4 and found a line of confused code:
+I have been trying to come up with a way of getting find to give me a list 
+of all directories within a specific directory, without including the 
+parent in the list. I do not seem to be able to achieve it.
 
-In kernel/sched.c:
-      =20
-     void do_timer(struct pt_regs * regs)
-     {
-=A1=A1=A1=A1	   (*(unsigned long *)&jiffies)++; /* confused code */
-=A1=A1=A1=A1=A1=A1=A1=A1=A1=AD
-     }
+For instance, my directory tree has the following structure:
+.
+`-- Patient1
+     |-- 02-03-2009
+     `-- 02-10-2009
 
-1. Why not to use something link atomic_inc insead of the above code?
-2. Can the GCC optimize the above code to jiffies++ ?
+I want find to only match 02-03-2009 and 02-10-2009. However, the 
+following command gives:
+
+$ find Patient1 -type d
+Patient1/
+Patient1/02-03-2009
+Patient1/02-10-2009
+
+How do I stop matching the parent directory - "Patient1", in this case?
+
+Of course, I could pipe this output through sed/grep to get what I 
+need, but I am curious if I can do it using find alone. All help is 
+appreciated.
+
+
+Thanks,
+
+-K
+
+-- 
+The production of too many useful things results in too many
+useless people - Karl Marx
+
+Computers are useful things - KV
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
