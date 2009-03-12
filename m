@@ -1,35 +1,47 @@
-From: Zhaohui Wang <zwange@gmu.edu>
-Subject: RE: how to find when a symbol introduced into the kernel
-Date: Thu, 19 Feb 2009 09:28:17 -0500
-Message-ID: <000801c9929e$4e2e8750$ea8b95f0$@edu>
-References: <000b01c8ce6b$a7bfda50$f73f8ef0$@edu> <1213537044.25647.4.camel@zem>
+From: Julie Zhu <julie.zhu@xilinx.com>
+Subject: level interrupt handling in the Kernel
+Date: Thu, 12 Mar 2009 10:22:14 -0700 (PDT)
+Message-ID: <22481320.post@talk.nabble.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <1213537044.25647.4.camel@zem>
-Content-language: en-us
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: 
-Cc: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 
+Hello,
 
-Hi all
+We found that level interrupts are handled in the following way in the Linux
+kernel:
+1. mask irq, disable it
+2. ack irq, clear it in interrupt controller.
+3. move irq, handle it in handler for the source.
+4. unmask irq, reenable it.
 
-Has anyone ever successfully tried sysrq key?
+This sequnce results in bogus interrupts in the system. The reason is that,
+after step 2 but before step 3, interrupt controller sees that the interrupt
+source is high, and will re-assert the interrupt. After the interrupt
+handler returns and finish step 4, the bogus interrupt causes the sequence
+to start again.
 
-When  I press alt+sysrq+g , it always brought  up the evbug log, nothing
-with sysrq special functionality happens
+We solve this issue by changing the interrupt controller to do nothing in
+step 2, ack irq, if it is a level. In step 4, unmask irq, we ack the
+interrupt controller then, and then re-enable the interrupt. Since interrupt
+is level, and source interrupt handler only clears interrupts once in the
+handler, nothing will be missed.
 
-Anyone can tell me what should I do?
+I am not sure whether we are doing the right thing, and why the Linux kernel
+chooses to handle level interrupt in that sequence.
 
+Thanks,
+Julie.
 
-Best Regards
-Zhao Wang
-
-
+Thanks,
+-- 
+View this message in context: http://www.nabble.com/level-interrupt-handling-in-the-Kernel-tp22481320p22481320.html
+Sent from the linux-newbie mailing list archive at Nabble.com.
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
