@@ -1,47 +1,53 @@
-From: Julie Zhu <julie.zhu@xilinx.com>
-Subject: level interrupt handling in the Kernel
-Date: Thu, 12 Mar 2009 10:22:14 -0700 (PDT)
-Message-ID: <22481320.post@talk.nabble.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+From: Joe Damato <ice799@gmail.com>
+Subject: [PATCH 0/2] x86: Remove direct access to internal x86 descriptor fields
+Date: Sun, 29 Mar 2009 14:21:40 -0700
+Message-ID: <cover.1238361501.git.ice799@gmail.com>
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:received:from:to:cc:subject
+         :date:message-id:x-mailer;
+        bh=CiTTCPDi2nOyo188ZeSW2h55QVWUl5s24lbH0beetr4=;
+        b=lKQ+gIlaB2EFUZVSXignUBMCU3ac3MwztGGVlPtfoeEnFNL85wmo953KDg7cGIJpKP
+         218/eO69sprwUW2qoSJSvPaVx4yjHHmjJAamV2p+FPZuddqu5ktHVd8Cc5aRAi0Xe0Qa
+         SVqIL8kZTy0bnnk842emfPoVtoAp+hET2sXJU=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-x86_64@vger.kernel.org, w@1wt.eu, mingo@elte.hu, hpa@zytor.com, jeremy@goop.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Joe Damato <ice799@gmail.com>
 
+Hi -
 
-Hello,
+This patch set aims to remove the direct access to the 'a' and 'b' fields of 32-bit x86 descriptors. Static inline getters/setters are provided.
 
-We found that level interrupts are handled in the following way in the Linux
-kernel:
-1. mask irq, disable it
-2. ack irq, clear it in interrupt controller.
-3. move irq, handle it in handler for the source.
-4. unmask irq, reenable it.
+This is a resumbmit of a patch set I submitted several months ago[1]. My last patch set was a bit large, so I've tried to take a smaller bite this time and slowly build the cleanup effort over a series of patch sets.
 
-This sequnce results in bogus interrupts in the system. The reason is that,
-after step 2 but before step 3, interrupt controller sees that the interrupt
-source is high, and will re-assert the interrupt. After the interrupt
-handler returns and finish step 4, the bogus interrupt causes the sequence
-to start again.
-
-We solve this issue by changing the interrupt controller to do nothing in
-step 2, ack irq, if it is a level. In step 4, unmask irq, we ack the
-interrupt controller then, and then re-enable the interrupt. Since interrupt
-is level, and source interrupt handler only clears interrupts once in the
-handler, nothing will be missed.
-
-I am not sure whether we are doing the right thing, and why the Linux kernel
-chooses to handle level interrupt in that sequence.
+Any and all comments, suggestions, and questions are welcome.
 
 Thanks,
-Julie.
+Joe Damato
 
-Thanks,
--- 
-View this message in context: http://www.nabble.com/level-interrupt-handling-in-the-Kernel-tp22481320p22481320.html
-Sent from the linux-newbie mailing list archive at Nabble.com.
+[1] http://lkml.org/lkml/2008/10/24/459
+
+---
+
+Joe Damato (2):
+  x86: Add getter/setter static inlines for x86 descriptors
+  x86: Replace direct access to descriptor fields with getter/setters
+
+ arch/x86/include/asm/desc.h           |   32 ++++++++++++++++++++++++++------
+ arch/x86/include/asm/xen/hypercall.h  |    5 +++--
+ arch/x86/kernel/tls.c                 |    6 ++++--
+ arch/x86/kernel/vmi_32.c              |    3 ++-
+ arch/x86/lguest/boot.c                |    2 +-
+ arch/x86/math-emu/fpu_system.h        |   20 ++++++++++----------
+ drivers/lguest/interrupts_and_traps.c |   25 +++++++++++++------------
+ drivers/lguest/segments.c             |   20 ++++++++++++--------
+ drivers/pnp/pnpbios/bioscalls.c       |    4 ++--
+ 9 files changed, 73 insertions(+), 44 deletions(-)
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
