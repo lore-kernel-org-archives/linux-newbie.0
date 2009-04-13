@@ -1,70 +1,103 @@
-From: "H. Peter Anvin" <hpa@zytor.com>
-Subject: Re: [PATCH 1/2] x86: Add getter/setter static inlines for x86 	descriptors
-Date: Sun, 29 Mar 2009 15:10:46 -0700
-Message-ID: <49CFF1E6.3020301@zytor.com>
-References: <cover.1238361501.git.ice799@gmail.com>	 <76c37743d20e5737eadc747cbdddbc2beb11f074.1238361501.git.ice799@gmail.com>	 <49CFE7E0.80500@zytor.com> <3605561d0903291450v516a7e9csaff4309c0cacb121@mail.gmail.com>
+From: "Sol Kavy" <skavy@ubicom.com>
+Subject: IRQ Tracing Problem in Linux 2.6.28 Kernel
+Date: Mon, 13 Apr 2009 15:00:46 -0700
+Message-ID: <CB2DD11991B27C4F99935E6229450D32042AAA74@STORK.scenix.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <3605561d0903291450v516a7e9csaff4309c0cacb121@mail.gmail.com>
+Content-class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Joe Damato <ice799@gmail.com>
-Cc: linux-x86_64@vger.kernel.org, w@1wt.eu, mingo@elte.hu, jeremy@goop.org, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org
 
-Joe Damato wrote:
->>
->> This is a serious question.  The x86 descriptors are so complex that
->> it's not clear to me that this restriction makes the code any more
->> clear.  Especially not with things like:
->>
->> -               cpu->arch.gdt[i].b |= 0x00000100;
->> +               desc_set_hi(tmp,  desc_get_hi(tmp) | 0x00000100);
->>
->> This isn't an improvement.  If you're doing to so something like this,
->> you need to actually implement the *intent* here.
-> 
-> Hi -
-> 
-> In my first patch set several months ago I replaced the structure
-> desc_struct with bit fields that exposed the fields for IDT/LDT/TSS
-> entries. This patch set was rejected for several reasons, one of which
-> was that Linux is trying to move away from bit fields. I also received
-> other comments such as "take a smaller bite", etc.
-> 
-> So instead of the bit fields, I implemented static inline
-> getters/setters. I thought that this small change would be a good
-> first step to re-test the waters of submitting patches to the kernel
-> before I started to clean out more pieces of the x86 architecture
-> specific code.
-> 
-> I agree that this isn't very clear, but from comments I received on my
-> first set, I assumed that this was closer to what people wanted to see
-> in the kernel. I am happy to iterate and submit something better, but
-> I am clearly misunderstanding what people would like to see.
-> 
-> Any suggestions on how this first-timer can help are greatly appreciated.
-> 
+The following back trace represents a deadlock in Ubicom's SMP port of =
+2.6.28 kernel.=A0=A0 I am sure that we are doing something unexpected.=A0=
+ I would appreciate the community's help in understanding what is going=
+ wrong.
 
-If you're going to implement get/set then you need getters and setters
-that make sense.  Now, doing something like that might be acceptable as
-part of a larger patchset (which is one way to "take smaller bites"),
-but the above is just gratuitous obfuscation, since it leaves in place
-the ugliest part of it all, which is the magic constant 0x00000100.
+Thanks in advance for any pointers,
 
-Personally, I would be just as happy treating the descriptor as an u64
-and explicitly do shifts and masks with well-defined constants.  It's
-the magic constants that suck.
+Sol Kavy
 
-	-hpa
+Problem:
+Ubicom's initial port does not use GENERIC_CLOCKEVENTS.  Instead it use=
+s a periodic timer based on HZ.  The periodic timer calls do_timer() on=
+ each tick.
 
--- 
-H. Peter Anvin, Intel Open Source Technology Center
-I work for Intel.  I don't speak on their behalf.
+=46rom the arch directory perspective, we are required to hold the xtim=
+e_lock before calling do_timer().=A0 The lock is indeed help by cpu 3 a=
+s evidenced in the output below.
+
+The call to get_jiffies_64() at the top of the backtrace is attempting =
+to read the jiffies in a reliable fashion.  The caller is required to w=
+ait for the xtime_lock not to be held.=A0 Clearly, since we are in=A0 a=
+ path that is holding the xtime_lock, this will never make forward prog=
+ress.
+
+What is unclear to me is why other ports are not seeing the same proble=
+m? =A0
+
+Perhaps it is because most ports now set GENERIC_CLOCKEVENTS which uses=
+ an entirely different mechanism for doing things.  I am in the middle =
+of switching the port to use GENERIC_CLOCKEVENTS but would like to unde=
+rstand this failure in more detail.
+
+Any feedback is greatly appreciated,
+
+Sol
+
+Config Flags:
+# CONFIG_GENERIC_CLOCKEVENTS is not set
+CONFIG_GENERIC_HARDIRQS=3Dy
+CONFIG_IRQ_PER_CPU=3Dy
+CONFIG_TRACE_IRQFLAGS_SUPPORT=3Dy
+# CONFIG_DEBUG_SHIRQ is not set
+CONFIG_TRACE_IRQFLAGS=3Dy
+CONFIG_IRQSOFF_TRACER=3Dy
+
+State of the lock:
+(gdb) p xtime_lock
+$5 =3D {sequence =3D 47089, lock =3D {raw_lock =3D {lock =3D 1}, magic =
+=3D 3735899821,=20
+    owner_cpu =3D 3, owner =3D 0x42b01160}}
+
+This is a backtrace from CPU 3:
+
+=A0(gdb) bt
+#0=A0 get_jiffies_64 () at include/linux/seqlock.h:94
+#1=A0 0x4044f558 in sched_clock () at kernel/sched_clock.c:40
+#2=A0 0x4045f108 in ring_buffer_time_stamp (cpu=3D3) at kernel/trace/ri=
+ng_buffer.c:58
+#3=A0 0x40464c50 in ftrace_now (cpu=3D3) at kernel/trace/trace.c:77
+#4=A0 0x404656ec in trace_hardirqs_off () at kernel/trace/trace_irqsoff=
+=2Ec:207
+#5=A0 0x40413020 in _spin_lock_irqsave (lock=3D0x3) at kernel/spinlock.=
+c:82
+#6=A0 0x40451b2c in clocksource_get_next () at kernel/time/clocksource.=
+c:254
+#7=A0 0x3ffd08ac in update_wall_time () at kernel/time/timekeeping.c:18=
+2
+#8=A0 0x4043bcd8 in do_timer (ticks=3D0) at kernel/timer.c:1125
+#9=A0 0x404169f8 in timer_tick (irq=3D<value optimized out>,=20
+=A0=A0=A0 dummy=3D<value optimized out>) at arch/ubicom32/kernel/time.c=
+:126
+#10 0x3ffcefb0 in handle_IRQ_event (irq=3D<value optimized out>,=20
+=A0=A0=A0 action=3D0x406fe6f4) at kernel/irq/handle.c:142
+#11 0x3ffcee20 in __do_IRQ (irq=3D<value optimized out>)
+=A0=A0=A0 at kernel/irq/handle.c:239
+#12 0x3ffcfcc8 in do_IRQ (irq=3D47089, regs=3D<value optimized out>)
+=A0=A0=A0 at arch/ubicom32/kernel/irq.c:250
+#13 0x4041018c in sys_call_table ()
+#14 0x4044f558 in sched_clock () at kernel/sched_clock.c:40
+#15 0x00000008 in ?? ()
+
+
+
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
