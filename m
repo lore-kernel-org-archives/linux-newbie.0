@@ -1,17 +1,53 @@
-From: Gedare Bloom <gedare@gwmail.gwu.edu>
-Subject: Re: IRQ Tracing Problem in Linux 2.6.28 Kernel
-Date: Tue, 14 Apr 2009 08:51:40 -0400
-Message-ID: <9b6278b80904140551k6edf0be6t9fdeaf75869ab2f9@mail.gmail.com>
-References: <CB2DD11991B27C4F99935E6229450D32042AAA74@STORK.scenix.com>
+From: "Sol Kavy" <skavy@ubicom.com>
+Subject: RE: IRQ Tracing Problem in Linux 2.6.28 Kernel
+Date: Tue, 14 Apr 2009 09:53:32 -0700
+Message-ID: <CB2DD11991B27C4F99935E6229450D32042AAACD@STORK.scenix.com>
+References: <CB2DD11991B27C4F99935E6229450D32042AAA74@STORK.scenix.com> <9b6278b80904140551k6edf0be6t9fdeaf75869ab2f9@mail.gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <CB2DD11991B27C4F99935E6229450D32042AAA74@STORK.scenix.com>
+Content-class: urn:content-classes:message
+In-Reply-To: <9b6278b80904140551k6edf0be6t9fdeaf75869ab2f9@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="iso-8859-1"
-To: Sol Kavy <skavy@ubicom.com>
+To: Gedare Bloom <gedare@gwmail.gwu.edu>
 Cc: linux-newbie@vger.kernel.org
+
+Every arch's timer interrupt does the following:
+
+	write_seqlock(&xtime_lock);
+	do_timer(1);
+	write_sequnlock(&xtime_lock);
+
+This is required because the first thing do_timer() does is increment j=
+iffies_64.
+
+	void do_timer(unsigned long ticks)
+	{
+		jiffies_64 +=3D ticks;
+		update_times(ticks);
+	}
+
+The frames 8-0 in the backtrace below are in Linux main code (which as =
+a port, we don't want to change).   The arch calls do_timer() to advanc=
+e time (and must do so with the lock held).  However, if the Linux code=
+ is then going to eventually call get_jiffies_64(), this leads to a dea=
+dlock.  The only time that get_jiffies_64() is called is when you have =
+selected CONFIG_IRQSOFF_TRACER and CONFIG_TRACE_IRQFLAGS.  =20
+
+My next step is to build this on a x86 and try to understand why that p=
+ort does not run into the same problem.
+
+Sol
+
+
+-----Original Message-----
+=46rom: Gedare Bloom [mailto:gedare@gwmail.gwu.edu]=20
+Sent: Tuesday, April 14, 2009 5:52 AM
+To: Sol Kavy
+Cc: linux-newbie@vger.kernel.org
+Subject: Re: IRQ Tracing Problem in Linux 2.6.28 Kernel
 
 On Mon, Apr 13, 2009 at 6:00 PM, Sol Kavy <skavy@ubicom.com> wrote:
 > The following back trace represents a deadlock in Ubicom's SMP port o=
@@ -119,6 +155,8 @@ Here is an example from the lxr that might be relevant:
 http://lxr.linux.no/linux+v2.6.29/arch/frv/kernel/time.c#L151
 
 Gedare Bloom
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
  in
