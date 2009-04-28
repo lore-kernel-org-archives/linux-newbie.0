@@ -1,9 +1,7 @@
-From: Jeffrey Cao <jcao.linux@gmail.com>
-Subject: Re: Does cr3 register change when a new process is scheduled ?
-Date: Sat, 25 Apr 2009 03:06:26 +0000 (UTC)
-Message-ID: <gstunh$nq$1@ger.gmane.org>
-References: <5f695cd0901141833i61be35eemc906f1c70ff9822b@mail.gmail.com>
- <804dabb00901141843k1ef231f7t11fe8d6f8befdf01@mail.gmail.com>
+From: Korkakakis Nikos <korkakak@ceid.upatras.gr>
+Subject: questions; gcc builtins - IO scheduler - profiling
+Date: Tue, 28 Apr 2009 09:24:52 +0300
+Message-ID: <49F6A134.4020308@ceid.upatras.gr>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -12,35 +10,35 @@ List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
-On 2009-01-15, Peter Teoh <htmldeveloper@gmail.com> wrote:
-> yes, every process running will have a different CR3 value....easily
-> seen when u printk() the value from different kernel module....and the
-> kernel module is running in the same process context as the "insmod"
-> that started the kernel module....so u can see the process name is
-> "insmod" if u printk() the value of the process name.   ie, user +
-Not exactly, module is not a process. It is just some functions registered
-into the kernel space. You see the process name is "insmod" is because that
-you put your printk statement in the module initialization function. You
-execute insmod to call the initialization function, so the module's init
-function is in "insmod" process context. If you execute other command to
-call ioctl to the module, and then the module is executed in other process
-context.
+Hi all,
 
-Jeffrey
+since I have played a bit with the kernel sources these are some newbie
+questions, that I couldn't find with trivial search engine usage;
 
-> kernel mode all shared the same CR3 value, but different process will
-> have different value.
->
-> On Thu, Jan 15, 2009 at 10:33 AM, George Kumar <grgkumar4@gmail.com> wrote:
->> Let us suppose we are talking about a uni processor system. Do we
->> change cr3 page directory control register when a new process is
->> scheduled to run on the CPU.
->>
->> thanks.
->> George
->> --
->
+a) It is possible to use gcc builtin functions in conjuction with some
+gcc switches and the march to produce somewhat optimal code. For
+instance function __builtin_popcount, together with the march=amdfam10
+and -mabm produces a POPCNT assembly instruction which counts the bits
+on word (machine word) in 1 instruction. For archs that does not support
+the popcnt instruction  as far as I can tell gcc produces
+/normal-expected/ code that does the same thing in a simple (using a
+loop, shifting and counting Zero-Flags) or a more advanced way ().  Is
+such programming practice condemned?
 
+b) One of the coolest things in kernel is the different types of I/O
+schedulers. I haven't exhaustively checked the source but is it possible
+to have a differnet I/O scheduler per device? If for instance I have an
+SSD and a normal hdd wouldn't be cooler to use noop I/O Sched for the
+SSD  and anticipatory I/O Sched for the normal hdd?
+
+c) Is there a way to profile *just* one specific module/function/group
+of functions that run as a kernel thread for runtime performance? So far
+I've (tried to) used (use) oprofile (http://oprofile.sf.net) for some
+profiling and it is quite disturbing ( can't see the tree for the forest
+:P ).
+
+
+Cheers :)
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
