@@ -1,44 +1,29 @@
-From: Korkakakis Nikos <korkakak@ceid.upatras.gr>
-Subject: questions; gcc builtins - IO scheduler - profiling
-Date: Tue, 28 Apr 2009 09:24:52 +0300
-Message-ID: <49F6A134.4020308@ceid.upatras.gr>
+From: Tim Cullen <timcullen2001@yahoo.com>
+Subject: process hangs when calling close
+Date: Thu, 30 Apr 2009 16:22:05 -0700 (PDT)
+Message-ID: <940445.78531.qm@web43134.mail.sp1.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024; t=1241133725; bh=EJHS9QEv7rDSuzGwpRxeHrPuKMETpcDwTywcpNi++mk=; h=Message-ID:X-YMail-OSG:Received:X-Mailer:Date:From:Subject:To:MIME-Version:Content-Type; b=WnbeU7GnTUWgk0o/RiETsQqQMwMB2E82XV2EiiFr7cJcFmEyJt8gKQ21DOfao9ukT4klMpvpPmPuHW8nxiX18oXStR4DL2Y+oGWhPunGWyTj4ztTfSZvLoP3OMaDj0p3Z8C0/zYJReV7SSuJPg7CeNzbLH8qXraaNWxv00XkiWA=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi all,
 
-since I have played a bit with the kernel sources these are some newbie
-questions, that I couldn't find with trivial search engine usage;
+I have a simple test program that opens a block device, writes a bunch of data to it, and then calls close. The process appears to hang in the call to close. Output from the ps command shows the process has gone into the uninterruptible IO state and the systems cpu usage goes to zero. The process stays this way until the system is rebooted. 
 
-a) It is possible to use gcc builtin functions in conjuction with some
-gcc switches and the march to produce somewhat optimal code. For
-instance function __builtin_popcount, together with the march=amdfam10
-and -mabm produces a POPCNT assembly instruction which counts the bits
-on word (machine word) in 1 instruction. For archs that does not support
-the popcnt instruction  as far as I can tell gcc produces
-/normal-expected/ code that does the same thing in a simple (using a
-loop, shifting and counting Zero-Flags) or a more advanced way ().  Is
-such programming practice condemned?
+Any ideas whats going on here?
 
-b) One of the coolest things in kernel is the different types of I/O
-schedulers. I haven't exhaustively checked the source but is it possible
-to have a differnet I/O scheduler per device? If for instance I have an
-SSD and a normal hdd wouldn't be cooler to use noop I/O Sched for the
-SSD  and anticipatory I/O Sched for the normal hdd?
-
-c) Is there a way to profile *just* one specific module/function/group
-of functions that run as a kernel thread for runtime performance? So far
-I've (tried to) used (use) oprofile (http://oprofile.sf.net) for some
-profiling and it is quite disturbing ( can't see the tree for the forest
-:P ).
+Please CC me personally with any replies.
+thanks
+tim
 
 
-Cheers :)
+
+      
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
