@@ -1,7 +1,7 @@
 From: =?GB2312?B?0sHU8w==?= <wxc200@gmail.com>
 Subject: place_entity() update se->vruntime question
-Date: Wed, 6 May 2009 13:33:47 +0800
-Message-ID: <fd6b62c10905052233n4fde2a33se33fb10ad21ab889@mail.gmail.com>
+Date: Wed, 6 May 2009 14:25:57 +0800
+Message-ID: <fd6b62c10905052325p41b64d4dt9c6765488ad8c0d7@mail.gmail.com>
 References: <976813.73062.qm@web1201.biz.mail.gq1.yahoo.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -12,14 +12,14 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :from:date:message-id:subject:to:content-type
          :content-transfer-encoding;
         bh=zHxR0hCj+5qF53HNWYGtaKXEudhVUHf1WchpdROdpM0=;
-        b=pXQNY5JVKgkq3HMYsWLxk7QTJrzvjT3kecTm8Qm7x3HkW2m3T6j0dRLzl5r1VzEf58
-         eFwAQZC24jeWjCfk1pZbG3X5FEvGKdUPx5wNukREjTQWwByyVwE8OfSNdVlo9Mb/SGmt
-         nAv6CzJKwxIUUK7EG9yzKlv9vmrW51q6jAEcg=
+        b=Wj7GO8uUCBbMfJNWAYb9C4fjb7JtydhqhiA+THWLr6RSsi40EPfhFAf0tdrb0LlOwT
+         +rI4iZe5Ef+9TcVs6nOKeWrGpjDu1QLFVt4I7w8M02ssdNS7rTmH6o/TpxvJAQeZHE2s
+         1h9M7eeqiRZxWkOZE9481NPdSHErG+wu7/PPs=
 In-Reply-To: <976813.73062.qm@web1201.biz.mail.gq1.yahoo.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, linux-kernel@zh-kernel.org, wheelz <kernel.zeng@gmail.com>
+To: linux-newbie@vger.kernel.org, =?GB2312?B?0sHU8w==?= <wxc200@gmail.com>
 
 Hi all,
 
