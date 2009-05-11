@@ -1,92 +1,89 @@
-From: "Ciprian Dorin, Craciun" <ciprian.craciun@gmail.com>
-Subject: Re: [Qemu-devel] Transforming stdin and stdout pair into a socket
-Date: Mon, 11 May 2009 16:32:26 +0300
-Message-ID: <8e04b5820905110632q1a3b9ad4u49d4f3208d994755@mail.gmail.com>
-References: <8e04b5820905101119u39ae84bfp1bae24be6e057086@mail.gmail.com>
-	 <4A0813D6.3050609@codemonkey.ws>
+From: Suresh Siddha <suresh.b.siddha@intel.com>
+Subject: Re: remap_pfn_range() and mapping RAM
+Date: Mon, 11 May 2009 10:40:29 -0700
+Message-ID: <1242063629.27006.8590.camel@localhost.localdomain>
+References: <87ab5koqhz.fsf@erwin.mina86.com>
+Reply-To: suresh.b.siddha@intel.com
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:in-reply-to:references
-         :date:message-id:subject:from:to:cc:content-type
-         :content-transfer-encoding;
-        bh=mdPuc5Hb0rMpsmz0+EqgLCGQgan6Y+2I0uQOxNHtZtI=;
-        b=cM7MuE4KQ3hV7YVF6AdnEMhNENykThkhSomcoeIz+5Md5Pnlv4ncW3QLG7Y9RNylky
-         BnThnn8P6kU3FWE8JdCstP9CEZ5yOHMvi/M0u6Fp0c4Q3OiLxaBXVzQzHv9rwEuFM9q2
-         liO+mJO2VdUxRumihZZaClrxTOU0Zz34w0Vs0=
-In-Reply-To: <4A0813D6.3050609@codemonkey.ws>
+In-Reply-To: <87ab5koqhz.fsf@erwin.mina86.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-To: Anthony Liguori <anthony@codemonkey.ws>
-Cc: linux-newbie@vger.kernel.org, nbd-general@lists.sourceforge.net, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="us-ascii"
+To: Michal Nazarewicz <mina86@tlen.pl>
+Cc: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, "; venkatesh.pallipadi"@intel.com
 
-On Mon, May 11, 2009 at 3:02 PM, Anthony Liguori <anthony@codemonkey.ws=
-> wrote:
-> Ciprian Dorin, Craciun wrote:
->>
->> =C2=A0 =C2=A0Hello all!
->>
->> =C2=A0 =C2=A0Today I've played around with NBD (Network Block Disk),=
- and
->> qemu-nbd (a NBD client that exports QEMU disks as NBD's).
->>
->> =C2=A0 =C2=A0My problem is the following: both NBD kernel module and=
- qemu-nbd
->> implementation expect to use a socket in order to communicate.
->> =C2=A0 =C2=A0This means that in order to securely tunnel the connect=
-ion over
->> SSH (OpenSSH), I need an intermediary process that creates a socket
->> and forwards all input / output between this socket and stdin / stdo=
-ut
->> (which are in fact pipes received from OpenSSH).
->>
->> =C2=A0 =C2=A0My question is: can I somehow make the pair of stdin / =
-stdout seem
->> as a socket to the Linux syscalls (read and write)? (I would have to
->> make stdin / stdout pair look like a single file descriptor.) (This
->> would eliminate the intermediate process that just pipes data, and
->> thus reduce the overhead.)
->>
->
-> Something like socat should to do the trick.
->
-> For instance, if you have qemu-nbd on localhost:1025:
->
-> ssh -l user hostname.com socat stdio tcp:localhost:1025
->
-> Alternative, you could just do ssh based port forwarding. =C2=A0For i=
-nstance:
->
-> ssh -l user -L 1025:localhost:1025 hostname.com
->
-> And then connect locally with nbd-client
->
-> Regards,
->
-> Anthony Liguori
+On Sun, 2009-05-10 at 09:46 -0700, Michal Nazarewicz wrote:
+> Hello everyone,
+> 
+> While developing a method for mapping RAM memory into user space
+> I stumbled across Suresh Siddha's commit that "broke" my code:
+> 
+>   commit be03d9e8022030c16abf534e33e185bfc3d40eef
+>   x86, pat: fix warn_on_once() while mapping 0-1MB range with /dev/mem
+> 
+> I believe there were important reasons for the changes but how do I map
+> user RAM memory into user space?  Up to this point I've used something
+> along the lines of (error checking removed):
+> 
+> #v+
+> static int file_mmap(struct file *file, struct vm_area_struct *vma)
+> {
+> 	const size_t start  = /* physical address of memory allocated
+> 	                         using alloc_bootmem_low_pages() */;
+> 
+> 	return remap_pfn_range(vma, vma->vm_start,
+> 	                       (start >> PAGE_SHIFT) + vma->vm_pgoff
+> 	                       vma->vm_end - vma->vm_start,
+> 	                       vma->vm_page_prot);
+> }
+> #v-
+> 
+> Reverting the be03... commit makes it work again but I guess it's not
+> a good way to solve this problem.
+> 
+> Could anyone point me to proper function which may be used like
+> remap_pfn_range() but work on RAM addresses?  It is important, that the
+> function will work in similar fashion, ie. create raw PFN mappings
+> without associated struct page.
 
-    I've seen socat, and I could use it as you described. My only
-objection to this solution is that there is an unneeded process in the
-middle that just pipes data around...
+Are you using 2.6.29?
 
-   (Instead of socat, I think it would be more efficient to just write
-a simple application that uses the "new" Linux syscall "splice" that
-I've just found by mistake yesterday...)
+This mainline commit:
 
-    About the other solution with SSH port forwarding, I don't really
-like it, because it has some security implications: any process on the
-local machine can access the block device... (I know I can use
-iptables to actually restrict the process.) Still on the same topic I
-would have liked something like UNIX domain socket forwarding for SSH.
-(Which is available as a patch but on top of an older version...)
+commit 4bb9c5c02153dfc89a6c73a6f32091413805ad7d
+Author: Pallipadi, Venkatesh <venkatesh.pallipadi@intel.com>
+Date:   Thu Mar 12 17:45:27 2009 -0700
 
-    Ciprian.
+has fixed this issue with this portion of the patch:
+
+diff --git a/arch/x86/mm/pat.c b/arch/x86/mm/pat.c
+index e0ab173..21bc1f7 100644
+--- a/arch/x86/mm/pat.c
++++ b/arch/x86/mm/pat.c
+@@ -641,10 +641,11 @@ static int reserve_pfn_range(u64 paddr, unsigned
+long size
+        is_ram = pat_pagerange_is_ram(paddr, paddr + size);
+ 
+        /*
+-        * reserve_pfn_range() doesn't support RAM pages.
++        * reserve_pfn_range() doesn't support RAM pages. Maintain the
+current
++        * behavior with RAM pages by returning success.
+         */
+        if (is_ram != 0)
+-               return -EINVAL;
++               return 0;
+ 
+        ret = reserve_memtype(paddr, paddr + size, want_flags, &flags);
+        if (ret)
+
+thanks
+suresh
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
