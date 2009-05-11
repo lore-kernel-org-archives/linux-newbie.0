@@ -1,86 +1,92 @@
-From: "Ciprian Dorin, Craciun" <ciprian.craciun-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Transforming stdin and stdout pair into a socket
-Date: Mon, 11 May 2009 16:28:11 +0300
-Message-ID: <8e04b5820905110628u3b8ac9ecm8f433e80f400508@mail.gmail.com>
+From: "Ciprian Dorin, Craciun" <ciprian.craciun@gmail.com>
+Subject: Re: [Qemu-devel] Transforming stdin and stdout pair into a socket
+Date: Mon, 11 May 2009 16:32:26 +0300
+Message-ID: <8e04b5820905110632q1a3b9ad4u49d4f3208d994755@mail.gmail.com>
 References: <8e04b5820905101119u39ae84bfp1bae24be6e057086@mail.gmail.com>
-	<1242029023.4638.3.camel@frecb07144>
+	 <4A0813D6.3050609@codemonkey.ws>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:cc:content-type
+         :content-transfer-encoding;
+        bh=mdPuc5Hb0rMpsmz0+EqgLCGQgan6Y+2I0uQOxNHtZtI=;
+        b=cM7MuE4KQ3hV7YVF6AdnEMhNENykThkhSomcoeIz+5Md5Pnlv4ncW3QLG7Y9RNylky
+         BnThnn8P6kU3FWE8JdCstP9CEZ5yOHMvi/M0u6Fp0c4Q3OiLxaBXVzQzHv9rwEuFM9q2
+         liO+mJO2VdUxRumihZZaClrxTOU0Zz34w0Vs0=
+In-Reply-To: <4A0813D6.3050609@codemonkey.ws>
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <nbd-general-bounces-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
-In-Reply-To: <1242029023.4638.3.camel@frecb07144>
-List-Id: <linux-newbie.vger.kernel.org>
-List-Unsubscribe: <https://lists.sourceforge.net/lists/listinfo/nbd-general>, 
-	<mailto:nbd-general-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://sourceforge.net/mailarchive/forum.php?forum_name=nbd-general>
-List-Post: <mailto:nbd-general-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org>
-List-Help: <mailto:nbd-general-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.sourceforge.net/lists/listinfo/nbd-general>,
-	<mailto:nbd-general-request-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org?subject=subscribe>
-Errors-To: nbd-general-bounces-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org
-To: Laurent Vivier <Laurent.Vivier-6ktuUTfB/bM@public.gmane.org>
-Cc: nbd-general-5NWGOfrQmneRv+LV9MX5uipxlwaOVQ5f@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, qemu-devel-qX2TKyscuCcdnm+yROfE0A@public.gmane.org
+To: Anthony Liguori <anthony@codemonkey.ws>
+Cc: linux-newbie@vger.kernel.org, nbd-general@lists.sourceforge.net, qemu-devel@nongnu.org
 
-T24gTW9uLCBNYXkgMTEsIDIwMDkgYXQgMTE6MDMgQU0sIExhdXJlbnQgVml2aWVyCjxMYXVyZW50
-LlZpdmllckBidWxsLm5ldD4gd3JvdGU6Cj4gTGUgZGltYW5jaGUgMTAgbWFpIDIwMDkgw6AgMjE6
-MTkgKzAzMDAsIENpcHJpYW4gRG9yaW4sIENyYWNpdW4gYSDDqWNyaXQgOgo+PiBIZWxsbyBhbGwh
-Cj4KPiBIaSwKPgo+IHBlcmhhcHMgdGhlIGF0dGFjaGVkIHBhdGNoIEkgd3JvdGUgbGFzdCB5ZWFy
-IChub3ZlbWJlcikgaXMgd2hhdCB5b3UKPiB3YW50Li4uCj4KPiBJIGRpZG4ndCB0cnkgdG8gYXBw
-bHkgaXQgdG8gYW4gdXAtdG8tZGF0ZSBxZW11LW5iZC4KPgo+IFJlZ2FyZHMsCj4gTGF1cmVudAo+
-Cj4+IMKgIMKgIFRvZGF5IEkndmUgcGxheWVkIGFyb3VuZCB3aXRoIE5CRCAoTmV0d29yayBCbG9j
-ayBEaXNrKSwgYW5kCj4+IHFlbXUtbmJkIChhIE5CRCBjbGllbnQgdGhhdCBleHBvcnRzIFFFTVUg
-ZGlza3MgYXMgTkJEJ3MpLgo+Pgo+PiDCoCDCoCBNeSBwcm9ibGVtIGlzIHRoZSBmb2xsb3dpbmc6
-IGJvdGggTkJEIGtlcm5lbCBtb2R1bGUgYW5kIHFlbXUtbmJkCj4+IGltcGxlbWVudGF0aW9uIGV4
-cGVjdCB0byB1c2UgYSBzb2NrZXQgaW4gb3JkZXIgdG8gY29tbXVuaWNhdGUuCj4+IMKgIMKgIFRo
-aXMgbWVhbnMgdGhhdCBpbiBvcmRlciB0byBzZWN1cmVseSB0dW5uZWwgdGhlIGNvbm5lY3Rpb24g
-b3Zlcgo+PiBTU0ggKE9wZW5TU0gpLCBJIG5lZWQgYW4gaW50ZXJtZWRpYXJ5IHByb2Nlc3MgdGhh
-dCBjcmVhdGVzIGEgc29ja2V0Cj4+IGFuZCBmb3J3YXJkcyBhbGwgaW5wdXQgLyBvdXRwdXQgYmV0
-d2VlbiB0aGlzIHNvY2tldCBhbmQgc3RkaW4gLyBzdGRvdXQKPj4gKHdoaWNoIGFyZSBpbiBmYWN0
-IHBpcGVzIHJlY2VpdmVkIGZyb20gT3BlblNTSCkuCj4+Cj4+IMKgIMKgIE15IHF1ZXN0aW9uIGlz
-OiBjYW4gSSBzb21laG93IG1ha2UgdGhlIHBhaXIgb2Ygc3RkaW4gLyBzdGRvdXQgc2VlbQo+PiBh
-cyBhIHNvY2tldCB0byB0aGUgTGludXggc3lzY2FsbHMgKHJlYWQgYW5kIHdyaXRlKT8gKEkgd291
-bGQgaGF2ZSB0bwo+PiBtYWtlIHN0ZGluIC8gc3Rkb3V0IHBhaXIgbG9vayBsaWtlIGEgc2luZ2xl
-IGZpbGUgZGVzY3JpcHRvci4pIChUaGlzCj4+IHdvdWxkIGVsaW1pbmF0ZSB0aGUgaW50ZXJtZWRp
-YXRlIHByb2Nlc3MgdGhhdCBqdXN0IHBpcGVzIGRhdGEsIGFuZAo+PiB0aHVzIHJlZHVjZSB0aGUg
-b3ZlcmhlYWQuKQo+Pgo+PiDCoCDCoCBKdXN0IHRvIGJlIGNsZWFyOiBJIGtub3cgaG93IHRvIHRy
-aWNrIGFuIGFwcGxpY2F0aW9uIHRvIGhhdmUgaXQncwo+PiBzdGRpbiBhbmQgc3Rkb3V0IGJlIGFu
-IG9wZW5lZCBzb2NrZXQgKGJ5IHVzaW5nIGR1cCBzeXNjYWxsKS4gQnV0IGluCj4+IHRoaXMgY2Fz
-ZSBJIG5lZWQgdG8gdHJpY2sgdGhlIExpbnV4IGtlcm5lbCBpbnRvIHRoaW5raW5nIHRoYXQgc3Rk
-aW4gLwo+PiBzdGRvdXQgcGFpciBpcyBhIHNvY2tldCAob3IgYSBzaW5nbGUgZmlsZSBkZXNjcmlw
-dG9yKS4KPj4KPj4gwqAgwqAgVGhhbmsgeW91LAo+PiDCoCDCoCBDaXByaWFuIENyYWNpdW4uCj4+
-Cj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+PiBUaGUgTkVXIEtPREFLIGk3MDAgU2VyaWVzIFNj
-YW5uZXJzIGRlbGl2ZXIgdW5kZXIgQU5ZIGNpcmN1bXN0YW5jZXMhIFlvdXIKPj4gcHJvZHVjdGlv
-biBzY2FubmluZyBlbnZpcm9ubWVudCBtYXkgbm90IGJlIGEgcGVyZmVjdCB3b3JsZCAtIGJ1dCB0
-aGFua3MgdG8KPj4gS29kYWssIHRoZXJlJ3MgYSBwZXJmZWN0IHNjYW5uZXIgdG8gZ2V0IHRoZSBq
-b2IgZG9uZSEgV2l0aCB0aGUgTkVXIEtPREFLIGk3MDAKPj4gU2VyaWVzIFNjYW5uZXIgeW91J2xs
-IGdldCBmdWxsIHNwZWVkIGF0IDMwMCBkcGkgZXZlbiB3aXRoIGFsbCBpbWFnZQo+PiBwcm9jZXNz
-aW5nIGZlYXR1cmVzIGVuYWJsZWQuIGh0dHA6Ly9wLnNmLm5ldC9zZnUva29kYWstY29tCj4+IF9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4+IE5iZC1nZW5l
-cmFsIG1haWxpbmcgbGlzdAo+PiBOYmQtZ2VuZXJhbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKPj4g
-aHR0cHM6Ly9saXN0cy5zb3VyY2Vmb3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbmJkLWdlbmVyYWwK
-Pj4KPiAtLQo+IC0tLS0tLS0tLS0tLS0tLS0tLSBMYXVyZW50LlZpdmllckBidWxsLm5ldCDCoC0t
-LS0tLS0tLS0tLS0tLS0tLQo+ICJUb3V0IGNlIHF1aSBlc3QgaW1wb3NzaWJsZSByZXN0ZSDDoCBh
-Y2NvbXBsaXIiIMKgIMKgSnVsZXMgVmVybmUKPiAiVGhpbmdzIGFyZSBvbmx5IGltcG9zc2libGUg
-dW50aWwgdGhleSdyZSBub3QiIEplYW4tTHVjIFBpY2FyZAoKICAgIFdlbGwsIHZlcnkgY2xldmVy
-ISA6KSBGcm9tIHdoYXQgSSd2ZSBzZWVuIHlvdSBhcmUgYWN0dWFsbHkgdXNpbmcKdGhlIHN0ZGlu
-IGFzIHRoZSBzb2NrZXQgZGVzY3JpcHRvciwga25vd2luZyB0aGF0IGlmIHFlbXUtbmJkIHdhcwpz
-dGFydGVkIHdpdGggdGhlIC1pIGZsYWcgaXQgbWVhbnMgdGhhdCBpbmV0ZCBoYXMgYWxyZWFkeSBz
-ZXQgYm90aApzdGRpbiBhbmQgc3Rkb3V0IHRvIGEgcmVhbCBzb2NrZXQsIGFuZCB0aHVzIGV2ZXJ5
-dGhpbmcgd29ya3MgT2suCgogICAgVW5mb3J0dW5hdGVseSB0aGlzIHdvcmtzIG9ubHkgd2l0aCBp
-bmV0ZCAob3IgY29tcGF0aWJsZSBzeXN0ZW0pCndpdGhvdXQgYW55IFNTTC9UTFMgd3JhcHBpbmcu
-IE15IHByb2JsZW0gaXMgdGhhdCBpZiB0aGUgc3RkaW4gYW5kCnN0ZG91dCBhcmUgaW5zdGVhZCBw
-aXBlcyAoYXMgaXQgd291bGQgaGFwcGVuIGluIGNhc2Ugb2Ygc3NoZD8sIG9yCnNvY2F0IHdpdGgg
-U1NMIGNvbm5lY3Rvcj8pIHRoaXMgd291bGQgbm90IHdvcmsuLi4KCiAgICBUaGFuayB5b3UgZm9y
-IHRoZSBpZGVhLiBJIGNvdWxkIHVzZSBpZiBJIGRvbid0IGZpbmQgYW5vdGhlciBzb2x1dGlvbi4K
-CiAgICBDaXByaWFuLgoKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tClRoZSBORVcgS09EQUsgaTcwMCBT
-ZXJpZXMgU2Nhbm5lcnMgZGVsaXZlciB1bmRlciBBTlkgY2lyY3Vtc3RhbmNlcyEgWW91cgpwcm9k
-dWN0aW9uIHNjYW5uaW5nIGVudmlyb25tZW50IG1heSBub3QgYmUgYSBwZXJmZWN0IHdvcmxkIC0g
-YnV0IHRoYW5rcyB0bwpLb2RhaywgdGhlcmUncyBhIHBlcmZlY3Qgc2Nhbm5lciB0byBnZXQgdGhl
-IGpvYiBkb25lISBXaXRoIHRoZSBORVcgS09EQUsgaTcwMApTZXJpZXMgU2Nhbm5lciB5b3UnbGwg
-Z2V0IGZ1bGwgc3BlZWQgYXQgMzAwIGRwaSBldmVuIHdpdGggYWxsIGltYWdlIApwcm9jZXNzaW5n
-IGZlYXR1cmVzIGVuYWJsZWQuIGh0dHA6Ly9wLnNmLm5ldC9zZnUva29kYWstY29tCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCk5iZC1nZW5lcmFsIG1haWxp
-bmcgbGlzdApOYmQtZ2VuZXJhbEBsaXN0cy5zb3VyY2Vmb3JnZS5uZXQKaHR0cHM6Ly9saXN0cy5z
-b3VyY2Vmb3JnZS5uZXQvbGlzdHMvbGlzdGluZm8vbmJkLWdlbmVyYWwK
+On Mon, May 11, 2009 at 3:02 PM, Anthony Liguori <anthony@codemonkey.ws=
+> wrote:
+> Ciprian Dorin, Craciun wrote:
+>>
+>> =C2=A0 =C2=A0Hello all!
+>>
+>> =C2=A0 =C2=A0Today I've played around with NBD (Network Block Disk),=
+ and
+>> qemu-nbd (a NBD client that exports QEMU disks as NBD's).
+>>
+>> =C2=A0 =C2=A0My problem is the following: both NBD kernel module and=
+ qemu-nbd
+>> implementation expect to use a socket in order to communicate.
+>> =C2=A0 =C2=A0This means that in order to securely tunnel the connect=
+ion over
+>> SSH (OpenSSH), I need an intermediary process that creates a socket
+>> and forwards all input / output between this socket and stdin / stdo=
+ut
+>> (which are in fact pipes received from OpenSSH).
+>>
+>> =C2=A0 =C2=A0My question is: can I somehow make the pair of stdin / =
+stdout seem
+>> as a socket to the Linux syscalls (read and write)? (I would have to
+>> make stdin / stdout pair look like a single file descriptor.) (This
+>> would eliminate the intermediate process that just pipes data, and
+>> thus reduce the overhead.)
+>>
+>
+> Something like socat should to do the trick.
+>
+> For instance, if you have qemu-nbd on localhost:1025:
+>
+> ssh -l user hostname.com socat stdio tcp:localhost:1025
+>
+> Alternative, you could just do ssh based port forwarding. =C2=A0For i=
+nstance:
+>
+> ssh -l user -L 1025:localhost:1025 hostname.com
+>
+> And then connect locally with nbd-client
+>
+> Regards,
+>
+> Anthony Liguori
+
+    I've seen socat, and I could use it as you described. My only
+objection to this solution is that there is an unneeded process in the
+middle that just pipes data around...
+
+   (Instead of socat, I think it would be more efficient to just write
+a simple application that uses the "new" Linux syscall "splice" that
+I've just found by mistake yesterday...)
+
+    About the other solution with SSH port forwarding, I don't really
+like it, because it has some security implications: any process on the
+local machine can access the block device... (I know I can use
+iptables to actually restrict the process.) Still on the same topic I
+would have liked something like UNIX domain socket forwarding for SSH.
+(Which is available as a patch but on top of an older version...)
+
+    Ciprian.
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
