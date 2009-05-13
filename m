@@ -1,65 +1,149 @@
-From: Michal Nazarewicz <mina86@tlen.pl>
-Subject: Re: remap_pfn_range() and mapping RAM
-Date: Tue, 12 May 2009 20:56:19 +0200
-Message-ID: <87zldi2lrg.fsf@erwin.mina86.com>
-References: <87ab5koqhz.fsf@erwin.mina86.com>
-	<1242063629.27006.8590.camel@localhost.localdomain>
+From: peansen ken <qmh524@gmail.com>
+Subject: timer interrupt handled by CPU0 only
+Date: Wed, 13 May 2009 17:01:48 +0900
+Message-ID: <6f66b81c0905130101t6629c96co366ff1e44890d50@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:received:sender:from:to:cc:subject
-         :references:x-url:x-pgp-fp:x-pgp:date:in-reply-to:message-id
-         :user-agent:mime-version:content-type;
-        bh=9Aw0JhuQKUczSXlA/ld71E1F+iF5iM9G5puCIK2C8vU=;
-        b=A6OmsZL7iH3v3ynomhPYraB9X+ChZc4oJwY1W7RsDS+k0ngfa7D5jgWTbWTfi76sX+
-         dWvDwCBkO16bk7P3dr8OtCaQQ7Z7wh4D3HuYe/wrKr/UA8DWiSAHVdykE+bWG7NJBtCx
-         hqM6II7HrpBlIXNKLyDh+X9C3k5n3e0gztvuk=
-In-Reply-To: <1242063629.27006.8590.camel@localhost.localdomain> (Suresh
-	Siddha's message of "Mon, 11 May 2009 10:40:29 -0700")
+        h=domainkey-signature:mime-version:received:date:message-id:subject
+         :from:to:content-type:content-transfer-encoding;
+        bh=p77pgjwx0bp4/2HQvnUzrm1t9tXf5G1eNoVe70hp/kw=;
+        b=BQI/FcpT7HlCLOQJe9eUhvo7Iqz2eMKfIpn1uLoELhozML0XmLnzTxiy7Vg1WqtPfB
+         1Y0rzOKFW6vhWWZo2UL6fvKfVb/RV1YrZ+9GmRG5FuIM7cYvPi+3a0249FnD7DtfFaKv
+         SYk2SWzAhN5i56yF87BRrAqjminP6RYu8ELuY=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: suresh.b.siddha@intel.com
-Cc: linux-newbie@vger.kernel.org, venkatesh.pallipadi@intel.com
+To: linux-newbie@vger.kernel.org
 
-> On Sun, 2009-05-10 at 09:46 -0700, Michal Nazarewicz wrote:
->> While developing a method for mapping RAM memory into user space
->> I stumbled across Suresh Siddha's commit that "broke" my code:
->> 
->>   commit be03d9e8022030c16abf534e33e185bfc3d40eef
->>   x86, pat: fix warn_on_once() while mapping 0-1MB range with /dev/mem
->> 
->> I've used something along the lines of (error checking removed):
->> 
->> #v+
->> 	return remap_pfn_range(vma, vma->vm_start,
->> 	                       (start >> PAGE_SHIFT) + vma->vm_pgoff
->> 	                       vma->vm_end - vma->vm_start,
->> 	                       vma->vm_page_prot);
->> #v-
->> 
->> Reverting the be03... commit makes it work again but I guess it's not
->> a good way to solve this problem.
+I have start irqbalance service. Why the timer interrupt only happend in CPU0
+$ sudo service irqbalance status
+irqbalance (pid 2390) is running...
+$ cat /proc/interrupts
+           CPU0       CPU1       CPU2       CPU3
+  0:   21487296          0          0          0    IO-APIC-edge  timer
+  1:          3          0          0          0    IO-APIC-edge  i8042
+  8:          1          0          0          0    IO-APIC-edge  rtc
+  9:          0          0          0          0   IO-APIC-level  acpi
+ 12:          4          0          0          0    IO-APIC-edge  i8042
+ 74:         18          0          0          0   IO-APIC-level
+uhci_hcd:usb1, uhci_hcd:usb3, ehci_hcd:usb4
+ 82:          0          0          0          0   IO-APIC-level  uhci_hcd:usb2
+ 90:       1934          0   45886283          0   IO-APIC-level  libata
+ 98:          0          0          0          0   IO-APIC-level  libata
+106:        120          0          0   22824923         PCI-MSI  eth0
+169:      16933          0    9370507          0   IO-APIC-level  ioc0
+NMI:      43241      26776      33934      29946
+LOC:   21487192   21487118   21487046   21486887
+ERR:          0
+MIS:          0
+$ uname -a
+Linux xxx 2.6.18-53.el5 #1 SMP Mon Nov 12 02:14:55 EST 2007 x86_64
+x86_64 x86_64 GNU/Linux
+$ cat /proc/cpuinfo
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Xeon(R) CPU           L5410  @ 2.33GHz
+stepping	: 6
+cpu MHz		: 2333.339
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm syscall nx lm
+constant_tsc pni monitor ds_cpl vmx est tm2 cx16 xtpr lahf_lm
+bogomips	: 4669.93
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 38 bits physical, 48 bits virtual
+power management:
 
-Suresh Siddha <suresh.b.siddha@intel.com> writes:
-> This mainline commit:
->
-> commit 4bb9c5c02153dfc89a6c73a6f32091413805ad7d
-> Author: Pallipadi, Venkatesh <venkatesh.pallipadi@intel.com>
-> Date:   Thu Mar 12 17:45:27 2009 -0700
->
-> has fixed this issue with this portion of the patch:
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Xeon(R) CPU           L5410  @ 2.33GHz
+stepping	: 6
+cpu MHz		: 2333.339
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm syscall nx lm
+constant_tsc pni monitor ds_cpl vmx est tm2 cx16 xtpr lahf_lm
+bogomips	: 4666.62
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 38 bits physical, 48 bits virtual
+power management:
 
-Ah, thanks, it works great now!  And sorry for the bother (I should've
-checked with 2.6.29.2 at least).
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Xeon(R) CPU           L5410  @ 2.33GHz
+stepping	: 6
+cpu MHz		: 2333.339
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm syscall nx lm
+constant_tsc pni monitor ds_cpl vmx est tm2 cx16 xtpr lahf_lm
+bogomips	: 4666.69
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 38 bits physical, 48 bits virtual
+power management:
 
--- 
-Best regards,                                         _     _
- .o. | Liege of Serenly Enlightened Majesty of      o' \,=./ `o
- ..o | Computer Science,  Michal "mina86" Nazarewicz   (o o)
- ooo +--<mina86*tlen.pl>--<jid:mina86*jabber.org>--ooO--(_)--Ooo--
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 23
+model name	: Intel(R) Xeon(R) CPU           L5410  @ 2.33GHz
+stepping	: 6
+cpu MHz		: 2333.339
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov
+pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm syscall nx lm
+constant_tsc pni monitor ds_cpl vmx est tm2 cx16 xtpr lahf_lm
+bogomips	: 4666.54
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 38 bits physical, 48 bits virtual
+power management:
+
+$
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
