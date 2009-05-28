@@ -1,38 +1,50 @@
-From: "Rajat Jain" <Rajat.Jain@infogain.com>
-Subject: Current state of Linux support for the Intel Atom processor
-Date: Mon, 18 May 2009 12:48:55 +0530
-Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B0B7950CA@GDCMX01.igglobal.com>
+From: Mark Butsch <mbutsch@syntech-fuelmaster.com>
+Subject: How do you keep output from a USB Mag card reader from going to
+ STDIN?
+Date: Thu, 28 May 2009 14:00:14 -0400
+Message-ID: <6C2434209962DC46B88345CA85C334A240CA9707DC@Courier.syntech.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Return-path: <kernelnewbies-bounce@nl.linux.org>
-Content-class: urn:content-classes:message
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
+To: "'linux-newbie@vger.kernel.org'" <linux-newbie@vger.kernel.org>
 
+Hello,
 
-Hi,
+I have both a USB keyboard and a USB Mag card reader (works like a USB keyboard) connected to my system.
 
-Can some one please update me with what is the state of the current
-support for the Intel Atom processor Z520PT? Is the support already
-merged into mainline stock kernel (available at kernel.org)? Or is it
-still available in patched floating on the net?
- =20
-Thanks,
+I would like to make it so the real keyboard is the only device that feeds STDIN and the mag card reader is only readable by reading that device directly.
 
-Rajat
+If I "cat /proc/bus/input/devices" it shows:
 
+I: Bus=0003 Vendor=04da Product=117c Version=0001
+N: Name="Panasonic Panasonic USB keyboard compliant Mag-CR"
+P: Phys=usb-0000:00:1d.3-1/input0
+S: Sysfs=/class/input/input37
+H: Handlers=kbd event5
+B: EV=120003
+B: KEY=10000 7 ff80007a 7ff febeffdf ffefffff ffffffff fffffffe
+B: LED=1f
+
+I: Bus=0003 Vendor=413c Product=2105 Version=0352
+N: Name="Dell Dell USB Keyboard"
+P: Phys=usb-0000:00:1d.0-1/input0
+S: Sysfs=/class/input/input38
+H: Handlers=kbd event2
+B: EV=120003
+B: KEY=10000 7 ff87207a c14057ff febeffdf ffefffff ffffffff fffffffe
+B: LED=7
+
+How would I disconnect the "kbd" handler from the mag card reader or is that the wrong approach?
+
+Thanks in advance.
+
+Mark Butsch
 --
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
