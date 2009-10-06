@@ -1,88 +1,51 @@
-From: Peter Teoh <htmldeveloper@gmail.com>
-Subject: Re: OLS 2009: request for comments
-Date: Mon, 31 Aug 2009 11:09:14 -0400
-Message-ID: <804dabb00908310809m33f02a9cqe5edd1354f78c0e9@mail.gmail.com>
-References: <804dabb00908282340o664c4cb6r2f79d4558d0510e3@mail.gmail.com>
-	 <d4dc76470908302332s4d7d2a68q426cc6ddf3382d52@mail.gmail.com>
+From: Rajat Jain <rajat.noida.india@gmail.com>
+Subject: strange code in linux kernel
+Date: Tue, 6 Oct 2009 09:04:00 +0530
+Message-ID: <b115cb5f0910052034h5194a5t113a1bbcd9c878e3@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <kernelnewbies-bounce@nl.linux.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:in-reply-to:references
-         :date:message-id:subject:from:to:cc:content-type
-         :content-transfer-encoding;
-        bh=RgrFstZy85dmGn49VatSBKciRuL+obW5OurODo6Bz0U=;
-        b=b3/brRUmG32tfFIXT8Kan6Vg5TBQwDikC85QYsRweqFBew0u1O1+x0dFmLqHyM8f1C
-         7jkh+NDCy+8kJ1clSxdb14o9h48kXM1njnDpmEEEmMbcFN4dxSBH0fAdAfWUvTSGWM/D
-         2qNWEK2kyTuzBmjHvqU6FDBL0TI9DdrQUrZ1M=
-In-Reply-To: <d4dc76470908302332s4d7d2a68q426cc6ddf3382d52@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Naresh Arelli <naresh.hk@gmail.com>
-Cc: Linux Newbie <linux-newbie@vger.kernel.org>, kernelnewbies@nl.linux.org
+        h=domainkey-signature:mime-version:received:date:message-id:subject
+         :from:to:content-type;
+        bh=uRppDY2ICq4OJnly9u/zDI9iSiEYltSducRNlc/ybd8=;
+        b=j2wRIxRfJjB8wsokEDa2CbOqf78RYNV4maHAD3uwdPZYxx3FMQBrvM43rsBuukYXiv
+         8YsRxMBg/xummUDhmSPPmQg16h33TaFglYy7hQ2cexY2NP+kVmcF0E3lZTGhsSQINnxN
+         F5G9s0T1DXia7Tu+VBhQMer5+EJJolzSzhlEQ=
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Linux Newbies <kernelnewbies@nl.linux.org>, newbie <linux-newbie@vger.kernel.org>
 
-thanks for the feedback......i shall follow up on your highlights.....
+Hi List,
 
-On Mon, Aug 31, 2009 at 2:32 AM, Naresh Arelli<naresh.hk@gmail.com> wro=
-te:
-> The interesting papers as I want to read, in that order are..
->
-> A day in the life of a Linux kernel hacker. . . =A0 ( I think many wi=
-ll like
-> this :) )
-> Programmatic Kernel Dump Analysis On Linux
-> Porting to Linux the Right Way
-> Measuring Function Duration with Ftrace
-> Thanks
-> Naresh
->
-> On Sat, Aug 29, 2009 at 12:10 PM, Peter Teoh <htmldeveloper@gmail.com=
->
-> wrote:
->>
->> The papers are located here:
->>
->> http://www.linuxsymposium.org/2009/ls-2009-proceedings.pdf
->>
->> I have not read any papers yet. =A0 But given limited amount of time=
- -
->> which papers do u think are the interesting one to read? =A0 And per=
-haps
->> one-liners comment on why?
->>
->>
->>
->> --
->> Regards,
->> Peter Teoh
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-newb=
-ie" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at =A0http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at http://www.linux-learn.org/faqs
->
->
->
-> --
-> Thanks & Regards
-> Naresh Arelli
->
->
->
-> Sent from Pune, MH, India
->
+I found that there are some weird looking instances in kernel where a
+function has been DEFINED (as opposite to DECLARED) using and "extern"
+keyword. For e.g., the following code in arch/alpha/include/asm/io.h:
 
+extern inline void __iomem *generic_ioportmap(unsigned long a)
+{
+        return alpha_mv.mv_ioportmap(a);
+}
 
+Using a definition along with extern does not make any sense to me.
+Can some one please enlighten what is its use / purpose?
 
---=20
-Regards,
-Peter Teoh
+Thanks,
+
+Rajat Jain
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
