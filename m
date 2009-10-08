@@ -1,21 +1,11 @@
-From: Manish Katiyar <mkatiyar@gmail.com>
-Subject: Re: C question
-Date: Thu, 8 Oct 2009 08:22:31 +0530
-Message-ID: <ea11fea30910071952x58720190r9fef930ff524c849@mail.gmail.com>
-References: <7783925d0910071912u5e4f4a2au8442cb6537cd35ed@mail.gmail.com>
+From: "Rajat Jain" <Rajat.Jain@infogain.com>
+Subject: Classic confusion: initrd-initramfs
+Date: Thu, 8 Oct 2009 08:49:27 +0530
+Message-ID: <C86899CCB10A6C4E93D5978DCB232D4B0D2669BF@GDCMX01.igglobal.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Return-path: <kernelnewbies-bounce@nl.linux.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:in-reply-to:references
-         :from:date:message-id:subject:to:cc:content-type
-         :content-transfer-encoding;
-        bh=tohFo7B5tkyzjTSEH7aWB/p8o//gPWeIO/zD2VB8rUY=;
-        b=GSLULeJcwJdeYCQFMRe+1a/vqel5EvEVhpFHWf+0ZvGax6LltABVD1wBXS3Atm8QwU
-         xtebOHxQNSgv3vfmb0ziD9tRd45dL8jQYmZ1nUOk/i824O08NrRwa/f1ggfqyW21tIlL
-         kcpa15gLRxc8F53x/TD++c6x5KzBRifREvoZQ=
-In-Reply-To: <7783925d0910071912u5e4f4a2au8442cb6537cd35ed@mail.gmail.com>
+Content-class: urn:content-classes:message
 Sender: kernelnewbies-bounce@nl.linux.org
 Errors-to: kernelnewbies-bounce@nl.linux.org
 List-help: <mailto:ecartis@nl.linux.org?Subject=help>
@@ -26,75 +16,54 @@ List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
 List-owner: <mailto:ecartis-owner@nl.linux.org>
 List-post: <mailto:kernelnewbies@nl.linux.org>
 List-archive: <http://mail.nl.linux.org/kernelnewbies/>
-Content-Type: text/plain; charset="windows-1252"
-To: Rick Brown <rick.brown.3@gmail.com>
-Cc: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
-
-On Thu, Oct 8, 2009 at 7:42 AM, Rick Brown <rick.brown.3@gmail.com> wrote:
-> Hello list,
->
-> As far as I recall from K&R, isn't pointer arithmetic on a void
-> pointer banned? And any effort to do that results in an error -
-> because the compiler won't know by how much size to increment the
-> pointer for a statement like "ptr++"? But then how about this:
-
-But in the program, you aren't actually trying to dereference the
-value. Just adding means it becomes normal arithmetic and that is why
-you get result as 1. You will see the error if you try to dereference
-it.
-
-/tmp> gcc a.c
-a.c: In function =91main=92:
-a.c:5: warning: format =91%d=92 expects type =91int=92, but argument 2 has =
-type =91void *=92
-a.c:6: warning: dereferencing =91void *=92 pointer
-a.c:6: error: invalid use of void expression
-/tmp> cat a.c
-#include <stdio.h>
-int main()
-{
-   void *ptr =3D 0;
-   printf("%d \n", ptr+1);
-   printf("%d \n", *(ptr+1));
-}
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
 
->
-> [rick@linux rick]$ cat t.c
-> #include <stdio.h>
-> int main()
-> {
-> =A0 =A0void *ptr =3D 0;
-> =A0 =A0printf("%d \n", ptr+1);
-> }
-> [rick@linux rick]$ gcc t.c
-> [rick@linux rick]$ ./a.out
-> 1
-> [rick@linux rick]$
->
-> It compiles and runs fine ... !
->
-> TIA,
->
-> Rick
->
-> --
-> To unsubscribe from this list: send an email with
-> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
-> Please read the FAQ at http://kernelnewbies.org/FAQ
->
->
+Hi,
 
+OK, I know enough has already been discussed on this topic and I think
+that I'm just not able to put pieces in place. So I understand the basic
+difference between an initrd (having a filesystem on a block /loopback
+device and mounting it on a ramdisk) and initramfs (Having a compressed
+cpio archieve included in the kernel image and weaving a file system
+directly on RAM to see the contents of this cpio). I assume this
+discussion is not limited to x86 architectures and initrd / initram fs
+can be used on all the other architectures also?
 
+1) Firstly, are initramfs and initrd mutually exclusive techniques to
+achieve the same goal (providing initial drivers)? Does enabling one
+disable the other OR they complement / help each other? Conceptually,
+the former should be true, but browsing through the kernel config, the
+latter seems true.
 
---=20
-Thanks -
-Manish
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D
-[$\*.^ -- I miss being one of them
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D
+2) The initrd image CANNOT be combined with kernel image to produce a
+single image, and the initramfs image cannot be seperated out from
+kernel image and later provided at boot time as a separate image, right?
+
+3) I understand in case of initramfs, kernel does everything including
+loading of initramfs image (since it is included in kernel image only).
+But in case of initrd image, who loads the initrd image into memory? The
+bootloader I assume ... Because grub and lilo have a "initrd" line in
+their config file. But then how is it communicated to the kernel where
+in RAM  (at which address) is the initrd loaded?=20
+
+4) How about non-X86 architectures that don't have lilo / grub? Who
+loads initrd image into memory in that case and how is it communicated
+to kernel?=20
+
+5) What does the "initrd=3D" kernel command line parameter mean, and is =
+it
+applicable only for x86?
+
+6) Is there a unified way of loading initrd on all architectures? Most
+of the online text suggestes to make entry into lilo or grub, which are
+not available else where...
+
+Thanks & Best Regards,
+
+Rajat Jain
+
 
 --
 To unsubscribe from this list: send an email with
