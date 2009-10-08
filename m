@@ -1,58 +1,45 @@
 From: Rick Brown <rick.brown.3@gmail.com>
-Subject: C question
-Date: Thu, 8 Oct 2009 07:42:18 +0530
-Message-ID: <7783925d0910071912u5e4f4a2au8442cb6537cd35ed@mail.gmail.com>
+Subject: Changing Kernel 3g / 1g memory split
+Date: Thu, 8 Oct 2009 08:08:47 +0530
+Message-ID: <7783925d0910071938i360e6ef1w8d1b68900b7c35af@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <kernelnewbies-bounce@nl.linux.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:mime-version:received:date:message-id:subject
          :from:to:content-type;
-        bh=NgRLvTYwfczJhD0p+C9vrxU/jyU7blCN9TAWStqL/DI=;
-        b=G/XbuCstG5F44oRJ0b79s/rKR11IHEkrABkgrz0CQxBUByKQ39oIqQHi/ju9QpW8V3
-         vAjfdDUFzfM4QegUAV+9O+Wh5zXw6A0Q2Dh0boAcREh9T3EaqkTHfzuf6rfm7qxV3Y+T
-         xXYjFPdoGYZs432bWplMO2ZSqN8y1l9Oqj0K4=
-Sender: kernelnewbies-bounce@nl.linux.org
-Errors-to: kernelnewbies-bounce@nl.linux.org
-List-help: <mailto:ecartis@nl.linux.org?Subject=help>
-List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
-List-software: Ecartis version 1.0.0
-List-Id: <linux-newbie.vger.kernel.org>
-List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
-List-owner: <mailto:ecartis-owner@nl.linux.org>
-List-post: <mailto:kernelnewbies@nl.linux.org>
-List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+        bh=xExsBG0TwOFMZL4qRUffaQtaePtONXQUQTJgOQpZF6g=;
+        b=OxfonumCseXL1vHS+dmeVuYsyaqkph3Bj362sn4mF0bjWoZoW63tbvMhLumI19Gx5I
+         eIgRaVIsQtYK9GFs5z67f2h9iHrSRmxwaOwynUki0fYpEZp9NiTez4vsc9t5K6hyfg8l
+         uLhmkuHAm0riB2mL/HfNxYCWrJdtkUcqQ3UwM=
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-Hello list,
+Hi,
 
-As far as I recall from K&R, isn't pointer arithmetic on a void
-pointer banned? And any effort to do that results in an error -
-because the compiler won't know by how much size to increment the
-pointer for a statement like "ptr++"? But then how about this:
+1) As far as I understand the 3G / 1G split of the kernel is in
+virtual address space, and the Highmem / lowmem concept is in physical
+address space. So I just want to know that if I change the memory
+split (from 3g/1g to 2g/2g), then will my ZONE_NORMAL also be expanded
+to be (896M + 1G)?
 
-[rick@linux rick]$ cat t.c
-#include <stdio.h>
-int main()
-{
-    void *ptr = 0;
-    printf("%d \n", ptr+1);
-}
-[rick@linux rick]$ gcc t.c
-[rick@linux rick]$ ./a.out
-1
-[rick@linux rick]$
+2) Are there any disadvantages (other than the user applications
+having to limit themselves to 2G of memory) of increasing the memory
+split to 2G?
 
-It compiles and runs fine ... !
+3) And finally, in order to complete this change and to ensure my
+applications are awrae of it and are doing the needful to restrict
+themselves in only 2G, do I also need to make changes in the glibc or
+the gcc?
 
 TIA,
 
 Rick
-
 --
-To unsubscribe from this list: send an email with
-"unsubscribe kernelnewbies" to ecartis@nl.linux.org
-Please read the FAQ at http://kernelnewbies.org/FAQ
-
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
