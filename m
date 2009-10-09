@@ -1,330 +1,53 @@
-From: Prasad Joshi <prasadjoshi124@gmail.com>
-Subject: Re: Mounting block device fails.
-Date: Fri, 9 Oct 2009 12:40:30 +0530
-Message-ID: <fe291c8c0910090010q3af67e8dhb01e93f271170012@mail.gmail.com>
-References: <fe291c8c0910080003m470520adsd4a7e37bf676458b@mail.gmail.com>
-	 <fe291c8c0910080008g22da5bb0n3f106d644da0fbe8@mail.gmail.com>
-	 <ea11fea30910080611m34c0442i2e1ba2a84608487d@mail.gmail.com>
-	 <fe291c8c0910082246l7aaff1f4od3000617c478a00f@mail.gmail.com>
-	 <ea11fea30910082258g51dd67cp29196027e2579806@mail.gmail.com>
-	 <ea11fea30910082304q7270cff4je0a6e025f074cd08@mail.gmail.com>
+From: Reza Salehi <rezsalehi@yahoo.com>
+Subject: Question regarding :scheduling while atomic"
+Date: Fri, 9 Oct 2009 16:27:05 -0700 (PDT)
+Message-ID: <338444.48959.qm@web53203.mail.re2.yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: multipart/mixed; boundary="0-1905563049-1255130825=:48959"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:in-reply-to:references
-         :date:message-id:subject:from:to:cc:content-type
-         :content-transfer-encoding;
-        bh=wa8B9B6OrHbJfemPPOMYyT5bWfWtECFBBLrTNa4THQY=;
-        b=X7J9p/YKO8RTUCIcTbAI+u9Lgc1wb5IYsU+DL04FRWCRmlHz8UszPrDLrfLH3/WbrV
-         e+CWFu1h9n0p1oQSGO/DHrl/3Ush27etrZL4W5GHpt8aYpOaHX8Hyvvb5W1uAP0ijA2T
-         C3YTVISgJLbTCP762lrO3I6l3JPzsr3fbT5so=
-In-Reply-To: <ea11fea30910082304q7270cff4je0a6e025f074cd08@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024; t=1255130825; bh=3ej7jyYoTx0Cs/HsA+tkaNJsgKCaD3hzIolQo+w6OKE=; h=Message-ID:X-YMail-OSG:Received:X-Mailer:Date:From:Subject:To:MIME-Version:Content-Type; b=2aX10RbT1AQ/HtH6bkNXpDaKQGct0w8WL1uETaMzzAzHD4kk6aSz0rv6yxvxBqJeLDVBdb7I27DaBSeWaG4RGOlhvZRmVAL9YBtXYEF+Pex3frsFhMF9ewfEFGO93RWY+GPW0M3qT/e5tPYwGQX+fdnm1XdgkhoS9nS9/sK0bDs=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Manish Katiyar <mkatiyar@gmail.com>
-Cc: linux-newbie@vger.kernel.org, Kernelnewbies <kernelnewbies@nl.linux.org>
+To: linux-newbie@vger.kernel.org
 
-On Fri, Oct 9, 2009 at 11:34 AM, Manish Katiyar <mkatiyar@gmail.com> wr=
-ote:
-> On Fri, Oct 9, 2009 at 11:28 AM, Manish Katiyar <mkatiyar@gmail.com> =
-wrote:
->> On Fri, Oct 9, 2009 at 11:16 AM, Prasad Joshi <prasadjoshi124@gmail.=
-com> wrote:
->>> Thanks Manish,
->>>
->>> The issue was with filesystem creation. It was not getting created
->>> properly. I used dumpe2fs command to verify the file system. Actual=
-ly
->>> Superblock was written correctly but, few other fields like free bl=
-ock
->>> and free inode list etc were incorrect
->>>
->>> It seems to be working properly now
->>> # dumpe2fs /dev/ftl
->>> ...
->>> ...
->>> Group 0: (Blocks 0-65527)
->>> =A0Primary superblock at 0, Group descriptors at 1-1
->>> =A0Reserved GDT blocks at 2-8
->>> =A0Block bitmap at 9 (+9), Inode bitmap at 10 (+10)
->>> =A0Inode table at 11-1034 (+11)
->>> =A064489 free blocks, 32757 free inodes, 2 directories
->>> =A0Free blocks: 1039-65527
->>> =A0Free inodes: 12-32768
->>> Group 1: (Blocks 65528-131055)
->>> =A0Backup superblock at 65528, Group descriptors at 65529-65529
->>> =A0Reserved GDT blocks at 65530-65536
->>> =A0Block bitmap at 65537 (+9), Inode bitmap at 65538 (+10)
->>> =A0Inode table at 65539-66562 (+11)
->>> =A064493 free blocks, 32768 free inodes, 0 directories
->>> =A0Free blocks: 66563-131055
->>> =A0Free inodes: 32769-65536
->>>
->>> # mount
->>> ...
->>> ...
->>> /dev/ftl on /mntpt type ext2 (rw,relatime,errors=3Dcontinue)
->>>
->>>
->>> The other problem which I am facing is with the blocksize.
->>>
->>> mkfs allows ext2 file system be created with blocksize=3D8192,
->>> overriding the default 4096. But, when I try to mount the file syst=
-em
->>> it fails
->>>
->>> # mkfs -t ext2 -b 8192 /dev/ftl
->>> Warning: blocksize 8192 not usable on most systems.
->>> mke2fs 1.41.4 (27-Jan-2009)
->>> mkfs.ext2: 8192-byte blocks too big for system (max 4096)
->>> Proceed anyway? (y,n) y
->>> Warning: 8192-byte blocks too big for system (max 4096), forced to =
-continue
->>> warning: 16 blocks unused.
->>>
->>> Filesystem label=3D
->>> OS type: Linux
->>> Block size=3D8192 (log=3D3)
->>> Fragment size=3D8192 (log=3D3)
->>> 65536 inodes, 131056 blocks
->>> ....
->>> ....
->>>
->>> # mount -t ext2 /dev/ftl /mntpt
->>> [54658.092031] EXT2-fs: blocksize too small for device.
->>> mount: mounting /dev/ftl on /mntpt failed: Invalid argument
->>>
->>> I tried specifying blocksize with the mount command, but it also fa=
-ils
->
-> Have a look at these patches
->
-> http://lkml.indiana.edu/hypermail/linux/kernel/0708.3/1847.html
->
->
->>>
->>> # mount -t ext2 /dev/ftl /mntpt -o blocksize=3D8192
->>> mount: mounting /dev/ftl on /mntpt failed: Invalid argument
->>>
->>> The above command fails in parsing the options passed to the comman=
-d
->>>
->>> The section "Mount options for ext2" of mount manpage does not ment=
-ion
->>> blocksize option.
->>
->> Yes, there is no "blocksize" option in ext2. For a list of valid
->> options see "tokens" table in ext2/super.c
->>
->>
->>>
->>> Is there anyway I can create ext2 filesystem with blocksize 8192?
->>
->> No ... as far as I know.
->>
->> Man =A0page of mke2fs says :
->>
->> =A0 =A0 -b block-size
->> =A0 =A0 =A0 =A0 =A0 =A0 =A0Specify =A0the =A0size of blocks in bytes=
-=2E =A0Valid block-size
->> values are 1024, 2048 and 4096 bytes per =A0block.
->>
->> And the kernel code says :
->>
->> int sb_set_blocksize(struct super_block *sb, int size)
->> {
->> =A0 =A0 =A0 =A0if (set_blocksize(sb->s_bdev, size))
->> =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0return 0;
->> =A0 =A0 =A0 =A0/* If we get here, we know size is power of two
->> =A0 =A0 =A0 =A0 * and it's value is between 512 and PAGE_SIZE */
->> =A0 =A0 =A0 =A0sb->s_blocksize =3D size;
->> =A0 =A0 =A0 =A0sb->s_blocksize_bits =3D blksize_bits(size);
->> =A0 =A0 =A0 =A0return sb->s_blocksize;
->> }
->>
->> and the PAGE_SIZE is 4096.
+--0-1905563049-1255130825=:48959
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: quoted-printable
 
-Ya, I see thanks.
+Hi all,=0A=0A=0AI am getting kernel oops "=A0 scheduling while atomic: watc=
+hdog or swapper" it doesn't make kernel to crash but i am sure it is not a =
+good sign..=0AI am not holding any spin lock at all.=0AI am wonder what wou=
+ld be best approach to debug this issue? What tool is appropriate for debug=
+ging? =0A=0AYou can see the kernel oops as attached files.=0A=0AThanks for =
+your help in advance.=A0=0A=0ABest Regards,=0AReza=0A=0A=0A=0A      
+--0-1905563049-1255130825=:48959
+Content-Type: application/octet-stream; name=debug
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="debug"
 
->>
->> Reiserfs supports blocksizes of 8192 , but its man page says :-
->>
->> =A0 =A0 =A0-b | --block-size N
->> =A0 =A0 =A0 =A0 =A0 =A0 =A0N =A0is block size in bytes. It may only =
-be set to a power
->> of 2 within the 512-8192 interval. =A0Note
->> =A0 =A0 =A0 =A0 =A0 =A0 =A0that current versions of the kernel ( 2.6=
-=2E19 ) do NOT
->> support any size other than 4096.
->>
->>
->> But is there any specific reason you want to use block sizes of 8192=
- ?
+cmEgICAgOiA4MDA2YzNhNCBjcHVfaWRsZSsweDJjLzB4NTQKU3RhdHVzOiAx
+MDAwZDQwMyAgICBLRVJORUwgRVhMIElFCkNhdXNlIDogNDA4MDgwMDAKUHJJ
+ZCAgOiAwMDAxOTM3NCAoTUlQUyAyNEtjKQpCVUc6IHNjaGVkdWxpbmcgd2hp
+bGUgYXRvbWljOiBzd2FwcGVyLzAvMHgxMDAwMDEwMApNb2R1bGVzIGxpbmtl
+ZCBpbjogZXZkZXYgdnJ3X3dzbXAoUCkgdnJ3X3dtZShQKSB2cndfZ3BsIHds
+YW5fd2F2ZV91bWxtZShQKSBhdGhfcGNpIHdsYW5feGF1dGggd2xhbl93ZXAg
+d2xhbl90a2lwIHdsYW5lQ3B1IDAKJCAwICAgOiAwMDAwMDAwMCA4MDMwMDAw
+MCA4MDA2MGEwMCAwMGM3MmM4NgokIDQgICA6IDAwMDAwMDAwIDAwYzcyYzg2
+IDgwMmM1YmE4IDgwOTUwYzVjCiQgOCAgIDogMDAwMDAwMDAgMTYzZDQ4Nzgg
+NjYzZTk0ZDEgMDAwMDAwMDAKJDEyICAgOiAwMDAwMDAwMCAwMDAwMDAwMCA4
+MDJiZmVkMCA4MWMxZGFhYwokMTYgICA6IDgwMzEwMDAwIDgwMmZlNmJlIDgw
+MzAwMDAwIDgwMzAwMDAwCiQyMCAgIDogODA3ZjAwMDAgMmMwMDAwMDAgMDBl
+NDJjMDAgMDAwMDAwMDAKJDI0ICAgOiAwMDAwMDAwMiA4MDA3MDkzOAokMjgg
+ICA6IDgwMmJlMDAwIDgwMmJmZjgwIDAwMDAwMGU0IDgwMDZjM2E0CkhpICAg
+IDogMDAyN2QxOTUKTG8gICAgOiA2NjNlOTRkMQplcGMgICA6IDgwMDYwYTIw
+IHI0a193YWl0KzB4MjAvMHg0MAogICAgVGFpbnRlZDogUApyYSAgICA6IDgw
+MDZjM2E0IGNwdV9pZGxlKzB4MmMvMHg1NApTdGF0dXM6IDEwMDBkNDAzICAg
+IEtFUk5FTCBFWEwgSUUKQ2F1c2UgOiA0MDgwODAwMApQcklkICA6IDAwMDE5
+Mzc0IChNSVBTIDI0S2MpCmVXQVZFJQoK
 
-It is hardware's recommendation. The flash hardware uses 8192
-blocksize for IOs. Using smaller block size will result in more IOs on
-flash device.
-
-Thanks and Regards,
-Prasad
->>
->>>
->>> Thanks and Regards,
->>> Prasad
->>>
->>> On Thu, Oct 8, 2009 at 6:41 PM, Manish Katiyar <mkatiyar@gmail.com>=
- wrote:
->>>> On Thu, Oct 8, 2009 at 12:38 PM, Prasad Joshi <prasadjoshi124@gmai=
-l.com> wrote:
->>>>> Hi,
->>>>>
->>>>> I am working on translation layer for flash. For the purpose test=
-ing I am
->>>>> using a disk file to simulate the flash behavior. So every read a=
-nd write on
->>>>> the block device finally goes to a disk file, something similar t=
-o loop
->>>>> device, but in addition maintaining the flash property.
->>>>>
->>>>> I am able to create the file system on the device (/dev/ftl) but =
-when I try
->>>>> to mount the device it fails with error "Invalid Argument".
->>>>
->>>> From the code I can see -EINVAL can be returned at lot of places. =
-You
->>>> need to see dmesg to see the message which can help tracing.
->>>>
->>>>>
->>>>> I thought it is failing to read the super block of the file syste=
-ms, but it
->>>>> seems like it did not fail in superblock read
->>>>>
->>>>> # strace -o out mount -t ext2 /dev/ftl /mntpt/
->>>>> [=A0 175.192033] Opening the device.
->>>>> [=A0 175.193599] IftlIoRead: offset=3D0x400 Length=3D0x400
->>>>> [=A0 175.193875] OffsetWithinPage: 400
->>>>> [=A0 175.195104] Read pos=3D1002535424, length=3D8192
->>>>> [=A0 175.195474] 0000 0001 0000 0004 3333 0000 eea5 0003 fff5 000=
-0 0000 0000
->>>>> 0002 0000 0002 0000 8000 0000 8000 0000 2000 0000 0000 0000 8a9e =
-4acd 0000
->>>>> 0020 ef53 0001 0001 0000 8a9e 4acd 4e00 00ed 0000 0000 0001 0000 =
-0000 0000
->>>>> 000b 0000 0100 0000 0038 0000 0002 0000 0003 0000 a037 8e0c d6b3 =
-de11 abb8
->>>>> 0635 bff9 2b36 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 003f 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 a037 8f0c d6b3 de11 abb8 0635 bff9 2b36 0001 0000 0000 0000 =
-0000 0000
->>>>> 8a9e 4acd 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 =
-0000 0000
->>>>> 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 0000 001c =
-001c 0001
->>>>> 0000 0000 0000 0000 0000 0000 0000 0000 0000 [=A0 175.215929] Clo=
-sing the
->>>>> device.
->>>>> mount: mounting /dev/ftl on /mntpt/ failed: Invalid argument
->>>>>
->>>>> I tried printing the data in hex format just to make sure proper =
-ext2 magic
->>>>> code in present in the superblock read from the flash device.=A0 =
-"ef53" is the
->>>>> magic code of ext2 superblock, ftl device is correctly reading th=
-e magic
->>>>> code
->>>>>
->>>>> # cat out
->>>>> execve("/bin/mount", ["mount", "-t", "ext2", "/dev/ftl", "/mntpt/=
-"], [/* 4
->>>>> vars */]) =3D 0
->>>>> uname({sys=3D"Linux", node=3D"(none)", ...}) =3D 0
->>>>> brk(0)=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0x72f000
->>>>> brk(0x72ff40)=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0x72ff40
->>>>> arch_prctl(ARCH_SET_FS, 0x72f880)=A0=A0=A0=A0=A0=A0 =3D 0
->>>>> open("/dev/urandom", O_RDONLY)=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D -1 =
-ENOENT (No such file or
->>>>> directory)
->>>>> brk(0x750f40)=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0x750f40
->>>>> brk(0x751000)=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0x751000
->>>>> getuid()=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0
->>>>> getuid()=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0
->>>>> geteuid()=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D 0
->>>>> stat("/dev/ftl", {st_mode=3DS_IFBLK|0644, st_rdev=3Dmakedev(254, =
-0), ...}) =3D 0
->>>>> mount("/dev/ftl", "/mntpt/", "ext2", MS_SILENT, "") =3D -1 EINVAL=
- (Invalid
->>>>> argument)
->>>>> vfork()=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =3D 869
->>>>> --- SIGCHLD (Child exited) @ 0 (0) ---
->>>>> write(2, "mount: mounting /dev/ftl on /mntp"..., 61) =3D 61
->>>>> exit_group(-1)=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
-=A0=A0=A0=A0=A0=A0=A0=A0 =3D ?
->>>>>
->>>>> What could be the reason of failure of mount?
->>>>>
->>>>> Thanks and Regards,
->>>>> Prasad
->>>>>
->>>>>
->>>>
->>>>
->>>>
->>>> --
->>>> Thanks -
->>>> Manish
->>>> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->>>> [$\*.^ -- I miss being one of them
->>>> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->>>>
->>>
->>
->>
->>
->> --
->> Thanks -
->> Manish
->> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->> [$\*.^ -- I miss being one of them
->> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->>
->
->
->
-> --
-> Thanks -
-> Manish
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> [$\*.^ -- I miss being one of them
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
->
+--0-1905563049-1255130825=:48959--
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
