@@ -1,53 +1,75 @@
-From: Reza Salehi <rezsalehi@yahoo.com>
-Subject: Question regarding :scheduling while atomic"
-Date: Fri, 9 Oct 2009 16:27:05 -0700 (PDT)
-Message-ID: <338444.48959.qm@web53203.mail.re2.yahoo.com>
+From: vinit dhatrak <vinit.dhatrak@gmail.com>
+Subject: Re: preempt_disable() as synchronization tool
+Date: Sat, 10 Oct 2009 07:30:08 +0530
+Message-ID: <edf0f34e0910091900v305ec56u44913503cc8689dd@mail.gmail.com>
+References: <292693080910082043v74114d6dvbe3c39f166a59e1b@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="0-1905563049-1255130825=:48959"
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024; t=1255130825; bh=3ej7jyYoTx0Cs/HsA+tkaNJsgKCaD3hzIolQo+w6OKE=; h=Message-ID:X-YMail-OSG:Received:X-Mailer:Date:From:Subject:To:MIME-Version:Content-Type; b=2aX10RbT1AQ/HtH6bkNXpDaKQGct0w8WL1uETaMzzAzHD4kk6aSz0rv6yxvxBqJeLDVBdb7I27DaBSeWaG4RGOlhvZRmVAL9YBtXYEF+Pex3frsFhMF9ewfEFGO93RWY+GPW0M3qT/e5tPYwGQX+fdnm1XdgkhoS9nS9/sK0bDs=
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-To: linux-newbie@vger.kernel.org
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:cc:content-type;
+        bh=iuVe4TDasN0QZJMhdgDOTHaSPqRPua2F7XmDIhno6PI=;
+        b=u76UiOCjD3mr+oz5n0MBO9OarfqqcTQvZhWWHK7dXbG9ld7mlFLWIJUFS1RVV+oaYT
+         WaKrNHbw+gF7vgRH9NGFTe+r3qoRtCfvW2dexqGXeXeJlhF7rjCLTAq7++Dn1Vs90oPr
+         lmDgENBvgpqi+EACba1up2rQ3Y74qLoDKS5QI=
+In-Reply-To: <292693080910082043v74114d6dvbe3c39f166a59e1b@mail.gmail.com>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: Kernel Newbies <kernelnewbies@nl.linux.org>, Linux Newbie <linux-newbie@vger.kernel.org>
 
---0-1905563049-1255130825=:48959
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: quoted-printable
+On Fri, Oct 9, 2009 at 9:13 AM, Daniel Rodrick <daniel.rodrick@gmail.com> wrote:
+> Hi List,
+>
+> I have few queries related to preempt_disable() and would appreciate
+> any answers to it.
+>
+> Firstly, Does preempt_disable() disable the preemption on all the
+> processors or on just the local processor?
 
-Hi all,=0A=0A=0AI am getting kernel oops "=A0 scheduling while atomic: watc=
-hdog or swapper" it doesn't make kernel to crash but i am sure it is not a =
-good sign..=0AI am not holding any spin lock at all.=0AI am wonder what wou=
-ld be best approach to debug this issue? What tool is appropriate for debug=
-ging? =0A=0AYou can see the kernel oops as attached files.=0A=0AThanks for =
-your help in advance.=A0=0A=0ABest Regards,=0AReza=0A=0A=0A=0A      
---0-1905563049-1255130825=:48959
-Content-Type: application/octet-stream; name=debug
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="debug"
+I guess just local processor as the preempt count is maintained in
+current thread_info struct. Correct me if I am wrong here.
 
-cmEgICAgOiA4MDA2YzNhNCBjcHVfaWRsZSsweDJjLzB4NTQKU3RhdHVzOiAx
-MDAwZDQwMyAgICBLRVJORUwgRVhMIElFCkNhdXNlIDogNDA4MDgwMDAKUHJJ
-ZCAgOiAwMDAxOTM3NCAoTUlQUyAyNEtjKQpCVUc6IHNjaGVkdWxpbmcgd2hp
-bGUgYXRvbWljOiBzd2FwcGVyLzAvMHgxMDAwMDEwMApNb2R1bGVzIGxpbmtl
-ZCBpbjogZXZkZXYgdnJ3X3dzbXAoUCkgdnJ3X3dtZShQKSB2cndfZ3BsIHds
-YW5fd2F2ZV91bWxtZShQKSBhdGhfcGNpIHdsYW5feGF1dGggd2xhbl93ZXAg
-d2xhbl90a2lwIHdsYW5lQ3B1IDAKJCAwICAgOiAwMDAwMDAwMCA4MDMwMDAw
-MCA4MDA2MGEwMCAwMGM3MmM4NgokIDQgICA6IDAwMDAwMDAwIDAwYzcyYzg2
-IDgwMmM1YmE4IDgwOTUwYzVjCiQgOCAgIDogMDAwMDAwMDAgMTYzZDQ4Nzgg
-NjYzZTk0ZDEgMDAwMDAwMDAKJDEyICAgOiAwMDAwMDAwMCAwMDAwMDAwMCA4
-MDJiZmVkMCA4MWMxZGFhYwokMTYgICA6IDgwMzEwMDAwIDgwMmZlNmJlIDgw
-MzAwMDAwIDgwMzAwMDAwCiQyMCAgIDogODA3ZjAwMDAgMmMwMDAwMDAgMDBl
-NDJjMDAgMDAwMDAwMDAKJDI0ICAgOiAwMDAwMDAwMiA4MDA3MDkzOAokMjgg
-ICA6IDgwMmJlMDAwIDgwMmJmZjgwIDAwMDAwMGU0IDgwMDZjM2E0CkhpICAg
-IDogMDAyN2QxOTUKTG8gICAgOiA2NjNlOTRkMQplcGMgICA6IDgwMDYwYTIw
-IHI0a193YWl0KzB4MjAvMHg0MAogICAgVGFpbnRlZDogUApyYSAgICA6IDgw
-MDZjM2E0IGNwdV9pZGxlKzB4MmMvMHg1NApTdGF0dXM6IDEwMDBkNDAzICAg
-IEtFUk5FTCBFWEwgSUUKQ2F1c2UgOiA0MDgwODAwMApQcklkICA6IDAwMDE5
-Mzc0IChNSVBTIDI0S2MpCmVXQVZFJQoK
+>
+> Secondly, a preempt_disable() a sufficient synchronization technique
+> to guard a data that is shared only among process context code on a
+> Uni-processor? And on SMP?
 
---0-1905563049-1255130825=:48959--
+It is sufficient only in case of uni-processor (Actually spin_lock
+also just disables preemption in case of uni-processor)
+
+>
+> Lastly, is it allowable to schedule / sleep immediately after a call
+> to preempt_disable()?
+
+No I guess kernel will panic with some error like , "scheduling while
+in Atomic Context".
+
+>
+> Thanks & Best Regards,
+>
+> Dan
+>
+> --
+> To unsubscribe from this list: send an email with
+> "unsubscribe kernelnewbies" to ecartis@nl.linux.org
+> Please read the FAQ at http://kernelnewbies.org/FAQ
+>
+>
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
