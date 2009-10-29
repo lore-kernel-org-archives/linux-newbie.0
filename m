@@ -1,66 +1,49 @@
-From: Rick Brown <rick.brown.3@gmail.com>
-Subject: What stops the vanialla kernel from being called an RTOS?
-Date: Thu, 29 Oct 2009 12:49:32 +0530
-Message-ID: <7783925d0910290019y459c67a8l6d9ad4ce0b009643@mail.gmail.com>
+From: Daniel Rodrick <daniel.rodrick@gmail.com>
+Subject: Questions about linux scheduler
+Date: Thu, 29 Oct 2009 20:38:31 +0530
+Message-ID: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1755116AbZJ2PIa@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:mime-version:received:date:message-id:subject
          :from:to:content-type;
-        bh=dPWhQFZzl/BXbQDCzxWJALfhZYsSBEBwV7xeeoAySq4=;
-        b=kI9c7MrvsJr5JmM9OQ9n5TseScB3jEbbDQElPzAgdSbssAZ/mQogEAe1qZ9ZAuZjmY
-         ftsBGKSamKwOg6SBiSuRQp+pebuqQdsISYEdfcCbjrSJug12djfDsPcKAjo7l+N+t7Qk
-         qQ+LkTuAEKIEkQNXNwExTgt6FNYxfQl8ePb60=
-Sender: linux-newbie-owner@vger.kernel.org
+        bh=otyaInsg7RaWgbNsRVF3g4Dfx6YcI2PQlM9dZFvLqLI=;
+        b=QAc/yCVwhdhkFUfaetGwZpKy+sazrl8Y0AxBvSfETE7pEenh/ueKNUkdYhMaFSuPxY
+         YS+lmGhEidQO8TUogeCXoPFOIsXZIaUGELb1TpPFo8FA1qb5Hz4u1jL0UlNREodViYfG
+         PB9p1IHtEM6PiLSv4QKEaOoFspLGHyP4HMCiQ=
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>, linux-kernel@vger.kernel.org
 
 Hi list,
 
-I have asked this before, but some of my doubts remain. So I want to
-know that when it comes down to code, what stops the plain linux
-kernel from being called RTOS? Please note that I understand that
-there are different Linux based patches / projects that make LInux
-realtime, but I want to know about the kernel from kernel.org - what
-makes it a non-RTOS?
+I'm following the Robert Love's book and am trying to understand the
+Linux O(1) scheduler. So here is my understanding. The kernel allows
+the applications to specify two types of priorities
 
-As far as I could understand, it is dues to two factors:
+* Realtime Priorities: Range from 0 to 99
+* Non-realtime priorities: Also called "nice" values range from -20 to +19.
 
-1) Its use of virtual memory (because the user pages may be paged out
-thus causing unpredictable delays). But what if given that the user
-applications always call the "mlockall()" to lock all the pages in
-memory? Is this reason then taken care of? Also , do all RTOSes do not
-make use of virtual memory?
+(The above are mutually exclusive)
 
-2) No specified worst case latency (which is the definition of RTOS).
-I could find that there are two kinds of latencies:
 
-a) Scheduling latency: Well, with the latest 2.6 kernel and with Ingo
-Molner's O(1) scheduler, isn't this now deterministic?
+Over all Scheduling algo
+=================
+* A total of 140 priorities (100 RT + 40 non-RT) - these priorities
+are static - do not change over time.
+* A lower priority process will run only if there are no runnable
+processes in priority above it - this automatically means that all RT
+processes get to run before non-RT processes.
+ * tasks on the same priority level are scheduled round robin
 
-b) Interrupt latency: This seems to be the main cause for which kernel
-cannot be called RTOS< because a driver may hold spinlocks / disable
-preemption for any amount of time?
-
-Finally, what I could conclude from the googling was that the only
-bottleneck with linux is that certain areas of code are
-non-preemptible (where spinlocks are held or where interrupts are
-disabled). If some how we could make entire kernel preemptible, then
-it would be an RTOS. Is this right?
-
-Lastly, isn't scheduling latency and interrupt latency contradictory?
-I mean there will always be a tradeoff between the two. Any efforts to
-decrease on / make it predictable will increase / make unpredictable
-of the other. No?
+Is my above understanding correct? Where my understanding doesn't fit
+is the conncept of dynamic timeslice calculation. IMHO, the dynamic
+timeslice calculation applies only to Non-RT processes, right? Because
+a higher priority RT process should always get to run.
 
 Thanks,
 
-Rick
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Dan
