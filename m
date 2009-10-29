@@ -1,10 +1,10 @@
-From: "Chris Friesen" <cfriesen@nortel.com>
+From: Jonathan Corbet <corbet@lwn.net>
 Subject: Re: Questions about linux scheduler
-Date: Thu, 29 Oct 2009 13:58:10 -0600
-Message-ID: <4AE9F3D2.8030502@nortel.com>
+Date: Thu, 29 Oct 2009 14:05:42 -0600
+Message-ID: <20091029140542.21970ff2@bike.lwn.net>
 References: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
@@ -13,63 +13,53 @@ Content-Type: text/plain; charset="us-ascii"
 To: Daniel Rodrick <daniel.rodrick@gmail.com>
 Cc: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>, linux-kernel@vger.kernel.org
 
-On 10/29/2009 09:08 AM, Daniel Rodrick wrote:
-> Hi list,
-> 
-> I'm following the Robert Love's book and am trying to understand the
-> Linux O(1) scheduler.
+Hi, Daniel,
 
-The details of Rob Love's book are now out of date and no longer
-applicable to the current scheduler.  Some of the overall concepts are
-still applicable though.
+I'm not a scheduler expert by any stretch, but I can try to play one on
+the net...
+
+> I'm following the Robert Love's book and am trying to understand the
+> Linux O(1) scheduler. 
+
+Note that the O(1) scheduler is no more; it was replaced by the
+completely fair scheduler in 2.6.23.  For the purposes of your
+questions things haven't changed a lot, but it's completely different
+internally.
 
 > So here is my understanding. The kernel allows
 > the applications to specify two types of priorities
 > 
 > * Realtime Priorities: Range from 0 to 99
-
-Actually, 1 to 99.
-
 > * Non-realtime priorities: Also called "nice" values range from -20 to +19.
-> 
-> (The above are mutually exclusive)
 
-Correct.
+You're really talking about different scheduling classes.  There are
+two realtime classes (FIFO and RR), both of which trump the interactive
+class (SCHED_OTHER).
 
-> Over all Scheduling algo
-> =================
 > * A total of 140 priorities (100 RT + 40 non-RT) - these priorities
 > are static - do not change over time.
 
-So far so good.
+Sort of, but realtime priorities are really an entirely different scale.
 
 > * A lower priority process will run only if there are no runnable
 > processes in priority above it - this automatically means that all RT
 > processes get to run before non-RT processes.
 
-True for RT, not true for non-RT.  In the current scheduler the non-RT
-tasks are stored in a time-ordered structure rather than the 40
-runqueues that were used before.  A non-RT task will run once it becomes
-the most "urgent" task based on its nice level, how much cpu time it
-uses, and how long it's been since it ran last relative to other tasks
-on the system.
+That is true for the realtime classes.  SCHED_OTHER will give
+lower-priority processes a bit of time even in the presence of runnable
+high-priority processes.
 
 >  * tasks on the same priority level are scheduled round robin
 
-True for RT.  For non-RT, tasks of other nice levels may be interleaved
-depending on how much cpu time they've been using.
+SCHED_RR does that, SCHED_FIFO does not.  SCHED_OTHER is
+fairness-based, which has RR-like characteristics but is not quite the
+same.
 
-> Is my above understanding correct? Where my understanding doesn't fit
-> is the conncept of dynamic timeslice calculation. IMHO, the dynamic
-> timeslice calculation applies only to Non-RT processes, right? Because
-> a higher priority RT process should always get to run.
+Hope that helps,
 
-With the new scheduler I think it's fair to say that non-RT tasks don't
-really have a fixed "timeslice".  The amount of time they get to run is
-determined by their nice level, previous cpu usage, cpu usage of other
-tasks, etc.
+jon
 
-Chris
+Jonathan Corbet / LWN.net / corbet@lwn.net
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
