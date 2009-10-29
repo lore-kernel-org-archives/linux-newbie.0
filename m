@@ -1,90 +1,66 @@
-From: =?ISO-8859-1?Q?Kevyn=2DAlexandre_Par=E9?= 
-	<kevyn.alexandre.pare@gmail.com>
-Subject: Re: Write and Submit Your First Kernel Patch
-Date: Fri, 23 Oct 2009 17:26:25 -0400
-Message-ID: <dc1d0f40910231426j45184429qbe3531bc76555c77@mail.gmail.com>
-References: <dc1d0f40910231146y14028f4el9753debdf334103@mail.gmail.com>
-	 <alpine.LNX.2.00.0910231621550.14365@iabervon.org>
-	 <7vskd9akv6.fsf@alter.siamese.dyndns.org>
+From: Rick Brown <rick.brown.3@gmail.com>
+Subject: What stops the vanialla kernel from being called an RTOS?
+Date: Thu, 29 Oct 2009 12:49:32 +0530
+Message-ID: <7783925d0910290019y459c67a8l6d9ad4ce0b009643@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:in-reply-to:references
-         :date:message-id:subject:from:to:cc:content-type
-         :content-transfer-encoding;
-        bh=R9zmYYUuCGZjdauNpQf22kkiGcz6B/UqBGEX9fJ2LMI=;
-        b=TRWO/5Z4hqIxsm2NiJt0KJLGq0HRibuHK6fw9wAGmzgiz/oc85Tf6iKEzgK8KcYmd8
-         AYwUbIolOcIn6uRYztaMCclk6qDr4ZGmEIbu+l2jUtTdI6cnlVxETNnLBk/YKnVZFdE6
-         eG++3vM2nfSSahYuXZ7bdXBhQH00ecbTaBV34=
-In-Reply-To: <7vskd9akv6.fsf@alter.siamese.dyndns.org>
+        h=domainkey-signature:mime-version:received:date:message-id:subject
+         :from:to:content-type;
+        bh=dPWhQFZzl/BXbQDCzxWJALfhZYsSBEBwV7xeeoAySq4=;
+        b=kI9c7MrvsJr5JmM9OQ9n5TseScB3jEbbDQElPzAgdSbssAZ/mQogEAe1qZ9ZAuZjmY
+         ftsBGKSamKwOg6SBiSuRQp+pebuqQdsISYEdfcCbjrSJug12djfDsPcKAjo7l+N+t7Qk
+         qQ+LkTuAEKIEkQNXNwExTgt6FNYxfQl8ePb60=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Junio C Hamano <gitster@pobox.com>
-Cc: Daniel Barkalow <barkalow@iabervon.org>, linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, git@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
 
-My mistake but I learn a lot from you guys!
+Hi list,
 
-I should simply have done:
-=2E/scripts/checkpatch.pl --terse --patch
-0001-Staging-comedi-driver-fix-coding-style.patch
+I have asked this before, but some of my doubts remain. So I want to
+know that when it comes down to code, what stops the plain linux
+kernel from being called RTOS? Please note that I understand that
+there are different Linux based patches / projects that make LInux
+realtime, but I want to know about the kernel from kernel.org - what
+makes it a non-RTOS?
 
-or
+As far as I could understand, it is dues to two factors:
 
-=2E/scripts/checkpatch.pl --terse --patch
-0001-Staging-comedi-driver-fix-coding-style.patch
-# Since --patch is the default!
+1) Its use of virtual memory (because the user pages may be paged out
+thus causing unpredictable delays). But what if given that the user
+applications always call the "mlockall()" to lock all the pages in
+memory? Is this reason then taken care of? Also , do all RTOSes do not
+make use of virtual memory?
 
-No warning to the output, I will change my blog
+2) No specified worst case latency (which is the definition of RTOS).
+I could find that there are two kinds of latencies:
 
-thx again
+a) Scheduling latency: Well, with the latest 2.6 kernel and with Ingo
+Molner's O(1) scheduler, isn't this now deterministic?
 
-kap
+b) Interrupt latency: This seems to be the main cause for which kernel
+cannot be called RTOS< because a driver may hold spinlocks / disable
+preemption for any amount of time?
 
-On Fri, Oct 23, 2009 at 4:58 PM, Junio C Hamano <gitster@pobox.com> wro=
-te:
-> Daniel Barkalow <barkalow@iabervon.org> writes:
->
->> On Fri, 23 Oct 2009, Kevyn-Alexandre Par=E9 wrote:
->>
->>> Just before I send my patch I got this error with:
->>> ./scripts/checkpatch.pl --terse --file
->>> 0001-Staging-comedi-driver-fix-coding-style.patch
->>
->> You're using checkpatch --file on a patch. I hope you don't intend y=
-our
->> patch to be added to the kernel source as a file, but rather applied=
- to
->> the kernel source, changing other files. (I bet "gcc 0001-Staging*.p=
-atch"
->> will get interesting errors, too...) The patch format adds a single
->> character at the beginning of each line to say whether it's a additi=
-on, a
->> deletion, or a context line, and the context lines are identified by=
- a
->> space character. This means that a blank context line consists of ju=
-st
->> this space character, which is therefore a trailing space. We get th=
-e same
->> type of complaints when we have expected diff output in our test scr=
-ipts.
->>
->> I'm kind of surprised that checkpatch doesn't completely blow up whe=
-n it's
->> expecting a source file and getting a patch (and maybe tell you what
->> you've done). But that's the source of your errors, anyway.
->
-> Ah, your analysis is correct. =A0This is a usage error of checkpatch =
-script
-> and there is nothing for us to worry about.
->
-> Thanks; I also failed to spot --file option when I responded.
->
+Finally, what I could conclude from the googling was that the only
+bottleneck with linux is that certain areas of code are
+non-preemptible (where spinlocks are held or where interrupts are
+disabled). If some how we could make entire kernel preemptible, then
+it would be an RTOS. Is this right?
+
+Lastly, isn't scheduling latency and interrupt latency contradictory?
+I mean there will always be a tradeoff between the two. Any efforts to
+decrease on / make it predictable will increase / make unpredictable
+of the other. No?
+
+Thanks,
+
+Rick
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
