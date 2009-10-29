@@ -1,64 +1,75 @@
-From: Rick Brown <rick.brown.3@gmail.com>
-Subject: IRQF_TRIGGER_* flags
-Date: Thu, 29 Oct 2009 22:24:13 +0530
-Message-ID: <7783925d0910290954o1138f657w10c5e9900cdaceba@mail.gmail.com>
+From: "Chris Friesen" <cfriesen@nortel.com>
+Subject: Re: Questions about linux scheduler
+Date: Thu, 29 Oct 2009 13:58:10 -0600
+Message-ID: <4AE9F3D2.8030502@nortel.com>
+References: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:date:message-id:subject
-         :from:to:content-type;
-        bh=QdzADRMjfqsW4gshaqhY0/gzoolaGx9Dxp7TYgdqJOA=;
-        b=rKgVLlIbUckT2T+9xsC78TamUDaTdH3iQ3VKfzlHYEAoRTgVTrhhXzvgkahWtbQVcm
-         lKVpR58UdLCL+9+VEJ36dImuoaP+pzepNEP/YYFYFp6tDTtXjveUbKItRwZPFkZzBN/n
-         vg9/C9lr8ZsqEINofrJDZkA2A8/qnWJPRvCos=
+In-Reply-To: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: kernelnewbies <kernelnewbies@nl.linux.org>, linux-newbie@vger.kernel.org
+To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Cc: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>, linux-kernel@vger.kernel.org
 
-Hi,
+On 10/29/2009 09:08 AM, Daniel Rodrick wrote:
+> Hi list,
+> 
+> I'm following the Robert Love's book and am trying to understand the
+> Linux O(1) scheduler.
 
-This is regarding the IRQF_TRIGGER_* macros (that can be passed in
-flags in request_irq()) I came acrosss while browsing the code:
+The details of Rob Love's book are now out of date and no longer
+applicable to the current scheduler.  Some of the overall concepts are
+still applicable though.
 
-/*
- * These correspond to the IORESOURCE_IRQ_* defines in
- * linux/ioport.h to select the interrupt line behaviour.  When
- * requesting an interrupt without specifying a IRQF_TRIGGER, the
- * setting should be assumed to be "as already configured", which
- * may be as per machine or firmware initialisation.
- */
-#define IRQF_TRIGGER_NONE       0x00000000
-#define IRQF_TRIGGER_RISING     0x00000001
-#define IRQF_TRIGGER_FALLING    0x00000002
-#define IRQF_TRIGGER_HIGH       0x00000004
-#define IRQF_TRIGGER_LOW        0x00000008
+> So here is my understanding. The kernel allows
+> the applications to specify two types of priorities
+> 
+> * Realtime Priorities: Range from 0 to 99
 
-1) I assume that the above flags can be used to configure whether the
-interrupt is edge-triggered or level-triggered and further more if it
-is high / low (for level triggered), or rising / falling (for edge
-triggered). What confuses me though is that as per my understanding,
-this configuration must alrteady have been done by the interrupt
-handler code at the system initialization time. So these flags provide
-a way to alter that behaviour (over-ride the default) by the device
-driver? Isn't that drastic considering that an interrupt may be shared
-by drivers?
+Actually, 1 to 99.
 
-2) Secondly, should / are driver aware of whether the line is edge
-trigggered / level triggered. Doesn't this responsibility more
-appropriately belong to the interrupt handler code? Can some one help
-me a practical situation where we could use these flags?
+> * Non-realtime priorities: Also called "nice" values range from -20 to +19.
+> 
+> (The above are mutually exclusive)
 
-3) Finally and most importantly, does my driver need to do anything
-differently depending upon whether the IRQ line is edge triggered or
-level triggered? And what does the kernel do differently for both the
-cases?
+Correct.
 
-TIA,
+> Over all Scheduling algo
+> =================
+> * A total of 140 priorities (100 RT + 40 non-RT) - these priorities
+> are static - do not change over time.
 
-Rick.
+So far so good.
+
+> * A lower priority process will run only if there are no runnable
+> processes in priority above it - this automatically means that all RT
+> processes get to run before non-RT processes.
+
+True for RT, not true for non-RT.  In the current scheduler the non-RT
+tasks are stored in a time-ordered structure rather than the 40
+runqueues that were used before.  A non-RT task will run once it becomes
+the most "urgent" task based on its nice level, how much cpu time it
+uses, and how long it's been since it ran last relative to other tasks
+on the system.
+
+>  * tasks on the same priority level are scheduled round robin
+
+True for RT.  For non-RT, tasks of other nice levels may be interleaved
+depending on how much cpu time they've been using.
+
+> Is my above understanding correct? Where my understanding doesn't fit
+> is the conncept of dynamic timeslice calculation. IMHO, the dynamic
+> timeslice calculation applies only to Non-RT processes, right? Because
+> a higher priority RT process should always get to run.
+
+With the new scheduler I think it's fair to say that non-RT tasks don't
+really have a fixed "timeslice".  The amount of time they get to run is
+determined by their nice level, previous cpu usage, cpu usage of other
+tasks, etc.
+
+Chris
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
