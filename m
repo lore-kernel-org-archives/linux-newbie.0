@@ -1,67 +1,49 @@
-From: Jonathan Corbet <corbet@lwn.net>
+From: Daniel Rodrick <daniel.rodrick@gmail.com>
 Subject: Re: Questions about linux scheduler
-Date: Thu, 29 Oct 2009 14:05:42 -0600
-Message-ID: <20091029140542.21970ff2@bike.lwn.net>
+Date: Fri, 30 Oct 2009 15:50:15 +0530
+Message-ID: <292693080910300320q1857cc70s73eb524c34af8233@mail.gmail.com>
 References: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
+	 <4AE9F3D2.8030502@nortel.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <292693080910290808x69f25f6fgc49cb646c1c00466@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner+glk-linux-kernel-3=40m.gmane.org-S1757016AbZJ3KUM@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:in-reply-to:references
+         :date:message-id:subject:from:to:cc:content-type
+         :content-transfer-encoding;
+        bh=A1JP4P/RHozXp3kVaLXa/UDxagC1UvNFoRsv9Fftpgg=;
+        b=S7EvRGyxJ6Kz2Ix+WyzvbHuwk0Vl54yYILTYXbCcrr8WVFW9EG/Jsqo69eyWzqTQs/
+         L6+PxCHM5YLg+1X4gh6/grRnuA+FG01zfVizJFYIcxUcwiknqK+2LsfarranQZTS+lFI
+         QtBUFFQaLTmJR2c1fFwfxthIJgUpKCDjIbYZs=
+In-Reply-To: <4AE9F3D2.8030502@nortel.com>
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Daniel Rodrick <daniel.rodrick@gmail.com>
+Content-Type: text/plain; charset="iso-8859-1"
+To: Chris Friesen <cfriesen@nortel.com>
 Cc: Linux Newbie <linux-newbie@vger.kernel.org>, Kernel Newbies <kernelnewbies@nl.linux.org>, linux-kernel@vger.kernel.org
 
-Hi, Daniel,
+Hi,
 
-I'm not a scheduler expert by any stretch, but I can try to play one on
-the net...
+>
+>> * A lower priority process will run only if there are no runnable
+>> processes in priority above it - this automatically means that all R=
+T
+>> processes get to run before non-RT processes.
+>
+> True for RT, not true for non-RT. =A0In the current scheduler the non=
+-RT
+> tasks are stored in a time-ordered structure rather than the 40
+> runqueues that were used before. =A0A non-RT task will run once it be=
+comes
+> the most "urgent" task based on its nice level, how much cpu time it
+> uses, and how long it's been since it ran last relative to other task=
+s
+> on the system.
 
-> I'm following the Robert Love's book and am trying to understand the
-> Linux O(1) scheduler. 
+One last question ... the nice value of a process never changes
+(unless done explicitly using nice system call), right?
 
-Note that the O(1) scheduler is no more; it was replaced by the
-completely fair scheduler in 2.6.23.  For the purposes of your
-questions things haven't changed a lot, but it's completely different
-internally.
+Thanks,
 
-> So here is my understanding. The kernel allows
-> the applications to specify two types of priorities
-> 
-> * Realtime Priorities: Range from 0 to 99
-> * Non-realtime priorities: Also called "nice" values range from -20 to +19.
-
-You're really talking about different scheduling classes.  There are
-two realtime classes (FIFO and RR), both of which trump the interactive
-class (SCHED_OTHER).
-
-> * A total of 140 priorities (100 RT + 40 non-RT) - these priorities
-> are static - do not change over time.
-
-Sort of, but realtime priorities are really an entirely different scale.
-
-> * A lower priority process will run only if there are no runnable
-> processes in priority above it - this automatically means that all RT
-> processes get to run before non-RT processes.
-
-That is true for the realtime classes.  SCHED_OTHER will give
-lower-priority processes a bit of time even in the presence of runnable
-high-priority processes.
-
->  * tasks on the same priority level are scheduled round robin
-
-SCHED_RR does that, SCHED_FIFO does not.  SCHED_OTHER is
-fairness-based, which has RR-like characteristics but is not quite the
-same.
-
-Hope that helps,
-
-jon
-
-Jonathan Corbet / LWN.net / corbet@lwn.net
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Dan
