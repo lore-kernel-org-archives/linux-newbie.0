@@ -1,41 +1,49 @@
-From: =?utf-8?B?TWljaGHFgiBOYXphcmV3aWN6?= <m.nazarewicz@samsung.com>
-Subject: Re: wake_up_interruptible
-Date: Wed, 12 May 2010 09:35:09 +0200
-Message-ID: <op.vck0ovk47p4s8u@pikus>
-References: <25990.28429.qm@web63403.mail.re1.yahoo.com>
+From: ratheesh k <ratheesh.ksz@gmail.com>
+Subject: linux process stack
+Date: Sat, 15 May 2010 14:41:09 +0530
+Message-ID: <AANLkTinGWVASo9TpS-zcfChdWziezqIZAbxpaxlXsYmw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <25990.28429.qm@web63403.mail.re1.yahoo.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:received:date:message-id
+         :subject:from:to:content-type;
+        bh=S+cwSkyw1QgFGT5pTOYbJch7EukwzzlsqyMxjnsJZAc=;
+        b=kDTBTJLYRV8XiXmoCeGOH8xom6EO//5VSWRaKrq9wGODqb4P4lsM+n0WeOomuQaufz
+         Nx9t+etEdESHj1RCjDlGs5Vy+7pJiLafivtLC1IX0mzxl52M08SnvqFUzeLkSx2+MfNd
+         sTZAGeEtLXiDw3Qh/oQ9iJU3z4Yi314ADsTjI=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="macroman"; format="flowed	delsp=yes"
-To: Fundu <fundu_1999@yahoo.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Tue, 11 May 2010 22:32:46 +0200, Fundu <fundu_1999@yahoo.com> wrote:
-> what happen when you call wake_up_interruptible and there are no task=
- waiting on that wait queue right then.
->
-> But say after some time a task comes along and start waiting (after t=
-he wake_up_interruptible is called).
-> Would that task be not wait at all because there was a pending wake u=
-p
+All ,
 
-It will be waiting for another wake up.
+I am beginner . Please see below my dobts
 
-> What i'm looking for is a mechanism where by any old wake if not acte=
-d upon are lost.
+1. All process and kenel thread has their own task_struct  structure
+and kernel mode stack . Kernel itself maintain its own stack .
 
-Semahore may be a good option.
 
---=20
-Best regards,                                        _     _
-| Humble Liege of Serenely Enlightened Majesty of  o' \,=3D./ `o
-| Computer Science,  Micha=C5=82 "mina86" Nazarewicz       (o o)
-+----[mina86*mina86.com]---[mina86*jabber.org]----ooO--(_)--Ooo--
+2 .Whenever a process ,say A , switch to kernel ( on system call )
+,registers will be stored in its own kernel mode stack ?
+
+
+3 . On interrupt , process  A  's process  context will be saved on
+process A 's own kernel mode stack ?c
+
+
+4 .Kernel thread will also use its  own kenel mode stack on interrupt  ?
+
+
+5 .Where is the SP ( stack pointer ) is saved  ?  How it it retrieved back ?
+
+
+Thanks,
+Ratheesh
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
