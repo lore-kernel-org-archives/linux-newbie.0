@@ -1,37 +1,16 @@
 From: "Ryan O'Neill" <ryan@bitlackeys.com>
-Subject: Fwd: persistent ramfs issue
-Date: Mon, 19 Jul 2010 11:01:35 -0700
-Message-ID: <AANLkTiklhOSAXaMR1Rm5a4tbFplLObahPgyAPCh0Kkjz@mail.gmail.com>
-References: <AANLkTikP1szEIZK4jw9sSgGa_0ojOMYk8MTsIsvH5a1a@mail.gmail.com>
-	<AANLkTilq-vCQux83WRzN18AbLi41-YlG-afCia3oLerm@mail.gmail.com>
+Subject: custom ram fs page cache issue
+Date: Mon, 19 Jul 2010 13:02:42 -0700
+Message-ID: <AANLkTikShttGrxfnVlbUPet1uo_5kBf3e5U3ShVmpuzP@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <AANLkTilq-vCQux83WRzN18AbLi41-YlG-afCia3oLerm@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
----------- Forwarded message ----------
-From: Ryan O'Neill <ryan@bitlackeys.com>
-Date: Mon, Jul 19, 2010 at 10:22 AM
-Subject: Fwd: persistent ramfs issue
-To: linux-kernel@vger.kernel.org
-
-
-Not sure how active fsdevel is so I forwarded my question along to you
-guys as well. Many thanks.
-
-
----------- Forwarded message ----------
-From: Ryan O'Neill <ryan@bitlackeys.com>
-Date: Mon, Jul 19, 2010 at 10:09 AM
-Subject: persistent ramfs issue
-To: linux-fsdevel@vger.kernel.org
-
-
-I have developed a file system, it is a virtual memory (RAM) file system
+I have developed a file system, it is a virtual memory file system
 with persistence -- the persistence essentially works by storing the
 fs data (from memory) into the slack space
 of ext3 files (We are working on CentOS 5.3 -- old I know). The
