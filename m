@@ -1,50 +1,44 @@
-From: ld puri <neoequal@gmail.com>
-Subject: State of outstanding command executing driver code during suspend()/resume().
-Date: Tue, 7 Sep 2010 10:30:28 -0600
-Message-ID: <AANLkTi=GiP+QZ-ZYvOLsq+J2Fi9E42R8ziOKgEDkeyoc@mail.gmail.com>
+From: Lalatendu Das <ldas4tux@gmail.com>
+Subject: Synchronizing the resume/suspend/remove routine with Driver's IO path
+Date: Tue, 7 Sep 2010 11:43:09 -0600
+Message-ID: <AANLkTikKKeESxOfzg-6zAXEG1BY-JyqFmXYoQodR8bfG@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-ide-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:mime-version:received:received:date:message-id
-         :subject:from:to:content-type:content-transfer-encoding;
-        bh=KArHtiIKcun9yjXt/hxT7W8gGOPLmw+T2xjtqvJQtGM=;
-        b=dsgWEtr42DaAFAIof7xHqzX3umbF29pngSDUsU91m43J3TMmBJ7sGL1EufsvIBR66G
-         udElHqYj1jm9oWPY3ZrXg/8s87Kvgtdk/m9EdsVR3YacL7otg3/Tv1niLfww4arl7dvR
-         jaKPi/FvO9vb8mF2rFva9kesEPrdzeaRd+AM4=
+         :subject:from:to:content-type;
+        bh=7Lp/0zznUwFbti45uibvnC80aZTNWZBFPb6vlLKEkjQ=;
+        b=japKzxmjVPSLD32kg90waiWMboBB3fKs9nZsIA/LldU9w5yDX3Xl/q2mijQNcmX1yT
+         qqx6+0DT8qR/yL8azx3eaE6lq9MzM0IZXMax6vc8EoQnCMmMdx+eZJwKZr83PlhH3f2Z
+         sRuVIr8/7fLEsOV8AqggsEGV/GgrSRAzeuB3E=
 Sender: linux-ide-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: linux-ide@vger.kernel.org, linux-newbie@vger.kernel.org, linux-pci@vger.kernl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org, linux-pci@vger.kernel.org, linux-ide@vger.kernel.org
 
 Hi All,
+I am newbie to Linux's power management subsystem. I saw a comment
+stating that the execution suspend()/ resume callback function can
+sleep.
 
-While browsing through current Linux Power management implementation
-wrt AHCI drivers, I stumbled upon following doubts.
+Say for example an AHCI driver is executing its suspend call back and
+just after shutting down the DMA engines / releasing all Block layer
+links, the suspend() call goes to sleep and the driver's IO path
+execution thread  woke up to execute. I assume this possible because
+both suspend() call path and driver';s IO execution path are
+independent and not synchronized.
 
-I assume=A0whenever=A0system wide=A0suspend (STR/hibernate) occurs, all=
- the
-process is=A0freeze=A0by the Kernel's PM=A0subsystem and it ensures the=
-re
-are no additional command can be issued to AHCI driver.=A0But it can be
-very much possible some commands are being executed within the AHCI
-driver.
+Doesn't the driver In such scenario may do some wrong memory reference
+which released by sleeping suspend() thread right?? or H/W access will
+return error even though the card is not removed or gone bad which is
+not desired ??
 
-If my understanding is correct suspend() will be called anytime for
-the AHCI driver. In other words, the invocation
-ahci_pci_device_suspend() from PCI=A0subsystem=A0won't wait for ahci
-driver to complete its outstanding command.
-The invocation of suspend(), resume() & remove() call backs from PCI
-subsystem are not=A0synchronized=A0with that driver's IO path is this
-correct ?
+Shouldn't we synchronize the driver and remove.suspend, resume() callbacks ?
 
-Does these outstanding command currently executed by driver will be los=
-t ?
+Please Let me know If i am gone wrong some where. Any pointers to read
+will be great.
 
-Moreover in resume() routine of AHCI driver, the controller is
-reinitialized (ahci_init_controller), then how system can restart the
-commands that are stopped during previous suspend() call.
-
-Thanks
-Das
+Thanks in advance.
+LD
