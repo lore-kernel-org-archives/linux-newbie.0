@@ -1,22 +1,22 @@
 From: Lalatendu Das <ldas4tux@gmail.com>
 Subject: Synchronizing the resume/suspend/remove routine with Driver's IO path
-Date: Tue, 7 Sep 2010 11:43:09 -0600
-Message-ID: <AANLkTikKKeESxOfzg-6zAXEG1BY-JyqFmXYoQodR8bfG@mail.gmail.com>
+Date: Tue, 7 Sep 2010 16:53:36 -0600
+Message-ID: <AANLkTi=OpApRZ8ThnGUPGfHd-SB2aL_M_p6J231NNz7m@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-ide-owner@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=domainkey-signature:mime-version:received:received:date:message-id
          :subject:from:to:content-type;
-        bh=7Lp/0zznUwFbti45uibvnC80aZTNWZBFPb6vlLKEkjQ=;
-        b=japKzxmjVPSLD32kg90waiWMboBB3fKs9nZsIA/LldU9w5yDX3Xl/q2mijQNcmX1yT
-         qqx6+0DT8qR/yL8azx3eaE6lq9MzM0IZXMax6vc8EoQnCMmMdx+eZJwKZr83PlhH3f2Z
-         sRuVIr8/7fLEsOV8AqggsEGV/GgrSRAzeuB3E=
-Sender: linux-ide-owner@vger.kernel.org
+        bh=v+fslyef5sXFm6YO7vtQQriogrIHFcSPwqo10Y42yeo=;
+        b=FJ/+AOsgiCX5Yl2sw+2Q/goI30xdjntuSg1j+2uQQbGRPrBmo1GytSM2ileR8xQVsv
+         dwNYKt5FNSSnuSUQhQYzl6AZj+/e68aPg1XNhVGT6PHu4ZwzjJYq0rkKUjxbH0A0vhIB
+         R7NwfuYpPqmE3/N8XghLNLAZeiJ0Ms7R+Mm0M=
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, linux-pci@vger.kernel.org, linux-ide@vger.kernel.org
+To: linux-newbie@vger.kernel.org
 
 Hi All,
 I am newbie to Linux's power management subsystem. I saw a comment
@@ -41,4 +41,8 @@ Please Let me know If i am gone wrong some where. Any pointers to read
 will be great.
 
 Thanks in advance.
-LD
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
