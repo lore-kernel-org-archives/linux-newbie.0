@@ -1,46 +1,28 @@
-From: Lalatendu Das <ldas4tux@gmail.com>
-Subject: Synchronizing the resume/suspend/remove routine with Driver's IO path
-Date: Tue, 7 Sep 2010 16:53:36 -0600
-Message-ID: <AANLkTi=OpApRZ8ThnGUPGfHd-SB2aL_M_p6J231NNz7m@mail.gmail.com>
+From: Rajat Jain <rajatjain@juniper.net>
+Subject: mmap confusion
+Date: Mon, 20 Sep 2010 11:03:05 +0530
+Message-ID: <220544EE49E5824C9DE242B5ACE58C300930E512@EMBX01-BNG.jnpr.net>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:received:date:message-id
-         :subject:from:to:content-type;
-        bh=v+fslyef5sXFm6YO7vtQQriogrIHFcSPwqo10Y42yeo=;
-        b=FJ/+AOsgiCX5Yl2sw+2Q/goI30xdjntuSg1j+2uQQbGRPrBmo1GytSM2ileR8xQVsv
-         dwNYKt5FNSSnuSUQhQYzl6AZj+/e68aPg1XNhVGT6PHu4ZwzjJYq0rkKUjxbH0A0vhIB
-         R7NwfuYpPqmE3/N8XghLNLAZeiJ0Ms7R+Mm0M=
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: "kernelnewbies@nl.linux.org" <kernelnewbies@nl.linux.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+Cc: "rajat.noida.india@gmail.com" <rajat.noida.india@gmail.com>
 
-Hi All,
-I am newbie to Linux's power management subsystem. I saw a comment
-stating that the execution suspend()/ resume callback function can
-sleep.
+Hello List,
 
-Say for example an AHCI driver is executing its suspend call back and
-just after shutting down the DMA engines / releasing all Block layer
-links, the suspend() call goes to sleep and the driver's IO path
-execution thread  woke up to execute. I assume this possible because
-both suspend() call path and driver';s IO execution path are
-independent and not synchronized.
+I wanted to understand how the mmap works. I mean, not from the kernel APIs or data structures perspective, but from the HW perspective. I understand that the use case is this: typically applications will mmap() a file (a device file or any other file) into user space, and then use direct pointers to read / write to that file. So as I understand, after the call to mmap, the compiler will generate simple load and store instructions fo any reads / writes into that file. What I'm trying to understand is that how is it ensured that those load & store instructions get translated into file reads/ writes. I think there are two cases:
 
-Doesn't the driver In such scenario may do some wrong memory reference
-which released by sleeping suspend() thread right?? or H/W access will
-return error even though the card is not removed or gone bad which is
-not desired ??
+1) If the backing file is /dev/mem or a device file, then at the time of mmap(), the page table entries / TLB entries are set up such that the virtual address in the user space, maps to the actual physical address desired. And the thus job is done. This case is clear.
 
-Shouldn't we synchronize the driver and remove.suspend, resume() callbacks ?
+2) The other case is that when the file is actually a datafile present in a file system lets say on a SATA disk. Now, for each load / store in the application, some driver code needs to trigger that will program the SATA controller registers and do n number of thinks to initiate the diska read / write transaction. How is this achieved? Because application is not making any System calls. Its just having load / store instructions.
 
-Please Let me know If i am gone wrong some where. Any pointers to read
-will be great.
+Thanks,
 
-Thanks in advance.
+Rajat Jain
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
