@@ -1,68 +1,175 @@
-From: =?utf-8?B?TWljaGHFgiBOYXphcmV3aWN6?= <m.nazarewicz@samsung.com>
+From: Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>
 Subject: Re: mmap confusion
-Date: Mon, 20 Sep 2010 11:14:21 +0200
-Message-ID: <op.vjbql71x7p4s8u@pikus>
+Date: Mon, 20 Sep 2010 17:55:11 -0400
+Message-ID: <AANLkTi=2rUg1DOsTsMB4Rx-6oz2OhNqySCbGF48OmEO4@mail.gmail.com>
 References: <220544EE49E5824C9DE242B5ACE58C300930E512@EMBX01-BNG.jnpr.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-reply-to: <220544EE49E5824C9DE242B5ACE58C300930E512@EMBX01-BNG.jnpr.net>
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="macroman"; format="flowed	delsp=yes"
-To: "kernelnewbies@nl.linux.org" <kernelnewbies@nl.linux.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, Rajat Jain <rajatjain@juniper.net>
-Cc: "rajat.noida.india@gmail.com" <rajat.noida.india@gmail.com>
+Content-Type: multipart/alternative; boundary=0016364c73717170070490b7f768
+Return-path: <kernelnewbies-bounce@nl.linux.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:received:in-reply-to
+         :references:date:message-id:subject:from:to:cc:content-type;
+        bh=hJiqAQQT//Kuhv670U/fRs/NQrHKHbgtxIm161OAQec=;
+        b=k+TuQOAxlOHrxwxY+18YSzyJumbcEPZwZr96sHaxmQLXAIQ/Zg3LDfFpmVdyMgLnbM
+         Tg8BqmxUGRSfXlHeXDGE1PWlH20xWJIdrEjIjrDwHtCi3K1DvrfGFn/Cno9rZSXnD6Q0
+         /DNn2DTqWGDybumyZrvixJpNB3lHxK44o30/U=
+In-Reply-To: <220544EE49E5824C9DE242B5ACE58C300930E512@EMBX01-BNG.jnpr.net>
+Sender: kernelnewbies-bounce@nl.linux.org
+Errors-to: kernelnewbies-bounce@nl.linux.org
+List-help: <mailto:ecartis@nl.linux.org?Subject=help>
+List-unsubscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=unsubscribe>
+List-software: Ecartis version 1.0.0
+List-Id: <linux-newbie.vger.kernel.org>
+List-subscribe: <mailto:kernelnewbies-request@nl.linux.org?Subject=subscribe>
+List-owner: <mailto:ecartis-owner@nl.linux.org>
+List-post: <mailto:kernelnewbies@nl.linux.org>
+List-archive: <http://mail.nl.linux.org/kernelnewbies/>
+To: Rajat Jain <rajatjain@juniper.net>
+Cc: "kernelnewbies@nl.linux.org" <kernelnewbies@nl.linux.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, "rajat.noida.india@gmail.com" <rajat.noida.india@gmail.com>
 
-On Mon, 20 Sep 2010 07:33:05 +0200, Rajat Jain <rajatjain@juniper.net> =
-wrote:
+--0016364c73717170070490b7f768
+Content-Type: text/plain; charset=ISO-8859-1
 
-> 1) If the backing file is /dev/mem or a device file, then at the time=
- of mmap(),
-> the page table entries / TLB entries are set up such that the virtual=
- address in
-> the user space, maps to the actual physical address desired. And the =
-thus job
-> is done. This case is clear.
+Hi Rajat,
 
-Page table entries don't need to be set immediately but essentially tha=
-t is the
-case.
+      mmap is used to map file(devices) or shared memory to process virtual
+address.
 
-> 2) The other case is that when the file is actually a datafile presen=
-t in a file
-> system lets say on a SATA disk. Now, for each load / store in the app=
-lication,
-> some driver code needs to trigger that will program the SATA controll=
-er registers
-> and do n number of thinks to initiate the diska read / write transact=
-ion. How is
-> this achieved? Because application is not making any System calls. It=
-s just having
-> load / store instructions.
+      So, for any device or file, which you want to map, everything is
+treated as file. So, in all cases you are trying to avoid file system.
+Typically read(),write() all these functions are generic functions provided
+by filesystem for a uniform access to all devices and files hiding the
+details.
 
-When a "normal" file is mapped no page entries are set.  As an effect, =
-when user
-space refers to the mapped area a page fault is triggered.  This is han=
-dled by
-kernel which reads a page from the disk and adds a proper page table en=
-try.
+So, when you are using mmap, you are excluding file system and directly
+accessing memory as if it is within process address space.
+Typically when you map certain virtual address of process, depending on
+requested memory, those size pages are allocated to the calling process.
 
-On writes, such a page is marked as dirty (either CPU supports that dir=
-ectly,
-or kernel simulates it by setting page read-only so that on write an pa=
-ge fault
-is generated again).  When process terminates all dirty pages are writt=
-en back to
-disk.
+Now depending upon what you have mapped to, the OS is going to perform
+operations on that entity for the memory addressed in store and load
+instructions.  This entity can be device, file stored on IDE, shared memory
+segment across networks. So, this also an abstraction provided by OS. ok.
 
---=20
-Best regards,                                        _     _
-| Humble Liege of Serenely Enlightened Majesty of  o' \,=3D./ `o
-| Computer Science,  Micha=C5=82 "mina86" Nazarewicz       (o o)
-+----[mina86*mina86.com]---[mina86*jabber.org]----ooO--(_)--Ooo--
+Regards,
+Sri.
+
+On Mon, Sep 20, 2010 at 1:33 AM, Rajat Jain <rajatjain@juniper.net> wrote:
+
+> Hello List,
+>
+> I wanted to understand how the mmap works. I mean, not from the kernel APIs
+> or data structures perspective, but from the HW perspective. I understand
+> that the use case is this: typically applications will mmap() a file (a
+> device file or any other file) into user space, and then use direct pointers
+> to read / write to that file. So as I understand, after the call to mmap,
+> the compiler will generate simple load and store instructions fo any reads /
+> writes into that file. What I'm trying to understand is that how is it
+> ensured that those load & store instructions get translated into file reads/
+> writes. I think there are two cases:
+>
+> 1) If the backing file is /dev/mem or a device file, then at the time of
+> mmap(), the page table entries / TLB entries are set up such that the
+> virtual address in the user space, maps to the actual physical address
+> desired. And the thus job is done. This case is clear.
+>
+> 2) The other case is that when the file is actually a datafile present in a
+> file system lets say on a SATA disk. Now, for each load / store in the
+> application, some driver code needs to trigger that will program the SATA
+> controller registers and do n number of thinks to initiate the diska read /
+> write transaction. How is this achieved? Because application is not making
+> any System calls. Its just having load / store instructions.
+>
+> Thanks,
+>
+> Rajat Jain
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
+
+
+
+-- 
+Regards,
+Sri.
+
+--0016364c73717170070490b7f768
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Hi Rajat,<div><br></div><div>=A0=A0 =A0 =A0mmap is used to map file(devices=
+) or shared memory to process virtual address.</div><div>=A0=A0</div><div>=
+=A0=A0 =A0 =A0So, for any device or file, which you want to map, everything=
+ is treated as file. So, in all cases you are trying to avoid file system. =
+Typically read(),write() all these functions are generic functions provided=
+ by filesystem for a uniform access to all devices and files hiding the det=
+ails.</div>
+<div><br></div><div>So, when you are using mmap, you are excluding file sys=
+tem and directly accessing memory as if it is within process address space.=
+=A0</div><div>Typically when you map certain virtual address of process, de=
+pending on requested memory, those size pages are allocated to the calling =
+process.</div>
+<div><br></div><div>Now depending upon what you have mapped to, the OS is g=
+oing to perform operations on that entity for the memory addressed in store=
+ and load instructions. =A0This entity can be device, file stored on IDE, s=
+hared memory segment across networks. So, this also an abstraction provided=
+ by OS. ok.</div>
+<div><br></div><div>Regards,</div><div>Sri.<br><br><div class=3D"gmail_quot=
+e">On Mon, Sep 20, 2010 at 1:33 AM, Rajat Jain <span dir=3D"ltr">&lt;<a hre=
+f=3D"mailto:rajatjain@juniper.net">rajatjain@juniper.net</a>&gt;</span> wro=
+te:<br>
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">Hello List,<br>
+<br>
+I wanted to understand how the mmap works. I mean, not from the kernel APIs=
+ or data structures perspective, but from the HW perspective. I understand =
+that the use case is this: typically applications will mmap() a file (a dev=
+ice file or any other file) into user space, and then use direct pointers t=
+o read / write to that file. So as I understand, after the call to mmap, th=
+e compiler will generate simple load and store instructions fo any reads / =
+writes into that file. What I&#39;m trying to understand is that how is it =
+ensured that those load &amp; store instructions get translated into file r=
+eads/ writes. I think there are two cases:<br>
+
+<br>
+1) If the backing file is /dev/mem or a device file, then at the time of mm=
+ap(), the page table entries / TLB entries are set up such that the virtual=
+ address in the user space, maps to the actual physical address desired. An=
+d the thus job is done. This case is clear.<br>
+
+<br>
+2) The other case is that when the file is actually a datafile present in a=
+ file system lets say on a SATA disk. Now, for each load / store in the app=
+lication, some driver code needs to trigger that will program the SATA cont=
+roller registers and do n number of thinks to initiate the diska read / wri=
+te transaction. How is this achieved? Because application is not making any=
+ System calls. Its just having load / store instructions.<br>
+
+<br>
+Thanks,<br>
+<br>
+Rajat Jain<br>
+<font color=3D"#888888">--<br>
+To unsubscribe from this list: send the line &quot;unsubscribe linux-newbie=
+&quot; in<br>
+the body of a message to <a href=3D"mailto:majordomo@vger.kernel.org">major=
+domo@vger.kernel.org</a><br>
+More majordomo info at =A0<a href=3D"http://vger.kernel.org/majordomo-info.=
+html" target=3D"_blank">http://vger.kernel.org/majordomo-info.html</a><br>
+Please read the FAQ at <a href=3D"http://www.linux-learn.org/faqs" target=
+=3D"_blank">http://www.linux-learn.org/faqs</a><br>
+</font></blockquote></div><br><br clear=3D"all"><br>-- <br>Regards,<div>Sri=
+.</div><br>
+</div>
+
+--0016364c73717170070490b7f768--
+
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+To unsubscribe from this list: send an email with
+"unsubscribe kernelnewbies" to ecartis@nl.linux.org
+Please read the FAQ at http://kernelnewbies.org/FAQ
+
