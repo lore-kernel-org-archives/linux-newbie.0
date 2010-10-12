@@ -1,36 +1,34 @@
-From: Prasad Joshi <prasadjoshi124@gmail.com>
-Subject: New inode allocation
-Date: Tue, 21 Sep 2010 14:59:05 +0530
-Message-ID: <AANLkTi=8rfHGoVY93kyOdb0qXO9xTFm-1e0xC4a7bo8G@mail.gmail.com>
+From: Hatem Nassrat <hnassrat@gmail.com>
+Subject: Manipulating Environment Variables of an Already running process
+Date: Tue, 12 Oct 2010 17:05:42 -0300
+Message-ID: <AANLkTikXvokjr9NGRRpPRQg0ci6wv+QCytR5_07x+Sag@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:received:date:message-id
-         :subject:from:to:content-type;
-        bh=3ILNM4pJJ2bD4EzMuQUbm7Du9ECVKP1srPfisY2/ywM=;
-        b=XBDRGJZmZohhpOJ9mCi9caUWThQxCKe25TzW8tHhBSfGXOnQpQHxHFstD10gdRpYPB
-         v+MZu3m2yhx+tOn0u9OC1/ZhYaRuAsmnpII80wNTH29hRWjmdThjVl9WDn1MjI27/jKY
-         sOnFsquC7TD3jUl+/pN9JnxEboI51qGhcnaeI=
+        h=domainkey-signature:received:mime-version:received:from:date
+         :message-id:subject:to:content-type;
+        bh=N+x+hl5I3GFIVfeB7cTaK/qTTxKLhtf+BnkbgKTo/44=;
+        b=kaL2gLvo/J+NDFAWqsNCKLjDUMhS0lq82cZ1wA7KhS4NhM8gBJnPbs4QylbrIk9Om5
+         Jg7cs4+o8emNyyqPOICezKpcXnozmq0d+reqB3DStqGZn+CUm1y+2RhPH27jmQPf6U8Y
+         kIeDwOx39clk3aesQ53ayjSepdrOigetTTAxw=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi All,
+Is it possible to, manipulate an environment variables of an already
+running process (using a current linux distro, and not a self hacked
+kernel)?
 
-I am bit confused with the use of iget_locked() and new_inode().
+A usecase, changing the PS1 environement var of an already running
+bash process from another bash process.
 
-I am implementing mknod operations, which function should I use to
-allocate a new inode?
-Do I need to ensure each inode allocated has state I_NEW?
-When should I use new_inode() and when to use iget_locked()?
+Any ideas?
 
-Please advise?
-
-Thanks and Regards,
-Prasad
+-- 
+Hatem Nassrat
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
