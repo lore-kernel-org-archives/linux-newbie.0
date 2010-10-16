@@ -1,36 +1,42 @@
-From: Hatem Nassrat <hnassrat@gmail.com>
-Subject: Re: Manipulating Environment Variables of an Already running process
-Date: Wed, 13 Oct 2010 22:21:56 -0300
-Message-ID: <AANLkTi=butQPXUjQWohQjN9cqki1va5jNwr2PwegAx3Y@mail.gmail.com>
-References: <AANLkTikXvokjr9NGRRpPRQg0ci6wv+QCytR5_07x+Sag@mail.gmail.com> <AANLkTinv0hs7uLa2c-NbgxQr9q4_RuG19rU27qXc60G=@mail.gmail.com>
+From: "Fred ." <eldmannen@gmail.com>
+Subject: How to change delayed ACKs?
+Date: Sat, 16 Oct 2010 23:57:30 +0200
+Message-ID: <AANLkTi=AW6NMHkjkbFF=jUCc7YD3Z2T9VatpR5aeh9LW__14662.6216861934$1287266267$gmane$org@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:received:mime-version:received:in-reply-to
-         :references:from:date:message-id:subject:to:cc:content-type;
-        bh=L861CvZQQ6xhgjaa20KAO5p9yxIVcF6m7ZSHnmkmDok=;
-        b=fBmWKslyNVRjR/0lGIAF2gwFnH7dy9PFcvRC2wgemTIlgs/qXGbzvnet9mWfAnUHS2
-         Wj1ApMG81ylOMyAGkcVtQvNrGL7J8+0+wAjyW8ItfawmIPeGy7d+G9zr2cQhXXHK0ucX
-         zxs0ompRh7I/pk4WY89AVgfSJLuS12A36qTFA=
-In-Reply-To: <AANLkTinv0hs7uLa2c-NbgxQr9q4_RuG19rU27qXc60G=@mail.gmail.com>
+        h=domainkey-signature:mime-version:received:received:date:message-id
+         :subject:from:to:content-type;
+        bh=b+ugcNCvmnzd4ieEW27ppTPlzOi3AZrLTrF8PmrmO6I=;
+        b=LhL7qqmt+/jGvu+WdtBhn0YK9UoYYykSMJqD2NZzM5l9cbcIkDrspbuLTXLWSCbIHr
+         c8cv8hNDQ5oWffGmWn0ClMPdGzOd+qiuactRk5z8Jxlz8Y2+nnXZi+6o0nnA/6H+nK95
+         b4Ug57MQNgFd4xWXz+OoY97xyuXKS3KtnP5D4=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Joel Fernandes <agnel.joel@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+To: linux-net@vger.kernel.org
 
-On Wed, Oct 13, 2010 at 7:40 PM, Joel Fernandes <agnel.joel@gmail.com> wrote:
-> You could probably do it with ptrace(2) with request = PTRACE_POKEDATA
+I play online games.
+Someone told me about Leatrix Latency Fix.
+http://www.wowinterface.com/downloads/info13581-LeatrixLatencyFix.html
 
-I think thats it! I have been playing around with gdb thanks to this
-hint. I have attached to a running bash terminal and trying to mess
-with it, not getting very far but I think this is how it can be done
-:)
+ACKs are delayed. The latency fix works by changing setting to
+decrease that delay.
 
--- 
-Hatem Nassrat
+On Windows it modifies 'TCPAckFrequency' in the registry.
+
+On FreeBSD and Mac OS X;
+sudo sysctl -w net.inet.tcp.delayed_ack=0
+
+This key doesn't seem to exist on Linux.
+error: "net.inet.tcp.delayed_ack" is an unknown key
+
+Is there any way to reduce the delay of delayed ACKs in order to
+increase performance in online gaming?
+
+P.S im not subscribed to mailinglist
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
