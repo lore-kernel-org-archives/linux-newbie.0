@@ -1,42 +1,57 @@
-From: "Fred ." <eldmannen@gmail.com>
-Subject: How to change delayed ACKs?
-Date: Sat, 16 Oct 2010 23:57:30 +0200
-Message-ID: <AANLkTi=AW6NMHkjkbFF=jUCc7YD3Z2T9VatpR5aeh9LW__14662.6216861934$1287266267$gmane$org@mail.gmail.com>
+From: nidhi mittal hada <nidhimittal19@gmail.com>
+Subject: beagle-board -high speed data acquisition from - adc --
+Date: Sun, 5 Dec 2010 12:49:31 +0530
+Message-ID: <AANLkTik0SRGzo=nbs1z_9QyTwkYGvMQUK_6ShskKFe9u@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:mime-version:received:received:date:message-id
-         :subject:from:to:content-type;
-        bh=b+ugcNCvmnzd4ieEW27ppTPlzOi3AZrLTrF8PmrmO6I=;
-        b=LhL7qqmt+/jGvu+WdtBhn0YK9UoYYykSMJqD2NZzM5l9cbcIkDrspbuLTXLWSCbIHr
-         c8cv8hNDQ5oWffGmWn0ClMPdGzOd+qiuactRk5z8Jxlz8Y2+nnXZi+6o0nnA/6H+nK95
-         b4Ug57MQNgFd4xWXz+OoY97xyuXKS3KtnP5D4=
+        h=domainkey-signature:received:mime-version:received:from:date
+         :message-id:subject:to:content-type;
+        bh=x2U55DFprGeNiVpMpzQTvvUFl4iauBheJheDhDs3jpo=;
+        b=rgWEwqKCfWTrWS6lfjI3DiSy65cI7tj0qgROXUEmDWx5PXhG9DHGm+i+kJ+htZJrbD
+         g4H8VAkyFfa+KNyMO4wxeWHFBq+GUrAxGXAu/VGY5PeI5RRhqKY1tq2H1jDDSMiRCUcv
+         J7ddOjfrXntTBTlrQB+rJ+btJvDud54kzgTIU=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-net@vger.kernel.org
+To: Kernelnewbies <kernelnewbies@nl.linux.org>, linux-arm-kernel@lists.arm.linux.org.uk, linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org, mohit hada <mohit.soc@gmail.com>, vm.r
 
-I play online games.
-Someone told me about Leatrix Latency Fix.
-http://www.wowinterface.com/downloads/info13581-LeatrixLatencyFix.html
+Hello all
 
-ACKs are delayed. The latency fix works by changing setting to
-decrease that delay.
+Actually
+I want to use a parallel interface ADC with the Beagle Board with 40Msps.
+I want to take samples using 12 bit ADC and acquire it for say 100ms.
 
-On Windows it modifies 'TCPAckFrequency' in the registry.
+My input signal is 3 V p-p .
 
-On FreeBSD and Mac OS X;
-sudo sysctl -w net.inet.tcp.delayed_ack=0
 
-This key doesn't seem to exist on Linux.
-error: "net.inet.tcp.delayed_ack" is an unknown key
+"Actually in my application after taking sample I want to calculate
+4096 point FFT using it.
+During this time i don't require to acquire input signal. Then the
+calculated data has to
+be passed to a PC using on board USB or UART interface.
+Some more complex operations are also there such as correlations and
+Principal Component analysis."
 
-Is there any way to reduce the delay of delayed ACKs in order to
-increase performance in online gaming?
+Please suggest whether beagle board is apt for such project.
 
-P.S im not subscribed to mailinglist
+My major concern is high speed acquisition using linux dvsdk from
+Texas Instruments or any linux on beagleboard
+
+
+Please help
+
+--
+Thanks & Regards
+Nidhi Mittal Hada
+Scientific officer D
+Computer Division
+Bhabha Atomic Research Center
+Mumbai
+
+http://nidhi-searchingmyself.blogspot.com/
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
