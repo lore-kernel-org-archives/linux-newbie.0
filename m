@@ -1,99 +1,61 @@
-From: Mancausoft <andreamilazzo@mancausoft.org>
-Subject: devfs Gpio and interrupt
-Date: Wed, 9 Feb 2011 15:22:30 +0100
-Message-ID: <20110209142230.GB10103@homer>
+From: Jean-Francois Dagenais <jeff.dagenais@gmail.com>
+Subject: PCI express late appearance on bus
+Date: Fri, 11 Mar 2011 11:52:55 -0500
+Message-ID: <1299862375.8754.5.camel@jfddesk>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="h31gzZEtNLTqOjlF"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:subject:from:to:content-type:date:message-id
+         :mime-version:x-mailer:content-transfer-encoding;
+        bh=4KbMo1O48vBzhL2qS+PXnrtMXEDaJanxOXvLv1rldWM=;
+        b=PmOCZBSS2KAUP6KwPwNNMhCSm6rMLQtow0N0DqgLbDe7yklvizrJntR7f1erN0cG0B
+         EYNIKBl3D5IFXEhot6aAbVAFGSXb55oeYeOYIpuLuqaKaohjYkxs6UK1zV+G2JO6GV/Z
+         j+EPAvNcHxQGGTP3JsmZ6hOPXbh4tMK7WAbAU=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 To: linux-newbie@vger.kernel.org
 
+Hi all,
 
---h31gzZEtNLTqOjlF
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Under the most recent linux kernel, we are using intel chipset COM
+modules (kontron and other OEMs probably) as the computer part of our
+products. An FPGA device is connected to 4 lanes of PCI express. Right
+now the FPGA gets programmed by a flash PROM at power up, so the BIOS
+enumerates it initially.
 
-I read gpio.txt in Documentation of kernel and try to use it.
+Since we don't need the device at boot time, I want to get rid of the
+PROM and program the FPGA using SPI from the CPU later during the boot
+process, i.e. after user-space init, perhaps when I modprobe my driver
+module, in module_init... This would mean that at BIOS PCI enumeration,
+the device would be dead on the bus.
 
-I use:
+I was thinking of the hotplug feature of PCI express to get the PCI
+subsystem to suddenly declare the presence of the device. Or perhaps
+after I program the FPGA I would poke something in the PCI subsystem to
+make it enumerate the PCI config space again?
 
-# echo 13 > /sys/class/gpio/export
-# echo in > /root/tasto1/direction=20
-# cat /root/tasto1/direction
-in
+Some things to consider:
+- our PCIe device is a bus master, we use DMAR through the vt-d IOMMU to
+create large chunk of device side contiguous addresses DMA area on our
+current product (will do without for our next product)
+- We are considering the latest Atom E6xx and it's fellow chipset and
+perhaps uEFI for our next product. Does the firmware necessarily need to
+be hotplug aware or can everything be controlled from linux? Do I even
+have to worry about this?
+- The card would obviously always be physically connected (closed
+casing), so I guess some pins on PCI Express bus would have to be
+asserted/deasserted to trigger a presence detect once the FPGA
+programming is done perhaps?
 
-# cat /root/tasto1/value=20
-1
+Are there examples of other device drivers in the kernel that do
+something similar? Any pointers are appreciated.
 
-when the button is pressed:
-# cat /root/tasto1/value=20
-0
+Thanks in advance
+/jfd
 
-# cat /root/tasto1/edge=20
-none
-# echo both > /root/tasto1/edge=20
-
-# cat /sys/kernel/debug/gpio=20
-[...]
- B5 gpio-13  (sysfs       ) in  hi irq-77 edge-both
-[...]
-
-# cat /proc/irq/77/spurious p
-count 15
-unhandled 0
-last_unhandled 0 ms
-cat: p: No such file or directory
-Ture:~# cat /proc/irq/77/spurious=20
-count 15
-unhandled 0
-last_unhandled 0 ms
-
-
-I try the follow code in a while (1):
-
-// /root/tasto1 is a symbolic link to /sys/class/gpio/gpio13/
-
-pfd.fd =3D open("/root/tasto1/value", O_RDONLY);
-pfd.events =3D POLLPRI | POLLERR;=20
-
-//ready =3D poll(&pfd, 1, -1);=20
-ready =3D poll(&pfd, 1, 100000);=20
-
-lseek (pfd.fd, 0, SEEK_SET);
-
-val =3D read(pfd.fd, buf, 254);
-//the output are: 1, 10, 10
-printf ("%d, %d, %d\n", ready, pfd.revents, pfd.events);
-
-printf ("%d, %s\n", val, buf );
-
-close(pfd.fd);
-
-But it don't wait for an edge but they exit immediatly.=20
-Why? where is the problem?
-
---=20
-Mancausoft - http://www.mancausoft.org/
-GPG key: B53F90F2
-
---h31gzZEtNLTqOjlF
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-Content-Disposition: inline
-
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.10 (GNU/Linux)
-
-iEYEARECAAYFAk1SoyYACgkQ2D/gwrU/kPK/4ACgpCAWfWTp8X63IeN+Mr/2oE6v
-PP4AniO9mCDf/2qpE9jtx71L5Sv0XMUb
-=GPtC
------END PGP SIGNATURE-----
-
---h31gzZEtNLTqOjlF--
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
