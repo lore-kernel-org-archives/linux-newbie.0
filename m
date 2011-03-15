@@ -1,63 +1,45 @@
-From: Jean-Francois Dagenais <jeff.dagenais@gmail.com>
-Subject: PCI express late appearance on bus
-Date: Fri, 11 Mar 2011 11:52:55 -0500
-Message-ID: <1299862375.8754.5.camel@jfddesk>
+From: Aneesh Bhasin <contact.aneesh@gmail.com>
+Subject: smap output - unnamed entries and heap
+Date: Tue, 15 Mar 2011 14:31:50 +0530
+Message-ID: <AANLkTik3N5j74eWastminNZLevPqoSCEiVCrX1vP66_k@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=domainkey-signature:subject:from:to:content-type:date:message-id
-         :mime-version:x-mailer:content-transfer-encoding;
-        bh=4KbMo1O48vBzhL2qS+PXnrtMXEDaJanxOXvLv1rldWM=;
-        b=PmOCZBSS2KAUP6KwPwNNMhCSm6rMLQtow0N0DqgLbDe7yklvizrJntR7f1erN0cG0B
-         EYNIKBl3D5IFXEhot6aAbVAFGSXb55oeYeOYIpuLuqaKaohjYkxs6UK1zV+G2JO6GV/Z
-         j+EPAvNcHxQGGTP3JsmZ6hOPXbh4tMK7WAbAU=
-Sender: linux-newbie-owner@vger.kernel.org
+        h=domainkey-signature:mime-version:from:date:message-id:subject:to
+         :content-type;
+        bh=K+5V3hLIz63hnkCEf4lswCJpa0r2Op29ekM9M5C6bGE=;
+        b=luBc/uSqYtzlWezMKwA4XFVvEjIm7eVxtH4xc/f24CafDjd+wq33ClypOi4GH7V/kg
+         UvmAdzy8G4sBZHHEt82tWgjw485T2hFSYgvuEWJBhwxtgqMQ48Kcr7VKJsdt1YTJJ0MT
+         WlyHghvLgwoXcRg99VX04SPN3EzJ3T8Yd+TW4=
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>
 
-Hi all,
+Hi All,
 
-Under the most recent linux kernel, we are using intel chipset COM
-modules (kontron and other OEMs probably) as the computer part of our
-products. An FPGA device is connected to 4 lanes of PCI express. Right
-now the FPGA gets programmed by a flash PROM at power up, so the BIOS
-enumerates it initially.
+My apologies if this is not the right place for these type of
+questions - I do not know of a better place to ask this.
 
-Since we don't need the device at boot time, I want to get rid of the
-PROM and program the FPGA using SPI from the CPU later during the boot
-process, i.e. after user-space init, perhaps when I modprobe my driver
-module, in module_init... This would mean that at BIOS PCI enumeration,
-the device would be dead on the bus.
+I am trying to take out some memory figures from the /proc/<pid>/smaps
+interface (linux v2.6.35). However, I could not find what do the
+entries that have no name associated to them (no library path or
+binary path with these entries) mean. So, I wrote a test C program
+that allocates 100MB of memory (using malloc) and then writes to it in
+chunks of 10MB. I could see that the 'Size' and 'RSS' of one of the
+unnamed entries was increasing in accordance with the code, but there
+were several other such unnamed sections too - is there a way to know
+what and where do they come from.
 
-I was thinking of the hotplug feature of PCI express to get the PCI
-subsystem to suddenly declare the presence of the device. Or perhaps
-after I program the FPGA I would poke something in the PCI subsystem to
-make it enumerate the PCI config space again?
+Also, I could see that for some process the smap interface was showing
+a '[heap]' entry but not for all - e.g. for my above test case, there
+was no '[heap]' entry, although I assumed the malloc should have
+reflected in the [heap]. Can someone please tell me (or point me in
+the right direction) why is heap entry there only for some processes ?
 
-Some things to consider:
-- our PCIe device is a bus master, we use DMAR through the vt-d IOMMU to
-create large chunk of device side contiguous addresses DMA area on our
-current product (will do without for our next product)
-- We are considering the latest Atom E6xx and it's fellow chipset and
-perhaps uEFI for our next product. Does the firmware necessarily need to
-be hotplug aware or can everything be controlled from linux? Do I even
-have to worry about this?
-- The card would obviously always be physically connected (closed
-casing), so I guess some pins on PCI Express bus would have to be
-asserted/deasserted to trigger a presence detect once the FPGA
-programming is done perhaps?
+Thanks in advance for any help..
 
-Are there examples of other device drivers in the kernel that do
-something similar? Any pointers are appreciated.
-
-Thanks in advance
-/jfd
-
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Regards,
+Aneesh Bhasin
