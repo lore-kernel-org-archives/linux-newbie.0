@@ -1,83 +1,44 @@
-From: Mancausoft <andreamilazzo@mancausoft.org>
-Subject: Re: devfs Gpio and interrupt
-Date: Tue, 22 Mar 2011 16:01:45 +0100
-Message-ID: <20110322150145.GA14798@homer>
-References: <20110209142230.GB10103@homer>
+From: ratheesh kannoth <ratheesh.ksz@gmail.com>
+Subject: /proc/kallsyms
+Date: Sun, 17 Apr 2011 12:09:44 +0530
+Message-ID: <BANLkTimgRBVi4xovbGSS1E7a7ArFAsSsAg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-	protocol="application/pgp-signature"; boundary="HcAYCG3uE/tztfnV"
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20110209142230.GB10103@homer>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:date:message-id:subject:from:to
+         :content-type;
+        bh=iUEU56SJu5CXZCLVkiWmOQFnIG+PUOMlRNOlVthWeYA=;
+        b=ClotsWKd202NVRlYvRjLIzA7xlUDSk8dYGCNZpBRu/zATwHiKJzEhqAXUAxPEVnIIc
+         guEB6uTJ/la0bq7TyspddkY+QZIxrkqS7jCLYKhLtODDEsY+jPe6gRj2MEIiOFKnMTqz
+         I9sUrJhAx2T97OtC3bL2V+rngqYs81UzmhEU8=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-
---HcAYCG3uE/tztfnV
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On 15:22 Wed 09 Feb     , Mancausoft wrote:
-> I read gpio.txt in Documentation of kernel and try to use it.
-> pfd.fd =3D open("/root/tasto1/value", O_RDONLY);
-> pfd.events =3D POLLPRI | POLLERR;=20
->=20
-> //ready =3D poll(&pfd, 1, -1);=20
-> ready =3D poll(&pfd, 1, 100000);=20
->=20
-> lseek (pfd.fd, 0, SEEK_SET);
->=20
-> val =3D read(pfd.fd, buf, 254);
-> //the output are: 1, 10, 10
-> printf ("%d, %d, %d\n", ready, pfd.revents, pfd.events);
->=20
-> printf ("%d, %s\n", val, buf );
->=20
-> close(pfd.fd);
->=20
-> But it don't wait for an edge but they exit immediatly.=20
-> Why? where is the problem?
-
-My Bad!
-
-now work:
-
-pfd.fd =3D open("/root/ledverde/value", O_RDWR );
-while (1)
-{
-pfd.events =3D  POLLPRI | POLLERR; // | POLLWRBAND;
-
-lseek (pfd.fd, 0, SEEK_SET);
-
-val =3D read(pfd.fd, buf, 254);
-buf[val] =3D 0;
-//printf ("%d, %s\n", val, buf );
-
-ready =3D poll(&pfd, 1, -1);
-printf("%d\n", ++i);
-}
+cat /proc/kallsyms shows below output. Wat is the second column
+represents. I could see- D, d, t, T, r etc on the second coumn.
 
 
---=20
-Mancausoft - http://www.mancausoft.org/
-GPG key: B53F90F2
 
---HcAYCG3uE/tztfnV
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: Digital signature
-Content-Disposition: inline
+0000000000004000 D per_cpu__gdt_page
+0000000000005000 d per_cpu__exception_stacks
+000000000000b000 d per_cpu__idt_desc
+000000000000b010 d per_cpu__xen_cr0_value
+000000000000b018 D per_cpu__xen_vcpu
+000000000000b020 D per_cpu__xen_vcpu_info
+000000000000b060 d per_cpu__mc_buffer
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.10 (GNU/Linux)
-
-iEYEARECAAYFAk2IudkACgkQ2D/gwrU/kPIYDwCeMOIvr8loOsDmyI5hkkWdCVIj
-x6QAn3WtQgvl7viL7vAUPcnbOXY4u2ux
-=4uTn
------END PGP SIGNATURE-----
-
---HcAYCG3uE/tztfnV--
+ffffffff81866397 t init_trace_printk
+ffffffff8186eb4b T printk_all_partitions
+ffffffff818bdbd8 t __setup_str_setup_early_printk
+ffffffff818f0c00 t __setup_setup_early_printk
+ffffffff818f1800 t __initcall_init_trace_printkearly
+ffffffff818f1bd8 t __initcall_init_trace_printk_function_export5
+ffffffff81992fc0 b printk_buf
+ffffffffa01955a0 r __ksymtab_v4l_printk_ioctl	[videodev]
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
