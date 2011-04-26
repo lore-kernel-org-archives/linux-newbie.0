@@ -1,120 +1,84 @@
-From: Toon Moene <toon@moene.org>
-Subject: How to measure the effect of huge pages ?
-Date: Tue, 26 Apr 2011 19:26:55 +0200
-Message-ID: <4DB7005F.1000408@moene.org>
+From: Leo Prasath <leo.prasath@gmail.com>
+Subject: Re: Viewing dmesg output after crash
+Date: Tue, 26 Apr 2011 13:36:39 -0500
+Message-ID: <BANLkTino6NQLP3Cn-UPaCUPNrEVeqdcdew@mail.gmail.com>
+References: <4DB694E5.8000500@st.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:in-reply-to:references:from:date
+         :message-id:subject:to:cc:content-type:content-transfer-encoding;
+        bh=wEbm4FknFPsvjPo7TcUoXRRSrDbAAB0s/2K8NPv56pQ=;
+        b=ppSvTG2wChv7EBtgPmiH/qZUzKm1azSe1u82CnZWSY+nGRmgOSWxdNZNr7dBmA1IKU
+         ehkEcQSpbeEwAz3MoJ5wK+P+QhOmo1F1ckj4NufR4iGEsb31bHQ//me8BvMgAQv3jAdr
+         ELeZm212ilq+gD7qP6+d3pVgX4lrZOnhzlwfQ=
+In-Reply-To: <4DB694E5.8000500@st.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+To: Amit Virdi <amit.virdi@st.com>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+I use netconsole which sends the kernel ring buffer updates to a
+remote machine through UDP ..
+And then you can use netcat command to dump the remote udp logs to a
+file and view it.
+I have never missed any log messages using this approach..
 
-This would be more appropriate to a linux-help mailing list (which 
-doesn't exist), as I think I do understand the kernel issues involved, 
-but I do not see the effect I expect to see.
+http://www.kernel.org/doc/Documentation/networking/netconsole.txt
 
-A week ago I updated Debian Testing - one of the packages updated was 
-the Linux kernel, which went from 2.6.32.n to 2.6.38.2:
+My commands are :
 
-$ uname -a
-Linux super 2.6.38-2-amd64 #1 SMP Thu Apr 7 04:28:07 UTC 2011 x86_64 
-GNU/Linux
+in the client machine ( which crashes ):
 
-Now, 2.6.38 has anonymous (transparent) huge page support:
+modprobe netconsole netconsole=3D@/eth0,@128.105.102.217/
 
-$ cat /proc/meminfo
-...
-AnonHugePages:   2484224 kB
+where the ip address "128.105.102.217" is the remote machine's ip
+address. ( which captures logs )
 
-So shortly (30 seconds) after rebooting, I did:
+in the remote machine I run the command :
 
-$ echo always >/sys/kernel/mm/transparent_hugepage/enabled
-$ echo always >/sys/kernel/mm/transparent_hugepage/defrag
+netcat -u -l -p 6666 | tee crashlog
 
-which is still in effect:
+also, iptables --flush helped me remove the udp packet filters which
+sometimes can filter out the netconsole udp messages.
 
-$ cat /sys/kernel/mm/transparent_hugepage/enabled
-[always] madvise never
-$ cat /sys/kernel/mm/transparent_hugepage/defrag
-[always] madvise never
+thanks,
+-Leo
 
-There's 4 Gbyte of RAM on this machine, and /proc/cpuinfo gives:
 
-processor	: 0
-vendor_id	: GenuineIntel
-cpu family	: 6
-model		: 15
-model name	: Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz
-stepping	: 11
-cpu MHz		: 2394.000
-cache size	: 4096 KB
-physical id	: 0
-siblings	: 4
-core id		: 0
-cpu cores	: 4
-apicid		: 0
-initial apicid	: 0
-fpu		: yes
-fpu_exception	: yes
-cpuid level	: 10
-wp		: yes
-flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov 
-pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx lm 
-constant_tsc arch_perfmon pebs bts rep_good nopl aperfmperf pni dtes64 
-monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm lahf_lm dts tpr_shadow 
-vnmi flexpriority
-bogomips	: 4799.67
-clflush size	: 64
-cache_alignment	: 64
-address sizes	: 36 bits physical, 48 bits virtual
-power management:
 
-(4 times, for each core).
-
-This is the main application (which fills the machine 4 times / day, 16 
-hours / day):
-
-$ ps uxww
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-...
-hirlam    5528  0.0  0.0  56080  1492 ?        S    17:35   0:01 mpirun 
---mca mpi_paffinity_alone 1 --mca mpi_yield_when_idle 1 -np 4 
-/scratch/hirlam/hl_home/MPI/lib/src/linuxgfortranmpi/bin/hlprog.x
-hirlam    5529 98.0 17.8 1090948 725416 ?      R    17:35  99:42 
-/scratch/hirlam/hl_home/MPI/lib/src/linuxgfortranmpi/bin/hlprog.x
-hirlam    5530 99.1 16.8 1091748 683932 ?      R    17:35 100:50 
-/scratch/hirlam/hl_home/MPI/lib/src/linuxgfortranmpi/bin/hlprog.x
-hirlam    5531 98.8 16.8 1086800 682432 ?      R    17:35 100:34 
-/scratch/hirlam/hl_home/MPI/lib/src/linuxgfortranmpi/bin/hlprog.x
-hirlam    5532 98.5 16.9 1093752 686796 ?      R    17:35 100:16 
-/scratch/hirlam/hl_home/MPI/lib/src/linuxgfortranmpi/bin/hlprog.x
-...
-
-One would think such an application, which takes about 70 % of RAM would 
-be a prime example of one that gets a speed-up from huge pages. 
-However, the change in running time was unmeasurable.
-
-Now, /proc/meminfo above shows that the huge pages *are* allocated, and 
-the only reasonable way they are is that they are allocated to *this* 
-application (I also see their allocation drop after the application 
-finishes).
-
-What do I have to do to determine why this doesn't have the desired 
-effect ?  Does (ordinary) malloc/free play a role ?  What other system 
-parameters can I study to get a handle on this ?
-
-Thanks for any insight you can offer.
-
--- 
-Toon Moene - e-mail: toon@moene.org - phone: +31 346 214290
-Saturnushof 14, 3738 XG  Maartensdijk, The Netherlands
-At home: http://moene.org/~toon/; weather: http://moene.org/~hirlam/
-Progress of GNU Fortran: http://gcc.gnu.org/wiki/GFortran#news
+On Tue, Apr 26, 2011 at 4:48 AM, Amit Virdi <amit.virdi@st.com> wrote:
+> Hi
+>
+> I'm debugging a system crash. I got OOPS message and found the buggy =
+piece
+> of code. I wish I had the output of dmesg just before the crash. In o=
+ther
+> words, I want to view the last messages collected by the ring buffer =
+used by
+> dmesg.
+>
+> The log messages are certainly being appended to some logfile in the =
+RAM.
+> How can I find the address where the logfile is being created or how =
+can I
+> extract the logfile?
+>
+> Thanks n Regards
+> Amit Virdi
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
+e" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at =A0http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
