@@ -1,27 +1,28 @@
-From: manish honap <manish_honap_vit@yahoo.co.in>
-Subject: Question about interrupts
-Date: Mon, 1 Aug 2011 17:48:58 +0530 (IST)
-Message-ID: <1312201138.97857.YahooMailRC@web95803.mail.in.yahoo.com>
+From: unbutun <unbutun@hotmail.com>
+Subject: hi guys, is anybody know why del_timer_sync could not be used in interrupt context ?
+Date: Sun, 7 Aug 2011 20:20:50 +0800
+Message-ID: <BLU0-SMTP1641F979CD97AFD3B1C4084AC3E0@phx.gbl>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.co.in; s=s1024; t=1312201138; bh=IAtO5kpbsDtLStWRInp/eBe0WxwOUHrQl+EtBo8rZ6c=; h=X-YMail-OSG:Received:X-Mailer:Message-ID:Date:From:Subject:To:MIME-Version:Content-Type:Content-Transfer-Encoding; b=qmcbRXCE2k4ssgqLN6m4gb+8KVUNFaGS51wr5OgxF8Noy/2ZZ9TUWSN98yyvqgdHkX/L6vzmkqxaeYrycA3ri67a9e/VQMOSwBTOgdWgeWyEwGmFSJvZPQmVn16rfHVcvbs2eeqqogeWXsr/43Y6/GHsxnkjSW98cnJkiMk7w/s=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
+Hi,
 
+just as the title, any help would be much appreciated.
 
-Interrupt gates are set in linux as 
+thanks advanced
 
-set_intr_gate(i, interrupt[i-FIRST_EXTERNAL_VECTOR]);
-                           ^
-                           but the 'interrupt' is declared as 
+Regards,
 
-extern void (*__initconst interrupt[NR_VECTORS-FIRST_EXTERNAL_VECTOR])(void);
-
-can anyone possibly tell when are these enteries filled with valid pointers ???
+Gavin
+ 				
+--------------
+unbutun
+2011-08-07
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
