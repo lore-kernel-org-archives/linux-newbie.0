@@ -1,26 +1,32 @@
-From: Chiefdome <chiefdome@googlemail.com>
-Subject: Where to download kernel source?
-Date: Mon, 19 Sep 2011 11:03:45 +0200
-Message-ID: <4E770571.3010004@googlemail.com>
+From: sannikov <sannikov@cs.karelia.ru>
+Subject: Re: Where to download kernel =?UTF-8?Q?source=3F?=
+Date: Mon, 19 Sep 2011 13:06:41 +0400
+Message-ID: <6e103c61d79027608996c74cbdd86c4a@cs.karelia.ru>
+References: <4E770571.3010004@googlemail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlemail.com; s=gamma;
-        h=message-id:date:from:user-agent:mime-version:to:subject
-         :content-type:content-transfer-encoding;
-        bh=CmFdzq+U+W3oGN6QMPQGCCe8L6SOM5W0swcOOpKGKLk=;
-        b=EJiepY9+6IAjUDGqyrP/aonprKGacxpfH6VHcD3OE//xkyxtrNaAroXyM6T6sNwxa2
-         ZzBDO0SBn/SxoXOoTF5a+etfhptY1j/FKfNtcKIkhtzoGUEYNh9e5XY20SOwkxRxO+Ma
-         aBae6wBtRA9M1wZaFknhBIZBOxnJeAUYkZWhU=
+In-Reply-To: <4E770571.3010004@googlemail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: Chiefdome <chiefdome@googlemail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi, I m a newbie to the mailing-list. Where can I download the latest 
-kernel source?
-Maybe by git? How long will kernel.org stay offline?
+On Mon, 19 Sep 2011 11:03:45 +0200, Chiefdome <chiefdome@googlemail.com>
+wrote:
+> Hi, I m a newbie to the mailing-list. Where can I download the latest 
+> kernel source?
+> Maybe by git? How long will kernel.org stay offline?
+
+
+
+Hi.
+
+Try this: https://github.com/torvalds/linux
+
+--
+WBR, Alexander Sannikov
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
