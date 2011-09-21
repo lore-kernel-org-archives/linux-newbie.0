@@ -1,36 +1,47 @@
-From: Chandrabhanu Mahapatra <chandrabhanu.anand@gmail.com>
-Subject: Re: Where to download kernel source?
-Date: Wed, 21 Sep 2011 10:53:12 +0530
-Message-ID: <CAOG7oKyyUsAN+S77vNTnFYygKEpheurvXVbzrncEhJVLWAeVvg@mail.gmail.com>
-References: <4E770571.3010004@googlemail.com>
+From: sannikov <sannikov@cs.karelia.ru>
+Subject: Re: Where to download kernel =?UTF-8?Q?source=3F?=
+Date: Wed, 21 Sep 2011 09:21:26 +0400
+Message-ID: <74343c91b40651b7ae9cff0af9cdd88e@cs.karelia.ru>
 Mime-Version: 1.0
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :content-type;
-        bh=ERUtsTUQ7hAOcvPV+t012TxToqbp77f0CmSNUifsaEM=;
-        b=WmSQj7bWKlNutgKzdmPbq7AXgHMvDGMAp1799iTBzsEVLBusq0+ulZy9cLxrBqm7ET
-         qLgPdytf47ca2k0iJhsjhitFCOo4yA6EGTfCrcCOoNLHpMmt2NNKH8PI/g8KQRoQBP9Y
-         ksAHyGrzxdOLK0wByBeET5WCpxqY1q6VefoQA=
-In-Reply-To: <4E770571.3010004@googlemail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="iso-8859-1"
+To: linux-newbie@vger.kernel.org, chandrabhanu.anand@gmail.com
 
-On Mon, Sep 19, 2011 at 2:33 PM, Chiefdome <chiefdome@googlemail.com> wrote:
->
-> Hi, I m a newbie to the mailing-list. Where can I download the latest kernel source?
-> Maybe by git? How long will kernel.org stay offline?
+AFAIK https://github.com/torvalds/linux  is official. ;)
+and https://github.com/sfrothwell/linux-next is repository for linux-ne=
+xt
+branch.
+Or you can find linux-source-2.6.* package in repository of your distro=
+=2E
 
-Hi, You can also try You can also try http://gitorious.org/
+On Wed, 21 Sep 2011 10:29:49 +0530, Chandrabhanu Mahapatra
+<chandrabhanu.anand@gmail.com> wrote:
+> You can also try=C2=A0http://gitorious.org/ [1].
+>=20
+> On Mon, Sep 19, 2011 at 2:36 PM, sannikov  wrote:
+>  On Mon, 19 Sep 2011 11:03:45 +0200, Chiefdome=20
+>  wrote:
+>  > Hi, I m a newbie to the mailing-list. Where can I download the lat=
+est
+>  > kernel source?
+>  > Maybe by git? How long will kernel.org [4] stay offline?
+>=20
+>  Hi.
+>=20
+>  Try this: https://github.com/torvalds/linux [5]
+
+I found a lot of linux ports for different platforms, but not about
+mainline kernel.
+=20
+--
+WBR, Alexander Sannikov.
 
 --
-Chandrabhanu Mahapatra
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
