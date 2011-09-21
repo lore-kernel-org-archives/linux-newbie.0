@@ -1,33 +1,34 @@
-From: sannikov <sannikov@cs.karelia.ru>
-Subject: Re: Where to download kernel =?UTF-8?Q?source=3F?=
-Date: Mon, 19 Sep 2011 13:06:41 +0400
-Message-ID: <6e103c61d79027608996c74cbdd86c4a@cs.karelia.ru>
+From: Chandrabhanu Mahapatra <chandrabhanu.anand@gmail.com>
+Subject: Re: Where to download kernel source?
+Date: Wed, 21 Sep 2011 10:53:12 +0530
+Message-ID: <CAOG7oKyyUsAN+S77vNTnFYygKEpheurvXVbzrncEhJVLWAeVvg@mail.gmail.com>
 References: <4E770571.3010004@googlemail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=ERUtsTUQ7hAOcvPV+t012TxToqbp77f0CmSNUifsaEM=;
+        b=WmSQj7bWKlNutgKzdmPbq7AXgHMvDGMAp1799iTBzsEVLBusq0+ulZy9cLxrBqm7ET
+         qLgPdytf47ca2k0iJhsjhitFCOo4yA6EGTfCrcCOoNLHpMmt2NNKH8PI/g8KQRoQBP9Y
+         ksAHyGrzxdOLK0wByBeET5WCpxqY1q6VefoQA=
 In-Reply-To: <4E770571.3010004@googlemail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Chiefdome <chiefdome@googlemail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-On Mon, 19 Sep 2011 11:03:45 +0200, Chiefdome <chiefdome@googlemail.com>
-wrote:
-> Hi, I m a newbie to the mailing-list. Where can I download the latest 
-> kernel source?
+On Mon, Sep 19, 2011 at 2:33 PM, Chiefdome <chiefdome@googlemail.com> wrote:
+>
+> Hi, I m a newbie to the mailing-list. Where can I download the latest kernel source?
 > Maybe by git? How long will kernel.org stay offline?
 
-
-
-Hi.
-
-Try this: https://github.com/torvalds/linux
+Hi, You can also try You can also try http://gitorious.org/
 
 --
-WBR, Alexander Sannikov
-
+Chandrabhanu Mahapatra
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
