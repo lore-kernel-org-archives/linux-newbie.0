@@ -1,34 +1,35 @@
-From: Washington Ratso <jobhunts02@aol.com>
-Subject: Re: Ethernet driver (MAC connected to switch instead of PHY)
-Date: Sat, 8 Oct 2011 00:21:35 +0000 (UTC)
-Message-ID: <loom.20111008T021009-11@post.gmane.org>
-References: <C86899CCB10A6C4E93D5978DCB232D4B08BAD4D6@GDCMX01.igglobal.com>
+From: Prashant Batra <prashant0100@gmail.com>
+Subject: Building kernel 3.0.0-rc4 - kernel hangs on booting.
+Date: Sat, 8 Oct 2011 23:08:36 +0530
+Message-ID: <CAG+XuE6wdzFzC8H=2FtH_mOHp3fUG5nOuQVz=1M89PEYP=ZRLA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=S85VSZGHRnxejRr576SMWbQwD/xA99FU9N8zEwMGmTA=;
+        b=ppuszfB/VXVCvPP9CSvEUemxJ4vYLbM2cmm19wRlRi13FDOms7BCGtv21gzEHV5m4A
+         et4CQpzQf/xSMtfJVERrTi2Q8MyvgSqRApmuHUji3wp0gWYKnmaxJjsaAVa1CHABOjGj
+         ZlboZnUfO7reL0TyBy/U2G/SiBMdK+nX1CJDs=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-> 
-> As per the board documents, the first MAC is connected to an L2 switch
-> (Vitesse VSC7385) which is a 5 port switch (and the board actually has 5
-> RJ-45 ports on it). There are no phy addresses provided in the board
-> document for this, and as per the diagram, there is no MDC / MDIO signal
-> between the MAC & the Switch. So my questions:
-> 
+Hello,
 
+I am trying to bring up 3.0-rc4 kernel on a DELL server i386.
+I successfully built the kernel, installed it. Now on booting up,
+kernel simply hangs at "Booting kernel" prompt.
+I even tried by compiling the kernel with "all y" option for the
+kernel, so that everything goes into the kernel binary.
+But facing the same problem here also.
 
+Can some point on how I can debug what the issue can be.
 
-
-I am also looking for the phy addresses of the VSC7385.  Does anyone know where
-they are documented?  I am waiting to hear from Vitesse but thought I'd ask in
-case someone knows.
-
-
-
-
+--Thanks
+Prashant Batra
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
