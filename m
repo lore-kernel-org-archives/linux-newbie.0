@@ -1,19 +1,19 @@
 From: Prashant Batra <prashant0100@gmail.com>
-Subject: Fwd: kernel 3.0-rc4 booting issue
-Date: Mon, 10 Oct 2011 13:00:53 +0530
-Message-ID: <CAG+XuE4=caiGxHDu=v6qzDXJoyoJaFN6=Amvmu9JWJnfKBxqvg@mail.gmail.com>
-References: <CAG+XuE7LgNbXnHN3m+HbfSVYK6Rgs4Q8sjSyBDVfLZX0Gv99=A@mail.gmail.com>
+Subject: Fwd: kernel.org 3.0.4 rc version
+Date: Tue, 11 Oct 2011 15:56:46 +0530
+Message-ID: <CAG+XuE7b-rqeoEzT6TvPwtr9CE0mLKRft4vZg4OO5a5PpGhMrg@mail.gmail.com>
+References: <CAG+XuE55j_Xsu0boX9OWsnYXaOXCyaSHnbRfAp_wfztLn30V3A@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :content-type;
-        bh=2OiegjPUxolrcYHtdIWaJqlMO+WJVTeFJbBZpLth3nQ=;
-        b=jBao8u1pu0ZDS6hzvafkHo51qfHCwQd9e3xxKNnNgpyBC5ZQyUliCyptytFRd1A5UD
-         ldoVnXtwsmFn4H+xFTF31OXIjnuXW2SM/XxoRaz8FyV8mA3wOoK+axjKKO9e2shnH6Xy
-         TL5waaLeg8HmEMDjBqG9wbkpDxETuzVH77uYE=
-In-Reply-To: <CAG+XuE7LgNbXnHN3m+HbfSVYK6Rgs4Q8sjSyBDVfLZX0Gv99=A@mail.gmail.com>
+        bh=82WD7Pb7i8mL1ouq2XYeRX/N8HQtyPXI5xlbaB4jld8=;
+        b=UI+NQh8+ZyGp+08mMxDIz9hNk7qXTHRBWKi2LHQavsy8IUIdD7aPe47gfCjXmCT0nr
+         AaA6wqd1fGbCoMYDCOOmcoWn7Nd4RPXT5y9YCrpyo8P7SvsAIlUEMjRVURnyXS05hYAC
+         UTxKcDIHWbzQtWU8isvuwMsIJYj+HoQ61x47U=
+In-Reply-To: <CAG+XuE55j_Xsu0boX9OWsnYXaOXCyaSHnbRfAp_wfztLn30V3A@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
@@ -22,27 +22,15 @@ To: linux-newbie@vger.kernel.org
 
 Hello,
 
-I am trying to build linux kernel 3.0-rc4 for a x86 server.
-I am using the default config for x86, and the compilation goes fine.
-
-But when I try to boot this kernel, it simply hangs at "Booting
-kernel" prompt after uncompressing the image.
-I suspected that some drivers may not have been included, so did "make
-allyesconfig", to include everything in the kernel itself.
-But same thing happened.
-
-I followed the following steps -
-
-make allyesconfig ARCH=i386
-cp arch/x86/boot/bzImage /boot/vmlinuz-3.0-rc4.
-make modules_install ARCH=i386.
-initrd is not required as everything is in the kernel.
-
-
-Can someone point what the issue may be.
+I am trying to download stable 3.0 kernel.
+Kernel.org shows 3.0.4 is stable but download is not available from there.
+So, I moved to git, but git seems to store all the repository, so
+wanted to know which version of kernel 3.0-rc<version> is the tagged
+as kernel 3.0.4.
+Is it 3.0-rc4?
 
 Regards,
-Prashant.
+Prashant
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
