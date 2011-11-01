@@ -1,54 +1,57 @@
-From: Javier Martinez Canillas <martinez.javier@gmail.com>
-Subject: Re: How do I apply a kernel patch from the mailinglist?
-Date: Tue, 1 Nov 2011 13:40:41 +0100
-Message-ID: <CAAwP0s0ttq_7TU=9cBCVUoqxxvrUy5ggxK7hcXpUKqM_hmGrxg@mail.gmail.com>
+From: Renjith Gopinadhan <Renjith.Gopinadhan@Wolfsonmicro.com>
+Subject: RE: How do I apply a kernel patch from the mailinglist?
+Date: Tue, 1 Nov 2011 12:39:34 +0000
+Message-ID: <75E4E6EA13D477499AE4AE34E8AF04200589DB8BB2@EXCMB2.wolfsonmicro.main>
 References: <4EAFE73C.6050608@googlemail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type:content-transfer-encoding;
-        bh=rRc2D7mBTGgUYWC/F2Ms8dyVDSsvxOTpGIyYfYiGeLA=;
-        b=igGni0MBnZJpxxNNGEgnn36LMqj3+xw269I/QVU3p7H8evQROV3i6TqcLky9nxA0F7
-         +6fCESiOcfF/HW0lqIwg4Xa7OpQKSJUA86DRqFZanc48dW9XJ7HFhpK2zvaYATQeUhPn
-         87UVNugkT783dmFWke+F9vskdwL06NZ7NTZXk=
 In-Reply-To: <4EAFE73C.6050608@googlemail.com>
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Chiefdome <chiefdome@googlemail.com>
-Cc: linux-newbie@vger.kernel.org
+To: Chiefdome <chiefdome@googlemail.com>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Tue, Nov 1, 2011 at 1:34 PM, Chiefdome <chiefdome@googlemail.com> wr=
-ote:
-> Hi as asked in the subject is there a howto on the net?
-> I dont know how to apply a patch directly from my thunderbird.
-> Maybe I m totally wrong
->
-> Thanks for your replys.
->
+Download it and apply at correct folder hierarchy  with command patch -p1 <  {your_patchfile}
 
-Just save the patch as an ASCII text file (i.e my_driver_fix.patch)
+/rg
 
-And patch your kernel using the patch binary on top of your Linux
-kernel source directory.
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of Chiefdome
+Sent: 01 November 2011 12:34
+To: linux-newbie@vger.kernel.org
+Subject: How do I apply a kernel patch from the mailinglist?
 
-=46or example:
+Hi as asked in the subject is there a howto on the net?
+I dont know how to apply a patch directly from my thunderbird.
+Maybe I m totally wrong
 
-$ cd /home/javier/development/linux-omap-2.6
-$ patch -p1 < my_driver_fix.patch
+Thanks for your replys.
 
-Hope it helps,
-
---=20
-Javier Mart=C3=ADnez Canillas
-(+34) 682 39 81 69
-Barcelona, Spain
+Chiefdome
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in the body of a message to majordomo@vger.kernel.org More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
+
+Privacy & Confidentiality Notice
+-------------------------------------------------
+This message and any attachments contain privileged and confidential information that is intended solely for the person(s) to whom it is addressed. If you are not an intended recipient you must not: read; copy; distribute; discuss; take any action in or make any reliance upon the contents of this message; nor open or read any attachment. If you have received this message in error, please notify us as soon as possible on the following telephone number and destroy this message including any attachments. Thank you.
+-------------------------------------------------
+Wolfson Microelectronics plc
+Tel: +44 (0)131 272 7000
+Fax: +44 (0)131 272 7001
+Web: www.wolfsonmicro.com
+
+Registered in Scotland
+
+Company number SC089839
+
+Registered office: 
+
+Westfield House, 26 Westfield Road, Edinburgh, EH11 2QB, UK
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
