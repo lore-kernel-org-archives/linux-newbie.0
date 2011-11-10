@@ -1,34 +1,43 @@
-From: Esa-Pekka Pyokkimies <esa-pekka.pyokkimies@stonesoft.com>
-Subject: Anonymous mappings too anonymous.
-Date: Fri, 4 Nov 2011 13:54:40 +0200
-Message-ID: <op.v4e7dexl6ywr33@esapekka-pc.rad1>
+From: Prashant Batra <prashant0100@gmail.com>
+Subject: Getting the transport header in rawv6_sendmsg
+Date: Thu, 10 Nov 2011 19:17:41 +0530
+Message-ID: <CAG+XuE7UU75YK2betJpFOD5e0RA9=Kxfg-zoZUtzZW1dQz2ZFg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:date:message-id:subject:from:to:content-type
+         :content-transfer-encoding;
+        bh=ko5yTUenbdaRgRVLiLQJcofetrNvxf+rk9U85LbO9bc=;
+        b=pE+BQ+9KEY3Fhbcn/UVImuOYkI7JkkhRfeS+F1ssGaTQskiSqPFF4NQRTooYZhQbNc
+         NnFgNrkVJjR1626gybJ5uoHmNigr2rgV1pGu+0xw2I19WWQH6aaAN9XITvBBxwEVF0o6
+         N+bettQS8raZqbY/bK0DOaGjccFs0K1oiaiL4=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
+Content-Type: text/plain; charset="windows-1252"
 To: linux-newbie@vger.kernel.org
 
-Hello!
+Hi,
 
-I have projects which have hundreds of anonymous memory mappings.
-I would like to label these mappings similarly like the [heap],
-[stack] etc. mappings are labeled in /proc/<pid>/maps.
+I wanted to get transport header in function -
+static int rawv6_sendmsg(struct kiocb *iocb, struct sock *sk,
+           struct msghdr *msg, size_t len)
 
-Code like
-mmap(NULL,off,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,fd,0);
-doesn't work, even if fd is a valid file descriptor.
-Ideally I would like to see lines such as
-7f0e316e5000-7f0e31ee5000 rw-p 00000000 00:00 0 [my data here]
+The function is defined in =93/net/ipv6/raw.c=94
 
-Is this possible with some sysctl?
+In the function,  flow, =93fl=94 is getting filled using the =93sk=94
+structure, but as this is raw socket send, it only cares about the IP
+addresses.
+I need to do access the ports filled in by the user-space application.
 
-t: Esa-Pekka
--- 
-Using Opera's revolutionary email client: http://www.opera.com/mail/
+Can some help me here?
+
+Thanks,
+Prashant
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
