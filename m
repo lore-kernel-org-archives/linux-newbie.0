@@ -1,32 +1,132 @@
-From: ratheesh kannoth <ratheesh.ksz@gmail.com>
-Subject: Sending ICMP echo request out
-Date: Thu, 8 Dec 2011 12:46:36 +0530
-Message-ID: <CAGZFCEEux4TBE+JAqzx9CDJ1HGdNXnqQBHBxhJ8TXEQh3Zq7_w@mail.gmail.com>
+From: anil dahiya <anildahiya80@gmail.com>
+Subject: Re: Sending ICMP echo request out
+Date: Fri, 9 Dec 2011 00:00:04 +0530
+Message-ID: <CAHGPgw1bL7XF6Ef29N_YQ-dAW3RYQe7j4-2zuWhFXQddW+Yg_g@mail.gmail.com>
+References: <CAGZFCEEux4TBE+JAqzx9CDJ1HGdNXnqQBHBxhJ8TXEQh3Zq7_w@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <netfilter-owner@vger.kernel.org>
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=i7yAWdukqk5NKjIiS4goC1Mnd2dnfdxBdq1pluz6pBw=;
-        b=e1varidzFpDHabUf+jAiP5UxCjlqmn0lq62DVVNbGJV/EN+WiULY32R9FR/dD4BAvt
-         y6/LPtcLVVMxSyBfahVlMshUDRxuOiVj6LBgTTS2it+Jv9lm1uwYGH1yO1e94fblzENP
-         g1gem14e6AX/rrVBdyxpB8v5/ZoAlavX7Fh+w=
-Sender: netfilter-owner@vger.kernel.org
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type:content-transfer-encoding;
+        bh=l0iGCfKgqAFQvKscjH4faL2CfkFHpgOCl1TEYIp0iIQ=;
+        b=aDmxatgwsW0C0JphEjxV1Eong7OkGH+dB5oGrZnaKbrvaX/9F/bNu47nvebjJaIWM0
+         4q8WGw0SUKepEG1U67sA13mmHFHjTgd85Rfv5hzn5GSKp08i5Swl+QkPnV2lTZLdIiU5
+         2S5pdJlOtEzUVtT4uFKEpwdZ4A0IgaDMZMNck=
+In-Reply-To: <CAGZFCEEux4TBE+JAqzx9CDJ1HGdNXnqQBHBxhJ8TXEQh3Zq7_w@mail.gmail.com>
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
 To: linux-newbie <linux-newbie@vger.kernel.org>, Netfilter mailing list <netfilter@vger.kernel.org>, linux-net@vger.kernel.org
 
 Hi ,
 
-I have a linux machine with two interfaces  eth0 (192.168.1.100 )  and
-eth1  ( 192.168.1.200 ) . Both are in same subnet ( 192.168.1.0/24 ) .
+I have following setup with routing table as shown below:
 
-eth0  and eth1 are  connected to a switch . I want to send an icmp
-packet from eth0 and reach eth1 thru the switch. As of now linux
-machine , bypass the packet thru
-the stack since both this interfaces are on the same machine. Is there
-any way to do this ?
++-----------------------+
+|=A0=A0=A0 System-1      |
+|=A0=A0=A0=A0 "client"=A0=A0=A0      |
+|------------------------|
+|=A0=A0192.168.11.5=A0=A0=A0|
++----------------------+
+=A0=A0=A0=A0=A0=A0 |
+=A0=A0=A0=A0=A0=A0 |
++------+-----+
+|=A0=A0=A0Switch =A0=A0+----------------------+
++------+-----+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0   |
+=A0=A0=A0=A0=A0=A0 |=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0      |
+ =A0=A0=A0=A0=A0=A0|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0   =A0=
+=A0=A0=A0=A0+-------------------------+
+=A0=A0=A0=A0=A0=A0 | =A0 =A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0   =A0=
+=A0  |=A0=A0192.168.11.1=A0=A0=A0=A0=A0 |
+=A0 =A0 =A0=A0=A0|=A0=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0=A0     |------=
+---------------------|
+  =A0 =A0=A0=A0|=A0=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0=A0     | =A0 =A0=
+ Router =A0 =A0 =A0 =A0    |
+=A0 =A0 =A0=A0=A0|=A0=A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0=A0     |------=
+-------------------- |
+=A0=A0=A0=A0=A0=A0=A0|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0    |=A0=A0=A0192.168.12.1=A0=A0=A0=A0 |
+=A0=A0=A0=A0=A0=A0=A0|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0    +--------------------------+
+=A0 =A0 =A0=A0=A0|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0     =A0 =A0 =A0=A0 =A0  =A0|
+ =A0=A0=A0=A0=A0 |=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0=A0=A0=A0=A0=A0      =A0=A0   |
++------------------------+=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0  |
+|=A0=A0192.168.11.6=A0=A0=A0=A0=A0 |=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+=A0=A0  |
+|--------------------------|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 =A0=A0=A0=
+ |
+| =A0 System-2=A0 =A0=A0=A0=A0=A0 |=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=
+  =A0=A0|
+|--------------------------| =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0|
+|=A0=A0=A0192.168.12.6 =A0=A0=A0|=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0  =
+=A0 |
+|                         =A0|----------------+
++------------------------+
+
+Routing table details of setup
+------------------------------------------
+System-1
+-----
+$route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use=
+ Iface
+192.168.11.0    0.0.0.0         255.255.255.0   U     1      0        0=
+ eth1
+0.0.0.0         192.168.11.1    0.0.0.0         UG    0      0        0=
+ eth1
 
 
--Ratheesh
+Router
+-----------
+$route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use=
+ Iface
+192.168.12.0    0.0.0.0         255.255.255.0   U     0      0        0=
+ eth1
+192.168.11.0    0.0.0.0         255.255.255.0   U     0      0        0=
+ eth0
+
+
+System-2
+------
+$route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use=
+ Iface
+192.168.12.0    0.0.0.0         255.255.255.0   U     0      0        0=
+ eth1
+192.168.11.0    0.0.0.0         255.255.255.0   U     0      0        0=
+ eth0
+0.0.0.0         192.168.12.1    0.0.0.0         UG    0      0        0=
+ eth1
+
+
+When I do ping from system-1 192.168.11.5 to system-2 192.168.12.6 ,
+ping echo packet is reaching on system-2 through NIC 192.168.12.6 but
+system is not sending any response to 192.168.11.5 using either of NIC
+i.e 192.168.11.6 or 192.168.12.6 ? Why this is happening ? Can you
+help me ?
+
+I have observed same type of symtoms when I do SSH from 192.168.11.5
+to 192.168.12.6
+
+=46YI,
+ip_forwarding is enable on router and iptables are no configured on
+any of system .
+
+Thanks,
+Anil
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
