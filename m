@@ -1,64 +1,151 @@
-From: Richard <linuxqc@gmail.com>
-Subject: Re: header files missing
-Date: Tue, 13 Dec 2011 00:19:06 +0800
-Message-ID: <1323706746.5361.0@iLinux>
-References: <CAGZFCEGxdS6Wbye+jy_HCpv-OquSNX6gKFLh3xDK-Fwfn1T3ag@mail.gmail.com>
-	<4EE610E8.7010001@maxim-ic.com>
-	<CAGZFCEFiYf88nhEeYUGmHOJ5TXXgC3F5WOC6xx2CsofE5GEL9Q@mail.gmail.com>
+From: anil dahiya <anildahiya80@gmail.com>
+Subject: Re: Sending ICMP echo request out
+Date: Tue, 13 Dec 2011 10:19:39 +0530
+Message-ID: <CAHGPgw3hvXWnbJM=EBKbiN7LKJFbA2hHdiV0==DO_b_CFtJ37g@mail.gmail.com>
+References: <CAGZFCEEux4TBE+JAqzx9CDJ1HGdNXnqQBHBxhJ8TXEQh3Zq7_w@mail.gmail.com>
+	<CAHGPgw1bL7XF6Ef29N_YQ-dAW3RYQe7j4-2zuWhFXQddW+Yg_g@mail.gmail.com>
+	<1323374344.5818.1.camel@hakkenden.homenet>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=gamma;
-        h=date:from:subject:to:references:in-reply-to:x-mailer:message-id
-         :mime-version:content-type:content-disposition
-         :content-transfer-encoding;
-        bh=TpJ62bI9Bzw7GDFOZ29y7jG+1rgFXotfF4yzzyJCNwQ=;
-        b=nxua+aEj99MaVhh6kTVDS3GEX5gTDG+VBRAduI7TOYI3xwpZ5agfKcULQfmoidC8oC
-         hUMnDqAie+QDq/SApVnMfBHMr39pZoqU2K5TIrOB635Txijwdt6iPqymEG9mJQbZQm7f
-         u4DYw3JLVXGtU/UkSdCd4gc1Ow9DxOWo0Hr48=
-In-Reply-To: <CAGZFCEFiYf88nhEeYUGmHOJ5TXXgC3F5WOC6xx2CsofE5GEL9Q@mail.gmail.com>
-	(from ratheesh.ksz@gmail.com on Mon Dec 12 22:38:18 2011)
-Content-Disposition: inline
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type:content-transfer-encoding;
+        bh=UMEI2kVNOlGZeJQqhNsDeIRTKkgC2qkhiDtRt95pS9Y=;
+        b=maxVUbu0B6tVx4szfAEHA5B+aEY1GunxWAmdRsBrn6dqGYO7QL0HsR/NR2rQ2T5tG0
+         pCFPDIiFm5pRh9sZXAOC2lUeGpIIhWxw63pg3XmT3yRy9oK1whWfN1z8YWqgo+P/DGQf
+         U+N4M6ssavhOPm8hMCBcaDg38uqE8by+5A1v8=
+In-Reply-To: <1323374344.5818.1.camel@hakkenden.homenet>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; delsp="Yes"; format="Flowed"
-To: ratheesh kannoth <ratheesh.ksz@gmail.com>, linux-newbie <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="windows-1252"
+To: "Nikolay S." <nowhere@hakkenden.ath.cx>
+Cc: linux-newbie <linux-newbie@vger.kernel.org>, Netfilter mailing list <netfilter@vger.kernel.org>, linux-net@vger.kernel.org
 
-What is your Linux distribution?
+Thanks, It was issue of reverse path filtering.
 
-On 12/12/2011 10:38:18 PM, ratheesh kannoth wrote:
-> On Mon, Dec 12, 2011 at 8:04 PM, Jean-Marc Simohand
-> <jeanmarc.simohand@maxim-ic.com> wrote:
-> >
-> > Hi Ratheesh,
-> > did you install the "build-essential package" ?
-> >
-> > sudo apt-get install build-essential
-> >
-> 
->  i don't have apt-get or yum. its a custom compiled kernel.
-> 
-> > --
-> > Best Regards,
-> > Jean-Marc Simohand
-> > Sr. MTS Applications
-> > Maxim Integrated Products
-> > ZI Athelia IV - Le Forum, Bat A
-> > Quartier Roumagoua
-> > 13600 La Ciotat - France
-> > Phone +33 (0)4.42.98.18.25
-> >
-> >
-> --
-> To unsubscribe from this list: send the line "unsubscribe  
-> linux-c-programming" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> 
+Regards,
+Anil
 
+On Fri, Dec 9, 2011 at 1:29 AM, Nikolay S. <nowhere@hakkenden.ath.cx> w=
+rote:
+> =F7 =F0=D4., 09/12/2011 =D7 00:00 +0530, anil dahiya =D0=C9=DB=C5=D4:
+>> Hi ,
+>>
+>> I have following setup with routing table as shown below:
+>>
+>> +-----------------------+
+>> | =9A =9ASystem-1 =9A =9A =9A|
+>> | =9A =9A "client" =9A =9A =9A =9A |
+>> |------------------------|
+>> | =9A192.168.11.5 =9A |
+>> +----------------------+
+>> =9A =9A =9A =9A|
+>> =9A =9A =9A =9A|
+>> +------+-----+
+>> | =9A Switch =9A +----------------------+
+>> +------+-----+ =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A|
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A=
+ =9A =9A =9A |
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A +------=
+-------------------+
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A| =9A=
+192.168.11.1 =9A =9A =9A|
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A|---=
+------------------------|
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A| =9A=
+ =9A Router =9A =9A =9A =9A =9A =9A|
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A|---=
+----------------------- |
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A| =9A=
+ 192.168.12.1 =9A =9A |
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A +------=
+--------------------+
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A=
+ =9A =9A =9A =9A =9A|
+>> =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A=
+ =9A =9A =9A =9A =9A|
+>> +------------------------+ =9A =9A =9A =9A =9A =9A =9A =9A|
+>> | =9A192.168.11.6 =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A|
+>> |--------------------------| =9A =9A =9A =9A =9A =9A =9A =9A|
+>> | =9A System-2 =9A =9A =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A|
+>> |--------------------------| =9A =9A =9A =9A =9A =9A =9A =9A|
+>> | =9A 192.168.12.6 =9A =9A| =9A =9A =9A =9A =9A =9A =9A =9A|
+>> | =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A =9A|--------------=
+--+
+>> +------------------------+
+>>
+>> Routing table details of setup
+>> ------------------------------------------
+>> System-1
+>> -----
+>> $route -n
+>> Kernel IP routing table
+>> Destination =9A =9A Gateway =9A =9A =9A =9A Genmask =9A =9A =9A =9A =
+=46lags Metric Ref =9A =9AUse Iface
+>> 192.168.11.0 =9A =9A0.0.0.0 =9A =9A =9A =9A 255.255.255.0 =9A U =9A =
+=9A 1 =9A =9A =9A0 =9A =9A =9A =9A0 eth1
+>> 0.0.0.0 =9A =9A =9A =9A 192.168.11.1 =9A =9A0.0.0.0 =9A =9A =9A =9A =
+UG =9A =9A0 =9A =9A =9A0 =9A =9A =9A =9A0 eth1
+>>
+>>
+>> Router
+>> -----------
+>> $route -n
+>> Kernel IP routing table
+>> Destination =9A =9A Gateway =9A =9A =9A =9A Genmask =9A =9A =9A =9A =
+=46lags Metric Ref =9A =9AUse Iface
+>> 192.168.12.0 =9A =9A0.0.0.0 =9A =9A =9A =9A 255.255.255.0 =9A U =9A =
+=9A 0 =9A =9A =9A0 =9A =9A =9A =9A0 eth1
+>> 192.168.11.0 =9A =9A0.0.0.0 =9A =9A =9A =9A 255.255.255.0 =9A U =9A =
+=9A 0 =9A =9A =9A0 =9A =9A =9A =9A0 eth0
+>>
+>>
+>> System-2
+>> ------
+>> $route -n
+>> Kernel IP routing table
+>> Destination =9A =9A Gateway =9A =9A =9A =9A Genmask =9A =9A =9A =9A =
+=46lags Metric Ref =9A =9AUse Iface
+>> 192.168.12.0 =9A =9A0.0.0.0 =9A =9A =9A =9A 255.255.255.0 =9A U =9A =
+=9A 0 =9A =9A =9A0 =9A =9A =9A =9A0 eth1
+>> 192.168.11.0 =9A =9A0.0.0.0 =9A =9A =9A =9A 255.255.255.0 =9A U =9A =
+=9A 0 =9A =9A =9A0 =9A =9A =9A =9A0 eth0
+>> 0.0.0.0 =9A =9A =9A =9A 192.168.12.1 =9A =9A0.0.0.0 =9A =9A =9A =9A =
+UG =9A =9A0 =9A =9A =9A0 =9A =9A =9A =9A0 eth1
+>>
+>>
+>> When I do ping from system-1 192.168.11.5 to system-2 192.168.12.6 ,
+>> ping echo packet is reaching on system-2 through NIC 192.168.12.6 bu=
+t
+>> system is not sending any response to 192.168.11.5 using either of N=
+IC
+>> i.e 192.168.11.6 or 192.168.12.6 ? Why this is happening ? Can you
+>> help me ?
+>>
+>> I have observed same type of symtoms when I do SSH from 192.168.11.5
+>> to 192.168.12.6
+>>
+>> FYI,
+>> ip_forwarding is enable on router and iptables are no configured on
+>> any of system .
+>
+> I think, reverse path filtering is the problem here.
+>
+>>
+>> Thanks,
+>> Anil
+>> --
+>> To unsubscribe from this list: send the line "unsubscribe netfilter"=
+ in
+>> the body of a message to majordomo@vger.kernel.org
+>> More majordomo info at =9Ahttp://vger.kernel.org/majordomo-info.html
+>
+>
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
+ in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
