@@ -1,36 +1,39 @@
-From: "Anatoly Sivov" <mm05@mail.ru>
-Subject: tcp_mtu_probe implementation details
-Date: Tue, 20 Dec 2011 22:31:34 +0400
-Message-ID: <op.v6swewuufzo5me@stalin>
+From: Alejandro del Rio <scasbyte@gmail.com>
+Subject: Fix files with checkpatch errors/warnings
+Date: Wed, 21 Dec 2011 18:49:30 -0600
+Message-ID: <CAPbJ=BnAn6TfK9rFdVCSzcZizJOucUyJx0FfC03RYwH_zq-uJQ@mail.gmail.com>
+References: <CAPbJ=B=KyJ4vM8iTT+K7xie3z13q5_7tj1mMqMAxXEh+XTQFXA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru; s=mail;
-	h=Message-ID:From:Content-Transfer-Encoding:MIME-Version:Subject:To:Date:Content-Type; bh=Oo7nQJcMia+UYtbfyv3XzvctW0ypXWmWKy07j0QAAcg=;
-	b=LDuzcd9jSBhuJecP8ndaVqzcEsDrSCz6DVm8wDOlDq8DLwRnU+moB3xz/XY5C986/K/ekH7Mxx6Q9AQKQ5qQU7PC6jhLBgBkQjNyP5aMViKvmxP33d9wXgyoL1SCs6TV;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        bh=v7/gJPpbh+Ut/xx+O5tfx2tnrxyXDfZvuDJY8Jley5Q=;
+        b=NCY2zlAdSfnBHjvkAFyZZadFhX9qeiyq7hBH/VD2j8Rr1FkMB/fiSPkCYDZgvi5re/
+         8zgIjGZU3AcKLHMRNZu9z/aqUYY/0twDouvVhE84odRx0a15X4tSU2kCsOLc0LIYBBk9
+         pWMvB1HALXFmeODATHWrDlm5gwoce61zgWe38=
+In-Reply-To: <CAPbJ=B=KyJ4vM8iTT+K7xie3z13q5_7tj1mMqMAxXEh+XTQFXA@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
 Hi all,
 
-Looking on TCP implementation in Linux I see that there are some things
-that I don't understand in tcp_mtu_probe() implementation.
-Could someone clear them for me or share the link to Linux PMTUD
-documentation, please?
-The first thing I don't understand is tp->snd_cwnd < 11 in
-if (!icsk->icsk_mtup.enabled ||
-             icsk->icsk_mtup.probe_size ||
-             inet_csk(sk)->icsk_ca_state != TCP_CA_Open ||
-             tp->snd_cwnd < 11 ||
-             tp->rx_opt.num_sacks || tp->rx_opt.dsack)
-                 return -1;
-What is magic number "11" here?
-The other question is about size_needed variable.
-It is assigned to value probe_size + (tp->reordering + 1) * tp->mss_cache
-And that is not clear for me.
-What is this "(tp->reordering + 1) * tp->mss_cache" addition?
+I'm completely new to linux kernel development and I would like to
+make a very first contribution by "cleaning" some files. I noticed
+that the script checkpatch.pl (inside scripts/ folder) report lots of
+style errors on some drivers.
+For example try running ./scripts/checkpatch.pl --file
+drivers/video/*, you will notice that most of the files contain style
+issues.
+
+My questions are: Is people actively fixing this? Maybe they are not
+very interested on fixing this typos... Otherwise, could I contribute
+by submitting patches on this?
+And finally, if I do so, to who should I show this fixes?
 
 Thanks.
 --
