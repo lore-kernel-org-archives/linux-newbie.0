@@ -1,41 +1,33 @@
-From: Alejandro del Rio <scasbyte@gmail.com>
-Subject: Fix files with checkpatch errors/warnings
-Date: Wed, 21 Dec 2011 18:49:30 -0600
-Message-ID: <CAPbJ=BnAn6TfK9rFdVCSzcZizJOucUyJx0FfC03RYwH_zq-uJQ@mail.gmail.com>
-References: <CAPbJ=B=KyJ4vM8iTT+K7xie3z13q5_7tj1mMqMAxXEh+XTQFXA@mail.gmail.com>
+From: "Anatoly Sivov" <mm05@mail.ru>
+Subject: Re: Fix files with checkpatch errors/warnings
+Date: Thu, 22 Dec 2011 12:16:13 +0400
+Message-ID: <op.v6vs9b1tfzo5me@stalin>
+References: <CAPbJ=B=KyJ4vM8iTT+K7xie3z13q5_7tj1mMqMAxXEh+XTQFXA@mail.gmail.com> <CAPbJ=BnAn6TfK9rFdVCSzcZizJOucUyJx0FfC03RYwH_zq-uJQ@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=gamma;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :content-type;
-        bh=v7/gJPpbh+Ut/xx+O5tfx2tnrxyXDfZvuDJY8Jley5Q=;
-        b=NCY2zlAdSfnBHjvkAFyZZadFhX9qeiyq7hBH/VD2j8Rr1FkMB/fiSPkCYDZgvi5re/
-         8zgIjGZU3AcKLHMRNZu9z/aqUYY/0twDouvVhE84odRx0a15X4tSU2kCsOLc0LIYBBk9
-         pWMvB1HALXFmeODATHWrDlm5gwoce61zgWe38=
-In-Reply-To: <CAPbJ=B=KyJ4vM8iTT+K7xie3z13q5_7tj1mMqMAxXEh+XTQFXA@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru; s=mail;
+	h=In-Reply-To:Message-ID:From:Content-Transfer-Encoding:MIME-Version:Date:References:Subject:To:Content-Type; bh=qW+aurwCMDRDz/J3j9hnDMVw7BylUKIi+kPUDR2Zky4=;
+	b=NVYkmdEbE415QQUegQ02gjvUyT1EXnoFZVP5pHiBBkKTmzkiXE4kTisxNJwXQQ/7vlseNO03t0LBJHTGPGQ3BYbitGK/eh1f9mCwH+U6hBYS/Bk+wRHZ6+7pvbRFxJxA;
+In-Reply-To: <CAPbJ=BnAn6TfK9rFdVCSzcZizJOucUyJx0FfC03RYwH_zq-uJQ@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
+To: linux-newbie@vger.kernel.org, Alejandro del Rio <scasbyte@gmail.com>
 
-Hi all,
+Hello Alejandro,
 
-I'm completely new to linux kernel development and I would like to
-make a very first contribution by "cleaning" some files. I noticed
-that the script checkpatch.pl (inside scripts/ folder) report lots of
-style errors on some drivers.
-For example try running ./scripts/checkpatch.pl --file
-drivers/video/*, you will notice that most of the files contain style
-issues.
+> Is people actively fixing this? Maybe they are not
+> very interested on fixing this typos... Otherwise, could I contribute
+> by submitting patches on this?
+> And finally, if I do so, to who should I show this fixes?
 
-My questions are: Is people actively fixing this? Maybe they are not
-very interested on fixing this typos... Otherwise, could I contribute
-by submitting patches on this?
-And finally, if I do so, to who should I show this fixes?
+I found this mailing list deadly quiet, so advise you to ask your  
+questions somewhere else.
+I guess, linux-kernel mailing list is the most active one (just a guess)  
+and there is the most probability to be heard.
 
-Thanks.
+BR, Anatoly
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
