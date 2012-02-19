@@ -1,34 +1,59 @@
-From: "Anatoly Sivov" <mm05@mail.ru>
-Subject: Re: user defined functions
-Date: Wed, 25 Jan 2012 21:37:31 +0400
-Message-ID: <op.v8nhwt04fzo5me@stalin>
-References: <CAGZFCEFFn0ggkciB2XoQXNGFJBs-U-mhaqzRNaCZoYjar8G1qw@mail.gmail.com> <CAGZFCEGcSx7hrc0wEubWY=q8x-kqOKwnira4ninOR-fw8Nd5iQ@mail.gmail.com>
+From: Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>
+Subject: Buildroot compilation error
+Date: Sun, 19 Feb 2012 11:38:32 -0500
+Message-ID: <CALyraeMK=bEVkBtbi8xAm5aWrCbjGMTkArHygG78tJ86TzzNOw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru; s=mail;
-	h=In-Reply-To:Message-ID:From:Content-Transfer-Encoding:MIME-Version:Date:References:Subject:To:Content-Type; bh=dQg/Jl8wMFxYwLTR9BOSumS31MWHgNPrUdtd+yBJqSA=;
-	b=vKLR5k8BUWEtChd5Ba9P6dpfaUqqNN1hC+Rjm+DjSWLAAFHTmRdHt1wfQX82NgyglRRO3NUYQNDjHOx4ocbxmpUaHqQYvvaTnRHdu3MjBEcRzXSW/WMbgcHhVqcywjKk;
-In-Reply-To: <CAGZFCEGcSx7hrc0wEubWY=q8x-kqOKwnira4ninOR-fw8Nd5iQ@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Return-path: <linux-kernel-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=mime-version:date:message-id:subject:from:to:cc:content-type
+         :content-transfer-encoding;
+        bh=IaOjUtrsmIsidwr8D4aZKB+7FIK9cCMuygI7yRpKnic=;
+        b=pD/ciJR/17eSbpd7jDN2R2cLOMILvbIZy4T3hyc+x+TK+cz07y0gxEJGCMtWJu4A9O
+         QFOOsXxLXNtPKkXqvDU3HZYfirNnU6CWBauqQfVoqbnv3l+e+rmfwhXao1aQpiHvhgEX
+         fAQFUEg4W8MYWFeC/BPjUu8GBDoqtSKrACYWY=
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
-To: linux-newbie <linux-newbie@vger.kernel.org>, ratheesh kannoth <ratheesh.ksz@gmail.com>
+Content-Type: text/plain; charset="windows-1252"
+To: linux-kernel-mail <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
+Cc: dhylands@gmail.com
+
+Hello All,
+
+I am using BuildRoot to compile my embedded linux and tool-chain.
+After compiling most of the packages and tool-chain I am getting
+following error. This occurs when compiling libnl-3.0
+
+make[3]: Entering directory
+`/home/sriram/buildroot/buildroot-2011.11/output/build/libnl-3.0/lib'
+  CC     route/pktloc.lo
+
+route/pktloc.c: In function =91read_pktlocs=92:
+route/pktloc.c:127:34: error: =91YY_BUF_SIZE=92 undeclared (first use i=
+n
+this function)
+route/pktloc.c:127:34: note: each undeclared identifier is reported
+only once for each function it appears in
+make[3]: *** [route/pktloc.lo] Error 1
+make[3]: Leaving directory
+`/home/sriram/buildroot/buildroot-2011.11/output/build/libnl-3.0/lib'
+make[2]: *** [all] Error 2
+make[2]: Leaving directory
+`/home/sriram/buildroot/buildroot-2011.11/output/build/libnl-3.0/lib'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory
+`/home/sriram/buildroot/buildroot-2011.11/output/build/libnl-3.0'
+make: *** [/home/sriram/buildroot/buildroot-2011.11/output/build/libnl-=
+3.0/.stamp_built]
+Error 2
+
+Can anyone please help me what is going on in compilation. Do I need
+to specify sysroot or path to lib.
+Thanks in advance for the help.
 
 
-> HI all,
->
-> I would like to find out all user defined  functions in an elf  
-> executable.
->
-> i compiled my c++ program using  g++  and created the elf executable.
->
 
-Not sure what you want. Hope, readelf -s will help you.
-Also read this article:  
-http://www.linuxforums.org/articles/understanding-elf-using-readelf-and-objdump_125.html
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+--=20
+Regards,
+Sri.
