@@ -1,40 +1,49 @@
-From: Karthik Vishwanath <karthikv@Alum.Dartmouth.ORG>
-Subject: grub/boot problems
-Date: Fri, 1 Jun 2012 13:27:12 -0400 (EDT)
-Message-ID: <alpine.DEB.2.00.1206011316350.17823@localhost>
-Reply-To: karthikv@Alum.Dartmouth.ORG
+From: <steve06@yahoo.com>
+Subject: How to make $800 in commissions today. Recommends Advanced Sports to you
+Date: Sat, 9 Jun 2012 11:29:18 -0400
+Message-ID: <4F76A6BBBEC34B079147B9F7D4EB8D08@g19.win.smewh.net>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Class: urn:content-classes:message
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: TEXT/PLAIN; format="flowed"; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Newbie List <linux-newbie@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-Hey All,
+From         :How to make $800 in commissions today.
+Email        :steve06@yahoo.com
+Friend Name  :Friend
+Friend Email :linux-newbie@vger.kernel.org
+comment      :
 
-A re-installation of Windows 7 on my dual boot machine blew away grub. I 
-booted with the Ubuntu rescue disk (12.04) into a terminal where I tried:
+Hi Friend,
 
-sudo grub-install /dev/sda
+Here's a simple trick I used
+to pull $789 from Clikbank
+last night... Go ahead and use
+it too, it's so quick and easy:
 
-All I get after that is a grub> prompt. How can I boot into one of the 
-existing bootable partitions from here?
 
-My partitions are:
-
-/dev/sda1 -> HPFS/NTFS
-/dev/sda2 -> Linux
-
-All help will be appreciated!
+=>>> http://bit.ly/K8hJ2C
 
 
 Thanks,
+Steve 
 
--K
 
---
-A physicist is an atom's way of knowing about atoms.
+
+P.S. Before you close Wait! Click cancel
+      last chance $10 Discount.
+
+
+
+
+=>>> http://bit.ly/K8hJ2C
+
+
+
+
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
