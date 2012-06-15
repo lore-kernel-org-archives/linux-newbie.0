@@ -1,50 +1,21 @@
-From: <steve06@yahoo.com>
-Subject: How to make $800 in commissions today. Recommends Advanced Sports to you
-Date: Sat, 9 Jun 2012 11:29:18 -0400
-Message-ID: <4F76A6BBBEC34B079147B9F7D4EB8D08@g19.win.smewh.net>
+From: Dulce Fetty <jaidenkimotoxi@yahoo.com>
+Subject: It's not so hard so we can make a try...
+Date: Fri, 15 Jun 2012 21:50:40 +0100 (BST)
+Message-ID: <1339793440.34789.YahooMailNeo@web29402.mail.ird.yahoo.com>
+Reply-To: Dulce Fetty <dulce.fetty@yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Class: urn:content-classes:message
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024; t=1339793440; bh=tOLhMM4IJwtEDbwpxuRnUkzJY8683lWNWtkoR4TFa9A=; h=X-YMail-OSG:Received:X-Mailer:Message-ID:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type:Content-Transfer-Encoding; b=tpsiyt+Wdh8CTLy+O5X+7dfhZbs3VvT5clqunKMFZTDCmiPdrnLMEaVGF5t7/De3wjncw9G7KmcB1g9q4vhrAqV6EBYY8grJ1F+lm/lwnrFooVhXXQV4eFvlW+jHzo5Fb/gZVicMd51nDPgDFm0+/9fdkUXLX9v4eO5Csb00a1Y=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "vi3tboi1029@yahoo.com" <vi3tboi1029@yahoo.com>
 
-From         :How to make $800 in commissions today.
-Email        :steve06@yahoo.com
-Friend Name  :Friend
-Friend Email :linux-newbie@vger.kernel.org
-comment      :
-
-Hi Friend,
-
-Here's a simple trick I used
-to pull $789 from Clikbank
-last night... Go ahead and use
-it too, it's so quick and easy:
-
-
-=>>> http://bit.ly/K8hJ2C
-
-
-Thanks,
-Steve 
-
-
-
-P.S. Before you close Wait! Click cancel
-      last chance $10 Discount.
-
-
-
-
-=>>> http://bit.ly/K8hJ2C
-
-
-
-
-
+Hi pretty! 
+I wanna make u my friend!
+I am Dulce.
+It's interesting what you have to say about it! :)
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
