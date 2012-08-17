@@ -1,33 +1,40 @@
-From: xpol <xtekhne-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: connecting my telephone to the internet
-Date: Thu, 16 Aug 2012 11:05:06 +0200
-Message-ID: <k0id43$odr$1@ger.gmane.org>
+From: ratheesh kannoth <ratheesh.ksz@gmail.com>
+Subject: warning message on macro.
+Date: Fri, 17 Aug 2012 12:22:35 +0530
+Message-ID: <CAGZFCEE1bJ8zTDfxjnjhuy75Ly64gh38zhJOX491fUYWZROMcA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Return-path: <opensuse+bounces-138665-glsog-opensuse=m.gmane.org-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Post: <mailto:opensuse-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Help: <mailto:opensuse+help-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Subscribe: <mailto:opensuse+subscribe-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <mailto:opensuse+unsubscribe-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Owner: <mailto:opensuse+owner-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org>
-List-Archive: <http://lists.opensuse.org/opensuse/>
-List-Id: <linux-newbie.vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=ndgBMO5GaOQWaAm85SbZrIm/d1f2we3tk1uOvyPeEXM=;
+        b=DWg6poXGka88STODhDR6vQjqjbTiieab3nkLC/sr7J/KfQ89l+ysa0+mZQj0XYF4aZ
+         bUGGoYAu1U2GDmVdKH+FWZCcA6KCT5ck086TpfQVb5ZBNCCsSPf/9u5rEtzgd7NKQ+8f
+         IeZqA94zHop6Fkywrs6qRM7fJ2Th91+qd7WH0RPvhlC2nmBsw13wJvTUa0jDfKw5+Lhe
+         wvdUw4NY4Kasvj+6Z8wWDWRUI9Q7p/aIG+RwJx8g/TOyCMzOFuEg90Y53yO2uIIw2osg
+         jl9L+PmB6BJysROHbM7FnpnOFwOBDU6v2IQXypEG54BGPO4U4y9XgEZqoD8UTEJ8tblL
+         DE4w==
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: opensuse-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org
-Cc: ubuntu-users-nLRlyDuq1AZFpShjVBNYrg@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 7bit
+To: linux-c-programming@vger.kernel.org, linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi all, 
+i defined a  variable in a driver Makefile as
 
-I would like to connect my telephone to the internet, so as to be able to 
-exploit telephone internet facilities (e.g. google talk).  
-I guees a computer with modem as server should be set up, to link my 
-plain old telephon line to my telephone.
-Any comments and suggestions?
+DRIVER_NAME = e1000-kod
 
-Thank you 
-Paolo
 
--- 
-To unsubscribe, e-mail: opensuse+unsubscribe-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org
-To contact the owner, e-mail: opensuse+owner-stAJ6ESoqRxg9hUCZPvPmw@public.gmane.org
+But when i compile , it shows following warning
 
+<command-line>: warning: missing whitespace after the macro name
+
+1. How can i suppress only this warning. ? I do need all other warnings .
+
+Thanks,
+Ratheesh
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
