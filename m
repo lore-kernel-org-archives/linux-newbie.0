@@ -1,27 +1,30 @@
-From: "Anatoly Sivov" <mm05@mail.ru>
-Subject: Re: warning message on macro.
-Date: Fri, 17 Aug 2012 18:24:27 +0400
-Message-ID: <op.wi6vm1mxfzo5me@stalin>
-References: <CAGZFCEE1bJ8zTDfxjnjhuy75Ly64gh38zhJOX491fUYWZROMcA@mail.gmail.com>
+From: ratheesh kannoth <ratheesh.ksz@gmail.com>
+Subject: chage command source code
+Date: Fri, 24 Aug 2012 17:09:28 +0530
+Message-ID: <CAGZFCEEWj0DvWaqPcQM+Sb+9nm0zL4Vd76Cz5=GNmeEhb-1GtQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-c-programming-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru; s=mail;
-	h=In-Reply-To:Message-ID:From:Content-Transfer-Encoding:MIME-Version:Date:References:Subject:To:Content-Type; bh=nF9/R4kaCoUpSGQCWFaR4n9/gmiOQub7Pdz9scme6Ec=;
-	b=ZP3vjmhD/VSK2zmeE3iRR/UVlnjDlH8mAlYibsxE/WC8qBEtS4ZYfWwlT2keRnpuvYfI4gH5RtDcOTZK3q+bHg2fEcs7RMonerth5IeOUD4pZAMJC+nImDmtwouxoj9u;
-In-Reply-To: <CAGZFCEE1bJ8zTDfxjnjhuy75Ly64gh38zhJOX491fUYWZROMcA@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:cc:content-type;
+        bh=ap7QCCAvwS3IS0zfUshQJGweV69yUHpDlUfgcw2zbfQ=;
+        b=H3AUWh5yZzVAcwGSp7fpksRYgs0S0l+SpfmLP1dtzAjUZgLNMiGnrfXlKAzuT1SCFy
+         9q/5nbJgmXKQIfdrxCuCii+4yUdCyS+85BwlMouzcrIADKX40NRWz++rvHjbtuyJGFGt
+         TExvkyB9MZkB2mN3quXKhhkinFZ0KZTG3hIhJgK8xyv4CmFva9Kt7wYU2gf53ecV8Eds
+         1nXSXO6arJovtXEOBl1iwhHvdabusEKdYNiCIEE0quEV/KBio0n2S5QIiVeLAVsS4OaF
+         7s2kMCZEyBBb7jdCeat9KREQrcmiNJYufxRTgxxmGYm9nOaRFqZfCQYOaSkHXefT7JFv
+         mQpg==
 Sender: linux-c-programming-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
-To: linux-c-programming@vger.kernel.org, linux-newbie <linux-newbie@vger.kernel.org>, ratheesh kannoth <ratheesh.ksz@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-c-programming@vger.kernel.org, linux-newbie <linux-newbie@vger.kernel.org>
+Cc: puri_gaurav@yahoo.com
 
+Hi,
 
->
-> 1. How can i suppress only this warning. ? I do need all other warnings .
->
+I found command "chage" in linux. But i would like to from  where can
+i download the source code  of the command ?
 
-Why do you want to suppress this warning instead of fixing it? Your line  
-seem to result in some incorrect preprocessor macro. What file does your  
-makefile compile when this warning occurs?
-
-BR, Anatoliy Sivov
+Thanks,
+Ratheesh
