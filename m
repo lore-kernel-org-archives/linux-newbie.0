@@ -1,30 +1,37 @@
-From: "Serrato Moreno, Carlos" <carloss@ti.com>
-Subject: devm_gpio_request_one not exported
-Date: Wed, 5 Sep 2012 17:11:30 +0000
-Message-ID: <95E3FF003A6B2A4A9766E6CADAAEA9E340CA2C@DFLE09.ent.ti.com>
-References: <95E3FF003A6B2A4A9766E6CADAAEA9E340C852@DFLE09.ent.ti.com>
+From: Mario Smarduch <Mario.Smarduch@huawei.com>
+Subject: Couple MMU issue free_area_init_core()
+Date: Wed, 24 Oct 2012 08:19:14 +0000
+Message-ID: <2DDB038789B01B4B80B0D3F1FF7CBDC20645F6E7@lhreml509-mbb.china.huawei.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <95E3FF003A6B2A4A9766E6CADAAEA9E340C852@DFLE09.ent.ti.com>
 Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-Hello,
+Hi,
+   while going through some code for project I'm working on I found
+couple things which I would like to get some feedback/understanding on.
 
-I wonder why devm_gpio_request_one in drivers/gpio/devres.c  is not exported as devm_gpio_free and devm_gpio_request are.
+free_area_init_core()
+for each zone calculates 
+memmap_pages=PAGE_ALIGN(size * sizeof(struct page)) >> PAGE_SHIFT;
 
-Regards.
+Which is total memory range zone spans and then it subtracts that value from
+realsize (memory present in zone). I'm bit confused for SPARSEMEM case
+where sections not occupied don't have memmap arrays (mem_section[] indexed)
+allocated. Should not the calculation of memmap_pages above take that into
+consideration?
 
-Carlos.
+Also related to same function I've notice 'dma_reserve' is hardly defined
+anywhere. The boards I've looked at (ARM PBX, PXA) have their kernel
+text, data, bss allocated in DMA zone, any reasons why 'dma_reserve' is
+not defined to correctly determine zone watermarks and other things later
+on?
 
-
-
-
-
+- Mario
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
