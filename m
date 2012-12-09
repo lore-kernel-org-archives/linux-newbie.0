@@ -1,46 +1,49 @@
-From: ratheesh kannoth <ratheesh.ksz@gmail.com>
-Subject: bottom half question
-Date: Mon, 3 Dec 2012 17:56:57 +0530
-Message-ID: <CAGZFCEH__DQfr7-q-5F6JsffXwPHpaE5+235pjn=ib5XMH9M6g@mail.gmail.com>
+From: Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>
+Subject: Question on Memory management unit
+Date: Sat, 8 Dec 2012 19:08:08 -0500
+Message-ID: <CALyraeP41AEZFD=cHZT_PYgUZ+nrvDfTMQ1t9qtuFJ-cOEssiQ@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=mHgL8mNrhhlBGo1acJl8YVYZVBv79wbiQ69pmFQPPJ8=;
-        b=otvijBguHGKRSY4UGVFwT3WVfacO89OHqx+GDEsootZ9NH77taUBBv9IVgISHUuOjt
-         RtiKaXuYeAewXDzH7dZgjDe+AeBFdD00O3y9wd3kXOAdMqLGVqb5wr0LRirA8/Cu34Pk
-         DNzoT8p6OxTr/7p48XQHwtrmuplFLGoig9S6Y1Bizy8XAgjhhOIV3l+TKIviaNtTadLH
-         6gt9KF/Fs9lIOJppEb16N+CRoWh3qT52zGg6pbXn1AXmq+sTKnWVfmePBE3l98VlYx0J
-         xu11F9sjxI3AgtPNBso+AT+qxmOqlfUogA4ObWEmwbo2X0EfJMj8lO1VdYsnwSNnTEXA
-         kH3g==
-Sender: linux-newbie-owner@vger.kernel.org
+        bh=IF8B/d5zTJCYq/sC+Wbi+4rCpG69XPA7ePHOBbF8DmI=;
+        b=pPbp7zyqxeBOzpz6RHa7e9orVcOpFp2Ntg1T21izKgaLcE/Dq0F97hPBCs9daqxGje
+         BcsoLwXrffFZIdAtKbLoprOAFAKWUHTSjKWCOBtAdJvoqyGBLLpABdmTgrg5rE/DgNUb
+         nAT1WYVFiXgOzG1Q+2NAEvvOqxBhPeu7diCKACZopldE+m7AvHFfXfxBU8Tt5bzsWE9S
+         HT7RkTHAx8lLM/WJMzLpYQBANeX058k0Dbb6fFDFWO2CCGTQ+DWgTR/IjU2b19MPLVmS
+         WrCEcClgj5Nc49BYaL+xJiPqi3QTqIREIbwaQIxGczlmcS74ZBj+c45PBn3kqKhLIcb7
+         95hA==
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org, linux-kernel-mail <linux-kernel@vger.kernel.org>
 
-In uni processor system ( 2.6 kernel )
+Hi Guys,
 
-An  interrupt happened and ISR routine is  serviced , then   bottom
-half scheduled and while the bottom half is running
+I have question on memory management in linux kernel.
 
-1) Suppose  same interrupt happened  again - > then  (the previous )
-bottom half is preempted  and ISR is serviced for new interrupt. After
-ISR , same bottom half will be run again ? or the new  one ?
+From my understanding memory is divided into 3GB and 1GB for 32-bit
+architectures. 1GB is allocated to kernel space and 3GB is allocated
+to user space.
 
-2) if it is a new bottom half being run ,( since bottom half is in
-interrupt context )  where it can store register info of previous
-interrupt ?
+To access any memory in kernel space, it should be mapped in to kernel
+virtual address space.
 
+My question is how do we know kernel address space (virtual address).
+Can we recognize a range of addresses, if so what is that range of
+kernel virtual address?
 
-3) Suppose a lot of interrupts happen in a short period of time , how
-and when bottom half for each interrupt  gets scheduled ?
+What function returns kernel virtual address. Or do we need to map to
+get kernel virtual address.
 
+I know kmalloc returns logical address and vmalloc returns virtual address.
+And all these addresses should go through MMU to access physical
+memory. So there will be page mappings in kernel for these addresses.
+Is this true?
 
--Ratheesh
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks in advance.
+-- 
+Regards,
+Sri.
