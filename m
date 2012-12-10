@@ -1,69 +1,47 @@
-From: Javier Domingo <javierdo1@gmail.com>
-Subject: Re: Question on Memory management unit
-Date: Mon, 10 Dec 2012 16:01:59 +0100
-Message-ID: <CALZVapn=9j7=53Zktg_udaCPaKbmxVNJWGRjdt--pEJjS8bKzg@mail.gmail.com>
-References: <CALyraeP41AEZFD=cHZT_PYgUZ+nrvDfTMQ1t9qtuFJ-cOEssiQ@mail.gmail.com>
+From: Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>
+Subject: netfilter question
+Date: Mon, 10 Dec 2012 15:12:38 -0500
+Message-ID: <CALyraeOdiCD+cbQZoyRZYPmzC3Kzivk8daK=PYT8uT9HwFpacQ@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-kernel-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc:content-type;
-        bh=nJ+RfFyOFrwIrtu2c01TmRLEOqYS8lASxqLK998BBJQ=;
-        b=gufDhn1t1q60Vcf5ad4aBQYEbLLGt/blg95bZWIklYNjScdqlirsnJBQmW0/ELl1eZ
-         QBjAemgZCvKUFk45z+8RBnZFeeJNBcODVaU6QyCCjqk46cSiCHTmUgjqOP6ZwGwtIiQP
-         Yp1BcOKmm9KgS/wm9PiuKTwtZuHpglb2x/k0/G0LfVsJZ6HImtPr/Kj5iUt+6f7R4Nfx
-         umLy1ak+3XRTTZN7oeEJoTt4QaTEcUFcX2+1uls+pXQJflWFQwdAad+r17t9PJZS0Ni0
-         oK3g6eADlDf3tXadUCodMF51XXeU2+SFlE4ghUqhczati434PqROihrAdBXRbwX5/0NA
-         FIuw==
-In-Reply-To: <CALyraeP41AEZFD=cHZT_PYgUZ+nrvDfTMQ1t9qtuFJ-cOEssiQ@mail.gmail.com>
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=Oy2LLNifz73Z9gIutjBPC/PWFkOximLOPiKSFtML2/s=;
+        b=wyipp/oFLimd62iWyu0VL0JDboWpqSYpclaqxJNMBL20qxxyHIxHyRlAgv4DvV60Iv
+         Zz2BbLJWytpYy+hNQzTV9RkTg+iP0yLtqoeKFVoDDkLno4q09bHqro3PjRIzUhsvinct
+         PSDqwBHkurIjDZ5jizxJKNWTN/0QPLclfE7Z96+vksbqHRX5OVKVjoKZjDedMspP0eso
+         7PEV4zLWTsJw1MBlxGCM7yvkOJmlFoQmrLCt++Tq6FniqwUwEDTJEUK2Pib26AwjxEkr
+         vS3KODDwn9GPcxv/ocLSifAu72BrIYKRWZqJyCHccD8bf3JK1NOF3z3YFtILAePKsbWw
+         SCnA==
 Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>
-Cc: linux-newbie@vger.kernel.org, linux-kernel-mail <linux-kernel@vger.kernel.org>
+To: linux-netdev <netdev@vger.kernel.org>, linux-kernel-mail <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
 
-I will just refer you to this link:
+Hi Guys,
 
-http://stackoverflow.com/questions/116343/what-is-the-difference-between-vmalloc-and-kmalloc
+I am writing a netfilter hooks module for applying kernel rules on
+incoming packets. I am implementing hook at NF_IP_PRE_ROUTING.
 
-Is as much as I know about that. You will find links that refer to
-other places, where they discuss/explain that.
+From my understanding, after sk_buff passing NF_IP_PRE_ROUTING hook
+enters into ip_forward (routing) path, which will determine whether
+packet is for local host, if not for local host, then routes to
+destination host based on IP header destination info through local
+host interface.
 
-Javier Domingo
+My question is, if I modify sk_buff packet ip header info at
+NF_IP_PRE_ROUTING hook, with values of external host ip (destination
+host), therefore I think this packet will be routed to destination
+host from right source interface. Instead passing it to local host.
 
+Please correct my assumption. Or is anything more I should be doing.
+Because I am building a system to route the packets applying kernel
+rules.
 
-2012/12/9 Sri Ram Vemulpali <sri.ram.gmu06@gmail.com>:
-> Hi Guys,
->
-> I have question on memory management in linux kernel.
->
-> From my understanding memory is divided into 3GB and 1GB for 32-bit
-> architectures. 1GB is allocated to kernel space and 3GB is allocated
-> to user space.
->
-> To access any memory in kernel space, it should be mapped in to kernel
-> virtual address space.
->
-> My question is how do we know kernel address space (virtual address).
-> Can we recognize a range of addresses, if so what is that range of
-> kernel virtual address?
->
-> What function returns kernel virtual address. Or do we need to map to
-> get kernel virtual address.
->
-> I know kmalloc returns logical address and vmalloc returns virtual address.
-> And all these addresses should go through MMU to access physical
-> memory. So there will be page mappings in kernel for these addresses.
-> Is this true?
->
-> Thanks in advance.
-> --
-> Regards,
-> Sri.
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+thanks in advance.
+
+-- 
+Regards,
+Sri.
