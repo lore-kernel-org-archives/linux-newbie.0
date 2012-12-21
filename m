@@ -1,78 +1,42 @@
-From: John Beard <john.j.beard@gmail.com>
-Subject: Block device driver: how to terminate the block device if media disappears?
-Date: Wed, 19 Dec 2012 11:21:59 +0000
-Message-ID: <50D1A357.1030004@gmail.com>
+From: Wang Baisheng <baisheng.wang.cn@gmail.com>
+Subject: why mapping beyond end "MAPPING_BEYOND_END"?
+Date: Fri, 21 Dec 2012 14:50:57 +0800
+Message-ID: <CABymN7aq6zs47MKVuijcvRg5yggNkg_jUT_UJfOguUg2xv2f5A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=x-received:message-id:date:from:user-agent:mime-version:to:subject
-         :content-type:content-transfer-encoding;
-        bh=PylHXY+Z9fD8FqgQXGsZqx7+V5n/4xdNQ63sLRx62fM=;
-        b=NO71THOMNfEh8e9jev+tL5EzQjvsBz5gUDH3McsS43e3xuMbRPvwas+42UmZ6uLYK8
-         KmMHvKt/f04vUS9GTTSNUwl63JhgJgJW4XNUPLJ3oMloyhqb39xfAJcG0lfMHfcpF/UV
-         x8nzvFP/x6wLQhPL7v+7NyN81QGHYChuolg2W1YjT1iEHJfxToh3hlDnq/cwk8t+mRQI
-         JaFX7yyH3DbO62317cpwlGCLpw7fsM7ewEPcj6Bc6KDN/qU+8mkD2ZiEikSvhPuYdhML
-         wI9TY8R8vnDuQVW0yj+ze1cGHKIG++QOU6O4NwSM93u5Ju5HFriYFKMXU4XOJ7gchVlH
-         T/ZQ==
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=r38BGOJQkg7j0+XLdQfUZShzuULGlUzUinO5xDZ3AtY=;
+        b=H+NMDs80CCAyPQbEkbrgDzB3i85LNPRL5ql5vRUYFV5oKeAhx+yqanq9l6GU5+QJ4D
+         Jgsqx8IMBdwqwJYiunU8bP4J0cuvjPNggOg9f/wAVfwUF0dZph4LDa0phn1QG1PYyo+n
+         FlxsNgZ78JcouJKD3igVmlq73NGcXoWhfMMC4lkJewgwtP0TePBK66Ztl/2imN0iFYDt
+         X6S6/+p9dXH+3HmYIeUkNDKt8UkxC5Rq/1l8tjcEaHGLILKnE6mxO9qT/y6CPm0ahkMw
+         CtlPyNc7Iswy8c8o4BJXQOgGagW3BaRixKd7K9mWUCtx2wt4RkvBUBwFLFO1BXWl/tRG
+         2mtQ==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
+Hi All,
 
-I have block driver for a hot-pluggable device PCIe storage device.
-The driver itself is relatively simple and implements the following
-block operations:
+For x86, in arch/x86/kernel/head_32.S, for Initializing page tables,
+why mapping beyond end by "MAPPING_BEYOND_END":
 
-	static struct block_device_operations mydev_ops = {
-        	.owner = THIS_MODULE,
-        	.open = mydev_open,
-        	.release = mydev_release,
-        	.getgeo = mydev_getgeo,
-        	.ioctl = mydev_ioctl
-	};
+    /*
+     * End condition: we must map up to the end + MAPPING_BEYOND_END.
+     */
+    movl $pa(_end) + MAPPING_BEYOND_END + PTE_IDENT_ATTR, %ebp
+    cmpl %ebp,%eax
+    jb 10b
 
-and the following PCI driver structure:
+According vmlinux.lds.S, the paging table is between __brk_base and
+_end. So why map MAPPING_BEYOND_END after _end ?
 
-	static struct pci_driver mydev_driver = {
-		.name = DRIVER_NAME,
-        	.probe = mydev_pci_init_one,
-        	.remove = mydev_pci_remove_one,
-        	.id_table = mydev_pci_tbl,
-	};
-
-As well as a request_fn with the following signature:
-
-	static void mydev_submit_req(struct request_queue *q);
-
-Whenever I get IO requests, there is the expected pattern of "open, IO,
-release", and everything works OK: I can mount the device and access the
-filesystem.
-
-However, if the device is physically removed during IO, I never seem to
-get a "release", just "open, IO, hang". I believe (but I don't know),
-that this is preventing del_gendisk() from completing, thus hanging the
-cleanup of the driver, which is triggered by mydev_pci_remove_one() upon
-the removal of the device.
-
-I am ending all requests on the queue with __blk_end_request_all() once
-an eject happens, but it still doesn't seem to cause a release.
-
-What is the right way to terminate requests and delete the gendisk in
-the case of physically vanished PCI devices (or even devices in
-general)? I know I'd end up with a ruined transfer and corrupt data, but
-that's better than a hung kernel, and if the user is going to rip out a
-busy disk, those are the breaks.
-
-Thanks in advance for any pointers to a solution, I have looked through
-drivers/block, read LDD3 and asked at KernelNewbies but have been unable
-to nail down my error. I'd be happy to provide more code, but I don't
-want to spam with reams of code if it's not going to be helpful.
-
-John Beard
+Regards,
+Jacky
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
