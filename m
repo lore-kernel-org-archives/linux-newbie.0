@@ -1,38 +1,50 @@
-From: horseriver <horserivers@gmail.com>
-Subject: High concurrency net server
-Date: Sat, 9 Feb 2013 13:58:45 +0800
-Message-ID: <20130209055841.GB2806@debian.localdomain>
+From: Prashant Batra <prbatra.lists@gmail.com>
+Subject: Route lookup in ip_finish_output2
+Date: Mon, 11 Feb 2013 14:24:59 +0530
+Message-ID: <5118B1E3.1040409@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=x-received:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=YEEk6NJA3CSkN17NpJKF3Xfmhy6adnTj3dDQNDuybGo=;
-        b=HrI7HPnpVzIAZHhEvxq7LlD+elzh9hFYc0H4hyT08KA1t1p9MQhqpslLxzZBbHEsWP
-         J2DWrHn8XlbJrK1MxIvyyTfBQO997McJdV0EYgTvVO3mt+LGQXhJPxA/3puPJ3Gnz4ZK
-         I5ps8Sv7LAQE+hg0NdPjgt2yPF1ryT0RVRMbwBEDwXCTo0QtMkFKW9Y3EbKBDADlkocj
-         RwxEFT5M3ZC/5GQKJnFfdsAOlQ4w8xhcPmA6/2NHyTFX3OCnA/Q17nmFpGQOnyfdztil
-         nfCumgiiQCiVBeEw3XRCvjlNiEWeQdHaMdvCBooccvUdNwufbE+QkEFmrladGInjGfKC
-         Te2A==
-Content-Disposition: inline
+        h=x-received:message-id:date:from:user-agent:mime-version:followup-to
+         :to:subject:content-type:content-transfer-encoding;
+        bh=yYOeVjYQ3aaYVe6D4T4n3XY1tn2Q8NU/d3crbbv2/z8=;
+        b=aHZqBe8eEu4DzTRMJGNoAaq8STTGpMeirFrNFaQ5G93TTiXvaNvYXBxAELqJyG5K89
+         mHRZ8vn9s19T8md3BPIm2BmLCTRKMAn3bWByoJBB/QDhgkk2p63kpYsMmZDKghbIvL5Z
+         +gpZi5yYkInRDcgvf+7YMES9zp4Jk0AU0q+zFKXH+BZ/kP64u4QnVOejZ/p+uKw6+uqk
+         QnNkhFMFdtvwHLNXb551W7WrDh+U0iCLvIqAbdXZJpMsnUyoyAJ6SyWrXmF3Zp4qJ5AZ
+         zHKNX/oElLMzLM5gswhWpPnmkR2NkgrPqTN2szWs8gYCwIVGBXOMBeyvGz7m1g/Jv0fg
+         Dl1w==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
-hi:)
+Hi Folks,
 
-   To design  a high concurrency net server , what are the important factors?
+I am trying to do a small hack into the kernel just for some 
+experimentation wherein I need to do a ipv4 route lookup from 
+ip_finish_output2, after the packet is received from outside and has got 
+forwarded.
 
-   Has different  clients be served  with each independent  thread ?
+The route lookup is done using kernel API "ip_route_output_flow" with 
+the flow having the dst address.
+This seems to be working fine with only exception that at very high 
+loads, I see certain CPU hikes and the profiling results show that the 
+same API comes out to be the culprit.
 
-   NOTE: Here ,the thread is a running unit which has its own stack and environment.
+What I understand is that even to take the forwarding decision the 
+kernel ip_rcv should have done the route lookup to decide that the 
+packet needs to be forwarded, then why am I seeing a CPU hike in my case.
 
-   Are there some recommended solutions for high concurrency server design?
+The second route lookup is done as the original packet has got 
+encapsulated within a new IP header having a different destination than 
+the original packet.
 
-thanks!
+
+Thanks,
+Prashant
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
