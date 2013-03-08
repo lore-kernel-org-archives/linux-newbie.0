@@ -1,26 +1,48 @@
-From: ishare <june.tune.sea@gmail.com>
-Subject: memory zone and slab
-Date: Thu, 7 Mar 2013 22:35:14 +0800
-Message-ID: <20130307143514.GD2467@debian.localdomain>
+From: Mario Smarduch <Mario.Smarduch@huawei.com>
+Subject: RE: memory zone and slab
+Date: Fri, 8 Mar 2013 11:44:37 +0000
+Message-ID: <2DDB038789B01B4B80B0D3F1FF7CBDC2064CE46A@lhreml509-mbb.china.huawei.com>
+References: <20130307143514.GD2467@debian.localdomain>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=x-received:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=uuQgmah/whFBzysq8IflzBUTrl7mIp9wbFbW7CMY41k=;
-        b=NuCB6AE0RFaUXQ9iYEJ//76U7RO+TCmD0B90XkrJxJdPGF+jCyQ/FgjnkVKgkt/flk
-         indi8yk6dJgv58/5oJkLRY033BkJUCIfT6rUXaQ6Iw2OXg6Ad0DPTjJSAzAbkjkWdbIG
-         /lLrhIMTgXDWEPOFBjKATLmpHV8w4cUhT3UX9axPPqedCVwUzayXXwHGshoIauTH/e88
-         BcaJp5mggytuh2rzi/3JxOA1O/hgaomRgIHoFjnVJjPLK/DzQCX4VSzIRur1pS8cEhij
-         Uqxq0W0tGguzyloPcTnREAQfLOVkjUiJjPPx9p1/Dh600vDEJrVa18d4T2/gyUZJif5U
-         UYDQ==
-Content-Disposition: inline
+In-Reply-To: <20130307143514.GD2467@debian.localdomain>
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+To: ishare <june.tune.sea@gmail.com>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+
+
+The zonelists are initialized in 'build_all_zonelists()' 
+called by 'start_kernel()'. But prior to that point
+there is allot of other code that determines the 
+various zones and holes a key function is free_area_init_node().
+But that function will also reference prior initialization
+in 'setup_arch()' which may take you all the way back
+to bootloader to kernel interface.
+
+Nodes have zones, and zones define what the memory is 
+appropriate for, DMA or lowmem, Normal memory or High memory
+for 32 bit. For 64 bit there are fewer zones just primarily
+32 bit DMA and normal 64 bit. Zones are further divided
+into free areas of 2^n consecutive pages.
+
+Slabs are typically pages carved up into smaller units of 
+allocations. 
+
+There are several kernel books but outdated, but nevertheless good
+starting points, just search for 'Kernel Internals'
+
+BR,
+ Mario.
+
+
+-----Original Message-----
+From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of ishare
+Sent: Thursday, March 07, 2013 3:35 PM
 To: linux-newbie@vger.kernel.org
+Subject: memory zone and slab
 
 
    when does the memory zonelist initialized in kernel ?
@@ -31,6 +53,11 @@ To: linux-newbie@vger.kernel.org
    
    thanks! 
   
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
