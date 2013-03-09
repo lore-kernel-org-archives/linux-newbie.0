@@ -1,109 +1,52 @@
-From: aktlin115 <aktlin115@gmail.com>
-Subject: Re: memory zone and slab
-Date: Sat, 9 Mar 2013 15:48:15 +0000
-Message-ID: <CAGLPcqD4srqMGbru6e+ki8BycM6B39Nw+i_Dgi=sf27NMdqSJA@mail.gmail.com>
-References: <20130307143514.GD2467@debian.localdomain>
-	<2DDB038789B01B4B80B0D3F1FF7CBDC2064CE46A@lhreml509-mbb.china.huawei.com>
-	<20130309020413.GA2515@debian.localdomain>
+From: Mine Last <information.security.admin@gmail.com>
+Subject: Unable to connect to network (ethernet or wireless) after updating
+ Ubuntu 12.04LTS
+Date: Sat, 9 Mar 2013 13:09:39 -0800
+Message-ID: <CAFSNWpACHSXEhsE5Ca0Jr4zg2+6E6Kmgvg1R0rHdd3v_QgQqxA@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:x-received:sender:in-reply-to:references:date
-         :x-google-sender-auth:message-id:subject:from:to:cc:content-type;
-        bh=EemEqZ/MYpxM70Ae/qFiET9zdjwYvMxcwAt1Jp4W5Yg=;
-        b=JD0NJTjbBRrhe6LZI222fnGOlD8dGMYY3EKANEesxf9ojYUiALl/KYEjh8lStxngH+
-         HeV/meNx5XDn0LkPXfp0CI5xZSUN3I/tXXvRmN5T0+l1aF649N73kBsBh8jBX/UxrHU9
-         SH006YXCYxN421PnyeojuMNmAiAFpUTN2twgXCQu0uVHUwTYKWBe0zfpQp9tdJ4EInD4
-         07/AZnNXRJ+bnEYzEGd9TtNOiqIjiu5Hqe28NW4WuCCKWJiseZsvwdEf61VlhdyU2KQJ
-         jSdtNcG2cN4LHgKz9/narPR2WZ8IBNH5OUzu8z32WXdRbuvch2qWuGse/fhJrE1Vn/Lt
-         Sv3Q==
-In-Reply-To: <20130309020413.GA2515@debian.localdomain>
+        h=mime-version:x-received:date:message-id:subject:from:to
+         :content-type;
+        bh=xxxSkNFEAWQ/5ZrhiAMdAVRlOFfQaTCantsQJqr/NNE=;
+        b=MYGo+GsVpjuwdEx/D8+AGX5tRQNtpAixzQNCqryyN/gZO421Tx4Rr39GWaWHUY7m8T
+         zVsUSEXaYz3/SiE01IAi0mkyi3dTkufxnilxolTq457RVimsZWR8ZJBMhph+Jpb83oRL
+         sPBdqm8vkE+ETff5sMzxRacBXcR5qsEXGeNhmj1WWkfGPI9APZT8AqIDvySQ0+oqP44n
+         xbDBaMrLjSYbgYx3cDHv7shTu//QkXmvDItoAfAIn8bzLXD6G0LMHHMFQHi5qnV+Y5vG
+         NkWmeJLDumK9b63C/qA/T7FrTy+KfqOfCBXecnjc+LfSxB/sP5ZOJV8tOQ66R1/svPzk
+         jB+A==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: ishare <june.tune.sea@gmail.com>
-Cc: Mario Smarduch <Mario.Smarduch@huawei.com>, linux-newbie@vger.kernel.org
+To: linux-newbie <linux-newbie@vger.kernel.org>
 
-Hi,
+Greetings Linux Demigods,
 
-I'm not sure I understand your question.
+I have installed Ubuntu 12.04 LTS from DVD to my laptop while it was
+online via an ethernet RJ45 jack plugged into my router. It has a
+wireless card in it as well. After installation, I was able to connect
+to the internet when I was plugged directly into my router. I was not
+able to use the internet via my wireless network card. I do have a
+wireless card installed and I connect to it fine with Windows on the
+same machine, which is a dell inspiron E1505. I chose to not deal with
+the wireless issue and keep using the direct plug in.
 
-The slab allocator groups objects into "caches".
-Each cache contains objects of the _same_ type.
-The area of memory that contains the cache is divided into "slabs"
-and each slab consists of one or more contiguous _pages_.
-If a page belongs to a slab it has the "PG_slab" page->flags bit set
-(see include/linux/page-flags.h).
+I then updated my machine using the Update Manager application
+provided by Ubuntu. It downloaded and installed about 157MB of
+updates. After these updates all successfully intalled, I rebooted my
+machine and can no longer connect at all.
 
-Pages tend to belong to a particular zone.
+Any help would be greatly appreciated. I can get to a command prompt,
+but please do not assume I know anything. Linux runs so much better on
+my machine and I am trying to get all the basic stuff working so that
+I can switch from Windows. I need to connect with both my wireless and
+ethernet network cards. Please help.
 
-I hope this helps.
+Thank you very much.
 
-Kind regards,
-Aaron
-
-On Sat, Mar 9, 2013 at 2:04 AM, ishare <june.tune.sea@gmail.com> wrote:
-> On Fri, Mar 08, 2013 at 11:44:37AM +0000, Mario Smarduch wrote:
->>
->> The zonelists are initialized in 'build_all_zonelists()'
->> called by 'start_kernel()'. But prior to that point
->> there is allot of other code that determines the
->> various zones and holes a key function is free_area_init_node().
->> But that function will also reference prior initialization
->> in 'setup_arch()' which may take you all the way back
->> to bootloader
->> Nodes have zones, and zones define what the memory is
->> appropriate for, DMA or lowmem, Normal memory or High memory
->> for 32 bit. For 64 bit there are fewer zones just primarily
->> 32 bit DMA and normal 64 bit. Zones are further divided
->> into free areas of 2^n consecutive pages.
->>
->> Slabs are typically pages carved up into smaller units of
->> allocations.
->
->   Does this mean slab is based on zone ?
->   slab is just a optimized algorithm for normal allocator?
->
->   thanks!
->
->
->
->
->
->> There are several kernel books but outdated, but nevertheless good
->> starting points, just search for 'Kernel Internals'
->>
->> BR,
->>  Mario.
->>
->>
->> -----Original Message-----
->> From: linux-newbie-owner@vger.kernel.org [mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of ishare
->> Sent: Thursday, March 07, 2013 3:35 PM
->> To: linux-newbie@vger.kernel.org
->> Subject: memory zone and slab
->>
->>
->>    when does the memory zonelist initialized in kernel ?
->>
->>    what is the difference between zonelists and slab for memory manage .
->>
->>    are there some man docs or sites  helpful to understand this ?
->>
->>    thanks!
->>
->> --
->> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
->> the body of a message to majordomo@vger.kernel.org
->> More majordomo info at  http://vger.kernel.org/majordomo-info.html
->> Please read the FAQ at http://www.linux-learn.org/faqs
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+-Steve
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
