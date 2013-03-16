@@ -1,75 +1,60 @@
-From: Jack Wang <xjtuwjp@gmail.com>
+From: Raymond Jennings <shentino@gmail.com>
 Subject: Re: linux-newbie vs kernelnewbies
-Date: Fri, 15 Mar 2013 14:57:23 +0100
-Message-ID: <CAD+HZHVPCip_dzHVQQMOKyzeTyo_4o-AMoMqi6g86QvS4V6CNg@mail.gmail.com>
-References: <CAGDaZ_psbeshYcsQduHXq6mAB9zQ0-MoAtY9TpkMbD7R0WNfhw@mail.gmail.com>
+Date: Fri, 15 Mar 2013 22:48:57 -0700
+Message-ID: <CAGDaZ_qEuJ1x-UjGgPeCAGVANX3H2vBhKc5DXmi6V7R-1Ks6vg@mail.gmail.com>
+References: <5143b362.26bd440a.3b15.142b@mx.google.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============5938092288870471165=="
-Return-path: <kernelnewbies-bounces@kernelnewbies.org>
-In-Reply-To: <CAGDaZ_psbeshYcsQduHXq6mAB9zQ0-MoAtY9TpkMbD7R0WNfhw@mail.gmail.com>
-List-Id: <linux-newbie.vger.kernel.org>
-List-Unsubscribe: <http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>,
-	<mailto:kernelnewbies-request@kernelnewbies.org?subject=unsubscribe>
-List-Archive: <http://lists.kernelnewbies.org/pipermail/kernelnewbies>
-List-Post: <mailto:kernelnewbies@kernelnewbies.org>
-List-Help: <mailto:kernelnewbies-request@kernelnewbies.org?subject=help>
-List-Subscribe: <http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>,
-	<mailto:kernelnewbies-request@kernelnewbies.org?subject=subscribe>
-Sender: kernelnewbies-bounces@kernelnewbies.org
-Errors-To: kernelnewbies-bounces@kernelnewbies.org
-To: Raymond Jennings <shentino@gmail.com>
-Cc: linux-newbie@vger.kernel.org, kernelnewbies <kernelnewbies@kernelnewbies.org>
-
---===============5938092288870471165==
-Content-Type: multipart/alternative; boundary=0016e6d36941c4e49d04d7f7041f
-
---0016e6d36941c4e49d04d7f7041f
-Content-Type: text/plain; charset=ISO-8859-1
-
-I think linux-newbie is for discussion of Linux common question, most
-related to user space for newbie in the linux world.
-
-kernelnewbie focus on kernel dev discussion.
-
-Jack
-
-
-2013/3/15 Raymond Jennings <shentino@gmail.com>
-
-> Is there much of a difference between these two lists?
->
-> _______________________________________________
-> Kernelnewbies mailing list
-> Kernelnewbies@kernelnewbies.org
-> http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies
->
-
---0016e6d36941c4e49d04d7f7041f
-Content-Type: text/html; charset=ISO-8859-1
-
-<div dir="ltr">I think linux-newbie is for discussion of Linux common question, most related to user space for newbie in the linux world.<div><br></div><div style>kernelnewbie focus on kernel dev discussion.</div><div style>
-<br></div><div style>Jack</div></div><div class="gmail_extra"><br><br><div class="gmail_quote">2013/3/15 Raymond Jennings <span dir="ltr">&lt;<a href="mailto:shentino@gmail.com" target="_blank">shentino@gmail.com</a>&gt;</span><br>
-<blockquote class="gmail_quote" style="margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">Is there much of a difference between these two lists?<br>
-<br>
-_______________________________________________<br>
-Kernelnewbies mailing list<br>
-<a href="mailto:Kernelnewbies@kernelnewbies.org">Kernelnewbies@kernelnewbies.org</a><br>
-<a href="http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies" target="_blank">http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies</a><br>
-</blockquote></div><br></div>
-
---0016e6d36941c4e49d04d7f7041f--
-
-
---===============5938092288870471165==
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:mime-version:in-reply-to:references:from:date:message-id
+         :subject:to:cc:content-type;
+        bh=3sn7aQIUvpECvM8Vc2cMw8+hhkTJo/flOr+Z+X27GTE=;
+        b=XeVXFBhc3fyeX8qnG1YVxOH5cxTR0Dm0cNT6clbGOQ6acz0Ibw1u0EGpIjgow8fngv
+         ZBlKNpxUmOOITO8tnCCwbbCIO96CMbeAE59Imf/5+aSFv/wlabZHlQxQqbv+5Ffvi9U5
+         Hg2cS0Lo0VUPFOt1Ynl3JK+ZKfyyW3323kOFL+BluPN94aTnZaeZlwr3+mLhrVNGgUxs
+         yV8pZdk5zu7zBz4AWcRw+apil7fxGVykYl0i5j//M67IpNStOmYUhlRjl1QmHZvZLhar
+         1fzmPrGB81X93c++DQ/lwLki6VIsk8Q+Z8fVQX9y2GXi5ZeVbm74rMq8NiLyFVvPX3bR
+         Rmrw==
+In-Reply-To: <5143b362.26bd440a.3b15.142b@mx.google.com>
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+To: "information.security.admin@gmail.com" <information.security.admin@gmail.com>
+Cc: linux-newbie@vger.kernel.org, kernelnewbies@kernelnewbies.org
 
-_______________________________________________
-Kernelnewbies mailing list
-Kernelnewbies@kernelnewbies.org
-http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies
+On Fri, Mar 15, 2013 at 4:48 PM, information.security.admin@gmail.com
+<information.security.admin@gmail.com> wrote:
+> I thought linux newbies was for people new to linux. I guess it is not. I
+> sent a question to about getting my network connection working and was
+> directed elsewhere. I think these lists are for kernal hackers. Not linux
+> newbies like myself.
 
---===============5938092288870471165==--
+Considering the two contradictory replies I've seen in response to my
+question I think some clarification is in order!
 
+> Sent from my HTC on the Now Network from Sprint!
+>
+>
+> ----- Reply message -----
+> From: "Raymond Jennings" <shentino@gmail.com>
+> Date: Fri, Mar 15, 2013 6:48 am
+> Subject: linux-newbie vs kernelnewbies
+> To: <linux-newbie@vger.kernel.org>
+> Cc: <kernelnewbies@kernelnewbies.org>
+>
+>
+> Is there much of a difference between these two lists?
+> --
+> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+> the body of a message to majordomo@vger.kernel.org
+> More majordomo info at  http://vger.kernel.org/majordomo-info.html
+> Please read the FAQ at http://www.linux-learn.org/faqs
+>
+>
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
