@@ -1,37 +1,40 @@
-From: ishare <june.tune.sea@gmail.com>
-Subject: seq in tcp protocol
-Date: Fri, 22 Mar 2013 21:30:08 +0800
-Message-ID: <20130322133008.GA1348@debian.localdomain>
+From: Kristof Provost <kristof@sigsegv.be>
+Subject: Re: seq in tcp protocol
+Date: Sat, 23 Mar 2013 14:31:18 +0100
+Message-ID: <20130323133117.GB9539@thebe.jupiter.sigsegv.be>
+References: <20130322133008.GA1348@debian.localdomain>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=x-received:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=c+Y5c/mBXNwo2DAqkJDLZC1XZjB8N8QxnNq0Pv4jYKY=;
-        b=xsjmuwOAvnxTcEW5bJdNN0XlKPta5GYbkvOknNKnDsspx3eIB5ZDdx4UDYMTMPxnpN
-         vHDfGTcgOIQqJIskuzVIqJQ7TfeAOVBXdgvmOiihjJ2WbIFyvjdIN5F0LFVIWzshYgIf
-         ZVNGH/hrqY6JMipI/jc3eUdgrMcXTtU0RfoJm5HUZRDvtPCUXtsqsUqUkkzwV1Bz4y2H
-         5NF94BnSb79XiXnnowd3tnr++q7IAYHObp9BiMbwpx4HSoyL/Ow7pq/1vZqTEY5PFF+8
-         RSBM3RDKYKLhVY8wRLgyKeGuKKaxcEzJiY6akHLW2iRHrC2nIEZev6CDOwFbkjyVA2zx
-         Csqw==
 Content-Disposition: inline
+In-Reply-To: <20130322133008.GA1348@debian.localdomain>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: ishare <june.tune.sea@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
+On 2013-03-22 21:30:08 (+0800), ishare <june.tune.sea@gmail.com> wrote:
+>   If I send a  buffer with tcp protocol , the data is separated to serveral packets ,
+>   each packet will have a seq number with it ,which ensures the recipient read this buffer
+>   in right orfer .
+> 
+>   my question is : how the recipient know which is the end packet of this queue ? Is there 
+>   data indicate the total quantity of packets composing this buffer ?
+> 
+TCP is a stream protocol. There is no concept (at the application level
+anyway) of packets in TCP. The receiving TCP/IP stack is free to offer
+the data to the application whenever it decides to, in however many
+lumps as it decides to. Similarly, the sending TCP/IP stack may decide
+to wait to send data until it's received more from the sending
+application before packaging it and sending it to the receiver.
 
-  If I send a  buffer with tcp protocol , the data is separated to serveral packets ,
-  each packet will have a seq number with it ,which ensures the recipient read this buffer
-  in right orfer .
+You may find http://en.wikipedia.org/wiki/Nagle%27s_algorithm
+interesting.
 
-  my question is : how the recipient know which is the end packet of this queue ? Is there 
-  data indicate the total quantity of packets composing this buffer ?
+Regards,
+Kristof
 
-
-  thanks!  
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
