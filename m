@@ -1,34 +1,19 @@
-From: ishare <june.tune.sea@gmail.com>
-Subject: call stack of a system call
-Date: Tue, 26 Mar 2013 21:21:48 +0800
-Message-ID: <20130326132148.GA3381@debian.localdomain>
+From: joywili <joywili26@libero.it>
+Subject: nice to meet you
+Date: Tue, 26 Mar 2013 15:26:47 +0100 (CET)
+Message-ID: <27649449.258181364308007967.JavaMail.defaultUser@defaultHost>
+Reply-To: joygood348@yahoo.co.uk
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=x-received:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=d1GtKwigS994yeKJOope68jHWn6/lWovYTLx4U355Qo=;
-        b=XMgCIUdVsNTCVkTozlTglpwwj0HtvFhwAiIRli0ArU6R3niJfh0vwbWDJ4FO5JtO60
-         CsKOore2UZDM40g8mNrSunIfMmcgYvdoMgqEajnjga1Z8C9FHBb11pcTS9l62/Gy+sbf
-         v4psiLc4vWa8DnC1qxOGfOrHun+3WafnrpQ0CuzJZdym18I5idWCp7W2lCCtTGfEvdQv
-         wZiSTt7ap0d9eqAzKv6060bmT4mJqmCG4Yhp+4jSNcotjCMRej9iKK2QNcwduIBPUfRK
-         1sdCBWw+iAwvFzroAgfmazDM+hMxId30rVaczPZWs1vfCBkeYp/bYT87SXJYJOAQDZCU
-         jzRg==
-Content-Disposition: inline
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: joygood348@yahoo.co.uk
 
-
-  At user level ,is there system interface to help printing the call stack of one system api ?
-
-  for example: I want to print the send/receive call stack from kernel , is there 
-  helper for user application to achieve this?  
-
-  thanks!
+nice to meet you hello dear my name is miss joy i am looking for friendship i 
+will like you to write back so that i will tell you more about me and also send 
+you my pictures.thanks
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
