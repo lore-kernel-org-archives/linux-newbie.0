@@ -1,36 +1,70 @@
-From: "Anatoliy Sivov" <mm05@mail.ru>
-Subject: Re: seq in tcp protocol
-Date: Sat, 30 Mar 2013 23:17:50 +0400
-Message-ID: <op.wurw70eqsqfl9w@xn---hp-soa>
-References: <20130322133008.GA1348@debian.localdomain>
- <20130323133117.GB9539@thebe.jupiter.sigsegv.be>
- <20130324032932.GB23928@debian.localdomain>
- <CAOXuEsxyugU-Z2yVX-8T-OdAxJcxh0gWFMVhX0CNZqBHYDzS3Q@mail.gmail.com>
- <20130324115711.GA9706@debian.localdomain>
- <20130324120815.GD9539@thebe.jupiter.sigsegv.be>
+From: =?UTF-8?B?SmF5cmFtIETDqXNocGFuZMOp?= <jaydesh9@gmail.com>
+Subject: mapping memory reserved by "memmap" kernel boot param into user space
+Date: Sun, 31 Mar 2013 22:11:56 -0700
+Message-ID: <CAGj4Cuci1+tk55bSAVONT1O+Z+7kBce9CJ=7gspGXseGhsyaeQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru; s=mail2;
-	h=In-Reply-To:Message-ID:From:Content-Transfer-Encoding:MIME-Version:Date:References:Subject:Cc:To:Content-Type; bh=gtAOyUadA+SZR3Sgjg96S6rxYklX3/cVbkETW5yvg9w=;
-	b=MgLkzIHTWUC5ycgZYeTPUJub+JN9SJHraqA0nHgbEun1Ei0d9VEm0wlt7GaPN8K62RbaxhFxDrZ/1u5dD4ObDFxofFayCqj3buddxWwrhhgRWRZSx4Pf61lKzXF5GVWPWY/ZUsz4HevbQpW+IG7kdsg4U974KftVIKnYHur9aZk=;
-In-Reply-To: <20130324120815.GD9539@thebe.jupiter.sigsegv.be>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=x-received:mime-version:from:date:message-id:subject:to
+         :content-type;
+        bh=iFgmjb00HK16N2QBEFQNuHuIQ5VsdWqMafPEm0EMu+o=;
+        b=XR7xxs+EuI/YF3ZveQ92rWdOuYgb2rzDkLsuTKyuEPOd2OkumrQr0Ijiezn6dAcBcl
+         BE3fvfFwDxjCuv28j39GjR+uapNlcm8XplCZdetmMe16M/Y5F1WOtnZHmoOPRAqIMKNT
+         LIIlcvvp37vnYgW3AugQJEEtnQUArbEUWVq6W86dGjuNxneBypg+/XmncrFKeTF1+Mr9
+         eGYl5KuDTBSNyOKjaJhzHs+0PtO4qfS2tymZPVvtdgOlKKydzo8G6X8EecZLJKStG1Ch
+         LP31Q90g22iDgRirqNZzhgC6TSLkEwOcfP7zVmn6mHtk2nOaK67C83jyIKBuZM4rdtpt
+         ASCg==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"; delsp="yes"
-To: ishare <june.tune.sea@gmail.com>, Kristof Provost <kristof@sigsegv.be>
-Cc: Aniruddha Bhattacharyya <aniruddha.aot@gmail.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-I could be wrong, but I guess linux uses Minshall's modification of  
-Nagle's algorithm.
+Hello ,
+
+As discussed in this[1] discussion, i am reserving a memory chunk at the
+boot time using a kernel boot parameter memmap=8G$64G
+
+I have written a character driver [2] kernel module which , during
+initialization does a ioremap of this reserved memory chunk. As explained
+here , in my driver mmap all i need to do is remap_pfn_range for this
+memory chunk pointer returned by the ioremap.
+
+I am running this on 3.x linux kernel. My user space application opens this
+memory chunk as a device mounted by the driver. When i do mmap from the use
+space application i see a system hang. my dmesg don't provide me much
+information.
+
+So questions are :
+
+1 ) Does  remap_pfn_range function have some upper limit on the size of the
+memory that can be remaped to ? Note that i am trying to reserve a
+comparatively large chunks of memory at the boot time of the order of 64GB
+to about 150GB. The system can have 128 to 256 GB of ram.
+
+2) I tried by disabling the ioremap from the initialization and thus
+directly doing the page frame numbers remapping in the mmap ioctl routing.
+But that also results in a hang.
 
 
->>
->>  How does the sender decide how many packet is needed to transfer one  
->> buffer and
->>  manager the seq orders of them ?
->>
-> http://en.wikipedia.org/wiki/Nagle%27s_algorithm
+3) I tried with a page-fault handler , but that doesn't seem to help either.
+
+
+
+
+Regards,
+-Jay
+
+
+P.S. code can be found here [4]
+
+
+[1] http:// stackoverflow.com/q/1911473/143897
+[2] http:// pete.akeo.ie/2011/08/writing-linux-device-driver-for-kernels.html
+[3] http:// www.
+linuxquestions.org/questions/linux-kernel-70/mmap-of-several-gb-of-reserved-memory-using-805818/#post3972954
+[4] http:// stackoverflow.com/questions/12790382/mapping-memory-reserved-by-mmap-kernel-boot-param-into-user-space
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
