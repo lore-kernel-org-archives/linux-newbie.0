@@ -1,42 +1,36 @@
-From: Prashant Batra <prbatra.lists@gmail.com>
-Subject: attach multiple programs to tun/tap interface
-Date: Mon, 01 Apr 2013 22:42:21 +0530
-Message-ID: <5159BFF5.90209@gmail.com>
+From: ishare <june.tune.sea@gmail.com>
+Subject: how does ld.so transfer execution to executable section ?
+Date: Sat, 6 Apr 2013 21:46:47 +0800
+Message-ID: <20130406134646.GA8866@debian.localdomain>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
-Return-path: <netdev-owner@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=x-received:message-id:date:from:user-agent:mime-version:to:subject
-         :content-type:content-transfer-encoding;
-        bh=Rud9IZWf3akF0BEeAy+K/iHPeLLdh+Zv9m62V51mDVM=;
-        b=tKmgaSjW71iXgiTHkzsc0+fc9aImt4jwobmmiLfbeZjdHBDgoTIWE4bt0YWNDGUPfD
-         hwD8uOCFJZiv4DHzGy2CSY8kHur8mEm1cdctJVipa9a5pRqJFCcZd7ZdOn6FJhY/YYbR
-         clOc3/t7J6aDS6oC0hg63qx1dvT+GeByizeJFjg1gQ6lOHUyieHoyyi8Tv5vye6oGDcv
-         //i84EpwloqQlGGsFOmVXBoM2TENMm7E0FbwYaITJfozSp+PYhD8ilpeovwGhUFTJbeQ
-         kYgKNozbzDMnU7TNRay2LI/M3UWPxIrsPdLJHabbSLpVVGz0s0Qd58yQjFdCP0+s9Zil
-         4R9A==
-Sender: netdev-owner@vger.kernel.org
+        h=x-received:date:from:to:subject:message-id:mime-version
+         :content-type:content-disposition:user-agent;
+        bh=Rzf+tT8U70Jsf0lLJNozG9TSRqkB/8tWfxI/HI9pZuY=;
+        b=dD2vyYzNOYB8sCsJCWmTAeEDIezTkcBZw4NxRsZQvUkMb0axSc/VvwD/nJJA7WbV5F
+         5ir23C2H4rC9hQRTgs6Ami1Hrue9Oh4NFImLa/IlXTGVqBLI3QAY0oASrIEzbWSR+Qet
+         of6dmGLlO72lmdSxyaZJ4SrA1PwGNsc2STOp/jTQOGf+4MqQSSufhUU+3NfQugMlxkHG
+         cjDD/1M6g3bRB+C1XMOzu03bqRxcpzfdh6IxKi4aHGmvVhGd/LVRqSotywDdAZJMfFU4
+         Ny5MkpkJzA9rXcNkhCQcN6r8tkoEDBI6aLfpiia71wLq+mWLw6DEIurGN2XwOiuHleZQ
+         Nkcg==
+Content-Disposition: inline
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="windows-1252"; format="flowed"
-To: netdev@vger.kernel.org, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-Hi,
 
-I have a basic query on tun/tap driver design. Is it possible to attach=
-=20
-multiple user-space programs to the same tun/tap interface. I have not=20
-set the interface as EXCLUSIVE,
-but still on trying to do ioctl with cmd as =93TUNSETIFF=94 from the se=
-cond=20
-user space program, I get =93Device busy=94.
+  At boot stage ,the process 1 will execute '/bin/sh' . as it needs ld.so to help loading other .so ,
+  it loads ld.so into memory and execute ld.so first .
 
-Seeing through the driver code, it looks like it does not allow multipl=
-e=20
-user-programs to attach to the same interface, but is this valid, and=20
-please let me know why this requirement was taken.
+  My question is when and how does ld.so transfer its execution to code of /bin/sh ?
 
-Will you please help me in understanding this?
-
-Thanks,
-Prashant
+  Thanks!
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
