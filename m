@@ -1,34 +1,48 @@
-From: ishare <june.tune.sea@gmail.com>
-Subject: how does ld.so transfer execution to executable section ?
-Date: Sat, 6 Apr 2013 21:46:47 +0800
-Message-ID: <20130406134646.GA8866@debian.localdomain>
+From: disnoir <disnoir@gmail.com>
+Subject: How could I record the information when kernel panic.
+Date: Thu, 25 Apr 2013 01:18:24 +0800
+Message-ID: <517813E0.8070701@gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=x-received:date:from:to:subject:message-id:mime-version
-         :content-type:content-disposition:user-agent;
-        bh=Rzf+tT8U70Jsf0lLJNozG9TSRqkB/8tWfxI/HI9pZuY=;
-        b=dD2vyYzNOYB8sCsJCWmTAeEDIezTkcBZw4NxRsZQvUkMb0axSc/VvwD/nJJA7WbV5F
-         5ir23C2H4rC9hQRTgs6Ami1Hrue9Oh4NFImLa/IlXTGVqBLI3QAY0oASrIEzbWSR+Qet
-         of6dmGLlO72lmdSxyaZJ4SrA1PwGNsc2STOp/jTQOGf+4MqQSSufhUU+3NfQugMlxkHG
-         cjDD/1M6g3bRB+C1XMOzu03bqRxcpzfdh6IxKi4aHGmvVhGd/LVRqSotywDdAZJMfFU4
-         Ny5MkpkJzA9rXcNkhCQcN6r8tkoEDBI6aLfpiia71wLq+mWLw6DEIurGN2XwOiuHleZQ
-         Nkcg==
-Content-Disposition: inline
+        h=x-received:message-id:date:from:user-agent:mime-version:to:subject
+         :content-type:content-transfer-encoding;
+        bh=gHQvb9/Z8PTlNDeGzukAf+tpbyJ2j9taG/ValUkd+ns=;
+        b=k9HvQ1YUSOdZ9SSbWjSS1o5jY/TcavfzPIo99DiGY0DOyB+ao7bvrsmnQeVNyyZebT
+         uLymFjuZNyeftgNcqqcsq6g7dkqUIHgVcCRuSpi/nZ1XgCL0Fv0QbcPYcc7wCoSJ4Eoi
+         wZA1H8BC/fqGSzSqE1qNY2ttyUVKRM+s/nQN124nILpAZCdwIcX8grq4TSqsq3HbuRt9
+         g0jH4AkQsdAEIPmmh/e8xWKcUwREwGdPYuNz2BADr9frmRhFYWMg7sezfJToT4qOwrgj
+         07crsusmw4JbErrTsn6x5CZ6Nm57FaTFLNPTRFQuuIcWciaVDMB2k/Eo7txRxBtAxk+q
+         4PxQ==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: linux-newbie@vger.kernel.org
 
+There is a random probability that cause the kernel panic (debian with 
+kernel 3.2.41), when I execute:
+"sudo umount /media/data /media/big".
 
-  At boot stage ,the process 1 will execute '/bin/sh' . as it needs ld.so to help loading other .so ,
-  it loads ld.so into memory and execute ld.so first .
+Things are like this:
 
-  My question is when and how does ld.so transfer its execution to code of /bin/sh ?
+I use "udisks --mount /dev/sda3" to mount "data" which is a ntfs filesystem.
+similarly, I use "udisks --mount /dev/wd5000bpvt/big" to mount "big" 
+which is a ext4 filesystem.
 
-  Thanks!
+After finish using these filesystems, I use "sudo umount /media/data 
+/media/big" to umount the filesystems, and the hole system just suddenly 
+halt (mouse is not moving).
+
+using alt-sysrq-b to reboot the system. nothing record in the 
+/var/log/messages.
+
+So, How could I record the kernel error/info, when system was halt ?
+
+Thanks a lot!
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
