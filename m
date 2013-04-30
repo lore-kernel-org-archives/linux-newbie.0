@@ -1,57 +1,37 @@
-From: Ashoka K <ashok.vinu@gmail.com>
-Subject: Need help to measure and tune the latency in Linux RT
-Date: Tue, 30 Apr 2013 13:57:21 +0530
-Message-ID: <CALJd4cbfqRFiGHshv8A+0A8kFo_qW=rvREsdgj3jQ=-0Rix0-g@mail.gmail.com>
+From: Mario Smarduch <mario.smarduch@huawei.com>
+Subject: Re: A spinlock_irqsave question
+Date: Tue, 30 Apr 2013 10:54:05 +0200
+Message-ID: <517F86AD.1040604@huawei.com>
+References: <CANMsd03Ea55cV5aoDP0jfA9_+wgW81omLjzvQLN+-w-hgNyzXQ@mail.gmail.com> <517E3981.5060103@huawei.com> <CANMsd01LVJarAAzSx-Mpvo_CJkWU6hXZCmu4dh44RNHsEY_51g@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:x-received:date:message-id:subject:from:to
-         :content-type;
-        bh=G6lT9HA4JVHMlzlYUgQPMOWcMmq8M4pFsphxKdqlX/A=;
-        b=ej3r0Ar5/bx5/K8EgwF0dHSY2ClQFfvMXEWknIRH8SGLgwY90AlTLeHGn1pcts8c6F
-         ItEpR4MGRQyTCZF1actZp+tLxHwSObCiiZ+tYdzO+1MQbADsCn80w3mgsjHWHUR0NMO9
-         Xhc/1ovfxngCZ5RUxg9iY7ZwvlqveKWrLWZi9CJfupi/mLeyqrRB9Arh+V6jEdK3vZH1
-         V1Q4VKEcH8W4Nmc7NYu34WLViQsbFEoKQRiaTcjHmriyun+0D+hph9Hhrozn2fy45/Oz
-         Fw7tDUFKePLEG44dGyjvnschPMFpTqVlEkszI9Y9fSpU0jAnAx/IZ/u382EWmL/aLtBg
-         +hOg==
+In-Reply-To: <CANMsd01LVJarAAzSx-Mpvo_CJkWU6hXZCmu4dh44RNHsEY_51g@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-embedded@vger.kernel.org, linux-newbie@vger.kernel.org
+To: Ryan <ryanphilips19@googlemail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi,
+On 4/29/2013 11:21 AM, Ryan wrote:
+>> spin_lock_irqsave(lock,flags)/ affects the running
+>> > CPU, it does not disable any device IRQ. Device
+>> > interrupts may be taken by other CPUs. There is a whole
+>> > other set of calls that deal with individual IRQs.
+> You mean to say that
+>       a) Device IRQ can be taken care of some other core of the Same CPU?
+>       b) If the CPU Load is Less. then only one core will be active.
+> In that case - The device irq will be blocked?
+> 
+> 
 
-I have an embedded system running 2.6.33 cross compiled for ARM OMAP
-with 1 GHZ uni-processor system.
+I don't understand (a), in SMP you may disable IRQs on a CPU
+(via *_irqsave()) but other CPUs may continue to receive interrupts.
+The CPU load has nothing to do with blocking IRQs (on vanilla kernel)
+To disable device IRQ you must disable it at the interrupt controller
+level like disable_irq().
+ 
 
-The application has many threads and processes (around 15 total). In
-that 1 thread is time critical and must run every interval confiurable
-as 2, 4 or 8 milli sec etc. There is another thread which transfers
-Images to a FTP or to HMI etc, whoever requested the image.
-With this image transfer enabled my critical process misses the
-deadline and timesout. This critical thread is at RR priority 50. I
-used a HR timer thread with RR pri 55 to wakeup the critical thread
-every 1 milli sec to do the job.
-If image transfer is enabled i see that real time thread misses deadlines.
-
-All traffic is flowing on common ethernet connection. Does it affect
-in any way ?
-
-How to find out where the kernel is waiting or delaying to schedule
-the critical thread even though it is at higher RR priority. How to
-measure the latency ?
-
-I am trying to use Oprofile tool, but got some error in cross
-compiling. Doesn't these tools add their own latency to the original
-problem ?
-
-Any tools ? which one is better. Please provide your input on this.
-
-
-Regards
-Ashoka.  K
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
