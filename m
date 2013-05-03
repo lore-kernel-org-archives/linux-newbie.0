@@ -1,107 +1,74 @@
-From: Ashoka K <ashok.vinu@gmail.com>
-Subject: Re: Need help to measure and tune the latency in Linux RT
-Date: Tue, 30 Apr 2013 18:47:05 +0530
-Message-ID: <CALJd4cbEUMpLhjbFMELbGbXZ6WuAzaychjtt2uyv8Mvwi74xHQ@mail.gmail.com>
-References: <CALJd4cbfqRFiGHshv8A+0A8kFo_qW=rvREsdgj3jQ=-0Rix0-g@mail.gmail.com>
-	<20130430111021.GC31290@titan.lakedaemon.net>
-	<517FB553.3000001@meduna.org>
+From: Ryan <ryanphilips19@googlemail.com>
+Subject: Re: A spinlock_irqsave question
+Date: Fri, 3 May 2013 12:15:23 +0530
+Message-ID: <CANMsd00zmNx-xb12zoum49oC+sa2icBe9sULfm28s36FVMO6vA@mail.gmail.com>
+References: <CANMsd03Ea55cV5aoDP0jfA9_+wgW81omLjzvQLN+-w-hgNyzXQ@mail.gmail.com>
+	<517E3981.5060103@huawei.com>
+	<CANMsd01LVJarAAzSx-Mpvo_CJkWU6hXZCmu4dh44RNHsEY_51g@mail.gmail.com>
+	<517F86AD.1040604@huawei.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
+        d=googlemail.com; s=20120113;
         h=mime-version:x-received:in-reply-to:references:date:message-id
          :subject:from:to:cc:content-type;
-        bh=2QoEQyoqdex/nLlyflQOjB90rsKjqgsC6rjqxXLFDQg=;
-        b=UTjnlV5UF1pArYxqQAUFEUNxgSHnvJOkWH+MPKg9A+5LfBEP+IVKxaCAAQJbdoSHGT
-         TZRlYmadSIfFqrfL+AobpQGJjlz2rAMF8Zj4BfD9jIHFBrGhpUwP3cD5p/D3Bt0neSfU
-         pYgjzEg3n/kVpaBPiv8FX/gUcl9+tR0nv0Skqiwk3x0VADM36Y7AMPvAx9tyxkyepVlz
-         EGhfRgknTJPh1bIlySvcD1rmWJXGasGzVULTs1aLqew5Y05Ke8LDaEAALwgYUwfrHXAd
-         ilQFiCWhVNkeaFSZzBreEpMNVV76iK+DuK4t1hSJuwhP4R2/PcxZRqqzxHgCcK9zRUCt
-         nIEA==
-In-Reply-To: <517FB553.3000001@meduna.org>
+        bh=6SwvMam+o2BttGc0ISb0rv73SzDunZOQxSzshTdsCSc=;
+        b=0qcJxeZqVIgVakaONXmgD/CrHYfyVFE5uXZbPmCvm7vBt41KK7QeQKmRtiYEUL3tuJ
+         Tj9Ql6on7AIIywpiidJUTranfyFLEOR0FQbsd9mojStDuXj4RlDBls1OPF3z+DZF+bZD
+         x7u6FEA5AO/H5MCX5lY3GH0uHjuyUS7kqPvGL2XUztz4g+OpvhjNebSyH0hP58KHhgIu
+         oPXtN/GHa+ENSJDrGC2aIpLZ9WB7cGE/zvmmXFNi95B5OxIO3Qd0SU/SvqsMrRnN6EOq
+         SMKzIVuZYVl1likcS5opMkhFIgifwkT5ccgcCnvw0FCbCl8a15KcwyxgVD7k2dKLah38
+         yH/A==
+In-Reply-To: <517F86AD.1040604@huawei.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Stanislav Meduna <stano@meduna.org>
-Cc: linux-embedded@vger.kernel.org, linux-newbie@vger.kernel.org, Linux ARM Kernel <linux-arm-kernel@lists.infradead.org>, linux-rt-users@vger.kernel.org
+To: Mario Smarduch <mario.smarduch@huawei.com>
+Cc: linux-newbie@vger.kernel.org
 
-Thanks for all the replies.
-I am stuck with this issue for more tan a month. Explained this in
-more detail at:
+Hi Mario,
+   Thanks for your inputs. I understood the diabling the irq on the
+local CPU by spinlock_irqsave function.
 
-http://stackoverflow.com/questions/15805231/need-to-improve-the-linux-performance-for-embedded-system
+   Can you also explain why should someone use spinlock_irqsave
+instead of spinlock call.
+   Why someone would want to also disable interrupts while holding a spinlock.
 
-But with no response from anyone.
-
-I use PREEMPT patch for 2.6.33 vanilla kernel.
-
-I have pasted all the processes running on my system:
-
-  PID USER       VSZ STAT COMMAND
-    1 root      3192 S    init
-    2 root         0 SW   [kthreadd]
-    3 root         0 SW   [ksoftirqd/0]
-    4 root         0 SW   [events/0]
-    5 root         0 SW   [khelper]
-    8 root         0 SW   [async/mgr]
-   84 root         0 SW   [sync_supers]
-   86 root         0 SW   [bdi-default]
-   88 root         0 SW   [kblockd/0]
-   91 root         0 SW   [omap2_mcspi]
-  116 root         0 SW   [rpciod/0]
-  123 root         0 SW   [kswapd0]
-  124 root         0 SW   [aio/0]
-  125 root         0 SW   [nfsiod]
-  126 root         0 SW<  [kslowd001]
-  127 root         0 SW<  [kslowd000]
-  128 root         0 SW   [crypto/0]
-  267 root         0 SW   [mtdblockd]
-  351 root         0 SWN  [jffs2_gcd_mtd8]
-  359 root      3192 S    /sbin/syslogd
-  361 root      3192 S    /usr/sbin/telnetd
-  364 root      1996 S    vsftpd
-  410 root     43844 S   my_appl
-  416 root     56412 S <  my_appl
-  417 root     84804 S    my_appl
-  418 root     43844 S    my_appl
-  419 root     84824 S    my_appl
-  430 root     46552 S <  my_appl
-
-The process my_appl is my application processes.
-
-the ksoftirq is running with SCHED_OTHER.
-
-$ chrt -p 3
-pid 3's current scheduling policy: SCHED_OTHER
-pid 3's current scheduling priority: 0
-
-I will test by changing ksoftirq priority to see how it works.
-
-Regards
-Ashoka.  K
+   One situation i can think of is as using spinlock_irqsave inside an
+interrupt handler. Is this correct.
+   But i also read that when one interrupt handler is being processed
+- Linux will mask the same interrupt handler from being called again
+until the current one has finished processing.
+   that is  - Until the processing of interrupt handler is complete.
+Linux will disable the future interrupts of the same type.
+   In that case why should be disable interrupts by calling (
+spinlock_irqsave) and use only spin_lock call alone.
 
 
-On Tue, Apr 30, 2013 at 5:43 PM, Stanislav Meduna <stano@meduna.org> wrote:
->>> This critical thread is at RR priority 50.
+Thanks
+
+
+On Tue, Apr 30, 2013 at 2:24 PM, Mario Smarduch
+<mario.smarduch@huawei.com> wrote:
+> On 4/29/2013 11:21 AM, Ryan wrote:
+>>> spin_lock_irqsave(lock,flags)/ affects the running
+>>> > CPU, it does not disable any device IRQ. Device
+>>> > interrupts may be taken by other CPUs. There is a whole
+>>> > other set of calls that deal with individual IRQs.
+>> You mean to say that
+>>       a) Device IRQ can be taken care of some other core of the Same CPU?
+>>       b) If the CPU Load is Less. then only one core will be active.
+>> In that case - The device irq will be blocked?
+>>
+>>
 >
-> Try to put it higher than the irq thread handling your HD hardware.
-> I've even encountered hardware where I had to put the ATA thread
-> in the SHED_OTHER domain - see [1] for the thread.
+> I don't understand (a), in SMP you may disable IRQs on a CPU
+> (via *_irqsave()) but other CPUs may continue to receive interrupts.
+> The CPU load has nothing to do with blocking IRQs (on vanilla kernel)
+> To disable device IRQ you must disable it at the interrupt controller
+> level like disable_irq().
 >
->>> I used a HR timer thread with RR pri 55 to wakeup the critical thread
->>> every 1 milli sec to do the job.
->
-> Which prio is the ksoftirqd running at? The HRTIMER interrupts are
-> routed through it so it also has to be high enough.
->
-> I got burned with this myself [2]
->
-> Regards
->                                      Stano
->
-> [1] http://www.spinics.net/lists/linux-rt-users/msg08711.html
-> [2] http://www.spinics.net/lists/linux-rt-users/msg08745.html
 >
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
