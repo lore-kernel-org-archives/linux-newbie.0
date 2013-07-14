@@ -1,48 +1,39 @@
-From: Pankaj Jangra <jangra.pankaj9@gmail.com>
-Subject: Re: severeCamelCaseInfestation
-Date: Sun, 7 Jul 2013 11:26:32 -0700
-Message-ID: <CADTbHxpZPwoUje=hxBddxEE61zhbAMDi=bJ1Y+WHfnS_RvXRbg@mail.gmail.com>
-References: <51AD7ACD.90900@gmail.com>
+From: "Liang(Bill) Wang" <bill.liangwlw@gmail.com>
+Subject: why struct cdev has not a struct device embedded?
+Date: Sun, 14 Jul 2013 18:40:27 +0800
+Message-ID: <1373798427.11284.11.camel@localhost.localdomain.facesea>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
-         :cc:content-type;
-        bh=3vQhoANEBeEhrljxDMoKChOOQbeuN5uRbNd/6f8yBTw=;
-        b=H74tngQgl+1J8A5zY9XV8pcErJSEMbnyMIoqgfNt/8ZxY7U5LQ62XAvq22Qne+PZ+F
-         a92lVR3SDxEjv/l/Qe58xbUo+scxLWQkhq0hWu027P9LMqFmS8Gx9io6dKKnNaum+VJa
-         q/odWi/GbairJfosY1fN0CSG6QVk0E3IUcWqLDuNH0G4zPcE9RbKZ1tL6MZKUg+IwTQc
-         u/OVWV7OnFaOis1/F92biMASKSOQv9CvQbOJboShvZ9YdphMhTryb44mdiGfuVDqdD8B
-         cKCwo+gZi0zrSpZg4q6FeXGk79F6eSZ2/Atvn/cLdLl+pU6Kf20b0EH//gRhdfxtG130
-         INRw==
-In-Reply-To: <51AD7ACD.90900@gmail.com>
+        h=message-id:subject:from:to:date:content-type:x-mailer:mime-version
+         :content-transfer-encoding;
+        bh=haI9C/hzvJ5qKrE9yidIqWpDcEqrGoyDXS2PtFVB4dk=;
+        b=XI2gn9/a7/iBdFTTb10YnfhOQM0UsChyIta2GZqu8wI1FdPfwAyGscXVIoLuVbBkhG
+         kubLHhduTQ6yH5sxdixrLtVdtKdLVMLRqwr/gIypZZhbIWzuNAVhjK9TyNIAG8pNtudV
+         3DsvxN6UwoPZ3/PjQwh/lPKe7sJXDMjLaqvDVjxUHvukdnyQE8fycWiSA9Tr7DE1nAdK
+         kBngx1GgepAmMhP9cW75BQrbHNXdU04h/Xj+82RoIresiWXQlqPnukHZn6XOFM5Z8ZSX
+         EHXun6vab+dL1sNHoE3+50hLW2/Ei9DJ7pLR1nz2sXbrCv+1dBC0hXci8+sMFRJj7/oX
+         5ltA==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Harsh Kumar <harsh1kumar@gmail.com>
-Cc: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+To: linux-newbie@vger.kernel.org
 
-Hi Harsh,
 
-On Mon, Jun 3, 2013 at 10:27 PM, Harsh Kumar <harsh1kumar@gmail.com> wrote:
-> Hi,
->
-> 1.) What is the naming convention/style for linux kernel? Is camel case not allowed & only snake case is allowed?
->
-> I found a TODO in drivers/staging/winbond/TODO which says - fix severeCamelCaseInfestation
->
-> 2.) If only snake case is to be used, are there any other stipulations (like starting a type of variable name with underscore) ?
->
-> 3.) I have read Documentation/CodingStyle. Is there any other document on this?
->
-This document is sufficient in my opinion. Also you can check your
-changes with scripts/checkpatch.pl. This scripts will also help you to
-learn more.
+Hi, all
 
-Regards,
-Pankaj Jangra
+There is a question that there is struct kobject embed in struct cdev,
+and struct device.
+
+Does it is better that a struct device is embedded in a a struct cdev
+directly?
+
+Kind Regards
+Bill Wang
+
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
