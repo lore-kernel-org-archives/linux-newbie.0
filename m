@@ -1,33 +1,28 @@
-From: "Bob.Wang" <merrysoft@tom.com>
-Subject: about kernel stack FP
-Date: Thu, 18 Jul 2013 16:32:14 +0800
-Message-ID: <000101ce8391$4ec1e6b0$ec45b410$@com>
+From: "Stepina, Alina" <Alina.Stepina@emc.com>
+Subject: (unknown)
+Date: Fri, 26 Jul 2013 08:46:58 -0400
+Message-ID: <9BD9A5CBDB7AA84C904151C4DB793B73FDD16513@MX18A.corp.emc.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-apps-owner@vger.kernel.org>
-Content-Language: zh-cn
-Sender: linux-apps-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
-Cc: linux-apps@vger.kernel.org, linux-bbs@vger.kernel.org
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Subject: 
+Content-Language: en-US
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-Hello everyone
+Subj: Cgroups: RT-Scheduler
 
-I have meeted a problem with linux kernel 2.6.X.X that my user app wants to
-get thread kernel stack frame ponter(FP)
-from user space by system call or /proc system or any other ways except
-driver. I do not want to write a driver,) to steal
-FP from kernel. I have tried to use ptrace syscall to get FP with command
-PTRACE_GETREGS, but It returns only user 
-stack FP rather than kernel stack fp.
-
-would anyone please to give me a hint to solve the problem.
+Hi folks,
+I'm working with cgroup now, and I can't understand RT mechanism's destination. What is the real case for RT scheduler in cgroup? In what cases should I restrict RT-threads? As far as I understand, a RT-thread has highest priority in system, and what the reason to give ability to make TS-thread higher priority? If someone has such experience please share it.
 
 
-thanks a lot.
+Regards,
+Alina Stepina
 
-regards
-
-Bob Wang
-
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
