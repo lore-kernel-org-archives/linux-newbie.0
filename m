@@ -1,40 +1,40 @@
-From: Ashoka K <ashok.vinu@gmail.com>
-Subject: Any issue to be considered if ethernet send buffer is modified
-Date: Fri, 30 Aug 2013 13:51:14 +0530
-Message-ID: <CALJd4cb9aZF=jzbYiAf518KW-hS+QR4u0JDHefmR5Q4DipOuPw@mail.gmail.com>
+From: Peter Nabbefeld <peter.nabbefeld@gmx.de>
+Subject: Which distro?
+Date: Fri, 13 Sep 2013 15:23:04 +0200
+Message-ID: <l0v3jt$47e$1@ger.gmane.org>
 Mime-Version: 1.0
-Return-path: <linux-rt-users-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=l9st3EbtTXR5ufWk/6M4wXeMEiUH4jJtkIth460TJJk=;
-        b=KbKqFcJv287uOGpIYQuMOxnpiE0SzpB8FNmgOmK7f/6kYQgCZdFaimuIChXBobUP3i
-         3uEXVhKJzT/5FIDIQZWzpbY5/pD24EeTi2TNImajFnQOUvLEiGpPAuonvHv7xFs2hy+8
-         tM9U3NRwoi1pE7px89GeFgUn4Kh6nMMUQBVx8TxaMoMHj1KVJWqPY3tBJaSkEzBTUu/b
-         Ky4XZ4UEOxRvsDHD+sHUmCf2zqroDPHpgxWsMNDTkrBpnBfN7+6de4SW1r1skG05IIt2
-         YZrqPVogBBKm6y3YppF67jG5OOexwWjxKGOPN+onvlfNHFAYF2mVq75vy4418EhL5erd
-         ijfw==
-Sender: linux-rt-users-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, Linux RT Users <linux-rt-users@vger.kernel.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
+Sender: linux-newbie-owner@vger.kernel.org
+List-ID: <linux-newbie.vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-Hi,
 
-I use embedded system with 2.6.33, Preempt patch. To reduce the
-latency of sending data by our application, the ethernet send buffer
-is modified with setsockopt().
 
-Before modification the send buffer size by default was shown as 16384 bytes.
-But on proc system value shown is different, both default and max are same:
-/proc/sys/net/core/wmem_default = 108544
+Hi all,
 
-Eventhough the above value is not modified, why the default is shown
-as 16384 instead 108544. Did kernel change these values during sending
-traffic ?
+which linux distribution would You recommend?
 
-If send buffer is set by setsockopt(), is this value modified by
-kernel during run time?
+I'm looking for something easy to maintain and up-to-date.
 
-AK
+I've tried Xubuntu, but it seems to me not to be very reliable, as I'm 
+getting some problems upgrading:
+- It semms to do an upgrade, but obviously some files aren't upgraded. 
+They're still shown as an "alarm", but cannot upgrade those. :(
+- As I cannot get enough info about those updates, that might or might 
+not be a security problem.
+
+I know (and like) gentoo, but it's too complex for doing everyday-tasks.
+
+There're numerous linux distros ou there, could somebody tell me about 
+other well-maintained distros, please?
+
+Kind regards
+Peter
+
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
