@@ -1,43 +1,28 @@
-From: cr <cr@orcon.net.nz>
-Subject: Re: Which distro?
-Date: Tue, 24 Sep 2013 23:32:55 +1200
-Message-ID: <201309242332.55618.cr@orcon.net.nz>
-References: <l0v3jt$47e$1@ger.gmane.org> <201309141313.23034.cr@orcon.net.nz> <523DA404.7070804@NorthTech.US>
+From: Rajat Jain <rajatjain@juniper.net>
+Subject: [PCIe spec question] How to get PCI express link up / link down
+ notifications?
+Date: Fri, 4 Oct 2013 01:40:49 +0000
+Message-ID: <1fa2fecbcbe147cc83a3011ff23e3d1a@BN1PR05MB123.namprd05.prod.outlook.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <523DA404.7070804@NorthTech.US>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: Text/Plain; charset="us-ascii"
-To: linux-newbie@vger.kernel.org
+To: "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "linux-hotplug@vger.kernel.org" <linux-hotplug@vger.kernel.org>
+Cc: Guenter Roeck <groeck@juniper.net>, "kernelnewbies@kernelnewbies.org" <kernelnewbies@kernelnewbies.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-On Sunday 22 September 2013 01:49:56 Bradley D. Thornton wrote:
+Hello,
 
-(huge snippage)
-> 
-> Excellent suggestions, cr, to the OP's original question - things that
-> should definitely be weighed and considered before going forward and
-> engaging in the actual evaluation :)
-> 
-> Kindest regards,
+I have a HW which is not compliant with the PCI Express hot-plug (as described in the PCI express spec) because the HP signals from the downstream port are simply not connected. And I have a PCI express endpoint, that in the course of its life, will routinely undergo power-off and power-on on cycles. Hence the PCIe link to this device is expected to come down, and come up as part of regular operation.
 
-Thanks for the kind words, Bradley.
+I'm reading the PCI express spec trying to understand if it is possible to get notification interrupts, whenever the PCIe link to this device goes down or goes up. Can someone please help me understand if it is possible?
 
-I should add that, until recently, I was on dial-up, which made updating via 
-internet impractical, so I just used to update via the DVD install set when a 
-major new release of the distro came out - this meant I had a use for the 
-'abandoned' partition that the last-but-one OS was in.   In effect I used to 
-alternate partitions, so it wasn't entirely a wasted partition.
+In the link control register, I only see the capability to generate interrupts when "link bandwidth" changes and looking at the text, I doubt if Link down or link up counts as "link bandwidth change". Is there a way to generate and interrupt / notification when the Link goes up or down?
 
-But I hope, between your comments and mine, the OP can find something that 
-suits his requirements.
+Thanks,
 
-Cheers
+Rajat Jain
 
-cr
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+
