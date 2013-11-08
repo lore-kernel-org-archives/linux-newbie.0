@@ -1,46 +1,29 @@
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Subject: Re: Any issue to be considered if ethernet send buffer is modified
-Date: Fri, 11 Oct 2013 11:51:23 +0200
-Message-ID: <20131011095123.GB6983@linutronix.de>
-References: <CALJd4cb9aZF=jzbYiAf518KW-hS+QR4u0JDHefmR5Q4DipOuPw@mail.gmail.com>
+From: Rajat Jain <rajatjain@juniper.net>
+Subject: How to find out which part of code is changing a particular data
+ structure.
+Date: Fri, 8 Nov 2013 00:46:13 +0000
+Message-ID: <70853dc9fbf84454b3db81630a6ce99e@BLUPR05MB118.namprd05.prod.outlook.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <CALJd4cb9aZF=jzbYiAf518KW-hS+QR4u0JDHefmR5Q4DipOuPw@mail.gmail.com>
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Ashoka K <ashok.vinu@gmail.com>
-Cc: linux-newbie@vger.kernel.org, Linux RT Users <linux-rt-users@vger.kernel.org>
+To: "kernelnewbies@kernelnewbies.org" <kernelnewbies@kernelnewbies.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-* Ashoka K | 2013-08-30 13:51:14 [+0530]:
+Hi folks,
 
->Hi,
-Hi,
+I have a memory location (One of the fields in a kernel data structure) and I want to track down the code that changes the value of that particular location. Some thing like a "watchpoint".
 
->I use embedded system with 2.6.33, Preempt patch. To reduce the
->latency of sending data by our application, the ethernet send buffer
->is modified with setsockopt().
->
->Before modification the send buffer size by default was shown as 16384 bytes.
->But on proc system value shown is different, both default and max are same:
->/proc/sys/net/core/wmem_default = 108544
->
->Eventhough the above value is not modified, why the default is shown
->as 16384 instead 108544. Did kernel change these values during sending
->traffic ?
->
->If send buffer is set by setsockopt(), is this value modified by
->kernel during run time?
+And this is early while I am still booting up. Can some one tell me if it is possible to do so?
 
-Try to grep for sysctl_wmem_default. Atleast on v3.10 this value is
-initialized at compile time and only updated via sysctl and not by the
-kernel.
+Thanks,
 
->AK
+Rajat
 
-Sebastian
+ 
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
