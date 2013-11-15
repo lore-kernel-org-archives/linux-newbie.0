@@ -1,42 +1,34 @@
-From: fche@redhat.com (Frank Ch. Eigler)
-Subject: Re: How to find out which part of code is changing a particular data structure.
-Date: Fri, 08 Nov 2013 16:03:09 -0500
-Message-ID: <y0mhabm7gj6.fsf@fche.csb>
-References: <70853dc9fbf84454b3db81630a6ce99e@BLUPR05MB118.namprd05.prod.outlook.com>
+From: Rajat Jain <rajatjain@juniper.net>
+Subject: Ordering / preemption of work in a workqueue preempt?
+Date: Fri, 15 Nov 2013 15:16:24 +0000
+Message-ID: <834014ed7d7049668a1aa1e2e16d6e87@BLUPR05MB118.namprd05.prod.outlook.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <70853dc9fbf84454b3db81630a6ce99e@BLUPR05MB118.namprd05.prod.outlook.com> (Rajat Jain's message of "Fri, 8 Nov 2013 00:46:13 +0000")
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Rajat Jain <rajatjain@juniper.net>
-Cc: "kernelnewbies@kernelnewbies.org" <kernelnewbies@kernelnewbies.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+To: "kernelnewbies@kernelnewbies.org" <kernelnewbies@kernelnewbies.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
 
-Rajat Jain <rajatjain@juniper.net> writes:
+Hi,
 
-> [...]  I have a memory location (One of the fields in a kernel data
-> structure) and I want to track down the code that changes the value
-> of that particular location. Some thing like a "watchpoint".
+I have a single work queue, on which I have scheduled a worker function [using queue_work(wq, fn)] in interrupt context. 
 
-See the register_wide_hw_breakpoint API.  You could write a small
-module that runs early, and gets callbacks when a given address is
-modified.
+I get the interrupt twice before the work queue gets a chance to run, and hence the same function will get queued twice (with different private context - arguments etc) which is fine and expected.
 
+Questions:
 
-> And this is early while I am still booting up. Can some one tell me
-> if it is possible to do so?
+1) Is it possible that the instance that was queued by 2nd interrupt, can get to run BEFORE the instance that was queued by 1st interrupt? In other words, is reordering possible?
 
-(Were it not for the 'while still booting up' part, I'd suggest trying
-systemtap's 
+2) Is it possible that one running instance of the function, can get preempted by second instance of the same work queue? I read through http://lwn.net/Articles/511421/ and it talks about same work queue cannot run on different CPU, but I have doubt about single CPU. If If I am writing a worker function, does my code have to be ready that it can be preempted by another instance of the same function?
 
-        probe kernel.data("SYMBOL").write { }
- or     probe kernel.data(0xDEADBEEF).write { }
+Please note that I understand that my worker function can preempted by other processes, my doubts are related to the same workqueue.
 
-probes, but we haven't worked through initramfs'ifying the widget.)
+Thanks,
 
+Rajat
 
-- FChE
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
