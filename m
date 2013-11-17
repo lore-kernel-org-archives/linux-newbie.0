@@ -1,7 +1,7 @@
 From: anish singh <anish198519851985@gmail.com>
 Subject: Re: Ordering / preemption of work in a workqueue preempt?
-Date: Fri, 15 Nov 2013 21:11:43 -0800
-Message-ID: <CAK7N6vo5M4RLLyr3kHTvk-wXv12taHzzQ+YPe0Bn2MFqE2opUA@mail.gmail.com>
+Date: Sat, 16 Nov 2013 20:10:49 -0800
+Message-ID: <CAK7N6voHxx702ZZimdv=18Z_Rxgaw9YJMRHC=CqGEKEmrJzEKw@mail.gmail.com>
 References: <834014ed7d7049668a1aa1e2e16d6e87@BLUPR05MB118.namprd05.prod.outlook.com>
 	<CAAYFAvqymyLw-jp8bk5c-S=zrXmcHzBGkbgF0J0ZpiGDnOSzrw@mail.gmail.com>
 Mime-Version: 1.0
@@ -10,13 +10,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:in-reply-to:references:date:message-id:subject:from:to
          :cc:content-type;
-        bh=TqR/DnIyZBloikwcoo0CwRKNqAX/osHUZTNHJkgv9Ro=;
-        b=cj7A0Ah+tsAtitUEgZ9vnwZQGCXz8ECh3TFdQHry6bc66KlfBJMvwnEAMfzFALPyoY
-         hPyhvYi+QzECtrdh6vFK8TDycxYfBdOSRSi5nxDIp/wj5EGrhDjdfplhxXeLdI8X0IcP
-         jhtpiO97e8DqscSZYNk0BAJSCZg9gUXEsfJcxeMRU4GIMToCL0mjWYLQw0fZwXl0IAYY
-         Ykwb0QWdhT5WJWkAFMkMcHz/RlmoYp4O+oa8wFNOtS7CWOsYZvco+FFc1xFjf4JmI0lJ
-         fRiya1T42q8CD26OErFUNyJbigPY9Ld3yXSj3B4IZbD+78bKgaqnrxxnrYqXzRSpBKu2
-         1Ogg==
+        bh=6Ed+Mpt+hP6nfQxWUEVyedgO1U7FiHPnnCgWnqHvwaU=;
+        b=fW8d3jLXuO9mnQNsTmQsmQEoY2S+/7a7qkRa6YSMk1oh6ZiK8xo8r5V2q2Pis0DEve
+         MO9HYSq1DHfV1ePHFR+cb2T44Sj+SwTdL8hwARPxesRcpx9xtpZSKnMuag/M7O3cTnDA
+         AuBbM1HW89mfHpB2DyzN6wcd/C5qXKFsdQuo0I5a9AX39FpbfPbWs6v6I6oto8KEbipa
+         zuzmeJNiuf/O6EIb7dzJLLi0gH7AmY6mzp3+BfgnEGbfO2Hq4PvG78g9lFWKfAFgq+Qt
+         ptFyKraIwDr9qYalb9YZVPp8uUf2f1HIvySs02x/iaH1Mt256vmMlw8aolKee3H7/JAR
+         buJw==
 In-Reply-To: <CAAYFAvqymyLw-jp8bk5c-S=zrXmcHzBGkbgF0J0ZpiGDnOSzrw@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
@@ -45,10 +45,11 @@ On Fri, Nov 15, 2013 at 5:01 PM, Rajat Sharma <fs.rajat@gmail.com> wrote:
 >> 1) Is it possible that the instance that was queued by 2nd interrupt, can
 >> get to run BEFORE the instance that was queued by 1st interrupt? In other
 >> words, is reordering possible?
+use alloc_ordered_workqueue: only one workqueue will be active at a time
+and it will execute in the queued sequence.
 >
 >
 > It is unlikely as workqueue would have internal queing of tasks.
-And where is the code to back that up?
 >
 >>
 >>
@@ -58,14 +59,6 @@ And where is the code to back that up?
 >> run on different CPU, but I have doubt about single CPU. If If I am writing
 >> a worker function, does my code have to be ready that it can be preempted by
 >> another instance of the same function?
-What do you mean by 'one running instance of the function', did you mean
-workqueue function?AFAIK same instance of the work queue can't run on different
-CPU.You should write code such that it can be preempted by another
-instanceof the
-same workqueue but I think if you don't want that then you should call workqueue
-API with proper input parameters.
-Have a look at Documentation/workqueue.txt
-
 >>
 >
 > Do you mean the system has just one CPU, then there would be just one worker
