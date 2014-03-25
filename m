@@ -1,43 +1,15 @@
-From: Rajat Jain <rajatjain@juniper.net>
-Subject: RE: How to only send emails, but do not get any?
-Date: Wed, 18 Dec 2013 15:39:25 +0000
-Message-ID: <cd4415d193544cc3a84eec6878748b78@BY2PR05MB662.namprd05.prod.outlook.com>
-References: <86e83df2a5a34dceb80011d3f7dfbdfc@DM2PR05MB671.namprd05.prod.outlook.com>
- <52B1AC25.9030406@gmail.com>
+From: "Adrian Gillian  Bayford" <clany391@morrisville.edu>
+Subject: You have received 1.5m pounds as donation see link www.bbc.co.uk/news/uk-england-19254228 send name address and phone number for info
+Date: Tue, 25 Mar 2014 11:22:06 +0530
+Message-ID: <35a0a700-19cb-4636-90b8-f489868e5fab__35436.9406858042$1395726778$gmane$org@system38.csntprod.morrisville.edu>
+Reply-To: <adrian_bayford11@yahoo.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <52B1AC25.9030406@gmail.com>
-Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Dolan Murvihill <dmurvihill@gmail.com>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
-
-QWN0dWFsbHkgSSB0aG91Z2h0IHRoYXQgKGF0bGVhc3QgYXQgc29tZSBwb2ludCBpbiB0aW1lKSBt
-YWpvcmRvbW90IHVzZWQgdG8gb2ZmZXIgdG8gY2hhbmdlIHN1YnNjcmlwdGlvbiBvcHRpb25zIHRv
-Og0KDQoqIDEgZW1haWwgcGVyIG1lc3NhZ2UNCiogZGFpbHkgZGlnZXN0DQoqIG5vIGVtYWlsDQoN
-Ckxvb2tzIGxpa2UgdGhlIHdlYiBpbnRlcmZhY2UgdG8gbWFqb3IgZG9tbyBpcyBhbHNvIGdvbmUg
-YWxvbmcgd2l0aCB0aGUgb3B0aW9uIG9mIHRoaXMgY2hvaWNlLg0KDQpUaGFua3MsDQoNClJhamF0
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRG9sYW4gTXVydmloaWxs
-IFttYWlsdG86ZG11cnZpaGlsbEBnbWFpbC5jb21dDQo+IFNlbnQ6IFdlZG5lc2RheSwgRGVjZW1i
-ZXIgMTgsIDIwMTMgNjowOCBBTQ0KPiBUbzogUmFqYXQgSmFpbjsgbGludXgtbmV3YmllQHZnZXIu
-a2VybmVsLm9yZw0KPiBTdWJqZWN0OiBSZTogSG93IHRvIG9ubHkgc2VuZCBlbWFpbHMsIGJ1dCBk
-byBub3QgZ2V0IGFueT8NCj4gDQo+IFRoYXQgc2hvdWxkIGJlIGVhc3kgdG8gZG8gd2l0aCBhIGxv
-Y2FsIGZpbHRlci4gSSdkIHBsYXkgd2l0aCB5b3VyIG1haWwNCj4gY2xpZW50J3MgZmlsdGVyaW5n
-IG9wdGlvbnMuDQo+IA0KPiBSYWphdCBKYWluOg0KPiA+IEhpIEZvbGtzLA0KPiA+DQo+ID4gSSBo
-YXZlIGJlZW4gdHJ5aW5nIHdpdGggbm8gc3VjY2VzcywgdG8gZGV0ZXJtaW5lIGhvdyBjYW4gSSBj
-aGFuZ2UgbXkNCj4gbGlzdCBvcHRpb25zIHN1Y2ggdGhhdDoNCj4gPg0KPiA+IEkgc2hvdWxkIGJl
-IGFibGUgdG8gc2VuZCBlbWFpbHMgdG8gdGhlIGxpc3QsIGJ1dCBnZXQgb25seSB0aGUgcmVwbGll
-cw0KPiB0aGF0IHdlcmUgZXhwbGljaXRseSBjb3BpZWQgdG8gbWUgKE5vdCB0aGUgZ2VuZXJhbCBi
-cm9hZGNhc3QgZW1haWxzIGZyb20NCj4gdGhlIGdyb3VwKS4NCj4gPg0KPiA+IENvdWxkIG5vdCBm
-aW5kIGFueXRoaW5nIGZyb20gbWFqb3Jkb21vIGhlbHAuIEFuZCBubyB3ZWIgbGluayBhbHNvLg0K
-PiA+DQo+ID4gQXBwcmVjaWF0ZSBhbnkgaGVscC4NCj4gPg0KPiA+IFRoYW5rcywNCj4gPg0KPiA+
-IHJhamF0DQo+ID4gTiAgICAgciAgeSAgIGIgWCAgx6d2IF4gKd66ey5uICsgICAgeyAgIBsg6Ke2
-FyAg3Kh9ICAgxqB6ICZqOit2DQo+ID4gICAgIHpaKyAgK3pmICAgaCAgIH4gICAgaSAgIHogHiB3
-ICAgPyAgICAmICnfohtmICBeasereSBtICBAQSBhICB/DQo+IA0KPiAwICkgIFcgIHorICAgcXM9
-PQ0KPiA+DQo+IA0KPiANCj4gLS0NCj4gTm90IHNpZ25lZCB3aXRoIG15IGtleT8gTm90IGZyb20g
-bWUuDQoNCg==
+Content-Type: text/plain; charset="us-ascii"
+To: 
 
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
