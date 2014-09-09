@@ -1,42 +1,56 @@
-From: Paul Bolle <pebolle@tiscali.nl>
+From: Valdis.Kletnieks@vt.edu
 Subject: Re: x86_64_defconfig and i386_defconfig: What is the difference?
-Date: Tue, 09 Sep 2014 16:19:54 +0200
-Message-ID: <1410272394.16079.10.camel@x220>
-References: <a06a49ac87e44c0d89d88514d7a28678@DM2PR05MB671.namprd05.prod.outlook.com>
-	 <22561.1410268883@turing-police.cc.vt.edu>
+Date: Tue, 09 Sep 2014 10:26:27 -0400
+Message-ID: <75664.1410272787@turing-police.cc.vt.edu>
+References: <a06a49ac87e44c0d89d88514d7a28678@DM2PR05MB671.namprd05.prod.outlook.com> <22561.1410268883@turing-police.cc.vt.edu>
+            <1410272394.16079.10.camel@x220>
 Mime-Version: 1.0
+Content-Type: multipart/signed; boundary="==_Exmh_1410272787_2315P";
+	 micalg=pgp-sha1; protocol="application/pgp-signature"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <22561.1410268883@turing-police.cc.vt.edu>
+In-Reply-To: Your message of "Tue, 09 Sep 2014 16:19:54 +0200."
+             <1410272394.16079.10.camel@x220>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Valdis.Kletnieks@vt.edu
+To: Paul Bolle <pebolle@tiscali.nl>
 Cc: Rajat Jain <rajatjain@juniper.net>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@kernelnewbies.org>
 
-On Tue, 2014-09-09 at 09:21 -0400, Valdis.Kletnieks@vt.edu wrote:
-> On Tue, 09 Sep 2014 07:58:49 -0000, Rajat Jain said:
-> > Can someone tell me if the i386 one is to be used when we want to build for a
-> > 32bit machine and the x86_64 is to be used for 64 bit machine?
-> 
-> I wouldn't run either one on an actual machine.  Defconfigs are *example*
-> configs, only useful as a template for customizing for actual hardware.
+--==_Exmh_1410272787_2315P
+Content-Type: text/plain; charset=us-ascii
 
-It is probably easiest to take the .config file of the latest kernel of
-the distribution you are using as a starting point. In that case you
-know that this starting point at least works on your machine.
+On Tue, 09 Sep 2014 16:19:54 +0200, Paul Bolle said:
 
-(I remember seeing tutorials that show you how to generate a .config
-from scratch. I wonder whether anyone actually does that. It should be
-quite a bit of work for an uncertain outcome. Ie, you might end up
-trying quite a few configurations before hitting one that works
-reasonably for your machine.)
+> (I remember seeing tutorials that show you how to generate a .config
+> from scratch. I wonder whether anyone actually does that.
 
-Hope this helps,
+Distros did that originally.  Now they just keep delta'ing their
+known-working config.  The pain involved was part of why localmodconfig
+and friends were created....
 
+--==_Exmh_1410272787_2315P
+Content-Type: application/pgp-signature
 
-Paul Bolle
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Exmh version 2.5 07/13/2001
 
+iQIVAwUBVA8OEgdmEQWDXROgAQI50Q//VZew891dzj0zL+noTwyaLj5z87QPDh7X
+IwythsUowgejQ3c/D7UdN8odVdVSZqyGfOq16nbzTP87VPDyqE7NMiAswBuNtP9L
+S73KPe3gS9q0D0moPo3KFkXlCKqtjfwcNoCWdZNteX37AYTTthTT78OzJlV3Obs+
+EeB0DiZtYrwd70UdoNrO4rtVBkNjPwDVp1w+7U61V0/+B4PhiaRMUtIdQG5K1G4P
+0EgTGOBfpN4jyvuHpTAyMxsS6rNoe5i3Ae00HJ2cG+3Ct2ls1u1USvwHTaUYyJs3
+ifFGzlU/yv94W3RKxwZCpJraTGRGh1cNhvZHES8E+bVIPn55vRsV7VVRxStJOODR
+hFra3WODD/tWu+z9xAMrOdXdFY+1HIYrTcUwqbba+dI6cgKrr2vnUHU/XlK7iXBB
+thMEYkXzdjmdiNMvCE88gK7YzEw6IVrew2ekH2kHrmFskVgTH9Z4fQ0saNJNsHKv
+VwiipMmBw8N4R7xfPWnUHJQ1yh21lM6qCJy394qRMhQDGCNWZWGcsa8JfaRTXwSJ
+S7D1rdlXcq8TYReGsMKOfuLDX7Fwaz+FC34ffCHVIB9aLpX5G6/hK7bpyXcfqpt2
+sAdxMuoRqBuM852QWU/CWRYovscPJyqtVWg1AreoEqx05HY+g1qlyvq2ACvJkJGy
+WqzhiOLtoTQ=
+=HAi/
+-----END PGP SIGNATURE-----
+
+--==_Exmh_1410272787_2315P--
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
