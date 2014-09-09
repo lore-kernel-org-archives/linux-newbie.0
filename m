@@ -1,171 +1,89 @@
-From: "Abreu, Ian" <iabreu@akamai.com>
+From: Rajat Jain <rajatjain@juniper.net>
 Subject: RE: x86_64_defconfig and i386_defconfig: What is the difference?
-Date: Tue, 9 Sep 2014 10:34:43 -0400
-Message-ID: <75BAB5118F0972429E364A0C97634F2A0ABAE6241D@USMBX1.msg.corp.akamai.com>
+Date: Tue, 9 Sep 2014 15:11:00 +0000
+Message-ID: <5c5bb43b899f41d0baa2d358168e9b39@DM2PR05MB671.namprd05.prod.outlook.com>
 References: <a06a49ac87e44c0d89d88514d7a28678@DM2PR05MB671.namprd05.prod.outlook.com>
             <540F094F.3040904@gmail.com>
  <75730.1410272873@turing-police.cc.vt.edu>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=SHA1;
-	protocol="application/x-pkcs7-signature";
-	boundary="----=_NextPart_000_0012_01CFCC19.AB70F870"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-newbie-owner@vger.kernel.org>
 In-Reply-To: <75730.1410272873@turing-police.cc.vt.edu>
 Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 To: "Valdis.Kletnieks@vt.edu" <Valdis.Kletnieks@vt.edu>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rajat Jain <rajatjain@juniper.net>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@kernelnewbies.org>
+Cc: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@kernelnewbies.org>
 
-------=_NextPart_000_0012_01CFCC19.AB70F870
-Content-Type: text/plain;
-	charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Hi,
 
-To add to this, if you're trying to compile a kernel to work for a specific
-platform or board and it's not working, 'make menuconfig' is your friend for
-taking a bare bones kernel .config and making it your own.
+Thank you all for your responses. I got the answer I was looking for:
+
+> Hello Rajat,
+> 
+> Indeed, the i386 is for 32bits kernels, and x86_64 for 64 bits ones. If you
+> generate the configurations using "make ARCH=x86 defconfig" and "make
+> ARCH=i386 defconfig", you can easily compare the resulting configurations :
+> 
+> .config from i386_defconfig :
+> #
+> # Automatically generated file; DO NOT EDIT.
+> # Linux/i386 3.17.0-rc1 Kernel Configuration # # CONFIG_64BIT is not set
+> CONFIG_X86_32=y CONFIG_X86=y CONFIG_INSTRUCTION_DECODER=y
+> CONFIG_OUTPUT_FORMAT="elf32-i386"
+> CONFIG_ARCH_DEFCONFIG="arch/x86/configs/i386_defconfig"
+> ...
+> 
+> .config from x86_64_defconfig :
+> #
+> # Automatically generated file; DO NOT EDIT.
+> # Linux/x86 3.17.0-rc1 Kernel Configuration # CONFIG_64BIT=y
+> CONFIG_X86_64=y CONFIG_X86=y CONFIG_INSTRUCTION_DECODER=y
+> CONFIG_OUTPUT_FORMAT="elf64-x86-64"
+> CONFIG_ARCH_DEFCONFIG="arch/x86/configs/x86_64_defconfig"
+> ...
+> 
+> As you can see, i386 is the 32 bits variant of the x86 architecture. There are of
+> course many more differences between these two configurations.
+> 
+> Regards,
+> 
+> Hubert
+
+Thanks all again,
+
+Rajat
 
 
-
------Original Message-----
-From: linux-newbie-owner@vger.kernel.org
-[mailto:linux-newbie-owner@vger.kernel.org] On Behalf Of
-Valdis.Kletnieks@vt.edu
-Sent: Tuesday, September 09, 2014 10:28 AM
-To: Matthias Brugger
-Cc: Rajat Jain; linux-newbie@vger.kernel.org; kernelnewbies
-Subject: Re: x86_64_defconfig and i386_defconfig: What is the difference?
-
-On Tue, 09 Sep 2014 16:06:07 +0200, Matthias Brugger said:
-
-> > Can someone tell me if the i386 one is to be used when we want to 
-> > build for a 32bit machine and the x86_64 is to be used for 64 bit
-machine?
->
-> You can build the kernel with any architecture for any architecture.
-> This is called cross-compiling. The homepage [0] should explain you 
-> how to do that.
-
-Right, but you still need to use a .config appropriate for the target
-machine, which is what I think Rajat was asking about.
-
-A defconfig is usually only known verified to boot on a few (possibly one)
-examples of that architecture hardware.  For embedded ARM, it may be one
-specific development board or hardware device.  For x86, I think they try to
-keep it "will probably kind of sort of boot on generic PC hardware with a
-common distro, but anything fancylike a webcam or better graphics than "vga
-tty emulation" may not work".
-
-A defconfig is pretty much just a proof of concept starting point for an
-actual working config for a given hardware system.
-
-------=_NextPart_000_0012_01CFCC19.AB70F870
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="smime.p7s"
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAQAAoIISADCCA60w
-ggKVoAMCAQICEHzz/GscXD6OTELtkPAFBCIwDQYJKoZIhvcNAQEFBQAwGDEWMBQGA1UEAxMNQWth
-bWFpUEtJUm9vdDAeFw0wOTA0MjgxNDQzMjNaFw0yOTA0MjgxNDUzMjJaMBgxFjAUBgNVBAMTDUFr
-YW1haVBLSVJvb3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDHg35oORsqSDVtKlXN
-BH3kTPboZGPKhL6cxaBOAsPMu1icWBeIC+0u/7bPxNOIuToDkx2pVqEAjPpCfgsmv3Xx2UY9wKwj
-XE3Vu/M0YLSOgA64D/JDSkTb9nSYg2DzPTfH10DoKg/kU0SEt3sa1k2T6Ku3s9tZIon1BJcNFTAG
-nx+WF8+NQQbLMaR2EzGkVF2RY7HBIXNrjWy5/tN00u7jJbN0hOoYl3oSjhdigsJ+tn0Ge0CcrHId
-rFZle+C8uiYc8msazzDKCsTMnLdvXt2jWPM1Xc7UgoZ/en4UgmDj871gX8r+CtgOuA/bHLGkP6Dp
-FikbdxUCPT3XoQletC8pAgMBAAGjgfIwge8wCwYDVR0PBAQDAgGGMA8GA1UdEwEB/wQFMAMBAf8w
-HQYDVR0OBBYEFNg9O/P+HDpCd+Bcyi9mE+TaoAUMMBAGCSsGAQQBgjcVAQQDAgEAMIGdBgNVHSAE
-gZUwgZIwgY8GCSoDBAUGBwgJDzCBgTBYBggrBgEFBQcCAjBMHkoAQQBrAGEAbQBhAGkAIABDAGUA
-cgB0AGkAZgBpAGMAYQB0AGUAIABQAHIAYQBjAHQAaQBjAGUAIABTAHQAYQB0AGUAbQBlAG4AdDAl
-BggrBgEFBQcCARYZaHR0cDovL2FrYW1haXBraS9jcHMuaHRtbDANBgkqhkiG9w0BAQUFAAOCAQEA
-NHT0cXtlfszRk0tbIPfDrXOMnvgW+N3NuJxW5ZhYQODM7KRiJQAgqynYhfFwXb0S94nAunGzzIa9
-xCEDY6b98WDXM2Rr2bDaIcJS1OxWCH6J87/cEMZQf6gO4veseaveHjTiC4EDeWZ4nyYbUgT+6Rbz
-3xsxdfEhze49yLrqCtUYsG3FCrix5y9xLMy0YVMWRzp0T7I34buJCvBIyOsdIMErQQptNpmlRspl
-6B7MrV0AYY/FIxh8V3hHLu8HfrMQNsjRy08s9EiuKPe/1CFx5yZQOOt+8sn8EJ1NdXGUYTKBphD7
-u/lazncPr6fpcmKidmk6+H8i+9E7o44WpaaV6DCCBjYwggUeoAMCAQICChsbaFcAAAAAAAQwDQYJ
-KoZIhvcNAQEFBQAwGDEWMBQGA1UEAxMNQWthbWFpUEtJUm9vdDAeFw0wOTA2MDMxMzE2MjFaFw0x
-OTA2MDMxMzI2MjFaMF4xEzARBgoJkiaJk/IsZAEZFgNjb20xFjAUBgoJkiaJk/IsZAEZFgZha2Ft
-YWkxFDASBgoJkiaJk/IsZAEZFgRjb3JwMRkwFwYDVQQDExBBa2FtYWlQS0lJc3N1aW5nMIIBIjAN
-BgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoqPGGQN5Xz5QhjrAOiR5ZeKJ877eOxX2Ais/T5cL
-kVeRoJCv18uNcEhuRqbDl9G47784PzZi8nkjNbblwyXg8ZSweWnz1en5ZeDMdO6XQ8eQrKGMJ2FN
-70WUbW8uDJRw6oGcnsLvcFiN3lKRi/RdSSuO649Tkfzq+A9zFcxABosmmYDCSJ1+B6noMarjHG62
-AjwjPotnJo95wR7raXs+JRDsBVPXazas8aPduNyN/yBN/ianrjc/AKi2vzRETb98qvv3h2GWdif7
-nBew1UN2dIKmImH3AA5djlfpjU4NtP+XCoBHUtaLg7Npi7+GsYLcmB0b63L02cs9QCXA4oOeawID
-AQABo4IDOjCCAzYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUB+y0jq9nhlSI772zFFdJz4JM
-vxQwCwYDVR0PBAQDAgGGMBAGCSsGAQQBgjcVAQQDAgECMCMGCSsGAQQBgjcVAgQWBBSoJ9lbQyx7
-FwMht3LPL4u8ambeJDAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTAfBgNVHSMEGDAWgBTYPTvz
-/hw6QnfgXMovZhPk2qAFDDCCATAGA1UdHwSCAScwggEjMIIBH6CCARugggEXhiJodHRwOi8vYWth
-bWFpcGtpL0FrYW1haVBLSVJvb3QuY3JshjhodHRwOi8vYWthbWFpcGtpLmRmdzAxLmNvcnAuYWth
-bWFpLmNvbS9Ba2FtYWlQS0lSb290LmNybIaBtmxkYXA6Ly8vQ049QWthbWFpUEtJUm9vdCxDTj11
-c21hMWNhLXBraTAsQ049Q0RQLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNlcnZpY2Vz
-LENOPUNvbmZpZ3VyYXRpb24sREM9ZnIsREM9YWRzdmM/Y2VydGlmaWNhdGVSZXZvY2F0aW9uTGlz
-dD9iYXNlP29iamVjdENsYXNzPWNSTERpc3RyaWJ1dGlvblBvaW50MIIBTgYIKwYBBQUHAQEEggFA
-MIIBPDA7BggrBgEFBQcwAoYvaHR0cDovL2FrYW1haXBraS91c21hMWNhLXBraTBfQWthbWFpUEtJ
-Um9vdC5jcnQwUQYIKwYBBQUHMAKGRWh0dHA6Ly9ha2FtYWlwa2kuZGZ3MDEuY29ycC5ha2FtYWku
-Y29tL3VzbWExY2EtcGtpMF9Ba2FtYWlQS0lSb290LmNydDCBqQYIKwYBBQUHMAKGgZxsZGFwOi8v
-L0NOPUFrYW1haVBLSVJvb3QsQ049QUlBLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNl
-cnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9ZnIsREM9YWRzdmM/Y0FDZXJ0aWZpY2F0ZT9iYXNl
-P29iamVjdENsYXNzPWNlcnRpZmljYXRpb25BdXRob3JpdHkwDQYJKoZIhvcNAQEFBQADggEBADkq
-msMzAXzel+sFb7Z3lFZ3uydL4mgSW5taIvqlvy7gAFfWaAgkurkKqzDSVT4TRGH7eJP1yVK/L2R6
-oII4e6NlJFM1iyD+AFhPR7qVzOAnrDlJD/v9q0JZBNDvNQSSApRMHQ0VYRuMC1HruQexFvqDBoqj
-J1oEGYWthlOt+sLWXwqQxBILOGt0vcsUx/QJX3FRhLjEri+aO0XVBdRaNiZyB50kmhNelgWRPT5O
-sDuz17HVVF6R8KpDzOKCJ1nS/eUxW9nkxH0E5/BC2Q0IMP9TGxKs4j8qKTW2gbqOBDekUsWFDgvv
-6HJlYSDJNwqy0j38ANOSuw0LPg6v6nLsDx0wgggRMIIG+aADAgECAgovr3yYAAIAAXZqMA0GCSqG
-SIb3DQEBBQUAMF4xEzARBgoJkiaJk/IsZAEZFgNjb20xFjAUBgoJkiaJk/IsZAEZFgZha2FtYWkx
-FDASBgoJkiaJk/IsZAEZFgRjb3JwMRkwFwYDVQQDExBBa2FtYWlQS0lJc3N1aW5nMB4XDTE0MDUw
-OTE1MTMyOFoXDTE1MTAzMTE1MTMyOFowaTEcMBoGA1UEChMTQWthbWFpIFRlY2hub2xvZ2llczEW
-MBQGA1UECwwNU1NMX0JPUy1XUDRYRzEPMA0GA1UEAxMGaWFicmV1MSAwHgYJKoZIhvcNAQkBFhFp
-YWJyZXVAYWthbWFpLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ178PqO/TbQ
-thCMVGxWlxPHVJzAEZSJKqvd1pYFigNqcB5EguLEQWHfomViqr6PHakotib4+5GFQG/g2xbLI0f5
-ybZ6wYLMy18nDX/P+h4HAy1INQXu8LiUvraSBSKiLqkNF2X2UwU8c+kkHv6AcPLqIBo9hQ5+9lAq
-PrRzz1P9cPF2Ez3dzldxW4NcX20DMGc2lF78w2QYHLfYGbuCOBCboWO9EXnD/8et16g1+2P7reM5
-cU6C8F59HYBh/Mzqw7K+3oAB2MHgDNPJxWlYI98KRP8RegXNJSlydBtaF7FYNS7JTUd614ZUKhOQ
-gc+UHgKlJ1miU5q91yPlJjllVKkCAwEAAaOCBMQwggTAMDwGCSsGAQQBgjcVBwQvMC0GJSsGAQQB
-gjcVCILO5TqHuNQtgYWLB6LjIYbSD4FJhOTfBYGQ+hQCAWQCARcwQQYJKwYBBAGCNxUKBDQwMjAK
-BggrBgEFBQcDBzAKBggrBgEFBQcDAjAMBgorBgEEAYI3CgMEMAoGCCsGAQUFBwMEMAsGA1UdDwQE
-AwIFoDAzBgNVHSUELDAqBggrBgEFBQcDBwYIKwYBBQUHAwIGCisGAQQBgjcKAwQGCCsGAQUFBwME
-MHgGCSqGSIb3DQEJDwRrMGkwDgYIKoZIhvcNAwICAgCAMA4GCCqGSIb3DQMEAgIAgDALBglghkgB
-ZQMEASowCwYJYIZIAWUDBAEtMAsGCWCGSAFlAwQBAjALBglghkgBZQMEAQUwBwYFKw4DAgcwCgYI
-KoZIhvcNAwcwHQYDVR0OBBYEFGYeWITDGSPYjylKit568jiLAa7uMEQGA1UdEQQ9MDuBEWlhYnJl
-dUBha2FtYWkuY29toCYGCisGAQQBgjcUAgOgGAwWaWFicmV1QGNvcnAuYWthbWFpLmNvbTAfBgNV
-HSMEGDAWgBQH7LSOr2eGVIjvvbMUV0nPgky/FDCCATkGA1UdHwSCATAwggEsMIIBKKCCASSgggEg
-hiVodHRwOi8vYWthbWFpcGtpL0FrYW1haVBLSUlzc3VpbmcuY3JshjtodHRwOi8vYWthbWFpcGtp
-LmRmdzAxLmNvcnAuYWthbWFpLmNvbS9Ba2FtYWlQS0lJc3N1aW5nLmNybIaBuWxkYXA6Ly8vQ049
-QWthbWFpUEtJSXNzdWluZyxDTj11c21hMWNhLXBraTEsQ049Q0RQLENOPVB1YmxpYyUyMEtleSUy
-MFNlcnZpY2VzLENOPVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9ZnIsREM9YWRzdmM/Y2Vy
-dGlmaWNhdGVSZXZvY2F0aW9uTGlzdD9iYXNlP29iamVjdENsYXNzPWNSTERpc3RyaWJ1dGlvblBv
-aW50MIIBvAYIKwYBBQUHAQEEggGuMIIBqjBZBggrBgEFBQcwAoZNaHR0cDovL2FrYW1haXBraS91
-c21hMWNhLXBraTEua2VuZGFsbC5jb3JwLmFrYW1haS5jb21fQWthbWFpUEtJSXNzdWluZygyKS5j
-cnQwbwYIKwYBBQUHMAKGY2h0dHA6Ly9ha2FtYWlwa2kuZGZ3MDEuY29ycC5ha2FtYWkuY29tL3Vz
-bWExY2EtcGtpMS5rZW5kYWxsLmNvcnAuYWthbWFpLmNvbV9Ba2FtYWlQS0lJc3N1aW5nKDIpLmNy
-dDCBrAYIKwYBBQUHMAKGgZ9sZGFwOi8vL0NOPUFrYW1haVBLSUlzc3VpbmcsQ049QUlBLENOPVB1
-YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9ZnIs
-REM9YWRzdmM/Y0FDZXJ0aWZpY2F0ZT9iYXNlP29iamVjdENsYXNzPWNlcnRpZmljYXRpb25BdXRo
-b3JpdHkwLQYIKwYBBQUHMAGGIWh0dHA6Ly9ha2FtYWlvY3NwLmFrYW1haS5jb20vb2NzcDANBgkq
-hkiG9w0BAQUFAAOCAQEAn0h1cfeSKqJpzjCywdBvVzJXWkfUu2Ig5+WZzdoGyP059zbjIuKci/Wz
-r82KAqeZsB/AI5zHvYmVJ4V9R0vGCUElfT1VikkiZezMjASQnRW7lnyMxa5JHA7ZWy0ylw21j8jZ
-w4kPVE6IR0PUx6WoVz/vzV+/j15D3EoXhRjh8KuX/wwBdEPccMVLbdUwyz2IsXRBIb902VlWLHsT
-muHsTWrmblGQ7Iuqdu+DcABs26qZVdnlwxro7daOHAR57QHbsadrpIvPcLbAmbuaAHWVzTQkIVsB
-OI2VMHiJfL4eb6+Aujf7G5488BHo3PVJR1Lh7aYTKsHJRcTNMNcv9iU3RTGCA54wggOaAgEBMGww
-XjETMBEGCgmSJomT8ixkARkWA2NvbTEWMBQGCgmSJomT8ixkARkWBmFrYW1haTEUMBIGCgmSJomT
-8ixkARkWBGNvcnAxGTAXBgNVBAMTEEFrYW1haVBLSUlzc3VpbmcCCi+vfJgAAgABdmowCQYFKw4D
-AhoFAKCCAgcwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTQwOTA5
-MTQzNDQzWjAjBgkqhkiG9w0BCQQxFgQUYPCzSBtEVgQFn2NyJfWdjaDyKI4wewYJKwYBBAGCNxAE
-MW4wbDBeMRMwEQYKCZImiZPyLGQBGRYDY29tMRYwFAYKCZImiZPyLGQBGRYGYWthbWFpMRQwEgYK
-CZImiZPyLGQBGRYEY29ycDEZMBcGA1UEAxMQQWthbWFpUEtJSXNzdWluZwIKL698mAACAAF2ajB9
-BgsqhkiG9w0BCRACCzFuoGwwXjETMBEGCgmSJomT8ixkARkWA2NvbTEWMBQGCgmSJomT8ixkARkW
-BmFrYW1haTEUMBIGCgmSJomT8ixkARkWBGNvcnAxGTAXBgNVBAMTEEFrYW1haVBLSUlzc3VpbmcC
-Ci+vfJgAAgABdmowgasGCSqGSIb3DQEJDzGBnTCBmjALBglghkgBZQMEASowCwYJYIZIAWUDBAEW
-MAoGCCqGSIb3DQMHMAsGCWCGSAFlAwQBAjAOBggqhkiG9w0DAgICAIAwBwYFKw4DAgcwDQYIKoZI
-hvcNAwICAUAwDQYIKoZIhvcNAwICASgwBwYFKw4DAhowCwYJYIZIAWUDBAIDMAsGCWCGSAFlAwQC
-AjALBglghkgBZQMEAgEwDQYJKoZIhvcNAQEBBQAEggEAcyDe2iDMe7pYefXrOHKBBmXN0QZm/ndc
-yRMbg1iCW4Z6YMfDc3oH+PBFiBIU0xPwnOgviDmaGLeSXmrZXWnMMBzC66xThRXBqm+UkE1053gH
-DFxmUf+T1AVDyTRV3njh91k9lK4YeBcWLuXZRdLQrTyZttz+sBZMB3ZdNX2/Lpb1v+lWgQ4StgJl
-tlVO/YFJ6b+Ad9b4hzLmot0MxU5iKPl2pIKc/4XcN5xX6K/D7nNa8pmdCNC2MRqmaTXI0iRzvMLn
-MV2AsLBPB4KC/asvgjz0642LovR6fqSD3MyEFz3fQ9xHjLwfy+17eejqizT3HuFUWYO/auLzv1Ii
-3tEhCgAAAAAAAA==
-
-------=_NextPart_000_0012_01CFCC19.AB70F870--
+> -----Original Message-----
+> From: Valdis.Kletnieks@vt.edu [mailto:Valdis.Kletnieks@vt.edu]
+> Sent: Tuesday, September 09, 2014 7:28 AM
+> To: Matthias Brugger
+> Cc: Rajat Jain; linux-newbie@vger.kernel.org; kernelnewbies
+> Subject: Re: x86_64_defconfig and i386_defconfig: What is the difference?
+> 
+> On Tue, 09 Sep 2014 16:06:07 +0200, Matthias Brugger said:
+> 
+> > > Can someone tell me if the i386 one is to be used when we want to
+> > > build for a 32bit machine and the x86_64 is to be used for 64 bit machine?
+> >
+> > You can build the kernel with any architecture for any architecture.
+> > This is called cross-compiling. The homepage [0] should explain you
+> > how to do that.
+> 
+> Right, but you still need to use a .config appropriate for the target machine,
+> which is what I think Rajat was asking about.
+> 
+> A defconfig is usually only known verified to boot on a few (possibly one)
+> examples of that architecture hardware.  For embedded ARM, it may be one
+> specific development board or hardware device.  For x86, I think they try to
+> keep it "will probably kind of sort of boot on generic PC hardware with a
+> common distro, but anything fancylike a webcam or better graphics than "vga
+> tty emulation" may not work".
+> 
+> A defconfig is pretty much just a proof of concept starting point for an actual
+> working config for a given hardware system.
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
