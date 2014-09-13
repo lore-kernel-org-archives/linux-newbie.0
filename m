@@ -1,60 +1,117 @@
-From: Real Name <enjoymindful@gmail.com>
-Subject: Re: EPROBE_DEFER and how it is supposed to work
-Date: Wed, 10 Sep 2014 11:08:45 +0800
-Message-ID: <20140910030845.GA9846@name.redhat.com>
-References: <fdb8424613e9495987c7103006c460e9@DM2PR05MB671.namprd05.prod.outlook.com>
+From: Peter Teoh <htmldeveloper@gmail.com>
+Subject: Re: x86_64_defconfig and i386_defconfig: What is the difference?
+Date: Sat, 13 Sep 2014 09:10:28 +0800
+Message-ID: <CAHnt0GV2v8sekptLuYj+j6-+yEe6iqXiU_nNMd=4iNO3oxVrGQ@mail.gmail.com>
+References: <a06a49ac87e44c0d89d88514d7a28678@DM2PR05MB671.namprd05.prod.outlook.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-type:content-disposition:in-reply-to:user-agent;
-        bh=zl9+x1Kq/hhlcfxs2Fkjk75Xk+bw6G63vBhRF95g+hc=;
-        b=Lq6LUyPIn10Dbr6P227xvYVY/fpJwa7f4+gNXqncEbUszgpUgY/oQBN60oJVoKujyN
-         7BOSrwC8V19Z05zqpbmyqaxGUVGfguMfJRayEjfj/6JrbBsPGoZ/HDjDUUWuf8sQDmu+
-         k3lkUSnaIw/OMQW2iWeseQBmANKy5wdxR9NXMcYP6fTGLdrTFE4nok67QIAK/g2KlCG2
-         55F3bL9n/Y2oI3/865q4Dg+75yeFK1A7dHR3yvhP3hCLJ71hbbC8RY9EVVUi58ISqzVd
-         sTV2xXN1ir3DK5QC0AbTzyCUBpjMzfxkieOKIm0kvlVVvVExHy1QE9+7c7+OJdhzouDq
-         G7Sw==
-Content-Disposition: inline
-In-Reply-To: <fdb8424613e9495987c7103006c460e9@DM2PR05MB671.namprd05.prod.outlook.com>
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0826999715428507123=="
+Return-path: <kernelnewbies-bounces@kernelnewbies.org>
+In-Reply-To: <a06a49ac87e44c0d89d88514d7a28678@DM2PR05MB671.namprd05.prod.outlook.com>
+List-Id: <linux-newbie.vger.kernel.org>
+List-Unsubscribe: <http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>,
+	<mailto:kernelnewbies-request@kernelnewbies.org?subject=unsubscribe>
+List-Archive: <http://lists.kernelnewbies.org/pipermail/kernelnewbies>
+List-Post: <mailto:kernelnewbies@kernelnewbies.org>
+List-Help: <mailto:kernelnewbies-request@kernelnewbies.org?subject=help>
+List-Subscribe: <http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>,
+	<mailto:kernelnewbies-request@kernelnewbies.org?subject=subscribe>
+Sender: kernelnewbies-bounces@kernelnewbies.org
+Errors-To: kernelnewbies-bounces@kernelnewbies.org
 To: Rajat Jain <rajatjain@juniper.net>
-Cc: kernelnewbies <kernelnewbies@kernelnewbies.org>, "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+Cc: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>, kernelnewbies <kernelnewbies@kernelnewbies.org>
 
-On Tue, Sep 09, 2014 at 06:26:27PM +0000, Rajat Jain wrote:
+--===============0826999715428507123==
+Content-Type: multipart/alternative; boundary=089e0115f0023ffe6e0502e8113b
+
+--089e0115f0023ffe6e0502e8113b
+Content-Type: text/plain; charset=UTF-8
+
+On Tue, Sep 9, 2014 at 3:58 PM, Rajat Jain <rajatjain@juniper.net> wrote:
+
 > Hi,
-> 
-> I'm not a newbie, but I am trying to understand the semantics of deferred probing.
-> 
-> My question is generic, but for an example:
-> 
-> Let's say I have a platform driver "A" for a device "a", that requires device "b" (controlled by driver "B") to be operational first. Both A &B can be built as part of kernel, or as modules independently.  As far as I could tell, there is no way to specify the ORDER in which the drivers' probe routines should be called. I took a look at modprobe / depmod, but it seems to be of relevance for modules only that are loaded from user space. My questions:
-> 
-> 1) Is there a way to specify that "Kernel should call A's probe routine only after B's probe routine"?
+>
+> Can someone tell me if the i386 one is to be used when we want to build
+> for a 32bit machine and the x86_64 is to be used for 64 bit machine?
+>
 
-You can ask module A to load the required module B.
 
-For example, lib/textsearch.c:textsearch_prepare -> lookup_ts_algo
+i386 or 32-bit machines?   i think it don't exists anymore, but what likely
+is correct: i386-compatible machine.
 
-lookup_ts_algo will load ts_bm.ko/ts_fsm.ko/ts_kmp.ko as required.
+The i386 config is for 32-bit OS, ie, the entire binaries must be build for
+32-bit architecture.
 
-> 
-> 2) How I currently do this: In A's probe routine, I currently check if the device "b" is available. If not, I return -EPROBE_DEFER. This mostly works ok. However, I'm curious about the case where the driver B is not built as part of the kernel but A is. After getting an _EPROB_DEFER from a B's probe routine, when will the kernel try again? And for how long would it keep on trying? I verified that if I load the driver B manually from user space, the A's probe routine does not get called (if it gets called now - it would have returned success!).
-> 
+So choose the correct config provided u have the correct userspace
+files/libraries to support it.
+
+
+>
 > Thanks,
-> 
+>
 > Rajat
-> 
+>
 > _______________________________________________
 > Kernelnewbies mailing list
 > Kernelnewbies@kernelnewbies.org
 > http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+>
+
+
+
+-- 
+Regards,
+Peter Teoh
+
+--089e0115f0023ffe6e0502e8113b
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_extra"><br><div class=3D"gmail_quo=
+te">On Tue, Sep 9, 2014 at 3:58 PM, Rajat Jain <span dir=3D"ltr">&lt;<a hre=
+f=3D"mailto:rajatjain@juniper.net" target=3D"_blank">rajatjain@juniper.net<=
+/a>&gt;</span> wrote:<br><blockquote class=3D"gmail_quote" style=3D"margin:=
+0px 0px 0px 0.8ex;border-left-width:1px;border-left-color:rgb(204,204,204);=
+border-left-style:solid;padding-left:1ex">Hi,<br>
+<br>
+Can someone tell me if the i386 one is to be used when we want to build for=
+ a 32bit machine and the x86_64 is to be used for 64 bit machine?<br></bloc=
+kquote><div><br></div><div><br></div>i386 or 32-bit machines? =C2=A0 i thin=
+k it don&#39;t exists anymore, but what likely is correct: i386-compatible =
+machine.<div><br></div><div>The i386 config is for 32-bit OS, ie, the entir=
+e binaries must be build for 32-bit architecture.</div><div><br></div><div>=
+So choose the correct config provided u have the correct userspace files/li=
+braries to support it.</div><div>=C2=A0</div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-col=
+or:rgb(204,204,204);border-left-style:solid;padding-left:1ex">
+<br>
+Thanks,<br>
+<br>
+Rajat<br>
+<br>
+_______________________________________________<br>
+Kernelnewbies mailing list<br>
+<a href=3D"mailto:Kernelnewbies@kernelnewbies.org">Kernelnewbies@kernelnewb=
+ies.org</a><br>
+<a href=3D"http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies" t=
+arget=3D"_blank">http://lists.kernelnewbies.org/mailman/listinfo/kernelnewb=
+ies</a><br>
+</blockquote></div><br><br clear=3D"all"><div><br></div>-- <br>Regards,<br>=
+Peter Teoh
+</div></div>
+
+--089e0115f0023ffe6e0502e8113b--
+
+
+--===============0826999715428507123==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Kernelnewbies mailing list
+Kernelnewbies@kernelnewbies.org
+http://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies
+
+--===============0826999715428507123==--
+
