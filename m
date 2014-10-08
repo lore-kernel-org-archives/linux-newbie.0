@@ -1,59 +1,38 @@
-From: "Joseph D. Wagner" <joe@josephdwagner.info>
-Subject: Re: High latency while CPU is at full load
-Date: Tue, 07 Oct 2014 18:15:16 -0700
-Message-ID: <6bce368f25616b04f9e536b815a243f5@josephdwagner.info>
-References: <CAFLt3pihQA0nT20kgWhExr44Q93pULGuL2XZz18pmq-hwA4YWQ@mail.gmail.com>
+From: Hubert Chaumette <hubert.chaumette@wanadoo.fr>
+Subject: wl1271 driver on Linux 3.10 for SabreSD
+Date: Wed, 8 Oct 2014 12:07:37 +0200 (CEST)
+Message-ID: <842801523.8397.1412762857731.JavaMail.www@wwinf1j21>
+Reply-To: Hubert Chaumette <hubert.chaumette@wanadoo.fr>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <CAFLt3pihQA0nT20kgWhExr44Q93pULGuL2XZz18pmq-hwA4YWQ@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: Grozdan <neutrino8@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-On 10/07/2014 12:12 pm, Grozdan wrote:
+Hi all,
 
-> Hi,
-> 
-> I went through the Majordomo list but was not able to find an
-> appropriate list so I'm trying here.
-> 
-> Basically, my problem is this:
-> 
-> I'm doing a lot of audio/video encoding on an AMD FX8350. The encoder
-> process always runs at nice 10. Even so, my whole system feels very
-> sluggish. Switching between different app windows and/or virtual
-> desktops takes up usually 3-5 seconds giving the impression that there
-> is not enough processing power. Browsing the web is also severely
-> impacted.
-> 
-> I had to tune CFS in order to be (much) more responsive during an
-> encoding session. This has worked out pretty well thus far, but it is
-> my opinion that the user should *not* need to fiddle with buttons to
-> make his system respond fluently even under high load. The below is
-> what I had to do in order to get a snappy system during such load
-> 
-> kernel.sched_nr_migrate = 64
-> kernel.sched_latency_ns = 65000000
-> kernel.sched_wakeup_granularity_ns = 100000
-> kernel.sched_min_granularity_ns = 100000
-> kernel.sched_migration_cost_ns = 7000000
-> 
-> PS: If this is not the right list, please forward this mail to the
-> appropriate one
+I need to activate the wl12xx driver (from drivers/net/wireless/ti/) on a (Android) Linux 3.10.31 kernel on an i.MX6Q SabreSD board. The wl1271 is to communicate with the board through an SDIO interface (SD2 on the board).
 
-I think your question may be too advanced for the newbie list.
-I recommend posting this to linux-kernel. Be sure to include
-your exact kernel version (/proc/version), total RAM, which
-desktop environment you are using (including version), and
-the specific software you are using for the encoding.
-Output from /proc/sched_debug, /proc/schedstat, and
-/proc/*PID*/sched  would be useful as well.  (where *PID* is
-the process id of your encoding process).
+I have built the driver modules (cfg80211 and mac80211; wlcore, wlcore_sdio and wl12xx), and insmod'ed them. They are listed by lsmod :
+wlcore_sdio 3820 0 - Live 0x00000000
+wl12xx 51103 0 - Live 0x00000000
+wlcore 161008 1 wl12xx, Live 0x00000000
+mac80211 253798 2 wl12xx,wlcore, Live 0x00000000
+cfg80211 201451 2 wlcore,mac80211, Live 0x00000000
 
-Joseph D. Wagner
+dmesg shows only a message from cfg80211 (no errors for other modules, when insmod'ed in the right order) :
+cfg80211: Calling CRDA to update world regulatory domain
+
+1) Can I use /sys/modules/{wlcore,wlcore_sdio,wl12xx}/ to test it ?
+2) The board uses the device tree to enumerate platform devices. To correctly activate the driver, do I need to add it to the board DT (and a binding to the driver) ?
+3) The driver is supposed to use a firmware (according to http://wireless.kernel.org/en/users/Drivers/wl12xx), how do I know whether it found it (no kernel log message) (I've put the firmware in /system/etc/firmware/) ?
+
+Thanks in advance.
+Regards,
+
+Hubert
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
