@@ -1,40 +1,41 @@
-From: Hubert Chaumette <hubert.chaumette@wanadoo.fr>
-Subject: Re: wl1271 driver on Linux 3.10 for SabreSD
-Date: Wed, 8 Oct 2014 13:27:31 +0200 (CEST)
-Message-ID: <938807514.8878.1412767652056.JavaMail.www@wwinf1g36>
-References: <842801523.8397.1412762857731.JavaMail.www@wwinf1j21>
- <CAHwEkO09RJz4-HXL9Y+hdsyahAYBs8-9Pt=xdmUew_bgPjOF9g@mail.gmail.com>
-Reply-To: Hubert Chaumette <hubert.chaumette@wanadoo.fr>
+From: Niranjan Dighe <niranjan.dighe@gmail.com>
+Subject: Regarding no response from little penguin at eudyptula-challenge.org
+Date: Fri, 10 Oct 2014 09:51:25 +0530
+Message-ID: <CADCM0G+OAZQPbusVKfur+icQpxZhpOxq4htajicDsc_Kd79wSA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: QUOTED-PRINTABLE
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <CAHwEkO09RJz4-HXL9Y+hdsyahAYBs8-9Pt=xdmUew_bgPjOF9g@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=wlOy+nUPGSunSWz333b18rMoTYjVuyno9QFEAjTfaWo=;
+        b=b4s1eJ+BxBp/YMmULjvzokXiLxrCMuBRPt6RkZWfs+0iWNnwllSZKSakse8PYP18Il
+         cfikt+8/BIDUgTI06lb6eijWbiZBvlJb/NIRtdhoTRqY/F7wr9waPv6PTjLsq6q8NjHh
+         2T6fWHodrzKwGvlvlI0jsrFR2I7jGEOf1LtnmbGA9Xm2OfgkVPOIzJRQUoPMD6x1XHTd
+         r3D1oUc2FUOyUIWpSNY66f2JVqaOa8A7bTtPaKhS6/frCFixewThHyjJZa1QgV69aeZv
+         psPDn3mCRmofAI0Z+CC5qORpLFvq7Sd6ieLP4JvlIlFQSJRSeGt51qizd8njAMXhBleH
+         ufyg==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="iso-8859-1"
-To: Vikram Narayanan <vikram186@gmail.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
+Hello All,
 
-> Message du 08/10/14 12:25
-> De : "Vikram Narayanan"=20
-> A : "Hubert Chaumette"=20
-> Copie =C3=A0 : linux-newbie@vger.kernel.org
-> Objet : Re: wl1271 driver on Linux 3.10 for SabreSD
->=20
->Please post it here=20
->=20
->
-~Vikram
->
+This is my first email on this mailing list and I hope this is the
+right place to ask a question about eudyptula-challenge.
 
-Thanks for the hint.
-Regards,
+I have submitted my task 06 to Little about 6 days back but I have not
+received any response on the same. I have resubmitted it already a
+couple of times. Is there a point of contact whom I can mail directly
+to check if it is stuck up somewhere or something is wrong?
 
-Hubert
+Thanks in advance,
+
+With best regards,
+Niranjan Dighe
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
