@@ -1,228 +1,89 @@
-From: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>
-Subject: [PATCH 1/1] ipc/mqueue.c: Drag unneeded code out of locks
-Date: Fri, 07 Nov 2014 05:40:37 +0000 (GMT)
-Message-ID: <fae396b9bc15.545c5b55@langara.bc.ca>
+From: Andrew Morton <akpm@linux-foundation.org>
+Subject: Re: [PATCH 1/1] ipc/mqueue.c: Drag unneeded code out of locks
+Date: Tue, 11 Nov 2014 16:21:46 -0800
+Message-ID: <20141111162146.6e72c3fb0858df4945096c47@linux-foundation.org>
+References: <fae396b9bc15.545c5b55@langara.bc.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-disposition: inline
-Content-language: en
+In-Reply-To: <fae396b9bc15.545c5b55@langara.bc.ca>
 Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: linux-kernel@vger.kernel.org
-Cc: Andrew Morton <akpm@linux-foundation.org>, Davidlohr Bueso <davidlohr@hp.com>, Manfred Spraul <manfred@colorfullife.com>, "J. Bruce Fields" <bfields@redhat.com>, Doug Ledford <dledford@redhat.com>, linux-newbie@vger.kernel.org
+To: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>
+Cc: linux-kernel@vger.kernel.org, Davidlohr Bueso <davidlohr@hp.com>, Manfred Spraul <manfred@colorfullife.com>, "J. Bruce Fields" <bfields@redhat.com>, Doug Ledford <dledford@redhat.com>, linux-newbie@vger.kernel.org
 
-This shouldn't be too controversial. I simply looked for where there
-was a tiny bit of waste in the message queue code.
+On Fri, 07 Nov 2014 05:40:37 +0000 (GMT) Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca> wrote:
 
-Signed-off-by: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>
----
-diff --git a/ipc/mqueue.c b/ipc/mqueue.c
-index 4fcf39a..aa3f903 100644
---- a/ipc/mqueue.c
-+++ b/ipc/mqueue.c
-@@ -278,16 +278,29 @@ static struct inode *mqueue_get_inode(struct super_block *sb,
- 		mq_bytes = mq_treesize + (info->attr.mq_maxmsg *
- 					  info->attr.mq_msgsize);
- 
--		spin_lock(&mq_lock);
--		if (u->mq_bytes + mq_bytes < u->mq_bytes ||
--		    u->mq_bytes + mq_bytes > rlimit(RLIMIT_MSGQUEUE)) {
-+		{
-+			bool too_many_open_files;
-+			long msgqueue_lim;
-+			unsigned long u_bytes;
-+
-+			msgqueue_lim = rlimit(RLIMIT_MSGQUEUE);
-+
-+			spin_lock(&mq_lock);
-+
-+			u_bytes = u->mq_bytes;
-+			too_many_open_files = u_bytes + mq_bytes < u_bytes ||
-+				u_bytes + mq_bytes > msgqueue_lim;
-+			if (!too_many_open_files)
-+				u->mq_bytes += mq_bytes;
-+
- 			spin_unlock(&mq_lock);
-+
- 			/* mqueue_evict_inode() releases info->messages */
--			ret = -EMFILE;
--			goto out_inode;
-+			if (too_many_open_files) {
-+				ret = -EMFILE;
-+				goto out_inode;
-+			}
- 		}
--		u->mq_bytes += mq_bytes;
--		spin_unlock(&mq_lock);
- 
- 		/* all is ok */
- 		info->user = get_uid(u);
-@@ -423,44 +436,60 @@ static int mqueue_create(struct inode *dir, struct dentry
-*dentry,
- 				umode_t mode, bool excl)
- {
- 	struct inode *inode;
--	struct mq_attr *attr = dentry->d_fsdata;
--	int error;
-+	struct mq_attr *attr;
- 	struct ipc_namespace *ipc_ns;
-+	int error = 0;
-+
-+	if (!capable(CAP_SYS_RESOURCE)) {
-+		error = -ENOSPC;
-+		goto finish;
-+	}
-+
-+	attr = dentry->d_fsdata;
- 
- 	spin_lock(&mq_lock);
- 	ipc_ns = __get_ns_from_inode(dir);
- 	if (!ipc_ns) {
- 		error = -EACCES;
--		goto out_unlock;
-+		goto unlock_mq;
- 	}
- 
--	if (ipc_ns->mq_queues_count >= ipc_ns->mq_queues_max &&
--	    !capable(CAP_SYS_RESOURCE)) {
-+	if (ipc_ns->mq_queues_count >= ipc_ns->mq_queues_max) {
- 		error = -ENOSPC;
--		goto out_unlock;
-+		goto unlock_mq;
- 	}
- 	ipc_ns->mq_queues_count++;
-+unlock_mq:
- 	spin_unlock(&mq_lock);
- 
-+	if (error != 0)
-+		goto put_ipc_ns;
-+
- 	inode = mqueue_get_inode(dir->i_sb, ipc_ns, mode, attr);
- 	if (IS_ERR(inode)) {
- 		error = PTR_ERR(inode);
-+
- 		spin_lock(&mq_lock);
- 		ipc_ns->mq_queues_count--;
--		goto out_unlock;
-+		spin_unlock(&mq_lock);
-+
-+		goto put_ipc_ns;
- 	}
- 
--	put_ipc_ns(ipc_ns);
-+put_ipc_ns:
-+	if (ipc_ns)
-+		put_ipc_ns(ipc_ns);
-+
-+	if (error != 0)
-+		goto finish;
-+
- 	dir->i_size += DIRENT_SIZE;
- 	dir->i_ctime = dir->i_mtime = dir->i_atime = CURRENT_TIME;
- 
- 	d_instantiate(dentry, inode);
- 	dget(dentry);
--	return 0;
--out_unlock:
--	spin_unlock(&mq_lock);
--	if (ipc_ns)
--		put_ipc_ns(ipc_ns);
-+
-+finish:
- 	return error;
- }
- 
-@@ -485,26 +514,39 @@ static int mqueue_unlink(struct inode *dir, struct dentry
-*dentry)
- static ssize_t mqueue_read_file(struct file *filp, char __user *u_data,
- 				size_t count, loff_t *off)
- {
--	struct mqueue_inode_info *info = MQUEUE_I(file_inode(filp));
--	char buffer[FILENT_SIZE];
- 	ssize_t ret;
-+	pid_t notify_owner;
-+	unsigned long qsize;
-+	struct sigevent notify;
- 
--	spin_lock(&info->lock);
--	snprintf(buffer, sizeof(buffer),
--			"QSIZE:%-10lu NOTIFY:%-5d SIGNO:%-5d NOTIFY_PID:%-6d\n",
--			info->qsize,
--			info->notify_owner ? info->notify.sigev_notify : 0,
--			(info->notify_owner &&
--			 info->notify.sigev_notify == SIGEV_SIGNAL) ?
--				info->notify.sigev_signo : 0,
--			pid_vnr(info->notify_owner));
--	spin_unlock(&info->lock);
--	buffer[sizeof(buffer)-1] = '\0';
-+	{
-+		struct mqueue_inode_info *info = MQUEUE_I(file_inode(filp));
- 
--	ret = simple_read_from_buffer(u_data, count, off, buffer,
--				strlen(buffer));
--	if (ret <= 0)
--		return ret;
-+		spin_lock(&info->lock);
-+		notify_owner = pid_vnr(info->notify_owner);
-+		notify = info->notify;
-+		qsize = info->qsize;
-+		spin_unlock(&info->lock);
-+	}
-+
-+	{
-+		char buffer[FILENT_SIZE];
-+
-+		snprintf(buffer, sizeof(buffer),
-+			 "QSIZE:%-10lu NOTIFY:%-5d SIGNO:%-5d NOTIFY_PID:%-6d\n",
-+			 qsize,
-+			 notify_owner ? notify.sigev_notify : 0,
-+			 (notify_owner &&
-+			  notify.sigev_notify == SIGEV_SIGNAL) ?
-+			 notify.sigev_signo : 0,
-+			 notify_owner);
-+		buffer[sizeof(buffer)-1] = '\0';
-+
-+		ret = simple_read_from_buffer(u_data, count, off, buffer,
-+					      strlen(buffer));
-+		if (ret <= 0)
-+			return ret;
-+	}
- 
- 	file_inode(filp)->i_atime = file_inode(filp)->i_ctime = CURRENT_TIME;
- 	return ret;
-@@ -524,18 +566,26 @@ static int mqueue_flush_file(struct file *filp, fl_owner_t id)
- 
- static unsigned int mqueue_poll_file(struct file *filp, struct
-poll_table_struct *poll_tab)
- {
--	struct mqueue_inode_info *info = MQUEUE_I(file_inode(filp));
- 	int retval = 0;
-+	unsigned long curmsgs;
-+	unsigned long maxmsg;
- 
--	poll_wait(filp, &info->wait_q, poll_tab);
-+	{
-+		struct mqueue_inode_info *info = MQUEUE_I(file_inode(filp));
- 
--	spin_lock(&info->lock);
--	if (info->attr.mq_curmsgs)
-+		poll_wait(filp, &info->wait_q, poll_tab);
-+
-+		spin_lock(&info->lock);
-+		curmsgs = info->attr.mq_curmsgs;
-+		maxmsg = info->attr.mq_maxmsg;
-+		spin_unlock(&info->lock);
-+	}
-+
-+	if (curmsgs)
- 		retval = POLLIN | POLLRDNORM;
- 
--	if (info->attr.mq_curmsgs < info->attr.mq_maxmsg)
-+	if (curmsgs < maxmsg)
- 		retval |= POLLOUT | POLLWRNORM;
--	spin_unlock(&info->lock);
- 
- 	return retval;
- }
+> This shouldn't be too controversial. I simply looked for where there
+> was a tiny bit of waste in the message queue code.
+> 
+
+It's probably better to do this as three or four separate patches.
+
+> --- a/ipc/mqueue.c
+> +++ b/ipc/mqueue.c
+> @@ -278,16 +278,29 @@ static struct inode *mqueue_get_inode(struct super_block *sb,
+>  		mq_bytes = mq_treesize + (info->attr.mq_maxmsg *
+>  					  info->attr.mq_msgsize);
+>  
+> -		spin_lock(&mq_lock);
+> -		if (u->mq_bytes + mq_bytes < u->mq_bytes ||
+> -		    u->mq_bytes + mq_bytes > rlimit(RLIMIT_MSGQUEUE)) {
+> +		{
+> +			bool too_many_open_files;
+
+Well yes, that's what EMFILE means but "too_many_open_files" doesn't
+make sense in this context!
+
+
+> +			long msgqueue_lim;
+> +			unsigned long u_bytes;
+> +
+> +			msgqueue_lim = rlimit(RLIMIT_MSGQUEUE);
+> +
+> +			spin_lock(&mq_lock);
+> +
+> +			u_bytes = u->mq_bytes;
+> +			too_many_open_files = u_bytes + mq_bytes < u_bytes ||
+> +				u_bytes + mq_bytes > msgqueue_lim;
+> +			if (!too_many_open_files)
+
+This test isn't really needed.
+
+> +				u->mq_bytes += mq_bytes;
+> +
+>  			spin_unlock(&mq_lock);
+> +
+>  			/* mqueue_evict_inode() releases info->messages */
+> -			ret = -EMFILE;
+> -			goto out_inode;
+> +			if (too_many_open_files) {
+> +				ret = -EMFILE;
+> +				goto out_inode;
+> +			}
+>  		}
+> -		u->mq_bytes += mq_bytes;
+> -		spin_unlock(&mq_lock);
+>  
+>  		/* all is ok */
+>  		info->user = get_uid(u);
+> @@ -423,44 +436,60 @@ static int mqueue_create(struct inode *dir, struct dentry
+> *dentry,
+>  				umode_t mode, bool excl)
+>  {
+>  	struct inode *inode;
+> -	struct mq_attr *attr = dentry->d_fsdata;
+> -	int error;
+> +	struct mq_attr *attr;
+>  	struct ipc_namespace *ipc_ns;
+> +	int error = 0;
+> +
+> +	if (!capable(CAP_SYS_RESOURCE)) {
+> +		error = -ENOSPC;
+> +		goto finish;
+> +	}
+
+Thatsabug.  It only requires CAP_SYS_RESOURCE if we're trying with
+queues_count >= queues_max.
+
