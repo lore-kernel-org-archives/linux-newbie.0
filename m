@@ -1,64 +1,55 @@
-From: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>
+From: Manfred Spraul <manfred@colorfullife.com>
 Subject: Re: [PATCH 1/1] ipc/mqueue.c: Drag unneeded code out of locks
-Date: Sun, 16 Nov 2014 19:40:46 +0000 (GMT)
-Message-ID: <fb59f9ad237f.5468fdbe@langara.bc.ca>
-References: <fae396b9bc15.545c5b55@langara.bc.ca>
- <1415780201.24725.2.camel@linux-t7sj.site>
- <fbb3e8aa49d6.5466da38@langara.bc.ca>
- <1416086539.12597.15.camel@linux-t7sj.site>
+Date: Mon, 17 Nov 2014 20:08:54 +0100
+Message-ID: <546A47C6.4030309@colorfullife.com>
+References: <fae396b9bc15.545c5b55@langara.bc.ca> <1415780201.24725.2.camel@linux-t7sj.site> <fbb3e8aa49d6.5466da38@langara.bc.ca> <1416086539.12597.15.camel@linux-t7sj.site> <fb59f9ad237f.5468fdbe@langara.bc.ca>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7BIT
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-disposition: inline
-Content-language: en
-In-reply-to: <1416086539.12597.15.camel@linux-t7sj.site>
+In-Reply-To: <fb59f9ad237f.5468fdbe@langara.bc.ca>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Davidlohr Bueso <dave@stgolabs.net>
-Cc: linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>, Manfred Spraul <manfred@colorfullife.com>, "J. Bruce Fields" <bfields@redhat.com>, Doug Ledford <dledford@redhat.com>, linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>, Davidlohr Bueso <dave@stgolabs.net>
+Cc: linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>, "J. Bruce Fields" <bfields@redhat.com>, Doug Ledford <dledford@redhat.com>, linux-newbie@vger.kernel.org
 
-Hello,
+Hi Steven,
 
-My intent with my patch was to make things easier to understand
-because it reduces the size of critical sections to more
-understandable bite sized chunks. My patch would make the purposes of
-the critical sections more obvious and understandable. In making this
-patch I may have made a few mistakes which we can correct.
+On 11/16/2014 08:40 PM, Steven Stewart-Gallus wrote:
+> Finally, please don't ignore the rest of my message. Even if my patch
+> isn't that good there are lots of ways to compromise and improve it
+> such as adding tests, annotations and making it clearer.
 
->  For instance, adding local variables from structures passed
-to a function does *not* make things more clearer:
+I think you were already given ideas how to improve the patch:
 
-This is not generally indicative of most of the patch. Moreover, the
-local variable was introduced into a TIGHTLY restricted scope which
-brings me to the next point.
+a) split the patch.
 
-> Plus you add context specific regions within the function (code
-> around { }), ugly and something we've been removing!
+b) create test cases so that you are able to check that the code still 
+behaves as it did before
+Did you test the change to mqueue_create()?
 
-Small context specific regions are GOOD. This is why we have functions
-instead of one big ball of mud. I wouldn't be opposed to moving the {
-} regions into smaller sub-functions themselves as the indentation can
-get slightly annoying though. Also, this would let me put sparse
-locking annotations on them.
+c) Give each a good summary of what you want to achieve:
+- readability
+- coding style
+- performance
+- avoid a lock entirely, switch to RCU instead of spin_lock(), ...
+- reduce the time a lock is held (usually only useful if the reduction 
+is significant - both relative and absolute).
+- ...
 
-> > It is not fair to argue that these changes are risky. 
+Writing that down also helps you:
+There were multiple patches that I've dropped myself - simply because I 
+have noticed that the patch doesn't achieve anything useful.
 
-I still hold this position.
+ From your changes: The one to mqueue_read_file might make sense, it 
+avoids to hold the spinlock over the snprintf.
+For the other changes, I don't see that they improve something, but 
+perhaps I have overlooked something.
 
-If these changes are risky for you then the code needs improvement or
-you are incompetent. I am trying to make the code easier to understand
-and REDUCE risks. Maybe my patch isn't as obvious and easily
-understandable as it should be. In that case, would you agree that
-even if my patch isn't the best way to improve the code that it still
-needs improvement?
+Best regards,
+     Manfred
 
-Finally, please don't ignore the rest of my message. Even if my patch
-isn't that good there are lots of ways to compromise and improve it
-such as adding tests, annotations and making it clearer.
 
-Thank you,
-Steven Stewart-Gallus
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
