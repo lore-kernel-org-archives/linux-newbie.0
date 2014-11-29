@@ -1,42 +1,35 @@
-From: Davidlohr Bueso <dave@stgolabs.net>
-Subject: Re: [PATCH 1/1] ipc/mqueue.c: Drag unneeded code out of locks
-Date: Mon, 17 Nov 2014 12:52:10 -0800
-Message-ID: <1416257530.4494.0.camel@localhost>
-References: <fae396b9bc15.545c5b55@langara.bc.ca>
-	 <1415780201.24725.2.camel@linux-t7sj.site>
-	 <fbb3e8aa49d6.5466da38@langara.bc.ca>
-	 <1416086539.12597.15.camel@linux-t7sj.site>
-	 <fb59f9ad237f.5468fdbe@langara.bc.ca> <546A47C6.4030309@colorfullife.com>
+From: Alexander Kuleshov <kuleshovmail@gmail.com>
+Subject: Early boot debigging
+Date: Sat, 29 Nov 2014 12:41:47 +0600
+Message-ID: <CANCZXo7R046PsjGS3HSE3XvHcJtmzbySfWpULhkvQ2f6FJPt9w@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <546A47C6.4030309@colorfullife.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        bh=FpRnZNinllu1ExHHkaiVr4Si5EphoAyHOFEDZ0dMapY=;
+        b=Xlg7y6zbJmlpYKQNPMFfu/Z9W/l9Zrz9IuP342LlIp9xDa5qNDghe6UgQCCdXZaiTD
+         GV7JqpA4d3CGstU1p2o0a5LPqjL+4rFYfkprjEOFyqFTK0iCubhA+jmustbAy5Dc9Brd
+         sX9Y9w5wFEGdjgD4nY57meJt+vGfMuOh1EpztqfBuwX8y/7QphITIcov2SJlO1lT3UAj
+         jb5fMIfYXHK+eb4XYihmpBP1yL/UKs1qBGOJml6epHjZpqg3Utysu8R/3P9cy3UDvZaH
+         mOLmDdzUyAZ/9kYmj9lF2+yAkZn/zQuWkF9SNRiLOem4ona5dOOfyILlcvAmF3Q/XwAU
+         kfSA==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: Manfred Spraul <manfred@colorfullife.com>
-Cc: Steven Stewart-Gallus <sstewartgallus00@mylangara.bc.ca>, linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>, "J. Bruce Fields" <bfields@redhat.com>, Doug Ledford <dledford@redhat.com>, linux-newbie@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org
 
-On Mon, 2014-11-17 at 20:08 +0100, Manfred Spraul wrote:
-> Hi Steven,
-> 
-> On 11/16/2014 08:40 PM, Steven Stewart-Gallus wrote:
-> > Finally, please don't ignore the rest of my message. Even if my patch
-> > isn't that good there are lots of ways to compromise and improve it
-> > such as adding tests, annotations and making it clearer.
-> 
-> I think you were already given ideas how to improve the patch:
-> 
-> a) split the patch.
-> 
-> b) create test cases so that you are able to check that the code still 
-> behaves as it did before
+Hello all,
 
-Adding/improving ipc kselftests would also be very welcome.
+How can i debug early kernel booting, even before early_printk
+(x86_64). I'm interesting in part which starts to execute right after
+bootloader (https://github.com/torvalds/linux/blob/master/arch/x86/boot/header.S#L297).
+How to do it better? Write grub and vmlinuz to disk with
+losetup/grub-install and connect with gdb, or there is something
+another way to do it?
 
-Thanks,
-Davidlohr
-
+Thank you.
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
