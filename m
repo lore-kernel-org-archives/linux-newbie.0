@@ -1,50 +1,111 @@
-From: =?windows-1252?Q?=D2scar_Forner_Mart=EDnez?= 
-	<oscar.forner.martinez@gmail.com>
-Subject: Re: Test Email
-Date: Sat, 23 May 2015 16:02:05 +0100
-Message-ID: <6099A607-5802-4680-A367-70AE8B3FF488@gmail.com>
-References: <555EFB0C.1040605@gmail.com> <CAPFHKzdo2hn7Xcgdp2=NtzoXSepBiKv=dP+mJ=bYmu6k-2e_KQ@mail.gmail.com> <20150523040506.GA23551@mogambo.domain.name>
-Mime-Version: 1.0 (Mac OS X Mail 7.3 \(1878.6\))
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+From: alex <afrat001@mail.de>
+Subject: No probing in module while using devicetree
+Date: Sun, 07 Jun 2015 00:24:47 +0200
+Message-ID: <5573732F.9060106@mail.de>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=content-type:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=GmrX83fnatv1Efk35mWTKRuDweMUU26r6MKo1MwlzXU=;
-        b=qZemxtT7Ss8+ENC+O7/3B4yC5l0MzfV0vqLUAy9Y/TMX9tqjRYcn1sbQ+4zg7DZqeL
-         HpwQMr27Q2Nfp/hRcPBRRLd7GDd5ltW8NAf/O/sFn2MWrRl6xyQ3zjuErpbGc4pao9gd
-         wZ4NYtdSnEuIxMpChWws7q7poYNa/iyx4yy4c89VEUy4I1zybQTjHvdMLoMLl4AT78pO
-         JmdPWfcAvxQyTk/GqT34YfYnEEn/5EYLk28Q9uI+IWN1edqXmpZEs/XDMUkTY0IMb1XP
-         xobnEKcMcV1z3pdMQaRi/qhvqIaNgZQejXPLXPQh8Fstj/k4+/m9mUTyhlXQE3u3Iui2
-         1xbQ==
-In-Reply-To: <20150523040506.GA23551@mogambo.domain.name>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.de;
+	s=mail201212; t=1433629489;
+	bh=Zjnujf1YGEp7bSoQAviVB3Fdw/sg/N7stwMqUS5E7EE=;
+	h=Date:From:To:Subject:From;
+	b=evAyg4mBLiRFTtEoYGrYabtVnsjYGkipvngWEzEJNP1593JPKEpIQVfBm+fUt+X0v
+	 V+JKYBZatiMk0urwdpfH9/21iN8pRXA24ZAgUAA7ZoOxSf6NcuxszLw05n/2i+BfBr
+	 khn+uGUh3o25/4Lghob+G67U1sD6E3kfNcGZeX6E=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="windows-1252"
-To: Varun Sharma <varun@sharmalabs.org>
-Cc: Jonathon Reinhart <jonathon.reinhart@gmail.com>, linux-newbie@vger.kernel.org, kerneldeveloper28@gmail.com
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-I=92ve never got any other e-mail but that one. Anyway, I would like to=
- be in this e-mail list.
+Hi,
+I want to write my first driver. The target is the beaglebone black. For 
+my platform_driver need access to one simple gpio pin and one pwm pin so 
+i used the device tree model to access the drivers for pwm and gpio 
+chip. Now i have the issue that my probe function will never get called 
+and i cant identify the problem. I tried the driver as built-in and as 
+module, but in both cases i didn't find the probe-string in dmesg. The 
+entry in the dts looks like:
 
-El 23/05/2015, a las 05:05, Varun Sharma <varun@sharmalabs.org> escribi=
-=F3:
+/ {
+     model = "TI AM335x BegleBone Black";
+     compatible = "ti,am335x-boneblack","ti,am335x-bone","ti,am33xx";
 
-> Please refer to the previous conversations available on the page from=
- where you subscribed to this mailing list.
-> This mailing list is not very active, so you will get the emails only=
- if someone will post to this mailing list after you subscribed.
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-newbi=
-e" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+                 motor_left:motor@1 {
+                     compatible ="alex,motor";
+                     gpio=&gpio0;
+                     pincrtl-names="default";
+                     pincrtl-0=<&pwm_pins>;
+                     gpio_out_pins=<&gpio0 1>;
+                     pwms = <&ehrpwm0 0 500000>;
+                     status = "okay";
+                 };
+};
+
+  and the module code:
+...
+
+static int motor_probe(struct platform_device *pdev)
+{
+     pr_alert("motor_probe called!\n");
+     return 0;
+}
+
+static int motor_remove(struct platform_device *pdev)
+{
+       pr_alert("motor_remove called!\n");
+       return 0;
+}
+
+...
+
+static struct of_device_id motor_of_match[] =
+{
+     {.compatible = "alex,motor"},
+     {}
+};
+
+MODULE_DEVICE_TABLE(of, motor_of_match);
+
+static struct platform_driver motor_pdriver =
+{
+   .probe = motor_probe,
+   .remove = motor_remove,
+   .driver = {
+         .name = "motor",
+         .of_match_table = of_match_ptr(motor_of_match),
+         .owner = THIS_MODULE,
+       },
+};
+
+static int __init motor_driver_init(void)
+{
+   int ret;
+
+   pr_info("motor_dirver_init\n");
+   ret = platform_driver_register(&motor_pdriver);
+   if(ret < 0)
+       goto motor_driver_init_error;
+
+   return 0;
+
+motor_driver_init_error:
+   return ret;
+}
+
+thx for your help.
+static void __exit motor_driver_exit(void)
+{
+   pr_alert("motor_dirver_exit\n");
+   platform_driver_unregister(&motor_pdriver);
+}
+
+module_init(motor_driver_init);
+module_exit(motor_driver_exit);
+
+
 
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie"=
- in
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
 Please read the FAQ at http://www.linux-learn.org/faqs
