@@ -1,54 +1,50 @@
-From: Eric Dumazet <eric.dumazet@gmail.com>
+From: ratheesh kannoth <ratheesh.ksz@gmail.com>
 Subject: Re: sock_hold and sock_put
-Date: Wed, 24 Jun 2015 14:46:40 +0200
-Message-ID: <1435150000.4110.7.camel@edumazet-glaptop2.roam.corp.google.com>
+Date: Wed, 24 Jun 2015 19:44:49 +0530
+Message-ID: <CAGZFCEFQju581PDF3QpyX-s8vvdxPrZTwS85CP3rTu4wUfEHBg@mail.gmail.com>
 References: <CAGZFCEHHXbnsSoBaTUdxqwoQ75hN5BTBXJMEXp0dkwQbFSEkRw@mail.gmail.com>
+	<1435150000.4110.7.camel@edumazet-glaptop2.roam.corp.google.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <netdev-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :content-type:mime-version:content-transfer-encoding;
-        bh=0m1Lx2GhQOGWb4Ma2n9a/Q4fQ1yhPr8B09X6tS5lTEg=;
-        b=VVSUTQbnYjI3LcNVjxW9OutaFfSqh2+ysHxQjk3LMSmHawbarGeQXFHts15VvG1buP
-         L5sfBW4TbVO0/2oMIiWN+6xQp4uIRJBFqfAmd3EijCs9R+S8uZP09n7DuiBZvVY5fT4e
-         44WbhYYbRX9P9cgoSZ4s9aNT0U4dNr8497fILmcuapAngJ81fJuIyOnbhDwDmQVodQ5H
-         c8Qao5XHoPk5YLdBX2oyectnmEQpoA1U0u5tQroRNMAMzs2Udjj14DfVYM4ovIoVwU8b
-         Tr4t2b9jeWRx0m+EIVS1aDpU/W6NhPdZBrqu+q2Vxk3J99wZ1Y9nvX8SmAgF/JMu2oc5
-         NjlA==
-In-Reply-To: <CAGZFCEHHXbnsSoBaTUdxqwoQ75hN5BTBXJMEXp0dkwQbFSEkRw@mail.gmail.com>
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :cc:content-type;
+        bh=edFaKrXzBdv/NDvHBf/OixHDHlWVY/pySoVvujepv88=;
+        b=UrGyT1NPpfxB4KZ2BVWc0Yyrf3kZjUvvGeNWIfZD3a8JMW6tPvdJWDpCMFzeleMHN1
+         ObfhIWKdfHibYbIuboIXJJMEnaqhD1FLzHKEHYQoDMwfIM5fKXB2mIElVBNTlfk1jV7v
+         id0DynKGfS4oA1XY7GJasvVlLfJ4H2+Hgs+BCtF0gDmNStrHQeShJvOYEIBreghKS6Bj
+         61wNCGoWiwwSOhlV3ZAkF5ojzY64yDt02VPcTkfsMy07Xx2ZFPkmoqgBX2n5CRL7d2r7
+         gD+ZQyotgEWp7uIEY0G9M++laM4KLv/JEV/b+Lk2FVY/1fChjKOeklxR1YZu0fcUCMM0
+         gthg==
+In-Reply-To: <1435150000.4110.7.camel@edumazet-glaptop2.roam.corp.google.com>
 Sender: netdev-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-To: ratheesh kannoth <ratheesh.ksz@gmail.com>
+Content-Transfer-Encoding: 7bit
+To: Eric Dumazet <eric.dumazet@gmail.com>
 Cc: netdev <netdev@vger.kernel.org>, linux-newbie <linux-newbie@vger.kernel.org>
 
-On Wed, 2015-06-24 at 14:47 +0530, ratheesh kannoth wrote:
-> Hi list,
-> 
-> There is a comment on sock_hold() function -
-> 
-> 561 /* Grab socket reference count. This operation is valid only
-> 562    when sk is ALREADY grabbed f.e. it is found in hash table
-> 563    or a list and the lookup is made under lock preventing hash table
-> 564    modifications.
-> 565  */
-> 
-> 
-> But i could see instances of sock hold() in kernel  without any locks.
-> 
-> 
-> How  the race between sock_hold() and sock_put() is prevented in  smp ?
-> 
-> note: I would like to use sock_hold() and sock_put() in
-> netdev_notifier chain call back functions.
+On Wed, Jun 24, 2015 at 6:16 PM, Eric Dumazet <eric.dumazet@gmail.com> wrote:
+> You misunderstood the comment.
+>
+> Comment only stated that sock_hold() must be used in contexts where
+> caller owns a reference (and will eventually release it later with
+> sock_put().
+>
+> There is nothing about having a lock here.
 
-You misunderstood the comment.
+Thanks. I think, i did not put the question right.
 
-Comment only stated that sock_hold() must be used in contexts where
-caller owns a reference (and will eventually release it later with
-sock_put().
+I understood the comment perfectly. Suppose i need to use the
+sock_hold in some callbacks ( say netdev_notifier chain callback)
+function. How can i gurantee race won't happen at the point where i
+call sock_hold().
+ If i put the question  in another way - say kernel is doing a
+sock_put() on a socket, and at the same time  the   netdev_callback
+function( that i implemented ) is called on another core ( in smp
+machine ). and the  callback is  holding (sock_hold()) on the same
+sock.
 
-There is nothing about having a lock here.
-
+Thanks,
+Ratheesh
