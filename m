@@ -1,53 +1,71 @@
-From: Ciro Santilli <ciro.santilli@gmail.com>
-Subject: Non-interactive configuration with command line options
-Date: Tue, 11 Aug 2015 12:11:43 +0200
-Message-ID: <CAFXrp_cRfJd6NqQP+_Q9z3ki1isKRz04fn8uskHeSYiyvhVN=A@mail.gmail.com>
+From: Andrey Utkin <andrey.od.utkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Req for mentor - [BUG]Busy luks disk not closable forever if medium
+ is removed
+Date: Tue, 10 Nov 2015 21:27:38 +0200
+Message-ID: <5642452A.6090906@gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax"
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:date:message-id:subject:from:to:content-type;
-        bh=hgeaL/n06vHcYFzmqCBAUDRDz+8jSgGpyjZv+14UBWE=;
-        b=0+Rj51cw1xdOod7+OHsRM/7nlNAVlk4+aBgoBXYTK9bey38zcSAd/Rz2ezUaf+njNr
-         73tE+22ie8/qoHxdUPaAHCN43Wh4FddVNJImlkpnzozkHo6EaJVnpESKRpWc295w8Kqu
-         IaZQkX6W+jWvx6XMBfnmhzoGmiexKrDRe1UfHCezuC33kO+CtpzpLkw0+5Bsrds1PYDh
-         zFhltGbrZcETf6oOSH0teBUUuSZhBprX1OKYaYU8rAZuF1lUZECYj7A56hdYhKRqbdMC
-         Uq4ju37v5ADMRXKfWjLihqL7JBwhs68EXvja45t90X+cAFRdHxu0P8gdFQAUbjk8yaXB
-         rlLA==
-Sender: linux-newbie-owner@vger.kernel.org
+        h=to:from:subject:message-id:date:user-agent:mime-version
+         :content-type;
+        bh=heiBw/qZWAlxzTd7+J9lqEonj1QxA11HlI0A5JxWxko=;
+        b=FgX/7AbKjfX0f8Kd01LisEZvKycJoG1G7veeOBVs0X7bsoUEqd8OBrmg+za7+uexeZ
+         rgRmm+nWsW5Ayk/GZuKuBrkJmDRvqiRqxD4uU73Zm/0IamOlUEk5MiWw+P4HF45jQqbF
+         D3H4hKTBseoR2INsN4FpEqgOqROBo8CjWrOnp8EE6oz+MX3iYoe4AADmuPAzK6qkk7Wl
+         NetxX41fZk6zeBPuRuKXMp4pEI6WhZR/pbkiP8pbcXZSXUoNVf/nw4ra522vJUzQBzO9
+         Fn3vbDmn0T+Hz/9X3dnZ5mWSbPl9iZYsNV7qylieDML3yyY4pOg1Mo1dlPbB4YUOJhIJ
+         2Mqg==
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: kernel-mentors-VDJrAJ4Gl5ZBDgjK7y7TUQ@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 
-To better automate kernel building when I only need to modify a few
-options, I want to write something like:
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-    make defconfig CONFIG_DEBUG_INFO=y
+https://bugzilla.kernel.org/show_bug.cgi?id=3D107641
+I believe it is an issue which should _better_ be fixed in kernel. My
+level of knowledge doesn't allow me to identify the location to  work
+on, however, I am interested to work on this.
+Any help, ideas, thoughts, comments are appreciated.
+Thanks.
 
-and have all dependency conflicts that might generate solved with
-`make silentoldconfig`. Is there such a command?
+--=20
+OpenPGP usage is appreciated (it also helps your letter to bypass spam
+filters). To email me with encryption easily, go
+https://encrypt.to/0xC6FCDB11
 
-Alternatives I've found and why I'm not satisfied:
 
-- `sed`: requires typing up a sed command or an alias.
-- prepare a `.config` file, and copy it around. Overhead of copying
-and remembering the path or creating an alias
+--DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
-Disadvantages of both of the above: do not reuse the build directory
-information given to `make`, either through `O=` or `KBUILD_OUTPUT`.
-Of course, our alias could take them into account, but that adds more
-overhead again.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-Also asked at:
+iQIcBAEBCAAGBQJWQkUqAAoJENVqfNDG/NsRR74P/R4WkBitkFAF4c2wiAFva5G5
+YhbJ/OP+IJg6MyjUY9W+LoCesCkTniXD/SeZju/cgDlmkFYIL2X8IOcimdoqm16P
+6z8hIwHDN6AxBn7Queg6PaDEFAbClfwbnItNOxNsnI42//mMwtYaekH0gx2MQwrC
+cOFRfNl69GsDIUcQnSWy4rSxI1axWissCan/8kePX5C6+0AR+oMJoAQGEQrQ3GJb
+HVUqkTVTdiatkvkwJ52PZTGQV/Q5yl2CXDAgSJhqxa0Dz5fk/LYPVSaszd2aww8t
+sAnTx9kzN5eg20DsFsGkI5tFMYVrKL7dw2qEyMhYhNRWYnZNc0Bk0pYxTwnLzXHU
+qLYijGDo73cqm+8fwwbpgWF+C8n3A8AGfjj1sUfocDp5rHWSnmyHSfZMQS+CR2UN
+9uqnMDMAPi/fOfYBmb8Ozjj1S//A3SZt/e2MLTS+AeASeTsHN8fYnQtwAHEJorEZ
+LRE+JpJTqsOMDTOty5XoQkUEe4K9qUw4rXI8qoC1Gkmzjg/QzC1dzB3nU+fLjMGC
+cDFocqlyr+lvyKu505rIOjOIDDZi4w6MlVC3T7xEYLubfU8a91zY52CJe+5NQsYC
+ekfdfgMQ5VObiFz1bfXjhHwt9k5+nvii3s6EFeZVs6yDkTFJmd9S6d181DCj6YV4
+tLrw92hG/Tkwoj0M5USI
+=Yuz+
+-----END PGP SIGNATURE-----
 
-- http://stackoverflow.com/questions/7505164/how-do-you-non-interactively-turn-on-features-in-a-linux-kernel-config-file?answertab=active#tab-top
-
-- http://unix.stackexchange.com/questions/19905/non-interactive-configuration-of-linux-kernel
-
-If anyone would review a patch for that, I will attempt it.
+--DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax--
 --
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
+To unsubscribe from this list: send the line "unsubscribe linux-usb" in
+the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
