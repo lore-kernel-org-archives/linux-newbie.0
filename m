@@ -1,71 +1,49 @@
-From: Andrey Utkin <andrey.od.utkin-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Req for mentor - [BUG]Busy luks disk not closable forever if medium
- is removed
-Date: Tue, 10 Nov 2015 21:27:38 +0200
-Message-ID: <5642452A.6090906@gmail.com>
+From: Rajat Jain <rajatxjain@gmail.com>
+Subject: Question about devm_kzalloc() and friends
+Date: Thu, 19 Nov 2015 12:38:24 -0800
+Message-ID: <CAA93t1oPgQt8gYDUfQu25CrhP0MQ5oPNNmV-YrWoOFvXUXZR9g@mail.gmail.com>
+Reply-To: rajatxjain@gmail.com
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=to:from:subject:message-id:date:user-agent:mime-version
-         :content-type;
-        bh=heiBw/qZWAlxzTd7+J9lqEonj1QxA11HlI0A5JxWxko=;
-        b=FgX/7AbKjfX0f8Kd01LisEZvKycJoG1G7veeOBVs0X7bsoUEqd8OBrmg+za7+uexeZ
-         rgRmm+nWsW5Ayk/GZuKuBrkJmDRvqiRqxD4uU73Zm/0IamOlUEk5MiWw+P4HF45jQqbF
-         D3H4hKTBseoR2INsN4FpEqgOqROBo8CjWrOnp8EE6oz+MX3iYoe4AADmuPAzK6qkk7Wl
-         NetxX41fZk6zeBPuRuKXMp4pEI6WhZR/pbkiP8pbcXZSXUoNVf/nw4ra522vJUzQBzO9
-         Fn3vbDmn0T+Hz/9X3dnZ5mWSbPl9iZYsNV7qylieDML3yyY4pOg1Mo1dlPbB4YUOJhIJ
-         2Mqg==
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+        h=mime-version:reply-to:date:message-id:subject:from:to:content-type;
+        bh=66E7PHbbLXbr4smagws78GahC04uvcpQu3jJyxhBLuk=;
+        b=saq3dLhwCdkMJFe8RSWrELwR43VK5pw2xSb51RwFjWq8jQ0q7V/Bt7XtX2NL9z6DxR
+         jszLIug9TihsudxQDs2MnPHcUgRM+SZIo3X5I61rFYprD/X0C6uTgP0s7MWKPA34D1EF
+         TsPDCuTcVZGyltkA/LJONsyl9k8dM3v10X/CBXb0qLWJ2NEusYb6TlryQuuBtYrGk6Te
+         D6MmNc31UXr5AoPYU8ujpCTyYzbGbd0r+IEqEfC7bGED7vnXN2xn17dz72EzuvyCJvD1
+         6q6fhN8h9p3PDKbYpZm28UAebJgUpM9lI4kPhqjXN8lRI1uwnxq+0UW3XgjOzaggnkZ1
+         d8Eg==
+Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-To: kernel-mentors-VDJrAJ4Gl5ZBDgjK7y7TUQ@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-crypto-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-https://bugzilla.kernel.org/show_bug.cgi?id=3D107641
-I believe it is an issue which should _better_ be fixed in kernel. My
-level of knowledge doesn't allow me to identify the location to  work
-on, however, I am interested to work on this.
-Any help, ideas, thoughts, comments are appreciated.
-Thanks.
+Can some one tell me if that memory allocated by these functions is
+freed when the last reference (pointer) to the MEMORY goes out of
+scope, or when the last reference to the DEVICE is put?
 
---=20
-OpenPGP usage is appreciated (it also helps your letter to bypass spam
-filters). To email me with encryption easily, go
-https://encrypt.to/0xC6FCDB11
+For instance:
 
+probe()
+{
+    ptr = devm_kzalloc(dev, ....)
+    ptr = devm_kzalloc(dev,.....)
+}
 
---DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
+The reference to the first memory goes away as soon as I make the
+second call, but the device stays around. So when is the first memory
+freed? At the second call or at the device removal time?
 
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v2
+Thanks,
 
-iQIcBAEBCAAGBQJWQkUqAAoJENVqfNDG/NsRR74P/R4WkBitkFAF4c2wiAFva5G5
-YhbJ/OP+IJg6MyjUY9W+LoCesCkTniXD/SeZju/cgDlmkFYIL2X8IOcimdoqm16P
-6z8hIwHDN6AxBn7Queg6PaDEFAbClfwbnItNOxNsnI42//mMwtYaekH0gx2MQwrC
-cOFRfNl69GsDIUcQnSWy4rSxI1axWissCan/8kePX5C6+0AR+oMJoAQGEQrQ3GJb
-HVUqkTVTdiatkvkwJ52PZTGQV/Q5yl2CXDAgSJhqxa0Dz5fk/LYPVSaszd2aww8t
-sAnTx9kzN5eg20DsFsGkI5tFMYVrKL7dw2qEyMhYhNRWYnZNc0Bk0pYxTwnLzXHU
-qLYijGDo73cqm+8fwwbpgWF+C8n3A8AGfjj1sUfocDp5rHWSnmyHSfZMQS+CR2UN
-9uqnMDMAPi/fOfYBmb8Ozjj1S//A3SZt/e2MLTS+AeASeTsHN8fYnQtwAHEJorEZ
-LRE+JpJTqsOMDTOty5XoQkUEe4K9qUw4rXI8qoC1Gkmzjg/QzC1dzB3nU+fLjMGC
-cDFocqlyr+lvyKu505rIOjOIDDZi4w6MlVC3T7xEYLubfU8a91zY52CJe+5NQsYC
-ekfdfgMQ5VObiFz1bfXjhHwt9k5+nvii3s6EFeZVs6yDkTFJmd9S6d181DCj6YV4
-tLrw92hG/Tkwoj0M5USI
-=Yuz+
------END PGP SIGNATURE-----
-
---DiF9EVaO2c3vELXrUKn5rwjPnKr8PF6Ax--
+Rajat
 --
-To unsubscribe from this list: send the line "unsubscribe linux-usb" in
-the body of a message to majordomo-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
 More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
