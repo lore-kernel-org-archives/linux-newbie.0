@@ -1,47 +1,39 @@
-From: Rajat Jain <rajatxjain@gmail.com>
-Subject: Question about devm_kzalloc() and friends
-Date: Thu, 19 Nov 2015 12:38:24 -0800
-Message-ID: <CAA93t1oPgQt8gYDUfQu25CrhP0MQ5oPNNmV-YrWoOFvXUXZR9g@mail.gmail.com>
-Reply-To: rajatxjain@gmail.com
+From: iSpinn <ispinn@gmail.com>
+Subject: Where do I pose login and password questions?
+Date: Tue, 1 Dec 2015 13:32:25 -0800
+Message-ID: <CAKW856KdupHXEMTYTGa_byDTX8QaCy3yvez9h+7LpqgSzRCZyw@mail.gmail.com>
+Reply-To: iSpinn@gmail.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:reply-to:date:message-id:subject:from:to:content-type;
-        bh=66E7PHbbLXbr4smagws78GahC04uvcpQu3jJyxhBLuk=;
-        b=saq3dLhwCdkMJFe8RSWrELwR43VK5pw2xSb51RwFjWq8jQ0q7V/Bt7XtX2NL9z6DxR
-         jszLIug9TihsudxQDs2MnPHcUgRM+SZIo3X5I61rFYprD/X0C6uTgP0s7MWKPA34D1EF
-         TsPDCuTcVZGyltkA/LJONsyl9k8dM3v10X/CBXb0qLWJ2NEusYb6TlryQuuBtYrGk6Te
-         D6MmNc31UXr5AoPYU8ujpCTyYzbGbd0r+IEqEfC7bGED7vnXN2xn17dz72EzuvyCJvD1
-         6q6fhN8h9p3PDKbYpZm28UAebJgUpM9lI4kPhqjXN8lRI1uwnxq+0UW3XgjOzaggnkZ1
-         d8Eg==
+        h=mime-version:reply-to:from:date:message-id:subject:to:content-type;
+        bh=2F139Ovs9XnkgCcXnIQ5Fy9uUjdw3Ae8uiSEV/2mjzw=;
+        b=i0I3XfYv3AsNjB4SgH4LSeXhT8O/z7CONNd+WyD6XN0+b2iNTI7UpLhnz+e66gSde+
+         B6CipdutBw8dBALOpJ4M0+oQIbE9GdBMTykyLrMSvUAqCDTaan7GIhnsM8O691ykuia1
+         a2NEIxb6KKkUnKwNJWzQMqdS3TP9WUZ8dR/LGRJSetAOGRmbQcNKgB/zd1RFQlwz0jXA
+         JJTanGYVPrecYT32dSE1Zqqt/gTYiMeCGePCdj82xklkhYq8lmaqdi+I7rcG3pctLyAz
+         AY3kr26tUg5O96e2hlR/gGCFevyuHSzEmc4ABIQrkj0irYhJnGabLhG3SgVfSpF1GA0Q
+         NAXA==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, kernelnewbies@nl.linux.org
+To: linux-newbie@vger.kernel.org
 
-Hi,
+I want to start an open discussion on the login process and password
+security, specifically introducing a new paradigm for what the login
+process and password format COULD look like, and how that different
+process might work and be implemented.
 
-Can some one tell me if that memory allocated by these functions is
-freed when the last reference (pointer) to the MEMORY goes out of
-scope, or when the last reference to the DEVICE is put?
-
-For instance:
-
-probe()
-{
-    ptr = devm_kzalloc(dev, ....)
-    ptr = devm_kzalloc(dev,.....)
-}
-
-The reference to the first memory goes away as soon as I make the
-second call, but the device stays around. So when is the first memory
-freed? At the second call or at the device removal time?
+What vger.kernel.org list is best to 1) let me do my due diligence to
+search through its archives for prior work already suggested and 2) if
+none is found, posing that new paradigm on that appropriate list for
+discussion?
 
 Thanks,
 
-Rajat
+Doug P
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
