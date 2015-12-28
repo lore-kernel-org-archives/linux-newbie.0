@@ -1,45 +1,44 @@
 From: Rajat Jain <rajatxjain@gmail.com>
-Subject: Re: Char device question: cdev_del()
-Date: Fri, 18 Dec 2015 11:41:28 -0800
-Message-ID: <CAA93t1oBCT=MhViFV1GR9myb4K9fdeYWU=u-8a2euws7SDYLiw@mail.gmail.com>
-References: <CAA93t1qNPqMvSk9Cq4g5FzGOoD+r=SaiQ_dP9VwQ90ON5gXG2A@mail.gmail.com>
+Subject: debugfs_remove_recursive() while a file is in use by userspace
+Date: Mon, 28 Dec 2015 12:27:22 -0800
+Message-ID: <CAA93t1pTkDpaZpQuVu0bQpxsxxUDViKU6-bLbporqkyHCJ0=mw@mail.gmail.com>
 Reply-To: rajatxjain@gmail.com
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
-        h=mime-version:reply-to:in-reply-to:references:date:message-id
-         :subject:from:to:content-type;
-        bh=NNjcdm1g+98Lak/TYj2QidzEcf0pbaZoNCNljX3GXGA=;
-        b=yHuhYHBPtnStu1gYKrU7xga4f5DmcckjvGgqwNXCXh2ZlPowOFJUItnuzMVOGcx7ij
-         EpaBEseNV6fhmkyCXWNHyUiCR971N6hDRJhCJ99MP8GK226Tsyn+YEmBSOkzIRIi/VRE
-         u14U6RKNy8Tw6F5RfxnV2q+JMz/TZzP7LOCnD/XnV3y0QqtU8epA1DJvpmKjCY1msdv5
-         r1uRWZBdYbn0kv3CBZs0I1DTeEQ9/vVgVsdo5vuKkVLUDpQSx7eaxdTgGpgrQ9uvTdEl
-         cA16R2TVyEp4krH8zNla2oIxfZOYvcQU2YaOjky9TUgwCZDXo3ACtA+PimDozpsIX3nS
-         NRrA==
-In-Reply-To: <CAA93t1qNPqMvSk9Cq4g5FzGOoD+r=SaiQ_dP9VwQ90ON5gXG2A@mail.gmail.com>
-Sender: linux-newbie-owner@vger.kernel.org
+        h=mime-version:reply-to:date:message-id:subject:from:to:cc
+         :content-type;
+        bh=q3wLy84p7ZV30PSFeFMS1e7hxK7jm4I4nyWV1Dm4/Xk=;
+        b=zRk/gAMNGGo8dM05+YxVVAKVCwQicL7JQMHEN6AsH6l4Gt2P4Zcc7D6r4ezq4ktF/O
+         cfgQ8mnKZ1qx7nG4WcPmbWfv0TsmMtwbQlL3Gp+tMTuJrQPeal6J5yFn3qm0+aN62qVT
+         G20DTUZXDMVYtIbHOueWtbABEq0vzl31VuY/of3g6JfcJtnN+PACdgDOM3eRVbfQhwhp
+         CayTJLaDnOTRbT/4RH3l7ugQlEtj4URMYrV3WEEL7H+3BOnUvCwWE6B9b9oYpS4NPUtp
+         u84TayWZP2OJ4IIDBHjZChpaznijrVT83xuEAkABzOVmPzDl7NcRiSbA6IxpQv70SFll
+         gf6A==
+Sender: linux-kernel-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org, kernelnewbies@kernelnewbies.org
+To: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
+Cc: Greg Kroah-Hartman <greg@kroah.com>
 
-On Fri, Dec 18, 2015 at 11:40 AM, Rajat Jain <rajatxjain@gmail.com> wrote:
-> Hi,
->
-> What happens if the driver calls cdev_del() while one of the character
-> device is being used (i.e. for. e.g. some process is in the middle of
-> the ioctl call for that character device).
->
-> Does the cdev_del() wait for that call to get completed? Is the driver
-> guaranteed that once the cdev_del() returns, none of the driver
-> character device operations are in use?
->
-> Thanks,
->
-> Rajat
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Hi,
+
+I wanted to understand the behavior taken when a module calls
+debugfs_remove_recursive() on a directory, while files under that
+directory may still be in use by the userspace (for instance an
+ongoing read / write operation).
+
+Does the function wait
+
+(1) until all the currently executing file operation methods
+(read/write/map etc) have returned?
+OR
+(2) until the user has given up all references (descriptors) to the
+files under the directory (i.e. until release() method has been
+called)?
+
+Thanks,
+
+Rajat
