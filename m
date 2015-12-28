@@ -1,9 +1,9 @@
 From: Rajat Jain <rajatxjain@gmail.com>
 Subject: Re: debugfs_remove_recursive() while a file is in use by userspace
-Date: Mon, 28 Dec 2015 12:51:32 -0800
-Message-ID: <CAA93t1oENvBNDUYBNk2FKjwUSt77y-amLgV9h-fu7TPpiPJ98A@mail.gmail.com>
+Date: Mon, 28 Dec 2015 12:56:34 -0800
+Message-ID: <CAA93t1pGbYwTE-CpJwG8UWR3d3TS4m3oWJYrpycjyjOYoGBkLw@mail.gmail.com>
 References: <CAA93t1pTkDpaZpQuVu0bQpxsxxUDViKU6-bLbporqkyHCJ0=mw@mail.gmail.com>
-	<20151228203121.GA19753@kroah.com>
+	<87poxqqp86.fsf@gmail.com>
 Reply-To: rajatxjain@gmail.com
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
@@ -11,79 +11,86 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20120113;
         h=mime-version:reply-to:in-reply-to:references:date:message-id
          :subject:from:to:cc:content-type;
-        bh=PYp043cN5Q+sz5/7zugh1RSwnW0u5GRBhZJE6zxE+Pg=;
-        b=lV/N494m09egGkPpN8e4p5rjJCwcYu+8NkZ/Q9gWht3YdTmGX4JqHND77U5jiiIx/e
-         mZA17glbgyYrdx4hB0XjN3Sz9P7xq8y9+LH//BUyBKs78pyL/pBT2QJX6SYOXV4OhQi5
-         MxhjfIvBsyPxDoDKSMWM/RosPta4k+qVEXvZyMZVG8sw8gMMzxzz1EEaIbL97jY63nbF
-         G8cvuWEwBEAOHxzyk0Ewe3APXmc6ifih2qwzbdvgETMO5NxfBULOCRGFkcOEtwh7cw6b
-         DYACrQ9YF69neIWjieYkhmCuA7NLeozGCvBdo1GI3vhUbuLPCpzO7LRyU0XzNOCwt6Ol
-         HG1A==
-In-Reply-To: <20151228203121.GA19753@kroah.com>
+        bh=QJ6wZlDZtu6/WD6t7UYPQVOvek9bZFaRxoMxlYlWmXQ=;
+        b=VXvmMuT+CdTfCj3Wmb8RNU4pDVXJLA0P3h5oqYFjfcbIePm9O/9XYsCIaYbkhYiUFG
+         0J1gUOtDGl8fvPQQmgeK1aP4wPfV0gSrGls5B7qMEX2Ja8Sn+N53eV+L9XL00dIxDkKb
+         ZVXzNazv+Wbehf1QLk6XFQuftdsksqGvV4CHpbYHtKq8VoDdH8ulYwbAWiHf7m9HDAQ2
+         BI4/mZESklKbQrDsA887zDOJ04TFa0nxs6fE6emzQI4x09grVuAhmRGtcQim626/vQV1
+         HPhDXWcpsbNOALKqH93fbg8kO1PTcfWWCa4zfA9HG4vPA697C3Pu6HHV90Jl9dZgwek0
+         NxdA==
+In-Reply-To: <87poxqqp86.fsf@gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Greg Kroah-Hartman <greg@kroah.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org
+To: Nicolai Stange <nicstange@gmail.com>
+Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-newbie@vger.kernel.org, Greg Kroah-Hartman <greg@kroah.com>
 
-Thanks Greg and Al for the quick turnaround.
+>
+> The current state is that both question are to be answered with "no",
+> i.e. debugfs file removal is racy.
+>
 
-Essentially I have a device that supports something called "contexts"
-that can be "created" and "destroyed" during the life of the device. I
-want to expose some debug files for the context when it is created,
-and destroy the files when the context is destroyed. However, I'm not
-sure how do I ensure that the user is not in the middle of reading /
-writing / mmaping to those files. Also how do I know that user is
-still not holding a reference to the file structure.
+Ouch! :-(. Thanks for confirming!
 
-It seems like debugfs is currently not a good choice for this? Would
-you recommend me to any other fs or subsystem that I should use for
-this?
+Somewhat related, is my understanding correct that the behaviour of
+character device layer w.r.t. the two questions that I asked the
+answer to my questions would be "yes"?
 
-Would hanging those files under the sysfs node for the device sound
-any better (by representing each "context" using an embedded kobject)?
+i.e. cdev_del() would wait
+
+>> (1) until all the currently executing file operation methods
+>> (read/write/map etc) have returned?
+
+AND
+
+>> (2) until the user has given up all references (descriptors) to the
+>> files (i.e. until release() method has been
+>> called)?
 
 Thanks,
 
 Rajat
 
 
-On Mon, Dec 28, 2015 at 12:31 PM, Greg Kroah-Hartman <greg@kroah.com> wrote:
-> On Mon, Dec 28, 2015 at 12:27:22PM -0800, Rajat Jain wrote:
+On Mon, Dec 28, 2015 at 12:42 PM, Nicolai Stange <nicstange@gmail.com> wrote:
+> Hi Rajat,
+>
+> Rajat Jain <rajatxjain@gmail.com> writes:
+>
 >> Hi,
 >>
 >> I wanted to understand the behavior taken when a module calls
 >> debugfs_remove_recursive() on a directory, while files under that
 >> directory may still be in use by the userspace (for instance an
 >> ongoing read / write operation).
->
-> Bad things :(
->
+>>
 >> Does the function wait
 >>
 >> (1) until all the currently executing file operation methods
 >> (read/write/map etc) have returned?
->
-> Nope.
->
 >> OR
 >> (2) until the user has given up all references (descriptors) to the
 >> files under the directory (i.e. until release() method has been
 >> called)?
 >
-> Nope.
+> The current state is that both question are to be answered with "no",
+> i.e. debugfs file removal is racy.
 >
-> There are some patches on the mailing list that I need to review that
-> hopefully should resolve this problem, as it's been known for a very
-> long time.
+> I've recently sent a patch addressing this issue:
+>   https://lkml.kernel.org/g/87y4dfukzy.fsf@gmail.com
 >
-> In short, just don't remove debugfs files unless your module is
-> unloading, and all should be good as modules are never auto-unloaded.
-> If you remove debugfs files when a device is removed, be careful.
+> Basically, it turns the answer to your first question into "yes".
+> Subsequent reads/writes will return a -EIO.
 >
-> thanks,
+> That patch (series) is still under review though.
 >
-> greg k-h
+> Further reference can be found in the *sub*-thread rooted at
+>   http://thread.gmane.org/gmane.linux.kernel/1452470/focus=1467314
+>
+> Best,
+>
+> Nicolai
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
