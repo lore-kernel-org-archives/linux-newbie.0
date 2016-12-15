@@ -1,162 +1,113 @@
-From: Samuel Bernardo <samuelbernardo.mail@gmail.com>
-Subject: Re: linux kernel support for logitech g502 proteus
-Date: Thu, 1 Dec 2016 16:44:38 +0000
-Message-ID: <10298a05-f2cb-a4c4-ce7b-deeb2e5c29a8@gmail.com>
-References: <2916ca4f-c4cf-06c9-3189-e33635ca621f@gmail.com>
- <58404CB1.6090705@moshe.nl>
+From: Ivan Stoyanov <ivan.stoyanov@amk-drives.bg>
+Subject: i.mx35 kernel freeze on booting
+Date: Thu, 15 Dec 2016 17:35:43 +0200
+Message-ID: <ea833817-14cf-4db2-bd68-15bae3aa79a3@amk-drives.bg>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="tJOHaQf1MHu5CepXXMtgkOOO4IAoBffM0"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=subject:to:references:cc:from:message-id:date:user-agent
-         :mime-version:in-reply-to;
-        bh=PExEzQ7BPYZEN4pbCSneuPE8/5cgQvcOxxuk4j4DBz0=;
-        b=ReQEyvyEugKPA5oJGFLj0O1NLXkNxKb1se9uTotcCaQSmFnfUCqnlvZBifF54toJTd
-         g2swYubE4tQieT/3Af/ITKtTyJPZt4g+w3GUgTqn2lJpl0Qp7z7Oze8DKTsZl0LAY+ER
-         i/nav4Tqr74ldx7OcqZtzGSn0c1snGjBnlcSEvpfe/Rb+4bsqF3hsmcrEOjH4ypWE+Lo
-         xlYOpbC5J4U08rHRgxdJjDdxtzcjPrHTgJ6qC07e6zwYfM2RuKcHxei4ULRo3mXBphH7
-         5732rn5dqnSCsUtb3osdASOjnaz4FY33ayFfGn5C4WgJCLwDbLmLlLv7vAuyaUFrFjVA
-         cgMw==
-In-Reply-To: <58404CB1.6090705@moshe.nl>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=amk-drives.bg; h=
+        content-transfer-encoding:content-type:content-type:mime-version
+        :user-agent:date:date:message-id:subject:subject:from:from:to;
+         s=dkim; t=1481816144; x=1482680145; bh=vnmPI4GWjwwNKVSQ+UPCDEuX
+        +DUQ01Z7edVmdBWCU9I=; b=TKwD4atuPI0naUN+ZcxgtqhEC8z64sANVZ/cstth
+        PQJWSNxNiQJglVi6Q63NShbWY3NZByYXemaKZKQi3Ejyqay8d8/JxQxhbCgHy0o9
+        j4o0JWqfJWU9sr+o1HiRAjiQKs6doHRnyBxKl8Qfvv6Y4tUZCOvtDsvtQLDCD28U
+        8N4bpBin+0o22ykNII39TuMKLYdo+SOAql1ZqpZ/eKn/B/mqmoh0yrnFEGxGOuVt
+        N3djPvGeyNLbUGfphuLGC0cQfGf9YjpTKfPDG/GPuQQEzn8kDkk+zxoOHwYoiC7u
+        rhdIBps97u1Ve6K1xQOEquOpF2UfE9oTE7z0y1oqdYGipQ==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-To: =?UTF-8?Q?M=c3=b4she_van_der_Sterre?= <me@moshe.nl>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---tJOHaQf1MHu5CepXXMtgkOOO4IAoBffM0
-Content-Type: multipart/mixed; boundary="EVgPuS0fb269XWBDxKI1DIcDuDu2rXtBH"
-From: Samuel Bernardo <samuelbernardo.mail@gmail.com>
-To: =?UTF-8?Q?M=c3=b4she_van_der_Sterre?= <me@moshe.nl>
-Cc: linux-newbie@vger.kernel.org
-Message-ID: <10298a05-f2cb-a4c4-ce7b-deeb2e5c29a8@gmail.com>
-Subject: Re: linux kernel support for logitech g502 proteus
-References: <2916ca4f-c4cf-06c9-3189-e33635ca621f@gmail.com>
- <58404CB1.6090705@moshe.nl>
-In-Reply-To: <58404CB1.6090705@moshe.nl>
+Hello group,
 
---EVgPuS0fb269XWBDxKI1DIcDuDu2rXtBH
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+I am working on i.mx35 based board and I have found a problem with mx3fb 
+driver. On boot kernel freeze during mx3fb driver initialization and 
+reboot after few seconds. I tried to debug with prints and found that 
+kernel freeze as soon as writing SDC_COM_BG_EN in SDC_COM_CONF register.
 
-Hi M=C3=B4she van der Sterre,
+Could you please give me advice how get more debug information?
 
-Thanks for you answer.
+[    1.018314] Remapped [mem 0x53fc00b4-0x53fc01bf] at f57c00b4
+[    1.024010] dmaengine: private_candidate: dma0chan0 filter said false
+[    1.030591] dmaengine: private_candidate: dma0chan1 filter said false
+[    1.037044] dmaengine: private_candidate: dma0chan2 filter said false
+[    1.043643] dmaengine: private_candidate: dma0chan3 filter said false
+[    1.050096] dmaengine: private_candidate: dma0chan4 filter said false
+[    1.056692] dmaengine: private_candidate: dma0chan5 filter said false
+[    1.063146] dmaengine: private_candidate: dma0chan6 filter said false
+[    1.069742] dmaengine: private_candidate: dma0chan7 filter said false
+[    1.076233] dmaengine: private_candidate: dma0chan8 filter said false
+[    1.082843] dmaengine: private_candidate: dma0chan9 filter said false
+[    1.089296] dmaengine: private_candidate: dma0chan10 filter said false
+[    1.095894] dmaengine: private_candidate: dma0chan11 filter said false
+[    1.102491] dmaengine: private_candidate: dma0chan12 filter said false
+[    1.109102] dmaengine: private_candidate: dma0chan13 filter said false
+[    1.115718] IPU: mapped source 14 to IRQ 176
+[    1.198869] ipu-core ipu-core: init channel = 14
+[    1.203638] ipu-core ipu-core: IDMAC_CONF 0x70, IC_CONF 0x0, 
+IDMAC_CHA_EN 0x0, IDMAC_CHA_PRI 0x4000, IDMAC_        CHA_BUSY 0x0
+[    1.214447] ipu-core ipu-core: BUF0_RDY 0x4000, BUF1_RDY 0x0, CUR_BUF 
+0x0, DB_MODE 0x0, TASKS_STAT 0x2003
+[    1.224442] dma dma0chan14: Found channel 0xe, irq 176
+[    1.229690] dmaengine: __dma_request_channel: success (dma0chan14)
+[    1.235966] return 1
+[    1.238276] mx3_sdc_fb mx3_sdc_fb: mx3fb_check_var
+[    1.243121] mx3_sdc_fb mx3_sdc_fb: mx3fb_check_var
+[    1.247989] mx3_sdc_fb mx3_sdc_fb: sdc_set_brightness: value = 255
+[    1.254238] mx3_sdc_fb mx3_sdc_fb: disabling irq 176
+[    1.270275] mx3_sdc_fb mx3_sdc_fb: allocated fb @ p=0x97000000, 
+v=0xd887d000, size=1536000.
+[    1.294524] mx3_sdc_fb mx3_sdc_fb: pixclock = 33260000l Hz
+[    1.300118] mx3_sdc_fb mx3_sdc_fb: panel size = 800 x 480
+[    1.305528]  hor_conf 3e80000, ver_conf 1f40001
+[    1.310266] mx3_sdc_fb mx3_sdc_fb: InitPanel() - Pixel clock divider 
+less than 4
+[    1.317813] mx3_sdc_fb mx3_sdc_fb: pixel clk = 33260000, divider 4.0
+[    1.324272] mx3_sdc_fb mx3_sdc_fb: DI_DISP_IF_CONF = 0x04000000
+[    1.330209] mx3_sdc_fb mx3_sdc_fb: DI_DISP_SIG_POL = 0x06000000
+[    1.336287] mx3_sdc_fb mx3_sdc_fb: DI_DISP3_TIME_CONF = 0x01C00040
+[    1.348164] mx3_sdc_fb mx3_sdc_fb: mx3fbi d798d25c, txd = NULL
+[    1.354123] ipu-core ipu-core: write param mem - addr = 0x000100E0, 
+data = 0x00000000
+[    1.362003] ipu-core ipu-core: write param mem - addr = 0x000100E1, 
+data = 0x00004000
+[    1.369987] ipu-core ipu-core: write param mem - addr = 0x000100E2, 
+data = 0x00000000
+[    1.377835] ipu-core ipu-core: write param mem - addr = 0x000100E3, 
+data = 0xDF31F000
+[    1.385821] ipu-core ipu-core: write param mem - addr = 0x000100E4, 
+data = 0x00000001
+[    1.393670] ipu-core ipu-core: write param mem - addr = 0x000100E8, 
+data = 0x97000000
+[    1.401655] ipu-core ipu-core: write param mem - addr = 0x000100E9, 
+data = 0x00000000
+[    1.409504] ipu-core ipu-core: write param mem - addr = 0x000100EA, 
+data = 0x1E0831FA
+[    1.417490] ipu-core ipu-core: write param mem - addr = 0x000100EB, 
+data = 0x96416502
+[    1.425338] ipu-core ipu-core: write param mem - addr = 0x000100EC, 
+data = 0x00000000
+[    1.433323] dma dma0chan14: Submitting sg d798d2d4
+[    1.438224] dma dma0chan14: Updated sg d798d2d4 on channel 0xe buffer 0
+[    1.444864] ipu-core ipu-core: IDMAC_CONF 0x70, IC_CONF 0x0, 
+IDMAC_CHA_EN 0x0, IDMAC_CHA_PRI 0x4000, IDMAC_        CHA_BUSY 0x0
+[    1.455798] ipu-core ipu-core: BUF0_RDY 0x4000, BUF1_RDY 0x0, CUR_BUF 
+0x0, DB_MODE 0x0, TASKS_STAT 0x3
+[    1.465214] ipu-core ipu-core: IDMAC_CONF 0x70, IC_CONF 0x0, 
+IDMAC_CHA_EN 0x4000, IDMAC_CHA_PRI 0x4000, IDM        AC_CHA_BUSY 0x0
+[    1.476365] ipu-core ipu-core: BUF0_RDY 0x4000, BUF1_RDY 0x0, CUR_BUF 
+0x0, DB_MODE 0x0, TASKS_STAT 0x3
+[    1.485807] mx3_sdc_fb mx3_sdc_fb: 422: Submit d887b09c #2 [+]
+[    1.510871] mx3_sdc_fb mx3_sdc_fb: sdc_set_brightness: value = 255
+[
 
-This mouse can store keys in their internal memory but can also load
-profiles from a local file.
+Thank you in advance!
 
-When using profiles, keys are not stored in internal mouse memory. I had
-tested it in other PC running Windows and when I disconnected from USB
-and then connected to my PC running Linux verified that keys where not
-being detected.
+Regards,
+Ivan
 
-Only when I stored the keys in mouse memory (without using profile) I
-could catch them using xev or showkey. This is why I think that could be
-a missing feature for linux mouse module.
-
-
-On 12/01/2016 04:15 PM, M=C3=B4she van der Sterre wrote:
-> Hi,
->
-> From your story, I assume the mouse has some kind of memory that rememb=
-ers the key bindings. This means there is not actually a need for a speci=
-fic kernel driver. I guess it is possible to program the mouse from user-=
-space, with libusb for example. If there is no linux software available t=
-hat already does this, you will need to do some reverse engineering on th=
-e usb protocol used. This can be very simple, very hard or anything in be=
-tween. I have no experience reverse engineering USB from windows, but you=
- could start by looking at USBPcap or simmilar windows based usb sniffers=
-=2E
->
-> As for the correct mailinglist, this question would be on topic for lin=
-ux-newbie as it relates somewhat to driver development, but not the other=
-s.
->
-> I hope this helps,
-> M=C3=B4she van der Sterre
->
-> On 12/01/2016 11:57 AM, Samuel Bernardo wrote:
->> Hello,
->>
->> I'm sorry if I'm spamming some lists with this help request, but I don=
-'t
->> know exactly what's the right mailing list.
->>
->> I would like to use Logitech G502 RGB gaming mouse with programmed
->> profiles from their software, but I realized that generic driver in
->> linux didn't support it. Logitech discards any support for Linux OS.
->> This is the only reason I need a dual boot with Windows for programmin=
-g
->> the mouse or generate the xml template for the key bindings.
->>
->> In Windows key mapping for mouse can be loaded from a xml file that
->> stores profiles or programmed directly into the mouse, but limited to
->> the keys available in keyboard or software.The following guides explai=
-ns
->> the setup:
->>
->> http://support.logitech.com/en_us/article/26855
->>
->> http://support.logitech.com/en_us/article/26862?product=3Da0q31000009u=
-2F9AAI
->>
->> With xml template is also possible to configure additional keys like F=
-13
->> that are usefull to map macros for example in an IDE software. The gui=
-de
->> explaining how to change xml file is below:
->>
->> http://i.imgur.com/NbmjWCS.png
->>
->> This mouse has many programmable keys that I would like to use in linu=
-x.
->>
->> I suspect that xml configuration is loaded with the windows driver for=
-
->> g502. Since with actual generic driver in linux 4.8 the profile could
->> not be loaded, I ask if I you could help giving additional support for=
-
->> it in linux kernel?
->>
->> Thanks,
->>
->> Samuel
->>
->>
->>
->>
-
-
-
---EVgPuS0fb269XWBDxKI1DIcDuDu2rXtBH--
-
---tJOHaQf1MHu5CepXXMtgkOOO4IAoBffM0
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIcBAEBCAAGBQJYQFN2AAoJEO2Nqc2/qzs5cpUP/3c208/71QFuP+XZIkCDRe9t
-75G/ZDAkg3zorqj6n/le2YutRQtquFIgKhrP2mnHiqMCWrkI4c3qtq5ix/R9eDg9
-NOQuIiKqXJ+9cdK9+fYf46K7C5/+P1YTUqnRTktttO3+IHJvRNdxQPSuKL0/4FAy
-Q/Ndl3TPBiWKFrOrIrCSrUsipF2HIiKQ3EdlCOdHLGrKGA+lWeyBeS30cQrVqjv4
-mhk9nd0EVAP1azbsowTXYaMYXjB7s746IB1Ligf9CAotlZbzej4yz1bYC5jzWMWE
-Qe0uPUx36+d1cbeWXWmvKYVbjuBKP5PsmcmvZAQqgckqDn2ZvnoHlH/d2UN3eXlw
-YczC83FlzmbvNccbh0LrP/3nHbSzeZzuZNfZ4iE3GjeybmFQOmtjRTjYNQaZIa7/
-X4vSFq+1ZMf+sFYg+snfrzRiCFyIJUW8uQNOCQTRRpzi7swwgoeg8THnNlIFE9RW
-aXOUM2YqYsS68dcay5PIErLn28l/SXE5YQV/Fc8lpzVcCcil10vVSayMsYrYxC4k
-VxWUsfrAIuOSprG1Gi48Ibg9C6YPEyuDszV3WtRNCzbvHlGhCl6YOYhPRry7rkk+
-JQE+nwxa6jhv9ws+9Y6F66ApyXEM801DxVHVVV8qD1NH/L6YWyod19lvRtF0pZiQ
-pgZqvDUqGuJ8d5IStatt
-=gGWE
------END PGP SIGNATURE-----
-
---tJOHaQf1MHu5CepXXMtgkOOO4IAoBffM0--
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
