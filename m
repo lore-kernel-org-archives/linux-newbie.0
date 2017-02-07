@@ -1,47 +1,44 @@
 From: Suraj Choudhari <surajschoudhari@gmail.com>
-Subject: Doubt related to using iovec/kvec for kernel_sendmsg()
-Date: Sat, 21 Jan 2017 14:23:31 +0530
-Message-ID: <CAGvB2rNV8tJRJN3CB4KN1=PLpEoyVFRHpYugepbOQabc_Yc9-A@mail.gmail.com>
+Subject: Socket bind failing with error -98
+Date: Tue, 7 Feb 2017 12:17:24 +0530
+Message-ID: <CAGvB2rNYUXuDKM9AdaELqm-Sgn8AtkBxwDDrc_CRgqcRSCFxng@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:from:date:message-id:subject:to;
-        bh=8uESkH3cIajDxpqFPN4h0yn2I6Utyfll8NMmv1nwNoA=;
-        b=hNCxhh/yMrj7OSv+CbAdNqcEryQJ2e87hZTpBimLDF6gTY+YEIHDBfVr5mPZ2k7u0+
-         hazFz0j9zy4/hCjhCK1qZ6Idum+IaxcHXAFAZ2GF7XpqolQhdf4qhWyhjTvOY1FVoUni
-         gUnvw97cyS0/iwTpsqwc1CU6EkLQrZ+4T0IcA7lm+Qv3hvNRaMNVrsX5RlcNVBAIDg2e
-         X+aDzd3l609V1AxWIyHh0GKCeCuYrzj99pWIddVf4/y8gooV/5OpwsavBZ0oAMLMeVXV
-         tdCOsA0DwDNdVByV5PpVmjgL2qY+HR6XG/Engu64tQpw891HifyUGovVuKt1Ymle///F
-         3tkw==
+        bh=4NllSbS2+7n6EQBygnJHuS/f3mqgryCVrthr9YrdSK4=;
+        b=ELw9PwZIl3/PyVdYSJmytahRSlUWr/gkr7ITr5PpH4eiFvtVoA3Hzl2c37CEWbWRwV
+         Szz5BcM5hpcwNIkcK8Fbd3q4lWwJ/PGwB0YsUGz4dd3+PrUsqw/t+DRJDx6KelRFic49
+         Gj6m5GXPGyRXzk9skk3X/soHsQAH47CGpDPRfvb7AQizR0xApbkj4/m0GZMHAlGZuvAo
+         SntrO+bO3++IMA+PdI4HvK26MJP0+q6nE0BdqREZ1aIUdWyFJ3gsNaIB47b83qfzH50p
+         9QNEV6kRxs+FQxfFUh5W8WEcQr9dszseXX+oVa2yIyd42d8uy2NcnJBRgN5M2dFxkoiX
+         HPJw==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+To: linux-newbie@vger.kernel.org, lartc@vger.kernel.org
 
-Hi,
+Hi experts,
 
-I have few doubts related to iovec & kvec structures, in particular
-related to using these strucutes for sending the data over the socket
-using kernel_sendmsg()/sock_sendmsg().
+I am facing a problem while binding to TCP socket using bind()
+function,  the problem is see for kernel versions >= 4.4.
 
-Doubts -
-1) Can we pass iovec to kernel_sendmsg() instead of kvecs?  Is it
-recommended to use kvec instead of iovec ?
+The bind() function is failing with error code -98.
 
-2) What are differences between kvec vs iovec ?
-From the definition of these structures, I see that iovec has _user
-type, so it may point to a user buffer.  Are there some other
-differences between kvec or iovec ?
+Currently i am calling bind() through a kernel thread.
 
-3) When shall we use kvec instead of iovec ?
+I searched similar errors and tried with 'setsockopt' with
+'SO_REUSEADDR' and 'SO_REUSEPORT ' flags.
 
-4) For iterating the iovecs, I could find one macro -- 'iov_for_each'
-which uses iov_iterator.
-Is there similar easy way to iterate the kvec ?
+However, bind() still continues to fail with similar error.
 
-Thanks & Regards,
+Can you please suggest if there are any other ways to fix it or any
+particular debugging we shall do to analyze it ?
+
+
+Thanks,
 Suraj
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
