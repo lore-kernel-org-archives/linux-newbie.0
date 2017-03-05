@@ -1,50 +1,55 @@
-From: anarchean <anarchean@squaredlambda.xyz>
-Subject: File system in a file
-Date: Fri, 10 Feb 2017 15:55:42 -0300
-Message-ID: <6551e91b-d973-100f-becd-a96ef82816e6@squaredlambda.xyz>
+From: Suraj Choudhari <surajschoudhari@gmail.com>
+Subject: Query - Related to kernel changes for GFP_NOIO flag
+Date: Sun, 5 Mar 2017 14:37:17 +0530
+Message-ID: <CAGvB2rP=C6AdDw=43pRhS85wbrxcpXE6cypXc=hSdQfJx=q-Fg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=WhMCJt/k4Bo9rHRZxXk/eno/sOwYZkqmknfUwUvoq4w=;
+        b=ClBPTulQuChYylQbLwL4iuiurDzXvhDTbBymaq88al9NzWwMzzp0lLsZMY/FyPZSsY
+         4+yAJ3QzJaQtlt+iQuWdvfYEq35fbf8dyEWFkdrSD6DCGwOLkqJJD7dOa8Tln2iiBQE+
+         uCqPNex8o02IzVh/uh+wJslUCyKxPewO5GiGSXA005Ug3gW71O3976op5d4BJ8rW0OzI
+         woYiRkbFVUCds9+7iIhMyIeCKxXnIL++TR4EXBvSQ98esTV6rl0Hd/DL9NyzO+qZZJU1
+         cXmoKX2gfoDqSVOisb9OGEoZsvZyem6BiD2DgsKExrzXdLoZyio6kLKfjXSlnMITHcKx
+         Yqww==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi, I'm a undergraduate student and totally new to this kernel devel
-thing.
+Hi,
 
-I was asked as an assignment to write a very basic file system, writing
-it to a file in my Operating Systems class. I'm really excited with
-this subject so I decided that as an self-pleasing extra, I would write
-a kernel module to actually make this file system work in a real
-operating system (and GNU/Linux is the only true one ;).
+The GFP_NOIO flag used for kmalloc is currently defined to be '__GFP_RECLAIM'
 
-I thought about FUSE, but I them I realized it would be very cool
-writing a kernel module instead. So, I did some research, I know
-FS are access through the VFS interface, I know which functions
-and structures to implement. I also read some of the source code
-of both ext2 and ecryptfs. And some extra material on the web.
+#define GFP_NOIO        (__GFP_RECLAIM)
 
-TL;DR; A {
-	My question is, if I am writing an file system over a file
-	inside another file system, how should I access the file,
-	directly via vfs_write/read and flip_open or via a user space
-	daemon communicating with the kernel?
-}
-
-I know direct writing, using the VFS interface is frowned upon, but
-from what I understood, that's what ecryptfs does. And most people
-doing it is trying to do so for reading/writing configuration files.
-
-TL;DR; B {
-	(Out of curiosity) Is there any big performance implications
-	of using vfs_read/write vs communicating with a user space
-	daemon?
-}
-
-I'm glad for any help you could provide. Thanks!
+#define __GFP_RECLAIM ((__force
+gfp_t)(___GFP_DIRECT_RECLAIM|___GFP_KSWAPD_RECLAIM
 
 
+However, prior to 4.4 kernel, this flag was defined as __GFP_WAIT.
+#define GFP_NOIO        (__GFP_WAIT)
+
+
+Queries -
+======
+1]  Can any physical disk IO happen due to memory allocation done
+using 'GFP_NOIO' ?
+
+      The reason to ask is since the GFP_NOIO is now modified to use
+__GFP_KSWAPD_RECLAIM,  so I am thinking that physical disk IO may
+probably happen whiel swapping the stale pages to disk in kswapd.
+
+2] If kernel code wants to use kmalloc() and wants to ensure there is
+NO any physical/disk IO due to kmalloc,  shall the kernel code use
+__GFP_DIRECT_RECLAIM instead of GFP_NOIO ?
+
+
+Thanks,
+Suraj
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
