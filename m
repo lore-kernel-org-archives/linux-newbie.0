@@ -1,55 +1,30 @@
-From: Suraj Choudhari <surajschoudhari@gmail.com>
-Subject: Query - Related to kernel changes for GFP_NOIO flag
-Date: Sun, 5 Mar 2017 14:37:17 +0530
-Message-ID: <CAGvB2rP=C6AdDw=43pRhS85wbrxcpXE6cypXc=hSdQfJx=q-Fg@mail.gmail.com>
+From: wiktoria.lewicka@vp.pl
+Subject: I want write more important things
+Date: Sat, 18 Mar 2017 16:43:50 +0100
+Message-ID: <175093328-155618badae3d7468af529c693510c7d@pmq3v.m5r2.onet>
 Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=WhMCJt/k4Bo9rHRZxXk/eno/sOwYZkqmknfUwUvoq4w=;
-        b=ClBPTulQuChYylQbLwL4iuiurDzXvhDTbBymaq88al9NzWwMzzp0lLsZMY/FyPZSsY
-         4+yAJ3QzJaQtlt+iQuWdvfYEq35fbf8dyEWFkdrSD6DCGwOLkqJJD7dOa8Tln2iiBQE+
-         uCqPNex8o02IzVh/uh+wJslUCyKxPewO5GiGSXA005Ug3gW71O3976op5d4BJ8rW0OzI
-         woYiRkbFVUCds9+7iIhMyIeCKxXnIL++TR4EXBvSQ98esTV6rl0Hd/DL9NyzO+qZZJU1
-         cXmoKX2gfoDqSVOisb9OGEoZsvZyem6BiD2DgsKExrzXdLoZyio6kLKfjXSlnMITHcKx
-         Yqww==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vp.pl; s=2011;
+        t=1489851830; bh=y5PgvZzE53ydmmbNd9tDv3omkQUg4PWEUi3B0P/d8A8=;
+        h=From:To:Date:Subject:From;
+        b=kRuRPPUe3dCDbHQjgy/8EfcZLHHdArCIMfNLcqrcLjpybCdQ1KvKp5mtqBDmdJf9h
+         XqIfheT1SsnJdI7swSXnu6voVjR2uPTE1wLbW3aEck5Ng8jW5Ueqc5yeY5wWDAe79P
+         P1VwU0ATs6PvKKUV+NNm8qsLHiq95s43MEF3T3w8=
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-Hi,
-
-The GFP_NOIO flag used for kmalloc is currently defined to be '__GFP_RECLAIM'
-
-#define GFP_NOIO        (__GFP_RECLAIM)
-
-#define __GFP_RECLAIM ((__force
-gfp_t)(___GFP_DIRECT_RECLAIM|___GFP_KSWAPD_RECLAIM
-
-
-However, prior to 4.4 kernel, this flag was defined as __GFP_WAIT.
-#define GFP_NOIO        (__GFP_WAIT)
-
-
-Queries -
-======
-1]  Can any physical disk IO happen due to memory allocation done
-using 'GFP_NOIO' ?
-
-      The reason to ask is since the GFP_NOIO is now modified to use
-__GFP_KSWAPD_RECLAIM,  so I am thinking that physical disk IO may
-probably happen whiel swapping the stale pages to disk in kswapd.
-
-2] If kernel code wants to use kmalloc() and wants to ensure there is
-NO any physical/disk IO due to kmalloc,  shall the kernel code use
-__GFP_DIRECT_RECLAIM instead of GFP_NOIO ?
-
-
-Thanks,
-Suraj
+ Hello,
+I am interested in wrinting code in Linux kernel and I started write kernel=
+ modules. I have some basics about kernel development- I red Robert's Love =
+book. My the biggest project with kernel code is simple module, which creat=
+e char device which can execute commands as root. Actually I'm reading Linu=
+x device drivers 3rd edition. And I haven't any idea what I could doing. I =
+have many ebooks about kernel, but I prefer learn by writing some code. Sor=
+ry for my banal question (propably you haven't many time), but when someone=
+ answer me, I will be very very thankful.
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
