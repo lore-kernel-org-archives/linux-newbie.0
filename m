@@ -1,35 +1,78 @@
-From: Massimo Sala <massimo.sala.71@gmail.com>
-Subject: new sysctl tunable knob for tcpip
-Date: Thu, 6 Jul 2017 09:10:33 +0200
-Message-ID: <CAKv20-VPxy35qcQ+bjv8oXDLxPeF8wtkCqLc4CAOumhMuY_30Q@mail.gmail.com>
+From: Kamil Konieczny <k.konieczny@partner.samsung.com>
+Subject: HELP writing crypto driver for HW with blocksize hash
+Date: Tue, 11 Jul 2017 09:52:12 +0200
+Message-ID: <09fb0bef-ee22-edff-c651-a81e3ee6a2ae@partner.samsung.com>
+References: <CGME20170711075213eucas1p1816f12edc165dfe05cb791b155e6f658@eucas1p1.samsung.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=E3FapYPtmszdsaygoDJQYbr9DXrgvaITjRLqJjCDrNo=;
-        b=GHvoQCtBayu5sKFtrazubVXghbLSqc+ACpXYJX4kQhE2yylxTU/71+EdyS9y3Ng9Rf
-         dCddZNegdjqRky7H4kXMEK+PAdnifSCBaE9NGBhqBubQNuSplOiKz+N1jEtXyMkJhli7
-         61lbTJV4pDGfrdcd+slsW0GPHdIswfM75oWqC9FD6ZEusIQ/z1KqcJvuGs1lW6BPGzTj
-         Gu7HDReyMK8f9CocagpaxcmEw/M+YYtvUcaIr4i6Rb7JwTYJZCDQndbUXf6Q590g9TSW
-         YoxfXfu0LYTHRw3tvQZdZoGfTxnS1CUy8xrX/rCyyzBz2CTsaj3GjUfZ4FfO4L8ZhSSW
-         ofMw==
+Content-language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie <linux-newbie@vger.kernel.org>
+To: linux-crypto@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org
 
-I have an idea about a new sysctl knob. It is under net.ipv4.
+Hi,
 
-q1) which is the right kernel m-list to discuss it ?
+I am writing crypto driver for hash MD5/SHA1/SHA256 on Exynos 4412,
+and I am facing some (minor?) difficulties.
 
-2) any suggestion how to gain the critical mass of consensus ?
+In old days, hadware (HW) can only do basic hash block operation,
+so at the end it needed to finalize hash, and driver need to
+write some bits into buffer to get message hash. Time passes,
+and hardware (HW) was designed with improved cappabilities,
+so it can add itself bits after message and calculate hash,
+it can stop then export state, import and resume,
+but ... it can not process null-length (or zero-length) ending.
+So there is no more final method.
 
-3) at first : is it mandatory to code the patch ?
-optional but better for 2) ?
+It must be feeded with at least one message byte to produce hash.
 
-best regards, Sala
+One more constrain is to process data in constant-sized chunks,
+here it is 64 bytes, the same as for AES block,
+i.e. it cannot stop and export state while in middle of block,
+example - if we feed 16 bytes, we must then feed 48 bytes
+to stop, but ideally we should feed it always 64 bytes.
+
+Some crypto drivers with similar problem(s):
+
+omap-sham.c - no final and blocksize needed,
+broadcom bcm/spu.c - no final,
+ccp/ccp-crypto-sha.c - no final,
+nx/nx-sha256.c - blocksize needed,
+
+One more thing - in algorithm description for methods:
+final, finup, update, digest, export, import
+there is note that finup is for those hardware 
+that cannot do final, but again,
+
+it looks like crypto framework is ignoring that and every finup
+is translated into "update, final".
+
+HW driver will do opposite - it will translate final into finup.
+
+From this follows that for every such HW crypto drivers authors
+duplicate code for keeping at least blocksize cache of message.
+
+One more point - use of block size in algo structure.
+It is for informing framework about HW limitation, 
+but seems to be ignored again...
+
+Any suggestions ?
+
+Can i keep some bytes unfeeded from ahash_request 
+and return -EINPROGRESS ?
+Should i set timer and copy rest bytes after some timeout,
+where no more requests are incoming ? Or not ? cause it is 
+async mode ? 
+can i wait for more requests for processing waiting one ?
+
+-- 
+Best regards,
+Kamil Konieczny
+Samsung R&D Institute Poland
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
