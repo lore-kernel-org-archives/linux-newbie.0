@@ -1,114 +1,63 @@
-From: Gilad Ben-Yossef <gilad@benyossef.com>
+From: Kamil Konieczny <k.konieczny@partner.samsung.com>
 Subject: Re: HELP writing crypto driver for HW with blocksize hash
-Date: Tue, 11 Jul 2017 13:30:44 +0300
-Message-ID: <CAOtvUMf=CKjZPOi5m7DMzN10Ytd81v_qK3n6aTaCqP1gRMQ6Pg@mail.gmail.com>
+Date: Tue, 11 Jul 2017 12:50:01 +0200
+Message-ID: <6f26d70d-6222-a325-d66b-b00b3591f2ae@partner.samsung.com>
 References: <CGME20170711075213eucas1p1816f12edc165dfe05cb791b155e6f658@eucas1p1.samsung.com>
  <09fb0bef-ee22-edff-c651-a81e3ee6a2ae@partner.samsung.com>
+ <CAOtvUMf=CKjZPOi5m7DMzN10Ytd81v_qK3n6aTaCqP1gRMQ6Pg@mail.gmail.com>
 Mime-Version: 1.0
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=benyossef-com.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=nZL4bPbKBMpFVlsJFQjnSFG9PtmjFq5YzAnr1pBw9GY=;
-        b=fbz2qGI04af0Kwv6qxWkwnOgcGqwdeAN6XvckudQaOKp2du9MQjCFI9R+h2MPvVkHa
-         HY7nD3MNHGrkT0zZOKGxir4LaVbLHomAiu8Hi3FnZqOz5iGC5Lb7gSohhVvBoKXZGyHB
-         fS+oZTWe1sMvlij/19RbJ0fZuoE8ErPF3A7fs94h444nUyKhx6u83Naih8B2ETeVRWmR
-         HjPISGGquZHzCuuI7uYSifBqgWdrlt6caZ+f1eTE7j7EE5e+sqb9EGJYuw3etA+/1leu
-         RRD0y3Msb6apW1dlRT5wISzJb1BCGVyqSmRUVmCQPmwBvIAgg9S5Xj7COp9a8cBj+dnF
-         Qcrg==
-In-Reply-To: <09fb0bef-ee22-edff-c651-a81e3ee6a2ae@partner.samsung.com>
-Sender: linux-newbie-owner@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-crypto-owner@vger.kernel.org>
+In-reply-to: <CAOtvUMf=CKjZPOi5m7DMzN10Ytd81v_qK3n6aTaCqP1gRMQ6Pg@mail.gmail.com>
+Content-language: en-US
+Sender: linux-crypto-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Kamil Konieczny <k.konieczny@partner.samsung.com>
+To: Gilad Ben-Yossef <gilad@benyossef.com>
 Cc: linux-crypto@vger.kernel.org, linux-newbie@vger.kernel.org
 
-On Tue, Jul 11, 2017 at 10:52 AM, Kamil Konieczny
-<k.konieczny@partner.samsung.com> wrote:
->
-> Hi,
->
-> I am writing crypto driver for hash MD5/SHA1/SHA256 on Exynos 4412,
-> and I am facing some (minor?) difficulties.
->
-> In old days, hadware (HW) can only do basic hash block operation,
-> so at the end it needed to finalize hash, and driver need to
-> write some bits into buffer to get message hash. Time passes,
-> and hardware (HW) was designed with improved cappabilities,
-> so it can add itself bits after message and calculate hash,
-> it can stop then export state, import and resume,
-> but ... it can not process null-length (or zero-length) ending.
-> So there is no more final method.
->
-> It must be feeded with at least one message byte to produce hash.
->
-> One more constrain is to process data in constant-sized chunks,
-> here it is 64 bytes, the same as for AES block,
-> i.e. it cannot stop and export state while in middle of block,
-> example - if we feed 16 bytes, we must then feed 48 bytes
-> to stop, but ideally we should feed it always 64 bytes.
+On 11.07.2017 12:30, Gilad Ben-Yossef wrote:
+> On Tue, Jul 11, 2017 at 10:52 AM, Kamil Konieczny
+> <k.konieczny@partner.samsung.com> wrote:
+>>
+>>
+>> I am writing crypto driver for hash MD5/SHA1/SHA256 on Exynos 4412,
+>> and I am facing some (minor?) difficulties. [...]
 
+>> So there is no [...] final method.
+>>
+>> It must be feeded with at least one message byte to produce hash.
+>>
+>> One more constrain is to process data in constant-sized chunks,
+>> here it is 64 bytes, the same as for AES block,
+>> i.e. it cannot stop and export state while in middle of block,
+>> example - if we feed 16 bytes, we must then feed 48 bytes
+>> to stop, but ideally we should feed it always 64 bytes. [...]
+>>
+>> Any suggestions ?
+>>
+>> Can i keep some bytes unfeeded from ahash_request
+>> and return -EINPROGRESS ?
+>> Should i set timer and copy rest bytes after some timeout,
+>> where no more requests are incoming ? Or not ? cause it is
+>> async mode ?
+>> can i wait for more requests for processing waiting one ?
+> Your two constraints are actually inter-related -
+> 
+> If you can only feed the HW a constant size chunk, than indeed need to
+> keey bytes fed
+> to the driver the are below the chunk size in a software buffer, but
+> than you need the final()
+> method to feed these bytes (padded as needed) to the HW if they are
+> the last bytes
+> 
+> Gilad
 
->
-> Some crypto drivers with similar problem(s):
->
-> omap-sham.c - no final and blocksize needed,
-> broadcom bcm/spu.c - no final,
-> ccp/ccp-crypto-sha.c - no final,
-> nx/nx-sha256.c - blocksize needed,
->
-> One more thing - in algorithm description for methods:
-> final, finup, update, digest, export, import
-> there is note that finup is for those hardware
-> that cannot do final, but again,
->
-> it looks like crypto framework is ignoring that and every finup
-> is translated into "update, final".
->
-> HW driver will do opposite - it will translate final into finup.
->
-> From this follows that for every such HW crypto drivers authors
-> duplicate code for keeping at least blocksize cache of message.
->
-> One more point - use of block size in algo structure.
-> It is for informing framework about HW limitation,
-> but seems to be ignored again...
->
-> Any suggestions ?
->
-> Can i keep some bytes unfeeded from ahash_request
-> and return -EINPROGRESS ?
-> Should i set timer and copy rest bytes after some timeout,
-> where no more requests are incoming ? Or not ? cause it is
-> async mode ?
-> can i wait for more requests for processing waiting one ?
->
+HW will done padding
 
-Your two constraints are actually inter-related -
-
-If you can only feed the HW a constant size chunk, than indeed need to
-keey bytes fed
-to the driver the are below the chunk size in a software buffer, but
-than you need the final()
-method to feed these bytes (padded as needed) to the HW if they are
-the last bytes
-
-Gilad
-
-
-
+I want to avoid memcpy iff possible for async hash
 
 -- 
-Gilad Ben-Yossef
-Chief Coffee Drinker
-
-"If you take a class in large-scale robotics, can you end up in a
-situation where the homework eats your dog?"
- -- Jean-Baptiste Queru
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+Best regards,
+Kamil Konieczny
+Samsung R&D Institute Poland
