@@ -1,30 +1,42 @@
-From: Newbie <newbie@hcfedora.com>
-Subject: =?UTF-8?B?TGludXjmlrDmiYvvvIzmrKLov47kuqTmtYHvvZ4=?=
-Date: Mon, 16 Oct 2017 21:29:39 +0800
-Message-ID: <349ac6da-bcb0-e80c-4720-6d5b7fb64452@hcfedora.com>
+From: Zheng Lv <lv.zheng.2015@gmail.com>
+Subject: Re: =?utf-8?B?TGludXjmlrDmiYvvvIzmrKLov44=?= =?utf-8?B?5Lqk5rWB772e?=
+Date: Tue, 17 Oct 2017 18:14:49 +0800
+Message-ID: <20171017101449.GA6630@lvzheng-thinkpad>
+References: <349ac6da-bcb0-e80c-4720-6d5b7fb64452@hcfedora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-        d=hcfedora.com; s=default; h=Content-Transfer-Encoding:Content-Type:
-        MIME-Version:Date:Message-ID:Subject:From:To:Sender:Reply-To:Cc:Content-ID:
-        Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-        :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
-        List-Subscribe:List-Post:List-Owner:List-Archive;
-        bh=zrTz+RpSHGlUwvHUjVEaGqAdcyj3tGPRaRFMREtvWPk=; b=sam5+IKGiERN9ZWyCnTPUqQACx
-        Fx13xgZQ6U3KnyB2ijMcr/OrX4RqZVJuOZmDidRKLr18GGMmw5OEM5WrQ7C34L4PrkGumKnD0XaKh
-        OL+sh5eZo1J8UBprWZO7R7I1JxJfCRL1LIxe4s/Dw7gs4GfSicBeTom3gn2ZynU8YrPmfAtWa9zIq
-        ERlm6vZE0s693v35GHyjV16ZuBQLem2OY6i5ZGVXuqIvQR/Ah/YwHU1HagFunXIES5J4TOmsuWRq/
-        ZDzQ9QWLK3Jt1h8LOHX899e6jZKFavj/R2JUvd/yIs2H76LoH1SFa0VSjpHgkpGuI6AsSMTTKlNP2
-        4v1H91 
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
+         :user-agent;
+        bh=Nxu3htsDugcdjfW7ndk/tEDQAeOGfw7qGNI2CEyabSQ=;
+        b=Z9JvbEWT/a0kjEPrcCqMSqFn7Y27prAvbg3a/GY7mhgiOS1UujiSZgX73DHZoTshD7
+         lECGxqpYZsTfIWQOtiYocRe+pDnWK5ssypNI6LFG4j7erG0wlvuKPHuPn1uxYZ/tgbQ2
+         +/0ROAl4b5hIW09eeoUF6sImzQTxJzVNcuHTHRuXiCbzS5UsK22Wwzg31vir9+ZMdhnw
+         n+Gxo/w/7jLjmDrEdLRHXJ/wwBeFGTcfFkd0GiiOT66LCNXjnEmUxjfW3cN/tiZ1Trdm
+         gw02syZcjtaXSd8E4JcdcEM+SI++Fqw1XAZktoSGA0QvPsFtMm37AolmuDtFwqV1LTde
+         su2w==
+Content-Disposition: inline
+In-Reply-To: <349ac6da-bcb0-e80c-4720-6d5b7fb64452@hcfedora.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="gb2312"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+To: Newbie <newbie@hcfedora.com>
+Cc: linux-newbie@vger.kernel.org
 
-TGludXjQwsrWo6y7ttOtvbvB96GrsuLK1NK7z8Khq6GrCgotLQpUbyB1bnN1YnNjcmliZSBmcm9t
-IHRoaXMgbGlzdDogc2VuZCB0aGUgbGluZSAidW5zdWJzY3JpYmUgbGludXgtbmV3YmllIiBpbgp0
-aGUgYm9keSBvZiBhIG1lc3NhZ2UgdG8gbWFqb3Jkb21vQHZnZXIua2VybmVsLm9yZwpNb3JlIG1h
-am9yZG9tbyBpbmZvIGF0ICBodHRwOi8vdmdlci5rZXJuZWwub3JnL21ham9yZG9tby1pbmZvLmh0
-bWwKUGxlYXNlIHJlYWQgdGhlIEZBUSBhdCBodHRwOi8vd3d3LmxpbnV4LWxlYXJuLm9yZy9mYXFz
-Cg==
+On Mon, Oct 16, 2017 at 09:29:39PM +0800, Newbie wrote:
+> Linux新手，欢迎交流～测试一下～～
+
+Welcome to Linux newbie mailing list. Not everyone here speaks Chinese.
+If you feel hard to write in English, please at least use Google
+Translate.
+
+Cheer,
+吕正
+--
+To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+Please read the FAQ at http://www.linux-learn.org/faqs
