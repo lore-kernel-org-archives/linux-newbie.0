@@ -1,40 +1,43 @@
-From: Zheng Lv <lv.zheng.2015@gmail.com>
-Subject: Re: =?utf-8?B?TGludXjmlrDmiYvvvIzmrKLov44=?= =?utf-8?B?5Lqk5rWB772e?=
-Date: Tue, 17 Oct 2017 18:14:49 +0800
-Message-ID: <20171017101449.GA6630@lvzheng-thinkpad>
-References: <349ac6da-bcb0-e80c-4720-6d5b7fb64452@hcfedora.com>
+From: wuzhouhui <wuzhouhui14@mails.ucas.ac.cn>
+Subject: Pointer compare in md driver
+Date: Fri, 27 Oct 2017 16:08:25 +0800
+Message-ID: <aa2d080d-8410-ba9a-0e0b-084a08079dd8@mails.ucas.ac.cn>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
-         :user-agent;
-        bh=Nxu3htsDugcdjfW7ndk/tEDQAeOGfw7qGNI2CEyabSQ=;
-        b=Z9JvbEWT/a0kjEPrcCqMSqFn7Y27prAvbg3a/GY7mhgiOS1UujiSZgX73DHZoTshD7
-         lECGxqpYZsTfIWQOtiYocRe+pDnWK5ssypNI6LFG4j7erG0wlvuKPHuPn1uxYZ/tgbQ2
-         +/0ROAl4b5hIW09eeoUF6sImzQTxJzVNcuHTHRuXiCbzS5UsK22Wwzg31vir9+ZMdhnw
-         n+Gxo/w/7jLjmDrEdLRHXJ/wwBeFGTcfFkd0GiiOT66LCNXjnEmUxjfW3cN/tiZ1Trdm
-         gw02syZcjtaXSd8E4JcdcEM+SI++Fqw1XAZktoSGA0QvPsFtMm37AolmuDtFwqV1LTde
-         su2w==
-Content-Disposition: inline
-In-Reply-To: <349ac6da-bcb0-e80c-4720-6d5b7fb64452@hcfedora.com>
+Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-To: Newbie <newbie@hcfedora.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Mon, Oct 16, 2017 at 09:29:39PM +0800, Newbie wrote:
-> Linux新手，欢迎交流～测试一下～～
+Hi,
 
-Welcome to Linux newbie mailing list. Not everyone here speaks Chinese.
-If you feel hard to write in English, please at least use Google
-Translate.
+I have a question when reading md driver. Following is the code from
+linux/drivers/md/md.c, function md_do_sync():
 
-Cheer,
-吕正
+>                 for_each_mddev(mddev2, tmp) {
+>                         if (mddev2 == mddev)
+>                                 continue;
+>                         if (!mddev->parallel_resync
+>                         &&  mddev2->curr_resync
+>                         &&  match_mddev_units(mddev, mddev2)) {
+>                                 DEFINE_WAIT(wq);
+>                                 if (mddev < mddev2 && mddev->curr_resync == 2) {
+>                                         /* arbitrarily yield */
+>                                         mddev->curr_resync = 1;
+>                                         wake_up(&resync_wait);
+>                                 }
+>                                 if (mddev > mddev2 && mddev->curr_resync == 1)
+>                                         /* no need to wait here, we can wait the next
+>                                          * time 'round when curr_resync == 2
+>                                          */
+>                                         continue;
+>                                 /* We need to wait 'interruptible' so as not to
+
+The type of mddev2 and mddev both are struct mddev *, so what's the
+meaning of comparing these two variables?
+
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
