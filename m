@@ -1,69 +1,45 @@
-From: Eric Curtin <ericcurtin17@gmail.com>
+From: Joshua Chamberlain <chamberlain.dev@gmail.com>
 Subject: Re: How to find bugs to fix
-Date: Thu, 1 Feb 2018 00:50:10 +0000
-Message-ID: <CANpvso6T+SNqq1Aem0c05QZVoFHGNtmJ1sysxEBD-GRxnC-hBA@mail.gmail.com>
+Date: Fri, 2 Feb 2018 11:55:22 -0700
+Message-ID: <20180202185521.GA18791@u.boisestate.edu>
 References: <20180201002258.GA6807@u.boisestate.edu>
+ <CANpvso6T+SNqq1Aem0c05QZVoFHGNtmJ1sysxEBD-GRxnC-hBA@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=3cEdFsqAcCCHB2CGlrDiSBaAn1kZTxTtazpGNMF0IL4=;
-        b=akD8VduguAydlVwsUyBUUejEVbjTpDOSOpJRF3IfbuOaU159wWdXNwDSv99X041GnM
-         xBpT54hlMyuVb60FYU8gWvHleBBNNLN+j6tt2Vdr/7jkxb52PJPKZbCdcP4c4i2PsIaG
-         v+GaqQQsTXtr8tClY+82vLUT8Ij2L1ShuEbpXl9k8cMZQ+7Q+wpVZ1KG05dooqAqidTM
-         dwuC5DtdHytYB3VnJWDkjqxAk3/in7dWVvFPpW9sYz8nhU1KSxaTLJF/sMSnu0joEym2
-         p3yPjyG9eox+ekBaH++6OB5SlTuH8orjDD1lO0BboVMPRAhp6x8ywBNvVCHpNRe0+8gJ
-         LCRQ==
-In-Reply-To: <20180201002258.GA6807@u.boisestate.edu>
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent;
+        bh=mwDEN1FH1myP5Zy13kt1BDCLq5V4wW5bNAlipJDDHlw=;
+        b=qf5i+gZaSIHwSvfwx5usEExEMU0tiaV0I2+AxpSzZptoMpPaqihzevtfkW3aYptEXh
+         KTsBKR19MdS96vIy5ho7PnzwnFGpdFi76wlyNcXFwnV34xklfyZSYlgxgNo6WKsFXmzv
+         bp+oEeHdfYDmf4kX6HeiZ8NhScEICUvADCQdMv5JJVJPhOj/P8es5FQLly+p+fGmZPXo
+         NP5u/Lexu18Dmr3ebyYoxq48tuPanTQ5oqbRQKjqgLb8Yj+w5peRS+7AKhrsi8VXzT+q
+         qoIUIVjtW708Nw5oEQQYU9+ZYtf1kEsaNwezy5ytGC5GD6bKbExZGekYqc/cmA49TzEA
+         mulw==
+Content-Disposition: inline
+In-Reply-To: <CANpvso6T+SNqq1Aem0c05QZVoFHGNtmJ1sysxEBD-GRxnC-hBA@mail.gmail.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-To: Joshua Chamberlain <chamberlain.dev@gmail.com>
+To: Eric Curtin <ericcurtin17@gmail.com>
 Cc: linux-newbie@vger.kernel.org
 
-On 1 February 2018 at 00:23, Joshua Chamberlain
-<chamberlain.dev@gmail.com> wrote:
->
-> Howdy,
->
-> I've been using Linux for years and I am interested in fixing bugs. I
-> have been looking on https://bugzilla.kernel.org/ to try to find bugs,
-> but it seems bugs are supposed to be reported in the mailing lists
-> instead. This is making it difficult to find a simple bug I can fix.
->
-> Do you guys have any advice on how to find bugs to work on?
->
-> Thanks,
-> -Josh
->
-> --
-> To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-> the body of a message to majordomo@vger.kernel.org
-> More majordomo info at  http://vger.kernel.org/majordomo-info.html
-> Please read the FAQ at http://www.linux-learn.org/faqs
+Thanks for the input. I was hoping to fix bugs that were affecting many
+people, not just me. 
 
-Hi Josh,
+I just tried all my USB devices I had lying around,
+but could not find any bugs. I didn't think to check the buttons on my
+laptop, so thanks for that!
 
-Sorry should have replied to your email in plaintext. Gmail Android client
-defaulting to HTML. Anyway...
+The bugs that I tend to see on laptops seem to not be a part of the OS
+itself. For instance, when I resume my laptop from hibernation, the
+networking interface doesn't work, which I think is an issue somehwere
+in Ubuntu. I can't believe I'm complaining about this, but LINUX IS TOO
+STABLE!
 
-One way is to Install Linux on whatever hardware you have lying around at home
-(not in a VM). Check that all your hardware works as expected, keyboard, mouse,
-touchpad, brightness keys, USB devices, etc.
-
-Check kernel logs for errors and other logging info. Or if any hardware doesn't
-seem to behave right or is quirky, it's likely you may have found a bug or a
-feature of your hardware that hasn't been implemented yet. That's one place to
-start looking for bugs that you can test, reproduce and fix on your local setup.
-
-Hope this helps!
-
-Or you know, jump straight into the deep-end and write some mitigations for the
-Spectre & Meltdown vunerabilities on all the various CPU architectures. The CPU
-manufacturers would be greatful :)
+Thanks though...
 --
 To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
 the body of a message to majordomo@vger.kernel.org
