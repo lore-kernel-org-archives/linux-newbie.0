@@ -1,37 +1,61 @@
-From: Michael Ehrlich <mic.ehrlich@gmail.com>
-Subject: Mapping a kernel page to user page tables
-Date: Tue, 13 Feb 2018 20:47:28 +0200
-Message-ID: <FF30DDF4-E429-4314-8EFA-684CBC56F373@gmail.com>
-Mime-Version: 1.0 (Mac OS X Mail 11.2 \(3445.5.20\))
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:content-transfer-encoding:mime-version:subject:message-id:date
-         :to;
-        bh=9lGjDE+fy6c5zRbyenOpxMWb5ahUpVBsa3PXuwTYJZo=;
-        b=O/w0+ZKQUMWas3bSkoUiyK8UnA3dbGYhLVnxxlTcOut70eXrJWdOtbisx/7DNpnaOo
-         sQYUfDoI2CXif5/+xuUlTt8yT5jTfowBFQcPtRFCeR5FV65R9cWYc2ibAVp9YgPDwEcb
-         QmyZN709S9dxNCAT/Dbp4gdru6TXkwVQFEbYV8w+e4xtPQWvdWf5T5JGu7OPOYlbgPaw
-         GyAR8k+t3tQmzTwkXoA9Y4fdDCu9FUYFkJ+DM5NsucJZy7MQ3Z8uSODyjhYIzBYFC/MH
-         KjYHaGrH0ILWvBoh016OaIcWs70Rx+MCe1AQR4Ebvxa4p9iR7feJtlXYUXF8kLW9sNOA
-         WmYA==
-Sender: linux-newbie-owner@vger.kernel.org
-List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="windows-1252"
-To: linux-newbie@vger.kernel.org
+From: Amit Kumar <free.amit.kumar@gmail.com>
+Subject: Unable to understand a piece of code
+Date: Mon, 20 May 2019 05:37:41 +0530
+Message-ID: <CAPTh4Ouvn=SiGnUGV5B7Drmp2-tVCMV=Z46+t-XL5rqPcTpF-g@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <kernelnewbies-bounces@kernelnewbies.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=Y4aFGRFM7IoElS4onEAqlfOyDdbLJ9sxzE/g/SrJbBU=;
+ b=rtHel/msBiB2xJmNPyL7n5HuM1BFAVBNgrC3SbPCZsqcRkeqimlEET1TC09mPOciWl
+ qzh0dzXhvGe3QtV2dFbn2AFfPYoH8dCs9krQBq+oPbwTKPRPYBCgAx2QTsAdurE0oB3K
+ zCdc19rzARQZQWfZ9UPYNgxMFkq8q/K0uOaLQkTtBAuw/OkXNAMMo2E6mxQidKnZUBNV
+ zTevmrVKwl5ogofb9tqTa5Ivnyb/LRar/ZL70lWqgP8T52Mjrr4skM/VfOAdtNVhn+5W
+ awCnjMLoRTV60nN6peiZvvqxrpg0vp/M925ubU3q4Lx9/v28FGeYmlp8n1y0eT/lXT/y
+ x0WA==
+List-Id: <linux-newbie.vger.kernel.org>
+List-Unsubscribe: <https://lists.kernelnewbies.org/mailman/options/kernelnewbies>, 
+ <mailto:kernelnewbies-request@kernelnewbies.org?subject=unsubscribe>
+List-Archive: <http://lists.kernelnewbies.org/pipermail/kernelnewbies/>
+List-Post: <mailto:kernelnewbies@kernelnewbies.org>
+List-Help: <mailto:kernelnewbies-request@kernelnewbies.org?subject=help>
+List-Subscribe: <https://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>, 
+ <mailto:kernelnewbies-request@kernelnewbies.org?subject=subscribe>
+Errors-To: kernelnewbies-bounces@kernelnewbies.org
+To: linux-newbie@vger.kernel.org, Kernel Newbies <kernelnewbies@kernelnewbies.org>
 
-Hi,
+HI,
 
-Post KPTI patches, I=E2=80=99m looking for a way to allocate a page in =
-kernel space and map it on the user page tables, too (so its accessible =
-from the entry code, just before the switch to kernel-CR3).
-Any ideas how it might be done, or where should I be looking first?
+mm/slub.c: line 3973
+int __kmem_cache_shrink(struct kmem_cache *s)
+{
+int node;
+int i;
+struct kmem_cache_node *n;
+struct page *page;
+struct page *t;
+struct list_head discard;
+struct list_head promote[SHRINK_PROMOTE_MAX];
+unsigned long flags;
+int ret = 0;
 
-Best regards,
-Michael Ehrlich.=
---
-To unsubscribe from this list: send the line "unsubscribe linux-newbie" in
-the body of a message to majordomo@vger.kernel.org
-More majordomo info at  http://vger.kernel.org/majordomo-info.html
-Please read the FAQ at http://www.linux-learn.org/faqs
+flush_all(s);
+for_each_kmem_cache_node(s, node, n) {
+
+How uninitialized variable node is being used in macro for_each_kmem_cache_node?
+
+node is a local variable with no extern and not initialized.
+
+mm/slab.h: line 490
+#define for_each_kmem_cache_node(__s, __node, __n) \
+for (__node = 0; __node < nr_node_ids; __node++) \
+if ((__n = get_node(__s, __node)))
+
+As we see for loop is based on node.
+
+Thanks in advance.
+
+Regards,
+Amit Kumar
