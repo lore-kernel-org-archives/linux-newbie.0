@@ -1,90 +1,41 @@
-From: =?utf-8?B?TcOhdMOp?= Eckl <ecklm94@gmail.com>
-Subject: Re: Unable to understand a piece of code
-Date: Wed, 22 May 2019 19:57:59 +0200
-Message-ID: <20190522175759.4ganjslc6mooxrcp@sch.bme.hu>
-References: <CAPTh4Ouvn=SiGnUGV5B7Drmp2-tVCMV=Z46+t-XL5rqPcTpF-g@mail.gmail.com>
+From: Rohit Sarkar <rohitsarkar5398@gmail.com>
+Subject: Hardware prerequisites for driver development
+Date: Wed, 25 Sep 2019 13:48:37 +0530
+Message-ID: <20190925081836.GA22717@SARKAR>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <kernelnewbies-bounces@kernelnewbies.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <driverdev-devel-bounces@linuxdriverproject.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=OIrysn8O3ZqrYkn8QYPZDUVn4Vmrv/I7PtWOVj8c9EI=;
- b=nsUCv4yFLrEgb4PX/+wu+13Cdw22B2CpX4Am0xN5xkSpzRkvk/KRuAb+EMdFAlhC+Z
- VtqSK7phsPP7gMdTy55HIWr5kH96QXqwWvJDZl+d3pU5FMhoWyanOg+YRPPXyaijFGw7
- injXzAFq2N5dPCF0/CtMU8cDZA83PThBb06xqhdyp/rJ6SU3hy711Zfv4vmTK1SwVnuy
- LRQAdhzGY0ZGmy+k7JLdGqygB7suLOV/C/+vgH0tQj1spwIfkQM9Q37Y+rAIGKXnl7YP
- VAQAdRH+ZlwYwvwgle/DA+hc8Gw+ljZmtF7Vr6Dnk0aW1j1GbamD2SBTNf4EIV0AU2tE
- CpSg==
+ h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+ :user-agent; bh=MBIv4exBMsbFSU5ZS4hQ7aZv5Y8krcLJtoEmNe+3N4A=;
+ b=NJcpkrKl3GW6YHN9/inzdAa5eQvIAG4CgUP37EjpPaxhz/NWcnjzqhxcPXB2lHoqVN
+ 7KEzy7w8+WYf8jobfIXPiewuppcLUjHBm6rWtb8u3abR/sPacZLIdrxKAGti0C82NqvA
+ zebEGOT7W6tmw863P75ccsQgwQMR5tt+VQbjtC3b5+qoOt+2HpCVVl0v99MtLliYWpg9
+ 70wfP0J+Nd5oTec7dKzTsnvfXODIviXd25SXABfrVRXGFilBLtR/aOT1DPjm3PGczStv
+ 23feoeCzP4Dba5qAE4tBuZbgWk6mNMw4Q2bBlizjb65YCfIXr29nbS+qlJ5g9UWWty9y
+ gEpw==
 Content-Disposition: inline
-In-Reply-To: <CAPTh4Ouvn=SiGnUGV5B7Drmp2-tVCMV=Z46+t-XL5rqPcTpF-g@mail.gmail.com>
 List-Id: <linux-newbie.vger.kernel.org>
-List-Unsubscribe: <https://lists.kernelnewbies.org/mailman/options/kernelnewbies>, 
- <mailto:kernelnewbies-request@kernelnewbies.org?subject=unsubscribe>
-List-Archive: <http://lists.kernelnewbies.org/pipermail/kernelnewbies/>
-List-Post: <mailto:kernelnewbies@kernelnewbies.org>
-List-Help: <mailto:kernelnewbies-request@kernelnewbies.org?subject=help>
-List-Subscribe: <https://lists.kernelnewbies.org/mailman/listinfo/kernelnewbies>, 
- <mailto:kernelnewbies-request@kernelnewbies.org?subject=subscribe>
-Errors-To: kernelnewbies-bounces@kernelnewbies.org
-To: Amit Kumar <free.amit.kumar@gmail.com>
-Cc: linux-newbie@vger.kernel.org, Kernel Newbies <kernelnewbies@kernelnewbies.org>
-
-On Mon, May 20, 2019 at 05:37:41AM +0530, Amit Kumar wrote:
-> HI,
-> =
-
-> mm/slub.c: line 3973
-> int __kmem_cache_shrink(struct kmem_cache *s)
-> {
-> int node;
-> int i;
-> struct kmem_cache_node *n;
-> struct page *page;
-> struct page *t;
-> struct list_head discard;
-> struct list_head promote[SHRINK_PROMOTE_MAX];
-> unsigned long flags;
-> int ret =3D 0;
-> =
-
-> flush_all(s);
-> for_each_kmem_cache_node(s, node, n) {
-> =
-
-> How uninitialized variable node is being used in macro for_each_kmem_cach=
-e_node?
-> =
-
-> node is a local variable with no extern and not initialized.
-> =
-
-> mm/slab.h: line 490
-> #define for_each_kmem_cache_node(__s, __node, __n) \
-> for (__node =3D 0; __node < nr_node_ids; __node++) \
-> if ((__n =3D get_node(__s, __node)))
-> =
-
-> As we see for loop is based on node.
+List-Unsubscribe: <http://driverdev.linuxdriverproject.org/mailman/options/driverdev-devel>, 
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=unsubscribe>
+List-Archive: <http://driverdev.linuxdriverproject.org/pipermail/driverdev-devel/>
+List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
+List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
+List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
+ <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Errors-To: driverdev-devel-bounces@linuxdriverproject.org
+Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
+To: linux-iio@vger.kernel.org
+Cc: driverdev-devel@linuxdriverproject.org, linux-newbie@vger.kernel.org
 
 Hi,
+This is probably a real rookie question.
+I have been interested in contributing to the driver subsystems such as
+iio. I have submitted some minor patches but nothing substantial.
+I feel that I need some hardware to be able to contribute more.
+What hardware would I need to get started?
+Where would I get this from?
 
-This sentence is almost correct. The for loop is *not based* on node but *u=
-ses*
-the node variable. If you check, __node gets initialised to 0 at the beginn=
-ing of
-the for loop. So whatever you use that macro with will be initialised to 0 =
-at
-the beginning of the for loop.
-
-Bests,
-M=E1t=E9
-
-> =
-
-> Thanks in advance.
-> =
-
-> Regards,
-> Amit Kumar
+Thanks,
+Rohit
