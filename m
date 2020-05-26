@@ -1,46 +1,38 @@
-From: Taeung Song <treeze.taeung@gmail.com>
-Subject: Check for preemption only when returning from interrupt ?
-Date: Wed, 20 May 2020 16:03:29 +0900
-Message-ID: <55684262-1dab-503a-eb4a-f030b6fcc57e@gmail.com>
+From: =?UTF-8?Q?Gei=c3=9fler=2c_Andreas?= <andreas.geissler@duagon.com>
+Subject: newbie: submitting a driver patch the first time
+Date: Tue, 26 May 2020 16:43:00 +0200
+Message-ID: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=to:from:subject:cc:message-id:date:user-agent:mime-version
-         :content-language:content-transfer-encoding;
-        bh=+1d30iaUYarJ7i40qLlZOOsct03fqsoXG+IjMhoBPTk=;
-        b=ABLx9CFH0ip9DTBmXywDq/XPtr3JXLQZXUDW11WkMMsVMQdKwAKymDupiAxvt8OSkY
-         cZZfAnZbw+Hl78u/j8bdunuOsOe2ElNn+pJ4f7Qk/i7PBnTV2r5+hr5dThcOp9dPZXGZ
-         564eyn8MPM2CTXPwiYvIzzqmxBgxsSrudPSA7OfsdOa2we+gGCfwmvAkCJ1jbc/tC2ox
-         Fyew8WwfkHG+gj+f175Bf8Qc0kXSjqBzV6Xh3NPYbN8a5OyrwRXdhySLy5r7iX8p1Swr
-         ahzy23zNFPansPl0/Sv7Z6LJg/3GrVxDS8Wzr3mKkim7SuFhuo/rlObNydyQ8nqNIW+G
-         HFDA==
 Content-Language: en-US
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
+Content-Type: text/plain; charset="utf-8-sig"
 To: linux-newbie@vger.kernel.org
-Cc: linux-x86_64@vger.kernel.org
 
-Hi,
-
-After reading arch/x86/entry/entry_64.S
-I think preemption is checked
-only when returning from interrupt (not exception like syscall)
-
-Is is right ? (based on x86)
-
-All scenario of checking for preemption in my opinion:
-(1) check kernel preemption after interrupt
-https://github.com/torvalds/linux/blob/master/arch/x86/entry/entry_64.S#L672
-
-(2) check user preemption after interrupt
-https://github.com/torvalds/linux/blob/master/arch/x86/entry/entry_64.S#L620
-prepare_exit_to_usermode()
-        -> exit_to_usermode_loop()
-             -> if (cached_flags & _TIF_NEED_RESCHED)
-                       schedule();
-
-Thanks,
-Taeung
+77u/SGVsbG8gZXZlcnlvbmUsCgpJIHdvdWxkIGxpa2UgdG8gaW50ZWdyYXRlIHNvbWUgb2Ygb3Vy
+IGNvbXBhbnkgZHJpdmVycyBpbnRvIHRoZSBWYW5pbGxhIExpbnV4IGtlcm5lbCwgYnV0IEkgaGF2
+ZSBuZXZlciBkb25lIHRoaXMgYmVmb3JlLgpTb21lIGVzdGVlbWVkIGNvbGxlYWd1ZXMgZGlkIHRo
+aXMgYSBmZXcgeWVhcnMgZWFybGllciwgYnV0IHVuZm9ydHVuYXRlbHkgdGhleSBhcmUgbm8gbG9u
+Z2VyIHdpdGggdGhlIGNvbXBhbnkgYW5kIHdlIGxvc3QgYWxsIGluZm9ybWF0aW9uIG9uIGhvdyB0
+byBkbyBpdC4KCldlIHdhbnQgdG8gc2V0IHVwIGEgcHJvY2VzcyB0byBrZWVwIHRoZSBrbm93bGVk
+Z2UsIGJ1dCB3ZSBoYXZlIHRvIHN0YXJ0IG92ZXIuIEkgYW0gdGhlIGNob3NlbiBvbmUgd2hvIHNo
+YWxsIGRvIHRoaXMuCgpTbyBJIHJlYWQgYSBsb3Qgb2YgZ3VpZGVsaW5lcyBhbmQga2VybmVsIGRv
+Y3VtZW50YXRpb24gYW5kIGNyZWF0ZSBhIGZpcnN0IHBhdGNoLXNldCBvZiBvbmUgZHJpdmVyIHRv
+IGJlIHN1Ym1pdHRlZC4gQmVmb3JlIGdvaW5nIHRvIHRoZSBhY3R1YWwgbWFpbGluZyBsaXN0cyAo
+c2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCksIEkgd291bGQgbGlrZSB0byBzZW5kIHRoaXMgcGF0
+Y2gtc2V0IHRvIHRoZSBsaW51eC1uZXdiaWUgbGlzdCBmb3IgaG9wZWZ1bGx5IHNvbWUgY29uc3Ry
+dWN0aXZlIGNvbW1lbnRzLgoKClRoZSBkcml2ZXIgaXMgYSBCTUMgZHJpdmVyIHRoYXQgc3VwcG9y
+dHMgdGhlIGNvbXBhbnkncyBnZW5lcmljIEJNQyBjYWxsZWQgIjE0WTAwNyIsIHdoaWNoIGlzIGFz
+c2VtYmxlZCBvbiBtYW55IG9mIG91ciBoYXJkd2FyZSBjb21wb25lbnRzLiBUaGUgQk1DIGlzIGNv
+bm5lY3RlZCB2aWEgSTJDLiBUaGUgZHJpdmVyIGlzIGEgZnVydGhlciBkZXZlbG9wbWVudCBvZiB0
+aGUgbWVuZjIxYm1jIGRyaXZlciwgd2hpY2ggaXMgYWxyZWFkeSBpbiB0aGUga2VybmVsLgpUaGUg
+ZHJpdmVyIGlzIG5vdCB5ZXQgZmluaXNoZWQgYW5kIGNhbiBiZSBhZGp1c3RlZCBhdCBhbnl0aW1l
+LgoKRmlyc3QgcXVlc3Rpb246IERvZXMgaXQgbWFrZSBzZW5zZSB0byBwdWJsaXNoIHRoZSBkcml2
+ZXIgYXQgbGludXgtbmV3YmllIGZvciBhIHJldmlldyBiZWZvcmUgZG9pbmcgaXQgb24gdGhlIGFj
+dHVhbCBtYWlsaW5nIGxpc3RzPwoKUmVnYXJkcywKQW5kcmVhcwoKLS0gCkFuZHJlYXMgR2Vpc3Ns
+ZXIgLSBTb2Z0d2FyZSBFbmdpbmVlcgoKTUVOIE1pa3JvIEVsZWt0cm9uaWsgR21iSApOZXV3aWVk
+ZXIgU3RyYcOfZSAxLTcgOTA0MTEgTsO8cm5iZXJnCkdlc2Now6RmdHNmw7xocmVyOiBEci4gTWlj
+aGFlbCBHb2xkYmFjaCAtIE1hdHRoaWFzIEthbW9seiAtIFlpbG1heiBLb2NhayAtIEhhbmRlbHNy
+ZWdpc3RlciBBRyBOw7xybmJlcmcgSFJCIDU1NDAKCg==
