@@ -1,38 +1,86 @@
-From: =?UTF-8?Q?Gei=c3=9fler=2c_Andreas?= <andreas.geissler@duagon.com>
-Subject: newbie: submitting a driver patch the first time
-Date: Tue, 26 May 2020 16:43:00 +0200
-Message-ID: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
+From: Eric Curtin <ericcurtin17@gmail.com>
+Subject: Re: newbie: submitting a driver patch the first time
+Date: Tue, 26 May 2020 16:32:14 +0100
+Message-ID: <CANpvso4dKjCrf4SY5d90yNo_vsFGtuZ9JfLX7cEkBgpF4DuJMQ@mail.gmail.com>
+References: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Ikfnis8dKIkuWMw0k4UNMsPQfmrfz1Vosyi3dTFXf3Y=;
+        b=RZthAsY8D3PwmCkOTd88b27mWWr7MtSpiDUBOiRLecJO5w2x4FAni1xEu1wN3CftfX
+         4g7MqPPi1HZt0h/nZ3KXw4SbAF1SLsmhEq6p0gBjPsXHN8/ittgnGlZtR2EcTQUMbvXh
+         seYRz3LY4pKoJw3fHoh9sQrH4/VbVez2VavaCy0ooEBEmoRv616WeJWUiBpQ+LOkfzs0
+         Q5oMNqQavoD90swuJ21NklGOrMGCCWyE1yvsFcw6RHe8KRMTGn0EAzpHeagmhXW9z4UQ
+         hgk969HFZD9uhYQOV9QvoEOeC/JwV7d/IhkIZ0gjGhznJuY42hIUyeI6qPUfHK1Dtzi8
+         JOaw==
+In-Reply-To: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8-sig"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+To: =?UTF-8?Q?Gei=C3=9Fler=2C_Andreas?= <andreas.geissler@duagon.com>
+Cc: linux-newbie@vger.kernel.org
 
-77u/SGVsbG8gZXZlcnlvbmUsCgpJIHdvdWxkIGxpa2UgdG8gaW50ZWdyYXRlIHNvbWUgb2Ygb3Vy
-IGNvbXBhbnkgZHJpdmVycyBpbnRvIHRoZSBWYW5pbGxhIExpbnV4IGtlcm5lbCwgYnV0IEkgaGF2
-ZSBuZXZlciBkb25lIHRoaXMgYmVmb3JlLgpTb21lIGVzdGVlbWVkIGNvbGxlYWd1ZXMgZGlkIHRo
-aXMgYSBmZXcgeWVhcnMgZWFybGllciwgYnV0IHVuZm9ydHVuYXRlbHkgdGhleSBhcmUgbm8gbG9u
-Z2VyIHdpdGggdGhlIGNvbXBhbnkgYW5kIHdlIGxvc3QgYWxsIGluZm9ybWF0aW9uIG9uIGhvdyB0
-byBkbyBpdC4KCldlIHdhbnQgdG8gc2V0IHVwIGEgcHJvY2VzcyB0byBrZWVwIHRoZSBrbm93bGVk
-Z2UsIGJ1dCB3ZSBoYXZlIHRvIHN0YXJ0IG92ZXIuIEkgYW0gdGhlIGNob3NlbiBvbmUgd2hvIHNo
-YWxsIGRvIHRoaXMuCgpTbyBJIHJlYWQgYSBsb3Qgb2YgZ3VpZGVsaW5lcyBhbmQga2VybmVsIGRv
-Y3VtZW50YXRpb24gYW5kIGNyZWF0ZSBhIGZpcnN0IHBhdGNoLXNldCBvZiBvbmUgZHJpdmVyIHRv
-IGJlIHN1Ym1pdHRlZC4gQmVmb3JlIGdvaW5nIHRvIHRoZSBhY3R1YWwgbWFpbGluZyBsaXN0cyAo
-c2NyaXB0cy9nZXRfbWFpbnRhaW5lci5wbCksIEkgd291bGQgbGlrZSB0byBzZW5kIHRoaXMgcGF0
-Y2gtc2V0IHRvIHRoZSBsaW51eC1uZXdiaWUgbGlzdCBmb3IgaG9wZWZ1bGx5IHNvbWUgY29uc3Ry
-dWN0aXZlIGNvbW1lbnRzLgoKClRoZSBkcml2ZXIgaXMgYSBCTUMgZHJpdmVyIHRoYXQgc3VwcG9y
-dHMgdGhlIGNvbXBhbnkncyBnZW5lcmljIEJNQyBjYWxsZWQgIjE0WTAwNyIsIHdoaWNoIGlzIGFz
-c2VtYmxlZCBvbiBtYW55IG9mIG91ciBoYXJkd2FyZSBjb21wb25lbnRzLiBUaGUgQk1DIGlzIGNv
-bm5lY3RlZCB2aWEgSTJDLiBUaGUgZHJpdmVyIGlzIGEgZnVydGhlciBkZXZlbG9wbWVudCBvZiB0
-aGUgbWVuZjIxYm1jIGRyaXZlciwgd2hpY2ggaXMgYWxyZWFkeSBpbiB0aGUga2VybmVsLgpUaGUg
-ZHJpdmVyIGlzIG5vdCB5ZXQgZmluaXNoZWQgYW5kIGNhbiBiZSBhZGp1c3RlZCBhdCBhbnl0aW1l
-LgoKRmlyc3QgcXVlc3Rpb246IERvZXMgaXQgbWFrZSBzZW5zZSB0byBwdWJsaXNoIHRoZSBkcml2
-ZXIgYXQgbGludXgtbmV3YmllIGZvciBhIHJldmlldyBiZWZvcmUgZG9pbmcgaXQgb24gdGhlIGFj
-dHVhbCBtYWlsaW5nIGxpc3RzPwoKUmVnYXJkcywKQW5kcmVhcwoKLS0gCkFuZHJlYXMgR2Vpc3Ns
-ZXIgLSBTb2Z0d2FyZSBFbmdpbmVlcgoKTUVOIE1pa3JvIEVsZWt0cm9uaWsgR21iSApOZXV3aWVk
-ZXIgU3RyYcOfZSAxLTcgOTA0MTEgTsO8cm5iZXJnCkdlc2Now6RmdHNmw7xocmVyOiBEci4gTWlj
-aGFlbCBHb2xkYmFjaCAtIE1hdHRoaWFzIEthbW9seiAtIFlpbG1heiBLb2NhayAtIEhhbmRlbHNy
-ZWdpc3RlciBBRyBOw7xybmJlcmcgSFJCIDU1NDAKCg==
+Hi Andreas,
+
+See the process documentation folder:
+
+https://github.com/torvalds/linux/tree/master/Documentation/process
+https://github.com/torvalds/linux/blob/master/Documentation/process/coding-=
+style.rst
+https://github.com/torvalds/linux/blob/master/Documentation/process/email-c=
+lients.rst
+https://github.com/torvalds/linux/blob/master/Documentation/process/submitt=
+ing-patches.rst
+
+There's a couple of very helpful youtube videos from Greg that
+describe the process:
+
+https://www.youtube.com/watch?v=3DLLBrBBImJt4&t=3D24s
+https://www.youtube.com/watch?v=3DXXix80GCvpo
+
+Feel free to email this mailing list again if you get stuck!
+
+On Tue, 26 May 2020 at 15:50, Gei=C3=9Fler, Andreas
+<andreas.geissler@duagon.com> wrote:
+>
+> Hello everyone,
+>
+> I would like to integrate some of our company drivers into the Vanilla Li=
+nux kernel, but I have never done this before.
+> Some esteemed colleagues did this a few years earlier, but unfortunately =
+they are no longer with the company and we lost all information on how to d=
+o it.
+>
+> We want to set up a process to keep the knowledge, but we have to start o=
+ver. I am the chosen one who shall do this.
+>
+> So I read a lot of guidelines and kernel documentation and create a first=
+ patch-set of one driver to be submitted. Before going to the actual mailin=
+g lists (scripts/get_maintainer.pl), I would like to send this patch-set to=
+ the linux-newbie list for hopefully some constructive comments.
+>
+>
+> The driver is a BMC driver that supports the company's generic BMC called=
+ "14Y007", which is assembled on many of our hardware components. The BMC i=
+s connected via I2C. The driver is a further development of the menf21bmc d=
+river, which is already in the kernel.
+> The driver is not yet finished and can be adjusted at anytime.
+>
+> First question: Does it make sense to publish the driver at linux-newbie =
+for a review before doing it on the actual mailing lists?
+>
+> Regards,
+> Andreas
+>
+> --
+> Andreas Geissler - Software Engineer
+>
+> MEN Mikro Elektronik GmbH
+> Neuwieder Stra=C3=9Fe 1-7 90411 N=C3=BCrnberg
+> Gesch=C3=A4ftsf=C3=BChrer: Dr. Michael Goldbach - Matthias Kamolz - Yilma=
+z Kocak - Handelsregister AG N=C3=BCrnberg HRB 5540
+>
