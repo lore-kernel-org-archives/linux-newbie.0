@@ -1,86 +1,40 @@
-From: Eric Curtin <ericcurtin17@gmail.com>
+From: Hubert CHAUMETTE <hubert.chaumette@kolabnow.com>
 Subject: Re: newbie: submitting a driver patch the first time
-Date: Tue, 26 May 2020 16:32:14 +0100
-Message-ID: <CANpvso4dKjCrf4SY5d90yNo_vsFGtuZ9JfLX7cEkBgpF4DuJMQ@mail.gmail.com>
+Date: Wed, 27 May 2020 10:39:06 +0200
+Message-ID: <b49ce0ddc3cbdf4cb1074b00dc02e3ee@kolabnow.com>
 References: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Ikfnis8dKIkuWMw0k4UNMsPQfmrfz1Vosyi3dTFXf3Y=;
-        b=RZthAsY8D3PwmCkOTd88b27mWWr7MtSpiDUBOiRLecJO5w2x4FAni1xEu1wN3CftfX
-         4g7MqPPi1HZt0h/nZ3KXw4SbAF1SLsmhEq6p0gBjPsXHN8/ittgnGlZtR2EcTQUMbvXh
-         seYRz3LY4pKoJw3fHoh9sQrH4/VbVez2VavaCy0ooEBEmoRv616WeJWUiBpQ+LOkfzs0
-         Q5oMNqQavoD90swuJ21NklGOrMGCCWyE1yvsFcw6RHe8KRMTGn0EAzpHeagmhXW9z4UQ
-         hgk969HFZD9uhYQOV9QvoEOeC/JwV7d/IhkIZ0gjGhznJuY42hIUyeI6qPUfHK1Dtzi8
-         JOaw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kolabnow.com; h=
+        message-id:references:in-reply-to:subject:subject:from:from:date
+        :date:content-transfer-encoding:content-type:content-type
+        :mime-version:received:received:received; s=dkim20160331; t=
+        1590568748; x=1592383149; bh=AmXVhhWQoqU2s24fzDWUiRDKsUT1PKhniGV
+        /KE8EhTQ=; b=OqhYodEie3fR7SyiLyGqB5P6viY+co6TO6S3QKIB6T2ThCrfUGM
+        0ZETUz6nhNevfgf3PtBr1yzImOxzRevSpKyDpzntMsu1OJM8hDYQvTrFBFwZtbHT
+        B4Qs7IOfn93v3QOtdICj4KeZiqdvRIP/6ItrSR5bOPkALWw47x5CuT6cC/EPxaox
+        Mgf/CopJPTIODWHbAiCkqPkJvrjZJYgMTpxPK9OFg/4dZJmzVE6TQwQDryH1Le9Z
+        RgbzGzeaMjs8BJ14WRRdlEIXCu8yLva94t7Uab7LNZ3QrL+N2YZuRS/+JoGirEKQ
+        z6pUYTIQoSS63PlRbwVcFiUETrtKwbnGU97ibcrPZ8NPvZPfCDrZKkN9HLVGYzK7
+        gd5675qHmXNisoxAS9rERIlMwDXUxCSid4P8o6oCTDeklVJ6e8KLncfaCDajnhFg
+        yHSm22C10VXy57m4TFplfrWTykV 
 In-Reply-To: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
 To: =?UTF-8?Q?Gei=C3=9Fler=2C_Andreas?= <andreas.geissler@duagon.com>
 Cc: linux-newbie@vger.kernel.org
 
+> First question: Does it make sense to publish the driver at
+> linux-newbie for a review before doing it on the actual mailing lists?
+
 Hi Andreas,
 
-See the process documentation folder:
+This list is usually used to help newbies on specific problems, I think 
+you will get better results (and faster too) by directly sending your 
+RFC to the concerned maintainers.
 
-https://github.com/torvalds/linux/tree/master/Documentation/process
-https://github.com/torvalds/linux/blob/master/Documentation/process/coding-=
-style.rst
-https://github.com/torvalds/linux/blob/master/Documentation/process/email-c=
-lients.rst
-https://github.com/torvalds/linux/blob/master/Documentation/process/submitt=
-ing-patches.rst
+Regards,
 
-There's a couple of very helpful youtube videos from Greg that
-describe the process:
-
-https://www.youtube.com/watch?v=3DLLBrBBImJt4&t=3D24s
-https://www.youtube.com/watch?v=3DXXix80GCvpo
-
-Feel free to email this mailing list again if you get stuck!
-
-On Tue, 26 May 2020 at 15:50, Gei=C3=9Fler, Andreas
-<andreas.geissler@duagon.com> wrote:
->
-> Hello everyone,
->
-> I would like to integrate some of our company drivers into the Vanilla Li=
-nux kernel, but I have never done this before.
-> Some esteemed colleagues did this a few years earlier, but unfortunately =
-they are no longer with the company and we lost all information on how to d=
-o it.
->
-> We want to set up a process to keep the knowledge, but we have to start o=
-ver. I am the chosen one who shall do this.
->
-> So I read a lot of guidelines and kernel documentation and create a first=
- patch-set of one driver to be submitted. Before going to the actual mailin=
-g lists (scripts/get_maintainer.pl), I would like to send this patch-set to=
- the linux-newbie list for hopefully some constructive comments.
->
->
-> The driver is a BMC driver that supports the company's generic BMC called=
- "14Y007", which is assembled on many of our hardware components. The BMC i=
-s connected via I2C. The driver is a further development of the menf21bmc d=
-river, which is already in the kernel.
-> The driver is not yet finished and can be adjusted at anytime.
->
-> First question: Does it make sense to publish the driver at linux-newbie =
-for a review before doing it on the actual mailing lists?
->
-> Regards,
-> Andreas
->
-> --
-> Andreas Geissler - Software Engineer
->
-> MEN Mikro Elektronik GmbH
-> Neuwieder Stra=C3=9Fe 1-7 90411 N=C3=BCrnberg
-> Gesch=C3=A4ftsf=C3=BChrer: Dr. Michael Goldbach - Matthias Kamolz - Yilma=
-z Kocak - Handelsregister AG N=C3=BCrnberg HRB 5540
->
+Hubert
