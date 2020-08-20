@@ -1,29 +1,37 @@
-From: Andreas Geissler <andreas.geissler@duagon.com>
-Subject: Re: newbie: submitting a driver patch the first time
-Date: Wed, 27 May 2020 11:21:48 +0200
-Message-ID: <06dd952c-03e3-0a5b-9d20-30c4925adfcb@duagon.com>
-References: <c5e6a0e0-3825-723e-e791-f24c9d66a419@duagon.com>
- <b49ce0ddc3cbdf4cb1074b00dc02e3ee@kolabnow.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: base64
+From: Billie Alsup <billie.alsup@gmail.com>
+Subject: associating w1 bus masters to parent device
+Date: Wed, 19 Aug 2020 18:11:00 -0700
+Message-ID: <BA6555F3-C73F-4D0F-A2D8-FABB3CAAE517@gmail.com>
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-In-Reply-To: <b49ce0ddc3cbdf4cb1074b00dc02e3ee@kolabnow.com>
-Content-Language: en-US
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:content-transfer-encoding:mime-version:subject:message-id:date
+         :to;
+        bh=VHM9uZcyaubTr83jb3EKiTl+kBIIUIkG3mRA4KCUn+Q=;
+        b=MCDi55WCR5vH/jasRRwNe3yMlM442QxczSvBUEL7b29jATvxYI54RKr1MoxBF24pSc
+         vXzEtAhyoC3ROEmPKqG/8G5Xg5kO33PkgoXCvK0jR0elldYTetAlOXT+WE7LjB+erNtk
+         XSs+F3D4wPPGfwsXy/eV8HBF7Btr8vT88wsroikROmFMjNiSdAi+Voc82ubERZXzZP+/
+         AfgL0hoFsbK7aS1OSLVtnLgX78GUcTgDx7Yhla/o+AKlRLr4U1cpxUy3jAlmzim+Qrr+
+         /HcL0TlMmgTcibOBLnTISPXogH4RO/qR+sZR14OuLNzHQ/xBUka/MZyHcZJOZYVio15I
+         VE3w==
 Sender: linux-newbie-owner@vger.kernel.org
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="utf-8-sig"; format="flowed"
-To: Hubert CHAUMETTE <hubert.chaumette@kolabnow.com>
-Cc: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+To: linux-newbie@vger.kernel.org
 
-77u/CgoKT24gMjcuMDUuMjAgMTA6MzksIEh1YmVydCBDSEFVTUVUVEUgd3JvdGU6Cj4+IEZpcnN0
-IHF1ZXN0aW9uOiBEb2VzIGl0IG1ha2Ugc2Vuc2UgdG8gcHVibGlzaCB0aGUgZHJpdmVyIGF0Cj4+
-IGxpbnV4LW5ld2JpZSBmb3IgYSByZXZpZXcgYmVmb3JlIGRvaW5nIGl0IG9uIHRoZSBhY3R1YWwg
-bWFpbGluZyBsaXN0cz8KPiAKPiBIaSBBbmRyZWFzLAo+IAo+IFRoaXMgbGlzdCBpcyB1c3VhbGx5
-IHVzZWQgdG8gaGVscCBuZXdiaWVzIG9uIHNwZWNpZmljIHByb2JsZW1zLCBJIHRoaW5rIHlvdSB3
-aWxsIGdldCBiZXR0ZXIgcmVzdWx0cyAoYW5kIGZhc3RlciB0b28pIGJ5IGRpcmVjdGx5IHNlbmRp
-bmcgeW91ciBSRkMgdG8gdGhlIGNvbmNlcm5lZCBtYWludGFpbmVycy4Kb2sgdGhhbmtzIHRoZW4g
-aSB3aWxsIGRvIHRoYXQKPiAKPiBSZWdhcmRzLAo+IAo+IEh1YmVydAoKLS0gCkFuZHJlYXMgR2Vp
-c3NsZXIgLSBTb2Z0d2FyZSBFbmdpbmVlcgpNRU4gTWlrcm8gRWxla3Ryb25payBHbWJICk5ldXdp
-ZWRlciBTdHJhw59lIDEtNyA5MDQxMSBOw7xybmJlcmcKR2VzY2jDpGZ0c2bDvGhyZXI6IERyLiBN
-aWNoYWVsIEdvbGRiYWNoIC0gTWF0dGhpYXMgS2Ftb2x6IC0gWWlsbWF6IEtvY2FrIC0gSGFuZGVs
-c3JlZ2lzdGVyIEFHIE7DvHJuYmVyZyBIUkIgNTU0MAoK
+I have hardware with multiple ds2482 devices (i2c to 1-wire bridge).  =
+Each instantiation of a ds2482 results in a new w1_bus_master%d device.  =
+However, I cannot figure out how to correlate the w1_bus_master%d device =
+to the original ds2482 device (from user space looking at sysfs =
+entries).  Each master has the same type of device behind it (a ds2433 =
+eeprom), but I still need to know which is which.  The i2c devices (and =
+thus the w1_bus_master%d devices) do not necessarily probe =
+consecutively, so I can't just presume a mapping at any instance in =
+time.  Am I missing something?  Currently on 4.9.189 (debian:9), but am =
+planning to move to 4.19.118 (debian:10).
+
+
+
+
