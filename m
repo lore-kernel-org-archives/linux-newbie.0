@@ -1,31 +1,29 @@
 From: Jiahao XU <jiahaoxu28th@gmail.com>
-Subject: Linux kernel configuration option for disabling all specter/meltdown migration
-Date: Sun, 4 Apr 2021 22:11:24 +1000
-Message-ID: <CALJHi=9Ax2fWUuKsAbdBkbxhhjvMbZ91-aL5Cp6HYm9khXnffw@mail.gmail.com>
+Subject: when is populate_rootfs called?
+Date: Mon, 5 Apr 2021 00:11:51 +1000
+Message-ID: <CALJHi=-VQubwLxjObVmJjAh7A6j0Tm9h028kWcCfbHMo1mCnuQ@mail.gmail.com>
 Mime-Version: 1.0
 Return-path: <linux-newbie-owner@vger.kernel.org>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:from:date:message-id:subject:to;
-        bh=A83tSv4X+pAauBq+gni3vjWEdzTHyG0kGi6LbTi/w5k=;
-        b=e+E+CfnGI7LnCsZsvskpKvvqzgfgb5EPQvcI7yS6sl5ItNnVfC7SxT6A/QVtYqt8e2
-         U79/P7raWG3s9dENblyOx8Y2KlH47WIm58F+GFxpLpVKSBOwr+csqSV9G4PqGRpY1POm
-         LLgQd0e87gbgmA3T2HUD0hi+7RHL3eWpbGuNjorwUkgaLz1bEP+zm8Y2pCyKL2QG6UXB
-         7qZK/m16ThJT2gKa1Qng+UcuyyY1cceRf8WAdnUoWENfC/cKQpShRnCAB7WDsd0ntdGA
-         3BY9yAvitOOa1Mj8iP3DrlnBPHenkqM5TkmwidsPD78PEVBRUWFrXYfAxbTd5Edc1WEK
-         Zq/Q==
+        bh=DkikwK4hxLxcajfypE84DpC7ClGi/grO9mdhHc/iTno=;
+        b=thcxfJB7GagfOV8VqWYbciEHPf3db6lJMWCmx35G0MEDw1PcdE0ANWhIOzUQqlUIb8
+         uYX+37jYzuDnlH5HtIi4jdK74hH9j+4xc1/pToBlpcRvhpK/+GKc5T7nfZJ8xkzcMyT+
+         pJkd6hdQsSELS3KCE2vscz/diCGcjyjtfTS/ZCtcjgupqgXrXFlybRZF9B54oJG2NAOr
+         y22xXnjybauQfBKICbWMQCO0++IZYC/BQZb6Ss8D7TEJBaDus4jepvQ8afQzDBj7syVN
+         e1op+1Jgr08iMKGyHv8hVIK2TOFECm2SfpIw8oO1zMlDGIHKwn+Sc6uOJqPRNdbgalNj
+         A8ng==
 List-ID: <linux-newbie.vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 To: linux-newbie@vger.kernel.org
 
-I am compiling a kernel that is meant to be run in vm and only run
-trusted softwares, so I'd like to turn off specter/meltdown migration
-as they are of no use but only holds back the performance.
+Hi
 
-However, I didn't find any related option except for CONFIG_RETPOLINE.
-
-If there isn't a kernel config in the mainline kernel, then is there
-any patch that would allow me to disable them?
-
-Thanks in advance.
+I have read through
+https://stackoverflow.com/questions/10540008/how-does-the-linux-kernel-determine-the-order-of-init-calls
+and looked at the source code related to init, like `start_kernel`,
+`kernel_init_mem`, `do_ido_initcall_levelnitcall_level` and
+`offset_to_ptr`, but I am still totally confused at when is
+`populate_rootfs` called.
