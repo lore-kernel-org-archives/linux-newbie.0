@@ -1,29 +1,45 @@
-From: Jiahao XU <jiahaoxu28th@gmail.com>
-Subject: when is populate_rootfs called?
-Date: Mon, 5 Apr 2021 00:11:51 +1000
-Message-ID: <CALJHi=-VQubwLxjObVmJjAh7A6j0Tm9h028kWcCfbHMo1mCnuQ@mail.gmail.com>
+From: Hubert CHAUMETTE <hubert.chaumette@kolabnow.com>
+Subject: Re: when is populate_rootfs called?
+Date: Tue, 06 Apr 2021 10:06:15 +0200
+Message-ID: <81674ed3ac96d789c69d6887ea2bfabb@kolabnow.com>
+References: <CALJHi=-VQubwLxjObVmJjAh7A6j0Tm9h028kWcCfbHMo1mCnuQ@mail.gmail.com>
 Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=DkikwK4hxLxcajfypE84DpC7ClGi/grO9mdhHc/iTno=;
-        b=thcxfJB7GagfOV8VqWYbciEHPf3db6lJMWCmx35G0MEDw1PcdE0ANWhIOzUQqlUIb8
-         uYX+37jYzuDnlH5HtIi4jdK74hH9j+4xc1/pToBlpcRvhpK/+GKc5T7nfZJ8xkzcMyT+
-         pJkd6hdQsSELS3KCE2vscz/diCGcjyjtfTS/ZCtcjgupqgXrXFlybRZF9B54oJG2NAOr
-         y22xXnjybauQfBKICbWMQCO0++IZYC/BQZb6Ss8D7TEJBaDus4jepvQ8afQzDBj7syVN
-         e1op+1Jgr08iMKGyHv8hVIK2TOFECm2SfpIw8oO1zMlDGIHKwn+Sc6uOJqPRNdbgalNj
-         A8ng==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kolabnow.com; h=
+        message-id:references:in-reply-to:subject:subject:from:from:date
+        :date:content-transfer-encoding:content-type:content-type
+        :mime-version:received:received:received; s=dkim20160331; t=
+        1617696378; x=1619510779; bh=86d3+oHnwWinm+/G2M1YiL9zrhd18kbxjdu
+        SHDGYnZU=; b=05mRpunhoLzXaK2OzlHVJst7QKGZyNupH1rKrlfywd3lM/JAmwd
+        /XKPlj2zSlHefzdFWAEVLYnQG0unxp4uBzMBMOJ0JTUyjwNHAaBhLb7STtvNVUsj
+        1hKmwWxG2oTlnJ5LuwkKxJvLcQwDSf1WBc+Uj4LyEAkTJFQMy9wGRo+HQRXjlXZ3
+        Lfv+eZA9oTFk+ParyQ1Qwc+W1eMGrmtLOGxl87ERvCR6OBkBmQyU2v8T/4pbPN8l
+        iPmrh7gk6SK3tL2fO2FGjL2orDEJrNRBZq7KFSTsnBRusfcI+jn9hQXVfqfw4+Cd
+        PPt2Vo2PTnjFU+4b0Cm15PTYyr/R4ZVzA1vx1PC3MQLqmr83IniVNzJIGK9fnRTw
+        fvTeR+9SMS32MvlBrC5XOJJ+ov5GHqDU9KEPNdauOcZtWMl5ofFwnSZWIOcRxNt0
+        jwzAmApmV8hJCWfTN5GgH7tIkzS 
+In-Reply-To: <CALJHi=-VQubwLxjObVmJjAh7A6j0Tm9h028kWcCfbHMo1mCnuQ@mail.gmail.com>
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"; format="flowed"
+To: Jiahao XU <jiahaoxu28th@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 
-Hi
+Le 04/04/2021 16:11, Jiahao XU a =C3=A9crit :
+> I am still totally confused at when is `populate_rootfs` called.
 
-I have read through
-https://stackoverflow.com/questions/10540008/how-does-the-linux-kernel-determine-the-order-of-init-calls
-and looked at the source code related to init, like `start_kernel`,
-`kernel_init_mem`, `do_ido_initcall_levelnitcall_level` and
-`offset_to_ptr`, but I am still totally confused at when is
-`populate_rootfs` called.
+Hi Jiahao,
+Have you tried enabling tracing (ftrace IIRC) in the kernel to figure=20
+that out?
+Another possibility is to use Doxygen's call graphs, make sure you=20
+restrict the
+analysis to minimum set of files you need (just remove all irrelevant
+architecures and driver directories from doxygen's input, or extract=20
+them from
+your kernel image. I did some experiments on the topic some time ago, it=20
+might
+prove useful:=20
+https://bitbucket.org/hchaumette/linux_doxygen/src/master/.
+Anyone interested can ask for access.)
+
+Hubert
