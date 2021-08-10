@@ -1,67 +1,34 @@
-From: Amy Parker <apark0006@student.cerritos.edu>
-Subject: Re: Assisting with kernel Rust development
-Date: Tue, 6 Jul 2021 10:39:56 -0700
-Message-ID: <CAPOgqxGUYzqxqO83fMY04uL=fUr_OGm3X+s-fBSCQtU1x_ur_Q@mail.gmail.com>
-References: <f2f6fb7d-18cb-3256-b6c3-2d09905b02ca@student.cerritos.edu> <CAFRnB2WMuOjP0S5vvCa9w1Wi67K+3XcBsZ+QxxQ2gvo4-2mOEw@mail.gmail.com>
+From: Thomas Marangoni <thomas@marangoni.cc>
+Subject: Trying to improve a kernel driver
+Date: Tue, 10 Aug 2021 09:24:43 +0200
+Message-ID: <50d3f5fc-64b6-99fd-3992-9eb9f2843746@marangoni.cc>
 Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=student-cerritos-edu.20150623.gappssmtp.com; s=20150623;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=VECzJml5k1hAS1TG8HVcjo85RdI8u0a+vF3JU1M+Re8=;
-        b=o4KJCtYhMqkrrzgdzNgeRRJS+pof3hn6ZCN20b5yf6WIIFEB8/LHAdeMbfa3mfb5Is
-         7KTGu6SCPjJ808xgHZjX2Vbt0cJrfnf/csinvkbdOaNyTIuS95ilCpFWKuWdEBTpBYrE
-         H3lElOc5svi/s6936DcMvdagVwz3Z8VIBsy+nCZSdJbxVgqvv33E76gaCrOwPeZx/Ljl
-         reW9w7Yn3ZvbFB2UP4Yvj/bIYxrQtQjeztI3hvegtZtAgRBQ3/BS8ZaUZTOtTu+H1MDz
-         Tpucl6qWxLqWSIwrkK6UY5Uo7e7x9kPKvARfXZ+9Yt4xhF+2L++AZtv2gf6YEQmt65dO
-         g1rg==
-In-Reply-To: <CAFRnB2WMuOjP0S5vvCa9w1Wi67K+3XcBsZ+QxxQ2gvo4-2mOEw@mail.gmail.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=marangoni.cc; s=mail;
+        t=1628580285; bh=PeRXrKoYkWvgqpheq4ise8h2Btuv4BJqqH6Ewnbn47s=;
+        h=From:Subject:To;
+        b=kV5eVq9D16KNkc65UAi5iVd3X+EJomH8T1U3nfNkKiZh9TqtYvJ7svyjCYx+D0uaR
+         j1g9xygpfK3+UQfuvms+FT8jYFdEB0NKmDADQs6psHnuqAtlQqHpzhSSKGZS4kgO5U
+         reRQfaDQUsrlhIUoi5vpg/DCxvvAmHpIAjMlLQ5tzoLVDBCU5dSvAYfUU5IQOx6m2J
+         IUQ19bD7BEJ0DQmVfaR1O4+4f90YbSJS1Q3AEZPq+9ZLs1mN9Uw/frpzPOJs35f0Ib
+         P7yDo+t+eebwrQGw3W/gDwmDerYmAB/yiZtW2C6ow+Do5p2kZRUC0pq2LY3lUbysOY
+         KeTrNjKPxfReA==
+Content-Language: en-US
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-To: Alex Gaynor <alex.gaynor@gmail.com>
-Cc: linux-newbie@vger.kernel.org, rust-for-linux <rust-for-linux@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"; format="flowed"
+To: linux-newbie@vger.kernel.org
 
-On Tue, Jul 6, 2021 at 10:23 AM Alex Gaynor <alex.gaynor@gmail.com> wrote:
->
-> Hi Amy,
->
-> Glad to hear you're interested! We've got a whole bunch of open bugs
-> on https://github.com/Rust-for-Linux/linux/issues, so that's always a
-> starting point for looking for things to work on.
->
-> Cheers,
-> Alex
->
-> On Tue, Jul 6, 2021 at 1:19 PM Amy Parker
-> <apark0006@student.cerritos.edu> wrote:
-> >
-> > Hello!
-> >
-> > My name is Amy Parker. You may have seen me on the kernel forums before=
- under my previous email address <enbyamy@gmail.com>.
-> >
-> > It's been a while since I've attempted to contribute to the kernel, so =
-I figured I'd post here. My previous attempt had been under Matthew Wilcox'=
-s direction to modify the DAX driver for NVDIMMs to use XA_ZERO_ENTRY to re=
-present a zero page instead of DAX_ZERO_PAGE (allowing us to save a constan=
-t) - but this failed since the ascending values of other flags conflicted w=
-ith the value presented by XA_ZERO_ENTRY.
-> >
-> > I saw the recent patch sequence adding Rust support to the kernel. As a=
- Rust developer, I figured I could get back into kernel development because=
- of this, and was wondering how I could help. Are there any active objectiv=
-es that need work?
-> >
->
->
-> --
-> All that is necessary for evil to succeed is for good people to do nothin=
-g.
+Hello,
+I'm new to developing kernel drivers and want to improve the driver of 
+the axp209 power management chip. I've read the documentation about the 
+Linux power supply class 
+(https://www.kernel.org/doc/html/latest/power/power_supply_class.html) 
+and there it says: "Power supply class is extensible, and allows to 
+define drivers own attributes.". The Problem is I couldn't find an 
+example of how to add own attributes. My goal is to have an own 
+attribute showing up at /sys/class/power_supply/axp20x-battery/
 
-Okay, I will!
+If someone can give me a hint, extended documentation or a better place 
+to ask, that would be great!
 
-Thank you.
-
-    -amyip
