@@ -1,34 +1,93 @@
-From: Thomas Marangoni <thomas@marangoni.cc>
-Subject: Trying to improve a kernel driver
-Date: Tue, 10 Aug 2021 09:24:43 +0200
-Message-ID: <50d3f5fc-64b6-99fd-3992-9eb9f2843746@marangoni.cc>
+From: Eric Curtin <ericcurtin17@gmail.com>
+Subject: TCP higher throughput that UDP?
+Date: Tue, 31 Aug 2021 21:23:53 +0100
+Message-ID: <CANpvso5v0Lg4gDDAcBvRtHMKL5cZcpoL-RUWV_A+ogX4w2oRfw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-newbie-owner@vger.kernel.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=marangoni.cc; s=mail;
-        t=1628580285; bh=PeRXrKoYkWvgqpheq4ise8h2Btuv4BJqqH6Ewnbn47s=;
-        h=From:Subject:To;
-        b=kV5eVq9D16KNkc65UAi5iVd3X+EJomH8T1U3nfNkKiZh9TqtYvJ7svyjCYx+D0uaR
-         j1g9xygpfK3+UQfuvms+FT8jYFdEB0NKmDADQs6psHnuqAtlQqHpzhSSKGZS4kgO5U
-         reRQfaDQUsrlhIUoi5vpg/DCxvvAmHpIAjMlLQ5tzoLVDBCU5dSvAYfUU5IQOx6m2J
-         IUQ19bD7BEJ0DQmVfaR1O4+4f90YbSJS1Q3AEZPq+9ZLs1mN9Uw/frpzPOJs35f0Ib
-         P7yDo+t+eebwrQGw3W/gDwmDerYmAB/yiZtW2C6ow+Do5p2kZRUC0pq2LY3lUbysOY
-         KeTrNjKPxfReA==
-Content-Language: en-US
+Return-path: <netdev-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=V37xmJNOXbmKE+WjUdJI8ZGLV3Fc+43OHAropyNQRkw=;
+        b=Pgdgd+mMtfn4TxGoH122YBQw5uUgT9h+hfuIfAxK+zkcS890XGw2h2hbf/YPYTCUxh
+         vJR0ACRrT3kEq+Rm6u4QWPhpXKeT/6i+l9j3OvAV6fIpKvS/FlLTomiaRYuswO3lICHV
+         Rw+aMOX0JVdxgu2XFio8vRKFoDC0tVmYsPD5HS38BLdmzMpDjfqow+Hxx/2f51yduMqo
+         7UggpaXJHkgLMIwpMnwdPZSHDGZ1oxBSQytRdGnPkkCZhGh+7pZ8zZyRSe3tjGh63diH
+         GTtZxjsqw8Up4aBSJasBf5FJLISKBL2wmheDf0sjcWlUxAMqJxG5FFGppDjSA136FaQ2
+         mIbA==
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"; format="flowed"
-To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+To: netdev@vger.kernel.org, linux-newbie@vger.kernel.org
 
-Hello,
-I'm new to developing kernel drivers and want to improve the driver of 
-the axp209 power management chip. I've read the documentation about the 
-Linux power supply class 
-(https://www.kernel.org/doc/html/latest/power/power_supply_class.html) 
-and there it says: "Power supply class is extensible, and allows to 
-define drivers own attributes.". The Problem is I couldn't find an 
-example of how to add own attributes. My goal is to have an own 
-attribute showing up at /sys/class/power_supply/axp20x-battery/
+Hi Guys,
 
-If someone can give me a hint, extended documentation or a better place 
-to ask, that would be great!
+I've been researching quantitatively various protocols QUIC, TCP, UDP,
+SCTP, etc. on modern hardware. And some TLS, DTLS and plain text
+variants of these protocols. I've avoided tuning kernel parameters so
+much and focused more on adjusting what I can in user space on an out
+of the box kernel, as if I was deploying on a machine where I did not
+have root access (lets say an Android phone, even though these results
+come from a laptop for simplicity). I did make a minor exception in
+that I had to turn on SCTP.
 
+I have a small client/server binary that implements bare bones
+versions of TCP, UDP and SCTP. The server allows you to specify which
+file clients will pull. And the client lets you specify which file to
+write the pulled data to (often I use /dev/null here). I run both on
+127.0.0.1 . I would have thought (obviously I was wrong) that UDP
+would be faster, given no acks, retransmits, checksums, etc. as many
+laymen would tell you. But on this machine TCP is faster more often
+than not. This has been answered online with different answers of the
+reasoning (hardware offload, how packet fragmentation is handled, TCP
+tuned more for throughput, UDP tuned more for latency, etc.). I'm just
+curious if someone could let me know the most significant factor (or
+factors) here these days? Things like strace don't reveal much.
+Changing buffer size to the read/write/send/recv system calls alters
+things but TCP seems to still win regardless of buffer size.
+
+Another question, I detect the UDP client has finished by checking for
+a final (unsigned char) -1 byte, very error-prone of course. Is there
+a better way to detect when a simple UDP client should stop trying to
+pull/read/receive data, that you've seen or is commonplace?
+
+If my code is too simplistic and there's one or two setsockopt's etc.
+that might be interesting to add, my ears are open.
+
+Feel free to pull this repo and run this script and take a quick look
+at the few lines of code if needs be (currently pushing, at an airport
+might be slow, should be commit around time of this email):
+
+https://github.com/ericcurtin/DTLS-Examples
+
+The two files relevant:
+
+src/script.sh  src/udp-tls.c
+
+To run my test case:
+
+cd src; ./script.sh
+
+I'd appreciate some thoughts from the gurus :)
+
+My hardware:
+
+ThinkPad-P1-Gen-3
+CPU: i7-10850H
+RAM: 32GB
+
+Kernel version:
+
+$ cat /etc/*release | head -n2; uname -r
+Fedora release 34 (Thirty Four)
+NAME=Fedora
+5.13.12-200.fc34.x86_64
+
+Is mise le meas/Regards,
+
+Eric Curtin
+
+Check out this charity that's close to my heart:
+
+https://www.idonate.ie/fundraiser/11394438_peak-for-pat.html
+https://www.facebook.com/Peak-for-Pat-104470678280309
+https://www.instagram.com/peakforpat/
