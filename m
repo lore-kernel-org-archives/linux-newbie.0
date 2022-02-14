@@ -1,43 +1,52 @@
-From: Luis Chamberlain <mcgrof-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: INVALID ELF STRUCTURES
-Date: Tue, 21 Dec 2021 13:44:54 -0800
-Message-ID: <YcJK1rPwQVu/pX+S@bombadil.infradead.org>
-References: <CAD9KO1=gjhe1sc3MNyc3QawQgJAgwptFgsTZE903PCi3_DEyPg@mail.gmail.com>
-Mime-Version: 1.0
-Return-path: <linux-modules-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-        d=infradead.org; s=bombadil.20210309; h=Sender:In-Reply-To:Content-Type:
-        MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-        Content-Transfer-Encoding:Content-ID:Content-Description;
-        bh=g1DkaflNqTMfxBW6qRpkoRfxi8Y3JweVReOmR5YEtKQ=; b=WZU3q5IjyNqsUUkfGy2TwqqGkk
-        I2pvMTNamhaxV1g9GOWAAtC04k5Td7tN8h3NmdaEnwMw3DykrIpeRjyUmqElwo4Cz1iZB1owVndni
-        Bk1HwV8OryLhaFFA3UcFMf9qfqhK9AEOIrYBW25XnscPA8gpl4S13OH4SOMl3HuCi4e4FFI7j+5ht
-        O+FZg3EWyZJlMmd7HjC0TfGNxf0UUFsTZUhqEntmSCnJv+/st63pi9BsRRbzEueVKI2L3HkQkuMYl
-        ZuEUGWLvGWMcQBT3kBOWILToGdxouPtbxfMaK3nvCIu589QYawrnHY/+4JrQUH7wj4AtNjq4Szkfz
-        /KTHSopA==;
-Content-Disposition: inline
-In-Reply-To: <CAD9KO1=gjhe1sc3MNyc3QawQgJAgwptFgsTZE903PCi3_DEyPg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: Luis Chamberlain <mcgrof-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+From: Yurij Goncharuk <lnkgyv@gmail.com>
+Subject: sk_buff free 2 bytes in headroom
+Date: Mon, 14 Feb 2022 13:35:55 +0300
+Message-ID: <519F1403-E3BB-40B8-B505-B52200BEBE52@gmail.com>
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.40.0.1.81\))
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-newbie-owner@vger.kernel.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:content-transfer-encoding:mime-version:subject:message-id:date
+         :cc:to;
+        bh=sBcaS2ZWduN5Uh4O16LNB4JH09nsbQEjHmvJdTZvtQY=;
+        b=K3XOk7MqZ5eqpIUDRq1okCPdfTVDCzrPo5g7aEchnYSgZCG8DIJ8zB3YptXtNEKvqV
+         pV16FfV+fUpRuzgnVDxYLt2iFuaM77wOYnt49rmpFXkuySAWVmbZVd8VmcZQEGRBcen3
+         svidIbLDGoBF55hisiM/Vvxn048CcEpnN6cLA0NlyOj1wi5/cmIJxL1hK3EE713dxkCt
+         AU8AdwmeZdAFU+pNrw5SC0M/JCBeRQ+oeOEwww4iXFRQOaVGDE2/th+KhNcOH2GMxKW3
+         51lgBK6YxT54++gBt5QQu7bvgxJ6ySR8ZK9tpgSUd8tNcGKseYXL/ikFKpuwrRXZ0DGY
+         FqXw==
 List-ID: <linux-newbie.vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-To: Eliyam Levy <eliyamlevy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: linux-modules-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-newbie-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+To: linux-newbie@vger.kernel.org
+Cc: Yurij Goncharuk <lnkgyv@gmail.com>
 
-On Tue, Dec 21, 2021 at 11:54:09AM -0500, Eliyam Levy wrote:
-> Hi,
-> 
-> I'm on Ubuntu 20.04 with kernel version 5.11 and I keep hitting the
-> "Module has invalid ELF structures" error on a kernel module I'm
-> building. I know this is related to the "harden ELF info handling"
-> patch that was introduced. Are there any useful ways to debug this? Is
-> there anything I should be mindful of when building the kernel module
-> to avoid this?
+Hello!
 
-Look for the already merged patch, "module: change to print useful
-messages from elf_validity_check()".
+During NIC driver writing I read and understand about main struct =
+sk_buff fields like headroom, data, tailroom, end, len, data_len. Main =
+sources like: LWN(https://lwn.net/Articles/89597/) and Dave M =
+posts(http://vger.kernel.org/%7Edavem/skb_data.html) told about there is =
+2 bytes alignment used for IP header performance. This alignment should =
+be used in every RX routine in NIC driver.
 
-$ git describe --contains 7fd982f394c42f25a73fe9dfbf1e6b11fa26b40a
-v5.16-rc1~95^2    
+In my case when I've received struct sk_buff in start_xmit() I have =
+struct sk_buff with 2 free bytes in headroom(skb_headroom(skb)). This 2 =
+bytes I use for my purposes (skb_push(skb, 2)).
 
-  Luis
+I'm worried of 3 things:
+
+	=E2=80=A2 I've checked about 2 free bytes in headroom against =
+several distros and find them in. This probably means that struct skb =
+which passes to start_xmit() already aligned during TX. Is it true?
+	=E2=80=A2 If it's true, why NET_IP_ALIGN macro during pr_info in =
+start_xmit() print 0?
+	=E2=80=A2 Can I check for free 2 bytes in headroom without =
+module loading via sysctl, getconf or something else?
+
+/*-----------------------*
+Best regards!
+Yurij Goncharuk
+lnkgyv@gmail.com
+/*-----------------------*
+
