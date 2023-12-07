@@ -1,43 +1,67 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4862CEBB
-	for <linux-newbie@vger.kernel.org>; Tue, 21 Nov 2023 00:42:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="CDa++8IR"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EDD0C433C8;
-	Tue, 21 Nov 2023 00:42:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1700527371;
-	bh=WydedWHI5hgSzmjYaAgFcEvQrWisnvd0Tah1sl3VwoE=;
-	h=Date:From:To:Subject:From;
-	b=CDa++8IRYuCEolx8o80C6e77VmKhmYMhi+pTex/WRTokoGidtydH2MUdcbIuys1FX
-	 GOG2fmjd1fWv3UUHQHYdZ3bCNPtQuQL+FgxxbqLrJdx+MhvnNjsJuLbillHQx7GAsh
-	 PA9Bqb7EVv4nMUgtaL9bjIko9VXl4DxyEBG8sE9c=
-Date: Mon, 20 Nov 2023 19:42:50 -0500
-From: Konstantin Ryabitsev <konstantin@linuxfoundation.org>
-To: linux-newbie@vger.kernel.org
-Subject: PSA: this list has moved to new vger infra (no action required)
-Message-ID: <20231120-petrel-of-strongest-feminism-10ba1f@nitro>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NUVjIBxY"
+Received: from mail-yb1-xb2e.google.com (mail-yb1-xb2e.google.com [IPv6:2607:f8b0:4864:20::b2e])
+	by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 92A4B110;
+	Wed,  6 Dec 2023 22:00:32 -0800 (PST)
+Received: by mail-yb1-xb2e.google.com with SMTP id 3f1490d57ef6-db5e5647c24so1488641276.1;
+        Wed, 06 Dec 2023 22:00:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1701928831; x=1702533631; darn=vger.kernel.org;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=QRHCxpHCMlXoUxYx1tdD59XOr07O3l50BkYll7WRfSM=;
+        b=NUVjIBxYr41sVKIXElw7F2VLrr5YIlp8Pg91zL3fFxlFbFXZGQ2CaWwrSIb6TFBwqK
+         t+4JSFaDImqI1Ra36zrbodrb+1MXwQJT5GQ9tj+XuEWA/Obvb1m6Sy4fTYoXnvhj3mKQ
+         tz4IybywDH+BOxfXIGSBcCV58T7iQcw2EHbXUGWwwWzmcTvUn2IX9IM7eH5Fm1ZGNvry
+         ITIP30umEEn/5A+D5kIwmIrBOygclz+E6SnJPiwFg7nCOJNJrgb48E/lvlsTNC/Gmvd2
+         HMWuRfSnBdiU6XX8Xy77m2MYbxxwsg1WL9d1in5QnIuKYEtG+rstj1ZKVIMfPcsIvYQ4
+         GqJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1701928831; x=1702533631;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QRHCxpHCMlXoUxYx1tdD59XOr07O3l50BkYll7WRfSM=;
+        b=Zz3kembYTrEghsPjK7gCkCFvAfFVdKK/lI730LFai2r9RuvY/wABuKZY55Q8YHIyo7
+         m+PG658fHSkpXZtGC9y5sfoV13ybT4dGNCaZ9dRSuWHQjRZRXlYYy0U+CUm/X8o9Pa8T
+         wDj8cJZu/uys43IeKizP1u/vYsOUkSurBQSH+8sYJixfj5yWEm+mPnlhcvJaxnOhogPj
+         g0rDQp7VdSv3JaWnYfWc2qaGYM9dq1BazN8JkVD9tJZ/DIWxiyC2Z1rkZrGxy5tM+FD8
+         Wbh1CUNUX8VVk6afRNDkyPxc7YsNz2Zk2sObrRUjWZoVuEeWcZujTNBRWVxm1zNJGIb6
+         f9PQ==
+X-Gm-Message-State: AOJu0YwL3JQBRsOPFsh7ULYwdczIBSFMErA/W4Rz99Cz7SHM9os0DR+F
+	3va0+0ylAuuzHY/eaEdAnx8CYTHTvJhQWwAK2Kz0cogYXXqY7w==
+X-Google-Smtp-Source: AGHT+IEezmI1zlnqy3nahzvvFvDbp17zXRddh+K+JICaqddfWPc+CtYcp6tGDkeTlrkENZ4SvDgltAHbuElc8mYApCk=
+X-Received: by 2002:a25:3295:0:b0:dbc:2f73:953f with SMTP id
+ y143-20020a253295000000b00dbc2f73953fmr629261yby.48.1701928831496; Wed, 06
+ Dec 2023 22:00:31 -0800 (PST)
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+From: Dawei Li <daweilics@gmail.com>
+Date: Thu, 7 Dec 2023 13:59:55 +0800
+Message-ID: <CAG5MgCpdTt5ZpSVg==YN92zr+0_ug+3sUOAwdjXJEu0a1BkWFg@mail.gmail.com>
+Subject: when/how is the schedule() function actually called?
+To: linux-newbie@vger.kernel.org, kernel-janitors@vger.kernel.org, 
+	linux-smp@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Hello, all:
+Greetings!
 
-This list has been migrated to new vger infrastructure. No action is required
-on your part and there should be no change in how you interact with this list.
+I am reading several resources regarding the linux kernel scheduling
+in kernel 2.6.34.
+There seems to be the periodic scheduler (tick_periodic()), which
+invokes the scheduler_tick() function, then the entity_tick()
+function, and then the resched_task() function. However, eventually,
+the resched_task() function doesn't invoke the schedule() function; it
+only invokes the set_tsk_need_resched() function. So, it is only
+setting the need_resched flag.
+My question is, when/how is the schedule() function actually called?
+Also, I notice that at many locations in the code, when there is the
+need to do a scheduling, the code is just setting the need_resched
+flag. Same question: when/how is the schedule() function actually
+called?
 
-This message acts as a verification test that the archives are properly
-updating.
-
-If something isn't working or looking right, please reach out to
-helpdesk@kernel.org.
-
-Best regards,
--K
+Not sure if this list is still active. Appreciate any response.
+Thanks!
