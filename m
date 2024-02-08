@@ -1,65 +1,69 @@
-Received: from mail-qv1-f45.google.com (mail-qv1-f45.google.com [209.85.219.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail-4319.protonmail.ch (mail-4319.protonmail.ch [185.70.43.19])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86119DF69
-	for <linux-newbie@vger.kernel.org>; Thu, 11 Jan 2024 08:03:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39A4E6BB43
+	for <linux-newbie@vger.kernel.org>; Thu,  8 Feb 2024 12:55:14 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.70.43.19
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1707396918; cv=none; b=lpQydNdEQ8VHozI9tlWcyKHZ9qWlt5tL5vNxCKfOvlmJS0CPgQGQ+A996WGnueOO/Mt9XVJgrvouOwoLIYHiKkWzVWdyTD1o1Kl1Shj7/cXnXdOFAug9fDRRmJtdu7pvsZ3yODb1FPQMDNfnObvjN+aBY/1SFPA/3p6i1hUN9wM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1707396918; c=relaxed/simple;
+	bh=SaxlHESIDOfkky1oNiKhk/p70T+d9VxgLLQ/x1v/UWA=;
+	h=Date:To:From:Cc:Subject:Message-ID:MIME-Version:Content-Type; b=uPABlbpPsfYfvmi5XiO5kmzZ4UzrmisqEUWkvZBBckMenhZ1zzXMnE2DBUIWkzUX/KTt4RD9do9I3pGHOiu1fV0n/IBexgAvI9mvtVKaForjzHa31Plwzf7QkomaxtNVS93htaqR2volUbdMIdxNtgl2HhGdqvJvPLSxKw6I40Y=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=protonmail.com; spf=pass smtp.mailfrom=protonmail.com; dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.b=StumptbN; arc=none smtp.client-ip=185.70.43.19
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=protonmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=protonmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VAaFF9vV"
-Received: by mail-qv1-f45.google.com with SMTP id 6a1803df08f44-67f91d48863so30502806d6.0
-        for <linux-newbie@vger.kernel.org>; Thu, 11 Jan 2024 00:03:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1704960211; x=1705565011; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NIJRD4l/ZsE/39M9pXVw0aknyQdn1vDzQnkRiw+AVB4=;
-        b=VAaFF9vVsLgha3BZA6oZsHv3Ahc5yWIDLmRKYAIF6qZh/ZKRbxIpOtGsqmAx2IZB+P
-         4hVbu46zs7YkvqTQjb56XsPlo0c5e56nC8EsVzL0OXrkij/qHwc74S/wAgknH3FImBnq
-         4UGL7HfbjSMarV11oTkb5kvC9I2seT9RMkOm+81SVEFx2rNFPZO2BnGBCbLuBCAmdwXn
-         L4cm/pSqYkwnUMlab15uYK4gA68yTSSQhrvnpgI16LnfuXlBIWHlPlh8jmWD3hs7NN9h
-         XuN8SLhLkcVdGEqd9mTo7MB2zddhzgjKCj1PaUKKFMtblJJvF8dOOgF2GhECozEMwzc9
-         Oe+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1704960211; x=1705565011;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NIJRD4l/ZsE/39M9pXVw0aknyQdn1vDzQnkRiw+AVB4=;
-        b=RXooYa8mTzSEC4ZAZ7gjaaAiSgvUYdpmrwRSHeIZEz55dJVwCdk9Lztvc7QYdUK0JB
-         CskOKzcTXu/9VUd2dsNPCNrd27XFhtPFVOOg+WwqEcuoZdtftOKHlggFP8LM2QYL7iZd
-         S2BWY1VR1hHwIpAxRE9a+3E7qYt8dlzWignUM2kTAXoQAKj2MlaVTWnsTUg5+fPG1ovD
-         1gL/q2m0G7U9nWBxEDauB0/GxMfX+pP7n0KvTIzbBY/Sv9gOhtktNASXDFeB/U/9vhQ5
-         KdRvgAslwm2S/FzPyRjY1YoueQvsutRVU/91IXOZIzmcGwX/9nQZtGxhLuLDfNJJ74yn
-         cR+g==
-X-Gm-Message-State: AOJu0Yx+CsE1YXK14PzIqh9xNWMSMFYZJm8wJ/8B/YkrhfKozNSpZb45
-	csyjlfxZtrFaBFQrT/3rrjGPmDxIi5wrf6+D
-X-Google-Smtp-Source: AGHT+IGL7sCEYvsu+J4FZJVyaI2XJ2Ob3ShSrfWYxBFWaB/wQOR3wYVDmn5rnv3XAH+einky+niYRg==
-X-Received: by 2002:a05:6214:19e1:b0:67f:b920:f248 with SMTP id q1-20020a05621419e100b0067fb920f248mr798625qvc.120.1704960211620;
-        Thu, 11 Jan 2024 00:03:31 -0800 (PST)
-Received: from mythra.localnet (2603-6010-d800-0cbd-0000-0000-0000-0b76.res6.spectrum.com. [2603:6010:d800:cbd::b76])
-        by smtp.gmail.com with ESMTPSA id k15-20020ad4420f000000b00680ce23bc29sm141070qvp.71.2024.01.11.00.03.31
-        for <linux-newbie@vger.kernel.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jan 2024 00:03:31 -0800 (PST)
-From: crange76@gmail.com
-To: linux-newbie@vger.kernel.org
-Subject: new to the kernel
-Date: Thu, 11 Jan 2024 03:03:30 -0500
-Message-ID: <7633373.EvYhyI6sBW@mythra>
+	dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.b="StumptbN"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1707396912; x=1707656112;
+	bh=SaxlHESIDOfkky1oNiKhk/p70T+d9VxgLLQ/x1v/UWA=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=StumptbNi3A8clbPX6xi/+jVMiL9ObjX7bzQF/nIuxWs3UV77bD4s/g09KLs/AqdO
+	 pcZISWTQZ87uFT9UboMGD6qMDur9tj4H+UDRfB/lAfsHwRNuorqx6gklgYGgibeJdz
+	 b5Sn1t1htBxrs4W1kofISmZc8NLvwwVFqI4vlVTU1SSgtdMnGz5+Q7ugkUYZP2tVXy
+	 L5d3BZcZV5nIleuT4tnpAmnBWZDcyOFKZbWYTvxie3VQJEYYFlDsdRsx3/cf/ArzV7
+	 uAGlPZmXfNcKrILm5JF0WLSPFCbxQYxCU2FxQbl1KdOBtGPGimRHzmS26mPHeTr3wp
+	 pt5t6VkzMZa/w==
+Date: Thu, 08 Feb 2024 12:55:01 +0000
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+From: Turritopsis Dohrnii Teo En Ming <teo.en.ming@protonmail.com>
+Cc: "ceo@teo-en-ming-corp.com" <ceo@teo-en-ming-corp.com>
+Subject: [Linux Newbie] I can't catch up with Linux Kernel releases
+Message-ID: <H0q1TqL1vn5O2AE6wnfjosvchWG48BrZEmGmE2nurw02T6IhxxLvUPyrYcLx4s2-SW0s8OW9NssUlnheB2NJ59Zhqvg8mI64e5meafWDnyI=@protonmail.com>
+Feedback-ID: 39510961:user:proton
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Hey, I went through kernelnewbies site and got everything setup. I also enjoy 
-rust and would like to work in that area, but where do I start? There's no 
-real boards of what is done or what plans are, or where to start. 
+Subject: [Linux Newbie] I can't catch up with Linux Kernel releases
 
-Thank for you your time!
+Good day from Singapore,
+
+Not too long ago, I installed Arch Linux with Kernel 6.6.7 on my refurbishe=
+d Aftershock gaming laptop. The latest release is now 6.7.4.
+
+Looks like I won't be able to keep up with the pace of Linux Kernel release=
+s unless I stick to Arch Linux, a rolling release Linux distribution.
+
+Regards,
+
+Mr. Turritopsis Dohrnii Teo En Ming
+Targeted Individual in Singapore
+Blogs:
+https://tdtemcerts.blogspot.com
+https://tdtemcerts.wordpress.com
+GIMP also stands for Government-Induced Medical Problems.
+
+
+
+
 
 
 
