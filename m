@@ -1,37 +1,39 @@
 Received: from mail.ngn.tf (ngn.tf [193.106.196.85])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6987E12F589
-	for <linux-newbie@vger.kernel.org>; Tue, 16 Apr 2024 15:05:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 346EC130A65
+	for <linux-newbie@vger.kernel.org>; Tue, 16 Apr 2024 15:22:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=193.106.196.85
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1713279954; cv=none; b=tTipLP8mQ3s6l2UIFW57A5duyMShAMP46mjsb7eS1i3F/X8a2Ds1LGfrInV4SPbMaQQ7rSnt2sS+FWpaSZ1XCyZxZvQlGaN6bfBJBxMQ4FV5MPHfa/RdsoLV9j3BU+er4rSdZXJDM2sbdJcJ/zDN5N9DXXwdOEq9hyqw7B7mbCw=
+	t=1713280933; cv=none; b=Ors+ApTc9ECehesvfTMLGvqIhoedkI9PUVXznjAISSLetmg7qSYWOv1gl/9D+rfy2iyMoJmcBocZZTWKZjkNjFyzyxJWN6avqASLgzL1R5eP9fCmnBN4gaypsWlam5o2TWG87J3Y7ZBKqs0Ot7hc8CewQVMa4SrtBdtLo00+1vw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1713279954; c=relaxed/simple;
-	bh=Z62LSi1x+JMXytutU6bBsARoh/92ruXevN5FUE0WnvM=;
-	h=Date:From:To:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=ZBd1FeMKhzf4vdzSyeMNk0yIqFfuv4FFPUoZVHs0J9SJX3HAR7YRNbi/UfeI8HHLnB4/vS2oLixbVRYNPD0I2i0yKpaAo+j8yDVueWwcc+poeIHG5SZeuRAYxkQc/wSmihH87ppjcAoEMx2BI/AFBG8Dno3fajl3qrLaMlopSFg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=ngn.tf; spf=pass smtp.mailfrom=ngn.tf; dkim=pass (2048-bit key) header.d=ngn.tf header.i=@ngn.tf header.b=WFwp06G8; arc=none smtp.client-ip=193.106.196.85
+	s=arc-20240116; t=1713280933; c=relaxed/simple;
+	bh=FOwAErsCw0Coy/kST0qbJvhmaYV3hzPgelmFO3P8kf4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=o/1VP2gH6D0kjgNjvOZXZguq0NGPkFw0UyPXH9Lc3daTajjZtmfl7ca61X//1JDZRJnG2zTVU22cJJXGh0INp9GkHEuultgpXsm0aYLva2n6glLtUV+TCkrSwo8+NJEm1h3K9RNrDEdIaAvOiqjw3xoo7iTI8Kq7CV5NG1wGlZc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=ngn.tf; spf=pass smtp.mailfrom=ngn.tf; dkim=pass (2048-bit key) header.d=ngn.tf header.i=@ngn.tf header.b=gCdI0zjj; arc=none smtp.client-ip=193.106.196.85
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=ngn.tf
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ngn.tf
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=ngn.tf header.i=@ngn.tf header.b="WFwp06G8"
-Date: Tue, 16 Apr 2024 17:56:02 +0300
+	dkim=pass (2048-bit key) header.d=ngn.tf header.i=@ngn.tf header.b="gCdI0zjj"
+Date: Tue, 16 Apr 2024 18:21:18 +0300
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ngn.tf; s=mail;
-	t=1713279413; bh=Z62LSi1x+JMXytutU6bBsARoh/92ruXevN5FUE0WnvM=;
-	h=From:To:Subject:References:In-Reply-To;
-	b=WFwp06G8XkpC3pf8UFuy9pE5hngh3GBzFShGO0EKPNCkuKQyoZ8o+4pD/GZAQpWty
-	 cuVDIssTaZ3pEsFNMZZlJfo/mMKnn2/SiGXy4f9xhtioMfninx/badLwAT2JwfTRxT
-	 ZK+Uv8u1B9qQ+WQeQLalnUXTYEW1VzBmnBjC+4A6zEMEtRo/q++Br4YJxfU2IPzEyl
-	 F5EPTwhtEfU4AWSlNzILwdTHpzDF6PdjQRNuAYzpReSr09QQsTmwken6oJ0yCcjybG
-	 Brxlf0FvMLaonoaaK+3DgOfVwV5TDnS4B4iG/18PJWvzbYAWo70ea9bbN0/yTj76m5
-	 OZq9YKkDuVTlQ==
+	t=1713280929; bh=FOwAErsCw0Coy/kST0qbJvhmaYV3hzPgelmFO3P8kf4=;
+	h=From:To:Cc:Subject:References:In-Reply-To;
+	b=gCdI0zjj4L6Uz+WTGl1KF4DmuyaBXqwP+KgUO1vwD5KUETNMwPq0M+N9KOxLtbVOP
+	 ZwdF9m7Ig+k7i1d5BSQ4fB5Ni0a38DYGv6DiMn2yc4aXaS35zzJADTABDNj3PwaRZv
+	 mMuekufq3IgPPiYHfK+Pq1is3qaT7QxrP6ia+5vQ1vooTntvAnn8adbd1cfAaT6jR/
+	 0d70BZDwI6CTyk7JutZxIUMHMijENUhj9w7xr25RHFDaqVqfo0bV7OIjWqGHcs1n+p
+	 HZl0zC6eepBO7+HbXnpcVUR1isDGW/gzXd6uGxNo2pKoPuSxNo+zU3rOtG8fwcq5p6
+	 9rDKPG3GLjJzQ==
 From: ngn <ngn@ngn.tf>
-To: Josh Marshall <joshua.r.marshall.1991@gmail.com>,
-	linux-newbie@vger.kernel.org
+To: Josh Marshall <joshua.r.marshall.1991@gmail.com>
+Cc: linux-newbie@vger.kernel.org
 Subject: Re: Feedback on my development setup
-Message-ID: <Zh6RguShFVeDdbNw@archbtw>
+Message-ID: <Zh6Xbqijp8rRGo1H@archbtw>
 References: <CAFkJGRcWdHpbxjBrynncOb3apWO7d5+WP82WqcHeq=hsc65MAA@mail.gmail.com>
+ <Zh6RguShFVeDdbNw@archbtw>
+ <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
@@ -40,65 +42,23 @@ List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAFkJGRcWdHpbxjBrynncOb3apWO7d5+WP82WqcHeq=hsc65MAA@mail.gmail.com>
+In-Reply-To: <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
 
-On Tue, Apr 16, 2024 at 08:38:54AM -0400, Josh Marshall wrote:
-> Hello all,
-> 
-> I am trying to work on and improve some aspects of the "fanotify"
-> parts of the VFS subsystem with Amir Goldstein being the person I
-> brought these to.  Amir has me doing some work to see what is going on
-> since I have observed some unexpected behaviors.  In doing so, I have
-> cobbled together the following iteration pattern which I would like
-> feedback on.  It doesn't feel like it is as concise as it should be in
-> practice and I am hoping someone can offer pointers on how to improve
-> it.  By the end of this, I would like to have a fully documented and
-> replicable script to share for certain kinds of non-hardware kernel
-> development like I am doing here.  As a word of warning, I haven't
-> gotten to fully test this either.  It feels like I'm trying to cut
-> down a hydra with everything new I need to account for.
-> 
-> ```
-> Source:
-> https://github.com/archlinux/arch-boxes
-> 
-> Term 1:
-> guestmount -w -a ~/Downloads/Arch-Linux-x86_64-basic.qcow2 -m
-> /dev/sda3 ~/mnt/arch/
-> <copy sources, files, perform compilation steps, etc as needed to
-> inside the VM image as needed each development iteration>
-> cp ~/mnt/ arch/home/arch/linux/boot/x86/vmlinux .
-> umount ~/mnt/arch
-> 
-> Term 2:
-> kvm -s -cpu host -display gtk -vga qxl -accel kvm -drive
-> format=qcow2,file=$HOME/Downloads/Arch-Linux-x86_64-basic.qcow2 -m 1G
-> -smp 2 -S
-> 
-> Term 3:
-> gdb vmlinux
-> : target remote:1234
-> <set break points>
-> : continue
-> 
-> Qemu:
-> <time sensitive, boot into the right kernel if available>
-> <perform development tasks>
-> ```
+On Tue, Apr 16, 2024 at 11:03:52AM -0400, Josh Marshall wrote:
+> I tried that, but there was some non-descript error with code -2 (any
+> major error) about launching the init process for [init,
+> rdinit]=/lib/systemd and /usr/bin/bash.  Can you provide a working
+> sample?  Sorry if I'm being difficult.  I am really tired of dead ends
+> and trying them alone.
 > 
 
-Hello,
+If the kernel fails to start the init, try adding the -append "root=/dev/sda rw" option:
 
-You don't have to mount and copy over the vmlinux file, QEMU/KVM has the -kernel option, 
-which you can use to specify the kernel image:
-
-kvm -s cpu host                                   \
+qemu-system-x86_64 -s -cpu host                   \
     -display gtk                                  \
     -vga qxl                                      \
     -accel kvm                                    \
     -m 1G                                         \
     -kernel arch/home/arch/linux/boot/x86/vmlinux \
-    -drive format=qcow2,file=$HOME/Downloads/Arch-Linux-x86_64-basic.qcow2
-
-However you will need mount and copy any modules you build to the /lib/modules
-directory or you won't be able to load them.
+    -append "root=/dev/sda rw"                    \
+    -drive format=qcow2,file=$HOME/Downloads/Arch-Linux-x86_64-basic.qcow
