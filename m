@@ -1,93 +1,103 @@
-Received: from mr85p00im-zteg06021901.me.com (mr85p00im-zteg06021901.me.com [17.58.23.194])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com [209.85.221.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3C0FF84038
-	for <linux-newbie@vger.kernel.org>; Thu, 21 Mar 2024 14:28:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=17.58.23.194
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B69412A17F
+	for <linux-newbie@vger.kernel.org>; Tue, 16 Apr 2024 12:39:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711031300; cv=none; b=sUZwYx5P1uP/LWbh1yDMWwwDsEn+UFITHnJQeE4PXBHWu3XQ3ioNuqFFUXSh3jHl5po9f/fR1VLj6usaoG/7fPkjAWA+UoLd3I5oli1uMdHrTL/G3EHnNUVZPGcIbmQHqvCG4kIOLhYoK0tlbt89kXLogQ54Yrvv0es4w3g5akg=
+	t=1713271148; cv=none; b=hEaS3DFAOxI3VdePpeYZluaStaMvOaZaXAiir0Olw2ernY1XTC2iOa+Us6yywAtAaGHDeifDH+ZNoI4eSfUuzeUqAwSf9wf3RMMA7rbCFNFd7k7OBpidNXGKT6ZlSmBqs93J0voTA9+JFf8qSzTMp1om924FyldQ0IuhJNe2CUs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711031300; c=relaxed/simple;
-	bh=kKC1uAejYfAmpY3D6RMUXUianuCJ0y9yGs6jlA9Kfew=;
-	h=Content-Type:Mime-Version:Subject:From:In-Reply-To:Date:Cc:
-	 Message-Id:References:To; b=InG/GTo0B7uwDVWJWevuhmgD7WjwiAm86t7D9rDyZmDFwspOLRyJIBEvmjxePgREneXk1t+kxcnpqqIUP5V0W2qPm5cRF3/7taKuT/RAYUetdfuQaZ0ZYgkmGR6BdHhwOvy/k4oAYCjtMjS9llsgl2SmQnYuS7HuiO77cEdpT5s=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=icloud.com; spf=pass smtp.mailfrom=icloud.com; dkim=pass (2048-bit key) header.d=icloud.com header.i=@icloud.com header.b=W642O/7n; arc=none smtp.client-ip=17.58.23.194
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=icloud.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=icloud.com
+	s=arc-20240116; t=1713271148; c=relaxed/simple;
+	bh=lAfQ0m1tHQ2gazSOkMpxmBgDovSsSnWsSyjFJYklAI0=;
+	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=ntlrRO1bZoiPo+7ocKyKnDdDpH5CdKkJ3a3sNK7O0t0BQQ7jWlTdeHgVA9Zjld0Z1z1d6+YVG3nhajFOx1CWb7wKWV+IlVzAa68j5mk/hX5uTyliR4Iu4YNM4opYe1fEvRgDORxGVKu815RHLXMv+HlB+Y5s8atIptIAvjUznlA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=kIor/uh3; arc=none smtp.client-ip=209.85.221.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=icloud.com header.i=@icloud.com header.b="W642O/7n"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=icloud.com;
-	s=1a1hai; t=1711031298;
-	bh=kKC1uAejYfAmpY3D6RMUXUianuCJ0y9yGs6jlA9Kfew=;
-	h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To;
-	b=W642O/7nfU8zwi/i2jL2k7/FL4cstSx/FFF9xwzMQTowDPAo+8RwHi1vH9ld1Mcrb
-	 Ouj16rPT410M/gTNpzvntGfWuU3n78c3VBs6n84C0Yu8S+Tq3KojkCCoMOU367pxU+
-	 VDkYlUSz1f7htxLC4RS3Ld9JHzsafjTCot1fu0xzbYBYjZYFD/2jlQonSlTAexbOZy
-	 iXhR0anR1BT+5Ud5eQMF8ZszgQyaD1DtZpt33ofZJG2jgmV6yyAgtRM5nwmSF7sMfS
-	 KxGurAoLAussKceOUQXfCqY7I5yiXgy65zYx32pm+3ZYlfSxV+n4e2b8KlH6xn0wfj
-	 XrtHp+QAd2TmA==
-Received: from smtpclient.apple (mr38p00im-dlb-asmtp-mailmevip.me.com [17.57.152.18])
-	by mr85p00im-zteg06021901.me.com (Postfix) with ESMTPSA id 5182074027E;
-	Thu, 21 Mar 2024 14:28:17 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kIor/uh3"
+Received: by mail-wr1-f46.google.com with SMTP id ffacd0b85a97d-346b146199eso3113220f8f.0
+        for <linux-newbie@vger.kernel.org>; Tue, 16 Apr 2024 05:39:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1713271145; x=1713875945; darn=vger.kernel.org;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Uv/f7JCEkCFfv9nd3n1O6Keme2WoYBXqcmjT0SiARxg=;
+        b=kIor/uh3jPGy+S3o2Q/93YzyO1TUUb3DSIBp+Th55OQwGNRRY9TR6ttSsOx0KyDIrw
+         gKa2TPtWqUnkXwEmZLh3ozoamnH0nYoj71AbM/CqKRr08IRVfAVk5XN3kZ8FJiU2fulr
+         BIucNbqaGooYpEx5rYVMsc3G4Ln9B1By7iCmkDaaObk7/PAmB4sSjTv40YL/lr41KGXd
+         U8UlSLwlb6D8d/uW4fLeOddOkZnYN70ysW3duEYLPPlIbnMRo3ihXZHmtfMVB/9tUslm
+         ZBl8y7L4q4zegte+qSrYMpuEZVdzbWjhvhNF5Pm6DE75/p+TLJeyAUztzl5c5wC1PEik
+         SQBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713271145; x=1713875945;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Uv/f7JCEkCFfv9nd3n1O6Keme2WoYBXqcmjT0SiARxg=;
+        b=s7tulfWFsEpRHZQLDCTtT7EKOcjg54Tg9EGOxM9jaGSkq998ghsESIfL4o9M/qR/U8
+         /cY/HlNUPyquIWBrOJoLgVCZnMMMiEOLSxYM2myOMD93eYNN4Qso9GoRIZrM7IGdkSev
+         nIVxqcJYcN0xwLRRC/9jyoz5UvR1s5NiB+UjgeQ3n8bcJts/sm8hz5zKlQsDlf3t5ttD
+         aztwUZlh9AFHB2+MRUg4elmnBUhQxvdsa5XKRldk/UpALTzXg4oJJCLmw89NQzPT5xhK
+         nTxKbJYE+PJ5pLWVpgLz8Sh3hTk+oHF4HvspHhqyyUvHwBGMpdD0pED2YYGKemcrJ1L+
+         n4ew==
+X-Gm-Message-State: AOJu0YxSq7qZdjPvyqhm7H0jDQARl6gnuI3GABfBp6xlRBie5OL3EFxX
+	Nb4RZHtR0mtSF9RzYqDuyPzm6kZMg14LnHhTJfpG8y6ciFNvI3kxNTE870Ha/TBK1BbnSK2yxAl
+	lIMxJaRjWnf6f+AweCvl0Nrp8byn5lQ/m
+X-Google-Smtp-Source: AGHT+IEHBM+QtFe8wQjXH+Uv3iny7lYfOYJV8byOSshARNJbGWsdNsOXMQurv98bDAvDaQ+vABI9VGCN4mGzA5bZw24=
+X-Received: by 2002:adf:fe90:0:b0:343:740c:5d14 with SMTP id
+ l16-20020adffe90000000b00343740c5d14mr8939285wrr.31.1713271144947; Tue, 16
+ Apr 2024 05:39:04 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.500.171.1.1\))
-Subject: Re: Hello
-From: Jonathan Martin <workspace.public@icloud.com>
-In-Reply-To: <ed80c3c7-a9ae-47a9-9a60-c531496caec7@gmail.com>
-Date: Thu, 21 Mar 2024 07:27:43 -0700
-Cc: Martin Jonathan <workspace.public@icloud.com>,
- linux-newbie@vger.kernel.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <D55AD66B-FC38-46BA-86A4-EE4FFD2F4B7C@icloud.com>
-References: <D9574CC8-5147-47D8-A287-520C67092133@icloud.com>
- <ed80c3c7-a9ae-47a9-9a60-c531496caec7@gmail.com>
-To: Mikael Carlsson <mikael.m.carlsson@gmail.com>
-X-Mailer: Apple Mail (2.3774.500.171.1.1)
-X-Proofpoint-ORIG-GUID: WEHsgNj0d_DhEziCS0M4VInHqCnxWiTV
-X-Proofpoint-GUID: WEHsgNj0d_DhEziCS0M4VInHqCnxWiTV
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-03-21_10,2024-03-21_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0 mlxscore=0
- spamscore=0 mlxlogscore=999 suspectscore=0 bulkscore=0 clxscore=1011
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2403210103
+MIME-Version: 1.0
+From: Josh Marshall <joshua.r.marshall.1991@gmail.com>
+Date: Tue, 16 Apr 2024 08:38:54 -0400
+Message-ID: <CAFkJGRcWdHpbxjBrynncOb3apWO7d5+WP82WqcHeq=hsc65MAA@mail.gmail.com>
+Subject: Feedback on my development setup
+To: linux-newbie@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Mikael;
+Hello all,
 
-Thank you! I thought this would work but I had no idea where to find it. =
-I could go for using a proxmox server instance at some point but I=E2=80=99=
-m mostly hardware infra for now. All that config can feel like signing =
-lead tablets in blood.
+I am trying to work on and improve some aspects of the "fanotify"
+parts of the VFS subsystem with Amir Goldstein being the person I
+brought these to.  Amir has me doing some work to see what is going on
+since I have observed some unexpected behaviors.  In doing so, I have
+cobbled together the following iteration pattern which I would like
+feedback on.  It doesn't feel like it is as concise as it should be in
+practice and I am hoping someone can offer pointers on how to improve
+it.  By the end of this, I would like to have a fully documented and
+replicable script to share for certain kinds of non-hardware kernel
+development like I am doing here.  As a word of warning, I haven't
+gotten to fully test this either.  It feels like I'm trying to cut
+down a hydra with everything new I need to account for.
 
-~Jonathan A9
+```
+Source:
+https://github.com/archlinux/arch-boxes
 
-> On Mar 20, 2024, at 4:24=E2=80=AFAM, Mikael Carlsson =
-<mikael.m.carlsson@gmail.com> wrote:
->=20
-> On 2024-03-18 03:00, Jonathan Martin wrote:
->> Hello All;
->> ~~~~~~
->> Thanks for being here!
->> ~~~~~~
->=20
-> Hi Jonathan! There is always someone listening on the web ;). =
-Regarding icloud and big volume of messages, i suggest using an NNTP =
-client like Thunderbird email client for example. Instead of using =
-regular email you use news server.
->=20
-> You can read more here
-> https://subspace.kernel.org/subscribing.html#subscribing-via-nntp
-> and here
-> https://brennan.io/2021/05/05/kernel-mailing-lists-thunderbird-nntp/
->=20
-> ____
->=20
-> Mikael Luxwarp Carlsson
+Term 1:
+guestmount -w -a ~/Downloads/Arch-Linux-x86_64-basic.qcow2 -m
+/dev/sda3 ~/mnt/arch/
+<copy sources, files, perform compilation steps, etc as needed to
+inside the VM image as needed each development iteration>
+cp ~/mnt/ arch/home/arch/linux/boot/x86/vmlinux .
+umount ~/mnt/arch
 
+Term 2:
+kvm -s -cpu host -display gtk -vga qxl -accel kvm -drive
+format=qcow2,file=$HOME/Downloads/Arch-Linux-x86_64-basic.qcow2 -m 1G
+-smp 2 -S
+
+Term 3:
+gdb vmlinux
+: target remote:1234
+<set break points>
+: continue
+
+Qemu:
+<time sensitive, boot into the right kernel if available>
+<perform development tasks>
+```
