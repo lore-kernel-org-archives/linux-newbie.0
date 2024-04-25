@@ -1,49 +1,73 @@
-Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-oo1-f48.google.com (mail-oo1-f48.google.com [209.85.161.48])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB3F914A4C7;
-	Thu, 25 Apr 2024 15:14:12 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.79.88.28
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E07E14D44E
+	for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 16:59:43 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.161.48
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1714058058; cv=none; b=CjPFaj16mVTT/fBBi09UCwsmNVpPVS8VTMolaGowWF/2ARtWHyuQHlUvxyrTbusOTARSXO9EN+prp0TPVBDZd5+7epY0gY+V70m0kfEog62Qi7fFoSzluYqy1b/7XNlPHyo2GeGgQS1vrrIIRcFiV9mtq5Z9euzh04gGP24cyCc=
+	t=1714064385; cv=none; b=JzV13FIEpscPlXN5DFe+LiYbO+eAXJVFDCaNbA22p4WDBr/vxa+fveJZOGFC1rDCpq0MABIJKY+prY0lmAx5jgCzjnITSip1iHjRm7X+Dv9wkjqLGjia0X7b4gDaXJPumZjJeUdkfehbK9gw9/ZddNoRt/qvw2qjRUi6M/xLknI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1714058058; c=relaxed/simple;
-	bh=FI3RHSIowKSjYMHW9athi9aPj4X022XHsvU7EV9JCVQ=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=mVVNleHIxE1uNcQy2RMQ6LgDjI55zs3IM3uhOmC7t34tIHBV3X90NiIDS1ytOPT7IZjcfyeZBA7SX/N8JDsC63DPAsWGYiw85dKbnoArxOBKN9Rrm/8n/tOsjuTO9JIdNojZSL1AcALamLQqstaYXg2gfdvGhu/V0ojcWdbVLgw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=lwn.net; spf=pass smtp.mailfrom=lwn.net; dkim=pass (2048-bit key) header.d=lwn.net header.i=@lwn.net header.b=hxId7Fkg; arc=none smtp.client-ip=45.79.88.28
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=lwn.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=lwn.net
+	s=arc-20240116; t=1714064385; c=relaxed/simple;
+	bh=y+dxIVPPQcoEKEUvrDUoNHT9mkJJSFbZStkBz/BWSts=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=VlhshgHiYP6BFmVXI24Qol6lS5BANv9QR2RWp6dEog9ByBQdMgE9wPzBr/meP9W/W6XigvNwAsusb3Tub1f3aM20ThSTQE2CuoL0Rp+2f/XVr1mHOMptTWNiuxkkwbSEZjLoZ+FTaq9MWkgD/oN360cP9Im+HSiiyuSPNLB9MJg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=vt.edu; spf=pass smtp.mailfrom=vt.edu; dkim=pass (2048-bit key) header.d=vt-edu.20230601.gappssmtp.com header.i=@vt-edu.20230601.gappssmtp.com header.b=18aoNCu8; arc=none smtp.client-ip=209.85.161.48
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=vt.edu
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=vt.edu
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lwn.net header.i=@lwn.net header.b="hxId7Fkg"
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 647A147C47
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
-	t=1714058051; bh=zRLn1xnHbzW1iSNGc1RtWHcYvxK+sTgqStID0oZY19Q=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=hxId7FkgqOtzNRRQ6ldPYv69235a/06e/72CfMJOdsWyo9NgTl9GQmMWmoHR77ahG
-	 Aek12K4asZSA0PTTuP31n7IR36wPB83fyUKBPx/+XYc7rWq8px0u0GRr+WoRgefKOs
-	 ouazQsWZQ2bZyT+SVh6473LTXaoPpKn3lq1rDL9wL1xH00dD+8QVAMSKqPdTh/P3he
-	 i5VYGc1bQC6wKTwP04IFYFeho4oXVckzm7WstoJZXh5pAOhIUy6LvPSsoJqyyqa/Ib
-	 F6bQH26qCEOJ5SUKc5bhd8tx6jFc76CDa9awbxMf4+1fJfTUphLPTIkGWauduGutL0
-	 ol8JMC+nQ45BA==
-Received: from localhost (unknown [IPv6:2601:280:5e00:625::1fe])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id 647A147C47;
-	Thu, 25 Apr 2024 15:14:11 +0000 (UTC)
-From: Jonathan Corbet <corbet@lwn.net>
-To: Josh Marshall <joshua.r.marshall.1991@gmail.com>, "Bilbao, Carlos"
- <carlos.bilbao@amd.com>
-Cc: ngn <ngn@ngn.tf>, linux-newbie@vger.kernel.org,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- pranjal.singh4370@gmail.com, "bilbao@vt.edu" <bilbao@vt.edu>
+	dkim=pass (2048-bit key) header.d=vt-edu.20230601.gappssmtp.com header.i=@vt-edu.20230601.gappssmtp.com header.b="18aoNCu8"
+Received: by mail-oo1-f48.google.com with SMTP id 006d021491bc7-5aa22ebd048so893732eaf.1
+        for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 09:59:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=vt-edu.20230601.gappssmtp.com; s=20230601; t=1714064383; x=1714669183; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cI/xzH4GnLh1DKbKDnSMz6UbC56WU+EMAwZKm/b/cR0=;
+        b=18aoNCu8HvZgPZxChDi9G0G/gEJaw8F+spJ/MYxWtokyvsIqMauNoPZTB8+aHFwvyr
+         Qih2/ATCYdivBfukp9AlBPQWGTqCf3/r7KQA9867dJ39jB5IM3A66A7veaP+Hof5lfUz
+         s/xClaf1HsMj2wyeKHI/J3ht8zMntjamFov607mZrZ1N7c8bS6S14xhGRoE7UAY2+s/2
+         3MqEkFK4mJR06JIjIEwWJXGwQtU2l/vGFqZXQevEizYwXJ1f+svo2ivkBXeKwu//q8Wm
+         8a7r2uJg6KC8WI8kiqt65quyRg3Hs6xRLelTuXlkPW7dE8Yyad/rcI5pmICJBSqnNSS9
+         /klA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714064383; x=1714669183;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=cI/xzH4GnLh1DKbKDnSMz6UbC56WU+EMAwZKm/b/cR0=;
+        b=ZtdxGbpOp0qRsh3OLGwWhhwRwyT7n24FUHjAEuPl5DZqHr+Rk+FNPaBlfuRPvFgw4+
+         XLKS83P02FiI4ge3exyQr+xcobMhRTnR0sNqB3JA5iGS8Xvhvxr8vEujx8G5KVCjvk+A
+         ylYt+W3qbDfnmN4B+XRJhkJiaifyKAFjTUJVOI/sb0R6XBQKAfb3TkDcAyLG8NgwxnBM
+         qPPTGl6y+2Fu0VPNWhwErGX9oK9YAxEo/v1h8z5h7FR10ie+5jAGIXK5lcIP58wEg785
+         gP0p3RTvb7lvA6MedjBkQcPw20zIZCMPkWUZpoWhT9ZjHF03veT/xQdTIcPS/a/UnxK8
+         Tjfg==
+X-Forwarded-Encrypted: i=1; AJvYcCV/ROWkLlGUvfvxXlPfIWxAl8XX2MgTeP95nD8ppO9wvPSNz3frgf7eJ9wp/gc1gHfZJZU50GMJPzUxbO4pfc5s7V2OMAcY/Zf+8kJ3
+X-Gm-Message-State: AOJu0Yx+g/qGchTkePyxYL9oBDod22a2u5UBPJnJ0NnXL+bb//nt/+zu
+	EBif0sKaJDZXFik0YI4IIoROrCOdWz5MQgR8eZyFEyDuQMUKm9Z0kKs4x2teTrQ=
+X-Google-Smtp-Source: AGHT+IGpVwutJV67cvjnugICyt7Xzbd1m/f0vHJt+eZg6wz+q8DR43n9WJlhz7t5PSjv0jeYJ5cbag==
+X-Received: by 2002:a4a:e1b8:0:b0:5af:73b4:5252 with SMTP id 24-20020a4ae1b8000000b005af73b45252mr232238ooy.0.1714064382659;
+        Thu, 25 Apr 2024 09:59:42 -0700 (PDT)
+Received: from ?IPV6:2603:8080:2300:de:3d70:f8:6869:93de? ([2603:8080:2300:de:3d70:f8:6869:93de])
+        by smtp.gmail.com with ESMTPSA id u7-20020a4aae87000000b005ac62af671esm3364663oon.25.2024.04.25.09.59.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 25 Apr 2024 09:59:42 -0700 (PDT)
+Message-ID: <0def9eeb-881e-48b6-9964-357446b5eb0b@vt.edu>
+Date: Thu, 25 Apr 2024 11:59:39 -0500
+Precedence: bulk
+X-Mailing-List: linux-newbie@vger.kernel.org
+List-Id: <linux-newbie.vger.kernel.org>
+List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: Feedback on my development setup
-In-Reply-To: <CAFkJGRfPinGR30oRJNxiYpib5JCaA3f5D672noR-x_3Gq2UBSA@mail.gmail.com>
+To: Josh Marshall <joshua.r.marshall.1991@gmail.com>,
+ Jonathan Corbet <corbet@lwn.net>
+Cc: "Bilbao, Carlos" <carlos.bilbao@amd.com>, ngn <ngn@ngn.tf>,
+ linux-newbie@vger.kernel.org, linux-doc@vger.kernel.org,
+ pranjal.singh4370@gmail.com
 References: <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
- <Zh6Xbqijp8rRGo1H@archbtw>
- <CAFkJGRe+UpNPSnSL623o6G+NCkK_uGPx-NCNLQx0vSGpMo98eg@mail.gmail.com>
- <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
  <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
  <ZiE9ydgMtpKOBLDk@archbtw>
  <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
@@ -57,36 +81,91 @@ References: <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
  <CAFkJGRdu+Ng3APAQAEQntbspXrVNzg_=b2Cd6n0wsFY5m=vWzw@mail.gmail.com>
  <e47385b9-cbab-465e-8c8d-3bbad57415aa@amd.com>
  <CAFkJGRfPinGR30oRJNxiYpib5JCaA3f5D672noR-x_3Gq2UBSA@mail.gmail.com>
-Date: Thu, 25 Apr 2024 09:14:10 -0600
-Message-ID: <87o79xqxtp.fsf@meer.lwn.net>
-Precedence: bulk
-X-Mailing-List: linux-newbie@vger.kernel.org
-List-Id: <linux-newbie.vger.kernel.org>
-List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain
+ <87o79xqxtp.fsf@meer.lwn.net>
+ <CAFkJGReoq2s+LR1kj1hj8QvsKsEhk+CLYtCXV=DQTjTqan3DOg@mail.gmail.com>
+Content-Language: en-US
+From: Carlos Bilbao <bilbao@vt.edu>
+In-Reply-To: <CAFkJGReoq2s+LR1kj1hj8QvsKsEhk+CLYtCXV=DQTjTqan3DOg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-Josh Marshall <joshua.r.marshall.1991@gmail.com> writes:
+Hello Josh,
 
-> Hello Carlos,
->
-> This is a generational shift.  For my peers, we understand the benefit
-> of keeping everything in a thread.  But at some point it becomes so
-> verbose and cumbersome as to defeat the purpose.  The size of the text
-> I'm working with and the number of text changes it has seen meets that
-> level.  And so I've kept it in git and referenced that.
+On 4/25/24 11:15, Josh Marshall wrote:
+> 
+> 
+> On Thu, Apr 25, 2024, 11:14 AM Jonathan Corbet <corbet@lwn.net
+> <mailto:corbet@lwn.net>> wrote:
+> 
+>     Josh Marshall <joshua.r.marshall.1991@gmail.com
+>     <mailto:joshua.r.marshall.1991@gmail.com>> writes:
+> 
+>     > Hello Carlos,
+>     >
+>     > This is a generational shift.  For my peers, we understand the benefit
+>     > of keeping everything in a thread.  But at some point it becomes so
+>     > verbose and cumbersome as to defeat the purpose.  The size of the text
+>     > I'm working with and the number of text changes it has seen meets that
+>     > level.  And so I've kept it in git and referenced that.
+> 
+>     Nonetheless, you are trying to engage with the kernel community, and
+>     will have far better results if you follow that community's norms.
+>     Those include sending patches by email and not top posting.
+> 
+> 
+>     They also include listening to the advice you are being given.  Like
+>     others, I appreciate your efforts to improve our documentation; it
+>     certainly needs it!  But please think about improving the *existing*
+>     documentation, rather than creating yet another file, disconnected from
+>     the rest.  We already have far too much of that.
+> 
+> 
+> I cannot abide by this.  Not out of obstinance.  This document is not
+> written for a veteran.  It probably isn't even written for anyone on this
+> list.  It is meant to be much more approachable than that.  Comparing to
+> the closest existing document at
+> https://docs.kernel.org/dev-tools/gdb-kernel-debugging.html
+> <https://docs.kernel.org/dev-tools/gdb-kernel-debugging.html> , the
+> difference in intended audience and skill level is stark.  Let alone being
+> able to find that document since it is so buried relative to the intent of
+> someone trying to get started.  I have heard several times " you should
+> rather improve existing docs" but without really breaking into all the
 
-Nonetheless, you are trying to engage with the kernel community, and
-will have far better results if you follow that community's norms.
-Those include sending patches by email and not top posting.
+Jon is explaining how contributing works in the kernel community. I think
+you would benefit from reading the documentation on this subject, for
+example:
 
-They also include listening to the advice you are being given.  Like
-others, I appreciate your efforts to improve our documentation; it
-certainly needs it!  But please think about improving the *existing*
-documentation, rather than creating yet another file, disconnected from
-the rest.  We already have far too much of that.
+"Unsurprisingly, the kernel development community has evolved a set of
+  conventions and procedures which are used in the posting of patches;
+  following them will make life much easier for everybody involved"
+  - Posting patches, Development Process
+
+or:
+
+"Top-posting is strongly discouraged in Linux kernel development
+ discussions. Interleaved (or “inline”) replies make conversations much
+ easier to follow." - Submitting Patches
+
+It's simple: You are free to refuse to abide by such basic rules, but you
+won't be able to get patches accepted in this community.
+
+With that established, I fail to see the connection between the intended
+audience of your document and whether you should make the effort to
+integrate it within the existing documentation or not.
+
+> implications that 'just' doesn't help.  Given the back and forth required
+> to express the finesse here, I am willing to have a phone or video call to
+> get this right.
+
+People on the mailing lists typically prefer to resolve issues through
+email.
+
+> 
+> 
+>     Thanks,
+> 
+>     jon
+> 
 
 Thanks,
-
-jon
+Carlos
