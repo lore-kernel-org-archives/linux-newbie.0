@@ -1,58 +1,57 @@
 Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECF8515252B
-	for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 20:03:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E1666A34F
+	for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 20:14:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=18.9.28.11
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1714075396; cv=none; b=cHRA+JBWwbEuun4aWkSNgMOuM5ryVwzv0+mX68k1uE5Qa6siaHs4bCsHMHf9JyWbET+U48bOJ+f5l6w63IGizihne3DeGY5zqyY5lGBWHx+L0tYPHesBZCqHwB1ix7XCH5UBgFcVzIxgD3LER5Rp3c8VYIJ43NVR5RBAvxgyCFM=
+	t=1714076089; cv=none; b=ZzgF2aFYUdwegtdD9ZDdl8qfKeAbcqSWyq2iqaNQnNwBzQKhiJbpMfGnJnAtzDXE1mK80i8TFsXDXGjd+gSMGz5TdIRE7EZBrIJWniNj7adp2xfgGErLn2xWb2b9ERIXuk4Ir6s58orFxp0CzmVK3WAPOzr/uIifD0IEBSN/Y50=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1714075396; c=relaxed/simple;
-	bh=WXioVrdtqdg/+f7YVujTUAKyHs8jas6ZFL6qXIXYYN4=;
+	s=arc-20240116; t=1714076089; c=relaxed/simple;
+	bh=qjFKtsoAKCz0ScKoe6yzt15InsGEID68ILFHrtMbLCw=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=tor/4Y25yD974LiESDiX0xLtwOwcigpl79tZkaxCuFkRJGJS68KR1e2IOc6r00Vg0F3WBcXcuCHLLasWx2h5sV7L+moDMq8Fy88LICzESKA9MuUl+nNEUJyd8MleF1HSUCaFCKDW04bYenJXWe9A/1oMV8wVs9Q6mYa9FMDtz/Q=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=mit.edu; spf=pass smtp.mailfrom=mit.edu; dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b=eJFLEzEf; arc=none smtp.client-ip=18.9.28.11
+	 Content-Type:Content-Disposition:In-Reply-To; b=mI3fq6o5d51tXu7hr42iUpMdoQifaYQzSwyicvbrONKDMe4kDquYwMdRJ1ojsOTPQ7H2iOGVAbyuKqiUdoKox94uXPDziaJRA+PHScI9I9SoqpGVmGf5yn+o2jQBi+AO7k0L7YnYGMh83lzAI5vBtbsUmjykpSiVXnPYJBAad9k=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=mit.edu; spf=pass smtp.mailfrom=mit.edu; dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b=hqSDzkI1; arc=none smtp.client-ip=18.9.28.11
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=mit.edu
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=mit.edu
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b="eJFLEzEf"
+	dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b="hqSDzkI1"
 Received: from cwcc.thunk.org (pool-173-48-113-2.bstnma.fios.verizon.net [173.48.113.2])
 	(authenticated bits=0)
         (User authenticated as tytso@ATHENA.MIT.EDU)
-	by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 43PK2dnR005391
+	by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 43PKERbt012079
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 25 Apr 2024 16:02:40 -0400
+	Thu, 25 Apr 2024 16:14:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mit.edu; s=outgoing;
-	t=1714075362; bh=Bamg4HkyQPSYLLg77yTDxKCM/KPuzg9eu2jBw6RdVcs=;
+	t=1714076069; bh=NABw6fRRVPQSSx2uzfH9QlrfV+blNnHcxwPSqibtEds=;
 	h=Date:From:Subject:Message-ID:MIME-Version:Content-Type;
-	b=eJFLEzEf1SyXcvEiSayjxa9Hx02TtusRy2q5hXuWSQ7StYHMiOO82WgV5KJ7rRLF2
-	 NM+izZeevaTc/i7NzhNHbXngrJ848lG+SMfY4nxfOQMdeuBJVKrkqaS1XMsk6RC1zK
-	 DHbXfZs3DpNChxW283xJcU/8oNacLe+UImu2JHjb27LPO7+D6DAJ+YWdNH6o7QtML1
-	 nRQB9rZfyrU0t0sobd9Ppeoxf+0yRz5L54AqS8rAU1AcC10P+zrFeIJGOGh9l9tEDr
-	 ZPMU26HPT1Mc8NMBPVlFVRPTEiXYoIg0lD66djSqgjoduFhsNTB4mUhi1XMT7E6YQk
-	 tUl8LPQRL3P1w==
+	b=hqSDzkI1f6rWdtqkz9/qJAnEa48MpHW6FwruYovbhKJ1o6TaA5hLYZU/e4W+BkVLu
+	 nbTxWSN0UqM6JjXrppYmCz1OE+P/51bj50FEkm3U/1E+QAJeqMU07LkrFuKwF9ccgy
+	 VTcvUR88TE9xpLi/VYcEmgnKILxfg1C58V1W1aT2USCNLZNX4rFRDuha7K7HKCqoDp
+	 FUwt7R+1TNG89A0WzHpKyY+QI6PqVP4NKmS+NVJdGlfK8TOqg+l/e7KZAJ3tFJmTF3
+	 NyNIbEWrZSMH+76Afg/8MmcES50AMb4hVDzL5uTt//EeCp8PNlPHOtTjhFyEWHEcFc
+	 Z3QaR0cURfY3A==
 Received: by cwcc.thunk.org (Postfix, from userid 15806)
-	id 9B47E15C0CBA; Thu, 25 Apr 2024 16:02:39 -0400 (EDT)
-Date: Thu, 25 Apr 2024 16:02:39 -0400
+	id 52FA515C0CBA; Thu, 25 Apr 2024 16:14:27 -0400 (EDT)
+Date: Thu, 25 Apr 2024 16:14:27 -0400
 From: "Theodore Ts'o" <tytso@mit.edu>
-To: "Bilbao, Carlos" <carlos.bilbao@amd.com>
-Cc: Josh Marshall <joshua.r.marshall.1991@gmail.com>, ngn <ngn@ngn.tf>,
-        linux-newbie@vger.kernel.org,
+To: Josh Marshall <joshua.r.marshall.1991@gmail.com>
+Cc: Jonathan Corbet <corbet@lwn.net>, "Bilbao, Carlos" <carlos.bilbao@amd.com>,
+        ngn <ngn@ngn.tf>, linux-newbie@vger.kernel.org,
         "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        Jonathan Corbet <corbet@lwn.net>, pranjal.singh4370@gmail.com,
-        "bilbao@vt.edu" <bilbao@vt.edu>
+        pranjal.singh4370@gmail.com, "bilbao@vt.edu" <bilbao@vt.edu>
 Subject: Re: Feedback on my development setup
-Message-ID: <20240425200239.GB3749403@mit.edu>
-References: <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
- <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
- <ZiE9ydgMtpKOBLDk@archbtw>
- <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
- <CAFkJGRdFuMoO4_mR-cR1NWjKQJnopN0v1R11-jSnLn+FKcOCdg@mail.gmail.com>
- <CAFkJGRcg+ThJ-xUve0=WorChW=-6PreLHXeM8YwtwzwpkHTu8g@mail.gmail.com>
- <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
+Message-ID: <20240425201427.GC3749403@mit.edu>
+References: <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
  <ZiKYXX-v0Eu-qCBt@archbtw>
  <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
  <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com>
+ <CAFkJGRe7DVpcr+VKouTYzBK5r905W4xmxphU11AA6uB8Oj5FJQ@mail.gmail.com>
+ <CAFkJGRdu+Ng3APAQAEQntbspXrVNzg_=b2Cd6n0wsFY5m=vWzw@mail.gmail.com>
+ <e47385b9-cbab-465e-8c8d-3bbad57415aa@amd.com>
+ <CAFkJGRfPinGR30oRJNxiYpib5JCaA3f5D672noR-x_3Gq2UBSA@mail.gmail.com>
+ <87o79xqxtp.fsf@meer.lwn.net>
+ <CAFkJGRf+K7iGY+TJQu3RDuUv_Xna4BMZmEfeuhHJ0JPg3KQmTg@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
@@ -61,59 +60,50 @@ List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com>
+In-Reply-To: <CAFkJGRf+K7iGY+TJQu3RDuUv_Xna4BMZmEfeuhHJ0JPg3KQmTg@mail.gmail.com>
 
-On Tue, Apr 23, 2024 at 11:39:59AM -0500, Bilbao, Carlos wrote:
+On Thu, Apr 25, 2024 at 01:08:36PM -0400, Josh Marshall wrote:
 > 
-> If I may offer a suggestion, focusing on documenting the challenges you've
-> encountered with KVM, etc., could be more valuable that trying to cover
-> everything.
+> I cannot abide by this.  Not out of obstinance.  This document is not
+> written for a veteran.  It probably isn't even written for anyone on
+> this list.  It is meant to be much more approachable than that.
+> Comparing to the closest existing document at
+> https://docs.kernel.org/dev-tools/gdb-kernel-debugging.html , the
+> difference in intended audience and skill level is stark.  Let alone
+> being able to find that document since it is so buried relative to the
+> intent of someone trying to get started.  I have heard several times "
+> you should rather improve existing docs" but without really breaking
+> into all the implications that 'just' doesn't help.  Given the back
+> and forth required to express the finesse here, I am willing to have a
+> phone or video call to get this right.
 
-Many people have their own scripts for building and testing kernels.
-Very often those scripts tend to be specialized for a particular use
-case, or development workflow, and trying to enshrine it as _the_ way
-to develop kernels may not all that helpful.
+Just as there are dozens of git tutorials which are floating around
+the web which are separate from the official git documentation, if
+what you want is to have an unofficial document designed for a
+specific audience which is not the "vetran", that's totally fine.
 
-For example, my preferred workflow, and the one which I recommend to
-people who want to contribute to my file system, will build kernels
-which can then be used to run tests using either kvm/qemu, Google
-Compute Engine, or on Android devices.  It's also a bit more turn-key
-that the instructions that you've given which is both a plus and a
-minus.  On the plus side, it means much easier to get started, and
-they don't have to cut and paste expect scripts, and manually edit
-kernel config files.  On the minus side, because a lot of the steps
-are automated, people don't have as much of an opportunity to learn
-about what various kernel config options mean.
+Perhaps you can work with the kernel newbies folks, and look at
+joining forces with their documentation, e.g.:
 
-If you're interested, documentation for my scripts can be found here:
+	https://kernelnewbies.org/FirstKernelPatch
 
-https://github.com/tytso/xfstests-bld/blob/master/Documentation/kvm-quickstart.md
-https://github.com/tytso/xfstests-bld/blob/master/Documentation/kvm-xfstests.md
-https://thunk.org/gce-xfstests
+The benefit of joining forces with them might be that more people will
+see your document.  A random gitlab page is not going to be as
+discoverable.
 
-The short version is after you've downloaded the git tree, installed
-the binaries via "make install", and installed some package
-dependencies, setting up a kernel config which is suitable for KVM, a
-GCE VM, or Android, is done via:
+So I think there may be some crosstalk because your goals might not be
+what others have been assuming your goals to be.  If you want to have
+your own unofficial kernel tutorial, have at it!  You don't need to
+get permission from anyone else, and you don't need to engage with the
+community on this mailing list or anywhere else.
 
-	install-kconfig
+The flip side is if you want to get input from this community, you may
+find that you are more likely to get that help if you are discussing
+things on the mailing list, as opposed to expecting us to go find your
+gitlab site and participating there.  We can't force you to use
+mailing list threads; but at the same time, your expecting to us to
+use gitlab might not be very fruitful.
 
-Then building a kernel is done via:
+Best regards,
 
-	kbuild
-
-And then running said kernel under KVM is done via:
-
-	kvm-xfstests shell
-
-Or if you want to run a file system smoke test:
-
-	kvm-xfstests smoke
-
-It was designed so that even graduate students who have no interest in
-kernel development other than getting their FAST academic paper
-published, can use it to test their research file systems, hopefully
-helping them to understand the gulf that can sometimes exist between
-research prototypes and production file systems.  :-)
-
-	       	      	      	    - Ted
+						- Ted
