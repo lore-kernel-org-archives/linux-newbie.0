@@ -1,154 +1,93 @@
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+Received: from mail-il1-f173.google.com (mail-il1-f173.google.com [209.85.166.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC0CD39FF2;
-	Thu, 25 Apr 2024 05:37:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.52
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D666B12C47C
+	for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 14:32:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.166.173
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1714023468; cv=none; b=qL7rhuXIbnARZIvUs/3OnDaa/C7qI409pvdgy46x/cSXusapPc45k/lXpGLSnf9HyJmJCNogGIUHojN0NO+/adl4ilQ9lWug01mh0pTiL+/Nb5WvkaM1N1eKbjG842mA9fJ2P5H/R+m7nigSqYNekfRtvJJvxeWsNY0D7DgCNVs=
+	t=1714055574; cv=none; b=lu+oaXwUwPI9/ItkmeSl7zg6z/PsjEftb6vSY0WnMBahffojBfHVaYHditkqGAGE7BGaZrQfjWxszvCAv8I2nnjUXzkIxabmOyrh5la2ihZn/8ikg9MfovfjGXRiIvhCaTiF6HMkbgvVa033uldrwwpWK75MknOhsgfGnt3XWvs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1714023468; c=relaxed/simple;
-	bh=7cXGX7nzSc9kgXdFOZd40H6dM1rb/ORldCTv+2OyzqE=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=Au6OzbWLZQgXcpxHpbPF0X1mof5uY6eWp4uLaVCy+mQH7yq3H+/2FtVhVZ/rTzT8I7XhOG86pP8bLvc98D5s8cJVQLWY85E+IElOr0Mr3fP7N9stH88lY9QkD6t1Xl8s0VYF1g0Up0L5Cj/Gte40lY9ipH7n92XT8qrsxYd4yiY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=JuapcJvS; arc=none smtp.client-ip=209.85.221.52
+	s=arc-20240116; t=1714055574; c=relaxed/simple;
+	bh=eXCNR7ooTce7BV7f3ZiHWRvNkYp0DTQZUwgiH67T5YI=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=PtgyfXg8TsCMicXGKyekaB4qUE+53rQTMn/wS3eK7h89V56mfh0+zSlf5CeN5p1G+Cp2DbQXq2evDn1RKCuF2mDXdAf5l8fFzd0q9XAk92H455b8mQqdSFZgl+DV0cNJWx4UDE5h63qsPWwPa2Ys++I9henNi8JSWmAWbCdrjcg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=U5iXfZk2; arc=none smtp.client-ip=209.85.166.173
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JuapcJvS"
-Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-34af8b880e8so346421f8f.0;
-        Wed, 24 Apr 2024 22:37:46 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="U5iXfZk2"
+Received: by mail-il1-f173.google.com with SMTP id e9e14a558f8ab-36c30a81507so1731855ab.1
+        for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 07:32:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714023465; x=1714628265; darn=vger.kernel.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iPL2nbk+Q/UWy1nHnxkSFv/m9vKVttF+eKGmemIFKnk=;
-        b=JuapcJvSLQy9G8YOBUY1n94aPY5t5/VGaazbDkNMWZmoxIgm7Hrz2bkv//LlMNIgGf
-         UxwH0rqoFYjL6PC4j5M35xdZ9MN4pACIlwLqgnZlEDiZwH8PZGVK6EYrJUB8Y+s4S3jH
-         +IivwstH7gx4FHKlunNZMp5MKgH+wY1j+ZKlRz6pwCvN02ejO0eUQzs/gvEoXwGebOYS
-         8IHLuiNhPySXaN40HzVglnedai6c5Veu8J5TUG6vV4p7K0lAoSlZmAt6eQn7PLmtZHSE
-         GqwFFfjzTMTeNStWFi+zk2MpJoFAmmuoNZECBK6nlHP389+QjHw9oPcQTgAYDrq6BTKw
-         X0nQ==
+        d=gmail.com; s=20230601; t=1714055572; x=1714660372; darn=vger.kernel.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iOIM2nELW/X5ntVPRtL18YQ3nn3YJJzs3b2MGd67Xnc=;
+        b=U5iXfZk2gCGjwP0bzAQAqBC9Wk85/yX2hpILFgigdI5PlWyhI6sCFQEdbAfeoZi8Ba
+         uMpEb1aHeiQImxOMChTmX21MHFvwlg1xYY9ZflcOKKkSijUBtYBXLDjfAYP4tdRTZiFX
+         cqCKibwRDNR+VVqY+IXDZwtPt5hCDZRZMI7bIbbbH1s2FXYK1EwkGAjtDwgEIjtOeW55
+         7QwoLF7yaBCV0GSTNp96qKL9Ce4MXVGkRHJLOjKR8eTFKs7y0+N+nAyX8HfYHfUFV09r
+         B6WF2oJlyjUH4FUMJPXYykmSFutOm5VedBHqfhn734eomTQkKCLxCX7q9MzEcKQUyQuu
+         Aaiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714023465; x=1714628265;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=iPL2nbk+Q/UWy1nHnxkSFv/m9vKVttF+eKGmemIFKnk=;
-        b=eesBpMR9iyJ/dmrZjrfbpElUvKRmnXgoon09WYu8DNwP3kz4b86XftNZHvX24a8mcf
-         RNdoLHbktPlaj2Hvrxxd6EZg9FzTH29yWSod+MXRJB1ozjFaPvsu8TpDlbDadAx0znqA
-         n8y52SDaHryN4Yq24t8zUc0/hnS4DmWn3K2onzltYyw0xki+lg9UG71TNZEqENPqTuQ9
-         zdS9Jv6h9N8CvK4gkklmCEwJI1ikQ4rdqvh6Qelw4xHJvbnp17AiKFrjiyb87348LdiT
-         ze3DgbCBd+MyYuN6uL5iCeAJdv1CLuhXw1NZTnAdztygXSyLRq1oZtuRMeeHR2BL1Dj9
-         xjFA==
-X-Forwarded-Encrypted: i=1; AJvYcCU06YZcx7eg6glcw4Xf3Caz6k72klVUwiZuywD/hgU15ckp6/IGRsWx/HWEasquR7ywQS1gYPCyYfrLa2DgDtbuMj5GxaA4WC1hzG616Kw89/cNwPlOw+U4GpJfJBochKzCzzG3aBS1
-X-Gm-Message-State: AOJu0Yw7oj8zIfmHko2K1/SpQOGm+zr9gGfSMiyOGQQU14pfDzDKUVJ/
-	NzoZWYTGHYTwByNM5Qdn6lBT9Gi2cwvlCnsEGTc19hVmKfM2OBNZFJtDphRcSLFotW5hRnX6knQ
-	xYmW+31K+sX2Rqfh5m0/G9VNam0Xx0NN0L58=
-X-Google-Smtp-Source: AGHT+IFj6baWkNET9KfwMiptbsOnk2z/vd0k6HOClQOTwPFguXr7r58wwvpO4LFOB8TAv68bGd4sNmkJ5SWeTfOq3hM=
-X-Received: by 2002:a5d:5641:0:b0:34a:70d:1117 with SMTP id
- j1-20020a5d5641000000b0034a070d1117mr938896wrw.18.1714023465069; Wed, 24 Apr
- 2024 22:37:45 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1714055572; x=1714660372;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iOIM2nELW/X5ntVPRtL18YQ3nn3YJJzs3b2MGd67Xnc=;
+        b=u1gcfGHNfIGyd7q7zzM2DjHoL6TDYXerTlWnF+FnmG9S51FfyTc6ezXOA2BtkRGBWV
+         3P3sy05akz09m5DxiCfjyfr63d/8o/nKOicV0UemcnUlWdCswgA3n7yEgM1hb+PqItSO
+         yZGbmn4tPBAnGrfTYXAHJPITR0d8SkLwKIX0VJT3ZgdPqcSbYL9FCVKpjLQspoxC4ohi
+         FyMBnKfLkJQ9e6OQbX1+Vgxskop5RtV76FOdhjGMYG45vlOqCJj7Nxyv9IUztZL6MEqW
+         QMgqX0GmYv/c0Tsh8Uh1xSqY2VzitEjM6Vpchi0gHaES3I5goV7Caa5bPAX4n1SjX9S3
+         34xw==
+X-Forwarded-Encrypted: i=1; AJvYcCU18M/r5xZdu/nLVwUtZtAu+l6tidxJUSmYqS8sPzgupjIWCQE+nis0nce54VyGN93BkxaAR07qIS6C0smhOjNhEOuA9qvK1QmH/EZ5
+X-Gm-Message-State: AOJu0YyDRaMfz7rvt3qUiE/0zDwZICaXGFBl/Np7MsHSePF5HlfSOZJj
+	0DssgbH0NMFkFbO37VKKYCtq/c7d8XIu5Ft4zXeQhVDKLCtMbI0v
+X-Google-Smtp-Source: AGHT+IHAfBloP3z97p6+QRGZuoochN9HTPGI2H6WZTlDuBhV1olZEvB47jKQ6wptaRPw7piVYvM5mg==
+X-Received: by 2002:a05:6e02:1a66:b0:36b:46b:1340 with SMTP id w6-20020a056e021a6600b0036b046b1340mr6896734ilv.5.1714055571764;
+        Thu, 25 Apr 2024 07:32:51 -0700 (PDT)
+Received: from fedora-laptop (c-73-127-246-43.hsd1.nm.comcast.net. [73.127.246.43])
+        by smtp.gmail.com with ESMTPSA id 3-20020a056e020ca300b0036b2fce985dsm3615754ilg.62.2024.04.25.07.32.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Apr 2024 07:32:51 -0700 (PDT)
+Date: Thu, 25 Apr 2024 08:32:48 -0600
+From: Thomas Bertschinger <tahbertschinger@gmail.com>
+To: Josh Marshall <joshua.r.marshall.1991@gmail.com>
+Cc: ngn <ngn@ngn.tf>, linux-newbie@vger.kernel.org
+Subject: Re: Feedback on my development setup
+Message-ID: <20240425143248.GB291695@fedora-laptop>
+References: <CAFkJGRe+UpNPSnSL623o6G+NCkK_uGPx-NCNLQx0vSGpMo98eg@mail.gmail.com>
+ <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
+ <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
+ <ZiE9ydgMtpKOBLDk@archbtw>
+ <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
+ <CAFkJGRdFuMoO4_mR-cR1NWjKQJnopN0v1R11-jSnLn+FKcOCdg@mail.gmail.com>
+ <CAFkJGRcg+ThJ-xUve0=WorChW=-6PreLHXeM8YwtwzwpkHTu8g@mail.gmail.com>
+ <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
+ <ZiKYXX-v0Eu-qCBt@archbtw>
+ <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
- <Zh6Xbqijp8rRGo1H@archbtw> <CAFkJGRe+UpNPSnSL623o6G+NCkK_uGPx-NCNLQx0vSGpMo98eg@mail.gmail.com>
- <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
- <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
- <ZiE9ydgMtpKOBLDk@archbtw> <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
- <CAFkJGRdFuMoO4_mR-cR1NWjKQJnopN0v1R11-jSnLn+FKcOCdg@mail.gmail.com>
- <CAFkJGRcg+ThJ-xUve0=WorChW=-6PreLHXeM8YwtwzwpkHTu8g@mail.gmail.com>
- <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
- <ZiKYXX-v0Eu-qCBt@archbtw> <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
- <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com> <CAFkJGRe7DVpcr+VKouTYzBK5r905W4xmxphU11AA6uB8Oj5FJQ@mail.gmail.com>
-In-Reply-To: <CAFkJGRe7DVpcr+VKouTYzBK5r905W4xmxphU11AA6uB8Oj5FJQ@mail.gmail.com>
-From: Josh Marshall <joshua.r.marshall.1991@gmail.com>
-Date: Thu, 25 Apr 2024 01:37:33 -0400
-Message-ID: <CAFkJGRdu+Ng3APAQAEQntbspXrVNzg_=b2Cd6n0wsFY5m=vWzw@mail.gmail.com>
-Subject: Re: Feedback on my development setup
-To: "Bilbao, Carlos" <carlos.bilbao@amd.com>
-Cc: ngn <ngn@ngn.tf>, linux-newbie@vger.kernel.org, 
-	"linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, Jonathan Corbet <corbet@lwn.net>, pranjal.singh4370@gmail.com, 
-	"bilbao@vt.edu" <bilbao@vt.edu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
 
-Hello everyone,
+On Tue, Apr 23, 2024 at 11:34:36AM -0400, Josh Marshall wrote:
+> I have a draft document which I would like broader review on, which
+> currently lives here:
+> https://gitlab.com/anadon/getting-started-on-kernel-dev-guide-workspace.
+> This document is to ease the setup of Kernel Development.  I intend to
+> send this in as a patch to the mainline doc tree once it gets by a
+> suitable number of reviewers.
 
-Last draft before I send in a patch.  Big change is an added preamble
-to set tone and intent.  Also some stuff up top setting forth the
-structure of the document.  Carlos, I tried figuring out what you
-meant by troubles with KVM, but all that boiled down to was scant
-documentation on use cases people rarely venture into.  I think that
-is a different document from what I am trying to write, although I
-might now be qualified to write it.  Pranjal, sorry man, more words :)
+Hi Josh,
 
-https://gitlab.com/anadon/getting-started-on-kernel-dev-guide-workspace/-/b=
-lob/main/Linux%20basic%20dev%20setup.rst?ref_type=3Dheads
+Rather than using sed to update the config file, you might want to look
+at scripts/config. It's a tool that's made for that purpose.
 
-On Tue, Apr 23, 2024 at 1:43=E2=80=AFPM Josh Marshall
-<joshua.r.marshall.1991@gmail.com> wrote:
->
-> Hello Carlos,
->
-> My intention right now is still to gather feedback on the draft!
-> Everything, including if it should be sliced and diced into other
-> places, is up for consideration.  The final intent is a patch into the
-> central doc tree and not remote documentation.  I'll wait longer to
-> gather more input before replying to particular points.
->
-> On Tue, Apr 23, 2024 at 12:40=E2=80=AFPM Bilbao, Carlos <carlos.bilbao@am=
-d.com> wrote:
-> >
-> > Hello Josh,
-> >
-> > On 4/23/2024 10:34 AM, Josh Marshall wrote:
-> > > I have a draft document which I would like broader review on, which
-> > > currently lives here:
-> > > https://gitlab.com/anadon/getting-started-on-kernel-dev-guide-workspa=
-ce.
-> > > This document is to ease the setup of Kernel Development.  I intend t=
-o
-> > > send this in as a patch to the mainline doc tree once it gets by a
-> > > suitable number of reviewers.
-> >
-> > It's great that you're interested in improving the documentation. I've =
-CCed
-> > linux-doc list for visibility.
-> >
-> > However, please note that we already have existing documentation, and i=
-t
-> > might be better to extend what's already there rather than creating
-> > something entirely new. You can refer to:
-> >
-> > https://www.kernel.org/doc/html/latest/process/development-process.html
-> >
-> > If you still feel the need to start a new document and host it remotely=
-, I
-> > suggest updating:
-> >
-> > https://www.kernel.org/doc/html/v6.1/process/kernel-docs.html
-> >
-> > If I may offer a suggestion, focusing on documenting the challenges you=
-'ve
-> > encountered with KVM, etc., could be more valuable that trying to cover
-> > everything.
-> >
-> > >
-> > > On Fri, Apr 19, 2024 at 12:15=E2=80=AFPM ngn <ngn@ngn.tf> wrote:
-> > >>
-> > >> On Thu, Apr 18, 2024 at 05:40:20PM -0400, Josh Marshall wrote:
-> > >>> Looks like breakpoints aren't working?  https://paste.debian.net/13=
-14501/
-> > >>>
-> > >>
-> > >> This maybe caused by Kernel Address Space Randomization (KASLR), try
-> > >> disabling it by adding nokaslr option to the boot options.
-> >
-> > Thanks,
-> > Carlos
+- Thomas Bertschinger
