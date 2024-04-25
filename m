@@ -1,127 +1,119 @@
-Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABD7E2B9D9;
-	Thu, 25 Apr 2024 17:08:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.42
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECF8515252B
+	for <linux-newbie@vger.kernel.org>; Thu, 25 Apr 2024 20:03:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=18.9.28.11
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1714064931; cv=none; b=Wy3v4eKEQc1vDjIz5bw4zxEx/Z9NvePjc9j222jYDzUbZVcUlGoGebC3juh0NuxMQ7xZardxUqv77pzHIGDnPmtqEpE64ZBMGk8M1DPfhOU8yiZxJyOjiZ31JQB+XJ1n867FOI1CS/WUT8fRfYxWHh81MqCGwI7ndXoGFooX0yI=
+	t=1714075396; cv=none; b=cHRA+JBWwbEuun4aWkSNgMOuM5ryVwzv0+mX68k1uE5Qa6siaHs4bCsHMHf9JyWbET+U48bOJ+f5l6w63IGizihne3DeGY5zqyY5lGBWHx+L0tYPHesBZCqHwB1ix7XCH5UBgFcVzIxgD3LER5Rp3c8VYIJ43NVR5RBAvxgyCFM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1714064931; c=relaxed/simple;
-	bh=LB6PxUT2FVg9BxOIRwoGod1p+J5wXmryaH+IXVj+ZtI=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=aT+jnDDIsyxiJnfmQ6LGNkvgo+hIan+P/y1gdAUmgeIiynouV2ZQe1UHrbXNhrQY6EdVRkkq0RpPNSLPnrdGkHb6QR/MxVHfrsSFjzLO6Ry0JSy7TdZbXPT9RwN1n4lOuPlrUbule7JuGwqSQMxULPg+mD/APFi4sHZHFIMIqj0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=IW7fhOih; arc=none smtp.client-ip=209.85.221.42
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1714075396; c=relaxed/simple;
+	bh=WXioVrdtqdg/+f7YVujTUAKyHs8jas6ZFL6qXIXYYN4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=tor/4Y25yD974LiESDiX0xLtwOwcigpl79tZkaxCuFkRJGJS68KR1e2IOc6r00Vg0F3WBcXcuCHLLasWx2h5sV7L+moDMq8Fy88LICzESKA9MuUl+nNEUJyd8MleF1HSUCaFCKDW04bYenJXWe9A/1oMV8wVs9Q6mYa9FMDtz/Q=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=mit.edu; spf=pass smtp.mailfrom=mit.edu; dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b=eJFLEzEf; arc=none smtp.client-ip=18.9.28.11
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=mit.edu
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=mit.edu
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IW7fhOih"
-Received: by mail-wr1-f42.google.com with SMTP id ffacd0b85a97d-34c1fff534fso471422f8f.1;
-        Thu, 25 Apr 2024 10:08:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1714064928; x=1714669728; darn=vger.kernel.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=S/YfpLjDg/V9+k2ejtPmLdCvlg7wyMi25Eix385icIM=;
-        b=IW7fhOih3R+JQVOnn8JPL8m/X1P+ls2r4/YbQbxpIX2ZCXR10Q3Xbf06IDzzshcx8O
-         3kjLX9MSL05Xp8m4gQh8GRlT3M4/1mPiNBORgjyJCnYWMF23Hsb8z64W+qAEe/Vz13BY
-         TANz2DlvgTAI0wkviqb5BQpl+nEBLqG+iIGMf7iVp88j4i4r+ww0VqrVSwz+5++3yzFX
-         VEbo/nds5e1kHL6O+2pA/3ztaqOxoq73QuOBYRC9tkP9omh9t4wXZVESzRuStZTxcq8w
-         gHJpljgzZqa3QLvuNRNl9XTDbUAfobojV20GCfR8O3KoaX4ttEUjcki8Q1ZWN1C2SD+y
-         ztjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714064928; x=1714669728;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=S/YfpLjDg/V9+k2ejtPmLdCvlg7wyMi25Eix385icIM=;
-        b=naVLPV3tvXTO12OSGyR05Oed6SVTu7sDkTKJsqxoW8y/MY1GtynrjUwe3wIyyhSC2o
-         OgfHUJeg/XCXp3aEhMuBqMxA9zgOcMDmBvabhgAYvtS3S1q9pZ6oZqhXBAiancxyu4fg
-         WIUhNbxXZ+qLCqmd21E7G0iGYlXAEhX+Mi7d68Iff54VdyMRGkgRY9uABNyEFKqw2MY3
-         fP4ww0BbqHL1XYUVNvf0ZU+eHoEwx9v+xMHhF9iQQ7bFJHLH8OPvZ6UwrqQYWd4CSOe3
-         jC7gn+aIk0Gf59lohG14eC5aYx7Mk1kCxsGGUEGrJ/uGSUUPh7SkNACPDnzaYyLtx5ie
-         Jl4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXofyXEEx7jb/Vubby7H6B5NGB55Qa4VfyQxCFqfO5Db8rtnAz3e1hKClZgmhBqwDsdlyFZ6bUoKnvHenZ0hiQoC6G+kQjGBrb5KXdURl8tPByEAxqWdpoNu7xqr4QJ4MoA1s63qHaj
-X-Gm-Message-State: AOJu0Yys/3/bog7TZJQYoUYfdM9owEkpRwn58sZeBiLQwOU4N5JB690X
-	4fw7Yd9AGmP0ljOQTOVQ4+J1Ro7V5T/KtU0Jne9ExPnqAcUP9rgiAYfoHu6Q/94KvAwgYyMcSM+
-	QQruomoYk6HCX+3CZJJ1X2NiA4zc=
-X-Google-Smtp-Source: AGHT+IEOkApi/wJwZZIW/sKnNji1+qRr4vvysLSEY7UFpWR3I4ldIZUW7FZruGfdtOWSE4i5rv1bd3JxqQMEplgA1GI=
-X-Received: by 2002:a5d:4707:0:b0:343:eb6c:ae80 with SMTP id
- y7-20020a5d4707000000b00343eb6cae80mr89901wrq.28.1714064927724; Thu, 25 Apr
- 2024 10:08:47 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=mit.edu header.i=@mit.edu header.b="eJFLEzEf"
+Received: from cwcc.thunk.org (pool-173-48-113-2.bstnma.fios.verizon.net [173.48.113.2])
+	(authenticated bits=0)
+        (User authenticated as tytso@ATHENA.MIT.EDU)
+	by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 43PK2dnR005391
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 25 Apr 2024 16:02:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mit.edu; s=outgoing;
+	t=1714075362; bh=Bamg4HkyQPSYLLg77yTDxKCM/KPuzg9eu2jBw6RdVcs=;
+	h=Date:From:Subject:Message-ID:MIME-Version:Content-Type;
+	b=eJFLEzEf1SyXcvEiSayjxa9Hx02TtusRy2q5hXuWSQ7StYHMiOO82WgV5KJ7rRLF2
+	 NM+izZeevaTc/i7NzhNHbXngrJ848lG+SMfY4nxfOQMdeuBJVKrkqaS1XMsk6RC1zK
+	 DHbXfZs3DpNChxW283xJcU/8oNacLe+UImu2JHjb27LPO7+D6DAJ+YWdNH6o7QtML1
+	 nRQB9rZfyrU0t0sobd9Ppeoxf+0yRz5L54AqS8rAU1AcC10P+zrFeIJGOGh9l9tEDr
+	 ZPMU26HPT1Mc8NMBPVlFVRPTEiXYoIg0lD66djSqgjoduFhsNTB4mUhi1XMT7E6YQk
+	 tUl8LPQRL3P1w==
+Received: by cwcc.thunk.org (Postfix, from userid 15806)
+	id 9B47E15C0CBA; Thu, 25 Apr 2024 16:02:39 -0400 (EDT)
+Date: Thu, 25 Apr 2024 16:02:39 -0400
+From: "Theodore Ts'o" <tytso@mit.edu>
+To: "Bilbao, Carlos" <carlos.bilbao@amd.com>
+Cc: Josh Marshall <joshua.r.marshall.1991@gmail.com>, ngn <ngn@ngn.tf>,
+        linux-newbie@vger.kernel.org,
+        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+        Jonathan Corbet <corbet@lwn.net>, pranjal.singh4370@gmail.com,
+        "bilbao@vt.edu" <bilbao@vt.edu>
+Subject: Re: Feedback on my development setup
+Message-ID: <20240425200239.GB3749403@mit.edu>
+References: <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
+ <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
+ <ZiE9ydgMtpKOBLDk@archbtw>
+ <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
+ <CAFkJGRdFuMoO4_mR-cR1NWjKQJnopN0v1R11-jSnLn+FKcOCdg@mail.gmail.com>
+ <CAFkJGRcg+ThJ-xUve0=WorChW=-6PreLHXeM8YwtwzwpkHTu8g@mail.gmail.com>
+ <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
+ <ZiKYXX-v0Eu-qCBt@archbtw>
+ <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
+ <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <CAFkJGRc824vYEufG=6ZVPAW2iVpd0NDThJadZVrUk_ZND_qJag@mail.gmail.com>
- <Zh6Xbqijp8rRGo1H@archbtw> <CAFkJGRe+UpNPSnSL623o6G+NCkK_uGPx-NCNLQx0vSGpMo98eg@mail.gmail.com>
- <CAPzh0z8RySn429XYQHoP_c9UA+pb6SLHGhH40vQDhc3P2xiysQ@mail.gmail.com>
- <CAFkJGRfK=1f8tfWO8G0v8SOmCwCgK7P5y7g2My47VG6Obb1DNw@mail.gmail.com>
- <ZiE9ydgMtpKOBLDk@archbtw> <CAFkJGRddGHK0j4CcQUoRKiD3afniLY=rRV5npY5wpauqqY0XZg@mail.gmail.com>
- <CAFkJGRdFuMoO4_mR-cR1NWjKQJnopN0v1R11-jSnLn+FKcOCdg@mail.gmail.com>
- <CAFkJGRcg+ThJ-xUve0=WorChW=-6PreLHXeM8YwtwzwpkHTu8g@mail.gmail.com>
- <CAFkJGRcgJA4qe1AVi23ZQVPr_UEzkTBPH8f30g=OsKmii7QzQw@mail.gmail.com>
- <ZiKYXX-v0Eu-qCBt@archbtw> <CAFkJGRdjvebW6u6pyyA_MeHsoecRgYjiVrxoWYWsREdYH9iOFQ@mail.gmail.com>
- <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com> <CAFkJGRe7DVpcr+VKouTYzBK5r905W4xmxphU11AA6uB8Oj5FJQ@mail.gmail.com>
- <CAFkJGRdu+Ng3APAQAEQntbspXrVNzg_=b2Cd6n0wsFY5m=vWzw@mail.gmail.com>
- <e47385b9-cbab-465e-8c8d-3bbad57415aa@amd.com> <CAFkJGRfPinGR30oRJNxiYpib5JCaA3f5D672noR-x_3Gq2UBSA@mail.gmail.com>
- <87o79xqxtp.fsf@meer.lwn.net>
-In-Reply-To: <87o79xqxtp.fsf@meer.lwn.net>
-From: Josh Marshall <joshua.r.marshall.1991@gmail.com>
-Date: Thu, 25 Apr 2024 13:08:36 -0400
-Message-ID: <CAFkJGRf+K7iGY+TJQu3RDuUv_Xna4BMZmEfeuhHJ0JPg3KQmTg@mail.gmail.com>
-Subject: Re: Feedback on my development setup
-To: Jonathan Corbet <corbet@lwn.net>
-Cc: "Bilbao, Carlos" <carlos.bilbao@amd.com>, ngn <ngn@ngn.tf>, linux-newbie@vger.kernel.org, 
-	"linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, pranjal.singh4370@gmail.com, 
-	"bilbao@vt.edu" <bilbao@vt.edu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7ba7cff1-8d9d-4bc3-a74c-6f6828c9195e@amd.com>
 
-Sorry for the double post to some of you.  Mobile Gmail silently
-converted to HTML and caused some problems.  Content is otherwise
-identical.
+On Tue, Apr 23, 2024 at 11:39:59AM -0500, Bilbao, Carlos wrote:
+> 
+> If I may offer a suggestion, focusing on documenting the challenges you've
+> encountered with KVM, etc., could be more valuable that trying to cover
+> everything.
 
-On Thu, Apr 25, 2024 at 11:14=E2=80=AFAM Jonathan Corbet <corbet@lwn.net> w=
-rote:
->
-> Josh Marshall <joshua.r.marshall.1991@gmail.com> writes:
->
-> > Hello Carlos,
-> >
-> > This is a generational shift.  For my peers, we understand the benefit
-> > of keeping everything in a thread.  But at some point it becomes so
-> > verbose and cumbersome as to defeat the purpose.  The size of the text
-> > I'm working with and the number of text changes it has seen meets that
-> > level.  And so I've kept it in git and referenced that.
->
-> Nonetheless, you are trying to engage with the kernel community, and
-> will have far better results if you follow that community's norms.
-> Those include sending patches by email and not top posting.
->
-> They also include listening to the advice you are being given.  Like
-> others, I appreciate your efforts to improve our documentation; it
-> certainly needs it!  But please think about improving the *existing*
-> documentation, rather than creating yet another file, disconnected from
-> the rest.  We already have far too much of that.
->
+Many people have their own scripts for building and testing kernels.
+Very often those scripts tend to be specialized for a particular use
+case, or development workflow, and trying to enshrine it as _the_ way
+to develop kernels may not all that helpful.
 
-I cannot abide by this.  Not out of obstinance.  This document is not
-written for a veteran.  It probably isn't even written for anyone on
-this list.  It is meant to be much more approachable than that.
-Comparing to the closest existing document at
-https://docs.kernel.org/dev-tools/gdb-kernel-debugging.html , the
-difference in intended audience and skill level is stark.  Let alone
-being able to find that document since it is so buried relative to the
-intent of someone trying to get started.  I have heard several times "
-you should rather improve existing docs" but without really breaking
-into all the implications that 'just' doesn't help.  Given the back
-and forth required to express the finesse here, I am willing to have a
-phone or video call to get this right.
+For example, my preferred workflow, and the one which I recommend to
+people who want to contribute to my file system, will build kernels
+which can then be used to run tests using either kvm/qemu, Google
+Compute Engine, or on Android devices.  It's also a bit more turn-key
+that the instructions that you've given which is both a plus and a
+minus.  On the plus side, it means much easier to get started, and
+they don't have to cut and paste expect scripts, and manually edit
+kernel config files.  On the minus side, because a lot of the steps
+are automated, people don't have as much of an opportunity to learn
+about what various kernel config options mean.
 
-> Thanks,
->
-> jon
+If you're interested, documentation for my scripts can be found here:
+
+https://github.com/tytso/xfstests-bld/blob/master/Documentation/kvm-quickstart.md
+https://github.com/tytso/xfstests-bld/blob/master/Documentation/kvm-xfstests.md
+https://thunk.org/gce-xfstests
+
+The short version is after you've downloaded the git tree, installed
+the binaries via "make install", and installed some package
+dependencies, setting up a kernel config which is suitable for KVM, a
+GCE VM, or Android, is done via:
+
+	install-kconfig
+
+Then building a kernel is done via:
+
+	kbuild
+
+And then running said kernel under KVM is done via:
+
+	kvm-xfstests shell
+
+Or if you want to run a file system smoke test:
+
+	kvm-xfstests smoke
+
+It was designed so that even graduate students who have no interest in
+kernel development other than getting their FAST academic paper
+published, can use it to test their research file systems, hopefully
+helping them to understand the gulf that can sometimes exist between
+research prototypes and production file systems.  :-)
+
+	       	      	      	    - Ted
