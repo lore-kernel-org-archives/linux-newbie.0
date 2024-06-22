@@ -1,109 +1,102 @@
-Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com [209.85.215.179])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail.qrator.net (mail.qrator.net [178.248.233.8])
+	(using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0A51A951
-	for <linux-newbie@vger.kernel.org>; Tue,  7 May 2024 17:16:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.179
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84A25DDCD;
+	Sat, 22 Jun 2024 16:50:45 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=178.248.233.8
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1715102220; cv=none; b=BgztiOad1TXoSL8FW9s87Erfl2wE47G3UkxeCB2J4ynOwInvP1jkL9J6cpdKOB53ANfQn51+gVuIULaW9WjbnPLL73kiSKBcKKYwoFGYfXA0CMlUFR5mY5ZUX4+TgiSU18duQQvMXdSFI0HWePo5xvNHph1y9JjNsKt6UA3S0mM=
+	t=1719075047; cv=none; b=V1eY7Uw+HVZA9gXC/6CC96ACIpVgjaEso+GqGQxtFFRBg867D9WtFeMwSB0Gt03l61CSjpeCuIODU8zU5jnonjVX49VOcgZyIJSjQJRiaII8Z6dTiBzfMK3XxTIOpQY+39QMjH9BP8Bu8peKh1Rvt5fXmU2Ei8UA9BtpCUqefkg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1715102220; c=relaxed/simple;
-	bh=lCsTAU4I6dalNyn6lBT4QHU63WdD1PMjb7GJG5yRtkA=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=M3dzzH83o8VPV+jhJkhBBa3KgczFdlh7aG54iBQzVWWMwqRkcEf8gCAsubKZefqGmkqEUTdLkB5ZfKsn/48L7hRma8FylVEG2VcYpqwKBfiu5uZ9pZ2HR2Xcx6UpEoOxMPSYko6z7YBeeuEkE2jt87rIjEdgrYAmTuwu1EIS1x0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=marliere.net; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=marliere.net header.i=@marliere.net header.b=UaPIcqz5; arc=none smtp.client-ip=209.85.215.179
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=marliere.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=marliere.net header.i=@marliere.net header.b="UaPIcqz5"
-Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-61bbb208ea5so2547374a12.0
-        for <linux-newbie@vger.kernel.org>; Tue, 07 May 2024 10:16:58 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715102218; x=1715707018;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MHf0bWRhZRw6a5IR7KIlrv+lDzgAGY3i6uhQ3N4iyMY=;
-        b=SQpUI1OtVOsUwQbu/J1f/gO6Iytu+nZQtsxzQQDSY9E0Wp6fX/N6JPee5FkRIq0u02
-         rPnlUQh03cbApnDt480fAHna8Og/iU5/Sw80pk0TL+ZDYXtmAroojOIp1We8/f9+OQls
-         rYPc2b7Zcp8H72SZXX938JSA/6kgAWkDm+UIaiXgklE/njOD2wWxFGDF9qGnN/VHTFCQ
-         1HnyMWQ/wxuliTvdC7rHYdoZkP1JYjk4I8Y+myQEoEuMQfGdr9cXwTBFOc20uYB+9wAk
-         x19IwL2Xo9olYid19qQwQhLFbkbMc99xCWf2cpEFvalYeNvbZgFB+O0yTnMINBpLGFB1
-         D1uA==
-X-Gm-Message-State: AOJu0YyKS3ojnL8iCCi6m8u1Ww+qJv2bQLzRIZqFwftYxDJTzZC3NN+C
-	PcnGBl/DSZvVBF/iU4JQBEqtiPkU4KSndE/9Cgd7No2eg5acE56COP2kZpgO
-X-Google-Smtp-Source: AGHT+IGzlUmGiNmqhz0OXkVwQbyj/8zptHZ1GlikaJfA3f1shcgLAoINb87/6MVYM1uzW8UxkIczpA==
-X-Received: by 2002:a17:90a:4489:b0:2b2:a1d0:b61c with SMTP id 98e67ed59e1d1-2b616be9ac8mr175189a91.47.1715102218029;
-        Tue, 07 May 2024 10:16:58 -0700 (PDT)
-Received: from mail.marliere.net (marliere.net. [24.199.118.162])
-        by smtp.gmail.com with ESMTPSA id l9-20020a17090add8900b002b269962606sm10134163pjv.30.2024.05.07.10.16.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 May 2024 10:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=marliere.net; s=2024;
-	t=1715102216; bh=lCsTAU4I6dalNyn6lBT4QHU63WdD1PMjb7GJG5yRtkA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UaPIcqz5SHcxCrPpV31ripDNxXVpcuCvM1opVML3V8V1WmKiuXp/AJJrd/a4FLvya
-	 43mOrz129tlcrexj8lwzhc8cQ/0EMwtf6pDEDk4LaDBW+3fQzF5NXQJukq5ScV740s
-	 ook652TDJ+5GlDDROOW9EL69fflctDmXM4P3THzoOraGpKshff08N0ND3O5Iwd5MIk
-	 ZaHyjALk6NrEOB48ftwBO1D8uN3oSL1aRtM78sFym17bB4ljkP1PNYs0a4xXxue0YX
-	 e1SYBSeM3tN7DwSvF3/darKwu6wR8BFblYjujZ7dnbChx019N0nxlHkxuSVYgRWbBE
-	 Q8E+xrfeQG/qA==
-Date: Tue, 7 May 2024 14:16:51 -0300
-From: "Ricardo B. Marliere" <ricardo@marliere.net>
-To: Carson <crange76@gmail.com>
-Cc: linux-newbie@vger.kernel.org
-Subject: Re: What subsystem group handles hid devices?
-Message-ID: <60830cf2-909c-423c-a675-fa3f89005d38@marliere.net>
-References: <4874429.OV4Wx5bFTl@mythra>
- <32da4e38-ca87-47b7-ad56-eb4d2e0e8ddf@marliere.net>
- <4703748.vXUDI8C0e8@mythra>
+	s=arc-20240116; t=1719075047; c=relaxed/simple;
+	bh=kh6JYxSlf07yLnXxLhAi0sbcHOymPJcE5oGvvUlhoJk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=Sj0ZVFWs2wloeBht5caAO5DIRdVVN6aKXvTRn61VzxxmRTbrLsjp96wsgIT6gds+laxau1L+PNDxoyBdYzb9SxIw1c14a2KP4adY8zRn6mr4t26EPzI9KMwekzM8pZmwn9DBRmtvoNWjifm0JPA0TcCiwGhFxfZMTgnCK8YPmvo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=qrator.net; spf=pass smtp.mailfrom=qrator.net; arc=none smtp.client-ip=178.248.233.8
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=qrator.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=qrator.net
+Received: from localhost.localdomain (unknown [10.0.0.0])
+	by mail.qrator.net (Postfix) with ESMTP id 166208802F1A;
+	Sat, 22 Jun 2024 19:41:35 +0300 (MSK)
+From: Alexander Zubkov <green@qrator.net>
+To: linux-kernel@vger.kernel.org
+Cc: linux-newbie@vger.kernel.org,
+	Alexander Zubkov <green@qrator.net>
+Subject: [PATCH] Fix misspelling of "accept*"
+Date: Sat, 22 Jun 2024 18:40:14 +0200
+Message-ID: <20240622164013.24488-2-green@qrator.net>
+X-Mailer: git-send-email 2.45.2
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <4703748.vXUDI8C0e8@mythra>
 
-On  7 May 12:10, Carson wrote:
-> On Monday, May 6, 2024 10:18:15 AM EDT you wrote:
-> > Hi Carson,
-> > 
-> > On  1 May 16:55, Carson wrote:
-> > > Hi, I'm looking to write a device driver for a gamecube controller
-> > > adapter.
-> > > However there are 0 results when i search "hid" or "input" on the mailing
-> > > list. Thanks
-> > 
-> > Use this one: https://lore.kernel.org/linux-input/
-> > 
-> > > http://vger.kernel.org/vger-lists.html
-> > 
-> > Also this: https://subspace.kernel.org/lists.linux.dev.html
-> > 
-> > Best regards,
-> > -	Ricardo.
-> 
-> Thank you! That really helped, I found someone just completed this driver two 
-> months ago! However it seems the maintainer has dropped off the face of the 
-> earth. What should I do? I'd like to help out the contributor who wrote this 
-> driver because I would use it daily. 
+Several files have "accept*" misspelled as "accpet*" in the comments.
+Fix all such occurrences.
 
-First of all, you should "reply to all" recipients when using public
-mailing lists so that your message is seen by everyone involved. Only I
-received this one.
+Signed-off-by: Alexander Zubkov <green@qrator.net>
+---
+ drivers/infiniband/hw/irdma/cm.c                              | 2 +-
+ drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_main.c | 4 ++--
+ drivers/net/ethernet/natsemi/ns83820.c                        | 2 +-
+ include/uapi/linux/udp.h                                      | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-As for the driver, make sure you're contacting the right person by
-checking against the MAINTAINERS file or using the get_maintainer.pl
-script (also in the kerner source directory). For contributing, check
-here:
+diff --git a/drivers/infiniband/hw/irdma/cm.c b/drivers/infiniband/hw/irdma/cm.c
+index 36bb7e5ce..ce8d821bd 100644
+--- a/drivers/infiniband/hw/irdma/cm.c
++++ b/drivers/infiniband/hw/irdma/cm.c
+@@ -3631,7 +3631,7 @@ void irdma_free_lsmm_rsrc(struct irdma_qp *iwqp)
+ /**
+  * irdma_accept - registered call for connection to be accepted
+  * @cm_id: cm information for passive connection
+- * @conn_param: accpet parameters
++ * @conn_param: accept parameters
+  */
+ int irdma_accept(struct iw_cm_id *cm_id, struct iw_cm_conn_param *conn_param)
+ {
+diff --git a/drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_main.c b/drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_main.c
+index 455a54708..96fd31d75 100644
+--- a/drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_main.c
++++ b/drivers/net/ethernet/chelsio/inline_crypto/chtls/chtls_main.c
+@@ -342,8 +342,8 @@ static struct sk_buff *copy_gl_to_skb_pkt(const struct pkt_gl *gl,
+ {
+ 	struct sk_buff *skb;
+ 
+-	/* Allocate space for cpl_pass_accpet_req which will be synthesized by
+-	 * driver. Once driver synthesizes cpl_pass_accpet_req the skb will go
++	/* Allocate space for cpl_pass_accept_req which will be synthesized by
++	 * driver. Once driver synthesizes cpl_pass_accept_req the skb will go
+ 	 * through the regular cpl_pass_accept_req processing in TOM.
+ 	 */
+ 	skb = alloc_skb(gl->tot_len + sizeof(struct cpl_pass_accept_req)
+diff --git a/drivers/net/ethernet/natsemi/ns83820.c b/drivers/net/ethernet/natsemi/ns83820.c
+index 998586872..bea969dfa 100644
+--- a/drivers/net/ethernet/natsemi/ns83820.c
++++ b/drivers/net/ethernet/natsemi/ns83820.c
+@@ -2090,7 +2090,7 @@ static int ns83820_init_one(struct pci_dev *pci_dev,
+ 	 */
+ 	/* Ramit : 1024 DMA is not a good idea, it ends up banging
+ 	 * some DELL and COMPAQ SMP systems
+-	 * Turn on ALP, only we are accpeting Jumbo Packets */
++	 * Turn on ALP, only we are accepting Jumbo Packets */
+ 	writel(RXCFG_AEP | RXCFG_ARP | RXCFG_AIRL | RXCFG_RX_FD
+ 		| RXCFG_STRIPCRC
+ 		//| RXCFG_ALP
+diff --git a/include/uapi/linux/udp.h b/include/uapi/linux/udp.h
+index 1a0fe8b15..d85d671de 100644
+--- a/include/uapi/linux/udp.h
++++ b/include/uapi/linux/udp.h
+@@ -31,7 +31,7 @@ struct udphdr {
+ #define UDP_CORK	1	/* Never send partially complete segments */
+ #define UDP_ENCAP	100	/* Set the socket to accept encapsulated packets */
+ #define UDP_NO_CHECK6_TX 101	/* Disable sending checksum for UDP6X */
+-#define UDP_NO_CHECK6_RX 102	/* Disable accpeting checksum for UDP6 */
++#define UDP_NO_CHECK6_RX 102	/* Disable accepting checksum for UDP6 */
+ #define UDP_SEGMENT	103	/* Set GSO segmentation size */
+ #define UDP_GRO		104	/* This socket can receive UDP GRO packets */
+ 
+-- 
+2.45.2
 
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#
-https://kernelnewbies.org/
-
-Good luck!
--	Ricardo.
