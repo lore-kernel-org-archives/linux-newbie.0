@@ -1,101 +1,113 @@
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com [205.220.168.131])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA19414EC5E
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.168.131
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DA7433F6
+	for <linux-newbie@vger.kernel.org>; Sun, 29 Sep 2024 13:54:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727471917; cv=none; b=nfwcQyYX8oQrzmfrxFRjDZY6KFAhtM8CgbQAE4TAqnDH3avvklkDreGFLjuVQ9CXXhufg278RaZZG1FVmsUKYRYe+OiHr8tFVNmZ6kBMuOBr6MeearfoxkSzzFZn+LnuDxEK3NylBRMFkQgYoWUNlSDAiH3UYhd4hEsdWQAgdWo=
+	t=1727618062; cv=none; b=QEpU57OA2Y88yMIEx+P8Y+OlajvUt905YfEHB9oSxP5T5qZdPZa0xllMhJfbH7Ag4yKj9/vQvqPBaXehEvvGIZ8rjQNfqmQhQ087FV9ghYfMQt0LPrM7et+/8gytfDnwRTxw+r2XU6buRK3d+vw/YN8Yk7Oh2vjOir8KiwAZSSc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727471917; c=relaxed/simple;
-	bh=Dxyf2YhrHdJtfPJohXKI57T4EvDvl9rRkRo/ezLj+n0=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=McJdWfulQ2VYrAoKbn1RDAo5xMMJG6IiHlFZgNY2NOrDfzjZ42Jyks+gvnhK/t/0q9mYgXv8NH7rSduh2Tl8lXZfewjdaDJCpnQWUxpnkkaMxvWwi58nzrQsi2/NQxfFMn7KyOthypxT/sWDVPfpXfhdqaLJsw/tEib37S0aUR0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com; spf=pass smtp.mailfrom=qualcomm.com; dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b=gSoH/vBO; arc=none smtp.client-ip=205.220.168.131
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=qualcomm.com
+	s=arc-20240116; t=1727618062; c=relaxed/simple;
+	bh=6+h+wypUehY1V331DOpHvlIkTxgwJPzkKFLbJ9Liv1M=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=csgbzap9SVdsw9oanDwtYGOqwSi/IDpLM9Dx0y3C56ZmMoKSvU2jJbpB+/FhAAH6Hb1Pej+M5OjvwcwLvbI/EBhLnq0yiK2UMp8DRQlWaNlKhXupEpxw+91c9N/B+NDPWrWtX+rKODBPJKuS+2osXABwr9poNwYvx+otArFldJQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Ursm0/Re; arc=none smtp.client-ip=209.85.218.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b="gSoH/vBO"
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48RGUq0F000546
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:date:from:in-reply-to:message-id
-	:mime-version:references:subject:to; s=qcppdkim1; bh=Dxyf2YhrHdJ
-	tfPJohXKI57T4EvDvl9rRkRo/ezLj+n0=; b=gSoH/vBONLdjtpJ65ENvFOUAGos
-	/uxNrEHGWwP49V5JO/P+MPFg7YfpRc5de236fT0nGquLj4/N65GsUOk9JEzsnwHh
-	s7kQ2K7TultrhTBSri63crL4rnTbzc9VS0HpqzOdmxi/ElMlf/w2IJrsNf/pYmms
-	dWnSlasAVenHzHYUOL8sHgXQjFheueFbSCg0wQj2m8/pOKkjvM1i86Zm0HAtUQ1r
-	uSx89Km2qWJG/H32WqVEEMrUOq1NpOJYhU3BupOtP64+1mlqF3qPNn4bodifA11e
-	e0B5TbW+YIPpQVdYb75QPvY0CnVR1R9u3/lqx1yfXvI+j1Td1qG5HsngSMw==
-Received: from apblrppmta01.qualcomm.com (blr-bdr-fw-01_GlobalNAT_AllZones-Outside.qualcomm.com [103.229.18.19])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 41sqe9kx53-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:32 +0000 (GMT)
-Received: from pps.filterd (APBLRPPMTA01.qualcomm.com [127.0.0.1])
-	by APBLRPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 48RLIS1Z024456
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:28 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by APBLRPPMTA01.qualcomm.com (PPS) with ESMTPS id 41sq7mt1p4-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:28 +0000
-Received: from APBLRPPMTA01.qualcomm.com (APBLRPPMTA01.qualcomm.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 48RLIRgu024451
-	for <linux-newbie@vger.kernel.org>; Fri, 27 Sep 2024 21:18:27 GMT
-Received: from hu-devc-hyd-u22-c.qualcomm.com (hu-wasimn-hyd.qualcomm.com [10.147.246.180])
-	by APBLRPPMTA01.qualcomm.com (PPS) with ESMTPS id 48RLIRgR024450
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 27 Sep 2024 21:18:27 +0000
-Received: by hu-devc-hyd-u22-c.qualcomm.com (Postfix, from userid 3944840)
-	id 8B783587; Sat, 28 Sep 2024 02:48:26 +0530 (+0530)
-From: Wasim Nazir <quic_wasimn@quicinc.com>
-To: quic_wasimn@quicinc.com
-Cc: linux-newbie@vger.kernel.org
-Subject: Re: [PATCH] DNM: Testing few things
-Date: Sat, 28 Sep 2024 02:48:26 +0530
-Message-ID: <20240927211826.4168793-1-quic_wasimn@quicinc.com>
-X-Mailer: git-send-email 2.46.1
-In-Reply-To: <20240927205940.4164876-1-quic_wasimn@quicinc.com>
-References: <20240927205940.4164876-1-quic_wasimn@quicinc.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ursm0/Re"
+Received: by mail-ej1-f46.google.com with SMTP id a640c23a62f3a-a8d3e662791so277660466b.1
+        for <linux-newbie@vger.kernel.org>; Sun, 29 Sep 2024 06:54:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1727618059; x=1728222859; darn=vger.kernel.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4uvWVmMOrRt0zn0L0vnlwFXHX9V6BceDS8dhHuSUCBk=;
+        b=Ursm0/RepwU4PK6AxkNl2oB8q8NFZUfapqf23RktOYCRgRhemzbvYiKAhKacG7ooOQ
+         x2jh/UPoGZgBmaPswr31Ec+oNkuz/DAm+VylxHExR23+1mzXOAF6jm46fZdEUT4bjCwH
+         ujW0F2XFOTr09ZnS8LtU2Il4PxThhXUoGqqswuv007rc2A2ZKwKf83bKJHGZkUYVaO+a
+         FxbCr/I34hV40p1l/mVGBYOeO3k7uYYUQgvWQFrrXS1osS5xe3por5HtzS3pMafdx+wY
+         JkYbbE8sMKhS6Do1Bap9MZzMJshl8juA1zwJng77+PtBjRbcAtnl0uxU8izGV7XekvH9
+         pwAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1727618059; x=1728222859;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4uvWVmMOrRt0zn0L0vnlwFXHX9V6BceDS8dhHuSUCBk=;
+        b=TgRXKfZDPZ70yNEdr1sDa+BJ4Eu+6Owv8v8lTNjIKZQEEAyi5zNFHD49E50b4ZXGGh
+         XBZJ7+R8pBlLh13kdQBD5rquWZ3hxqz5HDaAhqIGym3DUrmdK25mU0T/AcElNyMeoEjC
+         TEIUzsc4hgUIawjxKzmD7OMorPl92Tqb5XAdSZ/5vUAnsSH6NcU70wce87gaQdwIuRjy
+         R0lNkMu4jJDzvte1JG1xksLD3H4cEVa/G917xT/pZHh3XvyK7jSK/Sp08N/CobxlxUZJ
+         KhL53cwHQp3/VsUC2tPsAN8SUSQnKWZDkYG5ZuXrpArQ6RZemJRfTjguV7e96jaIQDH1
+         f9kA==
+X-Gm-Message-State: AOJu0Yx9WieHNM+CS+RTqL1+QhrOhWfRvrpEs4RZNlQJSVfyYIAPXhlT
+	PYd//o+q+z/czen/+ZMgBHVQpEqj6BQR0IOltFhIlbxO2Q17leAeVIwmfuNO
+X-Google-Smtp-Source: AGHT+IFiHQf++vxiVHB0VO8/Fq08v9MOz01ns1RfdQD2pDWkUPjHPNV/bvjbE9CMmPvtscHjvpDQ5Q==
+X-Received: by 2002:a05:6402:34c4:b0:5c8:8d5e:14e1 with SMTP id 4fb4d7f45d1cf-5c88d5e1598mr6974716a12.15.1727618058888;
+        Sun, 29 Sep 2024 06:54:18 -0700 (PDT)
+Received: from gmail.com ([45.250.247.85])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c27c5c73sm378489966b.64.2024.09.29.06.54.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Sep 2024 06:54:18 -0700 (PDT)
+Date: Sun, 29 Sep 2024 19:24:12 +0530
+From: Brahmajit <brahmajit.xyz@gmail.com>
+To: linux-newbie <linux-newbie@vger.kernel.org>
+Cc: alina_yu@richtek.com
+Subject: value overwrite in rtq2208-regulator.c: Overwriting previous write
+ to desc->fixed_uV with value from init_data->constraints.min_uV
+Message-ID: <dkg6c2stonolj2ffcvybyu3lztg74hpqdu3twfx2oyjutxyaes@jbwefoqlxrog>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-QCInternal: smtphost
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: _lPXYD43YZyA8Nu2uuS31VoopkoWsLiK
-X-Proofpoint-GUID: _lPXYD43YZyA8Nu2uuS31VoopkoWsLiK
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- mlxlogscore=560 spamscore=0 lowpriorityscore=0 adultscore=0 mlxscore=0
- suspectscore=0 malwarescore=0 phishscore=0 impostorscore=0 clxscore=1015
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2408220000 definitions=main-2409270156
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 
-diff --git a/Documentation/testing.txt b/Documentation/testing.txt
-new file mode 100644
-index 000000000000..7c3087596ba8
---- /dev/null
-+++ b/Documentation/testing.txt
-@@ -0,0 +1,12 @@
-+Testing few things:
-+
-+Line1
-+
-+
-+Line2
-+
-> Global comment on line2
-+
-+Line3
-+
-+
-+End
---
+Hi Alina,
+
+In rtq2208-regulator.c I came across this code segment
+
+if (!ret) {
+	if (fixed_uV != init_data->constraints.min_uV ||
+		fixed_uV != init_data->constraints.max_uV)
+		return -EINVAL;
+	desc->n_voltages = 1;
+	desc->fixed_uV = fixed_uV;
+	desc->fixed_uV = init_data->constraints.min_uV;
+	desc->ops = &rtq2208_regulator_ldo_fix_ops;
+} else {
+	desc->n_voltages = ARRAY_SIZE(rtq2208_ldo_volt_table);
+	desc->volt_table = rtq2208_ldo_volt_table;
+	desc->ops = &rtq2208_regulator_ldo_adj_ops;
+}
+
+As you can see we are setting the value of desc->fixed_uV twice. Is this
+intentional? Because it looks from commit af1296d15d890 (regulator:
+rtq2208: Add fixed LDO VOUT property and check that matches the
+constraints) we only need desc->fixed_uV = fixed_uV. Isn't the second
+assignment (desc->fixed_uV = init_data->constraints.min_uV) making the
+previous one (desc->fixed_uV = fixed_uV) obsolete?
+
+I might be wrong but it seems like it should be something like
+
+--- a/drivers/regulator/rtq2208-regulator.c
++++ b/drivers/regulator/rtq2208-regulator.c
+@@ -384,7 +384,6 @@ static int rtq2208_of_get_ldo_dvs_ability(struct device *dev)
+ 				return -EINVAL;
+ 			desc->n_voltages = 1;
+ 			desc->fixed_uV = fixed_uV;
+-			desc->fixed_uV = init_data->constraints.min_uV;
+ 			desc->ops = &rtq2208_regulator_ldo_fix_ops;
+ 		} else {
+ 			desc->n_voltages = ARRAY_SIZE(rtq2208_ldo_volt_table);
+
+What do you think? Please feel free to correct me if I'm wrong.
+
+Note: This is my first time communicating on the mailing list, please
+excuse if I broken any of the mailing list etiquette.
+
+-- 
+Regards,
+listout
