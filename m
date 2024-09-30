@@ -1,55 +1,55 @@
 Received: from mail-pf1-f178.google.com (mail-pf1-f178.google.com [209.85.210.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 208E51741D1;
-	Mon, 30 Sep 2024 10:35:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5845D1CFA9;
+	Mon, 30 Sep 2024 10:44:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.178
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727692532; cv=none; b=GPJWFjw1MIm+CPfchAmHO02D+cpsMvJTmniTW+L9j17YclCVXP+B+4A26sPjD/0uGFpntBHc7CxPzjULEeG5jZWuICNKVz/bmU9rVU/+LMb7AV5nXcXcg9VcwDJ1z2rEuzIq8FIQo8g92RJSOX9eStHaAAIydJTZuHAVwseglxc=
+	t=1727693062; cv=none; b=nT8UdEzopQ51N57y7PHZ90bTLqo88eIAetKRAu1xJo45ll4ha22VZx2jmr3Y2D6x8Q7VDLd9+xjHIBKVATDGsTWMSYF7hPJm8pEfAfs7Szn0oHtf64XZMrX+WptzHpWAVitcsTNTmeu0F4OFhanmQRUAr6KanUDvj93Xp4tEymc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727692532; c=relaxed/simple;
-	bh=xDoQkeunACq9RTNUefkWmnh7ul/d/CPAzvNoFEo2V30=;
+	s=arc-20240116; t=1727693062; c=relaxed/simple;
+	bh=iIJXuaoWS2dCefQqpt3EjOOTIrXnDZ8TgOEpxiksat4=;
 	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=vGd9vqxRVHHspGiBfAqk8hbDNEGhzvd23pozOuciF5mA4SXDsIMKvS4GHE5HXgluOabVPlWR5++hHN/4WYHBgJ82e+9TgZyze1q/wO3ahSrf0VOp5vhPWCe9LwfeQGz6A5c47VKfbr0Y0b6yE0FZuoM6H67udBu57Q96fNo6GYc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=BJgmKAZ2; arc=none smtp.client-ip=209.85.210.178
+	 To:Cc:Content-Type; b=WdmduJ/kRV9ajeXL1+1mvm2Kc3qqW8jntrZEtlPxvEkZJSQxEgXJ0CBpNRGbkNjRGk2GVU8bHP+hQJeKPZIBEIYfvUrRcdw01xwSscxVkX4T+/5kWTBB5lv4TF+qqGccYqjuWCyo2m1ICL0G58TEDRPg2CxA3zN75HnQr8SmxR8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=jxAOIwmu; arc=none smtp.client-ip=209.85.210.178
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BJgmKAZ2"
-Received: by mail-pf1-f178.google.com with SMTP id d2e1a72fcca58-71b00a97734so3624809b3a.1;
-        Mon, 30 Sep 2024 03:35:20 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="jxAOIwmu"
+Received: by mail-pf1-f178.google.com with SMTP id d2e1a72fcca58-717880daae7so222066b3a.0;
+        Mon, 30 Sep 2024 03:44:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727692520; x=1728297320; darn=vger.kernel.org;
+        d=gmail.com; s=20230601; t=1727693060; x=1728297860; darn=vger.kernel.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=xDoQkeunACq9RTNUefkWmnh7ul/d/CPAzvNoFEo2V30=;
-        b=BJgmKAZ2joC2T0DBlSaiQYUJeKH6CXm7Z3iHDBDfgf9qtxxi8QOyId7e7sKhf8p18N
-         NuzKhyxaGGwZOBCzzoVRq/Q5PutvLNqy2m7JNz/QNPyp/gjA9JgXNjphGVXXCoOq0/7U
-         eHupHsEepOlEHqsm+9ow9jK7N7/8rMS1e+9fQ+/aDe7R+pwFRMVAOw85QQWG04TZ2MwE
-         2Zd0K5hUKQsCA2auCLrMLi8dp0IqRRib7FNjA1607aa6T8KZANB2nb1o8sth0iqxtSFP
-         Onf7h8Shy8LsjQukOWtsNCx24dxuCLy33RvWI67ZZNUjW2xTHdkZ0Oyc0xvZayuGfzD1
-         e4DQ==
+        bh=iIJXuaoWS2dCefQqpt3EjOOTIrXnDZ8TgOEpxiksat4=;
+        b=jxAOIwmuRT3usKWEIy5wSXJshxKJKS0ss1Uwp9d76VPJCdT7VsmFXfxkAglyw5ZTgA
+         nBjc/UguOw1R/WRdS8hzhbXVKuR/CbPcnB00eaSPTpCsQx/eyfnqNufZbGa0loY504j8
+         0KhD45RRe7Bn/xTbFWnqJa1FPRoVCc9kA0fhNonWpiCURV3tMDNdlJoawxZ/IK/UufrW
+         6TG78M7k/t7I0RlzPGSLqexwQbAI5fvlifNzGLbHl+h1hgOrrDETVePGBmLagXyvd8Nj
+         zfTB3BIVR7BposzO29xrow3+BT2d5ZySAzalZfkcMwiC9VRhCQqIwVjuZ3uMJtUF3Yk6
+         fjpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727692520; x=1728297320;
+        d=1e100.net; s=20230601; t=1727693060; x=1728297860;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=xDoQkeunACq9RTNUefkWmnh7ul/d/CPAzvNoFEo2V30=;
-        b=mRcPiOb6WH60PXTlukbI9fSi9ge7iO9vmRps/wjP1fnf4297+V2YCn0eSr7rGEGYek
-         K3sNEgpESttNANLHMOgWEy1P/dQjbD5pbs4U7J8P4G14CZP6oQAqFwF0t8eOUzUY692R
-         V8+F1N8aiLHrZYRa3VYFjEU+HYdSBrCVvUI/UzdqYKr4gO+R9U/Tjyq3B1Isz58qvnwq
-         tkKHh3oTg2Q9GVRiMZuBGamN48qIJ4+QZ9GQkeqxowyPmzRlWdEZQurWX8aMmEsOCm0H
-         lGHkTFnIaGRMcK3hlcM9e6BdMXzVmRtnmzcdAgXtUzic9KLqcQEsBwkYkRfjQE/GpBNd
-         mohQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUAw11HLk5eCDxkfZBsjdyjV2kVMeenXtssNMt8QfGQIQyy0MJ3J6sauM7wuG50swNVjLtxUze8iI1fKlI=@vger.kernel.org, AJvYcCXBSRBmtvGaJ7dLNRBBTpT7Pe+JsYNINWUK4x78FEzSQODNfuEJgYuA2stIPb6oOi6CuCT7ebJNWRZveooq@vger.kernel.org, AJvYcCXrRh0YKV06Ldzfps4R/3jICRg7fxin3DfrkjyAVqVreNZd4OXgJlqytx0KI0LYbYvcVpH6IO6LSp1dHEGPRo4=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzW39JGdA4Oawtpe+6+TsrquN2Aa+4HLQoFDSbxTvHRFtKrZ3/L
-	/GfPS279V1hqjSayWCEsdiaDlzXSodrcX8Ncr1tMFj9OEX+drW5+2PICtX8COzveU7f6nr58H8F
-	jNbhtFGEbA7FuFCU0E66A+cTQS70=
-X-Google-Smtp-Source: AGHT+IElmg/UmN13hVhzMhg26sMLrTxWTmuCjrIpxUD7Q3MrV6kqCSdFAf6UhNnuRY+RaLn/nv7Qi8+DXcSuojvohtg=
-X-Received: by 2002:a05:6a00:3cce:b0:714:2533:1b82 with SMTP id
- d2e1a72fcca58-71b260776d3mr20103715b3a.23.1727692520256; Mon, 30 Sep 2024
- 03:35:20 -0700 (PDT)
+        bh=iIJXuaoWS2dCefQqpt3EjOOTIrXnDZ8TgOEpxiksat4=;
+        b=BAGsbJg0lMk+nqd60V1qVQkPyDT9gu/q/Aeh/16v4VdgVtSt+UoM9tnEsqQFJBM3GW
+         yzyE5xITWMZOU6PuOOek0wPU8+Y+ATeViXlJDvskPrbVTXQwBLShlsF62igYL7Tlz4UI
+         PlYiinVGS5tqUXPzMOot9UwrcLryst07Q7AUTM13Fm6AFKmYPN4WAh2Fbf2dGISV/2ef
+         2kCpJxoen5F3qivXar9tqhg35j+iFryQHiF3YwhpJPx2MqqjwUbY7NfG2XYKjEeJvGao
+         yqCdRCP3yWJXFnExUiFC4mYMRRpGRKDhJ7SUWwpSVnYfmX2fyM1GW8ZUKeC09KIQfMI7
+         8VXw==
+X-Forwarded-Encrypted: i=1; AJvYcCVzxkuc0/q1ihjrQHHgoIkHOgAkqaPXSSWWMgnEXC1akBZtsja2zlmEaPeIKeV1P3BMLgVBonvj5XKfy1VGmAw=@vger.kernel.org, AJvYcCWjodTBuRYmk1SG2LYjETVJGFz4ERab9NBBhYNB2rACpR0sNOrzY2bkBdayWUX7soGXoSYPxJmgnfTxyrxi@vger.kernel.org, AJvYcCXEp8tj9gv8Ch4N2qK8yvwN+trrJUvbcOcbmH+aBQT/IWub+RFHnFO8ELlTpllFxhDZYzbiySi7FhLGlpo=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwawYYyRBacM1pTKzG17VszO7KKlWoTYGWtvt6A5aH8voRA0L2e
+	6bV0MoL7B9TqvFiuAueH0ohew8NIa/3NdyVfYLDhW5y63Sp1rkyok8Tukj2R7mG/sOc69ZblcRC
+	AgSYz9pvfBHoX+OBHVi6aaS3fTg0=
+X-Google-Smtp-Source: AGHT+IHdnqIBrpEVdt86IggSYvKBA5wsLTFvf9YYCZxuv8g2PGuDbmINu5ve0jT+N9rkVZeRX+RZ3EH6nrHnSuRD7jk=
+X-Received: by 2002:a05:6a00:3d50:b0:71b:64c:813f with SMTP id
+ d2e1a72fcca58-71c636cebfdmr4725427b3a.6.1727693060569; Mon, 30 Sep 2024
+ 03:44:20 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
@@ -58,44 +58,45 @@ List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 References: <dbb63b5698aa507bbe3dec54b4458a3f151899d3.1727606659.git.hridesh699@gmail.com>
  <bf6544faba2b53ce901b2e031f3d944babcc7018.1727606659.git.hridesh699@gmail.com>
- <CALNs47vT=g2D7A_cDq_8F2xJRJTK-7KtQY4brFYfkopyCSjLTw@mail.gmail.com> <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me>
-In-Reply-To: <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me>
-From: Hridesh MG <hridesh699@gmail.com>
-Date: Mon, 30 Sep 2024 16:04:43 +0530
-Message-ID: <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
+ <CALNs47vT=g2D7A_cDq_8F2xJRJTK-7KtQY4brFYfkopyCSjLTw@mail.gmail.com>
+ <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me>
+ <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
+In-Reply-To: <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
+From: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
+Date: Mon, 30 Sep 2024 12:44:07 +0200
+Message-ID: <CANiq72nKBz1myZi5guA5uPCwwtUvjfF80dOx5saHvjMU-g6mpw@mail.gmail.com>
 Subject: Re: [PATCH v3 2/2 RESEND] checkpatch: warn on empty rust doc comments
-To: Patrick Miller <paddymills@proton.me>
-Cc: Trevor Gross <tmgross@umich.edu>, linux-kernel@vger.kernel.org, 
-	rust-for-linux@vger.kernel.org, Andy Whitcroft <apw@canonical.com>, 
-	Joe Perches <joe@perches.com>, Dwaipayan Ray <dwaipayanray1@gmail.com>, 
-	Lukas Bulwahn <lukas.bulwahn@gmail.com>, Miguel Ojeda <ojeda@kernel.org>, 
-	Alex Gaynor <alex.gaynor@gmail.com>, Wedson Almeida Filho <wedsonaf@gmail.com>, 
-	Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, 
+To: Hridesh MG <hridesh699@gmail.com>
+Cc: Patrick Miller <paddymills@proton.me>, Trevor Gross <tmgross@umich.edu>, 
+	linux-kernel@vger.kernel.org, rust-for-linux@vger.kernel.org, 
+	Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
+	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
+	Miguel Ojeda <ojeda@kernel.org>, Alex Gaynor <alex.gaynor@gmail.com>, 
+	Wedson Almeida Filho <wedsonaf@gmail.com>, Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, 
 	=?UTF-8?Q?Bj=C3=B6rn_Roy_Baron?= <bjorn3_gh@protonmail.com>, 
 	Benno Lossin <benno.lossin@proton.me>, Andreas Hindborg <a.hindborg@samsung.com>, 
 	Alice Ryhl <aliceryhl@google.com>, linux-newbie@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Sep 30, 2024 at 8:11=E2=80=AFAM Patrick Miller <paddymills@proton.m=
-e> wrote:
-> After the latest revision of my patch [1], I split the if statement so th=
-at
-> there is a parent check for rust files for future rust patch checks. So,
-> this would perfectly fit within that block.
+On Mon, Sep 30, 2024 at 12:35=E2=80=AFPM Hridesh MG <hridesh699@gmail.com> =
+wrote:
 >
-> Do you want me to add your code and credit you in my patch?
->
->
-> [1]: https://lore.kernel.org/rust-for-linux/20240914181618.837227-2-paddy=
-mills@proton.me/
+> However, I was curious how conflicts like these are generally
+> resolved. For example, if there are two large patchsets which conflict
+> with each other, how does one ensure that they are compatible, and
+> even if they are, how do the maintainers ensure that they are applied
+> in the correct order?
 
-Please disregard my prior email, I had failed to CC everyone. Since
-the change is small I'm okay with adding it as part of your patch,
-please do add the Co-developed-by tag, thanks!
+The maintainers will usually figure it out (resolving the conflicts
+when they apply them, applying them in the right order, etc.).
+Otherwise, they can also ask for one of them to be resubmitted on top
+of the other when it is too involved / subtle / large series.
 
-However, I was curious how conflicts like these are generally
-resolved. For example, if there are two large patchsets which conflict
-with each other, how does one ensure that they are compatible, and
-even if they are, how do the maintainers ensure that they are applied
-in the correct order?
+If you are aware that you need a patch to be put on top of another,
+then you can rebase it yourself of course. Just please make it clear
+in the cover letter (or after the `---` part) what the patches apply
+against.
+
+Cheers,
+Miguel
