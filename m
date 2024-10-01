@@ -1,97 +1,89 @@
-Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com [209.85.215.177])
+Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com [209.85.218.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5B4F818E74C;
-	Mon, 30 Sep 2024 12:30:52 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.177
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3397AC153
+	for <linux-newbie@vger.kernel.org>; Tue,  1 Oct 2024 06:15:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.49
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727699453; cv=none; b=sOuzyyG49HD5IJvuFLFKbVP9pYSdspWFQQKehPFXdSGoT3tYfrUy7QGOMegQ8lznrpnEDBduyaMFUuykyXtKn6+miSZnK3Q0OtA3+txLPlk6ZIcwM4QFHj6OmpeAGsbv8iDubQA3YdzBBsFLF8z55G+4xsrRs4JlJz/flbiOHhg=
+	t=1727763328; cv=none; b=ON6W+YPIvG7mKK6qv4NYa/5Y2UuWPrzrM5WWRwdAmXRl9cfI+pl3nKKyf+ZydJDPS6nAiZ2418txiQv2AweZ4x0VuPvzjQBd0pCn9Cxf8ObnPBWO6tP0A6/5QyxOk++ohu7BmwdV3PbwJ9Ke7NT1wajmhSfZOKgR7dnHOPC6rCk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727699453; c=relaxed/simple;
-	bh=JHS1J2LCC4y1JvWfah/JnzV/iZbvXNQwG4RLNH7tV9s=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=mgZOWLd7qM33KsTmE+47Ugt6CyqgPOl52POvfBOep8neemdxRHvS19hmfDFXLnlHFCpBmMAf3sTRPvr6IR4Vn3tdIvBhEmXOOuJeizlo01tBXT+/2rj1zteEXsMQlsWF5mD2zB+bHgpNdXlMfb8qyFet7QTJ3kQ5mOgAnHpZ3BI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=lL7cVKCN; arc=none smtp.client-ip=209.85.215.177
+	s=arc-20240116; t=1727763328; c=relaxed/simple;
+	bh=N7BGnh5ikDw6+bXvfrqeNOrst4YK5b/+5jaNkq2j3Yg=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=WA8XORfQSF3VlRqjVeuRio6/t936WPLX5mNGy5W3mAuNQccR3AauRGABa2CmykOfEbhPRyyjOWyC76Vyp6r9bf1WigJKp9uf68PwiahjXsYKV1e2MNVhsvIeaLhIH+0fQBibBxhhWTNIqC35hyQRwkfJBoyFng5unEDQOuB8en4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Y+Z4AnLt; arc=none smtp.client-ip=209.85.218.49
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lL7cVKCN"
-Received: by mail-pg1-f177.google.com with SMTP id 41be03b00d2f7-7db238d07b3so3640481a12.2;
-        Mon, 30 Sep 2024 05:30:52 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Y+Z4AnLt"
+Received: by mail-ej1-f49.google.com with SMTP id a640c23a62f3a-a8d51a7d6f5so677299466b.2
+        for <linux-newbie@vger.kernel.org>; Mon, 30 Sep 2024 23:15:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727699452; x=1728304252; darn=vger.kernel.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JHS1J2LCC4y1JvWfah/JnzV/iZbvXNQwG4RLNH7tV9s=;
-        b=lL7cVKCN84+eGWaEtSjb8tKAXz6R4EtSyPktX+j4m41//++YrXQAXvYNov3gfCJ1cf
-         oRyXRiZT+MDpNwWx1g1oVDBTuR8efauvkUBS5U1hJEHOUI+mBz8SUI6vyNp2Ltpz52kj
-         RAYuORg6Z/LTmR4UJQzAHAuh+RCExbVFi8BHObgMHecHmLVZcD8CRClFChsJSAPZrMRa
-         1JNK1ebKR/5KofsPXIN/3IoUoX5jkaAgF6F47oAmaTsdv/pD4F9GVdosWOZ696t2fGah
-         57LptUv1BzpkWB2QaLonhW1ARThyneDFsVxO2G2/AyQQmzdEllU+edrEY53ykodjEYIV
-         Q0Sg==
+        d=gmail.com; s=20230601; t=1727763325; x=1728368125; darn=vger.kernel.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VtAeest+JqIC5t8eUvKiDxjohJrFORYtbAAsmoPWx/Q=;
+        b=Y+Z4AnLtgzzoSaD0MvcRkTm1hTIQn7gBb7//6/MIl7gXxrABDdD3t0j7VnrF/zL0wp
+         oRt+EAV8LoQqkPn2GruZAd5mDX1wh+Vcqa8vrotFphYGTRo2nRA3PhLH32CUrr8+QCOG
+         VSqDi44WHwyrckGRAxTEwQcwWxk7Fa19glKhMbyGsqmJ+QzTJrZXgo2g90VyreN+Azqq
+         5coQPkFUx6tAkbzXZHj9ANxvWP71kadmM/A6x7t2hlxkey6Pu9sMYX3HpGtFi5F44wlH
+         BUDlHqcH3Dbf6bcQRxLSodbUw7V35lINOy6Dmr4bE0Q5tlLSklNbiTPMnmOoyN3twWjO
+         BRHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727699452; x=1728304252;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JHS1J2LCC4y1JvWfah/JnzV/iZbvXNQwG4RLNH7tV9s=;
-        b=MJA4UElwCWRKigJSr6Tc/A5RMXaO/MjkEz+Q/z1UhchxGdpxZ/b/3g41z0pk/leBtU
-         JZv9bvI9zQfBjMb+8O8biVlVzFl5INlmetXKPj3k5GX1alFsbVFHsKKFWUsugU93jQX+
-         i7+/bw41OsqveEN1RTfSqE83uE/KzmLxnLSml2xzGpymfpwYzxxWu56HmqV2Qfqx66jZ
-         gEUR79GWGluhU9lF0R9LSR74vMi7l+dXfLkms3BktAooOl6SCY5YpJmzv7ihbCtoWUa8
-         7FRL6t/m3AtDRLbxHFnxLAvT2D+j8XcoG8qsB6f/1QNZctxqwiZ3GwhWNcAI0dIhBy2s
-         ARXA==
-X-Forwarded-Encrypted: i=1; AJvYcCUCpkI4/hMd6nRRIZv2QwSTTljEmCpiuk71svmjyAdxjVKtXYXwpHI9e0Zs9zQ783z6vWZf0T9uygjgjWC+@vger.kernel.org, AJvYcCVXQ6gtfhF/tBjeseGS+WMnGDUMF6C7yEcVIhNJJueNxhQQr/OPvDMt1+LG422m2wtBiMjxhiOFg5NTn/cECr8=@vger.kernel.org, AJvYcCVehKT/u43OgTR08t5jlq1yp3JVu5DrXebSPeFmAaJ7q3z3Hk2cvnj8NCPjU3mgwW8uLCcKnRDXatMXVq8=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzH6tdDRegxRJNT6szjlO/gZJzfv0ZkNm/7YvzjHMdEHjUzlFfX
-	PR91hlxnEi4yHBm6lvCYgqghI0sDURPFiMc4HF5CyN/mhuXzrFuNQkKs9xTenpqy3fDtQ6W+xhM
-	DnZV1iYyefCr8poJxI/T0XxZt3CM=
-X-Google-Smtp-Source: AGHT+IHUatEutpRcdTkAANYnzh+h3ShdIBjwL9u2uMoKo5imHw2SUtanHSnopjgUdpJWKHsSxuP35P/ChAY2Ldo5lzw=
-X-Received: by 2002:a05:6a21:4d8a:b0:1cf:6ef0:c6b9 with SMTP id
- adf61e73a8af0-1d4fa78b402mr17640884637.32.1727699451515; Mon, 30 Sep 2024
- 05:30:51 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1727763325; x=1728368125;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=VtAeest+JqIC5t8eUvKiDxjohJrFORYtbAAsmoPWx/Q=;
+        b=Z1u268+J4jt4O0Ho9FmiTcvh+Ctd0fhZcXxE5vNPzWw+CdUBomRDPfb75hKmf6Y/lU
+         9TKJhayEYqXIs5ePzFrEjdEGRLa+h/FKQ1K3WshKAp+TmjU6gG8kWe/eSiEcM7u7WuIA
+         rVPRpF+18jfPUPMRfgULFZ7coEaY1yLDHz0fq93S/vn7BsjtbkFWgu3eg/+04KMy9KVe
+         bZIFyW87Kn6VFVJaqD4woawBgCETKDx2tVc5JxpMxjvxyGYuunNTuu52wdsNm1ChmJW7
+         wSLn05G47ZCYLst1kSJmetgu3H7ehX6BkmvMUYlTysOauSeSrZgJ8ZXzkmTLxEVj5mPy
+         x59A==
+X-Gm-Message-State: AOJu0YyitmXo7k/XKG2iKvWLaK1s07k2nqRwmmdtkqc2OWtxatmoKp2e
+	OJepJinVvrMkkaYr5Ua2dGQREnzSldbZlIdYr2PCAzhGkg14YFvog2dTw4J+
+X-Google-Smtp-Source: AGHT+IFWjVvu2pWBUltz2k8Z4A3Otn4HO8AAkgYqlwAowsLFqMmAzBkXJm1GDo7GNxYv/XED2NVU+w==
+X-Received: by 2002:a17:907:3e9f:b0:a8d:4e13:55f9 with SMTP id a640c23a62f3a-a93c4919a9dmr1560190466b.19.1727763324890;
+        Mon, 30 Sep 2024 23:15:24 -0700 (PDT)
+Received: from gmail.com ([45.250.247.85])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a93c2947a86sm642055666b.124.2024.09.30.23.15.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 Sep 2024 23:15:24 -0700 (PDT)
+Date: Tue, 1 Oct 2024 11:45:18 +0530
+From: Brahmajit <brahmajit.xyz@gmail.com>
+To: linux-newbie <linux-newbie@vger.kernel.org>
+Cc: ville.syrjala@linux.intel.com
+Subject: Build failure with GCC 15 in
+ drivers/gpu/drm/display/drm_dp_dual_mode_helper.c
+Message-ID: <6pg5msxdt2p3ycdamahhf2ojxtn3nnrilzlnqv7zwv6mfzx3gy@k24avbsop6yq>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <dbb63b5698aa507bbe3dec54b4458a3f151899d3.1727606659.git.hridesh699@gmail.com>
- <bf6544faba2b53ce901b2e031f3d944babcc7018.1727606659.git.hridesh699@gmail.com>
- <CALNs47vT=g2D7A_cDq_8F2xJRJTK-7KtQY4brFYfkopyCSjLTw@mail.gmail.com>
- <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me>
- <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com> <CANiq72nKBz1myZi5guA5uPCwwtUvjfF80dOx5saHvjMU-g6mpw@mail.gmail.com>
-In-Reply-To: <CANiq72nKBz1myZi5guA5uPCwwtUvjfF80dOx5saHvjMU-g6mpw@mail.gmail.com>
-From: Hridesh MG <hridesh699@gmail.com>
-Date: Mon, 30 Sep 2024 18:00:14 +0530
-Message-ID: <CALiyAokoDKLdZD5j-zjfheyQEz6Zy1bGyGhRFp-NmoKRGYUMmw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/2 RESEND] checkpatch: warn on empty rust doc comments
-To: Miguel Ojeda <miguel.ojeda.sandonis@gmail.com>
-Cc: Patrick Miller <paddymills@proton.me>, Trevor Gross <tmgross@umich.edu>, 
-	linux-kernel@vger.kernel.org, rust-for-linux@vger.kernel.org, 
-	Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
-	Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, 
-	Miguel Ojeda <ojeda@kernel.org>, Alex Gaynor <alex.gaynor@gmail.com>, 
-	Wedson Almeida Filho <wedsonaf@gmail.com>, Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, 
-	=?UTF-8?Q?Bj=C3=B6rn_Roy_Baron?= <bjorn3_gh@protonmail.com>, 
-	Benno Lossin <benno.lossin@proton.me>, Andreas Hindborg <a.hindborg@samsung.com>, 
-	Alice Ryhl <aliceryhl@google.com>, linux-newbie@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 
-On Mon, Sep 30, 2024 at 4:14=E2=80=AFPM Miguel Ojeda
-<miguel.ojeda.sandonis@gmail.com> wrote:
-> The maintainers will usually figure it out (resolving the conflicts
-> when they apply them, applying them in the right order, etc.).
-> Otherwise, they can also ask for one of them to be resubmitted on top
-> of the other when it is too involved / subtle / large series.
->
-> If you are aware that you need a patch to be put on top of another,
-> then you can rebase it yourself of course. Just please make it clear
-> in the cover letter (or after the `---` part) what the patches apply
-> against.
->
-> Cheers,
-> Miguel
+While building the latest stable release with GCC 15 I'm getting an
+build error with (I'm guessing) the drm module. This is probably due to
+combination of GCC 15's introduction of a new warning
+-Wunterminated-string-initialization, -Werror and -Wextra
 
-That makes sense. Thank you for the clarification, Miguel.
+In the drivers/gpu/drm/display/drm_dp_dual_mode_helper.c file there is a
+code section on 163
+
+static const char dp_dual_mode_hdmi_id[DP_DUAL_MODE_HDMI_ID_LEN] =
+	"DP-HDMI ADAPTOR\x04";
+
+Its from the is_hdmi_adaptor() function.
+I read a little about C strings and it seems like we are assigning more
+than 16 characters to the array dp_dual_mode_hdmi_id, and
+DP_DUAL_MODE_HDMI_ID_LEN is defined as 16.
+
+I'm guessing this has something to do with how termination happens in
+char array vs char* and/or null termination
+
+-- 
+Regards,
+Brahmajit
