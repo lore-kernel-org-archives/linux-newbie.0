@@ -1,112 +1,132 @@
-Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com [209.85.218.52])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail-4316.protonmail.ch (mail-4316.protonmail.ch [185.70.43.16])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 928E019C556
-	for <linux-newbie@vger.kernel.org>; Tue,  1 Oct 2024 14:37:04 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.52
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 92771802;
+	Wed,  2 Oct 2024 02:17:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.70.43.16
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727793426; cv=none; b=Nmh1cRNnM8DMVl1JU0NkVPCm+j3tuGdiVZRYnrgr4OofZvDuGLRKhKo/KfvyuDwrCRr1vpbVs3et4sLdJZHcF4+5YBnQkzH4/pjOacB+Fl1gYvjDPOyNWkp8RNrcyLTQUhOk1dm2BfOxcR8DBNG0iHQm4VTCydHJSyAZGglIHlc=
+	t=1727835442; cv=none; b=BQrLZJ9nrWQZH0vVXAeD55EmKI4/kq5zpiut7zqVNYjIsSNeu9yOj3+xd0++xxT5ijKpIJ8lMHLXY66y9TJz940ClhSC3DAqHSYUOF93PsuNxh7DCw5PKir6vbGQKsDPb5Gck33KxmmiFVHKSbC+2+AbRp41rR/FvFwBUaY/Lwg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727793426; c=relaxed/simple;
-	bh=qQEIftptqHQUazEYMGef9Y8gqIi6n38P70XqAlISW38=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=GQirx3NHUz6E5fVGAH2tOCA5RsyWDcbtLlSqdg+qiiFBMtG2rFKZ/9qmoh7ld+eUb3FYT6yVa0Y5DY/qGRmc8P3DF+PZX6xTzFXJup8gx6zebmST1tNjdJluiR7RgdY+ZGNOUogQCFBg8IcE/EQ7XUktmSnyxfCczHAfVOmxrKg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=SoL9jtFg; arc=none smtp.client-ip=209.85.218.52
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1727835442; c=relaxed/simple;
+	bh=2gjiiAewp7ifne2STDdDKuouTm98qn+k93uMQwvotGk=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=QjQOPEloUS9IHOQ1/ytn8X8mykF6g670f7DrrBTOv7YM1Y95lccbNQh3Y42MYBjWYT7p8HRu4qhxOOUXrNpe9MW4nISpf6u2hHh7v65h7P5q9xhoicYQbx50ZFrtPPAOwe4N/bN4oWpmWxQlr4SnSVmoAIciAD2n7cFqPPdcZbs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=proton.me; spf=pass smtp.mailfrom=proton.me; dkim=pass (2048-bit key) header.d=proton.me header.i=@proton.me header.b=KlYgkNSi; arc=none smtp.client-ip=185.70.43.16
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=proton.me
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=proton.me
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SoL9jtFg"
-Received: by mail-ej1-f52.google.com with SMTP id a640c23a62f3a-a8a7cdfdd80so932784566b.0
-        for <linux-newbie@vger.kernel.org>; Tue, 01 Oct 2024 07:37:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1727793423; x=1728398223; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yK6XSPQeuFyFtbXfA5WqInzgCnLkF64sx+xWC6/eYac=;
-        b=SoL9jtFg6M2x7aoCl5nA1QF9eL7Lie0OlcRXhQ/YQ5SY++fn5O5qyn3O6A/Ba451R5
-         B64dYhFAjo8/Z3xsQ+tXa9p7cZLcGPELKNMpe/y80P0MLQFk4tRfXw0uUk5LUMuPu1K/
-         tITrTFvpTEYLeso1GaBEHHxksDgrbn+tJmGT2lDVm5Jt9BeY1HUjVpAIYQ1fVG426amQ
-         IgWeaJjNN7fvjiXY2ZC+InxG4OfZSwcd3nOQo9EcbJI4neqKymhSyuakWq/43fDARYPG
-         50d2Bay19EzmC404WAlhDla1NHyb6O2OjtqPuf2HFLo8Hp3XQHgx/o/nESa0nhTvZhnA
-         G9sA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1727793423; x=1728398223;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yK6XSPQeuFyFtbXfA5WqInzgCnLkF64sx+xWC6/eYac=;
-        b=X7ykyP4BIkpOT813aYBmWPDhP3Y2um37KVt2ZUhjpAZl29kOVFQc1DlnZAsKQopSvY
-         jIq53UapkJ3Tcp6kgOanw3Tcju8au1jeSI2r1Uf2ca34m4GsNEuP/EMPoYzE+RfDsVH/
-         fuOnwsLFROfTVd7nXbIsNRb+i5C+vVJorzEICU3s9rEfmFJqdczWiRnc5WeWHcIrQcr6
-         eJJAzv4SRziYn7zCgZPb8U9dxEVsg7XmA/VINoH+upgFYO+XXwGphWaKHDhgj/o+o5Tq
-         r0apHc/lQgxEEPZ0lvKc9Oweehp6JQwctqFyDeEahIc3dhXo2AchVICAqRt7M5B5bnQz
-         OF1g==
-X-Gm-Message-State: AOJu0YwUmsQT1oktQdrBb8N8dHM8zxkyhR+zwSW7G5AKZ3m0PLhahkcI
-	mPqJu5laNA7Y+F2yumvU/SeE2/XpTTDof5p8vcYpGiBmG+yHUcKTV65eEphm
-X-Google-Smtp-Source: AGHT+IFWC0h3m2sU9/nMgwWsyUbG9NBRs7q6MaxMITOS0cPGkNRc6MKxJZuVBDeoGRPqQUldZBkE3g==
-X-Received: by 2002:a17:907:36c5:b0:a86:7514:e649 with SMTP id a640c23a62f3a-a93c4a69d42mr1660873466b.52.1727793422450;
-        Tue, 01 Oct 2024 07:37:02 -0700 (PDT)
-Received: from azathoth.prg2.suse.org ([45.250.247.85])
-        by smtp.googlemail.com with ESMTPSA id a640c23a62f3a-a93c2776debsm718856766b.34.2024.10.01.07.36.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Oct 2024 07:37:02 -0700 (PDT)
-From: Brahmajit Das <brahmajit.xyz@gmail.com>
-To: brahmajit.xyz@gmail.com
-Cc: linux-newbie@vger.kernel.org,
-	ville.syrjala@linux.intel.com
-Subject: [PATCH 1/1] drm/display: Fix building with GCC 15
-Date: Tue,  1 Oct 2024 20:06:41 +0530
-Message-ID: <20241001143641.3484312-1-brahmajit.xyz@gmail.com>
-X-Mailer: git-send-email 2.46.2
-In-Reply-To: <66g7zjcrgvatwfjsss2lsvdau7sutb6ofky5skp7elmwojsylw@74qfogtr7qjn>
-References: <66g7zjcrgvatwfjsss2lsvdau7sutb6ofky5skp7elmwojsylw@74qfogtr7qjn>
+	dkim=pass (2048-bit key) header.d=proton.me header.i=@proton.me header.b="KlYgkNSi"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1727835436; x=1728094636;
+	bh=ODUjzTitlDnZ7cX13Tfv6e9WF1sDadVWp4nHV0f82Rk=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=KlYgkNSiWM0NLjnmhF7CUx7aMIK2tK6+SaDSKaZ/EItj3+1aCDU8JVWVJyWhy7s14
+	 QXIx5cgvMdixqe68C7NsUN0iWkOnb78JMeSTL9Nd/e0n9ygHb9ZRN16pRVLtrNKpGY
+	 lGSIUnX7raJQSnKpR9LJ6u1VczlxrZAm0ugtfoNkczLjqW1upDCeyoYvZ2Lt0cvezc
+	 IPJqhbqnrpqLA14Mpp6JmEEUFdraJpqsy3ZbffrNxdXa1k2VY7hW76vPQyCKkoIMXS
+	 5WqkrtzAP/gGSeteESb2uEh8zP+pPo6QAfM6e0eUlizwtrk60QoN77KfUnEThf0tus
+	 iUnpP7rf9ST+A==
+Date: Wed, 02 Oct 2024 02:17:08 +0000
+To: Hridesh MG <hridesh699@gmail.com>
+From: Patrick Miller <paddymills@proton.me>
+Cc: Trevor Gross <tmgross@umich.edu>, linux-kernel@vger.kernel.org, rust-for-linux@vger.kernel.org, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Miguel Ojeda <ojeda@kernel.org>, Alex Gaynor <alex.gaynor@gmail.com>, Wedson Almeida Filho <wedsonaf@gmail.com>, Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, =?utf-8?Q?Bj=C3=B6rn_Roy_Baron?= <bjorn3_gh@protonmail.com>, Benno Lossin <benno.lossin@proton.me>, Andreas Hindborg <a.hindborg@samsung.com>, Alice Ryhl <aliceryhl@google.com>, linux-newbie@vger.kernel.org
+Subject: Re: [PATCH v3 2/2 RESEND] checkpatch: warn on empty rust doc comments
+Message-ID: <t5SyWXgKghM_fSdMQNH3tTuqZKJck9qMTeUJUWzCWphs_cc7cocnj1gO5cCh0pzzVTCQbEBRqOsYC0om9JIOatBKU3AcoEyFwySAK6B1_Cw=@proton.me>
+In-Reply-To: <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
+References: <dbb63b5698aa507bbe3dec54b4458a3f151899d3.1727606659.git.hridesh699@gmail.com> <bf6544faba2b53ce901b2e031f3d944babcc7018.1727606659.git.hridesh699@gmail.com> <CALNs47vT=g2D7A_cDq_8F2xJRJTK-7KtQY4brFYfkopyCSjLTw@mail.gmail.com> <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me> <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
+Feedback-ID: 45271957:user:proton
+X-Pm-Message-ID: 24652b6518865115bb25c5b18c0d58ebf6a8b891
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; protocol="application/pgp-signature"; micalg=pgp-sha512; boundary="------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162"; charset=utf-8
 
-GCC 15 enables -Werror=unterminated-string-initialization by default.
-This results in the following build error
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162
+Content-Type: multipart/mixed;boundary=---------------------808725a943ee40242c6bec3ccc1f694e
 
-drivers/gpu/drm/display/drm_dp_dual_mode_helper.c: In function ‘is_hdmi_adaptor’:
-drivers/gpu/drm/display/drm_dp_dual_mode_helper.c:164:17: error: initializer-string for array of
- ‘char’ is too long [-Werror=unterminated-string-initialization]
-  164 |                 "DP-HDMI ADAPTOR\x04";
-      |                 ^~~~~~~~~~~~~~~~~~~~~
+-----------------------808725a943ee40242c6bec3ccc1f694e
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;charset=utf-8
 
-After discussion with Ville, the fix was to increase the size of
-dp_dual_mode_hdmi_id array by one, so that it can accommodate the new
-line character. This should let us build the kernel with GCC 15.
 
-Signed-off-by: Brahmajit Das <brahmajit.xyz@gmail.com>
----
- drivers/gpu/drm/display/drm_dp_dual_mode_helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_dp_dual_mode_helper.c b/drivers/gpu/drm/display/drm_dp_dual_mode_helper.c
-index 14a2a8473682..295375868db6 100644
---- a/drivers/gpu/drm/display/drm_dp_dual_mode_helper.c
-+++ b/drivers/gpu/drm/display/drm_dp_dual_mode_helper.c
-@@ -160,11 +160,12 @@ EXPORT_SYMBOL(drm_dp_dual_mode_write);
- 
- static bool is_hdmi_adaptor(const char hdmi_id[DP_DUAL_MODE_HDMI_ID_LEN])
- {
--	static const char dp_dual_mode_hdmi_id[DP_DUAL_MODE_HDMI_ID_LEN] =
-+	//+1 to avaoid spurious -Werror=unterminated-string-initialization warning
-+	static const char dp_dual_mode_hdmi_id[DP_DUAL_MODE_HDMI_ID_LEN + 1] =
- 		"DP-HDMI ADAPTOR\x04";
- 
- 	return memcmp(hdmi_id, dp_dual_mode_hdmi_id,
--		      sizeof(dp_dual_mode_hdmi_id)) == 0;
-+		      DP_DUAL_MODE_HDMI_ID_LEN) == 0;
- }
- 
- static bool is_type1_adaptor(uint8_t adaptor_id)
--- 
-2.46.2
+
+
+
+On Monday, September 30th, 2024 at 6:34 AM, Hridesh MG <hridesh699@gmail.c=
+om> wrote:
+
+> =
+
+
+> =
+
+
+> On Mon, Sep 30, 2024 at 8:11=E2=80=AFAM Patrick Miller paddymills@proton=
+.me wrote:
+> =
+
+
+> > After the latest revision of my patch 1, I split the if statement so t=
+hat
+> > there is a parent check for rust files for future rust patch checks. S=
+o,
+> > this would perfectly fit within that block.
+> > =
+
+
+> > Do you want me to add your code and credit you in my patch?
+> =
+
+
+> =
+
+
+> Please disregard my prior email, I had failed to CC everyone. Since
+> the change is small I'm okay with adding it as part of your patch,
+> please do add the Co-developed-by tag, thanks!
+> =
+
+
+> However, I was curious how conflicts like these are generally
+> resolved. For example, if there are two large patchsets which conflict
+> with each other, how does one ensure that they are compatible, and
+> even if they are, how do the maintainers ensure that they are applied
+> in the correct order?
+
+2 changes that I am making to your patch as I merge it with mine (I tested=
+ these)
+  - Added a @fix option. I ran into this with my patch and was requested t=
+o
+      add it by a checkpatch maintainer
+  - Revised your $prevrawline regex to check against existing blank lines =
+as
+      well as added blank lines (made the leading + optional). Otherwise I
+      think the checkpatch would not match against a blank doc comment lin=
+e
+      added after an existing blank doc line.
+-----------------------808725a943ee40242c6bec3ccc1f694e--
+
+--------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+Version: ProtonMail
+
+wnUEARYKACcFgmb8rRoJkJtRGrsur54RFiEE3KdIkSvUnCve801mm1Eauy6v
+nhEAAMF4AQCLWQUOtp5+mg3j/o0JBoheDulcy8I2mrzVF4W5OOon7wEAyCOW
+8Mi39DzrVpDEkeJEblr54UfE2ssXM7l+bTbw1g4=
+=Z2AR
+-----END PGP SIGNATURE-----
+
+
+--------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162--
 
