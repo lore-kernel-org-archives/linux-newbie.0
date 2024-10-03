@@ -1,132 +1,104 @@
-Received: from mail-4316.protonmail.ch (mail-4316.protonmail.ch [185.70.43.16])
+Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com [205.220.180.131])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 92771802;
-	Wed,  2 Oct 2024 02:17:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.70.43.16
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 961A82564
+	for <linux-newbie@vger.kernel.org>; Thu,  3 Oct 2024 06:23:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.180.131
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1727835442; cv=none; b=BQrLZJ9nrWQZH0vVXAeD55EmKI4/kq5zpiut7zqVNYjIsSNeu9yOj3+xd0++xxT5ijKpIJ8lMHLXY66y9TJz940ClhSC3DAqHSYUOF93PsuNxh7DCw5PKir6vbGQKsDPb5Gck33KxmmiFVHKSbC+2+AbRp41rR/FvFwBUaY/Lwg=
+	t=1727936583; cv=none; b=YfxAjSgCfVYpcECxLwHMG8TRd28bKnNtZ1aPT4i5QGunEC9oG/pAdta5alHVn5GTCaI8Fk3bSATK7rEDE6H0LQm93FbbaWsRXanfjDsOOa1N0vGIFyWMHVuU3fm+h7dZwoV0/ntzbrICLMtbEO51mWc5yZ5xqFUwjjF/TakuV1g=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1727835442; c=relaxed/simple;
-	bh=2gjiiAewp7ifne2STDdDKuouTm98qn+k93uMQwvotGk=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=QjQOPEloUS9IHOQ1/ytn8X8mykF6g670f7DrrBTOv7YM1Y95lccbNQh3Y42MYBjWYT7p8HRu4qhxOOUXrNpe9MW4nISpf6u2hHh7v65h7P5q9xhoicYQbx50ZFrtPPAOwe4N/bN4oWpmWxQlr4SnSVmoAIciAD2n7cFqPPdcZbs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=proton.me; spf=pass smtp.mailfrom=proton.me; dkim=pass (2048-bit key) header.d=proton.me header.i=@proton.me header.b=KlYgkNSi; arc=none smtp.client-ip=185.70.43.16
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=proton.me
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=proton.me
+	s=arc-20240116; t=1727936583; c=relaxed/simple;
+	bh=JMguh8kKMhaSoxb8E95RZhHqb4rG+KlpqaHjctUZlPs=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=AqU3tR8Pu/D6mAhCG12skApuurtKuLFDKrip63ieWBrQgHVDHdXpeEFWRNZUwCcnl4W59DCRi7sXv4K6uCC9NvMqfU/LqYY0u6C1NDSd5TVukeIQC7cCHVM/hkfUm27/xARK7a6+oOUjrN1ogxj5ivZ0zCLGE9HgPORWnAwEw1U=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com; spf=pass smtp.mailfrom=qualcomm.com; dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b=X1FYb4wI; arc=none smtp.client-ip=205.220.180.131
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=qualcomm.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=proton.me header.i=@proton.me header.b="KlYgkNSi"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1727835436; x=1728094636;
-	bh=ODUjzTitlDnZ7cX13Tfv6e9WF1sDadVWp4nHV0f82Rk=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=KlYgkNSiWM0NLjnmhF7CUx7aMIK2tK6+SaDSKaZ/EItj3+1aCDU8JVWVJyWhy7s14
-	 QXIx5cgvMdixqe68C7NsUN0iWkOnb78JMeSTL9Nd/e0n9ygHb9ZRN16pRVLtrNKpGY
-	 lGSIUnX7raJQSnKpR9LJ6u1VczlxrZAm0ugtfoNkczLjqW1upDCeyoYvZ2Lt0cvezc
-	 IPJqhbqnrpqLA14Mpp6JmEEUFdraJpqsy3ZbffrNxdXa1k2VY7hW76vPQyCKkoIMXS
-	 5WqkrtzAP/gGSeteESb2uEh8zP+pPo6QAfM6e0eUlizwtrk60QoN77KfUnEThf0tus
-	 iUnpP7rf9ST+A==
-Date: Wed, 02 Oct 2024 02:17:08 +0000
-To: Hridesh MG <hridesh699@gmail.com>
-From: Patrick Miller <paddymills@proton.me>
-Cc: Trevor Gross <tmgross@umich.edu>, linux-kernel@vger.kernel.org, rust-for-linux@vger.kernel.org, Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, Dwaipayan Ray <dwaipayanray1@gmail.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>, Miguel Ojeda <ojeda@kernel.org>, Alex Gaynor <alex.gaynor@gmail.com>, Wedson Almeida Filho <wedsonaf@gmail.com>, Boqun Feng <boqun.feng@gmail.com>, Gary Guo <gary@garyguo.net>, =?utf-8?Q?Bj=C3=B6rn_Roy_Baron?= <bjorn3_gh@protonmail.com>, Benno Lossin <benno.lossin@proton.me>, Andreas Hindborg <a.hindborg@samsung.com>, Alice Ryhl <aliceryhl@google.com>, linux-newbie@vger.kernel.org
-Subject: Re: [PATCH v3 2/2 RESEND] checkpatch: warn on empty rust doc comments
-Message-ID: <t5SyWXgKghM_fSdMQNH3tTuqZKJck9qMTeUJUWzCWphs_cc7cocnj1gO5cCh0pzzVTCQbEBRqOsYC0om9JIOatBKU3AcoEyFwySAK6B1_Cw=@proton.me>
-In-Reply-To: <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
-References: <dbb63b5698aa507bbe3dec54b4458a3f151899d3.1727606659.git.hridesh699@gmail.com> <bf6544faba2b53ce901b2e031f3d944babcc7018.1727606659.git.hridesh699@gmail.com> <CALNs47vT=g2D7A_cDq_8F2xJRJTK-7KtQY4brFYfkopyCSjLTw@mail.gmail.com> <67il2JOf-dSurc3O-294W5k5mS-kf1FtFxKzXlxHHykGmIvIkfPel_pPe2LGX04HSnTg85LwEdU4Zz2VCrfXgIl5KVItUm5vPhbtkThc3BM=@proton.me> <CALiyAo=udy-P4ki1-_CAk7bHWfAjoioYEZ_ah+i6DJZ0MmmCQg@mail.gmail.com>
-Feedback-ID: 45271957:user:proton
-X-Pm-Message-ID: 24652b6518865115bb25c5b18c0d58ebf6a8b891
+	dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b="X1FYb4wI"
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4934WZjE000620
+	for <linux-newbie@vger.kernel.org>; Thu, 3 Oct 2024 06:23:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=JMguh8kKMhaSoxb8E95RZhHqb4rG+KlpqaH
+	jctUZlPs=; b=X1FYb4wIcNadnST31mueFeDYCCU6lScrk6/fHKqilxY2nAIQh89
+	f1JLKWoTYMHCtRvgTgk/Szr0MWAAP15ZZA533UNqprSuh/0PvF4FmdYLtrzn+YFo
+	QQ8PNn3D5AK3OUmoNnSjKqcG2XNBOkGBaAUeYPliQ1O/ef1yt1QaCZ+LjzT6Tszg
+	0HAu1Ek5+Y66iT8TQV8M7wdjZjoAvjrV909iD2nl649WNRIvB3l7mAaVYrr7e9+u
+	allIrugolM9QwZPFeThIk9+tuCoXaFDn/fIgSrSB79CunaL3u8JU1OmfqBekcE/4
+	jEztWZmfiPsnTSj+wOaEv/Ne4v/gXe+LAGA==
+Received: from apblrppmta02.qualcomm.com (blr-bdr-fw-01_GlobalNAT_AllZones-Outside.qualcomm.com [103.229.18.19])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 41x8t6wp6t-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <linux-newbie@vger.kernel.org>; Thu, 03 Oct 2024 06:23:00 +0000 (GMT)
+Received: from pps.filterd (APBLRPPMTA02.qualcomm.com [127.0.0.1])
+	by APBLRPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTP id 4936Mt3w005515
+	for <linux-newbie@vger.kernel.org>; Thu, 3 Oct 2024 06:22:55 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by APBLRPPMTA02.qualcomm.com (PPS) with ESMTPS id 41xavmakx9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT)
+	for <linux-newbie@vger.kernel.org>; Thu, 03 Oct 2024 06:22:55 +0000
+Received: from APBLRPPMTA02.qualcomm.com (APBLRPPMTA02.qualcomm.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 4936MtO9005507
+	for <linux-newbie@vger.kernel.org>; Thu, 3 Oct 2024 06:22:55 GMT
+Received: from hu-devc-hyd-u22-c.qualcomm.com (hu-wasimn-hyd.qualcomm.com [10.147.246.180])
+	by APBLRPPMTA02.qualcomm.com (PPS) with ESMTPS id 4936Ms9A005506
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 03 Oct 2024 06:22:55 +0000
+Received: by hu-devc-hyd-u22-c.qualcomm.com (Postfix, from userid 3944840)
+	id 365AE591; Thu,  3 Oct 2024 11:52:54 +0530 (+0530)
+From: Wasim Nazir <quic_wasimn@quicinc.com>
+To: quic_wasimn@quicinc.com
+Cc: linux-newbie@vger.kernel.org
+Subject: [PATCH] DNM: Testing2 few things again
+Date: Thu,  3 Oct 2024 11:52:18 +0530
+Message-ID: <20241003062218.3331404-1-quic_wasimn@quicinc.com>
+X-Mailer: git-send-email 2.46.1
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; protocol="application/pgp-signature"; micalg=pgp-sha512; boundary="------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162"; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-QCInternal: smtphost
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: Pc0r8UD2sY_hD6wEO2lPHS8ZQwT6Uxao
+X-Proofpoint-ORIG-GUID: Pc0r8UD2sY_hD6wEO2lPHS8ZQwT6Uxao
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 malwarescore=0
+ impostorscore=0 lowpriorityscore=0 mlxlogscore=672 bulkscore=0
+ priorityscore=1501 suspectscore=0 phishscore=0 adultscore=0 spamscore=0
+ clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2408220000 definitions=main-2410030043
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162
-Content-Type: multipart/mixed;boundary=---------------------808725a943ee40242c6bec3ccc1f694e
+TestA, TestB, TestC.
 
------------------------808725a943ee40242c6bec3ccc1f694e
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;charset=utf-8
+Signed-off-by: Wasim Nazir <quic_wasimn@quicinc.com>
+---
+Anything here can be ignored
 
+ Documentation/testing2.txt | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ create mode 100644 Documentation/testing2.txt
 
-
-
-
-
-On Monday, September 30th, 2024 at 6:34 AM, Hridesh MG <hridesh699@gmail.c=
-om> wrote:
-
-> =
-
-
-> =
-
-
-> On Mon, Sep 30, 2024 at 8:11=E2=80=AFAM Patrick Miller paddymills@proton=
-.me wrote:
-> =
-
-
-> > After the latest revision of my patch 1, I split the if statement so t=
-hat
-> > there is a parent check for rust files for future rust patch checks. S=
-o,
-> > this would perfectly fit within that block.
-> > =
-
-
-> > Do you want me to add your code and credit you in my patch?
-> =
-
-
-> =
-
-
-> Please disregard my prior email, I had failed to CC everyone. Since
-> the change is small I'm okay with adding it as part of your patch,
-> please do add the Co-developed-by tag, thanks!
-> =
-
-
-> However, I was curious how conflicts like these are generally
-> resolved. For example, if there are two large patchsets which conflict
-> with each other, how does one ensure that they are compatible, and
-> even if they are, how do the maintainers ensure that they are applied
-> in the correct order?
-
-2 changes that I am making to your patch as I merge it with mine (I tested=
- these)
-  - Added a @fix option. I ran into this with my patch and was requested t=
-o
-      add it by a checkpatch maintainer
-  - Revised your $prevrawline regex to check against existing blank lines =
-as
-      well as added blank lines (made the leading + optional). Otherwise I
-      think the checkpatch would not match against a blank doc comment lin=
-e
-      added after an existing blank doc line.
------------------------808725a943ee40242c6bec3ccc1f694e--
-
---------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-Version: ProtonMail
-
-wnUEARYKACcFgmb8rRoJkJtRGrsur54RFiEE3KdIkSvUnCve801mm1Eauy6v
-nhEAAMF4AQCLWQUOtp5+mg3j/o0JBoheDulcy8I2mrzVF4W5OOon7wEAyCOW
-8Mi39DzrVpDEkeJEblr54UfE2ssXM7l+bTbw1g4=
-=Z2AR
------END PGP SIGNATURE-----
-
-
---------6e9c0b4724622ca2873f2dc07faaadd38d4565d60e5b04cb49ae2ce015d54162--
+diff --git a/Documentation/testing2.txt b/Documentation/testing2.txt
+new file mode 100644
+index 000000000000..fd91f33a2814
+--- /dev/null
++++ b/Documentation/testing2.txt
+@@ -0,0 +1,7 @@
++Testing2 few things again:
++
++LineA
++
++LineB
++
++LineC
+--
+2.46.1
 
