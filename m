@@ -1,60 +1,36 @@
-Received: from fllvem-ot03.ext.ti.com (fllvem-ot03.ext.ti.com [198.47.19.245])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7930819F103;
-	Tue, 28 Jan 2025 11:14:23 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.47.19.245
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8401219D8A7;
+	Tue, 28 Jan 2025 11:53:09 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=217.140.110.172
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738062865; cv=none; b=suynWelZOxQKdF9qzY4IHeRZm1yt/VZJ/0hwYYScBQEeKmJVlbD7Vvv1s2u5ni22ZwdHvP7nNApsLi4CQu8r402KK+i8D48UHfzaiXlzPAdmYzLhFekvdFnSrGIDXKSmSHVaXZnduFkYW6WTD/zkZPNZ53lPLh8PEnXS/xjcu6Q=
+	t=1738065192; cv=none; b=LpduUVqBswU7b6V9JNys0xs6QEYPWqbVYr/SOyT4odNkC1hfHNh+Sn3GUVQSK55UQXG4mJfSoJJs3RSx9j5ycNep7vQYzduR8K4f3BiwBSHx2soig/uHmHTs1iXBHIggLK8YCZ2hgIiqEoVDL7KPC9bQzkN92gp0dWGCtxpQd4g=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738062865; c=relaxed/simple;
-	bh=Jcf1R/yTJoD8mRNd+L+foDCFOMRh6wZdrsACFFxZBLo=;
-	h=Date:From:To:CC:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=D+QA1KMjMumixcuJ63Z5tLGBGB0/4eF40lJa/M36UoEcj16W/3TDP6UcN5YWy76qMxgU4lW59Uf9shL5SOwnGiYOWTNixhaJjkzZ3qeXvOF+3Tz9hr7nXIgtEQooQKp5evOxB8RNxNrdCa4x8Qy19Tt43hrsEnS3LQML/glnuno=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=ti.com; spf=pass smtp.mailfrom=ti.com; dkim=pass (1024-bit key) header.d=ti.com header.i=@ti.com header.b=CjLUuY5g; arc=none smtp.client-ip=198.47.19.245
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=ti.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ti.com
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=ti.com header.i=@ti.com header.b="CjLUuY5g"
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllvem-ot03.ext.ti.com (8.15.2/8.15.2) with ESMTPS id 50SBE8xm1951268
-	(version=TLSv1.2 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 28 Jan 2025 05:14:09 -0600
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
-	s=ti-com-17Q1; t=1738062849;
-	bh=PaB9zjJJf1lkvcUrXACl1LaqEcDbvmCXCZVlOwFJpjk=;
-	h=Date:From:To:CC:Subject:References:In-Reply-To;
-	b=CjLUuY5gVLXfuB/N5oPB5Hy6DKS1ul4QdAh56ZC4if4GiuWN2kTZtfxJkUh7BjCfE
-	 Ge8wr+E1MxbqobYs2RuwWQ0dtiSKcftyaFKPnP5/oLRaLIGFPXRG19p+775xapS0ZB
-	 WjU9/WaPw5HxrBcRGQOGvo/lg4XamXfiz/RbsUgs=
-Received: from DFLE113.ent.ti.com (dfle113.ent.ti.com [10.64.6.34])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 50SBE8H0002142
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 28 Jan 2025 05:14:08 -0600
-Received: from DFLE100.ent.ti.com (10.64.6.21) by DFLE113.ent.ti.com
- (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23; Tue, 28
- Jan 2025 05:14:08 -0600
-Received: from lelvsmtp5.itg.ti.com (10.180.75.250) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2507.23 via
- Frontend Transport; Tue, 28 Jan 2025 05:14:08 -0600
-Received: from localhost (lcpd911.dhcp.ti.com [172.24.227.226])
-	by lelvsmtp5.itg.ti.com (8.15.2/8.15.2) with ESMTP id 50SBE7JV125661;
-	Tue, 28 Jan 2025 05:14:08 -0600
-Date: Tue, 28 Jan 2025 16:44:07 +0530
-From: Dhruva Gole <d-gole@ti.com>
-To: Sudeep Holla <sudeep.holla@arm.com>
-CC: Vivek yadav <linux.ninja23@gmail.com>, <linux-newbie@vger.kernel.org>,
-        <linux-pm@vger.kernel.org>, <daniel.lezcano@linaro.org>,
-        <lpieralisi@kernel.org>, <krzk@kernel.org>, <christian.loehle@arm.com>,
-        <quic_sibis@quicinc.com>, <cristian.marussi@arm.com>,
-        <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-        <vigneshr@ti.com>, <khilman@ti.com>, <sebin.francis@ti.com>,
-        <khilman@baylibre.com>
+	s=arc-20240116; t=1738065192; c=relaxed/simple;
+	bh=tsZa7MlP7uJ6u+oDTEk/pPrj0gnazE7YbZfC8O7Qcok=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=aLeIj5f8fkG4fBRz/TgTSXq0jWlO/zKneAtpkooPZSzRqVz4RwJ9RDp/wHmRLsW2WTovxhy2HJWiS1bnbOfrgQ7FGocsL1V9BypxPNfqJXzXEfgMOkkJUAes9B63wVVJ3tOakCWwpSQOo6wYm31ZeNMVNV1WERhG9MZnSFrxEro=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=arm.com; spf=pass smtp.mailfrom=arm.com; arc=none smtp.client-ip=217.140.110.172
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=arm.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=arm.com
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4BCF9497;
+	Tue, 28 Jan 2025 03:53:35 -0800 (PST)
+Received: from bogus (unknown [10.57.36.4])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6749E3F694;
+	Tue, 28 Jan 2025 03:53:05 -0800 (PST)
+Date: Tue, 28 Jan 2025 11:52:32 +0000
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Dhruva Gole <d-gole@ti.com>
+Cc: Vivek yadav <linux.ninja23@gmail.com>, linux-newbie@vger.kernel.org,
+	Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
+	daniel.lezcano@linaro.org, lpieralisi@kernel.org, krzk@kernel.org,
+	christian.loehle@arm.com, quic_sibis@quicinc.com,
+	cristian.marussi@arm.com, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, vigneshr@ti.com, khilman@ti.com,
+	sebin.francis@ti.com, khilman@baylibre.com
 Subject: Re: Fwd: ARM64: CPUIdle driver is not select any Idle state other
  then WFI
-Message-ID: <20250128111407.6hbefatwhuomstzo@lcpd911>
+Message-ID: <20250128115232.kte35toxn3puoqwk@bogus>
 References: <CAO6a-9_aPLCx2CqecQBGbK78_=+-tT44RepPkrBjpkWSvjj4Tg@mail.gmail.com>
  <CAO6a-98cdSvyd7jgAyGNmsC2nxmRSyr3GppxvZU9yHU1xqwz3g@mail.gmail.com>
  <20241211055052.gbxnyqpui3t3zpw5@lcpd911>
@@ -63,97 +39,114 @@ References: <CAO6a-9_aPLCx2CqecQBGbK78_=+-tT44RepPkrBjpkWSvjj4Tg@mail.gmail.com>
  <Z1rbLdWW75KQw5cl@bogus>
  <CAO6a-98XFxbCnOMp5ARwPssjYomyNKWjT=WTk=z2+ZKyOAQ0jQ@mail.gmail.com>
  <20250128094720.sgk7gyr5oawzxbez@bogus>
+ <20250128111407.6hbefatwhuomstzo@lcpd911>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20250128094720.sgk7gyr5oawzxbez@bogus>
-X-C2ProcessedOrg: 333ef613-75bf-4e12-a4b1-8e3623f5dcea
+In-Reply-To: <20250128111407.6hbefatwhuomstzo@lcpd911>
 
-Hi Sudeep and Vivek,
-
-On Jan 28, 2025 at 09:47:20 +0000, Sudeep Holla wrote:
-> On Mon, Jan 27, 2025 at 10:47:28PM +0530, Vivek yadav wrote:
-> > Hi @Dhruva Gole,
-> > 
-> > Q.1. Does your CA-53 properly go into CPUIdle state and come out of
-> > sleep state ?
-> 
-> Yes, well tested on other SoCs. Seems like system integration issue.
-
-Yes, with the local-timer-stop property removed, all A53 cores do enter
-idle in TF-A at the same time.
-
-> > As of now I made some changes in the DT node. After making changes in
-> > latency (which is mentioned below).
-> > 
-> >  idle-states {
-> >        entry-method = "psci";
-> >         cpu_ret_l: cpu-retention-l {
-> >           compatible = "arm,idle-state";
-> >           arm,psci-suspend-param = <0x00000000>;
-> >           local-timer-stop;
-> >           entry-latency-us = <300000>; # 300ms
-> >            exit-latency-us = <300000>; # 300ms
-> >            min-residency-us = <1000000>; # 1 sec
-> >      };
-> >  };
+On Tue, Jan 28, 2025 at 04:44:07PM +0530, Dhruva Gole wrote:
+> Hi Sudeep and Vivek,
+>
+> On Jan 28, 2025 at 09:47:20 +0000, Sudeep Holla wrote:
+> > On Mon, Jan 27, 2025 at 10:47:28PM +0530, Vivek yadav wrote:
+> > > Hi @Dhruva Gole,
+> > >
+> > > Q.1. Does your CA-53 properly go into CPUIdle state and come out of
+> > > sleep state ?
 > >
-> 
-> Does these align with expectation of PSCI implementation in the firmware ?
+> > Yes, well tested on other SoCs. Seems like system integration issue.
+>
+> Yes, with the local-timer-stop property removed, all A53 cores do enter
+> idle in TF-A at the same time.
+>
 
-Just to add here, value of that parameter has some encoded
-meaning and is given in the PSCI standard:
-Table 7 power_state parameter bit fields in Original format
-https://developer.arm.com/documentation/den0022/fb/?lang=en
+Cool.
 
-> 
-> 
-> > I can see that  CA-55 went into a sleep state (state1) using command
-> > ``cat /sys/devices/system/cpu/cpu*/cpuidle/state*/time``.
-> > As you mention earlier in a multicore system (2 or more) at least one
-> > core keeps working and does not go into sleep state. It should happen
-> > as per theory and other developers' case.
-> > 
-> > In my case, after some time, both CPUs (CPU0 and CPU1) go into sleep
-> > state (state1). Hence the system console hangs.
-> > 
-> > My expectations are,
-> > If I type anything on keyboard. UART interrupt should take out CPUs
-> > from sleep state and execute commands. OR some periodic timer should
-> > take the CPU out of sleep. Which is not happening as of now.
-> > As you said  we can safely remove`` local-timer-stop``. It means local
-> > timers are working for the CPUs and triggering interrupts ?
-> > 
-> 
-> Please go the thread and understand when and why you need local-timer-stop and
-> how it is related to the arm,psci-suspend-param value(especially the state
-> context loss bit)
+> > > As of now I made some changes in the DT node. After making changes in
+> > > latency (which is mentioned below).
+> > >
+> > >  idle-states {
+> > >        entry-method = "psci";
+> > >         cpu_ret_l: cpu-retention-l {
+> > >           compatible = "arm,idle-state";
+> > >           arm,psci-suspend-param = <0x00000000>;
+> > >           local-timer-stop;
+> > >           entry-latency-us = <300000>; # 300ms
+> > >            exit-latency-us = <300000>; # 300ms
+> > >            min-residency-us = <1000000>; # 1 sec
+> > >      };
+> > >  };
+> > >
+> >
+> > Does these align with expectation of PSCI implementation in the firmware ?
+>
+> Just to add here, value of that parameter has some encoded
+> meaning and is given in the PSCI standard:
+> Table 7 power_state parameter bit fields in Original format
+> https://developer.arm.com/documentation/den0022/fb/?lang=en
+>
 
-Yes this is the important bit, if you know that on your platform the
-A53s are just not going to power off or stop timers upon entering idle
-then you must remove the local-timer-stop property from your DT
-cpu_ret_l.
-However, if you do have a scenario where the timer would be getting
-stopped or modified in idle scenario, then linux needs to be able to use
-another timer that is routed to the GIC and is unaffected while the
-system is in idle.
+Excellent! I just wanted to be sure that we are not just playing with these in
+the DT without realising what that means to the PSCI implementation.
 
-This is what my understanding is so far, I am yet to do experiments with
-local-timer-stop + different timer in the case of idle.
+> >
+> >
+> > > I can see that  CA-55 went into a sleep state (state1) using command
+> > > ``cat /sys/devices/system/cpu/cpu*/cpuidle/state*/time``.
+> > > As you mention earlier in a multicore system (2 or more) at least one
+> > > core keeps working and does not go into sleep state. It should happen
+> > > as per theory and other developers' case.
+> > >
+> > > In my case, after some time, both CPUs (CPU0 and CPU1) go into sleep
+> > > state (state1). Hence the system console hangs.
+> > >
+> > > My expectations are,
+> > > If I type anything on keyboard. UART interrupt should take out CPUs
+> > > from sleep state and execute commands. OR some periodic timer should
+> > > take the CPU out of sleep. Which is not happening as of now.
+> > > As you said  we can safely remove`` local-timer-stop``. It means local
+> > > timers are working for the CPUs and triggering interrupts ?
+> > >
+> >
+> > Please go the thread and understand when and why you need local-timer-stop and
+> > how it is related to the arm,psci-suspend-param value(especially the state
+> > context loss bit)
+>
+> Yes this is the important bit, if you know that on your platform the
+> A53s are just not going to power off or stop timers upon entering idle
+> then you must remove the local-timer-stop property from your DT
+> cpu_ret_l.
+> However, if you do have a scenario where the timer would be getting
+> stopped or modified in idle scenario, then linux needs to be able to use
+> another timer that is routed to the GIC and is unaffected while the
+> system is in idle.
+>
 
-> 
-> I have not got response to my questions. You can just play with DT and get
-> things working here if the firmware expectation, hardware functionality
-> and DT properties don't align.
+Looks like we are in sync with our understanding now, that's progress.
 
-I have responded to the thread now, sorry for not getting back earlier!
+> This is what my understanding is so far, I am yet to do experiments with
+> local-timer-stop + different timer in the case of idle.
+>
 
--- 
-Best regards,
-Dhruva Gole
-Texas Instruments Incorporated
+Yes, that would be interesting.
+
+> >
+> > I have not got response to my questions. You can just play with DT and get
+> > things working here if the firmware expectation, hardware functionality
+> > and DT properties don't align.
+>
+> I have responded to the thread now, sorry for not getting back earlier!
+>
+
+No worries, just wanted to make sure those queries didn't slip through the
+cracks.
+
+--
+Regards,
+Sudeep
