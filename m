@@ -1,152 +1,138 @@
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8401219D8A7;
-	Tue, 28 Jan 2025 11:53:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=217.140.110.172
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7896323A9
+	for <linux-newbie@vger.kernel.org>; Fri, 31 Jan 2025 01:31:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1738065192; cv=none; b=LpduUVqBswU7b6V9JNys0xs6QEYPWqbVYr/SOyT4odNkC1hfHNh+Sn3GUVQSK55UQXG4mJfSoJJs3RSx9j5ycNep7vQYzduR8K4f3BiwBSHx2soig/uHmHTs1iXBHIggLK8YCZ2hgIiqEoVDL7KPC9bQzkN92gp0dWGCtxpQd4g=
+	t=1738287089; cv=none; b=KkTBC2FGxjyFVJJazlow6deVzAo/M4OwiTbF4kn9MhkkUMM9TbK2jokpAyoK0q/g6zMMjpprYPF+9bxPoPnpqH5TRqLSYUHiyyYB/kl388B6NacD3A4iwhoDgib8a0KiOzeKftJb37VFjf6RZlSV6qm8vbP316lXrUIrH9V6p8Q=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1738065192; c=relaxed/simple;
-	bh=tsZa7MlP7uJ6u+oDTEk/pPrj0gnazE7YbZfC8O7Qcok=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=aLeIj5f8fkG4fBRz/TgTSXq0jWlO/zKneAtpkooPZSzRqVz4RwJ9RDp/wHmRLsW2WTovxhy2HJWiS1bnbOfrgQ7FGocsL1V9BypxPNfqJXzXEfgMOkkJUAes9B63wVVJ3tOakCWwpSQOo6wYm31ZeNMVNV1WERhG9MZnSFrxEro=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=arm.com; spf=pass smtp.mailfrom=arm.com; arc=none smtp.client-ip=217.140.110.172
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=arm.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 4BCF9497;
-	Tue, 28 Jan 2025 03:53:35 -0800 (PST)
-Received: from bogus (unknown [10.57.36.4])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 6749E3F694;
-	Tue, 28 Jan 2025 03:53:05 -0800 (PST)
-Date: Tue, 28 Jan 2025 11:52:32 +0000
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Dhruva Gole <d-gole@ti.com>
-Cc: Vivek yadav <linux.ninja23@gmail.com>, linux-newbie@vger.kernel.org,
-	Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
-	daniel.lezcano@linaro.org, lpieralisi@kernel.org, krzk@kernel.org,
-	christian.loehle@arm.com, quic_sibis@quicinc.com,
-	cristian.marussi@arm.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, vigneshr@ti.com, khilman@ti.com,
-	sebin.francis@ti.com, khilman@baylibre.com
-Subject: Re: Fwd: ARM64: CPUIdle driver is not select any Idle state other
- then WFI
-Message-ID: <20250128115232.kte35toxn3puoqwk@bogus>
-References: <CAO6a-9_aPLCx2CqecQBGbK78_=+-tT44RepPkrBjpkWSvjj4Tg@mail.gmail.com>
- <CAO6a-98cdSvyd7jgAyGNmsC2nxmRSyr3GppxvZU9yHU1xqwz3g@mail.gmail.com>
- <20241211055052.gbxnyqpui3t3zpw5@lcpd911>
- <20241211121825.GA2054801@bogus>
- <20241211143428.kaoovhiwar74dy6x@lcpd911>
- <Z1rbLdWW75KQw5cl@bogus>
- <CAO6a-98XFxbCnOMp5ARwPssjYomyNKWjT=WTk=z2+ZKyOAQ0jQ@mail.gmail.com>
- <20250128094720.sgk7gyr5oawzxbez@bogus>
- <20250128111407.6hbefatwhuomstzo@lcpd911>
+	s=arc-20240116; t=1738287089; c=relaxed/simple;
+	bh=iWGVUiJEkF6MjZSueX2y9ccuNJLbInvCf8TOM8XP4Mc=;
+	h=Message-ID:Date:MIME-Version:To:From:Subject:Content-Type; b=Xsj0IGLtM15ksm1TJrn6zAQmL8RwSMm2IadafMhiVh10Dltr2XIadvxZtHJLxj6uo2cq7ZsSxAwuZy7Ika5ov5Rrg4N7DCw6QIpYNc+I3lB8KvFMnPiU0VH4OCpfcgszQTjvCbbOtiucNAkwhSL22qvbVcu7ffvtAhbjLCxh6GQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=fmo08sj7; arc=none smtp.client-ip=209.85.128.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fmo08sj7"
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-43675b1155bso16670795e9.2
+        for <linux-newbie@vger.kernel.org>; Thu, 30 Jan 2025 17:31:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1738287085; x=1738891885; darn=vger.kernel.org;
+        h=content-transfer-encoding:subject:from:content-language:to
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Xqvyy9t8RSSzqWQlht0DAO/ukrahQCZhZ9lxmjqVMcY=;
+        b=fmo08sj7Xn/6IPJuvMHLvU6XiLeHolKhje4NXTHb2YlqXPylTIIiJP/dI7lTP553uq
+         WDrqv5gjb7EHL8t9g/SH86k4F/yLGoWWsNy7e25+cfhE2mCJ7+oVbIK64FioaWWVRYSv
+         falW0knBOQy0uImTS5tPmLChCUwhZAOd0C5meQafMCYXyMpeWu1EF/fQmiL6TePDnPNn
+         2PxjvoPI/GQpoBvpRfKeJv5KMHVmIDP/WwgDr1tdjWUY99zipQX1tG3rOaAl5+CR2vLF
+         uCDn2cX/85PhBIMHEThfersdJsz3SHDccumQ88Z1aqSF1S8cvjGJiSU8WlUfWoay3VWN
+         hKwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1738287085; x=1738891885;
+        h=content-transfer-encoding:subject:from:content-language:to
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=Xqvyy9t8RSSzqWQlht0DAO/ukrahQCZhZ9lxmjqVMcY=;
+        b=mC3NqKPXNFd0BPUGLmbcVLEtnG0+I9UkV59z5sFwPmXPAEgJcieYVzeHUAwhncsAvX
+         Xazq1xPCv63EGaVy1k0ASk6RSbcT+4rYLgWEVdAB0Q9d7utoocIeeMydPclKdE+raRNA
+         zj18SJyX8Thyux1N1kYg/kJ98k5GAkErw3ycAMs8OJgr/D8KYvixXonZeEOY6rsmfWK7
+         /1Ea6LsZbAzlA8wcbUimYSbDjaLhi5lLuryI8mOpjUZ0xiN4IDQA6BHNr+z8wOPB8mc/
+         2fXoa96wd/AO10iC7xmm0iv3QNlo/3tw80uU1gZylDiiHmW6HuXnc+55Otnjq3L0rQno
+         DNmQ==
+X-Gm-Message-State: AOJu0YzgfLKAHs5SdeUE2V4l7Du8sHGc41aS68kBtcLvrbIYfsLiFBm+
+	P/kq9E7ogTFH4X8R0zOSBIWeCwjd8IsRDmtgTB0uMnkAka5nCUHGI6tw44UgKoI=
+X-Gm-Gg: ASbGncuxZFgjZNcC9DDU0MzgaLpJIfb5/Icf0O3kpISBp5WpYH8OzA0YLPpQ9QjB5Cn
+	D2ZnTgzmdGNMCxh3fAuDJeFVCBTaOeDPRcpwpEakX3WvGnueMxuicMrqKUZNNWbJmp1XkROtS3C
+	q5f6uE9bGKQnD665jVWkNScZrpihT9g9emuWOO7SKmWjRntqtx1Swyyc8qHVmWF6BRg3BpeZde1
+	r7U58aF42WRZdCeKVqtscR28gsD/iOQ+vKEghkuJ9cyDrhRE9aibddKHGEbCiNICeeKUBHkmm8P
+	kEDGNGCl5NQo9xd3itg/v/wnnPHqyVWTWADLiFIIlCP8C6JdzPqgR4RTng7GRw==
+X-Google-Smtp-Source: AGHT+IGzic2nNZsJF1msHZCTMngfTUjEsNTPHY3FdZaiWAPzD1HupwxH4vzy7Zwy1Kv5kWamP91SMQ==
+X-Received: by 2002:a05:600c:1f10:b0:435:192:63fb with SMTP id 5b1f17b1804b1-438dc3ae816mr76563775e9.3.1738287084588;
+        Thu, 30 Jan 2025 17:31:24 -0800 (PST)
+Received: from ?IPV6:2001:1670:18:24b6:4013:89ec:8349:134f? ([2001:1670:18:24b6:4013:89ec:8349:134f])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c5c1cf571sm3310462f8f.82.2025.01.30.17.31.23
+        for <linux-newbie@vger.kernel.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Jan 2025 17:31:24 -0800 (PST)
+Message-ID: <5583de8f-dc9f-4555-b480-fbc05247554e@gmail.com>
+Date: Fri, 31 Jan 2025 05:31:22 +0400
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250128111407.6hbefatwhuomstzo@lcpd911>
+User-Agent: Mozilla Thunderbird
+To: linux-newbie@vger.kernel.org
+Content-Language: en-US
+From: Abdullah Al Sharji <asharji1828@gmail.com>
+Subject: Issue with hash_for_each_possible() in Kernel Hashtable
+ Implementation
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-On Tue, Jan 28, 2025 at 04:44:07PM +0530, Dhruva Gole wrote:
-> Hi Sudeep and Vivek,
->
-> On Jan 28, 2025 at 09:47:20 +0000, Sudeep Holla wrote:
-> > On Mon, Jan 27, 2025 at 10:47:28PM +0530, Vivek yadav wrote:
-> > > Hi @Dhruva Gole,
-> > >
-> > > Q.1. Does your CA-53 properly go into CPUIdle state and come out of
-> > > sleep state ?
-> >
-> > Yes, well tested on other SoCs. Seems like system integration issue.
->
-> Yes, with the local-timer-stop property removed, all A53 cores do enter
-> idle in TF-A at the same time.
->
+I'm developing a Linux kernel feature that tracks per-process network 
+bandwidth usage using a hashtable (DEFINE_HASHTABLE()). My function logs 
+network activity per PID using the struct sock structure and associates 
+it with incoming and outgoing packet statistics.
 
-Cool.
+The macro hash_for_each_possible has an error: expression must have a 
+constant valueC/C++(28)
 
-> > > As of now I made some changes in the DT node. After making changes in
-> > > latency (which is mentioned below).
-> > >
-> > >  idle-states {
-> > >        entry-method = "psci";
-> > >         cpu_ret_l: cpu-retention-l {
-> > >           compatible = "arm,idle-state";
-> > >           arm,psci-suspend-param = <0x00000000>;
-> > >           local-timer-stop;
-> > >           entry-latency-us = <300000>; # 300ms
-> > >            exit-latency-us = <300000>; # 300ms
-> > >            min-residency-us = <1000000>; # 1 sec
-> > >      };
-> > >  };
-> > >
-> >
-> > Does these align with expectation of PSCI implementation in the firmware ?
->
-> Just to add here, value of that parameter has some encoded
-> meaning and is given in the PSCI standard:
-> Table 7 power_state parameter bit fields in Original format
-> https://developer.arm.com/documentation/den0022/fb/?lang=en
->
+"pointer type mismatch in container_of()"); ((typeof(*(entry)) *)(__mptr 
+-__builtin_offsetof(typeof(*(entry)), hlist))); }) :((void*)0); }))
 
-Excellent! I just wanted to be sure that we are not just playing with these in
-the DT without realising what that means to the PSCI implementation.
 
-> >
-> >
-> > > I can see that  CA-55 went into a sleep state (state1) using command
-> > > ``cat /sys/devices/system/cpu/cpu*/cpuidle/state*/time``.
-> > > As you mention earlier in a multicore system (2 or more) at least one
-> > > core keeps working and does not go into sleep state. It should happen
-> > > as per theory and other developers' case.
-> > >
-> > > In my case, after some time, both CPUs (CPU0 and CPU1) go into sleep
-> > > state (state1). Hence the system console hangs.
-> > >
-> > > My expectations are,
-> > > If I type anything on keyboard. UART interrupt should take out CPUs
-> > > from sleep state and execute commands. OR some periodic timer should
-> > > take the CPU out of sleep. Which is not happening as of now.
-> > > As you said  we can safely remove`` local-timer-stop``. It means local
-> > > timers are working for the CPUs and triggering interrupts ?
-> > >
-> >
-> > Please go the thread and understand when and why you need local-timer-stop and
-> > how it is related to the arm,psci-suspend-param value(especially the state
-> > context loss bit)
->
-> Yes this is the important bit, if you know that on your platform the
-> A53s are just not going to power off or stop timers upon entering idle
-> then you must remove the local-timer-stop property from your DT
-> cpu_ret_l.
-> However, if you do have a scenario where the timer would be getting
-> stopped or modified in idle scenario, then linux needs to be able to use
-> another timer that is routed to the GIC and is unaffected while the
-> system is in idle.
->
-
-Looks like we are in sync with our understanding now, that's progress.
-
-> This is what my understanding is so far, I am yet to do experiments with
-> local-timer-stop + different timer in the case of idle.
->
-
-Yes, that would be interesting.
-
-> >
-> > I have not got response to my questions. You can just play with DT and get
-> > things working here if the firmware expectation, hardware functionality
-> > and DT properties don't align.
->
-> I have responded to the thread now, sorry for not getting back earlier!
->
-
-No worries, just wanted to make sure those queries didn't slip through the
-cracks.
-
---
-Regards,
-Sudeep
+#include<linux/net_bandwidth.h>
+DEFINE_HASHTABLE(pid_bw_table, 8);
+DEFINE_SPINLOCK(pid_bw_lock);
+voidpid_bw_entry(structsock*sk, u64rx, u64tx)
+{
+if(!sk->sk_socket||!sk->sk_socket->file)
+return;
+structpid_bw_entry*entry;
+pid_tsk_pid=sk->sk_socket->file->f_owner.pid;
+spin_lock(&pid_bw_lock);
+hash_for_each_possible(pid_bw_table, entry, hlist, sk_pid) {
+if(entry->pid==sk_pid) {
+entry->rx_bytes+=rx;
+entry->tx_bytes+=tx;
+spin_unlock(&pid_bw_lock);
+return;
+}
+}
+entry=kmalloc(sizeof(structpid_bw_entry), GFP_KERNEL);
+if(!entry) {
+spin_unlock(&pid_bw_lock);
+return;
+}
+entry->pid=sk_pid;
+strncpy(entry->comm, current->comm, sizeof(entry->comm));
+entry->rx_bytes=rx;
+entry->tx_bytes=tx;
+hash_add(pid_bw_table, &entry->hlist, (unsignedlong)sk_pid);
+spin_unlock(&pid_bw_lock);
+}
+This is my header file:
+#ifndef_LINUX_NET_BANDWIDTH_H
+#define_LINUX_NET_BANDWIDTH_H
+#include<linux/types.h>
+#include<linux/spinlock.h>
+#include<linux/hashtable.h>
+#include<linux/slab.h>
+#include<linux/file.h>
+#include<linux/skbuff.h>
+#include<net/sock.h>
+structpid_bw_entry{
+pid_tpid;
+charcomm[16];
+u64rx_bytes;
+u64tx_bytes;
+structhlist_nodehlist;
+};
+externstructhlist_headpid_bw_table[1<<8];
+externspinlock_tpid_bw_lock;
+voidpid_bw_entry(structsock*sk, u64rx, u64tx);
+#endif/* _LINUX_NET_BANDWIDTH_H */
