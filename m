@@ -1,65 +1,53 @@
-Received: from srv-email.breitkopf.com.br (srv-email.breitkopf.com.br [187.85.164.118])
+Received: from out198-184.us.a.mail.aliyun.com (out198-184.us.a.mail.aliyun.com [47.90.198.184])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01BD6250EC
-	for <linux-newbie@vger.kernel.org>; Thu, 13 Mar 2025 04:47:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=187.85.164.118
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F3D3D2367A7
+	for <linux-newbie@vger.kernel.org>; Sat, 12 Apr 2025 07:19:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=47.90.198.184
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1741841266; cv=none; b=I40maGhE0qX39L3CkdV61dXSyZSxpXjGl23ACDilnQWGhiZ145UXeVvET8Wm+GkIhv5A4Td1Eh/uD9HQ/roHqvIYM7t84V/eo1w+sGi8dxIg5q0nx0Hi+jRL7/AQL9vNPT6s6thcMDDzqOvaFd4Gq65qSMAGnAMtCNnKghAXx/Y=
+	t=1744442356; cv=none; b=GpjHfvoSS1TnvfosFfVuNQHyloVZXhc7xKm/b2gNFnXWrh8cEygOgAQRRsndrAPKBqsITxCsaTjMH9Xthn+PfhllXxGPB9TmBxjzXKSytqj9SXwCLh995OzOQoittBe7k+e3rvMmaQ5EyRUnMKnmOK60SspcJm4Pm7ZPIMhveaY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1741841266; c=relaxed/simple;
-	bh=/NSPlKajnIrEXgkaCDsSIgOv+/AHRVJKPtcya0trJfM=;
-	h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type; b=QW6zvPUdtNbIRsXRKOvIKuDgzBrmJy3UQjZ7biZjL+TBv02JDLKfi2V8pKUYOtHcKNUzF70pNQ3qZw1QQcd/ny8G1CFsInPLLJ86YsTT0VDbq6PE0A+aCLedbTyTs4AX+noh7aGwKxZwH7CyBTswg3RbsSohtL2ACFsTM91incg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=audicenterflorianopolis.com.br; spf=pass smtp.mailfrom=audicenterflorianopolis.com.br; dkim=pass (2048-bit key) header.d=audicenterflorianopolis.com.br header.i=@audicenterflorianopolis.com.br header.b=kVxKaBF5; arc=none smtp.client-ip=187.85.164.118
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=audicenterflorianopolis.com.br
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=audicenterflorianopolis.com.br
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=audicenterflorianopolis.com.br header.i=@audicenterflorianopolis.com.br header.b="kVxKaBF5"
-Received: from srv-email.breitkopf.com.br (localhost [127.0.0.1])
-	by srv-email.breitkopf.com.br (Postfix) with ESMTPS id 0ECD166C89DB
-	for <linux-newbie@vger.kernel.org>; Thu, 13 Mar 2025 01:08:43 -0300 (-03)
-Received: from localhost (localhost [127.0.0.1])
-	by srv-email.breitkopf.com.br (Postfix) with ESMTP id 6E16467FCD93
-	for <linux-newbie@vger.kernel.org>; Thu, 13 Mar 2025 00:57:23 -0300 (-03)
-DKIM-Filter: OpenDKIM Filter v2.10.3 srv-email.breitkopf.com.br 6E16467FCD93
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=audicenterflorianopolis.com.br;
-	s=1AB656B8-D351-11EF-B446-5C9AB0823972; t=1741838243;
-	bh=/NSPlKajnIrEXgkaCDsSIgOv+/AHRVJKPtcya0trJfM=;
-	h=From:To:Date:Message-ID:MIME-Version;
-	b=kVxKaBF56g2zyr70g1MTPN/EBT2CgsRA1h8QnWpMZ3g5VwPNBIZakWk00KTICq2V9
-	 zODliWZIVaIdfWbetJHpQLXvBBlNyjW8tHUPwUn+yCTxnw22QlRcWOa5ToWehmP4eW
-	 RZ33a2mGcyoJhtJ/PPUqmYKZNrUWPxOZhBMPS9d0TBoeNntqt4zg7X8prz25F5ehZW
-	 eIEuKmNTxZxWNh5EgeVxFqeKY+MMgyhwBXU8Lv0CeD50NsgVoCo/iltimfOGNiYl1l
-	 Du6p299lEDEmc+GNI2E9IejdO0FcG3mIm/Dmmz8rM6vLlFmz4V4xatg2/lZ/804zrV
-	 zCp87RSgcSduw==
-Received: from srv-email.breitkopf.com.br ([127.0.0.1])
- by localhost (srv-email.breitkopf.com.br [127.0.0.1]) (amavis, port 10026)
- with ESMTP id 7TCREcMd3NOY for <linux-newbie@vger.kernel.org>;
- Thu, 13 Mar 2025 00:57:23 -0300 (-03)
-Received: from ec2-65-0-80-245.ap-south-1.compute.amazonaws.com (ec2-65-0-80-245.ap-south-1.compute.amazonaws.com [65.0.80.245])
-	by srv-email.breitkopf.com.br (Postfix) with ESMTPA id 424AE68163D2
-	for <linux-newbie@vger.kernel.org>; Thu, 13 Mar 2025 00:57:21 -0300 (-03)
-Reply-To: kazi@consultants-hq
-From: "T.Vanderwerff" <suporte@audicenterflorianopolis.com.br>
-To: linux-newbie@vger.kernel.org
-Subject: Business request...
-Date: 13 Mar 2025 03:57:21 +0000
-Message-ID: <20250313035721.141AD6C7D8DE55E5@audicenterflorianopolis.com.br>
+	s=arc-20240116; t=1744442356; c=relaxed/simple;
+	bh=mXWv503x+5i/GswVI8ZMltPwx/u3RBAbX9PmOsbCgz4=;
+	h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version; b=kqcUQEHzU/5kY2oZ1wCSWfiu7tMILNuPrbj+JlHuw2QBmd095i237w8MKUitdNx+0R/qVlv4spt6QoKnoCL1Gm+iw8FRcdvbONcYl20KSXD3USF09dzqRH6ihFtN4v9R90NkRUFRwDOTe6dOkwm/vvxaZgqHi8l3gkEz0Q1IwSI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=mikesolar.cn; spf=pass smtp.mailfrom=mikesolar.cn; arc=none smtp.client-ip=47.90.198.184
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=mikesolar.cn
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=mikesolar.cn
+Received: from OSCPR01MB14807.jpnprd01.prod.outlook.com(mailfrom:iam@mikesolar.cn fp:SMTPD_---.cKm6JQf_1744435053 cluster:ay29)
+          by smtp.aliyun-inc.com;
+          Sat, 12 Apr 2025 13:17:34 +0800
+From: "iam@mikesolar.cn" <iam@mikesolar.cn>
+To: "linux-newbie@vger.kernel.org" <linux-newbie@vger.kernel.org>
+Subject: Want to know some details about how to contribute to the kernel.
+Thread-Topic: Want to know some details about how to contribute to the kernel.
+Thread-Index: AQHbq2hmYh5jaxAyK0y/ImR3lVNiBA==
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Sat, 12 Apr 2025 05:17:32 +0000
+Message-ID:
+	<OSCPR01MB14807CD1AAAB8DDC70C3D7C55FDB12@OSCPR01MB14807.jpnprd01.prod.outlook.com>
+Accept-Language: zh-CN, en-US
+Content-Language: zh-CN
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+msip_labels:
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi
-
-I want you to kindly acknowledge this email so that we can key in=20
-on a very crucial business matter. You can leave your direct=20
-phone or WhattsApp number here for a prompt communication.=20
-Thanks
-T.Vanderwerff
+SGkgZXZlcm9uZSwKSSB3YW50IHRvIG1ha2Ugc29tZSBjb250cmlidXRpb24gdG8gdGhlIGxpbnV4
+IGtlcm5lbC4gQnV0IEkgaGF2ZSBzb21lIGNvbmZ1c2lvbnM6Ci0gV2hpY2ggbWFpbCBsaXN0IHNo
+b3VsZCBJIHNlbnQgdGhlIG1haWw/Ci0gV2hlcmUgdG8gZmluZCB0aGUgaXNzdWVzPyBTdWNoIGFz
+LCAgd2hlcmUgdG8gZmluZCB0aGUgYnVncyBuZWVkIHRvIGJlIGZpeGVkPyBJdCBzZWVtcyB0aGUg
+bWFpbCBsaXN0IGlzIGZpbGxlZCB3aXRoIHBhdGNoZXMsIG5vdCBpc3N1ZXMuIEkga25vdyBMaW51
+eCBoYXZlIGEgQnVnemlsbGEsIGJ1dCB3aGljaCBidWcgbmVlZHMgdG8gYmUgZml4ZWQgYW5kIHdo
+aWNoIGhhdmUgYWxyZWFkeSBmaXhlZD8gSXQgc2VlbXMgYSBsb3Qgb2YgYnVncycgc3RhdHVzIGFy
+ZSAiTkVXIiwgc29tZSBvZiB3aGljaCB3ZXJlIHN1Ym1pdHRlZCBhIGZldyB5ZWFycyBhZ28uIApD
+YW4gc29tZW9uZSB0ZWxsIG1lIHRoZSBhbnN3ZXI/IEkgYW0gdmVyeSBncmF0ZWZ1bCBmb3IgdGhh
+dC4KTWlrZSBTb2xhcgo=
