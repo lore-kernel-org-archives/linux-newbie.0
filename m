@@ -1,95 +1,122 @@
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from fout-b6-smtp.messagingengine.com (fout-b6-smtp.messagingengine.com [202.12.124.149])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8354B29405
-	for <linux-newbie@vger.kernel.org>; Sat,  3 May 2025 06:53:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.44
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E853B1CAA62
+	for <linux-newbie@vger.kernel.org>; Sun,  4 May 2025 18:04:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=202.12.124.149
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746255183; cv=none; b=Omujt0rJtbfTiPiylA91jRM4JJpjRDYHMrhhyKNgzD2o/6+2nQLLO+s/GGhhnmXofOj2E8FRsW5Xru8xh3vicklBR3wrED9Q4P3OuTL9QOrxlLZ+F96CltyKGKztGPZb1w/oong5bM2e4tKRwIjkS41eu0JfNnSCAJNbP4cI1Jw=
+	t=1746381876; cv=none; b=HK4KDG6jFwU/OrOt/5W+/xi2YqQVx2WYfcIcbTlynY0ciArXZd56nLvpq4V4vpK/5RWza/2PzWO7IK6BgNgwbIUBFXimI/4Sta9vGLxW9GXwax0T+mAACaaoqoN07N+jtTEYA1ZI2zWN0bFmHTm7cmeBae6EbpHvPsw0M9XhPOM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746255183; c=relaxed/simple;
-	bh=l0AzVZ2FROvsUB1Hp9YrG/3G5OrEjJQyEi8OEhMviXE=;
-	h=MIME-Version:From:Date:Message-ID:Subject:To:Cc:Content-Type; b=ltLpB6pJ4n4m0mwxFL+v1wmrf5oxuw/6ajyWLt2q/8y3meq6tc+hSkajV4JdywQP21PW6GSQD66t/XZtQrmQb3bugGaHRf0jRK0yfP+uCvekmBicIsShAoLF/TBXnQaVsN89LsHoWG6+hqBv6BGY/YRJC6ckMfUDctATQJgjpbk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=karlexai.com; spf=pass smtp.mailfrom=karlexai.com; dkim=pass (2048-bit key) header.d=karlexai.com header.i=@karlexai.com header.b=P50AwPWi; arc=none smtp.client-ip=209.85.218.44
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=karlexai.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=karlexai.com
+	s=arc-20240116; t=1746381876; c=relaxed/simple;
+	bh=/xqiZZeXxvP4T9gLCUBQikPZZ0wIuD3/zN7SeBmtIQc=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=ZPbikzMAJD5qtVn9XNrdsQGvVbBibt5foLaWbp7Z9mq0/Yp5fgGsH7gQw+ekCRfWjhdkOjsWrNumdH2TU0kEbRbGh3ZYyZsShAq5CYAKy0SLoL0pEg8xQ7MS3rum4PY8EJMS7aSzsRGTCcV9ewdSIBKsirtc1d5qDUyUcPjfkN0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=fastmail.com; spf=pass smtp.mailfrom=fastmail.com; dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b=Oomkp2OL; dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b=KPvKl7rf; arc=none smtp.client-ip=202.12.124.149
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=fastmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=fastmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=karlexai.com header.i=@karlexai.com header.b="P50AwPWi"
-Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-acb5ec407b1so446733466b.1
-        for <linux-newbie@vger.kernel.org>; Fri, 02 May 2025 23:53:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=karlexai.com; s=google; t=1746255180; x=1746859980; darn=vger.kernel.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=l0AzVZ2FROvsUB1Hp9YrG/3G5OrEjJQyEi8OEhMviXE=;
-        b=P50AwPWiz2fOVW5BmUCBKT11Cs3esT8GBwbeD0ps3snR8nBOWagKnYIWkZoLSl0QuI
-         1IJ8qv9gGqK799vakhCutpg9nr/l0UiT+NoiK9ReKcLs8tHqLJ/32ypzJLQisrdJ6BSi
-         zk0ew5JN7ijf8FUnkTmjQRoE+JZfa4fjmhf6hUzstXzsnOhyLYO4nof+GFUF4FXb1u2y
-         NSHXg1fAnzyAQSWsP9obCc/BSIBj4xSIlAz61tm5wRQvh/pyOwE57LCyGsw6uPI18gq3
-         7VcbvdUG5BxDsgcHOaD0f5vujbfiu/OsuVnitUPzRvrSDVz+qyYyU+suEwPC8lNURzxW
-         kSLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746255180; x=1746859980;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=l0AzVZ2FROvsUB1Hp9YrG/3G5OrEjJQyEi8OEhMviXE=;
-        b=hAZg2V1szPVDZj55bzZmXFUbKO57jV41T8UBawlOBwh/BUDoolw3G/gNDojkkpad+i
-         Fqx95xX1QPos8i7p9rRn1GFB4hAcDn5MafGvThwUGqJhv929db7kphHLotEmRQChKfB+
-         pZJmbCntvDryuqrLtsQYkiK2X1Hc6eysJN1YvByaxbHEIVXqITgnkdcV6UOrlCFU9JLt
-         ZAy81kuLKNGKU8HqFbmLKb+UoYM8nedqrv/6v851jn0JsYxRHHg+X/NZMRS804D3y8mH
-         hwLDLq19RaYZpQwDW6LdsD4WuQX78hg5e0uwlKbFB49T4JtmnVHcjeIHbNPkiJtPPo3t
-         /UFw==
-X-Gm-Message-State: AOJu0YwBBLe95rOSJx//YxPPNpNHLOvySviheprb1Q2IBVCTe8F0ClQE
-	kheexQy/KYvqoxm8G5rmLoqz4gLPmiDV7j0LMwIovKHS9Z5C+TzrNckbP5fHNFN66pBlf+nsWNV
-	wOjTS0f1dCPKD9LVVz0LWb3smOWVF96TWo0NrYFigmCFUtLhzuBll6Q==
-X-Gm-Gg: ASbGncuEkpzMe1l7QdXAjmGogsKk40GoFV+FZqs00w9q4wvYJDTatQslcFZrM1bM08d
-	BT8k9SKfRRO6LvNT3JAN7NB/4JZpPRvxxiEPy7/6z5XMxlhGdhVdNrYbsWst3udgduILUqpMeIu
-	vMxRIoNgCodYu6THZpWhDBFAifKGKJ+UBdQl4Zyyrw5P09lHALGIV1/rc=
-X-Google-Smtp-Source: AGHT+IGeoGRVT5n5ddquTmrFAKQX5XJ0EhdoA+jv93EV2Eu8bp2WsuI2pTW5KYNMuLaToR5c4uxNkLH8PzBAEu4sTqo=
-X-Received: by 2002:a17:907:2d07:b0:acb:5f9a:7303 with SMTP id
- a640c23a62f3a-ad1a4a0a0d5mr6582366b.35.1746255179773; Fri, 02 May 2025
- 23:52:59 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b="Oomkp2OL";
+	dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="KPvKl7rf"
+Received: from phl-compute-01.internal (phl-compute-01.phl.internal [10.202.2.41])
+	by mailfout.stl.internal (Postfix) with ESMTP id C521511401C7;
+	Sun,  4 May 2025 14:04:32 -0400 (EDT)
+Received: from phl-mailfrontend-02 ([10.202.2.163])
+  by phl-compute-01.internal (MEProxy); Sun, 04 May 2025 14:04:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:message-id:mime-version:reply-to
+	:subject:subject:to:to; s=fm3; t=1746381872; x=1746468272; bh=LS
+	Y5tq5S+GDfy45J/Dk1m4wMGS9W4hFuGo3hR9LqC0U=; b=Oomkp2OLVFukQLP+yF
+	2nhUv+InFM4CqXVLULE94mP2ndWhZQ1atcU0GDLNZQVzvQuq305NItGlwr77XUTa
+	08naqD4H6b58/c3oSlspUZYEW2i99XLqGXscTIixXt16zxXJVFP/HhzwEKdrmna+
+	9hUA+ofUhW54Qp38Y8E5/cxz1R5lTYFqszeK5XQ+fD8iBD9siJ961mBcURRhoswC
+	lbY6jkLSRizmvmHaoqYqmz6c75OoJM4H4U9dNlkSzSCPdz8UeOMicW9/OgPPPBez
+	fsHafgOjF2sbOsVHP+QgUk+N/vEKSbL8lHDiqrT3d8jxjBBuDz0m4ZpDfE/Vp//I
+	YSaA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1746381872; x=1746468272; bh=LSY5tq5S+GDfy45J/Dk1m4wMGS9W
+	4hFuGo3hR9LqC0U=; b=KPvKl7rftVo9jDdBJLE94H4deyq6SXmVHkuLKOOEPNRN
+	1odj5k6E/uZqhcd7TPnAI4I4XKo2v+t5YsF4Yc7+wQGfoCUoKoUOaAQpXuGV5Aku
+	rbgNlhQOsoc3ZVUg9a9UssPFPmALejZdmaw8QVDndyALlckGWKeqTwLBNSsplPXy
+	YcLDQ23UF1cmkid6RIn4X/4o/w+10SoH+WNxoWh17DQpMIM5wD9+vBBlHVGiclJK
+	5YVgkv9+id/5lJ5wigphBCbtT5nyyzp/AdSyj/35ObsxOpZdfvT5IlIP0zr9r1BL
+	Zp6n7WCfycahmzp9RIYK6tnwHe92njRXF3OCihsz3A==
+X-ME-Sender: <xms:MKwXaIZN9-_QtlCb25lDDVHldQ13AXp-OQw-fjCexyMOUpSSpGetKQ>
+    <xme:MKwXaDaCcE-EEXoRf8lG6UqshpsBvG9GuczXlOrhxlDBS9xoR97rIwbGMGfU91O65
+    bd-hWxqIQ9R2QS8GH8>
+X-ME-Received: <xmr:MKwXaC9NDL1Pn_DWgI28NR6hJkRSEu0-GYkj8Dv7OcvxpZBoNXyOGRUxlgQQ84QADn3TrX6qWmpTO0P_xF26x2TAgLKXZKTcoPT4KGrAmTzJfB_3_ORVde4FE082H9M>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvjeekkeekucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
+    pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucgoteeftdduqddtud
+    culdduhedmnecujfgurhephffvvefufffkofggtgfgsehtkeertdertdejnecuhfhrohhm
+    pefthigrnhcuofgrthhthhgvfihsuceorhihrghnmhgrthhthhgvfihssehfrghsthhmrg
+    hilhdrtghomheqnecuggftrfgrthhtvghrnhephfefgfefgfelgfethfejgffgkeettdeu
+    hedtkeegtedujeevudffteejvdeguefgnecuvehluhhsthgvrhfuihiivgeptdenucfrrg
+    hrrghmpehmrghilhhfrhhomheprhihrghnmhgrthhthhgvfihssehfrghsthhmrghilhdr
+    tghomhdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoh
+    eprhihrghnmhgrthhthhgvfihssehfrghsthhmrghilhdrtghomhdprhgtphhtthhopehl
+    ihhnuhigqdhnvgifsghivgesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:MKwXaCqDzLk1X-UDCPhvXnb5ay95ZazCZNlk15uFLYHdIgE4UA7E2w>
+    <xmx:MKwXaDpZ52wgnPeTtyQLUAGqtGmjzdWc1ygIejJMhadZ59ZSDC_ZwA>
+    <xmx:MKwXaAS2CUc1RSRHvn00hOBVdC_piteii8ZuIjJChSL7jR_S5bWcrA>
+    <xmx:MKwXaDqp9654AUrvLy9CjvTgGa_NZc-YbeWZ_CQj00Bu6uk4_HcxpQ>
+    <xmx:MKwXaMair0qmBwJG3UI2ut_UYuFPkBRwGLsNRWJkh6H_hI0d4UuFJt_F>
+Feedback-ID: i179149b7:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 4 May 2025 14:04:32 -0400 (EDT)
+From: Ryan Matthews <ryanmatthews@fastmail.com>
+To: Ryan Matthews <ryanmatthews@fastmail.com>
+Cc: linux-newbie@vger.kernel.org
+Subject: [PATCH 6.6 0/2] PCI: imx6: Fix i.MX7D controller_id backport regression
+Date: Sun,  4 May 2025 14:04:29 -0400
+Message-ID: <20250504180431.15349-1-ryanmatthews@fastmail.com>
+X-Mailer: git-send-email 2.45.3
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-From: Vikram R <vikram@karlexai.com>
-Date: Sat, 3 May 2025 12:22:48 +0530
-X-Gm-Features: ATxdqUFeR6lU_RnEVAJro_FfmXkXVu0v2jvifaAHY4ZgAQ5wvxxPOXFed4Wd7s0
-Message-ID: <CAELLoAjVdYkmZR15e4TTzy21PxGBu=rbFp31uwMULcFvZx4V4Q@mail.gmail.com>
-Subject: =?UTF-8?Q?=5BANNOUNCE=5D_Call_for_Contributors=3A_ASIOS_=E2=80=93_AI=E2=80=91Nat?=
-	=?UTF-8?Q?ive_OS_=28Kernel_Work=29?=
-To: linux-kernel@vger.kernel.org
-Cc: linux-newbie@vger.kernel.org, kernelnewbies@kernelnewbies.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-ASIOS is a new AI=E2=80=91native OS (Ubuntu 24.04 LTS base) bringing
-deterministic scheduling, NUMA=E2=80=91GPU optimizations, zero=E2=80=91copy=
- I/O, and
-eBPF telemetry into the Linux kernel.
+Hello newbies,
 
-Key directions=E2=80=94
-=E2=80=94 Deterministic CPU scheduling for reproducible AI runs
-=E2=80=94 NUMA=E2=80=91aware memory placement tuned for GPU DMA
-=E2=80=94 Zero=E2=80=91copy GPU I/O via GPUDirect RDMA/Storage
-=E2=80=94 eBPF=E2=80=91based telemetry hooks
+This is a test drive.
 
-**Call for contributors:** scheduler/MM, GPU/accelerator integration,
-eBPF instrumentation.
+Hello,
 
-Project links=E2=80=94
-GitHub: <https://github.com/asi-os>
-Discord: <https://discord.gg/rWuU7cWU4E>
-Roadmap: <https://github.com/asi-os/asios-docs/blob/main/docs/ARCHITECTURE.=
-md>
+This fixes an i.Mx 7D SoC PCIe regression caused by a backport mistake.
 
-Please reply on=E2=80=91list with questions or join us on Discord to dive i=
-nto
-the design.
+The regression is broken PCIe initialization and for me a boot hang.
 
-Vikram Karlex R
-KarLex AI, Inc. | <https://asios.ai> | <https://karlex.ai>
+I don't know how to organize this. I think a revert and redo best captures
+what's happening.
+
+To complicate things, it looks like the redo patch could also be applied to
+5.4, 5.10, 5.15, and 6.1. But those versions don't have the original
+backport commit. Version 6.12 matches master and needs no change.
+
+One conflict resolution is needed to apply the redo patch back to versions
+6.1 -> 5.15 -> 5.10. One more resolution to apply back to -> 5.4. Patches
+against those other versions aren't included here.
+
+ -- Ryan
+
+Richard Zhu (1):
+  PCI: imx6: Skip controller_id generation logic for i.MX7D
+
+Ryan Matthews (1):
+  Revert "PCI: imx6: Skip controller_id generation logic for i.MX7D"
+
+ drivers/pci/controller/dwc/pci-imx6.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+base-commit: 814637ca257f4faf57a73fd4e38888cce88b5911
+-- 
+2.47.2
+
