@@ -1,122 +1,123 @@
-Received: from fout-b6-smtp.messagingengine.com (fout-b6-smtp.messagingengine.com [202.12.124.149])
+Received: from fhigh-b5-smtp.messagingengine.com (fhigh-b5-smtp.messagingengine.com [202.12.124.156])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E853B1CAA62
-	for <linux-newbie@vger.kernel.org>; Sun,  4 May 2025 18:04:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=202.12.124.149
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 850F11DC994
+	for <linux-newbie@vger.kernel.org>; Sun,  4 May 2025 18:04:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=202.12.124.156
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746381876; cv=none; b=HK4KDG6jFwU/OrOt/5W+/xi2YqQVx2WYfcIcbTlynY0ciArXZd56nLvpq4V4vpK/5RWza/2PzWO7IK6BgNgwbIUBFXimI/4Sta9vGLxW9GXwax0T+mAACaaoqoN07N+jtTEYA1ZI2zWN0bFmHTm7cmeBae6EbpHvPsw0M9XhPOM=
+	t=1746381876; cv=none; b=R/V/dC+j0i6rL1n0DzcR0JFPwIdfRunnwAscoaPSXnOoAJZNHdEJYWR3rbEcfd2pufYOIDNFjMNX3cEGkmHO76aFPe+TgLwsHbB8GrzuE7Qh2Zz/5Q6SrPuzOFWozM9SE7JLu+yj2oxybJ+oxUgP8IxdSDrOfbnuFX8gd1nK0Z4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1746381876; c=relaxed/simple;
-	bh=/xqiZZeXxvP4T9gLCUBQikPZZ0wIuD3/zN7SeBmtIQc=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=ZPbikzMAJD5qtVn9XNrdsQGvVbBibt5foLaWbp7Z9mq0/Yp5fgGsH7gQw+ekCRfWjhdkOjsWrNumdH2TU0kEbRbGh3ZYyZsShAq5CYAKy0SLoL0pEg8xQ7MS3rum4PY8EJMS7aSzsRGTCcV9ewdSIBKsirtc1d5qDUyUcPjfkN0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=fastmail.com; spf=pass smtp.mailfrom=fastmail.com; dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b=Oomkp2OL; dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b=KPvKl7rf; arc=none smtp.client-ip=202.12.124.149
+	bh=/C5bJUymKx813MtjkWgl3uiNYlLR2C4f11J8PGhl+VI=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=ZsBnmeX5LG6owk/Z62szq1cTenMFtbYPqWHEGQXkk1I4RZXc7P5WuB4kWzGkGdmiG8o06KgSxPXUUE5xF26xr6cGNAcdzMeMdOPIjfYjPyI9Af5PRAEwlgHVaxM6O3pLXkOjDU3eBcs7g18Yi09MUacNQKwuP5sP2NISpuEUFTw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=fastmail.com; spf=pass smtp.mailfrom=fastmail.com; dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b=YDdeC3nJ; dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b=lRDZ+gl9; arc=none smtp.client-ip=202.12.124.156
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=fastmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=fastmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b="Oomkp2OL";
-	dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="KPvKl7rf"
-Received: from phl-compute-01.internal (phl-compute-01.phl.internal [10.202.2.41])
-	by mailfout.stl.internal (Postfix) with ESMTP id C521511401C7;
-	Sun,  4 May 2025 14:04:32 -0400 (EDT)
+	dkim=pass (2048-bit key) header.d=fastmail.com header.i=@fastmail.com header.b="YDdeC3nJ";
+	dkim=pass (2048-bit key) header.d=messagingengine.com header.i=@messagingengine.com header.b="lRDZ+gl9"
+Received: from phl-compute-11.internal (phl-compute-11.phl.internal [10.202.2.51])
+	by mailfhigh.stl.internal (Postfix) with ESMTP id 82A1625401FA;
+	Sun,  4 May 2025 14:04:33 -0400 (EDT)
 Received: from phl-mailfrontend-02 ([10.202.2.163])
-  by phl-compute-01.internal (MEProxy); Sun, 04 May 2025 14:04:32 -0400
+  by phl-compute-11.internal (MEProxy); Sun, 04 May 2025 14:04:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:message-id:mime-version:reply-to
-	:subject:subject:to:to; s=fm3; t=1746381872; x=1746468272; bh=LS
-	Y5tq5S+GDfy45J/Dk1m4wMGS9W4hFuGo3hR9LqC0U=; b=Oomkp2OLVFukQLP+yF
-	2nhUv+InFM4CqXVLULE94mP2ndWhZQ1atcU0GDLNZQVzvQuq305NItGlwr77XUTa
-	08naqD4H6b58/c3oSlspUZYEW2i99XLqGXscTIixXt16zxXJVFP/HhzwEKdrmna+
-	9hUA+ofUhW54Qp38Y8E5/cxz1R5lTYFqszeK5XQ+fD8iBD9siJ961mBcURRhoswC
-	lbY6jkLSRizmvmHaoqYqmz6c75OoJM4H4U9dNlkSzSCPdz8UeOMicW9/OgPPPBez
-	fsHafgOjF2sbOsVHP+QgUk+N/vEKSbL8lHDiqrT3d8jxjBBuDz0m4ZpDfE/Vp//I
-	YSaA==
+	cc:cc:content-transfer-encoding:content-type:date:date:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to; s=fm3; t=1746381873; x=
+	1746468273; bh=cJ7KTcTvYGV7WGgAKqJMyoj82lC9hAxixmEHAzO8t2c=; b=Y
+	DdeC3nJPW4OoO2Xd8acT1QyKW9DbJmGg+fXDVmeWRvzhlpOuH7Ix5r657/OUIo++
+	rEZaJCee5P01lNxlaIYwowPhjkpmNbNhTW2oCcjRUUhQ3qDsqcZwZDeYbKf67ARn
+	I9Kq9uLLHeoY7LA0pe2oYlgp2YbSn7SjkjWUgmL4k8lMfSbjpxwBD89HfhdJhf/+
+	pfx2Wq4Mp/1SjtOWCP9IEQVGbCaiGfwEDdD/BH/CMf9MDl2jnIafrcVaiqL/O65P
+	bsIBFImr52PP307iPQ3l/XKRTo7KGS8H2SGHmM9CQNXrg2hZeZwb37Vyd6FB2OHS
+	B7PBOQW10iMofU3jM4SSw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
-	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1746381872; x=1746468272; bh=LSY5tq5S+GDfy45J/Dk1m4wMGS9W
-	4hFuGo3hR9LqC0U=; b=KPvKl7rftVo9jDdBJLE94H4deyq6SXmVHkuLKOOEPNRN
-	1odj5k6E/uZqhcd7TPnAI4I4XKo2v+t5YsF4Yc7+wQGfoCUoKoUOaAQpXuGV5Aku
-	rbgNlhQOsoc3ZVUg9a9UssPFPmALejZdmaw8QVDndyALlckGWKeqTwLBNSsplPXy
-	YcLDQ23UF1cmkid6RIn4X/4o/w+10SoH+WNxoWh17DQpMIM5wD9+vBBlHVGiclJK
-	5YVgkv9+id/5lJ5wigphBCbtT5nyyzp/AdSyj/35ObsxOpZdfvT5IlIP0zr9r1BL
-	Zp6n7WCfycahmzp9RIYK6tnwHe92njRXF3OCihsz3A==
-X-ME-Sender: <xms:MKwXaIZN9-_QtlCb25lDDVHldQ13AXp-OQw-fjCexyMOUpSSpGetKQ>
-    <xme:MKwXaDaCcE-EEXoRf8lG6UqshpsBvG9GuczXlOrhxlDBS9xoR97rIwbGMGfU91O65
-    bd-hWxqIQ9R2QS8GH8>
-X-ME-Received: <xmr:MKwXaC9NDL1Pn_DWgI28NR6hJkRSEu0-GYkj8Dv7OcvxpZBoNXyOGRUxlgQQ84QADn3TrX6qWmpTO0P_xF26x2TAgLKXZKTcoPT4KGrAmTzJfB_3_ORVde4FE082H9M>
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:subject:subject:to:to:x-me-proxy:x-me-sender
+	:x-me-sender:x-sasl-enc; s=fm3; t=1746381873; x=1746468273; bh=c
+	J7KTcTvYGV7WGgAKqJMyoj82lC9hAxixmEHAzO8t2c=; b=lRDZ+gl90syCU7n1A
+	EhYFfVmtPHOtTAVch1wcLeNs9USTKGKgN4+Ku/nL3UrbNEQe8KHZfRb2tJtadM+6
+	uEXSTbjk7VRyfeMl/9+dHtnvGshEbBQT4Sl0zBH4Za0KZmKAQd2H/d7GC2j5CJax
+	1qpKiyoscGCVXPaZq9a0AAkcZCJjqhNhDznls7Ofe99CteQhpIoRDYOOKx7pshQE
+	H9m49AZDdBI/3y4zfAZXYvcctTlN5MXR90fsFXMitDXxfBPKIGbZ7OTApqMM5TA+
+	D5VEpsd1kLeX/hv90Cef7HubxAiav3ProtAEAOdT14n6dJyRv0c86GN7z3Ww3eIQ
+	BjvbA==
+X-ME-Sender: <xms:MawXaE9C9A9bAZGPCG1hxTwFI36im0hBUlgmCrcV08tOWAMWGl5pUA>
+    <xme:MawXaMtRXSn38DXRNRhtPpc8vdPFIOh7IbdO03-FvAg1Zsou3QhVkR0Fl5JrTnXs6
+    WNJ9WRHx55i9TIZsnw>
+X-ME-Received: <xmr:MawXaKCNvNx3Q5vOxzn8gJlsbXAuXGGiTOrTa5HVITT114pHFgA0j1os0dIUjPMoAA0wM5wKABjfk_ARzP-ebHMC0i-zt3ZkONIA21NrvNaaXF7GVyFcw6LN1Tdnb38>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefvddrtddtgddvjeekkeekucetufdoteggodetrf
     dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggv
     pdfurfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucgoteeftdduqddtud
-    culdduhedmnecujfgurhephffvvefufffkofggtgfgsehtkeertdertdejnecuhfhrohhm
-    pefthigrnhcuofgrthhthhgvfihsuceorhihrghnmhgrthhthhgvfihssehfrghsthhmrg
-    hilhdrtghomheqnecuggftrfgrthhtvghrnhephfefgfefgfelgfethfejgffgkeettdeu
-    hedtkeegtedujeevudffteejvdeguefgnecuvehluhhsthgvrhfuihiivgeptdenucfrrg
-    hrrghmpehmrghilhhfrhhomheprhihrghnmhgrthhthhgvfihssehfrghsthhmrghilhdr
-    tghomhdpnhgspghrtghpthhtohepvddpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtoh
-    eprhihrghnmhgrthhthhgvfihssehfrghsthhmrghilhdrtghomhdprhgtphhtthhopehl
-    ihhnuhigqdhnvgifsghivgesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:MKwXaCqDzLk1X-UDCPhvXnb5ay95ZazCZNlk15uFLYHdIgE4UA7E2w>
-    <xmx:MKwXaDpZ52wgnPeTtyQLUAGqtGmjzdWc1ygIejJMhadZ59ZSDC_ZwA>
-    <xmx:MKwXaAS2CUc1RSRHvn00hOBVdC_piteii8ZuIjJChSL7jR_S5bWcrA>
-    <xmx:MKwXaDqp9654AUrvLy9CjvTgGa_NZc-YbeWZ_CQj00Bu6uk4_HcxpQ>
-    <xmx:MKwXaMair0qmBwJG3UI2ut_UYuFPkBRwGLsNRWJkh6H_hI0d4UuFJt_F>
+    culdduhedmnecujfgurhephffvvefufffkofgjfhgggfestdekredtredttdenucfhrhho
+    mheptfihrghnucforghtthhhvgifshcuoehrhigrnhhmrghtthhhvgifshesfhgrshhtmh
+    grihhlrdgtohhmqeenucggtffrrghtthgvrhhnpefhuedugfehfeefjedugeeuveelvefg
+    gffgffeugeefvdfhjefhleeiueekjedtueenucevlhhushhtvghrufhiiigvpedtnecurf
+    grrhgrmhepmhgrihhlfhhrohhmpehrhigrnhhmrghtthhhvgifshesfhgrshhtmhgrihhl
+    rdgtohhmpdhnsggprhgtphhtthhopedvpdhmohguvgepshhmthhpohhuthdprhgtphhtth
+    hopehrhigrnhhmrghtthhhvgifshesfhgrshhtmhgrihhlrdgtohhmpdhrtghpthhtohep
+    lhhinhhugidqnhgvfigsihgvsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:MawXaEd56ffJWnUNCTlbDdEhOaJs8kes-deUtFFSvcmZGL5nCIjLwA>
+    <xmx:MawXaJMxFu05HsFDy-zlkhAGfIGxheTQZs1gDs3EE02RLKbehc7ZmQ>
+    <xmx:MawXaOnJZ5ECoqVR-JvgPhN_ayaa3KteDjiehsItLLxxFqv1wHbbFQ>
+    <xmx:MawXaLvfAcwxKE8x9ECJO9SkCkOmdWlqXXuAEX8FbImo8egU7lqylw>
+    <xmx:MawXaA-wW2R2icflfs4nlvbzbkGb0mSs2ks3b35eJhtlRE8cQ_sWOGLL>
 Feedback-ID: i179149b7:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
  4 May 2025 14:04:32 -0400 (EDT)
 From: Ryan Matthews <ryanmatthews@fastmail.com>
 To: Ryan Matthews <ryanmatthews@fastmail.com>
 Cc: linux-newbie@vger.kernel.org
-Subject: [PATCH 6.6 0/2] PCI: imx6: Fix i.MX7D controller_id backport regression
-Date: Sun,  4 May 2025 14:04:29 -0400
-Message-ID: <20250504180431.15349-1-ryanmatthews@fastmail.com>
+Subject: [PATCH 6.6 1/2] Revert "PCI: imx6: Skip controller_id generation logic for i.MX7D"
+Date: Sun,  4 May 2025 14:04:30 -0400
+Message-ID: <20250504180431.15349-2-ryanmatthews@fastmail.com>
 X-Mailer: git-send-email 2.45.3
+In-Reply-To: <20250504180431.15349-1-ryanmatthews@fastmail.com>
+References: <20250504180431.15349-1-ryanmatthews@fastmail.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Hello newbies,
+This reverts commit 2a12efc567a270a155e3b886258297abd79cdea0 which is
+commit f068ffdd034c93f0c768acdc87d4d2d7023c1379 upstream.
 
-This is a test drive.
+This is a backport mistake.
 
-Hello,
+Deleting "IMX7D" here skips more than just controller_id logic. It skips
+reset assignments too, which causes:
 
-This fixes an i.Mx 7D SoC PCIe regression caused by a backport mistake.
+ imx6q-pcie 33800000.pcie: PCIe PLL lock timeout
 
-The regression is broken PCIe initialization and for me a boot hang.
+In my case, in addition to broken PCIe, kernel boot hangs entirely.
 
-I don't know how to organize this. I think a revert and redo best captures
-what's happening.
+This isn't a problem upstream because before this, they moved the rest of
+the code out of the switch case.
 
-To complicate things, it looks like the redo patch could also be applied to
-5.4, 5.10, 5.15, and 6.1. But those versions don't have the original
-backport commit. Version 6.12 matches master and needs no change.
+Signed-off-by: Ryan Matthews <ryanmatthews@fastmail.com>
+---
+ drivers/pci/controller/dwc/pci-imx6.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-One conflict resolution is needed to apply the redo patch back to versions
-6.1 -> 5.15 -> 5.10. One more resolution to apply back to -> 5.4. Patches
-against those other versions aren't included here.
-
- -- Ryan
-
-Richard Zhu (1):
-  PCI: imx6: Skip controller_id generation logic for i.MX7D
-
-Ryan Matthews (1):
-  Revert "PCI: imx6: Skip controller_id generation logic for i.MX7D"
-
- drivers/pci/controller/dwc/pci-imx6.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-
-base-commit: 814637ca257f4faf57a73fd4e38888cce88b5911
+diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
+index 822a750b064b..20c8f2cba453 100644
+--- a/drivers/pci/controller/dwc/pci-imx6.c
++++ b/drivers/pci/controller/dwc/pci-imx6.c
+@@ -1281,6 +1281,7 @@ static int imx6_pcie_probe(struct platform_device *pdev)
+ 	switch (imx6_pcie->drvdata->variant) {
+ 	case IMX8MQ:
+ 	case IMX8MQ_EP:
++	case IMX7D:
+ 		if (dbi_base->start == IMX8MQ_PCIE2_BASE_ADDR)
+ 			imx6_pcie->controller_id = 1;
+ 
 -- 
 2.47.2
 
