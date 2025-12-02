@@ -1,337 +1,178 @@
-Received: from mail-07.mail-europe.com (mail-0701.mail-europe.com [51.83.17.38])
+Received: from BYAPR05CU005.outbound.protection.outlook.com (mail-westusazolkn19010020.outbound.protection.outlook.com [52.103.2.20])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90BCC1F0E32
-	for <linux-newbie@vger.kernel.org>; Sun, 30 Nov 2025 17:12:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=51.83.17.38
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1764522737; cv=none; b=nvXHLJmGfa0FkJSUlisioHkaqksrOIoKIsOT+qRWB+19P1nHmKnT4GpSvz4xOUPj1P4JbzwYxTjxT69uc3y/bQ6V1zjtu8bFavQ8dlEXbpNqIliIpsYQFOZjj6dyIPL0usNNQk9phCW/607FDVbmEMGDyqHt7HpYtP0qM0MJs3E=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1764522737; c=relaxed/simple;
-	bh=QRAccNi/Dtco7fhrOCaRXZEyYtGnkOMskigLBsl01PY=;
-	h=Date:To:From:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=jex+UFnfcbodbumtuBpuTE5R6Uj0dfP0NlpcjHrEyaZ0lHW9nuKqd2QcZTOjz+SEvtWH3zQnR5Yj/gpBY0m2X6gVCadQY0Dgz5lfS66Pl1RYBRAhB8PkNeocprr9B5e+CWS/ssljPjtXSvjUcc7xV8cvYRny+hvqX/Vs9ThasLQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=protonmail.com; spf=fail smtp.mailfrom=protonmail.com; dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.b=mrDZyLrz; arc=none smtp.client-ip=51.83.17.38
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=protonmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=fail smtp.mailfrom=protonmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31EAC2905
+	for <linux-newbie@vger.kernel.org>; Tue,  2 Dec 2025 00:08:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=52.103.2.20
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1764634088; cv=fail; b=NCH0XiYQ3RYwz5dDaFfbdwzpFnxN0rRszHenYyB81lA+D0PZaKbDw15EIwicmd7PrvabKj99jy5zK8ZyGGPx0Eq3iI2DaX9+LSUdfh++5R+YzXcbtyaciTwE62Le93AjzBEziHwyYVvnk5LBL4Cgkbw1fZmyt/Q8Jt16Nt8q2j8=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1764634088; c=relaxed/simple;
+	bh=TD02AMyojaM+sFuKtENO3HCfgT9DSm5DIm+LUIshwXs=;
+	h=Message-ID:Date:To:From:Subject:Content-Type:MIME-Version; b=nfW0v71aY0l1hQ0Cx6K6tAYxPLDM7wsfreCMGv3982x3JmOS4peIFEE4kkypCxONybCZBIuD6Gg4h+F7ep1qGiGhOLReEmioFsI3WNk8fmVVdPI1fomOaWLnSMnkY/AIfyhUHZ8r5VTZ/ovVSuMiwwPx0h5/vcdOCOBCFU/0Wk0=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=outlook.com; spf=pass smtp.mailfrom=outlook.com; dkim=pass (2048-bit key) header.d=outlook.com header.i=@outlook.com header.b=Llrit4w+; arc=fail smtp.client-ip=52.103.2.20
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=outlook.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=outlook.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.b="mrDZyLrz"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1764522722; x=1764781922;
-	bh=ivDYyh1K8yWCxnNLAgX/igAAKNOIxoQUUdeOX8mU4DI=;
-	h=Date:To:From:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=mrDZyLrzvafdwiactFCjySfFyafoUuX6MvNYPm7BCovBskx19WuPaHilvLkCrabwc
-	 zCH0Miq2Yat3J51TaPXydxXKz5GRG58oh/HLsN/fT14K6uolX3KeF73sG1RJV1j5pJ
-	 sLY8wu7hM3sgZvyqOru/QQJJ4nT9T9YfdKx8RMqYiBcN8uiDlipGZzGG3lZj5LivRn
-	 1I4T2jQxtACunQSkiIcr4It+cm7K2HC8AQZo/G56AE2/PgAv3SfB9MT3lxXwpgHn5F
-	 jg/H2rs1RI0jGpPE7CT2y70y/VMJ1mkG1Jl0eHv4F+eqdhwtqI2yE5kekJJAnAKTEJ
-	 rQYKWo1PGKJUA==
-Date: Sun, 30 Nov 2025 17:11:57 +0000
+	dkim=pass (2048-bit key) header.d=outlook.com header.i=@outlook.com header.b="Llrit4w+"
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=m5lgMfk/X5eGPbXrk1i7sU7E7WlZZHcl/Ffocls9SYcdd5zSYS5Z9xP6ordN15G2wkEhffBrBoEAdg9lzKFBHc1SuqmnYAT9Hpz2hmm4ggmIyeZLDfoLsLK8bM/5Hyyh2/Y39qQFhbuOfFbuPmSE9khUmTlUloNKOyCBfQQnVrTe7tYDBDd/WuFyXnmDPHsU2nVkQ7U8a/0Qfwuy1iRwr8NXlXFHPyGBwB+eWlbbX+6WZzHe2fUxTosTVJ60HKHvdp+z3t3C8AlT8vL6IB/mJ0/9mn8tLR+iB4QRzZXI2Is0RDZaZW2SqN+xop3CD/IVR38IrPsX45Gn53ilsUXW6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N50+6PPNeLV3izcggCJR5r6IdR2r3MMJLef9rg8kE6c=;
+ b=faLsbE/g7+tPAoz/a+y5D04mGWMGFxqQX9maBc9IS4FHWMm4JqdijnLVKfSt3hpJs9gKumORhrLxjxNcAO/976DCNB/ZCtsKnC2NUft84qFxWHdOc1cLdboltww8fk32hdYs1a1WZmDwogKoHeKZHEYLE9Rynw3khpQKVqXAmvXipFBeBCeRlcJWwZ7UDc7W2lUQrLgK7CiLpU8c3c8BtY8tAw48cWaMo+F8Cj3LJ0sbOAK0dN8HAajXaeArB1gjoydlkmoJLk1K7BOFsMJ5TNK9Tx+qsXjdQtQ8UFyxljIyMRO8aufuM8z7faQBTq0QFdZo+5whsuQBZWIFsTcNkQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N50+6PPNeLV3izcggCJR5r6IdR2r3MMJLef9rg8kE6c=;
+ b=Llrit4w++/T0EcW4Og70xy+qbPGbg4yzDId833TRzr4+cky4Mu34xee/HRcG9/iHgN9urG0isP4O3P5oy8IuFAXLxXT99z4HAg7kansTlpwz9YgEiQ5V9kZ7qtCp+7tSsD6O/bkYYOlPSNjfiINQccnoZfBg/dWGQS65CoZy+4hPeRutD+JOVQmVsLwWeIDyDx9IHCW8CjrejtTGmRrOP5ixTF1clc8JKTChY7VNRsKWBm/Lu7ekwS8svjNz11+9Y6jMUAuYp42Tuq9ne4Fqmt7Cmhr4B0NvZJfftk6S8u31eW3vJSD/AnDbGHx9GNgjYEpmxlANRJGeiZlg8Bf1TA==
+Received: from LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM (2603:10b6:408:224::16)
+ by DM8P221MB0487.NAMP221.PROD.OUTLOOK.COM (2603:10b6:8:18::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9366.17; Tue, 2 Dec 2025 00:08:05 +0000
+Received: from LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM
+ ([fe80::e498:3639:cdaa:2cb3]) by LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM
+ ([fe80::e498:3639:cdaa:2cb3%4]) with mapi id 15.20.9366.012; Tue, 2 Dec 2025
+ 00:08:05 +0000
+Message-ID:
+ <LV8P221MB1399D71143E168BBF9D9C955C3D8A@LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM>
+Date: Mon, 1 Dec 2025 19:07:59 -0500
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
 To: linux-newbie@vger.kernel.org
-From: Georges Kanaan <giokanaan@protonmail.com>
-Subject: Unsubscribe linux-newbie
-Message-ID: <4817C0C2-2831-4374-BC52-85EEE9153B45@protonmail.com>
-In-Reply-To: <ce5eae85a6fd1b49de4477c9e5eb22a9d975fb47.camel@nazs.hu>
-References: <b3eb0040-1827-4217-85e3-df973989150f@nazs.hu> <CABZAGREHMZwvxC3KizedrDUgTpvPbTmTDX-xde_uWzmSz7GdCA@mail.gmail.com> <ba1aa77d759f79db11f69bed4707a0502f65e53d.camel@nazs.hu> <CABZAGRE7jbjUbE8kbGmAe_pY=YiXhKr1woFNgwba68DENUBXoA@mail.gmail.com> <4dfc904f7e11e5d29e65a11959ae751bcb179d52.camel@nazs.hu> <CABZAGRErVVOT+0PP0_-QCi6Q0UT0kd7SUGWkUe_q27WQ3PVzPA@mail.gmail.com> <415fe5eb56047a9930d9e28b47cc37c462fa7f6c.camel@nazs.hu> <CABZAGRG6W61Vr+V7c7ND2axJKPjDBS674gPCXy_pSReQZ+9wog@mail.gmail.com> <ce5eae85a6fd1b49de4477c9e5eb22a9d975fb47.camel@nazs.hu>
-Feedback-ID: 26919654:user:proton
-X-Pm-Message-ID: cafd1b3cb602f9e087a23ccfba03fd5a73043d35
+From: dilan johnson <dilanjohnson@outlook.com>
+Subject: What's the standard for dynamically allocating memory?
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: MN0P223CA0024.NAMP223.PROD.OUTLOOK.COM
+ (2603:10b6:208:52b::31) To LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM
+ (2603:10b6:408:224::16)
+X-Microsoft-Original-Message-ID:
+ <d4ad9f35-d99f-4936-9d3b-ad68be29e56a@outlook.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV8P221MB1399:EE_|DM8P221MB0487:EE_
+X-MS-Office365-Filtering-Correlation-Id: a0594b4a-c316-4e9b-f02a-08de3136ddab
+X-MS-Exchange-SLBlob-MailProps:
+	ScCmN3RHayGhMYhsNb3DdScydiNgS7Hy7tj49dexdnaPL5+IV7ETfiGxXTkcNduPosk8+UIZ4olNGd5mIyijuqP6podXBKjlin8dEJXs3CCoIkY/XT/cOzT7RpcW5x2grjnNZF4yOH1F3+SzZyJkw7P2izG9cdveJmZvkBC+W2T4jdw6usMhiDKl7Gjacgcav+6nGlUpVlkWX0mR0NQT0zund0g3g5zcbNfezsATVWnnSrlY/D/me90os4gtCxJwo7WLXtd3giRFgqSg/ghXKWibexSkSKRRJ1PTwRRQAgvN9sK85aC7wJqmNl/YNOXU2ElwfcQQMgMFi9uIxxRYEM2vtc0mhjgoWI60YjNLp5U9iibVJTjtX2cNp602VxDWJm3tSJo39+Ai+YxmEWfL+T3/Xlkx2DJy7K8bNVW+zndE+wTIUenyxB5DyW79KMhK34nWz1kCQA5+tcatiT8j778SJkBh9o9KmNCM2fkvz42x1ZtBGH+VAjImdqAEoTddx3afVSlDJKTG9DvH656eui7uQFi0dSBeEefk26HiMGlwKGR/m4FOXb4AUv7TLUNBYYzgdIZJeLFACwf46oNpCx85ATQ+TZRiqDj8bQcciFJSy+KnEvSiu7ohgpLf4SkmLZj5zzYFndzzzy1uY1jNX0D+Zj8f5NWh8kqSnBM/VcnYUm0wUNXzt989jM4eXmWKyVoNesieAdQVX5zQMEV9CnKC5PVGBgYsPBOnX1/VYhA=
+X-Microsoft-Antispam:
+	BCL:0;ARA:14566002|6090799003|461199028|19110799012|8060799015|5072599009|23021999003|39105399006|15080799012|40105399003|440099028|3412199025;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?ZitFN1ljR3dYNDVOK2IwU2NHYktBUjd1bW1zODEwK1NwT3JDTkxYdDRrM2Ew?=
+ =?utf-8?B?d3BKaFJweTBhZmU1NDEwcXVvZTlMaFpMZ1Y4aU9XcVpGL2FVM01aNHdNMC9t?=
+ =?utf-8?B?MEprL0p4UUkyM0ZRcURKdTVkM3NWak0yT3hZSkJLaml3TlRzSEkvcG9MV2Rt?=
+ =?utf-8?B?QnAxb3I2YlNNc0hQMXBvODBDTVA0L3V5blZUUXdwQ3pubDVrSTQyUG5wd292?=
+ =?utf-8?B?ZjZXRU8vd3Jxbmt1S1MwZW9vYllrWW9uOHd0SjhjbXNkaEJZcjZYM2ZSbHll?=
+ =?utf-8?B?dmRvTVkvOVBzNVRpVnl3blp2cURTV0l6Q2hRTk9hM05rVSsxMVpCdVpHUXN5?=
+ =?utf-8?B?OXozTXllVE8rTkYwWmFDZjk2QTVyMkR6a3kxbXpHNGVXZXM0V3VRRHVPTmJi?=
+ =?utf-8?B?WEZDdjdnZmw0U1h2VkpDclpGcE5oTEhyeHNhbURXaW1aNzlzdjdyNXFrVlRo?=
+ =?utf-8?B?NGZQT3pTT2lDbFRsSk9lSk12dmsxVnRxUlM2UldIditlYnVzZlJoaWg2a0xo?=
+ =?utf-8?B?TUN1TVdsSlNtWnEyVVFnbURQZkJHMUlVSEtiemRKR0NhbWdUQ3JDVXI4bEFO?=
+ =?utf-8?B?RitkUGdjQmN6d01OQmVnMEtod3NCY1pEWUFuNGRHVFhyQ1VvZEdhdXJBSzBN?=
+ =?utf-8?B?bmViRUdqOTUyczBKVDlIY3BWVnEwZlZhVGEwZGgvVVFBUUdTanZtN3RHak1G?=
+ =?utf-8?B?VmcwbzVTVFJVaktnLzlSaTdhZEprMlZVSDhadFRhNEZLaUJ0YXFIZWM0Tmc2?=
+ =?utf-8?B?MFRXSFlqQlpJRThaL2xVRld1RW4zWDVWTnVWcU1VRk1RT2s5WEtkbnUvQTVP?=
+ =?utf-8?B?ZzBMNWhPK2p5STZBT0J4RmpMUk51dTlUSzFRWUdEczF4N0JTUEFFT1FmUFFN?=
+ =?utf-8?B?bWQ5b0hUZGlyL0ZKbE9VSTFXTlBrR05ReDlTNi8wWXdLQWhSK09mRG0zTXRz?=
+ =?utf-8?B?c2ZkbG1OUGg1NXVndWNiRmh1OW8rSU16VElJYkVCTlAvTkNOM1lBeXUyYUI5?=
+ =?utf-8?B?ZFczM2t5MlJEcG5KblhNZ1N5QkNTWlhENDcrelcvYThweGVJME9aN3JETEg0?=
+ =?utf-8?B?OWFIbnk3dTVyNDVDOGs1eVErWlA4ODk0dzgwTDdyenRUYzB2Q0o1bUhlL3VT?=
+ =?utf-8?B?V0RWcUk0cElUMm5oWWJwVm5uTDI5aWxQUDFpeXFhSFlpejl1MldKRytJTHFo?=
+ =?utf-8?B?ODVpVWhvcmFwdHFOSGFkeVRLODEybUl3eEd0TElId3JpVHZTbXVJUzdJbDNE?=
+ =?utf-8?B?b0ZaYXBJcDdxS0NWYWsyRlBMQzhxWE13dDJkQTB2eHRQQWwwSzY3eU1yYity?=
+ =?utf-8?B?ekFZS09mTVhPdDZyUFF5ais2dmxqWHdQWjdUZG9OcTVDNDZtb200SkF3Sk9R?=
+ =?utf-8?B?TkphQzJaZU1CdWpmZXU1WDhBL2lPNER5c0pjSWIwZThGOWNiSFVJRTRpZnF0?=
+ =?utf-8?B?WmVzd2lWekQvdHZTUUZpU1pNcm1Ua3czczhTYXFpaGZad3hYOXk4amRKQmsv?=
+ =?utf-8?B?QnpNVWtBT2pWaCt1cEIrN0k4NWdrWkhhYWhSTHR2a3h3c2x0ZGNsOER6Q2E0?=
+ =?utf-8?B?N2EvTmpWc2lmT0FnSFNHb2dXU3BTcEdrUW40eUo4Z1o2VFpDS0JOcUF0eTly?=
+ =?utf-8?B?bjl5cGxnSG9keGc3WU9pRkswVUZvR2c9PQ==?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?UzJOY0dHY0ttdHJERXdsQmZkeC9VQTloZWQ3RThIa1pNN0ZVbVhNMExENFh1?=
+ =?utf-8?B?a0J1VE5LUWdJd2xtQlZBK0hVMVNGei9xajdGRTJNTVJucnhuNGQyZ2pFU08r?=
+ =?utf-8?B?WGd0UHJQbWxRRmN2ZlFPQjVJanFOSEo1U2FyRk5HWk51dHVmVG44NkQvWllo?=
+ =?utf-8?B?SkJPcHVheEFZaWJYS29oR2lkbkk3T3Bna1Azd0V5VVhHQ3pDMmZzUmdhZEhh?=
+ =?utf-8?B?ZnF1MlpaTFdnZXpENmlxeTdyTk5jOXRMeHRLam1BeUxaeHJnN2Z3bUlSNUtI?=
+ =?utf-8?B?eHVOT3VwL1lmSXlUOHoxODhkdS9yd2dCMjlYbnZkY3I4dGFHaVozUmNNdElv?=
+ =?utf-8?B?dzBLaklsL2F6VXp5Y0wxbGV0VW9iVFIvNG5hKzJKL0RhVUZ3azByY1ErMFMr?=
+ =?utf-8?B?NGplYUtFSUUxbWJjaE4rS0M2YUpTckRETW5tMGQ3MVpENXpqbjBXUHl1OE0v?=
+ =?utf-8?B?T2F1c3REckI5K3Z2VDloT3pncG9HaTNJS09VamNBWlArSGZNTzlEbGNINW5u?=
+ =?utf-8?B?QkY5RkprL3FYditYNU1HWmpMeW15SmdCdWRPdFlpMGIrVXpzZS9nUGZHVEgr?=
+ =?utf-8?B?czVteUlYMDdNQUZncC9tUUd5R3ZFK2c0OFdJTnRqKzZKWHNTRTgwM211R0RO?=
+ =?utf-8?B?V1h6WWJLTEtURVQrTXpEZUtFcnBFR0ljejNVOGVxMWtFZXZBU1BPUm9TRG83?=
+ =?utf-8?B?UCthdEo5MkRtek1HTFVPOEJ3Vk8ybG5IQTB0TE1aY2h1dHVxRTFjZXRYMXpD?=
+ =?utf-8?B?a1hTQzhtdzdoQlRwS0R3cEJ1WE5NeWhHbytBWlRoaVI4Q3RjMHR5NHhWdGhM?=
+ =?utf-8?B?c2F5M1EraVZuOCtJZWlRN3hoVU1yVncyWENUMzFFSEhYNGVCWGgycmM0aFBJ?=
+ =?utf-8?B?c01La0dVY0hMZlRTaC8vUVBTSEsxSWJiN2U4b3h5R2ZqSWpscWxheUp5dnlW?=
+ =?utf-8?B?Yk1QV1lPekFZcnhkRnBqNzNqWlhLcXkxSTc0ZVFZLzEvOGpWTFVrM0JpaDdo?=
+ =?utf-8?B?b1V1UG85VG4xMTJtQ05PanVRem9UZjh6WVdTOUZzSnZmakJITWFNcWdpeW1P?=
+ =?utf-8?B?WGgvaWRzSHAyZXpXK1RzbUtacUh1Skdrdk5uS3htYk5XcTVaODlWSlVOSStW?=
+ =?utf-8?B?d1AyTFNzMlRrdm9jQy9TNFAxWVlkZ0JRYWVaRFZrd2dISGVrOXUrS3pYWm5q?=
+ =?utf-8?B?MDJKZDdWUlp0bFAwTjFZVDhWMUt5cjh6eFUwbnN4MjdqNVJ0WnV1MFA5WE9x?=
+ =?utf-8?B?cWttY0xpQUZxRW5MRklHV3BQNEdTTFVXYXVlNHBNazRiTjNuMWpRMVhRRi9y?=
+ =?utf-8?B?U0tBS1A5SUNwaUMrK0VkMmF5dmNWU0dhaWY2WGFYKzdsTEZsNi9JLzJPeGU5?=
+ =?utf-8?B?YUxFTWVNNmhWa0QwNy9TZW9sK0d1alh3NU9jSXpqaUxQTE84YmJxL3BtZTdG?=
+ =?utf-8?B?TnJZWjBmdmdxREdhRG9TZ0JyamFPV01zYXFEQ3k5Z25VZ2JhN2NVVEh2cThS?=
+ =?utf-8?B?YStRRWYrZ21rU2gvZkh2UmpzUm8zMmRLelRvQXVQdCtMd0tmUmF4aVg1R3pz?=
+ =?utf-8?B?QU51bk10ZjNiMUNldXo5MVJZSzF5MlI0N2tnUmE1RVI4a1AyalBGWmk4SGFR?=
+ =?utf-8?B?Rm5RQ3RVMnhMbjJvSWpIdG1MZ0lhcFFIandLUk1rWkpqTFJjQS81bXJYaGhk?=
+ =?utf-8?B?Z0FORkFQYkNETlBUV1hTYU1uTXNDeEhhNHFhZTJLVllpNis2L3VIWklRPT0=?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a0594b4a-c316-4e9b-f02a-08de3136ddab
+X-MS-Exchange-CrossTenant-AuthSource: LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Dec 2025 00:08:05.4651
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg:
+	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8P221MB0487
+
+Hey all.
+
+I just got interested in kernel development and I want to ask, what is 
+the standard way to implement dynamically allocated memory?  I am trying 
+to finish a todo and just want to know how the standard way to do it is 
+so I don't write a bunch of code completely wrong, get yelled at and 
+have to redo it.
+
+Would it be something like this for an array of ints for example? 
+(pseudocode)
+
+struct dynarray {
+
+         int *arraypointer;
+
+         int arraysize;
+
+         int used;
+
+}
 
 
+void cpy_to_dynarray(struct dynarray *dest, int *src, int size)
 
-> On 30 Nov 2025, at 09:40, Nagy =C3=81brah=C3=A1m Zsombor <nagyabraham@naz=
-s.hu> wrote:
->=20
-> On Sun, 2025-11-30 at 06:25 +0800, Nick Huang wrote:
->> Nagy =C3=81brah=C3=A1m Zsombor <nagyabraham@nazs.hu> =E6=96=BC 2025=
-=E5=B9=B411=E6=9C=8830=E6=97=A5=E9=80=B1=E6=97=A5 =E4=B8=8A=E5=8D=881:14=
-=E5=AF=AB=E9=81=93=EF=BC=9A
->>>=20
->>> On Sat, 2025-11-29 at 21:59 +0800, Nick Huang wrote:
->>>> Nagy =C3=81brah=C3=A1m Zsombor <nagyabraham@nazs.hu> =E6=96=BC 2025=
-=E5=B9=B411=E6=9C=8829=E6=97=A5=E9=80=B1=E5=85=AD
->>>> =E4=B8=8B=E5=8D=889:22=E5=AF=AB=E9=81=93=EF=BC=9A
->>>>>=20
->>>>> On Sat, 2025-11-29 at 12:09 +0800, Nick Huang wrote:
->>>>>> Nagy =C3=81brah=C3=A1m Zsombor <nagyabraham@nazs.hu> =E6=96=BC 2025=
-=E5=B9=B411=E6=9C=8828=E6=97=A5=E9=80=B1=E4=BA=94
->>>>>> =E4=B8=8B=E5=8D=884:18=E5=AF=AB=E9=81=93=EF=BC=9A
->>>>>>>=20
->>>>>>> On Fri, 2025-11-28 at 08:12 +0800, Nick Huang wrote:
->>>>>>>> Nagy =C3=81brah=C3=A1m Zsombor <nagyabraham@nazs.hu> =E6=96=BC 202=
-5=E5=B9=B411=E6=9C=8828=E6=97=A5
->>>>>>>> =E9=80=B1=E4=BA=94
->>>>>>>> =E4=B8=8A=E5=8D=881:37=E5=AF=AB=E9=81=93=EF=BC=9A
->>>>>>>>>=20
->>>>>>>>> On Thu, 2025-11-27 at 19:26 +0800, Nick Huang wrote:
->>>>>>>>>> Abraham Zsombor Nagy <nagyabraham@nazs.hu> =E6=96=BC
->>>>>>>>>> 2025=E5=B9=B411=E6=9C=8827=E6=97=A5=E9=80=B1=E5=9B=9B
->>>>>>>>>> =E4=B8=8B=E5=8D=886:43=E5=AF=AB=E9=81=93=EF=BC=9A
->>>>>>>>>>>=20
->>>>>>>>>>> Hello,
->>>>>>>>>>>=20
->>>>>>>>>>> https://docs.kernel.org/kbuild/makefiles.html#the-kbuild-files
->>>>>>>>>>> stat
->>>>>>>>>>> es
->>>>>>>>>>> that when a directory contains a Kbuild file, the
->>>>>>>>>>> Makefile
->>>>>>>>>>> is
->>>>>>>>>>> skipped in
->>>>>>>>>>> that directory.
->>>>>>>>>>>=20
->>>>>>>>>>> It feels to me that both files are in use e.g.
->>>>>>>>>>> under
->>>>>>>>>>> arch/x86/
->>>>>>>>>>> directory.
->>>>>>>>>>>=20
->>>>>>>>>>> I'm trying to see what files are the core of the
->>>>>>>>>>> kernel
->>>>>>>>>>> and
->>>>>>>>>>> what
->>>>>>>>>>> files
->>>>>>>>>>> can be configured for x86 by partially parsing the
->>>>>>>>>>> Makefiles
->>>>>>>>>>> and
->>>>>>>>>>> the
->>>>>>>>>>> Kbuild files. Would it be sufficient to parse them
->>>>>>>>>>> as:
->>>>>>>>>>>=20
->>>>>>>>>>> if file =3D=3D "Makefile" or file =3D=3D "Kbuild":
->>>>>>>>>>>=20
->>>>>>>>>>>  > parse(file)
->>>>>>>>>>>=20
->>>>>>>>>>> or it should prefer the Kbuild file when present,
->>>>>>>>>>> or it
->>>>>>>>>>> is
->>>>>>>>>>> using
->>>>>>>>>>> some
->>>>>>>>>>> other logic?
->>>>>>>>>>>=20
->>>>>>>>>>> Sincerely,
->>>>>>>>>>>=20
->>>>>>>>>>> Abraham Nagy
->>>>>>>>>>>=20
->>>>>>>>>>>=20
->>>>>>>>>>=20
->>>>>>>>>> Hi  Abraham Zsombor Nagy
->>>>>>>>>> What functionality are you trying to add that would
->>>>>>>>>> require
->>>>>>>>>> modifying
->>>>>>>>>> the Makefile or Kbuild?
->>>>>>>>>>=20
->>>>>>>>>> Sincerely,
->>>>>>>>>> Nick Huang
->>>>>>>>>=20
->>>>>>>>> Hi Nick,
->>>>>>>>>=20
->>>>>>>>> I'm not modifying the build files, only writing a
->>>>>>>>> script
->>>>>>>>> that
->>>>>>>>> walks
->>>>>>>>> through the source tree and parses Makefiles and Kbuild
->>>>>>>>> files
->>>>>>>>> to
->>>>>>>>> list
->>>>>>>>> what source files are linked to the kernel by default
->>>>>>>>> and
->>>>>>>>> by
->>>>>>>>> CONFIG_*
->>>>>>>>> options. This is to see what to read through to get a
->>>>>>>>> basic
->>>>>>>>> understanding of the kernel at a given config.
->>>>>>>>>=20
->>>>>>>>> As I understand the documentation linked above, I
->>>>>>>>> should
->>>>>>>>> skip
->>>>>>>>> Makefiles
->>>>>>>>> when Kbuild files are present in a directory, but
->>>>>>>>> Makefiles
->>>>>>>>> feels
->>>>>>>>> to
->>>>>>>>> have important lines too.
->>>>>>>>>=20
->>>>>>>>> The approach is something like to extract object files
->>>>>>>>> and
->>>>>>>>> subdirectories from lines that start with python regex
->>>>>>>>> "^\S+-y"
->>>>>>>>> or
->>>>>>>>> "^\S+-\$\(CONFIG.*\)".
->>>>>>>>>=20
->>>>>>>>> Sincerely,
->>>>>>>>> Abraham
->>>>>>>>>=20
->>>>>>>>>=20
->>>>>>>>=20
->>>>>>>> Hi Abraham
->>>>>>>> You can use git grep -n "CONFIG_**" to find the files you
->>>>>>>> need.
->>>>>>>>=20
->>>>>>>> Sincerely,
->>>>>>>> Nick
->>>>>>>=20
->>>>>>> Hello Nick,
->>>>>>>=20
->>>>>>> Thank you, I've just tried git grep, it seems convenient,
->>>>>>> however I
->>>>>>> still need to further script and fine-tune the output, in
->>>>>>> which
->>>>>>> case I
->>>>>>> think having a customizable walk algorithm is the way to
->>>>>>> start
->>>>>>> with.
->>>>>>>=20
->>>>>>> find/git & grep walks through the directory tree that could
->>>>>>> include
->>>>>>> build files and sources that are from an incompatible set
->>>>>>> of
->>>>>>> config
->>>>>>> options. Also, there are some Makefiles that end the line
->>>>>>> with
->>>>>>> a
->>>>>>> backslash '\' saying to process the next line too, but
->>>>>>> which
->>>>>>> won't
->>>>>>> have
->>>>>>> regex match.
->>>>>>>=20
->>>>>>> A custom algorithm can start from a Makefile (and Kbuild
->>>>>>> file?)_and
->>>>>>> walk directories only that are visible from there. This way
->>>>>>> I
->>>>>>> can
->>>>>>> enforce a horizon of config options that are meaningfully
->>>>>>> able
->>>>>>> to
->>>>>>> extend the kernel. E.g. starting with minimal config,
->>>>>>> seeing
->>>>>>> the
->>>>>>> available additional configs, then in subsequent calls
->>>>>>> adding
->>>>>>> configs
->>>>>>> one by one until I have a whole kernel (but without extra
->>>>>>> parts).
->>>>>>>=20
->>>>>>> Make menuconfig combined with git grep and a text editor
->>>>>>> could
->>>>>>> help,
->>>>>>> but it would require more manual handling to achieve the
->>>>>>> same.
->>>>>>>=20
->>>>>>> Sincerely,
->>>>>>> Abraham
->>>>>>=20
->>>>>> Hi Abraham
->>>>>>=20
->>>>>> Are you trying to find out which configs can be enabled? If
->>>>>> so, I
->>>>>> suggest you check the description of each Kconfig to see if
->>>>>> it=E2=80=99s
->>>>>> what
->>>>>> you need, or if you have a clear idea of the functionality
->>>>>> you
->>>>>> want
->>>>>> to
->>>>>> implement.
->>>>>>=20
->>>>>> Is your main goal to build a Linux kernel?
->>>>>>=20
->>>>>> Sincerely,
->>>>>> Nick
->>>>>=20
->>>>> Hi Nick,
->>>>>=20
->>>>> Yes, my main goal is to build a Linux kernel that is configured
->>>>> specifically for my laptop and usage. Slowly, I would like to
->>>>> learn
->>>>> the
->>>>> build process too and to get familiar with the source roughly.
->>>>>=20
->>>>> I see that Kconfig has the config dependencies and feature
->>>>> description,
->>>>> but yet I would need a script to find the corresponding sources
->>>>> that
->>>>> parses Kconfig files. If I understand well, it is for composing
->>>>> a
->>>>> meaningful .config file that then passed to the kernel build
->>>>> system.
->>>>>=20
->>>>> My approach would start with the build files, list the included
->>>>> object
->>>>> files and visible config options that include additional object
->>>>> files.
->>>>> I would continue this listing with build files in mentioned
->>>>> subdirectories, then grep the corresponding source files for
->>>>> the
->>>>> rest
->>>>> of the configs. Then, I would browse the source based on this
->>>>> overview.
->>>>>=20
->>>>> To see how Makefiles and Kbuild files are used, I would need to
->>>>> check
->>>>> the build system, but I'm hoping I can get some guidance.
->>>>>=20
->>>>> Sincerely,
->>>>> Abraham
->>>> Hi Abraham
->>>>=20
->>>> Do I only need to build the kernel without modifying any code?
->>>>=20
->>>> Sincerely,
->>>> Nick
->>>=20
->>> Hi Nick,
->>>=20
->>> I will only modify it a little, e.g default boot params, in case I
->>> want
->>> to use EFI_STUB (until I find in my UEFI how to pass them without a
->>> bootloader).
->>>=20
->>> Sincerely,
->>> Abraham
->>=20
->> Hi Abraham
->> Are you planning to develop a Linux kernel driver, or do you only
->> need
->> to build the Linux kernel source code?
->>=20
->> Sincerely,
->> Nick
->=20
->=20
-> Hi Nick,
->=20
-> I'm planning mainly to build the kernel, but I would try out minor
-> modifications.
->=20
-> At the moment, my script walks via the Makefiles, then the same happens
-> with the Kbuild files. I'm fixing things as I encounter them. Example:
->=20
-> $ ./walk-x86.py
-> ...
-> obj-y
-> ...
-> arch/x86/kernel/setup.c
-> arch/x86/kernel/x86_init.c
-> arch/x86/kernel/i8259.c
-> arch/x86/kernel/irqinit.c
-> arch/x86/kernel/probe_roms.c
-> arch/x86/kernel/bootflag.c
-> ...
-> obj-$(CONFIG_PCI_BIOS)
-> arch/x86/pci/pcbios.c
-> ...
->=20
-> Sincerely,
-> Abraham
->=20
+{
 
+         if (size > dest->arraysize) {
+
+                 dest->arraypointer = realloc(size * 2);
+
+                 dest->arraysize = size * 2;
+
+         }
+
+          memcpy(dest->arraypointer, src, size);
+
+}
 
