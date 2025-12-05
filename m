@@ -1,116 +1,198 @@
-Received: from mail-pf1-f172.google.com (mail-pf1-f172.google.com [209.85.210.172])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mx10.gouders.net (mx10.gouders.net [202.61.206.94])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB6042E8B74
-	for <linux-newbie@vger.kernel.org>; Wed,  3 Dec 2025 11:23:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.172
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E04D156677;
+	Fri,  5 Dec 2025 21:38:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=202.61.206.94
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1764761026; cv=none; b=uz03v8aTJJH7iLQLWP07dQUOYwWVLcfLRAhVnAqw0WEsvOG+LYWOjaoJMTVmGN/jXC7ZIyrsd7+VeU29hYZqwQhPBHMnL3+NnxnDHDgUdrUxZkHAMPC9QUP0pSQnzwjC/WBsvgWlFuD1PwsnVMq6/JDMpVuENLFzzxPcjBVqhPY=
+	t=1764970703; cv=none; b=UiPjIzjzvOkrmh+Egct+9mLCKWbElNLQPg/rF3+w0+lC0YsxdqRmwUNrjzYsWwbRCpAybjRBFRbSD6NJQPV6O3g4fqK2Gx74CGrr7LbXPnZ3Eey3N6bCKlYOKcOuM+sIMvWegkHqWAy4UNqo9wRfuXhy2y3cQO14aEF/wZ6fiF0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1764761026; c=relaxed/simple;
-	bh=Ndbh/sD2BneiovCY28q8ZEd0St/sMzhY89Zsv9XSpLw=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=QA1PVTWpYibPCEuUGtBg/nRZi2hWcOWRDfrGhu9fE4XgWdkkXAy0shNqXuroxML/u0WJwDZjUZJKJUnaZQUHoJsER7lJAGMh9teVwLEKJ9ZlIXu8UerXzxF9SZokXg1aJ6UeQshM6rDAsvJVvmzbzxMEYGrsRFWy4yvTQa9TVsw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=nXLArZsC; arc=none smtp.client-ip=209.85.210.172
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1764970703; c=relaxed/simple;
+	bh=CAXXm8HC86EOxEerGobcQRdNqt8Xob43MZ2AjsmDz/k=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=MwOUi+PHxbEp4ZQozFo1S2f9oRGqXOjAegJAbd/G3d2s9/t5RZINFrH/52Wp3Bi36SYt6l9a9syh/NAEdA98V7O3O6KVZDWQe1gbX+Kenffs4oqFxBk0y5boJnZZ4f9pjQMPTQGcMMz/RXu1QPEQ7JMGaXxOgXKIYNph428eC2A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=gouders.net; spf=pass smtp.mailfrom=gouders.net; dkim=pass (1024-bit key) header.d=gouders.net header.i=@gouders.net header.b=bS5DfxeI; arc=none smtp.client-ip=202.61.206.94
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=gouders.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gouders.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nXLArZsC"
-Received: by mail-pf1-f172.google.com with SMTP id d2e1a72fcca58-7c66822dd6dso512040b3a.0
-        for <linux-newbie@vger.kernel.org>; Wed, 03 Dec 2025 03:23:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1764761024; x=1765365824; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ih7UlKJuzS66DrOclS0PTTZoK169Rfoiu742k92DMqk=;
-        b=nXLArZsCw6qsc8h97qhUYaebyA1sAlUUfzaJACHUewmoa4STY2F6g+wD38rvQkOlB6
-         3DDFNB13uj2pHnNzW99RjnrprB5PuM7mvLmljrK9i09wdap3X/jyb0/iff+rEE3DB0DF
-         XIKQzL0q8EO1Ye4xUgacjNvxyt3SFljhJ50BWl0imDaWCkOXPycJXAthPSYLQIa2xxMK
-         koZwN1YqcWy1Rlqcu3AmjIsbZI2chJmIeytamfJFCRzcaDeW37QuLj4Fvu76zsgYd6h4
-         2j3lwvEsuqvT2Azg96llsqbPIdFTdDlctJwEjmQIGOZKLk2NRiE08tNuGR33bO+QgJ0P
-         62yA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1764761024; x=1765365824;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ih7UlKJuzS66DrOclS0PTTZoK169Rfoiu742k92DMqk=;
-        b=eEaH3+Pivb175sMNXK7up9e+hzOpL2gdAaEsSAxGifW8QR6YZniEimIK4rFmYxT861
-         5p+B6a9V8M56BioFqG0dwV+QOiH9vieQxHhr9mnyMEmfiSsimjKpY1kAzdb6uDL03ckE
-         j8pbeDT6FvBJRTxVlvjz2I5RRpfyUIezZbA8aN0z6epHTg4Ho0TCcqxJlE4DhGpCnpQK
-         Zmr8U3VtmURSKQnrwcUlvV/iyozYfsnux+ikIYLrQ0bwCoyENA65tWNr5Z0lW5ETxyRZ
-         cfN8pf8w1n/38XMqSKBF+yL8F0Sud+x9tOKdoQtjZ2ZG2ajDNJPQ8pzvSI6ZwkbwQ6Iy
-         VAtw==
-X-Gm-Message-State: AOJu0YwcCnr8Afl0ijsAJW/mWmuaOd/T6EbQdb+FfoFF+cfqq+gullFb
-	nGTt9z2KoPcfOpeiVqt76ue7snTwJS2wlwHrYUYqynKM9kCQjJSM2OHd4eM4IA==
-X-Gm-Gg: ASbGnctutZrXuffDTISvd1n4NimrvEKSmm07Rn0MRXMLIR+uBeqGG/pdEtBAvtq39Q4
-	l67pAFJJYEit1UBI2M0X7iG67Lv+L7Msky3F2Lx3HQiAkILqTElLLtu9f6s5tTgOpBJcdkWrnhh
-	2/D/TZZ7P9sa4Y/RwNrDYlnaqJ72MOcrHWckLiUdCGW61gQstb7Sz6xm+dsgrdIXaiaESHqOEd/
-	ZCnecNPwyhLIuc8aFym4PZI6pX0JF52A8fKmE16sASxbLt4kVcE59ib58Dx8hAvsZ72pViLisai
-	b3MGkPoZIPZIv1uKbBUtwESHLIkSG6PUDc7fqm62DvSktP1dsnYbaG5bPkd2wU+0Ilp2pVUMCel
-	VsGoUwyaRhGUFRcikUTrbYDG46Je9tnag4SgfJKxEe3kIcLa1Rv+dlBwfMuTQwCwENAx4le7M8t
-	N/Sz0ru3m59JNyvpRHBs4MPPs7GPIk1WR84FtTDpLfO/bYAmyTz2IDgovf
-X-Google-Smtp-Source: AGHT+IF+eQyQ2x3wTganruIyg6yEhBxjfVbTKyPTwbB7j6NVzerHHKO+ftpsczSQsdBU4iksXWDIRg==
-X-Received: by 2002:a05:6a20:1581:b0:35f:7431:5da1 with SMTP id adf61e73a8af0-363e8b179b3mr7362111637.0.1764761023857;
-        Wed, 03 Dec 2025 03:23:43 -0800 (PST)
-Received: from localhost.localdomain (223-137-152-58.emome-ip.hinet.net. [223.137.152.58])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-be4fb434e8esm17596516a12.4.2025.12.03.03.23.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Dec 2025 03:23:43 -0800 (PST)
-From: Nick Huang <sef1548@gmail.com>
-To: dilanjohnson@outlook.com
-Cc: linux-newbie@vger.kernel.org,
-	Nick Huang <sef1548@gmail.com>
-Subject: RE: What's the standard for dynamically allocating memory?  
-Date: Wed,  3 Dec 2025 19:21:30 +0800
-Message-ID: <20251203112132.5121-1-sef1548@gmail.com>
-X-Mailer: git-send-email 2.48.1
-In-Reply-To: <LV8P221MB1399D71143E168BBF9D9C955C3D8A@LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM>
-References: <LV8P221MB1399D71143E168BBF9D9C955C3D8A@LV8P221MB1399.NAMP221.PROD.OUTLOOK.COM>
+	dkim=pass (1024-bit key) header.d=gouders.net header.i=@gouders.net header.b="bS5DfxeI"
+Received: from localhost ([47.65.177.29])
+	(authenticated bits=0)
+	by mx10.gouders.net (8.18.1/8.17.1.9) with ESMTPSA id 5B5LbiYI017851
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
+	Fri, 5 Dec 2025 22:37:44 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gouders.net; s=gnet;
+	t=1764970665; bh=CAXXm8HC86EOxEerGobcQRdNqt8Xob43MZ2AjsmDz/k=;
+	h=From:To:Cc:Subject:Date;
+	b=bS5DfxeIhi/7fs3kwFgz6+yLuzbjoUSEiRyz6TmNNul1YJUKLE/kwPsWr9pb3F4gN
+	 XvatpyuXERmAC7HSPaFGxsF4BxZcDVuHDdWqTNL+SqBau1prPTYbd//7ZLqlddEbP1
+	 7C39r8QOPi7K0+PQeVXiJuzjQ139g/hkChzHFwBg=
+From: Dirk Gouders <dirk@gouders.net>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Jiri Slaby
+ <jslaby@suse.com>, Al Viro <viro@zeniv.linux.org.uk>
+Cc: linux-kernel@vger.kernel.org, linux-newbie@vger.kernel.org
+Subject: pty: childs don't always react on close(2)
+User-Agent: Gnus/5.13 (Gnus v5.13)
+Date: Fri, 05 Dec 2025 22:37:44 +0100
+Message-ID: <gho6oczk2f.fsf@gouders.net>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="=-=-="
+
+--=-=-=
+Content-Type: text/plain
+
+Hi,
+
+chances are high, that I am doing a stupid mistake, because experienced
+programmers already would have noticed problems with ptys.
+But if you have the time, perhaps you could help me undestand the
+following problem:
+
+I am working on a program (a terminal pager [1]) that works with
+ptys to allow users to have several manual pages open and reload them
+when terminals are resized.
+
+I now noticed, that a close on a pty file descriptor doesn't cause the
+child process to exit and a waitpid(2) hangs forever or gets interrupted
+(when used without WNOHANG) -- it seems the child doesn't get noticed
+about the close(2) on the other end.
+
+Curious is that I notice this only if more than one ptys are in use --
+with a single one everything is OK (see attached sample program and test
+it with only one pty).
 
 
-Hi Dilan,
+I would be very glad if you could tell me if I am correct to expect that
+if I close(2) a pty file descriptor the other end should notice that and
+I could assume a waitpid(2) to succeed.
+And perhaps, you could tell me which mistake I am doing.
 
-For memory allocation inside the Linux kernel, there is no single
-“universal” function — the choice depends on *context*, *lifetime*, and
-*constraints* of the allocation. The commonly used interfaces are:
+I prepared a small test-case that reproduces the problem, at least here.
+If that program is modified to work with just one child, everything
+works as expected, when the second child is used, the waitpid() hangs...
 
-1. **kmalloc() / kfree()**
-   - Allocates physically contiguous memory.
-   - Good for small objects and structures.
-   - GFP flags control allocation behavior (e.g., GFP_KERNEL, GFP_ATOMIC).
+Apologies, if this is not the right place and if I should have asked
+somewhere else.
 
-2. **kzalloc()**
-   - Same as kmalloc() but zeroes memory.
+Regards,
 
-3. **vmalloc() / vfree()**
-   - Allocates virtually contiguous memory (not physically contiguous).
-   - Suitable for larger buffers.
+Dirk
 
-4. **devm_kmalloc()**
-   - Managed allocation tied to device lifetime.
-   - Automatically freed when the device is removed.
+[1] https://github.com/dgouders/lsp
 
-5. **kmem_cache (slab allocator)**
-   - For frequently allocated objects of the same size.
 
-The kernel documentation describes the rules and trade-offs here:
-  Documentation/core-api/memory-allocation.rst
+--=-=-=
+Content-Type: text/plain
+Content-Disposition: attachment; filename=test-close-pty.c
+Content-Description: PTY test program
 
-In general:
-- Prefer kmalloc/kzalloc when possible.
-- Use vmalloc only if large sizes are required.
-- Use GFP_ATOMIC only in non-sleepable contexts.
+/*
+ * Test closing file descriptors opened via forkpty() when not all data has been
+ * read.  A following waitpid() blocks, when we opened two childs and try to
+ * close the file descriptor and then waitpid() for that child...
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <pty.h>
+#include <string.h>
+#include <errno.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdint.h>
 
-Hope this helps!
+#define READ_SIZE 4096
 
-Nick
+/*
+ * Set PAGER variables and start a man(1) process.
+ */
+void do_child(void);
+void do_child()
+{
+	char *e_argv[3] = {"man", "groff_ms", NULL};
+
+	putenv("PAGER=cat");
+	putenv("MANPAGER=cat");
+	execvp("man", e_argv);
+}
+
+int main()
+{
+	unsigned char read_buffer[READ_SIZE];
+	int pty_fd;
+	int pty_fd1;
+	int wstatus;
+	pid_t child_pid;
+	pid_t child_pid1;
+	pid_t ret_pid;
+	ssize_t ret;
+	/*
+	 * Start a child to send us a manual page.
+	 */
+	child_pid = forkpty(&pty_fd, NULL, NULL, NULL);
+
+	if (child_pid == -1) {
+		fprintf(stderr, "forkpty(): %s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+
+	if (child_pid == 0)
+		do_child();
+
+	printf("child_pid = %jd\n", (intmax_t) child_pid);
+
+	memset(read_buffer, '\0', READ_SIZE);
+	ret = read(pty_fd, read_buffer, READ_SIZE);
+
+	if (ret == -1) {
+		fprintf(stderr, "read(): %s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%s\n", read_buffer);
+
+	printf("%ld bytes read.\n", ret);
+
+
+	/*
+	 * Start another child to send us a manual page.
+	 */
+	child_pid1 = forkpty(&pty_fd1, NULL, NULL, NULL);
+
+	if (child_pid1 == -1) {
+		fprintf(stderr, "forkpty(): %s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+
+	if (child_pid1 == 0)
+		do_child();
+
+	printf("child_pid1 = %jd\n", (intmax_t) child_pid1);
+
+	memset(read_buffer, '\0', READ_SIZE);
+	ret = read(pty_fd1, read_buffer, READ_SIZE);
+
+	if (ret == -1) {
+		fprintf(stderr, "read(): %s\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%s\n", read_buffer);
+
+	printf("%ld bytes read.\n", ret);
+
+
+	close(pty_fd);
+
+	ret_pid = waitpid(child_pid, &wstatus, 0);
+
+	printf("ret_pid = %jd\n", (intmax_t) ret_pid);
+
+	exit(EXIT_SUCCESS);
+}
+
+--=-=-=--
