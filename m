@@ -1,199 +1,64 @@
-Received: from mx10.gouders.net (mx10.gouders.net [202.61.206.94])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from layka.disroot.org (layka.disroot.org [178.21.23.139])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72F72254B03;
-	Fri,  5 Dec 2025 22:20:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=202.61.206.94
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58BFC283FF5
+	for <linux-newbie@vger.kernel.org>; Mon,  5 Jan 2026 16:21:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=178.21.23.139
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1764973212; cv=none; b=qnJtjf7MU3T+AmzNNDm9zulSzxDqfyBJQejOaptqD/RXBoSjba9DiiMi6xarWQk80WCUSteynn77KvZj6kJ7Tw5Gxul2U+EQY7ZvUYVLILW1QYAnJhaiOcz3e8SQN+QtZx8oSC7X+JNnDtTBZP/vlrJjPU1YR1seX6nlOvSFZGM=
+	t=1767630089; cv=none; b=KRQpqhwxPJ/9TA5QZOGQ+B0XvLNgHjJu+ej6pEACadii/a1UfeW1HXlCDNDUJPJnaSkJRSCRQ2ueP53KRdGtziPL03LPa8ANun8yPKRtQRO0/DEJg3h5L7Xps5Sq/uTJGzDSmyLsKqazcbrBuF9TGZCIN+oTCig0K2TlfHar1Ic=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1764973212; c=relaxed/simple;
-	bh=VG+GZo2tRUyJ4205Fp5jrZJv8T8cHfwn2ADchdZxRSE=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=in84uL83qCNEApUHw15z6X2b8P3X//yAm1eJIvpiYlh5fC09yQXApVF3Gf/XGVyPIdMcpMf5EGd7B79pcqmwyvc48ub4XvN3AiDFVCz8sA20nEph2nHQQeTTm+o6hmCWbaMyrUT00g6rqMVbdJkHeo/8uO8FHf7PxshEEX/htj8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=gouders.net; spf=pass smtp.mailfrom=gouders.net; dkim=pass (1024-bit key) header.d=gouders.net header.i=@gouders.net header.b=YcCWK8MP; arc=none smtp.client-ip=202.61.206.94
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=gouders.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gouders.net
+	s=arc-20240116; t=1767630089; c=relaxed/simple;
+	bh=n8RG8iIrTlPyFNPz1PE8cSgH64jRes2NmP727LmpvTA=;
+	h=Mime-Version:Content-Type:Message-Id:Date:From:To:Subject; b=cEzUhxydLk6YZF9ZZjylzxI2nMTIqWEIoua0CxfsZN2c0RELiKN1+kO521vJMD22IIRT59V3vjFtr+j3WlXZ1Jmb1zzf1jMgmEI0z57xeMTU0+jSVrp+L95GPfaQpTk9WHf/hIep1cWJekehpAHnfcpU6L2JV3+Uwn1Oj3xNQ4A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=disroot.org; spf=pass smtp.mailfrom=disroot.org; dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.b=j3ewgnOk; arc=none smtp.client-ip=178.21.23.139
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=disroot.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=disroot.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=gouders.net header.i=@gouders.net header.b="YcCWK8MP"
-Received: from localhost ([47.65.177.29])
-	(authenticated bits=0)
-	by mx10.gouders.net (8.18.1/8.17.1.9) with ESMTPSA id 5B5MK4nS019659
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
-	Fri, 5 Dec 2025 23:20:04 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gouders.net; s=gnet;
-	t=1764973204; bh=VG+GZo2tRUyJ4205Fp5jrZJv8T8cHfwn2ADchdZxRSE=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date;
-	b=YcCWK8MPiFs/0MABXEcdPrSRvTWKw8WbVCTVLpGEsSnihyGN6W5ZInJGggxcoRUXq
-	 6AHdngWIThZIsQ+sjaLQmBYIPcV1G6T1gguM7Ki/drDtJGgs00b+nHMqL60eoczFZk
-	 atXEtadMqp/dBKJv4ELHwwWFBwfzUF3tsFXYoSfo=
-From: Dirk Gouders <dirk@gouders.net>
-To: Al Viro <viro@zeniv.linux.org.uk>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Jiri Slaby
- <jslaby@suse.com>, linux-kernel@vger.kernel.org,
-        linux-newbie@vger.kernel.org
-Subject: Re: pty: childs don't always react on close(2)
-In-Reply-To: <20251205214852.GL1712166@ZenIV> (Al Viro's message of "Fri, 5
-	Dec 2025 21:48:52 +0000")
-References: <gho6oczk2f.fsf@gouders.net> <20251205214852.GL1712166@ZenIV>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-Date: Fri, 05 Dec 2025 23:20:03 +0100
-Message-ID: <ghh5u4zi3w.fsf@gouders.net>
+	dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.b="j3ewgnOk"
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 7789C264FB;
+	Mon,  5 Jan 2026 17:21:24 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8M8ZDTDHQfdh; Mon,  5 Jan 2026 17:21:23 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1767630083; bh=n8RG8iIrTlPyFNPz1PE8cSgH64jRes2NmP727LmpvTA=;
+	h=Date:From:To:Subject;
+	b=j3ewgnOkgFLfaVxrjfn0+pnRoLisskVQNX/I6AJaL7ZxjUk7uuHMHnH70tgchX7Ck
+	 5LiPdbtyo4WN4ZEPsKy4pOdW+oKbd8pLFloAlqPeVqUKmVpeuZu/RDDlmC0QFdjnZW
+	 kYtqSHDoVs4PcHqq6ggEoHLkHxzL83Pg+S5t2V87Kwj5GmoaURF0EEX0l5xnRAS2vy
+	 bkJqumOgV+uTKy9hZkk4u+KPHvBdULbc2byfB4Yz3xkVPscjcxxyAyV9jMc3dWZsrG
+	 HHT5ptmSL2DxHKGNu7BNl4Ugt2ensHFf35o6FRxtj0gEkYEsbA+GSyCelzd1b2Z+5b
+	 Fyrr5gBXB9p4Q==
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="=-=-="
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8; format=Flowed
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <260105.155812@disroot.org>
+Date: Mon, 05 Jan 2026 15:58:12 +0000
+From: Avid Seeker <avidseeker@disroot.org>
+To: Newbie Mailing List <linux-newbie@vger.kernel.org>
+Subject: Manual new login shell invocation
 
---=-=-=
-Content-Type: text/plain
+$ echo echo profile_read > ~/.profile
+$ env -i dash -l
 
-Al Viro <viro@zeniv.linux.org.uk> writes:
+Expected: profile_read
+Actual result: no output
 
-> On Fri, Dec 05, 2025 at 10:37:44PM +0100, Dirk Gouders wrote:
->
->> 	child_pid1 = forkpty(&pty_fd1, NULL, NULL, NULL);
->
-> You do realize that it will inherit all your opened descriptors,
-> including pty_fd, right?
->
-> ...
+Is this a bug in dash or am I missing something?
 
->> 	close(pty_fd);
->
-> ... which doesn't do anything to the second child's descriptor
-> table, including the descriptor that refers to the same opened file.
-> IOW, the IO channel (== opened file) is very much opened after
-> that close() - descriptors refering to it still exist.
+man env:
+   -i, --ignore-environment
+		  start with an empty environment
 
-Oh yes, thank you very much!
+man dash:
+ -l               Make  dash  act  as if it had been invoked as a
+				  login shell.
 
-I use FD_CLOEXEC nearly everywhere in the mentioned program but exactly
-not for the pty file descriptors.  Oh well...
-
-For completenes, I'll attach the modified test-case.
-Would be interesting to hear if there are other possible fixes.
-
-Thank you very much, again,
-
-Dirk
-
-
---=-=-=
-Content-Type: text/plain
-Content-Disposition: attachment; filename=test-close-pty.c
-Content-Description: PTY test program
-
-/*
- * Test closing file descriptors opened via forkpty() when not all data has been
- * read.  A following waitpid() blocks, when we opened two childs and try to
- * close the file descriptor and then waitpid() for that child...
- */
-#include <stdlib.h>
-#include <stdio.h>
-#include <pty.h>
-#include <string.h>
-#include <errno.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <stdint.h>
-#include <fcntl.h>
-
-#define READ_SIZE 4096
-
-/*
- * Set PAGER variables and start a man(1) process.
- */
-void do_child(void);
-void do_child()
-{
-	char *e_argv[3] = {"man", "groff_ms", NULL};
-
-	putenv("PAGER=cat");
-	putenv("MANPAGER=cat");
-	execvp("man", e_argv);
-}
-
-int main()
-{
-	unsigned char read_buffer[READ_SIZE];
-	int pty_fd;
-	int pty_fd1;
-	int wstatus;
-	pid_t child_pid;
-	pid_t child_pid1;
-	pid_t ret_pid;
-	ssize_t ret;
-	/*
-	 * Start a child to send us a manual page.
-	 */
-	child_pid = forkpty(&pty_fd, NULL, NULL, NULL);
-
-	if (child_pid == -1) {
-		fprintf(stderr, "forkpty(): %s\n", strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-
-	ret = fcntl(pty_fd, F_SETFD, FD_CLOEXEC);
-
-	if (child_pid == 0)
-		do_child();
-
-	printf("child_pid = %jd\n", (intmax_t) child_pid);
-
-	memset(read_buffer, '\0', READ_SIZE);
-	ret = read(pty_fd, read_buffer, READ_SIZE);
-
-	if (ret == -1) {
-		fprintf(stderr, "read(): %s\n", strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-
-	printf("%s\n", read_buffer);
-
-	printf("%ld bytes read.\n", ret);
-
-
-	/*
-	 * Start another child to send us a manual page.
-	 */
-	child_pid1 = forkpty(&pty_fd1, NULL, NULL, NULL);
-
-	if (child_pid1 == -1) {
-		fprintf(stderr, "forkpty(): %s\n", strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-
-	ret = fcntl(pty_fd1, F_SETFD, FD_CLOEXEC);
-
-	if (child_pid1 == 0)
-		do_child();
-
-	printf("child_pid1 = %jd\n", (intmax_t) child_pid1);
-
-	memset(read_buffer, '\0', READ_SIZE);
-	ret = read(pty_fd1, read_buffer, READ_SIZE);
-
-	if (ret == -1) {
-		fprintf(stderr, "read(): %s\n", strerror(errno));
-		exit(EXIT_FAILURE);
-	}
-
-	printf("%s\n", read_buffer);
-
-	printf("%ld bytes read.\n", ret);
-
-
-	close(pty_fd);
-
-	ret_pid = waitpid(child_pid, &wstatus, 0);
-
-	printf("ret_pid = %jd\n", (intmax_t) ret_pid);
-
-	exit(EXIT_SUCCESS);
-}
-
---=-=-=--
+Avid
