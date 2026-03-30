@@ -1,79 +1,81 @@
-Received: from mail-pf1-f174.google.com (mail-pf1-f174.google.com [209.85.210.174])
+Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com [209.85.216.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C932223DE9
-	for <linux-newbie@vger.kernel.org>; Sat, 21 Mar 2026 12:55:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.174
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DD1D3C5555
+	for <linux-newbie@vger.kernel.org>; Mon, 30 Mar 2026 12:44:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.216.45
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1774097715; cv=none; b=rkJxnZMVSZQo8Vhr7Qc/+QD3PJURu+m7+EOf0v5LjKrhc0qkQNNKhT4+SnxiWTi/MRRYjUnxStF46Bl/NKw2yWOLwBruJQZM6OaCgpUudCzjgdxZglPMdEB8JNA6ExEjo7Xj3av1UmDUeZv66temd+gtZZyxYjQ0TKGneEO93ek=
+	t=1774874693; cv=none; b=nl72RD267IpcKjyDGOgx5cU5WuPmsRLmMH5SQXLsUJthe9Hz8Lo+Gcd1tLYTXrs1Yngqq9wx1tbVWWuVFLgDcrlwdYH4LWyzDt+a/+uUmi4GOt/v/10ODLn0U/tInRjnmTkvyWsmyyS96xQNZ+YmZXTJ+WZWr+6Rx2pnvx7cESc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1774097715; c=relaxed/simple;
-	bh=NZ8W7TB2q6TSzstWemyPti3pokTNmBstUMQd08suACI=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=WaKXyR390U3i/VUnbNTAJYlMpGXg6ikyi1ZMLP7L3NOqhFm1ETDmPLZ0IMkit8NCyhDzZPLfnh0d4uOw9sFtNEwFYm6dxQU2sf/WBzvNKddCErKJGINUoOomH+/nvgMfgG56kEZ/L9egHaOLYFlPyc6ei5IVlKr/twv4yJGPhUs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=VcoaCIVt; arc=none smtp.client-ip=209.85.210.174
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1774874693; c=relaxed/simple;
+	bh=nGrfTdx4MGV8Ajz2Lqr8X8SpPqy7PJw/e+vKIYOrbLM=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type; b=jKvLkjAVJewJs5edDiC/jv1DjCl0B2Ehbxd5EBWPWp2VWZYvFG292TnSGCJazpYXV6xh5jk/MbEYTz2X0DNwXIMppnwmx+1OCDNP64frRfxrhBi6V35FqGYUNjv4XI9v/gEOotvOSyJTY5wPfaSFCOXxXnvrxLmSR8UP4jRjYn8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=mirrorstack.ai; spf=none smtp.mailfrom=mirrorstack.ai; dkim=pass (2048-bit key) header.d=mirrorstack-ai.20230601.gappssmtp.com header.i=@mirrorstack-ai.20230601.gappssmtp.com header.b=zHxlVZNL; arc=none smtp.client-ip=209.85.216.45
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=mirrorstack.ai
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=mirrorstack.ai
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VcoaCIVt"
-Received: by mail-pf1-f174.google.com with SMTP id d2e1a72fcca58-8298fad2063so1362091b3a.3
-        for <linux-newbie@vger.kernel.org>; Sat, 21 Mar 2026 05:55:14 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=mirrorstack-ai.20230601.gappssmtp.com header.i=@mirrorstack-ai.20230601.gappssmtp.com header.b="zHxlVZNL"
+Received: by mail-pj1-f45.google.com with SMTP id 98e67ed59e1d1-35d9749c26dso1399549a91.2
+        for <linux-newbie@vger.kernel.org>; Mon, 30 Mar 2026 05:44:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1774097713; x=1774702513; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Ijr5hXeFwL+CVKQMYmYf4TRPqysWSwnC5s32zOes474=;
-        b=VcoaCIVtRKH1PTb52mRgORIa/tfpibxxyQPiYSDc+LUeSfgw1dm9oKf/si427oOpS6
-         KjC5ZD0joNdT+fVTW7RAb57a5Sycls95luJ3ZcMo+skMfM7ldU7e/3AHk8a1CRmNEaGl
-         3pwaZ8GBLi3bS2zq2VuXxkYVrL9T16fGkqKX84trz/BVE2MRpwo2M8HsGiOtGViHcMge
-         BtveNhtNTOoOmn8x5s7HCkkaZ9D0+YlUVLkwS/si32uYioUzSG11kO8PaEdPQgmM4txN
-         UhnP3xCLxdqq/j8lS+g+KgvR+K4ehezsNJmt5ynGgIgioa4z89A5MP3AdfK9rMoh6YLJ
-         rl1w==
+        d=mirrorstack-ai.20230601.gappssmtp.com; s=20230601; t=1774874691; x=1775479491; darn=vger.kernel.org;
+        h=mime-version:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mbDjyBhFfANTbP+3FxJ4UiK6cfWOwuEXnIhpVojPUZc=;
+        b=zHxlVZNLDjnbvaKuTEEL95hhl7HYGAyEHz1Jkyxy+NaMx+UhhaDFM5YX4P73oaqhT9
+         ajkzkZwIL96OX9S1KuGl6O3X3TJUAwwNtNshjladGBVyRMiEL9LQw3A4ZAJOOhIReSWD
+         8nCXwVZ72O3x7kq3ovh/tS6KL6pCVpnvKTA7k6d26gvNW+tDl+Xd5hnAHiuuM/zG6uPd
+         xSEL71ZDRkQ0FoWInu7xDLC3H5vzEKli6aVccKiJCsXFzaaVaOlmNOmrrlTg7iRkL9j6
+         JonXY9CJJs20G1ZKyszMK3hmFdY1VGWvThu2RHxyeegmspyfHvPD3PmjY3jGj5fZF2Cb
+         sIjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774097713; x=1774702513;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ijr5hXeFwL+CVKQMYmYf4TRPqysWSwnC5s32zOes474=;
-        b=a9XRgGs7owxyhP6tSrKIZ+fHMR349T7Fm8LGI5FQNjhQfcVc45mcpJEpJIuQPnus5c
-         WxhBUNqL3tOqompEWDlKIoPlrx/gOWlT+LIHvJKSelYWOO1yQ3cMdBCbNZev3HGHy797
-         6XOTrdXUr9coNEt8IAsUJnyJpT956m5wJKDWC6uE1zLb5l1SC9k6mn0tRaYNvDFc9t99
-         oTVCG1loK3EsS7gKMGzkbxU3Eb3QsTK6iW+Y2I+lK9vEDEELyEfTAfCMVg/p7P2/JX9B
-         jLIoUx+g3lsvaKn283nUsdiMJZIPH4WZRoMFxv7zcslGpADO32KLsAT0LkqabEhilEn8
-         o1IQ==
-X-Gm-Message-State: AOJu0YxlcPvVi6806fpZP5dNvxH65WrHDyOsZJbqVX7f038DqP3xv8SS
-	aJemFwmu0hK9yEEK7ZqqToyww9qULsYBOLFoIOLAlq5VBF70EPTPzFf7+yG0t7EMQA0=
-X-Gm-Gg: ATEYQzx6VoU69TaAvtNU8oNtJw9DB3HlYFVkcfRbX6+JcxXQxUu5VirxlijE/ZXr5VC
-	Gi5Eg+ohpArKj4uF+nni8pK4BBN0uQ0t5barqsrIe9zJJQk8XRrdjY7mkaeQPEfNNwqV6YykLwO
-	7n8IYgk5T5d+ZDo3qghqr7ql/u467GxgbgaBcX6xhorM1p1Eb7AYIaCHWYUewfUTBadh/2Ulj3d
-	NV+g9AoIP7OjMIjJYuM8DtSU9gYFQlC3L8jQ27dbQr7a3qJxykRiZr/NouUEZUeFre90wqcUsDJ
-	Qsi68LS5eeEJf4pk1CWvWsU+IN/ahqyj5b+D4j6j+E4orxPK+2Oii7QhJB+svM1hjKXc3m23Hh9
-	2lC8yP/5o90gRVUh7rF6N5uapUcTOHypNDOi3A0Krx4jL6V6RBvrhTr1b9wINGZKQnZKiWDyawe
-	eiScAPlyJKfKuZaYTZfL3KPo5233JSMrEfFO2yUXTYAMh404r6U3RXy+o=
-X-Received: by 2002:a05:6a00:1408:b0:82a:6f69:7f7b with SMTP id d2e1a72fcca58-82a8c301758mr5271104b3a.37.1774097712595;
-        Sat, 21 Mar 2026 05:55:12 -0700 (PDT)
-Received: from localhost.localdomain ([140.122.53.74])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82b0409b455sm4602647b3a.28.2026.03.21.05.55.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Mar 2026 05:55:12 -0700 (PDT)
-From: Jeffrey Wang <natsucamellia@gmail.com>
+        d=1e100.net; s=20251104; t=1774874691; x=1775479491;
+        h=mime-version:message-id:date:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mbDjyBhFfANTbP+3FxJ4UiK6cfWOwuEXnIhpVojPUZc=;
+        b=DZcmq3FcyUE9F7GgdF7EnsBGykWIGGW327L6438d/XxWNTQZ2EvqKydy0+nGbplSJx
+         TlOPOftMGpTKQ2upZ+l40rVFJF3p1M25zVP+zexXMyDzNNAHrL4Pau570aosxJebbbvE
+         YA9oHRWJbQhFunT0DdcBYbRKS1E0qG6amQrX4ObUKpY6PUhBt1geuW960FadI2cskwsc
+         KiBCYfexqXYalscX8QPqpy8ymDXU1C3luPDz5+ABjftuvkVSW6iHEgP39C7uhoNrBm1M
+         S+oXJosvI932BpAdrFCKYeKVu3cE7oLNXxb2oa4RzJwUYQertdv6Fxyz3GNDAP0Xyxss
+         Kxxg==
+X-Gm-Message-State: AOJu0Yy8PRCcQsY5fKzRGMVfMdMsp7TpEY9L/hZKYV7a8FLaN7UDBz1O
+	9EuXRcIahbhu7oBWHMK3g5L/irh9sh7mgFxBMSe0kpV8idOi7pd4JkXqzrko84kLDX05v0lfkh3
+	9II53XRn6khC5tZbbGod9QbOPcEjsfc6gh9hIcTWfZtJzkD/heKdCIzQI1nCpdLBcNV5BVIPdGv
+	ZNsg==
+X-Gm-Gg: ATEYQzyICJ0UKzz6MVBHSYMp9sSjjVnoVpjAKfuewe6fLsUHGc3sANEpMXno5syP4pP
+	PGXsi200DhLr6pAieCHBKBstlXeteHYqrQprpT4OnZE9SoXfgSyv0s0/9QR6kO+WmamO+F18nuo
+	JGkFHCXlYCv56lnJugiPCVy1An08y5c6IdgufLtruMJzdbN5vgRoWntfB36j0RTntV4phWtQ0o7
+	007QhJDcL6DGWNaUkgbcNbILBuGjrVn9o2SNZ/jBwlbkH75qgnGJATIjFKfGWGeOeW39o344e64
+	UDYUhI6nzA944W/0eM6rSJsCXy6m6CWAVnfoR8wPCp9UR0E8f241o3PEzh/r9qidN2vlU4AIPw9
+	6RebI+/akpdJkbmpTvxkODlWgKw0oxAPlk4yCo03c/Pe4nhp5Y8rRbHwy5byeHyoujyJszKtSyP
+	FwmFmHezLO/hlXSQIZZleoJal254KGR0GPBM6w2TAe3yXhga4fHAQcSOXEhyKE8VvGK/kT5hKVn
+	/9eCyq94aEL2nHDozEGG7K4WhSB/Ys=
+X-Received: by 2002:a17:90a:e705:b0:353:5595:3247 with SMTP id 98e67ed59e1d1-35c2ff618edmr11579302a91.12.1774874690870;
+        Mon, 30 Mar 2026 05:44:50 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:a19:69d6:9c07:247c:a7ee:78bc])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-35c2ec27da0sm3916927a91.8.2026.03.30.05.44.48
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 30 Mar 2026 05:44:50 -0700 (PDT)
+From: Sheng Kun Chang <nothingchang@mirrorstack.ai>
 To: linux-newbie@vger.kernel.org
-Cc: jw910731@gmail.com,
-	Jeffrey Wang <natsucamellia@gmail.com>
-Subject: [PATCH] [TESTING]  just trying
-Date: Sat, 21 Mar 2026 20:55:00 +0800
-Message-Id: <20260321125500.34148-1-natsucamellia@gmail.com>
-X-Mailer: git-send-email 2.35.1
+Cc: sef1548@gmail.com,
+	Sheng Kun Chang <nothingchang@mirrorstack.ai>
+Subject: [PATCH] [TESTING] just trying
+Date: Mon, 30 Mar 2026 20:44:20 +0800
+Message-Id: <20260330124420.82770-1-nothingchang@mirrorstack.ai>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
 
 I'm just trying if mailing to a list works now.
 
-Signed-off-by: Jeffrey Wang <natsucamellia@gmail.com>
+Signed-off-by: Sheng Kun Chang <nothingchang@mirrorstack.ai>
 ---
  testfile | 0
  1 file changed, 0 insertions(+), 0 deletions(-)
@@ -81,7 +83,18 @@ Signed-off-by: Jeffrey Wang <natsucamellia@gmail.com>
 
 diff --git a/testfile b/testfile
 new file mode 100644
-index 0000000..e69de29
+index 000000000000..e69de29bb2d1
 -- 
-2.35.1
+2.39.5 (Apple Git-154)
 
+
+-- 
+================================================= Mirror Stack | Where AI 
+ends wasted time. 
+
+
+NOTICE: This email and any attachments are 
+confidential and intended for the designated recipient(s) only. This 
+content may be legally privileged. If you have received this email in 
+error, please delete it and all copies, and immediately notify the sender.
+=================================================
