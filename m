@@ -1,63 +1,68 @@
-Received: from mout-p-101.mailbox.org (mout-p-101.mailbox.org [80.241.56.151])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f170.google.com (mail-pl1-f170.google.com [209.85.214.170])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5420C2AD20;
-	Mon, 20 Apr 2026 16:51:45 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=80.241.56.151
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F31EE221721
+	for <linux-newbie@vger.kernel.org>; Fri,  1 May 2026 06:17:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.170
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1776703906; cv=none; b=L2xK+FGXiwBxAdoyryYz+x4XuaRjVMAQ7OGwDbej8Vyfo6Q+IqyEVrP5O/pAysnlgdW6mtmLtJW4zk+ENhfY2zQlYLTjoYY25KLdtuZhi5ph02kOFVcj27x2iWZvfHXR0iz81tbxD/ekptLFSOnE3DnsraDOenVt3jnQNMWKZ5c=
+	t=1777616261; cv=none; b=dgTRfy6Mhn8WRxOHaqPr6lcwujEgpyLNBmR9qo+ggJWt/taDknOT24aglg9vujSbflnXbbjo3skLsgRwtluH5AFLskcK8SZ0JS77HQ7MAbeaY6a43Hl+0S6ify3bWflFn2cSAMIE2ZItSYM/SOX6cEKDC4+BcMU1zqodZvxXWFI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1776703906; c=relaxed/simple;
-	bh=YyAT2nSoOpWYijPC49OnL88+Z6Jjp7YCuHQ0kvJ3LwA=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=ShhwXyur2kzHy4VOhyhCTGFEXlFjrSbOwzP/hGu1EpEaNfCTwdK63dFrDN+y1qqm+oZCNJ1Gz+RDLqzajT1XXHgaeZUwcAlxsz9l03Ve5tR2jPDZbssuFkmqAv4inF4jcxP37CD96/uUgWKJAB9ap13bTMLy42/OJic454z0wGg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=mailbox.org; spf=pass smtp.mailfrom=mailbox.org; dkim=pass (2048-bit key) header.d=mailbox.org header.i=@mailbox.org header.b=nrPlqEtY; dkim=pass (2048-bit key) header.d=mailbox.org header.i=@mailbox.org header.b=jjR3P8xW; arc=none smtp.client-ip=80.241.56.151
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=mailbox.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=mailbox.org
+	s=arc-20240116; t=1777616261; c=relaxed/simple;
+	bh=2kQR55hUoZP1p0+dKK8HsKCOhj69qyLHzG8JXmouYks=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=hpGtsjKrqdb9NjsXm8kC2dQZLxved1N/JAbsMiUwyuN76jKTBCNjm2hCLTC+S3td/OET7PPNDPdw297txClGF58uXVZmZ/EjxYvhPmrWmIA00nXtsUeJdpLU7/CTgx10qvUdA6wjK0WmDZMLY7dU0XQ44tFsaNGplytgWTH31+Y=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=CSgyktrr; arc=none smtp.client-ip=209.85.214.170
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=mailbox.org header.i=@mailbox.org header.b="nrPlqEtY";
-	dkim=pass (2048-bit key) header.d=mailbox.org header.i=@mailbox.org header.b="jjR3P8xW"
-Received: from smtp1.mailbox.org (smtp1.mailbox.org [10.196.197.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mout-p-101.mailbox.org (Postfix) with ESMTPS id 4fzs2l47cGz9spF;
-	Mon, 20 Apr 2026 18:51:43 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1776703903;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H/kiXnOT8WKo2A1b51FrTnCoza6nY7VThaSoPWPoS88=;
-	b=nrPlqEtYzTv+GaQ8Bbt9YGFIko+aJMkX0rf06rj3glJ/UWRjy5zfPnOnhbZzGnbO546bsm
-	pWpKnlYsbshLcWrgNcUWuMBXLF0pISwT90sf4ZynDXA/S38XgdU/NpLv34fMKswwmEDpMv
-	fQyTgwnhSOsxi4xM5tHhRSru4arPKodxkPyLBDEkNr7jfNPjnsKCYj1raxtbS812ulAXh+
-	8QHvdZ3MXaPDm+j3m/AatvwBf6rRez0idHYsiNfiNy32o35FC7KK6i+xDIl23bQkrDv6c6
-	+d1ryZdR5mr2d5boS9Qcr/wXcYxvzC5Jalz+RlNs6c1zMMtH7R6w73DvfpZcvg==
-From: Manuel Ebner <manuelebner@mailbox.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbox.org; s=mail20150812;
-	t=1776703901;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H/kiXnOT8WKo2A1b51FrTnCoza6nY7VThaSoPWPoS88=;
-	b=jjR3P8xWeguCzM3jOLFn82Zk9AJ40VDeVtdisImW7Rf8Da371vP16xXRvNsD9bMHTR+7ou
-	frF0BYQdOsmKjL7HOTG35X8BC+1TTOmUm+Kr9Jc4e7muht61+uT3g/Vqik8L1m0QCzFCrF
-	sghub7cLJKAE68dFgbGUsyG3p8pKebazo7+9g/1rEzYF+MUf5Ygqgenw0qwBvOejs4SZqO
-	/XUDt0uDMqlp2TSgoR/4M3HG2gadg5lBiZzE7l/J72vgullvZo0IRBZZa+MfcWSaBBLcqu
-	fikZdjO6XPllTSH2ljQPwWTG2fudnyR2gB4g/oh4XJFLsuBlhKeFT18ApSB4ow==
-To: 
-Cc: manuelebner@mailbox.org,
-	kernel-janitors@vger.kernel.org,
-	linux-kernel-mentees@lists.linux.dev,
-	linux-newbie@vger.kernel.org
-Subject: [PATCH v2 3/3] Documentation: deprecated.rst: type-aware kmalloc-family: mark optional argument as such
-Date: Mon, 20 Apr 2026 18:50:37 +0200
-Message-ID: <20260420165038.217550-2-manuelebner@mailbox.org>
-In-Reply-To: <20260420164234.217133-2-manuelebner@mailbox.org>
-References: <20260420164234.217133-2-manuelebner@mailbox.org>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CSgyktrr"
+Received: by mail-pl1-f170.google.com with SMTP id d9443c01a7336-2b461310af5so6652215ad.1
+        for <linux-newbie@vger.kernel.org>; Thu, 30 Apr 2026 23:17:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1777616259; x=1778221059; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=2kQR55hUoZP1p0+dKK8HsKCOhj69qyLHzG8JXmouYks=;
+        b=CSgyktrrR4rvpJLXmuotiKuk2sl0SmHG+3GXE12qmswlgIyRfRi7We2xyFYtsClzHq
+         6+6wYDgoTkHxKUApFLcGVfzOtjJl8p8XEQ0FUp0Q1mGO3S4WlJh0nRZ/0CTQYlv9Md7j
+         1Jm42SDJOFVfWrC8q3RQdnGytF/B8MBbrYnxKQBVdxjczapGNZd+8/xLGd6qzltIc7gf
+         s+Pu7Fe1nPVDBCr1HaryLmlHXxJnx7GPQdHrJgjclhP6FudwO3e7oO81mw4Uawo+nwNd
+         +3SSifSWgclJCmYZzTeDdgXrqqga8w2jSobdcE+NM8LbqEOM99DBeNrYpk0zUfwz+Px+
+         jryg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777616259; x=1778221059;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2kQR55hUoZP1p0+dKK8HsKCOhj69qyLHzG8JXmouYks=;
+        b=JZ+4barZgQ/Kc3ZyaqPFQcr/S2NX5i1JeUE+HZ/c7Vd8cFCrDPETcNb9Rext3YSYsP
+         tdsthSpailGeK0T1Et6dRfYucTJ3g6uin9jiJbFxQzeIzIt38c6NaG21uZJRWvZWFHK0
+         xwMforv5oJfXoLjTdjWQoI2zyZXDFr4zMcEVHZcSbLb7ET9QlwxaGbwOgRaMLYTpJZsb
+         SW2GuMVnwICP1wqXf2e4ulG4kkLA91y4GEyZL5WNfHHc4QP92dwL0I1zEtYLmHoeONz6
+         VXC3m7fCCJDZZfUS5Im50ZpUZCZx66UYNHq8LSElqGpqiMlOi59wUsU/SOcURXdmnYAN
+         QRAQ==
+X-Gm-Message-State: AOJu0YxBcyDu4BHfjbtICWO2VHvpuyCvZxnoDhZXaY53dy8OIA1R+A4i
+	TWLqtQqYNIMHifDb5avuMGtgDX+diMzstIILoE5XxkjtN4B2WKjvOYuncFcgMcbG
+X-Gm-Gg: AeBDietRfKM81hn0n2KjTJUyw3QVd+BIsHIArjHOx1+/QwnmJA+iDSPjHMUmZYS0+js
+	pOykSVvp5ssf4e2/9JGjJVwV7K0wMM+Ri3g+ouE/EAqSM+V88i6vpvWJfa6ykmAZUS0XjjfnoaS
+	6ldde1i4ilBhXS4/m7623ycIxuJonTwyGPGa5n1Up/oLx593inFcve8xiORxSVpHLOab3BHUZbZ
+	QwTpYRg0o/u3AbVfkmMgb4V4Q/Bwn0lYoufKmYBinjlwRgQ1leFrFjtiUin8ngsxdCVAvFEVS4P
+	Dvr2Gedj2Q26IZx3ObqYdEw5Xy48yJ2eh2Xv/0fgGCFLVDt4s/cWpS2OAmL3sPUhB3yXMjpYLbQ
+	N4zg0xCJDd7PTcxpU3keDGX3w4tcnjdoHqoHJ9ptq19zPV1kCgcDr72Mwr9CNl7SDNuqm6iXfU9
+	RF+pM/lol1x20io2j2AIGUTwUcKagZPz20wv3mFwMWnSUTAWyU0U1JIr1dOhfuLkStI+yxeGzd3
+	Hic4/Yg9di0zQSOBX13UXLnevS0CfghhvD8vZCZ
+X-Received: by 2002:a17:903:94d:b0:2b9:6a4a:137 with SMTP id d9443c01a7336-2b9a434a22cmr48464505ad.15.1777616259083;
+        Thu, 30 Apr 2026 23:17:39 -0700 (PDT)
+Received: from DESKTOP-84HKR32.localdomain ([119.14.59.61])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b9cae363d9sm13450265ad.57.2026.04.30.23.17.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Apr 2026 23:17:38 -0700 (PDT)
+From: Wis Chiang <hjtiun852@gmail.com>
+To: linux-newbie@vger.kernel.org
+Cc: sef1548@gmail.com
+Subject: [TEST] send-email check
+Date: Fri,  1 May 2026 14:17:35 +0800
+Message-ID: <20260501061735.7444-1-hjtiun852@gmail.com>
+X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
@@ -65,42 +70,10 @@ List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-MBO-RS-META: yohrsjzbdzpk7m5eyoycjfh747ash641
-X-MBO-RS-ID: 036050eb2fdad0a384f
 
-put the optional argument (gfp) in square brackets
+Hi,
 
-eg. ptr = kmalloc_obj(*ptr, gfp);
- -> ptr = kmalloc_obj(*ptr, [gfp]);
+This is a test email to kernelnewbies.
 
-Signed-off-by: Manuel Ebner <manuelebner@mailbox.org>
----
- Documentation/process/deprecated.rst | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/Documentation/process/deprecated.rst b/Documentation/process/deprecated.rst
-index fed56864d036..b431993fd08e 100644
---- a/Documentation/process/deprecated.rst
-+++ b/Documentation/process/deprecated.rst
-@@ -392,12 +392,12 @@ allocations. For example, these open coded assignments::
- 
- become, respectively::
- 
--	ptr = kmalloc_obj(*ptr, gfp);
--	ptr = kzalloc_obj(*ptr, gfp);
--	ptr = kmalloc_objs(*ptr, count, gfp);
--	ptr = kzalloc_objs(*ptr, count, gfp);
--	ptr = kmalloc_flex(*ptr, flex_member, count, gfp);
--	__auto_type ptr = kmalloc_obj(struct foo, gfp);
-+	ptr = kmalloc_obj(*ptr, [gfp]);
-+	ptr = kzalloc_obj(*ptr, [gfp]);
-+	ptr = kmalloc_objs(*ptr, count, [gfp]);
-+	ptr = kzalloc_objs(*ptr, count, [gfp]);
-+	ptr = kmalloc_flex(*ptr, flex_member, count, [gfp]);
-+	__auto_type ptr = kmalloc_obj(struct foo, [gfp]);
- 
- If `ptr->flex_member` is annotated with __counted_by(), the allocation
- will automatically fail if `count` is larger than the maximum
--- 
-2.53.0
-
+Thanks,
+Wis Chiang
