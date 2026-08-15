@@ -1,91 +1,125 @@
-Received: from mail-pl1-f175.google.com (mail-pl1-f175.google.com [209.85.214.175])
+Received: from mail-pg1-f196.google.com (mail-pg1-f196.google.com [209.85.215.196])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED9093BFAF7
-	for <linux-newbie@vger.kernel.org>; Sat,  8 Aug 2026 11:14:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84B584071FF
+	for <linux-newbie@vger.kernel.org>; Sat, 15 Aug 2026 12:34:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.196
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1786187698; cv=none; b=Vg4iJcFS+RM5FEQkZhp7c+MxSugNXfNCfOPVhUMot3J8jhLL6J8MCz8P0vmJY41kmccc5ebAmChKP20qr+rm0ZmiTtfy3enwiv94lVPtCGzBjZMkvLnuljvorpHb5MzuKGwDb+bBNIUJ9cKqmcedO2RxSIPP7lfbXO/gYxUBfP0=
+	t=1786797300; cv=none; b=sq8qt+4HH9VmmwbqEgNVTuLlPgI4Gh2oLFYWsP9iA3VmPeq70rTYJ9x4NkfF/J7hC0b32kW1gm1ZZCdV+6JRnXSAVEnFzbKpdYQuoJbMYS3Dv4dV+tmJZh47A8UNpPtJVXua71cxO8jaKrxO22bnCCwE3kO8lI0zTbO6KUmirA4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1786187698; c=relaxed/simple;
-	bh=5GVzSmpnaVieNdRKEVf6OY0/4g3LpHXHUk3off9Pq4g=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=YSh11w15tCeJtV/t0YuaOTIQaS5bmjyFvse4KJt/HZxIWcvTN759PNlo9PRKnJopiX6OyaVQiw5BOsa22DEaRwUKE15SBxdLdoLzGIo8bs+OsLKdRg7+5mkKw+zb95KJSGZ3dVCnwxNMxllAB/dLDduIehAoVvk/CyqGzDpvdG0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=TIy+TMBc; arc=none smtp.client-ip=209.85.214.175
+	s=arc-20240116; t=1786797300; c=relaxed/simple;
+	bh=ZzBg/Cu5rUfdQeE+onKly5MN8EZCoZFw+UNjm6oSkyE=;
+	h=From:Date:To:Subject:Message-ID:MIME-Version:Content-Type; b=lyHYuLPYsuVH13aTQVX3f4xy1vGSJ01s/0ke91SUAXwqDYB1vG36szqfIxEm01QnZ82UYqYiJDLj8GfmvG0ZBZQnnYB8b7GqDg31htq55bhGKMuufRjOBiocEO69jtFDvA1eO/CGiqGenu6Fk96CVzQuQDZwmByAk0ZFAgeBeB8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=rQ51Mkl8; arc=none smtp.client-ip=209.85.215.196
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TIy+TMBc"
-Received: by mail-pl1-f175.google.com with SMTP id d9443c01a7336-2caed617615so4754115ad.3
-        for <linux-newbie@vger.kernel.org>; Sat, 08 Aug 2026 04:14:54 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rQ51Mkl8"
+Received: by mail-pg1-f196.google.com with SMTP id 41be03b00d2f7-cbe6295f05bso2112672a12.1
+        for <linux-newbie@vger.kernel.org>; Sat, 15 Aug 2026 05:34:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1786187694; x=1786792494; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=8ZXTQOIqxLa2kzcmeCHQXcGa6DmeE8r7zNAxFmRSJKk=;
-        b=TIy+TMBcMwtcm1tV+1Hxdvv9fLSMIdBrXp9wXmhILvwM+Wpu9c/pp0xrQVZGXwcZUH
-         9D1MZ4tCU1FewAdB03aUEWxoMdxqyy6doGkpFw3UuhS0GrypBNF6rqWg1i3W440Kavbu
-         iHrYBmntYmwrfNx/iLtGQby1M2neQcB0emT3MYG9/5bUtNf9KfIltrAGnCDHMXdpKPxW
-         tkmvqLx2AcPR0Nq00exsZ84JSheYhmllRxXrCPqG+Hd63Dmw+jx9Zd60LYBySdacc1fZ
-         PcpvWIZ2Age4hBR/Bp97w3i3lHbR0Y2UXGTEusn/eFQnR+Mxgay325UL4ORTFdeIpDsR
-         VOQQ==
+        d=gmail.com; s=20251104; t=1786797299; x=1787402099; darn=vger.kernel.org;
+        h=content-type:mime-version:message-id:subject:to:date:from:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=VAYQmx+N2GSiLQt+NzLGFRqyw/gHRQ3E9TuxBVflb1M=;
+        b=rQ51Mkl8o86EA0SjGnX3Ih4IWVPc0rC09Qy1XIQynltefeqiXTT7jzkKep5FqQP2H3
+         +SWZbsY2rhc35SG+uqFOU8ygKHJCiVarP09tak7ay5PUlUxX9x5Z/0iTP5i9g3DKqq5R
+         Q+eaqDJWih9LhpHQPUh4JBE8CF6MpAtoiyteBr4eAm2uyMaGSG9Ol7XvTsUjupInGqMw
+         vuYxfu1/wakF87sAUx58WL0P5oM0Jbr8AqO2CfobZ6T3LKE2t1Z1DPMQ/WMi7bp0J5AJ
+         Lqwv0yu5TXZ9qOaWzVegU8PwvKhNukFGjQnpSSWr/VO2XgqFqirVtYWyuHomVGgyZ45D
+         t1Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1786187694; x=1786792494;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=8ZXTQOIqxLa2kzcmeCHQXcGa6DmeE8r7zNAxFmRSJKk=;
-        b=JeHXh+CndAaW+ITTQRRjsKl1W62//AMSuwsrCvtKH4t1PtnYJQCELXAdcAWCnHx+Ut
-         I6GF1PEUoFY8BwX87DTzFP/vSntVGRpqjBx/e+2F3a5VEkqtxM8gpyFCWDCSyPD/GcWX
-         7Ea4IyAIg8e3rCgSRduNzSHjJ3U8jj/wxf2/wJMbWOOyo+z82qp4QiK4RRcwQtEXBIt5
-         0GtBQ8jCN5uIACCJZjnZs94wCyjGRbTgPSf+HH6rjsXCaG963QP6ZxSY/zP3aaeH19AI
-         hRMxdvuDpy+wE/DNIJIpuQQUwfbjqXL0cNzGug/m+iAzeKak5MLw/6clFDKRzRgCGDSf
-         RgqA==
-X-Gm-Message-State: AOJu0YxfUjF1uxPmuXGxnnO4fMZX2oHrXk0AJSs+EKONGs1VaOr3BmQH
-	ay+soh4aoqKMH5JOYmo5OqC29J6UBH18K9pgFUlTgIHyZHLLv1Uw4XBXp/nOu//2OPQ=
-X-Gm-Gg: AR+sD12FRmSpmjmEMs4ahdO/V7zHkb0LIL9n1VTaWS5tLSyuj6gtocXP/7fdPa1zQf2
-	cowTDV+vf7blCj0LYc/ivIUSiZ8qRcDnKCywY39j0Hp5ieTZyzx+1NFtzd2QLKSKpUC4b6esoP0
-	QpBa0Em7mkSHx++hnNjdIEEBlp2xdz57lZgzpKQ+l9QRxEE1tRzFxgPwgUzclHpja9+VVVR5idP
-	Dzq+qPvvGaBeK2LIE1y+mq7ySsRwt3SHyOs9iOtk/C80xLvLfsufKPfYwmNuZ0+1h6X/waaHR6f
-	FhbZ94PitqMuapjFY0EuKqw6GNci4CG1ISi9VVv7yejkyUcKujWjKr6FXHZLis0jDd3h4B3Eb1X
-	Za+fcKMDsk5/oSBmCFFtxyHsQg1MRYiw+sayCdBV9pG38SBBWdQCAU4UhFHjOgInL1o1O/ewJxJ
-	mjOJCDFSpt+/E31xhYBHyi/iAXsKL//2egWC2nyghQZdQmwmUTHNZn27Q+CcJ1JFhWrRe1ygAm9
-	DDPQO1I
-X-Received: by 2002:a17:902:e783:b0:2c9:aae1:a611 with SMTP id d9443c01a7336-2d0ca961afamr395151555ad.23.1786187694310;
-        Sat, 08 Aug 2026 04:14:54 -0700 (PDT)
-Received: from LAPTOP-7BPRJN5M.sslab.lan ([140.112.90.80])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2d14ccac6d7sm17891085ad.6.2026.08.08.04.14.52
+        d=1e100.net; s=20251104; t=1786797299; x=1787402099;
+        h=content-type:mime-version:message-id:subject:to:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=VAYQmx+N2GSiLQt+NzLGFRqyw/gHRQ3E9TuxBVflb1M=;
+        b=WT81iyuOC2EdGCPbnI7gffxVEcwJZ2S6X8HqTzNnVqUyNxnaW2rsKSSTGytNcqH2eT
+         PQc4JxOSftC6qPwZvftgr0Ri4nB4ALcJ3LChI8TKcGWoTfJub/6Nl6bOdBAsw+qmzV+1
+         yLSwLJ9bkg2mo5Vg+iYE92TxgkxEwibte+BrZp8ZkPBclgy46zOdB2hLN38bJVcMG0K4
+         DR/4+g80mW6W8tKsOYrsirubd9B3DB0ycnNGwksIq0uZnR08AxQ9yxDK39GUSRpj3DyH
+         OBrkLh6mloFDVdbsL2lXV6/hMQAL/Vh7cjhYqsJ8oT0FxCFPRQjGCI00aUM3BH8JKe1Y
+         cDtw==
+X-Gm-Message-State: AOJu0YzAp0qyarvchZu8BX6AeyrN3gXzeDAxF6CvTRTzq0PPXHT21PDy
+	K74hJunqkYtjzhJA5QvlOpLRSDe0ey1GZz4xx+g9dNV82bJ//RvuSDI9NCnkfbbE
+X-Gm-Gg: AR+sD13sKDPo+txDC+kUty0eFdMDzc2Sx5kX9GB71iSiK9iEqw/7UYnkCk0If5JdXSA
+	uXl9U2wfRFl79q3C0btenBXEHv7l/TsZ+TRLT9BmVabiO9i6K3u9F87VlDuRTw4Uph8fNRJ4Yvt
+	LSfrNXxeCSsUVhHFMkwAP7AonbFs8jKjPKuFjQ5ugeUcc6Eie9qVMYVjhN2YeQcrbLDzmDa6qOE
+	usDaYHpCpvxrg8t0UJ7ZT/LrFnxLRF7ccbOBs9cs3afRxGj0ZesSikZhvPI9woBkMoxG18j+dIn
+	e3d48y6Mrzxqusd4uWpwdxCcPUNHPYVaAS1R8ZXaHH+UfOh572YxYOUPVMCBFGpk1Pg7GdfgmRA
+	g0O/IWjzBrQE+S6FcURfM2wA5CbbRgfuAftGTiEmng81zlLkEMfCi0mM4o3P/E/CZLjsSpsyEfl
+	2ESCclRa1YxfXl7SYGyj+7K6QdqBpfYk3I4Dmd4aM7Lo/aLrA/GlQZ
+X-Received: by 2002:a17:90b:2b47:b0:37f:e5b1:ec4b with SMTP id 98e67ed59e1d1-3931f47db02mr16264959a91.5.1786797298841;
+        Sat, 15 Aug 2026 05:34:58 -0700 (PDT)
+Received: from 192.168.1.2 ([157.85.198.7])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-320ead105a9sm14742370eec.31.2026.08.15.05.34.56
+        for <linux-newbie@vger.kernel.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 08 Aug 2026 04:14:53 -0700 (PDT)
-From: UsoNemo <usonemo11592@gmail.com>
+        Sat, 15 Aug 2026 05:34:58 -0700 (PDT)
+From: Foxie Flakey <foxieflakey@gmail.com>
+X-Google-Original-From: Foxie Flakey <foxie@gmail.com>
+Date: Sat, 15 Aug 2026 19:34:54 +0700 (WIB)
 To: linux-newbie@vger.kernel.org
-Cc: natsucamellia@gmail.com,
-	sef1548@gmail.com,
-	UsoNemo <usonemo11592@gmail.com>
-Subject: [PATCH] I'm just trying if mailing to a list works now.
-Date: Sat,  8 Aug 2026 19:14:44 +0800
-Message-ID: <20260808111444.1265-1-usonemo11592@gmail.com>
-X-Mailer: git-send-email 2.43.0
+Subject: [PATCH] userfaultfd: reset err when move_pages_ptes succeeded
+Message-ID: <db93293b-2e02-7ca9-2f92-f52447d2849c@gmail.com>
 Precedence: bulk
 X-Mailing-List: linux-newbie@vger.kernel.org
 List-Id: <linux-newbie.vger.kernel.org>
 List-Subscribe: <mailto:linux-newbie+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-newbie+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
+
+When UFFDIO_MOVE moves non huge pages and temporarily fails, then the outer
+loop retries again and succeeded but in that path "err" isn't reset to 0.
+Later, when checked for EAGAIN error, the loop mistakenly retries moving
+same page again which will fail because its already moved.
+
+When the UFFDIO_MOVE returned, this is what userspace observed.
+
+Source:      [ .. unmapped  .. ][ .. mapped    ..]
+Destination: [ .. mapped    .. ][ .. unmapped  ..]
+                          ^     ^
+                          \     Kernel moved this far in actuality
+                           What is reported to userspace on struct
+                           uffdio_move's move field
+
+When the previous behaviour is
+Source:      [ .. unmapped  .. ][ .. mapped    ..]
+Destination: [ .. mapped    .. ][ .. unmapped  ..]
+                                ^
+                                Reported to user space via uffdio_move's
+                                move field
+
+Fixes: 50944692052b ("userfaultfd: opportunistic TLB-flush batching for present pages in MOVE")
+Signed-off-by: Foxie Flakey <foxieflakey@gmail.com>
+Assisted-by: ChatGPT:GPT-5.6-Luna
 ---
- test.txt | 2 ++
- 1 file changed, 2 insertions(+)
- create mode 100644 test.txt
+ mm/userfaultfd.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/test.txt b/test.txt
-new file mode 100644
-index 0000000..f8a25bd
---- /dev/null
-+++ b/test.txt
-@@ -0,0 +1,2 @@
-+
-+I'm just trying if mailing to a list works now.
+diff --git a/mm/userfaultfd.c b/mm/userfaultfd.c
+index c3adedaaf7d5..595e7e232f90 100644
+--- a/mm/userfaultfd.c
++++ b/mm/userfaultfd.c
+@@ -2069,10 +2069,12 @@ static ssize_t move_pages(struct userfaultfd_ctx *ctx, unsigned long dst_start,
+ 			ret = move_pages_ptes(mm, dst_pmd, src_pmd,
+ 					      dst_vma, src_vma, dst_addr,
+ 					      src_addr, src_end - src_addr, mode);
+-			if (ret < 0)
++			if (ret < 0) {
+ 				err = ret;
+-			else
++			} else {
++				err = 0;
+ 				step_size = ret;
++			}
+ 		}
+
+ 		cond_resched();
+
+base-commit: 62cc90241548d5570ee68e01aaba6506964e9811
 -- 
-2.43.0
+2.55.0
 
